@@ -1,0 +1,76 @@
+baseURL: "https://datalaria.com/"
+theme: PaperMod
+defaultContentLanguage: es
+defaultContentLanguageInSubdir: true
+
+# --- PAGINACIÓN (FORMA CORRECTA) ---
+pagination:
+  pagerSize: 10
+
+# --- CONFIGURACIÓN MULTILENGUAJE CORREGIDA ---
+languages:
+  es:
+    languageName: "Español"
+    contentDir: "content/es"
+    title: "Datalaria"
+    weight: 1
+    params:
+      profileMode:
+        enabled: true
+        title: "Datalaria"
+        subtitle: "Bienvenido a mi cuaderno de bitácora digital. Aquí exploro y documento mi viaje de aprendizaje en el mundo de los datos, la inteligencia artificial, la tecnología y la industria. Este es mi kilómetro 0."
+        imageUrl: ""
+        imageWidth: 120
+        imageHeight: 120
+        buttons:
+          - name: "Blog"
+            url: "/es/posts"  # <-- CORREGIDO
+          - name: "Sobre mí"
+            url: "/es/sobre-mi" # <-- CORREGIDO
+    menu:
+      main:
+        - identifier: blog
+          name: "Blog"
+          url: "/posts/"
+          weight: 10
+        - identifier: about
+          name: "Sobre mí"
+          url: "/sobre-mi/"
+          weight: 20
+        - identifier: tags
+          name: "Etiquetas"
+          url: "/tags/"
+          weight: 30
+
+  en:
+    languageName: "English"
+    contentDir: "content/en"
+    title: "Datalaria"
+    weight: 2
+    params:
+      profileMode:
+        enabled: true
+        title: "Datalaria"
+        subtitle: "Welcome to my digital logbook. Here I explore and document my learning journey into the world of data, artificial intelligence, technology, and industry. This is my kilometer 0."
+        imageUrl: ""
+        imageWidth: 120
+        imageHeight: 120
+        buttons:
+          - name: "Blog"
+            url: "/en/posts"  # <-- CORREGIDO
+          - name: "About"
+            url: "/en/about" # <-- CORREGIDO
+    menu:
+      main:
+        - identifier: blog
+          name: "Blog"
+          url: "/posts/"
+          weight: 10
+        - identifier: about
+          name: "About"
+          url: "/about/"
+          weight: 20
+        - identifier: tags
+          name: "Tags"
+          url: "/tags/"
+          weight: 30
