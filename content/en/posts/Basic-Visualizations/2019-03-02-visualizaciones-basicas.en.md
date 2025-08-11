@@ -1,7 +1,7 @@
 ---
 title: Data Visualization - Basics
 date: 2019-03-02
-draft: False
+draft: True
 categories: ["foundations"]
 tags: [statistics", "visualizations", "distribution", "graphs", "charts"]
 myVar: "myValue"

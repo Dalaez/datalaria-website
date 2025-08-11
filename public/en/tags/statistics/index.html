@@ -217,3 +217,17 @@ Pie chart Line chart Treemap &amp; Subburst Histograms &amp; Bar charts Density 
 </body>
 
 </html>
+EventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
