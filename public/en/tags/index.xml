@@ -22,5 +22,68 @@
       <guid>http://localhost:1313/en/tags/meta/</guid>
       <description></description>
     </item>
+    <item>
+      <title>Charts</title>
+      <link>http://localhost:1313/en/tags/charts/</link>
+      <pubDate>Sat, 02 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/charts/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Distribution</title>
+      <link>http://localhost:1313/en/tags/distribution/</link>
+      <pubDate>Sat, 02 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/distribution/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Graphs</title>
+      <link>http://localhost:1313/en/tags/graphs/</link>
+      <pubDate>Sat, 02 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/graphs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Statistics&#34;</title>
+      <link>http://localhost:1313/en/tags/statistics/</link>
+      <pubDate>Sat, 02 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/statistics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Visualizations</title>
+      <link>http://localhost:1313/en/tags/visualizations/</link>
+      <pubDate>Sat, 02 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/visualizations/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Gaussian</title>
+      <link>http://localhost:1313/en/tags/gaussian/</link>
+      <pubDate>Sat, 05 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/gaussian/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Maths</title>
+      <link>http://localhost:1313/en/tags/maths/</link>
+      <pubDate>Sat, 05 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/maths/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Normal</title>
+      <link>http://localhost:1313/en/tags/normal/</link>
+      <pubDate>Sat, 05 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/normal/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Statistics</title>
+      <link>http://localhost:1313/en/tags/statistics/</link>
+      <pubDate>Sat, 05 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/statistics/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

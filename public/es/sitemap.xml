@@ -2,6 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/es/posts/visualizaciones-basicas/2019-03-02-visualizaciones-basicas/</loc>
+    <lastmod>2019-03-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/es/posts/estadistica-descriptiva/2025-08-07-estadistica-descriptiva/</loc>
+    <lastmod>2019-01-05T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/es/</loc>
     <lastmod>2025-08-06T17:55:41+02:00</lastmod>
     <xhtml:link
@@ -64,6 +70,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/es/categories/</loc>
+    <lastmod>2019-03-02T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -73,6 +80,43 @@
                 rel="alternate"
                 hreflang="es"
                 href="http://localhost:1313/es/categories/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/es/tags/distribucion/</loc>
+    <lastmod>2019-03-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/es/tags/estad%C3%ADstica/</loc>
+    <lastmod>2019-03-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/es/categories/fundamentos/</loc>
+    <lastmod>2019-03-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/es/tags/gr%C3%A1ficos/</loc>
+    <lastmod>2019-03-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/es/tags/representaciones/</loc>
+    <lastmod>2019-03-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/es/tags/visualizaciones/</loc>
+    <lastmod>2019-03-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/es/tags/gaussiana/</loc>
+    <lastmod>2019-01-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/es/tags/matem%C3%A1ticas/</loc>
+    <lastmod>2019-01-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/es/tags/normal/</loc>
+    <lastmod>2019-01-05T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/tags/normal/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://localhost:1313/es/tags/normal/"
                 />
   </url>
 </urlset>

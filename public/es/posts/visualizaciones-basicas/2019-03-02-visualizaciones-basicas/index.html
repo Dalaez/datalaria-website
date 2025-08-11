@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Visualizaciones básicas | Datalaria</title>
+<meta name="keywords" content="estadística, visualizaciones, distribucion, gráficos, representaciones">
+<meta name="description" content="Continuando con la información expuesta en el post estadística descriptiva, a continuación, vamos a conocer las maneras más básicas de visualizar los datos o la información a analizar. Concretamente:
+
+Gráficos de tarta
+Gráficos de línea
+Gráficos de rectángulo y proyección solar
+Histogramas y diagramas de barras
+Gráficos de densidad
+Gráficos de caja (Boxplots)
+Gráficos de violin
+Gráficos de dispersión
+Gráficos de Pareto
+
+Nota: Para todos los ejemplos (excepto para los gráficos de línea por sus características) se va a utilizar como dataset el fichero train.csv un subconjunto de 891 individuos representativo de la población del Titanic utilizado para el entrenamiento de modelos de Aprendizaje automático.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/es/posts/visualizaciones-basicas/2019-03-02-visualizaciones-basicas/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.36819bea596090d8b48cf10d9831382996197aa7e4fc86f792f7c08c9ca4d23b.css" integrity="sha256-NoGb6llgkNi0jPENmDE4KZYZeqfk/Ib3kvfAjJyk0js=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="es" href="http://localhost:1313/es/posts/visualizaciones-basicas/2019-03-02-visualizaciones-basicas/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/es/" accesskey="h" title="Datalaria (Alt + H)">Datalaria</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="http://localhost:1313/en/" title="English"
+                            aria-label="English">En</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/es/posts/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/es/sobre-mi/" title="Sobre mí">
+                    <span>Sobre mí</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/es/tags/" title="Etiquetas">
+                    <span>Etiquetas</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Visualizaciones básicas
+    </h1>
+    <div class="post-meta"><span title='2019-03-02 00:00:00 +0000 UTC'>marzo 2, 2019</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Continuando con la información expuesta en el post <a href="https://www.datalaria.com/post/fundamentos/2018-10-07-estadistica-descriptiva/">estadística descriptiva</a>, a continuación, vamos a conocer las maneras más básicas de visualizar los datos o la información a analizar. Concretamente:</p>
+<ul>
+<li><strong><a href="/es/posts/visualizaciones-basicas/2019-03-02-visualizaciones-basicas/#grafico_tarta">Gráficos de tarta</a></strong></li>
+<li><strong><a href="/es/posts/visualizaciones-basicas/2019-03-02-visualizaciones-basicas/#grafico_linea">Gráficos de línea</a></strong></li>
+<li><strong><a href="/es/posts/visualizaciones-basicas/2019-03-02-visualizaciones-basicas/#grafico_jerarquico">Gráficos de rectángulo y proyección solar</a></strong></li>
+<li><strong><a href="/es/posts/visualizaciones-basicas/2019-03-02-visualizaciones-basicas/#histogramas">Histogramas y diagramas de barras</a></strong></li>
+<li><strong><a href="/es/posts/visualizaciones-basicas/2019-03-02-visualizaciones-basicas/#grafico_densidad">Gráficos de densidad</a></strong></li>
+<li><strong><a href="/es/posts/visualizaciones-basicas/2019-03-02-visualizaciones-basicas/#grafico_caja">Gráficos de caja (Boxplots)</a></strong></li>
+<li><strong><a href="/es/posts/visualizaciones-basicas/2019-03-02-visualizaciones-basicas/#grafico_violin">Gráficos de violin</a></strong></li>
+<li><strong><a href="/es/posts/visualizaciones-basicas/2019-03-02-visualizaciones-basicas/#grafico_dispersion">Gráficos de dispersión</a></strong></li>
+<li><strong><a href="/es/posts/visualizaciones-basicas/2019-03-02-visualizaciones-basicas/#grafico_pareto">Gráficos de Pareto</a></strong></li>
+</ul>
+<p><em>Nota: Para todos los ejemplos (excepto para los gráficos de línea por sus características) se va a utilizar como dataset el fichero train.csv un subconjunto de 891 individuos representativo de la población del Titanic utilizado para el entrenamiento de modelos de Aprendizaje automático.</em></p>
+<h2 id="gráficos-de-tarta"><!-- raw HTML omitted --><!-- raw HTML omitted -->Gráficos de tarta<a hidden class="anchor" aria-hidden="true" href="#gráficos-de-tarta">#</a></h2>
+<p>Los gráficos de tarta o circulares (en inglés <em>pie charts</em>) son utilizados para representar la proporción de los datos de una variable o característica según su valor respecto al total de los mismos. Este tipo de gráficos presentan multitud de variantes y son ampliamente utilizados debido a su sencillez de preparación e interpretación. Sin embargo, muchas veces se abusa de este tipo de gráficos o se utilizan indebidamente (ver el siguiente <a href="https://www.elartedepresentar.com/2011/11/las-tartas-son-para-el-postre-5-razones-por-las-que-no-uso-graficos-circulares/">artículo sobre el mal uso de los gráficos de tarta</a>).</p>
+<ul>
+<li>Ejemplo: Proporciones de pasajeros del Titanic por estatus socioeconómico</li>
+</ul>
+<p><img alt="Grafico_tarta" loading="lazy" src="/img/visualizaciones/grafico_tarta.png"></p>
+<h2 id="gráficos-de-línea"><!-- raw HTML omitted --><!-- raw HTML omitted -->Gráficos de Línea<a hidden class="anchor" aria-hidden="true" href="#gráficos-de-línea">#</a></h2>
+<p>Los gráficos de línea se utilizan para mostrar los datos de una variable sobre una secuencia de datos continuados. Generalmente, se utilizan para representar tendencias o relaciones (en agrupación con más variables) entre los datos durante un intervalo de tiempo continuo.</p>
+<p><em>Nota: Con el fin de visualizar un caso de uso en un intervalo de tiempo continuo, para los siguientes ejemplos se ha utilizado el dataset de la biblioteca de datos públicos del Gobierno de España sobre <a href="https://datos.gob.es/es/catalogo/ea0010587-poblacion-por-comunidades-y-ciudades-autonomas-y-tamano-de-los-municipios-anual-comunidades-autonomas-cifras-oficiales-de-poblacion-de-los-municipios-espanoles-revision-del-padron-municipal-identificador-api-2915">los datos de población por comunidades autónomas en la serie histórica desde 1997 a 2017.</a></em><br>
+<!-- raw HTML omitted --></p>
+<ul>
+<li>
+<p>Ejemplo: Población española desde 1997
+<img alt="Grafico_linea_1" loading="lazy" src="/img/visualizaciones/grafico_linea1.png">
+<!-- raw HTML omitted --></p>
+</li>
+<li>
+<p>Ejemplo: Población española por comunidades desde 1997
+<img alt="Grafico_linea_21" loading="lazy" src="/img/visualizaciones/grafico_linea2.png"></p>
+</li>
+</ul>
+<h2 id="gráficos-de-rectángulo-y-proyección-solar"><!-- raw HTML omitted --><!-- raw HTML omitted -->Gráficos de rectángulo y proyección solar<a hidden class="anchor" aria-hidden="true" href="#gráficos-de-rectángulo-y-proyección-solar">#</a></h2>
+<p>Los gráficos de rectángulos (en inglés <em>treemaps</em>) y los gráficos de proyección solar (en inglés <em>sunburst</em>) son visualizaciones para representar datos jerárquicos y resumir la información en áreas proporcionales a los valores correspondientes.</p>
+<p>En el caso gráficos de rectángulos, la representación consiste en agrupaciones de los datos mediante rectángulos con un área proporcional a su valor respecto al total.<br>
+<!-- raw HTML omitted --></p>
+<ul>
+<li>Ejemplo: Proporción de pasajeros según su estatus socioeconómico clasificados por género (gráfico rectángulo)</li>
+</ul>
+<p><img alt="Grafico_rectangulo" loading="lazy" src="/img/visualizaciones/grafico_rectangulo.png"></p>
+<p>En el caso de los gráficos de proyección solar, la representación consiste en agrupaciones de los datos mediante diferentes anillos según el nivel representado, y éstos a su vez, se dividen a en partes proporcionales al valor de los datos que representan.
+<!-- raw HTML omitted --></p>
+<ul>
+<li>Ejemplo: Proporción de pasajeros según su estatus socioeconómico clasificados por género (gráfico proyección solar)</li>
+</ul>
+<p><img alt="Grafico_rectangulo" loading="lazy" src="/img/visualizaciones/grafico_proyeccion_solar.png"></p>
+<p>Sobre el ejemplo representado, se puede apreciar rápidamente información sobre los datos jerarquizados representados como por ejemplo que el número de pasajeros hombres era de casi 2/3 de la tripulación, así como que los pasajeros hombres y de estatus socioeconómico bajo representaban algo más de 1/3 de la tripulación.</p>
+<h2 id="histogramas-y-gráficos-de-barras"><!-- raw HTML omitted --><!-- raw HTML omitted -->Histogramas y Gráficos de barras<a hidden class="anchor" aria-hidden="true" href="#histogramas-y-gráficos-de-barras">#</a></h2>
+<p>Recopilando la información ya recogida en la entrada <a href="https://www.datalaria.com/post/fundamentos/2018-10-07-estadistica-descriptiva/">Estadística descriptiva</a>, se explican dos de las representaciones más utilizadas en los análisis de datos, cuyo principal objetivo es representar la distribución de los datos respecto a una variable o característica del conjunto de datos. Así pues, los histogramas permiten visualizar datos continuos y los diagramas de barras representan datos discretos.<br>
+<!-- raw HTML omitted --></p>
+<ul>
+<li>Ejemplo: Distribución de pasajeros por precio del pasaje</li>
+</ul>
+<p><img alt="Histograma" loading="lazy" src="/img/visualizaciones/histograma.png">
+<!-- raw HTML omitted --></p>
+<ul>
+<li>Ejemplo: Distribución de pasajeros por estatus socioeconómico</li>
+</ul>
+<p><img alt="Diagrama_barras" loading="lazy" src="/img/visualizaciones/diagrama_barras.png"></p>
+<p>Como ya se vio en la entrada sobre “Estadística Descriptiva”, representando sobre estos gráficos medidas de estadística descriptiva (como la media o la mediana), podemos caracterizar la distribución de la variable bajo análisis y con ello extraer más información al respecto.</p>
+<h2 id="gráficos-de-densidad"><!-- raw HTML omitted --><!-- raw HTML omitted -->Gráficos de densidad<a hidden class="anchor" aria-hidden="true" href="#gráficos-de-densidad">#</a></h2>
+<p>También conocidos como gráficos de densidad de Kernel, sirven para visualizar la distribución de los datos en un intervalo continuo. Este tipo de gráficos es una variación de los Histogramas donde se representa de manera suavizada la forma de la distribución.
+<!-- raw HTML omitted --></p>
+<ul>
+<li>Ejemplo: Distribución de la edad de los pasajeros del Titanic</li>
+</ul>
+<p><img alt="Gráfico_Densidad" loading="lazy" src="/img/visualizaciones/grafico_densidad.png"></p>
+<h2 id="diagramas-de-caja"><!-- raw HTML omitted --><!-- raw HTML omitted -->Diagramas de caja<a hidden class="anchor" aria-hidden="true" href="#diagramas-de-caja">#</a></h2>
+<p>Los diagramas de caja o de bigote (en inglés “boxplots”) así llamados por la forma de representación, sirven para representar una variable o característica en función de su rango y sus cuartiles.</p>
+<p><em>Nota: Los cuartiles son 3 valores que dividen un conjunto de datos ordenados en 4 partes porcentualmente iguales.</em></p>
+<p>La visualización del boxplot consiste en una caja que comprende los datos desde el primer cuartil (Q1 - 25% de los datos bajo éste) al tercer cuartil (Q3 - 75% de los datos bajo éste) de los valores de la variable representada (rango intercuartil – IQR). Dentro de dicha caja, mediante una línea horizontal se representa el valor de la mediana y opcionalmente, mediante un asterisco o una estrella el valor de la media.</p>
+<p>Además de la caja, en el gráfico también se visualizan 2 líneas horizontales que representan los valores típicos máximos y mínimos de nuestra variable, y a partir de los cuales se visualizan mediante puntos los valores atípicos de la distribución.</p>
+<p><em>Nota estadística: Los valores atípicos son aquellos que son numéricamente distantes del resto de datos de la variable. Tomando el Rango Intercuartil (IQR), se consideran valores atípicos aquellos que están por debajo de Q1 – 1,5 IQR o por encima de Q3 + 1,5 IQR</em>.<br>
+<!-- raw HTML omitted --></p>
+<ul>
+<li>Ejemplo: Distribución de los pasajeros del Titanic por edad</li>
+</ul>
+<p><img alt="Gráfico_Caja" loading="lazy" src="/img/visualizaciones/grafico_caja.png"></p>
+<h2 id="diagramas-de-violin"><!-- raw HTML omitted --><!-- raw HTML omitted -->Diagramas de Violin<a hidden class="anchor" aria-hidden="true" href="#diagramas-de-violin">#</a></h2>
+<p>Los diagramas de violín se utilizan para visualizar simultáneamente la distribución de los datos y su densidad de probabilidad. Estos gráficos tan visuales consisten en una combinación de un diagrama de cajas (boxplots) y un diagrama de densidad. De esta manera tenemos representado mediante una línea negra gruesa o caja pequeña el intervalo intercuartil, mediante una línea negra fina el conjunto de datos típicos y mediante un punto blanco la mediana de la distribución.<br>
+<!-- raw HTML omitted --></p>
+<ul>
+<li>Ejemplo: Distribución y densidad de los pasajeros del Titanic por edad</li>
+</ul>
+<p><img alt="Gráfico_Violin" loading="lazy" src="/img/visualizaciones/grafico_violin.png"></p>
+<h2 id="gráficos-de-dispersión"><!-- raw HTML omitted --><!-- raw HTML omitted -->Gráficos de dispersión<a hidden class="anchor" aria-hidden="true" href="#gráficos-de-dispersión">#</a></h2>
+<p>Los gráficos de dispersión (en inglés “scatter plots”) consisten en visualizaciones que muestran la relación de 2 variables de un conjunto de datos sobre dos ejes cartesianos. Son bastante útiles dado que permiten extraer información sobre la correlación entre dichas variables.<br>
+<!-- raw HTML omitted --></p>
+<ul>
+<li>Ejemplo: Representación del precio del ticket por edad y género de los pasajero</li>
+</ul>
+<p><img alt="Gráfico_Dispersion" loading="lazy" src="/img/visualizaciones/grafico_dispersion.png"></p>
+<h2 id="gráficos-de-pareto"><!-- raw HTML omitted --><!-- raw HTML omitted -->Gráficos de Pareto<a hidden class="anchor" aria-hidden="true" href="#gráficos-de-pareto">#</a></h2>
+<p>Los gráficos de Pareto sirven para representar visualmente aquellas distribuciones o conjuntos de datos que responden a la ley de Pareto o regla del 80/20.
+Ley de Pareto: también conocida como la regla del 80/20, establece que de forma general en un conjunto de datos relacionado mediante una relación de causa-efecto, aproximadamente el 80% de los resultados o consecuencias proviene del 20% de las causas.
+<!-- raw HTML omitted --></p>
+<ul>
+<li>Ejemplo: Representación de los datos de ingresos por tickets vendidos del Titanic</li>
+</ul>
+<p><img alt="Gráfico_Pareto" loading="lazy" src="/img/visualizaciones/grafico_pareto_1.png"></p>
+<p><img alt="Gráfico_Pareto" loading="lazy" src="/img/visualizaciones/grafico_pareto_2.png"></p>
+<p>Sobre el ejemplo se observa la utilidad de este gráfico dado que rápidamente se visualiza como el 90% de los ingresos de venta de tickets del Titanic provienen de los tickets vendidos a los pasajeros de estatus socioeconómico Alto. O de manera más detallada sobre el segundo gráfico aproximadamente el 80% de los ingresos por venta de tickets procedían de ~20% de los pasajeros de la tripulación.<br>
+<!-- raw HTML omitted --></p>
+<h4 id="fuentes-de-interés">Fuentes de interés:<a hidden class="anchor" aria-hidden="true" href="#fuentes-de-interés">#</a></h4>
+<ul>
+<li>Kaggle – <a href="https://www.kaggle.com/c/titanic">Titanic Machine Learning from Disaster</a></li>
+<li>Datos abiertos del Gobierno de España – <a href="https://datos.gob.es/es">datos.gob.es</a></li>
+<li>El Arte de Presentar – <a href="https://www.elartedepresentar.com/2011/11/las-tartas-son-para-el-postre-5-razones-por-las-que-no-uso-graficos-circulares/">Las tartas son para el postre: 5 razones por las que no uso gráficos circulares</a></li>
+<li>Curso <em>“<a href="https://courses.edx.org/courses/course-v1:Microsoft&#43;DAT222x&#43;1T2017/course/">Essential Statistics for Data Analysis using Excel</a>”</em> perteneciente al Microsoft Data Science Program</li>
+<li>Catálogo de Visualización de Datos - <a href="https://datavizcatalogue.com/ES/">Catálogo de Visualización de Datos</a></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/es/tags/estad%C3%ADstica/">Estadística</a></li>
+      <li><a href="http://localhost:1313/es/tags/visualizaciones/">Visualizaciones</a></li>
+      <li><a href="http://localhost:1313/es/tags/distribucion/">Distribucion</a></li>
+      <li><a href="http://localhost:1313/es/tags/gr%C3%A1ficos/">Gráficos</a></li>
+      <li><a href="http://localhost:1313/es/tags/representaciones/">Representaciones</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:1313/es/">Datalaria</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

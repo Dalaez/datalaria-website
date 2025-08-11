@@ -9,6 +9,41 @@
     <lastBuildDate>Wed, 06 Aug 2025 17:55:41 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/en/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Data Visualization - Basics</title>
+      <link>http://localhost:1313/en/posts/basic-visualizations/2019-03-02-visualizaciones-basicas/</link>
+      <pubDate>Sat, 02 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/posts/basic-visualizations/2019-03-02-visualizaciones-basicas/</guid>
+      <description>&lt;p&gt;Following up on the information presented in the post &lt;a href=&#34;https://www.datalaria.com/en/post/fundamentos/2018-10-07-estadistica-descriptiva/&#34;&gt;&amp;ldquo;Descriptive Statistics&amp;rdquo;&lt;/a&gt;, below, we will know the most basic ways to visualize the data or information to be analyzed. Specifically:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;http://localhost:1313/en/posts/basic-visualizations/2019-03-02-visualizaciones-basicas/#pie_chart&#34;&gt;Pie chart&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;http://localhost:1313/en/posts/basic-visualizations/2019-03-02-visualizaciones-basicas/#line_chart&#34;&gt;Line chart&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;http://localhost:1313/en/posts/basic-visualizations/2019-03-02-visualizaciones-basicas/#hierarchical_graphs&#34;&gt;Treemap &amp;amp; Subburst&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;http://localhost:1313/en/posts/basic-visualizations/2019-03-02-visualizaciones-basicas/#histograms&#34;&gt;Histograms &amp;amp; Bar charts&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;http://localhost:1313/en/posts/basic-visualizations/2019-03-02-visualizaciones-basicas/#density_plot&#34;&gt;Density plot&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;http://localhost:1313/en/posts/basic-visualizations/2019-03-02-visualizaciones-basicas/#boxplot&#34;&gt;Boxplots&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;http://localhost:1313/en/posts/basic-visualizations/2019-03-02-visualizaciones-basicas/#violin_plot&#34;&gt;Violin plots&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;http://localhost:1313/en/posts/basic-visualizations/2019-03-02-visualizaciones-basicas/#scatter_plot&#34;&gt;Scatter plots&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;http://localhost:1313/en/posts/basic-visualizations/2019-03-02-visualizaciones-basicas/#pareto_chart&#34;&gt;Pareto chart&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;Note: All the examples (except for the line graphs due to its features) are based on the train.csv dataset file, which is a subset of 891 representative individuals of the population of the Titanic used for the training of models of Machine Learning.&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Descriptive Statistics</title>
+      <link>http://localhost:1313/en/posts/descriptive-analysis/2025-08-07-estadistica-descriptiva/</link>
+      <pubDate>Sat, 05 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/posts/descriptive-analysis/2025-08-07-estadistica-descriptiva/</guid>
+      <description>&lt;p&gt;As a starting point in data analysis, it is necessary to know some mathematical and statistical foundations in order to work with the information to be analyzed.&lt;/p&gt;
+&lt;p&gt;Thus, we will start learning some basic concepts:&lt;/p&gt;
+&lt;h2 id=&#34;population-samples-individuals-and-variables&#34;&gt;Population, Samples, Individuals and Variables:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Population&lt;/strong&gt;: The set of all the elements under study&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sample&lt;/strong&gt;: A subset of elements of the population (it should be  representative of the population)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Individuals&lt;/strong&gt;: Every individual element in the popularion&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Variables&lt;/strong&gt;: Characteristics of the individuals&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt=&#34;Population_Sample_Individuals_Variables&#34; loading=&#34;lazy&#34; src=&#34;Population_Sample_Individuals_Variables.png&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>About</title>
       <link>http://localhost:1313/en/about/</link>
       <pubDate>Wed, 06 Aug 2025 17:55:41 +0200</pubDate>

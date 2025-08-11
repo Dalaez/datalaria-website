@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Gaussiana on Datalaria</title>
+    <link>http://localhost:1313/es/tags/gaussiana/</link>
+    <description>Recent content in Gaussiana on Datalaria</description>
+    <generator>Hugo -- 0.148.2</generator>
+    <language>es</language>
+    <lastBuildDate>Sat, 05 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/es/tags/gaussiana/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Estadística Descriptiva</title>
+      <link>http://localhost:1313/es/posts/estadistica-descriptiva/2025-08-07-estadistica-descriptiva/</link>
+      <pubDate>Sat, 05 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/es/posts/estadistica-descriptiva/2025-08-07-estadistica-descriptiva/</guid>
+      <description>&lt;p&gt;Como punto de partida en el análisis de datos, es necesario conocer unas nociones matemáticas y estadísticas para poder trabajar con la información a analizar.&lt;/p&gt;
+&lt;p&gt;Para ello, vamos a comenzar viendo unos conceptos básicos:&lt;/p&gt;
+&lt;h2 id=&#34;población-muestras-individuos-y-variables&#34;&gt;Población, Muestras, Individuos y Variables&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Población&lt;/strong&gt;: Total de elementos bajo estudio&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Muestra&lt;/strong&gt;: Subconjunto de elementos de la población (debería ser representativo de la población)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Individuos&lt;/strong&gt;: Elementos individuales de la población&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Variables&lt;/strong&gt;: Características de los individuos&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt=&#34;Poblacion_Muestras_Individuos_Variables&#34; loading=&#34;lazy&#34; src=&#34;Poblacion_Muestra_Individuos_Variables.png&#34;&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
