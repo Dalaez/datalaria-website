@@ -1,7 +1,7 @@
 ---
 title: Descriptive Statistics
 date: 2019-01-05
-draft: False
+draft: false
 categories: ["foundations"]
 tags: ["statistics", "maths", "distribution", "normal", "gaussian"]
 myVar: "myValue"
