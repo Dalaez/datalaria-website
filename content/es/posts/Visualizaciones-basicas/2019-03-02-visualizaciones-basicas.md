@@ -1,7 +1,7 @@
 ---
 title: Visualizaciones básicas
 date: 2019-03-02
-draft: False
+draft: True
 categories: ["fundamentos"]
 tags: ["estadística", "visualizaciones", "distribucion", "gráficos", "representaciones"]
 myVar: "myValue"

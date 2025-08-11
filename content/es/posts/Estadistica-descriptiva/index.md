@@ -1,13 +1,13 @@
 ---
 title: Estadística Descriptiva
 date: 2019-01-05
-draft: True
+draft: False
 categories: ["fundamentos"]
 tags: ["estadística", "matemáticas", "distribucion", "normal", "gaussiana"]
 myVar: "myValue"
 
 weight: 10
-image: img/estadistica_descriptiva.png
+image: estadistica_descriptiva.png
 authorAvatar: datalaria-logo.png
 ---
 

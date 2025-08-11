@@ -7,7 +7,7 @@ tags: ["statistics", "maths", "distribution", "normal", "gaussian"]
 myVar: "myValue"
 
 weight: 10
-image: /img/estadistica_descriptiva.png
+image: estadistica_descriptiva.png
 authorAvatar: datalaria-logo.png
 ---
 
