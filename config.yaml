@@ -1,5 +1,7 @@
 baseURL: "https://datalaria.com/"
 theme: PaperMod
+canonifyURLs: true # <-- LA LÍNEA CLAVE QUE FALTABA
+
 defaultContentLanguage: es
 defaultContentLanguageInSubdir: true
 
@@ -24,9 +26,9 @@ languages:
         imageHeight: 120
         buttons:
           - name: "Blog"
-            url: "/es/posts"  # <-- CORREGIDO
+            url: "/es/posts"
           - name: "Sobre mí"
-            url: "/es/sobre-mi" # <-- CORREGIDO
+            url: "/es/sobre-mi"
     menu:
       main:
         - identifier: blog
@@ -57,9 +59,9 @@ languages:
         imageHeight: 120
         buttons:
           - name: "Blog"
-            url: "/en/posts"  # <-- CORREGIDO
+            url: "/en/posts"
           - name: "About"
-            url: "/en/about" # <-- CORREGIDO
+            url: "/en/about"
     menu:
       main:
         - identifier: blog
