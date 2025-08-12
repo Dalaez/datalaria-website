@@ -2,121 +2,121 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://datalaria.com/es/posts/visualizaciones-basicas/</loc>
+    <loc>http://localhost:1313/es/posts/visualizaciones-basicas/</loc>
     <lastmod>2025-08-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://datalaria.com/es/posts/estadistica-descriptiva/</loc>
+    <loc>http://localhost:1313/es/posts/estadistica-descriptiva/</loc>
     <lastmod>2025-08-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://datalaria.com/es/categories/</loc>
+    <loc>http://localhost:1313/es/categories/</loc>
     <lastmod>2025-08-12T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://datalaria.com/en/categories/"
+                href="http://localhost:1313/en/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://datalaria.com/es/categories/"
+                href="http://localhost:1313/es/categories/"
                 />
   </url><url>
-    <loc>https://datalaria.com/es/</loc>
+    <loc>http://localhost:1313/es/</loc>
     <lastmod>2025-08-12T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://datalaria.com/en/"
+                href="http://localhost:1313/en/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://datalaria.com/es/"
+                href="http://localhost:1313/es/"
                 />
   </url><url>
-    <loc>https://datalaria.com/es/tags/distribucion/</loc>
+    <loc>http://localhost:1313/es/tags/distribucion/</loc>
     <lastmod>2025-08-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://datalaria.com/es/tags/estad%C3%ADstica/</loc>
+    <loc>http://localhost:1313/es/tags/estad%C3%ADstica/</loc>
     <lastmod>2025-08-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://datalaria.com/es/categories/fundamentos/</loc>
+    <loc>http://localhost:1313/es/categories/fundamentos/</loc>
     <lastmod>2025-08-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://datalaria.com/es/tags/gr%C3%A1ficos/</loc>
+    <loc>http://localhost:1313/es/tags/gr%C3%A1ficos/</loc>
     <lastmod>2025-08-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://datalaria.com/es/posts/</loc>
+    <loc>http://localhost:1313/es/posts/</loc>
     <lastmod>2025-08-12T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://datalaria.com/en/posts/"
+                href="http://localhost:1313/en/posts/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://datalaria.com/es/posts/"
+                href="http://localhost:1313/es/posts/"
                 />
   </url><url>
-    <loc>https://datalaria.com/es/tags/representaciones/</loc>
+    <loc>http://localhost:1313/es/tags/representaciones/</loc>
     <lastmod>2025-08-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://datalaria.com/es/tags/</loc>
+    <loc>http://localhost:1313/es/tags/</loc>
     <lastmod>2025-08-12T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://datalaria.com/en/tags/"
+                href="http://localhost:1313/en/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://datalaria.com/es/tags/"
+                href="http://localhost:1313/es/tags/"
                 />
   </url><url>
-    <loc>https://datalaria.com/es/tags/visualizaciones/</loc>
+    <loc>http://localhost:1313/es/tags/visualizaciones/</loc>
     <lastmod>2025-08-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://datalaria.com/es/tags/gaussiana/</loc>
+    <loc>http://localhost:1313/es/tags/gaussiana/</loc>
     <lastmod>2025-08-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://datalaria.com/es/tags/matem%C3%A1ticas/</loc>
+    <loc>http://localhost:1313/es/tags/matem%C3%A1ticas/</loc>
     <lastmod>2025-08-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://datalaria.com/es/tags/normal/</loc>
+    <loc>http://localhost:1313/es/tags/normal/</loc>
     <lastmod>2025-08-09T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://datalaria.com/en/tags/normal/"
+                href="http://localhost:1313/en/tags/normal/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://datalaria.com/es/tags/normal/"
+                href="http://localhost:1313/es/tags/normal/"
                 />
   </url><url>
-    <loc>https://datalaria.com/es/sobre-mi/</loc>
+    <loc>http://localhost:1313/es/sobre-mi/</loc>
     <lastmod>2025-08-06T17:55:41+02:00</lastmod>
   </url><url>
-    <loc>https://datalaria.com/es/tags/introducci%C3%B3n/</loc>
+    <loc>http://localhost:1313/es/tags/introducci%C3%B3n/</loc>
     <lastmod>2025-08-06T15:30:00+02:00</lastmod>
   </url><url>
-    <loc>https://datalaria.com/es/posts/kilometro-0-por-que-nace-datalaria/</loc>
+    <loc>http://localhost:1313/es/posts/kilometro-0-por-que-nace-datalaria/</loc>
     <lastmod>2025-08-06T15:30:00+02:00</lastmod>
   </url><url>
-    <loc>https://datalaria.com/es/tags/meta/</loc>
+    <loc>http://localhost:1313/es/tags/meta/</loc>
     <lastmod>2025-08-06T15:30:00+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://datalaria.com/en/tags/meta/"
+                href="http://localhost:1313/en/tags/meta/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="https://datalaria.com/es/tags/meta/"
+                href="http://localhost:1313/es/tags/meta/"
                 />
   </url>
 </urlset>

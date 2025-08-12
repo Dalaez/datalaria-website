@@ -2,28 +2,28 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Graphs on Datalaria</title>
-    <link>https://datalaria.com/en/tags/graphs/</link>
+    <link>http://localhost:1313/en/tags/graphs/</link>
     <description>Recent content in Graphs on Datalaria</description>
     <generator>Hugo -- 0.148.2</generator>
     <language>en</language>
     <lastBuildDate>Tue, 12 Aug 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://datalaria.com/en/tags/graphs/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/en/tags/graphs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Data Visualization - Basics</title>
-      <link>https://datalaria.com/en/posts/basic-visualizations/</link>
+      <link>http://localhost:1313/en/posts/basic-visualizations/</link>
       <pubDate>Tue, 12 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://datalaria.com/en/posts/basic-visualizations/</guid>
+      <guid>http://localhost:1313/en/posts/basic-visualizations/</guid>
       <description>&lt;p&gt;Building on the concepts from our post on &amp;ldquo;Descriptive Statistics,&amp;rdquo; we will now explore the most common charts for data visualization: &lt;a href=&#34;https://datalaria.com/en/posts/descriptive-analysis/&#34;&gt;&amp;ldquo;Descriptive Statistics&amp;rdquo;&lt;/a&gt;, below, we will know the most basic ways to visualize the data or information to be analyzed. Specifically:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://datalaria.com/en/posts/basic-visualizations/#pie_chart&#34;&gt;Pie chart&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://datalaria.com/en/posts/basic-visualizations/#line_chart&#34;&gt;Line chart&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://datalaria.com/en/posts/basic-visualizations/#hierarchical_graphs&#34;&gt;Treemap &amp;amp; Subburst&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://datalaria.com/en/posts/basic-visualizations/#histograms&#34;&gt;Histograms &amp;amp; Bar charts&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://datalaria.com/en/posts/basic-visualizations/#density_plot&#34;&gt;Density plot&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://datalaria.com/en/posts/basic-visualizations/#boxplot&#34;&gt;Boxplots&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://datalaria.com/en/posts/basic-visualizations/#violin_plot&#34;&gt;Violin plots&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://datalaria.com/en/posts/basic-visualizations/#scatter_plot&#34;&gt;Scatter plots&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://datalaria.com/en/posts/basic-visualizations/#pareto_chart&#34;&gt;Pareto chart&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;http://localhost:1313/en/posts/basic-visualizations/#pie_chart&#34;&gt;Pie chart&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;http://localhost:1313/en/posts/basic-visualizations/#line_chart&#34;&gt;Line chart&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;http://localhost:1313/en/posts/basic-visualizations/#hierarchical_graphs&#34;&gt;Treemap &amp;amp; Subburst&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;http://localhost:1313/en/posts/basic-visualizations/#histograms&#34;&gt;Histograms &amp;amp; Bar charts&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;http://localhost:1313/en/posts/basic-visualizations/#density_plot&#34;&gt;Density plot&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;http://localhost:1313/en/posts/basic-visualizations/#boxplot&#34;&gt;Boxplots&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;http://localhost:1313/en/posts/basic-visualizations/#violin_plot&#34;&gt;Violin plots&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;http://localhost:1313/en/posts/basic-visualizations/#scatter_plot&#34;&gt;Scatter plots&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;http://localhost:1313/en/posts/basic-visualizations/#pareto_chart&#34;&gt;Pareto chart&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;em&gt;Note: All the examples (except for the line graphs due to its features) are based on the train.csv dataset file, which is a subset of 891 representative individuals of the population of the Titanic used for the training of models of Machine Learning.&lt;/em&gt;&lt;/p&gt;</description>
     </item>
