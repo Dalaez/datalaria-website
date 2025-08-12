@@ -2,80 +2,80 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on Datalaria</title>
-    <link>http://localhost:1313/en/tags/</link>
+    <link>https://datalaria.com/en/tags/</link>
     <description>Recent content in Tags on Datalaria</description>
     <generator>Hugo -- 0.148.2</generator>
     <language>en</language>
     <lastBuildDate>Tue, 12 Aug 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://datalaria.com/en/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Charts</title>
-      <link>http://localhost:1313/en/tags/charts/</link>
+      <link>https://datalaria.com/en/tags/charts/</link>
       <pubDate>Tue, 12 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/tags/charts/</guid>
+      <guid>https://datalaria.com/en/tags/charts/</guid>
       <description></description>
     </item>
     <item>
       <title>Distribution</title>
-      <link>http://localhost:1313/en/tags/distribution/</link>
+      <link>https://datalaria.com/en/tags/distribution/</link>
       <pubDate>Tue, 12 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/tags/distribution/</guid>
+      <guid>https://datalaria.com/en/tags/distribution/</guid>
       <description></description>
     </item>
     <item>
       <title>Graphs</title>
-      <link>http://localhost:1313/en/tags/graphs/</link>
+      <link>https://datalaria.com/en/tags/graphs/</link>
       <pubDate>Tue, 12 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/tags/graphs/</guid>
+      <guid>https://datalaria.com/en/tags/graphs/</guid>
       <description></description>
     </item>
     <item>
       <title>Statistics</title>
-      <link>http://localhost:1313/en/tags/statistics/</link>
+      <link>https://datalaria.com/en/tags/statistics/</link>
       <pubDate>Tue, 12 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/tags/statistics/</guid>
+      <guid>https://datalaria.com/en/tags/statistics/</guid>
       <description></description>
     </item>
     <item>
       <title>Visualizations</title>
-      <link>http://localhost:1313/en/tags/visualizations/</link>
+      <link>https://datalaria.com/en/tags/visualizations/</link>
       <pubDate>Tue, 12 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/tags/visualizations/</guid>
+      <guid>https://datalaria.com/en/tags/visualizations/</guid>
       <description></description>
     </item>
     <item>
       <title>Gaussian</title>
-      <link>http://localhost:1313/en/tags/gaussian/</link>
+      <link>https://datalaria.com/en/tags/gaussian/</link>
       <pubDate>Sat, 09 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/tags/gaussian/</guid>
+      <guid>https://datalaria.com/en/tags/gaussian/</guid>
       <description></description>
     </item>
     <item>
       <title>Maths</title>
-      <link>http://localhost:1313/en/tags/maths/</link>
+      <link>https://datalaria.com/en/tags/maths/</link>
       <pubDate>Sat, 09 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/tags/maths/</guid>
+      <guid>https://datalaria.com/en/tags/maths/</guid>
       <description></description>
     </item>
     <item>
       <title>Normal</title>
-      <link>http://localhost:1313/en/tags/normal/</link>
+      <link>https://datalaria.com/en/tags/normal/</link>
       <pubDate>Sat, 09 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/tags/normal/</guid>
+      <guid>https://datalaria.com/en/tags/normal/</guid>
       <description></description>
     </item>
     <item>
       <title>Introduction</title>
-      <link>http://localhost:1313/en/tags/introduction/</link>
+      <link>https://datalaria.com/en/tags/introduction/</link>
       <pubDate>Wed, 06 Aug 2025 15:30:00 +0200</pubDate>
-      <guid>http://localhost:1313/en/tags/introduction/</guid>
+      <guid>https://datalaria.com/en/tags/introduction/</guid>
       <description></description>
     </item>
     <item>
       <title>Meta</title>
-      <link>http://localhost:1313/en/tags/meta/</link>
+      <link>https://datalaria.com/en/tags/meta/</link>
       <pubDate>Wed, 06 Aug 2025 15:30:00 +0200</pubDate>
-      <guid>http://localhost:1313/en/tags/meta/</guid>
+      <guid>https://datalaria.com/en/tags/meta/</guid>
       <description></description>
     </item>
   </channel>
