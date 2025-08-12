@@ -2,124 +2,121 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/en/posts/basic-visualizations/2019-03-02-visualizaciones-basicas/</loc>
-    <lastmod>2019-03-02T00:00:00+00:00</lastmod>
+    <loc>https://datalaria.com/en/posts/basic-visualizations/</loc>
+    <lastmod>2025-08-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/en/posts/descriptive-analysis/</loc>
-    <lastmod>2019-01-05T00:00:00+00:00</lastmod>
+    <loc>https://datalaria.com/en/posts/descriptive-analysis/</loc>
+    <lastmod>2025-08-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/en/about/</loc>
+    <loc>https://datalaria.com/en/categories/</loc>
+    <lastmod>2025-08-12T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://datalaria.com/es/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://datalaria.com/en/categories/"
+                />
+  </url><url>
+    <loc>https://datalaria.com/en/tags/charts/</loc>
+    <lastmod>2025-08-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://datalaria.com/en/</loc>
+    <lastmod>2025-08-12T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://datalaria.com/es/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://datalaria.com/en/"
+                />
+  </url><url>
+    <loc>https://datalaria.com/en/tags/distribution/</loc>
+    <lastmod>2025-08-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://datalaria.com/en/categories/foundations/</loc>
+    <lastmod>2025-08-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://datalaria.com/en/tags/graphs/</loc>
+    <lastmod>2025-08-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://datalaria.com/en/posts/</loc>
+    <lastmod>2025-08-12T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://datalaria.com/es/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://datalaria.com/en/posts/"
+                />
+  </url><url>
+    <loc>https://datalaria.com/en/tags/statistics/</loc>
+    <lastmod>2025-08-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://datalaria.com/en/tags/</loc>
+    <lastmod>2025-08-12T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://datalaria.com/es/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://datalaria.com/en/tags/"
+                />
+  </url><url>
+    <loc>https://datalaria.com/en/tags/visualizations/</loc>
+    <lastmod>2025-08-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://datalaria.com/en/tags/gaussian/</loc>
+    <lastmod>2025-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://datalaria.com/en/tags/maths/</loc>
+    <lastmod>2025-08-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://datalaria.com/en/tags/normal/</loc>
+    <lastmod>2025-08-09T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="https://datalaria.com/es/tags/normal/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://datalaria.com/en/tags/normal/"
+                />
+  </url><url>
+    <loc>https://datalaria.com/en/about/</loc>
     <lastmod>2025-08-06T17:55:41+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/en/</loc>
-    <lastmod>2025-08-06T17:55:41+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="http://localhost:1313/es/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/en/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/en/tags/introduction/</loc>
+    <loc>https://datalaria.com/en/tags/introduction/</loc>
     <lastmod>2025-08-06T15:30:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/en/posts/kilometer-0-why-datalaria-is-born/</loc>
+    <loc>https://datalaria.com/en/posts/kilometer-0-why-datalaria-is-born/</loc>
     <lastmod>2025-08-06T15:30:00+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/en/tags/meta/</loc>
+    <loc>https://datalaria.com/en/tags/meta/</loc>
     <lastmod>2025-08-06T15:30:00+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="es"
-                href="http://localhost:1313/es/tags/meta/"
+                href="https://datalaria.com/es/tags/meta/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/en/tags/meta/"
+                href="https://datalaria.com/en/tags/meta/"
                 />
-  </url><url>
-    <loc>http://localhost:1313/en/posts/</loc>
-    <lastmod>2025-08-06T15:30:00+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="http://localhost:1313/es/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/en/posts/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/en/tags/</loc>
-    <lastmod>2025-08-06T15:30:00+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="http://localhost:1313/es/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/en/tags/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/en/categories/</loc>
-    <lastmod>2019-03-02T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="http://localhost:1313/es/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/en/categories/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/en/tags/charts/</loc>
-    <lastmod>2019-03-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/en/tags/distribution/</loc>
-    <lastmod>2019-03-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/en/categories/foundations/</loc>
-    <lastmod>2019-03-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/en/tags/graphs/</loc>
-    <lastmod>2019-03-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/en/tags/statistics/</loc>
-    <lastmod>2019-03-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/en/tags/visualizations/</loc>
-    <lastmod>2019-03-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/en/tags/gaussian/</loc>
-    <lastmod>2019-01-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/en/tags/maths/</loc>
-    <lastmod>2019-01-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/en/tags/normal/</loc>
-    <lastmod>2019-01-05T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="http://localhost:1313/es/tags/normal/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/en/tags/normal/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/en/tags/statistics/</loc>
-    <lastmod>2019-01-05T00:00:00+00:00</lastmod>
   </url>
 </urlset>

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Data Visualization - Basics | Datalaria</title>
+<meta name="keywords" content="statistics, visualizations, distribution, graphs, charts">
+<meta name="description" content="Building on the concepts from our post on &ldquo;Descriptive Statistics,&rdquo; we will now explore the most common charts for data visualization: &ldquo;Descriptive Statistics&rdquo;, below, we will know the most basic ways to visualize the data or information to be analyzed. Specifically:
+
+Pie chart
+Line chart
+Treemap &amp; Subburst
+Histograms &amp; Bar charts
+Density plot
+Boxplots
+Violin plots
+Scatter plots
+Pareto chart
+
+Note: All the examples (except for the line graphs due to its features) are based on the train.csv dataset file, which is a subset of 891 representative individuals of the population of the Titanic used for the training of models of Machine Learning.">
+<meta name="author" content="">
+<link rel="canonical" href="https://datalaria.com/en/posts/basic-visualizations/">
+<link crossorigin="anonymous" href="https://datalaria.com/assets/css/stylesheet.36819bea596090d8b48cf10d9831382996197aa7e4fc86f792f7c08c9ca4d23b.css" integrity="sha256-NoGb6llgkNi0jPENmDE4KZYZeqfk/Ib3kvfAjJyk0js=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://datalaria.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://datalaria.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://datalaria.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://datalaria.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://datalaria.com/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://datalaria.com/en/posts/basic-visualizations/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://datalaria.com/en/posts/basic-visualizations/">
+  <meta property="og:site_name" content="Datalaria">
+  <meta property="og:title" content="Data Visualization - Basics">
+  <meta property="og:description" content="Building on the concepts from our post on “Descriptive Statistics,” we will now explore the most common charts for data visualization: “Descriptive Statistics”, below, we will know the most basic ways to visualize the data or information to be analyzed. Specifically:
+Pie chart Line chart Treemap &amp; Subburst Histograms &amp; Bar charts Density plot Boxplots Violin plots Scatter plots Pareto chart Note: All the examples (except for the line graphs due to its features) are based on the train.csv dataset file, which is a subset of 891 representative individuals of the population of the Titanic used for the training of models of Machine Learning.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-08-12T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-08-12T00:00:00+00:00">
+    <meta property="article:tag" content="Statistics">
+    <meta property="article:tag" content="Visualizations">
+    <meta property="article:tag" content="Distribution">
+    <meta property="article:tag" content="Graphs">
+    <meta property="article:tag" content="Charts">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Data Visualization - Basics">
+<meta name="twitter:description" content="Building on the concepts from our post on &ldquo;Descriptive Statistics,&rdquo; we will now explore the most common charts for data visualization: &ldquo;Descriptive Statistics&rdquo;, below, we will know the most basic ways to visualize the data or information to be analyzed. Specifically:
+
+Pie chart
+Line chart
+Treemap &amp; Subburst
+Histograms &amp; Bar charts
+Density plot
+Boxplots
+Violin plots
+Scatter plots
+Pareto chart
+
+Note: All the examples (except for the line graphs due to its features) are based on the train.csv dataset file, which is a subset of 891 representative individuals of the population of the Titanic used for the training of models of Machine Learning.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://datalaria.com/en/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Data Visualization - Basics",
+      "item": "https://datalaria.com/en/posts/basic-visualizations/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Data Visualization - Basics",
+  "name": "Data Visualization - Basics",
+  "description": "Building on the concepts from our post on \u0026ldquo;Descriptive Statistics,\u0026rdquo; we will now explore the most common charts for data visualization: \u0026ldquo;Descriptive Statistics\u0026rdquo;, below, we will know the most basic ways to visualize the data or information to be analyzed. Specifically:\nPie chart Line chart Treemap \u0026amp; Subburst Histograms \u0026amp; Bar charts Density plot Boxplots Violin plots Scatter plots Pareto chart Note: All the examples (except for the line graphs due to its features) are based on the train.csv dataset file, which is a subset of 891 representative individuals of the population of the Titanic used for the training of models of Machine Learning.\n",
+  "keywords": [
+    "statistics", "visualizations", "distribution", "graphs", "charts"
+  ],
+  "articleBody": "Building on the concepts from our post on “Descriptive Statistics,” we will now explore the most common charts for data visualization: “Descriptive Statistics”, below, we will know the most basic ways to visualize the data or information to be analyzed. Specifically:\nPie chart Line chart Treemap \u0026 Subburst Histograms \u0026 Bar charts Density plot Boxplots Violin plots Scatter plots Pareto chart Note: All the examples (except for the line graphs due to its features) are based on the train.csv dataset file, which is a subset of 891 representative individuals of the population of the Titanic used for the training of models of Machine Learning.\nPie charts Pie charts are useful to represent the numerical proportions of the values of the data of a variable or feature with respect to its total. This type of graphs present a vast catalogue of variants and are widely used due to their simplicity of preparation and interpretation. However, these charts are often overused and misused. For more on this topic, see this excellent article on why pie charts are so controversial about the right use of pie charts and why these charts are so hated).\nExample: Proportions of Titanic passengers by socioeconomic status Line charts Line charts are ideal for displaying how a variable changes over a continuous interval, such as time. Generally, they are used to represent trends or relationships (in a group with more variables) between the data during a continuous time interval.\nNote: In order to visualize a use case in a continuous time interval, the following dataset from the Open data initiative of the Government of Spain has been used [the population data by Autonomous Communities from 1997 to 2017.](https://datos.gob.es/es/catalogo/ea0010587-poblacion-por-comunidades-y-ciudades-autonomas-y-tamano-de-los-municipios-anual-comunidades- autonomas-official-figures-of-population-of-the-Spanish-municipalities-revision-of-padron-municipal-identifier-api-2915) * Example: Spanish population since 1997\nExample: Spanish population by Autonomous Communities since 1997 Treemaps \u0026 Sunbursts Treemaps and sunburst graphs are visualizations to represent hierarchical data and summarize the information in areas proportional to the corresponding values.\nIn the case of treemaps, the representation consists of rectangles with an area proportional to the value of the corresponding data with respect to the total. Example: Proportion of passengers according to their socioeconomic status classified by gender (treemap) In the case of sunburst, the representation consists groups of rings according to the level represented, which are divided into proportional sections corresponding to the value of the data they represent. Example: Proportion of passengers according to their socioeconomic status classified by gender (sunburst) On the example represented, you can quickly see information about the hierarchical data represented as for example that the number of male passengers was almost 2 / 3 of the crew, as well as that male passengers and low socioeconomic status represented something more than 1 / 3 of the crew.\nHistograms \u0026 Bar charts Looking over the information already collected in the post “Descriptive Statistics”, where these two type of representations widely used in data analysis are explained, we can check that their main objective is to represent the distribution of the data with respect to a variable or characteristic of the dataset. Thus, the histograms allow to visualize continuous data and the bar diagrams represent discrete data. Example: Passenger distribution by price of the ticket Example: Passenger distribution by socioeconomic status As we saw in the post “Descriptive Statistics”, representing on these graphs measures of descriptive statistics (such as the mean or the median), we can characterize the distribution of the variable under analysis and thereby extract more information about it.\nDensity plot As known as Kernel density plots, they serve to visualize the distribution of data in a continuous interval. This type of graphics is a variation of the histograms where the shape of the distribution is smoothly represented. Example: Distribution of the age of Titanic passengers Boxplots The boxplots or whisker plots serve to represent a variable or characteristic depending on its range and its quartiles.\nNote: The quartiles are the values that divide a list of ordered numbers into 4 parts in equal percentages\nThe boxplot consists of a box that includes the data from the first quartile (Q1 - 25% of the data under it) to the third quartile (Q3 - 75% of the data under it) of the values ​​of the variable represented (Interquartile Range - IQR). Within said box, the median is represented with an horizontal line and optionally, the average is represented by an asterisk or a star.\nIn addition to the box, this plot also shows 2 horizontal lines (or “fences”) that represent the maximum and minimum typical values ​​of our variable, and from which the outliers ​​of the distribution are visualized using points.\nStatistical note: The outliers are those that are numerically distant from the rest of the data of the variable. Taking the Interquartile Range (IQR), outliers ​​are considered those that are below Q1 - 1.5 IQR or above Q3 + 1.5 IQR. Example: Distribution of Titanic passengers by age Violin plots Violin plots are used to visualize simultaneously the distribution of the data and its probability density. These visual graphs consist of a combination of a boxplot and a density plot. In this plot, the Intercuartile range is represented by a thick black line or small box, the typical data are represented with a thin black line and the median is visualized with a white point. Example: Distribution and density of Titanic passengers by age Scatter plots Scatter plots consist of visualizations that show the relationship of 2 variables of a dataset on two Cartesian axes. They are quite useful since they allow extracting information about the correlation between these variables. Example: Representation of ticket price by age and gender of the passenger Pareto charts The Pareto charts serve to visually represent those distributions or datasets related to the Pareto principle or the 80 / 20 rule. Pareto principle: also known as the 80 / 20 rule, establishes that generally in a dataset related by a cause-effect relationship, approximately 80% of the results or consequences come from 20% of the causes. Example: Representation of income data for tickets sold for the socioeconomic status Example: Representation of income data for tickets sold for passengers Regarding the example, we can see the usefulness of this graph given that it is quickly visualized that 90% of the ticket sales revenues of the Titanic come from tickets sold to passengers of high socioeconomic status. Or in a more detailed way about the second graph, approximately 80% of the revenue from ticket sales came from ~ 20% of the crew’s passengers. Sources of interest: Kaggle – Titanic Machine Learning from Disaster Open data initiative of the Government of Spain – datos.gob.es Medium (Clément Viguier) – The hate of pie charts harms good data visualization… Course “Essential Statistics for Data Analysis using Excel” perteneciente al Microsoft Data Science Program The Data Visualisation Catalogue - The Data Visualisation Catalogue ",
+  "wordCount" : "1137",
+  "inLanguage": "en",
+  "datePublished": "2025-08-12T00:00:00Z",
+  "dateModified": "2025-08-12T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://datalaria.com/en/posts/basic-visualizations/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Datalaria",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://datalaria.com/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://datalaria.com/en/" accesskey="h" title="Datalaria (Alt + H)">Datalaria</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="https://datalaria.com/es/" title="Español"
+                            aria-label="Español">Es</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://datalaria.com/en/posts/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://datalaria.com/en/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://datalaria.com/en/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Data Visualization - Basics
+    </h1>
+    <div class="post-meta"><span title='2025-08-12 00:00:00 +0000 UTC'>August 12, 2025</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Building on the concepts from our post on &ldquo;Descriptive Statistics,&rdquo; we will now explore the most common charts for data visualization: <a href="https://datalaria.com/en/posts/descriptive-analysis/">&ldquo;Descriptive Statistics&rdquo;</a>, below, we will know the most basic ways to visualize the data or information to be analyzed. Specifically:</p>
+<ul>
+<li><strong><a href="https://datalaria.com/en/posts/basic-visualizations/#pie_chart">Pie chart</a></strong></li>
+<li><strong><a href="https://datalaria.com/en/posts/basic-visualizations/#line_chart">Line chart</a></strong></li>
+<li><strong><a href="https://datalaria.com/en/posts/basic-visualizations/#hierarchical_graphs">Treemap &amp; Subburst</a></strong></li>
+<li><strong><a href="https://datalaria.com/en/posts/basic-visualizations/#histograms">Histograms &amp; Bar charts</a></strong></li>
+<li><strong><a href="https://datalaria.com/en/posts/basic-visualizations/#density_plot">Density plot</a></strong></li>
+<li><strong><a href="https://datalaria.com/en/posts/basic-visualizations/#boxplot">Boxplots</a></strong></li>
+<li><strong><a href="https://datalaria.com/en/posts/basic-visualizations/#violin_plot">Violin plots</a></strong></li>
+<li><strong><a href="https://datalaria.com/en/posts/basic-visualizations/#scatter_plot">Scatter plots</a></strong></li>
+<li><strong><a href="https://datalaria.com/en/posts/basic-visualizations/#pareto_chart">Pareto chart</a></strong></li>
+</ul>
+<p><em>Note: All the examples (except for the line graphs due to its features) are based on the train.csv dataset file, which is a subset of 891 representative individuals of the population of the Titanic used for the training of models of Machine Learning.</em></p>
+<h2 id="pie-charts"><!-- raw HTML omitted --><!-- raw HTML omitted -->Pie charts<a hidden class="anchor" aria-hidden="true" href="#pie-charts">#</a></h2>
+<p>Pie charts are useful to represent the numerical proportions of the values of the data of a variable or feature with respect to its total. This type of graphs present a vast catalogue of variants and are widely used due to their simplicity of preparation and interpretation. However, these charts are often overused and misused. For more on this topic, see this excellent article on why pie charts are so controversial <a href="https://medium.com/@clmentviguier/the-hate-of-pie-charts-harms-good-data-visualization-cc7cfed243b6">about the right use of pie charts and why these charts are so hated</a>).</p>
+<ul>
+<li>Example: Proportions of Titanic passengers by socioeconomic status</li>
+</ul>
+<p><img alt="Pie_chart" loading="lazy" src="https://datalaria.com/en/posts/basic-visualizations/pie_chart.png"></p>
+<h2 id="line-charts"><!-- raw HTML omitted --><!-- raw HTML omitted -->Line charts<a hidden class="anchor" aria-hidden="true" href="#line-charts">#</a></h2>
+<p>Line charts are ideal for displaying how a variable changes over a continuous interval, such as time. Generally, they are used to represent trends or relationships (in a group with more variables) between the data during a continuous time interval.</p>
+<ul>
+<li>Note: In order to visualize a use case in a continuous time interval, the following dataset from the Open data initiative of the Government of Spain has been used [the population data by Autonomous Communities from 1997 to 2017.](<a href="https://datos.gob.es/es/catalogo/ea0010587-poblacion-por-comunidades-y-ciudades-autonomas-y-tamano-de-los-municipios-anual-comunidades-">https://datos.gob.es/es/catalogo/ea0010587-poblacion-por-comunidades-y-ciudades-autonomas-y-tamano-de-los-municipios-anual-comunidades-</a> autonomas-official-figures-of-population-of-the-Spanish-municipalities-revision-of-padron-municipal-identifier-api-2915) *</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<p>Example: Spanish population since 1997<br>
+<img alt="Line_graph_1" loading="lazy" src="https://datalaria.com/en/posts/basic-visualizations/line_graph_1.png">
+<!-- raw HTML omitted --></p>
+</li>
+<li>
+<p>Example: Spanish population by Autonomous Communities since 1997
+<img alt="Line_graph_2" loading="lazy" src="https://datalaria.com/en/posts/basic-visualizations/line_graph_2.png"></p>
+</li>
+</ul>
+<h2 id="treemaps--sunbursts"><!-- raw HTML omitted --><!-- raw HTML omitted -->Treemaps &amp; Sunbursts<a hidden class="anchor" aria-hidden="true" href="#treemaps--sunbursts">#</a></h2>
+<p>Treemaps and sunburst graphs are visualizations to represent hierarchical data and summarize the information in areas proportional to the corresponding values.</p>
+<p>In the case of treemaps, the representation consists of rectangles with an area proportional to the value of the corresponding data with respect to the total.
+<!-- raw HTML omitted --></p>
+<ul>
+<li>Example: Proportion of passengers according to their socioeconomic status classified by gender (treemap)</li>
+</ul>
+<p><img alt="Treemap" loading="lazy" src="https://datalaria.com/en/posts/basic-visualizations/treemap.png"></p>
+<p>In the case of sunburst, the representation consists groups of rings according to the level represented, which are divided into proportional sections corresponding to the value of the data they represent.
+<!-- raw HTML omitted --></p>
+<ul>
+<li>Example: Proportion of passengers according to their socioeconomic status classified by gender (sunburst)</li>
+</ul>
+<p><img alt="Sunburst" loading="lazy" src="https://datalaria.com/en/posts/basic-visualizations/sunburst.png"></p>
+<p>On the example represented, you can quickly see information about the hierarchical data represented as for example that the number of male passengers was almost 2 / 3 of the crew, as well as that male passengers and low socioeconomic status represented something more than 1 / 3 of the crew.</p>
+<h2 id="histograms--bar-charts"><!-- raw HTML omitted --><!-- raw HTML omitted -->Histograms &amp; Bar charts<a hidden class="anchor" aria-hidden="true" href="#histograms--bar-charts">#</a></h2>
+<p>Looking over the information already collected in the post <a href="https://datalaria.com/en/posts/descriptive-analysis/">&ldquo;Descriptive Statistics&rdquo;</a>, where these two type of representations widely used in data analysis are explained, we can check that their main objective is to represent the distribution of the data with respect to a variable or characteristic of the dataset. Thus, the histograms allow to visualize continuous data and the bar diagrams represent discrete data.
+<!-- raw HTML omitted --></p>
+<ul>
+<li>Example: Passenger distribution by price of the ticket</li>
+</ul>
+<p><img alt="Histogram" loading="lazy" src="https://datalaria.com/en/posts/basic-visualizations/histogram.png">
+<!-- raw HTML omitted --></p>
+<ul>
+<li>Example: Passenger distribution by socioeconomic status</li>
+</ul>
+<p><img alt="Bar_chart" loading="lazy" src="https://datalaria.com/en/posts/basic-visualizations/bar_chart.png"></p>
+<p>As we saw in the post <a href="https://www.datalaria.com/en/post/fundamentos/2018-10-07-estadistica-descriptiva/">&ldquo;Descriptive Statistics&rdquo;</a>, representing on these graphs measures of descriptive statistics (such as the mean or the median), we can characterize the distribution of the variable under analysis and thereby extract more information about it.</p>
+<h2 id="density-plot"><!-- raw HTML omitted --><!-- raw HTML omitted -->Density plot<a hidden class="anchor" aria-hidden="true" href="#density-plot">#</a></h2>
+<p>As known as Kernel density plots, they serve to visualize the distribution of data in a continuous interval. This type of graphics is a variation of the histograms where the shape of the distribution is smoothly represented.
+<!-- raw HTML omitted --></p>
+<ul>
+<li>Example: Distribution of the age of Titanic passengers</li>
+</ul>
+<p><img alt="Density_plot" loading="lazy" src="grafico_densidad.png"></p>
+<h2 id="boxplots"><!-- raw HTML omitted --><!-- raw HTML omitted -->Boxplots<a hidden class="anchor" aria-hidden="true" href="#boxplots">#</a></h2>
+<p>The boxplots or whisker plots serve to represent a variable or characteristic depending on its range and its quartiles.</p>
+<p><em>Note: The quartiles are the values that divide a list of ordered numbers into 4 parts in equal percentages</em></p>
+<p>The boxplot consists of a box that includes the data from the first quartile (Q1 - 25% of the data under it) to the third quartile (Q3 - 75% of the data under it) of the values ​​of the variable represented (Interquartile Range - IQR). Within said box, the median is represented with an horizontal line and optionally, the average is represented by an asterisk or a star.</p>
+<p>In addition to the box, this plot also shows 2 horizontal lines (or &ldquo;fences&rdquo;) that represent the maximum and minimum typical values ​​of our variable, and from which the outliers ​​of the distribution are visualized using points.</p>
+<p><em>Statistical note: The outliers are those that are numerically distant from the rest of the data of the variable. Taking the Interquartile Range (IQR), outliers ​​are considered those that are below Q1 - 1.5 IQR or above Q3 + 1.5 IQR.</em>
+<!-- raw HTML omitted --></p>
+<ul>
+<li>Example: Distribution of Titanic passengers by age</li>
+</ul>
+<p><img alt="Boxplot" loading="lazy" src="https://datalaria.com/en/posts/basic-visualizations/boxplot.png"></p>
+<h2 id="violin-plots"><!-- raw HTML omitted --><!-- raw HTML omitted -->Violin plots<a hidden class="anchor" aria-hidden="true" href="#violin-plots">#</a></h2>
+<p>Violin plots are used to visualize simultaneously the distribution of the data and its probability density. These visual graphs consist of a combination of a boxplot and a density plot. In this plot, the Intercuartile range is represented by a thick black line or small box, the typical data are represented with a thin black line and the median is visualized with a white point.
+<!-- raw HTML omitted --></p>
+<ul>
+<li>Example: Distribution and density of Titanic passengers by age</li>
+</ul>
+<p><img alt="Violin_plot" loading="lazy" src="https://datalaria.com/en/posts/basic-visualizations/violin_plot.png"></p>
+<h2 id="scatter-plots"><!-- raw HTML omitted --><!-- raw HTML omitted -->Scatter plots<a hidden class="anchor" aria-hidden="true" href="#scatter-plots">#</a></h2>
+<p>Scatter plots consist of visualizations that show the relationship of 2 variables of a dataset on two Cartesian axes. They are quite useful since they allow extracting information about the correlation between these variables.
+<!-- raw HTML omitted --></p>
+<ul>
+<li>Example: Representation of ticket price by age and gender of the passenger</li>
+</ul>
+<p><img alt="Scatter_plot" loading="lazy" src="https://datalaria.com/en/posts/basic-visualizations/scatter_plot.png"></p>
+<h2 id="pareto-charts"><!-- raw HTML omitted --><!-- raw HTML omitted -->Pareto charts<a hidden class="anchor" aria-hidden="true" href="#pareto-charts">#</a></h2>
+<p>The Pareto charts serve to visually represent those distributions or datasets related to the Pareto principle or the 80 / 20 rule.
+Pareto principle: also known as the 80 / 20 rule, establishes that generally in a dataset related by a cause-effect relationship, approximately 80% of the results or consequences come from 20% of the causes.
+<!-- raw HTML omitted --></p>
+<ul>
+<li>Example: Representation of income data for tickets sold for the socioeconomic status</li>
+</ul>
+<p><img alt="Pareto_chart" loading="lazy" src="https://datalaria.com/en/posts/basic-visualizations/pareto_chart_1.png"></p>
+<ul>
+<li>Example: Representation of income data for tickets sold for passengers</li>
+</ul>
+<p><img alt="Pareto_chart_2" loading="lazy" src="https://datalaria.com/en/posts/basic-visualizations/pareto_chart_2.png"></p>
+<p>Regarding the example, we can see the usefulness of this graph given that it is quickly visualized that 90% of the ticket sales revenues of the Titanic come from tickets sold to passengers of high socioeconomic status. Or in a more detailed way about the second graph, approximately 80% of the revenue from ticket sales came from ~ 20% of the crew&rsquo;s passengers.
+<!-- raw HTML omitted --></p>
+<h4 id="sources-of-interest">Sources of interest:<a hidden class="anchor" aria-hidden="true" href="#sources-of-interest">#</a></h4>
+<ul>
+<li>Kaggle – <a href="https://www.kaggle.com/c/titanic">Titanic Machine Learning from Disaster</a></li>
+<li>Open data initiative of the Government of Spain – <a href="https://datos.gob.es/en">datos.gob.es</a></li>
+<li>Medium (Clément Viguier) – <a href="https://medium.com/@clmentviguier/the-hate-of-pie-charts-harms-good-data-visualization-cc7cfed243b6">The hate of pie charts harms good data visualization&hellip;</a></li>
+<li>Course <em>“<a href="https://courses.edx.org/courses/course-v1:Microsoft&#43;DAT222x&#43;1T2017/course/">Essential Statistics for Data Analysis using Excel</a>”</em> perteneciente al Microsoft Data Science Program</li>
+<li>The Data Visualisation Catalogue - <a href="https://datavizcatalogue.com/index.html">The Data Visualisation Catalogue</a></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://datalaria.com/en/tags/statistics/">Statistics</a></li>
+      <li><a href="https://datalaria.com/en/tags/visualizations/">Visualizations</a></li>
+      <li><a href="https://datalaria.com/en/tags/distribution/">Distribution</a></li>
+      <li><a href="https://datalaria.com/en/tags/graphs/">Graphs</a></li>
+      <li><a href="https://datalaria.com/en/tags/charts/">Charts</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="https://datalaria.com/en/">Datalaria</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

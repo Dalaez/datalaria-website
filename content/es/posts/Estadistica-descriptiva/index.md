@@ -1,10 +1,9 @@
 ---
 title: Estadística Descriptiva
-date: 2019-01-05
+date: 2025-08-09
 draft: False
 categories: ["fundamentos"]
 tags: ["estadística", "matemáticas", "distribucion", "normal", "gaussiana"]
-myVar: "myValue"
 
 weight: 10
 image: estadistica_descriptiva.png
