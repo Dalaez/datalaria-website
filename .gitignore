@@ -1,0 +1,7 @@
+# Ficheros y carpetas de construcción de Hugo
+/public/
+/resources/
+
+# Ficheros de sistema operativo
+.DS_Store
+Thumbs.db
