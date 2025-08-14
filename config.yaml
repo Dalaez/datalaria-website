@@ -85,6 +85,10 @@ languages:
         - { identifier: about, name: "About", url: "/about/", weight: 20 }
         - { identifier: tags, name: "Tags", url: "/tags/", weight: 30 }
 
+# --- GOOGLE ANALYTICS ---
+# Pega aquí el ID que has copiado de la web de Google Analytics.
+googleAnalytics: G-L09LGVL4YZ
+
 # --- RENDERIZADO DE HTML Y CÓDIGO ---
 markup:
   goldmark:
