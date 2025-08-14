@@ -1,18 +1,44 @@
 baseURL: "https://datalaria.com/"
 theme: PaperMod
-canonifyURLs: true # <-- LA LÍNEA CLAVE QUE FALTABA
-
+canonifyURLs: true
 defaultContentLanguage: es
 defaultContentLanguageInSubdir: true
 
-# --- PAGINACIÓN (FORMA CORRECTA) ---
+# --- PAGINACIÓN ---
 pagination:
   pagerSize: 10
 
-# --- CONFIGURACIÓN MULTILENGUAJE CORREGIDA ---
+# --- PARÁMETROS GLOBALES DEL TEMA ---
+params:
+  author: "Datalaria"
+  description: "Un cuaderno de bitácora digital sobre datos, IA, tecnología y la industria."
+  keywords: [Blog, Data, AI, Technology, Datalaria]
+  copyright: "© 2025 Datalaria. Todos los derechos reservados."
+  
+  # Activa nuestro CSS personalizado
+  customCSS:
+    - "css/custom.css"
+
+  # Define los favicons (buscará las imágenes en la carpeta /static)
+  favicon: "/images/datalaria_logo_transp.png"
+  favicon16x16: "/images/favicon_16x16.png"
+  favicon32x32: "/images/favicon_32x32.png"
+  apple_touch_icon: "/images/datalaria_logo_transp.png"
+
+  # Perfiles de redes sociales
+  socialIcons:
+    - name: github
+      url: "https://github.com/Dalaez"
+    - name: linkedin
+      url: "https://www.linkedin.com/in/daniel-al%C3%A1ez-ria%C3%B1o/" # <-- RECUERDA CAMBIAR ESTO
+    - name: twitter
+      url: "https://twitter.com/Dalaez" # <-- Y ESTO
+
+# --- CONFIGURACIÓN MULTILENGUAJE ---
 languages:
   es:
     languageName: "Español"
+    languageCode: "es-ES"
     contentDir: "content/es"
     title: "Datalaria"
     weight: 1
@@ -21,31 +47,22 @@ languages:
         enabled: true
         title: "Datalaria"
         subtitle: "Bienvenido a mi cuaderno de bitácora digital. Aquí exploro y documento mi viaje de aprendizaje en el mundo de los datos, la inteligencia artificial, la tecnología y la industria. Este es mi kilómetro 0."
-        imageUrl: ""
+        imageUrl: "/images/datalaria_logo_transp.png"
         imageWidth: 120
         imageHeight: 120
         buttons:
           - name: "Blog"
-            url: "/es/posts"
+            url: "/es/posts/" # <-- CORREGIDO A RUTA ABSOLUTA
           - name: "Sobre mí"
-            url: "/es/sobre-mi"
+            url: "/es/sobre-mi/" # <-- CORREGIDO A RUTA ABSOLUTA
     menu:
       main:
-        - identifier: blog
-          name: "Blog"
-          url: "/posts/"
-          weight: 10
-        - identifier: about
-          name: "Sobre mí"
-          url: "/sobre-mi/"
-          weight: 20
-        - identifier: tags
-          name: "Etiquetas"
-          url: "/tags/"
-          weight: 30
-
+        - { identifier: blog, name: "Blog", url: "/posts/", weight: 10 }
+        - { identifier: about, name: "Sobre mí", url: "/sobre-mi/", weight: 20 }
+        - { identifier: tags, name: "Etiquetas", url: "/tags/", weight: 30 }
   en:
     languageName: "English"
+    languageCode: "en-US"
     contentDir: "content/en"
     title: "Datalaria"
     weight: 2
@@ -54,25 +71,25 @@ languages:
         enabled: true
         title: "Datalaria"
         subtitle: "Welcome to my digital logbook. Here I explore and document my learning journey into the world of data, artificial intelligence, technology, and industry. This is my kilometer 0."
-        imageUrl: ""
+        imageUrl: "/images/datalaria_logo_transp.png"
         imageWidth: 120
         imageHeight: 120
         buttons:
           - name: "Blog"
-            url: "/en/posts"
+            url: "/en/posts/" # <-- CORREGIDO A RUTA ABSOLUTA
           - name: "About"
-            url: "/en/about"
+            url: "/en/about/" # <-- CORREGIDO A RUTA ABSOLUTA
     menu:
       main:
-        - identifier: blog
-          name: "Blog"
-          url: "/posts/"
-          weight: 10
-        - identifier: about
-          name: "About"
-          url: "/about/"
-          weight: 20
-        - identifier: tags
-          name: "Tags"
-          url: "/tags/"
-          weight: 30
+        - { identifier: blog, name: "Blog", url: "/posts/", weight: 10 }
+        - { identifier: about, name: "About", url: "/about/", weight: 20 }
+        - { identifier: tags, name: "Tags", url: "/tags/", weight: 30 }
+
+# --- RENDERIZADO DE HTML Y CÓDIGO ---
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+pygmentsCodefences: true
+pygmentsUseClasses: true
+pygmentsStyle: "monokai"
