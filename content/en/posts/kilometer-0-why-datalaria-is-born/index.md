@@ -1,6 +1,7 @@
 ---
 title: "Kilometer 0: Why Datalaria is Born"
 date: 2025-08-06T15:30:00+02:00
+summary: "Welcome to Datalaria! In this first post, discover the motivation behind this project and what you can expect from the blog"
 draft: false
 tags: ["Meta", "Introduction"]
 ---
