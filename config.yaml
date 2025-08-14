@@ -20,19 +20,20 @@ params:
     - "css/custom.css"
 
   # Define los favicons (buscará las imágenes en la carpeta /static)
-  favicon: "/images/datalaria_logo_transp.png"
-  favicon16x16: "/images/favicon_16x16.png"
-  favicon32x32: "/images/favicon_32x32.png"
-  apple_touch_icon: "/images/datalaria_logo_transp.png"
+  # CORREGIDO: Eliminada la carpeta /images/ de las rutas
+  favicon: "/datalaria_logo_icon.png"
+  favicon16x16: "/favicon_16x16.png"
+  favicon32x32: "/favicon_32x32.png"
+  apple_touch_icon: "/apple-touch-icon.png"
 
   # Perfiles de redes sociales
   socialIcons:
     - name: github
       url: "https://github.com/Dalaez"
     - name: linkedin
-      url: "https://www.linkedin.com/in/daniel-al%C3%A1ez-ria%C3%B1o/" # <-- RECUERDA CAMBIAR ESTO
+      url: "https://www.linkedin.com/in/daniel-al%C3%A1ez-ria%C3%B1o/"
     - name: twitter
-      url: "https://twitter.com/Dalaez" # <-- Y ESTO
+      url: "https://twitter.com/Dalaez"
 
 # --- CONFIGURACIÓN MULTILENGUAJE ---
 languages:
