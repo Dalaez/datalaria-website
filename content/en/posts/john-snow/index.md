@@ -1,11 +1,11 @@
 ---
 title: The authentic John Snow, a precursor of Geolocation
-date: 2025-08-25
-draft: True
+date: 2025-08-26
+draft: false
 categories: ["success_stories"]
-tags: ["Cholera", "John", "Snow", "Map", "GIS", "Geolocation", "London"]
+tags: ["cholera", "john snow", "map", "gis", "geolocation", "London"]
 myVar: "myValue"
-
+ 
 weight: 10
 image: John_Snow.png
 authorAvatar: datalaria-logo.png
@@ -13,13 +13,13 @@ authorAvatar: datalaria-logo.png
 
 Despite the fact that nowadays, for the great majority of people, the name of John Snow brings to his mind to Aegon Targaryen or the heir to the iron throne, there is actually another, perhaps less popular, John Snow (United Kingdom 15/03/1813 - 16/06/1858). This another John Snow should be known as a precursor or forerunner of epidemiology and geolocation and one of the references in the field of dissemination of data thanks to its Cholera map of 1854.
 
-![JohnSnow](John_Snow.png)
+![Portrait of John Snow, the father of modern epidemiology](John_Snow.png)
 
 John Snow was an English doctor who was able to demonstrate in an innovative way that the Cholera was driven by the consumption of water contaminated with feces, breaking with the then-dominant [miasma theory](https://en.wikipedia.org/wiki/Miasma_theory) which assured that the origin of the disease was based on the air or the foul odors of soils or impure waters.
 
 For that purpose, John Snow analyzed in detail the cases of the cholera outbreak in the city of London in 1854 and detected that approximately 700 people deceased in the area of Soho during the same week. To make a clearer view of this issue, Dr. Snow developed a geographic information system based on information layers over a map of the neighborhood. Specifically, John Snow represented a layer with the water pumps (points in the map labeled as "pump") and another layer visualizing the deaths occurred in every building of this area (stacked black lines in each house).
 
-![JohnSnow](Cholera_map.png)
+![John Snow's 1854 cholera map of Soho](Mapa_Colera.png)
 
 As a result of this representation, Dr. Snow identified the water pump located on Broad Street, in the heart of the epidemic, as the source of the problem because more than 70% of deaths were caused in its service area. However, and in spite of the clairvoyance of the conclusions, the authorities did not taken into account immediately and John Snow had to clear some confusing cases. For example, some workers in a workshop and others in a distillery had hardly suffered cholera cases due to the fact that they had private well pumps. In addition, certain cases of deaths far from the area of ​​the water pump were also clarified based on visits to the area for work or family reasons.
 

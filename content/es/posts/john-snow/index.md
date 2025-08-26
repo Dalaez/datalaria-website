@@ -1,24 +1,23 @@
 ---
 title: El auténtico John Snow, precursor de la Geolocalización
-date: 2025-08-25
-draft: True
+date: 2025-08-26
+draft: false
 categories: ["casos_exito"]
-tags: ["Colera", "John", "Snow", "Mapa", "GIS", "Geolocalización"]
-myVar: "myValue"
+tags: ["colera", "john snow", "mapa", "gis", "geolocalización", "Londres"]
 
 weight: 10
 image: John_Snow.png
 authorAvatar: datalaria-logo.png
 ---
-Aunque en la actualidad para la gran mayoría de la gente el nombre John Snow o John Nieve le traiga a la cabeza a Aegon Targaryen o al heredero del trono de hierro, en verdad existe otro, tal vez menos popular, John Snow (Reino Unido 15/03/1813 – 16/06/1858) al que el mundo debería conocer como el precursor o padre de la epidemiología y de la geolocalización, y uno de los referentes en el ámbito de la visualización de los datos gracias a su mapa del cólera de 1854.
+Para la mayoría, el nombre John Snow (o Nieve) evoca al heredero del Trono de Hierro. Sin embargo, existió otro John Snow (1813–1858) al que el mundo debería conocer: el padre de la epidemiología moderna. Gracias a su mapa del cólera de 1854, también es un referente en la visualización de datos y la geolocalización.
 
-![JohnSnow](John_Snow.png)
+![Retrato de John Snow, padre de la epidemiología moderna](John_Snow.png)
 
 John Snow fue un médico inglés quién consiguió demostrar de una manera innovadora que el cólera era causado por el consumo de aguas contaminadas con materias fecales, rompiendo con las teorías vigentes en dicha época que aseguraban que el origen de la enfermedad radicada en la [teoría miasmática](https://es.wikipedia.org/wiki/Teor%C3%ADa_miasm%C3%A1tica_de_la_enfermedad), es decir, en el aire o las emanaciones fétidas de suelos o aguas impuras.
 
 Para ello, John Snow analizó detalladamente los casos del virulento brote de cólera de Londres en 1854 detectando que aproximadamente 700 personas habían fallecido en el barrio del Soho durante la misma semana. Para facilitar la visualización del problema, el Doctor Snow se sirvió de un mapa de dicho barrio donde representó a modo de capas de información geográfica los pozos de agua (identificados mediante un círculo y etiquetados “Pump”), así como las muertes que se habían ido produciendo en cada uno de los edificios del área afectada (representadas mediante líneas negras apiladas en cada vivienda).
 
-![JohnSnow](Mapa_Colera.png)
+![Mapa del cólera de John Snow en el Soho de 1854](Mapa_Colera.png)
 
 A raíz de dicha representación de la información, identificó el pozo situado en Broad Street, en pleno corazón de la epidemia, como el culpable de la misma dado que en su área de servicio se registraron más del 70% de las muertes. Sin embargo, y a pesar de la clarividencia de sus resultados, éstos no fueron tenidos en cuenta de manera inmediata por las autoridades sino que tuvieron que ser acompañados de aclaraciones a ciertas cuestiones confusas. Por ejemplo, el hecho de que apenas se hubieran producido muertes entre los trabajadores de un taller y de una destilería próxima a la zona se aclaró en base a que disponían de pozos de agua privados. Además, también se esclarecieron ciertos casos de muertes lejanas al área de dicha bomba de agua y que se debieron a casos de personas que casualmente bebieron de esa fuente debido a visitas por la zona por motivos laborales o familiares.
 
