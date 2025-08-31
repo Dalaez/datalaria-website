@@ -4,6 +4,8 @@ date: 2025-08-26
 draft: false
 categories: ["casos_exito"]
 tags: ["colera", "john snow", "mapa", "gis", "geolocalización", "Londres"]
+description: "John Snow: el padre de la epidemiología y pionero de la geolocalización"
+summary: "Conozcamos al verdadero John Snow, más allá del heredero al Trono de Hierro. El padre de la epidemiologí moderna y pionero de la geolocalización gracias a su famoso mapa del cólera de Londres."
 
 weight: 10
 image: John_Snow.png
