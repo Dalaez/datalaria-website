@@ -1,7 +1,7 @@
 ---
 title: "Netflix: How Data Forges an Empire in the Midst of the Streaming Wars"
-date: 2025-08-29
-draft: False
+date: 2025-09-16
+draft: True
 categories: ["case-studies"]
 tags: ["netflix", "streaming", "big data", "ai", "disney", "churn", "algorithms"]
 image: netflix_streaming_wars.png

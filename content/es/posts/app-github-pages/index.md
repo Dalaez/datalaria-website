@@ -1,7 +1,7 @@
 ---
 title: "De una Idea a una App Funcional en Minutos: Creando un Conversor de Ficheros con Gemini y GitHub Pages"
 date: 2025-09-30
-draft: False
+draft: True
 categories: ["Proyectos", "Herramientas"]
 tags: ["gemini", "ia", "desarrollo web", "github pages", "javascript", "html", "css", "low-code"]
 image: gemini_code_canvas.png
