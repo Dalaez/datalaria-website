@@ -4,7 +4,8 @@ date: 2025-08-26
 draft: false
 categories: ["success_stories"]
 tags: ["cholera", "john snow", "map", "gis", "geolocation", "London"]
-myVar: "myValue"
+description: "John Snow: The father of epidemiology and a pioneer of geolocation."
+summary: "Meet the real John Snow—beyond the heir to the Iron Throne. He was the father of modern epidemiology and a pioneer of geolocation, thanks to his famous London cholera map."
  
 weight: 10
 image: John_Snow.png

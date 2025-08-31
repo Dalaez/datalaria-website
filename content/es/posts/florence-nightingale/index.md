@@ -1,19 +1,20 @@
 ---
 title: Florence Nightingale - La madre de la Enfermería
-date: 2025-08-31
+date: 2025-09-09
 draft: True
 categories: ["casos_exito"]
-tags: ["Enfermería", "Florence", "Nightingale", "Sanidad", "Crimea"]
-myVar: "myValue"
+tags: ["enfermería", "florence nightingale", "sanidad", "crimea"]
+description: "Florence Nightingale, enfermera, escritora y estadística británica, madre de la enfermería y una de las primeras científicas de datos."
+summary: "¿Quién fue la madre de la enfermería? Florence Nightingale una de las primeras científicas de datos, multidisciplinar y un referente para nuestros días"
 
 weight: 10
 image: FlorenceNightingale.png
 authorAvatar: datalaria-logo.png
 ---
 
-Vamos a abrir la categoría de casos de éxito relativos al análisis de datos, con Florence Nightingale (12/05/1920 – 13/08/1910), enfermera, escritora y estadística británica, quién es considerada la **madre de la enfermería** y una de las **primeras científicas de datos**.
+Continuamos con los casos de éxito en el análisis de datos para hablar de Florence Nightingale (12/05/1820 – 13/08/1910), una figura revolucionaria. Enfermera, escritora y estadística británica, es considerada la **madre de la enfermería moderna** y, como veremos, **una de las primeras y más influyentes científicas de datos**.
 
-![Florence Nightingale](FlorenceNightingale.png)
+![Retrato de Florence Nightingale, pionera de la enfermería y la estadística sanitaria](FlorenceNightingale.png)
 
 Su caso es especialmente relevante dado que, además de luchar por la emancipación de la mujer mediante la apertura de nuevos rumbos profesionales cualificados, destacó en el ámbito de la enfermería por ser considerada la precursora de la enfermería profesional moderna gracias a la creación del **primer modelo conceptual**.
 Para la confección de este modelo, Florence aplicó sus conocimientos estadísticos y matemáticos, así como todos los datos e información relativa a cuidados de enfermería que fue recopilando durante un período de aprendizaje en el que visitó diferentes hospitales, prisiones, asilos y orfelinatos de Francia, Alemania, Italia, Suiza, Irlanda e Inglaterra.
@@ -26,7 +27,7 @@ Ante esta situación, el Gobierno Británico decidió enviar a Florence Nighting
 
 Ante estos datos, convenció al Parlamento de la necesidad de mejorar las condiciones sanitarias de los hospitales y como resultando Florence revolucionó aspectos como la atención a los enfermos, la higiene y la mejora de la alimentación
 
-![Rosa de Florence](rosa-de-florence.jpg)
+![Diagrama de la Rosa de Florence Nightingale mostrando las causas de mortalidad en la Guerra de Crimea](rosa-de-florence.jpg)
 
 Al finalizar la guerra regresó a Londres y se centró en el ámbito civil, donde escribió un libro de texto con sus conocimientos y fundó una escuela de enfermería para la formación de estas profesionales. Dentro de dichos conocimientos también cabe destacar la **Formulación de un modelo de Estadística Hospitalaria** para que los hospitales recolecten y generen datos y estadísticas consistentes.
 
