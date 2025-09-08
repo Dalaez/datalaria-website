@@ -1,6 +1,6 @@
 ---
 title: Florence Nightingale - La madre de la Enfermería
-date: 2025-09-09
+date: 2025-09-08
 draft: True
 categories: ["casos_exito"]
 tags: ["enfermería", "florence nightingale", "sanidad", "crimea"]
