@@ -1,7 +1,7 @@
 ---
 title: "Florence Nightingale - The Mother of Nursing"
 date: 2025-09-08
-draft: True
+draft: False
 categories: ["case-studies"]
 tags: ["nursing", "florence nightingale", "healthcare", "crimea"]
 description: "Florence Nightingale, a British nurse, writer, and statistician, the mother of nursing and one of the first data scientists."
