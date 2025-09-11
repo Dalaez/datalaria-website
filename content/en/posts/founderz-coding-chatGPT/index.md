@@ -1,77 +1,95 @@
 ---
-title: "De una Idea a una App Funcional en Minutos: Creando un Conversor de Ficheros con Gemini y GitHub Pages"
-date: 2025-09-30
+title: "Copiloting with AI: Learning with Founderz and ChatGPT"
+date: 2025-09-11
 draft: False
-categories: ["Proyectos", "Herramientas"]
-tags: ["gemini", "ia", "desarrollo web", "github pages", "javascript", "html", "css", "low-code"]
-image: gemini_code_canvas.png
-description: "Crónica de un experimento práctico: cómo utilicé la Pizarra de Código de Gemini 1.5 Pro para generar, depurar y desplegar una aplicación web funcional en GitHub Pages."
-summary: "Tenía una idea para una app, pero en lugar de abrir un editor de código, abrí una conversación con Gemini. Te cuento el proceso paso a paso de cómo la IA generó una aplicación de conversión de formatos y cómo la publiqué gratis para que cualquiera pueda usarla."
+categories: ["Tools", "Learning"]
+tags: ["ai", "chatgpt", "prompt engineering", "founderz", "web development", "no-code", "html", "maths"]
+image: chatgpt_app_creation.png
+description: "A chronicle of how the AI and Prompt Engineering course by Founderz opened my eyes to the possibility of creating functional web applications using only natural language with ChatGPT."
+summary: "Learning how AI can be our day-to-day copilot thanks to Founderz, and how we can create useful and simple HTML applications with just a few basic instructions."
 ---
 
-Todos hemos tenido esa idea fugaz: "Ojalá existiera una pequeña herramienta que hiciera X". En mi caso, era un conversor de formatos de archivo sencillo, online y que no requiriera subir mis ficheros a un servidor desconocido. Tradicionalmente, incluso una idea "sencilla" como esta implicaba abrir un editor de código, crear ficheros HTML, CSS, JavaScript, depurar, y finalmente, buscar un hosting.
+In our daily lives, we constantly face barriers when trying to implement good ideas, often due to a lack of technical knowledge and the time needed to figure out where to start. The AI models available today have brought about a revolution in this regard, accelerating timelines and removing learning obstacles. Thanks to these models, we can do more in less time and delve into highly complex fields like programming, allowing us to bring simple applications that implement good ideas to life.
 
-Hoy, ese proceso ha cambiado radicalmente. En este post, voy a contaros el viaje de cómo esa idea se convirtió en una **aplicación web funcional y pública en cuestión de minutos**, utilizando únicamente dos herramientas: la asombrosa capacidad de generación de código de **Gemini 1.5 Pro** y la simplicidad de **GitHub Pages**.
+In this context, I recently completed the **[Introduction to AI and Prompt Engineering course by Founderz](https://founderz.com/en/program/introduction-to-ai-and-prompt-engineering)**, taught by Pau García-Millá (Founder and Co-CEO of Founderz), Anna Cejudo (Founder and Co-CEO of Founderz), and Magda Teruel (Client Account Manager at Microsoft). I would say it's a highly recommended course! It's easy to follow, very educational, well-structured, and it truly makes an impact, offering glimpses of what can be achieved with AI through brief and effective instructions.
 
-El resultado final, antes de empezar, lo podéis probar aquí: **[Enlace a tu App en GitHub Pages]**
+![Imagen del curso de Introducción a la IA Founderz](Founderz_AI_Introduction.png)
 
-### El Desafío: Un Conversor de Ficheros Universal en el Navegador
+The course consists of short videos, between 5 and 15 minutes long, that explain and develop the idea of AI models as "Copilots" in our daily lives. Pau, Anna, and Magda present examples of how to "talk" to these "Copilots" and how to use them in our day-to-day tasks, showing some advanced use cases and practical examples of how to turn our project ideas into web applications without knowing how to program, thanks to the good work of our "Copilots." To finish, they propose that you try creating a basic project yourself with these models based on what you've learned, providing a very interesting feedback mechanism from both themselves and other students.
 
-El objetivo era claro: crear una aplicación web de una sola página que permitiera a un usuario arrastrar un fichero (una imagen, un documento) y convertirlo a otro formato (por ejemplo, de PNG a JPG, o de DOCX a PDF) directamente en su navegador. La clave era que todo el procesamiento debía ocurrir en el lado del cliente, garantizando la **privacidad y la velocidad**.
+Besides recommending this course to anyone who wants to get started with AI models and learn more about having these "Copilots," I'm going to use this post to illustrate one of the key takeaways from the course, focusing on how to create a functional application through a simple conversation with ChatGPT and the right instructions.
 
-Este es un caso de uso perfecto para poner a prueba a una IA, ya que requiere la creación coordinada de tres componentes:
-1.  **HTML**: Para la estructura y los elementos de la interfaz (caja para subir archivos, menús, botones).
-2.  **CSS**: Para darle un aspecto limpio y usable.
-3.  **JavaScript**: El cerebro de la operación, encargado de la lógica de conversión.
+### The "Aha!" Moment of the Founderz Course
 
-### La Conversación con Gemini: Desarrollo Asistido en la "Pizarra"
+The Founderz course is tremendously educational, and its greatest lesson is presenting AI (in this case, Copilot and ChatGPT) not just as a simple search assistant but as a **creation partner (a copilot)**.
 
-En lugar de escribir código, empecé a escribir un prompt. La funcionalidad de "Pizarra" o *Code Canvas* de Gemini no es un simple chat que te devuelve texto; es un entorno interactivo que te presenta el código organizado y una vista previa en tiempo real.
+The clearest example of this copilotage is how a language model can help us create structured and functional code from an initial idea through a series of simple instructions. Through several practical cases, it teaches how to create self-contained web applications in a single HTML file, unleashing our ideas to improve our daily lives.
 
-**1. El Prompt Inicial:**
-Mi primera petición fue directa y clara, definiendo todos los requisitos:
+### The Challenge: Creating a Useful Tool from Scratch with ChatGPT
 
-> "Genera el código HTML, CSS y JavaScript para una aplicación web de una sola página que funcione como un conversor de formatos de archivo. La interfaz debe tener un área para arrastrar y soltar archivos, un menú desplegable para seleccionar el formato de salida y un botón de descarga. Todo el procesamiento debe hacerse en el lado del cliente para asegurar la privacidad."
+To put this skill to the test, we're going to create a **learning game for basic math operations aimed at preschool and elementary school children between 5 and 7 years old**.
 
-**2. La Pizarra en Acción:**
-En menos de un minuto, Gemini no solo generó el código, sino que lo presentó en una interfaz organizada con pestañas para HTML, CSS y JS, y una ventana de previsualización que mostraba la aplicación funcionando. Es como tener a un desarrollador senior a tu lado, materializando tus ideas al instante.
+The goal was simple: a webpage that would teach and allow practice of basic mathematical operations (addition, subtraction, multiplication, and division) by learning levels, making it engaging for users.
 
-![Screenshot de la interfaz de código de Gemini (Pizarra / Code Canvas)](gemini_app_preview.png)
+### The Recipe: The Detailed Prompt (and its Refinement) is Key
 
-**3. Refinamiento Iterativo:**
-El primer resultado era funcional, pero visualmente muy básico. Aquí es donde la naturaleza conversacional brilla. En lugar de editar el CSS a mano, simplemente le pedí:
+This is where *Prompt Engineering* comes into play. It's not about asking ChatGPT to "make me an app," but about acting as a product manager who gives the development team (the AI) clear and detailed specifications.
 
-> "Excelente. Ahora, aplica un estilo más moderno y limpio. Usa un tema oscuro, centra los elementos verticalmente y haz que el botón de 'Convertir' tenga una animación sutil al pasar el ratón por encima."
+#### The Initial Prompt
 
-Tras un par de ajustes más, tenía un producto pulido y listo. Todo el proceso, desde el prompt inicial hasta el código final, quedó registrado en esta conversación pública de Gemini que podéis consultar: **[Enlace a tu conversación compartida de Gemini]**
+This was the first prompt I used, inspired by the course's methodology, where I defined the entire structure and functionality I wanted (I encourage anyone to experiment and reproduce it themselves on ChatGPT):
 
-### Del Código a la Realidad: Despliegue Mágico con GitHub Pages
+> Create a simple web application to practice basic math functions: addition, subtraction, multiplication, and division. The goal is to create a simple application that makes it easier for preschool and elementary school children (between 5 and 7 years old) to learn these operations. The application must:
+> 1.  Start with a learning page that explains the 4 mathematical operations.
+> 2.  Allow the selection of a learning level from 4 levels (preschool 1 & 2, elementary 1 & 2).
+> 3.  Allow the selection of a difficulty level (easy with 1 digit, hard with 2).
+> 4.  Have a "Start Game" button that leads to a screen with operations.
+> 5.  Check if the answer is correct and display a motivating message and an emoticon.
+> 6.  Keep track of correct and incorrect answers.
+> 7.  Have an attractive and responsive design using Tailwind CSS.
+> 8.  Include all HTML, CSS, and JavaScript code in a single file.
 
-Tener el código es solo la mitad del camino. La otra mitad es publicarlo para que el mundo pueda usarlo. Aquí es donde entra GitHub Pages, un servicio gratuito que convierte un repositorio de código en un sitio web en vivo.
+ChatGPT processed the request and, in seconds, returned a single block of code containing a fully functional application.
 
-El proceso es increíblemente sencillo:
+#### The Refinement: The Conversation Continues
 
-1.  **Crear un Repositorio en GitHub**: Creé un nuevo repositorio público llamado, por ejemplo, `file-converter-app`.
-2.  **Subir los Ficheros**: Añadí tres ficheros al repositorio: `index.html`, `style.css` y `script.js`, y pegué en cada uno el código que Gemini había generado.
-3.  **Activar GitHub Pages**: Este es el paso "mágico". En la configuración del repositorio, fui a la sección "Pages", seleccioné la rama `main` como fuente y guardé. En menos de un minuto, GitHub me proporcionó una URL pública donde mi aplicación ya estaba funcionando.
+The first result worked quite well, but there's always room for improvement 😄. This is where the true power of conversational AI lies: the ability to iterate and improve thanks to the coherence it can maintain in its results. As a test, I asked for a series of changes to make the application more dynamic and attractive:
 
-![Screenshot de la configuración de GitHub Pages](github_pages_settings.png)
+> It works! Now I want you to make the following changes:
+> 1.  Edit the design to be more attractive with gradient colors and nicer fonts.
+> 2.  Add a 10-second countdown for each operation and a scoring system.
+> 3.  Once the answer is submitted, show the correct/incorrect message for 3 seconds and then move to the next operation.
+> 4.  Display the total score at all times.
+> 5.  After 10 operations, show the final result.
+>
+> Write the complete code again.
 
-### Conclusión: La Nueva Era del Desarrollo Asistido por IA
+And as if by magic, the AI integrated all the improvements and provided me with the final, polished code. You can see the full conversation and the result here: **[Math App Prompt on ChatGPT](https://chatgpt.com/share/68b5fa88-be78-8004-8d93-612409d559f5)**.
 
-Este experimento, que duró menos de una hora, es una ventana al futuro (y presente) del desarrollo de software. No se trata de que la IA vaya a reemplazar a los desarrolladores, sino de que va a **potenciar a los creadores**. Ha reducido drásticamente la barrera de entrada para construir herramientas útiles.
+### The "Magic": Your App Running in 30 Seconds
 
-Herramientas como la Pizarra de Código de Gemini son un acelerador sin precedentes para:
-* **Prototipar ideas** a una velocidad impensable.
-* **Aprender a programar**, viendo en tiempo real cómo un experto (la IA) estructura el código.
-* **Construir utilidades personales y proyectos pequeños** sin necesidad de un equipo o un presupuesto.
+This is the most rewarding part. To run the application we just created, just follow these steps:
 
-Te animo a que pienses en esa pequeña herramienta que siempre has querido y se lo pidas a Gemini. El poder de crear ya no está solo en saber escribir código, sino en saber formular las preguntas correctas.
+1.  **Open a plain text editor** (like Notepad on Windows or TextEdit on Mac).
+2.  **Paste the complete code** provided by ChatGPT.
+3.  **Save the file** with any name you like, but make sure the extension is `.html` (for example: `math-game.html`).
+4.  **Double-click the saved file.**
+
+And that's it! The file will open in your web browser, and you'll have a fully functional educational application, created by you and your AI copilot.
+
+!(app_matematicas_chatgpt.png)
+
+### Conclusion and Next Steps
+
+This experience demonstrates the incredible democratization that AI is bringing to the world of digital creation. It is no longer essential to be an expert programmer to build simple and useful tools. What is now crucial is the ability to **think in a structured way and give clear instructions**, the essence of *Prompt Engineering*.
+
+This method is incredibly fast for creating and testing tools. But how can we take it a step further and publish this application so that anyone in the world can use it?
+
+We'll talk about that in one of our next posts, where we'll explore the creation process with **Gemini's Code Canvas** and its public deployment using **GitHub Pages**. In the meantime, for those who haven't been trying it out in parallel, you can see the result created here: ![My math app for kids created with ChatGPT](https://dalaez.github.io/maths-app/)
 
 ---
 
-#### Fuentes y Recursos:
-* **Prueba la App**: [Conversor de Ficheros (desplegado en GitHub Pages)](https://tu-usuario-github.github.io/file-converter-app/)
-* **Conversación con Gemini**: [Consulta aquí el proceso de creación de la App](https://g.co/gemini/share/e7ea383f7c14)
-* **GitHub Pages**: [Documentación oficial para empezar](https://pages.github.com/)
-* **Gemini de Google**: [Página oficial](https://gemini.google.com/)
+#### Sources and Resources:
+* **Founderz**: [Introduction to AI and Prompt Engineering Course](https://founderz.com/en/program/introduction-to-ai-and-prompt-engineering)
+* **OpenAI**: [ChatGPT](https://chat.openai.com/)
+* **App's GitHub Page**: ![My math app for kids created with ChatGPT](https://dalaez.github.io/maths-app/)

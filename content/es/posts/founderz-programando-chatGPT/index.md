@@ -1,9 +1,9 @@
 ---
 title: "Copilotando con IA: Aprendiendo con Founderz y ChatGPT"
-date: 2025-09-30
+date: 2025-09-11
 draft: False
 categories: ["Herramientas", "Aprendizaje"]
-tags: ["ia", "chatgpt", "prompt engineering", "founderz", "desarrollo web", "no-code", "html"]
+tags: ["ia", "chatgpt", "prompt engineering", "founderz", "desarrollo web", "no-code", "html", "matemáticas"]
 image: chatgpt_app_creation.png
 description: "Crónica de cómo el curso de IA y Prompt Engineering de Founderz me abrió los ojos a la posibilidad de crear aplicaciones web funcionales usando solo lenguaje natural con ChatGPT."
 summary: "Aprendiendo como la IA puede ser nuestro copiloto para el día a día gracias a Founderz y como podemos crear aplicaciones HTML útiles y sencillas con unas pocas instrucciones básicas."
@@ -13,6 +13,8 @@ summary: "Aprendiendo como la IA puede ser nuestro copiloto para el día a día 
 En nuestro día a día, nos enfrentamos constantemente a barreras en la implementación de buenas ideas y su ejecución por falta de conocimiento técnico y el tiempo necesario para saber por donde empezar e investigar como resolverlo. Los modelos de IA existentes actualmente han supuesto una revolución en este sentido gracias a la aceleración del tiempo y eliminación de los obstáculos de aprendizaje y resolución de problemas en este sentido. Gracias a estos modelos podemos hacer más cosas en menos tiempo, y adentrarnos en campos de gran complejidad como el mundo de la programación permitiéndonos hacer realidad aplicaciones sencillas que implementen buenas ideas de nuestro día a día. 
 
 En este sentido, recientemente completé el curso **[Introducción a la IA y Prompt Engineering de Founderz](https://founderz.com/es/programa/introduccion-a-la-ia-y-prompt-engineering)** impartido por Pau García-Millá (Fundador y Co-CEO de Founderz), Anna Cejudo (Fundadora y Co-CEO de Founderz) y Magda Teruel (Manager de cuentas de cliente en Microsoft) el cual diría que es un curso Muy recomendable! Es muy fácil de seguir, muy bien didáctico, muy bien hilado en sus contenidos y que no te deja indiferente, sino que Pau nos ofrece varias pinceladas de lo que se puede llegar a hacer con la IA con unas breves y buenas instrucciones.
+
+![Imagen del curso de Introducción a la IA Founderz](Founderz_IntroduccionIA.png)
 
 El curso consiste en videos breves de entre 5 y 15 minutos donde se va explicando y desarrollando la idea de los modelos de IA como "Copilotos" en nuestro día a día. Pau, Anna y Magda nos van presentando ejemplos de como "hablarles" a estos "Copilotos" y como usarlos para nuestro día a día, enseñándonos algunos casos de uso más avanzados y llegando a varios casos prácticos sobre como materializar nuestras ideas de proyectos en aplicaciones web sin saber programar gracias al buen hacer de nuestros "Copilotos". Para finalizar te proponen probar tú mismo a crear un proyecto básico con estos modelos basado en lo aprendido durante el curso y proporcionan un mecanismo de feedback propio y de otros alumnos que me ha parecido muy interesante.
 
@@ -76,7 +78,7 @@ Esta es la parte más gratificante. Para ejecutar la aplicación que acabamos de
 
 ¡Y ya está! El fichero se abrirá en tu navegador y tendrás una aplicación educativa completamente funcional, creada por ti y tu copiloto de IA.
 
-![Mi aplicación de matemáticas para niños creada con ChatGPT](app_matematicas_chatgpt.png)
+![Imagen de la aplicación de matemáticas para niños creada con ChatGPT](app_matematicas_chatgpt.png)
 
 ### Conclusión y Próximos Pasos
 
@@ -84,11 +86,11 @@ Esta experiencia demuestra la increíble democratización que la IA está trayen
 
 Este método es increíblemente rápido para crear y probar herramientas. Pero, ¿cómo podemos llevarlo un paso más allá y publicar esta aplicación para que cualquiera en el mundo pueda usarla?
 
-De eso hablaremos en uno de nuestros siguientes post, donde exploraremos el proceso de creación con **la Pizarra de Código de Gemini** y su despliegue público usando **GitHub Pages**.
+De eso hablaremos en uno de nuestros siguientes post, donde exploraremos el proceso de creación con **la Pizarra de Código de Gemini** y su despliegue público usando **GitHub Pages**. Mientras tanto, para los que no hayáis ido probando en paralelo, podéis ver el resultado creado aquí: [Mi aplicación de matemáticas para niños creada con ChatGPT](https://dalaez.github.io/maths-app/)
 
 ---
 
 #### Fuentes y Recursos:
 * **Founderz**: [Curso de Introducción a la IA y Prompt Engineering](https://founderz.com/es/programa/introduccion-a-la-ia-y-prompt-engineering)
 * **OpenAI**: [ChatGPT](https://chat.openai.com/)
-* **GitHub**: Próximamente subiré el código de esta App para quién quiera curiosear o probarla por su cuenta.
+* **GitHub Page de la App**: [Mi aplicación de matemáticas para niños creada con ChatGPT](https://dalaez.github.io/maths-app/)
