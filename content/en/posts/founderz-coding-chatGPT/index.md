@@ -85,11 +85,11 @@ This experience demonstrates the incredible democratization that AI is bringing 
 
 This method is incredibly fast for creating and testing tools. But how can we take it a step further and publish this application so that anyone in the world can use it?
 
-We'll talk about that in one of our next posts, where we'll explore the creation process with **Gemini's Code Canvas** and its public deployment using **GitHub Pages**. In the meantime, for those who haven't been trying it out in parallel, you can see the result created here: ![My math app for kids created with ChatGPT](https://dalaez.github.io/maths-app/)
+We'll talk about that in one of our next posts, where we'll explore the creation process with **Gemini's Code Canvas** and its public deployment using **GitHub Pages**. In the meantime, for those who haven't been trying it out in parallel, you can see the result created here: [My math app for kids created with ChatGPT](https://dalaez.github.io/maths-app/)
 
 ---
 
 #### Sources and Resources:
 * **Founderz**: [Introduction to AI and Prompt Engineering Course](https://founderz.com/en/program/introduction-to-ai-and-prompt-engineering)
 * **OpenAI**: [ChatGPT](https://chat.openai.com/)
-* **App's GitHub Page**: ![My math app for kids created with ChatGPT](https://dalaez.github.io/maths-app/)
+* **App's GitHub Page**: [My math app for kids created with ChatGPT](https://dalaez.github.io/maths-app/)
