@@ -13,7 +13,7 @@ In the world of engineering, one of our biggest challenges isn't solving the tec
 
 Recently, I faced this very challenge: I needed to present a status and progress report for the implementation of a complex engineering process whose roadmap closely resembled the traditional **V-Model of systems engineering**. Instead of resorting to the usual diagram, I decided to experiment and find a more engaging analogy. What if I could use AI not just to analyze data, but to tell a story?
 
-This post is the chronicle of how I used Google's AI tool, **Nanobanana**, to transform an engineering roadmap into an attractive visual presentation, using an analogy that almost everyone understands and admires: **the design of a Formula 1 car**.
+This post is the chronicle and result ([Downloadable template](Nanobana_engineering.pptx)) of how I used Google's AI tool, **Nanobanana**, to transform an engineering roadmap into an attractive visual presentation, using an analogy that almost everyone understands and admires: **the design of a Formula 1 car**.
 
 ### The Challenge: Making the V-Model Understandable
 
@@ -27,7 +27,7 @@ The V-diagram would help make the initiative's roadmap easier to understand, but
 
 ### The Tool: Nanobanana to the Rescue
 
-To bring this idea to life, I turned to **Nanobanana**, an AI tool specialized in generating images and visuals with a clean and consistent style. Instead of aiming for complex photorealism, its strength lies in creating clear and conceptual illustrations, perfect for presentations where the message is more important than artistic detail. Furthermore, thanks to its ability to maintain a high degree of context, it allowed me to create an evolutionary flow of images in the design that gave coherence to the metaphor, rather than using disconnected, random images.
+To bring this idea to life, I turned to **Nanobanana**, an AI tool specializing in generating images and visuals with a clean and consistent style. Its strength lies in its ability to create images that are true to the requested context and to maintain coherence across different interactions—as was my case, where I sought to create an evolutionary flow of images for the design that followed the metaphor's narrative thread, instead of using loose, disconnected images..
 
 ### The Visual Roadmap: Designing an F1 Car Phase by Phase
 
@@ -95,9 +95,11 @@ From here, it will enter the product maintenance and evolution phase.
 
 In my case, the result was a presentation with these 7 stages as analogies for the implementation phases of my process initiative, where the process ceased to be an abstract concept and became "digestible" and illustrative steps of the proposed plan. The AI, in this case Nanobanana, didn't just generate images; it acted as a **universal translator**, turning technical engineering jargon into a visual language that everyone could understand and follow.
 
-This experience reinforces my conviction that AI tools are not just for automating tasks, but also for helping us improve other *soft skills*, such as **enhancing our communication abilities**. In a technical world, knowing how to tell a good story is as important as having the right solution. And sometimes, you just need the right analogy and a good AI copilot to bring it to life.
+![Final image of the V-model with F1 analogy](Nanobanana_engineering_v_model.png)
 
-For those who want to create a similar roadmap or story, here is a PowerPoint template with these images for you to adapt to the metaphor or simile that best fits your needs: [Roadmap Metaphor PowerPoint Template](Nanobanana_engineering.pptx)
+For those who want to create a similar roadmap or story, here is the PowerPoint template with these images for you to adapt to the metaphor or simile that best fits your needs: [Roadmap Metaphor PowerPoint Template](Nanobanana_engineering.pptx)
+
+This experience reinforces my conviction that AI tools are not just for automating tasks, but also for helping us improve other *soft skills*, such as **enhancing our communication abilities**. In a technical world, knowing how to tell a good story is as important as having the right solution. And sometimes, you just need the right analogy and a good AI copilot to bring it to life.
 
 ---
 

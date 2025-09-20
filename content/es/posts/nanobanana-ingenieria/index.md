@@ -13,7 +13,7 @@ En el mundo de la ingeniería, uno de nuestros mayores desafíos no es resolver 
 
 Recientemente, me enfrenté a este mismo reto: necesitaba presentar un estado de situación y progreso para la implantación de un proceso complejo de ingeniería cuyo roadmap se asimilaba en gran medida al tradicional **Ciclo en V de la ingeniería de sistemas**. En lugar de recurrir al diagrama de siempre, decidí experimentar y buscar una analogía más atractiva. ¿Y si pudiera usar la IA no solo para analizar datos, sino para contar una historia?
 
-Este post es la crónica de cómo utilicé la herramienta de IA de Google **Nanobanana** para transformar un roadmap de ingeniería en una presentación visual y atractiva, usando una analogía que casi todo el mundo entiende y admira: **el diseño de un monoplaza de Fórmula 1**.
+Este post es la crónica y resultado ([Plantilla descargable](Nanobanana_ingenieria.pptx)) de cómo utilicé la herramienta de IA de Google **Nanobanana** para transformar un roadmap de ingeniería en una presentación visual y atractiva, usando una analogía que casi todo el mundo entiende y admira: **el diseño de un monoplaza de Fórmula 1**.
 
 ### El Desafío: Hacer Entendible el Ciclo en V
 
@@ -27,7 +27,7 @@ El diagrama en V me facilitaría que el roadmap de la iniciativa a presentar se 
 
 ### La Herramienta: Nanobanana al Rescate
 
-Para materializar esta idea, recurrí a **Nanobanana**, una herramienta de IA especializada en la generación de imágenes y visuales con un estilo limpio y consistente. En lugar de buscar un fotorrealismo complejo, su punto fuerte es crear ilustraciones claras y conceptuales, perfectas para presentaciones donde el mensaje es más importante que el detalle artístico. Y, además, gracias a su capacidad de mantener un alto grado de mantener el contexto, me permitiera crear el flujo evolutivo de las imágenes en el diseño que diera coherencia a la metáfora en vez de ir utilizando imágenes sueltas inconexas.
+Para materializar esta idea, recurrí a **Nanobanana**, una herramienta de IA especializada en la generación de imágenes y visuales con un estilo limpio y consistente. Su punto fuerte es la capacidad de creación imágenes fieles al contexto solicitado y su capacidad de mantener la coherencia en las diferentes interacciones realizadas, como en mi caso donde buscaba crear el flujo evolutivo de las imágenes en el diseño siguiendo un hilo conductor a la metáfora en vez de ir utilizando imágenes sueltas inconexas.
 
 ### El Roadmap Visual: Diseñando un F1 Fase a Fase
 
@@ -96,9 +96,11 @@ A partir de aquí ya entrará en la fase de mantenimiento de producto y evolutiv
 
 En mi caso el resultado fue una presentación con estas 7 etapas como analogías a las fases de implantación de mi iniciativa de proceso y donde este proceso dejó de ser un concepto abstracto para convertirse en pasos "digeribles" e ilustrativos del planteamiento propuesto. La IA, en este caso Nanobanana, no solo generó imágenes; actuó como un **traductor universal**, convirtiendo la jerga técnica de la ingeniería en un lenguaje visual que todo el mundo pudo entender y seguir.
 
-Esta experiencia refuerza mi convicción de que las herramientas de IA no son solo para automatizar tareas, sino también nos facilitan la mejora en otras cualidades blandas (*soft skills*) como para **aumentar nuestras habilidades de comunicación**. En un mundo técnico, saber contar una buena historia es tan importante como tener la solución correcta. Y, a veces, solo necesitas la analogía adecuada y un buen copiloto de IA para llevarla a la vida.
+![Imagen final modelo en V con analogía F1](Nanobanana_ingenieria_modelo_v.png)
 
-Para aquellos que quieran plantear un Roadmap o historia similar os dejo por aquí una plantilla en ppt con estas imágenes para que la adaptéis a la metáfora o simil que mejor os encaje: [Plantilla en power point de la metáfora del Roadmap](Nanobanana_ingenieria.pptx)
+Para aquellos que quieran plantear un Roadmap o historia similar os dejo por aquí la plantilla en ppt con estas imágenes para que la adaptéis a la metáfora o simil que mejor os encaje: [Plantilla en power point de la metáfora del Roadmap](Nanobanana_ingenieria.pptx)
+
+Esta experiencia refuerza mi convicción de que las herramientas de IA no son solo para automatizar tareas, sino también nos facilitan la mejora en otras cualidades blandas (*soft skills*) como para **aumentar nuestras habilidades de comunicación**. En un mundo técnico, saber contar una buena historia es tan importante como tener la solución correcta. Y, a veces, solo necesitas la analogía adecuada y un buen copiloto de IA para llevarla a la vida.
 
 ---
 
