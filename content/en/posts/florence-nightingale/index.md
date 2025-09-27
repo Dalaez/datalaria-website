@@ -1,6 +1,6 @@
 ---
 title: "Florence Nightingale - The Mother of Nursing"
-date: 2025-09-08
+date: 2025-09-06
 draft: False
 categories: ["case-studies"]
 tags: ["nursing", "florence nightingale", "healthcare", "crimea"]

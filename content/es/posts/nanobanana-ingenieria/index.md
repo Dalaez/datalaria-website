@@ -21,7 +21,7 @@ Para quien no lo conozca, el Ciclo en V es un modelo de desarrollo que represent
 
 Suena lógico, pero su representación gráfica aunque estándar puede ser abstracta y poco inspiradora para aquellos que no están familiarizados con ello. En mi caso, para el simil del proceso a exponer utilicé una variante de diagrama en V básico como el ilustrado a continuación en lugar del diagrama en V tradicional en diseños Hardware o Software con un nivel más de profundidad:
 
-![Diagrama conceptual del Ciclo en V](diagrama_v.png)
+![Diagrama conceptual del Ciclo en V](Modelo_V.png)
 
 El diagrama en V me facilitaría que el roadmap de la iniciativa a presentar se entendiera mejor, pero para que el concepto calara y quedara una imagen del mismo en la retina de cada stakeholder, necesitaba una metáfora potente. Y pocas cosas combinan diseño, pruebas y un objetivo claro de rendimiento como la creación de un coche de F1.
 

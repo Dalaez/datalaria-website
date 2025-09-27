@@ -21,7 +21,7 @@ For those unfamiliar, the V-Model is a development model that represents the seq
 
 It sounds logical, but its standard graphical representation can be abstract and uninspiring for those who are not familiar with it. In my case, for the simile of the process I was presenting, I used a variation of the basic V-diagram as illustrated below, instead of the traditional V-diagram used in Hardware or Software design which has a deeper level of detail:
 
-![Conceptual diagram of the V-Model](diagrama_v.png)
+![Conceptual diagram of the V-Model](Model_V.png)
 
 The V-diagram would help make the initiative's roadmap easier to understand, but for the concept to truly sink in and leave a lasting image in each stakeholder's mind, I needed a powerful metaphor. And few things combine design, testing, and a clear performance objective like the creation of an F1 car.
 
