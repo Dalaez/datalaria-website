@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+rset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Radio Frequency Converter</title>
+    <title>Mechanics Converter</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -20,64 +17,88 @@
 
     <div class="min-h-screen w-full p-4 sm:p-6 lg:p-8 flex flex-col items-center">
         <header class="text-center mb-10 w-full max-w-4xl">
-            <a href="index_en.html" class="btn-back inline-flex items-center gap-2 rounded-lg px-4 py-2 mb-6">
+            <a href="index.html" class="btn-back inline-flex items-center gap-2 rounded-lg px-4 py-2 mb-6">
                 <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
                 Back to Home
             </a>
             <h1 class="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600">
-                Radio Frequency Converters
+                Mechanics Converters
             </h1>
         </header>
 
         <main class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Frequency Converter -->
+            <!-- Mass Converter -->
             <section class="converter-card rounded-xl p-6">
-                <h2 class="text-2xl font-semibold mb-4 text-blue-400">Frequency</h2>
+                <h2 class="text-2xl font-semibold mb-4 text-blue-400">Mass</h2>
                 <div class="grid grid-cols-1 gap-4 items-end">
                     <div>
-                        <input type="number" id="frequency-from-value" class="w-full form-input rounded-md p-2" value="100">
-                        <select id="frequency-from-unit" class="w-full form-select rounded-md p-2 mt-2">
-                            <option value="hz">Hertz (Hz)</option>
-                            <option value="khz">Kilohertz (kHz)</option>
-                            <option value="mhz" selected>Megahertz (MHz)</option>
-                            <option value="ghz">Gigahertz (GHz)</option>
+                        <input type="number" id="mass-from-value" class="w-full form-input rounded-md p-2" value="1">
+                        <select id="mass-from-unit" class="w-full form-select rounded-md p-2 mt-2">
+                            <option value="kilograms">Kilograms (kg)</option>
+                            <option value="grams">Grams (g)</option>
+                            <option value="pounds">Pounds (lb)</option>
+                            <option value="ounces">Ounces (oz)</option>
+                            <option value="tonnes">Tonnes</option>
                         </select>
                     </div>
                     <div>
-                        <div id="frequency-to-value" class="w-full p-2 result-box rounded-md font-mono text-lg text-green-400">...</div>
-                        <select id="frequency-to-unit" class="w-full form-select rounded-md p-2 mt-2">
-                            <option value="hz">Hertz (Hz)</option>
-                            <option value="khz" selected>Kilohertz (kHz)</option>
-                            <option value="mhz">Megahertz (MHz)</option>
-                            <option value="ghz">Gigahertz (GHz)</option>
+                        <div id="mass-to-value" class="w-full p-2 result-box rounded-md font-mono text-lg text-green-400">...</div>
+                        <select id="mass-to-unit" class="w-full form-select rounded-md p-2 mt-2">
+                           <option value="kilograms" selected>Kilograms (kg)</option>
+                           <option value="grams">Grams (g)</option>
+                           <option value="pounds">Pounds (lb)</option>
+                           <option value="ounces">Ounces (oz)</option>
+                           <option value="tonnes">Tonnes</option>
                         </select>
                     </div>
                 </div>
             </section>
 
-            <!-- Frequency <-> Wavelength Converter -->
+            <!-- Force Converter -->
             <section class="converter-card rounded-xl p-6">
-                <h2 class="text-2xl font-semibold mb-4 text-blue-400">Frequency ⇔ Wavelength</h2>
-                <div class="space-y-4">
-                    <!-- Frequency -->
+                <h2 class="text-2xl font-semibold mb-4 text-blue-400">Force</h2>
+                <div class="grid grid-cols-1 gap-4 items-end">
                     <div>
-                        <label class="block text-sm font-medium text-gray-300 mb-1">Frequency</label>
-                        <input type="number" id="fw-from-freq-value" class="w-full form-input rounded-md p-2" value="100">
-                        <select id="fw-from-freq-unit" class="w-full form-select rounded-md p-2 mt-2">
-                            <option value="hz">Hertz (Hz)</option>
-                            <option value="khz">Kilohertz (kHz)</option>
-                            <option value="mhz" selected>Megahertz (MHz)</option>
-                            <option value="ghz">Gigahertz (GHz)</option>
+                        <input type="number" id="force-from-value" class="w-full form-input rounded-md p-2" value="1">
+                        <select id="force-from-unit" class="w-full form-select rounded-md p-2 mt-2">
+                            <option value="newtons">Newtons (N)</option>
+                            <option value="kilonewtons">Kilonewtons (kN)</option>
+                            <option value="pound_force">Pound-force (lbf)</option>
                         </select>
                     </div>
-                    <!-- Wavelength -->
-                     <div>
-                        <label class="block text-sm font-medium text-gray-300 mb-1">Wavelength</label>
-                        <div id="fw-to-wav-value" class="w-full p-2 result-box rounded-md font-mono text-lg text-green-400">...</div>
-                        <select id="fw-to-wav-unit" class="w-full form-select rounded-md p-2 mt-2">
-                            <option value="m" selected>Meters (m)</option>
-                            <option value="cm">Centimeters (cm)</option>
-                            <option value="km">Kilometers (km)</option>
+                    <div>
+                        <div id="force-to-value" class="w-full p-2 result-box rounded-md font-mono text-lg text-green-400">...</div>
+                        <select id="force-to-unit" class="w-full form-select rounded-md p-2 mt-2">
+                           <option value="newtons" selected>Newtons (N)</option>
+                           <option value="kilonewtons">Kilonewtons (kN)</option>
+                           <option value="pound_force">Pound-force (lbf)</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Pressure Converter -->
+            <section class="converter-card rounded-xl p-6 md:col-span-2">
+                <h2 class="text-2xl font-semibold mb-4 text-blue-400">Pressure</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-end">
+                    <div>
+                        <input type="number" id="pressure-from-value" class="w-full form-input rounded-md p-2" value="1">
+                        <select id="pressure-from-unit" class="w-full form-select rounded-md p-2 mt-2">
+                            <option value="pascals">Pascals (Pa)</option>
+                            <option value="kilopascals">Kilopascals (kPa)</option>
+                            <option value="bars">Bars</option>
+                            <option value="psi">PSI</option>
+                            <option value="atmospheres">Atmospheres (atm)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <div id="pressure-to-value" class="w-full p-2 result-box rounded-md font-mono text-lg text-green-400">...</div>
+                        <select id="pressure-to-unit" class="w-full form-select rounded-md p-2 mt-2">
+                           <option value="kilopascals">Kilopascals (kPa)</option>
+                           <option value="pascals" selected>Pascals (Pa)</option>
+                           <option value="bars">Bars</option>
+                           <option value="psi">PSI</option>
+                           <option value="atmospheres">Atmospheres (atm)</option>
                         </select>
                     </div>
                 </div>
@@ -89,15 +110,15 @@
             <h2 class="text-3xl font-bold text-center mb-8 text-blue-300">How It's Calculated</h2>
             <div class="space-y-8">
                 <article class="p-6 rounded-lg border border-gray-700" style="background-color: #1f2937;">
-                    <h3 class="text-xl font-semibold text-blue-400 mb-3">Frequency Conversion</h3>
-                    <p class="mb-4">The conversion between frequency units (Hertz, Kilohertz, etc.) uses Hertz (Hz) as the base unit and factors of 1000. The formula is:</p>
-                    <p class="font-mono text-center bg-gray-900 p-3 rounded-md text-green-400">Final Value = (Initial Value × Source Factor) / Target Factor</p>
-                </article>
-                <article class="p-6 rounded-lg border border-gray-700" style="background-color: #1f2937;">
-                    <h3 class="text-xl font-semibold text-blue-400 mb-3">Frequency ⇔ Wavelength</h3>
-                    <p class="mb-4">The relationship between frequency (f) and wavelength (λ) is defined by the speed of light (c), a universal constant. The main formula is:</p>
-                    <p class="font-mono text-center bg-gray-900 p-3 rounded-md text-green-400">Wavelength (λ) = c / Frequency (f)</p>
-                    <p class="mt-4">For the calculation, the frequency is first converted to its value in Hertz (Hz). Then, the formula is applied, using the value of `c` as `299,792,458 m/s`. The result, obtained in meters, is finally converted to the desired wavelength unit (cm, km, etc.).</p>
+                    <h3 class="text-xl font-semibold text-blue-400 mb-3">Mechanics Conversions</h3>
+                    <p class="mb-4">Mass, Force, and Pressure conversions follow the same principle: a base unit and conversion factors are used to apply the general formula:</p>
+                    <p class="font-mono text-center bg-gray-900 p-3 rounded-md text-green-400 mb-4">Final Value = (Initial Value × Source Factor) / Target Factor</p>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li><b>Mass:</b> The base unit is the Kilogram (kg).</li>
+                        <li><b>Force:</b> The base unit is the Newton (N).</li>
+                        <li><b>Pressure:</b> The base unit is the Pascal (Pa).</li>
+                    </ul>
+                    <p class="mt-4">For any conversion, the value is first transformed to its equivalent in the base unit and then to the target unit.</p>
                 </article>
             </div>
         </section>
@@ -105,20 +126,17 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    const SPEED_OF_LIGHT = 299792458; // m/s
-
     const factors = {
-        frequency: { hz: 1, khz: 1e3, mhz: 1e6, ghz: 1e9 },
-        wavelength: { m: 1, cm: 1e-2, km: 1e3 }
+        mass: { kilograms: 1, grams: 0.001, pounds: 0.453592, ounces: 0.0283495, tonnes: 1000 },
+        force: { newtons: 1, kilonewtons: 1000, pound_force: 4.44822 },
+        pressure: { pascals: 1, kilopascals: 1000, bars: 100000, psi: 6894.76, atmospheres: 101325 }
     };
-
-    function setupSimpleConverter(type) {
+    function setupConverter(type) {
         const fromValueEl = document.getElementById(`${type}-from-value`);
         const fromUnitEl = document.getElementById(`${type}-from-unit`);
         const toValueEl = document.getElementById(`${type}-to-value`);
         const toUnitEl = document.getElementById(`${type}-to-unit`);
         if (!fromValueEl) return;
-
         function convert() {
             const fromValue = parseFloat(fromValueEl.value);
             if (isNaN(fromValue)) { toValueEl.textContent = '...'; return; }
@@ -126,7 +144,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const toUnit = toUnitEl.value;
             const baseValue = fromValue * factors[type][fromUnit];
             const result = baseValue / factors[type][toUnit];
-            outputResult(toValueEl, result);
+            if (Math.abs(result) < 0.001 && result !== 0) {
+                toValueEl.textContent = result.toExponential(4);
+            } else {
+                toValueEl.textContent = parseFloat(result.toFixed(4)).toLocaleString('en-US');
+            }
         }
         [fromValueEl, fromUnitEl, toUnitEl].forEach(el => {
             el.addEventListener('input', convert);
@@ -134,55 +156,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         convert();
     }
-    
-    function setupFreqWavConverter() {
-        const freqValueEl = document.getElementById('fw-from-freq-value');
-        const freqUnitEl = document.getElementById('fw-from-freq-unit');
-        const wavValueEl = document.getElementById('fw-to-wav-value');
-        const wavUnitEl = document.getElementById('fw-to-wav-unit');
-        if (!freqValueEl) return;
-
-        function convertFreqToWav() {
-            const freqValue = parseFloat(freqValueEl.value);
-            if (isNaN(freqValue) || freqValue === 0) {
-                wavValueEl.textContent = '...';
-                return;
-            }
-            
-            const freqUnit = freqUnitEl.value;
-            const wavUnit = wavUnitEl.value;
-
-            // 1. Convert frequency to Hz
-            const freqInHz = freqValue * factors.frequency[freqUnit];
-            // 2. Calculate wavelength in meters (λ = c / f)
-            const wavInMeters = SPEED_OF_LIGHT / freqInHz;
-            // 3. Convert wavelength in meters to the target unit
-            const result = wavInMeters / factors.wavelength[wavUnit];
-
-            outputResult(wavValueEl, result);
-        }
-        
-        [freqValueEl, freqUnitEl, wavUnitEl].forEach(el => {
-             el.addEventListener('input', convertFreqToWav);
-             el.addEventListener('change', convertFreqToWav);
-        });
-        
-        convertFreqToWav();
-    }
-    
-    function outputResult(element, result) {
-        if (result === 0) {
-            element.textContent = 0;
-        } else if (Math.abs(result) < 0.001) {
-            element.textContent = result.toExponential(4);
-        } else {
-            element.textContent = parseFloat(result.toFixed(4)).toLocaleString('en-US');
-        }
-    }
-
-    setupSimpleConverter('frequency');
-    setupFreqWavConverter();
+    setupConverter('mass');
+    setupConverter('force');
+    setupConverter('pressure');
 });
 </script>
 </body>
 </html>
+
+

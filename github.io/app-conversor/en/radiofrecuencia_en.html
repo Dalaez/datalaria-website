@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversor de Radiofrecuencia</title>
+    <title>Radio Frequency Converter</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -22,17 +22,17 @@
         <header class="text-center mb-10 w-full max-w-4xl">
             <a href="index.html" class="btn-back inline-flex items-center gap-2 rounded-lg px-4 py-2 mb-6">
                 <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-                Volver al Inicio
+                Back to Home
             </a>
             <h1 class="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600">
-                Conversores de Radiofrecuencia
+                Radio Frequency Converters
             </h1>
         </header>
 
         <main class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Conversor de Frecuencia -->
+            <!-- Frequency Converter -->
             <section class="converter-card rounded-xl p-6">
-                <h2 class="text-2xl font-semibold mb-4 text-blue-400">Frecuencia</h2>
+                <h2 class="text-2xl font-semibold mb-4 text-blue-400">Frequency</h2>
                 <div class="grid grid-cols-1 gap-4 items-end">
                     <div>
                         <input type="number" id="frequency-from-value" class="w-full form-input rounded-md p-2" value="100">
@@ -55,13 +55,13 @@
                 </div>
             </section>
 
-            <!-- Conversor Frecuencia <-> Longitud de Onda -->
+            <!-- Frequency <-> Wavelength Converter -->
             <section class="converter-card rounded-xl p-6">
-                <h2 class="text-2xl font-semibold mb-4 text-blue-400">Frecuencia ⇔ Longitud de Onda</h2>
+                <h2 class="text-2xl font-semibold mb-4 text-blue-400">Frequency ⇔ Wavelength</h2>
                 <div class="space-y-4">
-                    <!-- Frecuencia -->
+                    <!-- Frequency -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-300 mb-1">Frecuencia</label>
+                        <label class="block text-sm font-medium text-gray-300 mb-1">Frequency</label>
                         <input type="number" id="fw-from-freq-value" class="w-full form-input rounded-md p-2" value="100">
                         <select id="fw-from-freq-unit" class="w-full form-select rounded-md p-2 mt-2">
                             <option value="hz">Hertz (Hz)</option>
@@ -70,34 +70,34 @@
                             <option value="ghz">Gigahertz (GHz)</option>
                         </select>
                     </div>
-                    <!-- Longitud de Onda -->
+                    <!-- Wavelength -->
                      <div>
-                        <label class="block text-sm font-medium text-gray-300 mb-1">Longitud de Onda</label>
+                        <label class="block text-sm font-medium text-gray-300 mb-1">Wavelength</label>
                         <div id="fw-to-wav-value" class="w-full p-2 result-box rounded-md font-mono text-lg text-green-400">...</div>
                         <select id="fw-to-wav-unit" class="w-full form-select rounded-md p-2 mt-2">
-                            <option value="m" selected>Metros (m)</option>
-                            <option value="cm">Centímetros (cm)</option>
-                            <option value="km">Kilómetros (km)</option>
+                            <option value="m" selected>Meters (m)</option>
+                            <option value="cm">Centimeters (cm)</option>
+                            <option value="km">Kilometers (km)</option>
                         </select>
                     </div>
                 </div>
             </section>
         </main>
 
-        <!-- Sección de Explicaciones -->
+        <!-- Explanations Section -->
         <section class="mt-12 w-full max-w-4xl text-gray-300">
-            <h2 class="text-3xl font-bold text-center mb-8 text-blue-300">¿Cómo se Calcula?</h2>
+            <h2 class="text-3xl font-bold text-center mb-8 text-blue-300">How It's Calculated</h2>
             <div class="space-y-8">
                 <article class="p-6 rounded-lg border border-gray-700" style="background-color: #1f2937;">
-                    <h3 class="text-xl font-semibold text-blue-400 mb-3">Conversión de Frecuencia</h3>
-                    <p class="mb-4">La conversión entre unidades de frecuencia (Hertz, Kilohertz, etc.) utiliza el Hertz (Hz) como unidad base y factores de 1000. La fórmula es:</p>
-                    <p class="font-mono text-center bg-gray-900 p-3 rounded-md text-green-400">Valor Final = (Valor Inicial × Factor Origen) / Factor Destino</p>
+                    <h3 class="text-xl font-semibold text-blue-400 mb-3">Frequency Conversion</h3>
+                    <p class="mb-4">The conversion between frequency units (Hertz, Kilohertz, etc.) uses Hertz (Hz) as the base unit and factors of 1000. The formula is:</p>
+                    <p class="font-mono text-center bg-gray-900 p-3 rounded-md text-green-400">Final Value = (Initial Value × Source Factor) / Target Factor</p>
                 </article>
                 <article class="p-6 rounded-lg border border-gray-700" style="background-color: #1f2937;">
-                    <h3 class="text-xl font-semibold text-blue-400 mb-3">Frecuencia ⇔ Longitud de Onda</h3>
-                    <p class="mb-4">La relación entre frecuencia (f) y longitud de onda (λ) está definida por la velocidad de la luz (c), una constante universal. La fórmula principal es:</p>
-                    <p class="font-mono text-center bg-gray-900 p-3 rounded-md text-green-400">Longitud de Onda (λ) = c / Frecuencia (f)</p>
-                    <p class="mt-4">Para el cálculo, primero se convierte la frecuencia a su valor en Hertz (Hz). Luego, se aplica la fórmula, usando el valor de `c` como `299,792,458 m/s`. El resultado, que se obtiene en metros, se convierte finalmente a la unidad de longitud de onda deseada (cm, km, etc.).</p>
+                    <h3 class="text-xl font-semibold text-blue-400 mb-3">Frequency ⇔ Wavelength</h3>
+                    <p class="mb-4">The relationship between frequency (f) and wavelength (λ) is defined by the speed of light (c), a universal constant. The main formula is:</p>
+                    <p class="font-mono text-center bg-gray-900 p-3 rounded-md text-green-400">Wavelength (λ) = c / Frequency (f)</p>
+                    <p class="mt-4">For the calculation, the frequency is first converted to its value in Hertz (Hz). Then, the formula is applied, using the value of `c` as `299,792,458 m/s`. The result, obtained in meters, is finally converted to the desired wavelength unit (cm, km, etc.).</p>
                 </article>
             </div>
         </section>
@@ -152,11 +152,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const freqUnit = freqUnitEl.value;
             const wavUnit = wavUnitEl.value;
 
-            // 1. Convertir frecuencia a Hz
+            // 1. Convert frequency to Hz
             const freqInHz = freqValue * factors.frequency[freqUnit];
-            // 2. Calcular longitud de onda en metros (λ = c / f)
+            // 2. Calculate wavelength in meters (λ = c / f)
             const wavInMeters = SPEED_OF_LIGHT / freqInHz;
-            // 3. Convertir longitud de onda en metros a la unidad de destino
+            // 3. Convert wavelength in meters to the target unit
             const result = wavInMeters / factors.wavelength[wavUnit];
 
             outputResult(wavValueEl, result);
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (Math.abs(result) < 0.001) {
             element.textContent = result.toExponential(4);
         } else {
-            element.textContent = parseFloat(result.toFixed(4)).toLocaleString('es-ES');
+            element.textContent = parseFloat(result.toFixed(4)).toLocaleString('en-US');
         }
     }
 
@@ -186,4 +186,6 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
+
+
 
