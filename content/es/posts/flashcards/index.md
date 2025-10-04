@@ -1,6 +1,6 @@
 ---
 title: "Programando con IA: Creando mi Propia App de Flashcards para Estudiar"
-date: 2025-10-03
+date: 2025-11-10
 draft: False
 categories: ["Proyectos", "Herramientas"]
 tags: ["ia", "flashcards", "aprendizaje", "estudio", "desarrollo web", "no-code", "gamificacion"]
