@@ -1,6 +1,6 @@
 ---
-title: "Creando mi 'Navaja Suiza' Digital: Un Conversor de Unidades a Medida con la IA"
-date: 2025-10-04
+title: "Flashcards"
+date: 2025-11-10
 draft: False
 categories: ["Proyectos", "Herramientas"]
 tags: ["gemini", "ia", "desarrollo web", "conversor de unidades", "html", "css", "javascript", "ingeniería"]
