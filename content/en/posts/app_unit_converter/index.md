@@ -1,6 +1,6 @@
 ---
 title: "Building My Digital 'Swiss Army Knife': A Custom Unit Converter with AI"
-date: 2025-09-21
+date: 2025-10-04
 draft: False
 categories: ["Projects", "Tools"]
 tags: ["gemini", "ai", "web development", "unit converter", "html", "css", "javascript", "engineering"]

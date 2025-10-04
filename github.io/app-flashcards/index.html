@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicación de Flashcards</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Estilos para la animación de la tarjeta */
+        .card {
+            perspective: 1000px;
+        }
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .card.is-flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .card-front {
+            background-color: white;
+        }
+        .card-back {
+            background-color: #f0f9ff; /* light-sky-50 */
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 flex items-center justify-center min-h-screen p-4">
+
+    <div class="w-full max-w-2xl mx-auto">
+        <!-- Vista de Configuración -->
+        <div id="setup-view">
+            <div class="bg-white p-8 rounded-2xl shadow-lg text-center">
+                <h1 class="text-3xl font-bold text-sky-700 mb-2">Flashcards de Estudio</h1>
+                <p class="text-gray-600 mb-6">Pega tu lista de conceptos o sube un archivo para empezar a aprender.</p>
+
+                <textarea id="text-input" class="w-full h-40 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition" placeholder="Ejemplo:&#10;Perro,Dog (dawg)&#10;Gato,Cat (kat)&#10;Casa;House (hows)"></textarea>
+                
+                <div class="my-4 text-gray-500 font-semibold">O</div>
+
+                <label for="file-input" class="w-full inline-block bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-3 px-4 rounded-lg cursor-pointer transition">
+                    Seleccionar Fichero (.txt o .csv)
+                </label>
+                <input type="file" id="file-input" class="hidden" accept=".txt,.csv">
+                <p id="file-name" class="mt-2 text-sm text-gray-500"></p>
+
+                <button id="start-btn" class="mt-6 w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-4 rounded-lg text-lg transition shadow-md hover:shadow-lg disabled:bg-gray-400 disabled:cursor-not-allowed" disabled>
+                    ¡Empezar a Estudiar!
+                </button>
+            </div>
+        </div>
+
+        <!-- Vista de Juego -->
+        <div id="game-view" class="hidden">
+            <header class="flex justify-between items-center mb-4">
+                <div id="progress" class="text-lg font-semibold text-gray-700">Tarjeta 1 de 20</div>
+                <div class="text-lg font-bold text-sky-700">Puntuación: <span id="score">0</span></div>
+            </header>
+
+            <div id="flashcard" class="card w-full h-80 cursor-pointer mb-4">
+                <div class="card-inner">
+                    <div id="card-front" class="card-face card-front">
+                        <!-- Contenido de la cara frontal -->
+                    </div>
+                    <div id="card-back" class="card-face card-back">
+                        <!-- Contenido de la cara trasera -->
+                    </div>
+                </div>
+            </div>
+
+            <div id="feedback-area" class="h-10 text-center text-xl font-semibold"></div>
+        </div>
+
+        <!-- Vista Final -->
+        <div id="end-view" class="hidden">
+            <div class="bg-white p-8 rounded-2xl shadow-lg text-center">
+                <h2 id="final-title" class="text-3xl font-bold text-sky-700 mb-4">¡Ronda Terminada!</h2>
+                <p id="final-score" class="text-xl text-gray-600 mb-6">Tu puntuación final es: 0</p>
+                <div id="celebration" class="mb-6"></div>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button id="review-btn" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-4 rounded-lg transition shadow-md hover:shadow-lg">
+                        Repasar Falladas
+                    </button>
+                    <button id="restart-btn" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-4 rounded-lg transition shadow-md hover:shadow-lg">
+                        Volver a Empezar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Referencias a Elementos del DOM ---
+        const setupView = document.getElementById('setup-view');
+        const gameView = document.getElementById('game-view');
+        const endView = document.getElementById('end-view');
+
+        const textInput = document.getElementById('text-input');
+        const fileInput = document.getElementById('file-input');
+        const fileNameDisplay = document.getElementById('file-name');
+        const startBtn = document.getElementById('start-btn');
+        
+        const progressDisplay = document.getElementById('progress');
+        const scoreDisplay = document.getElementById('score');
+        const flashcard = document.getElementById('flashcard');
+        const cardFront = document.getElementById('card-front');
+        const cardBack = document.getElementById('card-back');
+        const feedbackArea = document.getElementById('feedback-area');
+
+        const finalTitle = document.getElementById('final-title');
+        const finalScore = document.getElementById('final-score');
+        const celebration = document.getElementById('celebration');
+        const reviewBtn = document.getElementById('review-btn');
+        const restartBtn = document.getElementById('restart-btn');
+
+        // --- Estado de la Aplicación ---
+        let allCards = [];
+        let currentDeck = [];
+        let failedCards = [];
+        let currentCardIndex = 0;
+        let score = 0;
+
+        // --- Arrays de Gamificación ---
+        const correctEmojis = ['🥳', '🎉', '🤩', '👍', '✅', '🚀'];
+        const correctMessages = ['¡Genial!', '¡Sigue así!', '¡Excelente!', '¡Muy bien!', '¡Lo tienes!'];
+        const incorrectEmojis = ['🤔', '😢', '🧐', '😬', '👀'];
+        const incorrectMessages = ['¡Casi!', '¡Ánimo!', '¡A la próxima!', '¡No te rindas!'];
+        const celebrationGifs = [
+            'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3doazU1dXN4eHZkZ3M1bWNpa3pxemQ1dW9naXJtczk2eXh3bTY5dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oz8xAFtqoOUUrsh7W/giphy.gif',
+            'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExejk1eHR2bXdyYnd1bGJmMDk2M3Qzdmc2bTFzNG90aTNwMG5yNmhpaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/g9582DNuQppxC/giphy.gif',
+            'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXN6cHNqN29udGZ0NmFvd2FzY291ZzQzbXpxcGd0bm54aHd1bjR6NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2sXf9vySAc27MxhrXg/giphy.gif'
+        ];
+
+        // --- Lógica de la Aplicación ---
+
+        // Función para habilitar el botón de inicio si hay contenido
+        function checkStartButtonState() {
+            startBtn.disabled = textInput.value.trim() === '' && fileInput.files.length === 0;
+        }
+
+        // Parsear el texto de entrada a un array de tarjetas
+        function parseInput(text) {
+            return text.trim().split('\n')
+                .map(line => line.trim())
+                .filter(line => line.includes(',') || line.includes(';'))
+                .map(line => {
+                    const parts = line.split(/[,;]/, 2);
+                    return { front: parts[0].trim(), back: parts[1].trim() };
+                });
+        }
+        
+        // Barajar un array (algoritmo Fisher-Yates)
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+        
+        // Iniciar una ronda de estudio
+        function startGame(deck) {
+            currentDeck = [...deck];
+            shuffleArray(currentDeck);
+            currentCardIndex = 0;
+            failedCards = [];
+            score = 0;
+            scoreDisplay.textContent = score;
+            
+            setupView.classList.add('hidden');
+            endView.classList.add('hidden');
+            gameView.classList.remove('hidden');
+            
+            showNextCard();
+        }
+
+        // Mostrar la siguiente tarjeta o terminar la ronda
+        function showNextCard() {
+            if (currentCardIndex >= currentDeck.length) {
+                endGame();
+                return;
+            }
+            
+            flashcard.classList.remove('is-flipped');
+            feedbackArea.innerHTML = '';
+            
+            setTimeout(() => {
+                const card = currentDeck[currentCardIndex];
+                cardFront.innerHTML = `<h2 class="text-4xl font-bold text-center">${card.front}</h2>`;
+                cardBack.innerHTML = `
+                    <div class="text-center">
+                        <h3 class="text-3xl font-semibold text-sky-800">${card.back}</h3>
+                    </div>
+                    <div class="absolute bottom-6 flex gap-4">
+                        <button onclick="handleAnswer(false)" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-8 rounded-lg text-2xl transition">✗</button>
+                        <button onclick="handleAnswer(true)" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-8 rounded-lg text-2xl transition">✓</button>
+                    </div>`;
+                progressDisplay.textContent = `Tarjeta ${currentCardIndex + 1} de ${currentDeck.length}`;
+            }, 300); // Esperar un poco a que la tarjeta se voltee
+        }
+        
+        // Manejar la respuesta del usuario (correcto/incorrecto)
+        function handleAnswer(isCorrect) {
+            if (isCorrect) {
+                score += 2;
+                scoreDisplay.textContent = score;
+                const emoji = correctEmojis[Math.floor(Math.random() * correctEmojis.length)];
+                const message = correctMessages[Math.floor(Math.random() * correctMessages.length)];
+                feedbackArea.innerHTML = `<span class="text-green-600">${emoji} ${message}</span>`;
+            } else {
+                failedCards.push(currentDeck[currentCardIndex]);
+                const emoji = incorrectEmojis[Math.floor(Math.random() * incorrectEmojis.length)];
+                const message = incorrectMessages[Math.floor(Math.random() * incorrectMessages.length)];
+                feedbackArea.innerHTML = `<span class="text-red-600">${emoji} ${message}</span>`;
+            }
+            
+            currentCardIndex++;
+            setTimeout(showNextCard, 1200);
+        }
+
+        // Terminar la ronda y mostrar resultados
+        function endGame() {
+            gameView.classList.add('hidden');
+            endView.classList.remove('hidden');
+
+            finalScore.textContent = `Tu puntuación final es: ${score}`;
+            celebration.innerHTML = '';
+            
+            if (score === currentDeck.length * 2 && currentDeck.length > 0) {
+                finalTitle.textContent = '¡Puntuación Perfecta!';
+                const gif = celebrationGifs[Math.floor(Math.random() * celebrationGifs.length)];
+                celebration.innerHTML = `<img src="${gif}" alt="Celebración" class="mx-auto rounded-lg max-h-60">`;
+            } else {
+                finalTitle.textContent = '¡Ronda Terminada!';
+            }
+
+            if (failedCards.length > 0) {
+                reviewBtn.classList.remove('hidden');
+                reviewBtn.textContent = `Repasar ${failedCards.length} Falladas`;
+            } else {
+                reviewBtn.classList.add('hidden');
+            }
+        }
+        
+        // --- Event Listeners ---
+        
+        // Detectar cambios en el textarea
+        textInput.addEventListener('input', checkStartButtonState);
+
+        // Leer el archivo seleccionado por el usuario
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                fileNameDisplay.textContent = file.name;
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    textInput.value = e.target.result;
+                    checkStartButtonState();
+                };
+                reader.readAsText(file);
+            } else {
+                fileNameDisplay.textContent = '';
+            }
+        });
+        
+        // Botón de Inicio
+        startBtn.addEventListener('click', () => {
+            const cardsFromText = parseInput(textInput.value);
+            if (cardsFromText.length === 0) {
+                alert('Por favor, introduce tarjetas en un formato válido (ej: Palabra,Traducción).');
+                return;
+            }
+            allCards = cardsFromText;
+            startGame(allCards);
+        });
+
+        // Voltear la tarjeta al hacer clic
+        flashcard.addEventListener('click', () => {
+            flashcard.classList.toggle('is-flipped');
+        });
+
+        // Botón de Repasar Falladas
+        reviewBtn.addEventListener('click', () => {
+            startGame(failedCards);
+        });
+
+        // Botón de Volver a Empezar
+        restartBtn.addEventListener('click', () => {
+            startGame(allCards);
+        });
+
+    </script>
+</body>
+</html>
