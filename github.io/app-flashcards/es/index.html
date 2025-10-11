@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicación de Flashcards</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Estilos para la animación de la tarjeta */
+        .card { perspective: 1000px; }
+        .card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; }
+        .card.is-flipped .card-inner { transform: rotateY(180deg); }
+        .card-face { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; display: flex; align-items: center; justify-content: center; flex-direction: column; padding: 2rem; border-radius: 1rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); }
+        .card-front { background-color: white; }
+        .card-back { background-color: #f0f9ff; transform: rotateY(180deg); }
+        .loader { border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 20px auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 flex flex-col items-center justify-center min-h-screen p-4">
+
+    <main class="w-full max-w-2xl mx-auto">
+        <!-- Vista de Configuración -->
+        <div id="setup-view">
+            <div class="bg-white p-8 rounded-2xl shadow-lg text-center">
+                <h1 class="text-3xl font-bold text-sky-700 mb-2">Flashcards de Estudio</h1>
+                <p class="text-gray-600 mb-4">Usa el modo manual para tus propias listas, o el modo automático para que la IA genere las respuestas.</p>
+
+                <!-- Selección de Modo -->
+                <div class="flex justify-center gap-6 mb-6">
+                    <label class="flex items-center space-x-2 cursor-pointer">
+                        <input type="radio" name="mode" value="manual" class="form-radio text-sky-600" checked>
+                        <span class="font-semibold">Modo Manual</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer">
+                        <input type="radio" name="mode" value="auto" class="form-radio text-sky-600">
+                        <span class="font-semibold">Modo Automático (IA)</span>
+                    </label>
+                </div>
+
+                <!-- Opciones para Modo Automático -->
+                <div id="auto-options" class="hidden mb-4">
+                     <label for="language-select" class="font-semibold text-gray-700">Generar:</label>
+                    <select id="language-select" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
+                        <optgroup label="Traducción">
+                            <option value="translate_es">a Español</option>
+                            <option value="translate_en" selected>a Inglés</option>
+                            <option value="translate_fr">a Francés</option>
+                            <option value="translate_de">a Alemán</option>
+                            <option value="translate_pt">a Portugués</option>
+                            <option value="translate_it">a Italiano</option>
+                        </optgroup>
+                        <optgroup label="Definición">
+                            <option value="define_es">en Español</option>
+                            <option value="define_en">en Inglés</option>
+                            <option value="define_fr">en Francés</option>
+                            <option value="define_de">en Alemán</option>
+                            <option value="define_pt">en Portugués</option>
+                            <option value="define_it">en Italiano</option>
+                        </optgroup>
+                    </select>
+                    <div class="mt-4 text-left">
+                        <label for="api-key-input" class="font-semibold text-gray-700">Tu Clave API de Gemini:</label>
+                        <input type="password" id="api-key-input" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm" placeholder="Pega tu clave aquí para usar el modo IA">
+                        <p class="text-xs text-gray-500 mt-1">Puedes obtener una clave gratuita desde <a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-sky-600 hover:underline">Google AI Studio</a>.</p>
+                    </div>
+                </div>
+
+                <!-- Nuevo sistema de entrada de datos -->
+                <div class="grid grid-cols-12 gap-x-2 text-sm font-semibold text-gray-600 px-2 mb-1 text-left">
+                    <div id="term-header" class="col-span-5">Término</div>
+                    <div id="definition-header" class="col-span-6">Definición/Traducción</div>
+                </div>
+                <div id="input-rows-container" class="space-y-2 max-h-48 overflow-y-auto p-2 bg-gray-50 rounded-lg border">
+                    <!-- Las filas se insertan aquí con JavaScript -->
+                </div>
+                <button id="add-row-btn" type="button" class="mt-2 text-sky-600 hover:text-sky-800 font-semibold flex items-center justify-center w-full py-1 rounded-lg hover:bg-sky-100 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" /></svg>
+                    Añadir Fila
+                </button>
+
+                <p id="setup-error" class="text-red-500 h-4 mt-1 text-sm"></p>
+                
+                <div class="mt-4 flex items-center justify-center gap-4">
+                    <label for="file-input" class="flex-1 inline-block bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-3 px-4 rounded-lg cursor-pointer transition">
+                        Seleccionar Fichero
+                    </label>
+                    <a id="template-download" href="#" class="text-sky-600 hover:underline">Descargar Plantilla</a>
+                </div>
+                <input type="file" id="file-input" class="hidden" accept=".txt,.csv">
+                <p id="file-name" class="mt-2 text-sm text-gray-500"></p>
+
+                <div id="loading-area" class="hidden">
+                    <div class="loader"></div>
+                    <p class="text-sky-700 font-semibold">La IA está generando tus tarjetas, por favor espera...</p>
+                </div>
+
+                <button id="start-btn" class="mt-6 w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-4 rounded-lg text-lg transition shadow-md hover:shadow-lg disabled:bg-gray-400 disabled:cursor-not-allowed">
+                    ¡Empezar a Estudiar!
+                </button>
+            </div>
+        </div>
+        
+        <!-- Vista de Juego -->
+        <div id="game-view" class="hidden">
+            <header class="flex justify-between items-center mb-4">
+                <div id="progress" class="text-lg font-semibold text-gray-700"></div>
+                <div class="text-lg font-bold text-sky-700">Puntuación: <span id="score">0</span></div>
+                <button id="back-to-setup-game-btn" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded-lg transition text-sm">Volver al Inicio</button>
+            </header>
+            <div id="flashcard" class="card w-full h-80 cursor-pointer mb-4">
+                <div class="card-inner">
+                    <div id="card-front" class="card-face card-front"></div>
+                    <div id="card-back" class="card-face card-back"></div>
+                </div>
+            </div>
+            <div id="feedback-area" class="h-10 text-center text-xl font-semibold"></div>
+        </div>
+
+        <!-- Vista Final -->
+        <div id="end-view" class="hidden">
+            <div class="bg-white p-8 rounded-2xl shadow-lg text-center">
+                <h2 id="final-title" class="text-3xl font-bold text-sky-700 mb-4"></h2>
+                <p id="final-score" class="text-xl text-gray-600 mb-6"></p>
+                <div id="celebration" class="mb-6"></div>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button id="review-btn" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-4 rounded-lg transition shadow-md hover:shadow-lg"></button>
+                    <button id="restart-btn" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-4 rounded-lg transition shadow-md hover:shadow-lg">Volver a Empezar</button>
+                </div>
+                <button id="back-to-setup-end-btn" class="mt-4 w-full bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-3 px-4 rounded-lg transition">Volver al Inicio</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-8 text-sm text-gray-500">
+        <div class="flex items-center justify-center gap-2">
+            <img src="data:image/png;base64,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" alt="Datalaria Logo" class="h-6 w-6">
+            <span>Una aplicación de Datalaria</span>
+        </div>
+    </footer>
+
+    <script>
+        // --- Referencias a Elementos del DOM ---
+        const setupView = document.getElementById('setup-view');
+        const gameView = document.getElementById('game-view');
+        const endView = document.getElementById('end-view');
+        const modeRadios = document.querySelectorAll('input[name="mode"]');
+        const autoOptions = document.getElementById('auto-options');
+        const languageSelect = document.getElementById('language-select');
+        const apiKeyInput = document.getElementById('api-key-input');
+        const templateDownload = document.getElementById('template-download');
+        const loadingArea = document.getElementById('loading-area');
+        const setupError = document.getElementById('setup-error');
+        const fileInput = document.getElementById('file-input');
+        const fileNameDisplay = document.getElementById('file-name');
+        const startBtn = document.getElementById('start-btn');
+        const progressDisplay = document.getElementById('progress');
+        const scoreDisplay = document.getElementById('score');
+        const flashcard = document.getElementById('flashcard');
+        const cardFront = document.getElementById('card-front');
+        const cardBack = document.getElementById('card-back');
+        const feedbackArea = document.getElementById('feedback-area');
+        const finalTitle = document.getElementById('final-title');
+        const finalScore = document.getElementById('final-score');
+        const celebration = document.getElementById('celebration');
+        const reviewBtn = document.getElementById('review-btn');
+        const restartBtn = document.getElementById('restart-btn');
+        const inputRowsContainer = document.getElementById('input-rows-container');
+        const addRowBtn = document.getElementById('add-row-btn');
+        const termHeader = document.getElementById('term-header');
+        const definitionHeader = document.getElementById('definition-header');
+        const backToSetupGameBtn = document.getElementById('back-to-setup-game-btn');
+        const backToSetupEndBtn = document.getElementById('back-to-setup-end-btn');
+
+
+        // --- Estado de la Aplicación ---
+        let allCards = [];
+        let currentDeck = [];
+        let failedCards = [];
+        let currentCardIndex = 0;
+        let score = 0;
+
+        // --- Arrays de Gamificación ---
+        const correctEmojis = ['🥳', '🎉', '🤩', '👍', '✅', '🚀'];
+        const correctMessages = ['¡Genial!', '¡Sigue así!', '¡Excelente!', '¡Muy bien!', '¡Lo tienes!'];
+        const incorrectEmojis = ['🤔', '😢', '🧐', '😬', '👀'];
+        const incorrectMessages = ['¡Casi!', '¡Ánimo!', '¡A la próxima!', '¡No te rindas!'];
+        const celebrationGifs = [
+            'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3doazU1dXN4eHZkZ3M1bWNpa3pxemQ1dW9naXJtczk2eXh3bTY5dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oz8xAFtqoOUUrsh7W/giphy.gif',
+            'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExejk1eHR2bXdyYnd1bGJmMDk2M3Qzdmc2bTFzNG90aTNwMG5yNmhpaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/g9582DNuQppxC/giphy.gif',
+            'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXN6cHNqN29udGZ0NmFvd2FzY291ZzQzbXpxcGd0bm54aHd1bjR6NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2sXf9vySAc27MxhrXg/giphy.gif'
+        ];
+
+        // --- Lógica de la Aplicación ---
+        function resetToSetup() {
+            gameView.classList.add('hidden');
+            endView.classList.add('hidden');
+            setupView.classList.remove('hidden');
+            scoreDisplay.textContent = '0';
+            progressDisplay.textContent = '';
+        }
+
+        function addInputRow(term = '', def = '') {
+            const row = document.createElement('div');
+            row.className = 'grid grid-cols-12 gap-x-2 items-center input-row';
+            row.innerHTML = `
+                <div class="col-span-5">
+                    <input type="text" class="term-field w-full p-2 border border-gray-300 rounded-md shadow-sm sm:text-sm" value="${term}" placeholder="Término">
+                </div>
+                <div class="col-span-6 definition-container">
+                    <input type="text" class="definition-field w-full p-2 border border-gray-300 rounded-md shadow-sm sm:text-sm" value="${def}" placeholder="Definición/Traducción">
+                </div>
+                <div class="col-span-1 flex justify-center">
+                    <button type="button" class="delete-row-btn text-gray-400 hover:text-red-600 text-2xl font-bold">&times;</button>
+                </div>
+            `;
+            inputRowsContainer.appendChild(row);
+            row.querySelector('.delete-row-btn').addEventListener('click', () => {
+                row.remove();
+                checkStartButtonState();
+            });
+            row.querySelectorAll('input').forEach(input => input.addEventListener('input', checkStartButtonState));
+            updateUIforMode();
+        }
+
+        function getCardsFromUI() {
+            const rows = document.querySelectorAll('.input-row');
+            const cards = [];
+            const mode = getCurrentMode();
+            rows.forEach(row => {
+                const termInput = row.querySelector('.term-field');
+                const defInput = row.querySelector('.definition-field');
+                const term = termInput.value.trim();
+                const definition = defInput.value.trim();
+
+                if (mode === 'manual') {
+                    if (term && definition) cards.push({ front: term, back: definition });
+                } else { 
+                    if (term) cards.push({ front: term, back: '' });
+                }
+            });
+            return cards;
+        }
+
+        function getCurrentMode() {
+            return document.querySelector('input[name="mode"]:checked').value;
+        }
+
+        function updateUIforMode() {
+            const mode = getCurrentMode();
+            const definitionContainers = document.querySelectorAll('.definition-container');
+            const termFields = document.querySelectorAll('.term-field');
+
+            if (mode === 'auto') {
+                autoOptions.classList.remove('hidden');
+                definitionHeader.classList.add('hidden');
+                definitionContainers.forEach(c => c.classList.add('hidden'));
+                termHeader.classList.remove('col-span-5');
+                termHeader.classList.add('col-span-11');
+                termFields.forEach(f => f.parentElement.classList.add('col-span-11'));
+                termFields.forEach(f => f.parentElement.classList.remove('col-span-5'));
+            } else {
+                autoOptions.classList.add('hidden');
+                definitionHeader.classList.remove('hidden');
+                definitionContainers.forEach(c => c.classList.remove('hidden'));
+                termHeader.classList.add('col-span-5');
+                termHeader.classList.remove('col-span-11');
+                termFields.forEach(f => f.parentElement.classList.remove('col-span-11'));
+                termFields.forEach(f => f.parentElement.classList.add('col-span-5'));
+            }
+            checkStartButtonState();
+        }
+
+        async function generateCardsWithAI(terms, genMode) {
+            const apiKey = apiKeyInput.value.trim();
+            if (!apiKey) {
+                // Return an empty array to trigger the error message in the calling function
+                return [];
+            }
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+            const generatedCards = [];
+
+            const promises = terms.map(term => {
+                let prompt = '';
+                const [action, lang] = genMode.split('_');
+                const languages = {
+                    es: 'Spanish', en: 'English', fr: 'French',
+                    de: 'German', pt: 'Portuguese', it: 'Italian'
+                };
+                const languageName = languages[lang];
+
+                if (action === 'translate') {
+                    prompt = `Translate the term "${term.front}" to ${languageName}. Provide only the translation.`;
+                    if (lang === 'en') {
+                        prompt += ' If possible, also include a simple phonetic transcription in parenthesis.';
+                    }
+                } else if (action === 'define') {
+                    prompt = `Define the term "${term.front}" in ${languageName}. The definition should be a single, short, and concise phrase, suitable for a flashcard.`;
+                }
+
+                if (!prompt) return Promise.resolve();
+                
+                const payload = { contents: [{ parts: [{ text: prompt }] }] };
+                return fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+                    .then(response => {
+                        if (!response.ok) {
+                            return response.json().then(err => { throw new Error(`API Error: ${response.statusText}`) });
+                        }
+                        return response.json();
+                    })
+                    .then(result => {
+                        const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+                        if (text) {
+                            generatedCards.push({ front: term.front, back: text.trim() });
+                        } else {
+                             console.warn(`No content generated for "${term.front}"`, result);
+                        }
+                    })
+                    .catch(error => {
+                        console.error(`Error generating card for "${term.front}":`, error);
+                    });
+            });
+
+            await Promise.all(promises);
+            return generatedCards; 
+        }
+
+        function checkStartButtonState() {
+             startBtn.disabled = getCardsFromUI().length === 0 && fileInput.files.length === 0;
+        }
+        
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+        
+        function startGame(deck) {
+            currentDeck = [...deck];
+            shuffleArray(currentDeck);
+            currentCardIndex = 0;
+            failedCards = [];
+            score = 0;
+            scoreDisplay.textContent = score;
+            setupView.classList.add('hidden');
+            endView.classList.add('hidden');
+            gameView.classList.remove('hidden');
+            showNextCard();
+        }
+
+        function showNextCard() {
+            if (currentCardIndex >= currentDeck.length) {
+                endGame();
+                return;
+            }
+            flashcard.classList.remove('is-flipped');
+            feedbackArea.innerHTML = '';
+            setTimeout(() => {
+                const card = currentDeck[currentCardIndex];
+                cardFront.innerHTML = `<h2 class="text-4xl font-bold text-center">${card.front}</h2>`;
+                cardBack.innerHTML = `
+                    <div class="text-center">
+                        <h3 class="text-3xl font-semibold text-sky-800">${card.back}</h3>
+                    </div>
+                    <div class="absolute bottom-6 flex gap-4">
+                        <button onclick="handleAnswer(false)" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-8 rounded-lg text-2xl transition">✗</button>
+                        <button onclick="handleAnswer(true)" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-8 rounded-lg text-2xl transition">✓</button>
+                    </div>`;
+                progressDisplay.textContent = `Tarjeta ${currentCardIndex + 1} de ${currentDeck.length}`;
+            }, 300);
+        }
+        
+        function handleAnswer(isCorrect) {
+            if (isCorrect) {
+                score += 2;
+                scoreDisplay.textContent = score;
+                const emoji = correctEmojis[Math.floor(Math.random() * correctEmojis.length)];
+                const message = correctMessages[Math.floor(Math.random() * correctMessages.length)];
+                feedbackArea.innerHTML = `<span class="text-green-600">${emoji} ${message}</span>`;
+            } else {
+                failedCards.push(currentDeck[currentCardIndex]);
+                const emoji = incorrectEmojis[Math.floor(Math.random() * incorrectEmojis.length)];
+                const message = incorrectMessages[Math.floor(Math.random() * incorrectMessages.length)];
+                feedbackArea.innerHTML = `<span class="text-red-600">${emoji} ${message}</span>`;
+            }
+            currentCardIndex++;
+            setTimeout(showNextCard, 1200);
+        }
+
+        function endGame() {
+            gameView.classList.add('hidden');
+            endView.classList.remove('hidden');
+            finalScore.textContent = `Tu puntuación final es: ${score}`;
+            celebration.innerHTML = '';
+            if (score === currentDeck.length * 2 && currentDeck.length > 0) {
+                finalTitle.textContent = '¡Puntuación Perfecta!';
+                const gif = celebrationGifs[Math.floor(Math.random() * celebrationGifs.length)];
+                celebration.innerHTML = `<img src="${gif}" alt="Celebración" class="mx-auto rounded-lg max-h-60">`;
+            } else {
+                finalTitle.textContent = '¡Ronda Terminada!';
+            }
+            if (failedCards.length > 0) {
+                reviewBtn.classList.remove('hidden');
+                reviewBtn.textContent = `Repasar ${failedCards.length} Falladas`;
+            } else {
+                reviewBtn.classList.add('hidden');
+            }
+        }
+
+        // --- Event Listeners ---
+        modeRadios.forEach(radio => radio.addEventListener('change', updateUIforMode));
+        addRowBtn.addEventListener('click', () => addInputRow());
+        backToSetupGameBtn.addEventListener('click', resetToSetup);
+        backToSetupEndBtn.addEventListener('click', resetToSetup);
+
+        templateDownload.addEventListener('click', (e) => {
+            e.preventDefault();
+            const csvContent = "data:text/csv;charset=utf-8,Término,Definición/Traducción\nPerro,Dog\nGato,Cat\nCasa,House";
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "plantilla_flashcards.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+        
+        startBtn.addEventListener('click', async () => {
+            setupError.textContent = '';
+            const cardsFromInput = getCardsFromUI();
+            if (cardsFromInput.length === 0) {
+                 setupError.textContent = 'Por favor, introduce al menos una tarjeta.';
+                return;
+            }
+            const mode = getCurrentMode();
+            if (mode === 'auto') {
+                 // Save API Key to localStorage for convenience
+                const apiKey = apiKeyInput.value.trim();
+                if (apiKey) {
+                    localStorage.setItem('geminiApiKey', apiKey);
+                }
+
+                loadingArea.classList.remove('hidden');
+                startBtn.disabled = true;
+                const generationMode = languageSelect.value;
+                const generatedCards = await generateCardsWithAI(cardsFromInput, generationMode);
+                loadingArea.classList.add('hidden');
+                startBtn.disabled = false;
+                if (generatedCards.length > 0) {
+                    allCards = generatedCards;
+                    startGame(allCards);
+                } else {
+                    setupError.textContent = 'La IA no pudo generar las tarjetas. Revisa tu clave API o conexión.';
+                }
+            } else { // Modo Manual
+                allCards = cardsFromInput;
+                startGame(allCards);
+            }
+        });
+        
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                fileNameDisplay.textContent = file.name;
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const text = e.target.result;
+                    inputRowsContainer.innerHTML = ''; 
+                    const lines = text.trim().split('\n').map(l => l.trim()).filter(l => l);
+                    lines.forEach((line, index) => {
+                        if(index === 0 && (line.toLowerCase().includes('término') || line.toLowerCase().includes('termino'))) return; 
+                        const parts = line.split(/[,;]/, 2);
+                        addInputRow(parts[0] || '', parts[1] || '');
+                    });
+                    if(inputRowsContainer.children.length === 0) addInputRow();
+                    checkStartButtonState();
+                };
+                reader.readAsText(file);
+            } else {
+                fileNameDisplay.textContent = '';
+            }
+        });
+
+        flashcard.addEventListener('click', () => flashcard.classList.toggle('is-flipped'));
+        reviewBtn.addEventListener('click', () => startGame(failedCards));
+        restartBtn.addEventListener('click', () => startGame(allCards));
+
+        // --- Inicialización ---
+        function initializeApp() {
+            const savedApiKey = localStorage.getItem('geminiApiKey');
+            if (savedApiKey) {
+                apiKeyInput.value = savedApiKey;
+            }
+            addInputRow();
+            updateUIforMode();
+        }
+        initializeApp();
+
+    </script>
+</body>
+</html>
+
