@@ -1,6 +1,6 @@
 ---
 title: "Carto: From a UN Invoice to Conquering the Geospatial Cloud"
-date: 2025-10-25
+date: 2025-10-28
 draft: False
 categories: ["case-studies", "AI"]
 tags: ["carto", "geospatial", "ai", "cloud", "startup", "big data", "location intelligence"]
@@ -35,8 +35,6 @@ Carto's most brilliant move was not trying to be a "better GIS" (Geographic Info
 {{< youtube hZdjrKNuJ5M >}}
 
 Their true competitive advantage, however, lies in their **cloud-native** architecture. Instead of creating another data silo and forcing companies to move their information, Carto brings the analysis directly to where the data already resides: major cloud data warehouses like **Google BigQuery, Snowflake, AWS Redshift, and Databricks**.
-
-!(carto_cloud_architecture.png)
 
 This strategy turned the cloud giants, potential competitors, into their biggest allies and distribution channels. Carto positioned itself as the "Switzerland" of geospatial data, an agnostic analysis layer that enhances the value of the investments companies have already made in the cloud.
 

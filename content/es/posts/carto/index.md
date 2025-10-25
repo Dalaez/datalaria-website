@@ -36,8 +36,6 @@ El movimiento más brillante de Carto fue no intentar ser un "mejor SIG" (Sistem
 
 Su verdadera ventaja competitiva, sin embargo, reside en su arquitectura **nativa en la nube (cloud-native)**. En lugar de crear otro silo de datos, obligando a las empresas a mover su información, Carto lleva el análisis directamente al lugar donde ya residen los datos: los grandes almacenes de datos en la nube como **Google BigQuery, Snowflake, AWS Redshift y Databricks**.
 
-![Imagen de la arquitectura de Carto sobre los almacenes de datos en la nube](carto_cloud_architecture.png)
-
 Esta estrategia convirtió a los gigantes de la nube, potenciales competidores, en sus mayores aliados y canales de distribución. Carto se posicionó como la "Suiza" de los datos geoespaciales, una capa de análisis agnóstica que aumenta el valor de las inversiones que las empresas ya han hecho en la nube.
 
 Este cambio de enfoque se consolidó en 2016 con el rebranding de CartoDB a **CARTO**, eliminando el sufijo "DB" para señalar su evolución de una "base de datos para mapas" a una plataforma de inteligencia completa, bajo el lema: *"Predecir a través de la localización"*.
