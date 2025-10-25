@@ -1,6 +1,6 @@
 ---
 title: "Excellent Meetings in the AI Era: The Definitive Decalogue"
-date: 2025-10-18
+date: 2025-11-01
 draft: False
 categories: ["Productivity", "Tools"]
 tags: ["ai", "meetings", "productivity", "remote work", "prompt engineering", "best practices"]
@@ -14,6 +14,8 @@ If there's one universal element in the professional world that generates both l
 In an era where remote and hybrid work is the norm and artificial intelligence tools are redefining our capabilities, mastering the art of the effective meeting is no longer just a desirable skill—it's a strategic necessity. The good news? It's not magic, it's method.
 
 Below, I present a decalogue of 10 practical steps to transform our meetings, with a special focus on how technology, particularly AI, can become our best copilot to achieve this.
+
+![Ten rules for effective meetings](ten_rules_effective_meetings.png)
 
 ### The Decalogue for Excellent Meetings
 

@@ -1,98 +1,94 @@
 ---
-title: "Carto: From a UN Invoice to Conquering the Geospatial Cloud"
-date: 2025-10-11
+title: "Graphext: The Spanish Startup That Spent 7 Years Building the 'Formula 1' of Data Analysis"
+date: 2025-11-08
 draft: False
-categories: ["case-studies", "AI"]
-tags: ["carto", "geospatial", "ai", "cloud", "startup", "big data", "location intelligence"]
-image: carto_cloud_native.png
-description: "The story of how Carto, a Spanish startup, evolved from a consulting project into a global leader in Location Intelligence by betting on a cloud-native strategy that has redefined data analysis."
-summary: "Most startups are born from a grand vision. Carto was born from the need to issue an invoice to the UN. This is the incredible story of how a pragmatic project grew into a $92 million giant that is teaching the world to 'predict through location'."
+categories: ["success_stories", "AI"]
+tags: ["graphext", "ai", "explainable ai", "no-code", "startup", "big data", "visualization"]
+image: graphext_formula1_datos.png
+description: "The story of Graphext, the Spanish startup that defied norms by investing €7M in R&D before scaling, creating a unique Explainable AI platform that redefines data analysis."
+summary: "While the 'no-code' world sought simplicity, Graphext secretly built a technological 'Formula 1'. Discover the atypical story of this Spanish startup, its bet on WebAssembly and Explainable AI, and how it plans to democratize data science without sacrificing power."
 ---
 
-In the competitive world of technology, success stories often follow a predictable script. However, every now and then, a company emerges whose journey breaks the mold—one that isn't born from a preconceived idea in a Silicon Valley garage, but from a need as pragmatic as issuing an invoice.
+In the fast-paced world of startups, the motto is often "grow fast or die." Launching a minimum viable product, gaining traction, and raising multi-million dollar funding rounds seems to be the obligatory path. But what if there was another way? A patient, almost artisanal strategy, focused on building technology so advanced it creates an insurmountable competitive moat before hitting the commercial accelerator?
 
-This is the story of **Carto**, the chronicle of how a small data consulting studio in Madrid transformed into a global leader in geospatial analysis. It is a success story founded on a key strategic revelation: instead of fighting against the giants, they decided to become the indispensable intelligence layer that all of them needed.
+This is the story of **Graphext**, the startup founded by two Spanish computer engineers who dedicated **seven years and approximately 7 million euros** to perfecting their platform before seeking significant funding. Today, armed with cutting-edge technology and a clear vision centered on **Explainable Artificial Intelligence (XAI)**, they are ready to redefine how companies interact with their data.
 
-![Conceptual image of Carto](carto_conceptual_image.png)
+![Conceptual image of Graphext](imagen_graphext_post.png)
 
-### The Origin: A UN Invoice and a Gap in the Market
+### The Origin: From Analyzing Twitter to Understanding the World
 
-The story of Carto begins in 2007, not with a product, but with **Vizzuality**, a data visualization consultancy founded by Javier de la Torre and Sergio Álvarez Leiva. Their first major assignment came from a UN agency, and the creation of the company was, initially, a mere formality to be able to invoice for that project.
+Graphext's spark didn't come from a business plan, but from curiosity. The founders, **Victoriano Izquierdo** and **Miguel Cantón**, computer engineers with an entrepreneurial spirit since childhood, started with a tool called **contexto.io**, focused on analyzing connections on Twitter. They soon realized that the true potential lay in going further, in creating broader information contexts, in visualizing the hidden networks that connect people and organizations in any dataset.
 
-While working on niche projects for scientists, the founders repeatedly faced the same challenges: handling and visualizing massive volumes of spatial data. This direct experience led them to identify a "critical need" in the market: powerful spatial analysis techniques were inaccessible to mainstream industries like retail, finance, or telecommunications.
+Thus, Graphext was born in 2015, merging 'graph' and 'context'. Their mission: to **democratize data science**, bridging the gap between coding experts and business analysts who have important questions but lack the tools to answer them directly. They wanted to overcome the limitations of Excel (too basic) and programming notebooks like Jupyter (too complex for non-technical profiles), aspiring to create something new: a tool **"as interactive as Figma, but for data science."**
 
-That was the "eureka!" moment. They saw an opportunity to **democratize geolocated data analysis**. Thus, within Vizzuality, an internal software project called **CartoDB** was born, designed to solve their own problems. After its official launch in 2012, they made the crucial decision in 2014: Carto spun off from Vizzuality, pivoting from a service-based model to a scalable, product-centric SaaS model, ready to attract venture capital.
+### The Technology: A "Formula 1" in Your Browser
 
-{{< youtube vyfywbAzdGI >}}
+What radically differentiates Graphext is its architecture. After years of intensive R&D, they have built what their CEO describes as a "Formula 1": an incredibly powerful analysis machine.
 
-### The Strategic Pivot: We Are Not GIS, We Are the Cloud's Intelligence Layer
+Their secret lies in leveraging cutting-edge web technologies like **WebAssembly (Wasm)**, **WebGL**, and **Apache Arrow**. Thanks to Wasm, a large part of data processing (up to 80-90%!) happens **directly in the user's browser**, not on a remote server. The result is astonishing fluidity: exploring and filtering millions of data rows feels instantaneous.
 
-Carto's most brilliant move was not trying to be a "better GIS" (Geographic Information System). Instead, they created a new category: **Location Intelligence (LI)**.
+They have developed their own compression libraries and an internal "low-code" language. This deep investment in proprietary technology creates, according to its founders, a very difficult competitive moat to replicate.
 
-* **Traditional GIS**: For specialists. It answers "where are things?".
-* **Location Intelligence**: For data and business analysts. It answers "**why** do things happen in a certain place?" and "**what if...?**".
+![Graphext web](graphext_web2.png)
 
-{{< youtube hZdjrKNuJ5M >}}
+### The Platform: From Raw Data to Explainable Models
 
-Their true competitive advantage, however, lies in their **cloud-native** architecture. Instead of creating another data silo and forcing companies to move their information, Carto brings the analysis directly to where the data already resides: major cloud data warehouses like **Google BigQuery, Snowflake, AWS Redshift, and Databricks**.
+Graphext is not just a visualization tool; it's a comprehensive "no-code/low-code" platform covering the entire data analysis lifecycle:
 
-!(carto_cloud_architecture.png)
+1.  **Universal Connection**: Import from a simple CSV or connect directly to modern *data warehouses* (Snowflake, BigQuery, Databricks, Redshift).
+2.  **Interactive Visual Exploration (EDA)**: The heart of the tool. Filter, group, cross-reference variables, and enrich data on the fly.
+3.  **Advanced No-Code Modeling**: Apply *machine learning* algorithms (clustering, NLP for text analysis, image analysis) with clicks, not code.
+4.  **Prediction with Explainability (XAI)**: Create predictive models (to forecast customer churn or identify promising sales *leads*) and, crucially, **understand why** the model makes that prediction. This commitment to Explainable AI is at the core of their future strategy.
 
-This strategy turned the cloud giants, potential competitors, into their biggest allies and distribution channels. Carto positioned itself as the "Switzerland" of geospatial data, an agnostic analysis layer that enhances the value of the investments companies have already made in the cloud.
+{{< youtube hPjAqOfqhdg >}}
 
-This shift in focus was consolidated in 2016 with the rebranding from CartoDB to **CARTO**, dropping the "DB" suffix to signal its evolution from a "database for maps" to a complete intelligence platform under the tagline: *"Predict through location"*.
+### The "Formula 1" Dilemma: Power vs. Accessibility
 
-### The Engine of Growth: Funding Rounds, Acquisitions, and Talent
+Despite its "no-code" approach, Graphext acknowledges a tension: its tool is so powerful that it requires a skilled "driver" to unlock its full potential. It's not for absolute beginners, but for business analysts, data scientists, and *power users* seeking superpowers.
 
-Carto's trajectory validates its strategy, showing a clear progression in both investor confidence and its ability to attract talent.
+This duality is reflected in its hybrid business model:
 
-#### Key Funding Rounds
+* **Self-service (Free and Pro)**: To attract users and enable organic dissemination (Product-Led Growth).
+* **Enterprise**: With customized pricing and data engineering and training services, recognizing that large corporations need support.
 
-The company's financing has evolved from local capital to top-tier global funds, accumulating a total of **$92 million**.
+The company is evolving from selling €1,000 tickets to closing six or seven-figure contracts with corporations like **McDonald's** and **Roche**.
 
-| Round     | Date     | Amount (USD) | Lead Investor(s)          |
-| :-------- | :------- | :------------- | :------------------------ |
-| **Series A** | Sep 2014 | $8M            | Earlybird Venture Capital |
-| **Series B** | Sep 2015 | $23M           | Accel Partners            |
-| **Series C** | Dec 2021 | $61M           | Insight Partners          |
+### An Atypical and Patient Financial Strategy
 
-#### Team Growth
+Graphext defied venture capital norms. For its first 7 years, it funded itself with a clever combination:
 
-The team's growth reflects the company's expansion from a founding core to a global organization.
+* **Modest Seed Capital**: Small rounds, including one led by **K Fund**.
+* **Key Public Grants**: Approximately 2 million euros from European funds (Horizon 2020, EIC Fund), crucial for financing R&D without excessive dilution.
 
-| Date / Period    | Employee Milestone      |
-| :--------------- | :---------------------- |
-| **2012** | 2 Founders              |
-| **Nov 2021** | > 150 Employees         |
-| **Early 2024** | > 160 Experts           |
-| **Est. 2024/2025** | ~ 313 Employees         |
+This strategy allowed them to patiently build their technological "Formula 1." Once the product matured and technological risk was significantly reduced, they became highly attractive to top-tier venture capital.
 
-#### Strategic Maturity
+The turning point came in **June 2023** with a **$4.6 million seed round** led by **Hoxton Ventures** (London), marking the beginning of their commercial scaling phase. The backing of over **80 angel investors**, including key figures from Freepik, CARTO, Snowflake, GitHub, and Meta, underscores the industry's confidence in their vision.
 
-In 2019, the company matured its leadership by appointing **Luis Sanz** as the new CEO, an experienced operator with a successful track record of scaling businesses. Shortly after, Carto acquired **Geographica**, a Seville-based consultancy with extensive experience in spatial solutions for clients like Mastercard, BBVA, and Telefónica. This move was a masterstroke: it provided the company with a seasoned professional services team, essential for addressing the complex needs of large enterprise accounts and executing its market strategy.
+| Key Milestone      | Date       | Detail                                        |
+| :----------------- | :--------- | :-------------------------------------------- |
+| **Founding** | 2015       | Graphext is born.                             |
+| **EU Funding** | 2018-2021  | ~€2M in non-dilutive grants.                  |
+| **Key Seed Round** | Jun 2023   | $4.6M led by Hoxton Ventures.                 |
+| **Team** | Est. 2024/25 | ~50 employees (sources vary).                 |
 
-### The Future is Agentic: AI and the Next Geospatial Frontier
+### The Future: Explainable and Generative AI as a Competitive Advantage
 
-Carto's vision for the future is centered on the concept of **"Agentic GIS"**: using Artificial Intelligence to make spatial analysis more accessible, conversational, and automated.
+Graphext's commitment is clear: to **lead the Explainable AI (XAI) space**. In a world where AI is increasingly powerful but opaque, the ability to understand the "why" behind a prediction is crucial for trust and business adoption.
 
-{{< youtube 7ofBz1dqSJo >}}
+Furthermore, they are actively integrating **generative AI** not just as another feature, but as the potential **solution to the "Formula 1" dilemma**. They envision a future where a user can ask complex questions in natural language, and AI generates a complete, interactive analysis within Graphext, guiding the user and making the platform's full power accessible.
 
-The idea is to allow any user to ask complex questions in natural language, such as **"Which neighborhoods will grow the fastest?"**, and get visual answers and insights without needing to be a data expert. By residing where all of a company's data (sales, logistics, customers) already is, Carto's AI Agents can reason over the complete set of information, transforming the platform from a tool for analysts into a decision-making copilot for the entire organization.
+### Conclusion: From Lab to Commercial Race
 
-This approach positions Carto at the epicenter of the geospatial analytics market, a sector projected to reach **$55.75 billion by 2029**, driven precisely by the convergence of AI and spatial data.
+Graphext has completed the toughest phase: building differentiated technology with a smart, patient funding strategy. Now, the challenge is commercial. They must scale their sales, especially in the international Enterprise market, and resolve the tension between power and usability.
 
-### Conclusion: The Carto Lesson
-
-The story of Carto is a masterclass in strategy and adaptation. Its success comes not from inventing a completely new technology, but from understanding a fundamental paradigm shift before anyone else: the future of data was in the cloud.
-
-By choosing not to compete, but to **complement and enhance** the new data infrastructure, Carto evolved from a niche player into an indispensable part of the modern tech ecosystem. Its journey proves that sometimes, the smartest move isn't to build a bigger castle, but to build the bridges that all the other castles need to connect.
+Their story is a reminder that there's no single path to success. Sometimes, patience, technical depth, and a clear vision can be more powerful than speed at any cost. Graphext has built its "Formula 1"; now the real race begins to prove it can win in the global market.
 
 ---
 
 #### Sources of Interest:
-* [**Carto**: What is Location Intelligence?](https://carto.com/location-intelligence)
-* [**Hipertextual**: CartoDB, the startup that wasn't born to be rich, but famous (in Spanish)](https://hipertextual.com/startups/cartodb-historia-vizzuality/)
-* [**El Confidencial**: Spain's CartoDB seduces Silicon Valley gurus: receives 23 million (in Spanish)](https://www.elconfidencial.com/tecnologia/2015-09-10/la-espanola-carto-db-recibe-23-millones-de-los-inversores-de-facebook_1009490/)
-* [**Marketing4Ecommerce**: Carto closes a €54M round to scale its location intelligence platform (in Spanish)](https://marketing4ecommerce.net/startup-carto-que-es-ronda/)
-* [**Diario de Sevilla**: CARTO buys Seville-based Geographica to strengthen growth (in Spanish)](https://www.diariodesevilla.es/economia/CARTO-compra-Geographica_0_1359464168.html)
-* [**Google Research**: Geospatial Reasoning with Generative AI](https://research.google/blog/geospatial-reasoning-unlocking-insights-with-generative-ai-and-multiple-foundation-models/)
+* [**Graphext**: Advanced Data Science & Analytics Platform](https://www.graphext.com/)
+* [**Graphext YouTube Channel**: YouTube channel with many practical examples of using the Graphext platform](https://www.youtube.com/@graphextlabs)
+* [**Blog Naranja**: Graphext, connecting a large volume of data to understand the world (Spanish)](https://blog.masorange.es/empresa/graphext-conectando-datos-entender-mundo/)
+* [**YouTube**: Interview with Victoriano Izquierdo (NTYPodcast - Spanish)](https://www.youtube.com/watch?v=slY1wvKWQtY) - A deep dive into their strategy and technology.
+* [**Business Insider**: Graphext, the Spanish startup in which the EU invested €1.7M (Spanish)](https://www.businessinsider.es/tecnologia/graphext-startup-analisis-datos-invierte-ue-competir-eeuu-678261)
+* [**Graphext Blog**: Announcement of the $4.6M funding round](https://www.graphext.com/post/graphext-raised-4M-seed-round)
