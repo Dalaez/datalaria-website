@@ -1,6 +1,6 @@
 ---
 title: "Proyecto Weather Service (Parte 1): Construyendo el Recolector de Datos con Python y GitHub Actions"
-date: 2025-10-25
+date: 2025-11-01
 draft: False
 categories: ["Proyectos", "Herramientas"]
 tags: ["python", "api", "github actions", "automatizacion", "serverless", "datos", "backend"]
@@ -12,6 +12,8 @@ summary: "Empezamos nuestro proyecto meteorológico creando el motor: un script 
 Como comenté en un post anterior, uno de mis objetivos con Datalaria es "ensuciarme las manos" con proyectos que me permitan aprender y conectar diferentes tecnologías del mundo de los datos. Hoy empezamos una serie dedicada a uno de esos proyectos: la creación de un **servicio meteorológico global completo**, desde la recolección de datos hasta su visualización y predicción, todo ello sin servidores y con herramientas gratuitas.
 
 En esta primera entrega, nos centraremos en el **corazón del sistema: el backend recolector de datos**. Veremos cómo construir un "robot" que trabaje por nosotros 24/7, conectándose a una API externa, guardando la información de forma estructurada y haciendo todo esto de manera automática y gratuita. ¡Vamos allá!
+
+![Conceptual image of Weather Service](Imagen_App_Weather_IA.png)
 
 ---
 

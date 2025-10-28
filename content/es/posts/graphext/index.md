@@ -1,6 +1,6 @@
 ---
 title: "Graphext: La Startup Española que Invirtió 7 Años en Crear el 'Fórmula 1' del Análisis de Datos"
-date: 2025-11-08
+date: 2025-11-15
 draft: False
 categories: ["casos_exito", "IA"]
 tags: ["graphext", "ia", "ia explicable", "no-code", "startup", "big data", "visualizacion"]

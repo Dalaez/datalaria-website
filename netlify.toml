@@ -1,7 +1,7 @@
 # Archivo: netlify.toml (en la raíz de Dalaez/datalaria-website)
 
 # -------------------------------------------------
-# REGLA PARA LA APP DEL TIEMPO
+# REGLA PARA LA APP DEL TIEMPO SOBRE DATALARIA
 # -------------------------------------------------
 
 # Regla para la RUTA BASE (ej: /apps/weather o /apps/weather/)
