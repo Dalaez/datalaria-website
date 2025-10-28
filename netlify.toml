@@ -1,0 +1,20 @@
+# Archivo: netlify.toml (en la raíz de Dalaez/datalaria-website)
+
+# -------------------------------------------------
+# REGLA PARA LA APP DEL TIEMPO
+# -------------------------------------------------
+
+# Regla para la RUTA BASE (ej: /apps/weather o /apps/weather/)
+# Esto captura la petición al "directorio" y sirve el index.html
+[[rewrites]]
+  from = "/apps/weather/*"
+  to = "https://datalaria-app-weather.netlify.app/:splat"
+  status = 200
+  force = true
+
+# Regla de respaldo por si acceden sin la barra final
+[[rewrites]]
+  from = "/apps/weather"
+  to = "https://datalaria-app-weather.netlify.app/index.html"
+  status = 200
+  force = true
