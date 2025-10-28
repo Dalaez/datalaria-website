@@ -1,7 +1,15 @@
 # Archivo: netlify.toml (en la raíz de Dalaez/datalaria-website)
 
 # -------------------------------------------------
-# REGLA PARA LA APP DEL TIEMPO SOBRE DATALARIA
+# INSTRUCCIONES DE BUILD PARA HUGO (¡ESTO ES LO NUEVO!)
+# -------------------------------------------------
+# Esto le dice a Netlify CÓMO construir tu blog
+[build]
+  command = "hugo"
+  publish = "public"
+
+# -------------------------------------------------
+# REGLA PARA LA APP DEL TIEMPO (Esto es lo que ya tenías)
 # -------------------------------------------------
 
 # Regla para la RUTA BASE (ej: /apps/weather o /apps/weather/)
