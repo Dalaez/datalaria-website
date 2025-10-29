@@ -1,0 +1,3 @@
+# Regla para la app del tiempo
+/apps/weather/* https://datalaria-app-weather.netlify.app/:splat    200!
+/apps/weather      https://datalaria-app-weather.netlify.app/index.html    200!
