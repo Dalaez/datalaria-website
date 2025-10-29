@@ -1,8 +1,8 @@
-# 1. FORZAR la barra al final (trailing slash) para la ruta de la app
-/apps/weather    /apps/weather/    301!
+# 1. Regla para la URL SIN barra al final
+/apps/weather   https://datalaria-app-weather.netlify.app/index.html   200!
 
-# 2. Servir el index.html CUANDO se pida la carpeta con barra
-/apps/weather/   https://datalaria-app-weather.netlify.app/index.html   200!
+# 2. Regla para la URL CON barra al final
+/apps/weather/  https://datalaria-app-weather.netlify.app/index.html   200!
 
-# 3. Servir todos los demás archivos (JS, CSS, txt, json)
+# 3. Regla para TODOS los assets (CSS, JS, txt, json)
 /apps/weather/* https://datalaria-app-weather.netlify.app/:splat       200!
