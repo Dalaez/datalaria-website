@@ -193,7 +193,7 @@ The dashboard now provides immediate insights into historical weather patterns f
 
 ### References and Links of Interest:
 
-* **Complete Web Service**: See the live project in action here: [https://dalaez.github.io/app_weather/](https://dalaez.github.io/app_weather/)
+* **Complete Web Service**: See the live project in action here: [https://datalaria.com/apps/weather/](https://datalaria.com/apps/weather/)
 * **Project GitHub Repository**: Explore the source code and project structure: [https://github.com/Dalaez/app_weather](https://github.com/Dalaez/app_weather)
 * **PapaParse.js**: Fast in-browser CSV parser for JavaScript: [https://www.papaparse.com/](https://www.papaparse.com/)
 * **Chart.js**: Simple, yet flexible JavaScript charting for designers & developers: [https://www.chartjs.org/](https://www.chartjs.org/)

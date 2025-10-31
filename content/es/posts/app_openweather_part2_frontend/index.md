@@ -193,7 +193,7 @@ El dashboard ahora proporciona información inmediata sobre los patrones climát
 
 ### Referencias y Enlaces de Interés:
 
-* **Servicio Web Completo**: Puedes ver el resultado final de este proyecto en acción aquí: [https://dalaez.github.io/app_weather/](https://dalaez.github.io/app_weather/)
+* **Servicio Web Completo**: Puedes ver el resultado final de este proyecto en acción aquí: [https://datalaria.com/apps/weather/](https://datalaria.com/apps/weather/)
 * **Repositorio GitHub del Proyecto**: Explora el código fuente y la estructura del proyecto en mi repositorio: [https://github.com/Dalaez/app_weather](https://github.com/Dalaez/app_weather)
 * **PapaParse.js**: Parser de CSV rápido en el navegador para JavaScript: [https://www.papaparse.com/](https://www.papaparse.com/)
 * **Chart.js**: Gráficos JavaScript simples pero flexibles para diseñadores y desarrolladores: [https://www.chartjs.org/](https://www.chartjs.org/)
