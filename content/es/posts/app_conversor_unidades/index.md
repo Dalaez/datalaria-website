@@ -21,7 +21,7 @@ El objetivo era crear una aplicación web moderna, intuitiva con una navegación
 
 > "Crea la estructura de una aplicación web de varias páginas HTML. La aplicación será un conversor de formatos y unidades de medida. La página principal debe mostrar tarjetas para las categorías: Dimensión, Energía, Tiempo, Mecánica, Informática y Radiofrecuencia con conversiones básicas. Cada tarjeta debe enlazar a una página de conversión dedicada a la categoría correspondiente desde una página de inicio donde además de las tarjetas de navegación a cada categoría debe haber un conversor de formato de símbolo "." y "," para miles y decimales en números"
 
-La funcionalidad Canvas de Gemini me permitió ver en tiempo real cómo la IA generaba no solo el código, sino la estructura completa del proyecto. A partir del boceto inicial y tras un par de iteraciones adicionales centradas en refinar algo más el diseño y afinar las unidades utilizadas, vio la luz una primera versión operativa de la aplicación: [Mi aplicación de conversión de unidades de medida](https://dalaez.github.io/conversor-app/)
+La funcionalidad Canvas de Gemini me permitió ver en tiempo real cómo la IA generaba no solo el código, sino la estructura completa del proyecto. A partir del boceto inicial y tras un par de iteraciones adicionales centradas en refinar algo más el diseño y afinar las unidades utilizadas, vio la luz una primera versión operativa de la aplicación: [Mi aplicación de conversión de unidades de medida](http://datalaria.com/apps/conversor)
 
 ### Un Vistazo a las Categorías y sus Unidades
 
@@ -131,4 +131,4 @@ Mi objetivo es seguir ampliándola con nuevas categorías y unidades según surj
 
 #### Fuentes y Recursos:
 * **Gemini**: [Página oficial de Gemini para probar su funcionalidad Canvas](https.gemini.google.com/app)
-* **GitHub Page de la App**: [Mi aplicación de conversión de unidades de medida](https://dalaez.github.io/conversor-app/)
+* **Web de la App**: [Mi aplicación de conversión de unidades de medida](http://datalaria.com/apps/conversor)

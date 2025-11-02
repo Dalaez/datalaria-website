@@ -21,7 +21,7 @@ The goal was to create a modern, intuitive web application with clear navigation
 
 > "Create the structure for a multi-page HTML web application. The application will be a format and unit converter. The main page should display cards for the categories: Dimension, Energy, Time, Mechanics, Computing, and Radio Frequency with basic conversions. Each card should link to a dedicated conversion page for the corresponding category from a homepage where, in addition to the navigation cards for each category, there should be a format converter for the '.' and ',' symbols for thousands and decimals in numbers."
 
-Gemini's Canvas feature allowed me to see in real-time how the AI generated not just the code, but the complete project structure. After the initial draft and a couple of additional iterations focused on refining the design and fine-tuning the units, a first operational version of the application came to life: [My unit conversion application](https://dalaez.github.io/conversor-app/)
+Gemini's Canvas feature allowed me to see in real-time how the AI generated not just the code, but the complete project structure. After the initial draft and a couple of additional iterations focused on refining the design and fine-tuning the units, a first operational version of the application came to life: [My unit conversion application](http://datalaria.com/apps/conversor)
 
 ### A Look at the Categories and Their Units
 
@@ -131,4 +131,4 @@ My goal is to continue expanding it with new categories and units as the needs a
 
 #### Sources and Resources:
 * **Gemini**: [Official Gemini page to try its Canvas functionality](https-gemini.google.com/app)
-* **App's GitHub Page**: [My unit conversion application](https://dalaez.github.io/conversor-app/)
+* **App's web**: [My unit conversion application](http://datalaria.com/apps/conversor)
