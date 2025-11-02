@@ -1,6 +1,6 @@
 ---
 title: "Weather Service Project (Part 1): Building the Data Collector with Python and GitHub Actions"
-date: 2025-11-01
+date: 2025-11-31
 draft: False
 categories: ["Projects", "Tools"]
 tags: ["python", "api", "github actions", "automation", "serverless", "data", "backend"]
