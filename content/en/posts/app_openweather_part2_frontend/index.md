@@ -1,6 +1,6 @@
 ---
 title: "Weather Service Project (Part 2): Building the Interactive Frontend with GitHub Pages & JavaScript"
-date: 2025-11-04
+date: 2025-10-31
 draft: False
 categories: ["Projects", "Tools"]
 tags: ["javascript", "frontend", "github pages", "html", "css", "papaparse", "chartjs", "serverless", "data-visualization"]

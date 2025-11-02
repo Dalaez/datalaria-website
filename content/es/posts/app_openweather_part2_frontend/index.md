@@ -1,23 +1,27 @@
 ---
-title: "Proyecto Weather Service (Parte 2): Construyendo el Frontend Interactivo con GitHub Pages y JavaScript"
-date: 2025-11-08
+title: "Proyecto Weather Service (Parte 2): Construyendo el Frontend Interactivo con GitHub Pages o Netlify y JavaScript"
+date: 2025-10-31
 draft: False
 categories: ["Proyectos", "Herramientas"]
-tags: ["javascript", "frontend", "github pages", "html", "css", "papaparse", "chartjs", "serverless", "visualizacion-datos"]
+tags: ["javascript", "frontend", "github pages", "html", "css", "papaparse", "chartjs", "serverless", "visualizacion-datos", "netlify"]
 image: weather_frontend_dashboard.png
-description: "Segunda entrega del proyecto Weather Service. Nos adentramos en el frontend: sirviendo un dashboard dinámico con GitHub Pages, leyendo datos CSV con PapaParse.js y creando gráficos interactivos con Chart.js."
-summary: "Después de construir el recolector de datos, ¡es hora de visualizarlos! Este post te guía a través de la creación de un dashboard meteorológico interactivo usando GitHub Pages, JavaScript, PapaParse.js y Chart.js. ¡Dale vida a tus datos!"
+description: "Segunda entrega del proyecto Weather Service. Nos adentramos en el frontend: sirviendo un dashboard dinámico con GitHub Pages o Netlify, leyendo datos CSV con PapaParse.js y creando gráficos interactivos con Chart.js."
+summary: "Después de construir el recolector de datos, ¡es hora de visualizarlos! Este post te guía a través de la creación de un dashboard meteorológico interactivo usando GitHub Pages o Netlify, JavaScript, PapaParse.js y Chart.js. ¡Dale vida a tus datos!"
 ---
 
 En la [primera parte de esta serie](/blog/weather-service-part-1-backend), sentamos las bases de nuestro servicio meteorológico global. Construimos un script de Python para obtener datos del clima de OpenWeatherMap, los almacenamos eficientemente en ficheros CSV separados por ciudad y automatizamos todo el proceso de recolección utilizando GitHub Actions. Nuestro "robot" está diligentemente recopilando datos 24/7.
 
-Pero, ¿de qué sirven los datos si no puedes verlos? Hoy, cambiamos nuestro enfoque al **frontend**: la construcción de un dashboard interactivo y fácil de usar que permita a cualquiera explorar los datos meteorológicos que hemos recopilado. Aprovecharemos el poder del alojamiento de sitios estáticos con **GitHub Pages**, utilizaremos **JavaScript** "vainilla" para darle vida y nos apoyaremos en algunas excelentes librerías para el manejo y la visualización de datos. ¡Hagamos que nuestros datos brillen!
+Pero, ¿de qué sirven los datos si no puedes verlos? Hoy, cambiamos nuestro enfoque al **frontend**: la construcción de un dashboard interactivo y fácil de usar que permita a cualquiera explorar los datos meteorológicos que hemos recopilado. Aprovecharemos el poder del alojamiento de sitios estáticos con **GitHub Pages o Netlify**, utilizaremos **JavaScript** "vainilla" para darle vida y nos apoyaremos en algunas excelentes librerías para el manejo y la visualización de datos. ¡Hagamos que nuestros datos brillen!
 
 ---
 
-### Alojamiento Web Gratuito: GitHub Pages
+### Alojamiento Web Gratuito: GitHub Pages vs. Netlify
 
-El primer obstáculo para cualquier proyecto web es el alojamiento. Los servidores tradicionales pueden ser costosos y complejos de gestionar. Siguiendo nuestra filosofía "serverless y gratis", **GitHub Pages** es la solución perfecta. Permite alojar sitios web estáticos directamente desde tu repositorio de GitHub.
+El primer obstáculo para cualquier proyecto web es el alojamiento. Los servidores tradicionales pueden ser costosos y complejos de gestionar. Siguiendo nuestra filosofía "serverless y gratis", tanto **GitHub Pages** como **Netlify** son soluciones perfectas para alojar sitios web estáticos directamente desde tu repositorio de GitHub.
+
+#### Opción 1: GitHub Pages
+
+Permite alojar sitios web estáticos directamente desde tu repositorio de GitHub.
 
 **La activación es trivial:**
 1.  Ve a `Settings > Pages` en tu repositorio.
@@ -26,6 +30,27 @@ El primer obstáculo para cualquier proyecto web es el alojamiento. Los servidor
 4.  Haz clic en `Save`.
 
 Y así, tu archivo `index.html` (y cualquier recurso vinculado) se vuelve accesible públicamente en una URL como `https://tu-usuario.github.io/tu-nombre-de-repositorio/`. ¡Sencillo, efectivo y gratuito\! 🚀
+
+#### Opción 2: Netlify (¡la elección final para este proyecto!)
+
+Para este proyecto, finalmente he optado por **Netlify** por su flexibilidad, la facilidad para gestionar dominios personalizados y su integración con el despliegue continuo. Además, me permite alojar el proyecto directamente bajo mi dominio de Datalaria (`https://datalaria.com/apps/weather/`).
+
+**Pasos para desplegar en Netlify:**
+
+1.  **Conectar tu Repositorio**: Inicia sesión en Netlify. Haz clic en "Add new site" y luego en "Import an existing project". Conecta tu cuenta de GitHub y selecciona el repositorio de tu proyecto Weather Service.
+2.  **Configuración de Despliegue**:
+    * **Owner**: Tu cuenta de GitHub.
+    * **Branch to deploy**: `main` (o la rama donde tengas tu código frontend).
+    * **Base directory**: Deja esto vacío si tu `index.html` y assets están en la raíz del repositorio, o especifica una subcarpeta si es el caso (ej., `/frontend`).
+    * **Build command**: Déjalo vacío, ya que nuestro frontend es puramente estático sin necesidad de un paso de build (sin frameworks como React/Vue).
+    * **Publish directory**: `.` (o la subcarpeta que contenga tus archivos estáticos, ej., `/frontend`).
+3.  **Desplegar Sitio**: Haz clic en "Deploy site". Netlify tomará tu repositorio, lo desplegará y te proporcionará una URL aleatoria.
+4.  **Dominio Personalizado (Opcional pero recomendado)**: Para usar un dominio como `datalaria.com/apps/weather/`:
+    * Ve a `Site settings > Domain management > Domains > Add a custom domain`.
+    * Sigue los pasos para añadir tu dominio y configurarlo con los DNS de tu proveedor (añadiendo registros `CNAME` o `A`).
+    * Para la ruta específica (`/apps/weather/`), necesitarás configurar una "subcarpeta" o "base URL" en tu aplicación si no está directamente en la raíz del dominio. En este caso, nuestro `index.html` está diseñado para ser servido desde una subruta. Netlify gestiona esto de forma transparente una vez que el sitio está desplegado y tu dominio configurado.
+    
+¡Así de sencillo! Cada `git push` a tu rama configurada activará un nuevo despliegue en Netlify, manteniendo tu dashboard siempre actualizado.
 
 ---
 
@@ -185,7 +210,7 @@ async function cargarPrediccion(ciudad) {
 
 ### Conclusión (Parte 2)
 
-¡Hemos transformado los datos en bruto en una experiencia atractiva e interactiva! Al combinar GitHub Pages para el alojamiento, JavaScript "vainilla" para la lógica, PapaParse.js para el manejo de CSV y Chart.js para visualizaciones hermosas, hemos construido un frontend potente que es a la vez gratuito y muy efectivo.
+¡Hemos transformado los datos en bruto en una experiencia atractiva e interactiva! Al combinar el alojamiento estático de GitHub Pages o Netlify, JavaScript "vainilla" para la lógica, PapaParse.js para el manejo de CSV y Chart.js para visualizaciones hermosas, hemos construido un frontend potente que es a la vez gratuito y muy efectivo.
 
 El dashboard ahora proporciona información inmediata sobre los patrones climáticos históricos de cualquier ciudad seleccionada. Pero, ¿qué pasa con el futuro? En la **tercera y última parte de esta serie**, nos adentraremos en el emocionante mundo del **Machine Learning** para añadir una capa predictiva a nuestro servicio. Exploraremos cómo usar datos históricos para pronosticar el tiempo de mañana, convirtiendo nuestro servicio en un verdadero "oráculo" meteorológico. ¡No te lo pierdas!
 
@@ -193,8 +218,9 @@ El dashboard ahora proporciona información inmediata sobre los patrones climát
 
 ### Referencias y Enlaces de Interés:
 
-* **Servicio Web Completo**: Puedes ver el resultado final de este proyecto en acción aquí: [https://datalaria.com/apps/weather/](https://datalaria.com/apps/weather/)
-* **Repositorio GitHub del Proyecto**: Explora el código fuente y la estructura del proyecto en mi repositorio: [https://github.com/Dalaez/app_weather](https://github.com/Dalaez/app_weather)
-* **PapaParse.js**: Parser de CSV rápido en el navegador para JavaScript: [https://www.papaparse.com/](https://www.papaparse.com/)
-* **Chart.js**: Gráficos JavaScript simples pero flexibles para diseñadores y desarrolladores: [https://www.chartjs.org/](https://www.chartjs.org/)
-* **GitHub Pages**: Documentación oficial sobre cómo alojar tus sitios: [https://docs.github.com/es/pages](https://docs.github.com/es/pages)
+  * **Servicio Web Completo**: Puedes ver el resultado final de este proyecto en acción aquí: [https://datalaria.com/apps/weather/](https://datalaria.com/apps/weather/)
+  * **Repositorio GitHub del Proyecto**: Explora el código fuente y la estructura del proyecto en mi repositorio: [https://github.com/Dalaez/app_weather](https://github.com/Dalaez/app_weather)
+  * **PapaParse.js**: Parser de CSV rápido en el navegador para JavaScript: [https://www.papaparse.com/](https://www.papaparse.com/)
+  * **Chart.js**: Gráficos JavaScript simples pero flexibles para diseñadores y desarrolladores: [https://www.chartjs.org/](https://www.chartjs.org/)
+  * **GitHub Pages**: Documentación oficial sobre cómo alojar tus sitios: [https://docs.github.com/es/pages](https://docs.github.com/es/pages)
+  * **Netlify**: Página oficial de Netlify: [https://www.netlify.com/](https://www.netlify.com/)
