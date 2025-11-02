@@ -13,7 +13,7 @@ Technology truly shines when it solves a real problem, no matter how small. A fe
 
 Our initial method was the classic one: the ancient art of "covering the answer with your hand" to guess. It was functional, but monotonous, unmotivating, and not very effective. As we struggled to stay focused, an idea struck me: **what if instead of fighting distraction, we combat it with a better tool? Could I, with the help of AI, create a small, custom study application in a matter of minutes?**
 
-This post is the result of that experiment—the creation of a [custom study app with *flashcards*](https://dalaez.github.io/flashcards-app/). Let's look at the initial specifications, the creation process, and, most importantly, the final result ready for use.
+This post is the result of that experiment—the creation of a [custom study app with *flashcards*](https://datalaria.com/apps/flashcards). Let's look at the initial specifications, the creation process, and, most importantly, the final result ready for use.
 
 ### Beyond Anki and Quizlet: The Search for Custom Simplicity
 
@@ -78,11 +78,11 @@ This small application is a perfect testament to the era we live in. A personal 
 
 This is the era of custom content creation. We no longer just consume digital tools; we can build, adapt, and improve them with unprecedented agility.
 
-I hope you find this tool useful. I invite you to try the [flashcards app](https://dalaez.github.io/flashcards-app/), use it in your own study sessions, and, above all, think about that small problem in your daily life that perhaps, with the help of an AI copilot, you could start solving today.
+I hope you find this tool useful. I invite you to try the [flashcards app](https://datalaria.com/apps/flashcards), use it in your own study sessions, and, above all, think about that small problem in your daily life that perhaps, with the help of an AI copilot, you could start solving today.
 
 ---
 
 #### Sources and Resources:
-* **Try the App**: [Flashcards Study App (on GitHub Pages)](https://dalaez.github.io/flashcards-app/)
+* **Try the App**: [Flashcards Study App](https://datalaria.com/apps/flashcards)
 * **Source Code**: [Project Repository on GitHub](https://github.com/dalaez/flashcards-app)
 * **Google AI Studio**[Google AI Studio](https://aistudio.google.com/app/api-keys)

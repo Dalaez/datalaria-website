@@ -13,7 +13,7 @@ La tecnología brilla de verdad cuando resuelve un problema real, por pequeño q
 
 Nuestro método inicial fue el clásico: el ancestral arte de "tapar con la mano" para adivinar la respuesta. Era funcional, pero monótono, poco motivador y no muy efectivo. Mientras luchábamos por mantener la concentración, me surgió una idea: **¿y si en lugar de luchar contra la distracción, la combatimos con una herramienta mejor? ¿Podría crear, con la ayuda de la IA, una pequeña aplicación de estudio a medida en cuestión de minutos?**
 
-Este post es el resultado de ese experimento, la creación de una [aplicación propia de estudio con *flashcards* (tarjetas de memoria)](https://dalaez.github.io/flashcards-app/). Vamos a ver las especificaciones de partida, el proceso de creación y, lo más importante, el resultado final listo para su uso.
+Este post es el resultado de ese experimento, la creación de una [aplicación propia de estudio con *flashcards* (tarjetas de memoria)](https://datalaria.com/apps/flashcards). Vamos a ver las especificaciones de partida, el proceso de creación y, lo más importante, el resultado final listo para su uso.
 
 ### Más Allá de Anki y Quizlet: La Búsqueda de la Simplicidad a Medida
 
@@ -78,11 +78,11 @@ Esta pequeña aplicación es el testimonio perfecto de la era en la que vivimos.
 
 Es la era de la creación de contenidos a medida. Ya no solo consumimos herramientas digitales, sino que podemos construirlas, adaptarlas y mejorarlas con una agilidad sin precedentes. 
 
-Espero que esta herramienta os sea de utilidad. Os invito a probarla [app de *flashcards*](https://dalaez.github.io/flashcards-app/), a usarla en vuestras propias sesiones de estudio y, sobre todo, a pensar en ese pequeño problema de vuestro día a día que quizás, con la ayuda de un copiloto de IA, podríais empezar a resolver hoy mismo.
+Espero que esta herramienta os sea de utilidad. Os invito a probarla [app de *flashcards*](https://datalaria.com/apps/flashcards), a usarla en vuestras propias sesiones de estudio y, sobre todo, a pensar en ese pequeño problema de vuestro día a día que quizás, con la ayuda de un copiloto de IA, podríais empezar a resolver hoy mismo.
 
 ---
 
 #### Fuentes y Recursos:
-* **Prueba la App**: [Aplicación de Estudio - Flashcards (en GitHub Pages)](https://dalaez.github.io/flashcards-app/)
+* **Prueba la App**: [Aplicación de Estudio - Flashcards](https://datalaria.com/apps/flashcards)
 * **Código Fuente**: [Repositorio del Proyecto en GitHub](https://github.com/dalaez/flashcards-app)
 * **Google AI Studio**[Google AI Studio](https://aistudio.google.com/app/api-keys)
