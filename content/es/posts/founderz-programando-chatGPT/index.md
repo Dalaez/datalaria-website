@@ -86,11 +86,11 @@ Esta experiencia demuestra la increíble democratización que la IA está trayen
 
 Este método es increíblemente rápido para crear y probar herramientas. Pero, ¿cómo podemos llevarlo un paso más allá y publicar esta aplicación para que cualquiera en el mundo pueda usarla?
 
-De eso hablaremos en uno de nuestros siguientes post, donde exploraremos el proceso de creación con **la Pizarra de Código de Gemini** y su despliegue público usando **GitHub Pages**. Mientras tanto, para los que no hayáis ido probando en paralelo, podéis ver el resultado creado aquí: [Mi aplicación de matemáticas para niños creada con ChatGPT](https://dalaez.github.io/maths-app/)
+De eso hablaremos en uno de nuestros siguientes post, donde exploraremos el proceso de creación con **la Pizarra de Código de Gemini** y su despliegue público usando **GitHub Pages**. Mientras tanto, para los que no hayáis ido probando en paralelo, podéis ver el resultado creado aquí: [Mi aplicación de matemáticas para niños creada con ChatGPT](https://datalaria.com/apps/math)
 
 ---
 
 #### Fuentes y Recursos:
 * **Founderz**: [Curso de Introducción a la IA y Prompt Engineering](https://founderz.com/es/programa/introduccion-a-la-ia-y-prompt-engineering)
 * **OpenAI**: [ChatGPT](https://chat.openai.com/)
-* **GitHub Page de la App**: [Mi aplicación de matemáticas para niños creada con ChatGPT](https://dalaez.github.io/maths-app/)
+* **GitHub Page de la App**: [Mi aplicación de matemáticas para niños creada con ChatGPT](https://datalaria.com/apps/math)
