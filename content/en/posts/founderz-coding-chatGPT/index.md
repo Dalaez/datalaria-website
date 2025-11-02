@@ -92,4 +92,4 @@ We'll talk about that in one of our next posts, where we'll explore the creation
 #### Sources and Resources:
 * **Founderz**: [Introduction to AI and Prompt Engineering Course](https://founderz.com/en/program/introduction-to-ai-and-prompt-engineering)
 * **OpenAI**: [ChatGPT](https://chat.openai.com/)
-* **App's GitHub Page**: [My math app for kids created with ChatGPT](https://datalaria.com/apps/math)
+* **App's Page**: [My math app for kids created with ChatGPT](https://datalaria.com/apps/math)

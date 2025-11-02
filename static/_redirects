@@ -17,9 +17,7 @@
 /apps/conversor/  https://app-units-conversor.netlify.app/index.html   200!
 /apps/conversor/* https://app-units-conversor.netlify.app/:splat       200!
 
-# ... (reglas de weather, flashcards, conversor) ...
-
 # Reglas para App de Math
-/apps/math   https://app-math.app/index.html   200!
-/apps/math/  https://app-math.app/index.html   200!
-/apps/math/* https://app-math.app/:splat       200!
+/apps/math   https://app-math.netlify.app/index.html   200!
+/apps/math/  https://app-math.netlify.app/index.html   200!
+/apps/math/* https://app-math.netlify.app/:splat       200!

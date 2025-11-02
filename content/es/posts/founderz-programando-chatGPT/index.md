@@ -93,4 +93,4 @@ De eso hablaremos en uno de nuestros siguientes post, donde exploraremos el proc
 #### Fuentes y Recursos:
 * **Founderz**: [Curso de Introducción a la IA y Prompt Engineering](https://founderz.com/es/programa/introduccion-a-la-ia-y-prompt-engineering)
 * **OpenAI**: [ChatGPT](https://chat.openai.com/)
-* **GitHub Page de la App**: [Mi aplicación de matemáticas para niños creada con ChatGPT](https://datalaria.com/apps/math)
+* **Web App**: [Mi aplicación de matemáticas para niños creada con ChatGPT](https://datalaria.com/apps/math)
