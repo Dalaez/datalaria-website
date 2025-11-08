@@ -1,6 +1,6 @@
 ---
 title: "Proyecto Weather Service (Parte 2): Construyendo el Frontend Interactivo con GitHub Pages o Netlify y JavaScript"
-date: 2025-11-04
+date: 2025-11-08
 draft: False
 categories: ["Proyectos", "Herramientas"]
 tags: ["javascript", "frontend", "github pages", "html", "css", "papaparse", "chartjs", "serverless", "visualizacion-datos", "netlify"]
@@ -12,6 +12,8 @@ summary: "Después de construir el recolector de datos, ¡es hora de visualizarl
 En la [primera parte de esta serie](/blog/weather-service-part-1-backend), sentamos las bases de nuestro servicio meteorológico global. Construimos un script de Python para obtener datos del clima de OpenWeatherMap, los almacenamos eficientemente en ficheros CSV separados por ciudad y automatizamos todo el proceso de recolección utilizando GitHub Actions. Nuestro "robot" está diligentemente recopilando datos 24/7.
 
 Pero, ¿de qué sirven los datos si no puedes verlos? Hoy, cambiamos nuestro enfoque al **frontend**: la construcción de un dashboard interactivo y fácil de usar que permita a cualquiera explorar los datos meteorológicos que hemos recopilado. Aprovecharemos el poder del alojamiento de sitios estáticos con **GitHub Pages o Netlify**, utilizaremos **JavaScript** "vainilla" para darle vida y nos apoyaremos en algunas excelentes librerías para el manejo y la visualización de datos. ¡Hagamos que nuestros datos brillen!
+
+![Conceptual image of Weather Service Frontend](AI_App_Weather_Image_Frontend.png)
 
 ---
 
