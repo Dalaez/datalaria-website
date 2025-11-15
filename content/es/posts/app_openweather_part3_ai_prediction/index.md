@@ -1,190 +1,151 @@
 ---
-title: "Weather Service Project (Part 1): Building the Data Collector with Python and GitHub Actions"
-date: 2025-11-30
+title: "Proyecto Weather Service (Parte 3): Prediciendo el Futuro con IA y OpenWeatherMap"
+date: 2025-11-15
 draft: False
-categories: ["Projects", "Tools"]
-tags: ["python", "api", "github actions", "automation", "serverless", "data", "backend"]
-image: weather_backend_collector.png
-description: "First installment in the series on building a weather service. We focus on the backend: connecting to the OpenWeatherMap API, storing data in CSV, and automating everything 24/7 for free with GitHub Actions."
-summary: "We kick off our weather project by building the engine: a Python script that talks to an API, saves historical data, and runs daily thanks to GitHub Actions. I'll share the tricks and challenges!"
+categories: ["Proyectos", "IA", "Herramientas"]
+tags: ["machine-learning", "regresion", "openweathermpa", "python", "pandas", "scikit-learn", "javascript", "frontend", "prediccion-datos", "pronostico-tiempo", "serverless"]
+image: weather_forecast_dashboard.png
+description: "La entrega final de nuestro proyecto Weather Service. Nos adentramos en la adición de capacidades predictivas, combinando pronósticos oficiales de OpenWeatherMap con nuestro modelo de IA (Regresión Lineal) personalizado para predecir el tiempo de mañana y visualizar su precisión."
+summary: "De la recolección de datos a los dashboards dinámicos, ¡ahora es el momento de predecir! Este post explora la integración del pronóstico a 5 días de OpenWeatherMap y la construcción de nuestro propio modelo de predicción de IA a 1 día utilizando datos históricos, todo visualizado en nuestro frontend interactivo."
 ---
 
-As I mentioned in a previous post, one of my goals with Datalaria is to get my hands dirty with projects that allow me to learn and connect different technologies in the data world. Today, we begin a series dedicated to one of those projects: the creation of a **complete global weather service**, from data collection to visualization and prediction, all serverless and using free tools.
+En la [primera parte de esta serie](/blog/weather-service-part-1-backend), establecimos la columna vertebral de nuestro servicio meteorológico global, recolectando datos brutos utilizando Python y GitHub Actions. Luego, en la [Parte 2](/blog/weather-service-part-2-frontend), transformamos esos datos en un hermoso dashboard interactivo, aprovechando GitHub Pages/Netlify, JavaScript, PapaParse.js y Chart.js.
 
-In this first installment, we will focus on the **heart of the system: the backend data collector**. We'll see how to build a "robot" that works for us 24/7, connecting to an external API, saving structured information, and doing all this automatically and for free. Let's dive in!
+Ahora, es el momento del gran final: añadir capacidad predictiva a nuestro Weather Service. Exploraremos cómo aumentar nuestra visualización de datos históricos con pronósticos reales. Esta entrega se centra en un enfoque dual: integrar un pronóstico oficial y fiable de un servicio profesional (OpenWeatherMap) y, lo que es más emocionante, construir y entrenar nuestro propio modelo de IA simple (Regresión Lineal) para predecir el tiempo de mañana basándonos en los datos históricos que hemos recolectado meticulosamente. Finalmente, visualizaremos ambos pronósticos en nuestro dashboard, permitiendo una comparación directa y una prueba real de la precisión de nuestra IA.
 
-![Conceptual image of Weather Service](AI_App_Weather_Image.png)
+¡Convirtamos nuestros datos en una bola de cristal! 🔮
 
----
-
-### The First Step: Talking to the OpenWeatherMap API
-
-Every weather service needs a data source. I chose [OpenWeatherMap](https://openweathermap.org/) for its popularity and generous free plan. The initial process is straightforward:
-
-1.  **Register**: Create an account on their website.
-2.  **Get the API Key**: Generate a unique key that will identify us in each call. It's like our "key" to access their data.
-3.  **Store the Key**: **Never** directly in the code! We'll discuss this further below.
-
-With the key in hand (or almost!), I wrote a first `test_clima.py` script to test the connection using Python's fantastic `requests` library:
-
-```python
-import requests
-
-API_KEY = "YOUR_API_KEY_HERE" # Temporarily! We'll use Secrets later
-CITY = "Madrid"
-URL = f"[https://api.openweathermap.org/data/2.5/weather?q=](https://api.openweathermap.org/data/2.5/weather?q=){CITY}&appid={API_KEY}&units=metric&lang=es"
-
-try:
-    response = requests.get(URL)
-    response.raise_for_status() # Raises an exception for HTTP errors (4xx or 5xx)
-    data = response.json()
-    print(f"Temperature in {CITY}: {data['main']['temp']}°C")
-except requests.exceptions.RequestException as e:
-    print(f"Error connecting to the API: {e}")
-except KeyError as e:
-    print(f"Unexpected API response, key missing: {e}")
-```
-
-**First Obstacle Overcome (with Patience):** When I first ran it, I got a 401 Unauthorized error! 😱 It turns out that OpenWeatherMap API Keys can take a few hours to activate after being generated. The lesson: sometimes, the solution is simply to wait. ⏳
-
------
-
-### The "Database": Why CSV and Not SQL?
-
-With data flowing, I needed to store it. I could have set up an SQL database (PostgreSQL, MySQL...), but that would involve complexity, a server (cost), and for this project, it was overkill.
-
-I opted for radical simplicity: **CSV (Comma Separated Values) files**.
-
-  * **Advantages**: Easy to read and write with Python, perfectly versionable with Git (we can track changes), and sufficient for the initial data volume we'd be handling.
-  * **Key Logic**: I needed to append a new row to each city's file daily, but only write the header (`fecha_hora`, `ciudad`, `temperatura_c`, etc.) the first time. Python's native `csv` library and `os.path.exists` make this trivial:
-
-```python
-import csv
-import os
-from datetime import datetime
-
-# ... (code to fetch API data for a city) ...
-
-now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-data_row = [now, city, temperature, ...] # List with the data
-header = ['date_time', 'city', 'temperature_c', ...] # List with column names
-file_name = f"data/{city}.csv" # We'll create a 'data' folder
-
-# Ensure the 'data' folder exists
-os.makedirs(os.path.dirname(file_name), exist_ok=True)
-
-is_new_file = not os.path.exists(file_name)
-
-try:
-    with open(file_name, mode='a', newline='', encoding='utf-8') as f:
-        writer = csv.writer(f)
-        if is_new_file:
-            writer.writerow(header) # Write header ONLY if new file
-        writer.writerow(data_row) # Append the new data row
-    print(f"Data saved for {city}")
-except IOError as e:
-    print(f"Error writing to {file_name}: {e}")
-```
-
------
-
-### The Automation Robot: GitHub Actions to the Rescue 🤖
-
-Here comes the magic: how to make this script run daily without having a server constantly on? The answer is **GitHub Actions**, the automation engine integrated into GitHub. It's like having a small robot working for us for free.
-
-**Security First: Never Upload Your API Key!**
-The biggest mistake would be to upload `registrar_clima.py` with the `API_KEY` written directly in the code. Anyone could see it on GitHub.
-
-  * **Solution**: Use GitHub's **Repository Secrets**.
-    1.  Go to `Settings > Secrets and variables > Actions` in your GitHub repository.
-    2.  Create a new secret named `OPENWEATHER_API_KEY` and paste your key there.
-    3.  In your Python script, read the key securely using `os.environ.get("OPENWEATHER_API_KEY")`.
-
-**The Robot's Brain: The `.github/workflows/update-weather.yml` File**
-This YAML file tells GitHub Actions what to do and when:
-
-```yaml
-name: Daily Weather Data Update
-
-on:
-  workflow_dispatch: # Allows manual triggering from GitHub
-  push:
-    branches: [ main ] # Triggers if changes are pushed to the main branch
-  schedule:
-    - cron: '0 6 * * *' # The key: triggers daily at 06:00 UTC
-
-jobs:
-  update_data:
-    runs-on: ubuntu-latest # Use a free Linux virtual machine
-    steps:
-      - name: Checkout repository code
-        uses: actions/checkout@v4 # Downloads our code
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10' # Or your preferred version
-
-      - name: Install necessary dependencies
-        run: pip install -r requirements.txt # Reads requirements.txt and installs requests, etc.
-
-      - name: Execute data collection script
-        run: python registrar_clima.py # Our main script!
-        env:
-          OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }} # Securely injects the secret
-
-      - name: Save new data to repository (Commit & Push)
-        run: |
-          git config user.name 'github-actions[bot]' # Identifies the 'bot'
-          git config user.email 'github-actions[bot]@users.noreply.github.com'
-          git add data/*.csv # Adds ONLY the modified CSV files in the 'data' folder
-          # Check if there are changes before committing to avoid empty commits
-          git diff --staged --quiet || git commit -m "Automated weather data update 🤖"
-          git push # Pushes changes to the repository
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Automatic token to allow the push
-```
-
-**This last step is crucial!** The Action itself acts as a user, performing `git add`, `git commit`, and `git push` of the CSV files that the Python script has just modified. This way, the updated data is saved in our repository every day.
-
------
-
-### The Scaling Problem (and the Necessary Architectural Pivot)
-
-My initial idea was to monitor about 1000 cities and store everything in a single `weather_data.csv` file. I did a quick calculation: 1000 cities \* \~200 bytes/day \* 365 days \* 3 years... over 200 MB! 😱
-
-**Why is this a problem?** Because the frontend (our dashboard, which we'll see in the next post) runs in the user's browser. It would have to download that *entire* 200 MB just to display the graph for *one* city. Totally unacceptable in terms of performance. 🐢
-
-**The Architectural Solution:** Switch to a **"one file per entity"** strategy.
-
-  * We create a `data/` folder.
-  * The `registrar_clima.py` script now generates (or appends data to) one CSV file per city: `data/Madrid.csv`, `data/Leon.csv`, `data/Tokyo.csv`, etc.
-
-This way, when the user wants to see the weather for Leon, the frontend will only download the `data/Leon.csv` file, which will be just a few kilobytes. Instant loading! ✨
-
-**Second Scaling Obstacle (API Limits):** OpenWeatherMap, in its free plan, allows about 60 calls per minute. My loop to get data for 155 cities (my current list) would make these calls too quickly.
-
-  * **Vital Solution:** Add `import time` at the beginning of the Python script and `time.sleep(1.1)` at the end of the `for city in cities:` loop. This introduces a pause of slightly more than 1 second between each API call, ensuring we stay below the limit and avoid being blocked. 🚦
-
------
-
-### Conclusion (Part 1)
-
-We've got the foundation! We've built a robust and automated system that:
-
-  * Connects to an external API securely.
-  * Processes and stores historical data for multiple entities (cities).
-  * Runs daily, at no cost, thanks to GitHub Actions.
-  * Is designed to scale efficiently.
-
-In the next post, we'll put on our frontend developer hats and build the interactive dashboard that will allow any user to explore this data with dynamic graphs. Don't miss it!
+![Conceptual image of Weather Service Predictions](AI_App_Weather_Image_Predictions.png)
 
 ---
 
-### References and Links of Interest:
+### El Núcleo Predictivo: OpenWeatherMap y Nuestra IA Personalizada
 
-* **Complete Web Service**: You can see the final result of this project in action here: [https://dalaez.github.io/app_weather/](https://dalaez.github.io/app_weather/)
-* **Project GitHub Repository**: Explore the source code and project structure in my repository: [https://github.com/Dalaez/app_weather](https://github.com/Dalaez/app_weather)
-* **OpenWeatherMap**: Weather API documentation: [https://openweathermap.org/api](https://openweathermap.org/api)
-* **Python Requests**: Documentation for the HTTP requests library: [https://requests.readthedocs.io/en/master/](https://requests.readthedocs.io/en/master/)
-* **GitHub Actions**: Official GitHub Actions guide: [https://docs.github.com/en/actions](https://docs.github.com/en/actions)
+El objetivo de esta funcionalidad predictiva era doble:
+
+1.  **Pronóstico Oficial**: Obtener un pronóstico fiable y a varios días de un servicio meteorológico profesional (OpenWeatherMap - OWM).
+2.  **Predicción de IA Personalizada**: Crear nuestro propio modelo de IA simple (Regresión Lineal) entrenado con los datos históricos que hemos recolectado, para predecir el tiempo del día siguiente.
+3.  **Visualización y Comparación**: Mostrar y comparar ambos pronósticos para medir la precisión y el rendimiento de nuestro modelo de IA personalizado.
+
+---
+
+### 1. ⚙️ Lógica Backend: `read_weather.py` se Vuelve más Inteligente
+
+Nuestro script `read_weather.py`, anteriormente responsable de la recolección de datos, ahora amplía su función para recopilar datos tanto de OWM como de nuestros archivos históricos, consolidando todo en un único fichero `predicciones.json`.
+
+#### Paso 1: Obtener el Pronóstico a 5 Días de OpenWeatherMap
+
+Decidimos que, además de la predicción de IA a 1 día, un pronóstico a 5 días de OWM proporcionaría un contexto valioso.
+
+* **API Endpoint**: Optamos por la API gratuita `data/2.5/forecast` (ya que OneCall 3.0 requería un método de pago).
+* **Procesamiento de Datos**: Esta API devuelve datos en bloques de 3 horas. Tuvimos que añadir lógica en Python para:
+    * Iterar sobre la lista de ~40 pronósticos.
+    * Agruparlos por día (ignorando el día actual).
+    * Para cada uno de los 5 días siguientes, calcular la temperatura máxima, mínima y media de todos los bloques de 3 horas dentro de ese día.
+* **Resultado**: Una lista de 5 objetos (uno por día) que contienen las predicciones de temperatura máxima, mínima y media de OWM.
+
+#### Paso 2: Implementar Nuestro Modelo de IA (Predicción a 1 Día)
+
+Esta es la parte central de nuestra "IA casera". Para cada ciudad:
+
+* **Carga de Datos**: Utilizamos `pandas` para leer el fichero CSV histórico de la ciudad (ej. `datos/Madrid.csv`).
+* **Ingeniería de Características (Feature Engineering)**: Como teníamos múltiples lecturas por día, el paso más crucial fue transformar estos datos:
+    * **Remuestreo**: Usamos `df.resample('D')` de `pandas` para agrupar los datos por día, calculando los agregados diarios reales (ej., `temp_max`, `temp_min`, `temp_media`, `hum_media`).
+    * **Creación de Características (X)**: Creamos nuevas columnas "desplazadas" (`.shift(1)`) para que cada fila (representando un día) contuviera los datos del día anterior (ej., `temp_max_lag1`, `hum_media_lag1`). También añadimos `dia_del_anio` para capturar la estacionalidad.
+    * **Creación de Objetivos (y)**: Definimos qué queríamos predecir (ej., la `temp_max` real del día actual).
+* **Entrenamiento de 3 Modelos**: En lugar de uno, entrenamos tres modelos de Regresión Lineal (`scikit-learn`) independientes:
+    * `model_max`: Entrenado con `y = df_clean['temp_max']`.
+    * `model_min`: Entrenado con `y = df_clean['temp_min']`.
+    * `model_media`: Entrenado con `y = df_clean['temp_media']`.
+* **Predicción**:
+    * Tomamos la última fila de datos agregados (representando los datos de "hoy").
+    * Alimentamos estos datos a los 3 modelos para predecir los valores de "mañana".
+    * Incluimos una salvaguarda (`MIN_RECORDS_FOR_IA = 10`) para que el modelo solo intente predecir si tiene suficientes datos históricos (ej., 10 días limpios).
+
+#### Paso 3: Consolidar y Guardar
+
+El script combina los resultados de los Pasos 1 y 2 en una estructura JSON y la guarda en `predicciones.json`:
+
+```json
+{
+  "Madrid": {
+    "pred_owm_5day": [ 
+      { "date": "...", "max": 15.0, "min": 10.0, "avg": 12.5 }, 
+      ... (5 días) ...
+    ],
+    "pred_ia": {
+      "max": 14.8,
+      "min": 7.5,
+      "media": 11.2,
+      "records": 120
+    }
+  },
+  "A Coruña": {
+     ...
+     "pred_ia": { "max": null, "min": null, "avg": null, "records": 9 } // Ejemplo de datos insuficientes
+  }
+}
+```
+
+---
+
+### 2. 🎨 Lógica Frontend: `index.html` Visualiza el Futuro
+
+El frontend es responsable de cargar este fichero `predicciones.json` y presentarlo de forma visualmente atractiva e informativa.
+
+#### Paso 1: Carga de Datos
+
+  * `loadPredictions()`: Creamos una nueva función `async` que se ejecuta una vez durante la inicialización (antes de `updateDashboard`).
+  * `allPredictionsCache`: Esta función carga `predicciones.json` y lo guarda en esta nueva variable global para que todas las funciones de visualización tengan acceso a él.
+
+#### Paso 2: Visualización en las "Super-Cards" (KPIs)
+
+Queríamos una comparación directa y clara.
+
+  * **Pronóstico OWM a 5 Días**:
+      * Creamos una función auxiliar `buildForecastHTML()`.
+      * Esta función toma la lista `pred_owm_5day` y genera un bloque de HTML con una lista de los 5 días y sus temperaturas máximas/mínimas (ej. "Sáb, 9 nov: 15.1°C / 10.0°C").
+  * **Pronóstico IA a 1 Día (Comparativa)**:
+      * Creamos una segunda función auxiliar `buildIAForecastHTML()`.
+      * Esta función toma el objeto `pred_ia` y el primer día del pronóstico de OWM (`pred_owm_5day[0]`).
+      * **Lógica de Comparación**: Para las temperaturas máxima, mínima y media, muestra el valor de la IA y luego, a su lado, la diferencia con OWM.
+      * **Impacto Visual**: La diferencia se colorea de rojo (si nuestra IA predice más calor) o azul (si predice más frío), dándonos una señal visual inmediata de la desviación de nuestro modelo.
+      * También gestiona el caso de "Datos insuficientes" (`${ia_preds.records}/${MIN_RECORDS_FOR_IA}`).
+  * `updateKPIs()`: La plantilla de la tarjeta fue modificada para llamar a estas dos nuevas funciones, mostrando ambos bloques de pronóstico.
+
+#### Paso 3: Visualización en los Gráficos
+
+Queríamos que los pronósticos se integraran directamente en los gráficos existentes.
+
+  * **Gráfico de Evolución (Línea de Puntos)**:
+      * En `updateChart()`, añadimos un nuevo dataset por cada ciudad.
+      * Este dataset utiliza la media de la predicción de OWM (`pred_owm_5day`).
+      * Le aplicamos el estilo `borderDash: [5, 5]` para que se dibuje como una línea de puntos.
+      * "Cosemos" el inicio de esta línea al último punto de datos reales para que parezca una continuación fluida.
+  * **Gráfico de Variación (Barras Rayadas)**:
+      * En `updateVariationChart()`, añadimos otro dataset por cada ciudad.
+      * Los datos `y` de este conjunto son `day.max - day.min` (la variación) del pronóstico de OWM.
+      * Para el estilo, creamos una función auxiliar `createStripedPattern()` que dibuja un patrón de rayas en un canvas.
+      * Utilizamos este patrón como `backgroundColor` para las barras de pronóstico, diferenciándolas de las barras de datos reales, que son sólidas.
+
+---
+
+### Conclusión (Parte 3)
+
+¡Con esta entrega final, nuestro proyecto Weather Service está completo! Hemos integrado con éxito tanto pronósticos profesionales a 5 días de OpenWeatherMap como un modelo de predicción de IA personalizado a 1 día, todo ello impulsado por nuestros datos históricos recopilados. El frontend ahora proporciona una experiencia rica e interactiva que no solo visualiza el clima pasado, sino que también ofrece un vistazo al futuro, con un análisis comparativo del rendimiento de nuestra IA.
+
+Este viaje ha cubierto desde la recolección de datos en el backend, la automatización con GitHub Actions, el alojamiento de sitios estáticos con Netlify, hasta el desarrollo de frontend dinámico con JavaScript "vainilla", el análisis avanzado de datos con PapaParse.js, la creación de gráficos interactivos con Chart.js, y finalmente, adentrarnos en el Machine Learning para el análisis predictivo.
+
+Hemos construido una aplicación robusta, sin servidor y perspicaz, enteramente con servicios gratuitos. Las posibilidades de expansión (ej., modelos de ML más complejos, diferentes fuentes de datos, cuentas de usuario) son infinitas, pero por ahora, ¡tenemos un oráculo meteorológico completamente funcional!
+
+---
+
+### Referencias y Enlaces de Interés:
+
+  * **Servicio Web Completo**: Puedes ver el resultado final de este proyecto en acción aquí: [https://datalaria.com/apps/weather/](https://datalaria.com/apps/weather/)
+  * **Repositorio GitHub del Proyecto**: Explora el código fuente y la estructura del proyecto en mi repositorio: [https://github.com/Dalaez/app_weather](https://github.com/Dalaez/app_weather)
+  * **OpenWeatherMap API**: [https://openweathermap.org/api](https://openweathermap.org/api)
+  * **Pandas**: Librería de análisis de datos de Python: [https://pandas.pydata.org/](https://pandas.pydata.org/)
+  * **Scikit-learn**: Machine Learning en Python: [https://scikit-learn.org/](https://scikit-learn.org/)
+  * **PapaParse.js**: Parser de CSV rápido en el navegador para JavaScript: [https://www.papaparse.com/](https://www.papaparse.com/)
+  * **Chart.js**: Gráficos JavaScript simples pero flexibles para diseñadores y desarrolladores: [https://www.chartjs.org/](https://www.chartjs.org/)

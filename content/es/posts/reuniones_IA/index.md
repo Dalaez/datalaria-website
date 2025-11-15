@@ -1,6 +1,6 @@
 ---
 title: "Reuniones Excelentes en la Era de la IA: El Decálogo Definitivo"
-date: 2025-11-15
+date: 2025-11-22
 draft: False
 categories: ["Productividad", "Herramientas"]
 tags: ["ia", "reuniones", "productividad", "trabajo remoto", "prompt engineering", "buenas practicas"]
