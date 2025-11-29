@@ -19,6 +19,9 @@ params:
   customCSS:
     - "css/custom.css"
 
+  # Renderizado Mermaid js:
+  mermaid: true
+
   # Define los favicons (buscará las imágenes en la carpeta /static)
   # CORREGIDO: Eliminada la carpeta /images/ de las rutas
   favicon: "/datalaria_logo_icon.png"

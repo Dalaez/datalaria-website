@@ -1,0 +1,44 @@
+<div class="mermaid-container" style="text-align: center; margin: 20px 0; cursor: zoom-in; max-width: 100%;">
+    <div class="mermaid">
+        {{ .Inner }}
+    </div>
+    <p style="font-size: 0.8rem; color: #666; margin-top: 5px;">
+        🔍 <em>Haz clic en el diagrama para ampliarlo a pantalla completa</em>
+    </p>
+</div>
+
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+
+    // Inicialización: Usamos tema 'neutral' para quitar el fondo amarillo
+    // y dejamos que useMaxWidth: true (por defecto) ajuste el tamaño.
+    mermaid.initialize({
+        startOnLoad: true,
+        theme: 'neutral',
+        fontFamily: 'sans-serif'
+    });
+
+    // Script para "Click to Enlarge" (abre el SVG en nueva pestaña)
+    document.addEventListener('DOMContentLoaded', () => {
+        const container = document.querySelector('.mermaid-container');
+
+        container.addEventListener('click', () => {
+            const mermaidDiv = container.querySelector('.mermaid');
+            const svg = mermaidDiv.querySelector('svg');
+
+            if (svg) {
+                // Clonamos el SVG para no alterar el original
+                const clonedSvg = svg.cloneNode(true);
+                // Aseguramos que el clon se expanda al 100% en la nueva vista
+                clonedSvg.setAttribute('width', '100%');
+                clonedSvg.removeAttribute('height'); // Dejar que la altura sea automática
+                clonedSvg.style.maxWidth = 'none';
+
+                const svgData = new XMLSerializer().serializeToString(clonedSvg);
+                const blob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" });
+                const url = URL.createObjectURL(blob);
+                window.open(url, '_blank');
+            }
+        });
+    });
+</script>
