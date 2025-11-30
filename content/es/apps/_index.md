@@ -25,5 +25,11 @@ Aquí encontrarás una colección de pequeñas aplicaciones y herramientas que h
         <p class="app-desc">Ejercicios matemáticos interactivos y herramientas de cálculo para practicar.</p>
         <a href="/apps/maths/" class="app-link">Abrir App →</a>
     </div>
+    <div class="app-card">
+        <span class="app-icon">🌤️</span>
+        <h3 class="app-title">El Tiempo</h3>
+        <p class="app-desc">Consulta la previsión meteorológica detallada y en tiempo real.</p>
+        <a href="/apps/weather/" class="app-link">Abrir App →</a>
+    </div>
 </div>
 

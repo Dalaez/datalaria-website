@@ -5,3 +5,6 @@
 # Ficheros de sistema operativo
 .DS_Store
 Thumbs.db
+
+# Ignorar app weather local (solo para debug)
+/static/apps/weather/

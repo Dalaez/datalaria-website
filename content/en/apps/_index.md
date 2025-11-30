@@ -25,5 +25,11 @@ Here you will find a collection of small applications and tools I have developed
         <p class="app-desc">Interactive math exercises and calculation tools for practice.</p>
         <a href="/apps/maths/" class="app-link">Open App →</a>
     </div>
+    <div class="app-card">
+        <span class="app-icon">🌤️</span>
+        <h3 class="app-title">Weather</h3>
+        <p class="app-desc">Check detailed real-time weather forecast.</p>
+        <a href="/apps/weather/" class="app-link">Open App →</a>
+    </div>
 </div>
 
