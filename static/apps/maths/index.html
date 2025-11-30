@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,6 +40,7 @@
                 opacity: 0;
                 transform: translateY(-50px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -61,6 +63,7 @@
             from {
                 filter: brightness(1);
             }
+
             to {
                 filter: brightness(1.1);
             }
@@ -175,9 +178,12 @@
         }
 
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0px) rotate(0deg);
             }
+
             50% {
                 transform: translateY(-20px) rotate(180deg);
             }
@@ -198,23 +204,23 @@
             .title {
                 font-size: 2.5rem;
             }
-            
+
             .subtitle {
                 font-size: 1.1rem;
             }
-            
+
             .language-buttons {
                 flex-direction: column;
                 align-items: center;
                 gap: 20px;
             }
-            
+
             .language-btn {
                 width: 200px;
                 padding: 18px 30px;
                 font-size: 1.6rem;
             }
-            
+
             .container {
                 padding: 40px 30px;
                 margin: 20px;
@@ -222,6 +228,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="floating-shapes">
         <div class="shape math-symbol">+</div>
@@ -232,17 +239,20 @@
     </div>
 
     <div class="container">
+        <img src="datalaria_logo_transp.png" alt="Logo Datalaria"
+            style="max-width: 200px; height: auto; margin: 0 auto 30px; display: block;">
         <h1 class="title">Math Fun App<br>Juego de Matemáticas</h1>
         <p class="subtitle">Choose your language / Elige tu idioma</p>
-        
+
         <div class="language-buttons">
-            <a href="/apps/math/es/index.html" class="language-btn btn-es">
+            <a href="/apps/maths/es/index.html" class="language-btn btn-es">
                 🇪🇸 ES
             </a>
-            <a href="/apps/math/en/index.html" class="language-btn btn-en">
+            <a href="/apps/maths/en/index.html" class="language-btn btn-en">
                 🇬🇧 EN
             </a>
         </div>
     </div>
 </body>
+
 </html>

@@ -6,18 +6,3 @@
 
 # 3. Regla para TODOS los assets (CSS, JS, txt, json)
 /apps/weather/* https://datalaria-app-weather.netlify.app/:splat       200!
-
-# Reglas para App de Flashcards
-/apps/flashcards   https://datalaria-app-flashcards.netlify.app/index.html   200!
-/apps/flashcards/  https://datalaria-app-flashcards.netlify.app/index.html   200!
-/apps/flashcards/* https://datalaria-app-flashcards.netlify.app/:splat       200!
-
-# Reglas para App de Conversor
-/apps/conversor   https://app-units-conversor.netlify.app/index.html   200!
-/apps/conversor/  https://app-units-conversor.netlify.app/index.html   200!
-/apps/conversor/* https://app-units-conversor.netlify.app/:splat       200!
-
-# Reglas para App de Math
-/apps/math   https://app-math.netlify.app/index.html   200!
-/apps/math/  https://app-math.netlify.app/index.html   200!
-/apps/math/* https://app-math.netlify.app/:splat       200!
