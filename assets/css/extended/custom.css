@@ -92,3 +92,125 @@
         margin-bottom: 2rem;
     }
 }
+/* Custom styles for Datalaria Posts Page */
+
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+    padding: 0;
+}
+
+.post-card {
+    background: var(--entry);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.post-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.post-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border-color: var(--tertiary);
+}
+
+.post-card:hover::before {
+    opacity: 1;
+}
+
+.post-thumbnail-wrapper {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.post-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.post-card:hover .post-thumbnail {
+    transform: scale(1.05);
+}
+
+.post-card-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.post-card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.4;
+}
+
+.post-card-title a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.post-card-meta {
+    font-size: 0.85rem;
+    color: var(--secondary);
+    margin-bottom: 1rem;
+}
+
+.post-card-summary {
+    font-size: 0.95rem;
+    color: var(--secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.post-card-link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--theme);
+    color: var(--primary);
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: 1px solid var(--border);
+    align-self: flex-start;
+    font-size: 0.9rem;
+}
+
+.post-card-link:hover {
+    background: var(--tertiary);
+    transform: translateX(4px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .post-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
