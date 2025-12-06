@@ -2,6 +2,7 @@
 title: "Contacto"
 layout: "single"
 summary: "Ponte en contacto conmigo"
+draft: false
 ---
 
 ## ¿Tienes algo que decirme?

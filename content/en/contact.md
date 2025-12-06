@@ -2,6 +2,7 @@
 title: "Contact"
 layout: "single"
 summary: "Get in touch with me"
+draft: false
 ---
 
 ## Got something to tell me?
