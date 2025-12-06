@@ -1,6 +1,6 @@
 ---
 title: "La Meta no es (solo) sobre fábricas: Sincronizando tu empresa en la era de la IA"
-date: 2025-12-06
+date: 2025-12-13
 draft: False
 categories: ["Estrategia", "Gestión de Proyectos", "IA"]
 tags: ["toc", "la-meta", "teoria-de-restricciones", "gestion-de-proyectos", "cadena-de-suministro", "ia", "industria-4.0", "lean", "six-sigma", "cadena-critica"]

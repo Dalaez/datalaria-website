@@ -1,6 +1,6 @@
 ---
 title: "The Goal is Not (Just) About Factories: Synchronizing Your Enterprise in the Age of AI"
-date: 2025-12-06
+date: 2025-12-13
 draft: False
 categories: ["Strategy", "Project Management", "AI"]
 tags: ["toc", "the-goal", "theory-of-constraints", "project-management", "supply-chain", "ai", "industry-4.0", "lean", "six-sigma", "critical-chain"]
