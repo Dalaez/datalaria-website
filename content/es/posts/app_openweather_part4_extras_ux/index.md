@@ -1,6 +1,6 @@
 ---
 title: "Proyecto Weather (Extras): Más Allá de la IA - Construyendo un Dashboard Robusto y Centrado en el Usuario"
-date: 2025-12-13
+date: 2025-12-06
 draft: False
 categories: ["Project Showcase", "Desarrollo Web", "UI/UX"]
 tags: ["project-weather", "dashboard-climatico", "python", "javascript", "frontend", "backend", "i18n", "visualizacion-datos", "chart.js", "ui-ux"]
