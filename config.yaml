@@ -63,6 +63,7 @@ languages:
         - { identifier: apps, name: "Apps", url: "/apps/", weight: 20 }
         - { identifier: about, name: "Sobre mí", url: "/sobre-mi/", weight: 30 }
         - { identifier: tags, name: "Etiquetas", url: "/tags/", weight: 40 }
+        - { identifier: contact, name: "Contacto", url: "/contact/", weight: 50 }
   en:
     languageName: "English"
     languageCode: "en-US"
@@ -90,6 +91,7 @@ languages:
         - { identifier: apps, name: "Apps", url: "/apps/", weight: 20 }
         - { identifier: about, name: "About", url: "/about/", weight: 30 }
         - { identifier: tags, name: "Tags", url: "/tags/", weight: 40 }
+        - { identifier: contact, name: "Contact", url: "/contact/", weight: 50 }
 
 # --- GOOGLE ANALYTICS ---
 # Pega aquí el ID que has copiado de la web de Google Analytics.
