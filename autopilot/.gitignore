@@ -1,0 +1,11 @@
+# Seguridad - ¡NUNCA SUBIR ESTO!
+.env
+.env.local
+
+# Archivos de sistema y Python
+__pycache__/
+*.pyc
+.DS_Store
+venv/
+.vscode/
+.idea/
