@@ -36,7 +36,8 @@ def load_post_content(file_path):
             'title': post.get('title', 'Sin Título'),
             'url': url,
             'content': post.content,
-            'metadata': post.metadata
+            'metadata': post.metadata,
+            'social_text': post.get('social_text', None)  # Nuevo campo opcional
         }
     except Exception as e:
         print(f"❌ Error leyendo el archivo: {e}")
@@ -57,9 +58,15 @@ def main():
     print(f"📄 Post cargado: '{post_data['title']}'")
     print(f"🔗 URL Calculada: {post_data['url']}")
     
-    # Simulación del contenido generado por la IA (Por el momento hardcodeado o placeholder)
-    # En una implementación real, aquí llamaríamos a la CrewAI con 'post_data['content']'
-    social_text = f"Nuevo artículo publicado: {post_data['title']}. Léelo aquí: {post_data['url']} 🚀 #Datalaria #Tech"
+    # LÓGICA DE GENERACIÓN DE TEXTO
+    if post_data.get('social_text'):
+        # 1. Prioridad: Texto Manual en Frontmatter
+        print("✍️ Texto manual detectado en Frontmatter. Omitiendo generación por IA.")
+        social_text = post_data['social_text']
+    else:
+        # 2. Fallback: Generación Automática (Placeholder/AI)
+        # En el futuro, aquí iría la llamada a CrewAI
+        social_text = f"Nuevo artículo publicado: {post_data['title']}. Léelo aquí: {post_data['url']} 🚀 #Datalaria #Tech"
     
     # Verificar Modo DRY_RUN
     dry_run = os.getenv("DRY_RUN", "false").lower() == "true"

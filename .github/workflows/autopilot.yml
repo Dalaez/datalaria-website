@@ -22,7 +22,16 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 2 
+          fetch-depth: 0  # Fix for "fatal: ambiguous argument 'HEAD^': unknown revision or path not in the working tree."
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+
+      - name: Install Dependencies
+        run: |
+          pip install -r autopilot/requirements.txt
 
       - name: Determine File to Publish
         id: file_check
@@ -43,6 +52,23 @@ jobs:
               echo "No relevant markdown file changes detected."
             fi
           fi
+
+      - name: Generate Preview (Dry Run)
+        if: steps.file_check.outputs.file_path != ''
+        env:
+          DRY_RUN: "true"
+          # Mock Secrets or Real Secrets (Dry Run won't use them, but script might need env vars to init class)
+          TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
+          TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
+          TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+          TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+          LINKEDIN_CLIENT_ID: ${{ secrets.LINKEDIN_CLIENT_ID }}
+          LINKEDIN_COMPANY_ID: ${{ secrets.LINKEDIN_COMPANY_ID }}
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+        run: |
+          echo "👀 Generating Preview for: ${{ steps.file_check.outputs.file_path }}"
+          python autopilot/src/orchestrator.py "${{ steps.file_check.outputs.file_path }}"
 
   publish:
     needs: check_changes
