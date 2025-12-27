@@ -1,6 +1,7 @@
 import os
-import requests
 import tweepy
+import requests
+import random 
 from dotenv import load_dotenv
 
 class SocialMediaManager:
@@ -13,29 +14,41 @@ class SocialMediaManager:
         self.linkedin_token = os.getenv("LINKEDIN_ACCESS_TOKEN")
         self.company_id = os.getenv("LINKEDIN_COMPANY_ID")
 
-    def _smart_truncate(self, text, url, max_length=280):
+    def _clean_text(self, text):
+        """Elimina espacios extra y caracteres invisibles que confunden a las APIs."""
+        return " ".join(text.split())
+
+    def _smart_truncate(self, text, url, max_length=240): # Bajamos a 240 por seguridad (emojis)
         """
-        Corta el texto si excede el límite de Twitter, reservando espacio para la URL.
-        Twitter considera que cualquier URL ocupa 23 caracteres.
+        Corta el texto reservando espacio para URL.
         """
-        url_length = 23 # Longitud fija de URL en Twitter (t.co)
-        # Espacio disponible para texto = 280 - URL - 1 espacio - 3 puntos suspensivos
-        available_chars = max_length - url_length - 4 
+        text = self._clean_text(text)
+        url_length = 23
+        # Dejamos espacio para URL + espacio + puntos suspensivos
+        available_chars = max_length - url_length - 5 
         
         if len(text) <= available_chars:
             return f"{text} {url}"
         
-        # Si es muy largo, cortamos y añadimos '...'
         truncated_text = text[:available_chars] + "..."
-        print(f"✂️ Texto demasiado largo ({len(text)} chars). Cortado a: '{truncated_text}'")
         return f"{truncated_text} {url}"
 
     def post_to_twitter(self, text, url):
-        """Publica en Twitter gestionando la longitud automáticamente."""
-        # Usamos la función de truncado inteligente
-        full_text = self._smart_truncate(text, url)
+        """Publica en Twitter."""
+        # TRUCO ANTI-DUPLICADOS: Añadimos un ID invisible o pequeño al final si estamos probando
+        # Esto evita el error 403 por "Status is a duplicate"
+        # Cuando todo funcione estable, puedes quitar la siguiente línea.
+        run_id = random.randint(1000, 9999)
         
-        print(f"DTO - Posting to Twitter: {full_text[:50]}...")
+        clean_text = self._smart_truncate(text, url)
+        
+        # Opcional: Añadir ID para debug (evita error de duplicado)
+        # full_text = f"{clean_text} [ID:{run_id}]" 
+        # Pero mejor intentamos enviar limpio primero con el truncado agresivo
+        full_text = clean_text 
+
+        print(f"DTO - Posting to Twitter ({len(full_text)} chars): {full_text}")
+        
         try:
             client = tweepy.Client(
                 consumer_key=self.twitter_api_key,
@@ -47,12 +60,19 @@ class SocialMediaManager:
             print(f"✅ Twitter Success! Tweet ID: {response.data['id']}")
         except Exception as e:
             print(f"⚠️ Falló Twitter: {e}")
-            # Si es un error 403, damos una pista extra en el log
+            # Si falla, probamos el reintento con ID anti-duplicado
             if "403" in str(e):
-                print("   💡 PISTA: Si dice 'Forbidden', regenera tus Access Tokens en dev.twitter.com con permisos Read/Write.")
+                print("   🔄 Reintentando con ID único para evitar filtro de duplicados...")
+                try:
+                    full_text_unique = f"{full_text} 🤖{run_id}"
+                    response = client.create_tweet(text=full_text_unique)
+                    print(f"   ✅ Twitter Success (Intento 2)! ID: {response.data['id']}")
+                except Exception as e2:
+                    print(f"   ❌ Reintento fallido: {e2}")
 
     def post_to_linkedin(self, text, url):
-        """Publica en LinkedIn Empresa como un 'Artículo'."""
+        """Publica en LinkedIn."""
+        text = self._clean_text(text) # Limpieza básica
         print(f"DTO - Posting to LinkedIn: {text[:50]}...")
         
         if not self.company_id:
@@ -96,8 +116,6 @@ class SocialMediaManager:
             print(f"✅ LinkedIn Success! Post ID: {response.json().get('id')}")
         except Exception as e:
             print(f"⚠️ Falló LinkedIn: {e}")
-            if 'response' in locals() and response is not None:
-                 print(f"LinkedIn Response info: {response.text}")
 
 if __name__ == "__main__":
     pass
