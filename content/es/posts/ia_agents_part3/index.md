@@ -1,6 +1,6 @@
 ---
 title: "Los Creativos: Cómo programé a una IA para que fuera cínica en Twitter y corporativa en LinkedIn"
-date: 2025-12-28
+date: 2026-01-03
 draft: false
 categories: ["IA Generativa", "Prompt Engineering", "Python"]
 tags: ["CrewAI", "Personalidad IA", "Automatización", "Marketing", "Storytelling"]

@@ -1,6 +1,6 @@
 ---
 title: "The Creatives: How I Programmed an AI to be Cynical on Twitter and Corporate on LinkedIn"
-date: 2025-12-28
+date: 2026-01-03
 draft: false
 categories: ["Generative AI", "Prompt Engineering", "Python"]
 tags: ["CrewAI", "AI Personality", "Automation", "Marketing", "Storytelling"]
