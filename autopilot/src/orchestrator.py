@@ -129,8 +129,7 @@ def main():
         
     # Publicar en LinkedIn
     try:
-        # manager.post_to_linkedin(text=linkedin_text, url=post_url)
-        print(f"⚠️ No publicado en Linkedin por duplicado: {e}")
+        manager.post_to_linkedin(text=linkedin_text, url=post_url)        
     except Exception as e:
         print(f"⚠️ Falló LinkedIn: {e}")
     
