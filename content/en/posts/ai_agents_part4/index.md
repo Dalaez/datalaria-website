@@ -1,5 +1,5 @@
 ---
-title: "The API Nightmare: How I Defeated LinkedIn Bureaucracy to Automate My Company"
+title: "Autopilot - the API Nightmare: How I Defeated LinkedIn Bureaucracy to Automate My Company"
 date: 2026-01-07
 draft: false
 categories: ["Backend", "Python", "APIs"]

@@ -1,5 +1,5 @@
 ---
-title: "El Cerebro: Configurando Gemini y CrewAI para leer mi blog"
+title: "Autopilot - El Cerebro: Configurando Gemini y CrewAI para leer mi blog"
 date: 2025-12-31
 draft: false
 categories: ["Ingeniería de Software", "IA Generativa", "Python"]

@@ -1,5 +1,5 @@
 ---
-title: "The Creatives: How I Programmed an AI to be Cynical on Twitter and Corporate on LinkedIn"
+title: "Autopilot - The Creatives: How I Programmed an AI to be Cynical on Twitter and Corporate on LinkedIn"
 date: 2026-01-03
 draft: false
 categories: ["Generative AI", "Prompt Engineering", "Python"]

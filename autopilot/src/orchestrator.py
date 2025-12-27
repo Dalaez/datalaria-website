@@ -9,6 +9,7 @@ parent_dir = current_dir.parent
 sys.path.append(str(parent_dir))
 
 from src.social_manager import SocialMediaManager
+from src import brain  # <--- IMPORTAMOS EL CEREBRO
 
 def load_post_content(file_path):
     """Lee el archivo markdown y extrae metadatos calculando la URL correcta por idioma."""
@@ -20,35 +21,31 @@ def load_post_content(file_path):
         with open(file_path, 'r', encoding='utf-8') as f:
             post = frontmatter.load(f)
             
-            # 1. Normalizar rutas para evitar problemas entre Windows/Linux
+            # 1. Normalizar rutas
             norm_path = file_path.replace('\\', '/')
             
-            # 2. Detectar Idioma basado en la carpeta
+            # 2. Detectar Idioma
             lang = "es" # Default
             if "/es/" in norm_path:
                 lang = "es"
             elif "/en/" in norm_path:
                 lang = "en"
             
-            # 3. Detectar Slug (nombre del post)
+            # 3. Detectar Slug
             filename = os.path.basename(file_path)
-            # Si el archivo se llama 'index.md', el slug es el nombre de la carpeta padre
             if filename.lower() == 'index.md':
                 slug = os.path.basename(os.path.dirname(file_path))
             else:
                 slug = filename.replace('.md', '')
             
-            # 4. Construir URL correcta
-            # Estructura: https://datalaria.com/{lang}/posts/{slug}/
+            # 4. Construir URL
             base_url = "https://datalaria.com"
-            # Asumimos que si es español /es/ explícito o inglés /en/ explícito lo ponemos
-            # Si tu web usa /posts/ para default, ajusta aquí. Por seguridad usamos el lang detectado.
             if lang:
                 url = f"{base_url}/{lang}/posts/{slug}/"
             else:
                 url = f"{base_url}/posts/{slug}/"
             
-            # 5. Extraer Override Manual si existe
+            # 5. Extraer Override Manual
             social_override = post.metadata.get('social_text', None)
 
             return {
@@ -56,7 +53,7 @@ def load_post_content(file_path):
                 "url": url,
                 "content": post.content,
                 "social_text": social_override,
-                "lang": lang # <--- DEVOLVEMOS EL IDIOMA DETECTADO
+                "lang": lang
             }
     except Exception as e:
         print(f"❌ Error leyendo el archivo {file_path}: {e}")
@@ -79,26 +76,40 @@ def main():
     post_url = post_data['url']
     print(f"🔗 URL Calculada: {post_url}")
     
-    # LÓGICA DE GENERACIÓN DE TEXTO
+    # --- LÓGICA DE GENERACIÓN DE TEXTO ---
+    
+    # 1. Prioridad: Texto Manual en Frontmatter (Director's Cut)
     if post_data.get('social_text'):
-        # 1. Prioridad: Texto Manual en Frontmatter
         print("✍️ Texto manual detectado en Frontmatter. Omitiendo generación por IA.")
         social_base_text = post_data['social_text']
-    else:
-        # 2. Fallback: Generación Automática MULTILINGÜE
-        print(f"🌍 Idioma detectado: {post_data['lang']}")
         
-        if post_data['lang'] == 'en':
-            social_base_text = f"🚀 New article on Datalaria: {post_data['title']}\n\n#DataEngineering #Python #Automation #Tech"
+    else:
+        # 2. IA: Intentamos generar con Gemini
+        print(f"🧠 Invocando a los agentes de IA ({post_data['lang']})...")
+        
+        ai_generated_text = brain.generate_social_copy(
+            title=post_data['title'],
+            content=post_data['content'],
+            lang=post_data['lang']
+        )
+
+        if ai_generated_text:
+            print("✨ IA ha generado el contenido con éxito.")
+            social_base_text = ai_generated_text
         else:
-            social_base_text = f"🚀 Nuevo artículo en Datalaria: {post_data['title']}\n\n#DataEngineering #Python #Automation #Tech"
+            # 3. Fallback: Si la IA falla (o no hay API Key), usamos la plantilla simple
+            print("⚠️ Fallo en IA o sin API Key. Usando plantilla base.")
+            if post_data['lang'] == 'en':
+                social_base_text = f"🚀 New article on Datalaria: {post_data['title']}\n\n#DataEngineering #Python #Automation #Tech"
+            else:
+                social_base_text = f"🚀 Nuevo artículo en Datalaria: {post_data['title']}\n\n#DataEngineering #Python #Automation #Tech"
     
     # Verificar Modo DRY_RUN
     dry_run = os.getenv("DRY_RUN", "false").lower() == "true"
     
     if dry_run:
         print("\n🚧 --- DRY RUN MODE (No posting) --- 🚧")
-        print(f"📄 Texto Base: {social_base_text}")
+        print(f"📄 Texto Generado: {social_base_text}")
         print(f"🔗 URL Adjunta: {post_url}")
         print("---------------------------------------")
         sys.exit(0)
@@ -107,13 +118,11 @@ def main():
     print("\n🚀 --- LIVE MODE (Posting to Social Media) --- 🚀")
     manager = SocialMediaManager()
     
-    # 1. Twitter
     try:
         manager.post_to_twitter(text=social_base_text, url=post_url)
     except Exception as e:
         print(f"⚠️ Falló Twitter, pero continuamos: {e}")
         
-    # 2. LinkedIn
     try:
         manager.post_to_linkedin(text=social_base_text, url=post_url)
     except Exception as e:

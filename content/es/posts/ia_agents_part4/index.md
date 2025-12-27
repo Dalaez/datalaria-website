@@ -1,5 +1,5 @@
 ---
-title: "La Pesadilla de las APIs: Cómo vencí a la burocracia de LinkedIn para automatizar mi empresa"
+title: "Autopilot - La Pesadilla de las APIs: Cómo vencí a la burocracia de LinkedIn para automatizar mi empresa"
 date: 2026-01-07
 draft: false
 categories: ["Backend", "Python", "APIs"]
