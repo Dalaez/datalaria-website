@@ -1,56 +1,50 @@
-import tweepy
-import requests
 import os
-import json
+import requests
+import tweepy
 from dotenv import load_dotenv
-from pathlib import Path
-
-# 1. CARGA ROBUSTA DEL .ENV
-# Busca el .env subiendo niveles hasta encontrarlo, o asume que está en la carpeta padre de src
-env_path = Path(__file__).resolve().parent.parent / '.env'
-load_dotenv(dotenv_path=env_path)
 
 class SocialMediaManager:
     def __init__(self):
-        # Cargar credenciales
+        # Carga variables si estás en local (.env). En GitHub Actions las coge del entorno.
+        load_dotenv()
+        
+        # Twitter Credentials
         self.twitter_api_key = os.getenv("TWITTER_API_KEY")
         self.twitter_api_secret = os.getenv("TWITTER_API_SECRET")
         self.twitter_access_token = os.getenv("TWITTER_ACCESS_TOKEN")
-        self.twitter_access_secret = os.getenv("TWITTER_ACCESS_TOKEN_SECRET")
+        self.twitter_access_token_secret = os.getenv("TWITTER_ACCESS_TOKEN_SECRET")
         
-        self.linkedin_access_token = os.getenv("LINKEDIN_ACCESS_TOKEN")
-        self.linkedin_client_id = os.getenv("LINKEDIN_CLIENT_ID")
+        # LinkedIn Credentials
+        self.linkedin_token = os.getenv("LINKEDIN_ACCESS_TOKEN")
+        # --- AQUÍ ESTABA EL ERROR ---
+        # Necesitamos inicializar esta variable para usarla luego en self.company_id
+        self.company_id = os.getenv("LINKEDIN_COMPANY_ID") 
 
-    def post_to_twitter(self, content):
-        print(f"DTO - Posting to Twitter: {content[:50]}...")
+    def post_to_twitter(self, text):
         try:
-            # Autenticación API v2
             client = tweepy.Client(
                 consumer_key=self.twitter_api_key,
                 consumer_secret=self.twitter_api_secret,
                 access_token=self.twitter_access_token,
-                access_token_secret=self.twitter_access_secret
+                access_token_secret=self.twitter_access_token_secret
             )
-            
-            response = client.create_tweet(text=content)
+            response = client.create_tweet(text=text)
             print(f"✅ Twitter Success! Tweet ID: {response.data['id']}")
-            return response.data['id']
-            
+            return response
         except Exception as e:
-            print(f"❌ Error posting to Twitter: {str(e)}")
-            return None
+            print(f"❌ Error posting to Twitter: {e}")
 
     def post_to_linkedin(self, text):
         """Publica SÓLO en la página de empresa. Si no hay ID, aborta."""
         url = "https://api.linkedin.com/v2/ugcPosts"
         
-        # VERIFICACIÓN ESTRICTA
+        # 1. VERIFICACIÓN DE SEGURIDAD
         if not self.company_id:
             print("⚠️ BLOQUEADO: No se encontró LINKEDIN_COMPANY_ID configurado.")
-            print("   La publicación en perfil personal está desactivada por seguridad.")
-            return # Salimos de la función sin hacer nada más
+            print("   La publicación se ha cancelado para evitar usar el perfil personal.")
+            return
 
-        # Si llegamos aquí, es porque HAY Company ID
+        # 2. Publicación Corporativa
         print(f"🏢 Publicando en Página de Empresa (ID: {self.company_id})...")
         author = f"urn:li:organization:{self.company_id}"
         
@@ -81,19 +75,12 @@ class SocialMediaManager:
             response.raise_for_status()
             print(f"✅ LinkedIn Success! Post ID: {response.json().get('id')}")
         except Exception as e:
-            print(f"❌ Error posting to LinkedIn Company Page: {e}")
-            if response is not None:
+            print(f"❌ Error posting to LinkedIn: {e}")
+            if 'response' in locals() and response is not None:
                 print(f"Response Content: {response.text}")
 
 if __name__ == "__main__":
-    print("--- TESTING SOCIAL MEDIA MANAGER ---")
+    # Prueba rápida local
     manager = SocialMediaManager()
-    msg = "¡SISTEMA VERIFICADO! ✅ Datalaria Autopilot ahora tiene permiso OFICIAL para publicar en la Página de Empresa de LinkedIn y en X. La burocracia ha sido derrotada. 🤖👔 #BuildingInPublic #Python #Automation"
-    
-    # Prueba Twitter
-    manager.post_to_twitter(msg)
-    
-    # Prueba LinkedIn
-    manager.post_to_linkedin(msg)
-    
-    print("--- TEST COMPLETED ---")
+    print("Iniciando prueba de SocialManager...")
+    # manager.post_to_twitter("Prueba Twitter") # Descomentar para probar
