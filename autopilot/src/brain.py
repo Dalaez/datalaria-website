@@ -16,60 +16,51 @@ def generate_social_copy(title, content, platform='twitter', lang='es'):
         # Usamos el modelo fiable y gratuito
         model_name = 'gemini-3-flash-preview' 
         
-        # Leemos más contexto para que la IA entienda bien el post
+        # Leemos más contexto
         content_snippet = content[:6000]
 
-        # --- PERSONALIDAD 1: EL AGENTE DE TWITTER (Viral, Rápido, Hilos) ---
+        # --- PERSONALIDAD 1: AGENTE TWITTER ---
         if platform == 'twitter':
             if lang == 'en':
                 sys_instruction = (
                     "You are a Viral Twitter Creator. Your goal is to get clicks and retweets.\n"
-                    "Style: Punchy, controversial or intriguing hooks, short sentences.\n"
-                    "Format: Use line breaks for readability. Use 1-2 relevant emojis.\n"
-                    "Constraint: NEVER include the URL in the text (it is added automatically).\n"
-                    "Length: Under 250 characters.\n"
-                    "Tags: Include 2-3 trending hashtags."
+                    "Style: Punchy, controversial or intriguing hooks.\n"
+                    "Format: Short lines. Use 1-2 emojis.\n"
+                    "CRITICAL: Never include the URL. FINISH YOUR SENTENCES.\n"
+                    "Length: Keep it under 280 characters.\n"
+                    "Tags: 2-3 trending hashtags."
                 )
             else:
                 sys_instruction = (
-                    "Eres un Creador Viral en Twitter. Tu objetivo son los clics y retweets.\n"
-                    "Estilo: Ganchos impactantes, frases cortas, preguntas directas.\n"
-                    "Formato: Usa saltos de línea. Usa 1-2 emojis estratégicos.\n"
-                    "Restricción: NUNCA incluyas la URL en el texto (se añade sola).\n"
-                    "Longitud: Menos de 250 caracteres.\n"
-                    "Tags: Incluye 2-3 hashtags tendencia."
+                    "Eres un Creador Viral en Twitter. Tu objetivo son los clics.\n"
+                    "Estilo: Ganchos impactantes, frases cortas.\n"
+                    "Formato: Saltos de línea. 1-2 emojis.\n"
+                    "CRÍTICO: NO incluyas la URL. TERMINA LAS FRASES.\n"
+                    "Longitud: Menos de 280 caracteres.\n"
+                    "Tags: 2-3 hashtags tendencia."
                 )
 
-        # --- PERSONALIDAD 2: EL AGENTE DE LINKEDIN (Líder de Opinión, Reflexivo) ---
+        # --- PERSONALIDAD 2: AGENTE LINKEDIN ---
         elif platform == 'linkedin':
             if lang == 'en':
                 sys_instruction = (
-                    "You are a Tech Thought Leader on LinkedIn. Your goal is to build authority and engagement.\n"
-                    "Style: Professional, storytelling, value-driven. Start with a strong 'hook' about a problem.\n"
-                    "Structure:\n"
-                    "1. The Hook (Problem or Insight).\n"
-                    "2. The Context (Why this matters).\n"
-                    "3. The Solution (What the article offers).\n"
-                    "4. Call to Action (Invite to read).\n"
-                    "Constraint: NEVER include the URL in the text.\n"
-                    "Length: 400-800 characters (Micro-blogging style).\n"
-                    "Tags: 3-5 professional hashtags at the bottom."
+                    "You are a Tech Thought Leader on LinkedIn.\n"
+                    "Style: Professional storytelling. Start with a hook.\n"
+                    "Structure: Hook -> Insight -> Value -> Call to Action.\n"
+                    "CRITICAL: Never include the URL. Ensure the post is complete.\n"
+                    "Length: 400-900 characters.\n"
+                    "Tags: 3-5 professional hashtags."
                 )
             else:
                 sys_instruction = (
-                    "Eres un Líder de Opinión Tech en LinkedIn. Tu objetivo es generar autoridad y debate.\n"
-                    "Estilo: Profesional, storytelling, aporte de valor. Empieza con un 'gancho' sobre un problema real.\n"
-                    "Estructura:\n"
-                    "1. El Gancho (Problema o Insight).\n"
-                    "2. El Contexto (Por qué importa esto).\n"
-                    "3. La Solución (Qué ofrece el artículo).\n"
-                    "4. Llamada a la acción (Invita a leer/comentar).\n"
-                    "Restricción: NUNCA incluyas la URL en el texto.\n"
-                    "Longitud: 400-800 caracteres (Estilo micro-blogging).\n"
-                    "Tags: 3-5 hashtags profesionales al final."
+                    "Eres un Líder de Opinión Tech en LinkedIn.\n"
+                    "Estilo: Storytelling profesional. Empieza con un gancho.\n"
+                    "Estructura: Gancho -> Insight -> Valor -> Llamada a la acción.\n"
+                    "CRÍTICO: NO incluyas la URL. Asegúrate de que el texto está completo y cerrado.\n"
+                    "Longitud: 400-900 caracteres.\n"
+                    "Tags: 3-5 hashtags profesionales."
                 )
         
-        # PROMPT DE USUARIO (El contenido a procesar)
         user_prompt = f"Title: {title}\nContent: {content_snippet}"
 
         # LLAMADA A LA API
@@ -77,9 +68,9 @@ def generate_social_copy(title, content, platform='twitter', lang='es'):
             model=model_name,
             contents=user_prompt,
             config=types.GenerateContentConfig(
-                system_instruction=sys_instruction, # Inyectamos la personalidad aquí
-                max_output_tokens=800,
-                temperature=0.8 # Creatividad alta
+                system_instruction=sys_instruction,
+                max_output_tokens=2000,  # 🔥 SUBIMOS A 2000 PARA EVITAR CORTES
+                temperature=0.8
             )
         )
         
