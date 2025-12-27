@@ -2,60 +2,84 @@ import os
 from google import genai
 from google.genai import types
 
-def generate_social_copy(title, content, lang='es'):
+def generate_social_copy(title, content, platform='twitter', lang='es'):
     """
-    Usa el nuevo SDK de Google GenAI para generar texto.
+    Genera texto con personalidades totalmente distintas para Twitter y LinkedIn.
     """
     api_key = os.getenv("GEMINI_API_KEY")
     if not api_key:
-        print("⚠️ GEMINI_API_KEY no encontrada. Usando plantilla por defecto.")
+        print("⚠️ GEMINI_API_KEY no encontrada.")
         return None
 
     try:
-        # Configurar Cliente con la nueva librería
         client = genai.Client(api_key=api_key)
+        # Usamos el modelo fiable y gratuito
+        model_name = 'gemini-3-flash-preview' 
         
-        # --- AQUÍ ES DONDE ELIGES EL MODELO ---
-        # Usa 'gemini-3-flash-preview' (o el nombre exacto que veas en la doc)
-        model_name = 'gemini-3-flash-preview'
-        # Limitar contenido
-        content_snippet = content[:3000]
+        # Leemos más contexto para que la IA entienda bien el post
+        content_snippet = content[:6000]
 
-        # Prompt Engineering
-        if lang == 'en':
-            prompt_text = (
-                f"You are an expert Social Media Manager for a Tech Blog called 'Datalaria'. "
-                f"Write a short, engaging LinkedIn/Twitter post to promote this new article.\n"
-                f"Title: {title}\n"
-                f"Content snippet: {content_snippet}\n\n"
-                f"Rules:\n"
-                f"- Maximum 240 characters.\n"
-                f"- Use an enthusiastic but professional tone.\n"
-                f"- Do NOT include the URL.\n"
-                f"- Include 2-3 relevant hashtags.\n"
-                f"- Output ONLY the text of the post."
-            )
-        else:
-            prompt_text = (
-                f"Eres un experto Social Media Manager para el blog técnico 'Datalaria'. "
-                f"Escribe un post corto y atractivo para LinkedIn/Twitter promocionando este artículo.\n"
-                f"Título: {title}\n"
-                f"Fragmento del contenido: {content_snippet}\n\n"
-                f"Reglas:\n"
-                f"- Máximo 240 caracteres.\n"
-                f"- Tono entusiasta pero profesional.\n"
-                f"- NO incluyas la URL.\n"
-                f"- Incluye 2-3 hashtags relevantes.\n"
-                f"- Devuelve SOLO el texto del post."
-            )
+        # --- PERSONALIDAD 1: EL AGENTE DE TWITTER (Viral, Rápido, Hilos) ---
+        if platform == 'twitter':
+            if lang == 'en':
+                sys_instruction = (
+                    "You are a Viral Twitter Creator. Your goal is to get clicks and retweets.\n"
+                    "Style: Punchy, controversial or intriguing hooks, short sentences.\n"
+                    "Format: Use line breaks for readability. Use 1-2 relevant emojis.\n"
+                    "Constraint: NEVER include the URL in the text (it is added automatically).\n"
+                    "Length: Under 250 characters.\n"
+                    "Tags: Include 2-3 trending hashtags."
+                )
+            else:
+                sys_instruction = (
+                    "Eres un Creador Viral en Twitter. Tu objetivo son los clics y retweets.\n"
+                    "Estilo: Ganchos impactantes, frases cortas, preguntas directas.\n"
+                    "Formato: Usa saltos de línea. Usa 1-2 emojis estratégicos.\n"
+                    "Restricción: NUNCA incluyas la URL en el texto (se añade sola).\n"
+                    "Longitud: Menos de 250 caracteres.\n"
+                    "Tags: Incluye 2-3 hashtags tendencia."
+                )
 
-        # Llamada a la API con la nueva sintaxis v2
+        # --- PERSONALIDAD 2: EL AGENTE DE LINKEDIN (Líder de Opinión, Reflexivo) ---
+        elif platform == 'linkedin':
+            if lang == 'en':
+                sys_instruction = (
+                    "You are a Tech Thought Leader on LinkedIn. Your goal is to build authority and engagement.\n"
+                    "Style: Professional, storytelling, value-driven. Start with a strong 'hook' about a problem.\n"
+                    "Structure:\n"
+                    "1. The Hook (Problem or Insight).\n"
+                    "2. The Context (Why this matters).\n"
+                    "3. The Solution (What the article offers).\n"
+                    "4. Call to Action (Invite to read).\n"
+                    "Constraint: NEVER include the URL in the text.\n"
+                    "Length: 400-800 characters (Micro-blogging style).\n"
+                    "Tags: 3-5 professional hashtags at the bottom."
+                )
+            else:
+                sys_instruction = (
+                    "Eres un Líder de Opinión Tech en LinkedIn. Tu objetivo es generar autoridad y debate.\n"
+                    "Estilo: Profesional, storytelling, aporte de valor. Empieza con un 'gancho' sobre un problema real.\n"
+                    "Estructura:\n"
+                    "1. El Gancho (Problema o Insight).\n"
+                    "2. El Contexto (Por qué importa esto).\n"
+                    "3. La Solución (Qué ofrece el artículo).\n"
+                    "4. Llamada a la acción (Invita a leer/comentar).\n"
+                    "Restricción: NUNCA incluyas la URL en el texto.\n"
+                    "Longitud: 400-800 caracteres (Estilo micro-blogging).\n"
+                    "Tags: 3-5 hashtags profesionales al final."
+                )
+        
+        # PROMPT DE USUARIO (El contenido a procesar)
+        user_prompt = f"Title: {title}\nContent: {content_snippet}"
+
+        # LLAMADA A LA API
         response = client.models.generate_content(
             model=model_name,
-            contents=prompt_text,
+            contents=user_prompt,
             config=types.GenerateContentConfig(
-                max_output_tokens=300,
-                temperature=0.7
+                system_instruction=sys_instruction, # Inyectamos la personalidad aquí
+                max_output_tokens=800,
+                temperature=0.8 # Creatividad alta
             )
         )
         

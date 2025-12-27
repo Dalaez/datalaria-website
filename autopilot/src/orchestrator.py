@@ -9,7 +9,7 @@ parent_dir = current_dir.parent
 sys.path.append(str(parent_dir))
 
 from src.social_manager import SocialMediaManager
-from src import brain  # <--- IMPORTAMOS EL CEREBRO
+from src import brain
 
 def load_post_content(file_path):
     """Lee el archivo markdown y extrae metadatos calculando la URL correcta por idioma."""
@@ -21,31 +21,25 @@ def load_post_content(file_path):
         with open(file_path, 'r', encoding='utf-8') as f:
             post = frontmatter.load(f)
             
-            # 1. Normalizar rutas
             norm_path = file_path.replace('\\', '/')
-            
-            # 2. Detectar Idioma
             lang = "es" # Default
             if "/es/" in norm_path:
                 lang = "es"
             elif "/en/" in norm_path:
                 lang = "en"
             
-            # 3. Detectar Slug
             filename = os.path.basename(file_path)
             if filename.lower() == 'index.md':
                 slug = os.path.basename(os.path.dirname(file_path))
             else:
                 slug = filename.replace('.md', '')
             
-            # 4. Construir URL
             base_url = "https://datalaria.com"
             if lang:
                 url = f"{base_url}/{lang}/posts/{slug}/"
             else:
                 url = f"{base_url}/posts/{slug}/"
             
-            # 5. Extraer Override Manual
             social_override = post.metadata.get('social_text', None)
 
             return {
@@ -72,59 +66,70 @@ def main():
         sys.exit(1)
         
     print(f"📄 Post cargado: '{post_data['title']}' ({post_data['lang']})")
-    
     post_url = post_data['url']
     print(f"🔗 URL Calculada: {post_url}")
     
-    # --- LÓGICA DE GENERACIÓN DE TEXTO ---
+    # --- GENERACIÓN DE CONTENIDO ---
     
-    # 1. Prioridad: Texto Manual en Frontmatter (Director's Cut)
-    if post_data.get('social_text'):
-        print("✍️ Texto manual detectado en Frontmatter. Omitiendo generación por IA.")
-        social_base_text = post_data['social_text']
-        
-    else:
-        # 2. IA: Intentamos generar con Gemini
-        print(f"🧠 Invocando a los agentes de IA ({post_data['lang']})...")
-        
-        ai_generated_text = brain.generate_social_copy(
-            title=post_data['title'],
-            content=post_data['content'],
-            lang=post_data['lang']
-        )
+    twitter_text = ""
+    linkedin_text = ""
 
-        if ai_generated_text:
-            print("✨ IA ha generado el contenido con éxito.")
-            social_base_text = ai_generated_text
+    # Opción 1: Override Manual (El humano manda)
+    if post_data.get('social_text'):
+        print("✍️ Texto manual detectado. Usando el mismo para ambas redes.")
+        twitter_text = post_data['social_text']
+        linkedin_text = post_data['social_text']
+        
+    # Opción 2: Los Agentes de IA trabajan
+    else:
+        print(f"🧠 Invocando a los Agentes Creativos ({post_data['lang']})...")
+        
+        # 1. Llamada al Agente Twitter
+        print("   🐦 Agente Twitter escribiendo...")
+        twitter_gen = brain.generate_social_copy(
+            post_data['title'], post_data['content'], platform='twitter', lang=post_data['lang']
+        )
+        if twitter_gen:
+            twitter_text = twitter_gen
         else:
-            # 3. Fallback: Si la IA falla (o no hay API Key), usamos la plantilla simple
-            print("⚠️ Fallo en IA o sin API Key. Usando plantilla base.")
-            if post_data['lang'] == 'en':
-                social_base_text = f"🚀 New article on Datalaria: {post_data['title']}\n\n#DataEngineering #Python #Automation #Tech"
-            else:
-                social_base_text = f"🚀 Nuevo artículo en Datalaria: {post_data['title']}\n\n#DataEngineering #Python #Automation #Tech"
-    
-    # Verificar Modo DRY_RUN
+            twitter_text = f"🚀 Nuevo post: {post_data['title']} #Datalaria"
+
+        # 2. Llamada al Agente LinkedIn
+        print("   💼 Agente LinkedIn escribiendo...")
+        linkedin_gen = brain.generate_social_copy(
+            post_data['title'], post_data['content'], platform='linkedin', lang=post_data['lang']
+        )
+        if linkedin_gen:
+            linkedin_text = linkedin_gen
+        else:
+            linkedin_text = f"🚀 Nuevo artículo recomendado: {post_data['title']}. #DataEngineering"
+
+    # --- MOSTRAR RESULTADOS Y PUBLICAR ---
+
     dry_run = os.getenv("DRY_RUN", "false").lower() == "true"
     
     if dry_run:
-        print("\n🚧 --- DRY RUN MODE (No posting) --- 🚧")
-        print(f"📄 Texto Generado: {social_base_text}")
-        print(f"🔗 URL Adjunta: {post_url}")
+        print("\n🚧 --- DRY RUN MODE (Preview) --- 🚧")
+        print("\n🐦 [TWITTER AGENT OUTPUT]:")
+        print(twitter_text)
+        print("\n💼 [LINKEDIN AGENT OUTPUT]:")
+        print(linkedin_text)
+        print(f"\n🔗 URL Adjunta: {post_url}")
         print("---------------------------------------")
         sys.exit(0)
 
-    # Si NO es Dry Run, ejecutamos los posts reales
     print("\n🚀 --- LIVE MODE (Posting to Social Media) --- 🚀")
     manager = SocialMediaManager()
     
+    # Publicar en Twitter
     try:
-        manager.post_to_twitter(text=social_base_text, url=post_url)
+        manager.post_to_twitter(text=twitter_text, url=post_url)
     except Exception as e:
-        print(f"⚠️ Falló Twitter, pero continuamos: {e}")
+        print(f"⚠️ Falló Twitter: {e}")
         
+    # Publicar en LinkedIn
     try:
-        manager.post_to_linkedin(text=social_base_text, url=post_url)
+        manager.post_to_linkedin(text=linkedin_text, url=post_url)
     except Exception as e:
         print(f"⚠️ Falló LinkedIn: {e}")
     
