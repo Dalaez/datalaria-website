@@ -13,7 +13,7 @@ def generate_social_copy(title, content, platform='twitter', lang='es'):
 
     try:
         client = genai.Client(api_key=api_key)
-        # Usamos el modelo fiable y gratuito
+        # Usamos un modelo estable para evitar warnings de 'thoughts'
         model_name = 'gemini-3-flash-preview' 
         
         # Leemos más contexto
