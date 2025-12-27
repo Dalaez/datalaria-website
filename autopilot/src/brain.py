@@ -16,8 +16,8 @@ def generate_social_copy(title, content, lang='es'):
         client = genai.Client(api_key=api_key)
         
         # --- AQUÍ ES DONDE ELIGES EL MODELO ---
-        # Usa 'gemini-3-pro-preview' (o el nombre exacto que veas en la doc)
-        model_name = 'gemini-3-pro-preview'
+        # Usa 'gemini-3-flash-preview' (o el nombre exacto que veas en la doc)
+        model_name = 'gemini-3-flash-preview'
         # Limitar contenido
         content_snippet = content[:3000]
 
