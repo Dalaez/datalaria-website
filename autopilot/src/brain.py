@@ -1,9 +1,10 @@
 import os
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 
 def generate_social_copy(title, content, lang='es'):
     """
-    Usa Google Gemini para generar un texto atractivo para redes sociales.
+    Usa el nuevo SDK de Google GenAI para generar texto.
     """
     api_key = os.getenv("GEMINI_API_KEY")
     if not api_key:
@@ -11,16 +12,18 @@ def generate_social_copy(title, content, lang='es'):
         return None
 
     try:
-        # Configurar Gemini
-        genai.configure(api_key=api_key)
-        model = genai.GenerativeModel('gemini-1.5-flash') # Modelo rápido y económico
-
-        # Limitar el contenido para no exceder tokens (primeros 3000 caracteres)
+        # Configurar Cliente con la nueva librería
+        client = genai.Client(api_key=api_key)
+        
+        # --- AQUÍ ES DONDE ELIGES EL MODELO ---
+        # Usa 'gemini-3-pro-preview' (o el nombre exacto que veas en la doc)
+        model_name = 'gemini-3-pro-preview'
+        # Limitar contenido
         content_snippet = content[:3000]
 
-        # Prompt Engineering según idioma
+        # Prompt Engineering
         if lang == 'en':
-            prompt = (
+            prompt_text = (
                 f"You are an expert Social Media Manager for a Tech Blog called 'Datalaria'. "
                 f"Write a short, engaging LinkedIn/Twitter post to promote this new article.\n"
                 f"Title: {title}\n"
@@ -28,12 +31,12 @@ def generate_social_copy(title, content, lang='es'):
                 f"Rules:\n"
                 f"- Maximum 240 characters.\n"
                 f"- Use an enthusiastic but professional tone.\n"
-                f"- Do NOT include the URL (it will be added automatically).\n"
-                f"- Include 2-3 relevant hashtags at the end.\n"
+                f"- Do NOT include the URL.\n"
+                f"- Include 2-3 relevant hashtags.\n"
                 f"- Output ONLY the text of the post."
             )
         else:
-            prompt = (
+            prompt_text = (
                 f"Eres un experto Social Media Manager para el blog técnico 'Datalaria'. "
                 f"Escribe un post corto y atractivo para LinkedIn/Twitter promocionando este artículo.\n"
                 f"Título: {title}\n"
@@ -41,13 +44,21 @@ def generate_social_copy(title, content, lang='es'):
                 f"Reglas:\n"
                 f"- Máximo 240 caracteres.\n"
                 f"- Tono entusiasta pero profesional.\n"
-                f"- NO incluyas la URL (el sistema la añade automáticamente).\n"
-                f"- Incluye 2-3 hashtags relevantes al final.\n"
+                f"- NO incluyas la URL.\n"
+                f"- Incluye 2-3 hashtags relevantes.\n"
                 f"- Devuelve SOLO el texto del post."
             )
 
-        # Llamada a la API
-        response = model.generate_content(prompt)
+        # Llamada a la API con la nueva sintaxis v2
+        response = client.models.generate_content(
+            model=model_name,
+            contents=prompt_text,
+            config=types.GenerateContentConfig(
+                max_output_tokens=300,
+                temperature=0.7
+            )
+        )
+        
         return response.text.strip()
 
     except Exception as e:
