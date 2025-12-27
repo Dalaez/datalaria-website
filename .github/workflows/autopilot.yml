@@ -1,0 +1,84 @@
+name: Datalaria Autopilot 🤖
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'content/posts/**.md'
+  workflow_dispatch:
+    inputs:
+      file_path:
+        description: 'Path manually selected for promotion'
+        required: true
+        type: string
+
+jobs:
+  check_changes:
+    runs-on: ubuntu-latest
+    outputs:
+      file_path: ${{ steps.file_check.outputs.file_path }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2 
+
+      - name: Determine File to Publish
+        id: file_check
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            echo "Manual Trigger detected."
+            echo "file_path=${{ inputs.file_path }}" >> $GITHUB_OUTPUT
+          else
+            echo "Push Trigger detected."
+            # Get the list of changed files in the last commit (added or modified)
+            # Filter for markdown files in content/posts
+            CHANGED_FILE=$(git diff --name-only --diff-filter=AM HEAD^ HEAD | grep '^content/posts/' | grep '.md$' | head -n 1)
+            
+            if [ -n "$CHANGED_FILE" ]; then
+              echo "Found changed file: $CHANGED_FILE"
+              echo "file_path=$CHANGED_FILE" >> $GITHUB_OUTPUT
+            else
+              echo "No relevant markdown file changes detected."
+            fi
+          fi
+
+  publish:
+    needs: check_changes
+    # Only run if a file was actually found/provided
+    if: needs.check_changes.outputs.file_path != ''
+    runs-on: ubuntu-latest
+    environment: production  # <--- This requires manual approval in GitHub Settings
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+
+      - name: Install Dependencies
+        run: |
+          pip install -r autopilot/requirements.txt
+
+      - name: Run Autopilot Orchestrator
+        env:
+          # Twitter Credentials
+          TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
+          TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
+          TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+          TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+          
+          # LinkedIn Credentials
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+          LINKEDIN_CLIENT_ID: ${{ secrets.LINKEDIN_CLIENT_ID }}
+          LINKEDIN_COMPANY_ID: ${{ secrets.LINKEDIN_COMPANY_ID }}
+          
+          # Optional: Google API if we integrate generation later
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+        run: |
+          echo "🚀 Launching Autopilot for: ${{ needs.check_changes.outputs.file_path }}"
+          python autopilot/src/orchestrator.py "${{ needs.check_changes.outputs.file_path }}"

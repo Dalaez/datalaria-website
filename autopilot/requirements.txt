@@ -3,3 +3,4 @@ requests
 crewai
 langchain-google-genai
 python-dotenv
+python-frontmatter
