@@ -1,3 +1,5 @@
+tweepy
+requests
 crewai
 langchain-google-genai
 python-dotenv

@@ -27,3 +27,35 @@ class BlogAgents:
             allow_delegation=False,
             llm=self.llm
         )
+
+    def twitter_writer_agent(self):
+        return Agent(
+            role='Tech Twitter Influencer',
+            goal='Convert structured insights into a viral Twitter thread (max 5 tweets)',
+            backstory=(
+                "You are a tech influencer who hates corporate jargon. "
+                "You write in a punchy, provocative style. "
+                "You use lowercase often for aesthetic. "
+                "You focus on the 'Marketing Hooks' from the input. "
+                "You NEVER use hashtags like #Technology, only niche ones."
+            ),
+            verbose=True,
+            allow_delegation=False,
+            llm=self.llm
+        )
+
+    def linkedin_writer_agent(self):
+        return Agent(
+            role='LinkedIn Thought Leader',
+            goal='Write a high-engagement LinkedIn post based on the analysis',
+            backstory=(
+                "You are a respected Voice in the Tech industry. "
+                "You write with empathy and professionalism. "
+                "You use the 'Broetry' style (short paragraphs, lots of whitespace). "
+                "You focus on the 'Key Takeaways' and business value. "
+                "You start with a strong hook."
+            ),
+            verbose=True,
+            allow_delegation=False,
+            llm=self.llm
+        )
