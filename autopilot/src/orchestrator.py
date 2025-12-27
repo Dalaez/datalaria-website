@@ -24,7 +24,7 @@ def load_post_content(file_path):
             norm_path = file_path.replace('\\', '/')
             
             # 2. Detectar Idioma basado en la carpeta
-            lang = ""
+            lang = "es" # Default
             if "/es/" in norm_path:
                 lang = "es"
             elif "/en/" in norm_path:
@@ -41,10 +41,11 @@ def load_post_content(file_path):
             # 4. Construir URL correcta
             # Estructura: https://datalaria.com/{lang}/posts/{slug}/
             base_url = "https://datalaria.com"
+            # Asumimos que si es español /es/ explícito o inglés /en/ explícito lo ponemos
+            # Si tu web usa /posts/ para default, ajusta aquí. Por seguridad usamos el lang detectado.
             if lang:
                 url = f"{base_url}/{lang}/posts/{slug}/"
             else:
-                # Fallback por si hay posts en la raíz
                 url = f"{base_url}/posts/{slug}/"
             
             # 5. Extraer Override Manual si existe
@@ -54,7 +55,8 @@ def load_post_content(file_path):
                 "title": post.metadata.get('title', 'Sin título'),
                 "url": url,
                 "content": post.content,
-                "social_text": social_override
+                "social_text": social_override,
+                "lang": lang # <--- DEVOLVEMOS EL IDIOMA DETECTADO
             }
     except Exception as e:
         print(f"❌ Error leyendo el archivo {file_path}: {e}")
@@ -72,22 +74,24 @@ def main():
     if not post_data:
         sys.exit(1)
         
-    print(f"📄 Post cargado: '{post_data['title']}'")
+    print(f"📄 Post cargado: '{post_data['title']}' ({post_data['lang']})")
     
-    # Extraemos la URL a una variable separada
     post_url = post_data['url']
     print(f"🔗 URL Calculada: {post_url}")
     
     # LÓGICA DE GENERACIÓN DE TEXTO
-    # Nota: Ya no incluimos la URL dentro del texto base, se envía por separado
     if post_data.get('social_text'):
         # 1. Prioridad: Texto Manual en Frontmatter
         print("✍️ Texto manual detectado en Frontmatter. Omitiendo generación por IA.")
         social_base_text = post_data['social_text']
     else:
-        # 2. Fallback: Generación Automática
-        # Creamos un texto atractivo pero SIN la URL incrustada (para que LinkedIn cree la tarjeta)
-        social_base_text = f"🚀 Nuevo artículo en Datalaria: {post_data['title']}\n\n#DataEngineering #Python #Automation #Tech"
+        # 2. Fallback: Generación Automática MULTILINGÜE
+        print(f"🌍 Idioma detectado: {post_data['lang']}")
+        
+        if post_data['lang'] == 'en':
+            social_base_text = f"🚀 New article on Datalaria: {post_data['title']}\n\n#DataEngineering #Python #Automation #Tech"
+        else:
+            social_base_text = f"🚀 Nuevo artículo en Datalaria: {post_data['title']}\n\n#DataEngineering #Python #Automation #Tech"
     
     # Verificar Modo DRY_RUN
     dry_run = os.getenv("DRY_RUN", "false").lower() == "true"
@@ -103,13 +107,13 @@ def main():
     print("\n🚀 --- LIVE MODE (Posting to Social Media) --- 🚀")
     manager = SocialMediaManager()
     
-    # 1. Twitter (Enviamos texto y URL por separado)
+    # 1. Twitter
     try:
         manager.post_to_twitter(text=social_base_text, url=post_url)
     except Exception as e:
         print(f"⚠️ Falló Twitter, pero continuamos: {e}")
         
-    # 2. LinkedIn (Enviamos texto y URL por separado)
+    # 2. LinkedIn
     try:
         manager.post_to_linkedin(text=social_base_text, url=post_url)
     except Exception as e:

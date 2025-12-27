@@ -16,8 +16,12 @@ class SocialMediaManager:
         self.company_id = os.getenv("LINKEDIN_COMPANY_ID")
 
     def post_to_twitter(self, text, url):
-        """Publica en Twitter concatenando texto y URL."""
-        print(f"DTO - Posting to Twitter: {text[:50]}...")
+        """Publica en Twitter concatenando texto y URL para generar la tarjeta."""
+        # --- CORRECCIÓN CLAVE PARA TWITTER ---
+        # Concatenamos el texto base y la URL para que Twitter detecte la tarjeta.
+        full_text = f"{text} {url}"
+        
+        print(f"DTO - Posting to Twitter: {full_text[:50]}...")
         try:
             client = tweepy.Client(
                 consumer_key=self.twitter_api_key,
@@ -25,8 +29,7 @@ class SocialMediaManager:
                 access_token=self.twitter_access_token,
                 access_token_secret=self.twitter_access_token_secret
             )
-            # Twitter es listo, solo necesita el texto unido
-            full_text = f"{text}\n\n{url}"
+            # Enviamos el texto completo unido
             response = client.create_tweet(text=full_text)
             print(f"✅ Twitter Success! Tweet ID: {response.data['id']}")
         except Exception as e:
@@ -49,19 +52,19 @@ class SocialMediaManager:
             "X-Restli-Protocol-Version": "2.0.0"
         }
         
-        # --- AQUÍ ESTÁ LA MAGIA PARA LA IMAGEN ---
+        # --- ESTRUCTURA PARA ARTICLE EN LINKEDIN (SEPARADO) ---
         payload = {
             "author": author,
             "lifecycleState": "PUBLISHED",
             "specificContent": {
                 "com.linkedin.ugc.ShareContent": {
-                    # 1. El texto de introducción va aquí
+                    # 1. Texto de introducción
                     "shareCommentary": {
                         "text": text
                     },
-                    # 2. Cambiamos NONE por ARTICLE
+                    # 2. Categoría Artículo
                     "shareMediaCategory": "ARTICLE",
-                    # 3. Le decimos cuál es la URL original para que saque la imagen
+                    # 3. URL original para la imagen
                     "media": [
                         {
                             "status": "READY",
