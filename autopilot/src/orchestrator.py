@@ -73,25 +73,29 @@ def main():
         sys.exit(1)
         
     print(f"📄 Post cargado: '{post_data['title']}'")
-    print(f"🔗 URL Calculada: {post_data['url']}")
+    
+    # Extraemos la URL a una variable separada
+    post_url = post_data['url']
+    print(f"🔗 URL Calculada: {post_url}")
     
     # LÓGICA DE GENERACIÓN DE TEXTO
+    # Nota: Ya no incluimos la URL dentro del texto base, se envía por separado
     if post_data.get('social_text'):
         # 1. Prioridad: Texto Manual en Frontmatter
         print("✍️ Texto manual detectado en Frontmatter. Omitiendo generación por IA.")
-        social_text = post_data['social_text']
+        social_base_text = post_data['social_text']
     else:
-        # 2. Fallback: Generación Automática (Placeholder/AI)
-        # En el futuro, aquí iría la llamada a CrewAI
-        social_text = f"Nuevo artículo publicado: {post_data['title']}. Léelo aquí: {post_data['url']} 🚀 #Datalaria #Tech"
+        # 2. Fallback: Generación Automática
+        # Creamos un texto atractivo pero SIN la URL incrustada (para que LinkedIn cree la tarjeta)
+        social_base_text = f"🚀 Nuevo artículo en Datalaria: {post_data['title']}\n\n#DataEngineering #Python #Automation #Tech"
     
     # Verificar Modo DRY_RUN
     dry_run = os.getenv("DRY_RUN", "false").lower() == "true"
     
     if dry_run:
         print("\n🚧 --- DRY RUN MODE (No posting) --- 🚧")
-        print(f"🐦 [Twitter Mock]: {social_text}")
-        print(f"💼 [LinkedIn Mock]: {social_text}")
+        print(f"📄 Texto Base: {social_base_text}")
+        print(f"🔗 URL Adjunta: {post_url}")
         print("---------------------------------------")
         sys.exit(0)
 
@@ -99,15 +103,15 @@ def main():
     print("\n🚀 --- LIVE MODE (Posting to Social Media) --- 🚀")
     manager = SocialMediaManager()
     
-    # 1. Twitter
+    # 1. Twitter (Enviamos texto y URL por separado)
     try:
-        manager.post_to_twitter(social_text)
+        manager.post_to_twitter(text=social_base_text, url=post_url)
     except Exception as e:
         print(f"⚠️ Falló Twitter, pero continuamos: {e}")
         
-    # 2. LinkedIn
+    # 2. LinkedIn (Enviamos texto y URL por separado)
     try:
-        manager.post_to_linkedin(social_text)
+        manager.post_to_linkedin(text=social_base_text, url=post_url)
     except Exception as e:
         print(f"⚠️ Falló LinkedIn: {e}")
     
