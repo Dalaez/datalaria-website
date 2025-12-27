@@ -2,6 +2,7 @@ import os
 import tweepy
 import requests
 import random 
+import time
 from dotenv import load_dotenv
 
 class SocialMediaManager:
@@ -15,16 +16,11 @@ class SocialMediaManager:
         self.company_id = os.getenv("LINKEDIN_COMPANY_ID")
 
     def _clean_text(self, text):
-        """Elimina espacios extra y caracteres invisibles que confunden a las APIs."""
         return " ".join(text.split())
 
-    def _smart_truncate(self, text, url, max_length=240): # Bajamos a 240 por seguridad (emojis)
-        """
-        Corta el texto reservando espacio para URL.
-        """
+    def _smart_truncate(self, text, url, max_length=240):
         text = self._clean_text(text)
         url_length = 23
-        # Dejamos espacio para URL + espacio + puntos suspensivos
         available_chars = max_length - url_length - 5 
         
         if len(text) <= available_chars:
@@ -34,45 +30,54 @@ class SocialMediaManager:
         return f"{truncated_text} {url}"
 
     def post_to_twitter(self, text, url):
-        """Publica en Twitter."""
-        # TRUCO ANTI-DUPLICADOS: Añadimos un ID invisible o pequeño al final si estamos probando
-        # Esto evita el error 403 por "Status is a duplicate"
-        # Cuando todo funcione estable, puedes quitar la siguiente línea.
+        """Publica en Twitter con gestión avanzada de errores."""
         run_id = random.randint(1000, 9999)
-        
         clean_text = self._smart_truncate(text, url)
-        
-        # Opcional: Añadir ID para debug (evita error de duplicado)
-        # full_text = f"{clean_text} [ID:{run_id}]" 
-        # Pero mejor intentamos enviar limpio primero con el truncado agresivo
         full_text = clean_text 
 
         print(f"DTO - Posting to Twitter ({len(full_text)} chars): {full_text}")
         
+        client = tweepy.Client(
+            consumer_key=self.twitter_api_key,
+            consumer_secret=self.twitter_api_secret,
+            access_token=self.twitter_access_token,
+            access_token_secret=self.twitter_access_token_secret
+        )
+
         try:
-            client = tweepy.Client(
-                consumer_key=self.twitter_api_key,
-                consumer_secret=self.twitter_api_secret,
-                access_token=self.twitter_access_token,
-                access_token_secret=self.twitter_access_token_secret
-            )
             response = client.create_tweet(text=full_text)
             print(f"✅ Twitter Success! Tweet ID: {response.data['id']}")
-        except Exception as e:
-            print(f"⚠️ Falló Twitter: {e}")
-            # Si falla, probamos el reintento con ID anti-duplicado
+            
+        except tweepy.errors.TweepyException as e:
+            # --- MEJORA DE DIAGNÓSTICO ---
+            print(f"⚠️ Falló Twitter (Intento 1): {e}")
+            
+            # Intentamos imprimir el mensaje real de la API si existe
+            if hasattr(e, 'api_messages'):
+                print(f"   🔎 API Info: {e.api_messages}")
+            elif hasattr(e, 'response') and e.response is not None:
+                print(f"   🔎 API Raw Response: {e.response.text}")
+
+            # Reintento solo si es un error 403 (posible duplicado o spam temporal)
             if "403" in str(e):
-                print("   🔄 Reintentando con ID único para evitar filtro de duplicados...")
+                print("   ⏳ Esperando 5 segundos antes de reintentar...")
+                time.sleep(5) # Pausa dramática para calmar al algoritmo
+                
+                print("   🔄 Reintentando con ID único...")
                 try:
                     full_text_unique = f"{full_text} 🤖{run_id}"
                     response = client.create_tweet(text=full_text_unique)
                     print(f"   ✅ Twitter Success (Intento 2)! ID: {response.data['id']}")
                 except Exception as e2:
                     print(f"   ❌ Reintento fallido: {e2}")
+                    if hasattr(e2, 'api_messages'):
+                        print(f"   🔎 API Info (Reintento): {e2.api_messages}")
+                    elif hasattr(e2, 'response') and e2.response is not None:
+                        print(f"   🔎 API Raw Response: {e2.response.text}")
 
     def post_to_linkedin(self, text, url):
         """Publica en LinkedIn."""
-        text = self._clean_text(text) # Limpieza básica
+        text = self._clean_text(text)
         print(f"DTO - Posting to LinkedIn: {text[:50]}...")
         
         if not self.company_id:
