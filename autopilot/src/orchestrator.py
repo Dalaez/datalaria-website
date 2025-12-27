@@ -11,37 +11,54 @@ sys.path.append(str(parent_dir))
 from src.social_manager import SocialMediaManager
 
 def load_post_content(file_path):
-    """
-    Lee un archivo Markdown, extrae el frontmatter y el contenido.
-    Construye la URL basada en el nombre del archivo (slug).
-    """
-    path = Path(file_path)
-    
-    if not path.exists():
-        print(f"❌ Error: El archivo {file_path} no existe.")
-        return None
-
+    """Lee el archivo markdown y extrae metadatos calculando la URL correcta por idioma."""
+    if not os.path.exists(file_path):
+        print(f"❌ El archivo no existe: {file_path}")
+        sys.exit(1)
+        
     try:
-        post = frontmatter.load(file_path)
-        
-        # El slug es el nombre del archivo sin extensión
-        slug = path.stem
-        # Si el archivo es index.md, el slug debería ser el nombre de la carpeta padre
-        if slug == 'index':
-            slug = path.parent.name
+        with open(file_path, 'r', encoding='utf-8') as f:
+            post = frontmatter.load(f)
             
-        url = f"https://datalaria.com/posts/{slug}/"
-        
-        return {
-            'title': post.get('title', 'Sin Título'),
-            'url': url,
-            'content': post.content,
-            'metadata': post.metadata,
-            'social_text': post.get('social_text', None)  # Nuevo campo opcional
-        }
+            # 1. Normalizar rutas para evitar problemas entre Windows/Linux
+            norm_path = file_path.replace('\\', '/')
+            
+            # 2. Detectar Idioma basado en la carpeta
+            lang = ""
+            if "/es/" in norm_path:
+                lang = "es"
+            elif "/en/" in norm_path:
+                lang = "en"
+            
+            # 3. Detectar Slug (nombre del post)
+            filename = os.path.basename(file_path)
+            # Si el archivo se llama 'index.md', el slug es el nombre de la carpeta padre
+            if filename.lower() == 'index.md':
+                slug = os.path.basename(os.path.dirname(file_path))
+            else:
+                slug = filename.replace('.md', '')
+            
+            # 4. Construir URL correcta
+            # Estructura: https://datalaria.com/{lang}/posts/{slug}/
+            base_url = "https://datalaria.com"
+            if lang:
+                url = f"{base_url}/{lang}/posts/{slug}/"
+            else:
+                # Fallback por si hay posts en la raíz
+                url = f"{base_url}/posts/{slug}/"
+            
+            # 5. Extraer Override Manual si existe
+            social_override = post.metadata.get('social_text', None)
+
+            return {
+                "title": post.metadata.get('title', 'Sin título'),
+                "url": url,
+                "content": post.content,
+                "social_text": social_override
+            }
     except Exception as e:
-        print(f"❌ Error leyendo el archivo: {e}")
-        return None
+        print(f"❌ Error leyendo el archivo {file_path}: {e}")
+        sys.exit(1)
 
 def main():
     if len(sys.argv) < 2:

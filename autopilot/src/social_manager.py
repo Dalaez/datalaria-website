@@ -40,67 +40,50 @@ class SocialMediaManager:
             print(f"❌ Error posting to Twitter: {str(e)}")
             return None
 
-    def post_to_linkedin(self, content):
-        print(f"DTO - Posting to LinkedIn: {content[:50]}...")
+    def post_to_linkedin(self, text):
+        """Publica SÓLO en la página de empresa. Si no hay ID, aborta."""
+        url = "https://api.linkedin.com/v2/ugcPosts"
+        
+        # VERIFICACIÓN ESTRICTA
+        if not self.company_id:
+            print("⚠️ BLOQUEADO: No se encontró LINKEDIN_COMPANY_ID configurado.")
+            print("   La publicación en perfil personal está desactivada por seguridad.")
+            return # Salimos de la función sin hacer nada más
+
+        # Si llegamos aquí, es porque HAY Company ID
+        print(f"🏢 Publicando en Página de Empresa (ID: {self.company_id})...")
+        author = f"urn:li:organization:{self.company_id}"
         
         headers = {
-            'Authorization': f'Bearer {self.linkedin_access_token}',
-            'Content-Type': 'application/json',
-            'X-Restli-Protocol-Version': '2.0.0'
+            "Authorization": f"Bearer {self.linkedin_token}",
+            "Content-Type": "application/json",
+            "X-Restli-Protocol-Version": "2.0.0"
+        }
+        
+        payload = {
+            "author": author,
+            "lifecycleState": "PUBLISHED",
+            "specificContent": {
+                "com.linkedin.ugc.ShareContent": {
+                    "shareCommentary": {
+                        "text": text
+                    },
+                    "shareMediaCategory": "NONE"
+                }
+            },
+            "visibility": {
+                "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"
+            }
         }
 
         try:
-            # LOGICA HÍBRIDA: EMPRESA O PERSONAL
-            company_id = os.getenv("LINKEDIN_COMPANY_ID")
-            
-            if company_id:
-                # Opción A: Publicar como Empresa (Organization)
-                print(f"🏢 Detectado Company ID: {company_id}. Intentando publicar como página...")
-                author_urn = f"urn:li:organization:{company_id}"
-            else:
-                # Opción B: Publicar como Perfil Personal (Person)
-                print("👤 No hay Company ID. Publicando como perfil personal...")
-                user_info_url = "https://api.linkedin.com/v2/userinfo"
-                response_user = requests.get(user_info_url, headers=headers)
-                if response_user.status_code != 200:
-                    raise Exception(f"Error fetching Profile: {response_user.text}")
-                user_data = response_user.json()
-                person_urn = user_data.get('sub')
-                if not person_urn:
-                    raise Exception("Could not find user URN (sub)")
-                author_urn = f"urn:li:person:{person_urn}"
-            
-            # PASO 2: Publicar
-            post_url = "https://api.linkedin.com/v2/ugcPosts"
-            
-            post_data = {
-                "author": author_urn,
-                "lifecycleState": "PUBLISHED",
-                "specificContent": {
-                    "com.linkedin.ugc.ShareContent": {
-                        "shareCommentary": {
-                            "text": content
-                        },
-                        "shareMediaCategory": "NONE"
-                    }
-                },
-                "visibility": {
-                    "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"
-                }
-            }
-
-            response_post = requests.post(post_url, headers=headers, json=post_data)
-            
-            if response_post.status_code == 201:
-                print(f"✅ LinkedIn Success! Post ID: {response_post.json()['id']}")
-                return response_post.json()['id']
-            else:
-                # Si falla aquí es probablemente por falta de permisos (w_organization_social)
-                raise Exception(f"Status {response_post.status_code}: {response_post.text}")
-
+            response = requests.post(url, headers=headers, json=payload)
+            response.raise_for_status()
+            print(f"✅ LinkedIn Success! Post ID: {response.json().get('id')}")
         except Exception as e:
-            print(f"❌ Error posting to LinkedIn: {str(e)}")
-            return None
+            print(f"❌ Error posting to LinkedIn Company Page: {e}")
+            if response is not None:
+                print(f"Response Content: {response.text}")
 
 if __name__ == "__main__":
     print("--- TESTING SOCIAL MEDIA MANAGER ---")
