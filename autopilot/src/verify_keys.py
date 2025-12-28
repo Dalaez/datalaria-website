@@ -44,7 +44,7 @@ def verify_twitter():
 
         # 4. Verificar Permisos de ESCRITURA (Enviar Tweet)
         print("   - Probando permisos de ESCRITURA (create_tweet)...")
-        msg = "Test de conexión Datalaria Autopilot 🤖 ✅"
+        msg = "Test de conexión Datalaria Autopilot 🤖 ✅ con URL: https://datalaria.com/"
         response = client.create_tweet(text=msg)
         
         if response.data:
