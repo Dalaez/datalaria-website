@@ -1,7 +1,6 @@
 import os
 import tweepy
 import requests
-import random 
 import time
 from dotenv import load_dotenv
 
@@ -18,7 +17,7 @@ class SocialMediaManager:
     def _clean_text(self, text):
         return " ".join(text.split())
 
-    def _smart_truncate(self, text, url, max_length=230): # Bajamos a 230 por seguridad extrema
+    def _smart_truncate(self, text, url, max_length=230):
         text = self._clean_text(text)
         url_length = 23
         available_chars = max_length - url_length - 5 
@@ -30,13 +29,16 @@ class SocialMediaManager:
         return f"{truncated_text} {url}"
 
     def post_to_twitter(self, text, url):
-        """Publica en Twitter con diagnóstico RAW."""
-        run_id = random.randint(1000, 9999)
+        """
+        Publica en Twitter con sistema de reintentos robusto (3 intentos).
+        Eliminado el 'hack' del robot para mantener el texto limpio.
+        """
         clean_text = self._smart_truncate(text, url)
-        full_text = clean_text 
-
-        print(f"DTO - Posting to Twitter ({len(full_text)} chars): {full_text}")
         
+        # Configuración de reintentos
+        max_retries = 3
+        base_delay = 10 # Segundos de espera inicial
+
         client = tweepy.Client(
             consumer_key=self.twitter_api_key,
             consumer_secret=self.twitter_api_secret,
@@ -44,33 +46,33 @@ class SocialMediaManager:
             access_token_secret=self.twitter_access_token_secret
         )
 
-        try:
-            response = client.create_tweet(text=full_text)
-            print(f"✅ Twitter Success! Tweet ID: {response.data['id']}")
-            
-        except tweepy.errors.TweepyException as e:
-            print(f"⚠️ Falló Twitter (Intento 1): {e}")
-            
-            # --- DIAGNÓSTICO FORENSE ---
-            # Imprimimos la respuesta cruda del servidor para ver el motivo real
-            if hasattr(e, 'response') and e.response is not None:
-                print(f"   🔎 RAW SERVER ERROR: {e.response.text}")
-            # ---------------------------
+        print(f"DTO - Posting to Twitter ({len(clean_text)} chars): {clean_text}")
 
-            # Reintento con ID único
-            if "403" in str(e):
-                print("   ⏳ Esperando 5 segundos (Anti-Spam cooldown)...")
-                time.sleep(5)
+        for attempt in range(1, max_retries + 1):
+            try:
+                response = client.create_tweet(text=clean_text)
+                print(f"✅ Twitter Success! Tweet ID: {response.data['id']}")
+                return # ¡Éxito! Salimos de la función
+
+            except tweepy.errors.TweepyException as e:
+                print(f"⚠️ Falló Twitter (Intento {attempt}/{max_retries}): {e}")
                 
-                print("   🔄 Reintentando con ID único...")
-                try:
-                    full_text_unique = f"{full_text} 🤖{run_id}"
-                    response = client.create_tweet(text=full_text_unique)
-                    print(f"   ✅ Twitter Success (Intento 2)! ID: {response.data['id']}")
-                except Exception as e2:
-                    print(f"   ❌ Reintento fallido: {e2}")
-                    if hasattr(e2, 'response') and e2.response is not None:
-                         print(f"   🔎 RAW SERVER ERROR (Reintento): {e2.response.text}")
+                # Diagnóstico de error (HTML vs API)
+                if hasattr(e, 'response') and e.response is not None:
+                    # Solo imprimimos los primeros 100 chars para no ensuciar el log si es HTML gigante
+                    error_preview = e.response.text[:100].replace('\n', ' ')
+                    print(f"   🔎 RAW ERROR PREVIEW: {error_preview}...")
+
+                # Si es el último intento, ya no esperamos, simplemente fallamos.
+                if attempt == max_retries:
+                    print("❌ Se agotaron los intentos. No se pudo publicar en Twitter.")
+                    # No lanzamos excepción para no detener la publicación en LinkedIn si esta falla
+                    return 
+
+                # Si no es el último, esperamos
+                wait_time = base_delay * attempt # Backoff lineal: 10s, 20s...
+                print(f"   ⏳ Esperando {wait_time} segundos para enfriar la conexión...")
+                time.sleep(wait_time)
 
     def post_to_linkedin(self, text, url):
         """Publica en LinkedIn."""
