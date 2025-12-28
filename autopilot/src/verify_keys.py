@@ -51,7 +51,7 @@ def verify_twitter():
              print(f"   ✅ ESCRITURA OK. Tweet enviado con ID: {response.data['id']}")
              print("   (Puedes borrar este tweet manualmente ahora)")
         
-    except tweepy.Errors.Forbidden as e:
+    except tweepy.errors.Forbidden as e:
         print("\n❌ ERROR 403 FORBIDDEN (Permisos Insuficientes)")
         print("   Esto significa que tus credenciales son válidas, pero NO TIENEN PERMISO DE ESCRITURA.")
         print("   Solución:")
@@ -61,7 +61,7 @@ def verify_twitter():
         print("   4. IMPORTANTE: Regenera el Access Token y Secret. Los viejos no se actualizan solos.")
         print(f"   Detalle técnico: {e}")
         
-    except tweepy.Errors.Unauthorized as e:
+    except tweepy.errors.Unauthorized as e:
         print("\n❌ ERROR 401 UNAUTHORIZED (Credenciales Inválidas)")
         print("   Esto significa que alguna de tus claves (API Key o Tokens) está mal copiada.")
         print("   Revisa espacios en blanco al inicio o final en el .env.")
