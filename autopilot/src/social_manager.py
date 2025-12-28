@@ -30,15 +30,14 @@ class SocialMediaManager:
 
     def post_to_twitter(self, text, url):
         """
-        Publica en Twitter con sistema de reintentos robusto (3 intentos).
-        Eliminado el 'hack' del robot para mantener el texto limpio.
+        Publica en Twitter disfrazado de navegador para evitar el WAF.
         """
         clean_text = self._smart_truncate(text, url)
         
-        # Configuración de reintentos
         max_retries = 3
-        base_delay = 10 # Segundos de espera inicial
+        base_delay = 15 # Subimos un poco la espera inicial por seguridad
 
+        # Inicializamos el cliente
         client = tweepy.Client(
             consumer_key=self.twitter_api_key,
             consumer_secret=self.twitter_api_secret,
@@ -46,32 +45,36 @@ class SocialMediaManager:
             access_token_secret=self.twitter_access_token_secret
         )
 
+        # --- EL DISFRAZ 🎭 ---
+        # Forzamos los headers para parecer un Chrome real en Windows
+        # Esto evita que el WAF de Twitter nos tire la pantalla "Just a moment..."
+        user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+        client.session.headers.update({"User-Agent": user_agent})
+        # ---------------------
+
         print(f"DTO - Posting to Twitter ({len(clean_text)} chars): {clean_text}")
 
         for attempt in range(1, max_retries + 1):
             try:
                 response = client.create_tweet(text=clean_text)
                 print(f"✅ Twitter Success! Tweet ID: {response.data['id']}")
-                return # ¡Éxito! Salimos de la función
+                return
 
             except tweepy.errors.TweepyException as e:
                 print(f"⚠️ Falló Twitter (Intento {attempt}/{max_retries}): {e}")
                 
-                # Diagnóstico de error (HTML vs API)
+                # Debug del error HTML si ocurre
                 if hasattr(e, 'response') and e.response is not None:
-                    # Solo imprimimos los primeros 100 chars para no ensuciar el log si es HTML gigante
                     error_preview = e.response.text[:100].replace('\n', ' ')
                     print(f"   🔎 RAW ERROR PREVIEW: {error_preview}...")
 
-                # Si es el último intento, ya no esperamos, simplemente fallamos.
                 if attempt == max_retries:
-                    print("❌ Se agotaron los intentos. No se pudo publicar en Twitter.")
-                    # No lanzamos excepción para no detener la publicación en LinkedIn si esta falla
+                    print("❌ Se agotaron los intentos en Twitter.")
                     return 
 
-                # Si no es el último, esperamos
-                wait_time = base_delay * attempt # Backoff lineal: 10s, 20s...
-                print(f"   ⏳ Esperando {wait_time} segundos para enfriar la conexión...")
+                # Espera incremental
+                wait_time = base_delay * attempt 
+                print(f"   ⏳ Esperando {wait_time} segundos para reintentar con el disfraz...")
                 time.sleep(wait_time)
 
     def post_to_linkedin(self, text, url):

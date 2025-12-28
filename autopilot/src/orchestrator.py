@@ -128,10 +128,10 @@ def main():
         print(f"⚠️ Falló Twitter: {e}")
         
     # Publicar en LinkedIn
-    # try:
-    #     manager.post_to_linkedin(text=linkedin_text, url=post_url)        
-    # except Exception as e:
-    #     print(f"⚠️ Falló LinkedIn: {e}")
+    try:
+        manager.post_to_linkedin(text=linkedin_text, url=post_url)        
+    except Exception as e:
+        print(f"⚠️ Falló LinkedIn: {e}")
     
     print("\n✅ Orquestación finalizada.")
 
