@@ -30,14 +30,14 @@ class SocialMediaManager:
 
     def post_to_twitter(self, text, url):
         """
-        Publica en Twitter disfrazado de navegador para evitar el WAF.
+        Publica en Twitter usando 'Warm-up': valida credenciales primero para establecer sesión
+        y evitar el bloqueo WAF directo en el POST.
         """
         clean_text = self._smart_truncate(text, url)
         
         max_retries = 3
-        base_delay = 15 # Subimos un poco la espera inicial por seguridad
+        base_delay = 5 
 
-        # Inicializamos el cliente
         client = tweepy.Client(
             consumer_key=self.twitter_api_key,
             consumer_secret=self.twitter_api_secret,
@@ -45,17 +45,20 @@ class SocialMediaManager:
             access_token_secret=self.twitter_access_token_secret
         )
 
-        # --- EL DISFRAZ 🎭 ---
-        # Forzamos los headers para parecer un Chrome real en Windows
-        # Esto evita que el WAF de Twitter nos tire la pantalla "Just a moment..."
-        user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
-        client.session.headers.update({"User-Agent": user_agent})
-        # ---------------------
-
         print(f"DTO - Posting to Twitter ({len(clean_text)} chars): {clean_text}")
 
         for attempt in range(1, max_retries + 1):
             try:
+                # --- WARM-UP 🔥 ---
+                # Hacemos una petición de lectura ligera antes de intentar escribir.
+                # Esto a veces 'bypassea' la pantalla de 'Just a moment...' al validar la sesión.
+                if attempt == 1:
+                    print("   🔍 Verificando sesión (Warm-up)...")
+                    me = client.get_me()
+                    print(f"   ✅ Sesión activa como @{me.data.username}")
+                    time.sleep(2) # Pausa corta de cortesía
+                # ------------------
+
                 response = client.create_tweet(text=clean_text)
                 print(f"✅ Twitter Success! Tweet ID: {response.data['id']}")
                 return
@@ -63,18 +66,17 @@ class SocialMediaManager:
             except tweepy.errors.TweepyException as e:
                 print(f"⚠️ Falló Twitter (Intento {attempt}/{max_retries}): {e}")
                 
-                # Debug del error HTML si ocurre
                 if hasattr(e, 'response') and e.response is not None:
-                    error_preview = e.response.text[:100].replace('\n', ' ')
-                    print(f"   🔎 RAW ERROR PREVIEW: {error_preview}...")
+                    # Imprimir solo un poco del error para no llenar la pantalla de HTML
+                    error_msg = e.response.text[:100].replace('\n', ' ')
+                    print(f"   🔎 RAW SERVER MSG: {error_msg}...")
 
                 if attempt == max_retries:
                     print("❌ Se agotaron los intentos en Twitter.")
                     return 
 
-                # Espera incremental
                 wait_time = base_delay * attempt 
-                print(f"   ⏳ Esperando {wait_time} segundos para reintentar con el disfraz...")
+                print(f"   ⏳ Esperando {wait_time}s para reintentar...")
                 time.sleep(wait_time)
 
     def post_to_linkedin(self, text, url):

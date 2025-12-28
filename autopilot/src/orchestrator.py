@@ -11,6 +11,10 @@ sys.path.append(str(parent_dir))
 from src.social_manager import SocialMediaManager
 from src import brain
 
+def str_to_bool(value):
+    """Convierte strings de entorno 'true', 'false', '1', '0' a booleano."""
+    return str(value).lower() in ("yes", "true", "t", "1")
+
 def load_post_content(file_path):
     """Lee el archivo markdown y extrae metadatos calculando la URL correcta por idioma."""
     if not os.path.exists(file_path):
@@ -68,70 +72,80 @@ def main():
     print(f"📄 Post cargado: '{post_data['title']}' ({post_data['lang']})")
     post_url = post_data['url']
     print(f"🔗 URL Calculada: {post_url}")
+
+    # --- LEER INTERRUPTORES DE ENTORNO (Por defecto TRUE) ---
+    enable_twitter = str_to_bool(os.getenv("ENABLE_TWITTER", "true"))
+    enable_linkedin = str_to_bool(os.getenv("ENABLE_LINKEDIN", "true"))
     
     # --- GENERACIÓN DE CONTENIDO ---
     
     twitter_text = ""
     linkedin_text = ""
 
-    # Opción 1: Override Manual (El humano manda)
+    # Opción 1: Override Manual
     if post_data.get('social_text'):
-        print("✍️ Texto manual detectado. Usando el mismo para ambas redes.")
+        print("✍️ Texto manual detectado.")
         twitter_text = post_data['social_text']
         linkedin_text = post_data['social_text']
         
-    # Opción 2: Los Agentes de IA trabajan
+    # Opción 2: IA
     else:
         print(f"🧠 Invocando a los Agentes Creativos ({post_data['lang']})...")
         
-        # 1. Llamada al Agente Twitter
-        print("   🐦 Agente Twitter escribiendo...")
-        twitter_gen = brain.generate_social_copy(
-            post_data['title'], post_data['content'], platform='twitter', lang=post_data['lang']
-        )
-        if twitter_gen:
-            twitter_text = twitter_gen
+        # 1. Agente Twitter (Solo si está activado)
+        if enable_twitter:
+            print("   🐦 Agente Twitter escribiendo...")
+            twitter_gen = brain.generate_social_copy(
+                post_data['title'], post_data['content'], platform='twitter', lang=post_data['lang']
+            )
+            twitter_text = twitter_gen if twitter_gen else f"🚀 Nuevo post: {post_data['title']} #Datalaria"
         else:
-            twitter_text = f"🚀 Nuevo post: {post_data['title']} #Datalaria"
+            print("   🚫 Agente Twitter DESACTIVADO por configuración.")
 
-        # 2. Llamada al Agente LinkedIn
-        print("   💼 Agente LinkedIn escribiendo...")
-        linkedin_gen = brain.generate_social_copy(
-            post_data['title'], post_data['content'], platform='linkedin', lang=post_data['lang']
-        )
-        if linkedin_gen:
-            linkedin_text = linkedin_gen
+        # 2. Agente LinkedIn (Solo si está activado)
+        if enable_linkedin:
+            print("   💼 Agente LinkedIn escribiendo...")
+            linkedin_gen = brain.generate_social_copy(
+                post_data['title'], post_data['content'], platform='linkedin', lang=post_data['lang']
+            )
+            linkedin_text = linkedin_gen if linkedin_gen else f"🚀 Nuevo artículo recomendado: {post_data['title']}. #DataEngineering"
         else:
-            linkedin_text = f"🚀 Nuevo artículo recomendado: {post_data['title']}. #DataEngineering"
+            print("   🚫 Agente LinkedIn DESACTIVADO por configuración.")
 
-    # --- MOSTRAR RESULTADOS Y PUBLICAR ---
+    # --- PUBLICACIÓN ---
 
     dry_run = os.getenv("DRY_RUN", "false").lower() == "true"
     
     if dry_run:
         print("\n🚧 --- DRY RUN MODE (Preview) --- 🚧")
-        print("\n🐦 [TWITTER AGENT OUTPUT]:")
-        print(twitter_text)
-        print("\n💼 [LINKEDIN AGENT OUTPUT]:")
-        print(linkedin_text)
-        print(f"\n🔗 URL Adjunta: {post_url}")
-        print("---------------------------------------")
+        if enable_twitter:
+            print(f"\n🐦 [TWITTER]:\n{twitter_text}")
+        if enable_linkedin:
+            print(f"\n💼 [LINKEDIN]:\n{linkedin_text}")
+        print(f"\n🔗 URL: {post_url}")
         sys.exit(0)
 
     print("\n🚀 --- LIVE MODE (Posting to Social Media) --- 🚀")
     manager = SocialMediaManager()
     
-    # Publicar en Twitter
-    try:
-        manager.post_to_twitter(text=twitter_text, url=post_url)
-    except Exception as e:
-        print(f"⚠️ Falló Twitter: {e}")
+    # 1. Publicar en Twitter
+    if enable_twitter:
+        try:
+            manager.post_to_twitter(text=twitter_text, url=post_url)
+        except Exception as e:
+            print(f"⚠️ Falló Twitter: {e}")
+    else:
+        print("🔕 Twitter omitido (ENABLE_TWITTER=false)")
         
-    # Publicar en LinkedIn
-    try:
-        manager.post_to_linkedin(text=linkedin_text, url=post_url)        
-    except Exception as e:
-        print(f"⚠️ Falló LinkedIn: {e}")
+    # 2. Publicar en LinkedIn
+    enable_linkedin = "false"
+    if enable_linkedin:
+        try:
+            manager.post_to_linkedin(text=linkedin_text, url=post_url)
+        except Exception as e:
+            print(f"⚠️ Falló LinkedIn: {e}")
+    else:
+        print("🔕 LinkedIn omitido (ENABLE_LINKEDIN=false)")
     
     print("\n✅ Orquestación finalizada.")
 
