@@ -18,7 +18,7 @@ class SocialMediaManager:
     def _clean_text(self, text):
         return " ".join(text.split())
 
-    def _smart_truncate(self, text, url, max_length=240):
+    def _smart_truncate(self, text, url, max_length=230): # Bajamos a 230 por seguridad extrema
         text = self._clean_text(text)
         url_length = 23
         available_chars = max_length - url_length - 5 
@@ -30,7 +30,7 @@ class SocialMediaManager:
         return f"{truncated_text} {url}"
 
     def post_to_twitter(self, text, url):
-        """Publica en Twitter con gestión avanzada de errores."""
+        """Publica en Twitter con diagnóstico RAW."""
         run_id = random.randint(1000, 9999)
         clean_text = self._smart_truncate(text, url)
         full_text = clean_text 
@@ -49,19 +49,18 @@ class SocialMediaManager:
             print(f"✅ Twitter Success! Tweet ID: {response.data['id']}")
             
         except tweepy.errors.TweepyException as e:
-            # --- MEJORA DE DIAGNÓSTICO ---
             print(f"⚠️ Falló Twitter (Intento 1): {e}")
             
-            # Intentamos imprimir el mensaje real de la API si existe
-            if hasattr(e, 'api_messages'):
-                print(f"   🔎 API Info: {e.api_messages}")
-            elif hasattr(e, 'response') and e.response is not None:
-                print(f"   🔎 API Raw Response: {e.response.text}")
+            # --- DIAGNÓSTICO FORENSE ---
+            # Imprimimos la respuesta cruda del servidor para ver el motivo real
+            if hasattr(e, 'response') and e.response is not None:
+                print(f"   🔎 RAW SERVER ERROR: {e.response.text}")
+            # ---------------------------
 
-            # Reintento solo si es un error 403 (posible duplicado o spam temporal)
+            # Reintento con ID único
             if "403" in str(e):
-                print("   ⏳ Esperando 5 segundos antes de reintentar...")
-                time.sleep(5) # Pausa dramática para calmar al algoritmo
+                print("   ⏳ Esperando 5 segundos (Anti-Spam cooldown)...")
+                time.sleep(5)
                 
                 print("   🔄 Reintentando con ID único...")
                 try:
@@ -70,10 +69,8 @@ class SocialMediaManager:
                     print(f"   ✅ Twitter Success (Intento 2)! ID: {response.data['id']}")
                 except Exception as e2:
                     print(f"   ❌ Reintento fallido: {e2}")
-                    if hasattr(e2, 'api_messages'):
-                        print(f"   🔎 API Info (Reintento): {e2.api_messages}")
-                    elif hasattr(e2, 'response') and e2.response is not None:
-                        print(f"   🔎 API Raw Response: {e2.response.text}")
+                    if hasattr(e2, 'response') and e2.response is not None:
+                         print(f"   🔎 RAW SERVER ERROR (Reintento): {e2.response.text}")
 
     def post_to_linkedin(self, text, url):
         """Publica en LinkedIn."""
