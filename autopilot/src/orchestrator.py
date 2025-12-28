@@ -137,8 +137,7 @@ def main():
     else:
         print("🔕 Twitter omitido (ENABLE_TWITTER=false)")
         
-    # 2. Publicar en LinkedIn
-    enable_linkedin = "false"
+    # 2. Publicar en LinkedIn    
     if enable_linkedin:
         try:
             manager.post_to_linkedin(text=linkedin_text, url=post_url)
