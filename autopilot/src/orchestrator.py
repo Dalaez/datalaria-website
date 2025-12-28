@@ -76,6 +76,7 @@ def main():
     # --- LEER INTERRUPTORES DE ENTORNO (Por defecto TRUE) ---
     enable_twitter = str_to_bool(os.getenv("ENABLE_TWITTER", "true"))
     enable_linkedin = str_to_bool(os.getenv("ENABLE_LINKEDIN", "true"))
+    enable_devto = str_to_bool(os.getenv("ENABLE_DEVTO", "false")) # Default false for safety
     
     # --- GENERACIÓN DE CONTENIDO ---
     
@@ -122,6 +123,9 @@ def main():
             print(f"\n🐦 [TWITTER]:\n{twitter_text}")
         if enable_linkedin:
             print(f"\n💼 [LINKEDIN]:\n{linkedin_text}")
+        if enable_devto:
+            print(f"\n🦄 [DEV.TO]:\n(Original Markdown Content will be published)")
+        
         print(f"\n🔗 URL: {post_url}")
         sys.exit(0)
 
@@ -145,6 +149,20 @@ def main():
             print(f"⚠️ Falló LinkedIn: {e}")
     else:
         print("🔕 LinkedIn omitido (ENABLE_LINKEDIN=false)")
+
+    # 3. Publicar en Dev.to
+    if enable_devto:
+        try:
+            # post_data['content'] es el markdown body
+            manager.post_to_devto(
+                title=post_data['title'], 
+                content_markdown=post_data['content'], 
+                canonical_url=post_url
+            )
+        except Exception as e:
+            print(f"⚠️ Falló Dev.to: {e}")
+    else:
+        print("🔕 Dev.to omitido (ENABLE_DEVTO=false)")
     
     print("\n✅ Orquestación finalizada.")
 

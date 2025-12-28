@@ -14,6 +14,8 @@ class SocialMediaManager:
         self.twitter_access_token_secret = os.getenv("TWITTER_ACCESS_TOKEN_SECRET")
         self.linkedin_token = os.getenv("LINKEDIN_ACCESS_TOKEN")
         self.company_id = os.getenv("LINKEDIN_COMPANY_ID")
+        self.devto_api_key = os.getenv("DEVTO_API_KEY")
+        self.devto_org_id = os.getenv("DEVTO_ORG_ID")
 
     def _clean_text(self, text):
         return " ".join(text.split())
@@ -28,6 +30,48 @@ class SocialMediaManager:
         
         truncated_text = text[:available_chars] + "..."
         return f"{truncated_text} {url}"
+
+    def post_to_devto(self, title, content_markdown, canonical_url, main_image=None):
+        """Publica el artículo completo en Dev.to con URL canónica."""
+        print(f"DTO - Posting to Dev.to: '{title}'...")
+        
+        if not self.devto_api_key:
+            print("⚠️ BLOQUEADO Dev.to: Faltan credenciales (DEVTO_API_KEY).")
+            return
+
+        api_url = "https://dev.to/api/articles"
+        
+        headers = {
+            "api-key": self.devto_api_key,
+            "Content-Type": "application/json"
+        }
+
+        # Construir payload
+        article_data = {
+            "title": title,
+            "body_markdown": content_markdown,
+            "published": True,
+            "canonical_url": canonical_url
+        }
+
+        # Si hay Organization ID, lo añadimos
+        if self.devto_org_id:
+            article_data["organization_id"] = int(self.devto_org_id)
+
+        # Si hay imagen de portada (opcional)
+        if main_image:
+            article_data["main_image"] = main_image
+
+        payload = {"article": article_data}
+
+        try:
+            response = requests.post(api_url, headers=headers, json=payload)
+            response.raise_for_status()
+            print(f"✅ Dev.to Success! URL: {response.json().get('url')}")
+        except Exception as e:
+            print(f"⚠️ Falló Dev.to: {e}")
+            if 'response' in locals() and response is not None:
+                print(f"   🔴 Dev.to Response: {response.text}")
 
     def post_to_twitter(self, text, url):
         """Publica en Twitter gestionando la longitud automáticamente."""

@@ -66,9 +66,13 @@ jobs:
           LINKEDIN_CLIENT_ID: ${{ secrets.LINKEDIN_CLIENT_ID }}
           LINKEDIN_COMPANY_ID: ${{ secrets.LINKEDIN_COMPANY_ID }}
           GEMINI_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          # Dev.to
+          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
+          DEVTO_ORG_ID: ${{ secrets.DEVTO_ORG_ID }}
           # Feature Flags
           ENABLE_TWITTER: ${{ vars.ENABLE_TWITTER }}
           ENABLE_LINKEDIN: ${{ vars.ENABLE_LINKEDIN }}
+          ENABLE_DEVTO: ${{ vars.ENABLE_DEVTO }}
         run: |
           echo "👀 Generating Preview for: ${{ steps.file_check.outputs.file_path }}"
           python autopilot/src/orchestrator.py "${{ steps.file_check.outputs.file_path }}"
@@ -104,14 +108,16 @@ jobs:
           # LinkedIn Credentials
           LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
           LINKEDIN_CLIENT_ID: ${{ secrets.LINKEDIN_CLIENT_ID }}
-          LINKEDIN_COMPANY_ID: ${{ secrets.LINKEDIN_COMPANY_ID }}
-          
-          # Optional: Google API if we integrate generation later
           GEMINI_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          
+          # Dev.to
+          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
+          DEVTO_ORG_ID: ${{ secrets.DEVTO_ORG_ID }}
           
           # Feature Flags
           ENABLE_TWITTER: ${{ vars.ENABLE_TWITTER }}
           ENABLE_LINKEDIN: ${{ vars.ENABLE_LINKEDIN }}
+          ENABLE_DEVTO: ${{ vars.ENABLE_DEVTO }}
         run: |
           echo "🚀 Launching Autopilot for: ${{ needs.check_changes.outputs.file_path }}"
           python autopilot/src/orchestrator.py "${{ needs.check_changes.outputs.file_path }}"
