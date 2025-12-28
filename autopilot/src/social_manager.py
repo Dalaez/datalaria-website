@@ -2,6 +2,7 @@ import os
 import tweepy
 import requests
 import time
+import random
 from dotenv import load_dotenv
 
 class SocialMediaManager:
@@ -30,14 +31,15 @@ class SocialMediaManager:
 
     def post_to_twitter(self, text, url):
         """
-        Publica en Twitter usando 'Warm-up': valida credenciales primero para establecer sesión
-        y evitar el bloqueo WAF directo en el POST.
+        Publica en Twitter usando inyección completa de Headers (Full Browser Spoofing)
+        para atravesar el bloqueo WAF de Cloudflare/Twitter en GitHub Actions.
         """
         clean_text = self._smart_truncate(text, url)
         
         max_retries = 3
-        base_delay = 5 
+        base_delay = 10 
 
+        # Configuración del cliente
         client = tweepy.Client(
             consumer_key=self.twitter_api_key,
             consumer_secret=self.twitter_api_secret,
@@ -45,20 +47,31 @@ class SocialMediaManager:
             access_token_secret=self.twitter_access_token_secret
         )
 
+        # --- EL DISFRAZ COMPLETO 🎭 ---
+        # No solo cambiamos el User-Agent, sino toda la huella digital del navegador.
+        # Esto hace que la petición sea indistinguible de un Chrome real.
+        full_headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+            "Accept-Language": "en-US,en;q=0.9,es;q=0.8",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Referer": "https://twitter.com/",
+            "Connection": "keep-alive",
+            "Upgrade-Insecure-Requests": "1",
+            "Sec-Fetch-Dest": "document",
+            "Sec-Fetch-Mode": "navigate",
+            "Sec-Fetch-Site": "none",
+            "Sec-Fetch-User": "?1"
+        }
+        
+        # Inyectamos los headers en la sesión de requests subyacente de Tweepy
+        client.session.headers.update(full_headers)
+        # ------------------------------
+
         print(f"DTO - Posting to Twitter ({len(clean_text)} chars): {clean_text}")
 
         for attempt in range(1, max_retries + 1):
             try:
-                # --- WARM-UP 🔥 ---
-                # Hacemos una petición de lectura ligera antes de intentar escribir.
-                # Esto a veces 'bypassea' la pantalla de 'Just a moment...' al validar la sesión.
-                if attempt == 1:
-                    print("   🔍 Verificando sesión (Warm-up)...")
-                    me = client.get_me()
-                    print(f"   ✅ Sesión activa como @{me.data.username}")
-                    time.sleep(2) # Pausa corta de cortesía
-                # ------------------
-
                 response = client.create_tweet(text=clean_text)
                 print(f"✅ Twitter Success! Tweet ID: {response.data['id']}")
                 return
@@ -66,17 +79,19 @@ class SocialMediaManager:
             except tweepy.errors.TweepyException as e:
                 print(f"⚠️ Falló Twitter (Intento {attempt}/{max_retries}): {e}")
                 
+                # Diagnóstico de error HTML
                 if hasattr(e, 'response') and e.response is not None:
-                    # Imprimir solo un poco del error para no llenar la pantalla de HTML
-                    error_msg = e.response.text[:100].replace('\n', ' ')
-                    print(f"   🔎 RAW SERVER MSG: {error_msg}...")
+                    if "<!DOCTYPE html>" in e.response.text:
+                         print("   🔎 BLOQUEO WAF DETECTADO (IP de GitHub sucia).")
+                    else:
+                         print(f"   🔎 ERROR RAW: {e.response.text[:100]}...")
 
                 if attempt == max_retries:
                     print("❌ Se agotaron los intentos en Twitter.")
                     return 
 
                 wait_time = base_delay * attempt 
-                print(f"   ⏳ Esperando {wait_time}s para reintentar...")
+                print(f"   ⏳ Esperando {wait_time}s para reintentar con headers completos...")
                 time.sleep(wait_time)
 
     def post_to_linkedin(self, text, url):
