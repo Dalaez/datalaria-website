@@ -30,69 +30,37 @@ class SocialMediaManager:
         return f"{truncated_text} {url}"
 
     def post_to_twitter(self, text, url):
-        """
-        Publica en Twitter usando inyección completa de Headers (Full Browser Spoofing)
-        para atravesar el bloqueo WAF de Cloudflare/Twitter en GitHub Actions.
-        """
-        clean_text = self._smart_truncate(text, url)
+        """Publica en Twitter gestionando la longitud automáticamente."""
+        # Usamos la función de truncado inteligente
+        full_text = self._smart_truncate(text, url)
         
-        max_retries = 3
-        base_delay = 10 
-
-        # Configuración del cliente
-        client = tweepy.Client(
-            consumer_key=self.twitter_api_key,
-            consumer_secret=self.twitter_api_secret,
-            access_token=self.twitter_access_token,
-            access_token_secret=self.twitter_access_token_secret
-        )
-
-        # --- EL DISFRAZ COMPLETO 🎭 ---
-        # No solo cambiamos el User-Agent, sino toda la huella digital del navegador.
-        # Esto hace que la petición sea indistinguible de un Chrome real.
-        full_headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
-            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
-            "Accept-Language": "en-US,en;q=0.9,es;q=0.8",
-            "Accept-Encoding": "gzip, deflate, br",
-            "Referer": "https://twitter.com/",
-            "Connection": "keep-alive",
-            "Upgrade-Insecure-Requests": "1",
-            "Sec-Fetch-Dest": "document",
-            "Sec-Fetch-Mode": "navigate",
-            "Sec-Fetch-Site": "none",
-            "Sec-Fetch-User": "?1"
-        }
+        print(f"DTO - Posting to Twitter ({len(full_text)} chars): {full_text}...")
+        try:
+            client = tweepy.Client(
+                consumer_key=self.twitter_api_key,
+                consumer_secret=self.twitter_api_secret,
+                access_token=self.twitter_access_token,
+                access_token_secret=self.twitter_access_token_secret
+            )
+            response = client.create_tweet(text=full_text)
+            print(f"✅ Twitter Success! Tweet ID: {response.data['id']}")
         
-        # Inyectamos los headers en la sesión de requests subyacente de Tweepy
-        client.session.headers.update(full_headers)
-        # ------------------------------
-
-        print(f"DTO - Posting to Twitter ({len(clean_text)} chars): {clean_text}")
-
-        for attempt in range(1, max_retries + 1):
-            try:
-                response = client.create_tweet(text=clean_text)
-                print(f"✅ Twitter Success! Tweet ID: {response.data['id']}")
-                return
-
-            except tweepy.errors.TweepyException as e:
-                print(f"⚠️ Falló Twitter (Intento {attempt}/{max_retries}): {e}")
-                
-                # Diagnóstico de error HTML
-                if hasattr(e, 'response') and e.response is not None:
-                    if "<!DOCTYPE html>" in e.response.text:
-                         print("   🔎 BLOQUEO WAF DETECTADO (IP de GitHub sucia).")
-                    else:
-                         print(f"   🔎 ERROR RAW: {e.response.text[:100]}...")
-
-                if attempt == max_retries:
-                    print("❌ Se agotaron los intentos en Twitter.")
-                    return 
-
-                wait_time = base_delay * attempt 
-                print(f"   ⏳ Esperando {wait_time}s para reintentar con headers completos...")
-                time.sleep(wait_time)
+        except tweepy.errors.TweepyException as e:
+            print(f"⚠️ Falló Twitter (Tweepy Error): {e}")
+            if hasattr(e, 'response') and e.response:
+                print(f"   🔴 Response Status Code: {e.response.status_code}")
+                # print(f"   🔴 Response Text: {e.response.text}") # A veces es muy largo o html
+            if hasattr(e, 'api_codes') and e.api_codes:
+                print(f"   🔴 API Error Codes: {e.api_codes}")
+            
+            # Common specific hints
+            if "403" in str(e):
+                print("   💡 PISTA 403: Forbidden. Puede ser:")
+                print("      1. Credenciales incorrectas o sin permisos de escritura.")
+                print("      2. Contenido duplicado (Twitter prohíbe repostear lo mismo seguido).")
+                print("      3. Contenido demasiado largo.")
+            if "401" in str(e):
+                print("   💡 PISTA 401: Unauthorized. Revisa tus API KEYS y TOKENS.")
 
     def post_to_linkedin(self, text, url):
         """Publica en LinkedIn."""
