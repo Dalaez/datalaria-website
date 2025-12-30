@@ -59,32 +59,17 @@ class SocialMediaManager:
 
     # ... post_to_devto ...
 
-    def post_to_twitter(self, text, url, image_path=None):
-        """Publica en Twitter. Si hay image_path, sube la imagen nativa."""
-        if not self.client_v2 or not self.api_v1:
+    def post_to_twitter(self, text, url):
+        """Publica en Twitter gestionando la longitud automáticamente."""
+        if not self.client_v2:
             print("⚠️ Twitter no configurado (Faltan credenciales o error init).")
             return
 
         full_text = self._smart_truncate(text, url)
         print(f"DTO - Posting to Twitter ({len(full_text)} chars): {full_text}...")
         
-        media_ids = []
-        if image_path and os.path.exists(image_path):
-            try:
-                print(f"📸 Subiendo imagen nativa a Twitter: {image_path}")
-                media = self.api_v1.media_upload(filename=image_path)
-                media_ids.append(media.media_id)
-                print(f"   ✅ Imagen subida (Media ID: {media.media_id})")
-            except Exception as e:
-                print(f"⚠️ Error subiendo imagen a Twitter: {e}")
-
         try:
-            if media_ids:
-                print(f"   📸 Intentando publicar con {len(media_ids)} imágenes...")
-                response = self.client_v2.create_tweet(text=full_text, media_ids=media_ids)
-            else:
-                response = self.client_v2.create_tweet(text=full_text)
-                
+            response = self.client_v2.create_tweet(text=full_text)    
             print(f"✅ Twitter Success! Tweet ID: {response.data['id']}")
         
         except tweepy.errors.TweepyException as e:
@@ -98,7 +83,7 @@ class SocialMediaManager:
                 try: 
                    print(f"   🔴 Response JSON: {e.response.json()}")
                 except:
-                   print(f"   🔴 Response Text: {e.response.text}")
+                   print(f"   🔴 Response Text: {e.response.text}") # Descomentado para debug granular
             
             if hasattr(e, 'api_messages'):
                 print(f"   🔴 API Messages: {e.api_messages}")

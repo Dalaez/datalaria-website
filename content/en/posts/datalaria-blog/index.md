@@ -4,7 +4,10 @@ date: 2025-08-17
 draft: False
 categories: ["Projects"]
 tags: ["hugo", "jamstack", "netlify", "github", "wordpress", "web development", "ci/cd"]
-image: hugo_vs_wordpress.png
+cover:
+  image: hugo_vs_wordpress.png
+  relative: true
+social_text: "Forget WordPress. I built my entire blog with Hugo, GitHub, and Netlify. 🚀 Why? Control. Speed. Zero cost. It forced me to LEARN web dev from scratch"
 description: "Datalaria: building its foundations. A look at a modern stack vs. traditional solutions."
 summary: "Behind every project are key decisions. I explore why I chose the Jamstack path with Hugo for Datalaria, prioritizing learning and performance over the traditional WordPress route."
 ---

@@ -229,8 +229,8 @@ def main():
     # 1. Publicar en Twitter
     if enable_twitter:
         try:
-            # Pasamos local_image_path si existe
-            manager.post_to_twitter(text=twitter_text, url=post_url, image_path=local_image_path)
+            # Revertido a solo texto+URL para permitir Twitter Cards
+            manager.post_to_twitter(text=twitter_text, url=post_url)
         except Exception as e:
             print(f"⚠️ Falló Twitter: {e}")
     else:
