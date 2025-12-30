@@ -80,6 +80,7 @@ class SocialMediaManager:
 
         try:
             if media_ids:
+                print(f"   📸 Intentando publicar con {len(media_ids)} imágenes...")
                 response = self.client_v2.create_tweet(text=full_text, media_ids=media_ids)
             else:
                 response = self.client_v2.create_tweet(text=full_text)
@@ -87,13 +88,30 @@ class SocialMediaManager:
             print(f"✅ Twitter Success! Tweet ID: {response.data['id']}")
         
         except tweepy.errors.TweepyException as e:
-            # ... error handling ...
+            # Enhanced Debugging
             print(f"⚠️ Falló Twitter (Tweepy Error): {e}")
+            print(f"   🔍 Debug Info: {type(e)}")
+            
             if hasattr(e, 'response') and e.response:
-                print(f"   🔴 Response Status Code: {e.response.status_code}")
-                print(f"   🔴 Response Text: {e.response.text}") # Descomentado para debug granular
-            if hasattr(e, 'api_codes') and e.api_codes:
-                print(f"   🔴 API Error Codes: {e.api_codes}")
+                print(f"   🔴 Status Code: {e.response.status_code}")
+                # Intentar leer cuerpo JSON si existe
+                try: 
+                   print(f"   🔴 Response JSON: {e.response.json()}")
+                except:
+                   print(f"   🔴 Response Text: {e.response.text}")
+            
+            if hasattr(e, 'api_messages'):
+                print(f"   🔴 API Messages: {e.api_messages}")
+
+            # Fallback: Intentar solo texto si falló con imagen
+            if media_ids:
+                print("   🔄 Intentando FALLBACK (Solo Texto) por si la imagen causó el error...")
+                try:
+                    response = self.client_v2.create_tweet(text=full_text)
+                    print(f"✅ Twitter Fallback Success! (Solo Texto). Tweet ID: {response.data['id']}")
+                    return # Salimos con éxito parcial
+                except Exception as e_fallback:
+                    print(f"   ⚠️ El fallback también falló: {e_fallback}")
             
             if "403" in str(e):
                 print("   💡 PISTA 403: Forbidden. Puede ser:")

@@ -5,6 +5,7 @@ draft: False
 categories: ["Proyectos"]
 tags: ["hugo", "jamstack", "netlify", "github", "wordpress", "desarrollo web", "ci/cd"]
 image: hugo_vs_wordpress.png
+social_text: "¿Un blog potente SIN WordPress? 🤯 ¡Sí! AQUI CAMBIO ALGO..."
 description: "Datalaria: construcción de sus cimientos. Stack moderno vs. soluciones tradicionales"
 summary: "Detrás de cada proyecto hay tomas de decisiones clave. Exploro por qué para Datalaria elegí el camino del Jamstack con Hugo, priorizando aprendizaje y rendimiento sobre la ruta tradicional de WordPress."
 ---
