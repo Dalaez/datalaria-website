@@ -5,7 +5,8 @@ on:
     branches:
       - main
     paths:
-      - 'content/posts/**.md'
+      - 'content/**/posts/**/*.md'
+      - 'autopilot/**'
   workflow_dispatch:
     inputs:
       file_path:
@@ -42,8 +43,8 @@ jobs:
           else
             echo "Push Trigger detected."
             # Get the list of changed files in the last commit (added or modified)
-            # Filter for markdown files in content/posts
-            CHANGED_FILE=$(git diff --name-only --diff-filter=AM HEAD^ HEAD | grep '^content/posts/' | grep '.md$' | head -n 1)
+            # Filter for markdown files in content/**/posts
+            CHANGED_FILE=$(git diff --name-only --diff-filter=AM HEAD^ HEAD | grep -E '^content/.*/posts/.*\.md$' | head -n 1)
             
             if [ -n "$CHANGED_FILE" ]; then
               echo "Found changed file: $CHANGED_FILE"
