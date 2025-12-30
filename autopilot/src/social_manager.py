@@ -93,7 +93,7 @@ class SocialMediaManager:
             print(f"⚠️ Falló Twitter (Tweepy Error): {e}")
             if hasattr(e, 'response') and e.response:
                 print(f"   🔴 Response Status Code: {e.response.status_code}")
-                # print(f"   🔴 Response Text: {e.response.text}") # A veces es muy largo o html
+                print(f"   🔴 Response Text: {e.response.text}") # Descomentado para debug granular
             if hasattr(e, 'api_codes') and e.api_codes:
                 print(f"   🔴 API Error Codes: {e.api_codes}")
             
