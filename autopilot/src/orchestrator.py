@@ -156,6 +156,50 @@ def main():
         else:
             print("   🚫 Agente LinkedIn DESACTIVADO por configuración.")
 
+    # --- RESOLUCIÓN DE IMAGEN LOCAL ---
+    # Buscamos la imagen para subirla nativamente a Twitter (y opcionalmente a Dev.to si no usara URL)
+    local_image_path = None
+    
+    # 1. Mirar si hay 'cover' (PaperMod)
+    # Puede ser un dict {image: "..."} o directamente un string si el usuario se equivocó
+    cover_meta = post_data.get('cover', {})
+    image_filename = None
+    
+    if isinstance(cover_meta, dict):
+        image_filename = cover_meta.get('image')
+    elif isinstance(cover_meta, str):
+        # Fallback por si alguien pone cover: "imagen.png"
+        image_filename = cover_meta
+        
+    # 2. Si no, mirar 'image' (compatible)
+    if not image_filename:
+        image_filename = post_data.get('image')
+        
+    if image_filename:
+        # Asumimos que la imagen está AL LADO del markdown (Page Bundle)
+        # o en static/images si empieza por /
+        
+        if image_filename.startswith("/"):
+            # Ruta absoluta desde la raíz del sitio (habitual en /static)
+            # Datalaria root = parent_dir (autopilot) -> parent (datalaria)??
+            # parent_dir = datalaria/autopilot/.. = datalaria/
+            # Pero orchestrator está en src.
+            # current_dir = src
+            # parent_dir = autopilot
+            # root_dir = autopilot/.. = datalaria
+            root_dir = parent_dir.parent
+            local_image_path = os.path.join(root_dir, "static", image_filename.lstrip("/"))
+        else:
+            # Ruta relativa al post (Page Bundle)
+            post_dir = os.path.dirname(os.path.abspath(file_path))
+            local_image_path = os.path.join(post_dir, image_filename)
+            
+        if not os.path.exists(local_image_path):
+            print(f"⚠️ Imagen referenciada no encontrada en disco: {local_image_path}")
+            local_image_path = None
+        else:
+            print(f"📸 Imagen local detectada: {local_image_path}")
+
     # --- PUBLICACIÓN ---
 
     dry_run = os.getenv("DRY_RUN", "false").lower() == "true"
@@ -164,6 +208,8 @@ def main():
         print("\n🚧 --- DRY RUN MODE (Preview) --- 🚧")
         if enable_twitter:
             print(f"\n🐦 [TWITTER]:\n{twitter_text}")
+            if local_image_path:
+                print(f"   [Image]: {local_image_path}")
         if enable_linkedin:
             print(f"\n💼 [LINKEDIN]:\n{linkedin_text}")
         if enable_devto:
@@ -181,7 +227,8 @@ def main():
     # 1. Publicar en Twitter
     if enable_twitter:
         try:
-            manager.post_to_twitter(text=twitter_text, url=post_url)
+            # Pasamos local_image_path si existe
+            manager.post_to_twitter(text=twitter_text, url=post_url, image_path=local_image_path)
         except Exception as e:
             print(f"⚠️ Falló Twitter: {e}")
     else:

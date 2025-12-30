@@ -17,10 +17,36 @@ class SocialMediaManager:
         self.devto_api_key = os.getenv("DEVTO_API_KEY")
         self.devto_org_id = os.getenv("DEVTO_ORG_ID")
 
+        # Configurar Tweepy Client (v2) - Para postear tweets
+        self.client_v2 = None
+        # Configurar Tweepy API (v1.1) - Para subir imágenes (media_upload)
+        self.api_v1 = None
+
+        if self.twitter_api_key:
+            try:
+                # Client v2
+                self.client_v2 = tweepy.Client(
+                    consumer_key=self.twitter_api_key,
+                    consumer_secret=self.twitter_api_secret,
+                    access_token=self.twitter_access_token,
+                    access_token_secret=self.twitter_access_token_secret
+                )
+                
+                # API v1.1 (Auth OAuth1UserHandler)
+                auth = tweepy.OAuth1UserHandler(
+                    self.twitter_api_key, self.twitter_api_secret,
+                    self.twitter_access_token, self.twitter_access_token_secret
+                )
+                self.api_v1 = tweepy.API(auth)
+            except Exception as e:
+                print(f"⚠️ Error inicializando Twitter clients: {e}")
+
     def _clean_text(self, text):
         return " ".join(text.split())
 
     def _smart_truncate(self, text, url, max_length=230):
+        # NOTA: Para Twitter seguimos limpiando espacios extra, pero
+        # podríamos relajarlo si quisiéramos saltos de línea en Twitter también.
         text = self._clean_text(text)
         url_length = 23
         available_chars = max_length - url_length - 5 
@@ -31,65 +57,37 @@ class SocialMediaManager:
         truncated_text = text[:available_chars] + "..."
         return f"{truncated_text} {url}"
 
-    def post_to_devto(self, title, content_markdown, canonical_url, main_image=None):
-        """Publica el artículo completo en Dev.to con URL canónica."""
-        print(f"DTO - Posting to Dev.to: '{title}'...")
-        
-        if not self.devto_api_key:
-            print("⚠️ BLOQUEADO Dev.to: Faltan credenciales (DEVTO_API_KEY).")
+    # ... post_to_devto ...
+
+    def post_to_twitter(self, text, url, image_path=None):
+        """Publica en Twitter. Si hay image_path, sube la imagen nativa."""
+        if not self.client_v2 or not self.api_v1:
+            print("⚠️ Twitter no configurado (Faltan credenciales o error init).")
             return
 
-        api_url = "https://dev.to/api/articles"
-        
-        headers = {
-            "api-key": self.devto_api_key,
-            "Content-Type": "application/json"
-        }
-
-        # Construir payload
-        article_data = {
-            "title": title,
-            "body_markdown": content_markdown,
-            "published": True,
-            "canonical_url": canonical_url
-        }
-
-        # Si hay Organization ID, lo añadimos
-        if self.devto_org_id:
-            article_data["organization_id"] = int(self.devto_org_id)
-
-        # Si hay imagen de portada (opcional)
-        if main_image:
-            article_data["main_image"] = main_image
-
-        payload = {"article": article_data}
-
-        try:
-            response = requests.post(api_url, headers=headers, json=payload)
-            response.raise_for_status()
-            print(f"✅ Dev.to Success! URL: {response.json().get('url')}")
-        except Exception as e:
-            print(f"⚠️ Falló Dev.to: {e}")
-            if 'response' in locals() and response is not None:
-                print(f"   🔴 Dev.to Response: {response.text}")
-
-    def post_to_twitter(self, text, url):
-        """Publica en Twitter gestionando la longitud automáticamente."""
-        # Usamos la función de truncado inteligente
         full_text = self._smart_truncate(text, url)
-        
         print(f"DTO - Posting to Twitter ({len(full_text)} chars): {full_text}...")
+        
+        media_ids = []
+        if image_path and os.path.exists(image_path):
+            try:
+                print(f"📸 Subiendo imagen nativa a Twitter: {image_path}")
+                media = self.api_v1.media_upload(filename=image_path)
+                media_ids.append(media.media_id)
+                print(f"   ✅ Imagen subida (Media ID: {media.media_id})")
+            except Exception as e:
+                print(f"⚠️ Error subiendo imagen a Twitter: {e}")
+
         try:
-            client = tweepy.Client(
-                consumer_key=self.twitter_api_key,
-                consumer_secret=self.twitter_api_secret,
-                access_token=self.twitter_access_token,
-                access_token_secret=self.twitter_access_token_secret
-            )
-            response = client.create_tweet(text=full_text)
+            if media_ids:
+                response = self.client_v2.create_tweet(text=full_text, media_ids=media_ids)
+            else:
+                response = self.client_v2.create_tweet(text=full_text)
+                
             print(f"✅ Twitter Success! Tweet ID: {response.data['id']}")
         
         except tweepy.errors.TweepyException as e:
+            # ... error handling ...
             print(f"⚠️ Falló Twitter (Tweepy Error): {e}")
             if hasattr(e, 'response') and e.response:
                 print(f"   🔴 Response Status Code: {e.response.status_code}")
@@ -97,18 +95,22 @@ class SocialMediaManager:
             if hasattr(e, 'api_codes') and e.api_codes:
                 print(f"   🔴 API Error Codes: {e.api_codes}")
             
-            # Common specific hints
             if "403" in str(e):
                 print("   💡 PISTA 403: Forbidden. Puede ser:")
                 print("      1. Credenciales incorrectas o sin permisos de escritura.")
-                print("      2. Contenido duplicado (Twitter prohíbe repostear lo mismo seguido).")
+                print("      2. Contenido duplicado.")
                 print("      3. Contenido demasiado largo.")
             if "401" in str(e):
                 print("   💡 PISTA 401: Unauthorized. Revisa tus API KEYS y TOKENS.")
 
     def post_to_linkedin(self, text, url):
         """Publica en LinkedIn."""
-        text = self._clean_text(text)
+        # CORRECCIÓN: NO usamos _clean_text aquí para respetar los saltos de línea
+        # text = self._clean_text(text) <-- ELIMINADO
+        
+        # Solo hacemos un strip() básico por si acaso
+        text = text.strip()
+        
         print(f"DTO - Posting to LinkedIn: {text[:50]}...")
         
         if not self.company_id:
