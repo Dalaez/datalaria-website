@@ -2,6 +2,7 @@ import os
 import sys
 import frontmatter
 from pathlib import Path
+import re
 
 # Add the parent directory to sys.path to resolve imports from src
 current_dir = Path(__file__).resolve().parent
@@ -14,6 +15,48 @@ from src import brain
 def str_to_bool(value):
     """Convierte strings de entorno 'true', 'false', '1', '0' a booleano."""
     return str(value).lower() in ("yes", "true", "t", "1")
+
+def resolve_image_urls(content, file_path):
+    """
+    Reemplaza rutas relativas de imágenes por URLs absolutas de GitHub Raw.
+    Dev.to no puede leer imágenes locales (./img.png), necesita una URL pública.
+    
+    Ejemplo transf: 
+    ![Alt](image.png) -> ![Alt](https://raw.githubusercontent.com/Dalaez/datalaria-website/main/content/es/posts/mi-post/image.png)
+    """
+    # 1. Base URL de Raw GitHub
+    # ATENCIÓN: Asumimos que la estructura en GitHub es idéntica a la local.
+    github_base = "https://raw.githubusercontent.com/Dalaez/datalaria-website/main"
+    
+    # 2. Calcular la ruta relativa del directorio del post
+    # file_path = content/es/posts/X/index.md -> dir_path = content/es/posts/X
+    # Debemos normalizar separadores a /
+    normalized_path = file_path.replace('\\', '/')
+    dir_path = os.path.dirname(normalized_path)
+    
+    def replacer(match):
+        alt_text = match.group(1)
+        img_path = match.group(2)
+        
+        # Si ya es http, no tocamos
+        if img_path.startswith("http"):
+            return match.group(0)
+            
+        # Si es ruta relativa (empieza por ./ o nombre directo)
+        clean_img_path = img_path.lstrip("./")
+        
+        # Construimos la URL absoluta
+        # github_base + / + dir_path + / + clean_img_path
+        abs_url = f"{github_base}/{dir_path}/{clean_img_path}"
+        
+        return f"![{alt_text}]({abs_url})"
+        
+    # Regex para capturar ![Alt](path)
+    # Group 1: Alt, Group 2: Path
+    pattern = r'!\[(.*?)\]\((.*?)\)'
+    
+    new_content = re.sub(pattern, replacer, content)
+    return new_content
 
 def load_post_content(file_path):
     """Lee el archivo markdown y extrae metadatos calculando la URL correcta por idioma."""
@@ -125,6 +168,9 @@ def main():
             print(f"\n💼 [LINKEDIN]:\n{linkedin_text}")
         if enable_devto:
             print(f"\n🦄 [DEV.TO]:\n(Original Markdown Content will be published)")
+            # Preview de URLs
+            preview_content = resolve_image_urls(post_data['content'][:500], file_path)
+            print(f"   Sample Processing: {preview_content}...")
         
         print(f"\n🔗 URL: {post_url}")
         sys.exit(0)
@@ -153,10 +199,13 @@ def main():
     # 3. Publicar en Dev.to
     if enable_devto:
         try:
-            # post_data['content'] es el markdown body
+            # Procesar imágenes para que sean URLs absolutas
+            print("🦄 Procesando imágenes para Dev.to...")
+            processed_content = resolve_image_urls(post_data['content'], file_path)
+            
             manager.post_to_devto(
                 title=post_data['title'], 
-                content_markdown=post_data['content'], 
+                content_markdown=processed_content, 
                 canonical_url=post_url
             )
         except Exception as e:
