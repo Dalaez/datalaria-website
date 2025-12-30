@@ -94,7 +94,9 @@ def load_post_content(file_path):
                 "url": url,
                 "content": post.content,
                 "social_text": social_override,
-                "lang": lang
+                "lang": lang,
+                "image": post.metadata.get('image'),
+                "cover": post.metadata.get('cover')
             }
     except Exception as e:
         print(f"❌ Error leyendo el archivo {file_path}: {e}")
