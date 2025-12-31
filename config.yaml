@@ -55,12 +55,15 @@ languages:
             url: "/es/posts/" # <-- CORREGIDO A RUTA ABSOLUTA
           - name: "Apps"
             url: "/es/apps/"
+          - name: "Juegos"
+            url: "/es/games/"
           - name: "Sobre mí"
             url: "/es/sobre-mi/" # <-- CORREGIDO A RUTA ABSOLUTA
     menu:
       main:
         - { identifier: blog, name: "Blog", url: "/posts/", weight: 10 }
         - { identifier: apps, name: "Apps", url: "/apps/", weight: 20 }
+        - { identifier: games, name: "Juegos", url: "/games/", weight: 25 }
         - { identifier: about, name: "Sobre mí", url: "/sobre-mi/", weight: 30 }
         - { identifier: tags, name: "Etiquetas", url: "/tags/", weight: 40 }
         - { identifier: contact, name: "Contacto", url: "/contact/", weight: 50 }
@@ -83,12 +86,15 @@ languages:
             url: "/en/posts/" # <-- CORREGIDO A RUTA ABSOLUTA
           - name: "Apps"
             url: "/en/apps/"
+          - name: "Games"
+            url: "/en/games/"
           - name: "About"
             url: "/en/about/" # <-- CORREGIDO A RUTA ABSOLUTA
     menu:
       main:
         - { identifier: blog, name: "Blog", url: "/posts/", weight: 10 }
         - { identifier: apps, name: "Apps", url: "/apps/", weight: 20 }
+        - { identifier: games, name: "Games", url: "/games/", weight: 25 }
         - { identifier: about, name: "About", url: "/about/", weight: 30 }
         - { identifier: tags, name: "Tags", url: "/tags/", weight: 40 }
         - { identifier: contact, name: "Contact", url: "/contact/", weight: 50 }
