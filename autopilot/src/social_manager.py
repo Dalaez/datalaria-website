@@ -128,15 +128,7 @@ class SocialMediaManager:
             if hasattr(e, 'api_messages'):
                 print(f"   🔴 API Messages: {e.api_messages}")
 
-            # Fallback: Intentar solo texto si falló con imagen
-            if media_ids:
-                print("   🔄 Intentando FALLBACK (Solo Texto) por si la imagen causó el error...")
-                try:
-                    response = self.client_v2.create_tweet(text=full_text)
-                    print(f"✅ Twitter Fallback Success! (Solo Texto). Tweet ID: {response.data['id']}")
-                    return # Salimos con éxito parcial
-                except Exception as e_fallback:
-                    print(f"   ⚠️ El fallback también falló: {e_fallback}")
+
             
             if "403" in str(e):
                 print("   💡 PISTA 403: Forbidden. Puede ser:")
