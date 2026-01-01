@@ -222,6 +222,10 @@ Al unir todo, obtienes una experiencia de usuario fluida y altamente competitiva
 4.  Al pulsar enviar, **en milisegundos**, su nombre aparece en la tabla de clasificación.
 5.  Si su amigo está jugando en otro móvil al mismo tiempo, verá el nombre de "Neo" aparecer en su pantalla sin recargar la página.
 
+Y una vez creado... sólo nos queda disfrutar y jugar 🐍 :blush:
+
+[Datalaria Snake Game](https://datalaria.com/games/snake/)
+
 ## Conclusión
 
 Hemos pasado de un simple canvas estático a una aplicación **Fullstack** en tiempo real sin tocar un servidor backend tradicional (Node.js, PHP, Python) ni gestionar infraestructura. La combinación de la creatividad del desarrollo de videojuegos con la potencia de herramientas BaaS como Supabase abre un mundo de posibilidades para desarrolladores frontend.

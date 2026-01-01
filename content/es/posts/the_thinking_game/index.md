@@ -4,7 +4,7 @@ date: 2026-01-01
 draft: false
 categories: ["Inteligencia Artificial", "Deep Tech", "Ciencia", "Documentales"]
 tags: ["DeepMind", "Demis Hassabis", "AlphaFold", "AGI", "AlphaGo", "The Thinking Game", "Biología Computacional"]
-image: /images/the_thinking_game_header.jpg
+image: the_thinking_game.jpg
 social_text: ¿Y si la clave para resolver TODO estuviera en los videojuegos? 🤔 DeepMind lo hizo. De niño prodigio a revolucionar la ciencia. Su viaje de los píxeles a AlphaFold, el mayor telescopio biológico.
 description: "Un análisis profundo del documental 'The Thinking Game', que narra la odisea de Demis Hassabis y DeepMind. Desde los píxeles de Atari hasta la resolución del plegamiento de proteínas con AlphaFold, exploramos cómo la búsqueda de la AGI está reescribiendo las reglas de la ciencia moderna."
 summary: "Mientras el mundo se distrae con chatbots que escriben poemas, DeepMind ha estado jugando a un juego mucho más profundo. El documental 'The Thinking Game' revela la historia no contada detrás de AlphaGo y AlphaFold: una misión de décadas para resolver la inteligencia y usarla para decodificar la biología misma. Analizamos los hitos técnicos, la filosofía ética y por qué Demis Hassabis cree que la IA es un descubrimiento al nivel del fuego o la electricidad."
