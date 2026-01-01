@@ -5,6 +5,7 @@ draft: false
 categories: ["Artificial Intelligence", "Deep Tech", "Science", "Documentaries"]
 tags: ["DeepMind", "Demis Hassabis", "AlphaFold", "AGI", "AlphaGo", "The Thinking Game", "Computational Biology"]
 image: /images/the_thinking_game_header.jpg
+social_text: Silicon Valley built chatbots. DeepMind built intelligence. From video games to solving biology's biggest mystery, this is the untold story of AI's ultimate goal. Your mind will break.
 description: "A deep dive into the documentary 'The Thinking Game', chronicling the odyssey of Demis Hassabis and DeepMind. From Atari pixels to solving protein folding with AlphaFold, we explore how the quest for AGI is rewriting the rules of modern science."
 summary: "While the world gets distracted by chatbots writing poems, DeepMind has been playing a much deeper game. The documentary 'The Thinking Game' reveals the untold story behind AlphaGo and AlphaFold: a decades-long mission to solve intelligence and use it to decode biology itself. We analyze the technical milestones, the ethical philosophy, and why Demis Hassabis believes AI is a discovery on the level of fire or electricity."
 ---
