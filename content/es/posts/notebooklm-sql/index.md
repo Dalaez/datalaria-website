@@ -5,6 +5,7 @@ draft: false
 categories: ["Herramientas"]
 tags: ["ia", "notebooklm", "google", "aprendizaje", "productividad", "sql", "mapa mental"]
 image: notebooklm_hero.png
+social_text: ¿Crees que la IA solo sirve para resumir textos?🧐 Transformé un libro de SQL en un Mapa Mental, Guion de Video y Podcast con NotebookLM.🚀 No es solo una herramienta, es un ecosistema de aprendizaje personalizado. Mira la transformación aquí 👇
 description: "Mi experiencia práctica generando una plataforma de aprendizaje y estudio multimedia a partir de un libro sobre SQL mediante la herrmienta de IA de Google NotebookLM"
 summary: "He explorado la herramienta NotebookLM de Google con un libro entero sobre SQL. El resultado no es solo un resumen para su estudio, sino que es: un mapa mental, un guion de vídeo, un podcast y una guía de estudio completa. Te cuento cómo esta IA está revolucionando la manera de aprender."
 ---

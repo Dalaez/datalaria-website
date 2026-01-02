@@ -5,6 +5,7 @@ draft: false
 categories: ["Tools"]
 tags: ["ai", "notebooklm", "google", "learning", "productivity", "sql", "mind map"]
 image: notebooklm_hero.png
+social_text: Think AI is just for text summaries?🧐 I turned a single SQL book into a Mind Map, Video Script, and Podcast using NotebookLM.🚀 It's not just a tool; it's a complete personalized learning ecosystem. See the transformation here 👇
 description: "My hands-on experience generating a multimedia learning and study platform from a book about SQL using Google's AI tool, NotebookLM."
 summary: "I explored Google's NotebookLM with an entire book on SQL. The result isn't just a study summary; it's a mind map, a video script, a podcast, and a complete study guide. Here's how this AI is revolutionizing the way we learn."
 ---
