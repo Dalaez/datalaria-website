@@ -1,10 +1,10 @@
 ---
 title: "De Cero a Héroe: Crea un Snake Game Cyberpunk con Ranking en Tiempo Real usando Supabase y JS Vanilla"
-date: 2026-01-17
+date: 2026-01-01
 draft: false
 categories: ["Desarrollo Web", "GameDev", "Tutoriales"]
 tags: ["JavaScript", "Supabase", "PostgreSQL", "Canvas", "HTML5", "TailwindCSS"]
-image: /images/neon-snake-header.jpg
+image: imagen_snake_game.png
 description: "Aprende a crear un juego web estilo arcade con estética neón utilizando solo HTML5 Canvas y JS Vanilla. Descubre cómo integrar un ranking global en tiempo real usando la base de datos PostgreSQL de Supabase."
 summary: "¿Recuerdas el clásico Snake? Lo hemos traído al futuro con estética Cyberpunk y lo hemos conectado a la nube. En este tutorial 'De Cero a Héroe', aprenderás a construir 'Neon Snake' usando JS Vanilla para el juego y Supabase para persistir las puntuaciones en tiempo real, sin necesidad de montar un servidor backend complejo."
 ---
@@ -222,7 +222,7 @@ Al unir todo, obtienes una experiencia de usuario fluida y altamente competitiva
 4.  Al pulsar enviar, **en milisegundos**, su nombre aparece en la tabla de clasificación.
 5.  Si su amigo está jugando en otro móvil al mismo tiempo, verá el nombre de "Neo" aparecer en su pantalla sin recargar la página.
 
-Y una vez creado... sólo nos queda disfrutar y jugar 🐍 :blush:
+Y una vez creado... sólo nos queda disfrutar y jugar 🐍😊
 
 [Datalaria Snake Game](https://datalaria.com/games/snake/)
 

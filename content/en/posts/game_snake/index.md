@@ -1,45 +1,47 @@
 ---
-title: "De Cero a Héroe: Crea un Snake Game Cyberpunk con Ranking en Tiempo Real usando Supabase y JS Vanilla"
-date: 2026-01-17
+title: "From Zero to Hero: Create a Cyberpunk Snake Game with Real-Time Ranking using Supabase and Vanilla JS"
+date: 2026-01-01
 draft: false
-categories: ["Desarrollo Web", "GameDev", "Tutoriales"]
+categories: ["Web Development", "GameDev", "Tutorials"]
 tags: ["JavaScript", "Supabase", "PostgreSQL", "Canvas", "HTML5", "TailwindCSS"]
-image: /images/neon-snake-header.jpg
-description: "Aprende a crear un juego web estilo arcade con estética neón utilizando solo HTML5 Canvas y JS Vanilla. Descubre cómo integrar un ranking global en tiempo real usando la base de datos PostgreSQL de Supabase."
-summary: "¿Recuerdas el clásico Snake? Lo hemos traído al futuro con estética Cyberpunk y lo hemos conectado a la nube. En este tutorial 'De Cero a Héroe', aprenderás a construir 'Neon Snake' usando JS Vanilla para el juego y Supabase para persistir las puntuaciones en tiempo real, sin necesidad de montar un servidor backend complejo."
+image: imagen_snake_game.png
+description: "Learn to create a neon arcade-style web game using only HTML5 Canvas and Vanilla JS. Discover how to integrate a global real-time leaderboard using Supabase's PostgreSQL database."
+summary: "Remember classic Snake? We've brought it to the future with a Cyberpunk aesthetic and connected it to the cloud. In this 'From Zero to Hero' tutorial, you'll learn to build 'Neon Snake' using Vanilla JS for the game and Supabase to persist scores in real-time, without needing a complex backend server."
 ---
 
-¿Recuerdas el clásico Snake de los viejos Nokia? Ahora imagínalo con luces de neón, música sintetizada, partículas explosivas y, lo más importante: **conectado a la nube**.
+Do you remember the classic Snake from the old Nokias? Now imagine it with neon lights, synthesized music, explosive particles, and most importantly: **connected to the cloud**.
 
-El desarrollo de videojuegos web ha vivido un renacimiento gracias a la potencia de HTML5 Canvas y las herramientas **Serverless**. Antiguamente, si querías guardar las puntuaciones de tus jugadores para hacer un ranking global, necesitabas montar un servidor, configurar una API REST, gestionar bases de datos y pagar un hosting. Hoy, gracias al Backend-as-a-Service (BaaS), podemos hacerlo en minutos.
+Web game development has experienced a renaissance thanks to the power of HTML5 Canvas and **Serverless** tools. In the past, if you wanted to save your players' scores to create a global leaderboard, you needed to set up a server, configure a REST API, manage databases, and pay for hosting. Today, thanks to Backend-as-a-Service (BaaS), we can do it in minutes.
 
-En este tutorial, vamos a construir **"Neon Snake"**, un arcade web estético y funcional que utiliza **Supabase** (una alternativa Open Source a Firebase) para persistir datos en PostgreSQL.
+In this tutorial, we are going to build **"Neon Snake"**, an aesthetic and functional web arcade game that uses **Supabase** (an Open Source alternative to Firebase) to persist data in PostgreSQL.
 
-## 🛠️ El Stack Tecnológico
+![Conceptual image of Snake Game](imagen_snake_game.png)
 
-Vamos a mantenerlo simple pero potente. Sin frameworks pesados, solo la pureza de la web:
+## 🛠️ The Tech Stack
 
-* **Frontend:** HTML5 Canvas + JavaScript Vanilla (ES6+).
-* **Estilos:** Tailwind CSS (vía CDN) para la interfaz de usuario.
+We're going to keep it simple but powerful. No heavy frameworks, just the purity of the web:
+
+* **Frontend:** HTML5 Canvas + Vanilla JavaScript (ES6+).
+* **Styles:** Tailwind CSS (via CDN) for the user interface.
 * **Backend:** Supabase (PostgreSQL + Realtime).
-* **Audio:** Web Audio API para efectos de sonido generados por código.
+* **Audio:** Web Audio API for code-generated sound effects.
 
 ---
 
-## Paso 1: Configurando el Backend con Supabase
+## Step 1: Setting up the Backend with Supabase
 
-Antes de escribir una sola línea de JavaScript, necesitamos nuestro cerebro en la nube. Supabase nos ofrece una base de datos PostgreSQL real con una API generada automáticamente.
+Before writing a single line of JavaScript, we need our brain in the cloud. Supabase offers us a real PostgreSQL database with an automatically generated API.
 
-1.  Crea una cuenta gratuita en [supabase.com](https://supabase.com).
-2.  Crea un nuevo proyecto llamado `NeonSnake`.
-3.  Ve a la sección **Table Editor** y crea una nueva tabla llamada `snake_scores`.
+1.  Create a free account at [supabase.com](https://supabase.com).
+2.  Create a new project called `NeonSnake`.
+3.  Go to the **Table Editor** section and create a new table called `snake_scores`.
 
-### La Magia del SQL
+### The Magic of SQL
 
-Para agilizar el proceso, Supabase te permite ejecutar comandos SQL directamente. Ve al **SQL Editor** y pega el siguiente código. Esto creará la estructura de la tabla y configurará las políticas de seguridad (RLS - Row Level Security) para que tu juego pueda leer y escribir datos públicamente.
+To streamline the process, Supabase allows you to execute SQL commands directly. Go to the **SQL Editor** and paste the following code. This will create the table structure and configure the security policies (RLS - Row Level Security) so your game can read and write data publicly.
 
 ```sql
--- 1. Crear la tabla de puntuaciones
+-- 1. Create the scores table
 create table snake_scores (
   id bigint generated by default as identity primary key,
   username text not null,
@@ -47,43 +49,43 @@ create table snake_scores (
   created_at timestamp with time zone default timezone('utc'::text, now()) not null
 );
 
--- 2. Habilitar seguridad a nivel de fila (RLS)
+-- 2. Enable Row Level Security (RLS)
 alter table snake_scores enable row level security;
 
--- 3. Política para permitir que cualquiera vea el ranking (Lectura pública)
+-- 3. Policy to allow anyone to view the ranking (Public Read)
 create policy "Ver ranking publico"
 on snake_scores for select
 using ( true );
 
--- 4. Política para permitir que cualquiera guarde su récord (Escritura pública)
+-- 4. Policy to allow anyone to save their record (Public Write)
 create policy "Guardar puntuacion"
 on snake_scores for insert
 with check ( true );
 ```
 
-> **Nota de Seguridad:** En un juego comercial, usaríamos autenticación de usuarios completa. Para este arcade tipo demo, permitimos el acceso público (anónimo) para reducir la fricción y que cualquiera pueda jugar y registrar su récord al instante.
+> **Security Note:** In a commercial game, we would use full user authentication. For this arcade-style demo, we allow public (anonymous) access to reduce friction so anyone can play and log their record instantly.
 
-Finalmente, ve a **Settings > API** y copia tu `Project URL` y tu `anon public key`. Las necesitarás en breve.
+Finally, go to **Settings > API** and copy your `Project URL` and your `anon public key`. You will need them shortly.
 
 ---
 
-## Paso 2: El Frontend Cyberpunk (HTML5 + Canvas)
+## Step 2: The Cyberpunk Frontend (HTML5 + Canvas)
 
-Nuestro juego vivirá en un solo archivo `index.html`. Usaremos **Tailwind CSS** para los menús flotantes (Game Over, Start Screen) y el elemento `<canvas>` para renderizar el juego a 60 FPS.
+Our game will live in a single `index.html` file. We will use **Tailwind CSS** for the floating menus (Game Over, Start Screen) and the `<canvas>` element to render the game at 60 FPS.
 
-La estructura básica es la siguiente:
+The basic structure is as follows:
 
 ```html
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Neon Snake 2077</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        @import url('[https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap](https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap)');
         body { font-family: 'Orbitron', sans-serif; background-color: #050505; }
-        /* Efecto de brillo de neón para el canvas */
+        /* Neon glow effect for the canvas */
         canvas { box-shadow: 0 0 20px #0ff; border: 2px solid #0ff; }
     </style>
 </head>
@@ -104,81 +106,81 @@ La estructura básica es la siguiente:
     </div>
 
     <script type="module">
-        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+        import { createClient } from '[https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm](https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm)'
         
-        // ... Lógica del juego aquí (Ver paso 3) ...
+        // ... Game Logic here (See step 3) ...
     </script>
 </body>
 </html>
 ```
 
-### Lógica del Juego: Más allá de comer manzanas
+### Game Logic: Beyond Eating Apples
 
-Para darle ese toque "Pro" y diferenciarlo de un tutorial básico, implementamos varias mecánicas clave en el JavaScript:
+To give it that "Pro" touch and differentiate it from a basic tutorial, we implement several key mechanics in JavaScript:
 
-1.  **Loop de Animación:** Usando `requestAnimationFrame` para mantener la fluidez a 60 FPS.
-2.  **Sistema de Partículas:** Un array de objetos que se generan en las coordenadas de la "comida" al ser ingerida y se desvanecen gradualmente, simulando una explosión de datos.
-3.  **Firewalls Dinámicos:** A partir del nivel 5, generamos obstáculos estáticos que el jugador debe esquivar, aumentando la dificultad progresivamente.
-4.  **Controles Híbridos:**
-    * **PC:** Escuchamos eventos `keydown` para las flechas direccionales.
-    * **Móvil:** Capturamos `touchstart` y `touchend` para calcular la dirección del gesto (*swipe*) y mover la serpiente.
+1.  **Animation Loop:** Using `requestAnimationFrame` to maintain fluidity at 60 FPS.
+2.  **Particle System:** An array of objects that spawn at the "food" coordinates when eaten and fade gradually, simulating a data explosion.
+3.  **Dynamic Firewalls:** From level 5 onwards, we generate static obstacles that the player must dodge, progressively increasing the difficulty.
+4.  **Hybrid Controls:**
+    * **PC:** We listen for `keydown` events for directional arrows.
+    * **Mobile:** We capture `touchstart` and `touchend` to calculate the gesture direction (*swipe*) and move the snake.
 
 ---
 
-## Paso 3: Conectando los puntos (Integración con Supabase)
+## Step 3: Connecting the Dots (Integration with Supabase)
 
-Aquí es donde ocurre la magia del Backend-as-a-Service. Vamos a conectar nuestro Canvas con la base de datos PostgreSQL. Dentro de nuestra etiqueta `<script type="module">`:
+Here is where the Backend-as-a-Service magic happens. We are going to connect our Canvas to the PostgreSQL database. Inside our `<script type="module">` tag:
 
-### 1. Inicialización del Cliente
+### 1. Client Initialization
 
 ```javascript
-const supabaseUrl = 'TU_PROYECTO_SUPABASE_URL';
-const supabaseKey = 'TU_SUPABASE_ANON_KEY';
+const supabaseUrl = 'YOUR_SUPABASE_PROJECT_URL';
+const supabaseKey = 'YOUR_SUPABASE_ANON_KEY';
 const supabase = createClient(supabaseUrl, supabaseKey);
 ```
 
-### 2. El Flujo de "Game Over"
+### 2. The "Game Over" Flow
 
-Cuando el jugador pierde y pulsa "UPLOAD DATA", necesitamos asegurarnos de que el dato se guarda antes de mostrar la tabla de clasificación. Usaremos `async/await` para controlar este flujo asíncrono.
+When the player loses and hits "UPLOAD DATA", we need to ensure the data is saved before showing the leaderboard. We will use `async/await` to control this asynchronous flow.
 
 ```javascript
 async function saveScore(username, score) {
-    // 1. Guardar la puntuación
+    // 1. Save the score
     const { error } = await supabase
         .from('snake_scores')
         .insert([{ username: username, score: score }]);
 
     if (error) {
-        console.error('Error al subir datos:', error);
-        alert('Error de conexión con el servidor central.');
+        console.error('Error uploading data:', error);
+        alert('Connection error with the central server.');
         return;
     }
     
-    // 2. Inmediatamente después, actualizamos el ranking visualmente
+    // 2. Immediately after, update the leaderboard visually
     fetchLeaderboard();
 }
 ```
 
-### 3. Obtener el Ranking (Select)
+### 3. Fetching the Ranking (Select)
 
-Recuperamos el **Top 20** ordenado por puntuación descendente para mostrar quién manda en el servidor.
+We retrieve the **Top 20** sorted by score in descending order to show who rules the server.
 
 ```javascript
 async function fetchLeaderboard() {
     const { data: scores, error } = await supabase
         .from('snake_scores')
         .select('username, score')
-        .order('score', { ascending: false }) // Orden descendente
-        .limit(20);                           // Solo los 20 mejores
+        .order('score', { ascending: false }) // Descending order
+        .limit(20);                           // Only the top 20
 
     if (error) console.error('Error fetching leaderboard:', error);
     
-    // Renderizar en el DOM
+    // Render in the DOM
     const list = document.getElementById('leaderboard');
     list.innerHTML = '<h3 class="text-cyan-400 border-b border-cyan-500 mb-2 font-bold">TOP HACKERS</h3>';
     
     scores.forEach((entry, index) => {
-        // Destacar el top 3 con colores diferentes si quieres
+        // Highlight top 3 with different colors if you want
         const colorClass = index < 3 ? 'text-yellow-400' : 'text-gray-300';
         
         list.innerHTML += `
@@ -192,17 +194,17 @@ async function fetchLeaderboard() {
 
 ### Bonus: Realtime ⚡
 
-¿Quieres que el ranking se actualice en la pantalla de **todos** los jugadores conectados si alguien rompe el récord en ese preciso instante? Supabase hace esto trivial con sus suscripciones:
+Do you want the ranking to update on **everyone's** screen if someone breaks the record at that precise moment? Supabase makes this trivial with its subscriptions:
 
 ```javascript
-// Suscribirse a cambios en la tabla 'snake_scores'
+// Subscribe to changes in the 'snake_scores' table
 supabase
   .channel('public:snake_scores')
   .on('postgres_changes', 
       { event: 'INSERT', schema: 'public', table: 'snake_scores' }, 
       (payload) => {
-        console.log('¡Nuevo récord detectado en la red!', payload);
-        fetchLeaderboard(); // Refresca la lista automáticamente para todos
+        console.log('New record detected on the network!', payload);
+        fetchLeaderboard(); // Automatically refresh the list for everyone
       }
   )
   .subscribe();
@@ -210,23 +212,27 @@ supabase
 
 ---
 
-## El Resultado Final
+## The Final Result
 
-Al unir todo, obtienes una experiencia de usuario fluida y altamente competitiva:
+By putting it all together, you get a fluid and highly competitive user experience:
 
-1.  El usuario juega frenéticamente esquivando "Firewalls" de neón.
-2.  Al chocar, el juego se detiene con un efecto visual de "glitch".
-3.  Introduce su nombre (ej: "Neo").
-4.  Al pulsar enviar, **en milisegundos**, su nombre aparece en la tabla de clasificación.
-5.  Si su amigo está jugando en otro móvil al mismo tiempo, verá el nombre de "Neo" aparecer en su pantalla sin recargar la página.
+1.  The user plays frantically dodging neon "Firewalls".
+2.  Upon crashing, the game stops with a visual "glitch" effect.
+3.  They enter their name (e.g., "Neo").
+4.  Upon clicking send, **in milliseconds**, their name appears on the leaderboard.
+5.  If their friend is playing on another mobile at the same time, they will see "Neo's" name appear on their screen without reloading the page.
 
-## Conclusión
+And once created... all that remains is to enjoy and play 🐍😊
 
-Hemos pasado de un simple canvas estático a una aplicación **Fullstack** en tiempo real sin tocar un servidor backend tradicional (Node.js, PHP, Python) ni gestionar infraestructura. La combinación de la creatividad del desarrollo de videojuegos con la potencia de herramientas BaaS como Supabase abre un mundo de posibilidades para desarrolladores frontend.
+[Datalaria Snake Game](https://datalaria.com/games/snake/)
 
-**¿El siguiente paso?** Te invito a clonar el proyecto y mejorarlo: añade autenticación con GitHub para evitar nombres duplicados, crea skins para la serpiente que se desbloqueen con la puntuación, o implementa un modo multijugador usando los canales de presencia de Supabase.
+## Conclusion
 
-¡El código es tuyo! 🐍💻
+We have moved from a simple static canvas to a **Fullstack** application in real-time without touching a traditional backend server (Node.js, PHP, Python) or managing infrastructure. The combination of creativity in game development with the power of BaaS tools like Supabase opens a world of possibilities for frontend developers.
+
+**The next step?** I invite you to clone the project and improve it: add GitHub authentication to avoid duplicate names, create snake skins that unlock with high scores, or implement a multiplayer mode using Supabase presence channels.
+
+The code is yours! 🐍💻
 
 ---
-*¿Te ha gustado este tutorial? Compártelo en tus redes con tus High Scores y no olvides revisar la documentación oficial de Supabase para profundizar más.*
+*Did you like this tutorial? Share it on your networks with your High Scores and don't forget to check the official Supabase documentation to dive deeper.*

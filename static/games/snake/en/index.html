@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Neon Snake - Cyberpunk Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #050505;
+            color: #e0e0e0;
+            overflow: hidden;
+            touch-action: none;
+        }
+
+        h1,
+        .cyber-font {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .neon-text {
+            text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #00f;
+        }
+
+        #game-container {
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2), inset 0 0 20px rgba(0, 255, 255, 0.1);
+            border: 2px solid #333;
+            border-radius: 8px;
+            background: radial-gradient(circle, #1a1a1a 0%, #000000 100%);
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .cyber-btn {
+            background: linear-gradient(45deg, #ff0099, #493240);
+            border: 1px solid #ff0099;
+            box-shadow: 0 0 5px #ff0099;
+            color: white;
+            text-transform: uppercase;
+            font-family: 'Orbitron', sans-serif;
+            transition: all 0.2s;
+        }
+
+        .cyber-btn:hover {
+            background: linear-gradient(45deg, #ff00cc, #6a1b4a);
+            box-shadow: 0 0 15px #ff00cc;
+            transform: scale(1.02);
+        }
+
+        .cyber-btn:active {
+            transform: scale(0.98);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            backdrop-filter: blur(4px);
+        }
+
+        .d-pad-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 12px;
+            backdrop-filter: blur(2px);
+        }
+
+        .d-pad-btn:active {
+            background: rgba(0, 255, 255, 0.3);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body class="h-screen w-screen flex flex-col items-center justify-start overflow-hidden">
+
+    <!-- Header -->
+    <div class="w-full max-w-2xl p-4 flex justify-between items-end z-10">
+        <div>
+            <h1 class="text-2xl md:text-4xl font-bold text-cyan-400 neon-text">Neon Snake</h1>
+            <p class="text-xs text-gray-400">v2.5 - Instant Ranking</p>
+        </div>
+        <div class="text-right">
+            <div class="text-yellow-400 cyber-font text-xl">Score: <span id="score-display">0</span></div>
+            <div class="text-purple-400 text-sm font-bold">Level <span id="level-display">1</span>/10</div>
+        </div>
+    </div>
+
+    <!-- Game Area -->
+    <div class="relative w-full max-w-2xl aspect-square max-h-[60vh] md:max-h-[65vh] mb-4">
+        <div id="game-container" class="w-full h-full">
+            <canvas id="gameCanvas"></canvas>
+
+            <!-- Overlays -->
+            <div id="start-overlay" class="overlay">
+                <h2 id="overlay-title" class="text-5xl md:text-6xl font-bold text-white mb-4 cyber-font neon-text">
+                    READY?</h2>
+                <p id="overlay-subtitle" class="text-gray-300 mb-8 text-center px-4">Avoid red firewalls starting at
+                    Level 5</p>
+
+                <div id="auth-section" class="w-64 flex flex-col gap-3">
+                    <input type="text" id="username-input" placeholder="AGENT NAME" maxlength="12"
+                        class="bg-gray-900 border border-cyan-500 text-cyan-400 text-center p-3 rounded focus:outline-none focus:shadow-[0_0_10px_#0ff]">
+                    <button id="start-btn" class="cyber-btn py-3 px-6 rounded font-bold tracking-wider">INIT
+                        SYSTEM</button>
+                </div>
+
+                <div id="restart-section" class="hidden flex flex-col gap-3 w-64">
+                    <button id="restart-btn"
+                        class="cyber-btn bg-gradient-to-r from-green-600 to-green-900 border-green-500 shadow-green-500 py-3 px-6 rounded font-bold">RETRY</button>
+                    <button id="ranking-btn"
+                        class="cyber-btn bg-gradient-to-r from-blue-600 to-blue-900 border-blue-500 shadow-blue-500 py-3 px-6 rounded font-bold">VIEW
+                        RANKING</button>
+                </div>
+            </div>
+
+            <div id="ranking-overlay" class="overlay hidden">
+                <h2 class="text-3xl text-yellow-400 cyber-font mb-6 neon-text">TOP AGENTS</h2>
+                <div class="bg-gray-900/80 border border-gray-700 p-4 rounded-lg w-3/4 max-h-[60%] overflow-y-auto">
+                    <ol id="ranking-list" class="list-decimal list-inside space-y-2 text-sm md:text-base text-gray-300">
+                        <li class="text-center animate-pulse">Connecting to mainframe...</li>
+                    </ol>
+                </div>
+                <button id="close-ranking-btn" class="mt-6 cyber-btn py-2 px-8 rounded">CLOSE</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Controls -->
+    <div class="grid grid-cols-3 gap-3 w-48 md:hidden z-10">
+        <div></div>
+        <button class="d-pad-btn h-14 flex items-center justify-center" data-dir="up">
+            <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18">
+                </path>
+            </svg>
+        </button>
+        <div></div>
+        <button class="d-pad-btn h-14 flex items-center justify-center" data-dir="left">
+            <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18">
+                </path>
+            </svg>
+        </button>
+        <button class="d-pad-btn h-14 flex items-center justify-center bg-red-900/30 border-red-500/50"
+            id="mobile-pause">
+            <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+        </button>
+        <button class="d-pad-btn h-14 flex items-center justify-center" data-dir="right">
+            <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3">
+                </path>
+            </svg>
+        </button>
+        <div></div>
+        <button class="d-pad-btn h-14 flex items-center justify-center" data-dir="down">
+            <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3">
+                </path>
+            </svg>
+        </button>
+        <div></div>
+    </div>
+
+    <script type="module">
+        // Import Supabase
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+        // --- SUPABASE CONFIG ---
+        const SUPABASE_URL = 'https://wxwnbzmbzztegcdzrxbg.supabase.co';
+        const SUPABASE_KEY = 'sb_publishable_hAEvRnntjRnk11ps4n1yVw__PwZYoSy';
+
+        let supabase;
+        let rankingData = [];
+        let isBackendReady = false;
+
+        // --- AUDIO ---
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playSound(type) {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            const now = audioCtx.currentTime;
+
+            if (type === 'eat') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(600, now);
+                osc.frequency.exponentialRampToValueAtTime(1200, now + 0.1);
+                gain.gain.setValueAtTime(0.1, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+                osc.start(now);
+                osc.stop(now + 0.1);
+            } else if (type === 'die') {
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(200, now);
+                osc.frequency.exponentialRampToValueAtTime(50, now + 0.5);
+                gain.gain.setValueAtTime(0.2, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.5);
+                osc.start(now);
+                osc.stop(now + 0.5);
+            } else if (type === 'levelup') {
+                osc.type = 'square';
+                osc.frequency.setValueAtTime(400, now);
+                osc.frequency.setValueAtTime(600, now + 0.1);
+                osc.frequency.setValueAtTime(800, now + 0.2);
+                gain.gain.setValueAtTime(0.1, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+                osc.start(now);
+                osc.stop(now + 0.4);
+            }
+        }
+
+        // --- BACKEND LOGIC (Supabase) ---
+        function initSupabase() {
+            if (SUPABASE_KEY.includes('PEGAR_AQUI')) {
+                console.warn('Supabase key missing');
+                isBackendReady = false;
+                return;
+            }
+            try {
+                supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+                isBackendReady = true;
+                setupRankingListener();
+                console.log('Supabase connected with public key');
+            } catch (e) {
+                console.error('Error initializing Supabase:', e);
+            }
+        }
+
+        async function setupRankingListener() {
+            if (!isBackendReady) return;
+
+            // 1. Initial Fetch
+            await fetchRanking();
+
+            // 2. Subscribe to changes (Realtime)
+            supabase
+                .channel('public:snake_scores')
+                .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'snake_scores' }, (payload) => {
+                    console.log('New score detected (Realtime)', payload);
+                    fetchRanking();
+                })
+                .subscribe();
+        }
+
+        async function fetchRanking() {
+            if (!isBackendReady) return;
+
+            // Fetch top 20
+            const { data, error } = await supabase
+                .from('snake_scores')
+                .select('username, score')
+                .order('score', { ascending: false })
+                .limit(20);
+
+            if (error) {
+                console.error('Error loading ranking:', error);
+                return;
+            }
+
+            rankingData = data;
+            renderRankingList();
+        }
+
+        async function saveScore(name, score) {
+            if (!isBackendReady) {
+                console.log('Backend not ready, score not saved to cloud.');
+                return;
+            }
+
+            const { error } = await supabase
+                .from('snake_scores')
+                .insert([{ username: name, score: score }]);
+
+            if (error) {
+                console.error('Error saving score:', error);
+            } else {
+                console.log('Score saved successfully');
+                // Force immediate refresh
+                await fetchRanking();
+            }
+        }
+
+        function renderRankingList() {
+            const list = document.getElementById('ranking-list');
+            list.innerHTML = '';
+
+            if (rankingData.length === 0) {
+                list.innerHTML = '<li class="text-center text-gray-400">No data (or DB connection).</li>';
+                return;
+            }
+
+            rankingData.forEach((entry, i) => {
+                const li = document.createElement('li');
+                li.innerHTML = `<span class="text-cyan-300 font-bold">${entry.username}</span> <span class="float-right text-yellow-400">${entry.score} pts</span>`;
+                // Highlight current user
+                if (entry.username === window.currentPlayerName) {
+                    li.classList.add('bg-cyan-900/50', 'border', 'border-cyan-500/50', 'p-1', 'rounded', 'shadow-[0_0_10px_rgba(0,255,255,0.3)]');
+                } else {
+                    li.classList.add('p-1');
+                }
+                list.appendChild(li);
+            });
+        }
+
+        // --- GAME ENGINE ---
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const GRID_COUNT = 20;
+        let TILE_SIZE = 20;
+
+        let snake = [];
+        let obstacles = [];
+        let food = { x: 15, y: 15 };
+        let direction = { x: 1, y: 0 };
+        let nextDirection = { x: 1, y: 0 };
+        let inputQueue = [];
+
+        let score = 0;
+        let level = 1;
+        let gameSpeed = 150;
+        let lastTime = 0;
+        let dropCounter = 0;
+        let isRunning = false;
+        let isGameOver = false;
+        let particles = [];
+
+        // Particles
+        class Particle {
+            constructor(x, y, color) {
+                this.x = x; this.y = y; this.color = color;
+                this.vx = (Math.random() - 0.5) * 10;
+                this.vy = (Math.random() - 0.5) * 10;
+                this.life = 1.0;
+                this.decay = Math.random() * 0.05 + 0.02;
+            }
+            update() { this.x += this.vx; this.y += this.vy; this.life -= this.decay; }
+            draw(ctx) {
+                ctx.globalAlpha = this.life;
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, TILE_SIZE / 4, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.globalAlpha = 1;
+            }
+        }
+
+        function spawnParticles(x, y, color = '#ff00de') {
+            const pixelX = x * TILE_SIZE + TILE_SIZE / 2;
+            const pixelY = y * TILE_SIZE + TILE_SIZE / 2;
+            for (let i = 0; i < 8; i++) particles.push(new Particle(pixelX, pixelY, color));
+        }
+
+        function resize() {
+            const container = document.getElementById('game-container');
+            const size = Math.floor(container.clientWidth);
+            canvas.width = size;
+            canvas.height = size;
+            TILE_SIZE = size / GRID_COUNT;
+        }
+
+        function getLevelObstacles(lvl) {
+            const obs = [];
+            if (lvl < 5) return obs;
+            const add = (x, y) => obs.push({ x, y });
+
+            if (lvl === 5) {
+                for (let i = 2; i < 6; i++) { add(i, 2); add(i, GRID_COUNT - 3); add(GRID_COUNT - 1 - i, 2); add(GRID_COUNT - 1 - i, GRID_COUNT - 3); }
+            }
+            else if (lvl === 6) {
+                for (let i = 6; i < 14; i++) { add(i, 9); add(i, 10); }
+            }
+            else if (lvl === 7) {
+                for (let x = 4; x < 8; x++) for (let y = 4; y < 8; y++) add(x, y);
+                for (let x = 12; x < 16; x++) for (let y = 12; y < 16; y++) add(x, y);
+            }
+            else {
+                for (let i = 0; i < GRID_COUNT; i++) { if (i % 3 !== 0) { add(i, 0); add(i, GRID_COUNT - 1); add(0, i); add(GRID_COUNT - 1, i); } }
+                if (lvl >= 9) {
+                    add(5, 5); add(5, 14); add(14, 5); add(14, 14);
+                }
+            }
+            return obs;
+        }
+
+        function loadLevelObstacles() {
+            const newObstacles = getLevelObstacles(level);
+            obstacles = newObstacles.filter(o => {
+                const hitsSnake = snake.some(s => s.x === o.x && s.y === o.y);
+                const hitsFood = (food.x === o.x && food.y === o.y);
+                return !hitsSnake && !hitsFood;
+            });
+        }
+
+        function resetGame() {
+            snake = [{ x: 10, y: 10 }, { x: 9, y: 10 }, { x: 8, y: 10 }];
+            direction = { x: 1, y: 0 };
+            nextDirection = { x: 1, y: 0 };
+            inputQueue = [];
+            score = 0;
+            level = 1;
+            gameSpeed = 150;
+            isGameOver = false;
+            isRunning = true;
+            obstacles = [];
+            particles = [];
+            placeFood();
+
+            document.getElementById('score-display').innerText = '0';
+            document.getElementById('level-display').innerText = '1';
+            document.getElementById('start-overlay').classList.add('hidden');
+        }
+
+        function placeFood() {
+            let valid = false;
+            let safety = 0;
+            while (!valid && safety < 100) {
+                food.x = Math.floor(Math.random() * GRID_COUNT);
+                food.y = Math.floor(Math.random() * GRID_COUNT);
+
+                const onSnake = snake.some(s => s.x === food.x && s.y === food.y);
+                const onObs = obstacles.some(o => o.x === food.x && o.y === food.y);
+
+                if (!onSnake && !onObs) valid = true;
+                safety++;
+            }
+        }
+
+        function update(deltaTime) {
+            if (!isRunning) return;
+            particles.forEach((p, i) => { p.update(); if (p.life <= 0) particles.splice(i, 1); });
+
+            dropCounter += deltaTime;
+            if (dropCounter > gameSpeed) {
+                dropCounter = 0;
+                gameTick();
+            }
+        }
+
+        function gameTick() {
+            if (inputQueue.length > 0) {
+                const next = inputQueue.shift();
+                if (next.x !== -direction.x && next.y !== -direction.y) direction = next;
+            }
+
+            const head = { x: snake[0].x + direction.x, y: snake[0].y + direction.y };
+
+            const wallHit = head.x < 0 || head.x >= GRID_COUNT || head.y < 0 || head.y >= GRID_COUNT;
+            const selfHit = snake.some(s => s.x === head.x && s.y === head.y);
+            const obsHit = obstacles.some(o => o.x === head.x && o.y === head.y);
+
+            if (wallHit || selfHit || obsHit) return gameOver();
+
+            snake.unshift(head);
+
+            if (head.x === food.x && head.y === food.y) {
+                score += 10 + (level * 2);
+                document.getElementById('score-display').innerText = score;
+                playSound('eat');
+                spawnParticles(food.x, food.y, '#0ff');
+                placeFood();
+
+                const nextLevel = Math.floor(score / 50) + 1;
+                if (nextLevel > level && nextLevel <= 10) {
+                    level = nextLevel;
+                    gameSpeed = Math.max(50, 150 - (level * 10));
+                    document.getElementById('level-display').innerText = level;
+                    playSound('levelup');
+                    loadLevelObstacles();
+                }
+            } else {
+                snake.pop();
+            }
+        }
+
+        function draw() {
+            ctx.fillStyle = '#050505';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.strokeStyle = '#1a1a1a';
+            ctx.lineWidth = 1;
+            for (let i = 0; i <= GRID_COUNT; i++) {
+                ctx.beginPath(); ctx.moveTo(i * TILE_SIZE, 0); ctx.lineTo(i * TILE_SIZE, canvas.height); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(0, i * TILE_SIZE); ctx.lineTo(canvas.width, i * TILE_SIZE); ctx.stroke();
+            }
+
+            ctx.fillStyle = '#ff0033';
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = '#ff0000';
+            obstacles.forEach(o => {
+                ctx.fillRect(o.x * TILE_SIZE + 1, o.y * TILE_SIZE + 1, TILE_SIZE - 2, TILE_SIZE - 2);
+            });
+            ctx.shadowBlur = 0;
+
+            const foodX = food.x * TILE_SIZE + TILE_SIZE / 2;
+            const foodY = food.y * TILE_SIZE + TILE_SIZE / 2;
+            ctx.shadowBlur = 15; ctx.shadowColor = "#ff00de"; ctx.fillStyle = "#ff00de";
+            ctx.beginPath(); ctx.arc(foodX, foodY, TILE_SIZE * 0.35, 0, Math.PI * 2); ctx.fill();
+            ctx.shadowBlur = 0;
+
+            ctx.beginPath();
+            ctx.strokeStyle = '#00aaaa';
+            ctx.lineWidth = 2;
+            if (snake.length > 1) {
+                const startX = snake[0].x * TILE_SIZE + TILE_SIZE / 2;
+                const startY = snake[0].y * TILE_SIZE + TILE_SIZE / 2;
+                ctx.moveTo(startX, startY);
+                for (let i = 1; i < snake.length; i++) {
+                    ctx.lineTo(snake[i].x * TILE_SIZE + TILE_SIZE / 2, snake[i].y * TILE_SIZE + TILE_SIZE / 2);
+                }
+                ctx.stroke();
+            }
+
+            snake.forEach((segment, index) => {
+                const cx = segment.x * TILE_SIZE + TILE_SIZE / 2;
+                const cy = segment.y * TILE_SIZE + TILE_SIZE / 2;
+
+                if (index === 0) {
+                    ctx.save();
+                    ctx.translate(cx, cy);
+                    const angle = Math.atan2(direction.y, direction.x);
+                    ctx.rotate(angle);
+
+                    ctx.fillStyle = '#00ffff';
+                    ctx.shadowBlur = 15; ctx.shadowColor = "#00ffff";
+                    ctx.beginPath();
+                    ctx.moveTo(TILE_SIZE / 2, 0);
+                    ctx.lineTo(-TILE_SIZE / 3, -TILE_SIZE / 3);
+                    ctx.lineTo(-TILE_SIZE / 3, TILE_SIZE / 3);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    ctx.fillStyle = '#fff';
+                    ctx.beginPath(); ctx.arc(0, 0, 2, 0, Math.PI * 2); ctx.fill();
+
+                    ctx.restore();
+                } else {
+                    ctx.shadowBlur = 0;
+                    const sizeRatio = 1 - (index / (snake.length + 5));
+                    const radius = (TILE_SIZE / 2 - 2) * Math.max(0.6, sizeRatio);
+
+                    ctx.fillStyle = '#008888';
+                    ctx.beginPath(); ctx.arc(cx, cy, radius, 0, Math.PI * 2); ctx.fill();
+
+                    ctx.fillStyle = '#e0ffff';
+                    ctx.beginPath(); ctx.arc(cx, cy, radius * 0.4, 0, Math.PI * 2); ctx.fill();
+                }
+            });
+            ctx.shadowBlur = 0;
+
+            particles.forEach(p => p.draw(ctx));
+        }
+
+        function gameLoop(time) {
+            const deltaTime = time - lastTime;
+            lastTime = time;
+            update(deltaTime);
+            draw();
+            requestAnimationFrame(gameLoop);
+        }
+
+        // --- ASYNC GAME OVER ---
+        async function gameOver() {
+            isRunning = false; isGameOver = true;
+            playSound('die');
+
+            // Immediate UI feedback
+            document.getElementById('overlay-title').innerText = "GAME OVER";
+            document.getElementById('overlay-subtitle').innerText = `Score: ${score} - Saving...`;
+            document.getElementById('auth-section').classList.add('hidden');
+            document.getElementById('start-overlay').classList.remove('hidden'); // Show overlay partially
+
+            if (window.currentPlayerName) {
+                // Wait for score to save before showing buttons
+                await saveScore(window.currentPlayerName, score);
+                document.getElementById('overlay-subtitle').innerText = `Score: ${score} - Level: ${level}`;
+            }
+
+            document.getElementById('restart-section').classList.remove('hidden');
+        }
+
+        function handleInput(dir) {
+            if (!isRunning) return;
+            if (inputQueue.length < 2) {
+                const lastDir = inputQueue.length > 0 ? inputQueue[inputQueue.length - 1] : direction;
+                if (dir.x !== -lastDir.x && dir.y !== -lastDir.y) inputQueue.push(dir);
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' '].includes(e.key)) e.preventDefault();
+            if (e.key === 'ArrowUp') handleInput({ x: 0, y: -1 });
+            if (e.key === 'ArrowDown') handleInput({ x: 0, y: 1 });
+            if (e.key === 'ArrowLeft') handleInput({ x: -1, y: 0 });
+            if (e.key === 'ArrowRight') handleInput({ x: 1, y: 0 });
+        });
+
+        document.querySelectorAll('.d-pad-btn[data-dir]').forEach(btn => {
+            const send = (e) => {
+                e.preventDefault();
+                const d = btn.dataset.dir;
+                if (d === 'up') handleInput({ x: 0, y: -1 });
+                if (d === 'down') handleInput({ x: 0, y: 1 });
+                if (d === 'left') handleInput({ x: -1, y: 0 });
+                if (d === 'right') handleInput({ x: 1, y: 0 });
+            };
+            btn.addEventListener('touchstart', send);
+            btn.addEventListener('click', send);
+        });
+
+        let touchStartX = 0; let touchStartY = 0;
+        canvas.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; touchStartY = e.changedTouches[0].screenY; }, { passive: false });
+        canvas.addEventListener('touchend', e => {
+            e.preventDefault();
+            const dx = e.changedTouches[0].screenX - touchStartX;
+            const dy = e.changedTouches[0].screenY - touchStartY;
+            if (Math.abs(dx) > Math.abs(dy)) {
+                if (Math.abs(dx) > 30) handleInput(dx > 0 ? { x: 1, y: 0 } : { x: -1, y: 0 });
+            } else {
+                if (Math.abs(dy) > 30) handleInput(dy > 0 ? { x: 0, y: 1 } : { x: 0, y: -1 });
+            }
+        }, { passive: false });
+
+        const startBtn = document.getElementById('start-btn');
+        const restartBtn = document.getElementById('restart-btn');
+        const rankingBtn = document.getElementById('ranking-btn');
+        const closeRankingBtn = document.getElementById('close-ranking-btn');
+        const userInp = document.getElementById('username-input');
+
+        startBtn.addEventListener('click', () => {
+            const name = userInp.value.trim() || 'Agent 007';
+            window.currentPlayerName = name;
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            resetGame();
+        });
+
+        restartBtn.addEventListener('click', resetGame);
+        rankingBtn.addEventListener('click', () => document.getElementById('ranking-overlay').classList.remove('hidden'));
+        closeRankingBtn.addEventListener('click', () => document.getElementById('ranking-overlay').classList.add('hidden'));
+
+        window.onload = () => { resize(); window.addEventListener('resize', resize); initSupabase(); requestAnimationFrame(gameLoop); };
+    </script>
+</body>
+
+</html>
