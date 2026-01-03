@@ -69,7 +69,7 @@ class SocialMediaManager:
             if last_space > 0:
                 truncated = truncated[:last_space]
         
-        return f"{truncated}... {url}"
+        return f"{truncated} ... {url}"
 
     def post_to_devto(self, title, content_markdown, canonical_url, main_image=None):
         """Publica el artículo completo en Dev.to con URL canónica."""

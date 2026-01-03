@@ -28,7 +28,7 @@ def generate_social_copy(title, content, platform='twitter', lang='es'):
                     "Style: Punchy, controversial or intriguing hooks.\n"
                     "Format: Short lines. Use 1-2 emojis.\n"
                     "CRITICAL: Never include the URL. FINISH YOUR SENTENCES.\n"
-                    "Length: Keep it under 280 characters.\n"
+                    "Length: Keep it under 200 characters.\n"
                     "Tags: 2-3 trending hashtags."
                 )
             else:
@@ -37,7 +37,7 @@ def generate_social_copy(title, content, platform='twitter', lang='es'):
                     "Estilo: Ganchos impactantes, frases cortas.\n"
                     "Formato: Saltos de línea. 1-2 emojis.\n"
                     "CRÍTICO: NO incluyas la URL. TERMINA LAS FRASES.\n"
-                    "Longitud: Menos de 280 caracteres.\n"
+                    "Longitud: Menos de 200 caracteres.\n"
                     "Tags: 2-3 hashtags tendencia."
                 )
 
