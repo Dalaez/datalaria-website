@@ -44,18 +44,32 @@ class SocialMediaManager:
     def _clean_text(self, text):
         return " ".join(text.split())
 
-    def _smart_truncate(self, text, url, max_length=230):
-        # NOTA: Para Twitter seguimos limpiando espacios extra, pero
-        # podríamos relajarlo si quisiéramos saltos de línea en Twitter también.
+    def _smart_truncate(self, text, url, max_length=220):
+        # 1. Limpieza básica
         text = self._clean_text(text)
+        
+        # 2. Calcular espacio disponible (Reservamos espacio para URL + ' ' + '...')
+        # Twitter acorta URLs a 23 caracteres. +1 espacio.
+        # Reduce max_length para ser conservador con emojis (cuentan dobles)
         url_length = 23
-        available_chars = max_length - url_length - 5 
+        reserved_chars = url_length + 4 # "... " + URL
+        target_len = max_length - reserved_chars
+
+        # 3. Comprobar longitud "ponderada" aproximada
+        # (Emojis cuentan x2 en Twitter, aquí simplificamos asumiendo peor caso si nos pasamos)
+        if len(text) <= target_len:
+             return f"{text} {url}"
+
+        # 4. Truncar respetando palabras (evitar cortar hashtags por la mitad)
+        truncated = text[:target_len]
         
-        if len(text) <= available_chars:
-            return f"{text} {url}"
+        # Si cortamos en medio de una palabra (y no es el final del string), retrocedemos al último espacio
+        if " " in truncated:
+            last_space = truncated.rfind(" ")
+            if last_space > 0:
+                truncated = truncated[:last_space]
         
-        truncated_text = text[:available_chars] + "..."
-        return f"{truncated_text} {url}"
+        return f"{truncated}... {url}"
 
     def post_to_devto(self, title, content_markdown, canonical_url, main_image=None):
         """Publica el artículo completo en Dev.to con URL canónica."""
