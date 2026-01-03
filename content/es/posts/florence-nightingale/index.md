@@ -6,7 +6,7 @@ categories: ["casos_exito"]
 tags: ["enfermería", "florence nightingale", "sanidad", "crimea"]
 description: "Florence Nightingale, enfermera, escritora y estadística británica, madre de la enfermería y una de las primeras científicas de datos."
 summary: "¿Quién fue la madre de la enfermería? Florence Nightingale una de las primeras científicas de datos, multidisciplinar y un referente para nuestros días"
-
+social_text: ¡IMPACTANTE!🤯 Florence Nightingale, la Madre de la Enfermería, fue una PIONERA del Data Science. Usó datos y su famoso "Diagrama de la Rosa" para demostrar que la suciedad mataba más que las balas en la Guerra de Crimea. ¡Salvó MILES de vidas! 📈
 weight: 10
 image: FlorenceNightingale.png
 authorAvatar: datalaria-logo.png

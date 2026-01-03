@@ -6,7 +6,7 @@ categories: ["case-studies"]
 tags: ["nursing", "florence nightingale", "healthcare", "crimea"]
 description: "Florence Nightingale, a British nurse, writer, and statistician, the mother of nursing and one of the first data scientists."
 summary: "Who was the mother of nursing? Florence Nightingale: a multidisciplinary icon, one of the first data scientists, and a role model for our times."
-
+social_text: Forget the battlefield. Hospitals were the real killers. Florence Nightingale used radical data viz to expose the truth & changed healthcare forever. A true legend. 📈🤯
 weight: 10
 image: FlorenceNightingale.png
 authorAvatar: datalaria-logo.png

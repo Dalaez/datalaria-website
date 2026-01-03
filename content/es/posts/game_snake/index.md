@@ -5,6 +5,7 @@ draft: false
 categories: ["Desarrollo Web", "GameDev", "Tutoriales"]
 tags: ["JavaScript", "Supabase", "PostgreSQL", "Canvas", "HTML5", "TailwindCSS"]
 image: imagen_snake_game.png
+social_text: ¡IMPACTANTE!🤯 Florence Nightingale, la Madre de la Enfermería, fue una PIONERA del Data Science. Usó datos y su famoso "Diagrama de la Rosa" para demostrar que la suciedad mataba más que las balas en la Guerra de Crimea. ¡Salvó MILES de vidas! 📈
 description: "Aprende a crear un juego web estilo arcade con estética neón utilizando solo HTML5 Canvas y JS Vanilla. Descubre cómo integrar un ranking global en tiempo real usando la base de datos PostgreSQL de Supabase."
 summary: "¿Recuerdas el clásico Snake? Lo hemos traído al futuro con estética Cyberpunk y lo hemos conectado a la nube. En este tutorial 'De Cero a Héroe', aprenderás a construir 'Neon Snake' usando JS Vanilla para el juego y Supabase para persistir las puntuaciones en tiempo real, sin necesidad de montar un servidor backend complejo."
 ---
