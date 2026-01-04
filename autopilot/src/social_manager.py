@@ -44,7 +44,7 @@ class SocialMediaManager:
     def _clean_text(self, text):
         return " ".join(text.split())
 
-    def _smart_truncate(self, text, url, max_length=220):
+    def _smart_truncate(self, text, url, max_length=200):
         # 1. Limpieza básica
         text = self._clean_text(text)
         
@@ -69,7 +69,7 @@ class SocialMediaManager:
             if last_space > 0:
                 truncated = truncated[:last_space]
         
-        return f"{truncated} ... {url}"
+        return f"{truncated}... {url}"
 
     def post_to_devto(self, title, content_markdown, canonical_url, main_image=None):
         """Publica el artículo completo en Dev.to con URL canónica."""
