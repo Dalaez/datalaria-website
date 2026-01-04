@@ -6,6 +6,7 @@ categories: ["Tools", "Learning"]
 tags: ["ai", "chatgpt", "prompt engineering", "founderz", "web development", "no-code", "html", "maths"]
 image: chatgpt_app_creation.png
 description: "A chronicle of how the AI and Prompt Engineering course by Founderz opened my eyes to the possibility of creating functional web applications using only natural language with ChatGPT."
+social_text: Built a functional app in MINUTES with ChatGPT. No code. No tech skills. AI is your ultimate creative copilot. 🤯🚀 #AI #NoCode #PromptEngineering
 summary: "Learning how AI can be our day-to-day copilot thanks to Founderz, and how we can create useful and simple HTML applications with just a few basic instructions."
 ---
 
