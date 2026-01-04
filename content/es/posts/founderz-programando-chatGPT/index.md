@@ -5,6 +5,7 @@ draft: False
 categories: ["Herramientas", "Aprendizaje"]
 tags: ["ia", "chatgpt", "prompt engineering", "founderz", "desarrollo web", "no-code", "html", "matemáticas"]
 image: chatgpt_app_creation.png
+social_text:  ¿No sabes programar? 🤯 ¡Creé una app de mates para niños con ChatGPT y Founderz en minutos! La IA es tu copiloto. ¡Adiós barreras técnicas! ¡Hazlo realidad! ✨ #IA #ChatGPT
 description: "Crónica de cómo el curso de IA y Prompt Engineering de Founderz me abrió los ojos a la posibilidad de crear aplicaciones web funcionales usando solo lenguaje natural con ChatGPT."
 summary: "Aprendiendo como la IA puede ser nuestro copiloto para el día a día gracias a Founderz y como podemos crear aplicaciones HTML útiles y sencillas con unas pocas instrucciones básicas."
 
