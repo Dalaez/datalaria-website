@@ -226,11 +226,10 @@ def main():
     print("\n🚀 --- LIVE MODE (Posting to Social Media) --- 🚀")
     manager = SocialMediaManager()
     
-    # 1. Publicar en Twitter
+    # 1. Publicar en Twitter (con imagen nativa si existe)
     if enable_twitter:
         try:
-            # Revertido a solo texto+URL para permitir Twitter Cards
-            manager.post_to_twitter(text=twitter_text, url=post_url)
+            manager.post_to_twitter(text=twitter_text, url=post_url, image_path=local_image_path)
         except Exception as e:
             print(f"⚠️ Falló Twitter: {e}")
     else:
