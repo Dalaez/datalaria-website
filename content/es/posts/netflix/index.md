@@ -5,7 +5,6 @@ draft: False
 categories: ["casos_exito"]
 tags: ["netflix", "streaming", "big data", "ia", "disney", "churn", "algoritmos"]
 image: netflix.png
-social_text: "¿Sabías que el botón Omitir intro de Netflix ahorra 195 años AL DÍA a la humanidad? 🤯 No fue creatividad, fueron DATOS. Netflix no es solo cine, es un algoritmo que predice tu próximo clic. 📊🎬 #BigData #Netflix #Marketing"
 description: "Un análisis de Netflix como empresa data-driven que utiliza Big Data e IA no solo para recomendar series, sino para tomar decisiones estratégicas clave y dominar en las 'Guerras del Streaming'."
 summary: "Netflix ya no lucha contra la TV, lucha contra todos. Descubre cómo los datos detrás de la personalización de carátulas, el fenómeno de 'El Juego del Calamar' o el fin de las cuentas compartidas son su verdadera arma secreta para reinar."
 ---

@@ -5,7 +5,6 @@ draft: False
 categories: ["case-studies"]
 tags: ["netflix", "streaming", "big data", "ai", "disney", "churn", "algorithms"]
 image: netflix.png
-social_text: "Did you know Netflix's Skip Intro saves humanity 195 years DAILY? 🤯 It wasn't creativity; it was DATA. Netflix isn't just TV, it's an algorithm that predicts your next click. 📊🎬 #BigData #Netflix #Marketing"
 description: "An analysis of Netflix as a data-driven company that uses Big Data and AI not only to recommend series but to make key strategic decisions and dominate in the 'Streaming Wars'."
 summary: "Netflix is no longer fighting against TV; it's fighting against everyone. Discover how the data behind personalized thumbnails, the 'Squid Game' phenomenon, and the end of shared accounts is its true secret weapon to reign supreme."
 ---
