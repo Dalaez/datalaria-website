@@ -33,6 +33,10 @@ params:
       url: "https://www.linkedin.com/in/daniel-al%C3%A1ez-ria%C3%B1o/"
     - name: twitter
       url: "https://twitter.com/Dalaez"
+  
+  # Twitter Cards site handle
+  social:
+    twitter: "@datalaria"
 
 # --- CONFIGURACIÓN MULTILENGUAJE ---
 languages:

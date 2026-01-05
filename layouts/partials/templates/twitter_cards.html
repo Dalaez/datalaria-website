@@ -1,0 +1,51 @@
+{{/*
+Twitter Cards template override for Datalaria.
+Supports both 'cover.image' and 'image' frontmatter parameters.
+*/}}
+
+{{- $hasImage := false -}}
+{{- $imageURL := "" -}}
+
+{{/* Check cover.image first (PaperMod default) */}}
+{{- if .Params.cover.image -}}
+{{- $hasImage = true -}}
+{{- if (ne $.Params.cover.relative true) }}
+{{- $imageURL = (.Params.cover.image | absURL) -}}
+{{- else }}
+{{- $imageURL = ((path.Join .RelPermalink .Params.cover.image) | absURL) -}}
+{{- end}}
+{{/* Then check 'image' parameter (Datalaria custom) */}}
+{{- else if .Params.image -}}
+{{- $hasImage = true -}}
+{{- $imageURL = ((path.Join .RelPermalink .Params.image) | absURL) -}}
+{{/* Fallback to first image in content */}}
+{{- else -}}
+{{- $images := partial "templates/_funcs/get-page-images" . -}}
+{{- with index $images 0 -}}
+{{- $hasImage = true -}}
+{{- $imageURL = .Permalink -}}
+{{- end -}}
+{{- end -}}
+
+{{- if $hasImage }}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{{ $imageURL }}">
+{{- else }}
+<meta name="twitter:card" content="summary">
+{{- end }}
+<meta name="twitter:title" content="{{ .Title }}">
+<meta name="twitter:description"
+    content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end -}}">
+
+{{- $twitterSite := "" }}
+{{- with site.Params.social }}
+{{- if reflect.IsMap . }}
+{{- with .twitter }}
+{{- $content := . }}
+{{- if not (strings.HasPrefix . "@") }}
+{{- $content = printf "@%v" . }}
+{{- end }}
+<meta name="twitter:site" content="{{ $content }}">
+{{- end }}
+{{- end }}
+{{- end }}

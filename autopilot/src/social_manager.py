@@ -93,6 +93,61 @@ class SocialMediaManager:
         
         return f"{truncated}... {url}"
 
+    def _compress_image(self, image_path, max_size_mb=4.5):
+        """Comprime la imagen si excede el límite de Twitter (5MB)."""
+        try:
+            from PIL import Image
+        except ImportError:
+            print("   ⚠️ Pillow no instalado. Ejecuta: pip install Pillow")
+            return image_path
+        
+        import tempfile
+        
+        file_size_mb = os.path.getsize(image_path) / (1024 * 1024)
+        print(f"   📏 Tamaño original: {file_size_mb:.2f} MB")
+        
+        if file_size_mb <= max_size_mb:
+            return image_path
+        
+        print(f"   🔄 Comprimiendo imagen (límite Twitter: 5 MB)...")
+        
+        try:
+            with Image.open(image_path) as img:
+                # Convertir a RGB si es necesario
+                if img.mode in ('RGBA', 'P'):
+                    img = img.convert('RGB')
+                
+                # Redimensionar si es muy grande
+                max_dimension = 2048
+                if max(img.size) > max_dimension:
+                    ratio = max_dimension / max(img.size)
+                    new_size = (int(img.size[0] * ratio), int(img.size[1] * ratio))
+                    img = img.resize(new_size, Image.Resampling.LANCZOS)
+                    print(f"   📐 Redimensionada a: {new_size[0]}x{new_size[1]}")
+                
+                # Guardar como JPEG con compresión progresiva
+                temp_file = tempfile.NamedTemporaryFile(suffix='.jpg', delete=False)
+                temp_path = temp_file.name
+                temp_file.close()
+                
+                quality = 85
+                while quality >= 20:
+                    img.save(temp_path, 'JPEG', quality=quality, optimize=True)
+                    new_size_mb = os.path.getsize(temp_path) / (1024 * 1024)
+                    
+                    if new_size_mb <= max_size_mb:
+                        print(f"   ✅ Comprimida a: {new_size_mb:.2f} MB (calidad: {quality}%)")
+                        return temp_path
+                    
+                    quality -= 10
+                
+                print(f"   ⚠️ No se pudo comprimir lo suficiente: {new_size_mb:.2f} MB")
+                return temp_path
+                
+        except Exception as e:
+            print(f"   ❌ Error comprimiendo: {e}")
+            return image_path
+
     def post_to_devto(self, title, content_markdown, canonical_url, main_image=None):
         """Publica el artículo completo en Dev.to con URL canónica."""
         print(f"DTO - Posting to Dev.to: '{title}'...")
@@ -154,13 +209,21 @@ class SocialMediaManager:
         # Subir imagen si existe
         media_ids = None
         if image_path and self.api_v1:
-            import os
             if os.path.exists(image_path):
                 try:
                     print(f"📸 Subiendo imagen: {image_path}")
-                    media = self.api_v1.media_upload(filename=image_path)
+                    
+                    # Comprimir si es necesario (límite Twitter: 5MB)
+                    final_path = self._compress_image(image_path)
+                    
+                    media = self.api_v1.media_upload(filename=final_path)
                     media_ids = [media.media_id]
                     print(f"   ✅ Imagen subida. Media ID: {media.media_id}")
+                    
+                    # Limpiar archivo temporal si fue creado
+                    if final_path != image_path and os.path.exists(final_path):
+                        os.remove(final_path)
+                        
                 except Exception as e:
                     print(f"   ⚠️ Error subiendo imagen: {e}")
             else:

@@ -5,3 +5,4 @@ langchain-google-genai
 python-dotenv
 python-frontmatter
 google-genai
+Pillow
