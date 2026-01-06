@@ -4,7 +4,7 @@ date: 2025-09-20
 draft: False
 categories: ["Herramientas", "Ingeniería"]
 tags: ["ia", "nanobanana", "ingeniería de sistemas", "v-model", "visualización", "formula 1", "comunicación", "ppt", "pptx", "comunicación", "ingeniería", "desarrollo", "roadmap"]
-image: v-model-f1-ai.png
+image: cover.png
 description: "Un caso práctico de cómo utilicé la herramienta de IA Nanobanana para transformar el Ciclo en V de la ingeniería de sistemas en una historia visual comprensible usando una analogía con la Fórmula 1."
 summary: "¿Cómo explicar un proceso de ingeniería complejo a una audiencia no técnica? Usé la IA de Nanobanana y una analogía con la Fórmula 1 para convertir el abstracto Ciclo en V en un roadmap visual que todo el mundo puede entender. Te cuento el proceso."
 ---

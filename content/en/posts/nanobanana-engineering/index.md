@@ -4,7 +4,7 @@ date: 2025-09-20
 draft: False
 categories: ["Tools", "Engineering"]
 tags: ["ai", "nanobanana", "systems engineering", "v-model", "visualization", "formula 1", "communication", "ppt", "pptx", "engineering", "development", "roadmap"]
-image: v-model-f1-ai.png
+image: cover.png
 description: "A case study on how I used the AI tool Nanobanana to transform the systems engineering V-Model into an understandable visual story using a Formula 1 analogy."
 summary: "How do you explain a complex engineering process to a non-technical audience? I used Nanobanana's AI and a Formula 1 analogy to turn the abstract V-Model into a visual roadmap that everyone can understand. Here's the process."
 ---
