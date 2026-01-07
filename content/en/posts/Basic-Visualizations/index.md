@@ -89,7 +89,7 @@ As known as Kernel density plots, they serve to visualize the distribution of da
 
 * Example: Distribution of the age of Titanic passengers  
 
-![Density_plot](grafico_densidad.png)
+![Density_plot](density_plot.png)
 
 ## <a name="boxplot"></a>Boxplots
 The boxplots or whisker plots serve to represent a variable or characteristic depending on its range and its quartiles.
