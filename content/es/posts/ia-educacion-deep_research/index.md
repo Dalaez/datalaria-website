@@ -4,7 +4,7 @@ date: 2025-09-27
 draft: False
 categories: ["Herramientas", "IA"]
 tags: ["ia", "gemini", "deep research", "educación", "investigación", "edtech", "unesco", "deep reserach"]
-image: IA_en_educacion.png
+image: cover.png
 description: "Un caso práctico de cómo usé la funcionalidad Deep Research de Gemini para generar un informe exhaustivo sobre el impacto de la IA en la educación y un resumen revelador de la misma."
 summary: "La investigación tradicional lleva semanas. Yo le pedí a Gemini un informe profundo sobre IA en la educación y esto es lo que descubrió: un mercado de 32 mil millones de dólares, una brecha digital alarmante y un estudio del MIT sobre cómo la IA afecta a nuestro cerebro."
 ---

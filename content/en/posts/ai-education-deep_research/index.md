@@ -4,7 +4,7 @@ date: 2025-09-27
 draft: False
 categories: ["Tools", "AI"]
 tags: ["ai", "gemini", "deep research", "education", "research", "edtech", "unesco"]
-image: IA_en_educacion.png
+image: cover.png
 description: "A case study on how I used Gemini's Deep Research feature to generate an exhaustive report on the impact of AI in education and a revealing summary of it."
 summary: "Traditional research takes weeks. I asked Gemini for a deep report on AI in education, and here's what it found: a $32 billion market, an alarming digital divide, and an MIT study on how AI affects our brains."
 ---
