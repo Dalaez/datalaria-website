@@ -4,7 +4,7 @@ date: 2025-10-04
 draft: False
 categories: ["Proyectos", "Herramientas"]
 tags: ["gemini", "ia", "desarrollo web", "conversor de unidades", "html", "css", "javascript", "ingeniería"]
-image: conversor_universal_pro.png
+image: cover.png
 description: "Un caso práctico de cómo utilicé Gemini Canvas para desarrollar desde cero una aplicación web de conversión de unidades de medida, organizada por categorías y adaptada a mis necesidades profesionales."
 summary: "Cansado de tener que desempolvar conocimientos casi olvidados o tener que recurrir a diferentes conversores online genéricos, decidí crear un conversor propio con la ayuda de la IA de Gemini. Te cuento el proceso y te explico la ciencia detrás de cada conversión, desde la energía hasta la radiofrecuencia."
 ---

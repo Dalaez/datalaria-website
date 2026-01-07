@@ -4,7 +4,7 @@ date: 2025-10-04
 draft: False
 categories: ["Projects", "Tools"]
 tags: ["gemini", "ai", "web development", "unit converter", "html", "css", "javascript", "engineering"]
-image: conversor_universal_pro.png
+image: cover.png
 description: "A practical case study of how I used Gemini Canvas to develop a multi-category unit conversion web application from scratch, tailored to my professional needs."
 summary: "Tired of dusting off long-forgotten knowledge or relying on various generic online converters, I decided to create my own with the help of Gemini's AI. I'll walk you through the process and explain the science behind each conversion, from energy to radio frequency."
 ---
