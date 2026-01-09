@@ -4,7 +4,7 @@ date: 2025-10-11
 draft: False
 categories: ["case-studies", "AI"]
 tags: ["freepik", "ai", "generative ai", "malaga", "startup", "business model", "disruption"]
-image: freepik_ia_conquest.png
+image: cover.png
 description: "An in-depth analysis of how Freepik, the startup from Málaga, went from an image search engine to a global leader, facing the disruption of AI with a bold strategy that is redefining the future of creativity."
 summary: "When generative AI threatened to destroy the stock content industry, a company from Málaga bet its future on a total reinvention. This is the story of Freepik: from its ingenious 'freemium' model to its strategic pivot to surf the AI wave and compete head-to-head with tech giants."
 ---
