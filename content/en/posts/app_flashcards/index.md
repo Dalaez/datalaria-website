@@ -4,7 +4,6 @@ date: 2025-10-17
 draft: False
 categories: ["Projects", "Tools"]
 tags: ["ai", "flashcards", "learning", "study", "web development", "no-code", "gamification"]
-image: flashcards_app_hero.png
 description: "A practical case study of how a family need led me to create a flashcards study application from scratch, relying on AI to make learning more enjoyable and effective."
 summary: "While helping my son study science in English, I realized we needed more than just covering the page with a hand. That's how my own flashcards app was born, created with AI. I'll share the story, introduce the tool, its magical content-generating feature, and invite you to use it."
 ---

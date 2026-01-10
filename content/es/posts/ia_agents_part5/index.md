@@ -4,7 +4,6 @@ date: 2026-01-10
 draft: false
 categories: ["DevOps", "GitHub Actions", "Python"]
 tags: ["CI/CD", "Automation", "Pipeline", "GitOps", "Workflow"]
-image: "/images/posts/autopilot-architecture.jpg"
 description: "Capítulo final de Proyecto Autopilot. Ya no ejecuto scripts en mi ordenador. Ahora, un simple 'git push' despierta a mis agentes de IA, genera el contenido y lo publica en redes sociales tras mi aprobación."
 summary: "En este último capítulo, abandonamos la ejecución manual. Construimos un pipeline de CI/CD en GitHub Actions que detecta nuevos artículos, orquesta a los agentes de IA y gestiona la publicación en Twitter y LinkedIn bajo supervisión humana. Bienvenidos a la automatización total."
 ---
