@@ -4,7 +4,7 @@ date: 2025-10-17
 draft: False
 categories: ["Proyectos", "Herramientas"]
 tags: ["ia", "flashcards", "aprendizaje", "estudio", "desarrollo web", "no-code", "gamificacion"]
-image: flashcards_app_hero.png
+image: Cover.PNG
 description: "Un caso práctico de cómo una necesidad familiar me llevó a crear una aplicación de estudio con flashcards desde cero, apoyándome en la IA para hacer el aprendizaje más ameno y eficaz."
 summary: "Ayudando a mi hijo a estudiar ciencias en inglés, me di cuenta de que necesitábamos algo más que tapar la hoja con la mano. Así nació mi propia app de flashcards, creada con IA. Te cuento la historia, te presento la herramienta, su novedad mágica de generar contenido por sí misma y te invito a usarla."
 ---
