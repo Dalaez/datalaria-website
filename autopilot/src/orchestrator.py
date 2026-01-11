@@ -210,8 +210,7 @@ def main():
         print("\n🚧 --- DRY RUN MODE (Preview) --- 🚧")
         if enable_twitter:
             print(f"\n🐦 [TWITTER]:\n{twitter_text}")
-            if local_image_path:
-                print(f"   [Image]: {local_image_path}")
+            print(f"   [Mode]: Twitter Cards (image from meta tags)")
         if enable_linkedin:
             print(f"\n💼 [LINKEDIN]:\n{linkedin_text}")
         if enable_devto:
@@ -226,10 +225,11 @@ def main():
     print("\n🚀 --- LIVE MODE (Posting to Social Media) --- 🚀")
     manager = SocialMediaManager()
     
-    # 1. Publicar en Twitter (con imagen nativa si existe)
+    # 1. Publicar en Twitter (sin imagen para usar Twitter Cards)
     if enable_twitter:
         try:
-            manager.post_to_twitter(text=twitter_text, url=post_url, image_path=local_image_path)
+            # No pasamos image_path para que Twitter use las Twitter Cards del meta tag
+            manager.post_to_twitter(text=twitter_text, url=post_url)
         except Exception as e:
             print(f"⚠️ Falló Twitter: {e}")
     else:

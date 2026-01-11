@@ -4,7 +4,7 @@ date: 2025-10-28
 draft: False
 categories: ["case-studies", "AI"]
 tags: ["carto", "geospatial", "ai", "cloud", "startup", "big data", "location intelligence"]
-image: carto_cloud_native.png
+image: cover.png
 description: "The story of how Carto, a Spanish startup, evolved from a consulting project into a global leader in Location Intelligence by betting on a cloud-native strategy that has redefined data analysis."
 summary: "Most startups are born from a grand vision. Carto was born from the need to issue an invoice to the UN. This is the incredible story of how a pragmatic project grew into a $92 million giant that is teaching the world to 'predict through location'."
 ---

@@ -4,7 +4,7 @@ date: 2025-10-25
 draft: False
 categories: ["casos_exito", "IA"]
 tags: ["carto", "geoespacial", "ia", "cloud", "startup", "big data", "inteligencia de localización"]
-image: carto_cloud_native.png
+image: cover.png
 description: "La historia de cómo Carto, una startup española, pasó de ser un proyecto de consultoría a un líder mundial en Inteligencia de Localización, apostando por una estrategia nativa en la nube que ha redefinido el análisis de datos."
 summary: "La mayoría de las startups nacen con una gran visión. Carto nació por la necesidad de emitir una factura a la ONU. Esta es la increíble historia de cómo un proyecto pragmático se convirtió en un gigante de 92 millones de dólares que está enseñando al mundo a 'predecir a través de la localización'."
 ---
