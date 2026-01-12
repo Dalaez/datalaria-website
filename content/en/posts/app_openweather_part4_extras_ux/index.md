@@ -4,7 +4,7 @@ date: 2025-12-06
 draft: False
 categories: ["Project Showcase", "Web Development", "UI/UX"]
 tags: ["project-weather", "weather-dashboard", "python", "javascript", "frontend", "backend", "i18n", "data-visualization", "chart.js", "ui-ux"]
-image: project_weather_extras_dashboard.png
+image: cover.png
 description: "An in-depth analysis of the 'extra' features and design decisions behind Project Weather, showcasing how advanced data collection, internationalization, custom filtering, and UI/UX enhancements transformed a basic dashboard into a comprehensive, robust, and user-friendly weather application, complementing its core AI prediction capabilities."
 summary: "While Project Weather's AI prediction model is a highlight, its true robustness lies in its meticulously designed infrastructure. This post explores the significant enhancements in data collection, multilingual support, dynamic data filtering, and UI/UX that elevate the application to a production standard, demonstrating a holistic approach to complex web development."
 ---

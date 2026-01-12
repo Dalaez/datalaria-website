@@ -4,7 +4,7 @@ date: 2025-11-15
 draft: False
 categories: ["Projects", "AI", "Tools"]
 tags: ["machine-learning", "regression", "openweathermpa", "python", "pandas", "scikit-learn", "javascript", "frontend", "data-prediction", "weather-forecast", "serverless"]
-image: weather_forecast_dashboard.png
+image: cover.png
 description: "The final installment of our Weather Service project. We dive into adding predictive capabilities, combining official OpenWeatherMap forecasts with our custom-built AI (Linear Regression) model to predict tomorrow's weather and visualize its accuracy."
 summary: "From data collection to dynamic dashboards, now it's time to predict! This post explores integrating OpenWeatherMap's 5-day forecast and building our own 1-day AI prediction model using historical data, all visualized in our interactive frontend."
 ---

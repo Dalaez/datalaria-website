@@ -4,7 +4,7 @@ date: 2025-11-08
 draft: False
 categories: ["Proyectos", "Herramientas"]
 tags: ["javascript", "frontend", "github pages", "html", "css", "papaparse", "chartjs", "serverless", "visualizacion-datos", "netlify"]
-image: weather_frontend_dashboard.png
+image: cover.png
 description: "Segunda entrega del proyecto Weather Service. Nos adentramos en el frontend: sirviendo un dashboard dinámico con GitHub Pages o Netlify, leyendo datos CSV con PapaParse.js y creando gráficos interactivos con Chart.js."
 summary: "Después de construir el recolector de datos, ¡es hora de visualizarlos! Este post te guía a través de la creación de un dashboard meteorológico interactivo usando GitHub Pages o Netlify, JavaScript, PapaParse.js y Chart.js. ¡Dale vida a tus datos!"
 ---

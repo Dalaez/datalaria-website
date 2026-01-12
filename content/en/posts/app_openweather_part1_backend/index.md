@@ -4,7 +4,7 @@ date: 2025-10-31
 draft: False
 categories: ["Projects", "Tools"]
 tags: ["python", "api", "github actions", "automation", "serverless", "data", "backend", "netlify"]
-image: weather_backend_collector.png
+image: cover.png
 description: "First installment in the series on building a weather service. We focus on the backend: connecting to the OpenWeatherMap API, storing data in CSV, and automating everything 24/7 for free with GitHub Actions or Netlify."
 summary: "We kick off our weather project by building the engine: a Python script that talks to an API, saves historical data, and runs daily thanks to GitHub Actions. I'll share the tricks and challenges!"
 ---
