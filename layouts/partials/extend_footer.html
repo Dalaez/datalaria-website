@@ -1,0 +1,94 @@
+{{- /* Newsletter subscription form in footer */ -}}
+{{- $isSpanish := eq .Site.Language.Lang "es" -}}
+{{- $title := cond $isSpanish "¡Suscríbete a la Newsletter!" "Subscribe to the Newsletter!" -}}
+{{- $descES := "Recibe novedades sobre datos, IA y tecnología en tu correo." -}}
+{{- $descEN := "Get the latest news about data, AI and tech in your inbox." -}}
+{{- $description := cond $isSpanish $descES $descEN -}}
+{{- $namePlaceholder := cond $isSpanish "Tu nombre" "Your name" -}}
+{{- $emailPlaceholder := cond $isSpanish "Tu email" "Your email" -}}
+{{- $buttonText := cond $isSpanish "Suscribirse" "Subscribe" -}}
+
+<div class="newsletter-section">
+    <div class="newsletter-container">
+        <div class="newsletter-header">
+            <svg class="newsletter-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <h3 class="newsletter-title">{{ $title }}</h3>
+        </div>
+        <p class="newsletter-description">{{ $description }}</p>
+        <form id="newsletter-form" class="newsletter-form">
+            <div class="newsletter-inputs">
+                <input type="text" id="newsletter-name" name="name" placeholder="{{ $namePlaceholder }}" required />
+                <input type="email" id="newsletter-email" name="email" placeholder="{{ $emailPlaceholder }}" required />
+                <button type="submit" class="newsletter-btn" id="newsletter-submit">{{ $buttonText }}</button>
+            </div>
+            <p id="newsletter-message" class="newsletter-message"></p>
+        </form>
+    </div>
+</div>
+
+<script>
+    (function () {
+        var form = document.getElementById('newsletter-form');
+        var messageEl = document.getElementById('newsletter-message');
+        var submitBtn = document.getElementById('newsletter-submit');
+        var lang = '{{ .Site.Language.Lang }}';
+
+        var messages = {
+            es: {
+                loading: 'Enviando...',
+                success: 'Gracias por suscribirte!',
+                error: 'Hubo un error. Intentalo de nuevo.',
+                existing: 'Ya estas suscrito!'
+            },
+            en: {
+                loading: 'Sending...',
+                success: 'Thanks for subscribing!',
+                error: 'An error occurred. Please try again.',
+                existing: 'You are already subscribed!'
+            }
+        };
+
+        var msg = messages[lang] || messages.en;
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            var name = document.getElementById('newsletter-name').value;
+            var email = document.getElementById('newsletter-email').value;
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = msg.loading;
+            messageEl.textContent = '';
+            messageEl.className = 'newsletter-message';
+
+            fetch('/.netlify/functions/subscribe', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: email, name: name })
+            })
+                .then(function (response) { return response.json(); })
+                .then(function (data) {
+                    if (data.success) {
+                        messageEl.textContent = msg.success;
+                        messageEl.classList.add('success');
+                        form.reset();
+                    } else {
+                        throw new Error(data.error);
+                    }
+                })
+                .catch(function (error) {
+                    console.error('Newsletter error:', error);
+                    messageEl.textContent = msg.error;
+                    messageEl.classList.add('error');
+                })
+                .finally(function () {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = lang === 'es' ? 'Suscribirse' : 'Subscribe';
+                });
+        });
+    })();
+</script>

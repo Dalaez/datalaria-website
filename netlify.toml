@@ -7,3 +7,6 @@
 [build]
   command = "hugo"
   publish = "public"
+
+[functions]
+  directory = "netlify/functions"
