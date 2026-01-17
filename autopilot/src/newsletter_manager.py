@@ -27,6 +27,31 @@ class NewsletterManager:
             "api-key": self.api_key
         }
     
+    def _text_to_html_paragraphs(self, text):
+        """
+        Convierte texto plano con saltos de línea en párrafos HTML.
+        Dobles saltos de línea -> nuevos párrafos
+        Saltos simples -> <br>
+        """
+        if not text:
+            return ""
+        
+        # Normalizar saltos de línea
+        text = text.replace('\r\n', '\n').replace('\r', '\n')
+        
+        # Dividir por dobles saltos de línea (párrafos)
+        paragraphs = text.split('\n\n')
+        
+        html_paragraphs = []
+        for p in paragraphs:
+            p = p.strip()
+            if p:
+                # Reemplazar saltos simples por <br>
+                p = p.replace('\n', '<br>')
+                html_paragraphs.append(f'<p style="margin: 0 0 16px 0;">{p}</p>')
+        
+        return '\n'.join(html_paragraphs)
+    
     def _build_html_template(self, intro_text, post_title, post_url, lang="es"):
         """
         Genera el HTML del email con diseño profesional.
@@ -46,6 +71,9 @@ class NewsletterManager:
         
         # Logo URL (desde tu sitio)
         logo_url = "https://datalaria.com/images/datalaria_logo_transp.png"
+        
+        # Convertir texto a párrafos HTML
+        formatted_intro = self._text_to_html_paragraphs(intro_text)
         
         html = f"""
 <!DOCTYPE html>
@@ -69,7 +97,7 @@ class NewsletterManager:
         
         <!-- Contenido generado por IA -->
         <div style="font-size: 16px; line-height: 1.7; color: #444; margin-bottom: 30px;">
-            {intro_text}
+            {formatted_intro}
         </div>
         
         <!-- CTA Button -->
