@@ -49,6 +49,9 @@ exports.handler = async (event, context) => {
     // Default language to 'es' if not provided
     const contactLanguage = (language || 'es').toLowerCase();
 
+    // List IDs: ES=3, EN=4 (configured in Brevo)
+    const listId = contactLanguage === 'es' ? 3 : 4;
+
     // Brevo API request to create/update contact
     const response = await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
@@ -64,7 +67,7 @@ exports.handler = async (event, context) => {
           LASTNAME: lastName,
           LANGUAGE: contactLanguage
         },
-        listIds: [3], // List ID #3
+        listIds: [listId], // Lista según idioma: ES=#3, EN=#4
         updateEnabled: true // Update if contact already exists
       })
     });

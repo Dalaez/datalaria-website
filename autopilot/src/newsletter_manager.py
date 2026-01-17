@@ -11,7 +11,9 @@ class NewsletterManager:
     
     def __init__(self):
         self.api_key = os.getenv("BREVO_API_KEY")
-        self.list_id = int(os.getenv("BREVO_LIST_ID", "3"))
+        # Listas separadas por idioma
+        self.list_id_es = int(os.getenv("BREVO_LIST_ID_ES", "3"))
+        self.list_id_en = int(os.getenv("BREVO_LIST_ID_EN", "4"))
         self.sender_name = "Datalaria"
         self.sender_email = "datalaria@gmail.com"
         self.base_url = "https://api.brevo.com/v3"
@@ -150,12 +152,14 @@ class NewsletterManager:
         # 1. Generar HTML
         html_content = self._build_html_template(intro_text, post_title, post_url, lang)
         
-        # 2. Crear campaña con filtro por idioma
+        # 2. Seleccionar lista según idioma
+        list_id = self.list_id_es if lang == "es" else self.list_id_en
         lang_suffix = "ES" if lang == "es" else "EN"
         campaign_name = f"Newsletter {lang_suffix} - {post_title[:40]} - {datetime.now().strftime('%Y%m%d_%H%M')}"
         
-        # Filtro por atributo LANGUAGE en Brevo
-        # Docs: https://developers.brevo.com/reference/createemailcampaign
+        print(f"   📋 Usando lista #{list_id} para idioma {lang_suffix}")
+        
+        # 3. Crear payload de campaña
         create_payload = {
             "name": campaign_name,
             "subject": subject,
@@ -166,18 +170,7 @@ class NewsletterManager:
             "type": "classic",
             "htmlContent": html_content,
             "recipients": {
-                "listIds": [self.list_id],
-                "segmentConditions": {
-                    "type": "and",
-                    "conditions": [
-                        {
-                            "type": "attribute",
-                            "attribute": "LANGUAGE",
-                            "operator": "equals",
-                            "value": lang
-                        }
-                    ]
-                }
+                "listIds": [list_id]
             }
         }
         

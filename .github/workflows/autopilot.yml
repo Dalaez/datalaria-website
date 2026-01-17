@@ -77,6 +77,8 @@ jobs:
           ENABLE_NEWSLETTER: ${{ vars.ENABLE_NEWSLETTER }}
           # Brevo (Newsletter)
           BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+          BREVO_LIST_ID_ES: ${{ vars.BREVO_LIST_ID_ES }}
+          BREVO_LIST_ID_EN: ${{ vars.BREVO_LIST_ID_EN }}
         run: |
           echo "👀 Generating Preview for: ${{ steps.file_check.outputs.file_path }}"
           python autopilot/src/orchestrator.py "${{ steps.file_check.outputs.file_path }}"
@@ -126,6 +128,8 @@ jobs:
           ENABLE_NEWSLETTER: ${{ vars.ENABLE_NEWSLETTER }}
           # Brevo (Newsletter)
           BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+          BREVO_LIST_ID_ES: ${{ vars.BREVO_LIST_ID_ES }}
+          BREVO_LIST_ID_EN: ${{ vars.BREVO_LIST_ID_EN }}
         run: |
           echo "🚀 Launching Autopilot for: ${{ needs.check_changes.outputs.file_path }}"
           python autopilot/src/orchestrator.py "${{ needs.check_changes.outputs.file_path }}"
