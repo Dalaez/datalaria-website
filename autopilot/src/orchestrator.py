@@ -10,6 +10,7 @@ parent_dir = current_dir.parent
 sys.path.append(str(parent_dir))
 
 from src.social_manager import SocialMediaManager
+from src.newsletter_manager import NewsletterManager
 from src import brain
 
 def str_to_bool(value):
@@ -122,6 +123,7 @@ def main():
     enable_twitter = str_to_bool(os.getenv("ENABLE_TWITTER", "true"))
     enable_linkedin = str_to_bool(os.getenv("ENABLE_LINKEDIN", "true"))
     enable_devto = str_to_bool(os.getenv("ENABLE_DEVTO", "false")) # Default false for safety
+    enable_newsletter = str_to_bool(os.getenv("ENABLE_NEWSLETTER", "false")) # Default false
     
     # --- GENERACIÓN DE CONTENIDO ---
     
@@ -157,6 +159,17 @@ def main():
             linkedin_text = linkedin_gen if linkedin_gen else f"🚀 Nuevo artículo recomendado: {post_data['title']}. #DataEngineering"
         else:
             print("   🚫 Agente LinkedIn DESACTIVADO por configuración.")
+
+        # 3. Agente Newsletter (Solo si está activado)
+        if enable_newsletter:
+            print("   📧 Agente Newsletter escribiendo...")
+            newsletter_gen = brain.generate_social_copy(
+                post_data['title'], post_data['content'], platform='newsletter', lang=post_data['lang']
+            )
+            newsletter_text = newsletter_gen if newsletter_gen else f"He publicado un nuevo artículo que creo que te va a interesar: {post_data['title']}"
+        else:
+            print("   🚫 Agente Newsletter DESACTIVADO por configuración.")
+            newsletter_text = ""
 
     # --- RESOLUCIÓN DE IMAGEN LOCAL ---
     # Buscamos la imagen para subirla nativamente a Twitter (y opcionalmente a Dev.to si no usara URL)
@@ -218,6 +231,11 @@ def main():
             # Preview de URLs
             preview_content = resolve_image_urls(post_data['content'][:500], file_path)
             print(f"   Sample Processing: {preview_content}...")
+        if enable_newsletter:
+            print(f"\n📧 [NEWSLETTER]:")
+            print(f"   Subject: 🚀 Nuevo en Datalaria: {post_data['title']}")
+            print(f"   Content Preview: {newsletter_text[:300]}...")
+            print(f"   Recipients: Lista Brevo #3")
         
         print(f"\n🔗 URL: {post_url}")
         sys.exit(0)
@@ -260,6 +278,30 @@ def main():
             print(f"⚠️ Falló Dev.to: {e}")
     else:
         print("🔕 Dev.to omitido (ENABLE_DEVTO=false)")
+
+    # 4. Enviar Newsletter
+    if enable_newsletter:
+        try:
+            print("📧 Preparando campaña de Newsletter...")
+            newsletter_manager = NewsletterManager()
+            
+            # Generar asunto
+            if post_data['lang'] == 'es':
+                subject = f"🚀 Nuevo en Datalaria: {post_data['title']}"
+            else:
+                subject = f"🚀 New on Datalaria: {post_data['title']}"
+            
+            newsletter_manager.send_campaign(
+                subject=subject,
+                intro_text=newsletter_text,
+                post_title=post_data['title'],
+                post_url=post_url,
+                lang=post_data['lang']
+            )
+        except Exception as e:
+            print(f"⚠️ Falló Newsletter: {e}")
+    else:
+        print("🔕 Newsletter omitida (ENABLE_NEWSLETTER=false)")
     
     print("\n✅ Orquestación finalizada.")
 

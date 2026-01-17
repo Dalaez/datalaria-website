@@ -74,6 +74,9 @@ jobs:
           ENABLE_TWITTER: ${{ vars.ENABLE_TWITTER }}
           ENABLE_LINKEDIN: ${{ vars.ENABLE_LINKEDIN }}
           ENABLE_DEVTO: ${{ vars.ENABLE_DEVTO }}
+          ENABLE_NEWSLETTER: ${{ vars.ENABLE_NEWSLETTER }}
+          # Brevo (Newsletter)
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
         run: |
           echo "👀 Generating Preview for: ${{ steps.file_check.outputs.file_path }}"
           python autopilot/src/orchestrator.py "${{ steps.file_check.outputs.file_path }}"
@@ -120,6 +123,9 @@ jobs:
           ENABLE_TWITTER: ${{ vars.ENABLE_TWITTER }}
           ENABLE_LINKEDIN: ${{ vars.ENABLE_LINKEDIN }}
           ENABLE_DEVTO: ${{ vars.ENABLE_DEVTO }}
+          ENABLE_NEWSLETTER: ${{ vars.ENABLE_NEWSLETTER }}
+          # Brevo (Newsletter)
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
         run: |
           echo "🚀 Launching Autopilot for: ${{ needs.check_changes.outputs.file_path }}"
           python autopilot/src/orchestrator.py "${{ needs.check_changes.outputs.file_path }}"
