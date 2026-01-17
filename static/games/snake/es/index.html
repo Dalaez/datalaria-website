@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -16,7 +17,8 @@
             touch-action: none;
         }
 
-        h1, .cyber-font {
+        h1,
+        .cyber-font {
             font-family: 'Orbitron', sans-serif;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -50,16 +52,23 @@
             font-family: 'Orbitron', sans-serif;
             transition: all 0.2s;
         }
+
         .cyber-btn:hover {
             background: linear-gradient(45deg, #ff00cc, #6a1b4a);
             box-shadow: 0 0 15px #ff00cc;
             transform: scale(1.02);
         }
-        .cyber-btn:active { transform: scale(0.98); }
+
+        .cyber-btn:active {
+            transform: scale(0.98);
+        }
 
         .overlay {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(0, 0, 0, 0.85);
             display: flex;
             flex-direction: column;
@@ -75,11 +84,17 @@
             border-radius: 12px;
             backdrop-filter: blur(2px);
         }
-        .d-pad-btn:active { background: rgba(0, 255, 255, 0.3); }
 
-        .hidden { display: none !important; }
+        .d-pad-btn:active {
+            background: rgba(0, 255, 255, 0.3);
+        }
+
+        .hidden {
+            display: none !important;
+        }
     </style>
 </head>
+
 <body class="h-screen w-screen flex flex-col items-center justify-start overflow-hidden">
 
     <!-- Cabecera -->
@@ -101,18 +116,27 @@
 
             <!-- Overlays -->
             <div id="start-overlay" class="overlay">
-                <h2 id="overlay-title" class="text-5xl md:text-6xl font-bold text-white mb-4 cyber-font neon-text">READY?</h2>
-                <p id="overlay-subtitle" class="text-gray-300 mb-8 text-center px-4">Evita los firewalls rojos a partir del Nivel 5</p>
-                
+                <h2 id="overlay-title" class="text-5xl md:text-6xl font-bold text-white mb-4 cyber-font neon-text">
+                    READY?</h2>
+                <p id="overlay-subtitle" class="text-gray-300 mb-8 text-center px-4">Evita los firewalls rojos a partir
+                    del Nivel 5</p>
+
                 <div id="auth-section" class="w-64 flex flex-col gap-3">
                     <input type="text" id="username-input" placeholder="NOMBRE DE AGENTE" maxlength="12"
-                           class="bg-gray-900 border border-cyan-500 text-cyan-400 text-center p-3 rounded focus:outline-none focus:shadow-[0_0_10px_#0ff]">
-                    <button id="start-btn" class="cyber-btn py-3 px-6 rounded font-bold tracking-wider">INICIAR SISTEMA</button>
+                        class="bg-gray-900 border border-cyan-500 text-cyan-400 text-center p-3 rounded focus:outline-none focus:shadow-[0_0_10px_#0ff]">
+                    <button id="start-btn" class="cyber-btn py-3 px-6 rounded font-bold tracking-wider">INICIAR
+                        SISTEMA</button>
+                    <button id="start-ranking-btn"
+                        class="cyber-btn bg-gradient-to-r from-blue-600 to-blue-900 border-blue-500 shadow-blue-500 py-3 px-6 rounded font-bold">VER
+                        RANKING</button>
                 </div>
 
                 <div id="restart-section" class="hidden flex flex-col gap-3 w-64">
-                    <button id="restart-btn" class="cyber-btn bg-gradient-to-r from-green-600 to-green-900 border-green-500 shadow-green-500 py-3 px-6 rounded font-bold">REINTENTAR</button>
-                    <button id="ranking-btn" class="cyber-btn bg-gradient-to-r from-blue-600 to-blue-900 border-blue-500 shadow-blue-500 py-3 px-6 rounded font-bold">VER RANKING</button>
+                    <button id="restart-btn"
+                        class="cyber-btn bg-gradient-to-r from-green-600 to-green-900 border-green-500 shadow-green-500 py-3 px-6 rounded font-bold">REINTENTAR</button>
+                    <button id="ranking-btn"
+                        class="cyber-btn bg-gradient-to-r from-blue-600 to-blue-900 border-blue-500 shadow-blue-500 py-3 px-6 rounded font-bold">VER
+                        RANKING</button>
                 </div>
             </div>
 
@@ -132,21 +156,37 @@
     <div class="grid grid-cols-3 gap-3 w-48 md:hidden z-10">
         <div></div>
         <button class="d-pad-btn h-14 flex items-center justify-center" data-dir="up">
-            <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+            <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18">
+                </path>
+            </svg>
         </button>
         <div></div>
         <button class="d-pad-btn h-14 flex items-center justify-center" data-dir="left">
-            <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18">
+                </path>
+            </svg>
         </button>
-        <button class="d-pad-btn h-14 flex items-center justify-center bg-red-900/30 border-red-500/50" id="mobile-pause">
-            <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <button class="d-pad-btn h-14 flex items-center justify-center bg-red-900/30 border-red-500/50"
+            id="mobile-pause">
+            <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
         </button>
         <button class="d-pad-btn h-14 flex items-center justify-center" data-dir="right">
-            <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3">
+                </path>
+            </svg>
         </button>
         <div></div>
         <button class="d-pad-btn h-14 flex items-center justify-center" data-dir="down">
-            <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+            <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3">
+                </path>
+            </svg>
         </button>
         <div></div>
     </div>
@@ -156,7 +196,7 @@
         import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
         // --- CONFIGURACIÓN DE SUPABASE ---
-        const SUPABASE_URL = 'https://wxwnbzmbzztegcdzrxbg.supabase.co'; 
+        const SUPABASE_URL = 'https://wxwnbzmbzztegcdzrxbg.supabase.co';
         const SUPABASE_KEY = 'sb_publishable_hAEvRnntjRnk11ps4n1yVw__PwZYoSy';
 
         let supabase;
@@ -165,7 +205,7 @@
 
         // --- AUDIO ---
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        
+
         function playSound(type) {
             if (audioCtx.state === 'suspended') audioCtx.resume();
             const osc = audioCtx.createOscillator();
@@ -173,7 +213,7 @@
             osc.connect(gain);
             gain.connect(audioCtx.destination);
             const now = audioCtx.currentTime;
-            
+
             if (type === 'eat') {
                 osc.type = 'sine';
                 osc.frequency.setValueAtTime(600, now);
@@ -276,10 +316,10 @@
         function renderRankingList() {
             const list = document.getElementById('ranking-list');
             list.innerHTML = '';
-            
+
             if (rankingData.length === 0) {
-                 list.innerHTML = '<li class="text-center text-gray-400">Sin datos (o sin conexión DB).</li>';
-                 return;
+                list.innerHTML = '<li class="text-center text-gray-400">Sin datos (o sin conexión DB).</li>';
+                return;
             }
 
             rankingData.forEach((entry, i) => {
@@ -301,14 +341,14 @@
 
         const GRID_COUNT = 20;
         let TILE_SIZE = 20;
-        
+
         let snake = [];
         let obstacles = [];
         let food = { x: 15, y: 15 };
         let direction = { x: 1, y: 0 };
         let nextDirection = { x: 1, y: 0 };
         let inputQueue = [];
-        
+
         let score = 0;
         let level = 1;
         let gameSpeed = 150;
@@ -339,9 +379,9 @@
         }
 
         function spawnParticles(x, y, color = '#ff00de') {
-            const pixelX = x * TILE_SIZE + TILE_SIZE/2;
-            const pixelY = y * TILE_SIZE + TILE_SIZE/2;
-            for(let i=0; i<8; i++) particles.push(new Particle(pixelX, pixelY, color));
+            const pixelX = x * TILE_SIZE + TILE_SIZE / 2;
+            const pixelY = y * TILE_SIZE + TILE_SIZE / 2;
+            for (let i = 0; i < 8; i++) particles.push(new Particle(pixelX, pixelY, color));
         }
 
         function resize() {
@@ -355,22 +395,22 @@
         function getLevelObstacles(lvl) {
             const obs = [];
             if (lvl < 5) return obs;
-            const add = (x, y) => obs.push({x, y});
+            const add = (x, y) => obs.push({ x, y });
 
             if (lvl === 5) {
-                for(let i=2; i<6; i++) { add(i,2); add(i, GRID_COUNT-3); add(GRID_COUNT-1-i, 2); add(GRID_COUNT-1-i, GRID_COUNT-3); }
+                for (let i = 2; i < 6; i++) { add(i, 2); add(i, GRID_COUNT - 3); add(GRID_COUNT - 1 - i, 2); add(GRID_COUNT - 1 - i, GRID_COUNT - 3); }
             }
             else if (lvl === 6) {
-                for(let i=6; i<14; i++) { add(i, 9); add(i, 10); }
+                for (let i = 6; i < 14; i++) { add(i, 9); add(i, 10); }
             }
             else if (lvl === 7) {
-                for(let x=4; x<8; x++) for(let y=4; y<8; y++) add(x,y);
-                for(let x=12; x<16; x++) for(let y=12; y<16; y++) add(x,y);
+                for (let x = 4; x < 8; x++) for (let y = 4; y < 8; y++) add(x, y);
+                for (let x = 12; x < 16; x++) for (let y = 12; y < 16; y++) add(x, y);
             }
             else {
-                for(let i=0; i<GRID_COUNT; i++) { if(i%3 !== 0) { add(i, 0); add(i, GRID_COUNT-1); add(0, i); add(GRID_COUNT-1, i); }}
-                if(lvl >= 9) {
-                   add(5,5); add(5,14); add(14,5); add(14,14);
+                for (let i = 0; i < GRID_COUNT; i++) { if (i % 3 !== 0) { add(i, 0); add(i, GRID_COUNT - 1); add(0, i); add(GRID_COUNT - 1, i); } }
+                if (lvl >= 9) {
+                    add(5, 5); add(5, 14); add(14, 5); add(14, 14);
                 }
             }
             return obs;
@@ -386,7 +426,7 @@
         }
 
         function resetGame() {
-            snake = [{x: 10, y: 10}, {x: 9, y: 10}, {x: 8, y: 10}];
+            snake = [{ x: 10, y: 10 }, { x: 9, y: 10 }, { x: 8, y: 10 }];
             direction = { x: 1, y: 0 };
             nextDirection = { x: 1, y: 0 };
             inputQueue = [];
@@ -398,7 +438,7 @@
             obstacles = [];
             particles = [];
             placeFood();
-            
+
             document.getElementById('score-display').innerText = '0';
             document.getElementById('level-display').innerText = '1';
             document.getElementById('start-overlay').classList.add('hidden');
@@ -410,10 +450,10 @@
             while (!valid && safety < 100) {
                 food.x = Math.floor(Math.random() * GRID_COUNT);
                 food.y = Math.floor(Math.random() * GRID_COUNT);
-                
+
                 const onSnake = snake.some(s => s.x === food.x && s.y === food.y);
                 const onObs = obstacles.some(o => o.x === food.x && o.y === food.y);
-                
+
                 if (!onSnake && !onObs) valid = true;
                 safety++;
             }
@@ -421,7 +461,7 @@
 
         function update(deltaTime) {
             if (!isRunning) return;
-            particles.forEach((p, i) => { p.update(); if(p.life <= 0) particles.splice(i, 1); });
+            particles.forEach((p, i) => { p.update(); if (p.life <= 0) particles.splice(i, 1); });
 
             dropCounter += deltaTime;
             if (dropCounter > gameSpeed) {
@@ -459,7 +499,7 @@
                     gameSpeed = Math.max(50, 150 - (level * 10));
                     document.getElementById('level-display').innerText = level;
                     playSound('levelup');
-                    loadLevelObstacles(); 
+                    loadLevelObstacles();
                 }
             } else {
                 snake.pop();
@@ -472,21 +512,21 @@
 
             ctx.strokeStyle = '#1a1a1a';
             ctx.lineWidth = 1;
-            for(let i=0; i<=GRID_COUNT; i++) {
-                ctx.beginPath(); ctx.moveTo(i*TILE_SIZE, 0); ctx.lineTo(i*TILE_SIZE, canvas.height); ctx.stroke();
-                ctx.beginPath(); ctx.moveTo(0, i*TILE_SIZE); ctx.lineTo(canvas.width, i*TILE_SIZE); ctx.stroke();
+            for (let i = 0; i <= GRID_COUNT; i++) {
+                ctx.beginPath(); ctx.moveTo(i * TILE_SIZE, 0); ctx.lineTo(i * TILE_SIZE, canvas.height); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(0, i * TILE_SIZE); ctx.lineTo(canvas.width, i * TILE_SIZE); ctx.stroke();
             }
 
             ctx.fillStyle = '#ff0033';
             ctx.shadowBlur = 10;
             ctx.shadowColor = '#ff0000';
             obstacles.forEach(o => {
-                ctx.fillRect(o.x*TILE_SIZE+1, o.y*TILE_SIZE+1, TILE_SIZE-2, TILE_SIZE-2);
+                ctx.fillRect(o.x * TILE_SIZE + 1, o.y * TILE_SIZE + 1, TILE_SIZE - 2, TILE_SIZE - 2);
             });
             ctx.shadowBlur = 0;
 
-            const foodX = food.x * TILE_SIZE + TILE_SIZE/2;
-            const foodY = food.y * TILE_SIZE + TILE_SIZE/2;
+            const foodX = food.x * TILE_SIZE + TILE_SIZE / 2;
+            const foodY = food.y * TILE_SIZE + TILE_SIZE / 2;
             ctx.shadowBlur = 15; ctx.shadowColor = "#ff00de"; ctx.fillStyle = "#ff00de";
             ctx.beginPath(); ctx.arc(foodX, foodY, TILE_SIZE * 0.35, 0, Math.PI * 2); ctx.fill();
             ctx.shadowBlur = 0;
@@ -494,49 +534,49 @@
             ctx.beginPath();
             ctx.strokeStyle = '#00aaaa';
             ctx.lineWidth = 2;
-            if(snake.length > 1) {
-                const startX = snake[0].x * TILE_SIZE + TILE_SIZE/2;
-                const startY = snake[0].y * TILE_SIZE + TILE_SIZE/2;
+            if (snake.length > 1) {
+                const startX = snake[0].x * TILE_SIZE + TILE_SIZE / 2;
+                const startY = snake[0].y * TILE_SIZE + TILE_SIZE / 2;
                 ctx.moveTo(startX, startY);
-                for(let i=1; i<snake.length; i++) {
-                    ctx.lineTo(snake[i].x * TILE_SIZE + TILE_SIZE/2, snake[i].y * TILE_SIZE + TILE_SIZE/2);
+                for (let i = 1; i < snake.length; i++) {
+                    ctx.lineTo(snake[i].x * TILE_SIZE + TILE_SIZE / 2, snake[i].y * TILE_SIZE + TILE_SIZE / 2);
                 }
                 ctx.stroke();
             }
 
             snake.forEach((segment, index) => {
-                const cx = segment.x * TILE_SIZE + TILE_SIZE/2;
-                const cy = segment.y * TILE_SIZE + TILE_SIZE/2;
-                
+                const cx = segment.x * TILE_SIZE + TILE_SIZE / 2;
+                const cy = segment.y * TILE_SIZE + TILE_SIZE / 2;
+
                 if (index === 0) {
                     ctx.save();
                     ctx.translate(cx, cy);
                     const angle = Math.atan2(direction.y, direction.x);
                     ctx.rotate(angle);
-                    
+
                     ctx.fillStyle = '#00ffff';
                     ctx.shadowBlur = 15; ctx.shadowColor = "#00ffff";
                     ctx.beginPath();
-                    ctx.moveTo(TILE_SIZE/2, 0);
-                    ctx.lineTo(-TILE_SIZE/3, -TILE_SIZE/3);
-                    ctx.lineTo(-TILE_SIZE/3, TILE_SIZE/3);
+                    ctx.moveTo(TILE_SIZE / 2, 0);
+                    ctx.lineTo(-TILE_SIZE / 3, -TILE_SIZE / 3);
+                    ctx.lineTo(-TILE_SIZE / 3, TILE_SIZE / 3);
                     ctx.closePath();
                     ctx.fill();
-                    
+
                     ctx.fillStyle = '#fff';
-                    ctx.beginPath(); ctx.arc(0, 0, 2, 0, Math.PI*2); ctx.fill();
-                    
+                    ctx.beginPath(); ctx.arc(0, 0, 2, 0, Math.PI * 2); ctx.fill();
+
                     ctx.restore();
                 } else {
                     ctx.shadowBlur = 0;
-                    const sizeRatio = 1 - (index / (snake.length + 5)); 
-                    const radius = (TILE_SIZE/2 - 2) * Math.max(0.6, sizeRatio);
-                    
+                    const sizeRatio = 1 - (index / (snake.length + 5));
+                    const radius = (TILE_SIZE / 2 - 2) * Math.max(0.6, sizeRatio);
+
                     ctx.fillStyle = '#008888';
-                    ctx.beginPath(); ctx.arc(cx, cy, radius, 0, Math.PI*2); ctx.fill();
-                    
+                    ctx.beginPath(); ctx.arc(cx, cy, radius, 0, Math.PI * 2); ctx.fill();
+
                     ctx.fillStyle = '#e0ffff';
-                    ctx.beginPath(); ctx.arc(cx, cy, radius * 0.4, 0, Math.PI*2); ctx.fill();
+                    ctx.beginPath(); ctx.arc(cx, cy, radius * 0.4, 0, Math.PI * 2); ctx.fill();
                 }
             });
             ctx.shadowBlur = 0;
@@ -556,7 +596,7 @@
         async function gameOver() {
             isRunning = false; isGameOver = true;
             playSound('die');
-            
+
             // UI Feedback inmediato
             document.getElementById('overlay-title').innerText = "GAME OVER";
             document.getElementById('overlay-subtitle').innerText = `Score: ${score} - Guardando...`;
@@ -581,38 +621,38 @@
         }
 
         document.addEventListener('keydown', (e) => {
-            if(['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' '].includes(e.key)) e.preventDefault();
-            if (e.key === 'ArrowUp') handleInput({x: 0, y: -1});
-            if (e.key === 'ArrowDown') handleInput({x: 0, y: 1});
-            if (e.key === 'ArrowLeft') handleInput({x: -1, y: 0});
-            if (e.key === 'ArrowRight') handleInput({x: 1, y: 0});
+            if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' '].includes(e.key)) e.preventDefault();
+            if (e.key === 'ArrowUp') handleInput({ x: 0, y: -1 });
+            if (e.key === 'ArrowDown') handleInput({ x: 0, y: 1 });
+            if (e.key === 'ArrowLeft') handleInput({ x: -1, y: 0 });
+            if (e.key === 'ArrowRight') handleInput({ x: 1, y: 0 });
         });
 
         document.querySelectorAll('.d-pad-btn[data-dir]').forEach(btn => {
             const send = (e) => {
                 e.preventDefault();
                 const d = btn.dataset.dir;
-                if (d === 'up') handleInput({x: 0, y: -1});
-                if (d === 'down') handleInput({x: 0, y: 1});
-                if (d === 'left') handleInput({x: -1, y: 0});
-                if (d === 'right') handleInput({x: 1, y: 0});
+                if (d === 'up') handleInput({ x: 0, y: -1 });
+                if (d === 'down') handleInput({ x: 0, y: 1 });
+                if (d === 'left') handleInput({ x: -1, y: 0 });
+                if (d === 'right') handleInput({ x: 1, y: 0 });
             };
             btn.addEventListener('touchstart', send);
             btn.addEventListener('click', send);
         });
 
         let touchStartX = 0; let touchStartY = 0;
-        canvas.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; touchStartY = e.changedTouches[0].screenY; }, {passive: false});
+        canvas.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; touchStartY = e.changedTouches[0].screenY; }, { passive: false });
         canvas.addEventListener('touchend', e => {
             e.preventDefault();
             const dx = e.changedTouches[0].screenX - touchStartX;
             const dy = e.changedTouches[0].screenY - touchStartY;
             if (Math.abs(dx) > Math.abs(dy)) {
-                if (Math.abs(dx) > 30) handleInput(dx > 0 ? {x: 1, y: 0} : {x: -1, y: 0});
+                if (Math.abs(dx) > 30) handleInput(dx > 0 ? { x: 1, y: 0 } : { x: -1, y: 0 });
             } else {
-                if (Math.abs(dy) > 30) handleInput(dy > 0 ? {x: 0, y: 1} : {x: 0, y: -1});
+                if (Math.abs(dy) > 30) handleInput(dy > 0 ? { x: 0, y: 1 } : { x: 0, y: -1 });
             }
-        }, {passive: false});
+        }, { passive: false });
 
         const startBtn = document.getElementById('start-btn');
         const restartBtn = document.getElementById('restart-btn');
@@ -623,15 +663,17 @@
         startBtn.addEventListener('click', () => {
             const name = userInp.value.trim() || 'Agente 007';
             window.currentPlayerName = name;
-            if(audioCtx.state === 'suspended') audioCtx.resume();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
             resetGame();
         });
 
         restartBtn.addEventListener('click', resetGame);
         rankingBtn.addEventListener('click', () => document.getElementById('ranking-overlay').classList.remove('hidden'));
+        document.getElementById('start-ranking-btn').addEventListener('click', () => document.getElementById('ranking-overlay').classList.remove('hidden'));
         closeRankingBtn.addEventListener('click', () => document.getElementById('ranking-overlay').classList.add('hidden'));
 
         window.onload = () => { resize(); window.addEventListener('resize', resize); initSupabase(); requestAnimationFrame(gameLoop); };
     </script>
 </body>
+
 </html>

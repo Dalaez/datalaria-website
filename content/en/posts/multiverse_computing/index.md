@@ -1,7 +1,7 @@
 ---
 title: "Multiverse Computing: The Spanish Startup Solving AI's Bottleneck with Quantum Physics (Without Quantum Computers)"
-date: 2026-01-10
-draft: true
+date: 2026-01-31
+draft: false
 categories: ["Artificial Intelligence", "Deep Tech", "Business Strategy", "Quantum Computing"]
 tags: ["Multiverse Computing", "Generative AI", "Model Compression", "Tensor Networks", "Quantum-Inspired", "LLM", "Startup", "Investment"]
 image: /images/multiverse_computing_header.png

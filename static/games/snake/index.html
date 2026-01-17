@@ -6,33 +6,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neon Snake - Cyberpunk Game</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400&display=swap');
+
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Roboto', sans-serif;
+            background-color: #050505;
+            color: #e0e0e0;
+        }
+
+        h1,
+        .cyber-font {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .neon-text {
+            text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #00f;
+        }
+
+        .cyber-btn {
+            background: linear-gradient(45deg, #ff0099, #493240);
+            border: 1px solid #ff0099;
+            box-shadow: 0 0 5px #ff0099;
+            color: white;
+            text-transform: uppercase;
+            font-family: 'Orbitron', sans-serif;
+            transition: all 0.2s;
+        }
+
+        .cyber-btn:hover {
+            background: linear-gradient(45deg, #ff00cc, #6a1b4a);
+            box-shadow: 0 0 15px #ff00cc;
+            transform: scale(1.05);
+        }
+
+        .cyber-btn:active {
+            transform: scale(0.98);
+        }
+
+        .game-container {
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2), inset 0 0 20px rgba(0, 255, 255, 0.1);
+            border: 2px solid #333;
+            border-radius: 12px;
+            background: radial-gradient(circle, #1a1a1a 0%, #000000 100%);
         }
     </style>
 </head>
 
-<body class="bg-gray-100 text-gray-800 flex flex-col items-center justify-center min-h-screen p-4">
+<body class="min-h-screen flex flex-col items-center justify-center p-4">
 
     <main class="w-full max-w-md mx-auto text-center">
-        <div class="bg-white p-8 rounded-2xl shadow-lg">
-            <img src="/images/datalaria_logo_transp.png" alt="Logo Datalaria" class="mx-auto mb-6 h-12 sm:h-16">
+        <div class="game-container p-8">
+            <img src="/images/datalaria_logo_transp.png" alt="Logo Datalaria"
+                class="mx-auto mb-6 h-12 sm:h-16 opacity-80">
 
-            <h1 class="text-3xl font-bold text-sky-700 mb-8">
-                Neon Snake - Cyberpunk Game
+            <h1 class="text-3xl md:text-4xl font-bold text-cyan-400 neon-text mb-4">
+                Neon Snake
             </h1>
+            <p class="text-gray-400 text-sm mb-8 cyber-font">Cyberpunk Edition</p>
 
-            <p class="mb-6 text-gray-500">Selecciona tu idioma / Select your language:</p>
+            <p class="mb-8 text-gray-300">Selecciona tu idioma / Select your language:</p>
 
             <div class="flex justify-center gap-6">
                 <a href="/games/snake/es/index.html"
-                    class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-4 px-10 rounded-lg text-lg transition shadow-md hover:shadow-lg">
+                    class="cyber-btn py-4 px-10 rounded-lg text-lg font-bold tracking-wider">
                     ES
                 </a>
                 <a href="/games/snake/en/index.html"
-                    class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 px-10 rounded-lg text-lg transition shadow-md hover:shadow-lg">
+                    class="cyber-btn py-4 px-10 rounded-lg text-lg font-bold tracking-wider">
                     EN
                 </a>
             </div>
@@ -40,7 +83,7 @@
     </main>
 
     <footer class="mt-8 text-sm text-gray-500">
-        <p>A game by Datalaria</p>
+        <p class="cyber-font text-xs">A game by Datalaria</p>
     </footer>
 </body>
 

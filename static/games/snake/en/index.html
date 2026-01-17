@@ -126,6 +126,9 @@
                         class="bg-gray-900 border border-cyan-500 text-cyan-400 text-center p-3 rounded focus:outline-none focus:shadow-[0_0_10px_#0ff]">
                     <button id="start-btn" class="cyber-btn py-3 px-6 rounded font-bold tracking-wider">INIT
                         SYSTEM</button>
+                    <button id="start-ranking-btn"
+                        class="cyber-btn bg-gradient-to-r from-blue-600 to-blue-900 border-blue-500 shadow-blue-500 py-3 px-6 rounded font-bold">VIEW
+                        RANKING</button>
                 </div>
 
                 <div id="restart-section" class="hidden flex flex-col gap-3 w-64">
@@ -666,6 +669,7 @@
 
         restartBtn.addEventListener('click', resetGame);
         rankingBtn.addEventListener('click', () => document.getElementById('ranking-overlay').classList.remove('hidden'));
+        document.getElementById('start-ranking-btn').addEventListener('click', () => document.getElementById('ranking-overlay').classList.remove('hidden'));
         closeRankingBtn.addEventListener('click', () => document.getElementById('ranking-overlay').classList.add('hidden'));
 
         window.onload = () => { resize(); window.addEventListener('resize', resize); initSupabase(); requestAnimationFrame(gameLoop); };
