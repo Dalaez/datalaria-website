@@ -19,7 +19,7 @@ exports.handler = async (event, context) => {
   };
 
   try {
-    const { email, name } = JSON.parse(event.body);
+    const { email, name, language } = JSON.parse(event.body);
 
     // Validate input
     if (!email || !email.includes('@')) {
@@ -46,6 +46,9 @@ exports.handler = async (event, context) => {
     const firstName = nameParts[0] || '';
     const lastName = nameParts.slice(1).join(' ') || '';
 
+    // Default language to 'es' if not provided
+    const contactLanguage = (language || 'es').toLowerCase();
+
     // Brevo API request to create/update contact
     const response = await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
@@ -58,7 +61,8 @@ exports.handler = async (event, context) => {
         email: email,
         attributes: {
           FIRSTNAME: firstName,
-          LASTNAME: lastName
+          LASTNAME: lastName,
+          LANGUAGE: contactLanguage
         },
         listIds: [3], // List ID #3
         updateEnabled: true // Update if contact already exists

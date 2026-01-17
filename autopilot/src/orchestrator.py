@@ -160,16 +160,7 @@ def main():
         else:
             print("   🚫 Agente LinkedIn DESACTIVADO por configuración.")
 
-        # 3. Agente Newsletter (Solo si está activado)
-        if enable_newsletter:
-            print("   📧 Agente Newsletter escribiendo...")
-            newsletter_gen = brain.generate_social_copy(
-                post_data['title'], post_data['content'], platform='newsletter', lang=post_data['lang']
-            )
-            newsletter_text = newsletter_gen if newsletter_gen else f"He publicado un nuevo artículo que creo que te va a interesar: {post_data['title']}"
-        else:
-            print("   🚫 Agente Newsletter DESACTIVADO por configuración.")
-            newsletter_text = ""
+        # NOTA: Newsletter genera contenido ES+EN en el momento del envío
 
     # --- RESOLUCIÓN DE IMAGEN LOCAL ---
     # Buscamos la imagen para subirla nativamente a Twitter (y opcionalmente a Dev.to si no usara URL)
@@ -233,9 +224,9 @@ def main():
             print(f"   Sample Processing: {preview_content}...")
         if enable_newsletter:
             print(f"\n📧 [NEWSLETTER]:")
-            print(f"   Subject: 🚀 Nuevo en Datalaria: {post_data['title']}")
-            print(f"   Content Preview: {newsletter_text[:300]}...")
-            print(f"   Recipients: Lista Brevo #3")
+            print(f"   🇪🇸 Subject ES: 🚀 Nuevo en Datalaria: {post_data['title']}")
+            print(f"   🇬🇧 Subject EN: 🚀 New on Datalaria: {post_data['title']}")
+            print(f"   Recipients: Lista Brevo #3 (segmentado por atributo LANGUAGE)")
         
         print(f"\n🔗 URL: {post_url}")
         sys.exit(0)
@@ -279,25 +270,54 @@ def main():
     else:
         print("🔕 Dev.to omitido (ENABLE_DEVTO=false)")
 
-    # 4. Enviar Newsletter
+    # 4. Enviar Newsletter (en ambos idiomas)
     if enable_newsletter:
         try:
-            print("📧 Preparando campaña de Newsletter...")
+            print("📧 Preparando campañas de Newsletter...")
             newsletter_manager = NewsletterManager()
             
-            # Generar asunto
-            if post_data['lang'] == 'es':
-                subject = f"🚀 Nuevo en Datalaria: {post_data['title']}"
-            else:
-                subject = f"🚀 New on Datalaria: {post_data['title']}"
-            
-            newsletter_manager.send_campaign(
-                subject=subject,
-                intro_text=newsletter_text,
-                post_title=post_data['title'],
-                post_url=post_url,
-                lang=post_data['lang']
+            # Generar contenido en ESPAÑOL
+            print("   🇪🇸 Generando contenido ES...")
+            newsletter_text_es = brain.generate_social_copy(
+                post_data['title'], post_data['content'], platform='newsletter', lang='es'
             )
+            if not newsletter_text_es:
+                newsletter_text_es = f"He publicado un nuevo artículo que creo que te va a interesar: {post_data['title']}"
+            
+            # Generar contenido en INGLÉS
+            print("   🇬🇧 Generando contenido EN...")
+            newsletter_text_en = brain.generate_social_copy(
+                post_data['title'], post_data['content'], platform='newsletter', lang='en'
+            )
+            if not newsletter_text_en:
+                newsletter_text_en = f"I just published a new article I think you'll find interesting: {post_data['title']}"
+            
+            # Calcular URLs por idioma
+            base_url = "https://datalaria.com"
+            slug = post_data['url'].split('/posts/')[-1].rstrip('/')
+            post_url_es = f"{base_url}/es/posts/{slug}/"
+            post_url_en = f"{base_url}/en/posts/{slug}/"
+            
+            # Enviar campaña ES
+            print("   🇪🇸 Enviando campaña ES...")
+            newsletter_manager.send_campaign(
+                subject=f"🚀 Nuevo en Datalaria: {post_data['title']}",
+                intro_text=newsletter_text_es,
+                post_title=post_data['title'],
+                post_url=post_url_es,
+                lang='es'
+            )
+            
+            # Enviar campaña EN
+            print("   🇬🇧 Enviando campaña EN...")
+            newsletter_manager.send_campaign(
+                subject=f"🚀 New on Datalaria: {post_data['title']}",
+                intro_text=newsletter_text_en,
+                post_title=post_data['title'],
+                post_url=post_url_en,
+                lang='en'
+            )
+            
         except Exception as e:
             print(f"⚠️ Falló Newsletter: {e}")
     else:

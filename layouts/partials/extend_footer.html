@@ -7,6 +7,7 @@
 {{- $namePlaceholder := cond $isSpanish "Tu nombre" "Your name" -}}
 {{- $emailPlaceholder := cond $isSpanish "Tu email" "Your email" -}}
 {{- $buttonText := cond $isSpanish "Suscribirse" "Subscribe" -}}
+{{- $langLabel := cond $isSpanish "Idioma preferido:" "Preferred language:" -}}
 
 <div class="newsletter-section">
     <div class="newsletter-container">
@@ -23,6 +24,10 @@
             <div class="newsletter-inputs">
                 <input type="text" id="newsletter-name" name="name" placeholder="{{ $namePlaceholder }}" required />
                 <input type="email" id="newsletter-email" name="email" placeholder="{{ $emailPlaceholder }}" required />
+                <select id="newsletter-lang" name="language" class="newsletter-select" title="{{ $langLabel }}">
+                    <option value="es" {{ if $isSpanish }}selected{{ end }}>🇪🇸 ES</option>
+                    <option value="en" {{ if not $isSpanish }}selected{{ end }}>🇬🇧 EN</option>
+                </select>
                 <button type="submit" class="newsletter-btn" id="newsletter-submit">{{ $buttonText }}</button>
             </div>
             <p id="newsletter-message" class="newsletter-message"></p>
@@ -35,7 +40,8 @@
         var form = document.getElementById('newsletter-form');
         var messageEl = document.getElementById('newsletter-message');
         var submitBtn = document.getElementById('newsletter-submit');
-        var lang = '{{ .Site.Language.Lang }}';
+        var langSelect = document.getElementById('newsletter-lang');
+        var pageLang = '{{ .Site.Language.Lang }}';
 
         var messages = {
             es: {
@@ -52,13 +58,14 @@
             }
         };
 
-        var msg = messages[lang] || messages.en;
+        var msg = messages[pageLang] || messages.en;
 
         form.addEventListener('submit', function (e) {
             e.preventDefault();
 
             var name = document.getElementById('newsletter-name').value;
             var email = document.getElementById('newsletter-email').value;
+            var language = langSelect.value;
 
             submitBtn.disabled = true;
             submitBtn.textContent = msg.loading;
@@ -68,7 +75,7 @@
             fetch('/.netlify/functions/subscribe', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email: email, name: name })
+                body: JSON.stringify({ email: email, name: name, language: language })
             })
                 .then(function (response) { return response.json(); })
                 .then(function (data) {
@@ -76,6 +83,7 @@
                         messageEl.textContent = msg.success;
                         messageEl.classList.add('success');
                         form.reset();
+                        langSelect.value = pageLang;
                     } else {
                         throw new Error(data.error);
                     }
@@ -87,7 +95,7 @@
                 })
                 .finally(function () {
                     submitBtn.disabled = false;
-                    submitBtn.textContent = lang === 'es' ? 'Suscribirse' : 'Subscribe';
+                    submitBtn.textContent = pageLang === 'es' ? 'Suscribirse' : 'Subscribe';
                 });
         });
     })();

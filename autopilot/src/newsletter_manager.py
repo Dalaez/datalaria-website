@@ -122,9 +122,12 @@ class NewsletterManager:
         # 1. Generar HTML
         html_content = self._build_html_template(intro_text, post_title, post_url, lang)
         
-        # 2. Crear campaña
-        campaign_name = f"Newsletter - {post_title[:50]} - {datetime.now().strftime('%Y%m%d_%H%M')}"
+        # 2. Crear campaña con filtro por idioma
+        lang_suffix = "ES" if lang == "es" else "EN"
+        campaign_name = f"Newsletter {lang_suffix} - {post_title[:40]} - {datetime.now().strftime('%Y%m%d_%H%M')}"
         
+        # Filtro por atributo LANGUAGE en Brevo
+        # Docs: https://developers.brevo.com/reference/createemailcampaign
         create_payload = {
             "name": campaign_name,
             "subject": subject,
@@ -135,7 +138,18 @@ class NewsletterManager:
             "type": "classic",
             "htmlContent": html_content,
             "recipients": {
-                "listIds": [self.list_id]
+                "listIds": [self.list_id],
+                "segmentConditions": {
+                    "type": "and",
+                    "conditions": [
+                        {
+                            "type": "attribute",
+                            "attribute": "LANGUAGE",
+                            "operator": "equals",
+                            "value": lang
+                        }
+                    ]
+                }
             }
         }
         
