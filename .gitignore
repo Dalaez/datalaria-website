@@ -8,3 +8,7 @@ Thumbs.db
 
 # Ignorar app weather local (solo para debug)
 /static/apps/weather/
+
+# Ignorar carpetas de repositorios clonados localmente
+/github.io/
+/temp_app_weather/
