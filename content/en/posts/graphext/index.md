@@ -4,7 +4,7 @@ date: 2025-11-28
 draft: False
 categories: ["success_stories", "AI"]
 tags: ["graphext", "ai", "explainable ai", "no-code", "startup", "big data", "visualization"]
-image: graphext_formula1_datos.png
+image: cover.png
 description: "The story of Graphext, the Spanish startup that defied norms by investing €7M in R&D before scaling, creating a unique Explainable AI platform that redefines data analysis."
 summary: "While the 'no-code' world sought simplicity, Graphext secretly built a technological 'Formula 1'. Discover the atypical story of this Spanish startup, its bet on WebAssembly and Explainable AI, and how it plans to democratize data science without sacrificing power."
 ---

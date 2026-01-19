@@ -4,7 +4,7 @@ date: 2025-11-28
 draft: False
 categories: ["casos_exito", "IA"]
 tags: ["graphext", "ia", "ia explicable", "no-code", "startup", "big data", "visualizacion"]
-image: graphext_formula1_datos.png
+image: cover.png
 description: "La historia de Graphext, la startup española que desafió las normas invirtiendo 7M€ en I+D antes de escalar, creando una plataforma única de IA Explicable que redefine el análisis de datos."
 summary: "Mientras el mundo 'no-code' buscaba la simplicidad, Graphext construía en secreto un 'Fórmula 1' tecnológico. Descubre la atípica historia de esta startup española, su apuesta por WebAssembly y la IA Explicable, y cómo planea democratizar la ciencia de datos sin sacrificar la potencia."
 ---
