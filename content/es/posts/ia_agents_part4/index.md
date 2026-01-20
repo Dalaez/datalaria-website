@@ -4,7 +4,7 @@ date: 2026-01-07
 draft: false
 categories: ["Backend", "Python", "APIs"]
 tags: ["LinkedIn API", "Twitter API", "OAuth", "Automation", "DevOps"]
-image: "/images/posts/datalaria-api-victory.jpg"
+image: "cover.png"
 description: "Cuarto capítulo de Proyecto Autopilot. Lo que iba a ser un script de 10 minutos se convirtió en una guerra de formularios. Narramos cómo desbloqueamos el permiso 'w_organization_social' para publicar como Empresa."
 summary: "Conectar una API suele ser fácil... hasta que intentas publicar en una Página de Empresa de LinkedIn. En este post narro la odisea de permisos, verificaciones y formularios de 'Marketing Developer Platform' que tuve que superar para que mi script de Python pudiera hablar oficialmente en nombre de Datalaria."
 ---

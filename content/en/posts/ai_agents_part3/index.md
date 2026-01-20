@@ -4,7 +4,7 @@ date: 2026-01-03
 draft: false
 categories: ["Generative AI", "Prompt Engineering", "Python"]
 tags: ["CrewAI", "AI Personality", "Automation", "Marketing", "Storytelling"]
-image: "/images/posts/datalaria-autopilot-creatives.jpg"
+image: "cover.png"
 description: "Chapter three of Project Autopilot. Transforming cold data into viral stories by creating two agents with opposing personalities: a cynical influencer and a corporate leader."
 summary: "Having data isn't enough; no one likes a JSON file. In this post, we design the personality of our Writer Agents, teach Gemini to write 'Broetry' for LinkedIn and 'Shitposting' for Twitter, and scale the architecture to publish in Spanish and English simultaneously."
 ---

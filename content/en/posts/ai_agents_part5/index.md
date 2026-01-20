@@ -4,6 +4,7 @@ date: 2026-01-10
 draft: false
 categories: ["DevOps", "GitHub Actions", "Python"]
 tags: ["CI/CD", "Automation", "Pipeline", "GitOps", "Workflow"]
+image: "cover.png"
 description: "Final chapter of Project Autopilot. I no longer run scripts on my computer. Now, a simple 'git push' wakes up my AI agents, generates content, and publishes it to social media upon my approval."
 summary: "In this last chapter, we ditch manual execution. We built a CI/CD pipeline in GitHub Actions that detects new articles, orchestrates AI agents, and manages publishing to Twitter and LinkedIn under human supervision. Welcome to total automation."
 ---

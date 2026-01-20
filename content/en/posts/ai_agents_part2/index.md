@@ -4,7 +4,7 @@ date: 2025-12-31
 draft: false
 categories: ["Software Engineering", "Generative AI", "Python"]
 tags: ["CrewAI", "Gemini API", "Backend", "Clean Code", "Automation"]
-image: "/images/posts/datalaria-autopilot-brain.jpg"
+image: "cover.png"
 description: "Chapter two of Project Autopilot. We open the IDE to connect Python with Gemini Flash and create our first Analyst Agent capable of understanding Markdown code."
 summary: "A script that reads files is easy. A script that 'understands' technology is a different story. In this post, we configure the Python environment, solve CrewAI integration errors, and succeed in having Gemini Flash extract 'pure gold' from our Markdown posts."
 ---

@@ -4,6 +4,7 @@ date: 2026-01-24
 draft: false
 categories: ["DevOps", "Python", "Email Marketing"]
 tags: ["Newsletter", "Brevo", "API", "Automation", "Hugo", "Netlify Functions"]
+image: "cover.png"
 description: "Capítulo extra de Proyecto Autopilot. Implementamos un sistema de newsletter automatizado con Brevo que envía emails personalizados a los suscriptores en su idioma preferido cada vez que publico un nuevo artículo."
 summary: "Añadimos una nueva funcionalidad al Autopilot: una newsletter integrada en el footer del blog que captura suscriptores, los segmenta por idioma (ES/EN), y envía automáticamente emails personalizados generados por IA cuando publico contenido nuevo."
 

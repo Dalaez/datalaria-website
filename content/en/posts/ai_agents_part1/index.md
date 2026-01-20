@@ -4,7 +4,7 @@ date: 2025-12-27
 draft: false
 categories: ["Automation", "Artificial Intelligence", "DevOps"]
 tags: ["Agents", "Gemini", "CrewAI", "GitHub Actions", "Python", "Dogfooding"]
-image: "/images/posts/datalaria-autopilot-architecture.jpg"
+image: "cover.png"
 description: "Experimenting with AI and new tech is my passion; distributing that content... not so much. In this series, I document how I'm building an automated team of AI Agents to handle my posts and manage their distribution across social media."
 summary: "The 'Organic Traffic Plateau' is real. To overcome it without losing focus on engineering, I'm launching an extreme 'dogfooding' experiment: automating Datalaria's distribution using Gemini, CrewAI, and GitHub Actions. This is the Master Plan."
 ---
