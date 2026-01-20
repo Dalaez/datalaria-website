@@ -1,5 +1,6 @@
 import os
 import sys
+import json
 import frontmatter
 from pathlib import Path
 import re
@@ -12,6 +13,45 @@ sys.path.append(str(parent_dir))
 from src.social_manager import SocialMediaManager
 from src.newsletter_manager import NewsletterManager
 from src import brain
+
+# Cache file path (will be uploaded/downloaded as GitHub Actions artifact)
+CACHE_FILE = "generated_content.json"
+
+def save_generated_content(twitter_text, linkedin_text, newsletter_text=None):
+    """
+    Guarda el contenido generado por los agentes en un archivo JSON.
+    Este archivo se sube como artifact de GitHub Actions para persistir entre jobs.
+    """
+    cache_data = {
+        "twitter": twitter_text,
+        "linkedin": linkedin_text,
+        "newsletter": newsletter_text
+    }
+    try:
+        with open(CACHE_FILE, 'w', encoding='utf-8') as f:
+            json.dump(cache_data, f, ensure_ascii=False, indent=2)
+        print(f"💾 Contenido guardado en {CACHE_FILE}")
+        return True
+    except Exception as e:
+        print(f"⚠️ Error guardando cache: {e}")
+        return False
+
+def load_generated_content():
+    """
+    Carga el contenido generado previamente desde el archivo JSON.
+    Retorna None si no existe o hay errores.
+    """
+    if not os.path.exists(CACHE_FILE):
+        return None
+    
+    try:
+        with open(CACHE_FILE, 'r', encoding='utf-8') as f:
+            cache_data = json.load(f)
+        print(f"📦 Contenido cargado desde cache ({CACHE_FILE})")
+        return cache_data
+    except Exception as e:
+        print(f"⚠️ Error leyendo cache: {e}")
+        return None
 
 def str_to_bool(value):
     """Convierte strings de entorno 'true', 'false', '1', '0' a booleano."""
@@ -127,17 +167,30 @@ def main():
     
     # --- GENERACIÓN DE CONTENIDO ---
     
+    dry_run = os.getenv("DRY_RUN", "false").lower() == "true"
     twitter_text = ""
     linkedin_text = ""
+    used_cache = False
 
-    # Opción 1: Override Manual
+    # Opción 1: Override Manual (siempre tiene prioridad)
     if post_data.get('social_text'):
         print("✍️ Texto manual detectado.")
         twitter_text = post_data['social_text']
         linkedin_text = post_data['social_text']
-        
-    # Opción 2: IA
-    else:
+    
+    # Opción 2: En modo LIVE, intentar cargar desde cache primero
+    elif not dry_run:
+        cached = load_generated_content()
+        if cached:
+            print("✅ Usando contenido cacheado del preview (consistencia garantizada)")
+            twitter_text = cached.get('twitter', '')
+            linkedin_text = cached.get('linkedin', '')
+            used_cache = True
+        else:
+            print("⚠️ No se encontró cache. Generando contenido nuevo...")
+    
+    # Opción 3: Generar con IA (dry_run o si no hay cache en live)
+    if not twitter_text and not linkedin_text:
         print(f"🧠 Invocando a los Agentes Creativos ({post_data['lang']})...")
         
         # 1. Agente Twitter (Solo si está activado)
@@ -160,7 +213,11 @@ def main():
         else:
             print("   🚫 Agente LinkedIn DESACTIVADO por configuración.")
 
-        # NOTA: Newsletter genera contenido ES+EN en el momento del envío
+        # En DRY RUN, guardar el contenido generado para que publish lo use
+        if dry_run:
+            save_generated_content(twitter_text, linkedin_text)
+
+        # NOTA: Newsletter genera contenido en el momento del envío
 
     # --- RESOLUCIÓN DE IMAGEN LOCAL ---
     # Buscamos la imagen para subirla nativamente a Twitter (y opcionalmente a Dev.to si no usara URL)
@@ -207,10 +264,9 @@ def main():
             print(f"📸 Imagen local detectada: {local_image_path}")
 
     # --- PUBLICACIÓN ---
-
-    dry_run = os.getenv("DRY_RUN", "false").lower() == "true"
     
     if dry_run:
+        print(f"\n💾 Contenido guardado en: {os.path.abspath(CACHE_FILE)}")
         print("\n🚧 --- DRY RUN MODE (Preview) --- 🚧")
         if enable_twitter:
             print(f"\n🐦 [TWITTER]:\n{twitter_text}")

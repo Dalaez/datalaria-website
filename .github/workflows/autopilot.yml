@@ -83,6 +83,14 @@ jobs:
           echo "👀 Generating Preview for: ${{ steps.file_check.outputs.file_path }}"
           python autopilot/src/orchestrator.py "${{ steps.file_check.outputs.file_path }}"
 
+      - name: Upload Generated Content (for consistency)
+        if: steps.file_check.outputs.file_path != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: autopilot-content
+          path: generated_content.json
+          retention-days: 1
+
   publish:
     needs: check_changes
     # Only run if a file was actually found/provided
@@ -93,6 +101,11 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+
+      - name: Download Generated Content (from preview)
+        uses: actions/download-artifact@v4
+        with:
+          name: autopilot-content
       
       - name: Setup Python
         uses: actions/setup-python@v5
