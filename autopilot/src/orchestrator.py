@@ -170,15 +170,39 @@ def main():
     dry_run = os.getenv("DRY_RUN", "false").lower() == "true"
     twitter_text = ""
     linkedin_text = ""
+    newsletter_override = ""
     used_cache = False
 
-    # Opción 1: Override Manual (siempre tiene prioridad)
-    if post_data.get('social_text'):
-        print("✍️ Texto manual detectado.")
+    # --- PRIORIDAD DE CONTENIDO ---
+    # 1. Override desde variables de entorno (workflow_dispatch manual)
+    # 2. Override desde frontmatter (social_text)
+    # 3. Cache del preview anterior
+    # 4. Generación con IA
+
+    # Opción 1: Override desde environment (máxima prioridad - workflow_dispatch)
+    env_twitter = os.getenv("TWITTER_OVERRIDE", "").strip()
+    env_linkedin = os.getenv("LINKEDIN_OVERRIDE", "").strip()
+    env_newsletter = os.getenv("NEWSLETTER_OVERRIDE", "").strip()
+    
+    if env_twitter or env_linkedin:
+        print("✍️ Override manual detectado desde workflow_dispatch")
+        if env_twitter:
+            twitter_text = env_twitter
+            print(f"   🐦 Twitter override: {twitter_text[:50]}...")
+        if env_linkedin:
+            linkedin_text = env_linkedin
+            print(f"   💼 LinkedIn override: {linkedin_text[:50]}...")
+        if env_newsletter:
+            newsletter_override = env_newsletter
+            print(f"   📧 Newsletter override: {newsletter_override[:50]}...")
+
+    # Opción 2: Override desde frontmatter (social_text)
+    elif post_data.get('social_text'):
+        print("✍️ Texto manual detectado en frontmatter.")
         twitter_text = post_data['social_text']
         linkedin_text = post_data['social_text']
     
-    # Opción 2: En modo LIVE, intentar cargar desde cache primero
+    # Opción 3: En modo LIVE, intentar cargar desde cache primero
     elif not dry_run:
         cached = load_generated_content()
         if cached:
@@ -337,11 +361,15 @@ def main():
             print(f"📧 Preparando campaña de Newsletter ({post_lang.upper()})...")
             newsletter_manager = NewsletterManager()
             
-            # Generar contenido en el idioma del post
-            print(f"   Generando contenido en {post_lang.upper()}...")
-            newsletter_text = brain.generate_social_copy(
-                post_data['title'], post_data['content'], platform='newsletter', lang=post_lang
-            )
+            # Usar override si está disponible, sino generar con IA
+            if newsletter_override:
+                print("   ✍️ Usando texto de newsletter desde override...")
+                newsletter_text = newsletter_override
+            else:
+                print(f"   Generando contenido en {post_lang.upper()}...")
+                newsletter_text = brain.generate_social_copy(
+                    post_data['title'], post_data['content'], platform='newsletter', lang=post_lang
+                )
             
             if not newsletter_text:
                 if post_lang == 'es':

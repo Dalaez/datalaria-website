@@ -10,8 +10,20 @@ on:
   workflow_dispatch:
     inputs:
       file_path:
-        description: 'Path manually selected for promotion'
+        description: 'Path del post a promocionar (ej: content/es/posts/mi-post/index.md)'
         required: true
+        type: string
+      twitter_override:
+        description: '(Opcional) Texto editado para Twitter. Si se deja vacío, se usa IA o cache.'
+        required: false
+        type: string
+      linkedin_override:
+        description: '(Opcional) Texto editado para LinkedIn. Si se deja vacío, se usa IA o cache.'
+        required: false
+        type: string
+      newsletter_override:
+        description: '(Opcional) Texto editado para Newsletter. Si se deja vacío, se usa IA.'
+        required: false
         type: string
 
 jobs:
@@ -143,6 +155,10 @@ jobs:
           BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
           BREVO_LIST_ID_ES: ${{ vars.BREVO_LIST_ID_ES }}
           BREVO_LIST_ID_EN: ${{ vars.BREVO_LIST_ID_EN }}
+          # Manual Content Overrides (from workflow_dispatch)
+          TWITTER_OVERRIDE: ${{ inputs.twitter_override }}
+          LINKEDIN_OVERRIDE: ${{ inputs.linkedin_override }}
+          NEWSLETTER_OVERRIDE: ${{ inputs.newsletter_override }}
         run: |
           echo "🚀 Launching Autopilot for: ${{ needs.check_changes.outputs.file_path }}"
           python autopilot/src/orchestrator.py "${{ needs.check_changes.outputs.file_path }}"
