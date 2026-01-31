@@ -4,7 +4,7 @@ date: 2026-01-31
 draft: false
 categories: ["Artificial Intelligence", "Deep Tech", "Business Strategy", "Quantum Computing"]
 tags: ["Multiverse Computing", "Generative AI", "Model Compression", "Tensor Networks", "Quantum-Inspired", "LLM", "Startup", "Investment"]
-image: /images/multiverse_computing_header.png
+image: cover.png
 description: "Strategic analysis of Multiverse Computing, the Spanish startup that has raised $326M by applying quantum physics mathematics (Tensor Networks) to compress AI models on classical hardware, solving the critical problem of LLM cost and efficiency."
 summary: "While the world awaits the arrival of fully functional quantum computers, a company from San Sebastián is using the mathematics that underpin them to solve AI's most urgent problem today: efficiency. Multiverse Computing has developed a technology based on 'Tensor Networks' that compresses large language models (LLMs) by up to 95%, allowing them to run on standard hardware and edge devices. This pragmatic 'quantum-inspired' approach has earned them a $500M valuation and partnerships with giants like Bosch and Iberdrola. We analyze their strategy, technology, and business model."
 ---

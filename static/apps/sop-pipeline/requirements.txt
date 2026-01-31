@@ -1,0 +1,15 @@
+# S&OP Data Pipeline - Dependencies
+# ==================================
+
+# Core Data Processing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Statistical Analysis
+scipy>=1.10.0
+
+# Database (Supabase/PostgreSQL)
+supabase>=2.0.0
+
+# Environment Management
+python-dotenv>=1.0.0

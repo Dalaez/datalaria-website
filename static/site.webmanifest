@@ -1,6 +1,8 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "Datalaria - Blog de Datos, IA y Tecnología",
+  "short_name": "Datalaria",
+  "description": "Un cuaderno de bitácora digital sobre datos, IA, tecnología y la industria.",
+  "start_url": "/es/",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -15,7 +17,8 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  "theme_color": "#1a1a2e",
+  "background_color": "#1a1a2e",
+  "display": "standalone",
+  "lang": "es"
 }

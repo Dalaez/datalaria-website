@@ -12,3 +12,12 @@ Thumbs.db
 # Ignorar carpetas de repositorios clonados localmente
 /github.io/
 /temp_app_weather/
+
+# Environment variables (credenciales sensibles)
+.env
+.env.local
+.env.*.local
+
+# S&OP Pipeline - datos de prueba generados
+/static/apps/sop-pipeline/dirty_sales_sample.csv
+/static/apps/sop-pipeline/__pycache__/

@@ -10,6 +10,7 @@ pagination:
 
 # --- PARÁMETROS GLOBALES DEL TEMA ---
 params:
+  env: production
   author: "Datalaria"
   description: "Un cuaderno de bitácora digital sobre datos, IA, tecnología y la industria."
   keywords: [Blog, Data, AI, Technology, Datalaria]
@@ -23,7 +24,7 @@ params:
   favicon: "/datalaria_logo_icon.png"
   favicon16x16: "/favicon_16x16.png"
   favicon32x32: "/favicon_32x32.png"
-  apple_touch_icon: "/apple-touch-icon.png"
+  apple_touch_icon: "/images/apple-touch-icon.png"
 
   # Perfiles de redes sociales
   socialIcons:
@@ -115,3 +116,10 @@ markup:
 pygmentsCodefences: true
 pygmentsUseClasses: true
 pygmentsStyle: "monokai"
+
+# --- OUTPUTS (robots.txt) ---
+outputs:
+  home:
+    - HTML
+    - RSS
+    - robots

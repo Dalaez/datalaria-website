@@ -130,5 +130,5 @@ My goal is to continue expanding it with new categories and units as the needs a
 ---
 
 #### Sources and Resources:
-* **Gemini**: [Official Gemini page to try its Canvas functionality](https-gemini.google.com/app)
+* **Gemini**: [Official Gemini page to try its Canvas functionality](https://gemini.google.com/app)
 * **App's web**: [My unit conversion application](http://datalaria.com/apps/conversor)

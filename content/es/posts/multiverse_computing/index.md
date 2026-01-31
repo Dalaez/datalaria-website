@@ -4,7 +4,7 @@ date: 2026-01-31
 draft: false
 categories: ["Inteligencia Artificial", "Deep Tech", "Estrategia Empresarial", "Computación Cuántica"]
 tags: ["Multiverse Computing", "IA Generativa", "Compresión de Modelos", "Redes de Tensores", "Quantum-Inspired", "LLM", "Startup", "Inversión"]
-image: /images/multiverse_computing_header.png
+image: cover.png
 description: "Análisis estratégico de Multiverse Computing, la startup española que ha levantado $326M aplicando matemáticas de física cuántica (Redes de Tensores) para comprimir modelos de IA en hardware clásico, resolviendo el problema crítico del coste y la eficiencia de los LLMs."
 summary: "Mientras el mundo espera la llegada de ordenadores cuánticos plenamente funcionales, una empresa de San Sebastián está utilizando las matemáticas que los sustentan para resolver el problema más urgente de la IA actual: la eficiencia. Multiverse Computing ha desarrollado una tecnología basada en 'Redes de Tensores' que comprime grandes modelos de lenguaje (LLMs) hasta en un 95%, permitiendo ejecutarlos en hardware estándar y dispositivos 'edge'. Este enfoque pragmático de 'computación inspirada en cuántica' les ha valido una valoración de $500M y alianzas con gigantes como Bosch e Iberdrola. Analizamos su estrategia, tecnología y modelo de negocio."
 ---

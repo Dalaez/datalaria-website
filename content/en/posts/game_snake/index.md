@@ -1,6 +1,6 @@
 ---
 title: "From Zero to Hero: Create a Cyberpunk Snake Game with Real-Time Ranking using Supabase and Vanilla JS"
-date: 2026-01-31
+date: 2026-02-07
 draft: false
 categories: ["Web Development", "GameDev", "Tutorials"]
 tags: ["JavaScript", "Supabase", "PostgreSQL", "Canvas", "HTML5", "TailwindCSS"]
