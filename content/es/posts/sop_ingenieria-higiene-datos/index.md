@@ -1,12 +1,12 @@
 ---
 title: "S&OP: Por qué tu Excel te miente (y cómo interrogarlo con Python)"
-date: 2026-02-01
+date: 2026-02-14
 draft: false
 categories: ["Ingeniería de S&OP", "Data Engineering", "Python"]
 tags: ["Supply Chain", "S&OP", "Supabase", "Pandas", "Z-Score"]
 author: "Datalaria"
 description: "Dejemos de limpiar datos a mano. En este primer capítulo de la serie Ingeniería de S&OP, automatizamos la higiene de datos usando Python, Supabase y Estadística para detectar la verdad oculta tras el ruido."
-image: "/images/sop_impact_chart.png"
+image: "cover.png"
 ---
 
 En las reuniones de S&OP (Sales & Operations Planning), a menudo se discute sobre opiniones en lugar de hechos. *"Creo que venderemos más"*, *"El mes pasado fue raro"*. 
@@ -16,6 +16,8 @@ El problema raíz no es la falta de visión comercial, es la **falta de integrid
 La mayoría de las cadenas de suministro se gestionan sobre hojas de cálculo que aceptan cualquier cosa: fechas como texto, espacios en blanco, y errores de dedo que convierten un pedido de 100 unidades en 100.000. Cuando alimentas tu algoritmo de predicción con esa "basura", obtienes basura amplificada (El efecto *Bullwhip* financiero).
 
 Hoy iniciamos la serie **Ingeniería del S&OP**. No vamos a hablar de teoría; vamos a construir una arquitectura de datos que audite tu negocio automáticamente.
+
+![Imagen Ingeniería del S&OP](cover.png)
 
 ## El Problema: Signal-to-Noise Ratio
 
@@ -66,7 +68,7 @@ def detect_outliers_zscore(self, threshold=3):
 
 ## Open Kitchen: Pruébalo tú mismo
 
-Como ingeniero, desconfío de lo que no puedo ejecutar. Por eso, he aislado la lógica de limpieza en un [Notebook interactivo en Colab](https://colab.research.google.com/drive/13BxVyaw46BYWGz8LQQ4WE83KGrQf79jJ?usp=sharing).
+Como ingeniero, desconfío de lo que no puedo ejecutar. Por eso, he aislado la lógica de limpieza en un [Notebook interactivo en Colab](https://colab.research.google.com/drive/16HGhPhUx4NGKnXHrtsF_xlJqU5qlnUVy?usp=sharing).
 
 No necesitas instalar Python ni configurar bases de datos. He preparado un entorno efímero donde puedes:
 
@@ -80,7 +82,7 @@ Haz clic en el botón, dale a "Play" en las celdas y observa la ingeniería de d
 
 Para los perfiles técnicos interesados en cómo esto escala en una empresa real (Datalaria Core):
 
-* **Ingesta:** Los CSVs se suben a un Bucket privado en Supabase Storage.
+* **Ingesta:** Los CSVs se suben a un Bucket privado en Supabase Storage o en una Base de datos local.
 * **Trigger:** Un worker de Python detecta el archivo.
 * **Proceso:** Ejecuta la limpieza en memoria (Docker Container).
 * **Persistencia:** Los datos limpios se inyectan en PostgreSQL usando Row Level Security (RLS) para asegurar que nadie pueda alterar el histórico financiero manualmente.

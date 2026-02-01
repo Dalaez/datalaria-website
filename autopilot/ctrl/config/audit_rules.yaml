@@ -1,0 +1,67 @@
+# Audit criteria for each platform
+# Scores: 1-10 scale where 7+ is PASS, 6-7 is WARN, <6 is FAIL
+
+twitter:
+  name: "Twitter/X"
+  max_length: 280
+  min_score: 7
+  criteria:
+    hook:
+      weight: 3
+      description: "Starts with attention-grabbing statement or question"
+    hashtags:
+      weight: 2
+      description: "Contains 2-3 relevant, niche hashtags (not generic like #Tech)"
+    brevity:
+      weight: 2
+      description: "Concise and punchy, no filler words"
+    cta:
+      weight: 2
+      description: "Implicit or explicit call to action"
+    emoji:
+      weight: 1
+      description: "Strategic use of 1-2 emojis"
+
+linkedin:
+  name: "LinkedIn"
+  min_paragraphs: 3
+  min_score: 7
+  criteria:
+    hook:
+      weight: 3
+      description: "Strong opening line that creates curiosity"
+    structure:
+      weight: 3
+      description: "Clear paragraphs with double line breaks (broetry style)"
+    value:
+      weight: 2
+      description: "Provides clear value proposition or insight"
+    engagement:
+      weight: 2
+      description: "Ends with an engaging question for discussion"
+    professional_tone:
+      weight: 1
+      description: "Maintains professional but approachable tone"
+
+newsletter:
+  name: "Newsletter"
+  min_score: 7
+  criteria:
+    personal_tone:
+      weight: 3
+      description: "Sounds like a friend sharing something cool, not a marketing bot"
+    teaser:
+      weight: 3
+      description: "Creates curiosity without giving everything away"
+    formatting:
+      weight: 2
+      description: "Short paragraphs with proper spacing"
+    no_meta:
+      weight: 2
+      description: "No greeting/signature (added automatically)"
+
+# Global settings
+settings:
+  pass_threshold: 7
+  warn_threshold: 6
+  copilot_timeout: 30

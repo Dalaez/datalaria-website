@@ -1,0 +1,22 @@
+# Simple prompts for GitHub Copilot CLI non-interactive mode
+# Uses copilot -p "prompt" format
+
+audit:
+  twitter:
+    prompt: "Rate this Twitter post 1-10 for engagement. Content: {content}. Reply with format: Rating: X/10. Issues: list any problems."
+  
+  linkedin:
+    prompt: "Rate this LinkedIn post 1-10 for professional engagement. Content: {content}. Reply with format: Rating: X/10. Issues: list any problems."
+  
+  newsletter:
+    prompt: "Rate this newsletter intro 1-10 for engagement. Content: {content}. Reply with format: Rating: X/10. Issues: list any problems."
+
+fix:
+  twitter:
+    prompt: "Improve this tweet to be more engaging. Keep under 280 chars. Original: {content}. Only return the improved tweet text."
+  
+  linkedin:
+    prompt: "Improve this LinkedIn post. Add a hook, proper spacing, and engagement. Original: {content}. Only return the improved post."
+  
+  newsletter:
+    prompt: "Improve this newsletter intro. Make it personal and intriguing. Original: {content}. Only return the improved text."
