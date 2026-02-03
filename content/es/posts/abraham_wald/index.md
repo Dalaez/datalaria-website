@@ -1,6 +1,6 @@
 ---
 title: "La Arquitectura del Silencio: Abraham Wald y la Epistemología de los Datos Ausentes"
-date: 2026-02-02
+date: 2026-02-21
 draft: false
 categories: ["casos_exito"]
 tags: ["sesgo del superviviente", "abraham wald", "teoría de decisiones", "machine learning", "ciberseguridad"]
@@ -32,6 +32,11 @@ La lógica militar, guiada por la evidencia empírica visible, dictaba reforzar 
 
 Aquí es donde intervino **Abraham Wald**, un matemático judío-húngaro del Statistical Research Group (SRG) de la Universidad de Columbia.
 
+<div class="img-center">
+  <img src="Abraham_Wald_picture.jpg" alt="Abraham Wald" />
+  <em>Abraham Wald</em>
+</div>
+
 ## La Inversión de la Lógica
 
 Wald era un outsider. Excluido de la educación formal en su juventud debido a su religión, desarrolló una independencia intelectual radical. Miró los mismos diagramas que los generales pero llegó a la conclusión diametralmente opuesta.
@@ -52,11 +57,11 @@ Aunque la historia se cuenta a menudo como un momento "¡Eureka!", la contribuci
 
 Veámoslo desde una perspectiva de ingeniería simplificada. Wald esencialmente estableció una relación inversa entre la densidad de daño observada y la vulnerabilidad.
 
-Si definimos la vulnerabilidad ($q_i$) como la probabilidad de que un avión sea derribado dado un impacto en una zona específica, y observamos la densidad de impactos en los supervivientes ($S$), la lógica fluye de la siguiente manera:
+Si definimos la vulnerabilidad como la probabilidad de que un avión sea derribado dado un impacto en una zona específica, y observamos la densidad de impactos en los supervivientes, la lógica fluye de la siguiente manera:
 
-$$
-\text{Si } q_{\text{motor}} \approx 1 \text{ (Letal)} \implies \text{Impactos en Motor en } S \approx 0
-$$
+> **Si vulnerabilidad(motor) ≈ 1 (Letal) → Impactos en Motor en Supervivientes ≈ 0**
+
+En otras palabras: si ser alcanzado en el motor casi siempre significa la muerte, entonces los aviones supervivientes casi nunca tendrán daños en el motor—no porque los motores no fueran alcanzados, sino porque esos aviones se estrellaron.
 
 Wald demostró que un B-17 que regresa con 100 agujeros en sus alas proporciona evidencia estadística de la robustez del ala. Por el contrario, la ausencia de datos sobre daños en la bomba de combustible indica un umbral de fallo críticamente bajo.
 

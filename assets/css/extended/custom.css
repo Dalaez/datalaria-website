@@ -92,6 +92,7 @@
         margin-bottom: 2rem;
     }
 }
+
 /* Custom styles for Datalaria Posts Page */
 
 .post-grid {
@@ -213,4 +214,26 @@
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
+}
+
+/* Centered images in posts */
+.img-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.img-center img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.img-center em {
+    display: block;
+    text-align: center;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--secondary);
 }

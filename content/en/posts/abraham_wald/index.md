@@ -1,6 +1,6 @@
 ---
 title: "The Architecture of Silence: Abraham Wald and the Epistemology of Missing Data"
-date: 2026-02-02
+date: 2026-02-21
 draft: false
 categories: ["case-studies"]
 tags: ["survivorship bias", "abraham wald", "decision theory", "machine learning", "cybersecurity"]
@@ -32,6 +32,11 @@ The military logic, guided by visible empirical evidence, dictated reinforcing t
 
 This is where **Abraham Wald**, a Jewish-Hungarian mathematician from the Statistical Research Group (SRG) at Columbia University, intervened.
 
+<div class="img-center">
+  <img src="Abraham_Wald_picture.jpg" alt="Abraham Wald" />
+  <em>Abraham Wald</em>
+</div>
+
 ## The Inversion of Logic
 
 Wald was an outsider. Excluded from formal education in his youth due to his religion, he developed a radical intellectual independence. He looked at the same diagrams as the generals but reached the diametrically opposite conclusion.
@@ -52,11 +57,11 @@ While the story is often told as a "Eureka!" moment, Wald's contribution was a r
 
 Let's look at this through a simplified engineering lens. Wald essentially established an inverse relationship between observed damage density and vulnerability.
 
-If we define vulnerability ($q_i$) as the probability of a plane being downed given a hit in a specific zone, and we observe the density of hits in survivors ($S$), the logic flows as follows:
+If we define vulnerability as the probability of a plane being downed given a hit in a specific zone, and we observe the density of hits in survivors, the logic flows as follows:
 
-$$
-\text{If } q_{\text{engine}} \approx 1 \text{ (Lethal)} \implies \text{Engine Hits in } S \approx 0
-$$
+> **If vulnerability(engine) ≈ 1 (Lethal) → Engine Hits in Survivors ≈ 0**
+
+In other words: if getting hit in the engine almost always means death, then surviving planes will almost never have engine damage—not because engines weren't hit, but because those planes crashed.
 
 Wald demonstrated that a returning B-17 with 100 holes in its wings provides statistical proof of the wing's robustness. Conversely, the absence of data on fuel pump damage indicates a critically low failure threshold.
 
