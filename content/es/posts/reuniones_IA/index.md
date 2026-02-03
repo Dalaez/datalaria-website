@@ -4,7 +4,7 @@ date: 2025-11-21
 draft: False
 categories: ["Productividad", "Herramientas"]
 tags: ["ia", "reuniones", "productividad", "trabajo remoto", "prompt engineering", "buenas practicas"]
-image: reuniones_ia_eficaces.png
+image: cover.png
 description: "Un decálogo de 10 pasos prácticos para transformar tus reuniones, haciéndolas más cortas, efectivas y ágiles, con un enfoque especial en cómo la IA puede ser tu mejor aliada."
 summary: "Las reuniones ineficaces son el gran ladrón de tiempo en el mundo profesional. Te presento un decálogo de 10 reglas para recuperar el control, desde convocar solo a quien importa hasta usar la IA como tu asistente personal para actas, resúmenes y seguimiento de acciones."
 ---

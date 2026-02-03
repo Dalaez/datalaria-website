@@ -4,7 +4,7 @@ date: 2025-11-21
 draft: False
 categories: ["Productivity", "Tools"]
 tags: ["ai", "meetings", "productivity", "remote work", "prompt engineering", "best practices"]
-image: reuniones_ia_eficaces.png
+image: cover.png
 description: "A decalogue of 10 practical steps to transform your meetings, making them shorter, more effective, and agile, with a special focus on how AI can be your best ally."
 summary: "Ineffective meetings are the biggest time thief in the professional world. Here are 10 rules to regain control, from only inviting key people to using AI as your personal assistant for minutes, summaries, and action tracking."
 ---
