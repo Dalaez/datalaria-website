@@ -4,7 +4,7 @@ date: 2025-12-13
 draft: False
 categories: ["Strategy", "Project Management", "AI"]
 tags: ["toc", "the-goal", "theory-of-constraints", "project-management", "supply-chain", "ai", "industry-4.0", "lean", "six-sigma", "critical-chain"]
-image: the_goal_book_ai_synced_factory.png
+image: cover.png
 description: "An in-depth analysis of Eli Goldratt's 'The Goal' and how the Theory of Constraints (TOC) applies beyond production, to engineering, project management, and the supply chain, empowered by AI and Industry 4.0."
 summary: "Published in 1984, 'The Goal' is more relevant than ever. We analyze how its principles (TOC, DBR, CCPM) apply to modern tech companies and why it is the perfect filter to guide Big Data, AI, and Digital Twin efforts."
 ---

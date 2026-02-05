@@ -4,7 +4,7 @@ date: 2025-12-13
 draft: False
 categories: ["Estrategia", "Gestión de Proyectos", "IA"]
 tags: ["toc", "la-meta", "teoria-de-restricciones", "gestion-de-proyectos", "cadena-de-suministro", "ia", "industria-4.0", "lean", "six-sigma", "cadena-critica"]
-image: the_goal_book_ai_synced_factory.png
+image: cover.png
 description: "Un análisis profundo de 'La Meta' de Eli Goldratt y cómo la Teoría de Restricciones (TOC) se aplica más allá de la producción, a la ingeniería, la gestión de proyectos y la cadena de suministro, potenciada por la IA y la Industria 4.0."
 summary: "Publicado en 1984, 'La Meta' es más relevante que nunca. Analizamos cómo sus principios (TOC, DBR, CCPM) se aplican a las empresas tecnológicas modernas y por qué es el filtro perfecto para dirigir los esfuerzos de Big Data, IA y Gemelos Digitales."
 ---
