@@ -78,12 +78,15 @@ exports.handler = async (event, context) => {
         }
 
         // Parse the completions API response
-        // The response format should have choices[].message.content or similar
+        // Agent Studio returns: {id, role, content}
         let answer = '';
         let sources = [];
 
         // Try to extract the assistant's response
-        if (data.choices && data.choices[0]?.message?.content) {
+        if (data.content) {
+            // Direct content field (Agent Studio format)
+            answer = data.content;
+        } else if (data.choices && data.choices[0]?.message?.content) {
             answer = data.choices[0].message.content;
         } else if (data.message?.content) {
             answer = data.message.content;
