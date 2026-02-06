@@ -46,7 +46,7 @@ exports.handler = async (event, context) => {
 
         // Call Algolia Agent Studio Completions API (correct endpoint)
         // Docs: https://www.algolia.com/doc/rest-api/agent-studio/completions/create-completion
-        const agentUrl = `https://agent-studio.eu.algolia.com/1/agents/${ALGOLIA_AGENT_ID}/completions?compatibilityMode=ai-sdk-4`;
+        const agentUrl = `https://agent-studio.eu.algolia.com/1/agents/${ALGOLIA_AGENT_ID}/completions?compatibilityMode=ai-sdk-4&stream=false`;
 
         const response = await fetch(agentUrl, {
             method: 'POST',
