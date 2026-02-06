@@ -19,6 +19,9 @@ params:
   # Renderizado Mermaid js:
   mermaid: true
 
+  # Algolia Search & Agent Studio
+  algoliaSearchKey: "0130e86396a12b79b35c8cf37b692258"  # Replace with your Search API Key
+
   # Define los favicons (buscará las imágenes en la carpeta /static)
   # CORREGIDO: Eliminada la carpeta /images/ de las rutas
   favicon: "/datalaria_logo_icon.png"
