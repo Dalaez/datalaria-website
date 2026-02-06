@@ -44,27 +44,32 @@ exports.handler = async (event, context) => {
 
         console.log(`[Agent Chat] Query: "${query}", Lang: ${language}`);
 
-        // Call Algolia Agent Studio API
-        const agentUrl = `https://${ALGOLIA_APP_ID}.algolia.net/1/agents/${ALGOLIA_AGENT_ID}/chat`;
+        // Call Algolia Agent Studio Completions API (correct endpoint)
+        // Docs: https://www.algolia.com/doc/rest-api/agent-studio/completions/create-completion
+        const agentUrl = `https://agent-studio.eu.algolia.com/1/agents/${ALGOLIA_AGENT_ID}/completions`;
 
         const response = await fetch(agentUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'X-Algolia-API-Key': ALGOLIA_SEARCH_KEY,
-                'X-Algolia-Application-Id': ALGOLIA_APP_ID,
-                'X-Api-Version': '2025-01-01'
+                'X-Algolia-Application-Id': ALGOLIA_APP_ID
             },
             body: JSON.stringify({
-                query: query,
-                conversationId: conversationId || undefined,
-                language: language || 'en'
+                messages: [
+                    {
+                        role: 'user',
+                        content: query
+                    }
+                ],
+                id: conversationId || undefined
             })
         });
 
         const data = await response.json();
 
         console.log(`[Agent Chat] Response status: ${response.status}`);
+        console.log(`[Agent Chat] Response data:`, JSON.stringify(data).substring(0, 200));
 
         if (!response.ok) {
             // If Agent API fails, fall back to search
@@ -72,13 +77,34 @@ exports.handler = async (event, context) => {
             return await fallbackToSearch(query, headers);
         }
 
+        // Parse the completions API response
+        // The response format should have choices[].message.content or similar
+        let answer = '';
+        let sources = [];
+
+        // Try to extract the assistant's response
+        if (data.choices && data.choices[0]?.message?.content) {
+            answer = data.choices[0].message.content;
+        } else if (data.message?.content) {
+            answer = data.message.content;
+        } else if (data.text) {
+            answer = data.text;
+        } else if (typeof data === 'string') {
+            answer = data;
+        } else {
+            // Can't parse response, fall back to search
+            console.log('[Agent Chat] Could not parse agent response, using search fallback');
+            return await fallbackToSearch(query, headers);
+        }
+
         return {
             statusCode: 200,
             headers,
             body: JSON.stringify({
-                answer: data.answer || data.message,
-                sources: data.sources || [],
-                conversationId: data.conversationId
+                answer: answer,
+                sources: sources,
+                conversationId: data.id || data.conversationId,
+                isAIGenerated: true
             })
         };
 
