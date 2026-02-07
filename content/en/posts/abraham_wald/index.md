@@ -1,6 +1,6 @@
 ---
 title: "The Architecture of Silence: Abraham Wald and the Epistemology of Missing Data"
-date: 2026-02-21
+date: 2026-02-11
 draft: false
 categories: ["case-studies"]
 tags: ["survivorship bias", "abraham wald", "decision theory", "machine learning", "cybersecurity"]

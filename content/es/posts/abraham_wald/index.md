@@ -1,6 +1,6 @@
 ---
 title: "La Arquitectura del Silencio: Abraham Wald y la Epistemología de los Datos Ausentes"
-date: 2026-02-21
+date: 2026-02-11
 draft: false
 categories: ["casos_exito"]
 tags: ["sesgo del superviviente", "abraham wald", "teoría de decisiones", "machine learning", "ciberseguridad"]
