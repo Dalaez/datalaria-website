@@ -1,6 +1,6 @@
 ---
 title: "S&OP: Why Your Excel Is Lying to You (and How to Interrogate It with Python)"
-date: 2026-02-14
+date: 2026-02-28
 draft: false
 categories: ["S&OP Engineering", "Data Engineering", "Python"]
 tags: ["Supply Chain", "S&OP", "Supabase", "Pandas", "Z-Score"]
