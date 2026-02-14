@@ -4,7 +4,7 @@ date: 2026-02-14
 draft: false
 categories: ["Web Development", "GameDev", "Tutorials"]
 tags: ["JavaScript", "Supabase", "PostgreSQL", "Canvas", "HTML5", "TailwindCSS"]
-image: imagen_snake_game.png
+image: cover.png
 description: "Learn to create a neon arcade-style web game using only HTML5 Canvas and Vanilla JS. Discover how to integrate a global real-time leaderboard using Supabase's PostgreSQL database."
 summary: "Remember classic Snake? We've brought it to the future with a Cyberpunk aesthetic and connected it to the cloud. In this 'From Zero to Hero' tutorial, you'll learn to build 'Neon Snake' using Vanilla JS for the game and Supabase to persist scores in real-time, without needing a complex backend server."
 ---
