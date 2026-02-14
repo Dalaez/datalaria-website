@@ -8,6 +8,10 @@ numpy>=1.24.0
 # Statistical Analysis
 scipy>=1.10.0
 
+# Demand Forecasting (Part 2)
+prophet>=1.1.0
+plotly>=5.0.0
+
 # Database (Supabase/PostgreSQL)
 supabase>=2.0.0
 
