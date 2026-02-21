@@ -101,6 +101,7 @@ jobs:
         with:
           name: autopilot-content
           path: generated_content.json
+          if-no-files-found: warn
           retention-days: 1
 
   publish:
@@ -116,6 +117,7 @@ jobs:
 
       - name: Download Generated Content (from preview)
         uses: actions/download-artifact@v4
+        continue-on-error: true
         with:
           name: autopilot-content
       

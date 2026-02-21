@@ -241,7 +241,11 @@ def main():
         if dry_run:
             save_generated_content(twitter_text, linkedin_text)
 
-        # NOTA: Newsletter genera contenido en el momento del envío
+    # También guardar si el contenido viene de override o social_text (no solo de IA)
+    if dry_run and not os.path.exists(CACHE_FILE):
+        save_generated_content(twitter_text, linkedin_text)
+
+    # NOTA: Newsletter genera contenido en el momento del envío
 
     # --- RESOLUCIÓN DE IMAGEN LOCAL ---
     # Buscamos la imagen para subirla nativamente a Twitter (y opcionalmente a Dev.to si no usara URL)
