@@ -15,7 +15,7 @@ El problema no es la predicción en sí. Es la **arrogancia del número único**
 
 En el [Capítulo 1](/es/posts/sop_ingenieria-higiene-datos/) construimos una "Válvula de Calidad" que elimina el ruido de los datos del ERP. Ahora que tenemos una señal pura, vamos a hacer algo que Excel no puede: **medir la incertidumbre**.
 
-> **Executive Summary:** Un forecast probabilístico no te dice "venderás 100". Te dice "con un 95% de probabilidad, venderás entre 35 y 157". Esa banda de incertidumbre es la base matemática para calcular tu Safety Stock sin recurrir a reglas de dedo.
+> **Resumen Ejecutivo:** Un forecast probabilístico no te dice "venderás 100". Te dice "con un 95% de probabilidad, venderás entre 35 y 157". Esa banda de incertidumbre es la base matemática para calcular tu Safety Stock sin recurrir a reglas de dedo.
 
 ## La Arquitectura: MLOps, no Scripts
 
