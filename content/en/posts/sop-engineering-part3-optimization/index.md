@@ -1,12 +1,12 @@
 ---
 title: "S&OP Engineering III: The End of Excel (Linear Programming for Supply Planning)"
-date: 2026-02-22
+date: 2026-02-26
 draft: false
 categories: ["S&OP Engineering", "Operations Research", "Python"]
 tags: ["Supply Chain", "Optimization", "PuLP", "Linear Programming", "Supabase"]
 author: "Datalaria"
 description: "A supply plan based on 'weeks of coverage' burns your company's cash. In this chapter, we use Python and PuLP to mathematically calculate the optimal plan that minimizes financial costs."
-image: "pulp_optimization_plan.png"
+image: "cover.png"
 ---
 
 "We always want 4 weeks of coverage." This phrase, repeated like a mantra in every S&OP meeting on the planet, is financially toxic.
@@ -124,10 +124,10 @@ flowchart LR
 - 🟣 **Purple:** Optimized supply plan
 - 🟠 **Orange:** Centralized database (Supabase)
 
-## Next Step: The Grand Finale
+## Next Step: Scaling to Enterprise
 
-We now have the perfect plan in our database. But a plan is nothing if it's not executed.
+We now have the perfect plan in our database. But only for one product. What happens when you add 3 SKUs sharing the same factory?
 
-In Chapter 4 (Grand Finale), we'll connect this plan with **AI Agents** (CrewAI/LangChain) to automate S&OP meetings and generate purchase orders to suppliers without human intervention. The algorithm will decide how much to buy. The agent will execute the purchase.
+In [Chapter 4](/en/posts/sop-engineering-part4-enterprise/) we break the MVP: we inject multi-product data with radically different profiles, parallelize the forecasting with **MLOps**, and build a unified Linear Programming model where products *compete mathematically* for shared production capacity.
 
 > The difference between an Operations Director who plans and one who optimizes is an objective function between their intuition and reality.

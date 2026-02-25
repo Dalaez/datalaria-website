@@ -6,16 +6,16 @@ categories: ["Ingeniería de S&OP", "Operations Research", "Python"]
 tags: ["Supply Chain", "Optimization", "PuLP", "Linear Programming", "Supabase"]
 author: "Datalaria"
 description: "Un plan de suministro basado en 'semanas de cobertura' quema la caja de tu empresa. En este capítulo, usamos Python y PuLP para calcular matemáticamente el plan óptimo que minimiza costes financieros."
-image: "pulp_optimization_plan.png"
+image: "cover.png"
 ---
 
-"Siempre queremos 4 semanas de cobertura." Esta frase, repetida como mantra en todas las reuniones de S&OP del planeta, es financieramente tóxica.
+"Siempre queremos X semanas de cobertura." Esta frase, repetida como mantra en todas las reuniones de S&OP del planeta, es financieramente tóxica.
 
 ¿Por qué? Porque es una **regla fija aplicada a un sistema dinámico**. Si tu demanda en enero es 200 unidades y en julio es 20, te estás obligando a mantener 800 y 80 unidades respectivamente "por si acaso". En enero te queda corto. En julio inmovilizas capital sin motivo.
 
 La alternativa no es intuición más sofisticada. Es **matemáticas**.
 
-> **Executive Summary:** En este capítulo, conectamos el forecast probabilístico del [Capítulo 2](/es/posts/sop-ingenieria-parte2-prediccion/) con un motor de Programación Lineal (PuLP) que calcula el plan de producción exacto que minimiza el coste total (producción + almacenamiento) respetando la restricción de Safety Stock. Pasamos de la predicción pasiva a la prescripción activa.
+> **Resumen Ejecutivo:** En este capítulo, conectamos el forecast probabilístico del [Capítulo 2](/es/posts/sop-ingenieria-parte2-prediccion/) con un motor de Programación Lineal (PuLP) que calcula el plan de producción exacto que minimiza el coste total (producción + almacenamiento) respetando la restricción de Safety Stock. Pasamos de la predicción pasiva a la prescripción activa.
 
 ## Del Forecast a la Decisión: Arquitectura
 
@@ -124,10 +124,10 @@ flowchart LR
 - 🟣 **Púrpura:** Plan de suministro optimizado
 - 🟠 **Naranja:** Base de datos centralizada (Supabase)
 
-## Siguiente Paso: La Gran Final
+## Siguiente Paso: Escalando a Enterprise
 
-Ya tenemos el plan perfecto en nuestra base de datos. Pero un plan no es nada si no se ejecuta.
+Ya tenemos el plan perfecto en nuestra base de datos. Pero solo para un producto. ¿Qué pasa cuando metes 3 SKUs que comparten la misma fábrica?
 
-En el Capítulo 4 (Gran Final), conectaremos este plan con **Agentes de IA** (CrewAI/LangChain) para automatizar las reuniones de S&OP y generar las órdenes de compra a proveedores sin intervención humana. El algoritmo decidirá cuánto comprar. El agente ejecutará la compra.
+En el [Capítulo 4](/es/posts/sop-ingenieria-parte4-enterprise/) rompemos el MVP: inyectamos datos multi-producto con perfiles radicalmente distintos, paralelizamos el forecasting con **MLOps**, y construimos un modelo unificado de Programación Lineal donde los productos *compiten matemáticamente* por la capacidad de producción compartida.
 
 > La diferencia entre un Director de Operaciones que planifica y uno que optimiza es una función objetivo entre su intuición y la realidad.
