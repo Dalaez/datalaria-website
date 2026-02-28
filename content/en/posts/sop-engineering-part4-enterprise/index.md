@@ -1,12 +1,12 @@
 ---
 title: "S&OP Engineering IV: Scaling to Enterprise (Multi-SKU & Bottlenecks)"
-date: 2026-02-26
+date: 2026-03-10
 draft: false
 categories: ["S&OP Engineering", "Operations Research", "MLOps"]
 tags: ["Supply Chain", "Optimization", "PuLP", "Parallel Processing", "Theory of Constraints"]
 author: "Datalaria"
 description: "The MVP is dead, long live Enterprise. In Chapter 4 we stress-test our S&OP system with multiple SKUs, teaching how to parallelize AI models and mathematically solve the war for shared production capacity."
-image: "pulp_multisku_capacity_en.png"
+image: "cover.png"
 ---
 
 Your MVP works. One product, one model, one perfect plan. Congratulations: you just solved the easiest problem in Supply Chain.
@@ -156,6 +156,8 @@ No human with Excel can calculate this with 3 products and 13 months. And they d
 
 ![Multi-SKU shared production capacity: the red line marks the factory limit](pulp_multisku_capacity_en.png)
 *Look at the summer months. Combined demand from the 3 SKUs exceeds factory capacity (red line). What does the algorithm do? Instead of breaking stock, it decides to advance production of the cheapest-to-store SKU (SKU-001) to spring, freeing factory space for the critical seasonal product (SKU-003) in summer. This is Theory of Constraints executed by a machine.*
+
+*If you look at the chart, it seems like SKU-002 (spare parts) doesn't exist. But it's there. It represents 0.1% of the factory's volume, but in manual management, it usually consumes 20% of the planner's mental time due to its high volatility. By delegating this to a Linear Programming model, the system manages large volumes and the long tail simultaneously without stress.*
 
 ## Open Kitchen: Break the System
 

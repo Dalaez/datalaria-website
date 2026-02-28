@@ -1,12 +1,12 @@
 ---
 title: "Ingeniería S&OP IV: Escalando a Enterprise (Multi-SKU y Cuellos de Botella)"
-date: 2026-02-26
+date: 2026-03-10
 draft: false
 categories: ["Ingeniería de S&OP", "Operations Research", "MLOps"]
 tags: ["Supply Chain", "Optimization", "PuLP", "Parallel Processing", "Theory of Constraints"]
 author: "Datalaria"
 description: "El MVP ha muerto, viva el Enterprise. En el Capítulo 4 estresamos nuestro sistema S&OP con múltiples SKUs, enseñando cómo paralelizar modelos de IA y resolver matemáticamente la guerra por la capacidad de producción compartida."
-image: "pulp_multisku_capacity.png"
+image: "cover.png"
 ---
 
 Tu MVP funciona. Un producto, un modelo, un plan perfecto. Enhorabuena: acabas de resolver el problema más fácil del universo de Supply Chain.
@@ -156,6 +156,8 @@ Ningún humano con Excel puede calcular esto con 3 productos y 13 meses. Y defin
 
 ![Capacidad de producción compartida Multi-SKU: la línea roja marca el límite de fábrica](pulp_multisku_capacity.png)
 *Observa los meses de verano. La demanda combinada de los 3 SKUs supera la capacidad de la fábrica (línea roja). ¿Qué hace el algoritmo? En lugar de romper stock, decide adelantar la producción del SKU más barato de almacenar (SKU-001) a primavera, dejando hueco en la fábrica para el producto estacional crítico (SKU-003) en verano. Esto es Theory of Constraints ejecutada por una máquina.*
+
+*Si miras la gráfica, parece que el SKU-002 (repuestos) no existe. Pero está ahí. Representa el 0,1% del volumen de la fábrica, pero en la gestión manual suele consumir el 20% del tiempo mental del planificador por su alta volatilidad. Al delegar esto a un modelo de Programación Lineal, el sistema gestiona los grandes volúmenes y la larga cola simultáneamente sin estrés.*
 
 ## Open Kitchen: Rompe el Sistema
 
