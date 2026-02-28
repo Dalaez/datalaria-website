@@ -26,11 +26,10 @@ if not os.environ.get("OPENAI_API_KEY") and not os.environ.get("GEMINI_API_KEY")
     sys.exit(1)
 
 try:
-    from crewai import Agent, Task, Crew, Process
-    from langchain_google_genai import ChatGoogleGenerativeAI
+    from crewai import Agent, Task, Crew, Process, LLM
 except ImportError:
-    print("CRITICAL ERROR: Libreria 'crewai' o 'langchain-google-genai' no encontrada.")
-    print("Instala las dependencias: pip install crewai langchain-google-genai")
+    print("CRITICAL ERROR: Libreria 'crewai' no encontrada.")
+    print("Instala las dependencias: pip install crewai")
     sys.exit(1)
 
 # Importar nuestras herramientas personalizadas
@@ -48,9 +47,9 @@ def main():
     
     # ─── CONFIGURACION DEL LLM (Gemini) ─────────────────
     api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
-    gemini_llm = ChatGoogleGenerativeAI(
-        model="gemini-1.5-flash",
-        google_api_key=api_key,
+    gemini_llm = LLM(
+        model="gemini/gemini-1.5-flash",
+        api_key=api_key,
         temperature=0.3
     )
     
