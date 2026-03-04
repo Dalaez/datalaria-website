@@ -48,7 +48,7 @@ def main():
     # ─── CONFIGURACION DEL LLM (Gemini) ─────────────────
     api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
     gemini_llm = LLM(
-        model="gemini/gemini-1.5-flash",
+        model="gemini/gemini-2.0-flash",
         api_key=api_key,
         temperature=0.3
     )
