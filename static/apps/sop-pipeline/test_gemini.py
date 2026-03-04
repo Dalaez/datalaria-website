@@ -1,7 +1,7 @@
 ﻿import os
 from litellm import completion
 
-os.environ['GEMINI_API_KEY'] = 'AIzaSyApj8dOGf1vKSHahb1dVx5O8pKhXUP7Y48'
+os.environ['GEMINI_API_KEY'] = 'GEMINI_API_KEY'
 
 try:
     response = completion(
