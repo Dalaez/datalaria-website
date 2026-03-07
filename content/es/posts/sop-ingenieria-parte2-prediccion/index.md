@@ -1,6 +1,6 @@
 ---
 title: "Ingeniería S&OP II: Demand Planning, de la Adivinación a la Probabilidad"
-date: 2026-03-05
+date: 2026-03-07
 draft: false
 categories: ["Ingeniería de S&OP", "Data Engineering", "Machine Learning"]
 tags: ["Supply Chain", "Forecasting", "Prophet", "Python", "MLOps"]

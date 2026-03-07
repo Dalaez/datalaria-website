@@ -1,6 +1,6 @@
 ---
 title: "S&OP Engineering II: Demand Planning from Guessing to Probability"
-date: 2026-03-05
+date: 2026-03-07
 draft: false
 categories: ["S&OP Engineering", "Data Engineering", "Machine Learning"]
 tags: ["Supply Chain", "Forecasting", "Prophet", "Python", "MLOps"]

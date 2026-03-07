@@ -1,6 +1,6 @@
 ---
 title: "Ingeniería S&OP V: El Cerebro Autónomo (Agentic AI)"
-date: 2026-03-05
+date: 2026-03-28
 draft: false
 categories: ["S&OP Engineering", "Artificial Intelligence", "CrewAI"]
 tags: ["Supply Chain", "Agentic AI", "LLMs", "Automation", "Python"]
