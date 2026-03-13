@@ -1,6 +1,6 @@
 ---
 title: "S&OP Engineering III: The End of Excel (Linear Programming for Supply Planning)"
-date: 2026-03-14
+date: 2026-03-13
 draft: false
 categories: ["S&OP Engineering", "Operations Research", "Python"]
 tags: ["Supply Chain", "Optimization", "PuLP", "Linear Programming", "Supabase"]

@@ -1,0 +1,2944 @@
+ 
+Norma Española 
+UNE-EN IEC 62402:2019 
+Idioma: Inglés 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Gestión de la obsolescencia. (Ratificada por la 
+Asociación Española de Normalización en agosto de 
+2019.) 
+ 
+ 
+ 
+ 
+ 
+ 
+Asociación Española 
+de Normalización 
+Génova, 6 - 28004 Madrid 
+915 294 900 
+info@une.org 
+www.une.org 
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+ 
+UNE-EN IEC 62402:2019 
+ 
+Gestión de la obsolescencia. (Ratificada por la Asociación Española de Normalización 
+en agosto de 2019.) 
+ 
+Obsolescence management (Endorsed by Asociación Española de Normalización in August of 2019.) 
+ 
+Gestion de l'obsolescence (Entérinée par l'Asociación Española de Normalización en août 2019.) 
+ 
+ 
+En cumplimiento del punto 11.2.5.4 de las Reglas Internas de CEN/CENELEC Parte 2, se ha 
+otorgado el rango de documento normativo español UNE al documento normativo europeo 
+EN IEC 62402:2019 (Fecha de disponibilidad 2019-07-12) 
+ 
+Este documento está disponible en los idiomas oficiales de CEN/CENELEC/ETSI. 
+ 
+Este anuncio causará efecto a partir del primer día del mes siguiente al de su publicación en 
+la revista UNE. 
+ 
+La correspondiente versión oficial de este documento se encuentra disponible en la Asociación Española de  
+Normalización  (Génova 6 28004 MADRID, www.une.org).  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Las observaciones a este documento han de dirigirse a: 
+ 
+Asociación Española de Normalización 
+Génova, 6 
+28004 MADRID-España 
+Tel.: 915 294 900 
+info@une.org 
+www.une.org 
+ 
+ UNE 2019 
+Prohibida la reproducción sin el consentimiento de UNE. 
+Todos los derechos de propiedad intelectual de la presente norma son titularidad de UNE. 
+ 
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+ 
+ 
+EUROPEAN STANDARD 
+NORME EUROPÉENNE 
+EUROPÄISCHE NORM 
+EN IEC 62402 
+ 
+July 2019 
+ICS 21.020 
+Supersedes EN 62402:2007 and all of its amendments
+and corrigenda (if any)
+English Version 
+ 
+Obsolescence management 
+(IEC 62402:2019) 
+ 
+Gestion de l'obsolescence 
+(IEC 62402:2019) 
+ 
+Obsoleszenzmanagement 
+(IEC 62402:2019) 
+This European Standard was approved by CENELEC on 2019-07-03. CENELEC members are bound to comply with the CEN/CENELEC 
+Internal Regulations which stipulate the conditions for giving this European Standard the status of a national standard without any alteration. 
+Up-to-date lists and bibliographical references concerning such national standards may be obtained on application to the CEN-CENELEC 
+Management Centre or to any CENELEC member.  
+This European Standard exists in three official versions (English, French, German). A version in any other language made by translation 
+under the responsibility of a CENELEC member into its own language and notified to the CEN-CENELEC Management Centre has the 
+same status as the official versions. 
+CENELEC members are the national electrotechnical committees of Austria, Belgium, Bulgaria, Croatia, Cyprus, the Czech Republic, 
+Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Iceland, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, the 
+Netherlands, Norway, Poland, Portugal, Republic of North Macedonia, Romania, Serbia, Slovakia, Slovenia, Spain, Sweden, Switzerland, 
+Turkey and the United Kingdom. 
+European Committee for Electrotechnical Standardization  
+Comité Européen de Normalisation Electrotechnique 
+Europäisches Komitee für Elektrotechnische Normung 
+CEN-CENELEC Management Centre: Rue de la Science 23,  B-1040 Brussels 
+© 2019 CENELEC All rights of exploitation in any form and by any means reserved worldwide for CENELEC Members. 
+Ref. No. EN IEC 62402:2019 E
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+ 
+ 
+ 
+EN IEC 62402:2019 (E) 
+ 
+2 
+ 
+European foreword 
+The text of document 56/1838/FDIS, future edition 2 of IEC 62402, prepared by IEC/TC 56 "Dependability" was 
+submitted to the IEC-CENELEC parallel vote and approved by CENELEC as EN IEC 62402:2019. 
+The following dates are fixed: 
+• 
+latest date by which the document has to be implemented at national level by 
+publication of an identical national standard or by endorsement 
+(dop) 
+2020-04-03 
+• 
+latest date by which the national standards conflicting with the 
+document have to be withdrawn 
+(dow) 
+2022-07-03 
+ 
+This document supersedes EN 62402:2007 and all of its amendments and corrigenda (if any). 
+Attention is drawn to the possibility that some of the elements of this document may be the subject of patent 
+rights. CENELEC shall not be held responsible for identifying any or all such patent rights.  
+  
+Endorsement notice 
+The text of the International Standard IEC 62402:2019 was approved by CENELEC as a European Standard 
+without any modification. 
+ 
+IEC 60300-1 
+NOTE 
+Harmonized as EN 60300-1 
+IEC 62239-1 
+NOTE 
+Harmonized as EN IEC 62239-1 
+IEC/ISO 31010 
+NOTE 
+Harmonized as EN 31010 
+IEC 62474 
+NOTE 
+Harmonized as EN IEC 62474 
+IEC 62668-1 
+NOTE 
+Harmonized as EN 62668-11 
+IEC 62435-1 
+NOTE 
+Harmonized as EN 62435-1 
+IEC 62435-4 
+NOTE 
+Harmonized as EN IEC 62435-4 
+IEC 62668-2 
+NOTE 
+Harmonized as EN IEC 62668-22 
+ 
+                                                     
+1 Under preparation. Stage at the time of publication: prEN 62668-1 
+2 Under preparation. Stage at the time of publication: FprEN IEC 62668-2 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+ 
+IEC 62402 
+Edition 2.0 2019-05 
+INTERNATIONAL 
+STANDARD 
+NORME 
+INTERNATIONALE 
+Obsolescence management 
+ 
+Gestion de l'obsolescence 
+ 
+IEC 62402:2019-05(en-fr) 
+  
+  
+® 
+ 
+colour
+inside
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+ 
+ 
+ 
+ 
+ 
+THIS PUBLICATION IS COPYRIGHT PROTECTED 
+ 
+Copyright © 2019 IEC, Geneva, Switzerland  
+ 
+All rights reserved. Unless otherwise specified, no part of this publication may be reproduced or utilized in any form 
+or by any means, electronic or mechanical, including photocopying and microfilm, without permission in writing from 
+either IEC or IEC's member National Committee in the country of the requester. If you have any questions about IEC 
+copyright or have an enquiry about obtaining additional rights to this publication, please contact the address below or 
+your local IEC member National Committee for further information. 
+ 
+Droits de reproduction réservés. Sauf indication contraire, aucune partie de cette publication ne peut être reproduite ni 
+utilisée sous quelque forme que ce soit et par aucun procédé, électronique ou mécanique, y compris la photocopie et 
+les microfilms, sans l'accord écrit de l'IEC ou du Comité national de l'IEC du pays du demandeur. Si vous avez des 
+questions sur le copyright de l'IEC ou si vous désirez obtenir des droits supplémentaires sur cette publication, utilisez 
+les coordonnées ci-après ou contactez le Comité national de l'IEC de votre pays de résidence. 
+ 
+IEC Central Office 
+Tel.: +41 22 919 02 11 
+3, rue de Varembé 
+info@iec.ch 
+CH-1211 Geneva 20 
+www.iec.ch 
+Switzerland 
+ 
+About the IEC 
+The International Electrotechnical Commission (IEC) is the leading global organization that prepares and publishes 
+International Standards for all electrical, electronic and related technologies. 
+ 
+About IEC publications  
+The technical content of IEC publications is kept under constant review by the IEC. Please make sure that you have the 
+latest edition, a corrigendum or an amendment might have been published. 
+ 
+IEC publications search - webstore.iec.ch/advsearchform 
+The advanced search enables to find IEC publications by a 
+variety 
+of 
+criteria 
+(reference 
+number, 
+text, 
+technical 
+committee,…). It also gives information on projects, replaced 
+and withdrawn publications. 
+ 
+IEC Just Published - webstore.iec.ch/justpublished 
+Stay up to date on all new IEC publications. Just Published 
+details all new publications released. Available online and once 
+a month by email.  
+ 
+IEC Customer Service Centre - webstore.iec.ch/csc 
+If you wish to give us your feedback on this publication or need 
+further assistance, please contact the Customer Service 
+Centre: sales@iec.ch. 
+ 
+Electropedia - www.electropedia.org 
+The world's leading online dictionary on electrotechnology, 
+containing more than 22 000 terminological entries in English 
+and French, with equivalent terms in 16 additional languages. 
+Also known as the International Electrotechnical Vocabulary 
+(IEV) online. 
+ 
+IEC Glossary - std.iec.ch/glossary 
+67 000 electrotechnical terminology entries in English and 
+French extracted from the Terms and Definitions clause of IEC 
+publications issued since 2002. Some entries have been 
+collected from earlier publications of IEC TC 37, 77, 86 and 
+CISPR. 
+ 
+ 
+ 
+A propos de l'IEC 
+La Commission Electrotechnique Internationale (IEC) est la première organisation mondiale qui élabore et publie des 
+Normes internationales pour tout ce qui a trait à l'électricité, à l'électronique et aux technologies apparentées. 
+ 
+A propos des publications IEC  
+Le contenu technique des publications IEC est constamment revu. Veuillez vous assurer que vous possédez l’édition la 
+plus récente, un corrigendum ou amendement peut avoir été publié. 
+ 
+Recherche de publications IEC - 
+webstore.iec.ch/advsearchform 
+La recherche avancée permet de trouver des publications IEC 
+en utilisant différents critères (numéro de référence, texte, 
+comité d’études,…). Elle donne aussi des informations sur les 
+projets et les publications remplacées ou retirées. 
+ 
+IEC Just Published - webstore.iec.ch/justpublished 
+Restez informé sur les nouvelles publications IEC. Just 
+Published 
+détaille 
+les 
+nouvelles 
+publications 
+parues. 
+Disponible en ligne et une fois par mois par email. 
+ 
+Service Clients - webstore.iec.ch/csc 
+Si vous désirez nous donner des commentaires sur cette 
+publication ou si vous avez des questions contactez-nous: 
+sales@iec.ch. 
+Electropedia - www.electropedia.org 
+Le premier dictionnaire d'électrotechnologie en ligne au monde, 
+avec plus de 22 000 articles terminologiques en anglais et en 
+français, ainsi que les termes équivalents dans 16 langues 
+additionnelles. 
+Egalement 
+appelé 
+Vocabulaire 
+Electrotechnique International (IEV) en ligne. 
+ 
+Glossaire IEC - std.iec.ch/glossary 
+67 000 entrées terminologiques électrotechniques, en anglais 
+et en français, extraites des articles Termes et Définitions des 
+publications IEC parues depuis 2002. Plus certaines entrées 
+antérieures extraites des publications des CE 37, 77, 86 et 
+CISPR de l'IEC. 
+ 
+ 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+IEC 62402 
+Edition 2.0 2019-05 
+INTERNATIONAL 
+STANDARD 
+NORME 
+INTERNATIONALE 
+Obsolescence management 
+ 
+Gestion de l'obsolescence 
+ 
+INTERNATIONAL 
+ELECTROTECHNICAL 
+COMMISSION 
+COMMISSION 
+ELECTROTECHNIQUE 
+INTERNATIONALE 
+ 
+ICS 21.020 
+ 
+ISBN 978-2-8322-6960-2 
+  
+  
+® Registered trademark of the International Electrotechnical Commission 
+ 
+Marque déposée de la Commission Electrotechnique Internationale 
+® 
+ Warning! Make sure that you obtained this publication from an authorized distributor. 
+ Attention! Veuillez vous assurer que vous avez obtenu cette publication via un distributeur agréé. 
+ 
+colour
+inside
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+ 
+– 2 – 
+IEC 62402:2019 © IEC 2019 
+CONTENTS 
+FOREWORD ........................................................................................................................... 5 
+INTRODUCTION ..................................................................................................................... 7 
+1 
+Scope .............................................................................................................................. 8 
+2 
+Normative references ...................................................................................................... 8 
+3 
+Terms, definitions and abbreviated terms ........................................................................ 8 
+3.1 
+Terms and definitions .............................................................................................. 8 
+3.2 
+Abbreviated terms ................................................................................................. 11 
+4 
+Obsolescence management ........................................................................................... 12 
+4.1 
+What is obsolescence ........................................................................................... 12 
+4.2 
+What is obsolescence management ...................................................................... 13 
+4.3 
+Benefits of obsolescence management ................................................................. 13 
+4.4 
+Obsolescence management process ..................................................................... 14 
+5 
+Obsolescence management policy ................................................................................. 17 
+6 
+Infrastructure and organization ...................................................................................... 18 
+6.1 
+General ................................................................................................................. 18 
+6.2 
+Management responsibilities ................................................................................. 18 
+6.3 
+Obsolescence management organization .............................................................. 18 
+6.4 
+Customer/manufacturer management.................................................................... 18 
+6.5 
+Partnering agreements between organizations ...................................................... 19 
+7 
+Development of an OMP ................................................................................................ 19 
+7.1 
+OMP ..................................................................................................................... 19 
+7.2 
+OMP contents ....................................................................................................... 19 
+8 
+Strategies to minimize obsolescence during design ....................................................... 21 
+8.1 
+Obsolescence as a consideration in design ........................................................... 21 
+8.2 
+Source code ......................................................................................................... 21 
+8.3 
+Material characterization ....................................................................................... 21 
+8.4 
+Modularity ............................................................................................................. 21 
+8.5 
+Transparency ........................................................................................................ 21 
+8.6 
+Sustainable technologies including materials ........................................................ 22 
+8.7 
+Open standards .................................................................................................... 22 
+8.8 
+Obtaining IPR ....................................................................................................... 22 
+8.9 
+Software licensing ................................................................................................. 22 
+8.10 
+Data acquisition .................................................................................................... 22 
+9 
+Obsolescence management approach ........................................................................... 23 
+9.1 
+Introduction to risk assessment ............................................................................. 23 
+9.2 
+Obsolescence monitoring ...................................................................................... 24 
+9.2.1 
+Monitoring background .................................................................................. 24 
+9.2.2 
+Obsolescence notice monitoring .................................................................... 25 
+9.2.3 
+Direct contact monitoring ............................................................................... 25 
+9.3 
+Risk assessment to select approach ..................................................................... 25 
+9.4 
+Proactive approach ............................................................................................... 27 
+9.5 
+Reactive approach ................................................................................................ 27 
+10 
+Obsolescence resolutions .............................................................................................. 27 
+10.1 
+Resolution selection and implementation .............................................................. 27 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+IEC 62402:2019 © IEC 2019 
+– 3 – 
+ 
+10.2 
+Same item ............................................................................................................ 28 
+10.3 
+Life of need buy .................................................................................................... 29 
+10.4 
+Substitutes ............................................................................................................ 30 
+10.5 
+Emulation and reverse engineering ....................................................................... 30 
+10.6 
+Design change ...................................................................................................... 31 
+11 
+Measurement and improvement of obsolescence management activities ....................... 31 
+11.1 
+General ................................................................................................................. 31 
+11.2 
+Metrics .................................................................................................................. 31 
+Annex A (informative)   Vocabulary relating to obsolescence ................................................ 33 
+Annex B (informative)   Obsolescence resolutions ................................................................ 36 
+B.1 
+Obsolescence management resolutions with EOP forecast ................................... 36 
+B.2 
+Obsolescence management resolutions with EOP announcement ......................... 37 
+B.3 
+Alternate manufacturers: example of a reactive approach in electronics ................ 38 
+Annex C (informative)   Guidance on the effects of obsolescence ......................................... 39 
+Annex D (informative)   Guidance on the OMP ...................................................................... 40 
+Annex E (informative)   Examples of an obsolescence risk assessment ................................ 41 
+E.1 
+General ................................................................................................................. 41 
+E.2 
+Example 1 ............................................................................................................. 41 
+E.3 
+Example 2 ............................................................................................................. 42 
+E.3.1 
+Risk assessment process .............................................................................. 42 
+E.3.2 
+Likelihood assessment................................................................................... 43 
+E.3.3 
+Impact date assessment ................................................................................ 43 
+E.3.4 
+Obsolescence risk ......................................................................................... 44 
+E.3.5 
+Review .......................................................................................................... 44 
+Annex F (informative)   Example of an obsolescence management decision process ............ 45 
+Bibliography .......................................................................................................................... 47 
+ 
+Figure 1 – Obsolescence management activities ................................................................... 14 
+Figure 2 – Assessments identifying obsolescence risks and issues ....................................... 15 
+Figure 3 – Item's life cycle versus obsolescence management activities ............................... 17 
+Figure 4 – Proactive versus reactive approaches with resolutions ......................................... 24 
+Figure B.1 – Item production output with EOP forecast and obsolescence scenarios ............ 36 
+Figure B.2 – Item production output at EOP announcement and obsolescence 
+scenarios .............................................................................................................................. 37 
+Figure E.1 – Sample risk assessment process ...................................................................... 43 
+Figure F.1 – Initial decision process to recommend obsolescence resolutions ....................... 45 
+Figure F.2 – Decision process to recommend obsolescence resolutions  (long term 
+repairs strategy) ................................................................................................................... 46 
+Figure F.3 – Decision process to recommend obsolescence resolutions (LNB) ..................... 46 
+ 
+Table E.1 – Likelihood assessment ....................................................................................... 41 
+Table E.2 – Impact assessment ............................................................................................ 41 
+Table E.3 – Combination of likelihood and impact assessment .............................................. 42 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+ 
+– 4 – 
+IEC 62402:2019 © IEC 2019 
+Table E.4 – Level of proactive approach assessment ............................................................ 42 
+Table E.5 – EOP forecast ..................................................................................................... 43 
+Table E.6 – Number of approved manufacturers ................................................................... 43 
+Table E.7 – Likelihood .......................................................................................................... 43 
+Table E.8 – Impact date ........................................................................................................ 44 
+Table E.9 – Risk level ........................................................................................................... 44 
+Table E.10 – Obsolescence risk review ................................................................................. 44 
+ 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+IEC 62402:2019 © IEC 2019 
+– 5 – 
+ 
+INTERNATIONAL ELECTROTECHNICAL COMMISSION 
+____________ 
+ 
+OBSOLESCENCE MANAGEMENT 
+ 
+FOREWORD 
+1) The International Electrotechnical Commission (IEC) is a worldwide organization for standardization comprising 
+all national electrotechnical committees (IEC National Committees). The object of IEC is to promote 
+international co-operation on all questions concerning standardization in the electrical and electronic fields. To 
+this end and in addition to other activities, IEC publishes International Standards, Technical Specifications, 
+Technical Reports, Publicly Available Specifications (PAS) and Guides (hereafter referred to as “IEC 
+Publication(s)”). Their preparation is entrusted to technical committees; any IEC National Committee interested 
+in the subject dealt with may participate in this preparatory work. International, governmental and non-
+governmental organizations liaising with the IEC also participate in this preparation. IEC collaborates closely 
+with the International Organization for Standardization (ISO) in accordance with conditions determined by 
+agreement between the two organizations. 
+2) The formal decisions or agreements of IEC on technical matters express, as nearly as possible, an international 
+consensus of opinion on the relevant subjects since each technical committee has representation from all 
+interested IEC National Committees.  
+3) IEC Publications have the form of recommendations for international use and are accepted by IEC National 
+Committees in that sense. While all reasonable efforts are made to ensure that the technical content of IEC 
+Publications is accurate, IEC cannot be held responsible for the way in which they are used or for any 
+misinterpretation by any end user. 
+4) In order to promote international uniformity, IEC National Committees undertake to apply IEC Publications 
+transparently to the maximum extent possible in their national and regional publications. Any divergence 
+between any IEC Publication and the corresponding national or regional publication shall be clearly indicated in 
+the latter. 
+5) IEC itself does not provide any attestation of conformity. Independent certification bodies provide conformity 
+assessment services and, in some areas, access to IEC marks of conformity. IEC is not responsible for any 
+services carried out by independent certification bodies. 
+6) All users should ensure that they have the latest edition of this publication. 
+7) No liability shall attach to IEC or its directors, employees, servants or agents including individual experts and 
+members of its technical committees and IEC National Committees for any personal injury, property damage or 
+other damage of any nature whatsoever, whether direct or indirect, or for costs (including legal fees) and 
+expenses arising out of the publication, use of, or reliance upon, this IEC Publication or any other IEC 
+Publications.  
+8) Attention is drawn to the Normative references cited in this publication. Use of the referenced publications is 
+indispensable for the correct application of this publication. 
+9) Attention is drawn to the possibility that some of the elements of this IEC Publication may be the subject of 
+patent rights. IEC shall not be held responsible for identifying any or all such patent rights. 
+International Standard IEC 62402 has been prepared by IEC technical committee 56: 
+Dependability. 
+This second edition cancels and replaces the first edition published in 2007. This edition 
+constitutes a technical revision.  
+This edition includes the following significant technical changes with respect to the previous 
+edition: 
+a) this document has now been written with requirements as a standard, not a guide; 
+b) this document continues to have guidance in the informative annexes;  
+c) this document has been written as a general process for all technologies and items. 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+ 
+– 6 – 
+IEC 62402:2019 © IEC 2019 
+The text of this International Standard is based on the following documents: 
+FDIS 
+Report on voting 
+56/1838/FDIS 
+56/1843/RVD 
+ 
+Full information on the voting for the approval of this International Standard can be found in 
+the report on voting indicated in the above table. 
+This document has been drafted in accordance with the ISO/IEC Directives, Part 2. 
+The committee has decided that the contents of this document will remain unchanged until the 
+stability date indicated on the IEC website under "http://webstore.iec.ch" in the data related to 
+the specific document. At this date, the document will be  
+• 
+reconfirmed, 
+• 
+withdrawn, 
+• 
+replaced by a revised edition, or 
+• 
+amended. 
+ 
+IMPORTANT – The 'colour inside' logo on the cover page of this publication indicates 
+that it contains colours which are considered to be useful for the correct 
+understanding of its contents. Users should therefore print this document using a 
+colour printer. 
+ 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+IEC 62402:2019 © IEC 2019 
+– 7 – 
+ 
+INTRODUCTION 
+For the purposes of this document, obsolescence management is a discipline used at all 
+phases of an item’s life cycle to ensure an item and its sub items can continue to fulfil their 
+requirements over their expected useful life.  
+This document takes a different view of obsolescence from the standard dictionary definition. 
+Instead of an item becoming outdated or no longer used, this document views obsolescence 
+as the transition of a required item still in use from available to unavailable from the 
+manufacturer. Any item that remains in use will be subject to obsolescence. Obsolescence 
+manifests itself as difficulty in obtaining supplies, spares and/or support.  
+This document defines the requirements for managing the obsolescence of any type of item. 
+Obsolescence management helps prevent unnecessary losses (for example loss of 
+commercial service or capability) and treat risks associated with obsolescence. The 
+assessment of risk associated with obsolescence takes account of factors including but not 
+limited to: the likelihood of an item becoming obsolete during its expected useful life, the 
+likelihood of an impact occurring during that projected useful life, and the severity of that 
+impact. Obsolescence management treats risks associated with obsolescence by reducing the 
+likelihood or severity of impact, or both. 
+It has become essential to include obsolescence management within planning activities from 
+the earliest life cycle phases. The guidance provided in this document could be characterized 
+as strategic obsolescence management when obsolescence management is planned and 
+implemented during the early life cycle phases. 
+Even though this situation may not be a direct case of obsolescence, this document will also 
+be of assistance in the management of items that have diminished manufacturing sources and 
+materiel shortages that can result in long lead times, reduced availability and ultimately 
+obsolescence of those items. 
+Managing obsolescence contributes to the dependability of an item, particularly supportability, 
+which is defined as the ‘ability to be supported to sustain the required availability with a 
+defined operational profile and given logistic and maintenance resources’. As such, 
+obsolescence management may be performed as part of an overall dependability 
+management programme as described in IEC 60300-1 [1]1. 
+ 
+____________ 
+1  Numbers in square brackets refer to the Bibliography. 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+ 
+– 8 – 
+IEC 62402:2019 © IEC 2019 
+OBSOLESCENCE MANAGEMENT 
+ 
+ 
+ 
+1 
+Scope 
+This document provides requirements and guidance for obsolescence management applicable 
+to any organization that is dependent on another organization to obtain value from the 
+usefulness of the items that it provides. A cost-effective obsolescence management process 
+and the activities used to implement the process are applicable throughout all phases of an 
+item’s life cycle. 
+This document covers the following areas: 
+• 
+establishing an obsolescence management policy; 
+• 
+establishing an infrastructure and an organization; 
+• 
+developing an obsolescence management plan (OMP); 
+• 
+developing strategies to minimize obsolescence during design;  
+• 
+determining an obsolescence management approach; 
+• 
+selecting obsolescence resolution and implementation; 
+• 
+measuring and improving the performance of the outcomes of the obsolescence 
+management activities. 
+Guidance on obsolescence management is included as notes, in the informative annexes and 
+references in the Bibliography.   
+2 
+Normative references 
+There are no normative references in this document. 
+3 
+Terms, definitions and abbreviated terms 
+3.1 
+Terms and definitions 
+For the purposes of this document, the following terms and definitions apply. 
+ISO and IEC maintain terminological databases for use in standardization at the following 
+addresses:  
+• 
+IEC Electropedia: available at http://www.electropedia.org/ 
+• 
+ISO Online browsing platform: available at http://www.iso.org/obp 
+3.1.1 
+ 
+alternative item 
+item whose characteristics can be different from that specified for one or more reasons 
+EXAMPLE Items with different quality or reliability level, tolerance, parameteters, temperature range. 
+Note 1 to entry: See also ‘substitutes’ (10.4).  
+3.1.2 
+ 
+commercial off-the-shelf 
+COTS 
+conforming to the manufacturer’s datasheet and available to any purchaser  
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+IEC 62402:2019 © IEC 2019 
+– 9 – 
+ 
+Note 1 to entry: A single user is not able to influence the manufacturer’s datasheet.  
+Note 2 to entry: This note applies to the French language only. 
+3.1.3 
+ 
+emulation 
+process that produces a substitute item for the purpose of replacing another item while 
+maintaining the same form, fit and function, and interface 
+Note 1 to entry: Microcircuit emulation can replicate, with state-of-the-art, items that emulate the original item. 
+3.1.4 
+ 
+end of production 
+EOP 
+date of discontinuance from manufacture 
+Note 1 to entry: This note applies to the French language only. 
+3.1.5 
+ 
+equivalent item 
+item which is functionally, parametrically and technically interchangeable  
+Note 1 to entry: This term is also known as ‘form, fit, function and interface’ F3I. 
+Note 2 to entry: See also ‘substitutes’ (10.4). 
+3.1.6 
+ 
+existing stock 
+sub item(s) from within the supply chain and inventory that can be allocated to the item 
+without requalification 
+3.1.7 
+ 
+indenture level  
+level of sub-division within a system hierarchy  
+EXAMPLE System, subsystem, assembly, and component.  
+Note 1 to entry: From the maintenance perspective, the indenture level depends upon various factors, including 
+the complexity of the item's construction, the accessibility of sub items, skill level of maintenance personnel, test 
+equipment facilities, and safety considerations. 
+[SOURCE: IEC 60050-192:2015 [2], 192-01-05] 
+3.1.8 
+ 
+item  
+subject being considered  
+Note 1 to entry: The item may be an individual part, component, device, functional unit, equipment, subsystem, or 
+system. 
+Note 2 to entry: The item may consist of hardware, software, people or any combination thereof.  
+Note 3 to entry: The item is often comprised of elements that may each be individually considered. See sub 
+item (3.1.21) and indenture level (3.1.7).  
+Note 4 to entry: IEC 60050-191:1990 (now withdrawn; replaced by IEC 60050-192:2015) identified the term 
+“entity” as an English synonym, which is not true for all applications.  
+Note 5 to entry: The definition for item in IEC 60050-191:1990 (now withdrawn; replaced by IEC 60050-192:2015) 
+is a description rather than a definition. This new definition provides meaningful substitution throughout this 
+document. The words of the former definition form new note 1. 
+[SOURCE: IEC 60050-192:2015 [2], 192-01-01] 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+ 
+– 10 – 
+IEC 62402:2019 © IEC 2019 
+3.1.9 
+ 
+integrator  
+organization that assembles an item of complex sub items for the end user 
+Note 1 to entry:  Examples of items for the end user are: car, ship, aeroplane, oilrig. 
+3.1.10 
+ 
+life of need buy 
+LNB 
+procurement of sub items sufficient to support the item throughout its life cycle, or until the 
+next planned upgrade 
+Note 1 to entry: Identified as a proactive LNB or a reactive LNB depending on which obsolescence approach is 
+being used for the phase of the life cycle for which the procurement is taking place. (See 10.3). 
+Note 2 to entry: This term was previously known as lifetime buy. 
+Note 3 to entry: This note applies to the French language only. 
+3.1.11 
+ 
+manufacturer 
+organization or individual with responsibility for the design, manufacture, packaging and 
+labelling of an item before placing the item on the market under their own name or trademark 
+3.1.12 
+ 
+obsolescence 
+transition of an item from available to unavailable from the manufacturer in accordance with 
+the original specification 
+Note 1 to entry: In high reliability items, the sub item’s original manufacturer and original specification are 
+generally identified in the item’s original configuration. 
+Note 2 to entry: Obsolescence might be because production has ended or because of the lack of availability of 
+service provision, support of software or processed material. 
+Note 3 to entry: A specification can be of any form such as a drawing, datasheet, standard, written specification 
+or a list of keywords and properties. A specification cancelled or an item’s  approval to a withdrawn specification 
+can also cause obsolescence. 
+3.1.13 
+ 
+obsolescence issue 
+effect when the item is obsolete or when there is certainty as to when the item will become 
+obsolete 
+Note 1 to entry: The item has an obsolescence issue when the PDN (see 3.1.18) has been issued by the 
+manufacturer of the item. 
+3.1.14 
+ 
+obsolescence risk 
+measure of uncertainty as to when an item will become obsolete 
+Note 1 to entry: Obsolescence risk is often expressed in terms of a combination of the impact of an item 
+becoming obsolete and the associated likelihood.  
+3.1.15 
+ 
+obsolete <tangible item> 
+no longer in production from the manufacturer in accordance with the original specification 
+Note 1 to entry: Examples include but are not limited to: materials, chemicals, components, electronics, and 
+mechanical hardware. 
+Note 2 to entry: In high reliability items the sub item’s original manufacturer, part number and/or original 
+specification are generally identified in the item configuration. 
+Note 3 to entry: Discontinued is synonymous with obsolete. 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+IEC 62402:2019 © IEC 2019 
+– 11 – 
+ 
+3.1.16 
+ 
+obsolete <intangible item> 
+no longer available from the manufacturer in accordance with the original specification 
+Note 1 to entry: Examples include but are not limited to: software, services, specifications, and processes. 
+Note 2 to entry: In high reliability items the sub item’s original manufacturer and original specification are 
+generally identified in the item configuration. 
+Note 3 to entry: Discontinued is synonymous with obsolete. 
+3.1.17 
+ 
+product change notice 
+PCN 
+notification from a manufacturer announcing a change of process, properties, characteristics 
+or specification of an item 
+Note 1 to entry: This note applies to the French language only. 
+3.1.18 
+ 
+product discontinuance notice 
+PDN 
+notification of end of production of an item by the manufacturer 
+Note 1 to entry: This note applies to the French language only. 
+3.1.19 
+ 
+planned upgrades  
+predetermination points during the item life cycle at which the design of all or part of the item 
+will be brought up to date by replacing sub items with better performing sub items and/or 
+replacing obsolete sub items or sub items at risk from becoming obsolete 
+Note 1 to entry: These upgrades will often involve changes to both the software and the underlying hardware. 
+Between the planned upgrades, one of the other obsolescence resolutions can be necessary (see Clause 10).  
+3.1.20 
+ 
+reclamation 
+use of a sub item that has a remaining useful life from a surplus or redundant item 
+Note 1 to entry: Reclamation is a controlled process (see 10.2 and recycled item in Annex A). 
+Note 2 to entry: Reclamation is sometimes referred to as cannibalization. 
+3.1.21 
+ 
+sub item 
+part of the subject being considered 
+Note 1 to entry: A sub item becomes the item, when individually considered. 
+[SOURCE: IEC 60050-192:2015 [2], 192-01-02] 
+3.1.22 
+ 
+supply chain 
+entire network of entities, such as organizations, people, technologies, activities, information 
+and resources, directly or indirectly interlinked and interdependent, involved in serving the 
+end user on delivering an item or service  
+Note 1 to entry: The supply chain is a part of an end-to-end process from the raw materials to the finished item 
+delivered to the end user. 
+3.2 
+Abbreviated terms 
+COTS 
+commercial off-the-shelf 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+ 
+– 12 – 
+IEC 62402:2019 © IEC 2019 
+ECMP 
+electronic components management plan 
+EOP 
+end of production 
+IIOM 
+International Institute of Obsolescence Management [3] 
+IPR 
+intellectual property rights 
+LNB 
+life of need buy 
+OCM 
+original component manufacturer 
+OEM 
+original equipment manufacturer 
+OMP 
+obsolescence management plan 
+PCN 
+product change notice 
+PDN 
+product discontinuance notice 
+REACH 
+registration, evaluation, authorization and restriction of chemicals 
+RoHS 
+restriction of hazardous substances 
+4 
+Obsolescence management 
+4.1 
+What is obsolescence 
+Obsolescence is the transition of an item from available to unavailable from the manufacturer 
+in accordance with the original specification. 
+Obsolescence is a significant cost driver and can occur at all phases of an item’s life cycle. 
+Unforeseen obsolescence issues can happen quickly, can cost a significant amount of 
+unplanned resources to resolve and may put at risk an organization’s financial stability, 
+operations and reputation. 
+Obsolescence management activities ensure an item and its sub items can continue to fulfil 
+their requirements over their expected useful life. Most items will become obsolete eventually; 
+however, there is often uncertainty about when this will occur and the consequences to the 
+item concerned. 
+Items include but are not limited to: 
+• 
+physical assets (for example products, equipment, sub-assemblies, components, 
+manufacturing tooling, test equipment, spares); 
+• 
+consumables (for example ink cartridges, adhesives, computer media, batteries); 
+• 
+materials (for example metals, fluids, polymers, composites); 
+• 
+software (for example operating environment, middleware, firmware, specific applications); 
+• 
+systems (for example information systems, classification systems); 
+• 
+services (for example maintenance, communication and information). 
+For the purposes of obsolescence management, items may also include information and 
+knowledge such as data, services, processes, procedures, specifications, standards and 
+regulations. 
+Environmental legislation may have the potential to affect the use of some materials during 
+the life of the item; those materials affected by the legislation should be considered from the 
+outset of development. 
+Reasons why items become obsolete are: 
+• 
+market factors including reduced demand of an item, lack of profitability or the introduction 
+of new technologies and capabilities causing the manufacturer to issue a PDN; 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+IEC 62402:2019 © IEC 2019 
+– 13 – 
+ 
+• 
+changes to the configured item (for example configured item number, item updates, item 
+rebranding, merger or acquisition of the manufacturer); 
+• 
+obsolete sub items (for example raw materials or other sub items that make up an item); 
+• 
+loss or change to manufacturing capability (for example process re-tooling, test 
+equipment, 
+manufacturing 
+equipment, 
+in-process 
+materials, 
+support 
+equipment, 
+documentation); 
+• 
+loss of skill or knowledge to manufacture or support the item; 
+• 
+loss of legal authority for manufacturers to place the item on the market due to regulations 
+(for example export control), legislation (for example environmental protection legislation 
+such as RoHS, REACH), or legal agreements; 
+• 
+natural or man-made disasters. 
+NOTE See guidance on the effects of obsolescence on different technologies in informative Annex C. 
+4.2 
+What is obsolescence management 
+Obsolescence is inevitable but normally involves uncertainty as to when it will occur and what 
+the likely consequences in terms of cost and impact will be. Due to this uncertainty, it is 
+essential that obsolescence be addressed in a risk management context by understanding the 
+level of risk and implementing any necessary activities to treat the risks. This makes it 
+necessary to implement a management process to mitigate the negative effects of 
+obsolescence.  
+Obsolescence management collectively describes the activities taken by individuals or an 
+organization to manage the obsolescence of items. The objective of obsolescence 
+management is to ensure that obsolescence is managed as an integral part of the item’s life 
+cycle: concept, development (design), realization (production), utilization (in-service support), 
+enhancement (return to design upgrade) and retirement and then return to concept. 
+NOTE After the subclauses introducing the obsolescence management process and activities, the relationship 
+between obsolescence management activities and the item’s life cycle is shown in Figure 3. 
+Obsolescence management seeks to reduce the risk of obsolescence through undertaking 
+planned activities to reduce the frequency of obsolescence issues and/or reduce the impact 
+when an item becomes obsolete. The impact of obsolescence can vary depending on the type 
+of item and the context in which it delivers value to the organization. Obsolescence impacts 
+can be categorized in the following ways: 
+• 
+Financial impacts. Responding to obsolescence can introduce significant costs to an 
+organization from changing supply chains, design or testing new items, changes to item 
+information or processes, or increased item cost as supply becomes scarce. 
+• 
+Operational impacts. When an item becomes unavailable, the user can no longer derive 
+benefit from the item. The unavailability of the item may also impact the user’s ability to 
+derive benefit from other sub items or items. 
+• 
+Compliance impacts. The obsolescence of an item may prevent an organization from 
+complying with regulatory requirements such as environmental or safety obligations. 
+• 
+Reputation impacts. Where others are dependent on an organization to provide an item or 
+service, the inability to provide the item or service due to obsolescence may have long 
+term impacts on the reputation of the organization. 
+4.3 
+Benefits of obsolescence management 
+Effective obsolescence management typically delivers: 
+• 
+an understanding of the current and future obsolescence risk being carried by an 
+organization; 
+• 
+a lower overall risk to an organization’s objectives from obsolescence; 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+ 
+– 14 – 
+IEC 62402:2019 © IEC 2019 
+• 
+greater information and a framework to support obsolescence risk assessment and 
+decision making; 
+• 
+efficiencies through common obsolescence approaches, standards, processes or 
+knowledge across and between organizations; 
+• 
+more resolutions and time to respond to obsolescence risk and issues. 
+4.4 
+Obsolescence management process 
+The obsolescence management process contains the following steps, which are detailed in 
+the clauses below: 
+• 
+establishing an obsolescence management policy (see Clause 5); 
+• 
+establishing an infrastructure and an organization (see Clause 6); 
+• 
+developing an OMP (see Clause 7); 
+• 
+developing strategies to minimize obsolescence during design (see Clause 8); 
+• 
+determining an obsolescence management approach (see Clause 9); 
+• 
+selecting obsolescence resolution and implementation (see Clause 10); 
+• 
+measuring and improving the performance of the outcomes of the obsolescence 
+management activities (see Clause 11). 
+ 
+Figure 1 – Obsolescence management activities 
+Figure 1 describes the obsolescence management activities that should be considered 
+throughout the life cycle phases of an item. The diagram has been simplified to identify the 
+activities of an obsolescence management process.  
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+IEC 62402:2019 © IEC 2019 
+– 15 – 
+ 
+The end user’s requirements (including technical, business and social) for the item have to be 
+taken into consideration when performing and initiating the obsolescence management 
+activities by setting an obsolescence management policy. The output of the obsolescence 
+management process is a continuously evolving OMP. The obsolescence management 
+organization sets up the necessary resources to implement the obsolescence management 
+activities and strategies. 
+As each sub item is considered for the design it is selected from sustainable technologies and 
+assessed, identifying obsolescence risks and issues for the life of the item. As part of the 
+sustainment strategy, each sub item is fully identified (see 8.10) from the assessed 
+manufacturers which are selected from the technology strategies (see 8.6).   
+Figure 2 details the obsolescence risk and issues box within Figure 1.  
+The general approach selected to treat the level of risk for each of the technologies of the 
+item is added to the OMP, including approaches for critical sub items monitoring notices as 
+necessary. All individual sub items may be recorded within the OMP or a reference document, 
+with their selected approach, resolution and implementation, as necessary. During the life 
+cycle of the item the status information of each sub item may change the level of risk, which 
+may change the selected approach and resolution. This would result in the need to update 
+with the changes during the monitoring and surveillance stage of the process.  
+ 
+Figure 2 – Assessments identifying obsolescence risks and issues 
+The plan owner monitors the status of each sub item from their manufacturer's surveillance. 
+The OMP should identify the level of risk for the technology of the sub item becoming 
+obsolete which should determine the monitoring review period and therefore which sub items 
+need monitoring regularly.  
+A list of examples of resolutions for each approach is given below. These have been 
+suggested under either a proactive or reactive approach, but some can be interchangeable 
+with either approach to treat the risk level. 
+A proactive approach to item obsolescence risks may initiate: 
+• 
+design considerations (see 8.1): 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+ 
+– 16 – 
+IEC 62402:2019 © IEC 2019 
+– 
+modularity (see 8.4); 
+– 
+technology transparency (see 8.5); 
+• 
+planned design changes/upgrades (see 10.6); 
+• 
+extended production (see 10.2, 2nd bullet); 
+• 
+authorized continuing manufacturer; 
+• 
+proactive life of need buy (LNB) to avoid obsolescence and materiel shortages (see 10.3); 
+• 
+preservation – technology long term storage (for example die banking) (see 10.2 7th 
+bullet). 
+A reactive approach to item obsolescence issues may entail: 
+• 
+searching for existing stock (see 10.2, 1st bullet); 
+• 
+processing an LNB reacting to a notification of obsolescence (see 10.3); 
+• 
+substituting items (see 10.4) as an:  
+– 
+equivalent item; 
+– 
+alternative item; 
+• 
+researching an aftermarket solution provider who may perform: 
+– 
+divestment – IPR transfer (see 10.2, 4th bullet); 
+– 
+reclamation (see 10.2, 6th bullet); 
+– 
+emulation/reverse engineering (see 10.5); 
+– 
+repair (see 10.2, 5th bullet); 
+• 
+design changes/upgrades (see 10.6 minor design change); 
+• 
+introducing a new item (see 10.6 major design change); 
+• 
+no action – no impact (see 10.2 last bullet). 
+Figure 3 suggests periods when obsolescence activities may be used in an item's life cycle. 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+IEC 62402:2019 © IEC 2019 
+– 17 – 
+ 
+ 
+ 
+Figure 3 – Item's life cycle versus obsolescence management activities 
+5 
+Obsolescence management policy 
+An overarching obsolescence management policy should be in place to guide the overall 
+effort to manage obsolescence. This policy may include integration of obsolescence 
+considerations into an existing supply chain and supportability policy. Management shall 
+enforce the obsolescence management policy where it exists. The policy shall identify 
+recommendations of this document as requirements where required by an end user. 
+Usually only one obsolescence management policy is required for the whole organization, but 
+the policy may allow for multiple OMPs. 
+The obsolescence management policy shall identify: 
+• 
+the roles, responsibilities and infrastructure from all disciplines of the organization for 
+managing obsolescence; 
+• 
+the obsolescence management skill level and training required for the infrastructure; 
+• 
+the organization’s operational procedures related to obsolescence management which 
+may be part of a life cycle management plan or support plan. 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+ 
+– 18 – 
+IEC 62402:2019 © IEC 2019 
+6 
+Infrastructure and organization 
+6.1 
+General 
+To execute the obsolescence management policy, there should be an obsolescence 
+management infrastructure and organization in place. This infrastructure and organization 
+should include: 
+• 
+management responsibilities; 
+• 
+obsolescence management organization and authorities; 
+• 
+end user/manufacturer management; 
+• 
+partnering agreements between organizations. 
+6.2 
+Management responsibilities 
+Top management should appoint a representative that is given the authority and resources to 
+manage, monitor, evaluate and coordinate obsolescence management activities. The 
+representative should be responsible for the obsolescence management policy and prepare 
+and revise OMPs at all life cycle phases, approving revisions. This appointment is to promote 
+effective and efficient operation and improvement of obsolescence management. The 
+obsolescence management representative should report to top management and may 
+communicate 
+with 
+end 
+users/customers, 
+contract 
+manufacturers, 
+integrators, 
+and 
+manufacturers on matters pertaining to obsolescence.   
+6.3 
+Obsolescence management organization 
+Obsolescence management has roles that should be performed to execute the obsolescence 
+management policy which is suitably resourced according to the requirements of the 
+organization. An individual can fulfill multiple roles and can be a dedicated member or a 
+matrixed member of the obsolescence management organization. These roles should include 
+but are not limited to: an obsolescence management lead communicating and/or coordinating 
+with 
+management, 
+end 
+users/customers, 
+manufacturers 
+and 
+their 
+suppliers, 
+sourcing/contracting officers, engineering, quality, and finance. The organization should put in 
+place the means for effective communication between all levels of the supply chain on 
+identifying, treating and resolving obsolescence. 
+To enable staff to be able to identify, analyse and manage obsolescence effectively, they 
+need to understand the processes that are involved in obsolescence management and 
+therefore require the correct training and/or mentoring to enable them to perform. 
+The transfer of skills either through the physical transfer of resources or through training, may 
+be necessary, removing reliance on a third-party organization. 
+NOTE Competence recognition for obsolescence practitioners is available from the International Institution of 
+Obsolescence Management [3]. 
+6.4 
+Customer/manufacturer management 
+The customer should check if there is capability to manage obsolescence. The 
+customer/manufacturer relationship should allow for the timely exchange of information about 
+technologies and items made obsolete, in order to facilitate the obsolescence management 
+processes. Organizations should use this information and monitor the availability of their 
+supplied items at regular intervals. 
+This relationship may be in the form of a contract between the manufacturer and their 
+suppliers, ensuring early and comprehensive notification of errata, item status (PDN 
+see 3.1.18) and change notification (PCN see 3.1.17) and an appropriate reaction to 
+obsolescence issues from obsolescence monitoring (see 9.2.2). This contract may include 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+IEC 62402:2019 © IEC 2019 
+– 19 – 
+ 
+other conditions such as traceability and warranties, and this relationship is often known as a 
+franchised distributor for the supply of items from the manufacturer. 
+6.5 
+Partnering agreements between organizations 
+If applicable, contractual arrangements between manufacturers and/or integrators can be 
+used to ensure that obsolescence information is actively communicated up the supply chain 
+by the manufacturer, in order to provide an appropriate and timely response by the 
+manufacturer and/or eventual end user. This includes any organizations within the supply 
+chain where distributors have franchised agreements with their sources to provide items, 
+including warranties. Items from organizations will be known as genuine when they have 
+traceability back to the manufacturers, thus avoiding counterfeit items. 
+All organizations in the supply chain should have agreements which should include 
+information exchange on obsolescence, appropriate time-limits and exchange formats. 
+Information exchange between organizations within the agreement or contract should include 
+the reporting of change and discontinuation notices (PCNs and PDNs) up the supply chain. It 
+might not be to the manufacturer but to the integrator or the intermediate supplier/distributor 
+depending on where in the supply chain or how complex it is in a particular 
+technology/industry. 
+NOTE For further information on exchange formats see VDMA 24903 [4]. 
+As part of any partnering agreement between organizations, the assessment of capability in 
+relation to obsolescence management may be included in the quality management system for 
+approved manufacturers and their approved suppliers.  These partnering agreements may be 
+in the form of a service level agreement, contractually committing a supplier to the level of 
+item availability, thus devolving the risk of obsolescence onto the supplier. 
+7 
+Development of an OMP 
+7.1 
+OMP 
+In accordance with the obsolescence management policy, an OMP shall be developed and 
+implemented to ensure appropriate selection and timely implementation of relevant 
+obsolescence activities. The plan should include strategies to minimize obsolescence during 
+design as well as reactive or proactive obsolescence management approaches for 
+technologies, as appropriate, to the risks identified.  
+The OMP describes the activities for prevention, detection/identification and treatment of the 
+effects of obsolescence through all phases of the item life cycle, to achieve the optimum 
+compromise between life cycle costs for the item's performance and item availability, 
+maintainability and safety. The OMP can be part of another plan or a separate document.  
+7.2 
+OMP contents 
+The OMP contents include but are not limited to the following: 
+• 
+Authorities and resources. The plan shall identify the organization or individual for 
+developing, reviewing and maintaining the plan and should identify the milestones for 
+future transfer of ownership of the plan, if applicable. The plan shall identity who is the 
+organization or individual to approve the plan. The plan shall identify the skill level and 
+roles to execute the obsolescence management activities of the plan and should identify 
+financial resources. 
+• 
+Scope. The plan shall identify: 
+– 
+the items being considered for obsolescence management; 
+– 
+the length of each item’s life cycle; 
+– 
+the organization’s obsolescence management policy (should list the contents); 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+ 
+– 20 – 
+IEC 62402:2019 © IEC 2019 
+– 
+the customer/end user’ requirements (should list the references). 
+• 
+Objectives. The plan should identify the objectives of the obsolescence management 
+activities which may include: 
+– 
+data acquisition; 
+– 
+strategies to minimize obsolescence during design; 
+– 
+item monitoring; 
+– 
+item risk assessment; 
+– 
+approach selection; 
+– 
+resolution selection and implementation; 
+– 
+review of the plan; 
+– 
+measurement and improvement. 
+• 
+Data acquisition. The plan shall identify the data required to determine the obsolescence 
+management approach and make it more efficient.  
+NOTE 1 Data includes quantitative and qualitative information. See 8.10 for guidance. 
+• 
+Strategies to minimize obsolescence during design. The plan can identify strategies 
+throughout the item's life cycle which include: 
+– 
+surveillance of sustainable technologies and their assessed manufacturers;  
+– 
+selection of sub items from sustainable technologies to minimizes obsolescence; 
+NOTE 2 Selection of sub items from assessed manufactures can reduce the risk of obsolescence for the 
+life of the item.  
+– 
+plan item upgrades for unsustainable technologies. 
+• 
+Flow down of obsolescence management requirements throughout the supply chain. 
+These should include agreements for timely receipt of notices of obsolescence (see also 
+6.4 and 6.5). 
+• 
+Monitoring and schedule. After the initial surveillance of technologies, selection of 
+manufacturers and monitoring of item and sub item status, the plan should schedule those 
+items that require monitoring. Those sub items that are identified as critical to the item 
+shall be scheduled for periodic monitoring, relevant for that technology. 
+• 
+Obsolescence management approach.  The plan should define the obsolescence 
+management approach to be implemented for each sub item of the item. 
+• 
+Resolution selection and implementation. The plan should implement the most cost 
+effective resolution to treat or resolve obsolescence.  
+NOTE 3 This could be referenced to by leveraging another document with the process already described. 
+• 
+Review of the plan. The plan should include the obsolescence reviews to be undertaken 
+throughout the life cycle to an agreed schedule and criteria. This will determine the 
+suitability, adequacy and effectiveness of the obsolescence management activities 
+including the obsolescence resolutions.   
+NOTE 4 Reviews involve investigating the current situation to compare it with what is expected or required, in 
+order to determine discrepancies which can be analysed so that improvements can be recommended.  
+• 
+Plan performance. The plan should document the metrics and measurement for the 
+process improvement. 
+• 
+Tools used. The plan shall document details of how relevant information should be 
+documented and stored and for how long it should be kept. 
+NOTE 5 For further guidance on what can be included in an OMP see informative Annex D. 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+IEC 62402:2019 © IEC 2019 
+– 21 – 
+ 
+8 
+Strategies to minimize obsolescence during design 
+8.1 
+Obsolescence as a consideration in design 
+Where possible the risks arising from obsolescence should be reduced during design, 
+whenever a design activity is undertaken. The choice and the selection of items (for example 
+materials, components and interfaces) should be made in order to minimize the risk of 
+obsolescence.  
+Consideration should be given to: 
+• 
+changes to regulations which may affect the market; 
+• 
+investigating multiple sourcing; 
+• 
+monitoring obsolescence (PDNs see 3.1.18); 
+• 
+monitoring changes (PCNs see 3.1.17). 
+For example, selection of an item with a long-term production life, which is available from 
+several manufacturers and compliant with regulations, reduces obsolescence risks. 
+Electronic component management plans governing the selection of hardware typically 
+address obsolescence management (see for example IEC 62239-1 [5]). A similar approach 
+should be considered for other technologies. 
+The following subclauses 8.2 to 8.10 are strategies that are best considered during the 
+development phase to control risks and costs arising from obsolescence; however, the 
+strategies could still be implemented in later phases of the item's life cycle. 
+8.2 
+Source code 
+All the source code, licences and associated documentation for software modules as well as 
+tooling and skills needed for software development/production should be preserved to ensure 
+appropriate maintainability and future enhancements. 
+8.3 
+Material characterization 
+Raw and manufactured materials should be characterized so that they can be 
+comprehensively specified to an alternative manufacturer if this becomes necessary. There 
+may be a need to assess an alternate manufacturer while the item is still in production. 
+Material characterization is mainly relevant for use with: 
+• 
+raw materials; 
+• 
+manufactured materials; 
+• 
+manufacturing processes. 
+8.4 
+Modularity 
+Modularity is the use of exchangeable sub items (for example parts, products, sub items, and 
+software) and should be implemented to make the item easy to replace and repair. 
+8.5 
+Transparency 
+Transparency is a design methodology that is based on the specification of interfaces. 
+Transparency should be implemented to allow any technology to be used in manufacture and 
+support provided that the form, fit and function and interface F3I of the individual items (for 
+example component or module) is maintained. 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+ 
+– 22 – 
+IEC 62402:2019 © IEC 2019 
+8.6 
+Sustainable technologies including materials 
+The process for selecting sub items should consider the following in order to make 
+technologies and items less likely to become obsolete:  
+• 
+technologies and items that are likely to have long life cycles and where the ability to 
+forecast future changes exists; 
+• 
+assessed manufacturers for each technology that meets all the requirements of the design 
+and regulations where procurement legislation allows this approach; 
+• 
+manufacturers based on research into market trends and where possible, having multiple 
+assessed manufacturers listed against the items within the technology. 
+8.7 
+Open standards 
+It 
+is 
+important 
+to 
+develop 
+the 
+architecture/design 
+of 
+the 
+item 
+to 
+facilitate 
+the 
+replacement/repair of obsolete sub items (hardware and software), so that readily available 
+substitute sub items (see 10.4) can be used in place of obsolete sub items. Implement open 
+standards, protocols, and interfaces to allow for easier modular approach for technology 
+upgrades. An open architecture reduces obsolescence costs, because it avoids expensive 
+design changes by facilitating the insertion of advanced technologies and software. Often, it 
+also enables competition, which will minimize the likelihood of future obsolescence issues. 
+The architecture of an item should be designed to take growth and evolving standards and 
+interfaces into consideration. This provides for change, while minimizing the impact on 
+existing item functions. 
+In addition, if applicable, the design should allow for partitioning of the software into 
+appropriate sub items that can be tested in isolation and should avoid making software 
+dependent on the hardware through appropriate isolation of drivers and the use of abstraction 
+layers. 
+8.8 
+Obtaining IPR 
+IPR can restrict the legal rights of the organization to change or reproduce item designs 
+without reference to, and contracts with, the owner of the IPR. Where possible, intellectual 
+property should be obtained for items determined to be at high risk when it is cost effective. 
+8.9 
+Software licensing 
+Licences for software sub items should be available during the complete life cycle of the item. 
+Specific contracts may be needed with software manufacturers to allow the usage of software 
+when the software is no longer supported. 
+8.10 Data acquisition 
+To manage obsolescence efficiently, availability of data such as the status of sub items and 
+item indenture level should be shared with everybody involved (for example design office, 
+supply chain, procurement). Data shall be acquired to ensure that the likelihood and impact of 
+obsolescence risks are evaluated. This data can include but is not limited to: 
+• 
+expected market life of the item/sub items; 
+• 
+a list of configuration sub items within an item; 
+• 
+the identification of the items and sub items details: manufacturer, part number and 
+specification. Ensure the item details correctly identify the manufacturer of the item/sub 
+item and not an agent or catalogue supplier’s name and not a stock number. For physical 
+items ensure the specification or datasheet identifies the item’s part number and marking 
+details; 
+• 
+failure rate and expected useful life of items; 
+• 
+demand rate/spares consumption rate; 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+IEC 62402:2019 © IEC 2019 
+– 23 – 
+ 
+• 
+trend of regulations, manufacturing technologies, software change intervals, etc.; 
+• 
+technology plans; 
+• 
+life cycle data (for example EOP forecast of sub items); 
+• 
+notices (PDNs, PCNs, errata); 
+• 
+custom built data/intellectual property; 
+• 
+planned upgrades including implementation costs; 
+• 
+inventory levels/spares information. Obsolescence management includes the utilization 
+phase of the item’s life cycle. To assist support, ensure spares procurement is initiated 
+sufficiently in advance to maintain the minimum spares level, which itself requires a level 
+of management to assess the spares demands and levels; 
+• 
+storage life of items, cost of storage and level of degradation whilst in storage; 
+• 
+cost information to support cost benefit analysis.  
+NOTE 1 Access to sub item data can also be obtained from third party obsolescence management tools in the 
+market place to assist in identifying the obsolescence status of items. It is important to choose a tool that is 
+suitable for the application,  as these tools can differ in the services that they provide and do not cover all types of 
+items. 
+NOTE 2 Standardization guidance on an items database with a data dictionary is listed in the Bibliography [6] [7].   
+9 
+Obsolescence management approach 
+9.1 
+Introduction to risk assessment 
+In the context of obsolescence management, risk assessment provides decision-makers with 
+guidance on the approach to be taken to manage obsolescence based on an understanding of 
+when obsolescence is expected to occur and its likely impacts. A level of risk can be 
+estimated from these parameters and, in general, this estimate will determine whether a 
+reactive or proactive approach should be taken. It will also inform how much effort should be 
+put into treating the risk, as the cost of managing the obsolescence of an item should be 
+commensurate with the risks associated with its obsolescence. The level of risk should be 
+determined based on a number of factors including a trend of demand rate, technological 
+change, social requirements and impact of regulations or legislation (see 4.1). 
+An understanding of when impacts are likely and their magnitude can also inform, in broad 
+terms, how obsolescence risks should be treated, for example whether to target impact 
+reduction, likelihood reduction or reduction of uncertainty. 
+For high risk items a more rigorous analysis of risk can be useful to further understand causes 
+and consequences so as to select the most appropriate resolution.  
+Principles of effective risk management are set out in ISO 31000:2018, Clause 4 [8], and good 
+practice in risk assessment is described in IEC/ISO 31010 [9]. 
+The risk of obsolescence needs to be assessed at all phases through the item life cycle as 
+early as possible in the life cycle, from concept and development phases where the item is 
+selected. However, only limited information may be available. As the information matures, the 
+analysis should be progressively developed and reviewed. 
+Undertake the risk assessment process periodically during the realization (production) and 
+utilization (operation) phases to avoid, for example, item delivery shortages or item 
+maintenance issues. 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+ 
+– 24 – 
+IEC 62402:2019 © IEC 2019 
+An initial filter may be applied where some items can be immediately determined as having a 
+low obsolescence impact and therefore a reactive approach is appropriate for those items. 
+(For example, fasteners designed to a standard such as nuts, screws or bolts would not need 
+a further risk assessment).  
+The results of the risk assessment select a proactive or reactive obsolescence management 
+approach, or more likely a combination of the two. Figure 4 shows a summary of the 
+resolutions in relation to the sub item life cycle and the approaches selected. 
+ 
+Figure 4 – Proactive versus reactive approaches with resolutions 
+9.2 
+Obsolescence monitoring 
+9.2.1 
+Monitoring background 
+Obsolescence monitoring involves tracking items and their manufacturers, to determine the 
+item’s current availability status and, where possible, when the item will become obsolete.  
+NOTE Some specialized tools can support the search of the item availability status. 
+To be effective, monitoring requires accurate data. The sub item list supplied with a new item 
+should make it possible for ongoing detailed monitoring of obsolescence. In the case of a 
+legacy item without detailed records, it may be appropriate to carry out an obsolescence 
+survey to scope the extent of likely problems such as unavailability of COTS and standard 
+items. Monitoring should be conducted at a frequency that meets the needs of the 
+organization and corresponds to the risk that was evaluated in the risk assessment. It should 
+provide assurance that obsolescence can be identified with sufficient time to allow for 
+selection of the optimal resolution. When online services provide the information, monitoring 
+can be in real time. More manual methods should be evaluated to determine the optimum 
+frequency. 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+IEC 62402:2019 © IEC 2019 
+– 25 – 
+ 
+Surveillance of all the data referred to in 8.10 from the manufacturers should be monitored 
+including: notices (closure, changes/PCNs or obsolescence/PDNs) and changes to names of 
+organizations and their agreements to establish if there is an effect on the obsolescence risk 
+to the item. 
+9.2.2 
+Obsolescence notice monitoring 
+One form of monitoring is based on notices of obsolescence. These notices can be in many 
+forms depending on the technology and the organization’s processes. Careful review of the 
+manufacturers’ notification documentation, including 'errata', may be necessary. The title of 
+the notification does not always reflect its meaning and may require obsolescence activities. 
+NOTE 1 The electronics industry normally issues a PCN or a PDN from the manufacturer to indicate the items that 
+are to change or the production of which will cease with a last buy date.  
+NOTE 2 The software industry and electronic equipment manufacturers are likely to be affected by vulnerability 
+notices, updates, item errata and new features adding onto existing software.  
+The agency responsible for managing the technical aspects of the legislation should be 
+monitored to identify any change of status of hazardous substances. 
+NOTE 3 The materials industry issues bulletins and notices for regulations where a material containing a 
+hazardous substance is subject to increased obsolescence risk if the substance becomes identified for more 
+stringent legislative restriction on use. See IEC 62474 [10] for the declaration of substances.  
+NOTE 4 There are commercial organizations that aggregate PCNs, PDNs, and other data on items. This 
+information can be very useful in providing the current production status of these items. See Bibliography for 
+further guidance.  
+9.2.3 
+Direct contact monitoring 
+If no information systems are available to facilitate monitoring and surveillance, as is the case 
+with many COTS items and non-electronic items, monitoring can be achieved by using direct 
+contact with the manufacturers, communicating using standard methods.  
+NOTE Sometimes direct contact with the manufacturers is not possible due to low volume of procurement; in this 
+case the contact is generally made through the franchised distributor.  
+The customer/manufacturer relationship should be leveraged to allow for the exchange of 
+timely information about obsolescence. Organizations should use this information and monitor 
+the availability of their supplied items at regular intervals. If applicable, contractual 
+arrangements between organizations should be used to ensure that obsolescence information 
+is actively moved up the supply chain by the manufacturer, in order to provide an appropriate 
+and timely response by all the affected levels in the supply chain and/or the eventual end 
+user. 
+Sub item monitoring entails research to best determine both when the sub item will become 
+obsolete and the time until the item will be impacted. Some surveillance can be done via 
+research directly on the manufacturer websites while other manufacturers need to be 
+contacted. The data that should be collected includes planned item upgrades (obtain 
+information on new features, versions, add-ons, functionality), updated item support 
+information (vulnerability updates, end of support), assessment of manufacturer stability, and 
+upcoming releases and related items.  
+Market analysis and monitoring should be completed by reviewing all hardware and software 
+items together. This analysis should consider the criticality of the software and impact on the 
+item, the number of years required for sustainment, and the current number of forecasted 
+years until the item will be impacted. 
+9.3 
+Risk assessment to select approach 
+The main steps for assessing obsolescence risk are as follows: 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+ 
+– 26 – 
+IEC 62402:2019 © IEC 2019 
+a) develop a list of all items where the potential for obsolescence impacts can be 
+determined; 
+b) establish criteria to be used for risk assessment; 
+c) obtain the necessary data to perform the risk assessment; 
+d) assess and quantify the likelihood and impact of obsolescence. 
+Undertake the risk assessment process, at the relevant indenture level for the item, to derive 
+the level of risk to determine if a proactive or reactive approach is required for each sub item. 
+A reactive approach should be selected where the risk significance is low. In all other cases, 
+a level of proactivity should be selected, aiming to reduce the likelihood of an occurrence of 
+obsolescence and/or decrease the impact when obsolescence occurs. 
+Obsolescence involves uncertainty as to when it will impact, as such the likelihood is 
+characterized in terms of time (rather than a probability as used in risk assessment within 
+ISO 31000 [8]). Examples of likelihood of obsolescence include “the probability of the item 
+being obsolete today” or “the point in time when the item is forecast to become obsolete” or 
+“probability that an item will become obsolete in a specified time period”. The time period for 
+the likelihood assessment should be defined in accordance with the period in which proactive 
+activities can be planned. 
+NOTE 1 See Annex E for examples of obsolescence risk assessments. 
+The following should be considered when assessing obsolescence risk over the life of the 
+item:  
+• 
+the likelihood of an item becoming obsolete (for examples see 4.1). Forecasting 
+obsolescence, technology and market trends needs understanding of when a technology 
+or an item will become obsolete. Forecasting will allow the obsolescence impact of an item 
+to be reduced;  
+• 
+factors that delay the impact of an item being obsolete, for example current stock level or 
+demand for the items needed to produce or maintain the capability; 
+• 
+impact of an item being obsolete, for example:  
+– 
+criticality of the sub item to the function of the item;  
+– 
+time it will take to resolve an obsolescence issue considering factors such as the 
+availability of technical specifications, robustness of the industrial sector that would be 
+involved in the resolution, the use of materials, the technology needed to manufacture 
+the item, testing requirements; 
+– 
+impact of software obsolescence and the supporting infrastructure - the effect on 
+information assurance and operating environment compatibility. 
+NOTE 2 Predicting changes to environmental regulations can have an impact on materials within items and 
+cause them to become obsolete. Understanding if this has an impact on an item can be difficult especially if 
+the item is being manufactured at a low level within the supply chain. 
+Software, for instance operating systems, middleware, application software, drivers, and 
+firmware, may or may not have a major impact on the item depending on how dependent the 
+item is on certain hardware and/or software sub items. The risk assessment needs to consider 
+the potential impact on both hardware and software should one or the other go obsolete. This 
+impact may not just affect the availability of the item but also the security of using the item 
+too.  
+All interfaces and software source code should be fully documented and archived such that 
+the consequences of obsolescence can be determined. It is recommended that additional 
+documentation to cover the internal application code and modules’ use be prepared.  
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+IEC 62402:2019 © IEC 2019 
+– 27 – 
+ 
+9.4 
+Proactive approach 
+When a proactive approach has been selected actions need to be taken prior to an item 
+becoming obsolete and prior to an actual obsolescence impact. This should be proportionate 
+to the level of risk. The proactive approach treats the risk of an obsolescence impact and is a 
+best practice in a high majority of cases. (The opposite reactive approach does not treat 
+the risk).  
+NOTE If the item is expected to be replaced with an equivalent item and requires no integration, then it can be 
+adequate to take a proactive approach and monitor the item and identify an appropriate resolution if obsolescence 
+occurs. Whereas for a COTS item manufactured from only one manufacturer and requiring a high level of 
+integration, an LNB (see 10.3) or long term supply/support contract can be a more appropriate approach.  
+Factors such as item criticality and the likely timeframes or cost of potential resolutions will 
+influence the decision to employ proactive approaches. For example, proactive approaches 
+are often appropriate for high criticality items or items with short notice periods for LNB. See 
+Annex C for guidance.  
+Planned upgrades (enhancement life cycle phase) are another element of a proactive 
+approach. Design strategies to identify technologies of sub items with long production cycles 
+compared with the item’s expected life can limit the number of upgrades. Planned upgrades 
+should be used at predetermined points during the item’s life at which the design of all, or 
+some sub items, of the item will be brought up to date and obsolete sub items replaced. The 
+item upgrade programme should consider the need to minimize life cycle costs. Planned item 
+upgrades do not necessarily preclude the need for proactive monitoring. Between the planned 
+upgrades, at least one of the other resolutions for dealing with obsolescence will be needed. 
+An LNB may be appropriate for example. 
+Proactive activities should be appropriately aligned with any future capability upgrades.  
+9.5 
+Reactive approach 
+A reactive approach is to do nothing until obsolescence becomes an issue.  
+This reactive approach should only be selected for items that are assessed as having a low 
+impact, for example, items designed to a standard (for example military specification), items 
+with multiple assessed manufacturers, items with low likelihood of obsolescence, for example 
+mechanical items and machined parts, and items that will not fail in the life of the capability. A 
+reactive approach may also be assigned where the risk of obsolescence impact is extremely 
+low. Selecting a reactive approach in the initial phases of the life cycle will limit the 
+resolutions that can be selected in the future.  
+10 Obsolescence resolutions 
+10.1 Resolution selection and implementation 
+"Resolutions" is the collective term for the different types of activities that either treat the risk 
+of obsolescence impact or overcome an obsolescence issue. Resolutions should aim to 
+minimize the overall impacts of obsolescence, and the selection and implementation of 
+resolutions will depend on numerous factors including: 
+• 
+the reasons for obsolescence; 
+• 
+the feasibility and potential cost of resolutions; 
+• 
+the second order impacts on supportability or future requirements for the item; 
+• 
+potential timing of resolutions; 
+• 
+permanence of the issue or resolution. 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+ 
+– 28 – 
+IEC 62402:2019 © IEC 2019 
+A record of the factors analysed, the decisions taken, and the resources required in 
+implementing the most appropriate cost-effective resolution should be made. The 
+implementation phase of the resolution may follow the organization’s configuration and control 
+processes; these should be monitored.    
+When selecting resolutions, it is also important to consider what approval may be required. All 
+resolutions are business decisions and will generally require some form of commercial 
+approval. Additionally, depending on the type of resolution selected and the purpose or 
+criticality of the item, technical approval may also be required, for example: 
+• 
+design changes will often require approval from a design authority; 
+• 
+substitutions may require item qualification. 
+Where a resolution involves a substitute or design change, strategies to minimise 
+obsolescence during design (see Clause 8) should be considered. 
+Resolutions may involve one-off activities or occur multiple times in the life of an item. 
+Multiple resolutions may also be selected to effectively manage obsolescence risks and 
+issues. Common resolutions include: 
+• 
+replacement with the same item; 
+• 
+LNBs; 
+• 
+substitutes; 
+• 
+emulation and reverse engineering; 
+• 
+design changes. 
+The following subclauses 10.2 to 10.6 will describe these common resolutions and their 
+particular considerations. See informative Annex B for examples of resolutions with different 
+scenarios. Also see informative Annex F for examples of an obsolescence management 
+decision process for selecting resolutions.  
+10.2 Same item 
+Same item resolutions include the following: 
+• 
+existing stock: the conduct of an item search to find an alternate source for the same item 
+from stock that has been purchased from the manufacturer; 
+• 
+extended production: this involves negotiating with the manufacturer to continue 
+production of the item; 
+• 
+LNB (see 10.3); 
+• 
+divestment: this is where the manufacturer has sold the assets to another organization or 
+passed on the intellectual property of a technology to an aftermarket manufacturer (see 
+A.1); 
+NOTE 1 Intellectual property escrow consists in transferring intellectual property (for example engineering 
+designs) to a third party (an escrow agent) on behalf of the end user and the manufacturer and contracting the 
+third party to disburse the intellectual property based on conditions agreed to by the transacting parties, for 
+example transferring the intellectual property to the end user if the manufacturer goes into liquidation. 
+• 
+repair or contract support: it may be possible to repair an obsolete item that cannot be 
+replaced, according to the original specification. Care should be taken to ensure 
+compliance with applicable rules and standards, particularly in sensitive fields such as 
+aerospace or nuclear plants. Repair work needs necessary technical facilities, tools and 
+trained operators to carry out professional and sustainable repairs. Electronic items in 
+particular (but not exclusively) should be tested under realistic use conditions after repair. 
+Repairs should be sustainable, strategically replacing items subject to wear. Repairs 
+should be documented in a repair report;  
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+IEC 62402:2019 © IEC 2019 
+– 29 – 
+ 
+NOTE 2 For software, design changes or bug fixes can be accommodated by contracting for support from the 
+manufacturer or from a franchised third party. When contract support for software is likely to be the chosen 
+option, at the start or later in the life cycle of an item, the software acquisition contract can make provision for 
+sufficient documentation, support facilities and IPR to be available so that franchised third party software 
+maintenance is a realistic option.  
+NOTE 3 Restoration/repair. It is often possible to professionally repair an item even after it has been 
+discontinued by the manufacturer. In some cases, the manufacturer can still render this service, even after 
+discontinuation. In addition, it is also possible to carry out the repairs internally or by employing an industrial 
+service specializing in repairs to obsolete items.  
+• 
+reclamation: this is the process of re-using items from within the inventory that have a 
+remaining useful life; each reclaimed item should be checked to see if re-qualification is 
+necessary; 
+NOTE 4 Certain regulatory agencies do not permit this to happen for some items. 
+NOTE 5 This process describes the obsolescence management resolution of taking items and assemblies 
+from old stock in order to reuse it in a different position. This resolution is associated with certain risks which 
+are considered. As a basic principle, all reclaimed items are evaluated to determine reliability and the expected 
+remaining service life. This includes a check to see if repairs, preventative measures or procurement of 
+replacements are possible and remain possible for the expected duration of use. 
+NOTE 6 Reclamation or recycling, (see the definition of recycled component in A.13), as it is commonly 
+known, is a major source of fraudulent recycled electronic items, see IEC 62668-1 [11].  
+• 
+preservation: consider methods for preserving designs, tooling and sub items during the 
+obsolescence support phase of the item’s life cycle. For example: IEC 62435-1 [12] for the 
+finished electronic component's long term storage. The preservation review should include 
+identification, handling, packaging, storage and protection of the item. Consideration 
+should be given to the selection of the most appropriate media to store documentation and 
+software. Software stored on media should be subject to periodic re-verification to ensure 
+that the contents remain accessible for the support period; 
+• 
+no impact: in the case of software with perpetual licenses, the engineering team decides 
+an outdated version of the software will not impact the item and no changes are required. 
+If long term storage of software code is required, entering into an escrow arrangement 
+with the manufacturer to store the source code may be necessary in case future 
+modifications are needed. 
+10.3 Life of need buy 
+A life of need buy (LNB) is a same item resolution which involves purchasing the quantity of 
+relevant hardware items or software license items predicted to be required for a defined 
+period. It can cover the complete amount for a production run and associated spares or it may 
+cover only the sub items known to be at risk during support activities. A decision to undertake 
+an LNB should take account of planned upgrades to the item. It will often become appropriate 
+when a manufacturer makes known an intention to cease manufacture of a particular item to 
+undertake an LNB with no known suitable substitute or a software manufacturer ends sales of 
+a particular version of a software item.  
+An LNB may be considered by any manufacturer in the supply chain, on its own, or in 
+cooperation with other manufacturers of the same item. Use of an LNB avoids issues with 
+IPR. Significant shortcomings to performing a LNB are the financial implications and the 
+uncertainty of the quantities required. 
+When considering an LNB the risks associated with long term storage of the item along with 
+risk such as the possibility of loss or damage should be considered in conjunction with the 
+usage rate. The appropriate storage conditions would therefore have to be analysed to 
+achieve successful storage, as some items may require special storage conditions. Some 
+items may require periodic inspection, analysis and testing to ensure their suitability for use 
+(refer to IEC 62435-4 [13] for the storage of sensitive semiconductor parts, including 
+semiconductor die and wafer banking). 
+A LNB should be considered: 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+ 
+– 30 – 
+IEC 62402:2019 © IEC 2019 
+• 
+when there is a known, or forecast of, EOP; 
+• 
+when the life expectancy or production of an item is short; 
+• 
+when an item is procured to satisfy an urgent operational need;  
+• 
+when difficulties caused by future design changes of the item need to be avoided; 
+• 
+when there is low demand; 
+• 
+when there is enough storage capacity; 
+• 
+when items' shelf-life allow long term storage; 
+• 
+in order to avoid difficulties caused by sub item design changes by its manufacturer, 
+resulting in subtle changes in the construction of items. 
+In a continuous improvement approach to the OMP, such as measuring cost avoidance, it can 
+be necessary to identify an LNB as a proactive need buy or as a reactive need buy depending 
+on when the procurement took place during the life cycle and whether it was planned.  
+After an LNB is made, the usage of items should be tracked to determine whether the 
+assumptions used to calculate the life-of-need quantity were correct. If the demand is greater 
+than expected, it may be necessary to put another resolution in place. 
+10.4 Substitutes 
+Substitutes include the following: 
+• 
+Equivalent items: These are items which are functionally, parametrically and technically 
+interchangeable with the obsolete item. This includes minor software security updates, 
+which are backwards compatible. Minor testing may be required to validate the use of an 
+equivalent item. 
+NOTE 1 Equivalent items are sometimes referred to as simple substitutes. 
+• 
+Alternative items: These are items that provide a limited parametric match, but which, after 
+consultation with the person or organization responsible for the design are an acceptable 
+application specific alternative for the obsolete item. This includes major software updates 
+or changes that may result in use of software provided by a different manufacturer, 
+running on a different platform or operating environment, and providing similar, but not 
+identical functionality. Major testing may be required to validate the use of an alternative 
+item. 
+NOTE 2 Alternative items are sometimes referred to as complex substitutes. 
+Challenges include ensuring that the substitute items are fully assessed and qualified to meet 
+the end user’s item requirements. Once the substitute items are approved, the substitute 
+item’s details, manufacturer, full part number and/or specification, should be added to the 
+item’s configuration. Keeping track of manufacturers’ names and notices associated with 
+these substitute items may be achieved by maintenance of a suitable database. 
+NOTE 3 There are online databases that can facilitate the search for substitute electronic items. Similar tools do 
+not exist for all other types of items.  
+10.5 Emulation and reverse engineering 
+Emulation is a process that produces an equivalent item using either the original specification 
+or from characteristics gained from an in-depth examination of a working example of the item 
+to be replaced. Reverse engineering is a technique which is used when the original 
+specification is unknown or incomplete. Reverse engineering allows development of a new 
+technical specification that can be used to manufacture a new item. If the original 
+specification is known, the item can have a design change to the same specification or 
+different specification. This process can involve significant cost and time and can involve 
+complex IPR issues. 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+IEC 62402:2019 © IEC 2019 
+– 31 – 
+ 
+Software emulation of the operating environment and applications could be a way to resolve 
+software obsolescence issues where the existing software can no longer run on the proposed 
+hardware environment. In addition, one should consider changes in performance (from 
+potentially using faster processors), stability, IPR, and support for the emulation software. 
+10.6 Design change 
+A new design is done to resolve obsolescence by means of updating or upgrading the item, as 
+well as enabling the use of newer items. 
+A design change should be considered when it is not possible, practical, or cost effective to 
+procure or emulate a substitute item. There are two levels of design change: 
+• 
+minor design change (for example on the next level assembly); 
+• 
+major design change (for example item replacement). 
+A design change can also be used to treat multiple lower level obsolescence issues when that 
+approach is more cost effective. Any design changes should include an assessment of the 
+need for re-qualification. Design change should be performed with various types of 
+assessment, such as cost efficiency, reliability, item life cycle cost, maintainability, cost of 
+stock and storage. Planned upgrades can also be considered at the start of programs which 
+take the place of design changes and can replace both hardware and software.  
+11 Measurement and improvement of obsolescence management activities 
+11.1 General 
+A metrics section should be included as part of the OMP, which should identify what metrics 
+or measures need to be collected, how the team will collect the results, when or how often the 
+collections should take place, and who needs to review those measures and analyse the 
+results. Clause 11.2  lists the metrics required to track the performance of the outcomes of the 
+obsolescence management activities. Metrics help with analysing the value that obsolescence 
+management is providing, both reactive and proactive. These metrics may be derived from 
+higher level business metrics and may also identify areas of improvement within the process. 
+11.2 Metrics 
+Obsolescence management metrics focus on the performance of all the obsolescence 
+management activities (for example the obsolescence management team, the effectiveness of 
+the plan, and the processes). These metrics show whether the obsolescence management 
+approach is meeting the objectives set out in the OMP. Metrics can also provide an indication 
+of where changes can be made if objectives cannot be met. Examples of some possible 
+metrics include: 
+• 
+the effect of obsolescence on trends in overall sustainability, supportability, and 
+availability of the item; 
+• 
+the cost penalties resulting from service unavailability, because of unresolved failures due 
+to obsolescence; 
+• 
+the average cost of implementing the OMP (i.e. management activities + resolutions) over 
+the life cycle of the item – assessed by resolution type; 
+• 
+the percentage of the configured list that is obsolete; 
+• 
+the percentage of proactive resolutions versus reactive resolutions; 
+• 
+the accuracy of forecasting; 
+NOTE 1 Comparing the predicted EOP date with the actual date of issue of the PDN can be a measure for an 
+internal process or a request for more information from a data provider. 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+ 
+– 32 – 
+IEC 62402:2019 © IEC 2019 
+• 
+the percentage of reactively managed items that should be proactively managed but are 
+not due to limited resources (time, people, funding); 
+• 
+the number of reactive obsolescence issues found for items that were proactively 
+managed (defects); 
+NOTE 2 These defects can be defects per month, defects per items monitored, or the impact of defects per 
+item monitored. Defects can include issues such as false obsolescence notifications and reactive 
+obsolescence found on items being proactively monitored. 
+• 
+the number of active obsolescence issues currently open; 
+• 
+the average time from opening to closing an obsolescence issue; 
+• 
+the percentage of PDNs not being received and addressed within the appropriate 
+timescale; 
+• 
+the money spent on proactive and reactive obsolescence management per proactively 
+managed item; 
+NOTE 3 This is the impact of each incorrect decision where a reactive resolution was chosen instead of a 
+proactive resolution. The impact can be measured in either hours: consequence of schedule, or cost: return on 
+investment, productivity metrics, cost avoidance, down time, length to repair, spares availability, counterfeit 
+issues. 
+• 
+the end user requirements and stakeholder satisfaction met versus not met. 
+The metrics chosen should be suited to the business need or process maturity. 
+ 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+IEC 62402:2019 © IEC 2019 
+– 33 – 
+ 
+Annex A 
+(informative) 
+ 
+Vocabulary relating to obsolescence 
+Annex A lists terms and definitions commonly used in electronics, aerospace and defence. 
+A.1 
+aftermarket manufacturer 
+organization that produces items through emulation, reverse-engineering, or design change, 
+that match the manufacturer’s specifications and satisfy customer/end user needs without 
+violating the manufacturer’s IPR 
+Note 1 to entry:  Those organizations which do have a contract with the manufacturer to produce items are known 
+as ‘authorized manufacturers’ or ‘authorized aftermarket manufacturers’ when the manufacturer has made the 
+items obsolete. These items are produced from sub items that have been transferred from the manufacturer to the 
+aftermarket manufacturer or produced by the aftermarket manufacturer using the manufacturer’s tooling and/or 
+intellectual property. 
+A.2 
+aftermarket solution provider 
+organization that specializes in processes to solve an obsolescence issue 
+EXAMPLE Aftermarket manufacturer, authorized aftermarket manufacturer, aftermarket source. 
+Note 1 to entry: Processes currently identified are: remanufacturing, die reclamation, adaptor/daughter boards, 
+uprating, up-screening, re-balling. 
+A.3 
+aftermarket source 
+reseller which may or may not be under contract with the original component manufacturer 
+(OCM) or is sometimes a component “re-manufacturer”, under contract with the OCM 
+Note 1 to entry: The reseller accumulates inventories of encapsulated or non-encapsulated (wafer) components 
+whose end of life date has been published by the OCM. These components are then resold at a profit to fill a need 
+within the market for components that have become obsolete. 
+[SOURCE: IEC 62668-1:2019 [11], 3.1.1] 
+A.4 
+broker 
+individual or corporate organization that serves as an intermediary between buyer and seller 
+Note 1 to entry: In the electronic component sector a broker specifically seeks to supply obsolete or hard to find 
+components in order to turn a profit. To do so it can accumulate an inventory of components considered to be of 
+strategic value or can rely on inventories accumulated by others. The broker operates within a worldwide 
+component exchange network.  
+[SOURCE: IEC 62668-1:2019 [11], 3.1.2] 
+A.5 
+counterfeit materiel 
+materiel whose origin, age, composition, configuration, certification status or other 
+characteristic (including whether or not the materiel has been used previously) has been 
+falsely represented by: 
+• 
+misleading marking of the materiel, labelling or packaging; 
+• 
+misleading documentation; or 
+• 
+any other means, including failing to disclose information; 
+except where it has been demonstrated that the misrepresentation was not the result of 
+dishonesty by a supplier or sub-supplier within the supply chain 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+ 
+– 34 – 
+IEC 62402:2019 © IEC 2019 
+Note 1 to entry: Regardless of the governing law of the supply contract, the term “origin” is to be accorded the 
+same meaning as the equivalent term found in European Directive 2008/95/EC (the “Trade Marks” Directive), and 
+the terms “falsely represented”, “misleading”, “failing to disclose information” and “dishonesty” are to be accorded 
+the same meaning as the equivalent terms found in the United Kingdom’s Fraud Act 2006.  
+Note 2 to entry: Within this document ‘materiel’ is referred to as ‘items’.  
+[SOURCE: DEF.STAN.05-135/1:2014 [16], modified – Note 2 has been added.] 
+A.6 
+bridge buy 
+lifetime buy for a given period, for example during the replacement item development 
+A.7 
+electronic components management plan  
+ECMP  
+plan owner's document that defines the processes and practices for applying components to 
+an equipment or range of equipment and which generally addresses all relevant aspects of 
+controlling components during system design, development, production, and post-production 
+support 
+Note 1 to entry: This note applies to the French language only. 
+[SOURCE: IEC 62239-1:2018 [5], 3.1.18] 
+A.8 
+EOP forecast 
+predicted year the item production ceases to be made 
+Note 1 to entry: EOP forecast is also known as years to end of life (YTEOL). 
+A.9 
+franchised distributor 
+franchised agent 
+individual or corporate organization that is legally independent from the franchiser (in this 
+case the electronic component manufacturer or OCM) and agrees under contract to distribute 
+products using the franchiser’s name and sales network 
+Note 1 to entry: Distribution activities are carried out in accordance with standards set and controlled by the 
+franchiser. Shipments against orders placed can be despatched either direct from the OCM or the franchised 
+distributor or agent. In other words, the franchised distributor enters into contractual agreements with one or more 
+electronic component manufacturers to distribute and sell the said components. Distribution agreements can be 
+stipulated according to the following criteria: geographical area, type of clientele (avionics for example), maximum 
+manufacturing lot size. Components sourced through this route are protected by the OCM’s warranty and supplied 
+with full traceability. 
+[SOURCE: IEC TS 62668-1:2016 [11], 3.1.9] 
+A.10 
+obsolescence concern  
+future obsolescence issue that has been identified as a result of a proactive approach where 
+a resolution needs to be developed and implemented to minimize the impact on future 
+availability, and cost to, a project 
+Note 1 to entry: Within this document an "obsolescence concern" is referred to as an "obsolescence risk" 
+(see 3.1.14). 
+[SOURCE: MoD Defence Logistics Framework [17]] 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+IEC 62402:2019 © IEC 2019 
+– 35 – 
+ 
+A.11 
+original component manufacturer  
+OCM 
+manufacturer of a sub item, material or component that is intended for embodiment into an 
+item, assembly or a product by an original equipment manufacturer (OEM) 
+Note 1 to entry: OCM is a common term used to identify an organization producing a sub item in the supply chain. 
+This document now simply uses ‘manufacturer’ where ‘original component manufacturer’ refers to the sub item 
+manufacturer identified in the original configuration of the item. 
+Note 2 to entry: This note applies to the French language only. 
+A.12 
+original equipment manufacturer  
+OEM 
+manufacturer of an item, assembly or a product 
+Note 1 to entry: OEM is a common term used to identify an organization producing an item in the supply chain. 
+This document now simply uses ‘manufacturer’ where ‘original equipment manufacturer’ refers to the item 
+manufacturer identified in the original configuration of the end user’s item. 
+Note 2 to entry: The assembly or product might be regarded as a component by a customer/end user. 
+Note 3 to entry: This note applies to the French language only. 
+A.13 
+recycled component 
+component removed from its original product or assembly and available for reuse 
+Note 1 to entry: The component has authentic logos, trademarks and markings. However, it typically has no 
+output to measure the useful life remaining for its reuse. A recycled component can fail earlier than a new one 
+when re-assembled into another product or assembly. A recycled component can also be physically or damaged 
+through ESD during the removal process. 
+[SOURCE: IEC 62668-1:2019, 3.1.17 [11], modified — "electrical" has been deleted.] 
+A.14 
+risk mitigation buy  
+RMB  
+procurement of items sufficient to support the product throughout its life cycle, or until the 
+next planned technology upgrade, to reduce an identified obsolescence risk to a project 
+Note 1 to entry: The risk mitigation buy is a proactive risk reduction measure, triggered by the user, where an 
+unacceptable obsolescence risk to a project has been identified. Examples of RMB are: life time buy, life of type 
+buy, bridge buy. 
+Note 2 to entry: Within this document a risk mitigation buy is a proactive approach of an LNB. 
+[SOURCE: MoD Defence Logistics Framework [17].] 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+ 
+– 36 – 
+IEC 62402:2019 © IEC 2019 
+Annex B 
+(informative) 
+ 
+Obsolescence resolutions 
+B.1 
+Obsolescence management resolutions with EOP forecast 
+The scenarios for forecasting an EOP are illustrated in Figure B.1. 
+ 
+Figure B.1 – Item production output with EOP forecast and obsolescence scenarios 
+Following a configured list analysis, a sub item is identified as critical. This is as a result of 
+the sub item being single sourced, being dependent on software and having an end-of-
+production forecast (EOP forecast) approaching. The result is a list of obsolescence risks that 
+need resolution. These can be resolved either by stock management or by design strategies 
+and resolutions. 
+NOTE The production output can represent the end user item, item (a line replacement unit, spares replacement 
+unit or sub-assembly) or in this case a sub item. 
+Resolutions can take the form of a proactive LNB before the manufacturer has declared the 
+sub item obsolete (also known as a risk mitigation buy). 
+Where an upgrade is planned it can be necessary to set-up a proactive LNB (also known as a 
+bridge buy) until the design upgrade (also known as technology insertion) is assessed, 
+qualified and the upgrade is implemented. 
+The implementation of the upgrade may take the form of: 
+• 
+item emulation for a known EOP item, manufactured from an assessed aftermarket 
+solution provider; 
+• 
+design change or upgrade planned when there are EOP sub items forecast to be used in 
+an item that has a long-term production life; 
+• 
+design change for items planned when both critical and multiple EOP sub items are 
+forecast and where there are software, firmware and interface dependency issues. 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+IEC 62402:2019 © IEC 2019 
+– 37 – 
+ 
+B.2 
+Obsolescence management resolutions with EOP announcement 
+The obsolescence terms with an EOP announcement is as shown in Figure B.2. 
+ 
+Figure B.2 – Item production output at EOP announcement and obsolescence scenarios 
+The sub item has been monitored by the item manufacturer for availability and eventually 
+receives a PDN for the sub item. In the diagram above, the EOP forecast is later than the 
+EOP date, overlaid on the previous ‘production cycle’ diagram.  
+Resolutions include: 
+• 
+using existing stock, which was procured as a proactive LNB made for a critical sub item; 
+• 
+processing a reactive LNB (can be known as a last time buy) from the sub item 
+manufacturer; 
+• 
+searching for an authorized aftermarket manufacturer in order to avoid counterfeit items; 
+NOTE The date that is important to counterfeit avoidance is to record the ‘last date of manufacture’ when 
+checking date codes on suspect counterfeit items. 
+• 
+reclamation. 
+There might be design resolutions already in progress in the form of planned upgrades, or 
+there can be substitutes: 
+• 
+equivalent items; 
+• 
+alternative items. 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+ 
+– 38 – 
+IEC 62402:2019 © IEC 2019 
+B.3 
+Alternate manufacturers: example of a reactive approach in electronics 
+When attempts are made to procure an item, but the item has a PDN or EOP announcement 
+or is already identified as obsolete by the item’s manufacturer, an LNB is typically enacted by 
+the organization, whereby a search is made for traceable stock. The dangers of this reactive 
+approach are the risk that only untraceable stock can be found from brokers outside the 
+franchised supply chain which might supply counterfeit or fraudulent recycled components. 
+Further guidance on avoiding counterfeit and fraudulent components can be found in IEC  
+62668-1 [11] and IEC 62668-2 [14]. Another problem might be that insufficient stock is 
+available for purchase for future spares and repairs. Some LNB stock also requires long term 
+storage incurring additional storage costs (see IEC 62435-4 [13]). 
+ 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+IEC 62402:2019 © IEC 2019 
+– 39 – 
+ 
+Annex C 
+(informative) 
+ 
+Guidance on the effects of obsolescence  
+Obsolescence can affect several types of items in various ways, for example: 
+• 
+Electronic items: At electronic components level, obsolescence occurs regularly due to: 
+increase in functional speed, reduction in features such as size and supply voltage, 
+changes in materials (see bullet below for details) and in interconnection and packaging 
+technologies. As a result, many of the electronic sub items (i.e. components) that 
+compose a sub item have a life cycle that is significantly shorter than the life cycle of the 
+item (e.g. a printed circuit assembly). 
+• 
+Mechanical items: The item life of mechanical sub items can be much longer than 
+electronic sub items, but obsolescence problems of mechanical sub items can escalate as 
+the item they support starts to age. Failure of mechanical sub items can trigger 
+obsolescence due to the potential unavailability of the item because of the unavailability of 
+spares and materials. 
+• 
+Materials can become obsolete due to the introduction of new environmental legislations 
+and regulations such as the RoHS or REACH. Materials declared obsolete by such 
+triggers can be incorporated into an item, possibly at a lower level in the supply chain. For 
+example, a new type of plating chemistry is banned and will affect other things when 
+changed. (See also BS EN 9278 [15].) 
+• 
+Processes: Changes in environmental regulations are common drivers of obsolescence in 
+manufacturing processes. In the light of this, a material obsolescence issue can make a 
+manufacturing process obsolete and also the obsolescence of a manufacturing process 
+can prevent the manufacture of an item or material, making it obsolete. 
+• 
+Software obsolescence can occur when either: 
+– 
+hardware changes (whether due to obsolescence or upgrades) can make the software 
+functionality obsolete; 
+– 
+the sales, support and/or maintenance for software stops as the manufacturer no 
+longer sells the software and there is an inability to expand or renew licensing 
+agreements; 
+– 
+external factors change, which then can request enhancements or operating 
+environment change, security protection and additional software test, etc. 
+• 
+Media: Digital media obsolescence: size, formatting types, or degradation limits or end of 
+access to software or other technical information held. 
+• 
+Manufacturing tooling: The manufacturing aids required to fabricate items are regarded as 
+‘tooling’ (for example: forging dies, holding fixtures, sheet metal patterns, casting moulds, 
+jigs). Obsolete tooling might need to be refurbished or recreated. Otherwise, it can impact 
+the ability to manufacture a correct item. 
+• 
+Support and test equipment can become obsolete because it can be a commercial item or 
+special to a type of equipment that is no longer available. 
+NOTE Management of test equipment is considered as part of the configured list and managed in the same 
+way as any other sub item. 
+ 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+ 
+– 40 – 
+IEC 62402:2019 © IEC 2019 
+Annex D 
+(informative) 
+ 
+Guidance on the OMP  
+Additional guidance to 7.2 on the contents of the OMP is as follows: 
+• 
+authorities and resources 
+– 
+compatibility with the customer's/end user’s current support arrangements, where 
+applicable; 
+– 
+processes for communication within the organization, between the organization and 
+throughout the supply chain;  
+• 
+scope 
+– 
+current life cycle phase of the item, and all phases of the life cycle relevant to the 
+organization, including the possibility of unplanned repeat orders; 
+• 
+objectives 
+– 
+sustainment of the item at the end of the production phase and the role of 
+obsolescence management; 
+• 
+strategies to minimize obsolescence during design 
+– 
+collaboration of the whole supply chain with obsolescence management objectives 
+negotiated with manufacturers and their franchised distributors (see A.9) and their 
+authorized aftermarket manufacturers (see A.1));  
+• 
+monitoring and schedule 
+– 
+the level and periodicity of the monitoring required for critical and single source items 
+will be dictated by the level of risk; 
+– 
+identification of how critical software will affect the obsolescence of the item and 
+whether software will be monitored; 
+– 
+determination of whether materials used in the manufacture of the item will be 
+monitored; 
+• 
+obsolescence management activities determination and implementation 
+– 
+likelihood of sub items obsolescence impacting the item; 
+– 
+likelihood of obsolescence of sub items and items used for production or provision of 
+services; 
+– 
+possibility of item life extension and enhancement; 
+• 
+resolution selection and implementation 
+– 
+consideration of the need for item qualification due to the implementation of a 
+resolution;  
+EXAMPLE 1 Using an electronic component management plan ECMP such as IEC 62239-1 [5] for 
+electronic components. 
+• 
+OMP performance 
+– 
+maintenance of the plan;  
+• 
+tools used 
+– 
+configuration and change management. 
+EXAMPLE 2 Item status data provider(s), databases such as an obsolescence data repository (ODR). 
+ 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+IEC 62402:2019 © IEC 2019 
+– 41 – 
+ 
+Annex E 
+(informative) 
+ 
+Examples of an obsolescence risk assessment 
+E.1 
+General 
+There is uncertainty as to when obsolescence will have an impact, therefore the likelihood of 
+an impact is characterized in terms of time, for example the probability of obsolescence 
+having an impact within a specified time period or the point in time when obsolescence is 
+predicted to have an impact. The aim of obsolescence risk assessment is to allow decision 
+makers to know whether there is a low likelihood but very high impact or vice versa, and 
+record the assumptions and data used to make the assessment. The time period for the 
+likelihood assessment is defined in accordance with the period of interest for example 
+between 0 and 5 years for a 5-year support contract or 0 and 25 years for a user managing a 
+ship with a 25-year in-service life. 
+The two examples within Annex E describe this decision making process in three steps; 
+however, this would not necessarily be required for simple systems.  
+E.2 
+Example 1 
+The likelihood assessment within Annex E determines the probability that an item will become 
+obsolete within the period of interest, for example production or support period. The likelihood 
+assessment shown in Table E.1 assesses the likelihood of an impact, therefore it takes 
+account of the expected time to the item becoming obsolete and the predicted time when the 
+stock will run out (current stock versus demand for the item). The time periods for the 
+likelihood assessment align with the period of interest for example a support contract period 
+of 7 years. 
+Table E.1 – Likelihood assessment 
+Years to item 
+becoming obsolete 
+< 3 years 
+Low 
+Medium 
+High 
+3 to 7 years 
+Low 
+Medium 
+Medium 
+> 7 years 
+Low 
+Low 
+Low 
+ 
+ 
+> 7 years 
+3 to 7 years 
+< 3 years 
+ 
+ 
+Years to end of stock in hand 
+ 
+Impact assessment as shown in Table E.2 takes account of the effect the unavailability of the 
+sub item has on the item performance and/or procurement. 
+Table E.2 – Impact assessment 
+Impact on item performance 
+Impact on procurement 
+Criteria 
+Prevents item from being 
+operated 
+Prevents critical milestone being met in procurement. 
+High 
+Item operational but degraded 
+Procurement shortfall requires resolution by the first maintenance 
+period 
+Medium 
+Other impacts or non-critical items 
+Low 
+ 
+The obsolescence risk is assessed based on the combination of the likelihood and the impact 
+as shown in Table E.3. 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+ 
+– 42 – 
+IEC 62402:2019 © IEC 2019 
+Table E.3 – Combination of likelihood and impact assessment 
+Likelihood 
+Impact 
+ 
+Low 
+Medium 
+High 
+High 
+Medium 
+High 
+High 
+Medium 
+Low 
+Medium 
+High 
+Low 
+Low 
+Low 
+Medium 
+ 
+The outcome of the likelihood and impact assessment above determines whether a reactive 
+approach is appropriate or if a proactive approach is required, as follows: 
+• 
+low = reactive approach adequate (no further action required); 
+• 
+medium/high = proactive approach required. 
+A proactive approach aims to reduce the likelihood of occurrence of obsolescence and/or 
+decrease the impact when obsolescence occurs. Proactive activities should be proportionate 
+to the predicted resolution cost and the time it will take to resolve. Selecting suitable activities 
+requires the complexity of the potential obsolescence issue to be assessed, which in  
+Table E.4 considers a combination of the level of item complexity, level of integration and 
+qualification requirements. 
+Descriptions of the different levels of proactive approach are as follows: 
+• 
+Low: undertake the groundwork to identify and prepare for obsolescence occurrence and 
+monitor the item for possible obsolescence if resources permit. 
+• 
+Medium: develop an action plan to ensure continued support, for example instigate LNBs. 
+• 
+High: implement an aggressive approach by either designing out the problem or ensuring 
+early implementation of resolutions that ensure continued support. 
+Table E.4 – Level of proactive approach assessment 
+ 
+ 
+Integration/qualification requirements 
+ 
+ 
+Low 
+Medium 
+High 
+Item 
+complexity 
+High - single source 
+Medium 
+High 
+High 
+Medium - readily available, 
+but will require some design 
+changes 
+Low 
+Medium 
+High 
+Low - multiple sources 
+Low 
+Low 
+Medium 
+ 
+NOTE 1 The level of integration describes the level with which an item is combined with another to form a whole 
+(which could be the sub item or a higher level item). ‘Low’ would equate to a stand-alone item versus ‘high’ which 
+would be an item that passes services (e.g. power) and data across the boundary with interfacing items. 
+NOTE 2 The level of qualification describes the complexity of the testing required to evaluate if a replacement sub 
+item is acceptable. ‘Low’ would equate to a stand-alone test versus ‘high’ that would require the whole item to be 
+tested. 
+E.3 
+Example 2 
+E.3.1 
+Risk assessment process 
+The 
+process 
+within 
+this 
+example 
+fundamentally 
+answers 
+the 
+following 
+questions  
+(see Figure E.1): 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+IEC 62402:2019 © IEC 2019 
+– 43 – 
+ 
+• 
+What is the likelihood of an item becoming obsolete? 
+• 
+If it does become obsolete, when will this impact on the capability? 
+ 
+Figure E.1 – Sample risk assessment process 
+E.3.2 
+Likelihood assessment 
+The likelihood of an item becoming obsolete is the combination of the EOP forecast of the 
+item, and the number of approved manufacturers that are currently available on the item’s 
+configuration (see Table E.5 and Table E.6). 
+Table E.5 – EOP forecast 
+EOP forecast 
+Assessment 
+Less than 2 years 
+High 
+Between 2 and 5 years 
+Medium 
+Greater than 5 years 
+Low 
+ 
+Table E.6 – Number of approved manufacturers 
+Number of approved manufacturers 
+None or one 
+Two 
+Three or more 
+ 
+The likelihood is assessed on the combination of the EOP forecast and number of approved 
+manufacturers (see Table E.7). 
+Table E.7 – Likelihood 
+ 
+ 
+Number of approved manufacturers 
+ 
+ 
+> 2 
+2 
+0 to 1 
+EOP forecast 
+< 2 years 
+Medium 
+High 
+High 
+2 to 5 years 
+Low 
+Medium 
+High 
+> 5 years 
+Low 
+Low 
+Medium 
+ 
+E.3.3 
+Impact date assessment 
+If an obsolescence issue arises, it is important to understand the date at which the 
+obsolescence issue will have a direct detrimental effect on the operational capability of the 
+equipment. 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+ 
+– 44 – 
+IEC 62402:2019 © IEC 2019 
+This is done by comparing the current inventory level against the consumption rate of 
+the item. 
+Impact months = (stock + stock on order) / consumption rate 
+Impact date = today’s date + impact months 
+The impact date is classified as shown in Table E.8: 
+Table E.8 – Impact date 
+Impact date (from today) 
+Impact assessment 
+> 5 years 
+Low 
+2 to 5 years 
+Medium 
+Within 2 years 
+High 
+ 
+E.3.4 
+Obsolescence risk 
+Obsolescence risk is assessed based on a combination of the likelihood and the impact date 
+(see Table E.9). 
+Table E.9 – Risk level 
+Probability 
+High 
+Medium 
+High 
+High 
+Medium 
+Low 
+Medium 
+High 
+Low 
+Low 
+Low 
+Medium 
+ 
+ 
+Low 
+Medium 
+High 
+ 
+ 
+Impact 
+ 
+E.3.5 
+Review 
+The obsolescence risk assessment will be periodically reviewed and updated where 
+necessary. Examples of periodicities are shown below (see Table E.10), these will depend on 
+the support position at the time and the resources available.  
+All obsolescence risk review periods should be annotated in the OMP. 
+Table E.10 – Obsolescence risk review 
+Obsolescence risk 
+Period of review 
+High 
+Every six months 
+Medium 
+Annual 
+Low 
+Every two years 
+ 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+IEC 62402:2019 © IEC 2019 
+– 45 – 
+ 
+Annex F 
+(informative) 
+ 
+Example of an obsolescence management decision process 
+The process described in Annex F starts with receiving information indicated in this case by 
+active monitoring of the market, but it could equally be a PCN or any other form of market 
+information. It is assumed obsolescence management experts will receive this information for 
+action. 
+ 
+Figure F.1 – Initial decision process to recommend obsolescence resolutions 
+The process shown in Figure F.1 relies on decisions being made as part of a process to 
+actively manage obsolescence in a structured way; just part of the process could be used or 
+fewer actors could be involved.  
+Other resolutions than those indicated here can be used, these are the most common 
+resolutions. 
+“Impact” dates are when there will be a definite impact on the item, not a predicted impact. 
+Although these flow charts indicate single resolutions, multiple resolutions may be needed, 
+depending  on time and availability, for instance, a short term LNB may be needed to reach a 
+long term design change point. 
+This process may need constant revisiting until the issues identified are resolved; good record 
+keeping (case notes) is essential in achieving this aim. 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+ 
+– 46 – 
+IEC 62402:2019 © IEC 2019 
+ 
+Figure F.2 – Decision process to recommend obsolescence resolutions  
+(long term repairs strategy) 
+Figure F.2 and Figure F.3 show further analysis of the situation will be required after the initial 
+decision to proceed has been taken. 
+NOTE In Figure F.2 and Figure F.3 lines have varied colours and weighting to clarify the paths available. 
+ 
+Figure F.3 – Decision process to recommend obsolescence resolutions (LNB) 
+ 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+IEC 62402:2019 © IEC 2019 
+– 47 – 
+ 
+Bibliography 
+[1] 
+IEC 60300-1, Dependability management – Part 1: Guidance for management and 
+application 
+[2] 
+IEC 60050-192, International Electrotechnical Vocabulary – Part 192: Dependability 
+(available at http://www.electropedia.org) 
+[3] 
+IIOM, International Institute of Obsolescence Management, Further guidance and 
+capability of skills and organizations on obsolescence management, available at 
+https://www.theiiom.org 
+[4] 
+VDMA 24903, Obsolescence management – Exchange of information regarding 
+change and discontinuance of products and items 
+[5] 
+IEC 62239-1, Process management for avionics – Management plan – Part 1: 
+Preparation and maintenance of an electronic components management plan 
+[6] 
+BSI PD 6615, Guide to setting up a parts database  
+[7] 
+IEC 61360, IEC Common Data Dictionary (available at http://cdd.iec.ch/) 
+[8] 
+ISO 31000:2018, Risk management – Guidelines 
+[9] 
+IEC/ISO 31010, Risk management – Risk assessment techniques 
+[10] 
+IEC 62474, Material declaration for products of and for the electrotechnical industry 
+(available at http://std.iec.ch/iec62474) 
+[11] 
+IEC 62668-1, Process management for avionics – Counterfeit prevention – Part 1: 
+Avoiding the use of counterfeit, fraudulent and recycled electronic components 
+[12] 
+IEC 62435-1, Electronic components – Long-term storage of electronic semiconductor 
+devices – Part 1: General 
+[13] 
+IEC 62435-4, Electronic components – Long-term storage of electronic semiconductor 
+devices – Part 4: Storage 
+[14] 
+IEC 62668-2, Process management for avionics – Counterfeit prevention – Part 2: 
+Managing electronic components from non-franchised sources 
+[15] 
+BS EN 9278:2018, Aerospace series – General Principles of Obsolescence 
+Management of chemicals, materials and processes 
+[16] 
+DEF.STAN.05-135/1:2014, Avoidance of counterfeit materiel 
+[17] 
+The MoD Defence Logistics Framework – available through the Defence Gateway 
+Login; https://www.defencegateway.mod.uk/’ 
+ 
+____________ 
+ 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+INTERNATIONAL 
+ELECTROTECHNICAL 
+COMMISSION 
+ 
+3, rue de Varembé 
+PO Box 131 
+CH-1211 Geneva 20 
+Switzerland 
+ 
+Tel: + 41 22 919 02 11 
+Fax: + 41 22 919 03 00 
+info@iec.ch 
+www.iec.ch 
+UNE-EN IEC 62402:2019
+Este documento ha sido adquirido por INDRA SISTEMAS S.A. el 2021-3-18. 
+ Para poder utilizarlo en un sistema de red interno, deberá disponer de la correspondiente licencia de AENOR
