@@ -1,6 +1,6 @@
 ---
 title: "Nextail: Cómo la IA Prescriptiva de una Startup Española Está Derrotando a Excel en el Retail de Moda"
-date: 2026-03-28
+date: 2026-04-02
 draft: false
 categories: ["casos_exito", "IA"]
 tags: ["nextail", "ia", "retail", "supply chain", "S&OP", "machine learning", "optimización", "moda", "startup"]

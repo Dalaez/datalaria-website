@@ -19,33 +19,23 @@ def load_and_clean_data(filepath: str) -> pd.DataFrame:
     print(f"Cargando export heredado desde: {filepath}")
     df = pd.read_csv(filepath)
     
-    # 1. Limpieza de Entropía: Espacios traicioneros en strings
-    df['Manufacturer_PN'] = df['Manufacturer_PN'].str.strip()
-    df['Assembly_PN'] = df['Assembly_PN'].str.strip()
-    df['Component_PN'] = df['Component_PN'].str.strip()
-    df['End_Product_SKU'] = df['End_Product_SKU'].str.strip()
+    # 1. Limpieza radical de espacios y estandarización a mayúsculas (Eliminada la deuda técnica de Hardcoding)
+    df['Manufacturer_PN'] = df['Manufacturer_PN'].str.strip().str.upper()
+    df['Manufacturer'] = df['Manufacturer'].str.strip().str.upper()
+    df['Assembly_PN'] = df['Assembly_PN'].str.strip().str.upper()
+    df['Component_PN'] = df['Component_PN'].str.strip().str.upper()
+    df['End_Product_SKU'] = df['End_Product_SKU'].str.strip().str.upper()
     
-    # 2. Limpieza de Entropía: Consolidación de nombres de fabricantes
-    # Convertimos a Title Case y unificamos los alias conocidos
-    df['Manufacturer'] = df['Manufacturer'].str.title().str.strip()
-    mfg_mapping = {
-        'Ti': 'Texas Instruments',
-        'Texas Inst.': 'Texas Instruments',
-        'Stmicroelectronics': 'STMicroelectronics',
-        'St Micro': 'STMicroelectronics',
-        'Stm': 'STMicroelectronics',
-        'Onsemi': 'ON Semiconductor',
-        'On Semi': 'ON Semiconductor'
-    }
-    df['Manufacturer'] = df['Manufacturer'].replace(mfg_mapping)
+    # 2. Tipado de datos forzado (Cantidades numéricas garantizadas)
+    df['Quantity_per_Assembly'] = pd.to_numeric(
+        df['Quantity_per_Assembly'].astype(str).str.strip(), 
+        errors='coerce'
+    ).fillna(1).astype(int)
     
-    # 3. Limpieza de Entropía: Tipos de datos mixtos
-    df['Quantity_per_Assembly'] = pd.to_numeric(df['Quantity_per_Assembly'], errors='coerce').fillna(1).astype(int)
+    # 3. Contención de valores perdidos
+    df['Lifecycle'] = df['Lifecycle'].replace(r'^\s*$', np.nan, regex=True).fillna('Active')
     
-    # 4. Limpieza de Entropía: Ajuste de Lifecycle al ENUM de PostgreSQL ('Active', 'EOL', 'Obsolete')
-    # Rellenamos NaNs (los de compras no saben el estado) asumiendo por prudencia que siguen activos
-    df['Lifecycle'] = df['Lifecycle'].fillna('Active')
-    # Mapeamos estados no soportados por el ENUM (como NRND) al más cercano
+    # Mapeo secreto de seguridad para el ENUM estricto de Postgres (NRND -> Active)
     df['Lifecycle'] = df['Lifecycle'].replace({'NRND': 'Active'})
     
     return df

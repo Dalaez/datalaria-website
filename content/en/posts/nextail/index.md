@@ -1,6 +1,6 @@
 ---
 title: "Nextail: How a Spanish Startup's Prescriptive AI Is Defeating Excel in Fashion Retail"
-date: 2026-03-28
+date: 2026-04-02
 draft: false
 categories: ["case-studies", "AI"]
 tags: ["nextail", "ai", "retail", "supply chain", "S&OP", "machine learning", "optimization", "fashion", "startup"]

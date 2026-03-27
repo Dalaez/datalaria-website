@@ -13,7 +13,7 @@ image: "cover.png"
 
 En la teoría académica, los datos fluyen limpios. En la práctica de la cadena de suministro industrial, los ERPs heredados simplemente escupen basura. 
 
-Recibir un *Bill of Materials* exportado en formato de tabla plana desde un sistema obsoleto implica lidiar habitualmente con una alta entropía de datos: celdas completamente vacías, espacios en blanco traicioneros inyectados sádicamente en los números de pieza (ej. `" SN74LS00N "`), nomenclaturas de fabricantes sin estandarizar (mezclando mayúsculas, minúsculas y acrónimos como "ti" o "Texas Inst."), y un tipado inherentemente mixto donde las cantidades numéricas numéricas se solapan con campos de tipo *string*.
+Recibir un *Bill of Materials* exportado en formato de tabla plana desde un sistema obsoleto implica lidiar habitualmente con una alta entropía de datos: celdas completamente vacías, espacios en blanco anómalos ocultos en los números de pieza (ej. `" SN74LS00N "`), nomenclaturas de fabricantes sin estandarizar (mezclando mayúsculas, minúsculas y acrónimos como "ti" o "Texas Inst."), y un tipado inherentemente mixto donde las cantidades numéricas se solapan con campos de tipo *string*.
 
 Intentar inyectar esta entropía tabular en bruto directamente contra una base de datos relacional provocará inevitablemente un colapso en la integridad referencial y múltiples errores de consistencia. Se necesita una capa de extracción y transformación.
 
@@ -27,17 +27,18 @@ Antes de que un solo bloque de datos llegue al motor PostgreSQL, nuestro script 
 def load_and_clean_data(filepath: str) -> pd.DataFrame:
     df = pd.read_csv(filepath)
     
-    # 1. Limpieza radical de espacios traicioneros en identificadores
-    df['Manufacturer_PN'] = df['Manufacturer_PN'].str.strip()
-    df['Assembly_PN'] = df['Assembly_PN'].str.strip()
+    # 1. Limpieza radical de espacios y estandarización a mayúsculas (Evita hardcoding)
+    df['Manufacturer_PN'] = df['Manufacturer_PN'].str.strip().str.upper()
+    df['Manufacturer'] = df['Manufacturer'].str.strip().str.upper()
     
-    # 2. Consolidación tipográfica de Fabricantes
-    df['Manufacturer'] = df['Manufacturer'].str.title().str.strip()
-    df['Manufacturer'] = df['Manufacturer'].replace({'Ti': 'Texas Instruments'})
+    # 2. Tipado de datos forzado (Cantidades numéricas garantizadas)
+    df['Quantity_per_Assembly'] = pd.to_numeric(
+        df['Quantity_per_Assembly'].astype(str).str.strip(), 
+        errors='coerce'
+    ).fillna(1).astype(int)
     
-    # 3. Tipado de datos forzado y contención de valores perdidos
-    df['Quantity_per_Assembly'] = pd.to_numeric(df['Quantity_per_Assembly'], errors='coerce').fillna(1).astype(int)
-    df['Lifecycle'] = df['Lifecycle'].fillna('Active')
+    # 3. Contención de valores perdidos
+    df['Lifecycle'] = df['Lifecycle'].replace(r'^\s*$', np.nan, regex=True).fillna('Active')
     
     return df
 ```
@@ -59,7 +60,7 @@ Esta segregación del lazo de inserción es el método pragmático e idóneo par
 
 La condición predeterminante para un pipeline de datos serio es la **Idempotencia**. El script asume explícitamente que un operador automatizado puede y va a ejecutar el sistema de inyección múltiples veces por error sobre los mismos datos.
 
-Operar a nivel de sentencias `INSERT` planas destruiría inmediatamente el ecosistema duplicando las líneas del BOM en cascada de forma geométrica masiva. La solución operativa descansa en exprimir las capacidades de `upsert()` facilitadas por el SDK de Supabase, apoyando el peso arquitectural exclusivamente en las columnas con restricción `UNIQUE` (`sku` en productos terminados, `internal_pn` en el listado base, y `mpn` en la telemetría del fabricante foráneo).
+Operar a nivel de sentencias `INSERT` planas corrompería la integridad de la base de datos duplicando las aristas del grafo. La solución operativa descansa en exprimir las capacidades de `upsert()` facilitadas por el SDK de Supabase, apoyando el peso arquitectural exclusivamente en las columnas con restricción `UNIQUE` (`sku` en productos terminados, `internal_pn` en el listado base, y `mpn` en la telemetría del fabricante foráneo).
 
 Al ejecutar los cruces lógicos con `upsert()`, la integración actúa escrutando, parcheando y cruzando valores sin duplicados. Esta es exactamente la salida directa de la terminal reportando la consistencia en vivo en segundas pasadas:
 
@@ -79,6 +80,14 @@ El Grafo BOM está completamente sincronizado (Idempotent success).
 
 [OK] Migración a entorno relacional completada al 100%.
 ```
+
+### El Sandbox: Ejecútalo tú mismo
+
+En Ingeniería de Operaciones, el código vale más que la teoría. He preparado un entorno interactivo y seguro (Zero Friction) para que pruebes esta tubería ETL.
+
+No necesitas instalar nada ni configurar bases de datos. El script levantará un motor SQL en la memoria de tu navegador, ingerirá un archivo CSV corrupto, lo limpiará con Pandas y construirá el árbol relacional en milisegundos demostrando la idempotencia en vivo.
+
+🔗 [Accede al Google Colab Interactivo Aquí](https://colab.research.google.com/drive/1kMLX2RexPSZVHXuXURZ1VnF_w2nRPgxg?usp=sharing)
 
 ## 5. Cierre y Próximos Pasos
 
