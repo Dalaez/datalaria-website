@@ -31,5 +31,11 @@ Aquí encontrarás una colección de pequeñas aplicaciones y herramientas que h
         <p class="app-desc">Ejercicios matemáticos interactivos y herramientas de cálculo para practicar.</p>
         <a href="/apps/maths/" class="app-link">Abrir App →</a>
     </div>
+    <div class="app-card">
+        <span class="app-icon">📡</span>
+        <h3 class="app-title">Radar de Obsolescencia</h3>
+        <p class="app-desc">Dashboard Ejecutivo impulsado por IA para la mitigación del riesgo en la cadena de suministro.</p>
+        <a href="/apps/obs-management/" class="app-link">Abrir Dashboard →</a>
+    </div>
 </div>
 

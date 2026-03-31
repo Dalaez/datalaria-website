@@ -1,0 +1,282 @@
+﻿
+--- INICIALIZANDO N├ÜCLEO AG├ëNTICO (OBSOLESCENCE RADAR) ---
+ÔöîÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ ­ƒÜÇ Crew Execution Started ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÉ
+Ôöé                                                                             Ôöé
+Ôöé  Crew Execution Started                                                     Ôöé
+Ôöé  Name: crew                                                                 Ôöé
+Ôöé  ID: 3863a4d2-185d-45b8-8b49-03d9c33f0460                                   Ôöé
+Ôöé                                                                             Ôöé
+Ôöé                                                                             Ôöé
+ÔööÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÿ
+
+ÔöîÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ ­ƒôï Task Started ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÉ
+Ôöé                                                                             Ôöé
+Ôöé  Task Started                                                               Ôöé
+Ôöé  Name: Analiza sem├ínticamente el texto del siguiente Product                Ôöé
+Ôöé  Discontinuance Notice (PDN):                                               Ôöé
+Ôöé                                                                             Ôöé
+Ôöé          '                                                                  Ôöé
+Ôöé      *** TEXAS INSTRUMENTS - PRODUCT DISCONTINUANCE NOTICE (PDN) ***        Ôöé
+Ôöé                                                                             Ôöé
+Ôöé      Dear Partner,                                                          Ôöé
+Ôöé                                                                             Ôöé
+Ôöé      This formal transmission serves as official notification that Texas    Ôöé
+Ôöé  Instruments will cease global production operations for the following      Ôöé
+Ôöé  device family due to legacy wafer fab shutdowns:                           Ôöé
+Ôöé                                                                             Ôöé
+Ôöé      Target Part Number: TI-CAP-10U-50                                      Ôöé
+Ôöé      Status: End of Life (EOL)                                              Ôöé
+Ôöé      Reason for Discontinuance: Legacy 150mm fabrication facility           Ôöé
+Ôöé  decommissioning.                                                           Ôöé
+Ôöé                                                                             Ôöé
+Ôöé      Last Time Buy (LTB) Order Window closes: October 2026.                 Ôöé
+Ôöé      Final Ship Date: March 2027.                                           Ôöé
+Ôöé                                                                             Ôöé
+Ôöé      Please assess your manufacturing buffers and issue purchase orders     Ôöé
+Ôöé  effectively.                                                               Ôöé
+Ôöé      '                                                                      Ôöé
+Ôöé                                                                             Ôöé
+Ôöé          1. Localiza y extrae el Manufacturer Part Number (MPN).            Ôöé
+Ôöé          2. LUEGO, invoca excluyentemente tu herramienta de base de datos   Ôöé
+Ôöé  (`calculate_financial_impact`) pasando el MPN como argumento directo. No   Ôöé
+Ôöé  prosigas sin usar la herramienta.                                          Ôöé
+Ôöé          3. Recopila el string de impacto econ├│mico retornado por la base   Ôöé
+Ôöé  de datos (Euros expuestos, Productos bloqueados).                          Ôöé
+Ôöé          4. Redacta el output.                                              Ôöé
+Ôöé  ID: 13ac8d9c-5864-431b-a3c7-612edf18e133                                   Ôöé
+Ôöé                                                                             Ôöé
+Ôöé                                                                             Ôöé
+ÔööÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÿ
+
+ÔöîÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ ­ƒñû Agent Started ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÉ
+Ôöé                                                                             Ôöé
+Ôöé  Agent: Senior Supply Chain Risk Analyst                                    Ôöé
+Ôöé                                                                             Ôöé
+Ôöé  Task: Analiza sem├ínticamente el texto del siguiente Product                Ôöé
+Ôöé  Discontinuance Notice (PDN):                                               Ôöé
+Ôöé                                                                             Ôöé
+Ôöé          '                                                                  Ôöé
+Ôöé      *** TEXAS INSTRUMENTS - PRODUCT DISCONTINUANCE NOTICE (PDN) ***        Ôöé
+Ôöé                                                                             Ôöé
+Ôöé      Dear Partner,                                                          Ôöé
+Ôöé                                                                             Ôöé
+Ôöé      This formal transmission serves as official notification that Texas    Ôöé
+Ôöé  Instruments will cease global production operations for the following      Ôöé
+Ôöé  device family due to legacy wafer fab shutdowns:                           Ôöé
+Ôöé                                                                             Ôöé
+Ôöé      Target Part Number: TI-CAP-10U-50                                      Ôöé
+Ôöé      Status: End of Life (EOL)                                              Ôöé
+Ôöé      Reason for Discontinuance: Legacy 150mm fabrication facility           Ôöé
+Ôöé  decommissioning.                                                           Ôöé
+Ôöé                                                                             Ôöé
+Ôöé      Last Time Buy (LTB) Order Window closes: October 2026.                 Ôöé
+Ôöé      Final Ship Date: March 2027.                                           Ôöé
+Ôöé                                                                             Ôöé
+Ôöé      Please assess your manufacturing buffers and issue purchase orders     Ôöé
+Ôöé  effectively.                                                               Ôöé
+Ôöé      '                                                                      Ôöé
+Ôöé                                                                             Ôöé
+Ôöé          1. Localiza y extrae el Manufacturer Part Number (MPN).            Ôöé
+Ôöé          2. LUEGO, invoca excluyentemente tu herramienta de base de datos   Ôöé
+Ôöé  (`calculate_financial_impact`) pasando el MPN como argumento directo. No   Ôöé
+Ôöé  prosigas sin usar la herramienta.                                          Ôöé
+Ôöé          3. Recopila el string de impacto econ├│mico retornado por la base   Ôöé
+Ôöé  de datos (Euros expuestos, Productos bloqueados).                          Ôöé
+Ôöé          4. Redacta el output.                                              Ôöé
+Ôöé                                                                             Ôöé
+ÔööÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÿ
+
+python : ERROR:root:Google Gemini API error: 404 - models/gemini-1.5-pro-latest is not found for API version v1beta, 
+or is not supported for generateContent. Call ListModels to see the list of available models and their supported 
+methods.
+En línea: 1 Carácter: 1
++ python obsolescence_agent.py > out.txt 2>&1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (ERROR:root:Goog...ported methods.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[91mAn unknown error occurred. Please check the details below.[0m
+[91mError details: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-pro-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}[0m
+[91mAn unknown error occurred. Please check the details below.[0m
+[91mError details: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-pro-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}[0m
+ÔöîÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ ÔØî LLM Error ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÉ
+Ôöé                                                                             Ôöé
+Ôöé  LLM Call Failed                                                            Ôöé
+Ôöé  Error: Google Gemini API error: 404 - models/gemini-1.5-pro-latest is not  Ôöé
+Ôöé  found for API version v1beta, or is not supported for generateContent.     Ôöé
+Ôöé  Call ListModels to see the list of available models and their supported    Ôöé
+Ôöé  methods.                                                                   Ôöé
+Ôöé                                                                             Ôöé
+ÔööÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÿ
+
+ÔöîÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ ­ƒñû Agent Started ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÉ
+Ôöé                                                                             Ôöé
+Ôöé  Agent: Senior Supply Chain Risk Analyst                                    Ôöé
+Ôöé                                                                             Ôöé
+Ôöé  Task: Analiza sem├ínticamente el texto del siguiente Product                Ôöé
+Ôöé  Discontinuance Notice (PDN):                                               Ôöé
+Ôöé                                                                             Ôöé
+Ôöé          '                                                                  Ôöé
+Ôöé      *** TEXAS INSTRUMENTS - PRODUCT DISCONTINUANCE NOTICE (PDN) ***        Ôöé
+Ôöé                                                                             Ôöé
+Ôöé      Dear Partner,                                                          Ôöé
+Ôöé                                                                             Ôöé
+Ôöé      This formal transmission serves as official notification that Texas    Ôöé
+Ôöé  Instruments will cease global production operations for the following      Ôöé
+Ôöé  device family due to legacy wafer fab shutdowns:                           Ôöé
+Ôöé                                                                             Ôöé
+Ôöé      Target Part Number: TI-CAP-10U-50                                      Ôöé
+Ôöé      Status: End of Life (EOL)                                              Ôöé
+Ôöé      Reason for Discontinuance: Legacy 150mm fabrication facility           Ôöé
+Ôöé  decommissioning.                                                           Ôöé
+Ôöé                                                                             Ôöé
+Ôöé      Last Time Buy (LTB) Order Window closes: October 2026.                 Ôöé
+Ôöé      Final Ship Date: March 2027.                                           Ôöé
+Ôöé                                                                             Ôöé
+Ôöé      Please assess your manufacturing buffers and issue purchase orders     Ôöé
+Ôöé  effectively.                                                               Ôöé
+Ôöé      '                                                                      Ôöé
+Ôöé                                                                             Ôöé
+Ôöé          1. Localiza y extrae el Manufacturer Part Number (MPN).            Ôöé
+Ôöé          2. LUEGO, invoca excluyentemente tu herramienta de base de datos   Ôöé
+Ôöé  (`calculate_financial_impact`) pasando el MPN como argumento directo. No   Ôöé
+Ôöé  prosigas sin usar la herramienta.                                          Ôöé
+Ôöé          3. Recopila el string de impacto econ├│mico retornado por la base   Ôöé
+Ôöé  de datos (Euros expuestos, Productos bloqueados).                          Ôöé
+Ôöé          4. Redacta el output.                                              Ôöé
+Ôöé                                                                             Ôöé
+ÔööÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÿ
+
+ERROR:root:Google Gemini API error: 404 - models/gemini-1.5-pro-latest is not found for API version v1beta, or is not 
+supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+[91mAn unknown error occurred. Please check the details below.[0m
+[91mError details: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-pro-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}[0m
+[91mAn unknown error occurred. Please check the details below.[0m
+[91mError details: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-pro-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}[0m
+ÔöîÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ ÔØî LLM Error ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÉ
+Ôöé                                                                             Ôöé
+Ôöé  LLM Call Failed                                                            Ôöé
+Ôöé  Error: Google Gemini API error: 404 - models/gemini-1.5-pro-latest is not  Ôöé
+Ôöé  found for API version v1beta, or is not supported for generateContent.     Ôöé
+Ôöé  Call ListModels to see the list of available models and their supported    Ôöé
+Ôöé  methods.                                                                   Ôöé
+Ôöé                                                                             Ôöé
+ÔööÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÿ
+
+ÔöîÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ ­ƒñû Agent Started ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÉ
+Ôöé                                                                             Ôöé
+Ôöé  Agent: Senior Supply Chain Risk Analyst                                    Ôöé
+Ôöé                                                                             Ôöé
+Ôöé  Task: Analiza sem├ínticamente el texto del siguiente Product                Ôöé
+Ôöé  Discontinuance Notice (PDN):                                               Ôöé
+Ôöé                                                                             Ôöé
+Ôöé          '                                                                  Ôöé
+Ôöé      *** TEXAS INSTRUMENTS - PRODUCT DISCONTINUANCE NOTICE (PDN) ***        Ôöé
+Ôöé                                                                             Ôöé
+Ôöé      Dear Partner,                                                          Ôöé
+Ôöé                                                                             Ôöé
+Ôöé      This formal transmission serves as official notification that Texas    Ôöé
+Ôöé  Instruments will cease global production operations for the following      Ôöé
+Ôöé  device family due to legacy wafer fab shutdowns:                           Ôöé
+Ôöé                                                                             Ôöé
+Ôöé      Target Part Number: TI-CAP-10U-50                                      Ôöé
+Ôöé      Status: End of Life (EOL)                                              Ôöé
+Ôöé      Reason for Discontinuance: Legacy 150mm fabrication facility           Ôöé
+Ôöé  decommissioning.                                                           Ôöé
+Ôöé                                                                             Ôöé
+Ôöé      Last Time Buy (LTB) Order Window closes: October 2026.                 Ôöé
+Ôöé      Final Ship Date: March 2027.                                           Ôöé
+Ôöé                                                                             Ôöé
+Ôöé      Please assess your manufacturing buffers and issue purchase orders     Ôöé
+Ôöé  effectively.                                                               Ôöé
+Ôöé      '                                                                      Ôöé
+Ôöé                                                                             Ôöé
+Ôöé          1. Localiza y extrae el Manufacturer Part Number (MPN).            Ôöé
+Ôöé          2. LUEGO, invoca excluyentemente tu herramienta de base de datos   Ôöé
+Ôöé  (`calculate_financial_impact`) pasando el MPN como argumento directo. No   Ôöé
+Ôöé  prosigas sin usar la herramienta.                                          Ôöé
+Ôöé          3. Recopila el string de impacto econ├│mico retornado por la base   Ôöé
+Ôöé  de datos (Euros expuestos, Productos bloqueados).                          Ôöé
+Ôöé          4. Redacta el output.                                              Ôöé
+Ôöé                                                                             Ôöé
+ÔööÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÿ
+
+ERROR:root:Google Gemini API error: 404 - models/gemini-1.5-pro-latest is not found for API version v1beta, or is not 
+supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+[91mAn unknown error occurred. Please check the details below.[0m
+[91mError details: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-pro-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}[0m
+[91mAn unknown error occurred. Please check the details below.[0m
+[91mError details: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-pro-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}[0m
+[CrewAIEventsBus] Warning: Event pairing mismatch. ÔöîÔöÇ'task_failed' closed 
+'agent_execution_started'ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ (expected 'task_started')
+ ÔØî LLM Error ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÉ
+Ôöé                                                                             Ôöé
+Ôöé  LLM Call Failed                                                            Ôöé
+Ôöé  Error: Google Gemini API error: 404 - models/gemini-1.5-pro-latest is not  Ôöé
+Ôöé  found for API version v1beta, or is not supported for generateContent.     Ôöé
+Ôöé  Call ListModels to see the list of available models and their supported    Ôöé[
+CrewAIEventsBusÔöé]   Warning: Event pairing mismatch. methods.'crew_kickoff_failed'                                                                    closed
+Ôöé'agent_execution_started'
+ Ôöé(                                                                             Ôöéexpected 'crew_kickoff_started'
+)ÔööÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÿ
+
+
+ÔöîÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ ­ƒôï Task Failure ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÉ
+Ôöé                                                                             Ôöé
+Ôöé  Task Failed                                                                Ôöé
+ÔöéFallo cr├¡tico en el pipeline de Inferencia: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-1.5-pro-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+  Name: Analiza sem├ínticamente el texto del siguiente Product                Ôöé
+Ôöé  Discontinuance Notice (PDN):                                               Ôöé
+Ôöé                                                                             Ôöé
+Ôöé          '                                                                  Ôöé
+Ôöé      *** TEXAS INSTRUMENTS - PRODUCT DISCONTINUANCE NOTICE (PDN) ***        Ôöé
+Ôöé                                                                             Ôöé
+Ôöé      Dear Partner,                                                          Ôöé
+Ôöé                                                                             Ôöé
+Ôöé      This formal transmission serves as official notification that Texas    Ôöé
+Ôöé  Instruments will cease global production operations for the following      Ôöé
+Ôöé  device family due to legacy wafer fab shutdowns:                           Ôöé
+Ôöé                                                                             Ôöé
+Ôöé      Target Part Number: TI-CAP-10U-50                                      Ôöé
+Ôöé      Status: End of Life (EOL)                                              Ôöé
+Ôöé      Reason for Discontinuance: Legacy 150mm fabrication facility           Ôöé
+Ôöé  decommissioning.                                                           Ôöé
+Ôöé                                                                             Ôöé
+Ôöé      Last Time Buy (LTB) Order Window closes: October 2026.                 Ôöé
+Ôöé      Final Ship Date: March 2027.                                           Ôöé
+Ôöé                                                                             Ôöé
+Ôöé      Please assess your manufacturing buffers and issue purchase orders     Ôöé
+Ôöé  effectively.                                                               Ôöé
+Ôöé      '                                                                      Ôöé
+Ôöé                                                                             Ôöé
+Ôöé          1. Localiza y extrae el Manufacturer Part Number (MPN).            Ôöé
+Ôöé          2. LUEGO, invoca excluyentemente tu herramienta de base de datos   Ôöé
+Ôöé  (`calculate_financial_impact`) pasando el MPN como argumento directo. No   Ôöé
+Ôöé  prosigas sin usar la herramienta.                                          Ôöé
+Ôöé          3. Recopila el string de impacto econ├│mico retornado por la base   Ôöé
+Ôöé  de datos (Euros expuestos, Productos bloqueados).                          Ôöé
+Ôöé          4. Redacta el output.                                              Ôöé
+Ôöé  Agent: Senior Supply Chain Risk Analyst                                    Ôöé
+Ôöé                                                                             Ôöé
+Ôöé                                                                             Ôöé
+ÔööÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÿ
+ÔöîÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ Crew Failure ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÉ
+Ôöé                                                                             Ôöé
+Ôöé  Crew Execution Failed                                                      Ôöé
+Ôöé  Name: crew                                                                 Ôöé
+Ôöé  ID: 3863a4d2-185d-45b8-8b49-03d9c33f0460                                   Ôöé
+Ôöé                                                                             Ôöé
+Ôöé                                                                             Ôöé
+ÔööÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÿ
+
+
+ÔöîÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ Tracing Status ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÉ
+Ôöé                                                                             Ôöé
+Ôöé  Info: Tracing is disabled.                                                 Ôöé
+Ôöé                                                                             Ôöé
+Ôöé  To enable tracing, do any one of these:                                    Ôöé
+Ôöé  ÔÇó Set tracing=True in your Crew/Flow code                                  Ôöé
+Ôöé  ÔÇó Set CREWAI_TRACING_ENABLED=true in your project's .env file              Ôöé
+Ôöé  ÔÇó Run: crewai traces enable                                                Ôöé
+Ôöé                                                                             Ôöé
+ÔööÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÿ

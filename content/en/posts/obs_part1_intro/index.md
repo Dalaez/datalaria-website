@@ -1,7 +1,7 @@
 ---
 title: "The Chess of Obsolescence: Turning Supply Chain Collapse into Your Ultimate Competitive Advantage"
 date: 2026-04-11
-draft: false
+draft: true
 categories: ["Obsolescence Engineering", "Operations Engineering", "Supply Chain"]
 tags: ["Supply Chain", "Risk Management", "End of Life", "First Principles Thinking", "IEC 62402"]
 author: "Datalaria"

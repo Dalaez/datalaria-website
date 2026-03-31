@@ -31,5 +31,11 @@ Here you will find a collection of small applications and tools I have developed
         <p class="app-desc">Interactive math exercises and calculation tools for practice.</p>
         <a href="/apps/maths/" class="app-link">Open App →</a>
     </div>
+    <div class="app-card">
+        <span class="app-icon">📡</span>
+        <h3 class="app-title">Agentic Radar</h3>
+        <p class="app-desc">AI-powered Executive Dashboard for 24/7 supply chain risk mitigation.</p>
+        <a href="/apps/obs-management/" class="app-link">Open Dashboard →</a>
+    </div>
 </div>
 
