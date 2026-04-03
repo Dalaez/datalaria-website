@@ -1,11 +1,11 @@
 ---
 title: "Clarity AI: Cómo Rebeca Minguela y la IA Están Redefiniendo y Cuantificando la Sostenibilidad Financiera"
-date: 2026-04-04
+date: 2026-04-03
 draft: false
 categories: ["casos_exito", "IA"]
 tags: ["clarity ai", "rebeca minguela", "sostenibilidad", "esg", "NLP", "machine learning", "startup", "fintech"]
 description: "La fascinante historia de Clarity AI, el 'unicornio' en la sombra fundado por la ingeniera de telecomunicaciones Rebeca Minguela que está erradicando el greenwashing mediante el procesamiento masivo de datos e IA."
-summary: "Con algoritmos de Machine Learning y NLP, Clarity AI ha sustituido las subjetivas opiniones de analistas humanos por evidencias matemáticas rastreables. Descubre cómo Rebeca Minguela construyó la infraestructura en la nube que hoy es el árbitro tecnológico entre el capital global y la sostenibilidad."
+summary: "Con algoritmos de Machine Learning y NLP, Clarity AI ha sustituido las opiniones subjetivas de analistas humanos por evidencias matemáticas rastreables. Descubre cómo Rebeca Minguela construyó la infraestructura en la nube que hoy es el árbitro tecnológico entre el capital global y la sostenibilidad."
 social_text: "Descubre cómo Clarity AI y Rebeca Minguela están usando Inteligencia Artificial para erradicar el greenwashing financiero. De valoraciones subjetivas a la evidencia algorítmica. 🌍🤖📊 #ClarityAI #Sostenibilidad #IA #Fintech #ESG"
 image: cover.png
 weight: 10
@@ -16,7 +16,7 @@ En la intersección entre la innovación tecnológica puntera y la presión regu
 
 En este escenario de caos informativo, nace en 2017 **Clarity AI**, una plataforma tecnológica con una premisa fundacional disruptiva: utilizar la Inteligencia Artificial (IA), el Machine Learning y el Big Data para transformar la sostenibilidad en una ciencia cuantificable, auditable y escalable globalmente. Y detrás de este gigantesco hito arquitectónico se encuentra la ingeniera y emprendedora **Rebeca Minguela**.
 
-![Imagen logo Clarity](clarity_ai_image.png)
+![Imagen del logo Clarity](clarity_ai_image.png)
 
 ### El Perfil de la Fundadora: Rigor Técnico y Visión Global
 

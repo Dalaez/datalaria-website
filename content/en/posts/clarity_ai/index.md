@@ -16,7 +16,7 @@ In the intersection between cutting-edge technological innovation and global reg
 
 In this landscape of informational chaos, **Clarity AI** was born in 2017—a technology platform with a disruptive foundational premise: to leverage Artificial Intelligence (AI), Machine Learning, and Big Data to transform sustainability into a quantifiable, auditable, and globally scalable science. Behind this massive architectural milestone is the Spanish engineer and entrepreneur, **Rebeca Minguela**.
 
-![Image of Clarity](clarity_ai_image.png)
+![Image of Logo of Clarity](clarity_ai_image.png)
 
 ### The Founder’s Profile: Technical Rigor and Global Vision
 
