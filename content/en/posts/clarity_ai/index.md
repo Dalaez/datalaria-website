@@ -1,6 +1,6 @@
 ---
 title: "Clarity AI: How Rebeca Minguela and AI Are Redefining and Quantifying Financial Sustainability"
-date: 2026-04-04
+date: 2026-04-03
 draft: false
 categories: ["casos_exito", "IA"]
 tags: ["clarity ai", "rebeca minguela", "sustainability", "esg", "NLP", "machine learning", "startup", "fintech"]
