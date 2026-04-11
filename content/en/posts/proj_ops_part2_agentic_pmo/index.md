@@ -1,7 +1,7 @@
 ---
 title: "Project Operations Engineering Part 2: The Death of the 'Status Report' and the Rise of the Agentic PMO"
 date: 2026-06-02
-draft: false
+draft: true
 categories: ["Project Operations Engineering", "Operations Engineering"]
 tags: ["Agentic PMO", "CrewAI", "EVM", "FastAPI", "Supabase", "First Principles"]
 author: "Datalaria"
