@@ -1,6 +1,6 @@
 ---
 title: "La Interfaz Ejecutiva: Traduciendo la Telemetría de la IA en Decisiones C-Level"
-date: 2026-03-31
+date: 2026-05-22
 draft: true
 categories: ["S&OP Engineering", "Data Visualization", "Cloud Architecture"]
 tags: ["FastAPI", "Vanilla JS", "Tailwind CSS", "CrewAI", "Executive Dashboard"]

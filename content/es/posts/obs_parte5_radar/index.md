@@ -1,6 +1,6 @@
 ---
 title: "El Radar Agéntico: Por qué los LLMs no salvarán tu cadena de suministro (y el Tool Calling sí)"
-date: 2026-03-29
+date: 2026-05-08
 draft: true
 categories: ["S&OP Engineering", "Inteligencia Artificial", "CrewAI"]
 tags: ["Supply Chain", "Agentic AI", "Tool Calling", "Supabase", "Python", "Obsolescencia"]
