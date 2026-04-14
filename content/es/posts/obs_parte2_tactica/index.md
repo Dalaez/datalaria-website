@@ -1,7 +1,7 @@
 ---
 title: "El Arsenal Táctico: Por qué comprar radares de cadena de suministro no salvará tu producción"
-date: 2026-04-18
-draft: true
+date: 2026-04-14
+draft: false
 categories: ["Ingeniería de la Obsolescencia", "Operations Engineering", "Supply Chain"]
 tags: ["Supply Chain", "BOM Management", "SiliconExpert", "IHS Markit", "Data Architecture"]
 author: "Datalaria"
