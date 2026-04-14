@@ -1,5 +1,5 @@
 ---
-title: "El Arsenal Táctico: Por qué comprar radares de cadena de suministro no salvará tu producción"
+title: "El Arsenal Táctico: Por qué comprar Software especializado para la gestiónd de la cadena de suministro no salvará tu producción de las obsolescencias"
 date: 2026-04-14
 draft: false
 categories: ["Ingeniería de la Obsolescencia", "Operations Engineering", "Supply Chain"]
