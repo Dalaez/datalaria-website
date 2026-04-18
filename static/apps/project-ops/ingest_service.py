@@ -57,6 +57,8 @@ def parse_excel(file_bytes: bytes) -> FullIngestPayload:
     df_tasks = pd.read_excel(xls, sheet_name="Tasks")
     if df_tasks.empty:
         raise ValueError("The 'Tasks' sheet is empty.")
+    # Pandas reads empty cells as NaN (float); Pydantic needs None for Optional[str]
+    df_tasks = df_tasks.where(pd.notna(df_tasks), None)
     tasks = [TaskPayload(**row) for _, row in df_tasks.iterrows()]
 
     return FullIngestPayload(
@@ -128,8 +130,8 @@ def ingest_to_supabase(payload: FullIngestPayload) -> IngestResponse:
                 supabase_update = {
                     "dependency_task_id": dep_id
                 }
-                from config import supabase
-                supabase.table("dim_task").update(
+                from db_tools import _q
+                _q("dim_task").update(
                     supabase_update
                 ).eq("task_id", task_row["task_id"]).execute()
 

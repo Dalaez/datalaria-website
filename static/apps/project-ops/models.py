@@ -29,7 +29,7 @@ class ResourcePayload(BaseModel):
     resource_code: str = Field(..., min_length=1, max_length=50)
     resource_name: str = Field(..., min_length=1, max_length=255)
     resource_type: str = Field(..., pattern=r"^(ENGINEER|MACHINE|VENDOR)$")
-    standard_cost_rate: float = Field(..., gt=0)
+    standard_cost_rate: float = Field(..., ge=0)
 
 
 class TaskPayload(BaseModel):
