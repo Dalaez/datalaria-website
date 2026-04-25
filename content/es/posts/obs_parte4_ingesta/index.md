@@ -1,7 +1,7 @@
 ---
 title: "El Bautismo de Fuego: De Excel Basura a Grafo Relacional con Python y Pandas"
-date: 2026-05-02
-draft: true
+date: 2026-04-25
+draft: false
 categories: ["Ingeniería de la Obsolescencia", "Operations Engineering", "Data Architecture"]
 tags: ["Python", "Pandas", "Supabase", "BOM Management", "Data Engineering", "ETL"]
 author: "Datalaria"

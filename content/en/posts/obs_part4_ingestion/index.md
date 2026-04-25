@@ -1,7 +1,7 @@
 ---
 title: "Trial by Fire: From Garbage Excel to Relational Graph with Python and Pandas"
-date: 2026-05-01
-draft: true
+date: 2026-04-25
+draft: false
 categories: ["Obsolescence Engineering", "Operations Engineering", "Data Architecture"]
 tags: ["Python", "Pandas", "Supabase", "BOM Management", "Data Engineering", "ETL"]
 author: "Datalaria"
