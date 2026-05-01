@@ -1,7 +1,7 @@
 ---
 title: "The Agentic Radar: Why LLMs Won't Save Your Supply Chain (And Tool Calling Will)"
-date: 2026-05-08
-draft: true
+date: 2026-05-01
+draft: false
 categories: ["S&OP Engineering", "Artificial Intelligence", "CrewAI"]
 tags: ["Supply Chain", "Agentic AI", "Tool Calling", "Supabase", "Python", "Obsolescence"]
 description: "Traditional RAG architectures fail against the mathematical precision required by heavy industries. Discover how to build an Agentic Radar using Python Tool Calling to cross-reference manufacturer emails with a live P&L SQL database."
@@ -27,7 +27,7 @@ The obvious architectural evolution of generative AI is **Tool Calling**. The co
 
 The following flowchart models the workflow of this **Agentic Radar**:
 
-```mermaid
+{{< mermaid >}}
 flowchart LR
     A[Chaotic PDN Email] -->|Semantic Extraction| B(CrewAI Agent)
     B -->|Tool Calling with MPN| C{Python Tool}
@@ -39,7 +39,7 @@ flowchart LR
     style B fill:#34d399,stroke:#065f46
     style C fill:#3b82f6,stroke:#1e3a8a
     style D fill:#f59e0b,stroke:#b45309
-```
+{{< /mermaid >}}
 
 ### Programming the Analyst (Orchestrating with CrewAI)
 

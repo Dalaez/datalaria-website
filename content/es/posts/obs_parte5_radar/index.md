@@ -1,7 +1,7 @@
 ---
 title: "El Radar Agéntico: Por qué los LLMs no salvarán tu cadena de suministro (y el Tool Calling sí)"
-date: 2026-05-08
-draft: true
+date: 2026-05-01
+draft: false
 categories: ["S&OP Engineering", "Inteligencia Artificial", "CrewAI"]
 tags: ["Supply Chain", "Agentic AI", "Tool Calling", "Supabase", "Python", "Obsolescencia"]
 description: "Los arquitecturas RAG tradicionales fracasan ante la precisión matemática que exige la industria pesada. Descubre cómo construir un Radar Agéntico usando Tool Calling en Python para cruzar correos de fabricantes con la Cuenta de Resultados en tiempo real."
@@ -27,7 +27,7 @@ La evolución obvia de la IA generativa es el **Tool Calling** (Llamada a Herram
 
 El siguiente diagrama modela el flujo de este **Radar Agéntico**:
 
-```mermaid
+{{< mermaid >}}
 flowchart LR
     A[PDN Email Caótico] -->|Extracción Semántica| B(Agente CrewAI)
     B -->|Tool Calling con MPN| C{Herramienta Python}
@@ -39,7 +39,7 @@ flowchart LR
     style B fill:#34d399,stroke:#065f46
     style C fill:#3b82f6,stroke:#1e3a8a
     style D fill:#f59e0b,stroke:#b45309
-```
+{{< /mermaid >}}
 
 ### Programando al Analista (Orquestación con CrewAI)
 

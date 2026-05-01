@@ -1,6 +1,6 @@
 ---
 title: "Leonid Kantorovich: The Mathematician Who Challenged Stalin with Linear Programming"
-date: 2026-04-30
+date: 2026-05-30
 draft: true
 categories: ["casos_exito"]
 tags: ["leonid kantorovich", "linear programming", "optimization", "operations research", "data history"]
