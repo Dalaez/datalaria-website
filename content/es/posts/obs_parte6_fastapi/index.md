@@ -1,7 +1,7 @@
 ---
 title: "El Sistema Nervioso Central: Escalando el Radar Agéntico a 24/7 con FastAPI y Webhooks"
-date: 2026-05-15
-draft: true
+date: 2026-05-09
+draft: false
 categories: ["S&OP Engineering", "Inteligencia Artificial", "Cloud Architecture"]
 tags: ["FastAPI", "Webhooks", "Event-Driven Architecture", "CrewAI", "Python"]
 description: "Cómo transicionar de un script en local a una arquitectura empresarial de alta disponibilidad mediante un enrutador FastAPI que orquesta agentes de CrewAI de forma asíncrona."
@@ -79,7 +79,7 @@ def process_obsolescence_background(pdn_text: str):
 
 La integración de estos módulos forma una *pipeline* orientada a eventos donde las consultas a tablas SQL y el procesamiento de texto de LLMs operan en conjunto de forma asíncrona.
 
-```mermaid
+{{< mermaid >}}
 flowchart TD
     subgraph Origen de Eventos
     A(Inbound Email Sendgrid/Mailgun)
@@ -114,7 +114,7 @@ flowchart TD
     style E fill:#1e3a8a,stroke:#3b82f6
     style F fill:#065f46,stroke:#34d399
     style G fill:#b45309,stroke:#f59e0b
-```
+{{< /mermaid >}}
 
 ### Próximos Pasos 
 

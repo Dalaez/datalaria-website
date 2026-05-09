@@ -1,7 +1,7 @@
 ---
 title: "The Central Nervous System: Scaling the Agentic Radar to 24/7 with FastAPI and Webhooks"
-date: 2026-05-15
-draft: true
+date: 2026-05-09
+draft: false
 categories: ["S&OP Engineering", "Artificial Intelligence", "Cloud Architecture"]
 tags: ["FastAPI", "Webhooks", "Event-Driven Architecture", "CrewAI", "Python"]
 description: "Transitioning from a local script to a high-availability enterprise architecture. This post details building a FastAPI router to orchestrate CrewAI agents asynchronously."
@@ -79,7 +79,7 @@ def process_obsolescence_background(pdn_text: str):
 
 The integration of these modules forms an event-driven pipeline where SQL table queries and LLM text processing operate together asynchronously.
 
-```mermaid
+{{< mermaid >}}
 flowchart TD
     subgraph Event Origin Stream
     A(Inbound Email Sendgrid/Mailgun)
@@ -114,7 +114,7 @@ flowchart TD
     style E fill:#1e3a8a,stroke:#3b82f6
     style F fill:#065f46,stroke:#34d399
     style G fill:#b45309,stroke:#f59e0b
-```
+{{< /mermaid >}}
 
 ### Next Steps 
 
