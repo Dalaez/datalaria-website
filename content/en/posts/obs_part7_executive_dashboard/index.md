@@ -1,7 +1,7 @@
 ---
 title: "The Executive Interface: Translating AI Telemetry into C-Level Decisions"
-date: 2026-05-22
-draft: true
+date: 2026-05-17
+draft: false
 categories: ["S&OP Engineering", "Data Visualization", "Cloud Architecture"]
 tags: ["FastAPI", "Vanilla JS", "Tailwind CSS", "CrewAI", "Executive Dashboard"]
 description: "Building the presentation layer that translates asynchronous AI operations into financial metrics for executive roles utilizing lightweight Tailwind CSS and Vanilla JS."
