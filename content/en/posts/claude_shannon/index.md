@@ -1,6 +1,6 @@
 ---
 title: "Claude Shannon: The Man Who Turned the World into Bits and Defined the Future of AI"
-date: 2026-06-23
+date: 2026-06-21
 draft: false
 categories: ["case-studies"]
 tags: ["claude shannon", "information theory", "entropy", "bit", "cybersecurity", "compression", "history"]

@@ -1,6 +1,6 @@
 ---
 title: "Claude Shannon: El Hombre que Convirtió el Mundo en Bits y Definió el Futuro de la IA"
-date: 2026-06-23
+date: 2026-06-21
 draft: false
 categories: ["casos_exito"]
 tags: ["claude shannon", "teoría de la información", "entropía", "bit", "ciberseguridad", "compresión", "historia"]
