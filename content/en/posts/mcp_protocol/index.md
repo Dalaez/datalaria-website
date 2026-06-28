@@ -1,6 +1,6 @@
 ---
 title: "MCP (Model Context Protocol): The Standard That Wants to Be the USB of Artificial Intelligence"
-date: 2026-06-30
+date: 2026-06-28
 draft: false
 categories: ["Artificial Intelligence", "Engineering"]
 tags: ["mcp", "model context protocol", "tool calling", "function calling", "anthropic", "llm", "api"]
