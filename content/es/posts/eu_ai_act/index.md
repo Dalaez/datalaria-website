@@ -1,6 +1,6 @@
 ---
 title: "EU AI Act: Lo que Todo Ingeniero Español Necesita Saber (Sin Abogados)"
-date: 2026-07-04
+date: 2026-07-05
 draft: false
 categories: ["Inteligencia Artificial", "Ingeniería", "Regulación"]
 tags: ["eu ai act", "regulación ia", "aesia", "compliance", "alto riesgo", "startups", "ingeniería", "europa"]

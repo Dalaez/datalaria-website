@@ -1,6 +1,6 @@
 ---
 title: "EU AI Act: What Every Engineer Needs to Know (No Lawyers Required)"
-date: 2026-07-04
+date: 2026-07-05
 draft: false
 categories: ["Artificial Intelligence", "Engineering", "Regulation"]
 tags: ["eu ai act", "ai regulation", "compliance", "high risk", "startups", "engineering", "europe"]
