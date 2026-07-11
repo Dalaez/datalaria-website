@@ -34,6 +34,9 @@ def get_linkedin_config():
     """Obtiene configuración de LinkedIn desde .env."""
     token = os.getenv("LINKEDIN_ACCESS_TOKEN")
     company_id = os.getenv("LINKEDIN_COMPANY_ID")
+    client_id = os.getenv("LINKEDIN_CLIENT_ID")
+    client_secret = os.getenv("LINKEDIN_CLIENT_SECRET")
+    refresh_token = os.getenv("LINKEDIN_REFRESH_TOKEN")
     
     if not token:
         print("❌ ERROR: Falta LINKEDIN_ACCESS_TOKEN en el archivo .env")
@@ -43,7 +46,13 @@ def get_linkedin_config():
         print("❌ ERROR: Falta LINKEDIN_COMPANY_ID en el archivo .env")
         sys.exit(1)
     
-    return token, company_id
+    return {
+        "token": token,
+        "company_id": company_id,
+        "client_id": client_id,
+        "client_secret": client_secret,
+        "refresh_token": refresh_token,
+    }
 
 
 def analyze_text(text, url=None):
@@ -86,8 +95,85 @@ def preview_post(text, url=None):
     print("=" * 60)
 
 
+def _update_env_file(key, value):
+    """Actualiza una clave en el archivo .env del directorio autopilot."""
+    import re
+    
+    env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".env")
+    
+    if not os.path.exists(env_path):
+        print(f"   ⚠️ No se encontró .env en: {env_path}")
+        return
+    
+    with open(env_path, "r", encoding="utf-8") as f:
+        content = f.read()
+    
+    pattern = rf"^{re.escape(key)}=.*$"
+    replacement = f"{key}={value}"
+    new_content, count = re.subn(pattern, replacement, content, flags=re.MULTILINE)
+    
+    if count == 0:
+        new_content = content.rstrip() + f"\n{replacement}\n"
+    
+    with open(env_path, "w", encoding="utf-8") as f:
+        f.write(new_content)
+
+
+def refresh_linkedin_token(config):
+    """Renueva el access token de LinkedIn usando el refresh token.
+    
+    Returns:
+        El nuevo token si se renovó, None en caso contrario.
+    """
+    if not config["refresh_token"]:
+        print("   ❌ No hay LINKEDIN_REFRESH_TOKEN en .env.")
+        return None
+    
+    if not config["client_id"] or not config["client_secret"]:
+        print("   ❌ Faltan LINKEDIN_CLIENT_ID o LINKEDIN_CLIENT_SECRET en .env.")
+        return None
+    
+    print("   🔄 Renovando token de LinkedIn...")
+    
+    try:
+        response = requests.post(
+            "https://www.linkedin.com/oauth/v2/accessToken",
+            data={
+                "grant_type": "refresh_token",
+                "refresh_token": config["refresh_token"],
+                "client_id": config["client_id"],
+                "client_secret": config["client_secret"],
+            }
+        )
+        response.raise_for_status()
+        data = response.json()
+        
+        new_token = data.get("access_token")
+        new_refresh = data.get("refresh_token")
+        
+        if not new_token:
+            print("   ❌ La respuesta no incluyó un nuevo access_token.")
+            return None
+        
+        # Actualizar .env
+        _update_env_file("LINKEDIN_ACCESS_TOKEN", new_token)
+        if new_refresh:
+            _update_env_file("LINKEDIN_REFRESH_TOKEN", new_refresh)
+            config["refresh_token"] = new_refresh
+        
+        config["token"] = new_token
+        
+        expires_in = data.get("expires_in", "?")
+        print(f"   ✅ Token renovado (expira en {expires_in}s).")
+        return new_token
+        
+    except Exception as e:
+        print(f"   ❌ Error renovando token: {e}")
+        return None
+
+
 def post_to_linkedin(text, url, dry_run=False):
-    """Publica en LinkedIn usando la API."""
+    """Publica en LinkedIn usando la API. Renueva el token automáticamente si expira."""
     
     preview_post(text, url)
     
@@ -102,65 +188,76 @@ def post_to_linkedin(text, url, dry_run=False):
         return
     
     # Obtener configuración
-    token, company_id = get_linkedin_config()
+    config = get_linkedin_config()
     
     api_url = "https://api.linkedin.com/v2/ugcPosts"
-    author = f"urn:li:organization:{company_id}"
+    author = f"urn:li:organization:{config['company_id']}"
     
-    headers = {
-        "Authorization": f"Bearer {token}",
-        "Content-Type": "application/json",
-        "X-Restli-Protocol-Version": "2.0.0"
-    }
-    
-    payload = {
-        "author": author,
-        "lifecycleState": "PUBLISHED",
-        "specificContent": {
-            "com.linkedin.ugc.ShareContent": {
-                "shareCommentary": {
-                    "text": text
-                },
-                "shareMediaCategory": "ARTICLE",
-                "media": [
-                    {
-                        "status": "READY",
-                        "originalUrl": url
-                    }
-                ]
-            }
-        },
-        "visibility": {
-            "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"
+    for attempt in range(2):  # Máximo 2 intentos: original + retry tras refresh
+        headers = {
+            "Authorization": f"Bearer {config['token']}",
+            "Content-Type": "application/json",
+            "X-Restli-Protocol-Version": "2.0.0"
         }
-    }
-    
-    try:
-        print("\n📤 Publicando en LinkedIn...")
-        response = requests.post(api_url, headers=headers, json=payload)
-        response.raise_for_status()
         
-        post_id = response.json().get('id', 'ID no disponible')
-        print(f"\n✅ ¡ÉXITO! Post publicado en LinkedIn.")
-        print(f"   Post ID: {post_id}")
-        print(f"   Revisa tu página de empresa en LinkedIn para verlo.")
+        payload = {
+            "author": author,
+            "lifecycleState": "PUBLISHED",
+            "specificContent": {
+                "com.linkedin.ugc.ShareContent": {
+                    "shareCommentary": {
+                        "text": text
+                    },
+                    "shareMediaCategory": "ARTICLE",
+                    "media": [
+                        {
+                            "status": "READY",
+                            "originalUrl": url
+                        }
+                    ]
+                }
+            },
+            "visibility": {
+                "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"
+            }
+        }
         
-    except requests.exceptions.HTTPError as e:
-        print(f"\n❌ ERROR HTTP: {e}")
-        print(f"   Status: {response.status_code}")
         try:
-            error_detail = response.json()
-            print(f"   Detalle: {error_detail}")
-        except:
-            print(f"   Response: {response.text}")
-        
-        if response.status_code == 401:
-            print("\n💡 El token de LinkedIn puede haber expirado. Genera uno nuevo en LinkedIn Developer Portal.")
-        elif response.status_code == 403:
-            print("\n💡 Permisos insuficientes. Verifica los scopes del token.")
+            print("\n📤 Publicando en LinkedIn...")
+            response = requests.post(api_url, headers=headers, json=payload)
+            response.raise_for_status()
             
-    except Exception as e:
-        print(f"\n❌ ERROR: {e}")
+            post_id = response.json().get('id', 'ID no disponible')
+            print(f"\n✅ ¡ÉXITO! Post publicado en LinkedIn.")
+            print(f"   Post ID: {post_id}")
+            print(f"   Revisa tu página de empresa en LinkedIn para verlo.")
+            return
+            
+        except requests.exceptions.HTTPError as e:
+            if response.status_code == 401 and attempt == 0:
+                print(f"\n   ⚠️ Token expirado (401). Intentando renovar...")
+                if refresh_linkedin_token(config):
+                    print(f"   🔁 Reintentando publicación...")
+                    continue
+                else:
+                    print(f"\n❌ No se pudo renovar el token. Genera uno nuevo manualmente.")
+                    return
+            
+            print(f"\n❌ ERROR HTTP: {e}")
+            print(f"   Status: {response.status_code}")
+            try:
+                error_detail = response.json()
+                print(f"   Detalle: {error_detail}")
+            except:
+                print(f"   Response: {response.text}")
+            
+            if response.status_code == 403:
+                print("\n💡 Permisos insuficientes. Verifica los scopes del token.")
+            return
+                
+        except Exception as e:
+            print(f"\n❌ ERROR: {e}")
+            return
 
 
 def main():
