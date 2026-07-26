@@ -26,8 +26,9 @@ if sys.platform == 'win32':
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
     sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 
-# Cargar .env desde el directorio autopilot
-load_dotenv()
+# Cargar .env desde el directorio autopilot (padre de src/)
+_env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".env")
+load_dotenv(_env_path)
 
 
 def get_linkedin_config():

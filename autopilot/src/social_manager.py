@@ -7,7 +7,9 @@ from dotenv import load_dotenv
 
 class SocialMediaManager:
     def __init__(self):
-        load_dotenv()
+        # Cargar .env desde el directorio autopilot/ (padre de src/)
+        env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".env")
+        load_dotenv(env_path)
         self.twitter_api_key = os.getenv("TWITTER_API_KEY")
         self.twitter_api_secret = os.getenv("TWITTER_API_SECRET")
         self.twitter_access_token = os.getenv("TWITTER_ACCESS_TOKEN")
