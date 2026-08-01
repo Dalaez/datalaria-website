@@ -275,11 +275,11 @@ class SocialMediaManager:
             True si se renovó con éxito, False en caso contrario.
         """
         if not self.linkedin_refresh_token:
-            print("   ❌ No hay LINKEDIN_REFRESH_TOKEN en .env. Genera uno nuevo manualmente.")
+            print("   ❌ No hay LINKEDIN_REFRESH_TOKEN. Configúralo en .env (local) o en GitHub Secrets (CI).")
             return False
         
         if not self.linkedin_client_id or not self.linkedin_client_secret:
-            print("   ❌ Faltan LINKEDIN_CLIENT_ID o LINKEDIN_CLIENT_SECRET en .env.")
+            print("   ❌ Faltan LINKEDIN_CLIENT_ID o LINKEDIN_CLIENT_SECRET. Configúralos en .env (local) o en GitHub Secrets (CI).")
             return False
         
         print("   🔄 Renovando token de LinkedIn...")
@@ -332,7 +332,7 @@ class SocialMediaManager:
         env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".env")
         
         if not os.path.exists(env_path):
-            print(f"   ⚠️ No se encontró .env en: {env_path}")
+            # En CI (GitHub Actions) no hay .env, los tokens se gestionan como secrets
             return
         
         with open(env_path, "r", encoding="utf-8") as f:
