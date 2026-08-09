@@ -17,6 +17,7 @@ Thumbs.db
 .env
 .env.local
 .env.*.local
+.linkedin_new_tokens.json
 
 # S&OP Pipeline - datos de prueba generados
 /static/apps/sop-pipeline/dirty_sales_sample.csv

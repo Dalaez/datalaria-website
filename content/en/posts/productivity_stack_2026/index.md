@@ -1,6 +1,6 @@
 ---
 title: "An Engineer's Productivity Stack in 2026: The Tools I Use Every Day"
-date: 2026-07-28
+date: 2026-08-01
 draft: false
 categories: ["Engineering"]
 tags: ["productivity", "tools", "stack", "engineer", "workflow", "python", "supabase", "github actions", "crewai", "hugo"]

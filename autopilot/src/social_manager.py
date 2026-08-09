@@ -309,10 +309,13 @@ class SocialMediaManager:
             if new_refresh:
                 self.linkedin_refresh_token = new_refresh
             
-            # Actualizar el archivo .env
+            # Actualizar el archivo .env (solo funciona en local)
             self._update_env_file("LINKEDIN_ACCESS_TOKEN", new_token)
             if new_refresh:
                 self._update_env_file("LINKEDIN_REFRESH_TOKEN", new_refresh)
+            
+            # Guardar nuevos tokens en archivo JSON para que CI los persista en GitHub Secrets
+            self._save_refreshed_tokens(new_token, new_refresh)
             
             expires_in = data.get("expires_in", "?")
             print(f"   ✅ Token renovado (expira en {expires_in}s).")
@@ -349,6 +352,26 @@ class SocialMediaManager:
         
         with open(env_path, "w", encoding="utf-8") as f:
             f.write(new_content)
+
+    def _save_refreshed_tokens(self, access_token, refresh_token=None):
+        """Guarda los tokens renovados en un archivo JSON para que CI los persista.
+        
+        En GitHub Actions, el workflow lee este archivo y actualiza los Secrets
+        automáticamente con `gh secret set`.
+        """
+        import json
+        
+        token_data = {"access_token": access_token}
+        if refresh_token:
+            token_data["refresh_token"] = refresh_token
+        
+        tokens_file = os.path.join(os.getcwd(), ".linkedin_new_tokens.json")
+        try:
+            with open(tokens_file, "w") as f:
+                json.dump(token_data, f)
+            print(f"   📝 Nuevos tokens guardados para persistir en CI.")
+        except Exception as e:
+            print(f"   ⚠️ No se pudieron guardar tokens para CI: {e}")
 
     def post_to_linkedin(self, text, url):
         """Publica en LinkedIn. Si el token ha expirado, lo renueva automáticamente."""

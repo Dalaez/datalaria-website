@@ -168,3 +168,29 @@ jobs:
         run: |
           echo "🚀 Launching Autopilot for: ${{ needs.check_changes.outputs.file_path }}"
           python autopilot/src/orchestrator.py "${{ needs.check_changes.outputs.file_path }}"
+
+      - name: Persist refreshed LinkedIn tokens
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          if [ -f ".linkedin_new_tokens.json" ]; then
+            echo "🔄 LinkedIn tokens were refreshed. Updating GitHub Secrets..."
+            
+            NEW_ACCESS_TOKEN=$(jq -r '.access_token' .linkedin_new_tokens.json)
+            NEW_REFRESH_TOKEN=$(jq -r '.refresh_token // empty' .linkedin_new_tokens.json)
+            
+            if [ -n "$NEW_ACCESS_TOKEN" ]; then
+              echo "$NEW_ACCESS_TOKEN" | gh secret set LINKEDIN_ACCESS_TOKEN
+              echo "   ✅ LINKEDIN_ACCESS_TOKEN actualizado en GitHub Secrets."
+            fi
+            
+            if [ -n "$NEW_REFRESH_TOKEN" ]; then
+              echo "$NEW_REFRESH_TOKEN" | gh secret set LINKEDIN_REFRESH_TOKEN
+              echo "   ✅ LINKEDIN_REFRESH_TOKEN actualizado en GitHub Secrets."
+            fi
+            
+            rm -f .linkedin_new_tokens.json
+          else
+            echo "ℹ️ No se renovaron tokens de LinkedIn (no era necesario)."
+          fi
