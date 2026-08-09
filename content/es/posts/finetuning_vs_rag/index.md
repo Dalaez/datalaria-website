@@ -1,6 +1,6 @@
 ---
 title: "Fine-Tuning vs Prompt Engineering vs RAG: Cuándo Usar Cada Uno (y la Cuarta Opción que Nadie Menciona)"
-date: 2026-08-04
+date: 2026-08-09
 draft: false
 categories: ["Inteligencia Artificial", "Ingeniería"]
 tags: ["fine-tuning", "prompt engineering", "rag", "tool calling", "llm", "arquitectura ia", "lora", "qlora", "mcp"]
