@@ -4,7 +4,7 @@ LifeOps API — Project & Task Models (Pydantic)
 Data validation schemas for the professional area:
 projects and tasks.
 """
-from datetime import date, datetime
+import datetime as dt
 from typing import Optional
 from pydantic import BaseModel, Field
 from enum import Enum
@@ -44,8 +44,8 @@ class ProjectCreate(BaseModel):
     description: Optional[str] = None
     status: ProjectStatus = ProjectStatus.PLANNING
     priority: Priority = Priority.MEDIUM
-    start_date: Optional[date] = None
-    target_end_date: Optional[date] = None
+    start_date: Optional[dt.date] = None
+    target_end_date: Optional[dt.date] = None
     budget: Optional[float] = Field(None, ge=0)
     tags: list[str] = Field(default_factory=list)
     color: str = "#2196F3"
@@ -57,9 +57,9 @@ class ProjectUpdate(BaseModel):
     description: Optional[str] = None
     status: Optional[ProjectStatus] = None
     priority: Optional[Priority] = None
-    start_date: Optional[date] = None
-    target_end_date: Optional[date] = None
-    actual_end_date: Optional[date] = None
+    start_date: Optional[dt.date] = None
+    target_end_date: Optional[dt.date] = None
+    actual_end_date: Optional[dt.date] = None
     budget: Optional[float] = Field(None, ge=0)
     spent: Optional[float] = Field(None, ge=0)
     tags: Optional[list[str]] = None
@@ -74,15 +74,15 @@ class ProjectResponse(BaseModel):
     description: Optional[str] = None
     status: ProjectStatus
     priority: Priority
-    start_date: Optional[date] = None
-    target_end_date: Optional[date] = None
-    actual_end_date: Optional[date] = None
+    start_date: Optional[dt.date] = None
+    target_end_date: Optional[dt.date] = None
+    actual_end_date: Optional[dt.date] = None
     budget: Optional[float] = None
     spent: float = 0
     tags: list[str] = Field(default_factory=list)
     color: str = "#2196F3"
-    created_at: datetime
-    updated_at: datetime
+    created_at: dt.datetime
+    updated_at: dt.datetime
 
 
 # ── Task ───────────────────────────────────────────
@@ -94,7 +94,7 @@ class TaskCreate(BaseModel):
     description: Optional[str] = None
     status: TaskStatus = TaskStatus.TODO
     priority: Priority = Priority.MEDIUM
-    due_date: Optional[date] = None
+    due_date: Optional[dt.date] = None
     estimated_hours: Optional[float] = Field(None, ge=0)
     tags: list[str] = Field(default_factory=list)
 
@@ -106,8 +106,8 @@ class TaskUpdate(BaseModel):
     description: Optional[str] = None
     status: Optional[TaskStatus] = None
     priority: Optional[Priority] = None
-    due_date: Optional[date] = None
-    completed_at: Optional[datetime] = None
+    due_date: Optional[dt.date] = None
+    completed_at: Optional[dt.datetime] = None
     estimated_hours: Optional[float] = Field(None, ge=0)
     actual_hours: Optional[float] = Field(None, ge=0)
     tags: Optional[list[str]] = None
@@ -122,10 +122,10 @@ class TaskResponse(BaseModel):
     description: Optional[str] = None
     status: TaskStatus
     priority: Priority
-    due_date: Optional[date] = None
-    completed_at: Optional[datetime] = None
+    due_date: Optional[dt.date] = None
+    completed_at: Optional[dt.datetime] = None
     estimated_hours: Optional[float] = None
     actual_hours: Optional[float] = None
     tags: list[str] = Field(default_factory=list)
-    created_at: datetime
-    updated_at: datetime
+    created_at: dt.datetime
+    updated_at: dt.datetime

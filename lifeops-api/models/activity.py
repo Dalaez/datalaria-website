@@ -4,7 +4,7 @@ LifeOps API — Activity Models (Pydantic)
 Data validation schemas for the personal area:
 activities, workouts, books, films.
 """
-from datetime import date, datetime
+import datetime as dt
 from typing import Optional
 from pydantic import BaseModel, Field
 from enum import Enum
@@ -41,7 +41,7 @@ class ActivityCreate(BaseModel):
     activity_type: ActivityType
     title: str = Field(..., min_length=1, max_length=255)
     description: Optional[str] = None
-    date: date = Field(default_factory=date.today)
+    date: dt.date = Field(default_factory=dt.date.today)
     duration_minutes: Optional[int] = Field(None, ge=0)
     rating: Optional[int] = Field(None, ge=1, le=5)
     tags: list[str] = Field(default_factory=list)
@@ -52,7 +52,7 @@ class ActivityUpdate(BaseModel):
     """Schema for updating an activity (all fields optional)."""
     title: Optional[str] = Field(None, min_length=1, max_length=255)
     description: Optional[str] = None
-    date: Optional[date] = None
+    date: Optional[dt.date] = None
     duration_minutes: Optional[int] = Field(None, ge=0)
     rating: Optional[int] = Field(None, ge=1, le=5)
     tags: Optional[list[str]] = None
@@ -66,13 +66,13 @@ class ActivityResponse(BaseModel):
     activity_type: ActivityType
     title: str
     description: Optional[str] = None
-    date: date
+    date: dt.date
     duration_minutes: Optional[int] = None
     rating: Optional[int] = None
     tags: list[str] = Field(default_factory=list)
     metadata: dict = Field(default_factory=dict)
-    created_at: datetime
-    updated_at: datetime
+    created_at: dt.datetime
+    updated_at: dt.datetime
 
 
 # ── Workout (Sport detail) ─────────────────────────
@@ -104,8 +104,8 @@ class BookCreate(BaseModel):
     genre: Optional[str] = None
     isbn: Optional[str] = None
     cover_url: Optional[str] = None
-    start_date: Optional[date] = None
-    finish_date: Optional[date] = None
+    start_date: Optional[dt.date] = None
+    finish_date: Optional[dt.date] = None
 
 
 class BookResponse(BookCreate):

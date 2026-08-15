@@ -4,7 +4,7 @@ LifeOps API — Stats Router
 Analytics and statistics endpoints.
 Aggregated views of personal and professional data.
 """
-from datetime import date, timedelta
+import datetime as dt
 from typing import Optional
 
 from fastapi import APIRouter, Depends, Query
@@ -44,8 +44,8 @@ class DashboardSummary(BaseModel):
 
 class ActivityBreakdown(BaseModel):
     """Activity counts grouped by type for a given period."""
-    period_start: date
-    period_end: date
+    period_start: dt.date
+    period_end: dt.date
     sport: int = 0
     book: int = 0
     film: int = 0
@@ -65,8 +65,8 @@ class ActivityBreakdown(BaseModel):
 async def get_dashboard_summary(
     user: AuthenticatedUser = Depends(get_current_user),
 ):
-    today = date.today()
-    week_start = today - timedelta(days=today.weekday())  # Monday
+    today = dt.date.today()
+    week_start = today - dt.timedelta(days=today.weekday())  # Monday
     month_start = today.replace(day=1)
 
     # ── Personal area ──
@@ -151,16 +151,16 @@ async def get_dashboard_summary(
     description="Returns activity counts grouped by type for a date range.",
 )
 async def get_activity_breakdown(
-    date_from: Optional[date] = Query(
+    date_from: Optional[dt.date] = Query(
         None, description="Start date. Defaults to 30 days ago."
     ),
-    date_to: Optional[date] = Query(
+    date_to: Optional[dt.date] = Query(
         None, description="End date. Defaults to today."
     ),
     user: AuthenticatedUser = Depends(get_current_user),
 ):
-    today = date.today()
-    start = date_from or (today - timedelta(days=30))
+    today = dt.date.today()
+    start = date_from or (today - dt.timedelta(days=30))
     end = date_to or today
 
     result = (
