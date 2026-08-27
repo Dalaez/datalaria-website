@@ -1,32 +1,59 @@
 import React from 'react';
-import { Activity, BookOpen, Film, Flame } from 'lucide-react';
+import { useSearchParams } from 'react-router-dom';
+import { SportModule } from '../components/Personal/SportModule';
+import { BooksModule } from '../components/Personal/BooksModule';
+import { FilmsModule } from '../components/Personal/FilmsModule';
+import { Activity, BookOpen, Film } from 'lucide-react';
+import './PersonalPage.css';
 
 export function PersonalPage() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const currentTab = searchParams.get('tab') || 'sport';
+
+  const setTab = (tab) => {
+    setSearchParams({ tab });
+  };
+
   return (
     <div className="personal-page">
+      {/* Header */}
       <div className="page-header-title">
-        <h1>📓 Área Personal — Diario & Hábitos</h1>
-        <p>Seguimiento de entrenamientos deportivos, lecturas, cine/series y desarrollo personal.</p>
+        <h1>📓 Área Personal</h1>
+        <p>Diario de actividad diaria, entrenamientos deportivos, libros leídos y entretenimiento.</p>
       </div>
 
-      <div className="glass-panel" style={{ padding: '2.5rem', textAlign: 'center' }}>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginBottom: '1.5rem' }}>
-          <Activity size={32} color="var(--accent-emerald)" />
-          <BookOpen size={32} color="var(--accent-cyan)" />
-          <Film size={32} color="var(--accent-purple)" />
-          <Flame size={32} color="var(--accent-amber)" />
-        </div>
+      {/* Tab Switcher */}
+      <div className="tab-switcher glass-panel">
+        <button 
+          className={`tab-btn ${currentTab === 'sport' ? 'active' : ''}`}
+          onClick={() => setTab('sport')}
+        >
+          <Activity size={17} />
+          <span>Deporte & Fitness</span>
+        </button>
 
-        <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.5rem', marginBottom: '0.5rem' }}>
-          Módulo de Contenidos Personales
-        </h3>
-        <p style={{ color: 'var(--text-secondary)', maxWidth: '550px', margin: '0 auto 1.5rem auto' }}>
-          En la <strong>Fase 3</strong> habilitaremos los formularios dinámicos para registrar entrenamientos (distancia, calorías, FC), libros (páginas leídas, valoraciones) y cine.
-        </p>
+        <button 
+          className={`tab-btn ${currentTab === 'books' ? 'active' : ''}`}
+          onClick={() => setTab('books')}
+        >
+          <BookOpen size={17} />
+          <span>Biblioteca & Libros</span>
+        </button>
 
-        <span className="nav-badge" style={{ padding: '0.4rem 1rem', fontSize: '0.85rem' }}>
-          🚀 Próximamente en Fase 3
-        </span>
+        <button 
+          className={`tab-btn ${currentTab === 'films' ? 'active' : ''}`}
+          onClick={() => setTab('films')}
+        >
+          <Film size={17} />
+          <span>Cine & Series</span>
+        </button>
+      </div>
+
+      {/* Tab Content */}
+      <div className="tab-content animate-fade-in">
+        {currentTab === 'sport' && <SportModule />}
+        {currentTab === 'books' && <BooksModule />}
+        {currentTab === 'films' && <FilmsModule />}
       </div>
     </div>
   );

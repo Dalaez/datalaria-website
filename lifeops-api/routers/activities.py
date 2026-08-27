@@ -56,6 +56,58 @@ async def list_activities(
     return result.data
 
 
+# ── List Activities with Details ──────────────────
+
+@router.get(
+    "/details",
+    summary="List activities with embedded workout, book, or film details",
+    description="Returns activities with their child records joined (single request).",
+)
+async def list_activities_with_details(
+    activity_type: Optional[ActivityType] = Query(None, description="Filter by type"),
+    limit: int = Query(50, ge=1, le=200),
+    user: AuthenticatedUser = Depends(get_current_user),
+):
+    query = (
+        db("activities")
+        .select("*")
+        .eq("user_id", user.id)
+        .order("date", desc=True)
+        .limit(limit)
+    )
+    if isinstance(activity_type, (str, ActivityType)):
+        val = activity_type.value if hasattr(activity_type, "value") else str(activity_type)
+        query = query.eq("activity_type", val)
+
+    activities = query.execute().data or []
+    if not activities:
+        return []
+
+    activity_ids = [a["id"] for a in activities]
+    types_present = set(a["activity_type"] for a in activities)
+    details_map = {a["id"]: {} for a in activities}
+
+    if "sport" in types_present:
+        workouts = db("workouts").select("*").in_("activity_id", activity_ids).execute().data or []
+        for w in workouts:
+            details_map[w["activity_id"]]["workout"] = w
+
+    if "book" in types_present:
+        books = db("books").select("*").in_("activity_id", activity_ids).execute().data or []
+        for b in books:
+            details_map[b["activity_id"]]["book"] = b
+
+    if "film" in types_present:
+        films = db("films").select("*").in_("activity_id", activity_ids).execute().data or []
+        for f in films:
+            details_map[f["activity_id"]]["film"] = f
+
+    for a in activities:
+        a.update(details_map.get(a["id"], {}))
+
+    return activities
+
+
 # ── Get Single Activity ───────────────────────────
 
 @router.get(

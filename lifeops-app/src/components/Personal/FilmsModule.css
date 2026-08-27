@@ -1,0 +1,94 @@
+.films-module {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.films-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+.film-card {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  justify-content: space-between;
+}
+
+.film-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.media-type-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent-purple);
+  background: var(--accent-purple-glow);
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.film-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.platform-chip {
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  color: var(--text-secondary);
+}
+
+.film-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.film-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.film-meta {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.film-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border-color);
+  padding-top: 0.6rem;
+  margin-top: 0.25rem;
+}
+
+.film-date {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.film-review {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+}

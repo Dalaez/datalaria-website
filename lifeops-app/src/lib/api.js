@@ -53,15 +53,29 @@ export const api = {
 
   // Activities (Personal Area)
   getActivities: (type) => apiFetch(`/api/v1/activities/${type ? `?activity_type=${type}` : ''}`),
+  getActivitiesWithDetails: (type) => apiFetch(`/api/v1/activities/details${type ? `?activity_type=${type}` : ''}`),
   createActivity: (data) => apiFetch('/api/v1/activities/', { method: 'POST', body: JSON.stringify(data) }),
   createSportActivity: (data) => apiFetch('/api/v1/activities/sport', { method: 'POST', body: JSON.stringify(data) }),
   createBookActivity: (data) => apiFetch('/api/v1/activities/book', { method: 'POST', body: JSON.stringify(data) }),
   createFilmActivity: (data) => apiFetch('/api/v1/activities/film', { method: 'POST', body: JSON.stringify(data) }),
+  updateActivity: (id, data) => apiFetch(`/api/v1/activities/${id}`, { method: 'PATCH', body: JSON.stringify(data) }),
+  deleteActivity: (id) => apiFetch(`/api/v1/activities/${id}`, { method: 'DELETE' }),
 
   // Projects & Tasks (Professional Area)
-  getProjects: () => apiFetch('/api/v1/projects/'),
+  getProjects: (status) => apiFetch(`/api/v1/projects/${status ? `?status=${status}` : ''}`),
   createProject: (data) => apiFetch('/api/v1/projects/', { method: 'POST', body: JSON.stringify(data) }),
-  getTasks: (status) => apiFetch(`/api/v1/tasks/${status ? `?status=${status}` : ''}`),
+  updateProject: (id, data) => apiFetch(`/api/v1/projects/${id}`, { method: 'PATCH', body: JSON.stringify(data) }),
+  deleteProject: (id) => apiFetch(`/api/v1/projects/${id}`, { method: 'DELETE' }),
+  
+  getTasks: (status, projectId) => {
+    const params = new URLSearchParams();
+    if (status) params.append('status', status);
+    if (projectId) params.append('project_id', projectId);
+    const qs = params.toString() ? `?${params.toString()}` : '';
+    return apiFetch(`/api/v1/tasks/${qs}`);
+  },
+  getProjectTasks: (projectId) => apiFetch(`/api/v1/projects/${projectId}/tasks`),
   createTask: (data) => apiFetch('/api/v1/tasks/', { method: 'POST', body: JSON.stringify(data) }),
   updateTask: (id, data) => apiFetch(`/api/v1/tasks/${id}`, { method: 'PATCH', body: JSON.stringify(data) }),
+  deleteTask: (id) => apiFetch(`/api/v1/tasks/${id}`, { method: 'DELETE' }),
 };

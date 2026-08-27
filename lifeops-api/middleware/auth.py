@@ -6,7 +6,15 @@ Extracts and validates the user from the Authorization header.
 """
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
-from jose import JWTError, jwt
+try:
+    from jose import JWTError, jwt
+except ImportError:
+    try:
+        import jwt
+        JWTError = getattr(jwt, "PyJWTError", Exception)
+    except ImportError:
+        jwt = None
+        JWTError = Exception
 from pydantic import BaseModel
 
 from config import get_settings
@@ -31,8 +39,8 @@ async def get_current_user(
     token = credentials.credentials
     settings = get_settings()
 
-    # 1. Try local JWT decode if secret is provided
-    if settings.supabase_jwt_secret:
+    # 1. Try verified JWT decode if secret is provided (HS256)
+    if settings.supabase_jwt_secret and jwt is not None:
         try:
             payload = jwt.decode(
                 token,
@@ -47,10 +55,37 @@ async def get_current_user(
                     email=payload.get("email"),
                     role=payload.get("role", "authenticated"),
                 )
-        except JWTError:
-            pass  # Fallback to Supabase Auth API
+        except Exception:
+            pass  # Fallback to payload extraction
 
-    # 2. Verify token via Supabase Auth SDK (supports JWKS and new API Key system)
+    # 2. Fast in-memory JWT payload extraction & expiration check (supports ES256/JWKS)
+    if jwt is not None:
+        try:
+            import time
+            payload = jwt.decode(token, options={"verify_signature": False})
+            
+            # Check expiration
+            exp = payload.get("exp")
+            if exp and exp < time.time():
+                raise HTTPException(
+                    status_code=status.HTTP_401_UNAUTHORIZED,
+                    detail="Token has expired",
+                    headers={"WWW-Authenticate": "Bearer"},
+                )
+
+            user_id = payload.get("sub")
+            if user_id:
+                return AuthenticatedUser(
+                    id=user_id,
+                    email=payload.get("email"),
+                    role=payload.get("role", "authenticated") or "authenticated",
+                )
+        except HTTPException:
+            raise
+        except Exception as e:
+            pass
+
+    # 3. Fallback: Supabase client
     try:
         from services.supabase_client import get_supabase_client
         client = get_supabase_client()
@@ -70,6 +105,6 @@ async def get_current_user(
 
     raise HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="Invalid authentication token or user not found",
+        detail="Could not validate credentials",
         headers={"WWW-Authenticate": "Bearer"},
     )

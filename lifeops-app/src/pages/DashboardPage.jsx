@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { api } from '../lib/api';
 import { StatWidget } from '../components/Dashboard/StatWidget';
@@ -9,6 +10,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 
 
 export function DashboardPage() {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [summary, setSummary] = useState(null);
   const [breakdown, setBreakdown] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -82,7 +84,15 @@ export function DashboardPage() {
       {/* Main Content Sections */}
       <div className="dashboard-sections-grid">
         {/* Quick Actions Panel */}
-        <QuickActions onAction={(actionId) => alert(`Acción solicitada: ${actionId}. Los módulos detallados se completarán en la Fase 3.`)} />
+        <QuickActions
+          onAction={(actionId) => {
+            if (actionId === 'sport') navigate('/personal?tab=sport');
+            else if (actionId === 'book') navigate('/personal?tab=books');
+            else if (actionId === 'film') navigate('/personal?tab=films');
+            else if (actionId === 'task') navigate('/professional?tab=kanban');
+            else if (actionId === 'report') alert('El Módulo de Generación de Informes Word se desarrollará en la Fase 4 📄');
+          }}
+        />
 
         {/* Activity Distribution Chart */}
         <div className="glass-panel" style={{ padding: '1.5rem' }}>
