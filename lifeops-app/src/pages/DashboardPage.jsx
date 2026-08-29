@@ -18,6 +18,7 @@ export function DashboardPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    let timeoutId;
     async function loadDashboardData() {
       try {
         const [summaryData, breakdownData] = await Promise.all([
@@ -26,6 +27,11 @@ export function DashboardPage() {
         ]);
         setSummary(summaryData);
         setBreakdown(breakdownData);
+
+        // If data was null (server was sleeping), retry after 6 seconds
+        if (!summaryData && !breakdownData) {
+          timeoutId = setTimeout(loadDashboardData, 6000);
+        }
       } catch (err) {
         console.error('Error loading dashboard:', err);
       } finally {
@@ -33,6 +39,9 @@ export function DashboardPage() {
       }
     }
     loadDashboardData();
+    return () => {
+      if (timeoutId) clearTimeout(timeoutId);
+    };
   }, []);
 
   const chartData = [
