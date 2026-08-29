@@ -1,0 +1,23 @@
+# Netlify Configuration for LifeOps Frontend App
+# Builds the Vite + React client and serves it as a fast Single Page Application (SPA)
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Single Page Application (SPA) redirect rule
+# Ensures direct URLs like /personal, /professional, /reports, /settings route to index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Production Security Headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "ALLOW-FROM https://datalaria.com"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Access-Control-Allow-Origin = "https://datalaria.com"

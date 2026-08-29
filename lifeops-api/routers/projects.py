@@ -28,7 +28,7 @@ router = APIRouter(prefix="/api/v1/projects", tags=["Projects & Tasks"])
     response_model=list[ProjectResponse],
     summary="List user projects",
 )
-async def list_projects(
+def list_projects(
     project_status: Optional[ProjectStatus] = Query(None, alias="status"),
     priority: Optional[Priority] = None,
     limit: int = Query(50, ge=1, le=200),
@@ -55,7 +55,7 @@ async def list_projects(
     response_model=ProjectResponse,
     summary="Get project by ID",
 )
-async def get_project(
+def get_project(
     project_id: str,
     user: AuthenticatedUser = Depends(get_current_user),
 ):
@@ -77,7 +77,7 @@ async def get_project(
     status_code=status.HTTP_201_CREATED,
     summary="Create a new project",
 )
-async def create_project(
+def create_project(
     payload: ProjectCreate,
     user: AuthenticatedUser = Depends(get_current_user),
 ):
@@ -95,7 +95,7 @@ async def create_project(
     response_model=ProjectResponse,
     summary="Update a project",
 )
-async def update_project(
+def update_project(
     project_id: str,
     payload: ProjectUpdate,
     user: AuthenticatedUser = Depends(get_current_user),
@@ -122,7 +122,7 @@ async def update_project(
     summary="Delete a project",
     description="Deletes the project. Tasks under this project will have project_id set to NULL.",
 )
-async def delete_project(
+def delete_project(
     project_id: str,
     user: AuthenticatedUser = Depends(get_current_user),
 ):
@@ -146,7 +146,7 @@ async def delete_project(
     response_model=list[TaskResponse],
     summary="List tasks for a project",
 )
-async def list_project_tasks(
+def list_project_tasks(
     project_id: str,
     task_status: Optional[TaskStatus] = Query(None, alias="status"),
     priority: Optional[Priority] = None,
@@ -179,7 +179,7 @@ tasks_router = APIRouter(prefix="/api/v1/tasks", tags=["Tasks"])
     summary="List all user tasks",
     description="Returns all tasks across all projects. Use query params to filter.",
 )
-async def list_all_tasks(
+def list_all_tasks(
     task_status: Optional[TaskStatus] = Query(None, alias="status"),
     priority: Optional[Priority] = None,
     project_id: Optional[str] = None,
@@ -211,7 +211,7 @@ async def list_all_tasks(
     response_model=TaskResponse,
     summary="Get task by ID",
 )
-async def get_task(
+def get_task(
     task_id: str,
     user: AuthenticatedUser = Depends(get_current_user),
 ):
@@ -233,7 +233,7 @@ async def get_task(
     status_code=status.HTTP_201_CREATED,
     summary="Create a new task",
 )
-async def create_task(
+def create_task(
     payload: TaskCreate,
     user: AuthenticatedUser = Depends(get_current_user),
 ):
@@ -251,7 +251,7 @@ async def create_task(
     response_model=TaskResponse,
     summary="Update a task",
 )
-async def update_task(
+def update_task(
     task_id: str,
     payload: TaskUpdate,
     user: AuthenticatedUser = Depends(get_current_user),
@@ -282,7 +282,7 @@ async def update_task(
     status_code=status.HTTP_204_NO_CONTENT,
     summary="Delete a task",
 )
-async def delete_task(
+def delete_task(
     task_id: str,
     user: AuthenticatedUser = Depends(get_current_user),
 ):

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { api } from '../../lib/api';
 import { Modal } from '../common/Modal';
+import { useLanguage } from '../../context/LanguageContext';
 import { 
   FolderKanban, 
   Plus, 
@@ -24,12 +25,13 @@ const PRESET_COLORS = [
 ];
 
 export function ProjectsManager() {
+  const { t, language } = useLanguage();
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
-  const [formData, setFormData] = useState({
+  const defaultFormData = {
     name: '',
     description: '',
     status: 'active',
@@ -38,7 +40,9 @@ export function ProjectsManager() {
     start_date: new Date().toISOString().split('T')[0],
     target_end_date: '',
     color: '#8b5cf6',
-  });
+  };
+
+  const [formData, setFormData] = useState(defaultFormData);
 
   const fetchProjects = async () => {
     try {
@@ -73,75 +77,69 @@ export function ProjectsManager() {
 
       await api.createProject(payload);
       setIsModalOpen(false);
-      setFormData({
-        name: '',
-        description: '',
-        status: 'active',
-        priority: 'medium',
-        budget: '',
-        start_date: new Date().toISOString().split('T')[0],
-        target_end_date: '',
-        color: '#8b5cf6',
-      });
+      setFormData(defaultFormData);
       fetchProjects();
     } catch (err) {
-      alert(`Error al crear el proyecto: ${err.message}`);
+      alert(`${t('common.error')}: ${err.message}`);
     } finally {
       setSubmitting(false);
     }
   };
 
   const handleDelete = async (id) => {
-    if (!window.confirm('¿Seguro que deseas eliminar este proyecto? Sus tareas quedarán sin proyecto asignado.')) return;
+    if (!window.confirm(t('common.confirmDelete'))) return;
     try {
       await api.deleteProject(id);
       setProjects(projects.filter((p) => p.id !== id));
     } catch (err) {
-      alert(`Error al eliminar proyecto: ${err.message}`);
+      alert(`${t('common.error')}: ${err.message}`);
     }
   };
 
   const activeProjects = projects.filter((p) => p.status === 'active').length;
-  const totalBudget = projects.reduce((acc, curr) => acc + (curr.budget || 0), 0);
+  const totalBudget = projects.reduce((sum, p) => sum + (p.budget || 0), 0);
 
   const getStatusBadge = (status) => {
     switch (status) {
-      case 'active': return <span className="proj-status active">En Curso</span>;
-      case 'planning': return <span className="proj-status planning">Planificación</span>;
-      case 'completed': return <span className="proj-status completed">Completado</span>;
-      case 'on_hold': return <span className="proj-status on-hold">En Pausa</span>;
-      default: return <span className="proj-status">{status}</span>;
+      case 'active':
+        return <span className="status-badge active">● {language === 'es' ? 'Activo' : 'Active'}</span>;
+      case 'completed':
+        return <span className="status-badge completed">✔ {language === 'es' ? 'Completado' : 'Completed'}</span>;
+      case 'on_hold':
+        return <span className="status-badge on-hold">⏸ {language === 'es' ? 'Pausado' : 'On Hold'}</span>;
+      default:
+        return <span className="status-badge">{status}</span>;
     }
   };
 
   return (
     <div className="projects-module">
-      {/* Header */}
+      {/* Top Header */}
       <div className="module-header">
         <div>
-          <h2>Gestión de Proyectos</h2>
-          <p>Control de portafolio de proyectos, presupuestos y fechas clave.</p>
+          <h2>{t('professional.projectsTitle')}</h2>
+          <p>{t('professional.projectsSubtitle')}</p>
         </div>
         <button className="btn-primary" onClick={() => setIsModalOpen(true)}>
           <Plus size={16} />
-          <span>Nuevo Proyecto</span>
+          <span>{t('professional.addProject')}</span>
         </button>
       </div>
 
       {/* Metrics Banner */}
       <div className="metrics-banner">
         <div className="metric-box">
-          <span className="metric-label">PROYECTOS ACTIVOS</span>
-          <span className="metric-value">{activeProjects} <small>activos</small></span>
+          <span className="metric-label">{language === 'es' ? 'PROYECTOS ACTIVOS' : 'ACTIVE PROJECTS'}</span>
+          <span className="metric-value">{activeProjects} <small>{language === 'es' ? 'en marcha' : 'in progress'}</small></span>
         </div>
         <div className="metric-box">
-          <span className="metric-label">TOTAL PROYECTOS</span>
+          <span className="metric-label">{language === 'es' ? 'TOTAL PROYECTOS' : 'TOTAL PROJECTS'}</span>
           <span className="metric-value" style={{ color: 'var(--accent-purple)' }}>
-            {projects.length} <small>registrados</small>
+            {projects.length} <small>{t('common.all')}</small>
           </span>
         </div>
         <div className="metric-box">
-          <span className="metric-label">PRESUPUESTO TOTAL</span>
+          <span className="metric-label">{language === 'es' ? 'PRESUPUESTO TOTAL' : 'TOTAL BUDGET'}</span>
           <span className="metric-value" style={{ color: 'var(--accent-cyan)' }}>
             {totalBudget > 0 ? `${totalBudget.toLocaleString()} €` : '0 €'}
           </span>
@@ -150,15 +148,15 @@ export function ProjectsManager() {
 
       {/* Projects Grid */}
       {loading ? (
-        <div className="loading-state">Cargando proyectos...</div>
+        <div className="loading-state">{t('common.loading')}</div>
       ) : projects.length === 0 ? (
         <div className="empty-state glass-panel">
           <FolderKanban size={40} className="empty-icon" />
-          <h3>No hay proyectos registrados</h3>
-          <p>Crea tu primer proyecto para organizar tareas, hitos y controlar presupuestos.</p>
+          <h3>{language === 'es' ? 'No hay proyectos registrados' : 'No projects registered'}</h3>
+          <p>{language === 'es' ? 'Crea tu primer proyecto para organizar tareas, hitos y controlar presupuestos.' : 'Create your first project to organize tasks, milestones and track budgets.'}</p>
           <button className="btn-primary" onClick={() => setIsModalOpen(true)}>
             <Plus size={16} />
-            <span>Crear primer proyecto</span>
+            <span>{t('professional.addProject')}</span>
           </button>
         </div>
       ) : (
@@ -180,7 +178,7 @@ export function ProjectsManager() {
                 <button 
                   className="delete-icon-btn" 
                   onClick={() => handleDelete(project.id)}
-                  title="Eliminar proyecto"
+                  title={t('common.delete')}
                 >
                   <Trash2 size={14} />
                 </button>
@@ -194,18 +192,18 @@ export function ProjectsManager() {
               <div className="project-info-grid">
                 {project.budget != null && (
                   <div className="info-item">
-                    <span className="info-label">Presupuesto</span>
+                    <span className="info-label">{t('professional.fields.budget')}</span>
                     <span className="info-value">{project.budget.toLocaleString()} €</span>
                   </div>
                 )}
                 {project.target_end_date && (
                   <div className="info-item">
-                    <span className="info-label">Fecha Objetivo</span>
+                    <span className="info-label">{t('professional.fields.targetEndDate')}</span>
                     <span className="info-value">{project.target_end_date}</span>
                   </div>
                 )}
                 <div className="info-item">
-                  <span className="info-label">Prioridad</span>
+                  <span className="info-label">{t('professional.fields.priority')}</span>
                   <span className="info-value" style={{ textTransform: 'capitalize' }}>
                     {project.priority}
                   </span>
@@ -220,15 +218,15 @@ export function ProjectsManager() {
       <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        title="Crear Nuevo Proyecto"
+        title={t('professional.addProject')}
       >
         <form onSubmit={handleSubmit} className="modal-form">
           <div className="form-group">
-            <label>Nombre del Proyecto *</label>
+            <label>{language === 'es' ? 'Nombre del Proyecto *' : 'Project Name *'}</label>
             <input 
               type="text" 
               required
-              placeholder="Ej: Lanzamiento Web Datalaria, Migración Cloud..."
+              placeholder={language === 'es' ? 'Ej: Lanzamiento Web Datalaria, Migración Cloud...' : 'e.g. Datalaria Website Launch, Cloud Migration...'}
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             />
@@ -236,72 +234,45 @@ export function ProjectsManager() {
 
           <div className="form-row">
             <div className="form-group">
-              <label>Estado *</label>
+              <label>{t('professional.fields.status')}</label>
               <select
                 value={formData.status}
                 onChange={(e) => setFormData({ ...formData, status: e.target.value })}
               >
-                <option value="active">⚡ Activo / En Curso</option>
-                <option value="planning">📝 En Planificación</option>
-                <option value="on_hold">⏸️ En Pausa</option>
-                <option value="completed">✅ Completado</option>
+                <option value="active">{language === 'es' ? 'Activo' : 'Active'}</option>
+                <option value="on_hold">{language === 'es' ? 'En Pausa' : 'On Hold'}</option>
+                <option value="completed">{language === 'es' ? 'Completado' : 'Completed'}</option>
               </select>
             </div>
 
             <div className="form-group">
-              <label>Prioridad *</label>
+              <label>{t('professional.fields.priority')}</label>
               <select
                 value={formData.priority}
                 onChange={(e) => setFormData({ ...formData, priority: e.target.value })}
               >
-                <option value="low">🟢 Baja</option>
-                <option value="medium">🟡 Media</option>
-                <option value="high">🟠 Alta</option>
-                <option value="critical">🔴 Crítica</option>
+                <option value="low">🟢 {t('professional.priorities.low')}</option>
+                <option value="medium">🟡 {t('professional.priorities.medium')}</option>
+                <option value="high">🟠 {t('professional.priorities.high')}</option>
+                <option value="critical">🔴 {t('professional.priorities.urgent')}</option>
               </select>
             </div>
           </div>
 
           <div className="form-row">
             <div className="form-group">
-              <label>Presupuesto Asignado (€)</label>
+              <label>{t('professional.fields.budget')}</label>
               <input 
                 type="number" 
                 min="0"
-                placeholder="Ej: 5000"
+                placeholder="2500"
                 value={formData.budget}
                 onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
               />
             </div>
 
             <div className="form-group">
-              <label>Color Identificador</label>
-              <div className="color-picker-row">
-                {PRESET_COLORS.map((c) => (
-                  <button
-                    key={c}
-                    type="button"
-                    className={`color-dot-btn ${formData.color === c ? 'selected' : ''}`}
-                    style={{ backgroundColor: c }}
-                    onClick={() => setFormData({ ...formData, color: c })}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="form-row">
-            <div className="form-group">
-              <label>Fecha de Inicio</label>
-              <input 
-                type="date"
-                value={formData.start_date}
-                onChange={(e) => setFormData({ ...formData, start_date: e.target.value })}
-              />
-            </div>
-
-            <div className="form-group">
-              <label>Fecha Objetivo de Finalización</label>
+              <label>{t('professional.fields.targetEndDate')}</label>
               <input 
                 type="date"
                 value={formData.target_end_date}
@@ -311,9 +282,24 @@ export function ProjectsManager() {
           </div>
 
           <div className="form-group">
-            <label>Descripción / Objetivos</label>
+            <label>{language === 'es' ? 'Color de Identificación' : 'Project Color Tag'}</label>
+            <div className="color-presets-row">
+              {PRESET_COLORS.map((c) => (
+                <button
+                  type="button"
+                  key={c}
+                  className={`color-preset-circle ${formData.color === c ? 'selected' : ''}`}
+                  style={{ backgroundColor: c }}
+                  onClick={() => setFormData({ ...formData, color: c })}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div className="form-group">
+            <label>{t('professional.fields.description')}</label>
             <textarea 
-              placeholder="Alcance del proyecto, entregables..."
+              placeholder={language === 'es' ? 'Objetivos y alcance del proyecto...' : 'Project scope and objectives...'}
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
             />
@@ -321,10 +307,10 @@ export function ProjectsManager() {
 
           <div className="form-actions">
             <button type="button" className="btn-secondary" onClick={() => setIsModalOpen(false)}>
-              Cancelar
+              {t('common.cancel')}
             </button>
             <button type="submit" className="btn-primary" disabled={submitting}>
-              {submitting ? 'Creando...' : 'Crear Proyecto'}
+              {submitting ? t('common.loading') : t('professional.addProject')}
             </button>
           </div>
         </form>

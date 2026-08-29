@@ -1,8 +1,13 @@
-# 1. Regla para la URL SIN barra al final
-/apps/weather   https://datalaria-app-weather.netlify.app/index.html   200!
+# ==============================================================================
+# DATALARIA APPS PROXY REWRITE RULES (Transparent delivery under https://datalaria.com/apps/...)
+# ==============================================================================
 
-# 2. Regla para la URL CON barra al final
-/apps/weather/  https://datalaria-app-weather.netlify.app/index.html   200!
+# --- LifeOps App (Personal & Professional OS) ---
+/apps/lifeops        https://datalaria-app-lifeops.netlify.app/index.html   200!
+/apps/lifeops/       https://datalaria-app-lifeops.netlify.app/index.html   200!
+/apps/lifeops/*      https://datalaria-app-lifeops.netlify.app/:splat       200!
 
-# 3. Regla para TODOS los assets (CSS, JS, txt, json)
-/apps/weather/* https://datalaria-app-weather.netlify.app/:splat       200!
+# --- Weather App ---
+/apps/weather        https://datalaria-app-weather.netlify.app/index.html   200!
+/apps/weather/       https://datalaria-app-weather.netlify.app/index.html   200!
+/apps/weather/*      https://datalaria-app-weather.netlify.app/:splat       200!

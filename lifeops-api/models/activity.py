@@ -150,3 +150,54 @@ class FilmActivityCreate(BaseModel):
     """Create a film activity with film details in one request."""
     activity: ActivityCreate
     film: FilmCreate
+
+
+# ── Update Schemas (activity + detail) ────────────
+
+class WorkoutUpdate(BaseModel):
+    workout_type: Optional[str] = None
+    distance_km: Optional[float] = Field(None, ge=0)
+    calories: Optional[int] = Field(None, ge=0)
+    avg_heart_rate: Optional[int] = Field(None, ge=30, le=250)
+    elevation_m: Optional[int] = Field(None, ge=0)
+    personal_best: Optional[bool] = None
+    notes: Optional[str] = None
+
+
+class BookUpdate(BaseModel):
+    author: Optional[str] = None
+    pages_total: Optional[int] = Field(None, ge=1)
+    pages_read: Optional[int] = Field(None, ge=0)
+    status: Optional[BookStatus] = None
+    genre: Optional[str] = None
+    isbn: Optional[str] = None
+    cover_url: Optional[str] = None
+    start_date: Optional[dt.date] = None
+    finish_date: Optional[dt.date] = None
+
+
+class FilmUpdate(BaseModel):
+    director: Optional[str] = None
+    media_type: Optional[MediaType] = None
+    genre: Optional[str] = None
+    platform: Optional[str] = None
+    year: Optional[int] = Field(None, ge=1888, le=2100)
+    season: Optional[int] = Field(None, ge=1)
+    episode: Optional[int] = Field(None, ge=1)
+    imdb_url: Optional[str] = None
+
+
+class SportActivityUpdate(BaseModel):
+    activity: Optional[ActivityUpdate] = None
+    workout: Optional[WorkoutUpdate] = None
+
+
+class BookActivityUpdate(BaseModel):
+    activity: Optional[ActivityUpdate] = None
+    book: Optional[BookUpdate] = None
+
+
+class FilmActivityUpdate(BaseModel):
+    activity: Optional[ActivityUpdate] = None
+    film: Optional[FilmUpdate] = None
+

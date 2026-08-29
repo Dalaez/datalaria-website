@@ -54,6 +54,38 @@
   border: 1px solid rgba(139, 92, 246, 0.3);
 }
 
+.edit-icon-btn {
+  background: transparent;
+  color: var(--text-muted);
+  padding: 0.35rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+}
+
+.edit-icon-btn:hover {
+  color: var(--accent-cyan);
+  background: rgba(6, 182, 212, 0.15);
+}
+
+.delete-icon-btn {
+  background: transparent;
+  color: var(--text-muted);
+  padding: 0.35rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+}
+
+.delete-icon-btn:hover {
+  color: var(--accent-rose);
+  background: rgba(244, 63, 94, 0.12);
+}
+
 .book-details {
   display: flex;
   flex-direction: column;
@@ -119,3 +151,31 @@
   display: flex;
   gap: 0.2rem;
 }
+
+/* Module Data Table (Books) */
+.table-progress-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.table-mini-track {
+  width: 60px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.table-mini-fill {
+  height: 100%;
+  background: var(--grad-primary);
+  border-radius: 3px;
+}
+
+.table-progress-pct {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+

@@ -23,7 +23,7 @@ class Settings(BaseSettings):
     api_port: int = 8000
 
     # CORS
-    cors_origins: str = "http://localhost:5173,http://localhost:3000"
+    cors_origins: str = "http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000,http://127.0.0.1:3000,http://localhost:1313,http://127.0.0.1:1313,https://datalaria.com,https://www.datalaria.com,https://datalaria-app-lifeops.netlify.app"
 
     @property
     def cors_origins_list(self) -> list[str]:

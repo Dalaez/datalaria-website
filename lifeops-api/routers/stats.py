@@ -62,7 +62,7 @@ class ActivityBreakdown(BaseModel):
     summary="Get dashboard summary",
     description="Returns aggregated counts for the dashboard widgets.",
 )
-async def get_dashboard_summary(
+def get_dashboard_summary(
     user: AuthenticatedUser = Depends(get_current_user),
 ):
     today = dt.date.today()
@@ -150,7 +150,7 @@ async def get_dashboard_summary(
     summary="Get activity breakdown by type",
     description="Returns activity counts grouped by type for a date range.",
 )
-async def get_activity_breakdown(
+def get_activity_breakdown(
     date_from: Optional[dt.date] = Query(
         None, description="Start date. Defaults to 30 days ago."
     ),

@@ -1,43 +1,48 @@
 import React, { useState, useEffect } from 'react';
 import { api } from '../../lib/api';
 import { Modal } from '../common/Modal';
+import { useLanguage } from '../../context/LanguageContext';
 import { 
   Plus, 
   Trash2, 
+  Edit2,
   ChevronRight, 
   ChevronLeft, 
   Clock, 
   Calendar, 
-  AlertCircle, 
-  CheckCircle2,
-  Folder
+  Folder,
+  Layers
 } from 'lucide-react';
 import './KanbanBoard.css';
 
-const COLUMNS = [
-  { id: 'todo', title: 'Por Hacer', color: '#6b7280', icon: '📝' },
-  { id: 'in_progress', title: 'En Curso', color: '#06b6d4', icon: '⚡' },
-  { id: 'review', title: 'En Revisión', color: '#8b5cf6', icon: '🔍' },
-  { id: 'done', title: 'Completado', color: '#10b981', icon: '✅' },
-];
-
 export function KanbanBoard() {
+  const { t, language } = useLanguage();
   const [tasks, setTasks] = useState([]);
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedProjectId, setSelectedProjectId] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingTask, setEditingTask] = useState(null);
   const [submitting, setSubmitting] = useState(false);
 
-  // New task form state
-  const [formData, setFormData] = useState({
+  const columns = [
+    { id: 'todo', title: t('professional.columns.todo'), color: '#6b7280', icon: '📝' },
+    { id: 'in_progress', title: t('professional.columns.in_progress'), color: '#06b6d4', icon: '⚡' },
+    { id: 'review', title: t('professional.columns.review'), color: '#8b5cf6', icon: '🔍' },
+    { id: 'done', title: t('professional.columns.done'), color: '#10b981', icon: '✅' },
+  ];
+
+  const defaultFormData = {
     title: '',
     description: '',
     project_id: '',
     priority: 'medium',
+    status: 'todo',
     due_date: '',
     estimated_hours: '',
-  });
+  };
+
+  const [formData, setFormData] = useState(defaultFormData);
 
   const fetchData = async () => {
     try {
@@ -59,7 +64,27 @@ export function KanbanBoard() {
     fetchData();
   }, [selectedProjectId]);
 
-  const handleCreateTask = async (e) => {
+  const handleOpenCreate = () => {
+    setEditingTask(null);
+    setFormData(defaultFormData);
+    setIsModalOpen(true);
+  };
+
+  const handleOpenEdit = (task) => {
+    setEditingTask(task);
+    setFormData({
+      title: task.title || '',
+      description: task.description || '',
+      project_id: task.project_id || '',
+      priority: task.priority || 'medium',
+      status: task.status || 'todo',
+      due_date: task.due_date || '',
+      estimated_hours: task.estimated_hours != null ? task.estimated_hours : '',
+    });
+    setIsModalOpen(true);
+  };
+
+  const handleSubmitTask = async (e) => {
     e.preventDefault();
     setSubmitting(true);
     try {
@@ -68,67 +93,69 @@ export function KanbanBoard() {
         description: formData.description || null,
         project_id: formData.project_id || null,
         priority: formData.priority,
+        status: editingTask ? formData.status : 'todo',
         due_date: formData.due_date || null,
-        estimated_hours: formData.estimated_hours ? parseFloat(formData.estimated_hours) : null,
-        status: 'todo',
+        estimated_hours: formData.estimated_hours !== '' ? parseFloat(formData.estimated_hours) : null,
       };
-      await api.createTask(payload);
+
+      if (editingTask) {
+        await api.updateTask(editingTask.id, payload);
+      } else {
+        await api.createTask(payload);
+      }
+
       setIsModalOpen(false);
-      setFormData({
-        title: '',
-        description: '',
-        project_id: '',
-        priority: 'medium',
-        due_date: '',
-        estimated_hours: '',
-      });
+      setFormData(defaultFormData);
+      setEditingTask(null);
       fetchData();
     } catch (err) {
-      alert(`Error al crear la tarea: ${err.message}`);
+      alert(`${t('common.error')}: ${err.message}`);
     } finally {
       setSubmitting(false);
     }
   };
 
-  const handleMoveStatus = async (taskId, currentStatus, direction) => {
+  const handleMoveTask = async (taskId, currentStatus, direction) => {
     const statusOrder = ['todo', 'in_progress', 'review', 'done'];
     const currentIndex = statusOrder.indexOf(currentStatus);
-    const newIndex = direction === 'next' ? currentIndex + 1 : currentIndex - 1;
+    const targetIndex = direction === 'next' ? currentIndex + 1 : currentIndex - 1;
 
-    if (newIndex < 0 || newIndex >= statusOrder.length) return;
-    const newStatus = statusOrder[newIndex];
-
-    // Optimistic UI update
-    setTasks(tasks.map((t) => (t.id === taskId ? { ...t, status: newStatus } : t)));
+    if (targetIndex < 0 || targetIndex >= statusOrder.length) return;
+    const targetStatus = statusOrder[targetIndex];
 
     try {
-      await api.updateTask(taskId, { status: newStatus });
+      // Optimistic update
+      setTasks((prev) =>
+        prev.map((t) => (t.id === taskId ? { ...t, status: targetStatus } : t))
+      );
+      await api.updateTask(taskId, { status: targetStatus });
     } catch (err) {
-      alert(`Error al actualizar estado: ${err.message}`);
+      console.error('Error updating task status:', err);
       fetchData();
     }
   };
 
   const handleDeleteTask = async (taskId) => {
-    if (!window.confirm('¿Deseas eliminar esta tarea?')) return;
+    if (!window.confirm(t('common.confirmDelete'))) return;
     try {
       await api.deleteTask(taskId);
       setTasks(tasks.filter((t) => t.id !== taskId));
     } catch (err) {
-      alert(`Error al eliminar tarea: ${err.message}`);
+      alert(`${t('common.error')}: ${err.message}`);
     }
   };
 
   const getPriorityBadge = (priority) => {
     switch (priority) {
       case 'critical':
-        return <span className="priority-pill critical">Crítica</span>;
+      case 'urgent':
+        return <span className="kanban-priority-pill critical">{t('professional.priorities.urgent')}</span>;
       case 'high':
-        return <span className="priority-pill high">Alta</span>;
+        return <span className="kanban-priority-pill high">{t('professional.priorities.high')}</span>;
       case 'medium':
-        return <span className="priority-pill medium">Media</span>;
+        return <span className="kanban-priority-pill medium">{t('professional.priorities.medium')}</span>;
       case 'low':
-        return <span className="priority-pill low">Baja</span>;
+        return <span className="kanban-priority-pill low">{t('professional.priorities.low')}</span>;
       default:
         return null;
     }
@@ -138,6 +165,12 @@ export function KanbanBoard() {
     if (!dueDate || status === 'done') return false;
     const today = new Date().toISOString().split('T')[0];
     return dueDate < today;
+  };
+
+  const getProjectName = (projectId) => {
+    if (!projectId) return null;
+    const p = projects.find((item) => item.id === projectId);
+    return p ? p.name : null;
   };
 
   return (
@@ -152,7 +185,7 @@ export function KanbanBoard() {
               onChange={(e) => setSelectedProjectId(e.target.value)}
               className="project-select"
             >
-              <option value="">Todos los Proyectos</option>
+              <option value="">{language === 'es' ? 'Todos los Proyectos' : 'All Projects'}</option>
               {projects.map((p) => (
                 <option key={p.id} value={p.id}>{p.name}</option>
               ))}
@@ -160,15 +193,15 @@ export function KanbanBoard() {
           </div>
         </div>
 
-        <button className="btn-primary" onClick={() => setIsModalOpen(true)}>
+        <button className="btn-primary" onClick={handleOpenCreate}>
           <Plus size={16} />
-          <span>Nueva Tarea</span>
+          <span>{t('professional.addTask')}</span>
         </button>
       </div>
 
       {/* Kanban Board Columns */}
       <div className="kanban-board">
-        {COLUMNS.map((col) => {
+        {columns.map((col) => {
           const colTasks = tasks.filter((t) => t.status === col.id);
 
           return (
@@ -182,83 +215,89 @@ export function KanbanBoard() {
                 <span className="col-count-badge">{colTasks.length}</span>
               </div>
 
-              {/* Column Cards Container */}
-              <div className="column-cards-container">
+              {/* Tasks List */}
+              <div className="kanban-cards-container">
                 {colTasks.length === 0 ? (
                   <div className="empty-column-placeholder">
-                    <span>Sin tareas</span>
+                    {language === 'es' ? 'Sin tareas en esta etapa' : 'No tasks in this stage'}
                   </div>
                 ) : (
                   colTasks.map((task) => {
-                    const project = projects.find((p) => p.id === task.project_id);
                     const overdue = isOverdue(task.due_date, task.status);
+                    const projName = getProjectName(task.project_id);
 
                     return (
-                      <div key={task.id} className="kanban-task-card glass-card">
-                        {/* Project & Priority line */}
-                        <div className="task-card-meta">
-                          {project && (
-                            <span 
-                              className="task-project-tag"
-                              style={{ borderColor: project.color || 'var(--accent-purple)' }}
-                            >
-                              {project.name}
-                            </span>
-                          )}
-                          {getPriorityBadge(task.priority)}
-                        </div>
-
-                        {/* Title & Desc */}
-                        <h4 className="task-title">{task.title}</h4>
-                        {task.description && (
-                          <p className="task-desc">{task.description}</p>
-                        )}
-
-                        {/* Footer Indicators */}
-                        <div className="task-footer">
-                          <div className="task-chips">
-                            {task.due_date && (
-                              <div className={`chip-date ${overdue ? 'overdue' : ''}`}>
-                                <Calendar size={12} />
-                                <span>{task.due_date}</span>
-                              </div>
-                            )}
-                            {task.estimated_hours != null && (
-                              <div className="chip-hours">
-                                <Clock size={12} />
-                                <span>{task.estimated_hours}h</span>
-                              </div>
+                      <div 
+                        key={task.id} 
+                        className={`kanban-task-card ${overdue ? 'overdue-card' : ''}`}
+                      >
+                        <div className="task-card-top-row">
+                          <div className="task-badges-left">
+                            {getPriorityBadge(task.priority)}
+                            {projName && (
+                              <span className="task-project-tag" title={projName}>
+                                <Layers size={11} /> {projName}
+                              </span>
                             )}
                           </div>
-
-                          {/* Navigation & Delete controls */}
-                          <div className="task-actions">
-                            {col.id !== 'todo' && (
-                              <button 
-                                className="action-step-btn"
-                                onClick={() => handleMoveStatus(task.id, task.status, 'prev')}
-                                title="Mover a columna anterior"
-                              >
-                                <ChevronLeft size={14} />
-                              </button>
-                            )}
-                            {col.id !== 'done' && (
-                              <button 
-                                className="action-step-btn"
-                                onClick={() => handleMoveStatus(task.id, task.status, 'next')}
-                                title="Avanzar a siguiente columna"
-                              >
-                                <ChevronRight size={14} />
-                              </button>
-                            )}
+                          <div className="task-actions-right">
                             <button 
-                              className="delete-icon-btn"
+                              className="task-icon-btn edit"
+                              onClick={() => handleOpenEdit(task)}
+                              title={t('common.edit')}
+                            >
+                              <Edit2 size={13} />
+                            </button>
+                            <button 
+                              className="task-icon-btn delete"
                               onClick={() => handleDeleteTask(task.id)}
-                              title="Eliminar tarea"
+                              title={t('common.delete')}
                             >
                               <Trash2 size={13} />
                             </button>
                           </div>
+                        </div>
+
+                        <h4 className="kanban-task-title">{task.title}</h4>
+
+                        {task.description && (
+                          <p className="kanban-task-desc">{task.description}</p>
+                        )}
+
+                        <div className="kanban-task-meta">
+                          {task.due_date && (
+                            <div className={`meta-chip ${overdue ? 'overdue' : ''}`}>
+                              <Calendar size={12} />
+                              <span>{task.due_date}</span>
+                            </div>
+                          )}
+                          {task.estimated_hours && (
+                            <div className="meta-chip">
+                              <Clock size={12} />
+                              <span>{task.estimated_hours}h</span>
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Navigation Arrows between status columns */}
+                        <div className="kanban-task-footer">
+                          <button
+                            className="nav-step-btn"
+                            disabled={col.id === 'todo'}
+                            onClick={() => handleMoveTask(task.id, task.status, 'prev')}
+                            title={language === 'es' ? 'Mover a columna anterior' : 'Move to previous column'}
+                          >
+                            <ChevronLeft size={14} />
+                          </button>
+                          <span className="kanban-step-label">{col.title}</span>
+                          <button
+                            className="nav-step-btn"
+                            disabled={col.id === 'done'}
+                            onClick={() => handleMoveTask(task.id, task.status, 'next')}
+                            title={language === 'es' ? 'Mover a columna siguiente' : 'Move to next column'}
+                          >
+                            <ChevronRight size={14} />
+                          </button>
                         </div>
                       </div>
                     );
@@ -270,31 +309,34 @@ export function KanbanBoard() {
         })}
       </div>
 
-      {/* Modal Nueva Tarea */}
+      {/* Modal Nueva / Editar Tarea */}
       <Modal
         isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        title="Crear Nueva Tarea"
+        onClose={() => {
+          setIsModalOpen(false);
+          setEditingTask(null);
+        }}
+        title={editingTask ? t('professional.editTask') : t('professional.addTask')}
       >
-        <form onSubmit={handleCreateTask} className="modal-form">
+        <form onSubmit={handleSubmitTask} className="modal-form">
           <div className="form-group">
-            <label>Título de la Tarea *</label>
+            <label>{t('professional.fields.title')}</label>
             <input 
               type="text" 
               required
-              placeholder="Ej: Diseñar arquitectura de base de datos, Revisar KPIs..."
+              placeholder={language === 'es' ? 'Ej: Diseñar arquitectura, Revisar métricas...' : 'e.g. Design DB schema, Review metrics...'}
               value={formData.title}
               onChange={(e) => setFormData({ ...formData, title: e.target.value })}
             />
           </div>
 
           <div className="form-group">
-            <label>Proyecto Asociado</label>
+            <label>{t('professional.fields.project')}</label>
             <select
               value={formData.project_id}
               onChange={(e) => setFormData({ ...formData, project_id: e.target.value })}
             >
-              <option value="">Sin Proyecto (General)</option>
+              <option value="">{language === 'es' ? 'Sin Proyecto (General)' : 'No Project (General)'}</option>
               {projects.map((p) => (
                 <option key={p.id} value={p.id}>{p.name}</option>
               ))}
@@ -303,20 +345,20 @@ export function KanbanBoard() {
 
           <div className="form-row">
             <div className="form-group">
-              <label>Prioridad *</label>
+              <label>{t('professional.fields.priority')}</label>
               <select
                 value={formData.priority}
                 onChange={(e) => setFormData({ ...formData, priority: e.target.value })}
               >
-                <option value="low">🟢 Baja</option>
-                <option value="medium">🟡 Media</option>
-                <option value="high">🟠 Alta</option>
-                <option value="critical">🔴 Crítica</option>
+                <option value="low">🟢 {t('professional.priorities.low')}</option>
+                <option value="medium">🟡 {t('professional.priorities.medium')}</option>
+                <option value="high">🟠 {t('professional.priorities.high')}</option>
+                <option value="critical">🔴 {t('professional.priorities.urgent')}</option>
               </select>
             </div>
 
             <div className="form-group">
-              <label>Fecha Límite</label>
+              <label>{t('professional.fields.dueDate')}</label>
               <input 
                 type="date"
                 value={formData.due_date}
@@ -326,32 +368,39 @@ export function KanbanBoard() {
           </div>
 
           <div className="form-group">
-            <label>Horas Estimadas</label>
+            <label>{t('professional.fields.estimatedHours')}</label>
             <input 
               type="number" 
               step="0.5" 
               min="0"
-              placeholder="Ej: 3.5"
+              placeholder="3.5"
               value={formData.estimated_hours}
               onChange={(e) => setFormData({ ...formData, estimated_hours: e.target.value })}
             />
           </div>
 
           <div className="form-group">
-            <label>Descripción / Criterios de Aceptación</label>
+            <label>{t('professional.fields.description')}</label>
             <textarea 
-              placeholder="Detalles sobre lo que se debe entregar..."
+              placeholder={language === 'es' ? 'Detalles sobre lo que se debe entregar...' : 'Details and acceptance criteria...'}
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
             />
           </div>
 
           <div className="form-actions">
-            <button type="button" className="btn-secondary" onClick={() => setIsModalOpen(false)}>
-              Cancelar
+            <button 
+              type="button" 
+              className="btn-secondary" 
+              onClick={() => {
+                setIsModalOpen(false);
+                setEditingTask(null);
+              }}
+            >
+              {t('common.cancel')}
             </button>
             <button type="submit" className="btn-primary" disabled={submitting}>
-              {submitting ? 'Creando...' : 'Crear Tarea'}
+              {submitting ? t('common.saving') : (editingTask ? t('common.saveChanges') : t('professional.addTask'))}
             </button>
           </div>
         </form>

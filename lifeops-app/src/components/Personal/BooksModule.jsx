@@ -1,25 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import { api } from '../../lib/api';
 import { Modal } from '../common/Modal';
+import { useLanguage } from '../../context/LanguageContext';
 import { 
   BookOpen, 
   Plus, 
   Trash2, 
+  Edit2, 
   Star, 
   Bookmark, 
   CheckCircle2, 
   Clock, 
-  BookMarked 
+  BookMarked,
+  LayoutGrid,
+  Table as TableIcon
 } from 'lucide-react';
 import './BooksModule.css';
 
 export function BooksModule() {
+  const { t, language } = useLanguage();
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingBook, setEditingBook] = useState(null);
   const [submitting, setSubmitting] = useState(false);
+  const [viewMode, setViewMode] = useState(() => {
+    return localStorage.getItem('lifeops_view_books') || 'grid';
+  });
 
-  const [formData, setFormData] = useState({
+  const handleViewChange = (mode) => {
+    setViewMode(mode);
+    localStorage.setItem('lifeops_view_books', mode);
+  };
+
+  const defaultFormData = {
     title: '',
     author: '',
     date: new Date().toISOString().split('T')[0],
@@ -29,7 +43,9 @@ export function BooksModule() {
     genre: '',
     rating: 5,
     notes: '',
-  });
+  };
+
+  const [formData, setFormData] = useState(defaultFormData);
 
   const fetchBooks = async () => {
     try {
@@ -46,6 +62,29 @@ export function BooksModule() {
   useEffect(() => {
     fetchBooks();
   }, []);
+
+  const handleOpenCreate = () => {
+    setEditingBook(null);
+    setFormData(defaultFormData);
+    setIsModalOpen(true);
+  };
+
+  const handleOpenEdit = (act) => {
+    setEditingBook(act);
+    const b = act.book || {};
+    setFormData({
+      title: act.title || '',
+      author: b.author || '',
+      date: act.date || new Date().toISOString().split('T')[0],
+      pages_total: b.pages_total || 300,
+      pages_read: b.pages_read || 0,
+      status: b.status || 'reading',
+      genre: b.genre || '',
+      rating: act.rating || 5,
+      notes: act.description || act.notes || '',
+    });
+    setIsModalOpen(true);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -68,34 +107,30 @@ export function BooksModule() {
         },
       };
 
-      await api.createBookActivity(payload);
+      if (editingBook) {
+        await api.updateBookActivity(editingBook.id, payload);
+      } else {
+        await api.createBookActivity(payload);
+      }
+
       setIsModalOpen(false);
-      setFormData({
-        title: '',
-        author: '',
-        date: new Date().toISOString().split('T')[0],
-        pages_total: 300,
-        pages_read: 0,
-        status: 'reading',
-        genre: '',
-        rating: 5,
-        notes: '',
-      });
+      setFormData(defaultFormData);
+      setEditingBook(null);
       fetchBooks();
     } catch (err) {
-      alert(`Error al registrar el libro: ${err.message}`);
+      alert(`${t('common.error')}: ${err.message}`);
     } finally {
       setSubmitting(false);
     }
   };
 
   const handleDelete = async (id) => {
-    if (!window.confirm('¿Seguro que deseas eliminar este libro?')) return;
+    if (!window.confirm(t('common.confirmDelete'))) return;
     try {
       await api.deleteActivity(id);
       setBooks(books.filter((b) => b.id !== id));
     } catch (err) {
-      alert(`Error al eliminar: ${err.message}`);
+      alert(`${t('common.error')}: ${err.message}`);
     }
   };
 
@@ -106,11 +141,11 @@ export function BooksModule() {
   const getStatusBadge = (status) => {
     switch (status) {
       case 'completed':
-        return <span className="status-chip completed"><CheckCircle2 size={12} /> Leído</span>;
+        return <span className="status-chip completed"><CheckCircle2 size={12} /> {t('books.statuses.completed')}</span>;
       case 'reading':
-        return <span className="status-chip reading"><Clock size={12} /> Leyendo</span>;
+        return <span className="status-chip reading"><Clock size={12} /> {t('books.statuses.reading')}</span>;
       case 'wishlist':
-        return <span className="status-chip wishlist"><Bookmark size={12} /> Pendiente</span>;
+        return <span className="status-chip wishlist"><Bookmark size={12} /> {t('books.statuses.wishlist')}</span>;
       default:
         return <span className="status-chip">{status}</span>;
     }
@@ -121,49 +156,75 @@ export function BooksModule() {
       {/* Header */}
       <div className="module-header">
         <div>
-          <h2>Biblioteca & Lecturas</h2>
-          <p>Seguimiento de libros leídos, páginas y progreso de lectura.</p>
+          <h2>{t('books.title')}</h2>
+          <p>{t('books.subtitle')}</p>
         </div>
-        <button className="btn-primary" onClick={() => setIsModalOpen(true)}>
-          <Plus size={16} />
-          <span>Añadir Libro</span>
-        </button>
+
+        <div className="module-header-actions">
+          {/* View Mode Switcher */}
+          <div className="view-mode-toggle glass-panel">
+            <button
+              type="button"
+              className={`view-btn ${viewMode === 'grid' ? 'active' : ''}`}
+              onClick={() => handleViewChange('grid')}
+              title={t('common.cardsView')}
+            >
+              <LayoutGrid size={15} />
+              <span>{t('common.cardsView')}</span>
+            </button>
+            <button
+              type="button"
+              className={`view-btn ${viewMode === 'table' ? 'active' : ''}`}
+              onClick={() => handleViewChange('table')}
+              title={t('common.tableView')}
+            >
+              <TableIcon size={15} />
+              <span>{t('common.tableView')}</span>
+            </button>
+          </div>
+
+          <button className="btn-primary" onClick={handleOpenCreate}>
+            <Plus size={16} />
+            <span>{t('books.addBook')}</span>
+          </button>
+        </div>
       </div>
 
       {/* Metrics Banner */}
       <div className="metrics-banner">
         <div className="metric-box">
-          <span className="metric-label">LIBROS LEÍDOS</span>
-          <span className="metric-value">{completedBooks} <small>completados</small></span>
+          <span className="metric-label">{t('books.booksRead')}</span>
+          <span className="metric-value">{completedBooks} <small>{t('common.all')}</small></span>
         </div>
         <div className="metric-box">
-          <span className="metric-label">LEYENDO AHORA</span>
+          <span className="metric-label">{t('books.readingNow')}</span>
           <span className="metric-value" style={{ color: 'var(--accent-cyan)' }}>
-            {currentlyReading} <small>en curso</small>
+            {currentlyReading} <small>{t('books.statuses.reading')}</small>
           </span>
         </div>
         <div className="metric-box">
-          <span className="metric-label">PÁGINAS LEÍDAS</span>
+          <span className="metric-label">{t('books.pagesRead')}</span>
           <span className="metric-value" style={{ color: 'var(--accent-purple)' }}>
-            {totalPagesRead.toLocaleString()} <small>págs</small>
+            {totalPagesRead.toLocaleString()} <small>p.</small>
           </span>
         </div>
       </div>
 
-      {/* Books Grid */}
+      {/* Books Content */}
       {loading ? (
-        <div className="loading-state">Cargando biblioteca...</div>
+        <div className="loading-state">{t('books.loading')}</div>
       ) : books.length === 0 ? (
         <div className="empty-state glass-panel">
           <BookMarked size={40} className="empty-icon" />
-          <h3>Tu biblioteca está vacía</h3>
-          <p>Registra el libro que estés leyendo actualmente o añade tu lista de deseos.</p>
-          <button className="btn-primary" onClick={() => setIsModalOpen(true)}>
+          <h3>{t('books.emptyTitle')}</h3>
+          <p>{t('books.emptyDesc')}</p>
+          <button className="btn-primary" onClick={handleOpenCreate}>
             <Plus size={16} />
-            <span>Añadir primer libro</span>
+            <span>{t('books.emptyAction')}</span>
           </button>
         </div>
-      ) : (
+      ) : viewMode === 'grid' ? (
+        /* Cards / Grid View */
         <div className="books-grid">
           {books.map((act) => {
             const b = act.book || {};
@@ -175,26 +236,35 @@ export function BooksModule() {
               <div key={act.id} className="book-card glass-card">
                 <div className="book-card-header">
                   {getStatusBadge(b.status)}
-                  <button 
-                    className="delete-icon-btn" 
-                    onClick={() => handleDelete(act.id)}
-                    title="Eliminar libro"
-                  >
-                    <Trash2 size={14} />
-                  </button>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                    <button 
+                      className="edit-icon-btn" 
+                      onClick={() => handleOpenEdit(act)}
+                      title={t('common.edit')}
+                    >
+                      <Edit2 size={14} />
+                    </button>
+                    <button 
+                      className="delete-icon-btn" 
+                      onClick={() => handleDelete(act.id)}
+                      title={t('common.delete')}
+                    >
+                      <Trash2 size={14} />
+                    </button>
+                  </div>
                 </div>
 
                 <div className="book-details">
                   <h4 className="book-title">{act.title}</h4>
-                  <span className="book-author">por {b.author || 'Autor desconocido'}</span>
+                  <span className="book-author">by {b.author || 'Unknown'}</span>
                   {b.genre && <span className="genre-chip">{b.genre}</span>}
                 </div>
 
                 {/* Progress bar */}
                 <div className="reading-progress-section">
                   <div className="progress-labels">
-                    <span>Progreso: {percent}%</span>
-                    <span>{read} / {b.pages_total || '?'} págs</span>
+                    <span>{t('books.progress')}: {percent}%</span>
+                    <span>{read} / {b.pages_total || '?'} {t('common.pills')}</span>
                   </div>
                   <div className="progress-track">
                     <div 
@@ -221,21 +291,95 @@ export function BooksModule() {
             );
           })}
         </div>
+      ) : (
+        /* Table View */
+        <div className="module-table-wrapper glass-panel">
+          <table className="module-data-table">
+            <thead>
+              <tr>
+                <th>{language === 'es' ? 'Fecha' : 'Date'}</th>
+                <th>{language === 'es' ? 'Título' : 'Title'}</th>
+                <th>{language === 'es' ? 'Autor' : 'Author'}</th>
+                <th>{language === 'es' ? 'Género' : 'Genre'}</th>
+                <th>{language === 'es' ? 'Páginas' : 'Pages'}</th>
+                <th>{language === 'es' ? 'Progreso' : 'Progress'}</th>
+                <th>{language === 'es' ? 'Estado' : 'Status'}</th>
+                <th>{language === 'es' ? 'Valoración' : 'Rating'}</th>
+                <th style={{ textAlign: 'right' }}>{t('common.actions')}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {books.map((act) => {
+                const b = act.book || {};
+                const total = b.pages_total || 1;
+                const read = b.pages_read || 0;
+                const percent = Math.min(100, Math.round((read / total) * 100));
+
+                return (
+                  <tr key={act.id}>
+                    <td className="table-date-cell">{act.date}</td>
+                    <td className="table-title-cell">{act.title}</td>
+                    <td>{b.author || '-'}</td>
+                    <td>{b.genre || '-'}</td>
+                    <td>{read} / {b.pages_total || '?'}</td>
+                    <td>
+                      <div className="table-progress-box">
+                        <div className="table-mini-track">
+                          <div className="table-mini-fill" style={{ width: `${percent}%` }} />
+                        </div>
+                        <span className="table-progress-pct">{percent}%</span>
+                      </div>
+                    </td>
+                    <td>{getStatusBadge(b.status)}</td>
+                    <td>
+                      {act.rating ? (
+                        <div style={{ display: 'flex', gap: '2px', color: '#fbbf24' }}>
+                          {'★'.repeat(act.rating)}{'☆'.repeat(5 - act.rating)}
+                        </div>
+                      ) : '-'}
+                    </td>
+                    <td>
+                      <div className="table-actions-cell">
+                        <button 
+                          className="table-action-btn edit" 
+                          onClick={() => handleOpenEdit(act)}
+                          title={t('common.edit')}
+                        >
+                          <Edit2 size={14} />
+                        </button>
+                        <button 
+                          className="table-action-btn delete" 
+                          onClick={() => handleDelete(act.id)}
+                          title={t('common.delete')}
+                        >
+                          <Trash2 size={14} />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       )}
 
       {/* Modal Form */}
       <Modal
         isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        title="Añadir Libro a la Biblioteca"
+        onClose={() => {
+          setIsModalOpen(false);
+          setEditingBook(null);
+        }}
+        title={editingBook ? t('books.editBookTitle') : t('books.createBookTitle')}
       >
         <form onSubmit={handleSubmit} className="modal-form">
           <div className="form-group">
-            <label>Título del Libro *</label>
+            <label>{t('books.fields.title')}</label>
             <input 
               type="text" 
               required
-              placeholder="Ej: Hábitos Atómicos, Sapiens, Clean Architecture..."
+              placeholder={t('books.titlePlaceholder')}
               value={formData.title}
               onChange={(e) => setFormData({ ...formData, title: e.target.value })}
             />
@@ -243,21 +387,21 @@ export function BooksModule() {
 
           <div className="form-row">
             <div className="form-group">
-              <label>Autor / Autora *</label>
+              <label>{t('books.fields.author')}</label>
               <input 
                 type="text" 
                 required
-                placeholder="Ej: James Clear"
+                placeholder={t('books.authorPlaceholder')}
                 value={formData.author}
                 onChange={(e) => setFormData({ ...formData, author: e.target.value })}
               />
             </div>
 
             <div className="form-group">
-              <label>Género</label>
+              <label>{t('books.fields.genre')}</label>
               <input 
                 type="text" 
-                placeholder="Ej: Desarrollo Personal, Ensayo, Ciencia Ficción"
+                placeholder={t('books.genrePlaceholder')}
                 value={formData.genre}
                 onChange={(e) => setFormData({ ...formData, genre: e.target.value })}
               />
@@ -266,70 +410,95 @@ export function BooksModule() {
 
           <div className="form-row">
             <div className="form-group">
-              <label>Estado de Lectura *</label>
+              <label>{t('books.fields.status')}</label>
               <select
                 value={formData.status}
                 onChange={(e) => setFormData({ ...formData, status: e.target.value })}
               >
-                <option value="reading">📖 Leyendo Actualmente</option>
-                <option value="completed">✅ Leído / Completado</option>
-                <option value="wishlist">🔖 Lista de Deseos / Pendiente</option>
-                <option value="abandoned">⏹️ Abandonado</option>
+                <option value="reading">{t('books.statuses.reading')}</option>
+                <option value="completed">{t('books.statuses.completed')}</option>
+                <option value="wishlist">{t('books.statuses.wishlist')}</option>
+                <option value="abandoned">{t('books.statuses.abandoned')}</option>
               </select>
             </div>
 
             <div className="form-group">
-              <label>Valoración (1 a 5 estrellas)</label>
-              <select
-                value={formData.rating}
-                onChange={(e) => setFormData({ ...formData, rating: e.target.value })}
-              >
-                <option value="5">⭐⭐⭐⭐⭐ (5 - Excelente)</option>
-                <option value="4">⭐⭐⭐⭐ (4 - Muy Bueno)</option>
-                <option value="3">⭐⭐⭐ (3 - Bueno)</option>
-                <option value="2">⭐⭐ (2 - Regular)</option>
-                <option value="1">⭐ (1 - Malo)</option>
-              </select>
+              <label>{t('books.fields.date')}</label>
+              <input 
+                type="date" 
+                required
+                value={formData.date}
+                onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+              />
             </div>
           </div>
 
           <div className="form-row">
             <div className="form-group">
-              <label>Páginas Totales</label>
+              <label>{t('books.fields.pagesRead')}</label>
               <input 
                 type="number" 
-                min="1"
-                value={formData.pages_total}
-                onChange={(e) => setFormData({ ...formData, pages_total: e.target.value })}
+                min="0"
+                placeholder="0"
+                value={formData.pages_read}
+                onChange={(e) => setFormData({ ...formData, pages_read: e.target.value })}
               />
             </div>
 
             <div className="form-group">
-              <label>Páginas Leídas</label>
+              <label>{t('books.fields.pagesTotal')}</label>
               <input 
                 type="number" 
-                min="0"
-                value={formData.pages_read}
-                onChange={(e) => setFormData({ ...formData, pages_read: e.target.value })}
+                min="1"
+                placeholder="320"
+                value={formData.pages_total}
+                onChange={(e) => setFormData({ ...formData, pages_total: e.target.value })}
               />
             </div>
           </div>
 
           <div className="form-group">
-            <label>Notas / Citas destacadas</label>
+            <label>{t('books.fields.rating')}</label>
+            <div className="star-rating-selector">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <button
+                  type="button"
+                  key={star}
+                  className="star-btn"
+                  onClick={() => setFormData({ ...formData, rating: star })}
+                >
+                  <Star 
+                    size={22} 
+                    fill={star <= formData.rating ? '#fbbf24' : 'transparent'} 
+                    color={star <= formData.rating ? '#fbbf24' : 'var(--text-muted)'} 
+                  />
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="form-group">
+            <label>{t('books.fields.notes')}</label>
             <textarea 
-              placeholder="Ideas clave del libro o reflexiones..."
+              placeholder={t('books.notesPlaceholder')}
               value={formData.notes}
               onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
             />
           </div>
 
           <div className="form-actions">
-            <button type="button" className="btn-secondary" onClick={() => setIsModalOpen(false)}>
-              Cancelar
+            <button 
+              type="button" 
+              className="btn-secondary" 
+              onClick={() => {
+                setIsModalOpen(false);
+                setEditingBook(null);
+              }}
+            >
+              {t('common.cancel')}
             </button>
             <button type="submit" className="btn-primary" disabled={submitting}>
-              {submitting ? 'Guardando...' : 'Añadir a la Biblioteca'}
+              {submitting ? t('common.saving') : (editingBook ? t('common.saveChanges') : t('books.addBook'))}
             </button>
           </div>
         </form>

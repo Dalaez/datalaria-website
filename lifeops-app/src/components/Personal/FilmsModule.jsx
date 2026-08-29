@@ -1,26 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import { api } from '../../lib/api';
 import { Modal } from '../common/Modal';
+import { useLanguage } from '../../context/LanguageContext';
 import { 
   Film, 
   Plus, 
   Trash2, 
+  Edit2, 
   Star, 
   Tv, 
   Clapperboard, 
   Tv2, 
   Calendar,
-  Sparkles
+  Sparkles,
+  LayoutGrid,
+  Table as TableIcon
 } from 'lucide-react';
 import './FilmsModule.css';
 
 export function FilmsModule() {
+  const { t, language } = useLanguage();
   const [films, setFilms] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingFilm, setEditingFilm] = useState(null);
   const [submitting, setSubmitting] = useState(false);
+  const [viewMode, setViewMode] = useState(() => {
+    return localStorage.getItem('lifeops_view_films') || 'grid';
+  });
 
-  const [formData, setFormData] = useState({
+  const handleViewChange = (mode) => {
+    setViewMode(mode);
+    localStorage.setItem('lifeops_view_films', mode);
+  };
+
+  const defaultFormData = {
     title: '',
     media_type: 'movie',
     director: '',
@@ -30,7 +44,9 @@ export function FilmsModule() {
     date: new Date().toISOString().split('T')[0],
     rating: 5,
     notes: '',
-  });
+  };
+
+  const [formData, setFormData] = useState(defaultFormData);
 
   const fetchFilms = async () => {
     try {
@@ -47,6 +63,29 @@ export function FilmsModule() {
   useEffect(() => {
     fetchFilms();
   }, []);
+
+  const handleOpenCreate = () => {
+    setEditingFilm(null);
+    setFormData(defaultFormData);
+    setIsModalOpen(true);
+  };
+
+  const handleOpenEdit = (act) => {
+    setEditingFilm(act);
+    const f = act.film || {};
+    setFormData({
+      title: act.title || '',
+      media_type: f.media_type || 'movie',
+      director: f.director || '',
+      platform: f.platform || 'Cine',
+      genre: f.genre || '',
+      year: f.year || new Date().getFullYear(),
+      date: act.date || new Date().toISOString().split('T')[0],
+      rating: act.rating || 5,
+      notes: act.description || f.review || act.notes || '',
+    });
+    setIsModalOpen(true);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -69,49 +108,45 @@ export function FilmsModule() {
         },
       };
 
-      await api.createFilmActivity(payload);
+      if (editingFilm) {
+        await api.updateFilmActivity(editingFilm.id, payload);
+      } else {
+        await api.createFilmActivity(payload);
+      }
+
       setIsModalOpen(false);
-      setFormData({
-        title: '',
-        media_type: 'movie',
-        director: '',
-        platform: 'Cine',
-        genre: '',
-        year: new Date().getFullYear(),
-        date: new Date().toISOString().split('T')[0],
-        rating: 5,
-        notes: '',
-      });
+      setFormData(defaultFormData);
+      setEditingFilm(null);
       fetchFilms();
     } catch (err) {
-      alert(`Error al registrar el título: ${err.message}`);
+      alert(`${t('common.error')}: ${err.message}`);
     } finally {
       setSubmitting(false);
     }
   };
 
   const handleDelete = async (id) => {
-    if (!window.confirm('¿Seguro que deseas eliminar esta película o serie?')) return;
+    if (!window.confirm(t('common.confirmDelete'))) return;
     try {
       await api.deleteActivity(id);
       setFilms(films.filter((f) => f.id !== id));
     } catch (err) {
-      alert(`Error al eliminar: ${err.message}`);
+      alert(`${t('common.error')}: ${err.message}`);
     }
   };
 
-  const totalMovies = films.filter((f) => f.film?.media_type === 'movie').length;
-  const totalSeries = films.filter((f) => f.film?.media_type === 'series').length;
+  const movieCount = films.filter((f) => f.film?.media_type === 'movie').length;
+  const seriesCount = films.filter((f) => f.film?.media_type === 'series').length;
   const avgRating = films.length > 0 
     ? (films.reduce((acc, curr) => acc + (curr.rating || 0), 0) / films.length).toFixed(1)
     : '0.0';
 
   const getMediaIcon = (type) => {
     switch (type) {
-      case 'series': return <Tv size={14} />;
-      case 'documentary': return <Clapperboard size={14} />;
-      case 'anime': return <Sparkles size={14} />;
-      default: return <Film size={14} />;
+      case 'series': return <Tv size={14} color="var(--accent-purple)" />;
+      case 'anime': return <Sparkles size={14} color="var(--accent-rose)" />;
+      case 'documentary': return <Tv2 size={14} color="var(--accent-cyan)" />;
+      default: return <Clapperboard size={14} color="var(--accent-amber)" />;
     }
   };
 
@@ -120,66 +155,99 @@ export function FilmsModule() {
       {/* Header */}
       <div className="module-header">
         <div>
-          <h2>Cine, Series & Cultura</h2>
-          <p>Catálogo y valoraciones de películas, series y documentales vistos.</p>
+          <h2>{t('films.title')}</h2>
+          <p>{t('films.subtitle')}</p>
         </div>
-        <button className="btn-primary" onClick={() => setIsModalOpen(true)}>
-          <Plus size={16} />
-          <span>Registrar Película / Serie</span>
-        </button>
+
+        <div className="module-header-actions">
+          {/* View Mode Switcher */}
+          <div className="view-mode-toggle glass-panel">
+            <button
+              type="button"
+              className={`view-btn ${viewMode === 'grid' ? 'active' : ''}`}
+              onClick={() => handleViewChange('grid')}
+              title={t('common.cardsView')}
+            >
+              <LayoutGrid size={15} />
+              <span>{t('common.cardsView')}</span>
+            </button>
+            <button
+              type="button"
+              className={`view-btn ${viewMode === 'table' ? 'active' : ''}`}
+              onClick={() => handleViewChange('table')}
+              title={t('common.tableView')}
+            >
+              <TableIcon size={15} />
+              <span>{t('common.tableView')}</span>
+            </button>
+          </div>
+
+          <button className="btn-primary" onClick={handleOpenCreate}>
+            <Plus size={16} />
+            <span>{t('films.addFilm')}</span>
+          </button>
+        </div>
       </div>
 
       {/* Metrics Banner */}
       <div className="metrics-banner">
         <div className="metric-box">
-          <span className="metric-label">PELÍCULAS VISTAS</span>
-          <span className="metric-value">{totalMovies} <small>films</small></span>
+          <span className="metric-label">{t('films.moviesWatched')}</span>
+          <span className="metric-value">{movieCount} <small>films</small></span>
         </div>
         <div className="metric-box">
-          <span className="metric-label">SERIES / ANIME</span>
+          <span className="metric-label">{t('films.seriesWatched')}</span>
           <span className="metric-value" style={{ color: 'var(--accent-purple)' }}>
-            {totalSeries} <small>temporadas</small>
+            {seriesCount} <small>series</small>
           </span>
         </div>
         <div className="metric-box">
-          <span className="metric-label">VALORACIÓN MEDIA</span>
+          <span className="metric-label">{t('films.avgRating')}</span>
           <span className="metric-value" style={{ color: '#fbbf24' }}>
             ★ {avgRating} <small>/ 5</small>
           </span>
         </div>
       </div>
 
-      {/* Films Grid */}
+      {/* Films Content */}
       {loading ? (
-        <div className="loading-state">Cargando catálogo...</div>
+        <div className="loading-state">{t('films.loading')}</div>
       ) : films.length === 0 ? (
         <div className="empty-state glass-panel">
           <Film size={40} className="empty-icon" />
-          <h3>No has registrado películas o series</h3>
-          <p>Lleva un registro de tus películas favoritas, estrenos de cine o series maratoneadas.</p>
-          <button className="btn-primary" onClick={() => setIsModalOpen(true)}>
+          <h3>{t('films.emptyTitle')}</h3>
+          <p>{t('films.emptyDesc')}</p>
+          <button className="btn-primary" onClick={handleOpenCreate}>
             <Plus size={16} />
-            <span>Añadir primer título</span>
+            <span>{t('films.emptyAction')}</span>
           </button>
         </div>
-      ) : (
+      ) : viewMode === 'grid' ? (
+        /* Cards / Grid View */
         <div className="films-grid">
           {films.map((act) => {
             const f = act.film || {};
+
             return (
               <div key={act.id} className="film-card glass-card">
                 <div className="film-card-header">
-                  <div className="media-type-badge">
+                  <div className="media-type-chip">
                     {getMediaIcon(f.media_type)}
                     <span>{f.media_type?.toUpperCase()}</span>
                   </div>
-
-                  <div className="film-card-actions">
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                     {f.platform && <span className="platform-chip">{f.platform}</span>}
+                    <button 
+                      className="edit-icon-btn" 
+                      onClick={() => handleOpenEdit(act)}
+                      title={t('common.edit')}
+                    >
+                      <Edit2 size={14} />
+                    </button>
                     <button 
                       className="delete-icon-btn" 
                       onClick={() => handleDelete(act.id)}
-                      title="Eliminar registro"
+                      title={t('common.delete')}
                     >
                       <Trash2 size={14} />
                     </button>
@@ -216,21 +284,96 @@ export function FilmsModule() {
             );
           })}
         </div>
+      ) : (
+        /* Table View */
+        <div className="module-table-wrapper glass-panel">
+          <table className="module-data-table">
+            <thead>
+              <tr>
+                <th>{language === 'es' ? 'Fecha' : 'Date'}</th>
+                <th>{language === 'es' ? 'Título' : 'Title'}</th>
+                <th>{language === 'es' ? 'Tipo' : 'Type'}</th>
+                <th>{language === 'es' ? 'Plataforma' : 'Platform'}</th>
+                <th>{language === 'es' ? 'Año / Director' : 'Year / Director'}</th>
+                <th>{language === 'es' ? 'Género' : 'Genre'}</th>
+                <th>{language === 'es' ? 'Valoración' : 'Rating'}</th>
+                <th>{language === 'es' ? 'Crítica / Notas' : 'Review / Notes'}</th>
+                <th style={{ textAlign: 'right' }}>{t('common.actions')}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {films.map((act) => {
+                const f = act.film || {};
+
+                return (
+                  <tr key={act.id}>
+                    <td className="table-date-cell">{act.date}</td>
+                    <td className="table-title-cell">{act.title}</td>
+                    <td>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.8rem' }}>
+                        {getMediaIcon(f.media_type)}
+                        <span>{f.media_type?.toUpperCase()}</span>
+                      </div>
+                    </td>
+                    <td>
+                      {f.platform ? <span className="platform-chip">{f.platform}</span> : '-'}
+                    </td>
+                    <td>
+                      {f.year || ''} {f.director ? `• ${f.director}` : ''}
+                    </td>
+                    <td>{f.genre || '-'}</td>
+                    <td>
+                      {act.rating ? (
+                        <div style={{ display: 'flex', gap: '2px', color: '#fbbf24' }}>
+                          {'★'.repeat(act.rating)}{'☆'.repeat(5 - act.rating)}
+                        </div>
+                      ) : '-'}
+                    </td>
+                    <td className="table-notes-cell" title={act.description || f.review || ''}>
+                      {act.description || f.review || '-'}
+                    </td>
+                    <td>
+                      <div className="table-actions-cell">
+                        <button 
+                          className="table-action-btn edit" 
+                          onClick={() => handleOpenEdit(act)}
+                          title={t('common.edit')}
+                        >
+                          <Edit2 size={14} />
+                        </button>
+                        <button 
+                          className="table-action-btn delete" 
+                          onClick={() => handleDelete(act.id)}
+                          title={t('common.delete')}
+                        >
+                          <Trash2 size={14} />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       )}
 
       {/* Modal Form */}
       <Modal
         isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        title="Registrar Película o Serie"
+        onClose={() => {
+          setIsModalOpen(false);
+          setEditingFilm(null);
+        }}
+        title={editingFilm ? t('films.editFilmTitle') : t('films.createFilmTitle')}
       >
         <form onSubmit={handleSubmit} className="modal-form">
           <div className="form-group">
-            <label>Título *</label>
+            <label>{t('films.fields.title')}</label>
             <input 
               type="text" 
               required
-              placeholder="Ej: Oppenheimer, Dune 2, Succession, Shingeki no Kyojin..."
+              placeholder={t('films.titlePlaceholder')}
               value={formData.title}
               onChange={(e) => setFormData({ ...formData, title: e.target.value })}
             />
@@ -238,52 +381,52 @@ export function FilmsModule() {
 
           <div className="form-row">
             <div className="form-group">
-              <label>Tipo de Contenido *</label>
+              <label>{t('films.fields.mediaType')}</label>
               <select
                 value={formData.media_type}
                 onChange={(e) => setFormData({ ...formData, media_type: e.target.value })}
               >
-                <option value="movie">🎬 Película</option>
-                <option value="series">📺 Serie de TV</option>
-                <option value="documentary">📽️ Documental</option>
-                <option value="anime">✨ Anime</option>
+                <option value="movie">{t('films.types.movie')}</option>
+                <option value="series">{t('films.types.series')}</option>
+                <option value="documentary">{t('films.types.documentary')}</option>
+                <option value="anime">{t('films.types.anime')}</option>
               </select>
             </div>
 
             <div className="form-group">
-              <label>Plataforma / Medio</label>
+              <label>{t('films.fields.platform')}</label>
               <select
                 value={formData.platform}
                 onChange={(e) => setFormData({ ...formData, platform: e.target.value })}
               >
-                <option value="Cine">🍿 Cine / Sala</option>
+                <option value="Cine">🍿 Cine / Theater</option>
                 <option value="Netflix">🔴 Netflix</option>
                 <option value="HBO Max">🟣 HBO Max</option>
                 <option value="Prime Video">🔵 Prime Video</option>
-                <option value="Disney+">🟦 Disney+</option>
-                <option value="Apple TV+">⚪ Apple TV+</option>
+                <option value="Disney+">⭐ Disney+</option>
+                <option value="Apple TV+">🍏 Apple TV+</option>
                 <option value="Filmin">🟠 Filmin</option>
-                <option value="Otro">Otro</option>
+                <option value="Otro">🎯 Other</option>
               </select>
             </div>
           </div>
 
           <div className="form-row">
             <div className="form-group">
-              <label>Director / Creador</label>
+              <label>{t('films.fields.director')}</label>
               <input 
                 type="text" 
-                placeholder="Ej: Christopher Nolan"
+                placeholder={t('films.directorPlaceholder')}
                 value={formData.director}
                 onChange={(e) => setFormData({ ...formData, director: e.target.value })}
               />
             </div>
 
             <div className="form-group">
-              <label>Género</label>
+              <label>{t('films.fields.genre')}</label>
               <input 
                 type="text" 
-                placeholder="Ej: Thriller, Ciencia Ficción, Drama..."
+                placeholder={t('films.genrePlaceholder')}
                 value={formData.genre}
                 onChange={(e) => setFormData({ ...formData, genre: e.target.value })}
               />
@@ -292,55 +435,69 @@ export function FilmsModule() {
 
           <div className="form-row">
             <div className="form-group">
-              <label>Año de estreno</label>
+              <label>{t('films.fields.year')}</label>
               <input 
                 type="number" 
                 min="1900" 
-                max="2030"
+                max="2100"
                 value={formData.year}
                 onChange={(e) => setFormData({ ...formData, year: e.target.value })}
               />
             </div>
 
             <div className="form-group">
-              <label>Valoración</label>
-              <select
-                value={formData.rating}
-                onChange={(e) => setFormData({ ...formData, rating: e.target.value })}
-              >
-                <option value="5">⭐⭐⭐⭐⭐ (5 - Obra Maestra)</option>
-                <option value="4">⭐⭐⭐⭐ (4 - Muy Buena)</option>
-                <option value="3">⭐⭐⭐ (3 - Entretenida)</option>
-                <option value="2">⭐⭐ (2 - Prescindible)</option>
-                <option value="1">⭐ (1 - Mala)</option>
-              </select>
+              <label>{t('films.fields.date')}</label>
+              <input 
+                type="date" 
+                required
+                value={formData.date}
+                onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+              />
             </div>
           </div>
 
           <div className="form-group">
-            <label>Fecha de visionado</label>
-            <input 
-              type="date" 
-              value={formData.date}
-              onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-            />
+            <label>{t('films.fields.rating')}</label>
+            <div className="star-rating-selector">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <button
+                  type="button"
+                  key={star}
+                  className="star-btn"
+                  onClick={() => setFormData({ ...formData, rating: star })}
+                >
+                  <Star 
+                    size={22} 
+                    fill={star <= formData.rating ? '#fbbf24' : 'transparent'} 
+                    color={star <= formData.rating ? '#fbbf24' : 'var(--text-muted)'} 
+                  />
+                </button>
+              ))}
+            </div>
           </div>
 
           <div className="form-group">
-            <label>Reseña o comentario</label>
+            <label>{t('films.fields.review')}</label>
             <textarea 
-              placeholder="¿Qué te pareció el final? Actuaciones destacadas, fotografía..."
+              placeholder={t('films.reviewPlaceholder')}
               value={formData.notes}
               onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
             />
           </div>
 
           <div className="form-actions">
-            <button type="button" className="btn-secondary" onClick={() => setIsModalOpen(false)}>
-              Cancelar
+            <button 
+              type="button" 
+              className="btn-secondary" 
+              onClick={() => {
+                setIsModalOpen(false);
+                setEditingFilm(null);
+              }}
+            >
+              {t('common.cancel')}
             </button>
             <button type="submit" className="btn-primary" disabled={submitting}>
-              {submitting ? 'Guardando...' : 'Registrar'}
+              {submitting ? t('common.saving') : (editingFilm ? t('common.saveChanges') : t('films.addFilm'))}
             </button>
           </div>
         </form>

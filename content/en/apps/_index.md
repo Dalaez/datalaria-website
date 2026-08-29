@@ -8,6 +8,12 @@ Here you will find a collection of small applications and tools I have developed
 
 <div class="app-grid">
     <div class="app-card">
+        <span class="app-icon">🚀</span>
+        <h3 class="app-title">LifeOps</h3>
+        <p class="app-desc">All-in-one personal & professional OS: fitness tracking, book library, movies, Kanban tasks and projects.</p>
+        <a href="/apps/lifeops/" class="app-link">Open App →</a>
+    </div>
+    <div class="app-card">
         <span class="app-icon">🌤️</span>
         <h3 class="app-title">Weather</h3>
         <p class="app-desc">Check detailed real-time weather forecast.</p>
@@ -38,4 +44,3 @@ Here you will find a collection of small applications and tools I have developed
         <a href="/apps/obs-management/" class="app-link">Open Dashboard →</a>
     </div>
 </div>
-

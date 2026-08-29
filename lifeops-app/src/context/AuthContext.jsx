@@ -8,6 +8,8 @@ const AuthContext = createContext({
   signIn: async () => {},
   signUp: async () => {},
   signOut: async () => {},
+  resetPassword: async () => {},
+  updatePassword: async () => {},
 });
 
 export function AuthProvider({ children }) {
@@ -50,6 +52,20 @@ export function AuthProvider({ children }) {
     if (error) throw error;
   };
 
+  const resetPassword = async (email) => {
+    const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: window.location.origin + window.location.pathname + '#/login',
+    });
+    if (error) throw error;
+    return data;
+  };
+
+  const updatePassword = async (newPassword) => {
+    const { data, error } = await supabase.auth.updateUser({ password: newPassword });
+    if (error) throw error;
+    return data;
+  };
+
   const value = {
     user,
     session,
@@ -57,6 +73,8 @@ export function AuthProvider({ children }) {
     signIn,
     signUp,
     signOut,
+    resetPassword,
+    updatePassword,
   };
 
   return (

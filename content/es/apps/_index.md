@@ -8,6 +8,12 @@ Aquí encontrarás una colección de pequeñas aplicaciones y herramientas que h
 
 <div class="app-grid">
     <div class="app-card">
+        <span class="app-icon">🚀</span>
+        <h3 class="app-title">LifeOps</h3>
+        <p class="app-desc">Sistema operativo integral personal y profesional: deporte, lecturas, cine, tablero Kanban y proyectos.</p>
+        <a href="/apps/lifeops/" class="app-link">Abrir App →</a>
+    </div>
+    <div class="app-card">
         <span class="app-icon">🌤️</span>
         <h3 class="app-title">El Tiempo</h3>
         <p class="app-desc">Consulta la previsión meteorológica detallada y en tiempo real.</p>
@@ -38,4 +44,3 @@ Aquí encontrarás una colección de pequeñas aplicaciones y herramientas que h
         <a href="/apps/obs-management/" class="app-link">Abrir Dashboard →</a>
     </div>
 </div>
-

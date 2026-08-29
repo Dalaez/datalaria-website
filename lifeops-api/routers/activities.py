@@ -13,6 +13,7 @@ from middleware.auth import AuthenticatedUser, get_current_user
 from models.activity import (
     ActivityCreate, ActivityUpdate, ActivityResponse, ActivityType,
     SportActivityCreate, BookActivityCreate, FilmActivityCreate,
+    SportActivityUpdate, BookActivityUpdate, FilmActivityUpdate,
     WorkoutResponse, BookResponse, FilmResponse,
 )
 from services.supabase_client import db
@@ -28,7 +29,7 @@ router = APIRouter(prefix="/api/v1/activities", tags=["Activities"])
     summary="List user activities",
     description="Returns all activities for the authenticated user, with optional filters.",
 )
-async def list_activities(
+def list_activities(
     activity_type: Optional[ActivityType] = Query(None, description="Filter by type"),
     date_from: Optional[date] = Query(None, description="Start date (inclusive)"),
     date_to: Optional[date] = Query(None, description="End date (inclusive)"),
@@ -63,7 +64,7 @@ async def list_activities(
     summary="List activities with embedded workout, book, or film details",
     description="Returns activities with their child records joined (single request).",
 )
-async def list_activities_with_details(
+def list_activities_with_details(
     activity_type: Optional[ActivityType] = Query(None, description="Filter by type"),
     limit: int = Query(50, ge=1, le=200),
     user: AuthenticatedUser = Depends(get_current_user),
@@ -115,7 +116,7 @@ async def list_activities_with_details(
     response_model=ActivityResponse,
     summary="Get activity by ID",
 )
-async def get_activity(
+def get_activity(
     activity_id: str,
     user: AuthenticatedUser = Depends(get_current_user),
 ):
@@ -139,7 +140,7 @@ async def get_activity(
     status_code=status.HTTP_201_CREATED,
     summary="Create a new activity",
 )
-async def create_activity(
+def create_activity(
     payload: ActivityCreate,
     user: AuthenticatedUser = Depends(get_current_user),
 ):
@@ -161,7 +162,7 @@ async def create_activity(
     status_code=status.HTTP_201_CREATED,
     summary="Create a sport activity with workout details",
 )
-async def create_sport_activity(
+def create_sport_activity(
     payload: SportActivityCreate,
     user: AuthenticatedUser = Depends(get_current_user),
 ):
@@ -193,7 +194,7 @@ async def create_sport_activity(
     status_code=status.HTTP_201_CREATED,
     summary="Create a book activity with book details",
 )
-async def create_book_activity(
+def create_book_activity(
     payload: BookActivityCreate,
     user: AuthenticatedUser = Depends(get_current_user),
 ):
@@ -222,7 +223,7 @@ async def create_book_activity(
     status_code=status.HTTP_201_CREATED,
     summary="Create a film activity with film details",
 )
-async def create_film_activity(
+def create_film_activity(
     payload: FilmActivityCreate,
     user: AuthenticatedUser = Depends(get_current_user),
 ):
@@ -250,7 +251,7 @@ async def create_film_activity(
     response_model=ActivityResponse,
     summary="Update an existing activity",
 )
-async def update_activity(
+def update_activity(
     activity_id: str,
     payload: ActivityUpdate,
     user: AuthenticatedUser = Depends(get_current_user),
@@ -274,6 +275,93 @@ async def update_activity(
     return result.data[0]
 
 
+# ── Update Sport Activity (with workout detail) ──
+
+@router.patch(
+    "/{activity_id}/sport",
+    response_model=ActivityResponse,
+    summary="Update sport activity with workout details",
+)
+def update_sport_activity(
+    activity_id: str,
+    payload: SportActivityUpdate,
+    user: AuthenticatedUser = Depends(get_current_user),
+):
+    # 1. Update activity fields if provided
+    if payload.activity:
+        act_data = payload.activity.model_dump(mode="json", exclude_unset=True)
+        if act_data:
+            db("activities").update(act_data).eq("id", activity_id).eq("user_id", user.id).execute()
+
+    # 2. Update workout fields if provided
+    if payload.workout:
+        w_data = payload.workout.model_dump(mode="json", exclude_unset=True)
+        if w_data:
+            db("workouts").update(w_data).eq("activity_id", activity_id).execute()
+
+    # Return updated activity
+    res = db("activities").select("*").eq("id", activity_id).eq("user_id", user.id).execute()
+    if not res.data:
+        raise HTTPException(status_code=404, detail="Activity not found")
+    return res.data[0]
+
+
+# ── Update Book Activity (with book detail) ───────
+
+@router.patch(
+    "/{activity_id}/book",
+    response_model=ActivityResponse,
+    summary="Update book activity with book details",
+)
+def update_book_activity(
+    activity_id: str,
+    payload: BookActivityUpdate,
+    user: AuthenticatedUser = Depends(get_current_user),
+):
+    if payload.activity:
+        act_data = payload.activity.model_dump(mode="json", exclude_unset=True)
+        if act_data:
+            db("activities").update(act_data).eq("id", activity_id).eq("user_id", user.id).execute()
+
+    if payload.book:
+        b_data = payload.book.model_dump(mode="json", exclude_unset=True)
+        if b_data:
+            db("books").update(b_data).eq("activity_id", activity_id).execute()
+
+    res = db("activities").select("*").eq("id", activity_id).eq("user_id", user.id).execute()
+    if not res.data:
+        raise HTTPException(status_code=404, detail="Activity not found")
+    return res.data[0]
+
+
+# ── Update Film Activity (with film detail) ───────
+
+@router.patch(
+    "/{activity_id}/film",
+    response_model=ActivityResponse,
+    summary="Update film activity with film details",
+)
+def update_film_activity(
+    activity_id: str,
+    payload: FilmActivityUpdate,
+    user: AuthenticatedUser = Depends(get_current_user),
+):
+    if payload.activity:
+        act_data = payload.activity.model_dump(mode="json", exclude_unset=True)
+        if act_data:
+            db("activities").update(act_data).eq("id", activity_id).eq("user_id", user.id).execute()
+
+    if payload.film:
+        f_data = payload.film.model_dump(mode="json", exclude_unset=True)
+        if f_data:
+            db("films").update(f_data).eq("activity_id", activity_id).execute()
+
+    res = db("activities").select("*").eq("id", activity_id).eq("user_id", user.id).execute()
+    if not res.data:
+        raise HTTPException(status_code=404, detail="Activity not found")
+    return res.data[0]
+
+
 # ── Delete Activity ───────────────────────────────
 
 @router.delete(
@@ -282,7 +370,7 @@ async def update_activity(
     summary="Delete an activity",
     description="Deletes the activity and all associated detail records (CASCADE).",
 )
-async def delete_activity(
+def delete_activity(
     activity_id: str,
     user: AuthenticatedUser = Depends(get_current_user),
 ):
@@ -305,7 +393,7 @@ async def delete_activity(
     response_model=WorkoutResponse,
     summary="Get workout details for a sport activity",
 )
-async def get_workout_detail(
+def get_workout_detail(
     activity_id: str,
     user: AuthenticatedUser = Depends(get_current_user),
 ):
@@ -331,7 +419,7 @@ async def get_workout_detail(
     response_model=BookResponse,
     summary="Get book details for a book activity",
 )
-async def get_book_detail(
+def get_book_detail(
     activity_id: str,
     user: AuthenticatedUser = Depends(get_current_user),
 ):
@@ -356,7 +444,7 @@ async def get_book_detail(
     response_model=FilmResponse,
     summary="Get film details for a film activity",
 )
-async def get_film_detail(
+def get_film_detail(
     activity_id: str,
     user: AuthenticatedUser = Depends(get_current_user),
 ):

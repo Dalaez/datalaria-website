@@ -8,17 +8,37 @@ professional (projects, tasks) management in one API.
 Run with:
     uvicorn main:app --reload --port 8000
 """
-from fastapi import FastAPI
+import socket
+
+# Prevent Windows DNS IPv6 blackhole timeout when resolving cloud services
+_orig_getaddrinfo = socket.getaddrinfo
+
+def _ipv4_getaddrinfo(host, port, family=0, type=0, proto=0, flags=0):
+    if family == 0 or family == socket.AF_UNSPEC:
+        family = socket.AF_INET
+    return _orig_getaddrinfo(host, port, family, type, proto, flags)
+
+socket.getaddrinfo = _ipv4_getaddrinfo
+
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.util import get_remote_address
+from slowapi.errors import RateLimitExceeded
+from slowapi.middleware import SlowAPIMiddleware
 
 from config import get_settings
 from routers.activities import router as activities_router
 from routers.projects import router as projects_router, tasks_router
 from routers.stats import router as stats_router
+from routers.reports import router as reports_router
+from routers.alerts import router as alerts_router
 
 # ── App setup ─────────────────────────────────────
 
 settings = get_settings()
+
+limiter = Limiter(key_func=get_remote_address, default_limits=["120/minute"])
 
 app = FastAPI(
     title="LifeOps API",
@@ -32,6 +52,10 @@ app = FastAPI(
     docs_url="/docs",
     redoc_url="/redoc",
 )
+
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+app.add_middleware(SlowAPIMiddleware)
 
 # ── CORS Middleware ───────────────────────────────
 
@@ -49,6 +73,8 @@ app.include_router(activities_router)
 app.include_router(projects_router)
 app.include_router(tasks_router)
 app.include_router(stats_router)
+app.include_router(reports_router)
+app.include_router(alerts_router)
 
 
 # ── Root & Health ─────────────────────────────────

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 import { SportModule } from '../components/Personal/SportModule';
 import { BooksModule } from '../components/Personal/BooksModule';
 import { FilmsModule } from '../components/Personal/FilmsModule';
@@ -9,6 +10,7 @@ import './PersonalPage.css';
 export function PersonalPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentTab = searchParams.get('tab') || 'sport';
+  const { t } = useLanguage();
 
   const setTab = (tab) => {
     setSearchParams({ tab });
@@ -18,8 +20,8 @@ export function PersonalPage() {
     <div className="personal-page">
       {/* Header */}
       <div className="page-header-title">
-        <h1>📓 Área Personal</h1>
-        <p>Diario de actividad diaria, entrenamientos deportivos, libros leídos y entretenimiento.</p>
+        <h1>📓 {t('nav.personal')}</h1>
+        <p>{t('sport.subtitle')}</p>
       </div>
 
       {/* Tab Switcher */}
@@ -29,7 +31,7 @@ export function PersonalPage() {
           onClick={() => setTab('sport')}
         >
           <Activity size={17} />
-          <span>Deporte & Fitness</span>
+          <span>{t('nav.sport')}</span>
         </button>
 
         <button 
@@ -37,7 +39,7 @@ export function PersonalPage() {
           onClick={() => setTab('books')}
         >
           <BookOpen size={17} />
-          <span>Biblioteca & Libros</span>
+          <span>{t('nav.books')}</span>
         </button>
 
         <button 
@@ -45,7 +47,7 @@ export function PersonalPage() {
           onClick={() => setTab('films')}
         >
           <Film size={17} />
-          <span>Cine & Series</span>
+          <span>{t('nav.films')}</span>
         </button>
       </div>
 

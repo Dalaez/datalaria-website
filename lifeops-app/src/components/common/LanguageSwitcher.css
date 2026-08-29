@@ -1,0 +1,62 @@
+.language-switcher-pill {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 2px 4px;
+  gap: 2px;
+  transition: var(--transition-fast);
+}
+
+.language-switcher-pill:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.lang-option-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 14px;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.lang-option-btn:hover {
+  color: var(--text-primary);
+}
+
+.lang-option-btn.active {
+  background: var(--accent-emerald);
+  color: #0b0f17;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.lang-divider {
+  width: 1px;
+  height: 12px;
+  background: var(--border-color);
+}
+
+.flag-emoji {
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+.lang-code {
+  letter-spacing: 0.04em;
+}
+
+/* Compact mode */
+.language-switcher-pill.compact .lang-option-btn {
+  padding: 3px 6px;
+  font-size: 0.68rem;
+}

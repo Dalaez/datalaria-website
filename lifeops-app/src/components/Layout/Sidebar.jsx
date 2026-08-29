@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useLanguage } from '../../context/LanguageContext';
 import { 
   LayoutDashboard, 
   User, 
@@ -10,17 +11,20 @@ import {
   BookOpen, 
   Film, 
   CheckSquare, 
-  Sparkles 
+  Sparkles,
+  FileText 
 } from 'lucide-react';
 import './Sidebar.css';
 
 export function Sidebar() {
+  const { t } = useLanguage();
+
   const navItems = [
-    { to: '/', label: 'Dashboard', icon: LayoutDashboard, exact: true },
-    { to: '/personal', label: 'Área Personal', icon: User, badge: 'Diario' },
-    { to: '/professional', label: 'Área Profesional', icon: Briefcase, badge: 'Proyectos' },
-    { to: '/stats', label: 'Estadísticas', icon: BarChart3 },
-    { to: '/settings', label: 'Ajustes', icon: Settings },
+    { to: '/', label: t('nav.dashboard'), icon: LayoutDashboard, exact: true },
+    { to: '/personal', label: t('nav.personal'), icon: User },
+    { to: '/professional', label: t('nav.professional'), icon: Briefcase },
+    { to: '/reports', label: t('nav.reports'), icon: FileText, badge: '.docx/.xlsx' },
+    { to: '/settings', label: t('nav.settings'), icon: Settings },
   ];
 
   return (
@@ -38,7 +42,7 @@ export function Sidebar() {
 
       {/* Navigation Menu */}
       <nav className="sidebar-nav">
-        <div className="nav-section-label">PRINCIPAL</div>
+        <div className="nav-section-label">MAIN</div>
         {navItems.map((item) => {
           const Icon = item.icon;
           return (
@@ -55,23 +59,23 @@ export function Sidebar() {
           );
         })}
 
-        <div className="nav-section-label" style={{ marginTop: '1.75rem' }}>ACCESOS RÁPIDOS</div>
+        <div className="nav-section-label" style={{ marginTop: '1.75rem' }}>SHORTCUTS</div>
         <div className="quick-access-list">
           <NavLink to="/personal?tab=sport" className="quick-item">
             <Activity size={15} color="var(--accent-emerald)" />
-            <span>Deporte & Fitness</span>
+            <span>{t('nav.sport')}</span>
           </NavLink>
           <NavLink to="/personal?tab=books" className="quick-item">
             <BookOpen size={15} color="var(--accent-cyan)" />
-            <span>Lecturas</span>
+            <span>{t('nav.books')}</span>
           </NavLink>
           <NavLink to="/personal?tab=films" className="quick-item">
             <Film size={15} color="var(--accent-purple)" />
-            <span>Cine & Series</span>
+            <span>{t('nav.films')}</span>
           </NavLink>
           <NavLink to="/professional?tab=tasks" className="quick-item">
             <CheckSquare size={15} color="var(--accent-amber)" />
-            <span>Tareas Pendientes</span>
+            <span>{t('nav.kanban')}</span>
           </NavLink>
         </div>
       </nav>
