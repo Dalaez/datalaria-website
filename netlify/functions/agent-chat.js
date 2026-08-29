@@ -6,7 +6,7 @@
  */
 
 const ALGOLIA_APP_ID = process.env.ALGOLIA_APP_ID || 'C4NV3SCYAM';
-const ALGOLIA_SEARCH_KEY = process.env.ALGOLIA_SEARCH_API_KEY;
+const ALGOLIA_SEARCH_KEY = process.env.ALGOLIA_SEARCH_API_KEY || process.env.ALGOLIA_SEARCH_KEY || '0130e86396a12b79b35c8cf37b692258';
 const ALGOLIA_AGENT_ID = process.env.ALGOLIA_AGENT_ID || 'f27a0952-b61a-4526-9c37-68e9a2a441d0';
 
 exports.handler = async (event, context) => {
@@ -44,27 +44,35 @@ exports.handler = async (event, context) => {
 
         console.log(`[Agent Chat] Query: "${query}", Lang: ${language}`);
 
-        // Call Algolia Agent Studio Completions API (correct endpoint)
-        // Docs: https://www.algolia.com/doc/rest-api/agent-studio/completions/create-completion
+        // Call Algolia Agent Studio Completions API with 6s timeout
         const agentUrl = `https://agent-studio.eu.algolia.com/1/agents/${ALGOLIA_AGENT_ID}/completions?compatibilityMode=ai-sdk-4&stream=false`;
 
-        const response = await fetch(agentUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-Algolia-API-Key': ALGOLIA_SEARCH_KEY,
-                'X-Algolia-Application-Id': ALGOLIA_APP_ID
-            },
-            body: JSON.stringify({
-                messages: [
-                    {
-                        role: 'user',
-                        content: query
-                    }
-                ],
-                id: conversationId || undefined
-            })
-        });
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 6000);
+
+        let response;
+        try {
+            response = await fetch(agentUrl, {
+                method: 'POST',
+                signal: controller.signal,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Algolia-API-Key': ALGOLIA_SEARCH_KEY,
+                    'X-Algolia-Application-Id': ALGOLIA_APP_ID
+                },
+                body: JSON.stringify({
+                    messages: [
+                        {
+                            role: 'user',
+                            content: query
+                        }
+                    ],
+                    id: conversationId || undefined
+                })
+            });
+        } finally {
+            clearTimeout(timeoutId);
+        }
 
         const data = await response.json();
 
@@ -145,7 +153,11 @@ async function fallbackToSearch(query, headers) {
             query: query,
             hitsPerPage: 5,
             attributesToRetrieve: ['title', 'description', 'url', 'domain'],
-            attributesToSnippet: ['content:80']
+            attributesToSnippet: ['content:80'],
+            removeStopWords: ['es', 'en'],
+            removeWordsIfNoResults: 'allOptional',
+            ignorePlurals: true,
+            typoTolerance: true
         })
     });
 

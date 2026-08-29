@@ -29,6 +29,9 @@ from algoliasearch.search.client import SearchClientSync
 from dotenv import load_dotenv
 
 # Load environment variables
+env_file = Path(__file__).parent / ".env"
+if env_file.exists():
+    load_dotenv(dotenv_path=env_file)
 load_dotenv()
 
 # Configuration
@@ -267,6 +270,11 @@ class AlgoliaExporter:
             "customRanking": [
                 "desc(timestamp)"  # Newer posts first
             ],
+            # Natural query tolerance and stop words
+            "removeStopWords": ["es", "en"],
+            "removeWordsIfNoResults": "allOptional",
+            "ignorePlurals": True,
+            "queryType": "prefixLast",
             # Highlighting
             "highlightPreTag": "<mark>",
             "highlightPostTag": "</mark>",

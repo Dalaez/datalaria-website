@@ -491,7 +491,11 @@
                 console.log('🌐 Using Algolia SDK');
 
                 const searchData = await index.search(query, {
-                    hitsPerPage: 5
+                    hitsPerPage: 5,
+                    removeStopWords: ['es', 'en'],
+                    removeWordsIfNoResults: 'allOptional',
+                    ignorePlurals: true,
+                    typoTolerance: true
                 });
 
                 console.log('📊 Hits found:', searchData.hits?.length || 0);
