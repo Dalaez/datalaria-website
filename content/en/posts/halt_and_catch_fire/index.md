@@ -18,7 +18,7 @@ Broadcast by AMC across four masterful seasons, **"Halt and Catch Fire"** did th
 
 Just as we explored in [The Thinking Game](/en/posts/the_thinking_game/) with DeepMind's quest for artificial intelligence, or in [The Goal](/en/posts/the-goal/) with Eliyahu Goldratt's Theory of Constraints, *Halt and Catch Fire* is an essential masterclass for anyone working in data engineering, software development, or digital product management.
 
-{{< youtube p4vW7342Vj0 >}}
+{{< youtube 4NqNvBV8TCs >}}
 
 ### The Meaning of HCF: The Self-Destruct Mnemonic
 
@@ -32,6 +32,8 @@ The story begins in 1983 in the *Silicon Prairie* of Dallas-Fort Worth, Texas, c
 * **Gordon Clark** (Scoot McNairy): The brilliant but frustrated hardware engineer, a master of the soldering iron, bus timing, and motherboard optimization.
 * **Cameron Howe** (Mackenzie Davis): The rebellious prodigy programmer, an intuitive and anarchic coder who writes clean assembly and foresees the emotional connection between humans and computers.
 * **Donna Clark** (Kerry Bishé): The true technical and executive powerhouse, capable of translating raw engineering feats into sustainable, scalable business models.
+
+![Reverse engineering workbench from the PC clone era](workbench.jpg)
 
 ### The 4 Technological Revolutions of the Series
 
@@ -72,8 +74,6 @@ In the pilot episode, Joe MacMillan delivers the line that became the defining m
 
 > *“Computers aren't the thing. They're the thing that gets us to the thing.”*
 
-{{< youtube u-615l15yOQ >}}
-
 This insight is remarkably relevant in 2026. In the era of Large Language Models, agentic frameworks, and automated pipelines, it is easy to become mesmerized by compute benchmarks, GPU clusters, and neural parameters. But every tool — from the punched cards of [Ada Lovelace](/en/posts/ada_lovelace/) and the bits of [Claude Shannon](/en/posts/claude_shannon/) to [FastAPI](/en/posts/obs_parte6_fastapi/) and [pgvector](/en/posts/pgvector_vs_vectordb/) — matters only insofar as it amplifies human intelligence, empathy, and creative potential.
 
 ### Conclusion
@@ -84,8 +84,7 @@ If you work in software development, data science, infrastructure, or product ma
 
 #### Sources of Interest:
 * [**AMC**: Halt and Catch Fire — Official Series Portal](https://www.amc.com/shows/halt-and-catch-fire)
-* [**YouTube**: Halt and Catch Fire — Official AMC Trailer](https://www.youtube.com/watch?v=p4vW7342Vj0)
-* [**YouTube**: "Computers Aren't the Thing" — Joe MacMillan Key Scene](https://www.youtube.com/watch?v=u-615l15yOQ)
+* [**YouTube**: Halt and Catch Fire — Official Series Trailer](https://www.youtube.com/watch?v=jm81w3nC_bY)
 * [**Datalaria**: The Thinking Game — Demis Hassabis and DeepMind](/en/posts/the_thinking_game/)
 * [**Datalaria**: The Goal — Eliyahu Goldratt and the Theory of Constraints](/en/posts/the-goal/)
 * [**Datalaria**: Ada Lovelace — The First Computer Programmer in History](/en/posts/ada_lovelace/)

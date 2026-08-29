@@ -18,7 +18,7 @@ Emitida por AMC a lo largo de cuatro temporadas magistrales, **"Halt and Catch F
 
 Al igual que analizamos en [The Thinking Game](/es/posts/the_thinking_game/) con la odisea de DeepMind y Demis Hassabis, o en [The Goal](/es/posts/the-goal/) con la teoría de las restricciones industriales, *Halt and Catch Fire* es una clase magistral obligatoria para cualquier profesional de la ingeniería de datos, el software o el producto digital.
 
-{{< youtube p4vW7342Vj0 >}}
+{{< youtube 4NqNvBV8TCs >}}
 
 ### El Significado de HCF: El Código de Autodestrucción
 
@@ -32,6 +32,8 @@ La trama arranca en 1983 en el *Silicon Prairie* de Dallas-Fort Worth (Texas), d
 * **Gordon Clark** (Scoot McNairy): El brillante pero frustrado ingeniero de hardware, maestro del soldador, la arquitectura de buses y la optimización de circuitos.
 * **Cameron Howe** (Mackenzie Davis): La joven prodigio del software, rebelde, anárquica e intuitiva, capaz de escribir código assembly limpio y anticipar la dimensión emocional de la computación.
 * **Donna Clark** (Kerry Bishé): La verdadera estratega técnica y ejecutiva, capaz de traducir la ingeniería compleja en modelos de negocio escalables.
+
+![Mesa de trabajo de ingeniería inversa de la época de los PC clónicos](workbench.jpg)
 
 ### Las 4 Revoluciones Tecnológicas de la Serie
 
@@ -72,8 +74,6 @@ En el episodio piloto, Joe MacMillan pronuncia la frase que se convirtió en el 
 
 > *«Los ordenadores no son la cosa en sí. Son la cosa que nos lleva a la cosa».*
 
-{{< youtube u-615l15yOQ >}}
-
 Esta distinción es de una vigencia sobrecogedora en 2026. En plena era de los Modelos de Lenguaje, los frameworks de agentes y la automatización industrial, es fácil obsesionarse con el silicio, los benchmarks de GPU y los parámetros de los LLMs. Pero las herramientas —desde las tarjetas perforadas de [Ada Lovelace](/es/posts/ada_lovelace/) y los bits de [Claude Shannon](/es/posts/claude_shannon/) hasta [FastAPI](/es/posts/obs_parte6_fastapi/) y [pgvector](/es/posts/pgvector_vs_vectordb/)— solo tienen sentido en la medida en que amplifican la inteligencia, la conexión y la capacidad creativa de los seres humanos.
 
 ### Conclusión
@@ -84,8 +84,7 @@ Si trabajas en tecnología, desarrollo de software, ciencia de datos o gestión 
 
 #### Fuentes de Interés:
 * [**AMC**: Halt and Catch Fire — Portal Oficial de la Serie](https://www.amc.com/shows/halt-and-catch-fire)
-* [**YouTube**: Halt and Catch Fire — Trailer Oficial AMC](https://www.youtube.com/watch?v=p4vW7342Vj0)
-* [**YouTube**: "Computers Aren't the Thing" — Escena Clave Joe MacMillan](https://www.youtube.com/watch?v=u-615l15yOQ)
+* [**YouTube**: Halt and Catch Fire — Tráiler Oficial de la Serie](https://www.youtube.com/watch?v=jm81w3nC_bY)
 * [**Datalaria**: The Thinking Game — Demis Hassabis y DeepMind](/es/posts/the_thinking_game/)
 * [**Datalaria**: The Goal — Eliyahu Goldratt y la Teoría de las Restricciones](/es/posts/the-goal/)
 * [**Datalaria**: Ada Lovelace — La Primera Programadora de la Historia](/es/posts/ada_lovelace/)

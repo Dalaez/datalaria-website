@@ -192,7 +192,7 @@ export function SettingsPage() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', fontSize: '0.9rem' }}>
             <div>
               <span style={{ color: 'var(--text-muted)', display: 'block', fontSize: '0.78rem' }}>BACKEND FASTAPI</span>
-              <code>http://localhost:8000</code>
+              <code>https://lifeops-api.onrender.com</code>
             </div>
 
             <div>
