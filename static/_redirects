@@ -1,13 +1,8 @@
 # ==============================================================================
-# DATALARIA APPS PROXY REWRITE RULES (Transparent delivery under https://datalaria.com/apps/...)
+# DATALARIA APPS PROXY REWRITE RULES
 # ==============================================================================
 
-# --- LifeOps App (Personal & Professional OS) ---
-/apps/lifeops        https://datalaria-app-lifeops.netlify.app/index.html   200!
-/apps/lifeops/       https://datalaria-app-lifeops.netlify.app/index.html   200!
-/apps/lifeops/*      https://datalaria-app-lifeops.netlify.app/:splat       200!
-
-# --- Weather App ---
+# --- Weather App (Deployed on external Netlify site) ---
 /apps/weather        https://datalaria-app-weather.netlify.app/index.html   200!
 /apps/weather/       https://datalaria-app-weather.netlify.app/index.html   200!
 /apps/weather/*      https://datalaria-app-weather.netlify.app/:splat       200!
