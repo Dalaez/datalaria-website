@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: lifeops-api
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    rootDir: lifeops-api
+    plan: free
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: SUPABASE_SCHEMA
+        value: lifeops
+      - key: CORS_ORIGINS
+        value: "https://datalaria.com,https://www.datalaria.com,http://localhost:5173,http://localhost:1313"

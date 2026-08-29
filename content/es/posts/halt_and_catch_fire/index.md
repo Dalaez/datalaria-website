@@ -1,6 +1,6 @@
 ---
 title: "Halt and Catch Fire: La Serie de Culto que Entendió la Ingeniería de Software Mejor que Silicon Valley"
-date: 2026-08-30
+date: 2026-08-29
 draft: false
 categories: ["Ingeniería", "Series", "Historia Tech"]
 tags: ["halt and catch fire", "historia del software", "ingenieria inversa", "clean room", "bios", "startups", "hardware", "internet"]
