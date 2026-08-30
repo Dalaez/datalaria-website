@@ -1,18 +1,17 @@
 """
-LifeOps API — Project & Task Models (Pydantic)
-================================================
-Data validation schemas for the professional area:
-projects and tasks.
+Pydantic models for Projects and Tasks (Phase 3).
 """
+
 import datetime as dt
+import enum
+import uuid
 from typing import Optional
 from pydantic import BaseModel, Field
-from enum import Enum
 
 
 # ── Enums ──────────────────────────────────────────
 
-class ProjectStatus(str, Enum):
+class ProjectStatus(str, enum.Enum):
     PLANNING = "planning"
     ACTIVE = "active"
     ON_HOLD = "on_hold"
@@ -20,7 +19,14 @@ class ProjectStatus(str, Enum):
     CANCELLED = "cancelled"
 
 
-class TaskStatus(str, Enum):
+class Priority(str, enum.Enum):
+    LOW = "low"
+    MEDIUM = "medium"
+    HIGH = "high"
+    CRITICAL = "critical"
+
+
+class TaskStatus(str, enum.Enum):
     BACKLOG = "backlog"
     TODO = "todo"
     IN_PROGRESS = "in_progress"
@@ -29,11 +35,18 @@ class TaskStatus(str, Enum):
     CANCELLED = "cancelled"
 
 
-class Priority(str, Enum):
-    LOW = "low"
-    MEDIUM = "medium"
-    HIGH = "high"
-    CRITICAL = "critical"
+# ── Task Comment ───────────────────────────────────
+
+class TaskComment(BaseModel):
+    """Schema for a single task progress comment with timestamp."""
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    text: str = Field(..., min_length=1)
+    created_at: dt.datetime = Field(default_factory=lambda: dt.datetime.now(dt.timezone.utc))
+
+
+class TaskCommentCreate(BaseModel):
+    """Schema for adding a new comment to a task."""
+    text: str = Field(..., min_length=1)
 
 
 # ── Project ────────────────────────────────────────
@@ -97,6 +110,7 @@ class TaskCreate(BaseModel):
     due_date: Optional[dt.date] = None
     estimated_hours: Optional[float] = Field(None, ge=0)
     tags: list[str] = Field(default_factory=list)
+    comments: list[TaskComment] = Field(default_factory=list)
 
 
 class TaskUpdate(BaseModel):
@@ -111,6 +125,7 @@ class TaskUpdate(BaseModel):
     estimated_hours: Optional[float] = Field(None, ge=0)
     actual_hours: Optional[float] = Field(None, ge=0)
     tags: Optional[list[str]] = None
+    comments: Optional[list[TaskComment]] = None
 
 
 class TaskResponse(BaseModel):
@@ -127,5 +142,6 @@ class TaskResponse(BaseModel):
     estimated_hours: Optional[float] = None
     actual_hours: Optional[float] = None
     tags: list[str] = Field(default_factory=list)
+    comments: list[TaskComment] = Field(default_factory=list)
     created_at: dt.datetime
     updated_at: dt.datetime

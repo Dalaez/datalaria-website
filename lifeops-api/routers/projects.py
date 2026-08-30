@@ -4,6 +4,8 @@ LifeOps API — Projects & Tasks Router
 CRUD endpoints for the professional area: projects and tasks.
 All endpoints require authentication.
 """
+import datetime as dt
+import uuid
 from typing import Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
@@ -12,6 +14,7 @@ from middleware.auth import AuthenticatedUser, get_current_user
 from models.project import (
     ProjectCreate, ProjectUpdate, ProjectResponse,
     TaskCreate, TaskUpdate, TaskResponse,
+    TaskComment, TaskCommentCreate,
     ProjectStatus, TaskStatus, Priority,
 )
 from services.supabase_client import db
@@ -295,3 +298,96 @@ def delete_task(
     )
     if not result.data:
         raise HTTPException(status_code=404, detail="Task not found")
+
+
+# ── Task Comments Endpoints ───────────────────────
+
+@tasks_router.post(
+    "/{task_id}/comments",
+    response_model=TaskResponse,
+    status_code=status.HTTP_201_CREATED,
+    summary="Add a progress comment to a task",
+    description="Appends a timestamped progress comment to the task's comments list.",
+)
+def add_task_comment(
+    task_id: str,
+    payload: TaskCommentCreate,
+    user: AuthenticatedUser = Depends(get_current_user),
+):
+    # 1. Fetch current task
+    task_res = (
+        db("tasks")
+        .select("*")
+        .eq("id", task_id)
+        .eq("user_id", user.id)
+        .execute()
+    )
+    if not task_res.data:
+        raise HTTPException(status_code=404, detail="Task not found")
+
+    current_task = task_res.data[0]
+    existing_comments = current_task.get("comments") or []
+    if not isinstance(existing_comments, list):
+        existing_comments = []
+
+    # 2. Create new comment object
+    new_comment = {
+        "id": str(uuid.uuid4()),
+        "text": payload.text.strip(),
+        "created_at": dt.datetime.now(dt.timezone.utc).isoformat(),
+    }
+    existing_comments.append(new_comment)
+
+    # 3. Update task comments in database
+    update_res = (
+        db("tasks")
+        .update({"comments": existing_comments})
+        .eq("id", task_id)
+        .eq("user_id", user.id)
+        .execute()
+    )
+    if not update_res.data:
+        raise HTTPException(status_code=500, detail="Failed to add comment")
+
+    return update_res.data[0]
+
+
+@tasks_router.delete(
+    "/{task_id}/comments/{comment_id}",
+    response_model=TaskResponse,
+    summary="Delete a progress comment from a task",
+)
+def delete_task_comment(
+    task_id: str,
+    comment_id: str,
+    user: AuthenticatedUser = Depends(get_current_user),
+):
+    task_res = (
+        db("tasks")
+        .select("*")
+        .eq("id", task_id)
+        .eq("user_id", user.id)
+        .execute()
+    )
+    if not task_res.data:
+        raise HTTPException(status_code=404, detail="Task not found")
+
+    current_task = task_res.data[0]
+    existing_comments = current_task.get("comments") or []
+    if not isinstance(existing_comments, list):
+        existing_comments = []
+
+    filtered_comments = [c for c in existing_comments if c.get("id") != comment_id]
+
+    update_res = (
+        db("tasks")
+        .update({"comments": filtered_comments})
+        .eq("id", task_id)
+        .eq("user_id", user.id)
+        .execute()
+    )
+    if not update_res.data:
+        raise HTTPException(status_code=500, detail="Failed to delete comment")
+
+    return update_res.data[0]
+

@@ -233,6 +233,15 @@ export const es = {
       startDate: 'Fecha Inicio',
       targetEndDate: 'Fecha Objetivo',
     },
+    comments: {
+      title: 'Bitácora de Avances & Comentarios',
+      desc: 'Registra los hitos y avances de la tarea con marca temporal automática.',
+      placeholder: 'Escribe un nuevo avance o comentario (ej: llamada realizada, presupuesto aprobado, pruebas superadas)...',
+      addBtn: 'Añadir Avance',
+      noComments: 'No hay avances registrados aún para esta tarea.',
+      count: 'avances',
+      countSingular: 'avance',
+    },
   },
   reports: {
     title: 'Informes & Exportación de Datos',

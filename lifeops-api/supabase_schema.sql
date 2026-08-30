@@ -160,6 +160,7 @@ CREATE TABLE lifeops.tasks (
     estimated_hours NUMERIC(6, 2),
     actual_hours NUMERIC(6, 2),
     tags TEXT[] DEFAULT '{}',
+    comments JSONB DEFAULT '[]'::jsonb,
     created_at TIMESTAMPTZ DEFAULT now(),
     updated_at TIMESTAMPTZ DEFAULT now()
 );

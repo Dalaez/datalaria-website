@@ -81,6 +81,9 @@ export const api = {
   createTask: (data) => apiFetch('/api/v1/tasks/', { method: 'POST', body: JSON.stringify(data) }),
   updateTask: (id, data) => apiFetch(`/api/v1/tasks/${id}`, { method: 'PATCH', body: JSON.stringify(data) }),
   deleteTask: (id) => apiFetch(`/api/v1/tasks/${id}`, { method: 'DELETE' }),
+  addTaskComment: (taskId, text) => apiFetch(`/api/v1/tasks/${taskId}/comments`, { method: 'POST', body: JSON.stringify({ text }) }),
+  deleteTaskComment: (taskId, commentId) => apiFetch(`/api/v1/tasks/${taskId}/comments/${commentId}`, { method: 'DELETE' }),
+
 
   // Reports (Word .docx)
   getReportTemplates: () => apiFetch('/api/v1/reports/templates'),

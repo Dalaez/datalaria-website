@@ -233,6 +233,15 @@ export const en = {
       startDate: 'Start Date',
       targetEndDate: 'Target End Date',
     },
+    comments: {
+      title: 'Progress Log & Comments',
+      desc: 'Track progress updates and milestones with automatic timestamps.',
+      placeholder: 'Write a new progress note or comment (e.g., meeting done, budget approved, tests passed)...',
+      addBtn: 'Add Progress',
+      noComments: 'No progress comments recorded yet for this task.',
+      count: 'updates',
+      countSingular: 'update',
+    },
   },
   reports: {
     title: 'Reports & Data Export',

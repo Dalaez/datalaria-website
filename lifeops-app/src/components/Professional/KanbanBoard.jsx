@@ -11,7 +11,10 @@ import {
   Clock, 
   Calendar, 
   Folder,
-  Layers
+  Layers,
+  MessageSquare,
+  Send,
+  History
 } from 'lucide-react';
 import './KanbanBoard.css';
 
@@ -24,6 +27,10 @@ export function KanbanBoard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingTask, setEditingTask] = useState(null);
   const [submitting, setSubmitting] = useState(false);
+
+  // Task Comments State
+  const [newCommentText, setNewCommentText] = useState('');
+  const [addingComment, setAddingComment] = useState(false);
 
   const columns = [
     { id: 'todo', title: t('professional.columns.todo'), color: '#6b7280', icon: '📝' },
@@ -66,12 +73,14 @@ export function KanbanBoard() {
 
   const handleOpenCreate = () => {
     setEditingTask(null);
+    setNewCommentText('');
     setFormData(defaultFormData);
     setIsModalOpen(true);
   };
 
   const handleOpenEdit = (task) => {
     setEditingTask(task);
+    setNewCommentText('');
     setFormData({
       title: task.title || '',
       description: task.description || '',
@@ -99,19 +108,48 @@ export function KanbanBoard() {
       };
 
       if (editingTask) {
-        await api.updateTask(editingTask.id, payload);
+        const updated = await api.updateTask(editingTask.id, payload);
+        setTasks((prev) => prev.map((t) => (t.id === updated.id ? updated : t)));
       } else {
-        await api.createTask(payload);
+        const created = await api.createTask(payload);
+        setTasks((prev) => [created, ...prev]);
       }
 
       setIsModalOpen(false);
       setFormData(defaultFormData);
       setEditingTask(null);
-      fetchData();
     } catch (err) {
       alert(`${t('common.error')}: ${err.message}`);
     } finally {
       setSubmitting(false);
+    }
+  };
+
+  const handleAddComment = async (e) => {
+    e.preventDefault();
+    if (!newCommentText.trim() || !editingTask) return;
+
+    try {
+      setAddingComment(true);
+      const updatedTask = await api.addTaskComment(editingTask.id, newCommentText.trim());
+      setEditingTask(updatedTask);
+      setTasks((prev) => prev.map((t) => (t.id === updatedTask.id ? updatedTask : t)));
+      setNewCommentText('');
+    } catch (err) {
+      alert(`${t('common.error')}: ${err.message}`);
+    } finally {
+      setAddingComment(false);
+    }
+  };
+
+  const handleDeleteComment = async (commentId) => {
+    if (!editingTask) return;
+    try {
+      const updatedTask = await api.deleteTaskComment(editingTask.id, commentId);
+      setEditingTask(updatedTask);
+      setTasks((prev) => prev.map((t) => (t.id === updatedTask.id ? updatedTask : t)));
+    } catch (err) {
+      alert(`${t('common.error')}: ${err.message}`);
     }
   };
 
@@ -161,36 +199,53 @@ export function KanbanBoard() {
     }
   };
 
+  const formatTimestamp = (dateStr) => {
+    if (!dateStr) return '';
+    try {
+      const d = new Date(dateStr);
+      return d.toLocaleDateString(language === 'es' ? 'es-ES' : 'en-US', {
+        day: '2-digit',
+        month: 'short',
+        hour: '2-digit',
+        minute: '2-digit',
+      });
+    } catch {
+      return dateStr;
+    }
+  };
+
+  const getProjectName = (projectId) => {
+    if (!projectId) return null;
+    const p = projects.find((proj) => proj.id === projectId);
+    return p ? p.name : null;
+  };
+
   const isOverdue = (dueDate, status) => {
     if (!dueDate || status === 'done') return false;
     const today = new Date().toISOString().split('T')[0];
     return dueDate < today;
   };
 
-  const getProjectName = (projectId) => {
-    if (!projectId) return null;
-    const p = projects.find((item) => item.id === projectId);
-    return p ? p.name : null;
-  };
-
   return (
-    <div className="kanban-module">
-      {/* Top Filter & Actions Bar */}
+    <div className="kanban-module animate-fade-in">
+      {/* Top Filter and Actions */}
       <div className="kanban-topbar">
-        <div className="kanban-filters">
-          <div className="project-filter-wrapper">
-            <Folder size={16} className="filter-icon" />
-            <select
-              value={selectedProjectId}
-              onChange={(e) => setSelectedProjectId(e.target.value)}
-              className="project-select"
-            >
-              <option value="">{language === 'es' ? 'Todos los Proyectos' : 'All Projects'}</option>
-              {projects.map((p) => (
-                <option key={p.id} value={p.id}>{p.name}</option>
-              ))}
-            </select>
-          </div>
+        <div className="project-filter-wrapper">
+          <Folder size={18} className="filter-icon" />
+          <select
+            value={selectedProjectId}
+            onChange={(e) => setSelectedProjectId(e.target.value)}
+            className="project-select"
+          >
+            <option value="">
+              {language === 'es' ? '📁 Todos los Proyectos' : '📁 All Projects'}
+            </option>
+            {projects.map((p) => (
+              <option key={p.id} value={p.id}>
+                {p.name}
+              </option>
+            ))}
+          </select>
         </div>
 
         <button className="btn-primary" onClick={handleOpenCreate}>
@@ -199,14 +254,13 @@ export function KanbanBoard() {
         </button>
       </div>
 
-      {/* Kanban Board Columns */}
+      {/* 4-column Board */}
       <div className="kanban-board">
         {columns.map((col) => {
           const colTasks = tasks.filter((t) => t.status === col.id);
 
           return (
             <div key={col.id} className="kanban-column glass-panel">
-              {/* Column Header */}
               <div className="column-header">
                 <div className="column-title-group">
                   <span className="col-icon">{col.icon}</span>
@@ -215,16 +269,17 @@ export function KanbanBoard() {
                 <span className="col-count-badge">{colTasks.length}</span>
               </div>
 
-              {/* Tasks List */}
-              <div className="kanban-cards-container">
+              <div className="column-cards-container">
                 {colTasks.length === 0 ? (
                   <div className="empty-column-placeholder">
-                    {language === 'es' ? 'Sin tareas en esta etapa' : 'No tasks in this stage'}
+                    <span>{language === 'es' ? 'Sin tareas' : 'No tasks'}</span>
                   </div>
                 ) : (
                   colTasks.map((task) => {
                     const overdue = isOverdue(task.due_date, task.status);
                     const projName = getProjectName(task.project_id);
+                    const commentsCount = task.comments ? task.comments.length : 0;
+                    const latestComment = commentsCount > 0 ? task.comments[commentsCount - 1] : null;
 
                     return (
                       <div 
@@ -275,6 +330,15 @@ export function KanbanBoard() {
                             <div className="meta-chip">
                               <Clock size={12} />
                               <span>{task.estimated_hours}h</span>
+                            </div>
+                          )}
+                          {commentsCount > 0 && (
+                            <div 
+                              className="meta-chip comments-chip" 
+                              title={latestComment ? `${latestComment.text} (${formatTimestamp(latestComment.created_at)})` : ''}
+                            >
+                              <MessageSquare size={11} />
+                              <span>{commentsCount} {commentsCount === 1 ? t('professional.comments.countSingular') : t('professional.comments.count')}</span>
                             </div>
                           )}
                         </div>
@@ -388,7 +452,77 @@ export function KanbanBoard() {
             />
           </div>
 
-          <div className="form-actions">
+          {/* ══════════════════════════════════════════════════════════
+              SECCIÓN: BITÁCORA DE AVANCES & COMENTARIOS (Si está editando)
+             ══════════════════════════════════════════════════════════ */}
+          {editingTask && (
+            <div className="task-comments-section">
+              <div className="comments-header-row">
+                <History size={16} color="var(--accent-cyan)" />
+                <h4>{t('professional.comments.title')}</h4>
+                <span className="comments-count-badge">
+                  {editingTask.comments ? editingTask.comments.length : 0}
+                </span>
+              </div>
+              <p className="comments-desc">{t('professional.comments.desc')}</p>
+
+              {/* Formulario Añadir Avance */}
+              <div className="add-comment-box">
+                <textarea
+                  className="comment-input"
+                  rows={2}
+                  placeholder={t('professional.comments.placeholder')}
+                  value={newCommentText}
+                  onChange={(e) => setNewCommentText(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+                      handleAddComment(e);
+                    }
+                  }}
+                />
+                <button
+                  type="button"
+                  className="btn-add-comment"
+                  disabled={addingComment || !newCommentText.trim()}
+                  onClick={handleAddComment}
+                >
+                  <Send size={13} />
+                  <span>{addingComment ? t('common.loading') : t('professional.comments.addBtn')}</span>
+                </button>
+              </div>
+
+              {/* Lista Cronológica de Comentarios */}
+              <div className="comments-timeline">
+                {!editingTask.comments || editingTask.comments.length === 0 ? (
+                  <p className="no-comments-text">{t('professional.comments.noComments')}</p>
+                ) : (
+                  [...editingTask.comments]
+                    .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+                    .map((comm) => (
+                      <div key={comm.id} className="comment-card">
+                        <div className="comment-card-top">
+                          <div className="comment-time-group">
+                            <Clock size={11} color="var(--accent-cyan)" />
+                            <span>{formatTimestamp(comm.created_at)}</span>
+                          </div>
+                          <button
+                            type="button"
+                            className="btn-delete-comment"
+                            onClick={() => handleDeleteComment(comm.id)}
+                            title={t('common.delete')}
+                          >
+                            <Trash2 size={12} />
+                          </button>
+                        </div>
+                        <p className="comment-text">{comm.text}</p>
+                      </div>
+                    ))
+                )}
+              </div>
+            </div>
+          )}
+
+          <div className="form-actions" style={{ marginTop: '1.25rem' }}>
             <button 
               type="button" 
               className="btn-secondary" 
