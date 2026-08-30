@@ -1,6 +1,6 @@
 ---
 title: "Proyecto LifeOps (Parte 1): Arquitectura de un Sistema Operativo Personal y Backend con FastAPI + Supabase"
-date: 2026-08-30
+date: 2026-09-06
 draft: false
 categories: ["Proyectos", "Desarrollo Web"]
 tags: ["python", "fastapi", "supabase", "react", "postgresql", "backend", "productividad", "datos", "cloud", "serverless"]
