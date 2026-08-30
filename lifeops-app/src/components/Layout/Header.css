@@ -13,9 +13,44 @@
   z-index: 9;
 }
 
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mobile-menu-btn {
+  display: none !important;
+}
+
+.desktop-menu-btn {
+  display: flex !important;
+}
+
+.header-sidebar-toggle-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  border-radius: 8px;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.header-sidebar-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--accent-emerald);
+  border-color: var(--accent-emerald);
+}
+
 .header-search {
   position: relative;
-  width: 340px;
+  width: 320px;
 }
 
 .header-search input {
@@ -45,7 +80,7 @@
 .header-right {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .status-pill {
@@ -58,42 +93,46 @@
   border: 1px solid rgba(16, 185, 129, 0.25);
   padding: 0.3rem 0.75rem;
   border-radius: 20px;
+  white-space: nowrap;
 }
 
 .header-icon-btn {
   background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
   color: var(--text-secondary);
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
   transition: var(--transition-fast);
+  position: relative;
+  cursor: pointer;
 }
 
 .header-icon-btn:hover {
-  color: var(--text-primary);
   background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
 }
 
 .notif-dot {
   position: absolute;
-  top: 4px;
-  right: 4px;
-  min-width: 16px;
-  height: 16px;
-  background-color: var(--accent-rose);
-  color: #ffffff;
+  top: -4px;
+  right: -4px;
+  background: var(--accent-rose);
+  color: #fff;
   font-size: 0.65rem;
   font-weight: 700;
-  border-radius: 10px;
+  min-width: 17px;
+  height: 17px;
+  border-radius: 9px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 3px;
-  box-shadow: 0 0 8px rgba(244, 63, 94, 0.5);
+  border: 2px solid var(--bg-main);
+  box-shadow: 0 0 8px var(--accent-rose);
 }
 
 .header-divider {
@@ -105,20 +144,25 @@
 .user-profile-widget {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.65rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  padding: 0.35rem 0.65rem 0.35rem 0.35rem;
+  border-radius: 30px;
 }
 
 .user-avatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
   background: var(--grad-primary);
   color: #000;
-  font-weight: 700;
-  font-size: 0.95rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  flex-shrink: 0;
 }
 
 .user-info {
@@ -127,32 +171,73 @@
 }
 
 .user-email {
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   font-weight: 600;
   color: var(--text-primary);
-  max-width: 180px;
+  max-width: 140px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .user-role {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   color: var(--text-muted);
 }
 
 .logout-btn {
-  background: transparent;
+  background: none;
+  border: none;
   color: var(--text-muted);
-  padding: 0.4rem;
-  border-radius: 8px;
-  transition: var(--transition-fast);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: var(--transition-fast);
 }
 
 .logout-btn:hover {
   color: var(--accent-rose);
   background: rgba(244, 63, 94, 0.1);
+}
+
+/* ============================================================
+   MOBILE HEADER RESPONSIVENESS (<= 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+  .app-header {
+    height: 60px;
+    padding: 0 1rem;
+  }
+
+  .mobile-menu-btn {
+    display: flex !important;
+  }
+
+  .desktop-menu-btn {
+    display: none !important;
+  }
+
+  .desktop-only-pill,
+  .desktop-divider,
+  .desktop-user-info {
+    display: none !important;
+  }
+
+  .header-search {
+    display: none; /* Hide header search on small phones to maximize top bar clarity */
+  }
+
+  .header-right {
+    gap: 0.6rem;
+  }
+
+  .user-profile-widget {
+    padding: 2px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+  }
 }

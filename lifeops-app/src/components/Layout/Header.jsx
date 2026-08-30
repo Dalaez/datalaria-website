@@ -4,12 +4,12 @@ import { useLanguage } from '../../context/LanguageContext';
 import { api } from '../../lib/api';
 import { NotificationDrawer } from '../Notifications/NotificationDrawer';
 import { LanguageSwitcher } from '../common/LanguageSwitcher';
-import { LogOut, User, Bell, Search, ShieldCheck } from 'lucide-react';
+import { LogOut, Bell, Search, ShieldCheck, PanelLeftClose, PanelLeftOpen, Menu } from 'lucide-react';
 import './Header.css';
 
-export function Header() {
+export function Header({ collapsed, toggleSidebar, mobileDrawerOpen }) {
   const { user, signOut } = useAuth();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [alerts, setAlerts] = useState([]);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
@@ -50,8 +50,30 @@ export function Header() {
 
   return (
     <header className="app-header">
-      {/* Search Bar / Status */}
+      {/* Search Bar / Sidebar Toggle */}
       <div className="header-left">
+        {/* Mobile Menu Hamburger Button */}
+        <button
+          type="button"
+          className="header-sidebar-toggle-btn mobile-menu-btn"
+          onClick={toggleSidebar}
+          title="Menú de Navegación"
+        >
+          <Menu size={20} />
+        </button>
+
+        {/* Desktop Collapse Button */}
+        <button 
+          type="button"
+          className="header-sidebar-toggle-btn desktop-menu-btn"
+          onClick={toggleSidebar}
+          title={collapsed 
+            ? (language === 'es' ? 'Expandir menú lateral' : 'Expand sidebar') 
+            : (language === 'es' ? 'Contraer menú lateral' : 'Collapse sidebar')}
+        >
+          {collapsed ? <PanelLeftOpen size={18} /> : <PanelLeftClose size={18} />}
+        </button>
+
         <div className="header-search">
           <Search size={16} className="search-icon" />
           <input type="text" placeholder={t('header.search')} />
@@ -61,10 +83,10 @@ export function Header() {
       {/* User & Actions */}
       <div className="header-right" style={{ position: 'relative' }}>
         {/* Multilingual Switcher */}
-        <LanguageSwitcher />
+        <LanguageSwitcher compact={true} />
 
-        {/* Connection Status Pill */}
-        <div className="status-pill">
+        {/* Connection Status Pill (Desktop only) */}
+        <div className="status-pill desktop-only-pill">
           <ShieldCheck size={14} color="var(--accent-emerald)" />
           <span>Supabase Auth</span>
         </div>
@@ -85,23 +107,22 @@ export function Header() {
           </button>
 
           <NotificationDrawer 
-            isOpen={isDrawerOpen}
+            isOpen={isDrawerOpen} 
             onClose={() => setIsDrawerOpen(false)}
             alerts={alerts}
             onDismiss={handleDismiss}
           />
         </div>
 
-        <div className="header-divider"></div>
+        <div className="header-divider desktop-divider"></div>
 
-        {/* User Profile Menu */}
+        {/* User Badge */}
         <div className="user-profile-widget">
-          <div className="user-avatar">{userInitial}</div>
-          <div className="user-info">
+          <div className="user-avatar" title={userEmail}>{userInitial}</div>
+          <div className="user-info desktop-user-info">
             <span className="user-email">{userEmail}</span>
             <span className="user-role">LifeOps</span>
           </div>
-
           <button onClick={handleLogout} className="logout-btn" title={t('nav.logout')}>
             <LogOut size={16} />
           </button>

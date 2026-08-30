@@ -5,19 +5,21 @@ import {
   LayoutDashboard, 
   User, 
   Briefcase, 
-  BarChart3, 
   Settings, 
   Activity, 
   BookOpen, 
   Film, 
   CheckSquare, 
   Sparkles,
-  FileText 
+  FileText,
+  ChevronLeft,
+  ChevronRight,
+  X
 } from 'lucide-react';
 import './Sidebar.css';
 
-export function Sidebar() {
-  const { t } = useLanguage();
+export function Sidebar({ collapsed, toggleSidebar, mobileOpen, closeMobile }) {
+  const { t, language } = useLanguage();
 
   const navItems = [
     { to: '/', label: t('nav.dashboard'), icon: LayoutDashboard, exact: true },
@@ -27,22 +29,64 @@ export function Sidebar() {
     { to: '/settings', label: t('nav.settings'), icon: Settings },
   ];
 
+  const shortcuts = [
+    { to: '/personal?tab=sport', label: t('nav.sport'), icon: Activity, color: 'var(--accent-emerald)' },
+    { to: '/personal?tab=books', label: t('nav.books'), icon: BookOpen, color: 'var(--accent-cyan)' },
+    { to: '/personal?tab=films', label: t('nav.films'), icon: Film, color: 'var(--accent-purple)' },
+    { to: '/professional?tab=tasks', label: t('nav.kanban'), icon: CheckSquare, color: 'var(--accent-amber)' },
+  ];
+
+  const handleNavClick = () => {
+    if (closeMobile && window.innerWidth <= 768) {
+      closeMobile();
+    }
+  };
+
   return (
-    <aside className="sidebar">
-      {/* Brand Header */}
+    <aside className={`sidebar ${collapsed ? 'collapsed' : ''} ${mobileOpen ? 'mobile-open' : ''}`}>
+      {/* Brand Header & Toggle */}
       <div className="sidebar-brand">
-        <div className="brand-logo-icon">
+        <div className="brand-logo-icon" title="LifeOps">
           <Sparkles className="icon-sparkle" size={20} />
         </div>
-        <div className="brand-text">
-          <span className="brand-title">LifeOps</span>
-          <span className="brand-subtitle">Datalaria Studio</span>
-        </div>
+        {!collapsed && (
+          <div className="brand-text">
+            <span className="brand-title">LifeOps</span>
+            <span className="brand-subtitle">Datalaria Studio</span>
+          </div>
+        )}
+
+        {/* Desktop Toggle Button */}
+        <button 
+          type="button" 
+          className="sidebar-toggle-btn desktop-only"
+          onClick={toggleSidebar}
+          title={collapsed 
+            ? (language === 'es' ? 'Expandir menú lateral' : 'Expand sidebar') 
+            : (language === 'es' ? 'Contraer menú lateral' : 'Collapse sidebar')}
+        >
+          {collapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
+        </button>
+
+        {/* Mobile Close Button */}
+        <button
+          type="button"
+          className="sidebar-close-btn mobile-only"
+          onClick={closeMobile}
+          title="Cerrar menú"
+        >
+          <X size={18} />
+        </button>
       </div>
 
       {/* Navigation Menu */}
       <nav className="sidebar-nav">
-        <div className="nav-section-label">MAIN</div>
+        {!collapsed ? (
+          <div className="nav-section-label">MAIN</div>
+        ) : (
+          <div className="nav-section-divider" />
+        )}
+
         {navItems.map((item) => {
           const Icon = item.icon;
           return (
@@ -50,41 +94,47 @@ export function Sidebar() {
               key={item.to}
               to={item.to}
               end={item.exact}
+              onClick={handleNavClick}
               className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+              title={collapsed ? item.label : undefined}
             >
               <Icon size={18} className="nav-icon" />
-              <span className="nav-label">{item.label}</span>
-              {item.badge && <span className="nav-badge">{item.badge}</span>}
+              {!collapsed && <span className="nav-label">{item.label}</span>}
+              {!collapsed && item.badge && <span className="nav-badge">{item.badge}</span>}
             </NavLink>
           );
         })}
 
-        <div className="nav-section-label" style={{ marginTop: '1.75rem' }}>SHORTCUTS</div>
+        {!collapsed ? (
+          <div className="nav-section-label" style={{ marginTop: '1.75rem' }}>SHORTCUTS</div>
+        ) : (
+          <div className="nav-section-divider" style={{ margin: '1rem 0' }} />
+        )}
+
         <div className="quick-access-list">
-          <NavLink to="/personal?tab=sport" className="quick-item">
-            <Activity size={15} color="var(--accent-emerald)" />
-            <span>{t('nav.sport')}</span>
-          </NavLink>
-          <NavLink to="/personal?tab=books" className="quick-item">
-            <BookOpen size={15} color="var(--accent-cyan)" />
-            <span>{t('nav.books')}</span>
-          </NavLink>
-          <NavLink to="/personal?tab=films" className="quick-item">
-            <Film size={15} color="var(--accent-purple)" />
-            <span>{t('nav.films')}</span>
-          </NavLink>
-          <NavLink to="/professional?tab=tasks" className="quick-item">
-            <CheckSquare size={15} color="var(--accent-amber)" />
-            <span>{t('nav.kanban')}</span>
-          </NavLink>
+          {shortcuts.map((sc) => {
+            const Icon = sc.icon;
+            return (
+              <NavLink 
+                key={sc.to} 
+                to={sc.to} 
+                onClick={handleNavClick}
+                className="quick-item"
+                title={collapsed ? sc.label : undefined}
+              >
+                <Icon size={15} color={sc.color} />
+                {!collapsed && <span>{sc.label}</span>}
+              </NavLink>
+            );
+          })}
         </div>
       </nav>
 
       {/* Footer Version Badge */}
       <div className="sidebar-footer">
-        <div className="version-pill">
+        <div className="version-pill" title="LifeOps v0.1.0">
           <span className="dot-active"></span>
-          <span>v0.1.0 (FastAPI + React)</span>
+          {!collapsed && <span>v0.1.0 (FastAPI + React)</span>}
         </div>
       </div>
     </aside>
