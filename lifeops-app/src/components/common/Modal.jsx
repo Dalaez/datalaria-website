@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { X } from 'lucide-react';
 import './Modal.css';
 
@@ -44,8 +45,8 @@ export function Modal({ isOpen, onClose, title, children, maxWidth = '550px' }) 
     if (!isDragging) return;
     setIsDragging(false);
     
-    // If dragged down more than 90px, close modal
-    if (dragOffset > 90) {
+    // If dragged down more than 80px, close modal
+    if (dragOffset > 80) {
       onClose();
     }
     setDragOffset(0);
@@ -53,7 +54,9 @@ export function Modal({ isOpen, onClose, title, children, maxWidth = '550px' }) 
 
   if (!isOpen) return null;
 
-  return (
+  // Use createPortal to render directly into document.body
+  // This bypasses any ancestor transform / animation / overflow constraints!
+  return createPortal(
     <div className="modal-backdrop" onClick={onClose}>
       <div 
         className={`modal-content glass-panel ${isDragging ? 'is-dragging' : ''}`} 
@@ -93,6 +96,7 @@ export function Modal({ isOpen, onClose, title, children, maxWidth = '550px' }) 
           {children}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
