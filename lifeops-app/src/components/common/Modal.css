@@ -1,18 +1,29 @@
+/* ============================================================
+   MODAL COMPONENT STYLES
+   ============================================================ */
+
+body.modal-open {
+  overflow: hidden !important;
+}
+
 .modal-backdrop {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10000;
+  z-index: 99999; /* Higher than any bottom nav (99) or header (9) */
   padding: 1.5rem;
   animation: modalFadeIn 0.2s ease-out;
+  box-sizing: border-box;
 }
 
 .modal-content {
@@ -20,37 +31,40 @@
   max-height: 90vh;
   display: flex;
   flex-direction: column;
-  min-height: 0; /* CRITICAL: Enables flex child scrolling without overflowing */
+  min-height: 0; /* CRITICAL: Enables child flex scrolling */
   background: var(--bg-sidebar);
   border: 1px solid var(--border-color);
   border-radius: 20px;
-  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9);
   animation: modalScaleIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
   position: relative;
+  box-sizing: border-box;
 }
 
-/* Drag Handle Bar (Top of sheet) */
+/* Drag Handle Bar (Mobile only) */
 .modal-drag-handle-area {
   display: none;
   width: 100%;
-  padding: 0.6rem 0 0.2rem 0;
+  padding: 0.75rem 0 0.25rem 0;
   align-items: center;
   justify-content: center;
   cursor: grab;
   touch-action: none;
+  background: inherit;
 }
 
 .modal-drag-pill {
-  width: 44px;
+  width: 48px;
   height: 5px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.2);
-  transition: background 0.2s ease;
+  background: rgba(255, 255, 255, 0.25);
+  transition: background 0.2s ease, width 0.2s ease;
 }
 
 .modal-drag-handle-area:hover .modal-drag-pill {
-  background: rgba(255, 255, 255, 0.4);
+  background: var(--accent-emerald);
+  width: 56px;
 }
 
 .modal-header {
@@ -61,6 +75,7 @@
   border-bottom: 1px solid var(--border-color);
   flex-shrink: 0;
   user-select: none;
+  background: inherit;
 }
 
 .modal-title {
@@ -69,6 +84,7 @@
   font-weight: 700;
   color: var(--text-primary);
   letter-spacing: -0.01em;
+  margin: 0;
 }
 
 .modal-close-btn {
@@ -94,10 +110,11 @@
 .modal-body {
   padding: 1.5rem;
   flex: 1 1 auto;
-  min-height: 0; /* CRITICAL: Allows modal-body to scroll vertically */
+  min-height: 0; /* CRITICAL: Allows flex child to scroll */
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
+  box-sizing: border-box;
 }
 
 @keyframes modalFadeIn {
@@ -115,6 +132,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.15rem;
+  min-height: 100%;
 }
 
 .form-row {
@@ -166,7 +184,7 @@
   display: flex;
   justify-content: flex-end;
   gap: 0.75rem;
-  margin-top: 0.75rem;
+  margin-top: 1rem;
   padding-top: 1rem;
   border-top: 1px solid var(--border-color);
 }
@@ -220,23 +238,30 @@
 }
 
 /* ============================================================
-   MOBILE RESPONSIVE MODALS (<= 768px - Bottom Sheet Pattern)
+   MOBILE RESPONSIVE FULL SHEET (<= 768px - Native App UX)
    ============================================================ */
 @media (max-width: 768px) {
   .modal-backdrop {
     padding: 0;
-    align-items: flex-end;
+    align-items: stretch;
+    justify-content: flex-end;
+    background-color: rgba(0, 0, 0, 0.85);
   }
 
   .modal-content {
-    border-radius: 24px 24px 0 0;
-    max-height: 90vh;
-    max-height: 90dvh; /* Adapts to dynamic mobile browser toolbar height */
-    height: auto;
-    border-bottom: none;
-    border-left: none;
-    border-right: none;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 92vh !important;
+    height: 92dvh !important; /* Full tall sheet taking 92% of phone screen */
+    max-height: 92dvh !important;
+    border-radius: 24px 24px 0 0 !important;
+    margin: 0 !important;
+    border-bottom: none !important;
+    border-left: none !important;
+    border-right: none !important;
     animation: modalSlideUp 0.28s cubic-bezier(0.32, 0.72, 0, 1);
+    box-shadow: 0 -15px 50px rgba(0, 0, 0, 0.9) !important;
+    background: #111827 !important;
   }
 
   .modal-content.is-dragging {
@@ -253,11 +278,12 @@
   }
 
   .modal-header {
-    padding: 0.75rem 1.25rem 0.85rem 1.25rem;
+    padding: 0.6rem 1.25rem 0.85rem 1.25rem;
   }
 
   .modal-body {
-    padding: 1rem 1.25rem 4rem 1.25rem; /* Generous bottom padding so Notes, Cancel & Save are never clipped */
+    padding: 1.25rem 1.25rem 1rem 1.25rem !important;
+    touch-action: pan-y !important;
   }
 
   .form-row {
@@ -273,17 +299,29 @@
     padding: 0.75rem 0.9rem;
   }
 
+  /* Sticky Footer Actions Bar on Mobile */
   .form-actions {
-    flex-direction: column-reverse;
-    gap: 0.75rem;
-    margin-top: 1rem;
-    padding-top: 1rem;
+    position: sticky !important;
+    bottom: 0 !important;
+    background: #111827 !important;
+    padding: 0.85rem 0 1.25rem 0 !important;
+    margin-top: auto !important;
+    border-top: 1px solid var(--border-color) !important;
+    z-index: 30 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0.75rem !important;
   }
 
-  .btn-primary,
   .btn-secondary {
-    width: 100%;
-    min-height: 48px;
-    font-size: 0.95rem;
+    flex: 1 !important;
+    min-height: 48px !important;
+    font-size: 0.92rem !important;
+  }
+
+  .btn-primary {
+    flex: 1.5 !important;
+    min-height: 48px !important;
+    font-size: 0.95rem !important;
   }
 }

@@ -6,32 +6,25 @@ export function Modal({ isOpen, onClose, title, children, maxWidth = '550px' }) 
   const [dragOffset, setDragOffset] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const touchStartY = useRef(0);
-  const modalContentRef = useRef(null);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') onClose();
     };
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.classList.add('modal-open');
       window.addEventListener('keydown', handleKeyDown);
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.classList.remove('modal-open');
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [isOpen, onClose]);
 
-  // Touch Drag down to dismiss (Mobile UX)
+  // Touch Drag on Handle/Header to slide down & close
   const handleTouchStart = (e) => {
-    // Only allow dragging if initiated at the top handle / header or when scroll is at top
-    const modalBody = modalContentRef.current?.querySelector('.modal-body');
-    const isAtTop = !modalBody || modalBody.scrollTop <= 0;
-    
-    if (isAtTop) {
-      touchStartY.current = e.touches[0].clientY;
-      setIsDragging(true);
-    }
+    touchStartY.current = e.touches[0].clientY;
+    setIsDragging(true);
   };
 
   const handleTouchMove = (e) => {
@@ -51,8 +44,8 @@ export function Modal({ isOpen, onClose, title, children, maxWidth = '550px' }) 
     if (!isDragging) return;
     setIsDragging(false);
     
-    // If dragged down more than 110px, close modal
-    if (dragOffset > 110) {
+    // If dragged down more than 90px, close modal
+    if (dragOffset > 90) {
       onClose();
     }
     setDragOffset(0);
@@ -63,7 +56,6 @@ export function Modal({ isOpen, onClose, title, children, maxWidth = '550px' }) 
   return (
     <div className="modal-backdrop" onClick={onClose}>
       <div 
-        ref={modalContentRef}
         className={`modal-content glass-panel ${isDragging ? 'is-dragging' : ''}`} 
         style={{ 
           maxWidth,
@@ -78,6 +70,7 @@ export function Modal({ isOpen, onClose, title, children, maxWidth = '550px' }) 
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
+          title="Desliza hacia abajo para cerrar"
         >
           <div className="modal-drag-pill" />
         </div>
@@ -95,7 +88,7 @@ export function Modal({ isOpen, onClose, title, children, maxWidth = '550px' }) 
           </button>
         </div>
 
-        {/* Modal Body with guaranteed flex scrolling */}
+        {/* Modal Body with guaranteed flexbox scrolling */}
         <div className="modal-body">
           {children}
         </div>
