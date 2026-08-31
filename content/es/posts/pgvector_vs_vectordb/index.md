@@ -1,7 +1,7 @@
 ---
 title: "PostgreSQL con pgvector vs Vector DBs: Por Qué Casi Nadie Necesita Pinecone"
-date: 2026-09-01
-draft: false
+date: 2026-09-19
+draft: true
 categories: ["Inteligencia Artificial", "Ingeniería"]
 tags: ["postgresql", "pgvector", "vector database", "pinecone", "rag", "embeddings", "hnsw", "supabase", "arquitectura de datos"]
 description: "¿Realmente necesitas una base de datos vectorial dedicada como Pinecone, Qdrant o Milvus? Analizamos el rendimiento de pgvector en PostgreSQL, el coste oculto de la arquitectura dual, los índices HNSW vs IVFFlat, y por qué la base de datos unificada gana en el 95% de los casos."
