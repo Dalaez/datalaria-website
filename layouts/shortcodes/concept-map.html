@@ -1,0 +1,124 @@
+﻿{{- /* Shortcode: concept-map.html - Executive Decision Map & Matrix */ -}}
+{{- $isSpanish := eq .Page.Language.Lang "es" -}}
+
+<div class="concept-map-container" id="mapa-recursos">
+  <div class="concept-map-header">
+    <div class="concept-map-title">
+      <span>🗺️ {{ cond $isSpanish "Mapa Conceptual de Recursos & Estado de Despliegue" "Executive Decision Map & Rollout Status" }}</span>
+    </div>
+    <div class="concept-map-status">
+      <span class="status-indicator-live"></span>
+      <span><strong>{{ cond $isSpanish "1 de 13 Packs Disponibles" "1 of 13 Packs Available" }}</strong> • {{ cond $isSpanish "Lanzamiento progresivo 1 a 1" "Progressive 1-by-1 Rollout" }}</span>
+    </div>
+  </div>
+
+  <div class="concept-map-grid">
+    <!-- Suite 1 -->
+    <div class="concept-suite-col">
+      <div class="concept-suite-head">
+        <span class="suite-mini-badge">Suite 01</span>
+        <h4>{{ cond $isSpanish "Estrategia Corporativa & MBA" "Corporate Strategy & MBA" }}</h4>
+      </div>
+      <ul class="concept-items-list">
+        <li class="concept-item item-available">
+          <a href="{{ cond $isSpanish "#pack-dafo" "#pack-swot" }}">
+            <span class="item-left-info"><span>🎯</span> <span>{{ cond $isSpanish "DAFO Cuantitativo & CAME" "Quantitative SWOT & TOWS" }}</span></span>
+            <span class="item-badge-pill available">{{ cond $isSpanish "Disponible • 5€" "Available • 5€" }}</span>
+          </a>
+        </li>
+        <li class="concept-item item-upcoming">
+          <a href="#pack-porter">
+            <span class="item-left-info"><span>🛡️</span> <span>{{ cond $isSpanish "5 Fuerzas de Porter" "Porter's 5 Forces" }}</span></span>
+            <span class="item-badge-pill upcoming">{{ cond $isSpanish "Próximamente" "Coming Soon" }}</span>
+          </a>
+        </li>
+        <li class="concept-item item-upcoming">
+          <a href="#pack-pestel">
+            <span class="item-left-info"><span>🌐</span> <span>{{ cond $isSpanish "Matriz PESTEL Cuantitativa" "Quantitative PESTEL" }}</span></span>
+            <span class="item-badge-pill upcoming">{{ cond $isSpanish "Próximamente" "Coming Soon" }}</span>
+          </a>
+        </li>
+        <li class="concept-item item-upcoming">
+          <a href="#pack-bcg">
+            <span class="item-left-info"><span>⭐</span> <span>{{ cond $isSpanish "Matriz BCG Dinámica" "Dynamic BCG Matrix" }}</span></span>
+            <span class="item-badge-pill upcoming">{{ cond $isSpanish "Próximamente" "Coming Soon" }}</span>
+          </a>
+        </li>
+        <li class="concept-item item-upcoming">
+          <a href="#pack-mckinsey">
+            <span class="item-left-info"><span>🧭</span> <span>{{ cond $isSpanish "Matriz McKinsey / GE 3x3" "McKinsey / GE 3x3 Matrix" }}</span></span>
+            <span class="item-badge-pill upcoming">{{ cond $isSpanish "Próximamente" "Coming Soon" }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Suite 2 -->
+    <div class="concept-suite-col">
+      <div class="concept-suite-head">
+        <span class="suite-mini-badge">Suite 02</span>
+        <h4>{{ cond $isSpanish "Toma de Decisiones & Inversión" "Decision Analysis & Prioritization" }}</h4>
+      </div>
+      <ul class="concept-items-list">
+        <li class="concept-item item-upcoming">
+          <a href="#pack-dar">
+            <span class="item-left-info"><span>⚖️</span> <span>{{ cond $isSpanish "Matriz DAR con Criterios Veto" "DAR Matrix (Killer Criteria)" }}</span></span>
+            <span class="item-badge-pill upcoming">{{ cond $isSpanish "Próximamente" "Coming Soon" }}</span>
+          </a>
+        </li>
+        <li class="concept-item item-upcoming">
+          <a href="#pack-rice">
+            <span class="item-left-info"><span>🚀</span> <span>{{ cond $isSpanish "Matriz RICE & ICE Ágil" "Agile RICE & ICE Matrix" }}</span></span>
+            <span class="item-badge-pill upcoming">{{ cond $isSpanish "Próximamente" "Coming Soon" }}</span>
+          </a>
+        </li>
+        <li class="concept-item item-upcoming">
+          <a href="#pack-business-case">
+            <span class="item-left-info"><span>📈</span> <span>{{ cond $isSpanish "Business Case (VAN, TIR, Payback)" "Financial Business Case" }}</span></span>
+            <span class="item-badge-pill upcoming">{{ cond $isSpanish "Próximamente" "Coming Soon" }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Suite 3 -->
+    <div class="concept-suite-col">
+      <div class="concept-suite-head">
+        <span class="suite-mini-badge">Suite 03</span>
+        <h4>{{ cond $isSpanish "Control Operativo & PMBOK" "PMBOK Operations & Control" }}</h4>
+      </div>
+      <ul class="concept-items-list">
+        <li class="concept-item item-upcoming">
+          <a href="#pack-raci">
+            <span class="item-left-info"><span>📋</span> <span>{{ cond $isSpanish "Matriz RACI Balance de Carga" "RACI Workload Balance" }}</span></span>
+            <span class="item-badge-pill upcoming">{{ cond $isSpanish "Próximamente" "Coming Soon" }}</span>
+          </a>
+        </li>
+        <li class="concept-item item-upcoming">
+          <a href="{{ cond $isSpanish "#pack-amfe" "#pack-fmea" }}">
+            <span class="item-left-info"><span>⚠️</span> <span>{{ cond $isSpanish "Matriz Riesgos & AMFE / FMEA" "FMEA & Risk Matrix" }}</span></span>
+            <span class="item-badge-pill upcoming">{{ cond $isSpanish "Próximamente" "Coming Soon" }}</span>
+          </a>
+        </li>
+        <li class="concept-item item-upcoming">
+          <a href="#pack-pert">
+            <span class="item-left-info"><span>⏱️</span> <span>{{ cond $isSpanish "Estimación PERT 3 Puntos" "Stochastic 3-Point PERT" }}</span></span>
+            <span class="item-badge-pill upcoming">{{ cond $isSpanish "Próximamente" "Coming Soon" }}</span>
+          </a>
+        </li>
+        <li class="concept-item item-upcoming">
+          <a href="#pack-evm">
+            <span class="item-left-info"><span>📉</span> <span>{{ cond $isSpanish "Cuadro EVM Valor Ganado" "EVM Dashboard (S-Curve)" }}</span></span>
+            <span class="item-badge-pill upcoming">{{ cond $isSpanish "Próximamente" "Coming Soon" }}</span>
+          </a>
+        </li>
+        <li class="concept-item item-upcoming">
+          <a href="#pack-stock">
+            <span class="item-left-info"><span>📦</span> <span>{{ cond $isSpanish "Stock de Seguridad & ROP" "Safety Stock & ROP" }}</span></span>
+            <span class="item-badge-pill upcoming">{{ cond $isSpanish "Próximamente" "Coming Soon" }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 ---
 title: "Proyecto LifeOps (Parte 1): Arquitectura de un Sistema Operativo Personal y Backend con FastAPI + Supabase"
-date: 2026-09-09
+date: 2026-09-10
 draft: false
 categories: ["Proyectos", "Desarrollo Web"]
 tags: ["python", "fastapi", "supabase", "react", "postgresql", "backend", "productividad", "datos", "cloud", "serverless"]
@@ -24,6 +24,20 @@ Con ese reto en mente y fiel al espíritu de Datalaria de "aprender construyendo
 Y lo más importante de todo: **diseñado bajo una arquitectura robusta, segura y 100% gratuita ($0/mes)**.
 
 En esta primera entrega de la serie, nos adentraremos en los cimientos del proyecto: el **diseño de la arquitectura cloud**, el **modelo de datos relacional en PostgreSQL** y la construcción del **backend de alto rendimiento con FastAPI**. ¡Vamos a ello! 🚀
+
+> [!TIP]
+> **Prueba la aplicación en vivo**: Puedes interactuar con la versión de producción de LifeOps desplegada en [https://datalaria.com/apps/lifeops/](https://datalaria.com/apps/lifeops/).
+
+---
+
+### 🗺️ Hoja de Ruta de la Serie LifeOps
+Para entender cómo encaja cada pieza del rompecabezas, esta serie se compone de 5 entregas estructuradas:
+
+1. 🟢 **Parte 1 (Este artículo)**: Arquitectura de un Sistema Operativo Personal y Backend con FastAPI + Supabase.
+2. ⚪ **Parte 2**: [Frontend React con Glassmorphism, Dashboard 360° y Sistema de Diseño](/posts/app-lifeops_part2_frontend_dashboard/).
+3. ⚪ **Parte 3**: [Módulos Core: Deporte, Biblioteca, Cine y Tablero Kanban Profesional](/posts/app-lifeops_part3_modulos_kanban/).
+4. ⚪ **Parte 4**: [Motor de Informes Ejecutivos en Word (.docx) y Exportación Multi-Hoja en Excel (.xlsx)](/posts/app-lifeops_part4_informes_word_excel/).
+5. ⚪ **Parte 5**: [Despliegue 24/7 en la Nube a Coste Cero ($0/mes), Optimización Móvil y PWA](/posts/app-lifeops_part5_deploy_mobile_pwa/).
 
 ---
 
@@ -61,8 +75,11 @@ A la hora de diseñar la infraestructura de LifeOps, el objetivo no era solo que
 ```
 
 1. **Frontend en Netlify ($0/mes)**: Aplicación SPA compilada con Vite y servida a través de CDN global con compresión Gzip, *Code Splitting* por ruta y reescritura transparente de URL desde el dominio principal de Datalaria.
-2. **Backend en FastAPI ($0/mes)**: API asíncrona en Python, ligera y con tipado estricto gracias a Pydantic v2.
+2. **Backend en FastAPI ($0/mes)**: API asíncrona en Python, ligera y con tipado estricto gracias a Pydantic v2, alojada en Render con auto-retry ante cold-starts.
 3. **Base de Datos en Supabase ($0/mes)**: PostgreSQL gestionado en la nube con 500 MB de almacenamiento relacional, autenticación segura mediante tokens JWT y políticas de seguridad a nivel de fila (*Row Level Security*).
+
+> [!NOTE]
+> **Gestión de Cold-Starts en Render**: Dado que el backend está alojado en el plan gratuito de Render.com, el contenedor entra en reposo tras 15 minutos de inactividad. En el frontend de React (que detallaremos en la Parte 2) implementamos una pantalla de precarga con reintento automático y backoff exponencial para que el usuario disfrute de una experiencia fluida sin errores aparentes.
 
 ---
 
@@ -129,6 +146,9 @@ CREATE TABLE lifeops.films (
   ON lifeops.activities FOR SELECT 
   USING (auth.uid() = user_id);
   ```
+
+> [!IMPORTANT]
+> **Esquema Aislado y Permisos en Supabase**: Al alojar las tablas en un esquema personalizado como `lifeops` (en lugar de `public`), recuerda conceder permisos de uso sobre el esquema (`GRANT USAGE ON SCHEMA lifeops TO authenticated;`) y permisos de CRUD sobre las tablas. Esto mantiene el esquema del sistema operativo desacoplado y protegido.
 
 ---
 
@@ -215,10 +235,20 @@ Si un cliente excede el límite permitido, la API responde inmediatamente con un
 
 Con el backend en FastAPI blindado, el esquema relacional en PostgreSQL funcionando en Supabase y las políticas de seguridad activas, tenemos una base sólida como una roca y con un coste operativo de **0 € al mes**.
 
-En la **Parte 2** de esta serie, nos sumergiremos en el frontend:
+En la **Parte 2** de esta serie, nos sumergiremos de lleno en el frontend:
 * Construcción de la interfaz SPA con **React 18, Vite y diseño Glassmorphism**.
 * Sistema de **Internacionalización (i18n)** para alternar entre Español 🇪🇸 e Inglés 🇬🇧 al instante.
-* El **Tablero Kanban interactivo** con edición en vivo.
-* El **modo dual de visualización (Tarjetas vs Tabla Sintetizada)**.
+* Arquitectura del **Dashboard 360°** con widgets de métricas agregadas y gráficos de rendimiento con **Recharts**.
+* Configuración del contexto de autenticación (`AuthContext`) y sincronización de sesión con Supabase.
+
+---
+
+### Referencias y Enlaces de Interés 🔗
+
+* 🚀 **Aplicación en Producción**: Prueba el resultado final en vivo en [datalaria.com/apps/lifeops](https://datalaria.com/apps/lifeops/).
+* 🌐 **API REST en Producción**: Documentación OpenAPI interactiva en [lifeops-api.onrender.com/docs](https://lifeops-api.onrender.com/docs).
+* ⚡ **FastAPI Framework**: Documentación oficial en [fastapi.tiangolo.com](https://fastapi.tiangolo.com/).
+* 🗄️ **Supabase Cloud**: Guía de PostgreSQL y Row Level Security en [supabase.com/docs](https://supabase.com/docs).
+* 🛡️ **SlowAPI**: Rate limiting para ASGI/FastAPI en [github.com/laurentS/slowapi](https://github.com/laurentS/slowapi).
 
 ¡Nos vemos en la siguiente entrega! Si tienes cualquier duda sobre la arquitectura o quieres compartir tu experiencia montando proyectos similares, déjame un comentario abajo o en redes. 👇

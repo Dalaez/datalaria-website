@@ -1,6 +1,6 @@
 ---
 title: "Project LifeOps (Part 1): Personal Operating System Architecture and FastAPI + Supabase Backend"
-date: 2026-09-09
+date: 2026-09-10
 draft: false
 categories: ["Projects", "Web Development"]
 tags: ["python", "fastapi", "supabase", "react", "postgresql", "backend", "productivity", "data", "cloud", "serverless"]
@@ -24,6 +24,20 @@ With that problem in mind and true to the Datalaria ethos of "learning by buildi
 Best of all: **built on top of a rock-solid, production-grade architecture that is 100% Free ($0/month)**.
 
 In this first installment of the series, we dive into the core foundations: **cloud architecture design**, **PostgreSQL relational data modeling**, and building the **high-performance FastAPI backend**. Let's get into it! 🚀
+
+> [!TIP]
+> **Test the live app**: You can explore the production build of LifeOps directly at [https://datalaria.com/apps/lifeops/](https://datalaria.com/apps/lifeops/).
+
+---
+
+### 🗺️ LifeOps Series Roadmap
+To understand how every architectural layer fits together, this series spans 5 structured installments:
+
+1. 🟢 **Part 1 (This article)**: Personal Operating System Architecture and FastAPI + Supabase Backend.
+2. ⚪ **Part 2**: [React Frontend with Glassmorphism, 360° Dashboard, and Design System](/en/posts/app-lifeops_part2_frontend_dashboard/).
+3. ⚪ **Part 3**: [Core Interactive Modules: Fitness, Library, Cinema, and Professional Kanban Board](/en/posts/app-lifeops_part3_modulos_kanban/).
+4. ⚪ **Part 4**: [In-Memory Word Dossiers (.docx) & Multi-Sheet Excel Engine (.xlsx)](/en/posts/app-lifeops_part4_informes_word_excel/).
+5. ⚪ **Part 5**: [24/7 Zero-Cost Cloud Deployment ($0/month), Mobile UX, and PWA](/en/posts/app-lifeops_part5_deploy_mobile_pwa/).
 
 ---
 
@@ -61,8 +75,11 @@ When architecting LifeOps, the goal wasn't merely to run on `localhost`, but to 
 ```
 
 1. **Frontend on Netlify ($0/mo)**: Single Page Application built with Vite and served globally with Gzip compression, route-level code splitting, and transparent proxy rewrite under Datalaria's domain.
-2. **Backend on FastAPI ($0/mo)**: Asynchronous Python 3.13 API with strict validation via Pydantic v2.
+2. **Backend on FastAPI ($0/mo)**: Asynchronous Python 3.13 API with strict validation via Pydantic v2, hosted on Render with cold-start resilience.
 3. **Database on Supabase ($0/mo)**: Managed PostgreSQL database with 500 MB of storage, JWT authentication, and automated Row Level Security (RLS) policies.
+
+> [!NOTE]
+> **Render Cold-Start Handling**: Because the backend runs on Render.com's free tier, the container spins down after 15 minutes of inactivity. In the React frontend (detailed in Part 2), we implemented a preloader screen with automatic exponential-backoff retries, ensuring the user experiences zero abrupt connection drops.
 
 ---
 
@@ -130,6 +147,62 @@ CREATE TABLE lifeops.films (
   USING (auth.uid() = user_id);
   ```
 
+> [!IMPORTANT]
+> **Isolated Schemas & Permissions in Supabase**: When maintaining tables in a dedicated schema like `lifeops` (rather than default `public`), ensure you grant explicit schema access (`GRANT USAGE ON SCHEMA lifeops TO authenticated;`) and table permissions to the `authenticated` role. This isolates the operating system's database domain while honoring multi-tenant security.
+
+---
+
+### The FastAPI Backend: Modular Architecture & Strict Typing ⚡
+
+To organize the API cleanly as business domains expand, we follow FastAPI's **Modular Router pattern**:
+
+```
+lifeops-api/
+├── main.py                  # Entrypoint, Middlewares, Rate Limiter & CORS
+├── config.py                # Centralized environment settings with Pydantic Settings
+├── middleware/
+│   └── auth.py              # Supabase JWT validation & secure user_id extraction
+├── models/
+│   ├── activity.py          # Pydantic Schemas (Create, Update, Response)
+│   └── project.py           # Schemas for Tasks and Projects
+├── routers/
+│   ├── activities.py        # CRUD endpoints for Fitness, Books & Cinema
+│   ├── projects.py          # Endpoints for Kanban Board and Projects
+│   ├── stats.py             # Global KPI aggregations & Dashboard metrics
+│   ├── reports.py           # Word (.docx) generator & CSV/Excel streaming
+│   └── alerts.py            # Intelligent reminder engine
+└── services/
+    ├── report_generator.py  # In-memory RAM .docx compilation
+    └── data_exporter.py     # CSV (BOM) & multi-sheet Excel generator
+```
+
+#### Secure Supabase JWT Authentication
+Every endpoint processing user data injects the `get_current_user` dependency:
+
+```python
+from fastapi import Depends, HTTPException, status
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+import jwt
+
+security = HTTPBearer()
+
+async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security)) -> AuthenticatedUser:
+    token = credentials.credentials
+    try:
+        payload = jwt.decode(
+            token,
+            settings.supabase_jwt_secret,
+            algorithms=["HS256"],
+            audience="authenticated"
+        )
+        user_id = payload.get("sub")
+        if not user_id:
+            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token missing user identity")
+        return AuthenticatedUser(id=user_id, email=payload.get("email"))
+    except jwt.PyJWTError as e:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid or expired token")
+```
+
 ---
 
 ### Production Hardening: Rate Limiting & Anti-Abuse 🛡️
@@ -162,10 +235,20 @@ If a client exceeds the threshold, the API responds instantly with an **HTTP 429
 
 With our FastAPI backend hardened, the PostgreSQL relational schema operational on Supabase, and rate limiting active, we have a production-grade foundation running at **$0/month**.
 
-In **Part 2** of this series, we will explore the frontend:
-* Building the Single Page App with **React 18, Vite, and Glassmorphism design**.
-* **Internationalization (i18n)** system for seamless Spanish 🇪🇸 / English 🇬🇧 switching.
-* The **Interactive Kanban Board** with inline task editing.
-* The **Dual View Mode (Cards vs Synthesized Table)**.
+In **Part 2** of this series, we dive straight into the frontend:
+* Single Page App development with **React 18/19, Vite, and Glassmorphism design**.
+* **Internationalization (i18n)** system for instant Spanish 🇪🇸 / English 🇬🇧 locale toggling.
+* The **360° Dashboard** architecture with aggregated KPI widgets and interactive **Recharts** visualizations.
+* Authentication context (`AuthContext`) and session synchronization with Supabase.
 
-See you in the next post! Feel free to leave a comment below or connect on socials. 👇
+---
+
+### References & Useful Links 🔗
+
+* 🚀 **Production Application**: Try the live app at [datalaria.com/apps/lifeops](https://datalaria.com/apps/lifeops/).
+* 🌐 **Production REST API**: Interactive OpenAPI Swagger documentation at [lifeops-api.onrender.com/docs](https://lifeops-api.onrender.com/docs).
+* ⚡ **FastAPI Framework**: Official documentation at [fastapi.tiangolo.com](https://fastapi.tiangolo.com/).
+* 🗄️ **Supabase Cloud**: Guide to PostgreSQL and Row Level Security at [supabase.com/docs](https://supabase.com/docs).
+* 🛡️ **SlowAPI**: Rate limiting for ASGI/FastAPI at [github.com/laurentS/slowapi](https://github.com/laurentS/slowapi).
+
+See you in the next installment! Feel free to leave a comment below or connect on socials. 👇

@@ -1,0 +1,88 @@
+{{- /* Shortcode: bundle-card.html - Executive Packs & Mega Bundle */ -}}
+{{- $title := .Get "title" | default "Executive Decision Suite Bundle" -}}
+{{- $subtitle := .Get "subtitle" | default "Acceso completo a todos los modelos de cálculo, presentaciones PowerPoint y guías" -}}
+{{- $price := .Get "price" | default "39€" -}}
+{{- $originalPrice := .Get "original_price" | default "" -}}
+{{- $discountBadge := .Get "discount_badge" | default "Ahorro > 50%" -}}
+{{- $badge := .Get "badge" | default "Pack Completo Recomendado" -}}
+{{- $icon := .Get "icon" | default "💼" -}}
+{{- $items := .Get "items" | default "" -}}
+{{- $checkoutUrl := .Get "checkout_url" | default "#" -}}
+{{- $buttonText := .Get "button_text" | default (printf "Obtener Bundle Completo • %s" $price) -}}
+{{- $highlight := .Get "highlight" | default "true" -}}
+
+<div class="executive-bundle-card {{- if eq $highlight "true" }} bundle-highlight{{ end }}">
+  <div class="bundle-top-bar">
+    <div class="bundle-badge-group">
+      <span class="bundle-badge-main">{{ $badge }}</span>
+      {{- if $discountBadge }}
+      <span class="bundle-badge-discount">{{ $discountBadge }}</span>
+      {{- end }}
+    </div>
+    <div class="bundle-icon">{{ $icon }}</div>
+  </div>
+
+  <div class="bundle-content">
+    <div class="bundle-info">
+      <h3 class="bundle-title">{{ $title }}</h3>
+      <p class="bundle-subtitle">{{ $subtitle }}</p>
+
+      <div class="bundle-deliverables-pill">
+        <span class="pill-title">Todos los packs incluyen:</span>
+        <div class="pill-row">
+          <span class="pill-tag">📊 Modelos Excel + Sheets</span>
+          <span class="pill-tag">📑 Decks PPTX 16:9 C-Level</span>
+          <span class="pill-tag">📄 Guías Metodológicas PDF</span>
+        </div>
+      </div>
+
+      {{- if $items }}
+      <div class="bundle-items-section">
+        <div class="bundle-items-heading">Herramientas ejecutivas incluidas:</div>
+        <ul class="bundle-items-grid">
+          {{- range (split $items "|") }}
+          <li class="bundle-item">
+            <svg class="bundle-item-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>{{ . }}</span>
+          </li>
+          {{- end }}
+        </ul>
+      </div>
+      {{- end }}
+
+      {{- with .Get "custom_text" }}
+      <div class="bundle-custom-text">
+        {{ . | markdownify }}
+      </div>
+      {{- end }}
+    </div>
+
+    <div class="bundle-cta-box">
+      <div class="bundle-pricing">
+        <div class="bundle-price-main">{{ $price }}</div>
+        {{- if $originalPrice }}
+        <div class="bundle-price-strike">
+          <span class="original-val">{{ $originalPrice }}</span>
+          <span class="savings-text">Valor total por separado</span>
+        </div>
+        {{- end }}
+      </div>
+
+      <a href="{{ $checkoutUrl }}" class="bundle-cta-btn lemonsqueezy-button" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        <span>{{ $buttonText }}</span>
+      </a>
+
+      <div class="bundle-trust-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        <span>Entrega instantánea .ZIP • Factura B2B con IVA deducible</span>
+      </div>
+    </div>
+  </div>
+</div>
