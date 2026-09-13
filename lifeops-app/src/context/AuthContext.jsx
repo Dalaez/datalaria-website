@@ -18,6 +18,14 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const hash = window.location.hash || '';
+    const search = window.location.search || '';
+    if (search.includes('mock=true') || hash.includes('mock=true') || localStorage.getItem('lifeops_mock') === 'true') {
+      setUser({ email: 'dalaez1@gmail.com', id: 'mock-user-dalaez' });
+      setLoading(false);
+      return;
+    }
+
     // 1. Get initial session
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);

@@ -8,6 +8,10 @@ const LanguageContext = createContext();
 
 export function LanguageProvider({ children }) {
   const [language, setLanguageState] = useState(() => {
+    const hash = window.location.hash || '';
+    const search = window.location.search || '';
+    if (search.includes('lang=es') || hash.includes('lang=es')) return 'es';
+    if (search.includes('lang=en') || hash.includes('lang=en')) return 'en';
     const saved = localStorage.getItem('lifeops_language');
     if (saved && (saved === 'es' || saved === 'en')) {
       return saved;

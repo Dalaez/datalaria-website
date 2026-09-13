@@ -1,6 +1,6 @@
 ---
 title: "Project LifeOps (Part 2): React Frontend with Glassmorphism, 360° Dashboard, and Dark Mode Design System"
-date: 2026-09-12
+date: 2026-09-13
 draft: false
 categories: ["Projects", "Web Development"]
 tags: ["react", "vite", "glassmorphism", "css", "recharts", "frontend", "dashboard", "i18n", "ui-ux", "supabase", "javascript"]
@@ -231,6 +231,8 @@ Through this abstraction, individual components never touch raw authorization he
 
 The **Main Dashboard** (`DashboardPage.jsx`) is the command center that greets the user upon login, designed to communicate a holistic view of life and work metrics in under 5 seconds.
 
+![LifeOps 360° Dashboard overview with Glassmorphism and Dark Mode](lifeops_dashboard_360_en.png)
+
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
 │  👋 Welcome back, Diego!                                               │
@@ -248,7 +250,13 @@ The **Main Dashboard** (`DashboardPage.jsx`) is the command center that greets t
 └──────────────────────────────────────┴─────────────────────────────────┘
 ```
 
-#### 4.1. KPI Stat Cards (`StatWidget.jsx`)
+#### 4.1. Navigation Architecture: Sidebar and Shortcuts Menu (`Sidebar.jsx`)
+
+To keep navigation intuitive without cluttering the screen, we organized the sidebar into two functional tiers: primary top-level areas (Dashboard, Personal Area, Professional Area, Reports, Settings) and quick thematic shortcuts linking directly to everyday logging flows (Fitness, Books, Cinema, Kanban Board):
+
+![Sidebar navigation menu with primary sections and quick access shortcuts](lifeops_sidebar_menu_en.png)
+
+#### 4.2. KPI Stat Cards (`StatWidget.jsx`)
 The top metrics grid features semantic accent variants designed for quick cognitive parsing:
 
 ```jsx
@@ -274,7 +282,7 @@ export function StatWidget({ title, value, subtitle, icon: Icon, color = 'emeral
 
 Each color variant (`color-emerald`, `color-cyan`, `color-purple`, `color-amber`) washes the icon container in a 20% opacity translucent glow (`--accent-emerald-glow`), establishing instant visual categorization without visual noise.
 
-#### 4.2. Activity Telemetry with Recharts
+#### 4.3. Activity Telemetry with Recharts
 To visualize monthly activity volume, we fetch data from `/api/v1/stats/breakdown` and render a responsive bar chart:
 
 ```jsx
@@ -309,6 +317,13 @@ const chartData = [
     </BarChart>
   </ResponsiveContainer>
 </div>
+```
+
+#### 4.4. Quick Actions Menu (`QuickActions.jsx`)
+
+Friction is the number one reason personal productivity dashboards fall out of use. Logging a workout or finishing a book chapter must never require navigating through multiple nested views. From the central hub, the `QuickActions` panel exposes direct action buttons that launch focused data entry modals instantly:
+
+![Quick Actions panel for rapid logging of activities, reading sessions, and executive reports](lifeops_quick_actions_menu_en.png)
 ```
 
 ---
@@ -376,6 +391,8 @@ export function SystemHealth() {
 ---
 
 ### 6. Featherweight Native Internationalization (i18n) 🌐
+
+![Header controls bar with bilingual language switcher (ES / EN) and Supabase Auth status](lifeops_header_language_en.png)
 
 Many single-page apps install heavy internationalization suites that bundle unnecessary complexity. For LifeOps, I built an elegant, zero-dependency translation engine in **under 80 lines** within `LanguageContext.jsx`:
 

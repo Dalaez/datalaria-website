@@ -1,6 +1,6 @@
 ---
 title: "Proyecto LifeOps (Parte 2): Frontend React con Glassmorphism, Dashboard 360° y Sistema de Diseño Dark Mode"
-date: 2026-09-12
+date: 2026-09-13
 draft: false
 categories: ["Proyectos", "Desarrollo Web"]
 tags: ["react", "vite", "glassmorphism", "css", "recharts", "frontend", "dashboard", "i18n", "ui-ux", "supabase", "javascript"]
@@ -231,6 +231,8 @@ Con este patrón, ningún componente tiene que preocuparse por gestionar cabecer
 
 El **Dashboard Principal** (`DashboardPage.jsx`) es la pantalla que recibe al usuario tras identificarse. Su objetivo es ofrecer una síntesis completa del estado de su vida en menos de 5 segundos.
 
+![Vista general del Dashboard 360° en LifeOps con Glassmorphism y Dark Mode](lifeops_dashboard_360_es.png)
+
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
 │  👋 ¡Bienvenido de nuevo, Diego!                                       │
@@ -248,7 +250,13 @@ El **Dashboard Principal** (`DashboardPage.jsx`) es la pantalla que recibe al us
 └──────────────────────────────────────┴─────────────────────────────────┘
 ```
 
-#### 4.1. Grid de Widgets KPI (`StatWidget.jsx`)
+#### 4.1. Estructura de Navegación: Menú Lateral y Accesos Directos (`Sidebar.jsx`)
+
+Para estructurar la navegación sin saturar la vista, dividimos el menú lateral en dos bloques funcionales: accesos generales a las áreas maestras (Dashboard, Área Personal, Área Profesional, Informes y Configuración) y accesos directos temáticos a los módulos de registro diario (Deporte, Libros, Cine, Tablero Kanban):
+
+![Menú lateral de navegación con accesos principales y directos temáticos](lifeops_menu_lateral_es.png)
+
+#### 4.2. Grid de Widgets KPI (`StatWidget.jsx`)
 Las tarjetas superiores proporcionan las métricas esenciales con un sistema de variantes de color semánticas:
 
 ```jsx
@@ -274,7 +282,7 @@ export function StatWidget({ title, value, subtitle, icon: Icon, color = 'emeral
 
 Cada variante de color (`color-emerald`, `color-cyan`, `color-purple`, `color-amber`) tiñe el fondo del icono con un resplandor translúcido al 20% de opacidad (`--accent-emerald-glow`), creando una jerarquía visual inmediata sin estridencias.
 
-#### 4.2. Gráfico de Actividad con Recharts
+#### 4.3. Gráfico de Actividad con Recharts
 Para visualizar el volumen de actividad de los últimos 30 días, consumimos el endpoint `/api/v1/stats/breakdown` y alimentamos un gráfico de barras responsivo:
 
 ```jsx
@@ -309,6 +317,13 @@ const chartData = [
     </BarChart>
   </ResponsiveContainer>
 </div>
+```
+
+#### 4.4. Menú de Acciones Rápidas (`QuickActions.jsx`)
+
+Uno de los factores determinantes en la usabilidad de un sistema operativo personal es la inmediatez: el registro de un entrenamiento o un libro terminado no debe requerir navegar a través de múltiples pantallas. Desde el panel de control, el componente `QuickActions` despliega un menú interactivo con botones que disparan directamente los modales de entrada de datos:
+
+![Menú de Acciones Rápidas para el registro directo de actividades e informes](lifeops_menu_acciones_rapidas_es.png)
 ```
 
 ---
@@ -377,6 +392,8 @@ export function SystemHealth() {
 ---
 
 ### 6. Internacionalización Nativa (i18n) Ultraligera 🌐
+
+![Barra superior de controles con selector de idioma bilingüe (ES / EN) y autenticación Supabase](lifeops_cabecera_idioma_es.png)
 
 Muchas aplicaciones web incorporan paquetes pesados de internacionalización con decenas de plugins. Para LifeOps, diseñé una solución en **menos de 80 líneas de código** en `LanguageContext.jsx`:
 
