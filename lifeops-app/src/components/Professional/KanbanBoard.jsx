@@ -24,8 +24,35 @@ export function KanbanBoard() {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedProjectId, setSelectedProjectId] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingTask, setEditingTask] = useState(null);
+  const isModalFlag = typeof window !== 'undefined' && (
+    window.location.search.includes('openModal=true') || 
+    window.location.hash.includes('openModal=true')
+  );
+
+  const isEnParam = window.location.hash.includes('lang=en') || window.location.search.includes('lang=en') || localStorage.getItem('lifeops_language') === 'en';
+  const initialMockTask = isModalFlag ? {
+    id: 'task-3',
+    title: isEnParam ? 'Kanban Board Implementation & JSONB Timeline' : 'Implementación Tablero Kanban y Bitácora JSONB',
+    description: isEnParam ? 'Agile task management with chronological timeline stored in PostgreSQL JSONB.' : 'Gestión ágil de tareas con bitácora cronológica persistida en columna JSONB.',
+    project_id: 'proj-1',
+    priority: 'critical',
+    status: 'in_progress',
+    due_date: '2026-09-15',
+    estimated_hours: 8,
+    comments: isEnParam ? [
+      { id: 'c1', text: 'PostgreSQL schema updated with comments JSONB default []', created_at: '2026-09-12T14:30:00Z' },
+      { id: 'c2', text: 'React optimistic updates running smoothly with zero visual latency', created_at: '2026-09-13T09:15:00Z' },
+      { id: 'c3', text: 'Atomic persistence tests and OpenAPI contract validation passed', created_at: '2026-09-13T11:45:00Z' }
+    ] : [
+      { id: 'c1', text: 'Esquema PostgreSQL completado con columna comments JSONB default []', created_at: '2026-09-12T14:30:00Z' },
+      { id: 'c2', text: 'Actualizaciones optimistas en React funcionando sin latencia visual', created_at: '2026-09-13T09:15:00Z' },
+      { id: 'c3', text: 'Pruebas de persistencia atómica y validación de contrato OpenAPI superadas', created_at: '2026-09-13T11:45:00Z' }
+    ],
+    project: { name: 'LifeOps Cloud & API', color: '#10b981' }
+  } : null;
+
+  const [isModalOpen, setIsModalOpen] = useState(isModalFlag);
+  const [editingTask, setEditingTask] = useState(initialMockTask);
   const [submitting, setSubmitting] = useState(false);
 
   // Task Comments State
@@ -39,7 +66,15 @@ export function KanbanBoard() {
     { id: 'done', title: t('professional.columns.done'), color: '#10b981', icon: '✅' },
   ];
 
-  const defaultFormData = {
+  const defaultFormData = initialMockTask ? {
+    title: initialMockTask.title,
+    description: initialMockTask.description,
+    project_id: initialMockTask.project_id,
+    priority: initialMockTask.priority,
+    status: initialMockTask.status,
+    due_date: initialMockTask.due_date,
+    estimated_hours: initialMockTask.estimated_hours,
+  } : {
     title: '',
     description: '',
     project_id: '',
@@ -70,6 +105,27 @@ export function KanbanBoard() {
   useEffect(() => {
     fetchData();
   }, [selectedProjectId]);
+
+  useEffect(() => {
+    const isModalFlag = typeof window !== 'undefined' && (
+      window.location.search.includes('openModal=true') || 
+      window.location.hash.includes('openModal=true')
+    );
+    if (isModalFlag && tasks.length > 0) {
+      const taskWithComments = tasks.find(t => t.comments && t.comments.length > 0) || tasks[0];
+      setEditingTask(taskWithComments);
+      setFormData({
+        title: taskWithComments.title,
+        description: taskWithComments.description || '',
+        project_id: taskWithComments.project_id || '',
+        priority: taskWithComments.priority || 'medium',
+        status: taskWithComments.status || 'in_progress',
+        due_date: taskWithComments.due_date || '',
+        estimated_hours: taskWithComments.estimated_hours || '',
+      });
+      setIsModalOpen(true);
+    }
+  }, [tasks]);
 
   const handleOpenCreate = () => {
     setEditingTask(null);

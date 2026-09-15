@@ -55,11 +55,15 @@ const handleViewChange = (mode) => {
 
 In the header of each module, two unobtrusive buttons with `LayoutGrid` and `Table` icons toggle the presentation mode instantly. Thanks to React and Vite's build architecture, view switches execute in sub-milliseconds without triggering redundant server roundtrips.
 
+![Dual view mode in LifeOps: Synthesized data table with key metrics, personal bests, and instant sorting](lifeops_sport_table_en.png)
+
 ---
 
 ### 2. Fitness & Performance Module (`SportModule.jsx`) 🏃💨
 
 The fitness module caters to multi-sport athletes practicing running, road cycling, gym strength sessions, and swimming.
+
+![Fitness and Performance Module featuring aggregate KPI summary widgets and detailed workout cards](lifeops_sport_performance_en.png)
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -148,8 +152,12 @@ const percentage = b.pages_total > 0
 
 A status filter organizes titles into `reading`, `completed`, and `wishlist`, paired with an interactive 5-star rating system using `lucide-react` icons.
 
+![Reading Library module with dynamic progress tracking percentages and status badges](lifeops_books_progress_en.png)
+
 #### 3.2. Streaming Media Catalog (`FilmsModule.jsx`)
 The cinema module tracks movies, TV series, and documentaries cataloged by streaming provider (*Netflix, HBO Max, Prime Video, Disney+, Cinema*). Each entry logs release year, director, rating, and personal review notes, answering: *"What were the best films I watched this past quarter?"*.
+
+![Cinema and TV series catalog organized by streaming provider with ratings](lifeops_films_catalog_en.png)
 
 ---
 
@@ -161,6 +169,8 @@ For professional tasks, I implemented a full Kanban board featuring 4 columns re
 2. ⚡ **In Progress (`in_progress`)**: Active work during the current sprint.
 3. 🔍 **In Review (`review`)**: Tasks pending review, testing, or third-party feedback.
 4. ✅ **Done (`done`)**: Completed deliverables.
+
+![Professional 4-column Kanban board with project tags, urgent priority chips, and progress badges](lifeops_kanban_board_en.png)
 
 ```
 ┌──────────────────┬──────────────────┬──────────────────┬──────────────────┐
@@ -276,6 +286,8 @@ Inside the task edit modal, we render a chronological timeline with timestamps a
   ))}
 </div>
 ```
+
+![Task edit modal with chronological progress timeline powered by PostgreSQL JSONB](lifeops_timeline_modal_en.png)
 
 > [!NOTE]
 > Storing the progress log as structured JSONB within the task row allows our reporting engine (covered in Part 4) to extract the complete project timeline without executing expensive N+1 database queries.

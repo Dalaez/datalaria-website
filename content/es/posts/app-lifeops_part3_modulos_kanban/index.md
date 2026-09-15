@@ -55,11 +55,15 @@ const handleViewChange = (mode) => {
 
 En la cabecera de cada módulo, dos botones discretos con iconos de `LayoutGrid` y `Table` permiten alternar el modo de visualización al instante. Gracias a React y al motor de estilos de Vite, el cambio es sub-milisegundo y no requiere volver a solicitar los datos al servidor.
 
+![Modo dual en LifeOps: Vista compacta en tabla con métricas clave, marcas personales y filtros directos](lifeops_deporte_tabla_es.png)
+
 ---
 
 ### 2. Módulo de Deporte & Rendimiento Físico (`SportModule.jsx`) 🏃💨
 
 El módulo deportivo está pensado para atletas aficionados que practican varias disciplinas: carreras (*running*), ciclismo (*cycling*), entrenamientos de fuerza (*gym*) o natación.
+
+![Módulo de Deporte y Rendimiento Físico con widgets de métricas agregadas y tarjetas de entrenamiento](lifeops_deporte_rendimiento_es.png)
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -148,8 +152,12 @@ const percentage = b.pages_total > 0
 
 Además, el selector de estado permite clasificar rápidamente entre `reading` (*Leyendo actualmente*), `completed` (*Leído*) y `wishlist` (*Lista de deseos*), complementado con un componente de puntuación de 1 a 5 estrellas mediante iconos SVG de `lucide-react`.
 
+![Módulo de Biblioteca y Lecturas con cálculo porcentual de avance y estados dinámicos](lifeops_libros_progreso_es.png)
+
 #### 3.2. Catálogo Audiovisual por Plataforma (`FilmsModule.jsx`)
 El módulo de cine organiza películas, series y documentales por plataforma de streaming (*Netflix, HBO Max, Prime Video, Disney+, Cine*). Cada registro incluye título, director, año de estreno, valoración personal y una breve reseña, facilitando responder a la típica pregunta: *"¿Qué películas buenas he visto este último trimestre?"*.
+
+![Catálogo de Cine y Series organizado por plataforma de streaming con valoraciones](lifeops_cine_catalogo_es.png)
 
 ---
 
@@ -161,6 +169,8 @@ Para el área profesional, implementé un tablero Kanban completo con 4 columnas
 2. ⚡ **En Progreso (`in_progress`)**: Trabajo activo en la jornada.
 3. 🔍 **En Revisión (`review`)**: Tareas a la espera de validación, despliegue o feedback de terceros.
 4. ✅ **Completadas (`done`)**: Entregables finalizados.
+
+![Tablero Kanban profesional con 4 columnas, proyectos asociados y etiquetas de prioridad](lifeops_kanban_tablero_es.png)
 
 ```
 ┌──────────────────┬──────────────────┬──────────────────┬──────────────────┐
@@ -276,6 +286,8 @@ En el modal de edición de la tarea, renderizamos un *timeline* cronológico con
   ))}
 </div>
 ```
+
+![Modal de edición de tarea con la Bitácora de Avances cronológica impulsada por PostgreSQL JSONB](lifeops_bitacora_modal_es.png)
 
 > [!NOTE]
 > Gracias a almacenar la bitácora como JSONB estructurado dentro de la propia tarea, el motor de informes de la Parte 4 puede leer la historia completa de cada proyecto sin ejecutar consultas cruzadas N+1.

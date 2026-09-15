@@ -50,9 +50,12 @@ class SocialMediaManager:
         return " ".join(text.split())
 
     def _count_twitter_length(self, text):
-        """Cuenta la longitud real del texto para Twitter (emojis cuentan x2)."""
+        """Cuenta la longitud real del texto para Twitter (emojis cuentan x2, URLs cuentan como 23 caracteres t.co)."""
+        import re
+        # Twitter acorta cualquier URL (http/https) a 23 caracteres vía t.co
+        normalized_text = re.sub(r'https?://\S+', 'x' * 23, text)
         length = 0
-        for char in text:
+        for char in normalized_text:
             # Caracteres fuera del BMP (emojis, etc.) cuentan como 2
             if ord(char) > 0xFFFF:
                 length += 2
@@ -246,25 +249,34 @@ class SocialMediaManager:
             print(f"⚠️ Falló Twitter (Tweepy Error): {e}")
             print(f"   🔍 Debug Info: {type(e)}")
             
-            if hasattr(e, 'response') and e.response:
+            if hasattr(e, 'response') and e.response is not None:
                 print(f"   🔴 Status Code: {e.response.status_code}")
                 try: 
-                   error_json = e.response.json()
-                   print(f"   🔴 Response JSON: {error_json}")
-                   if 'detail' in error_json:
-                       print(f"   🔴 Detail: {error_json['detail']}")
+                    error_json = e.response.json()
+                    print(f"   🔴 Response JSON: {error_json}")
+                    if 'detail' in error_json:
+                        print(f"   🔴 Detail: {error_json['detail']}")
                 except:
-                   print(f"   🔴 Response Text: {e.response.text}")
+                    print(f"   🔴 Response Text: {e.response.text}")
             
             if hasattr(e, 'api_messages'):
                 print(f"   🔴 API Messages: {e.api_messages}")
             
-            if "403" in str(e):
+            if "402" in str(e) or (hasattr(e, 'response') and e.response is not None and e.response.status_code == 402):
+                print("   💡 PISTA 402: Payment Required ('credits depleted').")
+                print("      Tu cuenta o proyecto de Twitter/X Developer se ha quedado sin créditos de API.")
+                print("      Twitter/X ahora utiliza un sistema de créditos prepago (Pay-as-you-go).")
+                print("      Para solucionarlo:")
+                print("      1. Accede a https://developer.x.com/en/portal/dashboard")
+                print("      2. Revisa la sección 'Billing' / 'Usage' de tu proyecto.")
+                print("      3. Recarga créditos o actualiza tu suscripción.")
+                print("      4. Si deseas omitir Twitter temporalmente, pon ENABLE_TWITTER=false en autopilot/.env.")
+            elif "403" in str(e):
                 print("   💡 PISTA 403: Forbidden. Puede ser:")
                 print("      1. Contenido duplicado (intenta texto diferente).")
                 print("      2. Credenciales sin permisos de escritura (regenera tokens).")
                 print("      3. Rate limit alcanzado.")
-            if "401" in str(e):
+            elif "401" in str(e):
                 print("   💡 PISTA 401: Unauthorized. Revisa tus API KEYS y TOKENS.")
 
     def _refresh_linkedin_token(self):

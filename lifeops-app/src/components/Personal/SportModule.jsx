@@ -28,7 +28,8 @@ export function SportModule() {
   const [editingWorkout, setEditingWorkout] = useState(null);
   const [submitting, setSubmitting] = useState(false);
   const [viewMode, setViewMode] = useState(() => {
-    return localStorage.getItem('lifeops_view_sport') || 'grid';
+    const params = new URLSearchParams(window.location.hash.includes('?') ? window.location.hash.split('?')[1] : window.location.search);
+    return params.get('view') || localStorage.getItem('lifeops_view_sport') || 'grid';
   });
 
   const handleViewChange = (mode) => {
