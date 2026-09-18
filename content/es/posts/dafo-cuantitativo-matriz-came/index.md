@@ -1,7 +1,7 @@
 ---
 title: "DAFO Cuantitativo y Matriz CAME: La Guía Definitiva de Decisión Estratégica para Comités de Dirección (C-Level)"
-date: 2026-09-17
-draft: false
+date: 2026-09-30
+draft: true
 categories: ["Estrategia Empresarial", "Toma de Decisiones", "Management", "Finanzas Corporativas"]
 tags: ["DAFO Cuantitativo", "Matriz CAME", "Estrategia C-Level", "Pirámide de Minto", "Plantilla Excel", "PowerPoint Ejecutivo", "Asignación de Capital"]
 description: "Guía metodológica exhaustiva para transformar un DAFO cualitativo en un modelo matemático vectorial con ponderaciones, calificaciones y plan de acción CAME listo para Comités de Dirección."

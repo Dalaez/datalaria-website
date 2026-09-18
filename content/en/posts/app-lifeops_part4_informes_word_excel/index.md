@@ -1,6 +1,6 @@
 ---
 title: "Project LifeOps (Part 4): Executive Word (.docx) Reporting Engine and Multi-Sheet Excel (.xlsx) Export"
-date: 2026-09-19
+date: 2026-09-18
 draft: false
 categories: ["Projects", "Web Development"]
 tags: ["python", "fastapi", "python-docx", "openpyxl", "word", "excel", "csv", "streaming", "reporting", "backend", "powerbi"]
@@ -123,6 +123,8 @@ The reporting service supports three purpose-built templates:
 2. **Fitness Performance Dossier (`sport_performance`)**: Built for athletic analysis: total volume in kilometers, average paces, heart rate distributions, and Personal Best (PB) records.
 3. **Project Portfolio Status (`project_status`)**: Engineered for professional management: deliverable statuses, overdue deadlines, and the complete chronological progress log extracted from the `JSONB` comments column.
 
+![Executive Word (.docx) report templates catalog with selector and metric breakdown](lifeops_word_templates_en.png)
+
 #### 2.2. In-Memory Assembly
 The entrypoint constructs the document and streams it directly to the buffer:
 
@@ -228,6 +230,8 @@ def export_full_excel(user_id: str) -> io.BytesIO:
 * **`showGridLines = True`**: By default, Excel hides gridlines on worksheets featuring background styling. Forcing this flag ensures crisp readability.
 * **Smart Auto-Fit Columns**: Automatically calculates the longest string in each column and adds a 4-character safety buffer, eliminating truncated headers or numerical `###` overflow errors.
 
+![Multi-sheet Master Excel export (.xlsx) consolidating all modules into thematic tabs](lifeops_excel_master_en.png)
+
 ---
 
 ### 4. CSV Backups: The Secret of UTF-8 BOM (`\ufeff`) 🛡️
@@ -259,6 +263,8 @@ def export_entity_csv(entity: str, user_id: str) -> bytes:
 ```
 
 When users double-click the resulting file, **Excel opens it perfectly without encoding dialogs**, preserving accented strings and clean column separation.
+
+![CSV data export modules powered by UTF-8 BOM encoding and semicolon delimiter](lifeops_csv_export_en.png)
 
 ---
 
@@ -296,7 +302,9 @@ If a client exceeds the threshold, FastAPI instantly responds with an **HTTP 429
 In our React client, the `/reports` route provides an intuitive command center:
 * **Interactive Template Cards**: Clear previews explaining the target audience of each report.
 * **Period Selectors**: Instant shortcuts for *Current Month*, *Previous Month*, or custom date ranges.
-* **Native Streaming Downloads**: The browser handles streaming binary payloads via `Blob` APIs:
+* **Native Streaming Downloads**: The browser handles streaming binary payloads via `Blob` APIs.
+
+![LifeOps Reports and Data Export Center with active account datalaria@gmail.com](lifeops_reports_center_en.png)
 
 ```javascript
 const response = await fetch(`${API_BASE_URL}/api/v1/reports/generate`, {
@@ -316,6 +324,8 @@ link.download = filename;
 link.click();
 window.URL.revokeObjectURL(downloadUrl);
 ```
+
+![Generated reports history table tracking dates, item volumes, and document types](lifeops_reports_history_en.png)
 
 ---
 

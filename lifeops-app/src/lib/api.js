@@ -275,6 +275,39 @@ export async function apiFetch(endpoint, options = {}) {
         }
       ];
     }
+    if (endpoint.includes('/api/v1/reports/history')) {
+      const isEn = typeof window !== 'undefined' && (
+        window.location.hash.includes('lang=en') || 
+        window.location.search.includes('lang=en') || 
+        localStorage.getItem('lifeops_language') === 'en'
+      );
+      return [
+        {
+          id: 'rep-1',
+          report_name: isEn ? 'LifeOps_Comprehensive_Monthly_Report_2026-09.docx' : 'LifeOps_Informe_Mensual_Integral_2026-09.docx',
+          period_start: '2026-09-01',
+          period_end: '2026-09-15',
+          generated_at: '2026-09-15T10:30:00Z',
+          metadata: { activities_count: 24, tasks_count: 14 }
+        },
+        {
+          id: 'rep-2',
+          report_name: isEn ? 'LifeOps_Fitness_Performance_Dossier_2026-08.docx' : 'LifeOps_Dossier_Deportivo_2026-08.docx',
+          period_start: '2026-08-01',
+          period_end: '2026-08-31',
+          generated_at: '2026-09-01T08:15:00Z',
+          metadata: { activities_count: 18, tasks_count: 0 }
+        },
+        {
+          id: 'rep-3',
+          report_name: isEn ? 'LifeOps_Project_Portfolio_Status_Q3.docx' : 'LifeOps_Estado_Proyectos_Q3.docx',
+          period_start: '2026-07-01',
+          period_end: '2026-09-10',
+          generated_at: '2026-09-10T16:45:00Z',
+          metadata: { activities_count: 0, tasks_count: 32 }
+        }
+      ];
+    }
   }
 
   const { data: { session } } = await supabase.auth.getSession();

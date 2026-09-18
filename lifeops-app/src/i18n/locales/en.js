@@ -311,6 +311,11 @@ export const en = {
     updatePasswordBtn: 'Update Password',
     passwordUpdatedSuccess: 'Password updated successfully!',
     passwordMismatch: 'Passwords do not match.',
+    infraSection: 'Cloud Infrastructure & Endpoints',
+    backendLabel: 'FASTAPI BACKEND (RENDER.COM)',
+    dbSchemaLabel: 'POSTGRESQL SCHEMA (SUPABASE)',
+    corsLabel: 'ALLOWED CORS DOMAINS',
+    authProviderLabel: 'AUTH PROVIDER',
   },
   auth: {
     loginTitle: 'Log In',

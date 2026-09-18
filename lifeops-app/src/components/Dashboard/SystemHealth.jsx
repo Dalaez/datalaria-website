@@ -8,33 +8,47 @@ export function SystemHealth() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [retryCount, setRetryCount] = useState(0);
-
-  const checkHealth = async (isAutoRetry = false) => {
-    setLoading(true);
-    if (!isAutoRetry) setError(null);
-
-    try {
-      const data = await api.getHealth();
-      setHealth(data);
-      setError(null);
-    } catch (err) {
-      console.warn('Health check attempt failed:', err);
-      setError(err.message || 'Error al conectar con la API');
-      
-      // Auto-retry up to 3 times with a 6-second delay to handle Render cold-start waking up
-      if (retryCount < 3) {
-        setTimeout(() => {
-          setRetryCount((prev) => prev + 1);
-        }, 6000);
-      }
-    } finally {
-      setLoading(false);
-    }
-  };
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
 
   useEffect(() => {
-    checkHealth(retryCount > 0);
-  }, [retryCount]);
+    let isMounted = true;
+    let timerId;
+
+    async function check(attempt = 0) {
+      setLoading(true);
+      if (attempt === 0) setError(null);
+      setRetryCount(attempt);
+
+      try {
+        const data = await api.getHealth();
+        if (!isMounted) return;
+        setHealth(data);
+        setError(null);
+      } catch (err) {
+        if (!isMounted) return;
+        console.warn(`Health check attempt ${attempt + 1} failed:`, err);
+        setError(err.message || 'Error al conectar con la API');
+
+        // Auto-retry up to 3 times with a 6-second delay to handle Render cold-start waking up
+        if (attempt < 3) {
+          timerId = setTimeout(() => {
+            check(attempt + 1);
+          }, 6000);
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    }
+
+    check(0);
+
+    return () => {
+      isMounted = false;
+      if (timerId) clearTimeout(timerId);
+    };
+  }, [refreshTrigger]);
 
   const endpointLabel = API_BASE_URL.replace('https://', '').replace('http://', '');
 
@@ -45,7 +59,11 @@ export function SystemHealth() {
           <Server size={18} className="icon-server" />
           <span>Backend Connection</span>
         </div>
-        <button onClick={() => { setRetryCount(0); checkHealth(false); }} className="refresh-btn" title="Recomprobar">
+        <button 
+          onClick={() => setRefreshTrigger((prev) => prev + 1)} 
+          className="refresh-btn" 
+          title="Recomprobar"
+        >
           <RefreshCw size={14} className={loading ? 'spin' : ''} />
         </button>
       </div>

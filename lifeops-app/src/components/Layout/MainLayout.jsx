@@ -8,7 +8,11 @@ export function MainLayout() {
   const [collapsed, setCollapsed] = useState(() => {
     return localStorage.getItem('lifeops_sidebar_collapsed') === 'true';
   });
-  const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
+  const [mobileDrawerOpen, setMobileDrawerOpen] = useState(() => {
+    const hash = window.location.hash || '';
+    const search = window.location.search || '';
+    return hash.includes('drawer=open') || search.includes('drawer=open');
+  });
 
   const toggleSidebar = () => {
     // If on mobile (screen <= 768px), toggle drawer

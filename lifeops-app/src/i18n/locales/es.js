@@ -311,6 +311,11 @@ export const es = {
     updatePasswordBtn: 'Actualizar Contraseña',
     passwordUpdatedSuccess: '¡Contraseña actualizada con éxito!',
     passwordMismatch: 'Las contraseñas no coinciden.',
+    infraSection: 'Infraestructura & Endpoints Cloud',
+    backendLabel: 'BACKEND FASTAPI (RENDER.COM)',
+    dbSchemaLabel: 'ESQUEMA POSTGRESQL (SUPABASE)',
+    corsLabel: 'DOMINIOS CORS PERMITIDOS',
+    authProviderLabel: 'PROVEEDOR DE AUTENTICACIÓN',
   },
   auth: {
     loginTitle: 'Iniciar Sesión',

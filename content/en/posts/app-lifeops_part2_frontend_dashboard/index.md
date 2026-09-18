@@ -342,30 +342,42 @@ export function SystemHealth() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [retryCount, setRetryCount] = useState(0);
-
-  const checkHealth = async (isAutoRetry = false) => {
-    setLoading(true);
-    if (!isAutoRetry) setError(null);
-
-    try {
-      const data = await api.getHealth();
-      setHealth(data);
-      setError(null);
-    } catch (err) {
-      setError(err.message || 'API Connection Error');
-      
-      // Auto-retry up to 3 times with 6-second backoff while Render wakes up
-      if (retryCount < 3) {
-        setTimeout(() => setRetryCount((prev) => prev + 1), 6000);
-      }
-    } finally {
-      setLoading(false);
-    }
-  };
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
 
   useEffect(() => {
-    checkHealth(retryCount > 0);
-  }, [retryCount]);
+    let isMounted = true;
+    let timerId;
+
+    async function check(attempt = 0) {
+      setLoading(true);
+      if (attempt === 0) setError(null);
+      setRetryCount(attempt);
+
+      try {
+        const data = await api.getHealth();
+        if (!isMounted) return;
+        setHealth(data);
+        setError(null);
+      } catch (err) {
+        if (!isMounted) return;
+        setError(err.message || 'API Connection Error');
+
+        // Auto-retry with local attempt variable and unmount cleanup
+        if (attempt < 3) {
+          timerId = setTimeout(() => check(attempt + 1), 6000);
+        }
+      } finally {
+        if (isMounted) setLoading(false);
+      }
+    }
+
+    check(0);
+
+    return () => {
+      isMounted = false;
+      if (timerId) clearTimeout(timerId);
+    };
+  }, [refreshTrigger]);
 
   return (
     <div className="system-health-widget glass-panel">

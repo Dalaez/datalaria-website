@@ -1,6 +1,6 @@
 ---
 title: "Project LifeOps (Part 5): 24/7 Zero-Cost Cloud Deployment ($0/month), Mobile Optimization, and PWA"
-date: 2026-09-22
+date: 2026-09-20
 draft: false
 categories: ["Projects", "Web Development"]
 tags: ["react", "fastapi", "render", "netlify", "pwa", "mobile", "css", "cloud", "devops", "serverless"]
@@ -152,6 +152,8 @@ const checkHealth = async (isAutoRetry = false) => {
 3. The frontend retries in the background every 6 seconds without interrupting client navigation.
 4. As soon as FastAPI responds with `HTTP 200`, the badge shifts to green (*"FastAPI Online • Supabase Connected"*), fetching data without requiring a manual page refresh.
 
+![Account settings and cloud infrastructure panel connected to Render and Supabase](lifeops_cloud_infrastructure_en.png)
+
 ---
 
 ### 3. Thumb-Accessible Mobile Ergonomics (Android & iOS) 📱👍
@@ -191,10 +193,14 @@ We anchored the mobile user experience on **three ergonomic pillars**:
 #### 3.1. Fixed Bottom Navigation Bar (`BottomNav.jsx`)
 Stationed permanently along the screen footer (`position: fixed; bottom: 0; z-index: 1000;`), it houses 5 prominent touch targets (48x48px touch bounding boxes following Apple and Google accessibility standards), allowing instantaneous section transitions with a thumb tap.
 
+![Smartphone mobile viewport featuring the thumb-accessible fixed bottom navigation bar](lifeops_mobile_bottom_nav_en.png)
+
 #### 3.2. Off-Canvas Sliding Drawer
 The primary navigation sidebar (`Sidebar.jsx`) switches behavior based on screen real estate:
 * **On Desktop (> 768px)**: Expands to 260px or collapses to a slim 72px icon bar with floating tooltips, persisted in `localStorage`.
 * **On Mobile (<= 768px)**: Becomes an Off-Canvas drawer sliding in over a frosted backdrop (`backdrop-filter: blur(8px)`), auto-dismissing on link navigation.
+
+![Off-canvas mobile sliding drawer over frosted glass backdrop with quick links and system status](lifeops_mobile_drawer_en.png)
 
 #### 3.3. Viewport-Anchored Modals with `React.createPortal` (`Modal.jsx`)
 Form modals in mobile CSS are notorious for layout bugs: getting clipped by ancestor containers, misaligning behind virtual keyboards, or burying save buttons beneath the fold.
@@ -250,6 +256,8 @@ export function Modal({ isOpen, onClose, title, children }) {
 ```
 
 With `createPortal`, modals break free from ancestor stacking contexts. And thanks to `calc(64px + 12px)` and sticky footers, the **Cancel and Save buttons remain permanently anchored in thumb view**, regardless of form length.
+
+![Touch-friendly mobile modal rendered via React Portal with swipe drag handle and sticky footer actions](lifeops_mobile_modal_en.png)
 
 ---
 

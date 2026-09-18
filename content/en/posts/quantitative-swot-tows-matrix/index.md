@@ -1,7 +1,7 @@
 ---
 title: "Quantitative SWOT & TOWS Matrix: The Definitive C-Level Guide to Boardroom Strategy & Capital Allocation"
-date: 2026-09-17
-draft: false
+date: 2026-09-30
+draft: true
 categories: ["Corporate Strategy", "Decision Making", "Executive Management", "Corporate Finance"]
 tags: ["Quantitative SWOT", "TOWS Matrix", "C-Level Strategy", "Minto Pyramid", "Excel Model", "Boardroom Presentation", "Capital Allocation"]
 description: "A comprehensive methodological guide to transforming qualitative SWOT brainstorming into a vector-based quantitative mathematical model and actionable TOWS capital allocation roadmap."

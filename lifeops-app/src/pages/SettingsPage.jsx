@@ -174,7 +174,7 @@ export function SettingsPage() {
             </div>
 
             <div>
-              <span style={{ color: 'var(--text-muted)', display: 'block', fontSize: '0.78rem' }}>AUTH PROVIDER</span>
+              <span style={{ color: 'var(--text-muted)', display: 'block', fontSize: '0.78rem' }}>{t('settings.authProviderLabel')}</span>
               <span style={{ fontWeight: 500 }}>Supabase Auth (datalaria-core)</span>
             </div>
           </div>
@@ -185,23 +185,23 @@ export function SettingsPage() {
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
             <Server size={20} color="var(--accent-purple)" />
             <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.1rem', fontWeight: 600 }}>
-              Infraestructura & Endpoints
+              {t('settings.infraSection')}
             </h3>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', fontSize: '0.9rem' }}>
             <div>
-              <span style={{ color: 'var(--text-muted)', display: 'block', fontSize: '0.78rem' }}>BACKEND FASTAPI</span>
+              <span style={{ color: 'var(--text-muted)', display: 'block', fontSize: '0.78rem' }}>{t('settings.backendLabel')}</span>
               <code>https://lifeops-api.onrender.com</code>
             </div>
 
             <div>
-              <span style={{ color: 'var(--text-muted)', display: 'block', fontSize: '0.78rem' }}>DATABASE SCHEMA</span>
+              <span style={{ color: 'var(--text-muted)', display: 'block', fontSize: '0.78rem' }}>{t('settings.dbSchemaLabel')}</span>
               <code>lifeops (datalaria-core)</code>
             </div>
 
             <div>
-              <span style={{ color: 'var(--text-muted)', display: 'block', fontSize: '0.78rem' }}>CORS DOMAINS</span>
+              <span style={{ color: 'var(--text-muted)', display: 'block', fontSize: '0.78rem' }}>{t('settings.corsLabel')}</span>
               <code>http://localhost:1313, http://localhost:5173, https://datalaria.com</code>
             </div>
           </div>

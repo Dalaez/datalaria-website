@@ -1,6 +1,6 @@
 ---
 title: "Proyecto LifeOps (Parte 4): Motor de Informes Ejecutivos en Word (.docx) y Exportación Multi-Hoja en Excel (.xlsx)"
-date: 2026-09-19
+date: 2026-09-18
 draft: false
 categories: ["Proyectos", "Desarrollo Web"]
 tags: ["python", "fastapi", "python-docx", "openpyxl", "word", "excel", "csv", "streaming", "informes", "backend", "powerbi"]
@@ -123,6 +123,8 @@ El motor soporta tres tipos de informes especializados:
 2. **Dossier de Rendimiento Deportivo (`sport_performance`)**: Diseñado para el análisis de entrenamientos: tabla de volumen en km, ritmos medios, calorías acumuladas y marcas personales (PB).
 3. **Estado de Portafolio de Proyectos (`project_status`)**: Enfocado en gestión profesional: control de entregables, tareas vencidas y la bitácora cronológica completa extraída del campo `JSONB`.
 
+![Catálogo de plantillas ejecutivas en Word (.docx) con selector y desglose de métricas](lifeops_plantillas_word_es.png)
+
 #### 2.2. El Ensamblado en Memoria
 El punto de entrada del generador ejecuta la construcción y vuelca el binario en el buffer:
 
@@ -229,6 +231,8 @@ def export_full_excel(user_id: str) -> io.BytesIO:
 * **`showGridLines = True`**: Por defecto, Excel desactiva las líneas de cuadrícula en hojas generadas con fondos personalizados. Forzar esta propiedad garantiza una lectura cómoda.
 * **Auto-fit de columnas**: Calcula la longitud máxima de cada celda y le añade un margen de seguridad de 4 caracteres, evitando los molestos textos truncados o números con `###`.
 
+![Exportación de Libro Maestro Excel (.xlsx) con 5 pestañas temáticas consolidadas](lifeops_excel_maestro_es.png)
+
 ---
 
 ### 4. Backups en CSV: El Secreto del UTF-8 BOM (`\ufeff`) 🛡️
@@ -260,6 +264,8 @@ def export_entity_csv(entity: str, user_id: str) -> bytes:
 ```
 
 Al hacer doble clic en el archivo descargado, **Excel lo abre perfecto al instante**, con acentos nítidos y cada dato en su columna correspondiente.
+
+![Módulos de exportación en CSV con codificación UTF-8 BOM y delimitador por punto y coma](lifeops_exportacion_csv_es.png)
 
 ---
 
@@ -297,7 +303,9 @@ Si un cliente excede el umbral, la API responde con un código estándar **HTTP 
 En el cliente React, construimos la página `/reports` con una interfaz modular:
 * **Selector de Plantilla**: Tarjetas interactivas que explican el contenido de cada informe.
 * **Filtros de Período**: Accesos directos a *Este Mes*, *Mes Anterior* o selección personalizada de fechas.
-* **Descarga Streaming**: Consumo del endpoint mediante `fetch` convirtiendo la respuesta en un `Blob` que dispara la descarga nativa del archivo en el navegador:
+* **Descarga Streaming**: Consumo del endpoint mediante `fetch` convirtiendo la respuesta en un `Blob` que dispara la descarga nativa del archivo en el navegador.
+
+![Centro de Informes y Exportación en LifeOps con cuenta activa datalaria@gmail.com](lifeops_centro_informes_es.png)
 
 ```javascript
 const response = await fetch(`${API_BASE_URL}/api/v1/reports/generate`, {
@@ -317,6 +325,8 @@ link.download = filename;
 link.click();
 window.URL.revokeObjectURL(downloadUrl);
 ```
+
+![Historial de informes generados con registro de fecha, volumen y tipo de documento](lifeops_historial_informes_es.png)
 
 ---
 

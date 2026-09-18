@@ -24,7 +24,11 @@ export function SportModule() {
   const { t, language } = useLanguage();
   const [workouts, setWorkouts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(() => {
+    const hash = window.location.hash || '';
+    const search = window.location.search || '';
+    return hash.includes('openModal=true') || search.includes('openModal=true');
+  });
   const [editingWorkout, setEditingWorkout] = useState(null);
   const [submitting, setSubmitting] = useState(false);
   const [viewMode, setViewMode] = useState(() => {

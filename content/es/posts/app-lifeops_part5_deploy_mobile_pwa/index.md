@@ -1,6 +1,6 @@
 ---
 title: "Proyecto LifeOps (Parte 5): Despliegue 24/7 en la Nube a Coste Cero ($0/mes), Optimización Móvil y PWA"
-date: 2026-09-22
+date: 2026-09-20
 draft: false
 categories: ["Proyectos", "Desarrollo Web"]
 tags: ["react", "fastapi", "render", "netlify", "pwa", "mobile", "css", "cloud", "devops", "serverless"]
@@ -152,6 +152,8 @@ const checkHealth = async (isAutoRetry = false) => {
 3. El frontend reintenta en bucle cada 6 segundos sin congelar la navegación.
 4. En cuanto la API responde con un `HTTP 200`, el badge conmuta automáticamente a verde (*"FastAPI Online • Supabase Connected"*), cargando todos los datos sin que el usuario haya tenido que recargar la página.
 
+![Panel de configuración de cuenta e infraestructura cloud conectada en Render y Supabase](lifeops_infraestructura_cloud_es.png)
+
 ---
 
 ### 3. Ergonomía Móvil al Alcance del Pulgar (Samsung Galaxy / A55, Android e iOS) 📱👍
@@ -191,10 +193,14 @@ Para solucionar esto, diseñamos la interfaz móvil sobre **tres pilares fundame
 #### 3.1. Barra de Navegación Inferior Fija (`BottomNav.jsx`)
 Fijada permanentemente en la base de la pantalla (`position: fixed; bottom: 0; z-index: 1000;`), ofrece 5 accesos directos de 48x48px (el tamaño táctil recomendado por las guías de accesibilidad de Google y Apple), permitiendo cambiar de sección con un simple toque de pulgar.
 
+![Vista móvil en smartphone con barra de navegación inferior fija al alcance del pulgar](lifeops_mobile_bottom_nav_es.png)
+
 #### 3.2. Menú Deslizable (*Off-Canvas Drawer*)
 El panel lateral (`Sidebar.jsx`) adopta un comportamiento dual:
 * **En escritorio (> 768px)**: Colapsa suavemente entre 260px (expandido) y 72px (compacto con tooltips flotantes), persistiendo la preferencia en `localStorage`.
 * **En móvil (<= 768px)**: Se transforma en un cajón flotante que se desliza desde el lateral izquierdo sobre un fondo oscuro desenfocado (`backdrop-filter: blur(8px)`), cerrándose automáticamente al seleccionar cualquier enlace.
+
+![Cajón de navegación móvil deslizable sobre fondo desenfocado con accesos y estado del sistema](lifeops_mobile_drawer_es.png)
 
 #### 3.3. Ventanas Modales Flotantes con `React.createPortal` (`Modal.jsx`)
 Los formularios modales suelen ser la mayor fuente de dolores de cabeza en CSS móvil: se cortan con el teclado, heredan transformaciones del layout padre o el botón de guardar queda oculto bajo el scroll.
@@ -250,6 +256,8 @@ export function Modal({ isOpen, onClose, title, children }) {
 ```
 
 Al utilizar `createPortal`, el modal escapa de cualquier contenedor intermedio. Y gracias al cálculo `calc(64px + 12px)` y a los botones adhesivos (`sticky`), el usuario **siempre tiene a la vista los botones de Cancelar y Guardar**, sin importar la longitud del formulario.
+
+![Ventana modal táctil renderizada con React Portal incluyendo tirador de deslizamiento y botones adhesivos](lifeops_mobile_modal_es.png)
 
 ---
 
