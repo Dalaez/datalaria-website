@@ -179,3 +179,24 @@
   color: var(--text-secondary);
 }
 
+.copy-icon-btn {
+  background: transparent;
+  color: var(--text-muted);
+  padding: 0.35rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+}
+
+.copy-icon-btn:hover {
+  color: var(--accent-emerald);
+  background: rgba(16, 185, 129, 0.15);
+}
+
+.table-action-btn.copy:hover {
+  color: var(--accent-emerald);
+  background: rgba(16, 185, 129, 0.15);
+}
+

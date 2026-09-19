@@ -1,6 +1,6 @@
 ---
 title: "PostgreSQL with pgvector vs Vector DBs: Why Almost Nobody Needs Pinecone"
-date: 2026-09-19
+date: 2026-09-22
 draft: true
 categories: ["Artificial Intelligence", "Engineering"]
 tags: ["postgresql", "pgvector", "vector database", "pinecone", "rag", "embeddings", "hnsw", "supabase", "data architecture"]

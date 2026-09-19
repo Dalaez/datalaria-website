@@ -34,17 +34,34 @@ def _fetch_sport_data(user_id: str) -> List[Dict[str, Any]]:
             w = w[0]
         elif not isinstance(w, dict):
             w = {}
+            
+        meta = r.get("metadata") or {}
+        sec = meta.get("duration_seconds")
+        if sec:
+            h = sec // 3600
+            m = (sec % 3600) // 60
+            s = sec % 60
+            dur_str = f"{h}h {m}m {s}s" if h > 0 else (f"{m}m {s}s" if s > 0 else f"{m} min")
+        elif r.get("duration_minutes"):
+            dur_str = f"{r.get('duration_minutes')} min"
+            sec = r.get("duration_minutes") * 60
+        else:
+            dur_str = ""
+            sec = ""
+
         rows.append({
             "id": r.get("id"),
             "fecha": r.get("date"),
             "titulo": r.get("title"),
             "tipo_deporte": w.get("workout_type", "sport"),
             "distancia_km": w.get("distance_km") or "",
+            "duracion": dur_str,
             "duracion_min": r.get("duration_minutes") or "",
+            "duracion_segundos": sec,
             "calorias": w.get("calories") or "",
-            "frecuencia_cardiaca_avg": w.get("heart_rate_avg") or "",
+            "frecuencia_cardiaca_avg": w.get("heart_rate_avg") or w.get("avg_heart_rate") or "",
             "record_personal": "Sí" if w.get("personal_best") else "No",
-            "notas": r.get("notes") or "",
+            "notas": r.get("description") or w.get("notes") or "",
         })
     return rows
 

@@ -1,6 +1,6 @@
 ---
 title: "Proyecto LifeOps (Parte 5): Despliegue 24/7 en la Nube a Coste Cero ($0/mes), Optimización Móvil y PWA"
-date: 2026-09-20
+date: 2026-09-19
 draft: false
 categories: ["Proyectos", "Desarrollo Web"]
 tags: ["react", "fastapi", "render", "netlify", "pwa", "mobile", "css", "cloud", "devops", "serverless"]

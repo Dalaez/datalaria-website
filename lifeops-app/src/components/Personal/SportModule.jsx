@@ -16,9 +16,66 @@ import {
   Dumbbell,
   Bike,
   LayoutGrid,
+  Timer,
+  Zap,
+  Copy,
   Table as TableIcon
 } from 'lucide-react';
 import './SportModule.css';
+
+/**
+ * Extracts total workout duration in seconds.
+ * Prefers metadata.duration_seconds (exact), falls back to duration_minutes * 60.
+ */
+export function getWorkoutTotalSeconds(act) {
+  if (!act) return 0;
+  if (act.metadata?.duration_seconds != null) {
+    return parseInt(act.metadata.duration_seconds, 10) || 0;
+  }
+  if (act.duration_minutes != null) {
+    return Math.round(Number(act.duration_minutes) * 60);
+  }
+  return 0;
+}
+
+/**
+ * Formats seconds into human-readable duration (e.g. "48m 25s", "1h 15m 30s", "45 min").
+ */
+export function formatWorkoutDuration(act, lang = 'es') {
+  const totalSec = getWorkoutTotalSeconds(act);
+  if (!totalSec) return '-';
+
+  const h = Math.floor(totalSec / 3600);
+  const m = Math.floor((totalSec % 3600) / 60);
+  const s = totalSec % 60;
+
+  if (h > 0) {
+    return s > 0 ? `${h}h ${m}m ${s}s` : `${h}h ${m}m`;
+  }
+  return s > 0 ? `${m}m ${s}s` : `${m} min`;
+}
+
+/**
+ * Calculates real-time running pace (MM:SS /km) or cycling speed (km/h).
+ */
+export function calculatePaceOrSpeed(totalSec, distanceKm, workoutType) {
+  const dist = parseFloat(distanceKm);
+  const sec = parseInt(totalSec, 10);
+  if (!sec || !dist || dist <= 0) return null;
+
+  if (workoutType === 'cycling') {
+    const hours = sec / 3600;
+    const speed = (dist / hours).toFixed(1);
+    return { type: 'speed', value: `${speed} km/h` };
+  }
+
+  // Running, hiking, swimming, other
+  const secondsPerKm = sec / dist;
+  const paceMin = Math.floor(secondsPerKm / 60);
+  const paceSec = Math.round(secondsPerKm % 60);
+  const formattedPace = `${paceMin}:${paceSec.toString().padStart(2, '0')} /km`;
+  return { type: 'pace', value: formattedPace };
+}
 
 export function SportModule() {
   const { t, language } = useLanguage();
@@ -41,11 +98,13 @@ export function SportModule() {
     localStorage.setItem('lifeops_view_sport', mode);
   };
 
-  // Form state
+  // Form state with explicit hours, minutes and seconds
   const defaultFormData = {
     title: '',
     date: new Date().toISOString().split('T')[0],
+    duration_hours: '',
     duration_minutes: 45,
+    duration_seconds: '',
     workout_type: 'running',
     distance_km: '',
     calories: '',
@@ -82,10 +141,17 @@ export function SportModule() {
   const handleOpenEdit = (act) => {
     setEditingWorkout(act);
     const w = act.workout || {};
+    const totalSec = getWorkoutTotalSeconds(act);
+    const hours = Math.floor(totalSec / 3600);
+    const minutes = Math.floor((totalSec % 3600) / 60);
+    const seconds = totalSec % 60;
+
     setFormData({
       title: act.title || '',
       date: act.date || new Date().toISOString().split('T')[0],
-      duration_minutes: act.duration_minutes || 45,
+      duration_hours: hours > 0 ? hours : '',
+      duration_minutes: minutes,
+      duration_seconds: seconds > 0 ? seconds : '',
       workout_type: w.workout_type || 'running',
       distance_km: w.distance_km != null ? w.distance_km : '',
       calories: w.calories != null ? w.calories : '',
@@ -97,24 +163,69 @@ export function SportModule() {
     setIsModalOpen(true);
   };
 
+  const handleDuplicate = (act) => {
+    setEditingWorkout(null);
+    const w = act.workout || {};
+    const totalSec = getWorkoutTotalSeconds(act);
+    const hours = Math.floor(totalSec / 3600);
+    const minutes = Math.floor((totalSec % 3600) / 60);
+    const seconds = totalSec % 60;
+
+    setFormData({
+      title: act.title || '',
+      date: new Date().toISOString().split('T')[0],
+      duration_hours: hours > 0 ? hours : '',
+      duration_minutes: minutes,
+      duration_seconds: seconds > 0 ? seconds : '',
+      workout_type: w.workout_type || 'running',
+      distance_km: w.distance_km != null ? w.distance_km : '',
+      calories: w.calories != null ? w.calories : '',
+      avg_heart_rate: w.avg_heart_rate || w.heart_rate_avg || '',
+      elevation_m: w.elevation_m != null ? w.elevation_m : '',
+      personal_best: false,
+      notes: act.description || w.notes || act.notes || '',
+    });
+    setIsModalOpen(true);
+  };
+
+  // Live calculation of current modal pace/speed
+  const currentTotalSeconds = 
+    (parseInt(formData.duration_hours, 10) || 0) * 3600 +
+    (parseInt(formData.duration_minutes, 10) || 0) * 60 +
+    (parseInt(formData.duration_seconds, 10) || 0);
+
+  const liveMetric = calculatePaceOrSpeed(currentTotalSeconds, formData.distance_km, formData.workout_type);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
     try {
+      const totalSeconds = 
+        (parseInt(formData.duration_hours, 10) || 0) * 3600 +
+        (parseInt(formData.duration_minutes, 10) || 0) * 60 +
+        (parseInt(formData.duration_seconds, 10) || 0);
+
+      // Keep duration_minutes as an integer for DB column & legacy backward compatibility
+      const durationMinutesInt = Math.max(1, Math.round(totalSeconds / 60));
+
       const payload = {
         activity: {
           activity_type: 'sport',
           title: formData.title,
           date: formData.date,
-          duration_minutes: formData.duration_minutes ? parseInt(formData.duration_minutes) : null,
+          duration_minutes: durationMinutesInt,
           description: formData.notes,
+          metadata: {
+            ...(editingWorkout?.metadata || {}),
+            duration_seconds: totalSeconds,
+          },
         },
         workout: {
           workout_type: formData.workout_type,
           distance_km: formData.distance_km !== '' ? parseFloat(formData.distance_km) : null,
-          calories: formData.calories !== '' ? parseInt(formData.calories) : null,
-          avg_heart_rate: formData.avg_heart_rate !== '' ? parseInt(formData.avg_heart_rate) : null,
-          elevation_m: formData.elevation_m !== '' ? parseInt(formData.elevation_m) : null,
+          calories: formData.calories !== '' ? parseInt(formData.calories, 10) : null,
+          avg_heart_rate: formData.avg_heart_rate !== '' ? parseInt(formData.avg_heart_rate, 10) : null,
+          elevation_m: formData.elevation_m !== '' ? parseInt(formData.elevation_m, 10) : null,
           personal_best: formData.personal_best,
           notes: formData.notes,
         },
@@ -149,7 +260,7 @@ export function SportModule() {
 
   // KPIs
   const totalKm = workouts.reduce((sum, act) => sum + (act.workout?.distance_km || 0), 0);
-  const totalMinutes = workouts.reduce((sum, act) => sum + (act.duration_minutes || 0), 0);
+  const totalSeconds = workouts.reduce((sum, act) => sum + getWorkoutTotalSeconds(act), 0);
   const totalCalories = workouts.reduce((sum, act) => sum + (act.workout?.calories || 0), 0);
   const pbCount = workouts.filter((act) => act.workout?.personal_best).length;
 
@@ -210,7 +321,7 @@ export function SportModule() {
         <div className="metric-box">
           <span className="metric-label">{t('sport.activeTime')}</span>
           <span className="metric-value" style={{ color: 'var(--accent-cyan)' }}>
-            {(totalMinutes / 60).toFixed(1)} <small>{t('common.hours')}</small>
+            {(totalSeconds / 3600).toFixed(1)} <small>{t('common.hours')}</small>
           </span>
         </div>
         <div className="metric-box">
@@ -245,6 +356,9 @@ export function SportModule() {
         <div className="workouts-grid">
           {workouts.map((act) => {
             const w = act.workout || {};
+            const totalSec = getWorkoutTotalSeconds(act);
+            const paceOrSpeed = calculatePaceOrSpeed(totalSec, w.distance_km, w.workout_type);
+
             return (
               <div key={act.id} className="workout-card glass-card">
                 <div className="workout-card-header">
@@ -258,6 +372,13 @@ export function SportModule() {
                         <Award size={14} /> PB
                       </span>
                     )}
+                    <button 
+                      className="copy-icon-btn" 
+                      onClick={() => handleDuplicate(act)}
+                      title={t('common.duplicate')}
+                    >
+                      <Copy size={14} />
+                    </button>
                     <button 
                       className="edit-icon-btn" 
                       onClick={() => handleOpenEdit(act)}
@@ -285,10 +406,16 @@ export function SportModule() {
                       <span>{w.distance_km} {t('common.km')}</span>
                     </div>
                   )}
-                  {act.duration_minutes != null && (
+                  {totalSec > 0 && (
                     <div className="stat-chip">
                       <Clock size={13} />
-                      <span>{act.duration_minutes} {t('common.min')}</span>
+                      <span>{formatWorkoutDuration(act, language)}</span>
+                    </div>
+                  )}
+                  {paceOrSpeed && (
+                    <div className="stat-chip pace-chip" title={paceOrSpeed.type === 'speed' ? t('sport.fields.speed') : t('sport.fields.pace')}>
+                      {paceOrSpeed.type === 'speed' ? <Zap size={13} /> : <Timer size={13} />}
+                      <span>{paceOrSpeed.value}</span>
                     </div>
                   )}
                   {w.calories != null && (
@@ -339,6 +466,9 @@ export function SportModule() {
             <tbody>
               {workouts.map((act) => {
                 const w = act.workout || {};
+                const totalSec = getWorkoutTotalSeconds(act);
+                const paceOrSpeed = calculatePaceOrSpeed(totalSec, w.distance_km, w.workout_type);
+
                 return (
                   <tr key={act.id}>
                     <td className="table-date-cell">{act.date}</td>
@@ -350,7 +480,16 @@ export function SportModule() {
                     </td>
                     <td className="table-title-cell">{act.title}</td>
                     <td>{w.distance_km != null ? `${w.distance_km} km` : '-'}</td>
-                    <td>{act.duration_minutes != null ? `${act.duration_minutes} min` : '-'}</td>
+                    <td>
+                      <div className="table-duration-cell">
+                        <span>{formatWorkoutDuration(act, language)}</span>
+                        {paceOrSpeed && (
+                          <span className="table-pace-badge">
+                            {paceOrSpeed.value}
+                          </span>
+                        )}
+                      </div>
+                    </td>
                     <td>{w.calories != null ? `${w.calories} kcal` : '-'}</td>
                     <td>{(w.avg_heart_rate || w.heart_rate_avg) ? `${w.avg_heart_rate || w.heart_rate_avg} ppm` : '-'}</td>
                     <td>
@@ -365,6 +504,13 @@ export function SportModule() {
                     </td>
                     <td>
                       <div className="table-actions-cell">
+                        <button 
+                          className="table-action-btn copy" 
+                          onClick={() => handleDuplicate(act)}
+                          title={t('common.duplicate')}
+                        >
+                          <Copy size={14} />
+                        </button>
                         <button 
                           className="table-action-btn edit" 
                           onClick={() => handleOpenEdit(act)}
@@ -438,33 +584,78 @@ export function SportModule() {
             </div>
           </div>
 
-          <div className="form-row">
-            <div className="form-group">
-              <label>{t('sport.fields.duration')}</label>
-              <input 
-                type="number" 
-                min="1"
-                required
-                placeholder="45"
-                value={formData.duration_minutes}
-                onChange={(e) => setFormData({ ...formData, duration_minutes: e.target.value })}
-              />
+          {/* Time Picker: Hours : Minutes : Seconds */}
+          <div className="form-group">
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.2rem' }}>
+              <label style={{ margin: 0 }}>{t('sport.fields.duration')}</label>
+              {liveMetric && (
+                <span className="live-metric-badge">
+                  {liveMetric.type === 'speed' ? <Zap size={12} /> : <Timer size={12} />}
+                  <span>{liveMetric.type === 'speed' ? t('sport.fields.speed') : t('sport.fields.pace')}: {liveMetric.value}</span>
+                </span>
+              )}
             </div>
 
+            <div className="duration-inputs-grid">
+              <div className="duration-input-wrapper">
+                <input 
+                  type="number" 
+                  min="0"
+                  max="99"
+                  placeholder="0"
+                  value={formData.duration_hours}
+                  onChange={(e) => setFormData({ ...formData, duration_hours: e.target.value })}
+                  title={t('sport.fields.hours')}
+                />
+                <span className="duration-unit-label">h</span>
+              </div>
+
+              <span className="duration-sep">:</span>
+
+              <div className="duration-input-wrapper">
+                <input 
+                  type="number" 
+                  min="0"
+                  max="59"
+                  required
+                  placeholder="45"
+                  value={formData.duration_minutes}
+                  onChange={(e) => setFormData({ ...formData, duration_minutes: e.target.value })}
+                  title={t('sport.fields.minutes')}
+                />
+                <span className="duration-unit-label">m</span>
+              </div>
+
+              <span className="duration-sep">:</span>
+
+              <div className="duration-input-wrapper">
+                <input 
+                  type="number" 
+                  min="0"
+                  max="59"
+                  placeholder="00"
+                  value={formData.duration_seconds}
+                  onChange={(e) => setFormData({ ...formData, duration_seconds: e.target.value })}
+                  title={t('sport.fields.seconds')}
+                />
+                <span className="duration-unit-label">s</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="form-row">
             <div className="form-group">
               <label>{t('sport.fields.distance')}</label>
               <input 
                 type="number" 
                 step="0.01" 
                 min="0"
-                placeholder="8.5"
+                placeholder="8.50"
                 value={formData.distance_km}
                 onChange={(e) => setFormData({ ...formData, distance_km: e.target.value })}
               />
             </div>
-          </div>
 
-          <div className="form-row">
             <div className="form-group">
               <label>{t('sport.fields.calories')}</label>
               <input 
@@ -475,7 +666,9 @@ export function SportModule() {
                 onChange={(e) => setFormData({ ...formData, calories: e.target.value })}
               />
             </div>
+          </div>
 
+          <div className="form-row">
             <div className="form-group">
               <label>{t('sport.fields.heartRate')}</label>
               <input 
@@ -487,9 +680,7 @@ export function SportModule() {
                 onChange={(e) => setFormData({ ...formData, avg_heart_rate: e.target.value })}
               />
             </div>
-          </div>
 
-          <div className="form-row">
             <div className="form-group">
               <label>{t('sport.fields.elevation')}</label>
               <input 
@@ -500,18 +691,18 @@ export function SportModule() {
                 onChange={(e) => setFormData({ ...formData, elevation_m: e.target.value })}
               />
             </div>
+          </div>
 
-            <div className="form-group" style={{ justifyContent: 'center' }}>
-              <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer', marginTop: '1.25rem' }}>
-                <input 
-                  type="checkbox"
-                  style={{ width: '18px', height: '18px', accentColor: 'var(--accent-emerald)' }}
-                  checked={formData.personal_best}
-                  onChange={(e) => setFormData({ ...formData, personal_best: e.target.checked })}
-                />
-                <span>{t('sport.isPBLabel')}</span>
-              </label>
-            </div>
+          <div className="form-group">
+            <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer', marginTop: '0.5rem' }}>
+              <input 
+                type="checkbox"
+                style={{ width: '18px', height: '18px', accentColor: 'var(--accent-emerald)' }}
+                checked={formData.personal_best}
+                onChange={(e) => setFormData({ ...formData, personal_best: e.target.checked })}
+              />
+              <span>{t('sport.isPBLabel')}</span>
+            </label>
           </div>
 
           <div className="form-group">

@@ -13,6 +13,7 @@ import {
   Clock, 
   BookMarked,
   LayoutGrid,
+  Copy,
   Table as TableIcon
 } from 'lucide-react';
 import './BooksModule.css';
@@ -82,6 +83,23 @@ export function BooksModule() {
       genre: b.genre || '',
       rating: act.rating || 5,
       notes: act.description || act.notes || '',
+    });
+    setIsModalOpen(true);
+  };
+
+  const handleDuplicate = (act) => {
+    setEditingBook(null);
+    const b = act.book || {};
+    setFormData({
+      title: act.title || '',
+      author: b.author || '',
+      genre: b.genre || '',
+      status: b.status || 'reading',
+      date: new Date().toISOString().split('T')[0],
+      pages_read: b.pages_read || 0,
+      pages_total: b.pages_total || '',
+      rating: act.rating || 5,
+      notes: act.description || b.notes || '',
     });
     setIsModalOpen(true);
   };
@@ -238,6 +256,13 @@ export function BooksModule() {
                   {getStatusBadge(b.status)}
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
                     <button 
+                      className="copy-icon-btn" 
+                      onClick={() => handleDuplicate(act)}
+                      title={t('common.duplicate')}
+                    >
+                      <Copy size={14} />
+                    </button>
+                    <button 
                       className="edit-icon-btn" 
                       onClick={() => handleOpenEdit(act)}
                       title={t('common.edit')}
@@ -340,6 +365,13 @@ export function BooksModule() {
                     </td>
                     <td>
                       <div className="table-actions-cell">
+                        <button 
+                          className="table-action-btn copy" 
+                          onClick={() => handleDuplicate(act)}
+                          title={t('common.duplicate')}
+                        >
+                          <Copy size={14} />
+                        </button>
                         <button 
                           className="table-action-btn edit" 
                           onClick={() => handleOpenEdit(act)}

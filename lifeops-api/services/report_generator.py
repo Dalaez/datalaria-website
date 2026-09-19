@@ -253,7 +253,26 @@ def _build_monthly_integral_report(doc: Document, user_email: str, date_from: dt
             row = table.add_row()
             cells = row.cells
             
-            dist_str = f"{w.get('distance_km')} km" if w.get('distance_km') else f"{act.get('duration_minutes', 0)} min"
+            meta = act.get("metadata") or {}
+            sec = meta.get("duration_seconds")
+            if sec:
+                h = sec // 3600
+                m = (sec % 3600) // 60
+                s = sec % 60
+                dur_str = f"{h}h {m}m {s}s" if h > 0 else (f"{m}m {s}s" if s > 0 else f"{m} min")
+            elif act.get("duration_minutes"):
+                dur_str = f"{act.get('duration_minutes')} min"
+            else:
+                dur_str = ""
+
+            dist = w.get("distance_km")
+            if dist and dur_str:
+                dist_str = f"{dist} km ({dur_str})"
+            elif dist:
+                dist_str = f"{dist} km"
+            else:
+                dist_str = dur_str or "-"
+
             pb_str = "🏅 Récord PB" if w.get('personal_best') else (f"{w.get('calories')} kcal" if w.get('calories') else "-")
 
             vals = [

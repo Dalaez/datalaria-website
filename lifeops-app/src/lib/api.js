@@ -122,6 +122,7 @@ export async function apiFetch(endpoint, options = {}) {
           title: 'Tirada Larga Dominical — Medio Maratón',
           date: '2026-09-10',
           duration_minutes: 108,
+          metadata: { duration_seconds: 6495 },
           description: 'Ritmo constante preparando el maratón de otoño. Buenas sensaciones en el último tramo.',
           workout: {
             workout_type: 'running',
@@ -138,6 +139,7 @@ export async function apiFetch(endpoint, options = {}) {
           title: 'Ruta de Montaña — Puertos de Ciclismo',
           date: '2026-09-08',
           duration_minutes: 165,
+          metadata: { duration_seconds: 9920 },
           description: 'Entrenamiento de fondo en carretera con dos puertos de montaña.',
           workout: {
             workout_type: 'cycling',
@@ -154,6 +156,7 @@ export async function apiFetch(endpoint, options = {}) {
           title: 'Series 10x400m en Pista de Atletismo',
           date: '2026-09-06',
           duration_minutes: 52,
+          metadata: { duration_seconds: 3145 },
           description: 'Velocidad y potencia aeróbica con descansos activos de 60 segundos.',
           workout: {
             workout_type: 'running',
@@ -170,6 +173,7 @@ export async function apiFetch(endpoint, options = {}) {
           title: 'Fuerza — Tren Superior & Core',
           date: '2026-09-04',
           duration_minutes: 60,
+          metadata: { duration_seconds: 3600 },
           description: 'Press banca, dominadas con lastre y trabajo de estabilización central.',
           workout: {
             workout_type: 'gym',

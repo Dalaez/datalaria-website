@@ -14,6 +14,7 @@ import {
   Calendar,
   Sparkles,
   LayoutGrid,
+  Copy,
   Table as TableIcon
 } from 'lucide-react';
 import './FilmsModule.css';
@@ -81,6 +82,23 @@ export function FilmsModule() {
       genre: f.genre || '',
       year: f.year || new Date().getFullYear(),
       date: act.date || new Date().toISOString().split('T')[0],
+      rating: act.rating || 5,
+      notes: act.description || f.review || act.notes || '',
+    });
+    setIsModalOpen(true);
+  };
+
+  const handleDuplicate = (act) => {
+    setEditingFilm(null);
+    const f = act.film || {};
+    setFormData({
+      title: act.title || '',
+      media_type: f.media_type || 'movie',
+      director: f.director || '',
+      platform: f.platform || 'Cine',
+      genre: f.genre || '',
+      year: f.year || new Date().getFullYear(),
+      date: new Date().toISOString().split('T')[0],
       rating: act.rating || 5,
       notes: act.description || f.review || act.notes || '',
     });
@@ -238,6 +256,13 @@ export function FilmsModule() {
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                     {f.platform && <span className="platform-chip">{f.platform}</span>}
                     <button 
+                      className="copy-icon-btn" 
+                      onClick={() => handleDuplicate(act)}
+                      title={t('common.duplicate')}
+                    >
+                      <Copy size={14} />
+                    </button>
+                    <button 
                       className="edit-icon-btn" 
                       onClick={() => handleOpenEdit(act)}
                       title={t('common.edit')}
@@ -334,6 +359,13 @@ export function FilmsModule() {
                     </td>
                     <td>
                       <div className="table-actions-cell">
+                        <button 
+                          className="table-action-btn copy" 
+                          onClick={() => handleDuplicate(act)}
+                          title={t('common.duplicate')}
+                        >
+                          <Copy size={14} />
+                        </button>
                         <button 
                           className="table-action-btn edit" 
                           onClick={() => handleOpenEdit(act)}
