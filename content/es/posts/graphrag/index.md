@@ -1,6 +1,6 @@
 ---
 title: "GraphRAG: Por Qué los Vectores No Bastan y Tu IA Necesita un Grafo de Conocimiento"
-date: 2026-09-22
+date: 2026-09-29
 draft: false
 categories: ["Inteligencia Artificial", "Ingeniería"]
 tags: ["graphrag", "knowledge graphs", "rag", "embeddings", "vectores", "microsoft research", "agi", "llm", "leiden"]
