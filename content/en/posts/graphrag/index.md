@@ -1,6 +1,6 @@
 ---
 title: "GraphRAG: Why Vectors Aren't Enough and Your AI Needs a Knowledge Graph"
-date: 2026-09-29
+date: 2026-09-25
 draft: false
 categories: ["Artificial Intelligence", "Engineering"]
 tags: ["graphrag", "knowledge graphs", "rag", "embeddings", "vectors", "microsoft research", "agi", "llm", "leiden"]
@@ -24,7 +24,7 @@ This failure is not the fault of the underlying foundation model, nor is it a ma
 
 After breaking down production pitfalls in [RAG: 7 Anti-Patterns](/en/posts/rag_antipatterns/) and championing pragmatic simplicity in [PostgreSQL with pgvector vs Vector DBs](/en/posts/pgvector_vs_vectordb/), the time has come to explore the most significant technical frontier of 2026: **GraphRAG**. A breakthrough paradigm that unites **Knowledge Graphs** with generative intelligence to supply Large Language Models with what vectors alone can never provide: **structural comprehension and multi-hop relational reasoning**.
 
-{{< youtube kYJjO1559H4 >}}
+{{< youtube c5qJHr3DnT4  >}}
 
 ### The Semantic Blindness of Flat Vector Spaces
 
@@ -37,7 +37,7 @@ However, human knowledge and industrial systems rarely exist as disconnected nee
 
 Standard vector retrieval suffers from two critical, structural blind spots:
 
-1. **Inability to Perform Multi-hop Reasoning**: If answering a prompt requires traversing a chain from Entity $A$ to Entity $B$ via an intermediate Entity $C$ that shares no immediate vocabulary with the original query, vector search will never bridge the gap. Vectors capture lexical-semantic similarity, but remain blind to causal logic, hierarchical containment, and transitive links.
+1. **Inability to Perform Multi-hop Reasoning**: If answering a prompt requires traversing a chain from Entity A to Entity B via an intermediate Entity C that shares no immediate vocabulary with the original query, vector search will never bridge the gap. Vectors capture lexical-semantic similarity, but remain blind to causal logic, hierarchical containment, and transitive links.
 2. **Inability to Achieve Global Sensemaking**: Queries such as *“What are the overarching themes across this legal corpus?”* or *“What anomalous patterns emerge across customer incident logs?”* cannot be answered by pinpointing a single chunk. They require synthesizing the dataset as a cohesive whole.
 
 ![Technical comparison: Traditional Vector RAG versus GraphRAG's hierarchical architecture](graphrag_vs_vector_rag.jpg)
@@ -80,7 +80,7 @@ Today's Large Language Models are marvels of **associative pattern completion**,
 
 GraphRAG represents a pivotal leap toward **Artificial General Intelligence (AGI)** by functioning as the system's structured hippocampus and associative cortex:
 * **Neuro-Symbolic Fusion**: It unites the flexible language mastery of deep neural networks with the deterministic, auditable rigor of graph theory.
-* **Elimination of Relational Hallucinations**: If the knowledge graph specifies that Component $A$ connects to Subsystem $B$ which relies on Supplier $C$, an AI agent navigates that path with absolute mathematical fidelity.
+* **Elimination of Relational Hallucinations**: If the knowledge graph specifies that Component A connects to Subsystem B which relies on Supplier C, an AI agent navigates that path with absolute mathematical fidelity.
 * **Native Regulatory Auditability**: Every synthesized claim can be mapped back to concrete edges, nodes, and source documents, satisfying the rigorous explainability and data governance mandates enforced by the [EU AI Act](/en/posts/eu_ai_act/) (Article 13).
 
 ### Industrial Application: From Bill of Materials to Enterprise Operations
@@ -104,7 +104,7 @@ If your ambition is to build AI architectures that do not merely recite text, bu
 #### Sources of Interest:
 * [**Microsoft Research**: Project GraphRAG — Unlocking LLM Discovery on Complex Data](https://www.microsoft.com/en-us/research/project/graphrag/)
 * [**arXiv (2024)**: From Local to Global — A Graph RAG Approach to Query-Focused Summarization](https://arxiv.org/abs/2404.16130)
-* [**YouTube**: GraphRAG Methods for Optimized LLM Context Windows (Jonathan Larson)](https://www.youtube.com/watch?v=kYJjO1559H4)
+* [**YouTube**: GraphRAG Methods for Optimized LLM Context Windows (Jonathan Larson)](https://www.youtube.com/watch?v=c5qJHr3DnT4)
 * [**GitHub**: Microsoft GraphRAG Official Repository](https://github.com/microsoft/graphrag)
 * [**Datalaria**: RAG in Production — 7 Anti-Patterns That Destroy Precision](/en/posts/rag_antipatterns/)
 * [**Datalaria**: PostgreSQL with pgvector vs Dedicated Vector DBs](/en/posts/pgvector_vs_vectordb/)

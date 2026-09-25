@@ -1,6 +1,6 @@
 ---
 title: "GraphRAG: Por Qué los Vectores No Bastan y Tu IA Necesita un Grafo de Conocimiento"
-date: 2026-09-29
+date: 2026-09-25
 draft: false
 categories: ["Inteligencia Artificial", "Ingeniería"]
 tags: ["graphrag", "knowledge graphs", "rag", "embeddings", "vectores", "microsoft research", "agi", "llm", "leiden"]
@@ -24,7 +24,7 @@ No es culpa del LLM ni de los hiperparámetros del embedding. **Es un fallo intr
 
 Tras haber analizado los errores más comunes en [RAG: 7 Antipatrones](/es/posts/rag_antipatrones/) y haber defendido la eficiencia pragmática en [PostgreSQL con pgvector vs Vector DBs](/es/posts/pgvector_vs_vectordb/), ha llegado el momento de abordar la frontera técnica más determinante de 2026: **GraphRAG**. Una disciplina pionera que combina los **Grafos de Conocimiento (*Knowledge Graphs*)** con la inteligencia generativa para dotar a los modelos de lo que los vectores jamás podrán ofrecerles: **comprensión estructural y razonamiento relacional multi-salto**.
 
-{{< youtube kYJjO1559H4 >}}
+{{< youtube c5qJHr3DnT4 >}}
 
 ### La Ceguera Semántica de los Vectores Planos
 
@@ -37,7 +37,7 @@ Sin embargo, el conocimiento humano y los sistemas industriales rara vez operan 
 
 La búsqueda vectorial sufre de dos cegueras estructurales insalvables:
 
-1. **Incapacidad para el razonamiento multi-salto (*Multi-hop Reasoning*)**: Si responder a una pregunta requiere conectar una entidad $A$ con una entidad $B$ a través de un intermediario $C$ que no comparte vocabulario directo con la consulta, el vector nunca recuperará ese puente. Los vectores ven similitud léxica y semántica, pero no entienden relaciones de causalidad ni dependencias jerárquicas.
+1. **Incapacidad para el razonamiento multi-salto (*Multi-hop Reasoning*)**: Si responder a una pregunta requiere conectar una entidad A con una entidad B a través de un intermediario C que no comparte vocabulario directo con la consulta, el vector nunca recuperará ese puente. Los vectores ven similitud léxica y semántica, pero no entienden relaciones de causalidad ni dependencias jerárquicas.
 2. **Incapacidad para la síntesis global (*Global Sensemaking*)**: Preguntas como *«¿Cuáles son los temas principales de este corpus?»* o *«¿Qué patrones anómalos emergen en las quejas de clientes?»* no tienen un único fragmento relevante. Requieren sintetizar el todo, no buscar una parte.
 
 ![Comparativa técnica: Vector RAG tradicional frente a la arquitectura jerárquica de GraphRAG](graphrag_vs_vector_rag.jpg)
@@ -80,7 +80,7 @@ Los Grandes Modelos de Lenguaje actuales son prodigios de la **memoria asociativ
 
 GraphRAG es un paso de gigante hacia la **Inteligencia Artificial General (AGI)** porque actúa como la corteza asociativa y el hipocampo del sistema:
 * **Fusión Simbólica y Conexionista**: Une la flexibilidad y creatividad de las redes neuronales profundas con el rigor auditable, determinista y explicable de la lógica de grafos.
-* **Cero Alucinaciones Relacionales**: Si el grafo indica que la pieza $A$ pertenece al subsistema $B$ y este depende del proveedor $C$, el agente de IA navega esa ruta con certeza matemática indiscutible.
+* **Cero Alucinaciones Relacionales**: Si el grafo indica que la pieza A pertenece al subsistema B y este depende del proveedor C, el agente de IA navega esa ruta con certeza matemática indiscutible.
 * **Trazabilidad Absoluta para Compliance**: Cada afirmación del modelo puede rastrearse directamente hasta las aristas y nodos del grafo, cumpliendo de forma nativa con los estrictos requisitos de explicabilidad y auditoría que impone el [EU AI Act](/es/posts/eu_ai_act/) (Artículo 13).
 
 ### Aplicación Industrial: Del Radar de Obsolescencia al Enterprise RAG
@@ -104,7 +104,7 @@ Si tu objetivo es construir sistemas de IA generativa que no solo respondan preg
 #### Fuentes de Interés:
 * [**Microsoft Research**: Project GraphRAG — Unlocking LLM Discovery on Complex Data](https://www.microsoft.com/en-us/research/project/graphrag/)
 * [**arXiv (2024)**: From Local to Global — A Graph RAG Approach to Query-Focused Summarization](https://arxiv.org/abs/2404.16130)
-* [**YouTube**: GraphRAG Methods for Optimized LLM Context Windows (Jonathan Larson)](https://www.youtube.com/watch?v=kYJjO1559H4)
+* [**YouTube**: GraphRAG Methods for Optimized LLM Context Windows (Jonathan Larson)](https://www.youtube.com/watch?v=c5qJHr3DnT4)
 * [**GitHub**: Microsoft GraphRAG Official Repository](https://github.com/microsoft/graphrag)
 * [**Datalaria**: RAG en Producción — 7 Antipatrones que Destruyen la Precisión](/es/posts/rag_antipatrones/)
 * [**Datalaria**: PostgreSQL con pgvector vs Vector DBs Dedicadas](/es/posts/pgvector_vs_vectordb/)
