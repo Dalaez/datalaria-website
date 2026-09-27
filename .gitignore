@@ -22,3 +22,19 @@ Thumbs.db
 # S&OP Pipeline - datos de prueba generados
 /static/apps/sop-pipeline/dirty_sales_sample.csv
 /static/apps/sop-pipeline/__pycache__/
+
+# ==============================================================================
+# RECURSOS DE PAGO Y EXECUTIVE DECISION PACKS (EXCLUSIVO LEMONSQUEEZY)
+# ==============================================================================
+# Carpeta local privada para generar y almacenar los entregables fuera de la web
+/packages/
+/downloads/
+/downloads_private/
+
+# Bloquear cualquier directorio de descargas dentro del arbol de Hugo
+/static/downloads/
+/public/downloads/
+
+# Archivos comprimidos de productos
+Executive_Decision_Pack_*.zip
+*.zip

@@ -842,8 +842,10 @@ def generate_pdf_en(out_path):
 
 
 def main():
-    generate_pdf_es("static/downloads/01_Espanol_DAFO_CAME/Guia_Metodologica_DAFO_CAME_ES.pdf")
-    generate_pdf_en("static/downloads/02_English_SWOT_TOWS/Methodology_Guide_SWOT_TOWS_EN.pdf")
+    os.makedirs("packages/01_Espanol_DAFO_CAME", exist_ok=True)
+    os.makedirs("packages/02_English_SWOT_TOWS", exist_ok=True)
+    generate_pdf_es("packages/01_Espanol_DAFO_CAME/Guia_Metodologica_DAFO_CAME_ES.pdf")
+    generate_pdf_en("packages/02_English_SWOT_TOWS/Methodology_Guide_SWOT_TOWS_EN.pdf")
 
 
 if __name__ == '__main__':

@@ -12,9 +12,9 @@ import os
 import zipfile
 import shutil
 
-DIR_STATIC = "static/downloads"
-DIR_ES = os.path.join(DIR_STATIC, "01_Espanol_DAFO_CAME")
-DIR_EN = os.path.join(DIR_STATIC, "02_English_SWOT_TOWS")
+DIR_PACKAGES = "packages"
+DIR_ES = os.path.join(DIR_PACKAGES, "01_Espanol_DAFO_CAME")
+DIR_EN = os.path.join(DIR_PACKAGES, "02_English_SWOT_TOWS")
 
 LEEME_ES_CONTENT = """================================================================================
 DATALARIA | EXECUTIVE DECISION PACK
@@ -135,7 +135,7 @@ For enterprise licensing, bespoke financial modeling, or C-Suite strategic facil
 
 
 def build_packages():
-    os.makedirs(DIR_STATIC, exist_ok=True)
+    os.makedirs(DIR_PACKAGES, exist_ok=True)
     os.makedirs(DIR_ES, exist_ok=True)
     os.makedirs(DIR_EN, exist_ok=True)
 
@@ -162,8 +162,8 @@ def build_packages():
         ("README_GOOGLE_SHEETS_ACCESS.txt", readme_en_path),
     ]
 
-    # 2. Empaquetar ÚNICAMENTE el ZIP Dual oficial: Executive_Decision_Pack_DAFO_SWOT_Dual.zip
-    zip_dual_path = os.path.join(DIR_STATIC, "Executive_Decision_Pack_DAFO_SWOT_Dual.zip")
+    # 2. Empaquetar ÚNICAMENTE el ZIP Dual oficial en packages/
+    zip_dual_path = os.path.join(DIR_PACKAGES, "Executive_Decision_Pack_DAFO_SWOT_Dual.zip")
     with zipfile.ZipFile(zip_dual_path, 'w', zipfile.ZIP_DEFLATED) as z:
         # Carpeta 01_Espanol_DAFO_CAME
         for arcname, fpath in files_es:
@@ -174,45 +174,13 @@ def build_packages():
         # En la raíz del ZIP Dual
         z.write(leeme_es_path, arcname="LEEME_ACCESO_GOOGLE_SHEETS.txt")
         z.write(readme_en_path, arcname="README_GOOGLE_SHEETS_ACCESS.txt")
-    print(f"[OK DUAL] ZIP creado: {zip_dual_path} ({os.path.getsize(zip_dual_path)} bytes)")
+    print(f"[OK DUAL] ZIP creado en packages/: {zip_dual_path} ({os.path.getsize(zip_dual_path)} bytes)")
 
-    # 3. Limpieza de carpetas intermedias y archivos obsoletos/duplicados en static y public
-    DIR_PUBLIC = "public/downloads"
-    obsolete_paths = [
-        os.path.join(DIR_STATIC, "dafo-came-es"),
-        os.path.join(DIR_STATIC, "swot-tows-en"),
-        os.path.join(DIR_STATIC, "Executive_Decision_Pack_DAFO_SWOT_Dual"),
-        os.path.join(DIR_STATIC, "DAFO_CAME_Executive_Decision_Pack_ES.zip"),
-        os.path.join(DIR_STATIC, "SWOT_TOWS_Executive_Decision_Pack_EN.zip"),
-        os.path.join(DIR_STATIC, "LEEME_ACCESO_GOOGLE_SHEETS.txt"),
-        os.path.join(DIR_STATIC, "README_GOOGLE_SHEETS_ACCESS.txt"),
-        os.path.join(DIR_PUBLIC, "dafo-came-es"),
-        os.path.join(DIR_PUBLIC, "swot-tows-en"),
-        os.path.join(DIR_PUBLIC, "Executive_Decision_Pack_DAFO_SWOT_Dual"),
-        os.path.join(DIR_PUBLIC, "DAFO_CAME_Executive_Decision_Pack_ES.zip"),
-        os.path.join(DIR_PUBLIC, "SWOT_TOWS_Executive_Decision_Pack_EN.zip"),
-        os.path.join(DIR_PUBLIC, "LEEME_ACCESO_GOOGLE_SHEETS.txt"),
-        os.path.join(DIR_PUBLIC, "README_GOOGLE_SHEETS_ACCESS.txt"),
-    ]
-    for p in obsolete_paths:
+    # 3. Limpieza de carpetas en static y public si hubiesen quedado restos
+    for p in ["static/downloads", "public/downloads"]:
         if os.path.isdir(p):
             shutil.rmtree(p, ignore_errors=True)
-            print(f"[CLEANUP] Directorio eliminado: {p}")
-        elif os.path.isfile(p):
-            os.remove(p)
-            print(f"[CLEANUP] Archivo eliminado: {p}")
-
-    # Sincronizar ZIP y carpetas a public/downloads si existe el directorio public
-    if os.path.isdir("public"):
-        os.makedirs(DIR_PUBLIC, exist_ok=True)
-        shutil.copy2(zip_dual_path, os.path.join(DIR_PUBLIC, "Executive_Decision_Pack_DAFO_SWOT_Dual.zip"))
-        print(f"[SYNC] Sincronizado a public/downloads/Executive_Decision_Pack_DAFO_SWOT_Dual.zip")
-        # Sincronizar carpetas 01_Espanol y 02_English
-        for folder_name in ["01_Espanol_DAFO_CAME", "02_English_SWOT_TOWS"]:
-            src_f = os.path.join(DIR_STATIC, folder_name)
-            dst_f = os.path.join(DIR_PUBLIC, folder_name)
-            shutil.copytree(src_f, dst_f, dirs_exist_ok=True)
-            print(f"[SYNC] Sincronizado directorio a public: {dst_f}")
+            print(f"[SECURITY CLEANUP] Directorio público eliminado: {p}")
 
 
 if __name__ == '__main__':

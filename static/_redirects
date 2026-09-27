@@ -1,4 +1,11 @@
 # ==============================================================================
+# REGLAS DE SEGURIDAD: BLOQUEO ESTRICTO DE DESCARGAS DE PAGO
+# ==============================================================================
+# Bloquear y denegar acceso directo por URL a cualquier archivo de descargas
+/downloads/*    /recursos/    404!
+/downloads      /recursos/    404!
+
+# ==============================================================================
 # DATALARIA APPS PROXY REWRITE RULES
 # ==============================================================================
 

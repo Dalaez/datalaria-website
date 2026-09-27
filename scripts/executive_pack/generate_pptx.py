@@ -71,7 +71,7 @@ def create_deck(lang='ES'):
 
     texts = {
         'ES': {
-            'out_path': "static/downloads/01_Espanol_DAFO_CAME/Presentacion_CLevel_DAFO_CAME_ES.pptx",
+            'out_path': "packages/01_Espanol_DAFO_CAME/Presentacion_CLevel_DAFO_CAME_ES.pptx",
             'header_standard': "DATALARIA STRATEGY PRACTICE • MCKINSEY/BCG STANDARD",
             'footer_left': "Datalaria.com | Executive Decision Pack • Confidencial Consejo de Administración",
             'footer_right': "Página {cur} de 3",
@@ -243,7 +243,7 @@ def create_deck(lang='ES'):
             's3_gw_d3_desc': "Comité mensual de seguimiento y auditoría de KPIs de ARR en cada Consejo ordinario.",
         },
         'EN': {
-            'out_path': "static/downloads/02_English_SWOT_TOWS/Executive_CLevel_Deck_SWOT_TOWS_EN.pptx",
+            'out_path': "packages/02_English_SWOT_TOWS/Executive_CLevel_Deck_SWOT_TOWS_EN.pptx",
             'header_standard': "DATALARIA STRATEGY PRACTICE • MCKINSEY/BCG STANDARD",
             'footer_left': "Datalaria.com | Executive Decision Pack • Strictly Confidential for Board of Directors",
             'footer_right': "Slide {cur} of 3",

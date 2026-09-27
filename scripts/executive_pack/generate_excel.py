@@ -1296,7 +1296,7 @@ def main():
     styles = get_styles()
 
     # 1. Versión en Español
-    out_dir_es = "static/downloads/01_Espanol_DAFO_CAME"
+    out_dir_es = "packages/01_Espanol_DAFO_CAME"
     os.makedirs(out_dir_es, exist_ok=True)
     file_es = os.path.join(out_dir_es, "DAFO_Cuantitativo_CAME_Datalaria_ES.xlsx")
 
@@ -1317,7 +1317,7 @@ def main():
     print(f"[OK ES] Guardado: {file_es} ({os.path.getsize(file_es)} bytes)")
 
     # 2. Versión en Inglés
-    out_dir_en = "static/downloads/02_English_SWOT_TOWS"
+    out_dir_en = "packages/02_English_SWOT_TOWS"
     os.makedirs(out_dir_en, exist_ok=True)
     file_en = os.path.join(out_dir_en, "Quantitative_SWOT_TOWS_Datalaria_EN.xlsx")
 

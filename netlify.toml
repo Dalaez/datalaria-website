@@ -10,3 +10,10 @@
 
 [functions]
   directory = "netlify/functions"
+
+# Bloqueo de seguridad: Las descargas de pago no se sirven desde la web
+[[redirects]]
+  from = "/downloads/*"
+  to = "/recursos/"
+  status = 404
+  force = true
