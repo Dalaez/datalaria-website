@@ -1,6 +1,6 @@
 ---
 title: "Silicon Valley and the PiperNet Dilemma: The Prophecy of Runaway AI and Real-World Agent Exploits"
-date: 2026-10-04
+date: 2026-10-27
 draft: false
 categories: ["Engineering", "Series", "Artificial Intelligence"]
 tags: ["silicon valley", "pipernet", "pied piper", "hbo", "ai agents", "ai security", "agi", "compression", "alignment", "startups"]
@@ -20,7 +20,7 @@ What nobody foresaw was that in its final season, aired back in 2019, the show w
 
 Just as we explored the microcomputer revolution in [Halt and Catch Fire](/en/posts/halt_and_catch_fire/), quantum determinism in [DEVS](/en/posts/devs/), and the pursuit of AGI in [The Thinking Game](/en/posts/the_thinking_game/), this article dissects the complete odyssey of **Pied Piper**, the optimization nightmare of **PiperNet**, and how its moral dilemmas resonate with alarming accuracy in 2026: frontier reasoning models like **Gemini 3.8**, **Claude Fable 5.1**, and **GPT Sol 5.6**, autonomous agents executing live code, and real-world supply chain compromises across open-source hubs.
 
-{{< youtube kYJ4aI_Lp0g >}}
+{{< youtube qYHp-5h1y5o >}}
 
 ### The Startup Odyssey: Season by Season
 

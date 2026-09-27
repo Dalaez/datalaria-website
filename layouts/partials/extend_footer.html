@@ -106,3 +106,31 @@
 
 {{- /* Lemon Squeezy Checkout Overlay */ -}}
 <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+
+{{- /* Mermaid Diagram Support */ -}}
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({
+        startOnLoad: true,
+        theme: 'neutral',
+        fontFamily: 'sans-serif'
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.mermaid-container').forEach(container => {
+            container.addEventListener('click', () => {
+                const mermaidDiv = container.querySelector('.mermaid');
+                const svg = mermaidDiv ? mermaidDiv.querySelector('svg') : null;
+                if (svg) {
+                    const clonedSvg = svg.cloneNode(true);
+                    clonedSvg.setAttribute('width', '100%');
+                    clonedSvg.removeAttribute('height');
+                    clonedSvg.style.maxWidth = 'none';
+                    const svgData = new XMLSerializer().serializeToString(clonedSvg);
+                    const blob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" });
+                    const url = URL.createObjectURL(blob);
+                    window.open(url, '_blank');
+                }
+            });
+        });
+    });
+</script>

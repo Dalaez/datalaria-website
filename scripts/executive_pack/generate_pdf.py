@@ -249,7 +249,7 @@ def generate_pdf_es(out_path):
     ))
     story.append(Paragraph(
         "Esta guía metodológica formaliza el paso del DAFO cualitativo hacia un <b>modelo matemático vectorial</b>, eliminando la ambigüedad "
-        "mediante la asignación de pesos relativos normalizados (\u2211w\u1d62 = 1.0) y calificaciones objetivas de impacto (1 a 5). "
+        "mediante la asignación de pesos relativos normalizados (SUM(w<sub>i</sub>) = 1.0) y calificaciones objetivas de impacto (1 a 5). "
         "Posteriormente, establece las reglas algorítmicas de la <b>Matriz CAME</b> para convertir los cuadrantes de fuerza en iniciativas "
         "de inversión accionables con responsable C-Level, calendario trimestral y métricas de retorno auditables.",
         styles['Body']
@@ -286,29 +286,29 @@ def generate_pdf_es(out_path):
 
     story.append(Paragraph("2. Formalización Matemática del Espacio Estratégico", styles['H1']))
     story.append(Paragraph(
-        "Para superar la subjetividad, representamos cada cuadrante k \u2208 {F, D, O, A} como un vector de pesos w\u2096 y un vector de impacto c\u2096 en un espacio \u211d\u207f:",
+        "Para superar la subjetividad, representamos cada cuadrante k en {F, D, O, A} como un vector de pesos w<sub>k</sub> y un vector de impacto c<sub>k</sub> en un espacio R<sup>n</sup>:",
         styles['Body']
     ))
 
     story.append(build_equation_box(
-        "w_k = [w_{k,1}, w_{k,2}, ..., w_{k,n}]^T, \u2200 w_{k,i} \u2208 [0, 1] \u2227 \u2211_{i=1}^n w_{k,i} = 1.00<br/>"
-        "c_k = [c_{k,1}, c_{k,2}, ..., c_{k,n}]^T, \u2200 c_{k,i} \u2208 {1, 2, 3, 4, 5}<br/>"
-        "S_k = w_k \u00b7 c_k = \u2211_{i=1}^n (w_{k,i} \u00b7 c_{k,i})",
+        "w<sub>k</sub> = [w<sub>k,1</sub>, w<sub>k,2</sub>, ..., w<sub>k,n</sub>]<sup>T</sup>, con w<sub>k,i</sub> en [0, 1] y SUM(w<sub>k,i</sub>) = 1.00<br/>"
+        "c<sub>k</sub> = [c<sub>k,1</sub>, c<sub>k,2</sub>, ..., c<sub>k,n</sub>]<sup>T</sup>, con c<sub>k,i</sub> en {1, 2, 3, 4, 5}<br/>"
+        "S<sub>k</sub> = w<sub>k</sub> * c<sub>k</sub> = SUM(w<sub>k,i</sub> * c<sub>k,i</sub>)",
         styles
     ))
     story.append(Spacer(1, 8))
 
     story.append(Paragraph(
-        "Donde <b>S_k</b> representa la puntuación ponderada agregada del cuadrante. A partir de estos valores escalares, "
-        "definimos el <b>Vector de Postura Estratégica V</b> en el plano cartesiano:",
+        "Donde <b>S<sub>k</sub></b> representa la puntuación ponderada agregada del cuadrante. A partir de estos valores escalares, "
+        "definimos el <b>Vector de Postura Estratégica V</b> en el plano cartesiano R<sup>2</sup>:",
         styles['Body']
     ))
 
     story.append(build_equation_box(
-        "X = S_F - S_D \u2208 [-4.0, +4.0]  (Posición Interna Neta)<br/>"
-        "Y = S_O - S_A \u2208 [-4.0, +4.0]  (Presión Externa Neta)<br/>"
-        "\u2192 V = (X, Y) = (S_F - S_D) \u00ee + (S_O - S_A) \u0135<br/>"
-        "||V|| = \u221a(X\u00b2 + Y\u00b2)  (Magnitud de Impulso Estratégico)",
+        "X = S<sub>F</sub> - S<sub>D</sub> en [-4.0, +4.0]  (Posición Interna Neta)<br/>"
+        "Y = S<sub>O</sub> - S<sub>A</sub> en [-4.0, +4.0]  (Presión Externa Neta)<br/>"
+        "-&gt; V = (X, Y) = (S<sub>F</sub> - S<sub>D</sub>)i + (S<sub>O</sub> - S<sub>A</sub>)j<br/>"
+        "||V|| = sqrt(X<sup>2</sup> + Y<sup>2</sup>)  (Magnitud de Impulso Estratégico)",
         styles
     ))
     story.append(Spacer(1, 8))
@@ -316,10 +316,10 @@ def generate_pdf_es(out_path):
     # Tabla de Cuadrantes
     q_table_data = [
         [Paragraph("<b>Cuadrante</b>", styles['TableHead']), Paragraph("<b>Condición</b>", styles['TableHead']), Paragraph("<b>Postura Dominante</b>", styles['TableHead']), Paragraph("<b>Mandato Ejecutivo del Consejo</b>", styles['TableHead'])],
-        [Paragraph("<b>I (Superior Der.)</b>", styles['TableCellBold']), Paragraph("X \u2265 0, Y \u2265 0", styles['TableCell']), Paragraph("<b>OFENSIVA (Maxi-Maxi)</b>", styles['TableCellBold']), Paragraph("Máxima asignación de capital a captura de cuota, innovación y expansión.", styles['TableCell'])],
-        [Paragraph("<b>II (Superior Izq.)</b>", styles['TableCellBold']), Paragraph("X < 0, Y \u2265 0", styles['TableCell']), Paragraph("<b>REORIENTACIÓN (Mini-Maxi)</b>", styles['TableCellBold']), Paragraph("Eliminar cuellos de botella internos para capitalizar vientos de cola.", styles['TableCell'])],
-        [Paragraph("<b>III (Inferior Izq.)</b>", styles['TableCellBold']), Paragraph("X < 0, Y < 0", styles['TableCell']), Paragraph("<b>SUPERVIVENCIA (Mini-Mini)</b>", styles['TableCellBold']), Paragraph("Contención estricta de costes, desinversión selectiva y salvaguarda.", styles['TableCell'])],
-        [Paragraph("<b>IV (Inferior Der.)</b>", styles['TableCellBold']), Paragraph("X \u2265 0, Y < 0", styles['TableCell']), Paragraph("<b>DEFENSIVA (Maxi-Mini)</b>", styles['TableCellBold']), Paragraph("Blindar contratos clave, proteger márgenes y construir moats de IP.", styles['TableCell'])],
+        [Paragraph("<b>I (Superior Der.)</b>", styles['TableCellBold']), Paragraph("X &gt;= 0, Y &gt;= 0", styles['TableCell']), Paragraph("<b>OFENSIVA (Maxi-Maxi)</b>", styles['TableCellBold']), Paragraph("Máxima asignación de capital a captura de cuota, innovación y expansión.", styles['TableCell'])],
+        [Paragraph("<b>II (Superior Izq.)</b>", styles['TableCellBold']), Paragraph("X &lt; 0, Y &gt;= 0", styles['TableCell']), Paragraph("<b>REORIENTACIÓN (Mini-Maxi)</b>", styles['TableCellBold']), Paragraph("Eliminar cuellos de botella internos para capitalizar vientos de cola.", styles['TableCell'])],
+        [Paragraph("<b>III (Inferior Izq.)</b>", styles['TableCellBold']), Paragraph("X &lt; 0, Y &lt; 0", styles['TableCell']), Paragraph("<b>SUPERVIVENCIA (Mini-Mini)</b>", styles['TableCellBold']), Paragraph("Contención estricta de costes, desinversión selectiva y salvaguarda.", styles['TableCell'])],
+        [Paragraph("<b>IV (Inferior Der.)</b>", styles['TableCellBold']), Paragraph("X &gt;= 0, Y &lt; 0", styles['TableCell']), Paragraph("<b>DEFENSIVA (Maxi-Mini)</b>", styles['TableCellBold']), Paragraph("Blindar contratos clave, proteger márgenes y construir moats de IP.", styles['TableCell'])],
     ]
     t_q = Table(q_table_data, colWidths=[90, 85, 130, 206])
     t_q.setStyle(TableStyle([
@@ -346,7 +346,7 @@ def generate_pdf_es(out_path):
     ))
 
     story.append(build_equation_box(
-        "M_{cruce} \u2208 {0, 1, 2, 3}^{m \u00d7 n}<br/>"
+        "M<sub>cruce</sub> en {0, 1, 2, 3}<sup>m x n</sup><br/>"
         "0 = Sin correlación | 1 = Impacto Débil | 2 = Impacto Moderado | 3 = Impacto Crítico / Sinérgico",
         styles
     ))
@@ -366,8 +366,8 @@ def generate_pdf_es(out_path):
     # Tabla CAME de Gobernanza
     came_table_data = [
         [Paragraph("<b>Dimensión CAME</b>", styles['TableHead']), Paragraph("<b>Tipo Estrategia</b>", styles['TableHead']), Paragraph("<b>Criterio de Aprobación en Comité</b>", styles['TableHead']), Paragraph("<b>KPI Típico en P&L</b>", styles['TableHead'])],
-        [Paragraph("<b>Corregir (C)</b>", styles['TableCellBold']), Paragraph("Reorientación (WO)", styles['TableCell']), Paragraph("Eliminación de cuellos de botella con ROI < 18 meses.", styles['TableCell']), Paragraph("Reducción de lead time, menor rotación.", styles['TableCell'])],
-        [Paragraph("<b>Afrontar (A)</b>", styles['TableCellBold']), Paragraph("Defensiva (ST)", styles['TableCell']), Paragraph("Contingencia ante riesgos con impacto > 10% EBITDA.", styles['TableCell']), Paragraph("Retención de margen bruto, churn < 2%.", styles['TableCell'])],
+        [Paragraph("<b>Corregir (C)</b>", styles['TableCellBold']), Paragraph("Reorientación (WO)", styles['TableCell']), Paragraph("Eliminación de cuellos de botella con ROI &lt; 18 meses.", styles['TableCell']), Paragraph("Reducción de lead time, menor rotación.", styles['TableCell'])],
+        [Paragraph("<b>Afrontar (A)</b>", styles['TableCellBold']), Paragraph("Defensiva (ST)", styles['TableCell']), Paragraph("Contingencia ante riesgos con impacto &gt; 10% EBITDA.", styles['TableCell']), Paragraph("Retención de margen bruto, churn &lt; 2%.", styles['TableCell'])],
         [Paragraph("<b>Mantener (M)</b>", styles['TableCellBold']), Paragraph("Preservación", styles['TableCell']), Paragraph("Mantenimiento de ventajas con ratio coste/beneficio óptimo.", styles['TableCell']), Paragraph("Patentes activas, satisfacción del equipo.", styles['TableCell'])],
         [Paragraph("<b>Explotar (E)</b>", styles['TableCellBold']), Paragraph("Ofensiva (SO)", styles['TableCell']), Paragraph("Proyectos con VAN positivo y captura rápida de cuota.", styles['TableCell']), Paragraph("Crecimiento de ARR, nuevos contratos Tier-1.", styles['TableCell'])],
     ]
@@ -429,7 +429,7 @@ def generate_pdf_es(out_path):
     story.append(Paragraph(
         "• <b>Posición Interna Neta:</b> X = S_F - S_D = 4.35 - 2.25 = <b>+2.10</b> (Las fortalezas dominan sobre las debilidades).<br/>"
         "• <b>Presión Externa Neta:</b> Y = S_O - S_A = 4.20 - 2.35 = <b>+1.85</b> (Las oportunidades superan los riesgos del mercado).<br/>"
-        "• <b>Vector de Postura:</b> V = (+2.10, +1.85) \u2192 <b>Postura OFENSIVA / CRECIMIENTO (Maxi-Maxi)</b> con impulso ||V|| = 2.80 pts.",
+        "• <b>Vector de Postura:</b> V = (+2.10, +1.85) -&gt; <b>Postura OFENSIVA / CRECIMIENTO (Maxi-Maxi)</b> con impulso ||V|| = 2.80 pts.",
         styles['Body']
     ))
     story.append(Spacer(1, 4))
@@ -438,9 +438,9 @@ def generate_pdf_es(out_path):
     came_actions_table = [
         [Paragraph("<b>ID</b>", styles['TableHead']), Paragraph("<b>Iniciativa Estratégica</b>", styles['TableHead']), Paragraph("<b>Owner</b>", styles['TableHead']), Paragraph("<b>Plazo</b>", styles['TableHead']), Paragraph("<b>Presupuesto</b>", styles['TableHead']), Paragraph("<b>KPI Objetivo</b>", styles['TableHead'])],
         [Paragraph("<b>CAME-E01</b>", styles['TableCellBold']), Paragraph("Despliegue módulo SaaS subvencionado en 40 factorías", styles['TableCell']), Paragraph("COO", styles['TableCell']), Paragraph("Q1-Q3", styles['TableCell']), Paragraph("105.000 €", styles['TableCell']), Paragraph("+1.2M € ARR", styles['TableCell'])],
-        [Paragraph("<b>CAME-C01</b>", styles['TableCellBold']), Paragraph("Programa comercial en LatAm para diversificar clientes", styles['TableCell']), Paragraph("CCO", styles['TableCell']), Paragraph("Q2-Q4", styles['TableCell']), Paragraph("105.000 €", styles['TableCell']), Paragraph("Top-2 < 25% ARR", styles['TableCell'])],
-        [Paragraph("<b>CAME-A01</b>", styles['TableCellBold']), Paragraph("Blindaje contractual plurianual con clientes enterprise", styles['TableCell']), Paragraph("CEO", styles['TableCell']), Paragraph("Q1-Q2", styles['TableCell']), Paragraph("30.000 €", styles['TableCell']), Paragraph("Churn < 1.5%", styles['TableCell'])],
-        [Paragraph("<b>CAME-M02</b>", styles['TableCellBold']), Paragraph("Plan de incentivos y retención de talento clave de I+D", styles['TableCell']), Paragraph("CPO", styles['TableCell']), Paragraph("Q1-Q4", styles['TableCell']), Paragraph("45.000 €", styles['TableCell']), Paragraph("Rotación < 3%", styles['TableCell'])],
+        [Paragraph("<b>CAME-C01</b>", styles['TableCellBold']), Paragraph("Programa comercial en LatAm para diversificar clientes", styles['TableCell']), Paragraph("CCO", styles['TableCell']), Paragraph("Q2-Q4", styles['TableCell']), Paragraph("105.000 €", styles['TableCell']), Paragraph("Top-2 &lt; 25% ARR", styles['TableCell'])],
+        [Paragraph("<b>CAME-A01</b>", styles['TableCellBold']), Paragraph("Blindaje contractual plurianual con clientes enterprise", styles['TableCell']), Paragraph("CEO", styles['TableCell']), Paragraph("Q1-Q2", styles['TableCell']), Paragraph("30.000 €", styles['TableCell']), Paragraph("Churn &lt; 1.5%", styles['TableCell'])],
+        [Paragraph("<b>CAME-M02</b>", styles['TableCellBold']), Paragraph("Plan de incentivos y retención de talento clave de I+D", styles['TableCell']), Paragraph("CPO", styles['TableCell']), Paragraph("Q1-Q4", styles['TableCell']), Paragraph("45.000 €", styles['TableCell']), Paragraph("Rotación &lt; 3%", styles['TableCell'])],
     ]
     t_act = Table(came_actions_table, colWidths=[55, 176, 50, 45, 75, 110])
     t_act.setStyle(TableStyle([
@@ -475,10 +475,10 @@ def generate_pdf_es(out_path):
 
     story.append(Paragraph("¿Cómo garantizamos que los pesos asignados no son arbitrarios? (Pregunta del CFO)", styles['FAQ_Q']))
     story.append(Paragraph(
-        "<b>Respuesta:</b> Los pesos relativos (w\u1d62) no se asignan por intuición, sino mediante un protocolo de calibración "
+        "<b>Respuesta:</b> Los pesos relativos (w<sub>i</sub>) no se asignan por intuición, sino mediante un protocolo de calibración "
         "en dos fases: primero, un panel Delphi ciego entre los miembros de la mesa directiva; segundo, la ponderación "
         "se valida contra estados financieros históricos (por ejemplo, el peso del margen operativo se ancla al EBITDA auditado). "
-        "Asimismo, la plantilla de Excel incluye un análisis de sensibilidad que demuestra que una variación de \u00b115% en los pesos "
+        "Asimismo, la plantilla de Excel incluye un análisis de sensibilidad que demuestra que una variación de +/-15% en los pesos "
         "no altera el cuadrante estratégico dominante.",
         styles['FAQ_A']
     ))
@@ -486,7 +486,7 @@ def generate_pdf_es(out_path):
     story.append(Paragraph("¿Qué ocurre si la dirección insiste en una estrategia ofensiva pero los números arrojan supervivencia? (Pregunta del CEO)", styles['FAQ_Q']))
     story.append(Paragraph(
         "<b>Respuesta:</b> El modelo matemático introduce el principio de <i>falsación objetiva</i>. Si el vector resultante V "
-        "se sitúa en el cuadrante de Supervivencia (X < 0, Y < 0), forzar inversiones de crecimiento agresivo incrementa el riesgo "
+        "se sitúa en el cuadrante de Supervivencia (X &lt; 0, Y &lt; 0), forzar inversiones de crecimiento agresivo incrementa el riesgo "
         "de tensión de liquidez o quiebra. La metodología establece que antes de liberar CAPEX ofensivo, es preceptivo ejecutar "
         "las iniciativas CAME de Contención para desplazar la coordenada interna neta (X) por encima de cero.",
         styles['FAQ_A']
@@ -494,9 +494,9 @@ def generate_pdf_es(out_path):
 
     story.append(Paragraph("¿Cómo evitamos que cada director de área sobrecalifique a su departamento? (Pregunta del COO)", styles['FAQ_Q']))
     story.append(Paragraph(
-        "<b>Respuesta:</b> La regla fundamental del DAFO Cuantitativo exige que ninguna calificación c\u1d62 \u2265 4 sea admitida "
+        "<b>Respuesta:</b> La regla fundamental del DAFO Cuantitativo exige que ninguna calificación c<sub>i</sub> &gt;= 4 sea admitida "
         "sin un respaldo documental auditable en la columna 'Métrica Base'. Si un departamento comercial afirma poseer 'excelente relación "
-        "con clientes', debe aportar un Net Retention Rate (NRR) > 110% o un NPS auditado. De lo contrario, la calificación máxima admisible es 3.",
+        "con clientes', debe aportar un Net Retention Rate (NRR) &gt; 110% o un NPS auditado. De lo contrario, la calificación máxima admisible es 3.",
         styles['FAQ_A']
     ))
 
@@ -513,7 +513,7 @@ def generate_pdf_es(out_path):
     story.append(build_callout(
         "<b>Garantía Oficial Datalaria:</b> Este Executive Decision Pack ha sido diseñado bajo los estándares de las principales "
         "firmas globales de consultoría estratégica. Para soporte metodológico, adaptaciones corporativas o workshops de facilitación, "
-        "contacte con <b>consultoria@datalaria.com</b>.",
+        "contacte con <b>datalaria@gmail.com</b>.",
         styles, border_color=C_NAVY_DARK, bg_color=C_BG_CARD
     ))
 
@@ -575,7 +575,7 @@ def generate_pdf_en(out_path):
     ))
     story.append(Paragraph(
         "This methodology guide formalizes the transition from qualitative brainstorming to an <b>objective vector-based mathematical engine</b>. "
-        "By enforcing normalized relative weights (\u2211w\u1d62 = 1.0) and standardized impact ratings (1 to 5), it establishes a reproducible "
+        "By enforcing normalized relative weights (SUM(w<sub>i</sub>) = 1.0) and standardized impact ratings (1 to 5), it establishes a reproducible "
         "baseline. It then operationalizes the <b>TOWS Matrix</b> to convert strategic quadrant forces into budgeted corporate initiatives "
         "with designated C-Level sponsors, quarterly delivery schedules, and auditable financial KPIs.",
         styles['Body']
@@ -612,28 +612,28 @@ def generate_pdf_en(out_path):
 
     story.append(Paragraph("2. Mathematical Formulation of the Strategic Vector Space", styles['H1']))
     story.append(Paragraph(
-        "To eliminate subjective distortion, we model each quadrant k \u2208 {S, W, O, T} as a weight vector w\u2096 and an impact vector c\u2096 in \u211d\u207f:",
+        "To eliminate subjective distortion, we model each quadrant k in {S, W, O, T} as a weight vector w<sub>k</sub> and an impact vector c<sub>k</sub> in R<sup>n</sup>:",
         styles['Body']
     ))
 
     story.append(build_equation_box(
-        "w_k = [w_{k,1}, w_{k,2}, ..., w_{k,n}]^T, \u2200 w_{k,i} \u2208 [0, 1] \u2227 \u2211_{i=1}^n w_{k,i} = 1.00<br/>"
-        "c_k = [c_{k,1}, c_{k,2}, ..., c_{k,n}]^T, \u2200 c_{k,i} \u2208 {1, 2, 3, 4, 5}<br/>"
-        "S_k = w_k \u00b7 c_k = \u2211_{i=1}^n (w_{k,i} \u00b7 c_{k,i})",
+        "w<sub>k</sub> = [w<sub>k,1</sub>, w<sub>k,2</sub>, ..., w<sub>k,n</sub>]<sup>T</sup>, where w<sub>k,i</sub> in [0, 1] and SUM(w<sub>k,i</sub>) = 1.00<br/>"
+        "c<sub>k</sub> = [c<sub>k,1</sub>, c<sub>k,2</sub>, ..., c<sub>k,n</sub>]<sup>T</sup>, where c<sub>k,i</sub> in {1, 2, 3, 4, 5}<br/>"
+        "S<sub>k</sub> = w<sub>k</sub> * c<sub>k</sub> = SUM(w<sub>k,i</sub> * c<sub>k,i</sub>)",
         styles
     ))
     story.append(Spacer(1, 8))
 
     story.append(Paragraph(
-        "Where <b>S_k</b> represents the composite weighted quadrant score. We then define the <b>Cartesian Strategic Vector V</b> in \u211d\u00b2:",
+        "Where <b>S<sub>k</sub></b> represents the composite weighted quadrant score. We then define the <b>Cartesian Strategic Vector V</b> in R<sup>2</sup>:",
         styles['Body']
     ))
 
     story.append(build_equation_box(
-        "X = S_S - S_W \u2208 [-4.0, +4.0]  (Net Internal Position)<br/>"
-        "Y = S_O - S_T \u2208 [-4.0, +4.0]  (Net External Pressure)<br/>"
-        "\u2192 V = (X, Y) = (S_S - S_W) \u00ee + (S_O - S_T) \u0135<br/>"
-        "||V|| = \u221a(X\u00b2 + Y\u00b2)  (Strategic Momentum Magnitude)",
+        "X = S<sub>S</sub> - S<sub>W</sub> in [-4.0, +4.0]  (Net Internal Position)<br/>"
+        "Y = S<sub>O</sub> - S<sub>T</sub> in [-4.0, +4.0]  (Net External Pressure)<br/>"
+        "-&gt; V = (X, Y) = (S<sub>S</sub> - S<sub>W</sub>)i + (S<sub>O</sub> - S<sub>T</sub>)j<br/>"
+        "||V|| = sqrt(X<sup>2</sup> + Y<sup>2</sup>)  (Strategic Momentum Magnitude)",
         styles
     ))
     story.append(Spacer(1, 8))
@@ -641,10 +641,10 @@ def generate_pdf_en(out_path):
     # English Quadrant Table
     q_en_table = [
         [Paragraph("<b>Quadrant</b>", styles['TableHead']), Paragraph("<b>Coordinates</b>", styles['TableHead']), Paragraph("<b>Dominant Posture</b>", styles['TableHead']), Paragraph("<b>Executive Boardroom Mandate</b>", styles['TableHead'])],
-        [Paragraph("<b>I (Top Right)</b>", styles['TableCellBold']), Paragraph("X \u2265 0, Y \u2265 0", styles['TableCell']), Paragraph("<b>OFFENSIVE (Maxi-Maxi)</b>", styles['TableCellBold']), Paragraph("Direct maximum capital to market capture, R&D scaling, and aggressive expansion.", styles['TableCell'])],
-        [Paragraph("<b>II (Top Left)</b>", styles['TableCellBold']), Paragraph("X < 0, Y \u2265 0", styles['TableCell']), Paragraph("<b>REORIENTATION (Mini-Maxi)</b>", styles['TableCellBold']), Paragraph("Eliminate internal operational bottlenecks to unlock market tailwinds.", styles['TableCell'])],
-        [Paragraph("<b>III (Bottom Left)</b>", styles['TableCellBold']), Paragraph("X < 0, Y < 0", styles['TableCell']), Paragraph("<b>SURVIVAL (Mini-Mini)</b>", styles['TableCellBold']), Paragraph("Enforce cost containment, divest non-core assets, and preserve liquidity.", styles['TableCell'])],
-        [Paragraph("<b>IV (Bottom Right)</b>", styles['TableCellBold']), Paragraph("X \u2265 0, Y < 0", styles['TableCell']), Paragraph("<b>DEFENSIVE (Maxi-Mini)</b>", styles['TableCellBold']), Paragraph("Leverage internal IP and margin fortress to hedge external market risks.", styles['TableCell'])],
+        [Paragraph("<b>I (Top Right)</b>", styles['TableCellBold']), Paragraph("X &gt;= 0, Y &gt;= 0", styles['TableCell']), Paragraph("<b>OFFENSIVE (Maxi-Maxi)</b>", styles['TableCellBold']), Paragraph("Direct maximum capital to market capture, R&D scaling, and aggressive expansion.", styles['TableCell'])],
+        [Paragraph("<b>II (Top Left)</b>", styles['TableCellBold']), Paragraph("X &lt; 0, Y &gt;= 0", styles['TableCell']), Paragraph("<b>REORIENTATION (Mini-Maxi)</b>", styles['TableCellBold']), Paragraph("Eliminate internal operational bottlenecks to unlock market tailwinds.", styles['TableCell'])],
+        [Paragraph("<b>III (Bottom Left)</b>", styles['TableCellBold']), Paragraph("X &lt; 0, Y &lt; 0", styles['TableCell']), Paragraph("<b>SURVIVAL (Mini-Mini)</b>", styles['TableCellBold']), Paragraph("Enforce cost containment, divest non-core assets, and preserve liquidity.", styles['TableCell'])],
+        [Paragraph("<b>IV (Bottom Right)</b>", styles['TableCellBold']), Paragraph("X &gt;= 0, Y &lt; 0", styles['TableCell']), Paragraph("<b>DEFENSIVE (Maxi-Mini)</b>", styles['TableCellBold']), Paragraph("Leverage internal IP and margin fortress to hedge external market risks.", styles['TableCell'])],
     ]
     t_q_en = Table(q_en_table, colWidths=[85, 85, 135, 206])
     t_q_en.setStyle(TableStyle([
@@ -671,7 +671,7 @@ def generate_pdf_en(out_path):
     ))
 
     story.append(build_equation_box(
-        "M_{cross} \u2208 {0, 1, 2, 3}^{m \u00d7 n}<br/>"
+        "M<sub>cross</sub> in {0, 1, 2, 3}<sup>m x n</sup><br/>"
         "0 = No relationship | 1 = Low Impact | 2 = Moderate Synergy | 3 = Critical Catalyst / Acute Threat",
         styles
     ))
@@ -691,10 +691,10 @@ def generate_pdf_en(out_path):
     # TOWS Governance Table
     tows_gov_data = [
         [Paragraph("<b>TOWS Track</b>", styles['TableHead']), Paragraph("<b>Focus Area</b>", styles['TableHead']), Paragraph("<b>Board Approval Gateway</b>", styles['TableHead']), Paragraph("<b>Primary P&L Target</b>", styles['TableHead'])],
-        [Paragraph("<b>SO (Maxi-Maxi)</b>", styles['TableCellBold']), Paragraph("Aggressive Scaling", styles['TableCell']), Paragraph("Positive NPV, ARR acceleration, payback < 14 months.", styles['TableCell']), Paragraph("Net New ARR, Enterprise Logo Growth.", styles['TableCell'])],
-        [Paragraph("<b>ST (Maxi-Mini)</b>", styles['TableCellBold']), Paragraph("Moat Preservation", styles['TableCell']), Paragraph("Risk reduction on assets generating > 15% EBITDA.", styles['TableCell']), Paragraph("Gross Margin Protection, Churn < 1.5%.", styles['TableCell'])],
+        [Paragraph("<b>SO (Maxi-Maxi)</b>", styles['TableCellBold']), Paragraph("Aggressive Scaling", styles['TableCell']), Paragraph("Positive NPV, ARR acceleration, payback &lt; 14 months.", styles['TableCell']), Paragraph("Net New ARR, Enterprise Logo Growth.", styles['TableCell'])],
+        [Paragraph("<b>ST (Maxi-Mini)</b>", styles['TableCellBold']), Paragraph("Moat Preservation", styles['TableCell']), Paragraph("Risk reduction on assets generating &gt; 15% EBITDA.", styles['TableCell']), Paragraph("Gross Margin Protection, Churn &lt; 1.5%.", styles['TableCell'])],
         [Paragraph("<b>WO (Mini-Maxi)</b>", styles['TableCellBold']), Paragraph("Turnaround", styles['TableCell']), Paragraph("Bottleneck removal with verified operational ROI.", styles['TableCell']), Paragraph("Sales Cycle Compression, Dev Velocity.", styles['TableCell'])],
-        [Paragraph("<b>WT (Mini-Mini)</b>", styles['TableCellBold']), Paragraph("Solvency Defense", styles['TableCell']), Paragraph("Loss mitigation on existential business dependencies.", styles['TableCell']), Paragraph("Single-Client Risk < 25%, OPEX Cut.", styles['TableCell'])],
+        [Paragraph("<b>WT (Mini-Mini)</b>", styles['TableCellBold']), Paragraph("Solvency Defense", styles['TableCell']), Paragraph("Loss mitigation on existential business dependencies.", styles['TableCell']), Paragraph("Single-Client Risk &lt; 25%, OPEX Cut.", styles['TableCell'])],
     ]
     t_tows_gov = Table(tows_gov_data, colWidths=[95, 95, 180, 141])
     t_tows_gov.setStyle(TableStyle([
@@ -754,7 +754,7 @@ def generate_pdf_en(out_path):
     story.append(Paragraph(
         "• <b>Net Internal Position:</b> X = S_S - S_W = 4.35 - 2.25 = <b>+2.10</b> (Internal moats comfortably surpass operational debt).<br/>"
         "• <b>Net External Pressure:</b> Y = S_O - S_T = 4.20 - 2.35 = <b>+1.85</b> (Macro tailwinds significantly outweigh headwinds).<br/>"
-        "• <b>Strategic Vector:</b> V = (+2.10, +1.85) \u2192 <b>Dominant OFFENSIVE / EXPANSION Posture (Maxi-Maxi)</b> with magnitude ||V|| = 2.80 pts.",
+        "• <b>Strategic Vector:</b> V = (+2.10, +1.85) -&gt; <b>Dominant OFFENSIVE / EXPANSION Posture (Maxi-Maxi)</b> with magnitude ||V|| = 2.80 pts.",
         styles['Body']
     ))
     story.append(Spacer(1, 4))
@@ -763,9 +763,9 @@ def generate_pdf_en(out_path):
     act_en_data = [
         [Paragraph("<b>ID</b>", styles['TableHead']), Paragraph("<b>Strategic Initiative & Scope</b>", styles['TableHead']), Paragraph("<b>Owner</b>", styles['TableHead']), Paragraph("<b>Target</b>", styles['TableHead']), Paragraph("<b>Budget</b>", styles['TableHead']), Paragraph("<b>Target KPI</b>", styles['TableHead'])],
         [Paragraph("<b>TOWS-O01</b>", styles['TableCellBold']), Paragraph("Subsidized Industrial SaaS module across 40 plants", styles['TableCell']), Paragraph("COO", styles['TableCell']), Paragraph("Q1-Q3", styles['TableCell']), Paragraph("€105,000", styles['TableCell']), Paragraph("+€1.2M ARR", styles['TableCell'])],
-        [Paragraph("<b>TOWS-W01</b>", styles['TableCellBold']), Paragraph("LatAm distributor channel to de-risk client concentration", styles['TableCell']), Paragraph("CCO", styles['TableCell']), Paragraph("Q2-Q4", styles['TableCell']), Paragraph("€105,000", styles['TableCell']), Paragraph("Top-2 < 25% ARR", styles['TableCell'])],
-        [Paragraph("<b>TOWS-T01</b>", styles['TableCellBold']), Paragraph("Multi-year enterprise contract lock-ins with top accounts", styles['TableCell']), Paragraph("CEO", styles['TableCell']), Paragraph("Q1-Q2", styles['TableCell']), Paragraph("€30,000", styles['TableCell']), Paragraph("Logo Churn < 1.5%", styles['TableCell'])],
-        [Paragraph("<b>TOWS-S02</b>", styles['TableCellBold']), Paragraph("Senior AI engineering phantom equity & retention plan", styles['TableCell']), Paragraph("CPO", styles['TableCell']), Paragraph("Q1-Q4", styles['TableCell']), Paragraph("€45,000", styles['TableCell']), Paragraph("R&D Churn < 3%", styles['TableCell'])],
+        [Paragraph("<b>TOWS-W01</b>", styles['TableCellBold']), Paragraph("LatAm distributor channel to de-risk client concentration", styles['TableCell']), Paragraph("CCO", styles['TableCell']), Paragraph("Q2-Q4", styles['TableCell']), Paragraph("€105,000", styles['TableCell']), Paragraph("Top-2 &lt; 25% ARR", styles['TableCell'])],
+        [Paragraph("<b>TOWS-T01</b>", styles['TableCellBold']), Paragraph("Multi-year enterprise contract lock-ins with top accounts", styles['TableCell']), Paragraph("CEO", styles['TableCell']), Paragraph("Q1-Q2", styles['TableCell']), Paragraph("€30,000", styles['TableCell']), Paragraph("Logo Churn &lt; 1.5%", styles['TableCell'])],
+        [Paragraph("<b>TOWS-S02</b>", styles['TableCellBold']), Paragraph("Senior AI engineering phantom equity & retention plan", styles['TableCell']), Paragraph("CPO", styles['TableCell']), Paragraph("Q1-Q4", styles['TableCell']), Paragraph("€45,000", styles['TableCell']), Paragraph("R&D Churn &lt; 3%", styles['TableCell'])],
     ]
     t_act_en = Table(act_en_data, colWidths=[55, 176, 50, 45, 75, 110])
     t_act_en.setStyle(TableStyle([
@@ -799,9 +799,9 @@ def generate_pdf_en(out_path):
 
     story.append(Paragraph("How do we prove relative weight assignments are not subjective? (Chief Financial Officer)", styles['FAQ_Q']))
     story.append(Paragraph(
-        "<b>Defense:</b> Relative weights (w\u1d62) are anchored to empirical financial audits rather than subjective perception. "
+        "<b>Defense:</b> Relative weights (w<sub>i</sub>) are anchored to empirical financial audits rather than subjective perception. "
         "For example, the operational margin factor weight is linked directly to EBITDA performance. Furthermore, our Excel model "
-        "includes a Monte Carlo sensitivity stress-test demonstrating that a \u00b115% shift across factor weights does not alter "
+        "includes a Monte Carlo sensitivity stress-test demonstrating that a +/-15% shift across factor weights does not alter "
         "the dominant offensive strategic posture.",
         styles['FAQ_A']
     ))
@@ -809,16 +809,16 @@ def generate_pdf_en(out_path):
     story.append(Paragraph("What if the Board insists on an Offensive posture when data dictates Survival? (Chief Executive Officer)", styles['FAQ_Q']))
     story.append(Paragraph(
         "<b>Defense:</b> The mathematical model enforces objective reality testing. If vector V lies in the Survival quadrant "
-        "(X < 0, Y < 0), aggressive capital expansion dramatically elevates enterprise insolvency risk. Methodological governance "
+        "(X &lt; 0, Y &lt; 0), aggressive capital expansion dramatically elevates enterprise insolvency risk. Methodological governance "
         "dictates that turnaround initiatives must first lift net internal position (X) into positive territory before offensive growth capital can be unlocked.",
         styles['FAQ_A']
     ))
 
     story.append(Paragraph("How do we prevent departmental heads from inflating their ratings? (Chief Operating Officer)", styles['FAQ_Q']))
     story.append(Paragraph(
-        "<b>Defense:</b> Quantitative SWOT enforces a strict evidentiary standard: no impact rating c\u1d62 \u2265 4 may be submitted "
-        "without auditable empirical documentation in the 'Baseline Metric' column. Claims of customer loyalty require auditable NRR > 110% "
-        "or churn < 2.5%; unverified qualitative claims are capped at a maximum rating of 3.",
+        "<b>Defense:</b> Quantitative SWOT enforces a strict evidentiary standard: no impact rating c<sub>i</sub> &gt;= 4 may be submitted "
+        "without auditable empirical documentation in the 'Baseline Metric' column. Claims of customer loyalty require auditable NRR &gt; 110% "
+        "or churn &lt; 2.5%; unverified qualitative claims are capped at a maximum rating of 3.",
         styles['FAQ_A']
     ))
 
@@ -833,7 +833,7 @@ def generate_pdf_en(out_path):
 
     story.append(build_callout(
         "<b>Datalaria Official Certification:</b> This Executive Decision Pack conforms to Tier-1 management consulting standards. "
-        "For corporate advisory, custom model adaptation, or executive workshop facilitation, contact <b>advisory@datalaria.com</b>.",
+        "For corporate advisory, custom model adaptation, or executive workshop facilitation, contact <b>datalaria@gmail.com</b>.",
         styles, border_color=C_NAVY_DARK, bg_color=C_BG_CARD
     ))
 
@@ -842,8 +842,8 @@ def generate_pdf_en(out_path):
 
 
 def main():
-    generate_pdf_es("static/downloads/dafo-came-es/Guia_Metodologica_DAFO_CAME_ES.pdf")
-    generate_pdf_en("static/downloads/swot-tows-en/Methodology_Guide_SWOT_TOWS_EN.pdf")
+    generate_pdf_es("static/downloads/01_Espanol_DAFO_CAME/Guia_Metodologica_DAFO_CAME_ES.pdf")
+    generate_pdf_en("static/downloads/02_English_SWOT_TOWS/Methodology_Guide_SWOT_TOWS_EN.pdf")
 
 
 if __name__ == '__main__':

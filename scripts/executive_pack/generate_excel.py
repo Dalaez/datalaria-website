@@ -83,17 +83,62 @@ def get_styles():
         'header_border': header_border,
         'total_border': total_border,
         'align_center': Alignment(horizontal='center', vertical='center'),
+        'align_center_wrap': Alignment(horizontal='center', vertical='center', wrap_text=True),
         'align_left': Alignment(horizontal='left', vertical='center'),
+        'align_left_wrap': Alignment(horizontal='left', vertical='center', wrap_text=True),
         'align_right': Alignment(horizontal='right', vertical='center'),
+        'align_right_wrap': Alignment(horizontal='right', vertical='center', wrap_text=True),
         'align_wrap': Alignment(horizontal='left', vertical='center', wrap_text=True),
     }
 
 
+def style_range(ws, cell_range, font=None, fill=None, border=None, alignment=None):
+    """Aplica formato consistente a todas las celdas de un rango o celda combinada."""
+    for row in ws[cell_range]:
+        for cell in row:
+            if font: cell.font = font
+            if fill: cell.fill = fill
+            if border: cell.border = border
+            if alignment: cell.alignment = alignment
+
+
+def apply_sheet_protection(ws, allow_structure=True):
+    """Aplica protección nativa con contraseña corporativa para blindar celdas con fórmulas y elementos visuales.
+    En el estándar OpenXML (ECMA-376 / CT_SheetProtection):
+    - sheet, objects, scenarios: 1/True = blindado.
+    - selectUnlockedCells, selectLockedCells, insertRows, formatCells, etc.: representan restricciones (Locked).
+      0/False = NO restringido (permitido al usuario).
+      1/True  = restringido (bloqueado al usuario).
+    Configuramos False (0) para permitir selección y edición fluida de celdas desbloqueadas."""
+    ws.protection.set_password(PASSWORD_PROTECT)
+    ws.protection.sheet = True
+    ws.protection.objects = True
+    ws.protection.scenarios = True
+    ws.protection.selectUnlockedCells = False  # Permitir seleccionar y editar celdas desbloqueadas
+    ws.protection.selectLockedCells = False    # Permitir seleccionar celdas bloqueadas para ver datos
+    if allow_structure:
+        ws.protection.insertRows = False      # Permitir insertar filas
+        ws.protection.deleteRows = False      # Permitir borrar filas
+        ws.protection.formatCells = False     # Permitir formatear celdas
+        ws.protection.formatColumns = False   # Permitir ajustar columnas
+        ws.protection.formatRows = False      # Permitir ajustar filas
+        ws.protection.sort = False            # Permitir ordenar
+        ws.protection.autoFilter = False      # Permitir auto-filtros
+    else:
+        ws.protection.insertRows = True
+        ws.protection.deleteRows = True
+        ws.protection.formatCells = True
+        ws.protection.formatColumns = True
+        ws.protection.formatRows = True
+        ws.protection.sort = True
+        ws.protection.autoFilter = True
+
+
 BENCHMARK_DATA_ES = {
     'F': [
-        ("F01", "Margen operativo bruto superior al sector (+18.4%)", "Auditoría Financiera 2025: EBITDA 24.2% vs 17.5% media", 0.30, 5),
+        ("F01", "Margen operativo bruto superior al sector (+18,4%)", "Auditoría Financiera 2025: EBITDA 24,2% vs 17,5% media", 0.30, 5),
         ("F02", "Propiedad Intelectual y patentes de software predictivo", "3 patentes europeas registradas con vigencia > 2035", 0.25, 4),
-        ("F03", "Retención neta de clientes enterprise (NRR) del 118%", "Cohorte 2023-2025: rotación de clientes < 2.1% anual", 0.20, 5),
+        ("F03", "Retención neta de clientes enterprise (NRR) del 118%", "Cohorte 2023-2025: rotación de clientes < 2,1% anual", 0.20, 5),
         ("F04", "Infraestructura cloud certificada ISO 27001 y ENS Alto", "Auditoría de ciberseguridad sin no conformidades", 0.15, 4),
         ("F05", "Equipo de I+D interno con baja rotación de talento (<4%)", "Índice eNPS de 74 puntos en encuestas semestrales", 0.10, 4),
         ("F06", "", "", 0.00, None),
@@ -104,7 +149,7 @@ BENCHMARK_DATA_ES = {
     ],
     'D': [
         ("D01", "Concentración de ingresos en 2 clientes clave (42% facturación)", "Riesgo de concentración de cartera auditado", 0.30, 4),
-        ("D02", "Lead time de ciclo de ventas enterprise prolongado (8.5 meses)", "CRM Salesforce: promedio de oportunidad a cierre", 0.25, 3),
+        ("D02", "Lead time de ciclo de ventas enterprise prolongado (8,5 meses)", "CRM Salesforce: promedio de oportunidad a cierre", 0.25, 3),
         ("D03", "Dependencia técnica de canal de hardware internacional", "Tiempos de entrega de sensores IoT > 14 semanas", 0.20, 4),
         ("D04", "Equipo comercial directo infradimensionado en mercados DACH", "Solo 2 ejecutivos para Alemania, Austria y Suiza", 0.15, 3),
         ("D05", "Deuda técnica en módulo legacy de facturación multi-divisa", "Horas de mantenimiento correctivo > 18% del sprint", 0.10, 3),
@@ -241,14 +286,14 @@ def build_assessment_sheet(ws, lang='ES', styles=None):
     ws['A2'] = texts['title']
     ws['A2'].font = styles['title_font']
     ws['A2'].fill = styles['title_fill']
-    ws['A2'].alignment = styles['align_left']
+    ws['A2'].alignment = styles['align_left_wrap']
     ws.row_dimensions[2].height = 36
 
     ws.merge_cells('A3:F3')
     ws['A3'] = texts['subtitle']
     ws['A3'].font = styles['subtitle_font']
-    ws['A3'].alignment = styles['align_left']
-    ws.row_dimensions[3].height = 20
+    ws['A3'].alignment = styles['align_left_wrap']
+    ws.row_dimensions[3].height = 24
 
     data = BENCHMARK_DATA_ES if lang == 'ES' else BENCHMARK_DATA_EN
 
@@ -267,17 +312,17 @@ def build_assessment_sheet(ws, lang='ES', styles=None):
         cell_q = ws.cell(row=current_row, column=1, value=q_title)
         cell_q.font = Font(name='Segoe UI', size=11, bold=True, color=q_text_col)
         cell_q.fill = PatternFill(start_color=q_bg, end_color=q_bg, fill_type='solid')
-        cell_q.alignment = styles['align_left']
+        cell_q.alignment = styles['align_left_wrap']
         ws.row_dimensions[current_row].height = 26
         current_row += 1
 
         headers = [
-            (1, texts['col_code'], 10, styles['align_center']),
-            (2, texts['col_desc'], 44, styles['align_left']),
-            (3, texts['col_base'], 38, styles['align_left']),
-            (4, texts['col_weight'], 16, styles['align_right']),
-            (5, texts['col_rate'], 14, styles['align_center']),
-            (6, texts['col_score'], 18, styles['align_right']),
+            (1, texts['col_code'], 10, styles['align_center_wrap']),
+            (2, texts['col_desc'], 54, styles['align_left_wrap']),
+            (3, texts['col_base'], 46, styles['align_left_wrap']),
+            (4, texts['col_weight'], 16, styles['align_center_wrap']),
+            (5, texts['col_rate'], 14, styles['align_center_wrap']),
+            (6, texts['col_score'], 20, styles['align_center_wrap']),
         ]
         for col_idx, h_text, width, align in headers:
             c = ws.cell(row=current_row, column=col_idx, value=h_text)
@@ -287,7 +332,7 @@ def build_assessment_sheet(ws, lang='ES', styles=None):
             c.border = styles['header_border']
             c.protection = Protection(locked=True)
             ws.column_dimensions[get_column_letter(col_idx)].width = max(ws.column_dimensions[get_column_letter(col_idx)].width or 0, width)
-        ws.row_dimensions[current_row].height = 22
+        ws.row_dimensions[current_row].height = 24
         current_row += 1
 
         start_factor_row = current_row
@@ -300,19 +345,19 @@ def build_assessment_sheet(ws, lang='ES', styles=None):
             c_code.font = styles['code_font']
             c_code.alignment = styles['align_center']
             c_code.border = styles['thin_border']
-            c_code.fill = styles['calc_fill']
-            c_code.protection = Protection(locked=True)
+            c_code.fill = styles['input_fill']
+            c_code.protection = Protection(locked=False)
 
             c_desc = ws.cell(row=current_row, column=2, value=f_desc if f_desc else None)
             c_desc.font = styles['cell_font']
-            c_desc.alignment = styles['align_left']
+            c_desc.alignment = styles['align_left_wrap']
             c_desc.border = styles['thin_border']
             c_desc.fill = styles['input_fill']
             c_desc.protection = Protection(locked=False)
 
             c_met = ws.cell(row=current_row, column=3, value=f_metric if f_metric else None)
             c_met.font = styles['cell_font']
-            c_met.alignment = styles['align_left']
+            c_met.alignment = styles['align_left_wrap']
             c_met.border = styles['thin_border']
             c_met.fill = styles['input_fill']
             c_met.protection = Protection(locked=False)
@@ -320,7 +365,7 @@ def build_assessment_sheet(ws, lang='ES', styles=None):
             c_w = ws.cell(row=current_row, column=4, value=f_w if f_w > 0 else None)
             c_w.font = styles['cell_font']
             c_w.number_format = '0.0%'
-            c_w.alignment = styles['align_right']
+            c_w.alignment = styles['align_center']
             c_w.border = styles['thin_border']
             c_w.fill = styles['input_fill']
             c_w.protection = Protection(locked=False)
@@ -337,12 +382,19 @@ def build_assessment_sheet(ws, lang='ES', styles=None):
             c_score = ws.cell(row=current_row, column=6, value=formula_score)
             c_score.font = styles['cell_bold']
             c_score.number_format = '0.00'
-            c_score.alignment = styles['align_right']
+            c_score.alignment = styles['align_center']
             c_score.border = styles['thin_border']
             c_score.fill = styles['calc_fill']
             c_score.protection = Protection(locked=True)
 
-            ws.row_dimensions[current_row].height = 20
+            desc_len = len(f_desc) if f_desc else 0
+            met_len = len(f_metric) if f_metric else 0
+            if desc_len > 46 or met_len > 40:
+                ws.row_dimensions[current_row].height = 32
+            elif desc_len > 0:
+                ws.row_dimensions[current_row].height = 24
+            else:
+                ws.row_dimensions[current_row].height = 20
             current_row += 1
 
         end_factor_row = current_row - 1
@@ -363,19 +415,20 @@ def build_assessment_sheet(ws, lang='ES', styles=None):
         c_tot_w = ws.cell(row=total_row, column=4, value=formula_sum_w)
         c_tot_w.font = Font(name='Segoe UI', size=10, bold=True, color=q_text_col)
         c_tot_w.number_format = '0.0%'
-        c_tot_w.alignment = styles['align_right']
+        c_tot_w.alignment = styles['align_center']
         c_tot_w.border = styles['total_border']
         c_tot_w.fill = styles['total_fill']
         c_tot_w.protection = Protection(locked=True)
 
+        fmt_pct = "0,0%" if lang == 'ES' else "0.0%"
         formula_val = (
             f'=IF(COUNTBLANK(D{start_factor_row}:D{end_factor_row})=10, "{texts["note_empty"]}", '
             f'IF(ROUND(SUM(D{start_factor_row}:D{end_factor_row}),2)=1, "{texts["ok_msg"]}", '
-            f'"{texts["err_msg"]}" & TEXT(SUM(D{start_factor_row}:D{end_factor_row}),"0.0%") & "{texts["must_100"]}"))'
+            f'"{texts["err_msg"]}" & TEXT(SUM(D{start_factor_row}:D{end_factor_row}),"{fmt_pct}") & "{texts["must_100"]}"))'
         )
         c_tot_val = ws.cell(row=total_row, column=5, value=formula_val)
         c_tot_val.font = styles['cell_bold']
-        c_tot_val.alignment = styles['align_center']
+        c_tot_val.alignment = styles['align_center_wrap']
         c_tot_val.border = styles['total_border']
         c_tot_val.fill = styles['total_fill']
         c_tot_val.protection = Protection(locked=True)
@@ -384,21 +437,15 @@ def build_assessment_sheet(ws, lang='ES', styles=None):
         c_tot_s = ws.cell(row=total_row, column=6, value=formula_sum_s)
         c_tot_s.font = Font(name='Segoe UI', size=11, bold=True, color=q_text_col)
         c_tot_s.number_format = '0.00'
-        c_tot_s.alignment = styles['align_right']
+        c_tot_s.alignment = styles['align_center']
         c_tot_s.border = styles['total_border']
         c_tot_s.fill = styles['total_fill']
         c_tot_s.protection = Protection(locked=True)
 
-        ws.row_dimensions[total_row].height = 24
+        ws.row_dimensions[total_row].height = 26
         current_row += 3
 
-    ws.protection.set_password(PASSWORD_PROTECT)
-    ws.protection.sheet = True
-    ws.protection.enable()
-    ws.protection.selectLockedCells = True
-    ws.protection.selectUnlockedCells = True
-    ws.protection.insertRows = True
-    ws.protection.deleteRows = True
+    apply_sheet_protection(ws, allow_structure=True)
 
     return summary_rows
 
@@ -432,6 +479,12 @@ def build_dashboard_sheet(ws, summary_rows, lang='ES', styles=None):
             'rec_re': "Postura de Reorientación: Existen catalizadores externos extraordinarios que la organización no puede capturar plenamente debido a cuellos de botella internos. Priorizar transformación operativa y reducción de deuda técnica.",
             'rec_sup': "Postura de Supervivencia: Amenazas externas severas combinadas con debilidades críticas internas. Ejecutar plan de contención de costes, desinversión selectiva de activos no core y renegociación de pasivos.",
             'quadrant_title': "DISTRIBUCIÓN EN MATRIZ CARTESIANA",
+            'q_re_desc': "X < 0 (Debilidades dominan)\nY ≥ 0 (Oportunidades altas)",
+            'q_of_desc': "X ≥ 0 (Fortalezas dominan)\nY ≥ 0 (Oportunidades altas)",
+            'q_sup_desc': "X < 0 (Debilidades dominan)\nY < 0 (Amenazas críticas)",
+            'q_def_desc': "X ≥ 0 (Fortalezas dominan)\nY < 0 (Amenazas críticas)",
+            'axis_lbl': "◄── INTERNO: DEBILIDADES (-X)  |  FORTALEZAS (+X) ──►",
+            'vector_formula': '="VECTOR ACTUAL: Coordenadas (" & TEXT(C12,"+0,00;-0,00;0,00") & " , " & TEXT(C13,"+0,00;-0,00;0,00") & ")  •  Impulso: " & TEXT(C14,"0,00")',
         },
         'EN': {
             'title': "DATALARIA | EXECUTIVE DECISION PACK - STRATEGIC DASHBOARD",
@@ -456,6 +509,12 @@ def build_dashboard_sheet(ws, summary_rows, lang='ES', styles=None):
             'rec_re': "Reorientation Posture: High external market tailwinds exist, yet internal bottlenecks prevent full value capture. Expedite operational restructuring, talent realignment, and technical debt elimination.",
             'rec_sup': "Survival Posture: Critical external threats compound severe internal vulnerabilities. Enforce strict OPEX containment, divest non-core assets, and restructure liabilities to preserve enterprise solvency.",
             'quadrant_title': "CARTESIAN MATRIX POSITIONING",
+            'q_re_desc': "X < 0 (Weaknesses dominate)\nY ≥ 0 (High opportunities)",
+            'q_of_desc': "X ≥ 0 (Strengths dominate)\nY ≥ 0 (High opportunities)",
+            'q_sup_desc': "X < 0 (Weaknesses dominate)\nY < 0 (Critical threats)",
+            'q_def_desc': "X ≥ 0 (Strengths dominate)\nY < 0 (Critical threats)",
+            'axis_lbl': "◄── INTERNAL: WEAKNESSES (-X)  |  STRENGTHS (+X) ──►",
+            'vector_formula': '="CURRENT VECTOR: Coordinates (" & TEXT(C12,"+0.00;-0.00;0.00") & " , " & TEXT(C13,"+0.00;-0.00;0.00") & ")  •  Momentum: " & TEXT(C14,"0.00")',
         }
     }[lang]
 
@@ -463,20 +522,21 @@ def build_dashboard_sheet(ws, summary_rows, lang='ES', styles=None):
     ws['A2'] = texts['title']
     ws['A2'].font = styles['title_font']
     ws['A2'].fill = styles['title_fill']
-    ws['A2'].alignment = styles['align_left']
+    ws['A2'].alignment = styles['align_left_wrap']
     ws.row_dimensions[2].height = 36
 
     ws.merge_cells('A3:H3')
     ws['A3'] = texts['subtitle']
     ws['A3'].font = styles['subtitle_font']
-    ws['A3'].alignment = styles['align_left']
-    ws.row_dimensions[3].height = 20
+    ws['A3'].alignment = styles['align_left_wrap']
+    ws.row_dimensions[3].height = 24
 
     ws.merge_cells('A5:C5')
     ws['A5'] = texts['sec_kpi']
     ws['A5'].font = styles['section_font']
     ws['A5'].fill = styles['section_fill']
-    ws.row_dimensions[5].height = 24
+    ws['A5'].alignment = styles['align_left_wrap']
+    ws.row_dimensions[5].height = 26
 
     kpi_items = [
         (6, texts['lbl_sf'], f"={sheet_ref}!F{summary_rows['F']}", COLOR_F_BG, COLOR_F_TEXT),
@@ -491,22 +551,24 @@ def build_dashboard_sheet(ws, summary_rows, lang='ES', styles=None):
         c_lbl.font = styles['cell_font']
         c_lbl.border = styles['thin_border']
         c_lbl.fill = styles['calc_fill']
+        c_lbl.alignment = styles['align_left_wrap']
         c_lbl.protection = Protection(locked=True)
 
         c_val = ws.cell(row=row_idx, column=3, value=formula)
         c_val.font = Font(name='Segoe UI', size=11, bold=True, color=text_col)
         c_val.number_format = '0.00'
-        c_val.alignment = styles['align_right']
+        c_val.alignment = styles['align_center']
         c_val.border = styles['thin_border']
         c_val.fill = PatternFill(start_color=bg, end_color=bg, fill_type='solid')
         c_val.protection = Protection(locked=True)
-        ws.row_dimensions[row_idx].height = 22
+        ws.row_dimensions[row_idx].height = 24
 
     ws.merge_cells('A11:C11')
     ws['A11'] = texts['sec_pos']
     ws['A11'].font = styles['section_font']
     ws['A11'].fill = styles['section_fill']
-    ws.row_dimensions[11].height = 24
+    ws['A11'].alignment = styles['align_left_wrap']
+    ws.row_dimensions[11].height = 26
 
     vector_items = [
         (12, texts['lbl_x'], "=C6-C7"),
@@ -520,23 +582,24 @@ def build_dashboard_sheet(ws, summary_rows, lang='ES', styles=None):
         c_lbl.font = styles['cell_bold']
         c_lbl.border = styles['thin_border']
         c_lbl.fill = styles['calc_fill']
+        c_lbl.alignment = styles['align_left_wrap']
         c_lbl.protection = Protection(locked=True)
 
         c_val = ws.cell(row=row_idx, column=3, value=formula)
         c_val.font = Font(name='Segoe UI', size=11, bold=True, color=COLOR_BLUE_ACCENT)
         c_val.number_format = '+0.00;-0.00;0.00' if row_idx in [12, 13] else '0.00'
-        c_val.alignment = styles['align_right']
+        c_val.alignment = styles['align_center']
         c_val.border = styles['thin_border']
         c_val.fill = styles['total_fill']
         c_val.protection = Protection(locked=True)
-        ws.row_dimensions[row_idx].height = 22
+        ws.row_dimensions[row_idx].height = 24
 
     ws.merge_cells('A16:C16')
     c_post_hdr = ws.cell(row=16, column=1, value=texts['lbl_posture'])
     c_post_hdr.font = styles['header_font']
     c_post_hdr.fill = styles['header_fill']
-    c_post_hdr.alignment = styles['align_center']
-    ws.row_dimensions[16].height = 24
+    c_post_hdr.alignment = styles['align_center_wrap']
+    ws.row_dimensions[16].height = 26
 
     formula_posture = (
         f'=IF(AND(C12>=0, C13>=0), "{texts["posture_of"]}", '
@@ -545,23 +608,27 @@ def build_dashboard_sheet(ws, summary_rows, lang='ES', styles=None):
     )
     ws.merge_cells('A17:C17')
     c_post_val = ws.cell(row=17, column=1, value=formula_posture)
-    c_post_val.font = Font(name='Segoe UI', size=11, bold=True, color=COLOR_NAVY_DARK)
-    c_post_val.fill = PatternFill(start_color="FEF08A", end_color="FEF08A", fill_type='solid')
-    c_post_val.alignment = styles['align_center']
-    c_post_val.border = Border(
-        left=Side(style='medium', color=COLOR_NAVY_DARK),
-        right=Side(style='medium', color=COLOR_NAVY_DARK),
-        top=Side(style='medium', color=COLOR_NAVY_DARK),
-        bottom=Side(style='medium', color=COLOR_NAVY_DARK)
+    style_range(
+        ws, 'A17:C17',
+        font=Font(name='Segoe UI', size=11, bold=True, color=COLOR_NAVY_DARK),
+        fill=PatternFill(start_color="FEF08A", end_color="FEF08A", fill_type='solid'),
+        border=Border(
+            left=Side(style='medium', color=COLOR_NAVY_DARK),
+            right=Side(style='medium', color=COLOR_NAVY_DARK),
+            top=Side(style='medium', color=COLOR_NAVY_DARK),
+            bottom=Side(style='medium', color=COLOR_NAVY_DARK)
+        ),
+        alignment=styles['align_center_wrap']
     )
     c_post_val.protection = Protection(locked=True)
-    ws.row_dimensions[17].height = 36
+    ws.row_dimensions[17].height = 38
 
     ws.merge_cells('A19:H19')
     ws['A19'] = texts['sec_rec']
     ws['A19'].font = styles['section_font']
     ws['A19'].fill = styles['section_fill']
-    ws.row_dimensions[19].height = 24
+    ws['A19'].alignment = styles['align_left_wrap']
+    ws.row_dimensions[19].height = 26
 
     formula_rec = (
         f'=IF(AND(C12>=0, C13>=0), "{texts["rec_of"]}", '
@@ -570,61 +637,83 @@ def build_dashboard_sheet(ws, summary_rows, lang='ES', styles=None):
     )
     ws.merge_cells('A20:H21')
     c_rec_box = ws.cell(row=20, column=1, value=formula_rec)
-    c_rec_box.font = Font(name='Segoe UI', size=10, italic=False, color=COLOR_NAVY_DARK)
-    c_rec_box.fill = PatternFill(start_color=COLOR_BG_LIGHT, end_color=COLOR_BG_LIGHT, fill_type='solid')
-    c_rec_box.alignment = Alignment(horizontal='left', vertical='top', wrap_text=True)
-    c_rec_box.border = styles['thin_border']
+    style_range(
+        ws, 'A20:H21',
+        font=Font(name='Segoe UI', size=10, italic=False, color=COLOR_NAVY_DARK),
+        fill=PatternFill(start_color=COLOR_BG_LIGHT, end_color=COLOR_BG_LIGHT, fill_type='solid'),
+        border=styles['thin_border'],
+        alignment=styles['align_left_wrap']
+    )
     c_rec_box.protection = Protection(locked=True)
-    ws.row_dimensions[20].height = 28
-    ws.row_dimensions[21].height = 28
+    ws.row_dimensions[20].height = 36
+    ws.row_dimensions[21].height = 36
 
     ws.merge_cells('E5:H5')
     ws['E5'] = texts['quadrant_title']
     ws['E5'].font = styles['section_font']
     ws['E5'].fill = styles['section_fill']
-    ws['E5'].alignment = styles['align_center']
+    ws['E5'].alignment = styles['align_center_wrap']
+    ws.row_dimensions[5].height = 26
 
     ws.merge_cells('E6:F9')
-    c_re = ws.cell(row=6, column=5, value=f"{texts['posture_re']}\n\nX < 0 (Debilidades dominan)\nY ≥ 0 (Oportunidades altas)")
-    c_re.font = Font(name='Segoe UI', size=9, bold=True, color=COLOR_D_TEXT)
-    c_re.fill = PatternFill(start_color=COLOR_D_BG, end_color=COLOR_D_BG, fill_type='solid')
-    c_re.alignment = styles['align_center']
-    c_re.border = styles['thin_border']
+    c_re = ws.cell(row=6, column=5, value=f"{texts['posture_re']}\n\n{texts['q_re_desc']}")
+    style_range(
+        ws, 'E6:F9',
+        font=Font(name='Segoe UI', size=9, bold=True, color=COLOR_D_TEXT),
+        fill=PatternFill(start_color=COLOR_D_BG, end_color=COLOR_D_BG, fill_type='solid'),
+        border=styles['thin_border'],
+        alignment=styles['align_center_wrap']
+    )
 
     ws.merge_cells('G6:H9')
-    c_of = ws.cell(row=6, column=7, value=f"{texts['posture_of']}\n\nX ≥ 0 (Fortalezas dominan)\nY ≥ 0 (Oportunidades altas)")
-    c_of.font = Font(name='Segoe UI', size=9, bold=True, color=COLOR_F_TEXT)
-    c_of.fill = PatternFill(start_color=COLOR_F_BG, end_color=COLOR_F_BG, fill_type='solid')
-    c_of.alignment = styles['align_center']
-    c_of.border = styles['thin_border']
+    c_of = ws.cell(row=6, column=7, value=f"{texts['posture_of']}\n\n{texts['q_of_desc']}")
+    style_range(
+        ws, 'G6:H9',
+        font=Font(name='Segoe UI', size=9, bold=True, color=COLOR_F_TEXT),
+        fill=PatternFill(start_color=COLOR_F_BG, end_color=COLOR_F_BG, fill_type='solid'),
+        border=styles['thin_border'],
+        alignment=styles['align_center_wrap']
+    )
 
     ws.merge_cells('E11:F14')
-    c_sup = ws.cell(row=11, column=5, value=f"{texts['posture_sup']}\n\nX < 0 (Debilidades dominan)\nY < 0 (Amenazas críticas)")
-    c_sup.font = Font(name='Segoe UI', size=9, bold=True, color=COLOR_A_TEXT)
-    c_sup.fill = PatternFill(start_color=COLOR_A_BG, end_color=COLOR_A_BG, fill_type='solid')
-    c_sup.alignment = styles['align_center']
-    c_sup.border = styles['thin_border']
+    c_sup = ws.cell(row=11, column=5, value=f"{texts['posture_sup']}\n\n{texts['q_sup_desc']}")
+    style_range(
+        ws, 'E11:F14',
+        font=Font(name='Segoe UI', size=9, bold=True, color=COLOR_A_TEXT),
+        fill=PatternFill(start_color=COLOR_A_BG, end_color=COLOR_A_BG, fill_type='solid'),
+        border=styles['thin_border'],
+        alignment=styles['align_center_wrap']
+    )
 
     ws.merge_cells('G11:H14')
-    c_def = ws.cell(row=11, column=7, value=f"{texts['posture_def']}\n\nX ≥ 0 (Fortalezas dominan)\nY < 0 (Amenazas críticas)")
-    c_def.font = Font(name='Segoe UI', size=9, bold=True, color=COLOR_O_TEXT)
-    c_def.fill = PatternFill(start_color=COLOR_O_BG, end_color=COLOR_O_BG, fill_type='solid')
-    c_def.alignment = styles['align_center']
-    c_def.border = styles['thin_border']
+    c_def = ws.cell(row=11, column=7, value=f"{texts['posture_def']}\n\n{texts['q_def_desc']}")
+    style_range(
+        ws, 'G11:H14',
+        font=Font(name='Segoe UI', size=9, bold=True, color=COLOR_O_TEXT),
+        fill=PatternFill(start_color=COLOR_O_BG, end_color=COLOR_O_BG, fill_type='solid'),
+        border=styles['thin_border'],
+        alignment=styles['align_center_wrap']
+    )
 
     ws.merge_cells('E10:H10')
-    c_axis = ws.cell(row=10, column=5, value="◄── INTERNO: DEBILIDADES (-X)  |  FORTALEZAS (+X) ──►")
+    c_axis = ws.cell(row=10, column=5, value=texts['axis_lbl'])
     c_axis.font = Font(name='Segoe UI', size=8, bold=True, color="64748B")
-    c_axis.alignment = styles['align_center']
+    c_axis.alignment = styles['align_center_wrap']
+    ws.row_dimensions[10].height = 20
 
     ws.merge_cells('E16:H17')
-    c_coord = ws.cell(row=16, column=5, value='="VECTOR ACTUAL: Coordenadas (" & TEXT(C12,"+0.00;-0.00;0.00") & " , " & TEXT(C13,"+0.00;-0.00;0.00") & ")  •  Impulso: " & TEXT(C14,"0.00")')
-    c_coord.font = Font(name='Segoe UI', size=10, bold=True, color=COLOR_NAVY_DARK)
-    c_coord.fill = styles['calc_fill']
-    c_coord.alignment = styles['align_center']
-    c_coord.border = styles['thin_border']
+    c_coord = ws.cell(row=16, column=5, value=texts['vector_formula'])
+    style_range(
+        ws, 'E16:H17',
+        font=Font(name='Segoe UI', size=10, bold=True, color=COLOR_NAVY_DARK),
+        fill=styles['calc_fill'],
+        border=styles['thin_border'],
+        alignment=styles['align_center_wrap']
+    )
+    ws.row_dimensions[16].height = 22
+    ws.row_dimensions[17].height = 22
 
-    col_widths = {1: 4, 2: 36, 3: 16, 4: 4, 5: 22, 6: 22, 7: 22, 8: 22}
+    col_widths = {1: 4, 2: 40, 3: 16, 4: 4, 5: 25, 6: 25, 7: 25, 8: 25}
     for c_i, w in col_widths.items():
         ws.column_dimensions[get_column_letter(c_i)].width = w
 
@@ -652,11 +741,7 @@ def build_dashboard_sheet(ws, summary_rows, lang='ES', styles=None):
 
     ws.add_chart(chart, 'A23')
 
-    ws.protection.set_password(PASSWORD_PROTECT)
-    ws.protection.sheet = True
-    ws.protection.enable()
-    ws.protection.selectLockedCells = True
-    ws.protection.selectUnlockedCells = True
+    apply_sheet_protection(ws, allow_structure=False)
 
 
 def build_cross_sheet(ws, lang='ES', styles=None):
@@ -701,26 +786,26 @@ def build_cross_sheet(ws, lang='ES', styles=None):
     ws['A2'] = texts['title']
     ws['A2'].font = styles['title_font']
     ws['A2'].fill = styles['title_fill']
-    ws['A2'].alignment = styles['align_left']
+    ws['A2'].alignment = styles['align_left_wrap']
     ws.row_dimensions[2].height = 36
 
     ws.merge_cells('A3:W3')
     ws['A3'] = texts['subtitle']
     ws['A3'].font = styles['subtitle_font']
-    ws['A3'].alignment = styles['align_left']
-    ws.row_dimensions[3].height = 20
+    ws['A3'].alignment = styles['align_left_wrap']
+    ws.row_dimensions[3].height = 24
 
     ws.merge_cells('C5:L5')
     ws['C5'] = texts['lbl_external_o']
     ws['C5'].font = Font(name='Segoe UI', size=10, bold=True, color=COLOR_O_TEXT)
     ws['C5'].fill = PatternFill(start_color=COLOR_O_BG, end_color=COLOR_O_BG, fill_type='solid')
-    ws['C5'].alignment = styles['align_center']
+    ws['C5'].alignment = styles['align_center_wrap']
 
     ws.merge_cells('M5:V5')
     ws['M5'] = texts['lbl_external_a']
     ws['M5'].font = Font(name='Segoe UI', size=10, bold=True, color=COLOR_A_TEXT)
     ws['M5'].fill = PatternFill(start_color=COLOR_A_BG, end_color=COLOR_A_BG, fill_type='solid')
-    ws['M5'].alignment = styles['align_center']
+    ws['M5'].alignment = styles['align_center_wrap']
 
     ws.cell(row=6, column=1, value="ID").font = styles['header_font']
     ws.cell(row=6, column=1).fill = styles['header_fill']
@@ -729,8 +814,8 @@ def build_cross_sheet(ws, lang='ES', styles=None):
 
     ws.cell(row=6, column=2, value=texts['lbl_internal']).font = styles['header_font']
     ws.cell(row=6, column=2).fill = styles['header_fill']
-    ws.cell(row=6, column=2).alignment = styles['align_left']
-    ws.column_dimensions['B'].width = 34
+    ws.cell(row=6, column=2).alignment = styles['align_left_wrap']
+    ws.column_dimensions['B'].width = 46
 
     o_prefix = "O"
     for i in range(1, 11):
@@ -757,9 +842,9 @@ def build_cross_sheet(ws, lang='ES', styles=None):
     c_tot_hdr = ws.cell(row=6, column=23, value=texts['col_tot'])
     c_tot_hdr.font = styles['header_font']
     c_tot_hdr.fill = styles['header_fill']
-    c_tot_hdr.alignment = styles['align_center']
-    ws.column_dimensions['W'].width = 12
-    ws.row_dimensions[6].height = 24
+    c_tot_hdr.alignment = styles['align_center_wrap']
+    ws.column_dimensions['W'].width = 14
+    ws.row_dimensions[6].height = 26
 
     matrix_F = [
         [3, 3, 2, 3, 2, 0, 0, 0, 0, 0,  2, 1, 1, 3, 2, 0, 0, 0, 0, 0],
@@ -787,7 +872,8 @@ def build_cross_sheet(ws, lang='ES', styles=None):
     c_f_sec = ws.cell(row=current_r, column=1, value=f"{texts['sec_f']} (F01 - F10)" if lang=='ES' else f"{texts['sec_f']} (S01 - S10)")
     c_f_sec.font = Font(name='Segoe UI', size=10, bold=True, color=COLOR_F_TEXT)
     c_f_sec.fill = PatternFill(start_color=COLOR_F_BG, end_color=COLOR_F_BG, fill_type='solid')
-    ws.row_dimensions[current_r].height = 20
+    c_f_sec.alignment = styles['align_left_wrap']
+    ws.row_dimensions[current_r].height = 24
     current_r += 1
     start_f_row = current_r
 
@@ -804,6 +890,7 @@ def build_cross_sheet(ws, lang='ES', styles=None):
         formula_name = f'=IF({sheet_ref}!B{tab2_row}<>"", {sheet_ref}!B{tab2_row}, "{code} [Disponible]")'
         c_name = ws.cell(row=current_r, column=2, value=formula_name)
         c_name.font = styles['cell_font']
+        c_name.alignment = styles['align_left_wrap']
         c_name.border = styles['thin_border']
         c_name.fill = styles['calc_fill']
         c_name.protection = Protection(locked=True)
@@ -825,7 +912,7 @@ def build_cross_sheet(ws, lang='ES', styles=None):
         c_tot.fill = styles['calc_fill']
         c_tot.protection = Protection(locked=True)
 
-        ws.row_dimensions[current_r].height = 19
+        ws.row_dimensions[current_r].height = 26
         current_r += 1
     end_f_row = current_r - 1
 
@@ -833,7 +920,8 @@ def build_cross_sheet(ws, lang='ES', styles=None):
     c_d_sec = ws.cell(row=current_r, column=1, value=f"{texts['sec_d']} (D01 - D10)" if lang=='ES' else f"{texts['sec_d']} (W01 - W10)")
     c_d_sec.font = Font(name='Segoe UI', size=10, bold=True, color=COLOR_D_TEXT)
     c_d_sec.fill = PatternFill(start_color=COLOR_D_BG, end_color=COLOR_D_BG, fill_type='solid')
-    ws.row_dimensions[current_r].height = 20
+    c_d_sec.alignment = styles['align_left_wrap']
+    ws.row_dimensions[current_r].height = 24
     current_r += 1
     start_d_row = current_r
 
@@ -850,6 +938,7 @@ def build_cross_sheet(ws, lang='ES', styles=None):
         formula_name = f'=IF({sheet_ref}!B{tab2_row}<>"", {sheet_ref}!B{tab2_row}, "{code} [Disponible]")'
         c_name = ws.cell(row=current_r, column=2, value=formula_name)
         c_name.font = styles['cell_font']
+        c_name.alignment = styles['align_left_wrap']
         c_name.border = styles['thin_border']
         c_name.fill = styles['calc_fill']
         c_name.protection = Protection(locked=True)
@@ -871,7 +960,7 @@ def build_cross_sheet(ws, lang='ES', styles=None):
         c_tot.fill = styles['calc_fill']
         c_tot.protection = Protection(locked=True)
 
-        ws.row_dimensions[current_r].height = 19
+        ws.row_dimensions[current_r].height = 26
         current_r += 1
     end_d_row = current_r - 1
 
@@ -897,66 +986,49 @@ def build_cross_sheet(ws, lang='ES', styles=None):
     ws.cell(row=tot_col_r, column=23).border = styles['total_border']
     ws.cell(row=tot_col_r, column=23).fill = styles['total_fill']
     ws.cell(row=tot_col_r, column=23).alignment = styles['align_center']
-    ws.row_dimensions[tot_col_r].height = 24
+    ws.row_dimensions[tot_col_r].height = 26
 
     card_r = tot_col_r + 2
     ws.merge_cells(f'B{card_r}:F{card_r}')
     ws[f'B{card_r}'] = texts['kpi_so']
-    ws[f'B{card_r}'].font = styles['header_font']
-    ws[f'B{card_r}'].fill = styles['header_fill']
+    style_range(ws, f'B{card_r}:F{card_r}', font=styles['header_font'], fill=styles['header_fill'], alignment=styles['align_center_wrap'])
 
     ws.merge_cells(f'B{card_r+1}:F{card_r+1}')
     c_so = ws[f'B{card_r+1}']
     c_so.value = f'=SUM(C{start_f_row}:L{end_f_row})'
-    c_so.font = Font(name='Segoe UI', size=16, bold=True, color=COLOR_F_TEXT)
-    c_so.fill = PatternFill(start_color=COLOR_F_BG, end_color=COLOR_F_BG, fill_type='solid')
-    c_so.alignment = styles['align_center']
-    c_so.border = styles['thin_border']
+    style_range(ws, f'B{card_r+1}:F{card_r+1}', font=Font(name='Segoe UI', size=16, bold=True, color=COLOR_F_TEXT), fill=PatternFill(start_color=COLOR_F_BG, end_color=COLOR_F_BG, fill_type='solid'), border=styles['thin_border'], alignment=styles['align_center'])
 
     ws.merge_cells(f'H{card_r}:L{card_r}')
     ws[f'H{card_r}'] = texts['kpi_st']
-    ws[f'H{card_r}'].font = styles['header_font']
-    ws[f'H{card_r}'].fill = styles['header_fill']
+    style_range(ws, f'H{card_r}:L{card_r}', font=styles['header_font'], fill=styles['header_fill'], alignment=styles['align_center_wrap'])
 
     ws.merge_cells(f'H{card_r+1}:L{card_r+1}')
     c_st = ws[f'H{card_r+1}']
     c_st.value = f'=SUM(M{start_f_row}:V{end_f_row})'
-    c_st.font = Font(name='Segoe UI', size=16, bold=True, color=COLOR_O_TEXT)
-    c_st.fill = PatternFill(start_color=COLOR_O_BG, end_color=COLOR_O_BG, fill_type='solid')
-    c_st.alignment = styles['align_center']
-    c_st.border = styles['thin_border']
+    style_range(ws, f'H{card_r+1}:L{card_r+1}', font=Font(name='Segoe UI', size=16, bold=True, color=COLOR_O_TEXT), fill=PatternFill(start_color=COLOR_O_BG, end_color=COLOR_O_BG, fill_type='solid'), border=styles['thin_border'], alignment=styles['align_center'])
 
     ws.merge_cells(f'N{card_r}:R{card_r}')
     ws[f'N{card_r}'] = texts['kpi_wo']
-    ws[f'N{card_r}'].font = styles['header_font']
-    ws[f'N{card_r}'].fill = styles['header_fill']
+    style_range(ws, f'N{card_r}:R{card_r}', font=styles['header_font'], fill=styles['header_fill'], alignment=styles['align_center_wrap'])
 
     ws.merge_cells(f'N{card_r+1}:R{card_r+1}')
     c_wo = ws[f'N{card_r+1}']
     c_wo.value = f'=SUM(C{start_d_row}:L{end_d_row})'
-    c_wo.font = Font(name='Segoe UI', size=16, bold=True, color=COLOR_D_TEXT)
-    c_wo.fill = PatternFill(start_color=COLOR_D_BG, end_color=COLOR_D_BG, fill_type='solid')
-    c_wo.alignment = styles['align_center']
-    c_wo.border = styles['thin_border']
+    style_range(ws, f'N{card_r+1}:R{card_r+1}', font=Font(name='Segoe UI', size=16, bold=True, color=COLOR_D_TEXT), fill=PatternFill(start_color=COLOR_D_BG, end_color=COLOR_D_BG, fill_type='solid'), border=styles['thin_border'], alignment=styles['align_center'])
 
     ws.merge_cells(f'T{card_r}:W{card_r}')
     ws[f'T{card_r}'] = texts['kpi_wt']
-    ws[f'T{card_r}'].font = styles['header_font']
-    ws[f'T{card_r}'].fill = styles['header_fill']
+    style_range(ws, f'T{card_r}:W{card_r}', font=styles['header_font'], fill=styles['header_fill'], alignment=styles['align_center_wrap'])
 
     ws.merge_cells(f'T{card_r+1}:W{card_r+1}')
     c_wt = ws[f'T{card_r+1}']
     c_wt.value = f'=SUM(M{start_d_row}:V{end_d_row})'
-    c_wt.font = Font(name='Segoe UI', size=16, bold=True, color=COLOR_A_TEXT)
-    c_wt.fill = PatternFill(start_color=COLOR_A_BG, end_color=COLOR_A_BG, fill_type='solid')
-    c_wt.alignment = styles['align_center']
-    c_wt.border = styles['thin_border']
+    style_range(ws, f'T{card_r+1}:W{card_r+1}', font=Font(name='Segoe UI', size=16, bold=True, color=COLOR_A_TEXT), fill=PatternFill(start_color=COLOR_A_BG, end_color=COLOR_A_BG, fill_type='solid'), border=styles['thin_border'], alignment=styles['align_center'])
 
-    ws.protection.set_password(PASSWORD_PROTECT)
-    ws.protection.sheet = True
-    ws.protection.enable()
-    ws.protection.selectLockedCells = True
-    ws.protection.selectUnlockedCells = True
+    ws.row_dimensions[card_r].height = 26
+    ws.row_dimensions[card_r+1].height = 34
+
+    apply_sheet_protection(ws, allow_structure=True)
 
 
 def build_came_sheet(ws, lang='ES', styles=None):
@@ -1008,24 +1080,24 @@ def build_came_sheet(ws, lang='ES', styles=None):
     ws['A2'] = texts['title']
     ws['A2'].font = styles['title_font']
     ws['A2'].fill = styles['title_fill']
-    ws['A2'].alignment = styles['align_left']
+    ws['A2'].alignment = styles['align_left_wrap']
     ws.row_dimensions[2].height = 36
 
     ws.merge_cells('A3:I3')
     ws['A3'] = texts['subtitle']
     ws['A3'].font = styles['subtitle_font']
-    ws['A3'].alignment = styles['align_left']
-    ws.row_dimensions[3].height = 20
+    ws['A3'].alignment = styles['align_left_wrap']
+    ws.row_dimensions[3].height = 24
 
     actions_data_es = [
         ("CAME-C01", "D01 + O03", "Plan de Diversificación Comercial: Programa de canal en LatAm para reducir concentración a < 25%", "Chief Commercial Officer", "Q2-Q4", 45000, 60000, "Concentración top-2 < 25% ARR", "Aprobado"),
-        ("CAME-C02", "D02 + O05", "Automatización de ciclo comercial con integradores globales para acortar lead time a 5 meses", "VP Sales Enterprise", "Q1-Q3", 25000, 35000, "Lead time ventas ≤ 5.2 meses", "Aprobado"),
+        ("CAME-C02", "D02 + O05", "Automatización de ciclo comercial con integradores globales para acortar lead time a 5 meses", "VP Sales Enterprise", "Q1-Q3", 25000, 35000, "Lead time ventas ≤ 5,2 meses", "Aprobado"),
         ("CAME-C03", "D05 + O02", "Refactorización del motor de facturación multi-divisa hacia microservicios cloud", "Chief Technology Officer", "Q2-Q3", 40000, 15000, "Deuda técnica sprint < 6%", "En Revisión"),
-        ("CAME-A01", "F01 + A01", "Blindaje contractual plurianual con clientes clave con cláusula de fidelización", "Chief Executive Officer", "Q1-Q2", 10000, 20000, "Churn de clientes < 1.5%", "Aprobado"),
+        ("CAME-A01", "F01 + A01", "Blindaje contractual plurianual con clientes clave con cláusula de fidelización", "Chief Executive Officer", "Q1-Q2", 10000, 20000, "Churn de clientes < 1,5%", "Aprobado"),
         ("CAME-A02", "F04 + A05", "Certificación anticipada en directiva NIS2 y auditoría de resiliencia operativa DORA", "Chief Information Security Officer", "Q2-Q3", 35000, 15000, "100% cumplimiento normativo", "Aprobado"),
         ("CAME-M01", "F02 + O02", "Extensión de patentes de algoritmos a jurisdicciones asiáticas y protección de IP", "Head of Legal & IP", "Q3-Q4", 30000, 10000, "2 nuevas patentes concedidas", "Propuesto"),
         ("CAME-M02", "F05 + A02", "Plan de retención de talento clave de I+D (Phantom Shares y plan de carrera técnica)", "Chief People Officer", "Q1-Q4", 0, 45000, "Rotación voluntaria < 3%", "Aprobado"),
-        ("CAME-E01", "F01 + O01", "Aceleración del despliegue del módulo SaaS subvencionado por NextGen en 40 factorías", "Chief Operating Officer", "Q1-Q3", 65000, 40000, "+1.2M € ARR adicional", "Aprobado"),
+        ("CAME-E01", "F01 + O01", "Aceleración del despliegue del módulo SaaS subvencionado por NextGen en 40 factorías", "Chief Operating Officer", "Q1-Q3", 65000, 40000, "+1,2M € ARR adicional", "Aprobado"),
         ("CAME-E02", "F03 + O05", "Acuerdo de co-selling con consultora global (Tier-1) para inclusión en licitaciones", "Chief Commercial Officer", "Q2-Q4", 20000, 30000, "+8 nuevos clientes Tier-1", "Aprobado"),
     ]
 
@@ -1050,17 +1122,19 @@ def build_came_sheet(ws, lang='ES', styles=None):
         ("E", texts['sec_e'], COLOR_O_BG, COLOR_O_BORDER, COLOR_O_TEXT, actions_data[7:9]),
     ]
 
+    fmt_curr = '#,##0 €' if lang == 'ES' else '€#,##0'
+
     current_r = 5
     headers = [
-        (1, texts['col_id'], 12, styles['align_center']),
-        (2, texts['col_factor'], 14, styles['align_center']),
-        (3, texts['col_name'], 48, styles['align_left']),
-        (4, texts['col_owner'], 28, styles['align_left']),
-        (5, texts['col_time'], 10, styles['align_center']),
-        (6, texts['col_capex'], 15, styles['align_right']),
-        (7, texts['col_opex'], 15, styles['align_right']),
-        (8, texts['col_kpi'], 30, styles['align_left']),
-        (9, texts['col_status'], 14, styles['align_center']),
+        (1, texts['col_id'], 13, styles['align_center_wrap']),
+        (2, texts['col_factor'], 15, styles['align_center_wrap']),
+        (3, texts['col_name'], 58, styles['align_left_wrap']),
+        (4, texts['col_owner'], 34, styles['align_left_wrap']),
+        (5, texts['col_time'], 12, styles['align_center_wrap']),
+        (6, texts['col_capex'], 16, styles['align_center_wrap']),
+        (7, texts['col_opex'], 16, styles['align_center_wrap']),
+        (8, texts['col_kpi'], 36, styles['align_left_wrap']),
+        (9, texts['col_status'], 15, styles['align_center_wrap']),
     ]
 
     capex_rows = []
@@ -1071,7 +1145,8 @@ def build_came_sheet(ws, lang='ES', styles=None):
         c_sec = ws.cell(row=current_r, column=1, value=s_title)
         c_sec.font = Font(name='Segoe UI', size=11, bold=True, color=s_text)
         c_sec.fill = PatternFill(start_color=s_bg, end_color=s_bg, fill_type='solid')
-        ws.row_dimensions[current_r].height = 24
+        c_sec.alignment = styles['align_left_wrap']
+        ws.row_dimensions[current_r].height = 26
         current_r += 1
 
         for col_idx, h_text, width, align in headers:
@@ -1081,7 +1156,7 @@ def build_came_sheet(ws, lang='ES', styles=None):
             c.alignment = align
             c.border = styles['header_border']
             ws.column_dimensions[get_column_letter(col_idx)].width = max(ws.column_dimensions[get_column_letter(col_idx)].width or 0, width)
-        ws.row_dimensions[current_r].height = 22
+        ws.row_dimensions[current_r].height = 24
         current_r += 1
 
         start_s_row = current_r
@@ -1092,26 +1167,26 @@ def build_came_sheet(ws, lang='ES', styles=None):
             c_id.font = styles['code_font']
             c_id.alignment = styles['align_center']
             c_id.border = styles['thin_border']
-            c_id.fill = styles['calc_fill']
-            c_id.protection = Protection(locked=True)
+            c_id.fill = styles['input_fill']
+            c_id.protection = Protection(locked=False)
 
             c_fac = ws.cell(row=current_r, column=2, value=factor)
             c_fac.font = styles['cell_bold']
             c_fac.alignment = styles['align_center']
             c_fac.border = styles['thin_border']
-            c_fac.fill = styles['calc_fill']
-            c_fac.protection = Protection(locked=True)
+            c_fac.fill = styles['input_fill']
+            c_fac.protection = Protection(locked=False)
 
             c_nm = ws.cell(row=current_r, column=3, value=name)
             c_nm.font = styles['cell_font']
-            c_nm.alignment = styles['align_left']
+            c_nm.alignment = styles['align_left_wrap']
             c_nm.border = styles['thin_border']
             c_nm.fill = styles['input_fill']
             c_nm.protection = Protection(locked=False)
 
             c_own = ws.cell(row=current_r, column=4, value=owner)
             c_own.font = styles['cell_font']
-            c_own.alignment = styles['align_left']
+            c_own.alignment = styles['align_left_wrap']
             c_own.border = styles['thin_border']
             c_own.fill = styles['input_fill']
             c_own.protection = Protection(locked=False)
@@ -1125,23 +1200,23 @@ def build_came_sheet(ws, lang='ES', styles=None):
 
             c_cap = ws.cell(row=current_r, column=6, value=capex)
             c_cap.font = styles['cell_font']
-            c_cap.number_format = '#,##0 €'
-            c_cap.alignment = styles['align_right']
+            c_cap.number_format = fmt_curr
+            c_cap.alignment = styles['align_center']
             c_cap.border = styles['thin_border']
             c_cap.fill = styles['input_fill']
             c_cap.protection = Protection(locked=False)
 
             c_opx = ws.cell(row=current_r, column=7, value=opex)
             c_opx.font = styles['cell_font']
-            c_opx.number_format = '#,##0 €'
-            c_opx.alignment = styles['align_right']
+            c_opx.number_format = fmt_curr
+            c_opx.alignment = styles['align_center']
             c_opx.border = styles['thin_border']
             c_opx.fill = styles['input_fill']
             c_opx.protection = Protection(locked=False)
 
             c_kpi = ws.cell(row=current_r, column=8, value=kpi)
             c_kpi.font = styles['cell_font']
-            c_kpi.alignment = styles['align_left']
+            c_kpi.alignment = styles['align_left_wrap']
             c_kpi.border = styles['thin_border']
             c_kpi.fill = styles['input_fill']
             c_kpi.protection = Protection(locked=False)
@@ -1153,7 +1228,7 @@ def build_came_sheet(ws, lang='ES', styles=None):
             c_st.fill = styles['input_fill']
             c_st.protection = Protection(locked=False)
 
-            ws.row_dimensions[current_r].height = 20
+            ws.row_dimensions[current_r].height = 36
             current_r += 1
         end_s_row = current_r - 1
 
@@ -1167,8 +1242,8 @@ def build_came_sheet(ws, lang='ES', styles=None):
 
         c_sub_cap = ws.cell(row=sub_row, column=6, value=f'=SUM(F{start_s_row}:F{end_s_row})')
         c_sub_cap.font = styles['cell_bold']
-        c_sub_cap.number_format = '#,##0 €'
-        c_sub_cap.alignment = styles['align_right']
+        c_sub_cap.number_format = fmt_curr
+        c_sub_cap.alignment = styles['align_center']
         c_sub_cap.border = styles['total_border']
         c_sub_cap.fill = styles['total_fill']
         c_sub_cap.protection = Protection(locked=True)
@@ -1176,8 +1251,8 @@ def build_came_sheet(ws, lang='ES', styles=None):
 
         c_sub_opx = ws.cell(row=sub_row, column=7, value=f'=SUM(G{start_s_row}:G{end_s_row})')
         c_sub_opx.font = styles['cell_bold']
-        c_sub_opx.number_format = '#,##0 €'
-        c_sub_opx.alignment = styles['align_right']
+        c_sub_opx.number_format = fmt_curr
+        c_sub_opx.alignment = styles['align_center']
         c_sub_opx.border = styles['total_border']
         c_sub_opx.fill = styles['total_fill']
         c_sub_opx.protection = Protection(locked=True)
@@ -1185,51 +1260,43 @@ def build_came_sheet(ws, lang='ES', styles=None):
 
         ws.cell(row=sub_row, column=8, value="").border = styles['total_border']
         ws.cell(row=sub_row, column=9, value="").border = styles['total_border']
-        ws.row_dimensions[sub_row].height = 22
+        ws.row_dimensions[sub_row].height = 26
         current_r += 2
 
     grand_row = current_r
     ws.merge_cells(f'A{grand_row}:E{grand_row}')
     c_g_lbl = ws.cell(row=grand_row, column=1, value=texts['lbl_grand_tot'])
-    c_g_lbl.font = Font(name='Segoe UI', size=11, bold=True, color=COLOR_WHITE)
-    c_g_lbl.fill = styles['title_fill']
-    c_g_lbl.alignment = styles['align_right']
+    style_range(ws, f'A{grand_row}:E{grand_row}', font=Font(name='Segoe UI', size=11, bold=True, color=COLOR_WHITE), fill=styles['title_fill'], alignment=styles['align_right_wrap'])
 
     c_g_cap = ws.cell(row=grand_row, column=6, value=f'={ "+".join(capex_rows) }')
     c_g_cap.font = Font(name='Segoe UI', size=11, bold=True, color=COLOR_WHITE)
     c_g_cap.fill = styles['title_fill']
-    c_g_cap.number_format = '#,##0 €'
-    c_g_cap.alignment = styles['align_right']
+    c_g_cap.number_format = fmt_curr
+    c_g_cap.alignment = styles['align_center']
     c_g_cap.border = styles['total_border']
 
     c_g_opx = ws.cell(row=grand_row, column=7, value=f'={ "+".join(opex_rows) }')
     c_g_opx.font = Font(name='Segoe UI', size=11, bold=True, color=COLOR_WHITE)
     c_g_opx.fill = styles['title_fill']
-    c_g_opx.number_format = '#,##0 €'
-    c_g_opx.alignment = styles['align_right']
+    c_g_opx.number_format = fmt_curr
+    c_g_opx.alignment = styles['align_center']
     c_g_opx.border = styles['total_border']
 
     ws.merge_cells(f'H{grand_row}:I{grand_row}')
     c_g_sum = ws.cell(row=grand_row, column=8, value=f'=F{grand_row}+G{grand_row}')
-    c_g_sum.font = Font(name='Segoe UI', size=12, bold=True, color="FEF08A")
-    c_g_sum.fill = styles['title_fill']
-    c_g_sum.number_format = '#,##0 €'
-    c_g_sum.alignment = styles['align_center']
+    style_range(ws, f'H{grand_row}:I{grand_row}', font=Font(name='Segoe UI', size=12, bold=True, color="FEF08A"), fill=styles['title_fill'], alignment=styles['align_center_wrap'])
+    c_g_sum.number_format = fmt_curr
     c_g_sum.border = styles['total_border']
-    ws.row_dimensions[grand_row].height = 28
+    ws.row_dimensions[grand_row].height = 32
 
-    ws.protection.set_password(PASSWORD_PROTECT)
-    ws.protection.sheet = True
-    ws.protection.enable()
-    ws.protection.selectLockedCells = True
-    ws.protection.selectUnlockedCells = True
+    apply_sheet_protection(ws, allow_structure=True)
 
 
 def main():
     styles = get_styles()
 
     # 1. Versión en Español
-    out_dir_es = "static/downloads/dafo-came-es"
+    out_dir_es = "static/downloads/01_Espanol_DAFO_CAME"
     os.makedirs(out_dir_es, exist_ok=True)
     file_es = os.path.join(out_dir_es, "DAFO_Cuantitativo_CAME_Datalaria_ES.xlsx")
 
@@ -1250,7 +1317,7 @@ def main():
     print(f"[OK ES] Guardado: {file_es} ({os.path.getsize(file_es)} bytes)")
 
     # 2. Versión en Inglés
-    out_dir_en = "static/downloads/swot-tows-en"
+    out_dir_en = "static/downloads/02_English_SWOT_TOWS"
     os.makedirs(out_dir_en, exist_ok=True)
     file_en = os.path.join(out_dir_en, "Quantitative_SWOT_TOWS_Datalaria_EN.xlsx")
 

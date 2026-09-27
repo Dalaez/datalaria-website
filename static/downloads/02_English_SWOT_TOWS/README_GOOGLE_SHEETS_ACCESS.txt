@@ -49,7 +49,7 @@ To unprotect sheets for custom architectural modifications, use the master passw
 --------------------------------------------------------------------------------
 For enterprise licensing, bespoke financial modeling, or C-Suite strategic facilitation:
 • Web: https://datalaria.com
-• Advisory Services: advisory@datalaria.com
+• Advisory Services: datalaria@gmail.com
 • LinkedIn: https://www.linkedin.com/in/daniel-al%C3%A1ez-ria%C3%B1o/
 
 © 2026 Datalaria. All rights reserved.

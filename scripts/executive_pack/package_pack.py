@@ -3,19 +3,18 @@
 """
 package_pack.py
 ===============
-Empaqueta los archivos del Executive Decision Pack en los 3 archivos ZIP
-oficiales listos para distribución comercial en Lemon Squeezy:
-1. DAFO_CAME_Executive_Decision_Pack_ES.zip
-2. SWOT_TOWS_Executive_Decision_Pack_EN.zip
-3. Executive_Decision_Pack_DAFO_SWOT_Dual.zip
+Empaqueta los archivos del Executive Decision Pack en el archivo ZIP oficial
+listo para distribución comercial en Lemon Squeezy:
+- Executive_Decision_Pack_DAFO_SWOT_Dual.zip
 """
 
 import os
 import zipfile
+import shutil
 
 DIR_STATIC = "static/downloads"
-DIR_ES = os.path.join(DIR_STATIC, "dafo-came-es")
-DIR_EN = os.path.join(DIR_STATIC, "swot-tows-en")
+DIR_ES = os.path.join(DIR_STATIC, "01_Espanol_DAFO_CAME")
+DIR_EN = os.path.join(DIR_STATIC, "02_English_SWOT_TOWS")
 
 LEEME_ES_CONTENT = """================================================================================
 DATALARIA | EXECUTIVE DECISION PACK
@@ -71,7 +70,7 @@ la contraseña oficial es:
 ¿Necesitas adaptaciones personalizadas, modelos multi-divisa o workshops ejecutivos 
 de facilitación estratégica para tu Comité de Dirección?
 • Web: https://datalaria.com
-• Soporte y Consultoría: consultoria@datalaria.com
+• Soporte y Consultoría: datalaria@gmail.com
 • LinkedIn: https://www.linkedin.com/in/daniel-al%C3%A1ez-ria%C3%B1o/
 
 © 2026 Datalaria. Todos los derechos reservados.
@@ -128,7 +127,7 @@ To unprotect sheets for custom architectural modifications, use the master passw
 --------------------------------------------------------------------------------
 For enterprise licensing, bespoke financial modeling, or C-Suite strategic facilitation:
 • Web: https://datalaria.com
-• Advisory Services: advisory@datalaria.com
+• Advisory Services: datalaria@gmail.com
 • LinkedIn: https://www.linkedin.com/in/daniel-al%C3%A1ez-ria%C3%B1o/
 
 © 2026 Datalaria. All rights reserved.
@@ -137,8 +136,10 @@ For enterprise licensing, bespoke financial modeling, or C-Suite strategic facil
 
 def build_packages():
     os.makedirs(DIR_STATIC, exist_ok=True)
+    os.makedirs(DIR_ES, exist_ok=True)
+    os.makedirs(DIR_EN, exist_ok=True)
 
-    # 1. Guardar archivos LEEME / README en disco
+    # 1. Guardar archivos LEEME / README en disco dentro de sus carpetas
     leeme_es_path = os.path.join(DIR_ES, "LEEME_ACCESO_GOOGLE_SHEETS.txt")
     with open(leeme_es_path, "w", encoding="utf-8") as f:
         f.write(LEEME_ES_CONTENT)
@@ -147,45 +148,71 @@ def build_packages():
     with open(readme_en_path, "w", encoding="utf-8") as f:
         f.write(README_EN_CONTENT)
 
-    # 2. Empaquetar ZIP Español: DAFO_CAME_Executive_Decision_Pack_ES.zip
-    zip_es_path = os.path.join(DIR_STATIC, "DAFO_CAME_Executive_Decision_Pack_ES.zip")
-    with zipfile.ZipFile(zip_es_path, 'w', zipfile.ZIP_DEFLATED) as z:
-        files_es = [
-            ("DAFO_Cuantitativo_CAME_Datalaria_ES.xlsx", os.path.join(DIR_ES, "DAFO_Cuantitativo_CAME_Datalaria_ES.xlsx")),
-            ("Presentacion_CLevel_DAFO_CAME_ES.pptx", os.path.join(DIR_ES, "Presentacion_CLevel_DAFO_CAME_ES.pptx")),
-            ("Guia_Metodologica_DAFO_CAME_ES.pdf", os.path.join(DIR_ES, "Guia_Metodologica_DAFO_CAME_ES.pdf")),
-            ("LEEME_ACCESO_GOOGLE_SHEETS.txt", leeme_es_path),
-        ]
-        for arcname, fpath in files_es:
-            z.write(fpath, arcname=arcname)
-    print(f"[OK ES] ZIP creado: {zip_es_path} ({os.path.getsize(zip_es_path)} bytes)")
+    files_es = [
+        ("DAFO_Cuantitativo_CAME_Datalaria_ES.xlsx", os.path.join(DIR_ES, "DAFO_Cuantitativo_CAME_Datalaria_ES.xlsx")),
+        ("Presentacion_CLevel_DAFO_CAME_ES.pptx", os.path.join(DIR_ES, "Presentacion_CLevel_DAFO_CAME_ES.pptx")),
+        ("Guia_Metodologica_DAFO_CAME_ES.pdf", os.path.join(DIR_ES, "Guia_Metodologica_DAFO_CAME_ES.pdf")),
+        ("LEEME_ACCESO_GOOGLE_SHEETS.txt", leeme_es_path),
+    ]
 
-    # 3. Empaquetar ZIP Inglés: SWOT_TOWS_Executive_Decision_Pack_EN.zip
-    zip_en_path = os.path.join(DIR_STATIC, "SWOT_TOWS_Executive_Decision_Pack_EN.zip")
-    with zipfile.ZipFile(zip_en_path, 'w', zipfile.ZIP_DEFLATED) as z:
-        files_en = [
-            ("Quantitative_SWOT_TOWS_Datalaria_EN.xlsx", os.path.join(DIR_EN, "Quantitative_SWOT_TOWS_Datalaria_EN.xlsx")),
-            ("Executive_CLevel_Deck_SWOT_TOWS_EN.pptx", os.path.join(DIR_EN, "Executive_CLevel_Deck_SWOT_TOWS_EN.pptx")),
-            ("Methodology_Guide_SWOT_TOWS_EN.pdf", os.path.join(DIR_EN, "Methodology_Guide_SWOT_TOWS_EN.pdf")),
-            ("README_GOOGLE_SHEETS_ACCESS.txt", readme_en_path),
-        ]
-        for arcname, fpath in files_en:
-            z.write(fpath, arcname=arcname)
-    print(f"[OK EN] ZIP creado: {zip_en_path} ({os.path.getsize(zip_en_path)} bytes)")
+    files_en = [
+        ("Quantitative_SWOT_TOWS_Datalaria_EN.xlsx", os.path.join(DIR_EN, "Quantitative_SWOT_TOWS_Datalaria_EN.xlsx")),
+        ("Executive_CLevel_Deck_SWOT_TOWS_EN.pptx", os.path.join(DIR_EN, "Executive_CLevel_Deck_SWOT_TOWS_EN.pptx")),
+        ("Methodology_Guide_SWOT_TOWS_EN.pdf", os.path.join(DIR_EN, "Methodology_Guide_SWOT_TOWS_EN.pdf")),
+        ("README_GOOGLE_SHEETS_ACCESS.txt", readme_en_path),
+    ]
 
-    # 4. Empaquetar ZIP Dual: Executive_Decision_Pack_DAFO_SWOT_Dual.zip
+    # 2. Empaquetar ÚNICAMENTE el ZIP Dual oficial: Executive_Decision_Pack_DAFO_SWOT_Dual.zip
     zip_dual_path = os.path.join(DIR_STATIC, "Executive_Decision_Pack_DAFO_SWOT_Dual.zip")
     with zipfile.ZipFile(zip_dual_path, 'w', zipfile.ZIP_DEFLATED) as z:
-        # Carpeta ES
+        # Carpeta 01_Espanol_DAFO_CAME
         for arcname, fpath in files_es:
             z.write(fpath, arcname=f"01_Espanol_DAFO_CAME/{arcname}")
-        # Carpeta EN
+        # Carpeta 02_English_SWOT_TOWS
         for arcname, fpath in files_en:
             z.write(fpath, arcname=f"02_English_SWOT_TOWS/{arcname}")
-        # En la raíz del Dual
+        # En la raíz del ZIP Dual
         z.write(leeme_es_path, arcname="LEEME_ACCESO_GOOGLE_SHEETS.txt")
         z.write(readme_en_path, arcname="README_GOOGLE_SHEETS_ACCESS.txt")
     print(f"[OK DUAL] ZIP creado: {zip_dual_path} ({os.path.getsize(zip_dual_path)} bytes)")
+
+    # 3. Limpieza de carpetas intermedias y archivos obsoletos/duplicados en static y public
+    DIR_PUBLIC = "public/downloads"
+    obsolete_paths = [
+        os.path.join(DIR_STATIC, "dafo-came-es"),
+        os.path.join(DIR_STATIC, "swot-tows-en"),
+        os.path.join(DIR_STATIC, "Executive_Decision_Pack_DAFO_SWOT_Dual"),
+        os.path.join(DIR_STATIC, "DAFO_CAME_Executive_Decision_Pack_ES.zip"),
+        os.path.join(DIR_STATIC, "SWOT_TOWS_Executive_Decision_Pack_EN.zip"),
+        os.path.join(DIR_STATIC, "LEEME_ACCESO_GOOGLE_SHEETS.txt"),
+        os.path.join(DIR_STATIC, "README_GOOGLE_SHEETS_ACCESS.txt"),
+        os.path.join(DIR_PUBLIC, "dafo-came-es"),
+        os.path.join(DIR_PUBLIC, "swot-tows-en"),
+        os.path.join(DIR_PUBLIC, "Executive_Decision_Pack_DAFO_SWOT_Dual"),
+        os.path.join(DIR_PUBLIC, "DAFO_CAME_Executive_Decision_Pack_ES.zip"),
+        os.path.join(DIR_PUBLIC, "SWOT_TOWS_Executive_Decision_Pack_EN.zip"),
+        os.path.join(DIR_PUBLIC, "LEEME_ACCESO_GOOGLE_SHEETS.txt"),
+        os.path.join(DIR_PUBLIC, "README_GOOGLE_SHEETS_ACCESS.txt"),
+    ]
+    for p in obsolete_paths:
+        if os.path.isdir(p):
+            shutil.rmtree(p, ignore_errors=True)
+            print(f"[CLEANUP] Directorio eliminado: {p}")
+        elif os.path.isfile(p):
+            os.remove(p)
+            print(f"[CLEANUP] Archivo eliminado: {p}")
+
+    # Sincronizar ZIP y carpetas a public/downloads si existe el directorio public
+    if os.path.isdir("public"):
+        os.makedirs(DIR_PUBLIC, exist_ok=True)
+        shutil.copy2(zip_dual_path, os.path.join(DIR_PUBLIC, "Executive_Decision_Pack_DAFO_SWOT_Dual.zip"))
+        print(f"[SYNC] Sincronizado a public/downloads/Executive_Decision_Pack_DAFO_SWOT_Dual.zip")
+        # Sincronizar carpetas 01_Espanol y 02_English
+        for folder_name in ["01_Espanol_DAFO_CAME", "02_English_SWOT_TOWS"]:
+            src_f = os.path.join(DIR_STATIC, folder_name)
+            dst_f = os.path.join(DIR_PUBLIC, folder_name)
+            shutil.copytree(src_f, dst_f, dirs_exist_ok=True)
+            print(f"[SYNC] Sincronizado directorio a public: {dst_f}")
 
 
 if __name__ == '__main__':

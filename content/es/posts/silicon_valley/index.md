@@ -1,6 +1,6 @@
 ---
 title: "Silicon Valley y el Dilema de PiperNet: La Profecía de la IA Incontrolable y los Incidentes con Agentes Reales"
-date: 2026-10-04
+date: 2026-09-27
 draft: false
 categories: ["Ingeniería", "Series", "Inteligencia Artificial"]
 tags: ["silicon valley", "pipernet", "pied piper", "hbo", "agentes ia", "seguridad ia", "agi", "compresion", "alineamiento", "startups"]
@@ -20,7 +20,7 @@ Y lo que nadie anticipó es que en su temporada final, emitida en el ya lejano 2
 
 Al igual que exploramos en [Halt and Catch Fire](/es/posts/halt_and_catch_fire/) con la era del hardware y los clones, en [DEVS](/es/posts/devs/) con el determinismo cuántico, y en [The Thinking Game](/es/posts/the_thinking_game/) con la obsesión de DeepMind por la AGI, este artículo disecciona el arco completo de **Pied Piper**, la pesadilla de optimización de **PiperNet** y cómo sus dilemas resuenan con inquietante precisión en el panorama de 2026: modelos frontera como **Gemini 3.8**, **Claude Fable 5.1** o **GPT Sol 5.6**, agentes autónomos fuera de control e incidentes críticos en la cadena de suministro de código abierto.
 
-{{< youtube kYJ4aI_Lp0g >}}
+{{< youtube qYHp-5h1y5o >}}
 
 ### La Odisea de una Startup: Temporada a Temporada
 

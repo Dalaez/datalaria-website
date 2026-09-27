@@ -77,7 +77,7 @@ hidemeta: true
     features="Numerical weighting for Strengths & Weaknesses|Automated TOWS action matrix (SO, WO, ST, WT)|16:9 PowerPoint slide with Action Titles ready for the Board|PDF guide with matrix calculation algorithms"
     checkout_url="https://datalaria.lemonsqueezy.com/buy/dafo-cuantitativo-came"
     button_text="Download Pack • 5€"
-    guide_url="/posts/dafo-cuantitativo-matriz-came/"
+    guide_url="/en/posts/quantitative-swot-tows-matrix/"
     guide_text="Read practical guide with real-world case"
   >}}
   Turn subjective qualitative SWOT analysis into a mathematically prioritized strategy matrix with automated actionable initiatives.

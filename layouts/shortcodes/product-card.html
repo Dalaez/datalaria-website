@@ -104,9 +104,17 @@
   <div class="product-guarantee-note">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
     {{- if $isAvailable }}
-    <span>Descarga directa inmediata (.ZIP) • Factura oficial B2B con IVA deducible</span>
+      {{- if eq $.Page.Language.Lang "en" }}
+      <span>Instant direct download (.ZIP)</span>
+      {{- else }}
+      <span>Descarga directa inmediata (.ZIP)</span>
+      {{- end }}
     {{- else }}
-    <span>En fase de empaquetado y control de calidad • Acceso próximamente</span>
+      {{- if eq $.Page.Language.Lang "en" }}
+      <span>Packaging & QA review in progress • Access coming soon</span>
+      {{- else }}
+      <span>En fase de empaquetado y control de calidad • Acceso próximamente</span>
+      {{- end }}
     {{- end }}
   </div>
 </div>
