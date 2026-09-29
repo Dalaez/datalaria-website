@@ -135,12 +135,33 @@ def style_merged_range(ws, cell_range, font=None, fill=None, border=None, alignm
             if alignment: cell.alignment = alignment
 
 
-def apply_sheet_protection(ws):
-    """Protege la hoja de cálculo con contraseña corporativa de Datalaria."""
+def apply_sheet_protection(ws, allow_structure=True):
+    """
+    Aplica protección nativa con contraseña para blindar fórmulas y elementos visuales.
+    En el estándar OpenXML (ECMA-376 / CT_SheetProtection):
+      - sheet, objects, scenarios: True = blindado.
+      - selectUnlockedCells, selectLockedCells, insertRows, formatCells, etc.:
+        representan RESTRICCIONES.
+        0 / False = NO restringido (permitido al usuario).
+        1 / True  = restringido (bloqueado al usuario).
+    """
+    # 1. Asignar contraseña y activar blindaje general
+    ws.protection.set_password(PASSWORD_PROTECT)
     ws.protection.sheet = True
-    ws.protection.password = PASSWORD_PROTECT
-    ws.protection.selectUnlockedCells = True
-    ws.protection.selectLockedCells = True
+    ws.protection.objects = True
+    ws.protection.scenarios = True
+    # 2. CLAVE: Poner en False para PERMITIR seleccionar y editar celdas desbloqueadas
+    ws.protection.selectUnlockedCells = False  # Permite seleccionar y editar celdas desbloqueadas
+    ws.protection.selectLockedCells = False    # Permite seleccionar celdas bloqueadas (solo lectura/copia)
+    # 3. Permisos opcionales de estructura
+    if allow_structure:
+        ws.protection.insertRows = False      # Permite insertar filas
+        ws.protection.deleteRows = False      # Permite borrar filas
+        ws.protection.formatCells = False     # Permite dar formato
+        ws.protection.formatColumns = False   # Permite ajustar anchos de columna
+        ws.protection.formatRows = False      # Permite ajustar altos de fila
+        ws.protection.sort = False            # Permite ordenar tablas
+        ws.protection.autoFilter = False      # Permite usar filtros desplegables
 
 
 # ==============================================================================

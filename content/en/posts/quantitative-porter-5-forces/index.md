@@ -1,6 +1,6 @@
 ---
 title: "Weighted Porter's 5 Forces & Industry Attractiveness Matrix: The Definitive C-Suite Quantitative Guide"
-date: 2026-09-27
+date: 2026-10-12
 draft: false
 categories: ["Corporate Strategy", "Decision Making", "Corporate Finance", "Executive Management"]
 tags: ["Porter 5 Forces", "Industry Attractiveness", "C-Level Strategy", "Economic Moat", "Minto Pyramid", "Excel Model", "Boardroom Presentation", "Capital Allocation"]

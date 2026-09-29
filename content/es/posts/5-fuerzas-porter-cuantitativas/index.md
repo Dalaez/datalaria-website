@@ -1,6 +1,6 @@
 ---
 title: "5 Fuerzas de Porter Ponderadas y Atractivo de Industria: La Guía Cuantitativa Definitiva para Comités de Dirección (C-Level)"
-date: 2026-09-27
+date: 2026-10-12
 draft: false
 categories: ["Estrategia Empresarial", "Toma de Decisiones", "Finanzas Corporativas", "Management"]
 tags: ["5 Fuerzas de Porter", "Atractivo de Industria", "Estrategia C-Level", "Economic Moat", "Pirámide de Minto", "Plantilla Excel", "PowerPoint Ejecutivo", "Asignación de Capital"]

@@ -208,7 +208,7 @@ README_INSTRUCTIONS.txt (Datalaria2026).
 
 
 def build_package():
-    os.makedirs(DIR_STATIC, exist_ok=True)
+    os.makedirs(DIR_PACKAGES, exist_ok=True)
     os.makedirs(DIR_ES, exist_ok=True)
     os.makedirs(DIR_EN, exist_ok=True)
 
@@ -221,11 +221,11 @@ def build_package():
     with open(readme_en_path, "w", encoding="utf-8") as f:
         f.write(README_INSTRUCTIONS_EN)
 
-    leeme_gs_path = os.path.join(DIR_STATIC, "LEEME_ACCESO_GOOGLE_SHEETS.txt")
+    leeme_gs_path = os.path.join(DIR_PACKAGES, "LEEME_ACCESO_GOOGLE_SHEETS.txt")
     with open(leeme_gs_path, "w", encoding="utf-8") as f:
         f.write(LEEME_GOOGLE_SHEETS_ES)
 
-    readme_gs_path = os.path.join(DIR_STATIC, "README_GOOGLE_SHEETS_ACCESS.txt")
+    readme_gs_path = os.path.join(DIR_PACKAGES, "README_GOOGLE_SHEETS_ACCESS.txt")
     with open(readme_gs_path, "w", encoding="utf-8") as f:
         f.write(README_GOOGLE_SHEETS_EN)
 
