@@ -1,6 +1,6 @@
 ---
 title: "HappyRobot: How Autonomous Voice Agents Conquered Global Logistics"
-date: 2026-10-11
+date: 2026-09-30
 draft: false
 categories: ["case-studies", "Artificial Intelligence", "Engineering"]
 tags: ["happyrobot", "voice ai", "ai agents", "logistics", "supply chain", "startups", "y combinator", "unicorn"]
