@@ -7,12 +7,14 @@ Genera las presentaciones ejecutivas C-Level (16:9 widescreen) de alta direcció
 1. packages/Suite_02_Toma_Decisiones/01_Matriz_DAR_Cuantitativa/[ES]_Matriz_DAR/Presentacion_DAR_CLevel_ES.pptx
 2. packages/Suite_02_Toma_Decisiones/01_Matriz_DAR_Cuantitativa/[EN]_Quantitative_DAR/Deck_DAR_CLevel_EN.pptx
 
-Características de diseño Tier-1 (McKinsey / BCG):
+Características de diseño Tier-1 (McKinsey / BCG / Bain):
 - Formato 16:9 Widescreen (13.333" x 7.5").
 - Regla estricta de 3 diapositivas con Pirámide de Minto y Action Titles contundentes.
 - Diapositiva 1: Síntesis Ejecutiva & Veredicto DAR (4 KPI Cards y fundamentos estratégicos).
 - Diapositiva 2: Matriz de Trade-Offs & Evidencia Comparativa (Tabla analítica y gráfico comparativo).
-- Diapositiva 3: Roadmap de Transición & Board Decision Gateway (Cronograma Q1-Q4, 4 resoluciones formales y bloque de firmas).
+- Diapositiva 3: Roadmap de Transición & Board Decision Gateway (Cronograma Q1-Q4 con identidad visual por fase,
+  resoluciones vinculantes en 2 columnas y bloque de 4 firmas digitales sin solapamiento).
+- Visuales de alta gama: degradados nativos DrawingML, acentos cromáticos dinámicos y jerarquía tipográfica calibrada.
 """
 
 import os
@@ -26,6 +28,7 @@ from pptx.util import Inches, Pt
 from pptx.dml.color import RGBColor
 from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
 from pptx.enum.shapes import MSO_SHAPE
+from pptx.oxml import parse_xml
 
 # --- PALETA CORPORATIVA DATALARIA ---
 COLOR_NAVY_DARK = RGBColor(15, 23, 42)       # #0F172A Slate 900
@@ -56,25 +59,39 @@ FONT_HEADING = "Segoe UI"
 FONT_BODY = "Segoe UI"
 
 
+def apply_gradient_fill(shape, color1_hex, color2_hex, angle_deg=90):
+    """
+    Aplica un degradado lineal nativo DrawingML a una forma de python-pptx.
+    angle_deg: 90 para vertical (top-to-bottom), 0 para horizontal (left-to-right).
+    """
+    spPr = shape._element.spPr
+    for child in list(spPr):
+        if child.tag.endswith('solidFill') or child.tag.endswith('gradFill'):
+            spPr.remove(child)
+    ang_val = int(angle_deg * 60000)
+    grad_xml = (
+        f'<a:gradFill xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" flip="none" rotWithShape="1">'
+        f'  <a:gsLst>'
+        f'    <a:gs pos="0"><a:srgbClr val="{color1_hex}"/></a:gs>'
+        f'    <a:gs pos="100000"><a:srgbClr val="{color2_hex}"/></a:gs>'
+        f'  </a:gsLst>'
+        f'  <a:lin ang="{ang_val}" scaled="1"/>'
+        f'</a:gradFill>'
+    )
+    spPr.append(parse_xml(grad_xml))
+
+
 def create_chart_image(lang='ES', out_path='temp_dar_chart.png'):
     """
     Genera un gráfico comparativo de barras de alta resolución para la Diapositiva 2.
     Compara las 4 alternativas viables y muestra el score por pilares y el score final.
     """
-    fig, ax = plt.subplots(figsize=(6.4, 3.6), dpi=220)
+    fig, ax = plt.subplots(figsize=(6.4, 3.4), dpi=220)
 
     categories_es = ['P1: Técnico\n(30%)', 'P2: TCO 36M\n(25%)', 'P3: SLA/Soporte\n(20%)', 'P4: Seguridad\n(25%)', 'Score Final\n(100 pts)']
     categories_en = ['P1: Tech Fit\n(30%)', 'P2: 3Y TCO\n(25%)', 'P3: SLA/Support\n(20%)', 'P4: Security\n(25%)', 'Final Score\n(100 pts)']
     categories = categories_es if lang == 'ES' else categories_en
 
-    # Scores (out of pillar max: 30, 25, 20, 25, 100)
-    # Alpha: [23.6, 19.3, 16.9, 18.8, 78.6]
-    # Beta:  [27.6, 20.0, 18.4, 20.4, 86.4]  (Winner)
-    # Gamma: [22.7, 21.4, 15.0, 17.5, 76.6]
-    # Epsilon: [21.1, 20.1, 13.0, 17.6, 71.8]
-    # Note: to plot nicely, we normalize each pillar to 0-10 or show raw values
-    # Let's show average pillar ratings (out of 10) and Final Score (out of 100 on secondary axis or scaled to 10):
-    # Pillar ratings 1-10:
     alpha_sc = [7.9, 7.7, 8.4, 7.5, 7.86]
     beta_sc = [9.2, 8.0, 9.2, 8.2, 8.64]
     gamma_sc = [7.6, 8.6, 7.5, 7.0, 7.66]
@@ -83,25 +100,25 @@ def create_chart_image(lang='ES', out_path='temp_dar_chart.png'):
     x = np.arange(len(categories))
     width = 0.20
 
-    rects1 = ax.bar(x - 1.5*width, alpha_sc, width, label='Vendor Alpha', color='#94A3B8', alpha=0.85)
-    rects2 = ax.bar(x - 0.5*width, beta_sc, width, label='Vendor Beta (Ganador)' if lang == 'ES' else 'Vendor Beta (Winner)', color='#10B981', edgecolor='#065F46', linewidth=1.2)
-    rects3 = ax.bar(x + 0.5*width, gamma_sc, width, label='Vendor Gamma', color='#38BDF8', alpha=0.85)
-    rects4 = ax.bar(x + 1.5*width, eps_sc, width, label='Vendor Epsilon', color='#CBD5E1', alpha=0.85)
+    rects1 = ax.bar(x - 1.5*width, alpha_sc, width, label='Vendor Alpha', color='#94A3B8', alpha=0.9, edgecolor='#64748B', linewidth=0.8)
+    rects2 = ax.bar(x - 0.5*width, beta_sc, width, label='Vendor Beta (Ganador)' if lang == 'ES' else 'Vendor Beta (Winner)', color='#10B981', edgecolor='#065F46', linewidth=1.5)
+    rects3 = ax.bar(x + 0.5*width, gamma_sc, width, label='Vendor Gamma', color='#0EA5E9', alpha=0.9, edgecolor='#0284C7', linewidth=0.8)
+    rects4 = ax.bar(x + 1.5*width, eps_sc, width, label='Vendor Epsilon', color='#CBD5E1', alpha=0.9, edgecolor='#94A3B8', linewidth=0.8)
 
     ax.set_ylabel('Calificación Media (1 - 10 pts)' if lang == 'ES' else 'Average Rating (1 - 10 pts)', fontsize=8.5, fontweight='bold', color='#334155')
     ax.set_title('Comparativa Multicriterio por Pilares de Decisión' if lang == 'ES' else 'Multi-Criteria Comparison by Decision Pillars', fontsize=9.5, fontweight='bold', color='#0F172A', pad=10)
     ax.set_xticks(x)
-    ax.set_xticklabels(categories, fontsize=7.5, color='#334155')
+    ax.set_xticklabels(categories, fontsize=7.5, color='#334155', fontweight='bold')
     ax.set_ylim(0, 11)
     ax.grid(axis='y', linestyle='--', alpha=0.35, color='#94A3B8')
-    ax.legend(loc='upper right', fontsize=7.5, framealpha=0.9)
+    ax.legend(loc='upper right', fontsize=7.5, framealpha=0.95, edgecolor='#CBD5E1')
 
-    # Highlight winner on the final bar
+    # Destacar al ganador con anotación
     ax.annotate('+7.8 pts' if lang == 'ES' else '+7.8 pts',
                 xy=(x[4] - 0.5*width, beta_sc[4]),
                 xytext=(x[4] - 0.5*width, beta_sc[4] + 0.9),
                 ha='center', fontsize=7.5, fontweight='bold', color='#065F46',
-                arrowprops=dict(arrowstyle='->', color='#10B981', lw=1))
+                arrowprops=dict(arrowstyle='->', color='#10B981', lw=1.2))
 
     plt.tight_layout()
     fig.savefig(out_path, dpi=220, facecolor='#FFFFFF')
@@ -112,7 +129,7 @@ def create_chart_image(lang='ES', out_path='temp_dar_chart.png'):
 def add_header(slide, action_title, slide_num, total_slides=3, lang='ES'):
     """Añade la cabecera estándar Tier-1 con metadatos y Action Title."""
     # Badge superior
-    tb_badge = slide.shapes.add_textbox(Inches(0.8), Inches(0.4), Inches(8.0), Inches(0.3))
+    tb_badge = slide.shapes.add_textbox(Inches(0.8), Inches(0.4), Inches(9.0), Inches(0.28))
     tf_b = tb_badge.text_frame
     tf_b.word_wrap = True
     tf_b.margin_left = tf_b.margin_top = tf_b.margin_right = tf_b.margin_bottom = 0
@@ -138,7 +155,7 @@ def add_header(slide, action_title, slide_num, total_slides=3, lang='ES'):
     p_t.font.name = FONT_HEADING
 
     # Número de página y confidencialidad en el pie
-    tb_foot = slide.shapes.add_textbox(Inches(0.8), Inches(7.05), Inches(11.7), Inches(0.3))
+    tb_foot = slide.shapes.add_textbox(Inches(0.8), Inches(7.08), Inches(11.7), Inches(0.25))
     tf_f = tb_foot.text_frame
     tf_f.margin_left = tf_f.margin_top = tf_f.margin_right = tf_f.margin_bottom = 0
     p_f = tf_f.paragraphs[0]
@@ -177,39 +194,39 @@ def create_deck(lang='ES', out_path=None):
     )
     add_header(slide1, title_s1, 1, 3, lang=lang)
 
-    # 4 KPI Cards alineadas
+    # 4 KPI Cards alineadas con degradados sutiles y bordes pulidos
     card_w = Inches(2.78)
-    card_h = Inches(1.30)
+    card_h = Inches(1.32)
     card_y = Inches(1.58)
 
     cards_data_es = [
-        ("ALTERNATIVA GANADORA", "Vendor Beta", "Plataforma Cloud Enterprise", COLOR_GREEN_BG, COLOR_GREEN_TEXT, COLOR_GREEN_BORDER),
-        ("PUNTUACIÓN PONDERADA", "86,4 / 100", "+9,9% vs. Segunda Opción", COLOR_CARD_BG, COLOR_NAVY_DARK, COLOR_BORDER),
-        ("DIFERENCIAL VS 2ª OPCIÓN", "+7,8 pts", "Vendor Alpha: 78,6 pts", COLOR_CARD_BG, COLOR_BLUE_ACCENT, COLOR_BORDER),
-        ("FILTROS VETO SUPERADOS", "100% CUMPLE", "1 Descalificada (Vendor Delta)", COLOR_CARD_BG, COLOR_NAVY_DARK, COLOR_BORDER),
+        ("ALTERNATIVA GANADORA", "Vendor Beta ★", "Plataforma Cloud Enterprise", "ECFDF5", "D1FAE5", COLOR_GREEN_BORDER, COLOR_GREEN_TEXT, COLOR_GREEN_TEXT),
+        ("PUNTUACIÓN PONDERADA", "86,4 / 100", "▲ +9,9% vs. Segunda Opción", "F8FAFC", "EFF6FF", COLOR_BLUE_ACCENT, COLOR_NAVY_DARK, COLOR_GREEN_TEXT),
+        ("DIFERENCIAL VS 2ª OPCIÓN", "+7,8 pts", "Vendor Alpha: 78,6 pts", "EFF6FF", "DBEAFE", COLOR_BLUE_ACCENT, COLOR_BLUE_ACCENT, COLOR_TEXT_MAIN),
+        ("FILTROS VETO SUPERADOS", "100% CUMPLE", "1 Descalificada (Vendor Delta)", "F8FAFC", "F1F5F9", COLOR_BORDER, COLOR_NAVY_DARK, COLOR_RED_TEXT),
     ]
     cards_data_en = [
-        ("RECOMMENDED WINNER", "Vendor Beta", "Enterprise Cloud Platform", COLOR_GREEN_BG, COLOR_GREEN_TEXT, COLOR_GREEN_BORDER),
-        ("AUDITED WEIGHTED SCORE", "86.4 / 100", "+9.9% vs. Runner-Up", COLOR_CARD_BG, COLOR_NAVY_DARK, COLOR_BORDER),
-        ("DECISION GAP VS RUNNER-UP", "+7.8 pts", "Vendor Alpha: 78.6 pts", COLOR_CARD_BG, COLOR_BLUE_ACCENT, COLOR_BORDER),
-        ("VETO CRITERIA ADHERENCE", "100% PASS", "1 Disqualified (Vendor Delta)", COLOR_CARD_BG, COLOR_NAVY_DARK, COLOR_BORDER),
+        ("RECOMMENDED WINNER", "Vendor Beta ★", "Enterprise Cloud Platform", "ECFDF5", "D1FAE5", COLOR_GREEN_BORDER, COLOR_GREEN_TEXT, COLOR_GREEN_TEXT),
+        ("AUDITED WEIGHTED SCORE", "86.4 / 100", "▲ +9.9% vs. Runner-Up", "F8FAFC", "EFF6FF", COLOR_BLUE_ACCENT, COLOR_NAVY_DARK, COLOR_GREEN_TEXT),
+        ("DECISION GAP VS RUNNER-UP", "+7.8 pts", "Vendor Alpha: 78.6 pts", "EFF6FF", "DBEAFE", COLOR_BLUE_ACCENT, COLOR_BLUE_ACCENT, COLOR_TEXT_MAIN),
+        ("VETO CRITERIA ADHERENCE", "100% PASS", "1 Disqualified (Vendor Delta)", "F8FAFC", "F1F5F9", COLOR_BORDER, COLOR_NAVY_DARK, COLOR_RED_TEXT),
     ]
     cards_data = cards_data_es if lang == 'ES' else cards_data_en
 
-    for idx, (lbl, val, sub, bg_col, text_col, border_col) in enumerate(cards_data):
+    for idx, (lbl, val, sub, grad_c1, grad_c2, border_col, val_col, sub_col) in enumerate(cards_data):
         cx = Inches(0.8 + idx * 2.97)
         shape = slide1.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, cx, card_y, card_w, card_h)
-        shape.fill.solid()
-        shape.fill.fore_color.rgb = bg_col
+        apply_gradient_fill(shape, grad_c1, grad_c2, angle_deg=90)
         shape.line.color.rgb = border_col
-        shape.line.width = Pt(1.2)
+        shape.line.width = Pt(1.5 if idx == 0 else 1.0)
 
         tf = shape.text_frame
+        tf.vertical_anchor = MSO_ANCHOR.TOP
         tf.word_wrap = True
-        tf.margin_left = Inches(0.12)
-        tf.margin_right = Inches(0.12)
+        tf.margin_left = Inches(0.14)
+        tf.margin_right = Inches(0.14)
         tf.margin_top = Inches(0.12)
-        tf.margin_bottom = Inches(0.10)
+        tf.margin_bottom = Inches(0.08)
 
         p0 = tf.paragraphs[0]
         p0.text = lbl
@@ -220,58 +237,60 @@ def create_deck(lang='ES', out_path=None):
 
         p1 = tf.add_paragraph()
         p1.text = val
-        p1.font.size = Pt(16)
+        p1.font.size = Pt(16.5)
         p1.font.bold = True
-        p1.font.color.rgb = text_col
+        p1.font.color.rgb = val_col
         p1.font.name = FONT_HEADING
 
         p2 = tf.add_paragraph()
         p2.text = sub
-        p2.font.size = Pt(8.5)
-        p2.font.color.rgb = text_col if bg_col == COLOR_GREEN_BG else COLOR_TEXT_MUTED
+        p2.font.size = Pt(8)
+        p2.font.bold = True
+        p2.font.color.rgb = sub_col
         p2.font.name = FONT_BODY
 
-    # Dos Contenedores Principales Abajo
+    # Dos Contenedores Principales Abajo (Anclados verticalmente arriba para distribución armónica)
     pnl_y = Inches(3.08)
-    pnl_h = Inches(3.80)
+    pnl_h = Inches(3.82)
 
     # Panel Izquierdo: Fundamentos del Dictamen
     pnl_l_w = Inches(6.8)
     shape_l = slide1.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), pnl_y, pnl_l_w, pnl_h)
-    shape_l.fill.solid()
-    shape_l.fill.fore_color.rgb = COLOR_CARD_BG
+    apply_gradient_fill(shape_l, "F8FAFC", "EFF6FF", angle_deg=90)
     shape_l.line.color.rgb = COLOR_BORDER
     shape_l.line.width = Pt(1)
 
     tf_l = shape_l.text_frame
+    tf_l.vertical_anchor = MSO_ANCHOR.TOP
     tf_l.word_wrap = True
-    tf_l.margin_left = Inches(0.20)
-    tf_l.margin_right = Inches(0.20)
-    tf_l.margin_top = Inches(0.16)
+    tf_l.margin_left = Inches(0.24)
+    tf_l.margin_right = Inches(0.24)
+    tf_l.margin_top = Inches(0.20)
 
     p_lh = tf_l.paragraphs[0]
     p_lh.text = "FUNDAMENTOS ESTRATÉGICOS DEL DICTAMEN DE ADJUDICACIÓN" if lang == 'ES' else "STRATEGIC RATIONALE FOR AWARD MANDATE"
     p_lh.font.size = Pt(10.5)
     p_lh.font.bold = True
     p_lh.font.color.rgb = COLOR_NAVY_DARK
+    p_lh.space_after = Pt(6)
 
     drivers_es = [
-        ("1. Cobertura Funcional Nativa Superior (94% vs. 81% Media Sectorial):",
-         "Vendor Beta minimiza drásticamente el riesgo de retrasos en despliegue al no requerir desarrollos ad-hoc para contabilidad analítica, facturación electrónica y gestión de almacén."),
+        ("1. Cobertura Funcional Nativa Superior (94% vs. 81% Media):",
+         "Vendor Beta minimiza el riesgo de retrasos al no requerir código a medida en contabilidad analítica, facturación electrónica y supply chain."),
         ("2. Eficiencia en Coste Total de Propiedad (-19% TCO a 36 Meses):",
-         "Aunque la inversión inicial en licencias es ligeramente mayor (+6%), el coste de implantación y las tarifas de mantenimiento anual reducen el gasto operativo en 380.000 € acumulados a 3 años."),
+         "Aunque el licenciamiento inicial es ligeramente mayor (+6%), el coste de implantación y soporte genera un ahorro neto acumulado de 380.000 €."),
         ("3. Blindaje de SLA y Soporte Crítico (< 2 Horas Contractuales):",
-         "Centro de atención técnica 24/7 con penalizaciones contractuales directas del 5% mensual ante caídas de servicio, superando el estándar de mercado."),
+         "Centro de atención técnica 24/7 con penalizaciones contractuales directas del 5% mensual ante caídas de servicio."),
         ("4. Arquitectura de Ciberseguridad Zero-Trust Auditada:",
-         "Pleno cumplimiento del RGPD con data centers exclusivos en la UE (Frankfurt/Madrid) y certificación SOC 2 Type II auditada por firma Big-4.")
+         "Pleno cumplimiento del RGPD con data centers exclusivos en la UE (Frankfurt/Madrid) y certificación SOC 2 Type II auditada por Big-4.")
     ]
     drivers_en = [
-        ("1. Superior Out-of-the-Box Coverage (94% vs. 81% Industry Benchmark):",
-         "Vendor Beta minimizes custom development risk by natively supporting complex analytical accounting, e-invoicing, and warehouse logistics."),
+        ("1. Superior Out-of-the-Box Coverage (94% vs. 81% Benchmark):",
+         "Vendor Beta minimizes custom development risk by natively supporting operational accounting, e-invoicing, and warehouse logistics."),
         ("2. TCO Cost Advantage (-19% Total Cost of Ownership at 36 Months):",
-         "While upfront subscription is slightly higher (+6%), professional services and recurring maintenance deliver a net 3-year cash savings of $380,000."),
+         "While upfront subscription is slightly higher (+6%), professional services and maintenance deliver a net 3-year cash savings of $380,000."),
         ("3. Contractual SLA & Critical Incident Resolution (< 2h Turnaround):",
-         "Enterprise 24/7 support backed by automatic 5% monthly fee credit penalties for service degradation, outperforming all evaluated competitors."),
+         "Enterprise 24/7 support backed by automatic 5% monthly fee credit penalties for service degradation."),
         ("4. Certified Zero-Trust Cloud Security Architecture:",
          "Full GDPR compliance with sovereign EU data centers and active SOC 2 Type II attestation audited by an independent Big-4 firm.")
     ]
@@ -280,7 +299,7 @@ def create_deck(lang='ES', out_path=None):
     for title_d, body_d in drivers:
         p_dt = tf_l.add_paragraph()
         p_dt.text = title_d
-        p_dt.font.size = Pt(9)
+        p_dt.font.size = Pt(8.5)
         p_dt.font.bold = True
         p_dt.font.color.rgb = COLOR_BLUE_ACCENT
         p_dt.space_before = Pt(4)
@@ -295,40 +314,41 @@ def create_deck(lang='ES', out_path=None):
     pnl_r_w = Inches(4.7)
     pnl_r_x = Inches(7.8)
     shape_r = slide1.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, pnl_r_x, pnl_y, pnl_r_w, pnl_h)
-    shape_r.fill.solid()
-    shape_r.fill.fore_color.rgb = COLOR_CARD_BG
+    apply_gradient_fill(shape_r, "F8FAFC", "F1F5F9", angle_deg=90)
     shape_r.line.color.rgb = COLOR_BORDER
     shape_r.line.width = Pt(1)
 
     tf_r = shape_r.text_frame
+    tf_r.vertical_anchor = MSO_ANCHOR.TOP
     tf_r.word_wrap = True
-    tf_r.margin_left = Inches(0.20)
-    tf_r.margin_right = Inches(0.20)
-    tf_r.margin_top = Inches(0.16)
+    tf_r.margin_left = Inches(0.24)
+    tf_r.margin_right = Inches(0.24)
+    tf_r.margin_top = Inches(0.20)
 
     p_rh = tf_r.paragraphs[0]
     p_rh.text = "MATRIZ DE RIESGOS MITIGADOS & ESTRATEGIA BACKUP" if lang == 'ES' else "MITIGATED RISKS & CONTINGENCY BACKUP"
     p_rh.font.size = Pt(10.5)
     p_rh.font.bold = True
     p_rh.font.color.rgb = COLOR_NAVY_DARK
+    p_rh.space_after = Pt(6)
 
     risks_es = [
         ("• Descalificación por Filtro Veto (Vendor Delta):",
-         "Descartado de inmediato por almacenar telemetría y datos en servidores en EE.UU., violando la directiva corporativa de compliance y RGPD."),
-        ("• Alternativa de Respaldo / Segunda Opción (Vendor Alpha):",
-         "Con 78,6 pts, queda designado como proveedor de contingencia si la negociación de cláusulas contractuales con Vendor Beta encalla antes de 30 días."),
-        ("• Riesgo de Dependencia de Proveedor (Lock-In):",
-         "Se ha exigido contractualmente la entrega de dump de base de datos Postgres/SQL trimestral y catálogo de APIs abiertas para garantizar reversibilidad."),
-        ("• Recomendación de Inversión:",
-         "Autorizar el desembolso de 420.000 € presupuestados para el Año 1 e iniciar la fase de onboarding contractual.")
+         "Descartado de inmediato por almacenar telemetría y datos en EE.UU., violando la directiva de compliance y RGPD."),
+        ("• Alternativa de Respaldo / Backup (Vendor Alpha):",
+         "Con 78,6 pts, queda designado como opción de contingencia si la negociación con Vendor Beta encalla en 30 días."),
+        ("• Riesgo de Dependencia Tecnológica (Lock-In):",
+         "Exigencia contractual de backups periódicos en SQL y catálogo de APIs abiertas para garantizar reversibilidad."),
+        ("• Recomendación de Inversión Vinculante:",
+         "Autorizar el desembolso de 420.000 € presupuestados para el Año 1 e iniciar onboarding formal.")
     ]
     risks_en = [
         ("• Non-Negotiable Veto Gatekeeper (Vendor Delta):",
-         "Immediately disqualified for hosting analytics telemetry outside the EU, violating corporate data privacy and GDPR regulations."),
+         "Immediately disqualified for hosting analytics telemetry outside the EU, violating corporate data privacy and GDPR."),
         ("• Contingency Runner-Up Mandate (Vendor Alpha):",
-         "Scoring 78.6 pts, designated as the formal fallback option if contract execution with Vendor Beta stalls past the 30-day window."),
+         "Scoring 78.6 pts, designated as formal fallback if contract execution with Vendor Beta stalls past 30 days."),
         ("• Vendor Lock-In Mitigation Clause:",
-         "Contractually enforces quarterly raw database snapshots (Postgres/SQL) and open REST API parity to guarantee long-term system portability."),
+         "Contractually enforces quarterly raw database snapshots (SQL) and open REST APIs to guarantee long-term portability."),
         ("• Board Investment Recommendation:",
          "Authorize initial Year 1 budget of $420,000 and delegate execution authority to CIO and Procurement.")
     ]
@@ -363,19 +383,17 @@ def create_deck(lang='ES', out_path=None):
     add_header(slide2, title_s2, 2, 3, lang=lang)
 
     # Contenedor Izquierdo: Tabla Comparativa
-    tbl_w = Inches(6.5)
-    tbl_h = Inches(5.0)
+    tbl_w = Inches(6.4)
+    tbl_h = Inches(4.8)
     tbl_x = Inches(0.8)
     tbl_y = Inches(1.65)
 
-    # Añadir tabla
     rows_cnt = 6
     cols_cnt = 7
     table_shape = slide2.shapes.add_table(rows_cnt, cols_cnt, tbl_x, tbl_y, tbl_w, tbl_h)
     table = table_shape.table
 
-    # Column widths
-    table.columns[0].width = Inches(2.1) # Alternativa
+    table.columns[0].width = Inches(2.0) # Alternativa
     table.columns[1].width = Inches(0.7) # P1 Tech
     table.columns[2].width = Inches(0.7) # P2 TCO
     table.columns[3].width = Inches(0.7) # P3 SLA
@@ -389,11 +407,12 @@ def create_deck(lang='ES', out_path=None):
 
     for c_i, h_t in enumerate(tbl_headers):
         cell = table.cell(0, c_i)
+        cell.vertical_anchor = MSO_ANCHOR.MIDDLE
         cell.text = h_t
         cell.fill.solid()
         cell.fill.fore_color.rgb = COLOR_NAVY_DARK
         p = cell.text_frame.paragraphs[0]
-        p.font.size = Pt(8)
+        p.font.size = Pt(8.5)
         p.font.bold = True
         p.font.color.rgb = COLOR_WHITE
         p.alignment = PP_ALIGN.CENTER if c_i > 0 else PP_ALIGN.LEFT
@@ -419,6 +438,7 @@ def create_deck(lang='ES', out_path=None):
         is_veto = (r_i == 4)
         for c_i, val in enumerate(r_data):
             cell = table.cell(r_i, c_i)
+            cell.vertical_anchor = MSO_ANCHOR.MIDDLE
             cell.text = val
             cell.fill.solid()
             if is_winner:
@@ -443,30 +463,31 @@ def create_deck(lang='ES', out_path=None):
 
     # Contenedor Derecho: Gráfico comparativo y Trade-Offs
     chart_img_path = create_chart_image(lang=lang, out_path=f"temp_dar_chart_{lang}.png")
-    slide2.shapes.add_picture(chart_img_path, Inches(7.5), Inches(1.65), width=Inches(5.0))
+    slide2.shapes.add_picture(chart_img_path, Inches(7.4), Inches(1.65), width=Inches(5.1))
 
-    # Caja de Trade-Offs Abajo del Gráfico
-    to_box = slide2.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(7.5), Inches(4.75), Inches(5.0), Inches(1.95))
-    to_box.fill.solid()
-    to_box.fill.fore_color.rgb = COLOR_CARD_BG
+    # Caja de Trade-Offs Abajo del Gráfico con degradado sutil
+    to_box = slide2.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(7.4), Inches(4.75), Inches(5.1), Inches(2.05))
+    apply_gradient_fill(to_box, "F8FAFC", "EFF6FF", angle_deg=90)
     to_box.line.color.rgb = COLOR_BORDER
     to_box.line.width = Pt(1)
 
     tf_to = to_box.text_frame
+    tf_to.vertical_anchor = MSO_ANCHOR.TOP
     tf_to.word_wrap = True
-    tf_to.margin_left = tf_to.margin_right = Inches(0.16)
-    tf_to.margin_top = Inches(0.12)
+    tf_to.margin_left = tf_to.margin_right = Inches(0.20)
+    tf_to.margin_top = Inches(0.16)
 
     p_toh = tf_to.paragraphs[0]
     p_toh.text = "ANÁLISIS DE TRADE-OFFS CLAVE (DECISION DYNAMICS)" if lang == 'ES' else "KEY TRADE-OFF DYNAMICS & STRATEGIC RATIONALE"
     p_toh.font.size = Pt(9.5)
     p_toh.font.bold = True
     p_toh.font.color.rgb = COLOR_NAVY_DARK
+    p_toh.space_after = Pt(4)
 
     tradeoffs_es = [
-        ("• Inversión Inicial vs. Gasto Operativo:", "Vendor Gamma es 21.000 € más barato en Year 1 pero su coste de soporte a 3 años y personalizaciones disparan el TCO total."),
-        ("• Personalización vs. Deuda Técnica:", "Vendor Alpha ofrecía alta flexibilidad mediante código a medida, lo que aumentaba el riesgo de fallos en futuras actualizaciones."),
-        ("• Cumplimiento Regulatorio Binario:", "Vendor Delta ofrecía el precio más agresivo, pero su incapacidad de certificar soberanía de datos en la UE motivó su veto automático.")
+        ("• Inversión Inicial vs. Gasto Operativo:", "Vendor Gamma es 21.000 € más barato en Year 1 pero su coste de soporte a 3 años dispara el TCO total."),
+        ("• Personalización vs. Deuda Técnica:", "Vendor Alpha ofrecía código a medida, lo que aumentaba el riesgo de fallos en futuras actualizaciones."),
+        ("• Cumplimiento Regulatorio Binario:", "Vendor Delta ofrecía el precio más agresivo, pero su incapacidad de certificar soberanía de datos en la UE motivó su veto.")
     ]
     tradeoffs_en = [
         ("• Upfront Setup vs. Recurring OPEX:", "Vendor Gamma is $21,000 cheaper in Year 1, but sub-par customer support and custom script overhead bloat long-term TCO."),
@@ -478,19 +499,20 @@ def create_deck(lang='ES', out_path=None):
     for th, tb in tradeoffs:
         p_t = tf_to.add_paragraph()
         p_t.text = th
-        p_t.font.size = Pt(8)
+        p_t.font.size = Pt(8.5)
         p_t.font.bold = True
         p_t.font.color.rgb = COLOR_BLUE_ACCENT
-        p_t.space_before = Pt(2)
+        p_t.space_before = Pt(3)
 
         p_b = tf_to.add_paragraph()
         p_b.text = tb
-        p_b.font.size = Pt(7.5)
+        p_b.font.size = Pt(8)
         p_b.font.color.rgb = COLOR_TEXT_MAIN
+        p_b.space_after = Pt(1)
 
 
     # ==========================================================================
-    # SLIDE 3: ROADMAP DE TRANSICIÓN & BOARD DECISION GATEWAY
+    # SLIDE 3: ROADMAP DE TRANSICIÓN & BOARD DECISION GATEWAY (SIN SOLAPAMIENTO)
     # ==========================================================================
     slide3 = prs.slides.add_slide(blank_layout)
     title_s3 = (
@@ -502,10 +524,19 @@ def create_deck(lang='ES', out_path=None):
     )
     add_header(slide3, title_s3, 3, 3, lang=lang)
 
-    # Mitad Superior: Cronograma Q1 - Q4 (4 tarjetas)
+    # Mitad Superior: Cronograma Q1 - Q4 con identidades visuales atractivas por fase
     phase_w = Inches(2.78)
-    phase_h = Inches(2.20)
-    phase_y = Inches(1.58)
+    phase_h = Inches(2.05)
+    phase_y = Inches(1.55)
+
+    # Paletas temáticas por fase para romper la monotonía visual:
+    # Q1: Azul Real | Q2: Índigo | Q3: Teal/Cian | Q4: Verde Esmeralda Go-Live
+    phases_meta = [
+        {"grad_c1": "EFF6FF", "grad_c2": "FFFFFF", "border": RGBColor(59, 130, 246), "tag_col": RGBColor(29, 78, 216)},
+        {"grad_c1": "F5F3FF", "grad_c2": "FFFFFF", "border": RGBColor(99, 102, 241), "tag_col": RGBColor(79, 70, 229)},
+        {"grad_c1": "F0FDFA", "grad_c2": "FFFFFF", "border": RGBColor(20, 184, 166), "tag_col": RGBColor(13, 148, 136)},
+        {"grad_c1": "ECFDF5", "grad_c2": "FFFFFF", "border": RGBColor(16, 185, 129), "tag_col": RGBColor(5, 150, 105)},
+    ]
 
     phases_es = [
         ("Q1 · FASE 1", "Formalización & Kick-Off", "M01 - M02", [
@@ -556,25 +587,26 @@ def create_deck(lang='ES', out_path=None):
     for idx, (p_tag, p_name, p_time, bullets) in enumerate(phases):
         px = Inches(0.8 + idx * 2.97)
         shape = slide3.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, px, phase_y, phase_w, phase_h)
-        shape.fill.solid()
-        shape.fill.fore_color.rgb = COLOR_CARD_BG
-        shape.line.color.rgb = COLOR_BORDER
-        shape.line.width = Pt(1)
+        meta = phases_meta[idx]
+        apply_gradient_fill(shape, meta["grad_c1"], meta["grad_c2"], angle_deg=90)
+        shape.line.color.rgb = meta["border"]
+        shape.line.width = Pt(1.2)
 
         tf = shape.text_frame
+        tf.vertical_anchor = MSO_ANCHOR.TOP
         tf.word_wrap = True
-        tf.margin_left = tf.margin_right = Inches(0.12)
-        tf.margin_top = Inches(0.10)
+        tf.margin_left = tf.margin_right = Inches(0.16)
+        tf.margin_top = Inches(0.14)
 
         p0 = tf.paragraphs[0]
         p0.text = f"{p_tag} • {p_time}"
-        p0.font.size = Pt(7.5)
+        p0.font.size = Pt(8)
         p0.font.bold = True
-        p0.font.color.rgb = COLOR_BLUE_ACCENT
+        p0.font.color.rgb = meta["tag_col"]
 
         p1 = tf.add_paragraph()
         p1.text = p_name
-        p1.font.size = Pt(9.5)
+        p1.font.size = Pt(10)
         p1.font.bold = True
         p1.font.color.rgb = COLOR_NAVY_DARK
         p1.space_after = Pt(4)
@@ -582,57 +614,102 @@ def create_deck(lang='ES', out_path=None):
         for b in bullets:
             pb = tf.add_paragraph()
             pb.text = f"• {b}"
-            pb.font.size = Pt(7.5)
+            pb.font.size = Pt(8)
             pb.font.color.rgb = COLOR_TEXT_MAIN
             pb.space_after = Pt(2)
 
-    # Mitad Inferior: Prominente Board Decision Gateway
-    gw_y = Inches(3.95)
+    # Mitad Inferior: Prominente Board Decision Gateway (CON DEGRADADO SLATE OSCURO Y SIN SOLAPAMIENTO)
+    gw_y = Inches(3.75)
     gw_w = Inches(11.7)
-    gw_h = Inches(2.95)
+    gw_h = Inches(3.20)
 
     gw_shape = slide3.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), gw_y, gw_w, gw_h)
-    gw_shape.fill.solid()
-    gw_shape.fill.fore_color.rgb = COLOR_NAVY_DARK
-    gw_shape.line.color.rgb = COLOR_NAVY_MED
+    apply_gradient_fill(gw_shape, "0B1120", "1E293B", angle_deg=90)
+    gw_shape.line.color.rgb = RGBColor(51, 65, 85) # Slate 700
     gw_shape.line.width = Pt(1.5)
 
-    tf_gw = gw_shape.text_frame
-    tf_gw.word_wrap = True
-    tf_gw.margin_left = tf_gw.margin_right = Inches(0.24)
-    tf_gw.margin_top = Inches(0.16)
-
-    p_gwh = tf_gw.paragraphs[0]
+    # Título del Gateway dentro de la caja
+    tb_gwh = slide3.shapes.add_textbox(Inches(1.05), Inches(3.85), Inches(11.2), Inches(0.32))
+    tf_gwh = tb_gwh.text_frame
+    tf_gwh.word_wrap = True
+    tf_gwh.margin_left = tf_gwh.margin_top = tf_gwh.margin_right = tf_gwh.margin_bottom = 0
+    p_gwh = tf_gwh.paragraphs[0]
     p_gwh.text = "BOARD DECISION GATEWAY · RESOLUCIONES VINCULANTES DEL COMITÉ DE DIRECCIÓN" if lang == 'ES' else "BOARD DECISION GATEWAY · BINDING STEERING COMMITTEE RESOLUTIONS"
-    p_gwh.font.size = Pt(11)
+    p_gwh.font.size = Pt(10.5)
     p_gwh.font.bold = True
-    p_gwh.font.color.rgb = RGBColor(245, 158, 11) # Ámbar brillante
+    p_gwh.font.color.rgb = RGBColor(245, 158, 11) # Ámbar dorado brillante
 
-    resolutions_es = [
-        "1. Adjudicación Oficial: Aprobar formalmente la adjudicación del contrato a Vendor Beta con una puntuación auditada de 86,4/100.",
-        "2. Autorización Presupuestaria: Liberar una partida de 420.000 € (CAPEX/OPEX Año 1) sujeta al cumplimiento de hitos de la Fase 1 y 2.",
-        "3. Delegación de Firma: Facultar al CIO y al Director de Compras (CPO) para la rúbrica contractual y el anexo legal de SLA.",
-        "4. Congelación de Evaluación: Declarar el cierre formal del expediente de evaluación DAR y archivar las actas de auditoría técnica."
+    # Resoluciones en 2 Columnas para eliminar totalmente la colisión vertical con las firmas:
+    # Columna 1 (Izq): Resoluciones 1 y 2
+    # Columna 2 (Der): Resoluciones 3 y 4
+    res_col1_es = [
+        ("1. Adjudicación Oficial:", "Aprobar formalmente la adjudicación del contrato a Vendor Beta con una puntuación auditada de 86,4/100."),
+        ("2. Autorización Presupuestaria:", "Liberar una partida de 420.000 € (CAPEX/OPEX Año 1) sujeta al cumplimiento de hitos de la Fase 1 y 2.")
     ]
-    resolutions_en = [
-        "1. Contract Award: Formally award the enterprise procurement contract to Vendor Beta based on an audited score of 86.4/100.",
-        "2. Capital Authorization: Release initial budget disbursement of $420,000 (Year 1 CAPEX/OPEX) tied to Phase 1 & 2 milestones.",
-        "3. Delegation of Authority: Grant signing authority to the CIO and Chief Procurement Officer (CPO) for contract execution.",
-        "4. Evaluation Freeze: Formally declare the DAR evaluation process closed and register audited scores in corporate governance records."
+    res_col2_es = [
+        ("3. Delegación de Firma:", "Facultar al CIO y al Director de Compras (CPO) para la rúbrica contractual y el anexo legal de SLA."),
+        ("4. Congelación de Evaluación:", "Declarar el cierre formal del expediente de evaluación DAR y archivar las actas de auditoría técnica.")
     ]
-    resolutions = resolutions_es if lang == 'ES' else resolutions_en
 
-    for res in resolutions:
-        pr = tf_gw.add_paragraph()
-        pr.text = res
-        pr.font.size = Pt(8.5)
-        pr.font.color.rgb = RGBColor(241, 245, 249)
-        pr.space_before = Pt(2)
+    res_col1_en = [
+        ("1. Contract Award:", "Formally award the enterprise procurement contract to Vendor Beta based on an audited score of 86.4/100."),
+        ("2. Capital Authorization:", "Release initial budget disbursement of $420,000 (Year 1 CAPEX/OPEX) tied to Phase 1 & 2 milestones.")
+    ]
+    res_col2_en = [
+        ("3. Delegation of Authority:", "Grant signing authority to the CIO and Chief Procurement Officer (CPO) for contract execution."),
+        ("4. Evaluation Freeze:", "Formally declare the DAR evaluation process closed and register audited scores in corporate governance records.")
+    ]
 
-    # 4 Bloques de Firma C-Level dentro del Gateway
-    sign_y = Inches(5.65)
+    col1_data = res_col1_es if lang == 'ES' else res_col1_en
+    col2_data = res_col2_es if lang == 'ES' else res_col2_en
+
+    # TextBox Columna 1 (Izq: x=1.05, y=4.20, w=5.45, h=1.08)
+    tb_c1 = slide3.shapes.add_textbox(Inches(1.05), Inches(4.20), Inches(5.45), Inches(1.08))
+    tf_c1 = tb_c1.text_frame
+    tf_c1.vertical_anchor = MSO_ANCHOR.TOP
+    tf_c1.word_wrap = True
+    tf_c1.margin_left = tf_c1.margin_top = tf_c1.margin_right = tf_c1.margin_bottom = 0
+    for idx_r, (r_title, r_desc) in enumerate(col1_data):
+        p = tf_c1.paragraphs[0] if idx_r == 0 else tf_c1.add_paragraph()
+        run_t = p.add_run()
+        run_t.text = r_title + " "
+        run_t.font.bold = True
+        run_t.font.size = Pt(8)
+        run_t.font.color.rgb = RGBColor(245, 158, 11) # Ámbar
+
+        run_d = p.add_run()
+        run_d.text = r_desc
+        run_d.font.size = Pt(8)
+        run_d.font.color.rgb = RGBColor(241, 245, 249)
+        if idx_r > 0:
+            p.space_before = Pt(4)
+
+    # TextBox Columna 2 (Der: x=6.80, y=4.20, w=5.45, h=1.08)
+    tb_c2 = slide3.shapes.add_textbox(Inches(6.80), Inches(4.20), Inches(5.45), Inches(1.08))
+    tf_c2 = tb_c2.text_frame
+    tf_c2.vertical_anchor = MSO_ANCHOR.TOP
+    tf_c2.word_wrap = True
+    tf_c2.margin_left = tf_c2.margin_top = tf_c2.margin_right = tf_c2.margin_bottom = 0
+    for idx_r, (r_title, r_desc) in enumerate(col2_data):
+        p = tf_c2.paragraphs[0] if idx_r == 0 else tf_c2.add_paragraph()
+        run_t = p.add_run()
+        run_t.text = r_title + " "
+        run_t.font.bold = True
+        run_t.font.size = Pt(8)
+        run_t.font.color.rgb = RGBColor(245, 158, 11) # Ámbar
+
+        run_d = p.add_run()
+        run_d.text = r_desc
+        run_d.font.size = Pt(8)
+        run_d.font.color.rgb = RGBColor(241, 245, 249)
+        if idx_r > 0:
+            p.space_before = Pt(4)
+
+    # 4 Bloques de Firma C-Level ubicados limpiamente abajo (y = 5.50, h = 1.25)
+    # Entre y = 4.20 + 1.08 = 5.28 y y = 5.50 hay 0.22 in de margen libre. CERO SOLAPAMIENTO.
+    sign_y = Inches(5.50)
     sign_w = Inches(2.65)
-    sign_h = Inches(1.10)
+    sign_h = Inches(1.25)
 
     signs_es = [
         ("Chief Executive Officer (CEO)", "Dirección General / Presidencia"),
@@ -649,38 +726,39 @@ def create_deck(lang='ES', out_path=None):
     signs = signs_es if lang == 'ES' else signs_en
 
     for s_idx, (s_title, s_sub) in enumerate(signs):
-        sx = Inches(1.0 + s_idx * 2.85)
+        sx = Inches(1.05 + s_idx * 2.85)
         s_box = slide3.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, sx, sign_y, sign_w, sign_h)
-        s_box.fill.solid()
-        s_box.fill.fore_color.rgb = COLOR_NAVY_MED
-        s_box.line.color.rgb = RGBColor(51, 65, 85)
+        apply_gradient_fill(s_box, "1E293B", "0F172A", angle_deg=90)
+        s_box.line.color.rgb = RGBColor(71, 85, 105) # Slate 600
         s_box.line.width = Pt(1)
 
         tf_s = s_box.text_frame
+        tf_s.vertical_anchor = MSO_ANCHOR.MIDDLE
         tf_s.word_wrap = True
         tf_s.margin_left = tf_s.margin_right = Inches(0.10)
         tf_s.margin_top = Inches(0.08)
+        tf_s.margin_bottom = Inches(0.08)
 
         ps0 = tf_s.paragraphs[0]
         ps0.text = s_title
-        ps0.font.size = Pt(7.5)
+        ps0.font.size = Pt(8)
         ps0.font.bold = True
-        ps0.font.color.rgb = RGBColor(245, 158, 11)
+        ps0.font.color.rgb = RGBColor(245, 158, 11) # Ámbar dorado
         ps0.alignment = PP_ALIGN.CENTER
 
         ps1 = tf_s.add_paragraph()
         ps1.text = s_sub
-        ps1.font.size = Pt(6.5)
-        ps1.font.color.rgb = RGBColor(148, 163, 184)
+        ps1.font.size = Pt(7)
+        ps1.font.color.rgb = RGBColor(148, 163, 184) # Slate 400
         ps1.alignment = PP_ALIGN.CENTER
 
         ps2 = tf_s.add_paragraph()
         ps2.text = "[FIRMADO DIGITALMENTE]" if lang == 'ES' else "[DIGITALLY SIGNED]"
-        ps2.font.size = Pt(7)
-        ps2.font.color.rgb = RGBColor(16, 185, 129)
+        ps2.font.size = Pt(7.5)
+        ps2.font.color.rgb = RGBColor(16, 185, 129) # Verde Esmeralda
         ps2.font.bold = True
         ps2.alignment = PP_ALIGN.CENTER
-        ps2.space_before = Pt(4)
+        ps2.space_before = Pt(6)
 
     prs.save(out_path)
     print(f"[OK] Presentación PowerPoint generada ({lang}): {out_path}")
@@ -688,7 +766,7 @@ def create_deck(lang='ES', out_path=None):
 
 
 def main():
-    print("Iniciando generación de presentaciones PowerPoint DAR C-Level...")
+    print("Iniciando generación de presentaciones PowerPoint DAR C-Level actualizadas...")
     es_path = create_deck(lang='ES')
     en_path = create_deck(lang='EN')
     print("Presentaciones PowerPoint generadas con éxito.")

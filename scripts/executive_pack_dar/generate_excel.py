@@ -13,7 +13,7 @@ Arquitectura de 4 pestañas interconectadas:
 - Pestaña 3: "Scoring Ponderado (Wants)" / "Weighted Scoring (Wants)"
 - Pestaña 4: "Sensibilidad & Auditoría" / "Sensitivity & Audit Trail"
 
-ESTÁNDAR RIGUROSO DE PROTECCIÓN DE CELDAS Y COLOR:
+ESTÁNDAR RIGUROSO DE PROTECCIÓN DE CELDAS, FORMATO Y VISUALIZACIÓN:
 - CELDAS SIN FÓRMULA (Entradas del usuario / Datos / Textos editables / Criterios / Pesos / Calificaciones / Actas):
   * locked = False (Totalmente editables)
   * Fondo blanco (#FFFFFF)
@@ -23,6 +23,9 @@ ESTÁNDAR RIGUROSO DE PROTECCIÓN DE CELDAS Y COLOR:
 - CABECERAS Y TÍTULOS ESTRUCTURALES:
   * locked = True
   * Fondo Azul Marino Slate (#0F172A / #1E293B) con texto blanco
+- AJUSTE DE TEXTO Y ANCHO DE COLUMNAS:
+  * wrap_text = True activo en todas las celdas de texto, títulos, descripciones, dictámenes y cabeceras
+  * Anchos de columna holgados y alturas de fila proporcionales para evitar cualquier recorte de texto
 - PROTECCIÓN DE HOJA OPENXML:
   * ws.protection.set_password("Datalaria2026")
   * ws.protection.sheet = True
@@ -141,6 +144,7 @@ def get_base_styles(lang='ES'):
         'align_right': Alignment(horizontal='right', vertical='center'),
         'align_center_wrap': Alignment(horizontal='center', vertical='center', wrap_text=True),
         'align_left_wrap': Alignment(horizontal='left', vertical='center', wrap_text=True),
+        'align_right_wrap': Alignment(horizontal='right', vertical='center', wrap_text=True),
         'num_fmt_curr': num_fmt_curr,
         'num_fmt_curr_dec': num_fmt_curr_dec,
         'num_fmt_pct': num_fmt_pct,
@@ -148,6 +152,31 @@ def get_base_styles(lang='ES'):
         'num_fmt_score': num_fmt_score,
         'num_fmt_int': num_fmt_int,
     }
+
+
+def format_merged_range(ws, min_row, min_col, max_row, max_col, font=None, fill=None, border=None, alignment=None, protection=None, number_format=None, value=None):
+    """
+    Aplica estilo homogéneo a todas las celdas de un rango combinado para evitar
+    artefactos visuales de bordes o rellenos y garantizar compatibilidad OpenXML.
+    """
+    ws.merge_cells(start_row=min_row, start_column=min_col, end_row=max_row, end_column=max_col)
+    for r in range(min_row, max_row + 1):
+        for c in range(min_col, max_col + 1):
+            cell = ws.cell(row=r, column=c)
+            if font is not None:
+                cell.font = font
+            if fill is not None:
+                cell.fill = fill
+            if border is not None:
+                cell.border = border
+            if alignment is not None:
+                cell.alignment = alignment
+            if protection is not None:
+                cell.protection = protection
+            if number_format is not None:
+                cell.number_format = number_format
+    if value is not None:
+        ws.cell(row=min_row, column=min_col, value=value)
 
 
 def apply_sheet_protection(ws, allow_structure=True):
@@ -222,7 +251,7 @@ def build_tab2_veto(wb, ws, lang='ES'):
         cell.border = st['header_border']
         cell.protection = PROT_LOCKED
 
-    ws.row_dimensions[row_hdr].height = 28
+    ws.row_dimensions[row_hdr].height = 34
 
     # 6 Criterios Veto
     criteria_es = [
@@ -259,7 +288,7 @@ def build_tab2_veto(wb, ws, lang='ES'):
 
     for idx, (code, name, desc, evid) in enumerate(criteria):
         curr_row = row_hdr + 1 + idx
-        ws.row_dimensions[curr_row].height = 36
+        ws.row_dimensions[curr_row].height = 44
 
         # Col B: Code -> SIN FÓRMULA -> EDITABLE CON FONDO BLANCO
         cB = ws.cell(row=curr_row, column=2, value=code)
@@ -269,7 +298,7 @@ def build_tab2_veto(wb, ws, lang='ES'):
         cB.fill = st['fill_input']
         cB.protection = PROT_UNLOCKED
 
-        # Col C: Name -> SIN FÓRMULA -> EDITABLE CON FONDO BLANCO
+        # Col C: Name -> SIN FÓRMULA -> EDITABLE CON FONDO BLANCO (CON WRAP)
         cC = ws.cell(row=curr_row, column=3, value=name)
         cC.font = st['font_bold']
         cC.alignment = st['align_left_wrap']
@@ -277,7 +306,7 @@ def build_tab2_veto(wb, ws, lang='ES'):
         cC.fill = st['fill_input']
         cC.protection = PROT_UNLOCKED
 
-        # Col D: Desc -> SIN FÓRMULA -> EDITABLE CON FONDO BLANCO
+        # Col D: Desc -> SIN FÓRMULA -> EDITABLE CON FONDO BLANCO (CON WRAP)
         cD = ws.cell(row=curr_row, column=4, value=desc)
         cD.font = st['font_regular']
         cD.alignment = st['align_left_wrap']
@@ -285,7 +314,7 @@ def build_tab2_veto(wb, ws, lang='ES'):
         cD.fill = st['fill_input']
         cD.protection = PROT_UNLOCKED
 
-        # Col E: Evidence -> SIN FÓRMULA -> EDITABLE CON FONDO BLANCO
+        # Col E: Evidence -> SIN FÓRMULA -> EDITABLE CON FONDO BLANCO (CON WRAP)
         cE = ws.cell(row=curr_row, column=5, value=evid)
         cE.font = st['font_meta']
         cE.alignment = st['align_left_wrap']
@@ -305,42 +334,30 @@ def build_tab2_veto(wb, ws, lang='ES'):
 
     # 3. Filas de Control Lógico y Estatus de Veto (CON FÓRMULAS -> PROTEGIDAS CON FONDO GRIS SUAVE)
     row_count = row_hdr + 1 + len(criteria) # Row 14
-    ws.row_dimensions[row_count].height = 24
+    ws.row_dimensions[row_count].height = 26
     
-    ws.merge_cells(start_row=row_count, start_column=2, end_row=row_count, end_column=5)
-    c_lbl = ws.cell(row=row_count, column=2, 
-                    value="TOTAL CRITERIOS INCUMPLIDOS" if lang == 'ES' else "TOTAL FAILED VETO CRITERIA")
-    c_lbl.font = st['font_bold']
-    c_lbl.alignment = Alignment(horizontal='right', vertical='center')
-    c_lbl.fill = st['fill_calc'] # Gris suave
-    c_lbl.border = st['total_border']
-    c_lbl.protection = PROT_LOCKED
-    for c_i in range(3, 6):
-        ws.cell(row=row_count, column=c_i).border = st['total_border']
+    format_merged_range(ws, min_row=row_count, min_col=2, max_row=row_count, max_col=5,
+                        font=st['font_bold'], fill=st['fill_calc'], border=st['total_border'],
+                        alignment=st['align_right_wrap'], protection=PROT_LOCKED,
+                        value="TOTAL CRITERIOS INCUMPLIDOS" if lang == 'ES' else "TOTAL FAILED VETO CRITERIA")
 
     for a_idx in range(5):
         col_letter = get_column_letter(6 + a_idx)
         cell_cnt = ws.cell(row=row_count, column=6 + a_idx)
         cell_cnt.value = f'=COUNTIF({col_letter}8:{col_letter}13, "{fail_val}")'
-        cell_cnt.font = st['font_bold']
+        cell_cnt.font = Font(name='Segoe UI', size=10, bold=True)
         cell_cnt.alignment = st['align_center']
         cell_cnt.border = st['total_border']
         cell_cnt.fill = st['fill_calc'] # Gris suave
         cell_cnt.protection = PROT_LOCKED
 
-    # Fila de Estatus Veto (CON FÓRMULA -> PROTEGIDA CON FONDO GRIS SUAVE)
+    # Fila de Estatus de Viabilidad Veto (CON FÓRMULA -> PROTEGIDA)
     row_status = row_count + 1 # Row 15
-    ws.row_dimensions[row_status].height = 28
-    ws.merge_cells(start_row=row_status, start_column=2, end_row=row_status, end_column=5)
-    c_lbl_st = ws.cell(row=row_status, column=2,
-                       value="ESTATUS DE VIABILIDAD VETO" if lang == 'ES' else "VETO VIABILITY STATUS")
-    c_lbl_st.font = Font(name='Segoe UI', size=10, bold=True, color=COLOR_NAVY_DARK)
-    c_lbl_st.alignment = Alignment(horizontal='right', vertical='center')
-    c_lbl_st.fill = st['fill_calc'] # Gris suave
-    c_lbl_st.border = st['thin_border']
-    c_lbl_st.protection = PROT_LOCKED
-    for c_i in range(3, 6):
-        ws.cell(row=row_status, column=c_i).border = st['thin_border']
+    ws.row_dimensions[row_status].height = 26
+    format_merged_range(ws, min_row=row_status, min_col=2, max_row=row_status, max_col=5,
+                        font=st['font_bold'], fill=st['fill_calc'], border=st['thin_border'],
+                        alignment=st['align_right_wrap'], protection=PROT_LOCKED,
+                        value="ESTATUS DE VIABILIDAD VETO" if lang == 'ES' else "VETO VIABILITY STATUS")
 
     status_pass = "APTA" if lang == 'ES' else "QUALIFIED"
     status_fail = "DESCALIFICADA" if lang == 'ES' else "DISQUALIFIED"
@@ -357,17 +374,12 @@ def build_tab2_veto(wb, ws, lang='ES'):
 
     # Fila de Multiplicador Booleano Vk (CON FÓRMULA -> PROTEGIDA)
     row_vk = row_status + 1 # Row 16
-    ws.row_dimensions[row_vk].height = 24
-    ws.merge_cells(start_row=row_vk, start_column=2, end_row=row_vk, end_column=5)
-    c_lbl_vk = ws.cell(row=row_vk, column=2,
-                       value="FACTOR BOOLEANO GATEKEEPER (Vk = 1 ó 0)" if lang == 'ES' else "BOOLEAN GATEKEEPER FACTOR (Vk = 1 or 0)")
-    c_lbl_vk.font = Font(name='Segoe UI', size=9, bold=True, color=COLOR_WHITE)
-    c_lbl_vk.alignment = Alignment(horizontal='right', vertical='center')
-    c_lbl_vk.fill = st['fill_navy_sub']
-    c_lbl_vk.border = st['thin_border']
-    c_lbl_vk.protection = PROT_LOCKED
-    for c_i in range(3, 6):
-        ws.cell(row=row_vk, column=c_i).border = st['thin_border']
+    ws.row_dimensions[row_vk].height = 26
+    format_merged_range(ws, min_row=row_vk, min_col=2, max_row=row_vk, max_col=5,
+                        font=Font(name='Segoe UI', size=9, bold=True, color=COLOR_WHITE),
+                        fill=st['fill_navy_sub'], border=st['thin_border'],
+                        alignment=st['align_right_wrap'], protection=PROT_LOCKED,
+                        value="FACTOR BOOLEANO GATEKEEPER (Vk = 1 ó 0)" if lang == 'ES' else "BOOLEAN GATEKEEPER FACTOR (Vk = 1 or 0)")
 
     for a_idx in range(5):
         col_letter = get_column_letter(6 + a_idx)
@@ -386,17 +398,17 @@ def build_tab2_veto(wb, ws, lang='ES'):
     ws.add_data_validation(dv)
     dv.add("F8:J13")
 
-    # Column dimensions
+    # Column dimensions (Holgadas para lectura directiva)
     ws.column_dimensions['A'].width = 3
-    ws.column_dimensions['B'].width = 10
-    ws.column_dimensions['C'].width = 38
-    ws.column_dimensions['D'].width = 46
-    ws.column_dimensions['E'].width = 34
-    ws.column_dimensions['F'].width = 19
-    ws.column_dimensions['G'].width = 19
-    ws.column_dimensions['H'].width = 19
-    ws.column_dimensions['I'].width = 19
-    ws.column_dimensions['J'].width = 19
+    ws.column_dimensions['B'].width = 12
+    ws.column_dimensions['C'].width = 42
+    ws.column_dimensions['D'].width = 52
+    ws.column_dimensions['E'].width = 38
+    ws.column_dimensions['F'].width = 20
+    ws.column_dimensions['G'].width = 20
+    ws.column_dimensions['H'].width = 20
+    ws.column_dimensions['I'].width = 20
+    ws.column_dimensions['J'].width = 20
 
     apply_sheet_protection(ws, allow_structure=True)
 
@@ -447,7 +459,7 @@ def build_tab3_scoring(wb, ws, lang='ES'):
         cell.border = st['header_border']
         cell.protection = PROT_LOCKED
 
-    ws.row_dimensions[row_hdr].height = 28
+    ws.row_dimensions[row_hdr].height = 34
 
     # 4 Pilares con sus criterios (Total 13 criterios)
     pillars_es = [
@@ -530,21 +542,19 @@ def build_tab3_scoring(wb, ws, lang='ES'):
 
     for p_idx, p_data in enumerate(pillars, start=1):
         # Fila de Título del Pilar (CABECERA -> PROTEGIDA)
-        ws.row_dimensions[current_row].height = 24
-        ws.merge_cells(start_row=current_row, start_column=2, end_row=current_row, end_column=10)
-        p_hdr = ws.cell(row=current_row, column=2, value=p_data['name'])
-        p_hdr.font = Font(name='Segoe UI', size=10, bold=True, color=COLOR_WHITE)
-        p_hdr.fill = st['fill_navy_sub']
-        p_hdr.alignment = st['align_left']
-        p_hdr.border = st['thin_border']
-        p_hdr.protection = PROT_LOCKED
+        ws.row_dimensions[current_row].height = 26
+        format_merged_range(ws, min_row=current_row, min_col=2, max_row=current_row, max_col=10,
+                            font=Font(name='Segoe UI', size=10, bold=True, color=COLOR_WHITE),
+                            fill=st['fill_navy_sub'], border=st['thin_border'],
+                            alignment=st['align_left_wrap'], protection=PROT_LOCKED,
+                            value=p_data['name'])
         current_row += 1
 
         p_start_row = current_row
 
         # Criterios del Pilar (SIN FÓRMULA -> EDITABLES CON FONDO BLANCO)
         for code, name, metric, weight, default_scores in p_data['criteria']:
-            ws.row_dimensions[current_row].height = 28
+            ws.row_dimensions[current_row].height = 38
             criterion_rows.append(current_row)
 
             # Col B: Code -> SIN FÓRMULA -> EDITABLE CON FONDO BLANCO
@@ -555,7 +565,7 @@ def build_tab3_scoring(wb, ws, lang='ES'):
             cB.fill = st['fill_input']
             cB.protection = PROT_UNLOCKED
 
-            # Col C: Name -> SIN FÓRMULA -> EDITABLE CON FONDO BLANCO
+            # Col C: Name -> SIN FÓRMULA -> EDITABLE CON FONDO BLANCO (CON WRAP)
             cC = ws.cell(row=current_row, column=3, value=name)
             cC.font = st['font_bold']
             cC.alignment = st['align_left_wrap']
@@ -563,7 +573,7 @@ def build_tab3_scoring(wb, ws, lang='ES'):
             cC.fill = st['fill_input']
             cC.protection = PROT_UNLOCKED
 
-            # Col D: Metric -> SIN FÓRMULA -> EDITABLE CON FONDO BLANCO
+            # Col D: Metric -> SIN FÓRMULA -> EDITABLE CON FONDO BLANCO (CON WRAP)
             cD = ws.cell(row=current_row, column=4, value=metric)
             cD.font = st['font_regular']
             cD.alignment = st['align_left_wrap']
@@ -595,17 +605,12 @@ def build_tab3_scoring(wb, ws, lang='ES'):
         p_end_row = current_row - 1
 
         # Subtotal del Pilar (CON FÓRMULAS -> PROTEGIDAS CON FONDO GRIS SUAVE)
-        ws.row_dimensions[current_row].height = 24
-        ws.merge_cells(start_row=current_row, start_column=2, end_row=current_row, end_column=4)
-        c_sub_lbl = ws.cell(row=current_row, column=2, 
+        ws.row_dimensions[current_row].height = 26
+        format_merged_range(ws, min_row=current_row, min_col=2, max_row=current_row, max_col=4,
+                            font=Font(name='Segoe UI', size=9, bold=True, color=COLOR_NAVY_DARK),
+                            fill=st['fill_calc'], border=st['thin_border'],
+                            alignment=st['align_right_wrap'], protection=PROT_LOCKED,
                             value=f"Subtotal Ponderado {p_data['name'].split(':')[0]}" if lang == 'ES' else f"Weighted Subtotal {p_data['name'].split(':')[0]}")
-        c_sub_lbl.font = Font(name='Segoe UI', size=9, bold=True, color=COLOR_NAVY_DARK)
-        c_sub_lbl.alignment = Alignment(horizontal='right', vertical='center')
-        c_sub_lbl.fill = st['fill_calc'] # Gris suave
-        c_sub_lbl.border = st['thin_border']
-        c_sub_lbl.protection = PROT_LOCKED
-        for c_i in range(3, 5):
-            ws.cell(row=current_row, column=c_i).border = st['thin_border']
 
         # Subtotal Weight (CON FÓRMULA -> PROTEGIDO)
         c_sub_w = ws.cell(row=current_row, column=5, value=f"=SUM(E{p_start_row}:E{p_end_row})")
@@ -633,34 +638,30 @@ def build_tab3_scoring(wb, ws, lang='ES'):
 
     # Fila de TOTAL GLOBAL PONDERADO BASE (CON FÓRMULAS -> PROTEGIDAS CON FONDO GRIS SUAVE)
     row_tot_base = current_row
-    ws.row_dimensions[row_tot_base].height = 26
-    ws.merge_cells(start_row=row_tot_base, start_column=2, end_row=row_tot_base, end_column=4)
-    c_tot_lbl = ws.cell(row=row_tot_base, column=2,
+    ws.row_dimensions[row_tot_base].height = 28
+    format_merged_range(ws, min_row=row_tot_base, min_col=2, max_row=row_tot_base, max_col=4,
+                        font=Font(name='Segoe UI', size=10, bold=True, color=COLOR_NAVY_DARK),
+                        fill=st['fill_calc'], border=st['total_border'],
+                        alignment=st['align_right_wrap'], protection=PROT_LOCKED,
                         value="PUNTUACIÓN PONDERADA BASE (Escala 0 - 100)" if lang == 'ES' else "BASE WEIGHTED SCORE (Scale 0 - 100)")
-    c_tot_lbl.font = Font(name='Segoe UI', size=10, bold=True, color=COLOR_NAVY_DARK)
-    c_tot_lbl.alignment = Alignment(horizontal='right', vertical='center')
-    c_tot_lbl.fill = st['fill_calc'] # Gris suave
-    c_tot_lbl.border = st['total_border']
-    c_tot_lbl.protection = PROT_LOCKED
-    for c_i in range(3, 5):
-        ws.cell(row=row_tot_base, column=c_i).border = st['total_border']
 
     # Total Weight Check (CON FÓRMULA -> PROTEGIDO)
     first_c_row = criterion_rows[0]
     last_c_row = criterion_rows[-1]
-    c_tot_w = ws.cell(row=row_tot_base, column=5, value=f"=SUM(E{first_c_row}:E{last_c_row})")
-    c_tot_w.font = Font(name='Segoe UI', size=10, bold=True, color=COLOR_BLUE_ACCENT)
+    c_tot_w = ws.cell(row=row_tot_base, column=5, 
+                      value=f"=SUM(E{pillar_subtotal_rows[0]},E{pillar_subtotal_rows[1]},E{pillar_subtotal_rows[2]},E{pillar_subtotal_rows[3]})")
+    c_tot_w.font = Font(name='Segoe UI', size=10, bold=True, color=COLOR_NAVY_DARK)
     c_tot_w.alignment = st['align_right']
     c_tot_w.fill = st['fill_calc'] # Gris suave
     c_tot_w.border = st['total_border']
     c_tot_w.number_format = st['num_fmt_pct']
     c_tot_w.protection = PROT_LOCKED
 
-    # Total Scores per Alternative (CON FÓRMULAS -> PROTEGIDOS)
+    # Total Base Score per Alternative (CON FÓRMULAS -> PROTEGIDOS)
     for a_idx in range(5):
         col_letter = get_column_letter(6 + a_idx)
-        terms = [f"{col_letter}{r}" for r in pillar_subtotal_rows]
-        c_tot_sc = ws.cell(row=row_tot_base, column=6 + a_idx, value=f"={'+'.join(terms)}")
+        sub_cells = [f"{col_letter}{r}" for r in pillar_subtotal_rows]
+        c_tot_sc = ws.cell(row=row_tot_base, column=6 + a_idx, value=f"=SUM({','.join(sub_cells)})")
         c_tot_sc.font = Font(name='Segoe UI', size=11, bold=True, color=COLOR_NAVY_DARK)
         c_tot_sc.alignment = st['align_center']
         c_tot_sc.fill = st['fill_calc'] # Gris suave
@@ -668,59 +669,44 @@ def build_tab3_scoring(wb, ws, lang='ES'):
         c_tot_sc.number_format = st['num_fmt_score']
         c_tot_sc.protection = PROT_LOCKED
 
-    current_row += 1
-
-    # Fila de Factor Booleano Veto (CON FÓRMULA -> PROTEGIDA)
+    # Fila de Factor Booleano Veto Vk Link (CON FÓRMULAS -> PROTEGIDO)
+    row_veto_link = row_tot_base + 1 # Row 30
+    ws.row_dimensions[row_veto_link].height = 26
     tab_veto_name = "Filtros Veto (Must-Haves)" if lang == 'ES' else "Veto Criteria (Must-Haves)"
-    row_veto_link = current_row
-    ws.row_dimensions[row_veto_link].height = 24
-    ws.merge_cells(start_row=row_veto_link, start_column=2, end_row=row_veto_link, end_column=5)
-    c_vk_lbl = ws.cell(row=row_veto_link, column=2,
-                       value="FACTOR BOOLEANO VETO (Vk: 1=Apta, 0=Descalificada)" if lang == 'ES' else "BOOLEAN GATEKEEPER FACTOR (Vk: 1=Pass, 0=Disqualified)")
-    c_vk_lbl.font = Font(name='Segoe UI', size=9, bold=True, color=COLOR_WHITE)
-    c_vk_lbl.alignment = Alignment(horizontal='right', vertical='center')
-    c_vk_lbl.fill = st['fill_navy_sub']
-    c_vk_lbl.border = st['thin_border']
-    c_vk_lbl.protection = PROT_LOCKED
-    for c_i in range(3, 6):
-        ws.cell(row=row_veto_link, column=c_i).border = st['thin_border']
+    format_merged_range(ws, min_row=row_veto_link, min_col=2, max_row=row_veto_link, max_col=5,
+                        font=Font(name='Segoe UI', size=9, bold=True, color=COLOR_NAVY_DARK),
+                        fill=st['fill_calc'], border=st['thin_border'],
+                        alignment=st['align_right_wrap'], protection=PROT_LOCKED,
+                        value="FACTOR BOOLEANO GATEKEEPER (Vk) [Hojas Filtros Veto]" if lang == 'ES' else "BOOLEAN GATEKEEPER FACTOR (Vk) [From Veto Tab]")
 
     for a_idx in range(5):
         col_letter = get_column_letter(6 + a_idx)
-        c_vk_val = ws.cell(row=row_veto_link, column=6 + a_idx,
-                           value=f"='{tab_veto_name}'!{col_letter}16")
-        c_vk_val.font = Font(name='Segoe UI', size=10, bold=True, color=COLOR_WHITE)
-        c_vk_val.alignment = st['align_center']
-        c_vk_val.fill = st['fill_navy_sub']
-        c_vk_val.border = st['thin_border']
-        c_vk_val.protection = PROT_LOCKED
+        c_vk = ws.cell(row=row_veto_link, column=6 + a_idx, value=f"='{tab_veto_name}'!{col_letter}16")
+        c_vk.font = Font(name='Segoe UI', size=10, bold=True)
+        c_vk.alignment = st['align_center']
+        c_vk.border = st['thin_border']
+        c_vk.fill = st['fill_calc'] # Gris suave
+        c_vk.protection = PROT_LOCKED
 
-    current_row += 1
-
-    # Fila de SCORE FINAL EFECTIVO: Base * Vk (CON FÓRMULAS -> PROTEGIDAS CON FONDO GRIS SUAVE)
-    row_final_score = current_row
-    ws.row_dimensions[row_final_score].height = 28
-    ws.merge_cells(start_row=row_final_score, start_column=2, end_row=row_final_score, end_column=5)
-    c_fin_lbl = ws.cell(row=row_final_score, column=2,
-                        value="PUNTUACIÓN FINAL EFECTIVA (S = Base * Vk)" if lang == 'ES' else "EFFECTIVE FINAL SCORE (S = Base * Vk)")
-    c_fin_lbl.font = Font(name='Segoe UI', size=11, bold=True, color=COLOR_NAVY_DARK)
-    c_fin_lbl.alignment = Alignment(horizontal='right', vertical='center')
-    c_fin_lbl.fill = st['fill_calc'] # Gris suave
-    c_fin_lbl.border = st['total_border']
-    c_fin_lbl.protection = PROT_LOCKED
-    for c_i in range(3, 6):
-        ws.cell(row=row_final_score, column=c_i).border = st['total_border']
+    # Fila de PUNTUACIÓN FINAL AUDITADA (Sk = Base * Vk) (CON FÓRMULAS -> PROTEGIDO)
+    row_final_score = row_veto_link + 1 # Row 31
+    ws.row_dimensions[row_final_score].height = 30
+    format_merged_range(ws, min_row=row_final_score, min_col=2, max_row=row_final_score, max_col=5,
+                        font=Font(name='Segoe UI', size=10, bold=True, color=COLOR_WHITE),
+                        fill=st['fill_navy_hdr'], border=st['header_border'],
+                        alignment=st['align_right_wrap'], protection=PROT_LOCKED,
+                        value="PUNTUACIÓN FINAL AUDITADA DAR (Sk = Score Base × Vk)" if lang == 'ES' else "AUDITED DAR FINAL SCORE (Sk = Base Score × Vk)")
 
     for a_idx in range(5):
         col_letter = get_column_letter(6 + a_idx)
-        c_fin_val = ws.cell(row=row_final_score, column=6 + a_idx,
-                            value=f"={col_letter}{row_tot_base}*{col_letter}{row_veto_link}")
-        c_fin_val.font = Font(name='Segoe UI', size=13, bold=True, color=COLOR_NAVY_DARK)
-        c_fin_val.alignment = st['align_center']
-        c_fin_val.fill = st['fill_calc'] # Gris suave
-        c_fin_val.border = st['total_border']
-        c_fin_val.number_format = st['num_fmt_score']
-        c_fin_val.protection = PROT_LOCKED
+        c_fin = ws.cell(row=row_final_score, column=6 + a_idx, 
+                        value=f"={col_letter}{row_tot_base}*{col_letter}{row_veto_link}")
+        c_fin.font = Font(name='Segoe UI', size=12, bold=True, color=COLOR_WHITE)
+        c_fin.alignment = st['align_center']
+        c_fin.border = st['header_border']
+        c_fin.fill = st['fill_navy_hdr']
+        c_fin.number_format = st['num_fmt_score']
+        c_fin.protection = PROT_LOCKED
 
     # Data Validation para Notas (1.0 a 10.0)
     dv_score = DataValidation(type="decimal", operator="between", formula1=1.0, formula2=10.0, allow_blank=False)
@@ -729,11 +715,11 @@ def build_tab3_scoring(wb, ws, lang='ES'):
     ws.add_data_validation(dv_score)
     dv_score.add(f"F{first_c_row}:J{last_c_row}")
 
-    # Column dimensions
+    # Column dimensions (Holgadas para lectura directiva)
     ws.column_dimensions['A'].width = 3
-    ws.column_dimensions['B'].width = 10
-    ws.column_dimensions['C'].width = 38
-    ws.column_dimensions['D'].width = 46
+    ws.column_dimensions['B'].width = 12
+    ws.column_dimensions['C'].width = 44
+    ws.column_dimensions['D'].width = 52
     ws.column_dimensions['E'].width = 14
     ws.column_dimensions['F'].width = 18
     ws.column_dimensions['G'].width = 18
@@ -772,25 +758,22 @@ def build_tab1_dashboard(wb, ws, lang='ES'):
     ]
 
     for lbl_es, lbl_en, default_val, r_idx in meta_rows:
-        ws.row_dimensions[r_idx].height = 20
-        c_lbl = ws.cell(row=r_idx, column=2, value=lbl_es if lang == 'ES' else lbl_en)
-        c_lbl.font = st['font_bold']
-        c_lbl.alignment = Alignment(horizontal='right', vertical='center')
-        c_lbl.fill = st['fill_calc'] # Gris suave
-        c_lbl.border = st['thin_border']
-        c_lbl.protection = PROT_LOCKED
+        ws.row_dimensions[r_idx].height = 26
+        # Etiqueta combinada en B:C -> gris suave, texto alineado a la derecha con wrap
+        format_merged_range(ws, min_row=r_idx, min_col=2, max_row=r_idx, max_col=3,
+                            font=st['font_bold'], fill=st['fill_calc'], border=st['thin_border'],
+                            alignment=st['align_right_wrap'], protection=PROT_LOCKED,
+                            value=lbl_es if lang == 'ES' else lbl_en)
 
-        ws.merge_cells(start_row=r_idx, start_column=3, end_row=r_idx, end_column=7)
-        c_val = ws.cell(row=r_idx, column=3, value=default_val)
-        c_val.font = st['font_regular']
-        c_val.alignment = st['align_left']
-        c_val.border = st['thin_border']
-        c_val.fill = st['fill_input'] # Blanco editable
-        c_val.protection = PROT_UNLOCKED
+        # Valor editable en D:I -> blanco puro, texto alineado a la izquierda con wrap
+        format_merged_range(ws, min_row=r_idx, min_col=4, max_row=r_idx, max_col=9,
+                            font=st['font_regular'], fill=st['fill_input'], border=st['thin_border'],
+                            alignment=st['align_left_wrap'], protection=PROT_UNLOCKED,
+                            value=default_val)
 
     # 2. CUADRO DE DECISIÓN RESUMEN (COMPARATIVA DE 5 ALTERNATIVAS)
     row_sum_hdr = 11
-    ws.row_dimensions[row_sum_hdr].height = 28
+    ws.row_dimensions[row_sum_hdr].height = 32
 
     headers_summary = [
         ("Cód", "Code"),
@@ -833,7 +816,7 @@ def build_tab1_dashboard(wb, ws, lang='ES'):
 
     for idx, name in enumerate(alt_names):
         curr_row = row_sum_hdr + 1 + idx # Rows 12 to 16
-        ws.row_dimensions[curr_row].height = 24
+        ws.row_dimensions[curr_row].height = 28
         col_letter_scoring = get_column_letter(6 + idx) # Col F to J in other tabs
 
         # Col B: Code -> SIN FÓRMULA -> EDITABLE CON FONDO BLANCO
@@ -844,10 +827,10 @@ def build_tab1_dashboard(wb, ws, lang='ES'):
         cB.border = st['thin_border']
         cB.protection = PROT_UNLOCKED
 
-        # Col C: Name -> SIN FÓRMULA -> EDITABLE CON FONDO BLANCO
+        # Col C: Name -> SIN FÓRMULA -> EDITABLE CON FONDO BLANCO (CON WRAP)
         cC = ws.cell(row=curr_row, column=3, value=name)
         cC.font = st['font_bold']
-        cC.alignment = st['align_left']
+        cC.alignment = st['align_left_wrap']
         cC.fill = st['fill_input']
         cC.border = st['thin_border']
         cC.protection = PROT_UNLOCKED
@@ -895,7 +878,7 @@ def build_tab1_dashboard(wb, ws, lang='ES'):
         cH.fill = st['fill_calc'] # Gris suave
         cH.protection = PROT_LOCKED
 
-        # Col I: Dictamen Ejecutivo -> CON FÓRMULA -> PROTEGIDA CON FONDO GRIS SUAVE
+        # Col I: Dictamen Ejecutivo -> CON FÓRMULA -> PROTEGIDA CON FONDO GRIS SUAVE (CON WRAP)
         dict_fail = "DESCALIFICADA POR FILTRO VETO" if lang == 'ES' else "DISQUALIFIED BY VETO CRITERIA"
         dict_win = "ADJUDICATARIA (RECOMENDADA)" if lang == 'ES' else "WINNER (SELECTED OPTION)"
         dict_sec = "SEGUNDA OPCIÓN (BACKUP)" if lang == 'ES' else "RUNNER-UP (BACKUP OPTION)"
@@ -904,98 +887,82 @@ def build_tab1_dashboard(wb, ws, lang='ES'):
         cI = ws.cell(row=curr_row, column=9,
                     value=f'=IF(D{curr_row}="{status_fail}", "{dict_fail}", IF(H{curr_row}=1, "{dict_win}", IF(H{curr_row}=2, "{dict_sec}", "{dict_disc}")))')
         cI.font = Font(name='Segoe UI', size=9, bold=True)
-        cI.alignment = st['align_left']
+        cI.alignment = st['align_center_wrap']
         cI.border = st['thin_border']
         cI.fill = st['fill_calc'] # Gris suave
         cI.protection = PROT_LOCKED
 
     # 3. TARJETAS DE RECOMENDACIÓN EJECUTIVA (KPI CARDS) -> CON FÓRMULAS -> PROTEGIDAS
     row_kpi = 19
-    ws.row_dimensions[row_kpi].height = 18
-    ws.merge_cells(start_row=row_kpi, start_column=2, end_row=row_kpi, end_column=9)
-    ws.cell(row=row_kpi, column=2, value="DICTAMEN EJECUTIVO Y RECOMENDACIÓN ESTRATÉGICA DEL COMITÉ" if lang == 'ES' else "EXECUTIVE BOARD VERDICT & STRATEGIC RECOMMENDATION").font = st['font_section']
+    ws.row_dimensions[row_kpi].height = 24
+    format_merged_range(ws, min_row=row_kpi, min_col=2, max_row=row_kpi, max_col=9,
+                        font=st['font_section'], fill=None, border=None, alignment=st['align_left'],
+                        protection=PROT_LOCKED,
+                        value="DICTAMEN EJECUTIVO Y RECOMENDACIÓN ESTRATÉGICA DEL COMITÉ" if lang == 'ES' else "EXECUTIVE BOARD VERDICT & STRATEGIC RECOMMENDATION")
 
-    # Card 1: Alternativa Ganadora
-    ws.merge_cells("B20:D20")
-    ws.merge_cells("B21:D21")
-    ws.merge_cells("B22:D22")
-    ws['B20'] = "ALTERNATIVA GANADORA / RECOMENDADA" if lang == 'ES' else "RECOMMENDED WINNER"
-    ws['B20'].font = st['font_kpi_lbl']
-    ws['B20'].alignment = st['align_center']
-    ws['B20'].fill = st['fill_green_zone']
-    ws['B20'].border = st['card_border']
-    ws['B20'].protection = PROT_LOCKED
-    
-    ws['B21'] = "=C13" # Alt B (Beta)
-    ws['B21'].font = Font(name='Segoe UI', size=11, bold=True, color=COLOR_GREEN_TEXT)
-    ws['B21'].alignment = st['align_center']
-    ws['B21'].fill = st['fill_green_zone']
-    ws['B21'].border = st['card_border']
-    ws['B21'].protection = PROT_LOCKED
+    ws.row_dimensions[20].height = 22
+    ws.row_dimensions[21].height = 30
+    ws.row_dimensions[22].height = 24
 
-    ws['B22'] = '="Puntuación: " & TEXT(G13, "0.0") & " / 100 pts"' if lang == 'ES' else '="Score: " & TEXT(G13, "0.0") & " / 100 pts"'
-    ws['B22'].font = Font(name='Segoe UI', size=10, bold=True, color=COLOR_GREEN_TEXT)
-    ws['B22'].alignment = st['align_center']
-    ws['B22'].fill = st['fill_green_zone']
-    ws['B22'].border = st['card_border']
-    ws['B22'].protection = PROT_LOCKED
+    # Card 1: Alternativa Ganadora (Cols B, C, D)
+    format_merged_range(ws, min_row=20, min_col=2, max_row=20, max_col=4,
+                        font=st['font_kpi_lbl'], fill=st['fill_green_zone'], border=st['card_border'],
+                        alignment=st['align_center_wrap'], protection=PROT_LOCKED,
+                        value="ALTERNATIVA GANADORA / RECOMENDADA" if lang == 'ES' else "RECOMMENDED WINNER")
+    format_merged_range(ws, min_row=21, min_col=2, max_row=21, max_col=4,
+                        font=Font(name='Segoe UI', size=11, bold=True, color=COLOR_GREEN_TEXT),
+                        fill=st['fill_green_zone'], border=st['card_border'],
+                        alignment=st['align_center_wrap'], protection=PROT_LOCKED,
+                        value="=C13")
+    format_merged_range(ws, min_row=22, min_col=2, max_row=22, max_col=4,
+                        font=Font(name='Segoe UI', size=10, bold=True, color=COLOR_GREEN_TEXT),
+                        fill=st['fill_green_zone'], border=st['card_border'],
+                        alignment=st['align_center_wrap'], protection=PROT_LOCKED,
+                        value='="Puntuación: " & TEXT(G13, "0.0") & " / 100 pts"' if lang == 'ES' else '="Score: " & TEXT(G13, "0.0") & " / 100 pts"')
 
-    # Card 2: Diferencial vs 2ª Opción
-    ws.merge_cells("E20:G20")
-    ws.merge_cells("E21:G21")
-    ws.merge_cells("E22:G22")
-    ws['E20'] = "GAP DE DECISIÓN VS. 2ª MEJOR OPCIÓN" if lang == 'ES' else "DECISION GAP VS. RUNNER-UP"
-    ws['E20'].font = st['font_kpi_lbl']
-    ws['E20'].alignment = st['align_center']
-    ws['E20'].fill = st['fill_calc'] # Gris suave
-    ws['E20'].border = st['thin_border']
-    ws['E20'].protection = PROT_LOCKED
+    # Card 2: Diferencial vs 2ª Opción (Cols E, F, G)
+    format_merged_range(ws, min_row=20, min_col=5, max_row=20, max_col=7,
+                        font=st['font_kpi_lbl'], fill=st['fill_calc'], border=st['thin_border'],
+                        alignment=st['align_center_wrap'], protection=PROT_LOCKED,
+                        value="GAP DE DECISIÓN VS. 2ª MEJOR OPCIÓN" if lang == 'ES' else "DECISION GAP VS. RUNNER-UP")
+    format_merged_range(ws, min_row=21, min_col=5, max_row=21, max_col=7,
+                        font=Font(name='Segoe UI', size=15, bold=True, color=COLOR_BLUE_ACCENT),
+                        fill=st['fill_calc'], border=st['thin_border'],
+                        alignment=st['align_center_wrap'], protection=PROT_LOCKED,
+                        number_format='+0.0 "pts";-0.0 "pts";0.0 "pts"', value="=G13-G12")
+    format_merged_range(ws, min_row=22, min_col=5, max_row=22, max_col=7,
+                        font=st['font_bold'], fill=st['fill_calc'], border=st['thin_border'],
+                        alignment=st['align_center_wrap'], protection=PROT_LOCKED,
+                        value='="Ventaja relativa: +" & TEXT((G13-G12)/G12, "0.0%")' if lang == 'ES' else '="Relative advantage: +" & TEXT((G13-G12)/G12, "0.0%")')
 
-    ws['E21'] = "=G13-G12" # Gap: Beta - Alpha (86.4 - 78.6 = +7.8 pts)
-    ws['E21'].font = Font(name='Segoe UI', size=15, bold=True, color=COLOR_BLUE_ACCENT)
-    ws['E21'].alignment = st['align_center']
-    ws['E21'].fill = st['fill_calc'] # Gris suave
-    ws['E21'].border = st['thin_border']
-    ws['E21'].number_format = '+0.0 "pts";-0.0 "pts";0.0 "pts"'
-    ws['E21'].protection = PROT_LOCKED
+    # Card 3: Estado de Filtros Veto (Cols H, I)
+    format_merged_range(ws, min_row=20, min_col=8, max_row=20, max_col=9,
+                        font=st['font_kpi_lbl'], fill=st['fill_calc'], border=st['thin_border'],
+                        alignment=st['align_center_wrap'], protection=PROT_LOCKED,
+                        value="CUMPLIMIENTO DE FILTROS VETO" if lang == 'ES' else "VETO CRITERIA ADHERENCE")
+    format_merged_range(ws, min_row=21, min_col=8, max_row=21, max_col=9,
+                        font=Font(name='Segoe UI', size=13, bold=True, color=COLOR_NAVY_DARK),
+                        fill=st['fill_calc'], border=st['thin_border'],
+                        alignment=st['align_center_wrap'], protection=PROT_LOCKED,
+                        value='="4 / 5 Aptas (80%)"' if lang == 'ES' else '="4 / 5 Qualified (80%)"')
+    format_merged_range(ws, min_row=22, min_col=8, max_row=22, max_col=9,
+                        font=Font(name='Segoe UI', size=9, bold=True, color=COLOR_RED_TEXT),
+                        fill=st['fill_calc'], border=st['thin_border'],
+                        alignment=st['align_center_wrap'], protection=PROT_LOCKED,
+                        value="1 Descalificada (Vendor Delta)" if lang == 'ES' else "1 Disqualified (Vendor Delta)")
 
-    ws['E22'] = '="Ventaja relativa: +" & TEXT((G13-G12)/G12, "0.0%")' if lang == 'ES' else '="Relative advantage: +" & TEXT((G13-G12)/G12, "0.0%")'
-    ws['E22'].font = st['font_bold']
-    ws['E22'].alignment = st['align_center']
-    ws['E22'].fill = st['fill_calc'] # Gris suave
-    ws['E22'].border = st['thin_border']
-    ws['E22'].protection = PROT_LOCKED
-
-    # Card 3: Estado de Filtros Veto
-    ws.merge_cells("H20:I20")
-    ws.merge_cells("H21:I21")
-    ws.merge_cells("H22:I22")
-    ws['H20'] = "CUMPLIMIENTO DE FILTROS VETO" if lang == 'ES' else "VETO CRITERIA ADHERENCE"
-    ws['H20'].font = st['font_kpi_lbl']
-    ws['H20'].alignment = st['align_center']
-    ws['H20'].fill = st['fill_calc'] # Gris suave
-    ws['H20'].border = st['thin_border']
-    ws['H20'].protection = PROT_LOCKED
-
-    ws['H21'] = '="4 / 5 Aptas (80%)"' if lang == 'ES' else '="4 / 5 Qualified (80%)"'
-    ws['H21'].font = Font(name='Segoe UI', size=13, bold=True, color=COLOR_NAVY_DARK)
-    ws['H21'].alignment = st['align_center']
-    ws['H21'].fill = st['fill_calc'] # Gris suave
-    ws['H21'].border = st['thin_border']
-    ws['H21'].protection = PROT_LOCKED
-
-    ws['H22'] = "1 Descalificada (Vendor Delta)" if lang == 'ES' else "1 Disqualified (Vendor Delta)"
-    ws['H22'].font = Font(name='Segoe UI', size=9, bold=True, color=COLOR_RED_TEXT)
-    ws['H22'].alignment = st['align_center']
-    ws['H22'].fill = st['fill_calc'] # Gris suave
-    ws['H22'].border = st['thin_border']
-    ws['H22'].protection = PROT_LOCKED
-
-    # 4. TABLA COMPARATIVA POR PILARES ESTRATÉGICOS (CON FÓRMULAS -> PROTEGIDAS CON FONDO GRIS SUAVE)
+    # 4. TABLA COMPARATIVA POR PILARES ESTRATÉGICOS (ALINEADA COL B A COL I)
     row_pil_hdr = 25
-    ws.row_dimensions[row_pil_hdr].height = 24
-    headers_pillars = [
-        ("Pilar Estratégico", "Strategic Pillar"),
+    ws.row_dimensions[row_pil_hdr].height = 30
+
+    # Header Pilar Estratégico merged in B25:C25
+    format_merged_range(ws, min_row=row_pil_hdr, min_col=2, max_row=row_pil_hdr, max_col=3,
+                        font=st['font_header'], fill=st['fill_navy_sub'], border=st['thin_border'],
+                        alignment=st['align_center_wrap'], protection=PROT_LOCKED,
+                        value="Pilar Estratégico" if lang == 'ES' else "Strategic Pillar")
+
+    # Col D to I headers
+    headers_pillars_rest = [
         ("Peso %", "Weight %"),
         ("Alt A: Alpha", "Alt A: Alpha"),
         ("Alt B: Beta", "Alt B: Beta"),
@@ -1003,13 +970,13 @@ def build_tab1_dashboard(wb, ws, lang='ES'):
         ("Alt D: Delta", "Alt D: Delta"),
         ("Alt E: Epsilon", "Alt E: Epsilon"),
     ]
-
-    for col_idx, (h_es, h_en) in enumerate(headers_pillars, start=2): # Col B to H
+    for col_offset, (h_es, h_en) in enumerate(headers_pillars_rest):
+        col_idx = 4 + col_offset # Col D=4, E=5, F=6, G=7, H=8, I=9
         cell = ws.cell(row=row_pil_hdr, column=col_idx)
         cell.value = h_es if lang == 'ES' else h_en
         cell.font = st['font_header']
         cell.fill = st['fill_navy_sub']
-        cell.alignment = st['align_center']
+        cell.alignment = st['align_center_wrap']
         cell.border = st['thin_border']
         cell.protection = PROT_LOCKED
 
@@ -1022,31 +989,32 @@ def build_tab1_dashboard(wb, ws, lang='ES'):
 
     for p_idx, (p_es, p_en, p_w, src_row) in enumerate(pillar_rows_data):
         curr_r = row_pil_hdr + 1 + p_idx # Rows 26 to 29
-        ws.row_dimensions[curr_r].height = 20
+        ws.row_dimensions[curr_r].height = 26
 
-        cB = ws.cell(row=curr_r, column=2, value=p_es if lang == 'ES' else p_en)
-        cB.font = st['font_bold']
-        cB.alignment = st['align_left']
-        cB.border = st['thin_border']
-        cB.fill = st['fill_calc'] # Gris suave
-        cB.protection = PROT_LOCKED
+        # Merged B:C for Pillar Name -> ancho combinado 56 caracteres, no se corta
+        format_merged_range(ws, min_row=curr_r, min_col=2, max_row=curr_r, max_col=3,
+                            font=st['font_bold'], fill=st['fill_calc'], border=st['thin_border'],
+                            alignment=st['align_left_wrap'], protection=PROT_LOCKED,
+                            value=p_es if lang == 'ES' else p_en)
 
-        cC = ws.cell(row=curr_r, column=3, value=p_w)
-        cC.font = st['font_bold']
-        cC.alignment = st['align_right']
-        cC.border = st['thin_border']
-        cC.fill = st['fill_calc'] # Gris suave
-        cC.number_format = st['num_fmt_pct']
-        cC.protection = PROT_LOCKED
+        # Col D: Weight %
+        cD = ws.cell(row=curr_r, column=4, value=p_w)
+        cD.font = st['font_bold']
+        cD.alignment = st['align_right']
+        cD.border = st['thin_border']
+        cD.fill = st['fill_calc']
+        cD.number_format = st['num_fmt_pct']
+        cD.protection = PROT_LOCKED
 
+        # Col E to I: Scores per Alternative
         for a_idx in range(5):
             col_letter = get_column_letter(6 + a_idx)
-            c_val = ws.cell(row=curr_r, column=4 + a_idx, 
+            c_val = ws.cell(row=curr_r, column=5 + a_idx, 
                             value=f"='{tab_scoring_name}'!{col_letter}{src_row}")
             c_val.font = st['font_regular']
             c_val.alignment = st['align_center']
             c_val.border = st['thin_border']
-            c_val.fill = st['fill_calc'] # Gris suave
+            c_val.fill = st['fill_calc']
             c_val.number_format = st['num_fmt_score']
             c_val.protection = PROT_LOCKED
 
@@ -1057,25 +1025,27 @@ def build_tab1_dashboard(wb, ws, lang='ES'):
     chart.title = "Comparativa de Puntuación Ponderada por Pilares" if lang == 'ES' else "Weighted Score Comparison by Strategic Pillars"
     chart.y_axis.title = "Puntuación (0 - 30 pts)" if lang == 'ES' else "Score (0 - 30 pts)"
     chart.x_axis.title = "Pilares de Evaluación" if lang == 'ES' else "Evaluation Pillars"
-    chart.height = 12
-    chart.width = 18
+    chart.height = 14
+    chart.width = 22
 
-    data = Reference(ws, min_col=4, min_row=row_pil_hdr, max_col=8, max_row=row_pil_hdr+4)
+    # Data: Cols E (5) a I (9), filas 25 a 29
+    data = Reference(ws, min_col=5, min_row=row_pil_hdr, max_col=9, max_row=row_pil_hdr+4)
+    # Categorías: Col B (2), filas 26 a 29
     cats = Reference(ws, min_col=2, min_row=row_pil_hdr+1, max_row=row_pil_hdr+4)
     chart.add_data(data, titles_from_data=True)
     chart.set_categories(cats)
     ws.add_chart(chart, "B32")
 
-    # Column dimensions
+    # Column dimensions (Holgadas y perfectamente balanceadas)
     ws.column_dimensions['A'].width = 3
-    ws.column_dimensions['B'].width = 12
-    ws.column_dimensions['C'].width = 38
-    ws.column_dimensions['D'].width = 18
-    ws.column_dimensions['E'].width = 16
-    ws.column_dimensions['F'].width = 14
-    ws.column_dimensions['G'].width = 15
-    ws.column_dimensions['H'].width = 14
-    ws.column_dimensions['I'].width = 32
+    ws.column_dimensions['B'].width = 14
+    ws.column_dimensions['C'].width = 42
+    ws.column_dimensions['D'].width = 20
+    ws.column_dimensions['E'].width = 18
+    ws.column_dimensions['F'].width = 18
+    ws.column_dimensions['G'].width = 18
+    ws.column_dimensions['H'].width = 16
+    ws.column_dimensions['I'].width = 38
 
     apply_sheet_protection(ws, allow_structure=True)
 
@@ -1098,16 +1068,16 @@ def build_tab4_sensitivity(wb, ws, lang='ES'):
     ws['B3'] = "ANÁLISIS DE SENSIBILIDAD WHAT-IF & REGISTRO DE AUDITORÍA C-LEVEL" if lang == 'ES' else "WHAT-IF SENSITIVITY ANALYSIS & C-SUITE AUDIT TRAIL"
     ws['B3'].font = st['font_title']
     
-    ws['B4'] = ("Test de robustez de la decisión estratégica variando las ponderaciones de pilares (+/- 20% Coste vs. Ajuste Técnico) "
-                "y registro formal de justificación, actas y firmas de aprobación C-Level."
+    ws['B4'] = ("Test de robustez de la decisión estratégica ante 5 escenarios de estrés de ponderaciones. "
+                "Incluye registro inmutable de evidencias auditadas y acta formal de adjudicación con firmas ejecutivas."
                 if lang == 'ES' else
-                "Strategic decision robustness test evaluating weight swings (+/- 20% Cost vs. Technical Fit) "
-                "and formal justification registry, committee minutes, and C-Suite sign-off block.")
+                "Robustness stress-testing across 5 alternative weighting profiles. "
+                "Includes immutable audited qualitative evidence trail and formal C-Suite consensus minutes with binding signatures.")
     ws['B4'].font = st['font_meta']
 
-    # 2. TABLA DE ANÁLISIS DE SENSIBILIDAD
+    # 2. TABLA DE ANÁLISIS DE SENSIBILIDAD (WHAT-IF SCENARIOS)
     row_sens_hdr = 7
-    ws.row_dimensions[row_sens_hdr].height = 26
+    ws.row_dimensions[row_sens_hdr].height = 30
     headers_sens = [
         ("Escenario de Sensibilidad", "Sensitivity Scenario"),
         ("Técnico", "Tech"),
@@ -1128,7 +1098,7 @@ def build_tab4_sensitivity(wb, ws, lang='ES'):
         cell.value = h_es if lang == 'ES' else h_en
         cell.font = st['font_header']
         cell.fill = st['fill_navy_hdr']
-        cell.alignment = st['align_center']
+        cell.alignment = st['align_center_wrap']
         cell.border = st['header_border']
         cell.protection = PROT_LOCKED
 
@@ -1142,12 +1112,12 @@ def build_tab4_sensitivity(wb, ws, lang='ES'):
 
     for s_idx, (s_es, s_en, w_t, w_c, w_sla, w_sec, win, rob) in enumerate(scenarios):
         curr_r = row_sens_hdr + 1 + s_idx # Rows 8 to 12
-        ws.row_dimensions[curr_r].height = 22
+        ws.row_dimensions[curr_r].height = 26
 
-        # Name -> SIN FÓRMULA -> EDITABLE CON FONDO BLANCO
+        # Name -> SIN FÓRMULA -> EDITABLE CON FONDO BLANCO (CON WRAP)
         cB = ws.cell(row=curr_r, column=2, value=s_es if lang == 'ES' else s_en)
         cB.font = st['font_bold']
-        cB.alignment = st['align_left']
+        cB.alignment = st['align_left_wrap']
         cB.border = st['thin_border']
         cB.fill = st['fill_input']
         cB.protection = PROT_UNLOCKED
@@ -1163,7 +1133,6 @@ def build_tab4_sensitivity(wb, ws, lang='ES'):
             cW.protection = PROT_UNLOCKED
 
         # Scores under scenario (CON FÓRMULAS -> PROTEGIDOS CON FONDO GRIS SUAVE)
-        # Subtotals in Scoring tab are at rows 13, 18, 23, 28
         for a_idx in range(5):
             col_letter = get_column_letter(6 + a_idx)
             col_out = 7 + a_idx
@@ -1186,7 +1155,7 @@ def build_tab4_sensitivity(wb, ws, lang='ES'):
         # Winner -> CON FÓRMULA / TEXTO CALCULADO -> PROTEGIDO CON FONDO GRIS SUAVE
         cWin = ws.cell(row=curr_r, column=12, value=win)
         cWin.font = Font(name='Segoe UI', size=9, bold=True, color=COLOR_GREEN_TEXT)
-        cWin.alignment = st['align_center']
+        cWin.alignment = st['align_center_wrap']
         cWin.border = st['thin_border']
         cWin.fill = st['fill_calc'] # Gris suave
         cWin.protection = PROT_LOCKED
@@ -1202,12 +1171,13 @@ def build_tab4_sensitivity(wb, ws, lang='ES'):
     # 3. REGISTRO DE AUDITORÍA CUALITATIVA DE NOTAS (DECISION AUDIT TRAIL)
     row_aud_hdr = 15
     ws.row_dimensions[row_aud_hdr].height = 24
-    ws.merge_cells(start_row=row_aud_hdr, start_column=2, end_row=row_aud_hdr, end_column=13)
-    ws.cell(row=row_aud_hdr, column=2, 
-            value="REGISTRO DE EVIDENCIAS Y AUDITORÍA DE CALIFICACIONES (DECISION AUDIT TRAIL)" if lang == 'ES' else "QUALITATIVE EVIDENCE & SCORING AUDIT TRAIL").font = st['font_section']
+    format_merged_range(ws, min_row=row_aud_hdr, min_col=2, max_row=row_aud_hdr, max_col=13,
+                        font=st['font_section'], fill=None, border=None, alignment=st['align_left'],
+                        protection=PROT_LOCKED,
+                        value="REGISTRO DE EVIDENCIAS Y AUDITORÍA DE CALIFICACIONES (DECISION AUDIT TRAIL)" if lang == 'ES' else "QUALITATIVE EVIDENCE & SCORING AUDIT TRAIL")
 
     row_aud_tbl = 17
-    ws.row_dimensions[row_aud_tbl].height = 26
+    ws.row_dimensions[row_aud_tbl].height = 30
     headers_audit = [
         ("Cód", "Code"),
         ("Alternativa", "Alternative"),
@@ -1217,45 +1187,45 @@ def build_tab4_sensitivity(wb, ws, lang='ES'):
         ("Referencia Documental / Anexo", "Document Reference / Annex"),
     ]
 
-    ws.cell(row=row_aud_tbl, column=2, value=headers_audit[0][0] if lang == 'ES' else headers_audit[0][1]).font = st['font_header']
-    ws.cell(row=row_aud_tbl, column=2).fill = st['fill_navy_sub']
-    ws.cell(row=row_aud_tbl, column=2).alignment = st['align_center']
-    ws.cell(row=row_aud_tbl, column=2).border = st['thin_border']
-    ws.cell(row=row_aud_tbl, column=2).protection = PROT_LOCKED
+    # Col B: Code
+    cell = ws.cell(row=row_aud_tbl, column=2, value=headers_audit[0][0] if lang == 'ES' else headers_audit[0][1])
+    cell.font = st['font_header']
+    cell.fill = st['fill_navy_sub']
+    cell.alignment = st['align_center_wrap']
+    cell.border = st['thin_border']
+    cell.protection = PROT_LOCKED
 
-    ws.merge_cells("C17:D17")
-    ws.cell(row=row_aud_tbl, column=3, value=headers_audit[1][0] if lang == 'ES' else headers_audit[1][1]).font = st['font_header']
-    ws.cell(row=row_aud_tbl, column=3).fill = st['fill_navy_sub']
-    ws.cell(row=row_aud_tbl, column=3).alignment = st['align_center']
-    ws.cell(row=row_aud_tbl, column=3).border = st['thin_border']
-    ws.cell(row=row_aud_tbl, column=3).protection = PROT_LOCKED
+    # Col C:D Alternative
+    format_merged_range(ws, min_row=row_aud_tbl, min_col=3, max_row=row_aud_tbl, max_col=4,
+                        font=st['font_header'], fill=st['fill_navy_sub'], border=st['thin_border'],
+                        alignment=st['align_center_wrap'], protection=PROT_LOCKED,
+                        value=headers_audit[1][0] if lang == 'ES' else headers_audit[1][1])
 
-    ws.merge_cells("E17:F17")
-    ws.cell(row=row_aud_tbl, column=5, value=headers_audit[2][0] if lang == 'ES' else headers_audit[2][1]).font = st['font_header']
-    ws.cell(row=row_aud_tbl, column=5).fill = st['fill_navy_sub']
-    ws.cell(row=row_aud_tbl, column=5).alignment = st['align_center']
-    ws.cell(row=row_aud_tbl, column=5).border = st['thin_border']
-    ws.cell(row=row_aud_tbl, column=5).protection = PROT_LOCKED
+    # Col E:F Criterion
+    format_merged_range(ws, min_row=row_aud_tbl, min_col=5, max_row=row_aud_tbl, max_col=6,
+                        font=st['font_header'], fill=st['fill_navy_sub'], border=st['thin_border'],
+                        alignment=st['align_center_wrap'], protection=PROT_LOCKED,
+                        value=headers_audit[2][0] if lang == 'ES' else headers_audit[2][1])
 
-    ws.cell(row=row_aud_tbl, column=7, value=headers_audit[3][0] if lang == 'ES' else headers_audit[3][1]).font = st['font_header']
-    ws.cell(row=row_aud_tbl, column=7).fill = st['fill_navy_sub']
-    ws.cell(row=row_aud_tbl, column=7).alignment = st['align_center']
-    ws.cell(row=row_aud_tbl, column=7).border = st['thin_border']
-    ws.cell(row=row_aud_tbl, column=7).protection = PROT_LOCKED
+    # Col G: Score
+    cell = ws.cell(row=row_aud_tbl, column=7, value=headers_audit[3][0] if lang == 'ES' else headers_audit[3][1])
+    cell.font = st['font_header']
+    cell.fill = st['fill_navy_sub']
+    cell.alignment = st['align_center_wrap']
+    cell.border = st['thin_border']
+    cell.protection = PROT_LOCKED
 
-    ws.merge_cells("H17:K17")
-    ws.cell(row=row_aud_tbl, column=8, value=headers_audit[4][0] if lang == 'ES' else headers_audit[4][1]).font = st['font_header']
-    ws.cell(row=row_aud_tbl, column=8).fill = st['fill_navy_sub']
-    ws.cell(row=row_aud_tbl, column=8).alignment = st['align_center']
-    ws.cell(row=row_aud_tbl, column=8).border = st['thin_border']
-    ws.cell(row=row_aud_tbl, column=8).protection = PROT_LOCKED
+    # Col H:K Rationale
+    format_merged_range(ws, min_row=row_aud_tbl, min_col=8, max_row=row_aud_tbl, max_col=11,
+                        font=st['font_header'], fill=st['fill_navy_sub'], border=st['thin_border'],
+                        alignment=st['align_center_wrap'], protection=PROT_LOCKED,
+                        value=headers_audit[4][0] if lang == 'ES' else headers_audit[4][1])
 
-    ws.merge_cells("L17:M17")
-    ws.cell(row=row_aud_tbl, column=12, value=headers_audit[5][0] if lang == 'ES' else headers_audit[5][1]).font = st['font_header']
-    ws.cell(row=row_aud_tbl, column=12).fill = st['fill_navy_sub']
-    ws.cell(row=row_aud_tbl, column=12).alignment = st['align_center']
-    ws.cell(row=row_aud_tbl, column=12).border = st['thin_border']
-    ws.cell(row=row_aud_tbl, column=12).protection = PROT_LOCKED
+    # Col L:M Reference
+    format_merged_range(ws, min_row=row_aud_tbl, min_col=12, max_row=row_aud_tbl, max_col=13,
+                        font=st['font_header'], fill=st['fill_navy_sub'], border=st['thin_border'],
+                        alignment=st['align_center_wrap'], protection=PROT_LOCKED,
+                        value=headers_audit[5][0] if lang == 'ES' else headers_audit[5][1])
 
     audit_records_es = [
         ("AUD-01", "Alt B (Beta)", "Ajuste Funcional Core (C-1.1)", 9.5, "Cubre el 94% de los requerimientos core de contabilidad analítica y supply chain de forma nativa sin personalización.", "RFP Secc. 4.2 / Demo Técnica 14-Sep"),
@@ -1277,7 +1247,7 @@ def build_tab4_sensitivity(wb, ws, lang='ES'):
 
     for idx, (cod, alt, crit, score, just, ref) in enumerate(audit_records):
         curr_r = row_aud_tbl + 1 + idx # Rows 18 to 22
-        ws.row_dimensions[curr_r].height = 28
+        ws.row_dimensions[curr_r].height = 44
 
         # Code -> SIN FÓRMULA -> EDITABLE CON FONDO BLANCO
         cCod = ws.cell(row=curr_r, column=2, value=cod)
@@ -1287,23 +1257,17 @@ def build_tab4_sensitivity(wb, ws, lang='ES'):
         cCod.fill = st['fill_input']
         cCod.protection = PROT_UNLOCKED
 
-        # Alt -> SIN FÓRMULA -> EDITABLE CON FONDO BLANCO
-        ws.merge_cells(start_row=curr_r, start_column=3, end_row=curr_r, end_column=4)
-        cAlt = ws.cell(row=curr_r, column=3, value=alt)
-        cAlt.font = st['font_bold']
-        cAlt.alignment = st['align_left']
-        cAlt.border = st['thin_border']
-        cAlt.fill = st['fill_input']
-        cAlt.protection = PROT_UNLOCKED
+        # Alt -> SIN FÓRMULA -> EDITABLE CON FONDO BLANCO (CON WRAP)
+        format_merged_range(ws, min_row=curr_r, min_col=3, max_row=curr_r, max_col=4,
+                            font=st['font_bold'], fill=st['fill_input'], border=st['thin_border'],
+                            alignment=st['align_left_wrap'], protection=PROT_UNLOCKED,
+                            value=alt)
 
-        # Criterion -> SIN FÓRMULA -> EDITABLE CON FONDO BLANCO
-        ws.merge_cells(start_row=curr_r, start_column=5, end_row=curr_r, end_column=6)
-        cCrit = ws.cell(row=curr_r, column=5, value=crit)
-        cCrit.font = st['font_regular']
-        cCrit.alignment = st['align_left_wrap']
-        cCrit.border = st['thin_border']
-        cCrit.fill = st['fill_input']
-        cCrit.protection = PROT_UNLOCKED
+        # Criterion -> SIN FÓRMULA -> EDITABLE CON FONDO BLANCO (CON WRAP)
+        format_merged_range(ws, min_row=curr_r, min_col=5, max_row=curr_r, max_col=6,
+                            font=st['font_regular'], fill=st['fill_input'], border=st['thin_border'],
+                            alignment=st['align_left_wrap'], protection=PROT_UNLOCKED,
+                            value=crit)
 
         # Score -> SIN FÓRMULA -> EDITABLE CON FONDO BLANCO
         cSc = ws.cell(row=curr_r, column=7, value=score)
@@ -1314,33 +1278,30 @@ def build_tab4_sensitivity(wb, ws, lang='ES'):
         cSc.number_format = st['num_fmt_score']
         cSc.protection = PROT_UNLOCKED
 
-        # Rationale -> SIN FÓRMULA -> EDITABLE CON FONDO BLANCO
-        ws.merge_cells(start_row=curr_r, start_column=8, end_row=curr_r, end_column=11)
-        cJust = ws.cell(row=curr_r, column=8, value=just)
-        cJust.font = st['font_regular']
-        cJust.alignment = st['align_left_wrap']
-        cJust.border = st['thin_border']
-        cJust.fill = st['fill_input']
-        cJust.protection = PROT_UNLOCKED
+        # Rationale -> SIN FÓRMULA -> EDITABLE CON FONDO BLANCO (CON WRAP)
+        format_merged_range(ws, min_row=curr_r, min_col=8, max_row=curr_r, max_col=11,
+                            font=st['font_regular'], fill=st['fill_input'], border=st['thin_border'],
+                            alignment=st['align_left_wrap'], protection=PROT_UNLOCKED,
+                            value=just)
 
-        # Reference -> SIN FÓRMULA -> EDITABLE CON FONDO BLANCO
-        ws.merge_cells(start_row=curr_r, start_column=12, end_row=curr_r, end_column=13)
-        cRef = ws.cell(row=curr_r, column=12, value=ref)
-        cRef.font = st['font_meta']
-        cRef.alignment = st['align_left_wrap']
-        cRef.border = st['thin_border']
-        cRef.fill = st['fill_input']
-        cRef.protection = PROT_UNLOCKED
+        # Reference -> SIN FÓRMULA -> EDITABLE CON FONDO BLANCO (CON WRAP)
+        format_merged_range(ws, min_row=curr_r, min_col=12, max_row=curr_r, max_col=13,
+                            font=st['font_meta'], fill=st['fill_input'], border=st['thin_border'],
+                            alignment=st['align_left_wrap'], protection=PROT_UNLOCKED,
+                            value=ref)
 
     # 4. ACTA FORMAL DE CONSENSO Y BLOQUE DE FIRMAS C-LEVEL
     row_sign_hdr = 25
     ws.row_dimensions[row_sign_hdr].height = 24
-    ws.merge_cells(start_row=row_sign_hdr, start_column=2, end_row=row_sign_hdr, end_column=13)
-    ws.cell(row=row_sign_hdr, column=2,
-            value="ACTA DE CONSENSO DEL COMITÉ EVALUADOR & RESOLUCIÓN VINCULANTE C-LEVEL" if lang == 'ES' else "EVALUATION COMMITTEE CONSENSUS MINUTES & BINDING C-SUITE RESOLUTIONS").font = st['font_section']
+    format_merged_range(ws, min_row=row_sign_hdr, min_col=2, max_row=row_sign_hdr, max_col=13,
+                        font=st['font_section'], fill=None, border=None, alignment=st['align_left'],
+                        protection=PROT_LOCKED,
+                        value="ACTA DE CONSENSO DEL COMITÉ EVALUADOR & RESOLUCIÓN VINCULANTE C-LEVEL" if lang == 'ES' else "EVALUATION COMMITTEE CONSENSUS MINUTES & BINDING C-SUITE RESOLUTIONS")
 
-    # Acta text box -> SIN FÓRMULA -> EDITABLE CON FONDO BLANCO
-    ws.merge_cells("B26:M28")
+    # Acta text box -> SIN FÓRMULA -> EDITABLE CON FONDO BLANCO (CON WRAP)
+    ws.row_dimensions[26].height = 26
+    ws.row_dimensions[27].height = 26
+    ws.row_dimensions[28].height = 26
     acta_text_es = (
         "RESOLUCIÓN DEL COMITÉ DIRECTIVO: Los abajo firmantes, en su calidad de miembros del Comité de Evaluación y Sponsors Ejecutivos, "
         "certifican que la evaluación cuantitativa se ha llevado a cabo bajo el estándar CMMI DAR sin conflicto de interés, "
@@ -1355,62 +1316,53 @@ def build_tab4_sensitivity(wb, ws, lang='ES'):
         "fulfilling 100% of non-negotiable veto criteria, and delivering a 19% 3-year TCO cost advantage over the runner-up. "
         "Contract execution and initial CAPEX disbursement are formally authorized."
     )
-    cActa = ws['B26']
-    cActa.value = acta_text_es if lang == 'ES' else acta_text_en
-    cActa.font = Font(name='Segoe UI', size=9, italic=True, color=COLOR_NAVY_DARK)
-    cActa.alignment = Alignment(horizontal='left', vertical='center', wrap_text=True)
-    cActa.fill = st['fill_input'] # Blanco puro editable
-    cActa.border = st['thin_border']
-    cActa.protection = PROT_UNLOCKED
+    format_merged_range(ws, min_row=26, min_col=2, max_row=28, max_col=13,
+                        font=Font(name='Segoe UI', size=9, italic=True, color=COLOR_NAVY_DARK),
+                        fill=st['fill_input'], border=st['thin_border'],
+                        alignment=st['align_left_wrap'], protection=PROT_UNLOCKED,
+                        value=acta_text_es if lang == 'ES' else acta_text_en)
 
     # Bloque de 4 Firmas
-    row_sign = 30
+    ws.row_dimensions[30].height = 22
+    ws.row_dimensions[31].height = 22
+    ws.row_dimensions[32].height = 22
     signatories = [
-        ("Chief Executive Officer (CEO)", "Dirección General / CEO", "B30:D32"),
-        ("Chief Financial Officer (CFO)", "Dirección Financiera / CFO", "E30:G32"),
-        ("Chief Information Officer (CIO)", "Dirección de Tecnología / CIO", "H30:J32"),
-        ("Chief Procurement Officer (CPO)", "Dirección de Compras / CPO", "K30:M32"),
+        ("Chief Executive Officer (CEO)", "Dirección General / CEO", 2, 4),
+        ("Chief Financial Officer (CFO)", "Dirección Financiera / CFO", 5, 7),
+        ("Chief Information Officer (CIO)", "Dirección de Tecnología / CIO", 8, 10),
+        ("Chief Procurement Officer (CPO)", "Dirección de Compras / CPO", 11, 13),
     ]
 
-    for title_en, title_es, range_box in signatories:
-        col_start = range_box.split(":")[0][0]
-        col_end = range_box.split(":")[1][0]
-        c_s_idx = ord(col_start) - ord('A') + 1
-        c_e_idx = ord(col_end) - ord('A') + 1
-
+    for title_en, title_es, c_s_idx, c_e_idx in signatories:
         # Header box (CABECERA -> PROTEGIDA)
-        ws.merge_cells(start_row=30, start_column=c_s_idx, end_row=30, end_column=c_e_idx)
-        cH = ws.cell(row=30, column=c_s_idx, value=title_es if lang == 'ES' else title_en)
-        cH.font = Font(name='Segoe UI', size=8.5, bold=True, color=COLOR_WHITE)
-        cH.alignment = st['align_center']
-        cH.fill = st['fill_navy_sub']
-        cH.border = st['thin_border']
-        cH.protection = PROT_LOCKED
+        format_merged_range(ws, min_row=30, min_col=c_s_idx, max_row=30, max_col=c_e_idx,
+                            font=Font(name='Segoe UI', size=8.5, bold=True, color=COLOR_WHITE),
+                            fill=st['fill_navy_sub'], border=st['thin_border'],
+                            alignment=st['align_center_wrap'], protection=PROT_LOCKED,
+                            value=title_es if lang == 'ES' else title_en)
 
         # Sign field (SIN FÓRMULA -> EDITABLE CON FONDO BLANCO)
-        ws.merge_cells(start_row=31, start_column=c_s_idx, end_row=32, end_column=c_e_idx)
-        cS = ws.cell(row=31, column=c_s_idx, 
-                     value="[FIRMADO DIGITALMENTE Y APROBADO]" if lang == 'ES' else "[DIGITALLY SIGNED & APPROVED]")
-        cS.font = Font(name='Segoe UI', size=8.5, italic=True, color="64748B")
-        cS.alignment = st['align_center']
-        cS.fill = st['fill_input'] # Blanco editable
-        cS.border = st['thin_border']
-        cS.protection = PROT_UNLOCKED
+        sign_text = "[FIRMADO DIGITALMENTE Y APROBADO]" if lang == 'ES' else "[DIGITALLY SIGNED & APPROVED]"
+        format_merged_range(ws, min_row=31, min_col=c_s_idx, max_row=32, max_col=c_e_idx,
+                            font=Font(name='Segoe UI', size=8.5, italic=True, color="64748B"),
+                            fill=st['fill_input'], border=st['thin_border'],
+                            alignment=st['align_center_wrap'], protection=PROT_UNLOCKED,
+                            value=sign_text)
 
-    # Column dimensions
+    # Column dimensions (Holgadas para lectura directiva)
     ws.column_dimensions['A'].width = 3
-    ws.column_dimensions['B'].width = 10
-    ws.column_dimensions['C'].width = 12
-    ws.column_dimensions['D'].width = 12
-    ws.column_dimensions['E'].width = 12
-    ws.column_dimensions['F'].width = 12
-    ws.column_dimensions['G'].width = 15
-    ws.column_dimensions['H'].width = 15
-    ws.column_dimensions['I'].width = 15
-    ws.column_dimensions['J'].width = 15
-    ws.column_dimensions['K'].width = 15
-    ws.column_dimensions['L'].width = 24
-    ws.column_dimensions['M'].width = 24
+    ws.column_dimensions['B'].width = 42
+    ws.column_dimensions['C'].width = 13
+    ws.column_dimensions['D'].width = 13
+    ws.column_dimensions['E'].width = 13
+    ws.column_dimensions['F'].width = 14
+    ws.column_dimensions['G'].width = 16
+    ws.column_dimensions['H'].width = 16
+    ws.column_dimensions['I'].width = 16
+    ws.column_dimensions['J'].width = 16
+    ws.column_dimensions['K'].width = 16
+    ws.column_dimensions['L'].width = 22
+    ws.column_dimensions['M'].width = 18
 
     apply_sheet_protection(ws, allow_structure=True)
 
@@ -1428,34 +1380,35 @@ def generate_workbook(lang='ES', out_path=None):
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     wb = openpyxl.Workbook()
 
-    default_sheet = wb.active
+    # Sheet 1: Dashboard
+    ws_dashboard = wb.active
 
-    ws_dash = wb.create_sheet()
+    # Sheet 2: Veto Criteria
     ws_veto = wb.create_sheet()
+
+    # Sheet 3: Weighted Scoring
     ws_scoring = wb.create_sheet()
-    ws_sens = wb.create_sheet()
 
-    wb.remove(default_sheet)
+    # Sheet 4: Sensitivity & Audit Trail
+    ws_sensitivity = wb.create_sheet()
 
-    # Construir en orden de dependencias
+    # Construir pestañas en orden de cálculo
     build_tab2_veto(wb, ws_veto, lang=lang)
     build_tab3_scoring(wb, ws_scoring, lang=lang)
-    build_tab4_sensitivity(wb, ws_sens, lang=lang)
-    build_tab1_dashboard(wb, ws_dash, lang=lang)
-
-    wb.active = ws_dash
+    build_tab1_dashboard(wb, ws_dashboard, lang=lang)
+    build_tab4_sensitivity(wb, ws_sensitivity, lang=lang)
 
     wb.save(out_path)
-    print(f"[OK] Modelo Excel DAR generado ({lang}): {out_path}")
+    print(f"[OK] Generado exitosamente: {out_path}")
     return out_path
 
 
 def main():
-    print("Iniciando generación de libros Excel para Matriz DAR Cuantitativa...")
-    es_path = generate_workbook(lang='ES')
-    en_path = generate_workbook(lang='EN')
-    print("Libros Excel generados con éxito.")
+    print("Iniciando generación de libros analíticos Excel DAR...")
+    generate_workbook(lang='ES')
+    generate_workbook(lang='EN')
+    print("Generación completada exitosamente.")
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

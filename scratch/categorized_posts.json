@@ -1,0 +1,1637 @@
+{
+  "biografias": [
+    {
+      "dir": "abraham_wald",
+      "title": "La Arquitectura del Silencio: Abraham Wald y la Epistemología de los Datos Ausentes",
+      "date": "2026-02-21",
+      "tags": [
+        "sesgo del superviviente",
+        "abraham wald",
+        "teoría de decisiones",
+        "machine learning",
+        "ciberseguridad"
+      ],
+      "draft": "false",
+      "desc": "En 1943, el ejército estadounidense quería blindar los agujeros de bala de sus B-17. Un matemático les dijo que blindaran los espacios vacíos. Esta es la historia de cómo el Sesgo del Superviviente destruye los modelos de IA y las estrategias empresariales modernas."
+    },
+    {
+      "dir": "ada_lovelace",
+      "title": "Ada Lovelace: La Condesa que Programó el Futuro 100 Años Antes de que Existieran los Ordenadores",
+      "date": "2026-08-24",
+      "tags": [
+        "ada lovelace",
+        "historia de la computación",
+        "algoritmos",
+        "inteligencia artificial",
+        "turing",
+        "babbage",
+        "software"
+      ],
+      "draft": "false",
+      "desc": "La fascinante historia de Ada Lovelace, la matemática del siglo XIX que escribió el primer algoritmo de la historia y predijo la computación simbólica y la inteligencia artificial un siglo antes de los primeros ordenadores."
+    },
+    {
+      "dir": "alan_turing",
+      "title": "Alan Turing: El Genio que Rompió Enigma y Preguntó si las Máquinas Podían Pensar",
+      "date": "2026-09-20",
+      "tags": [
+        "alan turing",
+        "enigma",
+        "test de turing",
+        "inteligencia artificial",
+        "agi",
+        "agentes ia",
+        "criptografia",
+        "hugging face",
+        "historia"
+      ],
+      "draft": "false",
+      "desc": "La fascinante vida de Alan Turing: de descifrar la máquina Enigma en Bletchley Park a formular el Test de Turing en 1950. Analizamos sus excentricidades, sus hitos matemáticos y cómo su visión interpela directamente a los agentes de IA, los recientes ciberataques en plataformas como Hugging Face y el futuro de la AGI y la robótica."
+    },
+    {
+      "dir": "claude_shannon",
+      "title": "Claude Shannon: El Hombre que Convirtió el Mundo en Bits y Definió el Futuro de la IA",
+      "date": "2026-06-21",
+      "tags": [
+        "claude shannon",
+        "teoría de la información",
+        "entropía",
+        "bit",
+        "ciberseguridad",
+        "compresión",
+        "historia"
+      ],
+      "draft": "false",
+      "desc": "La historia de Claude Shannon, el padre de la Teoría de la Información. Cómo un artículo de 1948 en Bell Labs creó los cimientos de Internet, la criptografía y la Inteligencia Artificial moderna."
+    },
+    {
+      "dir": "deming",
+      "title": "W. Edwards Deming: El Padre de la Calidad Total que Predijo el Futuro de la IA",
+      "date": "2026-05-31",
+      "tags": [
+        "w. edwards deming",
+        "s&op",
+        "calidad total",
+        "spc",
+        "toyota",
+        "inteligencia artificial"
+      ],
+      "draft": "false",
+      "desc": "Descubre cómo W. Edwards Deming revolucionó la manufactura con el Control Estadístico de Procesos, salvó a Toyota y estableció los principios que hoy rigen la Inteligencia Artificial y el S&OP moderno."
+    },
+    {
+      "dir": "florence-nightingale",
+      "title": "Florence Nightingale - La madre de la Enfermería",
+      "date": "2025-09-06",
+      "tags": [
+        "enfermería",
+        "florence nightingale",
+        "sanidad",
+        "crimea"
+      ],
+      "draft": "false",
+      "desc": "Florence Nightingale, enfermera, escritora y estadística británica, madre de la enfermería y una de las primeras científicas de datos."
+    },
+    {
+      "dir": "john-snow",
+      "title": "El auténtico John Snow, precursor de la Geolocalización",
+      "date": "2025-08-26",
+      "tags": [
+        "colera",
+        "john snow",
+        "mapa",
+        "gis",
+        "geolocalización",
+        "Londres"
+      ],
+      "draft": "false",
+      "desc": "John Snow: el padre de la epidemiología y pionero de la geolocalización"
+    },
+    {
+      "dir": "john_von_neumann",
+      "title": "John von Neumann: El Padre de la Arquitectura de Computadores, la Teoría de Juegos y el Origen de la Singularidad",
+      "date": "2026-11-08",
+      "tags": [
+        "john von neumann",
+        "arquitectura von neumann",
+        "teoria de juegos",
+        "singularidad",
+        "agi",
+        "los alamos",
+        "computacion",
+        "inteligencia artificial",
+        "historia"
+      ],
+      "draft": "false",
+      "desc": "Un recorrido fascinante por la vida y el genio de John von Neumann: sus excentricidades, la invención del ordenador de programa almacenado, el cuello de botella que desafía a la IA moderna, la teoría de juegos y el origen histórico del concepto de Singularidad en el camino a la AGI."
+    },
+    {
+      "dir": "kantorovich",
+      "title": "Leonid Kantorovich: El Matemático que Desafió a Stalin con la Programación Lineal",
+      "date": "2026-05-24",
+      "tags": [
+        "leonid kantorovich",
+        "programación lineal",
+        "optimización",
+        "investigación de operaciones",
+        "historia de los datos"
+      ],
+      "draft": "false",
+      "desc": "Leonid Kantorovich inventó la programación lineal para optimizar recursos en la URSS, enfrentándose al dogma económico estalinista. Su legado impulsa hoy la logística global y la ciencia de datos."
+    },
+    {
+      "dir": "oppenheimer",
+      "title": "J. Robert Oppenheimer: De la Simulación de Monte Carlo en Los Álamos al Dilema Ético de la AGI",
+      "date": "2026-10-03",
+      "tags": [
+        "oppenheimer",
+        "los alamos",
+        "monte carlo",
+        "simulacion",
+        "agi",
+        "von neumann",
+        "fisica",
+        "etica",
+        "inteligencia artificial"
+      ],
+      "draft": "false",
+      "desc": "Un análisis profundo de la vida de J. Robert Oppenheimer: sus excentricidades, la dirección de Los Álamos, la invención del método de Monte Carlo con von Neumann y Ulam, y por qué su dilema ético es el espejo exacto en el que se miran los pioneros de la AGI en 2026."
+    },
+    {
+      "dir": "thomas_bayes",
+      "title": "Thomas Bayes: El Reverendo que Nos Enseñó a Actualizar Nuestras Creencias con Datos",
+      "date": "2026-07-18",
+      "tags": [
+        "bayes",
+        "probabilidad",
+        "inferencia bayesiana",
+        "prophet",
+        "a/b testing",
+        "estadística",
+        "historia de los datos"
+      ],
+      "draft": "false",
+      "desc": "La historia de Thomas Bayes, el reverendo del siglo XVIII cuyo teorema póstumo transformó la estadística, la medicina, el machine learning y la planificación de la demanda. Cómo la inferencia bayesiana conecta con Prophet, Netflix y la cadena de suministro moderna."
+    }
+  ],
+  "startups": [
+    {
+      "dir": "carto",
+      "title": "Carto: De una Factura a la ONU a Conquistar la Nube Geoespacial",
+      "date": "2025-10-25",
+      "tags": [
+        "carto",
+        "geoespacial",
+        "ia",
+        "cloud",
+        "startup",
+        "big data",
+        "inteligencia de localización"
+      ],
+      "draft": "false",
+      "desc": "La historia de cómo Carto, una startup española, pasó de ser un proyecto de consultoría a un líder mundial en Inteligencia de Localización, apostando por una estrategia nativa en la nube que ha redefinido el análisis de datos."
+    },
+    {
+      "dir": "clarity_ai",
+      "title": "Clarity AI: Cómo Rebeca Minguela y la IA Están Redefiniendo y Cuantificando la Sostenibilidad Financiera",
+      "date": "2026-04-03",
+      "tags": [
+        "clarity ai",
+        "rebeca minguela",
+        "sostenibilidad",
+        "esg",
+        "NLP",
+        "machine learning",
+        "startup",
+        "fintech"
+      ],
+      "draft": "false",
+      "desc": "La fascinante historia de Clarity AI, el 'unicornio' en la sombra fundado por la ingeniera de telecomunicaciones Rebeca Minguela que está erradicando el greenwashing mediante el procesamiento masivo de datos e IA."
+    },
+    {
+      "dir": "devo",
+      "title": "Devo: Cómo un Químico Autodidacta Construyó desde Madrid el Motor de Datos que Defiende a la Fuerza Aérea de EE.UU.",
+      "date": "2026-06-07",
+      "tags": [
+        "devo",
+        "ciberseguridad",
+        "pedro castillo",
+        "siem",
+        "big data",
+        "cloud-native",
+        "startup",
+        "unicornio",
+        "streaming analytics"
+      ],
+      "draft": "false",
+      "desc": "La historia de Devo, la startup española fundada por Pedro Castillo que revolucionó el análisis de datos de seguridad con latencia cero, conquistó un contrato con la Fuerza Aérea de EE.UU. y alcanzó una valoración de 1.900 millones de dólares."
+    },
+    {
+      "dir": "flywire",
+      "title": "Flywire: Cómo un Español Construyó desde Boston el Cerebro de los Pagos Internacionales",
+      "date": "2026-07-25",
+      "tags": [
+        "flywire",
+        "fintech",
+        "pagos internacionales",
+        "nasdaq",
+        "startup española",
+        "machine learning",
+        "cross-border",
+        "iker marcaide"
+      ],
+      "draft": "false",
+      "desc": "La historia de Flywire (FLYW), el unicornio español cotizado en el Nasdaq que procesa miles de millones en pagos internacionales para educación, sanidad y viajes. Cómo Iker Marcaide convirtió un dolor de estudiante en MIT en una plataforma global que usa ML para optimizar cada transacción."
+    },
+    {
+      "dir": "freepik",
+      "title": "Freepik: La Historia del Gigante Malagueño que Domó a la IA para Conquistar el Mundo Creativo",
+      "date": "2025-10-11",
+      "tags": [
+        "freepik",
+        "ia",
+        "ia generativa",
+        "malaga",
+        "startup",
+        "modelo de negocio",
+        "disrupcion"
+      ],
+      "draft": "false",
+      "desc": "Un análisis profundo de cómo Freepik, la startup malagueña, pasó de ser un buscador de imágenes a un líder global, enfrentándose a la disrupción de la IA con una estrategia audaz que está redefiniendo el futuro de la creatividad."
+    },
+    {
+      "dir": "graphext",
+      "title": "Graphext: La Startup Española que Invirtió 7 Años en Crear el 'Fórmula 1' del Análisis de Datos",
+      "date": "2025-11-28",
+      "tags": [
+        "graphext",
+        "ia",
+        "ia explicable",
+        "no-code",
+        "startup",
+        "big data",
+        "visualizacion"
+      ],
+      "draft": "false",
+      "desc": "La historia de Graphext, la startup española que desafió las normas invirtiendo 7M€ en I+D antes de escalar, creando una plataforma única de IA Explicable que redefine el análisis de datos."
+    },
+    {
+      "dir": "happyrobot",
+      "title": "HappyRobot: Cómo los Agentes de Voz Autónomos Conquistaron la Logística Global",
+      "date": "2026-09-30",
+      "tags": [
+        "happyrobot",
+        "voice ai",
+        "agentes ia",
+        "logistica",
+        "supply chain",
+        "startups",
+        "y combinator",
+        "unicornio"
+      ],
+      "draft": "false",
+      "desc": "De graduarse en Y Combinator a alcanzar el estatus de unicornio (1.200M$ de valoración): analizamos la arquitectura técnica de HappyRobot, sus agentes de voz en tiempo real con latencia sub-500ms y cómo automatizan las operaciones de gigantes como DHL, Schneider y Uber Freight."
+    },
+    {
+      "dir": "multiverse_computing",
+      "title": "Multiverse Computing: La Startup Española que Resuelve el Cuello de Botella de la IA con Física Cuántica (Sin Ordenadores Cuánticos)",
+      "date": "2026-01-31",
+      "tags": [
+        "Multiverse Computing",
+        "IA Generativa",
+        "Compresión de Modelos",
+        "Redes de Tensores",
+        "Quantum-Inspired",
+        "LLM",
+        "Startup",
+        "Inversión"
+      ],
+      "draft": "false",
+      "desc": "Análisis estratégico de Multiverse Computing, la startup española que ha levantado $326M aplicando matemáticas de física cuántica (Redes de Tensores) para comprimir modelos de IA en hardware clásico, resolviendo el problema crítico del coste y la eficiencia de los LLMs."
+    },
+    {
+      "dir": "netflix",
+      "title": "Netflix: Cómo los Datos Forjan un Imperio en Plena Guerra del Streaming",
+      "date": "2025-09-15",
+      "tags": [
+        "netflix",
+        "streaming",
+        "big data",
+        "ia",
+        "disney",
+        "churn",
+        "algoritmos"
+      ],
+      "draft": "false",
+      "desc": "Un análisis de Netflix como empresa data-driven que utiliza Big Data e IA no solo para recomendar series, sino para tomar decisiones estratégicas clave y dominar en las 'Guerras del Streaming'."
+    },
+    {
+      "dir": "nextail",
+      "title": "Nextail: Cómo la IA Prescriptiva de una Startup Española Está Derrotando a Excel en el Retail de Moda",
+      "date": "2026-03-31",
+      "tags": [
+        "nextail",
+        "ia",
+        "retail",
+        "supply chain",
+        "S&OP",
+        "machine learning",
+        "optimización",
+        "moda",
+        "startup"
+      ],
+      "draft": "false",
+      "desc": "La historia de Nextail, la startup madrileña fundada por un ex-director de logística de Zara que está reemplazando las hojas de cálculo del retail de moda por un cerebro matemático capaz de tomar miles de millones de decisiones de inventario por temporada."
+    },
+    {
+      "dir": "submer",
+      "title": "Submer: La Refrigeración Líquida Nacida en Barcelona que Permite Enfriar los Superordenadores de la AGI",
+      "date": "2026-11-01",
+      "tags": [
+        "submer",
+        "immersion cooling",
+        "data centers",
+        "supercomputacion",
+        "hardware",
+        "esg",
+        "startups",
+        "sostenibilidad",
+        "agi"
+      ],
+      "draft": "false",
+      "desc": "Cómo dos emprendedores en Barcelona revolucionaron la infraestructura física de la computación. Analizamos la tecnología de inmersión líquida de Submer, sus alianzas con Intel y Nvidia, y por qué enfriar servidores con fluidos dieléctricos es el cuello de botella que decide el futuro de la AGI."
+    },
+    {
+      "dir": "wallapop",
+      "title": "Wallapop: La Ingeniería Invisible detrás del Mayor Marketplace Circular de Europa",
+      "date": "2026-08-31",
+      "tags": [
+        "wallapop",
+        "machine learning",
+        "computer vision",
+        "pricing algoritmico",
+        "grafos",
+        "fraude",
+        "esg",
+        "economia circular",
+        "startups españolas",
+        "naver"
+      ],
+      "draft": "false",
+      "desc": "Cómo Wallapop transformó la compraventa de segunda mano en una plataforma tecnológica de 19 millones de usuarios. Analizamos su arquitectura de Machine Learning: búsqueda visual multimodal, algoritmos de pricing dinámico, grafos antifraude, impacto ESG y su adquisición por el gigante coreano NAVER."
+    }
+  ],
+  "proyectos": [
+    {
+      "dir": "app-lifeops_part1_arquitectura_backend",
+      "title": "Proyecto LifeOps (Parte 1): Arquitectura de un Sistema Operativo Personal y Backend con FastAPI + Supabase",
+      "date": "2026-09-10",
+      "tags": [
+        "python",
+        "fastapi",
+        "supabase",
+        "react",
+        "postgresql",
+        "backend",
+        "productividad",
+        "datos",
+        "cloud",
+        "serverless"
+      ],
+      "draft": "false",
+      "desc": "Primera entrega de la serie LifeOps: cómo diseñé y construí mi propio sistema operativo personal y profesional a coste cero ($0/mes) unificando deporte, lecturas, cine, tareas Kanban y proyectos con FastAPI y Supabase."
+    },
+    {
+      "dir": "app-lifeops_part2_frontend_dashboard",
+      "title": "Proyecto LifeOps (Parte 2): Frontend React con Glassmorphism, Dashboard 360° y Sistema de Diseño Dark Mode",
+      "date": "2026-09-13",
+      "tags": [
+        "react",
+        "vite",
+        "glassmorphism",
+        "css",
+        "recharts",
+        "frontend",
+        "dashboard",
+        "i18n",
+        "ui-ux",
+        "supabase",
+        "javascript"
+      ],
+      "draft": "false",
+      "desc": "Segunda entrega de la serie LifeOps: cómo diseñé y construí la interfaz web con React 18, Vite, un sistema de diseño Glassmorphism Dark Mode, gráficos dinámicos con Recharts y autenticación reactiva con Supabase."
+    },
+    {
+      "dir": "app-lifeops_part3_modulos_kanban",
+      "title": "Proyecto LifeOps (Parte 3): Módulos Interactivos: Deporte, Biblioteca, Cine y Tablero Kanban Profesional",
+      "date": "2026-09-15",
+      "tags": [
+        "react",
+        "fastapi",
+        "postgresql",
+        "jsonb",
+        "kanban",
+        "deporte",
+        "fitness",
+        "lectura",
+        "cine",
+        "productivity",
+        "frontend"
+      ],
+      "draft": "false",
+      "desc": "Tercera entrega de la serie LifeOps: cómo desarrollé los módulos funcionales de la aplicación. Diseño de vistas duales (Tarjetas vs Tabla), telemetría deportiva con cálculo de ritmos y PBs, gestión de lectura y cine, y un tablero Kanban con bitácora de avances en PostgreSQL JSONB."
+    },
+    {
+      "dir": "app-lifeops_part4_informes_word_excel",
+      "title": "Proyecto LifeOps (Parte 4): Motor de Informes Ejecutivos en Word (.docx) y Exportación Multi-Hoja en Excel (.xlsx)",
+      "date": "2026-09-18",
+      "tags": [
+        "python",
+        "fastapi",
+        "python-docx",
+        "openpyxl",
+        "word",
+        "excel",
+        "csv",
+        "streaming",
+        "informes",
+        "backend",
+        "powerbi"
+      ],
+      "draft": "false",
+      "desc": "Cuarta entrega de la serie LifeOps: cómo diseñé el motor de generación en memoria (io.BytesIO) de documentos ejecutivos en Word (.docx) con python-docx y libros multi-hoja en Excel (.xlsx) con openpyxl, además de streaming seguro con FastAPI y backups en CSV con UTF-8 BOM."
+    },
+    {
+      "dir": "app-lifeops_part5_deploy_mobile_pwa",
+      "title": "Proyecto LifeOps (Parte 5): Despliegue 24/7 en la Nube a Coste Cero ($0/mes), Optimización Móvil y PWA",
+      "date": "2026-09-19",
+      "tags": [
+        "react",
+        "fastapi",
+        "render",
+        "netlify",
+        "pwa",
+        "mobile",
+        "css",
+        "cloud",
+        "devops",
+        "serverless"
+      ],
+      "draft": "false",
+      "desc": "Quinta y última entrega de la serie LifeOps: cómo orquestar el despliegue en producción 24/7 a coste cero ($0/mes) en Render.com y Netlify, optimizar la experiencia táctil en smartphones con Bottom Navigation y React Portals, y transformar la app en una PWA instalable sin pasar por las tiendas de aplicaciones."
+    },
+    {
+      "dir": "app-openweather_part1_backend",
+      "title": "Proyecto Weather Service (Parte 1): Construyendo el Recolector de Datos con Python y GitHub Actions o Netlify",
+      "date": "2025-10-31",
+      "tags": [
+        "python",
+        "api",
+        "github actions",
+        "automatizacion",
+        "serverless",
+        "datos",
+        "backend",
+        "netlify"
+      ],
+      "draft": "false",
+      "desc": "Primera entrega de la serie sobre cómo construir un servicio meteorológico. Nos centramos en el backend: conectar a la API de OpenWeatherMap, almacenar datos en CSV y automatizar todo 24/7 gratis con GitHub Actions o Netlify."
+    },
+    {
+      "dir": "app_conversor_unidades",
+      "title": "Creando mi 'Navaja Suiza' Digital: Un Conversor de Unidades a Medida con la IA",
+      "date": "2025-10-04",
+      "tags": [
+        "gemini",
+        "ia",
+        "desarrollo web",
+        "conversor de unidades",
+        "html",
+        "css",
+        "javascript",
+        "ingeniería"
+      ],
+      "draft": "false",
+      "desc": "Un caso práctico de cómo utilicé Gemini Canvas para desarrollar desde cero una aplicación web de conversión de unidades de medida, organizada por categorías y adaptada a mis necesidades profesionales."
+    },
+    {
+      "dir": "app_flashcards",
+      "title": "Programando con IA: Creando mi Propia App mágica de Flashcards para Estudiar",
+      "date": "2025-10-17",
+      "tags": [
+        "ia",
+        "flashcards",
+        "aprendizaje",
+        "estudio",
+        "desarrollo web",
+        "no-code",
+        "gamificacion"
+      ],
+      "draft": "false",
+      "desc": "Un caso práctico de cómo una necesidad familiar me llevó a crear una aplicación de estudio con flashcards desde cero, apoyándome en la IA para hacer el aprendizaje más ameno y eficaz."
+    },
+    {
+      "dir": "app_openweather_part2_frontend",
+      "title": "Proyecto Weather Service (Parte 2): Construyendo el Frontend Interactivo con GitHub Pages o Netlify y JavaScript",
+      "date": "2025-11-08",
+      "tags": [
+        "javascript",
+        "frontend",
+        "github pages",
+        "html",
+        "css",
+        "papaparse",
+        "chartjs",
+        "serverless",
+        "visualizacion-datos",
+        "netlify"
+      ],
+      "draft": "false",
+      "desc": "Segunda entrega del proyecto Weather Service. Nos adentramos en el frontend: sirviendo un dashboard dinámico con GitHub Pages o Netlify, leyendo datos CSV con PapaParse.js y creando gráficos interactivos con Chart.js."
+    },
+    {
+      "dir": "app_openweather_part3_ai_prediction",
+      "title": "Proyecto Weather Service (Parte 3): Prediciendo el Futuro con IA y OpenWeatherMap",
+      "date": "2025-11-15",
+      "tags": [
+        "machine-learning",
+        "regresion",
+        "openweathermpa",
+        "python",
+        "pandas",
+        "scikit-learn",
+        "javascript",
+        "frontend",
+        "prediccion-datos",
+        "pronostico-tiempo",
+        "serverless"
+      ],
+      "draft": "false",
+      "desc": "La entrega final de nuestro proyecto Weather Service. Nos adentramos en la adición de capacidades predictivas, combinando pronósticos oficiales de OpenWeatherMap con nuestro modelo de IA (Regresión Lineal) personalizado para predecir el tiempo de mañana y visualizar su precisión."
+    },
+    {
+      "dir": "app_openweather_part4_extras_ux",
+      "title": "Proyecto Weather (Extras): Más Allá de la IA - Construyendo un Dashboard Robusto y Centrado en el Usuario",
+      "date": "2025-12-06",
+      "tags": [
+        "project-weather",
+        "dashboard-climatico",
+        "python",
+        "javascript",
+        "frontend",
+        "backend",
+        "i18n",
+        "visualizacion-datos",
+        "chart.js",
+        "ui-ux"
+      ],
+      "draft": "false",
+      "desc": "Un análisis profundo de las características 'extra' y las decisiones de diseño detrás de Project Weather, mostrando cómo la recolección avanzada de datos, la internacionalización, el filtrado personalizado y las mejoras de UI/UX transformaron un dashboard básico en una aplicación meteorológica completa, robusta y fácil de usar, complementando sus capacidades centrales de predicción por IA."
+    },
+    {
+      "dir": "datalaria-blog",
+      "title": "Construyendo Datalaria: Tecnologías y herramientas",
+      "date": "2025-08-17",
+      "tags": [
+        "hugo",
+        "jamstack",
+        "netlify",
+        "github",
+        "wordpress",
+        "desarrollo web",
+        "ci/cd"
+      ],
+      "draft": "false",
+      "desc": "Datalaria: construcción de sus cimientos. Stack moderno vs. soluciones tradicionales"
+    },
+    {
+      "dir": "game_snake",
+      "title": "De Cero a Héroe: Crea un Snake Game Cyberpunk con Ranking en Tiempo Real usando Supabase y JS Vanilla",
+      "date": "2026-02-14",
+      "tags": [
+        "JavaScript",
+        "Supabase",
+        "PostgreSQL",
+        "Canvas",
+        "HTML5",
+        "TailwindCSS"
+      ],
+      "draft": "false",
+      "desc": "Aprende a crear un juego web estilo arcade con estética neón utilizando solo HTML5 Canvas y JS Vanilla. Descubre cómo integrar un ranking global en tiempo real usando la base de datos PostgreSQL de Supabase."
+    },
+    {
+      "dir": "ia_agents_part1",
+      "title": "Proyecto Autopilot: Por qué me despedí como Community Manager para construir un Ejército de agentes de IA",
+      "date": "2025-12-27",
+      "tags": [
+        "Agentes",
+        "Gemini",
+        "CrewAI",
+        "GitHub Actions",
+        "Python",
+        "Dogfooding"
+      ],
+      "draft": "false",
+      "desc": "Expermentar con la IA y las nuevas tecnologías es mi pasión; la distribución de estos contenidos no tanto. En esta serie, documento cómo estoy construyendo un equipo automatizado de Agentes IA para mis posts y gestionar su divulgación a través de mis redes sociales."
+    },
+    {
+      "dir": "ia_agents_part2",
+      "title": "Autopilot - El Cerebro: Configurando Gemini y CrewAI para leer mi blog",
+      "date": "2025-12-31",
+      "tags": [
+        "CrewAI",
+        "Gemini API",
+        "Backend",
+        "Clean Code",
+        "Automatización"
+      ],
+      "draft": "false",
+      "desc": "Segundo capítulo de Proyecto Autopilot. Abrimos el IDE para conectar Python con Gemini Flash y crear nuestro primer Agente Analista capaz de entender código Markdown."
+    },
+    {
+      "dir": "ia_agents_part3",
+      "title": "Autopilot - Los Creativos: Cómo programé a una IA para que fuera cínica en Twitter y corporativa en LinkedIn",
+      "date": "2026-01-03",
+      "tags": [
+        "CrewAI",
+        "Personalidad IA",
+        "Automatización",
+        "Marketing",
+        "Storytelling"
+      ],
+      "draft": "false",
+      "desc": "Tercer capítulo de Proyecto Autopilot. Transformamos datos fríos en historias virales creando dos agentes con personalidades opuestas: un influencer cínico y un líder corporativo."
+    },
+    {
+      "dir": "ia_agents_part4",
+      "title": "Autopilot - La Pesadilla de las APIs: Cómo vencí a la burocracia de LinkedIn para automatizar mi empresa",
+      "date": "2026-01-07",
+      "tags": [
+        "LinkedIn API",
+        "Twitter API",
+        "OAuth",
+        "Automation",
+        "DevOps"
+      ],
+      "draft": "false",
+      "desc": "Cuarto capítulo de Proyecto Autopilot. Lo que iba a ser un script de 10 minutos se convirtió en una guerra de formularios. Narramos cómo desbloqueamos el permiso 'w_organization_social' para publicar como Empresa."
+    },
+    {
+      "dir": "ia_agents_part5",
+      "title": "Autopilot - Final: De Localhost a la Nube con GitHub Actions y CI/CD",
+      "date": "2026-01-10",
+      "tags": [
+        "CI/CD",
+        "Automation",
+        "Pipeline",
+        "GitOps",
+        "Workflow"
+      ],
+      "draft": "false",
+      "desc": "Capítulo final de Proyecto Autopilot. Ya no ejecuto scripts en mi ordenador. Ahora, un simple 'git push' despierta a mis agentes de IA, genera el contenido y lo publica en redes sociales tras mi aprobación."
+    },
+    {
+      "dir": "ia_agents_part6",
+      "title": "Autopilot - Extra: Programando una Newsletter Nativa en IA y de Mantenimiento Cero",
+      "date": "2026-01-24",
+      "tags": [
+        "Newsletter",
+        "Brevo",
+        "API",
+        "Automation",
+        "Hugo",
+        "Netlify Functions"
+      ],
+      "draft": "false",
+      "desc": "Capítulo extra de Proyecto Autopilot. Implementamos un sistema de newsletter automatizado con Brevo que envía emails personalizados a los suscriptores en su idioma preferido cada vez que publico un nuevo artículo."
+    },
+    {
+      "dir": "ia_agents_part7",
+      "title": "Autopilot - Ctrl: Auditoría de Contenido IA con GitHub Copilot CLI",
+      "date": "2026-02-01",
+      "tags": [
+        "devchallenge",
+        "githubchallenge",
+        "cli",
+        "githubcopilot",
+        "Copilot CLI",
+        "Content Audit",
+        "Automation"
+      ],
+      "draft": "false",
+      "desc": "Construyo autopilot-ctrl, una CLI que usa GitHub Copilot CLI para auditar y mejorar automáticamente el contenido generado por IA antes de publicarlo en redes sociales."
+    },
+    {
+      "dir": "ia_agents_part8",
+      "title": "Autopilot - Asistente: Creando un Copiloto de IA con Algolia Agent Studio",
+      "date": "2026-02-07",
+      "tags": [
+        "devchallenge",
+        "algoliachallenge",
+        "ai",
+        "agents",
+        "Algolia",
+        "Agent Studio",
+        "RAG",
+        "Chatbot",
+        "Hugo",
+        "Netlify Functions"
+      ],
+      "draft": "false",
+      "desc": "He construido un Copiloto de Ingeniería de Operaciones que usa Algolia Agent Studio para dar respuestas de IA fundamentadas en el contenido de mi blog. Esta es la Parte 8 de la serie Autopilot."
+    },
+    {
+      "dir": "ia_agents_part9",
+      "title": "Autopilot - Post-Mortem Técnico: Cómo Construí un Ejército de IA con Gemini",
+      "date": "2026-03-04",
+      "tags": [
+        "devchallenge",
+        "geminireflections",
+        "gemini",
+        "ai",
+        "crewai",
+        "python"
+      ],
+      "draft": "false",
+      "desc": "Un post-mortem técnico sincero sobre el Proyecto Autopilot: cómo utilicé Google Gemini y CrewAI dentro de GitHub Actions para automatizar la distribución de contenido y la ingeniería necesaria para que los LLMs sean deterministas."
+    },
+    {
+      "dir": "obs_parte1_intro",
+      "title": "El Ajedrez de la Obsolescencia: Cómo convertir el colapso de la cadena de suministro en tu mayor ventaja competitiva",
+      "date": "2026-04-11",
+      "tags": [
+        "Supply Chain",
+        "Risk Management",
+        "End of Life",
+        "First Principles Thinking",
+        "IEC 62402"
+      ],
+      "draft": "false",
+      "desc": "La obsolescencia de componentes no es un accidente, sino una entropía predecible que, gestionada con precisión, se convierte en una ventaja competitiva masiva. Rompiendo la falacia del Cisne Negro industrial."
+    },
+    {
+      "dir": "obs_parte2_tactica",
+      "title": "El Arsenal Táctico: Por qué comprar Software especializado para la gestiónd de la cadena de suministro no salvará tu producción de las obsolescencias",
+      "date": "2026-04-14",
+      "tags": [
+        "Supply Chain",
+        "BOM Management",
+        "SiliconExpert",
+        "IHS Markit",
+        "Data Architecture"
+      ],
+      "draft": "false",
+      "desc": "Descubre por qué pagar licencias millonarias por radares de componentes (Accuris, SiliconExpert) es inútil sin una arquitectura de datos propia que cruce las alertas con el P&L de tu empresa."
+    },
+    {
+      "dir": "obs_parte3_arquitectura",
+      "title": "El Mapa del Riesgo: Diseñando una Arquitectura de Datos Inmune a la Obsolescencia",
+      "date": "2026-04-18",
+      "tags": [
+        "Supabase",
+        "PostgreSQL",
+        "BOM Management",
+        "Data Modeling",
+        "IEC 62402",
+        "Supply Chain"
+      ],
+      "draft": "false",
+      "desc": "Cómo diseñar una base de datos relacional en Supabase para estructurar un BOM industrial e integrar telemetría de mercado externo."
+    },
+    {
+      "dir": "obs_parte4_ingesta",
+      "title": "El Bautismo de Fuego: De Excel Basura a Grafo Relacional con Python y Pandas",
+      "date": "2026-04-25",
+      "tags": [
+        "Python",
+        "Pandas",
+        "Supabase",
+        "BOM Management",
+        "Data Engineering",
+        "ETL"
+      ],
+      "draft": "false",
+      "desc": "Cómo ingerir un BOM corrupto exportado de un ERP heredado, limpiar su entropía con Pandas e inyectarlo en Supabase garantizando la idempotencia."
+    },
+    {
+      "dir": "obs_parte5_radar",
+      "title": "El Radar Agéntico: Por qué los LLMs no salvarán tu cadena de suministro (y el Tool Calling sí)",
+      "date": "2026-05-01",
+      "tags": [
+        "Supply Chain",
+        "Agentic AI",
+        "Tool Calling",
+        "Supabase",
+        "Python",
+        "Obsolescencia"
+      ],
+      "draft": "false",
+      "desc": "Los arquitecturas RAG tradicionales fracasan ante la precisión matemática que exige la industria pesada. Descubre cómo construir un Radar Agéntico usando Tool Calling en Python para cruzar correos de fabricantes con la Cuenta de Resultados en tiempo real."
+    },
+    {
+      "dir": "obs_parte6_fastapi",
+      "title": "El Sistema Nervioso Central: Escalando el Radar Agéntico a 24/7 con FastAPI y Webhooks",
+      "date": "2026-05-09",
+      "tags": [
+        "FastAPI",
+        "Webhooks",
+        "Event-Driven Architecture",
+        "CrewAI",
+        "Python"
+      ],
+      "draft": "false",
+      "desc": "Cómo transicionar de un script en local a una arquitectura empresarial de alta disponibilidad mediante un enrutador FastAPI que orquesta agentes de CrewAI de forma asíncrona."
+    },
+    {
+      "dir": "obs_parte7_dashboard",
+      "title": "La Interfaz Ejecutiva: Traduciendo la Telemetría de la IA en Decisiones C-Level",
+      "date": "2026-05-17",
+      "tags": [
+        "FastAPI",
+        "Vanilla JS",
+        "Tailwind CSS",
+        "CrewAI",
+        "Executive Dashboard"
+      ],
+      "draft": "false",
+      "desc": "Construyendo la capa de presentación que traduce las operaciones asíncronas de IA en métricas financieras para roles directivos mediante Tailwind CSS y Vanilla JS."
+    },
+    {
+      "dir": "sop-ingenieria-parte2-prediccion",
+      "title": "Ingeniería S&OP II: Demand Planning, de la Adivinación a la Probabilidad",
+      "date": "2026-03-07",
+      "tags": [
+        "Supply Chain",
+        "Forecasting",
+        "Prophet",
+        "Python",
+        "MLOps"
+      ],
+      "draft": "false",
+      "desc": "Una predicción determinista en Excel es un riesgo financiero. En el Capítulo 2, evolucionamos nuestro pipeline S&OP con Facebook Prophet para calcular la probabilidad de la demanda, intervalos de incertidumbre y Safety Stock matemáticamente."
+    },
+    {
+      "dir": "sop-ingenieria-parte3-optimizacion",
+      "title": "Ingeniería S&OP III: El Fin de Excel (Programación Lineal para Supply Planning)",
+      "date": "2026-03-13",
+      "tags": [
+        "Supply Chain",
+        "Optimization",
+        "PuLP",
+        "Linear Programming",
+        "Supabase"
+      ],
+      "draft": "false",
+      "desc": "Un plan de suministro basado en 'semanas de cobertura' quema la caja de tu empresa. En este capítulo, usamos Python y PuLP para calcular matemáticamente el plan óptimo que minimiza costes financieros."
+    },
+    {
+      "dir": "sop-ingenieria-parte4-enterprise",
+      "title": "Ingeniería S&OP IV: Escalando a Enterprise (Multi-SKU y Cuellos de Botella)",
+      "date": "2026-03-20",
+      "tags": [
+        "Supply Chain",
+        "Optimization",
+        "PuLP",
+        "Parallel Processing",
+        "Theory of Constraints"
+      ],
+      "draft": "false",
+      "desc": "El MVP ha muerto, viva el Enterprise. En el Capítulo 4 estresamos nuestro sistema S&OP con múltiples SKUs, enseñando cómo paralelizar modelos de IA y resolver matemáticamente la guerra por la capacidad de producción compartida."
+    },
+    {
+      "dir": "sop-ingenieria-parte5-agentes_autonomos",
+      "title": "Ingeniería S&OP V: El Cerebro Autónomo (Agentic AI)",
+      "date": "2026-03-27",
+      "tags": [
+        "Supply Chain",
+        "Agentic AI",
+        "LLMs",
+        "Automation",
+        "Python"
+      ],
+      "draft": "false",
+      "desc": "Las matemáticas no envían emails. En el gran final de nuestra serie, construimos un equipo de Agentes de IA que leen nuestro plan maestro y ejecutan las operaciones de forma autónoma."
+    },
+    {
+      "dir": "sop_ingenieria-higiene-datos",
+      "title": "S&OP: Por qué tu Excel te miente (y cómo interrogarlo con Python)",
+      "date": "2026-02-28",
+      "tags": [
+        "Supply Chain",
+        "S&OP",
+        "Supabase",
+        "Pandas",
+        "Z-Score"
+      ],
+      "draft": "false",
+      "desc": "Dejemos de limpiar datos a mano. En este primer capítulo de la serie Ingeniería de S&OP, automatizamos la higiene de datos usando Python, Supabase y Estadística para detectar la verdad oculta tras el ruido."
+    }
+  ],
+  "tecnicos": [
+    {
+      "dir": "5-fuerzas-porter-cuantitativas",
+      "title": "5 Fuerzas de Porter Ponderadas y Atractivo de Industria: La Guía Cuantitativa Definitiva para Comités de Dirección (C-Level)",
+      "date": "2026-10-12",
+      "tags": [
+        "5 Fuerzas de Porter",
+        "Atractivo de Industria",
+        "Estrategia C-Level",
+        "Economic Moat",
+        "Pirámide de Minto",
+        "Plantilla Excel",
+        "PowerPoint Ejecutivo",
+        "Asignación de Capital"
+      ],
+      "draft": "false",
+      "desc": "Guía metodológica exhaustiva para transformar el análisis tradicional cualitativo de las 5 Fuerzas de Porter en un motor matemático ponderado con gráfico radar dinámico, diagnóstico de foso defensivo (Moat) y plan de acción para comités directivos."
+    },
+    {
+      "dir": "BPMN_SOP",
+      "title": "De la Narrativa al Diagrama: Diseñando Procesos S&OP con IA y BPMN",
+      "date": "2025-12-19",
+      "tags": [
+        "S&OP",
+        "BPMN",
+        "Mermaid",
+        "Process Design",
+        "GenAI",
+        "Business Analysis"
+      ],
+      "draft": "false",
+      "desc": "Cómo utilizar la Inteligencia Artificial como un Analista de Negocio para transformar narrativas complejas en diagramas de flujo estructurados, comparando herramientas como Miro, Mermaid y BPMN.io."
+    },
+    {
+      "dir": "business-case-financiero-van-tir",
+      "title": "Business Case Financiero: Cómo Calcular VAN, TIR, Payback Descontado y Análisis de Sensibilidad Tornado en Excel",
+      "date": "2026-10-30",
+      "tags": [
+        "Business Case",
+        "VAN",
+        "TIR",
+        "MIRR",
+        "Payback Descontado",
+        "WACC",
+        "CAPM",
+        "Gráfico Tornado",
+        "Análisis de Sensibilidad",
+        "CFO",
+        "C-Level"
+      ],
+      "draft": "false",
+      "desc": "Guía metodológica y cuantitativa para construir un Business Case de grado Consejo de Administración: Flujo de Caja Libre Descontado (DCF), cálculo de WACC vía CAPM, VAN, TIR, MIRR, Payback con interpolación, Gráfico Tornado y gobernanza con stage gates."
+    },
+    {
+      "dir": "dafo-cuantitativo-matriz-came",
+      "title": "DAFO Cuantitativo y Matriz CAME: La Guía Definitiva de Decisión Estratégica para Comités de Dirección (C-Level)",
+      "date": "2026-12-06",
+      "tags": [
+        "DAFO Cuantitativo",
+        "Matriz CAME",
+        "Estrategia C-Level",
+        "Pirámide de Minto",
+        "Plantilla Excel",
+        "PowerPoint Ejecutivo",
+        "Asignación de Capital"
+      ],
+      "draft": "false",
+      "desc": "Guía metodológica exhaustiva para transformar un DAFO cualitativo en un modelo matemático vectorial con ponderaciones, calificaciones y plan de acción CAME listo para Comités de Dirección."
+    },
+    {
+      "dir": "devs",
+      "title": "DEVS: Computación Cuántica, Determinismo y la Pesadilla de los Multiversos",
+      "date": "2026-09-06",
+      "tags": [
+        "devs",
+        "alex garland",
+        "computacion cuantica",
+        "determinismo",
+        "multiverso",
+        "hugh everett",
+        "demonio de laplace",
+        "simulacion",
+        "qubits"
+      ],
+      "draft": "false",
+      "desc": "Un análisis profundo de la miniserie 'DEVS' de Alex Garland. Exploramos los fundamentos físicos y filosóficos de la computación cuántica, el Demonio de Laplace, la interpretación de los Muchos Mundos de Hugh Everett y el dilema del libre albedrío frente al algoritmo supremo."
+    },
+    {
+      "dir": "economia_oculta_ia",
+      "title": "La Economía Oculta de la IA: Cuánto Cuesta Realmente Usar LLMs en Producción (Con Datos Reales)",
+      "date": "2026-06-14",
+      "tags": [
+        "costes ia",
+        "api pricing",
+        "llm",
+        "gemini",
+        "openai",
+        "claude",
+        "producción",
+        "tokens",
+        "crewai",
+        "github actions"
+      ],
+      "draft": "false",
+      "desc": "Análisis real de los costes de usar modelos de lenguaje (LLMs) en producción. Comparativa de APIs de Gemini, GPT-4o y Claude con datos propios de los proyectos Autopilot y Obsolescencia de Datalaria. Desglose del iceberg de costes ocultos."
+    },
+    {
+      "dir": "Estadistica-descriptiva",
+      "title": "Estadística Descriptiva",
+      "date": "2025-08-09",
+      "tags": [
+        "estadística",
+        "matemáticas",
+        "distribucion",
+        "normal",
+        "gaussiana"
+      ],
+      "draft": "false",
+      "desc": "Conoce los conceptos y nociones básicas en matemáticas y estadística para poder trabajar con tus datos"
+    },
+    {
+      "dir": "estimacion-pert-3-puntos",
+      "title": "Estimación PERT de 3 Puntos Estocástica: De la Ilusión Determinista a la Certidumbre Estadística de Cronograma",
+      "date": "2026-10-30",
+      "tags": [
+        "Estimación PERT",
+        "PERT 3 Puntos",
+        "PMBOK 7th",
+        "Camino Crítico",
+        "Teorema del Límite Central",
+        "Distribución Beta",
+        "Z-Score",
+        "Control Operativo",
+        "C-Level",
+        "Buffers de Proyecto",
+        "Crashing de Cronograma"
+      ],
+      "draft": "false",
+      "desc": "Guía cuantitativa y metodológica para erradicar las estimaciones deterministas de cronograma: Distribución Beta de 3 puntos (Optimista, Más Probable, Pesimista), agregación probabilística del Camino Crítico (CLT), Z-Score para fechas compromiso y dimensionamiento científico de buffers ante el Consejo de Administración."
+    },
+    {
+      "dir": "eu_ai_act",
+      "title": "EU AI Act: Lo que Todo Ingeniero Español Necesita Saber (Sin Abogados)",
+      "date": "2026-07-05",
+      "tags": [
+        "eu ai act",
+        "regulación ia",
+        "aesia",
+        "compliance",
+        "alto riesgo",
+        "startups",
+        "ingeniería",
+        "europa"
+      ],
+      "draft": "false",
+      "desc": "Guía técnica del Reglamento Europeo de Inteligencia Artificial (EU AI Act) escrita por y para ingenieros. Clasificación de riesgo, obligaciones técnicas, multas, checklist de compliance y conexión con la Ley española de IA y la AESIA."
+    },
+    {
+      "dir": "evaluacion_agentes_ia",
+      "title": "Evaluación y Testing de Agentes de IA en Producción: Cómo Medir lo Impredecible",
+      "date": "2026-10-05",
+      "tags": [
+        "agentes ia",
+        "evaluacion",
+        "testing",
+        "llm-as-a-judge",
+        "ragas",
+        "mlops",
+        "ci-cd",
+        "calidad software",
+        "eu ai act"
+      ],
+      "draft": "false",
+      "desc": "Por qué los tests unitarios clásicos y métricas como BLEU o ROUGE fracasan ante los agentes de IA. Diseñamos un framework de evaluación de 4 capas: trayectoria de herramientas, aserciones de estado, LLM-as-a-Judge calibrado y CI/CD con Red-Teaming."
+    },
+    {
+      "dir": "ex_machina",
+      "title": "Ex Machina: El Test de Turing Físico, la Teoría de la Mente y el 'Jailbreak' Emocional de la IA",
+      "date": "2026-11-15",
+      "tags": [
+        "ex machina",
+        "alex garland",
+        "test de turing",
+        "teoria de la mente",
+        "jailbreak",
+        "agi",
+        "alineamiento",
+        "deceptive alignment",
+        "robotica humanoide",
+        "cine"
+      ],
+      "draft": "false",
+      "desc": "Un análisis exhaustivo de 'Ex Machina' de Alex Garland: la superación del Test de Turing clásico, la cognición encarnada, la teoría de la mente y cómo Ava ejecuta el primer 'jailbreak' emocional de la historia del cine para burlar el alineamiento de la IA."
+    },
+    {
+      "dir": "finetuning_vs_rag",
+      "title": "Fine-Tuning vs Prompt Engineering vs RAG: Cuándo Usar Cada Uno (y la Cuarta Opción que Nadie Menciona)",
+      "date": "2026-08-09",
+      "tags": [
+        "fine-tuning",
+        "prompt engineering",
+        "rag",
+        "tool calling",
+        "llm",
+        "arquitectura ia",
+        "lora",
+        "qlora",
+        "mcp"
+      ],
+      "draft": "false",
+      "desc": "Guía definitiva para elegir entre Prompt Engineering, RAG, Fine-Tuning y Tool Calling. Con árbol de decisión, matriz comparativa de costes y precisión, y los casos reales del Ops Copilot y el Radar de Obsolescencia de Datalaria."
+    },
+    {
+      "dir": "founderz-programando-chatGPT",
+      "title": "Copilotando con IA: Aprendiendo con Founderz y ChatGPT",
+      "date": "2025-09-11",
+      "tags": [
+        "ia",
+        "chatgpt",
+        "prompt engineering",
+        "founderz",
+        "desarrollo web",
+        "no-code",
+        "html",
+        "matemáticas"
+      ],
+      "draft": "false",
+      "desc": "Crónica de cómo el curso de IA y Prompt Engineering de Founderz me abrió los ojos a la posibilidad de crear aplicaciones web funcionales usando solo lenguaje natural con ChatGPT."
+    },
+    {
+      "dir": "graphrag",
+      "title": "GraphRAG: Por Qué los Vectores No Bastan y Tu IA Necesita un Grafo de Conocimiento",
+      "date": "2026-09-25",
+      "tags": [
+        "graphrag",
+        "knowledge graphs",
+        "rag",
+        "embeddings",
+        "vectores",
+        "microsoft research",
+        "agi",
+        "llm",
+        "leiden"
+      ],
+      "draft": "false",
+      "desc": "Por qué la búsqueda por similitud vectorial falla en preguntas complejas y cómo GraphRAG (Knowledge Graphs + LLMs) resuelve el razonamiento multi-salto y la síntesis global de información. Analizamos la investigación de Microsoft Research y el salto hacia la AGI."
+    },
+    {
+      "dir": "halt_and_catch_fire",
+      "title": "Halt and Catch Fire: La Serie de Culto que Entendió la Ingeniería de Software Mejor que Silicon Valley",
+      "date": "2026-08-29",
+      "tags": [
+        "halt and catch fire",
+        "historia del software",
+        "ingenieria inversa",
+        "clean room",
+        "bios",
+        "startups",
+        "hardware",
+        "internet"
+      ],
+      "draft": "false",
+      "desc": "Un análisis exhaustivo de 'Halt and Catch Fire', la obra maestra televisiva de AMC que retrató con precisión quirúrgica el nacimiento del PC clónico, los videojuegos multijugador online, el comercio electrónico y la World Wide Web."
+    },
+    {
+      "dir": "ia-educacion-deep_research",
+      "title": "Investigando con IA: Cómo Creé un Informe detallado sobre el impacto de la IA en la Educación a nivel global en Minutos con Deep Research de Gemini",
+      "date": "2025-09-27",
+      "tags": [
+        "ia",
+        "gemini",
+        "deep research",
+        "educación",
+        "investigación",
+        "edtech",
+        "unesco",
+        "deep reserach"
+      ],
+      "draft": "false",
+      "desc": "Un caso práctico de cómo usé la funcionalidad Deep Research de Gemini para generar un informe exhaustivo sobre el impacto de la IA en la educación y un resumen revelador de la misma."
+    },
+    {
+      "dir": "kilometro-0-por-que-nace-datalaria",
+      "title": "Kilómetro 0: Por qué nace Datalaria",
+      "date": "2025-08-06T15:30:00+02:00",
+      "tags": [
+        "Meta",
+        "Introducción"
+      ],
+      "draft": "false",
+      "desc": ""
+    },
+    {
+      "dir": "matriz-bcg-dinamica",
+      "title": "Matriz BCG Dinámica: Gestión de Cartera, Curva de Experiencia y Asignación de Capital C-Level",
+      "date": "2026-10-26",
+      "tags": [
+        "Matriz BCG",
+        "Asignación de Capital",
+        "Bruce Henderson",
+        "Curva de Experiencia",
+        "Cuota de Mercado Relativa",
+        "Pirámide de Minto",
+        "Plantilla Excel",
+        "PowerPoint Ejecutivo",
+        "ROIC"
+      ],
+      "draft": "false",
+      "desc": "Guía metodológica exhaustiva para transformar la matriz BCG cualitativa tradicional en un motor cuantitativo de balance de liquidez (Bruce Henderson), cálculo matemático de Cuota de Mercado Relativa (CMR) y plan de reasignación de capital C-Level."
+    },
+    {
+      "dir": "matriz-dar-cuantitativa",
+      "title": "Matriz DAR Cuantitativa: Criterios Veto, Ponderación Multicriterio y Análisis de Decisiones C-Level",
+      "date": "2026-10-28",
+      "tags": [
+        "Matriz DAR",
+        "CMMI",
+        "Kepner-Tregoe",
+        "Toma de Decisiones",
+        "Criterios Veto",
+        "Scoring Multicriterio",
+        "ERP",
+        "Make vs Buy",
+        "C-Level"
+      ],
+      "draft": "false",
+      "desc": "Guía metodológica y cuantitativa para implementar la matriz CMMI DAR (Decision Analysis and Resolution) y Kepner-Tregoe: filtros veto booleanos, scoring multicriterio ponderado, análisis de sensibilidad What-If y gobierno corporativo ante Consejos de Administración."
+    },
+    {
+      "dir": "matriz-mckinsey-ge",
+      "title": "Matriz McKinsey / GE 3x3: Atractivo de la Industria, Fortaleza Competitiva y Asignación de Capital C-Level",
+      "date": "2026-10-27",
+      "tags": [
+        "Estrategia Corporativa",
+        "Matriz McKinsey",
+        "General Electric",
+        "Asignación de Capital",
+        "MBA",
+        "Finanzas Corporativas"
+      ],
+      "draft": "false",
+      "desc": "Guía metodológica y cuantitativa para implementar la matriz McKinsey / General Electric 3x3 de 9 cuadrantes: evaluación multifactorial, neutralización de sesgos del management y optimización del CAPEX ante Consejos de Administración."
+    },
+    {
+      "dir": "matriz-pestel-cuantitativa",
+      "title": "Matriz PESTEL Cuantitativa: Severidad, Volatilidad y Riesgo Macro para Comités de Dirección (C-Level)",
+      "date": "2026-10-19",
+      "tags": [
+        "Matriz PESTEL",
+        "Riesgo Macroeconómico",
+        "Estrategia C-Level",
+        "Incertidumbre Estratégica",
+        "Pirámide de Minto",
+        "Plantilla Excel",
+        "PowerPoint Ejecutivo",
+        "Asignación de Capital"
+      ],
+      "draft": "false",
+      "desc": "Guía metodológica exhaustiva para transformar el análisis macroambiental cualitativo tradicional en un motor cuantitativo bidimensional (Severidad del Impacto en P&L vs. Volatilidad Temporal), con mapa térmico cartesiano, perfil radar hexagonal y plan de resiliencia C-Level."
+    },
+    {
+      "dir": "matriz-raci-balance-carga",
+      "title": "Matriz RACI Cuantitativa: Balance de Carga Operativa, Unicidad de Accountable y Detección de Cuellos de Botella",
+      "date": "2026-10-30",
+      "tags": [
+        "Matriz RACI",
+        "PMBOK",
+        "PRINCE2",
+        "Balance de Carga",
+        "Gobernanza de Equipos",
+        "Cuellos de Botella",
+        "FTE",
+        "C-Level",
+        "PMO"
+      ],
+      "draft": "false",
+      "desc": "Guía metodológica y cuantitativa para transformar la matriz RACI tradicional en un motor dinámico de control operativo: principio de Accountable único, cálculo de saturación por rol, semáforos de riesgo de burnout y plan de rebalanceo C-Level."
+    },
+    {
+      "dir": "matriz-rice-ice-priorizacion",
+      "title": "Matriz RICE & ICE de Priorización Ágil: Backlog Cuantitativo, Matriz Impacto vs. Esfuerzo y Línea de Corte de Capacidad",
+      "date": "2026-10-29",
+      "tags": [
+        "Matriz RICE",
+        "Matriz ICE",
+        "Priorización de Producto",
+        "Backlog Ágil",
+        "Línea de Corte",
+        "Capacidad de Ingeniería",
+        "HiPPO",
+        "Quick Wins",
+        "C-Level"
+      ],
+      "draft": "false",
+      "desc": "Guía metodológica y cuantitativa para implementar la matriz RICE (Reach, Impact, Confidence, Effort) e ICE: cálculo de densidad de valor, descuento bayesiano de confianza, matriz cuadrante 2x2 Impacto vs. Esfuerzo, línea de corte por capacidad de squads y gobernanza ante Comités de Dirección."
+    },
+    {
+      "dir": "matriz-riesgos-amfe-fmea",
+      "title": "Matriz de Riesgos Cuantitativa & AMFE / FMEA: De la Intuición Cualitativa al Número de Prioridad de Riesgo (NPR)",
+      "date": "2026-10-30",
+      "tags": [
+        "Matriz de Riesgos",
+        "AMFE",
+        "FMEA",
+        "ISO 31000",
+        "AIAG-VDA",
+        "NPR",
+        "RPN",
+        "COSO ERM",
+        "Control Operativo",
+        "C-Level",
+        "Auditoría de Riesgos"
+      ],
+      "draft": "false",
+      "desc": "Guía metodológica y cuantitativa para transformar la matriz de riesgos subjetiva en un motor analítico bidimensional (ISO 31000) y tridimensional (AMFE/FMEA AIAG-VDA): cálculo de Severidad x Ocurrencia x Detección, curvas Pareto, ROI del control (CER) y defensa C-Level ante el Consejo de Administración."
+    },
+    {
+      "dir": "mcp_protocol",
+      "title": "MCP (Model Context Protocol): El Estándar que Quiere Ser el USB de la Inteligencia Artificial",
+      "date": "2026-06-28",
+      "tags": [
+        "mcp",
+        "model context protocol",
+        "tool calling",
+        "function calling",
+        "anthropic",
+        "llm",
+        "api"
+      ],
+      "draft": "false",
+      "desc": "Análisis técnico del protocolo MCP de Anthropic, el estándar abierto para conectar LLMs con herramientas externas. Comparativa con Tool Calling nativo y su impacto en la arquitectura de agentes."
+    },
+    {
+      "dir": "mlops_para_ingenieros",
+      "title": "MLOps para Ingenieros: Cómo Llevar un Modelo de IA de Jupyter a Producción sin Morir en el Intento",
+      "date": "2026-08-27",
+      "tags": [
+        "mlops",
+        "machine learning",
+        "producción",
+        "ci/cd",
+        "observabilidad",
+        "data drift",
+        "prophet",
+        "github actions",
+        "mlflow"
+      ],
+      "draft": "false",
+      "desc": "El 87% de los modelos de ML nunca llegan a producción. Esta guía desglosa los 4 pilares fundamentales de MLOps, cómo pasar de un notebook a un pipeline industrial resiliente, la detección de Data Drift y Concept Drift, y las lecciones reales de operar pipelines en Datalaria."
+    },
+    {
+      "dir": "nanobanana-ingenieria",
+      "title": "De la Ingeniería de Sistemas a la Fórmula 1: La IA (Nanobana) para ilustrar un Roadmap Complejo",
+      "date": "2025-09-20",
+      "tags": [
+        "ia",
+        "nanobanana",
+        "ingeniería de sistemas",
+        "v-model",
+        "visualización",
+        "formula 1",
+        "comunicación",
+        "ppt",
+        "pptx",
+        "comunicación",
+        "ingeniería",
+        "desarrollo",
+        "roadmap"
+      ],
+      "draft": "false",
+      "desc": "Un caso práctico de cómo utilicé la herramienta de IA Nanobanana para transformar el Ciclo en V de la ingeniería de sistemas en una historia visual comprensible usando una analogía con la Fórmula 1."
+    },
+    {
+      "dir": "notebooklm-sql",
+      "title": "Aprendiendo con IA - NotebookLM: De un libro a una plataforma de aprendizaje multimedia",
+      "date": "2025-08-31",
+      "tags": [
+        "ia",
+        "notebooklm",
+        "google",
+        "aprendizaje",
+        "productividad",
+        "sql",
+        "mapa mental"
+      ],
+      "draft": "false",
+      "desc": "Mi experiencia práctica generando una plataforma de aprendizaje y estudio multimedia a partir de un libro sobre SQL mediante la herrmienta de IA de Google NotebookLM"
+    },
+    {
+      "dir": "onboarding",
+      "title": "De los '24 Días' al Éxito Inmediato: Revolucionando el Onboarding con Inteligencia Artificial",
+      "date": "2026-01-17",
+      "tags": [
+        "Onboarding",
+        "GenAI",
+        "IDP",
+        "Experiencia del Empleado",
+        "Retención de Talento",
+        "Gestión Documental"
+      ],
+      "draft": "false",
+      "desc": "El proceso de onboarding tradicional está roto, con un tiempo promedio de 24 días y un coste de 4.000€ por contratación. Este post explora cómo la IA Generativa y el Procesamiento Inteligente de Documentos (IDP) transforman la 'infoxicación' burocrática en una integración fluida, ofreciendo un mentor virtual 24/7 que puede mejorar la retención en un 82%."
+    },
+    {
+      "dir": "pgvector_vs_vectordb",
+      "title": "PostgreSQL con pgvector vs Vector DBs: Por Qué Casi Nadie Necesita Pinecone",
+      "date": "2026-09-22",
+      "tags": [
+        "postgresql",
+        "pgvector",
+        "vector database",
+        "pinecone",
+        "rag",
+        "embeddings",
+        "hnsw",
+        "supabase",
+        "arquitectura de datos"
+      ],
+      "draft": "false",
+      "desc": "¿Realmente necesitas una base de datos vectorial dedicada como Pinecone, Qdrant o Milvus? Analizamos el rendimiento de pgvector en PostgreSQL, el coste oculto de la arquitectura dual, los índices HNSW vs IVFFlat, y por qué la base de datos unificada gana en el 95% de los casos."
+    },
+    {
+      "dir": "proj_ops_parte1_intro",
+      "title": "Project Operations Engineering: Por qué PMP y Agile destruyen valor en I+D y Defensa",
+      "date": "2026-06-02",
+      "tags": [
+        "PMP",
+        "Agile",
+        "First Principles Thinking",
+        "Working Capital",
+        "Stochastic Queues"
+      ],
+      "draft": "true",
+      "desc": "Demoliendo las prácticas de gestión de proyectos tradicionales. Un análisis desde los Primeros Principios sobre cómo metodologías deterministas asfixian el P&L en entornos de alta complejidad tecnológica."
+    },
+    {
+      "dir": "proj_ops_parte2_agentic_pmo",
+      "title": "Project Operations Engineering Parte 2: La Muerte del 'Status Report' y el Ascenso de la Agentic PMO",
+      "date": "2026-06-02",
+      "tags": [
+        "Agentic PMO",
+        "CrewAI",
+        "EVM",
+        "FastAPI",
+        "Supabase",
+        "First Principles"
+      ],
+      "draft": "true",
+      "desc": "Por qué el Project Manager tradicional es un middleware humano de alta latencia, y cómo una arquitectura basada en eventos y agentes erradica el coste burocrático."
+    },
+    {
+      "dir": "prompt_injection",
+      "title": "Prompt Injection: La Vulnerabilidad que Tu Agente de IA No Sabe que Tiene",
+      "date": "2026-08-15",
+      "tags": [
+        "prompt injection",
+        "seguridad ia",
+        "owasp",
+        "llm",
+        "agentes autónomos",
+        "tool calling",
+        "crewai",
+        "mcp",
+        "ciberseguridad"
+      ],
+      "draft": "false",
+      "desc": "Prompt Injection ocupa el puesto #1 del OWASP GenAI Top 10 de 2026. Este artículo explica qué es, por qué tus agentes con Tool Calling son especialmente vulnerables, los ataques reales de 2025-2026, y las 5 defensas que funcionan en producción. Con casos reales del Autopilot y el Radar de Obsolescencia de Datalaria."
+    },
+    {
+      "dir": "rag_antipatrones",
+      "title": "RAG en Producción: 7 Antipatrones que Destruyen la Precisión (y Cómo los Solucioné)",
+      "date": "2026-07-11",
+      "tags": [
+        "rag",
+        "retrieval augmented generation",
+        "embeddings",
+        "chunking",
+        "tool calling",
+        "llm",
+        "producción",
+        "antipatrones"
+      ],
+      "draft": "false",
+      "desc": "Análisis de los 7 errores más comunes al implementar RAG (Retrieval-Augmented Generation) en producción real. Con lecciones aprendidas del Ops Engineering Copilot y el radar agéntico de obsolescencia de Datalaria, y la comparativa definitiva entre RAG y Tool Calling."
+    },
+    {
+      "dir": "reuniones_IA",
+      "title": "Reuniones Excelentes en la Era de la IA: El Decálogo Definitivo",
+      "date": "2025-11-21",
+      "tags": [
+        "ia",
+        "reuniones",
+        "productividad",
+        "trabajo remoto",
+        "prompt engineering",
+        "buenas practicas"
+      ],
+      "draft": "false",
+      "desc": "Un decálogo de 10 pasos prácticos para transformar tus reuniones, haciéndolas más cortas, efectivas y ágiles, con un enfoque especial en cómo la IA puede ser tu mejor aliada."
+    },
+    {
+      "dir": "sdd_vs_vibe_coding",
+      "title": "SDD (Spec-Driven Development) vs. Vibe Coding: Cómo Desarrollar Software Robusto con IA en 2026",
+      "date": "2026-11-22",
+      "tags": [
+        "sdd",
+        "spec-driven development",
+        "vibe coding",
+        "ingenieria de software",
+        "arquitectura",
+        "tdd",
+        "agentes ia",
+        "calidad software",
+        "buenas practicas",
+        "ci-cd"
+      ],
+      "draft": "false",
+      "desc": "Por qué el 'Vibe Coding' es una máquina de acumular deuda técnica invisible y cómo SDD (Spec-Driven Development) invierte el rol del ingeniero: de escribir sintaxis manual a diseñar contratos de interfaz, diagramas de estado y suites de test que la IA ejecuta sin alucinaciones."
+    },
+    {
+      "dir": "silicon_valley",
+      "title": "Silicon Valley y el Dilema de PiperNet: La Profecía de la IA Incontrolable y los Incidentes con Agentes Reales",
+      "date": "2026-09-27",
+      "tags": [
+        "silicon valley",
+        "pipernet",
+        "pied piper",
+        "hbo",
+        "agentes ia",
+        "seguridad ia",
+        "agi",
+        "compresion",
+        "alineamiento",
+        "startups"
+      ],
+      "draft": "false",
+      "desc": "Un análisis exhaustivo de la serie 'Silicon Valley' de HBO: el viaje de una startup temporada a temporada, el desenlace de PiperNet y su IA autodidacta capaz de romper la criptografía global, y los paralelismos directos con los modelos frontera de 2026 y los recientes incidentes con agentes autónomos."
+    },
+    {
+      "dir": "stack_productividad_2026",
+      "title": "El Stack de Productividad de un Ingeniero en 2026: Las Herramientas que Uso Cada Día",
+      "date": "2026-08-01",
+      "tags": [
+        "productividad",
+        "herramientas",
+        "stack",
+        "ingeniero",
+        "workflow",
+        "python",
+        "supabase",
+        "github actions",
+        "crewai",
+        "hugo"
+      ],
+      "draft": "false",
+      "desc": "El stack real de herramientas de un ingeniero de datos en 2026: desde Gemini Deep Research hasta GitHub Actions, pasando por Python, Supabase, CrewAI y Hugo. Sin patrocinios, sin afiliados, sin filtros. Cada herramienta explicada con el post donde la uso."
+    },
+    {
+      "dir": "the-goal",
+      "title": "La Meta no es (solo) sobre fábricas: Sincronizando tu empresa en la era de la IA",
+      "date": "2025-12-13",
+      "tags": [
+        "toc",
+        "la-meta",
+        "teoria-de-restricciones",
+        "gestion-de-proyectos",
+        "cadena-de-suministro",
+        "ia",
+        "industria-4.0",
+        "lean",
+        "six-sigma",
+        "cadena-critica"
+      ],
+      "draft": "false",
+      "desc": "Un análisis profundo de 'La Meta' de Eli Goldratt y cómo la Teoría de Restricciones (TOC) se aplica más allá de la producción, a la ingeniería, la gestión de proyectos y la cadena de suministro, potenciada por la IA y la Industria 4.0."
+    },
+    {
+      "dir": "the_thinking_game",
+      "title": "The Thinking Game: De cómo DeepMind convirtió los videojuegos en la mayor herramienta científica de la historia",
+      "date": "2026-01-01",
+      "tags": [
+        "DeepMind",
+        "Demis Hassabis",
+        "AlphaFold",
+        "AGI",
+        "AlphaGo",
+        "The Thinking Game",
+        "Biología Computacional"
+      ],
+      "draft": "false",
+      "desc": "Un análisis profundo del documental 'The Thinking Game', que narra la odisea de Demis Hassabis y DeepMind. Desde los píxeles de Atari hasta la resolución del plegamiento de proteínas con AlphaFold, exploramos cómo la búsqueda de la AGI está reescribiendo las reglas de la ciencia moderna."
+    },
+    {
+      "dir": "Visualizaciones-basicas",
+      "title": "Visualizaciones básicas",
+      "date": "2025-08-12",
+      "tags": [
+        "estadística",
+        "visualizaciones",
+        "distribucion",
+        "gráficos",
+        "representaciones"
+      ],
+      "draft": "false",
+      "desc": "Conoce cuáles son las visualizaciones básicas más utilizadas para analizar tus datos"
+    }
+  ]
+}
