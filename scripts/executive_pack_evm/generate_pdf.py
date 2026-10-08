@@ -320,9 +320,9 @@ def build_guide_pdf(lang='ES', out_path=None):
     story.append(Paragraph(sec2_title, styles['SecHeading']))
 
     p2_intro = (
-        "El estándar **ANSI/EIA-748-D** y la guía **PMBOK** formalizan el modelo Earned Value Management a través de tres variables canónicas fundamentales y un sistema de ecuaciones algebraicas auditables:"
+        "El estándar <b>ANSI/EIA-748-D</b> y la guía <b>PMBOK</b> formalizan el modelo Earned Value Management a través de tres variables canónicas fundamentales y un sistema de ecuaciones algebraicas auditables:"
         if lang == 'ES' else
-        "The **ANSI/EIA-748-D** standard and the **PMBOK** guide formalize Earned Value Management through three canonical baseline variables and an auditable algebraic equation system:"
+        "The <b>ANSI/EIA-748-D</b> standard and the <b>PMBOK</b> guide formalize Earned Value Management through three canonical baseline variables and an auditable algebraic equation system:"
     )
     story.append(Paragraph(p2_intro, styles['Body']))
 
@@ -330,22 +330,22 @@ def build_guide_pdf(lang='ES', out_path=None):
     t3_head = ["VARIABLE CANÓNICA" if lang == 'ES' else "CANONICAL VARIABLE", "SÍMBOLO" if lang == 'ES' else "SYMBOL", "DEFINICIÓN OPERACIONAL RIGUROSA" if lang == 'ES' else "OPERATIONAL DEFINITION"]
     t3_rows = [
         [
-            Paragraph("<b>Valor Planificado</b><br/>(Planned Value)", styles['TableCell']),
+            Paragraph("<b>Valor Planificado</b><br/>(Planned Value)" if lang == 'ES' else "<b>Planned Value</b><br/>(PV)", styles['TableCell']),
             Paragraph("<b>PV</b>", styles['TableCellBold']),
-            Paragraph("Presupuesto autorizado asignado al trabajo programado para ejecutarse hasta la fecha de corte ($PV = BAC \\times \\% \\text{Plan}$).", styles['TableCell']) if lang == 'ES' else
-            Paragraph("Authorized baseline budget assigned to scheduled work up to the cutoff date ($PV = BAC \\times \\% \\text{Plan}$).", styles['TableCell'])
+            Paragraph("Presupuesto autorizado asignado al trabajo programado para ejecutarse hasta la fecha de corte (<b>PV = BAC × % Planificado</b>).", styles['TableCell']) if lang == 'ES' else
+            Paragraph("Authorized baseline budget assigned to scheduled work up to the cutoff date (<b>PV = BAC × % Planned</b>).", styles['TableCell'])
         ],
         [
-            Paragraph("<b>Valor Ganado</b><br/>(Earned Value)", styles['TableCell']),
+            Paragraph("<b>Valor Ganado</b><br/>(Earned Value)" if lang == 'ES' else "<b>Earned Value</b><br/>(EV)", styles['TableCell']),
             Paragraph("<b>EV</b>", styles['TableCellBold']),
-            Paragraph("Presupuesto autorizado del trabajo físico efectivamente completado ($EV = BAC \\times \\% \\text{Avance Real Físico}$).", styles['TableCell']) if lang == 'ES' else
-            Paragraph("Authorized budget for work physically completed at cutoff ($EV = BAC \\times \\% \\text{Actual Physical Progress}$).", styles['TableCell'])
+            Paragraph("Presupuesto autorizado del trabajo físico efectivamente completado (<b>EV = BAC × % Avance Real Físico</b>).", styles['TableCell']) if lang == 'ES' else
+            Paragraph("Authorized budget for work physically completed at cutoff (<b>EV = BAC × % Actual Physical Progress</b>).", styles['TableCell'])
         ],
         [
-            Paragraph("<b>Coste Real Incurrido</b><br/>(Actual Cost)", styles['TableCell']),
+            Paragraph("<b>Coste Real Incurrido</b><br/>(Actual Cost)" if lang == 'ES' else "<b>Actual Cost</b><br/>(AC)", styles['TableCell']),
             Paragraph("<b>AC</b>", styles['TableCellBold']),
-            Paragraph("Coste total real registrado por contabilidad en la realización del trabajo ($AC = \\text{Facturas} + \\text{Nóminas} + \\text{CAPEX}$).", styles['TableCell']) if lang == 'ES' else
-            Paragraph("Total direct and indirect expenditures incurred in executing work ($AC = \\text{Invoices} + \\text{Labor} + \\text{CAPEX}$).", styles['TableCell'])
+            Paragraph("Coste total real registrado por contabilidad en la realización del trabajo (<b>AC = Facturas + Nóminas + CAPEX</b>).", styles['TableCell']) if lang == 'ES' else
+            Paragraph("Total direct and indirect expenditures incurred in executing work (<b>AC = Invoices + Payroll + CAPEX</b>).", styles['TableCell'])
         ],
     ]
     t3_tab = Table([[Paragraph(h, styles['TableHeader']) for h in t3_head]] + t3_rows, colWidths=[120, 55, 336])
@@ -366,28 +366,28 @@ def build_guide_pdf(lang='ES', out_path=None):
     eq_head = ["MÉTRICA DIRECTIVA" if lang == 'ES' else "EXECUTIVE METRIC", "ECUACIÓN" if lang == 'ES' else "EQUATION", "INTERPRETACIÓN & UMBRALES DE GOBERNANZA" if lang == 'ES' else "GOVERNANCE INTERPRETATION & CUTOFFS"]
     eq_rows = [
         [
-            Paragraph("<b>Varianza de Coste (CV)</b>", styles['TableCell']),
+            Paragraph("<b>Varianza de Coste (CV)</b>" if lang == 'ES' else "<b>Cost Variance (CV)</b>", styles['TableCell']),
             Paragraph("<b>CV = EV - AC</b>", styles['TableCellBold']),
             Paragraph("Positivo = Superávit financiero; Negativo = Sobrecoste respecto al avance real logrado.", styles['TableCell']) if lang == 'ES' else
             Paragraph("Positive = Budget surplus; Negative = Financial overrun relative to earned work.", styles['TableCell'])
         ],
         [
-            Paragraph("<b>Varianza de Cronograma (SV)</b>", styles['TableCell']),
+            Paragraph("<b>Varianza de Cronograma (SV)</b>" if lang == 'ES' else "<b>Schedule Variance (SV)</b>", styles['TableCell']),
             Paragraph("<b>SV = EV - PV</b>", styles['TableCellBold']),
             Paragraph("Positivo = Adelantado; Negativo = Retraso temporal expresado en valor monetario de entregables.", styles['TableCell']) if lang == 'ES' else
             Paragraph("Positive = Ahead of schedule; Negative = Project delay expressed in delivered currency.", styles['TableCell'])
         ],
         [
-            Paragraph("<b>Índice Rendimiento Coste (CPI)</b>", styles['TableCell']),
+            Paragraph("<b>Índice Rendimiento Coste (CPI)</b>" if lang == 'ES' else "<b>Cost Performance Index (CPI)</b>", styles['TableCell']),
             Paragraph("<b>CPI = EV / AC</b>", styles['TableCellBold']),
-            Paragraph("<b>CPI ≥ 1.0:</b> Eficiente (genera valor superior al gasto). <b>CPI < 1.0:</b> Pérdida de capital (0.86 = 0.86€ ganados por cada 1€ gastado).", styles['TableCell']) if lang == 'ES' else
-            Paragraph("<b>CPI ≥ 1.0:</b> Efficient. <b>CPI < 1.0:</b> Capital destruction ($0.86 means $0.86 earned per $1.00 spent).", styles['TableCell'])
+            Paragraph("<b>CPI ≥ 1.0:</b> Eficiente (genera valor superior al gasto). <b>CPI &lt; 1.0:</b> Pérdida de capital (0.86 = 0,86 € ganados por cada 1 € gastado).", styles['TableCell']) if lang == 'ES' else
+            Paragraph("<b>CPI ≥ 1.0:</b> Efficient. <b>CPI &lt; 1.0:</b> Capital destruction ($0.86 earned per $1.00 spent).", styles['TableCell'])
         ],
         [
-            Paragraph("<b>Índice Rendimiento Plazo (SPI)</b>", styles['TableCell']),
+            Paragraph("<b>Índice Rendimiento Plazo (SPI)</b>" if lang == 'ES' else "<b>Schedule Performance Index (SPI)</b>", styles['TableCell']),
             Paragraph("<b>SPI = EV / PV</b>", styles['TableCellBold']),
-            Paragraph("<b>SPI ≥ 1.0:</b> Velocidad igual o superior al plan. <b>SPI < 1.0:</b> Retraso funcional acumulado.", styles['TableCell']) if lang == 'ES' else
-            Paragraph("<b>SPI ≥ 1.0:</b> Progress matching or exceeding plan. <b>SPI < 1.0:</b> Schedule deficit.", styles['TableCell'])
+            Paragraph("<b>SPI ≥ 1.0:</b> Velocidad igual o superior al plan. <b>SPI &lt; 1.0:</b> Retraso funcional acumulado.", styles['TableCell']) if lang == 'ES' else
+            Paragraph("<b>SPI ≥ 1.0:</b> Progress matching or exceeding plan. <b>SPI &lt; 1.0:</b> Schedule deficit.", styles['TableCell'])
         ],
     ]
     eq_tab = Table([[Paragraph(h, styles['TableHeader']) for h in eq_head]] + eq_rows, colWidths=[130, 95, 286])
@@ -408,34 +408,34 @@ def build_guide_pdf(lang='ES', out_path=None):
     eac_head = ["MODELO PREDICTIVO" if lang == 'ES' else "FORECASTING MODEL", "FÓRMULA CANÓNICA" if lang == 'ES' else "CANONICAL FORMULA", "HIPÓTESIS DE NEGOCIO SUBYACENTE" if lang == 'ES' else "UNDERLYING BUSINESS ASSUMPTION"]
     eac_rows = [
         [
-            Paragraph("<b>EAC 1: Escenario Típico</b>", styles['TableCell']),
-            Paragraph("<b>EAC₁ = BAC / CPI</b>", styles['TableCellBold']),
+            Paragraph("<b>EAC 1: Escenario Típico</b>" if lang == 'ES' else "<b>EAC 1: Typical Scenario</b>", styles['TableCell']),
+            Paragraph("<b>EAC<sub>1</sub> = BAC / CPI</b>", styles['TableCellBold']),
             Paragraph("Asume que la eficiencia de coste actual se mantendrá hasta el cierre del proyecto (modelo estándar PMBOK).", styles['TableCell']) if lang == 'ES' else
             Paragraph("Assumes current cost efficiency rate will persist across remaining deliverables (PMBOK default).", styles['TableCell'])
         ],
         [
-            Paragraph("<b>EAC 2: Escenario Atípico</b>", styles['TableCell']),
-            Paragraph("<b>EAC₂ = AC + (BAC - EV)</b>", styles['TableCellBold']),
+            Paragraph("<b>EAC 2: Escenario Atípico</b>" if lang == 'ES' else "<b>EAC 2: Atypical Scenario</b>", styles['TableCell']),
+            Paragraph("<b>EAC<sub>2</sub> = AC + (BAC - EV)</b>", styles['TableCellBold']),
             Paragraph("Asume que las desviaciones pasadas fueron anomalías aisladas y que el trabajo remanente se ejecutará a presupuesto.", styles['TableCell']) if lang == 'ES' else
             Paragraph("Assumes past variances were one-off shocks and remaining work executes strictly at budget rate.", styles['TableCell'])
         ],
         [
-            Paragraph("<b>EAC 3: Compuesto (Coste+Plazo)</b>", styles['TableCell']),
-            Paragraph("<b>EAC₃ = AC + (BAC-EV)/(CPI·SPI)</b>", styles['TableCellBold']),
+            Paragraph("<b>EAC 3: Compuesto (Coste+Plazo)</b>" if lang == 'ES' else "<b>EAC 3: Composite (Cost+Schedule)</b>", styles['TableCell']),
+            Paragraph("<b>EAC<sub>3</sub> = AC + (BAC - EV) / (CPI × SPI)</b>", styles['TableCellBold']),
             Paragraph("Escenario de estrés: el retraso cronológico penaliza gravemente los costes futuros (penalizaciones, fijos).", styles['TableCell']) if lang == 'ES' else
             Paragraph("Stress test: schedule delays heavily inflate remaining delivery costs (carrying overhead, penalties).", styles['TableCell'])
         ],
         [
-            Paragraph("<b>Varianza al Cierre (VAC)</b>", styles['TableCell']),
+            Paragraph("<b>Varianza al Cierre (VAC)</b>" if lang == 'ES' else "<b>Variance at Completion (VAC)</b>", styles['TableCell']),
             Paragraph("<b>VAC = BAC - EAC</b>", styles['TableCellBold']),
             Paragraph("Déficit presupuestario final proyectado. Si es negativo, indica la inyección de reservas requerida.", styles['TableCell']) if lang == 'ES' else
             Paragraph("Projected bottom-line variance. Negative values indicate additional funding required from reserves.", styles['TableCell'])
         ],
         [
-            Paragraph("<b>Índice para Completar (TCPI)</b>", styles['TableCell']),
+            Paragraph("<b>Índice para Completar (TCPI)</b>" if lang == 'ES' else "<b>To-Complete Performance Index (TCPI)</b>", styles['TableCell']),
             Paragraph("<b>TCPI = (BAC-EV) / (BAC-AC)</b>", styles['TableCellBold']),
-            Paragraph("Eficiencia exigida para terminar en presupuesto. <b>Si TCPI > 1.10x</b>, el PMBOK lo califica de inalcanzable sin inyectar capital.", styles['TableCell']) if lang == 'ES' else
-            Paragraph("Required efficiency on remaining scope to meet budget. <b>If TCPI > 1.10x</b>, PMBOK marks it statistically unachievable.", styles['TableCell'])
+            Paragraph("Eficiencia exigida para terminar en presupuesto. <b>Si TCPI &gt; 1.10x</b>, el PMBOK lo califica de inalcanzable sin inyectar capital.", styles['TableCell']) if lang == 'ES' else
+            Paragraph("Required efficiency on remaining scope to meet budget. <b>If TCPI &gt; 1.10x</b>, PMBOK marks it statistically unachievable.", styles['TableCell'])
         ],
     ]
     eac_tab = Table([[Paragraph(h, styles['TableHeader']) for h in eac_head]] + eac_rows, colWidths=[120, 125, 266])
@@ -457,45 +457,45 @@ def build_guide_pdf(lang='ES', out_path=None):
     story.append(Paragraph(sec3_title, styles['SecHeading']))
 
     p3_1 = (
-        "El talón de Aquiles de cualquier sistema EVM radica en la **subjetividad del porcentaje de avance declarado**. "
-        "En proyectos de desarrollo tecnológico y consultoría, los líderes de equipo suelen incurrir en la patología psicológica conocida como **el síndrome del 90% completado infinito**: "
+        "El talón de Aquiles de cualquier sistema EVM radica en la <b>subjetividad del porcentaje de avance declarado</b>. "
+        "En proyectos de desarrollo tecnológico y consultoría, los líderes de equipo suelen incurrir en la patología psicológica conocida como <b>el síndrome del 90% completado infinito</b>: "
         "una tarea avanza rápidamente del 0% al 90% en pocas semanas, pero permanece atrapada en ese 90% durante meses debido a defectos descubiertos, pruebas inconclusas o falta de definición en los criterios de aceptación."
         if lang == 'ES' else
-        "The Achilles' heel of any EVM framework is the **subjectivity of reported percent complete**. "
-        "In software engineering and complex integration, team leaders routinely succumb to the behavioral pathology known as the **infinite 90% completion syndrome**: "
+        "The Achilles' heel of any EVM framework is the <b>subjectivity of reported percent complete</b>. "
+        "In software engineering and complex integration, team leaders routinely succumb to the behavioral pathology known as the <b>infinite 90% completion syndrome</b>: "
         "a work package rapidly progresses from 0% to 90% within weeks, only to remain stalled at 90% for months due to unexpected defect resolution, regression failures, or vague acceptance criteria."
     )
     story.append(Paragraph(p3_1, styles['Body']))
 
     p3_2 = (
-        "Para blindar la integridad del modelo ante auditorías de comité, el estándar **ANSI/EIA-748** establece cuatro reglas estrictas y objetivas para imputar el Valor Ganado ($EV$):"
+        "Para blindar la integridad del modelo ante auditorías de comité, el estándar <b>ANSI/EIA-748</b> establece cuatro reglas estrictas y objetivas para imputar el Valor Ganado (EV):"
         if lang == 'ES' else
-        "To safeguard mathematical integrity against board audits, the **ANSI/EIA-748** standard specifies four rigorous, objective crediting techniques:"
+        "To safeguard mathematical integrity against board audits, the <b>ANSI/EIA-748</b> standard specifies four rigorous, objective crediting techniques:"
     )
     story.append(Paragraph(p3_2, styles['Body']))
 
     rules_head = ["MÉTODO DE IMPUTACIÓN" if lang == 'ES' else "CREDITING METHOD", "REGLA DE CÁLCULO" if lang == 'ES' else "CREDITING LOGIC", "CASO DE APLICACIÓN RECOMENDADO" if lang == 'ES' else "APPLICABILITY & GOVERNANCE USE CASE"]
     rules_rows = [
         [
-            Paragraph("<b>Regla 0 / 100</b><br/>(Cero o Cien)", styles['TableCell']),
+            Paragraph("<b>Regla 0 / 100</b><br/>(Cero o Cien)" if lang == 'ES' else "<b>0 / 100 Rule</b><br/>(Zero / Hundred)", styles['TableCell']),
             Paragraph("0% mientras esté abierta.<br/>100% únicamente al cerrar y validar.", styles['TableCellBold']) if lang == 'ES' else Paragraph("0% while in progress.<br/>100% upon verified completion.", styles['TableCellBold']),
-            Paragraph("Obligatorio para tareas de corta duración (< 2 semanas o 1 sprint). Elimina radicalmente el optimismo subjetivo.", styles['TableCell']) if lang == 'ES' else
-            Paragraph("Mandatory for short-cycle work packages (< 2 weeks or 1 sprint). Completely eradicates subjective optimism.", styles['TableCell'])
+            Paragraph("Obligatorio para tareas de corta duración (&lt; 2 semanas o 1 sprint). Elimina radicalmente el optimismo subjetivo.", styles['TableCell']) if lang == 'ES' else
+            Paragraph("Mandatory for short-cycle work packages (&lt; 2 weeks or 1 sprint). Completely eradicates subjective optimism.", styles['TableCell'])
         ],
         [
-            Paragraph("<b>Regla 50 / 50</b><br/>(Cincuenta / Cincuenta)", styles['TableCell']),
+            Paragraph("<b>Regla 50 / 50</b><br/>(Cincuenta / Cincuenta)" if lang == 'ES' else "<b>50 / 50 Rule</b><br/>(Fifty / Fifty)", styles['TableCell']),
             Paragraph("50% al iniciar formalmente.<br/>50% remanente al certificar la entrega.", styles['TableCellBold']) if lang == 'ES' else Paragraph("50% credited upon formal start.<br/>Remaining 50% upon sign-off.", styles['TableCellBold']),
             Paragraph("Paquetes de trabajo de ciclo medio (2 a 4 semanas). Otorga crédito por el inicio pero retiene el 50% hasta la entrega.", styles['TableCell']) if lang == 'ES' else
             Paragraph("Medium-cycle work packages (2 to 4 weeks). Credits work initiation while retaining 50% hostage until sign-off.", styles['TableCell'])
         ],
         [
-            Paragraph("<b>Hitos Ponderados</b><br/>(Weighted Milestones)", styles['TableCell']),
+            Paragraph("<b>Hitos Ponderados</b><br/>(Weighted Milestones)" if lang == 'ES' else "<b>Weighted Milestones</b><br/>(Earned Gates)", styles['TableCell']),
             Paragraph("Porcentajes fijos pre-acordados ligados a entregables intermedios verificables.", styles['TableCellBold']) if lang == 'ES' else Paragraph("Pre-agreed percentage weights tied to auditable interim gates.", styles['TableCellBold']),
-            Paragraph("Entregables extensos (> 1 mes). Ejemplo: 20% Arquitectura aprobada, 30% Código integrado, 30% UAT superado, 20% Pase a Prod.", styles['TableCell']) if lang == 'ES' else
-            Paragraph("Long-duration work packages (> 1 month). E.g.: 20% Architecture gate, 30% Core dev, 30% UAT sign-off, 20% Deployment.", styles['TableCell'])
+            Paragraph("Entregables extensos (&gt; 1 mes). Ejemplo: 20% Arquitectura aprobada, 30% Código integrado, 30% UAT superado, 20% Pase a Prod.", styles['TableCell']) if lang == 'ES' else
+            Paragraph("Long-duration work packages (&gt; 1 month). E.g.: 20% Architecture gate, 30% Core dev, 30% UAT sign-off, 20% Deployment.", styles['TableCell'])
         ],
         [
-            Paragraph("<b>Unidades Cuantificadas</b><br/>(Earned Standards)", styles['TableCell']),
+            Paragraph("<b>Unidades Cuantificadas</b><br/>(Earned Standards)" if lang == 'ES' else "<b>Apportioned Units</b><br/>(Earned Standards)", styles['TableCell']),
             Paragraph("<b>% Real = Unidades Validadas / Total Planificado</b>", styles['TableCellBold']) if lang == 'ES' else Paragraph("<b>% Real = Verified Units / Total Scope</b>", styles['TableCellBold']),
             Paragraph("Migración masiva de datos (ej. millones de registros migrados), despliegue de sucursales o story points certificados.", styles['TableCell']) if lang == 'ES' else
             Paragraph("Repetitive high-volume scope: data migration pipelines, store rollouts, or completed story points certified by QA.", styles['TableCell'])
@@ -516,15 +516,15 @@ def build_guide_pdf(lang='ES', out_path=None):
     story.append(Paragraph(sub3_2, styles['SubHeading']))
 
     p3_wbs = (
-        "El éxito de un modelo EVM descansa sobre la consistencia de su WBS (*Work Breakdown Structure*). Cada paquete de trabajo debe satisfacer tres requisitos no negociables:\n"
-        "1. **Unicidad de Presupuesto ($BAC_i$):** La suma de los presupuestos de los entregables debe coincidir exactamente con la línea base contractual aprobada (100%).\n"
-        "2. **Asignación de Entradas Independientes:** El Avance Físico Real (%) no debe calcularse a partir del dinero gastado ni de las horas consumidas. Se determina exclusivamente por entregables tangibles completados.\n"
-        "3. **Trazabilidad de Control Accounts (CA):** Los paquetes de trabajo deben agruparse bajo cuentas de control con un único responsable ejecutivo (Accountable) conforme al estándar RACI."
+        "El éxito de un modelo EVM descansa sobre la consistencia de su WBS (<i>Work Breakdown Structure</i>). Cada paquete de trabajo debe satisfacer tres requisitos no negociables:<br/>"
+        "• <b>1. Unicidad de Presupuesto (BAC<sub>i</sub>):</b> La suma de los presupuestos de los entregables debe coincidir exactamente con la línea base contractual aprobada (100%).<br/>"
+        "• <b>2. Asignación de Entradas Independientes:</b> El Avance Físico Real (%) no debe calcularse a partir del dinero gastado ni de las horas consumidas. Se determina exclusivamente por entregables tangibles completados.<br/>"
+        "• <b>3. Trazabilidad de Control Accounts (CA):</b> Los paquetes de trabajo deben agruparse bajo cuentas de control con un único responsable ejecutivo (<i>Accountable</i>) conforme al estándar RACI."
         if lang == 'ES' else
-        "The operational viability of EVM depends on strict WBS architectural discipline. Every work package must comply with three mandatory governance principles:\n"
-        "1. **Budget Completeness ($BAC_i$):** The sum of all deliverable budgets must equal 100% of the approved performance measurement baseline.\n"
-        "2. **Independent Progress Sourcing:** Physical Percent Complete must NEVER be inferred from money spent or labor hours logged. It is strictly earned through verified deliverable acceptance.\n"
-        "3. **Control Account (CA) Traceability:** Work packages must aggregate into designated Control Accounts assigned to a single accountable C-Level lead per RACI standards."
+        "The operational viability of EVM depends on strict WBS architectural discipline. Every work package must comply with three mandatory governance principles:<br/>"
+        "• <b>1. Budget Completeness (BAC<sub>i</sub>):</b> The sum of all deliverable budgets must equal 100% of the approved performance measurement baseline.<br/>"
+        "• <b>2. Independent Progress Sourcing:</b> Physical Percent Complete must NEVER be inferred from money spent or labor hours logged. It is strictly earned through verified deliverable acceptance.<br/>"
+        "• <b>3. Control Account (CA) Traceability:</b> Work packages must aggregate into designated Control Accounts assigned to a single accountable C-Level lead per RACI standards."
     )
     story.append(Paragraph(p3_wbs, styles['Body']))
 
@@ -537,11 +537,11 @@ def build_guide_pdf(lang='ES', out_path=None):
     story.append(Paragraph(sec4_title, styles['SecHeading']))
 
     p4_1 = (
-        "**Contexto Corporativo:** Una entidad financiera multinacional inicia un proyecto estratégico de transformación del motor transaccional de pagos y conciliación. "
-        "El proyecto cuenta con un presupuesto aprobado ($BAC$) de **1.200.000 €**, un cronograma de 12 meses estructurado en 25 entregables WBS, y un corte de control formal fijado en el **Mes 6** (50% de plazo transcurrido)."
+        "<b>Contexto Corporativo:</b> Una entidad financiera multinacional inicia un proyecto estratégico de transformación del motor transaccional de pagos y conciliación. "
+        "El proyecto cuenta con un presupuesto aprobado (<b>BAC</b>) de <b>1.200.000 €</b>, un cronograma de 12 meses estructurado en 25 entregables WBS, y un corte de control formal fijado en el <b>Mes 6</b> (50% de plazo transcurrido)."
         if lang == 'ES' else
-        "**Corporate Context:** A tier-1 financial services institution launches an enterprise overhaul of its core transaction routing and reconciliation platform. "
-        "The initiative holds an approved budget ($BAC$) of **$1,200,000**, a 12-month timeline across 25 WBS deliverables, and a formal mid-point audit gate at **Month 6** (50% elapsed schedule)."
+        "<b>Corporate Context:</b> A tier-1 financial services institution launches an enterprise overhaul of its core transaction routing and reconciliation platform. "
+        "The initiative holds an approved budget (<b>BAC</b>) of <b>$1,200,000</b>, a 12-month timeline across 25 WBS deliverables, and a formal mid-point audit gate at <b>Month 6</b> (50% elapsed schedule)."
     )
     story.append(Paragraph(p4_1, styles['Body']))
 
@@ -551,13 +551,13 @@ def build_guide_pdf(lang='ES', out_path=None):
 
     c_head = ["MÉTRICA ANALÍTICA" if lang == 'ES' else "ANALYTICAL METRIC", "VALOR A CORTE (MES 6)" if lang == 'ES' else "CUTOFF VALUE (M06)", "DIAGNÓSTICO DIRECTIVO EVM" if lang == 'ES' else "EXECUTIVE EVM INTERPRETATION"]
     c_rows = [
-        [Paragraph("Presupuesto Planificado (PV)", styles['TableCellBold']), Paragraph("600.000 €" if lang == 'ES' else "$600,000", styles['TableCell']), Paragraph("El plan preveía haber completado la mitad del alcance contractual.", styles['TableCell']) if lang == 'ES' else Paragraph("Baseline schedule dictated 50% physical completion.", styles['TableCell'])],
-        [Paragraph("Coste Real Incurrido (AC)", styles['TableCellBold']), Paragraph("600.000 €" if lang == 'ES' else "$600,000", styles['TableCell']), Paragraph("El gasto contable coincide al 100% con el presupuesto (falsa sensación de control).", styles['TableCell']) if lang == 'ES' else Paragraph("Actual cash burn matches budget exactly (false illusion of stability).", styles['TableCell'])],
-        [Paragraph("Valor Ganado Físico (EV)", styles['TableCellBold']), Paragraph("516.000 €" if lang == 'ES' else "$516,000", styles['TableCell']), Paragraph("<b>Déficit real:</b> Solo se ha producido el 43% de entregables físicos válidos.", styles['TableCell']) if lang == 'ES' else Paragraph("<b>Real deficit:</b> Only 43% of physical deliverables actually delivered.", styles['TableCell'])],
-        [Paragraph("Índice de Coste (CPI)", styles['TableCellBold']), Paragraph("<b>0.86x</b>", styles['TableCellBold']), Paragraph("<b>Sobrecoste del 16,3%:</b> Se destruyen 0,14 € por cada euro invertido.", styles['TableCell']) if lang == 'ES' else Paragraph("<b>16.3% Overrun:</b> $0.14 of capital is lost per dollar spent.", styles['TableCell'])],
-        [Paragraph("Índice de Plazo (SPI)", styles['TableCellBold']), Paragraph("<b>0.86x</b>", styles['TableCellBold']), Paragraph("<b>Retraso crítico:</b> Déficit cronológico equivalente a casi 1 mes de trabajo.", styles['TableCell']) if lang == 'ES' else Paragraph("<b>Critical delay:</b> Schedule deficit equivalent to nearly 1 full month.", styles['TableCell'])],
-        [Paragraph("Proyección EAC 1 Típica", styles['TableCellBold']), Paragraph("<b>1.395.349 €</b>" if lang == 'ES' else "<b>$1,395,349</b>", styles['TableCellBold']), Paragraph("Si no se interviene, el proyecto cerrará con un <b>déficit (VAC) de -195.349 €</b>.", styles['TableCell']) if lang == 'ES' else Paragraph("Without intervention, project closes with a <b>-$195,349 deficit (VAC)</b>.", styles['TableCell'])],
-        [Paragraph("Esfuerzo TCPI (BAC)", styles['TableCellBold']), Paragraph("<b>1.14x</b>", styles['TableCellBold']), Paragraph("<b>Inviable:</b> El equipo requeriría acelerar su rendimiento un 32% (inviable según PMBOK).", styles['TableCell']) if lang == 'ES' else Paragraph("<b>Unviable:</b> Requires a 32% productivity leap on remaining scope.", styles['TableCell'])],
+        [Paragraph("Presupuesto Planificado (PV)" if lang == 'ES' else "Planned Value (PV)", styles['TableCellBold']), Paragraph("600.000 €" if lang == 'ES' else "$600,000", styles['TableCell']), Paragraph("El plan preveía haber completado la mitad del alcance contractual.", styles['TableCell']) if lang == 'ES' else Paragraph("Baseline schedule dictated 50% physical completion.", styles['TableCell'])],
+        [Paragraph("Coste Real Incurrido (AC)" if lang == 'ES' else "Actual Cost (AC)", styles['TableCellBold']), Paragraph("600.000 €" if lang == 'ES' else "$600,000", styles['TableCell']), Paragraph("El gasto contable coincide al 100% con el presupuesto (falsa sensación de control).", styles['TableCell']) if lang == 'ES' else Paragraph("Actual cash burn matches budget exactly (false illusion of stability).", styles['TableCell'])],
+        [Paragraph("Valor Ganado Físico (EV)" if lang == 'ES' else "Earned Value (EV)", styles['TableCellBold']), Paragraph("516.000 €" if lang == 'ES' else "$516,000", styles['TableCell']), Paragraph("<b>Déficit real:</b> Solo se ha producido el 43% de entregables físicos válidos.", styles['TableCell']) if lang == 'ES' else Paragraph("<b>Real deficit:</b> Only 43% of physical deliverables actually delivered.", styles['TableCell'])],
+        [Paragraph("Índice de Coste (CPI)" if lang == 'ES' else "Cost Performance Index (CPI)", styles['TableCellBold']), Paragraph("<b>0.86x</b>", styles['TableCellBold']), Paragraph("<b>Sobrecoste del 16,3%:</b> Se destruyen 0,14 € por cada euro invertido.", styles['TableCell']) if lang == 'ES' else Paragraph("<b>16.3% Overrun:</b> $0.14 of capital is lost per dollar spent.", styles['TableCell'])],
+        [Paragraph("Índice de Plazo (SPI)" if lang == 'ES' else "Schedule Performance Index (SPI)", styles['TableCellBold']), Paragraph("<b>0.86x</b>", styles['TableCellBold']), Paragraph("<b>Retraso crítico:</b> Déficit cronológico equivalente a casi 1 mes de trabajo.", styles['TableCell']) if lang == 'ES' else Paragraph("<b>Critical delay:</b> Schedule deficit equivalent to nearly 1 full month.", styles['TableCell'])],
+        [Paragraph("Proyección EAC<sub>1</sub> Típica" if lang == 'ES' else "Typical EAC<sub>1</sub> Forecast", styles['TableCellBold']), Paragraph("<b>1.395.349 €</b>" if lang == 'ES' else "<b>$1,395,349</b>", styles['TableCellBold']), Paragraph("Si no se interviene, el proyecto cerrará con un <b>déficit (VAC) de -195.349 €</b>.", styles['TableCell']) if lang == 'ES' else Paragraph("Without intervention, project closes with a <b>-$195,349 deficit (VAC)</b>.", styles['TableCell'])],
+        [Paragraph("Esfuerzo TCPI (BAC)" if lang == 'ES' else "To-Complete Index TCPI (BAC)", styles['TableCellBold']), Paragraph("<b>1.14x</b>", styles['TableCellBold']), Paragraph("<b>Inviable:</b> El equipo requeriría acelerar su rendimiento un 32% (inviable según PMBOK).", styles['TableCell']) if lang == 'ES' else Paragraph("<b>Unviable:</b> Requires a 32% productivity leap on remaining scope.", styles['TableCell'])],
     ]
     c_tab = Table([[Paragraph(h, styles['TableHeader']) for h in c_head]] + c_rows, colWidths=[140, 100, 271])
     c_tab.setStyle(TableStyle([
@@ -574,17 +574,17 @@ def build_guide_pdf(lang='ES', out_path=None):
     story.append(Paragraph(p4_rescue, styles['SubHeading']))
 
     p4_actions = (
-        "Ante la evidencia matemática presentada por el Director de PMO en el *Executive Committee*, el Consejo de Administración activó tres palancas inmediatas:\n"
-        "1. **Crashing Técnico Focalizado (WBS 2.1):** Incorporación de 2 arquitectos senior en consistencia distribuida (+24k€ inversión, recuperó +0.05 SPI y +0.04 CPI).\n"
-        "2. **Fast-Tracking en Homologación Bancaria (WBS 2.3):** Paralelización de sandboxes con auditorías de ciberseguridad (recuperó 2,5 semanas de camino crítico, +0.06 SPI).\n"
-        "3. **Descope Negociado & Precio Cerrado (WBS 3.1 & 3.3):** Aplazamiento de sincronización secundaria de CRM a Q1 post-Go-Live y transición de consultoría SAP a precio cerrado (ahorro directo de 35k€, +0.08 CPI).\n"
-        "**Resultado Final al Cierre (Mes 12):** El proyecto completó el 100% de los entregables estratégicos con un coste real final de **1.248.000 €** (absorbiendo apenas un 4% de contingencia en lugar de los 195k€ proyectados) y con un desfase de solo 1 semana respecto a la fecha objetivo."
+        "Ante la evidencia matemática presentada por el Director de PMO en el <i>Executive Committee</i>, el Consejo de Administración activó tres palancas inmediatas:<br/>"
+        "• <b>1. Crashing Técnico Focalizado (WBS 2.1):</b> Incorporación de 2 arquitectos senior en consistencia distribuida (+24k€ inversión, recuperó +0.05 SPI y +0.04 CPI).<br/>"
+        "• <b>2. Fast-Tracking en Homologación Bancaria (WBS 2.3):</b> Paralelización de sandboxes con auditorías de ciberseguridad (recuperó 2,5 semanas de camino crítico, +0.06 SPI).<br/>"
+        "• <b>3. Descope Negociado &amp; Precio Cerrado (WBS 3.1 &amp; 3.3):</b> Aplazamiento de sincronización secundaria de CRM a Q1 post-Go-Live y transición de consultoría SAP a precio cerrado (ahorro directo de 35k€, +0.08 CPI).<br/>"
+        "<b>Resultado Final al Cierre (Mes 12):</b> El proyecto completó el 100% de los entregables estratégicos con un coste real final de <b>1.248.000 €</b> (absorbiendo apenas un 4% de contingencia en lugar de los 195k€ proyectados) y con un desfase de solo 1 semana respecto a la fecha objetivo."
         if lang == 'ES' else
-        "Confronted with the quantitative EVM briefing, the Executive Board immediately ratified three targeted turnaround levers:\n"
-        "1. **Focused Technical Crashing (WBS 2.1):** Onboarded 2 senior distributed systems architects ($24k investment, regained +0.05 SPI and +0.04 CPI).\n"
-        "2. **Fast-Tracking on Bank Integration (WBS 2.3):** Overlapped partner bank sandbox testing with cybersecurity audits (recovered 2.5 weeks, +0.06 SPI).\n"
-        "3. **Negotiated Descope & Fixed Fees (WBS 3.1 & 3.3):** Deferred secondary CRM contact sync to Q1 post-launch and shifted SAP vendor billing to fixed-price milestones ($35k direct savings, +0.08 CPI).\n"
-        "**Final Outcome at Closure (Month 12):** The project delivered 100% of core operational scope at a final actual cost of **$1,248,000** (absorbing merely 4% contingency instead of the projected $195k overrun) with only a 1-week final delivery delta."
+        "Confronted with the quantitative EVM briefing, the Executive Board immediately ratified three targeted turnaround levers:<br/>"
+        "• <b>1. Focused Technical Crashing (WBS 2.1):</b> Onboarded 2 senior distributed systems architects ($24k investment, regained +0.05 SPI and +0.04 CPI).<br/>"
+        "• <b>2. Fast-Tracking on Bank Integration (WBS 2.3):</b> Overlapped partner bank sandbox testing with cybersecurity audits (recovered 2.5 weeks, +0.06 SPI).<br/>"
+        "• <b>3. Negotiated Descope &amp; Fixed Fees (WBS 3.1 &amp; 3.3):</b> Deferred secondary CRM contact sync to Q1 post-launch and shifted SAP vendor billing to fixed-price milestones ($35k direct savings, +0.08 CPI).<br/>"
+        "<b>Final Outcome at Closure (Month 12):</b> The project delivered 100% of core operational scope at a final actual cost of <b>$1,248,000</b> (absorbing merely 4% contingency instead of the projected $195k overrun) with only a 1-week final delivery delta."
     )
     story.append(Paragraph(p4_actions, styles['Body']))
 
@@ -598,28 +598,28 @@ def build_guide_pdf(lang='ES', out_path=None):
 
     faq_items_es = [
         ("¿Por qué el SPI vuelve asintóticamente a 1.0 al terminar el proyecto aunque lleve meses o años de retraso?",
-         "Es una limitación matemática intrínseca del EVM tradicional: cuando un proyecto finaliza con retraso, todo el trabajo planificado se completa finalmente, por lo que $EV = BAC$ y $PV = BAC$, forzando $SPI = BAC / BAC = 1.00$. "
-         "Para solucionar esta anomalía en etapas tardías, el PMBOK y Lipke (2003) introducen el concepto de <b>Cronograma Ganado (Earned Schedule - ES)</b>, que mide la varianza en unidades de tiempo ($SV_t = ES - AT$) en lugar de moneda."),
+         "Es una limitación matemática intrínseca del EVM tradicional: cuando un proyecto finaliza con retraso, todo el trabajo planificado se completa finalmente, por lo que <b>EV = BAC</b> y <b>PV = BAC</b>, forzando <b>SPI = BAC / BAC = 1.00</b>. "
+         "Para solucionar esta anomalía en etapas tardías, el PMBOK y Lipke (2003) introducen el concepto de <b>Cronograma Ganado (Earned Schedule - ES)</b>, que mide la varianza en unidades de tiempo (<b>SV<sub>t</sub> = ES - AT</b>) en lugar de moneda."),
 
-        ("¿Cómo explicar al CFO que un TCPI > 1.15 es una fantasía estadística según el PMBOK?",
-         "Estudios empíricos a gran escala en proyectos de defensa y tecnología (Christensen, 1998; Fleming & Koppelman, 2010) demuestran que **el CPI acumulado se estabiliza a partir del 20% de avance y rara vez mejora en más de 0.05 puntos**. "
-         "Exigir a un equipo con un $CPI = 0.86$ que alcance un $TCPI = 1.14$ exige un salto de productividad del 32%. A menos que se modifique sustancialmente el alcance o los procesos, es un engaño contable que garantiza el fracaso."),
+        ("¿Cómo explicar al CFO que un TCPI &gt; 1.15 es una fantasía estadística según el PMBOK?",
+         "Estudios empíricos a gran escala en proyectos de defensa y tecnología (Christensen, 1998; Fleming &amp; Koppelman, 2010) demuestran que <b>el CPI acumulado se estabiliza a partir del 20% de avance y rara vez mejora en más de 0.05 puntos</b>. "
+         "Exigir a un equipo con un <b>CPI = 0.86</b> que alcance un <b>TCPI = 1.14</b> exige un salto de productividad del 32%. A menos que se modifique sustancialmente el alcance o los procesos, es un engaño contable que garantiza el fracaso."),
 
         ("¿Cuándo está formalmente justificado aprobar un re-baselining presupuestario?",
-         "El re-baselining nunca debe utilizarse para 'ocultar' ineficiencias de gestión. Solo está justificado bajo tres supuestos: (a) Cambios sustanciales de alcance aprobados por el cliente o Board, (b) Shocks regulatorios o de mercado externos imprevistos, o (c) Cuando $TCPI_{BAC} > 1.15$ y se ha demostrado que las medidas de recuperación no pueden cerrar la brecha sin destruir los estándares de calidad.")
+         "El re-baselining nunca debe utilizarse para 'ocultar' ineficiencias de gestión. Solo está justificado bajo tres supuestos: (a) Cambios sustanciales de alcance aprobados por el cliente o Board, (b) Shocks regulatorios o de mercado externos imprevistos, o (c) Cuando <b>TCPI<sub>BAC</sub> &gt; 1.15</b> y se ha demostrado que las medidas de recuperación no pueden cerrar la brecha sin destruir los estándares de calidad.")
     ]
 
     faq_items_en = [
         ("Why does the SPI mathematically return to 1.00 at project end even when months or years late?",
-         "This is an inherent algebraic trait of conventional EVM: when a delayed project eventually crosses the finish line, all planned deliverables are completed, meaning $EV = BAC$ and $PV = BAC$, forcing $SPI = BAC / BAC = 1.00$. "
-         "To resolve this late-stage anomaly, modern PMBOK standards incorporate <b>Earned Schedule (ES)</b> (Lipke, 2003), measuring schedule variance in true time units ($SV_t = ES - AT$) rather than monetary equivalents."),
+         "This is an inherent algebraic trait of conventional EVM: when a delayed project eventually crosses the finish line, all planned deliverables are completed, meaning <b>EV = BAC</b> and <b>PV = BAC</b>, forcing <b>SPI = BAC / BAC = 1.00</b>. "
+         "To resolve this late-stage anomaly, modern PMBOK standards incorporate <b>Earned Schedule (ES)</b> (Lipke, 2003), measuring schedule variance in true time units (<b>SV<sub>t</sub> = ES - AT</b>) rather than monetary equivalents."),
 
-        ("How do we demonstrate to the CFO that a TCPI > 1.15 is pure statistical fantasy?",
-         "Decades of empirical project research (Christensen, 1998; Fleming & Koppelman, 2010) prove that **cumulative CPI stabilizes past 20% completion and rarely improves by more than 0.05**. "
-         "Demanding that a team operating at $CPI = 0.86$ suddenly achieve $TCPI = 1.14$ assumes an unprecedented 32% efficiency spike. Without changing scope or operating models, it is wishful thinking."),
+        ("How do we demonstrate to the CFO that a TCPI &gt; 1.15 is pure statistical fantasy?",
+         "Decades of empirical project research (Christensen, 1998; Fleming &amp; Koppelman, 2010) prove that <b>cumulative CPI stabilizes past 20% completion and rarely improves by more than 0.05</b>. "
+         "Demanding that a team operating at <b>CPI = 0.86</b> suddenly achieve <b>TCPI = 1.14</b> assumes an unprecedented 32% efficiency spike. Without changing scope or operating models, it is wishful thinking."),
 
         ("When is formal project budget re-baselining legitimately justified?",
-         "Re-baselining must never serve as an accounting cover-up for poor execution. It is legitimately approved only when: (a) Major client or board-approved scope alterations occur, (b) Unforeseen regulatory or macro shocks arise, or (c) $TCPI_{BAC} > 1.15$ demonstrates that recovery plans cannot close the gap without compromising quality.")
+         "Re-baselining must never serve as an accounting cover-up for poor execution. It is legitimately approved only when: (a) Major client or board-approved scope alterations occur, (b) Unforeseen regulatory or macro shocks arise, or (c) <b>TCPI<sub>BAC</sub> &gt; 1.15</b> demonstrates that recovery plans cannot close the gap without compromising quality.")
     ]
 
     faq_list = faq_items_es if lang == 'ES' else faq_items_en
@@ -635,9 +635,9 @@ def build_guide_pdf(lang='ES', out_path=None):
 
     bib_items = [
         "1. <b>Project Management Institute (PMI) (2019).</b> <i>The Standard for Earned Value Management</i>. Project Management Institute, Newtown Square, PA. ISBN: 978-1628256383.",
-        "2. <b>Fleming, Q. W., & Koppelman, J. M. (2010).</b> <i>Earned Value Project Management – 4th Edition</i>. Project Management Institute. ISBN: 978-1935589082.",
+        "2. <b>Fleming, Q. W., &amp; Koppelman, J. M. (2010).</b> <i>Earned Value Project Management – 4th Edition</i>. Project Management Institute. ISBN: 978-1935589082.",
         "3. <b>National Defense Industrial Association (NDIA) (2019).</b> <i>ANSI/EIA-748-D: Earned Value Management Systems Standard</i>. Arlington, VA.",
-        "4. <b>Kerzner, H. (2017).</b> <i>Project Management: A Systems Approach to Planning, Scheduling, and Controlling – 12th Edition</i>. John Wiley & Sons. ISBN: 978-1119165354.",
+        "4. <b>Kerzner, H. (2017).</b> <i>Project Management: A Systems Approach to Planning, Scheduling, and Controlling – 12th Edition</i>. John Wiley &amp; Sons. ISBN: 978-1119165354.",
         "5. <b>Christensen, D. S. (1998).</b> <i>The Costs and Benefits of Implementing an Earned Value Management System</i>. Acquisition Review Quarterly, Vol. 5, No. 4, pp. 373-386.",
         "6. <b>Barbara Minto (2009).</b> <i>The Pyramid Principle: Logic in Writing and Thinking</i>. Financial Times / Prentice Hall. ISBN: 978-0273710516."
     ]

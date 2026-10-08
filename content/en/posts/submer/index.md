@@ -1,6 +1,6 @@
 ---
 title: "Submer: The Barcelona-Born Immersion Cooling Powering AGI Supercomputers"
-date: 2026-11-01
+date: 2026-10-08
 draft: false
 categories: ["case-studies", "Engineering", "Artificial Intelligence"]
 tags: ["submer", "immersion cooling", "data centers", "supercomputing", "hardware", "esg", "startups", "sustainability", "agi"]
@@ -12,7 +12,7 @@ description: "How two entrepreneurs in Barcelona revolutionized physical computi
 summary: "Training and running frontier AI models generates thermal densities that shatter the physical limits of traditional air cooling. Submer, founded in Barcelona by Daniel Pope and Pol Valls, submerges servers in biodegradable dielectric fluids, achieving a record-breaking PUE of 1.03. We break down its technology, funding rounds, and why it is an indispensable physical pillar in the race toward AGI."
 ---
 
-When the technology industry in 2026 debates the horizon of **Artificial General Intelligence (AGI)**, discussions routinely gravitate toward mathematical abstractions: trillion-parameter architectures, test-time reasoning compute, frontier models like **Gemini 3.8 / 4 Pro**, **Claude Mythos**, and **GPT Astra**, and autonomous agent swarms.
+When the technology industry in 2026 debates the horizon of **Artificial General Intelligence (AGI)**, discussions routinely gravitate toward mathematical abstractions: trillion-parameter architectures, test-time reasoning compute, frontier models like **Gemini 3.8 / 4 Argon**, **Claude Mythos**, and **GPT Astra**, and autonomous agent swarms.
 
 Yet inside the hyper-scale data centers where those models are trained and executed, reality is brutally physical, deafening, and thermodynamic: **watts, silicon, and extreme heat**.
 
@@ -28,7 +28,7 @@ That audacious question gave birth to **Submer**.
 
 Following our deep dives into [Wallapop](/en/posts/wallapop/), [HappyRobot](/en/posts/happyrobot/), [Devo](/en/posts/devo/), [Carto](/en/posts/carto/), and the climate analytics of [Clarity AI](/en/posts/clarity_ai/), this article examines the engineering triumphs of Submer: the startup founded in Catalonia that pioneered **Single-Phase Liquid Immersion Cooling**, becoming an indispensable infrastructure partner to global giants like **Intel, Nvidia, Dell, and Supermicro** to make AGI physically viable.
 
-{{< youtube Fj-yRj84Z7U >}}
+{{< youtube HvW2JryocTg >}}
 
 ### The Origin: From Deafening Noise to an Industrial Garage in L'Hospitalet
 
@@ -139,8 +139,7 @@ From an industrial warehouse in Barcelona, Daniel Pope and Pol Valls realized th
 
 #### Sources of Interest:
 * [**Submer**: Official Website and Immersion Technology Catalog](https://submer.com/)
-* [**YouTube**: Immersion Cooling in 10 MIN — Submer Official Guide](https://www.youtube.com/watch?v=Fj-yRj84Z7U)
-* [**YouTube**: Interview with Submer CEO, Daniel Pope](https://www.youtube.com/watch?v=k4Sj4n4x89k)
+* [**YouTube**: Submer channel](https://www.youtube.com/@Submer)
 * [**Open Compute Project (OCP)**: Immersion Cooling Requirements & Standards](https://www.opencompute.org/)
 * [**Datalaria**: Clarity AI — The ESG Sustainability Revolution](/en/posts/clarity_ai/)
 * [**Datalaria**: Devo — Massive Data Ingestion and Real-Time Infrastructure](/en/posts/devo/)

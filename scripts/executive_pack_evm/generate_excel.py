@@ -18,7 +18,8 @@ Estándar de Seguridad y Compatibilidad OpenXML ECMA-376:
 - Celdas de fórmulas y títulos: locked=True, fondo #F1F5F9 o corporativo.
 - Contraseña oficial interna: "Datalaria2026"
 - ECMA-376: selectUnlockedCells = False, selectLockedCells = False.
-- Curva S nativa generada mediante openpyxl LineChart con trazado multi-serie.
+- Curva S nativa generada mediante openpyxl LineChart con trazado multi-serie y ejes completamente configurados.
+- Alturas de fila y anchos de columna generosos para garantizar legibilidad ejecutiva sin textos cortados ni solapes.
 """
 
 import os
@@ -27,7 +28,8 @@ import openpyxl
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side, Protection
 from openpyxl.utils import get_column_letter
 from openpyxl.chart import LineChart, Reference
-from openpyxl.chart.series import SeriesLabel
+from openpyxl.chart.axis import ChartLines
+from openpyxl.chart.data_source import AxDataSource, StrRef, StrData, StrVal
 
 # Importar política de protección ECMA-376
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -66,18 +68,17 @@ COLOR_BORDER_DARK = "64748B"     # Slate 500
 FONT_NAME = "Segoe UI"
 
 # Estilos reutilizables
-font_title = Font(name=FONT_NAME, size=15, bold=True, color="FFFFFF")
-font_subtitle = Font(name=FONT_NAME, size=10, italic=True, color="94A3B8")
-font_section = Font(name=FONT_NAME, size=11, bold=True, color=COLOR_NAVY_DARK)
+font_title = Font(name=FONT_NAME, size=14, bold=True, color="FFFFFF")
+font_subtitle = Font(name=FONT_NAME, size=9.5, italic=True, color="94A3B8")
+font_section = Font(name=FONT_NAME, size=10.5, bold=True, color=COLOR_NAVY_DARK)
 font_tbl_header = Font(name=FONT_NAME, size=9.5, bold=True, color="FFFFFF")
 font_tbl_subheader = Font(name=FONT_NAME, size=9, bold=True, color="FFFFFF")
 font_card_title = Font(name=FONT_NAME, size=8.5, bold=True, color="64748B")
-font_card_val = Font(name=FONT_NAME, size=16, bold=True, color=COLOR_NAVY_DARK)
+font_card_val = Font(name=FONT_NAME, size=15, bold=True, color=COLOR_NAVY_DARK)
 font_card_sub = Font(name=FONT_NAME, size=8, italic=True, color="64748B")
 font_body = Font(name=FONT_NAME, size=9.5, color="1E293B")
 font_body_bold = Font(name=FONT_NAME, size=9.5, bold=True, color="1E293B")
 font_input = Font(name=FONT_NAME, size=9.5, bold=True, color=COLOR_BLUE_ACCENT)
-font_formula = Font(name=FONT_NAME, size=9.5, color="0F172A")
 
 fill_dark = PatternFill(fill_type="solid", fgColor=COLOR_NAVY_DARK)
 fill_med = PatternFill(fill_type="solid", fgColor=COLOR_NAVY_MED)
@@ -104,83 +105,87 @@ align_right = Alignment(horizontal="right", vertical="center", wrap_text=True)
 
 def get_wbs_data(lang='ES'):
     """
-    Datos estructurados de 25 entregables realistas distribuidos en 5 fases
-    para un proyecto estratégico de 1.200.000 € / $1,200,000.
-    Fecha de corte: Mes 6 (50% del cronograma transcurrido).
+    Datos estructurados de 25 entregables en 5 fases calibrados con exactitud quirúrgica:
+    - Presupuesto Total: BAC = 1.200.000 € / $1,200,000
+    - A corte Mes 6:
+      * PV = 600.000 €
+      * EV = 516.000 €
+      * AC = 600.000 €
+      * CPI = 0.86, SPI = 0.86, CV = -84.000 €, SV = -84.000 €
     """
     if lang == 'ES':
         phases = [
             ("Fase 1: Arquitectura, Gobierno & Ciberseguridad", [
-                ("1.1", "Definición de Arquitectura Cloud & Microservicios", 45000, 1.00, 45000, 48000),
-                ("1.2", "Modelado Conceptual de Datos & Seguridad IAM", 35000, 1.00, 35000, 36500),
-                ("1.3", "Especificación de APIs OpenAPI & Pasarela API Gateway", 40000, 1.00, 40000, 42000),
-                ("1.4", "Marco de Cumplimiento Regulatorio & GDPR / DORA", 30000, 1.00, 30000, 31000),
-                ("1.5", "Aprovisionamiento de Infraestructura IaC Terraform", 50000, 1.00, 50000, 54000),
+                ("1.1", "Definición de Arquitectura Cloud & Microservicios", 40000, 1.00, 40000, 41000),
+                ("1.2", "Modelado Conceptual de Datos & Seguridad IAM", 30000, 1.00, 30000, 30500),
+                ("1.3", "Especificación de APIs OpenAPI & API Gateway", 35000, 1.00, 35000, 36000),
+                ("1.4", "Marco de Cumplimiento Regulatorio & GDPR / DORA", 30000, 1.00, 30000, 30000),
+                ("1.5", "Aprovisionamiento de Infraestructura IaC Terraform", 45000, 1.00, 45000, 46000),
             ]),
             ("Fase 2: Desarrollo Core & Motor Transaccional", [
-                ("2.1", "Desarrollo del Motor Transaccional de Conciliación", 95000, 0.85, 95000, 115000),
-                ("2.2", "Implementación de Autenticación OAuth2 / OIDC", 55000, 0.90, 55000, 62000),
-                ("2.3", "Módulo de Procesamiento de Pagos & Pasarelas", 85000, 0.70, 85000, 98000),
-                ("2.4", "Motor de Reglas de Negocio & Enrutamiento", 70000, 0.65, 70000, 78000),
-                ("2.5", "Sistema de Auditoría & Trazabilidad de Logs", 40000, 0.80, 40000, 44000),
+                ("2.1", "Desarrollo del Motor Transaccional de Conciliación", 85000, 0.85, 85000, 98000),
+                ("2.2", "Implementación de Autenticación OAuth2 / OIDC", 50000, 0.90, 50000, 52000),
+                ("2.3", "Módulo de Procesamiento de Pagos & Pasarelas", 75000, 0.70, 75000, 82000),
+                ("2.4", "Motor de Reglas de Negocio & Enrutamiento", 65000, 0.65, 65000, 68000),
+                ("2.5", "Sistema de Auditoría & Trazabilidad de Logs", 35000, 0.80, 35000, 36500),
             ]),
             ("Fase 3: Integraciones, APIs & Conectores", [
-                ("3.1", "Conector Bidireccional con ERP Core (SAP / Oracle)", 90000, 0.40, 65000, 68000),
-                ("3.2", "Integración con Pasarelas Bancarias & Red SWIFT", 75000, 0.35, 55000, 58000),
-                ("3.3", "Conector con CRM Salesforce & Servicio Clientes", 45000, 0.25, 30000, 32000),
-                ("3.4", "Bus de Eventos Kafka & Sincronización Real-Time", 60000, 0.30, 45000, 46500),
-                ("3.5", "Pipeline ETL de Reportería & Business Intelligence", 50000, 0.20, 35000, 34000),
+                ("3.1", "Conector Bidireccional con ERP Core (SAP / Oracle)", 80000, 0.40, 35000, 28000),
+                ("3.2", "Integración con Pasarelas Bancarias & Red SWIFT", 60000, 0.40, 25000, 20000),
+                ("3.3", "Conector con CRM Salesforce & Servicio Clientes", 40000, 0.25, 15000, 10000),
+                ("3.4", "Bus de Eventos Kafka & Sincronización Real-Time", 50000, 0.36, 20000, 12000),
+                ("3.5", "Pipeline ETL de Reportería & Business Intelligence", 50000, 0.24, 15000, 10000),
             ]),
             ("Fase 4: Migración de Datos, QA & Certificación", [
-                ("4.1", "Estrategia & Scripts de Migración de Datos Históricos", 65000, 0.05, 0, 0),
-                ("4.2", "Banco de Pruebas Automatizadas Unitarias & E2E", 50000, 0.00, 0, 0),
-                ("4.3", "Pruebas de Estrés, Carga & Rendimiento (JMeter)", 40000, 0.00, 0, 0),
-                ("4.4", "Auditoría de Ciberseguridad & Pruebas de Intrusión (Pentest)", 45000, 0.00, 0, 0),
-                ("4.5", "Certificación UAT con Usuarios de Negocio", 55000, 0.00, 0, 0),
+                ("4.1", "Estrategia & Scripts de Migración de Datos Históricos", 60000, 0.00, 0, 0),
+                ("4.2", "Banco de Pruebas Automatizadas Unitarias & E2E", 45000, 0.00, 0, 0),
+                ("4.3", "Pruebas de Estrés, Carga & Rendimiento (JMeter)", 35000, 0.00, 0, 0),
+                ("4.4", "Auditoría de Ciberseguridad & Pentest Certificado", 40000, 0.00, 0, 0),
+                ("4.5", "Certificación UAT Formal con Usuarios de Negocio", 50000, 0.00, 0, 0),
             ]),
             ("Fase 5: Infraestructura Cloud, Despliegue & Cutover", [
-                ("5.1", "Configuración de Clusters Kubernetes & Malla Istio", 50000, 0.00, 0, 0),
+                ("5.1", "Configuración de Clusters Kubernetes & Malla Istio", 45000, 0.00, 0, 0),
                 ("5.2", "Pipeline CI/CD con Despliegue Blue-Green", 35000, 0.00, 0, 0),
                 ("5.3", "Plan de Recuperación de Desastres (DRP) Multi-Región", 40000, 0.00, 0, 0),
-                ("5.4", "Ensayo General de Migración (Dry-Run Cutover)", 45000, 0.00, 0, 0),
+                ("5.4", "Ensayo General de Migración (Dry-Run Cutover)", 40000, 0.00, 0, 0),
                 ("5.5", "Pase a Producción Final & Hipercare Post Go-Live", 40000, 0.00, 0, 0),
             ]),
         ]
     else:
         phases = [
             ("Phase 1: Architecture, Governance & Cybersecurity", [
-                ("1.1", "Cloud Architecture & Microservices Definition", 45000, 1.00, 45000, 48000),
-                ("1.2", "Data Modeling & IAM Security Framework", 35000, 1.00, 35000, 36500),
-                ("1.3", "OpenAPI Specification & Enterprise API Gateway", 40000, 1.00, 40000, 42000),
-                ("1.4", "Regulatory Compliance Framework & GDPR / DORA", 30000, 1.00, 30000, 31000),
-                ("1.5", "IaC Terraform Infrastructure Provisioning", 50000, 1.00, 50000, 54000),
+                ("1.1", "Cloud Architecture & Microservices Definition", 40000, 1.00, 40000, 41000),
+                ("1.2", "Data Modeling & IAM Security Framework", 30000, 1.00, 30000, 30500),
+                ("1.3", "OpenAPI Specification & Enterprise API Gateway", 35000, 1.00, 35000, 36000),
+                ("1.4", "Regulatory Compliance Framework & GDPR / DORA", 30000, 1.00, 30000, 30000),
+                ("1.5", "IaC Terraform Infrastructure Provisioning", 45000, 1.00, 45000, 46000),
             ]),
             ("Phase 2: Core Platform & Transaction Engine", [
-                ("2.1", "Core Reconciliation & Transaction Engine Dev", 95000, 0.85, 95000, 115000),
-                ("2.2", "OAuth2 / OIDC Enterprise Authentication Flow", 55000, 0.90, 55000, 62000),
-                ("2.3", "Payment Processing Module & Gateway Routing", 85000, 0.70, 85000, 98000),
-                ("2.4", "Business Rules Engine & Automated Routing", 70000, 0.65, 70000, 78000),
-                ("2.5", "Audit Trail & Immutable Log Tracing System", 40000, 0.80, 40000, 44000),
+                ("2.1", "Core Reconciliation & Transaction Engine Dev", 85000, 0.85, 85000, 98000),
+                ("2.2", "OAuth2 / OIDC Enterprise Authentication Flow", 50000, 0.90, 50000, 52000),
+                ("2.3", "Payment Processing Module & Gateway Routing", 75000, 0.70, 75000, 82000),
+                ("2.4", "Business Rules Engine & Automated Routing", 65000, 0.65, 65000, 68000),
+                ("2.5", "Audit Trail & Immutable Log Tracing System", 35000, 0.80, 35000, 36500),
             ]),
             ("Phase 3: Integrations, APIs & Connectors", [
-                ("3.1", "Bidirectional Core ERP Connector (SAP / Oracle)", 90000, 0.40, 65000, 68000),
-                ("3.2", "Banking Gateway & SWIFT Network Integration", 75000, 0.35, 55000, 58000),
-                ("3.3", "CRM Salesforce & Customer Care Integration", 45000, 0.25, 30000, 32000),
-                ("3.4", "Kafka Event Bus & Real-Time Sync Streams", 60000, 0.30, 45000, 46500),
-                ("3.5", "ETL Data Pipeline & BI Executive Reporting", 50000, 0.20, 35000, 34000),
+                ("3.1", "Bidirectional Core ERP Connector (SAP / Oracle)", 80000, 0.40, 35000, 28000),
+                ("3.2", "Banking Gateway & SWIFT Network Integration", 60000, 0.40, 25000, 20000),
+                ("3.3", "CRM Salesforce & Customer Care Integration", 40000, 0.25, 15000, 10000),
+                ("3.4", "Kafka Event Bus & Real-Time Sync Streams", 50000, 0.36, 20000, 12000),
+                ("3.5", "ETL Data Pipeline & BI Executive Reporting", 50000, 0.24, 15000, 10000),
             ]),
             ("Phase 4: Data Migration, QA & Certification", [
-                ("4.1", "Legacy Data Cleansing & Migration Scripts", 65000, 0.05, 0, 0),
-                ("4.2", "Automated Unit & End-to-End Test Suite", 50000, 0.00, 0, 0),
-                ("4.3", "Stress, Load & Performance Benchmarking (JMeter)", 40000, 0.00, 0, 0),
-                ("4.4", "Cybersecurity Audit & Penetration Testing", 45000, 0.00, 0, 0),
-                ("4.5", "Formal UAT Certification with Business Leads", 55000, 0.00, 0, 0),
+                ("4.1", "Legacy Data Cleansing & Migration Scripts", 60000, 0.00, 0, 0),
+                ("4.2", "Automated Unit & End-to-End Test Suite", 45000, 0.00, 0, 0),
+                ("4.3", "Stress, Load & Performance Benchmarking (JMeter)", 35000, 0.00, 0, 0),
+                ("4.4", "Cybersecurity Audit & Penetration Testing", 40000, 0.00, 0, 0),
+                ("4.5", "Formal UAT Certification with Business Leads", 50000, 0.00, 0, 0),
             ]),
             ("Phase 5: Cloud Infra, Deployment & Cutover", [
-                ("5.1", "Kubernetes Production Clusters & Istio Service Mesh", 50000, 0.00, 0, 0),
+                ("5.1", "Kubernetes Production Clusters & Istio Mesh", 45000, 0.00, 0, 0),
                 ("5.2", "Zero-Downtime Blue-Green CI/CD Pipelines", 35000, 0.00, 0, 0),
                 ("5.3", "Multi-Region Disaster Recovery Plan (DRP)", 40000, 0.00, 0, 0),
-                ("5.4", "Dress Rehearsal & Cutover Simulation (Dry-Run)", 45000, 0.00, 0, 0),
+                ("5.4", "Dress Rehearsal & Cutover Simulation (Dry-Run)", 40000, 0.00, 0, 0),
                 ("5.5", "Production Go-Live & Post-Launch Hypercare", 40000, 0.00, 0, 0),
             ]),
         ]
@@ -189,99 +194,104 @@ def get_wbs_data(lang='ES'):
 
 def get_monthly_data(lang='ES'):
     """
-    Serie temporal de 12 meses. Corte en Mes 6.
-    Valores mensuales previstos, logrados y gastados.
+    Serie temporal de 12 meses alineada exactamente con BAC = 1.200.000 €:
+    - M01 a M06 suman exactamente PV = 600.000 €, EV = 516.000 €, AC = 600.000 €.
+    - M07 a M12 completan el PV restante hasta 1.200.000 €.
     """
-    # Mes, PV_m, EV_m, AC_m
     return [
         ("M01", 60000, 58000, 62000),
         ("M02", 80000, 75000, 84000),
         ("M03", 100000, 92000, 108000),
         ("M04", 110000, 95000, 114000),
         ("M05", 120000, 98000, 116000),
-        ("M06", 130000, 98000, 116000),  # Cutoff en M06
+        ("M06", 130000, 98000, 116000),  # Cutoff en M06: Cum PV=600k, Cum EV=516k, Cum AC=600k
         ("M07", 130000, "", ""),
         ("M08", 120000, "", ""),
         ("M09", 110000, "", ""),
         ("M10", 100000, "", ""),
         ("M11", 80000, "", ""),
-        ("M12", 60000, "", ""),
+        ("M12", 60000, "", ""),          # Cum PV total = 1.200.000 €
     ]
 
 
 def build_tab1_dashboard(ws, lang='ES'):
-    """Construye la Pestaña 1: Dashboard Ejecutivo EVM."""
+    """Construye la Pestaña 1: Dashboard Ejecutivo EVM con alturas y anchos calibrados."""
     fmt_curr = '#,##0 "€"' if lang == 'ES' else '"$"#,##0'
-    fmt_curr_dec = '#,##0.00 "€"' if lang == 'ES' else '"$"#,##0.00'
     fmt_idx = '0.00"x"'
     fmt_pct = '0.0%'
 
-    # Anchos de columna
+    # Anchos de columna uniformes y generosos para evitar textos cortados
     col_widths = {
-        'A': 4, 'B': 18, 'C': 18, 'D': 18, 'E': 18, 'F': 18, 'G': 18,
-        'H': 4, 'I': 16, 'J': 16, 'K': 16, 'L': 16, 'M': 16, 'N': 16, 'O': 16, 'P': 4
+        'A': 3,
+        'B': 16, 'C': 16, 'D': 16,
+        'E': 16, 'F': 16, 'G': 16,
+        'H': 16, 'I': 16, 'J': 16,
+        'K': 16, 'L': 16, 'M': 16,
+        'N': 16, 'O': 16, 'P': 16,
+        'Q': 3
     }
     for col, width in col_widths.items():
         ws.column_dimensions[col].width = width
 
+    # Alturas de fila explícitas para evitar solapes verticales en cuadrantes, tarjetas y gráfico
+    row_heights = {
+        1: 12,
+        2: 24, 3: 24,   # Banner principal
+        4: 22,          # Metadatos
+        5: 10,          # Espacio
+        6: 20, 7: 32, 8: 18,   # KPI Row 1
+        9: 10,                 # Espacio
+        10: 20, 11: 32, 12: 18,# KPI Row 2
+        13: 10,                # Espacio
+        14: 20, 15: 32, 16: 18,# KPI Row 3
+        17: 12,                # Espacio
+        18: 26,                # Títulos de sección
+        19: 25, 20: 25,        # Cuadrantes 1 y 2 (Total 50 pt)
+        21: 25, 22: 25,        # Cuadrantes 3 y 4 (Total 50 pt)
+        23: 22, 24: 22, 25: 22, 26: 22, # Diagnóstico ejecutivo (Total 88 pt)
+        27: 22, 28: 22, 29: 22, 30: 22, 31: 22, 32: 22, 33: 22, 34: 22, 35: 22, 36: 22
+    }
+    for r, h in row_heights.items():
+        ws.row_dimensions[r].height = h
+
     ws.views.sheetView[0].showGridLines = True
 
     # 1. Banner Principal
-    ws.merge_cells('B2:O3')
+    ws.merge_cells('B2:P3')
     top_cell = ws['B2']
     title_text = "DATALARIA | CUADRO DE MANDO EJECUTIVO EVM (EARNED VALUE MANAGEMENT)" if lang == 'ES' else "DATALARIA | EXECUTIVE EVM DASHBOARD (EARNED VALUE MANAGEMENT)"
     sub_text = "Estándar ANSI/EIA-748 & PMBOK · Diagnóstico de Curva S, Varianzas & Proyecciones EAC C-Level" if lang == 'ES' else "ANSI/EIA-748 & PMBOK Standards · S-Curve Diagnostics, Cost/Schedule Variances & C-Level EAC"
     top_cell.value = f"{title_text}\n{sub_text}"
-    top_cell.font = Font(name=FONT_NAME, size=12, bold=True, color="FFFFFF")
+    top_cell.font = font_title
     top_cell.fill = fill_dark
-    top_cell.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+    top_cell.alignment = align_center
 
     # 2. Metadatos de Corte
     ws['B4'] = "PROYECTO: Transformación Core Transaccional" if lang == 'ES' else "PROJECT: Core Transactional Modernization"
     ws['B4'].font = Font(name=FONT_NAME, size=9.5, bold=True, color=COLOR_NAVY_DARK)
-    ws['I4'] = "FECHA DE CORTE: Mes 6 (50% Cronograma Transcurrido)" if lang == 'ES' else "CUTOFF DATE: Month 6 (50% Elapsed Schedule)"
-    ws['I4'].font = Font(name=FONT_NAME, size=9.5, bold=True, color=COLOR_BLUE_ACCENT)
+    ws['K4'] = "FECHA DE CORTE: Mes 6 (50% Cronograma Transcurrido)" if lang == 'ES' else "CUTOFF DATE: Month 6 (50% Elapsed Schedule)"
+    ws['K4'].font = Font(name=FONT_NAME, size=9.5, bold=True, color=COLOR_BLUE_ACCENT)
 
     # 3. FILA 1 DE KPI CARDS: Cifras Financieras Clave (Filas 6-8)
-    # Card 1: Presupuesto Total (BAC)
-    card_defs_row1 = [
-        ('B', 'C', "PRESUPUESTO TOTAL (BAC)" if lang == 'ES' else "BUDGET AT COMPLETION (BAC)",
-         "='Control WBS & Entregables'!E32" if lang == 'ES' else "='WBS & Deliverables Tracking'!E32",
-         fmt_curr, "Línea base total aprobada" if lang == 'ES' else "Approved baseline budget"),
-
-        ('D', 'E', "VALOR PLANIFICADO (PV)" if lang == 'ES' else "PLANNED VALUE (PV)",
-         "='Control WBS & Entregables'!H32" if lang == 'ES' else "='WBS & Deliverables Tracking'!H32",
-         fmt_curr, "Trabajo previsto a fecha de corte" if lang == 'ES' else "Scheduled work at cutoff"),
-
-        ('F', 'G', "VALOR GANADO (EV)" if lang == 'ES' else "EARNED VALUE (EV)",
-         "='Control WBS & Entregables'!J32" if lang == 'ES' else "='WBS & Deliverables Tracking'!J32",
-         fmt_curr, "Avance físico real valorado" if lang == 'ES' else "Physical work completed"),
-
-        ('H', 'I', "COSTE REAL INCURRIDO (AC)" if lang == 'ES' else "ACTUAL COST (AC)",
-         "='Control WBS & Entregables'!I32" if lang == 'ES' else "='WBS & Deliverables Tracking'!I32",
-         fmt_curr, "Gasto financiero registrado" if lang == 'ES' else "Total expenditures to date"),
-    ]
-
-    # Reorganizar tarjetas para llenar B hasta O con 4 tarjetas de 3 columnas cada una
-    # B-D, E-G, H-J, K-M
+    ref_wbs = "'Control WBS & Entregables'" if lang == 'ES' else "'WBS & Deliverables Tracking'"
     kpi_blocks_1 = [
         ('B', 'D', "PRESUPUESTO TOTAL (BAC)" if lang == 'ES' else "BUDGET AT COMPLETION (BAC)",
-         "='Control WBS & Entregables'!E32" if lang == 'ES' else "='WBS & Deliverables Tracking'!E32",
+         f"={ref_wbs}!E32",
          fmt_curr, "Línea base contractual aprobada" if lang == 'ES' else "Approved contractual baseline"),
 
         ('E', 'G', "VALOR PLANIFICADO (PV)" if lang == 'ES' else "PLANNED VALUE (PV)",
-         "='Control WBS & Entregables'!H32" if lang == 'ES' else "='WBS & Deliverables Tracking'!H32",
+         f"={ref_wbs}!H32",
          fmt_curr, "Trabajo programado a corte" if lang == 'ES' else "Scheduled work at cutoff"),
 
         ('H', 'J', "VALOR GANADO FÍSICO (EV)" if lang == 'ES' else "EARNED VALUE (EV)",
-         "='Control WBS & Entregables'!J32" if lang == 'ES' else "='WBS & Deliverables Tracking'!J32",
+         f"={ref_wbs}!J32",
          fmt_curr, "Valor del trabajo entregado" if lang == 'ES' else "Value of delivered scope"),
 
         ('K', 'M', "COSTE REAL INCURRIDO (AC)" if lang == 'ES' else "ACTUAL COST (AC)",
-         "='Control WBS & Entregables'!I32" if lang == 'ES' else "='WBS & Deliverables Tracking'!I32",
+         f"={ref_wbs}!I32",
          fmt_curr, "Facturación & recursos gastados" if lang == 'ES' else "Total money spent to date"),
 
-        ('N', 'O', "% AVANCE REAL" if lang == 'ES' else "% ACTUAL PROGRESS",
+        ('N', 'P', "% AVANCE REAL" if lang == 'ES' else "% ACTUAL PROGRESS",
          "=H7/B7", fmt_pct, "EV / BAC acumulado" if lang == 'ES' else "Cumulative EV / BAC"),
     ]
 
@@ -310,7 +320,6 @@ def build_tab1_dashboard(ws, lang='ES'):
         c_n.fill = fill_card
         c_n.alignment = align_center
 
-        # Bordes de la tarjeta
         for row in range(6, 9):
             for col_idx in range(openpyxl.utils.column_index_from_string(c_start), openpyxl.utils.column_index_from_string(c_end) + 1):
                 col_letter = get_column_letter(col_idx)
@@ -320,22 +329,22 @@ def build_tab1_dashboard(ws, lang='ES'):
     # 4. FILA 2 DE KPI CARDS: Índices de Desempeño y Varianzas (Filas 10-12)
     kpi_blocks_2 = [
         ('B', 'D', "ÍNDICE EFICIENCIA COSTE (CPI)" if lang == 'ES' else "COST PERFORMANCE INDEX (CPI)",
-         "='Control WBS & Entregables'!M32" if lang == 'ES' else "='WBS & Deliverables Tracking'!M32",
+         f"={ref_wbs}!M32",
          fmt_idx, "EV / AC (<1.0 indica sobrecoste)" if lang == 'ES' else "EV / AC (<1.0 means over budget)"),
 
         ('E', 'G', "ÍNDICE EFICIENCIA PLAZO (SPI)" if lang == 'ES' else "SCHEDULE PERF. INDEX (SPI)",
-         "='Control WBS & Entregables'!N32" if lang == 'ES' else "='WBS & Deliverables Tracking'!N32",
+         f"={ref_wbs}!N32",
          fmt_idx, "EV / PV (<1.0 indica retraso)" if lang == 'ES' else "EV / PV (<1.0 means delayed)"),
 
         ('H', 'J', "VARIANZA DE COSTE (CV)" if lang == 'ES' else "COST VARIANCE (CV)",
-         "='Control WBS & Entregables'!K32" if lang == 'ES' else "='WBS & Deliverables Tracking'!K32",
+         f"={ref_wbs}!K32",
          fmt_curr, "EV - AC (Negativo = Sobrecoste)" if lang == 'ES' else "EV - AC (Negative = Overrun)"),
 
         ('K', 'M', "VARIANZA DE CRONOGRAMA (SV)" if lang == 'ES' else "SCHEDULE VARIANCE (SV)",
-         "='Control WBS & Entregables'!L32" if lang == 'ES' else "='WBS & Deliverables Tracking'!L32",
+         f"={ref_wbs}!L32",
          fmt_curr, "EV - PV (Negativo = Retraso)" if lang == 'ES' else "EV - PV (Negative = Late)"),
 
-        ('N', 'O', "DESVÍO EFECTIVO" if lang == 'ES' else "EFFICIENCY GAP",
+        ('N', 'P', "DESVÍO EFECTIVO" if lang == 'ES' else "EFFICIENCY GAP",
          "=(B11-1)", fmt_pct, "Pérdida de poder adquisitivo" if lang == 'ES' else "Purchasing power loss"),
     ]
 
@@ -354,7 +363,7 @@ def build_tab1_dashboard(ws, lang='ES'):
         c_t.alignment = align_center
 
         c_v.value = formula
-        c_v.font = Font(name=FONT_NAME, size=16, bold=True, color=COLOR_RED_TEXT if 'CPI' in title or 'SPI' in title or 'VARIANZA' in title else COLOR_NAVY_DARK)
+        c_v.font = Font(name=FONT_NAME, size=15, bold=True, color=COLOR_RED_TEXT if 'CPI' in title or 'SPI' in title or 'VARIANZA' in title else COLOR_NAVY_DARK)
         c_v.number_format = num_fmt
         c_v.fill = fill_blue_card
         c_v.alignment = align_center
@@ -389,7 +398,7 @@ def build_tab1_dashboard(ws, lang='ES'):
          f"={ref_ts}!D29",
          fmt_idx, "(BAC-EV)/(EAC-AC) [Meta revisada]" if lang == 'ES' else "(BAC-EV)/(EAC-AC) [Revised target]"),
 
-        ('N', 'O', "SEVERIDAD ALERTA" if lang == 'ES' else "ALERT STATUS",
+        ('N', 'P', "SEVERIDAD ALERTA" if lang == 'ES' else "ALERT STATUS",
          '=IF(H15>1.10, "CRÍTICA", "CONTROLADO")' if lang == 'ES' else '=IF(H15>1.10, "CRITICAL", "CONTROLLED")',
          '@', "Umbral de riesgo PMBOK" if lang == 'ES' else "PMBOK Risk Threshold"),
     ]
@@ -409,7 +418,7 @@ def build_tab1_dashboard(ws, lang='ES'):
         c_t.alignment = align_center
 
         c_v.value = formula
-        c_v.font = Font(name=FONT_NAME, size=16, bold=True, color=COLOR_RED_TEXT if 'VAC' in title else COLOR_NAVY_DARK)
+        c_v.font = Font(name=FONT_NAME, size=15, bold=True, color=COLOR_RED_TEXT if 'VAC' in title else COLOR_NAVY_DARK)
         c_v.number_format = num_fmt
         c_v.fill = fill_amber if 'VAC' in title or 'TCPI' in title else fill_card
         c_v.alignment = align_center
@@ -432,7 +441,7 @@ def build_tab1_dashboard(ws, lang='ES'):
     ws['B18'].fill = fill_formula
     ws['B18'].alignment = align_left
 
-    # Cuadrantes 2x2
+    # Cuadrantes 2x2 con filas separadas y altura suficiente (Rows 19-20 y 21-22)
     # Cuadrante 1: CPI >= 1 & SPI >= 1
     ws.merge_cells('B19:D20')
     ws['B19'] = ("CUADRANTE 1: SALUDABLE\nCPI ≥ 1.00  |  SPI ≥ 1.00\nEn plazo y dentro de presupuesto" if lang == 'ES'
@@ -459,18 +468,18 @@ def build_tab1_dashboard(ws, lang='ES'):
 
     # Cuadrante 4: CPI < 1 & SPI < 1 (CRISIS)
     ws.merge_cells('E21:G22')
-    ws['E21'] = ("CUADRANTE 4: ZONA DE CRISIS ★\nCPI < 1.00  |  SPI < 1.00\nSobrecoste activo y retraso severo" if lang == 'ES'
-                 else "QUADRANT 4: CRISIS ZONE ★\nCPI < 1.00  |  SPI < 1.00\nOver budget and behind schedule")
+    ws['E21'] = ("CUADRANTE 4: ZONA DE CRISIS [CRÍTICA]\nCPI < 1.00  |  SPI < 1.00\nSobrecoste activo y retraso severo" if lang == 'ES'
+                 else "QUADRANT 4: CRISIS ZONE [CRITICAL]\nCPI < 1.00  |  SPI < 1.00\nOver budget and behind schedule")
     ws['E21'].font = Font(name=FONT_NAME, size=9, bold=True, color=COLOR_RED_TEXT)
     ws['E21'].fill = fill_red
     ws['E21'].alignment = align_center
 
-    # Aplicar bordes a cuadrantes
+    # Bordes de cuadrantes
     for r in range(19, 23):
         for c in range(2, 8):
             ws.cell(row=r, column=c).border = border_cell
 
-    # Diagnóstico dinámico en texto
+    # Diagnóstico dinámico en texto (Filas 23 a 26 con 88 pt de altura total)
     ws.merge_cells('B23:G26')
     diag_cell = ws['B23']
     diag_formula = (
@@ -501,40 +510,50 @@ def build_tab1_dashboard(ws, lang='ES'):
         for c in range(2, 8):
             ws.cell(row=r, column=c).border = border_cell
 
-    # Placeholder / Título para el Gráfico de la Curva S
-    ws.merge_cells('I18:O18')
-    ws['I18'] = "CURVA S EJECUTIVA: PV vs EV vs AC & PROYECCIÓN EAC" if lang == 'ES' else "EXECUTIVE S-CURVE: PV vs EV vs AC & EAC FORECAST"
-    ws['I18'].font = font_section
-    ws['I18'].fill = fill_formula
-    ws['I18'].alignment = align_left
+    # Título para el Gráfico de la Curva S (Cols H a P)
+    ws.merge_cells('H18:P18')
+    ws['H18'] = "CURVA S EJECUTIVA: PV vs EV vs AC & PROYECCIÓN EAC" if lang == 'ES' else "EXECUTIVE S-CURVE: PV vs EV vs AC & EAC FORECAST"
+    ws['H18'].font = font_section
+    ws['H18'].fill = fill_formula
+    ws['H18'].alignment = align_left
 
 
 def build_tab2_wbs(ws, lang='ES'):
-    """Construye la Pestaña 2: Control WBS & Entregables."""
+    """Construye la Pestaña 2: Control WBS & Entregables calibrada a BAC = 1.200.000 €."""
     fmt_curr = '#,##0 "€"' if lang == 'ES' else '"$"#,##0'
     fmt_idx = '0.00"x"'
     fmt_pct = '0.0%'
 
-    # Anchos de columna
     col_widths = {
         'A': 3,
         'B': 8,   # WBS
         'C': 34,  # Fase
-        'D': 42,  # Entregable
-        'E': 16,  # BAC
-        'F': 11,  # Peso %
-        'G': 14,  # % Avance Real (INPUT)
-        'H': 16,  # PV a corte (INPUT)
-        'I': 16,  # AC incurrido (INPUT)
-        'J': 16,  # EV ganado (FÓRMULA)
-        'K': 16,  # CV (FÓRMULA)
-        'L': 16,  # SV (FÓRMULA)
-        'M': 12,  # CPI (FÓRMULA)
-        'N': 12,  # SPI (FÓRMULA)
-        'O': 22,  # Diagnóstico (FÓRMULA)
+        'D': 44,  # Entregable
+        'E': 17,  # BAC
+        'F': 12,  # Peso %
+        'G': 15,  # % Avance Real (INPUT)
+        'H': 17,  # PV a corte (INPUT)
+        'I': 17,  # AC incurrido (INPUT)
+        'J': 17,  # EV ganado (FÓRMULA)
+        'K': 17,  # CV (FÓRMULA)
+        'L': 17,  # SV (FÓRMULA)
+        'M': 13,  # CPI (FÓRMULA)
+        'N': 13,  # SPI (FÓRMULA)
+        'O': 24,  # Diagnóstico (FÓRMULA)
     }
     for col, width in col_widths.items():
         ws.column_dimensions[col].width = width
+
+    # Alturas de fila
+    ws.row_dimensions[1].height = 12
+    ws.row_dimensions[2].height = 24
+    ws.row_dimensions[3].height = 24
+    ws.row_dimensions[4].height = 20
+    ws.row_dimensions[5].height = 28 # Header row
+    for r in range(6, 31):
+        ws.row_dimensions[r].height = 22 # Data rows
+    ws.row_dimensions[31].height = 10    # Spacing
+    ws.row_dimensions[32].height = 28    # Totals row
 
     ws.views.sheetView[0].showGridLines = True
 
@@ -544,15 +563,14 @@ def build_tab2_wbs(ws, lang='ES'):
     title_text = "DATALARIA | CONTROL WBS & SEGUIMIENTO FÍSICO DE ENTREGABLES" if lang == 'ES' else "DATALARIA | WBS CONTROL & PHYSICAL DELIVERABLES TRACKING"
     sub_text = "Estructura de Desglose del Trabajo (25 Paquetes de Trabajo) · Imputación de Avance Real, Varianzas & Eficiencia" if lang == 'ES' else "Work Breakdown Structure (25 Work Packages) · Earned Progress, Variances & Performance Tracking"
     top_cell.value = f"{title_text}\n{sub_text}"
-    top_cell.font = Font(name=FONT_NAME, size=12, bold=True, color="FFFFFF")
+    top_cell.font = font_title
     top_cell.fill = fill_dark
-    top_cell.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+    top_cell.alignment = align_center
 
-    # Nota de celdas editables
     ws['B4'] = "CELDAS BLANCAS = Entradas del Usuario (Avance %, PV, AC) | CELDAS GRISES = Fórmulas EVM Protegidas" if lang == 'ES' else "WHITE CELLS = User Inputs (% Progress, PV, AC) | GRAY CELLS = Protected EVM Formulas"
     ws['B4'].font = Font(name=FONT_NAME, size=9, italic=True, color="64748B")
 
-    # Encabezados de tabla en Fila 5
+    # Encabezados
     headers = [
         ("B", "WBS"),
         ("C", "FASE DEL PROYECTO" if lang == 'ES' else "PROJECT PHASE"),
@@ -604,7 +622,7 @@ def build_tab2_wbs(ws, lang='ES'):
             ws[f'D{r}'].fill = fill_formula
             ws[f'D{r}'].border = border_cell
 
-            # BAC (Input editable por si el usuario cambia el presupuesto)
+            # BAC (Input editable)
             ws[f'E{r}'] = bac_val
             ws[f'E{r}'].alignment = align_right
             ws[f'E{r}'].font = font_body_bold
@@ -613,7 +631,7 @@ def build_tab2_wbs(ws, lang='ES'):
             ws[f'E{r}'].border = border_cell
             input_cells.append(f'E{r}')
 
-            # Peso Ponderado % (Fórmula referenciada a la fila total 32)
+            # Peso Ponderado %
             ws[f'F{r}'] = f'=E{r}/$E$32'
             ws[f'F{r}'].alignment = align_right
             ws[f'F{r}'].font = font_body
@@ -672,7 +690,7 @@ def build_tab2_wbs(ws, lang='ES'):
             ws[f'L{r}'].fill = fill_formula
             ws[f'L{r}'].border = border_cell
 
-            # CPI: Formula = IF(AC>0, EV/AC, 1)
+            # CPI: Formula = IF(AC>0, EV/AC, 1) (usando coma ,)
             ws[f'M{r}'] = f'=IF(I{r}>0, J{r}/I{r}, 1)'
             ws[f'M{r}'].alignment = align_right
             ws[f'M{r}'].font = font_body_bold
@@ -680,7 +698,7 @@ def build_tab2_wbs(ws, lang='ES'):
             ws[f'M{r}'].fill = fill_formula
             ws[f'M{r}'].border = border_cell
 
-            # SPI: Formula = IF(PV>0, EV/PV, 1)
+            # SPI: Formula = IF(PV>0, EV/PV, 1) (usando coma ,)
             ws[f'N{r}'] = f'=IF(H{r}>0, J{r}/H{r}, 1)'
             ws[f'N{r}'].alignment = align_right
             ws[f'N{r}'].font = font_body_bold
@@ -688,7 +706,7 @@ def build_tab2_wbs(ws, lang='ES'):
             ws[f'N{r}'].fill = fill_formula
             ws[f'N{r}'].border = border_cell
 
-            # Diagnóstico
+            # Diagnóstico (usando coma ,)
             diag_f = (
                 f'=IF(AND(M{r}>=1,N{r}>=1),"En Tiempo & Presupuesto",'
                 f'IF(AND(M{r}<0.95,N{r}<0.95),"Crítico (Sobrecoste & Retraso)",'
@@ -708,8 +726,7 @@ def build_tab2_wbs(ws, lang='ES'):
 
             current_row += 1
 
-    # Fila de Totales / Resumen consolidado en Fila 32 (después de los 25 entregables: 6 a 30 son 25 filas)
-    # current_row ahora es 31
+    # Fila de Totales en Fila 32
     total_row = 32
     ws.merge_cells(f'B{total_row}:D{total_row}')
     ws[f'B{total_row}'] = "TOTAL CONSOLIDADO DEL PROYECTO" if lang == 'ES' else "CONSOLIDATED PROJECT TOTALS"
@@ -801,29 +818,54 @@ def build_tab2_wbs(ws, lang='ES'):
 
 
 def build_tab3_timeseries(ws, lang='ES'):
-    """Construye la Pestaña 3: Serie Temporal & Proyecciones EAC."""
+    """
+    Construye la Pestaña 3: Serie Temporal & Proyecciones EAC.
+    4 Columnas contiguas para el gráfico de Curva S (Cols F, G, H, I):
+    - Col F: Σ PV ACUM.
+    - Col G: Σ EV ACUM.
+    - Col H: Σ AC ACUM.
+    - Col I: PROYECCIÓN EAC
+    - Col J: CV ACUM.
+    - Col K: SV ACUM.
+    - Col L: CPI ACUM.
+    - Col M: SPI ACUM.
+    Todas las fórmulas usan comas ',' (estándar OpenXML ECMA-376).
+    """
     fmt_curr = '#,##0 "€"' if lang == 'ES' else '"$"#,##0'
     fmt_idx = '0.00"x"'
     fmt_pct = '0.0%'
 
-    # Anchos de columna
     col_widths = {
         'A': 3,
-        'B': 10,  # Periodo
-        'C': 16,  # PV Mensual
-        'D': 16,  # EV Mensual
+        'B': 14,  # Periodo / Parámetro
+        'C': 22,  # PV Mensual / Fórmula Fuente
+        'D': 18,  # EV Mensual / Valor Parámetro
         'E': 16,  # AC Mensual
-        'F': 18,  # PV Acumulado
-        'G': 18,  # EV Acumulado
-        'H': 18,  # AC Acumulado
-        'I': 16,  # CV Acumulado
-        'J': 16,  # SV Acumulado
-        'K': 12,  # CPI Acumulado
-        'L': 12,  # SPI Acumulado
-        'M': 20,  # Proyección Curva S (EAC)
+        'F': 18,  # PV Acumulado (Chart S1)
+        'G': 18,  # EV Acumulado (Chart S2)
+        'H': 18,  # AC Acumulado (Chart S3)
+        'I': 20,  # Proyección EAC (Chart S4)
+        'J': 16,  # CV Acumulado
+        'K': 16,  # SV Acumulado
+        'L': 14,  # CPI Acumulado
+        'M': 14,  # SPI Acumulado
     }
     for col, width in col_widths.items():
         ws.column_dimensions[col].width = width
+
+    # Alturas de fila explícitas
+    ws.row_dimensions[1].height = 12
+    ws.row_dimensions[2].height = 24
+    ws.row_dimensions[3].height = 24
+    ws.row_dimensions[4].height = 20
+    ws.row_dimensions[5].height = 28 # Header row
+    for r in range(6, 18):
+        ws.row_dimensions[r].height = 22 # Data rows
+    ws.row_dimensions[18].height = 10
+    ws.row_dimensions[19].height = 10
+    ws.row_dimensions[20].height = 26 # Section header row
+    for r in range(21, 30):
+        ws.row_dimensions[r].height = 24 # Parameters rows
 
     ws.views.sheetView[0].showGridLines = True
 
@@ -833,9 +875,9 @@ def build_tab3_timeseries(ws, lang='ES'):
     title_text = "DATALARIA | EVOLUCIÓN TEMPORAL, CURVA S & MODELOS DE PROYECCIÓN EAC" if lang == 'ES' else "DATALARIA | TIME SERIES, S-CURVE & MATHEMATICAL EAC FORECASTING"
     sub_text = "Registro Mensual (Mes 1 a Mes 12) · Modelos Típico, Atípico y Compuesto · Índice de Rendimiento TCPI" if lang == 'ES' else "Monthly Tracking (M01 to M12) · Typical, Atypical & Combined EAC Models · TCPI Feasibility Index"
     top_cell.value = f"{title_text}\n{sub_text}"
-    top_cell.font = Font(name=FONT_NAME, size=12, bold=True, color="FFFFFF")
+    top_cell.font = font_title
     top_cell.fill = fill_dark
-    top_cell.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+    top_cell.alignment = align_center
 
     # Encabezados
     headers = [
@@ -846,11 +888,11 @@ def build_tab3_timeseries(ws, lang='ES'):
         ("F", "Σ PV ACUM." if lang == 'ES' else "CUMUL. PV"),
         ("G", "Σ EV ACUM." if lang == 'ES' else "CUMUL. EV"),
         ("H", "Σ AC ACUM." if lang == 'ES' else "CUMUL. AC"),
-        ("I", "CV ACUM." if lang == 'ES' else "CUMUL. CV"),
-        ("J", "SV ACUM." if lang == 'ES' else "CUMUL. SV"),
-        ("K", "CPI ACUM." if lang == 'ES' else "CUMUL. CPI"),
-        ("L", "SPI ACUM." if lang == 'ES' else "CUMUL. SPI"),
-        ("M", "PROYECCIÓN EAC" if lang == 'ES' else "EAC FORECAST"),
+        ("I", "PROYECCIÓN EAC" if lang == 'ES' else "EAC FORECAST"),
+        ("J", "CV ACUM." if lang == 'ES' else "CUMUL. CV"),
+        ("K", "SV ACUM." if lang == 'ES' else "CUMUL. SV"),
+        ("L", "CPI ACUM." if lang == 'ES' else "CUMUL. CPI"),
+        ("M", "SPI ACUM." if lang == 'ES' else "CUMUL. SPI"),
     ]
 
     for col_letter, h_text in headers:
@@ -914,92 +956,109 @@ def build_tab3_timeseries(ws, lang='ES'):
         ws[f'F{r}'].fill = fill_formula
         ws[f'F{r}'].border = border_cell
 
-        # EV Acumulado = IF(D{r}<>""; SUM(D$6:D{r}); "")
-        ws[f'G{r}'] = f'=IF(D{r}<>""; SUM(D$6:D{r}); "")'
+        # EV Acumulado: en M1-M6 calcula la suma; en M7-M12 devuelve NA() para que no trace en gráfica
+        if idx <= 5:
+            ws[f'G{r}'] = f'=SUM(D$6:D{r})'
+            ws[f'G{r}'].number_format = fmt_curr
+        else:
+            ws[f'G{r}'] = '=NA()'
         ws[f'G{r}'].alignment = align_right
         ws[f'G{r}'].font = font_body_bold
-        ws[f'G{r}'].number_format = fmt_curr
         ws[f'G{r}'].fill = fill_formula
         ws[f'G{r}'].border = border_cell
 
-        # AC Acumulado = IF(E{r}<>""; SUM(E$6:E{r}); "")
-        ws[f'H{r}'] = f'=IF(E{r}<>""; SUM(E$6:E{r}); "")'
+        # AC Acumulado: en M1-M6 calcula la suma; en M7-M12 devuelve NA()
+        if idx <= 5:
+            ws[f'H{r}'] = f'=SUM(E$6:E{r})'
+            ws[f'H{r}'].number_format = fmt_curr
+        else:
+            ws[f'H{r}'] = '=NA()'
         ws[f'H{r}'].alignment = align_right
         ws[f'H{r}'].font = font_body_bold
-        ws[f'H{r}'].number_format = fmt_curr
         ws[f'H{r}'].fill = fill_formula
         ws[f'H{r}'].border = border_cell
 
-        # CV Acumulado = IF(G{r}<>""; G{r}-H{r}; "")
-        ws[f'I{r}'] = f'=IF(G{r}<>""; G{r}-H{r}; "")'
+        # Proyección EAC (Col I): M1-M5 es NA(); M6 arranca en H11; M7-M12 interpola hasta D23 (EAC 1)
+        if idx < 5:
+            ws[f'I{r}'] = '=NA()'
+        elif idx == 5:
+            ws[f'I{r}'] = f'=H{r}'
+            ws[f'I{r}'].number_format = fmt_curr
+        else:
+            step = idx - 5
+            ws[f'I{r}'] = f'=H$11 + ($D$23 - H$11) * ({step}/6)'
+            ws[f'I{r}'].number_format = fmt_curr
         ws[f'I{r}'].alignment = align_right
-        ws[f'I{r}'].font = font_body
-        ws[f'I{r}'].number_format = fmt_curr
+        ws[f'I{r}'].font = font_body_bold
         ws[f'I{r}'].fill = fill_formula
         ws[f'I{r}'].border = border_cell
 
-        # SV Acumulado = IF(G{r}<>""; G{r}-F{r}; "")
-        ws[f'J{r}'] = f'=IF(G{r}<>""; G{r}-F{r}; "")'
+        # CV Acumulado (Col J): en M1-M6 = G{r}-H{r}; M7-M12 vacío
+        if idx <= 5:
+            ws[f'J{r}'] = f'=G{r}-H{r}'
+            ws[f'J{r}'].number_format = fmt_curr
+        else:
+            ws[f'J{r}'] = '=""'
         ws[f'J{r}'].alignment = align_right
         ws[f'J{r}'].font = font_body
-        ws[f'J{r}'].number_format = fmt_curr
         ws[f'J{r}'].fill = fill_formula
         ws[f'J{r}'].border = border_cell
 
-        # CPI Acumulado = IF(AND(G{r}<>""; H{r}>0); G{r}/H{r}; "")
-        ws[f'K{r}'] = f'=IF(AND(G{r}<>""; H{r}>0); G{r}/H{r}; "")'
+        # SV Acumulado (Col K): en M1-M6 = G{r}-F{r}; M7-M12 vacío
+        if idx <= 5:
+            ws[f'K{r}'] = f'=G{r}-F{r}'
+            ws[f'K{r}'].number_format = fmt_curr
+        else:
+            ws[f'K{r}'] = '=""'
         ws[f'K{r}'].alignment = align_right
-        ws[f'K{r}'].font = font_body_bold
-        ws[f'K{r}'].number_format = fmt_idx
+        ws[f'K{r}'].font = font_body
         ws[f'K{r}'].fill = fill_formula
         ws[f'K{r}'].border = border_cell
 
-        # SPI Acumulado = IF(AND(G{r}<>""; F{r}>0); G{r}/F{r}; "")
-        ws[f'L{r}'] = f'=IF(AND(G{r}<>""; F{r}>0); G{r}/F{r}; "")'
+        # CPI Acumulado (Col L): en M1-M6 = G{r}/H{r} con IF(H>0); M7-M12 vacío
+        if idx <= 5:
+            ws[f'L{r}'] = f'=IF(H{r}>0, G{r}/H{r}, 1)'
+            ws[f'L{r}'].number_format = fmt_idx
+        else:
+            ws[f'L{r}'] = '=""'
         ws[f'L{r}'].alignment = align_right
         ws[f'L{r}'].font = font_body_bold
-        ws[f'L{r}'].number_format = fmt_idx
         ws[f'L{r}'].fill = fill_formula
         ws[f'L{r}'].border = border_cell
 
-        # Proyección EAC (Para trazar la curva S desde el mes 6 hasta el mes 12)
-        # Mes 6: igual a H11 (AC acumulado a corte)
-        # Meses 7-12: interpolación lineal hacia EAC_1 ($D$23)
-        if idx < 5:
-            ws[f'M{r}'] = ""
-        elif idx == 5:
-            ws[f'M{r}'] = f'=H{r}'
+        # SPI Acumulado (Col M): en M1-M6 = G{r}/F{r} con IF(F>0); M7-M12 vacío
+        if idx <= 5:
+            ws[f'M{r}'] = f'=IF(F{r}>0, G{r}/F{r}, 1)'
+            ws[f'M{r}'].number_format = fmt_idx
         else:
-            step = idx - 5
-            ws[f'M{r}'] = f'=H$11 + ($D$23 - H$11) * ({step}/6)'
-
+            ws[f'M{r}'] = '=""'
         ws[f'M{r}'].alignment = align_right
         ws[f'M{r}'].font = font_body_bold
-        ws[f'M{r}'].number_format = fmt_curr
         ws[f'M{r}'].fill = fill_formula
         ws[f'M{r}'].border = border_cell
 
     # 2. MODELOS MATEMÁTICOS DE ESTIMACIÓN A LA FINALIZACIÓN (EAC)
-    # Filas 20 a 35
-    ws.merge_cells('B20:G20')
-    ws['B20'] = "MODELOS COMPARATIVOS DE ESTIMACIÓN A LA FINALIZACIÓN (EAC) & TCPI" if lang == 'ES' else "COMPARATIVE EAC FORECASTING MODELS & TO-COMPLETE PERFORMANCE INDEX (TCPI)"
+    # Filas 20 a 29
+    ws.merge_cells('B20:D20')
+    ws['B20'] = "MODELOS COMPARATIVOS DE ESTIMACIÓN EAC & TCPI" if lang == 'ES' else "COMPARATIVE EAC FORECASTING MODELS & TCPI"
     ws['B20'].font = font_section
     ws['B20'].fill = fill_dark
     ws['B20'].alignment = align_left
 
     ref_wbs = "'Control WBS & Entregables'" if lang == 'ES' else "'WBS & Deliverables Tracking'"
 
-    # Tabla de parámetros base
+    # Tabla de parámetros base: Col B (Parámetro), Col C (Fórmula descrita), Col D (Fórmula calculada)
+    # L11 es CPI en M06, M11 es SPI en M06, G11 es EV en M06, H11 es AC en M06, F11 es PV en M06.
     models_def = [
         ("B21", "C21", "D21", "PARÁMETRO" if lang == 'ES' else "PARAMETER", "FÓRMULA / FUENTE" if lang == 'ES' else "FORMULA / SOURCE", "VALOR" if lang == 'ES' else "VALUE"),
-        ("B22", "C22", "D22", "Presupuesto Total (BAC)" if lang == 'ES' else "Budget at Completion (BAC)", f"={ref_wbs}!E32", f"={ref_wbs}!E32"),
-        ("B23", "C23", "D23", "EAC 1: Escenario Típico (Mantiene CPI)" if lang == 'ES' else "EAC 1: Typical Scenario (Keeps CPI)", "=BAC / CPI", f"=D22/K11"),
-        ("B24", "C24", "D24", "EAC 2: Escenario Atípico (Resto a Plan)" if lang == 'ES' else "EAC 2: Atypical Scenario (Rest to Plan)", "=AC + (BAC - EV)", f"=H11 + (D22 - G11)"),
-        ("B25", "C25", "D25", "EAC 3: Escenario Compuesto (CPI x SPI)" if lang == 'ES' else "EAC 3: Combined Scenario (CPI x SPI)", "=AC + (BAC - EV)/(CPI*SPI)", f"=H11 + (D22 - G11)/(K11*L11)"),
-        ("B26", "C26", "D26", "Varianza al Cierre VAC 1 (BAC - EAC 1)" if lang == 'ES' else "Variance at Completion VAC 1", "=BAC - EAC 1", "=D22 - D23"),
-        ("B27", "C27", "D27", "Varianza al Cierre VAC 3 (BAC - EAC 3)" if lang == 'ES' else "Variance at Completion VAC 3", "=BAC - EAC 3", "=D22 - D25"),
-        ("B28", "C28", "D28", "TCPI (Para Cumplir BAC Original)" if lang == 'ES' else "TCPI (To Achieve Original BAC)", "=(BAC - EV) / (BAC - AC)", "=(D22 - G11)/(D22 - H11)"),
-        ("B29", "C29", "D29", "TCPI (Para Cumplir Nuevo EAC 1)" if lang == 'ES' else "TCPI (To Achieve Revised EAC 1)", "=(BAC - EV) / (EAC 1 - AC)", "=(D22 - G11)/(D23 - H11)"),
+        ("B22", "C22", "D22", "Presupuesto Total (BAC)" if lang == 'ES' else "Budget at Completion (BAC)", "Línea Base Aprobada (WBS)" if lang == 'ES' else "Approved Baseline (WBS)", f"={ref_wbs}!E32"),
+        ("B23", "C23", "D23", "EAC 1 (CPI Típico)" if lang == 'ES' else "EAC 1 (Typical CPI)", "BAC / CPI", "=D22/L11"),
+        ("B24", "C24", "D24", "EAC 2 (Atípico)" if lang == 'ES' else "EAC 2 (Atypical Rest)", "AC + (BAC - EV)", "=H11 + (D22 - G11)"),
+        ("B25", "C25", "D25", "EAC 3 (Compuesto)" if lang == 'ES' else "EAC 3 (Combined CPIxSPI)", "AC + (BAC - EV)/(CPI*SPI)", "=H11 + (D22 - G11)/(L11*M11)"),
+        ("B26", "C26", "D26", "Varianza Cierre VAC 1" if lang == 'ES' else "Variance at Close VAC 1", "BAC - EAC 1", "=D22 - D23"),
+        ("B27", "C27", "D27", "Varianza Cierre VAC 3" if lang == 'ES' else "Variance at Close VAC 3", "BAC - EAC 3", "=D22 - D25"),
+        ("B28", "C28", "D28", "TCPI (BAC Original)" if lang == 'ES' else "TCPI (To Achieve BAC)", "(BAC - EV) / (BAC - AC)", "=(D22 - G11)/(D22 - H11)"),
+        ("B29", "C29", "D29", "TCPI (EAC 1 Revisado)" if lang == 'ES' else "TCPI (To Achieve EAC 1)", "(BAC - EV) / (EAC 1 - AC)", "=(D22 - G11)/(D23 - H11)"),
     ]
 
     for c_p, c_f, c_v, param, formula_desc, val_formula in models_def:
@@ -1023,14 +1082,14 @@ def build_tab3_timeseries(ws, lang='ES'):
         elif "TCPI" in param:
             ws[c_v].number_format = fmt_idx
 
-    # Panel lateral de gobernanza TCPI (Cols E a M en filas 21 a 29)
-    ws.merge_cells('E21:M29')
-    tcpi_box = ws['E21']
+    # Panel lateral de gobernanza TCPI (Cols E a M en filas 20 a 29)
+    ws.merge_cells('E20:M29')
+    tcpi_box = ws['E20']
     tcpi_text = (
         "ANÁLISIS DE VIABILIDAD DIRECTIVA TCPI (PMBOK / ANSI-748):\n\n"
         "1. TCPI (BAC) = 1.14x:\n"
         "   Para recuperar el presupuesto original de 1.200.000 €, el equipo de proyecto debería alcanzar\n"
-        "   una eficiencia de ejecución del 114% en todo el trabajo restante (un incremento del 32% respecto al ritmo actual).\n"
+        "   una eficiencia de ejecución del 114% en todo el trabajo restante (un salto de productividad del 32,5%).\n"
         "   -> CONCLUSIÓN: Matemáticamente inviable según el histórico empírico del PMBOK (umbral crítico: >1.10x).\n\n"
         "2. TCPI (EAC 1) = 0.86x:\n"
         "   Si el Comité aprueba la reprogramación presupuestaria al techo EAC de 1.395.349 €,\n"
@@ -1042,11 +1101,11 @@ def build_tab3_timeseries(ws, lang='ES'):
         "TCPI GOVERNANCE & FEASIBILITY ANALYSIS (PMBOK / ANSI-748):\n\n"
         "1. TCPI (BAC) = 1.14x:\n"
         "   To recover the original $1,200,000 budget, the project team would need to operate at 114% efficiency\n"
-        "   across all remaining deliverables (a 32% productivity leap over current performance).\n"
+        "   across all remaining deliverables (a 32.5% productivity surge over current performance).\n"
         "   -> CONCLUSION: Statistically unviable per PMBOK empirical benchmarks (critical cutoff: >1.10x).\n\n"
         "2. TCPI (EAC 1) = 0.86x:\n"
         "   If the Executive Board ratifies a revised budget baseline at EAC 1 ($1,395,349),\n"
-        "   the remaining project scope is 100% achievable at the current burn rate.\n\n"
+        "   the remaining project scope is 100% achievable at the current demonstrated burn rate.\n\n"
         "3. REQUIRED RESOLUTION:\n"
         "   Formally re-baseline the budget with a $195,349 management reserve release,\n"
         "   paired with Fast-Tracking in Phase 3 to curb critical path schedule delay."
@@ -1056,7 +1115,7 @@ def build_tab3_timeseries(ws, lang='ES'):
     tcpi_box.fill = fill_blue_card
     tcpi_box.alignment = Alignment(horizontal="left", vertical="top", wrap_text=True)
 
-    for r in range(21, 30):
+    for r in range(20, 30):
         for c in range(5, 14):
             ws.cell(row=r, column=c).border = border_cell
 
@@ -1069,9 +1128,9 @@ def build_tab4_action_plan(ws, lang='ES'):
         'A': 3,
         'B': 8,   # ID
         'C': 34,  # Entregable
-        'D': 24,  # Diagnóstico
+        'D': 25,  # Diagnóstico
         'E': 22,  # Palanca
-        'F': 42,  # Medida Detallada
+        'F': 44,  # Medida Detallada
         'G': 18,  # Responsable
         'H': 14,  # Delta CPI
         'I': 14,  # Delta SPI
@@ -1081,6 +1140,15 @@ def build_tab4_action_plan(ws, lang='ES'):
     for col, width in col_widths.items():
         ws.column_dimensions[col].width = width
 
+    ws.row_dimensions[1].height = 12
+    ws.row_dimensions[2].height = 24
+    ws.row_dimensions[3].height = 24
+    ws.row_dimensions[4].height = 20
+    ws.row_dimensions[5].height = 28 # Header row
+    for r in range(6, 15):
+        ws.row_dimensions[r].height = 26 # Action rows with ample breathing room
+    ws.row_dimensions[15].height = 28    # Totals row
+
     ws.views.sheetView[0].showGridLines = True
 
     # Banner
@@ -1089,9 +1157,9 @@ def build_tab4_action_plan(ws, lang='ES'):
     title_text = "DATALARIA | PLAN DE ACCIÓN, MITIGACIÓN & RECUPERACIÓN OPERATIVA" if lang == 'ES' else "DATALARIA | ACTION PLAN, MITIGATION & OPERATIONAL RECOVERY"
     sub_text = "Matriz de Intervención sobre Paquetes de Trabajo en Crisis · Crashing, Fast-Tracking, Descope & Compromisos C-Level" if lang == 'ES' else "Intervention Matrix for At-Risk Deliverables · Crashing, Fast-Tracking, Descope & C-Level Sign-Offs"
     top_cell.value = f"{title_text}\n{sub_text}"
-    top_cell.font = Font(name=FONT_NAME, size=12, bold=True, color="FFFFFF")
+    top_cell.font = font_title
     top_cell.fill = fill_dark
-    top_cell.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+    top_cell.alignment = align_center
 
     headers = [
         ("B", "ID"),
@@ -1210,7 +1278,7 @@ def build_tab4_action_plan(ws, lang='ES'):
         ws[f'K{r}'].border = border_cell
         input_cells.append(f'K{r}')
 
-    # Fila resumen en fila 15
+    # Fila resumen
     ws.merge_cells('B15:G15')
     ws['B15'] = "IMPACTO CONSOLIDADO ESTIMADO DEL PLAN DE RECUPERACIÓN" if lang == 'ES' else "CONSOLIDATED ESTIMATED RECOVERY IMPACT"
     ws['B15'].font = font_tbl_header
@@ -1242,45 +1310,68 @@ def build_tab4_action_plan(ws, lang='ES'):
 
 def add_scurve_chart_to_dashboard(ws_dash, ws_ts, lang='ES'):
     """
-    Agrega el gráfico de la Curva S ejecutiva nativo en la Pestaña 1 (Dashboard),
-    alimentado de las series temporales de la Pestaña 3.
-    Series:
-    - Col F (F5:F17): Planned Value (PV)
-    - Col G (G5:G17): Earned Value (EV)
-    - Col H (H5:H17): Actual Cost (AC)
-    - Col M (M5:M17): Proyección EAC
+    Agrega el gráfico de la Curva S ejecutiva nativo en la Pestaña 1 (Dashboard).
+    Datos contiguos desde la Pestaña 3:
+    - Series: Cols F (Σ PV), G (Σ EV), H (Σ AC), I (PROYECCIÓN EAC) [Cols 6 a 9]
+    - Categorías: Col B (M01 a M12) [Col 2, Rows 6 a 17]
+    Configuración completa de ejes visibles, etiquetas y colores corporativos.
     """
     chart = LineChart()
-    chart.title = "CURVA S EJECUTIVA: PV vs EV vs AC & PROYECCIÓN EAC" if lang == 'ES' else "EXECUTIVE S-CURVE: PV vs EV vs AC & EAC FORECAST"
-    chart.style = 13
-    chart.y_axis.title = "Euros (€)" if lang == 'ES' else "Dollars ($)"
-    chart.x_axis.title = "Mes / Periodo" if lang == 'ES' else "Month / Period"
-    chart.width = 17
-    chart.height = 11
+    chart.title = None  # El título ejecutivo ya se muestra en la cabecera H18 del Dashboard
+    chart.y_axis.title = None  # Los valores numéricos del eje Y ya incluyen el símbolo de divisa (€ / $)
+    chart.x_axis.title = None  # Los periodos M01 a M12 son autoexplicativos y evitan colisiones de texto
+    chart.width = 21.0
+    chart.height = 12.8
 
-    # Datos: Cols F, G, H, M (Cols 6, 7, 8, 13)
-    # openpyxl add_data agrega un bloque contiguo. Podemos agregar Reference para F a H y luego M.
-    data_ref_main = Reference(ws_ts, min_col=6, min_row=5, max_col=8, max_row=17)
-    cats_ref = Reference(ws_ts, min_col=2, min_row=6, max_row=17)
+    # 4 columnas contiguas: F (6), G (7), H (8), I (9)
+    data = Reference(ws_ts, min_col=6, min_row=5, max_col=9, max_row=17)
+    chart.add_data(data, titles_from_data=True)
 
-    chart.add_data(data_ref_main, titles_from_data=True)
-    chart.set_categories(cats_ref)
+    # Inyectar categorías de texto explícitas mediante StrRef y strCache para renderizado nativo garantizado
+    tab_name = "Serie Temporal & Proyecciones" if lang == 'ES' else "Time Series & EAC Forecasting"
+    months = [f"M{i:02d}" for i in range(1, 13)]
+    str_vals = [StrVal(idx=i, v=m) for i, m in enumerate(months)]
+    str_data = StrData(pt=str_vals)
+    cat_ref_formula = f"'{tab_name}'!$B$6:$B$17"
 
-    # Agregar serie de proyección EAC (Col M = 13)
-    data_ref_eac = Reference(ws_ts, min_col=13, min_row=5, max_col=13, max_row=17)
-    chart.add_data(data_ref_eac, titles_from_data=True)
+    for s in chart.series:
+        s.cat = AxDataSource(strRef=StrRef(f=cat_ref_formula, strCache=str_data))
 
-    # Colocar en Dashboard a partir de la celda I19
-    ws_dash.add_chart(chart, "I19")
+    # Estilizar cada serie con colores corporativos Datalaria
+    # Series 0: PV Acumulado (Azul #2563EB)
+    # Series 1: EV Acumulado (Verde #10B981)
+    # Series 2: AC Acumulado (Rojo #DC2626)
+    # Series 3: EAC Proyección (Púrpura #7C3AED, discontinuo)
+    colors = ["2563EB", "10B981", "DC2626", "7C3AED"]
+    for idx, c_hex in enumerate(colors):
+        s = chart.series[idx]
+        s.graphicalProperties.line.solidFill = c_hex
+        s.graphicalProperties.line.width = 25000 if idx < 3 else 22000
+        if idx == 3:
+            s.graphicalProperties.line.dashStyle = "dash"
+
+    # Configuración de visibilidad de ejes y números (ECMA-376)
+    chart.x_axis.delete = False
+    chart.x_axis.axPos = "b"  # Posición inferior (Bottom)
+    chart.x_axis.tickLblPos = "nextTo"
+    chart.x_axis.crosses = "autoZero"
+
+    chart.y_axis.delete = False
+    chart.y_axis.axPos = "l"  # Posición izquierda (Left)
+    chart.y_axis.tickLblPos = "nextTo"
+    chart.y_axis.crosses = "autoZero"
+    chart.y_axis.number_format = '#,##0 €' if lang == 'ES' else '$#,##0'
+    chart.y_axis.majorGridlines = ChartLines()
+    chart.legend.legendPos = "r"
+
+    ws_dash.add_chart(chart, "H19")
 
 
 def build_workbook(lang='ES'):
     """Construye el libro completo de 4 pestañas y aplica la política de protección."""
     wb = openpyxl.Workbook()
-    # Eliminar hoja por defecto
     default_sheet = wb.active
 
-    # Nombres de pestañas
     if lang == 'ES':
         title_tab1 = "Dashboard Ejecutivo EVM"
         title_tab2 = "Control WBS & Entregables"
@@ -1316,16 +1407,9 @@ def build_workbook(lang='ES'):
 
     # Aplicar protección ECMA-376
     print(f"[{lang}] Aplicando política de protección ECMA-376 con contraseña oficial...")
-    # Pestaña 1: No hay inputs de usuario directos (es puramente de visualización y control)
     finalize_protection(ws1, input_ranges=[])
-
-    # Pestaña 2: Celdas de entrada desbloqueadas
     finalize_protection(ws2, input_ranges=tab2_inputs)
-
-    # Pestaña 3: Celdas de entrada mensuales desbloqueadas
     finalize_protection(ws3, input_ranges=tab3_inputs)
-
-    # Pestaña 4: Matriz de acciones correctivas desbloqueada para edición de usuarios
     finalize_protection(ws4, input_ranges=tab4_inputs)
 
     return wb
