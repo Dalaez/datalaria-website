@@ -1,6 +1,6 @@
 ---
 title: "Quantitative Corporate Strategy: The 5-Step Executive Framework for Boardrooms"
-date: 2026-10-09
+date: 2026-11-10
 draft: false
 categories: ["Corporate Strategy", "Corporate Finance", "Executive Management", "Decision Making"]
 tags: ["Corporate Strategy", "Capital Allocation", "PESTEL", "Porter Five Forces", "Quantitative SWOT", "TOWS Matrix", "BCG Matrix", "McKinsey GE Matrix", "ROIC", "Board of Directors", "C-Suite"]

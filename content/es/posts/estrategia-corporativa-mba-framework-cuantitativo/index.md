@@ -1,6 +1,6 @@
 ---
 title: "Estrategia Corporativa Cuantitativa: El Framework Integral de 5 Pasos para Comités de Dirección"
-date: 2026-10-09
+date: 2026-11-10
 draft: false
 categories: ["Estrategia Corporativa", "Finanzas Corporativas", "Management", "Toma de Decisiones"]
 tags: ["Estrategia Corporativa", "Asignación de Capital", "PESTEL", "5 Fuerzas de Porter", "DAFO Cuantitativo", "Matriz CAME", "Matriz BCG", "Matriz McKinsey GE", "ROIC", "Comité de Dirección", "C-Level"]
