@@ -1,6 +1,6 @@
 ---
 title: "John von Neumann: The Father of Computer Architecture, Game Theory, and the Origin of the Singularity"
-date: 2026-11-08
+date: 2026-10-10
 draft: false
 categories: ["casos_exito", "Inteligencia Artificial", "Ingeniería"]
 tags: ["john von neumann", "von neumann architecture", "game theory", "singularity", "agi", "los alamos", "computer science", "artificial intelligence", "history"]
@@ -26,7 +26,7 @@ Today, every smartphone in our pockets, every cloud server, every supercomputing
 
 Continuing our series on pioneering thinkers at Datalaria—including [Ada Lovelace](/en/posts/ada_lovelace/), [Alan Turing](/en/posts/alan_turing/), [Claude Shannon](/en/posts/claude_shannon/), [Thomas Bayes](/en/posts/thomas_bayes/), and [J. Robert Oppenheimer](/en/posts/oppenheimer/)—this article explores the astonishing life of John von Neumann, his foundational contributions to computing, the notorious "bottleneck" that now throttles modern AI hardware, and the historic prophecy in which he coined, for the first time in human history, the concept of the **Technological Singularity**.
 
-{{< youtube A2dYq1h821w >}}
+{{< youtube IPMjVcLiNKc >}}
 
 ---
 
@@ -222,7 +222,6 @@ We would love to read your reflections. Share your thoughts in the comments belo
 * [**John von Neumann (1945)**: *First Draft of a Report on the EDVAC* — University of Pennsylvania](https://archive.org/details/firstdraftofrepo00vonn)
 * [**John von Neumann & Oskar Morgenstern (1944)**: *Theory of Games and Economic Behavior* — Princeton University Press](https://press.princeton.edu/books/paperback/9780691130613/theory-of-games-and-economic-behavior)
 * [**Stanisław Ulam (1958)**: *John von Neumann 1903–1957* — Bulletin of the American Mathematical Society](https://projecteuclid.org/journals/bulletin-of-the-american-mathematical-society/volume-64/issue-3P2/John-von-Neumann-19031957/bams/1183522373.pdf)
-* [**YouTube**: *John von Neumann — The Man Who Taught Machines to Think*](https://www.youtube.com/watch?v=A2dYq1h821w)
 * [**Datalaria**: Alan Turing — The Genius Who Cracked Enigma and Asked if Machines Could Think](/en/posts/alan_turing/)
 * [**Datalaria**: J. Robert Oppenheimer — From Monte Carlo to the Ethical Dilemma of AGI](/en/posts/oppenheimer/)
 * [**Datalaria**: Claude Shannon — The Father of Information Theory](/en/posts/claude_shannon/)

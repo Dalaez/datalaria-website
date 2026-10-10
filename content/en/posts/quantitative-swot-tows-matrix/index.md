@@ -412,7 +412,7 @@ If you need to deploy this methodology tomorrow morning within your enterprise o
   badge="⭐ Tier-1 Consulting Standard"
   icon="🎯"
   features="Advanced Excel Model (.xlsx) with 4 interconnected tabs, protected matrix formulas, and 10 dynamic factors|Cartesian Scatter Chart with real-time vector momentum calculation and dominant posture logic|C-Level PowerPoint Presentation (.pptx 16:9) built on Slide Master with Minto Action Titles|Official Methodology Guide in PDF (5 pages) with mathematical proofs, case study, and Boardroom FAQ|100% Guaranteed Compatibility with Microsoft Excel and Google Sheets without VBA macros"
-  checkout_url="https://datalaria.lemonsqueezy.com/buy/swot-tows-matrix"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/957a4ecf-94d1-45f8-9ff7-ea032e8008af"
   button_text="Download Complete Pack (.ZIP) • 5€"
 >}}
 The compressed archive contains the production **Excel (.xlsx)** model with formulas protected under password provided in the instructions and editable inputs, the widescreen **PowerPoint (.pptx 16:9)** deck ready for boardroom projection, the **Methodology Guide in PDF** (5 pages), and Google Sheets import instructions.

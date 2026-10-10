@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datalaria | Mockup Minimalista v2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ==========================================================================
+       SISTEMA DE DISEÑO MINIMALISTA (Inspirado en hugo-bootstrap-theme & PaperMod)
+       ========================================================================== */
+    :root {
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-mono: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      
+      /* Modo Claro (Limpio, espacioso, sutil) */
+      --bg-body: #ffffff;
+      --bg-card: #ffffff;
+      --bg-subtle: #f8fafc;
+      --bg-hover: #f1f5f9;
+      --border: #e2e8f0;
+      --border-subtle: #edf2f7;
+      --border-focus: #cbd5e1;
+      
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      
+      --accent: #0284c7;
+      --accent-hover: #0369a1;
+      --accent-soft: rgba(2, 132, 199, 0.08);
+      
+      --radius: 10px;
+      --radius-sm: 6px;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+      --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.04);
+      --shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.07);
+    }
+
+    [data-theme="dark"] {
+      /* Modo Oscuro (Elegante, contrastado y sin estridencias) */
+      --bg-body: #0b0f17;
+      --bg-card: #111827;
+      --bg-subtle: #162032;
+      --bg-hover: #1f2d45;
+      --border: #1f2937;
+      --border-subtle: #1e293b;
+      --border-focus: #374151;
+      
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-light: #64748b;
+      
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --accent-soft: rgba(56, 189, 248, 0.12);
+      
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+      --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.25);
+      --shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.6;
+      transition: background-color 0.25s ease, color 0.25s ease;
+      padding-top: 36px; /* Para la barra de aviso */
+    }
+
+    /* Barra informativa de Fase 0 */
+    .mockup-topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--bg-subtle);
+      border-bottom: 1px solid var(--border);
+      padding: 6px 16px;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+    .mockup-pill {
+      background: var(--accent-soft);
+      color: var(--accent);
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.72rem;
+    }
+
+    .container {
+      max-width: 860px; /* Ancho editorial óptimo para lectura limpia y minimalista */
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ==========================================================================
+       HEADER & NAVBAR
+       ========================================================================== */
+    header.site-header {
+      padding: 18px 0;
+      position: sticky;
+      top: 36px;
+      z-index: 900;
+      background: var(--bg-body);
+      background: rgba(var(--bg-body), 0.9);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: border-color 0.2s;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text-main);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .brand-icon {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      list-style: none;
+    }
+
+    .nav-item a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      transition: all 0.2s;
+    }
+    .nav-item a:hover {
+      color: var(--text-main);
+      background: var(--bg-hover);
+    }
+    .nav-item.nav-recursos a {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .nav-badge {
+      font-size: 0.65rem;
+      background: var(--accent-soft);
+      color: var(--accent);
+      padding: 2px 6px;
+      border-radius: 999px;
+      margin-left: 4px;
+      font-weight: 700;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: 8px;
+    }
+
+    .theme-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      transition: all 0.2s;
+    }
+    .theme-btn:hover {
+      color: var(--text-main);
+      border-color: var(--border-focus);
+      background: var(--bg-hover);
+    }
+
+    /* ==========================================================================
+       MASTHEAD CENTRAL (Identidad Datalaria)
+       ========================================================================== */
+    .masthead {
+      text-align: center;
+      padding: 70px 0 50px 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .masthead-logo {
+      width: 105px;
+      height: 105px;
+      object-fit: contain;
+      margin-bottom: 20px;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+    .masthead-logo:hover {
+      transform: scale(1.04);
+    }
+
+    .masthead-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+      margin-bottom: 12px;
+    }
+
+    .masthead-bio {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 620px;
+      margin: 0 auto 18px auto;
+      line-height: 1.65;
+    }
+
+    .masthead-km0 {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .masthead-social {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .social-btn {
+      color: var(--text-muted);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .social-btn:hover {
+      color: var(--text-main);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================================
+       SECCIONES MINIMALISTAS
+       ========================================================================== */
+    .section-block {
+      padding: 55px 0 45px 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .section-block:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-heading {
+      margin-bottom: 28px;
+    }
+
+    .section-tag {
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 6px;
+      display: inline-block;
+    }
+
+    .section-title {
+      font-size: 1.55rem;
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .section-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      max-width: 650px;
+    }
+
+    /* ==========================================================================
+       SECCIÓN 1: RECURSOS (HUB ESCALABLE)
+       ========================================================================== */
+    .recursos-lead-box {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 26px;
+      margin-bottom: 20px;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+    .recursos-lead-box:hover {
+      border-color: var(--border-focus);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .recursos-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .recursos-lead-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .recursos-lead-badge {
+      font-size: 0.72rem;
+      background: var(--accent-soft);
+      color: var(--accent);
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    .recursos-lead-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 18px;
+    }
+
+    .recursos-items-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    @media (max-width: 768px) {
+      .recursos-items-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .recurso-card-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s;
+    }
+    .recurso-card-item:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .recurso-item-icon {
+      font-size: 1.35rem;
+      margin-bottom: 8px;
+    }
+
+    .recurso-item-name {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .recurso-item-detail {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin-bottom: 10px;
+      flex-grow: 1;
+    }
+
+    .recurso-item-price {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      font-family: var(--font-mono);
+    }
+
+    .recursos-footer-action {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 0.84rem;
+    }
+
+    .link-more {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap 0.2s;
+    }
+    .link-more:hover {
+      gap: 8px;
+      color: var(--accent-hover);
+    }
+
+    /* ==========================================================================
+       SECCIÓN 2: APLICACIONES & EXPERIMENTOS (CON JUEGOS INTEGRADOS)
+       ========================================================================== */
+    .apps-minimal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 680px) {
+      .apps-minimal-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .app-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+    .app-box:hover {
+      border-color: var(--border-focus);
+      background: var(--bg-subtle);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .app-box-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .app-box-icon {
+      font-size: 1.6rem;
+      line-height: 1;
+      padding: 8px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+    }
+
+    .app-box-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .app-box-badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 999px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+    .badge-arcade {
+      background: rgba(236, 72, 153, 0.1);
+      color: #ec4899;
+      border-color: rgba(236, 72, 153, 0.2);
+    }
+
+    .app-box-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin-top: 4px;
+    }
+
+    .app-box-arrow {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      align-self: flex-end;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* ==========================================================================
+       SECCIÓN 3: LAS 4 CATEGORÍAS DEL BLOG (MINIMALISTA)
+       ========================================================================== */
+    .cat-selector-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .cat-selector-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .cat-pill-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: var(--text-main);
+    }
+    .cat-pill-btn:hover {
+      border-color: var(--border-focus);
+      background: var(--bg-subtle);
+    }
+    .cat-pill-btn.active {
+      background: var(--bg-subtle);
+      border-color: var(--accent);
+      box-shadow: inset 0 0 0 1px var(--accent);
+    }
+
+    .cat-pill-icon {
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+      display: block;
+    }
+    .cat-pill-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .cat-pill-count {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    /* Lista limpia de artículos de la categoría seleccionada */
+    .cat-posts-list {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .cat-post-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 13px 18px;
+      border-bottom: 1px solid var(--border-subtle);
+      text-decoration: none;
+      color: inherit;
+      transition: background-color 0.15s ease;
+      gap: 16px;
+    }
+    .cat-post-row:last-child {
+      border-bottom: none;
+    }
+    .cat-post-row:hover {
+      background-color: var(--bg-subtle);
+    }
+
+    .cat-post-main {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .cat-post-row:hover .cat-post-main {
+      color: var(--accent);
+    }
+
+    .cat-post-date {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      font-family: var(--font-mono);
+      white-space: nowrap;
+    }
+
+    /* ==========================================================================
+       SECCIÓN 4: BRÚJULA DEL DESCUBRIMIENTO (MINIMALISTA)
+       ========================================================================== */
+    .discovery-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 800px) {
+      .discovery-cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .disco-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+    }
+    .disco-card:hover {
+      border-color: var(--border-focus);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .disco-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .disco-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .tag-pop { color: #dc2626; }
+    .tag-lat { color: #16a34a; }
+    .tag-rnd { color: #9333ea; }
+
+    .btn-reroll {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.72rem;
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s;
+    }
+    .btn-reroll:hover {
+      color: var(--text-main);
+      border-color: var(--text-main);
+      background: var(--bg-subtle);
+    }
+
+    .disco-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-main);
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    .disco-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin-bottom: 14px;
+      flex-grow: 1;
+    }
+
+    .disco-link {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .disco-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ==========================================================================
+       FOOTER
+       ========================================================================== */
+    footer.site-footer {
+      padding: 40px 0 30px 0;
+      margin-top: 50px;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 16px;
+      list-style: none;
+    }
+    .footer-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    .footer-nav a:hover {
+      color: var(--text-main);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BARRA INFORMATIVA DE ITERACIÓN -->
+  <div class="mockup-topbar">
+    <div>
+      <span class="mockup-pill">Fase 0 • Mockup v2</span>
+      &nbsp; <span>Diseño minimalista: Masthead central continuo + Secciones hacia abajo</span>
+    </div>
+    <div style="font-family: var(--font-mono); font-size: 0.72rem;">
+      98 Artículos · 6 Apps · Recursos Hub
+    </div>
+  </div>
+
+  <!-- HEADER Y NAVEGACIÓN -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="#" class="brand">
+        <img src="static/images/datalaria_logo_transp.png" alt="Datalaria" class="brand-icon" onerror="this.src='/images/datalaria_logo_transp.png';">
+        <span>Datalaria</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="#blog">Blog</a></li>
+          <li class="nav-item nav-recursos">
+            <a href="#recursos">Recursos<span class="nav-badge">Pro</span></a>
+          </li>
+          <li class="nav-item"><a href="#apps">Apps</a></li>
+          <li class="nav-item"><a href="/es/sobre-mi/">Sobre mí</a></li>
+          <li class="nav-item"><a href="/es/contact/">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-btn" id="themeToggleBtn" title="Cambiar tema">
+          <span id="themeLabel">Modo Oscuro</span>
+          <svg id="themeIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- =======================================================================
+         MASTHEAD CENTRAL (Identidad Datalaria)
+         ======================================================================= -->
+    <section class="masthead">
+      <img src="static/images/datalaria_logo_transp.png" alt="Datalaria" class="masthead-logo" onerror="this.src='/images/datalaria_logo_transp.png';">
+      <h1 class="masthead-title">Datalaria</h1>
+      <p class="masthead-bio">
+        Bienvenido a mi cuaderno de bitácora digital. Aquí exploro y documento mi viaje de aprendizaje en el mundo de los datos, la inteligencia artificial, la tecnología y la industria.
+      </p>
+      <p class="masthead-km0">Este es mi kilómetro 0.</p>
+
+      <div class="masthead-social">
+        <a href="https://github.com/Dalaez" class="social-btn" title="GitHub" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/daniel-al%C3%A1ez-ria%C3%B1o/" class="social-btn" title="LinkedIn" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </a>
+        <a href="https://twitter.com/Dalaez" class="social-btn" title="Twitter / X" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECCIÓN 1: RECURSOS (Hub Escalable para Monetización)
+         ======================================================================= -->
+    <section class="section-block" id="recursos">
+      <div class="section-heading">
+        <span class="section-tag">01 / Recursos</span>
+        <h2 class="section-title">Recursos & Packs Profesionales</h2>
+        <p class="section-desc">
+          Modelos cuantitativos, plantillas de decisión y guías metodológicas diseñadas para el ámbito profesional, comités directivos y control corporativo.
+        </p>
+      </div>
+
+      <!-- Bloque destacado del Hub de Recursos -->
+      <div class="recursos-lead-box">
+        <div class="recursos-top-row">
+          <div class="recursos-lead-title">
+            <span>⚡ Executive Decision Packs</span>
+            <span class="recursos-lead-badge">Estreno Inminente</span>
+          </div>
+          <span style="font-size: 0.8rem; color: var(--text-light); font-family: var(--font-mono);">Del cálculo cuantitativo a la aprobación de Comité</span>
+        </div>
+        <p class="recursos-lead-desc">
+          Diseñados para defender decisiones estratégicas en comités de dirección: modelos en Excel protegidos con fórmulas matriciales, diapositivas PowerPoint 16:9 con Pirámide de Minto y guías metodológicas en PDF.
+        </p>
+
+        <!-- Muestrario de los tipos de Recursos -->
+        <div class="recursos-items-grid">
+          
+          <div class="recurso-card-item">
+            <div>
+              <div class="recurso-item-icon">🎯</div>
+              <div class="recurso-item-name">DAFO Cuantitativo & CAME</div>
+              <div class="recurso-item-detail">Ponderación numérica de factores, matriz CAME automática y slide de junta directiva.</div>
+            </div>
+            <div class="recurso-item-price">5€ · Bestseller</div>
+          </div>
+
+          <div class="recurso-card-item">
+            <div>
+              <div class="recurso-item-icon">🛡️</div>
+              <div class="recurso-item-name">5 Fuerzas de Porter</div>
+              <div class="recurso-item-detail">Scoring cuantitativo de 0 a 10 por fuerza, gráfico radar dinámico y análisis de poder.</div>
+            </div>
+            <div class="recurso-item-price">6€ · Suite MBA</div>
+          </div>
+
+          <div class="recurso-card-item">
+            <div>
+              <div class="recurso-item-icon">📦</div>
+              <div class="recurso-item-name">Nuevos Packs & Guías</div>
+              <div class="recurso-item-detail">Próximas incorporaciones: PESTEL, Matrices BCG, Priorización RICE y Business Cases.</div>
+            </div>
+            <div class="recurso-item-price" style="color: var(--text-light);">En catálogo</div>
+          </div>
+
+        </div>
+
+        <div class="recursos-footer-action">
+          <span style="color: var(--text-muted);">Incluye facturación B2B deducible y descarga instantánea</span>
+          <a href="/es/recursos/" class="link-more">Ver colección completa en Recursos →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECCIÓN 2: APLICACIONES (Integrando Juegos)
+         ======================================================================= -->
+    <section class="section-block" id="apps">
+      <div class="section-heading">
+        <span class="section-tag">02 / Ecosistema</span>
+        <h2 class="section-title">Aplicaciones & Experimentos</h2>
+        <p class="section-desc">
+          Herramientas interactivas en vivo desarrolladas para explorar tecnologías web, inteligencia artificial y resolver problemas cotidianos.
+        </p>
+      </div>
+
+      <div class="apps-minimal-grid">
+        
+        <!-- App: LifeOps -->
+        <a href="/apps/lifeops/" class="app-box">
+          <div class="app-box-top">
+            <span class="app-box-icon">🚀</span>
+            <div>
+              <div class="app-box-name">
+                LifeOps
+                <span class="app-box-badge">Sistema</span>
+              </div>
+              <p class="app-box-desc">Sistema operativo integral personal y profesional con Kanban, biblioteca, cine y dashboard 360°.</p>
+            </div>
+          </div>
+          <span class="app-box-arrow">Abrir app →</span>
+        </a>
+
+        <!-- App: Radar de Obsolescencia -->
+        <a href="/apps/obs-management/" class="app-box">
+          <div class="app-box-top">
+            <span class="app-box-icon">📡</span>
+            <div>
+              <div class="app-box-name">
+                Radar de Obsolescencia
+                <span class="app-box-badge">IA</span>
+              </div>
+              <p class="app-box-desc">Dashboard ejecutivo impulsado por agentes IA para mitigar el riesgo en la cadena de suministro.</p>
+            </div>
+          </div>
+          <span class="app-box-arrow">Abrir dashboard →</span>
+        </a>
+
+        <!-- App: Neon Snake (JUEGO INTEGRADO) -->
+        <a href="/games/snake/" class="app-box" target="_blank">
+          <div class="app-box-top">
+            <span class="app-box-icon">🐍</span>
+            <div>
+              <div class="app-box-name">
+                Neon Snake Cyberpunk
+                <span class="app-box-badge badge-arcade">Arcade / Juego</span>
+              </div>
+              <p class="app-box-desc">Versión arcade del clásico Snake con estética cyberpunk y ranking global en tiempo real.</p>
+            </div>
+          </div>
+          <span class="app-box-arrow">Jugar ahora →</span>
+        </a>
+
+        <!-- App: El Tiempo -->
+        <a href="/apps/weather/" class="app-box">
+          <div class="app-box-top">
+            <span class="app-box-icon">🌤️</span>
+            <div>
+              <div class="app-box-name">
+                El Tiempo & ML
+                <span class="app-box-badge">Previsión</span>
+              </div>
+              <p class="app-box-desc">Consulta meteorológica en tiempo real enriquecida con modelos de predicción de Machine Learning.</p>
+            </div>
+          </div>
+          <span class="app-box-arrow">Abrir app →</span>
+        </a>
+
+        <!-- App: Conversor de Unidades -->
+        <a href="/apps/conversor/" class="app-box">
+          <div class="app-box-top">
+            <span class="app-box-icon">🔄</span>
+            <div>
+              <div class="app-box-name">
+                Conversor de Unidades
+                <span class="app-box-badge">Herramienta</span>
+              </div>
+              <p class="app-box-desc">Navaja suiza rápida y ligera para transformar unidades de medida e ingeniería.</p>
+            </div>
+          </div>
+          <span class="app-box-arrow">Abrir app →</span>
+        </a>
+
+        <!-- App: Flashcards -->
+        <a href="/apps/flashcards/" class="app-box">
+          <div class="app-box-top">
+            <span class="app-box-icon">🎴</span>
+            <div>
+              <div class="app-box-name">
+                Flashcards
+                <span class="app-box-badge">Estudio</span>
+              </div>
+              <p class="app-box-desc">Aplicación interactiva para memorizar conceptos técnicos usando tarjetas de memoria activa.</p>
+            </div>
+          </div>
+          <span class="app-box-arrow">Abrir app →</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECCIÓN 3: LAS 4 CATEGORÍAS DEL BLOG (98 ARTÍCULOS)
+         ======================================================================= -->
+    <section class="section-block" id="blog">
+      <div class="section-heading">
+        <span class="section-tag">03 / Contenidos</span>
+        <h2 class="section-title">El Blog en 4 Temáticas</h2>
+        <p class="section-desc">
+          Explora los 98 artículos clasificados por ámbito de conocimiento. Selecciona una categoría para explorar sus lecturas recomendadas:
+        </p>
+      </div>
+
+      <!-- Selectores de Categoría Minimalistas -->
+      <div class="cat-selector-row">
+        <button class="cat-pill-btn active" data-cat="tecnicos" onclick="selectCat('tecnicos')">
+          <span class="cat-pill-icon">🧠</span>
+          <span class="cat-pill-title">Artículos Técnicos</span>
+          <span class="cat-pill-count">41 posts</span>
+        </button>
+
+        <button class="cat-pill-btn" data-cat="proyectos" onclick="selectCat('proyectos')">
+          <span class="cat-pill-icon">🛠️</span>
+          <span class="cat-pill-title">Proyectos Tech</span>
+          <span class="cat-pill-count">34 posts</span>
+        </button>
+
+        <button class="cat-pill-btn" data-cat="startups" onclick="selectCat('startups')">
+          <span class="cat-pill-icon">🚀</span>
+          <span class="cat-pill-title">Startups & Casos</span>
+          <span class="cat-pill-count">12 posts</span>
+        </button>
+
+        <button class="cat-pill-btn" data-cat="biografias" onclick="selectCat('biografias')">
+          <span class="cat-pill-icon">🏛️</span>
+          <span class="cat-pill-title">Biografías</span>
+          <span class="cat-pill-count">11 posts</span>
+        </button>
+      </div>
+
+      <!-- Lista limpia de artículos de la categoría seleccionada -->
+      <div class="cat-posts-list" id="catPostsContainer">
+        <!-- Rellenado dinámicamente con JavaScript -->
+      </div>
+
+      <div style="text-align: right; margin-top: 14px;">
+        <a href="/es/posts/" class="link-more">Ver archivo completo del blog →</a>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECCIÓN 4: BRÚJULA DEL DESCUBRIMIENTO
+         ======================================================================= -->
+    <section class="section-block" id="brujula">
+      <div class="section-heading">
+        <span class="section-tag">04 / Navegación Rápida</span>
+        <h2 class="section-title">Brújula del Descubrimiento</h2>
+        <p class="section-desc">
+          Tres accesos inmediatos para empezar a leer: el más visitado, el último publicado o una sugerencia al azar.
+        </p>
+      </div>
+
+      <div class="discovery-cards-grid">
+        
+        <!-- Tarjeta 1: Más Leído -->
+        <div class="disco-card">
+          <div>
+            <div class="disco-header">
+              <span class="disco-tag tag-pop">🔥 Más Leído</span>
+              <span style="font-size: 0.72rem; color: var(--text-light); font-family: var(--font-mono);">Popular</span>
+            </div>
+            <h3 class="disco-title">DAFO Cuantitativo y Matriz CAME: Decisión C-Level</h3>
+            <p class="disco-desc">
+              Ponderación matricial de fortalezas y debilidades para erradicar la subjetividad en planes directores.
+            </p>
+          </div>
+          <a href="/es/posts/dafo-cuantitativo-matriz-came/" class="disco-link">Leer artículo →</a>
+        </div>
+
+        <!-- Tarjeta 2: Último Post -->
+        <div class="disco-card">
+          <div>
+            <div class="disco-header">
+              <span class="disco-tag tag-lat">⚡ Última Publicación</span>
+              <span style="font-size: 0.72rem; color: var(--text-light); font-family: var(--font-mono);">Reciente</span>
+            </div>
+            <h3 class="disco-title">SDD vs. Vibe Coding: Desarrollo Robusto en 2026</h3>
+            <p class="disco-desc">
+              Por qué el código improvisado por LLMs colapsa y cómo las especificaciones formales aseguran software en producción.
+            </p>
+          </div>
+          <a href="/es/posts/sdd_vs_vibe_coding/" class="disco-link">Leer artículo →</a>
+        </div>
+
+        <!-- Tarjeta 3: Post Aleatorio -->
+        <div class="disco-card" style="background: var(--bg-subtle);">
+          <div>
+            <div class="disco-header">
+              <span class="disco-tag tag-rnd">🎲 Post Aleatorio</span>
+              <button class="btn-reroll" id="btnReroll" title="Elegir otro artículo">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                Barajar
+              </button>
+            </div>
+            <h3 class="disco-title" id="rndTitle">GraphRAG: Por Qué los Vectores No Bastan</h3>
+            <p class="disco-desc" id="rndDesc">
+              Los límites del RAG semántico y cómo los grafos de conocimiento resuelven relaciones complejas en producción.
+            </p>
+          </div>
+          <a href="/es/posts/graphrag/" class="disco-link" id="rndLink">Leer este post →</a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =======================================================================
+       FOOTER
+       ======================================================================= -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>Datalaria</strong> · © 2026 Daniel Aláez
+      </div>
+      <ul class="footer-nav">
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#recursos">Recursos</a></li>
+        <li><a href="#apps">Apps</a></li>
+        <li><a href="/es/sobre-mi/">Sobre mí</a></li>
+        <li><a href="/es/contact/">Contacto</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- =======================================================================
+       INTERACTIVIDAD EN VIVO (JavaScript Ligero)
+       ======================================================================= -->
+  <script>
+    const postsData = [{"dir": "abraham_wald", "title": "La Arquitectura del Silencio: Abraham Wald y la Epistemología de los Datos Ausentes", "date": "2026-02-21", "category": "biografias", "desc": "En 1943, el ejército estadounidense quería blindar los agujeros de bala de sus B-17. Un matemático les dijo que blindaran los espacios vacíos. Esta es la historia de cómo el Sesgo del Superviviente destruye los modelos de IA y las estrategias empresariales modernas.", "url": "/es/posts/abraham_wald/"}, {"dir": "ada_lovelace", "title": "Ada Lovelace: La Condesa que Programó el Futuro 100 Años Antes de que Existieran los Ordenadores", "date": "2026-08-24", "category": "biografias", "desc": "La fascinante historia de Ada Lovelace, la matemática del siglo XIX que escribió el primer algoritmo de la historia y predijo la computación simbólica y la inteligencia artificial un siglo antes de los primeros ordenadores.", "url": "/es/posts/ada_lovelace/"}, {"dir": "alan_turing", "title": "Alan Turing: El Genio que Rompió Enigma y Preguntó si las Máquinas Podían Pensar", "date": "2026-09-20", "category": "biografias", "desc": "La fascinante vida de Alan Turing: de descifrar la máquina Enigma en Bletchley Park a formular el Test de Turing en 1950. Analizamos sus excentricidades, sus hitos matemáticos y cómo su visión interpela directamente a los agentes de IA, los recientes ciberataques en plataformas como Hugging Face y el futuro de la AGI y la robótica.", "url": "/es/posts/alan_turing/"}, {"dir": "claude_shannon", "title": "Claude Shannon: El Hombre que Convirtió el Mundo en Bits y Definió el Futuro de la IA", "date": "2026-06-21", "category": "biografias", "desc": "La historia de Claude Shannon, el padre de la Teoría de la Información. Cómo un artículo de 1948 en Bell Labs creó los cimientos de Internet, la criptografía y la Inteligencia Artificial moderna.", "url": "/es/posts/claude_shannon/"}, {"dir": "deming", "title": "W. Edwards Deming: El Padre de la Calidad Total que Predijo el Futuro de la IA", "date": "2026-05-31", "category": "biografias", "desc": "Descubre cómo W. Edwards Deming revolucionó la manufactura con el Control Estadístico de Procesos, salvó a Toyota y estableció los principios que hoy rigen la Inteligencia Artificial y el S&OP moderno.", "url": "/es/posts/deming/"}, {"dir": "florence-nightingale", "title": "Florence Nightingale - La madre de la Enfermería", "date": "2025-09-06", "category": "biografias", "desc": "Florence Nightingale, enfermera, escritora y estadística británica, madre de la enfermería y una de las primeras científicas de datos.", "url": "/es/posts/florence-nightingale/"}, {"dir": "john-snow", "title": "El auténtico John Snow, precursor de la Geolocalización", "date": "2025-08-26", "category": "biografias", "desc": "John Snow: el padre de la epidemiología y pionero de la geolocalización", "url": "/es/posts/john-snow/"}, {"dir": "john_von_neumann", "title": "John von Neumann: El Padre de la Arquitectura de Computadores, la Teoría de Juegos y el Origen de la Singularidad", "date": "2026-11-08", "category": "biografias", "desc": "Un recorrido fascinante por la vida y el genio de John von Neumann: sus excentricidades, la invención del ordenador de programa almacenado, el cuello de botella que desafía a la IA moderna, la teoría de juegos y el origen histórico del concepto de Singularidad en el camino a la AGI.", "url": "/es/posts/john_von_neumann/"}, {"dir": "kantorovich", "title": "Leonid Kantorovich: El Matemático que Desafió a Stalin con la Programación Lineal", "date": "2026-05-24", "category": "biografias", "desc": "Leonid Kantorovich inventó la programación lineal para optimizar recursos en la URSS, enfrentándose al dogma económico estalinista. Su legado impulsa hoy la logística global y la ciencia de datos.", "url": "/es/posts/kantorovich/"}, {"dir": "oppenheimer", "title": "J. Robert Oppenheimer: De la Simulación de Monte Carlo en Los Álamos al Dilema Ético de la AGI", "date": "2026-10-03", "category": "biografias", "desc": "Un análisis profundo de la vida de J. Robert Oppenheimer: sus excentricidades, la dirección de Los Álamos, la invención del método de Monte Carlo con von Neumann y Ulam, y por qué su dilema ético es el espejo exacto en el que se miran los pioneros de la AGI en 2026.", "url": "/es/posts/oppenheimer/"}, {"dir": "thomas_bayes", "title": "Thomas Bayes: El Reverendo que Nos Enseñó a Actualizar Nuestras Creencias con Datos", "date": "2026-07-18", "category": "biografias", "desc": "La historia de Thomas Bayes, el reverendo del siglo XVIII cuyo teorema póstumo transformó la estadística, la medicina, el machine learning y la planificación de la demanda. Cómo la inferencia bayesiana conecta con Prophet, Netflix y la cadena de suministro moderna.", "url": "/es/posts/thomas_bayes/"}, {"dir": "carto", "title": "Carto: De una Factura a la ONU a Conquistar la Nube Geoespacial", "date": "2025-10-25", "category": "startups", "desc": "La historia de cómo Carto, una startup española, pasó de ser un proyecto de consultoría a un líder mundial en Inteligencia de Localización, apostando por una estrategia nativa en la nube que ha redefinido el análisis de datos.", "url": "/es/posts/carto/"}, {"dir": "clarity_ai", "title": "Clarity AI: Cómo Rebeca Minguela y la IA Están Redefiniendo y Cuantificando la Sostenibilidad Financiera", "date": "2026-04-03", "category": "startups", "desc": "La fascinante historia de Clarity AI, el 'unicornio' en la sombra fundado por la ingeniera de telecomunicaciones Rebeca Minguela que está erradicando el greenwashing mediante el procesamiento masivo de datos e IA.", "url": "/es/posts/clarity_ai/"}, {"dir": "devo", "title": "Devo: Cómo un Químico Autodidacta Construyó desde Madrid el Motor de Datos que Defiende a la Fuerza Aérea de EE.UU.", "date": "2026-06-07", "category": "startups", "desc": "La historia de Devo, la startup española fundada por Pedro Castillo que revolucionó el análisis de datos de seguridad con latencia cero, conquistó un contrato con la Fuerza Aérea de EE.UU. y alcanzó una valoración de 1.900 millones de dólares.", "url": "/es/posts/devo/"}, {"dir": "flywire", "title": "Flywire: Cómo un Español Construyó desde Boston el Cerebro de los Pagos Internacionales", "date": "2026-07-25", "category": "startups", "desc": "La historia de Flywire (FLYW), el unicornio español cotizado en el Nasdaq que procesa miles de millones en pagos internacionales para educación, sanidad y viajes. Cómo Iker Marcaide convirtió un dolor de estudiante en MIT en una plataforma global que usa ML para optimizar cada transacción.", "url": "/es/posts/flywire/"}, {"dir": "freepik", "title": "Freepik: La Historia del Gigante Malagueño que Domó a la IA para Conquistar el Mundo Creativo", "date": "2025-10-11", "category": "startups", "desc": "Un análisis profundo de cómo Freepik, la startup malagueña, pasó de ser un buscador de imágenes a un líder global, enfrentándose a la disrupción de la IA con una estrategia audaz que está redefiniendo el futuro de la creatividad.", "url": "/es/posts/freepik/"}, {"dir": "graphext", "title": "Graphext: La Startup Española que Invirtió 7 Años en Crear el 'Fórmula 1' del Análisis de Datos", "date": "2025-11-28", "category": "startups", "desc": "La historia de Graphext, la startup española que desafió las normas invirtiendo 7M€ en I+D antes de escalar, creando una plataforma única de IA Explicable que redefine el análisis de datos.", "url": "/es/posts/graphext/"}, {"dir": "happyrobot", "title": "HappyRobot: Cómo los Agentes de Voz Autónomos Conquistaron la Logística Global", "date": "2026-09-30", "category": "startups", "desc": "De graduarse en Y Combinator a alcanzar el estatus de unicornio (1.200M$ de valoración): analizamos la arquitectura técnica de HappyRobot, sus agentes de voz en tiempo real con latencia sub-500ms y cómo automatizan las operaciones de gigantes como DHL, Schneider y Uber Freight.", "url": "/es/posts/happyrobot/"}, {"dir": "multiverse_computing", "title": "Multiverse Computing: La Startup Española que Resuelve el Cuello de Botella de la IA con Física Cuántica (Sin Ordenadores Cuánticos)", "date": "2026-01-31", "category": "startups", "desc": "Análisis estratégico de Multiverse Computing, la startup española que ha levantado $326M aplicando matemáticas de física cuántica (Redes de Tensores) para comprimir modelos de IA en hardware clásico, resolviendo el problema crítico del coste y la eficiencia de los LLMs.", "url": "/es/posts/multiverse_computing/"}, {"dir": "netflix", "title": "Netflix: Cómo los Datos Forjan un Imperio en Plena Guerra del Streaming", "date": "2025-09-15", "category": "startups", "desc": "Un análisis de Netflix como empresa data-driven que utiliza Big Data e IA no solo para recomendar series, sino para tomar decisiones estratégicas clave y dominar en las 'Guerras del Streaming'.", "url": "/es/posts/netflix/"}, {"dir": "nextail", "title": "Nextail: Cómo la IA Prescriptiva de una Startup Española Está Derrotando a Excel en el Retail de Moda", "date": "2026-03-31", "category": "startups", "desc": "La historia de Nextail, la startup madrileña fundada por un ex-director de logística de Zara que está reemplazando las hojas de cálculo del retail de moda por un cerebro matemático capaz de tomar miles de millones de decisiones de inventario por temporada.", "url": "/es/posts/nextail/"}, {"dir": "submer", "title": "Submer: La Refrigeración Líquida Nacida en Barcelona que Permite Enfriar los Superordenadores de la AGI", "date": "2026-11-01", "category": "startups", "desc": "Cómo dos emprendedores en Barcelona revolucionaron la infraestructura física de la computación. Analizamos la tecnología de inmersión líquida de Submer, sus alianzas con Intel y Nvidia, y por qué enfriar servidores con fluidos dieléctricos es el cuello de botella que decide el futuro de la AGI.", "url": "/es/posts/submer/"}, {"dir": "wallapop", "title": "Wallapop: La Ingeniería Invisible detrás del Mayor Marketplace Circular de Europa", "date": "2026-08-31", "category": "startups", "desc": "Cómo Wallapop transformó la compraventa de segunda mano en una plataforma tecnológica de 19 millones de usuarios. Analizamos su arquitectura de Machine Learning: búsqueda visual multimodal, algoritmos de pricing dinámico, grafos antifraude, impacto ESG y su adquisición por el gigante coreano NAVER.", "url": "/es/posts/wallapop/"}, {"dir": "app-lifeops_part1_arquitectura_backend", "title": "Proyecto LifeOps (Parte 1): Arquitectura de un Sistema Operativo Personal y Backend con FastAPI + Supabase", "date": "2026-09-10", "category": "proyectos", "desc": "Primera entrega de la serie LifeOps: cómo diseñé y construí mi propio sistema operativo personal y profesional a coste cero ($0/mes) unificando deporte, lecturas, cine, tareas Kanban y proyectos con FastAPI y Supabase.", "url": "/es/posts/app-lifeops_part1_arquitectura_backend/"}, {"dir": "app-lifeops_part2_frontend_dashboard", "title": "Proyecto LifeOps (Parte 2): Frontend React con Glassmorphism, Dashboard 360° y Sistema de Diseño Dark Mode", "date": "2026-09-13", "category": "proyectos", "desc": "Segunda entrega de la serie LifeOps: cómo diseñé y construí la interfaz web con React 18, Vite, un sistema de diseño Glassmorphism Dark Mode, gráficos dinámicos con Recharts y autenticación reactiva con Supabase.", "url": "/es/posts/app-lifeops_part2_frontend_dashboard/"}, {"dir": "app-lifeops_part3_modulos_kanban", "title": "Proyecto LifeOps (Parte 3): Módulos Interactivos: Deporte, Biblioteca, Cine y Tablero Kanban Profesional", "date": "2026-09-15", "category": "proyectos", "desc": "Tercera entrega de la serie LifeOps: cómo desarrollé los módulos funcionales de la aplicación. Diseño de vistas duales (Tarjetas vs Tabla), telemetría deportiva con cálculo de ritmos y PBs, gestión de lectura y cine, y un tablero Kanban con bitácora de avances en PostgreSQL JSONB.", "url": "/es/posts/app-lifeops_part3_modulos_kanban/"}, {"dir": "app-lifeops_part4_informes_word_excel", "title": "Proyecto LifeOps (Parte 4): Motor de Informes Ejecutivos en Word (.docx) y Exportación Multi-Hoja en Excel (.xlsx)", "date": "2026-09-18", "category": "proyectos", "desc": "Cuarta entrega de la serie LifeOps: cómo diseñé el motor de generación en memoria (io.BytesIO) de documentos ejecutivos en Word (.docx) con python-docx y libros multi-hoja en Excel (.xlsx) con openpyxl, además de streaming seguro con FastAPI y backups en CSV con UTF-8 BOM.", "url": "/es/posts/app-lifeops_part4_informes_word_excel/"}, {"dir": "app-lifeops_part5_deploy_mobile_pwa", "title": "Proyecto LifeOps (Parte 5): Despliegue 24/7 en la Nube a Coste Cero ($0/mes), Optimización Móvil y PWA", "date": "2026-09-19", "category": "proyectos", "desc": "Quinta y última entrega de la serie LifeOps: cómo orquestar el despliegue en producción 24/7 a coste cero ($0/mes) en Render.com y Netlify, optimizar la experiencia táctil en smartphones con Bottom Navigation y React Portals, y transformar la app en una PWA instalable sin pasar por las tiendas de aplicaciones.", "url": "/es/posts/app-lifeops_part5_deploy_mobile_pwa/"}, {"dir": "app-openweather_part1_backend", "title": "Proyecto Weather Service (Parte 1): Construyendo el Recolector de Datos con Python y GitHub Actions o Netlify", "date": "2025-10-31", "category": "proyectos", "desc": "Primera entrega de la serie sobre cómo construir un servicio meteorológico. Nos centramos en el backend: conectar a la API de OpenWeatherMap, almacenar datos en CSV y automatizar todo 24/7 gratis con GitHub Actions o Netlify.", "url": "/es/posts/app-openweather_part1_backend/"}, {"dir": "app_conversor_unidades", "title": "Creando mi 'Navaja Suiza' Digital: Un Conversor de Unidades a Medida con la IA", "date": "2025-10-04", "category": "proyectos", "desc": "Un caso práctico de cómo utilicé Gemini Canvas para desarrollar desde cero una aplicación web de conversión de unidades de medida, organizada por categorías y adaptada a mis necesidades profesionales.", "url": "/es/posts/app_conversor_unidades/"}, {"dir": "app_flashcards", "title": "Programando con IA: Creando mi Propia App mágica de Flashcards para Estudiar", "date": "2025-10-17", "category": "proyectos", "desc": "Un caso práctico de cómo una necesidad familiar me llevó a crear una aplicación de estudio con flashcards desde cero, apoyándome en la IA para hacer el aprendizaje más ameno y eficaz.", "url": "/es/posts/app_flashcards/"}, {"dir": "app_openweather_part2_frontend", "title": "Proyecto Weather Service (Parte 2): Construyendo el Frontend Interactivo con GitHub Pages o Netlify y JavaScript", "date": "2025-11-08", "category": "proyectos", "desc": "Segunda entrega del proyecto Weather Service. Nos adentramos en el frontend: sirviendo un dashboard dinámico con GitHub Pages o Netlify, leyendo datos CSV con PapaParse.js y creando gráficos interactivos con Chart.js.", "url": "/es/posts/app_openweather_part2_frontend/"}, {"dir": "app_openweather_part3_ai_prediction", "title": "Proyecto Weather Service (Parte 3): Prediciendo el Futuro con IA y OpenWeatherMap", "date": "2025-11-15", "category": "proyectos", "desc": "La entrega final de nuestro proyecto Weather Service. Nos adentramos en la adición de capacidades predictivas, combinando pronósticos oficiales de OpenWeatherMap con nuestro modelo de IA (Regresión Lineal) personalizado para predecir el tiempo de mañana y visualizar su precisión.", "url": "/es/posts/app_openweather_part3_ai_prediction/"}, {"dir": "app_openweather_part4_extras_ux", "title": "Proyecto Weather (Extras): Más Allá de la IA - Construyendo un Dashboard Robusto y Centrado en el Usuario", "date": "2025-12-06", "category": "proyectos", "desc": "Un análisis profundo de las características 'extra' y las decisiones de diseño detrás de Project Weather, mostrando cómo la recolección avanzada de datos, la internacionalización, el filtrado personalizado y las mejoras de UI/UX transformaron un dashboard básico en una aplicación meteorológica completa, robusta y fácil de usar, complementando sus capacidades centrales de predicción por IA.", "url": "/es/posts/app_openweather_part4_extras_ux/"}, {"dir": "datalaria-blog", "title": "Construyendo Datalaria: Tecnologías y herramientas", "date": "2025-08-17", "category": "proyectos", "desc": "Datalaria: construcción de sus cimientos. Stack moderno vs. soluciones tradicionales", "url": "/es/posts/datalaria-blog/"}, {"dir": "game_snake", "title": "De Cero a Héroe: Crea un Snake Game Cyberpunk con Ranking en Tiempo Real usando Supabase y JS Vanilla", "date": "2026-02-14", "category": "proyectos", "desc": "Aprende a crear un juego web estilo arcade con estética neón utilizando solo HTML5 Canvas y JS Vanilla. Descubre cómo integrar un ranking global en tiempo real usando la base de datos PostgreSQL de Supabase.", "url": "/es/posts/game_snake/"}, {"dir": "ia_agents_part1", "title": "Proyecto Autopilot: Por qué me despedí como Community Manager para construir un Ejército de agentes de IA", "date": "2025-12-27", "category": "proyectos", "desc": "Expermentar con la IA y las nuevas tecnologías es mi pasión; la distribución de estos contenidos no tanto. En esta serie, documento cómo estoy construyendo un equipo automatizado de Agentes IA para mis posts y gestionar su divulgación a través de mis redes sociales.", "url": "/es/posts/ia_agents_part1/"}, {"dir": "ia_agents_part2", "title": "Autopilot - El Cerebro: Configurando Gemini y CrewAI para leer mi blog", "date": "2025-12-31", "category": "proyectos", "desc": "Segundo capítulo de Proyecto Autopilot. Abrimos el IDE para conectar Python con Gemini Flash y crear nuestro primer Agente Analista capaz de entender código Markdown.", "url": "/es/posts/ia_agents_part2/"}, {"dir": "ia_agents_part3", "title": "Autopilot - Los Creativos: Cómo programé a una IA para que fuera cínica en Twitter y corporativa en LinkedIn", "date": "2026-01-03", "category": "proyectos", "desc": "Tercer capítulo de Proyecto Autopilot. Transformamos datos fríos en historias virales creando dos agentes con personalidades opuestas: un influencer cínico y un líder corporativo.", "url": "/es/posts/ia_agents_part3/"}, {"dir": "ia_agents_part4", "title": "Autopilot - La Pesadilla de las APIs: Cómo vencí a la burocracia de LinkedIn para automatizar mi empresa", "date": "2026-01-07", "category": "proyectos", "desc": "Cuarto capítulo de Proyecto Autopilot. Lo que iba a ser un script de 10 minutos se convirtió en una guerra de formularios. Narramos cómo desbloqueamos el permiso 'w_organization_social' para publicar como Empresa.", "url": "/es/posts/ia_agents_part4/"}, {"dir": "ia_agents_part5", "title": "Autopilot - Final: De Localhost a la Nube con GitHub Actions y CI/CD", "date": "2026-01-10", "category": "proyectos", "desc": "Capítulo final de Proyecto Autopilot. Ya no ejecuto scripts en mi ordenador. Ahora, un simple 'git push' despierta a mis agentes de IA, genera el contenido y lo publica en redes sociales tras mi aprobación.", "url": "/es/posts/ia_agents_part5/"}, {"dir": "ia_agents_part6", "title": "Autopilot - Extra: Programando una Newsletter Nativa en IA y de Mantenimiento Cero", "date": "2026-01-24", "category": "proyectos", "desc": "Capítulo extra de Proyecto Autopilot. Implementamos un sistema de newsletter automatizado con Brevo que envía emails personalizados a los suscriptores en su idioma preferido cada vez que publico un nuevo artículo.", "url": "/es/posts/ia_agents_part6/"}, {"dir": "ia_agents_part7", "title": "Autopilot - Ctrl: Auditoría de Contenido IA con GitHub Copilot CLI", "date": "2026-02-01", "category": "proyectos", "desc": "Construyo autopilot-ctrl, una CLI que usa GitHub Copilot CLI para auditar y mejorar automáticamente el contenido generado por IA antes de publicarlo en redes sociales.", "url": "/es/posts/ia_agents_part7/"}, {"dir": "ia_agents_part8", "title": "Autopilot - Asistente: Creando un Copiloto de IA con Algolia Agent Studio", "date": "2026-02-07", "category": "proyectos", "desc": "He construido un Copiloto de Ingeniería de Operaciones que usa Algolia Agent Studio para dar respuestas de IA fundamentadas en el contenido de mi blog. Esta es la Parte 8 de la serie Autopilot.", "url": "/es/posts/ia_agents_part8/"}, {"dir": "ia_agents_part9", "title": "Autopilot - Post-Mortem Técnico: Cómo Construí un Ejército de IA con Gemini", "date": "2026-03-04", "category": "proyectos", "desc": "Un post-mortem técnico sincero sobre el Proyecto Autopilot: cómo utilicé Google Gemini y CrewAI dentro de GitHub Actions para automatizar la distribución de contenido y la ingeniería necesaria para que los LLMs sean deterministas.", "url": "/es/posts/ia_agents_part9/"}, {"dir": "obs_parte1_intro", "title": "El Ajedrez de la Obsolescencia: Cómo convertir el colapso de la cadena de suministro en tu mayor ventaja competitiva", "date": "2026-04-11", "category": "proyectos", "desc": "La obsolescencia de componentes no es un accidente, sino una entropía predecible que, gestionada con precisión, se convierte en una ventaja competitiva masiva. Rompiendo la falacia del Cisne Negro industrial.", "url": "/es/posts/obs_parte1_intro/"}, {"dir": "obs_parte2_tactica", "title": "El Arsenal Táctico: Por qué comprar Software especializado para la gestiónd de la cadena de suministro no salvará tu producción de las obsolescencias", "date": "2026-04-14", "category": "proyectos", "desc": "Descubre por qué pagar licencias millonarias por radares de componentes (Accuris, SiliconExpert) es inútil sin una arquitectura de datos propia que cruce las alertas con el P&L de tu empresa.", "url": "/es/posts/obs_parte2_tactica/"}, {"dir": "obs_parte3_arquitectura", "title": "El Mapa del Riesgo: Diseñando una Arquitectura de Datos Inmune a la Obsolescencia", "date": "2026-04-18", "category": "proyectos", "desc": "Cómo diseñar una base de datos relacional en Supabase para estructurar un BOM industrial e integrar telemetría de mercado externo.", "url": "/es/posts/obs_parte3_arquitectura/"}, {"dir": "obs_parte4_ingesta", "title": "El Bautismo de Fuego: De Excel Basura a Grafo Relacional con Python y Pandas", "date": "2026-04-25", "category": "proyectos", "desc": "Cómo ingerir un BOM corrupto exportado de un ERP heredado, limpiar su entropía con Pandas e inyectarlo en Supabase garantizando la idempotencia.", "url": "/es/posts/obs_parte4_ingesta/"}, {"dir": "obs_parte5_radar", "title": "El Radar Agéntico: Por qué los LLMs no salvarán tu cadena de suministro (y el Tool Calling sí)", "date": "2026-05-01", "category": "proyectos", "desc": "Los arquitecturas RAG tradicionales fracasan ante la precisión matemática que exige la industria pesada. Descubre cómo construir un Radar Agéntico usando Tool Calling en Python para cruzar correos de fabricantes con la Cuenta de Resultados en tiempo real.", "url": "/es/posts/obs_parte5_radar/"}, {"dir": "obs_parte6_fastapi", "title": "El Sistema Nervioso Central: Escalando el Radar Agéntico a 24/7 con FastAPI y Webhooks", "date": "2026-05-09", "category": "proyectos", "desc": "Cómo transicionar de un script en local a una arquitectura empresarial de alta disponibilidad mediante un enrutador FastAPI que orquesta agentes de CrewAI de forma asíncrona.", "url": "/es/posts/obs_parte6_fastapi/"}, {"dir": "obs_parte7_dashboard", "title": "La Interfaz Ejecutiva: Traduciendo la Telemetría de la IA en Decisiones C-Level", "date": "2026-05-17", "category": "proyectos", "desc": "Construyendo la capa de presentación que traduce las operaciones asíncronas de IA en métricas financieras para roles directivos mediante Tailwind CSS y Vanilla JS.", "url": "/es/posts/obs_parte7_dashboard/"}, {"dir": "sop-ingenieria-parte2-prediccion", "title": "Ingeniería S&OP II: Demand Planning, de la Adivinación a la Probabilidad", "date": "2026-03-07", "category": "proyectos", "desc": "Una predicción determinista en Excel es un riesgo financiero. En el Capítulo 2, evolucionamos nuestro pipeline S&OP con Facebook Prophet para calcular la probabilidad de la demanda, intervalos de incertidumbre y Safety Stock matemáticamente.", "url": "/es/posts/sop-ingenieria-parte2-prediccion/"}, {"dir": "sop-ingenieria-parte3-optimizacion", "title": "Ingeniería S&OP III: El Fin de Excel (Programación Lineal para Supply Planning)", "date": "2026-03-13", "category": "proyectos", "desc": "Un plan de suministro basado en 'semanas de cobertura' quema la caja de tu empresa. En este capítulo, usamos Python y PuLP para calcular matemáticamente el plan óptimo que minimiza costes financieros.", "url": "/es/posts/sop-ingenieria-parte3-optimizacion/"}, {"dir": "sop-ingenieria-parte4-enterprise", "title": "Ingeniería S&OP IV: Escalando a Enterprise (Multi-SKU y Cuellos de Botella)", "date": "2026-03-20", "category": "proyectos", "desc": "El MVP ha muerto, viva el Enterprise. En el Capítulo 4 estresamos nuestro sistema S&OP con múltiples SKUs, enseñando cómo paralelizar modelos de IA y resolver matemáticamente la guerra por la capacidad de producción compartida.", "url": "/es/posts/sop-ingenieria-parte4-enterprise/"}, {"dir": "sop-ingenieria-parte5-agentes_autonomos", "title": "Ingeniería S&OP V: El Cerebro Autónomo (Agentic AI)", "date": "2026-03-27", "category": "proyectos", "desc": "Las matemáticas no envían emails. En el gran final de nuestra serie, construimos un equipo de Agentes de IA que leen nuestro plan maestro y ejecutan las operaciones de forma autónoma.", "url": "/es/posts/sop-ingenieria-parte5-agentes_autonomos/"}, {"dir": "sop_ingenieria-higiene-datos", "title": "S&OP: Por qué tu Excel te miente (y cómo interrogarlo con Python)", "date": "2026-02-28", "category": "proyectos", "desc": "Dejemos de limpiar datos a mano. En este primer capítulo de la serie Ingeniería de S&OP, automatizamos la higiene de datos usando Python, Supabase y Estadística para detectar la verdad oculta tras el ruido.", "url": "/es/posts/sop_ingenieria-higiene-datos/"}, {"dir": "5-fuerzas-porter-cuantitativas", "title": "5 Fuerzas de Porter Ponderadas y Atractivo de Industria: La Guía Cuantitativa Definitiva para Comités de Dirección (C-Level)", "date": "2026-10-12", "category": "tecnicos", "desc": "Guía metodológica exhaustiva para transformar el análisis tradicional cualitativo de las 5 Fuerzas de Porter en un motor matemático ponderado con gráfico radar dinámico, diagnóstico de foso defensivo (Moat) y plan de acción para comités directivos.", "url": "/es/posts/5-fuerzas-porter-cuantitativas/"}, {"dir": "BPMN_SOP", "title": "De la Narrativa al Diagrama: Diseñando Procesos S&OP con IA y BPMN", "date": "2025-12-19", "category": "tecnicos", "desc": "Cómo utilizar la Inteligencia Artificial como un Analista de Negocio para transformar narrativas complejas en diagramas de flujo estructurados, comparando herramientas como Miro, Mermaid y BPMN.io.", "url": "/es/posts/BPMN_SOP/"}, {"dir": "business-case-financiero-van-tir", "title": "Business Case Financiero: Cómo Calcular VAN, TIR, Payback Descontado y Análisis de Sensibilidad Tornado en Excel", "date": "2026-10-30", "category": "tecnicos", "desc": "Guía metodológica y cuantitativa para construir un Business Case de grado Consejo de Administración: Flujo de Caja Libre Descontado (DCF), cálculo de WACC vía CAPM, VAN, TIR, MIRR, Payback con interpolación, Gráfico Tornado y gobernanza con stage gates.", "url": "/es/posts/business-case-financiero-van-tir/"}, {"dir": "dafo-cuantitativo-matriz-came", "title": "DAFO Cuantitativo y Matriz CAME: La Guía Definitiva de Decisión Estratégica para Comités de Dirección (C-Level)", "date": "2026-12-06", "category": "tecnicos", "desc": "Guía metodológica exhaustiva para transformar un DAFO cualitativo en un modelo matemático vectorial con ponderaciones, calificaciones y plan de acción CAME listo para Comités de Dirección.", "url": "/es/posts/dafo-cuantitativo-matriz-came/"}, {"dir": "devs", "title": "DEVS: Computación Cuántica, Determinismo y la Pesadilla de los Multiversos", "date": "2026-09-06", "category": "tecnicos", "desc": "Un análisis profundo de la miniserie 'DEVS' de Alex Garland. Exploramos los fundamentos físicos y filosóficos de la computación cuántica, el Demonio de Laplace, la interpretación de los Muchos Mundos de Hugh Everett y el dilema del libre albedrío frente al algoritmo supremo.", "url": "/es/posts/devs/"}, {"dir": "economia_oculta_ia", "title": "La Economía Oculta de la IA: Cuánto Cuesta Realmente Usar LLMs en Producción (Con Datos Reales)", "date": "2026-06-14", "category": "tecnicos", "desc": "Análisis real de los costes de usar modelos de lenguaje (LLMs) en producción. Comparativa de APIs de Gemini, GPT-4o y Claude con datos propios de los proyectos Autopilot y Obsolescencia de Datalaria. Desglose del iceberg de costes ocultos.", "url": "/es/posts/economia_oculta_ia/"}, {"dir": "Estadistica-descriptiva", "title": "Estadística Descriptiva", "date": "2025-08-09", "category": "tecnicos", "desc": "Conoce los conceptos y nociones básicas en matemáticas y estadística para poder trabajar con tus datos", "url": "/es/posts/Estadistica-descriptiva/"}, {"dir": "estimacion-pert-3-puntos", "title": "Estimación PERT de 3 Puntos Estocástica: De la Ilusión Determinista a la Certidumbre Estadística de Cronograma", "date": "2026-10-30", "category": "tecnicos", "desc": "Guía cuantitativa y metodológica para erradicar las estimaciones deterministas de cronograma: Distribución Beta de 3 puntos (Optimista, Más Probable, Pesimista), agregación probabilística del Camino Crítico (CLT), Z-Score para fechas compromiso y dimensionamiento científico de buffers ante el Consejo de Administración.", "url": "/es/posts/estimacion-pert-3-puntos/"}, {"dir": "eu_ai_act", "title": "EU AI Act: Lo que Todo Ingeniero Español Necesita Saber (Sin Abogados)", "date": "2026-07-05", "category": "tecnicos", "desc": "Guía técnica del Reglamento Europeo de Inteligencia Artificial (EU AI Act) escrita por y para ingenieros. Clasificación de riesgo, obligaciones técnicas, multas, checklist de compliance y conexión con la Ley española de IA y la AESIA.", "url": "/es/posts/eu_ai_act/"}, {"dir": "evaluacion_agentes_ia", "title": "Evaluación y Testing de Agentes de IA en Producción: Cómo Medir lo Impredecible", "date": "2026-10-05", "category": "tecnicos", "desc": "Por qué los tests unitarios clásicos y métricas como BLEU o ROUGE fracasan ante los agentes de IA. Diseñamos un framework de evaluación de 4 capas: trayectoria de herramientas, aserciones de estado, LLM-as-a-Judge calibrado y CI/CD con Red-Teaming.", "url": "/es/posts/evaluacion_agentes_ia/"}, {"dir": "ex_machina", "title": "Ex Machina: El Test de Turing Físico, la Teoría de la Mente y el 'Jailbreak' Emocional de la IA", "date": "2026-11-15", "category": "tecnicos", "desc": "Un análisis exhaustivo de 'Ex Machina' de Alex Garland: la superación del Test de Turing clásico, la cognición encarnada, la teoría de la mente y cómo Ava ejecuta el primer 'jailbreak' emocional de la historia del cine para burlar el alineamiento de la IA.", "url": "/es/posts/ex_machina/"}, {"dir": "finetuning_vs_rag", "title": "Fine-Tuning vs Prompt Engineering vs RAG: Cuándo Usar Cada Uno (y la Cuarta Opción que Nadie Menciona)", "date": "2026-08-09", "category": "tecnicos", "desc": "Guía definitiva para elegir entre Prompt Engineering, RAG, Fine-Tuning y Tool Calling. Con árbol de decisión, matriz comparativa de costes y precisión, y los casos reales del Ops Copilot y el Radar de Obsolescencia de Datalaria.", "url": "/es/posts/finetuning_vs_rag/"}, {"dir": "founderz-programando-chatGPT", "title": "Copilotando con IA: Aprendiendo con Founderz y ChatGPT", "date": "2025-09-11", "category": "tecnicos", "desc": "Crónica de cómo el curso de IA y Prompt Engineering de Founderz me abrió los ojos a la posibilidad de crear aplicaciones web funcionales usando solo lenguaje natural con ChatGPT.", "url": "/es/posts/founderz-programando-chatGPT/"}, {"dir": "graphrag", "title": "GraphRAG: Por Qué los Vectores No Bastan y Tu IA Necesita un Grafo de Conocimiento", "date": "2026-09-25", "category": "tecnicos", "desc": "Por qué la búsqueda por similitud vectorial falla en preguntas complejas y cómo GraphRAG (Knowledge Graphs + LLMs) resuelve el razonamiento multi-salto y la síntesis global de información. Analizamos la investigación de Microsoft Research y el salto hacia la AGI.", "url": "/es/posts/graphrag/"}, {"dir": "halt_and_catch_fire", "title": "Halt and Catch Fire: La Serie de Culto que Entendió la Ingeniería de Software Mejor que Silicon Valley", "date": "2026-08-29", "category": "tecnicos", "desc": "Un análisis exhaustivo de 'Halt and Catch Fire', la obra maestra televisiva de AMC que retrató con precisión quirúrgica el nacimiento del PC clónico, los videojuegos multijugador online, el comercio electrónico y la World Wide Web.", "url": "/es/posts/halt_and_catch_fire/"}, {"dir": "ia-educacion-deep_research", "title": "Investigando con IA: Cómo Creé un Informe detallado sobre el impacto de la IA en la Educación a nivel global en Minutos con Deep Research de Gemini", "date": "2025-09-27", "category": "tecnicos", "desc": "Un caso práctico de cómo usé la funcionalidad Deep Research de Gemini para generar un informe exhaustivo sobre el impacto de la IA en la educación y un resumen revelador de la misma.", "url": "/es/posts/ia-educacion-deep_research/"}, {"dir": "kilometro-0-por-que-nace-datalaria", "title": "Kilómetro 0: Por qué nace Datalaria", "date": "2025-08-06", "category": "tecnicos", "desc": "", "url": "/es/posts/kilometro-0-por-que-nace-datalaria/"}, {"dir": "matriz-bcg-dinamica", "title": "Matriz BCG Dinámica: Gestión de Cartera, Curva de Experiencia y Asignación de Capital C-Level", "date": "2026-10-26", "category": "tecnicos", "desc": "Guía metodológica exhaustiva para transformar la matriz BCG cualitativa tradicional en un motor cuantitativo de balance de liquidez (Bruce Henderson), cálculo matemático de Cuota de Mercado Relativa (CMR) y plan de reasignación de capital C-Level.", "url": "/es/posts/matriz-bcg-dinamica/"}, {"dir": "matriz-dar-cuantitativa", "title": "Matriz DAR Cuantitativa: Criterios Veto, Ponderación Multicriterio y Análisis de Decisiones C-Level", "date": "2026-10-28", "category": "tecnicos", "desc": "Guía metodológica y cuantitativa para implementar la matriz CMMI DAR (Decision Analysis and Resolution) y Kepner-Tregoe: filtros veto booleanos, scoring multicriterio ponderado, análisis de sensibilidad What-If y gobierno corporativo ante Consejos de Administración.", "url": "/es/posts/matriz-dar-cuantitativa/"}, {"dir": "matriz-mckinsey-ge", "title": "Matriz McKinsey / GE 3x3: Atractivo de la Industria, Fortaleza Competitiva y Asignación de Capital C-Level", "date": "2026-10-27", "category": "tecnicos", "desc": "Guía metodológica y cuantitativa para implementar la matriz McKinsey / General Electric 3x3 de 9 cuadrantes: evaluación multifactorial, neutralización de sesgos del management y optimización del CAPEX ante Consejos de Administración.", "url": "/es/posts/matriz-mckinsey-ge/"}, {"dir": "matriz-pestel-cuantitativa", "title": "Matriz PESTEL Cuantitativa: Severidad, Volatilidad y Riesgo Macro para Comités de Dirección (C-Level)", "date": "2026-10-19", "category": "tecnicos", "desc": "Guía metodológica exhaustiva para transformar el análisis macroambiental cualitativo tradicional en un motor cuantitativo bidimensional (Severidad del Impacto en P&L vs. Volatilidad Temporal), con mapa térmico cartesiano, perfil radar hexagonal y plan de resiliencia C-Level.", "url": "/es/posts/matriz-pestel-cuantitativa/"}, {"dir": "matriz-raci-balance-carga", "title": "Matriz RACI Cuantitativa: Balance de Carga Operativa, Unicidad de Accountable y Detección de Cuellos de Botella", "date": "2026-10-30", "category": "tecnicos", "desc": "Guía metodológica y cuantitativa para transformar la matriz RACI tradicional en un motor dinámico de control operativo: principio de Accountable único, cálculo de saturación por rol, semáforos de riesgo de burnout y plan de rebalanceo C-Level.", "url": "/es/posts/matriz-raci-balance-carga/"}, {"dir": "matriz-rice-ice-priorizacion", "title": "Matriz RICE & ICE de Priorización Ágil: Backlog Cuantitativo, Matriz Impacto vs. Esfuerzo y Línea de Corte de Capacidad", "date": "2026-10-29", "category": "tecnicos", "desc": "Guía metodológica y cuantitativa para implementar la matriz RICE (Reach, Impact, Confidence, Effort) e ICE: cálculo de densidad de valor, descuento bayesiano de confianza, matriz cuadrante 2x2 Impacto vs. Esfuerzo, línea de corte por capacidad de squads y gobernanza ante Comités de Dirección.", "url": "/es/posts/matriz-rice-ice-priorizacion/"}, {"dir": "matriz-riesgos-amfe-fmea", "title": "Matriz de Riesgos Cuantitativa & AMFE / FMEA: De la Intuición Cualitativa al Número de Prioridad de Riesgo (NPR)", "date": "2026-10-30", "category": "tecnicos", "desc": "Guía metodológica y cuantitativa para transformar la matriz de riesgos subjetiva en un motor analítico bidimensional (ISO 31000) y tridimensional (AMFE/FMEA AIAG-VDA): cálculo de Severidad x Ocurrencia x Detección, curvas Pareto, ROI del control (CER) y defensa C-Level ante el Consejo de Administración.", "url": "/es/posts/matriz-riesgos-amfe-fmea/"}, {"dir": "mcp_protocol", "title": "MCP (Model Context Protocol): El Estándar que Quiere Ser el USB de la Inteligencia Artificial", "date": "2026-06-28", "category": "tecnicos", "desc": "Análisis técnico del protocolo MCP de Anthropic, el estándar abierto para conectar LLMs con herramientas externas. Comparativa con Tool Calling nativo y su impacto en la arquitectura de agentes.", "url": "/es/posts/mcp_protocol/"}, {"dir": "mlops_para_ingenieros", "title": "MLOps para Ingenieros: Cómo Llevar un Modelo de IA de Jupyter a Producción sin Morir en el Intento", "date": "2026-08-27", "category": "tecnicos", "desc": "El 87% de los modelos de ML nunca llegan a producción. Esta guía desglosa los 4 pilares fundamentales de MLOps, cómo pasar de un notebook a un pipeline industrial resiliente, la detección de Data Drift y Concept Drift, y las lecciones reales de operar pipelines en Datalaria.", "url": "/es/posts/mlops_para_ingenieros/"}, {"dir": "nanobanana-ingenieria", "title": "De la Ingeniería de Sistemas a la Fórmula 1: La IA (Nanobana) para ilustrar un Roadmap Complejo", "date": "2025-09-20", "category": "tecnicos", "desc": "Un caso práctico de cómo utilicé la herramienta de IA Nanobanana para transformar el Ciclo en V de la ingeniería de sistemas en una historia visual comprensible usando una analogía con la Fórmula 1.", "url": "/es/posts/nanobanana-ingenieria/"}, {"dir": "notebooklm-sql", "title": "Aprendiendo con IA - NotebookLM: De un libro a una plataforma de aprendizaje multimedia", "date": "2025-08-31", "category": "tecnicos", "desc": "Mi experiencia práctica generando una plataforma de aprendizaje y estudio multimedia a partir de un libro sobre SQL mediante la herrmienta de IA de Google NotebookLM", "url": "/es/posts/notebooklm-sql/"}, {"dir": "onboarding", "title": "De los '24 Días' al Éxito Inmediato: Revolucionando el Onboarding con Inteligencia Artificial", "date": "2026-01-17", "category": "tecnicos", "desc": "El proceso de onboarding tradicional está roto, con un tiempo promedio de 24 días y un coste de 4.000€ por contratación. Este post explora cómo la IA Generativa y el Procesamiento Inteligente de Documentos (IDP) transforman la 'infoxicación' burocrática en una integración fluida, ofreciendo un mentor virtual 24/7 que puede mejorar la retención en un 82%.", "url": "/es/posts/onboarding/"}, {"dir": "pgvector_vs_vectordb", "title": "PostgreSQL con pgvector vs Vector DBs: Por Qué Casi Nadie Necesita Pinecone", "date": "2026-09-22", "category": "tecnicos", "desc": "¿Realmente necesitas una base de datos vectorial dedicada como Pinecone, Qdrant o Milvus? Analizamos el rendimiento de pgvector en PostgreSQL, el coste oculto de la arquitectura dual, los índices HNSW vs IVFFlat, y por qué la base de datos unificada gana en el 95% de los casos.", "url": "/es/posts/pgvector_vs_vectordb/"}, {"dir": "proj_ops_parte1_intro", "title": "Project Operations Engineering: Por qué PMP y Agile destruyen valor en I+D y Defensa", "date": "2026-06-02", "category": "tecnicos", "desc": "Demoliendo las prácticas de gestión de proyectos tradicionales. Un análisis desde los Primeros Principios sobre cómo metodologías deterministas asfixian el P&L en entornos de alta complejidad tecnológica.", "url": "/es/posts/proj_ops_parte1_intro/"}, {"dir": "proj_ops_parte2_agentic_pmo", "title": "Project Operations Engineering Parte 2: La Muerte del 'Status Report' y el Ascenso de la Agentic PMO", "date": "2026-06-02", "category": "tecnicos", "desc": "Por qué el Project Manager tradicional es un middleware humano de alta latencia, y cómo una arquitectura basada en eventos y agentes erradica el coste burocrático.", "url": "/es/posts/proj_ops_parte2_agentic_pmo/"}, {"dir": "prompt_injection", "title": "Prompt Injection: La Vulnerabilidad que Tu Agente de IA No Sabe que Tiene", "date": "2026-08-15", "category": "tecnicos", "desc": "Prompt Injection ocupa el puesto #1 del OWASP GenAI Top 10 de 2026. Este artículo explica qué es, por qué tus agentes con Tool Calling son especialmente vulnerables, los ataques reales de 2025-2026, y las 5 defensas que funcionan en producción. Con casos reales del Autopilot y el Radar de Obsolescencia de Datalaria.", "url": "/es/posts/prompt_injection/"}, {"dir": "rag_antipatrones", "title": "RAG en Producción: 7 Antipatrones que Destruyen la Precisión (y Cómo los Solucioné)", "date": "2026-07-11", "category": "tecnicos", "desc": "Análisis de los 7 errores más comunes al implementar RAG (Retrieval-Augmented Generation) en producción real. Con lecciones aprendidas del Ops Engineering Copilot y el radar agéntico de obsolescencia de Datalaria, y la comparativa definitiva entre RAG y Tool Calling.", "url": "/es/posts/rag_antipatrones/"}, {"dir": "reuniones_IA", "title": "Reuniones Excelentes en la Era de la IA: El Decálogo Definitivo", "date": "2025-11-21", "category": "tecnicos", "desc": "Un decálogo de 10 pasos prácticos para transformar tus reuniones, haciéndolas más cortas, efectivas y ágiles, con un enfoque especial en cómo la IA puede ser tu mejor aliada.", "url": "/es/posts/reuniones_IA/"}, {"dir": "sdd_vs_vibe_coding", "title": "SDD (Spec-Driven Development) vs. Vibe Coding: Cómo Desarrollar Software Robusto con IA en 2026", "date": "2026-11-22", "category": "tecnicos", "desc": "Por qué el 'Vibe Coding' es una máquina de acumular deuda técnica invisible y cómo SDD (Spec-Driven Development) invierte el rol del ingeniero: de escribir sintaxis manual a diseñar contratos de interfaz, diagramas de estado y suites de test que la IA ejecuta sin alucinaciones.", "url": "/es/posts/sdd_vs_vibe_coding/"}, {"dir": "silicon_valley", "title": "Silicon Valley y el Dilema de PiperNet: La Profecía de la IA Incontrolable y los Incidentes con Agentes Reales", "date": "2026-09-27", "category": "tecnicos", "desc": "Un análisis exhaustivo de la serie 'Silicon Valley' de HBO: el viaje de una startup temporada a temporada, el desenlace de PiperNet y su IA autodidacta capaz de romper la criptografía global, y los paralelismos directos con los modelos frontera de 2026 y los recientes incidentes con agentes autónomos.", "url": "/es/posts/silicon_valley/"}, {"dir": "stack_productividad_2026", "title": "El Stack de Productividad de un Ingeniero en 2026: Las Herramientas que Uso Cada Día", "date": "2026-08-01", "category": "tecnicos", "desc": "El stack real de herramientas de un ingeniero de datos en 2026: desde Gemini Deep Research hasta GitHub Actions, pasando por Python, Supabase, CrewAI y Hugo. Sin patrocinios, sin afiliados, sin filtros. Cada herramienta explicada con el post donde la uso.", "url": "/es/posts/stack_productividad_2026/"}, {"dir": "the-goal", "title": "La Meta no es (solo) sobre fábricas: Sincronizando tu empresa en la era de la IA", "date": "2025-12-13", "category": "tecnicos", "desc": "Un análisis profundo de 'La Meta' de Eli Goldratt y cómo la Teoría de Restricciones (TOC) se aplica más allá de la producción, a la ingeniería, la gestión de proyectos y la cadena de suministro, potenciada por la IA y la Industria 4.0.", "url": "/es/posts/the-goal/"}, {"dir": "the_thinking_game", "title": "The Thinking Game: De cómo DeepMind convirtió los videojuegos en la mayor herramienta científica de la historia", "date": "2026-01-01", "category": "tecnicos", "desc": "Un análisis profundo del documental 'The Thinking Game', que narra la odisea de Demis Hassabis y DeepMind. Desde los píxeles de Atari hasta la resolución del plegamiento de proteínas con AlphaFold, exploramos cómo la búsqueda de la AGI está reescribiendo las reglas de la ciencia moderna.", "url": "/es/posts/the_thinking_game/"}, {"dir": "Visualizaciones-basicas", "title": "Visualizaciones básicas", "date": "2025-08-12", "category": "tecnicos", "desc": "Conoce cuáles son las visualizaciones básicas más utilizadas para analizar tus datos", "url": "/es/posts/Visualizaciones-basicas/"}];
+
+    const categories = {
+      tecnicos: postsData.filter(p => p.category === 'tecnicos'),
+      proyectos: postsData.filter(p => p.category === 'proyectos'),
+      startups: postsData.filter(p => p.category === 'startups'),
+      biografias: postsData.filter(p => p.category === 'biografias')
+    };
+
+    // 1. Conmutador de Tema Claro / Oscuro
+    const htmlElem = document.documentElement;
+    const themeBtn = document.getElementById('themeToggleBtn');
+    const themeLabel = document.getElementById('themeLabel');
+    const themeIcon = document.getElementById('themeIcon');
+
+    function applyTheme(theme) {
+      htmlElem.setAttribute('data-theme', theme);
+      localStorage.setItem('datalaria-minimal-theme', theme);
+      if (theme === 'dark') {
+        themeLabel.textContent = 'Modo Claro';
+        themeIcon.innerHTML = '<path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>';
+      } else {
+        themeLabel.textContent = 'Modo Oscuro';
+        themeIcon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+      }
+    }
+
+    themeBtn.addEventListener('click', () => {
+      const current = htmlElem.getAttribute('data-theme') || 'light';
+      applyTheme(current === 'light' ? 'dark' : 'light');
+    });
+
+    // Preferencia inicial
+    const userPref = localStorage.getItem('datalaria-minimal-theme') || 'light';
+    applyTheme(userPref);
+
+    // 2. Selector de Categorías (Renderizado Limpio de Artículos)
+    function selectCat(catKey) {
+      document.querySelectorAll('.cat-pill-btn').forEach(btn => {
+        if (btn.getAttribute('data-cat') === catKey) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      const container = document.getElementById('catPostsContainer');
+      const list = categories[catKey] || [];
+      const topSix = list.slice(0, 6);
+
+      container.innerHTML = topSix.map(post => `
+        <a href="${post.url}" class="cat-post-row">
+          <span class="cat-post-main">
+            <span>•</span>
+            <span>${post.title}</span>
+          </span>
+          <span class="cat-post-date">${post.date || 'Reciente'}</span>
+        </a>
+      `).join('');
+    }
+
+    // Iniciar con Artículos Técnicos
+    selectCat('tecnicos');
+
+    // 3. Post Aleatorio Interactivo
+    const btnReroll = document.getElementById('btnReroll');
+    const rndTitle = document.getElementById('rndTitle');
+    const rndDesc = document.getElementById('rndDesc');
+    const rndLink = document.getElementById('rndLink');
+
+    function rerollRandom() {
+      const idx = Math.floor(Math.random() * postsData.length);
+      const post = postsData[idx];
+
+      rndTitle.style.opacity = '0';
+      rndDesc.style.opacity = '0';
+
+      setTimeout(() => {
+        rndTitle.textContent = post.title;
+        rndDesc.textContent = post.desc || "Haz clic para acceder directamente a este artículo del archivo de Datalaria.";
+        rndLink.href = post.url;
+        rndTitle.style.opacity = '1';
+        rndDesc.style.opacity = '1';
+      }, 120);
+    }
+
+    btnReroll.addEventListener('click', rerollRandom);
+  </script>
+</body>
+</html>

@@ -414,7 +414,7 @@ Si necesitas aplicar esta metodología con el estándar de firmas como McKinsey 
   badge="⭐ Estándar Consultoría Tier-1"
   icon="🎯"
   features="Motor Excel (.xlsx) con 4 pestañas interconectadas, fórmulas matriciales protegidas y 10 factores dinámicos|Gráfico cartesiano de dispersión (Scatter Chart) con cálculo automático de vector de fuerza y postura dominante|Presentación PowerPoint (.pptx 16:9) editable en Slide Master con Pirámide de Minto y Action Titles|Guía Metodológica Oficial en PDF (5 páginas) con demostraciones matemáticas, caso industrial y FAQ de Consejo|Compatibilidad garantizada al 100% con Microsoft Excel y Google Sheets sin macros complejas"
-  checkout_url="https://datalaria.lemonsqueezy.com/buy/dafo-cuantitativo-came"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/957a4ecf-94d1-45f8-9ff7-ea032e8008af"
   button_text="Descargar Pack Completo (.ZIP) • 5€"
 >}}
 El archivo comprimido incluye la plantilla en **Excel (.xlsx)** con fórmulas protegidas bajo contraseña proporcionada en las instrucciones y celdas de input editables, la presentación en **PowerPoint (.pptx 16:9)** lista para proyectar ante Consejos de Administración, la **Guía Metodológica en PDF** de 5 páginas y las instrucciones de importación directa a Google Drive.

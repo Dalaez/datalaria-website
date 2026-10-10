@@ -75,7 +75,7 @@ hidemeta: true
     status="available"
     deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Methodology Guide PDF"
     features="Numerical weighting for Strengths & Weaknesses|Automated TOWS action matrix (SO, WO, ST, WT)|16:9 PowerPoint slide with Action Titles ready for the Board|PDF guide with matrix calculation algorithms"
-    checkout_url="https://datalaria.lemonsqueezy.com/buy/dafo-cuantitativo-came"
+    checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/957a4ecf-94d1-45f8-9ff7-ea032e8008af"
     button_text="Download Pack • 5€"
     guide_url="/en/posts/quantitative-swot-tows-matrix/"
     guide_text="Read practical guide with real-world case"

@@ -28,17 +28,17 @@
       <p class="bundle-subtitle">{{ $subtitle }}</p>
 
       <div class="bundle-deliverables-pill">
-        <span class="pill-title">Todos los packs incluyen:</span>
+        <span class="pill-title">{{- if eq $.Page.Language.Lang "en" }}All packs include:{{- else }}Todos los packs incluyen:{{- end }}</span>
         <div class="pill-row">
-          <span class="pill-tag">📊 Modelos Excel + Sheets</span>
-          <span class="pill-tag">📑 Decks PPTX 16:9 C-Level</span>
-          <span class="pill-tag">📄 Guías Metodológicas PDF</span>
+          <span class="pill-tag">{{- if eq $.Page.Language.Lang "en" }}📊 Excel + Sheets Models{{- else }}📊 Modelos Excel + Sheets{{- end }}</span>
+          <span class="pill-tag">{{- if eq $.Page.Language.Lang "en" }}📑 16:9 C-Level PPTX Decks{{- else }}📑 Decks PPTX 16:9 C-Level{{- end }}</span>
+          <span class="pill-tag">{{- if eq $.Page.Language.Lang "en" }}📄 PDF Methodological Guides{{- else }}📄 Guías Metodológicas PDF{{- end }}</span>
         </div>
       </div>
 
       {{- if $items }}
       <div class="bundle-items-section">
-        <div class="bundle-items-heading">Herramientas ejecutivas incluidas:</div>
+        <div class="bundle-items-heading">{{- if eq $.Page.Language.Lang "en" }}Included executive tools:{{- else }}Herramientas ejecutivas incluidas:{{- end }}</div>
         <ul class="bundle-items-grid">
           {{- range (split $items "|") }}
           <li class="bundle-item">
@@ -65,7 +65,7 @@
         {{- if $originalPrice }}
         <div class="bundle-price-strike">
           <span class="original-val">{{ $originalPrice }}</span>
-          <span class="savings-text">Valor total por separado</span>
+          <span class="savings-text">{{- if eq $.Page.Language.Lang "en" }}Total individual value{{- else }}Valor total por separado{{- end }}</span>
         </div>
         {{- end }}
       </div>
@@ -81,7 +81,11 @@
 
       <div class="bundle-trust-note">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-        <span>Entrega instantánea .ZIP • Factura B2B con IVA deducible</span>
+        {{- if eq $.Page.Language.Lang "en" }}
+        <span>Instant direct download (.ZIP)</span>
+        {{- else }}
+        <span>Descarga directa inmediata (.ZIP)</span>
+        {{- end }}
       </div>
     </div>
   </div>

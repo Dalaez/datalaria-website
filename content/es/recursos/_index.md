@@ -74,7 +74,7 @@ hidemeta: true
     icon="🎯"
     status="available"
     features="Ponderación numérica de Fortalezas y Debilidades|Matriz CAME automatizada (Corregir, Afrontar, Mantener, Explotar)|Slide PowerPoint 16:9 con Action Titles lista para Comité|Guía PDF con algoritmo de cálculo matricial"
-    checkout_url="https://datalaria.lemonsqueezy.com/buy/dafo-cuantitativo-came"
+    checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/957a4ecf-94d1-45f8-9ff7-ea032e8008af"
     button_text="Descargar Pack • 5€"
     guide_url="/posts/dafo-cuantitativo-matriz-came/"
     guide_text="Leer artículo guía con caso práctico"
