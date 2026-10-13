@@ -2,6 +2,7 @@
 title: "John von Neumann: The Father of Computer Architecture, Game Theory, and the Origin of the Singularity"
 date: 2026-10-10
 draft: false
+category: "Biographies"
 categories: ["casos_exito", "Inteligencia Artificial", "Ingeniería"]
 tags: ["john von neumann", "von neumann architecture", "game theory", "singularity", "agi", "los alamos", "computer science", "artificial intelligence", "history"]
 image: cover.jpg

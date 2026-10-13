@@ -2,6 +2,7 @@
 title: "Ingeniería S&OP III: El Fin de Excel (Programación Lineal para Supply Planning)"
 date: 2026-03-13
 draft: false
+category: "Proyectos Tecnológicos"
 categories: ["Ingeniería de S&OP", "Operations Research", "Python"]
 tags: ["Supply Chain", "Optimization", "PuLP", "Linear Programming", "Supabase"]
 author: "Datalaria"

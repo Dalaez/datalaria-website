@@ -1,6 +1,7 @@
 ---
 title: "Copiloting with AI: Learning with Founderz and ChatGPT"
 date: 2025-09-11
+category: "Technical Articles"
 draft: False
 categories: ["Tools", "Learning"]
 tags: ["ai", "chatgpt", "prompt engineering", "founderz", "web development", "no-code", "html", "maths"]

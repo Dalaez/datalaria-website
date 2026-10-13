@@ -1,6 +1,7 @@
 ---
 title: Descriptive Analysis
 date: 2025-08-09
+category: "Technical Articles"
 description: "Learn the fundamental math and statistics concepts you need to work with your data"
 summary: "Let's explore the key mathematical and statistical concepts required to properly understand and manage your data and information"
 draft: False

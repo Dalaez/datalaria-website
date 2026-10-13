@@ -2,6 +2,7 @@
 title: "Flywire: How a Spaniard Built the Brain of International Payments from Boston"
 date: 2026-07-25
 draft: false
+category: "Startups"
 categories: ["case-studies"]
 tags: ["flywire", "fintech", "international payments", "nasdaq", "spanish startup", "machine learning", "cross-border", "iker marcaide"]
 description: "The story of Flywire (FLYW), the Spanish unicorn listed on the Nasdaq that processes billions in international payments for education, healthcare, and travel. How Iker Marcaide turned a student's pain point at MIT into a global platform using ML to optimize every transaction."

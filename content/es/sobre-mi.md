@@ -26,7 +26,7 @@ Mi enfoque se basa en tres pilares:
 ### ¿En qué consiste Datalaria?
 
 * **Consultoría:** Ayudo a transformar procesos industriales y de negocio mediante IA y Datos.
-* **Desarrollo de Producto:** Creo herramientas [Apps](/es/apps/) y [Juegos](/es/games/) que ponen a prueba las capacidades de la web moderna y la latencia en tiempo real.
+* **Desarrollo de Producto:** Creo herramientas y aplicaciones interactivas en [Apps & Experimentos](/es/apps/) que ponen a prueba las capacidades de la web moderna y la latencia en tiempo real.
 * **Divulgación:** Traduzco la complejidad técnica en estrategia accionable a través de este blog.
 
 Si buscas a alguien que hable el idioma del negocio y con pasión en la tecnología, estás en el lugar correcto.

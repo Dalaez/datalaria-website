@@ -1,6 +1,7 @@
 ---
 title: "Freepik: The Story of the Giant from Málaga that Tamed AI to Conquer the Creative World"
 date: 2025-10-11
+category: "Startups"
 draft: False
 categories: ["case-studies", "AI"]
 tags: ["freepik", "ai", "generative ai", "malaga", "startup", "business model", "disruption"]

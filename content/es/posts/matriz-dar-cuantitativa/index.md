@@ -2,6 +2,7 @@
 title: "Matriz DAR Cuantitativa: Criterios Veto, Ponderación Multicriterio y Análisis de Decisiones C-Level"
 date: 2026-10-28
 draft: false
+category: "Artículos Técnicos"
 categories: ["Toma de Decisiones", "Estrategia Corporativa", "Plantillas Ejecutivas"]
 tags: ["Matriz DAR", "CMMI", "Kepner-Tregoe", "Toma de Decisiones", "Criterios Veto", "Scoring Multicriterio", "ERP", "Make vs Buy", "C-Level"]
 description: "Guía metodológica y cuantitativa para implementar la matriz CMMI DAR (Decision Analysis and Resolution) y Kepner-Tregoe: filtros veto booleanos, scoring multicriterio ponderado, análisis de sensibilidad What-If y gobierno corporativo ante Consejos de Administración."
@@ -224,7 +225,7 @@ Para directores generales (CEO), directores financieros (CFO), directores de tec
   icon="⚖️"
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Guía Metodológica PDF"
   features="Algoritmo de scoring ponderado con Criterios Veto (Non-Negotiable)|Comparativa cuantitativa de hasta 5 alternativas o proveedores|Slide PPTX con tabla ejecutiva de trade-offs y recomendación final|Guía metodológica con protocolo de auditoría de decisiones|Descarga directa inmediata (.ZIP con versiones ES y EN)"
-  checkout_url="https://datalaria.lemonsqueezy.com/buy/matriz-dar"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/c6eb00f3-1890-4884-be46-3f76c9922737"
   button_text="Descargar Pack Completo (.ZIP) • 6€"
 >}}
 El archivo comprimido incluye los libros oficiales en **Excel (.xlsx)** con protección estándar ECMA-376 (fórmulas bloqueadas bajo contraseña proporcionada en las instrucciones y celdas de entrada 100% editables), las presentaciones ejecutivas en **PowerPoint (.pptx 16:9 widescreen)** estructuradas bajo la Pirámide de Minto con el gráfico analítico en alta resolución y el Board Decision Gateway, las **Guías Metodológicas en PDF** de 5 páginas con la demostración matemática completa, y las instrucciones de importación fluida a Google Sheets.

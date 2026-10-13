@@ -2,6 +2,7 @@
 title: "The Thinking Game: How DeepMind Turned Video Games into History's Greatest Scientific Tool"
 date: 2026-01-01
 draft: false
+category: "Technical Articles"
 categories: ["Artificial Intelligence", "Deep Tech", "Science", "Documentaries"]
 tags: ["DeepMind", "Demis Hassabis", "AlphaFold", "AGI", "AlphaGo", "The Thinking Game", "Computational Biology"]
 image: the_thinking_game.jpg

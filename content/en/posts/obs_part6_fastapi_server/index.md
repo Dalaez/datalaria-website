@@ -2,6 +2,7 @@
 title: "The Central Nervous System: Scaling the Agentic Radar to 24/7 with FastAPI and Webhooks"
 date: 2026-05-09
 draft: false
+category: "Tech Projects"
 categories: ["S&OP Engineering", "Artificial Intelligence", "Cloud Architecture"]
 tags: ["FastAPI", "Webhooks", "Event-Driven Architecture", "CrewAI", "Python"]
 description: "Transitioning from a local script to a high-availability enterprise architecture. This post details building a FastAPI router to orchestrate CrewAI agents asynchronously."

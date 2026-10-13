@@ -2,6 +2,7 @@
 title: "Thomas Bayes: El Reverendo que Nos Enseñó a Actualizar Nuestras Creencias con Datos"
 date: 2026-07-18
 draft: false
+category: "Biografías"
 categories: ["casos_exito"]
 tags: ["bayes", "probabilidad", "inferencia bayesiana", "prophet", "a/b testing", "estadística", "historia de los datos"]
 description: "La historia de Thomas Bayes, el reverendo del siglo XVIII cuyo teorema póstumo transformó la estadística, la medicina, el machine learning y la planificación de la demanda. Cómo la inferencia bayesiana conecta con Prophet, Netflix y la cadena de suministro moderna."

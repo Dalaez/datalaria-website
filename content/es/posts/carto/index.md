@@ -1,6 +1,7 @@
 ---
 title: "Carto: De una Factura a la ONU a Conquistar la Nube Geoespacial"
 date: 2025-10-25
+category: "Startups"
 draft: False
 categories: ["casos_exito", "IA"]
 tags: ["carto", "geoespacial", "ia", "cloud", "startup", "big data", "inteligencia de localización"]

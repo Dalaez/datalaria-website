@@ -2,6 +2,7 @@
 title: "Project Operations Engineering: Why PMP and Agile Destroy Value in R&D and Defense"
 date: 2026-06-02
 draft: true
+category: "Tech Projects"
 categories: ["Project Operations Engineering", "Operations Engineering"]
 tags: ["PMP", "Agile", "First Principles Thinking", "Working Capital", "Stochastic Queues"]
 author: "Datalaria"

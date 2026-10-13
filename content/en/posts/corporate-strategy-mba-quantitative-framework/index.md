@@ -2,6 +2,7 @@
 title: "Quantitative Corporate Strategy: The 5-Step Executive Framework for Boardrooms"
 date: 2026-11-10
 draft: false
+category: "Technical Articles"
 categories: ["Corporate Strategy", "Corporate Finance", "Executive Management", "Decision Making"]
 tags: ["Corporate Strategy", "Capital Allocation", "PESTEL", "Porter Five Forces", "Quantitative SWOT", "TOWS Matrix", "BCG Matrix", "McKinsey GE Matrix", "ROIC", "Board of Directors", "C-Suite"]
 description: "From macro volatility to capital allocation. How to connect PESTEL, Porter's Five Forces, SWOT-TOWS, BCG, and McKinsey matrices into a unified quantitative decision engine."
@@ -412,7 +413,7 @@ For Chief Strategy Officers, Chief Financial Officers, CEOs, and senior manageme
   badge="Complete C-Level Collection"
   icon="🏛️"
   items="Quantitative PESTEL Matrix with Severity & Volatility|Weighted Porter's 5 Forces with Radar Profile|Quantitative SWOT with Cartesian Vector & TOWS|Dynamic BCG Matrix with Cash Flow Balancing|McKinsey / GE 3x3 Capital Allocation Matrix"
-  checkout_url="https://datalaria.lemonsqueezy.com/buy/suite-01-estrategia-mba"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/195836b8-7fe4-4c1b-bd48-f40d9a6ebea1"
   button_text="Download Full Suite (.ZIP) • 19€"
   highlight="true"
 >}}

@@ -2,6 +2,7 @@
 title: "De la Narrativa al Diagrama: Diseñando Procesos S&OP con IA y BPMN"
 date: 2025-12-19
 draft: false
+category: "Artículos Técnicos"
 categories: ["Inteligencia Artificial", "Industria 4.0", "Productividad"]
 tags: ["S&OP", "BPMN", "Mermaid", "Process Design", "GenAI", "Business Analysis"]
 image: "/images/posts/ai-bpmn-sop-process.jpg" 

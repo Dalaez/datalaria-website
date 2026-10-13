@@ -26,7 +26,7 @@ My approach is based on three pillars (**First Principles Thinking**):
 ### What is Datalaria?
 
 * **Consulting:** I help transform industrial and business processes using AI and Data.
-* **Product Development:** I create tools ([Apps](/en/apps/)) and [Games](/en/games/) that test the capabilities of the modern web and real-time latency.
+* **Product Development:** I create interactive tools and applications in [Apps & Experiments](/en/apps/) that test the capabilities of the modern web and real-time latency.
 * **Outreach:** I translate technical complexity into actionable strategy through this blog.
 
 If you are looking for someone who speaks the language of business with a passion for technology, you are in the right place.

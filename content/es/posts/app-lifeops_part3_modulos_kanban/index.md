@@ -2,6 +2,7 @@
 title: "Proyecto LifeOps (Parte 3): Módulos Interactivos: Deporte, Biblioteca, Cine y Tablero Kanban Profesional"
 date: 2026-09-15
 draft: false
+category: "Proyectos Tecnológicos"
 categories: ["Proyectos", "Desarrollo Web"]
 tags: ["react", "fastapi", "postgresql", "jsonb", "kanban", "deporte", "fitness", "lectura", "cine", "productivity", "frontend"]
 image: cover.png

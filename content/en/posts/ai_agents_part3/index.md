@@ -2,6 +2,7 @@
 title: "Autopilot - The Creatives: How I Programmed an AI to be Cynical on Twitter and Corporate on LinkedIn"
 date: 2026-01-03
 draft: false
+category: "Tech Projects"
 categories: ["Generative AI", "Prompt Engineering", "Python"]
 tags: ["CrewAI", "AI Personality", "Automation", "Marketing", "Storytelling"]
 image: "cover.png"

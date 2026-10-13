@@ -2,6 +2,7 @@
 title: "Matriz RICE & ICE de Priorización Ágil: Backlog Cuantitativo, Matriz Impacto vs. Esfuerzo y Línea de Corte de Capacidad"
 date: 2026-10-29
 draft: false
+category: "Artículos Técnicos"
 categories: ["Toma de Decisiones", "Gestión de Producto", "Plantillas Ejecutivas"]
 tags: ["Matriz RICE", "Matriz ICE", "Priorización de Producto", "Backlog Ágil", "Línea de Corte", "Capacidad de Ingeniería", "HiPPO", "Quick Wins", "C-Level"]
 description: "Guía metodológica y cuantitativa para implementar la matriz RICE (Reach, Impact, Confidence, Effort) e ICE: cálculo de densidad de valor, descuento bayesiano de confianza, matriz cuadrante 2x2 Impacto vs. Esfuerzo, línea de corte por capacidad de squads y gobernanza ante Comités de Dirección."
@@ -303,7 +304,7 @@ Para directores de producto (CPO), directores de tecnología (CTO), directores g
   icon="🚀"
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Guía Metodológica PDF"
   features="Cálculo cuantitativo de puntuación RICE (Reach, Impact, Confidence, Effort)|Matriz ICE complementaria para iniciativas de experimentación rápida|Línea de corte automática según capacidad del equipo|Slide PPTX con matriz de cuadrantes Esfuerzo vs. Impacto|Guía PDF de normalización de confianza estadística|Descarga directa inmediata (.ZIP con versiones ES y EN)"
-  checkout_url="https://datalaria.lemonsqueezy.com/buy/matriz-rice-ice"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/c6f4ced0-0117-434f-829d-79ecf8263587"
   button_text="Descargar Pack Completo (.ZIP) • 6€"
 >}}
 El paquete descargable incluye los libros analíticos oficiales en **Excel (.xlsx)** estructurados en 5 pestañas interconectadas con protección estándar ECMA-376 (fórmulas protegidas bajo contraseña proporcionada en las instrucciones y celdas de entrada 100% editables en blanco), las presentaciones ejecutivas en **PowerPoint (.pptx 16:9 widescreen)** bajo la Pirámide de Minto con la matriz cartesiana 2x2 en alta resolución y el Board Decision Gateway con 4 firmas de C-Level, las **Guías Metodológicas Oficiales en PDF** de 5 páginas con la formulación matemática completa, y las instrucciones de importación fluida a Google Sheets.

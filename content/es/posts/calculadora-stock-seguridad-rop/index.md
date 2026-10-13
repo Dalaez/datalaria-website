@@ -2,6 +2,7 @@
 title: "Calculadora de Stock de Seguridad & ROP: Optimización de Inventario y Working Capital de Grado Consejo de Administración"
 date: 2026-11-06
 draft: false
+category: "Artículos Técnicos"
 categories: ["Control Operativo", "Supply Chain", "Plantillas Ejecutivas"]
 tags: ["Stock de Seguridad", "Punto de Pedido", "ROP", "Safety Stock", "EOQ", "Wilson", "Working Capital", "Cadena de Suministro", "APICS", "ASCM", "Inventario", "C-Level"]
 description: "Guía cuantitativa y metodológica de optimización de inventarios (APICS / ASCM / MIT CTL): erradicación de las reglas empíricas de 3 semanas, convolución estocástica multivariante de demanda y Lead Time, dimensionamiento ROP y Wilson EOQ, simulación de Diente de Sierra y liberación de capital de trabajo para defender ante el Consejo de Administración."
@@ -42,7 +43,7 @@ flowchart TD
     
     C["<b>3. Auditoría de Fiabilidad del Proveedor</b><br/><small>Plazo medio de entrega en días (L)<br/>Desviación estándar de impuntualidad logística (σL)</small>"]
     
-    D["<b>4. Motor de Convolución Estocástica (SS)</b><br/><small>Cálculo del Factor Z según CSL: Z = Φ⁻¹(CSL)<br/>SS = Z · √(L · σd² + d² · σL²)</small>"]
+    D["<b>4. Motor de Convolución Estocástica (SS)</b><br/><small>Cálculo del Factor Z según CSL: Z = Φ<sup>-1</sup>(CSL)<br/>SS = Z · √(L · σd² + d² · σL²)</small>"]
     
     E["<b>5. Calibración del Punto de Pedido (ROP)</b><br/><small>Demanda durante el Lead Time: LTD = d · L<br/>ROP = LTD + SS (Umbral de disparo ERP)</small>"]
     
@@ -316,7 +317,7 @@ Para que tu organización no tenga que invertir semanas en programar y auditar e
   icon="📦"
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Guía Metodológica PDF"
   features="Modelos estocásticos de demanda y Lead Time variable|Cálculo automático de Stock de Seguridad (SS) y Punto de Pedido (ROP)|Gráfico dinámico de Diente de Sierra y dimensionamiento EOQ|Slide PPTX con análisis de Working Capital y optimización de caja"
-  checkout_url="https://datalaria.lemonsqueezy.com/buy/stock-seguridad-rop"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/c4e54cc9-e400-4f22-ad15-31e56f61416b"
   button_text="Descargar Pack Completo (.ZIP) • 7€"
 >}}
 Optimiza los niveles de inventario de tu empresa eliminando las roturas de stock y liberando capital de trabajo inmovilizado mediante modelos matemáticos rigurosos.

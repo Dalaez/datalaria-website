@@ -2,6 +2,7 @@
 title: "Multiverse Computing: La Startup Española que Resuelve el Cuello de Botella de la IA con Física Cuántica (Sin Ordenadores Cuánticos)"
 date: 2026-01-31
 draft: false
+category: "Startups"
 categories: ["Inteligencia Artificial", "Deep Tech", "Estrategia Empresarial", "Computación Cuántica"]
 tags: ["Multiverse Computing", "IA Generativa", "Compresión de Modelos", "Redes de Tensores", "Quantum-Inspired", "LLM", "Startup", "Inversión"]
 image: cover.png

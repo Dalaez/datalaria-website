@@ -2,6 +2,7 @@
 title: "Estrategia Corporativa Cuantitativa: El Framework Integral de 5 Pasos para Comités de Dirección"
 date: 2026-11-10
 draft: false
+category: "Artículos Técnicos"
 categories: ["Estrategia Corporativa", "Finanzas Corporativas", "Management", "Toma de Decisiones"]
 tags: ["Estrategia Corporativa", "Asignación de Capital", "PESTEL", "5 Fuerzas de Porter", "DAFO Cuantitativo", "Matriz CAME", "Matriz BCG", "Matriz McKinsey GE", "ROIC", "Comité de Dirección", "C-Level"]
 description: "De la incertidumbre macroeconómica a la asignación de CAPEX. Guía metodológica para conectar PESTEL, Porter, DAFO-CAME, BCG y McKinsey en un único sistema de decisión."
@@ -412,7 +413,7 @@ Para los Directores de Estrategia, Directores Financieros (CFO), Consejeros Dele
   badge="Colección Completa C-Level"
   icon="🏛️"
   items="Matriz PESTEL Cuantitativa con Severidad & Volatilidad|5 Fuerzas de Porter Ponderadas con Gráfico Radar|DAFO Cuantitativo con Vector Cartesiano & CAME|Matriz BCG Dinámica con Balance de Cash Flow|Matriz McKinsey / GE 3x3 de Asignación de Capital"
-  checkout_url="https://datalaria.lemonsqueezy.com/buy/suite-01-estrategia-mba"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/195836b8-7fe4-4c1b-bd48-f40d9a6ebea1"
   button_text="Descargar Suite Completa (.ZIP) • 19€"
   highlight="true"
 >}}

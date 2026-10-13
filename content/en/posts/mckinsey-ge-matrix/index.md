@@ -2,6 +2,7 @@
 title: "McKinsey / GE 3x3 Matrix: Industry Attractiveness, Business Unit Strength, and C-Level Capital Allocation"
 date: 2026-10-27
 draft: false
+category: "Technical Articles"
 categories: ["Corporate Strategy", "Executive Templates"]
 tags: ["Corporate Strategy", "McKinsey Matrix", "General Electric", "Capital Allocation", "MBA", "Corporate Finance"]
 description: "Comprehensive quantitative methodology for deploying the McKinsey / General Electric 3x3 9-box matrix: multifactor evaluation, management bias elimination, and capital allocation governance for Boards of Directors."
@@ -182,7 +183,7 @@ For Chief Executive Officers (CEOs), Chief Financial Officers (CFOs), Chief Stra
     badge="⭐ Capital Allocation"
     icon="📊"
     deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Methodology Guide PDF"
-    checkout_url="https://datalaria.lemonsqueezy.com/buy/matriz-mckinsey-ge" 
+    checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/8031103e-84d4-40bb-b560-9181f4ec31ea" 
     button_text="Download Full Pack (.ZIP) • 6€"
     features="Multifactor 3x3 Excel Engine (ECMA-376 openpyxl unlocked input cells)|Portfolio Dashboard with Automated 9-Box Quadrant Assignment|16:9 C-Level Boardroom Presentation with Minto Decision Gateway|Comprehensive PDF Methodology Guide with Board Defense Protocol|Instant Direct Download (.ZIP with full ES and EN suites)" >}}
 The compressed archive includes the official **Excel workbooks (.xlsx)** with ECMA-376 protection (formulas locked, user input cells 100% editable under documented master password), the executive **PowerPoint presentations (.pptx 16:9 widescreen)** featuring high-resolution Cartesian bubble charts and the Board Decision Gateway, the **5-page PDF Methodology Guides**, and seamless Google Sheets import instructions.

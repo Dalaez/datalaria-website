@@ -2,6 +2,7 @@
 title: "Financial Business Case: How to Calculate NPV, IRR, Discounted Payback, and Tornado Sensitivity Analysis in Excel"
 date: 2026-10-30
 draft: false
+category: "Technical Articles"
 categories: ["Corporate Finance", "Corporate Strategy", "Executive Templates"]
 tags: ["Business Case", "NPV", "IRR", "MIRR", "Discounted Payback", "WACC", "CAPM", "Tornado Chart", "Sensitivity Analysis", "CFO", "C-Level"]
 description: "Comprehensive quantitative methodology to build a Board-ready Financial Business Case: Discounted Free Cash Flow (DCF), WACC estimation via CAPM, NPV, IRR, MIRR, interpolated Discounted Payback, Tornado sensitivity chart, and stage-gate governance."
@@ -290,7 +291,7 @@ For Chief Financial Officers (CFO), Chief Executive Officers (CEO), Corporate De
   icon="📈"
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Methodology Guide PDF"
   features="Discounted free cash flow model over 3 and 5-year horizons|Automated calculation of NPV, IRR, MIRR, and interpolated Discounted Payback|CAPM-based WACC calculator, 3 scenario states, and probability-weighted expected NPV|One-way sensitivity analysis and dynamic Tornado chart for risk profiling|16:9 C-Level executive presentation structured under the Minto Pyramid|Instant direct download (.ZIP with ES and EN versions)"
-  checkout_url="https://datalaria.lemonsqueezy.com/buy/business-case-financiero"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/d1f06578-2f17-41e5-b277-83f49fe500a4"
   button_text="Download Full Pack (.ZIP) • 8€"
 >}}
 The downloadable archive includes the institutional analytical workbooks in **Excel (.xlsx)** across 6 interconnected worksheets with ECMA-376 standard protection (formulas protected under password provided in the instructions, and white input cells 100% editable), the executive presentation in **PowerPoint (.pptx 16:9 widescreen)** under the Minto Pyramid with native editable Tornado charts and the Board Decision Gateway featuring 4 C-Level sign-offs, the **Official Methodology Guides in PDF** (5 pages) with complete mathematical proofs and Boardroom defense FAQs, and seamless Google Sheets import instructions.

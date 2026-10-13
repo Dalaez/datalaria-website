@@ -1,7 +1,9 @@
 ---
 title: "5 Fuerzas de Porter Ponderadas y Atractivo de Industria: La Guía Cuantitativa Definitiva para Comités de Dirección (C-Level)"
-date: 2026-10-12
+date: 2026-10-16
 draft: false
+translationKey: quantitative-porter-5-forces
+category: "Artículos Técnicos"
 categories: ["Estrategia Empresarial", "Toma de Decisiones", "Finanzas Corporativas", "Management"]
 tags: ["5 Fuerzas de Porter", "Atractivo de Industria", "Estrategia C-Level", "Economic Moat", "Pirámide de Minto", "Plantilla Excel", "PowerPoint Ejecutivo", "Asignación de Capital"]
 description: "Guía metodológica exhaustiva para transformar el análisis tradicional cualitativo de las 5 Fuerzas de Porter en un motor matemático ponderado con gráfico radar dinámico, diagnóstico de foso defensivo (Moat) y plan de acción para comités directivos."
@@ -230,7 +232,7 @@ Para los líderes corporativos, consultores estratégicos, directores de M&A y r
   badge="★ Estándar Consultoría Tier-1"
   icon="📊"
   features="Motor Excel (.xlsx) con 4 pestañas interconectadas, fórmulas matriciales protegidas y gráfico Radar pentagonal dinámico|Matriz cartesiana Atractivo vs. Moat con diagnóstico de postura estratégica y semáforo financiero|Presentación PowerPoint (.pptx 16:9 Widescreen) editable con Pirámide de Minto, Action Titles y Board Decision Gateway|Guía Metodológica Oficial en PDF (5 páginas) con demostraciones matemáticas, caso industrial resuelto y FAQ de Consejo|Compatibilidad garantizada al 100% con Microsoft Excel y Google Sheets sin macros complejas"
-  checkout_url="https://datalaria.lemonsqueezy.com/buy/porter-5-forces-executive-pack"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/c9ca2aa7-e707-4789-bdb7-1ba191aa0550"
   button_text="Descargar Pack Completo (.ZIP) • 6€"
 >}}
 El archivo comprimido incluye la plantilla en **Excel (.xlsx)** con fórmulas protegidas bajo contraseña proporcionada en las instrucciones y celdas de input editables, la presentación en **PowerPoint (.pptx 16:9)** lista para proyectar ante Consejos de Administración, la **Guía Metodológica en PDF** de 5 páginas y las instrucciones de importación directa a Google Drive.

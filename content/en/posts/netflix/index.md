@@ -1,6 +1,7 @@
 ---
 title: "Netflix: How Data Forges an Empire in the Midst of the Streaming Wars"
 date: 2025-09-15
+category: "Startups"
 draft: False
 categories: ["case-studies"]
 tags: ["netflix", "streaming", "big data", "ai", "disney", "churn", "algorithms"]

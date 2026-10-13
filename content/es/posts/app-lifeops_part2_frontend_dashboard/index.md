@@ -2,6 +2,7 @@
 title: "Proyecto LifeOps (Parte 2): Frontend React con Glassmorphism, Dashboard 360° y Sistema de Diseño Dark Mode"
 date: 2026-09-13
 draft: false
+category: "Proyectos Tecnológicos"
 categories: ["Proyectos", "Desarrollo Web"]
 tags: ["react", "vite", "glassmorphism", "css", "recharts", "frontend", "dashboard", "i18n", "ui-ux", "supabase", "javascript"]
 image: cover.png

@@ -358,10 +358,10 @@ def build_pdf(filename, lang='ES'):
     story.append(Paragraph("<b>La Barrera Asintótica: Por qué el 100% de Servicio Exige Inventario Infinito:</b>" if is_es else "<b>The Asymptotic Barrier: Why 100% Service Level Demands Infinite Inventory:</b>", style_h2))
 
     asymp_text_es = (
-        "El factor Z representa el cuantil de la distribución normal estándar: <b>Z = Φ⁻¹(CSL)</b>. A medida que el nivel de servicio se acerca al 100%, la cola de la distribución gaussiana se extiende hacia el infinito. Pasar de un 95% (Z = 1,645) a un 98% (Z = 2,054) incrementa el stock un 25%. Sin embargo, elevarlo al 99,5% (Z = 2,576) exige un +56% de capital, y alcanzar el 99,9% (Z = 3,090) dispara el circulante un +88%. Exigir un 100% exigiría Z = ∞, inmovilizando la totalidad de los fondos propios de la compañía."
+        "El factor Z representa el cuantil de la distribución normal estándar: <b>Z = Φ<sup>-1</sup>(CSL)</b>. A medida que el nivel de servicio se acerca al 100%, la cola de la distribución gaussiana se extiende hacia el infinito. Pasar de un 95% (Z = 1,645) a un 98% (Z = 2,054) incrementa el stock un 25%. Sin embargo, elevarlo al 99,5% (Z = 2,576) exige un +56% de capital, y alcanzar el 99,9% (Z = 3,090) dispara el circulante un +88%. Exigir un 100% exigiría Z = ∞, inmovilizando la totalidad de los fondos propios de la compañía."
     )
     asymp_text_en = (
-        "The Z-factor represents the inverse standard normal quantile: <b>Z = Φ⁻¹(CSL)</b>. As Cycle Service Level approaches 100%, the Gaussian tail stretches to infinity. Moving from 95% (Z = 1.645) to 98% (Z = 2.054) increases required safety stock by 25%. However, pushing to 99.5% (Z = 2.576) consumes +56% extra capital, and 99.9% (Z = 3.090) inflates capital by +88%. Pursuing a theoretical 100% service level requires Z = ∞, locking up the entirety of the corporation's equity."
+        "The Z-factor represents the inverse standard normal quantile: <b>Z = Φ<sup>-1</sup>(CSL)</b>. As Cycle Service Level approaches 100%, the Gaussian tail stretches to infinity. Moving from 95% (Z = 1.645) to 98% (Z = 2.054) increases required safety stock by 25%. However, pushing to 99.5% (Z = 2.576) consumes +56% extra capital, and 99.9% (Z = 3.090) inflates capital by +88%. Pursuing a theoretical 100% service level requires Z = ∞, locking up the entirety of the corporation's equity."
     )
     story.append(Paragraph(asymp_text_es if is_es else asymp_text_en, style_body))
 

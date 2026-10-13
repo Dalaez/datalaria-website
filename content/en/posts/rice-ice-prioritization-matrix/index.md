@@ -2,6 +2,7 @@
 title: "RICE & ICE Agile Prioritization Matrix: Quantitative Backlog, Impact vs. Effort Matrix & Capacity Cut-Line"
 date: 2026-10-29
 draft: false
+category: "Technical Articles"
 categories: ["Decision Making", "Product Management", "Executive Templates"]
 tags: ["RICE Matrix", "ICE Matrix", "Product Prioritization", "Agile Backlog", "Capacity Cut-Line", "Engineering Capacity", "HiPPO Bias", "Quick Wins", "C-Level"]
 description: "Comprehensive executive methodology to implement the RICE (Reach, Impact, Confidence, Effort) and ICE frameworks: value density calculations, Bayesian risk discounts, 2x2 Impact vs. Effort matrix, squad capacity cut-lines, and C-Suite Product Council governance."
@@ -303,7 +304,7 @@ For Chief Product Officers (CPO), Chief Technology Officers (CTO), CEOs, and eng
   icon="🚀"
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Methodology Guide PDF"
   features="Quantitative RICE score calculation (Reach, Impact, Confidence, Effort)|Complementary ICE matrix for high-velocity growth tests|Automated capacity cut-line based on net squad person-months|16:9 Executive slide deck with 2x2 Impact vs. Effort matrix|Methodology PDF with statistical confidence normalization|Instant direct download (.ZIP with ES and EN versions)"
-  checkout_url="https://datalaria.lemonsqueezy.com/buy/matriz-rice-ice"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/c6f4ced0-0117-434f-829d-79ecf8263587"
   button_text="Download Full Pack (.ZIP) • 6€"
 >}}
 The downloadable archive includes the official analytical workbooks in **Excel (.xlsx)** across 5 interconnected worksheets with ECMA-376 standard protection (formulas locked with formulas protected under password provided in the instructions, and white input cells 100% editable), the executive presentation in **PowerPoint (.pptx 16:9 widescreen)** under the Minto Pyramid with high-resolution 2x2 Cartesian matrices and the Board Decision Gateway with 4 C-Level sign-offs, the **Official Methodology Guides in PDF** (5 pages) with complete mathematical proofs, and seamless Google Sheets import instructions.

@@ -2,6 +2,7 @@
 title: "The Risk Map: Architecting an Obsolescence-Immune Data Foundation"
 date: 2026-04-18
 draft: false
+category: "Tech Projects"
 categories: ["Obsolescence Engineering", "Operations Engineering", "Data Architecture"]
 tags: ["Supabase", "PostgreSQL", "BOM Management", "Data Modeling", "IEC 62402", "Supply Chain"]
 author: "Datalaria"

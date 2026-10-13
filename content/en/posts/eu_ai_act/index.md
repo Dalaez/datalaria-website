@@ -2,6 +2,7 @@
 title: "EU AI Act: What Every Engineer Needs to Know (No Lawyers Required)"
 date: 2026-07-05
 draft: false
+category: "Technical Articles"
 categories: ["Artificial Intelligence", "Engineering", "Regulation"]
 tags: ["eu ai act", "ai regulation", "compliance", "high risk", "startups", "engineering", "europe"]
 description: "A technical guide to the European AI Regulation (EU AI Act) written by and for engineers. Risk classification, technical obligations, fines, compliance checklist and connection with Spanish AI Law and AESIA."

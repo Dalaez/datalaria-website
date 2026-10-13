@@ -104,8 +104,121 @@
 {{- /* Algolia Ops Engineering Copilot */ -}}
 {{ partial "algolia-agent.html" . }}
 
-{{- /* Lemon Squeezy Checkout Overlay */ -}}
+{{- /* Lemon Squeezy Checkout Overlay & Telemetry */ -}}
 <script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
+<script>
+    (function () {
+        function trackConversion(eventName, eventParams) {
+            try {
+                if (typeof window.gtag === 'function') {
+                    window.gtag('event', eventName, eventParams);
+                } else if (Array.isArray(window.dataLayer)) {
+                    window.dataLayer.push(Object.assign({ event: eventName }, eventParams));
+                }
+                if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                    console.log('[GA4 Telemetry]', eventName, eventParams);
+                }
+            } catch (err) {
+                console.warn('[GA4 Telemetry Error]', err);
+            }
+        }
+
+        function initLemonSqueezy() {
+            if (window.LemonSqueezy && typeof window.LemonSqueezy.Setup === 'function') {
+                window.LemonSqueezy.Setup({
+                    eventHandler: function (data) {
+                        if (!data || !data.event) return;
+                        if (data.event === 'Checkout.Success') {
+                            var order = (data.data && data.data.order && data.data.order.attributes) ||
+                                        (data.data && data.data.attributes) || {};
+                            var totalAmount = order.total ? (order.total / 100) : (order.subtotal ? order.subtotal / 100 : undefined);
+                            trackConversion('purchase', {
+                                transaction_id: order.identifier || order.order_number || ('ls_' + Date.now()),
+                                value: totalAmount,
+                                currency: order.currency || 'EUR',
+                                coupon: order.discount_code || undefined,
+                                items: order.first_order_item ? [{
+                                    item_name: order.first_order_item.product_name,
+                                    price: totalAmount,
+                                    quantity: 1
+                                }] : []
+                            });
+                        }
+                    }
+                });
+            }
+            if (typeof window.createLemonSqueezy === 'function') {
+                try { window.createLemonSqueezy(); } catch (e) {}
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initLemonSqueezy);
+        } else {
+            initLemonSqueezy();
+        }
+        window.addEventListener('load', initLemonSqueezy);
+
+        document.addEventListener('click', function (e) {
+            var btn = e.target.closest('.lemonsqueezy-button');
+            if (!btn) return;
+
+            var card = btn.closest('.kit-card, .mega-banner, .suite-mini-card, .suite-contextual-banner, .executive-product-card, .executive-bundle-card') || btn.parentElement;
+            var title = 'Executive Pack';
+            var category = 'Digital Resources';
+            var priceNum = undefined;
+            var placement = 'general';
+
+            if (card) {
+                var titleEl = card.querySelector('.kit-card-title, .product-title, .bundle-title, .suite-mini-title, #suite-ctx-title, h3');
+                if (titleEl) title = titleEl.textContent.trim();
+
+                var catEl = card.querySelector('.kit-card-cat, .product-category');
+                if (catEl) category = catEl.textContent.trim();
+
+                var priceEl = card.querySelector('.kit-price-curr, .mega-price-now, .suite-mini-price, #suite-ctx-price, .price-current, .bundle-price-main');
+                if (priceEl) {
+                    var match = priceEl.textContent.match(/[\d.,]+/);
+                    if (match) {
+                        priceNum = parseFloat(match[0].replace(',', '.'));
+                    }
+                }
+
+                if (card.classList.contains('mega-banner')) {
+                    category = 'Mega Bundle';
+                    placement = 'mega_bundle_banner';
+                } else if (card.classList.contains('suite-mini-card')) {
+                    category = 'Suite Bundle';
+                    placement = 'suite_mini_card';
+                } else if (card.classList.contains('suite-contextual-banner')) {
+                    category = 'Suite Bundle';
+                    placement = 'suite_contextual_banner';
+                } else if (card.classList.contains('kit-card')) {
+                    placement = 'kit_catalog_card';
+                } else if (card.classList.contains('executive-bundle-card')) {
+                    category = 'Bundle';
+                    placement = 'bundle_card';
+                } else if (card.classList.contains('executive-product-card')) {
+                    placement = 'product_card';
+                }
+            }
+
+            trackConversion('begin_checkout', {
+                currency: 'EUR',
+                value: priceNum,
+                items: [{
+                    item_name: title,
+                    item_category: category,
+                    price: priceNum,
+                    quantity: 1
+                }],
+                product_name: title,
+                placement: placement,
+                checkout_url: btn.href
+            });
+        });
+    })();
+</script>
 
 {{- /* Mermaid Diagram Support */ -}}
 <script type="module">

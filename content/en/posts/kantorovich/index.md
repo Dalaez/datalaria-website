@@ -2,6 +2,7 @@
 title: "Leonid Kantorovich: The Mathematician Who Challenged Stalin with Linear Programming"
 date: 2026-05-24
 draft: false
+category: "Biographies"
 categories: ["casos_exito"]
 tags: ["leonid kantorovich", "linear programming", "optimization", "operations research", "data history"]
 description: "Leonid Kantorovich invented linear programming to optimize Soviet resources, facing the Stalinist economic dogma. His legacy drives global logistics and data science today."

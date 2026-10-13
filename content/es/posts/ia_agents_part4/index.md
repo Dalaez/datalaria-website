@@ -2,6 +2,7 @@
 title: "Autopilot - La Pesadilla de las APIs: Cómo vencí a la burocracia de LinkedIn para automatizar mi empresa"
 date: 2026-01-07
 draft: false
+category: "Proyectos Tecnológicos"
 categories: ["Backend", "Python", "APIs"]
 tags: ["LinkedIn API", "Twitter API", "OAuth", "Automation", "DevOps"]
 image: "cover.png"

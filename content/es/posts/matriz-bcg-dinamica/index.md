@@ -2,6 +2,7 @@
 title: "Matriz BCG Dinámica: Gestión de Cartera, Curva de Experiencia y Asignación de Capital C-Level"
 date: 2026-10-26
 draft: false
+category: "Artículos Técnicos"
 categories: ["Estrategia Empresarial", "Finanzas Corporativas", "Gestión de Cartera", "Management"]
 tags: ["Matriz BCG", "Asignación de Capital", "Bruce Henderson", "Curva de Experiencia", "Cuota de Mercado Relativa", "Pirámide de Minto", "Plantilla Excel", "PowerPoint Ejecutivo", "ROIC"]
 description: "Guía metodológica exhaustiva para transformar la matriz BCG cualitativa tradicional en un motor cuantitativo de balance de liquidez (Bruce Henderson), cálculo matemático de Cuota de Mercado Relativa (CMR) y plan de reasignación de capital C-Level."
@@ -239,7 +240,7 @@ Para directores generales (CEO), directores financieros (CFO), directores de est
   icon="⭐"
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Guía Metodológica PDF"
   features="Cálculo automático de Cuota de Mercado Relativa y Tasa de Crecimiento|Gráfico de burbujas dinámico con tamaño según facturación|Slide PPTX categorizando Estrellas, Vacas, Interrogantes y Perros|Guía PDF de asignación de capital"
-  checkout_url="https://datalaria.lemonsqueezy.com/buy/matriz-bcg"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/4544ff60-2426-46c9-8265-7fa4764990af"
   button_text="Descargar Pack Completo (.ZIP) • 6€"
 >}}
 El archivo comprimido incluye la plantilla oficial en **Excel (.xlsx)** con fórmulas matriciales protegidas bajo contraseña proporcionada en las instrucciones y celdas de input 100% desbloqueadas, la presentación ejecutiva en **PowerPoint (.pptx 16:9 Widescreen)** bajo la Pirámide de Minto con gráfico de burbujas de alta resolución y Board Decision Gateway, la **Guía Metodológica en PDF** de 5 páginas y las instrucciones de importación directa a Google Sheets.

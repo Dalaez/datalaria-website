@@ -1,6 +1,7 @@
 ---
 title: "Researching with AI: How I Created a Detailed Report on the Global Impact of AI in Education in Minutes with Gemini's Deep Research"
 date: 2025-09-27
+category: "Technical Articles"
 draft: False
 categories: ["Tools", "AI"]
 tags: ["ai", "gemini", "deep research", "education", "research", "edtech", "unesco"]

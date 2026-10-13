@@ -2,6 +2,7 @@
 title: "Nextail: How a Spanish Startup's Prescriptive AI Is Defeating Excel in Fashion Retail"
 date: 2026-03-31
 draft: false
+category: "Startups"
 categories: ["case-studies", "AI"]
 tags: ["nextail", "ai", "retail", "supply chain", "S&OP", "machine learning", "optimization", "fashion", "startup"]
 description: "The story of Nextail, the Madrid-based startup founded by a former Zara logistics director that is replacing fashion retail spreadsheets with a mathematical brain capable of making billions of inventory decisions per season."

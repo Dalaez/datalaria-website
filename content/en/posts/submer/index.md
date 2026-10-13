@@ -2,6 +2,7 @@
 title: "Submer: The Barcelona-Born Immersion Cooling Powering AGI Supercomputers"
 date: 2026-10-08
 draft: false
+category: "Startups"
 categories: ["case-studies", "Engineering", "Artificial Intelligence"]
 tags: ["submer", "immersion cooling", "data centers", "supercomputing", "hardware", "esg", "startups", "sustainability", "agi"]
 image: cover.jpg

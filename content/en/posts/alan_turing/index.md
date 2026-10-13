@@ -2,6 +2,7 @@
 title: "Alan Turing: The Genius Who Broke Enigma and Asked if Machines Could Think"
 date: 2026-09-20
 draft: false
+category: "Biographies"
 categories: ["case-studies"]
 tags: ["alan turing", "enigma", "turing test", "artificial intelligence", "agi", "ai agents", "cryptography", "hugging face", "history"]
 description: "The fascinating life of Alan Turing: from breaking the Nazi Enigma cipher at Bletchley Park to formulating the 1950 Turing Test. We examine his eccentricities, mathematical breakthroughs, and how his legacy directly addresses modern autonomous AI agents, security vulnerabilities on Hugging Face, and the horizon of AGI."

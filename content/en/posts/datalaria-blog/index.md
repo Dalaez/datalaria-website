@@ -1,6 +1,7 @@
 ---
 title: "Building Datalaria: Technologies and Tools"
 date: 2025-08-17
+category: "Tech Projects"
 draft: False
 categories: ["Projects"]
 tags: ["hugo", "jamstack", "netlify", "github", "wordpress", "web development", "ci/cd"]

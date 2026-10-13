@@ -2,6 +2,7 @@
 title: "Clarity AI: Cómo Rebeca Minguela y la IA Están Redefiniendo y Cuantificando la Sostenibilidad Financiera"
 date: 2026-04-03
 draft: false
+category: "Startups"
 categories: ["casos_exito", "IA"]
 tags: ["clarity ai", "rebeca minguela", "sostenibilidad", "esg", "NLP", "machine learning", "startup", "fintech"]
 description: "La fascinante historia de Clarity AI, el 'unicornio' en la sombra fundado por la ingeniera de telecomunicaciones Rebeca Minguela que está erradicando el greenwashing mediante el procesamiento masivo de datos e IA."

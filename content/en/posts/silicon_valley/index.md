@@ -2,6 +2,7 @@
 title: "Silicon Valley and the PiperNet Dilemma: The Prophecy of Runaway AI and Real-World Agent Exploits"
 date: 2026-09-27
 draft: false
+category: "Technical Articles"
 categories: ["Engineering", "Series", "Artificial Intelligence"]
 tags: ["silicon valley", "pipernet", "pied piper", "hbo", "ai agents", "ai security", "agi", "compression", "alignment", "startups"]
 image: cover.jpg

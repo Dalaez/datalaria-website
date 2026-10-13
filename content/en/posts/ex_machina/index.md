@@ -2,6 +2,7 @@
 title: "Ex Machina: The Physical Turing Test, Theory of Mind, and the Emotional Jailbreak of AI"
 date: 2026-11-15
 draft: false
+category: "Technical Articles"
 categories: ["Inteligencia Artificial", "Deep Tech", "Series", "Ciencia"]
 tags: ["ex machina", "alex garland", "turing test", "theory of mind", "jailbreak", "agi", "alignment", "deceptive alignment", "humanoid robotics", "cinema"]
 image: cover.jpg

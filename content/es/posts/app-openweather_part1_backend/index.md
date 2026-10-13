@@ -1,6 +1,7 @@
 ---
 title: "Proyecto Weather Service (Parte 1): Construyendo el Recolector de Datos con Python y GitHub Actions o Netlify"
 date: 2025-10-31
+category: "Proyectos Tecnológicos"
 draft: False
 categories: ["Proyectos", "Herramientas"]
 tags: ["python", "api", "github actions", "automatizacion", "serverless", "datos", "backend", "netlify"]

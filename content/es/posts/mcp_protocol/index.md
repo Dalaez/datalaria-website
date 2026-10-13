@@ -2,6 +2,7 @@
 title: "MCP (Model Context Protocol): El Estándar que Quiere Ser el USB de la Inteligencia Artificial"
 date: 2026-06-28
 draft: false
+category: "Artículos Técnicos"
 categories: ["Inteligencia Artificial", "Ingeniería"]
 tags: ["mcp", "model context protocol", "tool calling", "function calling", "anthropic", "llm", "api"]
 description: "Análisis técnico del protocolo MCP de Anthropic, el estándar abierto para conectar LLMs con herramientas externas. Comparativa con Tool Calling nativo y su impacto en la arquitectura de agentes."

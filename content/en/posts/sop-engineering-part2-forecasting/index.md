@@ -2,6 +2,7 @@
 title: "S&OP Engineering II: Demand Planning from Guessing to Probability"
 date: 2026-03-07
 draft: false
+category: "Tech Projects"
 categories: ["S&OP Engineering", "Data Engineering", "Machine Learning"]
 tags: ["Supply Chain", "Forecasting", "Prophet", "Python", "MLOps"]
 author: "Datalaria"

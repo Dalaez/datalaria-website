@@ -2,6 +2,7 @@
 title: "Matriz PESTEL Cuantitativa: Severidad, Volatilidad y Riesgo Macro para Comités de Dirección (C-Level)"
 date: 2026-10-19
 draft: false
+category: "Artículos Técnicos"
 categories: ["Estrategia Empresarial", "Gestión de Riesgos", "Finanzas Corporativas", "Management"]
 tags: ["Matriz PESTEL", "Riesgo Macroeconómico", "Estrategia C-Level", "Incertidumbre Estratégica", "Pirámide de Minto", "Plantilla Excel", "PowerPoint Ejecutivo", "Asignación de Capital"]
 description: "Guía metodológica exhaustiva para transformar el análisis macroambiental cualitativo tradicional en un motor cuantitativo bidimensional (Severidad del Impacto en P&L vs. Volatilidad Temporal), con mapa térmico cartesiano, perfil radar hexagonal y plan de resiliencia C-Level."
@@ -255,7 +256,7 @@ Para los directores de estrategia, CFOs, directores de riesgos (CRO) y consultor
   icon="🌐"
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Guía Metodológica PDF"
   features="Evaluación de 6 factores macro con índice de impacto compuesto|Mapa térmico de riesgos regulatorios y macroeconómicos|Deck PPTX con matriz de incertidumbre para directores|Guía PDF de anticipación estratégica"
-  checkout_url="https://datalaria.lemonsqueezy.com/buy/pestel-matriz"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/d7c65e14-8717-4e37-8750-1065afa66b4b"
   button_text="Descargar Pack Completo (.ZIP) • 5€"
 >}}
 El archivo comprimido incluye la plantilla oficial en **Excel (.xlsx)** con fórmulas matriciales protegidas bajo contraseña proporcionada en las instrucciones y celdas de input desbloqueadas, la presentación en **PowerPoint (.pptx 16:9 Widescreen)** bajo la Pirámide de Minto con gráfico Radar hexagonal y Board Decision Gateway, la **Guía Metodológica en PDF** de 5 páginas y las instrucciones de importación directa a Google Sheets.

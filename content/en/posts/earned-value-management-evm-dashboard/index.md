@@ -2,6 +2,7 @@
 title: "Earned Value Management (EVM) Dashboard: S-Curve, Cost/Schedule Control & C-Level EAC Forecasting"
 date: 2026-11-05
 draft: false
+category: "Technical Articles"
 categories: ["Operational Control", "Project Finance", "Executive Templates"]
 tags: ["Earned Value Management", "EVM", "ANSI/EIA-748", "S-Curve", "CPI", "SPI", "EAC", "TCPI", "Operational Control", "Project Management", "PMBOK", "C-Level"]
 description: "Quantitative and methodological guide to Earned Value Management (EVM / ANSI/EIA-748): overcoming the traditional accounting trap, executive S-Curves, CV/SV variances, CPI/SPI efficiency indices, mathematical EAC forecasting models, and TCPI board defense."
@@ -307,7 +308,7 @@ For operations directors, CFOs, PMO executives, consultants, and project leaders
   icon="📉"
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Methodology Guide PDF"
   features="Automated tracking: PV (Planned Value), EV (Earned Value) and AC (Actual Cost)|Real-time performance indices: CPI (Cost Performance Index) and SPI (Schedule)|Executive S-Curve generation with EAC forecasting (Estimate at Completion)|C-Level PPTX slide with project financial health status"
-  checkout_url="https://datalaria.lemonsqueezy.com/buy/cuadro-mando-evm"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/4acc69c6-e640-43c6-bfc2-1c4d6b037135"
   button_text="Download Complete Pack (.ZIP) • 8€"
 >}}
 The definitive project management dashboard. Shows with surgical precision whether a project will finish on time and within budget, calculating the projected final cost (EAC).

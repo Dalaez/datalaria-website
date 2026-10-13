@@ -1,6 +1,7 @@
 ---
 title: "AI-Powered Programming: Creating My Own Magical Flashcards Study App"
 date: 2025-10-17
+category: "Tech Projects"
 draft: False
 categories: ["Projects", "Tools"]
 tags: ["ai", "flashcards", "learning", "study", "web development", "no-code", "gamification"]

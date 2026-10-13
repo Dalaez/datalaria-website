@@ -2,6 +2,7 @@
 title: "S&OP Engineering IV: Scaling to Enterprise (Multi-SKU & Bottlenecks)"
 date: 2026-03-20
 draft: false
+category: "Tech Projects"
 categories: ["S&OP Engineering", "Operations Research", "MLOps"]
 tags: ["Supply Chain", "Optimization", "PuLP", "Parallel Processing", "Theory of Constraints"]
 author: "Datalaria"

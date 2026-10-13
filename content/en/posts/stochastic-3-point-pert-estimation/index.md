@@ -2,6 +2,7 @@
 title: "Stochastic 3-Point PERT Estimation: Moving from Deterministic Schedule Illusion to Statistical Board Certainty"
 date: 2026-10-30
 draft: false
+category: "Technical Articles"
 categories: ["Operations Control", "Project Management", "Executive Templates"]
 tags: ["PERT Estimation", "3-Point PERT", "PMBOK 7th", "Critical Path", "Central Limit Theorem", "Beta Distribution", "Z-Score", "Operations Control", "C-Level", "Project Buffers", "Schedule Crashing"]
 description: "Comprehensive quantitative methodology to overcome deterministic schedule slippage: 3-point Beta Distribution (Optimistic, Most Likely, Pessimistic), Critical Path Central Limit Theorem (CLT) aggregation, Z-Score commitment probability, and scientific buffer sizing for Executive Boards."
@@ -330,7 +331,7 @@ For operations directors, PMO leaders, management consultants, and executives wh
   icon="⏱️"
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Methodology Guide PDF"
   features="Probabilistic scheduling: Expected Duration, Variance, and Standard Deviation|Commitment date probability engine (Beta Distribution & CLT)|16:9 C-Level Deck with Probability Density Bell Curve|Methodology guide with canonical PMBOK statistical formulas"
-  checkout_url="https://datalaria.lemonsqueezy.com/buy/estimacion-pert"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/3650d76e-bf47-4fde-92ad-fc00189fc321"
   button_text="Download Complete Pack (.ZIP) • 6€"
 >}}
 Replace subjective single-point schedule estimates with mathematical 3-point models (Optimistic, Most Likely, and Pessimistic) with confidence intervals and exact buffer sizing.

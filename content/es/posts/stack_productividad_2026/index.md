@@ -2,6 +2,7 @@
 title: "El Stack de Productividad de un Ingeniero en 2026: Las Herramientas que Uso Cada Día"
 date: 2026-08-01
 draft: false
+category: "Artículos Técnicos"
 categories: ["Ingeniería"]
 tags: ["productividad", "herramientas", "stack", "ingeniero", "workflow", "python", "supabase", "github actions", "crewai", "hugo"]
 description: "El stack real de herramientas de un ingeniero de datos en 2026: desde Gemini Deep Research hasta GitHub Actions, pasando por Python, Supabase, CrewAI y Hugo. Sin patrocinios, sin afiliados, sin filtros. Cada herramienta explicada con el post donde la uso."

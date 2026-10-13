@@ -29,6 +29,7 @@ import openpyxl
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side, Protection
 from openpyxl.utils import get_column_letter
 from openpyxl.chart import LineChart, Reference
+from openpyxl.chart.layout import Layout, ManualLayout
 
 # Importar política de protección ECMA-376
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -99,12 +100,12 @@ border_top_total = Border(top=Side(style="thin", color=COLOR_NAVY_DARK), bottom=
 # Catálogo maestro de 35 SKUs realistas
 SKU_CATALOG = [
     # Clase A: Alto valor de consumo / referencias críticas (7 SKUs)
-    ("SKU-1001", "Electrónica & Control", "Microcontrolador Industrial 32-bit Cortex M4", "A", 120, 28, 14, 3, 0.98, 48.50, 0.22, 120.0),
+    ("SKU-1001", "Electrónica & Control", "Microcontrolador Industrial 32-bit Cortex M4", "A", 50, 12, 8, 2, 0.98, 48.50, 0.22, 250.0),
     ("SKU-1002", "Electrónica & Control", "Módulo de Potencia IGBT 1200V / 100A", "A", 85, 22, 21, 5, 0.98, 72.00, 0.22, 120.0),
-    ("SKU-1003", "Mecánica & Transmisión", "Servomotor Brushless de Alta Precisión 2.5kW", "A", 40, 12, 28, 6, 0.98, 185.00, 0.20, 150.0),
+    ("SKU-1003", "Mecánica & Transmisión", "Servomotor Brushless de Alta Precisión 2.5kW", "A", 35, 14, 35, 12, 0.98, 185.00, 0.20, 150.0),
     ("SKU-1004", "Farma & Diagnóstico", "Reactivo Enzimático Ultra-puro BioTech (Vial 50ml)", "A", 65, 18, 10, 2, 0.99, 140.00, 0.25, 90.0),
-    ("SKU-1005", "Automoción & Maquinaria", "Bomba Hidráulica de Pistones Axiales", "A", 30, 9, 30, 7, 0.98, 295.00, 0.20, 160.0),
-    ("SKU-1006", "Química & Polímeros", "Resina Epoxi Grado Aeroespacial (Tambor 200L)", "A", 18, 5, 25, 6, 0.98, 410.00, 0.24, 180.0),
+    ("SKU-1005", "Automoción & Maquinaria", "Bomba Hidráulica de Pistones Axiales", "A", 25, 10, 40, 14, 0.98, 295.00, 0.20, 160.0),
+    ("SKU-1006", "Química & Polímeros", "Resina Epoxi Grado Aeroespacial (Tambor 200L)", "A", 15, 6, 35, 12, 0.98, 410.00, 0.24, 180.0),
     ("SKU-1007", "Telecomunicaciones", "Transceptor Óptico 100G QSFP28 Singlemode", "A", 110, 32, 12, 3, 0.98, 65.00, 0.22, 110.0),
 
     # Clase B: Valor y rotación intermedia (12 SKUs)
@@ -224,26 +225,28 @@ def build_workbook(lang="ES"):
         ws2.row_dimensions[r].height = 20
         sku, cat, desc, abc, d, sig_d, L, sig_L, csl, C, h, S = item
 
-        # Columnas fijas descriptivas (bloqueadas)
+        # Columnas 1 a 4: Identificación y Clasificación SKU (Entradas desbloqueadas, fondo blanco puro #FFFFFF)
         c_sku = ws2.cell(row=r, column=1, value=sku)
         c_sku.font = font_body_bold; c_sku.alignment = Alignment(horizontal="center", vertical="center"); c_sku.border = border_cell
+        c_sku.fill = fill_input; c_sku.protection = Protection(locked=False)
+        t2_input_coords.append(c_sku.coordinate)
 
         c_cat = ws2.cell(row=r, column=2, value=cat)
         c_cat.font = font_body; c_cat.alignment = Alignment(horizontal="left", vertical="center"); c_cat.border = border_cell
+        c_cat.fill = fill_input; c_cat.protection = Protection(locked=False)
+        t2_input_coords.append(c_cat.coordinate)
 
         c_desc = ws2.cell(row=r, column=3, value=desc)
         c_desc.font = font_body; c_desc.alignment = Alignment(horizontal="left", vertical="center"); c_desc.border = border_cell
+        c_desc.fill = fill_input; c_desc.protection = Protection(locked=False)
+        t2_input_coords.append(c_desc.coordinate)
 
         c_abc = ws2.cell(row=r, column=4, value=abc)
         c_abc.font = font_body_bold; c_abc.alignment = Alignment(horizontal="center", vertical="center"); c_abc.border = border_cell
-        if abc == "A":
-            c_abc.fill = fill_green
-        elif abc == "B":
-            c_abc.fill = fill_amber
-        else:
-            c_abc.fill = fill_card
+        c_abc.fill = fill_input; c_abc.protection = Protection(locked=False)
+        t2_input_coords.append(c_abc.coordinate)
 
-        # Columnas de entrada de usuario (desbloqueadas, fondo blanco)
+        # Columnas 5 a 12: Parámetros operativos y costes (Entradas desbloqueadas, fondo blanco puro #FFFFFF)
         vals_inputs = [
             (5, d, int_fmt),
             (6, sig_d, dec_fmt),
@@ -260,16 +263,19 @@ def build_workbook(lang="ES"):
             c.number_format = fmt
             c.alignment = Alignment(horizontal="right", vertical="center")
             c.border = border_cell
+            c.fill = fill_input
             c.protection = Protection(locked=False)
             t2_input_coords.append(c.coordinate)
 
-        # Columnas de fórmulas calculadas (bloqueadas, fondo gris)
+        # Columnas 13 y 14: Fórmulas calculadas (Bloqueadas, fondo gris claro #F1F5F9)
         # Demanda Anual D = d * 365
         c_D = ws2.cell(row=r, column=13, value=f"=E{r}*365")
         c_D.font = font_body_bold
         c_D.number_format = int_fmt
         c_D.alignment = Alignment(horizontal="right", vertical="center")
         c_D.border = border_cell
+        c_D.fill = fill_formula
+        c_D.protection = Protection(locked=True)
         t2_formula_coords.append(c_D.coordinate)
 
         # Consumo Anual Valor = D * C
@@ -278,6 +284,8 @@ def build_workbook(lang="ES"):
         c_val.number_format = curr_fmt
         c_val.alignment = Alignment(horizontal="right", vertical="center")
         c_val.border = border_cell
+        c_val.fill = fill_formula
+        c_val.protection = Protection(locked=True)
         t2_formula_coords.append(c_val.coordinate)
 
     # Fila de Totales y Medias
@@ -382,8 +390,8 @@ def build_workbook(lang="ES"):
         c_abc.font = font_body_bold; c_abc.alignment = Alignment(horizontal="center", vertical="center"); c_abc.border = border_cell
         t3_formula_coords.append(c_abc.coordinate)
 
-        # Col D: Factor Z = NORM.S.INV(CSL)
-        c_z = ws3.cell(row=r, column=4, value=f"=NORM.S.INV('{t2_name}'!I{r_t2})")
+        # Col D: Factor Z = _xlfn.NORM.S.INV(CSL)
+        c_z = ws3.cell(row=r, column=4, value=f"=_xlfn.NORM.S.INV('{t2_name}'!I{r_t2})")
         c_z.font = font_body_bold; c_z.number_format = "0.000"; c_z.alignment = Alignment(horizontal="right", vertical="center"); c_z.border = border_cell
         t3_formula_coords.append(c_z.coordinate)
 
@@ -537,17 +545,19 @@ def build_workbook(lang="ES"):
         "Prohibitive asymptotic cost (+88% capital): Law of diminishing returns"
     ]
     diag_csl = diag_csl_es if is_es else diag_csl_en
-
+    t4_input_coords = []
     for idx, (csl_val, diag_text) in enumerate(zip(csl_levels, diag_csl)):
         r = 6 + idx
         ws4.row_dimensions[r].height = 20
 
-        # CSL
+        # CSL (Input desbloqueado para que el directivo pueda simular niveles custom)
         c_csl = ws4.cell(row=r, column=1, value=csl_val)
-        c_csl.font = font_body_bold; c_csl.number_format = pct_fmt; c_csl.alignment = Alignment(horizontal="center", vertical="center"); c_csl.border = border_cell
+        c_csl.font = font_input; c_csl.number_format = pct_fmt; c_csl.alignment = Alignment(horizontal="center", vertical="center"); c_csl.border = border_cell
+        c_csl.fill = fill_input; c_csl.protection = Protection(locked=False)
+        t4_input_coords.append(c_csl.coordinate)
 
-        # Z = NORM.S.INV(CSL)
-        c_z = ws4.cell(row=r, column=2, value=f"=NORM.S.INV(A{r})")
+        # Z = _xlfn.NORM.S.INV(CSL)
+        c_z = ws4.cell(row=r, column=2, value=f"=_xlfn.NORM.S.INV(A{r})")
         c_z.font = font_body_bold; c_z.number_format = "0.000"; c_z.alignment = Alignment(horizontal="right", vertical="center"); c_z.border = border_cell
 
         # Multiplicador vs 95% (Fila 8 es 95%)
@@ -654,20 +664,20 @@ def build_workbook(lang="ES"):
 
     t1_title = "Cuadro de Mando Ejecutivo: Stock de Seguridad & ROP" if is_es else "Executive Dashboard: Safety Stock & Reorder Point (ROP)"
     t1_sub = "Optimización de Inventario, Nivel de Servicio & Working Capital C-Level (Estándar APICS / MIT CTL)" if is_es else "Inventory Optimization, Service Level & C-Level Working Capital (APICS / MIT CTL Standard)"
-    create_header(ws1, t1_title, t1_sub, max_col=12)
+    create_header(ws1, t1_title, t1_sub, max_col=13)
 
     # FILA DE 5 KPI CARDS EJECUTIVAS (Filas 4 a 6)
     kpi_configs_es = [
         ("INVERSIÓN STOCK SEGURIDAD", f"='{t3_name}'!L{tot_row}", curr_fmt, "Capital de protección estocástica"),
         ("NIVEL DE SERVICIO PONDERADO", f"='{t2_name}'!I{tot_row}", pct_fmt, "CSL medio objetivo"),
-        ("PROBABILIDAD ROTURA (1 - CSL)", f"=1-B5", pct_fmt, "Riesgo de ciclo sin stock"),
+        ("PROBABILIDAD ROTURA (1 - CSL)", f"=1-D5", pct_fmt, "Riesgo de ciclo sin stock"),
         ("CAPITAL LIBERABLE ESTIMADO", f"='{t3_name}'!P{tot_row}", curr_fmt, "Superando reglas empíricas 3 sem"),
         ("SKUs EN RIESGO DE ROTURA", f'=COUNTIF(\'{t3_name}\'!Q5:Q{tot_row-1}, "*RIESGO ROTURA*")', int_fmt, "Infradotados por regla heurística")
     ]
     kpi_configs_en = [
         ("TOTAL SAFETY STOCK CAPITAL", f"='{t3_name}'!L{tot_row}", curr_fmt, "Stochastic protection buffer"),
         ("WEIGHTED SERVICE LEVEL", f"='{t2_name}'!I{tot_row}", pct_fmt, "Target portfolio CSL"),
-        ("STOCKOUT PROBABILITY (1-CSL)", f"=1-B5", pct_fmt, "Stockout risk per replenishment cycle"),
+        ("STOCKOUT PROBABILITY (1-CSL)", f"=1-D5", pct_fmt, "Stockout risk per replenishment cycle"),
         ("RELEASABLE WORKING CAPITAL", f"='{t3_name}'!P{tot_row}", curr_fmt, "Replacing naive 3-week heuristic"),
         ("SKUs AT STOCKOUT RISK", f'=COUNTIF(\'{t3_name}\'!Q5:Q{tot_row-1}, "*STOCKOUT RISK*")', int_fmt, "Under-buffered by empirical rules")
     ]
@@ -705,7 +715,7 @@ def build_workbook(lang="ES"):
 
     # FILA 8: SEPARADOR Y TÍTULOS DE SECCIÓN
     ws1.cell(row=8, column=2, value="ANÁLISIS DE DISTRIBUCIÓN ABC DEL PORTFOLIO" if is_es else "PORTFOLIO ABC STRATIFICATION ANALYSIS").font = font_section
-    ws1.cell(row=8, column=7, value="SIMULACIÓN DEL CICLO DIENTE DE SIERRA (SAWTOOTH)" if is_es else "SAWTOOTH REPLENISHMENT CYCLE SIMULATION").font = font_section
+    ws1.cell(row=8, column=9, value="SIMULACIÓN DINÁMICA DEL CICLO DE REABASTECIMIENTO (SAWTOOTH)" if is_es else "DYNAMIC REPLENISHMENT CYCLE SIMULATION (SAWTOOTH)").font = font_section
 
     # TABLA RESUMEN ABC (Columnas B a F, Filas 10 a 15)
     headers_abc_es = ["Clase", "Nº SKUs", "% Catálogo", "Consumo Valor Anual (€)", "% Valor Total", "Inversión en SS (€)"]
@@ -776,54 +786,261 @@ def build_workbook(lang="ES"):
     c_tot_ss = ws1.cell(row=r_abc_tot, column=7, value="=SUM(G10:G12)")
     c_tot_ss.font = font_body_bold; c_tot_ss.number_format = curr_fmt; c_tot_ss.alignment = Alignment(horizontal="right", vertical="center"); c_tot_ss.border = border_top_total
 
-    # TABLA DE DATOS PARA EL GRÁFICO DIENTE DE SIERRA (Filas 15 a 45, Columnas I a L)
-    # Simula el comportamiento del SKU-1001 representativo a lo largo de 30 días
-    ws1.cell(row=15, column=9, value="Día" if is_es else "Day").font = font_tbl_header
-    ws1.cell(row=15, column=9).fill = fill_med
-    ws1.cell(row=15, column=10, value="Inventario Físico (u)" if is_es else "Physical Stock (u)").font = font_tbl_header
-    ws1.cell(row=15, column=10).fill = fill_blue_accent
-    ws1.cell(row=15, column=11, value="Punto de Pedido (ROP)" if is_es else "Reorder Point (ROP)").font = font_tbl_header
-    ws1.cell(row=15, column=11).fill = fill_amber
-    ws1.cell(row=15, column=12, value="Stock de Seguridad (SS)" if is_es else "Safety Stock (SS)").font = font_tbl_header
-    ws1.cell(row=15, column=12).fill = fill_red
+    # =========================================================================
+    # PANEL DE CONTROL Y PARÁMETROS DEL SKU MODELADO EN LA SIMULACIÓN (Filas 9 a 14)
+    # =========================================================================
+    t1_dec_coords = []
+    t1_input_coords = []
 
-    # Parámetros del SKU-1001: d=120, L=14, ROP='Tab3'!J5, SS='Tab3'!H5, EOQ='Tab3'!K5
-    # Ciclo de 30 días: Día 0 empieza en SS + EOQ (ej: 318 + 1092 = 1410 u)
-    # Día 1 a 9 desciende en 120 u/día. En día 7 cruza ROP (ej. 1998... se parametriza realista)
-    # En día 12 llega a SS y recibe pedido (+EOQ)
-    # Para que sea 100% dinámico con Excel:
-    # Usaremos fórmulas en las filas 16 a 45 (días 0 a 30)
+    # Fila 9: Banner de sección de simulación
+    ws1.merge_cells("I9:M9")
+    c_panel_hdr = ws1.cell(row=9, column=9)
+    c_panel_hdr.value = "CONTROL DEL SKU MODELADO EN LA SIMULACIÓN" if is_es else "BENCHMARK SKU SIMULATION CONTROL"
+    c_panel_hdr.font = font_tbl_header
+    c_panel_hdr.fill = fill_dark
+    c_panel_hdr.alignment = Alignment(horizontal="center", vertical="center")
+    t1_dec_coords.append("I9")
+
+    # Fila 10: Selector interactivo de SKU y descripción del producto
+    ws1.row_dimensions[10].height = 22
+
+    # Celda I10: Etiqueta SKU
+    c_i10 = ws1.cell(row=10, column=9, value="SKU Simulado:" if is_es else "Simulated SKU:")
+    c_i10.font = font_body_bold; c_i10.alignment = Alignment(horizontal="right", vertical="center"); c_i10.border = border_cell
+    c_i10.fill = PatternFill(fill_type="solid", fgColor="F8FAFC")
+    t1_dec_coords.append("I10")
+
+    # Celda J10: Input de SKU (DESBLOQUEADA, fondo blanco puro #FFFFFF)
+    c_j10 = ws1.cell(row=10, column=10, value="SKU-1001")
+    c_j10.font = Font(name=FONT_NAME, size=10, bold=True, color=COLOR_BLUE_ACCENT)
+    c_j10.fill = PatternFill(fill_type="solid", fgColor="FFFFFF")
+    c_j10.alignment = Alignment(horizontal="center", vertical="center")
+    c_j10.border = Border(left=Side(style="medium", color=COLOR_BLUE_ACCENT), right=Side(style="medium", color=COLOR_BLUE_ACCENT),
+                          top=Side(style="medium", color=COLOR_BLUE_ACCENT), bottom=Side(style="medium", color=COLOR_BLUE_ACCENT))
+    c_j10.protection = Protection(locked=False)
+    t1_input_coords.append("J10")
+
+    # Celda K10: Etiqueta Descripción
+    c_k10 = ws1.cell(row=10, column=11, value="Descripción:" if is_es else "Description:")
+    c_k10.font = font_body_bold; c_k10.alignment = Alignment(horizontal="right", vertical="center"); c_k10.border = border_cell
+    c_k10.fill = PatternFill(fill_type="solid", fgColor="F8FAFC")
+    t1_dec_coords.append("K10")
+
+    # Celdas L10:M10 fusionadas con VLOOKUP de descripción
+    ws1.merge_cells("L10:M10")
+    c_l10 = ws1.cell(row=10, column=12, value=f"=VLOOKUP(J10, '{t2_name}'!$A$5:$N$39, 3, FALSE)")
+    c_l10.font = font_body; c_l10.alignment = Alignment(horizontal="left", vertical="center"); c_l10.border = border_cell
+    c_l10.fill = PatternFill(fill_type="solid", fgColor="F1F5F9")
+    t1_dec_coords.extend(["L10", "M10"])
+
+    # Fila 11: Parámetros operativos de entrada (d, L, CSL)
+    ws1.row_dimensions[11].height = 20
+
+    c_i11 = ws1.cell(row=11, column=9, value="Demanda Media (d):" if is_es else "Mean Demand (d):")
+    c_i11.font = font_body; c_i11.alignment = Alignment(horizontal="right", vertical="center"); c_i11.border = border_cell
+    c_i11.fill = PatternFill(fill_type="solid", fgColor="F8FAFC")
+    t1_dec_coords.append("I11")
+
+    c_j11 = ws1.cell(row=11, column=10, value=f"=VLOOKUP(J10, '{t2_name}'!$A$5:$N$39, 5, FALSE)")
+    c_j11.font = font_body_bold; c_j11.number_format = int_fmt; c_j11.alignment = Alignment(horizontal="center", vertical="center"); c_j11.border = border_cell
+    c_j11.fill = PatternFill(fill_type="solid", fgColor="F1F5F9")
+
+    c_k11 = ws1.cell(row=11, column=11, value="Lead Time Medio (L):" if is_es else "Mean Lead Time (L):")
+    c_k11.font = font_body; c_k11.alignment = Alignment(horizontal="right", vertical="center"); c_k11.border = border_cell
+    c_k11.fill = PatternFill(fill_type="solid", fgColor="F8FAFC")
+    t1_dec_coords.append("K11")
+
+    c_l11 = ws1.cell(row=11, column=12, value=f"=VLOOKUP(J10, '{t2_name}'!$A$5:$N$39, 7, FALSE)")
+    c_l11.font = font_body_bold; c_l11.number_format = int_fmt; c_l11.alignment = Alignment(horizontal="center", vertical="center"); c_l11.border = border_cell
+    c_l11.fill = PatternFill(fill_type="solid", fgColor="F1F5F9")
+
+    c_m11 = ws1.cell(row=11, column=13, value=f"=VLOOKUP(J10, '{t2_name}'!$A$5:$N$39, 9, FALSE)")
+    c_m11.font = font_body_bold; c_m11.number_format = pct_fmt; c_m11.alignment = Alignment(horizontal="center", vertical="center"); c_m11.border = border_cell
+    c_m11.fill = PatternFill(fill_type="solid", fgColor="F1F5F9")
+
+    # Fila 12: Cabeceras del Cuadro de Mando de Umbrales de Inventario
+    ws1.row_dimensions[12].height = 20
+    headers_scorecard_es = [
+        "Lote de Pedido (EOQ)", "PUNTO DE PEDIDO (ROP)", "STOCK SEGURIDAD (SS)",
+        "Nivel Servicio (CSL)", "Demanda en Plazo (LTD)"
+    ]
+    headers_scorecard_en = [
+        "Order Quantity (EOQ)", "REORDER POINT (ROP)", "SAFETY STOCK (SS)",
+        "Target Service (CSL)", "Lead Time Demand (LTD)"
+    ]
+    headers_sc = headers_scorecard_es if is_es else headers_scorecard_en
+    fills_sc_hdr = [
+        PatternFill(fill_type="solid", fgColor="F1F5F9"),
+        PatternFill(fill_type="solid", fgColor=COLOR_AMBER_BG),
+        PatternFill(fill_type="solid", fgColor=COLOR_GREEN_BG),
+        PatternFill(fill_type="solid", fgColor="F1F5F9"),
+        PatternFill(fill_type="solid", fgColor="F1F5F9")
+    ]
+    fonts_sc_hdr = [
+        Font(name=FONT_NAME, size=8.5, bold=True, color="64748B"),
+        Font(name=FONT_NAME, size=8.5, bold=True, color=COLOR_AMBER_TEXT),
+        Font(name=FONT_NAME, size=8.5, bold=True, color=COLOR_GREEN_TEXT),
+        Font(name=FONT_NAME, size=8.5, bold=True, color="64748B"),
+        Font(name=FONT_NAME, size=8.5, bold=True, color="64748B")
+    ]
+
+    for c_offset, (h_text, f_fill, f_font) in enumerate(zip(headers_sc, fills_sc_hdr, fonts_sc_hdr)):
+        col_target = 9 + c_offset
+        c = ws1.cell(row=12, column=col_target, value=h_text)
+        c.font = f_font; c.fill = f_fill; c.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True); c.border = border_cell
+        t1_dec_coords.append(c.coordinate)
+
+    # Fila 13: Valores calculados de los umbrales para el SKU seleccionado
+    ws1.row_dimensions[13].height = 24
+
+    # Celda I13: EOQ
+    c_i13 = ws1.cell(row=13, column=9, value=f"=VLOOKUP(J10, '{t3_name}'!$A$5:$K$39, 11, FALSE)")
+    c_i13.font = Font(name=FONT_NAME, size=11, bold=True, color=COLOR_NAVY_DARK); c_i13.number_format = int_fmt
+    c_i13.alignment = Alignment(horizontal="center", vertical="center"); c_i13.border = border_cell
+    c_i13.fill = PatternFill(fill_type="solid", fgColor="F1F5F9")
+
+    # Celda J13: ROP (Punto de Pedido) -> Referencia para columna K
+    c_j13 = ws1.cell(row=13, column=10, value=f"=VLOOKUP(J10, '{t3_name}'!$A$5:$J$39, 10, FALSE)")
+    c_j13.font = Font(name=FONT_NAME, size=11, bold=True, color="B45309"); c_j13.number_format = int_fmt
+    c_j13.alignment = Alignment(horizontal="center", vertical="center")
+    c_j13.border = Border(left=thin_border_side, right=thin_border_side, top=thin_border_side, bottom=Side(style="medium", color=COLOR_AMBER_BORDER))
+    c_j13.fill = PatternFill(fill_type="solid", fgColor="FEF3C7")
+    t1_dec_coords.append("J13")
+
+    # Celda K13: SS (Stock de Seguridad) -> Referencia para columna L
+    c_k13 = ws1.cell(row=13, column=11, value=f"=VLOOKUP(J10, '{t3_name}'!$A$5:$H$39, 8, FALSE)")
+    c_k13.font = Font(name=FONT_NAME, size=11, bold=True, color="047857"); c_k13.number_format = int_fmt
+    c_k13.alignment = Alignment(horizontal="center", vertical="center")
+    c_k13.border = Border(left=thin_border_side, right=thin_border_side, top=thin_border_side, bottom=Side(style="medium", color=COLOR_GREEN_BORDER))
+    c_k13.fill = PatternFill(fill_type="solid", fgColor="D1FAE5")
+    t1_dec_coords.append("K13")
+
+    # Celda L13: CSL
+    c_l13 = ws1.cell(row=13, column=12, value=f"=VLOOKUP(J10, '{t2_name}'!$A$5:$N$39, 9, FALSE)")
+    c_l13.font = Font(name=FONT_NAME, size=11, bold=True, color=COLOR_NAVY_DARK); c_l13.number_format = pct_fmt
+    c_l13.alignment = Alignment(horizontal="center", vertical="center"); c_l13.border = border_cell
+    c_l13.fill = PatternFill(fill_type="solid", fgColor="F1F5F9")
+
+    # Celda M13: LTD (Demanda en Plazo)
+    c_m13 = ws1.cell(row=13, column=13, value=f"=VLOOKUP(J10, '{t3_name}'!$A$5:$I$39, 9, FALSE)")
+    c_m13.font = Font(name=FONT_NAME, size=11, bold=True, color=COLOR_NAVY_DARK); c_m13.number_format = int_fmt
+    c_m13.alignment = Alignment(horizontal="center", vertical="center"); c_m13.border = border_cell
+    c_m13.fill = PatternFill(fill_type="solid", fgColor="F1F5F9")
+
+    # Fila 14: Nota técnica aclaratoria
+    ws1.row_dimensions[14].height = 18
+    ws1.merge_cells("I14:M14")
+    c_note = ws1.cell(row=14, column=9)
+    c_note.value = ("Nota técnica: Las columnas ROP y SS proyectan los umbrales constantes basales del SKU ($J$13 y $K$13) para trazar las líneas horizontales del gráfico. La columna Estado detalla cada fase del ciclo."
+                    if is_es else
+                    "Technical note: ROP and SS columns project the constant benchmark thresholds of the SKU ($J$13 and $K$13) to plot horizontal reference lines. Operational Event details cycle phases.")
+    c_note.font = Font(name=FONT_NAME, size=8, italic=True, color="64748B")
+    c_note.fill = PatternFill(fill_type="solid", fgColor="F8FAFC")
+    c_note.alignment = Alignment(horizontal="center", vertical="center")
+    c_note.border = border_cell
+    t1_dec_coords.extend(["I14", "J14", "K14", "L14", "M14"])
+
+    # =========================================================================
+    # TABLA DE DATOS PARA EL GRÁFICO DIENTE DE SIERRA (Filas 15 a 46, Cols I a M)
+    # =========================================================================
+    ws1.row_dimensions[15].height = 30
+
+    # Cabeceras de tabla con alto contraste visual (Slate 900, Azul 600, Ámbar 600, Verde 600, Slate 800)
+    headers_sim_es = [
+        ("Día del Ciclo [t]", COLOR_NAVY_DARK),
+        ("Inventario Físico (u)", COLOR_BLUE_ACCENT),
+        ("Punto de Pedido (ROP) [u]", "D97706"),   # Ámbar oscuro nítido
+        ("Stock de Seguridad (SS) [u]", "059669"), # Esmeralda oscuro nítido
+        ("Estado Operativo del Ciclo", COLOR_NAVY_MED)
+    ]
+    headers_sim_en = [
+        ("Cycle Day [t]", COLOR_NAVY_DARK),
+        ("Physical Stock (u)", COLOR_BLUE_ACCENT),
+        ("Reorder Point (ROP) [u]", "D97706"),
+        ("Safety Stock (SS) [u]", "059669"),
+        ("Cycle Operational Event", COLOR_NAVY_MED)
+    ]
+    headers_sim = headers_sim_es if is_es else headers_sim_en
+
+    for c_offset, (h_title, h_bg) in enumerate(headers_sim):
+        col_target = 9 + c_offset
+        c = ws1.cell(row=15, column=col_target, value=h_title)
+        c.font = font_tbl_header
+        c.fill = PatternFill(fill_type="solid", fgColor=h_bg)
+        c.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+        c.border = border_cell
+        t1_dec_coords.append(c.coordinate)
+
+    # 31 Días de Simulación (Días 0 a 30)
+    # Col I: Día
+    # Col J: Inventario Físico (calculado con SS=$K$13 y EOQ=$I$13)
+    # Col K: Punto de Pedido ROP (referencia constante =$J$13 para alimentar línea horizontal del gráfico)
+    # Col L: Stock de Seguridad SS (referencia constante =$K$13 para alimentar línea basal del gráfico)
+    # Col M: Estado Operativo del Ciclo (dinámico según nivel físico vs ROP y momentos de arriba de pedido)
     for day_i in range(31):
         r_sim = 16 + day_i
-        # Día
-        ws1.cell(row=r_sim, column=9, value=day_i).font = font_body; ws1.cell(row=r_sim, column=9).alignment = Alignment(horizontal="center")
-        # Inventario: Simulación de dos ciclos completos (reabastecimiento en día 15 y día 30)
-        # Fórmula: Si day_i < 15: SS + EOQ - day_i * d ; Si day_i >= 15: SS + EOQ - (day_i - 15) * d
-        inv_formula = f"=IF(I{r_sim}<15, '{t3_name}'!H5 + '{t3_name}'!K5 - I{r_sim}*'{t2_name}'!E5, '{t3_name}'!H5 + '{t3_name}'!K5 - (I{r_sim}-15)*'{t2_name}'!E5)"
+        ws1.row_dimensions[r_sim].height = 20
+
+        # Día [t]
+        c_day = ws1.cell(row=r_sim, column=9, value=day_i)
+        c_day.font = font_body; c_day.alignment = Alignment(horizontal="center", vertical="center"); c_day.border = border_cell
+
+        # Inventario Físico [u]
+        inv_formula = f"=IF(I{r_sim}<15, $K$13 + $I$13 - I{r_sim}*($I$13/15), $K$13 + $I$13 - (I{r_sim}-15)*($I$13/15))"
         c_inv_sim = ws1.cell(row=r_sim, column=10, value=inv_formula)
-        c_inv_sim.font = font_body_bold; c_inv_sim.number_format = int_fmt; c_inv_sim.alignment = Alignment(horizontal="right")
+        c_inv_sim.font = font_body_bold; c_inv_sim.number_format = int_fmt; c_inv_sim.alignment = Alignment(horizontal="right", vertical="center"); c_inv_sim.border = border_cell
 
-        # ROP constante
-        c_rop_sim = ws1.cell(row=r_sim, column=11, value=f"='{t3_name}'!J5")
-        c_rop_sim.font = font_body; c_rop_sim.number_format = int_fmt; c_rop_sim.alignment = Alignment(horizontal="right")
+        # Umbral ROP (Línea de Referencia para el Gráfico Diente de Sierra)
+        c_rop_sim = ws1.cell(row=r_sim, column=11, value="=$J$13")
+        c_rop_sim.font = font_body; c_rop_sim.number_format = int_fmt; c_rop_sim.alignment = Alignment(horizontal="right", vertical="center"); c_rop_sim.border = border_cell
 
-        # SS constante
-        c_ss_sim = ws1.cell(row=r_sim, column=12, value=f"='{t3_name}'!H5")
-        c_ss_sim.font = font_body; c_ss_sim.number_format = int_fmt; c_ss_sim.alignment = Alignment(horizontal="right")
+        # Colchón SS (Línea de Referencia Basal para el Gráfico Diente de Sierra)
+        c_ss_sim = ws1.cell(row=r_sim, column=12, value="=$K$13")
+        c_ss_sim.font = font_body; c_ss_sim.number_format = int_fmt; c_ss_sim.alignment = Alignment(horizontal="right", vertical="center"); c_ss_sim.border = border_cell
 
-    # CREACIÓN DEL GRÁFICO DIENTE DE SIERRA OPENPYXL
+        # Estado Operativo del Ciclo
+        if is_es:
+            status_formula = f'=IF(I{r_sim}=0, "📦 Stock Máximo Inicial (SS + EOQ)", IF(OR(I{r_sim}=15, I{r_sim}=30), "🟢 Arribo de Pedido (+EOQ)", IF(J{r_sim}<=K{r_sim}, "🔴 Disparo Pedido (Stock ≤ ROP)", "⚪ Consumo Ordinario")))'
+        else:
+            status_formula = f'=IF(I{r_sim}=0, "📦 Initial Max Stock (SS + EOQ)", IF(OR(I{r_sim}=15, I{r_sim}=30), "🟢 Order Arrival (+EOQ)", IF(J{r_sim}<=K{r_sim}, "🔴 Order Trigger (Stock ≤ ROP)", "⚪ Normal Consumption")))'
+        c_status = ws1.cell(row=r_sim, column=13, value=status_formula)
+        c_status.font = font_body; c_status.alignment = Alignment(horizontal="left", vertical="center"); c_status.border = border_cell
+
+    # =========================================================================
+    # GRÁFICO DIENTE DE SIERRA OPENPYXL
+    # =========================================================================
     chart_sawtooth = LineChart()
-    chart_sawtooth.title = "Dinámica del Ciclo Diente de Sierra (Sawtooth) • SKU-1001" if is_es else "Sawtooth Cycle Dynamics • SKU-1001"
-    chart_sawtooth.style = 13
+    chart_sawtooth.title = "Dinámica del Ciclo Diente de Sierra (Sawtooth) • SKU Modelo" if is_es else "Sawtooth Cycle Dynamics • Benchmark SKU"
+    chart_sawtooth.style = 2  # Estilo limpio y moderno sin bordes negros ni compresión de ejes
     chart_sawtooth.y_axis.title = "Unidades en Inventario" if is_es else "Inventory Units"
     chart_sawtooth.x_axis.title = "Días del Ciclo de Reabastecimiento" if is_es else "Replenishment Cycle Days"
-    chart_sawtooth.width = 17.5
-    chart_sawtooth.height = 10.5
+    chart_sawtooth.width = 19.5
+    chart_sawtooth.height = 11.5
 
     data_sawtooth = Reference(ws1, min_col=10, min_row=15, max_col=12, max_row=46)
     cats_sawtooth = Reference(ws1, min_col=9, min_row=16, max_row=46)
     chart_sawtooth.add_data(data_sawtooth, titles_from_data=True)
     chart_sawtooth.set_categories(cats_sawtooth)
+
+    # VISIBILIDAD DE EJES Y ETIQUETAS NUMÉRICAS SIN SOLAPAMIENTO
+    chart_sawtooth.x_axis.delete = False
+    chart_sawtooth.y_axis.delete = False
+    chart_sawtooth.x_axis.tickLblPos = "low"
+    chart_sawtooth.y_axis.tickLblPos = "nextTo"
+    chart_sawtooth.x_axis.tickLblSkip = 5
+    chart_sawtooth.x_axis.tickMarkSkip = 5
+    chart_sawtooth.x_axis.number_format = '0'
+    chart_sawtooth.y_axis.number_format = '#,##0'
+
+    # AJUSTE DE DISEÑO DEL ÁREA DE TRAZADO (MANUAL LAYOUT ANTI-SOLAPES)
+    chart_sawtooth.layout = Layout(
+        manualLayout=ManualLayout(
+            x=0.15,  # Margen izquierdo para título del eje Y y cifras
+            y=0.12,  # Margen superior para el título principal del gráfico
+            w=0.80,  # Ancho del área de trazado
+            h=0.70   # Alto del área de trazado, dejando espacio para etiquetas X y su título
+        )
+    )
 
     # Estilos de series
     if len(chart_sawtooth.series) >= 3:
@@ -833,17 +1050,31 @@ def build_workbook(lang="ES"):
         # Serie 2: ROP (Ámbar)
         chart_sawtooth.series[1].graphicalProperties.line.solidFill = COLOR_AMBER_BORDER
         chart_sawtooth.series[1].graphicalProperties.line.width = 20000
-        # Serie 3: SS (Rojo/Verde según colchón)
+        # Serie 3: SS (Verde)
         chart_sawtooth.series[2].graphicalProperties.line.solidFill = COLOR_GREEN_BORDER
         chart_sawtooth.series[2].graphicalProperties.line.width = 20000
 
-    ws1.add_chart(chart_sawtooth, "B16")
+    ws1.add_chart(chart_sawtooth, "B15")
 
     # =========================================================================
     # AUTOAJUSTE DE ANCHOS DE COLUMNA Y PROTECCIÓN ECMA-376
     # =========================================================================
-    # Anchos para ws1
-    col_widths_ws1 = {1: 4, 2: 18, 3: 14, 4: 15, 5: 22, 6: 15, 7: 18, 8: 4, 9: 10, 10: 16, 11: 18, 12: 18}
+    # Anchos para ws1 (Garantiza que todas las tarjetas KPI, tablas y panel de control tengan holgura total)
+    col_widths_ws1 = {
+        1: 4,   # Col A: Margen
+        2: 15,  # Col B: Clase ABC (Card 1)
+        3: 14,  # Col C: Nº SKUs (Card 1) -> Ancho Card 1 = 29
+        4: 14,  # Col D: % Catálogo (Card 2)
+        5: 22,  # Col E: Consumo Anual Valor (Card 2) -> Ancho Card 2 = 36
+        6: 14,  # Col F: % Valor Total (Card 3)
+        7: 18,  # Col G: Inversión en SS (Card 3) -> Ancho Card 3 = 32
+        8: 6,   # Col H: Separador elegante entre paneles
+        9: 14,  # Col I: Día ciclo Sawtooth / Etiquetas Parámetros
+        10: 22, # Col J: Inventario Físico / Input SKU & ROP Card
+        11: 26, # Col K: Punto de Pedido (ROP) [u] / SS Card (holgura sin truncar)
+        12: 26, # Col L: Stock de Seguridad (SS) [u] / CSL Card (holgura sin truncar)
+        13: 34  # Col M: Estado Operativo del Ciclo / LTD Card (holgura total)
+    }
     for col_i, w in col_widths_ws1.items():
         ws1.column_dimensions[get_column_letter(col_i)].width = w
 
@@ -863,11 +1094,10 @@ def build_workbook(lang="ES"):
         ws4.column_dimensions[get_column_letter(col_i)].width = w
 
     # APLICAR PROTECCIÓN OPENXML ECMA-376
-    # En ws2: Inputs (cols 5-12, filas 5 a tot_row-1) están desbloqueados.
     finalize_protection(ws2, input_ranges=[t2_input_coords])
     finalize_protection(ws3)
-    finalize_protection(ws4)
-    finalize_protection(ws1)
+    finalize_protection(ws4, input_ranges=[t4_input_coords])
+    finalize_protection(ws1, input_ranges=[t1_input_coords], decorative_cells=t1_dec_coords)
 
     return wb
 

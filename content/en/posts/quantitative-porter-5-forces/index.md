@@ -1,7 +1,9 @@
 ---
 title: "Weighted Porter's 5 Forces & Industry Attractiveness Matrix: The Definitive C-Suite Quantitative Guide"
-date: 2026-10-12
+date: 2026-10-16
 draft: false
+translationKey: quantitative-porter-5-forces
+category: "Technical Articles"
 categories: ["Corporate Strategy", "Decision Making", "Corporate Finance", "Executive Management"]
 tags: ["Porter 5 Forces", "Industry Attractiveness", "C-Level Strategy", "Economic Moat", "Minto Pyramid", "Excel Model", "Boardroom Presentation", "Capital Allocation"]
 description: "A comprehensive methodological guide to transforming traditional qualitative Porter's Five Forces into a weighted mathematical engine with dynamic radar profiling, economic moat diagnostics, and board-level capital allocation."
@@ -230,7 +232,7 @@ For corporate leaders, strategy consultants, M&A directors, and CFOs seeking to 
   badge="★ Tier-1 Consulting Standard"
   icon="📊"
   features="Excel (.xlsx) Model with 4 interconnected tabs, protected formulas, and dynamic pentagonal Radar Chart|Cartesian Attractiveness vs. Moat Matrix with automated strategic quadrant diagnosis|16:9 Widescreen Boardroom Presentation (.pptx) with Minto Pyramid Action Titles and Decision Gateway|5-Page Official Methodology Guide (PDF) with mathematical derivations, industrial case study, and Board FAQ|100% Native compatibility guaranteed with Microsoft Excel and Google Sheets without macros"
-  checkout_url="https://datalaria.lemonsqueezy.com/buy/porter-5-forces-executive-pack"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/c9ca2aa7-e707-4789-bdb7-1ba191aa0550"
   button_text="Download Complete Pack (.ZIP) • 6€"
 >}}
 The downloadable compressed archive includes the **Excel workbook (.xlsx)** with formulas protected under password provided in the instructions and unlocked user input cells, the **PowerPoint deck (.pptx 16:9)** engineered for boardroom projection, the **5-page Methodology Guide (PDF)**, and step-by-step Google Sheets import instructions.

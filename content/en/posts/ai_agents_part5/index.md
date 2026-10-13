@@ -2,6 +2,7 @@
 title: "Autopilot - the Final: From Localhost to the Cloud with GitHub Actions and CI/CD"
 date: 2026-01-10
 draft: false
+category: "Tech Projects"
 categories: ["DevOps", "GitHub Actions", "Python"]
 tags: ["CI/CD", "Automation", "Pipeline", "GitOps", "Workflow"]
 image: "cover.png"

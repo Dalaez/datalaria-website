@@ -1,6 +1,7 @@
 ---
 title: "Weather Service Project (Part 2): Building the Interactive Frontend with GitHub Pages or Netlify and JavaScript"
 date: 2025-11-08
+category: "Tech Projects"
 draft: False
 categories: ["Projects", "Tools"]
 tags: ["javascript", "frontend", "github pages", "html", "css", "papaparse", "chartjs", "serverless", "data-visualization", "netlify"]

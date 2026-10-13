@@ -2,6 +2,7 @@
 title: "The Agentic Radar: Why LLMs Won't Save Your Supply Chain (And Tool Calling Will)"
 date: 2026-05-01
 draft: false
+category: "Tech Projects"
 categories: ["S&OP Engineering", "Artificial Intelligence", "CrewAI"]
 tags: ["Supply Chain", "Agentic AI", "Tool Calling", "Supabase", "Python", "Obsolescence"]
 description: "Traditional RAG architectures fail against the mathematical precision required by heavy industries. Discover how to build an Agentic Radar using Python Tool Calling to cross-reference manufacturer emails with a live P&L SQL database."

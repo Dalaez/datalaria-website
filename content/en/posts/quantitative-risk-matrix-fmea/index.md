@@ -2,6 +2,7 @@
 title: "Quantitative Risk Matrix & Operational FMEA: From Qualitative Intuition to Risk Priority Number (RPN)"
 date: 2026-10-30
 draft: false
+category: "Technical Articles"
 categories: ["Operational Control", "Risk Management", "Executive Templates"]
 tags: ["Risk Matrix", "FMEA", "AMFE", "ISO 31000", "AIAG-VDA", "RPN", "COSO ERM", "Operational Control", "C-Level", "Risk Audit"]
 description: "A comprehensive guide to upgrading subjective risk matrices into a dual-engine quantitative framework (ISO 31000 and AIAG-VDA FMEA): Severity x Occurrence x Detection scoring, Pareto criticality curves, Control Cost-Effectiveness Ratio (CER), and Boardroom defense protocols."
@@ -269,16 +270,16 @@ When defending an operational risk mitigation program before the Board of Direct
 For operations directors, chief risk officers, and CFOs seeking to deploy this framework immediately without dedicating weeks to manual workbook architecture, Datalaria provides the complete official **Executive Decision Pack**:
 
 {{< product-card
-  title="Matriz de Riesgos & AMFE / FMEA Cuantitativo"
-  category="Gestión de Riesgos"
+  title="Quantitative Risk Matrix & FMEA"
+  category="Risk Management"
   price="7€"
   original_price="22€"
-  badge="⚠️ Control Operativo"
+  badge="⚠️ Operational Control"
   icon="⚠️"
-  deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Guía Metodológica PDF"
-  features="Cálculo del Número de Prioridad de Riesgo (NPR = Severidad x Ocurrencia x Detección)|Matriz de calor 5x5 dinámica según estándares ISO 31000 e IATF 16949|Slide PPTX con plan de mitigación y semáforo de contingencias|Guía metodológica de análisis de modos de fallo|Descarga directa inmediata (.ZIP con versiones ES y EN)"
-  checkout_url="https://datalaria.lemonsqueezy.com/buy/matriz-riesgos-amfe"
-  button_text="Descargar Pack Completo (.ZIP) • 7€"
+  deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Methodology Guide PDF"
+  features="Risk Priority Number (RPN = Severity x Occurrence x Detection) calculation|Dynamic 5x5 heatmap aligned with ISO 31000 and IATF 16949 standards|16:9 PPTX mitigation deck and executive action priority status|Failure mode analysis methodology guide PDF|Instant direct download (.ZIP with bilingual ES & EN editions)"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/1f2082c2-ea7d-4e6c-9b36-151edc23a5fa"
+  button_text="Download Complete Pack (.ZIP) • 7€"
 >}}
 The global industrial standard for predicting, quantifying, and mitigating failure modes across operations, cloud software, and enterprise supply chains. Featuring unlocked white input cells and formula protection under password provided in the instructions (ECMA-376 OpenXML standard). Includes a 16:9 widescreen C-Level PowerPoint presentation and the 5-page editorial methodology PDF guide.
 {{< /product-card >}}

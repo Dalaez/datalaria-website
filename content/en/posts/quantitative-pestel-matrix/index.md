@@ -2,6 +2,7 @@
 title: "Quantitative PESTEL Matrix: Severity, Volatility & Macro Risk for Executive Boardrooms (C-Level)"
 date: 2026-10-19
 draft: false
+category: "Technical Articles"
 categories: ["Corporate Strategy", "Risk Management", "Corporate Finance", "Executive Management"]
 tags: ["PESTEL Analysis", "Macroeconomic Risk", "C-Level Strategy", "Strategic Uncertainty", "Minto Pyramid", "Excel Model", "Boardroom Presentation", "Capital Allocation"]
 description: "A comprehensive methodological guide to transforming traditional qualitative PESTEL analysis into an objective 2D quantitative engine (P&L Impact Severity vs. Temporal Volatility), featuring Cartesian uncertainty mapping, a hexagonal radar profile, and a C-Suite resilience contingency plan."
@@ -255,7 +256,7 @@ For Chief Strategy Officers, CFOs, Chief Risk Officers (CROs), and strategy cons
   icon="🌐"
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|PDF Methodology Guide"
   features="6-pillar macro factor assessment with composite impact scoring|Cartesian risk heatmap for regulatory and macroeconomic volatility|Boardroom PPTX deck with uncertainty matrix and governance gateway|Executive PDF methodology guide with financial stress testing"
-  checkout_url="https://datalaria.lemonsqueezy.com/buy/pestel-matriz"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/d7c65e14-8717-4e37-8750-1065afa66b4b"
   button_text="Download Complete Pack (.ZIP) • 5€"
 >}}
 The compressed archive includes the official **Excel workbook (.xlsx)** with native matrix formulas protected under password provided in the instructions and unlocked user input cells, the **PowerPoint presentation (.pptx 16:9 Widescreen)** built under the Minto Pyramid Principle with dynamic Radar charting and formal Board Decision Gateway, the 5-page **Executive PDF Methodology Guide**, and direct Google Sheets import instructions.

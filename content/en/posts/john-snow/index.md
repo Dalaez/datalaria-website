@@ -2,6 +2,7 @@
 title: The authentic John Snow, a precursor of Geolocation
 date: 2025-08-26
 draft: false
+category: "Biographies"
 categories: ["success_stories"]
 tags: ["cholera", "john snow", "map", "gis", "geolocation", "London"]
 description: "John Snow: The father of epidemiology and a pioneer of geolocation."

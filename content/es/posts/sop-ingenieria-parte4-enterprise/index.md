@@ -2,6 +2,7 @@
 title: "Ingeniería S&OP IV: Escalando a Enterprise (Multi-SKU y Cuellos de Botella)"
 date: 2026-03-20
 draft: false
+category: "Proyectos Tecnológicos"
 categories: ["Ingeniería de S&OP", "Operations Research", "MLOps"]
 tags: ["Supply Chain", "Optimization", "PuLP", "Parallel Processing", "Theory of Constraints"]
 author: "Datalaria"

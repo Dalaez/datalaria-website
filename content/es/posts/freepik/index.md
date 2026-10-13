@@ -1,6 +1,7 @@
 ---
 title: "Freepik: La Historia del Gigante Malagueño que Domó a la IA para Conquistar el Mundo Creativo"
 date: 2025-10-11
+category: "Startups"
 draft: False
 categories: ["casos_exito", "IA"]
 tags: ["freepik", "ia", "ia generativa", "malaga", "startup", "modelo de negocio", "disrupcion"]

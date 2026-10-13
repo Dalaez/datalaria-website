@@ -2,6 +2,7 @@
 title: "Claude Shannon: The Man Who Turned the World into Bits and Defined the Future of AI"
 date: 2026-06-21
 draft: false
+category: "Biographies"
 categories: ["case-studies"]
 tags: ["claude shannon", "information theory", "entropy", "bit", "cybersecurity", "compression", "history"]
 description: "The story of Claude Shannon, the father of Information Theory. How a 1948 paper at Bell Labs created the absolute foundation for the Internet, modern cryptography, and Artificial Intelligence."

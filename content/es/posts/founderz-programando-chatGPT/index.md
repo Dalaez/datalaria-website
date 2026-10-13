@@ -1,6 +1,7 @@
 ---
 title: "Copilotando con IA: Aprendiendo con Founderz y ChatGPT"
 date: 2025-09-11
+category: "Artículos Técnicos"
 draft: False
 categories: ["Herramientas", "Aprendizaje"]
 tags: ["ia", "chatgpt", "prompt engineering", "founderz", "desarrollo web", "no-code", "html", "matemáticas"]

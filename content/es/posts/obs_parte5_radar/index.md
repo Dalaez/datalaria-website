@@ -2,6 +2,7 @@
 title: "El Radar Agéntico: Por qué los LLMs no salvarán tu cadena de suministro (y el Tool Calling sí)"
 date: 2026-05-01
 draft: false
+category: "Proyectos Tecnológicos"
 categories: ["S&OP Engineering", "Inteligencia Artificial", "CrewAI"]
 tags: ["Supply Chain", "Agentic AI", "Tool Calling", "Supabase", "Python", "Obsolescencia"]
 description: "Los arquitecturas RAG tradicionales fracasan ante la precisión matemática que exige la industria pesada. Descubre cómo construir un Radar Agéntico usando Tool Calling en Python para cruzar correos de fabricantes con la Cuenta de Resultados en tiempo real."

@@ -1,6 +1,7 @@
 ---
 title: "Carto: From a UN Invoice to Conquering the Geospatial Cloud"
 date: 2025-10-28
+category: "Startups"
 draft: False
 categories: ["case-studies", "AI"]
 tags: ["carto", "geospatial", "ai", "cloud", "startup", "big data", "location intelligence"]

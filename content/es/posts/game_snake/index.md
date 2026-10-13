@@ -2,6 +2,7 @@
 title: "De Cero a Héroe: Crea un Snake Game Cyberpunk con Ranking en Tiempo Real usando Supabase y JS Vanilla"
 date: 2026-02-14
 draft: false
+category: "Proyectos Tecnológicos"
 categories: ["Desarrollo Web", "GameDev", "Tutoriales"]
 tags: ["JavaScript", "Supabase", "PostgreSQL", "Canvas", "HTML5", "TailwindCSS"]
 image: cover.png

@@ -2,6 +2,7 @@
 title: "La Interfaz Ejecutiva: Traduciendo la Telemetría de la IA en Decisiones C-Level"
 date: 2026-05-17
 draft: false
+category: "Proyectos Tecnológicos"
 categories: ["S&OP Engineering", "Data Visualization", "Cloud Architecture"]
 tags: ["FastAPI", "Vanilla JS", "Tailwind CSS", "CrewAI", "Executive Dashboard"]
 description: "Construyendo la capa de presentación que traduce las operaciones asíncronas de IA en métricas financieras para roles directivos mediante Tailwind CSS y Vanilla JS."

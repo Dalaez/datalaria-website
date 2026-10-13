@@ -2,6 +2,7 @@
 title: "Devo: Cómo un Químico Autodidacta Construyó desde Madrid el Motor de Datos que Defiende a la Fuerza Aérea de EE.UU."
 date: 2026-06-07
 draft: false
+category: "Startups"
 categories: ["casos_exito", "IA"]
 tags: ["devo", "ciberseguridad", "pedro castillo", "siem", "big data", "cloud-native", "startup", "unicornio", "streaming analytics"]
 description: "La historia de Devo, la startup española fundada por Pedro Castillo que revolucionó el análisis de datos de seguridad con latencia cero, conquistó un contrato con la Fuerza Aérea de EE.UU. y alcanzó una valoración de 1.900 millones de dólares."

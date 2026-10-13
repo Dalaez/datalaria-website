@@ -2,6 +2,7 @@
 title: "El Mapa del Riesgo: Diseñando una Arquitectura de Datos Inmune a la Obsolescencia"
 date: 2026-04-18
 draft: false
+category: "Proyectos Tecnológicos"
 categories: ["Ingeniería de la Obsolescencia", "Operations Engineering", "Data Architecture"]
 tags: ["Supabase", "PostgreSQL", "BOM Management", "Data Modeling", "IEC 62402", "Supply Chain"]
 author: "Datalaria"

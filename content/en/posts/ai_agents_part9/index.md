@@ -2,6 +2,7 @@
 title: "Autopilot - A Technical Post-Mortem: I Fired Myself to Build an AI Army with Gemini"
 date: 2026-03-04
 draft: false
+category: "Tech Projects"
 categories: ["Engineering", "AI", "DevOps"]
 tags: ["devchallenge", "geminireflections", "gemini", "ai", "crewai", "python"]
 image: "cover.png"

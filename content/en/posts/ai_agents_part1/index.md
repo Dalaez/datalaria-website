@@ -2,6 +2,7 @@
 title: "Project Autopilot: Why I Fired Myself as Community Manager to Build an AI agents Army"
 date: 2025-12-27
 draft: false
+category: "Tech Projects"
 categories: ["Automation", "Artificial Intelligence", "DevOps"]
 tags: ["Agents", "Gemini", "CrewAI", "GitHub Actions", "Python", "Dogfooding"]
 image: "cover.png"

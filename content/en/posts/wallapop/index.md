@@ -2,6 +2,7 @@
 title: "Wallapop: The Invisible Engineering Behind Europe's Largest Circular Marketplace"
 date: 2026-08-31
 draft: false
+category: "Startups"
 categories: ["case-studies"]
 tags: ["wallapop", "machine learning", "computer vision", "algorithmic pricing", "knowledge graphs", "fraud detection", "esg", "circular economy", "spanish startups", "naver"]
 description: "How Wallapop turned second-hand trade into a technological powerhouse of 19 million users. We analyze its Machine Learning architecture: multimodal visual search, dynamic pricing algorithms, fraud graphs, ESG sustainability impact, and its landmark acquisition by South Korean internet giant NAVER."

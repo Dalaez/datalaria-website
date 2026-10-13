@@ -2,6 +2,7 @@
 title: "El Sistema Nervioso Central: Escalando el Radar Agéntico a 24/7 con FastAPI y Webhooks"
 date: 2026-05-09
 draft: false
+category: "Proyectos Tecnológicos"
 categories: ["S&OP Engineering", "Inteligencia Artificial", "Cloud Architecture"]
 tags: ["FastAPI", "Webhooks", "Event-Driven Architecture", "CrewAI", "Python"]
 description: "Cómo transicionar de un script en local a una arquitectura empresarial de alta disponibilidad mediante un enrutador FastAPI que orquesta agentes de CrewAI de forma asíncrona."

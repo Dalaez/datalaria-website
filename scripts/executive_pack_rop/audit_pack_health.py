@@ -46,7 +46,7 @@ def audit_excel(file_path):
     ws2 = wb[sheets[1]]
     unlocked_count = 0
     for r in range(5, 40):
-        for c in range(5, 13):
+        for c in range(1, 13):
             cell = ws2.cell(row=r, column=c)
             if cell.protection and cell.protection.locked is False:
                 unlocked_count += 1

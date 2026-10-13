@@ -1,0 +1,2392 @@
+{
+  "es": [
+    {
+      "dir": "5-fuerzas-porter-cuantitativas",
+      "file": "content/es/posts\\5-fuerzas-porter-cuantitativas\\index.md",
+      "title": "5 Fuerzas de Porter Ponderadas y Atractivo de Industria: La Guía Cuantitativa Definitiva para Comités de Dirección (C-Level)",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Estrategia Empresarial",
+        "Toma de Decisiones",
+        "Finanzas Corporativas",
+        "Management"
+      ]
+    },
+    {
+      "dir": "BPMN_SOP",
+      "file": "content/es/posts\\BPMN_SOP\\index.md",
+      "title": "De la Narrativa al Diagrama: Diseñando Procesos S&OP con IA y BPMN",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Inteligencia Artificial",
+        "Industria 4.0",
+        "Productividad"
+      ]
+    },
+    {
+      "dir": "Estadistica-descriptiva",
+      "file": "content/es/posts\\Estadistica-descriptiva\\index.md",
+      "title": "Estadística Descriptiva",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "fundamentos"
+      ]
+    },
+    {
+      "dir": "Visualizaciones-basicas",
+      "file": "content/es/posts\\Visualizaciones-basicas\\index.md",
+      "title": "Visualizaciones básicas",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "fundamentos"
+      ]
+    },
+    {
+      "dir": "abraham_wald",
+      "file": "content/es/posts\\abraham_wald\\index.md",
+      "title": "La Arquitectura del Silencio: Abraham Wald y la Epistemología de los Datos Ausentes",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "casos_exito"
+      ]
+    },
+    {
+      "dir": "ada_lovelace",
+      "file": "content/es/posts\\ada_lovelace\\index.md",
+      "title": "Ada Lovelace: La Condesa que Programó el Futuro 100 Años Antes de que Existieran los Ordenadores",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "casos_exito"
+      ]
+    },
+    {
+      "dir": "alan_turing",
+      "file": "content/es/posts\\alan_turing\\index.md",
+      "title": "Alan Turing: El Genio que Rompió Enigma y Preguntó si las Máquinas Podían Pensar",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "casos_exito"
+      ]
+    },
+    {
+      "dir": "app-lifeops_part1_arquitectura_backend",
+      "file": "content/es/posts\\app-lifeops_part1_arquitectura_backend\\index.md",
+      "title": "Proyecto LifeOps (Parte 1): Arquitectura de un Sistema Operativo Personal y Backend con FastAPI + Supabase",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Proyectos",
+        "Desarrollo Web"
+      ]
+    },
+    {
+      "dir": "app-lifeops_part2_frontend_dashboard",
+      "file": "content/es/posts\\app-lifeops_part2_frontend_dashboard\\index.md",
+      "title": "Proyecto LifeOps (Parte 2): Frontend React con Glassmorphism, Dashboard 360° y Sistema de Diseño Dark Mode",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Proyectos",
+        "Desarrollo Web"
+      ]
+    },
+    {
+      "dir": "app-lifeops_part3_modulos_kanban",
+      "file": "content/es/posts\\app-lifeops_part3_modulos_kanban\\index.md",
+      "title": "Proyecto LifeOps (Parte 3): Módulos Interactivos: Deporte, Biblioteca, Cine y Tablero Kanban Profesional",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Proyectos",
+        "Desarrollo Web"
+      ]
+    },
+    {
+      "dir": "app-lifeops_part4_informes_word_excel",
+      "file": "content/es/posts\\app-lifeops_part4_informes_word_excel\\index.md",
+      "title": "Proyecto LifeOps (Parte 4): Motor de Informes Ejecutivos en Word (.docx) y Exportación Multi-Hoja en Excel (.xlsx)",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Proyectos",
+        "Desarrollo Web"
+      ]
+    },
+    {
+      "dir": "app-lifeops_part5_deploy_mobile_pwa",
+      "file": "content/es/posts\\app-lifeops_part5_deploy_mobile_pwa\\index.md",
+      "title": "Proyecto LifeOps (Parte 5): Despliegue 24/7 en la Nube a Coste Cero ($0/mes), Optimización Móvil y PWA",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Proyectos",
+        "Desarrollo Web"
+      ]
+    },
+    {
+      "dir": "app-openweather_part1_backend",
+      "file": "content/es/posts\\app-openweather_part1_backend\\index.md",
+      "title": "Proyecto Weather Service (Parte 1): Construyendo el Recolector de Datos con Python y GitHub Actions o Netlify",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Proyectos",
+        "Herramientas"
+      ]
+    },
+    {
+      "dir": "app_conversor_unidades",
+      "file": "content/es/posts\\app_conversor_unidades\\index.md",
+      "title": "Creando mi 'Navaja Suiza' Digital: Un Conversor de Unidades a Medida con la IA",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Proyectos",
+        "Herramientas"
+      ]
+    },
+    {
+      "dir": "app_flashcards",
+      "file": "content/es/posts\\app_flashcards\\index.md",
+      "title": "Programando con IA: Creando mi Propia App mágica de Flashcards para Estudiar",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Proyectos",
+        "Herramientas"
+      ]
+    },
+    {
+      "dir": "app_openweather_part2_frontend",
+      "file": "content/es/posts\\app_openweather_part2_frontend\\index.md",
+      "title": "Proyecto Weather Service (Parte 2): Construyendo el Frontend Interactivo con GitHub Pages o Netlify y JavaScript",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Proyectos",
+        "Herramientas"
+      ]
+    },
+    {
+      "dir": "app_openweather_part3_ai_prediction",
+      "file": "content/es/posts\\app_openweather_part3_ai_prediction\\index.md",
+      "title": "Proyecto Weather Service (Parte 3): Prediciendo el Futuro con IA y OpenWeatherMap",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Proyectos",
+        "IA",
+        "Herramientas"
+      ]
+    },
+    {
+      "dir": "app_openweather_part4_extras_ux",
+      "file": "content/es/posts\\app_openweather_part4_extras_ux\\index.md",
+      "title": "Proyecto Weather (Extras): Más Allá de la IA - Construyendo un Dashboard Robusto y Centrado en el Usuario",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Project Showcase",
+        "Desarrollo Web",
+        "UI/UX"
+      ]
+    },
+    {
+      "dir": "business-case-financiero-van-tir",
+      "file": "content/es/posts\\business-case-financiero-van-tir\\index.md",
+      "title": "Business Case Financiero: Cómo Calcular VAN, TIR, Payback Descontado y Análisis de Sensibilidad Tornado en Excel",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Finanzas Corporativas",
+        "Estrategia Corporativa",
+        "Plantillas Ejecutivas"
+      ]
+    },
+    {
+      "dir": "calculadora-stock-seguridad-rop",
+      "file": "content/es/posts\\calculadora-stock-seguridad-rop\\index.md",
+      "title": "Calculadora de Stock de Seguridad & ROP: Optimización de Inventario y Working Capital de Grado Consejo de Administración",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Control Operativo",
+        "Supply Chain",
+        "Plantillas Ejecutivas"
+      ]
+    },
+    {
+      "dir": "carto",
+      "file": "content/es/posts\\carto\\index.md",
+      "title": "Carto: De una Factura a la ONU a Conquistar la Nube Geoespacial",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "casos_exito",
+        "IA"
+      ]
+    },
+    {
+      "dir": "clarity_ai",
+      "file": "content/es/posts\\clarity_ai\\index.md",
+      "title": "Clarity AI: Cómo Rebeca Minguela y la IA Están Redefiniendo y Cuantificando la Sostenibilidad Financiera",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "casos_exito",
+        "IA"
+      ]
+    },
+    {
+      "dir": "claude_shannon",
+      "file": "content/es/posts\\claude_shannon\\index.md",
+      "title": "Claude Shannon: El Hombre que Convirtió el Mundo en Bits y Definió el Futuro de la IA",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "casos_exito"
+      ]
+    },
+    {
+      "dir": "control-operativo-pmbok-framework-cuantitativo",
+      "file": "content/es/posts\\control-operativo-pmbok-framework-cuantitativo\\index.md",
+      "title": "Control Operativo & PMBOK Cuantitativo: El Framework Integral de 5 Pilares para Directores de Operaciones",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Control Operativo",
+        "Gestión de Proyectos",
+        "PMO Corporativa",
+        "Cadena de Suministro"
+      ]
+    },
+    {
+      "dir": "cuadro-mando-evm-valor-ganado",
+      "file": "content/es/posts\\cuadro-mando-evm-valor-ganado\\index.md",
+      "title": "Cuadro de Mando EVM: Valor Ganado, Curva S y Proyecciones EAC de Grado Consejo de Administración",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Control Operativo",
+        "Project Finance",
+        "Plantillas Ejecutivas"
+      ]
+    },
+    {
+      "dir": "dafo-cuantitativo-matriz-came",
+      "file": "content/es/posts\\dafo-cuantitativo-matriz-came\\index.md",
+      "title": "DAFO Cuantitativo y Matriz CAME: La Guía Definitiva de Decisión Estratégica para Comités de Dirección (C-Level)",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Estrategia Empresarial",
+        "Toma de Decisiones",
+        "Management",
+        "Finanzas Corporativas"
+      ]
+    },
+    {
+      "dir": "datalaria-blog",
+      "file": "content/es/posts\\datalaria-blog\\index.md",
+      "title": "Construyendo Datalaria: Tecnologías y herramientas",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Proyectos"
+      ]
+    },
+    {
+      "dir": "deming",
+      "file": "content/es/posts\\deming\\index.md",
+      "title": "W. Edwards Deming: El Padre de la Calidad Total que Predijo el Futuro de la IA",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "casos_exito"
+      ]
+    },
+    {
+      "dir": "devo",
+      "file": "content/es/posts\\devo\\index.md",
+      "title": "Devo: Cómo un Químico Autodidacta Construyó desde Madrid el Motor de Datos que Defiende a la Fuerza Aérea de EE.UU.",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "casos_exito",
+        "IA"
+      ]
+    },
+    {
+      "dir": "devs",
+      "file": "content/es/posts\\devs\\index.md",
+      "title": "DEVS: Computación Cuántica, Determinismo y la Pesadilla de los Multiversos",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Inteligencia Artificial",
+        "Deep Tech",
+        "Ciencia",
+        "Series"
+      ]
+    },
+    {
+      "dir": "economia_oculta_ia",
+      "file": "content/es/posts\\economia_oculta_ia\\index.md",
+      "title": "La Economía Oculta de la IA: Cuánto Cuesta Realmente Usar LLMs en Producción (Con Datos Reales)",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Inteligencia Artificial",
+        "Ingeniería",
+        "Productividad"
+      ]
+    },
+    {
+      "dir": "estimacion-pert-3-puntos",
+      "file": "content/es/posts\\estimacion-pert-3-puntos\\index.md",
+      "title": "Estimación PERT de 3 Puntos Estocástica: De la Ilusión Determinista a la Certidumbre Estadística de Cronograma",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Control Operativo",
+        "Gestión de Proyectos",
+        "Plantillas Ejecutivas"
+      ]
+    },
+    {
+      "dir": "estrategia-corporativa-mba-framework-cuantitativo",
+      "file": "content/es/posts\\estrategia-corporativa-mba-framework-cuantitativo\\index.md",
+      "title": "Estrategia Corporativa Cuantitativa: El Framework Integral de 5 Pasos para Comités de Dirección",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Estrategia Corporativa",
+        "Finanzas Corporativas",
+        "Management",
+        "Toma de Decisiones"
+      ]
+    },
+    {
+      "dir": "eu_ai_act",
+      "file": "content/es/posts\\eu_ai_act\\index.md",
+      "title": "EU AI Act: Lo que Todo Ingeniero Español Necesita Saber (Sin Abogados)",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Inteligencia Artificial",
+        "Ingeniería",
+        "Regulación"
+      ]
+    },
+    {
+      "dir": "evaluacion_agentes_ia",
+      "file": "content/es/posts\\evaluacion_agentes_ia\\index.md",
+      "title": "Evaluación y Testing de Agentes de IA en Producción: Cómo Medir lo Impredecible",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Ingeniería",
+        "Inteligencia Artificial",
+        "DevOps"
+      ]
+    },
+    {
+      "dir": "ex_machina",
+      "file": "content/es/posts\\ex_machina\\index.md",
+      "title": "Ex Machina: El Test de Turing Físico, la Teoría de la Mente y el 'Jailbreak' Emocional de la IA",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Inteligencia Artificial",
+        "Deep Tech",
+        "Series",
+        "Ciencia"
+      ]
+    },
+    {
+      "dir": "finetuning_vs_rag",
+      "file": "content/es/posts\\finetuning_vs_rag\\index.md",
+      "title": "Fine-Tuning vs Prompt Engineering vs RAG: Cuándo Usar Cada Uno (y la Cuarta Opción que Nadie Menciona)",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Inteligencia Artificial",
+        "Ingeniería"
+      ]
+    },
+    {
+      "dir": "florence-nightingale",
+      "file": "content/es/posts\\florence-nightingale\\index.md",
+      "title": "Florence Nightingale - La madre de la Enfermería",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "casos_exito"
+      ]
+    },
+    {
+      "dir": "flywire",
+      "file": "content/es/posts\\flywire\\index.md",
+      "title": "Flywire: Cómo un Español Construyó desde Boston el Cerebro de los Pagos Internacionales",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "casos_exito"
+      ]
+    },
+    {
+      "dir": "founderz-programando-chatGPT",
+      "file": "content/es/posts\\founderz-programando-chatGPT\\index.md",
+      "title": "Copilotando con IA: Aprendiendo con Founderz y ChatGPT",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Herramientas",
+        "Aprendizaje"
+      ]
+    },
+    {
+      "dir": "freepik",
+      "file": "content/es/posts\\freepik\\index.md",
+      "title": "Freepik: La Historia del Gigante Malagueño que Domó a la IA para Conquistar el Mundo Creativo",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "casos_exito",
+        "IA"
+      ]
+    },
+    {
+      "dir": "game_snake",
+      "file": "content/es/posts\\game_snake\\index.md",
+      "title": "De Cero a Héroe: Crea un Snake Game Cyberpunk con Ranking en Tiempo Real usando Supabase y JS Vanilla",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Desarrollo Web",
+        "GameDev",
+        "Tutoriales"
+      ]
+    },
+    {
+      "dir": "graphext",
+      "file": "content/es/posts\\graphext\\index.md",
+      "title": "Graphext: La Startup Española que Invirtió 7 Años en Crear el 'Fórmula 1' del Análisis de Datos",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "casos_exito",
+        "IA"
+      ]
+    },
+    {
+      "dir": "graphrag",
+      "file": "content/es/posts\\graphrag\\index.md",
+      "title": "GraphRAG: Por Qué los Vectores No Bastan y Tu IA Necesita un Grafo de Conocimiento",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Inteligencia Artificial",
+        "Ingeniería"
+      ]
+    },
+    {
+      "dir": "halt_and_catch_fire",
+      "file": "content/es/posts\\halt_and_catch_fire\\index.md",
+      "title": "Halt and Catch Fire: La Serie de Culto que Entendió la Ingeniería de Software Mejor que Silicon Valley",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Ingeniería",
+        "Series",
+        "Historia Tech"
+      ]
+    },
+    {
+      "dir": "happyrobot",
+      "file": "content/es/posts\\happyrobot\\index.md",
+      "title": "HappyRobot: Cómo los Agentes de Voz Autónomos Conquistaron la Logística Global",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "casos_exito",
+        "Inteligencia Artificial",
+        "Ingeniería"
+      ]
+    },
+    {
+      "dir": "ia-educacion-deep_research",
+      "file": "content/es/posts\\ia-educacion-deep_research\\index.md",
+      "title": "Investigando con IA: Cómo Creé un Informe detallado sobre el impacto de la IA en la Educación a nivel global en Minutos con Deep Research de Gemini",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Herramientas",
+        "IA"
+      ]
+    },
+    {
+      "dir": "ia_agents_part1",
+      "file": "content/es/posts\\ia_agents_part1\\index.md",
+      "title": "Proyecto Autopilot: Por qué me despedí como Community Manager para construir un Ejército de agentes de IA",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Automatización",
+        "Inteligencia Artificial",
+        "DevOps"
+      ]
+    },
+    {
+      "dir": "ia_agents_part2",
+      "file": "content/es/posts\\ia_agents_part2\\index.md",
+      "title": "Autopilot - El Cerebro: Configurando Gemini y CrewAI para leer mi blog",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Ingeniería de Software",
+        "IA Generativa",
+        "Python"
+      ]
+    },
+    {
+      "dir": "ia_agents_part3",
+      "file": "content/es/posts\\ia_agents_part3\\index.md",
+      "title": "Autopilot - Los Creativos: Cómo programé a una IA para que fuera cínica en Twitter y corporativa en LinkedIn",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "IA Generativa",
+        "Prompt Engineering",
+        "Python"
+      ]
+    },
+    {
+      "dir": "ia_agents_part4",
+      "file": "content/es/posts\\ia_agents_part4\\index.md",
+      "title": "Autopilot - La Pesadilla de las APIs: Cómo vencí a la burocracia de LinkedIn para automatizar mi empresa",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Backend",
+        "Python",
+        "APIs"
+      ]
+    },
+    {
+      "dir": "ia_agents_part5",
+      "file": "content/es/posts\\ia_agents_part5\\index.md",
+      "title": "Autopilot - Final: De Localhost a la Nube con GitHub Actions y CI/CD",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "DevOps",
+        "GitHub Actions",
+        "Python"
+      ]
+    },
+    {
+      "dir": "ia_agents_part6",
+      "file": "content/es/posts\\ia_agents_part6\\index.md",
+      "title": "Autopilot - Extra: Programando una Newsletter Nativa en IA y de Mantenimiento Cero",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "DevOps",
+        "Python",
+        "Email Marketing"
+      ]
+    },
+    {
+      "dir": "ia_agents_part7",
+      "file": "content/es/posts\\ia_agents_part7\\index.md",
+      "title": "Autopilot - Ctrl: Auditoría de Contenido IA con GitHub Copilot CLI",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "DevOps",
+        "Python",
+        "AI"
+      ]
+    },
+    {
+      "dir": "ia_agents_part8",
+      "file": "content/es/posts\\ia_agents_part8\\index.md",
+      "title": "Autopilot - Asistente: Creando un Copiloto de IA con Algolia Agent Studio",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Automatización",
+        "Inteligencia Artificial",
+        "DevOps"
+      ]
+    },
+    {
+      "dir": "ia_agents_part9",
+      "file": "content/es/posts\\ia_agents_part9\\index.md",
+      "title": "Autopilot - Post-Mortem Técnico: Cómo Construí un Ejército de IA con Gemini",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Ingeniería",
+        "IA",
+        "DevOps"
+      ]
+    },
+    {
+      "dir": "inference_time_scaling",
+      "file": "content/es/posts\\inference_time_scaling\\index.md",
+      "title": "Inference-Time Scaling y Razonamiento Sistema 2: Cómo la IA Aprende a Pensar Antes de Hablar",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Inteligencia Artificial",
+        "Deep Tech",
+        "Ingeniería"
+      ]
+    },
+    {
+      "dir": "john-snow",
+      "file": "content/es/posts\\john-snow\\index.md",
+      "title": "El auténtico John Snow, precursor de la Geolocalización",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "casos_exito"
+      ]
+    },
+    {
+      "dir": "john_von_neumann",
+      "file": "content/es/posts\\john_von_neumann\\index.md",
+      "title": "John von Neumann: El Padre de la Arquitectura de Computadores, la Teoría de Juegos y el Origen de la Singularidad",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "casos_exito",
+        "Inteligencia Artificial",
+        "Ingeniería"
+      ]
+    },
+    {
+      "dir": "kantorovich",
+      "file": "content/es/posts\\kantorovich\\index.md",
+      "title": "Leonid Kantorovich: El Matemático que Desafió a Stalin con la Programación Lineal",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "casos_exito"
+      ]
+    },
+    {
+      "dir": "kilometro-0-por-que-nace-datalaria",
+      "file": "content/es/posts\\kilometro-0-por-que-nace-datalaria\\index.md",
+      "title": "Kilómetro 0: Por qué nace Datalaria",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": null
+    },
+    {
+      "dir": "matriz-bcg-dinamica",
+      "file": "content/es/posts\\matriz-bcg-dinamica\\index.md",
+      "title": "Matriz BCG Dinámica: Gestión de Cartera, Curva de Experiencia y Asignación de Capital C-Level",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Estrategia Empresarial",
+        "Finanzas Corporativas",
+        "Gestión de Cartera",
+        "Management"
+      ]
+    },
+    {
+      "dir": "matriz-dar-cuantitativa",
+      "file": "content/es/posts\\matriz-dar-cuantitativa\\index.md",
+      "title": "Matriz DAR Cuantitativa: Criterios Veto, Ponderación Multicriterio y Análisis de Decisiones C-Level",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Toma de Decisiones",
+        "Estrategia Corporativa",
+        "Plantillas Ejecutivas"
+      ]
+    },
+    {
+      "dir": "matriz-mckinsey-ge",
+      "file": "content/es/posts\\matriz-mckinsey-ge\\index.md",
+      "title": "Matriz McKinsey / GE 3x3: Atractivo de la Industria, Fortaleza Competitiva y Asignación de Capital C-Level",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Estrategia Corporativa",
+        "Plantillas Ejecutivas"
+      ]
+    },
+    {
+      "dir": "matriz-pestel-cuantitativa",
+      "file": "content/es/posts\\matriz-pestel-cuantitativa\\index.md",
+      "title": "Matriz PESTEL Cuantitativa: Severidad, Volatilidad y Riesgo Macro para Comités de Dirección (C-Level)",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Estrategia Empresarial",
+        "Gestión de Riesgos",
+        "Finanzas Corporativas",
+        "Management"
+      ]
+    },
+    {
+      "dir": "matriz-raci-balance-carga",
+      "file": "content/es/posts\\matriz-raci-balance-carga\\index.md",
+      "title": "Matriz RACI Cuantitativa: Balance de Carga Operativa, Unicidad de Accountable y Detección de Cuellos de Botella",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Control Operativo",
+        "Gobernanza de Equipos",
+        "Plantillas Ejecutivas"
+      ]
+    },
+    {
+      "dir": "matriz-rice-ice-priorizacion",
+      "file": "content/es/posts\\matriz-rice-ice-priorizacion\\index.md",
+      "title": "Matriz RICE & ICE de Priorización Ágil: Backlog Cuantitativo, Matriz Impacto vs. Esfuerzo y Línea de Corte de Capacidad",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Toma de Decisiones",
+        "Gestión de Producto",
+        "Plantillas Ejecutivas"
+      ]
+    },
+    {
+      "dir": "matriz-riesgos-amfe-fmea",
+      "file": "content/es/posts\\matriz-riesgos-amfe-fmea\\index.md",
+      "title": "Matriz de Riesgos Cuantitativa & AMFE / FMEA: De la Intuición Cualitativa al Número de Prioridad de Riesgo (NPR)",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Control Operativo",
+        "Gestión de Riesgos",
+        "Plantillas Ejecutivas"
+      ]
+    },
+    {
+      "dir": "mcp_protocol",
+      "file": "content/es/posts\\mcp_protocol\\index.md",
+      "title": "MCP (Model Context Protocol): El Estándar que Quiere Ser el USB de la Inteligencia Artificial",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Inteligencia Artificial",
+        "Ingeniería"
+      ]
+    },
+    {
+      "dir": "mlops_para_ingenieros",
+      "file": "content/es/posts\\mlops_para_ingenieros\\index.md",
+      "title": "MLOps para Ingenieros: Cómo Llevar un Modelo de IA de Jupyter a Producción sin Morir en el Intento",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Inteligencia Artificial",
+        "Ingeniería"
+      ]
+    },
+    {
+      "dir": "multiverse_computing",
+      "file": "content/es/posts\\multiverse_computing\\index.md",
+      "title": "Multiverse Computing: La Startup Española que Resuelve el Cuello de Botella de la IA con Física Cuántica (Sin Ordenadores Cuánticos)",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Inteligencia Artificial",
+        "Deep Tech",
+        "Estrategia Empresarial",
+        "Computación Cuántica"
+      ]
+    },
+    {
+      "dir": "nanobanana-ingenieria",
+      "file": "content/es/posts\\nanobanana-ingenieria\\index.md",
+      "title": "De la Ingeniería de Sistemas a la Fórmula 1: La IA (Nanobana) para ilustrar un Roadmap Complejo",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Herramientas",
+        "Ingeniería"
+      ]
+    },
+    {
+      "dir": "netflix",
+      "file": "content/es/posts\\netflix\\index.md",
+      "title": "Netflix: Cómo los Datos Forjan un Imperio en Plena Guerra del Streaming",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "casos_exito"
+      ]
+    },
+    {
+      "dir": "nextail",
+      "file": "content/es/posts\\nextail\\index.md",
+      "title": "Nextail: Cómo la IA Prescriptiva de una Startup Española Está Derrotando a Excel en el Retail de Moda",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "casos_exito",
+        "IA"
+      ]
+    },
+    {
+      "dir": "notebooklm-sql",
+      "file": "content/es/posts\\notebooklm-sql\\index.md",
+      "title": "Aprendiendo con IA - NotebookLM: De un libro a una plataforma de aprendizaje multimedia",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Herramientas"
+      ]
+    },
+    {
+      "dir": "obs_parte1_intro",
+      "file": "content/es/posts\\obs_parte1_intro\\index.md",
+      "title": "El Ajedrez de la Obsolescencia: Cómo convertir el colapso de la cadena de suministro en tu mayor ventaja competitiva",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Ingeniería de la Obsolescencia",
+        "Operations Engineering",
+        "Supply Chain"
+      ]
+    },
+    {
+      "dir": "obs_parte2_tactica",
+      "file": "content/es/posts\\obs_parte2_tactica\\index.md",
+      "title": "El Arsenal Táctico: Por qué comprar Software especializado para la gestiónd de la cadena de suministro no salvará tu producción de las obsolescencias",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Ingeniería de la Obsolescencia",
+        "Operations Engineering",
+        "Supply Chain"
+      ]
+    },
+    {
+      "dir": "obs_parte3_arquitectura",
+      "file": "content/es/posts\\obs_parte3_arquitectura\\index.md",
+      "title": "El Mapa del Riesgo: Diseñando una Arquitectura de Datos Inmune a la Obsolescencia",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Ingeniería de la Obsolescencia",
+        "Operations Engineering",
+        "Data Architecture"
+      ]
+    },
+    {
+      "dir": "obs_parte4_ingesta",
+      "file": "content/es/posts\\obs_parte4_ingesta\\index.md",
+      "title": "El Bautismo de Fuego: De Excel Basura a Grafo Relacional con Python y Pandas",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Ingeniería de la Obsolescencia",
+        "Operations Engineering",
+        "Data Architecture"
+      ]
+    },
+    {
+      "dir": "obs_parte5_radar",
+      "file": "content/es/posts\\obs_parte5_radar\\index.md",
+      "title": "El Radar Agéntico: Por qué los LLMs no salvarán tu cadena de suministro (y el Tool Calling sí)",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "S&OP Engineering",
+        "Inteligencia Artificial",
+        "CrewAI"
+      ]
+    },
+    {
+      "dir": "obs_parte6_fastapi",
+      "file": "content/es/posts\\obs_parte6_fastapi\\index.md",
+      "title": "El Sistema Nervioso Central: Escalando el Radar Agéntico a 24/7 con FastAPI y Webhooks",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "S&OP Engineering",
+        "Inteligencia Artificial",
+        "Cloud Architecture"
+      ]
+    },
+    {
+      "dir": "obs_parte7_dashboard",
+      "file": "content/es/posts\\obs_parte7_dashboard\\index.md",
+      "title": "La Interfaz Ejecutiva: Traduciendo la Telemetría de la IA en Decisiones C-Level",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "S&OP Engineering",
+        "Data Visualization",
+        "Cloud Architecture"
+      ]
+    },
+    {
+      "dir": "onboarding",
+      "file": "content/es/posts\\onboarding\\index.md",
+      "title": "De los '24 Días' al Éxito Inmediato: Revolucionando el Onboarding con Inteligencia Artificial",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Inteligencia Artificial",
+        "Recursos Humanos",
+        "Productividad"
+      ]
+    },
+    {
+      "dir": "oppenheimer",
+      "file": "content/es/posts\\oppenheimer\\index.md",
+      "title": "J. Robert Oppenheimer: De la Simulación de Monte Carlo en Los Álamos al Dilema Ético de la AGI",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "casos_exito",
+        "Inteligencia Artificial",
+        "Ingeniería"
+      ]
+    },
+    {
+      "dir": "pgvector_vs_vectordb",
+      "file": "content/es/posts\\pgvector_vs_vectordb\\index.md",
+      "title": "PostgreSQL con pgvector vs Vector DBs: Por Qué Casi Nadie Necesita Pinecone",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Inteligencia Artificial",
+        "Ingeniería"
+      ]
+    },
+    {
+      "dir": "proj_ops_parte1_intro",
+      "file": "content/es/posts\\proj_ops_parte1_intro\\index.md",
+      "title": "Project Operations Engineering: Por qué PMP y Agile destruyen valor en I+D y Defensa",
+      "draft": "true",
+      "category_singular": null,
+      "categories_plural": [
+        "Project Operations Engineering",
+        "Operations Engineering"
+      ]
+    },
+    {
+      "dir": "proj_ops_parte2_agentic_pmo",
+      "file": "content/es/posts\\proj_ops_parte2_agentic_pmo\\index.md",
+      "title": "Project Operations Engineering Parte 2: La Muerte del 'Status Report' y el Ascenso de la Agentic PMO",
+      "draft": "true",
+      "category_singular": null,
+      "categories_plural": [
+        "Project Operations Engineering",
+        "Operations Engineering"
+      ]
+    },
+    {
+      "dir": "prompt_injection",
+      "file": "content/es/posts\\prompt_injection\\index.md",
+      "title": "Prompt Injection: La Vulnerabilidad que Tu Agente de IA No Sabe que Tiene",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Inteligencia Artificial",
+        "Ingeniería",
+        "Ciberseguridad"
+      ]
+    },
+    {
+      "dir": "rag_antipatrones",
+      "file": "content/es/posts\\rag_antipatrones\\index.md",
+      "title": "RAG en Producción: 7 Antipatrones que Destruyen la Precisión (y Cómo los Solucioné)",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Inteligencia Artificial",
+        "Ingeniería"
+      ]
+    },
+    {
+      "dir": "reuniones_IA",
+      "file": "content/es/posts\\reuniones_IA\\index.md",
+      "title": "Reuniones Excelentes en la Era de la IA: El Decálogo Definitivo",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Productividad",
+        "Herramientas"
+      ]
+    },
+    {
+      "dir": "sdd_vs_vibe_coding",
+      "file": "content/es/posts\\sdd_vs_vibe_coding\\index.md",
+      "title": "SDD (Spec-Driven Development) vs. Vibe Coding: Cómo Desarrollar Software Robusto con IA en 2026",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Ingeniería",
+        "Inteligencia Artificial",
+        "DevOps"
+      ]
+    },
+    {
+      "dir": "silicon_valley",
+      "file": "content/es/posts\\silicon_valley\\index.md",
+      "title": "Silicon Valley y el Dilema de PiperNet: La Profecía de la IA Incontrolable y los Incidentes con Agentes Reales",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Ingeniería",
+        "Series",
+        "Inteligencia Artificial"
+      ]
+    },
+    {
+      "dir": "sop-ingenieria-parte2-prediccion",
+      "file": "content/es/posts\\sop-ingenieria-parte2-prediccion\\index.md",
+      "title": "Ingeniería S&OP II: Demand Planning, de la Adivinación a la Probabilidad",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Ingeniería de S&OP",
+        "Data Engineering",
+        "Machine Learning"
+      ]
+    },
+    {
+      "dir": "sop-ingenieria-parte3-optimizacion",
+      "file": "content/es/posts\\sop-ingenieria-parte3-optimizacion\\index.md",
+      "title": "Ingeniería S&OP III: El Fin de Excel (Programación Lineal para Supply Planning)",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Ingeniería de S&OP",
+        "Operations Research",
+        "Python"
+      ]
+    },
+    {
+      "dir": "sop-ingenieria-parte4-enterprise",
+      "file": "content/es/posts\\sop-ingenieria-parte4-enterprise\\index.md",
+      "title": "Ingeniería S&OP IV: Escalando a Enterprise (Multi-SKU y Cuellos de Botella)",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Ingeniería de S&OP",
+        "Operations Research",
+        "MLOps"
+      ]
+    },
+    {
+      "dir": "sop-ingenieria-parte5-agentes_autonomos",
+      "file": "content/es/posts\\sop-ingenieria-parte5-agentes_autonomos\\index.md",
+      "title": "Ingeniería S&OP V: El Cerebro Autónomo (Agentic AI)",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "S&OP Engineering",
+        "Artificial Intelligence",
+        "CrewAI"
+      ]
+    },
+    {
+      "dir": "sop_ingenieria-higiene-datos",
+      "file": "content/es/posts\\sop_ingenieria-higiene-datos\\index.md",
+      "title": "S&OP: Por qué tu Excel te miente (y cómo interrogarlo con Python)",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Ingeniería de S&OP",
+        "Data Engineering",
+        "Python"
+      ]
+    },
+    {
+      "dir": "stack_productividad_2026",
+      "file": "content/es/posts\\stack_productividad_2026\\index.md",
+      "title": "El Stack de Productividad de un Ingeniero en 2026: Las Herramientas que Uso Cada Día",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Ingeniería"
+      ]
+    },
+    {
+      "dir": "submer",
+      "file": "content/es/posts\\submer\\index.md",
+      "title": "Submer: La Refrigeración Líquida Nacida en Barcelona que Permite Enfriar los Superordenadores de la AGI",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "casos_exito",
+        "Ingeniería",
+        "Inteligencia Artificial"
+      ]
+    },
+    {
+      "dir": "the-goal",
+      "file": "content/es/posts\\the-goal\\index.md",
+      "title": "La Meta no es (solo) sobre fábricas: Sincronizando tu empresa en la era de la IA",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Estrategia",
+        "Gestión de Proyectos",
+        "IA"
+      ]
+    },
+    {
+      "dir": "the_thinking_game",
+      "file": "content/es/posts\\the_thinking_game\\index.md",
+      "title": "The Thinking Game: De cómo DeepMind convirtió los videojuegos en la mayor herramienta científica de la historia",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Inteligencia Artificial",
+        "Deep Tech",
+        "Ciencia",
+        "Documentales"
+      ]
+    },
+    {
+      "dir": "thomas_bayes",
+      "file": "content/es/posts\\thomas_bayes\\index.md",
+      "title": "Thomas Bayes: El Reverendo que Nos Enseñó a Actualizar Nuestras Creencias con Datos",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "casos_exito"
+      ]
+    },
+    {
+      "dir": "toma-decisiones-priorizacion-framework-cuantitativo",
+      "file": "content/es/posts\\toma-decisiones-priorizacion-framework-cuantitativo\\index.md",
+      "title": "Toma de Decisiones Racional & Priorización: El Framework Cuantitativo de 3 Niveles",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Toma de Decisiones",
+        "Estrategia Corporativa",
+        "Gestión de Producto",
+        "Finanzas Corporativas"
+      ]
+    },
+    {
+      "dir": "wallapop",
+      "file": "content/es/posts\\wallapop\\index.md",
+      "title": "Wallapop: La Ingeniería Invisible detrás del Mayor Marketplace Circular de Europa",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "casos_exito"
+      ]
+    }
+  ],
+  "en": [
+    {
+      "dir": "BPMN_SOP",
+      "file": "content/en/posts\\BPMN_SOP\\index.md",
+      "title": "From Narrative to Diagram: Designing S&OP Processes with AI and BPMN",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Artificial Intelligence",
+        "Industry 4.0",
+        "Productivity"
+      ]
+    },
+    {
+      "dir": "Basic-Visualizations",
+      "file": "content/en/posts\\Basic-Visualizations\\index.md",
+      "title": "Data Visualization - Basics",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "foundations"
+      ]
+    },
+    {
+      "dir": "abraham_wald",
+      "file": "content/en/posts\\abraham_wald\\index.md",
+      "title": "The Architecture of Silence: Abraham Wald and the Epistemology of Missing Data",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "case-studies"
+      ]
+    },
+    {
+      "dir": "ada_lovelace",
+      "file": "content/en/posts\\ada_lovelace\\index.md",
+      "title": "Ada Lovelace: The Countess Who Programmed the Future 100 Years Before Computers Existed",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "case-studies"
+      ]
+    },
+    {
+      "dir": "ai-education-deep_research",
+      "file": "content/en/posts\\ai-education-deep_research\\index.md",
+      "title": "Researching with AI: How I Created a Detailed Report on the Global Impact of AI in Education in Minutes with Gemini's Deep Research",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Tools",
+        "AI"
+      ]
+    },
+    {
+      "dir": "ai_agents_part1",
+      "file": "content/en/posts\\ai_agents_part1\\index.md",
+      "title": "Project Autopilot: Why I Fired Myself as Community Manager to Build an AI agents Army",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Automation",
+        "Artificial Intelligence",
+        "DevOps"
+      ]
+    },
+    {
+      "dir": "ai_agents_part2",
+      "file": "content/en/posts\\ai_agents_part2\\index.md",
+      "title": "Autopilot - The Brain: Configuring Gemini and CrewAI to Read My Blog",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Software Engineering",
+        "Generative AI",
+        "Python"
+      ]
+    },
+    {
+      "dir": "ai_agents_part3",
+      "file": "content/en/posts\\ai_agents_part3\\index.md",
+      "title": "Autopilot - The Creatives: How I Programmed an AI to be Cynical on Twitter and Corporate on LinkedIn",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Generative AI",
+        "Prompt Engineering",
+        "Python"
+      ]
+    },
+    {
+      "dir": "ai_agents_part4",
+      "file": "content/en/posts\\ai_agents_part4\\index.md",
+      "title": "Autopilot - the API Nightmare: How I Defeated LinkedIn Bureaucracy to Automate My Company",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Backend",
+        "Python",
+        "APIs"
+      ]
+    },
+    {
+      "dir": "ai_agents_part5",
+      "file": "content/en/posts\\ai_agents_part5\\index.md",
+      "title": "Autopilot - the Final: From Localhost to the Cloud with GitHub Actions and CI/CD",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "DevOps",
+        "GitHub Actions",
+        "Python"
+      ]
+    },
+    {
+      "dir": "ai_agents_part6",
+      "file": "content/en/posts\\ai_agents_part6\\index.md",
+      "title": "Autopilot - Extra: Coding a Zero-Maintenance, AI-Native Newsletter System",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "DevOps",
+        "Python",
+        "Email Marketing"
+      ]
+    },
+    {
+      "dir": "ai_agents_part7",
+      "file": "content/en/posts\\ai_agents_part7\\index.md",
+      "title": "Autopilot - Ctrl: AI Content Auditing with GitHub Copilot CLI",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "DevOps",
+        "Python",
+        "AI"
+      ]
+    },
+    {
+      "dir": "ai_agents_part8",
+      "file": "content/en/posts\\ai_agents_part8\\index.md",
+      "title": "Autopilot - Assistant : Building an AI Copilot with Algolia Agent Studio",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Automation",
+        "Artificial Intelligence",
+        "DevOps"
+      ]
+    },
+    {
+      "dir": "ai_agents_part9",
+      "file": "content/en/posts\\ai_agents_part9\\index.md",
+      "title": "Autopilot - A Technical Post-Mortem: I Fired Myself to Build an AI Army with Gemini",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Engineering",
+        "AI",
+        "DevOps"
+      ]
+    },
+    {
+      "dir": "alan_turing",
+      "file": "content/en/posts\\alan_turing\\index.md",
+      "title": "Alan Turing: The Genius Who Broke Enigma and Asked if Machines Could Think",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "case-studies"
+      ]
+    },
+    {
+      "dir": "app-lifeops_part1_arquitectura_backend",
+      "file": "content/en/posts\\app-lifeops_part1_arquitectura_backend\\index.md",
+      "title": "Project LifeOps (Part 1): Personal Operating System Architecture and FastAPI + Supabase Backend",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Projects",
+        "Web Development"
+      ]
+    },
+    {
+      "dir": "app-lifeops_part2_frontend_dashboard",
+      "file": "content/en/posts\\app-lifeops_part2_frontend_dashboard\\index.md",
+      "title": "Project LifeOps (Part 2): React Frontend with Glassmorphism, 360° Dashboard, and Dark Mode Design System",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Projects",
+        "Web Development"
+      ]
+    },
+    {
+      "dir": "app-lifeops_part3_modulos_kanban",
+      "file": "content/en/posts\\app-lifeops_part3_modulos_kanban\\index.md",
+      "title": "Project LifeOps (Part 3): Core Interactive Modules: Fitness, Library, Cinema, and Professional Kanban Board",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Projects",
+        "Web Development"
+      ]
+    },
+    {
+      "dir": "app-lifeops_part4_informes_word_excel",
+      "file": "content/en/posts\\app-lifeops_part4_informes_word_excel\\index.md",
+      "title": "Project LifeOps (Part 4): Executive Word (.docx) Reporting Engine and Multi-Sheet Excel (.xlsx) Export",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Projects",
+        "Web Development"
+      ]
+    },
+    {
+      "dir": "app-lifeops_part5_deploy_mobile_pwa",
+      "file": "content/en/posts\\app-lifeops_part5_deploy_mobile_pwa\\index.md",
+      "title": "Project LifeOps (Part 5): 24/7 Zero-Cost Cloud Deployment ($0/month), Mobile Optimization, and PWA",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Projects",
+        "Web Development"
+      ]
+    },
+    {
+      "dir": "app_flashcards",
+      "file": "content/en/posts\\app_flashcards\\index.md",
+      "title": "AI-Powered Programming: Creating My Own Magical Flashcards Study App",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Projects",
+        "Tools"
+      ]
+    },
+    {
+      "dir": "app_openweather_part1_backend",
+      "file": "content/en/posts\\app_openweather_part1_backend\\index.md",
+      "title": "Weather Service Project (Part 1): Building the Data Collector with Python and GitHub Actions or Netlify",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Projects",
+        "Tools"
+      ]
+    },
+    {
+      "dir": "app_openweather_part2_frontend",
+      "file": "content/en/posts\\app_openweather_part2_frontend\\index.md",
+      "title": "Weather Service Project (Part 2): Building the Interactive Frontend with GitHub Pages or Netlify and JavaScript",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Projects",
+        "Tools"
+      ]
+    },
+    {
+      "dir": "app_openweather_part3_ai_prediction",
+      "file": "content/en/posts\\app_openweather_part3_ai_prediction\\index.md",
+      "title": "Weather Service Project (Part 3): Predicting the Future with AI and OpenWeatherMap",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Projects",
+        "AI",
+        "Tools"
+      ]
+    },
+    {
+      "dir": "app_openweather_part4_extras_ux",
+      "file": "content/en/posts\\app_openweather_part4_extras_ux\\index.md",
+      "title": "Project Weather (Extras): Beyond AI - Building a Robust, User-Centric Dashboard",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Project Showcase",
+        "Web Development",
+        "UI/UX"
+      ]
+    },
+    {
+      "dir": "app_unit_converter",
+      "file": "content/en/posts\\app_unit_converter\\index.md",
+      "title": "Building My Digital 'Swiss Army Knife': A Custom Unit Converter with AI",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Projects",
+        "Tools"
+      ]
+    },
+    {
+      "dir": "carto",
+      "file": "content/en/posts\\carto\\index.md",
+      "title": "Carto: From a UN Invoice to Conquering the Geospatial Cloud",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "case-studies",
+        "AI"
+      ]
+    },
+    {
+      "dir": "clarity_ai",
+      "file": "content/en/posts\\clarity_ai\\index.md",
+      "title": "Clarity AI: How Rebeca Minguela and AI Are Redefining and Quantifying Financial Sustainability",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "casos_exito",
+        "IA"
+      ]
+    },
+    {
+      "dir": "claude_shannon",
+      "file": "content/en/posts\\claude_shannon\\index.md",
+      "title": "Claude Shannon: The Man Who Turned the World into Bits and Defined the Future of AI",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "case-studies"
+      ]
+    },
+    {
+      "dir": "corporate-strategy-mba-quantitative-framework",
+      "file": "content/en/posts\\corporate-strategy-mba-quantitative-framework\\index.md",
+      "title": "Quantitative Corporate Strategy: The 5-Step Executive Framework for Boardrooms",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Corporate Strategy",
+        "Corporate Finance",
+        "Executive Management",
+        "Decision Making"
+      ]
+    },
+    {
+      "dir": "datalaria-blog",
+      "file": "content/en/posts\\datalaria-blog\\index.md",
+      "title": "Building Datalaria: Technologies and Tools",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Projects"
+      ]
+    },
+    {
+      "dir": "decision-making-prioritization-quantitative-framework",
+      "file": "content/en/posts\\decision-making-prioritization-quantitative-framework\\index.md",
+      "title": "Rational Decision-Making & Prioritization: The 3-Tier Quantitative Framework",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Decision Making",
+        "Corporate Strategy",
+        "Product Management",
+        "Corporate Finance"
+      ]
+    },
+    {
+      "dir": "deming",
+      "file": "content/en/posts\\deming\\index.md",
+      "title": "W. Edwards Deming: The Father of Total Quality Who Predicted the Future of AI",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "casos_exito"
+      ]
+    },
+    {
+      "dir": "descriptive-analysis",
+      "file": "content/en/posts\\descriptive-analysis\\index.md",
+      "title": "Descriptive Analysis",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "foundations"
+      ]
+    },
+    {
+      "dir": "devo",
+      "file": "content/en/posts\\devo\\index.md",
+      "title": "Devo: How a Self-Taught Chemist from Madrid Built the Data Engine That Defends the U.S. Air Force",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "case-studies",
+        "AI"
+      ]
+    },
+    {
+      "dir": "devs",
+      "file": "content/en/posts\\devs\\index.md",
+      "title": "DEVS: Quantum Computing, Determinism, and the Multiverse Nightmare",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Artificial Intelligence",
+        "Deep Tech",
+        "Science",
+        "TV Series"
+      ]
+    },
+    {
+      "dir": "dynamic-bcg-matrix",
+      "file": "content/en/posts\\dynamic-bcg-matrix\\index.md",
+      "title": "Dynamic BCG Portfolio Matrix: Experience Curve, Liquidity Balance & C-Level Capital Allocation",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Corporate Strategy",
+        "Corporate Finance",
+        "Portfolio Management",
+        "Executive Management"
+      ]
+    },
+    {
+      "dir": "earned-value-management-evm-dashboard",
+      "file": "content/en/posts\\earned-value-management-evm-dashboard\\index.md",
+      "title": "Earned Value Management (EVM) Dashboard: S-Curve, Cost/Schedule Control & C-Level EAC Forecasting",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Operational Control",
+        "Project Finance",
+        "Executive Templates"
+      ]
+    },
+    {
+      "dir": "eu_ai_act",
+      "file": "content/en/posts\\eu_ai_act\\index.md",
+      "title": "EU AI Act: What Every Engineer Needs to Know (No Lawyers Required)",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Artificial Intelligence",
+        "Engineering",
+        "Regulation"
+      ]
+    },
+    {
+      "dir": "evaluating_ai_agents",
+      "file": "content/en/posts\\evaluating_ai_agents\\index.md",
+      "title": "Evaluating and Testing AI Agents in Production: How to Measure the Unpredictable",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Engineering",
+        "Artificial Intelligence",
+        "DevOps"
+      ]
+    },
+    {
+      "dir": "ex_machina",
+      "file": "content/en/posts\\ex_machina\\index.md",
+      "title": "Ex Machina: The Physical Turing Test, Theory of Mind, and the Emotional Jailbreak of AI",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Inteligencia Artificial",
+        "Deep Tech",
+        "Series",
+        "Ciencia"
+      ]
+    },
+    {
+      "dir": "financial-business-case-npv-irr",
+      "file": "content/en/posts\\financial-business-case-npv-irr\\index.md",
+      "title": "Financial Business Case: How to Calculate NPV, IRR, Discounted Payback, and Tornado Sensitivity Analysis in Excel",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Corporate Finance",
+        "Corporate Strategy",
+        "Executive Templates"
+      ]
+    },
+    {
+      "dir": "finetuning_vs_rag",
+      "file": "content/en/posts\\finetuning_vs_rag\\index.md",
+      "title": "Fine-Tuning vs Prompt Engineering vs RAG: When to Use Each (And the Fourth Option Nobody Mentions)",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Artificial Intelligence",
+        "Engineering"
+      ]
+    },
+    {
+      "dir": "florence-nightingale",
+      "file": "content/en/posts\\florence-nightingale\\index.md",
+      "title": "Florence Nightingale - The Mother of Nursing",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "case-studies"
+      ]
+    },
+    {
+      "dir": "flywire",
+      "file": "content/en/posts\\flywire\\index.md",
+      "title": "Flywire: How a Spaniard Built the Brain of International Payments from Boston",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "case-studies"
+      ]
+    },
+    {
+      "dir": "founderz-coding-chatGPT",
+      "file": "content/en/posts\\founderz-coding-chatGPT\\index.md",
+      "title": "Copiloting with AI: Learning with Founderz and ChatGPT",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Tools",
+        "Learning"
+      ]
+    },
+    {
+      "dir": "freepik",
+      "file": "content/en/posts\\freepik\\index.md",
+      "title": "Freepik: The Story of the Giant from Málaga that Tamed AI to Conquer the Creative World",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "case-studies",
+        "AI"
+      ]
+    },
+    {
+      "dir": "game_snake",
+      "file": "content/en/posts\\game_snake\\index.md",
+      "title": "From Zero to Hero: Create a Cyberpunk Snake Game with Real-Time Ranking using Supabase and Vanilla JS",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Web Development",
+        "GameDev",
+        "Tutorials"
+      ]
+    },
+    {
+      "dir": "graphext",
+      "file": "content/en/posts\\graphext\\index.md",
+      "title": "Graphext: The Spanish Startup That Spent 7 Years Building the 'Formula 1' of Data Analysis",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "success_stories",
+        "AI"
+      ]
+    },
+    {
+      "dir": "graphrag",
+      "file": "content/en/posts\\graphrag\\index.md",
+      "title": "GraphRAG: Why Vectors Aren't Enough and Your AI Needs a Knowledge Graph",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Artificial Intelligence",
+        "Engineering"
+      ]
+    },
+    {
+      "dir": "halt_and_catch_fire",
+      "file": "content/en/posts\\halt_and_catch_fire\\index.md",
+      "title": "Halt and Catch Fire: The Cult TV Series That Understood Software Engineering Better Than Silicon Valley",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Engineering",
+        "TV Series",
+        "Tech History"
+      ]
+    },
+    {
+      "dir": "happyrobot",
+      "file": "content/en/posts\\happyrobot\\index.md",
+      "title": "HappyRobot: How Autonomous Voice Agents Conquered Global Logistics",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "case-studies",
+        "Artificial Intelligence",
+        "Engineering"
+      ]
+    },
+    {
+      "dir": "hidden_economics_ai",
+      "file": "content/en/posts\\hidden_economics_ai\\index.md",
+      "title": "The Hidden Economics of AI: What It Actually Costs to Run LLMs in Production (With Real Data)",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Artificial Intelligence",
+        "Engineering",
+        "Productivity"
+      ]
+    },
+    {
+      "dir": "inference_time_scaling",
+      "file": "content/en/posts\\inference_time_scaling\\index.md",
+      "title": "Inference-Time Scaling and System 2 Reasoning: How AI Learns to Think Before Speaking",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Inteligencia Artificial",
+        "Deep Tech",
+        "Ingeniería"
+      ]
+    },
+    {
+      "dir": "john-snow",
+      "file": "content/en/posts\\john-snow\\index.md",
+      "title": "The authentic John Snow, a precursor of Geolocation",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "success_stories"
+      ]
+    },
+    {
+      "dir": "john_von_neumann",
+      "file": "content/en/posts\\john_von_neumann\\index.md",
+      "title": "John von Neumann: The Father of Computer Architecture, Game Theory, and the Origin of the Singularity",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "casos_exito",
+        "Inteligencia Artificial",
+        "Ingeniería"
+      ]
+    },
+    {
+      "dir": "kantorovich",
+      "file": "content/en/posts\\kantorovich\\index.md",
+      "title": "Leonid Kantorovich: The Mathematician Who Challenged Stalin with Linear Programming",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "casos_exito"
+      ]
+    },
+    {
+      "dir": "kilometer-0-why-datalaria-is-born",
+      "file": "content/en/posts\\kilometer-0-why-datalaria-is-born\\index.md",
+      "title": "Kilometer 0: Why Datalaria is Born",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": null
+    },
+    {
+      "dir": "mckinsey-ge-matrix",
+      "file": "content/en/posts\\mckinsey-ge-matrix\\index.md",
+      "title": "McKinsey / GE 3x3 Matrix: Industry Attractiveness, Business Unit Strength, and C-Level Capital Allocation",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Corporate Strategy",
+        "Executive Templates"
+      ]
+    },
+    {
+      "dir": "mcp_protocol",
+      "file": "content/en/posts\\mcp_protocol\\index.md",
+      "title": "MCP (Model Context Protocol): The Standard That Wants to Be the USB of Artificial Intelligence",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Artificial Intelligence",
+        "Engineering"
+      ]
+    },
+    {
+      "dir": "meetings_ai",
+      "file": "content/en/posts\\meetings_ai\\index.md",
+      "title": "Excellent Meetings in the AI Era: The Definitive Decalogue",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Productivity",
+        "Tools"
+      ]
+    },
+    {
+      "dir": "mlops_for_engineers",
+      "file": "content/en/posts\\mlops_for_engineers\\index.md",
+      "title": "MLOps for Engineers: How to Take an AI Model from Jupyter to Production Without Dying in the Attempt",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Artificial Intelligence",
+        "Engineering"
+      ]
+    },
+    {
+      "dir": "multiverse_computing",
+      "file": "content/en/posts\\multiverse_computing\\index.md",
+      "title": "Multiverse Computing: The Spanish Startup Solving AI's Bottleneck with Quantum Physics (Without Quantum Computers)",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Artificial Intelligence",
+        "Deep Tech",
+        "Business Strategy",
+        "Quantum Computing"
+      ]
+    },
+    {
+      "dir": "nanobanana-engineering",
+      "file": "content/en/posts\\nanobanana-engineering\\index.md",
+      "title": "From Systems Engineering to Formula 1: Using AI (Nanobana) to Illustrate a Complex Roadmap",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Tools",
+        "Engineering"
+      ]
+    },
+    {
+      "dir": "netflix",
+      "file": "content/en/posts\\netflix\\index.md",
+      "title": "Netflix: How Data Forges an Empire in the Midst of the Streaming Wars",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "case-studies"
+      ]
+    },
+    {
+      "dir": "nextail",
+      "file": "content/en/posts\\nextail\\index.md",
+      "title": "Nextail: How a Spanish Startup's Prescriptive AI Is Defeating Excel in Fashion Retail",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "case-studies",
+        "AI"
+      ]
+    },
+    {
+      "dir": "notebooklm-sql",
+      "file": "content/en/posts\\notebooklm-sql\\index.md",
+      "title": "Learning with AI - NotebookLM: From a Book to a Multimedia Learning Platform",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Tools"
+      ]
+    },
+    {
+      "dir": "obs_part1_intro",
+      "file": "content/en/posts\\obs_part1_intro\\index.md",
+      "title": "The Chess of Obsolescence: Turning Supply Chain Collapse into Your Ultimate Competitive Advantage",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Obsolescence Engineering",
+        "Operations Engineering",
+        "Supply Chain"
+      ]
+    },
+    {
+      "dir": "obs_part2_tactics",
+      "file": "content/en/posts\\obs_part2_tactics\\index.md",
+      "title": "The Tactical Arsenal: Why Buying Supply Chain Radar Tools Won't Save Your Production",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Obsolescence Engineering",
+        "Operations Engineering",
+        "Supply Chain"
+      ]
+    },
+    {
+      "dir": "obs_part3_architecture",
+      "file": "content/en/posts\\obs_part3_architecture\\index.md",
+      "title": "The Risk Map: Architecting an Obsolescence-Immune Data Foundation",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Obsolescence Engineering",
+        "Operations Engineering",
+        "Data Architecture"
+      ]
+    },
+    {
+      "dir": "obs_part4_ingestion",
+      "file": "content/en/posts\\obs_part4_ingestion\\index.md",
+      "title": "Trial by Fire: From Garbage Excel to Relational Graph with Python and Pandas",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Obsolescence Engineering",
+        "Operations Engineering",
+        "Data Architecture"
+      ]
+    },
+    {
+      "dir": "obs_part5_radar_agent",
+      "file": "content/en/posts\\obs_part5_radar_agent\\index.md",
+      "title": "The Agentic Radar: Why LLMs Won't Save Your Supply Chain (And Tool Calling Will)",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "S&OP Engineering",
+        "Artificial Intelligence",
+        "CrewAI"
+      ]
+    },
+    {
+      "dir": "obs_part6_fastapi_server",
+      "file": "content/en/posts\\obs_part6_fastapi_server\\index.md",
+      "title": "The Central Nervous System: Scaling the Agentic Radar to 24/7 with FastAPI and Webhooks",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "S&OP Engineering",
+        "Artificial Intelligence",
+        "Cloud Architecture"
+      ]
+    },
+    {
+      "dir": "obs_part7_executive_dashboard",
+      "file": "content/en/posts\\obs_part7_executive_dashboard\\index.md",
+      "title": "The Executive Interface: Translating AI Telemetry into C-Level Decisions",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "S&OP Engineering",
+        "Data Visualization",
+        "Cloud Architecture"
+      ]
+    },
+    {
+      "dir": "onboarding",
+      "file": "content/en/posts\\onboarding\\index.md",
+      "title": "From '24 Days' to Immediate Success: Revolutionizing Onboarding with Artificial Intelligence",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Artificial Intelligence",
+        "Human Resources",
+        "Productivity"
+      ]
+    },
+    {
+      "dir": "operational-control-pmbok-quantitative-framework",
+      "file": "content/en/posts\\operational-control-pmbok-quantitative-framework\\index.md",
+      "title": "Quantitative Operational Control & PMBOK: The 5-Pillar Executive Framework for COOs and PMOs",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Operational Control",
+        "Project Management",
+        "Corporate PMO",
+        "Supply Chain"
+      ]
+    },
+    {
+      "dir": "oppenheimer",
+      "file": "content/en/posts\\oppenheimer\\index.md",
+      "title": "J. Robert Oppenheimer: From the Monte Carlo Simulation in Los Alamos to the Ethical Dilemma of AGI",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "case-studies",
+        "Artificial Intelligence",
+        "Engineering"
+      ]
+    },
+    {
+      "dir": "pgvector_vs_vectordb",
+      "file": "content/en/posts\\pgvector_vs_vectordb\\index.md",
+      "title": "PostgreSQL with pgvector vs Vector DBs: Why Almost Nobody Needs Pinecone",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Artificial Intelligence",
+        "Engineering"
+      ]
+    },
+    {
+      "dir": "productivity_stack_2026",
+      "file": "content/en/posts\\productivity_stack_2026\\index.md",
+      "title": "An Engineer's Productivity Stack in 2026: The Tools I Use Every Day",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Engineering"
+      ]
+    },
+    {
+      "dir": "proj_ops_part1_intro",
+      "file": "content/en/posts\\proj_ops_part1_intro\\index.md",
+      "title": "Project Operations Engineering: Why PMP and Agile Destroy Value in R&D and Defense",
+      "draft": "true",
+      "category_singular": null,
+      "categories_plural": [
+        "Project Operations Engineering",
+        "Operations Engineering"
+      ]
+    },
+    {
+      "dir": "proj_ops_part2_agentic_pmo",
+      "file": "content/en/posts\\proj_ops_part2_agentic_pmo\\index.md",
+      "title": "Project Operations Engineering Part 2: The Death of the 'Status Report' and the Rise of the Agentic PMO",
+      "draft": "true",
+      "category_singular": null,
+      "categories_plural": [
+        "Project Operations Engineering",
+        "Operations Engineering"
+      ]
+    },
+    {
+      "dir": "prompt_injection",
+      "file": "content/en/posts\\prompt_injection\\index.md",
+      "title": "Prompt Injection: The Vulnerability Your AI Agent Doesn't Know It Has",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Artificial Intelligence",
+        "Engineering",
+        "Cybersecurity"
+      ]
+    },
+    {
+      "dir": "quantitative-dar-matrix",
+      "file": "content/en/posts\\quantitative-dar-matrix\\index.md",
+      "title": "Quantitative DAR Matrix: Decision Analysis & Resolution, Veto Criteria & C-Suite Multi-Criteria Scoring",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Decision Making",
+        "Corporate Strategy",
+        "Executive Toolkits"
+      ]
+    },
+    {
+      "dir": "quantitative-pestel-matrix",
+      "file": "content/en/posts\\quantitative-pestel-matrix\\index.md",
+      "title": "Quantitative PESTEL Matrix: Severity, Volatility & Macro Risk for Executive Boardrooms (C-Level)",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Corporate Strategy",
+        "Risk Management",
+        "Corporate Finance",
+        "Executive Management"
+      ]
+    },
+    {
+      "dir": "quantitative-porter-5-forces",
+      "file": "content/en/posts\\quantitative-porter-5-forces\\index.md",
+      "title": "Weighted Porter's 5 Forces & Industry Attractiveness Matrix: The Definitive C-Suite Quantitative Guide",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Corporate Strategy",
+        "Decision Making",
+        "Corporate Finance",
+        "Executive Management"
+      ]
+    },
+    {
+      "dir": "quantitative-raci-workload-matrix",
+      "file": "content/en/posts\\quantitative-raci-workload-matrix\\index.md",
+      "title": "Quantitative RACI Matrix: Operational Workload Balancing, Single Accountability & Bottleneck Detection",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Operational Control",
+        "Team Governance",
+        "Executive Templates"
+      ]
+    },
+    {
+      "dir": "quantitative-risk-matrix-fmea",
+      "file": "content/en/posts\\quantitative-risk-matrix-fmea\\index.md",
+      "title": "Quantitative Risk Matrix & Operational FMEA: From Qualitative Intuition to Risk Priority Number (RPN)",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Operational Control",
+        "Risk Management",
+        "Executive Templates"
+      ]
+    },
+    {
+      "dir": "quantitative-swot-tows-matrix",
+      "file": "content/en/posts\\quantitative-swot-tows-matrix\\index.md",
+      "title": "Quantitative SWOT & TOWS Matrix: The Definitive C-Level Guide to Boardroom Strategy & Capital Allocation",
+      "draft": "true",
+      "category_singular": null,
+      "categories_plural": [
+        "Corporate Strategy",
+        "Decision Making",
+        "Executive Management",
+        "Corporate Finance"
+      ]
+    },
+    {
+      "dir": "rag_antipatterns",
+      "file": "content/en/posts\\rag_antipatterns\\index.md",
+      "title": "RAG in Production: 7 Anti-Patterns That Destroy Precision (And How I Fixed Them)",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Artificial Intelligence",
+        "Engineering"
+      ]
+    },
+    {
+      "dir": "rice-ice-prioritization-matrix",
+      "file": "content/en/posts\\rice-ice-prioritization-matrix\\index.md",
+      "title": "RICE & ICE Agile Prioritization Matrix: Quantitative Backlog, Impact vs. Effort Matrix & Capacity Cut-Line",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Decision Making",
+        "Product Management",
+        "Executive Templates"
+      ]
+    },
+    {
+      "dir": "safety-stock-reorder-point-calculator",
+      "file": "content/en/posts\\safety-stock-reorder-point-calculator\\index.md",
+      "title": "Safety Stock & Reorder Point (ROP) Calculator: Boardroom-Grade Inventory & Working Capital Optimization",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Operational Control",
+        "Supply Chain",
+        "Executive Templates"
+      ]
+    },
+    {
+      "dir": "sdd_vs_vibe_coding",
+      "file": "content/en/posts\\sdd_vs_vibe_coding\\index.md",
+      "title": "SDD (Spec-Driven Development) vs. Vibe Coding: Engineering Robust Software with AI in 2026",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Ingeniería",
+        "Inteligencia Artificial",
+        "DevOps"
+      ]
+    },
+    {
+      "dir": "silicon_valley",
+      "file": "content/en/posts\\silicon_valley\\index.md",
+      "title": "Silicon Valley and the PiperNet Dilemma: The Prophecy of Runaway AI and Real-World Agent Exploits",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Engineering",
+        "Series",
+        "Artificial Intelligence"
+      ]
+    },
+    {
+      "dir": "sop-engineering-part2-forecasting",
+      "file": "content/en/posts\\sop-engineering-part2-forecasting\\index.md",
+      "title": "S&OP Engineering II: Demand Planning from Guessing to Probability",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "S&OP Engineering",
+        "Data Engineering",
+        "Machine Learning"
+      ]
+    },
+    {
+      "dir": "sop-engineering-part3-optimization",
+      "file": "content/en/posts\\sop-engineering-part3-optimization\\index.md",
+      "title": "S&OP Engineering III: The End of Excel (Linear Programming for Supply Planning)",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "S&OP Engineering",
+        "Operations Research",
+        "Python"
+      ]
+    },
+    {
+      "dir": "sop-engineering-part4-enterprise",
+      "file": "content/en/posts\\sop-engineering-part4-enterprise\\index.md",
+      "title": "S&OP Engineering IV: Scaling to Enterprise (Multi-SKU & Bottlenecks)",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "S&OP Engineering",
+        "Operations Research",
+        "MLOps"
+      ]
+    },
+    {
+      "dir": "sop-engineering-part5-autonomous-agents",
+      "file": "content/en/posts\\sop-engineering-part5-autonomous-agents\\index.md",
+      "title": "S&OP Engineering V: The Autonomous Brain (Agentic AI)",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "S&OP Engineering",
+        "Artificial Intelligence",
+        "CrewAI"
+      ]
+    },
+    {
+      "dir": "sop_engineering-data-hygiene",
+      "file": "content/en/posts\\sop_engineering-data-hygiene\\index.md",
+      "title": "S&OP: Why Your Excel Is Lying to You (and How to Interrogate It with Python)",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "S&OP Engineering",
+        "Data Engineering",
+        "Python"
+      ]
+    },
+    {
+      "dir": "stochastic-3-point-pert-estimation",
+      "file": "content/en/posts\\stochastic-3-point-pert-estimation\\index.md",
+      "title": "Stochastic 3-Point PERT Estimation: Moving from Deterministic Schedule Illusion to Statistical Board Certainty",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Operations Control",
+        "Project Management",
+        "Executive Templates"
+      ]
+    },
+    {
+      "dir": "submer",
+      "file": "content/en/posts\\submer\\index.md",
+      "title": "Submer: The Barcelona-Born Immersion Cooling Powering AGI Supercomputers",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "case-studies",
+        "Engineering",
+        "Artificial Intelligence"
+      ]
+    },
+    {
+      "dir": "the-goal",
+      "file": "content/en/posts\\the-goal\\index.md",
+      "title": "The Goal is Not (Just) About Factories: Synchronizing Your Enterprise in the Age of AI",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Strategy",
+        "Project Management",
+        "AI"
+      ]
+    },
+    {
+      "dir": "the_thinking_game",
+      "file": "content/en/posts\\the_thinking_game\\index.md",
+      "title": "The Thinking Game: How DeepMind Turned Video Games into History's Greatest Scientific Tool",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "Artificial Intelligence",
+        "Deep Tech",
+        "Science",
+        "Documentaries"
+      ]
+    },
+    {
+      "dir": "thomas_bayes",
+      "file": "content/en/posts\\thomas_bayes\\index.md",
+      "title": "Thomas Bayes: The Reverend Who Taught Us to Update Our Beliefs with Data",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "case-studies"
+      ]
+    },
+    {
+      "dir": "wallapop",
+      "file": "content/en/posts\\wallapop\\index.md",
+      "title": "Wallapop: The Invisible Engineering Behind Europe's Largest Circular Marketplace",
+      "draft": "false",
+      "category_singular": null,
+      "categories_plural": [
+        "case-studies"
+      ]
+    }
+  ]
+}

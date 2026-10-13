@@ -2,6 +2,7 @@
 title: "Dynamic BCG Portfolio Matrix: Experience Curve, Liquidity Balance & C-Level Capital Allocation"
 date: 2026-10-26
 draft: false
+category: "Technical Articles"
 categories: ["Corporate Strategy", "Corporate Finance", "Portfolio Management", "Executive Management"]
 tags: ["BCG Matrix", "Capital Allocation", "Bruce Henderson", "Experience Curve", "Relative Market Share", "Minto Pyramid", "Excel Model", "Boardroom Presentation", "ROIC"]
 description: "A comprehensive methodological guide to transforming the traditional qualitative BCG matrix into a rigorous quantitative cash flow balance engine (Bruce Henderson), mathematical Relative Market Share (RMS) modeling, and C-Suite capital allocation roadmap."
@@ -239,7 +240,7 @@ For Chief Executive Officers (CEOs), Chief Financial Officers (CFOs), Heads of C
   icon="⭐"
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Methodology Guide PDF"
   features="Automated Relative Market Share and Growth Rate calculation engine|Dynamic Cartesian bubble chart scaled by business unit revenue|16:9 boardroom PPTX deck categorizing Stars, Cows, Questions, and Dogs|5-page executive PDF guide on capital allocation and ROIC optimization"
-  checkout_url="https://datalaria.lemonsqueezy.com/buy/matriz-bcg"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/4544ff60-2426-46c9-8265-7fa4764990af"
   button_text="Download Full Pack (.ZIP) • 6€"
 >}}
 The compressed archive contains the official **Excel workbook (.xlsx)** with calculation formulas protected under password provided in the instructions and 100% unlocked input cells, the executive **PowerPoint presentation (.pptx 16:9 Widescreen)** built under the Minto Pyramid Principle with high-resolution bubble charts and Board Decision Gateway, the **Methodology Guide in PDF** (5 pages), and direct Google Sheets import instructions.

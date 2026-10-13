@@ -2,6 +2,7 @@
 title: "The Tactical Arsenal: Why Buying Supply Chain Radar Tools Won't Save Your Production"
 date: 2026-04-14
 draft: false
+category: "Tech Projects"
 categories: ["Obsolescence Engineering", "Operations Engineering", "Supply Chain"]
 tags: ["Supply Chain", "BOM Management", "SiliconExpert", "IHS Markit", "Data Architecture"]
 author: "Datalaria"

@@ -1,6 +1,7 @@
 ---
 title: Data Visualization - Basics
 date: 2025-08-12
+category: "Technical Articles"
 description: "Learn about the most common basic visualizations used to analyze your data"
 summary: "What are the key visualizations in data analysis? Pie charts, line charts, histograms, sunbursts, Pareto charts... let's dive in and understand them"
 draft: False

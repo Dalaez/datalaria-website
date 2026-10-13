@@ -1,6 +1,7 @@
 ---
 title: "Graphext: The Spanish Startup That Spent 7 Years Building the 'Formula 1' of Data Analysis"
 date: 2025-11-28
+category: "Startups"
 draft: False
 categories: ["success_stories", "AI"]
 tags: ["graphext", "ai", "explainable ai", "no-code", "startup", "big data", "visualization"]

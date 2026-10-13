@@ -2,6 +2,7 @@
 title: "Ada Lovelace: The Countess Who Programmed the Future 100 Years Before Computers Existed"
 date: 2026-08-24
 draft: false
+category: "Biographies"
 categories: ["case-studies"]
 tags: ["ada lovelace", "computer history", "algorithms", "artificial intelligence", "turing", "babbage", "software"]
 description: "The fascinating story of Ada Lovelace, the 19th-century mathematician who wrote the world's first computer algorithm and predicted symbolic computation and artificial intelligence a century before the first electronic computers."

@@ -2,6 +2,7 @@
 title: "Proyecto LifeOps (Parte 4): Motor de Informes Ejecutivos en Word (.docx) y Exportación Multi-Hoja en Excel (.xlsx)"
 date: 2026-09-18
 draft: false
+category: "Proyectos Tecnológicos"
 categories: ["Proyectos", "Desarrollo Web"]
 tags: ["python", "fastapi", "python-docx", "openpyxl", "word", "excel", "csv", "streaming", "informes", "backend", "powerbi"]
 image: cover.png

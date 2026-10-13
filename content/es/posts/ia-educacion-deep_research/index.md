@@ -1,6 +1,7 @@
 ---
 title: "Investigando con IA: Cómo Creé un Informe detallado sobre el impacto de la IA en la Educación a nivel global en Minutos con Deep Research de Gemini"
 date: 2025-09-27
+category: "Artículos Técnicos"
 draft: False
 categories: ["Herramientas", "IA"]
 tags: ["ia", "gemini", "deep research", "educación", "investigación", "edtech", "unesco", "deep reserach"]

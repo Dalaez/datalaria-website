@@ -1,0 +1,477 @@
+{{- /*
+  ============================================================================
+  DATALARIA · PORTAL HOME (Fase 3)
+  ----------------------------------------------------------------------------
+  Overrides PaperMod's themes/PaperMod/layouts/partials/index_profile.html,
+  which is the ONLY block PaperMod renders in the body of the home page when
+  profileMode is enabled (see _default/list.html).
+
+  What this file does NOT touch (still rendered by the theme, unchanged):
+    - <head>: <title>, meta description, canonical, hreflang, OpenGraph,
+      Twitter Cards, schema.org JSON-LD, Google Analytics, robots.
+    - Header: menu, language switcher (ES/EN), light/dark toggle.
+    - Footer: newsletter form + Algolia Ops Copilot (extend_footer.html).
+
+  Data sources:
+    - Posts: site.RegularPages (current language only; drafts and future
+      posts are excluded automatically in production builds).
+    - Categories: front matter "category" (Fase 1).
+    - Tagline / logo: languages.<lang>.params.profileMode (config.yaml).
+    - "Most read": languages.<lang>.params.homePortal.mostRead (config.yaml),
+      first path that resolves to a published post wins.
+
+  To revert to the previous home page: delete this file and
+  assets/css/extended/home-portal.css.
+  ============================================================================
+*/ -}}
+{{- $lang := site.Language.Lang -}}
+{{- $isES := eq $lang "es" -}}
+{{- $pm := site.Params.profileMode -}}
+
+{{- /* ---------- Localised UI strings ---------- */ -}}
+{{- $i18n := dict
+  "es" (dict
+    "compass" "Brújula del descubrimiento"
+    "pop" "🔥 Más leído"
+    "lat" "⚡ Última publicación"
+    "rnd" "🎲 Aleatorio"
+    "shuffle" "Barajar"
+    "shuffleTitle" "Sugerir otro artículo al azar"
+    "s1tag" "01 / Recursos"
+    "s1title" "Recursos & Packs Profesionales"
+    "s1desc" "Modelos cuantitativos, plantillas de decisión y guías metodológicas diseñadas para el ámbito profesional, comités de dirección y control corporativo."
+    "packsSub" "Del cálculo cuantitativo a la aprobación del Comité"
+    "packsDesc" "Herramientas para defender decisiones estratégicas ante comités de dirección: modelos en Excel protegidos, presentaciones PowerPoint 16:9 de nivel C-Level y guías metodológicas en PDF."
+    "badgeLive" "Disponible"
+    "badgeSoon" "Próximamente"
+    "resNoteLive" "Facturación B2B deducible y descarga instantánea"
+    "resNoteSoon" "Lanzamiento en las próximas semanas. Suscríbete y entérate el primero."
+    "resCtaLive" "Ver catálogo completo de Recursos →"
+    "resCtaSoon" "Avísame del lanzamiento →"
+    "readGuide" "Leer la guía gratuita"
+    "dlPack" "Descargar pack"
+    "guideSoon" "📖 Guía en preparación"
+    "packSoon" "🔒 Próximamente"
+    "s2tag" "02 / Contenidos"
+    "s2title" "El blog en 4 temáticas"
+    "s2desc" "Explora los %d artículos del blog clasificados por ámbito de conocimiento. Selecciona una temática para ver sus últimas lecturas:"
+    "tabsLabel" "Temáticas del blog"
+    "postsWord" "artículos"
+    "archive" "Ver archivo completo del blog →"
+    "s3tag" "03 / Ecosistema"
+    "s3title" "Apps & Experimentos"
+    "s3desc" "Herramientas interactivas desarrolladas para explorar tecnologías web, inteligencia artificial y resolver problemas cotidianos."
+    "appsAll" "Ver todas las Apps & Experimentos →"
+    "social" "Conéctate y sigue las novedades de Datalaria:"
+  )
+  "en" (dict
+    "compass" "Discovery compass"
+    "pop" "🔥 Most read"
+    "lat" "⚡ Latest post"
+    "rnd" "🎲 Random"
+    "shuffle" "Shuffle"
+    "shuffleTitle" "Suggest another random article"
+    "s1tag" "01 / Resources"
+    "s1title" "Resources & Professional Packs"
+    "s1desc" "Quantitative models, decision templates and methodology guides designed for professionals, executive committees and corporate control."
+    "packsSub" "From quantitative analysis to Board approval"
+    "packsDesc" "Tools to defend strategic decisions in front of executive committees: protected Excel models, 16:9 C-Level PowerPoint decks and PDF methodology guides."
+    "badgeLive" "Available"
+    "badgeSoon" "Coming soon"
+    "resNoteLive" "Tax-deductible B2B invoicing and instant download"
+    "resNoteSoon" "Launching in the coming weeks. Subscribe to be the first to know."
+    "resCtaLive" "Browse the full Resources catalogue →"
+    "resCtaSoon" "Notify me at launch →"
+    "readGuide" "Read the free guide"
+    "dlPack" "Download pack"
+    "guideSoon" "📖 Guide in preparation"
+    "packSoon" "🔒 Coming soon"
+    "s2tag" "02 / Content"
+    "s2title" "The blog in 4 topics"
+    "s2desc" "Explore the %d blog articles organised by field of knowledge. Pick a topic to see its latest reads:"
+    "tabsLabel" "Blog topics"
+    "postsWord" "articles"
+    "archive" "Browse the full blog archive →"
+    "s3tag" "03 / Ecosystem"
+    "s3title" "Apps & Experiments"
+    "s3desc" "Interactive tools built to explore web technologies, artificial intelligence and to solve everyday problems."
+    "appsAll" "See all Apps & Experiments →"
+    "social" "Connect and follow Datalaria's updates:"
+  )
+-}}
+{{- $t := index $i18n $lang | default (index $i18n "en") -}}
+
+{{- /* ---------- Posts of the current language, newest first ---------- */ -}}
+{{- $posts := (where site.RegularPages "Section" "posts").ByDate.Reverse -}}
+
+{{- /* ---------- Discovery compass data ---------- */ -}}
+{{- $latest := false -}}
+{{- $mostRead := false -}}
+{{- with $posts }}{{ $latest = index . 0 }}{{ end -}}
+{{- with site.Params.homePortal -}}
+  {{- range .mostRead -}}
+    {{- if not $mostRead -}}
+      {{- with site.GetPage . -}}
+        {{- if and .RelPermalink (not .Draft) (eq .Section "posts") (ne .RelPermalink $latest.RelPermalink) -}}
+          {{- $mostRead = . -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if and (not $mostRead) (gt (len $posts) 1) -}}
+  {{- $mostRead = index $posts 1 -}}
+{{- end -}}
+{{- $random := false -}}
+{{- $randomPool := slice -}}
+{{- range $posts -}}
+  {{- if and (ne .RelPermalink $latest.RelPermalink) (or (not $mostRead) (ne .RelPermalink $mostRead.RelPermalink)) -}}
+    {{- $randomPool = $randomPool | append . -}}
+  {{- end -}}
+{{- end -}}
+{{- with $randomPool }}{{ $random = index (shuffle .) 0 }}{{ end -}}
+
+{{- /* ---------- 4 blog categories (values from front matter "category") ---------- */ -}}
+{{- $cats := slice
+  (dict "key" "tech"     "icon" "🧠" "es" "Artículos Técnicos"     "en" "Technical Articles" "label_es" "Artículos Técnicos" "label_en" "Technical Articles")
+  (dict "key" "projects" "icon" "🛠️" "es" "Proyectos Tecnológicos" "en" "Tech Projects"      "label_es" "Proyectos Tech"     "label_en" "Tech Projects")
+  (dict "key" "startups" "icon" "🚀" "es" "Startups"               "en" "Startups"           "label_es" "Startups & Casos"   "label_en" "Startups & Cases")
+  (dict "key" "bios"     "icon" "🏛️" "es" "Biografías"             "en" "Biographies"        "label_es" "Biografías"         "label_en" "Biographies")
+-}}
+
+{{- /* ---------- Resources: only link the catalogue once it is published ---------- */ -}}
+{{- /* Hugo may return a URL-less placeholder for draft sections → require a real URL and draft: false */ -}}
+{{- $resPage := false -}}
+{{- with site.GetPage (cond $isES "/recursos" "/resources") -}}
+  {{- if and .RelPermalink (not .Draft) }}{{ $resPage = . }}{{ end -}}
+{{- end -}}
+{{- $resCards := slice
+  (dict "icon" "🎯"
+        "name" (cond $isES "DAFO Cuantitativo & CAME" "Quantitative SWOT & TOWS")
+        "detail" (cond $isES "Ponderación numérica de factores, matriz CAME automática y slide ejecutiva para comité." "Weighted factor scoring, automatic TOWS matrix and an executive slide for the Board.")
+        "meta" "Excel · PPT · PDF"
+        "price" "5€"
+        "packId" "pack-dafo"
+        "available" true
+        "path" (cond $isES "/posts/dafo-cuantitativo-matriz-came" "/posts/quantitative-swot-tows-matrix"))
+  (dict "icon" "🛡️"
+        "name" (cond $isES "5 Fuerzas de Porter" "Porter's 5 Forces")
+        "detail" (cond $isES "Scoring cuantitativo por fuerza, gráfico radar dinámico y diagnóstico de foso defensivo (Moat)." "Quantitative scoring per force, dynamic radar chart and economic moat diagnostic.")
+        "meta" "Excel · PPT · PDF"
+        "price" "6€"
+        "packId" "pack-porter"
+        "available" true
+        "path" (cond $isES "/posts/5-fuerzas-porter-cuantitativas" "/posts/quantitative-porter-5-forces"))
+  (dict "icon" "📐"
+        "name" (cond $isES "Kit Spec-Driven Dev (SDD)" "Spec-Driven Dev (SDD) Kit")
+        "detail" (cond $isES "Especificaciones ejecutables, contratos tipados y directrices para desarrollo con IA." "Executable formal specifications, typed contracts and prompt instructions for AI-assisted dev.")
+        "meta" "Specs · Schemas · Rules"
+        "price" "8€"
+        "packId" "pack-sdd"
+        "available" false
+        "path" (cond $isES "/posts/sdd_vs_vibe_coding" "/posts/sdd_vs_vibe_coding"))
+  (dict "icon" "👑"
+        "name" (cond $isES "MEGA BUNDLE: Executive Suite" "MEGA BUNDLE: Executive Suite")
+        "detail" (cond $isES "Arsenal completo de 13 herramientas cuantitativas con modelos Excel, decks 16:9 y guías PDF." "Complete arsenal of 13 quantitative tools with Excel models, 16:9 decks and PDF guides.")
+        "meta" "13 Kits · Ahorro >52%"
+        "price" "39€"
+        "packId" "mega-bundle"
+        "available" true
+        "path" (cond $isES "/posts/executive-decision-packs-framework-cuantitativo" "/posts/executive-decision-packs-quantitative-framework"))
+-}}
+
+{{- /* ---------- Apps & Games ---------- */ -}}
+{{- $apps := slice
+  (dict "icon" "🚀" "name" "LifeOps" "url" "/apps/lifeops/" "arcade" false
+        "badge" (cond $isES "Sistema" "System")
+        "desc" (cond $isES "Sistema operativo personal y profesional: deporte, lecturas, cine, tablero Kanban y proyectos." "Personal & professional OS: fitness, reading, movies, Kanban board and projects.")
+        "cta" (cond $isES "Abrir app →" "Open app →"))
+  (dict "icon" "📡" "name" (cond $isES "Radar de Obsolescencia" "Agentic Radar") "url" "/apps/obs-management/" "arcade" false
+        "badge" (cond $isES "IA" "AI")
+        "desc" (cond $isES "Dashboard ejecutivo impulsado por agentes de IA para mitigar el riesgo en la cadena de suministro." "AI agent-powered executive dashboard to mitigate supply chain risk.")
+        "cta" (cond $isES "Abrir dashboard →" "Open dashboard →"))
+  (dict "icon" "🐍" "name" "Neon Snake" "url" "/games/snake/" "arcade" true
+        "badge" (cond $isES "Arcade" "Arcade")
+        "desc" (cond $isES "El clásico Snake con estética cyberpunk y ranking global en tiempo real." "The classic Snake with a cyberpunk look and a real-time global leaderboard.")
+        "cta" (cond $isES "Jugar ahora →" "Play now →"))
+  (dict "icon" "🌤️" "name" (cond $isES "El Tiempo" "Weather") "url" "/apps/weather/" "arcade" false
+        "badge" (cond $isES "Previsión" "Forecast")
+        "desc" (cond $isES "Previsión meteorológica detallada y en tiempo real enriquecida con Machine Learning." "Detailed real-time weather forecast enhanced with Machine Learning.")
+        "cta" (cond $isES "Abrir app →" "Open app →"))
+  (dict "icon" "🔄" "name" (cond $isES "Conversor de Unidades" "Unit Converter") "url" "/apps/conversor/" "arcade" false
+        "badge" (cond $isES "Herramienta" "Tool")
+        "desc" (cond $isES "Herramienta rápida y ligera para convertir entre diferentes unidades de medida." "Fast, lightweight tool to convert between units of measurement.")
+        "cta" (cond $isES "Abrir app →" "Open app →"))
+  (dict "icon" "🎴" "name" "Flashcards" "url" "/apps/flashcards/" "arcade" false
+        "badge" (cond $isES "Estudio" "Study")
+        "desc" (cond $isES "Aplicación interactiva para estudiar y memorizar conceptos con tarjetas de memoria." "Interactive app to study and memorise concepts with flashcards.")
+        "cta" (cond $isES "Abrir app →" "Open app →"))
+-}}
+
+<div class="dlh-portal" id="dlh-portal">
+
+    {{- /* ======================= MASTHEAD ======================= */}}
+    <section class="dlh-masthead">
+        {{- with $pm.imageUrl }}
+        <img class="dlh-masthead-logo" src="{{ . | absURL }}" alt="{{ site.Title }}" width="100" height="100" draggable="false">
+        {{- end }}
+        <h1 class="dlh-tagline">{{ $pm.subtitle | default site.Params.description }}</h1>
+    </section>
+
+    {{- /* ======================= DISCOVERY COMPASS ======================= */}}
+    {{- if $latest }}
+    <nav class="dlh-compass" aria-label="{{ $t.compass }}">
+        <div class="dlh-compass-icon" title="{{ $t.compass }}" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+            </svg>
+        </div>
+        <div class="dlh-compass-grid">
+            {{- with $mostRead }}
+            <a class="dlh-disco" href="{{ .RelPermalink }}" title="{{ .Title }}">
+                <span class="dlh-disco-text">
+                    <span class="dlh-disco-tag dlh-tag-pop">{{ $t.pop }}</span>
+                    <span class="dlh-disco-title">{{ .Title }}</span>
+                </span>
+                <span class="dlh-disco-arrow" aria-hidden="true">→</span>
+            </a>
+            {{- end }}
+            <a class="dlh-disco" href="{{ $latest.RelPermalink }}" title="{{ $latest.Title }}">
+                <span class="dlh-disco-text">
+                    <span class="dlh-disco-tag dlh-tag-lat">{{ $t.lat }}</span>
+                    <span class="dlh-disco-title">{{ $latest.Title }}</span>
+                </span>
+                <span class="dlh-disco-arrow" aria-hidden="true">→</span>
+            </a>
+            {{- with $random }}
+            <div class="dlh-disco">
+                <span class="dlh-disco-text">
+                    <span class="dlh-disco-tag dlh-tag-rnd">{{ $t.rnd }}</span>
+                    <a class="dlh-disco-title" id="dlh-rnd-link" href="{{ .RelPermalink }}" title="{{ .Title }}">{{ .Title }}</a>
+                </span>
+                <button type="button" class="dlh-shuffle" id="dlh-rnd-btn" title="{{ $t.shuffleTitle }}" hidden>
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                    <span>{{ $t.shuffle }}</span>
+                </button>
+            </div>
+            {{- end }}
+        </div>
+    </nav>
+    {{- end }}
+
+    {{- /* ======================= 01 · RECURSOS ======================= */}}
+    <section class="dlh-section" id="recursos">
+        <div class="dlh-section-head">
+            <span class="dlh-section-tag">{{ $t.s1tag }}</span>
+            <h2 class="dlh-section-title">{{ $t.s1title }}</h2>
+            <p class="dlh-section-desc">{{ $t.s1desc }}</p>
+        </div>
+
+        <div class="dlh-res-box">
+            <div class="dlh-res-top">
+                <h3 class="dlh-res-title">
+                    <span>⚡ Executive Decision Packs</span>
+                    <span class="dlh-badge">{{ if $resPage }}{{ $t.badgeLive }}{{ else }}{{ $t.badgeSoon }}{{ end }}</span>
+                </h3>
+                <span class="dlh-res-subline">{{ $t.packsSub }}</span>
+            </div>
+            <p class="dlh-res-desc">{{ $t.packsDesc }}</p>
+
+            <div class="dlh-res-grid">
+                {{- range $resCards }}
+                {{- $guide := false }}
+                {{- with .path }}{{ with site.GetPage . }}{{ if and .RelPermalink (not .Draft) (le .Date now) }}{{ $guide = . }}{{ end }}{{ end }}{{ end }}
+                <div class="dlh-res-card">
+                    <div>
+                        <div class="dlh-res-icon" aria-hidden="true">{{ .icon }}</div>
+                        <div class="dlh-res-name">{{ .name }}</div>
+                        <div class="dlh-res-detail">{{ .detail }}</div>
+                    </div>
+                    <div class="dlh-res-bottom">
+                        <div class="dlh-res-meta">{{ .meta }} · <strong style="color: var(--primary);">{{ .price }}</strong></div>
+                        <div class="dlh-res-actions">
+                            {{- if .available }}
+                            <a class="dlh-btn-pack-dl" href="{{ cond $isES "/recursos/" "/resources/" }}#{{ .packId }}" title="{{ if $isES }}Descargar kit en el catálogo de Recursos{{ else }}Download pack in Resources catalogue{{ end }}">
+                                {{ $t.dlPack }} ({{ .price }}) →
+                            </a>
+                            {{- else }}
+                            <span class="dlh-pack-soon-badge">{{ $t.packSoon }}</span>
+                            {{- end }}
+
+                            {{- if $guide }}
+                            <a class="dlh-guide-link" href="{{ $guide.RelPermalink }}" title="{{ $t.readGuide }}: {{ $guide.Title }}">
+                                {{ $t.readGuide }} →
+                            </a>
+                            {{- else }}
+                            <span class="dlh-guide-soon-text">{{ $t.guideSoon }}</span>
+                            {{- end }}
+                        </div>
+                    </div>
+                </div>
+                {{- end }}
+            </div>
+
+            <div class="dlh-res-footer">
+                {{- if $resPage }}
+                <span>{{ $t.resNoteLive }}</span>
+                <a class="dlh-link-more" href="{{ $resPage.RelPermalink }}">{{ $t.resCtaLive }}</a>
+                {{- else }}
+                <span>{{ $t.resNoteSoon }}</span>
+                <a class="dlh-link-more" href="#newsletter-form">{{ $t.resCtaSoon }}</a>
+                {{- end }}
+            </div>
+        </div>
+    </section>
+
+    {{- /* ======================= 02 · CONTENIDOS ======================= */}}
+    <section class="dlh-section" id="blog">
+        <div class="dlh-section-head">
+            <span class="dlh-section-tag">{{ $t.s2tag }}</span>
+            <h2 class="dlh-section-title">{{ $t.s2title }}</h2>
+            <p class="dlh-section-desc">{{ printf $t.s2desc (len $posts) }}</p>
+        </div>
+
+        <div class="dlh-cat-tabs" role="tablist" aria-label="{{ $t.tabsLabel }}">
+            {{- range $i, $c := $cats }}
+            {{- $catPosts := where $posts "Params.category" (index $c $lang) }}
+            <button type="button" class="dlh-cat-tab" role="tab" id="dlh-tab-{{ $c.key }}" data-cat="{{ $c.key }}"
+                aria-controls="dlh-panel-{{ $c.key }}" aria-selected="{{ if eq $i 0 }}true{{ else }}false{{ end }}">
+                <span class="dlh-cat-icon" aria-hidden="true">{{ $c.icon }}</span>
+                <span class="dlh-cat-name">{{ index $c (printf "label_%s" $lang) }}</span>
+                <span class="dlh-cat-count">{{ len $catPosts }} {{ $t.postsWord }}</span>
+            </button>
+            {{- end }}
+        </div>
+
+        {{- range $i, $c := $cats }}
+        {{- $catPosts := where $posts "Params.category" (index $c $lang) }}
+        <div class="dlh-cat-panel" role="tabpanel" id="dlh-panel-{{ $c.key }}" data-cat="{{ $c.key }}" aria-labelledby="dlh-tab-{{ $c.key }}">
+            <h3 class="dlh-cat-panel-title">{{ $c.icon }} {{ index $c (printf "label_%s" $lang) }}</h3>
+            <ul class="dlh-cat-list">
+                {{- range first 6 $catPosts }}
+                <li>
+                    <a class="dlh-cat-row" href="{{ .RelPermalink }}">
+                        <span class="dlh-cat-row-title">{{ .Title }}</span>
+                        <time class="dlh-cat-row-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format ":date_medium" }}</time>
+                    </a>
+                </li>
+                {{- end }}
+            </ul>
+        </div>
+        {{- end }}
+
+        <div class="dlh-more-row">
+            <a class="dlh-link-more" href="{{ "posts/" | relLangURL }}">{{ $t.archive }}</a>
+        </div>
+    </section>
+
+    {{- /* ======================= 03 · APPS & EXPERIMENTOS ======================= */}}
+    <section class="dlh-section" id="apps">
+        <div class="dlh-section-head">
+            <span class="dlh-section-tag">{{ $t.s3tag }}</span>
+            <h2 class="dlh-section-title">{{ $t.s3title }}</h2>
+            <p class="dlh-section-desc">{{ $t.s3desc }}</p>
+        </div>
+
+        <div class="dlh-apps-grid">
+            {{- range $apps }}
+            <a class="dlh-app" href="{{ .url }}"{{ if .arcade }} target="_blank" rel="noopener"{{ end }}>
+                <div class="dlh-app-top">
+                    <span class="dlh-app-icon" aria-hidden="true">{{ .icon }}</span>
+                    <div>
+                        <div class="dlh-app-name">
+                            {{ .name }}
+                            <span class="dlh-app-badge{{ if .arcade }} dlh-arcade{{ end }}">{{ .badge }}</span>
+                        </div>
+                        <p class="dlh-app-desc">{{ .desc }}</p>
+                    </div>
+                </div>
+                <span class="dlh-app-cta">{{ .cta }}</span>
+            </a>
+            {{- end }}
+        </div>
+
+        <div class="dlh-more-row">
+            <a class="dlh-link-more" href="{{ "apps/" | relLangURL }}">{{ $t.appsAll }}</a>
+        </div>
+    </section>
+
+    {{- /* ======================= SOCIAL (bottom) ======================= */}}
+    {{- with site.Params.socialIcons }}
+    {{- $labels := dict "github" "GitHub" "linkedin" "LinkedIn" "twitter" "X / Twitter" }}
+    <section class="dlh-social">
+        <div class="dlh-social-label">{{ $t.social }}</div>
+        <div class="dlh-social-links">
+            {{- range . }}
+            {{- $label := index $labels (lower .name) | default (.name | title) }}
+            <a class="dlh-chip" href="{{ trim .url " " | safeURL }}" target="_blank" rel="noopener noreferrer me" title="{{ $label }}">
+                {{ partial "svg.html" . }}
+                <span>{{ $label }}</span>
+            </a>
+            {{- end }}
+        </div>
+    </section>
+    {{- end }}
+
+    {{- /* Random-post pool for the compass (titles + relative URLs, current language only) */}}
+    {{- $pool := slice }}
+    {{- range $randomPool }}{{ $pool = $pool | append (dict "t" .Title "u" .RelPermalink) }}{{ end }}
+    <script type="application/json" id="dlh-rnd-data">{{ $pool | jsonify | safeJS }}</script>
+</div>
+
+<script>
+    (function () {
+        var root = document.getElementById('dlh-portal');
+        if (!root) { return; }
+        root.classList.add('dlh-js');
+
+        /* ---- Category tabs (progressive enhancement: without JS all lists stay visible) ---- */
+        var tabs = Array.prototype.slice.call(root.querySelectorAll('.dlh-cat-tab'));
+        var panels = Array.prototype.slice.call(root.querySelectorAll('.dlh-cat-panel'));
+        function activate(key) {
+            tabs.forEach(function (tab) {
+                var on = tab.getAttribute('data-cat') === key;
+                tab.setAttribute('aria-selected', on ? 'true' : 'false');
+                tab.tabIndex = on ? 0 : -1;
+            });
+            panels.forEach(function (panel) {
+                panel.hidden = panel.getAttribute('data-cat') !== key;
+            });
+        }
+        tabs.forEach(function (tab, i) {
+            tab.addEventListener('click', function () { activate(tab.getAttribute('data-cat')); });
+            tab.addEventListener('keydown', function (e) {
+                var next = null;
+                if (e.key === 'ArrowRight') { next = tabs[(i + 1) % tabs.length]; }
+                if (e.key === 'ArrowLeft') { next = tabs[(i - 1 + tabs.length) % tabs.length]; }
+                if (next) { e.preventDefault(); next.focus(); activate(next.getAttribute('data-cat')); }
+            });
+        });
+        if (tabs.length) { activate(tabs[0].getAttribute('data-cat')); }
+
+        /* ---- Random post: new suggestion on every visit + shuffle button ---- */
+        var link = document.getElementById('dlh-rnd-link');
+        var btn = document.getElementById('dlh-rnd-btn');
+        var dataEl = document.getElementById('dlh-rnd-data');
+        if (!link || !btn || !dataEl) { return; }
+        var pool = [];
+        try { pool = JSON.parse(dataEl.textContent) || []; } catch (err) { pool = []; }
+        if (pool.length < 2) { return; }
+        function pick() {
+            var current = link.getAttribute('href');
+            var candidate;
+            var guard = 0;
+            do {
+                candidate = pool[Math.floor(Math.random() * pool.length)];
+                guard++;
+            } while (candidate.u === current && guard < 10);
+            link.setAttribute('href', candidate.u);
+            link.setAttribute('title', candidate.t);
+            link.textContent = candidate.t;
+        }
+        btn.hidden = false;
+        btn.addEventListener('click', pick);
+        pick();
+    })();
+</script>

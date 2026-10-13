@@ -2,6 +2,7 @@
 title: "EU AI Act: Lo que Todo Ingeniero Español Necesita Saber (Sin Abogados)"
 date: 2026-07-05
 draft: false
+category: "Artículos Técnicos"
 categories: ["Inteligencia Artificial", "Ingeniería", "Regulación"]
 tags: ["eu ai act", "regulación ia", "aesia", "compliance", "alto riesgo", "startups", "ingeniería", "europa"]
 description: "Guía técnica del Reglamento Europeo de Inteligencia Artificial (EU AI Act) escrita por y para ingenieros. Clasificación de riesgo, obligaciones técnicas, multas, checklist de compliance y conexión con la Ley española de IA y la AESIA."

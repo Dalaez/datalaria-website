@@ -2,6 +2,7 @@
 title: "Cuadro de Mando EVM: Valor Ganado, Curva S y Proyecciones EAC de Grado Consejo de Administración"
 date: 2026-11-05
 draft: false
+category: "Artículos Técnicos"
 categories: ["Control Operativo", "Project Finance", "Plantillas Ejecutivas"]
 tags: ["Valor Ganado", "EVM", "ANSI/EIA-748", "Curva S", "CPI", "SPI", "EAC", "TCPI", "Control Operativo", "Project Management", "PMBOK", "C-Level"]
 description: "Guía metodológica y cuantitativa de Earned Value Management (EVM / ANSI/EIA-748): superación de la trampa contable tradicional, curvas S ejecutivas, varianzas CV/SV, índices CPI/SPI, modelos predictivos de coste final EAC y cálculo del índice de rendimiento para completar TCPI ante el Consejo de Administración."
@@ -307,7 +308,7 @@ Para los directores de operaciones, CFOs, PMOs, consultores y ejecutivos que nec
   icon="📉"
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Guía Metodológica PDF"
   features="Seguimiento automatizado: PV (Valor Planificado), EV (Valor Ganado) y AC (Coste Real)|Índices de rendimiento en tiempo real: CPI (Cost Performance Index) y SPI (Schedule)|Generación de la Curva S ejecutiva con proyección EAC (Estimación a la Finalización)|Slide PPTX C-Level con estado de salud financiero del proyecto"
-  checkout_url="https://datalaria.lemonsqueezy.com/buy/cuadro-mando-evm"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/4acc69c6-e640-43c6-bfc2-1c4d6b037135"
   button_text="Descargar Pack Completo (.ZIP) • 8€"
 >}}
 El cuadro de mando definitivo para la dirección de proyectos. Muestra con precisión quirúrgica si un proyecto terminará a tiempo y dentro del presupuesto, calculando el coste final proyectado (EAC).

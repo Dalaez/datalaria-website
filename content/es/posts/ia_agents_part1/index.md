@@ -2,6 +2,7 @@
 title: "Proyecto Autopilot: Por qué me despedí como Community Manager para construir un Ejército de agentes de IA"
 date: 2025-12-27
 draft: false
+category: "Proyectos Tecnológicos"
 categories: ["Automatización", "Inteligencia Artificial", "DevOps"]
 tags: ["Agentes", "Gemini", "CrewAI", "GitHub Actions", "Python", "Dogfooding"]
 image: "cover.png"

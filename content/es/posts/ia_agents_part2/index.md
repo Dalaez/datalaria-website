@@ -2,6 +2,7 @@
 title: "Autopilot - El Cerebro: Configurando Gemini y CrewAI para leer mi blog"
 date: 2025-12-31
 draft: false
+category: "Proyectos Tecnológicos"
 categories: ["Ingeniería de Software", "IA Generativa", "Python"]
 tags: ["CrewAI", "Gemini API", "Backend", "Clean Code", "Automatización"]
 image: "cover.png"

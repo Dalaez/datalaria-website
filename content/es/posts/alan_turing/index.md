@@ -2,6 +2,7 @@
 title: "Alan Turing: El Genio que Rompió Enigma y Preguntó si las Máquinas Podían Pensar"
 date: 2026-09-20
 draft: false
+category: "Biografías"
 categories: ["casos_exito"]
 tags: ["alan turing", "enigma", "test de turing", "inteligencia artificial", "agi", "agentes ia", "criptografia", "hugging face", "historia"]
 description: "La fascinante vida de Alan Turing: de descifrar la máquina Enigma en Bletchley Park a formular el Test de Turing en 1950. Analizamos sus excentricidades, sus hitos matemáticos y cómo su visión interpela directamente a los agentes de IA, los recientes ciberataques en plataformas como Hugging Face y el futuro de la AGI y la robótica."

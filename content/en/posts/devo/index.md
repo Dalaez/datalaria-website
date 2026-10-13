@@ -2,6 +2,7 @@
 title: "Devo: How a Self-Taught Chemist from Madrid Built the Data Engine That Defends the U.S. Air Force"
 date: 2026-06-07
 draft: false
+category: "Startups"
 categories: ["case-studies", "AI"]
 tags: ["devo", "cybersecurity", "pedro castillo", "siem", "big data", "cloud-native", "startup", "unicorn", "streaming analytics"]
 description: "The story of Devo, the Spanish startup founded by Pedro Castillo that revolutionized security data analytics with zero-latency processing, won a U.S. Air Force contract, and reached a $1.9 billion valuation."

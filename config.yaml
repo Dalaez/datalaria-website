@@ -3,6 +3,10 @@ theme: PaperMod
 canonifyURLs: true
 defaultContentLanguage: es
 defaultContentLanguageInSubdir: true
+timeout: "300s"
+ignoreFiles:
+  - '(?i)desktop\.ini$'
+  - '\.ini$'
 
 # --- PAGINACIÓN ---
 pagination:
@@ -26,11 +30,16 @@ params:
   algoliaSearchKey: "0130e86396a12b79b35c8cf37b692258"  # Replace with your Search API Key
 
   # Define los favicons (buscará las imágenes en la carpeta /static)
-  # CORREGIDO: Eliminada la carpeta /images/ de las rutas
-  favicon: "/datalaria_logo_icon.png"
+  favicon: "/favicon.ico"
   favicon16x16: "/favicon_16x16.png"
   favicon32x32: "/favicon_32x32.png"
   apple_touch_icon: "/images/apple-touch-icon.png"
+
+  # Logo de cabecera en barra superior
+  label:
+    text: "Datalaria"
+    icon: "/images/datalaria_logo_transp.png"
+    iconHeight: 30
 
   # Perfiles de redes sociales
   socialIcons:
@@ -54,30 +63,37 @@ languages:
     title: "Datalaria"
     weight: 1
     params:
+      # Portada portal (Fase 3): lista de "Más leído" por orden de preferencia.
+      # Se usa la primera ruta que exista y esté publicada (actualizar según Google Analytics).
+      homePortal:
+        mostRead:
+          - "/posts/dafo-cuantitativo-matriz-came"
+          - "/posts/ia_agents_part1"
+      label:
+        text: "Datalaria"
+        icon: "/images/datalaria_logo_transp.png"
+        iconHeight: 30
       profileMode:
         enabled: true
         title: "Datalaria"
-        subtitle: "Bienvenido a mi cuaderno de bitácora digital. Aquí exploro y documento mi viaje de aprendizaje en el mundo de los datos, la inteligencia artificial, la tecnología y la industria. Este es mi kilómetro 0."
+        subtitle: "Un portal para el aprendizaje en los datos, la inteligencia artificial, la tecnología y la gestión empresarial."
         imageUrl: "/images/datalaria_logo_transp.png"
         imageWidth: 120
         imageHeight: 120
         buttons:
           - name: "Blog"
             url: "/es/posts/" # <-- CORREGIDO A RUTA ABSOLUTA
+          - name: "Recursos"
+            url: "/es/recursos/"
           - name: "Apps"
             url: "/es/apps/"
-          # - name: "Recursos"
-          #   url: "/es/recursos/"
-          - name: "Juegos"
-            url: "/es/games/"
           - name: "Sobre mí"
             url: "/es/sobre-mi/" # <-- CORREGIDO A RUTA ABSOLUTA
     menu:
       main:
         - { identifier: blog, name: "Blog", url: "/posts/", weight: 10 }
-        - { identifier: apps, name: "Apps", url: "/apps/", weight: 20 }
-        # - { identifier: recursos, name: "Recursos", url: "/recursos/", weight: 22 }
-        - { identifier: games, name: "Juegos", url: "/games/", weight: 25 }
+        - { identifier: recursos, name: "Recursos", url: "/recursos/", weight: 20 }
+        - { identifier: apps, name: "Apps", url: "/apps/", weight: 25 }
         - { identifier: about, name: "Sobre mí", url: "/sobre-mi/", weight: 30 }
         - { identifier: tags, name: "Etiquetas", url: "/tags/", weight: 40 }
         - { identifier: contact, name: "Contacto", url: "/contact/", weight: 50 }
@@ -88,30 +104,37 @@ languages:
     title: "Datalaria"
     weight: 2
     params:
+      # Portal home (Fase 3): "Most read" list in order of preference.
+      # The first path that exists and is published is used (update from Google Analytics).
+      homePortal:
+        mostRead:
+          - "/posts/quantitative-swot-tows-matrix"
+          - "/posts/ai_agents_part1"
+      label:
+        text: "Datalaria"
+        icon: "/images/datalaria_logo_transp.png"
+        iconHeight: 30
       profileMode:
         enabled: true
         title: "Datalaria"
-        subtitle: "Welcome to my digital logbook. Here I explore and document my learning journey into the world of data, artificial intelligence, technology, and industry. This is my kilometer 0."
+        subtitle: "A learning portal on data, artificial intelligence, technology and business management."
         imageUrl: "/images/datalaria_logo_transp.png"
         imageWidth: 120
         imageHeight: 120
         buttons:
           - name: "Blog"
             url: "/en/posts/" # <-- CORREGIDO A RUTA ABSOLUTA
+          - name: "Resources"
+            url: "/en/resources/"
           - name: "Apps"
             url: "/en/apps/"
-          # - name: "Resources"
-          #   url: "/en/resources/"
-          - name: "Games"
-            url: "/en/games/"
           - name: "About"
             url: "/en/about/" # <-- CORREGIDO A RUTA ABSOLUTA
     menu:
       main:
         - { identifier: blog, name: "Blog", url: "/posts/", weight: 10 }
-        - { identifier: apps, name: "Apps", url: "/apps/", weight: 20 }
-        # - { identifier: resources, name: "Resources", url: "/resources/", weight: 22 }
-        - { identifier: games, name: "Games", url: "/games/", weight: 25 }
+        - { identifier: resources, name: "Resources", url: "/resources/", weight: 20 }
+        - { identifier: apps, name: "Apps", url: "/apps/", weight: 25 }
         - { identifier: about, name: "About", url: "/about/", weight: 30 }
         - { identifier: tags, name: "Tags", url: "/tags/", weight: 40 }
         - { identifier: contact, name: "Contact", url: "/contact/", weight: 50 }

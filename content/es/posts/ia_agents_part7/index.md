@@ -2,6 +2,7 @@
 title: "Autopilot - Ctrl: Auditoría de Contenido IA con GitHub Copilot CLI"
 date: 2026-02-01
 draft: false
+category: "Proyectos Tecnológicos"
 categories: ["DevOps", "Python", "AI"]
 tags: ["devchallenge", "githubchallenge", "cli", "githubcopilot", "Copilot CLI", "Content Audit", "Automation"]
 image: "cover.png"

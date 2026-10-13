@@ -2,6 +2,7 @@
 title: "From '24 Days' to Immediate Success: Revolutionizing Onboarding with Artificial Intelligence"
 date: 2026-01-17
 draft: false
+category: "Technical Articles"
 categories: ["Artificial Intelligence", "Human Resources", "Productivity"]
 tags: ["Onboarding", "GenAI", "IDP", "Employee Experience", "Talent Retention", "Document Management"]
 image: cover.png 

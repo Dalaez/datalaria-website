@@ -1,0 +1,757 @@
+/* ==========================================================================
+   DATALARIA · PORTAL HOME (Fase 3)
+   Used ONLY by layouts/partials/index_profile.html (home page).
+   - Every selector is namespaced with "dlh-" → cannot affect posts, apps or
+     any other page of the site.
+   - Colours rely on PaperMod variables (--theme, --entry, --primary,
+     --secondary, --tertiary, --border) → light / dark mode works natively
+     with the header theme toggle.
+   To revert the home page: delete this file + layouts/partials/index_profile.html
+   ========================================================================== */
+
+.dlh-portal {
+    --dlh-accent: #0284c7;
+    --dlh-accent-soft: rgba(2, 132, 199, 0.08);
+    --dlh-radius: 10px;
+    --dlh-radius-sm: 6px;
+    --dlh-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    color: var(--primary);
+}
+
+.dark .dlh-portal {
+    --dlh-accent: #38bdf8;
+    --dlh-accent-soft: rgba(56, 189, 248, 0.12);
+}
+
+/* Slightly wider canvas on the home page only (progressive enhancement) */
+.main:has(> .dlh-portal) {
+    max-width: calc(860px + var(--gap) * 2);
+}
+
+.dlh-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Masthead
+   -------------------------------------------------------------------------- */
+.dlh-masthead {
+    text-align: center;
+    padding: 28px 0 8px;
+}
+
+.dlh-masthead-logo {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin: 0 auto 20px;
+    display: block;
+    transition: transform 0.25s ease;
+}
+
+.dlh-masthead-logo:hover {
+    transform: scale(1.05);
+}
+
+.dlh-tagline {
+    font-size: 1.18rem;
+    font-weight: 500;
+    line-height: 1.55;
+    letter-spacing: -0.01em;
+    color: var(--primary);
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   Discovery compass (compact bar)
+   -------------------------------------------------------------------------- */
+.dlh-compass {
+    margin: 26px 0 10px;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--dlh-radius);
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.dlh-compass-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    color: var(--dlh-accent);
+}
+
+.dlh-compass-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.35fr;
+    gap: 10px;
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.dlh-disco {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    min-width: 0;
+    min-height: 44px;
+    padding: 6px 10px;
+    border: 1px solid var(--border);
+    border-radius: var(--dlh-radius-sm);
+    color: inherit;
+    text-decoration: none;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+a.dlh-disco:hover,
+.dlh-disco:hover {
+    border-color: var(--tertiary);
+    background: var(--theme);
+}
+
+.dlh-disco-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    flex-grow: 1;
+}
+
+.dlh-disco-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+    margin-bottom: 2px;
+}
+
+.dlh-tag-pop { color: #dc2626; }
+.dlh-tag-lat { color: #16a34a; }
+.dlh-tag-rnd { color: #9333ea; }
+
+.dark .dlh-tag-pop { color: #f87171; }
+.dark .dlh-tag-lat { color: #4ade80; }
+.dark .dlh-tag-rnd { color: #c084fc; }
+
+.dlh-disco-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
+    display: block;
+}
+
+.dlh-disco-arrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--dlh-accent);
+    flex-shrink: 0;
+}
+
+.dlh-shuffle {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+    padding: 3px 7px;
+    font-size: 0.7rem;
+    font-family: inherit;
+    color: var(--secondary);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+}
+
+.dlh-shuffle:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+/* --------------------------------------------------------------------------
+   Section blocks (01 / 02 / 03)
+   -------------------------------------------------------------------------- */
+.dlh-section {
+    padding: 40px 0 36px;
+    border-bottom: 1px solid var(--border);
+}
+
+.dlh-section-head {
+    margin-bottom: 22px;
+}
+
+.dlh-section-tag {
+    display: inline-block;
+    margin-bottom: 4px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--dlh-accent);
+}
+
+.dlh-section-title {
+    margin: 0 0 6px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    color: var(--primary);
+}
+
+.dlh-section-desc {
+    margin: 0;
+    max-width: 650px;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--secondary);
+}
+
+.dlh-link-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 600;
+    font-size: 0.86rem;
+    color: var(--dlh-accent);
+    text-decoration: none;
+    transition: gap 0.2s;
+}
+
+.dlh-link-more:hover {
+    gap: 8px;
+}
+
+.dlh-more-row {
+    margin-top: 14px;
+    text-align: right;
+}
+
+/* --------------------------------------------------------------------------
+   01 · Recursos
+   -------------------------------------------------------------------------- */
+.dlh-res-box {
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--dlh-radius);
+    padding: 22px 24px;
+}
+
+.dlh-res-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.dlh-res-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 0;
+    font-size: 1.12rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.dlh-badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--dlh-accent-soft);
+    color: var(--dlh-accent);
+}
+
+.dlh-res-subline {
+    font-size: 0.78rem;
+    font-family: var(--dlh-mono);
+    color: var(--secondary);
+}
+
+.dlh-res-desc {
+    margin: 0 0 16px;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--secondary);
+}
+
+.dlh-res-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.dlh-res-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--dlh-radius-sm);
+    background: var(--theme);
+    color: inherit;
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.dlh-res-card:hover {
+    border-color: var(--dlh-accent);
+    transform: translateY(-2px);
+}
+
+.dlh-res-icon {
+    font-size: 1.25rem;
+    margin-bottom: 6px;
+}
+
+.dlh-res-name {
+    margin-bottom: 4px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--primary);
+    line-height: 1.35;
+}
+
+.dlh-res-detail {
+    flex-grow: 1;
+    margin-bottom: 10px;
+    font-size: 0.76rem;
+    line-height: 1.45;
+    color: var(--secondary);
+}
+
+.dlh-res-bottom {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.dlh-res-meta {
+    font-size: 0.74rem;
+    font-weight: 600;
+    font-family: var(--dlh-mono);
+    color: var(--dlh-accent);
+}
+
+.dlh-res-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.dlh-btn-pack-dl {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 6px 10px;
+    font-size: 0.74rem;
+    font-weight: 600;
+    border-radius: var(--dlh-radius-sm);
+    background: var(--dlh-accent);
+    color: #ffffff !important;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.15s;
+    text-align: center;
+}
+
+.dlh-btn-pack-dl:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+}
+
+.dlh-pack-soon-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border-radius: var(--dlh-radius-sm);
+    background: var(--entry);
+    color: var(--secondary);
+    border: 1px dashed var(--border);
+    text-align: center;
+}
+
+.dlh-guide-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 5px 8px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--dlh-accent);
+    text-decoration: none;
+    border-radius: var(--dlh-radius-sm);
+    background: rgba(37, 99, 235, 0.06);
+    transition: background 0.15s, color 0.15s;
+    text-align: center;
+}
+
+.dark .dlh-guide-link {
+    background: rgba(96, 165, 250, 0.1);
+}
+
+.dlh-guide-link:hover {
+    text-decoration: underline;
+    background: rgba(37, 99, 235, 0.12);
+}
+
+.dlh-guide-soon-text {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 6px;
+    font-size: 0.7rem;
+    color: var(--secondary);
+    opacity: 0.8;
+    font-style: italic;
+    text-align: center;
+}
+
+.dlh-res-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 0.82rem;
+    color: var(--secondary);
+}
+
+/* --------------------------------------------------------------------------
+   02 · Contenidos (4 categorías)
+   -------------------------------------------------------------------------- */
+.dlh-cat-tabs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.dlh-cat-tab {
+    padding: 10px 12px;
+    text-align: left;
+    font-family: inherit;
+    color: var(--primary);
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--dlh-radius-sm);
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dlh-cat-tab:hover {
+    border-color: var(--tertiary);
+}
+
+.dlh-cat-tab[aria-selected="true"] {
+    border-color: var(--dlh-accent);
+    box-shadow: inset 0 0 0 1px var(--dlh-accent);
+}
+
+.dlh-cat-icon {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 1rem;
+}
+
+.dlh-cat-name {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.dlh-cat-count {
+    font-size: 0.7rem;
+    font-family: var(--dlh-mono);
+    color: var(--secondary);
+}
+
+.dlh-cat-panel + .dlh-cat-panel {
+    margin-top: 18px;
+}
+
+/* Without JS every panel is visible (crawlable); with JS only the active one */
+.dlh-js .dlh-cat-panel + .dlh-cat-panel {
+    margin-top: 0;
+}
+
+.dlh-cat-panel-title {
+    margin: 0 0 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.dlh-js .dlh-cat-panel-title {
+    display: none;
+}
+
+.dlh-cat-panel[hidden] {
+    display: none;
+}
+
+.dlh-cat-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--dlh-radius);
+    overflow: hidden;
+}
+
+.dlh-cat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 14px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    color: inherit;
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+}
+
+.dlh-cat-list li:last-child .dlh-cat-row {
+    border-bottom: none;
+}
+
+.dlh-cat-row:hover {
+    background: var(--theme);
+}
+
+.dlh-cat-row-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.45;
+    color: var(--primary);
+}
+
+.dlh-cat-row:hover .dlh-cat-row-title {
+    color: var(--dlh-accent);
+}
+
+.dlh-cat-row-date {
+    flex-shrink: 0;
+    font-size: 0.74rem;
+    font-family: var(--dlh-mono);
+    white-space: nowrap;
+    color: var(--secondary);
+}
+
+/* --------------------------------------------------------------------------
+   03 · Apps & Juegos
+   -------------------------------------------------------------------------- */
+.dlh-apps-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+.dlh-app {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px 18px;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--dlh-radius);
+    color: inherit;
+    text-decoration: none;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.dlh-app:hover {
+    border-color: var(--tertiary);
+    transform: translateY(-2px);
+}
+
+.dlh-app-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.dlh-app-icon {
+    flex-shrink: 0;
+    padding: 6px;
+    font-size: 1.5rem;
+    line-height: 1;
+    border: 1px solid var(--border);
+    border-radius: var(--dlh-radius-sm);
+}
+
+.dlh-app-name {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.dlh-app-badge {
+    padding: 1px 6px;
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--secondary);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+}
+
+.dlh-app-badge.dlh-arcade {
+    color: #ec4899;
+    border-color: rgba(236, 72, 153, 0.3);
+    background: rgba(236, 72, 153, 0.08);
+}
+
+.dlh-app-desc {
+    margin: 3px 0 0;
+    font-size: 0.8rem;
+    line-height: 1.45;
+    color: var(--secondary);
+}
+
+.dlh-app-cta {
+    align-self: flex-end;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--dlh-accent);
+}
+
+/* --------------------------------------------------------------------------
+   Social (bottom of the page, before the newsletter)
+   -------------------------------------------------------------------------- */
+.dlh-social {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 30px 0 6px;
+}
+
+.dlh-social-label {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--secondary);
+}
+
+.dlh-social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.dlh-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--primary);
+    text-decoration: none;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.dlh-chip:hover {
+    border-color: var(--tertiary);
+    transform: translateY(-1px);
+}
+
+.dlh-chip svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+@media (max-width: 980px) {
+    .dlh-res-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 780px) {
+    .dlh-compass {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .dlh-compass-icon {
+        align-self: flex-start;
+    }
+
+    .dlh-compass-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .dlh-cat-tabs {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .dlh-res-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 680px) {
+    .dlh-apps-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dlh-cat-row {
+        flex-direction: column;
+        gap: 2px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dlh-portal * {
+        transition: none !important;
+    }
+}

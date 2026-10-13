@@ -2,6 +2,7 @@
 title: "Safety Stock & Reorder Point (ROP) Calculator: Boardroom-Grade Inventory & Working Capital Optimization"
 date: 2026-11-06
 draft: false
+category: "Technical Articles"
 categories: ["Operational Control", "Supply Chain", "Executive Templates"]
 tags: ["Safety Stock", "Reorder Point", "ROP", "EOQ", "Wilson Lot Sizing", "Working Capital", "Supply Chain Management", "APICS", "ASCM", "Inventory Optimization", "C-Level"]
 description: "Quantitative and methodological guide to inventory optimization (APICS / ASCM / MIT CTL standards): eradicating naive 3-week rules of thumb, multivariate stochastic convolution of demand and lead time, ROP and Wilson EOQ calibration, dynamic Sawtooth cycle simulation, and working capital release for the Board of Directors."
@@ -42,7 +43,7 @@ flowchart TD
     
     C["<b>3. Supplier Lead Time Reliability Audit</b><br/><small>Mean supplier transit lead time in days (L)<br/>Logistical tardiness standard deviation (σL)</small>"]
     
-    D["<b>4. Stochastic Convolution Engine (SS)</b><br/><small>Z-Factor computation based on CSL: Z = Φ⁻¹(CSL)<br/>SS = Z · √(L · σd² + d² · σL²)</small>"]
+    D["<b>4. Stochastic Convolution Engine (SS)</b><br/><small>Z-Factor computation based on CSL: Z = Φ<sup>-1</sup>(CSL)<br/>SS = Z · √(L · σd² + d² · σL²)</small>"]
     
     E["<b>5. Reorder Point Calibration (ROP)</b><br/><small>Lead Time Demand: LTD = d · L<br/>ROP = LTD + SS (Automated ERP trigger threshold)</small>"]
     
@@ -316,7 +317,7 @@ To prevent your analytics team from spending weeks building and validating these
   icon="📦"
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Methodology Guide PDF"
   features="Stochastic models for variable demand and lead time unreliability|Automated Safety Stock (SS) and Reorder Point (ROP) calculation|Dynamic Sawtooth cycle chart and Wilson EOQ batch sizing|PPTX presentation with Working Capital trade-offs and cash optimization"
-  checkout_url="https://datalaria.lemonsqueezy.com/buy/safety-stock-rop"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/c4e54cc9-e400-4f22-ad15-31e56f61416b"
   button_text="Download Complete Pack (.ZIP) • 7€"
 >}}
 Optimize company inventory levels by eliminating costly stockouts and releasing trapped working capital through rigorous mathematical models.

@@ -2,6 +2,7 @@
 title: "Autopilot - Assistant : Building an AI Copilot with Algolia Agent Studio"
 date: 2026-02-07
 draft: false
+category: "Tech Projects"
 categories: ["Automation", "Artificial Intelligence", "DevOps"]
 tags: ["devchallenge", "algoliachallenge", "ai", "agents", "Algolia", "Agent Studio", "RAG", "Chatbot", "Hugo", "Netlify Functions"]
 image: "cover.png"

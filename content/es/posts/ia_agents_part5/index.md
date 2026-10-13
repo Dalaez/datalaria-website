@@ -2,6 +2,7 @@
 title: "Autopilot - Final: De Localhost a la Nube con GitHub Actions y CI/CD"
 date: 2026-01-10
 draft: false
+category: "Proyectos Tecnológicos"
 categories: ["DevOps", "GitHub Actions", "Python"]
 tags: ["CI/CD", "Automation", "Pipeline", "GitOps", "Workflow"]
 image: "cover.png"

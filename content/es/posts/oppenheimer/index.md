@@ -2,6 +2,7 @@
 title: "J. Robert Oppenheimer: De la Simulación de Monte Carlo en Los Álamos al Dilema Ético de la AGI"
 date: 2026-10-03
 draft: false
+category: "Biografías"
 categories: ["casos_exito", "Inteligencia Artificial", "Ingeniería"]
 tags: ["oppenheimer", "los alamos", "monte carlo", "simulacion", "agi", "von neumann", "fisica", "etica", "inteligencia artificial"]
 image: cover.jpg

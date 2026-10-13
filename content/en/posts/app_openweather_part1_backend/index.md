@@ -1,6 +1,7 @@
 ---
 title: "Weather Service Project (Part 1): Building the Data Collector with Python and GitHub Actions or Netlify"
 date: 2025-10-31
+category: "Tech Projects"
 draft: False
 categories: ["Projects", "Tools"]
 tags: ["python", "api", "github actions", "automation", "serverless", "data", "backend", "netlify"]

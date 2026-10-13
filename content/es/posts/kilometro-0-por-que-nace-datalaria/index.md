@@ -3,6 +3,7 @@ title: "Kilómetro 0: Por qué nace Datalaria"
 date: 2025-08-06T15:30:00+02:00
 summary: "¡Bienvenido a Datalaria! Conoce con este primer post la motivación de este proyecto y que puedes esperar del blog"
 draft: false
+category: "Artículos Técnicos"
 tags: ["Meta", "Introducción"]
 ---
 

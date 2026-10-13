@@ -2,6 +2,7 @@
 title: "Autopilot - Extra: Coding a Zero-Maintenance, AI-Native Newsletter System"
 date: 2026-01-24
 draft: false
+category: "Tech Projects"
 categories: ["DevOps", "Python", "Email Marketing"]
 image: "cover.png"
 tags: ["Newsletter", "Brevo", "API", "Automation", "Hugo", "Netlify Functions"]

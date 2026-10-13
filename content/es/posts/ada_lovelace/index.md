@@ -2,6 +2,7 @@
 title: "Ada Lovelace: La Condesa que Programó el Futuro 100 Años Antes de que Existieran los Ordenadores"
 date: 2026-08-24
 draft: false
+category: "Biografías"
 categories: ["casos_exito"]
 tags: ["ada lovelace", "historia de la computación", "algoritmos", "inteligencia artificial", "turing", "babbage", "software"]
 description: "La fascinante historia de Ada Lovelace, la matemática del siglo XIX que escribió el primer algoritmo de la historia y predijo la computación simbólica y la inteligencia artificial un siglo antes de los primeros ordenadores."

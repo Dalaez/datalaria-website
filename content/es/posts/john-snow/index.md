@@ -2,6 +2,7 @@
 title: El auténtico John Snow, precursor de la Geolocalización
 date: 2025-08-26
 draft: false
+category: "Biografías"
 categories: ["casos_exito"]
 tags: ["colera", "john snow", "mapa", "gis", "geolocalización", "Londres"]
 description: "John Snow: el padre de la epidemiología y pionero de la geolocalización"

@@ -2,6 +2,7 @@
 title: "J. Robert Oppenheimer: From the Monte Carlo Simulation in Los Alamos to the Ethical Dilemma of AGI"
 date: 2026-10-03
 draft: false
+category: "Biographies"
 categories: ["case-studies", "Artificial Intelligence", "Engineering"]
 tags: ["oppenheimer", "los alamos", "monte carlo", "simulation", "agi", "von neumann", "physics", "ethics", "artificial intelligence"]
 image: cover.jpg

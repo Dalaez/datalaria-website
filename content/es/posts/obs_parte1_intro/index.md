@@ -2,6 +2,7 @@
 title: "El Ajedrez de la Obsolescencia: Cómo convertir el colapso de la cadena de suministro en tu mayor ventaja competitiva"
 date: 2026-04-11
 draft: false
+category: "Proyectos Tecnológicos"
 categories: ["Ingeniería de la Obsolescencia", "Operations Engineering", "Supply Chain"]
 tags: ["Supply Chain", "Risk Management", "End of Life", "First Principles Thinking", "IEC 62402"]
 author: "Datalaria"

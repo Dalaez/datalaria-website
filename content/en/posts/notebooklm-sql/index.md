@@ -2,6 +2,7 @@
 title: "Learning with AI - NotebookLM: From a Book to a Multimedia Learning Platform"
 date: 2025-08-31
 draft: false
+category: "Technical Articles"
 categories: ["Tools"]
 tags: ["ai", "notebooklm", "google", "learning", "productivity", "sql", "mind map"]
 image: notebooklm_hero.png

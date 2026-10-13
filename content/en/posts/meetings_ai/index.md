@@ -1,6 +1,7 @@
 ---
 title: "Excellent Meetings in the AI Era: The Definitive Decalogue"
 date: 2025-11-21
+category: "Technical Articles"
 draft: False
 categories: ["Productivity", "Tools"]
 tags: ["ai", "meetings", "productivity", "remote work", "prompt engineering", "best practices"]

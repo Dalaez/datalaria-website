@@ -2,6 +2,7 @@
 title: "Nextail: Cómo la IA Prescriptiva de una Startup Española Está Derrotando a Excel en el Retail de Moda"
 date: 2026-03-31
 draft: false
+category: "Startups"
 categories: ["casos_exito", "IA"]
 tags: ["nextail", "ia", "retail", "supply chain", "S&OP", "machine learning", "optimización", "moda", "startup"]
 description: "La historia de Nextail, la startup madrileña fundada por un ex-director de logística de Zara que está reemplazando las hojas de cálculo del retail de moda por un cerebro matemático capaz de tomar miles de millones de decisiones de inventario por temporada."

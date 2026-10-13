@@ -2,6 +2,7 @@
 title: "Aprendiendo con IA - NotebookLM: De un libro a una plataforma de aprendizaje multimedia"
 date: 2025-08-31
 draft: false
+category: "Artículos Técnicos"
 categories: ["Herramientas"]
 tags: ["ia", "notebooklm", "google", "aprendizaje", "productividad", "sql", "mapa mental"]
 image: notebooklm_hero.png

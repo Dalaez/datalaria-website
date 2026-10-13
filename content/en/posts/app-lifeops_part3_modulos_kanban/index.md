@@ -2,6 +2,7 @@
 title: "Project LifeOps (Part 3): Core Interactive Modules: Fitness, Library, Cinema, and Professional Kanban Board"
 date: 2026-09-15
 draft: false
+category: "Tech Projects"
 categories: ["Projects", "Web Development"]
 tags: ["react", "fastapi", "postgresql", "jsonb", "kanban", "sports", "fitness", "reading", "cinema", "productivity", "frontend"]
 image: cover.png

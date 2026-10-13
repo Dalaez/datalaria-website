@@ -2,6 +2,7 @@
 title: "Project LifeOps (Part 4): Executive Word (.docx) Reporting Engine and Multi-Sheet Excel (.xlsx) Export"
 date: 2026-09-18
 draft: false
+category: "Tech Projects"
 categories: ["Projects", "Web Development"]
 tags: ["python", "fastapi", "python-docx", "openpyxl", "word", "excel", "csv", "streaming", "reporting", "backend", "powerbi"]
 image: cover.png

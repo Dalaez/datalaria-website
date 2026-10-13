@@ -2,6 +2,7 @@
 title: "W. Edwards Deming: El Padre de la Calidad Total que Predijo el Futuro de la IA"
 date: 2026-05-31
 draft: false
+category: "Biografías"
 categories: ["casos_exito"]
 tags: ["w. edwards deming", "s&op", "calidad total", "spc", "toyota", "inteligencia artificial"]
 description: "Descubre cómo W. Edwards Deming revolucionó la manufactura con el Control Estadístico de Procesos, salvó a Toyota y estableció los principios que hoy rigen la Inteligencia Artificial y el S&OP moderno."

@@ -1,6 +1,7 @@
 ---
 title: "From Systems Engineering to Formula 1: Using AI (Nanobana) to Illustrate a Complex Roadmap"
 date: 2025-09-20
+category: "Technical Articles"
 draft: False
 categories: ["Tools", "Engineering"]
 tags: ["ai", "nanobanana", "systems engineering", "v-model", "visualization", "formula 1", "communication", "ppt", "pptx", "engineering", "development", "roadmap"]

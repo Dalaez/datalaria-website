@@ -2,6 +2,7 @@
 title: "The Hidden Economics of AI: What It Actually Costs to Run LLMs in Production (With Real Data)"
 date: 2026-06-14
 draft: false
+category: "Technical Articles"
 categories: ["Artificial Intelligence", "Engineering", "Productivity"]
 tags: ["ai costs", "api pricing", "llm", "gemini", "openai", "claude", "production", "tokens", "crewai", "github actions"]
 description: "A real-world analysis of the costs of running large language models (LLMs) in production. API comparison of Gemini, GPT-4o and Claude with actual data from Datalaria's Autopilot and Obsolescence Engineering projects. A breakdown of the hidden cost iceberg."

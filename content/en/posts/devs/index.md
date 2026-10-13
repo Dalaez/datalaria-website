@@ -2,6 +2,7 @@
 title: "DEVS: Quantum Computing, Determinism, and the Multiverse Nightmare"
 date: 2026-09-06
 draft: false
+category: "Technical Articles"
 categories: ["Artificial Intelligence", "Deep Tech", "Science", "TV Series"]
 tags: ["devs", "alex garland", "quantum computing", "determinism", "multiverse", "hugh everett", "laplaces demon", "simulation", "qubits"]
 image: cover.jpg
