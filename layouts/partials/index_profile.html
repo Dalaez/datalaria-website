@@ -292,7 +292,7 @@
                         <div class="dlh-res-meta">{{ .meta }} · <strong style="color: var(--primary);">{{ .price }}</strong></div>
                         <div class="dlh-res-actions">
                             {{- if .available }}
-                            <a class="dlh-btn-pack-dl" href="{{ cond $isES "/recursos/" "/resources/" }}#{{ .packId }}" title="{{ if $isES }}Descargar kit en el catálogo de Recursos{{ else }}Download pack in Resources catalogue{{ end }}">
+                            <a class="dlh-btn-pack-dl" href="{{ cond $isES "/es/recursos/" "/en/resources/" }}#{{ .packId }}" title="{{ if $isES }}Descargar kit en el catálogo de Recursos{{ else }}Download pack in Resources catalogue{{ end }}">
                                 {{ $t.dlPack }} ({{ .price }}) →
                             </a>
                             {{- else }}
@@ -317,8 +317,8 @@
                 <span>{{ $t.resNoteLive }}</span>
                 <a class="dlh-link-more" href="{{ $resPage.RelPermalink }}">{{ $t.resCtaLive }}</a>
                 {{- else }}
-                <span>{{ $t.resNoteSoon }}</span>
-                <a class="dlh-link-more" href="#newsletter-form">{{ $t.resCtaSoon }}</a>
+                <span>{{ $t.resNoteLive }}</span>
+                <a class="dlh-link-more" href="{{ cond $isES "/es/recursos/" "/en/resources/" }}">{{ $t.resCtaLive }}</a>
                 {{- end }}
             </div>
         </div>
