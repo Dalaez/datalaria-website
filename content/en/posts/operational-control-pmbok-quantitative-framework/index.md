@@ -604,7 +604,7 @@ For Chief Operating Officers, PMO Executives, VPs of Operations, Chief Financial
   badge="Complete Operations Collection"
   icon="⚙️"
   items="Quantitative RACI Matrix with Single Accountability & Workload Balancing|ISO 31000 & AIAG-VDA FMEA Risk Matrix with RPN & Pareto Analytics|3-Point Stochastic PERT Estimation with Beta Distribution & Project Buffers|Earned Value Management (EVM) Dashboard with S-Curve & EAC Projections|Dynamic Safety Stock & ROP Calculator with Variable Demand and Lead Time"
-  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/e5b89ce3-f635-4839-9cd3-97a17f56da44"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/ee578b8e-29d6-4361-ba19-4b0b5abfd89a"
   button_text="Download Complete Suite (.ZIP) • 22€"
   highlight="true"
 >}}

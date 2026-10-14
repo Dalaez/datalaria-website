@@ -183,7 +183,7 @@ Para directores generales (CEO), directores financieros (CFO), directores de est
     badge="⭐ Asignación de Capital"
     icon="📊"
     deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Guía Metodológica PDF"
-    checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/8031103e-84d4-40bb-b560-9181f4ec31ea" 
+    checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/ae0c6cd8-bb86-4a56-ad87-9625301afda9" 
     button_text="Descargar Pack Completo (.ZIP) • 6€"
     features="Motor Excel Multifactorial 3x3 (openpyxl sin bloqueo de celdas)|Dashboard de Cartera con Asignación Automática a 9 Cuadrantes|Presentación 16:9 C-Level para Consejo y Comités de Inversión|Guía Metodológica en PDF con Framework de Gobernanza Minto|Descarga directa inmediata (.ZIP con versiones ES y EN)" >}}
 El archivo comprimido incluye los libros oficiales en **Excel (.xlsx)** con protección estándar ECMA-376 (fórmulas bloqueadas y celdas de entrada 100% editables bajo contraseña documentada), las presentaciones ejecutivas en **PowerPoint (.pptx 16:9 widescreen)** con el gráfico cartesiano en alta resolución y el Board Decision Gateway, las **Guías Metodológicas en PDF** de 5 páginas con fundamentación matemática completa, y las instrucciones de importación fluida a Google Sheets.

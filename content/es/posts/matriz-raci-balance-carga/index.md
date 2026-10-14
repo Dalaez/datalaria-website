@@ -233,7 +233,7 @@ Para Directores de Operaciones (COO), Directores de PMO, Project Managers y cons
   icon="📋"
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Guía Metodológica PDF"
   features="Control de gobernanza: verificación automática de Accountable único por tarea|Cálculo dinámico de carga de trabajo por rol y cuello de botella|Slide PPTX con organigrama matricial y mapa de responsabilidades|Guía PDF de resolución de conflictos de asignación|Descarga directa inmediata (.ZIP con versiones ES y EN)"
-  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/b3e9d717-f88a-4b27-ad61-af1eaa92459c"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/97eec34f-011e-410c-a623-714218871b1a"
   button_text="Descargar Pack Completo (.ZIP) • 6€"
 >}}
 El archivo comprimido incluye el libro de cálculo oficial en **Excel (.xlsx)** con fórmulas bloqueadas bajo contraseña proporcionada en las instrucciones y celdas de entrada 100% editables (ECMA-376), la presentación ejecutiva en **PowerPoint (.pptx 16:9 widescreen)** estructurada bajo la Pirámide de Minto con el organigrama matricial y el Board Decision Gateway, la **Guía Metodológica en PDF** de 5 páginas con la demostración matemática formal, y los manuales de importación fluida a Google Sheets.

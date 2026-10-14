@@ -331,7 +331,7 @@ Para los directores de operaciones, PMOs, consultores y ejecutivos que necesitan
   icon="⏱️"
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Guía Metodológica PDF"
   features="Estimación probabilística: Duración Esperada, Varianza y Desviación Estándar|Cálculo de probabilidad de entrega en una fecha compromiso (Distribución Beta)|Slide PPTX con Curva de Densidad de Probabilidad para directivos|Guía metodológica con fórmulas estadísticas del PMBOK"
-  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/3650d76e-bf47-4fde-92ad-fc00189fc321"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/47843201-4db9-4d80-bb88-e59364fb6117"
   button_text="Descargar Pack Completo (.ZIP) • 6€"
 >}}
 Sustituye las estimaciones subjetivas de cronograma por modelos estadísticos de 3 puntos (Optimista, Más Probable y Pesimista) con intervalo de confianza y cálculo exacto de buffers.

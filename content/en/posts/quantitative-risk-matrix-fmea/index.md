@@ -278,7 +278,7 @@ For operations directors, chief risk officers, and CFOs seeking to deploy this f
   icon="⚠️"
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Methodology Guide PDF"
   features="Risk Priority Number (RPN = Severity x Occurrence x Detection) calculation|Dynamic 5x5 heatmap aligned with ISO 31000 and IATF 16949 standards|16:9 PPTX mitigation deck and executive action priority status|Failure mode analysis methodology guide PDF|Instant direct download (.ZIP with bilingual ES & EN editions)"
-  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/1f2082c2-ea7d-4e6c-9b36-151edc23a5fa"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/6eea6aa0-fe9f-440b-8bb9-6f29b303e57a"
   button_text="Download Complete Pack (.ZIP) • 7€"
 >}}
 The global industrial standard for predicting, quantifying, and mitigating failure modes across operations, cloud software, and enterprise supply chains. Featuring unlocked white input cells and formula protection under password provided in the instructions (ECMA-376 OpenXML standard). Includes a 16:9 widescreen C-Level PowerPoint presentation and the 5-page editorial methodology PDF guide.

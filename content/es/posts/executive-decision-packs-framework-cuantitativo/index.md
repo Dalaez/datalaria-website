@@ -201,7 +201,7 @@ Para aquellos directivos, directores de oficina de proyectos (PMO), directores f
   badge="Colección Completa C-Level • Acceso Vitalicio"
   icon="👑"
   items="Suite 01: PESTEL Cuantitativo con Severidad & Volatilidad|Suite 01: 5 Fuerzas de Porter Ponderadas con Gráfico Radar|Suite 01: DAFO Cuantitativo Vectorial & Matriz CAME|Suite 01: Matriz BCG Dinámica con Balance de Cash Flow|Suite 01: Matriz McKinsey / GE 3x3 de Asignación de Capital|Suite 02: Matriz DAR CMMI con Criterios Veto Binarios|Suite 02: Matriz RICE & ICE con Capacidad Neta de Squads|Suite 02: Business Case Financiero con VAN, TIR & Tornado|Suite 03: Matriz RACI con Balance de Capacidad ETE|Suite 03: Matriz AMFE con Número de Prioridad de Riesgo|Suite 03: Estimación PERT 3 Puntos con Distribución Beta|Suite 03: Cuadro de Mando EVM (Curva S) con Proyección EAC|Suite 03: Calculadora de Stock de Seguridad & ROP Estadístico"
-  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/b4ff4e28-d47a-496c-807e-b9672695d34f"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/88a976a2-f0e5-4e8e-a954-516767c7fed5"
   button_text="Descargar Suite Completa (.ZIP) • 39€"
   highlight="true"
 >}}

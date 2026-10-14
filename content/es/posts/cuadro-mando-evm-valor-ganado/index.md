@@ -308,7 +308,7 @@ Para los directores de operaciones, CFOs, PMOs, consultores y ejecutivos que nec
   icon="📉"
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Guía Metodológica PDF"
   features="Seguimiento automatizado: PV (Valor Planificado), EV (Valor Ganado) y AC (Coste Real)|Índices de rendimiento en tiempo real: CPI (Cost Performance Index) y SPI (Schedule)|Generación de la Curva S ejecutiva con proyección EAC (Estimación a la Finalización)|Slide PPTX C-Level con estado de salud financiero del proyecto"
-  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/4acc69c6-e640-43c6-bfc2-1c4d6b037135"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/188950c2-0fd9-4331-919f-237880e2c78b"
   button_text="Descargar Pack Completo (.ZIP) • 8€"
 >}}
 El cuadro de mando definitivo para la dirección de proyectos. Muestra con precisión quirúrgica si un proyecto terminará a tiempo y dentro del presupuesto, calculando el coste final proyectado (EAC).

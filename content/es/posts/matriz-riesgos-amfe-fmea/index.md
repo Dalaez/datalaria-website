@@ -278,7 +278,7 @@ Para los líderes de operaciones, directores de riesgos y CFOs que necesitan imp
   icon="⚠️"
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Guía Metodológica PDF"
   features="Cálculo del Número de Prioridad de Riesgo (NPR = Severidad x Ocurrencia x Detección)|Matriz de calor 5x5 dinámica según estándares ISO 31000 e IATF 16949|Slide PPTX con plan de mitigación y semáforo de contingencias|Guía metodológica de análisis de modos de fallo|Descarga directa inmediata (.ZIP con versiones ES y EN)"
-  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/1f2082c2-ea7d-4e6c-9b36-151edc23a5fa"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/6eea6aa0-fe9f-440b-8bb9-6f29b303e57a"
   button_text="Descargar Pack Completo (.ZIP) • 7€"
 >}}
 El estándar industrial para predecir, cuantificar y mitigar fallos antes de que ocurran en procesos operativos, sistemas de software o cadenas de suministro. El libro analítico en Excel incluye celdas de entrada 100% editables y fórmulas de auditoría protegidas bajo contraseña proporcionada en las instrucciones (estándar OpenXML ECMA-376). Incluye presentación ejecutiva panorámica 16:9 widescreen en PowerPoint y la guía metodológica editorial de 5 páginas en PDF.

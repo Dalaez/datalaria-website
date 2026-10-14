@@ -233,7 +233,7 @@ For Chief Operating Officers (COO), PMO Directors, Project Managers, and strateg
   icon="📋"
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Methodology Guide PDF"
   features="Governance verification: automated check for single Accountable per task|Dynamic workload and FTE calculation per role with bottleneck alerts|16:9 PPTX deck featuring cross-functional matrix org chart and roadmap|PDF methodology guide with operational conflict resolution frameworks|Instant direct download (.ZIP with bilingual ES & EN editions)"
-  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/b3e9d717-f88a-4b27-ad61-af1eaa92459c"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/97eec34f-011e-410c-a623-714218871b1a"
   button_text="Download Complete Pack (.ZIP) • 6€"
 >}}
 The downloadable archive includes the official **Excel (.xlsx)** workbook featuring ECMA-376 protection (formulas locked under password provided in the instructions and 100% editable input cells), the executive **PowerPoint (.pptx 16:9 widescreen)** deck structured under the Minto Pyramid with high-resolution organizational diagrams and Board Decision Gateway, the **5-page PDF Methodology Guide** with complete mathematical derivations, and seamless Google Sheets import guides.

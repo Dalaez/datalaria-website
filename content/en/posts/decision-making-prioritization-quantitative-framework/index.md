@@ -586,7 +586,7 @@ For Chief Executive Officers (CEO), Chief Product Officers (CPO), Chief Technolo
   badge="Complete Decision Suite"
   icon="⚖️"
   items="Quantitative DAR Matrix: Veto Filters & Multi-Criteria Scoring|RICE & ICE Agile Prioritization Matrix with Squad Net Capacity|Full Financial Business Case: DCF, NPV, IRR, WACC, Payback & Tornado Sensitivity"
-  checkout_url="https://datalaria.lemonsqueezy.com/buy/suite-02-toma-decisiones"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/4e2ca8b1-a6f9-43b7-851a-72c44d9bc13d"
   button_text="Download Complete Suite (.ZIP) • 15€"
   highlight="true"
 >}}

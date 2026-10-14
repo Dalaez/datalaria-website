@@ -62,7 +62,7 @@ translationKey: resources
           <div class="mega-price-now">39€</div>
           <div class="mega-price-old">82€ individual</div>
         </div>
-        <a href="https://datalaria.lemonsqueezy.com/checkout/buy/b4ff4e28-d47a-496c-807e-b9672695d34f" class="btn-mega-buy lemonsqueezy-button">
+        <a href="https://datalaria.lemonsqueezy.com/checkout/buy/88a976a2-f0e5-4e8e-a954-516767c7fed5" class="btn-mega-buy lemonsqueezy-button">
           Descargar Mega Bundle • 39€ →
         </a>
       </div>
@@ -81,7 +81,7 @@ translationKey: resources
         </div>
         <div class="suite-mini-action">
           <span class="suite-mini-price">19€</span>
-          <a href="https://datalaria.lemonsqueezy.com/checkout/buy/195836b8-7fe4-4c1b-bd48-f40d9a6ebea1" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
+          <a href="https://datalaria.lemonsqueezy.com/checkout/buy/6afa0df4-fec1-4227-a183-9e5bcc738bdd" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
             Comprar Suite →
           </a>
         </div>
@@ -98,7 +98,7 @@ translationKey: resources
         </div>
         <div class="suite-mini-action">
           <span class="suite-mini-price">15€</span>
-          <a href="https://datalaria.lemonsqueezy.com/checkout/buy/761e6a35-2e48-4638-a806-47e6e222c656" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
+          <a href="https://datalaria.lemonsqueezy.com/checkout/buy/4e2ca8b1-a6f9-43b7-851a-72c44d9bc13d" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
             Comprar Suite →
           </a>
         </div>
@@ -115,7 +115,7 @@ translationKey: resources
         </div>
         <div class="suite-mini-action">
           <span class="suite-mini-price">22€</span>
-          <a href="https://datalaria.lemonsqueezy.com/checkout/buy/e5b89ce3-f635-4839-9cd3-97a17f56da44" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
+          <a href="https://datalaria.lemonsqueezy.com/checkout/buy/ee578b8e-29d6-4361-ba19-4b0b5abfd89a" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
             Comprar Suite →
           </a>
         </div>
@@ -234,7 +234,7 @@ translationKey: resources
 Detalles ℹ️
 </button>
 <a href="/posts/dafo-cuantitativo-matriz-came/" class="btn-kit-info" title="Leer guía metodológica">Guía 📖</a>
-<a href="https://datalaria.lemonsqueezy.com/checkout/buy/957a4ecf-94d1-45f8-9ff7-ea032e8008af" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
+<a href="https://datalaria.lemonsqueezy.com/checkout/buy/b7f8cf34-a569-426d-b41c-5fde52640e61" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
 </div>
@@ -268,7 +268,7 @@ Detalles ℹ️
 Detalles ℹ️
 </button>
 <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
-<a href="https://datalaria.lemonsqueezy.com/checkout/buy/c9ca2aa7-e707-4789-bdb7-1ba191aa0550" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
+<a href="https://datalaria.lemonsqueezy.com/checkout/buy/90206641-21f3-4e06-9163-9bb90b16cbc9" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
 </div>
@@ -302,7 +302,7 @@ Detalles ℹ️
 Detalles ℹ️
 </button>
 <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
-<a href="https://datalaria.lemonsqueezy.com/checkout/buy/d7c65e14-8717-4e37-8750-1065afa66b4b" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
+<a href="https://datalaria.lemonsqueezy.com/checkout/buy/17a0781c-8001-47df-9cdd-25923041e1de" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
 </div>
@@ -336,7 +336,7 @@ Detalles ℹ️
 Detalles ℹ️
 </button>
 <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
-<a href="https://datalaria.lemonsqueezy.com/checkout/buy/4544ff60-2426-46c9-8265-7fa4764990af" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
+<a href="https://datalaria.lemonsqueezy.com/checkout/buy/52cf8aa6-a595-49fe-b470-421140317013" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
 </div>
@@ -370,7 +370,7 @@ Detalles ℹ️
 Detalles ℹ️
 </button>
 <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
-<a href="https://datalaria.lemonsqueezy.com/checkout/buy/8031103e-84d4-40bb-b560-9181f4ec31ea" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
+<a href="https://datalaria.lemonsqueezy.com/checkout/buy/ae0c6cd8-bb86-4a56-ad87-9625301afda9" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
 </div>
@@ -404,7 +404,7 @@ Detalles ℹ️
 Detalles ℹ️
 </button>
 <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
-<a href="https://datalaria.lemonsqueezy.com/checkout/buy/c6eb00f3-1890-4884-be46-3f76c9922737" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
+<a href="https://datalaria.lemonsqueezy.com/checkout/buy/17db9367-dd18-4bb6-8f47-722d738c43c3" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
 </div>
@@ -438,7 +438,7 @@ Detalles ℹ️
 Detalles ℹ️
 </button>
 <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
-<a href="https://datalaria.lemonsqueezy.com/checkout/buy/c6f4ced0-0117-434f-829d-79ecf8263587" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
+<a href="https://datalaria.lemonsqueezy.com/checkout/buy/4d360fcd-60d5-402a-9e58-3833e467fd3a" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
 </div>
@@ -472,7 +472,7 @@ Detalles ℹ️
 Detalles ℹ️
 </button>
 <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
-<a href="https://datalaria.lemonsqueezy.com/checkout/buy/d1f06578-2f17-41e5-b277-83f49fe500a4" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
+<a href="https://datalaria.lemonsqueezy.com/checkout/buy/c2ff153f-2f95-4671-ab14-1b8e02301079" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
 </div>
@@ -506,7 +506,7 @@ Detalles ℹ️
 Detalles ℹ️
 </button>
 <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
-<a href="https://datalaria.lemonsqueezy.com/checkout/buy/b3e9d717-f88a-4b27-ad61-af1eaa92459c" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
+<a href="https://datalaria.lemonsqueezy.com/checkout/buy/97eec34f-011e-410c-a623-714218871b1a" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
 </div>
@@ -540,7 +540,7 @@ Detalles ℹ️
 Detalles ℹ️
 </button>
 <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
-<a href="https://datalaria.lemonsqueezy.com/checkout/buy/1f2082c2-ea7d-4e6c-9b36-151edc23a5fa" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
+<a href="https://datalaria.lemonsqueezy.com/checkout/buy/6eea6aa0-fe9f-440b-8bb9-6f29b303e57a" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
 </div>
@@ -574,7 +574,7 @@ Detalles ℹ️
 Detalles ℹ️
 </button>
 <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
-<a href="https://datalaria.lemonsqueezy.com/checkout/buy/3650d76e-bf47-4fde-92ad-fc00189fc321" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
+<a href="https://datalaria.lemonsqueezy.com/checkout/buy/47843201-4db9-4d80-bb88-e59364fb6117" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
 </div>
@@ -608,7 +608,7 @@ Detalles ℹ️
 Detalles ℹ️
 </button>
 <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
-<a href="https://datalaria.lemonsqueezy.com/checkout/buy/78e1e755-cf85-48fa-8698-4aa3db80cfb1" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
+<a href="https://datalaria.lemonsqueezy.com/checkout/buy/188950c2-0fd9-4331-919f-237880e2c78b" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
 </div>
@@ -642,7 +642,7 @@ Detalles ℹ️
 Detalles ℹ️
 </button>
 <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
-<a href="https://datalaria.lemonsqueezy.com/checkout/buy/c4e54cc9-e400-4f22-ad15-31e56f61416b" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
+<a href="https://datalaria.lemonsqueezy.com/checkout/buy/513e5cad-9f9f-4b53-a435-b511a846d79e" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
 </div>
@@ -707,7 +707,7 @@ Detalles ℹ️
               Detalles ℹ️
             </button>
             <a href="/posts/dafo-cuantitativo-matriz-came/" class="btn-kit-info" title="Leer guía metodológica">Guía 📖</a>
-            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/957a4ecf-94d1-45f8-9ff7-ea032e8008af" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
+            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/b7f8cf34-a569-426d-b41c-5fde52640e61" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
           </div>
         </div>
       </div>
@@ -741,7 +741,7 @@ Detalles ℹ️
               Detalles ℹ️
             </button>
             <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
-            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/c9ca2aa7-e707-4789-bdb7-1ba191aa0550" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
+            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/90206641-21f3-4e06-9163-9bb90b16cbc9" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
           </div>
         </div>
       </div>
@@ -775,7 +775,7 @@ Detalles ℹ️
               Detalles ℹ️
             </button>
             <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
-            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/d7c65e14-8717-4e37-8750-1065afa66b4b" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
+            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/17a0781c-8001-47df-9cdd-25923041e1de" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
           </div>
         </div>
       </div>
@@ -809,7 +809,7 @@ Detalles ℹ️
               Detalles ℹ️
             </button>
             <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
-            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/4544ff60-2426-46c9-8265-7fa4764990af" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
+            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/52cf8aa6-a595-49fe-b470-421140317013" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
           </div>
         </div>
       </div>
@@ -843,7 +843,7 @@ Detalles ℹ️
               Detalles ℹ️
             </button>
             <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
-            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/8031103e-84d4-40bb-b560-9181f4ec31ea" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
+            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/ae0c6cd8-bb86-4a56-ad87-9625301afda9" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
           </div>
         </div>
       </div>
@@ -877,7 +877,7 @@ Detalles ℹ️
               Detalles ℹ️
             </button>
             <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
-            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/c6eb00f3-1890-4884-be46-3f76c9922737" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
+            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/17db9367-dd18-4bb6-8f47-722d738c43c3" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
           </div>
         </div>
       </div>
@@ -911,7 +911,7 @@ Detalles ℹ️
               Detalles ℹ️
             </button>
             <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
-            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/c6f4ced0-0117-434f-829d-79ecf8263587" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
+            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/4d360fcd-60d5-402a-9e58-3833e467fd3a" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
           </div>
         </div>
       </div>
@@ -945,7 +945,7 @@ Detalles ℹ️
               Detalles ℹ️
             </button>
             <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
-            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/d1f06578-2f17-41e5-b277-83f49fe500a4" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
+            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/c2ff153f-2f95-4671-ab14-1b8e02301079" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
           </div>
         </div>
       </div>
@@ -979,7 +979,7 @@ Detalles ℹ️
               Detalles ℹ️
             </button>
             <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
-            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/b3e9d717-f88a-4b27-ad61-af1eaa92459c" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
+            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/97eec34f-011e-410c-a623-714218871b1a" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
           </div>
         </div>
       </div>
@@ -1013,7 +1013,7 @@ Detalles ℹ️
               Detalles ℹ️
             </button>
             <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
-            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/1f2082c2-ea7d-4e6c-9b36-151edc23a5fa" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
+            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/6eea6aa0-fe9f-440b-8bb9-6f29b303e57a" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
           </div>
         </div>
       </div>
@@ -1047,7 +1047,7 @@ Detalles ℹ️
               Detalles ℹ️
             </button>
             <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
-            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/3650d76e-bf47-4fde-92ad-fc00189fc321" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
+            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/47843201-4db9-4d80-bb88-e59364fb6117" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
           </div>
         </div>
       </div>
@@ -1081,7 +1081,7 @@ Detalles ℹ️
               Detalles ℹ️
             </button>
             <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
-            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/78e1e755-cf85-48fa-8698-4aa3db80cfb1" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
+            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/188950c2-0fd9-4331-919f-237880e2c78b" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
           </div>
         </div>
       </div>
@@ -1115,7 +1115,7 @@ Detalles ℹ️
               Detalles ℹ️
             </button>
             <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
-            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/c4e54cc9-e400-4f22-ad15-31e56f61416b" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
+            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/513e5cad-9f9f-4b53-a435-b511a846d79e" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
           </div>
         </div>
       </div>
@@ -1260,7 +1260,7 @@ Detalles ℹ️
       price: "19€",
       origPrice: "28€",
       available: true,
-      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/195836b8-7fe4-4c1b-bd48-f40d9a6ebea1"
+      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/6afa0df4-fec1-4227-a183-9e5bcc738bdd"
     },
     decisiones: {
       title: "Pack Suite 2: Toma de Decisiones & Priorización",
@@ -1270,7 +1270,7 @@ Detalles ℹ️
       price: "15€",
       origPrice: "20€",
       available: true,
-      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/761e6a35-2e48-4638-a806-47e6e222c656"
+      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/4e2ca8b1-a6f9-43b7-851a-72c44d9bc13d"
     },
     operaciones: {
       title: "Pack Suite 3: Control Operativo & PMBOK",
@@ -1280,7 +1280,7 @@ Detalles ℹ️
       price: "22€",
       origPrice: "34€",
       available: true,
-      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/e5b89ce3-f635-4839-9cd3-97a17f56da44"
+      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/ee578b8e-29d6-4361-ba19-4b0b5abfd89a"
     },
     software: {
       title: "Suite de Ingeniería: Software, IA & SDD",
@@ -1314,7 +1314,7 @@ Detalles ℹ️
         "Slide PowerPoint 16:9 con Action Titles y caja de decisión requerida",
         "Guía metodológica PDF con fórmulas y caso práctico real"
       ],
-      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/957a4ecf-94d1-45f8-9ff7-ea032e8008af",
+      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/b7f8cf34-a569-426d-b41c-5fde52640e61",
       guideUrl: "/posts/dafo-cuantitativo-matriz-came/"
     },
 
@@ -1337,7 +1337,7 @@ Detalles ℹ️
         "Slide PPTX con contenedor ajustado para exportación con un clic",
         "Guía metodológica sobre barreras de entrada y rentabilidad del sector"
       ],
-      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/c9ca2aa7-e707-4789-bdb7-1ba191aa0550",
+      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/90206641-21f3-4e06-9163-9bb90b16cbc9",
       guideUrl: null
     },
 
@@ -1360,7 +1360,7 @@ Detalles ℹ️
         "Slide PPTX con matriz de incertidumbre para comités directivos",
         "Guía PDF de anticipación estratégica y escenarios"
       ],
-      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/d7c65e14-8717-4e37-8750-1065afa66b4b",
+      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/17a0781c-8001-47df-9cdd-25923041e1de",
       guideUrl: null
     },
 
@@ -1383,7 +1383,7 @@ Detalles ℹ️
         "Slide PPTX con directrices de asignación y desinversión de capital",
         "Guía PDF de gestión de ciclo de vida de producto y flujo de caja"
       ],
-      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/4544ff60-2426-46c9-8265-7fa4764990af",
+      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/52cf8aa6-a595-49fe-b470-421140317013",
       guideUrl: null
     },
 
@@ -1406,7 +1406,7 @@ Detalles ℹ️
         "Slide ejecutiva C-Level con hoja de ruta de inversiones",
         "Guía metodológica de calibración basada en consultoría Tier-1"
       ],
-      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/8031103e-84d4-40bb-b560-9181f4ec31ea",
+      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/ae0c6cd8-bb86-4a56-ad87-9625301afda9",
       guideUrl: null
     },
 
@@ -1429,7 +1429,7 @@ Detalles ℹ️
         "Slide PPTX con tabla ejecutiva de trade-offs y recomendación final",
         "Guía metodológica de gobernanza de decisiones corporativas"
       ],
-      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/c6eb00f3-1890-4884-be46-3f76c9922737",
+      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/17db9367-dd18-4bb6-8f47-722d738c43c3",
       guideUrl: null
     },
 
@@ -1452,7 +1452,7 @@ Detalles ℹ️
         "Slide PPTX con matriz de cuadrantes Esfuerzo vs. Impacto para Roadmap",
         "Guía PDF de normalización de confianza y calibración de esfuerzo"
       ],
-      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/c6f4ced0-0117-434f-829d-79ecf8263587",
+      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/4d360fcd-60d5-402a-9e58-3833e467fd3a",
       guideUrl: null
     },
 
@@ -1475,7 +1475,7 @@ Detalles ℹ️
         "Análisis de sensibilidad y Gráfico Tornado para variables de riesgo",
         "Slide PPTX C-Level con recomendación de desembolso para el CFO"
       ],
-      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/d1f06578-2f17-41e5-b277-83f49fe500a4",
+      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/c2ff153f-2f95-4671-ab14-1b8e02301079",
       guideUrl: null
     },
 
@@ -1498,7 +1498,7 @@ Detalles ℹ️
         "Slide PPTX con organigrama matricial y mapa de responsabilidades",
         "Guía PDF de resolución de conflictos de asignación y gobernanza"
       ],
-      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/b3e9d717-f88a-4b27-ad61-af1eaa92459c",
+      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/97eec34f-011e-410c-a623-714218871b1a",
       guideUrl: null
     },
 
@@ -1521,7 +1521,7 @@ Detalles ℹ️
         "Slide PPTX con plan de mitigación y semáforo de contingencias",
         "Guía metodológica de análisis de modos de fallo y efectos"
       ],
-      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/1f2082c2-ea7d-4e6c-9b36-151edc23a5fa",
+      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/6eea6aa0-fe9f-440b-8bb9-6f29b303e57a",
       guideUrl: null
     },
 
@@ -1544,7 +1544,7 @@ Detalles ℹ️
         "Slide PPTX con Curva de Densidad de Probabilidad para directivos",
         "Guía metodológica con fórmulas estadísticas del estándar PMBOK"
       ],
-      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/3650d76e-bf47-4fde-92ad-fc00189fc321",
+      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/47843201-4db9-4d80-bb88-e59364fb6117",
       guideUrl: null
     },
 
@@ -1567,7 +1567,7 @@ Detalles ℹ️
         "Slide PPTX C-Level con estado de salud financiero del proyecto",
         "Guía metodológica oficial para gestión del valor ganado"
       ],
-      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/78e1e755-cf85-48fa-8698-4aa3db80cfb1",
+      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/188950c2-0fd9-4331-919f-237880e2c78b",
       guideUrl: null
     },
 
@@ -1590,7 +1590,7 @@ Detalles ℹ️
         "Slide PPTX con modelo gráfico de dientes de sierra para comités de compras",
         "Guía PDF de optimización de capital circulante en supply chain"
       ],
-      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/c4e54cc9-e400-4f22-ad15-31e56f61416b",
+      checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/513e5cad-9f9f-4b53-a435-b511a846d79e",
       guideUrl: null
     },
 

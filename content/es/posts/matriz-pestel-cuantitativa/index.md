@@ -256,7 +256,7 @@ Para los directores de estrategia, CFOs, directores de riesgos (CRO) y consultor
   icon="🌐"
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Guía Metodológica PDF"
   features="Evaluación de 6 factores macro con índice de impacto compuesto|Mapa térmico de riesgos regulatorios y macroeconómicos|Deck PPTX con matriz de incertidumbre para directores|Guía PDF de anticipación estratégica"
-  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/d7c65e14-8717-4e37-8750-1065afa66b4b"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/17a0781c-8001-47df-9cdd-25923041e1de"
   button_text="Descargar Pack Completo (.ZIP) • 5€"
 >}}
 El archivo comprimido incluye la plantilla oficial en **Excel (.xlsx)** con fórmulas matriciales protegidas bajo contraseña proporcionada en las instrucciones y celdas de input desbloqueadas, la presentación en **PowerPoint (.pptx 16:9 Widescreen)** bajo la Pirámide de Minto con gráfico Radar hexagonal y Board Decision Gateway, la **Guía Metodológica en PDF** de 5 páginas y las instrucciones de importación directa a Google Sheets.

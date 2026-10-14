@@ -413,7 +413,7 @@ Para los Directores de Estrategia, Directores Financieros (CFO), Consejeros Dele
   badge="Colección Completa C-Level"
   icon="🏛️"
   items="Matriz PESTEL Cuantitativa con Severidad & Volatilidad|5 Fuerzas de Porter Ponderadas con Gráfico Radar|DAFO Cuantitativo con Vector Cartesiano & CAME|Matriz BCG Dinámica con Balance de Cash Flow|Matriz McKinsey / GE 3x3 de Asignación de Capital"
-  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/195836b8-7fe4-4c1b-bd48-f40d9a6ebea1"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/6afa0df4-fec1-4227-a183-9e5bcc738bdd"
   button_text="Descargar Suite Completa (.ZIP) • 19€"
   highlight="true"
 >}}

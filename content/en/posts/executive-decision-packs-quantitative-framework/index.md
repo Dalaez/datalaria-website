@@ -205,7 +205,7 @@ For corporate directors, PMO heads, CFOs, engineering managers, and management c
   badge="Complete C-Level Suite • Lifetime Access"
   icon="👑"
   items="Suite 01: Quantitative PESTEL with Severity & Volatility|Suite 01: Weighted Porter's 5 Forces with Radar Moat Analysis|Suite 01: Vectorial SWOT-TOWS with Cartesian Plane Positioning|Suite 01: Dynamic BCG Matrix with Free Cash Flow Balancing|Suite 01: McKinsey / GE 3x3 Multicriteria CAPEX Allocation|Suite 02: CMMI DAR Matrix with Binary Veto Gateways|Suite 02: RICE & ICE Matrix with Net Squad Engineering Capacity|Suite 02: Master Financial Business Case with NPV, IRR & Tornado|Suite 03: RACI Workload Matrix with FTE Capacity Balancing|Suite 03: FMEA Risk Matrix with Risk Priority Numbers|Suite 03: Stochastic 3-Point PERT with Beta Probability Curves|Suite 03: EVM S-Curve Dashboard with Forecasted EAC Overrun|Suite 03: Safety Stock & Reorder Point (ROP) Statistical Engine"
-  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/b4ff4e28-d47a-496c-807e-b9672695d34f"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/88a976a2-f0e5-4e8e-a954-516767c7fed5"
   button_text="Download Full Suite (.ZIP) • 39€"
   highlight="true"
 >}}

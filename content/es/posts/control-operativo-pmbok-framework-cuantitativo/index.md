@@ -604,7 +604,7 @@ Para directores de operaciones (COO), directores de PMO corporativa, directores 
   badge="Colección Completa de Operaciones"
   icon="⚙️"
   items="Matriz RACI con Verificación de Accountable Único & Balance de Carga|Matriz de Riesgos & AMFE (ISO 31000 / AIAG-VDA) con NPR & Pareto|Estimación PERT de 3 Puntos Estocástica con Distribución Beta & Buffers|Cuadro de Mando EVM / Valor Ganado con Curva S & Proyecciones EAC|Calculadora de Stock de Seguridad & ROP con Demanda y Plazo Variable"
-  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/e5b89ce3-f635-4839-9cd3-97a17f56da44"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/ee578b8e-29d6-4361-ba19-4b0b5abfd89a"
   button_text="Descargar Suite Completa (.ZIP) • 22€"
   highlight="true"
 >}}

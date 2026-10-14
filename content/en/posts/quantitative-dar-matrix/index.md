@@ -225,7 +225,7 @@ For Chief Executive Officers (CEO), Chief Financial Officers (CFO), Chief Inform
   icon="⚖️"
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Methodology Guide PDF"
   features="Weighted scoring algorithm with non-negotiable Veto Gatekeepers|Quantitative comparison of up to 5 alternatives or enterprise vendors|16:9 widescreen boardroom presentation with trade-offs and award gateway|Executive methodology guide with decision audit trail protocol|Instant direct download (.ZIP containing full English & Spanish versions)"
-  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/c6eb00f3-1890-4884-be46-3f76c9922737"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/17db9367-dd18-4bb6-8f47-722d738c43c3"
   button_text="Download Full Pack (.ZIP) • 6€"
 >}}
 The archive contains the official **Excel workbooks (.xlsx)** with calculation formulas protected under password provided in the instructions and 100% unlocked input cells, executive **PowerPoint decks (.pptx 16:9 widescreen)** structured under the Minto Pyramid Principle with high-resolution trade-off analytics and Board Decision Gateway, 5-page **Methodology Guides in PDF** with formal mathematical proofs, and direct Google Sheets import instructions.

@@ -291,7 +291,7 @@ Para directores financieros (CFO), directores generales (CEO), analistas de M&A 
   icon="📈"
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Guía Metodológica PDF"
   features="Modelo financiero de flujo de caja descontado a 3 y 5 años|Cálculo automático de VAN (NPV), TIR (IRR), MIRR y Payback descontado|WACC por CAPM, 3 escenarios y VAN esperado ponderado|Análisis de sensibilidad y Gráfico Tornado para análisis de riesgo|Slide PPTX C-Level estructurada según las exigencias del CFO|Descarga directa inmediata (.ZIP con versiones ES y EN)"
-  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/d1f06578-2f17-41e5-b277-83f49fe500a4"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/c2ff153f-2f95-4671-ab14-1b8e02301079"
   button_text="Descargar Pack Completo (.ZIP) • 8€"
 >}}
 El paquete descargable incluye los libros de cálculo en **Excel (.xlsx)** estructurados en 6 pestañas interconectadas con protección estándar ECMA-376 (fórmulas protegidas bajo contraseña proporcionada en las instrucciones y celdas de entrada 100% editables en blanco), las presentaciones ejecutivas en **PowerPoint (.pptx 16:9 widescreen)** bajo la Pirámide de Minto con Gráfico Tornado nativo editable y Board Decision Gateway con 4 firmas de C-Level, las **Guías Metodológicas Oficiales en PDF** de 5 páginas con la demostración matemática formal y FAQ ante el Consejo, e instrucciones de importación fluida a Google Sheets.

@@ -240,7 +240,7 @@ For Chief Executive Officers (CEOs), Chief Financial Officers (CFOs), Heads of C
   icon="⭐"
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Methodology Guide PDF"
   features="Automated Relative Market Share and Growth Rate calculation engine|Dynamic Cartesian bubble chart scaled by business unit revenue|16:9 boardroom PPTX deck categorizing Stars, Cows, Questions, and Dogs|5-page executive PDF guide on capital allocation and ROIC optimization"
-  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/4544ff60-2426-46c9-8265-7fa4764990af"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/52cf8aa6-a595-49fe-b470-421140317013"
   button_text="Download Full Pack (.ZIP) • 6€"
 >}}
 The compressed archive contains the official **Excel workbook (.xlsx)** with calculation formulas protected under password provided in the instructions and 100% unlocked input cells, the executive **PowerPoint presentation (.pptx 16:9 Widescreen)** built under the Minto Pyramid Principle with high-resolution bubble charts and Board Decision Gateway, the **Methodology Guide in PDF** (5 pages), and direct Google Sheets import instructions.

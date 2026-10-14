@@ -232,7 +232,7 @@ For corporate leaders, strategy consultants, M&A directors, and CFOs seeking to 
   badge="★ Tier-1 Consulting Standard"
   icon="📊"
   features="Excel (.xlsx) Model with 4 interconnected tabs, protected formulas, and dynamic pentagonal Radar Chart|Cartesian Attractiveness vs. Moat Matrix with automated strategic quadrant diagnosis|16:9 Widescreen Boardroom Presentation (.pptx) with Minto Pyramid Action Titles and Decision Gateway|5-Page Official Methodology Guide (PDF) with mathematical derivations, industrial case study, and Board FAQ|100% Native compatibility guaranteed with Microsoft Excel and Google Sheets without macros"
-  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/c9ca2aa7-e707-4789-bdb7-1ba191aa0550"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/90206641-21f3-4e06-9163-9bb90b16cbc9"
   button_text="Download Complete Pack (.ZIP) • 6€"
 >}}
 The downloadable compressed archive includes the **Excel workbook (.xlsx)** with formulas protected under password provided in the instructions and unlocked user input cells, the **PowerPoint deck (.pptx 16:9)** engineered for boardroom projection, the **5-page Methodology Guide (PDF)**, and step-by-step Google Sheets import instructions.

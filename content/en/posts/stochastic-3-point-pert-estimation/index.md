@@ -331,7 +331,7 @@ For operations directors, PMO leaders, management consultants, and executives wh
   icon="⏱️"
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Methodology Guide PDF"
   features="Probabilistic scheduling: Expected Duration, Variance, and Standard Deviation|Commitment date probability engine (Beta Distribution & CLT)|16:9 C-Level Deck with Probability Density Bell Curve|Methodology guide with canonical PMBOK statistical formulas"
-  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/3650d76e-bf47-4fde-92ad-fc00189fc321"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/47843201-4db9-4d80-bb88-e59364fb6117"
   button_text="Download Complete Pack (.ZIP) • 6€"
 >}}
 Replace subjective single-point schedule estimates with mathematical 3-point models (Optimistic, Most Likely, and Pessimistic) with confidence intervals and exact buffer sizing.

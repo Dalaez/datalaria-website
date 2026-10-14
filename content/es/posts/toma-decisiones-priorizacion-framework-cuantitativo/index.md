@@ -587,7 +587,7 @@ Para directores generales (CEO), directores de producto (CPO), directores de tec
   badge="Colección Completa de Decisión"
   icon="⚖️"
   items="Matriz DAR Cuantitativa: Filtros Veto & Ponderación Multicriterio|Matriz RICE & ICE de Priorización Ágil con Capacidad de Squads|Business Case Financiero Completo: VAN, TIR, WACC, Payback & Tornado"
-  checkout_url="https://datalaria.lemonsqueezy.com/buy/suite-02-toma-decisiones"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/4e2ca8b1-a6f9-43b7-851a-72c44d9bc13d"
   button_text="Descargar Suite Completa (.ZIP) • 15€"
   highlight="true"
 >}}

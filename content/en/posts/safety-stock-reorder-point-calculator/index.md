@@ -317,7 +317,7 @@ To prevent your analytics team from spending weeks building and validating these
   icon="📦"
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Methodology Guide PDF"
   features="Stochastic models for variable demand and lead time unreliability|Automated Safety Stock (SS) and Reorder Point (ROP) calculation|Dynamic Sawtooth cycle chart and Wilson EOQ batch sizing|PPTX presentation with Working Capital trade-offs and cash optimization"
-  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/c4e54cc9-e400-4f22-ad15-31e56f61416b"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/513e5cad-9f9f-4b53-a435-b511a846d79e"
   button_text="Download Complete Pack (.ZIP) • 7€"
 >}}
 Optimize company inventory levels by eliminating costly stockouts and releasing trapped working capital through rigorous mathematical models.

@@ -317,7 +317,7 @@ Para que tu organización no tenga que invertir semanas en programar y auditar e
   icon="📦"
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Guía Metodológica PDF"
   features="Modelos estocásticos de demanda y Lead Time variable|Cálculo automático de Stock de Seguridad (SS) y Punto de Pedido (ROP)|Gráfico dinámico de Diente de Sierra y dimensionamiento EOQ|Slide PPTX con análisis de Working Capital y optimización de caja"
-  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/c4e54cc9-e400-4f22-ad15-31e56f61416b"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/513e5cad-9f9f-4b53-a435-b511a846d79e"
   button_text="Descargar Pack Completo (.ZIP) • 7€"
 >}}
 Optimiza los niveles de inventario de tu empresa eliminando las roturas de stock y liberando capital de trabajo inmovilizado mediante modelos matemáticos rigurosos.

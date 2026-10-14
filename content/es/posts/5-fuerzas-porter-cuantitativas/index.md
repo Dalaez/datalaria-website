@@ -232,7 +232,7 @@ Para los líderes corporativos, consultores estratégicos, directores de M&A y r
   badge="★ Estándar Consultoría Tier-1"
   icon="📊"
   features="Motor Excel (.xlsx) con 4 pestañas interconectadas, fórmulas matriciales protegidas y gráfico Radar pentagonal dinámico|Matriz cartesiana Atractivo vs. Moat con diagnóstico de postura estratégica y semáforo financiero|Presentación PowerPoint (.pptx 16:9 Widescreen) editable con Pirámide de Minto, Action Titles y Board Decision Gateway|Guía Metodológica Oficial en PDF (5 páginas) con demostraciones matemáticas, caso industrial resuelto y FAQ de Consejo|Compatibilidad garantizada al 100% con Microsoft Excel y Google Sheets sin macros complejas"
-  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/c9ca2aa7-e707-4789-bdb7-1ba191aa0550"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/90206641-21f3-4e06-9163-9bb90b16cbc9"
   button_text="Descargar Pack Completo (.ZIP) • 6€"
 >}}
 El archivo comprimido incluye la plantilla en **Excel (.xlsx)** con fórmulas protegidas bajo contraseña proporcionada en las instrucciones y celdas de input editables, la presentación en **PowerPoint (.pptx 16:9)** lista para proyectar ante Consejos de Administración, la **Guía Metodológica en PDF** de 5 páginas y las instrucciones de importación directa a Google Drive.

@@ -183,7 +183,7 @@ For Chief Executive Officers (CEOs), Chief Financial Officers (CFOs), Chief Stra
     badge="⭐ Capital Allocation"
     icon="📊"
     deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Methodology Guide PDF"
-    checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/8031103e-84d4-40bb-b560-9181f4ec31ea" 
+    checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/ae0c6cd8-bb86-4a56-ad87-9625301afda9" 
     button_text="Download Full Pack (.ZIP) • 6€"
     features="Multifactor 3x3 Excel Engine (ECMA-376 openpyxl unlocked input cells)|Portfolio Dashboard with Automated 9-Box Quadrant Assignment|16:9 C-Level Boardroom Presentation with Minto Decision Gateway|Comprehensive PDF Methodology Guide with Board Defense Protocol|Instant Direct Download (.ZIP with full ES and EN suites)" >}}
 The compressed archive includes the official **Excel workbooks (.xlsx)** with ECMA-376 protection (formulas locked, user input cells 100% editable under documented master password), the executive **PowerPoint presentations (.pptx 16:9 widescreen)** featuring high-resolution Cartesian bubble charts and the Board Decision Gateway, the **5-page PDF Methodology Guides**, and seamless Google Sheets import instructions.

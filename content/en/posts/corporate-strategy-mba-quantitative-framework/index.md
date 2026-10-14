@@ -413,7 +413,7 @@ For Chief Strategy Officers, Chief Financial Officers, CEOs, and senior manageme
   badge="Complete C-Level Collection"
   icon="🏛️"
   items="Quantitative PESTEL Matrix with Severity & Volatility|Weighted Porter's 5 Forces with Radar Profile|Quantitative SWOT with Cartesian Vector & TOWS|Dynamic BCG Matrix with Cash Flow Balancing|McKinsey / GE 3x3 Capital Allocation Matrix"
-  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/195836b8-7fe4-4c1b-bd48-f40d9a6ebea1"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/6afa0df4-fec1-4227-a183-9e5bcc738bdd"
   button_text="Download Full Suite (.ZIP) • 19€"
   highlight="true"
 >}}
