@@ -1,6 +1,19 @@
 ---
-title: "Executive Decision Packs"
-description: "Quantitative Excel models, 16:9 C-Level PowerPoint presentations and methodological guides to defend strategic decisions in executive committees."
+title: "Executive Decision Packs, Quantitative Excel Models & Resources | Datalaria"
+description: "Protected quantitative Excel models, 16:9 C-Level PowerPoint slide decks and formal specifications for board committees and AI-assisted software engineering."
+summary: "Complete catalog of Executive Decision Packs: SWOT, Porter, PESTEL, BCG, McKinsey, RACI, FMEA, EVM, PERT and Spec-Driven Development. Instant download with B2B invoice."
+keywords:
+  - "quantitative excel models"
+  - "board committee templates"
+  - "executive decision packs"
+  - "quantitative swot matrix excel"
+  - "porter 5 forces model excel"
+  - "raci workload matrix excel"
+  - "fmea risk management excel"
+  - "earned value management evm excel"
+  - "business case npv irr excel"
+  - "spec-driven development sdd"
+  - "c-level powerpoint presentations"
 draft: false
 hidemeta: true
 translationKey: resources
@@ -231,7 +244,7 @@ translationKey: resources
 <button type="button" class="btn-kit-info" onclick="openModal('pack-dafo')">
 Details ℹ️
 </button>
-<a href="/en/posts/quantitative-swot-tows-matrix/" class="btn-kit-info" title="Read methodological guide">Guide 📖</a>
+<a href="/en/posts/quantitative-swot-tows-matrix/" class="btn-kit-info" title="Read technical article">Technical Article 📖</a>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/b7f8cf34-a569-426d-b41c-5fde52640e61" class="btn-kit-buy lemonsqueezy-button">Download →</a>
 </div>
 </div>
@@ -704,7 +717,7 @@ Details ℹ️
             <button type="button" class="btn-kit-info" onclick="openModal('pack-dafo')">
               Details ℹ️
             </button>
-            <a href="/en/posts/quantitative-swot-tows-matrix/" class="btn-kit-info" title="Read methodological guide">Guide 📖</a>
+            <a href="/en/posts/quantitative-swot-tows-matrix/" class="btn-kit-info" title="Read technical article">Technical Article 📖</a>
             <a href="https://datalaria.lemonsqueezy.com/checkout/buy/b7f8cf34-a569-426d-b41c-5fde52640e61" class="btn-kit-buy lemonsqueezy-button">Download →</a>
           </div>
         </div>

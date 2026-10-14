@@ -1,0 +1,273 @@
+{{- /* Shortcode: kit-promo.html - Cross-selling de Kits en Artículos del Blog */ -}}
+{{- $id := .Get "id" | default "mega-bundle" -}}
+{{- $lang := .Page.Language.Lang | default "es" -}}
+{{- $isES := eq $lang "es" -}}
+
+{{- $catalogPath := cond $isES (printf "/es/recursos/#%s" $id) (printf "/en/resources/#%s" $id) -}}
+
+{{- $kits := dict
+  "mega-bundle" (dict
+    "icon" "👑"
+    "title_es" "MEGA BUNDLE: Colección Completa (13 Kits)"
+    "title_en" "MEGA BUNDLE: Complete Collection (13 Kits)"
+    "price" "39€"
+    "orig" "82€"
+    "d1_es" "13 Modelos Excel + Sheets" "d1_en" "13 Excel + Sheets Models"
+    "d2_es" "13 Slides PowerPoint 16:9" "d2_en" "13 PowerPoint 16:9 Decks"
+    "d3_es" "Guías Metodológicas PDF" "d3_en" "Methodological PDF Guides"
+    "buy" "https://datalaria.lemonsqueezy.com/checkout/buy/88a976a2-f0e5-4e8e-a954-516767c7fed5?embed=1"
+    "waitlist" false
+  )
+  "suite-01" (dict
+    "icon" "🏛️"
+    "title_es" "Pack Suite 1: Estrategia Corporativa & MBA (5 Kits)"
+    "title_en" "Pack Suite 1: Corporate Strategy & MBA (5 Kits)"
+    "price" "19€"
+    "orig" "28€"
+    "d1_es" "5 Modelos Excel + Sheets" "d1_en" "5 Excel + Sheets Models"
+    "d2_es" "5 Slides PowerPoint 16:9" "d2_en" "5 PowerPoint 16:9 Decks"
+    "d3_es" "Guías Estratégicas PDF" "d3_en" "Strategic PDF Guides"
+    "buy" "https://datalaria.lemonsqueezy.com/checkout/buy/6afa0df4-fec1-4227-a183-9e5bcc738bdd?embed=1"
+    "waitlist" false
+  )
+  "suite-02" (dict
+    "icon" "⚖️"
+    "title_es" "Pack Suite 2: Marcos de Decisión Crítica (3 Kits)"
+    "title_en" "Pack Suite 2: Critical Decision Frameworks (3 Kits)"
+    "price" "15€"
+    "orig" "18€"
+    "d1_es" "3 Modelos Excel + Sheets" "d1_en" "3 Excel + Sheets Models"
+    "d2_es" "3 Slides PowerPoint 16:9" "d2_en" "3 PowerPoint 16:9 Decks"
+    "d3_es" "Guías de Decisión PDF" "d3_en" "Decision PDF Guides"
+    "buy" "https://datalaria.lemonsqueezy.com/checkout/buy/4e2ca8b1-a6f9-43b7-851a-72c44d9bc13d?embed=1"
+    "waitlist" false
+  )
+  "suite-03" (dict
+    "icon" "⚙️"
+    "title_es" "Pack Suite 3: Control Operativo & PMO (5 Kits)"
+    "title_en" "Pack Suite 3: Operational Control & PMO (5 Kits)"
+    "price" "22€"
+    "orig" "30€"
+    "d1_es" "5 Modelos Excel + Sheets" "d1_en" "5 Excel + Sheets Models"
+    "d2_es" "5 Slides PowerPoint 16:9" "d2_en" "5 PowerPoint 16:9 Decks"
+    "d3_es" "Guías Operativas PDF" "d3_en" "Operational PDF Guides"
+    "buy" "https://datalaria.lemonsqueezy.com/checkout/buy/ee578b8e-29d6-4361-ba19-4b0b5abfd89a?embed=1"
+    "waitlist" false
+  )
+  "pack-dafo" (dict
+    "icon" "🎯"
+    "title_es" "DAFO Cuantitativo & Matriz CAME"
+    "title_en" "Quantitative SWOT & TOWS Matrix"
+    "price" "5€"
+    "orig" "19€"
+    "d1_es" "Excel .xlsx + Sheets" "d1_en" "Excel .xlsx + Sheets"
+    "d2_es" "PowerPoint 16:9" "d2_en" "PowerPoint 16:9"
+    "d3_es" "Guía PDF" "d3_en" "PDF Guide"
+    "buy" "https://datalaria.lemonsqueezy.com/checkout/buy/b7f8cf34-a569-426d-b41c-5fde52640e61?embed=1"
+    "waitlist" false
+  )
+  "pack-porter" (dict
+    "icon" "🛡️"
+    "title_es" "5 Fuerzas de Porter Ponderadas"
+    "title_en" "Weighted Porter's 5 Forces"
+    "price" "6€"
+    "orig" "19€"
+    "d1_es" "Excel .xlsx + Sheets" "d1_en" "Excel .xlsx + Sheets"
+    "d2_es" "PowerPoint 16:9" "d2_en" "PowerPoint 16:9"
+    "d3_es" "Guía PDF" "d3_en" "PDF Guide"
+    "buy" "https://datalaria.lemonsqueezy.com/checkout/buy/90206641-21f3-4e06-9163-9bb90b16cbc9?embed=1"
+    "waitlist" false
+  )
+  "pack-pestel" (dict
+    "icon" "🌐"
+    "title_es" "Matriz PESTEL con Severidad & Volatilidad"
+    "title_en" "PESTEL Matrix with Severity & Volatility"
+    "price" "5€"
+    "orig" "19€"
+    "d1_es" "Excel .xlsx + Sheets" "d1_en" "Excel .xlsx + Sheets"
+    "d2_es" "PowerPoint 16:9" "d2_en" "PowerPoint 16:9"
+    "d3_es" "Guía PDF" "d3_en" "PDF Guide"
+    "buy" "https://datalaria.lemonsqueezy.com/checkout/buy/17a0781c-8001-47df-9cdd-25923041e1de?embed=1"
+    "waitlist" false
+  )
+  "pack-bcg" (dict
+    "icon" "📊"
+    "title_es" "Matriz BCG Dinámica con Flujo de Caja"
+    "title_en" "Dynamic BCG Matrix with Cash Flow"
+    "price" "6€"
+    "orig" "19€"
+    "d1_es" "Excel .xlsx + Sheets" "d1_en" "Excel .xlsx + Sheets"
+    "d2_es" "PowerPoint 16:9" "d2_en" "PowerPoint 16:9"
+    "d3_es" "Guía PDF" "d3_en" "PDF Guide"
+    "buy" "https://datalaria.lemonsqueezy.com/checkout/buy/52cf8aa6-a595-49fe-b470-421140317013?embed=1"
+    "waitlist" false
+  )
+  "pack-mckinsey" (dict
+    "icon" "🧭"
+    "title_es" "Matriz GE-McKinsey (9 Cajas)"
+    "title_en" "GE-McKinsey 9-Box Matrix"
+    "price" "6€"
+    "orig" "19€"
+    "d1_es" "Excel .xlsx + Sheets" "d1_en" "Excel .xlsx + Sheets"
+    "d2_es" "PowerPoint 16:9" "d2_en" "PowerPoint 16:9"
+    "d3_es" "Guía PDF" "d3_en" "PDF Guide"
+    "buy" "https://datalaria.lemonsqueezy.com/checkout/buy/ae0c6cd8-bb86-4a56-ad87-9625301afda9?embed=1"
+    "waitlist" false
+  )
+  "pack-dar" (dict
+    "icon" "⚖️"
+    "title_es" "Matriz DAR (Decisión, Análisis, Resolución)"
+    "title_en" "DAR Decision Matrix with Veto"
+    "price" "6€"
+    "orig" "19€"
+    "d1_es" "Excel .xlsx + Sheets" "d1_en" "Excel .xlsx + Sheets"
+    "d2_es" "PowerPoint 16:9" "d2_en" "PowerPoint 16:9"
+    "d3_es" "Guía PDF" "d3_en" "PDF Guide"
+    "buy" "https://datalaria.lemonsqueezy.com/checkout/buy/17db9367-dd18-4bb6-8f47-722d738c43c3?embed=1"
+    "waitlist" false
+  )
+  "pack-rice" (dict
+    "icon" "🚦"
+    "title_es" "RICE & ICE Scoring Engine"
+    "title_en" "RICE & ICE Scoring Engine"
+    "price" "5€"
+    "orig" "19€"
+    "d1_es" "Excel .xlsx + Sheets" "d1_en" "Excel .xlsx + Sheets"
+    "d2_es" "PowerPoint 16:9" "d2_en" "PowerPoint 16:9"
+    "d3_es" "Guía PDF" "d3_en" "PDF Guide"
+    "buy" "https://datalaria.lemonsqueezy.com/checkout/buy/4d360fcd-60d5-402a-9e58-3833e467fd3a?embed=1"
+    "waitlist" false
+  )
+  "pack-business-case" (dict
+    "icon" "💰"
+    "title_es" "Business Case Financiero (VAN / TIR / Payback)"
+    "title_en" "Financial Business Case (NPV / IRR / Payback)"
+    "price" "7€"
+    "orig" "24€"
+    "d1_es" "Excel .xlsx + Sheets" "d1_en" "Excel .xlsx + Sheets"
+    "d2_es" "PowerPoint 16:9" "d2_en" "PowerPoint 16:9"
+    "d3_es" "Guía PDF" "d3_en" "PDF Guide"
+    "buy" "https://datalaria.lemonsqueezy.com/checkout/buy/c2ff153f-2f95-4671-ab14-1b8e02301079?embed=1"
+    "waitlist" false
+  )
+  "pack-raci" (dict
+    "icon" "👥"
+    "title_es" "Matriz RACI con Balance de Carga"
+    "title_en" "RACI Matrix with Workload Balancing"
+    "price" "5€"
+    "orig" "19€"
+    "d1_es" "Excel .xlsx + Sheets" "d1_en" "Excel .xlsx + Sheets"
+    "d2_es" "PowerPoint 16:9" "d2_en" "PowerPoint 16:9"
+    "d3_es" "Guía PDF" "d3_en" "PDF Guide"
+    "buy" "https://datalaria.lemonsqueezy.com/checkout/buy/97eec34f-011e-410c-a623-714218871b1a?embed=1"
+    "waitlist" false
+  )
+  "pack-amfe" (dict
+    "icon" "⚠️"
+    "title_es" "Matriz AMFE / FMEA Cuantitativa"
+    "title_en" "Quantitative FMEA Risk Matrix"
+    "price" "6€"
+    "orig" "19€"
+    "d1_es" "Excel .xlsx + Sheets" "d1_en" "Excel .xlsx + Sheets"
+    "d2_es" "PowerPoint 16:9" "d2_en" "PowerPoint 16:9"
+    "d3_es" "Guía PDF" "d3_en" "PDF Guide"
+    "buy" "https://datalaria.lemonsqueezy.com/checkout/buy/6eea6aa0-fe9f-440b-8bb9-6f29b303e57a?embed=1"
+    "waitlist" false
+  )
+  "pack-pert" (dict
+    "icon" "⏱️"
+    "title_es" "Estimación PERT de 3 Puntos & Monte Carlo"
+    "title_en" "3-Point PERT & Stochastic Estimation"
+    "price" "5€"
+    "orig" "19€"
+    "d1_es" "Excel .xlsx + Sheets" "d1_en" "Excel .xlsx + Sheets"
+    "d2_es" "PowerPoint 16:9" "d2_en" "PowerPoint 16:9"
+    "d3_es" "Guía PDF" "d3_en" "PDF Guide"
+    "buy" "https://datalaria.lemonsqueezy.com/checkout/buy/47843201-4db9-4d80-bb88-e59364fb6117?embed=1"
+    "waitlist" false
+  )
+  "pack-evm" (dict
+    "icon" "📈"
+    "title_es" "Cuadro de Mando EVM (Valor Ganado)"
+    "title_en" "Earned Value Management (EVM) Dashboard"
+    "price" "7€"
+    "orig" "24€"
+    "d1_es" "Excel .xlsx + Sheets" "d1_en" "Excel .xlsx + Sheets"
+    "d2_es" "PowerPoint 16:9" "d2_en" "PowerPoint 16:9"
+    "d3_es" "Guía PDF" "d3_en" "PDF Guide"
+    "buy" "https://datalaria.lemonsqueezy.com/checkout/buy/188950c2-0fd9-4331-919f-237880e2c78b?embed=1"
+    "waitlist" false
+  )
+  "pack-stock" (dict
+    "icon" "📦"
+    "title_es" "Stock de Seguridad & Punto de Pedido (ROP)"
+    "title_en" "Safety Stock & Reorder Point (ROP)"
+    "price" "6€"
+    "orig" "19€"
+    "d1_es" "Excel .xlsx + Sheets" "d1_en" "Excel .xlsx + Sheets"
+    "d2_es" "PowerPoint 16:9" "d2_en" "PowerPoint 16:9"
+    "d3_es" "Guía PDF" "d3_en" "PDF Guide"
+    "buy" "https://datalaria.lemonsqueezy.com/checkout/buy/513e5cad-9f9f-4b53-a435-b511a846d79e?embed=1"
+    "waitlist" false
+  )
+  "pack-sdd" (dict
+    "icon" "📐"
+    "title_es" "Kit Spec-Driven Development (SDD)"
+    "title_en" "Spec-Driven Development (SDD) Kit"
+    "price" "8€"
+    "orig" "29€"
+    "d1_es" "Spec Schemas" "d1_en" "Spec Schemas"
+    "d2_es" "Prompt Rules" "d2_en" "Prompt Rules"
+    "d3_es" "Contratos Tipados" "d3_en" "Typed Contracts"
+    "buy" "mailto:datalaria@gmail.com?subject=Waitlist%20Kit%20SDD"
+    "waitlist" true
+  )
+-}}
+
+{{- $kit := index $kits $id | default (index $kits "mega-bundle") -}}
+{{- $title := cond $isES (index $kit "title_es") (index $kit "title_en") -}}
+{{- $d1 := cond $isES (index $kit "d1_es") (index $kit "d1_en") -}}
+{{- $d2 := cond $isES (index $kit "d2_es") (index $kit "d2_en") -}}
+{{- $d3 := cond $isES (index $kit "d3_es") (index $kit "d3_en") -}}
+{{- $price := index $kit "price" -}}
+{{- $orig := index $kit "orig" -}}
+{{- $icon := index $kit "icon" -}}
+{{- $buy := index $kit "buy" -}}
+{{- $isWaitlist := index $kit "waitlist" -}}
+
+<div class="kit-promo-card" id="promo-{{ $id }}">
+  <div class="kit-promo-main">
+    <div class="kit-promo-icon-box">
+      <span class="kit-promo-icon">{{ $icon }}</span>
+    </div>
+    <div class="kit-promo-details">
+      <div class="kit-promo-header">
+        <span class="kit-promo-badge">{{ if $isES }}RECURSO EJECUTIVO B2B{{ else }}EXECUTIVE B2B RESOURCE{{ end }}</span>
+        <h4 class="kit-promo-title">{{ $title }}</h4>
+      </div>
+      <div class="kit-promo-chips">
+        <span class="deliv-chip">{{ $d1 }}</span>
+        <span class="deliv-chip">{{ $d2 }}</span>
+        <span class="deliv-chip">{{ $d3 }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="kit-promo-cta-box">
+    <div class="kit-promo-pricing">
+      <span class="kit-promo-price-curr">{{ $price }}</span>
+      <span class="kit-promo-price-orig">{{ $orig }}</span>
+    </div>
+    <div class="kit-promo-actions">
+      <a href="{{ $catalogPath }}" class="btn-promo-catalog">{{ if $isES }}Ver en Catálogo →{{ else }}View in Catalog →{{ end }}</a>
+      {{- if $isWaitlist }}
+      <a href="mailto:datalaria@gmail.com?subject=Waitlist%20Kit%20SDD%20-%20{{ if $isES }}Avisarme%20con%2020%25%20Dto&body=Hola%2C%20quiero%20apuntarme%20a%20la%20lista%20de%20espera%20del%20Kit%20Spec-Driven%20Development%20(SDD)%20para%20recibir%20el%20aviso%20de%20lanzamiento%20y%20el%20cup%C3%B3n%20del%2020%25%20de%20descuento.{{ else }}Notify%20Me%20with%2020%25%20Off&body=Hi%2C%20I%20would%20like%20to%20join%20the%20waitlist%20for%20the%20Spec-Driven%20Development%20(SDD)%20Kit%20to%20get%20launch%20notification%20and%20the%2020%25%20discount%20code.{{ end }}" class="btn-kit-waitlist">
+        {{ if $isES }}🔔 Avisarme + 20% Dto{{ else }}🔔 Notify Me + 20% Off{{ end }}
+      </a>
+      {{- else }}
+      <a href="{{ $buy }}" class="btn-promo-buy lemonsqueezy-button">
+        {{ if $isES }}Descargar Kit • {{ $price }} →{{ else }}Download Kit • {{ $price }} →{{ end }}
+      </a>
+      {{- end }}
+    </div>
+  </div>
+</div>

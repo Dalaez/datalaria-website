@@ -1,6 +1,19 @@
 ---
-title: "Executive Decision Packs"
-description: "Modelos cuantitativos en Excel, presentaciones PowerPoint 16:9 C-Level y guías metodológicas para defender decisiones estratégicas en comités de dirección."
+title: "Kits de Decisión, Plantillas Excel & Recursos Profesionales | Datalaria"
+description: "Modelos cuantitativos protegidos en Excel, presentaciones PowerPoint 16:9 C-Level y especificaciones formales para comités de dirección e ingeniería de software con IA."
+summary: "Catálogo completo de Executive Decision Packs: DAFO, Porter, PESTEL, BCG, McKinsey, RACI, AMFE, EVM, PERT y Spec-Driven Development. Descarga inmediata con factura B2B."
+keywords:
+  - "modelos cuantitativos excel"
+  - "plantillas comite direccion"
+  - "executive decision packs"
+  - "matriz dafo cuantitativa excel"
+  - "5 fuerzas de porter excel"
+  - "matriz raci balance carga excel"
+  - "amfe fmea gestion riesgos excel"
+  - "earned value management evm excel"
+  - "business case van tir excel"
+  - "spec-driven development"
+  - "presentaciones powerpoint c-level"
 draft: false
 hidemeta: true
 translationKey: resources
@@ -233,7 +246,7 @@ translationKey: resources
 <button type="button" class="btn-kit-info" onclick="openModal('pack-dafo')">
 Detalles ℹ️
 </button>
-<a href="/posts/dafo-cuantitativo-matriz-came/" class="btn-kit-info" title="Leer guía metodológica">Guía 📖</a>
+<a href="/es/posts/dafo-cuantitativo-matriz-came/" class="btn-kit-info" title="Leer artículo técnico">Artículo técnico 📖</a>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/b7f8cf34-a569-426d-b41c-5fde52640e61" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
@@ -706,7 +719,7 @@ Detalles ℹ️
             <button type="button" class="btn-kit-info" onclick="openModal('pack-dafo')">
               Detalles ℹ️
             </button>
-            <a href="/posts/dafo-cuantitativo-matriz-came/" class="btn-kit-info" title="Leer guía metodológica">Guía 📖</a>
+            <a href="/es/posts/dafo-cuantitativo-matriz-came/" class="btn-kit-info" title="Leer artículo técnico">Artículo técnico 📖</a>
             <a href="https://datalaria.lemonsqueezy.com/checkout/buy/b7f8cf34-a569-426d-b41c-5fde52640e61" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
           </div>
         </div>
@@ -1315,7 +1328,7 @@ Detalles ℹ️
         "Guía metodológica PDF con fórmulas y caso práctico real"
       ],
       checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/b7f8cf34-a569-426d-b41c-5fde52640e61",
-      guideUrl: "/posts/dafo-cuantitativo-matriz-came/"
+      guideUrl: "/es/posts/dafo-cuantitativo-matriz-came/"
     },
 
     // 2. 5 Fuerzas de Porter (DISPONIBLE)

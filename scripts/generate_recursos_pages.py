@@ -248,7 +248,7 @@ def generate_es_body():
 <button type="button" class="btn-kit-info" onclick="openModal('pack-dafo')">
 Detalles ℹ️
 </button>
-<a href="/posts/dafo-cuantitativo-matriz-came/" class="btn-kit-info" title="Leer guía metodológica">Guía 📖</a>
+<a href="/es/posts/dafo-cuantitativo-matriz-came/" class="btn-kit-info" title="Leer artículo técnico">Artículo técnico 📖</a>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/b7f8cf34-a569-426d-b41c-5fde52640e61" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
@@ -721,7 +721,7 @@ Detalles ℹ️
             <button type="button" class="btn-kit-info" onclick="openModal('pack-dafo')">
               Detalles ℹ️
             </button>
-            <a href="/posts/dafo-cuantitativo-matriz-came/" class="btn-kit-info" title="Leer guía metodológica">Guía 📖</a>
+            <a href="/es/posts/dafo-cuantitativo-matriz-came/" class="btn-kit-info" title="Leer artículo técnico">Artículo técnico 📖</a>
             <a href="https://datalaria.lemonsqueezy.com/checkout/buy/b7f8cf34-a569-426d-b41c-5fde52640e61" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
           </div>
         </div>
@@ -1330,7 +1330,7 @@ Detalles ℹ️
         "Guía metodológica PDF con fórmulas y caso práctico real"
       ],
       checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/b7f8cf34-a569-426d-b41c-5fde52640e61",
-      guideUrl: "/posts/dafo-cuantitativo-matriz-came/"
+      guideUrl: "/es/posts/dafo-cuantitativo-matriz-came/"
     },
 
     // 2. 5 Fuerzas de Porter (DISPONIBLE)
@@ -2150,7 +2150,7 @@ def generate_en_body():
 <button type="button" class="btn-kit-info" onclick="openModal('pack-dafo')">
 Details ℹ️
 </button>
-<a href="/en/posts/quantitative-swot-tows-matrix/" class="btn-kit-info" title="Read methodological guide">Guide 📖</a>
+<a href="/en/posts/quantitative-swot-tows-matrix/" class="btn-kit-info" title="Read technical article">Technical Article 📖</a>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/b7f8cf34-a569-426d-b41c-5fde52640e61" class="btn-kit-buy lemonsqueezy-button">Download →</a>
 </div>
 </div>
@@ -2623,7 +2623,7 @@ Details ℹ️
             <button type="button" class="btn-kit-info" onclick="openModal('pack-dafo')">
               Details ℹ️
             </button>
-            <a href="/en/posts/quantitative-swot-tows-matrix/" class="btn-kit-info" title="Read methodological guide">Guide 📖</a>
+            <a href="/en/posts/quantitative-swot-tows-matrix/" class="btn-kit-info" title="Read technical article">Technical Article 📖</a>
             <a href="https://datalaria.lemonsqueezy.com/checkout/buy/b7f8cf34-a569-426d-b41c-5fde52640e61" class="btn-kit-buy lemonsqueezy-button">Download →</a>
           </div>
         </div>

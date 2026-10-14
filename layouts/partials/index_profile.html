@@ -39,7 +39,7 @@
     "shuffleTitle" "Sugerir otro artículo al azar"
     "s1tag" "01 / Recursos"
     "s1title" "Recursos & Packs Profesionales"
-    "s1desc" "Modelos cuantitativos, plantillas de decisión y guías metodológicas diseñadas para el ámbito profesional, comités de dirección y control corporativo."
+    "s1desc" "Modelos matemáticos en Excel protegidos, presentaciones ejecutivas 16:9 y especificaciones técnicas listas para defender inversiones ante comités de dirección."
     "packsSub" "Del cálculo cuantitativo a la aprobación del Comité"
     "packsDesc" "Herramientas para defender decisiones estratégicas ante comités de dirección: modelos en Excel protegidos, presentaciones PowerPoint 16:9 de nivel C-Level y guías metodológicas en PDF."
     "badgeLive" "Disponible"
@@ -60,7 +60,7 @@
     "archive" "Ver archivo completo del blog →"
     "s3tag" "03 / Ecosistema"
     "s3title" "Apps & Experimentos"
-    "s3desc" "Herramientas interactivas desarrolladas para explorar tecnologías web, inteligencia artificial y resolver problemas cotidianos."
+    "s3desc" "Sistemas full-stack en producción, sandboxes ejecutivos de IA agéntica y laboratorios interactivos desplegados bajo arquitectura Cloud de coste cero."
     "appsAll" "Ver todas las Apps & Experimentos →"
     "social" "Conéctate y sigue las novedades de Datalaria:"
   )
@@ -73,7 +73,7 @@
     "shuffleTitle" "Suggest another random article"
     "s1tag" "01 / Resources"
     "s1title" "Resources & Professional Packs"
-    "s1desc" "Quantitative models, decision templates and methodology guides designed for professionals, executive committees and corporate control."
+    "s1desc" "Protected Excel quantitative models, 16:9 executive decks, and technical specifications ready to defend investments before steering committees."
     "packsSub" "From quantitative analysis to Board approval"
     "packsDesc" "Tools to defend strategic decisions in front of executive committees: protected Excel models, 16:9 C-Level PowerPoint decks and PDF methodology guides."
     "badgeLive" "Available"
@@ -94,7 +94,7 @@
     "archive" "Browse the full blog archive →"
     "s3tag" "03 / Ecosystem"
     "s3title" "Apps & Experiments"
-    "s3desc" "Interactive tools built to explore web technologies, artificial intelligence and to solve everyday problems."
+    "s3desc" "Production full-stack systems, agentic AI executive sandboxes, and interactive labs deployed on zero-cost cloud architecture."
     "appsAll" "See all Apps & Experiments →"
     "social" "Connect and follow Datalaria's updates:"
   )
@@ -153,41 +153,46 @@
         "price" "5€"
         "packId" "pack-dafo"
         "available" true
+        "checkoutUrl" "https://datalaria.lemonsqueezy.com/checkout/buy/b7f8cf34-a569-426d-b41c-5fde52640e61?embed=1"
         "path" (cond $isES "/posts/dafo-cuantitativo-matriz-came" "/posts/quantitative-swot-tows-matrix"))
-  (dict "icon" "🛡️"
-        "name" (cond $isES "5 Fuerzas de Porter" "Porter's 5 Forces")
-        "detail" (cond $isES "Scoring cuantitativo por fuerza, gráfico radar dinámico y diagnóstico de foso defensivo (Moat)." "Quantitative scoring per force, dynamic radar chart and economic moat diagnostic.")
-        "meta" "Excel · PPT · PDF"
-        "price" "6€"
-        "packId" "pack-porter"
-        "available" true
-        "path" (cond $isES "/posts/5-fuerzas-porter-cuantitativas" "/posts/quantitative-porter-5-forces"))
-  (dict "icon" "📐"
-        "name" (cond $isES "Kit Spec-Driven Dev (SDD)" "Spec-Driven Dev (SDD) Kit")
-        "detail" (cond $isES "Especificaciones ejecutables, contratos tipados y directrices para desarrollo con IA." "Executable formal specifications, typed contracts and prompt instructions for AI-assisted dev.")
-        "meta" "Specs · Schemas · Rules"
+  (dict "icon" "📊"
+        "name" (cond $isES "Business Case Financiero (VAN, TIR, Payback)" "Financial Business Case (NPV, IRR, Payback)")
+        "detail" (cond $isES "Justifica el retorno de proyectos de IA, software o infraestructura ante el comité de inversiones y el CFO." "Justify ROI of AI, software or infrastructure projects before investment committees and the CFO.")
+        "meta" (cond $isES "VAN · TIR · Payback (antes 25€)" "NPV · IRR · Payback (was 25€)")
         "price" "8€"
-        "packId" "pack-sdd"
-        "available" false
-        "path" (cond $isES "/posts/sdd_vs_vibe_coding" "/posts/sdd_vs_vibe_coding"))
+        "packId" "pack-business-case"
+        "available" true
+        "checkoutUrl" "https://datalaria.lemonsqueezy.com/checkout/buy/d1f06578-2f17-41e5-b277-83f49fe500a4?embed=1")
+  (dict "icon" "📈"
+        "name" (cond $isES "Cuadro de Mando EVM / Valor Ganado (Curva S)" "EVM Dashboard / Earned Value (S-Curve)")
+        "detail" (cond $isES "Control quirúrgico de costes y plazos en proyectos con índices CPI/SPI, proyecciones EAC y Curva S ejecutiva." "Surgical control of costs and schedules with CPI/SPI indices, EAC forecasts, and executive S-Curve.")
+        "meta" (cond $isES "PMI Standard · ANSI (antes 25€)" "PMI Standard · ANSI (was 25€)")
+        "price" "8€"
+        "packId" "pack-evm"
+        "available" true
+        "checkoutUrl" "https://datalaria.lemonsqueezy.com/checkout/buy/78e1e755-cf85-48fa-8698-4aa3db80cfb1?embed=1")
   (dict "icon" "👑"
         "name" (cond $isES "MEGA BUNDLE: Executive Suite" "MEGA BUNDLE: Executive Suite")
         "detail" (cond $isES "Arsenal completo de 13 herramientas cuantitativas con modelos Excel, decks 16:9 y guías PDF." "Complete arsenal of 13 quantitative tools with Excel models, 16:9 decks and PDF guides.")
-        "meta" "13 Kits · Ahorro >52%"
+        "meta" (cond $isES "13 Kits · Ahorro >52% · antes 82€" "13 Kits · Save >52% · was 82€")
         "price" "39€"
         "packId" "mega-bundle"
         "available" true
-        "path" (cond $isES "/posts/executive-decision-packs-framework-cuantitativo" "/posts/executive-decision-packs-quantitative-framework"))
+        "isFeatured" true
+        "trustMicro" (cond $isES "⚡ Descarga inmediata (.ZIP)" "⚡ Instant download (.ZIP)")
+        "checkoutUrl" "https://datalaria.lemonsqueezy.com/checkout/buy/88a976a2-f0e5-4e8e-a954-516767c7fed5?embed=1")
 -}}
 
 {{- /* ---------- Apps & Games ---------- */ -}}
 {{- $apps := slice
   (dict "icon" "🚀" "name" "LifeOps" "url" "/apps/lifeops/" "arcade" false
         "badge" (cond $isES "Sistema" "System")
+        "badgeClass" "dlh-sys"
         "desc" (cond $isES "Sistema operativo personal y profesional: deporte, lecturas, cine, tablero Kanban y proyectos." "Personal & professional OS: fitness, reading, movies, Kanban board and projects.")
         "cta" (cond $isES "Abrir app →" "Open app →"))
   (dict "icon" "📡" "name" (cond $isES "Radar de Obsolescencia" "Agentic Radar") "url" "/apps/obs-management/" "arcade" false
         "badge" (cond $isES "IA" "AI")
+        "badgeClass" "dlh-ai"
         "desc" (cond $isES "Dashboard ejecutivo impulsado por agentes de IA para mitigar el riesgo en la cadena de suministro." "AI agent-powered executive dashboard to mitigate supply chain risk.")
         "cta" (cond $isES "Abrir dashboard →" "Open dashboard →"))
   (dict "icon" "🐍" "name" "Neon Snake" "url" "/games/snake/" "arcade" true
@@ -282,7 +287,7 @@
                 {{- range $resCards }}
                 {{- $guide := false }}
                 {{- with .path }}{{ with site.GetPage . }}{{ if and .RelPermalink (not .Draft) (le .Date now) }}{{ $guide = . }}{{ end }}{{ end }}{{ end }}
-                <div class="dlh-res-card">
+                <div class="dlh-res-card{{ if .isFeatured }} dlh-res-card--featured{{ end }}">
                     <div>
                         <div class="dlh-res-icon" aria-hidden="true">{{ .icon }}</div>
                         <div class="dlh-res-name">{{ .name }}</div>
@@ -292,19 +297,23 @@
                         <div class="dlh-res-meta">{{ .meta }} · <strong style="color: var(--primary);">{{ .price }}</strong></div>
                         <div class="dlh-res-actions">
                             {{- if .available }}
-                            <a class="dlh-btn-pack-dl" href="{{ cond $isES "/es/recursos/" "/en/resources/" }}#{{ .packId }}" title="{{ if $isES }}Descargar kit en el catálogo de Recursos{{ else }}Download pack in Resources catalogue{{ end }}">
+                            <a class="dlh-btn-pack-dl lemonsqueezy-button" href="{{ .checkoutUrl }}" title="{{ if $isES }}Descargar kit{{ else }}Download pack{{ end }}">
                                 {{ $t.dlPack }} ({{ .price }}) →
                             </a>
                             {{- else }}
                             <span class="dlh-pack-soon-badge">{{ $t.packSoon }}</span>
                             {{- end }}
 
-                            {{- if $guide }}
+                            {{- if .trustMicro }}
+                            <span class="dlh-trust-micro">{{ .trustMicro }}</span>
+                            {{- else if $guide }}
                             <a class="dlh-guide-link" href="{{ $guide.RelPermalink }}" title="{{ $t.readGuide }}: {{ $guide.Title }}">
                                 {{ $t.readGuide }} →
                             </a>
                             {{- else }}
-                            <span class="dlh-guide-soon-text">{{ $t.guideSoon }}</span>
+                            <a class="dlh-guide-link" href="{{ cond $isES "/es/recursos/" "/en/resources/" }}#{{ .packId }}" title="{{ if $isES }}Ver entregables incluidos{{ else }}View included deliverables{{ end }}">
+                                {{ if $isES }}Ver entregables incluidos →{{ else }}View included deliverables →{{ end }}
+                            </a>
                             {{- end }}
                         </div>
                     </div>
@@ -382,7 +391,7 @@
                     <div>
                         <div class="dlh-app-name">
                             {{ .name }}
-                            <span class="dlh-app-badge{{ if .arcade }} dlh-arcade{{ end }}">{{ .badge }}</span>
+                            <span class="dlh-app-badge{{ with .badgeClass }} {{ . }}{{ end }}{{ if .arcade }} dlh-arcade{{ end }}">{{ .badge }}</span>
                         </div>
                         <p class="dlh-app-desc">{{ .desc }}</p>
                     </div>
@@ -440,12 +449,26 @@
             });
         }
         tabs.forEach(function (tab, i) {
-            tab.addEventListener('click', function () { activate(tab.getAttribute('data-cat')); });
+            tab.addEventListener('click', function () {
+                var cat = tab.getAttribute('data-cat');
+                activate(cat);
+                if (typeof gtag === 'function') {
+                    gtag('event', 'home_category_tab', { category_name: cat });
+                }
+            });
             tab.addEventListener('keydown', function (e) {
                 var next = null;
                 if (e.key === 'ArrowRight') { next = tabs[(i + 1) % tabs.length]; }
                 if (e.key === 'ArrowLeft') { next = tabs[(i - 1 + tabs.length) % tabs.length]; }
-                if (next) { e.preventDefault(); next.focus(); activate(next.getAttribute('data-cat')); }
+                if (next) {
+                    e.preventDefault();
+                    next.focus();
+                    var cat = next.getAttribute('data-cat');
+                    activate(cat);
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'home_category_tab', { category_name: cat });
+                    }
+                }
             });
         });
         if (tabs.length) { activate(tabs[0].getAttribute('data-cat')); }
@@ -454,24 +477,48 @@
         var link = document.getElementById('dlh-rnd-link');
         var btn = document.getElementById('dlh-rnd-btn');
         var dataEl = document.getElementById('dlh-rnd-data');
-        if (!link || !btn || !dataEl) { return; }
-        var pool = [];
-        try { pool = JSON.parse(dataEl.textContent) || []; } catch (err) { pool = []; }
-        if (pool.length < 2) { return; }
-        function pick() {
-            var current = link.getAttribute('href');
-            var candidate;
-            var guard = 0;
-            do {
-                candidate = pool[Math.floor(Math.random() * pool.length)];
-                guard++;
-            } while (candidate.u === current && guard < 10);
-            link.setAttribute('href', candidate.u);
-            link.setAttribute('title', candidate.t);
-            link.textContent = candidate.t;
+        if (link && btn && dataEl) {
+            var pool = [];
+            try { pool = JSON.parse(dataEl.textContent) || []; } catch (err) { pool = []; }
+            if (pool.length >= 2) {
+                function pick() {
+                    var current = link.getAttribute('href');
+                    var candidate;
+                    var guard = 0;
+                    do {
+                        candidate = pool[Math.floor(Math.random() * pool.length)];
+                        guard++;
+                    } while (candidate.u === current && guard < 10);
+                    link.setAttribute('href', candidate.u);
+                    link.setAttribute('title', candidate.t);
+                    link.textContent = candidate.t;
+                }
+                btn.hidden = false;
+                btn.addEventListener('click', function () {
+                    pick();
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'compass_shuffle_click');
+                    }
+                });
+                pick();
+            }
         }
-        btn.hidden = false;
-        btn.addEventListener('click', pick);
-        pick();
+
+        /* ---- GA4 Telemetry for Home Pack Download clicks ---- */
+        root.querySelectorAll('.dlh-btn-pack-dl').forEach(function (btnDl) {
+            btnDl.addEventListener('click', function () {
+                var card = btnDl.closest('.dlh-res-card');
+                var nameEl = card ? card.querySelector('.dlh-res-name') : null;
+                var itemName = nameEl ? nameEl.textContent.trim() : 'Executive Pack';
+                if (typeof gtag === 'function') {
+                    gtag('event', 'home_pack_click', { item_name: itemName });
+                }
+            });
+        });
+
+        /* ---- Lemon Squeezy Overlay Initialisation ---- */
+        if (typeof window.createLemonSqueezy === 'function') {
+            try { window.createLemonSqueezy(); } catch (e) {}
+        }
     })();
 </script>

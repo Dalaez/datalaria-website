@@ -76,7 +76,7 @@ languages:
       profileMode:
         enabled: true
         title: "Datalaria"
-        subtitle: "Un portal para el aprendizaje en los datos, la inteligencia artificial, la tecnología y la gestión empresarial."
+        subtitle: "Ingeniería de Operaciones, Arquitectura de Datos e IA Aplicada. Modelos cuantitativos, sistemas en producción y marcos de decisión para dirección ejecutiva (C-Level) e ingeniería."
         imageUrl: "/images/datalaria_logo_transp.png"
         imageWidth: 120
         imageHeight: 120
@@ -117,7 +117,7 @@ languages:
       profileMode:
         enabled: true
         title: "Datalaria"
-        subtitle: "A learning portal on data, artificial intelligence, technology and business management."
+        subtitle: "Operations Engineering, Data Architecture & Applied AI. Quantitative models, production systems, and decision frameworks for C-Level executives and engineering teams."
         imageUrl: "/images/datalaria_logo_transp.png"
         imageWidth: 120
         imageHeight: 120

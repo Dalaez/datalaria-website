@@ -133,7 +133,7 @@
     }
 
     .catalog-wrapper {
-      max-width: 1180px;
+      max-width: 1260px;
       margin: 0 auto;
       padding: 24px 20px 0;
     }
@@ -639,14 +639,14 @@
        ========================================================================== */
     .kits-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(365px, 1fr));
       gap: 16px;
     }
     .kit-card {
       background: var(--bg-surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 16px 18px;
+      padding: 15px 16px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -751,61 +751,90 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
+      gap: 8px;
       padding-top: 12px;
       border-top: 1px solid var(--border);
+      flex-wrap: nowrap;
     }
     .kit-pricing-box {
-      display: flex;
+      display: inline-flex;
       align-items: baseline;
-      gap: 6px;
+      gap: 5px;
+      flex-shrink: 0 !important;
+      white-space: nowrap !important;
     }
     .kit-price-curr {
       font-size: 17px;
       font-weight: 700;
       color: var(--text-main);
       font-family: var(--font-mono);
+      white-space: nowrap !important;
+      display: inline-block;
+      line-height: 1;
     }
     .kit-price-orig {
-      font-size: 12px;
+      font-size: 11px;
       text-decoration: line-through;
       color: var(--text-light);
+      white-space: nowrap !important;
+      display: inline-block;
+      line-height: 1;
     }
     .kit-btns-group {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
+      flex-wrap: nowrap;
+      flex-shrink: 0;
     }
     .btn-kit-info {
       background: var(--bg-subtle);
       border: 1px solid var(--border);
       color: var(--text-muted);
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 500;
-      padding: 6px 10px;
-      border-radius: 6px;
+      padding: 4px 7px;
+      border-radius: 5px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 4px;
       transition: all 0.15s ease;
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     .btn-kit-info:hover {
       background: var(--bg-hover);
       color: var(--text-main);
     }
+    .btn-kit-info.btn-disabled,
+    .btn-kit-info[disabled],
+    .btn-disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      pointer-events: none;
+      background: var(--bg-subtle);
+      color: var(--text-light);
+      border-style: dashed;
+      font-size: 10.5px;
+      padding: 4px 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
     .btn-kit-buy {
       background: var(--accent);
       color: #ffffff;
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 600;
-      padding: 6px 12px;
-      border-radius: 6px;
+      padding: 5px 10px;
+      border-radius: 5px;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 5px;
+      gap: 4px;
       white-space: nowrap;
+      flex-shrink: 0;
       transition: background 0.15s ease;
     }
     .btn-kit-buy:hover { background: var(--accent-hover); }
@@ -813,14 +842,16 @@
       background: var(--bg-subtle);
       color: var(--text-light);
       border: 1px solid var(--border);
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 500;
-      padding: 6px 10px;
-      border-radius: 6px;
+      padding: 4px 7px;
+      border-radius: 5px;
       cursor: not-allowed;
       display: inline-flex;
       align-items: center;
       gap: 4px;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     /* ==========================================================================
@@ -947,12 +978,23 @@
       .kits-grid { grid-template-columns: 1fr; }
     }
 
+    @media (max-width: 580px) {
+      .kit-card-foot {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .kit-btns-group {
+        width: 100%;
+        justify-content: flex-end;
+      }
+    }
+
 
 /* ==========================================================================
    PAPERMOD INTEGRATION FOR RECURSOS
    ========================================================================== */
 .main:has(.catalog-wrapper) {
-  max-width: calc(1180px + var(--gap) * 2) !important;
+  max-width: calc(1260px + var(--gap) * 2) !important;
   padding-top: 10px !important;
 }
 
@@ -1010,5 +1052,445 @@ body.dark {
   100% {
     box-shadow: none;
     transform: scale(1);
+  }
+}
+
+/* ==========================================================================
+   OPTIMIZACIONES CRO, TELEMETRÍA Y SHORTCODE (v2.1)
+   ========================================================================== */
+
+/* Insignia de Precio de Lanzamiento */
+.launch-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(245, 158, 11, 0.16);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+[data-theme="dark"] .launch-badge {
+  background: rgba(245, 158, 11, 0.22);
+  color: #fbbf24;
+  border-color: rgba(245, 158, 11, 0.45);
+}
+
+/* Botón de Captura de Leads / Waitlist (Kit SDD) */
+.btn-kit-waitlist {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #ffffff !important;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 9px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(217, 119, 6, 0.25);
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn-kit-waitlist:hover {
+  background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(217, 119, 6, 0.35);
+  color: #ffffff !important;
+}
+
+/* Modal Preview Box */
+.modal-preview-box {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin: 14px 0 18px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+[data-theme="dark"] .modal-preview-box {
+  background: #0d131f;
+  border-color: #1e293b;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.modal-preview-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: #080d1a;
+  position: relative;
+}
+
+.modal-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Modal Mock Visual Representation (CSS / SVG) */
+.modal-mock-canvas {
+  padding: 12px 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+.modal-mock-chrome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+[data-theme="dark"] .modal-mock-chrome {
+  border-bottom-color: #1f293d;
+}
+.modal-mock-dots {
+  display: flex;
+  gap: 5px;
+}
+.modal-mock-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.dot-red { background: #ef4444; }
+.dot-yellow { background: #f59e0b; }
+.dot-green { background: #10b981; }
+
+.modal-mock-title {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.modal-mock-badges {
+  display: flex;
+  gap: 5px;
+}
+.modal-mock-badge {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+.badge-xlsx { background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); }
+.badge-pptx { background: rgba(249, 115, 22, 0.15); color: #f97316; border: 1px solid rgba(249, 115, 22, 0.3); }
+.badge-pdf { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); }
+
+.modal-mock-split {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 12px;
+}
+@media (max-width: 600px) {
+  .modal-mock-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Excel Mock Panel */
+.modal-mock-panel-excel {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px;
+}
+[data-theme="dark"] .modal-mock-panel-excel {
+  background: #111827;
+  border-color: #1f2d45;
+}
+.mock-excel-formula {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 3px 8px;
+  margin-bottom: 8px;
+  color: var(--text-muted);
+  font-size: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+[data-theme="dark"] .mock-excel-formula {
+  background: #0f172a;
+  border-color: #1e293b;
+  color: #38bdf8;
+}
+.mock-excel-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 10px;
+}
+.mock-excel-table th {
+  background: var(--bg-subtle);
+  color: var(--text-muted);
+  padding: 4px 6px;
+  text-align: left;
+  border: 1px solid var(--border);
+  font-weight: 600;
+}
+[data-theme="dark"] .mock-excel-table th {
+  background: #1e293b;
+  border-color: #334155;
+  color: #94a3b8;
+}
+.mock-excel-table td {
+  padding: 3px 6px;
+  border: 1px solid var(--border);
+  color: var(--text-main);
+}
+[data-theme="dark"] .mock-excel-table td {
+  border-color: #1e293b;
+}
+
+/* PPTX Slide Mock Panel */
+.modal-mock-panel-pptx {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 10px;
+  color: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 120px;
+}
+.mock-pptx-header {
+  font-size: 10px;
+  font-weight: 700;
+  color: #38bdf8;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.mock-pptx-kpi-row {
+  display: flex;
+  gap: 8px;
+  margin: 6px 0;
+}
+.mock-pptx-kpi {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 4px 6px;
+  flex: 1;
+}
+.mock-pptx-kpi-val {
+  font-size: 13px;
+  font-weight: 700;
+  color: #34d399;
+}
+.mock-pptx-kpi-lbl {
+  font-size: 8px;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+.mock-pptx-footer {
+  font-size: 9px;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Shortcode Kit Promo Horizontal Card */
+.kit-promo-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+  margin: 28px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+.kit-promo-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+}
+.kit-promo-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--accent) 0%, #38bdf8 100%);
+}
+.kit-promo-main {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  min-width: 260px;
+}
+.kit-promo-icon-box {
+  width: 52px;
+  height: 52px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  flex-shrink: 0;
+}
+[data-theme="dark"] .kit-promo-icon-box {
+  background: #1e293b;
+  border-color: #334155;
+}
+.kit-promo-header {
+  margin-bottom: 6px;
+}
+.kit-promo-badge {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 2px;
+}
+.kit-promo-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.3;
+  margin: 0;
+}
+.kit-promo-chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.kit-promo-chips .deliv-chip {
+  font-size: 11px;
+  padding: 2px 7px;
+}
+.kit-promo-cta-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+.kit-promo-pricing {
+  text-align: right;
+}
+.kit-promo-price-curr {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  display: block;
+  line-height: 1.1;
+}
+.kit-promo-price-orig {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-decoration: line-through;
+  font-family: var(--font-mono);
+}
+.kit-promo-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.btn-promo-catalog {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px 12px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.btn-promo-catalog:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.btn-promo-buy {
+  background: var(--accent);
+  color: #ffffff !important;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.2);
+}
+.btn-promo-buy:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
+  color: #ffffff !important;
+}
+
+@media (max-width: 768px) {
+  .kit-promo-card {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+    gap: 14px;
+  }
+  .kit-promo-cta-box {
+    justify-content: space-between;
+  }
+  .kit-promo-actions {
+    flex: 1;
+    justify-content: flex-end;
+  }
+}
+@media (max-width: 480px) {
+  .kit-promo-cta-box {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .kit-promo-pricing {
+    text-align: left;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .kit-promo-actions {
+    flex-direction: column;
+  }
+  .btn-promo-catalog,
+  .btn-promo-buy {
+    text-align: center;
+    justify-content: center;
+    width: 100%;
   }
 }
