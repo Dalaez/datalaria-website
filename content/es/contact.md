@@ -9,7 +9,7 @@ draft: false
 
 ¡Me encantaría saber de ti! Si tienes alguna pregunta, sugerencia o simplemente quieres saludar, no dudes en enviarme un mensaje.
 
-También puedes escribirme directamente a: **datalaria@gmail.com**
+También puedes escribirme directamente a: **contacto@datalaria.com**
 
 ---
 

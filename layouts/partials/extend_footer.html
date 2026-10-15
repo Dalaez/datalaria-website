@@ -160,23 +160,23 @@
         window.addEventListener('load', initLemonSqueezy);
 
         document.addEventListener('click', function (e) {
-            var btn = e.target.closest('.lemonsqueezy-button');
+            var btn = e.target.closest('.lemonsqueezy-button, a[href*="lemonsqueezy.com/checkout/buy"]');
             if (!btn) return;
 
-            var card = btn.closest('.kit-card, .mega-banner, .suite-mini-card, .suite-contextual-banner, .executive-product-card, .executive-bundle-card') || btn.parentElement;
-            var title = 'Executive Pack';
-            var category = 'Digital Resources';
+            var card = btn.closest('.kit-card, .mega-banner, .suite-mini-card, .suite-contextual-banner, .executive-product-card, .executive-bundle-card, .dlh-pack-card, .dl-kit-promo') || btn.parentElement;
+            var title = btn.getAttribute('data-product-name') || '';
+            var category = 'Executive Packs';
             var priceNum = undefined;
             var placement = 'general';
 
             if (card) {
-                var titleEl = card.querySelector('.kit-card-title, .product-title, .bundle-title, .suite-mini-title, #suite-ctx-title, h3');
-                if (titleEl) title = titleEl.textContent.trim();
+                var titleEl = card.querySelector('.kit-card-title, .product-title, .bundle-title, .suite-mini-title, .dlh-pack-title, .dl-kit-promo-title, #suite-ctx-title, h3, h2');
+                if (!title && titleEl) title = titleEl.textContent.trim();
 
-                var catEl = card.querySelector('.kit-card-cat, .product-category');
+                var catEl = card.querySelector('.kit-card-cat, .product-category, .dlh-pack-cat');
                 if (catEl) category = catEl.textContent.trim();
 
-                var priceEl = card.querySelector('.kit-price-curr, .mega-price-now, .suite-mini-price, #suite-ctx-price, .price-current, .bundle-price-main');
+                var priceEl = card.querySelector('.kit-price-curr, .mega-price-now, .suite-mini-price, .dlh-pack-price, .dl-kit-promo-price, #suite-ctx-price, .price-current, .bundle-price-main');
                 if (priceEl) {
                     var match = priceEl.textContent.match(/[\d.,]+/);
                     if (match) {
@@ -184,7 +184,7 @@
                     }
                 }
 
-                if (card.classList.contains('mega-banner')) {
+                if (card.classList.contains('mega-banner') || card.classList.contains('dlh-mega-card')) {
                     category = 'Mega Bundle';
                     placement = 'mega_bundle_banner';
                 } else if (card.classList.contains('suite-mini-card')) {
@@ -200,7 +200,16 @@
                     placement = 'bundle_card';
                 } else if (card.classList.contains('executive-product-card')) {
                     placement = 'product_card';
+                } else if (card.classList.contains('dlh-pack-card')) {
+                    placement = 'home_portal_card';
+                } else if (card.classList.contains('dl-kit-promo')) {
+                    placement = 'post_kit_promo';
                 }
+            }
+
+            if (!title) {
+                var h1 = document.querySelector('h1');
+                title = h1 ? h1.textContent.trim() : (btn.textContent.trim() || 'Executive Pack');
             }
 
             trackConversion('begin_checkout', {

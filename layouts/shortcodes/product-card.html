@@ -1,28 +1,38 @@
 {{- /* Shortcode: product-card.html - Executive Decision Pack */ -}}
+{{- $isES := eq $.Page.Language.Lang "es" -}}
 {{- $title := .Get "title" | default "Executive Decision Pack" -}}
-{{- $category := .Get "category" | default "Estrategia & Decisión" -}}
+{{- $category := .Get "category" | default (cond $isES "Estrategia Corporativa & Finanzas C-Level" "Corporate Strategy & Boardroom Decision Support") -}}
 {{- $price := .Get "price" | default "5€" -}}
 {{- $originalPrice := .Get "original_price" | default "" -}}
-{{- $badge := .Get "badge" | default "" -}}
-{{- $icon := .Get "icon" | default "📊" -}}
+{{- $badge := .Get "badge" | default (cond $isES "⭐ Estándar Consultoría Tier-1" "⭐ Tier-1 Consulting Standard") -}}
+{{- $icon := .Get "icon" | default "🎯" -}}
 {{- $features := .Get "features" | default "" -}}
-{{- $checkoutUrl := .Get "checkout_url" | default "#" -}}
-{{- $buttonText := .Get "button_text" | default (printf "Descargar Pack • %s" $price) -}}
+{{- $rawCheckout := .Get "checkout_url" | default "#" -}}
+{{- $checkoutUrl := $rawCheckout -}}
+{{- if and (strings.Contains $rawCheckout "lemonsqueezy.com") (not (strings.Contains $rawCheckout "embed=1")) -}}
+  {{- if strings.Contains $rawCheckout "?" -}}
+    {{- $checkoutUrl = printf "%s&embed=1" $rawCheckout -}}
+  {{- else -}}
+    {{- $checkoutUrl = printf "%s?embed=1" $rawCheckout -}}
+  {{- end -}}
+{{- end -}}
+{{- $buttonText := .Get "button_text" | default (cond $isES (printf "Descargar Pack Completo (.ZIP) • %s" $price) (printf "Download Complete Pack (.ZIP) • %s" $price)) -}}
 {{- $guideUrl := .Get "guide_url" | default "" -}}
-{{- $guideText := .Get "guide_text" | default "Leer guía práctica" -}}
-{{- $deliverables := .Get "deliverables" | default "Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Guía Metodológica PDF" -}}
+{{- $guideText := .Get "guide_text" | default (cond $isES "Leer artículo técnico" "Read technical article") -}}
+{{- $defaultDeliverables := cond $isES "Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Guía Metodológica PDF" "Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|PDF Methodology Guide" -}}
+{{- $deliverables := .Get "deliverables" | default $defaultDeliverables -}}
 {{- $status := .Get "status" | default "available" -}}
 {{- $isAvailable := eq $status "available" -}}
 
-<div class="executive-product-card {{- if not $isAvailable }} card-coming-soon{{ end }}" id="{{ .Get "id" }}">
+<div class="executive-product-card {{- if not $isAvailable }} card-coming-soon{{ end }}" id="{{ .Get "id" | default "executive-pack" }}">
   {{- if $badge }}
   <div class="product-badge {{- if not $isAvailable }} badge-upcoming{{ end }}">{{ $badge }}</div>
   {{- else if not $isAvailable }}
-  <div class="product-badge badge-upcoming">🔒 Próximamente</div>
+  <div class="product-badge badge-upcoming">{{ if $isES }}🔒 En Preparación{{ else }}🔒 Coming Soon{{ end }}</div>
   {{- end }}
 
   <div class="product-header">
-    <div class="product-icon-wrap">
+    <div class="product-icon-wrap" aria-hidden="true">
       <span class="product-icon">{{ $icon }}</span>
     </div>
     <div class="product-header-text">
@@ -32,16 +42,16 @@
   </div>
 
   <div class="product-deliverables">
-    <div class="deliverables-label">Entregables incluidos en el .ZIP:</div>
+    <div class="deliverables-label">{{ if $isES }}Entregables incluidos en el .ZIP:{{ else }}Deliverables included in the .ZIP:{{ end }}</div>
     <div class="deliverables-tags">
       {{- range (split $deliverables "|") }}
       <span class="deliverable-pill">
         {{- if in . "Excel" -}}
-        <svg class="pill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="8" y1="13" x2="16" y2="17"></line><line x1="16" y1="13" x2="8" y2="17"></line></svg>
+        <svg class="pill-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="8" y1="13" x2="16" y2="17"></line><line x1="16" y1="13" x2="8" y2="17"></line></svg>
         {{- else if in . "PowerPoint" -}}
-        <svg class="pill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+        <svg class="pill-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
         {{- else -}}
-        <svg class="pill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+        <svg class="pill-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
         {{- end -}}
         {{ . }}
       </span>
@@ -59,7 +69,7 @@
   <ul class="product-features-list">
     {{- range (split $features "|") }}
     <li>
-      <svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <svg class="feature-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <polyline points="20 6 9 17 4 12"></polyline>
       </svg>
       <span>{{ . }}</span>
@@ -70,26 +80,33 @@
 
   <div class="product-footer">
     <div class="product-pricing">
-      <span class="price-current">{{ $price }}</span>
-      {{- if $originalPrice }}
-      <span class="price-original">{{ $originalPrice }}</span>
-      {{- end }}
+      <div class="product-price-row">
+        <span class="price-current">{{ $price }}</span>
+        {{- if $originalPrice }}
+        <span class="price-original">{{ $originalPrice }}</span>
+        {{- end }}
+      </div>
+      <span class="price-micro-note">{{ if $isES }}Descarga instantánea • Factura B2B{{ else }}Instant download • B2B Invoice{{ end }}</span>
     </div>
 
     <div class="product-actions">
       {{- if $isAvailable }}
-      <a href="{{ $checkoutUrl }}" class="product-cta-btn lemonsqueezy-button" target="_blank" rel="noopener">
-        <svg class="cta-cart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <a href="{{ $checkoutUrl }}"
+         class="product-cta-btn lemonsqueezy-button"
+         data-product-name="{{ $title }}"
+         target="_blank"
+         rel="noopener">
+        <svg class="cta-cart-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
         </svg>
         <span>{{ $buttonText }}</span>
       </a>
       {{- else }}
       <div class="product-cta-btn btn-coming-soon" aria-disabled="true">
-        <svg class="cta-lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="cta-lock-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
         </svg>
-        <span>En Preparación • Próximamente</span>
+        <span>{{ if $isES }}En Preparación • Próximamente{{ else }}In Preparation • Coming Soon{{ end }}</span>
       </div>
       {{- end }}
 
@@ -102,19 +119,423 @@
   </div>
 
   <div class="product-guarantee-note">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
     {{- if $isAvailable }}
-      {{- if eq $.Page.Language.Lang "en" }}
-      <span>Instant direct download (.ZIP)</span>
+      {{- if $isES }}
+      <span>Garantía de compatibilidad 100% Microsoft Excel & Google Sheets • Descarga directa (.ZIP)</span>
       {{- else }}
-      <span>Descarga directa inmediata (.ZIP)</span>
+      <span>100% Microsoft Excel & Google Sheets compatibility guaranteed • Instant direct download (.ZIP)</span>
       {{- end }}
     {{- else }}
-      {{- if eq $.Page.Language.Lang "en" }}
-      <span>Packaging & QA review in progress • Access coming soon</span>
-      {{- else }}
+      {{- if $isES }}
       <span>En fase de empaquetado y control de calidad • Acceso próximamente</span>
+      {{- else }}
+      <span>Packaging & QA review in progress • Access coming soon</span>
       {{- end }}
     {{- end }}
   </div>
 </div>
+
+<style>
+/* Executive Decision Pack Product Card Styles */
+.executive-product-card {
+  --epc-accent: #0284c7;
+  --epc-accent-hover: #0369a1;
+  --epc-accent-bg: rgba(2, 132, 199, 0.08);
+  --epc-border: var(--border, #e5e7eb);
+  --epc-bg: var(--entry, #ffffff);
+  --epc-primary: var(--primary, #111827);
+  --epc-secondary: var(--secondary, #4b5563);
+  --epc-mono-bg: rgba(125, 125, 125, 0.06);
+  --epc-mono-border: var(--border, #d1d5db);
+
+  background: var(--epc-bg);
+  border: 1px solid var(--epc-border);
+  border-left: 4px solid var(--epc-accent);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin: 36px 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  font-family: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+:root.dark .executive-product-card,
+body.dark .executive-product-card {
+  --epc-accent: #38bdf8;
+  --epc-accent-hover: #7dd3fc;
+  --epc-accent-bg: rgba(56, 189, 248, 0.12);
+  --epc-border: var(--border, #374151);
+  --epc-bg: var(--entry, #1e2024);
+  --epc-primary: var(--primary, #f3f4f6);
+  --epc-secondary: var(--secondary, #9ca3af);
+  --epc-mono-bg: rgba(255, 255, 255, 0.05);
+  --epc-mono-border: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+.executive-product-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(2, 132, 199, 0.14);
+}
+
+:root.dark .executive-product-card:hover,
+body.dark .executive-product-card:hover {
+  box-shadow: 0 8px 30px rgba(56, 189, 248, 0.2);
+}
+
+/* Strict Defensive SVG Isolation */
+.executive-product-card svg {
+  display: inline-block !important;
+  vertical-align: middle !important;
+  flex-shrink: 0 !important;
+  box-sizing: content-box !important;
+}
+
+.executive-product-card .pill-icon {
+  width: 15px !important;
+  height: 15px !important;
+  min-width: 15px !important;
+  min-height: 15px !important;
+  max-width: 15px !important;
+  max-height: 15px !important;
+}
+
+.executive-product-card .feature-check {
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px !important;
+  min-height: 16px !important;
+  max-width: 16px !important;
+  max-height: 16px !important;
+  stroke: #10b981 !important;
+  margin-top: 3px !important;
+}
+
+.executive-product-card .cta-cart-icon,
+.executive-product-card .cta-lock-icon {
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px !important;
+  min-height: 16px !important;
+  max-width: 16px !important;
+  max-height: 16px !important;
+}
+
+.executive-product-card .product-guarantee-note svg {
+  width: 14px !important;
+  height: 14px !important;
+  min-width: 14px !important;
+  min-height: 14px !important;
+  max-width: 14px !important;
+  max-height: 14px !important;
+}
+
+/* Badge */
+.executive-product-card .product-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--epc-accent);
+  background: var(--epc-accent-bg);
+  border: 1px solid var(--epc-accent);
+  padding: 4px 10px;
+  border-radius: 9999px;
+  margin-bottom: 16px;
+  line-height: 1;
+}
+
+/* Header */
+.executive-product-card .product-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.executive-product-card .product-icon-wrap {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: var(--epc-accent-bg);
+  border: 1px solid var(--epc-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.executive-product-card .product-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.executive-product-card .product-header-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.executive-product-card .product-category {
+  display: block;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--epc-secondary);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.executive-product-card .product-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--epc-primary);
+  line-height: 1.35;
+}
+
+/* Deliverables Section */
+.executive-product-card .product-deliverables {
+  margin: 16px 0;
+  padding: 12px 14px;
+  background: var(--epc-mono-bg);
+  border: 1px solid var(--epc-border);
+  border-radius: 8px;
+}
+
+.executive-product-card .deliverables-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--epc-secondary);
+  margin-bottom: 8px;
+}
+
+.executive-product-card .deliverables-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.executive-product-card .deliverable-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: var(--epc-bg);
+  border: 1px solid var(--epc-mono-border);
+  color: var(--epc-primary);
+  white-space: nowrap;
+}
+
+/* Description */
+.executive-product-card .product-description {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--epc-secondary);
+  margin: 14px 0 16px 0;
+}
+
+.executive-product-card .product-description p {
+  margin: 0 0 8px 0;
+}
+
+.executive-product-card .product-description p:last-child {
+  margin-bottom: 0;
+}
+
+/* Features List */
+.executive-product-card .product-features-list {
+  list-style: none !important;
+  margin: 16px 0 !important;
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.executive-product-card .product-features-list li {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
+  font-size: 0.88rem !important;
+  line-height: 1.45 !important;
+  color: var(--epc-primary) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Footer & Pricing */
+.executive-product-card .product-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--epc-border);
+}
+
+.executive-product-card .product-pricing {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.executive-product-card .product-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.executive-product-card .price-current {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--epc-accent);
+  line-height: 1;
+}
+
+.executive-product-card .price-original {
+  font-size: 1.05rem;
+  color: var(--epc-secondary);
+  text-decoration: line-through;
+  font-weight: 500;
+}
+
+.executive-product-card .price-micro-note {
+  font-size: 0.72rem;
+  color: var(--epc-secondary);
+  font-weight: 500;
+}
+
+/* Actions */
+.executive-product-card .product-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.executive-product-card .product-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #ffffff !important;
+  background: var(--epc-accent);
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3);
+  border: none;
+  cursor: pointer;
+  line-height: 1.3;
+}
+
+:root.dark .executive-product-card .product-cta-btn,
+body.dark .executive-product-card .product-cta-btn {
+  color: #0b1329 !important;
+  background: var(--epc-accent);
+  box-shadow: 0 2px 10px rgba(56, 189, 248, 0.35);
+}
+
+.executive-product-card .product-cta-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.executive-product-card .btn-coming-soon {
+  background: var(--epc-mono-bg) !important;
+  color: var(--epc-secondary) !important;
+  border: 1px dashed var(--epc-secondary);
+  box-shadow: none !important;
+  cursor: not-allowed;
+}
+
+.executive-product-card .product-guide-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--epc-primary) !important;
+  background: transparent;
+  padding: 9px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--epc-border);
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+}
+
+.executive-product-card .product-guide-link:hover {
+  background: var(--epc-accent-bg);
+  border-color: var(--epc-accent);
+  color: var(--epc-accent) !important;
+}
+
+/* Guarantee Note */
+.executive-product-card .product-guarantee-note {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.74rem;
+  color: var(--epc-secondary);
+  margin-top: 14px;
+  font-weight: 500;
+}
+
+.executive-product-card .product-guarantee-note span {
+  line-height: 1.3;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .executive-product-card {
+    padding: 18px 16px;
+    margin: 24px 0;
+  }
+  .executive-product-card .product-header {
+    gap: 12px;
+  }
+  .executive-product-card .product-icon-wrap {
+    width: 42px;
+    height: 42px;
+  }
+  .executive-product-card .product-icon {
+    font-size: 1.35rem;
+  }
+  .executive-product-card .product-title {
+    font-size: 1.12rem;
+  }
+  .executive-product-card .product-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+  .executive-product-card .product-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .executive-product-card .product-cta-btn,
+  .executive-product-card .btn-coming-soon,
+  .executive-product-card .product-guide-link {
+    width: 100%;
+    text-align: center;
+  }
+}
+</style>

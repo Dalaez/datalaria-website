@@ -34,7 +34,7 @@ If you are looking for someone who speaks the language of business with a passio
 ---
 **Let's Talk.**
 
-You can contact me via the [Contact page](/en/contact/) or directly at [datalaria@gmail.com](mailto:datalaria@gmail.com).
+You can contact me via the [Contact page](/en/contact/) or directly at [contacto@datalaria.com](mailto:contacto@datalaria.com).
 
 ---
 

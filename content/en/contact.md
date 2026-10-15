@@ -9,7 +9,7 @@ draft: false
 
 I'd love to hear from you! If you have any questions, suggestions, or just want to say hello, feel free to send me a message.
 
-You can also email me directly at: **datalaria@gmail.com**
+You can also email me directly at: **contacto@datalaria.com**
 
 ---
 

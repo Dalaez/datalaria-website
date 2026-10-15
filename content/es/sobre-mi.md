@@ -34,7 +34,7 @@ Si buscas a alguien que hable el idioma del negocio y con pasión en la tecnolog
 ---
 **Hablemos.**
 
-Puedes contactarme a través de [Contacto](/es/contact/) o directamente en [datalaria@gmail.com](mailto:datalaria@gmail.com).
+Puedes contactarme a través de [Contacto](/es/contact/) o directamente en [contacto@datalaria.com](mailto:contacto@datalaria.com).
 
 ---
 
