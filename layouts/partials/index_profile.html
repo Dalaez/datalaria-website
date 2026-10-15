@@ -371,10 +371,23 @@
             <h3 class="dlh-cat-panel-title">{{ $c.icon }} {{ index $c (printf "label_%s" $lang) }}</h3>
             <ul class="dlh-cat-list">
                 {{- range first 6 $catPosts }}
+                {{- $rowCover := partial "post_cover_url.html" . }}
                 <li>
-                    <a class="dlh-cat-row" href="{{ .RelPermalink }}">
-                        <span class="dlh-cat-row-title">{{ .Title }}</span>
-                        <time class="dlh-cat-row-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format ":date_medium" }}</time>
+                    <a class="dlh-cat-row" href="{{ .RelPermalink }}" title="{{ .Title }}">
+                        <span class="dlh-cat-media">
+                            <img class="dlh-cat-thumb" src="{{ $rowCover }}" alt="{{ .Title }}" width="56" height="56" loading="lazy">
+                        </span>
+                        <span class="dlh-cat-text">
+                            <span class="dlh-cat-row-title">{{ .Title }}</span>
+                            <span class="dlh-cat-row-meta">
+                                <time class="dlh-cat-row-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format ":date_medium" }}</time>
+                                {{- if .ReadingTime }}
+                                <span class="dlh-cat-row-dot" aria-hidden="true">·</span>
+                                <span class="dlh-cat-row-reading">{{ .ReadingTime }} {{ cond $isES "min de lectura" "min read" }}</span>
+                                {{- end }}
+                            </span>
+                        </span>
+                        <span class="dlh-cat-arrow" aria-hidden="true">→</span>
                     </a>
                 </li>
                 {{- end }}
