@@ -1,0 +1,41 @@
+{{- /*
+  post_cover_url.html
+  Resolves the cover thumbnail URL for a given Page context.
+  Returns a 120x120 WebP thumbnail if processable, else raw RelPermalink,
+  or falls back to the transparent site logo.
+*/ -}}
+{{- $url := "/images/datalaria_logo_transp.png" -}}
+{{- with . -}}
+  {{- $target := "" -}}
+  {{- with .Params.cover -}}
+    {{- if reflect.IsMap . }}{{ $target = .image }}{{ else }}{{ $target = . }}{{ end -}}
+  {{- end -}}
+  {{- if not $target }}{{ $target = .Params.image }}{{ end -}}
+  {{- $imgRes := false -}}
+  {{- if $target -}}
+    {{- $imgRes = (.Resources.ByType "image").GetMatch (printf "*%s*" $target) -}}
+    {{- if not $imgRes -}}
+      {{- $imgRes = (resources.ByType "image").GetMatch (printf "*%s*" $target) -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if not $imgRes -}}
+    {{- $imgRes = (.Resources.ByType "image").GetMatch "*cover*" -}}
+  {{- end -}}
+  {{- if not $imgRes -}}
+    {{- with (.Resources.ByType "image") }}{{ $imgRes = index . 0 }}{{ end -}}
+  {{- end -}}
+  {{- if $imgRes -}}
+    {{- $processable := slice "jpg" "jpeg" "png" "tif" "bmp" "gif" "webp" -}}
+    {{- if in $processable $imgRes.MediaType.SubType -}}
+      {{- $thumb := $imgRes.Fill "120x120 webp q85" -}}
+      {{- $url = $thumb.RelPermalink -}}
+    {{- else -}}
+      {{- $url = $imgRes.RelPermalink -}}
+    {{- end -}}
+  {{- else if $target -}}
+    {{- if or (hasPrefix $target "http://") (hasPrefix $target "https://") (hasPrefix $target "/") -}}
+      {{- $url = $target -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $url -}}

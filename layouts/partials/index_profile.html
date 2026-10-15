@@ -234,7 +234,11 @@
         </div>
         <div class="dlh-compass-grid">
             {{- with $mostRead }}
+            {{- $mrCover := partial "post_cover_url.html" . }}
             <a class="dlh-disco" href="{{ .RelPermalink }}" title="{{ .Title }}">
+                <span class="dlh-disco-media">
+                    <img class="dlh-disco-thumb" src="{{ $mrCover }}" alt="{{ .Title }}" width="56" height="56" loading="lazy">
+                </span>
                 <span class="dlh-disco-text">
                     <span class="dlh-disco-tag dlh-tag-pop">{{ $t.pop }}</span>
                     <span class="dlh-disco-title">{{ .Title }}</span>
@@ -242,7 +246,11 @@
                 <span class="dlh-disco-arrow" aria-hidden="true">→</span>
             </a>
             {{- end }}
+            {{- $latCover := partial "post_cover_url.html" $latest }}
             <a class="dlh-disco" href="{{ $latest.RelPermalink }}" title="{{ $latest.Title }}">
+                <span class="dlh-disco-media">
+                    <img class="dlh-disco-thumb" src="{{ $latCover }}" alt="{{ $latest.Title }}" width="56" height="56" loading="lazy">
+                </span>
                 <span class="dlh-disco-text">
                     <span class="dlh-disco-tag dlh-tag-lat">{{ $t.lat }}</span>
                     <span class="dlh-disco-title">{{ $latest.Title }}</span>
@@ -250,13 +258,17 @@
                 <span class="dlh-disco-arrow" aria-hidden="true">→</span>
             </a>
             {{- with $random }}
-            <div class="dlh-disco">
+            {{- $rndCover := partial "post_cover_url.html" . }}
+            <div class="dlh-disco dlh-disco--rnd">
+                <a class="dlh-disco-media" id="dlh-rnd-media" href="{{ .RelPermalink }}" title="{{ .Title }}" tabindex="-1" aria-hidden="true">
+                    <img class="dlh-disco-thumb" id="dlh-rnd-thumb" src="{{ $rndCover }}" alt="{{ .Title }}" width="56" height="56" loading="lazy">
+                </a>
                 <span class="dlh-disco-text">
                     <span class="dlh-disco-tag dlh-tag-rnd">{{ $t.rnd }}</span>
                     <a class="dlh-disco-title" id="dlh-rnd-link" href="{{ .RelPermalink }}" title="{{ .Title }}">{{ .Title }}</a>
                 </span>
                 <button type="button" class="dlh-shuffle" id="dlh-rnd-btn" title="{{ $t.shuffleTitle }}" hidden>
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
                     <span>{{ $t.shuffle }}</span>
                 </button>
             </div>
@@ -423,9 +435,12 @@
     </section>
     {{- end }}
 
-    {{- /* Random-post pool for the compass (titles + relative URLs, current language only) */}}
+    {{- /* Random-post pool for the compass (titles + relative URLs + cover URLs, current language only) */}}
     {{- $pool := slice }}
-    {{- range $randomPool }}{{ $pool = $pool | append (dict "t" .Title "u" .RelPermalink) }}{{ end }}
+    {{- range $randomPool }}
+      {{- $cUrl := partial "post_cover_url.html" . }}
+      {{- $pool = $pool | append (dict "t" .Title "u" .RelPermalink "c" $cUrl) }}
+    {{- end }}
     <script type="application/json" id="dlh-rnd-data">{{ $pool | jsonify | safeJS }}</script>
 </div>
 
@@ -475,8 +490,11 @@
 
         /* ---- Random post: new suggestion on every visit + shuffle button ---- */
         var link = document.getElementById('dlh-rnd-link');
+        var mediaLink = document.getElementById('dlh-rnd-media');
+        var thumb = document.getElementById('dlh-rnd-thumb');
         var btn = document.getElementById('dlh-rnd-btn');
         var dataEl = document.getElementById('dlh-rnd-data');
+        var rndCard = document.querySelector('.dlh-disco--rnd');
         if (link && btn && dataEl) {
             var pool = [];
             try { pool = JSON.parse(dataEl.textContent) || []; } catch (err) { pool = []; }
@@ -492,14 +510,31 @@
                     link.setAttribute('href', candidate.u);
                     link.setAttribute('title', candidate.t);
                     link.textContent = candidate.t;
+                    if (mediaLink) {
+                        mediaLink.setAttribute('href', candidate.u);
+                        mediaLink.setAttribute('title', candidate.t);
+                    }
+                    if (thumb && candidate.c) {
+                        thumb.setAttribute('src', candidate.c);
+                        thumb.setAttribute('alt', candidate.t);
+                    }
                 }
                 btn.hidden = false;
-                btn.addEventListener('click', function () {
+                btn.addEventListener('click', function (e) {
+                    e.stopPropagation();
                     pick();
                     if (typeof gtag === 'function') {
                         gtag('event', 'compass_shuffle_click');
                     }
                 });
+                if (rndCard) {
+                    rndCard.addEventListener('click', function (e) {
+                        if (!e.target.closest('#dlh-rnd-btn') && !e.target.closest('#dlh-rnd-link') && !e.target.closest('#dlh-rnd-media')) {
+                            var dest = link.getAttribute('href');
+                            if (dest) { window.location.href = dest; }
+                        }
+                    });
+                }
                 pick();
             }
         }
