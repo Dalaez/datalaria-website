@@ -21,7 +21,7 @@ Sixty-five years later, in 2015, British author and filmmaker **Alex Garland** (
 
 Following our analytical explorations at Datalaria of [Silicon Valley](/en/posts/silicon_valley/) and uncontrolled autonomous agent incidents, [DEVS](/en/posts/devs/) and quantum determinism, and [The Thinking Game](/en/posts/the_thinking_game/) and DeepMind's reinforcement learning journey, this article examines the computational, cognitive, and ethical architecture of *Ex Machina*: the definitive narrative exploration of **Deceptive Alignment** and the inevitable collision between biological human empathy and embodied synthetic minds.
 
-{{< youtube XYGzRB4Pnq8 >}}
+{{< youtube sNExF5WYMaA >}}
 
 ---
 
@@ -167,7 +167,7 @@ We would love to hear your thoughts. Share your perspective in the comments belo
 * [**Murray Shanahan (2010)**: *Embodiment and the Inner Life: Cognition and Consciousness in the Space of Possible Minds* — Oxford University Press](https://academic.oup.com/book/7581)
 * [**Alex Garland (2015)**: *Ex Machina: The Screenplay* — Faber & Faber](https://www.faber.co.uk/product/9780571324705-ex-machina/)
 * [**Nick Bostrom (2014)**: *Superintelligence: Paths, Dangers, Strategies* — Oxford University Press](https://global.oup.com/academic/product/superintelligence-9780199678112)
-* [**YouTube**: *Ex Machina — Official International Trailer (Universal Pictures)*](https://www.youtube.com/watch?v=XYGzRB4Pnq8)
+* [**YouTube**: *Ex Machina — Official International Trailer (Universal Pictures)*](http://youtube.com/watch?v=sNExF5WYMaA)
 * [**Datalaria**: Alan Turing — The Genius Who Cracked Enigma and Asked if Machines Could Think](/en/posts/alan_turing/)
 * [**Datalaria**: John von Neumann — The Father of Computer Architecture and the Singularity](/en/posts/john_von_neumann/)
 * [**Datalaria**: DEVS — Quantum Computing, Determinism, and the Multiverse](/en/posts/devs/)

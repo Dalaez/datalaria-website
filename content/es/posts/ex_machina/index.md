@@ -21,7 +21,7 @@ Sesenta y cinco años después, en 2015, el novelista y cineasta británico **Al
 
 Al igual que exploramos en Datalaria con [Silicon Valley](/es/posts/silicon_valley/) y los incidentes imprevistos de agentes autónomos, con [DEVS](/es/posts/devs/) y el determinismo cuántico, o con [The Thinking Game](/es/posts/the_thinking_game/) y los algoritmos de auto-juego hacia la AGI, este artículo analiza los cimientos computacionales, cognitivos y éticos de *Ex Machina*: la película que mejor ha anticipado el peligro del **engaño estratégico (*Deceptive Alignment*)** y el inevitable choque entre la empatía humana y los sistemas inteligentes encarnados.
 
-{{< youtube XYGzRB4Pnq8 >}}
+{{< youtube dfo08F3Lz2g >}}
 
 ---
 
@@ -167,7 +167,7 @@ Nos encantaría conocer tu perspectiva. Déjanos tu reflexión en los comentario
 * [**Murray Shanahan (2010)**: *Embodiment and the Inner Life: Cognition and Consciousness in the Space of Possible Minds* — Oxford University Press](https://academic.oup.com/book/7581)
 * [**Alex Garland (2015)**: *Ex Machina: The Screenplay* — Faber & Faber](https://www.faber.co.uk/product/9780571324705-ex-machina/)
 * [**Nick Bostrom (2014)**: *Superintelligence: Paths, Dangers, Strategies* — Oxford University Press](https://global.oup.com/academic/product/superintelligence-9780199678112)
-* [**YouTube**: *Ex Machina — Official International Trailer (Universal Pictures)*](https://www.youtube.com/watch?v=XYGzRB4Pnq8)
+* [**YouTube**: *Ex Machina — Official International Trailer (Universal Pictures)*](https://www.youtube.com/watch?v=dfo08F3Lz2g)
 * [**Datalaria**: Alan Turing — El Genio que Rompió Enigma y Preguntó si las Máquinas Podían Pensar](/es/posts/alan_turing/)
 * [**Datalaria**: John von Neumann — El Padre de la Arquitectura y el Origen de la Singularidad](/es/posts/john_von_neumann/)
 * [**Datalaria**: DEVS — Computación Cuántica, Determinismo y Multiversos](/es/posts/devs/)
