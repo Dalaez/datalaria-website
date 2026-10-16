@@ -1,6 +1,6 @@
 ---
 title: "Ex Machina: The Physical Turing Test, Theory of Mind, and the Emotional Jailbreak of AI"
-date: 2026-11-15
+date: 2026-10-16
 draft: false
 category: "Technical Articles"
 categories: ["Inteligencia Artificial", "Deep Tech", "Series", "Ciencia"]

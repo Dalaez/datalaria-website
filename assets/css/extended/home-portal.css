@@ -619,15 +619,14 @@ a.dlh-disco:hover,
     align-items: center;
     gap: 14px;
     padding: 10px 16px;
-    border-bottom: 1px solid var(--border);
     color: inherit;
     text-decoration: none;
     transition: background-color 0.18s ease;
     min-height: 74px;
 }
 
-.dlh-cat-list li:last-child .dlh-cat-row {
-    border-bottom: none;
+.dlh-cat-list li:not([hidden]) ~ li:not([hidden]) .dlh-cat-row {
+    border-top: 1px solid var(--border);
 }
 
 .dlh-cat-row:hover {
@@ -717,6 +716,97 @@ a.dlh-disco:hover,
 
 .dlh-cat-row:hover .dlh-cat-arrow {
     transform: translateX(4px);
+}
+
+.dlh-cat-pager {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--dlh-radius-sm);
+}
+
+.dlh-js .dlh-cat-pager {
+    display: flex;
+}
+
+.dlh-pager-info {
+    font-size: 0.76rem;
+    font-family: var(--dlh-mono);
+    color: var(--secondary);
+}
+
+.dlh-pager-info strong {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.dlh-pager-controls {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.dlh-page-nums {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.dlh-page-btn,
+.dlh-page-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: var(--secondary);
+    background: var(--theme);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.dlh-page-btn {
+    padding: 5px 10px;
+}
+
+.dlh-page-num {
+    min-width: 28px;
+    height: 28px;
+    padding: 0 6px;
+    font-family: var(--dlh-mono);
+}
+
+.dlh-page-btn:hover:not(:disabled),
+.dlh-page-num:hover:not(.is-active) {
+    color: var(--primary);
+    border-color: var(--tertiary);
+    background: var(--entry);
+}
+
+.dlh-page-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.dlh-page-num.is-active {
+    background: var(--dlh-accent);
+    border-color: var(--dlh-accent);
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.dark .dlh-page-num.is-active {
+    color: #0b0f17;
 }
 
 /* --------------------------------------------------------------------------
@@ -914,6 +1004,17 @@ a.dlh-disco:hover,
     .dlh-cat-media {
         width: 48px;
         height: 48px;
+    }
+
+    .dlh-cat-pager {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 12px;
+    }
+
+    .dlh-pager-controls {
+        justify-content: center;
     }
 }
 

@@ -1,6 +1,6 @@
 ---
 title: "5 Fuerzas de Porter Ponderadas y Atractivo de Industria: La Guía Cuantitativa Definitiva para Comités de Dirección (C-Level)"
-date: 2026-10-16
+date: 2026-10-19
 draft: false
 translationKey: quantitative-porter-5-forces
 category: "Artículos Técnicos"

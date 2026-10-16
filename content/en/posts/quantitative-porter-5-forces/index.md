@@ -1,6 +1,6 @@
 ---
 title: "Weighted Porter's 5 Forces & Industry Attractiveness Matrix: The Definitive C-Suite Quantitative Guide"
-date: 2026-10-16
+date: 2026-10-19
 draft: false
 translationKey: quantitative-porter-5-forces
 category: "Technical Articles"

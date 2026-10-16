@@ -54,9 +54,14 @@
     "packSoon" "🔒 Próximamente"
     "s2tag" "02 / Contenidos"
     "s2title" "El blog en 4 temáticas"
-    "s2desc" "Explora los %d artículos del blog clasificados por ámbito de conocimiento. Selecciona una temática para ver sus últimas lecturas:"
+    "s2desc" "Explora los %d artículos del blog clasificados por ámbito de conocimiento. Selecciona una temática para explorar todas sus publicaciones:"
     "tabsLabel" "Temáticas del blog"
     "postsWord" "artículos"
+    "pagePrev" "← Anterior"
+    "pageNext" "Siguiente →"
+    "pageShowing" "Mostrando"
+    "pageOf" "de"
+    "pageLabel" "Paginación de artículos"
     "archive" "Ver archivo completo del blog →"
     "s3tag" "03 / Ecosistema"
     "s3title" "Apps & Experimentos"
@@ -88,9 +93,14 @@
     "packSoon" "🔒 Coming soon"
     "s2tag" "02 / Content"
     "s2title" "The blog in 4 topics"
-    "s2desc" "Explore the %d blog articles organised by field of knowledge. Pick a topic to see its latest reads:"
+    "s2desc" "Explore the %d blog articles organised by field of knowledge. Pick a topic to browse all its publications:"
     "tabsLabel" "Blog topics"
     "postsWord" "articles"
+    "pagePrev" "← Previous"
+    "pageNext" "Next →"
+    "pageShowing" "Showing"
+    "pageOf" "of"
+    "pageLabel" "Article pagination"
     "archive" "Browse the full blog archive →"
     "s3tag" "03 / Ecosystem"
     "s3title" "Apps & Experiments"
@@ -365,25 +375,29 @@
             {{- end }}
         </div>
 
+        {{- $pageSize := 6 }}
         {{- range $i, $c := $cats }}
         {{- $catPosts := where $posts "Params.category" (index $c $lang) }}
-        <div class="dlh-cat-panel" role="tabpanel" id="dlh-panel-{{ $c.key }}" data-cat="{{ $c.key }}" aria-labelledby="dlh-tab-{{ $c.key }}">
+        {{- $totalPosts := len $catPosts }}
+        {{- $totalPages := cond (gt $totalPosts 0) (div (add $totalPosts (sub $pageSize 1)) $pageSize) 1 }}
+        <div class="dlh-cat-panel" role="tabpanel" id="dlh-panel-{{ $c.key }}" data-cat="{{ $c.key }}" data-total="{{ $totalPosts }}" data-pages="{{ $totalPages }}" data-page-size="{{ $pageSize }}" data-current-page="1" aria-labelledby="dlh-tab-{{ $c.key }}">
             <h3 class="dlh-cat-panel-title">{{ $c.icon }} {{ index $c (printf "label_%s" $lang) }}</h3>
             <ul class="dlh-cat-list">
-                {{- range first 6 $catPosts }}
-                {{- $rowCover := partial "post_cover_url.html" . }}
-                <li>
-                    <a class="dlh-cat-row" href="{{ .RelPermalink }}" title="{{ .Title }}">
+                {{- range $idx, $p := $catPosts }}
+                {{- $pageNum := add (div $idx $pageSize) 1 }}
+                {{- $rowCover := partial "post_cover_url.html" $p }}
+                <li class="dlh-cat-item" data-page="{{ $pageNum }}"{{ if gt $pageNum 1 }} hidden{{ end }}>
+                    <a class="dlh-cat-row" href="{{ $p.RelPermalink }}" title="{{ $p.Title }}">
                         <span class="dlh-cat-media">
-                            <img class="dlh-cat-thumb" src="{{ $rowCover }}" alt="{{ .Title }}" width="56" height="56" loading="lazy">
+                            <img class="dlh-cat-thumb" src="{{ $rowCover }}" alt="{{ $p.Title }}" width="56" height="56" loading="lazy">
                         </span>
                         <span class="dlh-cat-text">
-                            <span class="dlh-cat-row-title">{{ .Title }}</span>
+                            <span class="dlh-cat-row-title">{{ $p.Title }}</span>
                             <span class="dlh-cat-row-meta">
-                                <time class="dlh-cat-row-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format ":date_medium" }}</time>
-                                {{- if .ReadingTime }}
+                                <time class="dlh-cat-row-date" datetime="{{ $p.Date.Format "2006-01-02" }}">{{ $p.Date | time.Format ":date_medium" }}</time>
+                                {{- if $p.ReadingTime }}
                                 <span class="dlh-cat-row-dot" aria-hidden="true">·</span>
-                                <span class="dlh-cat-row-reading">{{ .ReadingTime }} {{ cond $isES "min de lectura" "min read" }}</span>
+                                <span class="dlh-cat-row-reading">{{ $p.ReadingTime }} {{ cond $isES "min de lectura" "min read" }}</span>
                                 {{- end }}
                             </span>
                         </span>
@@ -392,6 +406,28 @@
                 </li>
                 {{- end }}
             </ul>
+            {{- if gt $totalPages 1 }}
+            <nav class="dlh-cat-pager" aria-label="{{ $t.pageLabel }}">
+                <span class="dlh-pager-info">
+                    {{ $t.pageShowing }} <strong class="dlh-pager-range">1–{{ cond (lt $totalPosts $pageSize) $totalPosts $pageSize }}</strong> {{ $t.pageOf }} <strong>{{ $totalPosts }}</strong> {{ $t.postsWord }}
+                </span>
+                <div class="dlh-pager-controls">
+                    <button type="button" class="dlh-page-btn dlh-page-prev" disabled aria-label="{{ $t.pagePrev }}">
+                        {{ $t.pagePrev }}
+                    </button>
+                    <div class="dlh-page-nums">
+                        {{- range $pNum := seq $totalPages }}
+                        <button type="button" class="dlh-page-num{{ if eq $pNum 1 }} is-active{{ end }}" data-page="{{ $pNum }}" aria-label="{{ if $isES }}Página{{ else }}Page{{ end }} {{ $pNum }}"{{ if eq $pNum 1 }} aria-current="page"{{ end }}>
+                            {{ $pNum }}
+                        </button>
+                        {{- end }}
+                    </div>
+                    <button type="button" class="dlh-page-btn dlh-page-next" aria-label="{{ $t.pageNext }}">
+                        {{ $t.pageNext }}
+                    </button>
+                </div>
+            </nav>
+            {{- end }}
         </div>
         {{- end }}
 
@@ -500,6 +536,72 @@
             });
         });
         if (tabs.length) { activate(tabs[0].getAttribute('data-cat')); }
+
+        /* ---- Category pagination ---- */
+        panels.forEach(function (panel) {
+            var totalPosts = parseInt(panel.getAttribute('data-total'), 10) || 0;
+            var totalPages = parseInt(panel.getAttribute('data-pages'), 10) || 1;
+            var pageSize = parseInt(panel.getAttribute('data-page-size'), 10) || 6;
+            if (totalPages <= 1) { return; }
+
+            var items = Array.prototype.slice.call(panel.querySelectorAll('.dlh-cat-item'));
+            var rangeEl = panel.querySelector('.dlh-pager-range');
+            var prevBtn = panel.querySelector('.dlh-page-prev');
+            var nextBtn = panel.querySelector('.dlh-page-next');
+            var numBtns = Array.prototype.slice.call(panel.querySelectorAll('.dlh-page-num'));
+
+            function setPage(p) {
+                var page = Math.max(1, Math.min(totalPages, p));
+                panel.setAttribute('data-current-page', String(page));
+                items.forEach(function (item) {
+                    var itemPage = parseInt(item.getAttribute('data-page'), 10);
+                    item.hidden = itemPage !== page;
+                });
+                if (rangeEl) {
+                    var start = (page - 1) * pageSize + 1;
+                    var end = Math.min(page * pageSize, totalPosts);
+                    rangeEl.textContent = start + '–' + end;
+                }
+                if (prevBtn) { prevBtn.disabled = page <= 1; }
+                if (nextBtn) { nextBtn.disabled = page >= totalPages; }
+                numBtns.forEach(function (btn) {
+                    var bPage = parseInt(btn.getAttribute('data-page'), 10);
+                    var active = bPage === page;
+                    btn.classList.toggle('is-active', active);
+                    if (active) {
+                        btn.setAttribute('aria-current', 'page');
+                    } else {
+                        btn.removeAttribute('aria-current');
+                    }
+                });
+                if (typeof gtag === 'function') {
+                    gtag('event', 'home_category_page', {
+                        category_name: panel.getAttribute('data-cat'),
+                        page_number: page
+                    });
+                }
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', function () {
+                    var cur = parseInt(panel.getAttribute('data-current-page'), 10) || 1;
+                    if (cur > 1) { setPage(cur - 1); }
+                });
+            }
+            if (nextBtn) {
+                nextBtn.addEventListener('click', function () {
+                    var cur = parseInt(panel.getAttribute('data-current-page'), 10) || 1;
+                    if (cur < totalPages) { setPage(cur + 1); }
+                });
+            }
+            numBtns.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    var target = parseInt(btn.getAttribute('data-page'), 10);
+                    var cur = parseInt(panel.getAttribute('data-current-page'), 10) || 1;
+                    if (target && target !== cur) { setPage(target); }
+                });
+            });
+        });
 
         /* ---- Random post: new suggestion on every visit + shuffle button ---- */
         var link = document.getElementById('dlh-rnd-link');
