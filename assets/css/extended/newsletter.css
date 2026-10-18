@@ -167,6 +167,65 @@
   background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
 }
 
+/* Discrete Buy Me a Coffee row inside newsletter footer */
+.newsletter-bmc-row {
+  margin-top: 1.35rem;
+  padding-top: 1.1rem;
+  border-top: 1px dashed var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.newsletter-bmc-note {
+  font-size: 0.84rem;
+  color: var(--secondary);
+}
+
+.newsletter-bmc-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.32rem 0.78rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--primary);
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.newsletter-bmc-chip svg {
+  width: 15px;
+  height: 15px;
+  color: #d97706;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.dark .newsletter-bmc-chip svg {
+  color: #fbbf24;
+}
+
+.newsletter-bmc-chip:hover {
+  border-color: rgba(245, 158, 11, 0.5);
+  background: rgba(245, 158, 11, 0.08);
+  transform: translateY(-1px);
+}
+
+.dark .newsletter-bmc-chip:hover {
+  border-color: rgba(251, 191, 36, 0.45);
+  background: rgba(251, 191, 36, 0.12);
+}
+
+.newsletter-bmc-chip:hover svg {
+  transform: rotate(-8deg) scale(1.08);
+}
+
 /* Mobile responsive */
 @media (max-width: 600px) {
   .newsletter-section {
@@ -189,5 +248,10 @@
 
   .newsletter-btn {
     width: 100%;
+  }
+
+  .newsletter-bmc-row {
+    flex-direction: column;
+    gap: 0.5rem;
   }
 }

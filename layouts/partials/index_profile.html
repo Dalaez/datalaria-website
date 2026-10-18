@@ -469,13 +469,17 @@
 
     {{- /* ======================= SOCIAL (bottom) ======================= */}}
     {{- with site.Params.socialIcons }}
-    {{- $labels := dict "github" "GitHub" "linkedin" "LinkedIn" "twitter" "X / Twitter" }}
+    {{- $bmcLabel := cond $isES "Invítame a un café" "Buy me a coffee" }}
+    {{- $labels := dict "github" "GitHub" "linkedin" "LinkedIn" "twitter" "X / Twitter" "buymeacoffee" $bmcLabel }}
     <section class="dlh-social">
         <div class="dlh-social-label">{{ $t.social }}</div>
         <div class="dlh-social-links">
             {{- range . }}
-            {{- $label := index $labels (lower .name) | default (.name | title) }}
-            <a class="dlh-chip" href="{{ trim .url " " | safeURL }}" target="_blank" rel="noopener noreferrer me" title="{{ $label }}">
+            {{- $nameLower := lower .name }}
+            {{- $isBmc := eq $nameLower "buymeacoffee" }}
+            {{- $isLS := and $isBmc (in .url "lemonsqueezy.com") }}
+            {{- $label := index $labels $nameLower | default (.name | title) }}
+            <a class="dlh-chip{{ if $isBmc }} dlh-chip--bmc{{ end }}{{ if $isLS }} lemonsqueezy-button{{ end }}" href="{{ trim .url " " | safeURL }}"{{ if not $isLS }} target="_blank" rel="noopener noreferrer me"{{ end }} title="{{ $label }}"{{ if $isBmc }} data-bmc-placement="home_social_chip" data-product-name="Buy Me a Coffee / Support Datalaria"{{ end }}>
                 {{ partial "svg.html" . }}
                 <span>{{ $label }}</span>
             </a>

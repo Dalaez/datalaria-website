@@ -953,6 +953,29 @@ a.dlh-disco:hover,
     height: 16px;
 }
 
+.dlh-chip--bmc svg {
+    color: #d97706;
+    transition: transform 0.2s ease;
+}
+
+.dark .dlh-chip--bmc svg {
+    color: #fbbf24;
+}
+
+.dlh-chip--bmc:hover {
+    border-color: rgba(245, 158, 11, 0.5);
+    background: rgba(245, 158, 11, 0.06);
+}
+
+.dark .dlh-chip--bmc:hover {
+    border-color: rgba(251, 191, 36, 0.45);
+    background: rgba(251, 191, 36, 0.1);
+}
+
+.dlh-chip--bmc:hover svg {
+    transform: rotate(-8deg) scale(1.08);
+}
+
 /* --------------------------------------------------------------------------
    Responsive
    -------------------------------------------------------------------------- */

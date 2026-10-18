@@ -41,3 +41,5 @@ Puedes contactarme a través de [Contacto](/es/contact/) o directamente en [cont
 **Sígueme.**
 
 Si te gusta lo que lees en el blog y quieres estar al tanto de nuevas publicaciones, puedes suscribirte a la newsletter que encontrarás haciendo scroll más abajo 👇
+
+{{< buymeacoffee placement="about_page" >}}

@@ -1,0 +1,2 @@
+{{- $placement := .Get "placement" | default "about_page" -}}
+{{- partial "buymeacoffee_card.html" (dict "placement" $placement) -}}

@@ -8,6 +8,9 @@
 {{- $emailPlaceholder := cond $isSpanish "Tu email" "Your email" -}}
 {{- $buttonText := cond $isSpanish "Suscribirse" "Subscribe" -}}
 {{- $langLabel := cond $isSpanish "Idioma preferido:" "Preferred language:" -}}
+{{- $bmcUrl := site.Params.buyMeACoffeeUrl | default "https://datalaria.lemonsqueezy.com/checkout/buy/20c2be9a-44ec-44ea-ada4-daa307909e26?embed=1" -}}
+{{- $bmcNote := cond $isSpanish "¿Prefieres apoyar la divulgación y las herramientas gratuitas directamente?" "Prefer to support our free content and tools directly?" -}}
+{{- $bmcBtn := cond $isSpanish "Invítame a un café" "Buy me a coffee" -}}
 
 <div class="newsletter-section">
     <div class="newsletter-container">
@@ -32,6 +35,14 @@
             </div>
             <p id="newsletter-message" class="newsletter-message"></p>
         </form>
+        {{- $isLS := in $bmcUrl "lemonsqueezy.com" -}}
+        <div class="newsletter-bmc-row">
+            <span class="newsletter-bmc-note">{{ $bmcNote }}</span>
+            <a class="newsletter-bmc-chip{{ if $isLS }} lemonsqueezy-button{{ end }}" href="{{ $bmcUrl | safeURL }}"{{ if not $isLS }} target="_blank" rel="noopener noreferrer"{{ end }} data-bmc-placement="newsletter_footer" data-product-name="Buy Me a Coffee / Support Datalaria">
+                {{ partial "svg.html" (dict "name" "buymeacoffee") }}
+                <span>{{ $bmcBtn }}</span>
+            </a>
+        </div>
     </div>
 </div>
 
@@ -162,6 +173,30 @@
         document.addEventListener('click', function (e) {
             var btn = e.target.closest('.lemonsqueezy-button, a[href*="lemonsqueezy.com/checkout/buy"]');
             if (!btn) return;
+
+            var bmcPlacement = btn.getAttribute('data-bmc-placement');
+            if (bmcPlacement) {
+                var bmcTitle = btn.getAttribute('data-product-name') || 'Buy Me a Coffee / Support Datalaria';
+                trackConversion('buy_me_a_coffee_click', {
+                    placement: bmcPlacement,
+                    page_path: window.location.pathname,
+                    destination_url: btn.href
+                });
+                trackConversion('begin_checkout', {
+                    currency: 'EUR',
+                    value: 5,
+                    items: [{
+                        item_name: bmcTitle,
+                        item_category: 'Community Support',
+                        price: 5,
+                        quantity: 1
+                    }],
+                    product_name: bmcTitle,
+                    placement: bmcPlacement,
+                    checkout_url: btn.href
+                });
+                return;
+            }
 
             var card = btn.closest('.kit-card, .mega-banner, .suite-mini-card, .suite-contextual-banner, .executive-product-card, .executive-bundle-card, .dlh-pack-card, .dl-kit-promo') || btn.parentElement;
             var title = btn.getAttribute('data-product-name') || '';

@@ -631,3 +631,138 @@ body.dark .executive-product-card .product-cta-btn {
     text-align: center;
   }
 }
+
+/* ==========================================================================
+   Buy Me a Coffee · Native Datalaria Support Card (Post Footer & About Page)
+   ========================================================================== */
+.bmc-support-card {
+  --bmc-accent: #d97706;
+  --bmc-accent-soft: rgba(245, 158, 11, 0.1);
+  --bmc-border-hover: rgba(245, 158, 11, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 26px 0 18px;
+  padding: 14px 18px;
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+:root.dark .bmc-support-card,
+body.dark .bmc-support-card {
+  --bmc-accent: #fbbf24;
+  --bmc-accent-soft: rgba(251, 191, 36, 0.12);
+  --bmc-border-hover: rgba(251, 191, 36, 0.45);
+}
+
+.bmc-support-card:hover {
+  border-color: var(--bmc-border-hover);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.bmc-support-body {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.bmc-support-icon {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: 9px;
+  background: var(--bmc-accent-soft);
+  border: 1px solid var(--bmc-border-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bmc-accent);
+}
+
+.bmc-support-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.bmc-support-text {
+  min-width: 0;
+}
+
+.bmc-support-title {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--primary);
+  line-height: 1.35;
+  margin-bottom: 2px;
+}
+
+.bmc-support-desc {
+  margin: 0 !important;
+  font-size: 0.82rem;
+  color: var(--secondary);
+  line-height: 1.45;
+}
+
+.bmc-support-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  padding: 8px 14px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--primary) !important;
+  background: var(--theme);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.bmc-support-btn svg {
+  width: 15px;
+  height: 15px;
+  color: var(--bmc-accent);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.bmc-support-arrow {
+  color: var(--bmc-accent);
+  font-weight: 700;
+  transition: transform 0.2s ease;
+}
+
+.bmc-support-btn:hover {
+  border-color: var(--bmc-border-hover);
+  background: var(--bmc-accent-soft);
+  transform: translateY(-1px);
+}
+
+.bmc-support-btn:hover svg {
+  transform: rotate(-8deg) scale(1.08);
+}
+
+.bmc-support-btn:hover .bmc-support-arrow {
+  transform: translateX(2px);
+}
+
+@media (max-width: 640px) {
+  .bmc-support-card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .bmc-support-btn {
+    justify-content: center;
+    width: 100%;
+  }
+}
