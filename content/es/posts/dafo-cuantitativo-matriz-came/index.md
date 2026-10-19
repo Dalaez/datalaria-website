@@ -39,6 +39,19 @@ flowchart TD
     style E fill:#0F172A,stroke:#D97706,stroke-width:2px,color:#FFFFFF
 {{< /mermaid >}}
 
+{{< product-card
+  variant="compact"
+  title="Executive Decision Pack: DAFO Cuantitativo & Matriz CAME"
+  price="5€"
+  original_price="29€"
+  badge="★ Estándar Consultoría Tier-1"
+  icon="🎯"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/b7f8cf34-a569-426d-b41c-5fde52640e61"
+  button_text="Descargar Kit Ahora (.ZIP) • 5€"
+>}}
+¿Preparando un Comité de Dirección o Consejo? Ahorra +15 horas de modelado financiero y diseño de diapositivas descargando la plantilla automatizada con el motor vectorial completo y el deck ejecutivo listo para proyectar.
+{{< /product-card >}}
+
 ---
 
 ## 1. ¿Qué es un Análisis DAFO? Fundamentos, Componentes y Objetivos
@@ -450,6 +463,8 @@ Para los líderes corporativos, consultores estratégicos, directores de M&A y r
   original_price="29€"
   badge="★ Estándar Consultoría Tier-1"
   icon="🎯"
+  preview_image="preview-pack.png"
+  preview_caption="Vista previa real de los 3 entregables incluidos en el archivo .ZIP: Libro Excel (.xlsx) con 4 pestañas y gráfico cartesiano, Presentación Ejecutiva 16:9 (.pptx) de 3 diapositivas y Guía Metodológica en PDF (5 páginas)."
   features="Motor Excel (.xlsx) con 4 pestañas interconectadas, fórmulas matriciales protegidas y 10 factores dinámicos|Gráfico cartesiano de dispersión (Scatter Chart) con cálculo automático de vector de fuerza y postura dominante|Presentación PowerPoint (.pptx 16:9 Widescreen) editable en Slide Master con Pirámide de Minto, Action Titles y Board Decision Gateway|Guía Metodológica Oficial en PDF (5 páginas) con demostraciones matemáticas, caso industrial y FAQ de Consejo|Compatibilidad garantizada al 100% con Microsoft Excel y Google Sheets sin macros complejas"
   checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/b7f8cf34-a569-426d-b41c-5fde52640e61"
   button_text="Descargar Pack Completo (.ZIP) • 5€"

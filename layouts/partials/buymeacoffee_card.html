@@ -16,7 +16,7 @@
             <p class="bmc-support-desc">{{ $desc }}</p>
         </div>
     </div>
-    <a class="bmc-support-btn{{ if $isLS }} lemonsqueezy-button{{ end }}" href="{{ $bmcUrl | safeURL }}"{{ if not $isLS }} target="_blank" rel="noopener noreferrer"{{ end }} data-bmc-placement="{{ $placement }}" data-product-name="Buy Me a Coffee / Support Datalaria">
+    <a class="bmc-support-btn{{ if $isLS }} lemonsqueezy-button{{ end }}" href="{{ $bmcUrl | safeURL }}" rel="nofollow noopener"{{ if not $isLS }} target="_blank"{{ end }} data-bmc-placement="{{ $placement }}" data-product-name="Buy Me a Coffee / Support Datalaria">
         {{ partial "svg.html" (dict "name" "buymeacoffee") }}
         <span>{{ $cta }}</span>
         <span class="bmc-support-arrow" aria-hidden="true">→</span>

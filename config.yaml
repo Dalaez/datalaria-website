@@ -52,8 +52,6 @@ params:
       url: "https://www.linkedin.com/in/daniel-al%C3%A1ez-ria%C3%B1o/"
     - name: twitter
       url: "https://twitter.com/Dalaez"
-    - name: buymeacoffee
-      url: "https://datalaria.lemonsqueezy.com/checkout/buy/20c2be9a-44ec-44ea-ada4-daa307909e26?embed=1"
   
   # Twitter Cards site handle
   social:

@@ -38,7 +38,7 @@
         {{- $isLS := in $bmcUrl "lemonsqueezy.com" -}}
         <div class="newsletter-bmc-row">
             <span class="newsletter-bmc-note">{{ $bmcNote }}</span>
-            <a class="newsletter-bmc-chip{{ if $isLS }} lemonsqueezy-button{{ end }}" href="{{ $bmcUrl | safeURL }}"{{ if not $isLS }} target="_blank" rel="noopener noreferrer"{{ end }} data-bmc-placement="newsletter_footer" data-product-name="Buy Me a Coffee / Support Datalaria">
+            <a class="newsletter-bmc-chip{{ if $isLS }} lemonsqueezy-button{{ end }}" href="{{ $bmcUrl | safeURL }}" rel="nofollow noopener"{{ if not $isLS }} target="_blank"{{ end }} data-bmc-placement="newsletter_footer" data-product-name="Buy Me a Coffee / Support Datalaria">
                 {{ partial "svg.html" (dict "name" "buymeacoffee") }}
                 <span>{{ $bmcBtn }}</span>
             </a>

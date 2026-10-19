@@ -39,6 +39,19 @@ flowchart TD
     style E fill:#0F172A,stroke:#D97706,stroke-width:2px,color:#FFFFFF
 {{< /mermaid >}}
 
+{{< product-card
+  variant="compact"
+  title="Executive Decision Pack: 5 Fuerzas de Porter Ponderadas & Atractivo de Industria"
+  price="6€"
+  original_price="35€"
+  badge="★ Estándar Consultoría Tier-1"
+  icon="📊"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/90206641-21f3-4e06-9163-9bb90b16cbc9"
+  button_text="Descargar Kit Ahora (.ZIP) • 6€"
+>}}
+¿Evaluando el atractivo de un sector o preparando un Comité de Inversión / M&A? Descarga directamente el modelo cuantitativo en Excel con Radar pentagonal dinámico, matriz de Economic Moat y presentación C-Level editable.
+{{< /product-card >}}
+
 ---
 
 ## 1. ¿Qué es el Análisis de las 5 Fuerzas de Porter? Fundamentos, Estructura del Sector y Objetivos
@@ -275,6 +288,8 @@ Para los líderes corporativos, consultores estratégicos, directores de M&A y r
   original_price="35€"
   badge="★ Estándar Consultoría Tier-1"
   icon="📊"
+  preview_image="preview-pack.png"
+  preview_caption="Vista previa real de los entregables incluidos: Motor Excel (.xlsx) con Radar Pentagonal y Matriz Moat, Presentación C-Level (.pptx 16:9) de 3 diapositivas y Guía Metodológica (.pdf) de 5 páginas."
   features="Motor Excel (.xlsx) con 4 pestañas interconectadas, fórmulas matriciales protegidas y gráfico Radar pentagonal dinámico|Matriz cartesiana Atractivo vs. Moat con diagnóstico de postura estratégica y semáforo financiero|Presentación PowerPoint (.pptx 16:9 Widescreen) editable con Pirámide de Minto, Action Titles y Board Decision Gateway|Guía Metodológica Oficial en PDF (5 páginas) con demostraciones matemáticas, caso industrial resuelto y FAQ de Consejo|Compatibilidad garantizada al 100% con Microsoft Excel y Google Sheets sin macros complejas"
   checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/90206641-21f3-4e06-9163-9bb90b16cbc9"
   button_text="Descargar Pack Completo (.ZIP) • 6€"

@@ -228,6 +228,10 @@ translationKey: resources
 <h3 class="kit-card-title">Quantitative SWOT & TOWS Matrix</h3>
 </div>
 </div>
+<div class="kit-card-preview" onclick="openModal('pack-dafo')" title="Expand official deliverables preview">
+<img src="/images/recursos/dafo-preview-en.png" alt="Preview Quantitative SWOT & TOWS Matrix" loading="lazy">
+<span class="kit-preview-zoom-pill">🔍 Preview Kit</span>
+</div>
 <p class="kit-card-desc">Numerical weighting of Strengths and Weaknesses, automated TOWS action planning and executive slide for Board approval.</p>
 <div class="kit-deliverables-row">
 <span class="deliv-chip">Excel .xlsx + Sheets</span>
@@ -244,7 +248,7 @@ translationKey: resources
 <button type="button" class="btn-kit-info" onclick="openModal('pack-dafo')">
 Details ℹ️
 </button>
-<a href="/en/posts/quantitative-swot-tows-matrix/" class="btn-kit-info" title="Read technical article">Technical Article 📖</a>
+<a href="/en/posts/quantitative-swot-tows-matrix/" class="btn-kit-info" title="Read technical guide">Guide 📖</a>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/b7f8cf34-a569-426d-b41c-5fde52640e61" class="btn-kit-buy lemonsqueezy-button">Download →</a>
 </div>
 </div>
@@ -262,6 +266,10 @@ Details ℹ️
 <h3 class="kit-card-title">Weighted Porter's 5 Forces</h3>
 </div>
 </div>
+<div class="kit-card-preview" onclick="openModal('pack-porter')" title="Expand official deliverables preview">
+<img src="/images/recursos/porter-preview-en.png" alt="Preview Weighted Porter's 5 Forces" loading="lazy">
+<span class="kit-preview-zoom-pill">🔍 Preview Kit</span>
+</div>
 <p class="kit-card-desc">Quantitative scoring per competitive force, dynamic radar chart and defensible Economic Moat spread diagnostic.</p>
 <div class="kit-deliverables-row">
 <span class="deliv-chip">Excel .xlsx + Sheets</span>
@@ -278,7 +286,7 @@ Details ℹ️
 <button type="button" class="btn-kit-info" onclick="openModal('pack-porter')">
 Details ℹ️
 </button>
-<span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Methodological guide coming soon on the blog">Guide ⏳</span>
+<a href="/en/posts/quantitative-porter-5-forces/" class="btn-kit-info" title="Read technical guide">Guide 📖</a>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/90206641-21f3-4e06-9163-9bb90b16cbc9" class="btn-kit-buy lemonsqueezy-button">Download →</a>
 </div>
 </div>
@@ -296,6 +304,10 @@ Details ℹ️
 <h3 class="kit-card-title">Quantitative PESTEL (Severity & Volatility)</h3>
 </div>
 </div>
+<div class="kit-card-preview" onclick="openModal('pack-pestel')" title="Expand official deliverables preview">
+<img src="/images/recursos/pestel-preview-en.png" alt="Preview Quantitative PESTEL Matrix" loading="lazy">
+<span class="kit-preview-zoom-pill">🔍 Preview Kit</span>
+</div>
 <p class="kit-card-desc">Assessment of 6 macro factors with composite risk indices and early warning heatmaps for regulatory and economic shocks.</p>
 <div class="kit-deliverables-row">
 <span class="deliv-chip">Excel .xlsx + Sheets</span>
@@ -312,7 +324,7 @@ Details ℹ️
 <button type="button" class="btn-kit-info" onclick="openModal('pack-pestel')">
 Details ℹ️
 </button>
-<span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Methodological guide coming soon on the blog">Guide ⏳</span>
+<a href="/en/posts/quantitative-pestel-matrix/" class="btn-kit-info" title="Read technical guide">Guide 📖</a>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/17a0781c-8001-47df-9cdd-25923041e1de" class="btn-kit-buy lemonsqueezy-button">Download →</a>
 </div>
 </div>
@@ -1235,6 +1247,7 @@ Details ℹ️
     </div>
 
     <div class="modal-body">
+      <div id="modal-preview-wrap" style="display: none;"></div>
       <p id="modal-desc" style="color: var(--text-muted); line-height: 1.5; margin-bottom: 14px;">
         Detailed kit description.
       </p>
@@ -1317,6 +1330,7 @@ Details ℹ️
       price: "5€",
       origPrice: "19€",
       icon: "🎯",
+      previewImg: "/images/recursos/dafo-preview-en.png",
       delivs: ["Excel .xlsx + Sheets", "PowerPoint 16:9", "PDF Guide"],
       desc: "Numerical weighting of Strengths and Weaknesses, automated TOWS action planning and executive slide for Board approval.",
       features: [
@@ -1340,6 +1354,7 @@ Details ℹ️
       price: "6€",
       origPrice: "19€",
       icon: "🛡️",
+      previewImg: "/images/recursos/porter-preview-en.png",
       delivs: ["Excel .xlsx + Sheets", "PowerPoint 16:9", "PDF Guide"],
       desc: "Quantitative scoring per competitive force, dynamic radar chart and defensible Economic Moat spread diagnostic.",
       features: [
@@ -1349,7 +1364,7 @@ Details ℹ️
         "Methodology guide covering barrier dynamics and industry rents"
       ],
       checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/90206641-21f3-4e06-9163-9bb90b16cbc9",
-      guideUrl: null
+      guideUrl: "/en/posts/quantitative-porter-5-forces/"
     },
 
     // 3. PESTEL Matrix (AVAILABLE)
@@ -1363,6 +1378,7 @@ Details ℹ️
       price: "5€",
       origPrice: "19€",
       icon: "🌐",
+      previewImg: "/images/recursos/pestel-preview-en.png",
       delivs: ["Excel .xlsx + Sheets", "PowerPoint 16:9", "PDF Guide"],
       desc: "Assessment of 6 macro factors with composite risk indices and early warning heatmaps for regulatory and economic shocks.",
       features: [
@@ -1372,7 +1388,7 @@ Details ℹ️
         "PDF scenario planning and macro stress-testing guide"
       ],
       checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/17a0781c-8001-47df-9cdd-25923041e1de",
-      guideUrl: null
+      guideUrl: "/en/posts/quantitative-pestel-matrix/"
     },
 
     // 4. Dynamic BCG Matrix (AVAILABLE)
@@ -1729,6 +1745,13 @@ Details ℹ️
               </div>
             </div>
 
+            ${kit.previewImg ? `
+              <div class="kit-card-preview" onclick="openModal('${kit.id}')" title="Expand official deliverables preview">
+                <img src="${kit.previewImg}" alt="Preview ${kit.title}" loading="lazy">
+                <span class="kit-preview-zoom-pill">🔍 Preview Kit</span>
+              </div>
+            ` : ''}
+
             <p class="kit-card-desc">${kit.desc}</p>
 
             <div class="kit-deliverables-row">
@@ -1842,6 +1865,22 @@ Details ℹ️
     document.getElementById('modal-desc').textContent = kit.desc;
     document.getElementById('modal-price').textContent = `${kit.price} (was ${kit.origPrice})`;
 
+    const previewWrap = document.getElementById('modal-preview-wrap');
+    if (previewWrap) {
+      if (kit.previewImg) {
+        previewWrap.style.display = 'block';
+        previewWrap.innerHTML = `
+          <a href="${kit.previewImg}" target="_blank" rel="noopener" class="modal-preview-link" title="Click to open full-resolution preview (1600x980)">
+            <img src="${kit.previewImg}" alt="Preview ${kit.title}">
+            <div class="modal-preview-caption">🔍 Click image to expand full-resolution official deliverables preview (Excel + 16:9 PowerPoint + PDF Guide)</div>
+          </a>
+        `;
+      } else {
+        previewWrap.style.display = 'none';
+        previewWrap.innerHTML = '';
+      }
+    }
+
     const delivsEl = document.getElementById('modal-delivs');
     delivsEl.innerHTML = kit.delivs.map(d => `<span class="deliv-chip" style="font-size: 12px; padding: 4px 8px;">${d}</span>`).join('');
 
@@ -1865,14 +1904,14 @@ Details ℹ️
     const guideBtn = document.getElementById('modal-guide-link');
     if (kit.guideUrl) {
       guideBtn.href = kit.guideUrl;
-      guideBtn.innerHTML = 'Leer Guía Gratuita 📖';
+      guideBtn.innerHTML = 'Read Free Guide 📖';
       guideBtn.style.display = 'inline-flex';
       guideBtn.style.opacity = '1';
       guideBtn.style.cursor = 'pointer';
       guideBtn.style.borderStyle = 'solid';
     } else {
       guideBtn.removeAttribute('href');
-      guideBtn.innerHTML = 'Guía Próximamente ⏳';
+      guideBtn.innerHTML = 'Guide Coming Soon ⏳';
       guideBtn.style.display = 'inline-flex';
       guideBtn.style.opacity = '0.55';
       guideBtn.style.cursor = 'default';

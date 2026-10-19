@@ -39,6 +39,19 @@ flowchart TD
     style E fill:#0F172A,stroke:#D97706,stroke-width:2px,color:#FFFFFF
 {{< /mermaid >}}
 
+{{< product-card
+  variant="compact"
+  title="Executive Decision Pack: Quantitative SWOT & TOWS Matrix"
+  price="5€"
+  original_price="29€"
+  badge="★ Tier-1 Consulting Standard"
+  icon="🎯"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/b7f8cf34-a569-426d-b41c-5fde52640e61"
+  button_text="Download Complete Kit (.ZIP) • 5€"
+>}}
+Preparing for an upcoming Board of Directors or Strategy Committee? Save 15+ hours of spreadsheet modeling and slide design by downloading the ready-to-use mathematical engine and Minto boardroom deck.
+{{< /product-card >}}
+
 ---
 
 ## 1. What is a SWOT Analysis? Fundamentals, Quadrants & Core Objectives
@@ -448,6 +461,8 @@ For corporate leaders, strategy consultants, M&A directors, and CFOs seeking to 
   original_price="29€"
   badge="★ Tier-1 Consulting Standard"
   icon="🎯"
+  preview_image="preview-pack.png"
+  preview_caption="Official preview of the 3 deliverables included in the .ZIP archive: Excel Workbook (.xlsx) with 4 tabs & Cartesian chart, 3-slide Widescreen 16:9 C-Level PowerPoint Deck (.pptx), and 5-page Methodology Guide (.pdf)."
   features="Advanced Excel Model (.xlsx) with 4 interconnected tabs, protected matrix formulas, and 10 dynamic factors|Cartesian Scatter Chart with real-time vector momentum calculation and dominant posture logic|C-Level PowerPoint Presentation (.pptx 16:9 Widescreen) built on Slide Master with Minto Action Titles and Board Decision Gateway|Official Methodology Guide in PDF (5 pages) with mathematical proofs, case study, and Boardroom FAQ|100% Guaranteed Compatibility with Microsoft Excel and Google Sheets without VBA macros"
   checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/b7f8cf34-a569-426d-b41c-5fde52640e61"
   button_text="Download Complete Pack (.ZIP) • 5€"

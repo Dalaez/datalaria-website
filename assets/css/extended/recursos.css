@@ -1494,3 +1494,84 @@ body.dark {
     width: 100%;
   }
 }
+
+/* ==========================================================================
+   VISTA PREVIA VISUAL EN TARJETAS DE CATÁLOGO Y MODAL (v2.2)
+   ========================================================================== */
+.kit-card-preview {
+  position: relative;
+  width: 100%;
+  margin: 2px 0 12px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  background: #0b1120;
+  cursor: pointer;
+  aspect-ratio: 1600 / 980;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.kit-card-preview:hover {
+  border-color: var(--accent);
+  transform: scale(1.01);
+  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.22);
+}
+.kit-card-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.kit-preview-zoom-pill {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(15, 23, 42, 0.88);
+  color: #f8fafc;
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+  backdrop-filter: blur(4px);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  pointer-events: none;
+  transition: background 0.15s ease;
+}
+.kit-card-preview:hover .kit-preview-zoom-pill {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: #ffffff;
+}
+.modal-box {
+  max-width: 720px;
+}
+.modal-preview-link {
+  display: block;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  background: #0b1120;
+  margin-bottom: 14px;
+  position: relative;
+  transition: border-color 0.15s ease;
+}
+.modal-preview-link:hover {
+  border-color: var(--accent);
+}
+.modal-preview-link img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.modal-preview-caption {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 6px 10px;
+  background: var(--bg-subtle);
+  border-top: 1px solid var(--border);
+}
+

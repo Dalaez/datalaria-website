@@ -39,6 +39,19 @@ flowchart TD
     style E fill:#0F172A,stroke:#D97706,stroke-width:2px,color:#FFFFFF
 {{< /mermaid >}}
 
+{{< product-card
+  variant="compact"
+  title="Executive Decision Pack: Weighted Porter's 5 Forces & Industry Attractiveness"
+  price="6€"
+  original_price="35€"
+  badge="★ Tier-1 Consulting Standard"
+  icon="📊"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/90206641-21f3-4e06-9163-9bb90b16cbc9"
+  button_text="Download Complete Kit (.ZIP) • 6€"
+>}}
+Preparing an industry assessment, M&A due diligence, or Board Strategy review? Download the ready-to-use Excel quantitative model with dynamic pentagonal Radar chart, Economic Moat matrix, and 16:9 boardroom deck.
+{{< /product-card >}}
+
 ---
 
 ## 1. What is Porter's 5 Forces Analysis? Fundamentals, Industry Structure & Core Objectives
@@ -275,6 +288,8 @@ For corporate leaders, strategy consultants, M&A directors, and CFOs seeking to 
   original_price="35€"
   badge="★ Tier-1 Consulting Standard"
   icon="📊"
+  preview_image="preview-pack.png"
+  preview_caption="Official preview of the included deliverables: Excel Engine (.xlsx) with Pentagonal Radar & Moat Matrix, 3-Slide C-Level PowerPoint Deck (.pptx 16:9), and 5-Page Methodology Guide (.pdf)."
   features="Excel (.xlsx) Model with 4 interconnected tabs, protected formulas, and dynamic pentagonal Radar Chart|Cartesian Attractiveness vs. Moat Matrix with automated strategic quadrant diagnosis|16:9 Widescreen Boardroom Presentation (.pptx) with Minto Pyramid Action Titles and Decision Gateway|5-Page Official Methodology Guide (PDF) with mathematical derivations, industrial case study, and Board FAQ|100% Native compatibility guaranteed with Microsoft Excel and Google Sheets without macros"
   checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/90206641-21f3-4e06-9163-9bb90b16cbc9"
   button_text="Download Complete Pack (.ZIP) • 6€"

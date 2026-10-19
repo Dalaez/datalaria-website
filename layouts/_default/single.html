@@ -49,8 +49,9 @@
       <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
       {{- end }}
     </ul>
-    {{- if and (eq .Section "posts") (not .Params.disableBuyMeACoffee) }}
-    {{- partial "buymeacoffee_card.html" (dict "placement" "post_footer") }}
+    {{- $isAbout := or (eq .File.TranslationBaseName "sobre-mi") (eq .File.TranslationBaseName "about") }}
+    {{- if and (or (eq .Section "posts") $isAbout) (not .Params.disableBuyMeACoffee) }}
+    {{- partial "buymeacoffee_card.html" (dict "placement" (cond $isAbout "about_page" "post_footer")) }}
     {{- end }}
     {{- if (.Param "ShowPostNavLinks") }}
     {{- partial "post_nav_links.html" . }}

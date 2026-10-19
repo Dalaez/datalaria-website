@@ -469,19 +469,23 @@
 
     {{- /* ======================= SOCIAL (bottom) ======================= */}}
     {{- with site.Params.socialIcons }}
-    {{- $bmcLabel := cond $isES "Invítame a un café" "Buy me a coffee" }}
-    {{- $labels := dict "github" "GitHub" "linkedin" "LinkedIn" "twitter" "X / Twitter" "buymeacoffee" $bmcLabel }}
+    {{- $labels := dict "github" "GitHub" "linkedin" "LinkedIn" "twitter" "X / Twitter" }}
     <section class="dlh-social">
         <div class="dlh-social-label">{{ $t.social }}</div>
         <div class="dlh-social-links">
             {{- range . }}
-            {{- $nameLower := lower .name }}
-            {{- $isBmc := eq $nameLower "buymeacoffee" }}
-            {{- $isLS := and $isBmc (in .url "lemonsqueezy.com") }}
-            {{- $label := index $labels $nameLower | default (.name | title) }}
-            <a class="dlh-chip{{ if $isBmc }} dlh-chip--bmc{{ end }}{{ if $isLS }} lemonsqueezy-button{{ end }}" href="{{ trim .url " " | safeURL }}"{{ if not $isLS }} target="_blank" rel="noopener noreferrer me"{{ end }} title="{{ $label }}"{{ if $isBmc }} data-bmc-placement="home_social_chip" data-product-name="Buy Me a Coffee / Support Datalaria"{{ end }}>
+            {{- $label := index $labels (lower .name) | default (.name | title) }}
+            <a class="dlh-chip" href="{{ trim .url " " | safeURL }}" target="_blank" rel="noopener noreferrer me" title="{{ $label }}">
                 {{ partial "svg.html" . }}
                 <span>{{ $label }}</span>
+            </a>
+            {{- end }}
+            {{- with site.Params.buyMeACoffeeUrl }}
+            {{- $bmcLabel := cond $isES "Invítame a un café" "Buy me a coffee" }}
+            {{- $isLS := in . "lemonsqueezy.com" }}
+            <a class="dlh-chip dlh-chip--bmc{{ if $isLS }} lemonsqueezy-button{{ end }}" href="{{ trim . " " | safeURL }}" rel="nofollow noopener"{{ if not $isLS }} target="_blank"{{ end }} title="{{ $bmcLabel }}" data-bmc-placement="home_social_chip" data-product-name="Buy Me a Coffee / Support Datalaria">
+                {{ partial "svg.html" (dict "name" "buymeacoffee") }}
+                <span>{{ $bmcLabel }}</span>
             </a>
             {{- end }}
         </div>

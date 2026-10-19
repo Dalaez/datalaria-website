@@ -1,5 +1,7 @@
 {{- /* Shortcode: product-card.html - Executive Decision Pack */ -}}
 {{- $isES := eq $.Page.Language.Lang "es" -}}
+{{- $variant := .Get "variant" | default "full" -}}
+{{- $isCompact := or (eq $variant "compact") (eq (.Get "compact") "true") -}}
 {{- $title := .Get "title" | default "Executive Decision Pack" -}}
 {{- $category := .Get "category" | default (cond $isES "Estrategia Corporativa & Finanzas C-Level" "Corporate Strategy & Boardroom Decision Support") -}}
 {{- $price := .Get "price" | default "5€" -}}
@@ -7,6 +9,8 @@
 {{- $badge := .Get "badge" | default (cond $isES "⭐ Estándar Consultoría Tier-1" "⭐ Tier-1 Consulting Standard") -}}
 {{- $icon := .Get "icon" | default "🎯" -}}
 {{- $features := .Get "features" | default "" -}}
+{{- $previewImage := .Get "preview_image" | default "" -}}
+{{- $previewCaption := .Get "preview_caption" | default (cond $isES "Vista previa de entregables: Modelo Excel (.xlsx) + Presentación Ejecutiva 16:9 (.pptx)" "Deliverables preview: Excel Model (.xlsx) + 16:9 Executive Presentation (.pptx)") -}}
 {{- $rawCheckout := .Get "checkout_url" | default "#" -}}
 {{- $checkoutUrl := $rawCheckout -}}
 {{- if and (strings.Contains $rawCheckout "lemonsqueezy.com") (not (strings.Contains $rawCheckout "embed=1")) -}}
@@ -19,12 +23,73 @@
 {{- $buttonText := .Get "button_text" | default (cond $isES (printf "Descargar Pack Completo (.ZIP) • %s" $price) (printf "Download Complete Pack (.ZIP) • %s" $price)) -}}
 {{- $guideUrl := .Get "guide_url" | default "" -}}
 {{- $guideText := .Get "guide_text" | default (cond $isES "Leer artículo técnico" "Read technical article") -}}
+{{- $detailsTarget := .Get "details_target" | default "#executive-pack" -}}
+{{- $detailsText := .Get "details_text" | default (cond $isES "Ver especificaciones del Kit ↓" "View Kit specifications ↓") -}}
 {{- $defaultDeliverables := cond $isES "Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Guía Metodológica PDF" "Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|PDF Methodology Guide" -}}
 {{- $deliverables := .Get "deliverables" | default $defaultDeliverables -}}
 {{- $status := .Get "status" | default "available" -}}
 {{- $isAvailable := eq $status "available" -}}
+{{- $cardId := .Get "id" | default (cond $isCompact "executive-pack-top" "executive-pack") -}}
 
-<div class="executive-product-card {{- if not $isAvailable }} card-coming-soon{{ end }}" id="{{ .Get "id" | default "executive-pack" }}">
+{{- if $isCompact -}}
+<div class="executive-product-card epc-compact {{- if not $isAvailable }} card-coming-soon{{ end }}" id="{{ $cardId }}">
+  <div class="epc-compact-top">
+    <div class="epc-compact-info">
+      <div class="epc-compact-badges">
+        <span class="product-badge">{{ $badge }}</span>
+        <span class="epc-fasttrack-tag">{{ if $isES }}⚡ Listo para Comité de Dirección{{ else }}⚡ Ready for Executive Boardroom{{ end }}</span>
+      </div>
+      <div class="epc-compact-title-row">
+        <span class="epc-compact-icon" aria-hidden="true">{{ $icon }}</span>
+        <h3 class="product-title">{{ $title }}</h3>
+      </div>
+      {{- if .Inner }}
+      <div class="epc-compact-desc">
+        {{ .Inner | markdownify }}
+      </div>
+      {{- end }}
+      <div class="deliverables-tags epc-compact-pills">
+        {{- range (split $deliverables "|") }}
+        <span class="deliverable-pill">
+          {{- if in . "Excel" -}}
+          <svg class="pill-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="8" y1="13" x2="16" y2="17"></line><line x1="16" y1="13" x2="8" y2="17"></line></svg>
+          {{- else if in . "PowerPoint" -}}
+          <svg class="pill-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          {{- else -}}
+          <svg class="pill-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          {{- end -}}
+          {{ . }}
+        </span>
+        {{- end }}
+      </div>
+    </div>
+
+    <div class="epc-compact-cta-box">
+      <div class="product-price-row">
+        <span class="price-current">{{ $price }}</span>
+        {{- if $originalPrice }}
+        <span class="price-original">{{ $originalPrice }}</span>
+        {{- end }}
+      </div>
+      <span class="price-micro-note">{{ if $isES }}Pago único • Descarga inmediata (.ZIP){{ else }}One-time payment • Instant download (.ZIP){{ end }}</span>
+      {{- if $isAvailable }}
+      <a href="{{ $checkoutUrl }}"
+         class="product-cta-btn lemonsqueezy-button"
+         data-product-name="{{ $title }}"
+         target="_blank"
+         rel="noopener">
+        <svg class="cta-cart-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span>{{ $buttonText }}</span>
+      </a>
+      {{- end }}
+      <a href="{{ $detailsTarget }}" class="epc-compact-scroll-link">{{ $detailsText }}</a>
+    </div>
+  </div>
+</div>
+{{- else -}}
+<div class="executive-product-card {{- if not $isAvailable }} card-coming-soon{{ end }}" id="{{ $cardId }}">
   {{- if $badge }}
   <div class="product-badge {{- if not $isAvailable }} badge-upcoming{{ end }}">{{ $badge }}</div>
   {{- else if not $isAvailable }}
@@ -58,6 +123,15 @@
       {{- end }}
     </div>
   </div>
+
+  {{- if $previewImage }}
+  <div class="product-preview-showcase">
+    <a href="{{ $previewImage }}" target="_blank" rel="noopener" class="product-preview-link" title="{{ if $isES }}Clic para ampliar vista previa en alta resolución (1600×980){{ else }}Click to enlarge high-resolution preview (1600×980){{ end }}">
+      <img src="{{ $previewImage }}" alt="{{ $title }}" loading="lazy" />
+    </a>
+    <span class="product-preview-caption">🔍 {{ $previewCaption }} {{ if $isES }}(Clic para ampliar){{ else }}(Click to enlarge){{ end }}</span>
+  </div>
+  {{- end }}
 
   {{- if .Inner }}
   <div class="product-description">
@@ -135,7 +209,10 @@
     {{- end }}
   </div>
 </div>
+{{- end -}}
 
+{{- if not ($.Page.Scratch.Get "epc_styles_loaded") -}}
+{{- $.Page.Scratch.Set "epc_styles_loaded" true -}}
 <style>
 /* Executive Decision Pack Product Card Styles */
 .executive-product-card {
@@ -503,7 +580,150 @@ body.dark .executive-product-card .product-cta-btn {
   line-height: 1.3;
 }
 
+/* Preview Image Showcase */
+.executive-product-card .product-preview-showcase {
+  margin: 16px 0;
+  border: 1px solid var(--epc-border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--epc-mono-bg);
+}
+
+.executive-product-card .product-preview-showcase img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 !important;
+  border-bottom: 1px solid var(--epc-border);
+}
+
+.executive-product-card .product-preview-caption {
+  display: block;
+  padding: 8px 12px;
+  font-size: 0.76rem;
+  color: var(--epc-secondary);
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Compact Fast-Track Banner (Above the Fold) */
+.executive-product-card.epc-compact {
+  padding: 18px 22px;
+  margin: 26px 0;
+  background: linear-gradient(135deg, var(--epc-bg) 0%, var(--epc-accent-bg) 100%);
+  border: 1px solid var(--epc-accent);
+  border-left: 5px solid var(--epc-accent);
+}
+
+.executive-product-card.epc-compact .epc-compact-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.executive-product-card.epc-compact .epc-compact-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.executive-product-card.epc-compact .epc-compact-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.executive-product-card.epc-compact .product-badge {
+  margin-bottom: 0;
+}
+
+.executive-product-card.epc-compact .epc-fasttrack-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  padding: 3px 9px;
+  border-radius: 9999px;
+  line-height: 1;
+}
+
+.executive-product-card.epc-compact .epc-compact-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.executive-product-card.epc-compact .epc-compact-icon {
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.executive-product-card.epc-compact .product-title {
+  font-size: 1.08rem;
+  margin: 0;
+}
+
+.executive-product-card.epc-compact .epc-compact-desc {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--epc-secondary);
+  margin: 4px 0 10px 0;
+}
+
+.executive-product-card.epc-compact .epc-compact-desc p {
+  margin: 0;
+}
+
+.executive-product-card.epc-compact .epc-compact-pills {
+  margin-top: 8px;
+}
+
+.executive-product-card.epc-compact .epc-compact-cta-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 6px;
+  flex-shrink: 0;
+  padding-left: 18px;
+  border-left: 1px solid var(--epc-border);
+}
+
+.executive-product-card.epc-compact .epc-compact-scroll-link {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--epc-accent) !important;
+  text-decoration: none !important;
+  margin-top: 2px;
+}
+
+.executive-product-card.epc-compact .epc-compact-scroll-link:hover {
+  text-decoration: underline !important;
+}
+
 /* Responsive */
+@media (max-width: 720px) {
+  .executive-product-card.epc-compact .epc-compact-top {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+  .executive-product-card.epc-compact .epc-compact-cta-box {
+    align-items: stretch;
+    padding-left: 0;
+    padding-top: 12px;
+    border-left: none;
+    border-top: 1px solid var(--epc-border);
+  }
+  .executive-product-card.epc-compact .epc-compact-scroll-link {
+    text-align: center;
+  }
+}
+
 @media (max-width: 640px) {
   .executive-product-card {
     padding: 18px 16px;
@@ -539,3 +759,4 @@ body.dark .executive-product-card .product-cta-btn {
   }
 }
 </style>
+{{- end -}}

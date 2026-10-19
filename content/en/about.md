@@ -41,5 +41,3 @@ You can contact me via the [Contact page](/en/contact/) or directly at [contacto
 **Follow me.**
 
 If you like what you read on the blog and want to stay up to date with new posts, you can subscribe to the newsletter found by scrolling down below 👇
-
-{{< buymeacoffee placement="about_page" >}}
