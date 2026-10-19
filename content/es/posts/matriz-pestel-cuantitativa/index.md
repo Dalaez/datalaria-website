@@ -1,6 +1,6 @@
 ---
 title: "Matriz PESTEL Cuantitativa: Severidad, Volatilidad y Riesgo Macro para Comités de Dirección (C-Level)"
-date: 2026-10-19
+date: 2026-10-24
 draft: false
 category: "Artículos Técnicos"
 categories: ["Estrategia Empresarial", "Gestión de Riesgos", "Finanzas Corporativas", "Management"]

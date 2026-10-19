@@ -1,6 +1,6 @@
 ---
 title: "Quantitative PESTEL Matrix: Severity, Volatility & Macro Risk for Executive Boardrooms (C-Level)"
-date: 2026-10-19
+date: 2026-10-24
 draft: false
 category: "Technical Articles"
 categories: ["Corporate Strategy", "Risk Management", "Corporate Finance", "Executive Management"]
