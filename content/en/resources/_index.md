@@ -797,7 +797,7 @@ Details ℹ️
             <button type="button" class="btn-kit-info" onclick="openModal('pack-pestel')">
               Details ℹ️
             </button>
-            <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Methodological guide coming soon on the blog">Guide ⏳</span>
+            <a href="/en/posts/quantitative-pestel-matrix/" class="btn-kit-info" title="Read technical article">Technical Article 📖</a>
             <a href="https://datalaria.lemonsqueezy.com/checkout/buy/17a0781c-8001-47df-9cdd-25923041e1de" class="btn-kit-buy lemonsqueezy-button">Download →</a>
           </div>
         </div>
