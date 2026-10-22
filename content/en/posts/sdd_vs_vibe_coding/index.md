@@ -1,6 +1,6 @@
 ---
 title: "SDD (Spec-Driven Development) vs. Vibe Coding: Engineering Robust Software with AI in 2026"
-date: 2026-11-22
+date: 2026-11-19
 draft: false
 category: "Technical Articles"
 categories: ["Ingeniería", "Inteligencia Artificial", "DevOps"]

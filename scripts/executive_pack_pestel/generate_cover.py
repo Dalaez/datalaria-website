@@ -4,16 +4,20 @@
 generate_cover.py
 =================
 Genera programáticamente la imagen de portada cover.png de alta resolución
-(1200 x 630 px, proporción 1.91:1) para:
+(1200 x 630 px, proporción 1.91:1) optimizada con ZONA SEGURA (Safe Zone)
+para visualización perfecta tanto en página completa como en tarjetas de blog
+(aspect ratio 16:9 y 3:2, sin recortes en títulos, radar ni viñetas):
 - content/es/posts/matriz-pestel-cuantitativa/cover.png
 - content/en/posts/quantitative-pestel-matrix/cover.png
 
 Composición visual de estándar McKinsey / BCG:
-- Fondo: Degradado Dark Slate / Navy (#0B1120 a #0F172A y #1E293B) con malla técnica y cuadrantes.
+- Fondo: Degradado Dark Slate / Navy (#0B1120 a #0F172A y #1E293B) con malla técnica.
+- Safe Zone: Todo el contenido crítico está enmarcado entre X: 140px y 1060px (zona segura central de 920px),
+  garantizando que ninguna tarjeta de lista de posts o vista previa social recorte letras ni nodos.
 - Badge superior corporativo Datalaria con borde azul consultoría (#2563EB).
-- Título principal de alto contraste en blanco y oro ámbar (#F59E0B).
+- Título principal de alto impacto visual en blanco y oro ámbar (#F59E0B).
 - Subtítulo ejecutivo y balas de valor estratégico.
-- Elemento gráfico central: Radar hexagonal PESTEL con nodos (P, E, S, T, E, L) y polígono cuantitativo.
+- Elemento gráfico central derecho: Radar hexagonal PESTEL balanceado con nodos (P, E, S, T, E, L).
 - Píldoras de entregables: [📊 Excel + Sheets] [📑 PPTX 16:9 C-Level] [📄 Guía PDF].
 """
 
@@ -51,7 +55,7 @@ def draw_linear_gradient(draw, width, height, start_color, end_color):
     r2, g2, b2 = end_color
     for y in range(height):
         ratio_y = y / height
-        for x in range(0, width, 2):  # optimización por pasos
+        for x in range(0, width, 2):
             ratio_x = x / width
             blend = (ratio_x * 0.4 + ratio_y * 0.6)
             r = int(r1 + (r2 - r1) * blend)
@@ -62,14 +66,12 @@ def draw_linear_gradient(draw, width, height, start_color, end_color):
 
 def draw_technical_grid(draw, width, height):
     """Dibuja una malla técnica con cuadrículas y puntos sutiles."""
-    grid_color = (30, 41, 59, 120)  # Slate 800 sutil
     step = 40
     for x in range(0, width, step):
         draw.line([(x, 0), (x, height)], fill=(20, 30, 48), width=1)
     for y in range(0, height, step):
         draw.line([(0, y), (width, y)], fill=(20, 30, 48), width=1)
 
-    # Cruces sutiles en intersecciones cada 120px
     for x in range(60, width, 120):
         for y in range(60, height, 120):
             draw.line([(x - 3, y), (x + 3, y)], fill=(51, 65, 85), width=1)
@@ -77,7 +79,7 @@ def draw_technical_grid(draw, width, height):
 
 
 def draw_hexagon_radar(draw, center_x, center_y, max_radius, font_small, font_bold, lang='ES'):
-    """Dibuja el radar hexagonal de las 6 dimensiones PESTEL."""
+    """Dibuja el radar hexagonal de las 6 dimensiones PESTEL perfectamente encuadrado."""
     labels = [
         ("P", "Político" if lang == 'ES' else "Political", 3.82, (244, 63, 94)),     # Rose
         ("E", "Económico" if lang == 'ES' else "Economic", 4.10, (245, 158, 11)),   # Amber
@@ -99,7 +101,6 @@ def draw_hexagon_radar(draw, center_x, center_y, max_radius, font_small, font_bo
             py = center_y + r * math.sin(a)
             points.append((px, py))
         points.append(points[0])
-        # Dibujar líneas del nivel
         for p_idx in range(len(points) - 1):
             draw.line([points[p_idx], points[p_idx + 1]], fill=(51, 65, 85), width=1)
 
@@ -117,7 +118,7 @@ def draw_hexagon_radar(draw, center_x, center_y, max_radius, font_small, font_bo
         py = center_y + r_val * math.sin(a)
         data_points.append((px, py))
 
-    # Relleno translúcido simulado mediante líneas concéntricas
+    # Relleno simulado
     for step_ratio in [0.2, 0.4, 0.6, 0.8, 1.0]:
         inner_pts = []
         for px, py in data_points:
@@ -128,49 +129,55 @@ def draw_hexagon_radar(draw, center_x, center_y, max_radius, font_small, font_bo
         for p_idx in range(len(inner_pts) - 1):
             draw.line([inner_pts[p_idx], inner_pts[p_idx + 1]], fill=(37, 99, 235), width=2)
 
-    # Contorno exterior del polígono
     data_pts_closed = data_points + [data_points[0]]
     for p_idx in range(len(data_pts_closed) - 1):
         draw.line([data_pts_closed[p_idx], data_pts_closed[p_idx + 1]], fill=(56, 189, 248), width=3)
 
     # 4. Nodos de datos en cada vértice
     for px, py in data_points:
-        draw.ellipse([(px - 5, py - 5), (px + 5, py + 5)], fill=(255, 255, 255), outline=(37, 99, 235), width=2)
+        draw.ellipse([(px - 4, py - 4), (px + 4, py + 4)], fill=(255, 255, 255), outline=(37, 99, 235), width=2)
 
     # 5. Etiquetas de los 6 pilares en los extremos
+    label_r = max_radius + 26
     for (code, name, score, col), a in zip(labels, angles):
-        label_r = max_radius + 36
         lx = center_x + label_r * math.cos(a)
         ly = center_y + label_r * math.sin(a)
 
-        # Círculo insignia del pilar
-        node_r = 18
+        node_r = 15
         draw.ellipse([(lx - node_r, ly - node_r), (lx + node_r, ly + node_r)], fill=(15, 23, 42), outline=col, width=2)
-        # Letra pilar (P, E, S, T, E, L)
-        draw.text((lx - 5, ly - 8), code, fill=(255, 255, 255), font=font_bold)
+        draw.text((lx - 4, ly - 7), code, fill=(255, 255, 255), font=font_bold)
 
-        # Texto y Score debajo/al lado
         score_txt = f"{score:.1f}"
         if math.cos(a) > 0.3:
-            draw.text((lx + 24, ly - 10), name, fill=(241, 245, 249), font=font_bold)
-            draw.text((lx + 24, ly + 4), f"R: {score_txt}/5", fill=col, font=font_small)
+            draw.text((lx + 18, ly - 9), name, fill=(241, 245, 249), font=font_bold)
+            draw.text((lx + 18, ly + 4), f"R:{score_txt}", fill=col, font=font_small)
         elif math.cos(a) < -0.3:
-            draw.text((lx - 75, ly - 10), name, fill=(241, 245, 249), font=font_bold)
-            draw.text((lx - 75, ly + 4), f"R: {score_txt}/5", fill=col, font=font_small)
+            bbox_n = font_bold.getbbox(name)
+            w_n = bbox_n[2] - bbox_n[0]
+            draw.text((lx - 18 - w_n, ly - 9), name, fill=(241, 245, 249), font=font_bold)
+            draw.text((lx - 46, ly + 4), f"R:{score_txt}", fill=col, font=font_small)
         elif math.sin(a) < 0:
-            draw.text((lx - 25, ly - 36), f"{name} ({score_txt})", fill=(241, 245, 249), font=font_bold)
+            bbox_t = font_bold.getbbox(f"{name} ({score_txt})")
+            w_t = bbox_t[2] - bbox_t[0]
+            draw.text((lx - w_t // 2, ly - 28), f"{name} ({score_txt})", fill=(241, 245, 249), font=font_bold)
         else:
-            draw.text((lx - 25, ly + 22), f"{name} ({score_txt})", fill=(241, 245, 249), font=font_bold)
+            bbox_t = font_bold.getbbox(f"{name} ({score_txt})")
+            w_t = bbox_t[2] - bbox_t[0]
+            draw.text((lx - w_t // 2, ly + 18), f"{name} ({score_txt})", fill=(241, 245, 249), font=font_bold)
 
     # Badge central del índice consolidado
-    badge_w, badge_h = 130, 44
+    badge_w, badge_h = 110, 36
     bx1 = center_x - badge_w // 2
     by1 = center_y - badge_h // 2
-    draw.rounded_rectangle([(bx1, by1), (bx1 + badge_w, by1 + badge_h)], radius=8, fill=(15, 23, 42), outline=(56, 189, 248), width=2)
+    draw.rounded_rectangle([(bx1, by1), (bx1 + badge_w, by1 + badge_h)], radius=6, fill=(15, 23, 42), outline=(56, 189, 248), width=1)
     lbl_r = "R_comp = 3.82"
-    draw.text((bx1 + 14, by1 + 6), lbl_r, fill=(255, 255, 255), font=font_bold)
+    bbox_lbl = font_bold.getbbox(lbl_r)
+    w_lbl = bbox_lbl[2] - bbox_lbl[0]
+    draw.text((center_x - w_lbl // 2, by1 + 4), lbl_r, fill=(255, 255, 255), font=font_bold)
     sub_r = "RIESGO ELEVADO" if lang == 'ES' else "HIGH MACRO RISK"
-    draw.text((bx1 + 18, by1 + 24), sub_r, fill=(245, 158, 11), font=font_small)
+    bbox_sub = font_small.getbbox(sub_r)
+    w_sub = bbox_sub[2] - bbox_sub[0]
+    draw.text((center_x - w_sub // 2, by1 + 20), sub_r, fill=(245, 158, 11), font=font_small)
 
 
 def create_cover(lang='ES', out_path='cover.png'):
@@ -184,43 +191,47 @@ def create_cover(lang='ES', out_path='cover.png'):
     # 2. Malla técnica
     draw_technical_grid(draw, WIDTH, HEIGHT)
 
-    # Fuentes
-    font_kicker = get_font("segoeuib.ttf", 12)
-    font_title_large = get_font("segoeuib.ttf", 44)
-    font_subtitle = get_font("segoeui.ttf", 17)
-    font_body = get_font("segoeui.ttf", 13)
-    font_bold = get_font("segoeuib.ttf", 13)
-    font_small = get_font("segoeui.ttf", 10)
-    font_pill = get_font("segoeuib.ttf", 13)
+    # Fuentes ajustadas proporcionalmente
+    font_kicker = get_font("segoeuib.ttf", 11)
+    font_title_large = get_font("segoeuib.ttf", 35)
+    font_subtitle = get_font("segoeui.ttf", 14)
+    font_body = get_font("segoeui.ttf", 11)
+    font_bold = get_font("segoeuib.ttf", 12)
+    font_small = get_font("segoeui.ttf", 9)
+    font_pill = get_font("segoeuib.ttf", 11)
+
+    # MARGEN SEGURO IZQUIERDO Y DERECHO (Safe Zone [145, 1055])
+    safe_left = 145
+    safe_right = 1055
 
     # 3. Badge Superior Corporativo
     badge_text = "DATALARIA EXECUTIVE DECISION PACK • MCKINSEY & BCG STANDARD"
-    b_x, b_y = 65, 52
-    b_w, b_h = 490, 30
-    draw.rounded_rectangle([(b_x, b_y), (b_x + b_w, b_y + b_h)], radius=6, fill=(15, 23, 42), outline=(37, 99, 235), width=1)
-    draw.text((b_x + 16, b_y + 8), badge_text, fill=(56, 189, 248), font=font_kicker)
+    b_x, b_y = safe_left, 52
+    b_w, b_h = 445, 26
+    draw.rounded_rectangle([(b_x, b_y), (b_x + b_w, b_y + b_h)], radius=5, fill=(15, 23, 42), outline=(37, 99, 235), width=1)
+    draw.text((b_x + 14, b_y + 6), badge_text, fill=(56, 189, 248), font=font_kicker)
 
     # 4. Título Principal
-    t_y = 104
+    t_y = 92
     title_p1 = "MATRIZ PESTEL " if lang == 'ES' else "QUANTITATIVE "
     title_p2 = "CUANTITATIVA" if lang == 'ES' else "PESTEL MATRIX"
 
-    draw.text((65, t_y), title_p1, fill=(255, 255, 255), font=font_title_large)
+    draw.text((safe_left, t_y), title_p1, fill=(255, 255, 255), font=font_title_large)
     bbox_p1 = font_title_large.getbbox(title_p1)
     p1_width = bbox_p1[2] - bbox_p1[0]
-    draw.text((65 + p1_width, t_y), title_p2, fill=(245, 158, 11), font=font_title_large)
+    draw.text((safe_left + p1_width, t_y), title_p2, fill=(245, 158, 11), font=font_title_large)
 
     # 5. Subtítulo
-    sub_y = 168
+    sub_y = 146
     subtitle = (
-        "Severidad del Impacto, Volatilidad & Resiliencia Macro para Comités de Dirección"
+        "Severidad del Impacto, Volatilidad & Resiliencia Macro para Comités"
         if lang == 'ES' else
         "Severity, Volatility & Macro Resilience for Executive Board Decisions"
     )
-    draw.text((65, sub_y), subtitle, fill=(203, 213, 225), font=font_subtitle)
+    draw.text((safe_left, sub_y), subtitle, fill=(203, 213, 225), font=font_subtitle)
 
     # Línea decorativa horizontal
-    draw.line([(65, 206), (560, 206)], fill=(37, 99, 235), width=2)
+    draw.line([(safe_left, 176), (620, 176)], fill=(37, 99, 235), width=2)
 
     # 6. Balas de valor estratégico
     bullets = [
@@ -234,43 +245,42 @@ def create_cover(lang='ES', out_path='cover.png'):
         ("Contingency Roadmap & Board Gateway", "8 C-Suite initiatives and 3 binding Board resolutions")
     ]
 
-    bullet_y = 230
+    bullet_y = 196
     for b_title, b_desc in bullets:
-        # Marcador de viñeta
-        draw.rounded_rectangle([(65, bullet_y + 4), (73, bullet_y + 12)], radius=2, fill=(37, 99, 235))
-        draw.text((85, bullet_y), b_title, fill=(255, 255, 255), font=font_bold)
-        draw.text((85, bullet_y + 20), b_desc, fill=(148, 163, 184), font=font_body)
-        bullet_y += 54
+        draw.rounded_rectangle([(safe_left, bullet_y + 3), (safe_left + 7, bullet_y + 10)], radius=2, fill=(37, 99, 235))
+        draw.text((safe_left + 16, bullet_y), b_title, fill=(255, 255, 255), font=font_bold)
+        draw.text((safe_left + 16, bullet_y + 17), b_desc, fill=(148, 163, 184), font=font_body)
+        bullet_y += 48
 
     # 7. Píldoras de Entregables (Bottom Left)
     pills = [
-        ("📊 Excel + Sheets", (37, 99, 235), (239, 246, 255), (29, 78, 216)),
-        ("📑 PPTX 16:9 C-Level", (217, 119, 6), (255, 251, 235), (146, 64, 14)),
-        ("📄 Guía PDF (5 págs)" if lang == 'ES' else "📄 PDF Guide (5 pgs)", (13, 148, 136), (240, 253, 250), (15, 118, 110))
+        ("📊 Excel + Sheets", (37, 99, 235)),
+        ("📑 PPTX 16:9 C-Level", (217, 119, 6)),
+        ("📄 Guía PDF (5 págs)" if lang == 'ES' else "📄 PDF Guide (5 pgs)", (13, 148, 136))
     ]
 
-    pill_x = 65
-    pill_y = 445
-    for p_txt, p_border, p_bg, p_fg in pills:
+    pill_x = safe_left
+    pill_y = 358
+    for p_txt, p_border in pills:
         bbox = font_pill.getbbox(p_txt)
-        pw = (bbox[2] - bbox[0]) + 30
-        ph = 36
-        draw.rounded_rectangle([(pill_x, pill_y), (pill_x + pw, pill_y + ph)], radius=18, fill=(15, 23, 42), outline=p_border, width=2)
-        draw.text((pill_x + 15, pill_y + 9), p_txt, fill=(255, 255, 255), font=font_pill)
-        pill_x += pw + 14
+        pw = (bbox[2] - bbox[0]) + 24
+        ph = 30
+        draw.rounded_rectangle([(pill_x, pill_y), (pill_x + pw, pill_y + ph)], radius=15, fill=(15, 23, 42), outline=p_border, width=1)
+        draw.text((pill_x + 12, pill_y + 7), p_txt, fill=(255, 255, 255), font=font_pill)
+        pill_x += pw + 10
 
     # 8. Barra inferior de pie
-    draw.line([(65, 545), (1135, 545)], fill=(51, 65, 85), width=1)
+    draw.line([(safe_left, 545), (safe_right, 545)], fill=(51, 65, 85), width=1)
     foot_left = "Datalaria.com • Official Executive Decision Pack 2026 • Confidential & Licensed"
     foot_right = "Descarga Directa Inmediata (.ZIP)" if lang == 'ES' else "Instant Direct Download (.ZIP)"
-    draw.text((65, 560), foot_left, fill=(100, 116, 139), font=font_small)
+    draw.text((safe_left, 558), foot_left, fill=(100, 116, 139), font=font_small)
     bbox_fr = font_small.getbbox(foot_right)
-    draw.text((1135 - (bbox_fr[2] - bbox_fr[0]), 560), foot_right, fill=(56, 189, 248), font=font_small)
+    draw.text((safe_right - (bbox_fr[2] - bbox_fr[0]), 558), foot_right, fill=(56, 189, 248), font=font_small)
 
     # 9. Elemento Gráfico Central: Radar Hexagonal PESTEL
-    radar_center_x = 880
-    radar_center_y = 285
-    radar_radius = 165
+    radar_center_x = 845
+    radar_center_y = 275
+    radar_radius = 118
     draw_hexagon_radar(draw, radar_center_x, radar_center_y, radar_radius, font_small, font_bold, lang=lang)
 
     # Guardar imagen en disco

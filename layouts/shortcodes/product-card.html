@@ -685,12 +685,27 @@ body.dark .executive-product-card .product-cta-btn {
 .executive-product-card.epc-compact .epc-compact-cta-box {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   gap: 6px;
   flex-shrink: 0;
-  padding-left: 18px;
+  min-width: 250px;
+  padding-left: 20px;
   border-left: 1px solid var(--epc-border);
+}
+
+.executive-product-card.epc-compact .epc-compact-cta-box .product-price-row {
+  justify-content: center;
+}
+
+.executive-product-card.epc-compact .epc-compact-cta-box .price-micro-note {
+  text-align: center;
+}
+
+.executive-product-card.epc-compact .epc-compact-cta-box .product-cta-btn {
+  width: 100%;
+  white-space: nowrap;
+  box-sizing: border-box;
 }
 
 .executive-product-card.epc-compact .epc-compact-scroll-link {
@@ -698,7 +713,9 @@ body.dark .executive-product-card .product-cta-btn {
   font-weight: 600;
   color: var(--epc-accent) !important;
   text-decoration: none !important;
-  margin-top: 2px;
+  margin-top: 4px;
+  text-align: center;
+  display: block;
 }
 
 .executive-product-card.epc-compact .epc-compact-scroll-link:hover {
@@ -706,18 +723,28 @@ body.dark .executive-product-card .product-cta-btn {
 }
 
 /* Responsive */
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .executive-product-card.epc-compact .epc-compact-top {
     flex-direction: column;
     align-items: stretch;
-    gap: 14px;
+    gap: 16px;
   }
   .executive-product-card.epc-compact .epc-compact-cta-box {
     align-items: stretch;
+    min-width: 0;
     padding-left: 0;
-    padding-top: 12px;
+    padding-top: 14px;
     border-left: none;
     border-top: 1px solid var(--epc-border);
+  }
+  .executive-product-card.epc-compact .epc-compact-cta-box .product-price-row {
+    justify-content: flex-start;
+  }
+  .executive-product-card.epc-compact .epc-compact-cta-box .price-micro-note {
+    text-align: left;
+  }
+  .executive-product-card.epc-compact .epc-compact-cta-box .product-cta-btn {
+    width: 100%;
   }
   .executive-product-card.epc-compact .epc-compact-scroll-link {
     text-align: center;

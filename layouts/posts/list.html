@@ -72,7 +72,10 @@
         {{- end }}
 
         {{- if $image }}
-        {{- $thumbnail := $image.Fill "300x200 Center" }}
+        {{- $thumbnail := $image }}
+        {{- if gt $image.Width 720 }}
+        {{- $thumbnail = $image.Resize "720x" }}
+        {{- end }}
         <div class="post-thumbnail-wrapper">
             <img class="post-thumbnail" src="{{ $thumbnail.RelPermalink }}" alt="{{ .Title }}" loading="lazy">
         </div>
