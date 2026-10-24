@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="es" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agentic Radar | Executive Dashboard</title>
+    <title>Agentic Radar | Executive Telemetry Dashboard — Datalaria</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -31,132 +31,268 @@
         }
     </style>
 </head>
-<body class="bg-darkblue text-gray-200 font-sans antialiased min-h-screen p-8">
-    <header class="flex justify-between items-center mb-10 border-b border-gray-800 pb-4">
-        <div>
-            <h1 class="text-3xl font-bold text-white tracking-widest uppercase">Agentic Radar</h1>
-            <p class="text-xs text-gray-400 mt-1 uppercase tracking-widest">Supply Chain Executive Telemetry</p>
-        </div>
-        <div class="flex items-center space-x-2">
-            <span class="relative flex h-3 w-3">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
-            </span>
-            <span class="text-sm font-mono text-emerald-500">SYSTEM ONLINE</span>
-        </div>
-    </header>
-
-    <main class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        
-        <!-- KPIs Section -->
-        <div class="col-span-1 lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="bg-tactical border border-gray-700 rounded-lg p-6 shadow-2xl flex flex-col justify-center items-start">
-                <h2 class="text-sm uppercase tracking-wider text-gray-400 mb-2">Total Revenue at Risk</h2>
-                <div class="text-5xl font-extrabold text-orange-500 font-mono tracking-tighter" id="totalRisk">
-                    -- EUR
-                </div>
-                <p class="text-xs text-gray-500 mt-3 font-mono leading-relaxed">Aggregated P&L computed in real-time by CrewAI traversing the Supabase Relational BOM structure.</p>
+<body class="bg-darkblue text-gray-200 font-sans antialiased min-h-screen p-4 md:p-8 flex flex-col justify-between">
+    <div>
+        <!-- Navigation Shell -->
+        <div class="flex justify-between items-center mb-6 text-xs font-mono text-gray-400 border-b border-gray-800/80 pb-3">
+            <div class="flex items-center space-x-3">
+                <a href="/es/apps/" class="text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-1">
+                    ← Catálogo de Apps
+                </a>
+                <span class="text-gray-600">/</span>
+                <span class="text-gray-300">Agentic Radar</span>
             </div>
+            <div class="flex items-center space-x-2">
+                <a href="/es/apps/obs-management/" class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-1 rounded border border-gray-700 transition-colors">
+                    Ficha Técnica & Arquitectura ↗
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Header -->
+        <header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 border-b border-gray-800 pb-4 gap-4">
+            <div>
+                <h1 class="text-2xl md:text-3xl font-bold text-white tracking-widest uppercase">Agentic Radar</h1>
+                <p class="text-xs text-gray-400 mt-1 uppercase tracking-widest">Supply Chain Executive Telemetry & IEC 62402 Risk Engine</p>
+            </div>
+            <div class="flex items-center space-x-2 bg-gray-900/90 border border-gray-800 px-3 py-1.5 rounded-md">
+                <span class="relative flex h-2.5 w-2.5">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                </span>
+                <span id="systemStatus" class="text-xs font-mono text-emerald-400 font-semibold tracking-wider">
+                    ● SANDBOX MODE (TELEMETRÍA DEMO)
+                </span>
+            </div>
+        </header>
+
+        <main class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
-            <div class="bg-tactical border border-gray-700 rounded-lg p-6 shadow-2xl flex justify-between items-center">
-                <div>
-                    <h2 class="text-sm uppercase tracking-wider text-gray-400 mb-2">Active EOL Alerts</h2>
-                    <div class="text-5xl font-extrabold text-white font-mono tracking-tighter" id="activeAlerts">
-                        --
+            <!-- KPIs Section -->
+            <div class="col-span-1 lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-tactical border border-gray-700 rounded-lg p-6 shadow-2xl flex flex-col justify-center items-start">
+                    <h2 class="text-sm uppercase tracking-wider text-gray-400 mb-2">Total Revenue at Risk (P&L)</h2>
+                    <div class="text-4xl md:text-5xl font-extrabold text-orange-500 font-mono tracking-tighter" id="totalRisk">
+                        15.450,00 €
+                    </div>
+                    <p class="text-xs text-gray-500 mt-3 font-mono leading-relaxed">
+                        P&L consolidado calculado en tiempo real por el agente CrewAI recorriendo el grafo relacional de BOM en Supabase.
+                    </p>
+                </div>
+                
+                <div class="bg-tactical border border-gray-700 rounded-lg p-6 shadow-2xl flex justify-between items-center">
+                    <div>
+                        <h2 class="text-sm uppercase tracking-wider text-gray-400 mb-2">Active EOL Alerts (PDN)</h2>
+                        <div class="text-4xl md:text-5xl font-extrabold text-white font-mono tracking-tighter" id="activeAlerts">
+                            2
+                        </div>
+                        <p class="text-xs text-gray-500 mt-3 font-mono">Componentes críticos en obsolescencia detectados</p>
+                    </div>
+                    <div class="h-16 w-16 text-blue-500">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                     </div>
                 </div>
-                <div class="h-16 w-16 text-blue-500">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            </div>
+
+            <!-- Affected SKUs Table -->
+            <div class="col-span-1 lg:col-span-2 bg-tactical border border-gray-700 rounded-lg shadow-2xl flex flex-col">
+                <div class="p-6 border-b border-gray-700 flex justify-between items-center">
+                    <h2 class="text-base md:text-lg uppercase tracking-wider font-semibold text-white">Impacted Assemblies (Blacklist)</h2>
+                    <span class="text-xs font-mono text-gray-400">IEC 62402 Prioritized</span>
+                </div>
+                <div class="p-0 overflow-x-auto flex-1">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-gray-800 text-gray-400 text-xs uppercase tracking-wider">
+                                <th class="p-4 py-3 font-medium">Final Product SKU</th>
+                                <th class="p-4 py-3 font-medium">Trigger MPN</th>
+                                <th class="p-4 py-3 font-medium text-right">Margin at Risk</th>
+                                <th class="p-4 py-3 font-medium text-center">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="skuTableBody" class="text-sm divide-y divide-gray-800">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </div>
 
-        <!-- Affected SKUs Table -->
-        <div class="col-span-1 lg:col-span-2 bg-tactical border border-gray-700 rounded-lg shadow-2xl flex flex-col">
-            <div class="p-6 border-b border-gray-700">
-                <h2 class="text-lg uppercase tracking-wider font-semibold text-white">Impacted Assemblies (Blacklist)</h2>
+            <!-- Agent Telemetry Console -->
+            <div class="col-span-1 bg-black border border-gray-800 rounded-lg shadow-2xl flex flex-col font-mono relative overflow-hidden">
+                <div class="p-3 border-b border-gray-800 bg-gray-900 flex justify-between items-center z-10">
+                    <div class="flex items-center space-x-2">
+                        <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <h2 class="text-xs uppercase tracking-widest text-emerald-400 font-bold">CrewAI Agent Feed</h2>
+                    </div>
+                    <button id="btnReplay" class="text-[10px] bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded transition-colors">
+                        ▶ Replay Feed
+                    </button>
+                </div>
+                <div class="p-4 overflow-y-auto cyber-scrollbar max-h-96 text-xs text-green-400 leading-loose flex-1 font-mono" id="telemetryConsole">
+                    <!-- Populated dynamically with typing animation -->
+                </div>
+                <!-- Glow effect -->
+                <div class="absolute inset-0 pointer-events-none shadow-[inset_0_0_50px_rgba(16,185,129,0.05)]"></div>
             </div>
-            <div class="p-0 overflow-x-auto flex-1">
-                <table class="w-full text-left border-collapse">
-                    <thead>
-                        <tr class="bg-gray-800 text-gray-400 text-xs uppercase tracking-wider">
-                            <th class="p-4 py-3 font-medium">Final Product SKU</th>
-                            <th class="p-4 py-3 font-medium">Trigger MPN</th>
-                            <th class="p-4 py-3 font-medium text-right">Margin at Risk</th>
-                            <th class="p-4 py-3 font-medium text-center">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody id="skuTableBody" class="text-sm divide-y divide-gray-800">
-                        <!-- Populated by JS -->
-                    </tbody>
-                </table>
+        </main>
+    </div>
+
+    <!-- Executive Upsell Banner (Constitución Art. 3) -->
+    <footer class="mt-10 pt-6 border-t border-gray-800/80">
+        <div class="bg-tactical/80 border border-gray-700/80 rounded-lg p-4 md:p-5 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <h4 class="text-sm font-bold text-white uppercase tracking-wider">¿Necesitas implantar este sistema en tu cadena de suministro?</h4>
+                <p class="text-xs text-gray-400 mt-1">
+                    Aprende la arquitectura completa en la serie de 7 artículos o adquiere los modelos cuantitativos ejecutivos de Datalaria.
+                </p>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="/es/posts/obs_parte1_intro/" class="text-xs bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-600 px-4 py-2 rounded font-medium transition-colors">
+                    Leer Serie Técnica (7 Posts) →
+                </a>
+                <a href="/es/recursos/" class="text-xs bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-4 py-2 rounded shadow transition-colors">
+                    Ver Packs Ejecutivos B2B
+                </a>
             </div>
         </div>
+    </footer>
 
-        <!-- Agent Telemetry Console -->
-        <div class="col-span-1 bg-black border border-gray-800 rounded-lg shadow-2xl flex flex-col font-mono relative overflow-hidden">
-            <div class="p-3 border-b border-gray-800 bg-gray-900 flex justify-between items-center z-10">
-                <h2 class="text-xs uppercase tracking-widest text-emerald-500">Agent Telemetry Feed</h2>
-                <div class="text-[10px] text-gray-500">CrewAI Logs</div>
-            </div>
-            <div class="p-4 overflow-y-auto cyber-scrollbar max-h-96 text-xs text-green-400 leading-loose flex-1" id="telemetryConsole">
-                <div class="animate-pulse">Awaiting connection...</div>
-            </div>
-            <!-- Glow effect -->
-            <div class="absolute inset-0 pointer-events-none shadow-[inset_0_0_50px_rgba(16,185,129,0.05)]"></div>
-        </div>
-    </main>
-
+    <!-- Dual-Mode Engine Script -->
     <script>
+        const SANDBOX_DATA = {
+            total_risk_eur: 15450.00,
+            active_alerts: 2,
+            affected_skus: [
+                {
+                    sku: "DRONE-X1",
+                    margin_at_risk: 12500.00,
+                    status: "CRITICAL LTB REQUIRED",
+                    trigger_mpn: "TI-CAP-10U-50"
+                },
+                {
+                    sku: "SERVER-RACK-9",
+                    margin_at_risk: 2950.00,
+                    status: "EVALUATING INVENTORY",
+                    trigger_mpn: "STM32F405RGT6"
+                }
+            ],
+            agent_logs: [
+                "[18:31:02] [Webhook] Inbound email parsed. Subject: EOL Notification TI-CAP-10U-50.",
+                "[18:31:03] [CrewAI] Awakening 'Senior Risk Analyst' cognitive agent...",
+                "[18:31:05] [CrewAI] Parsing unstructured text. Target MPN extracted: TI-CAP-10U-50.",
+                "[18:31:05] [Tool Calling] Executing calculate_financial_impact(mpn='TI-CAP-10U-50').",
+                "[18:31:06] [Supabase SQL] Traversing bom_lines graph... Parent End_Product found: DRONE-X1.",
+                "[18:31:07] [CrewAI] P&L calculated. Retained Margin at Risk: 12,500.00 EUR.",
+                "[18:31:08] [FastAPI] Triggering Microsoft Teams outbound webhook notification.",
+                "[18:32:14] [Webhook] Commercial API hit from SiliconExpert (Status: EOL).",
+                "[18:32:15] [CrewAI] Parsing payload. Target MPN extracted: STM32F405RGT6.",
+                "[18:32:16] [Supabase SQL] Traversing bom_lines graph... Parent End_Product found: SERVER-RACK-9.",
+                "[18:32:18] [CrewAI] P&L calculated. Retained Margin at Risk: 2,950.00 EUR.",
+                "[18:32:20] [STATUS] All active EOL risks isolated. Telemetry stream nominal."
+            ]
+        };
+
+        function renderDashboard(data, isLive = false) {
+            // Update KPIs
+            document.getElementById('totalRisk').innerText = new Intl.NumberFormat('es-ES', { 
+                style: 'currency', 
+                currency: 'EUR' 
+            }).format(data.total_risk_eur);
+            
+            document.getElementById('activeAlerts').innerText = data.active_alerts;
+
+            // Update Status Badge
+            const statusBadge = document.getElementById('systemStatus');
+            if (isLive) {
+                statusBadge.innerText = "● LIVE ENGINE ONLINE";
+                statusBadge.className = "text-xs font-mono text-emerald-400 font-semibold tracking-wider";
+            } else {
+                statusBadge.innerText = "● SANDBOX MODE (TELEMETRÍA DEMO)";
+                statusBadge.className = "text-xs font-mono text-emerald-400 font-semibold tracking-wider";
+            }
+
+            // Update Table
+            const tbody = document.getElementById('skuTableBody');
+            tbody.innerHTML = '';
+            data.affected_skus.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-gray-800 transition-colors";
+                
+                let statusColor = item.status.includes('CRITICAL') 
+                    ? 'text-red-400 bg-red-400/10 border-red-500/30' 
+                    : 'text-blue-400 bg-blue-400/10 border-blue-500/30';
+
+                tr.innerHTML = `
+                    <td class="p-4 whitespace-nowrap font-bold text-gray-200">${item.sku}</td>
+                    <td class="p-4 whitespace-nowrap text-gray-400 font-mono text-xs">${item.trigger_mpn}</td>
+                    <td class="p-4 whitespace-nowrap text-right font-mono text-orange-400 font-semibold">
+                        ${new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' }).format(item.margin_at_risk)}
+                    </td>
+                    <td class="p-4 whitespace-nowrap text-center">
+                        <span class="px-2 py-1 text-[10px] uppercase tracking-wider rounded border ${statusColor} font-mono font-bold">
+                            ${item.status}
+                        </span>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            // Animate Telemetry Console
+            animateConsole(data.agent_logs);
+        }
+
+        let animationTimeouts = [];
+
+        function animateConsole(logs) {
+            const consoleDiv = document.getElementById('telemetryConsole');
+            consoleDiv.innerHTML = '';
+            
+            // Clear prior timeouts
+            animationTimeouts.forEach(t => clearTimeout(t));
+            animationTimeouts = [];
+
+            logs.forEach((log, index) => {
+                const timeout = setTimeout(() => {
+                    const line = document.createElement('div');
+                    line.className = "mb-2 border-l-2 border-emerald-800/80 pl-2 text-emerald-400/90";
+                    line.innerText = `> ${log}`;
+                    consoleDiv.appendChild(line);
+                    consoleDiv.scrollTop = consoleDiv.scrollHeight;
+                }, index * 350);
+                animationTimeouts.push(timeout);
+            });
+        }
+
         document.addEventListener("DOMContentLoaded", () => {
-            const apiEndpoint = "http://localhost:8001/api/v1/dashboard/risk-metrics";
+            // Replay button listener
+            document.getElementById('btnReplay').addEventListener('click', () => {
+                animateConsole(SANDBOX_DATA.agent_logs);
+            });
 
-            fetch(apiEndpoint)
-                .then(response => response.json())
-                .then(data => {
-                    // Update KPIs
-                    document.getElementById('totalRisk').innerText = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'EUR' }).format(data.total_risk_eur);
-                    document.getElementById('activeAlerts').innerText = data.active_alerts;
+            // Only attempt local backend connection if on localhost
+            const isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+            
+            if (isLocalhost) {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 800);
 
-                    // Update Table
-                    const tbody = document.getElementById('skuTableBody');
-                    tbody.innerHTML = '';
-                    data.affected_skus.forEach(item => {
-                        const tr = document.createElement('tr');
-                        tr.className = "hover:bg-gray-800 transition-colors";
-                        
-                        let statusColor = item.status.includes('CRITICAL') ? 'text-red-400 bg-red-400/10 border-red-500/20' : 'text-blue-400 bg-blue-400/10 border-blue-500/20';
-
-                        tr.innerHTML = `
-                            <td class="p-4 whitespace-nowrap font-bold text-gray-200">${item.sku}</td>
-                            <td class="p-4 whitespace-nowrap text-gray-400 font-mono text-xs">${item.trigger_mpn}</td>
-                            <td class="p-4 whitespace-nowrap text-right font-mono text-orange-400">${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'EUR' }).format(item.margin_at_risk)}</td>
-                            <td class="p-4 whitespace-nowrap text-center">
-                                <span class="px-2 py-1 text-[10px] uppercase tracking-wider rounded border ${statusColor}">
-                                    ${item.status}
-                                </span>
-                            </td>
-                        `;
-                        tbody.appendChild(tr);
+                fetch("http://localhost:8001/api/v1/dashboard/risk-metrics", { signal: controller.signal })
+                    .then(response => {
+                        clearTimeout(timeoutId);
+                        if (!response.ok) throw new Error("HTTP error " + response.status);
+                        return response.json();
+                    })
+                    .then(data => {
+                        renderDashboard(data, true);
+                    })
+                    .catch(() => {
+                        // Seamlessly fallback to Sandbox
+                        renderDashboard(SANDBOX_DATA, false);
                     });
-
-                    // Update Telemetry Console
-                    const consoleDiv = document.getElementById('telemetryConsole');
-                    consoleDiv.innerHTML = '';
-                    data.agent_logs.forEach((log, index) => {
-                        setTimeout(() => {
-                            const line = document.createElement('div');
-                            line.className = "mb-2 border-l border-green-900 pl-2";
-                            line.innerText = `> ${log}`;
-                            consoleDiv.appendChild(line);
-                            consoleDiv.scrollTop = consoleDiv.scrollHeight;
-                        }, index * 400); // Effect simulating writing over time
-                    });
-                })
-                .catch(error => {
-                    console.error("Error fetching telemetry:", error);
-                    document.getElementById('telemetryConsole').innerHTML = `<div class="text-red-500">> OFFLINE. Cannot connect to Analytics API on port 8001.</div>`;
-                });
+            } else {
+                // In production CDN, render deterministic Sandbox immediately
+                renderDashboard(SANDBOX_DATA, false);
+            }
         });
     </script>
 </body>

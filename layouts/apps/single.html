@@ -227,6 +227,9 @@
     <div class="app-posts-grid">
       {{- range . -}}
         {{- $postSlug := .slug -}}
+        {{- if reflect.IsMap .slug -}}
+          {{- $postSlug = index .slug $lang | default .slug.es -}}
+        {{- end -}}
         {{- $partNum := .part -}}
         {{- $postPage := site.GetPage (printf "/posts/%s" $postSlug) -}}
         

@@ -15,6 +15,8 @@ authorAvatar: datalaria-logo.png
 
 The most highly engineered artificial intelligence backend fails to secure financial viability if upper management lacks the mechanism to visualize its direct impact on profitability. Applied **Operations Engineering** does not terminate inherently within a relational database architecture; the structural cycle invariably concludes on the decision-maker’s screen. 
 
+{{< app-ref slug="obs-management" >}}
+
 The asynchronous orchestration model implemented in previous segments (CrewAI piloting an LLM securely against deterministic SQL Supabase arrays) yields robust operational execution. This concluding segment reinforces the deployment by exposing the mathematical core toward a managerial interface deliberately calibrated exclusively to communicate *Return on Investment (ROI)* calculations and industrial downtime mitigation.
 
 ### The Standardized Data Contract: Formulating the Analytical API
@@ -90,3 +92,8 @@ This specific deployment sequence concludes our intensive technical trajectory m
 We acknowledged material component obsolescence strictly as systematic margin erosion outlined prominently across IEC 62402 requirements. We encoded intricate supply interdependencies mapping vectors within rigorous recursive Graph databases. We algorithmically neutralized chaotic raw ingestion inconsistencies integrating Pandas filters; allocated heavily restrained advanced Language Agents dynamically converting abstract linguistic payloads autonomously into structured data matrices, and decisively scaled robust event-driven operations persistently spanning active Background FastAPI nodes.
 
 Physical logistics obsolescence fundamentally resigns its classification as an uncontrollable, unpredictable Black Swan occurrence. Converted exclusively into a precisely measurable, purely mitigated domestic phenomenon, we have ultimately established a definitive and asymmetric tactical advantage securing systemic industrial resilience.
+
+---
+
+### 📡 Live Telemetry & Application Specifications
+{{< app-ref slug="obs-management" >}}

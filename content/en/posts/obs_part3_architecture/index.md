@@ -12,6 +12,8 @@ image: "cover.png"
 
 ## 1. The Flat Table Trap (Excel is Dead)
 
+{{< app-ref slug="obs-management" >}}
+
 Managing an industrial *Bill of Materials* (BOM) through spreadsheets is a structural deficiency. Excel provides a two-dimensional environment for a three-dimensional problem. Hardware engineering and manufacturing dependencies operate under a graph logic.
 
 When the procurement department receives an *End of Life* (EOL) alert for a component, calculating the volumetric impact by searching text across multiple static documents introduces operational latency.
@@ -109,3 +111,8 @@ The policies restrict any modifications to the `products` and `bom_lines` tables
 The relational database schema for obsolescence management is defined based on modular integrity principles.
 
 > The next step in the data architecture process will focus on integration automation. We will evaluate development in Python, using the Pandas library, to engineer an extraction, transformation, and loading (ETL) pipeline capable of ingesting BOM lists in Excel format and structurally populating them into this Supabase ecosystem. Subscribe to access this operational phase.
+
+---
+
+### 📡 Live Telemetry & Application Specifications
+{{< app-ref slug="obs-management" >}}

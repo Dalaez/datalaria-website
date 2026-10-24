@@ -12,6 +12,8 @@ image: "cover.png"
 
 ## 1. The Hook: The False Sense of Security
 
+{{< app-ref slug="obs-management" >}}
+
 In the previous chapter, we established a non-negotiable axiom: surviving in modern manufacturing requires anticipating component obsolescence with at least an 18-month lead time. The instinctive (and frequently flawed) reaction of many large modern corporations to this technical revelation is to try and solve the problem simply by writing a check.
 
 Companies erroneously believe that the ultimate solution is merely signing an annual €50,000 purchase order for a commercial third-party component management SaaS platform, sitting back, and crossing their fingers. They assume that wielding access to a market radar automatically shields them against operational collapse.
@@ -101,3 +103,8 @@ The theoretical and tactical framework anchoring the physical front is firmly es
 > **In the next article (Beginning of Block 2)**, we will open the operational terminal and descend deeply into the data mud. We will rigorously design the exact relational model and database schema within **Supabase** fundamentally required to massively ingest thousands of legacy industrial BOMs, ruthlessly scrub their obsolete formats, and prepare them to be structurally interpreted by our impending AI Agents.
 > 
 > Subscribe closely to ensure you do not miss exactly how we construct this modern data architecture from scratch.
+
+---
+
+### 📡 Live Telemetry & Application Specifications
+{{< app-ref slug="obs-management" >}}

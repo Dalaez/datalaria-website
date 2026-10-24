@@ -15,7 +15,7 @@
 
 ## ADR-002: Expulsión del Código Fuente Backend fuera de `/static/`
 - **Fecha:** 2026-10-24
-- **Estado:** Aceptado (Pendiente de ejecución física en Fase 2)
+- **Estado:** En ejecución (Completado para LifeOps e Hito 2.1 Obs-Management; pendiente cuarentena Fase 3)
 - **Contexto:** Durante la auditoría inicial ([`00-ecosystem-audit.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/audit/00-ecosystem-audit.md)) se detectó que proyectos backend en Python (`project-ops`, `sop-pipeline`, `obs-management`), junto con esquemas `.sql` y archivos `.env`, residían dentro de `static/apps/`. Hugo copia todo el contenido de `static/` al directorio público `public/`.
 - **Decisión:** Mover todo código fuente de aplicaciones a un directorio raíz `/apps/<app-slug>/`. El directorio `/static/apps/` queda restringido exclusivamente a artefactos frontend compilados (`dist/`) y activos estáticos puros.
 - **Consecuencias:** Eliminación del riesgo de filtración de código propietario y credenciales en despliegues de Netlify; separación limpia entre código fuente y artefactos de distribución.
@@ -64,7 +64,7 @@
 
 ## ADR-007: Fichas de App Data-Driven con Historial Evolutivo (`apps-showcase`)
 - **Fecha:** 2026-10-24
-- **Estado:** Aceptado (diseño en `specs/portal/apps-showcase/spec.md`, pendiente de implementación en Hitos 1.3-1.4)
+- **Estado:** Implementado (Completado en Hitos 1.3, 1.4 y 2.1)
 - **Contexto:** El listado `/apps/` actual es HTML embebido en `content/*/apps/_index.md` con tarjetas de solo icono y texto, duplicado por idioma. No existe un lugar donde el usuario vea objetivos, diseño, tecnologías ni la evolución de cada App, y los posts enlazan directamente a la App sin contexto.
 - **Decisión:**
   1. Una **ficha por App** en `/{lang}/apps/<slug>/` (page bundle Hugo) con layout común `layouts/apps/single.html`.

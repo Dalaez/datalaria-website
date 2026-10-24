@@ -7,9 +7,9 @@
 
 ## 📍 ESTADO ACTUAL DEL PROYECTO (PUNTERO DE SESIÓN)
 
-- **Fase Activa:** `FASE 1 COMPLETADA AL 100% ✅` ➔ **Listos para FASE 2: Aislamiento y Saneamiento de las Apps Activas con Deuda (`obs-management` y `weather`)**
-- **Último Checkpoint Verificado:** `Hito 1.4 — Despliegue de Ficha de LifeOps (data/apps/lifeops.yaml, content/{es,en}/apps/lifeops/) y Enlaces en los 10 Posts de la Serie` (Completado el 2026-10-24 ✅).
-- **Próximo Hito:** `Hito 2.1 — Especificación, Aislamiento y Reparación Dual-Mode de obs-management (App #2 — Agentic Radar)`
+- **Fase Activa:** `FASE 2 EN CURSO 🟡` — **Aislamiento y Saneamiento de las Apps Activas con Deuda (`obs-management` y `weather`)**
+- **Último Checkpoint Verificado:** `Hito 2.1 — Especificación, Aislamiento y Reparación Dual-Mode de obs-management (App #2 — Agentic Radar) + Ficha Técnica y 14 Posts Actualizados` (Completado el 2026-10-24 ✅).
+- **Próximo Hito:** `Hito 2.2 — Especificación y Limpieza de Clones de weather (App #3 — Dashboard Climático)`
 
 ---
 
@@ -99,12 +99,13 @@ Tras auditar todos los artículos de `/content/es/posts/` y `/content/en/posts/`
 ### FASE 2: Aislamiento y Saneamiento de las Apps Activas con Deuda (`obs-management` y `weather`)
 *Objetivo: Arreglar y formalizar bajo SDD las otras dos aplicaciones principales que hoy están publicadas en `/apps/`.*
 
-- [ ] **Hito 2.1: Especificación, Aislamiento y Reparación Dual-Mode de `obs-management` (App #2 — Agentic Radar)**
+- [x] **Hito 2.1: Especificación, Aislamiento y Reparación Dual-Mode de `obs-management` (App #2 — Agentic Radar)**
   - *Acción:*
     1. Crear `/specs/apps/obs-management/spec.md` alineado con los 7 artículos publicados (`obs_parte1` a `obs_parte7`).
-    2. Sacar los archivos `.py`, `.sql` y `.env` de `static/apps/obs-management/` hacia `apps/obs-management/` (eliminando la exposición de código backend en la web).
-    3. Actualizar `static/apps/obs-management/index.html` con el **Modo Sandbox Determinista** (para que cuando un lector entre desde `datalaria.com/apps/obs-management/` sin servidor local en puerto 8001, el dashboard muestre en vivo los `15.450,00 EUR` en riesgo, la tabla de SKUs `DRONE-X1` / `SERVER-RACK-9` y la animación de logs de CrewAI descrita en el Post 7, en lugar del error `> OFFLINE`).
-  - *Gate de Verificación:* `hugo --gc --minify` exitoso; cero archivos `.py`/`.env` en `public/apps/obs-management/`; el dashboard carga 100% funcional sin backend local activo.
+    2. Sacar los archivos `.py`, `.sql` y `.env` de `static/apps/obs-management/` hacia `apps/obs-management/api/` (eliminando la exposición de código backend en la web y limpiando `.pyc` / `.gitignore`).
+    3. Actualizar `static/apps/obs-management/index.html` con el **Modo Sandbox Determinista** (eliminando el error `> OFFLINE`; mostrando `15.450,00 EUR` en riesgo, 2 alertas críticas, tablas de SKUs `DRONE-X1` / `SERVER-RACK-9`, terminal animada CrewAI con replay, upsell a B2B packs y navegación hacia `/es/apps/`).
+    4. Crear metadatos en `data/apps/obs-management.yaml`, fichas dedicadas en `content/{es,en}/apps/obs-management/` y actualizar las 14 entradas de blog (`obs_parte1`..`obs_parte7` y `obs_part1`..`obs_part7`) con `{{</* app-ref slug="obs-management" */>}}` y enlaces a la ficha técnica.
+  - *Gate de Verificación:* `hugo --renderToMemory` compila las 2081 páginas con código 0 en 20.7s; `static/apps/obs-management/` contiene únicamente `index.html` (cero `.py`/`.sql`/`.env`/`.pyc`); dashboard 100% interactivo en navegador sin backend local. (Completado el 2026-10-24 ✅).
 - [ ] **Hito 2.2: Especificación y Limpieza de Clones de `weather` (App #3 — Dashboard Climático)**
   - *Acción:*
     1. Crear `/specs/apps/weather/spec.md` alineado con los 4 artículos publicados (`app-openweather_part1` a `part4`).

@@ -15,6 +15,8 @@ authorAvatar: datalaria-logo.png
 
 En el bloque anterior de nuestra serie, demostramos que la Inteligencia Artificial puede calcular el impacto financiero (P&L) de la obsolescencia de componentes. Esto se logró aislando el módulo de inferencia semántica de la ejecución, utilizando herramientas SQL deterministas. 
 
+{{< app-ref slug="obs-management" >}}
+
 Sin embargo, ejecutar un script de Python localmente en una terminal no es apto para producción. Los avisos de discontinuidad (PDN) llegan de manera continua desde distintas zonas horarias. Las operaciones de la cadena de suministro requieren un sistema centralizado, continuo y escalable.
 
 Para alcanzar el grado de producción, la arquitectura debe transicionar hacia una **Arquitectura Orientada a Eventos (EDA)**.
@@ -122,3 +124,8 @@ flowchart TD
 Hemos configurado el motor de ingesta de datos (Bloque 2), establecido el framework de inferencia semántica (Bloque 3) y desplegado un servicio centrado en API para procesar anomalías globales de componentes 24/7 (Bloque 4). 
 
 En el segmento final de esta serie de ingeniería, nos enfocaremos en la visualización de datos. Documentaremos cómo exponer estas alertas asíncronas mediante la construcción de un **Dashboard Ejecutivo**, haciendo que las operaciones del agente sean accesibles para la revisión gerencial.
+
+---
+
+### 📡 Telemetría en Vivo y Ficha de la Aplicación
+{{< app-ref slug="obs-management" >}}

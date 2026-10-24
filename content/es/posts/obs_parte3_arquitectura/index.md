@@ -12,6 +12,8 @@ image: "cover.png"
 
 ## 1. La Trampa de la Tabla Plana (Excel is Dead)
 
+{{< app-ref slug="obs-management" >}}
+
 Gestionar un *Bill of Materials* (BOM) industrial a través de hojas de cálculo es una deficiencia estructural. Excel proporciona un entorno bidimensional para un problema tridimensional. Las dependencias de ingeniería de *hardware* y manufactura operan bajo una lógica de grafos.
 
 Cuando el departamento de compras recibe una alerta de *End of Life* (EOL) de un componente, calcular el impacto volumétrico buscando texto en múltiples documentos estáticos provoca retrasos en la respuesta operativa.
@@ -109,3 +111,8 @@ Las políticas restringen cualquier modificación de las tablas `products` y `bo
 El esquema de base de datos relacional para la gestión de la obsolescencia está definido en base a principios de integridad modular. 
 
 > El próximo paso en el proceso de arquitectura de datos se centrará en la automatización de la integración. Evaluaremos el desarrollo en Python, utilizando la librería Pandas, para diseñar un *pipeline* de extracción, transformación y carga (ETL) capaz de ingerir listados BOM en formato Excel y poblarlos estructuralmente en este ecosistema Supabase. Suscríbete para acceder a esta fase operativa.
+
+---
+
+### 📡 Telemetría en Vivo y Ficha de la Aplicación
+{{< app-ref slug="obs-management" >}}

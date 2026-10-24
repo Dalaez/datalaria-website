@@ -12,6 +12,8 @@ image: "cover.png"
 
 The narrative dominating the corridors of large modern corporations is dangerously flawed. When a production line, manufacturing million-margin equipment, grinds to a halt because a two-dollar microcontroller is unavailable, the board's reaction is to blame market volatility. Operating and financial leaders quickly point to the global semiconductor shortage, logic bottlenecks driven by macroeconomics, or the legislative walls erected by regulations like REACH, RoHS, or ITAR.
 
+{{< app-ref slug="obs-management" >}}
+
 Organizations point to these hurdles as if they were inevitable natural disasters. They label them unpredictable "Black Swans" against which no corporation can erect defenses.
 
 However, from a First Principles perspective, that assertion is mathematically false. Component scarcity and regulatory roadblocks are not bad luck. They are completely predictable occurrences born out of quantifiable technological lifecycles.
@@ -111,3 +113,8 @@ Suffering as collateral damage during a global era of economic component warfare
 Accessible technology, operations-centric data science, robust algorithmic mechanics, and stringent executive accountability frameworks (led explicitly by the IEC 62402 directive), have firmly placed the exact engineering puzzle pieces required to avert catastrophic operational collapse onto the executive boardroom table. Your enterprise possesses every capability required to cease functioning as the reactive prey violently shaken by fluctuating manufacturer whims, electing instead to permanently spearhead a brutal, preventative, and precisely analytical siege over the modern supply chain.
 
 **In the next article**, we will dive into industrial tactics. We will analyze component selection strategies (Mil-Spec, COTS, Automotive), industry radar tools (*IHS Markit, Calcuquote, SiliconExpert*), and most importantly, why paying a fortune for their licenses is completely useless if you don't know how to integrate their intelligence into your systems.
+
+---
+
+### 📡 Live Telemetry & Application Specifications
+{{< app-ref slug="obs-management" >}}

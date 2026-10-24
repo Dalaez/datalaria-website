@@ -12,6 +12,8 @@ image: "cover.png"
 
 ## 1. El Gancho: La Falsa Sensación de Seguridad
 
+{{< app-ref slug="obs-management" >}}
+
 En el capítulo anterior establecimos un axioma innegociable: sobrevivir a la fabricación moderna exige anticipar la obsolescencia de componentes con al menos 12-18 meses de margen temporal. La reacción instintiva (y frecuentemente equivocada) de muchas corporaciones ante esta revelación técnica es intentar resolver el problema a golpe de chequera. 
 
 Las empresas creen erróneamente que la solución definitiva es firmar una orden de compra de 50.000€ anuales por una licencia de software comercial (SaaS) de gestión de componentes operada por terceros, sentarse a esperar, y cruzar los dedos. Asumen que tener acceso a una plataforma de mercado les blinda automáticamente contra el colapso.
@@ -101,3 +103,8 @@ El marco teórico y táctico del frente físico está completamente establecido.
 > **En el próximo artículo (Inicio del Bloque 2)**, abriremos la terminal y descenderemos al barro de los datos. Diseñaremos el modelo relacional exacto y el esquema de base de datos en **Supabase** necesario para ingerir masivamente miles de BOMs industriales, limpiar sus formatos caducos y prepararlos para ser interpretados por nuestros futuros Agentes IA.
 > 
 > Suscríbete para no perderte cómo construimos esta arquitectura de datos desde cero.
+
+---
+
+### 📡 Telemetría en Vivo y Ficha de la Aplicación
+{{< app-ref slug="obs-management" >}}

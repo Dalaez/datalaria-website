@@ -12,6 +12,8 @@ image: "cover.png"
 
 ## 1. El Gancho: La Entropía de los Datos Industriales
 
+{{< app-ref slug="obs-management" >}}
+
 En la teoría académica, los datos fluyen limpios. En la práctica de la cadena de suministro industrial, los ERPs heredados simplemente escupen basura. 
 
 Recibir un *Bill of Materials* exportado en formato de tabla plana desde un sistema obsoleto implica lidiar habitualmente con una alta entropía de datos: celdas completamente vacías, espacios en blanco anómalos ocultos en los números de pieza (ej. `" SN74LS00N "`), nomenclaturas de fabricantes sin estandarizar (mezclando mayúsculas, minúsculas y acrónimos como "ti" o "Texas Inst."), y un tipado inherentemente mixto donde las cantidades numéricas se solapan con campos de tipo *string*.
@@ -95,3 +97,8 @@ No necesitas instalar nada ni configurar bases de datos. El script levantará un
 La arquitectura e inyección operativa están finalizadas. Hemos tomado un conjunto de datos estáticos y fuertemente corruptos de un entorno excel plano, estandarizado sus anomalías por código, e insertado los flujos resultantes en una base de datos relacional de Supabase totalmente normalizada.
 
 > Los cimientos están terminados. Tenemos una base de datos relacional IEC 62402 compliant y un motor de ingesta automatizado operando en frío. En el próximo bloque (Bloque 3), le daremos vida computacional al sistema. Conectaremos infraestructuras modulares de Agentes IA (LangChain / CrewAI) directamente sobre la base de datos PostgreSQL, facultándolas para leer los avisos EOL del mercado y calcular el impacto financiero crítico sobre los nodos lógicos de forma unificada e ininterrumpida. Suscríbete para el despliegue del Radar Agéntico.
+
+---
+
+### 📡 Telemetría en Vivo y Ficha de la Aplicación
+{{< app-ref slug="obs-management" >}}

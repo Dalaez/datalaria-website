@@ -12,6 +12,8 @@ image: "cover.png"
 
 ## 1. The Hook: Industrial Data Entropy
 
+{{< app-ref slug="obs-management" >}}
+
 In standard academic theory, data sets are inherently clean. In the active reality of the industrial supply chain, obsolete ERPs continually export garbage arrays.
 
 Receiving a flat Bill of Materials systematically exported from a legacy database immediately binds you to processing massive structural entropy: entirely void parameter cells, anomalous blank spacing hidden inside critical part numbers (e.g., `" SN74LS00N "`), unstandardized component manufacturer nomenclatures (inconsistently shifting between capitals and disparate acronyms like "ti"), and severe mixed data typing where strict numerals conflict natively with raw text variables.
@@ -95,3 +97,8 @@ You don't need to install anything or configure databases. The script will spin 
 The system structural data logic completely establishes pure stability. We strictly transported fundamentally corrupt, stagnant standard tabular Excel files completely across explicit programming loops directly natively injecting refined node values natively filling a vastly superior PostgreSQL relational database firmly.
 
 > The core foundations remain entirely structural and secure. We possess a natively stable IEC 62402 compliant relational architecture structurally fused directly with a robust Python processing ETL node securely operating live. Crossing into the incoming operational module (Block 3), we firmly awaken complex systematic intelligence cleanly processing logic directly on hardware trees. We deploy strictly scalable Agentic AI parameters (LangChain / CrewAI) comprehensively actively connected inside the unified database constantly autonomously identifying internal financial stress resulting dynamically processing external global EOL silicon alerts. Subscribe consistently witnessing the Agentic Radar launch sequence.
+
+---
+
+### 📡 Live Telemetry & Application Specifications
+{{< app-ref slug="obs-management" >}}

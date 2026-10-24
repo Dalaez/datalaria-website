@@ -12,6 +12,8 @@ image: "cover.png"
 
 La narrativa que domina los pasillos de las grandes empresas modernas está peligrosamente equivocada. Cuando una línea de producción, que fabrica equipos con márgenes millonarios, se detiene porque un minúsculo microcontrolador de dos dólares ya no está disponible, la reacción estándar de la junta directiva es culpar a la volatilidad del mercado. Los líderes operativos y financieros apuntan a la escasez global de semiconductores, a los cuellos de botella logísticos provocados por dinámicas macroeconómicas, o a los inescrutables muros levantados por normativas como REACH, RoHS o ITAR. 
 
+{{< app-ref slug="obs-management" >}}
+
 Se refieren a estos eventos como si fueran desastres naturales ineludibles. Como "Cisnes Negros" impredecibles contra los que ninguna corporación puede protegerse.
 
 Pero desde los Primeros Principios (*First Principles Thinking*), esto es matemáticamente falso. La escasez de componentes y la regulación restrictiva no son mala suerte. Son eventos predecibles. Son el resultado de ciclos tecnológicos cuantificables.
@@ -111,3 +113,8 @@ Ser víctima colateral durante esta guerra económica de componentes no es un in
 La tecnología accesible, la ciencia de datos aplicada a operaciones, los modelos algorítmicos robustos y los marcos ejecutivos (liderados por la directiva IEC 62402), han puesto en la mesa de tu junta las piezas idóneas para evitar el colapso. Tu compañía puede y debe dejar de ser presa de los vaivenes de fábricas lejanas, y pasar a liderar un asedio preventivo, implacable y altamente analítico sobre la cadena de suministro global.
 
 **En el próximo artículo**, entraremos en la táctica industrial. Analizaremos las estrategias de selección de componentes (Mil-Spec, COTS, Automoción), las herramientas de radar del sector (*IHS Markit, Calcuquote, SiliconExpert*) y, lo más importante, por qué pagar una fortuna por sus licencias no sirve de nada si no sabes integrarlas en tus sistemas.
+
+---
+
+### 📡 Telemetría en Vivo y Ficha de la Aplicación
+{{< app-ref slug="obs-management" >}}

@@ -15,6 +15,8 @@ authorAvatar: datalaria-logo.png
 
 In the previous section of this series, we demonstrated that Artificial Intelligence can calculate the P&L impact of component obsolescence. This was achieved by isolating the semantic inference module from execution, using deterministic SQL tools. 
 
+{{< app-ref slug="obs-management" >}}
+
 However, running a Python script locally in a terminal is not suitable for production. Product Discontinuance Notices (PDNs) arrive continuously across global time zones. Supply chain operations require a centralized, continuous, and scalable system.
 
 To achieve production readiness, the architecture must transition to an **Event-Driven Architecture (EDA)**.
@@ -122,3 +124,8 @@ flowchart TD
 We have configured the data ingestion engine (Block 2), established the semantic inference framework (Block 3), and deployed an API-centric service to process global component anomalies 24/7 (Block 4). 
 
 In the final segment of this engineering series, we will focus on data visualization. We will document how to expose these asynchronous alerts by building an **Executive Dashboard**, making the agent's operations accessible for management review.
+
+---
+
+### 📡 Live Telemetry & Application Specifications
+{{< app-ref slug="obs-management" >}}

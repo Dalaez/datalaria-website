@@ -15,6 +15,8 @@ authorAvatar: datalaria-logo.png
 
 Over the last year, the widespread obsession with basic RAG (*Retrieval-Augmented Generation*) architectures has pushed hundreds of companies into a systemic bottleneck. The promise was undeniably seductive: "upload your documents and chat with your data." However, down in the operational trenches, where error margins operate in milliseconds and microns, asking a language model about the financial impact of a stockout is considered auditable negligence.
 
+{{< app-ref slug="obs-management" >}}
+
 LLMs (Large Language Models) are brilliant semantic abstraction engines, but mediocre calculators. If you hand an LLM a Product Discontinuance Notice (PDN) and ask it to calculate the **Profit & Loss (P&L)** risk across a Bill of Materials (BOM) featuring 40,000 dependencies, it will hallucinate the result. In heavy industry, a 100,000€ error derived from a stochastic probability is absolutely unacceptable.
 
 For Artificial Intelligence to truly solve the **Obsolescence Management** bottleneck, we must apply *First Principles Thinking*: strip the analytical math away from the model, and arm it with deterministic developer tools. 
@@ -93,3 +95,8 @@ Operative silence. Zero emotional monologues regarding global supply trends, and
 The Agentic Radar proves unprecedented tactical resilience when analyzing isolated documentation. However, global factories never sleep, and the influx of external entropy is ceaseless. 
 
 In our upcoming chapter, we will scale the architecture, pushing this agent from an intermittent script to a continuous execution motor (24/7). We will connect our silent AI Analyst directly to raw email servers and webhook funnels—processing hundreds of market bulletins daily and automating contingency strategies before the logistical planners even become consciously aware of a threat.
+
+---
+
+### 📡 Live Telemetry & Application Specifications
+{{< app-ref slug="obs-management" >}}

@@ -15,6 +15,8 @@ authorAvatar: datalaria-logo.png
 
 En el último año, la obsesión generalizada por las arquitecturas RAG (*Retrieval-Augmented Generation*) ha empujado a cientos de empresas a un cuello de botella sistémico. La promesa era seductora: "sube tus documentos y chatea con tus datos". Pero en la trinchera industrial, donde los márgenes de error operan en milisegundos y micras, preguntar a un modelo lingüístico por el impacto financiero de una rotura de stock es una negligencia auditable.
 
+{{< app-ref slug="obs-management" >}}
+
 Los LLMs (Large Language Models) son motores de abstracción semántica brillantes, pero calculadoras mediocres. Si le entregas a un LLM un Aviso de Discontinuación de Producto (PDN) y le pides calcular el riesgo para la **Cuenta de Resultados (P&L)** sobre un árbol de materiales (BOM) con 40.000 dependencias, alucinará el resultado. En la industria pesada, un error de 100.000€ derivado de una probabilidad estocástica es inaceptable.
 
 Para que la Inteligencia Artificial resuelva el problema de la **Gestión de Obsolescencia**, debemos aplicar el *First Principles Thinking*: quitarle las matemáticas analíticas al modelo, y proveerle de herramientas deterministas. 
@@ -92,4 +94,9 @@ Silencio operativo. Cero divagaciones sobre el clima, ni explicaciones redundant
 
 El Radar Agéntico demuestra una asombrosa resiliencia táctica analizando un documento de forma aislada. No obstante, las fábricas globales no duermen, y el caos externo es constante. 
 
-En la próxima entrega, escalaremos la arquitectura llevando este agente desde el modo intermitente hasta un motor continuo (24/7). Conectaremos a nuestro analista silencioso directamente contra un servidor de correos crudo y herramientas de *webhooks*, procesando cientos de boletines diarios y automatizando el flujo de contingencia antes de que la planta logística ni siquiera sea consciente de la amenaza. 
+En la próxima entrega, escalaremos la arquitectura llevando este agente desde el modo intermitente hasta un motor continuo (24/7). Conectaremos a nuestro analista silencioso directamente contra un servidor de correos crudo y herramientas de *webhooks*, procesando cientos de boletines diarios y automatizando el flujo de contingencia antes de que la planta logística ni siquiera sea consciente de la amenaza.
+
+---
+
+### 📡 Telemetría en Vivo y Ficha de la Aplicación
+{{< app-ref slug="obs-management" >}}

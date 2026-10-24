@@ -1,0 +1,150 @@
+slug: obs-management
+order: 20
+tier: b2b
+status: live
+icon: "📡"
+cover: cover.png
+app_url: /apps/obs-management/
+demo_url: /apps/obs-management/
+source_spec: specs/apps/obs-management/spec.md
+current_version: v1.0.1
+
+title:
+  es: "Radar de Obsolescencia"
+  en: "Agentic Radar"
+
+tagline:
+  es: "Dashboard Ejecutivo impulsado por IA para la mitigación del riesgo en la cadena de suministro."
+  en: "AI-powered Executive Dashboard for 24/7 supply chain risk mitigation."
+
+summary:
+  es: "Sistema inteligente de alerta temprana para operaciones industriales basado en la norma internacional IEC 62402. Ingesta avisos de fin de vida (PDN/EOL) por webhooks y correos electrónicos, extrae componentes con agentes CrewAI, recorre el grafo de listas de materiales (BOM) en PostgreSQL y calcula el margen financiero en riesgo en tiempo real."
+  en: "Intelligent early-warning supply chain risk engine based on the international IEC 62402 standard. Ingests End-of-Life notices (PDN/EOL) via webhooks and emails, extracts critical MPNs using CrewAI cognitive agents, traverses the PostgreSQL BOM graph, and computes financial revenue at risk in real time."
+
+objectives:
+  - es: "Erradicar la falacia del 'Cisne Negro' en operaciones cuantificando la obsolescencia técnica como entropía predecible bajo la norma IEC 62402."
+    en: "Eradicate the 'Black Swan' fallacy in manufacturing operations by quantifying technical obsolescence as predictable entropy under IEC 62402."
+  - es: "Ingestar alertas multicanal tanto estructuradas (APIs comerciales) como no estructuradas (correos raw de fabricantes)."
+    en: "Ingest multichannel alerts across both structured sources (commercial B2B APIs) and unstructured raw manufacturer emails."
+  - es: "Recorrer el grafo relacional de listas de materiales (BOM) para asociar componentes obsoletos con productos comerciales finales."
+    en: "Traverse the BOM relational graph to map obsolete semiconductor MPNs directly to impacted revenue-generating end products."
+  - es: "Traducir la telemetría agéntica en métricas financieras comprensibles para roles directivos (CFO, COO, VP Supply Chain)."
+    en: "Translate autonomous agent telemetry into actionable financial P&L metrics for C-level executives (CFO, COO, VP Supply Chain)."
+
+features:
+  - icon: "📡"
+    es: "Arquitectura Orientada a Eventos (EDA): ingesta asíncrona mediante webhooks en FastAPI para no bloquear sistemas emisores."
+    en: "Event-Driven Architecture (EDA): asynchronous webhook endpoints in FastAPI preventing external system timeouts."
+  - icon: "🧠"
+    es: "Agente Cognitivo CrewAI: extracción semántica de MPNs y fabricantes a partir de texto libre sin reglas frágiles."
+    en: "CrewAI Cognitive Agent: semantic extraction of target part numbers (MPNs) from unstructured text using LLMs."
+  - icon: "📊"
+    es: "Cálculo de Margen en Riesgo: computación instantánea del P&L amenazado (ej. 15.450 €) asociando precios y márgenes."
+    en: "Margin-at-Risk Computation: instant computation of threatened financial margins (e.g. 15,450 EUR) mapped to assemblies."
+  - icon: "🛡️"
+    es: "Lista Negra de Ensamblajes: clasificación de impacto por criticidad (CRITICAL LTB REQUIRED vs EVALUATING INVENTORY)."
+    en: "Assembly Blacklist: classification of operational impact (CRITICAL LTB REQUIRED vs EVALUATING INVENTORY)."
+  - icon: "💻"
+    es: "Consola de Telemetría en Vivo: feed secuencial animado con los pasos de razonamiento y llamadas a herramientas del agente."
+    en: "Live Telemetry Feed: animated sequential terminal displaying cognitive agent reasoning steps and SQL tool calls."
+  - icon: "⚡"
+    es: "Modo Sandbox 24/7 Determinista: interfaz táctica ultra-ligera en Tailwind y Vanilla JS que carga instantáneamente."
+    en: "Deterministic 24/7 Sandbox Mode: lightweight tactical UI in Tailwind and Vanilla JS loading instantaneously on static CDN."
+
+design:
+  architecture:
+    es: "Arquitectura desacoplada en 4 niveles: vector de ingesta asíncrono con FastAPI recibiendo webhooks JSON y correos electrónicos, orquestador cognitivo CrewAI ejecutando tareas en segundo plano con herramientas SQL específicas, base de datos relacional PostgreSQL en Supabase modelando el árbol de ensamblaje (esquema obs_radar), y dashboard táctico de mando ejecutivo servido en CDN estático con modo Sandbox determinista."
+    en: "Decoupled 4-tier architecture: asynchronous ingestion layer with FastAPI receiving JSON webhooks and inbound emails, CrewAI cognitive orchestrator executing background workers with SQL graph tools, relational PostgreSQL in Supabase modeling multilevel BOM trees (schema obs_radar), and tactical executive dashboard served on static CDN with deterministic sandbox fallback."
+  principles:
+    - es: "Aislamiento estricto de esquemas: los datos de componentes y ensamblajes residen exclusivamente en el esquema 'obs_radar'."
+      en: "Strict schema isolation: component and BOM tables reside exclusively within the dedicated 'obs_radar' schema."
+    - es: "Cálculo financiero determinista: la multiplicación de márgenes y unidades se computa en código exacto, no por aproximación de IA."
+      en: "Deterministic financial computing: margin-at-risk aggregation is computed in precise database queries, not LLM estimation."
+    - es: "Disponibilidad continua (Dual-Mode): la web pública nunca muestra estados 'OFFLINE', operando con datos ejecutivos sintéticos."
+      en: "Continuous availability (Dual-Mode): the public web app never displays 'OFFLINE' states, operating with deterministic synthetic data."
+  diagram: |
+    flowchart LR
+      E["Email / API Webhook"] --> API["FastAPI\n(main.py)"]
+      API -->|"Background Task"| AG["CrewAI Agent\n(Risk Analyst)"]
+      AG -->|"Tool Calling"| SQL["Supabase Graph Query"]
+      SQL --> DB[("PostgreSQL\nschema: obs_radar")]
+      API --> DASH["Executive Dashboard\n(index.html)"]
+      DASH -->|"Outbound Alert"| TEAMS["MS Teams / Slack"]
+
+tech:
+  - layer: frontend
+    items: ["Vanilla JS", "Tailwind CSS", "HTML5 Cyber Terminal", "Responsive Viewports"]
+  - layer: backend
+    items: ["Python 3.11", "FastAPI", "CrewAI", "Pydantic v2", "Pandas", "Uvicorn"]
+  - layer: data
+    items: ["PostgreSQL 15 (Supabase)", "Schema obs_radar", "IEC 62402 BOM Graph"]
+  - layer: ai
+    items: ["Gemini LLM", "Tool Calling", "Semantic Extraction", "EDA Background Workers"]
+
+posts:
+  - slug:
+      es: obs_parte1_intro
+      en: obs_part1_intro
+    part: 1
+  - slug:
+      es: obs_parte2_tactica
+      en: obs_part2_tactics
+    part: 2
+  - slug:
+      es: obs_parte3_arquitectura
+      en: obs_part3_architecture
+    part: 3
+  - slug:
+      es: obs_parte4_ingesta
+      en: obs_part4_ingestion
+    part: 4
+  - slug:
+      es: obs_parte5_radar
+      en: obs_part5_radar_agent
+    part: 5
+  - slug:
+      es: obs_parte6_fastapi
+      en: obs_part6_fastapi_server
+    part: 6
+  - slug:
+      es: obs_parte7_dashboard
+      en: obs_part7_executive_dashboard
+    part: 7
+
+related_products:
+  - name: "Executive Decision Pack: S&OP & Supply Chain Risk"
+    description: "Modelos cuantitativos ejecutivos en Excel y plantillas de mitigación de obsolescencia bajo norma IEC 62402."
+    checkout_url: "/es/recursos/"
+
+releases:
+  - version: v1.0.1
+    date: "2026-10-24"
+    state: released
+    type: security
+    title:
+      es: "Aislamiento SDD, firewall de static/ y modo Sandbox determinista 24/7"
+      en: "SDD isolation, static/ firewall and 24/7 deterministic Sandbox mode"
+    changes:
+      - es: "Aislamiento del código backend en apps/obs-management/api/ erradicando archivos .py, .sql y .env de static/."
+        en: "Backend code isolation in apps/obs-management/api/ eradicating .py, .sql and .env files from static/."
+      - es: "Eliminación permanente del error OFFLINE mediante la activación del Modo Sandbox determinista en el cliente."
+        en: "Permanent eradication of the OFFLINE connection error by enabling client-side deterministic Sandbox mode."
+      - es: "Integración de navegación con el catálogo de Datalaria y banners de upsell a recursos ejecutivos B2B."
+        en: "Navigation integration with Datalaria catalog and contextual upsell banners to B2B executive packs."
+
+  - version: v1.0.0
+    date: "2026-05-17"
+    state: released
+    type: release
+    title:
+      es: "Lanzamiento oficial respaldado por la serie editorial de 7 artículos"
+      en: "Official public release backed by the 7-article engineering series"
+    changes:
+      - es: "Desarrollo del motor de orquestación agéntica con CrewAI y extracción semántica de MPNs."
+        en: "Development of the CrewAI agentic orchestration engine and semantic MPN extraction."
+      - es: "Modelado relacional del árbol BOM en PostgreSQL para cálculo instantáneo del margen en riesgo."
+        en: "Relational BOM tree modeling in PostgreSQL for instantaneous margin-at-risk aggregation."
+      - es: "Servidor asíncrono en FastAPI con soporte de webhooks para ingesta multicanal."
+        en: "Asynchronous FastAPI server with webhook support for multichannel ingest."
+      - es: "Dashboard ejecutivo táctico en Tailwind CSS y Vanilla JS con consola de telemetría."
+        en: "Tactical executive dashboard in Tailwind CSS and Vanilla JS with telemetry console."

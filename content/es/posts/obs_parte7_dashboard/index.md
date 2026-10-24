@@ -15,6 +15,8 @@ authorAvatar: datalaria-logo.png
 
 El mejor backend de Inteligencia Artificial del mundo no asegura su viabilidad financiera si los niveles directivos no pueden visualizar físicamente su impacto sobre la cuenta de resultados. La **Ingeniería de Operaciones** aplicada no concluye en la base de datos relacional; su ciclo finaliza obligatoriamente en la pantalla del tomador de decisiones. 
 
+{{< app-ref slug="obs-management" >}}
+
 El modelo de orquestación asíncrona implementado en bloques anteriores (CrewAI operando un LLM transaccionado contra esquemas SQL de Supabase) es operativamente robusto.  Este bloque final consolida dicha arquitectura exponiendo su motor matemático en una interfaz gerencial orientada exclusivamente al cálculo del *Retorno de Inversión (ROI)* y a la mitigación del riesgo industrial interrupciones del negocio.
 
 ### El Contrato de Datos: Exponiendo la API Analítica
@@ -90,3 +92,8 @@ Este registro materializa el término de la travesía técnica en Ingeniería Op
 Asumimos la obsolescencia técnica como la destrucción sistemática del margen documentado en la convención IEC 62402. Trazamos relaciones vectorizadas entre la producción y la amenaza desplegando el Grafo RDBMS. Parametrizamos inconsistencias operativas vía Pandas, conectamos Agentes de Inferencia Avanzada para sortear y compilar lenguaje libre sin error humano y escalamos la ejecución hacia nodos persistentes configurados bajo EDA asíncronos en FastAPI.
 
 La obsolescencia material ya no es catalogable como un evento Cisne Negro inmanejable. La convertimos en una entidad previsible, controlable, de métricas puras y mitigada automáticamente. Se ha erigido un arma competitiva e incuestionablemente asimétrica para la resiliencia de la cadena de suministro industrial.
+
+---
+
+### 📡 Telemetría en Vivo y Ficha de la Aplicación
+{{< app-ref slug="obs-management" >}}
