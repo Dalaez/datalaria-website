@@ -1,6 +1,6 @@
 ---
 title: "RavenPack: De la Analítica de Noticias en Marbella al Cerebro Cuantitativo de Wall Street y los Agentes Financieros Autónomos"
-date: 2026-12-06
+date: 2026-10-24
 draft: false
 categories: ["casos_exito", "Inteligencia Artificial", "Deep Tech", "Finanzas"]
 tags: ["ravenpack", "armando gonzalez", "fintech", "nlp", "hedge funds", "wall street", "trading cuantitativo", "big data", "agentes ia", "marbella"]
@@ -85,6 +85,7 @@ A diferencia de muchas startups de moda que queman millones en publicidad y rond
 * **Alianzas Estratégicas y Datos Exclusivos**: Su alianza con Dow Jones en 2008 catapultó su producto al integrar los indicadores de RavenPack directamente en los terminales y feeds de datos de los mayores bancos del mundo.
 * **Expansión Global**: Aunque el corazón tecnológico y de I+D permanece en Marbella, la compañía expandió su presencia comercial y de soporte abriendo sedes en **Nueva York** (One World Trade Center), **Londres**, **Singapur** y **Hong Kong**, superando los doscientos ingenieros, lingüistas y científicos de datos.
 * **El Apoyo de GP Bullhound**: En 2022 y 2023, la firma europea de banca de inversión y capital riesgo **GP Bullhound** invirtió estratégicamente en RavenPack para acelerar su mayor transformación en una década: **el lanzamiento de Bigdata.com**.
+* **Alianza Estratégica con Financial Times (FT Group)**: El Financial Times Group selló una triple alianza estratégica con RavenPack que combina inversión de capital a través de FT Ventures, licencia de contenidos periodísticos de FT Professional para enriquecer Bigdata.com y Analytics, e integración en los flujos de decisión de la banca global.
 
 ![Armando Gonzalez, CEO y cofundador de RavenPack, en su intervención en Bloomberg Markets Today analizando el impacto de la IA en los mercados](armando_official.png)
 
@@ -159,6 +160,7 @@ Nos encantaría conocer tu reflexión. Déjanos tu opinión en los comentarios.
 
 #### Fuentes y Enlaces de Interés:
 * [**RavenPack Official Website**: Big Data Analytics for Finance & Bigdata.com](https://www.ravenpack.com/)
+* [**Financial Times Group**: *Strategic Partnership with RavenPack*](https://aboutus.ft.com/press_release/strategic-partnership-ravenpack)
 * [**YouTube**: *Armando Gonzalez, CEO of RavenPack on Bloomberg Markets Today*](https://www.youtube.com/watch?v=Vp1-7TuRu2U)
 * [**El País**: *La inteligencia artificial de Wall Street se diseña en Marbella*](https://elpais.com/economia/2021-05-16/la-inteligencia-artificial-de-wall-street-se-disena-en-marbella.html)
 * [**Cinco Días**: *RavenPack: La firma española que lee las noticias a los grandes de Wall Street*](https://cincodias.elpais.com/)

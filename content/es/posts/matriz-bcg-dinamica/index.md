@@ -2,6 +2,7 @@
 title: "Matriz BCG Dinámica: Gestión de Cartera, Curva de Experiencia y Asignación de Capital C-Level"
 date: 2026-10-26
 draft: false
+translationKey: dynamic-bcg-matrix
 category: "Artículos Técnicos"
 categories: ["Estrategia Empresarial", "Finanzas Corporativas", "Gestión de Cartera", "Management"]
 tags: ["Matriz BCG", "Asignación de Capital", "Bruce Henderson", "Curva de Experiencia", "Cuota de Mercado Relativa", "Pirámide de Minto", "Plantilla Excel", "PowerPoint Ejecutivo", "ROIC"]
@@ -38,25 +39,99 @@ flowchart TD
     style E fill:#0F172A,stroke:#D97706,stroke-width:2px,color:#FFFFFF
 {{< /mermaid >}}
 
+{{< product-card
+  variant="compact"
+  title="Executive Decision Pack: Matriz BCG Dinámica & Asignación de Capital"
+  price="6€"
+  original_price="19€"
+  badge="★ Estándar Consultoría Tier-1"
+  icon="⭐"
+  checkout_url="https://datalaria.lemonsqueezy.com/buy/matriz-bcg"
+  button_text="Descargar Kit Ahora (.ZIP) • 6€"
+>}}
+¿Preparando la revisión anual de cartera o un Comité de Inversión y Finanzas? Descarga el motor cuantitativo en Excel con Gráfico de Burbujas dinámico, modelo de balance de liquidez de Henderson y presentación C-Level 16:9.
+{{< /product-card >}}
+
 ---
 
-## 1. La Falacia de la Matriz BCG Cualitativa y el Síndrome del Dibujo Estático
+## 1. ¿Qué es la Matriz BCG? Fundamentos, Dinámica de Cartera y Objetivos
 
-La Matriz de Crecimiento-Cuota fue desarrollada a finales de la década de 1960 por Bruce D. Henderson, fundador de Boston Consulting Group (BCG), en una serie de ensayos clásicos publicados en los *Perspectives* de la firma. Su propósito era resolver un dilema corporativo universal: **¿cómo debe una gran corporación diversificada asignar su capital entre múltiples unidades de negocio con tasas de crecimiento y necesidades de inversión radicalmente distintas?**
+Para cualquier consejero delegado (CEO), director financiero (CFO), socio de private equity o consultor de estrategia corporativa que deba optimizar el rendimiento global de un grupo empresarial multiproducto—o para quien se aproxime por primera vez a esta metodología—, la **Matriz BCG** (desarrollada originalmente por **Bruce D. Henderson** en 1968 y consolidada en sus ensayos fundacionales de 1970 para Boston Consulting Group) constituye el marco canónico para la **gestión de carteras corporativas y la asignación estratégica de capital**.
+
+A diferencia de los marcos de diagnóstico puramente cualitativo o centrados en una única línea de negocio, la Matriz BCG parte de un principio económico incontestable: **en una corporación diversificada, no todas las unidades de negocio se encuentran en la misma fase vital ni deben gestionarse bajo idénticos objetivos financieros**. Tratar a una unidad emergente en un sector en rápida expansión con las mismas exigencias de reparto de dividendos que a un negocio maduro y consolidado estrangula el crecimiento futuro de la empresa; del mismo modo, permitir que negocios maduros retengan y reinviertan sus flujos de caja en sectores estancados destruye sistemáticamente el valor del capital corporativo.
+
+### La Anatomía del Modelo: Los 4 Cuadrantes Estratégicos de Cartera
+
+El modelo clasifica todas las Unidades Estratégicas de Negocio (UENs) de una corporación en una matriz bidimensional cartesiana que cruza dos variables fundamentales: la **Cuota de Mercado Relativa ($\text{CMR}$)** en el eje horizontal y la **Tasa de Crecimiento del Mercado ($\text{TCM}$)** en el eje vertical. De este cruce matemático emergen los cuatro cuadrantes canónicos:
+
+| Cuadrante BCG | Posición Relativa ($\text{CMR}$ / $\text{TCM}$) | Mecánica de Flujos y Liquidez | Generación de Efectivo vs. Necesidades de Reinversión | Mandato Estratégico C-Level | Ejemplo Empresarial Típico |
+| :--- | :---: | :--- | :--- | :--- | :--- |
+| **⭐ ESTRELLAS (Stars)** | Alta $\text{CMR}$ ($\ge 1.0\times$)<br>Alto Crecimiento ($\ge 10\%$) | Negocio líder en sector en auge. Disfruta de altos márgenes por economías de escala, pero requiere reinversión masiva para sostener cuota. | **Generación alta • Reinversión alta**<br>Flujo Libre de Caja ($\text{FCF}$) neutral o levemente positivo. | **Invertir agresivamente:** Financiar capacidad, expansión comercial e I+D para blindar el liderazgo antes de que el mercado madure. | Plataformas SaaS en hipercrecimiento con posición de liderazgo o robótica autónoma avanzada. |
+| **🐄 VACAS LECHERAS (Cash Cows)** | Alta $\text{CMR}$ ($\ge 1.0\times$)<br>Bajo Crecimiento ($< 10\%$) | Líder en costes en mercado maduro o de crecimiento vegetativo. Genera flujos de caja muy superiores a sus necesidades de reinversión fabril. | **Generación máxima • Reinversión mínima**<br>Superávit estructural masivo de liquidez ($\text{FCF} \gg 0$). | **Ordeñar con disciplina:** Congelar CAPEX expansivo, limitar inversiones al mantenimiento básico y transferir el excedente al holding. | Sistemas hidráulicos tradicionales, bebidas carbonatadas consolidadas o motores industriales clásicos. |
+| **❓ INTERROGANTES (Question Marks)** | Baja $\text{CMR}$ ($< 1.0\times$)<br>Alto Crecimiento ($\ge 10\%$) | Operador seguidor en sector en expansión rápida. Sufre desventaja de costes frente al líder y consume grandes sumas de efectivo para no perder paso. | **Generación baja • Reinversión masiva**<br>Déficit severo y continuo de caja libre ($\text{FCF} \ll 0$). | **Decisión binaria estricta:** Inyectar capital concentrado de las Vacas para alcanzar $\text{CMR} \ge 1.0\times$ o desinvertir/cerrar sin dilación. | Celdas de baterías de estado sólido compitiendo contra gigantes asiáticos consolidados. |
+| **🐕 PERROS (Dogs)** | Baja $\text{CMR}$ ($< 1.0\times$)<br>Bajo Crecimiento ($< 10\%$) | Baja cuota en sector estancado o en contracción. Márgenes deprimidos y capital circulante atrapado en líneas con retorno inferior al coste de capital. | **Generación débil • Reinversión baja**<br>Flujo de caja neto neutro o drenaje crónico de tesorería. | **Cosechar o desinvertir (M&A):** Venta a competidores consolidadores, liquidación ordenada y liberación de circulante para Estrellas. | Componentes analógicos obsoletos o arneses de cableado convencional sin diferenciación. |
+
+### Cómo Funciona: El Embudo de Planificación Estratégica Completo (PESTEL → Porter → DAFO-CAME → Matriz BCG)
+
+Para los directivos que utilizan los marcos de Datalaria en su toma de decisiones, es vital entender **el lugar que ocupa la Matriz BCG dentro del ciclo integral de dirección estratégica**. En la metodología de las firmas de consultoría Tier-1 (McKinsey, BCG, Bain), la formulación de la estrategia no recurre a herramientas aisladas, sino a un **embudo estructurado de cuatro fases secuenciales**:
+
+{{< mermaid >}}
+flowchart TD
+    M1["<b>Nivel 1: Macroentorno Exógeno</b><br/><b>Matriz PESTEL Cuantitativa</b><br/><small>Severidad vs. Volatilidad de riesgos políticos, macro y tecnológicos</small>"]
+    M2["<b>Nivel 2: Microentorno Sectorial</b><br/><b>5 Fuerzas de Porter Ponderadas</b><br/><small>Atractivo estructural de industria, rivalidad y foso defensivo (Economic Moat)</small>"]
+    M3["<b>Nivel 3: Diagnóstico Interno & Cruce</b><br/><b>DAFO Cuantitativo & Matriz CAME</b><br/><small>Alineación de fortalezas/debilidades con oportunidades/amenazas</small>"]
+    M4["<b>Nivel 4: Gestión de Cartera & Finanzas</b><br/><b>Matriz BCG Dinámica de Cartera</b><br/><small>Balance de liquidez Henderson, curva de experiencia y asignación de capital</small>"]
+
+    M1 --> M2
+    M2 --> M3
+    M3 --> M4
+
+    style M1 fill:#EFF6FF,stroke:#3B82F6,stroke-width:1.5px,color:#1E3A8A
+    style M2 fill:#EEF2FF,stroke:#6366F1,stroke-width:1.5px,color:#312E81
+    style M3 fill:#ECFDF5,stroke:#10B981,stroke-width:1.5px,color:#064E3B
+    style M4 fill:#0F172A,stroke:#D97706,stroke-width:2.5px,color:#FFFFFF
+{{< /mermaid >}}
+
+1. **Nivel 1 — Escaneo del Macroentorno Exógeno ([Matriz PESTEL Cuantitativa](/es/posts/matriz-pestel-cuantitativa/)):** Proporciona el radar de amplio alcance. Mide el impacto en P&L de discontinuidades regulatorias, shocks energéticos, volatilidad de tipos de interés y tendencias demográficas. Si necesitas evaluar la hostilidad macro de tu entorno, consulta nuestra guía sobre la **[Matriz PESTEL Cuantitativa](/es/posts/matriz-pestel-cuantitativa/)**.
+2. **Nivel 2 — Análisis Estructural del Sector ([5 Fuerzas de Porter Ponderadas y Atractivo de Industria](/es/posts/5-fuerzas-porter-cuantitativas/)):** Aterriza en la dinámica competitiva de cada vertical. Determina el poder de negociación de clientes y proveedores, las barreras de entrada y el atractivo estructural ($\text{ROIC} - \text{WACC}$). Puedes profundizar en este análisis en nuestra guía de las **[5 Fuerzas de Porter Ponderadas y Atractivo de Industria](/es/posts/5-fuerzas-porter-cuantitativas/)**.
+3. **Nivel 3 — Diagnóstico Situacional y Posición Estratégica ([DAFO Cuantitativo y Matriz CAME](/es/posts/dafo-cuantitativo-matriz-came/)):** Sintetiza las amenazas y oportunidades externas identificadas en PESTEL y Porter con las fortalezas y debilidades internas operativas, fijando el vector de postura corporativa y las iniciativas de ejecución inmediata en la Matriz CAME. Descubre los detalles en nuestra guía del **[DAFO Cuantitativo y Matriz CAME](/es/posts/dafo-cuantitativo-matriz-came/)**.
+4. **Nivel 4 — Asignación de Capital y Dinámica de Cartera (Matriz BCG Dinámica):** Es la cúspide de la toma de decisiones financieras corporativas. Una corporación que compite en múltiples sectores con diversas UENs necesita responder a la pregunta definitiva del Consejo: *¿de dónde sale la liquidez y hacia dónde debe transferirse para maximizar el valor patrimonial del grupo a largo plazo?* La Matriz BCG toma las conclusiones de los niveles anteriores y orquesta el flujo de capital: las Vacas Lecheras (con fosos sólidos según Porter) transfieren sus excedentes hacia las Interrogantes seleccionadas que atacan las oportunidades detectadas en el DAFO.
+
+### ¿Cuál es el Objetivo Principal de la Matriz BCG?
+
+El propósito primordial de una Matriz BCG rigurosa no es elaborar una presentación estética de marketing, sino **asegurar la solvencia, la reposición generacional de negocios y la maximización del Retorno sobre el Capital Invertido ($\text{ROIC}$) del grupo corporativo**. Ante un Consejo de Administración, la herramienta debe resolver tres interrogantes ineludibles:
+
+1. *¿Dispone la corporación de suficiente superávit de efectivo en sus negocios maduros (Vacas) para financiar el crecimiento de sus divisiones de futuro sin sobreapalancar el balance con deuda bancaria?*
+2. *De todas las divisiones en sectores de alto crecimiento con baja cuota (Interrogantes), ¿en cuál de ellas debe concentrarse el capital de forma selectiva para garantizar que supere al líder ($\text{CMR} \ge 1.0\times$), y cuáles deben venderse o liquidarse inmediatamente?*
+3. *¿Qué volumen de capital circulante y activos fijos está atrapado en divisiones en declive (Perros) destruyendo valor económico frente al coste medio ponderado del capital ($\text{WACC}$)?*
+
+### Resultados Esperados: ¿Qué debe arrojar una Matriz BCG Eficaz?
+
+Cuando la Matriz BCG se implementa bajo el estándar cuantitativo de Datalaria, la alta dirección obtiene tres entregables ejecutivos verificables:
+
+* **Gráfico de Burbujas Cartesiano ($\text{CMR}$ vs. $\text{TCM}$) Escalado por Facturación:** Un mapa objetivo de la cartera donde cada burbuja representa una UEN con tamaño proporcional a sus ventas y coordenadas matemáticas auditables, eliminando debates subjetivos sobre el posicionamiento de cada negocio.
+* **Modelo de Balance de Fondos de Bruce Henderson ($\text{BNF}$):** Un balance cuantitativo de tesorería que audita si la cartera genera un superávit neto de liquidez o si sufre un déficit estructural que amenaza la continuidad del plan de negocio.
+* **Plan de Reasignación de Capital y Desinversión C-Level:** Una hoja de ruta presupuestaria concreta con asignación de CAPEX por unidad, identificación de activos a desinvertir vía M&A, propietarios estatutarios (*C-Suite Owners*), cronograma trimestral Q1-Q4 y proyección del incremento en ROIC corporativo.
+
+---
+
+## 2. La Falacia de la Matriz BCG Cualitativa y el Síndrome del Dibujo Estático
+
+Desarrollada por Bruce D. Henderson en Boston Consulting Group, la Matriz de Crecimiento-Cuota resolvió un dilema corporativo universal: **cómo debe una gran corporación diversificada asignar su capital entre múltiples unidades de negocio con tasas de crecimiento y necesidades de inversión radicalmente distintas**.
 
 No obstante, en la praxis corporativa contemporánea, su aplicación ha sufrido tres desviaciones metodológicas severas:
 
-### 1.1. La Paradoja de la Cuota Absoluta
+### 2.1. La Paradoja de la Cuota Absoluta
 En los comités de dirección es habitual escuchar expresiones como: *"Nuestra división química es líder porque tiene un 22% del mercado"*. Si el mercado está fragmentado y el segundo operador posee un 8%, la compañía disfruta ciertamente de una ventaja competitiva ($\text{CMR} = 2.75\times$). Pero si el mercado cuenta con un competidor global con un 66% de cuota, la división de la empresa es en realidad un competidor marginal ($\text{CMR} = 0.33\times$). 
 
 La rentabilidad del negocio no depende del porcentaje abstracto sobre el total del mercado, sino de la **ventaja de escala frente al rival más eficiente**. Como demostró Henderson, los costes de producción se reducen con el volumen acumulado propio en comparación con el del competidor dominante, no con el volumen del mercado agregado.
 
-### 1.2. La Dispersión Crónica de Capital en Interrogantes
+### 2.2. La Dispersión Crónica de Capital en Interrogantes
 Cuando una empresa carece de un modelo dinámico de liquidez, cae en la trampa de la "democracia presupuestaria": asignar aumentos homogéneos de CAPEX (ej: +5% anual) a todas las divisiones por igual. Las unidades clasificadas como **Interrogantes (Question Marks)** operan en sectores de rápido crecimiento pero con baja cuota relativa. Estas unidades son pozos sin fondo de liquidez: requieren ingentes sumas de efectivo para financiar fábricas, redes de ventas e inventario, pero generan muy poco flujo propio debido a sus márgenes reducidos por falta de escala. 
 
 Repartir el capital entre cuatro o cinco Interrogantes a la vez garantiza que ninguna de ellas acumule la masa crítica necesaria para superar al líder del mercado ($\text{CMR} \ge 1.0\times$). El resultado es la pérdida del capital y la degradación de todas las interrogantes hacia la categoría de Perros.
 
-### 1.3. La Brecha de la "Última Milla Ejecutiva"
+### 2.3. La Brecha de la "Última Milla Ejecutiva"
 Un análisis estratégico de cartera que concluye con un gráfico estático de PowerPoint sin vincularse al balance, a la tesorería corporativa y a la rentabilidad sobre el capital invertido ($\text{ROIC}$) resulta estéril para un Consejo de Administración. La alta dirección exige resolver tres cuestiones perentorias:
 1. ¿Cuál es el superávit neto de liquidez en euros que las Vacas Lecheras deben remitir a la matriz durante el ejercicio presupuestario?
 2. ¿Qué UEN clasificada como Interrogante cuenta con una probabilidad matemática verificable de superar el umbral $\text{CMR} \ge 1.0\times$ mediante una inyección concentrada de capital?
@@ -64,7 +139,7 @@ Un análisis estratégico de cartera que concluye con un gráfico estático de P
 
 ---
 
-## 2. Fundamentación Matemática: Dinámica de Cartera, Cuota Relativa y Curva de Experiencia
+## 3. Fundamentación Matemática: Dinámica de Cartera, Cuota Relativa y Curva de Experiencia
 
 Para dotar al análisis de rigor auditable de estándar Tier-1 (McKinsey / BCG), cada Unidad Estratégica de Negocio (UEN) se formaliza mediante un vector matemático bidimensional proyectado sobre el espacio cartesiano de crecimiento y cuota:
 
@@ -98,7 +173,7 @@ quadrantChart
   "UEN-08 Válvulas": [0.26, 0.02]
 {{< /mermaid >}}
 
-### 2.1. Ecuación de la Cuota de Mercado Relativa ($\text{CMR}_i$)
+### 3.1. Ecuación de la Cuota de Mercado Relativa ($\text{CMR}_i$)
 La Cuota de Mercado Relativa es la métrica rectora del eje horizontal. A diferencia de la cuota absoluta, mide la posición de la UEN en relación directa con el operador de mayor tamaño del mercado:
 
 $$\text{CMR}_i = \frac{V_i}{V_{\text{líder}, i}}$$
@@ -110,7 +185,7 @@ Donde:
 
 **El Umbral de Corte Canónico:** Se establece de forma universal en $\text{CMR}_{\text{corte}} = 1.00\times$. Una $\text{CMR} \ge 1.00\times$ indica liderazgo en cuota y, por consiguiente, el menor coste unitario de la industria. Una $\text{CMR} < 1.00\times$ sitúa a la unidad en desventaja estructural de costes.
 
-### 2.2. Ecuación de la Tasa de Crecimiento del Mercado ($\text{TCM}_i$)
+### 3.2. Ecuación de la Tasa de Crecimiento del Mercado ($\text{TCM}_i$)
 El eje vertical mide la tasa anualizada a la que se expande el volumen total de transacciones del sector en el que compite la UEN:
 
 $$\text{TCM}_i = \left( \frac{M_{i, t} - M_{i, t-1}}{M_{i, t-1}} \right) \times 100\%$$
@@ -119,7 +194,7 @@ Donde $M_{i, t}$ representa el volumen total del mercado relevante en el año $t
 
 **El Umbral de Corte Canónico:** Se sitúa convencionalmente en $\text{TCM}_{\text{corte}} = 10.0\%$ anual (o en la tasa de crecimiento media del PIB nominal más la inflación sectorial). Una tasa $\ge 10.0\%$ denota un mercado expansivo que exige importantes inyecciones de capital para financiar el crecimiento de activos y circulante. Una tasa $< 10.0\%$ corresponde a un mercado maduro o estancado con bajas exigencias de reinversión fabril.
 
-### 2.3. Efecto Curva de Experiencia de Henderson
+### 3.3. Efecto Curva de Experiencia de Henderson
 La justificación económica que vincula la Cuota de Mercado Relativa con la rentabilidad financiera es la **Curva de Experiencia** formulada empíricamente por BCG en 1968:
 
 $$C_n = C_1 \cdot n^{-b}$$
@@ -138,7 +213,7 @@ Para una tasa de aprendizaje del 80% ($\text{PR} = 0.80$), $b = -\ln(0.80)/\ln(2
 
 Dado que la UEN con mayor Cuota de Mercado Relativa ($\text{CMR} \ge 1.0\times$) produce a un ritmo superior al de todos sus rivales, acumula experiencia y volumen mucho más rápido. En consecuencia, opera en el punto más bajo de la curva de costes unitarios, disfrutando de márgenes brutos y márgenes EBITDA estructuralmente superiores a los de cualquier competidor seguidor.
 
-### 2.4. La Ecuación del Flujo de Caja Libre Neto ($\text{FCF}$)
+### 3.4. La Ecuación del Flujo de Caja Libre Neto ($\text{FCF}$)
 El balance de fondos de cada cuadrante está condicionado por la fórmula estándar del Flujo Libre de Caja:
 
 $$\text{FCF}_i = \text{EBITDA}_i \cdot (1 - t) - \Delta \text{NWC}_i - \text{CAPEX}_{\text{mantenimiento}, i} - \text{CAPEX}_{\text{crecimiento}, i}$$
@@ -148,7 +223,7 @@ $$\text{FCF}_i = \text{EBITDA}_i \cdot (1 - t) - \Delta \text{NWC}_i - \text{CAP
 
 ---
 
-## 3. Las Reglas de Oro de Asignación de Capital de Bruce Henderson
+## 4. Las Reglas de Oro de Asignación de Capital de Bruce Henderson
 
 La aportación fundamental de Henderson fue demostrar que los cuatro cuadrantes de la matriz no son compartimentos estancos, sino etapas interconectadas de un **ciclo vital corporativo gobernado por transferencias de liquidez**.
 
@@ -159,14 +234,14 @@ La aportación fundamental de Henderson fue demostrar que los cuatro cuadrantes 
 | **❓ INTERROGANTES** | Baja ($< 1.0\times$) | Alto ($\ge 10\%$) | Débil (bajo margen por desventaja de escala) | Muy elevados (sector en expansión) | **Déficit severo de liquidez (-)** | **Decisión binaria:** Inyectar capital masivo de las Vacas para liderar ($\text{CMR} \ge 1.0\times$) o desinvertir de inmediato. |
 | **🐕 PERROS** | Baja ($< 1.0\times$) | Bajo ($< 10\%$) | Débil o nula | Bajos o moderados | **Neutro o drenaje negativo (-)** | **Cosechar o desinvertir (M&A):** Vender activos a competidores consolidados y reasignar circulante a Estrellas. |
 
-### 3.1. El Ciclo Virtuoso de Cartera
+### 4.1. El Ciclo Virtuoso de Cartera
 Una corporación estratégicamente sana opera como un ecosistema autorregulado:
 1. **Las Vacas Lecheras financian el futuro:** Generan un superávit recurrente de caja que no puede reinvertirse rentablemente en su propio mercado maduro (hacerlo crearía sobrecapacidad y destruiría precios).
 2. **Selección estricta de Interrogantes:** El superávit de las Vacas se transfiere exclusivamente a **una o dos Interrogantes de alto potencial** para financiar la adquisición de capacidad fabril, red de distribución o tecnología necesaria para superar la cuota del líder actual.
 3. **Nacimiento de nuevas Estrellas:** Una vez que la Interrogante supera el umbral $\text{CMR} \ge 1.00\times$, se convierte en una Estrella autosuficiente.
 4. **Relevo generacional hacia Vacas:** Cuando el mercado sectorial madura y la tasa de crecimiento desciende por debajo del 10%, la Estrella entra automáticamente en el cuadrante de Vaca Lechera, garantizando la liquidez de la compañía para la siguiente década.
 
-### 3.2. Las Cuatro Trampas Fatales de Cartera de Henderson
+### 4.2. Las Cuatro Trampas Fatales de Cartera de Henderson
 Bruce Henderson identificó los cuatro errores gerenciales más costosos en la asignación de capital:
 * **Trampa 1: Sobreordeño de Vacas (Starving the Cows):** Asfixiar a una Vaca Lechera recortando incluso el CAPEX de mantenimiento y renovación tecnológica imprescindible. La unidad pierde calidad, sus clientes migran a competidores secundarios y su cuota cae por debajo de $1.0\times$, degradándola prematuramente a Perro y destruyendo el principal motor de dividendos del grupo.
 * **Trampa 2: Alimentar a los Perros (Feeding the Dogs):** Ceder a presiones sentimentales, políticas internas o historia fundacional y autorizar ampliaciones de capital en divisiones deficitarias que compiten con baja cuota en mercados estancados. Cada euro invertido en un Perro es capital detraído de una Estrella en fase de escalado.
@@ -175,7 +250,7 @@ Bruce Henderson identificó los cuatro errores gerenciales más costosos en la a
 
 ---
 
-## 4. La Matriz Cartesiana de Cartera y el Balance de Liquidez Corporativo
+## 5. La Matriz Cartesiana de Cartera y el Balance de Liquidez Corporativo
 
 Para auditar la sostenibilidad de una corporación, el modelo Datalaria evalúa el **Balance Neto de Fondos de Bruce Henderson ($\text{BNF}$)**:
 
@@ -186,17 +261,17 @@ $$\text{BNF} = \sum \text{FCF}_{\text{Vacas}} + \sum \text{FCF}_{\text{Estrellas
 
 ---
 
-## 5. Caso de Estudio Industrial B2B Resuelto: Nexus Industrial Technologies Group
+## 6. Caso de Estudio Industrial B2B Resuelto: Nexus Industrial Technologies Group
 
 Para demostrar la aplicación práctica de esta metodología ante un Comité de Dirección y Consejo de Administración, exponemos el caso real anonimizado del grupo industrial diversificado **Nexus Group**.
 
-### 5.1. Contexto Operativo y Financiero Base
+### 6.1. Contexto Operativo y Financiero Base
 * **Facturación Anual Consolidada:** 107.0 M€
 * **EBITDA Consolidado:** 18.98 M€ (Margen EBITDA medio: 17.7%)
 * **Flujo de Caja Libre Neto ($\text{FCF}$):** +5.29 M€
 * **Composición de Negocio:** 8 Unidades Estratégicas de Negocio (UENs) operando en sectores industriales, software B2B, electromovilidad y componentes tradicionales.
 
-### 5.2. Evaluación Cuantitativa de las 8 UENs (Modelo Oficial Datalaria)
+### 6.2. Evaluación Cuantitativa de las 8 UENs (Modelo Oficial Datalaria)
 
 | UEN ID | Nombre de la Unidad Estratégica | Facturación Propia ($V_i$) | Ventas Líder ($V_{\text{líder}}$) | Cuota Relativa ($\text{CMR}$) | Crecimiento Mercado ($\text{TCM}$) | Margen EBITDA | EBITDA Generado | FCF Neto Anual | Cuadrante BCG Asignado |
 | :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -210,13 +285,13 @@ Para demostrar la aplicación práctica de esta metodología ante un Comité de 
 | **UEN-08** | Válvulas Neumáticas Analógicas | 4.3 M€ | 14.3 M€ | **0.30x** | -1.5% | 7.0% | 0.30 M€ | **+0.09 M€** | **🐕 PERRO** |
 | **TOTAL** | **CONSOLIDADO CARTERA** | **107.0 M€** | **-** | **1.09x** | **+8.2%** | **17.7%** | **18.98 M€** | **+5.29 M€** | **EQUILIBRADO** |
 
-### 5.3. El Diagnóstico Financiero de Bruce Henderson
+### 6.3. El Diagnóstico Financiero de Bruce Henderson
 El análisis cuantitativo reveló un perfil dual característico de holdings industriales con solidez presente pero vulnerabilidades latentes:
 1. **Fuerte Concentración en Vacas Lecheras:** El 52.8% de los ingresos (56.5 M€) y el 75% del EBITDA están concentrados en dos líneas maduras (Hidráulicos y Motores) con tasas de crecimiento sectorial inferiores al 3.5%. Sin reposición activa de cartera, el flujo de caja del grupo declinará un 35% en los próximos 7 años.
 2. **Superávit Saludable de Fondos:** Las dos Vacas Lecheras generan **+8.05 M€ de FCF neto anual**, lo que cubre con total holgura el déficit combinado de las dos Interrogantes (-3.60 M€), arrojando un balance neto remanente de +4.45 M€.
 3. **Destrucción Oculta de Valor en Perros:** Las dos unidades Perro retienen 9.5 M€ de ventas y más de 2.8 M€ en capital circulante inmovilizado, consumiendo tiempo valioso del comité de dirección con un retorno medio sobre el capital del 4.2% frente a un WACC corporativo del 8.5%.
 
-### 5.4. Plan de Asignación de Capital Aprobado por el Consejo de Administración
+### 6.4. Plan de Asignación de Capital Aprobado por el Consejo de Administración
 Bajo la facilitación estratégica del modelo, el Consejo de Administración de Nexus Group aprobó un **Roadmap de Reasignación de Capital en 4 Ejes para 2026**:
 * **Eje 1: Inyección Concentrada en Baterías de Estado Sólido (UEN-05 - 2.8 M€ CAPEX):** Se asignan 2.800.000 € provenientes del superávit de Sistemas Hidráulicos para triplicar la capacidad de ensamblaje automatizado y elevar la CMR de $0.35\times$ a $1.05\times$ en un horizonte de 18 meses, transformándola en una nueva Estrella.
 * **Eje 2: Joint Venture / Alianza en Sensorización Láser (UEN-06):** Al no disponer de capital suficiente para financiar dos interrogantes simultáneas, se autoriza al Chief Business Officer (CBO) a negociar una coinversión con un socio industrial del 50%, eliminando la sangría de caja de 1.45 M€ anuales.
@@ -227,7 +302,7 @@ Bajo la facilitación estratégica del modelo, el Consejo de Administración de 
 
 ---
 
-## 6. Executive Decision Pack Oficial: Matriz BCG Dinámica
+## 7. Executive Decision Pack Oficial: Matriz BCG Dinámica
 
 Para directores generales (CEO), directores financieros (CFO), directores de estrategia corporativa y socios de firmas de asesoría y Private Equity que requieran implementar este modelo de estándar Tier-1 (McKinsey / BCG), hemos empaquetado todos los activos programáticos oficiales:
 
@@ -240,7 +315,7 @@ Para directores generales (CEO), directores financieros (CFO), directores de est
   icon="⭐"
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Guía Metodológica PDF"
   features="Cálculo automático de Cuota de Mercado Relativa y Tasa de Crecimiento|Gráfico de burbujas dinámico con tamaño según facturación|Slide PPTX categorizando Estrellas, Vacas, Interrogantes y Perros|Guía PDF de asignación de capital"
-  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/52cf8aa6-a595-49fe-b470-421140317013"
+  checkout_url="https://datalaria.lemonsqueezy.com/buy/matriz-bcg"
   button_text="Descargar Pack Completo (.ZIP) • 6€"
 >}}
 El archivo comprimido incluye la plantilla oficial en **Excel (.xlsx)** con fórmulas matriciales protegidas bajo contraseña proporcionada en las instrucciones y celdas de input 100% desbloqueadas, la presentación ejecutiva en **PowerPoint (.pptx 16:9 Widescreen)** bajo la Pirámide de Minto con gráfico de burbujas de alta resolución y Board Decision Gateway, la **Guía Metodológica en PDF** de 5 páginas y las instrucciones de importación directa a Google Sheets.
@@ -248,7 +323,7 @@ El archivo comprimido incluye la plantilla oficial en **Excel (.xlsx)** con fór
 
 ---
 
-## 7. Protocolo de Defensa en Comité de Dirección (FAQ)
+## 8. Protocolo de Defensa en Comité de Dirección (FAQ)
 
 ### ¿Por qué desinvertir en un Perro que todavía arroja un EBITDA contable positivo?
 Porque el beneficio contable convencional ignora el coste de oportunidad del capital. Si una división genera 90.000 € de EBITDA sobre 2.500.000 € de activos inmovilizados, su rentabilidad sobre el capital invertido ($\text{ROIC}$) es de apenas el 3.6%. Si el coste de capital ponderado de la corporación ($\text{WACC}$) es del 8.5%, la unidad está destruyendo 122.500 € de valor económico real cada año. Vender esos activos por 3.2 M€ y reinyectarlos en una Estrella que rinde un 22% genera un incremento neto de valor patrimonial inmediato.
@@ -267,7 +342,7 @@ Bruce Henderson sostenía un principio categórico: *si una innovación tecnoló
 
 ---
 
-## 8. Referencias Bibliográficas Canónicas de Autoridad
+## 9. Referencias Bibliográficas Canónicas de Autoridad
 
 1. **Henderson, Bruce D. (1970).** *The Product Portfolio*. Boston Consulting Group Perspectives, No. 66, Boston.  
    *Artículo fundacional donde se introduce formalmente la matriz de crecimiento-cuota de 4 cuadrantes y se establece la ley del balance dinámico de liquidez entre divisiones empresariales.* [Ver perspectiva original en bcg.com](https://www.bcg.com/about/overview/our-history/growth-share-matrix)

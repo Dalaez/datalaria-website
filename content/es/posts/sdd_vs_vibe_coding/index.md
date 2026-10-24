@@ -23,7 +23,7 @@ Sin embargo, a finales de 2026, la euforia inicial ha dejado paso a una cruda re
 
 Aplicaciones que funcionaban aparentemente bien en la máquina del desarrollador colapsan estrepitosamente al enfrentarse a concurrencia real; bases de código infladas acumulan dependencias redundantes y APIs alucinadas; y cualquier intento de refactorizar un módulo central provoca una cascada impredecible de errores que ningún desarrollador humano es capaz de comprender ni depurar.
 
-Como analizamos en [Evaluación y Testing de Agentes de IA en Producción](/es/posts/evaluacion_agentes_ia/) al abordar el peligro del *vibe checking*, y en [Silicon Valley y el Dilema de PiperNet](/es/posts/silicon_valley/) ante los incidentes de agentes descontrolados, la ingeniería de software ha llegado a una bifurcación histórica. 
+Como analizamos en [Cómo Crear Agentes de IA para la Operativa Empresarial con SDD](/es/posts/agentes_ia_operativa_sdd/), en [Evaluación y Testing de Agentes de IA en Producción](/es/posts/evaluacion_agentes_ia/) al abordar el peligro del *vibe checking*, y en [Silicon Valley y el Dilema de PiperNet](/es/posts/silicon_valley/) ante los incidentes de agentes descontrolados, la ingeniería de software ha llegado a una bifurcación histórica. 
 
 La respuesta profesional a este caos no ha sido volver a picar código a mano con pico y pala, sino abrazar una disciplina rigurosa y madura: **SDD (*Spec-Driven Development* o Desarrollo Dirigido por Especificaciones)**.
 

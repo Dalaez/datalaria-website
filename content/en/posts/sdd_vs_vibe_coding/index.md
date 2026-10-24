@@ -23,7 +23,7 @@ By late 2026, however, that initial euphoria has given way to a brutal engineeri
 
 Applications that performed seamlessly in local development crash violently under real production concurrency; bloated repositories accumulate redundant dependencies and hallucinated external APIs; and any attempt to refactor a core module triggers an unpredictable cascade of silent regressions that no human engineer understands or knows how to debug.
 
-As we analyzed in [AI Agent Evaluation & Testing in Production](/en/posts/evaluacion_agentes_ia/) when warning against the perils of superficial *vibe checking*, and in [Silicon Valley and the PiperNet Dilemma](/en/posts/silicon_valley/) regarding rogue autonomous agents, software engineering has reached a historic fork in the road.
+As we analyzed in [How to Build AI Agents for Daily Enterprise Operations with SDD](/en/posts/agentes_ia_operativa_sdd/), in [AI Agent Evaluation & Testing in Production](/en/posts/evaluating_ai_agents/) when warning against the perils of superficial *vibe checking*, and in [Silicon Valley and the PiperNet Dilemma](/en/posts/silicon_valley/) regarding rogue autonomous agents, software engineering has reached a historic fork in the road.
 
 The professional response to this crisis has not been to abandon AI and revert to manual keystroke typing, but rather to embrace a mature, disciplined methodology: **SDD (*Spec-Driven Development*)**.
 

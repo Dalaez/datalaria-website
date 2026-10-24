@@ -2,6 +2,7 @@
 title: "Dynamic BCG Portfolio Matrix: Experience Curve, Liquidity Balance & C-Level Capital Allocation"
 date: 2026-10-26
 draft: false
+translationKey: dynamic-bcg-matrix
 category: "Technical Articles"
 categories: ["Corporate Strategy", "Corporate Finance", "Portfolio Management", "Executive Management"]
 tags: ["BCG Matrix", "Capital Allocation", "Bruce Henderson", "Experience Curve", "Relative Market Share", "Minto Pyramid", "Excel Model", "Boardroom Presentation", "ROIC"]
@@ -38,25 +39,99 @@ flowchart TD
     style E fill:#0F172A,stroke:#D97706,stroke-width:2px,color:#FFFFFF
 {{< /mermaid >}}
 
+{{< product-card
+  variant="compact"
+  title="Executive Decision Pack: Dynamic BCG Portfolio Matrix & Capital Allocation"
+  price="6€"
+  original_price="19€"
+  badge="★ Tier-1 Consulting Standard"
+  icon="⭐"
+  checkout_url="https://datalaria.lemonsqueezy.com/buy/matriz-bcg"
+  button_text="Download Complete Kit (.ZIP) • 6€"
+>}}
+Preparing a portfolio strategic review, capital reallocation plan, or Investment Committee deck? Download the ready-to-use quantitative Excel model with dynamic Cartesian bubble chart, Henderson cash flow balance, and 16:9 Minto boardroom deck.
+{{< /product-card >}}
+
 ---
 
-## 1. The Fallacy of the Qualitative BCG Matrix and the Static Sketch Syndrome
+## 1. What is the BCG Matrix? Fundamentals, Portfolio Dynamics & Core Objectives
+
+For Chief Executive Officers (CEOs), Chief Financial Officers (CFOs), private equity investment directors, and corporate strategists tasked with steering multi-business enterprises—or anyone approaching this framework for the first time—the **BCG Growth-Share Matrix** (originally developed by **Bruce D. Henderson** in 1968 and formalized in his landmark 1970 essays for the Boston Consulting Group) represents the foundational discipline for **corporate portfolio management and executive capital allocation**.
+
+Unlike diagnostic frameworks focused narrowly on single product lines or functional operational efficiencies, the BCG Matrix is rooted in an indisputable corporate finance reality: **in a diversified enterprise, not all business units share the same lifecycle stage, nor should they be governed by identical financial hurdles**. Applying uniform dividend payout expectations or identical return targets to an emerging unit in a nascent, capital-hungry market as one does to a mature cash generator inevitably chokes off enterprise innovation; conversely, permitting mature businesses to reinvest their discretionary cash flows into low-growth sectors guarantees systemic capital destruction.
+
+### The Model Architecture: The 4 Strategic Portfolio Quadrants
+
+The framework evaluates each Strategic Business Unit (SBU) within a Cartesian space intersecting two structural variables: **Relative Market Share ($\text{RMS}$)** on the horizontal axis and **Market Growth Rate ($\text{MGR}$)** on the vertical axis. From this empirical intersection emerge the four canonical quadrants:
+
+| BCG Quadrant | Relative Position ($\text{RMS}$ / $\text{MGR}$) | Cash Flow & Operating Dynamics | Gross Cash Generation vs. Reinvestment Demands | C-Level Strategic Mandate | Prototypical Business Example |
+| :--- | :---: | :--- | :--- | :--- | :--- |
+| **⭐ STARS** | High $\text{RMS}$ ($\ge 1.0\times$)<br>High Growth ($\ge 10\%$) | Market leader in an expanding sector. Commands superior gross margins via scale economics, but requires heavy capital reinvestment to defend leadership. | **High Generation • High Reinvestment**<br>Net Free Cash Flow ($\text{FCF}$) roughly neutral or mildly positive. | **Invest aggressively:** Fund capacity scale-up, channel expansion, and R&D moats to entrench market leadership before industry maturity. | Leading enterprise SaaS platforms in hypergrowth or autonomous AI robotics divisions. |
+| **🐄 CASH COWS** | High $\text{RMS}$ ($\ge 1.0\times$)<br>Low Growth ($< 10\%$) | Scale-driven cost leader in a mature or low-growth sector. Generates massive operating cash well beyond internal reinvestment needs. | **Maximum Generation • Low Reinvestment**<br>Massive structural net cash surplus ($\text{FCF} \gg 0$). | **Disciplined milking:** Cap capital allocation to sustaining maintenance; systematically remit excess cash to group treasury. | Heavy hydraulic power systems, established industrial diesel engines, or legacy branded consumer staples. |
+| **❓ QUESTION MARKS** | Low $\text{RMS}$ ($< 1.0\times$)<br>High Growth ($\ge 10\%$) | Sub-scale follower in a rapidly expanding sector. Suffers operating cost penalties against the incumbent and burns cash to keep pace. | **Low Generation • Massive Reinvestment**<br>Severe, chronic free cash flow deficit ($\text{FCF} \ll 0$). | **Strict binary decision:** Concentrate Cash Cow surplus to cross $\text{RMS} \ge 1.0\times$ or divest/carve out immediately. | Solid-state energy storage cells competing against entrenched global battery conglomerates. |
+| **🐕 DOGS** | Low $\text{RMS}$ ($< 1.0\times$)<br>Low Growth ($< 10\%$) | Sub-scale competitor in a stagnant or contracting sector. Depressed operating margins and trapped working capital delivering sub-WACC returns. | **Weak Generation • Low Reinvestment**<br>Net cash flow near zero or an active, persistent cash drain. | **Harvest or divest (M&A):** Carve out to consolidating rivals, liquidate inventory, and redeploy capital into Stars. | Uninstrumented analog valves, conventional copper wiring harnesses, or obsolete peripheral hardware. |
+
+### How It Works: The Complete Strategic Planning Funnel (PESTEL → Porter → SWOT-TOWS → BCG Matrix)
+
+For corporate leaders integrating our executive toolkits into their strategic rhythm, it is vital to recognize **where the BCG Matrix sits within the end-to-end strategic planning funnel**. In Tier-1 strategy consulting practice (McKinsey, BCG, Bain), strategic formulation never relies on disconnected tools; it operates as an **integrated four-stage analytical funnel**:
+
+{{< mermaid >}}
+flowchart TD
+    M1["<b>Stage 1: Exogenous Macroenvironment</b><br/><b>Quantitative PESTEL Matrix</b><br/><small>Severity vs. Volatility of geopolitical, macroeconomic, and tech shocks</small>"]
+    M2["<b>Stage 2: Industry Microstructure</b><br/><b>Weighted Porter's 5 Forces</b><br/><small>Structural industry attractiveness, rivalry, and Economic Moat defensibility</small>"]
+    M3["<b>Stage 3: Internal Situational Alignment</b><br/><b>Quantitative SWOT & TOWS Matrix</b><br/><small>Mathematical synthesis of internal strengths/weaknesses with external factors</small>"]
+    M4["<b>Stage 4: Portfolio Capital Allocation</b><br/><b>Dynamic BCG Portfolio Matrix</b><br/><small>Bruce Henderson liquidity equilibrium, experience curve, and CAPEX reallocation</small>"]
+
+    M1 --> M2
+    M2 --> M3
+    M3 --> M4
+
+    style M1 fill:#EFF6FF,stroke:#3B82F6,stroke-width:1.5px,color:#1E3A8A
+    style M2 fill:#EEF2FF,stroke:#6366F1,stroke-width:1.5px,color:#312E81
+    style M3 fill:#ECFDF5,stroke:#10B981,stroke-width:1.5px,color:#064E3B
+    style M4 fill:#0F172A,stroke:#D97706,stroke-width:2.5px,color:#FFFFFF
+{{< /mermaid >}}
+
+1. **Stage 1 — Exogenous Macroenvironmental Scanning ([Quantitative PESTEL Matrix](/en/posts/quantitative-pestel-matrix/)):** The macro radar. It identifies and quantifies the P&L impact severity and temporal volatility of statutory shifts, energy price shocks, interest rate cycles, and demographic trends. If your executive team needs to audit macro risk exposure, explore our guide to the **[Quantitative PESTEL Matrix](/en/posts/quantitative-pestel-matrix/)**.
+2. **Stage 2 — Structural Industry & Value Chain Analysis ([Weighted Porter's 5 Forces & Industry Attractiveness](/en/posts/quantitative-porter-5-forces/)):** Evaluates industry profitability. It examines buyer/supplier bargaining power, barriers to entry, and structural spread ($\text{ROIC} - \text{WACC}$). Learn how to quantify competitive defensibility in our guide to **[Weighted Porter's 5 Forces & Industry Attractiveness](/en/posts/quantitative-porter-5-forces/)**.
+3. **Stage 3 — Situational Alignment & Strategic Posture ([Quantitative SWOT & TOWS Matrix](/en/posts/quantitative-swot-tows-matrix/)):** Synthesizes external risks/opportunities from PESTEL and Porter with internal organizational capabilities, defining the firm's strategic posture and triggering actionable initiatives inside the TOWS matrix. Review this operational bridge in our guide to the **[Quantitative SWOT & TOWS Matrix](/en/posts/quantitative-swot-tows-matrix/)**.
+4. **Stage 4 — Portfolio Capital Allocation & Liquidity Dynamics (Dynamic BCG Matrix):** The apex of corporate finance governance. An enterprise operating across multiple business units must answer the Board's ultimate question: *where does our cash originate, and where must it be deployed to maximize long-term enterprise value?* The BCG Matrix choreographs this transfer: mature Cash Cows (possessing wide Porter moats) remit surplus liquidity to fund selected Question Marks pursuing prime opportunities validated in the SWOT.
+
+### What is the Primary Objective of the BCG Matrix?
+
+The ultimate objective of a rigorous BCG Matrix is not to produce a marketing chart, but to **guarantee corporate solvency, generational business renewal, and the maximization of group Return on Invested Capital ($\text{ROIC}$)**. Inside the boardroom, the framework provides definitive answers to three corporate governance questions:
+
+1. *Does our corporate portfolio generate sufficient internal free cash flow from mature Cash Cows to fully fund the expansion of our growth businesses without taking on dangerous levels of debt?*
+2. *Among our capital-consuming Question Marks, which single unit possesses the mathematical runway to overtake the incumbent leader ($\text{RMS} \ge 1.0\times$), and which should be carved out immediately via M&A?*
+3. *What volume of working capital and fixed assets is trapped in sub-scale Dogs generating returns below our corporate Weighted Average Cost of Capital ($\text{WACC}$)?*
+
+### Expected Deliverables: What Should a Rigorous BCG Matrix Produce?
+
+When executed under Datalaria's quantitative consulting standard, executive leadership receives three concrete, auditable outputs:
+
+* **Dynamic Cartesian Bubble Chart ($\text{RMS}$ vs. $\text{MGR}$) Scaled by Revenue:** An empirical map where each bubble represents an SBU with diameter proportional to sales volume, removing subjective bias regarding competitive positioning.
+* **Bruce Henderson Net Fund Balance Model ($\text{NFB}$):** A treasury-level audit determining whether group cash flow is in structural surplus or running an unsustainable deficit.
+* **C-Level Capital Reallocation & Divestment Roadmap:** A costed investment and carve-out schedule specifying CAPEX injections, M&A reserve prices, statutory C-Suite owners, quarterly Q1–Q4 milestones, and projected ROIC accretion.
+
+---
+
+## 2. The Fallacy of the Qualitative BCG Matrix and the Static Sketch Syndrome
 
 When Bruce D. Henderson founded the Boston Consulting Group in 1963, he sought to address an existential corporate challenge: **how should a diversified industrial holding company allocate its finite capital among disparate business lines operating across different stages of maturity?**
 
 In a series of landmark essays published in the *BCG Perspectives*, Henderson introduced the Growth-Share Matrix. However, decades of academic oversimplification have generated three widespread corporate distortions:
 
-### 1.1. The Absolute Share Distortion
+### 2.1. The Absolute Share Distortion
 In management meetings, one frequently hears: *"Our industrial robotics division is a market leader because we have captured 22% of the domestic market"*. If the sector is highly fragmented and the runner-up holds 8%, the company does indeed enjoy a scale advantage ($\text{RMS} = 2.75\times$). But if the industry is dominated by a global player holding 66%, the division is in reality a marginal operator ($\text{RMS} = 0.33\times$).
 
 Enterprise profitability and cash generation do not stem from abstract market percentages, but from **scale advantage relative to the primary competitor**. As Henderson proved, manufacturing costs decline with accumulated internal experience relative to the dominant rival, not with total industry volume.
 
-### 1.2. The Question Mark Capital Dilution Trap
+### 2.2. The Question Mark Capital Dilution Trap
 Without a dynamic cash model, corporations default to "budgetary egalitarianism": granting uniform percentage CAPEX increases (e.g. +5% annually) across all business units. Units classified as **Question Marks** operate in high-growth markets but suffer from low relative market share. These businesses are cash sinks: they demand immense capital to fund capacity, sales pipelines, and working capital, yet generate minimal cash flow due to sub-scale margins.
 
 Spreading capital thinly across four or five Question Marks simultaneously guarantees that none of them achieves the scale required to surpass the market leader ($\text{RMS} \ge 1.0\times$). When market growth inevitably moderates, the company finds itself burdened with a portfolio of new Dogs.
 
-### 1.3. The Executive "Last-Mile" Decision Gap
+### 2.3. The Executive "Last-Mile" Decision Gap
 A strategy session that concludes with an illustrated slide without linking to corporate cash flow, debt covenants, and Return on Invested Capital ($\text{ROIC}$) fails the Board of Directors. Executive leadership requires concrete answers to three questions:
 1. Exactly how much net surplus cash in euros/dollars must Cash Cows remit to corporate treasury during the upcoming fiscal year?
 2. Which Question Mark possesses the mathematical runway to cross the $\text{RMS} \ge 1.0\times$ threshold under an aggressive, concentrated capital injection?
@@ -64,7 +139,7 @@ A strategy session that concludes with an illustrated slide without linking to c
 
 ---
 
-## 2. Mathematical Foundations: Portfolio Dynamics, Relative Share & The Experience Curve
+## 3. Mathematical Foundations: Portfolio Dynamics, Relative Share & The Experience Curve
 
 To establish an auditable analytical framework (McKinsey / BCG Tier-1 standard), each Strategic Business Unit (SBU) is defined as a two-dimensional mathematical vector within Cartesian coordinates:
 
@@ -98,7 +173,7 @@ quadrantChart
   "SBU-08 Valves": [0.26, 0.02]
 {{< /mermaid >}}
 
-### 2.1. Relative Market Share ($\text{RMS}_i$) Equation
+### 3.1. Relative Market Share ($\text{RMS}_i$) Equation
 Relative Market Share governs the horizontal axis. It benchmarks the evaluated SBU directly against the largest operator in that market segment:
 
 $$\text{RMS}_i = \frac{V_i}{V_{\text{leader}, i}}$$
@@ -110,7 +185,7 @@ Where:
 
 **The Canonical Cutoff Threshold:** Positioned universally at $\text{RMS}_{\text{cutoff}} = 1.00\times$. An $\text{RMS} \ge 1.00\times$ establishes market leadership and lowest unit cost. An $\text{RMS} < 1.00\times$ places the business unit in a structural scale deficit.
 
-### 2.2. Market Growth Rate ($\text{MGR}_i$) Equation
+### 3.2. Market Growth Rate ($\text{MGR}_i$) Equation
 The vertical axis measures the annualized expansion velocity of total transaction volume in the relevant sector:
 
 $$\text{MGR}_i = \left( \frac{M_{i, t} - M_{i, t-1}}{M_{i, t-1}} \right) \times 100\%$$
@@ -119,7 +194,7 @@ Where $M_{i, t}$ denotes total market size in year $t$.
 
 **The Canonical Cutoff Threshold:** Set conventionally at $\text{MGR}_{\text{cutoff}} = 10.0\%$ annually (or the nominal GDP growth rate plus sector inflation). A rate $\ge 10.0\%$ characterizes an expanding market that demands heavy capital reinvestment. A rate $< 10.0\%$ denotes a mature or stagnant market with low capital reinvestment intensity.
 
-### 2.3. Bruce Henderson's Experience Curve Power Law
+### 3.3. Bruce Henderson's Experience Curve Power Law
 The economic link connecting Relative Market Share to operating profitability is the **Experience Curve** formulated by BCG in 1968:
 
 $$C_n = C_1 \cdot n^{-b}$$
@@ -138,7 +213,7 @@ For an 80% progress ratio ($\text{PR} = 0.80$), $b = -\ln(0.80)/\ln(2) \approx 0
 
 Because the SBU with the highest Relative Market Share ($\text{RMS} \ge 1.0\times$) accumulates production volume faster than its peers, it descends the cost curve ahead of the competition. Consequently, the market leader enjoys structural, compounding advantages in gross margin and EBITDA generation.
 
-### 2.4. Net Free Cash Flow ($\text{FCF}$) Equation
+### 3.4. Net Free Cash Flow ($\text{FCF}$) Equation
 The net cash balance of each quadrant is dictated by standard discounted cash flow dynamics:
 
 $$\text{FCF}_i = \text{EBITDA}_i \cdot (1 - t) - \Delta \text{NWC}_i - \text{CAPEX}_{\text{maintenance}, i} - \text{CAPEX}_{\text{growth}, i}$$
@@ -148,7 +223,7 @@ $$\text{FCF}_i = \text{EBITDA}_i \cdot (1 - t) - \Delta \text{NWC}_i - \text{CAP
 
 ---
 
-## 3. Bruce Henderson's Golden Rules of Capital Allocation
+## 4. Bruce Henderson's Golden Rules of Capital Allocation
 
 Henderson's central insight was that the four quadrants represent phases within an **integrated corporate cash lifecycle governed by internal capital transfers**:
 
@@ -159,14 +234,14 @@ Henderson's central insight was that the four quadrants represent phases within 
 | **❓ QUESTION MARKS** | Low ($< 1.0\times$) | High ($\ge 10\%$) | Weak (depressed margins from scale deficit) | Very High (rapidly expanding market) | **Severe cash deficit (-)** | **Binary decision:** Inject massive Cash Cow funds to capture #1 ($\text{RMS} \ge 1.0\times$) or divest immediately. |
 | **🐕 DOGS** | Low ($< 1.0\times$) | Low ($< 10\%$) | Weak or negative | Low or moderate | **Neutral or chronic cash drain (-)** | **Harvest or M&A carve-out:** Divest assets to consolidating rivals and redeploy capital into Stars. |
 
-### 3.1. The Virtuous Portfolio Lifecycle
+### 4.1. The Virtuous Portfolio Lifecycle
 A strategically healthy corporation functions as a self-sustaining financial ecosystem:
 1. **Cash Cows fund the future:** Generating recurrent cash surpluses that cannot be profitably reinvested in mature sectors without creating industry overcapacity.
 2. **Selective concentration on Question Marks:** Cash Cow surpluses are directed exclusively into **one or two high-potential Question Marks** to fund the capacity expansion or IP acquisitions required to surpass the incumbent leader.
 3. **Ascension to Stars:** Once the Question Mark crosses the $\text{RMS} \ge 1.00\times$ threshold, it becomes a self-funding Star.
 4. **Maturation into Cash Cows:** As the industry growth rate moderates below 10%, the Star naturally transitions into a Cash Cow, safeguarding corporate dividends for the subsequent decade.
 
-### 3.2. Henderson's Four Fatal Portfolio Traps
+### 4.2. Henderson's Four Fatal Portfolio Traps
 Bruce Henderson identified four recurring executive capital allocation errors:
 * **Trap 1: Overmilking Cash Cows:** Starving mature cash engines of essential maintenance CAPEX. Customer retention erodes, secondary competitors capture share, and the unit falls below $\text{RMS} = 1.0\times$, prematurely degrading into a Dog and destroying the group's dividend engine.
 * **Trap 2: Feeding the Dogs:** Yielding to internal corporate politics or legacy sentimental attachments by funding turnaround programs in sub-scale businesses facing stagnant demand. Every euro sunk into a Dog is capital withheld from scaling a Star.
@@ -175,7 +250,7 @@ Bruce Henderson identified four recurring executive capital allocation errors:
 
 ---
 
-## 4. The Cartesian Portfolio Matrix and Corporate Cash Flow Balance
+## 5. The Cartesian Portfolio Matrix and Corporate Cash Flow Balance
 
 To audit group strategic resilience, the Datalaria framework assesses **Bruce Henderson's Net Fund Balance ($\text{NFB}$)**:
 
@@ -186,17 +261,17 @@ $$\text{NFB} = \sum \text{FCF}_{\text{Cows}} + \sum \text{FCF}_{\text{Stars}} - 
 
 ---
 
-## 5. Solved Industrial B2B Case Study: Nexus Industrial Technologies Group
+## 6. Solved Industrial B2B Case Study: Nexus Industrial Technologies Group
 
 To demonstrate execution before an executive Board of Directors, we examine the anonymized corporate portfolio of **Nexus Group**, an international industrial technology conglomerate.
 
-### 5.1. Operational and Financial Baseline
+### 6.1. Operational and Financial Baseline
 * **Consolidated Annual Revenue:** €107.0M
 * **Consolidated EBITDA:** €18.98M (Consolidated EBITDA margin: 17.7%)
 * **Net Free Cash Flow ($\text{FCF}$):** +€5.29M
 * **Operating Structure:** 8 Strategic Business Units (SBUs) spanning industrial automation, IoT SaaS, heavy machinery, energy storage, and legacy hardware.
 
-### 5.2. Quantitative Audit of the 8 SBUs (Datalaria Model)
+### 6.2. Quantitative Audit of the 8 SBUs (Datalaria Model)
 
 | SBU ID | Strategic Business Unit Name | Own Sales ($V_i$) | Leader Sales ($V_{\text{leader}}$) | Relative Share ($\text{RMS}$) | Market Growth ($\text{MGR}$) | EBITDA Margin | EBITDA Generated | Net Annual FCF | Assigned BCG Quadrant |
 | :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -210,13 +285,13 @@ To demonstrate execution before an executive Board of Directors, we examine the 
 | **SBU-08** | Analog Pneumatic Valves | €4.3M | €14.3M | **0.30x** | -1.5% | 7.0% | €0.30M | +€0.09M | **🐕 DOG** |
 | **TOTAL** | **PORTFOLIO CONSOLIDATED** | **€107.0M** | **-** | **1.09x** | **+8.2%** | **17.7%** | **€18.98M** | **+€5.29M** | **SUSTAINABLE** |
 
-### 5.3. Financial Diagnosis and Henderson Balance
+### 6.3. Financial Diagnosis and Henderson Balance
 The empirical model revealed a strategic profile characteristic of established manufacturing holdings:
 1. **Elevated Cash Cow Dependency:** 52.8% of group revenue (€56.5M) and 75% of EBITDA are concentrated in two mature divisions (Hydraulics and Engines) expanding at under 3.5% annually. Without proactive portfolio renewal, group cash flows will contract by 35% over the next 7 years.
 2. **Healthy Net Fund Surplus:** The two Cash Cows produce **+€8.05M in net annual FCF**, comfortably absorbing the combined expansion deficits of the two Question Marks (-€3.60M), leaving a net group surplus of +€4.45M.
 3. **Hidden Economic Drag in Dogs:** The two Dog units lock up €9.5M in sales and over €2.8M in working capital, consuming executive bandwidth while delivering an average ROIC of 4.2% against a corporate WACC of 8.5%.
 
-### 5.4. Boardroom Capital Allocation Roadmap Approved
+### 6.4. Boardroom Capital Allocation Roadmap Approved
 Guided by this quantitative audit, the Board of Directors of Nexus Group ratified a **Four-Pillar Capital Reallocation Plan for 2026**:
 * **Pillar 1: Concentrated Push in Solid-State Batteries (SBU-05 - €2.8M CAPEX):** Reallocating €2,800,000 from the Hydraulics cash surplus to expand automated cell assembly, scaling $\text{RMS}$ from $0.35\times$ to $1.05\times$ over an 18-month horizon to establish a new Star.
 * **Pillar 2: Strategic Joint Venture for Quantum Laser (SBU-06):** Recognizing that group treasury cannot fund two capital-intensive pushes simultaneously, the Chief Business Officer (CBO) is authorized to negotiate a 50% co-investment partnership with an international optical conglomerate, eliminating the €1.45M annual cash drain.
@@ -227,7 +302,7 @@ Guided by this quantitative audit, the Board of Directors of Nexus Group ratifie
 
 ---
 
-## 6. Official Executive Decision Pack: Dynamic BCG Portfolio Matrix
+## 7. Official Executive Decision Pack: Dynamic BCG Portfolio Matrix
 
 For Chief Executive Officers (CEOs), Chief Financial Officers (CFOs), Heads of Corporate Strategy, and Partners in private equity and advisory firms requiring an enterprise-grade toolkit (McKinsey / BCG standard), we have assembled the complete programmatic pack:
 
@@ -240,7 +315,7 @@ For Chief Executive Officers (CEOs), Chief Financial Officers (CFOs), Heads of C
   icon="⭐"
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Methodology Guide PDF"
   features="Automated Relative Market Share and Growth Rate calculation engine|Dynamic Cartesian bubble chart scaled by business unit revenue|16:9 boardroom PPTX deck categorizing Stars, Cows, Questions, and Dogs|5-page executive PDF guide on capital allocation and ROIC optimization"
-  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/52cf8aa6-a595-49fe-b470-421140317013"
+  checkout_url="https://datalaria.lemonsqueezy.com/buy/matriz-bcg"
   button_text="Download Full Pack (.ZIP) • 6€"
 >}}
 The compressed archive contains the official **Excel workbook (.xlsx)** with calculation formulas protected under password provided in the instructions and 100% unlocked input cells, the executive **PowerPoint presentation (.pptx 16:9 Widescreen)** built under the Minto Pyramid Principle with high-resolution bubble charts and Board Decision Gateway, the **Methodology Guide in PDF** (5 pages), and direct Google Sheets import instructions.
@@ -248,7 +323,7 @@ The compressed archive contains the official **Excel workbook (.xlsx)** with cal
 
 ---
 
-## 7. Boardroom Defense Protocol (C-Level FAQ)
+## 8. Boardroom Defense Protocol (C-Level FAQ)
 
 ### Why divest a Dog that still produces positive accounting EBITDA?
 Because positive accounting profit often masks economic value destruction. When a business unit generates €90,000 in EBITDA on €2,500,000 in operating assets, its Return on Invested Capital ($\text{ROIC}$) is approximately 3.6%. If the corporate Weighted Average Cost of Capital ($\text{WACC}$) is 8.5%, the unit destroys €122,500 in economic value every single year. Divesting those assets for €3.2M and reinvesting the proceeds into a Star generating a 22% ROIC creates immediate shareholder wealth.
@@ -267,7 +342,7 @@ Bruce Henderson formulated an unambiguous rule: *if an emerging technology is de
 
 ---
 
-## 8. Authoritative Canonical Bibliography
+## 9. Authoritative Canonical Bibliography
 
 1. **Henderson, Bruce D. (1970).** *The Product Portfolio*. Boston Consulting Group Perspectives, No. 66, Boston.  
    *Foundational treatise introducing the growth-share matrix and establishing the economic principles governing internal cash flow equilibrium.* [View original perspective at bcg.com](https://www.bcg.com/about/overview/our-history/growth-share-matrix)
