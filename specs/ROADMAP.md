@@ -1,0 +1,145 @@
+# Hoja de Ruta Maestra y Control de Estado SDD (`ROADMAP.md`)
+
+> **PROPÓSITO CRÍTICO:** Este archivo es la **Memoria de Estado Persistente** del proyecto Datalaria.  
+> Todo agente (Antigravity Gemini 4 Argon / Claude) DEBE leer este archivo al inicio de cada sesión para saber exactamente qué se ha completado, qué tarea toca ejecutar ahora y cómo revertir en caso de fallo.
+
+---
+
+## 📍 ESTADO ACTUAL DEL PROYECTO (PUNTERO DE SESIÓN)
+
+- **Fase Activa:** `FASE 1 — Extracción SDD de LifeOps & Sistema de Fichas de Apps` ➔ **En progreso (Hito 1.1 completado ✅, listos para Hito 1.2)**
+- **Próximo Hito Recomendado:** `Hito 1.2 — Aislamiento Limpio, Fix de Seguridad y Verificación de LifeOps (apps/lifeops/)`
+- **Estado del Código de Producción:** `100% INTACTO` (Solo se han creado/actualizado especificaciones formales y gobernanza en `/specs/`, `AGENTS.md` y `CLAUDE.md`).
+
+---
+
+## 📋 PREMISA EDITORIAL VERIFICADA: LAS 7 APPS ACTIVAS EN PRODUCCIÓN
+
+Tras auditar todos los artículos de `/content/es/posts/` y `/content/en/posts/` frente a la página `/apps/` actual, este es el mapa oficial de estado:
+
+| # | App en `/apps/` | Ruta Web | Post(s) Publicados (`draft: false`) | Categoría SDD |
+| :-: | :--- | :--- | :--- | :--- |
+| **1** | **LifeOps** | `/apps/lifeops/` | `app-lifeops_part1` a `part5` (5 posts) | **🟢 Lista para documentar** (Empezamos por aquí) |
+| **2** | **Agentic Radar** | `/apps/obs-management/` | `obs_parte1_intro` a `obs_parte7_dashboard` (7 posts) | **🟡 Requiere aislamiento previo** (Sacar `.py` de `static/` + reparar modo Sandbox para evitar error `OFFLINE`) |
+| **3** | **Weather** | `/apps/weather/` | `app-openweather_part1` a `part4` (4 posts) | **🟡 Requiere aislamiento previo** (Limpiar 3 clones y `.git` corrupto) |
+| **4** | **Neon Snake** | `/games/snake/` | `game_snake` (1 post — ya tiene botón *"Read Post"*) | **🔴 No migrable (Frozen Legacy)** (Solo verificar RLS en Supabase) |
+| **5** | **Flashcards** | `/apps/flashcards/` | `app_flashcards` (1 post) | **🔴 No migrable (Frozen Legacy)** (Solo verificar endpoint Gemini BYOK) |
+| **6** | **Unit Converter** | `/apps/conversor/` | `app_conversor_unidades` (1 post) | **🔴 No migrable (Frozen Legacy)** (Mantener congelada) |
+| **7** | **Maths** | `/apps/maths/` | `founderz-programando-chatGPT` (1 post) | **🔴 No migrable (Frozen Legacy)** (Mantener congelada) |
+
+> **📦 Proyectos en Incubación (Posponer hasta Fase 4):**
+> - **`project-ops` (Agentic PMO Sandbox):** Sus posts `proj_ops_parte1_intro` y `proj_ops_parte2_agentic_pmo` están en **`draft: true`** y la app aún no ha sido publicada.
+> - **`sop-pipeline` (S&OP Autonomous Pipeline):** Sus posts enlazan a un Google Colab externo; no existe aún como Web App publicada en `/apps/`.
+> - *Regla:* Ambos salen de las Fases 1-3 de migración funcional (solo se sacarán sus archivos `.py`/`.env` de `static/` por seguridad) y se abordarán en la **Fase 4** cuando vayamos a revisarlos, validarlos y publicarlos por primera vez bajo SDD.
+
+---
+
+## 🛡️ PROTOCOLO DE PROGRESO SEGURO Y MARCHA ATRÁS (ROLLBACK)
+
+1. **Granularidad Atómica (1 Hito = 1 Turno):** Nunca mezclamos dos aplicaciones distintas en el mismo paso.
+2. **Punto de Restauración Pre-Cambio (Git Checkpoint):** Antes de cualquier hito que mueva archivos o toque código (a partir de Fase 2):
+   ```powershell
+   git status --short
+   git tag -f sdd-checkpoint-pre-<hito-id>
+   ```
+3. **Marcha Atrás Inmediata (Emergency Rollback):** Si falla cualquier verificación:
+   ```powershell
+   git reset --hard sdd-checkpoint-pre-<hito-id>
+   git clean -fd
+   ```
+
+---
+
+## 🗺️ PLAN MAESTRO POR FASES (CHECKLIST DE EJECUCIÓN)
+
+### FASE 0: Cimientos, Gobernanza y Constitución SDD (Completada ✅)
+- [x] **Hito 0.1:** Auditoría estática del ecosistema y cruce con posts publicados ([`00-ecosystem-audit.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/audit/00-ecosystem-audit.md)).
+- [x] **Hito 0.2:** Constitución Arquitectónica y ADRs actualizados con la regla `App Activa ⇔ Post Publicado` ([`_constitution.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/_constitution.md), [`DECISIONS.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/DECISIONS.md)).
+- [x] **Hito 0.3:** Protocolo de arranque multi-modelo y plantilla maestra ([`AGENTS.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/AGENTS.md), [`CLAUDE.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/CLAUDE.md), [`app-spec.template.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/_templates/app-spec.template.md)).
+
+---
+
+### FASE 1: Extracción SDD de LifeOps (#1) & Sistema de Fichas de Apps
+*Objetivo: Migrar y aislar con rigor la primera aplicación activa (`LifeOps`), resolver sus riesgos técnicos/seguridad, y desplegar la nueva infraestructura de fichas dedicadas con historial evolutivo (`apps-showcase`) antes de abordar la Fase 2.*
+
+- [x] **Hito 1.1: Especificación Formal de `lifeops` y de `apps-showcase`**
+  - *Acción:* 
+    1. Generar [`/specs/apps/lifeops/spec.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/apps/lifeops/spec.md) documentando la arquitectura actual (`lifeops-app` + `lifeops-api`), esquema `lifeops`, endpoints REST, modo `mock=true`, invariantes y changelog SemVer v0.1.0 -> v1.0.0.
+    2. Generar [`/specs/portal/apps-showcase/spec.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/portal/apps-showcase/spec.md) con el diseño del nuevo sistema de fichas, metadatos en `data/apps/<slug>.yaml`, tarjetas visuales con captura, historial de versiones y shortcode `app-ref`.
+  - *Gate de Verificación:* Documentos validados; cero cambios en código de producción. (Completado el 2026-10-24 ✅).
+
+- [ ] **Hito 1.2: Aislamiento Limpio, Fix de Seguridad y Verificación de `lifeops`**
+  - *Acción:*
+    1. Crear checkpoint Git `sdd-checkpoint-pre-1.2`.
+    2. Mover `lifeops-app/` a `apps/lifeops/web/` y `lifeops-api/` a `apps/lifeops/api/` con `git mv`.
+    3. Resolver **SEC-1** en `apps/lifeops/api/middleware/auth.py` (verificación estricta de firma JWT, eliminando `verify_signature: False`) y **SEC-2** (migrar a `PyJWT`).
+    4. Crear suite básica `pytest` en `apps/lifeops/api/tests/` (verificando `/health`, invariantes y token forjado -> 401).
+    5. Crear script de build unificado `build:portal` en `apps/lifeops/web/` para compilar y sincronizar con `static/apps/lifeops/`.
+    6. Actualizar `rootDir` en `render.yaml`.
+  - *Gate de Verificación:* `npm run lint` y `npm run build:portal` pasan con 0; `pytest apps/lifeops/api` pasa con 0; `hugo --gc --minify` pasa con 0; demo `/apps/lifeops/#/?mock=true` funciona.
+
+- [ ] **Hito 1.3: Infraestructura del Portal para Fichas de Apps (`apps-showcase`)**
+  - *Acción:*
+    1. Implementar `layouts/apps/list.html` con soporte de tarjetas visuales (`partials/app-card.html`) agrupadas por tier (`flagship`, `b2b`, `lab`).
+    2. Implementar `layouts/apps/single.html` con las 8 secciones de detalle (Hero, Objetivos, Features, Diseño, Tecnologías, Posts relacionados, Changelog evolutivo, CTA).
+    3. Implementar shortcode `layouts/shortcodes/app-ref.html`.
+    4. Estilos en `static/css/apps-showcase.css` basados en tokens de PaperMod.
+    5. Validaciones automáticas en tiempo de build (`errorf` ante campos requeridos o posts inexistentes).
+  - *Gate de Verificación:* `hugo --gc --minify` pasa con código 0; el listado `/es/apps/` y `/en/apps/` compila limpiamente.
+
+- [ ] **Hito 1.4: Despliegue de Ficha de LifeOps y Actualización de Posts**
+  - *Acción:*
+    1. Crear `data/apps/lifeops.yaml` con todos los metadatos, objetivos, diseño, stack y releases (v0.1.0 -> v1.0.0).
+    2. Crear páginas de contenido `content/es/apps/lifeops/index.md` y `content/en/apps/lifeops/index.md` con captura `cover.png`.
+    3. Insertar shortcode `{{</* app-ref slug="lifeops" */>}}` en los 5 artículos de la serie LifeOps en ES y EN (10 archivos en total).
+  - *Gate de Verificación:* Las fichas `/es/apps/lifeops/` y `/en/apps/lifeops/` cargan todos sus datos, timeline y enlaces; los 10 posts muestran la tarjeta de la ficha; `hugo --gc --minify` termina sin advertencias ni errores.
+
+---
+
+### FASE 2: Aislamiento y Saneamiento de las Apps Activas con Deuda (`obs-management` y `weather`)
+*Objetivo: Arreglar y formalizar bajo SDD las otras dos aplicaciones principales que hoy están publicadas en `/apps/`.*
+
+- [ ] **Hito 2.1: Especificación, Aislamiento y Reparación Dual-Mode de `obs-management` (App #2 — Agentic Radar)**
+  - *Acción:*
+    1. Crear `/specs/apps/obs-management/spec.md` alineado con los 7 artículos publicados (`obs_parte1` a `obs_parte7`).
+    2. Sacar los archivos `.py`, `.sql` y `.env` de `static/apps/obs-management/` hacia `apps/obs-management/` (eliminando la exposición de código backend en la web).
+    3. Actualizar `static/apps/obs-management/index.html` con el **Modo Sandbox Determinista** (para que cuando un lector entre desde `datalaria.com/apps/obs-management/` sin servidor local en puerto 8001, el dashboard muestre en vivo los `15.450,00 EUR` en riesgo, la tabla de SKUs `DRONE-X1` / `SERVER-RACK-9` y la animación de logs de CrewAI descrita en el Post 7, en lugar del error `> OFFLINE`).
+  - *Gate de Verificación:* `hugo --gc --minify` exitoso; cero archivos `.py`/`.env` en `public/apps/obs-management/`; el dashboard carga 100% funcional sin backend local activo.
+- [ ] **Hito 2.2: Especificación y Limpieza de Clones de `weather` (App #3 — Dashboard Climático)**
+  - *Acción:*
+    1. Crear `/specs/apps/weather/spec.md` alineado con los 4 artículos publicados (`app-openweather_part1` a `part4`).
+    2. Limpiar los metadatos `.git` corruptos incrustados en `static/apps/weather/` y eliminar las carpetas duplicadas (`temp_app_weather/`, `github.io/`).
+  - *Gate de Verificación:* `git status` limpio; redirección proxy `200!` a `datalaria-app-weather.netlify.app` verificada en `static/_redirects`.
+
+---
+
+### FASE 3: Congelación de las 4 Apps Legacy, Higiene de `/static/` y Mejora del Escaparate `/apps/`
+*Objetivo: Cerrar el ciclo de las 7 aplicaciones publicadas, retirar de `/static/` los borradores no publicados y dejar el catálogo `/apps/` impecable.*
+
+- [ ] **Hito 3.1: Revisión Ligera, Congelación Legacy (Apps #4 a #7) y Cuarentena de No Publicadas**
+  - *Acción:*
+    1. Verificar estado operativo de las 4 apps legacy congeladas: `snake` (#4), `flashcards` (#5), `conversor` (#6) y `maths` (#7).
+    2. **Higiene de Seguridad:** Mover las carpetas inéditas `static/apps/project-ops/` y `static/apps/sop-pipeline/` fuera de `static/` hacia `apps/_incubadora/` (para que Hugo no copie sus `.py` y `.env` a `public/` mientras esperan a la Fase 4).
+  - *Gate de Verificación:* `hugo --gc --minify` exitoso; ningún archivo `.py`, `.sql` ni `.env` existe dentro de todo el árbol `static/` ni `public/`.
+- [ ] **Hito 3.2: Especificación del Portal y Reorganización Visual de `/es/apps/` y `/en/apps/`**
+  - *Acción:*
+    1. Crear `/specs/portal/spec.md`.
+    2. Actualizar `/content/es/apps/_index.md` y `/content/en/apps/_index.md` con las **7 aplicaciones activas**, jerarquizando arriba las aplicaciones principales (`LifeOps`, `Agentic Radar`, `Weather`) y debajo la sección de laboratorio/arcade (`Neon Snake`, `Flashcards`, `Unit Converter`, `Maths`), añadiendo en **todas** el botón secundario **"Leer Post / Read Post"** hacia su artículo publicado (como ya hace `Neon Snake`) y conectando las B2B con las Suites de Lemon Squeezy.
+  - *Gate de Verificación:* Paridad exacta ES/EN; todos los enlaces a Apps y Posts responden `200 OK`.
+
+---
+
+### FASE 4: Incubadora de Nuevos Lanzamientos SDD (Apps No Publicadas y Futuras)
+*Objetivo: Una vez consolidado el ecosistema de las 7 apps actuales, revisar, validar contigo y publicar por primera vez las nuevas aplicaciones B2B bajo arquitectura SDD.*
+
+- [ ] **Hito 4.1:** Revisión, validación, creación de UI Sandbox, publicación de los posts (`draft: true` ➔ `draft: false`) y lanzamiento en `/apps/` de **`project-ops` (Agentic PMO Sandbox)**.
+- [ ] **Hito 4.2:** Revisión, consolidación de motor `v2`, diseño de UI Sandbox y lanzamiento en `/apps/` de **`sop-pipeline` (S&OP Autonomous Copilot)**.
+
+---
+
+## 📓 REGISTRO DE BLOQUEOS Y ROLLBACKS (AUDIT LOG)
+
+| Fecha | Hito | Incidencia / Motivo | Acción de Rollback / Resolución | Estado |
+| :--- | :--- | :--- | :--- | :--- |
+| 2026-10-24 | `0.1 - 0.3` | Inicio del sistema SDD | Sin incidencias. Creados archivos base en modo no destructivo. | ✅ Cerrado |
+| 2026-10-24 | `Ajuste Plan` | Alineación con las 7 Apps publicadas en `/apps/` y cruce con posts (`draft: false`). | Pospuestos `project-ops` (posts en `draft: true`) y `sop-pipeline` (sin web app) a la Fase 4 (Incubadora). Priorizadas las 7 apps activas empezando por `lifeops`. | ✅ Cerrado |

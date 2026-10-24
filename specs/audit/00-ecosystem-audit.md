@@ -69,23 +69,36 @@ flowchart TB
 
 ---
 
-### 1.2 Inventario Completo de Componentes y Aplicaciones
+### 1.2 Inventario Completo de Componentes y Aplicaciones (Cruce con Posts Publicados)
 
-| ID | Nombre / Componente | Ubicación en Repositorio | Ruta Pública (URL) | Stack Tecnológico | Propósito / Estado Actual |
+> **Premisa de Publicación Verificada:** Cada aplicación activa en el escaparate de Datalaria (`/es/apps/` y `/en/apps/`) está respaldada por un artículo o serie de artículos con `draft: false`. Las aplicaciones cuyos artículos siguen en borrador (`draft: true`) o que solo servían como código de apoyo (Google Colab) pertenecen al **Backlog de Incubación (No Publicadas)** y no deben migrarse ni exponerse en el catálogo hasta completar las 7 apps activas.
+
+#### A. Las 7 Aplicaciones Activas en Producción (Escaparate `/apps/` + Post Publicado)
+
+| ID | Nombre en Web | Ubicación en Repositorio | Ruta Pública | Post(s) de Respaldo (`draft: false`) | Stack Tecnológico |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **CORE** | **Portal Editorial & Catálogo B2B** | [config.yaml](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/config.yaml), [layouts/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/layouts), [content/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/content) | `/es/`, `/en/`, `/es/recursos/`, `/es/apps/` | Hugo SSG, Go Templates, PaperMod (Submodule), Vanilla JS, CSS Variables | Portal principal bilingüe, blog técnico C-Level y tienda integrada con Lemon Squeezy Checkout Overlay + GA4 Telemetry. |
-| **EDGE** | **Portal Serverless Functions** | [netlify/functions/agent-chat.js](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/netlify/functions/agent-chat.js), [subscribe.js](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/netlify/functions/subscribe.js) | `/.netlify/functions/*` | Node.js (CommonJS, native `fetch`) | Proxy CORS para el copiloto de Algolia Agent Studio (con fallback a búsqueda) e integración de alta de suscriptores en Brevo API (listas ES/EN). |
-| **APP-01** | **LifeOps (Frontend + API)** | [lifeops-app/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/lifeops-app), [lifeops-api/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/lifeops-api), [static/apps/lifeops/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/static/apps/lifeops) | `/apps/lifeops/` | **FE:** React 19.2, Vite 8.2, React Router 7, Recharts, Lucide, Oxlint.<br>**BE:** FastAPI 0.115, Pydantic v2, SlowAPI, python-docx, openpyxl, Supabase. | Sistema operativo integral personal (deporte, libros, series) y profesional (proyectos, Kanban con bitácora JSONB, alertas y reportes Word/Excel). |
-| **APP-02** | **Agentic PMO Sandbox (`project-ops`)** | [static/apps/project-ops/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/static/apps/project-ops) | *Sin UI pública expuesta* (Código Python en `/static/`) | FastAPI, Pandas, NumPy, OpenPyXL, Pydantic v2, Supabase (`pmo_analytics`), Streamlit (declarado). | Motor cuantitativo de Earned Value Management (CPI/SPI) y simulación Monte Carlo (PERT 10k iteraciones) con ingesta transaccional en 2 pasos desde Excel. Posee [TECH_SPEC.md](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/static/apps/project-ops/TECH_SPEC.md). |
-| **APP-03** | **S&OP Autonomous Pipeline (`sop-pipeline`)** | [static/apps/sop-pipeline/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/static/apps/sop-pipeline) | *Sin UI pública expuesta* (Scripts en `/static/`) | Python, Pandas, SciPy, Prophet, PuLP, Plotly, CrewAI, Gemini 2.0 Flash, Supabase. | Pipeline industrial en 4 fases: higiene de datos, forecasting (Prophet), optimización lineal (PuLP) y deliberación multi-agente (CrewAI). |
-| **APP-04** | **Radar de Obsolescencia (`obs-management`)** | [static/apps/obs-management/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/static/apps/obs-management) | `/apps/obs-management/` | **FE:** HTML5 + Tailwind CDN.<br>**BE:** FastAPI (`main.py`, `dashboard_api.py`), CrewAI, LangChain, Gemini 2.5 Flash, Supabase. | Dashboard ejecutivo y webhook receptor de notificaciones EOL/PDN que cruza la estructura BOM recursiva en Supabase para calcular el margen en riesgo (P&L). |
-| **APP-05** | **Dashboard Climático (`weather`)** | [static/apps/weather/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/static/apps/weather), [temp_app_weather/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/temp_app_weather), [github.io/app-openweather/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/github.io/app-openweather) | `/apps/weather/` (Proxy `200!` a Netlify externo) | **FE:** HTML5 monolítico (1.864 líneas), Chart.js, Leaflet, PapaParse, Choices.js.<br>**BE/Batch:** Python (`read_weather.py`), Scikit-Learn, Pandas, GitHub Actions cron. | Visualizador climático global (+100 ciudades) con mapas interactivos, series históricas en CSV y predicción meteorológica por Machine Learning. |
-| **APP-06** | **Flashcards IA (`flashcards`)** | [static/apps/flashcards/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/static/apps/flashcards) | `/apps/flashcards/` (`es` y `en`) | HTML5, Vanilla JS, Tailwind CDN, Google Gemini REST API directa (BYOK). | Aplicación de estudio con tarjetas interactivas 3D, importación CSV y modo de generación automática de traducciones/definiciones con Gemini. |
-| **APP-07** | **Neon Snake (`snake`)** | [static/games/snake/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/static/games/snake) | `/games/snake/` (`es` y `en`) | HTML5 Canvas, Web Audio API (sintetizador retro), Tailwind CDN, Supabase Realtime (ESM CDN). | Videojuego arcade cyberpunk con controles táctiles/teclado, audio procedural y tabla de clasificación mundial en tiempo real. |
-| **APP-08** | **Conversor Universal Pro (`conversor`)** | [static/apps/conversor/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/static/apps/conversor) | `/apps/conversor/` (`es` y `en`) | HTML5 multipágina (14 archivos `.html`), Vanilla JS, Tailwind CDN. | Suite de conversión de unidades técnicas (dimensión, energía, informática, mecánica, RF, tiempo) y formateador masivo de separadores numéricos. |
-| **APP-09** | **Juego de Matemáticas (`maths`)** | [static/apps/maths/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/static/apps/maths) | `/apps/maths/` (`es` y `en`) | HTML5, Vanilla JS, Tailwind CDN. | Juego educativo infantil (5-7 años) para practicar las 4 operaciones aritméticas con temporizador y niveles. |
-| **OPS-01** | **Datalaria Autopilot & Autopilot-Ctrl** | [autopilot/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/autopilot), [.github/workflows/autopilot.yml](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/.github/workflows/autopilot.yml) | *Interno (CI/CD)* | Python 3.11, CrewAI, Google GenAI, Tweepy, Brevo, Dev.to, GitHub Copilot CLI (`ctrl`). | Orquestador de marketing de contenidos que transforma nuevos posts de Hugo en hilos de X, posts de LinkedIn, artículos de Dev.to y campañas de Newsletter. |
-| **OPS-02** | **Suite Builders & Algolia Sync** | [scripts/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/scripts), [packages/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/packages) | *Interno (Build/Pack)* | Python 3.13, OpenPyXL, ReportLab, Python-PPTX, Algolia Search SDK. | Generación programática de modelos financieros Excel protegidos, presentaciones ejecutivas, portadas y sincronización del índice de búsqueda de Algolia. |
+| **APP-01** | **LifeOps** | [lifeops-app/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/lifeops-app), [lifeops-api/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/lifeops-api), [static/apps/lifeops/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/static/apps/lifeops) | `/apps/lifeops/` | Serie de 5 posts: `app-lifeops_part1` a `part5` (Sept 2026) | **FE:** React 19.2, Vite 8.2, React Router 7, Recharts, Oxlint.<br>**BE:** FastAPI 0.115, Pydantic v2, SlowAPI, DOCX/XLSX, Supabase (`lifeops`). |
+| **APP-02** | **Agentic Radar / Radar de Obsolescencia** | [static/apps/obs-management/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/static/apps/obs-management) | `/apps/obs-management/` | Serie de 7 posts: `obs_parte1_intro` a `obs_parte7_dashboard` (Abr-May 2026) | **FE:** HTML5 + Tailwind CDN.<br>**BE:** FastAPI (`main.py`, `dashboard_api.py`), CrewAI, Gemini 2.5 Flash, Supabase. |
+| **APP-03** | **Neon Snake** | [static/games/snake/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/static/games/snake) | `/games/snake/` (`es` y `en`) | `game_snake` (Feb 2026) | HTML5 Canvas, Web Audio API (sintetizador retro), Tailwind CDN, Supabase Realtime (`snake_scores`). |
+| **APP-04** | **Weather / El Tiempo** | [static/apps/weather/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/static/apps/weather), [temp_app_weather/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/temp_app_weather), [github.io/app-openweather/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/github.io/app-openweather) | `/apps/weather/` (Proxy `200!` a Netlify externo) | Serie de 4 posts: `app-openweather_part1` a `part4` (Oct-Dic 2025) | **FE:** HTML5 monolítico (1.864 líneas), Chart.js, Leaflet, PapaParse.<br>**BE/Batch:** Python (`read_weather.py`), Scikit-Learn, GitHub Actions cron. |
+| **APP-05** | **Flashcards** | [static/apps/flashcards/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/static/apps/flashcards) | `/apps/flashcards/` (`es` y `en`) | `app_flashcards` (Oct 2025) | HTML5, Vanilla JS, Tailwind CDN, Google Gemini REST API directa (BYOK). |
+| **APP-06** | **Unit Converter / Conversor de Unidades** | [static/apps/conversor/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/static/apps/conversor) | `/apps/conversor/` (`es` y `en`) | `app_conversor_unidades` / `app_unit_converter` (Oct 2025) | HTML5 multipágina (14 archivos `.html`), Vanilla JS, Tailwind CDN. |
+| **APP-07** | **Maths / Matemáticas** | [static/apps/maths/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/static/apps/maths) | `/apps/maths/` (`es` y `en`) | `founderz-programando-chatGPT` (Ago 2025) | HTML5, Vanilla JS, Tailwind CDN. |
+
+#### B. Motores en Incubación / No Publicados como Web App (Posponer hasta Fase 4)
+
+| ID | Nombre / Componente | Ubicación Actual | Estado Editorial | Diagnóstico y Acción |
+| :--- | :--- | :--- | :--- | :--- |
+| **INC-01** | **Agentic PMO Sandbox (`project-ops`)** | [static/apps/project-ops/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/static/apps/project-ops) | **NO PUBLICADO.** Sus artículos `proj_ops_parte1_intro` y `proj_ops_parte2_agentic_pmo` tienen **`draft: true`** y la Parte 3 aún no existe. | **Posponer migración funcional.** Solo debemos sacar sus archivos `.py`/`.env` de `static/` por seguridad, y dejar su validación, revisión y primer lanzamiento oficial para cuando terminemos con las 7 apps activas. |
+| **INC-02** | **S&OP Autonomous Pipeline (`sop-pipeline`)** | [static/apps/sop-pipeline/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/static/apps/sop-pipeline) | Serie `sop-ingenieria` publicada (`draft: false`), pero su Parte 5 enlaza a un **Google Colab externo**, no a una Web App en `/apps/`. | **Posponer migración a Web App.** Sacar los scripts `.py`/`.env` de `static/` por higiene y dejar la creación de su Web App SDD para la fase de nuevas publicaciones. |
+
+#### C. Infraestructura del Portal y Automatización Interna
+
+| ID | Nombre / Componente | Ubicación en Repositorio | Ruta Pública (URL) | Stack Tecnológico |
+| :--- | :--- | :--- | :--- | :--- |
+| **CORE** | **Portal Editorial & Catálogo B2B** | [config.yaml](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/config.yaml), [layouts/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/layouts), [content/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/content) | `/es/`, `/en/`, `/es/recursos/`, `/es/apps/` | Hugo SSG, Go Templates, PaperMod, Lemon Squeezy Checkout Overlay + GA4 Telemetry. |
+| **EDGE** | **Portal Serverless Functions** | [netlify/functions/agent-chat.js](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/netlify/functions/agent-chat.js), [subscribe.js](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/netlify/functions/subscribe.js) | `/.netlify/functions/*` | Node.js (Proxy Algolia Agent Studio + Suscripción Brevo). |
+| **OPS** | **Autopilot & Suite Pack Builders** | [autopilot/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/autopilot), [scripts/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/scripts), [packages/](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/packages) | *Interno (CI/CD & Build)* | Python, CrewAI, OpenPyXL, ReportLab, Python-PPTX, Algolia Sync. |
 
 ---
 
@@ -281,55 +294,63 @@ flowchart LR
 
 ---
 
-## 4. PLAN DE EXTRACCIÓN SDD (MATRIZ DE MIGRACIÓN / REVERSE-SPECCING)
+## 4. PLAN DE EXTRACCIÓN SDD (MATRIZ DE MIGRACIÓN REAJUSTADA A LAS 7 APPS ACTIVAS)
 
-Clasificamos las aplicaciones existentes en las 3 categorías solicitadas según su madurez arquitectónica, acoplamiento y retorno de inversión (ROI) para Datalaria:
+Aplicando la regla de negocio verificada (**solo se auditan/migran primero las 7 aplicaciones publicadas en `/apps/` que cuentan con artículo publicado `draft: false`**), la matriz de migración queda estructurada en 4 grupos claros:
 
-### Categoría A: "Listas para documentar" (Reverse-Speccing Directo)
-*Apps con arquitectura bien delimitada, alto valor estratégico o contratos claros de las que podemos extraer su `spec.md` de inmediato sin refactorizar su lógica interna.*
+### Categoría A: "Listas para documentar" (Activas y Maduras — Prioridad 1)
+*Aplicaciones publicadas y respaldadas por posts activos cuya arquitectura permite extraer su especificación SDD (`spec.md`) de inmediato.*
 
-| Aplicación | Estado Actual | Acción de Extracción SDD | Valor de Negocio |
+| Aplicación | Respaldo Editorial (`draft: false`) | Acción de Extracción SDD | Valor de Negocio |
 | :--- | :--- | :--- | :--- |
-| **1. `project-ops` (Agentic PMO Sandbox)** | **90% SDD-Ready.** Ya cuenta con un excelente [TECH_SPEC.md](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/static/apps/project-ops/TECH_SPEC.md), modelos Pydantic v2 estrictos y separación clara entre `ingest_service.py`, `db_tools.py` y `evm_engine.py`. | 1. Promover `TECH_SPEC.md` al formato estándar `/specs/apps/project-ops/spec.md`.<br>2. Añadir la sección de invariantes de test (`pytest`) y la especificación de su futura UI Sandbox conectada a la Suite 03 (PERT/EVM).<br>3. Mover su código fuera de `static/` en la fase de ejecución. | **Crítico (B2B).** Monetización directa cruzada con los Executive Packs de PERT y Valor Ganado (EVM). |
-| **2. `lifeops` (`lifeops-app` + `lifeops-api`)** | **80% SDD-Ready.** Arquitectura cliente-servidor limpia, routers FastAPI modulares, autenticación JWT + RLS en esquema propio (`lifeops`) y modo demo funcional (`mock=true`). | 1. Extraer `/specs/apps/lifeops/spec.md` documentando sus 5 dominios (Activities, Projects/Kanban, Stats, Alerts, DOCX/XLSX Reports) y su contrato OpenAPI.<br>2. Definir el pipeline de build para eliminar la copia manual de `dist/` a `static/apps/lifeops/`. | **Alto (Flagship SaaS).** Activo principal de ingeniería de software del portal. |
+| **1. `lifeops` (`lifeops-app` + `lifeops-api`)** | 5 posts publicados (`app-lifeops_part1` a `part5`). | **Primera App a documentar (Hito 1.1).** Extraer `/specs/apps/lifeops/spec.md` documentando sus 5 dominios (Activities, Projects/Kanban, Stats, Alerts, DOCX/XLSX Reports), contrato OpenAPI, esquema `lifeops` y modo `mock=true`. | **Alto (Flagship SaaS).** Es la aplicación Full-Stack más completa publicada hoy en la web. |
 
 ---
 
-### Categoría B: "Requieren aislamiento previo" (Refactorización de Contorno antes de Congelar Spec)
-*Apps de altísimo valor para Datalaria pero que sufren acoplamiento defectuoso, archivos duplicados (`v1`/`v2`), código backend expuesto en `static/` o dependencias rotas en producción.*
+### Categoría B: "Requieren aislamiento previo" (Activas con Deuda de Contorno — Prioridad 2)
+*Aplicaciones publicadas en `/apps/` y con serie de artículos activos, pero que requieren desacoplar código backend de `static/` o limpiar duplicados antes de cerrar su migración SDD.*
 
-| Aplicación | Problema de Contorno / Deuda | Refactorización Previa Requerida | Valor de Negocio |
+| Aplicación | Respaldo Editorial (`draft: false`) | Problema de Contorno / Deuda | Refactorización SDD Requerida |
 | :--- | :--- | :--- | :--- |
-| **3. `obs-management` (Radar de Obsolescencia)** | 1. El frontend en `/apps/obs-management/` falla en producción porque llama a `http://localhost:8001`.<br>2. Tiene 2 servidores FastAPI separados (`main.py` y `dashboard_api.py`).<br>3. Expone `.env` y `.py` dentro de `static/`. | 1. Sacar los scripts Python de `static/apps/obs-management/` hacia `apps/obs-management/`.<br>2. Unificar los endpoints FastAPI e inyectar en el `index.html` un **Fallback de Simulación Interactiva** (para que si la API local/cloud no está activa, el ejecutivo vea la simulación de telemetría CrewAI y el cálculo BOM funcionando en vivo en el navegador).<br>3. Congelar `/specs/apps/obs-management/spec.md`. | **Crítico (B2B).** Es la primera app B2B visible en el catálogo; hoy da error `OFFLINE` a los visitantes. |
-| **4. `sop-pipeline` (S&OP Autonomous Pipeline)** | 1. Duplicidad total entre archivos `v1` y `v2` (`data_hygiene_v2.py`, `forecast_manager_v2.py`, `optimization_engine_v2.py`).<br>2. Vive dentro de `static/apps/sop-pipeline/` sin interfaz web (solo scripts CLI). | 1. Purgar los scripts `v1` obsoletos y consolidar la versión `v2` fuera de `static/`.<br>2. Envolver el motor matemático (Prophet + PuLP) en un contrato limpio de entrada/salida.<br>3. Congelar `/specs/apps/sop-pipeline/spec.md` y diseñar una vista web interactiva para el portal. | **Crítico (B2B).** Pilar central de Ingeniería de Operaciones y Cadena de Suministro. |
-| **5. `weather` (Dashboard Climático IA)** | 1. Triplicado en el disco (`static/apps/weather/`, `temp_app_weather/`, `github.io/app-openweather/`).<br>2. Repositorio Git corrupto incrustado dentro de `static/apps/weather/`.<br>3. Monolito `index.html` de 1.864 líneas. | 1. Eliminar las carpetas redundantes y los metadatos `.git` huérfanos.<br>2. Definir una única fuente de verdad para el pipeline `read_weather.py` y el frontend.<br>3. Extraer `/specs/apps/weather/spec.md`. | **Medio (Autoridad Data/ML).** Tráfico orgánico y demostración de predicción con ML. |
-| **6. `autopilot` + `pack-builders` (Internal Ops)** | 1. En `autopilot/src/` conviven scripts activos con `*_OLD_DEPRECATED.py`.<br>2. En la raíz y `scratch/` hay decenas de scripts de prueba mezclados con los generadores oficiales de `scripts/suite_*`. | 1. Limpiar archivos deprecados y mover los generadores de productos a un contorno aislado `ops/`.<br>2. Documentar `/specs/ops/autopilot-spec.md` y `/specs/ops/pack-factory-spec.md` (vital para generar nuevos Executive Packs con agentes). | **Crítico (Motor de Ingresos Internos).** Automatiza la creación y distribución de productos de pago. |
+| **2. `obs-management` (Agentic Radar / Radar de Obsolescencia)** | 7 posts publicados (`obs_parte1_intro` a `obs_parte7_dashboard`). | 1. El frontend en `/apps/obs-management/` falla en producción (`OFFLINE`) porque hace `fetch` duro a `http://localhost:8001`.<br>2. Expone `.py`, `.sql` y `.env` dentro de `static/apps/obs-management/`. | 1. Crear `/specs/apps/obs-management/spec.md`.<br>2. Sacar los scripts Python/SQL a `apps/obs-management/`.<br>3. Dotar a `index.html` de **Modo Sandbox / Fallback Determinista** para que el visitante vea siempre la telemetría CrewAI y los 15.450 € de margen en riesgo funcionando en vivo, más el enlace al post y suites. |
+| **3. `weather` (Weather / El Tiempo)** | 4 posts publicados (`app-openweather_part1` a `part4`). | 1. Triplicado en el repositorio (`static/apps/weather/`, `temp_app_weather/`, `github.io/app-openweather/`).<br>2. Contiene objetos `.git` corruptos dentro de `static/apps/weather/`. | 1. Crear `/specs/apps/weather/spec.md`.<br>2. Eliminar los clones redundantes y limpiar los metadatos `.git` huérfanos.<br>3. Mantener intacto el proxy `200!` hacia `datalaria-app-weather.netlify.app`. |
 
 ---
 
-### Categoría C: "No migrables" (Congelar en Modo Legacy / Sunset)
-*Apps experimentales o micro-utilidades cuyo bajo valor de negocio B2B y simplicidad técnica no justifican el esfuerzo de escribir especificaciones formales, tests automatizados ni refactorizar su arquitectura.*
+### Categoría C: "No migrables / Congelar en Legacy" (Activas de Baja Complejidad — Prioridad 3)
+*Las 4 aplicaciones restantes de las 7 publicadas en `/apps/`. Cuentan con post publicado y funcionan como experimentos o juegos, pero por su simpleza estática no compensa reescribirlas ni migrarlas a SDD completo.*
 
-| Aplicación | Diagnóstico | Recomendación Arquitectónica |
+| Aplicación | Respaldo Editorial (`draft: false`) | Acción en el Plan (Revisión Ligera y Congelación) |
 | :--- | :--- | :--- |
-| **7. `conversor` (Conversor de Unidades)** | 14 páginas HTML estáticas duplicadas en `/es/` y `/en/` con lógica elemental de conversión en Vanilla JS. Cero alineación con la oferta ejecutiva C-Level. | **No migrar a SDD.** Mantener congelado tal cual en `static/apps/conversor/` (por preservación de enlaces SEO de posts antiguos), pero retirarlo de la primera línea visual de `/apps/` (mover a una sección secundaria *"Laboratorio / Archivo de Experimentos"*). |
-| **8. `maths` (Juego de Matemáticas Infantil)** | Juego para niños de 5 a 7 años. Desentona con el posicionamiento actual de Datalaria (*"Modelos cuantitativos, sistemas en producción y marcos de decisión para dirección ejecutiva C-Level"*). | **No migrar a SDD.** Congelar como archivo estático legacy para no romper enlaces históricos del blog, y ocultarlo o moverlo al archivo de experimentos. |
-| **9. `flashcards` (Flashcards IA)** | Experimento sencillo de 1 archivo HTML por idioma con llamadas directas a Gemini usando API Key del usuario (BYOK). | **No migrar a SDD.** Mantener congelado en modo legacy dentro de la sección de experimentos. Solo requiere verificar puntualmente que el nombre del modelo Gemini invocado en su JS no haya sido retirado por Google. |
-| **10. `snake` (Neon Snake)** | Juego arcade en un único HTML por idioma. Tiene valor simpático de marca ("cultura geek"), pero no valor de monetización. | **No migrar a SDD completo.** Solo aplicar un micro-parche de seguridad puntual en el futuro (verificar RLS en su tabla `snake_scores` de Supabase) y mantenerlo congelado en la sección de experimentos/arcade. |
+| **4. `snake` (Neon Snake)** | `game_snake` (única tarjeta en `/apps/` que hoy tiene botón *"Leer Post"*). | Mantener congelada en `static/games/snake/`. Solo verificar RLS en la tabla `snake_scores` de Supabase y agrupar en la sección de experimentos/arcade. |
+| **5. `flashcards` (Flashcards)** | `app_flashcards` | Mantener congelada en `static/apps/flashcards/`. Verificar únicamente que el endpoint/modelo de Gemini invocado por el cliente BYOK siga activo. |
+| **6. `conversor` (Unit Converter)** | `app_conversor_unidades` / `app_unit_converter` | Mantener congelada tal cual en `static/apps/conversor/` para preservar los enlaces del artículo. |
+| **7. `maths` (Maths)** | `founderz-programando-chatGPT` | Mantener congelada tal cual en `static/apps/maths/` para preservar el enlace del artículo. |
 
 ---
 
-## 5. HOJA DE RUTA DE EJECUCIÓN RECOMENDADA (PRÓXIMOS PASOS)
+### Categoría D: "En Incubación / No Publicadas" (Posponer hasta cerrar las 7 activas — Prioridad 4)
+*Proyectos cuyo código existe en `static/apps/` pero que **NO están publicados en `/apps/`** (o cuyos artículos siguen en `draft: true`). Se revisarán, validarán y publicarán por primera vez directamente bajo la nueva arquitectura SDD una vez terminemos con las 7 apps activas.*
 
-1. **Fase 0 — Validación Arquitectónica y Constitución SDD (Turno Actual -> Siguiente Turno):**
-   - Acordar las decisiones estratégicas abiertas (ver resumen en el chat).
-   - Generar `AGENTS.md` (y `CLAUDE.md`) en la raíz del repositorio con las reglas de gobernanza multi-modelo.
-   - Crear `/specs/_constitution.md` y las plantillas base en `/specs/_templates/`.
-2. **Fase 1 — Extracción SDD de Apps "Listas para Documentar":**
-   - Generar `/specs/apps/project-ops/spec.md` (evolucionando su `TECH_SPEC.md` actual) y `/specs/apps/lifeops/spec.md`.
-3. **Fase 2 — Saneamiento de Contorno y Seguridad (Higiene del Monorepo):**
-   - Sacar el código fuente Python y archivos `.env` de `static/apps/` hacia `/apps/`.
-   - Reparar el modo interactivo de `/apps/obs-management/` en producción (eliminar la dependencia dura a `localhost:8001` cuando se visita desde `datalaria.com`) y limpiar duplicados de `sop-pipeline` y `weather`.
-4. **Fase 3 — Fábrica de Nuevas Apps Monetizables B2B:**
-   - Reorganizar la página `/es/apps/` y `/en/apps/` en dos niveles claros: **"Executive & Operations Suites (B2B)"** (conectadas con los packs de Lemon Squeezy) y **"Open Lab & Experiments"** (apps legacy).
-   - Desarrollar las nuevas aplicaciones siguiendo estrictamente el ciclo SDD: `Spec -> Test Contract -> Implementation -> Verification`.
+| Proyecto en Incubación | Estado de Publicación Actual | Acción Inmediata (Solo Higiene) vs. Acción Futura (Fase 4) |
+| :--- | :--- | :--- |
+| **8. `project-ops` (Agentic PMO Sandbox)** | **Inédito.** Sus posts `proj_ops_parte1_intro` y `proj_ops_parte2_agentic_pmo` están en **`draft: true`** y falta el post del Sandbox. No aparece en `/apps/`. | **Ahora:** No migrar ni publicar. Únicamente retirar su carpeta de `static/apps/` hacia `apps/project-ops/` (en cuarentena de incubación) para que Hugo no publique sus `.py`/`.env` por accidente.<br>**Después (Fase 4):** Revisar contigo su `TECH_SPEC.md`, validar el motor, crear su UI Sandbox y publicarlo por primera vez junto con sus artículos. |
+| **9. `sop-pipeline` (S&OP Autonomous Pipeline)** | **Sin Web App publicada.** Los 5 posts de S&OP están publicados pero enlazan a un Google Colab externo, no a `/apps/sop-pipeline/`. No aparece en `/apps/`. | **Ahora:** No migrar a Web App todavía. Únicamente retirar sus scripts `.py`/`.env` de `static/apps/` hacia `apps/sop-pipeline/` por seguridad.<br>**Después (Fase 4):** Revisar, limpiar `v1`/`v2`, especificar bajo SDD y lanzar como nueva App B2B si así lo decides. |
+
+---
+
+## 5. HOJA DE RUTA DE EJECUCIÓN REAJUSTADA
+
+1. **Fase 0 — Gobernanza y Constitución SDD (Completada ✅):**
+   - `AGENTS.md`, `CLAUDE.md`, `specs/_constitution.md`, `specs/DECISIONS.md` y `specs/ROADMAP.md` actualizados con la regla de correspondencia `App Activa <-> Post Publicado`.
+2. **Fase 1 — Extracción SDD de la App Activa Lista (`lifeops`) y del Portal:**
+   - **Hito 1.1:** Generar `/specs/apps/lifeops/spec.md` (nuestra primera App activa de las 7).
+   - **Hito 1.2:** Generar `/specs/portal/spec.md` (incluyendo el catálogo de las 7 apps y la regla de que toda tarjeta en `/apps/` tenga su botón *"Leer Post / Read Post"*, como ya tiene `Neon Snake`).
+3. **Fase 2 — Aislamiento y Saneamiento de las Apps Activas con Deuda (`obs-management` y `weather`) + Cuarentena de No Publicadas:**
+   - **Hito 2.1:** Especificar, aislar Python y reparar el modo Sandbox de **`obs-management` (Agentic Radar)** para que funcione 24/7 en producción sin dar error `OFFLINE`.
+   - **Hito 2.2:** Especificar y limpiar los 3 clones y el `.git` corrupto de **`weather`**.
+   - **Hito 2.3:** Checklist de verificación de las 4 apps legacy activas (`snake`, `flashcards`, `conversor`, `maths`) y movimiento preventivo a cuarentena fuera de `static/` de los códigos inéditos (`project-ops` y `sop-pipeline`).
+4. **Fase 3 — Reorganización Visual de `/apps/` (Las 7 Apps Activas):**
+   - Estructurar `/es/apps/` y `/en/apps/` destacando las Apps principales con enlaces directos a sus series de artículos publicados y a las Suites de Lemon Squeezy.
+5. **Fase 4 — Incubadora de Nuevos Lanzamientos SDD (`project-ops` y futuras Apps):**
+   - Revisar, validar y publicar por primera vez `project-ops` (y el nuevo frontend de `sop-pipeline`) siguiendo de principio a fin la nueva arquitectura SDD cuando quitemos el `draft: true` de sus artículos.
