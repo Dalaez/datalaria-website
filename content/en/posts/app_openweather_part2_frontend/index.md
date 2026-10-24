@@ -16,6 +16,8 @@ But what good is data if you can't see it? Today, we shift our focus to the **fr
 
 ![Conceptual image of Weather Service Frontend](AI_App_Weather_Image_Frontend.png)
 
+{{< app-ref slug="weather" >}}
+
 ---
 
 ### Free Web Hosting: GitHub Pages vs. Netlify
@@ -223,7 +225,13 @@ The dashboard now provides immediate insight into the historical weather pattern
 
   * **Complete Web Service**: You can see the final project in action here: [https://datalaria.com/apps/weather/](https://datalaria.com/apps/weather/)
   * **Project GitHub Repository**: Explore the source code and project structure in my repository: [https://github.com/Dalaez/app_weather](https://github.com/Dalaez/app_weather)
+* **Technical Application Showcase**: Learn about the objectives, architecture, technology stack, and SemVer changelog in the [Weather Service AI Showcase](/en/apps/weather/).
   * **PapaParse.js**: Fast in-browser CSV parser for JavaScript: [https://www.papaparse.com/](https://www.papaparse.com/)
   * **Chart.js**: Simple, yet flexible JavaScript charting for designers & developers: [https://www.chartjs.org/](https://www.chartjs.org/)
   * **GitHub Pages**: Official documentation on how to host your sites: [https://docs.github.com/en/pages](https://docs.github.com/en/pages)
   * **Netlify**: Official Netlify website: [https://www.netlify.com/](https://www.netlify.com/)
+
+---
+
+### 🌤️ Live Web Service & Technical Showcase
+{{< app-ref slug="weather" >}}

@@ -1,0 +1,8 @@
+# Weather data - populated dynamically by GitHub Actions / read_weather.py
+datos/
+
+# Python cache & virtual environments
+__pycache__/
+*.py[cod]
+.venv/
+.env

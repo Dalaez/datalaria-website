@@ -16,6 +16,8 @@ This post unveils the "extras"—the significant enhancements and design decisio
 
 ![Conceptual image of Project Weather Extras Dashboard](Image_Weather_Extra.png)
 
+{{< app-ref slug="weather" >}}
+
 ---
 
 ### 1. Expanding Metrics and Data Collection: From Basic to Comprehensive
@@ -102,3 +104,10 @@ While the AI prediction model is a testament to the power of machine learning, t
 The result is a weather dashboard with a degree of intelligence, intuitive, and easy to use, in which backend logic and careful frontend design converge.
 
 Finally, these improvements represent the closing of the first operational version of the project, and from which, in the medium term, we will incorporate new enhancements and changes as they are required and allow us to improve the user experience and experiment with new features and characteristics.
+
+* **Technical Application Showcase**: Learn about the objectives, architecture, technology stack, and SemVer changelog in the [Weather Service AI Showcase](/en/apps/weather/).
+
+---
+
+### 🌤️ Live Web Service & Technical Showcase
+{{< app-ref slug="weather" >}}

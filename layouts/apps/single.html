@@ -321,13 +321,13 @@
   {{- /* SECCIÓN 8: CTA & MONETIZACIÓN DUAL-MODE                      */ -}}
   {{- /* ============================================================ */ -}}
   <section class="app-detail-section app-cta-section" id="cta">
-    {{- if gt (len $app.related_products) 0 -}}
+    {{- with $app.related_products -}}
       <h2 class="app-section-title">
         <span class="app-section-icon">💼</span>
         {{- cond (eq $lang "es") "Packs Profesionales Relacionados" "Related Professional Packs" -}}
       </h2>
       <div class="app-products-grid">
-        {{- range $app.related_products -}}
+        {{- range . -}}
           {{- /* Reutiliza integración Lemon Squeezy existente */ -}}
           <div class="app-product-card">
             <h4>{{ .name }}</h4>

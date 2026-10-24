@@ -1,0 +1,162 @@
+slug: weather
+order: 30
+tier: flagship
+status: live
+icon: "🌤️"
+cover: cover.png
+app_url: /apps/weather/
+demo_url: /apps/weather/
+source_spec: specs/apps/weather/spec.md
+current_version: v1.0.0
+
+title:
+  es: "Dashboard Climático IA"
+  en: "Weather Service AI"
+
+tagline:
+  es: "Servicio meteorológico global 100% serverless con recolección continua, mapa interactivo y predicción con Machine Learning."
+  en: "100% serverless global weather intelligence with continuous ETL, interactive maps, and Machine Learning forecasts."
+
+summary:
+  es: "Servicio meteorológico completo de coste cero que ingesta telemetría de más de 160 ciudades globales mediante la API de OpenWeatherMap. Combina persistencia particionada en CSV, entrenamiento diario de modelos de Regresión Lineal con Scikit-Learn y visualización interactiva con series temporales (Chart.js) y mapas geoespaciales (Leaflet)."
+  en: "Zero-cost full-stack weather service ingesting live telemetry across 160+ global cities via OpenWeatherMap API. Combines partitioned CSV historical storage, daily Scikit-Learn Linear Regression model retraining, and interactive frontend visualizations with time-series charts (Chart.js) and geospatial maps (Leaflet)."
+
+objectives:
+  - es: "Diseñar e implementar una arquitectura de recolección y predicción meteorológica global 100% serverless de coste cero."
+    en: "Design and implement a zero-cost 100% serverless global weather data harvesting and prediction architecture."
+  - es: "Construir un pipeline ETL batch diario con GitHub Actions sin necesidad de servidores ni bases de datos tradicionales."
+    en: "Build a daily batch ETL pipeline using GitHub Actions eliminating the need for dedicated servers or traditional SQL databases."
+  - es: "Implementar modelos predictivos deterministas de Machine Learning (Scikit-Learn) para contrastar su precisión frente al pronóstico oficial de 5 días de OpenWeatherMap."
+    en: "Implement deterministic Machine Learning prediction models (Scikit-Learn) to benchmark accuracy against official OpenWeatherMap 5-day forecasts."
+  - es: "Ofrecer una experiencia de usuario rica, fluida y multilingüe con mapas Leaflet, selector de ciudades y streaming de datos cliente con PapaParse."
+    en: "Deliver a rich, fluid, and multilingual user experience with Leaflet maps, instant city filtering, and client-side CSV streaming via PapaParse."
+
+features:
+  - icon: "⚙️"
+    es: "Pipeline ETL Automatizado: GitHub Actions ejecuta el recolector Python 3 veces al día (06:00, 14:00, 22:00 UTC) de forma desatendida."
+    en: "Automated ETL Pipeline: GitHub Actions triggers the Python data harvester 3 times daily (06:00, 14:00, 22:00 UTC) unattended."
+  - icon: "🤖"
+    es: "Predicción por Machine Learning: 3 modelos de Regresión Lineal entrenados con variables desfasadas (lag-1) y estacionalidad anual para predecir max, min y media."
+    en: "Machine Learning Forecasting: 3 Linear Regression models trained on lagged metrics (lag-1) and seasonal day-of-year features to predict tomorrow's temps."
+  - icon: "🗺️"
+    es: "Mapa Geoespacial Interactivo: visualización de estaciones y temperaturas globales en tiempo real con marcadores Leaflet.js."
+    en: "Geospatial Interactive Map: real-time global weather stations and temperatures displayed via dynamic Leaflet.js markers."
+  - icon: "📈"
+    es: "Series Temporales Multivariables: gráficos interactivos de Chart.js con alternancia de temperatura, humedad, viento y nubosidad."
+    en: "Multivariate Time-Series: interactive Chart.js visualizations toggling temperature, humidity, wind, and cloudiness trends."
+  - icon: "⚡"
+    es: "Streaming Cliente con PapaParse: análisis y carga instantánea de archivos CSV históricos particionados por ciudad directamente en el navegador."
+    en: "Client-Side Streaming via PapaParse: instant client-side parsing of partitioned historical CSV files directly in browser memory."
+  - icon: "🌐"
+    es: "Arquitectura Bilingüe y Despliegue Netlify: interfaz con selector de idioma dinámico y proxy transparente de alta velocidad en producción."
+    en: "Bilingual UI & Netlify Deployment: dynamic language switching and transparent high-speed Netlify rewrite proxy in production."
+
+design:
+  architecture:
+    es: "Arquitectura desacoplada en 3 capas: automatización ETL en GitHub Actions ejecutando read_weather.py contra OpenWeatherMap v2.5, persistencia estática particionada en ficheros CSV y JSON exportados al repositorio Git, y frontend SPA monolítico servido en Netlify con enrutamiento proxy 200! transparente desde Datalaria."
+    en: "Decoupled 3-tier architecture: ETL automation in GitHub Actions executing read_weather.py against OpenWeatherMap v2.5, partitioned static persistence in CSV and JSON files pushed to the repository, and monolithic SPA frontend hosted on Netlify with transparent 200! rewrite proxy routing from Datalaria."
+  principles:
+    - es: "Filosofía 100% Serverless: cero costes fijos de computación en reposo mediante tareas programadas gratuitas y hosting estático."
+      en: "100% Serverless Philosophy: zero idle compute costs via free scheduled cron workflows and static CDN hosting."
+    - es: "Persistencia ligera y portable: cada ciudad es un fichero CSV plano estructurado con 15 variables meteorológicas normalizadas."
+      en: "Lightweight and portable persistence: each city is an isolated flat CSV file structured with 15 normalized meteorological variables."
+    - es: "Cálculo cuantitativo determinista: el modelo de regresión lineal entrena sobre datos observados reales sin depender de llamadas a LLMs."
+      en: "Deterministic quantitative modeling: linear regression trains strictly on observed empirical records without LLM API calls."
+  diagram: |
+    flowchart LR
+      CRON["GitHub Actions\nCron (3x/día)"] --> PY["read_weather.py\n(ETL Python)"]
+      PY -->|"API v2.5"| OWM["OpenWeatherMap"]
+      PY -->|"Series Temporales"| CSV["datos/<Ciudad>.csv"]
+      CSV -->|"Entrenamiento"| ML["Scikit-Learn\n(LinearRegression)"]
+      ML --> PRED["predicciones.json"]
+      PY --> MAP["city_locations.json"]
+      PRED & MAP & CSV --> UI["Dashboard Web\n(Chart.js + Leaflet)"]
+
+tech:
+  - layer: frontend
+    items: ["Vanilla JS", "Tailwind CSS CDN", "Chart.js", "Leaflet.js", "PapaParse.js", "Choices.js", "Feather Icons"]
+  - layer: backend
+    items: ["Python 3.10", "Scikit-Learn", "Pandas", "Requests"]
+  - layer: devops
+    items: ["GitHub Actions Cron", "Netlify Hosting", "Netlify 200! Proxy Rewrite"]
+  - layer: apis
+    items: ["OpenWeatherMap Current Weather (2.5)", "OpenWeatherMap 5-Day Forecast (2.5)"]
+
+posts:
+  - slug:
+      es: app-openweather_part1_backend
+      en: app_openweather_part1_backend
+    part: 1
+  - slug:
+      es: app_openweather_part2_frontend
+      en: app_openweather_part2_frontend
+    part: 2
+  - slug:
+      es: app_openweather_part3_ai_prediction
+      en: app_openweather_part3_ai_prediction
+    part: 3
+  - slug:
+      es: app_openweather_part4_extras_ux
+      en: app_openweather_part4_extras_ux
+    part: 4
+
+releases:
+  - version: v1.0.0
+    date: "2025-12-06"
+    state: released
+    type: release
+    title:
+      es: "Lanzamiento final con mapa interactivo Leaflet, soporte bilingüe y optimizaciones UX"
+      en: "Final release featuring Leaflet interactive map, multilingual support, and UX polish"
+    changes:
+      - es: "Integración de mapa geoespacial con Leaflet.js y marcadores interactivos con telemetría en vivo."
+        en: "Geospatial map integration with Leaflet.js displaying interactive markers with live telemetry."
+      - es: "Soporte bilingüe completo (ES/EN) con selector dinámico de idioma en la barra de control."
+        en: "Full bilingual support (ES/EN) with dynamic language toggle in the control bar."
+      - es: "Selector avanzado de ciudades con Choices.js y normalización de coordenadas para más de 160 estaciones."
+        en: "Advanced city search with Choices.js and coordinate normalization for over 160 global stations."
+      - es: "Optimización de la lectura cliente de CSVs con streaming asíncrono en PapaParse."
+        en: "Client-side CSV parsing optimization using asynchronous streaming in PapaParse."
+
+  - version: v0.3.0
+    date: "2025-11-15"
+    state: released
+    type: feature
+    title:
+      es: "Módulo de Machine Learning con Scikit-Learn y comparativa vs OpenWeatherMap 5D"
+      en: "Machine Learning module with Scikit-Learn and benchmarking vs OpenWeatherMap 5D"
+    changes:
+      - es: "Implementación de 3 modelos de Regresión Lineal para pronóstico a 24 horas (temperatura máxima, mínima y media)."
+        en: "Implementation of 3 Linear Regression models for 24-hour temperature forecasting (max, min, and mean)."
+      - es: "Generación de características desfasadas (lag-1) y estacionalidad anual sobre datos diarios agregados."
+        en: "Feature engineering including lagged previous-day metrics (lag-1) and seasonal day-of-year indicators."
+      - es: "Exportación de pronósticos consolidados en predicciones.json y visualización comparativa en Chart.js."
+        en: "Consolidated forecast export in predicciones.json and side-by-side comparative visualization in Chart.js."
+
+  - version: v0.2.0
+    date: "2025-11-08"
+    state: released
+    type: feature
+    title:
+      es: "Dashboard interactivo frontend con Chart.js y PapaParse"
+      en: "Interactive frontend dashboard with Chart.js and PapaParse"
+    changes:
+      - es: "Construcción de la interfaz SPA con gráficos dinámicos multivariables en Chart.js."
+        en: "SPA frontend construction featuring multivariate dynamic charts in Chart.js."
+      - es: "Conexión directa del cliente a los ficheros CSV históricos particionados por ciudad."
+        en: "Direct client connection to partitioned historical CSV files per city."
+
+  - version: v0.1.0
+    date: "2025-10-31"
+    state: released
+    type: feature
+    title:
+      es: "Motor recolector backend en Python y pipeline automatizado con GitHub Actions"
+      en: "Backend Python data harvester engine and automated pipeline with GitHub Actions"
+    changes:
+      - es: "Desarrollo del script read_weather.py con conexión a la API OpenWeatherMap v2.5."
+        en: "Development of read_weather.py script connecting to OpenWeatherMap API v2.5."
+      - es: "Estructuración del dataset histórico particionado en carpetas datos/ por ciudad."
+        en: "Historical dataset structuring partitioned in datos/ folders per city."
+      - es: "Configuración del workflow actualizar-clima.yml en GitHub Actions para ejecución 3 veces al día."
+        en: "Configuration of actualizar-clima.yml GitHub Actions workflow for 3x daily execution."

@@ -64,7 +64,7 @@
 
 ## ADR-007: Fichas de App Data-Driven con Historial Evolutivo (`apps-showcase`)
 - **Fecha:** 2026-10-24
-- **Estado:** Implementado (Completado en Hitos 1.3, 1.4 y 2.1)
+- **Estado:** Implementado (Completado en Hitos 1.3, 1.4, 2.1 y 2.2)
 - **Contexto:** El listado `/apps/` actual es HTML embebido en `content/*/apps/_index.md` con tarjetas de solo icono y texto, duplicado por idioma. No existe un lugar donde el usuario vea objetivos, diseño, tecnologías ni la evolución de cada App, y los posts enlazan directamente a la App sin contexto.
 - **Decisión:**
   1. Una **ficha por App** en `/{lang}/apps/<slug>/` (page bundle Hugo) con layout común `layouts/apps/single.html`.
@@ -77,3 +77,15 @@
   - *Generar las fichas desde `spec.md`:* acopla documentación de ingeniería (con deuda y riesgos internos) a contenido público.
   - *Página única con todas las Apps en acordeón:* peor SEO y sin URL compartible por App.
 - **Consecuencias:** Añadir una App nueva = 1 YAML + 2 `index.md` + 1 captura. El changelog público se mantiene en paralelo a la spec (regla de Constitución Art. 8.3).
+
+---
+
+## ADR-008: Despliegue Híbrido Serverless con Proxy Netlify para Apps de ETL Continuo (`weather`)
+- **Fecha:** 2026-10-24
+- **Estado:** Aceptado
+- **Contexto:** El Dashboard Climático (`weather`) ingesta telemetría 3 veces al día de más de 160 ciudades y reentrena modelos de Machine Learning. Alojar el dataset vivo dentro del repositorio de Datalaria saturaría Git con decenas de miles de commits automáticos de actualización de CSVs.
+- **Decisión:**
+  1. Mantener la ejecución continua desatendida en el repositorio upstream `https://github.com/Dalaez/app_weather.git` mediante GitHub Actions y despliegue a Netlify (`datalaria-app-weather.netlify.app`).
+  2. Servir la aplicación a los usuarios finales transparentemente bajo el dominio de Datalaria mediante la regla de proxy forzado `200!` en `static/_redirects` (`/apps/weather/* https://datalaria-app-weather.netlify.app/:splat 200!`).
+  3. Consolidar el código fuente canónico, scripts de recolección y especificación SDD en [`apps/weather/`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/apps/weather) y [`specs/apps/weather/spec.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/apps/weather/spec.md).
+- **Consecuencias:** Cero ruido de commits en el blog principal, 100% serverless con coste $0/mes y preservación transparente de la URL pública canónica `https://datalaria.com/apps/weather/`.

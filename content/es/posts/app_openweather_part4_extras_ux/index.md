@@ -16,6 +16,8 @@ Esta publicación desvela las "extras", las mejoras significativas y las decisio
 
 ![Imagen conceptual del Dashboard de Project Weather Extras](Imagen_Weather_Extras.png)
 
+{{< app-ref slug="weather" >}}
+
 ---
 
 ### 1. Expansión de Métricas y Recolección de Datos: De Básico a Completo
@@ -101,4 +103,11 @@ Si bien el modelo de predicción por IA es un testimonio del poder del aprendiza
 
 El resultado es un dashboard meteorológico con cierta inteligencia, intuitivo y fácil de usar, en el que convergen la lógica del backend y un cuidado diseño del frontend.
 
-Finalmente, estas mejoras representan el cierre de la primera versión operativa del proyecto y a partir de la cual, a medio plazo, iremos incorporando nuevas mejoras y cambios según vayan siendo requeridos y permitan mejorar la experiencia de usuario y experimentar con nuevas funcionalidades y características. 
+Finalmente, estas mejoras representan el cierre de la primera versión operativa del proyecto y a partir de la cual, a medio plazo, iremos incorporando nuevas mejoras y cambios según vayan siendo requeridos y permitan mejorar la experiencia de usuario y experimentar con nuevas funcionalidades y características.
+
+* **Ficha Técnica de la Aplicación**: Conoce los objetivos, arquitectura, stack tecnológico e historial evolutivo en la [Ficha del Dashboard Climático IA](/es/apps/weather/).
+
+---
+
+### 🌤️ Servicio Web en Vivo y Ficha Técnica
+{{< app-ref slug="weather" >}}

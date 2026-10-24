@@ -18,6 +18,8 @@ Let's turn our data into a crystal ball! 🔮
 
 ![Conceptual image of Weather Service Predictions](AI_App_Weather_Image_Predictions.png)
 
+{{< app-ref slug="weather" >}}
+
 ---
 
 ### The Predictive Core: OpenWeatherMap and Our Custom AI
@@ -145,7 +147,13 @@ We've built a robust, serverless, and insightful application entirely on free se
 
   * **Complete Web Service**: You can see the final project in action here: [https://datalaria.com/apps/weather/](https://datalaria.com/apps/weather/)
   * **Project GitHub Repository**: Explore the source code and project structure in my repository: [https://github.com/Dalaez/app_weather](https://github.com/Dalaez/app_weather)
+* **Technical Application Showcase**: Learn about the objectives, architecture, technology stack, and SemVer changelog in the [Weather Service AI Showcase](/en/apps/weather/).
   * **OpenWeatherMap API**: [https://openweathermap.org/api](https://openweathermap.org/api)
   * **Pandas**: Python Data Analysis Library: [https://pandas.pydata.org/](https://pandas.pydata.org/)
   * **Scikit-learn**: Machine Learning in Python: [https://scikit-learn.org/](https://scikit-learn.org/)
   * **PapaParse.js**: Fast in-browser CSV parser for JavaScript:
+
+---
+
+### 🌤️ Live Web Service & Technical Showcase
+{{< app-ref slug="weather" >}}

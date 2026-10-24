@@ -16,6 +16,8 @@ Pero, ¿de qué sirven los datos si no puedes verlos? Hoy, cambiamos nuestro enf
 
 ![Conceptual image of Weather Service Frontend](AI_App_Weather_Image_Frontend.png)
 
+{{< app-ref slug="weather" >}}
+
 ---
 
 ### Alojamiento Web Gratuito: GitHub Pages vs. Netlify
@@ -223,7 +225,13 @@ El dashboard ahora proporciona información inmediata sobre los patrones climát
 
   * **Servicio Web Completo**: Puedes ver el resultado final de este proyecto en acción aquí: [https://datalaria.com/apps/weather/](https://datalaria.com/apps/weather/)
   * **Repositorio GitHub del Proyecto**: Explora el código fuente y la estructura del proyecto en mi repositorio: [https://github.com/Dalaez/app_weather](https://github.com/Dalaez/app_weather)
+* **Ficha Técnica de la Aplicación**: Conoce los objetivos, arquitectura, stack tecnológico e historial evolutivo en la [Ficha del Dashboard Climático IA](/es/apps/weather/).
   * **PapaParse.js**: Parser de CSV rápido en el navegador para JavaScript: [https://www.papaparse.com/](https://www.papaparse.com/)
   * **Chart.js**: Gráficos JavaScript simples pero flexibles para diseñadores y desarrolladores: [https://www.chartjs.org/](https://www.chartjs.org/)
   * **GitHub Pages**: Documentación oficial sobre cómo alojar tus sitios: [https://docs.github.com/es/pages](https://docs.github.com/es/pages)
   * **Netlify**: Página oficial de Netlify: [https://www.netlify.com/](https://www.netlify.com/)
+
+---
+
+### 🌤️ Servicio Web en Vivo y Ficha Técnica
+{{< app-ref slug="weather" >}}

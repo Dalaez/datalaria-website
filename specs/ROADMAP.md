@@ -7,9 +7,9 @@
 
 ## 📍 ESTADO ACTUAL DEL PROYECTO (PUNTERO DE SESIÓN)
 
-- **Fase Activa:** `FASE 2 EN CURSO 🟡` — **Aislamiento y Saneamiento de las Apps Activas con Deuda (`obs-management` y `weather`)**
-- **Último Checkpoint Verificado:** `Hito 2.1 — Especificación, Aislamiento y Reparación Dual-Mode de obs-management (App #2 — Agentic Radar) + Ficha Técnica y 14 Posts Actualizados` (Completado el 2026-10-24 ✅).
-- **Próximo Hito:** `Hito 2.2 — Especificación y Limpieza de Clones de weather (App #3 — Dashboard Climático)`
+- **Fase Activa:** `FASE 2 COMPLETADA AL 100% ✅` ➔ **Listos para FASE 3: Congelación de las 4 Apps Legacy, Higiene de `/static/` y Mejora del Escaparate `/apps/`**
+- **Último Checkpoint Verificado:** `Hito 2.2 — Especificación SDD, Limpieza de Clones y Despliegue de Ficha Técnica de weather (App #3 — Dashboard Climático) + 8 Posts Actualizados` (Completado el 2026-10-24 ✅).
+- **Próximo Hito:** `Hito 3.1 — Revisión Ligera, Congelación Legacy (Apps #4 a #7) y Cuarentena de No Publicadas fuera de static/`
 
 ---
 
@@ -106,11 +106,13 @@ Tras auditar todos los artículos de `/content/es/posts/` y `/content/en/posts/`
     3. Actualizar `static/apps/obs-management/index.html` con el **Modo Sandbox Determinista** (eliminando el error `> OFFLINE`; mostrando `15.450,00 EUR` en riesgo, 2 alertas críticas, tablas de SKUs `DRONE-X1` / `SERVER-RACK-9`, terminal animada CrewAI con replay, upsell a B2B packs y navegación hacia `/es/apps/`).
     4. Crear metadatos en `data/apps/obs-management.yaml`, fichas dedicadas en `content/{es,en}/apps/obs-management/` y actualizar las 14 entradas de blog (`obs_parte1`..`obs_parte7` y `obs_part1`..`obs_part7`) con `{{</* app-ref slug="obs-management" */>}}` y enlaces a la ficha técnica.
   - *Gate de Verificación:* `hugo --renderToMemory` compila las 2081 páginas con código 0 en 20.7s; `static/apps/obs-management/` contiene únicamente `index.html` (cero `.py`/`.sql`/`.env`/`.pyc`); dashboard 100% interactivo en navegador sin backend local. (Completado el 2026-10-24 ✅).
-- [ ] **Hito 2.2: Especificación y Limpieza de Clones de `weather` (App #3 — Dashboard Climático)**
+- [x] **Hito 2.2: Especificación y Limpieza de Clones de `weather` (App #3 — Dashboard Climático)**
   - *Acción:*
     1. Crear `/specs/apps/weather/spec.md` alineado con los 4 artículos publicados (`app-openweather_part1` a `part4`).
-    2. Limpiar los metadatos `.git` corruptos incrustados en `static/apps/weather/` y eliminar las carpetas duplicadas (`temp_app_weather/`, `github.io/`).
-  - *Gate de Verificación:* `git status` limpio; redirección proxy `200!` a `datalaria-app-weather.netlify.app` verificada en `static/_redirects`.
+    2. Consolidar el código fuente canónico en `apps/weather/` (`index.html`, `read_weather.py`, `requirements.txt`, `ciudades.txt`, workflow GitHub Actions `.github/workflows/actualizar-clima.yml` y datos muestra) con su `README.md`.
+    3. Purgar metadatos `.git` huérfanos y código Python/backend de `static/apps/weather/`; eliminar la carpeta duplicada `temp_app_weather/` (liberando ~144 MB).
+    4. Crear metadatos en `data/apps/weather.yaml`, páginas dedicadas en `content/{es,en}/apps/weather/` con `cover.png` y actualizar los 8 artículos de la serie con `{{</* app-ref slug="weather" */>}}` y enlaces a la ficha técnica.
+  - *Gate de Verificación:* `git status` limpio; proxy `200!` hacia `datalaria-app-weather.netlify.app` verificado en `static/_redirects`; `hugo --renderToMemory` compila 2083 páginas con código 0 en 50.6s. (Completado el 2026-10-24 ✅).
 
 ---
 

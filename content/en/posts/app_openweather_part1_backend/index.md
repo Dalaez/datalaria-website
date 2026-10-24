@@ -16,6 +16,8 @@ In this first installment, we will focus on the **heart of the system: the backe
 
 ![Conceptual image of Weather Service](AI_App_Weather_Image.png)
 
+{{< app-ref slug="weather" >}}
+
 ---
 
 ### The First Step: Talking to the OpenWeatherMap API
@@ -289,7 +291,13 @@ In the next post, we'll put on our frontend developer hats and build the interac
 
 * **Complete Web Service**: See the live project in action here: [https://datalaria.com/apps/weather/](https://datalaria.com/apps/weather/)
 * **Project GitHub Repository**: Explore the source code and project structure: [https://github.com/Dalaez/app_weather](https://github.com/Dalaez/app_weather)
+* **Technical Application Showcase**: Learn about the objectives, architecture, technology stack, and SemVer changelog in the [Weather Service AI Showcase](/en/apps/weather/).
 * **OpenWeatherMap**: Weather API documentation: [https://openweathermap.org/api](https://openweathermap.org/api)
 * **Python Requests**: Documentation for the HTTP requests library: [https://requests.readthedocs.io/en/master/](https://requests.readthedocs.io/en/master/)
 * **GitHub Actions**: Official GitHub Actions guide: [https://docs.github.com/en/actions](https://docs.github.com/en/actions)
 * **Netlify**: Official Netlify website: [https://www.netlify.com/](https://www.netlify.com/)
+
+---
+
+### 🌤️ Live Web Service & Technical Showcase
+{{< app-ref slug="weather" >}}

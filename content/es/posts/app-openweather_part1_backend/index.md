@@ -16,6 +16,8 @@ En esta primera entrega, nos centraremos en el **corazón del sistema: el backen
 
 ![Conceptual image of Weather Service](Imagen_App_Weather_IA.png)
 
+{{< app-ref slug="weather" >}}
+
 ---
 
 ### El Primer Paso: Hablar con la API de OpenWeatherMap
@@ -289,7 +291,13 @@ En el próximo post, nos pondremos el sombrero de desarrollador frontend y const
 
 * **Servicio Web Completo**: Puedes ver el resultado final de este proyecto en acción aquí: [https://datalaria.com/apps/weather/](https://datalaria.com/apps/weather/)
 * **Repositorio GitHub del Proyecto**: Explora el código fuente y la estructura del proyecto en mi repositorio: [https://github.com/Dalaez/app_weather](https://github.com/Dalaez/app_weather)
+* **Ficha Técnica de la Aplicación**: Conoce los objetivos, arquitectura, stack tecnológico e historial evolutivo en la [Ficha del Dashboard Climático IA](/es/apps/weather/).
 * **OpenWeatherMap**: Documentación de la API de clima: [https://openweathermap.org/api](https://openweathermap.org/api)
 * **Python Requests**: Documentación de la librería para hacer peticiones HTTP: [https://requests.readthedocs.io/en/master/](https://requests.readthedocs.io/en/master/)
 * **GitHub Actions**: Guía oficial de GitHub Actions: [https://docs.github.com/es/actions](https://docs.github.com/es/actions)
 * **Netlify**: Página oficial de Netlify: [https://www.netlify.com/](https://www.netlify.com/)
+
+---
+
+### 🌤️ Servicio Web en Vivo y Ficha Técnica
+{{< app-ref slug="weather" >}}

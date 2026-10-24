@@ -18,6 +18,8 @@ Ahora, es el momento del gran final: añadir capacidad predictiva a nuestro Weat
 
 ![Conceptual image of Weather Service Predictions](AI_App_Weather_Image_Predictions.png)
 
+{{< app-ref slug="weather" >}}
+
 ---
 
 ### El Núcleo Predictivo: OpenWeatherMap y Nuestra IA Personalizada
@@ -145,8 +147,14 @@ Hemos construido una aplicación robusta, sin servidor y perspicaz, enteramente 
 
   * **Servicio Web Completo**: Puedes ver el resultado final de este proyecto en acción aquí: [https://datalaria.com/apps/weather/](https://datalaria.com/apps/weather/)
   * **Repositorio GitHub del Proyecto**: Explora el código fuente y la estructura del proyecto en mi repositorio: [https://github.com/Dalaez/app_weather](https://github.com/Dalaez/app_weather)
+* **Ficha Técnica de la Aplicación**: Conoce los objetivos, arquitectura, stack tecnológico e historial evolutivo en la [Ficha del Dashboard Climático IA](/es/apps/weather/).
   * **OpenWeatherMap API**: [https://openweathermap.org/api](https://openweathermap.org/api)
   * **Pandas**: Librería de análisis de datos de Python: [https://pandas.pydata.org/](https://pandas.pydata.org/)
   * **Scikit-learn**: Machine Learning en Python: [https://scikit-learn.org/](https://scikit-learn.org/)
   * **PapaParse.js**: Parser de CSV rápido en el navegador para JavaScript: [https://www.papaparse.com/](https://www.papaparse.com/)
   * **Chart.js**: Gráficos JavaScript simples pero flexibles para diseñadores y desarrolladores: [https://www.chartjs.org/](https://www.chartjs.org/)
+
+---
+
+### 🌤️ Servicio Web en Vivo y Ficha Técnica
+{{< app-ref slug="weather" >}}
