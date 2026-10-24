@@ -29,6 +29,8 @@ In this first installment of the series, we dive into the core foundations: **cl
 > [!TIP]
 > **Test the live app**: You can explore the production build of LifeOps directly at [https://datalaria.com/apps/lifeops/](https://datalaria.com/apps/lifeops/).
 
+
+{{< app-ref slug="lifeops" >}}
 ---
 
 ### 🗺️ LifeOps Series Roadmap
@@ -247,6 +249,7 @@ In **Part 2** of this series, we dive straight into the frontend:
 ### References & Useful Links 🔗
 
 * 🚀 **Production Application**: Try the live app at [datalaria.com/apps/lifeops](https://datalaria.com/apps/lifeops/).
+* 📑 **Technical Specifications & Version History**: Explore system goals, architecture, and changelog in the [LifeOps Dedicated Page](/en/apps/lifeops/).
 * 🌐 **Production REST API**: Interactive OpenAPI Swagger documentation at [lifeops-api.onrender.com/docs](https://lifeops-api.onrender.com/docs).
 * ⚡ **FastAPI Framework**: Official documentation at [fastapi.tiangolo.com](https://fastapi.tiangolo.com/).
 * 🗄️ **Supabase Cloud**: Guide to PostgreSQL and Row Level Security at [supabase.com/docs](https://supabase.com/docs).

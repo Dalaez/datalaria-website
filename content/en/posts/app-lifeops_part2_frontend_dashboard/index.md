@@ -19,6 +19,8 @@ To solve this, I set out to engineer a Single Page Application (SPA) pairing a *
 > [!TIP]
 > **Test the live app**: You can explore the production build of LifeOps directly at [https://datalaria.com/apps/lifeops/](https://datalaria.com/apps/lifeops/).
 
+
+{{< app-ref slug="lifeops" >}}
 ---
 
 ### 🗺️ LifeOps Series Roadmap
@@ -472,6 +474,7 @@ In **Part 3** of this series, we dive directly into the functional core:
 ### References & Useful Links 🔗
 
 * 🚀 **Production Application**: Try the live app at [datalaria.com/apps/lifeops](https://datalaria.com/apps/lifeops/).
+* 📑 **Technical Specifications & Version History**: Explore system goals, architecture, and changelog in the [LifeOps Dedicated Page](/en/apps/lifeops/).
 * 🌐 **Backend API**: Interactive OpenAPI Swagger documentation at [lifeops-api.onrender.com/docs](https://lifeops-api.onrender.com/docs).
 * ⚛️ **React Documentation**: Official React 19 documentation at [react.dev](https://react.dev/).
 * ⚡ **Vite**: Next-generation frontend tooling at [vite.dev](https://vite.dev/).

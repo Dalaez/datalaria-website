@@ -23,6 +23,8 @@ Best of all: implemented under a **Zero-Disk in-memory architecture** without sa
 > [!TIP]
 > **Test the live app**: You can generate and download your own reports in the production build of LifeOps at [https://datalaria.com/apps/lifeops/](https://datalaria.com/apps/lifeops/).
 
+
+{{< app-ref slug="lifeops" >}}
 ---
 
 ### 🗺️ LifeOps Series Roadmap
@@ -346,6 +348,7 @@ In **Part 5** (the final installment of this series), we will cover:
 ### References & Useful Links 🔗
 
 * 🚀 **Production Application**: Try the reports download center at [datalaria.com/apps/lifeops](https://datalaria.com/apps/lifeops/).
+* 📑 **Technical Specifications & Version History**: Explore system goals, architecture, and changelog in the [LifeOps Dedicated Page](/en/apps/lifeops/).
 * 🌐 **Production Swagger API**: Reporting and export endpoints at [lifeops-api.onrender.com/docs](https://lifeops-api.onrender.com/docs).
 * 📄 **python-docx**: Official documentation at [python-docx.readthedocs.io](https://python-docx.readthedocs.io/).
 * 📊 **openpyxl**: Excel spreadsheet manipulation guide at [openpyxl.readthedocs.io](https://openpyxl.readthedocs.io/).

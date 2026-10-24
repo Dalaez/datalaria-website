@@ -7,9 +7,9 @@
 
 ## 📍 ESTADO ACTUAL DEL PROYECTO (PUNTERO DE SESIÓN)
 
-- **Fase Activa:** `FASE 1 — Extracción SDD de LifeOps & Sistema de Fichas de Apps` ➔ **En progreso (Hitos 1.1, 1.2 y 1.3 completados ✅, listos para Hito 1.4)**
-- **Último Checkpoint Verificado:** `Hito 1.3 — Infraestructura del Portal para Fichas de Apps (layouts/apps/, partials/app-card.html, shortcode app-ref, CSS)` (Completado el 2026-10-24 ✅).
-- **Próximo Hito:** `Hito 1.4 — Despliegue de Ficha de LifeOps (data/apps/lifeops.yaml, content/{es,en}/apps/lifeops/) y Actualización de Posts`
+- **Fase Activa:** `FASE 1 COMPLETADA AL 100% ✅` ➔ **Listos para FASE 2: Aislamiento y Saneamiento de las Apps Activas con Deuda (`obs-management` y `weather`)**
+- **Último Checkpoint Verificado:** `Hito 1.4 — Despliegue de Ficha de LifeOps (data/apps/lifeops.yaml, content/{es,en}/apps/lifeops/) y Enlaces en los 10 Posts de la Serie` (Completado el 2026-10-24 ✅).
+- **Próximo Hito:** `Hito 2.1 — Especificación, Aislamiento y Reparación Dual-Mode de obs-management (App #2 — Agentic Radar)`
 
 ---
 
@@ -87,12 +87,12 @@ Tras auditar todos los artículos de `/content/es/posts/` y `/content/en/posts/`
     5. Validaciones automáticas en tiempo de build (`errorf` ante campos requeridos o posts inexistentes).
   - *Gate de Verificación:* `hugo --renderToMemory` compila las 2077 páginas con código 0 en 29.9s; el listado `/es/apps/` y `/en/apps/` compila limpiamente agrupando las 7 apps en sus respectivos tiers. (Completado el 2026-10-24 ✅).
 
-- [ ] **Hito 1.4: Despliegue de Ficha de LifeOps y Actualización de Posts**
+- [x] **Hito 1.4: Despliegue de Ficha de LifeOps y Actualización de Posts**
   - *Acción:*
-    1. Crear `data/apps/lifeops.yaml` con todos los metadatos, objetivos, diseño, stack y releases (v0.1.0 -> v1.0.0).
-    2. Crear páginas de contenido `content/es/apps/lifeops/index.md` y `content/en/apps/lifeops/index.md` con captura `cover.png`.
-    3. Insertar shortcode `{{</* app-ref slug="lifeops" */>}}` en los 5 artículos de la serie LifeOps en ES y EN (10 archivos en total).
-  - *Gate de Verificación:* Las fichas `/es/apps/lifeops/` y `/en/apps/lifeops/` cargan todos sus datos, timeline y enlaces; los 10 posts muestran la tarjeta de la ficha; `hugo --gc --minify` termina sin advertencias ni errores.
+    1. Crear `data/apps/lifeops.yaml` con todos los metadatos, objetivos, diseño, stack y releases (v0.1.0 -> v1.0.1).
+    2. Crear páginas de contenido `content/es/apps/lifeops/index.md` y `content/en/apps/lifeops/index.md` con captura `cover.png` localizada.
+    3. Insertar shortcode `{{</* app-ref slug="lifeops" */>}}` y enlaces a la ficha técnica en los 5 artículos de la serie LifeOps en ES y EN (10 archivos en total).
+  - *Gate de Verificación:* Las fichas `/es/apps/lifeops/` y `/en/apps/lifeops/` compilan limpiamente mostrando todos sus datos, timeline SemVer, enlaces directos a la App y al modo demo; los 10 posts renderizan la tarjeta del shortcode `app-ref`; `hugo --renderToMemory` compila 2079 páginas con código 0 en 23.3s. (Completado el 2026-10-24 ✅).
 
 ---
 

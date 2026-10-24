@@ -25,6 +25,8 @@ En esta quinta entrega demostraremos que existe una vía mucho más inteligente 
 > [!TIP]
 > **Prueba la aplicación en vivo**: Puedes interactuar con la versión final desplegada de LifeOps en [https://datalaria.com/apps/lifeops/](https://datalaria.com/apps/lifeops/).
 
+
+{{< app-ref slug="lifeops" >}}
 ---
 
 ### 🗺️ Hoja de Ruta Completa de la Serie LifeOps
@@ -310,6 +312,7 @@ Te invito a probar la aplicación en directo, explorar sus módulos y, sobre tod
 ### Referencias y Enlaces de la Serie Completa 🔗
 
 * 🚀 **Aplicación LifeOps en Producción**: [datalaria.com/apps/lifeops](https://datalaria.com/apps/lifeops/).
+* 📑 **Ficha Técnica & Historial de Versiones**: Consulta los objetivos, arquitectura y changelog en la [Ficha de LifeOps](/es/apps/lifeops/).
 * 🌐 **API REST Documentada (Swagger)**: [lifeops-api.onrender.com/docs](https://lifeops-api.onrender.com/docs).
 * 📚 **Entrega 1**: [Arquitectura de un Sistema Operativo Personal y Backend con FastAPI + Supabase](/posts/app-lifeops_part1_arquitectura_backend/).
 * 🎨 **Entrega 2**: [Frontend React con Glassmorphism, Dashboard 360° y Sistema de Diseño](/posts/app-lifeops_part2_frontend_dashboard/).

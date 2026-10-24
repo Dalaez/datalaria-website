@@ -29,6 +29,8 @@ En esta primera entrega de la serie, nos adentraremos en los cimientos del proye
 > [!TIP]
 > **Prueba la aplicación en vivo**: Puedes interactuar con la versión de producción de LifeOps desplegada en [https://datalaria.com/apps/lifeops/](https://datalaria.com/apps/lifeops/).
 
+
+{{< app-ref slug="lifeops" >}}
 ---
 
 ### 🗺️ Hoja de Ruta de la Serie LifeOps
@@ -247,6 +249,7 @@ En la **Parte 2** de esta serie, nos sumergiremos de lleno en el frontend:
 ### Referencias y Enlaces de Interés 🔗
 
 * 🚀 **Aplicación en Producción**: Prueba el resultado final en vivo en [datalaria.com/apps/lifeops](https://datalaria.com/apps/lifeops/).
+* 📑 **Ficha Técnica & Historial de Versiones**: Consulta los objetivos, arquitectura y changelog en la [Ficha de LifeOps](/es/apps/lifeops/).
 * 🌐 **API REST en Producción**: Documentación OpenAPI interactiva en [lifeops-api.onrender.com/docs](https://lifeops-api.onrender.com/docs).
 * ⚡ **FastAPI Framework**: Documentación oficial en [fastapi.tiangolo.com](https://fastapi.tiangolo.com/).
 * 🗄️ **Supabase Cloud**: Guía de PostgreSQL y Row Level Security en [supabase.com/docs](https://supabase.com/docs).

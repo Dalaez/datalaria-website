@@ -25,6 +25,8 @@ In this final installment, we demonstrate a far more elegant, sustainable path:
 > [!TIP]
 > **Test the live app**: You can explore the final production release of LifeOps at [https://datalaria.com/apps/lifeops/](https://datalaria.com/apps/lifeops/).
 
+
+{{< app-ref slug="lifeops" >}}
 ---
 
 ### 🗺️ Complete LifeOps Series Roadmap
@@ -310,6 +312,7 @@ I invite you to try the live application, experiment with its modules, and draw 
 ### Complete Series Reference & Links 🔗
 
 * 🚀 **LifeOps Live Application**: [datalaria.com/apps/lifeops](https://datalaria.com/apps/lifeops/).
+* 📑 **Technical Specifications & Version History**: Explore system goals, architecture, and changelog in the [LifeOps Dedicated Page](/en/apps/lifeops/).
 * 🌐 **Interactive OpenAPI Docs**: [lifeops-api.onrender.com/docs](https://lifeops-api.onrender.com/docs).
 * 📚 **Part 1**: [Personal Operating System Architecture and FastAPI + Supabase Backend](/en/posts/app-lifeops_part1_arquitectura_backend/).
 * 🎨 **Part 2**: [React Frontend with Glassmorphism, 360° Dashboard, and Design System](/en/posts/app-lifeops_part2_frontend_dashboard/).

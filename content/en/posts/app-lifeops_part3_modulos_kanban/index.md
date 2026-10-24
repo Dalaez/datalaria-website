@@ -22,6 +22,8 @@ A personal operating system fails if it forces users into rigid input forms or s
 > [!TIP]
 > **Test the live app**: You can explore the production build of LifeOps directly at [https://datalaria.com/apps/lifeops/](https://datalaria.com/apps/lifeops/).
 
+
+{{< app-ref slug="lifeops" >}}
 ---
 
 ### 🗺️ LifeOps Series Roadmap
@@ -311,6 +313,7 @@ In **Part 4** of this series, we will unpack the backend's most technically soph
 ### References & Useful Links 🔗
 
 * 🚀 **Production Application**: Try the interactive modules at [datalaria.com/apps/lifeops](https://datalaria.com/apps/lifeops/).
+* 📑 **Technical Specifications & Version History**: Explore system goals, architecture, and changelog in the [LifeOps Dedicated Page](/en/apps/lifeops/).
 * 🌐 **Production Swagger API**: Tasks and comments endpoints at [lifeops-api.onrender.com/docs](https://lifeops-api.onrender.com/docs).
 * 🐘 **PostgreSQL JSONB Documentation**: Semistructured data types at [postgresql.org/docs](https://www.postgresql.org/docs/current/datatype-json.html).
 * ⚛️ **React Documentation**: State and optimistic updates at [react.dev](https://react.dev/).

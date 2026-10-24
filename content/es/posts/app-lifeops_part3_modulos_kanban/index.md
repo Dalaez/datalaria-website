@@ -22,6 +22,8 @@ Un sistema operativo personal fracasa si obliga al usuario a adaptarse a formula
 > [!TIP]
 > **Prueba la aplicación en vivo**: Puedes interactuar con la versión de producción de LifeOps desplegada en [https://datalaria.com/apps/lifeops/](https://datalaria.com/apps/lifeops/).
 
+
+{{< app-ref slug="lifeops" >}}
 ---
 
 ### 🗺️ Hoja de Ruta de la Serie LifeOps
@@ -311,6 +313,7 @@ En la **Parte 4** de esta serie, abordaremos la joya técnica del backend:
 ### Referencias y Enlaces de Interés 🔗
 
 * 🚀 **Aplicación en Producción**: Prueba los módulos en vivo en [datalaria.com/apps/lifeops](https://datalaria.com/apps/lifeops/).
+* 📑 **Ficha Técnica & Historial de Versiones**: Consulta los objetivos, arquitectura y changelog en la [Ficha de LifeOps](/es/apps/lifeops/).
 * 🌐 **API Swagger en Producción**: Endpoints de tareas y comentarios en [lifeops-api.onrender.com/docs](https://lifeops-api.onrender.com/docs).
 * 🐘 **PostgreSQL JSONB Documentation**: Guía oficial de tipos semiestructurados en [postgresql.org/docs](https://www.postgresql.org/docs/current/datatype-json.html).
 * ⚛️ **React Documentation**: Gestión de estado y efectos en [react.dev](https://react.dev/).

@@ -1,0 +1,183 @@
+slug: lifeops
+order: 10
+tier: flagship
+status: live
+icon: "🚀"
+cover: cover.png
+app_url: /apps/lifeops/
+demo_url: /apps/lifeops/#/?mock=true
+source_spec: specs/apps/lifeops/spec.md
+current_version: v1.0.1
+
+title:
+  es: "LifeOps"
+  en: "LifeOps"
+
+tagline:
+  es: "Sistema operativo integral personal y profesional: deporte, lecturas, cine, tablero Kanban y proyectos."
+  en: "All-in-one personal & professional OS: fitness tracking, book library, movies, Kanban tasks and projects."
+
+summary:
+  es: "Plataforma modular full-stack para unificar la gestión de actividades personales (fitness, biblioteca, cine) y proyectos profesionales mediante tableros Kanban interactivos, generación de informes ejecutivos en Word/Excel/CSV y arquitectura cloud serverless con Supabase a coste cero."
+  en: "Full-stack modular platform unifying personal activity tracking (fitness, reading, cinema) and professional projects via interactive Kanban boards, automated executive reporting in Word/Excel/CSV, and cloud serverless Supabase architecture at zero cost."
+
+objectives:
+  - es: "Centralizar en una sola interfaz reactiva datos que habitualmente se dispersan en múltiples aplicaciones de suscripción."
+    en: "Consolidate personal and professional records into a single responsive interface, eliminating multi-app subscription sprawl."
+  - es: "Proveer un tablero Kanban profesional con comentarios cronológicos persistidos en estructuras JSONB."
+    en: "Deliver an executive Kanban workflow with chronological activity trails persisted in PostgreSQL JSONB structures."
+  - es: "Generar informes ejecutivos descargables en Word (.docx), hojas de cálculo Excel (.xlsx) y CSV con codificación UTF-8 BOM."
+    en: "Generate downloadable executive reports in Word (.docx), Excel spreadsheets (.xlsx), and CSV with UTF-8 BOM encoding."
+  - es: "Operar bajo un modelo de infraestructura cloud 100% gratuito (Netlify + Render Free + Supabase Cloud)."
+    en: "Operate under a zero-cost cloud architecture using Netlify, Render free tier, and Supabase managed PostgreSQL."
+
+features:
+  - icon: "🏃"
+    es: "Módulo Deportivo: registro de entrenamientos, ritmos, kilometraje, calorías y cálculo de promedios."
+    en: "Fitness Module: log workouts, pace, distance, calories, and automated average calculation."
+  - icon: "📚"
+    es: "Biblioteca de Lecturas: estado de libros (leyendo, completado, pendiente), calificación y notas clave."
+    en: "Book Library: reading statuses (reading, completed, queue), personal ratings, and key takeaways."
+  - icon: "🎬"
+    es: "Videoteca Cine & Series: catálogo de películas vistas, directores, plataforma y valoración personal."
+    en: "Cinema & Series: watched catalog, directors, streaming providers, and personal reviews."
+  - icon: "📋"
+    es: "Gestión de Proyectos & Kanban: estados (Pendiente, En curso, En revisión, Hecho), prioridades y comentarios."
+    en: "Project & Kanban Workspace: task statuses, priority flags, deadlines, and timestamped comment trails."
+  - icon: "📊"
+    es: "Motor de Informes Ejecutivos: exportación de resúmenes consolidados en Word y tablas de datos en Excel."
+    en: "Executive Reporting Engine: consolidated summary document generation in Word and data export in Excel."
+  - icon: "🚀"
+    es: "Modo Demo Sandbox: prueba interactiva instantánea con datos simulados sin requerir registro ni backend."
+    en: "Instant Sandbox Demo: explore all modules with deterministic mock data without sign-up or backend requirements."
+
+design:
+  architecture:
+    es: "Arquitectura desacoplada en 3 capas: Single Page Application (SPA) en React 19 servida desde CDN estática con HashRouter, API REST asíncrona en FastAPI desplegada en Render con autenticación JWT estricta y limitación de tasa SlowAPI, y base de datos relacional PostgreSQL en Supabase aislada en el esquema propio 'lifeops'."
+    en: "Decoupled 3-tier architecture: React 19 Single Page Application (SPA) served via static CDN using HashRouter, asynchronous FastAPI REST backend on Render with cryptographic JWT verification and SlowAPI rate limiting, and managed PostgreSQL on Supabase isolated in its own 'lifeops' schema."
+  principles:
+    - es: "Aislamiento de esquemas: ningún dato de LifeOps comparte tablas con el núcleo del portal (esquema 'lifeops')."
+      en: "Schema isolation: all tables reside exclusively within the dedicated 'lifeops' PostgreSQL schema."
+    - es: "Verificación criptográfica estricta: firma JWT obligatoria en backend mediante clave HMAC secreta de Supabase."
+      en: "Strict cryptographic validation: mandatory JWT signature verification via Supabase secret HMAC key."
+    - es: "Dual-Mode determinista: el modo de prueba (?mock=true) ejecuta 100% en cliente sin peticiones de red."
+      en: "Deterministic Dual-Mode: demo mode (?mock=true) runs 100% client-side without network requests."
+  diagram: |
+    flowchart LR
+      U["Usuario"] --> FE["LifeOps Web (React 19 SPA)\ndatalaria.com/apps/lifeops/"]
+      FE -->|"mock=true"| MOCK["Datos simulados en cliente\n(api.js)"]
+      FE -->|"Auth JWT"| API["LifeOps API (FastAPI)\nRender Cloud"]
+      API -->|"HMAC-SHA256"| JWT["PyJWT Validator"]
+      API -->|"schema: lifeops"| DB[("Supabase PostgreSQL\nlifeops.*")]
+      API --> DOCX["Word .docx & Excel .xlsx\n(Streaming)"]
+
+tech:
+  - layer: frontend
+    items: ["React 19", "Vite 8", "React Router 7", "Recharts", "Lucide Icons"]
+  - layer: backend
+    items: ["Python 3.11", "FastAPI", "Pydantic v2", "PyJWT", "python-docx", "openpyxl", "SlowAPI"]
+  - layer: data
+    items: ["PostgreSQL 15 (Supabase)", "Row-Level Security (RLS)", "JSONB Storage"]
+  - layer: infra
+    items: ["Netlify Static Hosting", "Render Cloud API", "Supabase Auth"]
+
+posts:
+  - slug: app-lifeops_part1_arquitectura_backend
+    part: 1
+  - slug: app-lifeops_part2_frontend_dashboard
+    part: 2
+  - slug: app-lifeops_part3_modulos_kanban
+    part: 3
+  - slug: app-lifeops_part4_informes_word_excel
+    part: 4
+  - slug: app-lifeops_part5_deploy_mobile_pwa
+    part: 5
+
+related_products: []
+
+releases:
+  - version: v1.0.1
+    date: "2026-10-24"
+    state: released
+    type: security
+    title:
+      es: "Aislamiento SDD, corrección SEC-1 y suite de verificación automatizada"
+      en: "SDD isolation, SEC-1 cryptographic fix and automated test suite"
+    changes:
+      - es: "Aislamiento físico en apps/lifeops/ con subproyectos web y api desacoplados."
+        en: "Physical isolation under apps/lifeops/ with decoupled web and api packages."
+      - es: "Corrección de seguridad SEC-1: verificación estricta de firma JWT (PyJWT), erradicando el bypass sin firma."
+        en: "Security fix SEC-1: strict cryptographic JWT verification (PyJWT), eradicating unsigned bypass."
+      - es: "Suite de tests automatizados con pytest en apps/lifeops/api/tests/ (healthcheck, auth y mitigación de tokens forjados)."
+        en: "Automated test suite with pytest in apps/lifeops/api/tests/ (health, auth, and forged token mitigation)."
+      - es: "Pipeline de compilación reproducible build:portal que sincroniza artefactos optimizados a static/apps/lifeops/."
+        en: "Reproducible build:portal script synchronizing optimized production bundles to static/apps/lifeops/."
+
+  - version: v1.0.0
+    date: "2026-09-19"
+    state: released
+    type: release
+    title:
+      es: "Lanzamiento oficial respaldado por la serie editorial de 5 artículos"
+      en: "Official public release backed by the 5-article engineering series"
+    changes:
+      - es: "Módulos de actividad completados: Deporte (ritmo/calorías), Biblioteca y Cine/Series."
+        en: "Completed activity modules: Sports (pace/calories), Reading Library, and Cinema/Series."
+      - es: "Tablero Kanban con columnas de estado, prioridades y sistema de comentarios cronológicos."
+        en: "Kanban workspace with status columns, priorities, and chronological commenting system."
+      - es: "Generador de informes en Word (.docx), libros Excel (.xlsx) y exportador CSV con codificación UTF-8 BOM."
+        en: "Document reporting engine in Word (.docx), Excel spreadsheets (.xlsx), and UTF-8 BOM CSV exporter."
+      - es: "Soporte PWA y optimización móvil con menú inferior táctil."
+        en: "PWA support and mobile viewport optimization with bottom navigation."
+
+  - version: v0.4.0
+    date: "2026-08-31"
+    state: released
+    type: ux
+    title:
+      es: "Rediseño responsive, bottom navigation y modales táctiles"
+      en: "Responsive redesign, mobile bottom navigation and touch modals"
+    changes:
+      - es: "Menú de navegación inferior (BottomNav) adaptativo para smartphones."
+        en: "Adaptive bottom navigation bar for mobile smartphone viewports."
+      - es: "Modales convertidos a bottom-sheets con altura 92dvh y gestos táctiles."
+        en: "Dialogs converted to bottom-sheet viewports with 92dvh max height."
+
+  - version: v0.3.0
+    date: "2026-08-30"
+    state: released
+    type: feature
+    title:
+      es: "Bitácora cronológica de comentarios JSONB en tareas Kanban"
+      en: "Chronological JSONB activity trail on Kanban tasks"
+    changes:
+      - es: "Soporte para múltiples notas y comentarios en tareas Kanban almacenados en campos JSONB."
+        en: "Support for multiple comments per Kanban task stored in structured PostgreSQL JSONB columns."
+
+  - version: v0.2.0
+    date: "2026-08-29"
+    state: released
+    type: infra
+    title:
+      es: "Despliegue cloud 24/7 en Render y auto-retry ante cold starts"
+      en: "24/7 cloud deployment on Render with cold start auto-retry"
+    changes:
+      - es: "Configuración de servicio backend en Render Free Tier con sondeo de salud automático."
+        en: "Backend service deployment on Render Free Tier with automated healthcheck polling."
+      - es: "Control de cold start en frontend con spinner informativo y reintentos exponenciales."
+        en: "Frontend cold start handling with user feedback spinner and retry strategy."
+
+  - version: v0.1.0
+    date: "2026-08-29"
+    state: released
+    type: release
+    title:
+      es: "Arquitectura base inicial e integración full-stack"
+      en: "Initial baseline architecture and full-stack integration"
+    changes:
+      - es: "Frontend en React SPA con HashRouter y diseño adaptativo."
+        en: "React SPA frontend with HashRouter and responsive layout."
+      - es: "Backend FastAPI con routers modulares y cliente Supabase."
+        en: "FastAPI backend with modular routers and Supabase client integration."
+      - es: "Soporte bilingüe ES/EN mediante diccionarios y modo de datos de prueba."
+        en: "Bilingual ES/EN support via dictionary files and mock dataset."

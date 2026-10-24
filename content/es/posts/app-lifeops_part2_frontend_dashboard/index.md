@@ -19,6 +19,8 @@ Para evitarlo, me propuse diseñar una interfaz SPA (*Single Page Application*) 
 > [!TIP]
 > **Prueba la aplicación en vivo**: Puedes interactuar con la versión de producción de LifeOps desplegada en [https://datalaria.com/apps/lifeops/](https://datalaria.com/apps/lifeops/).
 
+
+{{< app-ref slug="lifeops" >}}
 ---
 
 ### 🗺️ Hoja de Ruta de la Serie LifeOps
@@ -473,6 +475,7 @@ En la **Parte 3** de esta serie, nos adentraremos en el corazón operativo de la
 ### Referencias y Enlaces de Interés 🔗
 
 * 🚀 **Aplicación en Producción**: Prueba la app en vivo en [datalaria.com/apps/lifeops](https://datalaria.com/apps/lifeops/).
+* 📑 **Ficha Técnica & Historial de Versiones**: Consulta los objetivos, arquitectura y changelog en la [Ficha de LifeOps](/es/apps/lifeops/).
 * 🌐 **Backend API**: Documentación interactiva Swagger en [lifeops-api.onrender.com/docs](https://lifeops-api.onrender.com/docs).
 * ⚛️ **React Documentation**: Guía oficial de React 19 en [react.dev](https://react.dev/).
 * ⚡ **Vite**: Empaquetador de frontend de última generación en [vite.dev](https://vite.dev/).

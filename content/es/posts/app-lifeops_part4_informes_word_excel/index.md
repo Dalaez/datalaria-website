@@ -23,6 +23,8 @@ Y todo ello implementado bajo una arquitectura **Zero-Disk in-memory**: sin toca
 > [!TIP]
 > **Prueba la aplicación en vivo**: Puedes generar y descargar tus propios informes en la versión de producción de LifeOps en [https://datalaria.com/apps/lifeops/](https://datalaria.com/apps/lifeops/).
 
+
+{{< app-ref slug="lifeops" >}}
 ---
 
 ### 🗺️ Hoja de Ruta de la Serie LifeOps
@@ -347,6 +349,7 @@ En la **Parte 5** (la entrega final de la serie), abordaremos:
 ### Referencias y Enlaces de Interés 🔗
 
 * 🚀 **Aplicación en Producción**: Prueba el centro de descargas en [datalaria.com/apps/lifeops](https://datalaria.com/apps/lifeops/).
+* 📑 **Ficha Técnica & Historial de Versiones**: Consulta los objetivos, arquitectura y changelog en la [Ficha de LifeOps](/es/apps/lifeops/).
 * 🌐 **API Swagger en Producción**: Endpoints de informes y exportación en [lifeops-api.onrender.com/docs](https://lifeops-api.onrender.com/docs).
 * 📄 **python-docx**: Documentación oficial en [python-docx.readthedocs.io](https://python-docx.readthedocs.io/).
 * 📊 **openpyxl**: Guía de manipulación de hojas de cálculo Excel en [openpyxl.readthedocs.io](https://openpyxl.readthedocs.io/).
