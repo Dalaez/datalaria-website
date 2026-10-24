@@ -64,13 +64,15 @@ design:
       en: "Deterministic quantitative modeling: linear regression trains strictly on observed empirical records without LLM API calls."
   diagram: |
     flowchart LR
-      CRON["GitHub Actions\nCron (3x/día)"] --> PY["read_weather.py\n(ETL Python)"]
+      CRON["GitHub Actions Cron (3x/dia)"] --> PY["read_weather.py (ETL Python)"]
       PY -->|"API v2.5"| OWM["OpenWeatherMap"]
-      PY -->|"Series Temporales"| CSV["datos/<Ciudad>.csv"]
-      CSV -->|"Entrenamiento"| ML["Scikit-Learn\n(LinearRegression)"]
+      PY -->|"Series Temporales"| CSV["datos/ciudades_csv"]
+      CSV -->|"Entrenamiento"| ML["Scikit-Learn (LinearRegression)"]
       ML --> PRED["predicciones.json"]
       PY --> MAP["city_locations.json"]
-      PRED & MAP & CSV --> UI["Dashboard Web\n(Chart.js + Leaflet)"]
+      PRED --> UI["Dashboard Web (Chart.js + Leaflet)"]
+      MAP --> UI
+      CSV --> UI
 
 tech:
   - layer: frontend

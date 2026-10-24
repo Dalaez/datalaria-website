@@ -57,7 +57,7 @@ flowchart TD
     subgraph ETL["2. Ingesta y Modelado Predictivo (apps/weather/)"]
         PY -->|"GET /weather"| OWM_CURRENT["OpenWeatherMap API\n(Tiempo Actual)"]
         PY -->|"GET /forecast"| OWM_FORECAST["OpenWeatherMap API\n(Pronóstico 5 Días)"]
-        PY -->|"Actualiza CSVs"| DATA_CSV["datos/<Ciudad>.csv\n(15 variables)"]
+        PY -->|"Actualiza CSVs"| DATA_CSV["datos/ciudades_csv\n(15 variables)"]
         DATA_CSV -->|"Entrena Regresión Lineal"| ML["Scikit-Learn\nLinearRegression (lag-1 + día año)"]
         ML -->|"Exporta pronósticos"| PRED["predicciones.json"]
         PY -->|"Exporta mapa"| MAP_JSON["city_locations.json"]
