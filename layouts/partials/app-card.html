@@ -1,0 +1,123 @@
+{{- /*
+  Partial: app-card.html
+  Renders an application card for the /apps/ list showcase.
+  Context: dict "app" $app "cxt" $
+*/ -}}
+{{- $app := .app -}}
+{{- $cxt := .cxt -}}
+{{- $lang := $cxt.Site.Language.Lang | default "es" -}}
+
+{{- /* Resolve localized title, tagline and status */ -}}
+{{- $title := "" -}}
+{{- if reflect.IsMap $app.title -}}
+  {{- $title = index $app.title $lang | default $app.title.es | default $app.slug -}}
+{{- else -}}
+  {{- $title = $app.title | default $app.slug -}}
+{{- end -}}
+
+{{- $tagline := "" -}}
+{{- if reflect.IsMap $app.tagline -}}
+  {{- $tagline = index $app.tagline $lang | default $app.tagline.es | default "" -}}
+{{- else -}}
+  {{- $tagline = $app.tagline | default "" -}}
+{{- end -}}
+
+{{- $status := $app.status | default "live" -}}
+{{- $statusLabel := "Live" -}}
+{{- if eq $status "live" -}}
+  {{- $statusLabel = cond (eq $lang "es") "En Producción" "Live" -}}
+{{- else if eq $status "beta" -}}
+  {{- $statusLabel = "Beta" -}}
+{{- else if eq $status "frozen" -}}
+  {{- $statusLabel = cond (eq $lang "es") "Legacy" "Legacy" -}}
+{{- else if eq $status "maintenance" -}}
+  {{- $statusLabel = cond (eq $lang "es") "Mantenimiento" "Maintenance" -}}
+{{- end -}}
+
+{{- /* Check if dedicated page (ficha) exists for this app */ -}}
+{{- $appPage := $cxt.Site.GetPage (printf "apps/%s" $app.slug) -}}
+{{- $hasFicha := ne $appPage nil -}}
+{{- $targetUrl := $app.app_url -}}
+{{- if $hasFicha -}}
+  {{- $targetUrl = $appPage.RelPermalink -}}
+{{- end -}}
+
+<article class="app-card-v2" data-tier="{{ $app.tier }}" data-status="{{ $status }}">
+  <div class="app-card-media">
+    {{- $coverImg := false -}}
+    {{- if and $hasFicha $app.cover -}}
+      {{- $coverImg = $appPage.Resources.GetMatch $app.cover -}}
+    {{- end -}}
+
+    {{- if $coverImg -}}
+      {{- $thumb := $coverImg.Fill "800x500 webp" -}}
+      <img class="app-card-thumb" src="{{ $thumb.RelPermalink }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}" alt="{{ $title }}" loading="lazy" />
+    {{- else -}}
+      <div class="app-card-placeholder">
+        <span class="app-card-icon">{{ $app.icon | default "💻" }}</span>
+      </div>
+    {{- end -}}
+
+    <div class="app-card-badges">
+      <span class="app-badge app-badge-status app-badge-{{ $status }}">{{ $statusLabel }}</span>
+      {{- with $app.current_version -}}
+      <span class="app-badge app-badge-version">{{ . }}</span>
+      {{- end -}}
+    </div>
+  </div>
+
+  <div class="app-card-body">
+    <h3 class="app-card-title">
+      <a href="{{ $targetUrl }}">{{ $title }}</a>
+    </h3>
+    <p class="app-card-tagline">{{ $tagline }}</p>
+
+    {{- /* Tech stack chips (up to 4 items) */ -}}
+    {{- $techItems := slice -}}
+    {{- with $app.tech -}}
+      {{- range . -}}
+        {{- range .items -}}
+          {{- if lt (len $techItems) 4 -}}
+            {{- $techItems = $techItems | append . -}}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+
+    {{- if gt (len $techItems) 0 -}}
+    <div class="app-card-tech-chips">
+      {{- range $techItems -}}
+      <span class="app-tech-chip">{{ . }}</span>
+      {{- end -}}
+    </div>
+    {{- end -}}
+  </div>
+
+  <div class="app-card-footer">
+    {{- if $hasFicha -}}
+      <a href="{{ $appPage.RelPermalink }}" class="app-card-btn app-card-btn-primary">
+        {{- cond (eq $lang "es") "Ver Ficha & Evolución →" "View Details & Evolution →" -}}
+      </a>
+      {{- if $app.app_url -}}
+      <a href="{{ $app.app_url }}" class="app-card-btn app-card-btn-outline" target="_blank" rel="noopener">
+        {{- cond (eq $lang "es") "Abrir App ↗" "Open App ↗" -}}
+      </a>
+      {{- end -}}
+    {{- else -}}
+      {{- if $app.app_url -}}
+      <a href="{{ $app.app_url }}" class="app-card-btn app-card-btn-primary" target="_blank" rel="noopener">
+        {{- cond (eq $lang "es") "Abrir App ↗" "Open App ↗" -}}
+      </a>
+      {{- end -}}
+      {{- with $app.post_slug -}}
+        {{- $postPage := $cxt.Site.GetPage (printf "/posts/%s" .) -}}
+        {{- if $postPage -}}
+        <a href="{{ $postPage.RelPermalink }}" class="app-card-btn app-card-btn-outline">
+          {{- cond (eq $lang "es") "Leer Post" "Read Post" -}}
+        </a>
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  </div>
+  <a class="entry-link" aria-label="{{ $title }}" href="{{ $targetUrl }}"></a>
+</article>

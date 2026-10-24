@@ -7,9 +7,9 @@
 
 ## 📍 ESTADO ACTUAL DEL PROYECTO (PUNTERO DE SESIÓN)
 
-- **Fase Activa:** `FASE 1 — Extracción SDD de LifeOps & Sistema de Fichas de Apps` ➔ **En progreso (Hito 1.1 y Hito 1.2 completados ✅, listos para Hito 1.3)**
-- **Último Checkpoint Verificado:** `Hito 1.2 — Aislamiento Limpio, Fix de Seguridad y Verificación de LifeOps (apps/lifeops/)` (Completado el 2026-10-24 ✅).
-- **Próximo Hito:** `Hito 1.3 — Infraestructura del Portal para Fichas de Apps (layouts/apps/, layouts/partials/app-card.html, shortcode app-ref)`
+- **Fase Activa:** `FASE 1 — Extracción SDD de LifeOps & Sistema de Fichas de Apps` ➔ **En progreso (Hitos 1.1, 1.2 y 1.3 completados ✅, listos para Hito 1.4)**
+- **Último Checkpoint Verificado:** `Hito 1.3 — Infraestructura del Portal para Fichas de Apps (layouts/apps/, partials/app-card.html, shortcode app-ref, CSS)` (Completado el 2026-10-24 ✅).
+- **Próximo Hito:** `Hito 1.4 — Despliegue de Ficha de LifeOps (data/apps/lifeops.yaml, content/{es,en}/apps/lifeops/) y Actualización de Posts`
 
 ---
 
@@ -78,14 +78,14 @@ Tras auditar todos los artículos de `/content/es/posts/` y `/content/en/posts/`
     6. Actualizar `rootDir` en `render.yaml`.
   - *Gate de Verificación:* `npm run lint` pasa con 0 errores; `npm run build:portal` compila en 54s a `static/apps/lifeops/`; `pytest` pasa 6/6 tests (100%); `hugo --renderToMemory` compila 2077 páginas con código 0. (Completado el 2026-10-24 ✅).
 
-- [ ] **Hito 1.3: Infraestructura del Portal para Fichas de Apps (`apps-showcase`)**
+- [x] **Hito 1.3: Infraestructura del Portal para Fichas de Apps (`apps-showcase`)**
   - *Acción:*
     1. Implementar `layouts/apps/list.html` con soporte de tarjetas visuales (`partials/app-card.html`) agrupadas por tier (`flagship`, `b2b`, `lab`).
     2. Implementar `layouts/apps/single.html` con las 8 secciones de detalle (Hero, Objetivos, Features, Diseño, Tecnologías, Posts relacionados, Changelog evolutivo, CTA).
     3. Implementar shortcode `layouts/shortcodes/app-ref.html`.
-    4. Estilos en `static/css/apps-showcase.css` basados en tokens de PaperMod.
+    4. Estilos en `assets/css/extended/apps-showcase.css` basados en tokens de PaperMod.
     5. Validaciones automáticas en tiempo de build (`errorf` ante campos requeridos o posts inexistentes).
-  - *Gate de Verificación:* `hugo --gc --minify` pasa con código 0; el listado `/es/apps/` y `/en/apps/` compila limpiamente.
+  - *Gate de Verificación:* `hugo --renderToMemory` compila las 2077 páginas con código 0 en 29.9s; el listado `/es/apps/` y `/en/apps/` compila limpiamente agrupando las 7 apps en sus respectivos tiers. (Completado el 2026-10-24 ✅).
 
 - [ ] **Hito 1.4: Despliegue de Ficha de LifeOps y Actualización de Posts**
   - *Acción:*

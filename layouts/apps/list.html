@@ -1,0 +1,193 @@
+{{- define "main" }}
+
+{{- $lang := .Site.Language.Lang | default "es" -}}
+
+<header class="page-header">
+  {{- partial "breadcrumbs.html" . }}
+  <h1 class="page-title">{{ .Title }}</h1>
+  {{- with .Description }}
+  <div class="post-description">
+    {{ . | markdownify }}
+  </div>
+  {{- end }}
+</header>
+
+{{- if .Content }}
+<div class="post-content app-intro-content">
+  {{ .Content }}
+</div>
+{{- end }}
+
+{{- /*
+  Collect all apps:
+  Priority 1: Load from site.Data.apps (Source of truth SDD)
+  Priority 2: Transitional fallback for the 7 active apps if not yet migrated to data/apps/<slug>.yaml
+*/ -}}
+
+{{- $dataApps := site.Data.apps | default dict -}}
+
+{{- /* Baseline catalogue of the 7 active apps */ -}}
+{{- $baselineCatalogue := slice
+  (dict 
+    "slug" "lifeops" 
+    "order" 10 
+    "tier" "flagship" 
+    "status" "live" 
+    "icon" "🚀" 
+    "app_url" "/apps/lifeops/" 
+    "demo_url" "/apps/lifeops/#/?mock=true" 
+    "current_version" "v1.0.0" 
+    "title" (dict "es" "LifeOps" "en" "LifeOps") 
+    "tagline" (dict "es" "Sistema operativo integral personal y profesional: deporte, lecturas, cine, tablero Kanban y proyectos." "en" "All-in-one personal & professional OS: fitness tracking, book library, movies, Kanban tasks and projects.")
+    "tech" (slice 
+      (dict "layer" "frontend" "items" (slice "React 19" "Vite 8")) 
+      (dict "layer" "backend" "items" (slice "FastAPI" "Supabase"))
+    )
+    "post_slug" "app-lifeops_part1_arquitectura_backend"
+  )
+  (dict 
+    "slug" "obs-management" 
+    "order" 20 
+    "tier" "b2b" 
+    "status" "live" 
+    "icon" "📡" 
+    "app_url" "/apps/obs-management/" 
+    "current_version" "v1.0.0" 
+    "title" (dict "es" "Radar de Obsolescencia" "en" "Agentic Radar") 
+    "tagline" (dict "es" "Dashboard Ejecutivo impulsado por IA para la mitigación del riesgo en la cadena de suministro." "en" "AI-powered Executive Dashboard for 24/7 supply chain risk mitigation.")
+    "tech" (slice 
+      (dict "layer" "frontend" "items" (slice "React" "Tailwind")) 
+      (dict "layer" "backend" "items" (slice "CrewAI" "FastAPI"))
+    )
+    "post_slug" "obs_parte1_intro"
+  )
+  (dict 
+    "slug" "weather" 
+    "order" 30 
+    "tier" "flagship" 
+    "status" "live" 
+    "icon" "🌤️" 
+    "app_url" "/apps/weather/" 
+    "current_version" "v1.0.0" 
+    "title" (dict "es" "El Tiempo" "en" "Weather") 
+    "tagline" (dict "es" "Consulta la previsión meteorológica detallada y en tiempo real con datos de OpenWeather." "en" "Check detailed real-time weather forecast powered by OpenWeather.")
+    "tech" (slice 
+      (dict "layer" "frontend" "items" (slice "React" "Chart.js")) 
+      (dict "layer" "api" "items" (slice "OpenWeather API"))
+    )
+    "post_slug" "app-openweather_part1_arquitectura"
+  )
+  (dict 
+    "slug" "snake" 
+    "order" 40 
+    "tier" "lab" 
+    "status" "frozen" 
+    "icon" "🐍" 
+    "app_url" "/games/snake/" 
+    "current_version" "v1.0.0" 
+    "title" (dict "es" "Neon Snake" "en" "Neon Snake") 
+    "tagline" (dict "es" "Versión Cyberpunk del clásico Snake con ranking global en tiempo real y audio retro-sintetizado." "en" "Cyberpunk version of the classic Snake with real-time global leaderboard and synthesized audio.")
+    "tech" (slice 
+      (dict "layer" "engine" "items" (slice "HTML5 Canvas" "Web Audio API" "Supabase"))
+    )
+    "post_slug" "game_snake"
+  )
+  (dict 
+    "slug" "flashcards" 
+    "order" 50 
+    "tier" "lab" 
+    "status" "frozen" 
+    "icon" "🎴" 
+    "app_url" "/apps/flashcards/" 
+    "current_version" "v1.0.0" 
+    "title" (dict "es" "Flashcards" "en" "Flashcards") 
+    "tagline" (dict "es" "Aplicación interactiva para estudiar y memorizar conceptos usando tarjetas de memoria." "en" "Interactive study application to memorize concepts using flashcards.")
+    "tech" (slice 
+      (dict "layer" "engine" "items" (slice "Vanilla JS" "Gemini API"))
+    )
+    "post_slug" "app_flashcards"
+  )
+  (dict 
+    "slug" "conversor" 
+    "order" 60 
+    "tier" "lab" 
+    "status" "frozen" 
+    "icon" "🔄" 
+    "app_url" "/apps/conversor/" 
+    "current_version" "v1.0.0" 
+    "title" (dict "es" "Conversor de Unidades" "en" "Unit Converter") 
+    "tagline" (dict "es" "Una herramienta sencilla y rápida para convertir entre diferentes unidades de medida." "en" "A simple and fast tool to convert between different units of measurement.")
+    "tech" (slice 
+      (dict "layer" "engine" "items" (slice "Vanilla JS" "CSS Grid"))
+    )
+    "post_slug" "app_conversor_unidades"
+  )
+  (dict 
+    "slug" "maths" 
+    "order" 70 
+    "tier" "lab" 
+    "status" "frozen" 
+    "icon" "🧮" 
+    "app_url" "/apps/maths/" 
+    "current_version" "v1.0.0" 
+    "title" (dict "es" "Matemáticas" "en" "Maths") 
+    "tagline" (dict "es" "Ejercicios matemáticos interactivos y herramientas de cálculo para practicar." "en" "Interactive math exercises and calculation tools for practice.")
+    "tech" (slice 
+      (dict "layer" "engine" "items" (slice "Vanilla JS" "HTML5"))
+    )
+    "post_slug" "founderz-programando-chatGPT"
+  )
+-}}
+
+{{- /* Merge data: If app exists in site.Data.apps, override baseline with the YAML data */ -}}
+{{- $allAppsMap := dict -}}
+{{- range $item := $baselineCatalogue -}}
+  {{- $slug := $item.slug -}}
+  {{- $appData := index $dataApps $slug | default $item -}}
+  {{- $allAppsMap = merge $allAppsMap (dict $slug $appData) -}}
+{{- end -}}
+
+{{- /* Also include any additional YAMLs from data/apps not in baseline (excluding incubating) */ -}}
+{{- range $slug, $appData := $dataApps -}}
+  {{- if not (index $allAppsMap $slug) -}}
+    {{- $allAppsMap = merge $allAppsMap (dict $slug $appData) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* Convert map to sorted slice by 'order' */ -}}
+{{- $appsList := slice -}}
+{{- range $slug, $app := $allAppsMap -}}
+  {{- if ne $app.status "incubating" -}}
+    {{- $appsList = $appsList | append $app -}}
+  {{- end -}}
+{{- end -}}
+{{- $appsList = sort $appsList "order" "asc" -}}
+
+{{- /* Group into tiers */ -}}
+{{- $tiers := slice
+  (dict "id" "flagship" "title_es" "Apps Destacadas" "title_en" "Flagship Applications" "desc_es" "Aplicaciones full-stack completas, con backend activo y módulos avanzados." "desc_en" "Full-stack production applications with cloud backends and modular architectures.")
+  (dict "id" "b2b" "title_es" "Suites B2B & Inteligencia Operacional" "title_en" "B2B Suites & Operational Intelligence" "desc_es" "Dashboards ejecutivos y herramientas de análisis cuantitativo para la toma de decisiones." "desc_en" "Executive dashboards and quantitative decision-making frameworks.")
+  (dict "id" "lab" "title_es" "Laboratorio & Arcade" "title_en" "Lab & Arcade" "desc_es" "Experimentos interactivos, utilidades rápidas y juegos para explorar la tecnología." "desc_en" "Interactive experiments, quick utilities, and arcade games exploring browser capabilities.")
+-}}
+
+<div class="apps-showcase-container">
+  {{- range $tier := $tiers -}}
+    {{- $tierApps := where $appsList "tier" $tier.id -}}
+    {{- if gt (len $tierApps) 0 -}}
+    <section class="app-tier-section" id="tier-{{ $tier.id }}">
+      <div class="app-tier-header">
+        <h2 class="app-tier-title">{{ if eq $lang "es" }}{{ $tier.title_es }}{{ else }}{{ $tier.title_en }}{{ end }}</h2>
+        <p class="app-tier-desc">{{ if eq $lang "es" }}{{ $tier.desc_es }}{{ else }}{{ $tier.desc_en }}{{ end }}</p>
+      </div>
+
+      <div class="app-showcase-grid">
+        {{- range $tierApps -}}
+          {{- partial "app-card.html" (dict "app" . "cxt" $) -}}
+        {{- end -}}
+      </div>
+    </section>
+    {{- end -}}
+  {{- end -}}
+</div>
+
+{{- end }}

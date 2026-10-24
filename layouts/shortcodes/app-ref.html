@@ -1,0 +1,66 @@
+{{- /*
+  Shortcode: app-ref.html
+  Usage: {{< app-ref slug="lifeops" >}}
+  Displays a rich inline callout linking to the dedicated app showcase page and the live app.
+*/ -}}
+{{- $slug := .Get "slug" | default (.Get 0) -}}
+{{- $lang := .Page.Site.Language.Lang | default "es" -}}
+
+{{- $app := index .Page.Site.Data.apps $slug -}}
+
+{{- if $app -}}
+  {{- $title := index $app.title $lang | default $app.title.es | default $slug -}}
+  {{- $tagline := index $app.tagline $lang | default $app.tagline.es | default "" -}}
+  {{- $appPage := .Page.Site.GetPage (printf "apps/%s" $slug) -}}
+
+  <div class="app-ref-box">
+    <div class="app-ref-header">
+      <div class="app-ref-identity">
+        <span class="app-ref-icon">{{ $app.icon | default "🚀" }}</span>
+        <div class="app-ref-title-group">
+          <span class="app-ref-label">{{ cond (eq $lang "es") "Aplicación Oficial Datalaria" "Official Datalaria Application" }}</span>
+          <h4 class="app-ref-title">{{ $title }}</h4>
+        </div>
+      </div>
+      <div class="app-ref-badges">
+        {{- with $app.current_version -}}
+        <span class="app-badge app-badge-version">{{ . }}</span>
+        {{- end -}}
+      </div>
+    </div>
+
+    {{- with $tagline -}}
+    <p class="app-ref-tagline">{{ . }}</p>
+    {{- end -}}
+
+    <div class="app-ref-actions">
+      {{- if $appPage -}}
+      <a href="{{ $appPage.RelPermalink }}" class="app-btn app-btn-primary">
+        {{- cond (eq $lang "es") "Ver Ficha de la App & Evolución →" "View App Details & Evolution →" -}}
+      </a>
+      {{- end -}}
+      {{- if $app.app_url -}}
+      <a href="{{ $app.app_url }}" class="app-btn app-btn-outline" target="_blank" rel="noopener">
+        {{- cond (eq $lang "es") "Abrir App en Vivo ↗" "Open Live App ↗" -}}
+      </a>
+      {{- end -}}
+      {{- with $app.demo_url -}}
+      <a href="{{ . }}" class="app-btn app-btn-demo" target="_blank" rel="noopener">
+        {{- cond (eq $lang "es") "Probar Demo 🚀" "Try Demo 🚀" -}}
+      </a>
+      {{- end -}}
+    </div>
+  </div>
+{{- else -}}
+  {{- /* Fallback if data/apps/<slug>.yaml does not exist yet */ -}}
+  <div class="app-ref-box app-ref-fallback">
+    <span class="app-ref-icon">🚀</span>
+    <div class="app-ref-body">
+      <strong>App: {{ $slug }}</strong>
+      <p>{{ cond (eq $lang "es") "Accede a la aplicación interactiva en el portal." "Access the interactive application on the portal." }}</p>
+      <a href="/apps/{{ $slug }}/" class="app-btn app-btn-primary" target="_blank" rel="noopener">
+        {{- cond (eq $lang "es") "Abrir App ↗" "Open App ↗" -}}
+      </a>
+    </div>
+  </div>
+{{- end -}}

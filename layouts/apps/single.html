@@ -1,0 +1,367 @@
+{{- define "main" }}
+
+{{- $lang := .Site.Language.Lang | default "es" -}}
+{{- $slug := .Params.app | default .File.TranslationBaseName -}}
+{{- $app := index site.Data.apps $slug -}}
+
+{{- /* Build-time Validations (Constitution Art. 8 & Showcase Spec §3.1) */ -}}
+{{- if not $app -}}
+  {{- errorf "Apps Showcase: Missing data/apps/%s.yaml for page %s" $slug .File.Path -}}
+{{- end -}}
+
+{{- $requiredFields := slice "slug" "order" "tier" "status" "cover" "app_url" "source_spec" "current_version" "title" "tagline" "summary" "objectives" "design" "tech" "posts" "releases" -}}
+{{- range $field := $requiredFields -}}
+  {{- if not (index $app $field) -}}
+    {{- errorf "Apps Showcase: data/apps/%s.yaml is missing required field '%s'" $slug $field -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $firstReleasedVersion := "" -}}
+{{- range $app.releases -}}
+  {{- if and (eq .state "released") (eq $firstReleasedVersion "") -}}
+    {{- $firstReleasedVersion = .version -}}
+  {{- end -}}
+{{- end -}}
+{{- if and $firstReleasedVersion (ne $app.current_version $firstReleasedVersion) -}}
+  {{- errorf "Apps Showcase: data/apps/%s.yaml current_version '%s' does not match first released release '%s'" $slug $app.current_version $firstReleasedVersion -}}
+{{- end -}}
+
+{{- /* Resolve localized strings */ -}}
+{{- $title := index $app.title $lang | default $app.title.es | default $app.slug -}}
+{{- $tagline := index $app.tagline $lang | default $app.tagline.es | default "" -}}
+{{- $summary := index $app.summary $lang | default $app.summary.es | default "" -}}
+
+<article class="app-single-container">
+  {{- partial "breadcrumbs.html" . }}
+
+  {{- /* ============================================================ */ -}}
+  {{- /* SECCIÓN 1: HERO                                              */ -}}
+  {{- /* ============================================================ */ -}}
+  <header class="app-hero-section">
+    <div class="app-hero-header">
+      <div class="app-hero-badges">
+        <span class="app-badge app-badge-status app-badge-{{ $app.status }}">
+          {{- if eq $app.status "live" -}}
+            {{- cond (eq $lang "es") "En Producción" "Live" -}}
+          {{- else if eq $app.status "beta" -}}
+            Beta
+          {{- else if eq $app.status "frozen" -}}
+            Legacy
+          {{- else -}}
+            {{ $app.status }}
+          {{- end -}}
+        </span>
+        <span class="app-badge app-badge-version">{{ $app.current_version }}</span>
+        <span class="app-badge app-badge-tier">
+          {{- if eq $app.tier "flagship" -}}
+            {{- cond (eq $lang "es") "App Destacada" "Flagship App" -}}
+          {{- else if eq $app.tier "b2b" -}}
+            {{- cond (eq $lang "es") "Suite B2B" "B2B Suite" -}}
+          {{- else -}}
+            {{- cond (eq $lang "es") "Laboratorio" "Lab" -}}
+          {{- end -}}
+        </span>
+      </div>
+
+      <h1 class="app-hero-title">{{ $title }}</h1>
+      <p class="app-hero-tagline">{{ $tagline }}</p>
+      
+      {{- with $summary -}}
+      <p class="app-hero-summary">{{ . }}</p>
+      {{- end -}}
+
+      <div class="app-hero-actions">
+        {{- if $app.app_url -}}
+        <a href="{{ $app.app_url }}" class="app-btn app-btn-primary" target="_blank" rel="noopener">
+          {{- cond (eq $lang "es") "Abrir App en Vivo ↗" "Open Live App ↗" -}}
+        </a>
+        {{- end -}}
+
+        {{- with $app.demo_url -}}
+        <a href="{{ . }}" class="app-btn app-btn-demo" target="_blank" rel="noopener">
+          {{- cond (eq $lang "es") "Probar Modo Demo 🚀" "Try Interactive Demo 🚀" -}}
+        </a>
+        {{- end -}}
+
+        {{- if gt (len $app.posts) 0 -}}
+        <a href="#articulos-referencia" class="app-btn app-btn-outline">
+          {{- cond (eq $lang "es") "Ver Artículos de la Serie ↓" "View Series Articles ↓" -}}
+        </a>
+        {{- end -}}
+      </div>
+    </div>
+
+    {{- /* Cover Image */ -}}
+    {{- $coverImg := .Resources.GetMatch $app.cover -}}
+    {{- if $coverImg -}}
+      {{- $heroImg := $coverImg.Resize "1200x" -}}
+      <div class="app-hero-media">
+        <img src="{{ $heroImg.RelPermalink }}" width="{{ $heroImg.Width }}" height="{{ $heroImg.Height }}" alt="{{ $title }}" class="app-hero-image" />
+      </div>
+    {{- end -}}
+  </header>
+
+  {{- /* ============================================================ */ -}}
+  {{- /* SECCIÓN 2: OBJETIVOS                                         */ -}}
+  {{- /* ============================================================ */ -}}
+  {{- with $app.objectives -}}
+  <section class="app-detail-section" id="objetivos">
+    <h2 class="app-section-title">
+      <span class="app-section-icon">🎯</span>
+      {{- cond (eq $lang "es") "Objetivos del Sistema" "System Objectives" -}}
+    </h2>
+    <div class="app-objectives-grid">
+      {{- range . -}}
+      {{- $objText := index . $lang | default .es -}}
+      <div class="app-objective-item">
+        <span class="app-check-icon">✓</span>
+        <p>{{ $objText }}</p>
+      </div>
+      {{- end -}}
+    </div>
+  </section>
+  {{- end -}}
+
+  {{- /* ============================================================ */ -}}
+  {{- /* SECCIÓN 3: CAPACIDADES / FEATURES                            */ -}}
+  {{- /* ============================================================ */ -}}
+  {{- with $app.features -}}
+  <section class="app-detail-section" id="capacidades">
+    <h2 class="app-section-title">
+      <span class="app-section-icon">⚡</span>
+      {{- cond (eq $lang "es") "Capacidades Principales" "Key Capabilities & Modules" -}}
+    </h2>
+    <div class="app-features-grid">
+      {{- range . -}}
+      {{- $featText := index . $lang | default .es -}}
+      <div class="app-feature-card">
+        <span class="app-feature-icon">{{ .icon | default "✨" }}</span>
+        <p class="app-feature-text">{{ $featText }}</p>
+      </div>
+      {{- end -}}
+    </div>
+  </section>
+  {{- end -}}
+
+  {{- /* ============================================================ */ -}}
+  {{- /* SECCIÓN 4: ESPECIFICACIONES DE DISEÑO & ARQUITECTURA        */ -}}
+  {{- /* ============================================================ */ -}}
+  {{- with $app.design -}}
+  <section class="app-detail-section" id="diseno-arquitectura">
+    <h2 class="app-section-title">
+      <span class="app-section-icon">📐</span>
+      {{- cond (eq $lang "es") "Arquitectura y Especificaciones de Diseño" "Architecture & Design Specifications" -}}
+    </h2>
+
+    {{- with .architecture -}}
+    {{- $archText := index . $lang | default .es -}}
+    <div class="app-architecture-summary">
+      <p>{{ $archText }}</p>
+    </div>
+    {{- end -}}
+
+    {{- with .diagram -}}
+    <div class="app-architecture-diagram">
+      <div class="mermaid-container" style="text-align: center; margin: 25px 0; cursor: zoom-in; max-width: 100%;">
+        <div class="mermaid">
+          {{ . | safeHTML }}
+        </div>
+        <p class="app-diagram-hint">
+          🔍 <em>{{ if eq $lang "es" }}Haz clic en el diagrama para ampliar a pantalla completa{{ else }}Click diagram to enlarge to fullscreen{{ end }}</em>
+        </p>
+      </div>
+    </div>
+    {{- end -}}
+
+    {{- with .principles -}}
+    <div class="app-principles-block">
+      <h3 class="app-principles-title">{{ cond (eq $lang "es") "Principios Arquitectónicos Invariantes:" "Invariant Architectural Principles:" }}</h3>
+      <ul class="app-principles-list">
+        {{- range . -}}
+        {{- $prText := index . $lang | default .es -}}
+        <li>{{ $prText }}</li>
+        {{- end -}}
+      </ul>
+    </div>
+    {{- end -}}
+  </section>
+  {{- end -}}
+
+  {{- /* ============================================================ */ -}}
+  {{- /* SECCIÓN 5: STACK TECNOLÓGICO                                 */ -}}
+  {{- /* ============================================================ */ -}}
+  {{- with $app.tech -}}
+  <section class="app-detail-section" id="stack-tecnologico">
+    <h2 class="app-section-title">
+      <span class="app-section-icon">🛠️</span>
+      {{- cond (eq $lang "es") "Stack Tecnológico" "Technology Stack" -}}
+    </h2>
+    <div class="app-tech-layers-grid">
+      {{- range . -}}
+      <div class="app-tech-layer-card">
+        <h4 class="app-tech-layer-name">{{ .layer | upper }}</h4>
+        <div class="app-tech-chips">
+          {{- range .items -}}
+          <span class="app-tech-chip">{{ . }}</span>
+          {{- end -}}
+        </div>
+      </div>
+      {{- end -}}
+    </div>
+  </section>
+  {{- end -}}
+
+  {{- /* ============================================================ */ -}}
+  {{- /* SECCIÓN 6: ARTÍCULOS DE REFERENCIA (Invariante App <=> Post) */ -}}
+  {{- /* ============================================================ */ -}}
+  {{- with $app.posts -}}
+  <section class="app-detail-section" id="articulos-referencia">
+    <h2 class="app-section-title">
+      <span class="app-section-icon">📚</span>
+      {{- cond (eq $lang "es") "Artículos de Referencia & Documentación de Construcción" "Reference Articles & Architecture Series" -}}
+    </h2>
+    <p class="app-section-subtitle">
+      {{- cond (eq $lang "es") "Esta aplicación está respaldada por una serie técnica publicada paso a paso en el blog:" "This application is fully documented in an engineering series published on the blog:" -}}
+    </p>
+
+    <div class="app-posts-grid">
+      {{- range . -}}
+        {{- $postSlug := .slug -}}
+        {{- $partNum := .part -}}
+        {{- $postPage := site.GetPage (printf "/posts/%s" $postSlug) -}}
+        
+        {{- if not $postPage -}}
+          {{- errorf "Apps Showcase: Invariant App <=> Post broken: post '%s' referenced in data/apps/%s.yaml does not resolve to an existing page in language '%s'" $postSlug $slug $lang -}}
+        {{- end -}}
+
+        <div class="app-post-card">
+          {{- $postCover := "" -}}
+          {{- if $postPage.Params.cover.image -}}
+            {{- $postCover = $postPage.Resources.GetMatch $postPage.Params.cover.image -}}
+          {{- end -}}
+          {{- if not $postCover -}}
+            {{- $postCover = $postPage.Resources.GetMatch "**{cover,feature,thumbnail}.{png,jpg,jpeg,webp,gif}" -}}
+          {{- end -}}
+
+          {{- if $postCover -}}
+            {{- $thumb := $postCover.Resize "480x" -}}
+            <div class="app-post-thumb-wrapper">
+              <img src="{{ $thumb.RelPermalink }}" alt="{{ $postPage.Title }}" loading="lazy" class="app-post-thumb" />
+            </div>
+          {{- end -}}
+
+          <div class="app-post-card-content">
+            {{- with $partNum -}}
+            <span class="app-post-part-badge">{{ cond (eq $lang "es") "Parte" "Part" }} {{ . }}</span>
+            {{- end -}}
+            <h3 class="app-post-title">
+              <a href="{{ $postPage.RelPermalink }}">{{ $postPage.Title }}</a>
+            </h3>
+            <p class="app-post-summary">{{ $postPage.Summary | plainify | htmlUnescape | truncate 130 }}</p>
+            <a href="{{ $postPage.RelPermalink }}" class="app-post-link">
+              {{- cond (eq $lang "es") "Leer artículo completo →" "Read full article →" -}}
+            </a>
+          </div>
+        </div>
+      {{- end -}}
+    </div>
+  </section>
+  {{- end -}}
+
+  {{- /* ============================================================ */ -}}
+  {{- /* SECCIÓN 7: HISTORIAL EVOLUTIVO & VERSIONES (SemVer)          */ -}}
+  {{- /* ============================================================ */ -}}
+  {{- with $app.releases -}}
+  <section class="app-detail-section" id="historial-evolutivo">
+    <h2 class="app-section-title">
+      <span class="app-section-icon">⏱️</span>
+      {{- cond (eq $lang "es") "Historial Evolutivo & Versiones (SemVer)" "Evolutionary History & Versions (SemVer)" -}}
+    </h2>
+    <p class="app-section-subtitle">
+      {{- cond (eq $lang "es") "Registro formal de entregas, características y revisiones de seguridad:" "Formal record of releases, feature additions, and security patches:" -}}
+    </p>
+
+    <div class="app-timeline">
+      {{- range . -}}
+      {{- $relTitle := index .title $lang | default .title.es | default "" -}}
+      <div class="app-timeline-node state-{{ .state }}">
+        <div class="app-timeline-marker"></div>
+        <div class="app-timeline-card">
+          <div class="app-timeline-header">
+            <div class="app-timeline-meta">
+              <span class="app-version-tag">{{ .version }}</span>
+              <span class="app-release-date">{{ .date }}</span>
+              <span class="app-release-type type-{{ .type }}">{{ .type | upper }}</span>
+              {{- if eq .state "planned" -}}
+              <span class="app-release-state planned">{{ cond (eq $lang "es") "Planificado" "Planned" }}</span>
+              {{- end -}}
+            </div>
+            <h3 class="app-timeline-title">{{ $relTitle }}</h3>
+          </div>
+
+          {{- with .changes -}}
+          <ul class="app-timeline-changes">
+            {{- range . -}}
+            {{- $chText := index . $lang | default .es -}}
+            <li>{{ $chText }}</li>
+            {{- end -}}
+          </ul>
+          {{- end -}}
+        </div>
+      </div>
+      {{- end -}}
+    </div>
+  </section>
+  {{- end -}}
+
+  {{- /* ============================================================ */ -}}
+  {{- /* SECCIÓN 8: CTA & MONETIZACIÓN DUAL-MODE                      */ -}}
+  {{- /* ============================================================ */ -}}
+  <section class="app-detail-section app-cta-section" id="cta">
+    {{- if gt (len $app.related_products) 0 -}}
+      <h2 class="app-section-title">
+        <span class="app-section-icon">💼</span>
+        {{- cond (eq $lang "es") "Packs Profesionales Relacionados" "Related Professional Packs" -}}
+      </h2>
+      <div class="app-products-grid">
+        {{- range $app.related_products -}}
+          {{- /* Reutiliza integración Lemon Squeezy existente */ -}}
+          <div class="app-product-card">
+            <h4>{{ .name }}</h4>
+            <p>{{ .description }}</p>
+            <a href="{{ .checkout_url }}" class="app-btn app-btn-primary lemonsqueezy-button" data-product-name="{{ .name }}">
+              {{- cond (eq $lang "es") "Obtener Pack" "Get Pack" -}}
+            </a>
+          </div>
+        {{- end -}}
+      </div>
+    {{- else -}}
+      <div class="app-cta-banner">
+        <h3>{{ cond (eq $lang "es") "¿Quieres implementar este sistema en tu organización o aprender más?" "¿Want to deploy this architecture or explore custom solutions?" }}</h3>
+        <p>{{ cond (eq $lang "es") "Suscríbete a la newsletter mensual de Datalaria para recibir el código fuente, análisis arquitectónicos y nuevos demostradores." "Subscribe to Datalaria's newsletter to receive full source code, architectural breakdowns, and new system releases." }}</p>
+        <div class="app-cta-buttons">
+          {{- if $app.app_url -}}
+          <a href="{{ $app.app_url }}" class="app-btn app-btn-primary" target="_blank" rel="noopener">
+            {{- cond (eq $lang "es") "Usar la Aplicación Ahora ↗" "Launch Application ↗" -}}
+          </a>
+          {{- end -}}
+          {{- with $app.demo_url -}}
+          <a href="{{ . }}" class="app-btn app-btn-demo" target="_blank" rel="noopener">
+            {{- cond (eq $lang "es") "Explorar Demo Interactiva 🚀" "Try Interactive Demo 🚀" -}}
+          </a>
+          {{- end -}}
+        </div>
+      </div>
+    {{- end -}}
+  </section>
+
+  {{- /* Optional custom markdown content from page body */ -}}
+  {{- with .Content -}}
+  <div class="post-content app-page-custom-content">
+    {{ . }}
+  </div>
+  {{- end -}}
+
+</article>
+
+{{- end }}

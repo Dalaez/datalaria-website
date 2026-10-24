@@ -1,0 +1,781 @@
+/* ==========================================================================
+   Apps Showcase & Dedicated Single Page Styles (Datalaria SDD)
+   Integrated seamlessly with PaperMod Theme variables
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Showcase Catalog List (/apps/)
+   -------------------------------------------------------------------------- */
+.apps-showcase-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  margin: 2rem 0;
+}
+
+.app-tier-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.app-tier-header {
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 0.75rem;
+}
+
+.app-tier-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem 0;
+  color: var(--primary);
+}
+
+.app-tier-desc {
+  font-size: 0.95rem;
+  color: var(--secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.app-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   2. Modern App Card Component (.app-card-v2)
+   -------------------------------------------------------------------------- */
+.app-card-v2 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.app-card-v2:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  border-color: var(--tertiary);
+}
+
+.app-card-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  width: 100%;
+  overflow: hidden;
+  background: var(--border);
+}
+
+.app-card-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.app-card-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%);
+}
+
+.app-card-icon {
+  font-size: 3.5rem;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
+}
+
+.app-card-badges {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 6px;
+  z-index: 2;
+}
+
+.app-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+  backdrop-filter: blur(8px);
+}
+
+.app-badge-status.app-badge-live {
+  background: rgba(16, 185, 129, 0.9);
+  color: #ffffff;
+}
+
+.app-badge-status.app-badge-beta {
+  background: rgba(245, 158, 11, 0.9);
+  color: #ffffff;
+}
+
+.app-badge-status.app-badge-frozen {
+  background: rgba(107, 114, 128, 0.9);
+  color: #ffffff;
+}
+
+.app-badge-status.app-badge-maintenance {
+  background: rgba(239, 68, 68, 0.9);
+  color: #ffffff;
+}
+
+.app-badge-version {
+  background: rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+  font-family: monospace;
+}
+
+.app-badge-tier {
+  background: var(--entry);
+  border: 1px solid var(--border);
+  color: var(--primary);
+}
+
+.app-card-body {
+  padding: 1.25rem 1.25rem 0.75rem 1.25rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+}
+
+.app-card-title a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.app-card-tagline {
+  font-size: 0.9rem;
+  color: var(--secondary);
+  line-height: 1.5;
+  margin: 0 0 1rem 0;
+  flex: 1;
+}
+
+.app-card-tech-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+.app-tech-chip {
+  font-size: 0.75rem;
+  background: var(--theme);
+  color: var(--primary);
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.app-card-footer {
+  padding: 0.75rem 1.25rem 1.25rem 1.25rem;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  z-index: 2;
+}
+
+.app-card-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.app-card-btn-primary {
+  background: var(--primary);
+  color: var(--theme);
+}
+
+.app-card-btn-primary:hover {
+  opacity: 0.9;
+}
+
+.app-card-btn-outline {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--primary);
+}
+
+.app-card-btn-outline:hover {
+  background: var(--border);
+}
+
+/* --------------------------------------------------------------------------
+   3. Dedicated App Single Page (.app-single-container)
+   -------------------------------------------------------------------------- */
+.app-single-container {
+  max-width: var(--main-width);
+  margin: 0 auto;
+  padding: 1rem 0 3rem 0;
+}
+
+.app-hero-section {
+  margin: 1.5rem 0 2.5rem 0;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.app-hero-badges {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.app-hero-title {
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin: 0 0 0.5rem 0;
+  color: var(--primary);
+  letter-spacing: -0.02em;
+}
+
+.app-hero-tagline {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--secondary);
+  line-height: 1.4;
+  margin: 0 0 1rem 0;
+}
+
+.app-hero-summary {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--content);
+  margin: 0 0 1.5rem 0;
+}
+
+.app-hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.app-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.app-btn-primary {
+  background: var(--primary);
+  color: var(--theme);
+}
+
+.app-btn-primary:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.app-btn-demo {
+  background: #10b981;
+  color: #ffffff;
+}
+
+.app-btn-demo:hover {
+  background: #059669;
+  transform: translateY(-1px);
+}
+
+.app-btn-outline {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--primary);
+}
+
+.app-btn-outline:hover {
+  background: var(--border);
+}
+
+.app-hero-media {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  background: var(--entry);
+}
+
+.app-hero-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   4. App Detail Sections (8 Blocks)
+   -------------------------------------------------------------------------- */
+.app-detail-section {
+  margin: 3rem 0;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.app-section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0 0 1.25rem 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.app-section-icon {
+  font-size: 1.4rem;
+}
+
+.app-section-subtitle {
+  font-size: 1rem;
+  color: var(--secondary);
+  margin: -0.5rem 0 1.5rem 0;
+}
+
+/* Objectives Grid */
+.app-objectives-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.app-objective-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.app-check-icon {
+  color: #10b981;
+  font-weight: 800;
+  font-size: 1.1rem;
+  line-height: 1.3;
+}
+
+.app-objective-item p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--content);
+}
+
+/* Features Grid */
+.app-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+.app-feature-card {
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.app-feature-icon {
+  font-size: 1.8rem;
+}
+
+.app-feature-text {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--content);
+}
+
+/* Architecture & Design */
+.app-architecture-summary {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.app-architecture-diagram {
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.app-diagram-hint {
+  font-size: 0.8rem;
+  color: var(--secondary);
+  margin: 8px 0 0 0;
+}
+
+.app-principles-block {
+  margin-top: 1.5rem;
+  background: var(--entry);
+  border-left: 4px solid var(--primary);
+  border-radius: 0 8px 8px 0;
+  padding: 1rem 1.25rem;
+}
+
+.app-principles-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  color: var(--primary);
+}
+
+.app-principles-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+/* Tech Layers */
+.app-tech-layers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.app-tech-layer-card {
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.app-tech-layer-name {
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: var(--secondary);
+  margin: 0 0 0.75rem 0;
+  font-weight: 700;
+}
+
+.app-tech-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Reference Articles */
+.app-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.app-post-card {
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-post-thumb-wrapper {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  overflow: hidden;
+}
+
+.app-post-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.app-post-card-content {
+  padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-post-part-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.app-post-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.35;
+}
+
+.app-post-title a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.app-post-summary {
+  font-size: 0.88rem;
+  color: var(--secondary);
+  line-height: 1.45;
+  margin: 0 0 1rem 0;
+  flex: 1;
+}
+
+.app-post-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+/* Timeline */
+.app-timeline {
+  position: relative;
+  padding-left: 2rem;
+  border-left: 2px solid var(--border);
+  margin-left: 0.75rem;
+}
+
+.app-timeline-node {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.app-timeline-marker {
+  position: absolute;
+  left: calc(-2rem - 6px);
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--primary);
+  border: 2px solid var(--theme);
+}
+
+.app-timeline-node.state-planned .app-timeline-marker {
+  background: var(--secondary);
+}
+
+.app-timeline-card {
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.app-timeline-header {
+  margin-bottom: 0.75rem;
+}
+
+.app-timeline-meta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 0.25rem;
+}
+
+.app-version-tag {
+  font-family: monospace;
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: var(--theme);
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.app-release-date {
+  font-size: 0.82rem;
+  color: var(--secondary);
+}
+
+.app-release-type {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--border);
+  color: var(--primary);
+}
+
+.app-release-state.planned {
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: #f59e0b;
+  color: #ffffff;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.app-timeline-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0.25rem 0 0 0;
+  color: var(--primary);
+}
+
+.app-timeline-changes {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--content);
+}
+
+/* CTA Banner */
+.app-cta-banner {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(147, 51, 234, 0.08) 100%);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2.25rem;
+  text-align: center;
+}
+
+.app-cta-banner h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem 0;
+  color: var(--primary);
+}
+
+.app-cta-banner p {
+  font-size: 1rem;
+  color: var(--secondary);
+  max-width: 650px;
+  margin: 0 auto 1.5rem auto;
+  line-height: 1.6;
+}
+
+.app-cta-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
+   5. Shortcode: app-ref
+   -------------------------------------------------------------------------- */
+.app-ref-box {
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 2rem 0;
+}
+
+.app-ref-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.app-ref-identity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.app-ref-icon {
+  font-size: 1.8rem;
+}
+
+.app-ref-label {
+  display: block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--secondary);
+  font-weight: 600;
+}
+
+.app-ref-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.app-ref-tagline {
+  font-size: 0.92rem;
+  color: var(--secondary);
+  line-height: 1.5;
+  margin: 0 0 1rem 0;
+}
+
+.app-ref-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
+   6. Responsive Adjustments
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .app-hero-title {
+    font-size: 1.8rem;
+  }
+  .app-hero-tagline {
+    font-size: 1.05rem;
+  }
+  .app-showcase-grid {
+    grid-template-columns: 1fr;
+  }
+  .app-objectives-grid,
+  .app-features-grid,
+  .app-posts-grid {
+    grid-template-columns: 1fr;
+  }
+  .app-cta-buttons {
+    flex-direction: column;
+  }
+  .app-ref-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
