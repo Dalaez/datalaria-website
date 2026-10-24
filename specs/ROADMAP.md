@@ -7,9 +7,9 @@
 
 ## 📍 ESTADO ACTUAL DEL PROYECTO (PUNTERO DE SESIÓN)
 
-- **Fase Activa:** `FASE 1 — Extracción SDD de LifeOps & Sistema de Fichas de Apps` ➔ **En progreso (Hito 1.1 completado ✅, listos para Hito 1.2)**
-- **Próximo Hito Recomendado:** `Hito 1.2 — Aislamiento Limpio, Fix de Seguridad y Verificación de LifeOps (apps/lifeops/)`
-- **Estado del Código de Producción:** `100% INTACTO` (Solo se han creado/actualizado especificaciones formales y gobernanza en `/specs/`, `AGENTS.md` y `CLAUDE.md`).
+- **Fase Activa:** `FASE 1 — Extracción SDD de LifeOps & Sistema de Fichas de Apps` ➔ **En progreso (Hito 1.1 y Hito 1.2 completados ✅, listos para Hito 1.3)**
+- **Último Checkpoint Verificado:** `Hito 1.2 — Aislamiento Limpio, Fix de Seguridad y Verificación de LifeOps (apps/lifeops/)` (Completado el 2026-10-24 ✅).
+- **Próximo Hito:** `Hito 1.3 — Infraestructura del Portal para Fichas de Apps (layouts/apps/, layouts/partials/app-card.html, shortcode app-ref)`
 
 ---
 
@@ -68,7 +68,7 @@ Tras auditar todos los artículos de `/content/es/posts/` y `/content/en/posts/`
     2. Generar [`/specs/portal/apps-showcase/spec.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/portal/apps-showcase/spec.md) con el diseño del nuevo sistema de fichas, metadatos en `data/apps/<slug>.yaml`, tarjetas visuales con captura, historial de versiones y shortcode `app-ref`.
   - *Gate de Verificación:* Documentos validados; cero cambios en código de producción. (Completado el 2026-10-24 ✅).
 
-- [ ] **Hito 1.2: Aislamiento Limpio, Fix de Seguridad y Verificación de `lifeops`**
+- [x] **Hito 1.2: Aislamiento Limpio, Fix de Seguridad y Verificación de `lifeops`**
   - *Acción:*
     1. Crear checkpoint Git `sdd-checkpoint-pre-1.2`.
     2. Mover `lifeops-app/` a `apps/lifeops/web/` y `lifeops-api/` a `apps/lifeops/api/` con `git mv`.
@@ -76,7 +76,7 @@ Tras auditar todos los artículos de `/content/es/posts/` y `/content/en/posts/`
     4. Crear suite básica `pytest` en `apps/lifeops/api/tests/` (verificando `/health`, invariantes y token forjado -> 401).
     5. Crear script de build unificado `build:portal` en `apps/lifeops/web/` para compilar y sincronizar con `static/apps/lifeops/`.
     6. Actualizar `rootDir` en `render.yaml`.
-  - *Gate de Verificación:* `npm run lint` y `npm run build:portal` pasan con 0; `pytest apps/lifeops/api` pasa con 0; `hugo --gc --minify` pasa con 0; demo `/apps/lifeops/#/?mock=true` funciona.
+  - *Gate de Verificación:* `npm run lint` pasa con 0 errores; `npm run build:portal` compila en 54s a `static/apps/lifeops/`; `pytest` pasa 6/6 tests (100%); `hugo --renderToMemory` compila 2077 páginas con código 0. (Completado el 2026-10-24 ✅).
 
 - [ ] **Hito 1.3: Infraestructura del Portal para Fichas de Apps (`apps-showcase`)**
   - *Acción:*

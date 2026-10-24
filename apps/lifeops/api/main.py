@@ -8,17 +8,19 @@ professional (projects, tasks) management in one API.
 Run with:
     uvicorn main:app --reload --port 8000
 """
+import os
 import socket
 
-# Prevent Windows DNS IPv6 blackhole timeout when resolving cloud services
-_orig_getaddrinfo = socket.getaddrinfo
+# Prevent Windows DNS IPv6 blackhole timeout when resolving cloud services (local Windows only)
+if os.name == "nt":
+    _orig_getaddrinfo = socket.getaddrinfo
 
-def _ipv4_getaddrinfo(host, port, family=0, type=0, proto=0, flags=0):
-    if family == 0 or family == socket.AF_UNSPEC:
-        family = socket.AF_INET
-    return _orig_getaddrinfo(host, port, family, type, proto, flags)
+    def _ipv4_getaddrinfo(host, port, family=0, type=0, proto=0, flags=0):
+        if family == 0 or family == socket.AF_UNSPEC:
+            family = socket.AF_INET
+        return _orig_getaddrinfo(host, port, family, type, proto, flags)
 
-socket.getaddrinfo = _ipv4_getaddrinfo
+    socket.getaddrinfo = _ipv4_getaddrinfo
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
