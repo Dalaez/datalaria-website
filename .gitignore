@@ -19,9 +19,13 @@ Thumbs.db
 .env.*.local
 .linkedin_new_tokens.json
 
+# Python artifacts
+__pycache__/
+*.py[cod]
+.venv/
+
 # S&OP Pipeline - datos de prueba generados
-/static/apps/sop-pipeline/dirty_sales_sample.csv
-/static/apps/sop-pipeline/__pycache__/
+/apps/_incubadora/sop-pipeline/dirty_sales_sample.csv
 
 # ==============================================================================
 # RECURSOS DE PAGO Y EXECUTIVE DECISION PACKS (EXCLUSIVO LEMONSQUEEZY)

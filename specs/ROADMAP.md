@@ -119,11 +119,11 @@ Tras auditar todos los artículos de `/content/es/posts/` y `/content/en/posts/`
 ### FASE 3: Congelación de las 4 Apps Legacy, Higiene de `/static/` y Mejora del Escaparate `/apps/`
 *Objetivo: Cerrar el ciclo de las 7 aplicaciones publicadas, retirar de `/static/` los borradores no publicados y dejar el catálogo `/apps/` impecable.*
 
-- [ ] **Hito 3.1: Revisión Ligera, Congelación Legacy (Apps #4 a #7) y Cuarentena de No Publicadas**
+- [x] **Hito 3.1: Revisión Ligera, Congelación Legacy (Apps #4 a #7) y Cuarentena de No Publicadas**
   - *Acción:*
-    1. Verificar estado operativo de las 4 apps legacy congeladas: `snake` (#4), `flashcards` (#5), `conversor` (#6) y `maths` (#7).
-    2. **Higiene de Seguridad:** Mover las carpetas inéditas `static/apps/project-ops/` y `static/apps/sop-pipeline/` fuera de `static/` hacia `apps/_incubadora/` (para que Hugo no copie sus `.py` y `.env` a `public/` mientras esperan a la Fase 4).
-  - *Gate de Verificación:* `hugo --gc --minify` exitoso; ningún archivo `.py`, `.sql` ni `.env` existe dentro de todo el árbol `static/` ni `public/`.
+    1. Verificar estado operativo de las 4 apps legacy congeladas: `snake` (#4), `flashcards` (#5), `conversor` (#6) y `maths` (#7). Purgado subdirectorio `.git` huérfano en `static/games/snake/`.
+    2. **Higiene de Seguridad:** Mover las carpetas inéditas `static/apps/project-ops/` y `static/apps/sop-pipeline/` fuera de `static/` hacia `apps/_incubadora/` con sus `.gitignore` dedicados y `README.md`.
+  - *Gate de Verificación:* `hugo --renderToMemory` compila las 2083 páginas con código 0 en 79.8s; cero archivos `.py`, `.sql`, `.env`, `.pyc` ni `.git` en todo el árbol `static/`. (Completado el 2026-10-24 ✅).
 - [ ] **Hito 3.2: Especificación del Portal y Reorganización Visual de `/es/apps/` y `/en/apps/`**
   - *Acción:*
     1. Crear `/specs/portal/spec.md`.
@@ -146,3 +146,4 @@ Tras auditar todos los artículos de `/content/es/posts/` y `/content/en/posts/`
 | :--- | :--- | :--- | :--- | :--- |
 | 2026-10-24 | `0.1 - 0.3` | Inicio del sistema SDD | Sin incidencias. Creados archivos base en modo no destructivo. | ✅ Cerrado |
 | 2026-10-24 | `Ajuste Plan` | Alineación con las 7 Apps publicadas en `/apps/` y cruce con posts (`draft: false`). | Pospuestos `project-ops` (posts en `draft: true`) y `sop-pipeline` (sin web app) a la Fase 4 (Incubadora). Priorizadas las 7 apps activas empezando por `lifeops`. | ✅ Cerrado |
+| 2026-10-24 | `3.1` | Purgado de código inédito y `.git` huérfano en `static/` | Mover `project-ops` y `sop-pipeline` a `apps/_incubadora/`; purgar `.git` en `snake`; 0 violaciones en `static/`. | ✅ Cerrado |

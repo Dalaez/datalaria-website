@@ -89,3 +89,19 @@
   2. Servir la aplicación a los usuarios finales transparentemente bajo el dominio de Datalaria mediante la regla de proxy forzado `200!` en `static/_redirects` (`/apps/weather/* https://datalaria-app-weather.netlify.app/:splat 200!`).
   3. Consolidar el código fuente canónico, scripts de recolección y especificación SDD en [`apps/weather/`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/apps/weather) y [`specs/apps/weather/spec.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/apps/weather/spec.md).
 - **Consecuencias:** Cero ruido de commits en el blog principal, 100% serverless con coste $0/mes y preservación transparente de la URL pública canónica `https://datalaria.com/apps/weather/`.
+
+---
+
+## ADR-009: Cuarentena de Código Inédito en `apps/_incubadora/` y Congelación de Apps Legacy (#4 a #7)
+- **Fecha:** 2026-10-24
+- **Estado:** Aceptado e Implementado
+- **Contexto:**
+  1. Durante la auditoría del árbol de archivos, se identificó que `project-ops` y `sop-pipeline` contenían código backend Python, migraciones SQL, muestras de datos y archivos de variables de entorno `.env` alojados indebidamente en `static/apps/`. Al estar sus artículos de blog en borrador (`draft: true`) o referenciados a notebooks externos, exponerlos en `static/` violaba el Artículo 2 de la Constitución de Ingeniería (Firewall de Directorios).
+  2. Las 4 aplicaciones legacy secundarias (`snake` en `/games/snake/`, `flashcards` en `/apps/flashcards/`, `conversor` en `/apps/conversor/`, `maths` en `/apps/maths/`) se encuentran 100% publicadas y referenciadas en artículos activos (`draft: false`), pero son aplicaciones puramente frontend sin dependencias backend. Además, `snake` contenía un subdirectorio `.git` huérfano.
+- **Decisión:**
+  1. **Cuarentena No Destructiva:** Mover íntegramente `static/apps/project-ops/` y `static/apps/sop-pipeline/` hacia [`apps/_incubadora/`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/apps/_incubadora/) preservando toda su lógica original, dotándolas de `.gitignore` independientes para blindar sus `.env` y muestras de datos, a la espera de la Fase 4.
+  2. **Purga de Metadatos y Firewall Estricto:** Eliminar el subdirectorio `.git` de `static/games/snake/` y purgar todos los restos de `__pycache__` en `static/`.
+  3. **Congelación de Apps Legacy:** Mantener las 4 apps estáticas en sus rutas canónicas intactas en `static/` (`/games/snake/`, `/apps/flashcards/`, `/apps/conversor/`, `/apps/maths/`).
+- **Consecuencias:**
+  - Cumplimiento absoluto del Firewall de Directorios: cero archivos `.py`, `.sql`, `.env`, `.pyc` ni `.git` en todo el árbol de `static/` ni en `public/`.
+  - Preparación limpia de la base para el Hito 3.2 (Reorganización Visual del Escaparate de Apps).
