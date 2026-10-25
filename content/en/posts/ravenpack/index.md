@@ -2,7 +2,8 @@
 title: "RavenPack: From News Analytics in Marbella to Wall Street's Quantitative Brain and Autonomous Financial AI"
 date: 2026-10-24
 draft: false
-categories: ["casos_exito", "Inteligencia Artificial", "Deep Tech", "Finanzas"]
+category: "Startups"
+categories: ["case-studies", "Artificial Intelligence", "Deep Tech", "Finance"]
 tags: ["ravenpack", "armando gonzalez", "fintech", "nlp", "hedge funds", "wall street", "quantitative trading", "big data", "ai agents", "marbella"]
 image: cover.jpg
 weight: 10

@@ -2,7 +2,8 @@
 title: "Kurt Gödel: The Incompleteness Theorems, the Limits of Logic, and Can an AGI Ever Know Everything?"
 date: 2026-12-13
 draft: false
-categories: ["casos_exito", "Inteligencia Artificial", "Deep Tech", "Filosofía"]
+category: "Biographies"
+categories: ["case-studies", "Artificial Intelligence", "Deep Tech", "Philosophy"]
 tags: ["kurt godel", "incompleteness", "mathematical logic", "david hilbert", "alan turing", "agi", "roger penrose", "philosophy", "computer science", "history"]
 image: cover.jpg
 weight: 10
