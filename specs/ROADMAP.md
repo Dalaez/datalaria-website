@@ -123,7 +123,8 @@ Tras auditar todos los artículos de `/content/es/posts/` y `/content/en/posts/`
   - *Acción:*
     1. Verificar estado operativo de las 4 apps legacy congeladas: `snake` (#4), `flashcards` (#5), `conversor` (#6) y `maths` (#7). Purgado subdirectorio `.git` huérfano en `static/games/snake/`.
     2. **Higiene de Seguridad:** Mover las carpetas inéditas `static/apps/project-ops/` y `static/apps/sop-pipeline/` fuera de `static/` hacia `apps/_incubadora/` con sus `.gitignore` dedicados y `README.md`.
-  - *Gate de Verificación:* `hugo --renderToMemory` compila las 2083 páginas con código 0 en 79.8s; cero archivos `.py`, `.sql`, `.env`, `.pyc` ni `.git` en todo el árbol `static/`. (Completado el 2026-10-24 ✅).
+    3. **Estandarización de Fichas Legacy:** Crear fichas dedicadas en `content/{es,en}/apps/`, metadatos en `data/apps/`, especificaciones en `specs/apps/`, portadas 16:10 (`cover.png`) e inserción del shortcode `app-ref` y enlaces a ficha en los 8 posts asociados para las 4 apps legacy (`snake`, `flashcards`, `conversor`, `maths`).
+  - *Gate de Verificación:* `hugo --renderToMemory` compila las 2.091 páginas con código 0 en 75.0s; cero archivos `.py`, `.sql`, `.env`, `.pyc` ni `.git` en todo el árbol `static/`. (Completado el 2026-10-25 ✅).
 - [ ] **Hito 3.2: Especificación del Portal y Reorganización Visual de `/es/apps/` y `/en/apps/`**
   - *Acción:*
     1. Crear `/specs/portal/spec.md`.
@@ -147,3 +148,4 @@ Tras auditar todos los artículos de `/content/es/posts/` y `/content/en/posts/`
 | 2026-10-24 | `0.1 - 0.3` | Inicio del sistema SDD | Sin incidencias. Creados archivos base en modo no destructivo. | ✅ Cerrado |
 | 2026-10-24 | `Ajuste Plan` | Alineación con las 7 Apps publicadas en `/apps/` y cruce con posts (`draft: false`). | Pospuestos `project-ops` (posts en `draft: true`) y `sop-pipeline` (sin web app) a la Fase 4 (Incubadora). Priorizadas las 7 apps activas empezando por `lifeops`. | ✅ Cerrado |
 | 2026-10-24 | `3.1` | Purgado de código inédito y `.git` huérfano en `static/` | Mover `project-ops` y `sop-pipeline` a `apps/_incubadora/`; purgar `.git` en `snake`; 0 violaciones en `static/`. | ✅ Cerrado |
+| 2026-10-25 | `3.1-Ext` | Fichas dedicadas, portadas 16:10 y shortcodes `app-ref` para las 4 Apps Legacy | Creados 4 specs, 4 YAMLs, 8 fichas markdown, 8 portadas 16:10 y actualizados 8 posts en ES/EN. 2.091 páginas compilan limpiamente. | ✅ Cerrado |

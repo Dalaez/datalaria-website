@@ -16,6 +16,8 @@ Web game development has experienced a renaissance thanks to the power of HTML5 
 
 In this tutorial, we are going to build **"Neon Snake"**, an aesthetic and functional web arcade game that uses **Supabase** (an Open Source alternative to Firebase) to persist data in PostgreSQL.
 
+{{< app-ref slug="snake" >}}
+
 ![Conceptual image of Snake Game](imagen_snake_game.png)
 
 ## 🛠️ The Tech Stack
@@ -225,7 +227,7 @@ By putting it all together, you get a fluid and highly competitive user experien
 
 And once created... all that remains is to enjoy and play 🐍😊
 
-[Datalaria Snake Game](https://datalaria.com/games/snake/)
+[Live Datalaria Snake Game](https://datalaria.com/games/snake/) | [View Neon Snake Technical Details & Evolution](/en/apps/snake/)
 
 ## Conclusion
 

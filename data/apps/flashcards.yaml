@@ -1,0 +1,131 @@
+slug: flashcards
+order: 50
+tier: lab
+status: frozen
+icon: "🎴"
+cover: cover.png
+app_url: /apps/flashcards/
+source_spec: specs/apps/flashcards/spec.md
+current_version: v1.0.0
+
+title:
+  es: "Flashcards AI"
+  en: "Flashcards AI"
+
+tagline:
+  es: "Herramienta interactiva de estudio activo con giro 3D, soporte de audio fonético y generación mágica con IA."
+  en: "Interactive active recall study tool featuring 3D card flips, phonetic speech audio, and AI magic generation."
+
+summary:
+  es: "Aplicación de estudio y memorización activa (Active Recall) diseñada para aprender términos técnicos y vocabulario bilingüe sin distracciones. Ofrece animación tridimensional de tarjetas con CSS 3D, lector de pronunciación por voz con Web Speech API, carga y exportación de mazos en ficheros CSV con PapaParse, y un modo mágico impulsado por la API de Google Gemini para autogenerar definiciones y traducciones con un solo clic."
+  en: "Active Recall study and memorization web application designed to master technical terms and bilingual vocabulary without friction. Features realistic 3D card-flip animations via CSS 3D, spoken phonetic pronunciation using Web Speech API, CSV deck import/export powered by PapaParse, and an AI magic mode powered by Google Gemini API to autocomplete definitions and translations in one click."
+
+objectives:
+  - es: "Facilitar el estudio bilingüe y la memorización activa (Active Recall) eliminando la fricción de los métodos estáticos tradicionales."
+    en: "Facilitate bilingual study and Active Recall memorization, removing friction from traditional static study methods."
+  - es: "Permitir la importación y exportación de mazos de estudio mediante ficheros CSV estándar y persistencia local en LocalStorage."
+    en: "Enable study deck import and export via standard CSV files and persistent client-side LocalStorage."
+  - es: "Integrar capacidades generativas de IA (Google Gemini API) para autocompletar traducciones, definiciones y fonética con un solo clic."
+    en: "Integrate generative AI capabilities (Google Gemini API) to autocomplete translations, definitions, and phonetics in one click."
+  - es: "Proporcionar una experiencia fluida y accesible con animaciones 3D de giro de tarjetas y pronunciación por voz en múltiples idiomas."
+    en: "Deliver a fluid and accessible user experience with 3D card-flip animations and speech pronunciation across multiple languages."
+
+features:
+  - icon: "✨"
+    es: "Modo Mágico con Gemini: genera automáticamente definiciones completas y traducciones precisas conectando tu API Key de Gemini."
+    en: "Gemini Magic Mode: automatically generate comprehensive definitions and accurate translations by connecting your Gemini API Key."
+  - icon: "🔄"
+    es: "Giro 3D Realista: efecto tridimensional fluido con CSS transform rotateY para voltear entre anverso y reverso de la tarjeta."
+    en: "Realistic 3D Card Flip: smooth 3D CSS rotateY transform effects allowing fluid toggling between question and answer sides."
+  - icon: "🗣️"
+    es: "Pronunciación Fonética en Vivo: síntesis de voz en el navegador con Web Speech API para escuchar la pronunciación exacta en idiomas."
+    en: "Live Phonetic Pronunciation: in-browser text-to-speech synthesis via Web Speech API to practice accurate language pronunciation."
+  - icon: "📂"
+    es: "Importación y Exportación CSV: procesa listas de estudio tabulares al instante en el navegador utilizando PapaParse."
+    en: "CSV Import & Export: instantly process and backup structured tabular study decks in the browser using PapaParse."
+  - icon: "🔒"
+    es: "Privacidad Total en Cliente: los datos y claves API residen exclusivamente en tu navegador (LocalStorage) sin rastreo externo."
+    en: "Client-Side Privacy: study decks and user API keys reside strictly inside your browser (LocalStorage) with zero external tracking."
+
+design:
+  architecture:
+    es: "Arquitectura cliente estricta (Client-Only Privacy): toda la lógica de gestión de mazos y progreso de estudio reside en el motor JavaScript del navegador. Cuando se activa el modo IA, la app realiza llamadas HTTPS directas a la API de Gemini mediante la API Key suministrada por el usuario, sin servidores intermediarios."
+    en: "Strict client-only privacy architecture: deck management and study state reside entirely within the browser's JavaScript runtime. When the AI mode is triggered, direct client-side HTTPS calls hit the Gemini API via the user's provided API Key with zero intermediate servers."
+  principles:
+    - es: "Privacidad y Soberanía de Datos: nada se envía a servidores de terceros salvo las llamadas directas de inferencia a la API de Gemini."
+      en: "Data Sovereignty & Privacy: zero user data is logged on backend servers, keeping all study progress strictly inside LocalStorage."
+    - es: "Fricción Cero: entrada directa manual, masiva por CSV o asistida por IA sin requerir registro de cuenta ni login obligatorio."
+      en: "Zero Friction: direct manual input, bulk CSV ingestion, or AI-assisted generation with no mandatory accounts or login walls."
+    - es: "Sensorial y Accesible: feedback visual 3D enriquecido con síntesis fonética por voz para afianzar el aprendizaje bilingüe."
+      en: "Sensory & Accessible: 3D tactile feedback paired with speech synthesis to reinforce multi-sensory bilingual retention."
+  diagram: |
+    flowchart LR
+      USER["Estudiante"] --> UI["Interfaz Flashcards (3D CSS)"]
+      UI -->|"Modo Manual / CSV"| PARSER["PapaParse / CSV Parser"]
+      UI -->|"Modo IA (Gemini API)"| GEMINI["Google Gemini API (Generación)"]
+      PARSER --> DECK["Gestor de Mazos en Memoria"]
+      GEMINI --> DECK
+      DECK -->|"Persistencia Local"| LS[("Navegador LocalStorage")]
+      DECK --> TTS["Web Speech API (Pronunciación)"]
+      DECK --> CARD["Giro 3D & Sistema de Puntos"]
+      CARD --> UI
+
+tech:
+  - layer: frontend
+    items: ["Vanilla JS", "HTML5", "CSS 3D Transforms (rotateY)"]
+  - layer: libraries
+    items: ["PapaParse.js (Parser CSV)"]
+  - layer: apis
+    items: ["Web Speech Synthesis API", "Web Storage API (LocalStorage)"]
+  - layer: ai
+    items: ["Google Gemini API (Gemini 1.5 Flash via REST)"]
+  - layer: hosting
+    items: ["Hugo Static Engine (/apps/flashcards/)"]
+
+posts:
+  - slug:
+      es: app_flashcards
+      en: app_flashcards
+    part: 1
+
+releases:
+  - version: v1.0.0
+    date: "2025-10-17"
+    state: released
+    type: release
+    title:
+      es: "Lanzamiento oficial de Flashcards con motor IA de Gemini y pronunciación fonética"
+      en: "Official Flashcards release with Gemini AI engine and phonetic speech synthesis"
+    changes:
+      - es: "Integración del modo de autocompletado inteligente con Google Gemini API para generación de términos y definiciones."
+        en: "Intelligent autocomplete mode integration with Google Gemini API for automated term and definition generation."
+      - es: "Implementación de síntesis fonética por voz mediante la Web Speech Synthesis API nativa del navegador."
+        en: "Phonetic voice synthesis implementation powered by the browser's native Web Speech Synthesis API."
+      - es: "Soporte de importación y exportación de archivos CSV con PapaParse y plantillas de ejemplo descargables."
+        en: "CSV import and export support with PapaParse including downloadable sample templates."
+      - es: "Animación de tarjeta tridimensional (CSS 3D rotateY) y persistencia de progreso en LocalStorage."
+        en: "Three-dimensional card flipping animation (CSS 3D rotateY) and progress persistence in LocalStorage."
+      - es: "Estado congelado como herramienta de estudio terminada y autónoma."
+        en: "Frozen state as a completed and self-contained study application."
+
+  - version: v0.5.0
+    date: "2025-10-10"
+    state: released
+    type: feature
+    title:
+      es: "Motor de animación 3D y soporte de plantillas CSV"
+      en: "3D animation engine and CSV template support"
+    changes:
+      - es: "Implementación del giro de tarjetas tridimensional y procesamiento básico de archivos de texto."
+        en: "Three-dimensional card flip implementation and basic text file processing."
+
+  - version: v0.1.0
+    date: "2025-10-02"
+    state: released
+    type: feature
+    title:
+      es: "Prototipo inicial de tarjetas manuales y repaso bilingüe"
+      en: "Initial manual cards and bilingual study prototype"
+    changes:
+      - es: "Interfaz simple con entrada manual de pares término/definición y contador básico de aciertos."
+        en: "Simple interface with manual term/definition pairs and basic score counter."

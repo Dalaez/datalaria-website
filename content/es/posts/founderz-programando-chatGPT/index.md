@@ -32,6 +32,8 @@ El ejemplo más claro de este copilotaje consiste en como un modelo de lenguaje 
 
 Para poner a prueba esta habilidad, vamos a crear un **juego de aprendizaje de operaciones matemáticas básicas enfocada a niños de infantil y primaria de entre 5 y 7 años**.
 
+{{< app-ref slug="maths" >}}
+
 El objetivo era simple: una página web que permitiera enseñar y practicar las operaciones matemáticas básicas (suma, resta, multiplicación y división) por niveles de aprendizaje haciéndolo atractivo para los usuarios.
 
 ### La Receta: El Prompt Detallado (y su Refinamiento) es la Clave
@@ -95,4 +97,4 @@ De eso hablaremos en uno de nuestros siguientes post, donde exploraremos el proc
 #### Fuentes y Recursos:
 * **Founderz**: [Sitio oficial de la plataforma](https://founderz.com/)
 * **OpenAI**: [ChatGPT](https://chat.openai.com/)
-* **Web App**: [Mi aplicación de matemáticas para niños creada con ChatGPT](https://datalaria.com/apps/maths)
+* **Web App**: [Mi aplicación de matemáticas para niños en Vivo](https://datalaria.com/apps/maths) | [Ver Ficha Técnica y Evolución de Matemáticas Interactivas](/es/apps/maths/)

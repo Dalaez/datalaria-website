@@ -16,6 +16,8 @@ Our initial method was the classic one: the ancient art of "covering the answer 
 
 This post is the result of that experiment—the creation of a [custom study app with *flashcards*](https://datalaria.com/apps/flashcards). Let's look at the initial specifications, the creation process, and, most importantly, the final result ready for use.
 
+{{< app-ref slug="flashcards" >}}
+
 ### Beyond Anki and Quizlet: The Search for Custom Simplicity
 
 Incredibly powerful study tools like Quizlet, AnkiApp, or ProProfs already exist. They are fantastic and offer a multitude of possibilities. However, they often come with a learning curve or a number of options that can be overwhelming for an immediate and specific need.
@@ -84,6 +86,6 @@ I hope you find this tool useful. I invite you to try the [flashcards app](https
 ---
 
 #### Sources and Resources:
-* **Try the App**: [Flashcards Study App](https://datalaria.com/apps/flashcards)
+* **Try the App**: [Flashcards Study App](https://datalaria.com/apps/flashcards) | [View Flashcards AI Technical Details & Evolution](/en/apps/flashcards/)
 * **Source Code**: [Project Repository on GitHub](https://github.com/dalaez/flashcards-app)
 * **Google AI Studio**[Google AI Studio](https://aistudio.google.com/app/api-keys)

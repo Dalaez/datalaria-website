@@ -24,6 +24,8 @@ The goal was to create a modern, intuitive web application with clear navigation
 
 Gemini's Canvas feature allowed me to see in real-time how the AI generated not just the code, but the complete project structure. After the initial draft and a couple of additional iterations focused on refining the design and fine-tuning the units, a first operational version of the application came to life: [My unit conversion application](http://datalaria.com/apps/conversor)
 
+{{< app-ref slug="conversor" >}}
+
 ### A Look at the Categories and Their Units
 
 What makes a tool like this useful is understanding **what we are converting**. That's why the "Universal Converter Pro" not only calculates but also aims to be educational. These are the initial categories and the science behind their units:
@@ -132,4 +134,4 @@ My goal is to continue expanding it with new categories and units as the needs a
 
 #### Sources and Resources:
 * **Gemini**: [Official Gemini page to try its Canvas functionality](https://gemini.google.com/app)
-* **App's web**: [My unit conversion application](http://datalaria.com/apps/conversor)
+* **App's web**: [My unit conversion application](https://datalaria.com/apps/conversor) | [View Unit Converter Technical Details & Evolution](/en/apps/conversor/)

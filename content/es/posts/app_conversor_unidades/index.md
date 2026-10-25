@@ -24,6 +24,8 @@ El objetivo era crear una aplicación web moderna, intuitiva con una navegación
 
 La funcionalidad Canvas de Gemini me permitió ver en tiempo real cómo la IA generaba no solo el código, sino la estructura completa del proyecto. A partir del boceto inicial y tras un par de iteraciones adicionales centradas en refinar algo más el diseño y afinar las unidades utilizadas, vio la luz una primera versión operativa de la aplicación: [Mi aplicación de conversión de unidades de medida](http://datalaria.com/apps/conversor)
 
+{{< app-ref slug="conversor" >}}
+
 ### Un Vistazo a las Categorías y sus Unidades
 
 Lo que hace útil a una herramienta como esta es entender **qué estamos convirtiendo**. Por eso, el "Conversor Universal Pro" no solo calcula, sino que busca ser didáctico. Estas son las categorías iniciales y la ciencia detrás de sus unidades:
@@ -132,4 +134,4 @@ Mi objetivo es seguir ampliándola con nuevas categorías y unidades según surj
 
 #### Fuentes y Recursos:
 * **Gemini**: [Página oficial de Gemini para probar su funcionalidad Canvas](https.gemini.google.com/app)
-* **Web de la App**: [Mi aplicación de conversión de unidades de medida](http://datalaria.com/apps/conversor)
+* **Web de la App**: [Mi aplicación de conversión de unidades de medida](https://datalaria.com/apps/conversor) | [Ver Ficha Técnica y Evolución del Conversor](/es/apps/conversor/)

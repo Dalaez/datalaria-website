@@ -1,0 +1,129 @@
+slug: snake
+order: 40
+tier: lab
+status: frozen
+icon: "🐍"
+cover: cover.png
+app_url: /games/snake/
+source_spec: specs/apps/snake/spec.md
+current_version: v1.0.0
+
+title:
+  es: "Neon Snake"
+  en: "Neon Snake"
+
+tagline:
+  es: "Arcade Cyberpunk retro del clásico Snake con ranking global en tiempo real y audio sintetizado."
+  en: "Cyberpunk retro arcade of classic Snake with real-time global leaderboard and synthesized audio."
+
+summary:
+  es: "Reinvención moderna del clásico juego Snake de estética Cyberpunk y neón, construida íntegramente con HTML5 Canvas y JavaScript Vanilla sin librerías pesadas. Dispone de un motor de audio chiptune de 8 bits generado procedimentalmente en el navegador mediante la Web Audio API y persistencia serverless de puntuaciones en tiempo real respaldada por Supabase (PostgreSQL)."
+  en: "Modern Cyberpunk neon reimplementation of classic Snake, built purely with HTML5 Canvas and Vanilla JavaScript with zero framework dependencies. Features a procedural 8-bit chiptune audio synth running directly in browser memory via Web Audio API and real-time serverless high-score leaderboard synchronization backed by Supabase (PostgreSQL)."
+
+objectives:
+  - es: "Recrear la experiencia arcade retro del clásico Snake con una estética Cyberpunk y efectos visuales de neón en HTML5 Canvas."
+    en: "Recreate the retro arcade experience of classic Snake with a Cyberpunk aesthetic and neon visual effects on HTML5 Canvas."
+  - es: "Implementar persistencia global en tiempo real para la tabla de récords (leaderboard) sin servidores backend dedicados usando Supabase PostgreSQL."
+    en: "Implement real-time global persistence for the high-score leaderboard without dedicated backend servers using Supabase PostgreSQL."
+  - es: "Diseñar un motor de audio 8-bit sintetizado procedimentalmente en el navegador mediante la Web Audio API con cero ficheros de audio externos."
+    en: "Design a procedural 8-bit audio synth engine running directly in browser memory via Web Audio API with zero external audio assets."
+  - es: "Demostrar la potencia del desarrollo web frontend puro (Vanilla JS ES6+) logrando un Game Loop determinista y fluido a 60 FPS."
+    en: "Demonstrate the power of pure frontend web development (Vanilla JS ES6+) achieving a smooth deterministic 60 FPS Game Loop."
+
+features:
+  - icon: "🕹️"
+    es: "Game Loop a 60 FPS: bucle de renderizado ultrafluido en HTML5 Canvas con aceleración progresiva y colisiones en rejilla."
+    en: "60 FPS Game Loop: ultra-smooth HTML5 Canvas render loop featuring progressive velocity scaling and precision grid collisions."
+  - icon: "✨"
+    es: "Estética Neón Cyberpunk: estelas de partículas luminosas, efectos de glow perimetral y feedback visual tipo glitch en colisiones."
+    en: "Cyberpunk Neon Aesthetic: glowing particle trails, perimeter bloom effects, and dynamic glitch visual feedback on collision."
+  - icon: "🏆"
+    es: "Ranking Global en Tiempo Real: tabla de récords mundial sincronizada instantáneamente a través de canales Supabase Realtime."
+    en: "Real-Time Global Leaderboard: worldwide high-score rankings synchronized instantaneously through Supabase Realtime channels."
+  - icon: "🎵"
+    es: "Sintetizador Web Audio 8-Bit: síntesis procedimental en el navegador de ondas cuadradas y efectos de sonido retro sin descargas de audio."
+    en: "8-Bit Web Audio Synthesizer: procedural in-browser square-wave synthesis producing retro sound effects with zero audio file downloads."
+  - icon: "📱"
+    es: "Controles Multiplataforma: soporte fluido de teclado (cursores / WASD) y botones virtuales táctiles adaptados a pantallas móviles."
+    en: "Cross-Platform Controls: seamless support for keyboard (arrows / WASD) and touch-screen virtual D-pad on mobile devices."
+
+design:
+  architecture:
+    es: "Arquitectura desacoplada cliente-BaaS: el cliente es un juego monobloque HTML5/Canvas que corre a 60 FPS en el navegador. Al finalizar la partida, despacha una llamada REST/WebSocket asíncrona a Supabase para validar y registrar la puntuación con políticas de seguridad a nivel de fila (RLS)."
+    en: "Decoupled client-BaaS architecture: the client is a self-contained HTML5/Canvas game running at 60 FPS in browser memory. Upon game over, it dispatches an asynchronous REST/WebSocket call to Supabase to register high scores governed by Row Level Security (RLS) policies."
+  principles:
+    - es: "Pureza Frontend: cero frameworks de renderizado, aprovechando directamente las primitivas gráficas del Canvas 2D."
+      en: "Pure Frontend Philosophy: zero bloated frameworks, leveraging native 2D Canvas graphics primitives directly."
+    - es: "Serverless de Coste Cero: persistencia global de datos respaldada en la nube mediante Backend-as-a-Service (PostgreSQL de Supabase)."
+      en: "Zero-Cost Serverless: cloud-backed global data persistence through managed Backend-as-a-Service (Supabase PostgreSQL)."
+    - es: "Audio Procedural Eficiente: los sonidos se crean en tiempo de ejecución modulando osciladores y nodos de ganancia en memoria."
+      en: "Efficient Procedural Audio: sound effects are synthesized at runtime by modulating oscillators and gain nodes in memory."
+  diagram: |
+    flowchart LR
+      USER["Jugador (Teclado / Táctil)"] --> LOOP["Game Loop (Canvas 60 FPS)"]
+      LOOP --> AUDIO["Web Audio API (Synth 8-Bit)"]
+      LOOP --> GLITCH["Render Partículas & Neón"]
+      LOOP -->|"Game Over (Score)"| SUPA["Supabase Client (REST / RLS)"]
+      SUPA --> DB[("PostgreSQL snake_scores")]
+      DB -->|"Realtime Event"| LEADER["Tabla de Récords Global"]
+      LEADER --> UI["HUD / Leaderboard en Pantalla"]
+
+tech:
+  - layer: frontend
+    items: ["Vanilla JS (ES6+)", "HTML5 Canvas 2D", "Tailwind CSS CDN"]
+  - layer: audio
+    items: ["Web Audio API (OscillatorNode, GainNode)"]
+  - layer: backend
+    items: ["Supabase (PostgreSQL 15)", "Row Level Security (RLS)", "Supabase Realtime"]
+  - layer: hosting
+    items: ["Hugo Static Engine (/games/snake/)"]
+
+posts:
+  - slug:
+      es: game_snake
+      en: game_snake
+    part: 1
+
+releases:
+  - version: v1.0.0
+    date: "2026-02-14"
+    state: released
+    type: release
+    title:
+      es: "Lanzamiento oficial de Neon Snake con ranking global en tiempo real y audio procedural"
+      en: "Official Neon Snake release featuring real-time global leaderboard and procedural synth"
+    changes:
+      - es: "Implementación completa de mecánicas arcade en Canvas a 60 FPS con aceleración progresiva."
+        en: "Full arcade Canvas game loop implementation at 60 FPS with progressive velocity acceleration."
+      - es: "Integración de Supabase Realtime y PostgreSQL para tabla de récords mundial protegida por RLS."
+        en: "Supabase Realtime and PostgreSQL integration for global high-score leaderboard protected by RLS."
+      - es: "Motor de efectos de sonido chiptune 8-bit sintetizado en el cliente mediante Web Audio API."
+        en: "In-browser 8-bit chiptune sound engine synthesized via Web Audio API."
+      - es: "Controles táctiles virtuales para dispositivos móviles y teclado responsivo."
+        en: "Virtual touch controls for mobile smartphones and responsive keyboard mapping."
+      - es: "Estado congelado como pieza de arcade y demostrador de arquitectura serverless ligera."
+        en: "Frozen state as an arcade showcase and lightweight serverless architecture demonstrator."
+
+  - version: v0.5.0
+    date: "2026-02-01"
+    state: released
+    type: feature
+    title:
+      es: "Persistencia en la nube con Supabase y ranking multijugador"
+      en: "Cloud persistence with Supabase and multiplayer high-score table"
+    changes:
+      - es: "Esquema SQL de tabla snake_scores y políticas de seguridad públicas RLS."
+        en: "SQL schema for snake_scores table and public RLS security policies."
+      - es: "Suscripción reactiva a eventos de inserción de puntuaciones en tiempo real."
+        en: "Reactive subscription to real-time score insertion events."
+
+  - version: v0.1.0
+    date: "2026-01-20"
+    state: released
+    type: feature
+    title:
+      es: "Prototipo inicial del bucle de juego y Canvas 2D"
+      en: "Initial Canvas 2D game loop and motion prototype"
+    changes:
+      - es: "Movimiento básico de serpiente, generación de comida y detección de colisiones de pared."
+        en: "Basic snake movement, food spawning, and boundary wall collision detection."

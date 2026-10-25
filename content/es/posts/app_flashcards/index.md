@@ -14,7 +14,9 @@ La tecnología brilla de verdad cuando resuelve un problema real, por pequeño q
 
 Nuestro método inicial fue el clásico: el ancestral arte de "tapar con la mano" para adivinar la respuesta. Era funcional, pero monótono, poco motivador y no muy efectivo. Mientras luchábamos por mantener la concentración, me surgió una idea: **¿y si en lugar de luchar contra la distracción, la combatimos con una herramienta mejor? ¿Podría crear, con la ayuda de la IA, una pequeña aplicación de estudio a medida en cuestión de minutos?**
 
-Este post es el resultado de ese experimento, la creación de una [aplicación propia de estudio con *flashcards* (tarjetas de memoria)](https://datalaria.com/apps/flashcards). Vamos a ver las especificaciones de partida, el proceso de creación y, lo más importante, el resultado final listo para su uso.
+Este post es el resultado de ese experimento, la creación de una [aplicación propia de estudio con *flashcards* (tarjetas de memoria)](https://datalaria.com/apps/flashcards).
+
+{{< app-ref slug="flashcards" >}} Vamos a ver las especificaciones de partida, el proceso de creación y, lo más importante, el resultado final listo para su uso.
 
 ### Más Allá de Anki y Quizlet: La Búsqueda de la Simplicidad a Medida
 
@@ -84,6 +86,6 @@ Espero que esta herramienta os sea de utilidad. Os invito a probarla [app de *fl
 ---
 
 #### Fuentes y Recursos:
-* **Prueba la App**: [Aplicación de Estudio - Flashcards](https://datalaria.com/apps/flashcards)
+* **Prueba la App**: [Aplicación de Estudio - Flashcards](https://datalaria.com/apps/flashcards) | [Ver Ficha Técnica y Evolución de Flashcards AI](/es/apps/flashcards/)
 * **Código Fuente**: [Repositorio del Proyecto en GitHub](https://github.com/dalaez/flashcards-app)
 * **Google AI Studio**[Google AI Studio](https://aistudio.google.com/app/api-keys)

@@ -31,6 +31,8 @@ The clearest example of this copilotage is how a language model can help us crea
 
 To put this skill to the test, we're going to create a **learning game for basic math operations aimed at preschool and elementary school children between 5 and 7 years old**.
 
+{{< app-ref slug="maths" >}}
+
 The goal was simple: a webpage that would teach and allow practice of basic mathematical operations (addition, subtraction, multiplication, and division) by learning levels, making it engaging for users.
 
 ### The Recipe: The Detailed Prompt (and its Refinement) is Key
@@ -94,4 +96,4 @@ We'll talk about that in one of our next posts, where we'll explore the creation
 #### Sources and Resources:
 * **Founderz**: [Official site](https://founderz.com/)
 * **OpenAI**: [ChatGPT](https://chat.openai.com/)
-* **App's Page**: [My math app for kids created with ChatGPT](https://datalaria.com/apps/maths)
+* **App's Page**: [Live Math App for Kids](https://datalaria.com/apps/maths) | [View Interactive Maths Technical Details & Evolution](/en/apps/maths/)

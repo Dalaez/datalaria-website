@@ -1,0 +1,129 @@
+slug: maths
+order: 70
+tier: lab
+status: frozen
+icon: "🧮"
+cover: cover.png
+app_url: /apps/maths/
+source_spec: specs/apps/maths/spec.md
+current_version: v1.0.0
+
+title:
+  es: "Matemáticas Interactivas"
+  en: "Interactive Maths"
+
+tagline:
+  es: "Juego educativo gamificado para el entrenamiento de cálculo mental en 4 niveles con copilotaje de IA."
+  en: "Gamified educational web game for mental math arithmetic training across 4 mastery levels built with AI."
+
+summary:
+  es: "Aplicación interactiva diseñada para la enseñanza y práctica lúdica de las cuatro operaciones aritméticas elementales (sumas, restas, multiplicaciones y divisiones) en niños de infantil y primaria. Creada íntegramente mediante pair-programming guiado por IA (ChatGPT y metodología Prompt Engineering de Founderz), ofrece explicaciones teóricas visuales, selección de dificultad (1 y 2 dígitos) y feedback motivador inmediato con emoticonos y sonidos sin requerir librerías externas."
+  en: "Interactive educational game designed for engaging mental arithmetic practice (addition, subtraction, multiplication, and division) for primary school students. Built entirely through AI-guided pair programming (ChatGPT and Founderz Prompt Engineering methodology), it features conceptual visual tutorials, difficulty tiers (1 and 2 digits), and instant motivational reinforcement with sounds and dynamic emojis without external dependencies."
+
+objectives:
+  - es: "Crear un entorno interactivo y accesible para el entrenamiento del cálculo mental y las operaciones matemáticas básicas."
+    en: "Create an interactive and accessible web game for mental math practice and basic arithmetic operations."
+  - es: "Diseñar un sistema progresivo adaptado para niños y estudiantes de primaria con 4 niveles de aprendizaje y dificultad seleccionable."
+    en: "Design a progressive learning system adapted for primary school students with 4 mastery tiers and customizable difficulty."
+  - es: "Implementar un ciclo completo de feedback formativo con explicaciones conceptuales previas, puntuación y mensajes motivadores."
+    en: "Implement a comprehensive formative feedback loop with conceptual tutorials, real-time score tracking, and motivational reinforcement."
+  - es: "Documentar y demostrar el potencial del pair-programming asistido por IA (ChatGPT / Prompt Engineering) para construir aplicaciones completas desde cero."
+    en: "Document and showcase the power of AI-assisted pair programming (ChatGPT / Prompt Engineering) to build complete, functional apps from scratch in minutes."
+
+features:
+  - icon: "➕"
+    es: "4 Operaciones Fundamentales: selección independiente de Sumas, Restas, Multiplicaciones y Divisiones."
+    en: "4 Fundamental Operations: individual selection of Addition, Subtraction, Multiplication, and Division."
+  - icon: "🎓"
+    es: "4 Niveles Escolares Progresivos: Infantil 1 y 2, Primaria 1 y 2 con adaptación algorítmica de los rangos numéricos."
+    en: "4 Progressive Academic Tiers: Kindergarten 1 & 2, Primary 1 & 2 with algorithmic number range adaptation."
+  - icon: "🎯"
+    es: "Control de Dificultad: alternativa entre cálculos sencillos de 1 dígito o retos matemáticos avanzados de 2 dígitos."
+    en: "Custom Difficulty Controls: toggle between simple 1-digit foundations or advanced 2-digit arithmetic challenges."
+  - icon: "💡"
+    es: "Módulo Teórico Previo: pantalla pedagógica con explicaciones visuales de cada operación antes de empezar a jugar."
+    en: "Conceptual Tutorial Module: didactic introductory screen visually explaining each arithmetic concept before practice."
+  - icon: "🎉"
+    es: "Gamificación y Motivación: marcador de aciertos, temporizador opcional, emoticonos reactivos y felicitaciones animadas."
+    en: "Gamified Reinforcement: real-time scorekeeper, optional round timer, reactive emojis, and animated positive feedback."
+
+design:
+  architecture:
+    es: "Arquitectura SPA autocontenida y reactiva en cliente: la aplicación genera retos matemáticos pseudoaleatorios dentro de los rangos numéricos acotados por el nivel seleccionado. La validación de respuestas y el cálculo del marcador se procesan en la memoria local del navegador, actualizando el DOM reactivamente sin dependencias de red."
+    en: "Self-contained reactive client-side SPA: the application procedurally generates random arithmetic problems bounded by the selected grade level. Answer validation and score tallying run inside the browser's local runtime, updating the DOM reactively with zero network dependencies."
+  principles:
+    - es: "Pedagogía Positiva: el error se acompaña de pistas y explicaciones amigables sin penalizaciones punitivas."
+      en: "Positive Pedagogy: mistakes trigger encouraging hints and friendly correction without punitive penalties."
+    - es: "Accesibilidad e Inmediatez: cero tiempos de carga, interfaz de alto contraste táctil apta para tablets y móviles."
+      en: "Immediate Accessibility: zero load times, high-contrast touch interface optimized for tablets and mobile devices."
+    - es: "Simplicidad Arquitectónica: todo el código HTML, CSS y JavaScript vive de forma autónoma y transparente."
+      en: "Architectural Simplicity: clean, self-contained HTML, CSS, and JavaScript delivering full offline autonomy."
+  diagram: |
+    flowchart LR
+      START["Inicio (Selección Nivel / Dificultad)"] --> TUTO["Módulo Teórico de Aprendizaje"]
+      START --> GAME["Pantalla de Operaciones"]
+      GAME --> GEN["Generador Procedural de Retos"]
+      GEN --> EVAL{"Validación de Respuesta"}
+      EVAL -- "Correcto" --> REWARD["Feedback Positivo & +Puntos"]
+      EVAL -- "Incorrecto" --> HINT["Pista / Corrección Amigable"]
+      REWARD --> NEXT["Siguiente Operación"]
+      HINT --> NEXT
+      NEXT --> STATS["Resumen de Sesión & Logros"]
+
+tech:
+  - layer: frontend
+    items: ["HTML5", "CSS3 (Flexbox & Animaciones)", "Vanilla JS"]
+  - layer: pedagogy
+    items: ["Generación procedimental acotada a niveles escolares (5 a 7 años)"]
+  - layer: ai_methodology
+    items: ["Prompt Engineering iterativo", "ChatGPT (OpenAI)", "Metodología Founderz"]
+  - layer: hosting
+    items: ["Hugo Static Engine (/apps/maths/)"]
+
+posts:
+  - slug:
+      es: founderz-programando-chatGPT
+      en: founderz-coding-chatGPT
+    part: 1
+
+releases:
+  - version: v1.0.0
+    date: "2025-09-11"
+    state: released
+    type: release
+    title:
+      es: "Lanzamiento oficial de Matemáticas Interactivas con 4 niveles escolares y despliegue bilingüe"
+      en: "Official Interactive Maths release featuring 4 academic tiers and bilingual deployment"
+    changes:
+      - es: "Integración de las 4 operaciones (suma, resta, multiplicación, división) y 4 niveles escolares."
+        en: "Integration of 4 core operations (addition, subtraction, multiplication, division) and 4 school tiers."
+      - es: "Control de dificultad de 1 y 2 dígitos con módulo conceptual de aprendizaje previo."
+        en: "1 and 2-digit difficulty toggle with introductory didactic learning module."
+      - es: "Marcador de puntuación gamificado con emoticonos dinámicos y feedback auditivo."
+        en: "Gamified scorekeeper with reactive emojis and friendly auditory feedback."
+      - es: "Soporte de localización con rutas independientes en español (/es/) e inglés (/en/)."
+        en: "Localization support with independent routes in Spanish (/es/) and English (/en/)."
+      - es: "Estado congelado como proyecto educativo y testimonio de pair-programming con IA."
+        en: "Frozen state as an educational showcase and AI pair-programming case study."
+
+  - version: v0.5.0
+    date: "2025-09-05"
+    state: released
+    type: feature
+    title:
+      es: "Multiplicación, división y temporizador"
+      en: "Multiplication, division, and round timer"
+    changes:
+      - es: "Adición de operaciones avanzadas de multiplicación y división y temporizador por ronda."
+        en: "Addition of advanced multiplication and division operations with interactive round timer."
+
+  - version: v0.1.0
+    date: "2025-08-28"
+    state: released
+    type: feature
+    title:
+      es: "Primer prototipo funcional con sumas y restas"
+      en: "First functional prototype with addition and subtraction"
+    changes:
+      - es: "Prototipo inicial interactivo de sumas y restas generado en diálogo guiado con ChatGPT."
+        en: "Initial interactive arithmetic prototype generated through guided ChatGPT conversation."

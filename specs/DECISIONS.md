@@ -105,3 +105,17 @@
 - **Consecuencias:**
   - Cumplimiento absoluto del Firewall de Directorios: cero archivos `.py`, `.sql`, `.env`, `.pyc` ni `.git` en todo el árbol de `static/` ni en `public/`.
   - Preparación limpia de la base para el Hito 3.2 (Reorganización Visual del Escaparate de Apps).
+
+---
+
+## ADR-010: Fichas Data-Driven, Portadas 16:10 y Estandarización de las 4 Apps Legacy (#4 a #7)
+- **Fecha:** 2026-10-25
+- **Estado:** Aceptado e Implementado
+- **Contexto:** Las 4 aplicaciones secundarias de laboratorio (`snake`, `flashcards`, `conversor`, `maths`) carecían de páginas de ficha técnica dedicadas (`/{lang}/apps/<slug>/`), apoyándose únicamente en un fallback en `layouts/apps/list.html` sin soporte para portadas visuales, objetivos, diagramas de arquitectura ni historial de versiones SemVer. Además, sus artículos en el blog no contaban con el shortcode interactivo `app-ref`.
+- **Decisión:**
+  1. **Estandarización Data-Driven Completa:** Crear `data/apps/<slug>.yaml`, `specs/apps/<slug>/spec.md` y bundles `content/{es,en}/apps/<slug>/index.md` para las 4 apps legacy, documentando objetivos, diagramas Mermaid, stack técnico y changelogs SemVer que explican su estado final congelado.
+  2. **Portadas Nativas 16:10 (1280x800):** Generar portadas optimizadas en relación 16:10 para cada app (`cover.png`) que se adaptan a las tarjetas del catálogo (`.Fill "800x500"`) y a los encabezados Hero (`.Resize "1200x"`) sin recortes accidentales ni barras negras.
+  3. **Bidireccionalidad Blog ⇔ App (Constitución Art. 7):** Insertar el shortcode `{{< app-ref slug="..." >}}` y enlaces a la ficha técnica en los 8 artículos de referencia (ES y EN).
+- **Consecuencias:**
+  - Catálogo 100% data-driven: las 7 aplicaciones activas cuentan con el mismo estándar de calidad documental y visual.
+  - Cero discrepancias o campos vacíos en compilación; 2.091 páginas generadas con código 0.

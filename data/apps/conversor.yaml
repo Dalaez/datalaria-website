@@ -1,0 +1,131 @@
+slug: conversor
+order: 60
+tier: lab
+status: frozen
+icon: "🔄"
+cover: cover.png
+app_url: /apps/conversor/
+source_spec: specs/apps/conversor/spec.md
+current_version: v1.0.0
+
+title:
+  es: "Conversor de Unidades"
+  en: "Unit Converter"
+
+tagline:
+  es: "Navaja suiza digital para conversiones científicas y técnicas en 6 disciplinas de ingeniería."
+  en: "Digital Swiss Army knife for scientific and engineering unit conversions across 6 core disciplines."
+
+summary:
+  es: "Suite integral y multipágina de conversión de unidades de medida diseñada para ingenieros, científicos y estudiantes técnicos. Agrupa 6 calculadoras especializadas: Dimensión, Energía, Tiempo, Mecánica, Informática y Radiofrecuencia. Integra un conversor en vivo de formato de separador numérico (punto vs coma) y realiza todos los cálculos normalizando analíticamente a las unidades base del Sistema Internacional (SI) con cero dependencias externas."
+  en: "Comprehensive multi-page unit conversion suite designed for engineers, scientists, and STEM students. Groups 6 dedicated modules: Dimension, Energy, Time, Mechanics, Computing, and Radiofrequency. Features live bidirectional number formatting conversion (decimal point vs comma) and executes all math normalized around canonical International System (SI) base units with zero external dependencies."
+
+objectives:
+  - es: "Proporcionar una navaja suiza digital para realizar conversiones de magnitudes científicas y de ingeniería de forma instantánea, precisa y sin publicidad."
+    en: "Provide a digital Swiss Army knife for instantaneous, precise, and ad-free scientific and engineering unit conversions."
+  - es: "Abarcar 6 disciplinas clave: Dimensión (longitud, área, volumen), Energía/Potencia, Tiempo, Mecánica (fuerza, presión), Informática/Datos y Radiofrecuencia."
+    en: "Cover 6 core disciplines: Dimension (length, area, volume), Energy/Power, Time, Mechanics (force, pressure), Computing/Data, and Radiofrequency."
+  - es: "Normalizar analíticamente todas las fórmulas tomando como base el Sistema Internacional (SI) para garantizar máxima fidelidad numérica."
+    en: "Analytically normalize all formulas around canonical International System (SI) base units to guarantee maximum numerical fidelity."
+  - es: "Asegurar un funcionamiento 100% offline, ultraligero y con paridad bilingüe completa en español e inglés."
+    en: "Ensure 100% offline, ultra-lightweight performance with full bilingual parity across Spanish and English."
+
+features:
+  - icon: "📐"
+    es: "6 Módulos Especializados: Dimensión (m, ft, in), Energía (J, kWh, BTU), Tiempo, Mecánica (N, Bar, PSI), Informática (Bytes, GB) y Radiofrecuencia (dBm, λ)."
+    en: "6 Dedicated Modules: Dimension (m, ft, in), Energy (J, kWh, BTU), Time, Mechanics (N, Bar, PSI), Computing (Bytes, GB), and Radiofrequency (dBm, λ)."
+  - icon: "🔢"
+    es: "Conversor de Separador Decimal: alterna instantáneamente entre punto (.) y coma (,) para cifras de miles y decimales internacionales."
+    en: "Decimal Separator Converter: instantly toggle between dot (.) and comma (,) formatting for international thousands and decimal figures."
+  - icon: "📡"
+    es: "Fórmulas Avanzadas de RF: conversor de potencia en escala logarítmica (dBm a vatios) y relación frecuencia-longitud de onda electromagnética."
+    en: "Advanced RF Math: logarithmic power conversion (dBm to Watts) and electromagnetic frequency-to-wavelength relationship calculations."
+  - icon: "⚡"
+    es: "Cero Dependencias: código puro en HTML5 semántico, CSS moderno y JavaScript Vanilla para una carga ultrarrápida en cualquier dispositivo."
+    en: "Zero Dependencies: pure semantic HTML5, modern CSS, and Vanilla JavaScript guaranteeing instant loading across all devices."
+  - icon: "🌐"
+    es: "Arquitectura Espejo Bilingüe: páginas dedicadas y explicaciones físicas traducidas al 100% en rutas `/es/` y `/en/`."
+    en: "Bilingual Mirror Architecture: dedicated pages and physical concept explainers 100% localized across `/es/` and `/en/` routes."
+
+design:
+  architecture:
+    es: "Arquitectura modular estática desacoplada: cada disciplina física cuenta con su propia pantalla de conversión (`dimension.html`, `energia.html`, etc.) orquestada desde un índice principal. Las conversiones normalizan el valor de entrada a la unidad base del SI antes de proyectarlo analíticamente a la unidad solicitada."
+    en: "Decoupled static modular architecture: each physical domain is encapsulated in an isolated conversion page (`dimension.html`, `energy.html`, etc.) routed from a central hub. Input numbers are systematically normalized to canonical SI base units before projecting to target units."
+  principles:
+    - es: "Rigor Metrológico: estandarización sobre las definiciones del Sistema Internacional (SI) y constantes físicas CODATA."
+      en: "Metrological Rigor: standardized on official International System (SI) definitions and CODATA fundamental constants."
+    - es: "Velocidad y Cero Bloqueo: todo cálculo se procesa en el hilo principal del navegador en microsegundos sin requerir peticiones de red."
+      en: "Instantaneous Speed: all arithmetic runs on the browser's main thread in microseconds with zero network roundtrips."
+    - es: "Didáctica y Contexto: cada pantalla explica conceptualmente la magnitud física medida para educar al usuario durante el cálculo."
+      en: "Educational Context: each conversion screen provides didactic background on the physical quantity being measured."
+  diagram: |
+    flowchart LR
+      INDEX["Página Principal (Categorías & Separador Decimal)"] --> DIMS["Dimensión (m, m², m³)"]
+      INDEX --> ENERG["Energía & Potencia (J, kWh, HP)"]
+      INDEX --> TIEMP["Tiempo & Frecuencia (s, h, días)"]
+      INDEX --> MECAN["Mecánica (N, Bar, PSI)"]
+      INDEX --> INFOR["Informática (Bytes, GiB, Bits)"]
+      INDEX --> RADIO["Radiofrecuencia (Hz, dBm, λ)"]
+      DIMS --> SI[("Cálculo Normalizado Base SI")]
+      ENERG --> SI
+      TIEMP --> SI
+      MECAN --> SI
+      INFOR --> SI
+      RADIO --> SI
+      SI --> RES["Resultado Instantáneo en Pantalla"]
+
+tech:
+  - layer: frontend
+    items: ["Vanilla JS (ES6+)", "HTML5 semántico", "CSS Grid & Flexbox"]
+  - layer: standards
+    items: ["Sistema Internacional de Unidades (SI)", "Constantes Físicas CODATA"]
+  - layer: i18n
+    items: ["Soporte bilingüe espejo (rutas /es/ y /en/)"]
+  - layer: hosting
+    items: ["Hugo Static Engine (/apps/conversor/)"]
+
+posts:
+  - slug:
+      es: app_conversor_unidades
+      en: app_unit_converter
+    part: 1
+
+releases:
+  - version: v1.0.0
+    date: "2025-10-04"
+    state: released
+    type: release
+    title:
+      es: "Lanzamiento oficial del Conversor Universal Pro con 6 módulos especializados y soporte bilingüe"
+      en: "Official Unit Converter release featuring 6 specialized modules and bilingual mirror"
+    changes:
+      - es: "Despliegue de los 6 módulos completos: Dimensión, Energía, Tiempo, Mecánica, Informática y Radiofrecuencia."
+        en: "Deployment of all 6 modules: Dimension, Energy, Time, Mechanics, Computing, and Radiofrequency."
+      - es: "Herramienta de conversión de separador decimal y miles (formato punto y coma internacional)."
+        en: "Decimal and thousands separator format converter (international dot and comma notation)."
+      - es: "Implementación bilingüe completa con rutas espejo y textos explicativos en español e inglés."
+        en: "Full bilingual mirror implementation with localized routes and explanatory documentation in ES and EN."
+      - es: "Estado congelado como herramienta técnica de referencia permanente."
+        en: "Frozen state as a permanent static reference tool."
+
+  - version: v0.5.0
+    date: "2025-09-28"
+    state: released
+    type: feature
+    title:
+      es: "Incorporación de módulos de Mecánica y Radiofrecuencia"
+      en: "Addition of Mechanics and Radiofrequency modules"
+    changes:
+      - es: "Añadidas conversiones de presión (Pascal, Bar, PSI) y potencia electromagnética (dBm a Watts)."
+        en: "Added pressure conversions (Pascal, Bar, PSI) and electromagnetic power (dBm to Watts)."
+
+  - version: v0.1.0
+    date: "2025-09-20"
+    state: released
+    type: feature
+    title:
+      es: "Prototipo inicial con magnitudes lineales y formateador numérico"
+      en: "Initial prototype with linear magnitudes and number formatter"
+    changes:
+      - es: "Cálculos básicos de longitud, masa y conversor simple de coma a punto."
+        en: "Basic length and mass calculations with simple comma-to-dot converter."
