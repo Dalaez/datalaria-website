@@ -338,24 +338,43 @@
           </div>
         {{- end -}}
       </div>
-    {{- else -}}
-      <div class="app-cta-banner">
-        <h3>{{ cond (eq $lang "es") "¿Quieres implementar este sistema en tu organización o aprender más?" "¿Want to deploy this architecture or explore custom solutions?" }}</h3>
-        <p>{{ cond (eq $lang "es") "Suscríbete a la newsletter mensual de Datalaria para recibir el código fuente, análisis arquitectónicos y nuevos demostradores." "Subscribe to Datalaria's newsletter to receive full source code, architectural breakdowns, and new system releases." }}</p>
-        <div class="app-cta-buttons">
-          {{- if $app.app_url -}}
-          <a href="{{ $app.app_url }}" class="app-btn app-btn-primary" target="_blank" rel="noopener">
-            {{- cond (eq $lang "es") "Usar la Aplicación Ahora ↗" "Launch Application ↗" -}}
-          </a>
-          {{- end -}}
-          {{- with $app.demo_url -}}
-          <a href="{{ . }}" class="app-btn app-btn-demo" target="_blank" rel="noopener">
-            {{- cond (eq $lang "es") "Explorar Demo Interactiva 🚀" "Try Interactive Demo 🚀" -}}
-          </a>
-          {{- end -}}
-        </div>
-      </div>
     {{- end -}}
+
+    <div class="app-cta-banner">
+      <h3>{{ cond (eq $lang "es") "¿Quieres profundizar en esta arquitectura o proponer nuevas mejoras?" "Want to deploy this architecture or explore custom solutions?" }}</h3>
+      <p>{{ cond (eq $lang "es") "Si te interesa implementar esta arquitectura en tu organización, explorar adaptaciones a medida o tienes propuestas para evolucionar la aplicación, escríbeme directamente." "If you are interested in deploying this architecture, exploring custom solutions for your organization, or proposing new features to evolve the app, get in touch directly." }}</p>
+      
+      {{- $contactMail := printf "mailto:contacto@datalaria.com?subject=%s%s&body=%s%s%s"
+          (cond (eq $lang "es") "Consulta o Propuesta sobre App: " "Inquiry or Proposal regarding App: ")
+          $title
+          (cond (eq $lang "es") "Hola, me gustaría profundizar sobre la App " "Hello, I would like to explore more about the App ")
+          $title
+          (cond (eq $lang "es") " o proponer las siguientes mejoras:%0A%0A" " or propose the following ideas:%0A%0A") -}}
+      
+      <div class="app-cta-buttons">
+        {{- if $app.app_url -}}
+        <a href="{{ $app.app_url }}" class="app-btn app-btn-primary" target="_blank" rel="noopener">
+          {{- cond (eq $lang "es") "Usar la Aplicación Ahora ↗" "Launch Application ↗" -}}
+        </a>
+        {{- end -}}
+        {{- with $app.demo_url -}}
+        <a href="{{ . }}" class="app-btn app-btn-demo" target="_blank" rel="noopener">
+          {{- cond (eq $lang "es") "Explorar Demo Interactiva 🚀" "Try Interactive Demo 🚀" -}}
+        </a>
+        {{- end -}}
+        <a href="{{ $contactMail }}" class="app-btn app-btn-contact" title="{{ cond (eq $lang "es") "Escríbeme por email" "Send an email inquiry" }}">
+          {{- cond (eq $lang "es") "Contactar / Proponer Mejoras ✉️" "Contact / Propose Ideas ✉️" -}}
+        </a>
+      </div>
+
+      <p class="app-cta-contact-note">
+        {{- cond (eq $lang "es") "También puedes escribirme a través del" "You can also reach out through the" }}
+        <a href="{{ cond (eq $lang "es") "/es/contact/" "/en/contact/" }}" class="app-cta-contact-link">
+          {{- cond (eq $lang "es") "formulario de contacto" "contact form" -}}
+        </a>
+        (contacto@datalaria.com).
+      </p>
+    </div>
   </section>
 
   {{- /* Optional custom markdown content from page body */ -}}

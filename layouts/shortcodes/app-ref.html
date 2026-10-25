@@ -49,6 +49,15 @@
         {{- cond (eq $lang "es") "Probar Demo 🚀" "Try Demo 🚀" -}}
       </a>
       {{- end -}}
+      {{- $contactMail := printf "mailto:contacto@datalaria.com?subject=%s%s&body=%s%s%s"
+          (cond (eq $lang "es") "Consulta sobre App: " "Inquiry regarding App: ")
+          $title
+          (cond (eq $lang "es") "Hola, me gustaría profundizar sobre la App " "Hello, I would like to explore more about the App ")
+          $title
+          (cond (eq $lang "es") " o proponer nuevas mejoras:%0A%0A" " or propose new ideas:%0A%0A") -}}
+      <a href="{{ $contactMail }}" class="app-btn app-btn-contact" title="{{ cond (eq $lang "es") "Contactar con el autor" "Contact the author" }}">
+        {{- cond (eq $lang "es") "Contactar ✉️" "Contact ✉️" -}}
+      </a>
     </div>
   </div>
 {{- else -}}
