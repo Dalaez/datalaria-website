@@ -240,6 +240,82 @@
   background: var(--border);
 }
 
+.app-card-btn-post {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--secondary);
+}
+
+.app-card-btn-post:hover {
+  background: var(--entry);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.app-card-btn-b2b {
+  background: linear-gradient(135deg, rgba(234, 88, 12, 0.1) 0%, rgba(249, 115, 22, 0.15) 100%);
+  border: 1px solid rgba(249, 115, 22, 0.4);
+  color: #ea580c;
+  font-weight: 700;
+}
+
+.app-card-btn-b2b:hover {
+  background: #ea580c;
+  color: #ffffff;
+  border-color: #ea580c;
+}
+
+.app-badge-b2b {
+  background: rgba(234, 88, 12, 0.85);
+  color: #ffffff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.app-card-b2b-notice {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0.25rem 0 0.5rem 0;
+  padding: 4px 10px;
+  background: rgba(234, 88, 12, 0.08);
+  border: 1px dashed rgba(234, 88, 12, 0.3);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  color: #ea580c;
+  font-weight: 600;
+}
+
+.apps-tier-nav {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 1.5rem 0 2rem 0;
+}
+
+.apps-tier-pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  background: var(--entry);
+  border: 1px solid var(--border);
+  color: var(--primary);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.apps-tier-pill:hover {
+  background: var(--primary);
+  color: var(--theme);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
 /* --------------------------------------------------------------------------
    3. Dedicated App Single Page (.app-single-container)
    -------------------------------------------------------------------------- */

@@ -125,11 +125,11 @@ Tras auditar todos los artículos de `/content/es/posts/` y `/content/en/posts/`
     2. **Higiene de Seguridad:** Mover las carpetas inéditas `static/apps/project-ops/` y `static/apps/sop-pipeline/` fuera de `static/` hacia `apps/_incubadora/` con sus `.gitignore` dedicados y `README.md`.
     3. **Estandarización de Fichas Legacy:** Crear fichas dedicadas en `content/{es,en}/apps/`, metadatos en `data/apps/`, especificaciones en `specs/apps/`, portadas 16:10 (`cover.png`) e inserción del shortcode `app-ref` y enlaces a ficha en los 8 posts asociados para las 4 apps legacy (`snake`, `flashcards`, `conversor`, `maths`).
   - *Gate de Verificación:* `hugo --renderToMemory` compila las 2.091 páginas con código 0 en 75.0s; cero archivos `.py`, `.sql`, `.env`, `.pyc` ni `.git` en todo el árbol `static/`. (Completado el 2026-10-25 ✅).
-- [ ] **Hito 3.2: Especificación del Portal y Reorganización Visual de `/es/apps/` y `/en/apps/`**
+- [x] **Hito 3.2: Especificación del Portal y Reorganización Visual de `/es/apps/` y `/en/apps/`**
   - *Acción:*
     1. Crear `/specs/portal/spec.md`.
-    2. Actualizar `/content/es/apps/_index.md` y `/content/en/apps/_index.md` con las **7 aplicaciones activas**, jerarquizando arriba las aplicaciones principales (`LifeOps`, `Agentic Radar`, `Weather`) y debajo la sección de laboratorio/arcade (`Neon Snake`, `Flashcards`, `Unit Converter`, `Maths`), añadiendo en **todas** el botón secundario **"Leer Post / Read Post"** hacia su artículo publicado (como ya hace `Neon Snake`) y conectando las B2B con las Suites de Lemon Squeezy.
-  - *Gate de Verificación:* Paridad exacta ES/EN; todos los enlaces a Apps y Posts responden `200 OK`.
+    2. Actualizar `/content/es/apps/_index.md` y `/content/en/apps/_index.md` con las **7 aplicaciones activas**, jerarquizando arriba las aplicaciones principales (`LifeOps`, `Agentic Radar`, `Weather`) y debajo la sección de laboratorio/arcade (`Neon Snake`, `Flashcards`, `Unit Converter`, `Maths`), añadiendo en **todas** el botón secundario **"Leer Post / Read Post"** hacia su artículo publicado y conectando las B2B con las Suites de Lemon Squeezy (`/recursos/`).
+  - *Gate de Verificación:* Paridad exacta ES/EN; 7 botones "Leer Post" y 1 botón "Suite B2B" validados determinísticamente en el HTML generado de `/es/apps/` y `/en/apps/`; compilación de 2.091 páginas con código 0. (Completado el 2026-10-25 ✅).
 
 ---
 
@@ -149,3 +149,4 @@ Tras auditar todos los artículos de `/content/es/posts/` y `/content/en/posts/`
 | 2026-10-24 | `Ajuste Plan` | Alineación con las 7 Apps publicadas en `/apps/` y cruce con posts (`draft: false`). | Pospuestos `project-ops` (posts en `draft: true`) y `sop-pipeline` (sin web app) a la Fase 4 (Incubadora). Priorizadas las 7 apps activas empezando por `lifeops`. | ✅ Cerrado |
 | 2026-10-24 | `3.1` | Purgado de código inédito y `.git` huérfano en `static/` | Mover `project-ops` y `sop-pipeline` a `apps/_incubadora/`; purgar `.git` en `snake`; 0 violaciones en `static/`. | ✅ Cerrado |
 | 2026-10-25 | `3.1-Ext` | Fichas dedicadas, portadas 16:10 y shortcodes `app-ref` para las 4 Apps Legacy | Creados 4 specs, 4 YAMLs, 8 fichas markdown, 8 portadas 16:10 y actualizados 8 posts en ES/EN. 2.091 páginas compilan limpiamente. | ✅ Cerrado |
+| 2026-10-25 | `3.2` | Especificación del portal, píldoras por tiers, botones "Leer Post" y Suites B2B | Creado `specs/portal/spec.md`, modificado `app-card.html` y CSS. Verificados 7 enlaces de post y 1 B2B suite en ES/EN con script determinista. Cierre de Fase 3. | ✅ Cerrado |

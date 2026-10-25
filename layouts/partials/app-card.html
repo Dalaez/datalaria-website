@@ -42,6 +42,20 @@
   {{- $targetUrl = $appPage.RelPermalink -}}
 {{- end -}}
 
+{{- /* Resolve primary related post page */ -}}
+{{- $postPage := false -}}
+{{- with $app.posts -}}
+  {{- $firstPost := index . 0 -}}
+  {{- $postSlug := $firstPost.slug -}}
+  {{- if reflect.IsMap $firstPost.slug -}}
+    {{- $postSlug = index $firstPost.slug $lang | default $firstPost.slug.es -}}
+  {{- end -}}
+  {{- $postPage = $cxt.Site.GetPage (printf "/posts/%s" $postSlug) -}}
+{{- end -}}
+{{- if and (not $postPage) $app.post_slug -}}
+  {{- $postPage = $cxt.Site.GetPage (printf "/posts/%s" $app.post_slug) -}}
+{{- end -}}
+
 <article class="app-card-v2" data-tier="{{ $app.tier }}" data-status="{{ $status }}">
   <div class="app-card-media">
     {{- $coverImg := false -}}
@@ -60,6 +74,9 @@
 
     <div class="app-card-badges">
       <span class="app-badge app-badge-status app-badge-{{ $status }}">{{ $statusLabel }}</span>
+      {{- if eq $app.tier "b2b" -}}
+      <span class="app-badge app-badge-b2b">B2B Suite</span>
+      {{- end -}}
       {{- with $app.current_version -}}
       <span class="app-badge app-badge-version">{{ . }}</span>
       {{- end -}}
@@ -71,6 +88,14 @@
       <a href="{{ $targetUrl }}">{{ $title }}</a>
     </h3>
     <p class="app-card-tagline">{{ $tagline }}</p>
+
+    {{- /* Notice if B2B related product exists */ -}}
+    {{- with $app.related_products -}}
+    <div class="app-card-b2b-notice">
+      <span class="b2b-notice-icon">💼</span>
+      <span class="b2b-notice-text">{{ cond (eq $lang "es") "Recurso Ejecutivo B2B Disponible" "Executive B2B Resource Available" }}</span>
+    </div>
+    {{- end -}}
 
     {{- /* Tech stack chips (up to 4 items) */ -}}
     {{- $techItems := slice -}}
@@ -98,25 +123,23 @@
       <a href="{{ $appPage.RelPermalink }}" class="app-card-btn app-card-btn-primary">
         {{- cond (eq $lang "es") "Ver Ficha & Evolución →" "View Details & Evolution →" -}}
       </a>
-      {{- if $app.app_url -}}
+    {{- end -}}
+    {{- if $app.app_url -}}
+      {{- $openLabel := cond (eq $app.slug "snake") (cond (eq $lang "es") "Jugar ↗" "Play ↗") (cond (eq $lang "es") "Abrir App ↗" "Open App ↗") -}}
       <a href="{{ $app.app_url }}" class="app-card-btn app-card-btn-outline" target="_blank" rel="noopener">
-        {{- cond (eq $lang "es") "Abrir App ↗" "Open App ↗" -}}
+        {{- $openLabel -}}
       </a>
-      {{- end -}}
-    {{- else -}}
-      {{- if $app.app_url -}}
-      <a href="{{ $app.app_url }}" class="app-card-btn app-card-btn-primary" target="_blank" rel="noopener">
-        {{- cond (eq $lang "es") "Abrir App ↗" "Open App ↗" -}}
+    {{- end -}}
+    {{- if $postPage -}}
+      <a href="{{ $postPage.RelPermalink }}" class="app-card-btn app-card-btn-outline app-card-btn-post">
+        {{- cond (eq $lang "es") "Leer Post" "Read Post" -}}
       </a>
-      {{- end -}}
-      {{- with $app.post_slug -}}
-        {{- $postPage := $cxt.Site.GetPage (printf "/posts/%s" .) -}}
-        {{- if $postPage -}}
-        <a href="{{ $postPage.RelPermalink }}" class="app-card-btn app-card-btn-outline">
-          {{- cond (eq $lang "es") "Leer Post" "Read Post" -}}
-        </a>
-        {{- end -}}
-      {{- end -}}
+    {{- end -}}
+    {{- with $app.related_products -}}
+      {{- $recUrl := cond (eq $lang "es") "/es/recursos/" "/en/resources/" -}}
+      <a href="{{ $recUrl }}" class="app-card-btn app-card-btn-b2b">
+        {{- cond (eq $lang "es") "Suite B2B ⚡" "B2B Suite ⚡" -}}
+      </a>
     {{- end -}}
   </div>
   <a class="entry-link" aria-label="{{ $title }}" href="{{ $targetUrl }}"></a>

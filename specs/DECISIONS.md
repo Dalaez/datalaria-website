@@ -119,3 +119,22 @@
 - **Consecuencias:**
   - Catálogo 100% data-driven: las 7 aplicaciones activas cuentan con el mismo estándar de calidad documental y visual.
   - Cero discrepancias o campos vacíos en compilación; 2.091 páginas generadas con código 0.
+
+---
+
+## ADR-011: Reorganización Visual del Escaparate de Apps, Botones Multi-Acción y Conexión B2B
+- **Fecha:** 2026-10-25
+- **Estado:** Aceptado e Implementado (Cierre de la Fase 3)
+- **Contexto:**
+  1. Con las 7 aplicaciones formalizadas bajo fichas data-driven, el listado `/apps/` requería una jerarquización visual clara y componentes interactivos completos.
+  2. Anteriormente, las tarjetas solo ofrecían el enlace a la Ficha o a la App en vivo, pero los usuarios no contaban con un botón directo para acceder al artículo técnico publicado (como hacía originalmente `Neon Snake`).
+  3. La aplicación B2B (`obs-management`) no destacaba visualmente su vinculación comercial con los recursos ejecutivos de Lemon Squeezy en el catálogo.
+- **Decisión:**
+  1. **Especificación Canónica del Portal:** Consolidar [`specs/portal/spec.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/portal/spec.md) gobernando los tiers (`flagship`, `b2b`, `lab`), el contrato de datos y las reglas de diseño.
+  2. **Botón Universal "Leer Post / Read Post":** Modificar `layouts/partials/app-card.html` para resolver automáticamente el artículo publicado principal de cada app en el idioma activo (ES/EN) y renderizar un botón secundario estilizado.
+  3. **Conexión Directa con Suites B2B:** Integrar en las tarjetas de tier `b2b` el botón `"Suite B2B ⚡"` enlazando a `/es/recursos/` o `/en/resources/`, junto con un badge y nota ejecutiva.
+  4. **Píldoras de Navegación por Tiers:** Incorporar en la cabecera de `content/{es,en}/apps/_index.md` anclas directas (`#tier-flagship`, `#tier-b2b`, `#tier-lab`) para una exploración instantánea.
+- **Consecuencias:**
+  - Experiencia de usuario premium: navegación fluida en 1 clic entre Ficha técnica, App en vivo, Tutorial del blog y Suite B2B.
+  - 100% verificado determinísticamente mediante tests automatizados sobre el HTML compilado en ES y EN.
+  - Fase 3 cerrada formalmente con cero deuda técnica.

@@ -1,9 +1,15 @@
 ---
 title: "Apps & Experiments"
-description: "Tools, interactive applications, and experiments developed by Datalaria."
+description: "Interactive software tools, executive dashboards, and operational intelligence suites developed by Datalaria."
 hidemeta: true
 aliases:
   - /en/games/
 ---
 
-Here you will find a collection of tools, interactive applications, and experiments I have developed to explore modern technologies, experiment with AI, and solve everyday problems.
+Explore Datalaria's interactive software ecosystem. Every application is built on solid engineering first principles and backed by a comprehensive technical architecture series on the blog:
+
+<div class="apps-tier-nav">
+  <a href="#tier-flagship" class="apps-tier-pill">🚀 Flagship Applications</a>
+  <a href="#tier-b2b" class="apps-tier-pill">💼 B2B Suites & Operational Intelligence</a>
+  <a href="#tier-lab" class="apps-tier-pill">🕹️ Lab & Arcade</a>
+</div>
