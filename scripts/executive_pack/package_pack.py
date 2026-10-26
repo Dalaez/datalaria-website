@@ -71,7 +71,7 @@ la contraseña oficial es:
 de facilitación estratégica para tu Comité de Dirección?
 • Web: https://datalaria.com
 • Soporte y Consultoría: datalaria@gmail.com
-• LinkedIn: https://www.linkedin.com/in/daniel-al%C3%A1ez-ria%C3%B1o/
+• LinkedIn: https://www.linkedin.com/company/110125695/
 
 © 2026 Datalaria. Todos los derechos reservados.
 """
@@ -128,7 +128,7 @@ To unprotect sheets for custom architectural modifications, use the master passw
 For enterprise licensing, bespoke financial modeling, or C-Suite strategic facilitation:
 • Web: https://datalaria.com
 • Advisory Services: datalaria@gmail.com
-• LinkedIn: https://www.linkedin.com/in/daniel-al%C3%A1ez-ria%C3%B1o/
+• LinkedIn: https://www.linkedin.com/company/110125695/
 
 © 2026 Datalaria. All rights reserved.
 """

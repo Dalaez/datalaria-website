@@ -119,7 +119,7 @@ y Google Sheets (ver archivo adjunto LEEME_ACCESO_GOOGLE_SHEETS.txt en la raíz 
 Para workshops de facilitación con Comités de Dirección o modelización ad-hoc:
 • Web: https://datalaria.com
 • Email Corporativo de Soporte: {SUPPORT_EMAIL}
-• LinkedIn: https://www.linkedin.com/in/daniel-al%C3%A1ez-ria%C3%B1o/
+• LinkedIn: https://www.linkedin.com/company/110125695/
 
 © 2026 Datalaria. Todos los derechos reservados.
 """
@@ -191,7 +191,7 @@ and Google Sheets (see README_GOOGLE_SHEETS_ACCESS.txt at the root of this archi
 For steering committee facilitation workshops or custom decision modeling:
 • Web: https://datalaria.com
 • Corporate Support Email: {SUPPORT_EMAIL}
-• LinkedIn: https://www.linkedin.com/in/daniel-al%C3%A1ez-ria%C3%B1o/
+• LinkedIn: https://www.linkedin.com/company/110125695/
 
 © 2026 Datalaria. All rights reserved.
 """

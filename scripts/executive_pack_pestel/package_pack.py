@@ -103,7 +103,7 @@ LEEME_ACCESO_GOOGLE_SHEETS.txt en la raíz del paquete).
 Para workshops de facilitación con Comités de Dirección o modelización ad-hoc:
 • Web: https://datalaria.com
 • Email Corporativo: datalaria@gmail.com
-• LinkedIn: https://www.linkedin.com/in/daniel-al%C3%A1ez-ria%C3%B1o/
+• LinkedIn: https://www.linkedin.com/company/110125695/
 
 © 2026 Datalaria. Todos los derechos reservados.
 """
@@ -171,7 +171,7 @@ Drive and Google Sheets (see accompanying README_GOOGLE_SHEETS_ACCESS.txt).
 For enterprise licensing, bespoke financial modeling, or C-Suite strategic facilitation:
 • Web: https://datalaria.com
 • Advisory Services: datalaria@gmail.com
-• LinkedIn: https://www.linkedin.com/in/daniel-al%C3%A1ez-ria%C3%B1o/
+• LinkedIn: https://www.linkedin.com/company/110125695/
 
 © 2026 Datalaria. All rights reserved.
 """

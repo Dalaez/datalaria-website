@@ -1593,9 +1593,9 @@ html_code = f"""<!DOCTYPE html>
         <div class="footer-col">
           <h4>Contacto & Redes</h4>
           <ul class="footer-links">
-            <li><a href="https://www.linkedin.com/in/daniel-al%C3%A1ez-ria%C3%B1o/" target="_blank">LinkedIn ↗</a></li>
+            <li><a href="https://www.linkedin.com/company/110125695/" target="_blank">LinkedIn ↗</a></li>
             <li><a href="https://github.com/Dalaez" target="_blank">GitHub ↗</a></li>
-            <li><a href="https://twitter.com/Dalaez" target="_blank">X (Twitter) ↗</a></li>
+            <li><a href="https://x.com/datalaria" target="_blank">X (Twitter) ↗</a></li>
             <li><a href="/es/contact/">Formulario de Contacto</a></li>
           </ul>
         </div>
