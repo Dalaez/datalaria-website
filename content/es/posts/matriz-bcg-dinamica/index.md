@@ -46,7 +46,7 @@ flowchart TD
   original_price="19€"
   badge="★ Estándar Consultoría Tier-1"
   icon="⭐"
-  checkout_url="https://datalaria.lemonsqueezy.com/buy/matriz-bcg"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/52cf8aa6-a595-49fe-b470-421140317013"
   button_text="Descargar Kit Ahora (.ZIP) • 6€"
 >}}
 ¿Preparando la revisión anual de cartera o un Comité de Inversión y Finanzas? Descarga el motor cuantitativo en Excel con Gráfico de Burbujas dinámico, modelo de balance de liquidez de Henderson y presentación C-Level 16:9.
@@ -307,15 +307,17 @@ Bajo la facilitación estratégica del modelo, el Consejo de Administración de 
 Para directores generales (CEO), directores financieros (CFO), directores de estrategia corporativa y socios de firmas de asesoría y Private Equity que requieran implementar este modelo de estándar Tier-1 (McKinsey / BCG), hemos empaquetado todos los activos programáticos oficiales:
 
 {{< product-card
-  title="Matriz BCG Dinámica de Cartera"
-  category="Estrategia MBA"
+  title="Executive Decision Pack: Matriz BCG Dinámica & Asignación de Capital"
+  category="Estrategia Corporativa & Finanzas C-Level"
   price="6€"
-  original_price="19€"
-  badge="⭐ Gestión de Cartera"
+  original_price="29€"
+  badge="★ Estándar Consultoría Tier-1"
   icon="⭐"
+  preview_image="preview-pack.png"
+  preview_caption="Vista previa real de los entregables incluidos: Motor Excel (.xlsx) con Gráfico de Burbujas Dinámico y Balance de Fondos de Henderson, Presentación C-Level (.pptx 16:9) y Guía Metodológica (.pdf)."
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Guía Metodológica PDF"
-  features="Cálculo automático de Cuota de Mercado Relativa y Tasa de Crecimiento|Gráfico de burbujas dinámico con tamaño según facturación|Slide PPTX categorizando Estrellas, Vacas, Interrogantes y Perros|Guía PDF de asignación de capital"
-  checkout_url="https://datalaria.lemonsqueezy.com/buy/matriz-bcg"
+  features="Motor Excel (.xlsx) con 4 pestañas interconectadas, fórmulas matriciales protegidas y gráfico de burbujas dinámico con escala de facturación|Cálculo automático de Cuota de Mercado Relativa (CMR) y Tasa de Crecimiento del Mercado (TCM) con clasificación en 4 cuadrantes|Presentación PowerPoint (.pptx 16:9 Widescreen) editable bajo la Pirámide de Minto, Action Titles y Board Decision Gateway|Guía Metodológica Oficial en PDF (5 páginas) con formulación matemática, regla de reinversión de Henderson y FAQ de Consejo|Compatibilidad garantizada al 100% con Microsoft Excel y Google Sheets sin macros complejas"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/52cf8aa6-a595-49fe-b470-421140317013"
   button_text="Descargar Pack Completo (.ZIP) • 6€"
 >}}
 El archivo comprimido incluye la plantilla oficial en **Excel (.xlsx)** con fórmulas matriciales protegidas bajo contraseña proporcionada en las instrucciones y celdas de input 100% desbloqueadas, la presentación ejecutiva en **PowerPoint (.pptx 16:9 Widescreen)** bajo la Pirámide de Minto con gráfico de burbujas de alta resolución y Board Decision Gateway, la **Guía Metodológica en PDF** de 5 páginas y las instrucciones de importación directa a Google Sheets.

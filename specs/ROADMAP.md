@@ -141,6 +141,21 @@ Tras auditar todos los artículos de `/content/es/posts/` y `/content/en/posts/`
 
 ---
 
+### FASE 5: Nueva App de nicho "Datalaria Pulse" (Content Ops as Code) (sustituye la gestión editorial en Notion) — ver ADR-012
+*Objetivo: generar automáticamente desde el repo el registro editorial de posts, apps y kits (vistas tabla, kanban y calendario), dejar Notion y convertirlo en producto monetizable (Sandbox → Kit → Pro).*
+
+- [~] **Hito 5.0: Spec `specs/apps/pulse/spec.md`** — ADR-012 registrado (2026-10-25). Cerrado: nombre Datalaria Pulse, público B2B (documentación, SEO, marketing y medios), Sandbox público con métricas reales **relativas**, GA4 + Search Console, solo el Kit (Pro aparcado). Pendiente: visibilidad del repo, versión del Excel, Kit Lite gratuito sí/no.
+- [ ] **Hito 5.1: Modelo de datos** (tabla de activos post/app/kit, campos automáticos frente a manuales, `data/pulse/kits.yaml`).
+- [ ] **Hito 5.2: Generador `ops/pulse/build_index.py` + migración de Notion** (`migrate_notion.py` → `data/editorial/backlog.yaml`; `pytest`).
+- [ ] **Hito 5.3: Métricas GA4 + Search Console** (`sync_metrics.py`, `publish_public.py` con métricas relativas; test: el JSON público no contiene valores absolutos ni elementos privados).
+- [ ] **Hito 5.4: Automatización y adiós a Notion** (`.github/workflows/pulse.yml` en push + cron diario; regla en `AGENTS.md`; Excel privado generado).
+- [ ] **Hito 5.5: App web Sandbox** (tabla/kanban/calendario + panel de salud; `oxlint` + `vite build` + `hugo --gc --minify`).
+- [ ] **Hito 5.6: Kit descargable** (plantilla Excel rellenable + importador de Notion vía Power Query y Python + generador para repos + guías GA4/Search Console).
+- [ ] **Hito 5.7: Lanzamiento editorial** (5 posts ES/EN, ficha `/apps/pulse/`, producto en Lemon Squeezy y `/recursos/`).
+- [ ] **Hito 5.8: Medición a 30/60 días** → decisión sobre la suscripción Pro/Team (aparcada; ver ADR-012).
+
+---
+
 ## 📓 REGISTRO DE BLOQUEOS Y ROLLBACKS (AUDIT LOG)
 
 | Fecha | Hito | Incidencia / Motivo | Acción de Rollback / Resolución | Estado |
@@ -150,3 +165,4 @@ Tras auditar todos los artículos de `/content/es/posts/` y `/content/en/posts/`
 | 2026-10-24 | `3.1` | Purgado de código inédito y `.git` huérfano en `static/` | Mover `project-ops` y `sop-pipeline` a `apps/_incubadora/`; purgar `.git` en `snake`; 0 violaciones en `static/`. | ✅ Cerrado |
 | 2026-10-25 | `3.1-Ext` | Fichas dedicadas, portadas 16:10 y shortcodes `app-ref` para las 4 Apps Legacy | Creados 4 specs, 4 YAMLs, 8 fichas markdown, 8 portadas 16:10 y actualizados 8 posts en ES/EN. 2.091 páginas compilan limpiamente. | ✅ Cerrado |
 | 2026-10-25 | `3.2` | Especificación del portal, píldoras por tiers, botones "Leer Post" y Suites B2B | Creado `specs/portal/spec.md`, modificado `app-card.html` y CSS. Verificados 7 enlaces de post y 1 B2B suite en ES/EN con script determinista. Cierre de Fase 3. | ✅ Cerrado |
+| 2026-10-25 | `5.0` | Decisión de sustituir Notion por la App "Content Ops as Code" (Opción 3 + Sandbox público) | Registrado ADR-012 y Fase 5. Sin cambios de código. | 🟡 En curso |

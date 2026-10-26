@@ -344,6 +344,10 @@ Detalles ℹ️
 <h3 class="kit-card-title">Matriz BCG Dinámica de Cartera</h3>
 </div>
 </div>
+<div class="kit-card-preview" onclick="openModal('pack-bcg')" title="Ampliar vista previa de los entregables">
+<img src="/images/recursos/bcg-preview-es.png" alt="Vista previa Matriz BCG Dinámica de Cartera" loading="lazy">
+<span class="kit-preview-zoom-pill">🔍 Vista previa del Kit</span>
+</div>
 <p class="kit-card-desc">Cálculo automático de Cuota de Mercado Relativa, tasa de crecimiento y gráfico dinámico de burbujas según facturación.</p>
 <div class="kit-deliverables-row">
 <span class="deliv-chip">Excel .xlsx + Sheets</span>
@@ -360,7 +364,7 @@ Detalles ℹ️
 <button type="button" class="btn-kit-info" onclick="openModal('pack-bcg')">
 Detalles ℹ️
 </button>
-<span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
+<a href="/es/posts/matriz-bcg-dinamica/" class="btn-kit-info" title="Leer artículo técnico">Artículo técnico 📖</a>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/52cf8aa6-a595-49fe-b470-421140317013" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
@@ -833,7 +837,7 @@ Detalles ℹ️
             <button type="button" class="btn-kit-info" onclick="openModal('pack-bcg')">
               Detalles ℹ️
             </button>
-            <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
+            <a href="/es/posts/matriz-bcg-dinamica/" class="btn-kit-info" title="Leer artículo técnico">Artículo técnico 📖</a>
             <a href="https://datalaria.lemonsqueezy.com/checkout/buy/52cf8aa6-a595-49fe-b470-421140317013" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
           </div>
         </div>
@@ -1413,7 +1417,8 @@ Detalles ℹ️
         "Guía PDF de gestión de ciclo de vida de producto y flujo de caja"
       ],
       checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/52cf8aa6-a595-49fe-b470-421140317013",
-      guideUrl: null
+      guideUrl: "/es/posts/matriz-bcg-dinamica/",
+      previewImg: "/images/recursos/bcg-preview-es.png"
     },
 
     // 5. Matriz McKinsey / GE (DISPONIBLE)

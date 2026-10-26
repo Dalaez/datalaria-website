@@ -13,11 +13,14 @@ Thumbs.db
 /github.io/
 /temp_app_weather/
 
-# Environment variables (credenciales sensibles)
+# Environment variables y credenciales sensibles
 .env
 .env.local
 .env.*.local
 .linkedin_new_tokens.json
+service_account*.json
+*credentials*.json
+*.pem
 
 # Python artifacts
 __pycache__/

@@ -342,6 +342,10 @@ Details ℹ️
 <h3 class="kit-card-title">Dynamic BCG Portfolio Matrix</h3>
 </div>
 </div>
+<div class="kit-card-preview" onclick="openModal('pack-bcg')" title="Click to view deliverables preview">
+<img src="/images/recursos/bcg-preview-en.png" alt="Dynamic BCG Portfolio Matrix Preview" loading="lazy">
+<span class="kit-preview-zoom-pill">🔍 Kit Preview</span>
+</div>
 <p class="kit-card-desc">Automated Relative Market Share calculations, market growth rate tracking and revenue-scaled dynamic bubble charts.</p>
 <div class="kit-deliverables-row">
 <span class="deliv-chip">Excel .xlsx + Sheets</span>
@@ -358,7 +362,7 @@ Details ℹ️
 <button type="button" class="btn-kit-info" onclick="openModal('pack-bcg')">
 Details ℹ️
 </button>
-<span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Methodological guide coming soon on the blog">Guide ⏳</span>
+<a href="/en/posts/dynamic-bcg-matrix/" class="btn-kit-info" title="Read technical article">Technical Article 📖</a>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/52cf8aa6-a595-49fe-b470-421140317013" class="btn-kit-buy lemonsqueezy-button">Download →</a>
 </div>
 </div>
@@ -831,7 +835,7 @@ Details ℹ️
             <button type="button" class="btn-kit-info" onclick="openModal('pack-bcg')">
               Details ℹ️
             </button>
-            <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Methodological guide coming soon on the blog">Guide ⏳</span>
+            <a href="/en/posts/dynamic-bcg-matrix/" class="btn-kit-info" title="Read technical article">Technical Article 📖</a>
             <a href="https://datalaria.lemonsqueezy.com/checkout/buy/52cf8aa6-a595-49fe-b470-421140317013" class="btn-kit-buy lemonsqueezy-button">Download →</a>
           </div>
         </div>
@@ -1411,7 +1415,7 @@ Details ℹ️
         "PDF guide on product lifecycle cash flow balancing"
       ],
       checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/52cf8aa6-a595-49fe-b470-421140317013",
-      guideUrl: null
+      guideUrl: "/en/posts/dynamic-bcg-matrix/"
     },
 
     // 5. McKinsey GE Matrix (AVAILABLE)

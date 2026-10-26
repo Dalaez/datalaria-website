@@ -138,3 +138,25 @@
   - Experiencia de usuario premium: navegación fluida en 1 clic entre Ficha técnica, App en vivo, Tutorial del blog y Suite B2B.
   - 100% verificado determinísticamente mediante tests automatizados sobre el HTML compilado en ES y EN.
   - Fase 3 cerrada formalmente con cero deuda técnica.
+
+---
+
+## ADR-012: Nueva App de nicho "Datalaria Pulse" (Content Ops as Code) para sustituir la gestión editorial en Notion
+- **Fecha:** 2026-10-25
+- **Estado:** Aceptado (en definición: propuesta de valor y columnas pendientes; Hitos 5.0-5.1)
+- **Contexto:**
+  1. La gestión editorial (posts, apps, kits) se hace a mano en Notion: 95 filas con ES/EN mezclados frente a 108 posts por idioma en el repo, sin vínculo ES⇔EN y con 6 columnas siempre vacías.
+  2. Casi todos esos datos ya existen en el front matter de Hugo, en `git log` y en `data/analytics.json` (GA4).
+  3. Se evaluaron tres opciones: (1) sección pública del blog, (2) funcionalidad dentro de LifeOps y (3) una App nueva con Supabase.
+- **Decisión:**
+  1. **Opción 3, con enfoque de nicho "Content Ops as Code"**: el repo es la fuente de verdad y un generador automático (`ops/content_index/`) produce el índice editorial en cada push y con un cron diario.
+  2. **La Opción 1 se absorbe como Sandbox (Art. 3):** muestra lo publicado, lo programado y las ideas marcadas como `visibility: public`.
+  3. **Las ideas prospectivas** viven en `data/editorial/backlog.yaml` con `visibility: private`: no se publican ni se cargan en Supabase.
+  4. **La Opción 2 se descarta:** se reutilizan patrones de código de LifeOps sin modificar LifeOps, para no diluir su producto.
+  5. **Ronda 2 (2026-10-25):** nombre **Datalaria Pulse** (slug `pulse`) · público B2B prioritario (equipos de documentación, SEO y marketing de empresas, y medios digitales) con dos formas de importar contenido (repo Git + `sitemap.xml`) · primer producto de pago: **Kit de pago único**; Pro/Team alojado más adelante con Lemon Squeezy Subscriptions · métricas iniciales: **GA4 + Search Console**; las ventas de Lemon Squeezy quedan fuera hasta que existan y nunca serán visibles en el Sandbox público.
+  6. **Ronda 3 (2026-10-25):** el Sandbox público muestra métricas reales **relativas** (percentil, tendencia, índice base 100; nunca valores absolutos). **La suscripción Pro/Team y el modo Supabase quedan aparcados** hasta medir la respuesta de la serie, la App y el Kit (Hito 5.8). La v1 no tiene backend: monetización solo con el Kit (plantilla Excel rellenable o importando el export de Notion).
+  7. **Orden:** spec y ADR → revisión de columnas → generador → automatización → app web → Pro con Supabase → lanzamiento editorial.
+- **Consecuencias:**
+  - Se elimina la doble entrada de datos; la paridad ES/EN y las métricas GA4 pasan a ser automáticas.
+  - Hará falta enmendar el Art. 4 de la Constitución para añadir el esquema `content_ops` (Hito 5.5).
+  - La App solo se listará en `/apps/` cuando tenga su serie de posts publicada (Art. 7).

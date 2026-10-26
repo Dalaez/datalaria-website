@@ -71,7 +71,8 @@ languages:
       homePortal:
         mostRead:
           - "/posts/dafo-cuantitativo-matriz-came"
-          - "/posts/ia_agents_part1"
+          - "/posts/5-fuerzas-porter-cuantitativas"
+          - "/posts/john_von_neumann"
       label:
         text: "Datalaria"
         icon: "/images/datalaria_logo_transp.png"
@@ -111,8 +112,9 @@ languages:
       # The first path that exists and is published is used (update from Google Analytics).
       homePortal:
         mostRead:
-          - "/posts/quantitative-swot-tows-matrix"
-          - "/posts/ai_agents_part1"
+          - "/posts/abraham_wald"
+          - "/posts/graphrag"
+          - "/posts/kantorovich"
       label:
         text: "Datalaria"
         icon: "/images/datalaria_logo_transp.png"

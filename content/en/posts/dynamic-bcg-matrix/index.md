@@ -46,7 +46,7 @@ flowchart TD
   original_price="19€"
   badge="★ Tier-1 Consulting Standard"
   icon="⭐"
-  checkout_url="https://datalaria.lemonsqueezy.com/buy/matriz-bcg"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/52cf8aa6-a595-49fe-b470-421140317013"
   button_text="Download Complete Kit (.ZIP) • 6€"
 >}}
 Preparing a portfolio strategic review, capital reallocation plan, or Investment Committee deck? Download the ready-to-use quantitative Excel model with dynamic Cartesian bubble chart, Henderson cash flow balance, and 16:9 Minto boardroom deck.
@@ -307,15 +307,17 @@ Guided by this quantitative audit, the Board of Directors of Nexus Group ratifie
 For Chief Executive Officers (CEOs), Chief Financial Officers (CFOs), Heads of Corporate Strategy, and Partners in private equity and advisory firms requiring an enterprise-grade toolkit (McKinsey / BCG standard), we have assembled the complete programmatic pack:
 
 {{< product-card
-  title="Dynamic BCG Portfolio Matrix"
-  category="MBA Strategy"
+  title="Executive Decision Pack: Dynamic BCG Portfolio Matrix & Capital Allocation"
+  category="Corporate Strategy & Boardroom Decision Support"
   price="6€"
-  original_price="19€"
-  badge="⭐ Portfolio Strategy"
+  original_price="29€"
+  badge="★ Tier-1 Consulting Standard"
   icon="⭐"
-  deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Methodology Guide PDF"
-  features="Automated Relative Market Share and Growth Rate calculation engine|Dynamic Cartesian bubble chart scaled by business unit revenue|16:9 boardroom PPTX deck categorizing Stars, Cows, Questions, and Dogs|5-page executive PDF guide on capital allocation and ROIC optimization"
-  checkout_url="https://datalaria.lemonsqueezy.com/buy/matriz-bcg"
+  preview_image="preview-pack.png"
+  preview_caption="Actual preview of included deliverables: Quantitative Excel Engine (.xlsx) with Dynamic Bubble Chart and Henderson Cash Balance, 16:9 C-Level Presentation (.pptx), and 5-page PDF Methodology Guide."
+  deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|PDF Methodology Guide"
+  features="Quantitative Excel model (.xlsx) with 4 interconnected tabs, protected matrix formulas, and dynamic bubble chart auto-scaled by division revenue|Automated Relative Market Share (RMS) and Market Growth Rate (MGR) calculations with 4-quadrant categorization|Editable PowerPoint presentation (.pptx 16:9 Widescreen) structured under the Minto Pyramid, Action Titles, and Board Decision Gateway|Official 5-page PDF Methodology Guide with Henderson mathematical proofs, reinvestment rules, and Boardroom FAQ|Guaranteed 100% compatibility with Microsoft Excel and Google Sheets without macro dependencies"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/52cf8aa6-a595-49fe-b470-421140317013"
   button_text="Download Full Pack (.ZIP) • 6€"
 >}}
 The compressed archive contains the official **Excel workbook (.xlsx)** with calculation formulas protected under password provided in the instructions and 100% unlocked input cells, the executive **PowerPoint presentation (.pptx 16:9 Widescreen)** built under the Minto Pyramid Principle with high-resolution bubble charts and Board Decision Gateway, the **Methodology Guide in PDF** (5 pages), and direct Google Sheets import instructions.

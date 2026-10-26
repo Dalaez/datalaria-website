@@ -350,7 +350,7 @@ Detalles ℹ️
 <button type="button" class="btn-kit-info" onclick="openModal('pack-bcg')">
 Detalles ℹ️
 </button>
-<span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
+<a href="/es/posts/matriz-bcg-dinamica/" class="btn-kit-info" title="Leer artículo técnico">Artículo técnico 📖</a>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/52cf8aa6-a595-49fe-b470-421140317013" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
@@ -823,7 +823,7 @@ Detalles ℹ️
             <button type="button" class="btn-kit-info" onclick="openModal('pack-bcg')">
               Detalles ℹ️
             </button>
-            <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
+            <a href="/es/posts/matriz-bcg-dinamica/" class="btn-kit-info" title="Leer artículo técnico">Artículo técnico 📖</a>
             <a href="https://datalaria.lemonsqueezy.com/checkout/buy/52cf8aa6-a595-49fe-b470-421140317013" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
           </div>
         </div>
@@ -1399,7 +1399,7 @@ Detalles ℹ️
         "Guía PDF de gestión de ciclo de vida de producto y flujo de caja"
       ],
       checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/52cf8aa6-a595-49fe-b470-421140317013",
-      guideUrl: null
+      guideUrl: "/es/posts/matriz-bcg-dinamica/"
     },
 
     // 5. Matriz McKinsey / GE (DISPONIBLE)
@@ -2252,7 +2252,7 @@ Details ℹ️
 <button type="button" class="btn-kit-info" onclick="openModal('pack-bcg')">
 Details ℹ️
 </button>
-<span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Methodological guide coming soon on the blog">Guide ⏳</span>
+<a href="/en/posts/dynamic-bcg-matrix/" class="btn-kit-info" title="Read technical article">Technical Article 📖</a>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/52cf8aa6-a595-49fe-b470-421140317013" class="btn-kit-buy lemonsqueezy-button">Download →</a>
 </div>
 </div>
@@ -2725,7 +2725,7 @@ Details ℹ️
             <button type="button" class="btn-kit-info" onclick="openModal('pack-bcg')">
               Details ℹ️
             </button>
-            <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Methodological guide coming soon on the blog">Guide ⏳</span>
+            <a href="/en/posts/dynamic-bcg-matrix/" class="btn-kit-info" title="Read technical article">Technical Article 📖</a>
             <a href="https://datalaria.lemonsqueezy.com/checkout/buy/52cf8aa6-a595-49fe-b470-421140317013" class="btn-kit-buy lemonsqueezy-button">Download →</a>
           </div>
         </div>
@@ -3301,7 +3301,7 @@ Details ℹ️
         "PDF guide on product lifecycle cash flow balancing"
       ],
       checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/52cf8aa6-a595-49fe-b470-421140317013",
-      guideUrl: null
+      guideUrl: "/en/posts/dynamic-bcg-matrix/"
     },
 
     // 5. McKinsey GE Matrix (AVAILABLE)

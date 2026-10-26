@@ -1,0 +1,658 @@
+{
+  "updated_at": "2026-10-25T17:39:21.544837+00:00",
+  "period_days": 30,
+  "posts": {
+    "es": {
+      "dafo-cuantitativo-matriz-came": {
+        "slug": "dafo-cuantitativo-matriz-came",
+        "views": 134,
+        "users": 9,
+        "duration_sec": 681.0,
+        "rank": 1,
+        "avg_duration_sec": 5.1
+      },
+      "5-fuerzas-porter-cuantitativas": {
+        "slug": "5-fuerzas-porter-cuantitativas",
+        "views": 50,
+        "users": 5,
+        "duration_sec": 403.0,
+        "rank": 2,
+        "avg_duration_sec": 8.1
+      },
+      "john_von_neumann": {
+        "slug": "john_von_neumann",
+        "views": 35,
+        "users": 23,
+        "duration_sec": 1433.0,
+        "rank": 3,
+        "avg_duration_sec": 40.9
+      },
+      "estadistica-descriptiva": {
+        "slug": "estadistica-descriptiva",
+        "views": 25,
+        "users": 17,
+        "duration_sec": 391.0,
+        "rank": 4,
+        "avg_duration_sec": 15.6
+      },
+      "submer": {
+        "slug": "submer",
+        "views": 17,
+        "users": 9,
+        "duration_sec": 256.0,
+        "rank": 5,
+        "avg_duration_sec": 15.1
+      },
+      "matriz-pestel-cuantitativa": {
+        "slug": "matriz-pestel-cuantitativa",
+        "views": 15,
+        "users": 5,
+        "duration_sec": 303.0,
+        "rank": 6,
+        "avg_duration_sec": 20.2
+      },
+      "silicon_valley": {
+        "slug": "silicon_valley",
+        "views": 15,
+        "users": 12,
+        "duration_sec": 361.0,
+        "rank": 7,
+        "avg_duration_sec": 24.1
+      },
+      "evaluacion_agentes_ia": {
+        "slug": "evaluacion_agentes_ia",
+        "views": 14,
+        "users": 6,
+        "duration_sec": 233.0,
+        "rank": 8,
+        "avg_duration_sec": 16.6
+      },
+      "graphrag": {
+        "slug": "graphrag",
+        "views": 12,
+        "users": 5,
+        "duration_sec": 74.0,
+        "rank": 9,
+        "avg_duration_sec": 6.2
+      },
+      "oppenheimer": {
+        "slug": "oppenheimer",
+        "views": 10,
+        "users": 7,
+        "duration_sec": 96.0,
+        "rank": 10,
+        "avg_duration_sec": 9.6
+      },
+      "ravenpack": {
+        "slug": "ravenpack",
+        "views": 10,
+        "users": 5,
+        "duration_sec": 59.0,
+        "rank": 11,
+        "avg_duration_sec": 5.9
+      },
+      "ex_machina": {
+        "slug": "ex_machina",
+        "views": 9,
+        "users": 5,
+        "duration_sec": 19.0,
+        "rank": 12,
+        "avg_duration_sec": 2.1
+      },
+      "john-snow": {
+        "slug": "john-snow",
+        "views": 9,
+        "users": 9,
+        "duration_sec": 53.0,
+        "rank": 13,
+        "avg_duration_sec": 5.9
+      },
+      "sdd_vs_vibe_coding": {
+        "slug": "sdd_vs_vibe_coding",
+        "views": 9,
+        "users": 1,
+        "duration_sec": 546.0,
+        "rank": 14,
+        "avg_duration_sec": 60.7
+      },
+      "alan_turing": {
+        "slug": "alan_turing",
+        "views": 8,
+        "users": 8,
+        "duration_sec": 152.0,
+        "rank": 15,
+        "avg_duration_sec": 19.0
+      },
+      "happyrobot": {
+        "slug": "happyrobot",
+        "views": 6,
+        "users": 6,
+        "duration_sec": 294.0,
+        "rank": 16,
+        "avg_duration_sec": 49.0
+      },
+      "nextail": {
+        "slug": "nextail",
+        "views": 6,
+        "users": 5,
+        "duration_sec": 38.0,
+        "rank": 17,
+        "avg_duration_sec": 6.3
+      },
+      "ada_lovelace": {
+        "slug": "ada_lovelace",
+        "views": 5,
+        "users": 5,
+        "duration_sec": 6.0,
+        "rank": 18,
+        "avg_duration_sec": 1.2
+      },
+      "pgvector_vs_vectordb": {
+        "slug": "pgvector_vs_vectordb",
+        "views": 5,
+        "users": 5,
+        "duration_sec": 25.0,
+        "rank": 19,
+        "avg_duration_sec": 5.0
+      },
+      "clarity_ai": {
+        "slug": "clarity_ai",
+        "views": 4,
+        "users": 4,
+        "duration_sec": 283.0,
+        "rank": 20,
+        "avg_duration_sec": 70.8
+      },
+      "the_thinking_game": {
+        "slug": "the_thinking_game",
+        "views": 4,
+        "users": 6,
+        "duration_sec": 61.0,
+        "rank": 21,
+        "avg_duration_sec": 15.2
+      }
+    },
+    "en": {
+      "abraham_wald": {
+        "slug": "abraham_wald",
+        "views": 31,
+        "users": 31,
+        "duration_sec": 150.0,
+        "rank": 1,
+        "avg_duration_sec": 4.8
+      },
+      "graphrag": {
+        "slug": "graphrag",
+        "views": 31,
+        "users": 28,
+        "duration_sec": 79.0,
+        "rank": 2,
+        "avg_duration_sec": 2.5
+      },
+      "kantorovich": {
+        "slug": "kantorovich",
+        "views": 30,
+        "users": 28,
+        "duration_sec": 1200.0,
+        "rank": 3,
+        "avg_duration_sec": 40.0
+      },
+      "john_von_neumann": {
+        "slug": "john_von_neumann",
+        "views": 25,
+        "users": 22,
+        "duration_sec": 34.0,
+        "rank": 4,
+        "avg_duration_sec": 1.4
+      },
+      "silicon_valley": {
+        "slug": "silicon_valley",
+        "views": 25,
+        "users": 20,
+        "duration_sec": 195.0,
+        "rank": 5,
+        "avg_duration_sec": 7.8
+      },
+      "evaluating_ai_agents": {
+        "slug": "evaluating_ai_agents",
+        "views": 24,
+        "users": 24,
+        "duration_sec": 42.0,
+        "rank": 6,
+        "avg_duration_sec": 1.8
+      },
+      "quantitative-swot-tows-matrix": {
+        "slug": "quantitative-swot-tows-matrix",
+        "views": 24,
+        "users": 9,
+        "duration_sec": 788.0,
+        "rank": 7,
+        "avg_duration_sec": 32.8
+      },
+      "submer": {
+        "slug": "submer",
+        "views": 20,
+        "users": 16,
+        "duration_sec": 278.0,
+        "rank": 8,
+        "avg_duration_sec": 13.9
+      },
+      "pgvector_vs_vectordb": {
+        "slug": "pgvector_vs_vectordb",
+        "views": 19,
+        "users": 15,
+        "duration_sec": 255.0,
+        "rank": 9,
+        "avg_duration_sec": 13.4
+      },
+      "nextail": {
+        "slug": "nextail",
+        "views": 18,
+        "users": 13,
+        "duration_sec": 451.0,
+        "rank": 10,
+        "avg_duration_sec": 25.1
+      },
+      "claude_shannon": {
+        "slug": "claude_shannon",
+        "views": 17,
+        "users": 16,
+        "duration_sec": 349.0,
+        "rank": 11,
+        "avg_duration_sec": 20.5
+      },
+      "game_snake": {
+        "slug": "game_snake",
+        "views": 17,
+        "users": 17,
+        "duration_sec": 14.0,
+        "rank": 12,
+        "avg_duration_sec": 0.8
+      },
+      "halt_and_catch_fire": {
+        "slug": "halt_and_catch_fire",
+        "views": 17,
+        "users": 6,
+        "duration_sec": 492.0,
+        "rank": 13,
+        "avg_duration_sec": 28.9
+      },
+      "devs": {
+        "slug": "devs",
+        "views": 16,
+        "users": 16,
+        "duration_sec": 680.0,
+        "rank": 14,
+        "avg_duration_sec": 42.5
+      },
+      "happyrobot": {
+        "slug": "happyrobot",
+        "views": 16,
+        "users": 16,
+        "duration_sec": 154.0,
+        "rank": 15,
+        "avg_duration_sec": 9.6
+      },
+      "oppenheimer": {
+        "slug": "oppenheimer",
+        "views": 16,
+        "users": 13,
+        "duration_sec": 74.0,
+        "rank": 16,
+        "avg_duration_sec": 4.6
+      },
+      "alan_turing": {
+        "slug": "alan_turing",
+        "views": 14,
+        "users": 15,
+        "duration_sec": 42.0,
+        "rank": 17,
+        "avg_duration_sec": 3.0
+      },
+      "carto": {
+        "slug": "carto",
+        "views": 14,
+        "users": 14,
+        "duration_sec": 56.0,
+        "rank": 18,
+        "avg_duration_sec": 4.0
+      },
+      "sop-engineering-part4-enterprise": {
+        "slug": "sop-engineering-part4-enterprise",
+        "views": 14,
+        "users": 14,
+        "duration_sec": 29.0,
+        "rank": 19,
+        "avg_duration_sec": 2.1
+      },
+      "ada_lovelace": {
+        "slug": "ada_lovelace",
+        "views": 13,
+        "users": 13,
+        "duration_sec": 1.0,
+        "rank": 20,
+        "avg_duration_sec": 0.1
+      },
+      "app-lifeops_part4_informes_word_excel": {
+        "slug": "app-lifeops_part4_informes_word_excel",
+        "views": 13,
+        "users": 13,
+        "duration_sec": 28.0,
+        "rank": 21,
+        "avg_duration_sec": 2.2
+      },
+      "multiverse_computing": {
+        "slug": "multiverse_computing",
+        "views": 13,
+        "users": 13,
+        "duration_sec": 4.0,
+        "rank": 22,
+        "avg_duration_sec": 0.3
+      },
+      "prompt_injection": {
+        "slug": "prompt_injection",
+        "views": 13,
+        "users": 13,
+        "duration_sec": 8.0,
+        "rank": 23,
+        "avg_duration_sec": 0.6
+      },
+      "finetuning_vs_rag": {
+        "slug": "finetuning_vs_rag",
+        "views": 12,
+        "users": 12,
+        "duration_sec": 0.0,
+        "rank": 24,
+        "avg_duration_sec": 0.0
+      },
+      "mlops_for_engineers": {
+        "slug": "mlops_for_engineers",
+        "views": 12,
+        "users": 12,
+        "duration_sec": 12.0,
+        "rank": 25,
+        "avg_duration_sec": 1.0
+      },
+      "the-goal": {
+        "slug": "the-goal",
+        "views": 11,
+        "users": 11,
+        "duration_sec": 4.0,
+        "rank": 26,
+        "avg_duration_sec": 0.4
+      },
+      "wallapop": {
+        "slug": "wallapop",
+        "views": 11,
+        "users": 11,
+        "duration_sec": 0.0,
+        "rank": 27,
+        "avg_duration_sec": 0.0
+      },
+      "app_openweather_part1_backend": {
+        "slug": "app_openweather_part1_backend",
+        "views": 10,
+        "users": 10,
+        "duration_sec": 39.0,
+        "rank": 28,
+        "avg_duration_sec": 3.9
+      },
+      "obs_part3_architecture": {
+        "slug": "obs_part3_architecture",
+        "views": 10,
+        "users": 6,
+        "duration_sec": 0.0,
+        "rank": 29,
+        "avg_duration_sec": 0.0
+      },
+      "rag_antipatterns": {
+        "slug": "rag_antipatterns",
+        "views": 10,
+        "users": 9,
+        "duration_sec": 27.0,
+        "rank": 30,
+        "avg_duration_sec": 2.7
+      },
+      "the_thinking_game": {
+        "slug": "the_thinking_game",
+        "views": 10,
+        "users": 10,
+        "duration_sec": 139.0,
+        "rank": 31,
+        "avg_duration_sec": 13.9
+      },
+      "freepik": {
+        "slug": "freepik",
+        "views": 9,
+        "users": 8,
+        "duration_sec": 271.0,
+        "rank": 32,
+        "avg_duration_sec": 30.1
+      },
+      "ex_machina": {
+        "slug": "ex_machina",
+        "views": 8,
+        "users": 7,
+        "duration_sec": 23.0,
+        "rank": 33,
+        "avg_duration_sec": 2.9
+      },
+      "ravenpack": {
+        "slug": "ravenpack",
+        "views": 8,
+        "users": 5,
+        "duration_sec": 715.0,
+        "rank": 34,
+        "avg_duration_sec": 89.4
+      },
+      "hidden_economics_ai": {
+        "slug": "hidden_economics_ai",
+        "views": 7,
+        "users": 7,
+        "duration_sec": 41.0,
+        "rank": 35,
+        "avg_duration_sec": 5.9
+      },
+      "quantitative-porter-5-forces": {
+        "slug": "quantitative-porter-5-forces",
+        "views": 7,
+        "users": 4,
+        "duration_sec": 28.0,
+        "rank": 36,
+        "avg_duration_sec": 4.0
+      },
+      "clarity_ai": {
+        "slug": "clarity_ai",
+        "views": 6,
+        "users": 6,
+        "duration_sec": 149.0,
+        "rank": 37,
+        "avg_duration_sec": 24.8
+      },
+      "flywire": {
+        "slug": "flywire",
+        "views": 6,
+        "users": 6,
+        "duration_sec": 0.0,
+        "rank": 38,
+        "avg_duration_sec": 0.0
+      },
+      "john-snow": {
+        "slug": "john-snow",
+        "views": 6,
+        "users": 6,
+        "duration_sec": 0.0,
+        "rank": 39,
+        "avg_duration_sec": 0.0
+      },
+      "productivity_stack_2026": {
+        "slug": "productivity_stack_2026",
+        "views": 6,
+        "users": 6,
+        "duration_sec": 28.0,
+        "rank": 40,
+        "avg_duration_sec": 4.7
+      },
+      "thomas_bayes": {
+        "slug": "thomas_bayes",
+        "views": 6,
+        "users": 6,
+        "duration_sec": 2.0,
+        "rank": 41,
+        "avg_duration_sec": 0.3
+      },
+      "app_unit_converter": {
+        "slug": "app_unit_converter",
+        "views": 5,
+        "users": 5,
+        "duration_sec": 3.0,
+        "rank": 42,
+        "avg_duration_sec": 0.6
+      },
+      "eu_ai_act": {
+        "slug": "eu_ai_act",
+        "views": 5,
+        "users": 5,
+        "duration_sec": 0.0,
+        "rank": 43,
+        "avg_duration_sec": 0.0
+      },
+      "quantitative-pestel-matrix": {
+        "slug": "quantitative-pestel-matrix",
+        "views": 5,
+        "users": 4,
+        "duration_sec": 23.0,
+        "rank": 44,
+        "avg_duration_sec": 4.6
+      },
+      "ai_agents_part8": {
+        "slug": "ai_agents_part8",
+        "views": 4,
+        "users": 4,
+        "duration_sec": 0.0,
+        "rank": 45,
+        "avg_duration_sec": 0.0
+      },
+      "app_openweather_part2_frontend": {
+        "slug": "app_openweather_part2_frontend",
+        "views": 4,
+        "users": 4,
+        "duration_sec": 0.0,
+        "rank": 46,
+        "avg_duration_sec": 0.0
+      },
+      "bpmn_sop": {
+        "slug": "bpmn_sop",
+        "views": 4,
+        "users": 4,
+        "duration_sec": 0.0,
+        "rank": 47,
+        "avg_duration_sec": 0.0
+      },
+      "deming": {
+        "slug": "deming",
+        "views": 4,
+        "users": 4,
+        "duration_sec": 0.0,
+        "rank": 48,
+        "avg_duration_sec": 0.0
+      },
+      "graphext": {
+        "slug": "graphext",
+        "views": 4,
+        "users": 4,
+        "duration_sec": 16.0,
+        "rank": 49,
+        "avg_duration_sec": 4.0
+      },
+      "mcp_protocol": {
+        "slug": "mcp_protocol",
+        "views": 4,
+        "users": 4,
+        "duration_sec": 0.0,
+        "rank": 50,
+        "avg_duration_sec": 0.0
+      },
+      "netflix": {
+        "slug": "netflix",
+        "views": 4,
+        "users": 3,
+        "duration_sec": 17.0,
+        "rank": 51,
+        "avg_duration_sec": 4.2
+      },
+      "obs_part7_executive_dashboard": {
+        "slug": "obs_part7_executive_dashboard",
+        "views": 4,
+        "users": 4,
+        "duration_sec": 12.0,
+        "rank": 52,
+        "avg_duration_sec": 3.0
+      },
+      "sop-engineering-part3-optimization": {
+        "slug": "sop-engineering-part3-optimization",
+        "views": 4,
+        "users": 4,
+        "duration_sec": 0.0,
+        "rank": 53,
+        "avg_duration_sec": 0.0
+      },
+      "ai_agents_part6": {
+        "slug": "ai_agents_part6",
+        "views": 3,
+        "users": 3,
+        "duration_sec": 9.0,
+        "rank": 54,
+        "avg_duration_sec": 3.0
+      },
+      "ai_agents_part9": {
+        "slug": "ai_agents_part9",
+        "views": 3,
+        "users": 3,
+        "duration_sec": 11.0,
+        "rank": 55,
+        "avg_duration_sec": 3.7
+      },
+      "app-lifeops_part2_frontend_dashboard": {
+        "slug": "app-lifeops_part2_frontend_dashboard",
+        "views": 3,
+        "users": 3,
+        "duration_sec": 0.0,
+        "rank": 56,
+        "avg_duration_sec": 0.0
+      },
+      "florence-nightingale": {
+        "slug": "florence-nightingale",
+        "views": 3,
+        "users": 2,
+        "duration_sec": 36.0,
+        "rank": 57,
+        "avg_duration_sec": 12.0
+      },
+      "obs_part4_ingestion": {
+        "slug": "obs_part4_ingestion",
+        "views": 3,
+        "users": 3,
+        "duration_sec": 0.0,
+        "rank": 58,
+        "avg_duration_sec": 0.0
+      },
+      "obs_part5_radar_agent": {
+        "slug": "obs_part5_radar_agent",
+        "views": 3,
+        "users": 3,
+        "duration_sec": 0.0,
+        "rank": 59,
+        "avg_duration_sec": 0.0
+      },
+      "sop-engineering-part2-forecasting": {
+        "slug": "sop-engineering-part2-forecasting",
+        "views": 3,
+        "users": 3,
+        "duration_sec": 0.0,
+        "rank": 60,
+        "avg_duration_sec": 0.0
+      }
+    }
+  }
+}
