@@ -810,13 +810,24 @@ a.dlh-disco:hover,
 }
 
 /* --------------------------------------------------------------------------
-   03 · Apps & Juegos (Compact 4-Column Mini-Card Grid)
+   03 · Apps & Juegos (Compact 4-Column Mini-Card Grid + Tier Filter Tabs)
    -------------------------------------------------------------------------- */
+.dlh-app-tabs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
 .dlh-apps-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
+}
+
+.dlh-app[hidden] {
+    display: none !important;
 }
 
 .dlh-app {
@@ -1129,7 +1140,8 @@ a.dlh-disco:hover,
         gap: 10px;
     }
 
-    .dlh-cat-tabs {
+    .dlh-cat-tabs,
+    .dlh-app-tabs {
         grid-template-columns: repeat(2, 1fr);
     }
 }

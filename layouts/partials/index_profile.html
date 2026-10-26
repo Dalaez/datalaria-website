@@ -442,6 +442,12 @@
     </section>
 
     {{- /* ======================= 03 · APPS & EXPERIMENTOS ======================= */}}
+    {{- $appTiers := slice
+        (dict "key" "all"      "icon" "✨" "label" (cond $isES "Todas las Apps" "All Apps")                         "count" (len $apps))
+        (dict "key" "flagship" "icon" "🚀" "label" (cond $isES "Apps Destacadas" "Flagship Apps")                   "count" 2)
+        (dict "key" "b2b"      "icon" "💼" "label" (cond $isES "Suites B2B & IA Operacional" "B2B Suites & AI")     "count" 1)
+        (dict "key" "lab"      "icon" "🕹️" "label" (cond $isES "Laboratorio & Arcade" "Lab & Arcade")               "count" 4)
+    }}
     <section class="dlh-section" id="apps">
         <div class="dlh-section-head">
             <span class="dlh-section-tag">{{ $t.s3tag }}</span>
@@ -449,10 +455,24 @@
             <p class="dlh-section-desc">{{ $t.s3desc }}</p>
         </div>
 
+        <div class="dlh-app-tabs" role="tablist" aria-label="{{ cond $isES "Filtrar aplicaciones por área" "Filter applications by area" }}">
+            {{- range $i, $at := $appTiers }}
+            {{- $unitWord := cond (eq $at.count 1) "app" "apps" }}
+            <button type="button" class="dlh-cat-tab dlh-app-tab" role="tab" data-tier="{{ $at.key }}"
+                aria-selected="{{ if eq $i 0 }}true{{ else }}false{{ end }}">
+                <span class="dlh-cat-icon" aria-hidden="true">{{ $at.icon }}</span>
+                <span class="dlh-cat-name">{{ $at.label }}</span>
+                <span class="dlh-cat-count">{{ $at.count }} {{ $unitWord }}</span>
+            </button>
+            {{- end }}
+        </div>
+
         <div class="dlh-apps-grid">
             {{- range $apps }}
             {{- $appPage := site.GetPage (printf "apps/%s" .slug) }}
             {{- $appMeta := index site.Data.apps .slug }}
+            {{- $tier := "lab" }}
+            {{- with $appMeta }}{{- $tier = .tier | default "lab" }}{{- end }}
             {{- $fichaUrl := "apps/" | relLangURL }}
             {{- with $appPage }}{{- $fichaUrl = .RelPermalink }}{{- end }}
             {{- $thumbUrl := "" }}
@@ -462,7 +482,7 @@
                     {{- $thumbUrl = $thumb.RelPermalink }}
                 {{- end }}
             {{- end }}
-            <article class="dlh-app">
+            <article class="dlh-app" data-tier="{{ $tier }}">
                 <div class="dlh-app-head">
                     <span class="dlh-app-badge{{ with .badgeClass }} {{ . }}{{ end }}{{ if .arcade }} dlh-arcade{{ end }}">{{ .badge }}</span>
                     {{- with $appMeta }}
@@ -579,6 +599,45 @@
             });
         });
         if (tabs.length) { activate(tabs[0].getAttribute('data-cat')); }
+
+        /* ---- Apps tier filter tabs (Section 03) ---- */
+        var appTabs = Array.prototype.slice.call(root.querySelectorAll('.dlh-app-tab'));
+        var appCards = Array.prototype.slice.call(root.querySelectorAll('.dlh-app'));
+        function activateAppTier(tierKey) {
+            appTabs.forEach(function (tab) {
+                var on = tab.getAttribute('data-tier') === tierKey;
+                tab.setAttribute('aria-selected', on ? 'true' : 'false');
+                tab.tabIndex = on ? 0 : -1;
+            });
+            appCards.forEach(function (card) {
+                var cardTier = card.getAttribute('data-tier');
+                card.hidden = (tierKey !== 'all' && cardTier !== tierKey);
+            });
+        }
+        appTabs.forEach(function (tab, i) {
+            tab.addEventListener('click', function () {
+                var tierKey = tab.getAttribute('data-tier');
+                activateAppTier(tierKey);
+                if (typeof gtag === 'function') {
+                    gtag('event', 'home_app_tier_filter', { app_tier: tierKey });
+                }
+            });
+            tab.addEventListener('keydown', function (e) {
+                var next = null;
+                if (e.key === 'ArrowRight') { next = appTabs[(i + 1) % appTabs.length]; }
+                if (e.key === 'ArrowLeft') { next = appTabs[(i - 1 + appTabs.length) % appTabs.length]; }
+                if (next) {
+                    e.preventDefault();
+                    next.focus();
+                    var tierKey = next.getAttribute('data-tier');
+                    activateAppTier(tierKey);
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'home_app_tier_filter', { app_tier: tierKey });
+                    }
+                }
+            });
+        });
+        if (appTabs.length) { activateAppTier(appTabs[0].getAttribute('data-tier')); }
 
         /* ---- Category pagination ---- */
         panels.forEach(function (panel) {
