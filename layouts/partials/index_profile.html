@@ -458,7 +458,7 @@
         <div class="dlh-app-tabs" role="tablist" aria-label="{{ cond $isES "Filtrar aplicaciones por área" "Filter applications by area" }}">
             {{- range $i, $at := $appTiers }}
             {{- $unitWord := cond (eq $at.count 1) "app" "apps" }}
-            <button type="button" class="dlh-cat-tab dlh-app-tab" role="tab" data-tier="{{ $at.key }}"
+            <button type="button" class="dlh-app-tab" role="tab" data-tier="{{ $at.key }}"
                 aria-selected="{{ if eq $i 0 }}true{{ else }}false{{ end }}">
                 <span class="dlh-cat-icon" aria-hidden="true">{{ $at.icon }}</span>
                 <span class="dlh-cat-name">{{ $at.label }}</span>
@@ -524,7 +524,7 @@
 
     {{- /* ======================= SOCIAL (bottom) ======================= */}}
     {{- with site.Params.socialIcons }}
-    {{- $labels := dict "github" "GitHub" "linkedin" "LinkedIn" "twitter" "X / Twitter" }}
+    {{- $labels := dict "github" "GitHub" "linkedin" "LinkedIn" "twitter" "X (Twitter)" "x" "X (Twitter)" }}
     <section class="dlh-social">
         <div class="dlh-social-label">{{ $t.social }}</div>
         <div class="dlh-social-links">
@@ -563,7 +563,7 @@
         root.classList.add('dlh-js');
 
         /* ---- Category tabs (progressive enhancement: without JS all lists stay visible) ---- */
-        var tabs = Array.prototype.slice.call(root.querySelectorAll('.dlh-cat-tab'));
+        var tabs = Array.prototype.slice.call(root.querySelectorAll('.dlh-cat-tabs .dlh-cat-tab'));
         var panels = Array.prototype.slice.call(root.querySelectorAll('.dlh-cat-panel'));
         function activate(key) {
             tabs.forEach(function (tab) {

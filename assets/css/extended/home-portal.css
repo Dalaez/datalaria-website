@@ -542,7 +542,8 @@ a.dlh-disco:hover,
     margin-bottom: 18px;
 }
 
-.dlh-cat-tab {
+.dlh-cat-tab,
+.dlh-app-tab {
     padding: 10px 12px;
     text-align: left;
     font-family: inherit;
@@ -554,11 +555,13 @@ a.dlh-disco:hover,
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.dlh-cat-tab:hover {
+.dlh-cat-tab:hover,
+.dlh-app-tab:hover {
     border-color: var(--tertiary);
 }
 
-.dlh-cat-tab[aria-selected="true"] {
+.dlh-cat-tab[aria-selected="true"],
+.dlh-app-tab[aria-selected="true"] {
     border-color: var(--dlh-accent);
     box-shadow: inset 0 0 0 1px var(--dlh-accent);
 }
