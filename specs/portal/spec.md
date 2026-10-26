@@ -115,10 +115,10 @@ releases: [ { version: "...", date: "...", state: "released", type: "...", title
 3. **Píldoras de Navegación por Tier:**
    - La cabecera del catálogo incluye accesos directos por ancla (`#tier-flagship`, `#tier-b2b`, `#tier-lab`) para que el usuario explore directamente el área de su interés.
 4. **Tarjetas en Miniatura en el Home Index (`03 / ECOSISTEMA · Apps & Experimentos`):**
-   - El bloque `#apps` de la portada (`layouts/partials/index_profile.html`) renderiza las aplicaciones del ecosistema en formato tarjeta en miniatura (`.dlh-app-card`) sobre un grid de 3 columnas en escritorio (`repeat(3, 1fr)`), reutilizando dinámicamente la imagen `cover.png` (`.Fill "640x400 webp"`) del page bundle de cada app (`content/{es,en}/apps/<slug>/cover.png`).
+   - El bloque `#apps` de la portada (`layouts/partials/index_profile.html`) renderiza las 7 aplicaciones del ecosistema en formato tarjeta compacta en miniatura (`.dlh-app`) sobre una cuadrícula flexible de **4 columnas en escritorio** (4 tarjetas en la primera fila y 3 centradas en la segunda), reutilizando dinámicamente la imagen `cover.png` (`.Fill "400x250 webp"`) del page bundle de cada app (`content/{es,en}/apps/<slug>/cover.png`) con dimensiones en miniatura (`148x92px`, proporción `16:10` exacta sin recortes).
    - Cada miniatura ofrece doble acción explícita:
-     1. **Acción Ejecutable Primaria (`.dlh-app-btn-run`):** Enlace directo a la aplicación en vivo (`/apps/<slug>/` o `/games/snake/`).
-     2. **Acción de Ficha Asociada (`.dlh-app-btn-ficha` + enlace en portada/título):** Enlace directo a la página dedicada de objetivos, arquitectura y evolución (`/{lang}/apps/<slug>/`).
+     1. **Acción Ejecutable Primaria (`.dlh-app-btn--primary`):** Enlace directo a la aplicación en vivo (`/apps/<slug>/` o `/games/snake/`).
+     2. **Acción de Ficha Asociada (`.dlh-app-btn--secondary` + enlace en portada/título):** Enlace directo a la página dedicada de objetivos, arquitectura y evolución (`/{lang}/apps/<slug>/`).
 
 ---
 

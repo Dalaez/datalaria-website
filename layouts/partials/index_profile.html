@@ -458,23 +458,23 @@
             {{- $thumbUrl := "" }}
             {{- if $appPage }}
                 {{- with $appPage.Resources.GetMatch "cover.png" }}
-                    {{- $thumb := .Fill "640x400 webp" }}
+                    {{- $thumb := .Fill "400x250 webp" }}
                     {{- $thumbUrl = $thumb.RelPermalink }}
                 {{- end }}
             {{- end }}
             <article class="dlh-app">
+                <div class="dlh-app-head">
+                    <span class="dlh-app-badge{{ with .badgeClass }} {{ . }}{{ end }}{{ if .arcade }} dlh-arcade{{ end }}">{{ .badge }}</span>
+                    {{- with $appMeta }}
+                    <span class="dlh-app-ver">{{ .current_version }}</span>
+                    {{- end }}
+                </div>
                 <a class="dlh-app-media" href="{{ $fichaUrl }}" aria-label="{{ .name }}">
                     {{- if $thumbUrl }}
-                    <img class="dlh-app-thumb" src="{{ $thumbUrl }}" alt="{{ .name }}" loading="lazy" width="640" height="400">
+                    <img class="dlh-app-thumb" src="{{ $thumbUrl }}" alt="{{ .name }}" loading="lazy" width="400" height="250">
                     {{- else }}
                     <div class="dlh-app-placeholder"><span aria-hidden="true">{{ .icon }}</span></div>
                     {{- end }}
-                    <div class="dlh-app-media-badges">
-                        <span class="dlh-app-badge{{ with .badgeClass }} {{ . }}{{ end }}{{ if .arcade }} dlh-arcade{{ end }}">{{ .badge }}</span>
-                        {{- with $appMeta }}
-                        <span class="dlh-app-ver">{{ .current_version }}</span>
-                        {{- end }}
-                    </div>
                 </a>
                 <div class="dlh-app-body">
                     <h3 class="dlh-app-name">
@@ -490,7 +490,7 @@
                         {{ .cta }}
                     </a>
                     <a class="dlh-app-btn dlh-app-btn--secondary" href="{{ $fichaUrl }}">
-                        {{ cond $isES "Ver ficha →" "App page →" }}
+                        {{ cond $isES "Ver ficha →" "Details →" }}
                     </a>
                 </div>
             </article>
