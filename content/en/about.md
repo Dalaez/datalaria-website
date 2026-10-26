@@ -2,12 +2,12 @@
 title: "About Me"
 date: 2025-08-06T17:55:41+02:00
 draft: false
-summary: "Telecommunications Engineer, eMBA, Master in Big Data & Business Intelligence, and Solutions Architect. Bridging business strategy and technical execution."
+summary: "Telecommunications Engineer, Executive MBA (eMBA), and Master in Big Data & Business Analytics. Bridging business strategy and technical execution."
 ---
 
 ## The Engineering Behind Datalaria
 
-**Hi, I'm Daniel. I am a Telecommunications Engineer, but my real work focuses on building bridges between business strategy and technical execution.**
+**Hi, I'm Daniel. I am a Telecommunications Engineer holding an Executive MBA (eMBA) and a Master's in Big Data & Business Analytics, focused on building bridges between business strategy and technical execution.**
 
 For over 15 years, I have operated in **high-stakes environments (Defense Industry, Multinational R&D)**, learning that technology is useless if it isn't robust, scalable, and above all, useful for business objectives.
 
@@ -25,7 +25,8 @@ My approach is based on three pillars (**First Principles Thinking**):
 
 ### What is Datalaria?
 
-* **Consulting:** I help transform industrial and business processes using AI and Data.
+* **Consulting & Strategy:** I help transform industrial and business processes combining AI, quantitative analytics, and executive vision.
+* **Executive Decision Packs:** I design quantitative models and boardroom-ready strategic frameworks in [Resources](/en/resources/).
 * **Product Development:** I create interactive tools and applications in [Apps & Experiments](/en/apps/) that test the capabilities of the modern web and real-time latency.
 * **Outreach:** I translate technical complexity into actionable strategy through this blog.
 
@@ -34,7 +35,7 @@ If you are looking for someone who speaks the language of business with a passio
 ---
 **Let's Talk.**
 
-You can contact me via the [Contact page](/en/contact/) or directly at [contacto@datalaria.com](mailto:contacto@datalaria.com).
+You can reach me via the [Contact page](/en/contact/), on my [LinkedIn profile](https://www.linkedin.com/in/daniel-al%C3%A1ez-ria%C3%B1o/), or directly at [contacto@datalaria.com](mailto:contacto@datalaria.com).
 
 ---
 
