@@ -195,32 +195,37 @@
 
 {{- /* ---------- Apps & Games ---------- */ -}}
 {{- $apps := slice
-  (dict "icon" "🚀" "name" "LifeOps" "url" "/apps/lifeops/" "arcade" false
+  (dict "slug" "lifeops" "icon" "🚀" "name" "LifeOps" "url" "/apps/lifeops/" "arcade" false
         "badge" (cond $isES "Sistema" "System")
         "badgeClass" "dlh-sys"
         "desc" (cond $isES "Sistema operativo personal y profesional: deporte, lecturas, cine, tablero Kanban y proyectos." "Personal & professional OS: fitness, reading, movies, Kanban board and projects.")
-        "cta" (cond $isES "Abrir app →" "Open app →"))
-  (dict "icon" "📡" "name" (cond $isES "Radar de Obsolescencia" "Agentic Radar") "url" "/apps/obs-management/" "arcade" false
-        "badge" (cond $isES "IA" "AI")
+        "cta" (cond $isES "Abrir app ↗" "Open app ↗"))
+  (dict "slug" "obs-management" "icon" "📡" "name" (cond $isES "Radar de Obsolescencia" "Agentic Radar") "url" "/apps/obs-management/" "arcade" false
+        "badge" (cond $isES "IA · B2B" "AI · B2B")
         "badgeClass" "dlh-ai"
         "desc" (cond $isES "Dashboard ejecutivo impulsado por agentes de IA para mitigar el riesgo en la cadena de suministro." "AI agent-powered executive dashboard to mitigate supply chain risk.")
-        "cta" (cond $isES "Abrir dashboard →" "Open dashboard →"))
-  (dict "icon" "🐍" "name" "Neon Snake" "url" "/games/snake/" "arcade" true
+        "cta" (cond $isES "Abrir app ↗" "Open app ↗"))
+  (dict "slug" "weather" "icon" "🌤️" "name" (cond $isES "El Tiempo" "Weather") "url" "/apps/weather/" "arcade" false
+        "badge" (cond $isES "Previsión" "Forecast")
+        "badgeClass" "dlh-sys"
+        "desc" (cond $isES "Previsión meteorológica detallada y en tiempo real enriquecida con Machine Learning." "Detailed real-time weather forecast enhanced with Machine Learning.")
+        "cta" (cond $isES "Abrir app ↗" "Open app ↗"))
+  (dict "slug" "snake" "icon" "🐍" "name" "Neon Snake" "url" "/games/snake/" "arcade" true
         "badge" (cond $isES "Arcade" "Arcade")
         "desc" (cond $isES "El clásico Snake con estética cyberpunk y ranking global en tiempo real." "The classic Snake with a cyberpunk look and a real-time global leaderboard.")
-        "cta" (cond $isES "Jugar ahora →" "Play now →"))
-  (dict "icon" "🌤️" "name" (cond $isES "El Tiempo" "Weather") "url" "/apps/weather/" "arcade" false
-        "badge" (cond $isES "Previsión" "Forecast")
-        "desc" (cond $isES "Previsión meteorológica detallada y en tiempo real enriquecida con Machine Learning." "Detailed real-time weather forecast enhanced with Machine Learning.")
-        "cta" (cond $isES "Abrir app →" "Open app →"))
-  (dict "icon" "🔄" "name" (cond $isES "Conversor de Unidades" "Unit Converter") "url" "/apps/conversor/" "arcade" false
-        "badge" (cond $isES "Herramienta" "Tool")
-        "desc" (cond $isES "Herramienta rápida y ligera para convertir entre diferentes unidades de medida." "Fast, lightweight tool to convert between units of measurement.")
-        "cta" (cond $isES "Abrir app →" "Open app →"))
-  (dict "icon" "🎴" "name" "Flashcards" "url" "/apps/flashcards/" "arcade" false
+        "cta" (cond $isES "Jugar ↗" "Play ↗"))
+  (dict "slug" "flashcards" "icon" "🎴" "name" "Flashcards AI" "url" "/apps/flashcards/" "arcade" false
         "badge" (cond $isES "Estudio" "Study")
         "desc" (cond $isES "Aplicación interactiva para estudiar y memorizar conceptos con tarjetas de memoria." "Interactive app to study and memorise concepts with flashcards.")
-        "cta" (cond $isES "Abrir app →" "Open app →"))
+        "cta" (cond $isES "Abrir app ↗" "Open app ↗"))
+  (dict "slug" "conversor" "icon" "🔄" "name" (cond $isES "Conversor de Unidades" "Unit Converter") "url" "/apps/conversor/" "arcade" false
+        "badge" (cond $isES "Herramienta" "Tool")
+        "desc" (cond $isES "Herramienta rápida y ligera para convertir entre diferentes unidades de medida." "Fast, lightweight tool to convert between units of measurement.")
+        "cta" (cond $isES "Abrir app ↗" "Open app ↗"))
+  (dict "slug" "maths" "icon" "🧮" "name" (cond $isES "Matemáticas Interactivas" "Interactive Maths") "url" "/apps/maths/" "arcade" false
+        "badge" (cond $isES "Educación" "Education")
+        "desc" (cond $isES "Entrenador gamificado de cálculo mental con niveles adaptativos y temporizador." "Gamified mental arithmetic trainer with adaptive levels and timer.")
+        "cta" (cond $isES "Abrir app ↗" "Open app ↗"))
 -}}
 
 <div class="dlh-portal" id="dlh-portal">
@@ -446,19 +451,49 @@
 
         <div class="dlh-apps-grid">
             {{- range $apps }}
-            <a class="dlh-app" href="{{ .url }}"{{ if .arcade }} target="_blank" rel="noopener"{{ end }}>
-                <div class="dlh-app-top">
-                    <span class="dlh-app-icon" aria-hidden="true">{{ .icon }}</span>
-                    <div>
-                        <div class="dlh-app-name">
-                            {{ .name }}
-                            <span class="dlh-app-badge{{ with .badgeClass }} {{ . }}{{ end }}{{ if .arcade }} dlh-arcade{{ end }}">{{ .badge }}</span>
-                        </div>
-                        <p class="dlh-app-desc">{{ .desc }}</p>
+            {{- $appPage := site.GetPage (printf "apps/%s" .slug) }}
+            {{- $appMeta := index site.Data.apps .slug }}
+            {{- $fichaUrl := "apps/" | relLangURL }}
+            {{- with $appPage }}{{- $fichaUrl = .RelPermalink }}{{- end }}
+            {{- $thumbUrl := "" }}
+            {{- if $appPage }}
+                {{- with $appPage.Resources.GetMatch "cover.png" }}
+                    {{- $thumb := .Fill "640x400 webp" }}
+                    {{- $thumbUrl = $thumb.RelPermalink }}
+                {{- end }}
+            {{- end }}
+            <article class="dlh-app">
+                <a class="dlh-app-media" href="{{ $fichaUrl }}" aria-label="{{ .name }}">
+                    {{- if $thumbUrl }}
+                    <img class="dlh-app-thumb" src="{{ $thumbUrl }}" alt="{{ .name }}" loading="lazy" width="640" height="400">
+                    {{- else }}
+                    <div class="dlh-app-placeholder"><span aria-hidden="true">{{ .icon }}</span></div>
+                    {{- end }}
+                    <div class="dlh-app-media-badges">
+                        <span class="dlh-app-badge{{ with .badgeClass }} {{ . }}{{ end }}{{ if .arcade }} dlh-arcade{{ end }}">{{ .badge }}</span>
+                        {{- with $appMeta }}
+                        <span class="dlh-app-ver">{{ .current_version }}</span>
+                        {{- end }}
                     </div>
+                </a>
+                <div class="dlh-app-body">
+                    <h3 class="dlh-app-name">
+                        <a class="dlh-app-title-link" href="{{ $fichaUrl }}">
+                            <span class="dlh-app-icon-inline" aria-hidden="true">{{ .icon }}</span>
+                            <span>{{ .name }}</span>
+                        </a>
+                    </h3>
+                    <p class="dlh-app-desc">{{ .desc }}</p>
                 </div>
-                <span class="dlh-app-cta">{{ .cta }}</span>
-            </a>
+                <div class="dlh-app-actions">
+                    <a class="dlh-app-btn dlh-app-btn--primary" href="{{ .url }}" target="_blank" rel="noopener">
+                        {{ .cta }}
+                    </a>
+                    <a class="dlh-app-btn dlh-app-btn--secondary" href="{{ $fichaUrl }}">
+                        {{ cond $isES "Ver ficha →" "App page →" }}
+                    </a>
+                </div>
+            </article>
             {{- end }}
         </div>
 

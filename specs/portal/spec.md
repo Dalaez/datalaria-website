@@ -1,11 +1,11 @@
 # SPEC-PORTAL: Catálogo de Aplicaciones & Escaparate Tecnológico (`apps-showcase`)
 
 > **Identificador:** `SPEC-PORTAL`  
-> **Versión:** `v1.0.0`  
-> **Fecha:** `2026-10-25` (Hito 3.2 SDD)  
+> **Versión:** `v1.1.0`  
+> **Fecha:** `2026-10-26` (Hito 3.2 SDD)  
 > **Estado:** `APROBADO & EN PRODUCCIÓN`  
-> **Ámbito:** Portal Editorial Hugo (`content/{es,en}/apps/`, `layouts/apps/`, `data/apps/`, `assets/css/extended/apps-showcase.css`)  
-> **Normativa:** [specs/_constitution.md](../../specs/_constitution.md) (Artículos 7 y 8) y [specs/DECISIONS.md](../../specs/DECISIONS.md) (ADR-007, ADR-009, ADR-010)
+> **Ámbito:** Portal Editorial Hugo (`content/{es,en}/apps/`, `layouts/apps/`, `layouts/partials/index_profile.html`, `data/apps/`, `assets/css/extended/apps-showcase.css`, `assets/css/extended/home-portal.css`)  
+> **Normativa:** [specs/_constitution.md](../../specs/_constitution.md) (Artículos 7 y 8) y [specs/DECISIONS.md](../../specs/DECISIONS.md) (ADR-007, ADR-009, ADR-010, ADR-011)
 
 ---
 
@@ -114,6 +114,11 @@ releases: [ { version: "...", date: "...", state: "released", type: "...", title
    - La interfaz utiliza tokens semánticos del tema base (`--theme`, `--primary`, `--secondary`, `--border`, `--entry`), garantizando compatibilidad nativa con modo claro y modo oscuro.
 3. **Píldoras de Navegación por Tier:**
    - La cabecera del catálogo incluye accesos directos por ancla (`#tier-flagship`, `#tier-b2b`, `#tier-lab`) para que el usuario explore directamente el área de su interés.
+4. **Tarjetas en Miniatura en el Home Index (`03 / ECOSISTEMA · Apps & Experimentos`):**
+   - El bloque `#apps` de la portada (`layouts/partials/index_profile.html`) renderiza las aplicaciones del ecosistema en formato tarjeta en miniatura (`.dlh-app-card`) sobre un grid de 3 columnas en escritorio (`repeat(3, 1fr)`), reutilizando dinámicamente la imagen `cover.png` (`.Fill "640x400 webp"`) del page bundle de cada app (`content/{es,en}/apps/<slug>/cover.png`).
+   - Cada miniatura ofrece doble acción explícita:
+     1. **Acción Ejecutable Primaria (`.dlh-app-btn-run`):** Enlace directo a la aplicación en vivo (`/apps/<slug>/` o `/games/snake/`).
+     2. **Acción de Ficha Asociada (`.dlh-app-btn-ficha` + enlace en portada/título):** Enlace directo a la página dedicada de objetivos, arquitectura y evolución (`/{lang}/apps/<slug>/`).
 
 ---
 
