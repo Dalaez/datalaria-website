@@ -4,6 +4,7 @@ LifeOps API — Configuration
 Centralized settings using Pydantic Settings.
 Reads from .env file automatically.
 """
+import os
 from pydantic_settings import BaseSettings
 from functools import lru_cache
 
@@ -31,7 +32,10 @@ class Settings(BaseSettings):
         return [origin.strip() for origin in self.cors_origins.split(",")]
 
     model_config = {
-        "env_file": ".env",
+        "env_file": (
+            os.path.join(os.path.dirname(__file__), ".env"),
+            ".env",
+        ),
         "env_file_encoding": "utf-8",
         "case_sensitive": False,
         "extra": "ignore",

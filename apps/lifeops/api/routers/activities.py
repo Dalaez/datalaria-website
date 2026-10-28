@@ -66,7 +66,9 @@ def list_activities(
 )
 def list_activities_with_details(
     activity_type: Optional[ActivityType] = Query(None, description="Filter by type"),
-    limit: int = Query(50, ge=1, le=200),
+    date_from: Optional[date] = Query(None, description="Start date (inclusive)"),
+    date_to: Optional[date] = Query(None, description="End date (inclusive)"),
+    limit: int = Query(500, ge=1, le=2000),
     user: AuthenticatedUser = Depends(get_current_user),
 ):
     query = (
@@ -79,6 +81,10 @@ def list_activities_with_details(
     if isinstance(activity_type, (str, ActivityType)):
         val = activity_type.value if hasattr(activity_type, "value") else str(activity_type)
         query = query.eq("activity_type", val)
+    if isinstance(date_from, date):
+        query = query.gte("date", date_from.isoformat())
+    if isinstance(date_to, date):
+        query = query.lte("date", date_to.isoformat())
 
     activities = query.execute().data or []
     if not activities:

@@ -160,3 +160,47 @@
   - Se elimina la doble entrada de datos; la paridad ES/EN y las métricas GA4 pasan a ser automáticas.
   - Hará falta enmendar el Art. 4 de la Constitución para añadir el esquema `content_ops` (Hito 5.5).
   - La App solo se listará en `/apps/` cuando tenga su serie de posts publicada (Art. 7).
+
+---
+
+## ADR-013: Motor Analítico 360° Nativo en React + Recharts con Agregación en Memoria vs. Herramienta BI Externa (Grafana / Metabase)
+- **Fecha:** 2026-10-27
+- **Estado:** Aceptado (Implementado en Hito 1.5 — LifeOps `v1.1.0`)
+- **Contexto:**
+  1. El Dashboard 360° de LifeOps (`v1.0.1`) solo mostraba conteos globales de la tabla padre `activities` y un gráfico estático de los últimos 30 días, sin permitir filtrar por semana/mes/año, comparar contra el periodo anterior ($\Delta\%$), ni profundizar por subcategorías (ej. `running` dentro de `sport`) o métricas cuantitativas (`distance_km`, `calories`, `duration_seconds`, `pages_read`).
+  2. Se evaluaron dos caminos tecnológicos: (A) construir el motor analítico de forma nativa en React 19 + Recharts (ya instalado en `package.json`) filtrando en memoria sobre el dataset con detalles (`GET /api/v1/activities/details`), o (B) embeber un panel externo tipo Grafana Cloud / Metabase / Apache Superset.
+- **Decisión:**
+  1. **Adoptar la Opción A (Panel Analítico Nativo en React 19 + Recharts `v3.10.1` + Motor Determinista en Cliente `analyticsEngine.js`).**
+  2. **Descartar Grafana / Metabase embebido** porque:
+     - Rompe el aislamiento multi-usuario RLS basado en el JWT de sesión de Supabase Auth salvo licencias Enterprise o proxies de tokens.
+     - Rompe el invariante de coste 0 €/mes y el modo Sandbox (`?mock=true`, Constitución Art. 3), ya que un iframe externo no puede leer el estado simulado del navegador.
+     - Penaliza la experiencia móvil táctil y la estética uniforme *Dark Glassmorphism*.
+  3. **Integración directa en la vista principal del Dashboard 360°** con 4 bloques visuales: (1) Tarjetas KPI dinámicas con variación $\Delta\%$, (2) Gráfico de evolución temporal multimétrica (Barras + Línea/Área comparativa), (3) Gráfico Donut de distribución por subcategorías y (4) Mapa de calor de consistencia diaria estilo GitHub/Strava.
+- **Consecuencias:**
+  - Cero coste adicional de infraestructura y 0 KB de nuevas librerías de terceros en el bundle.
+  - Filtrado instantáneo (0 ms de latencia entre clics de filtro) tanto en modo autenticado como en modo Demo (`?mock=true`).
+
+---
+
+## ADR-014: Guardia de Seguridad para Carga de Datos Sintéticos y Aislamiento Estricto de Cuentas de Producción (INV-11)
+- **Fecha:** 2026-10-28
+- **Estado:** Aceptado (Implementado en Hito 1.7 — LifeOps `v1.1.2`)
+- **Contexto:**
+  1. Durante la generación de capturas pobladas para la Parte 6 de la serie LifeOps, un script de seeding insertó actividades y tareas sintéticas tanto en la cuenta de prueba (`datalaria@gmail.com`) como inadvertidamente en la cuenta real de producción (`dalaez1@gmail.com`).
+  2. Aunque el backend utiliza PostgreSQL con RLS y el schema `lifeops` separa los datos por `user_id`, los scripts de seeding y benchmarking que operan con `service_role` pueden saltarse RLS si no cuentan con una barrera de seguridad a nivel de aplicación que impida escribir en cuentas de usuario reales.
+- **Decisión:**
+  1. **Instituir la Invariante INV-11 (Seeder Guard & Anti-Contaminación de Datos):**
+     - Crear el servicio [`seeder_guard.py`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/apps/lifeops/api/services/seeder_guard.py) con listas blancas explícitas de cuentas demo autorizadas (`ALLOWED_DEMO_EMAILS`, `ALLOWED_DEMO_UIDS`) y lista de protección para cuentas reales (`PROTECTED_REAL_EMAILS`).
+     - Función `validate_synthetic_seed_target(user_id, email)` que arroja de inmediato `SeederProtectionError` ante cualquier intento de cargar datos en cuentas de producción o no autorizadas.
+     - Función `detect_synthetic_leakage` para escanear registros contra firmas sintéticas conocidas.
+  2. **Integrar verificación automática en la suite de pruebas (`pytest`):**
+     - Implementar [`test_data_isolation.py`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/apps/lifeops/api/tests/test_data_isolation.py) con tests deterministas para:
+       - Bloqueo inmediato de seeding ante cuentas reales (`dalaez1@gmail.com`).
+       - Bloqueo de usuarios no registrados en la lista blanca.
+       - Aprobación exclusiva de cuentas demo autorizadas (`datalaria@gmail.com`).
+       - Detección precisa de firmas sintéticas sin falsos positivos en datos de usuarios reales.
+       - Verificación de aislamiento estricto por `user_id` en las consultas de los routers de la API.
+       - Auditoría de la base de datos para certificar cero presencia de datos sintéticos en cuentas de producción.
+- **Consecuencias:**
+  - Imposibilidad de que futuros scripts de prueba, benchmarking o captura de marketing contaminen cuentas de usuarios reales.
+  - La suite de CI/CD `pytest` falla de forma automática si un script o test intenta mutar cuentas no autorizadas o si se detecta fuga de datos sintéticos.

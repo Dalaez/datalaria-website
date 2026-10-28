@@ -94,6 +94,32 @@ Tras auditar todos los artículos de `/content/es/posts/` y `/content/en/posts/`
     3. Insertar shortcode `{{</* app-ref slug="lifeops" */>}}` y enlaces a la ficha técnica en los 5 artículos de la serie LifeOps en ES y EN (10 archivos en total).
   - *Gate de Verificación:* Las fichas `/es/apps/lifeops/` y `/en/apps/lifeops/` compilan limpiamente mostrando todos sus datos, timeline SemVer, enlaces directos a la App y al modo demo; los 10 posts renderizan la tarjeta del shortcode `app-ref`; `hugo --renderToMemory` compila 2079 páginas con código 0 en 23.3s. (Completado el 2026-10-24 ✅).
 
+- [x] **Hito 1.5: Evolución Analítica del Dashboard 360° de LifeOps (`v1.1.0` — ADR-013)**
+  - *Acción:*
+    1. Actualizar `/specs/apps/lifeops/spec.md` a `v1.1.0` y registrar `ADR-013` en `/specs/DECISIONS.md`.
+    2. Ampliar `GET /api/v1/activities/details` en `apps/lifeops/api/routers/activities.py` con soporte de rango de fechas (`date_from`, `date_to`) y `limit=2000` (def. `500`), más test de contrato `INV-9` en `pytest`.
+    3. Enriquecer el dataset sintético (`?mock=true`) en `apps/lifeops/web/src/lib/api.js` con actividades distribuidas en distintas semanas y meses para comparativas inter-periodo realistas.
+    4. Implementar el motor determinista `apps/lifeops/web/src/lib/analyticsEngine.js` y el nuevo Dashboard 360° interactivo en `DashboardPage.jsx` + `DashboardPage.css` con los 4 bloques: (1) Filtros por Año/Mes/Semana + Categoría + Subcategoría (ej. Running/Ciclismo/Gym) + Métrica (Sesiones, Km, Calorías, Horas, Páginas), (2) 4 KPIs dinámicos con $\Delta\%$ vs periodo anterior, (3) Gráfico de evolución temporal multimétrica con comparativa, (4) Donut de subcategorías y Mapa de Calor de consistencia diaria (estilo Strava/GitHub).
+    5. Actualizar diccionarios `es.js` / `en.js` y publicar release `v1.1.0` en `data/apps/lifeops.yaml`.
+  - *Gate de Verificación:* `npm run lint` (`oxlint`: 0 errores), `npm run build:portal` (compilado en 11.7s a `static/apps/lifeops/`), `pytest -v` (7/7 tests en verde) y `hugo --renderToMemory` (2145 páginas ES/EN con código de salida 0). (Completado el 2026-10-27 ✅).
+
+- [x] **Hito 1.6: Mitigación de Latencia Cold-Start, Caché SWR y Corrección de Carga Analítica (`v1.1.1`)**
+  - *Acción:*
+    1. Corregir parámetro `limit=200` en `DashboardPage.jsx` para cumplir con la restricción `le=200` del endpoint `/api/v1/activities/details` desplegado en Render (que devolvía HTTP 422 con `limit=1000`).
+    2. Añadir detección inteligente de ventana temporal inicial (`applyAutoPeriodIfNeeded`): si los últimos 30 días no tienen registros pero existen actividades en los últimos 90 días o en el año en curso, selecciona automáticamente `90 Días` o `Por Año`.
+    3. Implementar caché *Stale-While-Revalidate* aislada por `user.id` en `api.js` (`INV-10`), pre-warming temprano (`wakeUpServer`) en `AuthContext.jsx` y banner de sincronización en primer plano (`cloud-sync-banner`) en `DashboardPage.jsx`.
+  - *Gate de Verificación:* `npm run lint` (`oxlint`: 0 errores), `npm run build:portal` y `hugo --renderToMemory` con código de salida 0. (Completado el 2026-10-27 ✅).
+
+- [x] **Hito 1.7: Publicación Editorial de LifeOps v1.1.1 (Parte 6 de la Serie + Ficha Técnica y Capturas Pobladas)**
+  - *Acción:*
+    1. Actualizar `data/apps/lifeops.yaml` incorporando la feature del Dashboard 360° Analytics, las releases `v1.1.0` y `v1.1.1`, y el enlace bidireccional al nuevo post Parte 6 en la lista de artículos.
+    2. Actualizar `/specs/apps/lifeops/spec.md` (§1.3 con la Parte 6 y §9 con el historial evolutivo).
+    3. Redactar y publicar el artículo técnico en español e inglés: `content/es/posts/app-lifeops_part6_analytics_dashboard_360/` y `content/en/posts/app-lifeops_part6_analytics_dashboard_360/` con capturas de pantalla, diagrama Mermaid, shortcode `app-ref` e ilustraciones del banner de sincronización Supabase/Render y mapa de calor.
+    4. *Población y Capturas Reales:* Inserción en Supabase PostgreSQL de dataset sintético en inglés exclusivamente para `datalaria@gmail.com` (16 actividades de octubre de 2026 con running, ciclismo, gym, libros técnicos y cine + tareas Kanban en 2 proyectos) y extracción automatizada con Microsoft Edge headless de capturas reales pobladas para sobreescribir las imágenes de los posts ES y EN (`cover.png`, `lifeops_dashboard_360_analytics`, `lifeops_analytics_filters_drilldown`, `lifeops_consistency_heatmap_streaks`, `lifeops_cloud_sync_banner_coldstart`). Purga de registros sintéticos duplicados que se habían insertado por error en `dalaez1@gmail.com` y rotación de prefijo de caché SWR (`lifeops_swr_v2:`) en [`api.js`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/apps/lifeops/web/src/lib/api.js).
+    5. *Auditoría de Enlaces e Imágenes:* Corrección de enlaces internos con prefijo de idioma (`/es/posts/...` y `/en/posts/...`), sanitización de enlace en `AuthContext.jsx` y reinicio del servidor Hugo para montar en memoria los assets binarios recién agregados. Verificación HTTP 200 de todas las imágenes y enlaces internos.
+    6. *Guardia de Seguridad Anti-Contaminación de Datos y Tests INV-11 (ADR-014):* Creación del servicio `services/seeder_guard.py` con listas blancas de seeding y nueva suite `tests/test_data_isolation.py` que bloquea y verifica el aislamiento estricto de cuentas de producción frente a inserciones sintéticas.
+  - *Gate de Verificación:* `hugo --renderToMemory` compila limpiamente 2167 páginas con código de salida 0 y paridad total ES/EN; suite HTTP `verify_hugo_links.py` confirma código 200 en todas las imágenes y enlaces de la Parte 6; `pytest` 13/13 tests en verde (100%); `oxlint` 0 errores. (Completado el 2026-10-28 ✅).
+
 ---
 
 ### FASE 2: Aislamiento y Saneamiento de las Apps Activas con Deuda (`obs-management` y `weather`)

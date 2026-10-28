@@ -7,7 +7,7 @@ cover: cover.png
 app_url: /apps/lifeops/
 demo_url: /apps/lifeops/#/?mock=true
 source_spec: specs/apps/lifeops/spec.md
-current_version: v1.0.1
+current_version: v1.1.1
 
 title:
   es: "LifeOps"
@@ -47,6 +47,9 @@ features:
   - icon: "📊"
     es: "Motor de Informes Ejecutivos: exportación de resúmenes consolidados en Word y tablas de datos en Excel."
     en: "Executive Reporting Engine: consolidated summary document generation in Word and data export in Excel."
+  - icon: "📈"
+    es: "Dashboard Analítico 360°: filtrado temporal multidimensional (semanas, meses, año), comparativa inter-periodo (Δ%), drill-down por subcategorías, gráficos Recharts y mapa de consistencia de 16 semanas."
+    en: "360° Analytics Dashboard: multi-dimensional timeframe filtering (weeks, months, year), period-over-period delta comparisons (Δ%), subcategory drill-down, Recharts visualizations and 16-week consistency heatmap."
   - icon: "🚀"
     es: "Modo Demo Sandbox: prueba interactiva instantánea con datos simulados sin requerir registro ni backend."
     en: "Instant Sandbox Demo: explore all modules with deterministic mock data without sign-up or backend requirements."
@@ -92,10 +95,44 @@ posts:
     part: 4
   - slug: app-lifeops_part5_deploy_mobile_pwa
     part: 5
+  - slug: app-lifeops_part6_analytics_dashboard_360
+    part: 6
 
 related_products: []
 
 releases:
+  - version: v1.1.1
+    date: "2026-10-27"
+    state: released
+    type: ux
+    title:
+      es: "Caché instantánea SWR, banner de sincronización Cold-Start en primer plano y auto-rango temporal"
+      en: "Instant SWR cache, foreground Cold-Start sync banner and smart period auto-fit"
+    changes:
+      - es: "Caché local Stale-While-Revalidate aislada por user_id para carga en 0 ms al reingresar a la aplicación."
+        en: "User-isolated Stale-While-Revalidate local cache delivering 0 ms instant hydration on repeat visits."
+      - es: "Banner visual en primer plano con contador de segundos, barra de progreso y fases de conexión durante el Cold-Start de Render."
+        en: "Foreground visual banner with live elapsed timer, progress bar, and connection stages during Render Cold-Starts."
+      - es: "Compatibilidad de paginación (limit=200) con el contrato en producción y ajuste automático a ventana de 90 días / anual cuando los últimos 30 días no tienen actividad reciente."
+        en: "Production contract pagination compatibility (limit=200) and automatic 90-day / yearly window selection when the last 30 days have no recent logs."
+
+  - version: v1.1.0
+    date: "2026-10-27"
+    state: released
+    type: feature
+    title:
+      es: "Motor Analítico 360° interactivo, comparativas inter-periodo (Δ%) y mapa de consistencia"
+      en: "Interactive 360° Analytics Engine, period-over-period comparisons (Δ%) and consistency heatmap"
+    changes:
+      - es: "Barra de filtrado multidimensional: ventanas por 7 días, 30 días, mes calendario, 90 días y año con comparativa automática frente al periodo anterior."
+        en: "Multi-dimensional filter bar: 7-day, 30-day, calendar month, 90-day, and yearly windows with automatic period-over-period comparison."
+      - es: "Drill-down por categorías y subcategorías (ej. Deporte → Running, Ciclismo, Fuerza; Libros por estado; Cine por formato/plataforma; Kanban por estado)."
+        en: "Category and subcategory drill-down (e.g., Sport → Running, Cycling, Gym; Books by status; Cinema by format/platform; Kanban by status)."
+      - es: "4 tarjetas KPI dinámicas con cálculo determinista de variación porcentual (Δ%) y selector de métricas cuantitativas (sesiones, kilómetros, calorías, horas, páginas)."
+        en: "4 context-aware KPI cards with deterministic percentage delta (Δ%) and quantitative metric selector (sessions, kilometers, calories, hours, pages)."
+      - es: "Gráfico combinado de evolución temporal (Recharts ComposedChart), Donut interactivo de subcategorías y Mapa de Calor de consistencia diaria de 16 semanas estilo Strava/GitHub."
+        en: "Combined time-series evolution chart (Recharts ComposedChart), interactive subcategory Donut, and 16-week Strava/GitHub-style daily consistency heatmap."
+
   - version: v1.0.1
     date: "2026-10-24"
     state: released

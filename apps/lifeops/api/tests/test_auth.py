@@ -101,3 +101,85 @@ def test_auth_valid_token_acceptance(monkeypatch):
     response = client.get("/api/v1/projects/", headers={"Authorization": f"Bearer {valid_token}"})
     assert response.status_code == 200
     assert response.json() == []
+
+
+def test_activities_details_with_date_filters(monkeypatch):
+    """
+    INV-9: GET /api/v1/activities/details supports date_from, date_to and joins child records.
+    """
+    valid_payload = {
+        "sub": "valid-user-11111",
+        "email": "user@datalaria.com",
+        "role": "authenticated",
+        "aud": "authenticated",
+        "exp": int(time.time()) + 3600,
+    }
+    valid_token = jwt.encode(valid_payload, SECRET, algorithm="HS256")
+
+    recorded_filters = []
+
+    def mock_db(table_name):
+        class MockQuery:
+            def __init__(self, tbl):
+                self.tbl = tbl
+            def select(self, *args):
+                return self
+            def eq(self, col, val):
+                recorded_filters.append(("eq", self.tbl, col, val))
+                return self
+            def gte(self, col, val):
+                recorded_filters.append(("gte", self.tbl, col, val))
+                return self
+            def lte(self, col, val):
+                recorded_filters.append(("lte", self.tbl, col, val))
+                return self
+            def in_(self, col, vals):
+                recorded_filters.append(("in", self.tbl, col, vals))
+                return self
+            def order(self, *args, **kwargs):
+                return self
+            def limit(self, *args, **kwargs):
+                return self
+            def execute(self):
+                class MockRes:
+                    if self.tbl == "activities":
+                        data = [
+                            {
+                                "id": "act-1",
+                                "user_id": "valid-user-11111",
+                                "activity_type": "sport",
+                                "title": "10K Run",
+                                "date": "2026-10-20",
+                                "duration_minutes": 48,
+                            }
+                        ]
+                    elif self.tbl == "workouts":
+                        data = [
+                            {
+                                "id": "w-1",
+                                "activity_id": "act-1",
+                                "workout_type": "running",
+                                "distance_km": 10.0,
+                                "calories": 650,
+                            }
+                        ]
+                    else:
+                        data = []
+                return MockRes()
+        return MockQuery(table_name)
+
+    import routers.activities as r_activities
+    monkeypatch.setattr(r_activities, "db", mock_db)
+
+    response = client.get(
+        "/api/v1/activities/details?date_from=2026-10-01&date_to=2026-10-31&limit=500",
+        headers={"Authorization": f"Bearer {valid_token}"},
+    )
+    assert response.status_code == 200
+    body = response.json()
+    assert len(body) == 1
+    assert body[0]["workout"]["workout_type"] == "running"
+    assert body[0]["workout"]["distance_km"] == 10.0
+    assert ("eq", "activities", "user_id", "valid-user-11111") in recorded_filters
+    assert ("gte", "activities", "date", "2026-10-01") in recorded_filters
+    assert ("lte", "activities", "date", "2026-10-31") in recorded_filters

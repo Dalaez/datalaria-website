@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
+import { clearUserCache, wakeUpServer } from '../lib/api';
 
 const AuthContext = createContext({
   user: null,
@@ -25,6 +26,9 @@ export function AuthProvider({ children }) {
       setLoading(false);
       return;
     }
+
+    // Pre-warm Render container immediately on app boot
+    wakeUpServer();
 
     // 1. Get initial session
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -56,6 +60,7 @@ export function AuthProvider({ children }) {
   };
 
   const signOut = async () => {
+    clearUserCache(user?.id);
     const { error } = await supabase.auth.signOut();
     if (error) throw error;
   };

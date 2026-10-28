@@ -1,9 +1,9 @@
 # Especificación Técnica SDD: LifeOps (`lifeops`)
 
 > **ID de Especificación:** `SPEC-APP-LIFEOPS`
-> **Versión de la Spec:** `1.0.0` (Reverse-Spec del estado en producción a 2026-10-24)
-> **Versión de la App documentada:** `v1.0.0` (ver §9 Historial Evolutivo)
-> **Estado:** `APPROVED (Reverse-Spec)` — pendiente de ejecutar Hito 1.2 (Aislamiento + Fix de Seguridad)
+> **Versión de la Spec:** `1.1.1` (Actualizada el 2026-10-27 con Caché SWR, Pre-Warming y UX de Sincronización en Primer Plano)
+> **Versión de la App documentada:** `v1.1.1` (ver §9 Historial Evolutivo)
+> **Estado:** `APPROVED` — Hitos 1.1 a 1.6 activos/completados
 > **Categoría SDD:** 🟢 Lista para documentar (App activa #1 de 7)
 > **Código fuente actual:** [`lifeops-app/`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/lifeops-app) (frontend) · [`lifeops-api/`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/lifeops-api) (backend)
 > **Código fuente objetivo (Hito 1.2):** `apps/lifeops/web/` · `apps/lifeops/api/`
@@ -30,6 +30,7 @@ Unificar en un único "sistema operativo personal y profesional" información qu
 | 3 | `app-lifeops_part3_modulos_kanban` | 2026-09-15 | Módulos interactivos y Kanban |
 | 4 | `app-lifeops_part4_informes_word_excel` | 2026-09-18 | Motor de informes Word/Excel |
 | 5 | `app-lifeops_part5_deploy_mobile_pwa` | 2026-09-19 | Despliegue 24/7, móvil y PWA |
+| 6 | `app-lifeops_part6_analytics_dashboard_360` | 2026-10-27 | Dashboard 360°, Recharts y mitigación de cold-starts |
 
 > Los 5 posts enlazan hoy directamente a `https://datalaria.com/apps/lifeops/`. En el **Hito 1.4** se añadirá en cada uno (ES y EN) un enlace a la **ficha pública** de la App, manteniendo el enlace directo a la App.
 
@@ -97,7 +98,8 @@ flowchart LR
 | `components/Personal/` | `SportModule`, `BooksModule`, `FilmsModule`. |
 | `components/Professional/` | `KanbanBoard` (bitácora de comentarios), `ProjectsManager`. |
 | `components/Layout/` | `MainLayout`, `Sidebar`, `Header`, `BottomNav` (móvil). |
-| `components/Dashboard/` | `StatWidget`, `QuickActions`, `SystemHealth` (estado del backend / cold start). |
+| `components/Dashboard/` | `StatWidget` (KPI con badge `trend` $\Delta\%$), `QuickActions`, `SystemHealth`, `AnalyticsDashboard` (barra de filtros, gráfico temporal multimétrica, donut de subcategorías y mapa de calor de consistencia). |
+| `lib/analyticsEngine.js` | Motor determinista puro en cliente para filtrado jerárquico (categoría/subcategoría), ventanas temporales (`week`, `month`, `year`), cálculo de deltas ($\Delta$ y $\Delta\%$) frente al periodo anterior, series temporales y matriz de consistencia diaria. |
 | `components/Notifications/` | `NotificationDrawer` (alertas). |
 | `components/common/` | `Modal` (bottom-sheet en móvil vía `createPortal`), `LanguageSwitcher`. |
 
@@ -141,7 +143,7 @@ flowchart LR
 | Recurso | Endpoints |
 | :--- | :--- |
 | Sistema | `GET /` · `GET /health` *(públicos)* |
-| Activities | `GET /activities/?activity_type=` · `GET /activities/details` · `GET /activities/{id}` · `POST /activities/` · `POST /activities/{sport,book,film}` · `PATCH /activities/{id}` · `PATCH /activities/{id}/{sport,book,film}` · `DELETE /activities/{id}` · `GET /activities/{id}/{workout,book,film}` |
+| Activities | `GET /activities/?activity_type=` · `GET /activities/details?activity_type=&date_from=&date_to=&limit=` *(hasta 1000 registros con detalle embebido para motor analítico)* · `GET /activities/{id}` · `POST /activities/` · `POST /activities/{sport,book,film}` · `PATCH /activities/{id}` · `PATCH /activities/{id}/{sport,book,film}` · `DELETE /activities/{id}` · `GET /activities/{id}/{workout,book,film}` |
 | Projects | `GET /projects/?status=` · `GET /projects/{id}` · `POST /projects/` · `PATCH /projects/{id}` · `DELETE /projects/{id}` · `GET /projects/{id}/tasks` |
 | Tasks | `GET /tasks/?status=&project_id=` · `GET /tasks/{id}` · `POST /tasks/` · `PATCH /tasks/{id}` · `DELETE /tasks/{id}` · `POST /tasks/{id}/comments` · `DELETE /tasks/{id}/comments/{comment_id}` |
 | Stats | `GET /stats/dashboard` · `GET /stats/breakdown?date_from=&date_to=` |
@@ -174,6 +176,27 @@ Contrato fuente de verdad ejecutable: OpenAPI autogenerado en `/docs` y `/redoc`
 | INV-5 | Los comentarios de tarea se persisten como array JSONB ordenado cronológicamente con `id`, `text`, `created_at`. | Test de contrato del endpoint de comentarios. |
 | INV-6 | La exportación CSV usa UTF-8 con BOM (apertura correcta en Excel). | Test que verifique los 3 primeros bytes `EF BB BF`. |
 | INV-7 | El modo `mock=true` nunca realiza peticiones de red a la API ni a Supabase. | Revisión de `api.js` / `AuthContext.jsx`. |
+| INV-8 | El cálculo de variación porcentual ($\Delta\%$) entre el periodo actual ($V_{\text{curr}}$) y el anterior ($V_{\text{prev}}$) es determinista y seguro ante división por cero: si $V_{\text{prev}} = 0$ y $V_{\text{curr}} > 0$ devuelve $+100\%$ (nuevo impulso); si ambos son $0$ devuelve $0\%$; en caso general $\text{round}\left(\frac{V_{\text{curr}} - V_{\text{prev}}}{V_{\text{prev}}} \times 100\right)$. | Test unitario sobre la lógica de agregación y validación de esquemas en `pytest`. |
+| INV-9 | El filtro de `GET /api/v1/activities/details` respeta simultáneamente `user_id`, `activity_type`, `date_from` y `date_to` e inyecta los sub-objetos `workout`, `book` y `film`. | Test en `apps/lifeops/api/tests/test_auth.py`. |
+| INV-10 | La caché local *Stale-While-Revalidate* (`localStorage`) está aislada por `user_id` (`lifeops_swr_v2:<user_id>:<endpoint>`), se invalida automáticamente tras mutaciones (`POST`/`PATCH`/`DELETE`) y se purga al cerrar sesión (`signOut`). Mientras no existan datos ni en caché ni del servidor, la UI muestra el banner de sincronización en primer plano y skeletons en lugar de valores `0` engañosos. | Revisión de `api.js` y `DashboardPage.jsx` + `npm run lint`. |
+| INV-11 | **Aislamiento Estricto Anti-Contaminación de Datos Sintéticos / Seeder Guard:** Cualquier script de carga, benchmarking o generación de datos de prueba tiene terminantemente prohibido insertar datos en cuentas reales de usuario (como `dalaez1@gmail.com`). La inserción está acotada por lista blanca exclusiva a cuentas demo autorizadas (`datalaria@gmail.com`). Todo script de seeding debe validar el objetivo mediante `validate_synthetic_seed_target` y la base de datos es auditada contra firmas sintéticas. | Suite de tests automatizada en `apps/lifeops/api/tests/test_data_isolation.py` (`pytest`). |
+
+### 4.1 Especificación del Motor Analítico 360° (`v1.1.0` — ADR-013)
+1. **Dimensiones de Filtrado en Cascada:**
+   - **Rango Temporal (`period`):** `week` (últimos 7 días / semana actual vs. 7 días previos), `month` (últimos 30 días / mes seleccionado vs. 30 días previos), `quarter` (últimos 90 días vs. 90 días previos), `year` (año seleccionado / últimos 12 meses vs. año previo).
+   - **Categoría Principal (`category`):** `all` (Vista 360°), `sport`, `book`, `film`, `tasks`.
+   - **Subcategoría (`subcategory`):**
+     - En `sport`: `all`, `running`, `cycling`, `gym`, `swimming`, `hiking`, `crossfit`, `other`.
+     - En `book`: `all`, `completed`, `reading`, `wishlist`.
+     - En `film`: `all`, `movie`, `series`, `documentary`, `anime`.
+     - En `tasks`: `all` o filtrado por `project_id` / estado (`done`, `in_progress`, `todo`).
+   - **Métrica Activa del Gráfico Temporal (`metric`):**
+     - `count` (nº de actividades/sesiones), `distance_km` (km recorridos), `calories` (kcal quemadas), `duration_hours` (horas dedicadas), `pages_read` (páginas leídas).
+2. **Los 4 Bloques Visuales del Dashboard 360°:**
+   - **Bloque 1 — Tarjetas KPI Dinámicas con Comparativa ($\Delta\%$):** 4 widgets que adaptan sus métricas a la categoría/subcategoría activa (ej. en *Deporte → Carrera*: Sesiones, Kilómetros totales, Tiempo/Ritmo medio y Calorías/FC media) mostrando la flecha de tendencia y el porcentaje respecto al periodo anterior.
+   - **Bloque 2 — Gráfico de Evolución Temporal Multimétrica (`Recharts ComposedChart`):** Barras del periodo actual agrupadas por día (en vista semanal/mensual) o por mes (en vista anual) + línea/área comparativa del periodo anterior.
+   - **Bloque 3 — Gráfico Donut de Subcategorías (`Recharts PieChart`):** Desglose porcentual y absoluto por subcategoría (tipos de deporte, géneros/estados de lectura, plataformas/formatos de cine o estado de proyectos).
+   - **Bloque 4 — Mapa de Calor de Consistencia Diaria (Estilo Strava/GitHub):** Matriz visual de actividad diaria con cálculo de días activos, racha actual (*current streak*) y mejor racha (*best streak*).
 
 ---
 
@@ -214,10 +237,12 @@ Contrato fuente de verdad ejecutable: OpenAPI autogenerado en `/docs` y `/redoc`
 apps/lifeops/
 ├── web/        ← lifeops-app/   (sin dist/ ni node_modules/ versionados)
 ├── api/        ← lifeops-api/   (+ tests/)
+│   ├── services/
+│   │   └── seeder_guard.py     (INV-11: Guardia y detección de fugas sintéticas)
 │   └── tests/
 │       ├── test_health.py
-│       ├── test_auth.py        (INV-1, INV-2)
-│       └── test_contracts.py   (INV-5, INV-6)
+│       ├── test_auth.py        (INV-1, INV-2, INV-9)
+│       └── test_data_isolation.py (INV-11: Seeder guard y aislamiento multitenant)
 └── README.md   → enlaza a esta spec
 ```
 
@@ -262,7 +287,9 @@ hugo --gc --minify
 | `v0.3.0` | 2026-08-30 | ✨ Feature | Bitácora de comentarios con marca temporal en tareas Kanban (JSONB). | `98fa66c` |
 | `v0.4.0` | 2026-08-31 | 📱 UX | Rediseño responsive completo: bottom nav, modales bottom-sheet, gestos táctiles. | `b41157c`, `a8dfc35`, `813aec0`, `86794ba` |
 | `v1.0.0` | 2026-09-19 | 📚 Publicación | Versión publicada con la serie de 5 artículos (13-19 sept). Estado documentado por esta spec. | `4c033f6` … `1415ae8` |
-| `v1.0.1` | *Planificada* | 🔒 Seguridad | SEC-1 (verificación de firma JWT), PyJWT, tests, aislamiento en `apps/lifeops/`, build reproducible. | Hito 1.2 |
+| `v1.0.1` | 2026-10-24 | 🔒 Seguridad | SEC-1 (verificación de firma JWT), PyJWT, tests, aislamiento en `apps/lifeops/`, build reproducible. | Hito 1.2 |
+| `v1.1.0` | 2026-10-27 | 📊 Feature | Motor Analítico 360° interactivo: filtros por año/mes/semana, comparativa $\Delta\%$ contra periodo anterior, drill-down por subcategorías (running, ciclismo, fuerza, géneros, plataformas), selector de métrica (km, kcal, horas, sesiones), gráfico Donut y mapa de calor de consistencia diaria. | Hito 1.5 |
+| `v1.1.1` | 2026-10-27 | ⚡ Perf & UX | Mitigación de latencia y cold-start de Render: (1) Pre-warming automático de `/health` al abrir la app, (2) Caché instantánea *Stale-While-Revalidate* en cliente aislada por `user_id`, (3) Tarjeta visual en primer plano con contador de progreso y skeletons durante la carga inicial para evitar mostrar datos a cero. | Hito 1.6 |
 
 ---
 

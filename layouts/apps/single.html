@@ -243,6 +243,14 @@
             {{- $postCover = $postPage.Resources.GetMatch $postPage.Params.cover.image -}}
           {{- end -}}
           {{- if not $postCover -}}
+            {{- with $postPage.Params.image -}}
+              {{- $postCover = $postPage.Resources.GetMatch . -}}
+            {{- end -}}
+          {{- end -}}
+          {{- if not $postCover -}}
+            {{- $postCover = $postPage.Resources.GetMatch "*cover*.{png,jpg,jpeg,webp,gif}" -}}
+          {{- end -}}
+          {{- if not $postCover -}}
             {{- $postCover = $postPage.Resources.GetMatch "**{cover,feature,thumbnail}.{png,jpg,jpeg,webp,gif}" -}}
           {{- end -}}
 

@@ -179,27 +179,30 @@ def create_cover(lang='ES', out_path='cover.png'):
     img = Image.new('RGB', (WIDTH, HEIGHT), color=(15, 23, 42))
     draw = ImageDraw.Draw(img)
 
+    safe_left = 145
+    safe_right = 1055
+
     # 1. Fondo degradado ejecutivo Slate 900 -> Slate 800
-    draw_linear_gradient(draw, WIDTH, HEIGHT, (15, 23, 42), (30, 41, 59))
+    draw_linear_gradient(draw, WIDTH, HEIGHT, (11, 17, 32), (30, 41, 59))
 
     # 2. Malla técnica
     draw_technical_grid(draw, WIDTH, HEIGHT)
 
     # Fuentes
     font_badge = get_font("segoeuib.ttf", 11)
-    font_title_large = get_font("segoeuib.ttf", 41)
-    font_subtitle = get_font("segoeui.ttf", 16)
-    font_body = get_font("segoeui.ttf", 12)
-    font_bold = get_font("segoeuib.ttf", 12.5)
-    font_small = get_font("segoeui.ttf", 9.5)
-    font_pill = get_font("segoeuib.ttf", 12.5)
-    font_footer = get_font("segoeuib.ttf", 10.5)
+    font_title_large = get_font("segoeuib.ttf", 35)
+    font_subtitle = get_font("segoeui.ttf", 14)
+    font_body = get_font("segoeui.ttf", 11)
+    font_bold = get_font("segoeuib.ttf", 12)
+    font_small = get_font("segoeui.ttf", 9)
+    font_pill = get_font("segoeuib.ttf", 11)
 
-    # 3. Badge Superior Izquierdo: SUITE 01 · ESTRATEGIA MBA en dorado/azul
-    b_x, b_y = 65, 46
-    b_w, b_h = 250, 28
-    draw.rounded_rectangle([(b_x, b_y), (b_x + b_w, b_y + b_h)], radius=6, fill=(15, 23, 42), outline=(245, 158, 11), width=1)
-    draw.text((b_x + 14, b_y + 7), "SUITE 01 · ESTRATEGIA MBA", fill=(245, 158, 11), font=font_badge)
+    # 3. Badge Superior Corporativo
+    badge_text = "DATALARIA EXECUTIVE DECISION PACK • MCKINSEY & BCG STANDARD"
+    b_x, b_y = safe_left, 52
+    b_w, b_h = 445, 26
+    draw.rounded_rectangle([(b_x, b_y), (b_x + b_w, b_y + b_h)], radius=5, fill=(15, 23, 42), outline=(37, 99, 235), width=1)
+    draw.text((b_x + 14, b_y + 6), badge_text, fill=(56, 189, 248), font=font_badge)
 
     # 4. Título Principal de Alto Contraste
     t_y = 92
@@ -210,76 +213,74 @@ def create_cover(lang='ES', out_path='cover.png'):
         title_p1 = "MCKINSEY / GE "
         title_p2 = "3x3 MATRIX"
 
-    draw.text((65, t_y), title_p1, fill=(248, 250, 252), font=font_title_large)
+    draw.text((safe_left, t_y), title_p1, fill=(248, 250, 252), font=font_title_large)
     bbox_p1 = font_title_large.getbbox(title_p1)
     p1_width = bbox_p1[2] - bbox_p1[0]
-    draw.text((65 + p1_width, t_y), title_p2, fill=(245, 158, 11), font=font_title_large)
+    draw.text((safe_left + p1_width, t_y), title_p2, fill=(245, 158, 11), font=font_title_large)
 
     # 5. Subtítulo Descriptivo de los Ejes y Zonas
-    sub_y = 154
+    sub_y = 146
     subtitle = (
-        "Atractivo de la Industria vs. Fortaleza Competitiva · Asignación de Capital C-Level"
+        "Atractivo de la Industria vs. Fortaleza Competitiva · Asignación C-Level"
         if lang == 'ES' else
         "Industry Attractiveness vs. Business Unit Strength · C-Level Capital Allocation"
     )
-    draw.text((65, sub_y), subtitle, fill=(203, 213, 225), font=font_subtitle)
+    draw.text((safe_left, sub_y), subtitle, fill=(203, 213, 225), font=font_subtitle)
 
     # Línea divisoria en azul Datalaria
-    draw.line([(65, 190), (580, 190)], fill=(37, 99, 235), width=2)
+    draw.line([(safe_left, 176), (620, 176)], fill=(37, 99, 235), width=2)
 
     # 6. Balas de Valor Estratégico
     bullets_es = [
-        ("Motor Multifactorial Ponderado", "Evaluación objetiva de 5 factores de mercado y 5 capacidades competitivas."),
-        ("Asignación de Capital en 3 Zonas", "Mandato claro: Invertir (Verde), Seleccionar (Ámbar) y Cosechar (Rojo)."),
-        ("Gobernanza C-Level & Desbloqueo de ROIC", "Presupuesto a 36 meses, Hurdle Rates (TIR) y plan de carve-out para el Consejo.")
+        ("Motor Multifactorial Ponderado", "Evaluación objetiva de 5 factores de mercado y 5 capacidades competitivas"),
+        ("Asignación de Capital en 3 Zonas", "Mandato claro: Invertir (Verde), Seleccionar (Ámbar) y Cosechar (Rojo)"),
+        ("Gobernanza C-Level & Expansión ROIC", "Presupuesto a 36 meses, Hurdle Rates (TIR) y plan de carve-out para el Consejo")
     ]
     bullets_en = [
-        ("Weighted Multifactor Scoring Engine", "Rigorous audit of 5 market attractiveness and 5 business strength criteria."),
-        ("3-Zone Capital Allocation Mandates", "Actionable governance: Invest (Green), Selectivity (Amber), Harvest (Red)."),
-        ("C-Level Governance & ROIC Expansion", "36-month CAPEX roadmap, Hurdle Rates (IRR), and Board carve-out mandates.")
+        ("Weighted Multifactor Scoring Engine", "Rigorous audit of 5 market attractiveness and 5 business strength criteria"),
+        ("3-Zone Capital Allocation Mandates", "Actionable governance: Invest (Green), Selectivity (Amber), Harvest (Red)"),
+        ("C-Level Governance & ROIC Expansion", "36-month CAPEX roadmap, Hurdle Rates (IRR), and Board carve-out mandates")
     ]
     bullets = bullets_es if lang == 'ES' else bullets_en
 
-    bullet_y = 212
+    bullet_y = 196
     for b_title, b_desc in bullets:
-        # Puntero cuadrado azul
-        draw.rounded_rectangle([(65, bullet_y + 3), (73, bullet_y + 11)], radius=2, fill=(37, 99, 235))
-        draw.text((85, bullet_y), b_title, fill=(255, 255, 255), font=font_bold)
-        draw.text((85, bullet_y + 20), b_desc, fill=(148, 163, 184), font=font_body)
-        bullet_y += 56
+        draw.rounded_rectangle([(safe_left, bullet_y + 3), (safe_left + 7, bullet_y + 10)], radius=2, fill=(37, 99, 235))
+        draw.text((safe_left + 16, bullet_y), b_title, fill=(255, 255, 255), font=font_bold)
+        draw.text((safe_left + 16, bullet_y + 17), b_desc, fill=(148, 163, 184), font=font_body)
+        bullet_y += 48
 
     # 7. Píldoras de Entregables (Inferior Izquierda)
     pills = [
-        ("📊 Excel + Google Sheets", (37, 99, 235), (239, 246, 255), (29, 78, 216)),
-        ("📑 PPTX 16:9 C-Level", (245, 158, 11), (254, 243, 199), (146, 64, 14)),
-        ("📄 Guía PDF Minto (5 págs)" if lang == 'ES' else "📄 Minto PDF Guide (5 pgs)", (16, 185, 129), (209, 250, 229), (6, 95, 70))
+        ("📊 Excel + Google Sheets", (37, 99, 235)),
+        ("📑 PPTX 16:9 C-Level", (245, 158, 11)),
+        ("📄 Guía PDF Minto (5 págs)" if lang == 'ES' else "📄 Minto PDF Guide (5 pgs)", (16, 185, 129))
     ]
 
-    pill_x = 65
-    pill_y = 440
-    for p_txt, p_border, p_bg, p_fg in pills:
+    pill_x = safe_left
+    pill_y = 358
+    for p_txt, p_border in pills:
         bbox = font_pill.getbbox(p_txt)
-        pw = (bbox[2] - bbox[0]) + 26
-        ph = 34
-        draw.rounded_rectangle([(pill_x, pill_y), (pill_x + pw, pill_y + ph)], radius=17, fill=(15, 23, 42), outline=p_border, width=2)
-        draw.text((pill_x + 13, pill_y + 8), p_txt, fill=(248, 250, 252), font=font_pill)
-        pill_x += pw + 12
+        pw = (bbox[2] - bbox[0]) + 24
+        ph = 30
+        draw.rounded_rectangle([(pill_x, pill_y), (pill_x + pw, pill_y + ph)], radius=15, fill=(15, 23, 42), outline=p_border, width=1)
+        draw.text((pill_x + 12, pill_y + 7), p_txt, fill=(255, 255, 255), font=font_pill)
+        pill_x += pw + 10
 
-    # 8. Gráfico Abstracto Geométrico a la Derecha (McKinsey 3x3 Grid)
-    grid_x0 = 660
-    grid_y0 = 92
-    grid_w = 475
-    grid_h = 445
+    # 8. Gráfico Abstracto Geométrico a la Derecha (McKinsey 3x3 Grid encuadrada en Safe Zone)
+    grid_x0 = 645
+    grid_y0 = 75
+    grid_w = 405
+    grid_h = 425
     draw_mckinsey_grid_graphic(draw, grid_x0, grid_y0, grid_w, grid_h, font_small, font_bold, lang=lang)
 
-    # 9. Marca de Agua / Logo Inferior Derecho
-    footer_text = "DATALARIA.COM · EXECUTIVE DECISION PACKS"
-    bbox_f = font_footer.getbbox(footer_text)
-    f_w = bbox_f[2] - bbox_f[0]
-    draw.text((WIDTH - f_w - 65, HEIGHT - 46), footer_text, fill=(100, 116, 139), font=font_footer)
-
-    # Línea inferior decorativa
-    draw.line([(65, HEIGHT - 58), (WIDTH - 65, HEIGHT - 58)], fill=(30, 41, 59), width=1)
+    # 9. Barra inferior enmarcada en Safe Zone
+    draw.line([(safe_left, 545), (safe_right, 545)], fill=(51, 65, 85), width=1)
+    foot_left = "Datalaria.com • Official Executive Decision Pack 2026 • Confidential & Licensed"
+    foot_right = "Descarga Directa Inmediata (.ZIP)" if lang == 'ES' else "Instant Direct Download (.ZIP)"
+    draw.text((safe_left, 558), foot_left, fill=(100, 116, 139), font=font_small)
+    bbox_fr = font_small.getbbox(foot_right)
+    draw.text((safe_right - (bbox_fr[2] - bbox_fr[0]), 558), foot_right, fill=(56, 189, 248), font=font_small)
 
     img.save(out_path, format='PNG', quality=95)
     print(f"[OK] Portada generada ({lang}): {out_path}")
