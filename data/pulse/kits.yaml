@@ -1,0 +1,653 @@
+version: 1.0.0
+mega_bundle:
+  id: mega-bundle
+  slug: mega-bundle-total
+  type: mega_bundle
+  status: available
+  price: 39 €
+  original_price: 56 €
+  icon: ⚡
+  checkout_url: https://datalaria.lemonsqueezy.com/checkout/buy/88a976a2-f0e5-4e8e-a954-516767c7fed5
+  title_es: 'Mega Bundle Total: Las 3 Suites Ejecutivas'
+  title_en: 'Total Mega Bundle: All 3 Executive Suites'
+  description_es: Acceso completo e ilimitado a las 3 Suites de Modelos de Negocio
+    de Datalaria (13 kits individuales).
+  description_en: Full and unlimited access to all 3 Business Model Suites by Datalaria
+    (13 individual packs).
+suites:
+- id: suite-01
+  slug: suite-1-estrategia-mba
+  type: suite
+  topic: estrategia
+  status: available
+  price: 19 €
+  original_price: 29 €
+  icon: 📊
+  checkout_url: https://datalaria.lemonsqueezy.com/checkout/buy/6afa0df4-fec1-4227-a183-9e5bcc738bdd
+  title_es: 'Pack Suite 1: Estrategia MBA'
+  title_en: 'Suite 1: MBA Strategy'
+  description_es: 'Colección completa de 5 modelos de decisión estratégica: DAFO Cuantitativo,
+    5 Fuerzas de Porter, PESTEL, BCG y McKinsey / GE.'
+  description_en: 'Complete collection of 5 strategic decision models: Quantitative
+    SWOT, Porter 5 Forces, PESTEL, BCG and McKinsey / GE.'
+  included_kits:
+  - pack-dafo
+  - pack-porter
+  - pack-pestel
+  - pack-bcg
+  - pack-mckinsey
+- id: suite-02
+  slug: suite-2-decisiones
+  type: suite
+  topic: decisiones
+  status: available
+  price: 15 €
+  original_price: 20 €
+  icon: ⚖️
+  checkout_url: https://datalaria.lemonsqueezy.com/checkout/buy/4e2ca8b1-a6f9-43b7-851a-72c44d9bc13d
+  title_es: 'Pack Suite 2: Decisiones'
+  title_en: 'Suite 2: Decisions & Prioritization'
+  description_es: 'Colección de 3 frameworks de priorización y justificación económica:
+    Matriz DAR, Priorización RICE/ICE y Business Case Financiero.'
+  description_en: 'Collection of 3 frameworks for prioritization and financial justification:
+    DAR Matrix, RICE/ICE and Financial Business Case.'
+  included_kits:
+  - pack-dar
+  - pack-rice
+  - pack-business-case
+- id: suite-03
+  slug: suite-3-control-operativo
+  type: suite
+  topic: operaciones
+  status: available
+  price: 22 €
+  original_price: 34 €
+  icon: 🛠️
+  checkout_url: https://datalaria.lemonsqueezy.com/checkout/buy/ee578b8e-29d6-4361-ba19-4b0b5abfd89a
+  title_es: 'Pack Suite 3: Control Operativo'
+  title_en: 'Suite 3: Operations Control'
+  description_es: 'Colección de 5 modelos cuantitativos PMBOK e industriales: Matriz
+    RACI, AMFE / FMEA, Estimación PERT, EVM y Stock de Seguridad.'
+  description_en: 'Collection of 5 quantitative PMBOK and industrial models: RACI
+    Matrix, FMEA, PERT Estimation, EVM and Safety Stock.'
+  included_kits:
+  - pack-raci
+  - pack-amfe
+  - pack-pert
+  - pack-evm
+  - pack-stock
+- id: suite-sdd
+  slug: suite-software-ia-sdd
+  type: suite
+  topic: software
+  status: coming
+  price: 8 €
+  original_price: 25 €
+  icon: 💻
+  checkout_url: '#'
+  title_es: 'Suite de Ingeniería: Software, IA & SDD'
+  title_en: 'Engineering Suite: Software, AI & SDD'
+  description_es: Kits de especificación formal ejecutable, arquitectura de agentes
+    y contratos tipados para erradicar la deuda técnica.
+  description_en: Executable formal specification kits, agent architecture rules and
+    typed contracts to eliminate technical debt.
+  included_kits:
+  - pack-sdd
+kits:
+- id: pack-dafo
+  slug: dafo
+  type: kit
+  topic: estrategia
+  category_es: Estrategia MBA
+  status: available
+  price: 5€
+  original_price: 19€
+  icon: 🎯
+  deliverables_es:
+  - Excel .xlsx + Sheets
+  - PowerPoint 16:9
+  - Guía PDF
+  features_es:
+  - Ponderación normalizada de factores con evidencia objetiva auditable
+  - Matriz CAME automatizada (Corregir, Afrontar, Mantener, Explotar)
+  - Slide PowerPoint 16:9 con Action Titles y caja de decisión requerida
+  - Guía metodológica PDF con fórmulas y caso práctico real
+  checkout_url: https://datalaria.lemonsqueezy.com/checkout/buy/b7f8cf34-a569-426d-b41c-5fde52640e61
+  title_es: DAFO Cuantitativo & Matriz CAME
+  description_es: Ponderación numérica de Fortalezas y Debilidades, formulación automática
+    de acciones CAME y slide ejecutiva para Comité de Dirección.
+  article_url_es: null
+  guide_url_es: /es/posts/dafo-cuantitativo-matriz-came/
+  title_en: Quantitative SWOT & TOWS Matrix
+  category_en: MBA Strategy
+  description_en: Numerical weighting of Strengths and Weaknesses, automated TOWS
+    action planning and executive slide for Board approval.
+  deliverables_en:
+  - Excel .xlsx + Sheets
+  - PowerPoint 16:9
+  - PDF Guide
+  features_en:
+  - Normalized factor weighting with auditable evidence backing
+  - Automated TOWS action matrix (Correction, Confrontation, Maintenance, Exploitation)
+  - 16:9 PowerPoint slide with Action Titles and required decision box
+  - PDF methodology guide with formulas and real corporate case study
+  article_url_en: null
+  guide_url_en: /en/posts/quantitative-swot-tows-matrix/
+- id: pack-porter
+  slug: porter
+  type: kit
+  topic: estrategia
+  category_es: Estrategia MBA
+  status: available
+  price: 6€
+  original_price: 19€
+  icon: 🛡️
+  deliverables_es:
+  - Excel .xlsx + Sheets
+  - PowerPoint 16:9
+  - Guía PDF
+  features_es:
+  - Scoring numérico de 0 a 10 por dimensión de poder de mercado
+  - Gráfico Radar dinámico exportable directamente a presentación
+  - Slide PPTX con contenedor ajustado para exportación con un clic
+  - Guía metodológica sobre barreras de entrada y rentabilidad del sector
+  checkout_url: https://datalaria.lemonsqueezy.com/checkout/buy/90206641-21f3-4e06-9163-9bb90b16cbc9
+  title_es: 5 Fuerzas de Porter Ponderadas
+  description_es: Scoring cuantitativo por fuerza competitiva, gráfico Radar dinámico
+    auto-generado y diagnóstico de foso defensivo (Moat).
+  article_url_es: null
+  guide_url_es: null
+  title_en: Weighted Porter's 5 Forces
+  category_en: MBA Strategy
+  description_en: Quantitative scoring per competitive force, dynamic radar chart
+    and defensible Economic Moat spread diagnostic.
+  deliverables_en:
+  - Excel .xlsx + Sheets
+  - PowerPoint 16:9
+  - PDF Guide
+  features_en:
+  - Numeric 0-to-10 scoring per market power dimension
+  - Dynamic Radar chart exportable directly to executive slides
+  - Fitted 16:9 PPTX slide with one-click chart container
+  - Methodology guide covering barrier dynamics and industry rents
+  article_url_en: null
+  guide_url_en: null
+- id: pack-pestel
+  slug: pestel
+  type: kit
+  topic: estrategia
+  category_es: Estrategia MBA
+  status: available
+  price: 5€
+  original_price: 19€
+  icon: 🌐
+  deliverables_es:
+  - Excel .xlsx + Sheets
+  - PowerPoint 16:9
+  - Guía PDF
+  features_es:
+  - Evaluación ponderada de factores Políticos, Económicos, Sociales, Tecnológicos,
+    Ecológicos y Legales
+  - Mapa de calor automático con semáforo de alerta temprana
+  - Slide PPTX con matriz de incertidumbre para comités directivos
+  - Guía PDF de anticipación estratégica y escenarios
+  checkout_url: https://datalaria.lemonsqueezy.com/checkout/buy/17a0781c-8001-47df-9cdd-25923041e1de
+  title_es: Matriz PESTEL con Severidad & Volatilidad
+  description_es: Evaluación de 6 factores macro con índice de impacto compuesto y
+    mapa térmico de riesgos regulatorios y macroeconómicos.
+  article_url_es: null
+  guide_url_es: null
+  title_en: Quantitative PESTEL (Severity & Volatility)
+  category_en: MBA Strategy
+  description_en: Assessment of 6 macro factors with composite risk indices and early
+    warning heatmaps for regulatory and economic shocks.
+  deliverables_en:
+  - Excel .xlsx + Sheets
+  - PowerPoint 16:9
+  - PDF Guide
+  features_en:
+  - Weighted evaluation across Political, Economic, Social, Tech, Ecological, and
+    Legal drivers
+  - Automated risk heatmap with early warning thresholds
+  - 16:9 PPTX slide with uncertainty matrix for executive committees
+  - PDF scenario planning and macro stress-testing guide
+  article_url_en: null
+  guide_url_en: null
+- id: pack-bcg
+  slug: bcg
+  type: kit
+  topic: estrategia
+  category_es: Estrategia MBA
+  status: available
+  price: 6€
+  original_price: 19€
+  icon: ⭐
+  deliverables_es:
+  - Excel .xlsx + Sheets
+  - PowerPoint 16:9
+  - Guía PDF
+  features_es:
+  - Clasificación cuantitativa en Estrellas, Vacas, Interrogantes y Perros
+  - Gráfico de burbujas con escala automática según volumen de ventas
+  - Slide PPTX con directrices de asignación y desinversión de capital
+  - Guía PDF de gestión de ciclo de vida de producto y flujo de caja
+  checkout_url: https://datalaria.lemonsqueezy.com/checkout/buy/52cf8aa6-a595-49fe-b470-421140317013
+  title_es: Matriz BCG Dinámica de Cartera
+  description_es: Cálculo automático de Cuota de Mercado Relativa, tasa de crecimiento
+    y gráfico dinámico de burbujas según facturación.
+  article_url_es: null
+  guide_url_es: /es/posts/matriz-bcg-dinamica/
+  title_en: Dynamic BCG Portfolio Matrix
+  category_en: MBA Strategy
+  description_en: Automated Relative Market Share calculations, market growth rate
+    tracking and revenue-scaled dynamic bubble charts.
+  deliverables_en:
+  - Excel .xlsx + Sheets
+  - PowerPoint 16:9
+  - PDF Guide
+  features_en:
+  - Quantitative classification into Stars, Cash Cows, Question Marks, and Dogs
+  - Automated bubble chart scaled to divisional revenue volume
+  - 16:9 PPTX slide with capital allocation and divestiture mandates
+  - PDF guide on product lifecycle cash flow balancing
+  article_url_en: null
+  guide_url_en: /en/posts/dynamic-bcg-matrix/
+- id: pack-mckinsey
+  slug: mckinsey
+  type: kit
+  topic: estrategia
+  category_es: Estrategia MBA
+  status: available
+  price: 6€
+  original_price: 19€
+  icon: 🧭
+  deliverables_es:
+  - Excel .xlsx + Sheets
+  - PowerPoint 16:9
+  - Guía PDF
+  features_es:
+  - Ponderación multicriterio de variables internas y de entorno
+  - Determinación cartesiana de estrategias (Invertir, Proteger, Cosechar)
+  - Slide ejecutiva C-Level con hoja de ruta de inversiones
+  - Guía metodológica de calibración basada en consultoría Tier-1
+  checkout_url: https://datalaria.lemonsqueezy.com/checkout/buy/ae0c6cd8-bb86-4a56-ad87-9625301afda9
+  title_es: Matriz McKinsey / GE (3x3 Atractivo vs Fuerza)
+  description_es: Matriz de 9 cuadrantes con ponderación multidimensional de atractivo
+    de mercado y posición competitiva para asignar presupuesto.
+  article_url_es: null
+  guide_url_es: /es/posts/matriz-mckinsey-ge/
+  title_en: McKinsey / GE Matrix (3x3 Capital Allocation)
+  category_en: MBA Strategy
+  description_en: 9-box portfolio matrix with multidimensional industry attractiveness
+    and competitive strength scoring for capital budgets.
+  deliverables_en:
+  - Excel .xlsx + Sheets
+  - PowerPoint 16:9
+  - PDF Guide
+  features_en:
+  - Multicriteria weighting of internal capability and external appeal
+  - Cartesian strategy zones (Grow/Invest, Selectivity, Harvest/Divest)
+  - C-Level executive slide with multi-year investment roadmap
+  - Tier-1 consulting calibration and scoring methodology guide
+  article_url_en: null
+  guide_url_en: /en/posts/mckinsey-ge-matrix/
+- id: pack-dar
+  slug: dar
+  type: kit
+  topic: decisiones
+  category_es: Decisiones
+  status: available
+  price: 6€
+  original_price: 24€
+  icon: ⚖️
+  deliverables_es:
+  - Excel .xlsx + Sheets
+  - PowerPoint 16:9
+  - Guía PDF
+  features_es:
+  - Filtros booleanos de descarte inmediato por requisitos críticos (Veto)
+  - Ponderación normalizada de criterios secundarios para alternativas viables
+  - Slide PPTX con tabla ejecutiva de trade-offs y recomendación final
+  - Guía metodológica de gobernanza de decisiones corporativas
+  checkout_url: https://datalaria.lemonsqueezy.com/checkout/buy/17db9367-dd18-4bb6-8f47-722d738c43c3
+  title_es: Matriz DAR (Decision Analysis & Resolution)
+  description_es: Selección cuantitativa de plataformas cloud, ERPs o contratistas
+    críticos con filtros de veto irrenunciables para eliminar sesgos.
+  article_url_es: null
+  guide_url_es: null
+  title_en: CMMI DAR Matrix (Decision Analysis & Resolution)
+  category_en: Decisions
+  description_en: Quantitative selection of cloud architectures, ERP platforms, or
+    strategic contractors with binary veto filters to eradicate bias.
+  deliverables_en:
+  - Excel .xlsx + Sheets
+  - PowerPoint 16:9
+  - PDF Guide
+  features_en:
+  - Boolean veto filters for immediate disqualification of unviable bids
+  - Normalized weighted scoring for compliant secondary criteria
+  - 16:9 PPTX slide with executive trade-off matrix and recommendation
+  - Corporate governance decision-making methodology guide
+  article_url_en: null
+  guide_url_en: null
+- id: pack-rice
+  slug: rice
+  type: kit
+  topic: decisiones
+  category_es: Decisiones
+  status: available
+  price: 6€
+  original_price: 19€
+  icon: 🚀
+  deliverables_es:
+  - Excel .xlsx + Sheets
+  - PowerPoint 16:9
+  - Guía PDF
+  features_es:
+  - Puntuación cuantitativa RICE (Reach, Impact, Confidence, Effort)
+  - Matriz ICE complementaria para iniciativas de experimentación rápida
+  - Slide PPTX con matriz de cuadrantes Esfuerzo vs. Impacto para Roadmap
+  - Guía PDF de normalización de confianza y calibración de esfuerzo
+  checkout_url: https://datalaria.lemonsqueezy.com/checkout/buy/4d360fcd-60d5-402a-9e58-3833e467fd3a
+  title_es: Matriz RICE & ICE de Priorización Ágil
+  description_es: Prioriza el backlog de producto y características técnicas defendiendo
+    ante el CPO y CEO qué construir primero con rigor de datos.
+  article_url_es: null
+  guide_url_es: null
+  title_en: Agile RICE & ICE Prioritization Matrix
+  category_en: Decisions
+  description_en: Prioritize product backlogs and technical roadmaps with empirical
+    data defense in front of the CPO and CEO.
+  deliverables_en:
+  - Excel .xlsx + Sheets
+  - PowerPoint 16:9
+  - PDF Guide
+  features_en:
+  - Quantitative RICE scoring (Reach, Impact, Confidence, Effort)
+  - Complementary ICE scoring for rapid feature experimentation
+  - 16:9 PPTX quadrant chart of Effort vs. Impact for Roadmap reviews
+  - PDF guide on confidence calibration and net squad capacity
+  article_url_en: null
+  guide_url_en: null
+- id: pack-business-case
+  slug: business-case
+  type: kit
+  topic: decisiones
+  category_es: Decisiones
+  status: available
+  price: 8€
+  original_price: 25€
+  icon: 📈
+  deliverables_es:
+  - Excel .xlsx + Sheets
+  - PowerPoint 16:9
+  - Guía PDF
+  features_es:
+  - Modelo financiero de flujos de caja descontados proyectados a 3 y 5 años
+  - Cálculo automático de VAN (NPV), TIR (IRR) y Payback descontado
+  - Análisis de sensibilidad y Gráfico Tornado para variables de riesgo
+  - Slide PPTX C-Level con recomendación de desembolso para el CFO
+  checkout_url: https://datalaria.lemonsqueezy.com/checkout/buy/c2ff153f-2f95-4671-ab14-1b8e02301079
+  title_es: Business Case Financiero (VAN, TIR, Payback)
+  description_es: Justifica el retorno de proyectos de transformación digital, IA
+    o infraestructura ante el comité de inversiones y el CFO.
+  article_url_es: null
+  guide_url_es: null
+  title_en: Financial Business Case (NPV, IRR, Payback)
+  category_en: Decisions
+  description_en: Justify capital allocation for digital transformation, AI platforms,
+    or infrastructure before investment boards and the CFO.
+  deliverables_en:
+  - Excel .xlsx + Sheets
+  - PowerPoint 16:9
+  - PDF Guide
+  features_en:
+  - 3-to-5 year discounted cash flow (DCF) master financial model
+  - Automated NPV, IRR, and discounted payback calculations
+  - Two-way sensitivity tables and Tornado risk variance analysis
+  - 16:9 C-Level slide with capital request summary for the CFO
+  article_url_en: null
+  guide_url_en: null
+- id: pack-raci
+  slug: raci
+  type: kit
+  topic: operaciones
+  category_es: Control Operativo
+  status: available
+  price: 6€
+  original_price: 19€
+  icon: 📋
+  deliverables_es:
+  - Excel .xlsx + Sheets
+  - PowerPoint 16:9
+  - Guía PDF
+  features_es:
+  - 'Verificación automática de integridad: alerta de tarea sin A o con múltiples
+    As'
+  - Cálculo dinámico de carga de trabajo por departamento o profesional
+  - Slide PPTX con organigrama matricial y mapa de responsabilidades
+  - Guía PDF de resolución de conflictos de asignación y gobernanza
+  checkout_url: https://datalaria.lemonsqueezy.com/checkout/buy/97eec34f-011e-410c-a623-714218871b1a
+  title_es: Matriz RACI con Balance de Carga
+  description_es: 'Elimina la ambigüedad de roles en proyectos corporativos: control
+    de Accountable único por tarea y mapa dinámico de cuellos de botella.'
+  article_url_es: null
+  guide_url_es: null
+  title_en: RACI Matrix with Workload Balancing
+  category_en: Operations Control
+  description_en: 'Eliminate role ambiguity across complex programs: single-Accountable
+    enforcement per task and dynamic workload bottleneck heatmaps.'
+  deliverables_en:
+  - Excel .xlsx + Sheets
+  - PowerPoint 16:9
+  - PDF Guide
+  features_en:
+  - 'Automated integrity checks: alerts for unassigned or multiple Accountables'
+  - Dynamic FTE workload utilization calculation per role and department
+  - 16:9 PPTX slide with governance hierarchy and responsibility maps
+  - PDF dispute resolution and organizational governance guide
+  article_url_en: null
+  guide_url_en: null
+- id: pack-amfe
+  slug: amfe
+  type: kit
+  topic: operaciones
+  category_es: Control Operativo
+  status: available
+  price: 7€
+  original_price: 22€
+  icon: ⚠️
+  deliverables_es:
+  - Excel .xlsx + Sheets
+  - PowerPoint 16:9
+  - Guía PDF
+  features_es:
+  - Cálculo de Número de Prioridad de Riesgo (NPR = Severidad x Ocurrencia x Detección)
+  - Matriz de calor 5x5 dinámica según estándares ISO 31000 e IATF 16949
+  - Slide PPTX con plan de mitigación y semáforo de contingencias
+  - Guía metodológica de análisis de modos de fallo y efectos
+  checkout_url: https://datalaria.lemonsqueezy.com/checkout/buy/6eea6aa0-fe9f-440b-8bb9-6f29b303e57a
+  title_es: Matriz de Riesgos & AMFE / FMEA Cuantitativo
+  description_es: El estándar industrial para predecir y mitigar fallos antes de que
+    ocurran en procesos operativos, software o cadenas de suministro.
+  article_url_es: null
+  guide_url_es: null
+  title_en: FMEA Quantitative Risk Matrix
+  category_en: Operations Control
+  description_en: Industrial standard for predicting and neutralizing failure modes
+    before they manifest in operations, software, or supply chains.
+  deliverables_en:
+  - Excel .xlsx + Sheets
+  - PowerPoint 16:9
+  - PDF Guide
+  features_en:
+  - Risk Priority Number calculation (RPN = Severity x Occurrence x Detection)
+  - Dynamic 5x5 heatmap compliant with ISO 31000 and IATF 16949 standards
+  - 16:9 PPTX slide with mitigation plans and contingency triggers
+  - FMEA methodology guide covering root-cause preventive controls
+  article_url_en: null
+  guide_url_en: null
+- id: pack-pert
+  slug: pert
+  type: kit
+  topic: operaciones
+  category_es: Control Operativo
+  status: available
+  price: 6€
+  original_price: 19€
+  icon: ⏱️
+  deliverables_es:
+  - Excel .xlsx + Sheets
+  - PowerPoint 16:9
+  - Guía PDF
+  features_es:
+  - Cálculo de Duración Esperada Te, Varianza y Desviación Estándar
+  - Cálculo de probabilidad z de entregar antes de una fecha compromiso
+  - Slide PPTX con Curva de Densidad de Probabilidad para directivos
+  - Guía metodológica con fórmulas estadísticas del estándar PMBOK
+  checkout_url: https://datalaria.lemonsqueezy.com/checkout/buy/47843201-4db9-4d80-bb88-e59364fb6117
+  title_es: Estimación PERT de 3 Puntos Estocástica
+  description_es: Sustituye las estimaciones subjetivas de cronograma por modelos
+    estadísticos de 3 puntos (Optimista, Más Probable, Pesimista) con intervalo de
+    confianza.
+  article_url_es: null
+  guide_url_es: null
+  title_en: Stochastic 3-Point PERT Estimation
+  category_en: Operations Control
+  description_en: Replace subjective timeline guesses with statistical 3-point beta
+    distributions (Optimistic, Most Likely, Pessimistic) and confidence intervals.
+  deliverables_en:
+  - Excel .xlsx + Sheets
+  - PowerPoint 16:9
+  - PDF Guide
+  features_en:
+  - Automated expected duration Te, variance, and standard deviation calculations
+  - Normal z-distribution probability of hitting contractual milestones
+  - 16:9 PPTX slide with probability density curves for executive review
+  - PDF guide covering PMBOK standard statistical estimation techniques
+  article_url_en: null
+  guide_url_en: null
+- id: pack-evm
+  slug: evm
+  type: kit
+  topic: operaciones
+  category_es: Control Operativo
+  status: available
+  price: 8€
+  original_price: 25€
+  icon: 📉
+  deliverables_es:
+  - Excel .xlsx + Sheets
+  - PowerPoint 16:9
+  - Guía PDF
+  features_es:
+  - 'Seguimiento automatizado: PV (Planificado), EV (Ganado) y AC (Coste Real)'
+  - 'Índices de rendimiento en tiempo real: CPI y SPI con proyección EAC'
+  - Slide PPTX C-Level con estado de salud financiero del proyecto
+  - Guía metodológica oficial para gestión del valor ganado
+  checkout_url: https://datalaria.lemonsqueezy.com/checkout/buy/188950c2-0fd9-4331-919f-237880e2c78b
+  title_es: Cuadro de Mando EVM / Valor Ganado (Curva S)
+  description_es: Muestra con precisión quirúrgica si un proyecto terminará a tiempo
+    y dentro de presupuesto con índices CPI/SPI y Curva S.
+  article_url_es: null
+  guide_url_es: null
+  title_en: EVM Earned Value Dashboard (S-Curve)
+  category_en: Operations Control
+  description_en: Pinpoint whether a major initiative will finish on schedule and
+    within budget using real-time CPI/SPI indices and S-Curves.
+  deliverables_en:
+  - Excel .xlsx + Sheets
+  - PowerPoint 16:9
+  - PDF Guide
+  features_en:
+  - 'Automated tracking: Planned Value (PV), Earned Value (EV), Actual Cost (AC)'
+  - 'Real-time performance metrics: CPI and SPI with stochastic EAC forecasts'
+  - 16:9 C-Level slide detailing financial project health and variance root-causes
+  - Official Earned Value Management methodology guide
+  article_url_en: null
+  guide_url_en: null
+- id: pack-stock
+  slug: stock
+  type: kit
+  topic: operaciones
+  category_es: Control Operativo
+  status: available
+  price: 7€
+  original_price: 22€
+  icon: 📦
+  deliverables_es:
+  - Excel .xlsx + Sheets
+  - PowerPoint 16:9
+  - Guía PDF
+  features_es:
+  - 'Cálculo estadístico de Stock de Seguridad con nivel de servicio (Z: 95%, 98%,
+    99%)'
+  - Punto de Pedido (ROP) con variabilidad en plazo de entrega y demanda
+  - Slide PPTX con modelo gráfico de dientes de sierra para comités de compras
+  - Guía PDF de optimización de capital circulante en supply chain
+  checkout_url: https://datalaria.lemonsqueezy.com/checkout/buy/513e5cad-9f9f-4b53-a435-b511a846d79e
+  title_es: Calculadora de Stock de Seguridad & ROP
+  description_es: Optimiza los almacenes evitando roturas de stock sin inmovilizar
+    excesivo capital circulante en inventario de componentes críticos.
+  article_url_es: null
+  guide_url_es: null
+  title_en: Safety Stock & Reorder Point (ROP) Engine
+  category_en: Operations Control
+  description_en: Prevent inventory stockouts while minimizing tied-up working capital
+    in critical component warehouses.
+  deliverables_en:
+  - Excel .xlsx + Sheets
+  - PowerPoint 16:9
+  - PDF Guide
+  features_en:
+  - 'Statistical safety stock calculation with configurable service levels (Z: 95%,
+    98%, 99%)'
+  - Reorder Point (ROP) modeling with stochastic lead-time and demand variance
+  - 16:9 PPTX slide with sawtooth inventory curves for procurement committees
+  - PDF working capital optimization guide for supply chain leaders
+  article_url_en: null
+  guide_url_en: null
+- id: pack-sdd
+  slug: sdd
+  type: kit
+  topic: software
+  category_es: Software, IA & SDD
+  status: coming
+  price: 8€
+  original_price: 25€
+  icon: 📐
+  deliverables_es:
+  - Spec Templates .md
+  - OpenAPI & JSON Schemas
+  - Cursor / AGY Rules
+  - Guía PDF
+  features_es:
+  - Plantilla maestra de Especificación Funcional con Architecture Decisions (ADR)
+  - Contratos tipados en JSON Schema y OpenAPI v3 para compilar sin alucinaciones
+  - Archivo de directivas optimizadas (.cursorrules / AGY instructions) para agentes
+    de código
+  - Checklist de verificación formal y rúbrica de pruebas deterministas de integración
+  - Guía metodológica PDF con flujo de trabajo Spec-First para ingenieros y PMs técnicos
+  checkout_url: '#'
+  title_es: Kit Spec-Driven Development (SDD) para Equipos de Software e IA
+  description_es: Especificaciones ejecutables, contratos tipados y directrices para
+    agentes de IA que erradican la deuda técnica del vibe coding.
+  article_url_es: null
+  guide_url_es: null
+  title_en: Spec-Driven Development (SDD) Kit for AI & Software
+  category_en: Software, AI & SDD
+  description_en: Executable formal specifications, typed contracts, and AI agent
+    instructions to eradicate vibe coding tech debt.
+  deliverables_en:
+  - Spec Templates .md
+  - OpenAPI & JSON Schemas
+  - Cursor / AGY Rules
+  - PDF Guide
+  features_en:
+  - Master Functional Specification template with Architecture Decisions (ADRs)
+  - Typed contracts in JSON Schema and OpenAPI v3 for hallucination-free codegen
+  - Optimized prompt & agent directives (.cursorrules / AGY instructions)
+  - Formal verification checklist and deterministic integration test rubrics
+  - PDF Spec-First methodology guide for engineering leads and technical PMs
+  article_url_en: null
+  guide_url_en: null

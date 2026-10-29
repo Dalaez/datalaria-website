@@ -1,6 +1,6 @@
 ---
 title: "RICE & ICE Agile Prioritization Matrix: Quantitative Backlog, Impact vs. Effort Matrix & Capacity Cut-Line"
-date: 2026-10-29
+date: 2026-11-13
 draft: false
 category: "Technical Articles"
 categories: ["Decision Making", "Product Management", "Executive Templates"]

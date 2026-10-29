@@ -1,0 +1,70 @@
+name: Datalaria Pulse Sync ⚡
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'content/**'
+      - 'data/apps/**'
+      - 'data/pulse/kits.yaml'
+      - 'data/editorial/backlog.yaml'
+  schedule:
+    # Ejecución nocturna diaria a las 03:00 UTC para sincronizar métricas de GA4
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync_pulse:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pydantic pyyaml python-frontmatter google-analytics-data google-api-python-client google-auth openpyxl
+
+      - name: Setup Google Service Account
+        if: env.GA4_SERVICE_ACCOUNT_KEY != ''
+        env:
+          GA4_SERVICE_ACCOUNT_KEY: ${{ secrets.GA4_SERVICE_ACCOUNT_KEY }}
+        run: |
+          echo "$GA4_SERVICE_ACCOUNT_KEY" > service_account.json
+
+      - name: Build Index & Sync Metrics
+        env:
+          GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID || '367847195' }}
+          GSC_SITE_URL: 'sc-domain:datalaria.com'
+        run: |
+          python -m ops.pulse.build_index
+          python -m ops.pulse.sync_metrics
+          python -m ops.pulse.publish_public
+
+      - name: Clean Service Account Key
+        if: always()
+        run: |
+          rm -f service_account.json
+
+      - name: Commit & Push Updated Pulse Data
+        run: |
+          git config user.name "Datalaria Bot"
+          git config user.email "bot@datalaria.com"
+          git add static/apps/pulse/data/public.json data/pulse/
+          if git diff --staged --quiet; then
+            echo "No changes in Pulse dataset."
+          else
+            git commit -m "chore(pulse): auto-sync content index & GA4 metrics [skip ci]"
+            git push origin main
+          fi

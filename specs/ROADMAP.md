@@ -7,9 +7,9 @@
 
 ## 📍 ESTADO ACTUAL DEL PROYECTO (PUNTERO DE SESIÓN)
 
-- **Fase Activa:** `FASE 2 COMPLETADA AL 100% ✅` ➔ **Listos para FASE 3: Congelación de las 4 Apps Legacy, Higiene de `/static/` y Mejora del Escaparate `/apps/`**
-- **Último Checkpoint Verificado:** `Hito 2.2 — Especificación SDD, Limpieza de Clones y Despliegue de Ficha Técnica de weather (App #3 — Dashboard Climático) + 8 Posts Actualizados` (Completado el 2026-10-24 ✅).
-- **Próximo Hito:** `Hito 3.1 — Revisión Ligera, Congelación Legacy (Apps #4 a #7) y Cuarentena de No Publicadas fuera de static/`
+- **Fase Activa:** `FASE 5 EN CURSO 🚀` — **Datalaria Pulse (Content Ops as Code)** *(Fases 0, 1, 2 y 3 completadas al 100% ✅)*
+- **Último Checkpoint Verificado:** Hito 5.6 — Kit comercial descargable Datalaria Pulse verificado (Plantilla Excel con taxonomía y validaciones, conector Power Query M, migrador Notion, escáner universal Python puro y paquete ZIP Lemon Squeezy) (Completado el 2026-10-28 ✅).
+- **Próximo Hito:** Hito 5.7 — Lanzamiento editorial (5 posts ES/EN, ficha /apps/pulse/, producto en Lemon Squeezy y /recursos/)
 
 ---
 
@@ -170,13 +170,13 @@ Tras auditar todos los artículos de `/content/es/posts/` y `/content/en/posts/`
 ### FASE 5: Nueva App de nicho "Datalaria Pulse" (Content Ops as Code) (sustituye la gestión editorial en Notion) — ver ADR-012
 *Objetivo: generar automáticamente desde el repo el registro editorial de posts, apps y kits (vistas tabla, kanban y calendario), dejar Notion y convertirlo en producto monetizable (Sandbox → Kit → Pro).*
 
-- [~] **Hito 5.0: Spec `specs/apps/pulse/spec.md`** — ADR-012 registrado (2026-10-25). Cerrado: nombre Datalaria Pulse, público B2B (documentación, SEO, marketing y medios), Sandbox público con métricas reales **relativas**, GA4 + Search Console, solo el Kit (Pro aparcado). Pendiente: visibilidad del repo, versión del Excel, Kit Lite gratuito sí/no.
-- [ ] **Hito 5.1: Modelo de datos** (tabla de activos post/app/kit, campos automáticos frente a manuales, `data/pulse/kits.yaml`).
-- [ ] **Hito 5.2: Generador `ops/pulse/build_index.py` + migración de Notion** (`migrate_notion.py` → `data/editorial/backlog.yaml`; `pytest`).
-- [ ] **Hito 5.3: Métricas GA4 + Search Console** (`sync_metrics.py`, `publish_public.py` con métricas relativas; test: el JSON público no contiene valores absolutos ni elementos privados).
-- [ ] **Hito 5.4: Automatización y adiós a Notion** (`.github/workflows/pulse.yml` en push + cron diario; regla en `AGENTS.md`; Excel privado generado).
-- [ ] **Hito 5.5: App web Sandbox** (tabla/kanban/calendario + panel de salud; `oxlint` + `vite build` + `hugo --gc --minify`).
-- [ ] **Hito 5.6: Kit descargable** (plantilla Excel rellenable + importador de Notion vía Power Query y Python + generador para repos + guías GA4/Search Console).
+- [x] **Hito 5.0: Spec [`specs/apps/pulse/spec.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/apps/pulse/spec.md)** — ADR-012 y especificación formal completados (2026-10-28 ✅). Definidos: arquitectura sin backend cloud v1, modelo de datos unificado (`post`/`app`/`kit`), invariantes `INV-PULSE-1..5` (cero fuga de ideas privadas ni métricas absolutas en `public.json`), compatibilidad Excel 2016+/365 y serie de 5 artículos ES/EN.
+- [x] **Hito 5.1: Modelo de datos y Catálogo de Kits** (Completado el 2026-10-28 ✅). Creados contratos tipados Pydantic v2 en ops/pulse/models.py, suite pytest verde (4/4 tests) validando INV-PULSE-1 e INV-PULSE-2, catálogo data/pulse/kits.yaml con 14 Kits, 4 Suites y Mega Bundle, e inicializado data/editorial/backlog.yaml sin depender de Notion.
+- [x] **Hito 5.2: Generador de Índice (`ops/pulse/build_index.py`)** (Completado el 2026-10-28 ✅). Emparejamiento bilingüe determinista 100% de los 109 posts ES y 109 posts EN, 7 apps y 19 kits/suites (135 activos consolidados). Tests `pytest` 7/7 pasando.
+- [x] **Hito 5.3: Métricas GA4 + Search Console y Relativización** (Completado el 2026-10-28 ✅). Extracción resiliente en `sync_metrics.py` y relativización a base 100 y percentiles en `publish_public.py` (`INV-PULSE-1` e `INV-PULSE-2` verificados). Tests `pytest` 9/9 pasando.
+- [x] **Hito 5.4: Automatización CI/CD y Tracker Excel Privado** (Completado el 2026-10-28 ✅). Workflow `.github/workflows/pulse.yml`, regla obligatoria en `AGENTS.md` y generador de Excel comercial y privado (`Pulse_Private_Tracker.xlsx`). Tests `pytest` 11/11 pasando.
+- [x] **Hito 5.5: App Web Sandbox React 19 + TypeScript** (Completado el 2026-10-28 ✅). Vistas Tabla, Kanban, Calendario y Salud Editorial, selector bilingüe ES/EN, importador client-side de Notion. Compilada en `static/apps/pulse/`. `oxlint` 0 errores, Hugo código 0.
+- [x] **Hito 5.6: Kit descargable** (Completado el 2026-10-28 ✅). Plantilla Excel con taxonomía y desplegables (Pulse_Content_Ops_Template.xlsx), migrador Notion (migrate_notion.py), conector Power Query M (notion_power_query.m), escáner universal en Python puro (pulse_repo_scanner.py), manual maestro (GUIA_PULSE_KIT.md) y paquete comercial ZIP (Datalaria_Pulse_Kit.zip). 15/15 tests pytest en verde.
 - [ ] **Hito 5.7: Lanzamiento editorial** (5 posts ES/EN, ficha `/apps/pulse/`, producto en Lemon Squeezy y `/recursos/`).
 - [ ] **Hito 5.8: Medición a 30/60 días** → decisión sobre la suscripción Pro/Team (aparcada; ver ADR-012).
 
@@ -191,4 +191,13 @@ Tras auditar todos los artículos de `/content/es/posts/` y `/content/en/posts/`
 | 2026-10-24 | `3.1` | Purgado de código inédito y `.git` huérfano en `static/` | Mover `project-ops` y `sop-pipeline` a `apps/_incubadora/`; purgar `.git` en `snake`; 0 violaciones en `static/`. | ✅ Cerrado |
 | 2026-10-25 | `3.1-Ext` | Fichas dedicadas, portadas 16:10 y shortcodes `app-ref` para las 4 Apps Legacy | Creados 4 specs, 4 YAMLs, 8 fichas markdown, 8 portadas 16:10 y actualizados 8 posts en ES/EN. 2.091 páginas compilan limpiamente. | ✅ Cerrado |
 | 2026-10-25 | `3.2` | Especificación del portal, píldoras por tiers, botones "Leer Post" y Suites B2B | Creado `specs/portal/spec.md`, modificado `app-card.html` y CSS. Verificados 7 enlaces de post y 1 B2B suite en ES/EN con script determinista. Cierre de Fase 3. | ✅ Cerrado |
-| 2026-10-25 | `5.0` | Decisión de sustituir Notion por la App "Content Ops as Code" (Opción 3 + Sandbox público) | Registrado ADR-012 y Fase 5. Sin cambios de código. | 🟡 En curso |
+| 2026-10-28 | `5.0` | Cierre del Plan y Especificación SDD de Datalaria Pulse (`specs/apps/pulse/spec.md`) | Consolidado ADR-012 y creada `spec.md` con modelo de columnas, invariantes `INV-PULSE-1..5` y diseño del Kit Excel + Notion importer. | ✅ Cerrado |
+| 2026-10-28 | `5.1` | Modelo de datos Pydantic v2 y Catálogo de Kits (`data/pulse/kits.yaml`) | Creados contratos en `ops/pulse/models.py`, `pytest` 4/4 verde (INV-PULSE-1 e INV-PULSE-2), 14 Kits + 4 Suites catalogados, y desacople total de Notion. | ✅ Cerrado |
+| 2026-10-28 | 5.2 | Generador de Índice Editorial uild_index.py sin dependencia de Notion | Indexados 135 activos (109 posts bilingües emparejados, 7 apps, 19 kits/suites). Tests pytest 7/7 pasando. | ✅ Cerrado |
+| 2026-10-28 | 5.3 | Sincronización GA4/GSC y compilación de dataset público | Extraídas métricas reales a metrics.json y relativizadas en public.json (base 100, percentiles). pytest 9/9 verde. | ✅ Cerrado |
+| 2026-10-28 | 5.4 | Automatización CI/CD y generación de Tracker Excel privado | Pipeline pulse.yml, regla obligatoria en AGENTS.md y generado packages/pulse/Pulse_Private_Tracker.xlsx. pytest 11/11 verde. | ✅ Cerrado |
+| 2026-10-28 | `5.5` | App Web Sandbox React 19 + TS con Importador Notion | Vistas Tabla, Kanban, Calendario y Salud Editorial compiladas en static/apps/pulse/. oxlint 0 errores, Hugo código 0. | ✅ Cerrado |
+| 2026-10-28 | `5.5-Ext` | Evolución UI/UX, Analytics, Paginación y Calendario Notion | Tipografía Outfit+Inter (LifeOps), filtros pills, ordenación interactiva, paginación (10/25/50), Dashboard Analytics, Kanban 5 columnas y Calendario mensual Notion. oxlint 0 errores, pytest 11/11, Hugo código 0. | ✅ Cerrado |
+| 2026-10-28 | `5.5-Ext2` | Dashboard Analytics Ampliado (100% width), 3 Vistas de Taxonomía, Profundidad Léxica y Modales de Apertura Web | Gráficos apilados al 100% (GA4 base 100 y Cadencia histórica), selector de 3 modos (Ecosistema, 4 Temáticas oficiales y Categorías), nuevo gráfico de Profundidad Editorial & Tiempo de Lectura (~18.4h de lectura técnica), chips y tarjetas clicables con modal de detalle y apertura web directa. oxlint 0 errores, pytest 11/11, Hugo código 0. | ✅ Cerrado |
+| 2026-10-28 | `5.5-Ext3` | Captura y Edición de Ideas (localStorage), Exportación YAML y Botón de Refresco HTTP | Botón "Refrescar Datos" con bypass de caché HTTP; modal "+ Nueva Idea" y edición completa de campos al pulsar sobre ideas locales; visualización de briefing/notas; persistencia en localStorage y fusión en tiempo real con public.json; exportador a `backlog_ideas.yaml`. oxlint 0 errores, pytest 11/11, Hugo código 0. | ✅ Cerrado |
+| 2026-10-28 | 5.6 | Kit Comercial Descargable Datalaria Pulse (Excel + Notion + Escáner + ZIP) | Plantilla Excel con validaciones desplegables y taxonomía, migrador de Notion, Power Query M, escáner universal sin dependencias (pulse_repo_scanner.py), manual GUIA_PULSE_KIT.md y paquete ZIP final. 15/15 tests pytest verde. | ✅ Cerrado |

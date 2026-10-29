@@ -384,7 +384,7 @@ Detalles ℹ️
 <button type="button" class="btn-kit-info" onclick="openModal('pack-mckinsey')">
 Detalles ℹ️
 </button>
-<span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
+<a href="/es/posts/matriz-mckinsey-ge/" class="btn-kit-info" title="Leer artículo técnico">Artículo técnico 📖</a>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/ae0c6cd8-bb86-4a56-ad87-9625301afda9" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
@@ -857,7 +857,7 @@ Detalles ℹ️
             <button type="button" class="btn-kit-info" onclick="openModal('pack-mckinsey')">
               Detalles ℹ️
             </button>
-            <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
+            <a href="/es/posts/matriz-mckinsey-ge/" class="btn-kit-info" title="Leer artículo técnico">Artículo técnico 📖</a>
             <a href="https://datalaria.lemonsqueezy.com/checkout/buy/ae0c6cd8-bb86-4a56-ad87-9625301afda9" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
           </div>
         </div>
@@ -1422,7 +1422,7 @@ Detalles ℹ️
         "Guía metodológica de calibración basada en consultoría Tier-1"
       ],
       checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/ae0c6cd8-bb86-4a56-ad87-9625301afda9",
-      guideUrl: null
+      guideUrl: "/es/posts/matriz-mckinsey-ge/"
     },
 
     // 6. Matriz DAR (DISPONIBLE)
@@ -2286,7 +2286,7 @@ Details ℹ️
 <button type="button" class="btn-kit-info" onclick="openModal('pack-mckinsey')">
 Details ℹ️
 </button>
-<span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Methodological guide coming soon on the blog">Guide ⏳</span>
+<a href="/en/posts/mckinsey-ge-matrix/" class="btn-kit-info" title="Read technical article">Technical Article 📖</a>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/ae0c6cd8-bb86-4a56-ad87-9625301afda9" class="btn-kit-buy lemonsqueezy-button">Download →</a>
 </div>
 </div>
@@ -2759,7 +2759,7 @@ Details ℹ️
             <button type="button" class="btn-kit-info" onclick="openModal('pack-mckinsey')">
               Details ℹ️
             </button>
-            <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Methodological guide coming soon on the blog">Guide ⏳</span>
+            <a href="/en/posts/mckinsey-ge-matrix/" class="btn-kit-info" title="Read technical article">Technical Article 📖</a>
             <a href="https://datalaria.lemonsqueezy.com/checkout/buy/ae0c6cd8-bb86-4a56-ad87-9625301afda9" class="btn-kit-buy lemonsqueezy-button">Download →</a>
           </div>
         </div>
@@ -3324,7 +3324,7 @@ Details ℹ️
         "Tier-1 consulting calibration and scoring methodology guide"
       ],
       checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/ae0c6cd8-bb86-4a56-ad87-9625301afda9",
-      guideUrl: null
+      guideUrl: "/en/posts/mckinsey-ge-matrix/"
     },
 
     // 6. CMMI DAR Matrix (AVAILABLE)

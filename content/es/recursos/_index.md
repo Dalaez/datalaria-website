@@ -1,19 +1,6 @@
 ---
-title: "Kits de Decisión, Plantillas Excel & Recursos Profesionales | Datalaria"
-description: "Modelos cuantitativos protegidos en Excel, presentaciones PowerPoint 16:9 C-Level y especificaciones formales para comités de dirección e ingeniería de software con IA."
-summary: "Catálogo completo de Executive Decision Packs: DAFO, Porter, PESTEL, BCG, McKinsey, RACI, AMFE, EVM, PERT y Spec-Driven Development. Descarga inmediata con factura B2B."
-keywords:
-  - "modelos cuantitativos excel"
-  - "plantillas comite direccion"
-  - "executive decision packs"
-  - "matriz dafo cuantitativa excel"
-  - "5 fuerzas de porter excel"
-  - "matriz raci balance carga excel"
-  - "amfe fmea gestion riesgos excel"
-  - "earned value management evm excel"
-  - "business case van tir excel"
-  - "spec-driven development"
-  - "presentaciones powerpoint c-level"
+title: "Executive Decision Packs"
+description: "Modelos cuantitativos en Excel, presentaciones PowerPoint 16:9 C-Level y guías metodológicas para defender decisiones estratégicas en comités de dirección."
 draft: false
 hidemeta: true
 translationKey: resources
@@ -230,10 +217,6 @@ translationKey: resources
 <h3 class="kit-card-title">DAFO Cuantitativo & Matriz CAME</h3>
 </div>
 </div>
-<div class="kit-card-preview" onclick="openModal('pack-dafo')" title="Ampliar vista previa de los entregables">
-<img src="/images/recursos/dafo-preview-es.png" alt="Vista previa DAFO Cuantitativo & Matriz CAME" loading="lazy">
-<span class="kit-preview-zoom-pill">🔍 Vista previa del Kit</span>
-</div>
 <p class="kit-card-desc">Ponderación numérica de Fortalezas y Debilidades, formulación automática de acciones CAME y slide ejecutiva para Comité de Dirección.</p>
 <div class="kit-deliverables-row">
 <span class="deliv-chip">Excel .xlsx + Sheets</span>
@@ -250,7 +233,7 @@ translationKey: resources
 <button type="button" class="btn-kit-info" onclick="openModal('pack-dafo')">
 Detalles ℹ️
 </button>
-<a href="/es/posts/dafo-cuantitativo-matriz-came/" class="btn-kit-info" title="Leer artículo técnico">Guía 📖</a>
+<a href="/es/posts/dafo-cuantitativo-matriz-came/" class="btn-kit-info" title="Leer artículo técnico">Artículo técnico 📖</a>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/b7f8cf34-a569-426d-b41c-5fde52640e61" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
@@ -268,10 +251,6 @@ Detalles ℹ️
 <h3 class="kit-card-title">5 Fuerzas de Porter Ponderadas</h3>
 </div>
 </div>
-<div class="kit-card-preview" onclick="openModal('pack-porter')" title="Ampliar vista previa de los entregables">
-<img src="/images/recursos/porter-preview-es.png" alt="Vista previa 5 Fuerzas de Porter Ponderadas" loading="lazy">
-<span class="kit-preview-zoom-pill">🔍 Vista previa del Kit</span>
-</div>
 <p class="kit-card-desc">Scoring cuantitativo por fuerza competitiva, gráfico Radar dinámico auto-generado y diagnóstico de foso defensivo (Moat).</p>
 <div class="kit-deliverables-row">
 <span class="deliv-chip">Excel .xlsx + Sheets</span>
@@ -288,7 +267,7 @@ Detalles ℹ️
 <button type="button" class="btn-kit-info" onclick="openModal('pack-porter')">
 Detalles ℹ️
 </button>
-<a href="/es/posts/5-fuerzas-porter-cuantitativas/" class="btn-kit-info" title="Leer guía metodológica">Guía 📖</a>
+<span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/90206641-21f3-4e06-9163-9bb90b16cbc9" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
@@ -306,10 +285,6 @@ Detalles ℹ️
 <h3 class="kit-card-title">Matriz PESTEL con Severidad & Volatilidad</h3>
 </div>
 </div>
-<div class="kit-card-preview" onclick="openModal('pack-pestel')" title="Ampliar vista previa de los entregables">
-<img src="/images/recursos/pestel-preview-es.png" alt="Vista previa Matriz PESTEL Cuantitativa" loading="lazy">
-<span class="kit-preview-zoom-pill">🔍 Vista previa del Kit</span>
-</div>
 <p class="kit-card-desc">Evaluación de 6 factores macro con índice de impacto compuesto y mapa térmico de riesgos regulatorios y macroeconómicos.</p>
 <div class="kit-deliverables-row">
 <span class="deliv-chip">Excel .xlsx + Sheets</span>
@@ -326,7 +301,7 @@ Detalles ℹ️
 <button type="button" class="btn-kit-info" onclick="openModal('pack-pestel')">
 Detalles ℹ️
 </button>
-<a href="/es/posts/matriz-pestel-cuantitativa/" class="btn-kit-info" title="Leer guía metodológica">Guía 📖</a>
+<span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/17a0781c-8001-47df-9cdd-25923041e1de" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
@@ -343,10 +318,6 @@ Detalles ℹ️
 </div>
 <h3 class="kit-card-title">Matriz BCG Dinámica de Cartera</h3>
 </div>
-</div>
-<div class="kit-card-preview" onclick="openModal('pack-bcg')" title="Ampliar vista previa de los entregables">
-<img src="/images/recursos/bcg-preview-es.png" alt="Vista previa Matriz BCG Dinámica de Cartera" loading="lazy">
-<span class="kit-preview-zoom-pill">🔍 Vista previa del Kit</span>
 </div>
 <p class="kit-card-desc">Cálculo automático de Cuota de Mercado Relativa, tasa de crecimiento y gráfico dinámico de burbujas según facturación.</p>
 <div class="kit-deliverables-row">
@@ -398,7 +369,7 @@ Detalles ℹ️
 <button type="button" class="btn-kit-info" onclick="openModal('pack-mckinsey')">
 Detalles ℹ️
 </button>
-<span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
+<a href="/es/posts/matriz-mckinsey-ge/" class="btn-kit-info" title="Leer artículo técnico">Artículo técnico 📖</a>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/ae0c6cd8-bb86-4a56-ad87-9625301afda9" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
@@ -803,7 +774,7 @@ Detalles ℹ️
             <button type="button" class="btn-kit-info" onclick="openModal('pack-pestel')">
               Detalles ℹ️
             </button>
-            <a href="/es/posts/matriz-pestel-cuantitativa/" class="btn-kit-info" title="Leer artículo técnico">Artículo técnico 📖</a>
+            <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
             <a href="https://datalaria.lemonsqueezy.com/checkout/buy/17a0781c-8001-47df-9cdd-25923041e1de" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
           </div>
         </div>
@@ -871,7 +842,7 @@ Detalles ℹ️
             <button type="button" class="btn-kit-info" onclick="openModal('pack-mckinsey')">
               Detalles ℹ️
             </button>
-            <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
+            <a href="/es/posts/matriz-mckinsey-ge/" class="btn-kit-info" title="Leer artículo técnico">Artículo técnico 📖</a>
             <a href="https://datalaria.lemonsqueezy.com/checkout/buy/ae0c6cd8-bb86-4a56-ad87-9625301afda9" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
           </div>
         </div>
@@ -1253,7 +1224,6 @@ Detalles ℹ️
     </div>
 
     <div class="modal-body">
-      <div id="modal-preview-wrap" style="display: none;"></div>
       <p id="modal-desc" style="color: var(--text-muted); line-height: 1.5; margin-bottom: 14px;">
         Descripción detallada del kit.
       </p>
@@ -1336,7 +1306,6 @@ Detalles ℹ️
       price: "5€",
       origPrice: "19€",
       icon: "🎯",
-      previewImg: "/images/recursos/dafo-preview-es.png",
       delivs: ["Excel .xlsx + Sheets", "PowerPoint 16:9", "Guía PDF"],
       desc: "Ponderación numérica de Fortalezas y Debilidades, formulación automática de acciones CAME y slide ejecutiva para Comité de Dirección.",
       features: [
@@ -1360,7 +1329,6 @@ Detalles ℹ️
       price: "6€",
       origPrice: "19€",
       icon: "🛡️",
-      previewImg: "/images/recursos/porter-preview-es.png",
       delivs: ["Excel .xlsx + Sheets", "PowerPoint 16:9", "Guía PDF"],
       desc: "Scoring cuantitativo por fuerza competitiva, gráfico Radar dinámico auto-generado y diagnóstico de foso defensivo (Moat).",
       features: [
@@ -1370,7 +1338,7 @@ Detalles ℹ️
         "Guía metodológica sobre barreras de entrada y rentabilidad del sector"
       ],
       checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/90206641-21f3-4e06-9163-9bb90b16cbc9",
-      guideUrl: "/es/posts/5-fuerzas-porter-cuantitativas/"
+      guideUrl: null
     },
 
     // 3. Matriz PESTEL (DISPONIBLE)
@@ -1384,7 +1352,6 @@ Detalles ℹ️
       price: "5€",
       origPrice: "19€",
       icon: "🌐",
-      previewImg: "/images/recursos/pestel-preview-es.png",
       delivs: ["Excel .xlsx + Sheets", "PowerPoint 16:9", "Guía PDF"],
       desc: "Evaluación de 6 factores macro con índice de impacto compuesto y mapa térmico de riesgos regulatorios y macroeconómicos.",
       features: [
@@ -1394,7 +1361,7 @@ Detalles ℹ️
         "Guía PDF de anticipación estratégica y escenarios"
       ],
       checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/17a0781c-8001-47df-9cdd-25923041e1de",
-      guideUrl: "/es/posts/matriz-pestel-cuantitativa/"
+      guideUrl: null
     },
 
     // 4. Matriz BCG (DISPONIBLE)
@@ -1417,8 +1384,7 @@ Detalles ℹ️
         "Guía PDF de gestión de ciclo de vida de producto y flujo de caja"
       ],
       checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/52cf8aa6-a595-49fe-b470-421140317013",
-      guideUrl: "/es/posts/matriz-bcg-dinamica/",
-      previewImg: "/images/recursos/bcg-preview-es.png"
+      guideUrl: "/es/posts/matriz-bcg-dinamica/"
     },
 
     // 5. Matriz McKinsey / GE (DISPONIBLE)
@@ -1441,7 +1407,7 @@ Detalles ℹ️
         "Guía metodológica de calibración basada en consultoría Tier-1"
       ],
       checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/ae0c6cd8-bb86-4a56-ad87-9625301afda9",
-      guideUrl: null
+      guideUrl: "/es/posts/matriz-mckinsey-ge/"
     },
 
     // 6. Matriz DAR (DISPONIBLE)
@@ -1752,13 +1718,6 @@ Detalles ℹ️
               </div>
             </div>
 
-            ${kit.previewImg ? `
-              <div class="kit-card-preview" onclick="openModal('${kit.id}')" title="Ampliar vista previa de los entregables">
-                <img src="${kit.previewImg}" alt="Vista previa ${kit.title}" loading="lazy">
-                <span class="kit-preview-zoom-pill">🔍 Vista previa del Kit</span>
-              </div>
-            ` : ''}
-
             <p class="kit-card-desc">${kit.desc}</p>
 
             <div class="kit-deliverables-row">
@@ -1871,22 +1830,6 @@ Detalles ℹ️
     document.getElementById('modal-cat').textContent = `${kit.topicLabel} • ${kit.statusLabel}`;
     document.getElementById('modal-desc').textContent = kit.desc;
     document.getElementById('modal-price').textContent = `${kit.price} (antes ${kit.origPrice})`;
-
-    const previewWrap = document.getElementById('modal-preview-wrap');
-    if (previewWrap) {
-      if (kit.previewImg) {
-        previewWrap.style.display = 'block';
-        previewWrap.innerHTML = `
-          <a href="${kit.previewImg}" target="_blank" rel="noopener" class="modal-preview-link" title="Clic para abrir vista previa en alta resolución (1600x980)">
-            <img src="${kit.previewImg}" alt="Vista previa ${kit.title}">
-            <div class="modal-preview-caption">🔍 Clic en la imagen para ampliar la captura oficial en alta resolución (Excel + PowerPoint 16:9 + Guía PDF)</div>
-          </a>
-        `;
-      } else {
-        previewWrap.style.display = 'none';
-        previewWrap.innerHTML = '';
-      }
-    }
 
     const delivsEl = document.getElementById('modal-delivs');
     delivsEl.innerHTML = kit.delivs.map(d => `<span class="deliv-chip" style="font-size: 12px; padding: 4px 8px;">${d}</span>`).join('');

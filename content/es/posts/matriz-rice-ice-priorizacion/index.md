@@ -1,6 +1,6 @@
 ---
 title: "Matriz RICE & ICE de Priorización Ágil: Backlog Cuantitativo, Matriz Impacto vs. Esfuerzo y Línea de Corte de Capacidad"
-date: 2026-10-29
+date: 2026-11-13
 draft: false
 category: "Artículos Técnicos"
 categories: ["Toma de Decisiones", "Gestión de Producto", "Plantillas Ejecutivas"]

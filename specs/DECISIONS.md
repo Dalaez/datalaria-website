@@ -142,8 +142,8 @@
 ---
 
 ## ADR-012: Nueva App de nicho "Datalaria Pulse" (Content Ops as Code) para sustituir la gestión editorial en Notion
-- **Fecha:** 2026-10-25
-- **Estado:** Aceptado (en definición: propuesta de valor y columnas pendientes; Hitos 5.0-5.1)
+- **Fecha:** 2026-10-25 (Consolidado el 2026-10-28)
+- **Estado:** Aceptado — Especificación aprobada en [`specs/apps/pulse/spec.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/apps/pulse/spec.md) (Hito 5.0 cerrado)
 - **Contexto:**
   1. La gestión editorial (posts, apps, kits) se hace a mano en Notion: 95 filas con ES/EN mezclados frente a 108 posts por idioma en el repo, sin vínculo ES⇔EN y con 6 columnas siempre vacías.
   2. Casi todos esos datos ya existen en el front matter de Hugo, en `git log` y en `data/analytics.json` (GA4).

@@ -51,6 +51,7 @@ flowchart LR
    - **Hugo Portal:** `hugo --gc --minify` (código de salida `0`).
    - **Frontend Apps (JS/TS):** `npm run lint` (`oxlint`) + `npm run build` (código de salida `0`).
    - **Backend / Motores Cuantitativos (Python):** `pytest` + validación de esquemas Pydantic v2.
+   - **Gobernanza Editorial Automatizada (Datalaria Pulse):** Toda creación o edición de artículos en `content/**`, apps en `data/apps/` o kits en `data/pulse/` DEBE ejecutar `python -m ops.pulse.build_index` y `python -m ops.pulse.publish_public` para garantizar la actualización automática del índice editorial y la paridad bilingüe sin intervención manual.
 3. **Protocolo de Marcha Atrás (Rollback):**
    - Si una migración rompe el build de Hugo, expone rutas rotas o falla los tests en 2 intentos consecutivos, el agente debe detenerse, restaurar el estado limpio y documentar el bloqueo en `specs/ROADMAP.md` bajo la sección `Blockers & Rollback Log`.
 
