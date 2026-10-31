@@ -3,8 +3,8 @@ title: "Automated GA4 and Search Console: Measuring Organic ROI, Content Equity,
 date: 2026-12-09
 draft: false
 image: "cover.png"
-category: "Technical Articles"
-categories: ["Content Ops", "Web Analytics", "SEO", "Automation", "Software Engineering"]
+category: "AI, Engineering & Projects"
+categories: ["Content Ops", "Web Analytics", "SEO", "Automation", "Software Engineering", "AI, Engineering & Projects"]
 tags: ["Google Analytics 4", "Search Console", "Python", "Content Ops as Code", "Technical SEO", "Pydantic", "Editorial ROI", "Data Privacy"]
 description: "How to connect the GA4 and Search Console APIs via Service Account to audit organic traffic, calculate content equity, and detect freshness decay without compromising commercial privacy."
 summary: "Publishing technical articles and interactive tools without measuring their organic return turns editorial strategy into guesswork. In this fourth installment of Datalaria Pulse, we demonstrate how we automate telemetry ingestion from Google Analytics 4 and Google Search Console using a Python Service Account, transform raw numbers into deterministic relative indices (Base 100 and percentiles), and power a decision matrix that identifies hidden SEO gems, traffic engines, and monetization gaps."

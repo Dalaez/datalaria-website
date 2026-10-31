@@ -2,8 +2,8 @@
 title: "Estimación PERT de 3 Puntos Estocástica: De la Ilusión Determinista a la Certidumbre Estadística de Cronograma"
 date: 2026-11-30
 draft: false
-category: "Artículos Técnicos"
-categories: ["Control Operativo", "Gestión de Proyectos", "Plantillas Ejecutivas"]
+category: "Estrategia y Operaciones"
+categories: ["Control Operativo", "Gestión de Proyectos", "Plantillas Ejecutivas", "Estrategia y Operaciones"]
 tags: ["Estimación PERT", "PERT 3 Puntos", "PMBOK 7th", "Camino Crítico", "Teorema del Límite Central", "Distribución Beta", "Z-Score", "Control Operativo", "C-Level", "Buffers de Proyecto", "Crashing de Cronograma"]
 description: "Guía cuantitativa y metodológica para erradicar las estimaciones deterministas de cronograma: Distribución Beta de 3 puntos (Optimista, Más Probable, Pesimista), agregación probabilística del Camino Crítico (CLT), Z-Score para fechas compromiso y dimensionamiento científico de buffers ante el Consejo de Administración."
 summary: "Sustituye las estimaciones subjetivas a un solo punto por un motor estocástico riguroso de 3 puntos basado en la Distribución Beta y el Teorema del Límite Central (PMBOK 7th / Operations Research). Cuantifica la probabilidad real de cumplimiento para cualquier fecha compromiso, dimensiona colchones de proyecto científicos (TOC) y optimiza el crashing presupuestario con calidad de grado directivo (C-Level)."

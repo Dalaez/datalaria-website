@@ -2,8 +2,8 @@
 title: "PostgreSQL with pgvector vs Vector DBs: Why Almost Nobody Needs Pinecone"
 date: 2026-09-22
 draft: false
-category: "Technical Articles"
-categories: ["Artificial Intelligence", "Engineering"]
+category: "AI, Engineering & Projects"
+categories: ["Artificial Intelligence", "Engineering", "AI, Engineering & Projects"]
 tags: ["postgresql", "pgvector", "vector database", "pinecone", "rag", "embeddings", "hnsw", "supabase", "data architecture"]
 description: "Do you really need a dedicated vector database like Pinecone, Qdrant, or Milvus? We analyze pgvector performance in PostgreSQL, the hidden operational cost of dual-database architectures, HNSW vs IVFFlat indexes, and why the unified database wins in 95% of real-world cases."
 summary: "During the RAG gold rush, hundreds of engineering teams signed up for $300/month dedicated vector databases to index a few thousand documents. In real production, PostgreSQL with pgvector handles that exact search in 8 milliseconds, at zero additional cost, while preserving full ACID integrity. This is the definitive architecture and performance breakdown."

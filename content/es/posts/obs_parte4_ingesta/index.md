@@ -2,8 +2,8 @@
 title: "El Bautismo de Fuego: De Excel Basura a Grafo Relacional con Python y Pandas"
 date: 2026-04-25
 draft: false
-category: "Proyectos Tecnológicos"
-categories: ["Ingeniería de la Obsolescencia", "Operations Engineering", "Data Architecture"]
+category: "IA, Ingeniería y Proyectos"
+categories: ["Ingeniería de la Obsolescencia", "Operations Engineering", "Data Architecture", "IA, Ingeniería y Proyectos"]
 tags: ["Python", "Pandas", "Supabase", "BOM Management", "Data Engineering", "ETL"]
 author: "Datalaria"
 description: "Cómo ingerir un BOM corrupto exportado de un ERP heredado, limpiar su entropía con Pandas e inyectarlo en Supabase garantizando la idempotencia."

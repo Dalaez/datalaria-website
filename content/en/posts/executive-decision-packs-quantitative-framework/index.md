@@ -2,8 +2,8 @@
 title: "Executive Decision Packs: The Quantitative Framework for Boardroom Decision-Making"
 date: 2026-11-15
 draft: false
-category: "Technical Articles"
-categories: ["Corporate Strategy", "Decision Making", "Project Management", "Corporate Finance"]
+category: "Strategy & Operations"
+categories: ["Corporate Strategy", "Decision Making", "Project Management", "Corporate Finance", "Strategy & Operations"]
 tags: ["Executive Decision Packs", "Mega Bundle", "Board of Directors", "C-Suite", "Pyramid Principle", "Quantitative Models", "Excel", "PowerPoint", "Capital Allocation", "Corporate Governance"]
 description: "From quantitative modeling to Board of Directors approval. Master guide on the 3-layer architecture, the 13 executive tools, and Tier-1 boardroom governance."
 summary: "Strategic decisions frequently collapse during the executive last mile: qualitative decks overflowing with static bullet points, hierarchy bias (HiPPO), and political bargaining disconnected from corporate finance. In this master article, we analyze Datalaria's Executive Decision Packs architecture: a unified ecosystem of 13 quantitative tools across 3 suites (MBA Strategy, Decision Making, and PMBOK Operational Control) that transforms subjective intuition into auditable financial models, C-Level decks structured under the Minto Pyramid, and binding decision gateways ready for Board approval."

@@ -2,8 +2,8 @@
 title: "An Engineer's Productivity Stack in 2026: The Tools I Use Every Day"
 date: 2026-08-01
 draft: false
-category: "Technical Articles"
-categories: ["Engineering"]
+category: "AI, Engineering & Projects"
+categories: ["Engineering", "AI, Engineering & Projects"]
 tags: ["productivity", "tools", "stack", "engineer", "workflow", "python", "supabase", "github actions", "crewai", "hugo"]
 description: "The real tool stack of a data engineer in 2026: from Gemini Deep Research to GitHub Actions, through Python, Supabase, CrewAI, and Hugo. No sponsorships, no affiliates, no filters. Every tool explained with the post where I use it."
 summary: "After 60+ articles, 9 technical series, and 4 production applications, this is the real stack I use every day. No sponsorships, no affiliates, no filters. 10 tools organized by workflow phase, what I tried and discarded, and the total cost: less than €5 per month."

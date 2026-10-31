@@ -3,13 +3,17 @@ title: "DAFO Cuantitativo y Matriz CAME: La Guía Definitiva de Decisión Estrat
 date: 2026-10-13
 draft: false
 translationKey: quantitative-swot-tows-matrix
-category: "Artículos Técnicos"
-categories: ["Estrategia Empresarial", "Toma de Decisiones", "Management", "Finanzas Corporativas"]
+category: "Estrategia y Operaciones"
+categories: ["Estrategia Empresarial", "Toma de Decisiones", "Management", "Finanzas Corporativas", "Estrategia y Operaciones"]
 tags: ["DAFO Cuantitativo", "Matriz CAME", "Estrategia C-Level", "Pirámide de Minto", "Plantilla Excel", "PowerPoint Ejecutivo", "Asignación de Capital"]
 description: "Guía metodológica exhaustiva para transformar un DAFO cualitativo en un modelo matemático vectorial con ponderaciones, calificaciones y plan de acción CAME listo para Comités de Dirección."
 summary: "Los DAFO tradicionales suelen morir en reuniones estériles porque carecen de rigor matemático y vinculación operativa. En esta guía de grado consultoría (McKinsey/BCG) explicamos cómo formalizar el espacio vectorial FODA, calcular la postura estratégica dominante en coordenadas cartesianas, ejecutar la matriz de cruce CAME y estructurar la diapositiva ejecutiva bajo el principio de la Pirámide de Minto."
+cover:
+  image: "cover.png"
+  alt: "DAFO Cuantitativo y Matriz CAME: Modelo Matemático Vectorial y Postura Estratégica Cartesiana"
+  caption: "Espacio Vectorial DAFO & Matriz CAME: Cuantificación objetiva de debilidades, fortalezas y plan de acción para Comités de Dirección."
+  relative: true
 ---
-
 En casi cualquier comité de dirección, consejo de administración o sesión de planificación estratégica anual se repite el mismo ritual: un equipo de consultores o directores de área proyecta una diapositiva dividida en cuatro cuadrantes de colores con viñetas subjetivas bajo las siglas **DAFO** (Debilidades, Amenazas, Fortalezas y Oportunidades).
 
 El desenlace casi siempre es idéntico:

@@ -2,8 +2,8 @@
 title: "Quantitative Operational Control & PMBOK: The 5-Pillar Executive Framework for COOs and PMOs"
 date: 2026-11-07
 draft: false
-category: "Technical Articles"
-categories: ["Operational Control", "Project Management", "Corporate PMO", "Supply Chain"]
+category: "Strategy & Operations"
+categories: ["Operational Control", "Project Management", "Corporate PMO", "Supply Chain", "Strategy & Operations"]
 tags: ["Operational Control", "PMBOK", "RACI Matrix", "FMEA", "PERT Estimation", "EVM", "Earned Value Management", "Safety Stock", "Reorder Point", "S-Curve", "Working Capital", "C-Level", "PMO"]
 description: "From team governance and risk mitigation to project financials and supply chain buffers. How to integrate RACI Matrix, FMEA, 3-Point PERT, EVM S-Curve, and Safety Stock into a unified operational engine."
 summary: "Discover how to orchestrate a boardroom-grade 5-pillar operational control engine. Unify team governance (Quantitative RACI), failure prevention (AIAG-VDA FMEA), schedule certainty (Stochastic 3-Point PERT), financial cost & progress control (EVM S-Curve), and working capital resilience (Safety Stock & Dynamic ROP)."

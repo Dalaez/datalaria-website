@@ -3,7 +3,7 @@ title: "Carto: From a UN Invoice to Conquering the Geospatial Cloud"
 date: 2025-10-28
 category: "Startups"
 draft: False
-categories: ["case-studies", "AI"]
+categories: ["case-studies", "AI", "Startups"]
 tags: ["carto", "geospatial", "ai", "cloud", "startup", "big data", "location intelligence"]
 image: cover.png
 description: "The story of how Carto, a Spanish startup, evolved from a consulting project into a global leader in Location Intelligence by betting on a cloud-native strategy that has redefined data analysis."

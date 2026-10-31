@@ -3,13 +3,17 @@ title: "Matriz PESTEL Cuantitativa: Severidad, Volatilidad y Riesgo Macro para C
 date: 2026-10-22
 draft: false
 translationKey: quantitative-pestel-matrix
-category: "Artículos Técnicos"
-categories: ["Estrategia Empresarial", "Gestión de Riesgos", "Finanzas Corporativas", "Management"]
+category: "Estrategia y Operaciones"
+categories: ["Estrategia Empresarial", "Gestión de Riesgos", "Finanzas Corporativas", "Management", "Estrategia y Operaciones"]
 tags: ["Matriz PESTEL", "Riesgo Macroeconómico", "Estrategia C-Level", "Incertidumbre Estratégica", "Pirámide de Minto", "Plantilla Excel", "PowerPoint Ejecutivo", "Asignación de Capital"]
 description: "Guía metodológica exhaustiva para transformar el análisis macroambiental cualitativo tradicional en un motor cuantitativo bidimensional (Severidad del Impacto en P&L vs. Volatilidad Temporal), con mapa térmico cartesiano, perfil radar hexagonal y plan de resiliencia C-Level."
 summary: "El análisis PESTEL tradicional suele degenerar en inventarios descriptivos sin jerarquía de impacto ni conexión con el balance o la cuenta de resultados. En esta guía de estándar consultoría estratégica Tier-1 (McKinsey / BCG) formalizamos la evaluación estocástica del macroentorno mediante un espacio métrico bidimensional (Severidad vs. Volatilidad), el cálculo del Índice de Riesgo Macro Compuesto (R_comp), la matriz cartesiana de incertidumbre y el plan de contingencia financiera listo para defender ante Consejos de Administración."
+cover:
+  image: "cover.png"
+  alt: "Matriz PESTEL Cuantitativa: Severidad, Volatilidad y Riesgo Macro para Comités de Dirección"
+  caption: "PESTEL Cuantitativo: Espacio métrico bidimensional (Severidad vs. Volatilidad) y matriz de incertidumbre macroeconómica para Consejos de Administración."
+  relative: true
 ---
-
 En casi cualquier sesión anual de planificación estratégica, reunión ordinaria de Consejo de Administración o comité de auditoría y riesgos se proyecta invariablemente una diapositiva con el acrónimo canónico **PESTEL**: seis columnas o cuadrantes agrupando factores *Políticos, Económicos, Sociales, Tecnológicos, Ecológicos y Legales*.
 
 Sin embargo, en más del 85% de las corporaciones, este ejercicio sufre una degradación metodológica sistemática conocida en la consultoría de alta dirección como el **"Síndrome del Inventario Inerte"**:

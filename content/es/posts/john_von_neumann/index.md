@@ -2,8 +2,8 @@
 title: "John von Neumann: El Padre de la Arquitectura de Computadores, la Teoría de Juegos y el Origen de la Singularidad"
 date: 2026-10-10
 draft: false
-category: "Biografías"
-categories: ["casos_exito", "Inteligencia Artificial", "Ingeniería"]
+category: "Pioneros y Referentes"
+categories: ["casos_exito", "Inteligencia Artificial", "Ingeniería", "Pioneros y Referentes"]
 tags: ["john von neumann", "arquitectura von neumann", "teoria de juegos", "singularidad", "agi", "los alamos", "computacion", "inteligencia artificial", "historia"]
 image: cover.jpg
 weight: 10

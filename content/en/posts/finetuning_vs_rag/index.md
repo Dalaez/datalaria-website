@@ -2,8 +2,8 @@
 title: "Fine-Tuning vs Prompt Engineering vs RAG: When to Use Each (And the Fourth Option Nobody Mentions)"
 date: 2026-08-09
 draft: false
-category: "Technical Articles"
-categories: ["Artificial Intelligence", "Engineering"]
+category: "AI, Engineering & Projects"
+categories: ["Artificial Intelligence", "Engineering", "AI, Engineering & Projects"]
 tags: ["fine-tuning", "prompt engineering", "rag", "tool calling", "llm", "ai architecture", "lora", "qlora", "mcp"]
 description: "The definitive guide to choosing between Prompt Engineering, RAG, Fine-Tuning, and Tool Calling. With a decision tree, comparative cost and precision matrix, and real cases from the Ops Copilot and Obsolescence Radar at Datalaria."
 summary: "Your AI model hallucinates with your company's data. Is the fix RAG, fine-tuning, or a better prompt? The right answer depends on a single question almost nobody asks. After implementing all four techniques in production, I've distilled the decision tree I wish I'd had when I started."

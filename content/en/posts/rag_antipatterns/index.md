@@ -2,8 +2,8 @@
 title: "RAG in Production: 7 Anti-Patterns That Destroy Precision (And How I Fixed Them)"
 date: 2026-07-11
 draft: false
-category: "Technical Articles"
-categories: ["Artificial Intelligence", "Engineering"]
+category: "AI, Engineering & Projects"
+categories: ["Artificial Intelligence", "Engineering", "AI, Engineering & Projects"]
 tags: ["rag", "retrieval augmented generation", "embeddings", "chunking", "tool calling", "llm", "production", "anti-patterns"]
 description: "Analysis of the 7 most common mistakes when implementing RAG (Retrieval-Augmented Generation) in real production. Lessons learned from the Ops Engineering Copilot and the agentic obsolescence radar at Datalaria, and the definitive comparison between RAG and Tool Calling."
 summary: "RAG is the aspirin of generative AI: everyone prescribes it, almost no one truly understands how it works, and when it fails, the patient hallucinates. After implementing RAG in production with the Ops Copilot and discarding it in favor of Tool Calling for the obsolescence radar, I've catalogued the 7 errors that destroy precision — and the solutions that actually work."

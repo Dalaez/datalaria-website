@@ -2,8 +2,8 @@
 title: "Project LifeOps (Part 3): Core Interactive Modules: Fitness, Library, Cinema, and Professional Kanban Board"
 date: 2026-09-15
 draft: false
-category: "Tech Projects"
-categories: ["Projects", "Web Development"]
+category: "AI, Engineering & Projects"
+categories: ["Projects", "Web Development", "AI, Engineering & Projects"]
 tags: ["react", "fastapi", "postgresql", "jsonb", "kanban", "sports", "fitness", "reading", "cinema", "productivity", "frontend"]
 image: cover.png
 description: "Third installment of the LifeOps series: how I engineered the application's core modules. Dual-view architecture (Cards vs Table), fitness telemetry with pace calculations and PBs, reading and cinema tracking, and an agile Kanban board with progress logs stored in PostgreSQL JSONB."

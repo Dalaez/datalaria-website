@@ -1,9 +1,9 @@
 ---
 title: "AI-Powered Programming: Creating My Own Magical Flashcards Study App"
 date: 2025-10-17
-category: "Tech Projects"
+category: "AI, Engineering & Projects"
 draft: False
-categories: ["Projects", "Tools"]
+categories: ["Projects", "Tools", "AI, Engineering & Projects"]
 tags: ["ai", "flashcards", "learning", "study", "web development", "no-code", "gamification"]
 image: Cover.PNG
 description: "A practical case study of how a family need led me to create a flashcards study application from scratch, relying on AI to make learning more enjoyable and effective."

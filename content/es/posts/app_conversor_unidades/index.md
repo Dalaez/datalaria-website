@@ -1,9 +1,9 @@
 ---
 title: "Creando mi 'Navaja Suiza' Digital: Un Conversor de Unidades a Medida con la IA"
 date: 2025-10-04
-category: "Proyectos Tecnológicos"
+category: "IA, Ingeniería y Proyectos"
 draft: False
-categories: ["Proyectos", "Herramientas"]
+categories: ["Proyectos", "Herramientas", "IA, Ingeniería y Proyectos"]
 tags: ["gemini", "ia", "desarrollo web", "conversor de unidades", "html", "css", "javascript", "ingeniería"]
 image: cover.png
 description: "Un caso práctico de cómo utilicé Gemini Canvas para desarrollar desde cero una aplicación web de conversión de unidades de medida, organizada por categorías y adaptada a mis necesidades profesionales."

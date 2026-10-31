@@ -2,8 +2,8 @@
 title: "Autopilot - A Technical Post-Mortem: I Fired Myself to Build an AI Army with Gemini"
 date: 2026-03-04
 draft: false
-category: "Tech Projects"
-categories: ["Engineering", "AI", "DevOps"]
+category: "AI, Engineering & Projects"
+categories: ["Engineering", "AI", "DevOps", "AI, Engineering & Projects"]
 tags: ["devchallenge", "geminireflections", "gemini", "ai", "crewai", "python"]
 image: "cover.png"
 description: "A candid technical post-mortem on Project Autopilot: how I used Google Gemini and CrewAI inside GitHub Actions to automate content distribution, and the heavy engineering needed to make LLMs deterministic."

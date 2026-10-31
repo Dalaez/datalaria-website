@@ -3,8 +3,8 @@ title: "Goodbye Notion: Datalaria Pulse and Editorial Management Written Directl
 date: 2026-11-18
 draft: false
 image: "cover.png"
-category: "Technical Articles"
-categories: ["Content Ops", "Software Engineering", "Automation"]
+category: "AI, Engineering & Projects"
+categories: ["Content Ops", "Software Engineering", "Automation", "AI, Engineering & Projects"]
 tags: ["Content Ops as Code", "Git", "Notion", "Hugo", "Markdown", "Pydantic", "Technical Blogging", "SEO"]
 description: "Why Notion and Airtable databases inevitably drift from code repos, and how Content Ops as Code indexes your technical blog directly from Markdown commits."
 summary: "Managing a technical blog's editorial calendar in Notion or Airtable is a losing battle against drift. In this series we introduce Datalaria Pulse: the 'Content Ops as Code' architecture that turns your Markdown repo into a deterministic index validated by Pydantic, monitors bilingual ES ⇔ EN parity, and projects a zero-latency React executive dashboard."

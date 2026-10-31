@@ -22,7 +22,7 @@ suites:
   status: available
   price: 19 €
   original_price: 29 €
-  icon: 📊
+  icon: 🏛️
   checkout_url: https://datalaria.lemonsqueezy.com/checkout/buy/6afa0df4-fec1-4227-a183-9e5bcc738bdd
   title_es: 'Pack Suite 1: Estrategia MBA'
   title_en: 'Suite 1: MBA Strategy'
@@ -30,6 +30,8 @@ suites:
     5 Fuerzas de Porter, PESTEL, BCG y McKinsey / GE.'
   description_en: 'Complete collection of 5 strategic decision models: Quantitative
     SWOT, Porter 5 Forces, PESTEL, BCG and McKinsey / GE.'
+  guide_url_es: /es/posts/estrategia-corporativa-mba-framework-cuantitativo/
+  guide_url_en: /en/posts/corporate-strategy-mba-quantitative-framework/
   included_kits:
   - pack-dafo
   - pack-porter
@@ -156,7 +158,7 @@ kits:
   description_es: Scoring cuantitativo por fuerza competitiva, gráfico Radar dinámico
     auto-generado y diagnóstico de foso defensivo (Moat).
   article_url_es: null
-  guide_url_es: null
+  guide_url_es: /es/posts/5-fuerzas-porter-cuantitativas/
   title_en: Weighted Porter's 5 Forces
   category_en: MBA Strategy
   description_en: Quantitative scoring per competitive force, dynamic radar chart
@@ -171,7 +173,7 @@ kits:
   - Fitted 16:9 PPTX slide with one-click chart container
   - Methodology guide covering barrier dynamics and industry rents
   article_url_en: null
-  guide_url_en: null
+  guide_url_en: /en/posts/quantitative-porter-5-forces/
 - id: pack-pestel
   slug: pestel
   type: kit
@@ -196,7 +198,7 @@ kits:
   description_es: Evaluación de 6 factores macro con índice de impacto compuesto y
     mapa térmico de riesgos regulatorios y macroeconómicos.
   article_url_es: null
-  guide_url_es: null
+  guide_url_es: /es/posts/matriz-pestel-cuantitativa/
   title_en: Quantitative PESTEL (Severity & Volatility)
   category_en: MBA Strategy
   description_en: Assessment of 6 macro factors with composite risk indices and early
@@ -212,7 +214,7 @@ kits:
   - 16:9 PPTX slide with uncertainty matrix for executive committees
   - PDF scenario planning and macro stress-testing guide
   article_url_en: null
-  guide_url_en: null
+  guide_url_en: /en/posts/quantitative-pestel-matrix/
 - id: pack-bcg
   slug: bcg
   type: kit

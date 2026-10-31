@@ -2,8 +2,8 @@
 title: "The Executive Interface: Translating AI Telemetry into C-Level Decisions"
 date: 2026-05-17
 draft: false
-category: "Tech Projects"
-categories: ["S&OP Engineering", "Data Visualization", "Cloud Architecture"]
+category: "AI, Engineering & Projects"
+categories: ["S&OP Engineering", "Data Visualization", "Cloud Architecture", "AI, Engineering & Projects"]
 tags: ["FastAPI", "Vanilla JS", "Tailwind CSS", "CrewAI", "Executive Dashboard"]
 description: "Building the presentation layer that translates asynchronous AI operations into financial metrics for executive roles utilizing lightweight Tailwind CSS and Vanilla JS."
 summary: "The final block in Obsolescence Engineering: Projecting the mathematical engine of the agentic radar towards a lightweight, high-availability Frontend Dashboard, securing immediate ROI exposure."

@@ -2,8 +2,8 @@
 title: "Autopilot - The Creatives: How I Programmed an AI to be Cynical on Twitter and Corporate on LinkedIn"
 date: 2026-01-03
 draft: false
-category: "Tech Projects"
-categories: ["Generative AI", "Prompt Engineering", "Python"]
+category: "AI, Engineering & Projects"
+categories: ["Generative AI", "Prompt Engineering", "Python", "AI, Engineering & Projects"]
 tags: ["CrewAI", "AI Personality", "Automation", "Marketing", "Storytelling"]
 image: "cover.png"
 description: "Chapter three of Project Autopilot. Transforming cold data into viral stories by creating two agents with opposing personalities: a cynical influencer and a corporate leader."

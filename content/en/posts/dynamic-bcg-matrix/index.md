@@ -3,13 +3,17 @@ title: "Dynamic BCG Portfolio Matrix: Experience Curve, Liquidity Balance & C-Le
 date: 2026-10-26
 draft: false
 translationKey: dynamic-bcg-matrix
-category: "Technical Articles"
-categories: ["Corporate Strategy", "Corporate Finance", "Portfolio Management", "Executive Management"]
+category: "Strategy & Operations"
+categories: ["Corporate Strategy", "Corporate Finance", "Portfolio Management", "Executive Management", "Strategy & Operations"]
 tags: ["BCG Matrix", "Capital Allocation", "Bruce Henderson", "Experience Curve", "Relative Market Share", "Minto Pyramid", "Excel Model", "Boardroom Presentation", "ROIC"]
 description: "A comprehensive methodological guide to transforming the traditional qualitative BCG matrix into a rigorous quantitative cash flow balance engine (Bruce Henderson), mathematical Relative Market Share (RMS) modeling, and C-Suite capital allocation roadmap."
 summary: "The Boston Consulting Group growth-share matrix is too often projected in corporate boardrooms as a superficial 4-quadrant sketch disconnected from free cash flow and capital costs. In this Tier-1 management consulting guide (McKinsey / BCG standard), we formalize portfolio strategy via Relative Market Share (RMS), Henderson's empirical Experience Curve, dynamic cash equilibrium between Cash Cows and Question Marks, and an actionable CAPEX reallocation plan engineered for executive Boards of Directors."
+cover:
+  image: "cover.png"
+  alt: "Dynamic BCG Portfolio Matrix: Experience Curve, Liquidity Balance & C-Level Capital Allocation"
+  caption: "Dynamic BCG Matrix: Relative Market Share, Henderson's Experience Curve, and free cash flow balancing for Executive Boards."
+  relative: true
 ---
-
 In virtually every corporate strategic planning retreat, quarterly Board of Directors meeting, or M&A investment committee session, the exact same slide is inevitably projected: the canonical four quadrants of the **BCG Growth-Share Matrix**—*Stars, Cash Cows, Question Marks, and Dogs*.
 
 Yet in more than 80% of corporate enterprises, this strategic framework falls prey to a systemic executive failure known in Tier-1 management consulting as the **"Static Sketch Syndrome"**:

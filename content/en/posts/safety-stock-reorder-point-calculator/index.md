@@ -1,9 +1,9 @@
 ---
 title: "Safety Stock & Reorder Point (ROP) Calculator: Boardroom-Grade Inventory & Working Capital Optimization"
-date: 2026-11-06
+date: 2026-11-22
 draft: false
-category: "Technical Articles"
-categories: ["Operational Control", "Supply Chain", "Executive Templates"]
+category: "Strategy & Operations"
+categories: ["Operational Control", "Supply Chain", "Executive Templates", "Strategy & Operations"]
 tags: ["Safety Stock", "Reorder Point", "ROP", "EOQ", "Wilson Lot Sizing", "Working Capital", "Supply Chain Management", "APICS", "ASCM", "Inventory Optimization", "C-Level"]
 description: "Quantitative and methodological guide to inventory optimization (APICS / ASCM / MIT CTL standards): eradicating naive 3-week rules of thumb, multivariate stochastic convolution of demand and lead time, ROP and Wilson EOQ calibration, dynamic Sawtooth cycle simulation, and working capital release for the Board of Directors."
 summary: "Eliminate destructive empirical rules of thumb in corporate inventory management. Learn how to calculate mathematically rigorous Safety Stock (SS), Reorder Point (ROP), and Economic Order Quantity (EOQ) by modeling customer demand volatility and supplier lead time unreliability, securing a 98% service level while releasing hundreds of thousands of dollars in dormant working capital."

@@ -3,13 +3,17 @@ title: "Quantitative PESTEL Matrix: Severity, Volatility & Macro Risk for Execut
 date: 2026-10-22
 draft: false
 translationKey: quantitative-pestel-matrix
-category: "Technical Articles"
-categories: ["Corporate Strategy", "Risk Management", "Corporate Finance", "Executive Management"]
+category: "Strategy & Operations"
+categories: ["Corporate Strategy", "Risk Management", "Corporate Finance", "Executive Management", "Strategy & Operations"]
 tags: ["PESTEL Analysis", "Macroeconomic Risk", "C-Level Strategy", "Strategic Uncertainty", "Minto Pyramid", "Excel Model", "Boardroom Presentation", "Capital Allocation"]
 description: "A comprehensive methodological guide to transforming traditional qualitative PESTEL analysis into an objective 2D quantitative engine (P&L Impact Severity vs. Temporal Volatility), featuring Cartesian uncertainty mapping, a hexagonal radar profile, and a C-Suite resilience contingency plan."
 summary: "Traditional qualitative PESTEL analysis frequently degenerates into descriptive laundry lists devoid of analytical rigor, financial materiality, or balance sheet impact. In this Tier-1 management consulting guide (McKinsey / BCG standard), we formalize macroenvironmental scanning into a 2D metric space (Severity vs. Volatility), calculate the Composite Macro Risk Index (R_comp), map Cartesian uncertainty quadrants, and construct a capital contingency plan ready to defend before corporate Boards of Directors."
+cover:
+  image: "cover.png"
+  alt: "Quantitative PESTEL Matrix: Severity, Volatility & Macro Risk for Executive Boardrooms"
+  caption: "Quantitative PESTEL: 2D metric space (Severity vs. Volatility) and macroeconomic uncertainty matrix for Corporate Boards."
+  relative: true
 ---
-
 In virtually every annual strategic planning retreat, quarterly Board of Directors meeting, or audit and risk committee session, the exact same slide is inevitably projected: the canonical **PESTEL** taxonomy, displaying six columns or text boxes grouping *Political, Economic, Social, Technological, Environmental, and Legal* forces.
 
 Yet in more than 85% of corporate enterprises, this framework falls prey to a systemic executive dysfunction known in Tier-1 management consulting as the **"Inert Inventory Syndrome"**:

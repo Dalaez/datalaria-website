@@ -2,8 +2,8 @@
 title: "Autopilot - Los Creativos: Cómo programé a una IA para que fuera cínica en Twitter y corporativa en LinkedIn"
 date: 2026-01-03
 draft: false
-category: "Proyectos Tecnológicos"
-categories: ["IA Generativa", "Prompt Engineering", "Python"]
+category: "IA, Ingeniería y Proyectos"
+categories: ["IA Generativa", "Prompt Engineering", "Python", "IA, Ingeniería y Proyectos"]
 tags: ["CrewAI", "Personalidad IA", "Automatización", "Marketing", "Storytelling"]
 image: "cover.png"
 description: "Tercer capítulo de Proyecto Autopilot. Transformamos datos fríos en historias virales creando dos agentes con personalidades opuestas: un influencer cínico y un líder corporativo."

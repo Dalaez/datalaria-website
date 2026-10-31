@@ -2,8 +2,8 @@
 title: "The Thinking Game: How DeepMind Turned Video Games into History's Greatest Scientific Tool"
 date: 2026-01-01
 draft: false
-category: "Technical Articles"
-categories: ["Artificial Intelligence", "Deep Tech", "Science", "Documentaries"]
+category: "Tech Culture & Media"
+categories: ["Artificial Intelligence", "Deep Tech", "Science", "Documentaries", "Tech Culture & Media"]
 tags: ["DeepMind", "Demis Hassabis", "AlphaFold", "AGI", "AlphaGo", "The Thinking Game", "Computational Biology"]
 image: the_thinking_game.jpg
 social_text: Silicon Valley built chatbots. DeepMind built intelligence. From video games to solving biology's biggest mystery, this is the untold story of AI's ultimate goal. Your mind will break.

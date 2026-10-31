@@ -1,17 +1,26 @@
 {
   "quantitative-porter-5-forces": {
-    "ga4_views_30d": 38,
+    "ga4_views_30d": 41,
     "ga4_users_30d": 10,
-    "ga4_engagement_sec": 407.0,
+    "ga4_engagement_sec": 433.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 0.0
   },
   "quantitative-swot-tows-matrix": {
-    "ga4_views_30d": 111,
+    "ga4_views_30d": 113,
     "ga4_users_30d": 24,
-    "ga4_engagement_sec": 1291.0,
+    "ga4_engagement_sec": 1295.0,
+    "gsc_clicks_30d": 0,
+    "gsc_impressions_30d": 0,
+    "gsc_ctr_pct": 0.0,
+    "gsc_avg_position": 0.0
+  },
+  "corporate-strategy-mba-quantitative-framework": {
+    "ga4_views_30d": 12,
+    "ga4_users_30d": 2,
+    "ga4_engagement_sec": 442.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -27,9 +36,9 @@
     "gsc_avg_position": 0.0
   },
   "dynamic-bcg-matrix": {
-    "ga4_views_30d": 19,
+    "ga4_views_30d": 21,
     "ga4_users_30d": 12,
-    "ga4_engagement_sec": 428.0,
+    "ga4_engagement_sec": 432.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -81,9 +90,9 @@
     "gsc_avg_position": 0.0
   },
   "pulse-part4": {
-    "ga4_views_30d": 0,
-    "ga4_users_30d": 0,
-    "ga4_engagement_sec": 0.0,
+    "ga4_views_30d": 1,
+    "ga4_users_30d": 1,
+    "ga4_engagement_sec": 3.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -152,6 +161,24 @@
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 0.0
   },
+  "control-operativo-pmbok-framework-cuantitativo": {
+    "ga4_views_30d": 0,
+    "ga4_users_30d": 0,
+    "ga4_engagement_sec": 0.0,
+    "gsc_clicks_30d": 0,
+    "gsc_impressions_30d": 0,
+    "gsc_ctr_pct": 0.0,
+    "gsc_avg_position": 0.0
+  },
+  "toma-decisiones-priorizacion-framework-cuantitativo": {
+    "ga4_views_30d": 1,
+    "ga4_users_30d": 1,
+    "ga4_engagement_sec": 0.0,
+    "gsc_clicks_30d": 0,
+    "gsc_impressions_30d": 0,
+    "gsc_ctr_pct": 0.0,
+    "gsc_avg_position": 0.0
+  },
   "app_conversor_unidades": {
     "ga4_views_30d": 4,
     "ga4_users_30d": 4,
@@ -180,8 +207,8 @@
     "gsc_avg_position": 0.0
   },
   "abraham_wald": {
-    "ga4_views_30d": 35,
-    "ga4_users_30d": 33,
+    "ga4_views_30d": 36,
+    "ga4_users_30d": 34,
     "ga4_engagement_sec": 404.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -207,9 +234,9 @@
     "gsc_avg_position": 0.0
   },
   "alan_turing": {
-    "ga4_views_30d": 25,
-    "ga4_users_30d": 26,
-    "ga4_engagement_sec": 197.0,
+    "ga4_views_30d": 26,
+    "ga4_users_30d": 27,
+    "ga4_engagement_sec": 198.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -297,9 +324,9 @@
     "gsc_avg_position": 0.0
   },
   "app_openweather_part4_extras_ux": {
-    "ga4_views_30d": 2,
-    "ga4_users_30d": 2,
-    "ga4_engagement_sec": 3.0,
+    "ga4_views_30d": 3,
+    "ga4_users_30d": 3,
+    "ga4_engagement_sec": 12.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -441,8 +468,8 @@
     "gsc_avg_position": 0.0
   },
   "graphrag": {
-    "ga4_views_30d": 37,
-    "ga4_users_30d": 28,
+    "ga4_views_30d": 38,
+    "ga4_users_30d": 29,
     "ga4_engagement_sec": 94.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -467,6 +494,15 @@
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 0.0
   },
+  "her": {
+    "ga4_views_30d": 1,
+    "ga4_users_30d": 1,
+    "ga4_engagement_sec": 14.0,
+    "gsc_clicks_30d": 0,
+    "gsc_impressions_30d": 0,
+    "gsc_ctr_pct": 0.0,
+    "gsc_avg_position": 0.0
+  },
   "inference_time_scaling": {
     "ga4_views_30d": 0,
     "ga4_users_30d": 0,
@@ -486,27 +522,27 @@
     "gsc_avg_position": 0.0
   },
   "john_von_neumann": {
-    "ga4_views_30d": 67,
-    "ga4_users_30d": 52,
-    "ga4_engagement_sec": 1631.0,
+    "ga4_views_30d": 71,
+    "ga4_users_30d": 56,
+    "ga4_engagement_sec": 1668.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 0.0
   },
   "kantorovich": {
-    "ga4_views_30d": 29,
-    "ga4_users_30d": 28,
-    "ga4_engagement_sec": 1179.0,
+    "ga4_views_30d": 30,
+    "ga4_users_30d": 29,
+    "ga4_engagement_sec": 1181.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 0.0
   },
   "kurt_godel": {
-    "ga4_views_30d": 7,
-    "ga4_users_30d": 3,
-    "ga4_engagement_sec": 560.0,
+    "ga4_views_30d": 21,
+    "ga4_users_30d": 13,
+    "ga4_engagement_sec": 698.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -522,8 +558,8 @@
     "gsc_avg_position": 0.0
   },
   "multiverse_computing": {
-    "ga4_views_30d": 13,
-    "ga4_users_30d": 13,
+    "ga4_views_30d": 14,
+    "ga4_users_30d": 14,
     "ga4_engagement_sec": 4.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -567,9 +603,9 @@
     "gsc_avg_position": 0.0
   },
   "oppenheimer": {
-    "ga4_views_30d": 26,
-    "ga4_users_30d": 20,
-    "ga4_engagement_sec": 170.0,
+    "ga4_views_30d": 28,
+    "ga4_users_30d": 23,
+    "ga4_engagement_sec": 198.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -630,8 +666,8 @@
     "gsc_avg_position": 0.0
   },
   "the-goal": {
-    "ga4_views_30d": 13,
-    "ga4_users_30d": 13,
+    "ga4_views_30d": 14,
+    "ga4_users_30d": 14,
     "ga4_engagement_sec": 6.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -639,9 +675,9 @@
     "gsc_avg_position": 0.0
   },
   "the_thinking_game": {
-    "ga4_views_30d": 12,
-    "ga4_users_30d": 13,
-    "ga4_engagement_sec": 125.0,
+    "ga4_views_30d": 14,
+    "ga4_users_30d": 14,
+    "ga4_engagement_sec": 161.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -692,15 +728,6 @@
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 0.0
   },
-  "control-operativo-pmbok-framework-cuantitativo": {
-    "ga4_views_30d": 0,
-    "ga4_users_30d": 0,
-    "ga4_engagement_sec": 0.0,
-    "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 0,
-    "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 0.0
-  },
   "cuadro-mando-evm-valor-ganado": {
     "ga4_views_30d": 0,
     "ga4_users_30d": 0,
@@ -711,18 +738,9 @@
     "gsc_avg_position": 0.0
   },
   "economia_oculta_ia": {
-    "ga4_views_30d": 8,
-    "ga4_users_30d": 8,
+    "ga4_views_30d": 9,
+    "ga4_users_30d": 9,
     "ga4_engagement_sec": 66.0,
-    "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 0,
-    "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 0.0
-  },
-  "estrategia-corporativa-mba-framework-cuantitativo": {
-    "ga4_views_30d": 0,
-    "ga4_users_30d": 0,
-    "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -927,9 +945,9 @@
     "gsc_avg_position": 0.0
   },
   "obs_parte7_dashboard": {
-    "ga4_views_30d": 6,
-    "ga4_users_30d": 5,
-    "ga4_engagement_sec": 22.0,
+    "ga4_views_30d": 7,
+    "ga4_users_30d": 6,
+    "ga4_engagement_sec": 25.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -972,9 +990,9 @@
     "gsc_avg_position": 0.0
   },
   "sop-ingenieria-parte4-enterprise": {
-    "ga4_views_30d": 12,
-    "ga4_users_30d": 12,
-    "ga4_engagement_sec": 37.0,
+    "ga4_views_30d": 13,
+    "ga4_users_30d": 13,
+    "ga4_engagement_sec": 39.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -1002,15 +1020,6 @@
     "ga4_views_30d": 6,
     "ga4_users_30d": 6,
     "ga4_engagement_sec": 28.0,
-    "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 0,
-    "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 0.0
-  },
-  "toma-decisiones-priorizacion-framework-cuantitativo": {
-    "ga4_views_30d": 0,
-    "ga4_users_30d": 0,
-    "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,

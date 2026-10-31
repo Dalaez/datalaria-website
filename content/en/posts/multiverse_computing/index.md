@@ -3,7 +3,7 @@ title: "Multiverse Computing: The Spanish Startup Solving AI's Bottleneck with Q
 date: 2026-01-31
 draft: false
 category: "Startups"
-categories: ["Artificial Intelligence", "Deep Tech", "Business Strategy", "Quantum Computing"]
+categories: ["Artificial Intelligence", "Deep Tech", "Business Strategy", "Quantum Computing", "Startups"]
 tags: ["Multiverse Computing", "Generative AI", "Model Compression", "Tensor Networks", "Quantum-Inspired", "LLM", "Startup", "Investment"]
 image: cover.png
 description: "Strategic analysis of Multiverse Computing, the Spanish startup that has raised $326M by applying quantum physics mathematics (Tensor Networks) to compress AI models on classical hardware, solving the critical problem of LLM cost and efficiency."

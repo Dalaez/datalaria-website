@@ -2,8 +2,8 @@
 title: "The Hidden Economics of AI: What It Actually Costs to Run LLMs in Production (With Real Data)"
 date: 2026-06-14
 draft: false
-category: "Technical Articles"
-categories: ["Artificial Intelligence", "Engineering", "Productivity"]
+category: "AI, Engineering & Projects"
+categories: ["Artificial Intelligence", "Engineering", "Productivity", "AI, Engineering & Projects"]
 tags: ["ai costs", "api pricing", "llm", "gemini", "openai", "claude", "production", "tokens", "crewai", "github actions"]
 description: "A real-world analysis of the costs of running large language models (LLMs) in production. API comparison of Gemini, GPT-4o and Claude with actual data from Datalaria's Autopilot and Obsolescence Engineering projects. A breakdown of the hidden cost iceberg."
 summary: "Everyone talks about what AI can do. Almost no one talks about what AI costs to do. After more than 6 months operating autonomous agents in production with Gemini, CrewAI and GitHub Actions, I open the books and break down every euro invested — and every surprise I found along the way."

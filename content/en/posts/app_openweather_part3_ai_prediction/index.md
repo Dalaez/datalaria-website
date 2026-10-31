@@ -1,9 +1,9 @@
 ---
 title: "Weather Service Project (Part 3): Predicting the Future with AI and OpenWeatherMap"
 date: 2025-11-15
-category: "Tech Projects"
+category: "AI, Engineering & Projects"
 draft: False
-categories: ["Projects", "AI", "Tools"]
+categories: ["Projects", "AI", "Tools", "AI, Engineering & Projects"]
 tags: ["machine-learning", "regression", "openweathermpa", "python", "pandas", "scikit-learn", "javascript", "frontend", "data-prediction", "weather-forecast", "serverless"]
 image: cover.png
 description: "The final installment of our Weather Service project. We dive into adding predictive capabilities, combining official OpenWeatherMap forecasts with our custom-built AI (Linear Regression) model to predict tomorrow's weather and visualize its accuracy."

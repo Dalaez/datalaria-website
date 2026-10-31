@@ -3,7 +3,7 @@ title: "Flywire: Cómo un Español Construyó desde Boston el Cerebro de los Pag
 date: 2026-07-25
 draft: false
 category: "Startups"
-categories: ["casos_exito"]
+categories: ["casos_exito", "Startups"]
 tags: ["flywire", "fintech", "pagos internacionales", "nasdaq", "startup española", "machine learning", "cross-border", "iker marcaide"]
 description: "La historia de Flywire (FLYW), el unicornio español cotizado en el Nasdaq que procesa miles de millones en pagos internacionales para educación, sanidad y viajes. Cómo Iker Marcaide convirtió un dolor de estudiante en MIT en una plataforma global que usa ML para optimizar cada transacción."
 summary: "Cuando un estudiante coreano intenta pagar la matrícula de una universidad en Madrid, se enfrenta a un laberinto de comisiones bancarias, tipos de cambio opacos y transferencias que tardan 5 días. Un ingeniero español en MIT decidió que eso era inaceptable. Hoy, su empresa Flywire cotiza en el Nasdaq, factura más de 600 millones de dólares y procesa pagos en 140 divisas usando machine learning para optimizar cada transacción."

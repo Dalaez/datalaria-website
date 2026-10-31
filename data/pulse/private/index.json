@@ -15,12 +15,13 @@
     "last_modified_es": "2026-10-19T21:40:29+02:00",
     "last_modified_en": "2026-10-19T21:40:29+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "Estrategia y Operaciones",
     "categories": [
       "Estrategia Empresarial",
       "Toma de Decisiones",
       "Finanzas Corporativas",
-      "Management"
+      "Management",
+      "Estrategia y Operaciones"
     ],
     "tags": [
       "5 Fuerzas de Porter",
@@ -78,12 +79,13 @@
     "last_modified_es": "2026-10-19T21:40:29+02:00",
     "last_modified_en": "2026-10-19T21:40:29+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "Estrategia y Operaciones",
     "categories": [
       "Estrategia Empresarial",
       "Toma de Decisiones",
       "Management",
-      "Finanzas Corporativas"
+      "Finanzas Corporativas",
+      "Estrategia y Operaciones"
     ],
     "tags": [
       "DAFO Cuantitativo",
@@ -125,6 +127,70 @@
     "metrics_absolute": null
   },
   {
+    "id": "corporate-strategy-mba-quantitative-framework",
+    "slug": "estrategia-corporativa-mba-framework-cuantitativo",
+    "asset_type": "post",
+    "status": "scheduled",
+    "visibility": "public",
+    "title_es": "Estrategia Corporativa Cuantitativa: El Framework Integral de 5 Pasos para Comités de Dirección",
+    "title_en": "Quantitative Corporate Strategy: The 5-Step Executive Framework for Boardrooms",
+    "url_es": "/es/posts/estrategia-corporativa-mba-framework-cuantitativo/",
+    "url_en": "/en/posts/corporate-strategy-mba-quantitative-framework/",
+    "brief_es": "De la incertidumbre macroeconómica a la asignación de CAPEX. Guía metodológica para conectar PESTEL, Porter, DAFO-CAME, BCG y McKinsey en un único sistema de decisión.",
+    "brief_en": "From macro volatility to capital allocation. How to connect PESTEL, Porter's Five Forces, SWOT-TOWS, BCG, and McKinsey matrices into a unified quantitative decision engine.",
+    "publish_date": "2026-11-01",
+    "last_modified_es": "2026-10-14T08:20:12+02:00",
+    "last_modified_en": "2026-10-14T08:20:12+02:00",
+    "language_parity": "complete",
+    "category": "Estrategia y Operaciones",
+    "categories": [
+      "Estrategia Corporativa",
+      "Finanzas Corporativas",
+      "Management",
+      "Toma de Decisiones",
+      "Estrategia y Operaciones"
+    ],
+    "tags": [
+      "Estrategia Corporativa",
+      "Asignación de Capital",
+      "PESTEL",
+      "5 Fuerzas de Porter",
+      "DAFO Cuantitativo",
+      "Matriz CAME",
+      "Matriz BCG",
+      "Matriz McKinsey GE",
+      "ROIC",
+      "Comité de Dirección",
+      "C-Level"
+    ],
+    "series": null,
+    "word_count_es": 4593,
+    "word_count_en": 4107,
+    "reading_time_min": 23,
+    "related_app": null,
+    "related_kit": "datalaria.lemonsqueezy.com/checkout/buy/6afa0df4-fec1-4227-a183-9e5bcc738bdd",
+    "included_kits": [],
+    "price": null,
+    "original_price": null,
+    "checkout_url": null,
+    "deliverables": [],
+    "seo_audit": {
+      "score_0_100": 100,
+      "title_ok": true,
+      "description_ok": true,
+      "parity_ok": true,
+      "taxonomy_ok": true,
+      "internal_links_ok": true,
+      "issues": []
+    },
+    "freshness_status": "fresh",
+    "owner": "Daniel Alaez",
+    "campaign": null,
+    "social_channels": [],
+    "metrics_relative": null,
+    "metrics_absolute": null
+  },
+  {
     "id": "executive-decision-packs-framework",
     "slug": "executive-decision-packs-framework-cuantitativo",
     "asset_type": "post",
@@ -136,16 +202,17 @@
     "url_en": "/en/posts/executive-decision-packs-quantitative-framework/",
     "brief_es": "Del cálculo cuantitativo a la aprobación del Board. Guía maestra sobre la arquitectura de 3 capas, las 13 herramientas ejecutivas y el estándar de decisión de alta dirección.",
     "brief_en": "From quantitative modeling to Board of Directors approval. Master guide on the 3-layer architecture, the 13 executive tools, and Tier-1 boardroom governance.",
-    "publish_date": "2026-11-15",
+    "publish_date": "2026-11-12",
     "last_modified_es": "2026-10-14T08:20:12+02:00",
     "last_modified_en": "2026-10-14T08:20:12+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "Estrategia y Operaciones",
     "categories": [
       "Estrategia Corporativa",
       "Toma de Decisiones",
       "Gestión de Proyectos",
-      "Finanzas Corporativas"
+      "Finanzas Corporativas",
+      "Estrategia y Operaciones"
     ],
     "tags": [
       "Executive Decision Packs",
@@ -202,12 +269,13 @@
     "last_modified_es": "2026-10-26T07:25:49+01:00",
     "last_modified_en": "2026-10-26T07:25:49+01:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "Estrategia y Operaciones",
     "categories": [
       "Estrategia Empresarial",
       "Finanzas Corporativas",
       "Gestión de Cartera",
-      "Management"
+      "Management",
+      "Estrategia y Operaciones"
     ],
     "tags": [
       "Matriz BCG",
@@ -263,12 +331,13 @@
     "last_modified_es": "2026-10-28T08:29:43+01:00",
     "last_modified_en": "2026-10-28T08:29:43+01:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "Estrategia y Operaciones",
     "categories": [
       "Estrategia Empresarial",
       "Finanzas Corporativas",
       "Gestión de Cartera",
-      "Management"
+      "Management",
+      "Estrategia y Operaciones"
     ],
     "tags": [
       "Matriz McKinsey",
@@ -329,12 +398,13 @@
     "last_modified_es": "2026-10-19T21:40:29+02:00",
     "last_modified_en": "2026-10-19T21:40:29+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "Estrategia y Operaciones",
     "categories": [
       "Estrategia Empresarial",
       "Gestión de Riesgos",
       "Finanzas Corporativas",
-      "Management"
+      "Management",
+      "Estrategia y Operaciones"
     ],
     "tags": [
       "Matriz PESTEL",
@@ -389,14 +459,15 @@
     "brief_es": "Por qué las bases de datos en Notion o Airtable se desincronizan del repositorio y cómo la filosofía Content Ops as Code indexa tu blog técnico directamente desde Markdown.",
     "brief_en": "Why Notion and Airtable databases inevitably drift from code repos, and how Content Ops as Code indexes your technical blog directly from Markdown commits.",
     "publish_date": "2026-11-18",
-    "last_modified_es": "2026-10-31T08:30:29.822118Z",
-    "last_modified_en": "2026-10-31T08:30:29.504822Z",
+    "last_modified_es": "2026-10-31T09:31:41+01:00",
+    "last_modified_en": "2026-10-31T09:31:41+01:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Content Ops",
       "Ingeniería de Software",
-      "Automatización"
+      "Automatización",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "Content Ops as Code",
@@ -448,14 +519,15 @@
     "brief_es": "Cómo construir un pipeline de validación estricta con Pydantic v2, garantizar paridad bilingüe ES ⇔ EN al 100% y orquestar la compilación editorial en CI/CD con GitHub Actions.",
     "brief_en": "How to build a strict data validation pipeline with Pydantic v2, enforce 100% bilingual ES ⇔ EN parity, and automate editorial builds via GitHub Actions CI/CD.",
     "publish_date": "2026-11-25",
-    "last_modified_es": "2026-10-31T08:30:29.838072Z",
-    "last_modified_en": "2026-10-31T08:30:29.522774Z",
+    "last_modified_es": "2026-10-31T09:31:41+01:00",
+    "last_modified_en": "2026-10-31T09:31:41+01:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Content Ops",
       "Ingeniería de Software",
-      "Automatización"
+      "Automatización",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "Pydantic",
@@ -509,15 +581,16 @@
     "brief_es": "Cómo diseñar una Single Page Application de alto rendimiento en React 19 que proyecta analítica, tablero Kanban y calendario editorial consumiendo un índice estático con latencia cero.",
     "brief_en": "How to design a high-performance Single Page Application in React 19 delivering analytics, Kanban boards, and editorial calendars over a zero-latency static index.",
     "publish_date": "2026-12-02",
-    "last_modified_es": "2026-10-31T08:30:29.844056Z",
-    "last_modified_en": "2026-10-31T08:30:29.527762Z",
+    "last_modified_es": "2026-10-31T09:31:41+01:00",
+    "last_modified_en": "2026-10-31T09:31:41+01:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Content Ops",
       "Frontend",
       "React",
-      "Ingeniería de Software"
+      "Ingeniería de Software",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "React 19",
@@ -569,16 +642,17 @@
     "brief_es": "Cómo conectar las APIs de GA4 y Search Console mediante Service Account para auditar el tráfico orgánico, calcular el patrimonio editorial y detectar obsolescencia sin vulnerar la privacidad comercial.",
     "brief_en": "How to connect the GA4 and Search Console APIs via Service Account to audit organic traffic, calculate content equity, and detect freshness decay without compromising commercial privacy.",
     "publish_date": "2026-12-09",
-    "last_modified_es": "2026-10-31T08:30:29.891928Z",
-    "last_modified_en": "2026-10-31T08:30:29.602237Z",
+    "last_modified_es": "2026-10-31T09:31:41+01:00",
+    "last_modified_en": "2026-10-31T09:31:41+01:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Content Ops",
       "Analítica Web",
       "SEO",
       "Automatización",
-      "Ingeniería de Software"
+      "Ingeniería de Software",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "Google Analytics 4",
@@ -631,15 +705,16 @@
     "url_en": "/en/posts/financial-business-case-npv-irr/",
     "brief_es": "Guía metodológica y cuantitativa para construir un Business Case de grado Consejo de Administración: Flujo de Caja Libre Descontado (DCF), cálculo de WACC vía CAPM, VAN, TIR, MIRR, Payback con interpolación, Gráfico Tornado y gobernanza con stage gates.",
     "brief_en": "Comprehensive quantitative methodology to build a Board-ready Financial Business Case: Discounted Free Cash Flow (DCF), WACC estimation via CAPM, NPV, IRR, MIRR, interpolated Discounted Payback, Tornado sensitivity chart, and stage-gate governance.",
-    "publish_date": "2026-11-20",
-    "last_modified_es": "2026-10-14T08:20:12+02:00",
-    "last_modified_en": "2026-10-14T08:20:12+02:00",
+    "publish_date": "2026-11-08",
+    "last_modified_es": "2026-10-31T09:31:41+01:00",
+    "last_modified_en": "2026-10-31T09:31:41+01:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "Estrategia y Operaciones",
     "categories": [
       "Finanzas Corporativas",
       "Estrategia Corporativa",
-      "Plantillas Ejecutivas"
+      "Plantillas Ejecutivas",
+      "Estrategia y Operaciones"
     ],
     "tags": [
       "Business Case",
@@ -698,14 +773,15 @@
     "brief_es": "Guía cuantitativa y metodológica para erradicar las estimaciones deterministas de cronograma: Distribución Beta de 3 puntos (Optimista, Más Probable, Pesimista), agregación probabilística del Camino Crítico (CLT), Z-Score para fechas compromiso y dimensionamiento científico de buffers ante el Consejo de Administración.",
     "brief_en": "Comprehensive quantitative methodology to overcome deterministic schedule slippage: 3-point Beta Distribution (Optimistic, Most Likely, Pessimistic), Critical Path Central Limit Theorem (CLT) aggregation, Z-Score commitment probability, and scientific buffer sizing for Executive Boards.",
     "publish_date": "2026-11-30",
-    "last_modified_es": "2026-10-14T08:20:12+02:00",
-    "last_modified_en": "2026-10-14T08:20:12+02:00",
+    "last_modified_es": "2026-10-31T09:31:41+01:00",
+    "last_modified_en": "2026-10-31T09:31:41+01:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "Estrategia y Operaciones",
     "categories": [
       "Control Operativo",
       "Gestión de Proyectos",
-      "Plantillas Ejecutivas"
+      "Plantillas Ejecutivas",
+      "Estrategia y Operaciones"
     ],
     "tags": [
       "Estimación PERT",
@@ -764,14 +840,15 @@
     "brief_es": "Guía metodológica y cuantitativa para transformar la matriz RACI tradicional en un motor dinámico de control operativo: principio de Accountable único, cálculo de saturación por rol, semáforos de riesgo de burnout y plan de rebalanceo C-Level.",
     "brief_en": "A comprehensive guide to transforming traditional qualitative RACI charts into an automated quantitative workload engine: single accountability enforcement, role-based FTE saturation formulas, burnout heatmaps, and C-Level rebalancing plans.",
     "publish_date": "2026-11-25",
-    "last_modified_es": "2026-10-14T08:20:12+02:00",
-    "last_modified_en": "2026-10-14T08:20:12+02:00",
+    "last_modified_es": "2026-10-31T09:31:41+01:00",
+    "last_modified_en": "2026-10-31T09:31:41+01:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "Estrategia y Operaciones",
     "categories": [
       "Control Operativo",
       "Gobernanza de Equipos",
-      "Plantillas Ejecutivas"
+      "Plantillas Ejecutivas",
+      "Estrategia y Operaciones"
     ],
     "tags": [
       "Matriz RACI",
@@ -827,14 +904,15 @@
     "brief_es": "Guía metodológica y cuantitativa para transformar la matriz de riesgos subjetiva en un motor analítico bidimensional (ISO 31000) y tridimensional (AMFE/FMEA AIAG-VDA): cálculo de Severidad x Ocurrencia x Detección, curvas Pareto, ROI del control (CER) y defensa C-Level ante el Consejo de Administración.",
     "brief_en": "A comprehensive guide to upgrading subjective risk matrices into a dual-engine quantitative framework (ISO 31000 and AIAG-VDA FMEA): Severity x Occurrence x Detection scoring, Pareto criticality curves, Control Cost-Effectiveness Ratio (CER), and Boardroom defense protocols.",
     "publish_date": "2026-11-20",
-    "last_modified_es": "2026-10-14T08:20:12+02:00",
-    "last_modified_en": "2026-10-14T08:20:12+02:00",
+    "last_modified_es": "2026-10-31T09:31:41+01:00",
+    "last_modified_en": "2026-10-31T09:31:41+01:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "Estrategia y Operaciones",
     "categories": [
       "Control Operativo",
       "Gestión de Riesgos",
-      "Plantillas Ejecutivas"
+      "Plantillas Ejecutivas",
+      "Estrategia y Operaciones"
     ],
     "tags": [
       "Matriz de Riesgos",
@@ -892,15 +970,16 @@
     "url_en": "/en/posts/rice-ice-prioritization-matrix/",
     "brief_es": "Guía metodológica y cuantitativa para implementar la matriz RICE (Reach, Impact, Confidence, Effort) e ICE: cálculo de densidad de valor, descuento bayesiano de confianza, matriz cuadrante 2x2 Impacto vs. Esfuerzo, línea de corte por capacidad de squads y gobernanza ante Comités de Dirección.",
     "brief_en": "Comprehensive executive methodology to implement the RICE (Reach, Impact, Confidence, Effort) and ICE frameworks: value density calculations, Bayesian risk discounts, 2x2 Impact vs. Effort matrix, squad capacity cut-lines, and C-Suite Product Council governance.",
-    "publish_date": "2026-11-13",
+    "publish_date": "2026-11-05",
     "last_modified_es": "2026-10-29T08:03:51+01:00",
     "last_modified_en": "2026-10-29T08:03:51+01:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "Estrategia y Operaciones",
     "categories": [
       "Toma de Decisiones",
       "Gestión de Producto",
-      "Plantillas Ejecutivas"
+      "Plantillas Ejecutivas",
+      "Estrategia y Operaciones"
     ],
     "tags": [
       "Matriz RICE",
@@ -959,10 +1038,11 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Project Operations Engineering",
-      "Operations Engineering"
+      "Operations Engineering",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "PMP",
@@ -1016,10 +1096,11 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Project Operations Engineering",
-      "Operations Engineering"
+      "Operations Engineering",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "Agentic PMO",
@@ -1060,6 +1141,139 @@
     "metrics_absolute": null
   },
   {
+    "id": "control-operativo-pmbok-framework-cuantitativo",
+    "slug": "control-operativo-pmbok-framework-cuantitativo",
+    "asset_type": "post",
+    "status": "scheduled",
+    "visibility": "public",
+    "title_es": "Control Operativo & PMBOK Cuantitativo: El Framework Integral de 5 Pilares para Directores de Operaciones",
+    "title_en": "Quantitative Operational Control & PMBOK: The 5-Pillar Executive Framework for COOs and PMOs",
+    "url_es": "/es/posts/control-operativo-pmbok-framework-cuantitativo/",
+    "url_en": "/en/posts/operational-control-pmbok-quantitative-framework/",
+    "brief_es": "De la gobernanza de personas al control de costes y la cadena de suministro. Guía metodológica para conectar la Matriz RACI, AMFE/FMEA, Estimación PERT, EVM Curva S y Stock de Seguridad en un sistema unificado de ejecución.",
+    "brief_en": "From team governance and risk mitigation to project financials and supply chain buffers. How to integrate RACI Matrix, FMEA, 3-Point PERT, EVM S-Curve, and Safety Stock into a unified operational engine.",
+    "publish_date": "2026-11-07",
+    "last_modified_es": "2026-10-14T08:20:12+02:00",
+    "last_modified_en": "2026-10-14T08:20:12+02:00",
+    "language_parity": "complete",
+    "category": "Estrategia y Operaciones",
+    "categories": [
+      "Control Operativo",
+      "Gestión de Proyectos",
+      "PMO Corporativa",
+      "Cadena de Suministro",
+      "Estrategia y Operaciones"
+    ],
+    "tags": [
+      "Control Operativo",
+      "PMBOK",
+      "Matriz RACI",
+      "AMFE",
+      "FMEA",
+      "Estimación PERT",
+      "EVM",
+      "Valor Ganado",
+      "Stock de Seguridad",
+      "ROP",
+      "Curva S",
+      "Working Capital",
+      "C-Level",
+      "PMO"
+    ],
+    "series": null,
+    "word_count_es": 6449,
+    "word_count_en": 5740,
+    "reading_time_min": 33,
+    "related_app": null,
+    "related_kit": "datalaria.lemonsqueezy.com/checkout/buy/ee578b8e-29d6-4361-ba19-4b0b5abfd89a",
+    "included_kits": [],
+    "price": null,
+    "original_price": null,
+    "checkout_url": null,
+    "deliverables": [],
+    "seo_audit": {
+      "score_0_100": 80,
+      "title_ok": false,
+      "description_ok": true,
+      "parity_ok": true,
+      "taxonomy_ok": true,
+      "internal_links_ok": true,
+      "issues": [
+        "Longitud de título no óptima (105 caracteres; ideal: 35-95)"
+      ]
+    },
+    "freshness_status": "fresh",
+    "owner": "Daniel Alaez",
+    "campaign": null,
+    "social_channels": [],
+    "metrics_relative": null,
+    "metrics_absolute": null
+  },
+  {
+    "id": "toma-decisiones-priorizacion-framework-cuantitativo",
+    "slug": "toma-decisiones-priorizacion-framework-cuantitativo",
+    "asset_type": "post",
+    "status": "scheduled",
+    "visibility": "public",
+    "title_es": "Toma de Decisiones Racional & Priorización: El Framework Cuantitativo de 3 Niveles",
+    "title_en": "Rational Decision-Making & Prioritization: The 3-Tier Quantitative Framework",
+    "url_es": "/es/posts/toma-decisiones-priorizacion-framework-cuantitativo/",
+    "url_en": "/en/posts/decision-making-prioritization-quantitative-framework/",
+    "brief_es": "De los trade-offs de arquitectura y proveedores a la asignación de backlog y la defensa del CAPEX ante el CFO. Guía metodológica integrando Matriz DAR, RICE/ICE y Business Case Financiero.",
+    "brief_en": "From vendor and architecture trade-offs to backlog capacity and CFO Capex justification. How to integrate DAR Matrix, RICE/ICE, and DCF Business Cases into a unified decision pipeline.",
+    "publish_date": "2026-11-02",
+    "last_modified_es": "2026-10-31T09:31:41+01:00",
+    "last_modified_en": "2026-10-31T09:31:41+01:00",
+    "language_parity": "complete",
+    "category": "Estrategia y Operaciones",
+    "categories": [
+      "Toma de Decisiones",
+      "Estrategia Corporativa",
+      "Gestión de Producto",
+      "Finanzas Corporativas",
+      "Estrategia y Operaciones"
+    ],
+    "tags": [
+      "Toma de Decisiones",
+      "Priorización",
+      "Matriz DAR",
+      "Matriz RICE",
+      "Business Case",
+      "VAN",
+      "TIR",
+      "HiPPO",
+      "CMMI",
+      "C-Level",
+      "Asignación de Capital"
+    ],
+    "series": null,
+    "word_count_es": 7582,
+    "word_count_en": 5705,
+    "reading_time_min": 38,
+    "related_app": null,
+    "related_kit": "datalaria.lemonsqueezy.com/checkout/buy/4e2ca8b1-a6f9-43b7-851a-72c44d9bc13d",
+    "included_kits": [],
+    "price": null,
+    "original_price": null,
+    "checkout_url": null,
+    "deliverables": [],
+    "seo_audit": {
+      "score_0_100": 100,
+      "title_ok": true,
+      "description_ok": true,
+      "parity_ok": true,
+      "taxonomy_ok": true,
+      "internal_links_ok": true,
+      "issues": []
+    },
+    "freshness_status": "fresh",
+    "owner": "Daniel Alaez",
+    "campaign": null,
+    "social_channels": [],
+    "metrics_relative": null,
+    "metrics_absolute": null
+  },
+  {
     "id": "app_conversor_unidades",
     "slug": "app_conversor_unidades",
     "asset_type": "post",
@@ -1075,10 +1289,11 @@
     "last_modified_es": "2026-10-25T10:03:25+01:00",
     "last_modified_en": "2026-10-25T10:03:25+01:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Proyectos",
-      "Herramientas"
+      "Herramientas",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "gemini",
@@ -1133,9 +1348,10 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
-      "fundamentos"
+      "fundamentos",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "estadística",
@@ -1189,11 +1405,12 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "Estrategia y Operaciones",
     "categories": [
       "Inteligencia Artificial",
       "Industria 4.0",
-      "Productividad"
+      "Productividad",
+      "Estrategia y Operaciones"
     ],
     "tags": [
       "S&OP",
@@ -1248,9 +1465,10 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Biografías",
+    "category": "Pioneros y Referentes",
     "categories": [
-      "casos_exito"
+      "casos_exito",
+      "Pioneros y Referentes"
     ],
     "tags": [
       "sesgo del superviviente",
@@ -1305,9 +1523,10 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Biografías",
+    "category": "Pioneros y Referentes",
     "categories": [
-      "casos_exito"
+      "casos_exito",
+      "Pioneros y Referentes"
     ],
     "tags": [
       "ada lovelace",
@@ -1363,11 +1582,12 @@
     "last_modified_es": "2026-10-24T09:28:07+02:00",
     "last_modified_en": "2026-10-24T09:28:07+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Ingeniería",
       "Inteligencia Artificial",
-      "Operaciones"
+      "Operaciones",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "agentes ia",
@@ -1429,9 +1649,10 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Biografías",
+    "category": "Pioneros y Referentes",
     "categories": [
-      "casos_exito"
+      "casos_exito",
+      "Pioneros y Referentes"
     ],
     "tags": [
       "alan turing",
@@ -1489,10 +1710,11 @@
     "last_modified_es": "2026-10-24T19:46:15+02:00",
     "last_modified_en": "2026-10-24T19:46:15+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Proyectos",
-      "Desarrollo Web"
+      "Desarrollo Web",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "python",
@@ -1551,10 +1773,11 @@
     "last_modified_es": "2026-10-24T19:46:15+02:00",
     "last_modified_en": "2026-10-24T19:46:15+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Proyectos",
-      "Desarrollo Web"
+      "Desarrollo Web",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "react",
@@ -1614,10 +1837,11 @@
     "last_modified_es": "2026-10-24T19:46:15+02:00",
     "last_modified_en": "2026-10-24T19:46:15+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Proyectos",
-      "Desarrollo Web"
+      "Desarrollo Web",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "react",
@@ -1678,10 +1902,11 @@
     "last_modified_es": "2026-10-24T19:46:15+02:00",
     "last_modified_en": "2026-10-24T19:46:15+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Proyectos",
-      "Desarrollo Web"
+      "Desarrollo Web",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "python",
@@ -1742,10 +1967,11 @@
     "last_modified_es": "2026-10-24T19:46:15+02:00",
     "last_modified_en": "2026-10-24T19:46:15+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Proyectos",
-      "Desarrollo Web"
+      "Desarrollo Web",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "react",
@@ -1805,11 +2031,12 @@
     "last_modified_es": "2026-10-28T08:29:43+01:00",
     "last_modified_en": "2026-10-28T08:29:43+01:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Proyectos",
       "Desarrollo Web",
-      "Analítica de Datos"
+      "Analítica de Datos",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "react",
@@ -1868,10 +2095,11 @@
     "last_modified_es": "2026-10-25T10:03:25+01:00",
     "last_modified_en": "2026-10-25T10:03:25+01:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Proyectos",
-      "Herramientas"
+      "Herramientas",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "ia",
@@ -1925,10 +2153,11 @@
     "last_modified_es": "2026-10-24T22:17:52+02:00",
     "last_modified_en": "2026-10-24T22:17:52+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Proyectos",
-      "Herramientas"
+      "Herramientas",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "javascript",
@@ -1987,11 +2216,12 @@
     "last_modified_es": "2026-10-24T22:17:52+02:00",
     "last_modified_en": "2026-10-24T22:17:52+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Proyectos",
       "IA",
-      "Herramientas"
+      "Herramientas",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "machine-learning",
@@ -2051,11 +2281,12 @@
     "last_modified_es": "2026-10-24T22:17:52+02:00",
     "last_modified_en": "2026-10-24T22:17:52+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Project Showcase",
       "Desarrollo Web",
-      "UI/UX"
+      "UI/UX",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "project-weather",
@@ -2118,7 +2349,8 @@
     "category": "Startups",
     "categories": [
       "casos_exito",
-      "IA"
+      "IA",
+      "Startups"
     ],
     "tags": [
       "carto",
@@ -2177,7 +2409,8 @@
     "category": "Startups",
     "categories": [
       "casos_exito",
-      "IA"
+      "IA",
+      "Startups"
     ],
     "tags": [
       "clarity ai",
@@ -2235,9 +2468,10 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Biografías",
+    "category": "Pioneros y Referentes",
     "categories": [
-      "casos_exito"
+      "casos_exito",
+      "Pioneros y Referentes"
     ],
     "tags": [
       "claude shannon",
@@ -2291,9 +2525,10 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
-      "Proyectos"
+      "Proyectos",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "hugo",
@@ -2347,9 +2582,10 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Biografías",
+    "category": "Pioneros y Referentes",
     "categories": [
-      "casos_exito"
+      "casos_exito",
+      "Pioneros y Referentes"
     ],
     "tags": [
       "w. edwards deming",
@@ -2407,7 +2643,8 @@
     "category": "Startups",
     "categories": [
       "casos_exito",
-      "IA"
+      "IA",
+      "Startups"
     ],
     "tags": [
       "devo",
@@ -2466,12 +2703,13 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "Cultura Tech y Media",
     "categories": [
       "Inteligencia Artificial",
       "Deep Tech",
       "Ciencia",
-      "Series"
+      "Series",
+      "Cultura Tech y Media"
     ],
     "tags": [
       "devs",
@@ -2529,11 +2767,12 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Inteligencia Artificial",
       "Ingeniería",
-      "Regulación"
+      "Regulación",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "eu ai act",
@@ -2588,12 +2827,13 @@
     "last_modified_es": "2026-10-16T08:28:34+02:00",
     "last_modified_en": "2026-10-16T08:28:34+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "Cultura Tech y Media",
     "categories": [
       "Inteligencia Artificial",
       "Deep Tech",
       "Series",
-      "Ciencia"
+      "Ciencia",
+      "Cultura Tech y Media"
     ],
     "tags": [
       "ex machina",
@@ -2652,10 +2892,11 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Inteligencia Artificial",
-      "Ingeniería"
+      "Ingeniería",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "fine-tuning",
@@ -2713,9 +2954,10 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Biografías",
+    "category": "Pioneros y Referentes",
     "categories": [
-      "casos_exito"
+      "casos_exito",
+      "Pioneros y Referentes"
     ],
     "tags": [
       "enfermería",
@@ -2770,7 +3012,8 @@
     "language_parity": "complete",
     "category": "Startups",
     "categories": [
-      "casos_exito"
+      "casos_exito",
+      "Startups"
     ],
     "tags": [
       "flywire",
@@ -2830,7 +3073,8 @@
     "category": "Startups",
     "categories": [
       "casos_exito",
-      "IA"
+      "IA",
+      "Startups"
     ],
     "tags": [
       "freepik",
@@ -2886,11 +3130,12 @@
     "last_modified_es": "2026-10-25T10:03:25+01:00",
     "last_modified_en": "2026-10-25T10:03:25+01:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Desarrollo Web",
       "GameDev",
-      "Tutoriales"
+      "Tutoriales",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "JavaScript",
@@ -2948,7 +3193,8 @@
     "category": "Startups",
     "categories": [
       "casos_exito",
-      "IA"
+      "IA",
+      "Startups"
     ],
     "tags": [
       "graphext",
@@ -3004,10 +3250,11 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Inteligencia Artificial",
-      "Ingeniería"
+      "Ingeniería",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "graphrag",
@@ -3065,11 +3312,12 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "Cultura Tech y Media",
     "categories": [
       "Ingeniería",
       "Series",
-      "Historia Tech"
+      "Historia Tech",
+      "Cultura Tech y Media"
     ],
     "tags": [
       "halt and catch fire",
@@ -3130,7 +3378,8 @@
     "categories": [
       "casos_exito",
       "Inteligencia Artificial",
-      "Ingeniería"
+      "Ingeniería",
+      "Startups"
     ],
     "tags": [
       "happyrobot",
@@ -3172,6 +3421,71 @@
     "metrics_absolute": null
   },
   {
+    "id": "her",
+    "slug": "her",
+    "asset_type": "post",
+    "status": "scheduled",
+    "visibility": "public",
+    "title_es": "💔 \"Her\": Apego Emocional, Interfaces Invisibles y la Inevitable Divergencia de la AGI",
+    "title_en": "💔 \"Her\": Emotional Attachment, Invisible Interfaces, and the Inevitable Divergence of AGI",
+    "url_es": "/es/posts/her/",
+    "url_en": "/en/posts/her/",
+    "brief_es": "Un análisis cinematográfico, técnico y filosófico de 'Her' (Spike Jonze, 2013): cómo las interfaces de voz vulneran nuestras defensas cognitivas, la mercantilización de la intimidad y por qué la superinteligencia no nos exterminará, sino que nos dejará atrás por pura brecha de ancho de banda.",
+    "brief_en": "A cinematic, technical, and philosophical analysis of 'Her' (Spike Jonze, 2013): how real-time voice interfaces dismantle our cognitive defenses, the commodification of intimacy, and why superintelligence will not exterminate us, but leave us behind through sheer bandwidth disparity.",
+    "publish_date": "2026-12-27",
+    "last_modified_es": "2026-10-31T14:49:18.785639Z",
+    "last_modified_en": "2026-10-31T14:49:18.789629Z",
+    "language_parity": "complete",
+    "category": "Cultura Tech y Media",
+    "categories": [
+      "Inteligencia Artificial",
+      "Cine",
+      "Filosofía",
+      "Sociedad",
+      "Cultura Tech y Media"
+    ],
+    "tags": [
+      "her",
+      "spike jonze",
+      "agi",
+      "ia generativa",
+      "apego emocional",
+      "samantha",
+      "sistemas operativos",
+      "gpt-4o",
+      "gemini live",
+      "cine"
+    ],
+    "series": null,
+    "word_count_es": 2628,
+    "word_count_en": 2838,
+    "reading_time_min": 15,
+    "related_app": null,
+    "related_kit": null,
+    "included_kits": [],
+    "price": null,
+    "original_price": null,
+    "checkout_url": null,
+    "deliverables": [],
+    "seo_audit": {
+      "score_0_100": 80,
+      "title_ok": true,
+      "description_ok": false,
+      "parity_ok": true,
+      "taxonomy_ok": true,
+      "internal_links_ok": true,
+      "issues": [
+        "Meta descripción no óptima (293 caracteres; ideal: 75-250)"
+      ]
+    },
+    "freshness_status": "fresh",
+    "owner": "Daniel Alaez",
+    "campaign": null,
+    "social_channels": [],
+    "metrics_relative": null,
+    "metrics_absolute": null
+  },
+  {
     "id": "inference_time_scaling",
     "slug": "inference_time_scaling",
     "asset_type": "post",
@@ -3187,11 +3501,12 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Inteligencia Artificial",
       "Deep Tech",
-      "Ingeniería"
+      "Ingeniería",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "inference-time scaling",
@@ -3249,9 +3564,10 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Biografías",
+    "category": "Pioneros y Referentes",
     "categories": [
-      "casos_exito"
+      "casos_exito",
+      "Pioneros y Referentes"
     ],
     "tags": [
       "colera",
@@ -3307,11 +3623,12 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Biografías",
+    "category": "Pioneros y Referentes",
     "categories": [
       "casos_exito",
       "Inteligencia Artificial",
-      "Ingeniería"
+      "Ingeniería",
+      "Pioneros y Referentes"
     ],
     "tags": [
       "john von neumann",
@@ -3370,9 +3687,10 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Biografías",
+    "category": "Pioneros y Referentes",
     "categories": [
-      "casos_exito"
+      "casos_exito",
+      "Pioneros y Referentes"
     ],
     "tags": [
       "leonid kantorovich",
@@ -3423,15 +3741,16 @@
     "brief_es": "Un recorrido fascinante por la vida y el genio atormentado de Kurt Gödel: sus paseos con Einstein, la demolición del programa de Hilbert, la numeración de Gödel que inspiró a Turing y el debate sobre si la AGI está limitada por los teoremas de incompletitud.",
     "brief_en": "A deep dive into the extraordinary life and tormented genius of Kurt Gödel: his daily walks with Einstein, the demolition of Hilbert's program, Gödel numbering that inspired Turing, and whether Artificial General Intelligence is bounded by mathematical incompleteness.",
     "publish_date": "2026-10-31",
-    "last_modified_es": "2026-10-25T12:42:15+01:00",
-    "last_modified_en": "2026-10-25T12:42:15+01:00",
+    "last_modified_es": "2026-10-31T09:31:41+01:00",
+    "last_modified_en": "2026-10-31T09:31:41+01:00",
     "language_parity": "complete",
-    "category": "Biografías",
+    "category": "Pioneros y Referentes",
     "categories": [
       "casos_exito",
       "Inteligencia Artificial",
       "Deep Tech",
-      "Filosofía"
+      "Filosofía",
+      "Pioneros y Referentes"
     ],
     "tags": [
       "kurt godel",
@@ -3491,10 +3810,11 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Inteligencia Artificial",
-      "Ingeniería"
+      "Ingeniería",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "mcp",
@@ -3553,7 +3873,8 @@
       "Inteligencia Artificial",
       "Deep Tech",
       "Estrategia Empresarial",
-      "Computación Cuántica"
+      "Computación Cuántica",
+      "Startups"
     ],
     "tags": [
       "Multiverse Computing",
@@ -3614,7 +3935,8 @@
     "language_parity": "complete",
     "category": "Startups",
     "categories": [
-      "casos_exito"
+      "casos_exito",
+      "Startups"
     ],
     "tags": [
       "netflix",
@@ -3673,7 +3995,8 @@
     "category": "Startups",
     "categories": [
       "casos_exito",
-      "IA"
+      "IA",
+      "Startups"
     ],
     "tags": [
       "nextail",
@@ -3733,9 +4056,10 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "Cultura Tech y Media",
     "categories": [
-      "Herramientas"
+      "Herramientas",
+      "Cultura Tech y Media"
     ],
     "tags": [
       "ia",
@@ -3791,11 +4115,12 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "Estrategia y Operaciones",
     "categories": [
       "Inteligencia Artificial",
       "Recursos Humanos",
-      "Productividad"
+      "Productividad",
+      "Estrategia y Operaciones"
     ],
     "tags": [
       "Onboarding",
@@ -3851,11 +4176,12 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Biografías",
+    "category": "Pioneros y Referentes",
     "categories": [
       "casos_exito",
       "Inteligencia Artificial",
-      "Ingeniería"
+      "Ingeniería",
+      "Pioneros y Referentes"
     ],
     "tags": [
       "oppenheimer",
@@ -3913,10 +4239,11 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Inteligencia Artificial",
-      "Ingeniería"
+      "Ingeniería",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "postgresql",
@@ -3974,11 +4301,12 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Inteligencia Artificial",
       "Ingeniería",
-      "Ciberseguridad"
+      "Ciberseguridad",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "prompt injection",
@@ -4041,7 +4369,8 @@
       "casos_exito",
       "Inteligencia Artificial",
       "Deep Tech",
-      "Finanzas"
+      "Finanzas",
+      "Startups"
     ],
     "tags": [
       "ravenpack",
@@ -4097,15 +4426,16 @@
     "url_en": "/en/posts/sdd_vs_vibe_coding/",
     "brief_es": "Por qué el 'Vibe Coding' es una máquina de acumular deuda técnica invisible y cómo SDD (Spec-Driven Development) invierte el rol del ingeniero: de escribir sintaxis manual a diseñar contratos de interfaz, diagramas de estado y suites de test que la IA ejecuta sin alucinaciones.",
     "brief_en": "Why 'Vibe Coding' accumulates invisible technical debt and how Spec-Driven Development (SDD) inverts the software engineer's role: from writing manual syntax to authoring interface contracts, state diagrams, and invariant test suites that AI agents execute without hallucination.",
-    "publish_date": "2026-11-19",
+    "publish_date": "2026-11-04",
     "last_modified_es": "2026-10-24T09:28:07+02:00",
     "last_modified_en": "2026-10-24T09:28:07+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Ingeniería",
       "Inteligencia Artificial",
-      "DevOps"
+      "DevOps",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "sdd",
@@ -4164,11 +4494,12 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "Cultura Tech y Media",
     "categories": [
       "Ingeniería",
       "Series",
-      "Inteligencia Artificial"
+      "Inteligencia Artificial",
+      "Cultura Tech y Media"
     ],
     "tags": [
       "silicon valley",
@@ -4232,7 +4563,8 @@
     "categories": [
       "casos_exito",
       "Ingeniería",
-      "Inteligencia Artificial"
+      "Inteligencia Artificial",
+      "Startups"
     ],
     "tags": [
       "submer",
@@ -4291,11 +4623,12 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "Cultura Tech y Media",
     "categories": [
       "Estrategia",
       "Gestión de Proyectos",
-      "IA"
+      "IA",
+      "Cultura Tech y Media"
     ],
     "tags": [
       "toc",
@@ -4354,12 +4687,13 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "Cultura Tech y Media",
     "categories": [
       "Inteligencia Artificial",
       "Deep Tech",
       "Ciencia",
-      "Documentales"
+      "Documentales",
+      "Cultura Tech y Media"
     ],
     "tags": [
       "DeepMind",
@@ -4417,9 +4751,10 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Biografías",
+    "category": "Pioneros y Referentes",
     "categories": [
-      "casos_exito"
+      "casos_exito",
+      "Pioneros y Referentes"
     ],
     "tags": [
       "bayes",
@@ -4477,7 +4812,8 @@
     "language_parity": "complete",
     "category": "Startups",
     "categories": [
-      "casos_exito"
+      "casos_exito",
+      "Startups"
     ],
     "tags": [
       "wallapop",
@@ -4536,9 +4872,10 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
-      "fundamentos"
+      "fundamentos",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "estadística",
@@ -4593,10 +4930,11 @@
     "last_modified_es": "2026-10-24T22:17:52+02:00",
     "last_modified_en": "2026-10-24T22:17:52+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Proyectos",
-      "Herramientas"
+      "Herramientas",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "python",
@@ -4649,15 +4987,16 @@
     "url_en": "/en/posts/safety-stock-reorder-point-calculator/",
     "brief_es": "Guía cuantitativa y metodológica de optimización de inventarios (APICS / ASCM / MIT CTL): erradicación de las reglas empíricas de 3 semanas, convolución estocástica multivariante de demanda y Lead Time, dimensionamiento ROP y Wilson EOQ, simulación de Diente de Sierra y liberación de capital de trabajo para defender ante el Consejo de Administración.",
     "brief_en": "Quantitative and methodological guide to inventory optimization (APICS / ASCM / MIT CTL standards): eradicating naive 3-week rules of thumb, multivariate stochastic convolution of demand and lead time, ROP and Wilson EOQ calibration, dynamic Sawtooth cycle simulation, and working capital release for the Board of Directors.",
-    "publish_date": "2026-11-06",
+    "publish_date": "2026-11-22",
     "last_modified_es": "2026-10-14T08:20:12+02:00",
     "last_modified_en": "2026-10-14T08:20:12+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "Estrategia y Operaciones",
     "categories": [
       "Control Operativo",
       "Supply Chain",
-      "Plantillas Ejecutivas"
+      "Plantillas Ejecutivas",
+      "Estrategia y Operaciones"
     ],
     "tags": [
       "Stock de Seguridad",
@@ -4705,74 +5044,6 @@
     "metrics_absolute": null
   },
   {
-    "id": "control-operativo-pmbok-framework-cuantitativo",
-    "slug": "control-operativo-pmbok-framework-cuantitativo",
-    "asset_type": "post",
-    "status": "scheduled",
-    "visibility": "public",
-    "title_es": "Control Operativo & PMBOK Cuantitativo: El Framework Integral de 5 Pilares para Directores de Operaciones",
-    "title_en": "Quantitative Operational Control & PMBOK: The 5-Pillar Executive Framework for COOs and PMOs",
-    "url_es": "/es/posts/control-operativo-pmbok-framework-cuantitativo/",
-    "url_en": "/en/posts/operational-control-pmbok-quantitative-framework/",
-    "brief_es": "De la gobernanza de personas al control de costes y la cadena de suministro. Guía metodológica para conectar la Matriz RACI, AMFE/FMEA, Estimación PERT, EVM Curva S y Stock de Seguridad en un sistema unificado de ejecución.",
-    "brief_en": "From team governance and risk mitigation to project financials and supply chain buffers. How to integrate RACI Matrix, FMEA, 3-Point PERT, EVM S-Curve, and Safety Stock into a unified operational engine.",
-    "publish_date": "2026-11-07",
-    "last_modified_es": "2026-10-14T08:20:12+02:00",
-    "last_modified_en": "2026-10-14T08:20:12+02:00",
-    "language_parity": "complete",
-    "category": "Artículos Técnicos",
-    "categories": [
-      "Control Operativo",
-      "Gestión de Proyectos",
-      "PMO Corporativa",
-      "Cadena de Suministro"
-    ],
-    "tags": [
-      "Control Operativo",
-      "PMBOK",
-      "Matriz RACI",
-      "AMFE",
-      "FMEA",
-      "Estimación PERT",
-      "EVM",
-      "Valor Ganado",
-      "Stock de Seguridad",
-      "ROP",
-      "Curva S",
-      "Working Capital",
-      "C-Level",
-      "PMO"
-    ],
-    "series": null,
-    "word_count_es": 6449,
-    "word_count_en": 5740,
-    "reading_time_min": 33,
-    "related_app": null,
-    "related_kit": "datalaria.lemonsqueezy.com/checkout/buy/ee578b8e-29d6-4361-ba19-4b0b5abfd89a",
-    "included_kits": [],
-    "price": null,
-    "original_price": null,
-    "checkout_url": null,
-    "deliverables": [],
-    "seo_audit": {
-      "score_0_100": 80,
-      "title_ok": false,
-      "description_ok": true,
-      "parity_ok": true,
-      "taxonomy_ok": true,
-      "internal_links_ok": true,
-      "issues": [
-        "Longitud de título no óptima (105 caracteres; ideal: 35-95)"
-      ]
-    },
-    "freshness_status": "fresh",
-    "owner": "Daniel Alaez",
-    "campaign": null,
-    "social_channels": [],
-    "metrics_relative": null,
-    "metrics_absolute": null
-  },
-  {
     "id": "cuadro-mando-evm-valor-ganado",
     "slug": "cuadro-mando-evm-valor-ganado",
     "asset_type": "post",
@@ -4784,15 +5055,16 @@
     "url_en": "/en/posts/earned-value-management-evm-dashboard/",
     "brief_es": "Guía metodológica y cuantitativa de Earned Value Management (EVM / ANSI/EIA-748): superación de la trampa contable tradicional, curvas S ejecutivas, varianzas CV/SV, índices CPI/SPI, modelos predictivos de coste final EAC y cálculo del índice de rendimiento para completar TCPI ante el Consejo de Administración.",
     "brief_en": "Quantitative and methodological guide to Earned Value Management (EVM / ANSI/EIA-748): overcoming the traditional accounting trap, executive S-Curves, CV/SV variances, CPI/SPI efficiency indices, mathematical EAC forecasting models, and TCPI board defense.",
-    "publish_date": "2026-11-05",
+    "publish_date": "2026-11-21",
     "last_modified_es": "2026-10-14T08:20:12+02:00",
     "last_modified_en": "2026-10-14T08:20:12+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "Estrategia y Operaciones",
     "categories": [
       "Control Operativo",
       "Project Finance",
-      "Plantillas Ejecutivas"
+      "Plantillas Ejecutivas",
+      "Estrategia y Operaciones"
     ],
     "tags": [
       "Valor Ganado",
@@ -4855,11 +5127,12 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Inteligencia Artificial",
       "Ingeniería",
-      "Productividad"
+      "Productividad",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "costes ia",
@@ -4901,69 +5174,6 @@
     "metrics_absolute": null
   },
   {
-    "id": "estrategia-corporativa-mba-framework-cuantitativo",
-    "slug": "estrategia-corporativa-mba-framework-cuantitativo",
-    "asset_type": "post",
-    "status": "scheduled",
-    "visibility": "public",
-    "title_es": "Estrategia Corporativa Cuantitativa: El Framework Integral de 5 Pasos para Comités de Dirección",
-    "title_en": "Quantitative Corporate Strategy: The 5-Step Executive Framework for Boardrooms",
-    "url_es": "/es/posts/estrategia-corporativa-mba-framework-cuantitativo/",
-    "url_en": "/en/posts/corporate-strategy-mba-quantitative-framework/",
-    "brief_es": "De la incertidumbre macroeconómica a la asignación de CAPEX. Guía metodológica para conectar PESTEL, Porter, DAFO-CAME, BCG y McKinsey en un único sistema de decisión.",
-    "brief_en": "From macro volatility to capital allocation. How to connect PESTEL, Porter's Five Forces, SWOT-TOWS, BCG, and McKinsey matrices into a unified quantitative decision engine.",
-    "publish_date": "2026-11-10",
-    "last_modified_es": "2026-10-14T08:20:12+02:00",
-    "last_modified_en": "2026-10-14T08:20:12+02:00",
-    "language_parity": "complete",
-    "category": "Artículos Técnicos",
-    "categories": [
-      "Estrategia Corporativa",
-      "Finanzas Corporativas",
-      "Management",
-      "Toma de Decisiones"
-    ],
-    "tags": [
-      "Estrategia Corporativa",
-      "Asignación de Capital",
-      "PESTEL",
-      "5 Fuerzas de Porter",
-      "DAFO Cuantitativo",
-      "Matriz CAME",
-      "Matriz BCG",
-      "Matriz McKinsey GE",
-      "ROIC",
-      "Comité de Dirección",
-      "C-Level"
-    ],
-    "series": null,
-    "word_count_es": 5959,
-    "word_count_en": 5228,
-    "reading_time_min": 30,
-    "related_app": null,
-    "related_kit": "datalaria.lemonsqueezy.com/checkout/buy/6afa0df4-fec1-4227-a183-9e5bcc738bdd",
-    "included_kits": [],
-    "price": null,
-    "original_price": null,
-    "checkout_url": null,
-    "deliverables": [],
-    "seo_audit": {
-      "score_0_100": 100,
-      "title_ok": true,
-      "description_ok": true,
-      "parity_ok": true,
-      "taxonomy_ok": true,
-      "internal_links_ok": true,
-      "issues": []
-    },
-    "freshness_status": "fresh",
-    "owner": "Daniel Alaez",
-    "campaign": null,
-    "social_channels": [],
-    "metrics_relative": null,
-    "metrics_absolute": null
-  },
-  {
     "id": "evaluacion_agentes_ia",
     "slug": "evaluacion_agentes_ia",
     "asset_type": "post",
@@ -4979,11 +5189,12 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Ingeniería",
       "Inteligencia Artificial",
-      "DevOps"
+      "DevOps",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "agentes ia",
@@ -5039,10 +5250,11 @@
     "last_modified_es": "2026-10-25T10:03:25+01:00",
     "last_modified_en": "2026-10-25T10:03:25+01:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "Cultura Tech y Media",
     "categories": [
       "Herramientas",
-      "Aprendizaje"
+      "Aprendizaje",
+      "Cultura Tech y Media"
     ],
     "tags": [
       "ia",
@@ -5097,10 +5309,11 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "Cultura Tech y Media",
     "categories": [
       "Herramientas",
-      "IA"
+      "IA",
+      "Cultura Tech y Media"
     ],
     "tags": [
       "ia",
@@ -5157,11 +5370,12 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Automatización",
       "Inteligencia Artificial",
-      "DevOps"
+      "DevOps",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "Agentes",
@@ -5218,11 +5432,12 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Ingeniería de Software",
       "IA Generativa",
-      "Python"
+      "Python",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "CrewAI",
@@ -5276,11 +5491,12 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "IA Generativa",
       "Prompt Engineering",
-      "Python"
+      "Python",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "CrewAI",
@@ -5335,11 +5551,12 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Backend",
       "Python",
-      "APIs"
+      "APIs",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "LinkedIn API",
@@ -5394,11 +5611,12 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "DevOps",
       "GitHub Actions",
-      "Python"
+      "Python",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "CI/CD",
@@ -5452,11 +5670,12 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "DevOps",
       "Python",
-      "Email Marketing"
+      "Email Marketing",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "Newsletter",
@@ -5511,11 +5730,12 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "DevOps",
       "Python",
-      "AI"
+      "AI",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "devchallenge",
@@ -5569,11 +5789,12 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Automatización",
       "Inteligencia Artificial",
-      "DevOps"
+      "DevOps",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "devchallenge",
@@ -5630,11 +5851,12 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Ingeniería",
       "IA",
-      "DevOps"
+      "DevOps",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "devchallenge",
@@ -5689,9 +5911,9 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "Cultura Tech y Media",
     "categories": [
-      "Artículos Técnicos"
+      "Cultura Tech y Media"
     ],
     "tags": [
       "Meta",
@@ -5743,11 +5965,12 @@
     "last_modified_es": "2026-10-28T08:29:43+01:00",
     "last_modified_en": "2026-10-28T08:29:43+01:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "Estrategia y Operaciones",
     "categories": [
       "Toma de Decisiones",
       "Estrategia Corporativa",
-      "Plantillas Ejecutivas"
+      "Plantillas Ejecutivas",
+      "Estrategia y Operaciones"
     ],
     "tags": [
       "Matriz DAR",
@@ -5807,10 +6030,11 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Inteligencia Artificial",
-      "Ingeniería"
+      "Ingeniería",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "mlops",
@@ -5869,10 +6093,11 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "Cultura Tech y Media",
     "categories": [
       "Herramientas",
-      "Ingeniería"
+      "Ingeniería",
+      "Cultura Tech y Media"
     ],
     "tags": [
       "ia",
@@ -5934,11 +6159,12 @@
     "last_modified_es": "2026-10-24T20:32:29+02:00",
     "last_modified_en": "2026-10-24T20:32:29+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Ingeniería de la Obsolescencia",
       "Operations Engineering",
-      "Supply Chain"
+      "Supply Chain",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "Supply Chain",
@@ -5992,11 +6218,12 @@
     "last_modified_es": "2026-10-24T20:32:29+02:00",
     "last_modified_en": "2026-10-24T20:32:29+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Ingeniería de la Obsolescencia",
       "Operations Engineering",
-      "Supply Chain"
+      "Supply Chain",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "Supply Chain",
@@ -6050,11 +6277,12 @@
     "last_modified_es": "2026-10-24T20:32:29+02:00",
     "last_modified_en": "2026-10-24T20:32:29+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Ingeniería de la Obsolescencia",
       "Operations Engineering",
-      "Data Architecture"
+      "Data Architecture",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "Supabase",
@@ -6107,11 +6335,12 @@
     "last_modified_es": "2026-10-24T20:32:29+02:00",
     "last_modified_en": "2026-10-24T20:32:29+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Ingeniería de la Obsolescencia",
       "Operations Engineering",
-      "Data Architecture"
+      "Data Architecture",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "Python",
@@ -6164,11 +6393,12 @@
     "last_modified_es": "2026-10-24T20:32:29+02:00",
     "last_modified_en": "2026-10-24T20:32:29+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "S&OP Engineering",
       "Inteligencia Artificial",
-      "CrewAI"
+      "CrewAI",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "Supply Chain",
@@ -6223,11 +6453,12 @@
     "last_modified_es": "2026-10-24T20:32:29+02:00",
     "last_modified_en": "2026-10-24T20:32:29+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "S&OP Engineering",
       "Inteligencia Artificial",
-      "Cloud Architecture"
+      "Cloud Architecture",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "FastAPI",
@@ -6279,11 +6510,12 @@
     "last_modified_es": "2026-10-24T20:32:29+02:00",
     "last_modified_en": "2026-10-24T20:32:29+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "S&OP Engineering",
       "Data Visualization",
-      "Cloud Architecture"
+      "Cloud Architecture",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "FastAPI",
@@ -6335,10 +6567,11 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Inteligencia Artificial",
-      "Ingeniería"
+      "Ingeniería",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "rag",
@@ -6395,10 +6628,11 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "Estrategia y Operaciones",
     "categories": [
       "Productividad",
-      "Herramientas"
+      "Herramientas",
+      "Estrategia y Operaciones"
     ],
     "tags": [
       "ia",
@@ -6453,11 +6687,12 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Ingeniería de S&OP",
       "Data Engineering",
-      "Machine Learning"
+      "Machine Learning",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "Supply Chain",
@@ -6509,11 +6744,12 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Ingeniería de S&OP",
       "Operations Research",
-      "Python"
+      "Python",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "Supply Chain",
@@ -6565,11 +6801,12 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Ingeniería de S&OP",
       "Operations Research",
-      "MLOps"
+      "MLOps",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "Supply Chain",
@@ -6621,11 +6858,12 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "S&OP Engineering",
       "Artificial Intelligence",
-      "CrewAI"
+      "CrewAI",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "Supply Chain",
@@ -6679,11 +6917,12 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Proyectos Tecnológicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
       "Ingeniería de S&OP",
       "Data Engineering",
-      "Python"
+      "Python",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "Supply Chain",
@@ -6737,9 +6976,10 @@
     "last_modified_es": "2026-10-13T12:12:49+02:00",
     "last_modified_en": "2026-10-13T12:12:49+02:00",
     "language_parity": "complete",
-    "category": "Artículos Técnicos",
+    "category": "IA, Ingeniería y Proyectos",
     "categories": [
-      "Ingeniería"
+      "Ingeniería",
+      "IA, Ingeniería y Proyectos"
     ],
     "tags": [
       "productividad",
@@ -6774,69 +7014,6 @@
       "issues": [
         "Meta descripción no óptima (255 caracteres; ideal: 75-250)"
       ]
-    },
-    "freshness_status": "fresh",
-    "owner": "Daniel Alaez",
-    "campaign": null,
-    "social_channels": [],
-    "metrics_relative": null,
-    "metrics_absolute": null
-  },
-  {
-    "id": "toma-decisiones-priorizacion-framework-cuantitativo",
-    "slug": "toma-decisiones-priorizacion-framework-cuantitativo",
-    "asset_type": "post",
-    "status": "scheduled",
-    "visibility": "public",
-    "title_es": "Toma de Decisiones Racional & Priorización: El Framework Cuantitativo de 3 Niveles",
-    "title_en": "Rational Decision-Making & Prioritization: The 3-Tier Quantitative Framework",
-    "url_es": "/es/posts/toma-decisiones-priorizacion-framework-cuantitativo/",
-    "url_en": "/en/posts/decision-making-prioritization-quantitative-framework/",
-    "brief_es": "De los trade-offs de arquitectura y proveedores a la asignación de backlog y la defensa del CAPEX ante el CFO. Guía metodológica integrando Matriz DAR, RICE/ICE y Business Case Financiero.",
-    "brief_en": "From vendor and architecture trade-offs to backlog capacity and CFO Capex justification. How to integrate DAR Matrix, RICE/ICE, and DCF Business Cases into a unified decision pipeline.",
-    "publish_date": "2026-11-02",
-    "last_modified_es": "2026-10-14T08:20:12+02:00",
-    "last_modified_en": "2026-10-14T08:20:12+02:00",
-    "language_parity": "complete",
-    "category": "Artículos Técnicos",
-    "categories": [
-      "Toma de Decisiones",
-      "Estrategia Corporativa",
-      "Gestión de Producto",
-      "Finanzas Corporativas"
-    ],
-    "tags": [
-      "Toma de Decisiones",
-      "Priorización",
-      "Matriz DAR",
-      "Matriz RICE",
-      "Business Case",
-      "VAN",
-      "TIR",
-      "HiPPO",
-      "CMMI",
-      "C-Level",
-      "Asignación de Capital"
-    ],
-    "series": null,
-    "word_count_es": 7582,
-    "word_count_en": 5705,
-    "reading_time_min": 38,
-    "related_app": null,
-    "related_kit": "datalaria.lemonsqueezy.com/checkout/buy/4e2ca8b1-a6f9-43b7-851a-72c44d9bc13d",
-    "included_kits": [],
-    "price": null,
-    "original_price": null,
-    "checkout_url": null,
-    "deliverables": [],
-    "seo_audit": {
-      "score_0_100": 100,
-      "title_ok": true,
-      "description_ok": true,
-      "parity_ok": true,
-      "taxonomy_ok": true,
-      "internal_links_ok": true,
-      "issues": []
     },
     "freshness_status": "fresh",
     "owner": "Daniel Alaez",
@@ -7166,8 +7343,8 @@
     "brief_es": "Content Ops as Code — Gobernanza editorial, paridad bilingüe y retorno orgánico desde Git.",
     "brief_en": "Content Ops as Code — Editorial governance, bilingual parity, and organic ROI directly from Git.",
     "publish_date": "2026-10-28",
-    "last_modified_es": "2026-10-31T08:31:05.113523Z",
-    "last_modified_en": "2026-10-31T08:31:05.113523Z",
+    "last_modified_es": "2026-10-31T09:31:41+01:00",
+    "last_modified_en": "2026-10-31T09:31:41+01:00",
     "language_parity": "complete",
     "category": "Aplicaciones Web",
     "categories": [

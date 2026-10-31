@@ -2,8 +2,8 @@
 title: "El Arsenal Táctico: Por qué comprar Software especializado para la gestiónd de la cadena de suministro no salvará tu producción de las obsolescencias"
 date: 2026-04-14
 draft: false
-category: "Proyectos Tecnológicos"
-categories: ["Ingeniería de la Obsolescencia", "Operations Engineering", "Supply Chain"]
+category: "IA, Ingeniería y Proyectos"
+categories: ["Ingeniería de la Obsolescencia", "Operations Engineering", "Supply Chain", "IA, Ingeniería y Proyectos"]
 tags: ["Supply Chain", "BOM Management", "SiliconExpert", "IHS Markit", "Data Architecture"]
 author: "Datalaria"
 description: "Descubre por qué pagar licencias millonarias por radares de componentes (Accuris, SiliconExpert) es inútil sin una arquitectura de datos propia que cruce las alertas con el P&L de tu empresa."

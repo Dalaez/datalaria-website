@@ -75,10 +75,21 @@
           </div>
         </div>
         <div class="suite-mini-action">
-          <span class="suite-mini-price">19€</span>
-          <a href="https://datalaria.lemonsqueezy.com/checkout/buy/6afa0df4-fec1-4227-a183-9e5bcc738bdd?embed=1" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
-            Comprar Suite →
-          </a>
+          <div class="kit-pricing-box">
+            <span class="suite-mini-price">19€</span>
+            <span class="kit-price-orig">28€</span>
+          </div>
+          <div class="kit-btns-group">
+            <button type="button" class="btn-kit-info" onclick="event.stopPropagation(); openModal('suite-01')">
+              Detalles ℹ️
+            </button>
+            <a href="/es/posts/estrategia-corporativa-mba-framework-cuantitativo/" class="btn-kit-info" onclick="event.stopPropagation()" title="Leer artículo técnico">
+              Artículo técnico 📖
+            </a>
+            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/6afa0df4-fec1-4227-a183-9e5bcc738bdd?embed=1" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
+              Comprar Suite →
+            </a>
+          </div>
         </div>
       </div>
 
@@ -92,10 +103,21 @@
           </div>
         </div>
         <div class="suite-mini-action">
-          <span class="suite-mini-price">15€</span>
-          <a href="https://datalaria.lemonsqueezy.com/checkout/buy/4e2ca8b1-a6f9-43b7-851a-72c44d9bc13d?embed=1" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
-            Comprar Suite →
-          </a>
+          <div class="kit-pricing-box">
+            <span class="suite-mini-price">15€</span>
+            <span class="kit-price-orig">20€</span>
+          </div>
+          <div class="kit-btns-group">
+            <button type="button" class="btn-kit-info" onclick="event.stopPropagation(); openModal('suite-02')">
+              Detalles ℹ️
+            </button>
+            <span class="btn-kit-info btn-disabled" onclick="event.stopPropagation()" title="Artículo técnico próximamente">
+              Artículo próximamente
+            </span>
+            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/4e2ca8b1-a6f9-43b7-851a-72c44d9bc13d?embed=1" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
+              Comprar Suite →
+            </a>
+          </div>
         </div>
       </div>
 
@@ -109,10 +131,21 @@
           </div>
         </div>
         <div class="suite-mini-action">
-          <span class="suite-mini-price">22€</span>
-          <a href="https://datalaria.lemonsqueezy.com/checkout/buy/ee578b8e-29d6-4361-ba19-4b0b5abfd89a?embed=1" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
-            Comprar Suite →
-          </a>
+          <div class="kit-pricing-box">
+            <span class="suite-mini-price">22€</span>
+            <span class="kit-price-orig">34€</span>
+          </div>
+          <div class="kit-btns-group">
+            <button type="button" class="btn-kit-info" onclick="event.stopPropagation(); openModal('suite-03')">
+              Detalles ℹ️
+            </button>
+            <span class="btn-kit-info btn-disabled" onclick="event.stopPropagation()" title="Artículo técnico próximamente">
+              Artículo próximamente
+            </span>
+            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/ee578b8e-29d6-4361-ba19-4b0b5abfd89a?embed=1" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
+              Comprar Suite →
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -138,9 +171,17 @@
             <div class="suite-context-orig" id="suite-ctx-orig">28€ por separado</div>
           </div>
           <div id="suite-ctx-btn-box">
-            <a href="#" id="suite-ctx-btn" class="btn-suite-buy-full lemonsqueezy-button">
-              Obtener Bundle Suite →
-            </a>
+            <div class="kit-btns-group" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+              <button type="button" class="btn-kit-info" onclick="openModal('suite-01')">
+                Detalles ℹ️
+              </button>
+              <a href="/es/posts/estrategia-corporativa-mba-framework-cuantitativo/" class="btn-kit-info" title="Leer artículo técnico">
+                Artículo técnico 📖
+              </a>
+              <a href="https://datalaria.lemonsqueezy.com/checkout/buy/6afa0df4-fec1-4227-a183-9e5bcc738bdd?embed=1" class="btn-kit-buy lemonsqueezy-button" title="Descargar Suite Completa (.ZIP)">
+                Descargar →
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -927,44 +968,113 @@ Detalles ℹ️
 
   const SUITES_CONFIG = {
   "estrategia": {
+    "id": "suite-01",
     "title": "Pack Suite 1: Estrategia Corporativa & MBA",
-    "desc": "Incluye los 5 Executive Decision Packs: DAFO CAME, Porter, PESTEL, BCG y McKinsey con todos sus modelos matriciales y presentaciones ejecutivas.",
-    "tag": "👑 Suite 01 Completa • Ahorro 32%",
-    "icon": "🏛️",
+    "topic": "estrategia",
+    "topicLabel": "Estrategia MBA",
+    "status": "available",
+    "statusLabel": "🟢 DISPONIBLE • Suite Completa (5 Packs)",
     "price": "19€",
     "origPrice": "28€",
-    "available": true,
-    "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/6afa0df4-fec1-4227-a183-9e5bcc738bdd?embed=1"
+    "icon": "🏛️",
+    "tag": "👑 Suite 01 Completa • Ahorro 32%",
+    "delivs": [
+      "10 Modelos Excel + Sheets",
+      "10 Decks PowerPoint 16:9",
+      "5 Guías Metodológicas PDF"
+    ],
+    "desc": "Incluye los 5 Executive Decision Packs: DAFO CAME, Porter, PESTEL, BCG y McKinsey con todos sus modelos matriciales, presentaciones ejecutivas y guías metodológicas.",
+    "features": [
+      "Colección completa de 5 marcos analíticos: PESTEL, Porter, DAFO-CAME, BCG y McKinsey/GE",
+      "10 plantillas automatizadas en Excel y Google Sheets con validaciones y gráficos dinámicos",
+      "10 presentaciones ejecutivas en PowerPoint 16:9 con Action Titles listos para Consejo",
+      "Guías metodológicas PDF completas con formulación matemática y casos empresariales integrados"
+    ],
+    "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/6afa0df4-fec1-4227-a183-9e5bcc738bdd?embed=1",
+    "guideUrl": "/es/posts/estrategia-corporativa-mba-framework-cuantitativo/",
+    "previewImg": "/images/recursos/suite-01-preview-es.png"
   },
   "decisiones": {
+    "id": "suite-02",
     "title": "Pack Suite 2: Toma de Decisiones & Priorización",
-    "desc": "Las 3 herramientas indispensables para comités de inversión y PMs: Matriz DAR Criterios Veto, RICE & ICE Ágil y Business Case Financiero VAN/TIR.",
-    "tag": "👑 Suite 02 Completa • Ahorro 25%",
-    "icon": "⚖️",
+    "topic": "decisiones",
+    "topicLabel": "Toma de Decisiones",
+    "status": "available",
+    "statusLabel": "🟢 DISPONIBLE • Suite Completa (3 Packs)",
     "price": "15€",
     "origPrice": "20€",
-    "available": true,
-    "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/4e2ca8b1-a6f9-43b7-851a-72c44d9bc13d?embed=1"
+    "icon": "⚖️",
+    "tag": "👑 Suite 02 Completa • Ahorro 25%",
+    "delivs": [
+      "6 Modelos Excel + Sheets",
+      "6 Decks PowerPoint 16:9",
+      "3 Guías Metodológicas PDF"
+    ],
+    "desc": "Las 3 herramientas indispensables para comités de inversión y PMs: Matriz DAR Criterios Veto, RICE & ICE Ágil y Business Case Financiero VAN/TIR.",
+    "features": [
+      "Matriz DAR con Criterios Veto para blindar decisiones críticas de comité",
+      "Framework de priorización RICE & ICE con scoring normalizado y roadmap",
+      "Business Case Financiero completo con proyección a 5 años, VAN, TIR y Payback",
+      "Decks ejecutivos PowerPoint 16:9 y guías paso a paso"
+    ],
+    "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/4e2ca8b1-a6f9-43b7-851a-72c44d9bc13d?embed=1",
+    "guideUrl": "",
+    "previewImg": ""
   },
   "operaciones": {
+    "id": "suite-03",
     "title": "Pack Suite 3: Control Operativo & PMBOK",
-    "desc": "Los 5 Executive Packs para directores de operaciones y project managers: RACI, AMFE, PERT, EVM Curva S y Stock de Seguridad.",
-    "tag": "👑 Suite 03 Completa • Ahorro 35%",
-    "icon": "⚙️",
+    "topic": "operaciones",
+    "topicLabel": "Control Operativo",
+    "status": "available",
+    "statusLabel": "🟢 DISPONIBLE • Suite Completa (5 Packs)",
     "price": "22€",
     "origPrice": "34€",
-    "available": true,
-    "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/ee578b8e-29d6-4361-ba19-4b0b5abfd89a?embed=1"
+    "icon": "⚙️",
+    "tag": "👑 Suite 03 Completa • Ahorro 35%",
+    "delivs": [
+      "10 Modelos Excel + Sheets",
+      "10 Decks PowerPoint 16:9",
+      "5 Guías Metodológicas PDF"
+    ],
+    "desc": "Los 5 Executive Packs para directores de operaciones y project managers: RACI, AMFE, PERT, EVM Curva S y Stock de Seguridad.",
+    "features": [
+      "Matriz RACI con validación de singularidad (1 Accountable estricto por tarea)",
+      "Análisis AMFE / FMEA con cálculo automático del Número de Prioridad de Riesgo (NPR)",
+      "Estimación probabilística PERT con cálculo de ruta crítica y varianza",
+      "EVM (Valor Ganado) con Curva S, CPI, SPI y previsión EAC / ETC",
+      "Modelo de Stock de Seguridad con nivel de servicio, demanda estocástica y punto de pedido"
+    ],
+    "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/ee578b8e-29d6-4361-ba19-4b0b5abfd89a?embed=1",
+    "guideUrl": "",
+    "previewImg": ""
   },
   "software": {
+    "id": "suite-sdd",
     "title": "Suite de Ingeniería: Software, IA & SDD",
-    "desc": "Kits de especificación formal ejecutable, arquitectura de agentes y contratos tipados para erradicar la deuda técnica del vibe coding.",
-    "tag": "🔒 Próximo Lanzamiento",
-    "icon": "💻",
+    "topic": "software",
+    "topicLabel": "Ingeniería de Software & IA",
+    "status": "coming",
+    "statusLabel": "🔒 PRÓXIMAMENTE",
     "price": "Próximamente",
     "origPrice": "",
-    "available": false,
-    "checkoutUrl": "#"
+    "icon": "💻",
+    "tag": "🔒 Próximo Lanzamiento",
+    "delivs": [
+      "Especificaciones SDD",
+      "Arquitectura de Agentes",
+      "Contratos Tipados"
+    ],
+    "desc": "Kits de especificación formal ejecutable, arquitectura de agentes y contratos tipados para erradicar la deuda técnica del vibe coding.",
+    "features": [
+      "Framework integral Spec-Driven Development (SDD) para equipos humanos y agentes de IA",
+      "Contratos de invariantes y esquemas de validación deterministas",
+      "Prompts de arquitectura y memoria persistente para coding assistants",
+      "Plantillas ejecutables para eliminar el vibe coding"
+    ],
+    "checkoutUrl": "#",
+    "guideUrl": "",
+    "previewImg": ""
   }
 };
   const KITS_DATA = [
@@ -992,7 +1102,7 @@ Detalles ℹ️
     ],
     "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/b7f8cf34-a569-426d-b41c-5fde52640e61?embed=1",
     "guideUrl": "/es/posts/dafo-cuantitativo-matriz-came/",
-    "previewImg": "/images/recursos/SWOT.png"
+    "previewImg": "/images/recursos/dafo-preview-es.png"
   },
   {
     "id": "pack-porter",
@@ -1018,7 +1128,7 @@ Detalles ℹ️
     ],
     "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/90206641-21f3-4e06-9163-9bb90b16cbc9?embed=1",
     "guideUrl": "/es/posts/5-fuerzas-porter-cuantitativas/",
-    "previewImg": "/images/recursos/5Porter.png"
+    "previewImg": "/images/recursos/porter-preview-es.png"
   },
   {
     "id": "pack-pestel",
@@ -1044,7 +1154,7 @@ Detalles ℹ️
     ],
     "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/17a0781c-8001-47df-9cdd-25923041e1de?embed=1",
     "guideUrl": "/es/posts/matriz-pestel-cuantitativa/",
-    "previewImg": "/images/recursos/PESTEL.png"
+    "previewImg": "/images/recursos/pestel-preview-es.png"
   },
   {
     "id": "pack-bcg",
@@ -1070,7 +1180,7 @@ Detalles ℹ️
     ],
     "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/52cf8aa6-a595-49fe-b470-421140317013?embed=1",
     "guideUrl": "/es/posts/matriz-bcg-dinamica/",
-    "previewImg": "/images/recursos/BCG.png"
+    "previewImg": "/images/recursos/bcg-preview-es.png"
   },
   {
     "id": "pack-mckinsey",
@@ -1096,7 +1206,7 @@ Detalles ℹ️
     ],
     "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/ae0c6cd8-bb86-4a56-ad87-9625301afda9?embed=1",
     "guideUrl": "/es/posts/matriz-mckinsey-ge/",
-    "previewImg": "/images/recursos/MCKinsey.png"
+    "previewImg": "/images/recursos/mckinsey-ge-preview-es.png"
   },
   {
     "id": "pack-dar",
@@ -1376,8 +1486,20 @@ Detalles ℹ️
         document.getElementById('suite-ctx-orig').textContent = suite.origPrice ? suite.origPrice + ' por separado' : '';
 
         const btnBox = document.getElementById('suite-ctx-btn-box');
-        if (suite.available) {
-          btnBox.innerHTML = `<a href="${suite.checkoutUrl}" class="btn-suite-buy-full lemonsqueezy-button">Obtener Bundle Suite • ` + suite.price + ` →</a>`;
+        const isAvailable = (suite.status === 'available' || suite.available === true);
+        if (isAvailable) {
+          btnBox.innerHTML = `
+            <div class="kit-btns-group" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+              <button type="button" class="btn-kit-info" onclick="openModal('${suite.id}')">
+                Detalles ℹ️
+              </button>
+              ${suite.guideUrl 
+                ? `<a href="${suite.guideUrl}" class="btn-kit-info" title="Leer artículo técnico">Artículo técnico 📖</a>` 
+                : `<span class="btn-kit-info btn-disabled" title="Artículo técnico próximamente">Artículo próximamente</span>`
+              }
+              <a href="${suite.checkoutUrl}" class="btn-kit-buy lemonsqueezy-button" title="Descargar Suite Completa (.ZIP)">Descargar →</a>
+            </div>
+          `;
         } else {
           btnBox.innerHTML = `<span class="badge-suite-soon" style="padding: 8px 14px; font-size: 12px;">Próximamente</span>`;
         }
@@ -1557,7 +1679,7 @@ Detalles ℹ️
   }
 
   function openModal(kitId) {
-    const kit = KITS_DATA.find(k => k.id === kitId);
+    const kit = KITS_DATA.find(k => k.id === kitId) || Object.values(SUITES_CONFIG).find(s => s.id === kitId);
     if (!kit) return;
 
     document.getElementById('modal-icon').textContent = kit.icon;
@@ -1565,7 +1687,7 @@ Detalles ℹ️
     document.getElementById('modal-title').dataset.kitId = kit.id;
     document.getElementById('modal-cat').textContent = kit.topicLabel;
     document.getElementById('modal-desc').textContent = kit.desc;
-    document.getElementById('modal-price').textContent = kit.price;
+    document.getElementById('modal-price').textContent = kit.origPrice ? `${kit.price} (antes ${kit.origPrice})` : kit.price;
 
     renderModalPreview(kit, true);
 
@@ -1584,7 +1706,7 @@ Detalles ℹ️
     if (kit.status === 'available') {
       buyBtn.href = kit.checkoutUrl;
       buyBtn.className = 'btn-kit-buy lemonsqueezy-button';
-      buyBtn.textContent = `Descargar Kit • ` + kit.price;
+      buyBtn.textContent = kit.id.startsWith('suite') ? `Descargar Suite • ${kit.price}` : `Descargar Kit • ${kit.price}`;
       buyBtn.style.display = 'inline-flex';
     } else {
       buyBtn.href = 'mailto:contacto@datalaria.com?subject=Waitlist%20Kit%20SDD%20-%20Avisarme&body=Hola%2C%20quiero%20apuntarme%20a%20la%20lista%20de%20espera%20del%20Kit%20Spec-Driven%20Development%20(SDD)%20para%20recibir%20el%20aviso%20de%20lanzamiento.';
@@ -1732,10 +1854,21 @@ Detalles ℹ️
           </div>
         </div>
         <div class="suite-mini-action">
-          <span class="suite-mini-price">19€</span>
-          <a href="https://datalaria.lemonsqueezy.com/checkout/buy/6afa0df4-fec1-4227-a183-9e5bcc738bdd?embed=1" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
-            Buy Suite →
-          </a>
+          <div class="kit-pricing-box">
+            <span class="suite-mini-price">19€</span>
+            <span class="kit-price-orig">28€</span>
+          </div>
+          <div class="kit-btns-group">
+            <button type="button" class="btn-kit-info" onclick="event.stopPropagation(); openModal('suite-01')">
+              Details ℹ️
+            </button>
+            <a href="/en/posts/corporate-strategy-mba-quantitative-framework/" class="btn-kit-info" onclick="event.stopPropagation()" title="Read technical article">
+              Technical Article 📖
+            </a>
+            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/6afa0df4-fec1-4227-a183-9e5bcc738bdd?embed=1" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
+              Buy Suite →
+            </a>
+          </div>
         </div>
       </div>
 
@@ -1749,10 +1882,21 @@ Detalles ℹ️
           </div>
         </div>
         <div class="suite-mini-action">
-          <span class="suite-mini-price">15€</span>
-          <a href="https://datalaria.lemonsqueezy.com/checkout/buy/4e2ca8b1-a6f9-43b7-851a-72c44d9bc13d?embed=1" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
-            Buy Suite →
-          </a>
+          <div class="kit-pricing-box">
+            <span class="suite-mini-price">15€</span>
+            <span class="kit-price-orig">20€</span>
+          </div>
+          <div class="kit-btns-group">
+            <button type="button" class="btn-kit-info" onclick="event.stopPropagation(); openModal('suite-02')">
+              Details ℹ️
+            </button>
+            <span class="btn-kit-info btn-disabled" onclick="event.stopPropagation()" title="Technical article coming soon">
+              Article coming soon
+            </span>
+            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/4e2ca8b1-a6f9-43b7-851a-72c44d9bc13d?embed=1" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
+              Buy Suite →
+            </a>
+          </div>
         </div>
       </div>
 
@@ -1766,10 +1910,21 @@ Detalles ℹ️
           </div>
         </div>
         <div class="suite-mini-action">
-          <span class="suite-mini-price">22€</span>
-          <a href="https://datalaria.lemonsqueezy.com/checkout/buy/ee578b8e-29d6-4361-ba19-4b0b5abfd89a?embed=1" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
-            Buy Suite →
-          </a>
+          <div class="kit-pricing-box">
+            <span class="suite-mini-price">22€</span>
+            <span class="kit-price-orig">34€</span>
+          </div>
+          <div class="kit-btns-group">
+            <button type="button" class="btn-kit-info" onclick="event.stopPropagation(); openModal('suite-03')">
+              Details ℹ️
+            </button>
+            <span class="btn-kit-info btn-disabled" onclick="event.stopPropagation()" title="Technical article coming soon">
+              Article coming soon
+            </span>
+            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/ee578b8e-29d6-4361-ba19-4b0b5abfd89a?embed=1" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
+              Buy Suite →
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -1795,9 +1950,17 @@ Detalles ℹ️
             <div class="suite-context-orig" id="suite-ctx-orig">28€ individually</div>
           </div>
           <div id="suite-ctx-btn-box">
-            <a href="#" id="suite-ctx-btn" class="btn-suite-buy-full lemonsqueezy-button">
-              Buy Suite Bundle →
-            </a>
+            <div class="kit-btns-group" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+              <button type="button" class="btn-kit-info" onclick="openModal('suite-01')">
+                Details ℹ️
+              </button>
+              <a href="/en/posts/corporate-strategy-mba-quantitative-framework/" class="btn-kit-info" title="Read technical article">
+                Technical article 📖
+              </a>
+              <a href="https://datalaria.lemonsqueezy.com/checkout/buy/6afa0df4-fec1-4227-a183-9e5bcc738bdd?embed=1" class="btn-kit-buy lemonsqueezy-button" title="Download Complete Suite (.ZIP)">
+                Download →
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -2584,44 +2747,113 @@ Details ℹ️
 
   const SUITES_CONFIG = {
   "estrategia": {
+    "id": "suite-01",
     "title": "Suite 1: MBA Corporate Strategy",
-    "desc": "Includes all 5 Executive Decision Packs: SWOT TOWS, Porter, PESTEL, BCG and McKinsey with all matrix models and executive slide decks.",
-    "tag": "👑 Complete Suite 01 • 32% Off",
-    "icon": "🏛️",
+    "topic": "estrategia",
+    "topicLabel": "MBA Strategy",
+    "status": "available",
+    "statusLabel": "🟢 AVAILABLE • Complete Suite (5 Packs)",
     "price": "19€",
     "origPrice": "28€",
-    "available": true,
-    "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/6afa0df4-fec1-4227-a183-9e5bcc738bdd?embed=1"
+    "icon": "🏛️",
+    "tag": "👑 Complete Suite 01 • 32% Off",
+    "delivs": [
+      "10 Excel + Sheets Models",
+      "10 PowerPoint 16:9 Decks",
+      "5 Methodology PDF Guides"
+    ],
+    "desc": "Includes all 5 Executive Decision Packs: SWOT TOWS, Porter, PESTEL, BCG and McKinsey with all matrix models, executive slide decks, and methodology guides.",
+    "features": [
+      "Complete 5-framework collection: PESTEL, Porter, SWOT-TOWS, BCG and McKinsey/GE",
+      "10 automated templates in Excel & Google Sheets with dynamic charting and error checks",
+      "10 executive slide decks in PowerPoint 16:9 with boardroom-ready Action Titles",
+      "Full PDF methodology guides with mathematical formulations and real enterprise case studies"
+    ],
+    "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/6afa0df4-fec1-4227-a183-9e5bcc738bdd?embed=1",
+    "guideUrl": "/en/posts/corporate-strategy-mba-quantitative-framework/",
+    "previewImg": "/images/recursos/suite-01-preview-en.png"
   },
   "decisiones": {
+    "id": "suite-02",
     "title": "Suite 2: Decision Making & Prioritization",
-    "desc": "The 3 indispensable tools for Investment Committees & PMs: DAR Veto Matrix, Agile RICE & ICE, and Financial Business Case NPV/IRR.",
-    "tag": "👑 Complete Suite 02 • 25% Off",
-    "icon": "⚖️",
+    "topic": "decisiones",
+    "topicLabel": "Decision Making",
+    "status": "available",
+    "statusLabel": "🟢 AVAILABLE • Complete Suite (3 Packs)",
     "price": "15€",
     "origPrice": "20€",
-    "available": true,
-    "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/4e2ca8b1-a6f9-43b7-851a-72c44d9bc13d?embed=1"
+    "icon": "⚖️",
+    "tag": "👑 Complete Suite 02 • 25% Off",
+    "delivs": [
+      "6 Excel + Sheets Models",
+      "6 PowerPoint 16:9 Decks",
+      "3 Methodology PDF Guides"
+    ],
+    "desc": "The 3 indispensable tools for Investment Committees & PMs: DAR Veto Matrix, Agile RICE & ICE, and Financial Business Case NPV/IRR.",
+    "features": [
+      "DAR Decision Matrix with Veto criteria to safeguard boardroom signoffs",
+      "RICE & ICE prioritization framework with normalized scoring and roadmap view",
+      "Financial Business Case with 5-year cash-flow forecasting, NPV, IRR, and Payback",
+      "Executive 16:9 slide decks and step-by-step implementation playbooks"
+    ],
+    "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/4e2ca8b1-a6f9-43b7-851a-72c44d9bc13d?embed=1",
+    "guideUrl": "",
+    "previewImg": ""
   },
   "operaciones": {
+    "id": "suite-03",
     "title": "Suite 3: Operational Control & PMBOK",
-    "desc": "The 5 Executive Packs for Operations Directors & Project Managers: RACI, FMEA, PERT, EVM S-Curve, and Safety Stock.",
-    "tag": "👑 Complete Suite 03 • 35% Off",
-    "icon": "⚙️",
+    "topic": "operaciones",
+    "topicLabel": "Operations Control",
+    "status": "available",
+    "statusLabel": "🟢 AVAILABLE • Complete Suite (5 Packs)",
     "price": "22€",
     "origPrice": "34€",
-    "available": true,
-    "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/ee578b8e-29d6-4361-ba19-4b0b5abfd89a?embed=1"
+    "icon": "⚙️",
+    "tag": "👑 Complete Suite 03 • 35% Off",
+    "delivs": [
+      "10 Excel + Sheets Models",
+      "10 PowerPoint 16:9 Decks",
+      "5 Methodology PDF Guides"
+    ],
+    "desc": "The 5 Executive Packs for Operations Directors & Project Managers: RACI, FMEA, PERT, EVM S-Curve, and Safety Stock.",
+    "features": [
+      "RACI Matrix with single-accountable governance validation",
+      "FMEA Risk Matrix with automated Risk Priority Number (RPN) calculation",
+      "PERT Probabilistic Estimation with critical path and variance formulas",
+      "EVM (Earned Value Management) with S-Curve, CPI, SPI, and EAC forecasting",
+      "Safety Stock Model with customer service levels, stochastic demand and reorder points"
+    ],
+    "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/ee578b8e-29d6-4361-ba19-4b0b5abfd89a?embed=1",
+    "guideUrl": "",
+    "previewImg": ""
   },
   "software": {
+    "id": "suite-sdd",
     "title": "Engineering Suite: Software, AI & SDD",
-    "desc": "Executable formal specifications, agent architecture and typed contracts to eradicate technical debt from vibe coding.",
-    "tag": "🔒 Coming Soon",
-    "icon": "💻",
+    "topic": "software",
+    "topicLabel": "Software Engineering & AI",
+    "status": "coming",
+    "statusLabel": "🔒 COMING SOON",
     "price": "Coming soon",
     "origPrice": "",
-    "available": false,
-    "checkoutUrl": "#"
+    "icon": "💻",
+    "tag": "🔒 Coming Soon",
+    "delivs": [
+      "SDD Specifications",
+      "Agent Architecture",
+      "Typed Contracts"
+    ],
+    "desc": "Executable formal specifications, agent architecture and typed contracts to eradicate technical debt from vibe coding.",
+    "features": [
+      "Full Spec-Driven Development (SDD) framework for human developers and AI agents",
+      "Deterministic invariant contracts and schema validation rules",
+      "System prompt architecture and persistent memory playbooks for coding assistants",
+      "Executable boilerplate templates to eliminate vibe coding debt"
+    ],
+    "checkoutUrl": "#",
+    "guideUrl": "",
+    "previewImg": ""
   }
 };
   const KITS_DATA = [
@@ -2649,7 +2881,7 @@ Details ℹ️
     ],
     "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/b7f8cf34-a569-426d-b41c-5fde52640e61?embed=1",
     "guideUrl": "/en/posts/quantitative-swot-tows-matrix/",
-    "previewImg": "/images/recursos/SWOT.png"
+    "previewImg": "/images/recursos/dafo-preview-en.png"
   },
   {
     "id": "pack-porter",
@@ -2675,7 +2907,7 @@ Details ℹ️
     ],
     "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/90206641-21f3-4e06-9163-9bb90b16cbc9?embed=1",
     "guideUrl": "/en/posts/quantitative-porter-5-forces/",
-    "previewImg": "/images/recursos/5Porter.png"
+    "previewImg": "/images/recursos/porter-preview-en.png"
   },
   {
     "id": "pack-pestel",
@@ -2701,7 +2933,7 @@ Details ℹ️
     ],
     "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/17a0781c-8001-47df-9cdd-25923041e1de?embed=1",
     "guideUrl": "/en/posts/quantitative-pestel-matrix/",
-    "previewImg": "/images/recursos/PESTEL.png"
+    "previewImg": "/images/recursos/pestel-preview-en.png"
   },
   {
     "id": "pack-bcg",
@@ -2727,7 +2959,7 @@ Details ℹ️
     ],
     "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/52cf8aa6-a595-49fe-b470-421140317013?embed=1",
     "guideUrl": "/en/posts/dynamic-bcg-matrix/",
-    "previewImg": "/images/recursos/BCG.png"
+    "previewImg": "/images/recursos/bcg-preview-en.png"
   },
   {
     "id": "pack-mckinsey",
@@ -2753,7 +2985,7 @@ Details ℹ️
     ],
     "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/ae0c6cd8-bb86-4a56-ad87-9625301afda9?embed=1",
     "guideUrl": "/en/posts/mckinsey-ge-matrix/",
-    "previewImg": "/images/recursos/MCKinsey.png"
+    "previewImg": "/images/recursos/mckinsey-ge-preview-en.png"
   },
   {
     "id": "pack-dar",
@@ -3033,8 +3265,20 @@ Details ℹ️
         document.getElementById('suite-ctx-orig').textContent = suite.origPrice ? suite.origPrice + ' individually' : '';
 
         const btnBox = document.getElementById('suite-ctx-btn-box');
-        if (suite.available) {
-          btnBox.innerHTML = `<a href="${suite.checkoutUrl}" class="btn-suite-buy-full lemonsqueezy-button">Buy Suite Bundle • ` + suite.price + ` →</a>`;
+        const isAvailable = (suite.status === 'available' || suite.available === true);
+        if (isAvailable) {
+          btnBox.innerHTML = `
+            <div class="kit-btns-group" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+              <button type="button" class="btn-kit-info" onclick="openModal('${suite.id}')">
+                Details ℹ️
+              </button>
+              ${suite.guideUrl 
+                ? `<a href="${suite.guideUrl}" class="btn-kit-info" title="Read technical article">Technical article 📖</a>` 
+                : `<span class="btn-kit-info btn-disabled" title="Technical article coming soon">Article coming soon</span>`
+              }
+              <a href="${suite.checkoutUrl}" class="btn-kit-buy lemonsqueezy-button" title="Download Complete Suite (.ZIP)">Download →</a>
+            </div>
+          `;
         } else {
           btnBox.innerHTML = `<span class="badge-suite-soon" style="padding: 8px 14px; font-size: 12px;">Coming Soon</span>`;
         }
@@ -3214,14 +3458,14 @@ Details ℹ️
   }
 
   function openModal(kitId) {
-    const kit = KITS_DATA.find(k => k.id === kitId);
+    const kit = KITS_DATA.find(k => k.id === kitId) || Object.values(SUITES_CONFIG).find(s => s.id === kitId);
     if (!kit) return;
 
     document.getElementById('modal-icon').textContent = kit.icon;
     document.getElementById('modal-title').textContent = kit.title;
     document.getElementById('modal-cat').textContent = kit.topicLabel;
     document.getElementById('modal-desc').textContent = kit.desc;
-    document.getElementById('modal-price').textContent = kit.price;
+    document.getElementById('modal-price').textContent = kit.origPrice ? `${kit.price} (was ${kit.origPrice})` : kit.price;
 
     renderModalPreview(kit, false);
 
@@ -3240,7 +3484,7 @@ Details ℹ️
     if (kit.status === 'available') {
       buyBtn.href = kit.checkoutUrl;
       buyBtn.className = 'btn-kit-buy lemonsqueezy-button';
-      buyBtn.textContent = `Download Pack • ` + kit.price;
+      buyBtn.textContent = kit.id.startsWith('suite') ? `Download Suite • ${kit.price}` : `Download Pack • ${kit.price}`;
       buyBtn.style.display = 'inline-flex';
     } else {
       buyBtn.href = 'mailto:contacto@datalaria.com?subject=Waitlist%20Kit%20SDD%20-%20Notify%20Me&body=Hi%2C%20I%20would%20like%20to%20join%20the%20waitlist%20for%20the%20Spec-Driven%20Development%20(SDD)%20Kit%20to%20get%20launch%20notification.';

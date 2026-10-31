@@ -2,8 +2,8 @@
 title: "Autopilot - The Brain: Configuring Gemini and CrewAI to Read My Blog"
 date: 2025-12-31
 draft: false
-category: "Tech Projects"
-categories: ["Software Engineering", "Generative AI", "Python"]
+category: "AI, Engineering & Projects"
+categories: ["Software Engineering", "Generative AI", "Python", "AI, Engineering & Projects"]
 tags: ["CrewAI", "Gemini API", "Backend", "Clean Code", "Automation"]
 image: "cover.png"
 description: "Chapter two of Project Autopilot. We open the IDE to connect Python with Gemini Flash and create our first Analyst Agent capable of understanding Markdown code."

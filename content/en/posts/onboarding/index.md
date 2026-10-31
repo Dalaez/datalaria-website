@@ -2,8 +2,8 @@
 title: "From '24 Days' to Immediate Success: Revolutionizing Onboarding with Artificial Intelligence"
 date: 2026-01-17
 draft: false
-category: "Technical Articles"
-categories: ["Artificial Intelligence", "Human Resources", "Productivity"]
+category: "Strategy & Operations"
+categories: ["Artificial Intelligence", "Human Resources", "Productivity", "Strategy & Operations"]
 tags: ["Onboarding", "GenAI", "IDP", "Employee Experience", "Talent Retention", "Document Management"]
 image: cover.png 
 description: "Traditional onboarding is broken, with an average time of 24 days and a cost of $4,000 per hire. This post explores how Generative AI and Intelligent Document Processing (IDP) transform bureaucratic 'infoxication' into a seamless integration, offering a 24/7 virtual mentor that can improve retention by 82%."

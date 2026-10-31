@@ -80,10 +80,21 @@ translationKey: resources
           </div>
         </div>
         <div class="suite-mini-action">
-          <span class="suite-mini-price">19€</span>
-          <a href="https://datalaria.lemonsqueezy.com/checkout/buy/6afa0df4-fec1-4227-a183-9e5bcc738bdd" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
-            Buy Suite →
-          </a>
+          <div class="kit-pricing-box">
+            <span class="suite-mini-price">19€</span>
+            <span class="kit-price-orig">28€</span>
+          </div>
+          <div class="kit-btns-group">
+            <button type="button" class="btn-kit-info" onclick="event.stopPropagation(); openModal('suite-01')">
+              Details ℹ️
+            </button>
+            <a href="/en/posts/corporate-strategy-mba-quantitative-framework/" class="btn-kit-info" onclick="event.stopPropagation()" title="Read technical article">
+              Technical Article 📖
+            </a>
+            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/6afa0df4-fec1-4227-a183-9e5bcc738bdd" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
+              Buy Suite →
+            </a>
+          </div>
         </div>
       </div>
 
@@ -97,10 +108,21 @@ translationKey: resources
           </div>
         </div>
         <div class="suite-mini-action">
-          <span class="suite-mini-price">15€</span>
-          <a href="https://datalaria.lemonsqueezy.com/checkout/buy/4e2ca8b1-a6f9-43b7-851a-72c44d9bc13d" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
-            Buy Suite →
-          </a>
+          <div class="kit-pricing-box">
+            <span class="suite-mini-price">15€</span>
+            <span class="kit-price-orig">20€</span>
+          </div>
+          <div class="kit-btns-group">
+            <button type="button" class="btn-kit-info" onclick="event.stopPropagation(); openModal('suite-02')">
+              Details ℹ️
+            </button>
+            <span class="btn-kit-info btn-disabled" onclick="event.stopPropagation()" title="Technical article coming soon">
+              Article coming soon
+            </span>
+            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/4e2ca8b1-a6f9-43b7-851a-72c44d9bc13d" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
+              Buy Suite →
+            </a>
+          </div>
         </div>
       </div>
 
@@ -110,9 +132,28 @@ translationKey: resources
           <div class="suite-mini-icon">⚙️</div>
           <div>
             <div class="suite-mini-title">Suite 3: Operations Control</div>
-            <div class="suite-mini-desc">5 PMBOK packs (RACI, FMEA, PERT, EVM, Safety Stock)</div>
+            <div class="suite-mini-desc">5 packs PMBOK (RACI, FMEA, PERT, EVM, Safety Stock)</div>
           </div>
         </div>
+        <div class="suite-mini-action">
+          <div class="kit-pricing-box">
+            <span class="suite-mini-price">22€</span>
+            <span class="kit-price-orig">34€</span>
+          </div>
+          <div class="kit-btns-group">
+            <button type="button" class="btn-kit-info" onclick="event.stopPropagation(); openModal('suite-03')">
+              Details ℹ️
+            </button>
+            <span class="btn-kit-info btn-disabled" onclick="event.stopPropagation()" title="Technical article coming soon">
+              Article coming soon
+            </span>
+            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/ee578b8e-29d6-4361-ba19-4b0b5abfd89a" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
+              Buy Suite →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
         <div class="suite-mini-action">
           <span class="suite-mini-price">22€</span>
           <a href="https://datalaria.lemonsqueezy.com/checkout/buy/ee578b8e-29d6-4361-ba19-4b0b5abfd89a" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">

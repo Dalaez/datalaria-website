@@ -1,9 +1,9 @@
 ---
 title: "Copilotando con IA: Aprendiendo con Founderz y ChatGPT"
 date: 2025-09-11
-category: "Artículos Técnicos"
+category: "Cultura Tech y Media"
 draft: False
-categories: ["Herramientas", "Aprendizaje"]
+categories: ["Herramientas", "Aprendizaje", "Cultura Tech y Media"]
 tags: ["ia", "chatgpt", "prompt engineering", "founderz", "desarrollo web", "no-code", "html", "matemáticas"]
 image: Founderz_IntroduccionIA.png
 social_text: ¿No sabes programar? 🤯 ¡Creé una app de mates para niños con ChatGPT y Founderz en minutos! La IA es tu copiloto. 

@@ -2,8 +2,8 @@
 title: "Toma de Decisiones Racional & Priorización: El Framework Cuantitativo de 3 Niveles"
 date: 2026-11-02
 draft: false
-category: "Artículos Técnicos"
-categories: ["Toma de Decisiones", "Estrategia Corporativa", "Gestión de Producto", "Finanzas Corporativas"]
+category: "Estrategia y Operaciones"
+categories: ["Toma de Decisiones", "Estrategia Corporativa", "Gestión de Producto", "Finanzas Corporativas", "Estrategia y Operaciones"]
 tags: ["Toma de Decisiones", "Priorización", "Matriz DAR", "Matriz RICE", "Business Case", "VAN", "TIR", "HiPPO", "CMMI", "C-Level", "Asignación de Capital"]
 description: "De los trade-offs de arquitectura y proveedores a la asignación de backlog y la defensa del CAPEX ante el CFO. Guía metodológica integrando Matriz DAR, RICE/ICE y Business Case Financiero."
 summary: "Unifica la selección de arquitectura tecnológica, la priorización ágil de roadmap y la justificación de inversiones de capital en un único pipeline cuantitativo de 3 niveles. Elimina el sesgo de autoridad (HiPPO) integrando la Matriz CMMI DAR, el scoring RICE con capacidad neta de squads y el Business Case financiero (VAN/TIR/Tornado) para Comités de Dirección y Consejos de Administración."

@@ -3,13 +3,17 @@ title: "Quantitative SWOT & TOWS Matrix: The Definitive C-Level Guide to Boardro
 date: 2026-10-13
 draft: false
 translationKey: quantitative-swot-tows-matrix
-category: "Technical Articles"
-categories: ["Corporate Strategy", "Decision Making", "Executive Management", "Corporate Finance"]
+category: "Strategy & Operations"
+categories: ["Corporate Strategy", "Decision Making", "Executive Management", "Corporate Finance", "Strategy & Operations"]
 tags: ["Quantitative SWOT", "TOWS Matrix", "C-Level Strategy", "Minto Pyramid", "Excel Model", "Boardroom Presentation", "Capital Allocation"]
 description: "A comprehensive methodological guide to transforming qualitative SWOT brainstorming into a vector-based quantitative mathematical model and actionable TOWS capital allocation roadmap."
 summary: "Traditional SWOT matrices die in corporate boardrooms because they lack mathematical rigor, objective weighting, and capital allocation mechanics. In this Tier-1 management consulting guide (McKinsey/BCG standard), we formalize the SWOT vector space, calculate dominant strategic postures in Cartesian coordinates, execute the TOWS cross-impact matrix, and build a high-impact executive presentation under the Minto Pyramid Principle."
+cover:
+  image: "cover.png"
+  alt: "Quantitative SWOT & TOWS Matrix: Vector Mathematical Model and Cartesian Strategic Posture"
+  caption: "SWOT Vector Space & TOWS Matrix: Objective scoring of strengths, weaknesses, and capital allocation plan for Boardrooms."
+  relative: true
 ---
-
 In virtually every corporate boardroom, quarterly executive committee, or annual strategic offsite, the exact same ritual plays out: a team of internal directors or management consultants presents a widescreen slide split into four colored quadrants filled with subjective bullet points under the acronym **SWOT** (Strengths, Weaknesses, Opportunities, and Threats).
 
 The outcome is almost always identical:

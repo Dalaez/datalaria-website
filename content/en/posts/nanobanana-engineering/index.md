@@ -1,9 +1,9 @@
 ---
 title: "From Systems Engineering to Formula 1: Using AI (Nanobana) to Illustrate a Complex Roadmap"
 date: 2025-09-20
-category: "Technical Articles"
+category: "Tech Culture & Media"
 draft: False
-categories: ["Tools", "Engineering"]
+categories: ["Tools", "Engineering", "Tech Culture & Media"]
 tags: ["ai", "nanobanana", "systems engineering", "v-model", "visualization", "formula 1", "communication", "ppt", "pptx", "engineering", "development", "roadmap"]
 image: cover.png
 description: "A case study on how I used the AI tool Nanobanana to transform the systems engineering V-Model into an understandable visual story using a Formula 1 analogy."

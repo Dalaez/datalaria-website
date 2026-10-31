@@ -2,8 +2,8 @@
 title: "La Economía Oculta de la IA: Cuánto Cuesta Realmente Usar LLMs en Producción (Con Datos Reales)"
 date: 2026-06-14
 draft: false
-category: "Artículos Técnicos"
-categories: ["Inteligencia Artificial", "Ingeniería", "Productividad"]
+category: "IA, Ingeniería y Proyectos"
+categories: ["Inteligencia Artificial", "Ingeniería", "Productividad", "IA, Ingeniería y Proyectos"]
 tags: ["costes ia", "api pricing", "llm", "gemini", "openai", "claude", "producción", "tokens", "crewai", "github actions"]
 description: "Análisis real de los costes de usar modelos de lenguaje (LLMs) en producción. Comparativa de APIs de Gemini, GPT-4o y Claude con datos propios de los proyectos Autopilot y Obsolescencia de Datalaria. Desglose del iceberg de costes ocultos."
 summary: "Todo el mundo habla de lo que la IA puede hacer. Casi nadie habla de lo que la IA cuesta hacer. Después de más de 6 meses operando agentes autónomos en producción con Gemini, CrewAI y GitHub Actions, abro las cuentas y desgrano cada euro invertido — y cada sorpresa que encontré por el camino."

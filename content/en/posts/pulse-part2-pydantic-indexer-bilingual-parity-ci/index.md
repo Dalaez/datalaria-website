@@ -3,8 +3,8 @@ title: "From Front Matter to Index: Pydantic v2, Bilingual ES/EN Parity, and Git
 date: 2026-11-25
 draft: false
 image: "cover.png"
-category: "Technical Articles"
-categories: ["Content Ops", "Software Engineering", "Automation"]
+category: "AI, Engineering & Projects"
+categories: ["Content Ops", "Software Engineering", "Automation", "AI, Engineering & Projects"]
 tags: ["Pydantic", "Python", "GitHub Actions", "CI/CD", "Content Ops as Code", "Bilingual", "Hugo", "Markdown"]
 description: "How to build a strict data validation pipeline with Pydantic v2, enforce 100% bilingual ES ⇔ EN parity, and automate editorial builds via GitHub Actions CI/CD."
 summary: "Markdown is a fantastic medium for technical writing, but a terrible substitute for a database when it lacks strict typing contracts. In this second installment of Datalaria Pulse, we reveal how we engineered a deterministic Python indexer powered by Pydantic v2, enforced complete bilingual parity through graph resolution, and deployed a fail-closed GitHub Actions pipeline that halts compilation at the slightest schema inconsistency."

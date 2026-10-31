@@ -2,8 +2,8 @@
 title: "Ingeniería S&OP IV: Escalando a Enterprise (Multi-SKU y Cuellos de Botella)"
 date: 2026-03-20
 draft: false
-category: "Proyectos Tecnológicos"
-categories: ["Ingeniería de S&OP", "Operations Research", "MLOps"]
+category: "IA, Ingeniería y Proyectos"
+categories: ["Ingeniería de S&OP", "Operations Research", "MLOps", "IA, Ingeniería y Proyectos"]
 tags: ["Supply Chain", "Optimization", "PuLP", "Parallel Processing", "Theory of Constraints"]
 author: "Datalaria"
 description: "El MVP ha muerto, viva el Enterprise. En el Capítulo 4 estresamos nuestro sistema S&OP con múltiples SKUs, enseñando cómo paralelizar modelos de IA y resolver matemáticamente la guerra por la capacidad de producción compartida."

@@ -3,8 +3,8 @@ title: "Adiós Notion: Datalaria Pulse o la Gestión Editorial que se Escribe So
 date: 2026-11-18
 draft: false
 image: "cover.png"
-category: "Artículos Técnicos"
-categories: ["Content Ops", "Ingeniería de Software", "Automatización"]
+category: "IA, Ingeniería y Proyectos"
+categories: ["Content Ops", "Ingeniería de Software", "Automatización", "IA, Ingeniería y Proyectos"]
 tags: ["Content Ops as Code", "Git", "Notion", "Hugo", "Markdown", "Pydantic", "Blogging Técnico", "SEO"]
 description: "Por qué las bases de datos en Notion o Airtable se desincronizan del repositorio y cómo la filosofía Content Ops as Code indexa tu blog técnico directamente desde Markdown."
 summary: "Manejar el calendario editorial de un blog técnico en Notion o Airtable es una batalla perdida contra la desincronización. En esta serie presentamos Datalaria Pulse: la arquitectura 'Content Ops as Code' que convierte tus carpetas de Markdown en un índice determinista validado por Pydantic, monitoriza paridad bilingüe ES ⇔ EN y proyecta un tablero ejecutivo en React con latencia cero."

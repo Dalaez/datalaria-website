@@ -1,9 +1,9 @@
 ---
 title: "Programando con IA: Creando mi Propia App mágica de Flashcards para Estudiar"
 date: 2025-10-17
-category: "Proyectos Tecnológicos"
+category: "IA, Ingeniería y Proyectos"
 draft: False
-categories: ["Proyectos", "Herramientas"]
+categories: ["Proyectos", "Herramientas", "IA, Ingeniería y Proyectos"]
 tags: ["ia", "flashcards", "aprendizaje", "estudio", "desarrollo web", "no-code", "gamificacion"]
 image: Cover.PNG
 description: "Un caso práctico de cómo una necesidad familiar me llevó a crear una aplicación de estudio con flashcards desde cero, apoyándome en la IA para hacer el aprendizaje más ameno y eficaz."

@@ -809,37 +809,65 @@ export function App() {
     ];
   }, [countsByType, t]);
 
-  // 2. Las 4 Temáticas Troncales del Blog Oficial (según datalaria.com)
+  // 2. Las 5 Temáticas Troncales del Blog Oficial (según datalaria.com)
   const blogThemes = useMemo(() => {
     const counts = {
-      tecnicos: 0,
-      proyectos: 0,
+      tech: 0,
+      strategy: 0,
       startups: 0,
-      biografias: 0
+      pioneers: 0,
+      culture: 0,
     };
 
-    currentAssets.forEach((a) => {
+    currentAssets.filter((a) => a.asset_type === 'post').forEach((a) => {
       const c = (a.category || '').toLowerCase();
-      if (c.includes('téc') || c.includes('tec') || c.includes('software') || c.includes('operativo') || c.includes('estrategia') || c.includes('finanzas')) {
-        counts.tecnicos += 1;
-      } else if (c.includes('proyect')) {
-        counts.proyectos += 1;
-      } else if (c.includes('startup') || c.includes('casos') || c.includes('éxito')) {
+      if (
+        c.includes('ingeniería') ||
+        c.includes('ingenieria') ||
+        c.includes('engineering') ||
+        c.includes('proyect') ||
+        c.includes('código') ||
+        c.includes('codigo')
+      ) {
+        counts.tech += 1;
+      } else if (
+        c.includes('estrategia') ||
+        c.includes('strategy') ||
+        c.includes('operacion') ||
+        c.includes('operation')
+      ) {
+        counts.strategy += 1;
+      } else if (c.includes('startup')) {
         counts.startups += 1;
-      } else if (c.includes('biograf')) {
-        counts.biografias += 1;
-      } else if (a.asset_type === 'post') {
-        counts.tecnicos += 1;
+      } else if (
+        c.includes('pioner') ||
+        c.includes('pioneer') ||
+        c.includes('referente') ||
+        c.includes('biograf')
+      ) {
+        counts.pioneers += 1;
+      } else if (
+        c.includes('cultura') ||
+        c.includes('culture') ||
+        c.includes('media') ||
+        c.includes('cine') ||
+        c.includes('serie')
+      ) {
+        counts.culture += 1;
+      } else {
+        counts.tech += 1;
       }
     });
 
+    const isES = lang === 'es';
     return [
-      { key: '🧠 Artículos Técnicos', count: counts.tecnicos, color: '#06b6d4' },
-      { key: '🛠️ Proyectos Tech', count: counts.proyectos, color: '#10b981' },
-      { key: '🚀 Startups & Casos', count: counts.startups, color: '#8b5cf6' },
-      { key: '🏛️ Biografías', count: counts.biografias, color: '#f59e0b' }
+      { key: isES ? '🛠️ IA, Ingeniería & Proyectos' : '🛠️ AI, Engineering & Projects', count: counts.tech, color: '#06b6d4' },
+      { key: isES ? '📊 Estrategia & Operaciones' : '📊 Strategy & Operations', count: counts.strategy, color: '#10b981' },
+      { key: isES ? '🚀 Startups & Casos' : '🚀 Startups & Cases', count: counts.startups, color: '#8b5cf6' },
+      { key: isES ? '🏛️ Pioneros & Referentes' : '🏛️ Pioneers & Icons', count: counts.pioneers, color: '#f59e0b' },
+      { key: isES ? '🎬 Cultura Tech & Media' : '🎬 Tech Culture & Media', count: counts.culture, color: '#ec4899' },
     ];
-  }, [currentAssets]);
+  }, [currentAssets, lang]);
 
   // 3. Taxonomía Temática Detallada (12 principales categorías)
   const detailedCategories = useMemo(() => {
@@ -1784,7 +1812,7 @@ export function App() {
                   {categoryViewMode === 'ecosystem' &&
                     'Macro-distribución de activos de Datalaria: Artículos editoriales vs Suites descargables vs Aplicaciones interactivas.'}
                   {categoryViewMode === 'themes' &&
-                    'Las 4 temáticas troncales de conocimiento del Blog oficial (como en datalaria.com): Artículos Técnicos, Proyectos Tech, Startups y Biografías.'}
+                    (t.view_mode_themes_desc || 'Las 5 temáticas troncales de conocimiento del Blog oficial (como en datalaria.com): IA, Ingeniería & Proyectos, Estrategia & Operaciones, Startups & Casos, Pioneros & Referentes y Cultura Tech & Media.')}
                   {categoryViewMode === 'categories' &&
                     'Taxonomía temática detallada indexada en el repositorio (Inteligencia Artificial, Estrategia C-Level, Control Operativo, DevOps, Python, etc.).'}
                 </div>
@@ -3031,13 +3059,11 @@ export function App() {
                     value={ideaCategory}
                     onChange={(e) => setIdeaCategory(e.target.value)}
                   >
-                    <option value="Inteligencia Artificial">Inteligencia Artificial</option>
-                    <option value="Estrategia Empresarial">Estrategia Empresarial</option>
-                    <option value="Control Operativo">Control Operativo & S&OP</option>
-                    <option value="Finanzas Corporativas">Finanzas & Decisiones</option>
-                    <option value="Ingeniería de Software & SDD">Ingeniería & DevOps</option>
-                    <option value="Casos de Éxito">Casos de Éxito</option>
-                    <option value="Biografías">Biografías</option>
+                    <option value="IA, Ingeniería y Proyectos">🛠️ IA, Ingeniería & Proyectos</option>
+                    <option value="Estrategia y Operaciones">📊 Estrategia & Operaciones</option>
+                    <option value="Startups">🚀 Startups & Casos</option>
+                    <option value="Pioneros y Referentes">🏛️ Pioneros & Referentes</option>
+                    <option value="Cultura Tech y Media">🎬 Cultura Tech & Media</option>
                   </select>
                 </div>
 

@@ -1,9 +1,9 @@
 ---
 title: Florence Nightingale - La madre de la Enfermería
 date: 2025-09-06
-category: "Biografías"
+category: "Pioneros y Referentes"
 draft: False
-categories: ["casos_exito"]
+categories: ["casos_exito", "Pioneros y Referentes"]
 tags: ["enfermería", "florence nightingale", "sanidad", "crimea"]
 description: "Florence Nightingale, enfermera, escritora y estadística británica, madre de la enfermería y una de las primeras científicas de datos."
 summary: "¿Quién fue la madre de la enfermería? Florence Nightingale una de las primeras científicas de datos, multidisciplinar y un referente para nuestros días"

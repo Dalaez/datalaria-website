@@ -3,13 +3,17 @@ title: "5 Fuerzas de Porter Ponderadas y Atractivo de Industria: La Guía Cuanti
 date: 2026-10-19
 draft: false
 translationKey: quantitative-porter-5-forces
-category: "Artículos Técnicos"
-categories: ["Estrategia Empresarial", "Toma de Decisiones", "Finanzas Corporativas", "Management"]
+category: "Estrategia y Operaciones"
+categories: ["Estrategia Empresarial", "Toma de Decisiones", "Finanzas Corporativas", "Management", "Estrategia y Operaciones"]
 tags: ["5 Fuerzas de Porter", "Atractivo de Industria", "Estrategia C-Level", "Economic Moat", "Pirámide de Minto", "Plantilla Excel", "PowerPoint Ejecutivo", "Asignación de Capital"]
 description: "Guía metodológica exhaustiva para transformar el análisis tradicional cualitativo de las 5 Fuerzas de Porter en un motor matemático ponderado con gráfico radar dinámico, diagnóstico de foso defensivo (Moat) y plan de acción para comités directivos."
 summary: "El análisis de las 5 Fuerzas de Porter suele estancarse en listas estáticas sin jerarquía ni impacto financiero real. En esta guía de estándar consultoría estratégica Tier-1 (McKinsey / BCG) formalizamos la evaluación estocástica ponderada del sector, el cálculo del Índice de Atractivo de Industria, la matriz cartesiana de blindaje competitivo (Moat) y el protocolo de defensa ante Comités de Inversión y Consejos de Administración."
+cover:
+  image: "cover.png"
+  alt: "5 Fuerzas de Porter Ponderadas y Atractivo de Industria: Análisis Cuantitativo y Moat Defensivo"
+  caption: "5 Fuerzas de Porter Cuantitativas: Scoring estocástico, gráfico Radar dinámico y diagnóstico de foso defensivo ante Comités de Inversión."
+  relative: true
 ---
-
 En casi cualquier comité de dirección, sesión anual de planificación estratégica o revisión de adquisiciones (M&A) se proyecta invariablemente el diagrama canónico de las **5 Fuerzas de Michael E. Porter**: un bloque central de rivalidad rodeado por proveedores, clientes, nuevos entrantes y productos sustitutos.
 
 Sin embargo, en el 90% de las corporaciones, este marco sufre una degradación sistemática:

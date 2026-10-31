@@ -1,9 +1,9 @@
 ---
 title: "Construyendo Datalaria: Tecnologías y herramientas"
 date: 2025-08-17
-category: "Proyectos Tecnológicos"
+category: "IA, Ingeniería y Proyectos"
 draft: False
-categories: ["Proyectos"]
+categories: ["Proyectos", "IA, Ingeniería y Proyectos"]
 tags: ["hugo", "jamstack", "netlify", "github", "wordpress", "desarrollo web", "ci/cd"]
 image: hugo_vs_wordpress.png
 social_text: "¿Un blog potente SIN WordPress? 🤯 ¡Sí! AQUI CAMBIO ALGO..."

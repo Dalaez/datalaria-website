@@ -1,9 +1,9 @@
 ---
 title: "Business Case Financiero: Cómo Calcular VAN, TIR, Payback Descontado y Análisis de Sensibilidad Tornado en Excel"
-date: 2026-11-20
+date: 2026-11-08
 draft: false
-category: "Artículos Técnicos"
-categories: ["Finanzas Corporativas", "Estrategia Corporativa", "Plantillas Ejecutivas"]
+category: "Estrategia y Operaciones"
+categories: ["Finanzas Corporativas", "Estrategia Corporativa", "Plantillas Ejecutivas", "Estrategia y Operaciones"]
 tags: ["Business Case", "VAN", "TIR", "MIRR", "Payback Descontado", "WACC", "CAPM", "Gráfico Tornado", "Análisis de Sensibilidad", "CFO", "C-Level"]
 description: "Guía metodológica y cuantitativa para construir un Business Case de grado Consejo de Administración: Flujo de Caja Libre Descontado (DCF), cálculo de WACC vía CAPM, VAN, TIR, MIRR, Payback con interpolación, Gráfico Tornado y gobernanza con stage gates."
 summary: "Sustituye las hojas de cálculo artesanales basadas en beneficio contable y sesgo optimista por un modelo financiero institucional de Flujo de Caja Libre Descontado (DCF). Aprende a calcular el WACC mediante CAPM, evaluar VAN y TIR sin trampas de reinversión, modelar el Gráfico Tornado y estructurar la financiación en tramos condicionados ante el Comité de Inversiones."

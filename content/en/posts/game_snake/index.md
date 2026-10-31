@@ -2,8 +2,8 @@
 title: "From Zero to Hero: Create a Cyberpunk Snake Game with Real-Time Ranking using Supabase and Vanilla JS"
 date: 2026-02-14
 draft: false
-category: "Tech Projects"
-categories: ["Web Development", "GameDev", "Tutorials"]
+category: "AI, Engineering & Projects"
+categories: ["Web Development", "GameDev", "Tutorials", "AI, Engineering & Projects"]
 tags: ["JavaScript", "Supabase", "PostgreSQL", "Canvas", "HTML5", "TailwindCSS"]
 image: cover.png
 description: "Learn to create a neon arcade-style web game using only HTML5 Canvas and Vanilla JS. Discover how to integrate a global real-time leaderboard using Supabase's PostgreSQL database."

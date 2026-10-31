@@ -2,8 +2,8 @@
 title: "Quantitative RACI Matrix: Operational Workload Balancing, Single Accountability & Bottleneck Detection"
 date: 2026-11-25
 draft: false
-category: "Technical Articles"
-categories: ["Operational Control", "Team Governance", "Executive Templates"]
+category: "Strategy & Operations"
+categories: ["Operational Control", "Team Governance", "Executive Templates", "Strategy & Operations"]
 tags: ["RACI Matrix", "PMBOK", "PRINCE2", "Workload Balancing", "Team Governance", "Bottlenecks", "FTE Capacity", "C-Level", "PMO"]
 description: "A comprehensive guide to transforming traditional qualitative RACI charts into an automated quantitative workload engine: single accountability enforcement, role-based FTE saturation formulas, burnout heatmaps, and C-Level rebalancing plans."
 summary: "Transform legacy qualitative RACI charts into an audited quantitative governance framework for corporate Executive Committees. Based on Tier-1 standards (PMBOK 7th Edition / PRINCE2), this methodology enforces single non-negotiable accountability (A=1), calculates composite effort hours per role, detects operational bottlenecks, and builds an audited rebalancing roadmap to safeguard project execution."

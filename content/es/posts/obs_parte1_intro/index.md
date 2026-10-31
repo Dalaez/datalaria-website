@@ -2,8 +2,8 @@
 title: "El Ajedrez de la Obsolescencia: Cómo convertir el colapso de la cadena de suministro en tu mayor ventaja competitiva"
 date: 2026-04-11
 draft: false
-category: "Proyectos Tecnológicos"
-categories: ["Ingeniería de la Obsolescencia", "Operations Engineering", "Supply Chain"]
+category: "IA, Ingeniería y Proyectos"
+categories: ["Ingeniería de la Obsolescencia", "Operations Engineering", "Supply Chain", "IA, Ingeniería y Proyectos"]
 tags: ["Supply Chain", "Risk Management", "End of Life", "First Principles Thinking", "IEC 62402"]
 author: "Datalaria"
 description: "La obsolescencia de componentes no es un accidente, sino una entropía predecible que, gestionada con precisión, se convierte en una ventaja competitiva masiva. Rompiendo la falacia del Cisne Negro industrial."

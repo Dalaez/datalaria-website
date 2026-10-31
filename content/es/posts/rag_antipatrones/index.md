@@ -2,8 +2,8 @@
 title: "RAG en Producción: 7 Antipatrones que Destruyen la Precisión (y Cómo los Solucioné)"
 date: 2026-07-11
 draft: false
-category: "Artículos Técnicos"
-categories: ["Inteligencia Artificial", "Ingeniería"]
+category: "IA, Ingeniería y Proyectos"
+categories: ["Inteligencia Artificial", "Ingeniería", "IA, Ingeniería y Proyectos"]
 tags: ["rag", "retrieval augmented generation", "embeddings", "chunking", "tool calling", "llm", "producción", "antipatrones"]
 description: "Análisis de los 7 errores más comunes al implementar RAG (Retrieval-Augmented Generation) en producción real. Con lecciones aprendidas del Ops Engineering Copilot y el radar agéntico de obsolescencia de Datalaria, y la comparativa definitiva entre RAG y Tool Calling."
 summary: "RAG es la aspirina de la IA generativa: todo el mundo la receta, casi nadie entiende cómo funciona realmente, y cuando falla, el paciente sufre alucinaciones. Después de implementar RAG en producción con el Ops Copilot y desecharlo a favor de Tool Calling en el radar de obsolescencia, he catalogado los 7 errores que destruyen la precisión — y las soluciones que de verdad funcionan."

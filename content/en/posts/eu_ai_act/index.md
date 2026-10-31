@@ -2,8 +2,8 @@
 title: "EU AI Act: What Every Engineer Needs to Know (No Lawyers Required)"
 date: 2026-07-05
 draft: false
-category: "Technical Articles"
-categories: ["Artificial Intelligence", "Engineering", "Regulation"]
+category: "AI, Engineering & Projects"
+categories: ["Artificial Intelligence", "Engineering", "Regulation", "AI, Engineering & Projects"]
 tags: ["eu ai act", "ai regulation", "compliance", "high risk", "startups", "engineering", "europe"]
 description: "A technical guide to the European AI Regulation (EU AI Act) written by and for engineers. Risk classification, technical obligations, fines, compliance checklist and connection with Spanish AI Law and AESIA."
 summary: "On August 2, 2026, most obligations of the EU AI Act come into force. Maximum fine: 35 million euros or 7% of your global turnover. And most articles explaining this regulation are written by lawyers, for lawyers. Not this one. This one is written by an engineer who already operates AI agents in production, translating every article of the regulation into the language we actually understand: architectures, pipelines, and code."

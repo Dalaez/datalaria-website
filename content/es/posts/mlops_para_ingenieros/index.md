@@ -2,8 +2,8 @@
 title: "MLOps para Ingenieros: Cómo Llevar un Modelo de IA de Jupyter a Producción sin Morir en el Intento"
 date: 2026-08-27
 draft: false
-category: "Artículos Técnicos"
-categories: ["Inteligencia Artificial", "Ingeniería"]
+category: "IA, Ingeniería y Proyectos"
+categories: ["Inteligencia Artificial", "Ingeniería", "IA, Ingeniería y Proyectos"]
 tags: ["mlops", "machine learning", "producción", "ci/cd", "observabilidad", "data drift", "prophet", "github actions", "mlflow"]
 description: "El 87% de los modelos de ML nunca llegan a producción. Esta guía desglosa los 4 pilares fundamentales de MLOps, cómo pasar de un notebook a un pipeline industrial resiliente, la detección de Data Drift y Concept Drift, y las lecciones reales de operar pipelines en Datalaria."
 summary: "Construir un modelo de Machine Learning en un notebook de Jupyter es fácil; mantenerlo vivo, preciso y monitorizado en producción con datos reales es donde mueren el 87% de los proyectos. Esta es la guía práctica de MLOps para ingenieros: los 4 pilares esenciales, las herramientas del stack moderno, y cómo transformar scripts aislados en pipelines industriales automatizados."

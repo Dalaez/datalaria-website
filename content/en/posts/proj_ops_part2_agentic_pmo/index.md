@@ -2,8 +2,8 @@
 title: "Project Operations Engineering Part 2: The Death of the 'Status Report' and the Rise of the Agentic PMO"
 date: 2026-06-02
 draft: true
-category: "Tech Projects"
-categories: ["Project Operations Engineering", "Operations Engineering"]
+category: "AI, Engineering & Projects"
+categories: ["Project Operations Engineering", "Operations Engineering", "AI, Engineering & Projects"]
 tags: ["Agentic PMO", "CrewAI", "EVM", "FastAPI", "Supabase", "First Principles"]
 author: "Datalaria"
 description: "Why the traditional Project Manager is high-latency human middleware, and how an event-driven, agentic architecture eradicates corporate reporting overhead."

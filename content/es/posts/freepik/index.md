@@ -3,7 +3,7 @@ title: "Freepik: La Historia del Gigante Malagueño que Domó a la IA para Conqu
 date: 2025-10-11
 category: "Startups"
 draft: False
-categories: ["casos_exito", "IA"]
+categories: ["casos_exito", "IA", "Startups"]
 tags: ["freepik", "ia", "ia generativa", "malaga", "startup", "modelo de negocio", "disrupcion"]
 description: "Un análisis profundo de cómo Freepik, la startup malagueña, pasó de ser un buscador de imágenes a un líder global, enfrentándose a la disrupción de la IA con una estrategia audaz que está redefiniendo el futuro de la creatividad."
 summary: "Cuando la IA generativa amenazó con destruir la industria del contenido de stock, una empresa de Málaga apostó su futuro a una reinvención total. Esta es la historia de Freepik: de su ingenioso modelo 'freemium' a su pivote estratégico para surfear la ola de la IA y competir cara a cara con los gigantes tecnológicos."

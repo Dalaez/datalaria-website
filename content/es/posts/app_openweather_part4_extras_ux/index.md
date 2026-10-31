@@ -1,9 +1,9 @@
 ---
 title: "Proyecto Weather (Extras): Más Allá de la IA - Construyendo un Dashboard Robusto y Centrado en el Usuario"
 date: 2025-12-06
-category: "Proyectos Tecnológicos"
+category: "IA, Ingeniería y Proyectos"
 draft: False
-categories: ["Project Showcase", "Desarrollo Web", "UI/UX"]
+categories: ["Project Showcase", "Desarrollo Web", "UI/UX", "IA, Ingeniería y Proyectos"]
 tags: ["project-weather", "dashboard-climatico", "python", "javascript", "frontend", "backend", "i18n", "visualizacion-datos", "chart.js", "ui-ux"]
 image: cover.png
 description: "Un análisis profundo de las características 'extra' y las decisiones de diseño detrás de Project Weather, mostrando cómo la recolección avanzada de datos, la internacionalización, el filtrado personalizado y las mejoras de UI/UX transformaron un dashboard básico en una aplicación meteorológica completa, robusta y fácil de usar, complementando sus capacidades centrales de predicción por IA."

@@ -3,8 +3,8 @@ title: "Google Analytics 4 y Search Console Automatizados: Cómo Medir el ROI Or
 date: 2026-12-09
 draft: false
 image: "cover.png"
-category: "Artículos Técnicos"
-categories: ["Content Ops", "Analítica Web", "SEO", "Automatización", "Ingeniería de Software"]
+category: "IA, Ingeniería y Proyectos"
+categories: ["Content Ops", "Analítica Web", "SEO", "Automatización", "Ingeniería de Software", "IA, Ingeniería y Proyectos"]
 tags: ["Google Analytics 4", "Search Console", "Python", "Content Ops as Code", "SEO Técnico", "Pydantic", "ROI Editorial", "Privacidad de Datos"]
 description: "Cómo conectar las APIs de GA4 y Search Console mediante Service Account para auditar el tráfico orgánico, calcular el patrimonio editorial y detectar obsolescencia sin vulnerar la privacidad comercial."
 summary: "Publicar artículos técnicos y herramientas interactivas sin medir su retorno orgánico convierte la estrategia editorial en un acto de fe. En esta cuarta entrega de Datalaria Pulse mostramos cómo automatizamos la ingesta de telemetría desde Google Analytics 4 y Google Search Console con una Service Account de Python, transformamos cifras absolutas en índices relativos deterministas (Base 100 y percentiles) y alimentamos una matriz de decisión que detecta joyas SEO ocultas, motores de tráfico y brechas de monetización."

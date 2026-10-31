@@ -1,9 +1,9 @@
 ---
 title: "Financial Business Case: How to Calculate NPV, IRR, Discounted Payback, and Tornado Sensitivity Analysis in Excel"
-date: 2026-11-20
+date: 2026-11-08
 draft: false
-category: "Technical Articles"
-categories: ["Corporate Finance", "Corporate Strategy", "Executive Templates"]
+category: "Strategy & Operations"
+categories: ["Corporate Finance", "Corporate Strategy", "Executive Templates", "Strategy & Operations"]
 tags: ["Business Case", "NPV", "IRR", "MIRR", "Discounted Payback", "WACC", "CAPM", "Tornado Chart", "Sensitivity Analysis", "CFO", "C-Level"]
 description: "Comprehensive quantitative methodology to build a Board-ready Financial Business Case: Discounted Free Cash Flow (DCF), WACC estimation via CAPM, NPV, IRR, MIRR, interpolated Discounted Payback, Tornado sensitivity chart, and stage-gate governance."
 summary: "Replace informal spreadsheets plagued by accounting profit confusion, unmodeled working capital, and optimism bias with an institutional Discounted Free Cash Flow (DCF) model. Master WACC calculation via CAPM, evaluate NPV and IRR without reinvestment fallacies, run Tornado sensitivity analyses, and structure tranched capital allocation before the Investment Committee."

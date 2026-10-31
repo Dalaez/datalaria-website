@@ -2,8 +2,8 @@
 title: "Leonid Kantorovich: El Matemático que Desafió a Stalin con la Programación Lineal"
 date: 2026-05-24
 draft: false
-category: "Biografías"
-categories: ["casos_exito"]
+category: "Pioneros y Referentes"
+categories: ["casos_exito", "Pioneros y Referentes"]
 tags: ["leonid kantorovich", "programación lineal", "optimización", "investigación de operaciones", "historia de los datos"]
 description: "Leonid Kantorovich inventó la programación lineal para optimizar recursos en la URSS, enfrentándose al dogma económico estalinista. Su legado impulsa hoy la logística global y la ciencia de datos."
 summary: "Conoce a Leonid Kantorovich, el genio soviético que revolucionó la asignación de recursos. Su creación, la programación lineal, desafió la ortodoxia marxista y le valió el Premio Nobel."

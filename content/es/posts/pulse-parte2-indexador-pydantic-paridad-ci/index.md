@@ -3,8 +3,8 @@ title: "Del Front Matter al Índice: Pydantic v2, Paridad Bilingüe ES/EN y Auto
 date: 2026-11-25
 draft: false
 image: "cover.png"
-category: "Artículos Técnicos"
-categories: ["Content Ops", "Ingeniería de Software", "Automatización"]
+category: "IA, Ingeniería y Proyectos"
+categories: ["Content Ops", "Ingeniería de Software", "Automatización", "IA, Ingeniería y Proyectos"]
 tags: ["Pydantic", "Python", "GitHub Actions", "CI/CD", "Content Ops as Code", "Bilingüe", "Hugo", "Markdown"]
 description: "Cómo construir un pipeline de validación estricta con Pydantic v2, garantizar paridad bilingüe ES ⇔ EN al 100% y orquestar la compilación editorial en CI/CD con GitHub Actions."
 summary: "El Markdown es un formato extraordinario para escribir, pero un pésimo sustituto de una base de datos cuando carece de contratos de tipado. En esta segunda entrega de Datalaria Pulse mostramos cómo construimos un indexador determinista en Python con Pydantic v2, blindamos la paridad bilingüe mediante resolución de grafos y desplegamos un pipeline de CI/CD en GitHub Actions que aborta la compilación si existe la más mínima inconsistencia."

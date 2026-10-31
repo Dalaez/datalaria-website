@@ -2,8 +2,8 @@
 title: "Matriz de Riesgos Cuantitativa & AMFE / FMEA: De la Intuición Cualitativa al Número de Prioridad de Riesgo (NPR)"
 date: 2026-11-20
 draft: false
-category: "Artículos Técnicos"
-categories: ["Control Operativo", "Gestión de Riesgos", "Plantillas Ejecutivas"]
+category: "Estrategia y Operaciones"
+categories: ["Control Operativo", "Gestión de Riesgos", "Plantillas Ejecutivas", "Estrategia y Operaciones"]
 tags: ["Matriz de Riesgos", "AMFE", "FMEA", "ISO 31000", "AIAG-VDA", "NPR", "RPN", "COSO ERM", "Control Operativo", "C-Level", "Auditoría de Riesgos"]
 description: "Guía metodológica y cuantitativa para transformar la matriz de riesgos subjetiva en un motor analítico bidimensional (ISO 31000) y tridimensional (AMFE/FMEA AIAG-VDA): cálculo de Severidad x Ocurrencia x Detección, curvas Pareto, ROI del control (CER) y defensa C-Level ante el Consejo de Administración."
 summary: "Transforma los tradicionales registros cualitativos de riesgos en un motor cuantitativo de grado Consejo de Administración. Esta metodología combina el estándar ISO 31000 (mapa de calor 5x5 de Probabilidad vs. Impacto) con el rigor industrial AIAG-VDA / IATF 16949 (Análisis de Modos de Fallo y Efectos: Severidad x Ocurrencia x Detección = NPR), cuantificando la pérdida monetaria esperada E(L), el retorno de inversión del control (CER) y el mapa de ruta de contingencia para comités de auditoría."

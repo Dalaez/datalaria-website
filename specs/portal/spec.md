@@ -120,6 +120,11 @@ releases: [ { version: "...", date: "...", state: "released", type: "...", title
    - Cada miniatura ofrece doble acción explícita:
      1. **Acción Ejecutable Primaria (`.dlh-app-btn--primary`):** Enlace directo a la aplicación en vivo (`/apps/<slug>/` o `/games/snake/`).
      2. **Acción de Ficha Asociada (`.dlh-app-btn--secondary` + enlace en portada/título):** Enlace directo a la página dedicada de objetivos, arquitectura y evolución (`/{lang}/apps/<slug>/`).
+5. **Tarjetas de Suite en el Catálogo de Recursos B2B (`layouts/partials/recursos_catalog.html`, `assets/css/extended/recursos.css`):**
+   - Cada tarjeta de Suite en `#suites-quick-grid` (`#suite-01`, `#suite-02`, `#suite-03`) y en el banner contextual `#suite-contextual-banner` ofrece la misma triada de acciones que los packs individuales:
+     1. **Botón `Detalles ℹ️` (`Details ℹ️`):** Abre el modal interactivo (`openModal('suite-01')`) mostrando la vista previa visual compuesta (`suite-01-preview-es.png` / `suite-01-preview-en.png`), entregables, características clave, enlace al artículo técnico y CTA de compra.
+     2. **Botón `Artículo técnico 📖` (`Technical Article 📖`):** Enlaza directamente al Post Pilar Maestro de la Suite (`/es/posts/estrategia-corporativa-mba-framework-cuantitativo/` y `/en/posts/corporate-strategy-mba-quantitative-framework/` para Suite 01; indicador `Artículo próximamente` / `Article coming soon` cuando el post pilar aún no está publicado).
+     3. **Botón `Comprar Suite →` (`Buy Suite →`):** Enlace directo al checkout embebido de Lemon Squeezy con precio actual y precio original tachado (`19€` vs `28€` en Suite 01).
 
 ---
 

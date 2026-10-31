@@ -2,8 +2,8 @@
 title: "Ingeniería S&OP II: Demand Planning, de la Adivinación a la Probabilidad"
 date: 2026-03-07
 draft: false
-category: "Proyectos Tecnológicos"
-categories: ["Ingeniería de S&OP", "Data Engineering", "Machine Learning"]
+category: "IA, Ingeniería y Proyectos"
+categories: ["Ingeniería de S&OP", "Data Engineering", "Machine Learning", "IA, Ingeniería y Proyectos"]
 tags: ["Supply Chain", "Forecasting", "Prophet", "Python", "MLOps"]
 author: "Datalaria"
 description: "Una predicción determinista en Excel es un riesgo financiero. En el Capítulo 2, evolucionamos nuestro pipeline S&OP con Facebook Prophet para calcular la probabilidad de la demanda, intervalos de incertidumbre y Safety Stock matemáticamente."

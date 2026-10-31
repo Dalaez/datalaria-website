@@ -2,8 +2,8 @@
 title: "Project LifeOps (Part 1): Personal Operating System Architecture and FastAPI + Supabase Backend"
 date: 2026-09-10
 draft: false
-category: "Tech Projects"
-categories: ["Projects", "Web Development"]
+category: "AI, Engineering & Projects"
+categories: ["Projects", "Web Development", "AI, Engineering & Projects"]
 tags: ["python", "fastapi", "supabase", "react", "postgresql", "backend", "productivity", "data", "cloud", "serverless"]
 image: cover.png
 description: "First installment of the LifeOps series: how I designed and built my own all-in-one personal & professional operating system at zero cost ($0/month) unifying fitness, books, movies, Kanban tasks and projects with FastAPI and Supabase."

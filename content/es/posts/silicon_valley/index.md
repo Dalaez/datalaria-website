@@ -2,8 +2,8 @@
 title: "Silicon Valley y el Dilema de PiperNet: La Profecía de la IA Incontrolable y los Incidentes con Agentes Reales"
 date: 2026-09-27
 draft: false
-category: "Artículos Técnicos"
-categories: ["Ingeniería", "Series", "Inteligencia Artificial"]
+category: "Cultura Tech y Media"
+categories: ["Ingeniería", "Series", "Inteligencia Artificial", "Cultura Tech y Media"]
 tags: ["silicon valley", "pipernet", "pied piper", "hbo", "agentes ia", "seguridad ia", "agi", "compresion", "alineamiento", "startups"]
 image: cover.jpg
 weight: 10

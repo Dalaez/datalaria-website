@@ -2,8 +2,8 @@
 title: "Learning with AI - NotebookLM: From a Book to a Multimedia Learning Platform"
 date: 2025-08-31
 draft: false
-category: "Technical Articles"
-categories: ["Tools"]
+category: "Tech Culture & Media"
+categories: ["Tools", "Tech Culture & Media"]
 tags: ["ai", "notebooklm", "google", "learning", "productivity", "sql", "mind map"]
 image: notebooklm_hero.png
 social_text: Think AI is just for text summaries?🧐 I turned a single SQL book into a Mind Map, Video Script, and Podcast using NotebookLM.🚀 It's not just a tool; it's a complete personalized learning ecosystem. See the transformation here 👇

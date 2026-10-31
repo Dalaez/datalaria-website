@@ -1,11 +1,11 @@
 ---
 title: Visualizaciones básicas
 date: 2025-08-12
-category: "Artículos Técnicos"
+category: "IA, Ingeniería y Proyectos"
 description: "Conoce cuáles son las visualizaciones básicas más utilizadas para analizar tus datos"
 summary: "¿Cuáles son las visualizaciones básicas 'estrella' en el análisis de datos?  Tartas, líneas, histogramas, proyecciones solares, pareto... veámoslas y entendámoslas"
 draft: False
-categories: ["fundamentos"]
+categories: ["fundamentos", "IA, Ingeniería y Proyectos"]
 tags: ["estadística", "visualizaciones", "distribucion", "gráficos", "representaciones"]
 
 weight: 10

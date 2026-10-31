@@ -2,8 +2,8 @@
 title: "Ingeniería S&OP III: El Fin de Excel (Programación Lineal para Supply Planning)"
 date: 2026-03-13
 draft: false
-category: "Proyectos Tecnológicos"
-categories: ["Ingeniería de S&OP", "Operations Research", "Python"]
+category: "IA, Ingeniería y Proyectos"
+categories: ["Ingeniería de S&OP", "Operations Research", "Python", "IA, Ingeniería y Proyectos"]
 tags: ["Supply Chain", "Optimization", "PuLP", "Linear Programming", "Supabase"]
 author: "Datalaria"
 description: "Un plan de suministro basado en 'semanas de cobertura' quema la caja de tu empresa. En este capítulo, usamos Python y PuLP para calcular matemáticamente el plan óptimo que minimiza costes financieros."

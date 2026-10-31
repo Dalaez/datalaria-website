@@ -3,7 +3,7 @@ title: "Graphext: The Spanish Startup That Spent 7 Years Building the 'Formula 1
 date: 2025-11-28
 category: "Startups"
 draft: False
-categories: ["success_stories", "AI"]
+categories: ["success_stories", "AI", "Startups"]
 tags: ["graphext", "ai", "explainable ai", "no-code", "startup", "big data", "visualization"]
 image: cover.png
 description: "The story of Graphext, the Spanish startup that defied norms by investing €7M in R&D before scaling, creating a unique Explainable AI platform that redefines data analysis."

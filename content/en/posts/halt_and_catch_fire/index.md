@@ -2,8 +2,8 @@
 title: "Halt and Catch Fire: The Cult TV Series That Understood Software Engineering Better Than Silicon Valley"
 date: 2026-08-29
 draft: false
-category: "Technical Articles"
-categories: ["Engineering", "TV Series", "Tech History"]
+category: "Tech Culture & Media"
+categories: ["Engineering", "TV Series", "Tech History", "Tech Culture & Media"]
 tags: ["halt and catch fire", "software history", "reverse engineering", "clean room", "bios", "startups", "hardware", "internet"]
 image: cover.jpg
 weight: 10

@@ -1,9 +1,9 @@
 ---
 title: "Proyecto Weather Service (Parte 3): Prediciendo el Futuro con IA y OpenWeatherMap"
 date: 2025-11-15
-category: "Proyectos Tecnológicos"
+category: "IA, Ingeniería y Proyectos"
 draft: False
-categories: ["Proyectos", "IA", "Herramientas"]
+categories: ["Proyectos", "IA", "Herramientas", "IA, Ingeniería y Proyectos"]
 tags: ["machine-learning", "regresion", "openweathermpa", "python", "pandas", "scikit-learn", "javascript", "frontend", "prediccion-datos", "pronostico-tiempo", "serverless"]
 image: cover.png
 description: "La entrega final de nuestro proyecto Weather Service. Nos adentramos en la adición de capacidades predictivas, combinando pronósticos oficiales de OpenWeatherMap con nuestro modelo de IA (Regresión Lineal) personalizado para predecir el tiempo de mañana y visualizar su precisión."

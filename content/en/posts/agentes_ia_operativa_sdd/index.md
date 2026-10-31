@@ -2,8 +2,8 @@
 title: "How to Build AI Agents for Daily Enterprise Operations: From SOPs to Spec-Driven Development (SDD)"
 date: 2026-11-17
 draft: false
-category: "Technical Articles"
-categories: ["Engineering", "Artificial Intelligence", "Operations"]
+category: "AI, Engineering & Projects"
+categories: ["Engineering", "Artificial Intelligence", "Operations", "AI, Engineering & Projects"]
 tags: ["ai agents", "automation", "sdd", "spec-driven development", "sop", "operations", "n8n", "crewai", "langgraph", "mcp", "pydantic", "productivity"]
 image: cover.jpg
 weight: 10

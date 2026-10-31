@@ -1,9 +1,9 @@
 ---
 title: "La Meta no es (solo) sobre fábricas: Sincronizando tu empresa en la era de la IA"
 date: 2025-12-13
-category: "Artículos Técnicos"
+category: "Cultura Tech y Media"
 draft: False
-categories: ["Estrategia", "Gestión de Proyectos", "IA"]
+categories: ["Estrategia", "Gestión de Proyectos", "IA", "Cultura Tech y Media"]
 tags: ["toc", "la-meta", "teoria-de-restricciones", "gestion-de-proyectos", "cadena-de-suministro", "ia", "industria-4.0", "lean", "six-sigma", "cadena-critica"]
 image: cover.png
 description: "Un análisis profundo de 'La Meta' de Eli Goldratt y cómo la Teoría de Restricciones (TOC) se aplica más allá de la producción, a la ingeniería, la gestión de proyectos y la cadena de suministro, potenciada por la IA y la Industria 4.0."

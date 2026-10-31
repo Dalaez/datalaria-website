@@ -1,9 +1,9 @@
 ---
 title: "The Goal is Not (Just) About Factories: Synchronizing Your Enterprise in the Age of AI"
 date: 2025-12-13
-category: "Technical Articles"
+category: "Tech Culture & Media"
 draft: False
-categories: ["Strategy", "Project Management", "AI"]
+categories: ["Strategy", "Project Management", "AI", "Tech Culture & Media"]
 tags: ["toc", "the-goal", "theory-of-constraints", "project-management", "supply-chain", "ai", "industry-4.0", "lean", "six-sigma", "critical-chain"]
 image: cover.png
 description: "An in-depth analysis of Eli Goldratt's 'The Goal' and how the Theory of Constraints (TOC) applies beyond production, to engineering, project management, and the supply chain, empowered by AI and Industry 4.0."

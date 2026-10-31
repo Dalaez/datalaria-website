@@ -2,8 +2,8 @@
 title: "Autopilot - Post-Mortem Técnico: Cómo Construí un Ejército de IA con Gemini"
 date: 2026-03-04
 draft: false
-category: "Proyectos Tecnológicos"
-categories: ["Ingeniería", "IA", "DevOps"]
+category: "IA, Ingeniería y Proyectos"
+categories: ["Ingeniería", "IA", "DevOps", "IA, Ingeniería y Proyectos"]
 tags: ["devchallenge", "geminireflections", "gemini", "ai", "crewai", "python"]
 image: "cover.png"
 description: "Un post-mortem técnico sincero sobre el Proyecto Autopilot: cómo utilicé Google Gemini y CrewAI dentro de GitHub Actions para automatizar la distribución de contenido y la ingeniería necesaria para que los LLMs sean deterministas."

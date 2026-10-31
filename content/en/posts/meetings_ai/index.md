@@ -1,9 +1,9 @@
 ---
 title: "Excellent Meetings in the AI Era: The Definitive Decalogue"
 date: 2025-11-21
-category: "Technical Articles"
+category: "Strategy & Operations"
 draft: False
-categories: ["Productivity", "Tools"]
+categories: ["Productivity", "Tools", "Strategy & Operations"]
 tags: ["ai", "meetings", "productivity", "remote work", "prompt engineering", "best practices"]
 image: cover.png
 description: "A decalogue of 10 practical steps to transform your meetings, making them shorter, more effective, and agile, with a special focus on how AI can be your best ally."

@@ -1,9 +1,9 @@
 ---
 title: "Calculadora de Stock de Seguridad & ROP: Optimización de Inventario y Working Capital de Grado Consejo de Administración"
-date: 2026-11-06
+date: 2026-11-22
 draft: false
-category: "Artículos Técnicos"
-categories: ["Control Operativo", "Supply Chain", "Plantillas Ejecutivas"]
+category: "Estrategia y Operaciones"
+categories: ["Control Operativo", "Supply Chain", "Plantillas Ejecutivas", "Estrategia y Operaciones"]
 tags: ["Stock de Seguridad", "Punto de Pedido", "ROP", "Safety Stock", "EOQ", "Wilson", "Working Capital", "Cadena de Suministro", "APICS", "ASCM", "Inventario", "C-Level"]
 description: "Guía cuantitativa y metodológica de optimización de inventarios (APICS / ASCM / MIT CTL): erradicación de las reglas empíricas de 3 semanas, convolución estocástica multivariante de demanda y Lead Time, dimensionamiento ROP y Wilson EOQ, simulación de Diente de Sierra y liberación de capital de trabajo para defender ante el Consejo de Administración."
 summary: "Erradica las destructivas reglas empíricas en la gestión de inventario. Descubre cómo calcular con rigor matemático el Stock de Seguridad (SS), el Punto de Pedido (ROP) y el Lote Económico (EOQ) modelando la variabilidad de la demanda y el retraso del proveedor, blindando el Nivel de Servicio al 98% y liberando cientos de miles de euros de capital de trabajo inmovilizado."

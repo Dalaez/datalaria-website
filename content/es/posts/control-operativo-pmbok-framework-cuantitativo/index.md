@@ -2,8 +2,8 @@
 title: "Control Operativo & PMBOK Cuantitativo: El Framework Integral de 5 Pilares para Directores de Operaciones"
 date: 2026-11-07
 draft: false
-category: "Artículos Técnicos"
-categories: ["Control Operativo", "Gestión de Proyectos", "PMO Corporativa", "Cadena de Suministro"]
+category: "Estrategia y Operaciones"
+categories: ["Control Operativo", "Gestión de Proyectos", "PMO Corporativa", "Cadena de Suministro", "Estrategia y Operaciones"]
 tags: ["Control Operativo", "PMBOK", "Matriz RACI", "AMFE", "FMEA", "Estimación PERT", "EVM", "Valor Ganado", "Stock de Seguridad", "ROP", "Curva S", "Working Capital", "C-Level", "PMO"]
 description: "De la gobernanza de personas al control de costes y la cadena de suministro. Guía metodológica para conectar la Matriz RACI, AMFE/FMEA, Estimación PERT, EVM Curva S y Stock de Seguridad en un sistema unificado de ejecución."
 summary: "Descubre cómo articular un motor de control operativo de 5 pilares de grado Consejo de Administración. Unifica la gobernanza de equipos (RACI Cuantitativa), la prevención de fallos (AMFE/FMEA AIAG-VDA), la certidumbre de plazos (PERT Estocástico), el control de costes y avance real (EVM Curva S) y la resiliencia del capital circulante (Stock de Seguridad y ROP)."

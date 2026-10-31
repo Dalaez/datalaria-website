@@ -228,3 +228,26 @@
   - Plena paridad arquitectónica entre LifeOps y Pulse.
   - Sincronización instantánea Web ↔ Localhost en cuanto se active la sesión.
   - Embudo de monetización escalonado: Kit Básico ($39-$49) ➔ Demo Interactiva Web ➔ Contratos de Consultoría y Despliegue Pro.
+
+
+---
+
+## ADR-016: Reestructuración de la Taxonomía Editorial en 5 Pilares con Blindaje SEO
+- **Fecha:** 2026-10-31
+- **Estado:** Aceptado
+- **Contexto:**
+  1. La home de Datalaria agrupaba los artículos en 4 categorías: `Artículos Técnicos` (52), `Proyectos Tech` (37), `Startups` (13) y `Biografías` (12).
+  2. Esta estructura presentaba dos fricciones: diluía los artículos culturales (cine, series, libros como *Her* o *Halt and Catch Fire*) dentro de artículos técnicos, y fragmentaba las series de desarrollo de software (*Pulse* en técnicos vs. *LifeOps* en proyectos). Además, los 20 artículos cuantitativos clave para la venta de *Executive Decision Packs* carecían de visibilidad agrupada.
+  3. Cualquier cambio en taxonomías de Hugo conlleva el riesgo de romper páginas `/categories/` o `/tags/` previamente indexadas por motores de búsqueda si se eliminan destructivamente.
+- **Decisión:**
+  1. Evolucionar la categorización a **5 Pilares Editoriales**:
+     - `IA, Ingeniería y Proyectos` (`AI, Engineering & Projects`): Fusión de proyectos y artículos de desarrollo/IA.
+     - `Estrategia y Operaciones` (`Strategy & Operations`): Modelos cuantitativos, PMO, finanzas y embudo B2B.
+     - `Startups` (`Startups`): Casos de éxito y escalado empresarial.
+     - `Pioneros y Referentes` (`Pioneers & Icons`): Evolución de «Biografías» hacia pensamiento epistemológico y científico.
+     - `Cultura Tech y Media` (`Tech Culture & Media`): Cine, series, literatura técnica y contenidos digitales.
+  2. **Blindaje Estricto de SEO (Invariante INV-TAX-1):** Se prohíbe eliminar tags (`tags: [...]`) o categorías secundarias existentes en los archivos markdown. Se actualiza únicamente el discriminador primario `category:` y se preserva intacta la totalidad de taxonomías preexistentes.
+- **Consecuencias:**
+  - Cero roturas de URLs ni pérdida de posicionamiento orgánico en Google.
+  - Mayor conversión hacia productos de Lemon Squeezy gracias a la pestaña dedicada `Estrategia & Operaciones`.
+  - Presentación equilibrada y profesional en el portal sin saturación de artículos.

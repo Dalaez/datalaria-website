@@ -2,8 +2,8 @@
 title: "Project LifeOps (Part 4): Executive Word (.docx) Reporting Engine and Multi-Sheet Excel (.xlsx) Export"
 date: 2026-09-18
 draft: false
-category: "Tech Projects"
-categories: ["Projects", "Web Development"]
+category: "AI, Engineering & Projects"
+categories: ["Projects", "Web Development", "AI, Engineering & Projects"]
 tags: ["python", "fastapi", "python-docx", "openpyxl", "word", "excel", "csv", "streaming", "reporting", "backend", "powerbi"]
 image: cover.png
 description: "Fourth installment of the LifeOps series: how I engineered the zero-disk in-memory generation engine (io.BytesIO) for executive Word (.docx) reports with python-docx and multi-sheet Excel workbooks (.xlsx) with openpyxl, plus streaming downloads in FastAPI and CSV backups with UTF-8 BOM."

@@ -2,8 +2,8 @@
 title: "Evaluación y Testing de Agentes de IA en Producción: Cómo Medir lo Impredecible"
 date: 2026-10-06
 draft: false
-category: "Artículos Técnicos"
-categories: ["Ingeniería", "Inteligencia Artificial", "DevOps"]
+category: "IA, Ingeniería y Proyectos"
+categories: ["Ingeniería", "Inteligencia Artificial", "DevOps", "IA, Ingeniería y Proyectos"]
 tags: ["agentes ia", "evaluacion", "testing", "llm-as-a-judge", "ragas", "mlops", "ci-cd", "calidad software", "eu ai act"]
 image: cover.jpg
 weight: 10

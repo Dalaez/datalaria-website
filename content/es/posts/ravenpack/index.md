@@ -3,7 +3,7 @@ title: "RavenPack: De la Analítica de Noticias en Marbella al Cerebro Cuantitat
 date: 2026-10-24
 draft: false
 category: "Startups"
-categories: ["casos_exito", "Inteligencia Artificial", "Deep Tech", "Finanzas"]
+categories: ["casos_exito", "Inteligencia Artificial", "Deep Tech", "Finanzas", "Startups"]
 tags: ["ravenpack", "armando gonzalez", "fintech", "nlp", "hedge funds", "wall street", "trading cuantitativo", "big data", "agentes ia", "marbella"]
 image: cover.jpg
 weight: 10

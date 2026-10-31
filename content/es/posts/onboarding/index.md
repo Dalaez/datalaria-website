@@ -2,8 +2,8 @@
 title: "De los '24 Días' al Éxito Inmediato: Revolucionando el Onboarding con Inteligencia Artificial"
 date: 2026-01-17
 draft: false
-category: "Artículos Técnicos"
-categories: ["Inteligencia Artificial", "Recursos Humanos", "Productividad"]
+category: "Estrategia y Operaciones"
+categories: ["Inteligencia Artificial", "Recursos Humanos", "Productividad", "Estrategia y Operaciones"]
 tags: ["Onboarding", "GenAI", "IDP", "Experiencia del Empleado", "Retención de Talento", "Gestión Documental"]
 image: cover.png 
 description: "El proceso de onboarding tradicional está roto, con un tiempo promedio de 24 días y un coste de 4.000€ por contratación. Este post explora cómo la IA Generativa y el Procesamiento Inteligente de Documentos (IDP) transforman la 'infoxicación' burocrática en una integración fluida, ofreciendo un mentor virtual 24/7 que puede mejorar la retención en un 82%."

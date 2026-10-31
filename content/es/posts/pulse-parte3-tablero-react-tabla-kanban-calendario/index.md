@@ -3,8 +3,8 @@ title: "Tabla Ejecutiva, Tablero Kanban y Calendario Mensual en React 19 sobre u
 date: 2026-12-02
 draft: false
 image: "cover.png"
-category: "Artículos Técnicos"
-categories: ["Content Ops", "Frontend", "React", "Ingeniería de Software"]
+category: "IA, Ingeniería y Proyectos"
+categories: ["Content Ops", "Frontend", "React", "Ingeniería de Software", "IA, Ingeniería y Proyectos"]
 tags: ["React 19", "TypeScript", "Vite", "Kanban", "Tailwind CSS", "Content Ops as Code", "Jamstack", "Hugo"]
 description: "Cómo diseñar una Single Page Application de alto rendimiento en React 19 que proyecta analítica, tablero Kanban y calendario editorial consumiendo un índice estático con latencia cero."
 summary: "Tradicionalmente, disponer de un tablero Kanban interactivo, una tabla con ordenación multifactorial y un calendario editorial requería una base de datos pesada y un servidor dedicado. En esta tercera entrega de Datalaria Pulse mostramos cómo construimos nuestra SPA en React 19 montada sobre un índice estático precompilado en build time: rendimiento instantáneo con cero latencia de red, filtrado avanzado en memoria y captura optimista de ideas."

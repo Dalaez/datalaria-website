@@ -2,8 +2,8 @@
 title: "Proyecto LifeOps (Parte 3): Módulos Interactivos: Deporte, Biblioteca, Cine y Tablero Kanban Profesional"
 date: 2026-09-15
 draft: false
-category: "Proyectos Tecnológicos"
-categories: ["Proyectos", "Desarrollo Web"]
+category: "IA, Ingeniería y Proyectos"
+categories: ["Proyectos", "Desarrollo Web", "IA, Ingeniería y Proyectos"]
 tags: ["react", "fastapi", "postgresql", "jsonb", "kanban", "deporte", "fitness", "lectura", "cine", "productivity", "frontend"]
 image: cover.png
 description: "Tercera entrega de la serie LifeOps: cómo desarrollé los módulos funcionales de la aplicación. Diseño de vistas duales (Tarjetas vs Tabla), telemetría deportiva con cálculo de ritmos y PBs, gestión de lectura y cine, y un tablero Kanban con bitácora de avances en PostgreSQL JSONB."

@@ -3,13 +3,17 @@ title: "McKinsey / GE 3x3 Matrix: Industry Attractiveness, Business Unit Strengt
 date: 2026-10-29
 draft: false
 translationKey: mckinsey-ge-matrix
-category: "Technical Articles"
-categories: ["Corporate Strategy", "Corporate Finance", "Portfolio Management", "Management"]
+category: "Strategy & Operations"
+categories: ["Corporate Strategy", "Corporate Finance", "Portfolio Management", "Management", "Strategy & Operations"]
 tags: ["McKinsey Matrix", "General Electric", "GE Matrix", "Capital Allocation", "Portfolio Management", "Industry Attractiveness", "Competitive Strength", "Minto Pyramid", "Excel Model", "Executive Presentation", "ROIC"]
 description: "Comprehensive methodological guide to implementing the McKinsey / General Electric 3x3 9-box matrix: multifactor assessment, management bias neutralization, and capital allocation plan for Investment Committees and Boards of Directors."
 summary: "Overcome the unifactorial limitations of the classic BCG matrix. In this Tier-1 strategy consulting guide (McKinsey / BCG standard), we formalize General Electric's 9-quadrant multifactor framework to categorize strategic business units into three capital allocation zones (Invest, Selectivity, and Harvest), neutralize executive self-reporting bias, safeguard corporate governance, and expand group ROIC."
+cover:
+  image: "cover.png"
+  alt: "McKinsey / GE 3x3 Matrix: Industry Attractiveness, Business Unit Strength & C-Level Capital Allocation"
+  caption: "McKinsey / GE 3x3 Matrix: 9-box multifactor framework for efficient CAPEX allocation and group ROIC expansion."
+  relative: true
 ---
-
 In nearly every investment committee, annual portfolio review, or Board of Directors strategy retreat, the same fundamental dilemma emerges: **how can a corporation efficiently and non-arbitrarily allocate tens of millions of dollars in CAPEX across business units operating in markets with radically divergent dynamics?**
 
 For decades, business schools defaulted to the classic **BCG 2x2 Matrix** (market growth rate vs. relative market share). However, in modern diversified corporations and C-Suite executive committees, this simplistic model introduces three severe analytical pathologies:

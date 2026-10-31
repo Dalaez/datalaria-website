@@ -2,8 +2,8 @@
 title: "Thomas Bayes: The Reverend Who Taught Us to Update Our Beliefs with Data"
 date: 2026-07-18
 draft: false
-category: "Biographies"
-categories: ["case-studies"]
+category: "Pioneers & Icons"
+categories: ["case-studies", "Pioneers & Icons"]
 tags: ["bayes", "probability", "bayesian inference", "prophet", "a/b testing", "statistics", "history of data"]
 description: "The story of Thomas Bayes, the 18th-century reverend whose posthumous theorem transformed statistics, medicine, machine learning, and demand planning. How Bayesian inference connects with Prophet, Netflix, and the modern supply chain."
 summary: "How do you update your opinion when you receive new evidence? If your answer is 'with data,' congratulations: you've been practicing Bayesianism for 260 years without knowing it. This is the story of an 18th-century reverend whose posthumous essay laid the foundation for machine learning, spam filters, medical diagnosis, and the probabilistic models we use today to forecast demand."

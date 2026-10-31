@@ -2,8 +2,8 @@
 title: "MLOps for Engineers: How to Take an AI Model from Jupyter to Production Without Dying in the Attempt"
 date: 2026-08-27
 draft: false
-category: "Technical Articles"
-categories: ["Artificial Intelligence", "Engineering"]
+category: "AI, Engineering & Projects"
+categories: ["Artificial Intelligence", "Engineering", "AI, Engineering & Projects"]
 tags: ["mlops", "machine learning", "production", "ci/cd", "observability", "data drift", "prophet", "github actions", "mlflow"]
 description: "87% of Machine Learning models never make it to production. This comprehensive guide breaks down the 4 essential pillars of MLOps, how to transition from a notebook to a resilient industrial pipeline, detecting Data & Concept Drift, and real production lessons from Datalaria."
 summary: "Building a Machine Learning model in a Jupyter notebook is easy; keeping it alive, accurate, and monitored in production with real-world streaming data is where 87% of projects die. This is the practical MLOps guide for engineers: the 4 core pillars, modern tool stacks, and how to turn isolated scripts into automated industrial pipelines."

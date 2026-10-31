@@ -3,7 +3,7 @@ title: "Graphext: La Startup Española que Invirtió 7 Años en Crear el 'Fórmu
 date: 2025-11-28
 category: "Startups"
 draft: False
-categories: ["casos_exito", "IA"]
+categories: ["casos_exito", "IA", "Startups"]
 tags: ["graphext", "ia", "ia explicable", "no-code", "startup", "big data", "visualizacion"]
 image: cover.png
 description: "La historia de Graphext, la startup española que desafió las normas invirtiendo 7M€ en I+D antes de escalar, creando una plataforma única de IA Explicable que redefine el análisis de datos."

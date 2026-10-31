@@ -2,8 +2,8 @@
 title: "DEVS: Computación Cuántica, Determinismo y la Pesadilla de los Multiversos"
 date: 2026-09-06
 draft: false
-category: "Artículos Técnicos"
-categories: ["Inteligencia Artificial", "Deep Tech", "Ciencia", "Series"]
+category: "Cultura Tech y Media"
+categories: ["Inteligencia Artificial", "Deep Tech", "Ciencia", "Series", "Cultura Tech y Media"]
 tags: ["devs", "alex garland", "computacion cuantica", "determinismo", "multiverso", "hugh everett", "demonio de laplace", "simulacion", "qubits"]
 image: cover.jpg
 weight: 10

@@ -2,8 +2,8 @@
 title: "Quantitative Risk Matrix & Operational FMEA: From Qualitative Intuition to Risk Priority Number (RPN)"
 date: 2026-11-20
 draft: false
-category: "Technical Articles"
-categories: ["Operational Control", "Risk Management", "Executive Templates"]
+category: "Strategy & Operations"
+categories: ["Operational Control", "Risk Management", "Executive Templates", "Strategy & Operations"]
 tags: ["Risk Matrix", "FMEA", "AMFE", "ISO 31000", "AIAG-VDA", "RPN", "COSO ERM", "Operational Control", "C-Level", "Risk Audit"]
 description: "A comprehensive guide to upgrading subjective risk matrices into a dual-engine quantitative framework (ISO 31000 and AIAG-VDA FMEA): Severity x Occurrence x Detection scoring, Pareto criticality curves, Control Cost-Effectiveness Ratio (CER), and Boardroom defense protocols."
 summary: "Transform legacy qualitative risk logs into an audited C-Level quantitative decision engine. Combining ISO 31000 standards (5x5 Probability vs. Impact heatmap) with industrial-grade AIAG-VDA / IATF 16949 rigor (Failure Mode and Effects Analysis: Severity x Occurrence x Detection = RPN), this framework quantifies expected financial loss E(L), computes capital mitigation ROI (CER), and establishes an audited roadmap for Board Audit and Risk Committees."

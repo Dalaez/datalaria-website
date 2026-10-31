@@ -1,9 +1,9 @@
 ---
 title: "Rational Decision-Making & Prioritization: The 3-Tier Quantitative Framework"
-date: 2026-11-02
+date: 2026-11-12
 draft: false
-category: "Technical Articles"
-categories: ["Decision Making", "Corporate Strategy", "Product Management", "Corporate Finance"]
+category: "Strategy & Operations"
+categories: ["Decision Making", "Corporate Strategy", "Product Management", "Corporate Finance", "Strategy & Operations"]
 tags: ["Decision Making", "Prioritization", "DAR Matrix", "RICE Matrix", "Business Case", "NPV", "IRR", "HiPPO", "CMMI", "C-Suite", "Capital Allocation"]
 description: "From vendor and architecture trade-offs to backlog capacity and CFO Capex justification. How to integrate DAR Matrix, RICE/ICE, and DCF Business Cases into a unified decision pipeline."
 summary: "Unify technology architecture selection, agile roadmap prioritization, and capital expenditure justification into a single 3-tier quantitative pipeline. Eradicate authority bias (HiPPO) by integrating the CMMI DAR Matrix, RICE scoring with net squad capacity, and institutional DCF Business Cases (NPV/IRR/Tornado) for C-Suite executives and Corporate Boards."

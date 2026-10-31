@@ -2,8 +2,8 @@
 title: "El Mapa del Riesgo: Diseñando una Arquitectura de Datos Inmune a la Obsolescencia"
 date: 2026-04-18
 draft: false
-category: "Proyectos Tecnológicos"
-categories: ["Ingeniería de la Obsolescencia", "Operations Engineering", "Data Architecture"]
+category: "IA, Ingeniería y Proyectos"
+categories: ["Ingeniería de la Obsolescencia", "Operations Engineering", "Data Architecture", "IA, Ingeniería y Proyectos"]
 tags: ["Supabase", "PostgreSQL", "BOM Management", "Data Modeling", "IEC 62402", "Supply Chain"]
 author: "Datalaria"
 description: "Cómo diseñar una base de datos relacional en Supabase para estructurar un BOM industrial e integrar telemetría de mercado externo."

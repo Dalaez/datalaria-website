@@ -2,8 +2,8 @@
 title: "Inference-Time Scaling y Razonamiento Sistema 2: Cómo la IA Aprende a Pensar Antes de Hablar"
 date: 2026-11-29
 draft: false
-category: "Artículos Técnicos"
-categories: ["Inteligencia Artificial", "Deep Tech", "Ingeniería"]
+category: "IA, Ingeniería y Proyectos"
+categories: ["Inteligencia Artificial", "Deep Tech", "Ingeniería", "IA, Ingeniería y Proyectos"]
 tags: ["inference-time scaling", "test-time compute", "razonamiento sistema 2", "cadenas de pensamiento", "mcts", "process reward models", "deepseek r1", "agi", "machine learning"]
 image: cover.jpg
 weight: 10

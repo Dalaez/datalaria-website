@@ -2,8 +2,8 @@
 title: "Cómo Crear Agentes de IA para la Operativa Empresarial del Día a Día: De los SOPs al Desarrollo con SDD"
 date: 2026-11-17
 draft: false
-category: "Artículos Técnicos"
-categories: ["Ingeniería", "Inteligencia Artificial", "Operaciones"]
+category: "IA, Ingeniería y Proyectos"
+categories: ["Ingeniería", "Inteligencia Artificial", "Operaciones", "IA, Ingeniería y Proyectos"]
 tags: ["agentes ia", "automatizacion", "sdd", "spec-driven development", "sop", "operaciones", "n8n", "crewai", "langgraph", "mcp", "pydantic", "productividad"]
 image: cover.jpg
 weight: 10

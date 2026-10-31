@@ -2,8 +2,8 @@
 title: "La Arquitectura del Silencio: Abraham Wald y la Epistemología de los Datos Ausentes"
 date: 2026-02-21
 draft: false
-category: "Biografías"
-categories: ["casos_exito"]
+category: "Pioneros y Referentes"
+categories: ["casos_exito", "Pioneros y Referentes"]
 tags: ["sesgo del superviviente", "abraham wald", "teoría de decisiones", "machine learning", "ciberseguridad"]
 description: "En 1943, el ejército estadounidense quería blindar los agujeros de bala de sus B-17. Un matemático les dijo que blindaran los espacios vacíos. Esta es la historia de cómo el Sesgo del Superviviente destruye los modelos de IA y las estrategias empresariales modernas."
 summary: "Abraham Wald enseñó a los militares que los datos ausentes—los aviones que nunca regresaron—contenían más verdad que los agujeros de bala de los supervivientes. Este principio sigue siendo crítico para la ética de la IA, la ciberseguridad y la estrategia empresarial."

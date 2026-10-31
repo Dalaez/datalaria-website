@@ -2,8 +2,8 @@
 title: "Autopilot - the Final: From Localhost to the Cloud with GitHub Actions and CI/CD"
 date: 2026-01-10
 draft: false
-category: "Tech Projects"
-categories: ["DevOps", "GitHub Actions", "Python"]
+category: "AI, Engineering & Projects"
+categories: ["DevOps", "GitHub Actions", "Python", "AI, Engineering & Projects"]
 tags: ["CI/CD", "Automation", "Pipeline", "GitOps", "Workflow"]
 image: "cover.png"
 description: "Final chapter of Project Autopilot. I no longer run scripts on my computer. Now, a simple 'git push' wakes up my AI agents, generates content, and publishes it to social media upon my approval."

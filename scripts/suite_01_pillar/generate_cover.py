@@ -4,19 +4,23 @@
 generate_cover.py
 =================
 Genera programáticamente la imagen de portada cover.png de alta resolución
-(1200 x 630 px, proporción 1.91:1) para el Post Pilar Maestro de la Suite 01:
+(1200 x 630 px, proporción 1.91:1) optimizada con ZONA SEGURA (Safe Zone [145, 1055])
+para visualización perfecta tanto en página completa como en tarjetas de blog
+(aspect ratio 16:9 y 3:2, sin recortes en títulos, diagrama ni viñetas):
 - content/es/posts/estrategia-corporativa-mba-framework-cuantitativo/cover.png
 - content/en/posts/corporate-strategy-mba-quantitative-framework/cover.png
 
 Composición visual de estándar McKinsey / BCG / Bain:
 - Fondo Dark Slate (#0B1120 a #0F172A y #1E293B) con degradado suave y malla técnica.
+- Safe Zone: Todo el contenido crítico está enmarcado entre X: 145px y 1055px (zona segura central de 910px),
+  garantizando que ninguna tarjeta de lista de posts o vista previa social recorte letras ni nodos.
 - Diagrama pentagonal geométrico con los 5 vectores estratégicos interconectados:
   PESTEL, Porter, DAFO/CAME, BCG y McKinsey/GE.
 - Badge superior corporativo: DATALARIA EXECUTIVE FRAMEWORK • SUITE 01 MEGA BUNDLE
 - Título de alto contraste y subtítulo ejecutivo.
 - Balas de valor estratégico con viñetas destacadas.
-- Píldoras de entregables: [📊 10 Modelos Excel/Sheets] [📑 10 Decks PPTX 16:9] [📄 5 Guías PDF].
-- Badge de precio y acceso: 19€ (Valor 28€).
+- Píldoras de entregables: [10 Modelos Excel + Sheets] [10 Decks PPTX 16:9] [5 Guías PDF].
+- Badge de precio y acceso: 19€ (antes 28€).
 """
 
 import os
@@ -78,13 +82,13 @@ def draw_technical_grid(draw, width, height):
 
 
 def draw_strategic_pentagon(draw, center_x, center_y, radius, font_bold, font_small, font_tiny, lang='ES'):
-    """Dibuja la red pentagonal geométrica que une las 5 herramientas estratégicas."""
+    """Dibuja la red pentagonal geométrica perfectamente encuadrada dentro de la Safe Zone."""
     nodes = [
-        ("PESTEL", "Macro Shock" if lang == 'EN' else "Entorno Macro", (239, 68, 68), (254, 226, 226)),      # Red / Rose
+        ("PESTEL", "Macro Shock" if lang == 'EN' else "Entorno Macro", (239, 68, 68), (254, 226, 226)),      # Red
         ("PORTER", "Industry Moat" if lang == 'EN' else "Atractivo Industria", (245, 158, 11), (254, 243, 199)), # Amber
-        ("DAFO/CAME", "Vector Strategy" if lang == 'EN' else "Vector Estratégico", (16, 185, 129), (209, 250, 229)), # Emerald
+        ("DAFO/CAME", "Vector Strategy" if lang == 'EN' else "Vector Estrategico", (16, 185, 129), (209, 250, 229)), # Emerald
         ("BCG", "Cash Flow" if lang == 'EN' else "Flujo Fondos", (59, 130, 246), (219, 234, 254)),         # Blue
-        ("MCKINSEY", "CAPEX Alloc." if lang == 'EN' else "Asignación CAPEX", (168, 85, 247), (243, 232, 255)) # Purple
+        ("MCKINSEY", "CAPEX Alloc." if lang == 'EN' else "Asignacion CAPEX", (168, 85, 247), (243, 232, 255)) # Purple
     ]
 
     num_nodes = len(nodes)
@@ -97,73 +101,68 @@ def draw_strategic_pentagon(draw, center_x, center_y, radius, font_bold, font_sm
         coords.append((px, py))
 
     # Círculos orbitales concéntricos tenues
-    for r_orb in [radius * 0.4, radius * 0.7, radius * 1.0]:
-        bbox = [center_x - r_orb, center_y - r_orb, center_x + r_orb, center_y + r_orb]
-        draw.ellipse(bbox, outline=(30, 41, 59), width=1)
+    for r_orb in [radius * 0.45, radius * 0.75, radius * 1.0]:
+        draw.ellipse(
+            [(center_x - r_orb, center_y - r_orb), (center_x + r_orb, center_y + r_orb)],
+            outline=(30, 48, 75),
+            width=1
+        )
 
-    # Líneas de interconexión pentagonal y estrella interna
+    # Conexiones internas completas (red estrella / pentagrama completo)
     for i in range(num_nodes):
         for j in range(i + 1, num_nodes):
             x1, y1 = coords[i]
             x2, y2 = coords[j]
-            # Si es el anillo exterior, línea más gruesa y luminosa
-            if (j == i + 1) or (i == 0 and j == num_nodes - 1):
-                draw.line([(x1, y1), (x2, y2)], fill=(56, 189, 248), width=2)
-            else:
-                # Línea interna de la estrella
-                draw.line([(x1, y1), (x2, y2)], fill=(37, 99, 235), width=1)
+            draw.line([(x1, y1), (x2, y2)], fill=(37, 99, 235), width=2)
 
-    # Nodos de las 5 herramientas
-    for i, (name, role, col, bg_pill) in enumerate(nodes):
-        nx, ny = coords[i]
+    # Nodos circulares
+    node_radius = 23
+    for i, (name, role, color_main, color_light) in enumerate(nodes):
+        x, y = coords[i]
 
-        # Resplandor exterior
-        draw.ellipse([(nx - 36, ny - 36), (nx + 36, ny + 36)], fill=(15, 23, 42), outline=col, width=3)
-        # Núcleo
-        draw.ellipse([(nx - 28, ny - 28), (nx + 28, ny + 28)], fill=(30, 41, 59))
+        # Halo brillante exterior
+        draw.ellipse([(x - node_radius - 4, y - node_radius - 4), (x + node_radius + 4, y + node_radius + 4)], outline=color_main, width=1)
+        # Relleno del nodo
+        draw.ellipse([(x - node_radius, y - node_radius), (x + node_radius, y + node_radius)], fill=(15, 23, 42), outline=color_main, width=2)
 
-        # Texto del nodo
-        bbox_txt = font_bold.getbbox(name)
-        tw = bbox_txt[2] - bbox_txt[0]
-        th = bbox_txt[3] - bbox_txt[1]
-        draw.text((nx - tw // 2, ny - th // 2 - 2), name, fill=(255, 255, 255), font=font_bold)
+        # Nombre del nodo dentro del círculo
+        bbox_n = font_bold.getbbox(name)
+        nw = bbox_n[2] - bbox_n[0]
+        nh = bbox_n[3] - bbox_n[1]
+        draw.text((x - nw // 2, y - nh // 2 - 1), name, fill=(255, 255, 255), font=font_bold)
 
-        # Etiqueta descriptiva fuera del nodo
-        ang = angles[i]
-        label_dist = radius + 46
-        lx = center_x + label_dist * math.cos(ang)
-        ly = center_y + label_dist * math.sin(ang)
+        # Etiqueta de función estratégica externa posicionada según ángulo
+        bbox_r = font_small.getbbox(role)
+        rw = bbox_r[2] - bbox_r[0]
+        
+        # Ajuste de posición de etiqueta para no desbordar
+        if i == 0:  # Top (PESTEL)
+            label_x, label_y = x - rw // 2, y - node_radius - 16
+        elif i == 1:  # Top-Right (PORTER)
+            label_x, label_y = x - rw // 2, y + node_radius + 6
+        elif i == 2:  # Bottom-Right (DAFO/CAME)
+            label_x, label_y = x - rw // 2, y + node_radius + 6
+        elif i == 3:  # Bottom-Left (BCG)
+            label_x, label_y = x - rw // 2, y + node_radius + 6
+        else:  # Top-Left (MCKINSEY)
+            label_x, label_y = x - rw // 2, y + node_radius + 6
 
-        # Ajuste de posición según ángulo
-        if math.cos(ang) > 0.3:
-            draw.text((lx - 10, ly - 8), role, fill=col, font=font_small)
-        elif math.cos(ang) < -0.3:
-            b_r = font_small.getbbox(role)
-            rw = b_r[2] - b_r[0]
-            draw.text((lx - rw + 10, ly - 8), role, fill=col, font=font_small)
-        elif math.sin(ang) < 0:
-            b_r = font_small.getbbox(role)
-            rw = b_r[2] - b_r[0]
-            draw.text((lx - rw // 2, ly - 16), role, fill=col, font=font_small)
-        else:
-            b_r = font_small.getbbox(role)
-            rw = b_r[2] - b_r[0]
-            draw.text((lx - rw // 2, ly + 4), role, fill=col, font=font_small)
+        draw.text((label_x, label_y), role, fill=color_main, font=font_small)
 
-    # Hub Central de Decisión
-    hub_w, hub_h = 144, 52
+    # Hub central: Motor C-Level
+    hub_w, hub_h = 130, 42
     hx1 = center_x - hub_w // 2
     hy1 = center_y - hub_h // 2
-    draw.rounded_rectangle([(hx1, hy1), (hx1 + hub_w, hy1 + hub_h)], radius=10, fill=(15, 23, 42), outline=(56, 189, 248), width=2)
+    draw.rounded_rectangle([(hx1, hy1), (hx1 + hub_w, hy1 + hub_h)], radius=7, fill=(15, 23, 42), outline=(56, 189, 248), width=2)
     center_title = "DECISION ENGINE" if lang == 'EN' else "MOTOR C-LEVEL"
     bbox_ct = font_bold.getbbox(center_title)
     ctw = bbox_ct[2] - bbox_ct[0]
-    draw.text((center_x - ctw // 2, hy1 + 9), center_title, fill=(255, 255, 255), font=font_bold)
+    draw.text((center_x - ctw // 2, hy1 + 7), center_title, fill=(255, 255, 255), font=font_bold)
 
     center_sub = "5 Connected Matrices" if lang == 'EN' else "5 Matrices Conectadas"
     bbox_cs = font_tiny.getbbox(center_sub)
     csw = bbox_cs[2] - bbox_cs[0]
-    draw.text((center_x - csw // 2, hy1 + 28), center_sub, fill=(245, 158, 11), font=font_tiny)
+    draw.text((center_x - csw // 2, hy1 + 24), center_sub, fill=(245, 158, 11), font=font_tiny)
 
 
 def create_cover(lang='ES', out_path='cover.png'):
@@ -179,26 +178,30 @@ def create_cover(lang='ES', out_path='cover.png'):
 
     # 3. Fuentes
     font_badge = get_font("segoeuib.ttf", 11)
-    font_title_large = get_font("segoeuib.ttf", 38)
-    font_subtitle = get_font("segoeui.ttf", 16)
-    font_bullet_title = get_font("segoeuib.ttf", 13)
-    font_bullet_desc = get_font("segoeui.ttf", 12)
-    font_pill = get_font("segoeuib.ttf", 12)
-    font_node_bold = get_font("segoeuib.ttf", 11)
-    font_node_small = get_font("segoeuib.ttf", 10)
-    font_tiny = get_font("segoeui.ttf", 9)
-    font_price_main = get_font("segoeuib.ttf", 20)
-    font_price_strike = get_font("segoeui.ttf", 14)
+    font_title_large = get_font("segoeuib.ttf", 32)
+    font_subtitle = get_font("segoeui.ttf", 13.5)
+    font_bullet_title = get_font("segoeuib.ttf", 12)
+    font_bullet_desc = get_font("segoeui.ttf", 11)
+    font_pill = get_font("segoeuib.ttf", 11)
+    font_node_bold = get_font("segoeuib.ttf", 10.5)
+    font_node_small = get_font("segoeuib.ttf", 9.5)
+    font_tiny = get_font("segoeui.ttf", 8.5)
+    font_price_main = get_font("segoeuib.ttf", 19)
+    font_price_strike = get_font("segoeui.ttf", 13)
+
+    # MARGEN SEGURO IZQUIERDO Y DERECHO (Safe Zone [145, 1055])
+    safe_left = 145
+    safe_right = 1055
 
     # 4. Badge Superior Corporativo
     badge_text = "DATALARIA EXECUTIVE FRAMEWORK • SUITE 01 MEGA BUNDLE"
-    b_x, b_y = 65, 45
-    b_w, b_h = 475, 28
-    draw.rounded_rectangle([(b_x, b_y), (b_x + b_w, b_y + b_h)], radius=6, fill=(15, 23, 42), outline=(37, 99, 235), width=1)
-    draw.text((b_x + 14, b_y + 6), badge_text, fill=(56, 189, 248), font=font_badge)
+    b_x, b_y = safe_left, 48
+    b_w, b_h = 445, 26
+    draw.rounded_rectangle([(b_x, b_y), (b_x + b_w, b_y + b_h)], radius=5, fill=(15, 23, 42), outline=(37, 99, 235), width=1)
+    draw.text((b_x + 14, b_y + 5), badge_text, fill=(56, 189, 248), font=font_badge)
 
     # 5. Título Principal
-    t_y = 92
+    t_y = 88
     if lang == 'ES':
         title_p1 = "ESTRATEGIA CORPORATIVA "
         title_p2 = "CUANTITATIVA"
@@ -206,22 +209,22 @@ def create_cover(lang='ES', out_path='cover.png'):
         title_p1 = "QUANTITATIVE CORPORATE "
         title_p2 = "STRATEGY"
 
-    draw.text((65, t_y), title_p1, fill=(255, 255, 255), font=font_title_large)
+    draw.text((safe_left, t_y), title_p1, fill=(255, 255, 255), font=font_title_large)
     bbox_p1 = font_title_large.getbbox(title_p1)
     p1_width = bbox_p1[2] - bbox_p1[0]
-    draw.text((65 + p1_width, t_y), title_p2, fill=(245, 158, 11), font=font_title_large)
+    draw.text((safe_left + p1_width, t_y), title_p2, fill=(245, 158, 11), font=font_title_large)
 
     # 6. Subtítulo
-    sub_y = 152
+    sub_y = 138
     subtitle = (
-        "El Framework de 5 Pasos para Comités: PESTEL, Porter, DAFO, BCG & McKinsey"
+        "Framework de 5 Pasos para Comités: PESTEL, Porter, DAFO, BCG & McKinsey"
         if lang == 'ES' else
-        "The 5-Step Boardroom Framework: PESTEL, Porter, SWOT, BCG & McKinsey"
+        "5-Step Boardroom Framework: PESTEL, Porter, SWOT, BCG & McKinsey"
     )
-    draw.text((65, sub_y), subtitle, fill=(203, 213, 225), font=font_subtitle)
+    draw.text((safe_left, sub_y), subtitle, fill=(203, 213, 225), font=font_subtitle)
 
     # Línea decorativa horizontal
-    draw.line([(65, 188), (620, 188)], fill=(37, 99, 235), width=2)
+    draw.line([(safe_left, 168), (620, 168)], fill=(37, 99, 235), width=2)
 
     # 7. Balas de valor estratégico
     bullets = [
@@ -248,39 +251,42 @@ def create_cover(lang='ES', out_path='cover.png'):
         )
     ]
 
-    bullet_y = 210
+    bullet_y = 188
     for b_title, b_desc in bullets:
-        # Marcador de viñeta
-        draw.rounded_rectangle([(65, bullet_y + 4), (73, bullet_y + 12)], radius=2, fill=(245, 158, 11))
-        draw.text((85, bullet_y), b_title, fill=(255, 255, 255), font=font_bullet_title)
-        draw.text((85, bullet_y + 18), b_desc, fill=(148, 163, 184), font=font_bullet_desc)
-        bullet_y += 50
+        draw.rounded_rectangle([(safe_left, bullet_y + 3), (safe_left + 7, bullet_y + 10)], radius=2, fill=(245, 158, 11))
+        draw.text((safe_left + 18, bullet_y), b_title, fill=(255, 255, 255), font=font_bullet_title)
+        draw.text((safe_left + 18, bullet_y + 17), b_desc, fill=(148, 163, 184), font=font_bullet_desc)
+        bullet_y += 46
 
-    # 8. Píldoras de Entregables (Bottom Left)
+    # 8. Píldoras de entregables
+    pill_y = 338
     pills = [
-        ("📊 10 Modelos Excel/Sheets" if lang == 'ES' else "📊 10 Excel/Sheets Models", (37, 99, 235)),
-        ("📑 10 Decks PPTX 16:9" if lang == 'ES' else "📑 10 C-Level PPTX Decks", (217, 119, 6)),
-        ("📄 5 Guías PDF" if lang == 'ES' else "📄 5 PDF Guides", (13, 148, 136))
+        ("10 Modelos Excel + Sheets", (37, 99, 235)),
+        ("10 Decks PPTX 16:9", (245, 158, 11)),
+        ("5 Guías Metodológicas PDF", (13, 148, 136))
+    ] if lang == 'ES' else [
+        ("10 Excel + Sheets Models", (37, 99, 235)),
+        ("10 PPTX 16:9 Decks", (245, 158, 11)),
+        ("5 PDF Guides", (13, 148, 136))
     ]
 
-    pill_x = 65
-    pill_y = 405
-    for p_txt, p_border in pills:
-        bbox = font_pill.getbbox(p_txt)
-        pw = (bbox[2] - bbox[0]) + 24
-        ph = 32
-        draw.rounded_rectangle([(pill_x, pill_y), (pill_x + pw, pill_y + ph)], radius=16, fill=(15, 23, 42), outline=p_border, width=2)
-        draw.text((pill_x + 12, pill_y + 7), p_txt, fill=(241, 245, 249), font=font_pill)
-        pill_x += pw + 12
+    cur_x = safe_left
+    for p_text, p_col in pills:
+        bbox = font_pill.getbbox(p_text)
+        pw = (bbox[2] - bbox[0]) + 18
+        ph = 25
+        draw.rounded_rectangle([(cur_x, pill_y), (cur_x + pw, pill_y + ph)], radius=12, fill=(15, 23, 42), outline=p_col, width=1)
+        draw.text((cur_x + 9, pill_y + 5), p_text, fill=(255, 255, 255), font=font_pill)
+        cur_x += pw + 8
 
-    # 9. Bloque de Oferta y Ahorro Suite 01 (Bottom Left debajo de las píldoras)
-    offer_box_x = 65
-    offer_box_y = 460
-    offer_w = 480
-    offer_h = 70
+    # 9. Bloque Comercial Integrado
+    offer_box_x = safe_left
+    offer_box_y = 384
+    offer_w = 465
+    offer_h = 68
     draw.rounded_rectangle(
         [(offer_box_x, offer_box_y), (offer_box_x + offer_w, offer_box_y + offer_h)],
-        radius=10,
+        radius=8,
         fill=(20, 30, 52),
         outline=(56, 189, 248),
         width=1
@@ -289,28 +295,27 @@ def create_cover(lang='ES', out_path='cover.png'):
     # Insignia de descuento dentro del bloque
     badge_save = "AHORRO 32% • PACK COMPLETO" if lang == 'ES' else "SAVE 32% • FULL BUNDLE"
     draw.rounded_rectangle(
-        [(offer_box_x + 16, offer_box_y + 12), (offer_box_x + 230, offer_box_y + 32)],
+        [(offer_box_x + 14, offer_box_y + 11), (offer_box_x + 215, offer_box_y + 30)],
         radius=4,
         fill=(16, 185, 129)
     )
-    draw.text((offer_box_x + 24, offer_box_y + 15), badge_save, fill=(255, 255, 255), font=font_node_bold)
+    draw.text((offer_box_x + 20, offer_box_y + 14), badge_save, fill=(255, 255, 255), font=font_node_bold)
 
     offer_desc = "Suite 01: PESTEL + Porter + DAFO + BCG + McKinsey" if lang == 'ES' else "Suite 01: PESTEL + Porter + SWOT + BCG + McKinsey"
-    draw.text((offer_box_x + 16, offer_box_y + 40), offer_desc, fill=(203, 213, 225), font=font_bullet_desc)
+    draw.text((offer_box_x + 14, offer_box_y + 39), offer_desc, fill=(203, 213, 225), font=font_bullet_desc)
 
     # Precios
-    draw.text((offer_box_x + 350, offer_box_y + 16), "19 €", fill=(245, 158, 11), font=font_price_main)
-    draw.text((offer_box_x + 412, offer_box_y + 20), "28 €", fill=(148, 163, 184), font=font_price_strike)
-    # Línea tachada sobre 28 €
+    draw.text((offer_box_x + 335, offer_box_y + 14), "19 €", fill=(245, 158, 11), font=font_price_main)
+    draw.text((offer_box_x + 394, offer_box_y + 18), "28 €", fill=(148, 163, 184), font=font_price_strike)
     strike_bbox = font_price_strike.getbbox("28 €")
     sw = strike_bbox[2] - strike_bbox[0]
-    draw.line([(offer_box_x + 410, offer_box_y + 28), (offer_box_x + 410 + sw + 4, offer_box_y + 28)], fill=(239, 68, 68), width=2)
-    draw.text((offer_box_x + 350, offer_box_y + 44), "Acceso Inmediato" if lang == 'ES' else "Instant Access", fill=(148, 163, 184), font=font_tiny)
+    draw.line([(offer_box_x + 392, offer_box_y + 26), (offer_box_x + 392 + sw + 4, offer_box_y + 26)], fill=(239, 68, 68), width=2)
+    draw.text((offer_box_x + 335, offer_box_y + 42), "Acceso Inmediato" if lang == 'ES' else "Instant Access", fill=(148, 163, 184), font=font_tiny)
 
-    # 10. Diagrama Pentagonal Estratégico (Center-Right)
-    pentagon_cx = 920
-    pentagon_cy = 315
-    pentagon_radius = 175
+    # 10. Diagrama Pentagonal Estratégico (Safe Zone Right [670, 1055])
+    pentagon_cx = 865
+    pentagon_cy = 280
+    pentagon_radius = 135
     draw_strategic_pentagon(
         draw,
         pentagon_cx,
@@ -322,18 +327,19 @@ def create_cover(lang='ES', out_path='cover.png'):
         lang=lang
     )
 
-    # Pie de marca inferior
+    # Pie de marca inferior (dentro de safe_left)
     footer_text = "DATALARIA.COM • THE QUANTITATIVE MANAGEMENT ENGINE"
-    draw.text((65, 580), footer_text, fill=(71, 85, 105), font=font_badge)
+    draw.text((safe_left, 568), footer_text, fill=(71, 85, 105), font=font_badge)
 
-    img.save(out_path, "PNG", optimize=True)
-    print(f"Portada generada con éxito en: {out_path}")
+    img.save(out_path, format='PNG', optimize=True)
+    print(f"Generated {out_path} ({WIDTH}x{HEIGHT})")
 
 
-if __name__ == "__main__":
-    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    es_path = os.path.join(base_dir, "content", "es", "posts", "estrategia-corporativa-mba-framework-cuantitativo", "cover.png")
-    en_path = os.path.join(base_dir, "content", "en", "posts", "corporate-strategy-mba-quantitative-framework", "cover.png")
-
+if __name__ == '__main__':
+    # 1. Versión en Español
+    es_path = "content/es/posts/estrategia-corporativa-mba-framework-cuantitativo/cover.png"
     create_cover(lang='ES', out_path=es_path)
+
+    # 2. Versión en Inglés
+    en_path = "content/en/posts/corporate-strategy-mba-quantitative-framework/cover.png"
     create_cover(lang='EN', out_path=en_path)

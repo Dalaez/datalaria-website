@@ -2,8 +2,8 @@
 title: "S&OP Engineering V: The Autonomous Brain (Agentic AI)"
 date: 2026-03-27
 draft: false
-category: "Tech Projects"
-categories: ["S&OP Engineering", "Artificial Intelligence", "CrewAI"]
+category: "AI, Engineering & Projects"
+categories: ["S&OP Engineering", "Artificial Intelligence", "CrewAI", "AI, Engineering & Projects"]
 tags: ["Supply Chain", "Agentic AI", "LLMs", "Automation", "Python"]
 author: "Datalaria"
 image: "cover.png"

@@ -2,8 +2,8 @@
 title: "S&OP: Why Your Excel Is Lying to You (and How to Interrogate It with Python)"
 date: 2026-02-28
 draft: false
-category: "Tech Projects"
-categories: ["S&OP Engineering", "Data Engineering", "Python"]
+category: "AI, Engineering & Projects"
+categories: ["S&OP Engineering", "Data Engineering", "Python", "AI, Engineering & Projects"]
 tags: ["Supply Chain", "S&OP", "Supabase", "Pandas", "Z-Score"]
 author: "Datalaria"
 description: "Let's stop cleaning data manually. In this first chapter of the S&OP Engineering series, we automate data hygiene using Python, Supabase, and Statistics to detect the truth hidden behind the noise."

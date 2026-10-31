@@ -1,9 +1,9 @@
 ---
 title: "Project Weather (Extras): Beyond AI - Building a Robust, User-Centric Dashboard"
 date: 2025-12-06
-category: "Tech Projects"
+category: "AI, Engineering & Projects"
 draft: False
-categories: ["Project Showcase", "Web Development", "UI/UX"]
+categories: ["Project Showcase", "Web Development", "UI/UX", "AI, Engineering & Projects"]
 tags: ["project-weather", "weather-dashboard", "python", "javascript", "frontend", "backend", "i18n", "data-visualization", "chart.js", "ui-ux"]
 image: cover.png
 description: "An in-depth analysis of the 'extra' features and design decisions behind Project Weather, showcasing how advanced data collection, internationalization, custom filtering, and UI/UX enhancements transformed a basic dashboard into a comprehensive, robust, and user-friendly weather application, complementing its core AI prediction capabilities."

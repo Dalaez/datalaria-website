@@ -1,9 +1,9 @@
 ---
 title: "Building My Digital 'Swiss Army Knife': A Custom Unit Converter with AI"
 date: 2025-10-04
-category: "Tech Projects"
+category: "AI, Engineering & Projects"
 draft: False
-categories: ["Projects", "Tools"]
+categories: ["Projects", "Tools", "AI, Engineering & Projects"]
 tags: ["gemini", "ai", "web development", "unit converter", "html", "css", "javascript", "engineering"]
 image: cover.png
 description: "A practical case study of how I used Gemini Canvas to develop a multi-category unit conversion web application from scratch, tailored to my professional needs."

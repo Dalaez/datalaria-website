@@ -2,8 +2,8 @@
 title: "The Chess of Obsolescence: Turning Supply Chain Collapse into Your Ultimate Competitive Advantage"
 date: 2026-04-11
 draft: false
-category: "Tech Projects"
-categories: ["Obsolescence Engineering", "Operations Engineering", "Supply Chain"]
+category: "AI, Engineering & Projects"
+categories: ["Obsolescence Engineering", "Operations Engineering", "Supply Chain", "AI, Engineering & Projects"]
 tags: ["Supply Chain", "Risk Management", "End of Life", "First Principles Thinking", "IEC 62402"]
 author: "Datalaria"
 description: "Component obsolescence is not an accident, but a predictable entropy that, when managed with precision, becomes a massive competitive advantage. Breaking the industrial Black Swan fallacy."

@@ -2,8 +2,8 @@
 title: "Autopilot - the API Nightmare: How I Defeated LinkedIn Bureaucracy to Automate My Company"
 date: 2026-01-07
 draft: false
-category: "Tech Projects"
-categories: ["Backend", "Python", "APIs"]
+category: "AI, Engineering & Projects"
+categories: ["Backend", "Python", "APIs", "AI, Engineering & Projects"]
 tags: ["LinkedIn API", "Twitter API", "OAuth", "Automation", "DevOps"]
 image: "cover.png"
 description: "Chapter 4 of Project Autopilot. What was supposed to be a 10-minute script turned into a war of forms. Here is how we unlocked the 'w_organization_social' permission to post as a Company."

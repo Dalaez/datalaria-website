@@ -3,13 +3,17 @@ title: "Matriz BCG Dinámica: Gestión de Cartera, Curva de Experiencia y Asigna
 date: 2026-10-26
 draft: false
 translationKey: dynamic-bcg-matrix
-category: "Artículos Técnicos"
-categories: ["Estrategia Empresarial", "Finanzas Corporativas", "Gestión de Cartera", "Management"]
+category: "Estrategia y Operaciones"
+categories: ["Estrategia Empresarial", "Finanzas Corporativas", "Gestión de Cartera", "Management", "Estrategia y Operaciones"]
 tags: ["Matriz BCG", "Asignación de Capital", "Bruce Henderson", "Curva de Experiencia", "Cuota de Mercado Relativa", "Pirámide de Minto", "Plantilla Excel", "PowerPoint Ejecutivo", "ROIC"]
 description: "Guía metodológica exhaustiva para transformar la matriz BCG cualitativa tradicional en un motor cuantitativo de balance de liquidez (Bruce Henderson), cálculo matemático de Cuota de Mercado Relativa (CMR) y plan de reasignación de capital C-Level."
 summary: "La matriz de crecimiento-cuota de Boston Consulting Group suele proyectarse como un dibujo estático de 4 cuadrantes sin conexión con el flujo libre de caja ni con el coste del capital. En esta guía de estándar consultoría estratégica Tier-1 (McKinsey / BCG) formalizamos la gestión de cartera mediante la Cuota de Mercado Relativa (CMR), la ley empírica de la Curva de Experiencia de Henderson, el equilibrio dinámico de fondos entre Vacas e Interrogantes y el plan de reasignación de CAPEX listo para defender ante Consejos de Administración."
+cover:
+  image: "cover.png"
+  alt: "Matriz BCG Dinámica: Gestión de Cartera, Curva de Experiencia y Asignación de Capital C-Level"
+  caption: "Matriz BCG Dinámica: Cuota de Mercado Relativa, Curva de Experiencia de Henderson y equilibrio de flujos de caja libre en Consejo de Administración."
+  relative: true
 ---
-
 En casi cualquier retiro anual de planificación estratégica, reunión ordinaria de Consejo de Administración o comité de fusiones y adquisiciones (M&A) se proyecta invariablemente una diapositiva con cuatro cuadrantes canónicos: **Estrellas, Vacas Lecheras, Interrogantes y Perros**.
 
 Sin embargo, en más del 80% de las corporaciones, este ejercicio estratégico se degrada en una caricatura visual conocida en la consultoría de alta dirección como el **"Síndrome del Dibujo Estático"**:

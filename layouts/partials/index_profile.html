@@ -53,7 +53,7 @@
     "guideSoon" "📖 Guía en preparación"
     "packSoon" "🔒 Próximamente"
     "s2tag" "02 / Contenidos"
-    "s2title" "El blog en 4 temáticas"
+    "s2title" "El blog en 5 temáticas"
     "s2desc" "Explora los %d artículos del blog clasificados por ámbito de conocimiento. Selecciona una temática para explorar todas sus publicaciones:"
     "tabsLabel" "Temáticas del blog"
     "postsWord" "artículos"
@@ -92,7 +92,7 @@
     "guideSoon" "📖 Guide in preparation"
     "packSoon" "🔒 Coming soon"
     "s2tag" "02 / Content"
-    "s2title" "The blog in 4 topics"
+    "s2title" "The blog in 5 topics"
     "s2desc" "Explore the %d blog articles organised by field of knowledge. Pick a topic to browse all its publications:"
     "tabsLabel" "Blog topics"
     "postsWord" "articles"
@@ -141,12 +141,13 @@
 {{- end -}}
 {{- with $randomPool }}{{ $random = index (shuffle .) 0 }}{{ end -}}
 
-{{- /* ---------- 4 blog categories (values from front matter "category") ---------- */ -}}
+{{- /* ---------- 5 blog categories (values from front matter "category") ---------- */ -}}
 {{- $cats := slice
-  (dict "key" "tech"     "icon" "🧠" "es" "Artículos Técnicos"     "en" "Technical Articles" "label_es" "Artículos Técnicos" "label_en" "Technical Articles")
-  (dict "key" "projects" "icon" "🛠️" "es" "Proyectos Tecnológicos" "en" "Tech Projects"      "label_es" "Proyectos Tech"     "label_en" "Tech Projects")
-  (dict "key" "startups" "icon" "🚀" "es" "Startups"               "en" "Startups"           "label_es" "Startups & Casos"   "label_en" "Startups & Cases")
-  (dict "key" "bios"     "icon" "🏛️" "es" "Biografías"             "en" "Biographies"        "label_es" "Biografías"         "label_en" "Biographies")
+  (dict "key" "tech"     "icon" "🛠️" "es" "IA, Ingeniería y Proyectos" "en" "AI, Engineering & Projects" "label_es" "IA, Ingeniería & Proyectos" "label_en" "AI, Engineering & Projects")
+  (dict "key" "strategy" "icon" "📊" "es" "Estrategia y Operaciones"   "en" "Strategy & Operations"     "label_es" "Estrategia & Operaciones" "label_en" "Strategy & Operations")
+  (dict "key" "startups" "icon" "🚀" "es" "Startups"                   "en" "Startups"                  "label_es" "Startups & Casos"         "label_en" "Startups & Cases")
+  (dict "key" "pioneers" "icon" "🏛️" "es" "Pioneros y Referentes"      "en" "Pioneers & Icons"          "label_es" "Pioneros & Referentes"    "label_en" "Pioneers & Icons")
+  (dict "key" "culture"  "icon" "🎬" "es" "Cultura Tech y Media"       "en" "Tech Culture & Media"      "label_es" "Cultura Tech & Media"     "label_en" "Tech Culture & Media")
 -}}
 
 {{- /* ---------- Resources: only link the catalogue once it is published ---------- */ -}}
@@ -156,15 +157,15 @@
   {{- if and .RelPermalink (not .Draft) }}{{ $resPage = . }}{{ end -}}
 {{- end -}}
 {{- $resCards := slice
-  (dict "icon" "🎯"
-        "name" (cond $isES "DAFO Cuantitativo & CAME" "Quantitative SWOT & TOWS")
-        "detail" (cond $isES "Ponderación numérica de factores, matriz CAME automática y slide ejecutiva para comité." "Weighted factor scoring, automatic TOWS matrix and an executive slide for the Board.")
-        "meta" "Excel · PPT · PDF"
-        "price" "5€"
-        "packId" "pack-dafo"
+  (dict "icon" "🏛️"
+        "name" (cond $isES "Pack Suite 1: Estrategia MBA" "Suite 1: MBA Corporate Strategy")
+        "detail" (cond $isES "Colección estratégica completa: PESTEL, Porter, DAFO-CAME, BCG y McKinsey con 25 entregables cuantitativos." "Complete strategic suite: PESTEL, Porter, SWOT-TOWS, Dynamic BCG, and McKinsey/GE with 25 quantitative deliverables.")
+        "meta" (cond $isES "5 Packs · Ahorro 32% (antes 28€)" "5 Packs · Save 32% (was 28€)")
+        "price" "19€"
+        "packId" "suite-01"
         "available" true
-        "checkoutUrl" "https://datalaria.lemonsqueezy.com/checkout/buy/b7f8cf34-a569-426d-b41c-5fde52640e61?embed=1"
-        "path" (cond $isES "/posts/dafo-cuantitativo-matriz-came" "/posts/quantitative-swot-tows-matrix"))
+        "checkoutUrl" "https://datalaria.lemonsqueezy.com/checkout/buy/6afa0df4-fec1-4227-a183-9e5bcc738bdd?embed=1"
+        "path" (cond $isES "/posts/estrategia-corporativa-mba-framework-cuantitativo" "/posts/corporate-strategy-mba-quantitative-framework"))
   (dict "icon" "📊"
         "name" (cond $isES "Business Case Financiero (VAN, TIR, Payback)" "Financial Business Case (NPV, IRR, Payback)")
         "detail" (cond $isES "Justifica el retorno de proyectos de IA, software o infraestructura ante el comité de inversiones y el CFO." "Justify ROI of AI, software or infrastructure projects before investment committees and the CFO.")
@@ -333,6 +334,15 @@
 
                             {{- if .trustMicro }}
                             <span class="dlh-trust-micro">{{ .trustMicro }}</span>
+                            {{- else if and $guide .packId }}
+                            <div class="dlh-res-links-row">
+                                <a class="dlh-guide-link" href="{{ cond $isES "/es/recursos/" "/en/resources/" }}#{{ .packId }}" title="{{ if $isES }}Ver detalles del pack{{ else }}View pack details{{ end }}">
+                                    {{ if $isES }}Detalles ℹ️{{ else }}Details ℹ️{{ end }}
+                                </a>
+                                <a class="dlh-guide-link" href="{{ $guide.RelPermalink }}" title="{{ if $isES }}Leer artículo técnico{{ else }}Read technical article{{ end }}">
+                                    {{ if $isES }}Artículo técnico 📖{{ else }}Technical article 📖{{ end }}
+                                </a>
+                            </div>
                             {{- else if $guide }}
                             <a class="dlh-guide-link" href="{{ $guide.RelPermalink }}" title="{{ $t.readGuide }}: {{ $guide.Title }}">
                                 {{ $t.readGuide }} →

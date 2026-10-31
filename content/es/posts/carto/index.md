@@ -3,7 +3,7 @@ title: "Carto: De una Factura a la ONU a Conquistar la Nube Geoespacial"
 date: 2025-10-25
 category: "Startups"
 draft: False
-categories: ["casos_exito", "IA"]
+categories: ["casos_exito", "IA", "Startups"]
 tags: ["carto", "geoespacial", "ia", "cloud", "startup", "big data", "inteligencia de localización"]
 image: cover.png
 description: "La historia de cómo Carto, una startup española, pasó de ser un proyecto de consultoría a un líder mundial en Inteligencia de Localización, apostando por una estrategia nativa en la nube que ha redefinido el análisis de datos."

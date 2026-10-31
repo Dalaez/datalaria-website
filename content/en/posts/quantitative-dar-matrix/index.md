@@ -2,8 +2,8 @@
 title: "Quantitative DAR Matrix: Decision Analysis & Resolution, Veto Criteria & C-Suite Multi-Criteria Scoring"
 date: 2026-11-11
 draft: false
-category: "Technical Articles"
-categories: ["Decision Making", "Corporate Strategy", "Executive Toolkits"]
+category: "Strategy & Operations"
+categories: ["Decision Making", "Corporate Strategy", "Executive Toolkits", "Strategy & Operations"]
 tags: ["DAR Matrix", "CMMI", "Kepner-Tregoe", "Decision Making", "Veto Criteria", "Multi-Criteria Scoring", "ERP Selection", "Make vs Buy", "C-Suite"]
 description: "A comprehensive methodological guide to implementing the CMMI DAR (Decision Analysis and Resolution) and Kepner-Tregoe framework: Boolean veto gatekeepers, weighted multi-criteria scoring, What-If sensitivity modeling, and boardroom governance."
 summary: "Transform high-uncertainty strategic decisions (enterprise Cloud/ERP procurement, M&A carve-outs, key leadership hiring, or Make vs. Buy architecture) into an objective, auditable, and bias-free quantitative process. This Tier-1 management consulting framework (McKinsey / CMMI DAR standard) pairs non-negotiable binary veto filters with 4-pillar weighted matrices, What-If stress testing, and an executive Board Decision Gateway."

@@ -2,8 +2,8 @@
 title: "Aprendiendo con IA - NotebookLM: De un libro a una plataforma de aprendizaje multimedia"
 date: 2025-08-31
 draft: false
-category: "Artículos Técnicos"
-categories: ["Herramientas"]
+category: "Cultura Tech y Media"
+categories: ["Herramientas", "Cultura Tech y Media"]
 tags: ["ia", "notebooklm", "google", "aprendizaje", "productividad", "sql", "mapa mental"]
 image: notebooklm_hero.png
 social_text: ¿Crees que la IA solo sirve para resumir textos?🧐 Transformé un libro de SQL en un Mapa Mental, Guion de Video y Podcast con NotebookLM.🚀 No es solo una herramienta, es un ecosistema de aprendizaje personalizado. Mira la transformación aquí 👇

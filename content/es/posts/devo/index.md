@@ -3,7 +3,7 @@ title: "Devo: Cómo un Químico Autodidacta Construyó desde Madrid el Motor de 
 date: 2026-06-07
 draft: false
 category: "Startups"
-categories: ["casos_exito", "IA"]
+categories: ["casos_exito", "IA", "Startups"]
 tags: ["devo", "ciberseguridad", "pedro castillo", "siem", "big data", "cloud-native", "startup", "unicornio", "streaming analytics"]
 description: "La historia de Devo, la startup española fundada por Pedro Castillo que revolucionó el análisis de datos de seguridad con latencia cero, conquistó un contrato con la Fuerza Aérea de EE.UU. y alcanzó una valoración de 1.900 millones de dólares."
 summary: "Cuando un ataque de phishing paralizó uno de los bancos más innovadores de España, un químico reconvertido en ingeniero de seguridad identificó el fallo que la industria entera ignoraba. Esta es la historia de Devo: de las trincheras de la ciberseguridad bancaria en Madrid al motor de datos que defiende las redes militares más críticas del planeta."

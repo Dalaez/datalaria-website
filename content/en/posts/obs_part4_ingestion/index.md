@@ -2,8 +2,8 @@
 title: "Trial by Fire: From Garbage Excel to Relational Graph with Python and Pandas"
 date: 2026-04-25
 draft: false
-category: "Tech Projects"
-categories: ["Obsolescence Engineering", "Operations Engineering", "Data Architecture"]
+category: "AI, Engineering & Projects"
+categories: ["Obsolescence Engineering", "Operations Engineering", "Data Architecture", "AI, Engineering & Projects"]
 tags: ["Python", "Pandas", "Supabase", "BOM Management", "Data Engineering", "ETL"]
 author: "Datalaria"
 description: "How to ingest a corrupt BOM exported from a legacy ERP, cleanse its inherent entropy with Pandas, and inject it into a relational database using idempotency rules."

@@ -3,7 +3,7 @@ title: "Clarity AI: How Rebeca Minguela and AI Are Redefining and Quantifying Fi
 date: 2026-04-03
 draft: false
 category: "Startups"
-categories: ["casos_exito", "IA"]
+categories: ["casos_exito", "IA", "Startups"]
 tags: ["clarity ai", "rebeca minguela", "sustainability", "esg", "NLP", "machine learning", "startup", "fintech"]
 description: "The fascinating story of Clarity AI, the shadow 'unicorn' founded by telecommunications engineer Rebeca Minguela that is eradicating greenwashing through massive data processing and artificial intelligence."
 summary: "Using Machine Learning and NLP algorithms, Clarity AI has replaced the subjective opinions of human analysts with traceable mathematical evidence. Discover how Rebeca Minguela built the cloud infrastructure that is now the technological arbiter between global capital and sustainability."

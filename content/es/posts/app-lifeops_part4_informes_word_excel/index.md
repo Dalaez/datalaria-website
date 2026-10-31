@@ -2,8 +2,8 @@
 title: "Proyecto LifeOps (Parte 4): Motor de Informes Ejecutivos en Word (.docx) y Exportación Multi-Hoja en Excel (.xlsx)"
 date: 2026-09-18
 draft: false
-category: "Proyectos Tecnológicos"
-categories: ["Proyectos", "Desarrollo Web"]
+category: "IA, Ingeniería y Proyectos"
+categories: ["Proyectos", "Desarrollo Web", "IA, Ingeniería y Proyectos"]
 tags: ["python", "fastapi", "python-docx", "openpyxl", "word", "excel", "csv", "streaming", "informes", "backend", "powerbi"]
 image: cover.png
 description: "Cuarta entrega de la serie LifeOps: cómo diseñé el motor de generación en memoria (io.BytesIO) de documentos ejecutivos en Word (.docx) con python-docx y libros multi-hoja en Excel (.xlsx) con openpyxl, además de streaming seguro con FastAPI y backups en CSV con UTF-8 BOM."

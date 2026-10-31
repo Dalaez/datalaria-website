@@ -2,8 +2,8 @@
 title: "The Thinking Game: De cómo DeepMind convirtió los videojuegos en la mayor herramienta científica de la historia"
 date: 2026-01-01
 draft: false
-category: "Artículos Técnicos"
-categories: ["Inteligencia Artificial", "Deep Tech", "Ciencia", "Documentales"]
+category: "Cultura Tech y Media"
+categories: ["Inteligencia Artificial", "Deep Tech", "Ciencia", "Documentales", "Cultura Tech y Media"]
 tags: ["DeepMind", "Demis Hassabis", "AlphaFold", "AGI", "AlphaGo", "The Thinking Game", "Biología Computacional"]
 image: the_thinking_game.jpg
 social_text: ¿Y si la clave para resolver TODO estuviera en los videojuegos? 🤔 DeepMind lo hizo. De niño prodigio a revolucionar la ciencia. Su viaje de los píxeles a AlphaFold, el mayor telescopio biológico.

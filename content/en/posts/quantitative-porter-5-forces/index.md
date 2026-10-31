@@ -3,13 +3,17 @@ title: "Weighted Porter's 5 Forces & Industry Attractiveness Matrix: The Definit
 date: 2026-10-19
 draft: false
 translationKey: quantitative-porter-5-forces
-category: "Technical Articles"
-categories: ["Corporate Strategy", "Decision Making", "Corporate Finance", "Executive Management"]
+category: "Strategy & Operations"
+categories: ["Corporate Strategy", "Decision Making", "Corporate Finance", "Executive Management", "Strategy & Operations"]
 tags: ["Porter 5 Forces", "Industry Attractiveness", "C-Level Strategy", "Economic Moat", "Minto Pyramid", "Excel Model", "Boardroom Presentation", "Capital Allocation"]
 description: "A comprehensive methodological guide to transforming traditional qualitative Porter's Five Forces into a weighted mathematical engine with dynamic radar profiling, economic moat diagnostics, and board-level capital allocation."
 summary: "Traditional Porter Five Forces analyses routinely fail in executive boardrooms because they lack mathematical rigor, objective weighting, and capital allocation mechanics. In this Tier-1 management consulting guide (McKinsey / BCG standard), we formalize the stochastic industry assessment, calculate the scalar Industry Attractiveness Index, build the Cartesian Economic Moat matrix, and establish a board defense protocol for investment committees."
+cover:
+  image: "cover.png"
+  alt: "Weighted Porter's 5 Forces & Industry Attractiveness Matrix: Quantitative Analysis and Economic Moat"
+  caption: "Quantitative Porter's 5 Forces: Stochastic scoring, dynamic Radar profiling, and economic moat diagnostic for Investment Committees."
+  relative: true
 ---
-
 In virtually every corporate boardroom, quarterly strategic review, or M&A investment committee, the exact same slide is inevitably projected: the canonical diagram of **Michael E. Porter's Five Competitive Forces**—a central rivalry block flanked by suppliers, buyers, new entrants, and substitute products.
 
 Yet in 90% of organizations, this framework suffers from severe executive dilution:

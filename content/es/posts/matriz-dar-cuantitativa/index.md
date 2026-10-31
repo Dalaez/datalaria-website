@@ -2,8 +2,8 @@
 title: "Matriz DAR Cuantitativa: Criterios Veto, Ponderación Multicriterio y Análisis de Decisiones C-Level"
 date: 2026-11-11
 draft: false
-category: "Artículos Técnicos"
-categories: ["Toma de Decisiones", "Estrategia Corporativa", "Plantillas Ejecutivas"]
+category: "Estrategia y Operaciones"
+categories: ["Toma de Decisiones", "Estrategia Corporativa", "Plantillas Ejecutivas", "Estrategia y Operaciones"]
 tags: ["Matriz DAR", "CMMI", "Kepner-Tregoe", "Toma de Decisiones", "Criterios Veto", "Scoring Multicriterio", "ERP", "Make vs Buy", "C-Level"]
 description: "Guía metodológica y cuantitativa para implementar la matriz CMMI DAR (Decision Analysis and Resolution) y Kepner-Tregoe: filtros veto booleanos, scoring multicriterio ponderado, análisis de sensibilidad What-If y gobierno corporativo ante Consejos de Administración."
 summary: "Transforma decisiones estratégicas de alta incertidumbre (selección de ERP/Cloud, M&A, contrataciones directivas o dilemas Make vs. Buy) en un proceso cuantitativo blindado, reproducible y libre de sesgos cognitivos. Este marco de estándar Tier-1 (McKinsey / CMMI DAR) combina filtros veto de exclusión implacable, matrices ponderadas de 4 pilares, pruebas de sensibilidad What-If y un Board Decision Gateway para Comités de Dirección."

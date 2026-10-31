@@ -3,7 +3,7 @@ title: "Multiverse Computing: La Startup Española que Resuelve el Cuello de Bot
 date: 2026-01-31
 draft: false
 category: "Startups"
-categories: ["Inteligencia Artificial", "Deep Tech", "Estrategia Empresarial", "Computación Cuántica"]
+categories: ["Inteligencia Artificial", "Deep Tech", "Estrategia Empresarial", "Computación Cuántica", "Startups"]
 tags: ["Multiverse Computing", "IA Generativa", "Compresión de Modelos", "Redes de Tensores", "Quantum-Inspired", "LLM", "Startup", "Inversión"]
 image: cover.png
 description: "Análisis estratégico de Multiverse Computing, la startup española que ha levantado $326M aplicando matemáticas de física cuántica (Redes de Tensores) para comprimir modelos de IA en hardware clásico, resolviendo el problema crítico del coste y la eficiencia de los LLMs."

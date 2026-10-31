@@ -2,8 +2,8 @@
 title: "S&OP Engineering IV: Scaling to Enterprise (Multi-SKU & Bottlenecks)"
 date: 2026-03-20
 draft: false
-category: "Tech Projects"
-categories: ["S&OP Engineering", "Operations Research", "MLOps"]
+category: "AI, Engineering & Projects"
+categories: ["S&OP Engineering", "Operations Research", "MLOps", "AI, Engineering & Projects"]
 tags: ["Supply Chain", "Optimization", "PuLP", "Parallel Processing", "Theory of Constraints"]
 author: "Datalaria"
 description: "The MVP is dead, long live Enterprise. In Chapter 4 we stress-test our S&OP system with multiple SKUs, teaching how to parallelize AI models and mathematically solve the war for shared production capacity."

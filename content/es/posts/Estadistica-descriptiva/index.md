@@ -1,11 +1,11 @@
 ---
 title: Estadística Descriptiva
 date: 2025-08-09
-category: "Artículos Técnicos"
+category: "IA, Ingeniería y Proyectos"
 description: "Conoce los conceptos y nociones básicas en matemáticas y estadística para poder trabajar con tus datos"
 summary: "Conozcamos las nociones clave matemáticas y estadísticas para poder entender y manejar adecuadamente la información y los datos"
 draft: False
-categories: ["fundamentos"]
+categories: ["fundamentos", "IA, Ingeniería y Proyectos"]
 tags: ["estadística", "matemáticas", "distribucion", "normal", "gaussiana"]
 
 weight: 10

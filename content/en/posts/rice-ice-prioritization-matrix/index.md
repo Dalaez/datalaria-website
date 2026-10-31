@@ -1,9 +1,9 @@
 ---
 title: "RICE & ICE Agile Prioritization Matrix: Quantitative Backlog, Impact vs. Effort Matrix & Capacity Cut-Line"
-date: 2026-11-13
+date: 2026-11-05
 draft: false
-category: "Technical Articles"
-categories: ["Decision Making", "Product Management", "Executive Templates"]
+category: "Strategy & Operations"
+categories: ["Decision Making", "Product Management", "Executive Templates", "Strategy & Operations"]
 tags: ["RICE Matrix", "ICE Matrix", "Product Prioritization", "Agile Backlog", "Capacity Cut-Line", "Engineering Capacity", "HiPPO Bias", "Quick Wins", "C-Level"]
 description: "Comprehensive executive methodology to implement the RICE (Reach, Impact, Confidence, Effort) and ICE frameworks: value density calculations, Bayesian risk discounts, 2x2 Impact vs. Effort matrix, squad capacity cut-lines, and C-Suite Product Council governance."
 summary: "Replace intuition-based prioritization (HiPPO syndrome) and the 'feature factory' with a defensible quantitative engine tailored for Corporate Boards and Executive Product Councils. Combines Intercom's foundational RICE score with the high-velocity ICE growth framework, an objective 2x2 strategic quadrant matrix, and an automated capacity cut-line anchored in real engineering person-months."

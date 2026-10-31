@@ -2,8 +2,8 @@
 title: "W. Edwards Deming: The Father of Total Quality Who Predicted the Future of AI"
 date: 2026-05-31
 draft: false
-category: "Biographies"
-categories: ["casos_exito"]
+category: "Pioneers & Icons"
+categories: ["casos_exito", "Pioneers & Icons"]
 tags: ["w. edwards deming", "s&op", "total quality", "spc", "toyota", "artificial intelligence"]
 description: "Discover how W. Edwards Deming revolutionized manufacturing with Statistical Process Control, saved Toyota, and established the principles that govern Artificial Intelligence and modern S&OP today."
 summary: "W. Edwards Deming didn't just teach Japan how to build better cars; he laid the mathematical foundations for modern S&OP and the stabilization of Artificial Intelligence models."

@@ -2,8 +2,8 @@
 title: "Autopilot - Asistente: Creando un Copiloto de IA con Algolia Agent Studio"
 date: 2026-02-07
 draft: false
-category: "Proyectos Tecnológicos"
-categories: ["Automatización", "Inteligencia Artificial", "DevOps"]
+category: "IA, Ingeniería y Proyectos"
+categories: ["Automatización", "Inteligencia Artificial", "DevOps", "IA, Ingeniería y Proyectos"]
 tags: ["devchallenge", "algoliachallenge", "ai", "agents", "Algolia", "Agent Studio", "RAG", "Chatbot", "Hugo", "Netlify Functions"]
 image: "cover.PNG"
 description: "He construido un Copiloto de Ingeniería de Operaciones que usa Algolia Agent Studio para dar respuestas de IA fundamentadas en el contenido de mi blog. Esta es la Parte 8 de la serie Autopilot."

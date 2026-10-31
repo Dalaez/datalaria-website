@@ -2,8 +2,8 @@
 title: "Inference-Time Scaling and System 2 Reasoning: How AI Learns to Think Before Speaking"
 date: 2026-11-29
 draft: false
-category: "Technical Articles"
-categories: ["Inteligencia Artificial", "Deep Tech", "Ingeniería"]
+category: "AI, Engineering & Projects"
+categories: ["Inteligencia Artificial", "Deep Tech", "Ingeniería", "AI, Engineering & Projects"]
 tags: ["inference-time scaling", "test-time compute", "system 2 reasoning", "chain of thought", "mcts", "process reward models", "deepseek r1", "agi", "machine learning"]
 image: cover.jpg
 weight: 10

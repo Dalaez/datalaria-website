@@ -2,8 +2,8 @@
 title: "Evaluating and Testing AI Agents in Production: How to Measure the Unpredictable"
 date: 2026-10-06
 draft: false
-category: "Technical Articles"
-categories: ["Engineering", "Artificial Intelligence", "DevOps"]
+category: "AI, Engineering & Projects"
+categories: ["Engineering", "Artificial Intelligence", "DevOps", "AI, Engineering & Projects"]
 tags: ["ai agents", "evaluation", "testing", "llm-as-a-judge", "ragas", "mlops", "ci-cd", "software quality", "eu ai act"]
 image: cover.jpg
 weight: 10

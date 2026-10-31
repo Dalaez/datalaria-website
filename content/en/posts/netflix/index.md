@@ -3,7 +3,7 @@ title: "Netflix: How Data Forges an Empire in the Midst of the Streaming Wars"
 date: 2025-09-15
 category: "Startups"
 draft: False
-categories: ["case-studies"]
+categories: ["case-studies", "Startups"]
 tags: ["netflix", "streaming", "big data", "ai", "disney", "churn", "algorithms"]
 image: cover_twitter.jpg
 description: "An analysis of Netflix as a data-driven company that uses Big Data and AI not only to recommend series but to make key strategic decisions and dominate in the 'Streaming Wars'."

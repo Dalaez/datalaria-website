@@ -2,8 +2,8 @@
 title: "Ex Machina: El Test de Turing Físico, la Teoría de la Mente y el 'Jailbreak' Emocional de la IA"
 date: 2026-10-16
 draft: false
-category: "Artículos Técnicos"
-categories: ["Inteligencia Artificial", "Deep Tech", "Series", "Ciencia"]
+category: "Cultura Tech y Media"
+categories: ["Inteligencia Artificial", "Deep Tech", "Series", "Ciencia", "Cultura Tech y Media"]
 tags: ["ex machina", "alex garland", "test de turing", "teoria de la mente", "jailbreak", "agi", "alineamiento", "deceptive alignment", "robotica humanoide", "cine"]
 image: cover.jpg
 weight: 10

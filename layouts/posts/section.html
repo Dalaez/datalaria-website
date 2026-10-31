@@ -1,0 +1,499 @@
+{{- define "main" }}
+
+{{- if (and site.Params.profileMode.enabled .IsHome) }}
+{{- partial "index_profile.html" . }}
+{{- else }} {{/* if not profileMode */}}
+
+{{- $lang := site.Language.Lang -}}
+{{- $isES := eq $lang "es" -}}
+
+{{- if not .IsHome | and .Title }}
+<header class="page-header">
+    {{- partial "breadcrumbs.html" . }}
+    <h1>
+        {{ .Title }}
+        {{- if and (or (eq .Kind `term`) (eq .Kind `section`)) (.Param "ShowRssButtonInSectionTermList") }}
+        {{- with .OutputFormats.Get "rss" }}
+        <a href="{{ .RelPermalink }}" title="RSS" aria-label="RSS">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" height="23">
+                <path d="M4 11a9 9 0 0 1 9 9" />
+                <path d="M4 4a16 16 0 0 1 16 16" />
+                <circle cx="5" cy="19" r="1" />
+            </svg>
+        </a>
+        {{- end }}
+        {{- end }}
+    </h1>
+    {{- if .Description }}
+    <div class="post-description">
+        {{ .Description | markdownify }}
+    </div>
+    {{- end }}
+</header>
+{{- end }}
+
+{{- if .Content }}
+<div class="post-content">
+    {{- if not (.Param "disableAnchoredHeadings") }}
+    {{- partial "anchored_headings.html" .Content -}}
+    {{- else }}{{ .Content }}{{ end }}
+</div>
+{{- end }}
+
+{{- /* ---------- Recopilación de todos los posts publicados ---------- */ -}}
+{{- $allPosts := (where .RegularPages "Draft" false).ByDate.Reverse -}}
+{{- if not $allPosts }}{{ $allPosts = .RegularPages.ByDate.Reverse }}{{ end -}}
+
+{{- /* ---------- 5 temáticas canónicas de Datalaria ---------- */ -}}
+{{- $cats := slice
+  (dict "key" "tech"     "icon" "🛠️" "es" "IA, Ingeniería y Proyectos" "en" "AI, Engineering & Projects" "label_es" "IA, Ingeniería & Proyectos" "label_en" "AI, Engineering & Projects")
+  (dict "key" "strategy" "icon" "📊" "es" "Estrategia y Operaciones"   "en" "Strategy & Operations"     "label_es" "Estrategia & Operaciones" "label_en" "Strategy & Operations")
+  (dict "key" "startups" "icon" "🚀" "es" "Startups"                   "en" "Startups"                  "label_es" "Startups & Casos"         "label_en" "Startups & Cases")
+  (dict "key" "pioneers" "icon" "🏛️" "es" "Pioneros y Referentes"      "en" "Pioneers & Icons"          "label_es" "Pioneros & Referentes"    "label_en" "Pioneers & Icons")
+  (dict "key" "culture"  "icon" "🎬" "es" "Cultura Tech y Media"       "en" "Tech Culture & Media"      "label_es" "Cultura Tech & Media"     "label_en" "Tech Culture & Media")
+-}}
+
+<!-- BARRA DE FILTROS & BUSCADOR ESTILO RECURSOS -->
+<div class="blog-filter-section" id="blog-filter-section">
+  <!-- Fila 1: Pestañas de temáticas -->
+  <div class="blog-pills-row">
+    <div class="blog-pills" id="blog-pills-container" role="tablist" aria-label="{{ if $isES }}Filtrar por temática{{ else }}Filter by topic{{ end }}">
+      <button type="button" class="blog-pill active" data-theme="all" onclick="filterBlogTheme('all')">
+        ✨ <span class="pill-title-long">{{ if $isES }}Todos los Artículos{{ else }}All Articles{{ end }}</span><span class="pill-title-short">{{ if $isES }}Todos{{ else }}All{{ end }}</span>
+        <span class="pill-count">{{ len $allPosts }}</span>
+      </button>
+      {{- range $cats }}
+        {{- $catName := index . $lang -}}
+        {{- $catCount := len (where $allPosts "Params.category" $catName) -}}
+        <button type="button" class="blog-pill" data-theme="{{ .key }}" onclick="filterBlogTheme('{{ .key }}')">
+          {{ .icon }} <span>{{ index . (printf "label_%s" $lang) }}</span>
+          <span class="pill-count">{{ $catCount }}</span>
+        </button>
+      {{- end }}
+    </div>
+  </div>
+
+  <!-- Fila 2: Buscador en tiempo real y Contador -->
+  <div class="blog-controls-row">
+    <div class="blog-search-box">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text"
+             class="blog-search-input"
+             id="blog-search-input"
+             placeholder="{{ if $isES }}Buscar artículo por título, tema o tecnología (ej. Agentes, RAG, LifeOps, EVM)...{{ else }}Search articles by title, topic or tech (e.g. Agents, RAG, LifeOps, EVM)...{{ end }}"
+             oninput="handleBlogSearch()"
+             aria-label="{{ if $isES }}Buscar artículos{{ else }}Search articles{{ end }}">
+      <button type="button" class="blog-search-clear" id="blog-search-clear" onclick="clearBlogSearch()" title="{{ if $isES }}Limpiar búsqueda{{ else }}Clear search{{ end }}" hidden>✕</button>
+    </div>
+
+    <div class="blog-filter-right">
+      <span class="blog-counter-info">
+        {{ if $isES }}Mostrando{{ else }}Showing{{ end }} <strong id="blog-count-range">1–{{ cond (lt (len $allPosts) 12) (len $allPosts) 12 }}</strong> {{ if $isES }}de{{ else }}of{{ end }} <strong id="blog-count-visible">{{ len $allPosts }}</strong> {{ if $isES }}artículos{{ else }}articles{{ end }}
+      </span>
+
+      <div class="blog-density-selector" role="group" aria-label="{{ if $isES }}Artículos por página{{ else }}Articles per page{{ end }}">
+        <span class="blog-density-label">{{ if $isES }}Ver:{{ else }}View:{{ end }}</span>
+        <button type="button" class="density-btn active" data-size="12" onclick="setBlogPageSize(12)" title="{{ if $isES }}12 artículos por página{{ else }}12 articles per page{{ end }}">12</button>
+        <button type="button" class="density-btn" data-size="24" onclick="setBlogPageSize(24)" title="{{ if $isES }}24 artículos por página{{ else }}24 articles per page{{ end }}">24</button>
+        <button type="button" class="density-btn" data-size="all" onclick="setBlogPageSize('all')" title="{{ if $isES }}Ver todos sin paginación{{ else }}View all without pagination{{ end }}">{{ if $isES }}Todos{{ else }}All{{ end }}</button>
+      </div>
+
+      <button type="button" class="blog-btn-reset" id="blog-btn-reset" onclick="resetBlogFilters()" hidden>
+        {{ if $isES }}Restablecer filtros ✕{{ else }}Reset filters ✕{{ end }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="post-grid">
+    {{- range $index, $page := $allPosts }}
+    {{- $themeKey := "tech" -}}
+    {{- $themeIcon := "🛠️" -}}
+    {{- $themeLabel := (cond $isES "IA, Ingeniería & Proyectos" "AI, Engineering & Projects") -}}
+    {{- $cat := $page.Params.category | default "" -}}
+    {{- if or (eq $cat "Estrategia y Operaciones") (eq $cat "Strategy & Operations") -}}
+      {{- $themeKey = "strategy" -}}
+      {{- $themeIcon = "📊" -}}
+      {{- $themeLabel = (cond $isES "Estrategia & Operaciones" "Strategy & Operations") -}}
+    {{- else if eq $cat "Startups" -}}
+      {{- $themeKey = "startups" -}}
+      {{- $themeIcon = "🚀" -}}
+      {{- $themeLabel = (cond $isES "Startups & Casos" "Startups & Cases") -}}
+    {{- else if or (eq $cat "Pioneros y Referentes") (eq $cat "Pioneers & Icons") -}}
+      {{- $themeKey = "pioneers" -}}
+      {{- $themeIcon = "🏛️" -}}
+      {{- $themeLabel = (cond $isES "Pioneros & Referentes" "Pioneers & Icons") -}}
+    {{- else if or (eq $cat "Cultura Tech y Media") (eq $cat "Tech Culture & Media") -}}
+      {{- $themeKey = "culture" -}}
+      {{- $themeIcon = "🎬" -}}
+      {{- $themeLabel = (cond $isES "Cultura Tech & Media" "Tech Culture & Media") -}}
+    {{- end -}}
+
+    <div class="post-card"
+         data-theme="{{ $themeKey }}"
+         data-category="{{ with $page.Params.category }}{{ . | lower }}{{ end }}"
+         data-title="{{ $page.Title | lower }}"
+         data-summary="{{ $page.Summary | plainify | htmlUnescape | lower }}"
+         data-tags="{{ with $page.Params.tags }}{{ delimit . " " | lower }}{{ end }}"
+         data-categories="{{ with $page.Params.categories }}{{ delimit . " " | lower }}{{ end }}">
+
+        {{- $image := "" }}
+        {{- if .Params.cover.image }}
+        {{- $image = .Resources.GetMatch .Params.cover.image }}
+        {{- if not $image }}
+        {{- $image = resources.GetMatch .Params.cover.image }}
+        {{- end }}
+        {{- end }}
+
+        {{- if not $image }}
+        {{- $image = .Resources.GetMatch "**{cover,feature,thumbnail}.{png,jpg,jpeg,webp,gif}" }}
+        {{- end }}
+
+        {{- if not $image }}
+        {{- $image = .Resources.GetMatch "**.{png,jpg,jpeg,webp,gif}" }}
+        {{- end }}
+
+        {{- if $image }}
+        {{- $thumbnail := $image }}
+        {{- if gt $image.Width 720 }}
+        {{- $thumbnail = $image.Resize "720x" }}
+        {{- end }}
+        <div class="post-thumbnail-wrapper">
+            <img class="post-thumbnail" src="{{ $thumbnail.RelPermalink }}" alt="{{ .Title }}" loading="lazy">
+        </div>
+        {{- end }}
+
+        <div class="post-card-content">
+            <span class="post-theme-badge post-theme-badge--{{ $themeKey }}">{{ $themeIcon }} {{ $themeLabel }}</span>
+            <h2 class="post-card-title">
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+            </h2>
+            <div class="post-card-meta">
+                {{- partial "post_meta.html" . -}}
+            </div>
+            <div class="post-card-summary">
+                <p>{{ .Summary | plainify | htmlUnescape | truncate 140 }}</p>
+            </div>
+            <a href="{{ .Permalink }}" class="post-card-link">{{ i18n "read_more" | default "Leer más" }} →</a>
+        </div>
+        <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+    </div>
+    {{- end }}
+</div>
+
+<!-- BARRA DE PAGINACIÓN INTERACTIVA -->
+<nav class="blog-pagination" id="blog-pagination" aria-label="{{ if $isES }}Paginación de artículos{{ else }}Articles pagination{{ end }}">
+  <button type="button" class="blog-page-btn blog-page-prev" id="blog-page-prev" onclick="goToBlogPage(currentPage - 1)" aria-label="{{ if $isES }}Página anterior{{ else }}Previous page{{ end }}">
+    ← {{ if $isES }}Anterior{{ else }}Previous{{ end }}
+  </button>
+  <div class="blog-page-numbers" id="blog-page-numbers"></div>
+  <button type="button" class="blog-page-btn blog-page-next" id="blog-page-next" onclick="goToBlogPage(currentPage + 1)" aria-label="{{ if $isES }}Página siguiente{{ else }}Next page{{ end }}">
+    {{ if $isES }}Siguiente{{ else }}Next{{ end }} →
+  </button>
+</nav>
+
+<noscript>
+  <style>
+    .post-card { display: block !important; }
+    .blog-pagination, .blog-density-selector { display: none !important; }
+  </style>
+</noscript>
+
+<!-- ESTADO VACÍO (SIN RESULTADOS) -->
+<div class="blog-empty-state" id="blog-empty-state" hidden>
+  <div class="blog-empty-icon">🔍</div>
+  <h3>{{ if $isES }}No se encontraron artículos{{ else }}No articles found{{ end }}</h3>
+  <p id="blog-empty-desc">{{ if $isES }}No hay publicaciones que coincidan con los criterios seleccionados.{{ else }}No posts match the selected criteria.{{ end }}</p>
+  <button type="button" class="blog-pill active" onclick="resetBlogFilters()">
+    {{ if $isES }}Ver todos los artículos{{ else }}View all articles{{ end }}
+  </button>
+</div>
+
+<!-- SCRIPT DE FILTRADO, BÚSQUEDA Y PAGINACIÓN EN TIEMPO REAL -->
+<script>
+(function () {
+  var activeTheme = 'all';
+  var searchQuery = '';
+  var pageSize = 12;
+  window.currentPage = 1;
+
+  var grid = document.querySelector('.post-grid');
+  if (!grid) return;
+  var cards = Array.prototype.slice.call(grid.querySelectorAll('.post-card'));
+  var pills = Array.prototype.slice.call(document.querySelectorAll('.blog-pills .blog-pill'));
+  var densityBtns = Array.prototype.slice.call(document.querySelectorAll('.density-btn'));
+  var searchInput = document.getElementById('blog-search-input');
+  var searchClear = document.getElementById('blog-search-clear');
+  var countEl = document.getElementById('blog-count-visible');
+  var countRangeEl = document.getElementById('blog-count-range');
+  var resetBtn = document.getElementById('blog-btn-reset');
+  var emptyState = document.getElementById('blog-empty-state');
+  var emptyDesc = document.getElementById('blog-empty-desc');
+  var paginationNav = document.getElementById('blog-pagination');
+  var pageNumbersEl = document.getElementById('blog-page-numbers');
+  var prevBtn = document.getElementById('blog-page-prev');
+  var nextBtn = document.getElementById('blog-page-next');
+
+  if (!cards.length) return;
+
+  function renderPagination(totalPages) {
+    if (!paginationNav) return;
+    if (pageSize === 'all' || totalPages <= 1) {
+      paginationNav.style.display = 'none';
+      return;
+    }
+    paginationNav.style.display = 'flex';
+
+    if (prevBtn) {
+      prevBtn.disabled = (window.currentPage <= 1);
+    }
+    if (nextBtn) {
+      nextBtn.disabled = (window.currentPage >= totalPages);
+    }
+
+    if (!pageNumbersEl) return;
+    pageNumbersEl.innerHTML = '';
+
+    var items = [];
+    if (totalPages <= 7) {
+      for (var p = 1; p <= totalPages; p++) items.push(p);
+    } else if (window.currentPage <= 4) {
+      items = [1, 2, 3, 4, 5, '...', totalPages];
+    } else if (window.currentPage >= totalPages - 3) {
+      items = [1, '...', totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+    } else {
+      items = [1, '...', window.currentPage - 1, window.currentPage, window.currentPage + 1, '...', totalPages];
+    }
+
+    items.forEach(function (it) {
+      if (it === '...') {
+        var span = document.createElement('span');
+        span.className = 'blog-page-ellipsis';
+        span.textContent = '…';
+        pageNumbersEl.appendChild(span);
+      } else {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'blog-page-num' + (it === window.currentPage ? ' is-active' : '');
+        btn.textContent = it;
+        btn.setAttribute('aria-label', (document.documentElement.lang === 'en' ? 'Page ' : 'Página ') + it);
+        if (it === window.currentPage) {
+          btn.setAttribute('aria-current', 'page');
+        }
+        btn.onclick = function () {
+          window.goToBlogPage(it);
+        };
+        pageNumbersEl.appendChild(btn);
+      }
+    });
+  }
+
+  function filterAndPaginate(resetToFirstPage) {
+    if (resetToFirstPage) {
+      window.currentPage = 1;
+    }
+
+    var q = (searchQuery || '').trim().toLowerCase();
+    var matchedCards = [];
+
+    // 1. Filtrado y Búsqueda sobre el 100% de artículos en memoria
+    cards.forEach(function (card) {
+      var cardTheme = card.getAttribute('data-theme') || '';
+      var cardTitle = card.getAttribute('data-title') || '';
+      var cardSummary = card.getAttribute('data-summary') || '';
+      var cardTags = card.getAttribute('data-tags') || '';
+      var cardCategory = card.getAttribute('data-category') || '';
+
+      var matchesTheme = (activeTheme === 'all') || (cardTheme === activeTheme);
+      var matchesSearch = !q || (
+        cardTitle.indexOf(q) !== -1 ||
+        cardSummary.indexOf(q) !== -1 ||
+        cardTags.indexOf(q) !== -1 ||
+        cardCategory.indexOf(q) !== -1
+      );
+
+      if (matchesTheme && matchesSearch) {
+        matchedCards.push(card);
+      }
+    });
+
+    var totalMatched = matchedCards.length;
+
+    // 2. Límites de paginación
+    var effectiveSize = (pageSize === 'all') ? totalMatched : parseInt(pageSize, 10);
+    var totalPages = (pageSize === 'all' || effectiveSize <= 0) ? 1 : Math.max(1, Math.ceil(totalMatched / effectiveSize));
+
+    if (window.currentPage > totalPages) window.currentPage = totalPages;
+    if (window.currentPage < 1) window.currentPage = 1;
+
+    var startIdx = (pageSize === 'all') ? 0 : (window.currentPage - 1) * effectiveSize;
+    var endIdx = (pageSize === 'all') ? totalMatched : Math.min(startIdx + effectiveSize, totalMatched);
+
+    // 3. Renderizar únicamente las tarjetas de la página activa
+    cards.forEach(function (card) {
+      card.style.display = 'none';
+    });
+    for (var i = startIdx; i < endIdx; i++) {
+      if (matchedCards[i]) {
+        matchedCards[i].style.display = '';
+      }
+    }
+
+    // 4. Actualizar contadores
+    if (countEl) countEl.textContent = totalMatched;
+    if (countRangeEl) {
+      if (totalMatched === 0) {
+        countRangeEl.textContent = '0';
+      } else if (pageSize === 'all' || totalMatched <= effectiveSize) {
+        countRangeEl.textContent = totalMatched;
+      } else {
+        countRangeEl.textContent = (startIdx + 1) + '–' + endIdx;
+      }
+    }
+
+    // 5. Botones Reset y Clear
+    if (resetBtn) {
+      var hasFilter = (activeTheme !== 'all') || (q.length > 0) || (pageSize !== 12);
+      resetBtn.hidden = !hasFilter;
+    }
+    if (searchClear) {
+      searchClear.hidden = !(q.length > 0);
+    }
+
+    // 6. Estado vacío
+    if (emptyState) {
+      if (totalMatched === 0) {
+        emptyState.hidden = false;
+        if (emptyDesc) {
+          emptyDesc.textContent = q
+            ? (document.documentElement.lang === 'en'
+                ? 'No articles match "' + q + '". Try clearing the search or switching topic.'
+                : 'No hay artículos que coincidan con "' + q + '". Prueba a limpiar la búsqueda o cambiar de temática.')
+            : (document.documentElement.lang === 'en'
+                ? 'No articles available in this topic.'
+                : 'No hay artículos disponibles en esta temática.');
+        }
+      } else {
+        emptyState.hidden = true;
+      }
+    }
+
+    // 7. Renderizar barra de paginación
+    renderPagination(totalPages);
+
+    // 8. Actualizar parámetros en la URL
+    try {
+      var url = new URL(window.location.href);
+      if (activeTheme !== 'all') url.searchParams.set('topic', activeTheme);
+      else url.searchParams.delete('topic');
+
+      if (q) url.searchParams.set('q', q);
+      else url.searchParams.delete('q');
+
+      if (pageSize !== 12) url.searchParams.set('size', String(pageSize));
+      else url.searchParams.delete('size');
+
+      if (window.currentPage > 1) url.searchParams.set('page', String(window.currentPage));
+      else url.searchParams.delete('page');
+
+      window.history.replaceState({}, '', url.toString());
+    } catch (e) {}
+  }
+
+  window.filterBlogTheme = function (themeKey) {
+    activeTheme = themeKey;
+    pills.forEach(function (pill) {
+      var on = pill.getAttribute('data-theme') === themeKey;
+      pill.classList.toggle('active', on);
+    });
+    filterAndPaginate(true);
+    if (typeof gtag === 'function') {
+      gtag('event', 'filter_blog_theme', { theme: themeKey });
+    }
+  };
+
+  window.handleBlogSearch = function () {
+    if (searchInput) searchQuery = searchInput.value;
+    filterAndPaginate(true);
+  };
+
+  window.clearBlogSearch = function () {
+    if (searchInput) {
+      searchInput.value = '';
+      searchQuery = '';
+      searchInput.focus();
+    }
+    filterAndPaginate(true);
+  };
+
+  window.setBlogPageSize = function (size) {
+    pageSize = (size === 'all') ? 'all' : parseInt(size, 10);
+    densityBtns.forEach(function (btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-size') === String(size));
+    });
+    filterAndPaginate(true);
+  };
+
+  window.goToBlogPage = function (pageNum) {
+    window.currentPage = pageNum;
+    filterAndPaginate(false);
+
+    var filterSection = document.getElementById('blog-filter-section');
+    if (filterSection) {
+      var top = filterSection.getBoundingClientRect().top + window.pageYOffset - 20;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    }
+  };
+
+  window.resetBlogFilters = function () {
+    activeTheme = 'all';
+    searchQuery = '';
+    pageSize = 12;
+    window.currentPage = 1;
+
+    if (searchInput) searchInput.value = '';
+    pills.forEach(function (pill) {
+      pill.classList.toggle('active', pill.getAttribute('data-theme') === 'all');
+    });
+    densityBtns.forEach(function (btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-size') === '12');
+    });
+    filterAndPaginate(true);
+  };
+
+  try {
+    var params = new URLSearchParams(window.location.search);
+    var initialTopic = params.get('topic') || params.get('theme') || params.get('categoria');
+    var initialQ = params.get('q') || params.get('search');
+    var initialSize = params.get('size');
+    var initialPage = parseInt(params.get('page'), 10);
+
+    if (initialTopic) {
+      activeTheme = initialTopic;
+      pills.forEach(function (pill) {
+        pill.classList.toggle('active', pill.getAttribute('data-theme') === initialTopic);
+      });
+    }
+    if (initialQ && searchInput) {
+      searchInput.value = initialQ;
+      searchQuery = initialQ;
+    }
+    if (initialSize) {
+      pageSize = (initialSize === 'all') ? 'all' : parseInt(initialSize, 10);
+      densityBtns.forEach(function (btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-size') === String(pageSize));
+      });
+    }
+    if (initialPage && initialPage > 1) {
+      window.currentPage = initialPage;
+    }
+  } catch (e) {}
+
+  filterAndPaginate(false);
+})();
+</script>
+
+{{- end }}{{/* end profileMode */}}
+
+{{- end }}{{- /* end main */ -}}

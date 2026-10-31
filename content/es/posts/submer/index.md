@@ -3,7 +3,7 @@ title: "Submer: La Refrigeración Líquida Nacida en Barcelona que Permite Enfri
 date: 2026-10-08
 draft: false
 category: "Startups"
-categories: ["casos_exito", "Ingeniería", "Inteligencia Artificial"]
+categories: ["casos_exito", "Ingeniería", "Inteligencia Artificial", "Startups"]
 tags: ["submer", "immersion cooling", "data centers", "supercomputacion", "hardware", "esg", "startups", "sostenibilidad", "agi"]
 image: cover.jpg
 weight: 10

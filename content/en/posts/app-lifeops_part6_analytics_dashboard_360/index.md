@@ -2,8 +2,8 @@
 title: "LifeOps Project (Part 6): 360° Analytics Dashboard with Multi-Dimensional Filtering, Recharts and Cold-Start Mitigation in Supabase + Render"
 date: 2026-10-28
 draft: false
-category: "Tech Projects"
-categories: ["Projects", "Web Development", "Data Analytics"]
+category: "AI, Engineering & Projects"
+categories: ["Projects", "Web Development", "Data Analytics", "AI, Engineering & Projects"]
 tags: ["react", "recharts", "fastapi", "supabase", "analytics", "dashboard", "performance", "swr", "cache"]
 cover:
   image: cover.png

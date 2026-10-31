@@ -1,9 +1,9 @@
 ---
 title: "Proyecto Weather Service (Parte 1): Construyendo el Recolector de Datos con Python y GitHub Actions o Netlify"
 date: 2025-10-31
-category: "Proyectos Tecnológicos"
+category: "IA, Ingeniería y Proyectos"
 draft: False
-categories: ["Proyectos", "Herramientas"]
+categories: ["Proyectos", "Herramientas", "IA, Ingeniería y Proyectos"]
 tags: ["python", "api", "github actions", "automatizacion", "serverless", "datos", "backend", "netlify"]
 image: cover.png
 description: "Primera entrega de la serie sobre cómo construir un servicio meteorológico. Nos centramos en el backend: conectar a la API de OpenWeatherMap, almacenar datos en CSV y automatizar todo 24/7 gratis con GitHub Actions o Netlify."

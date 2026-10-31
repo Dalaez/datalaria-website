@@ -80,10 +80,21 @@ translationKey: resources
           </div>
         </div>
         <div class="suite-mini-action">
-          <span class="suite-mini-price">19€</span>
-          <a href="https://datalaria.lemonsqueezy.com/checkout/buy/6afa0df4-fec1-4227-a183-9e5bcc738bdd" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
-            Comprar Suite →
-          </a>
+          <div class="kit-pricing-box">
+            <span class="suite-mini-price">19€</span>
+            <span class="kit-price-orig">28€</span>
+          </div>
+          <div class="kit-btns-group">
+            <button type="button" class="btn-kit-info" onclick="event.stopPropagation(); openModal('suite-01')">
+              Detalles ℹ️
+            </button>
+            <a href="/es/posts/estrategia-corporativa-mba-framework-cuantitativo/" class="btn-kit-info" onclick="event.stopPropagation()" title="Leer artículo técnico">
+              Artículo técnico 📖
+            </a>
+            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/6afa0df4-fec1-4227-a183-9e5bcc738bdd" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
+              Comprar Suite →
+            </a>
+          </div>
         </div>
       </div>
 
@@ -97,10 +108,21 @@ translationKey: resources
           </div>
         </div>
         <div class="suite-mini-action">
-          <span class="suite-mini-price">15€</span>
-          <a href="https://datalaria.lemonsqueezy.com/checkout/buy/4e2ca8b1-a6f9-43b7-851a-72c44d9bc13d" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
-            Comprar Suite →
-          </a>
+          <div class="kit-pricing-box">
+            <span class="suite-mini-price">15€</span>
+            <span class="kit-price-orig">20€</span>
+          </div>
+          <div class="kit-btns-group">
+            <button type="button" class="btn-kit-info" onclick="event.stopPropagation(); openModal('suite-02')">
+              Detalles ℹ️
+            </button>
+            <span class="btn-kit-info btn-disabled" onclick="event.stopPropagation()" title="Artículo técnico próximamente">
+              Artículo próximamente
+            </span>
+            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/4e2ca8b1-a6f9-43b7-851a-72c44d9bc13d" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
+              Comprar Suite →
+            </a>
+          </div>
         </div>
       </div>
 
@@ -113,6 +135,25 @@ translationKey: resources
             <div class="suite-mini-desc">5 packs PMBOK (RACI, AMFE, PERT, EVM, Stock)</div>
           </div>
         </div>
+        <div class="suite-mini-action">
+          <div class="kit-pricing-box">
+            <span class="suite-mini-price">22€</span>
+            <span class="kit-price-orig">34€</span>
+          </div>
+          <div class="kit-btns-group">
+            <button type="button" class="btn-kit-info" onclick="event.stopPropagation(); openModal('suite-03')">
+              Detalles ℹ️
+            </button>
+            <span class="btn-kit-info btn-disabled" onclick="event.stopPropagation()" title="Artículo técnico próximamente">
+              Artículo próximamente
+            </span>
+            <a href="https://datalaria.lemonsqueezy.com/checkout/buy/ee578b8e-29d6-4361-ba19-4b0b5abfd89a" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
+              Comprar Suite →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
         <div class="suite-mini-action">
           <span class="suite-mini-price">22€</span>
           <a href="https://datalaria.lemonsqueezy.com/checkout/buy/ee578b8e-29d6-4361-ba19-4b0b5abfd89a" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">

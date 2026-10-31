@@ -1,9 +1,9 @@
 ---
 title: "De la Ingeniería de Sistemas a la Fórmula 1: La IA (Nanobana) para ilustrar un Roadmap Complejo"
 date: 2025-09-20
-category: "Artículos Técnicos"
+category: "Cultura Tech y Media"
 draft: False
-categories: ["Herramientas", "Ingeniería"]
+categories: ["Herramientas", "Ingeniería", "Cultura Tech y Media"]
 tags: ["ia", "nanobanana", "ingeniería de sistemas", "v-model", "visualización", "formula 1", "comunicación", "ppt", "pptx", "comunicación", "ingeniería", "desarrollo", "roadmap"]
 image: cover.png
 description: "Un caso práctico de cómo utilicé la herramienta de IA Nanobanana para transformar el Ciclo en V de la ingeniería de sistemas en una historia visual comprensible usando una analogía con la Fórmula 1."

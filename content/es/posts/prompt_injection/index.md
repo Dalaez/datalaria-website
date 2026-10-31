@@ -2,8 +2,8 @@
 title: "Prompt Injection: La Vulnerabilidad que Tu Agente de IA No Sabe que Tiene"
 date: 2026-08-15
 draft: false
-category: "Artículos Técnicos"
-categories: ["Inteligencia Artificial", "Ingeniería", "Ciberseguridad"]
+category: "IA, Ingeniería y Proyectos"
+categories: ["Inteligencia Artificial", "Ingeniería", "Ciberseguridad", "IA, Ingeniería y Proyectos"]
 tags: ["prompt injection", "seguridad ia", "owasp", "llm", "agentes autónomos", "tool calling", "crewai", "mcp", "ciberseguridad"]
 description: "Prompt Injection ocupa el puesto #1 del OWASP GenAI Top 10 de 2026. Este artículo explica qué es, por qué tus agentes con Tool Calling son especialmente vulnerables, los ataques reales de 2025-2026, y las 5 defensas que funcionan en producción. Con casos reales del Autopilot y el Radar de Obsolescencia de Datalaria."
 summary: "Tu agente de CrewAI tiene el mismo problema que tenían los servidores web en 2005: acepta input del usuario sin sanitizar. Prompt Injection es la vulnerabilidad #1 del OWASP GenAI Top 10 de 2026, y los ataques ya no son teóricos: en mayo de 2026, un agente comprometido exfiltró una base de datos PostgreSQL completa en menos de 2 minutos."

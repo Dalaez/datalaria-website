@@ -2,8 +2,8 @@
 title: "S&OP Engineering II: Demand Planning from Guessing to Probability"
 date: 2026-03-07
 draft: false
-category: "Tech Projects"
-categories: ["S&OP Engineering", "Data Engineering", "Machine Learning"]
+category: "AI, Engineering & Projects"
+categories: ["S&OP Engineering", "Data Engineering", "Machine Learning", "AI, Engineering & Projects"]
 tags: ["Supply Chain", "Forecasting", "Prophet", "Python", "MLOps"]
 author: "Datalaria"
 description: "A deterministic forecast in Excel is a financial risk. In Chapter 2, we upgrade our S&OP pipeline with Facebook Prophet to calculate demand probability, uncertainty intervals, and safety stock mathematically."

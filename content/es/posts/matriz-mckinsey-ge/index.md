@@ -3,13 +3,17 @@ title: "Matriz McKinsey / GE 3x3: Atractivo de la Industria, Fortaleza Competiti
 date: 2026-10-29
 draft: false
 translationKey: mckinsey-ge-matrix
-category: "Artículos Técnicos"
-categories: ["Estrategia Empresarial", "Finanzas Corporativas", "Gestión de Cartera", "Management"]
+category: "Estrategia y Operaciones"
+categories: ["Estrategia Empresarial", "Finanzas Corporativas", "Gestión de Cartera", "Management", "Estrategia y Operaciones"]
 tags: ["Matriz McKinsey", "General Electric", "Matriz GE", "Asignación de Capital", "Gestión de Cartera", "Atractivo de Industria", "Fortaleza Competitiva", "Pirámide de Minto", "Plantilla Excel", "PowerPoint Ejecutivo", "ROIC"]
 description: "Guía metodológica exhaustiva para implementar la matriz McKinsey / General Electric 3x3 de 9 cajas: evaluación multifactorial, neutralización de sesgos del management y plan de asignación de capital para Comités de Inversión y Consejos de Administración."
 summary: "Supera las limitaciones unifactoriales de la matriz BCG clásica. En esta guía de estándar consultoría estratégica Tier-1 (McKinsey / BCG) formalizamos el modelo multifactorial de 9 cuadrantes de General Electric para categorizar unidades estratégicas de negocio en tres zonas de asignación de capital (Invertir, Seleccionar y Cosechar), neutralizar el sesgo de autoindulgencia directiva, blindar el gobierno corporativo y expandir el ROIC del grupo."
+cover:
+  image: "cover.png"
+  alt: "Matriz McKinsey / GE 3x3: Atractivo de la Industria, Fortaleza Competitiva y Asignación de Capital C-Level"
+  caption: "Matriz McKinsey / GE 3x3: Modelo multifactorial de 9 cajas para asignación eficiente de CAPEX y expansión del ROIC del grupo."
+  relative: true
 ---
-
 En casi cualquier comité de inversiones, revisión anual de cartera o sesión estratégica de Consejo de Administración, surge la misma encrucijada corporativa: **¿cómo distribuir de forma eficiente y no arbitraria decenas de millones de euros en CAPEX entre divisiones que operan en mercados con dinámicas radicalmente dispares?**
 
 Durante décadas, la respuesta estándar en las escuelas de negocios fue proyectar la conocida **Matriz BCG 2x2** (crecimiento de mercado vs. cuota relativa de mercado). Sin embargo, en corporaciones diversificadas y comités de dirección modernos (C-Level), este marco simplista genera tres patologías analíticas severas:

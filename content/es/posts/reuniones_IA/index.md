@@ -1,9 +1,9 @@
 ---
 title: "Reuniones Excelentes en la Era de la IA: El Decálogo Definitivo"
 date: 2025-11-21
-category: "Artículos Técnicos"
+category: "Estrategia y Operaciones"
 draft: False
-categories: ["Productividad", "Herramientas"]
+categories: ["Productividad", "Herramientas", "Estrategia y Operaciones"]
 tags: ["ia", "reuniones", "productividad", "trabajo remoto", "prompt engineering", "buenas practicas"]
 image: cover.png
 description: "Un decálogo de 10 pasos prácticos para transformar tus reuniones, haciéndolas más cortas, efectivas y ágiles, con un enfoque especial en cómo la IA puede ser tu mejor aliada."

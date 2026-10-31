@@ -2,8 +2,8 @@
 title: "The Central Nervous System: Scaling the Agentic Radar to 24/7 with FastAPI and Webhooks"
 date: 2026-05-09
 draft: false
-category: "Tech Projects"
-categories: ["S&OP Engineering", "Artificial Intelligence", "Cloud Architecture"]
+category: "AI, Engineering & Projects"
+categories: ["S&OP Engineering", "Artificial Intelligence", "Cloud Architecture", "AI, Engineering & Projects"]
 tags: ["FastAPI", "Webhooks", "Event-Driven Architecture", "CrewAI", "Python"]
 description: "Transitioning from a local script to a high-availability enterprise architecture. This post details building a FastAPI router to orchestrate CrewAI agents asynchronously."
 summary: "Transforming the Obsolescence radar into an Event-Driven 24/7 unified microservice. We cover dual ingestion vectors (Accuris vs. Raw Emails), non-blocking HTTP processing through BackgroundTasks, and closing the operational loop via Microsoft Teams."

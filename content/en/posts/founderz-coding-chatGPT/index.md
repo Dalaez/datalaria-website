@@ -1,9 +1,9 @@
 ---
 title: "Copiloting with AI: Learning with Founderz and ChatGPT"
 date: 2025-09-11
-category: "Technical Articles"
+category: "Tech Culture & Media"
 draft: False
-categories: ["Tools", "Learning"]
+categories: ["Tools", "Learning", "Tech Culture & Media"]
 tags: ["ai", "chatgpt", "prompt engineering", "founderz", "web development", "no-code", "html", "maths"]
 image: Founderz_AI_Introduction.png
 description: "A chronicle of how the AI and Prompt Engineering course by Founderz opened my eyes to the possibility of creating functional web applications using only natural language with ChatGPT."

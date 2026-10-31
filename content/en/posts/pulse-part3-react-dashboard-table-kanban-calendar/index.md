@@ -3,8 +3,8 @@ title: "Executive Table, Kanban Board, and Monthly Calendar in React 19 Over a S
 date: 2026-12-02
 draft: false
 image: "cover.png"
-category: "Technical Articles"
-categories: ["Content Ops", "Frontend", "React", "Software Engineering"]
+category: "AI, Engineering & Projects"
+categories: ["Content Ops", "Frontend", "React", "Software Engineering", "AI, Engineering & Projects"]
 tags: ["React 19", "TypeScript", "Vite", "Kanban", "Tailwind CSS", "Content Ops as Code", "Jamstack", "Hugo"]
 description: "How to design a high-performance Single Page Application in React 19 delivering analytics, Kanban boards, and editorial calendars over a zero-latency static index."
 summary: "Traditionally, delivering an interactive Kanban board, multi-criteria sorting table, and monthly editorial calendar required heavy relational databases and dedicated server infrastructure. In this third installment of Datalaria Pulse, we reveal how we engineered our React 19 SPA running atop a precompiled static index: zero network latency, instant client-side filtering, and optimistic idea capture."

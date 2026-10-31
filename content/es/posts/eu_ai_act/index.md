@@ -2,8 +2,8 @@
 title: "EU AI Act: Lo que Todo Ingeniero Español Necesita Saber (Sin Abogados)"
 date: 2026-07-05
 draft: false
-category: "Artículos Técnicos"
-categories: ["Inteligencia Artificial", "Ingeniería", "Regulación"]
+category: "IA, Ingeniería y Proyectos"
+categories: ["Inteligencia Artificial", "Ingeniería", "Regulación", "IA, Ingeniería y Proyectos"]
 tags: ["eu ai act", "regulación ia", "aesia", "compliance", "alto riesgo", "startups", "ingeniería", "europa"]
 description: "Guía técnica del Reglamento Europeo de Inteligencia Artificial (EU AI Act) escrita por y para ingenieros. Clasificación de riesgo, obligaciones técnicas, multas, checklist de compliance y conexión con la Ley española de IA y la AESIA."
 summary: "El 2 de agosto de 2026 entra en vigor la mayoría de las obligaciones del EU AI Act. La multa máxima: 35 millones de euros o el 7% de tu facturación global. Y la mayoría de artículos que explican esta regulación están escritos por abogados, para abogados. Este no. Este está escrito por un ingeniero que ya opera agentes de IA en producción, y traduce cada artículo del reglamento al lenguaje que de verdad entendemos: arquitecturas, pipelines y código."

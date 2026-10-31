@@ -2,8 +2,8 @@
 title: "From Narrative to Diagram: Designing S&OP Processes with AI and BPMN"
 date: 2025-12-19
 draft: false
-category: "Technical Articles"
-categories: ["Artificial Intelligence", "Industry 4.0", "Productivity"]
+category: "Strategy & Operations"
+categories: ["Artificial Intelligence", "Industry 4.0", "Productivity", "Strategy & Operations"]
 tags: ["S&OP", "BPMN", "Mermaid", "Process Design", "GenAI", "Business Analysis"]
 image: "/images/posts/ai-bpmn-sop-process.jpg" 
 description: "How to leverage Artificial Intelligence as a Business Analyst to transform complex narratives into structured flowcharts, comparing tools like Miro, Mermaid, and BPMN.io."

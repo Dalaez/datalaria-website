@@ -1,9 +1,9 @@
 ---
 title: "Executive Decision Packs: El Ecosistema Cuantitativo para la Aprobación del Comité de Dirección"
-date: 2026-11-15
+date: 2026-11-12
 draft: false
-category: "Artículos Técnicos"
-categories: ["Estrategia Corporativa", "Toma de Decisiones", "Gestión de Proyectos", "Finanzas Corporativas"]
+category: "Estrategia y Operaciones"
+categories: ["Estrategia Corporativa", "Toma de Decisiones", "Gestión de Proyectos", "Finanzas Corporativas", "Estrategia y Operaciones"]
 tags: ["Executive Decision Packs", "Mega Bundle", "Comité de Dirección", "C-Level", "Pirámide de Minto", "Modelos Cuantitativos", "Excel", "PowerPoint", "Asignación de Capital", "Gobernanza Corporativa"]
 description: "Del cálculo cuantitativo a la aprobación del Board. Guía maestra sobre la arquitectura de 3 capas, las 13 herramientas ejecutivas y el estándar de decisión de alta dirección."
 summary: "Las decisiones corporativas más críticas colapsan con frecuencia en la última milla: presentaciones cualitativas llenas de listas estáticas, sesgos de jerarquía (HiPPO) y debates políticos desconectados de las finanzas. En este artículo maestro analizamos la arquitectura de los Executive Decision Packs de Datalaria: un ecosistema unificado de 13 herramientas cuantitativas divididas en 3 suites (Estrategia MBA, Toma de Decisiones y Control Operativo PMBOK) que transforman el juicio intuitivo en modelos financieros auditables, decks C-Level bajo la Pirámide de Minto y mandatos vinculantes listos para el Comité de Dirección."

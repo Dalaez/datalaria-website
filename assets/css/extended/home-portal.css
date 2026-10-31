@@ -471,6 +471,20 @@ a.dlh-disco:hover,
     text-align: center;
 }
 
+.dlh-res-links-row {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    width: 100%;
+}
+
+.dlh-res-links-row .dlh-guide-link {
+    flex: 1;
+    font-size: 0.69rem;
+    padding: 4px 6px;
+    white-space: nowrap;
+}
+
 .dlh-guide-link {
     display: inline-flex;
     align-items: center;
@@ -533,18 +547,18 @@ a.dlh-disco:hover,
 }
 
 /* --------------------------------------------------------------------------
-   02 · Contenidos (4 categorías)
+   02 · Contenidos (5 categorías)
    -------------------------------------------------------------------------- */
 .dlh-cat-tabs {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
     margin-bottom: 18px;
 }
 
 .dlh-cat-tab,
 .dlh-app-tab {
-    padding: 10px 12px;
+    padding: 10px 8px;
     text-align: left;
     font-family: inherit;
     color: var(--primary);
@@ -1121,6 +1135,10 @@ a.dlh-disco:hover,
 }
 
 @media (max-width: 860px) {
+    .dlh-cat-tabs {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
     .dlh-app {
         width: calc((100% - 20px) / 3);
     }

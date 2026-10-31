@@ -2,8 +2,8 @@
 title: "Kurt Gödel: El Teorema de la Incompletitud, los Límites de la Lógica y si una AGI Podrá Jamás Conocerlo Todo"
 date: 2026-10-31
 draft: false
-category: "Biografías"
-categories: ["casos_exito", "Inteligencia Artificial", "Deep Tech", "Filosofía"]
+category: "Pioneros y Referentes"
+categories: ["casos_exito", "Inteligencia Artificial", "Deep Tech", "Filosofía", "Pioneros y Referentes"]
 tags: ["kurt godel", "incompletitud", "logica matematica", "david hilbert", "alan turing", "agi", "roger penrose", "filosofia", "computacion", "historia"]
 image: cover.jpg
 weight: 10

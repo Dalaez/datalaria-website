@@ -3,7 +3,7 @@ title: "HappyRobot: Cómo los Agentes de Voz Autónomos Conquistaron la Logísti
 date: 2026-09-30
 draft: false
 category: "Startups"
-categories: ["casos_exito", "Inteligencia Artificial", "Ingeniería"]
+categories: ["casos_exito", "Inteligencia Artificial", "Ingeniería", "Startups"]
 tags: ["happyrobot", "voice ai", "agentes ia", "logistica", "supply chain", "startups", "y combinator", "unicornio"]
 image: cover.jpg
 weight: 10

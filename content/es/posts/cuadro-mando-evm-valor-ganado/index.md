@@ -1,9 +1,9 @@
 ---
 title: "Cuadro de Mando EVM: Valor Ganado, Curva S y Proyecciones EAC de Grado Consejo de Administración"
-date: 2026-11-05
+date: 2026-11-21
 draft: false
-category: "Artículos Técnicos"
-categories: ["Control Operativo", "Project Finance", "Plantillas Ejecutivas"]
+category: "Estrategia y Operaciones"
+categories: ["Control Operativo", "Project Finance", "Plantillas Ejecutivas", "Estrategia y Operaciones"]
 tags: ["Valor Ganado", "EVM", "ANSI/EIA-748", "Curva S", "CPI", "SPI", "EAC", "TCPI", "Control Operativo", "Project Management", "PMBOK", "C-Level"]
 description: "Guía metodológica y cuantitativa de Earned Value Management (EVM / ANSI/EIA-748): superación de la trampa contable tradicional, curvas S ejecutivas, varianzas CV/SV, índices CPI/SPI, modelos predictivos de coste final EAC y cálculo del índice de rendimiento para completar TCPI ante el Consejo de Administración."
 summary: "Erradica las sorpresas presupuestarias y los retrasos ocultos a mitad de proyecto con el estándar internacional de Earned Value Management (EVM / ANSI/EIA-748). Cuantifica el avance físico real (EV), audita la eficiencia de gasto (CPI) y de cronograma (SPI), traza la Curva S ejecutiva y proyecta el coste final a la conclusión (EAC) listo para defender en comité de dirección."

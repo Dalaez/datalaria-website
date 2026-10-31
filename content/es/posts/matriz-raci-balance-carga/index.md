@@ -2,8 +2,8 @@
 title: "Matriz RACI Cuantitativa: Balance de Carga Operativa, Unicidad de Accountable y Detección de Cuellos de Botella"
 date: 2026-11-25
 draft: false
-category: "Artículos Técnicos"
-categories: ["Control Operativo", "Gobernanza de Equipos", "Plantillas Ejecutivas"]
+category: "Estrategia y Operaciones"
+categories: ["Control Operativo", "Gobernanza de Equipos", "Plantillas Ejecutivas", "Estrategia y Operaciones"]
 tags: ["Matriz RACI", "PMBOK", "PRINCE2", "Balance de Carga", "Gobernanza de Equipos", "Cuellos de Botella", "FTE", "C-Level", "PMO"]
 description: "Guía metodológica y cuantitativa para transformar la matriz RACI tradicional en un motor dinámico de control operativo: principio de Accountable único, cálculo de saturación por rol, semáforos de riesgo de burnout y plan de rebalanceo C-Level."
 summary: "Transforma la clásica matriz RACI cualitativa en un modelo cuantitativo de gobernanza operativa para Comités de Dirección. Este marco de estándar Tier-1 (PMBOK 7ª Edición / PRINCE2) audita la unicidad innegociable de Accountable (A=1), calibra la dedicación horaria compuesta por entregable, detecta cuellos de botella organizativos y genera un plan de rebalanceo formal para blindar la ejecución del proyecto."
