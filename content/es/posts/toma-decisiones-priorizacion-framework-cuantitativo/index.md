@@ -1,6 +1,6 @@
 ---
 title: "Toma de Decisiones Racional & Priorización: El Framework Cuantitativo de 3 Niveles"
-date: 2026-10-31
+date: 2026-11-02
 draft: false
 category: "Artículos Técnicos"
 categories: ["Toma de Decisiones", "Estrategia Corporativa", "Gestión de Producto", "Finanzas Corporativas"]

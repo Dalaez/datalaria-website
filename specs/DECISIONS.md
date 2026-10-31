@@ -204,3 +204,27 @@
 - **Consecuencias:**
   - Imposibilidad de que futuros scripts de prueba, benchmarking o captura de marketing contaminen cuentas de usuarios reales.
   - La suite de CI/CD `pytest` falla de forma automática si un script o test intenta mutar cuentas no autorizadas o si se detecta fuga de datos sintéticos.
+
+
+---
+
+## ADR-015: Evolución de Datalaria Pulse a Arquitectura Dual-Mode con Supabase (`pulse` schema) para Sincronización Web ↔ Localhost y Acceso Multi-Usuario Demo
+- **Fecha:** 2026-10-29
+- **Estado:** Aceptado (Planificado para Hito 5.8)
+- **Contexto:**
+  1. En los Hitos 5.5 y 5.6 se consolidó Datalaria Pulse como una SPA estática impulsada por Git y `public.json`, complementada con captura de ideas locales en `localStorage`.
+  2. Aunque este modelo cumple con excelencia la premisa de no depender de Notion y permitir auditar el repositorio localmente, introduce una barrera operativa: las modificaciones de ideas o reprogramaciones de fechas realizadas en la web en producción (móvil, tablet, portátil) no se sincronizan en tiempo real con el entorno de desarrollo local (localhost) sin pasar por exportaciones manuales YAML y commits de Git.
+  3. Asimismo, los visitantes de la web que desean probar la herramienta de forma continuada requieren persistencia multi-dispositivo sin alterar el repositorio maestro.
+- **Decisión:**
+  1. **Evolucionar Datalaria Pulse al Patrón Dual-Mode con Supabase en la Fase Pro (Hito 5.8):**
+     - Crear el esquema PostgreSQL dedicado `pulse` dentro del cluster principal `datalaria-core` (Constitución Art. 4).
+     - Desplegar las tablas `pulse.ideas` y `pulse.content_schedule` con Row-Level Security (`auth.uid() = user_id`) y soporte de Supabase Auth (reutilizando la infraestructura ya existente en LifeOps).
+     - **Modo 1 (Sandbox Público Inmediato):** Opera por defecto sin login leyendo `public.json` y persistiendo ideas temporales en `localStorage` (Constitución Art. 3).
+     - **Modo 2 (Pro Cloud Autenticado):** Conexión en tiempo real con Supabase. Cualquier idea, nota o reprogramación guardada en la web se sincroniza al instante con localhost al pulsar "Refrescar Datos", y viceversa.
+  2. **Estrategia Editorial de Lanzamiento (Hito 5.7):**
+     - Los 5 artículos técnicos se centran en la metodología base, el Kit descargable y las herramientas sin código (Power Query M, Python puro), garantizando una adopción accesible y masiva.
+     - Cada uno de los 5 artículos concluye con un **apartado final de cierre** destacando las capacidades de la versión Pro, la demo interactiva en la web y los servicios de consultoría técnica corporativa a medida de Datalaria.
+- **Consecuencias:**
+  - Plena paridad arquitectónica entre LifeOps y Pulse.
+  - Sincronización instantánea Web ↔ Localhost en cuanto se active la sesión.
+  - Embudo de monetización escalonado: Kit Básico ($39-$49) ➔ Demo Interactiva Web ➔ Contratos de Consultoría y Despliegue Pro.

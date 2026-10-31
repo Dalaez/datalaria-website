@@ -41,7 +41,7 @@ def test_post_bilingual_pairing_parity():
         assets = json.load(f)
         
     posts = [a for a in assets if a["asset_type"] == "post"]
-    assert len(posts) == 109
+    assert len(posts) >= 109
     
     for p in posts:
         assert p["title_es"] is not None

@@ -3,6 +3,7 @@ theme: PaperMod
 canonifyURLs: true
 defaultContentLanguage: es
 defaultContentLanguageInSubdir: true
+buildFuture: false
 timeout: "300s"
 ignoreFiles:
   - '(?i)desktop\.ini$'

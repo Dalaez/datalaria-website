@@ -1,0 +1,151 @@
+slug: pulse
+order: 15
+tier: b2b
+status: incubating
+icon: "⚡"
+cover: cover.png
+app_url: /apps/pulse/
+demo_url: /apps/pulse/#/?demo=true
+source_spec: specs/apps/pulse/spec.md
+current_version: v0.2.0
+
+title:
+  es: "Datalaria Pulse"
+  en: "Datalaria Pulse"
+
+tagline:
+  es: "Content Ops as Code — Gobernanza editorial, paridad bilingüe y retorno orgánico desde Git."
+  en: "Content Ops as Code — Editorial governance, bilingual parity, and organic ROI directly from Git."
+
+summary:
+  es: "Sistema operativo editorial integral para equipos de contenidos técnicos y blogs basados en Git. Elimina las hojas de cálculo y bases de datos desincronizadas (Notion, Airtable) indexando de forma determinista el repositorio Markdown con Pydantic, midiendo paridad lingüística ES ⇔ EN, calculando ROI orgánico con GA4/GSC y ofreciendo una interfaz web reactiva con tabla ejecutiva, tablero Kanban y calendario de publicaciones."
+  en: "End-to-end editorial operating system for technical content teams and Git-backed blogs. Replaces out-of-sync spreadsheets and Notion databases with deterministic Markdown indexing via Pydantic, enforcing bilingual ES ⇔ EN parity, measuring organic ROI through GA4/GSC, and providing a responsive web interface with an executive table, Kanban board, and publication calendar."
+
+objectives:
+  - es: "Garantizar una Fuente Única de Verdad (Single Source of Truth) donde cada commit en Git actualiza automáticamente el catálogo editorial."
+    en: "Guarantee a Single Source of Truth where every Git commit automatically updates the entire editorial catalog."
+  - es: "Monitorizar la paridad bilingüe estricta ES ⇔ EN detectando desactualizaciones y traducciones pendientes sin intervención manual."
+    en: "Enforce strict ES ⇔ EN bilingual parity, detecting outdated revisions and missing translations automatically."
+  - es: "Relativizar métricas de rendimiento orgánico (Google Analytics 4 / Search Console) en un índice base 100 sin exponer cifras privadas."
+    en: "Normalize organic performance metrics (Google Analytics 4 / Search Console) into a base-100 index without exposing private analytics."
+  - es: "Ofrecer arquitectura Dual-Mode: Kit descargable (Excel + Power Query + CLI) y Modo Pro Cloud con persistencia Supabase multi-tenant."
+    en: "Deliver a Dual-Mode architecture: downloadable standalone Kit (Excel + Power Query + CLI) and Pro Cloud mode with multi-tenant Supabase persistence."
+
+features:
+  - icon: "⚡"
+    es: "Indexación Determinista Pydantic: escaneo de metadatos, front matter YAML, conteo de palabras y auditoría SEO en milisegundos."
+    en: "Deterministic Pydantic Indexing: instant scan of metadata, YAML front matter, word counts, and SEO audits."
+  - icon: "🌐"
+    es: "Matriz de Paridad Bilingüe: sincronización bidireccional continua entre artículos en español e inglés con scoring de frescura."
+    en: "Bilingual Parity Matrix: continuous bi-directional synchronization between Spanish and English assets with freshness scoring."
+  - icon: "📊"
+    es: "Dashboard Analytics & ROI: métricas de profundidad léxica, patrimonio de contenido estimado y evolución de tráfico mensual."
+    en: "Analytics & ROI Dashboard: lexical depth metrics, estimated content equity, and normalized monthly traffic trends."
+  - icon: "📋"
+    es: "Tablero Kanban & Calendario: visualización por estados editoriales (Idea, Borrador, Revisión, Programado, Publicado) y vista mensual."
+    en: "Kanban Board & Calendar: interactive workflow stages (Idea, Draft, Review, Scheduled, Published) and monthly planning grid."
+  - icon: "💡"
+    es: "Captura de Ideas & Exportación: anotación de nuevos activos con persistencia en localStorage/Supabase y exportación a backlog YAML."
+    en: "Idea Capture & Export: quick drafting persisted in localStorage/Supabase with one-click export to Git backlog YAML."
+  - icon: "🔒"
+    es: "Seguridad y RLS Multi-Tenant: aislamiento estricto de datos privados y sandbox público seguro bajo invariantes INV-PULSE-1..5."
+    en: "Multi-Tenant RLS Security: strict private data isolation and safe public sandbox under INV-PULSE-1..5 invariants."
+
+design:
+  architecture:
+    es: "Arquitectura híbrida Content Ops as Code: el motor backend en Python escanea el árbol de contenidos Markdown y la taxonomía del repositorio, genera un índice normalizado validado por Pydantic v2 y publica un dataset público relativizado. La interfaz web en React 19 + TypeScript consume este índice estático con latencia cero o se conecta en tiempo real a Supabase PostgreSQL mediante RLS en su versión Pro Cloud."
+    en: "Hybrid Content Ops as Code architecture: the Python backend engine scans the Markdown content tree and taxonomy, compiling a normalized index validated by Pydantic v2 and outputting a privacy-safe public dataset. The React 19 + TypeScript frontend serves this static index with zero latency or connects in real time to Supabase PostgreSQL via RLS in Pro Cloud mode."
+  principles:
+    - es: "Single Source of Truth: los ficheros de código y Markdown en Git son la única verdad; ningún sistema externo puede desincronizarlos."
+      en: "Single Source of Truth: code and Markdown files in Git are the sole authority; no external tool can drift out of sync."
+    - es: "Privacidad por Diseño (Privacy by Design): métricas analíticas privadas relativizadas a base 100 y percentiles para consumo público."
+      en: "Privacy by Design: private analytics metrics normalized to base-100 and percentiles for safe public consumption."
+    - es: "Dual-Mode Flexibility: disponible como Kit descargable sin dependencias y como plataforma colaborativa Pro en la nube."
+      en: "Dual-Mode Flexibility: available as a zero-dependency downloadable Kit and as a collaborative Pro Cloud platform."
+  diagram: |
+    flowchart LR
+      GIT["Repositorio Git\n(Markdown + YAML)"] --> SCAN["Scanner Python\n(Pydantic v2)"]
+      SCAN --> PUB["public.json\n(Relativizado)"]
+      SCAN --> PRIV["private/index.json\n(Tracker Privado)"]
+      PUB --> WEB["Datalaria Pulse Web\n(React 19 / Vite)"]
+      SUPA[("Supabase Cloud\n(pulse schema / RLS)")] <-->|"Pro Sync"| WEB
+
+tech:
+  - layer: frontend
+    items: ["React 19", "TypeScript", "Vite 8", "Lucide Icons"]
+  - layer: backend
+    items: ["Python 3.13", "Pydantic v2", "PyYAML", "OpenPyXL"]
+  - layer: data
+    items: ["PostgreSQL 15 (Supabase)", "Row-Level Security (RLS)", "pulse schema"]
+  - layer: infra
+    items: ["Hugo Static Portal", "GitHub Actions CI/CD", "Git Pre-Commit Hooks"]
+
+releases:
+  - version: "v0.2.0"
+    date: "2026-10-29"
+    state: released
+    type: feature
+    title:
+      es: "Versión Pro Cloud: Supabase PostgreSQL, Auth, Modo Demo y Rediseño Visual"
+      en: "Pro Cloud Version: Supabase PostgreSQL, Auth, Demo Mode, and Visual Redesign"
+    changes:
+      - es: "Sincronización bidireccional en tiempo real Web ↔ Localhost mediante Supabase PostgreSQL (esquema pulse y RLS multi-tenant auth.uid() = user_id)."
+        en: "Real-time bi-directional Web ↔ Localhost sync powered by Supabase PostgreSQL (pulse schema and multi-tenant RLS auth.uid() = user_id)."
+      - es: "Aislamiento multi-tenant estricto: espacio privado limpio desde cero para nuevos usuarios y canal oficial sincronizado para Master Admins."
+        en: "Strict multi-tenant isolation: clean private scratch workspace for new users and official synced channel for Master Admins."
+      - es: "Modo Demo interactivo poblado con 10 activos sintéticos para exploración guiada de visitantes sin comprometer datos reales."
+        en: "Interactive Demo mode seeded with 10 synthetic assets for friction-free visitor testing without leaking real metrics."
+      - es: "Rediseño completo de jerarquía visual: Macro KPIs con bordes superiores neón, métricas específicas de Analytics con icon-badges y Navigation Deck segmentado flotante con resplandor activo."
+        en: "Complete visual hierarchy overhaul: Macro KPIs with neon top borders, specific Analytics cards with icon badges, and a floating segmented Navigation Deck with active tab glow."
+
+  - version: "v0.1.5"
+    date: "2026-10-28"
+    state: released
+    type: feature
+    title:
+      es: "Mejoras en Analytics: Gráficos a Ancho Completo, Taxonomía Triple y Captura de Ideas"
+      en: "Analytics Enhancements: Full-Width Charts, Triple Taxonomy, and Idea Capture"
+    changes:
+      - es: "Evolución del Dashboard Analytics con gráficos apilados a ancho completo (100% width): serie histórica de tráfico GA4 base 100 y cadencia mensual."
+        en: "Analytics Dashboard expansion with stacked full-width charts: GA4 base-100 historical traffic trend and monthly publication cadence."
+      - es: "Selector de taxonomía en 3 vistas interactivas: Ecosistema Macro, 4 Temáticas oficiales del blog y Categorías detalladas."
+        en: "Interactive 3-mode taxonomy selector: Macro Ecosystem groups, 4 official blog pillars, and granular category breakdown."
+      - es: "Nuevo módulo de Profundidad Editorial & Tiempo de Lectura (~210.000 palabras técnicas indexadas y ~18,4 horas de lectura técnica)."
+        en: "New Editorial Depth & Reading Time analysis (~210,000 indexed technical words and ~18.4 hours of technical reading)."
+      - es: "Módulo de captura y edición de ideas en local (localStorage) con sincronización en tiempo real sobre el dataset público y exportador a backlog YAML."
+        en: "Local idea capture and editing engine (localStorage) with instant optimistic client-side merging and YAML backlog exporter."
+
+  - version: "v0.1.0"
+    date: "2026-10-28"
+    state: released
+    type: release
+    title:
+      es: "Versión Básica Inicial: Content Ops as Code y Kit Standalone Descargable"
+      en: "Initial Baseline: Content Ops as Code and Downloadable Standalone Kit"
+    changes:
+      - es: "Motor de indexación en Python validado con Pydantic v2: desacople total de Notion y extracción determinista de metadatos desde Markdown."
+        en: "Python indexing engine validated with Pydantic v2: complete decoupling from Notion and deterministic metadata extraction from Markdown."
+      - es: "Empaquetado del Datalaria Pulse Kit comercial: Plantilla Maestra Excel 2016/365, conector Power Query M, script de migración en 5 minutos de Notion y escáner universal pulse_repo_scanner.py sin dependencias."
+        en: "Commercial Datalaria Pulse Kit release: Excel 2016/365 Master Template, Power Query M connector, 5-minute Notion migration script, and zero-dependency pulse_repo_scanner.py CLI."
+      - es: "Pipeline CI/CD con GitHub Actions y Git Pre-Commit hooks para regeneración determinista automática antes de cada commit."
+        en: "GitHub Actions CI/CD workflow and Git Pre-Commit hooks for automatic deterministic index compilation before every commit."
+      - es: "App Web SPA en React 19 + TypeScript con vistas de Tabla ejecutiva, Tablero Kanban de 5 columnas y Calendario mensual sobre índice estático con latencia cero."
+        en: "React 19 + TypeScript SPA web client featuring executive Table, 5-column Kanban board, and monthly Calendar over a zero-latency static index."
+
+posts:
+  - slug:
+      es: pulse-parte1-adios-notion-content-ops
+      en: pulse-part1-goodbye-notion-content-ops
+    part: 1
+  - slug:
+      es: pulse-parte2-indexador-pydantic-paridad-ci
+      en: pulse-part2-pydantic-indexer-bilingual-parity-ci
+    part: 2
+  - slug:
+      es: pulse-parte3-tablero-react-tabla-kanban-calendario
+      en: pulse-part3-react-dashboard-table-kanban-calendar
+    part: 3
+  - slug:
+      es: pulse-parte4-ga4-search-console-automatico
+      en: pulse-part4-ga4-search-console-automated
+    part: 4

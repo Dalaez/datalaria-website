@@ -157,6 +157,37 @@ Cada fila o tarjeta representa un **activo único bilingüe** (`post`, `app` o `
 
 ---
 
+### 4.3 Arquitectura Pro Cloud (Supabase pulse Schema — Hito 5.8 / ADR-015)
+
+Para superar la limitación de almacenamiento exclusivamente en localStorage y dotar a la plataforma de sincronización bidireccional instantánea entre la Web (datalaria.com/apps/pulse/) y Localhost (http://localhost:1313/apps/pulse/), se formaliza la extensión **Pulse Pro Cloud**:
+
+1. **Unificación en el Cluster Supabase (datalaria-core — Constitución Art. 4):**
+   - Nuevo esquema dedicado: CREATE SCHEMA IF NOT EXISTS pulse;
+2. **Tablas del Esquema pulse:**
+   - **pulse.ideas:**
+     - id UUID PRIMARY KEY DEFAULT gen_random_uuid()
+     - user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE
+     - 	itle TEXT NOT NULL
+     - 
+otes TEXT DEFAULT ''
+     - category TEXT DEFAULT 'General'
+     - 	ags TEXT[] DEFAULT '{}'
+     - status TEXT DEFAULT 'idea' CHECK (status IN ('idea', 'draft', 'review', 'scheduled', 'published'))
+     - 	arget_date DATE
+     - created_at TIMESTAMPTZ DEFAULT NOW()
+     - updated_at TIMESTAMPTZ DEFAULT NOW()
+   - **pulse.content_schedule:** Reprogramaciones y excepciones manuales del calendario editorial.
+3. **Seguridad y RLS (Row-Level Security):**
+   - ALTER TABLE pulse.ideas ENABLE ROW LEVEL SECURITY;
+   - Política estricta: CREATE POLICY user_ideas_isolation ON pulse.ideas FOR ALL USING (auth.uid() = user_id);
+   - Permite a cualquier usuario visitante registrarse en modo Demo/Trial para gestionar su propio backlog en la nube sin interferir en los datos de otros usuarios ni en el repositorio maestro de Datalaria.
+4. **Sincronización Bidireccional Web ↔ Localhost:**
+   - La SPA React conecta con Supabase Auth.
+   - En modo no autenticado: opera como Sandbox estático (public.json + localStorage).
+   - En modo autenticado: sincroniza ideas y cambios de estado directamente contra la base de datos Supabase en tiempo real.
+
+---
+
 ## 5. Requisitos No Funcionales (Seguridad, i18n, UI y Kit)
 - **Internacionalización (i18n — Constitución Art. 5.1):** Diccionario único `es`/`en` en `apps/pulse/web/src/i18n/` con detección automática por `?lang=es|en`, `localStorage` o idioma del navegador.
 - **Diseño y Vistas de la SPA (`apps/pulse/web/`):**
@@ -218,4 +249,5 @@ Para dar por completado cada hito de la Fase 5, deben superarse con código `0` 
 
 | Versión | Fecha | Tipo | Cambios | Commit(s) |
 | :--- | :--- | :--- | :--- | :--- |
-| `v0.1.0` | 2026-10-28 | 📐 Spec | Aprobación de la especificación técnica SDD (`SPEC-APP-PULSE`), modelo unificado de activos (`post`/`app`/`kit`), privacidad por métricas relativas y diseño del Kit Excel + importador de Notion (Hitos 5.0 y 5.1). | *Pendiente* |
+| `v0.1.0` | 2026-10-28 | 📐 Spec | Aprobación de la especificación técnica SDD (`SPEC-APP-PULSE`), modelo unificado de activos (`post`/`app`/`kit`), privacidad por métricas relativas y diseño del Kit Excel + importador de Notion (Hitos 5.0 y 5.1). | *Completado* |
+| `v0.2.0` | 2026-10-29 | ⚡ Pro Cloud | Arquitectura Pro Cloud sobre Supabase cluster datalaria-core (esquema pulse, RLS estricto auth.uid() = user_id, Auth en React SPA, sincronización bidireccional Web ↔ Localhost, usuario demo confirmado y suite pytest 18/18 verde — Hito 5.7 / ADR-015). | *Completado* |

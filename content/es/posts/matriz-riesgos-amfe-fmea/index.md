@@ -1,6 +1,6 @@
 ---
 title: "Matriz de Riesgos Cuantitativa & AMFE / FMEA: De la Intuición Cualitativa al Número de Prioridad de Riesgo (NPR)"
-date: 2026-10-30
+date: 2026-11-20
 draft: false
 category: "Artículos Técnicos"
 categories: ["Control Operativo", "Gestión de Riesgos", "Plantillas Ejecutivas"]

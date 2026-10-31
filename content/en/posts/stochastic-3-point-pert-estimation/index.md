@@ -1,6 +1,6 @@
 ---
 title: "Stochastic 3-Point PERT Estimation: Moving from Deterministic Schedule Illusion to Statistical Board Certainty"
-date: 2026-10-30
+date: 2026-11-30
 draft: false
 category: "Technical Articles"
 categories: ["Operations Control", "Project Management", "Executive Templates"]

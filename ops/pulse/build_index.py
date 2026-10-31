@@ -219,6 +219,7 @@ def scan_posts(git_map: Dict[str, datetime]) -> List[ContentAsset]:
         'proj_ops_parte2_agentic_pmo': 'proj_ops_part2_agentic_pmo',
         'calculadora-stock-seguridad-rop': 'safety-stock-rop-calculator',
         'control-operativo-pmbok-framework-cuantitativo': 'quantitative-operations-control-framework',
+        'pulse-parte1-adios-notion-content-ops': 'pulse-part1-goodbye-notion-content-ops',
         'app_conversor_unidades': 'app_unit_converter',
         'Estadistica-descriptiva': 'Descriptive-statistics',
         'Visualizaciones-basicas': 'Basic-Visualizations'
@@ -429,11 +430,24 @@ def scan_apps(git_map: Dict[str, datetime]) -> List[ContentAsset]:
             brief_es = resolve_i18n_field(app_meta.get("tagline"), "es") or resolve_i18n_field(app_meta.get("summary"), "es")
             brief_en = resolve_i18n_field(app_meta.get("tagline"), "en") or resolve_i18n_field(app_meta.get("summary"), "en") or brief_es
 
+            tags_list: List[str] = []
+            if "tech" in app_meta and isinstance(app_meta["tech"], list):
+                for layer in app_meta["tech"]:
+                    if isinstance(layer, dict) and "items" in layer:
+                        tags_list.extend(layer["items"])
+                    elif isinstance(layer, str):
+                        tags_list.append(layer)
+            elif "technologies" in app_meta and isinstance(app_meta["technologies"], list):
+                tags_list = app_meta["technologies"]
+
+            yaml_status = app_meta.get("status", "live")
+            asset_status = "scheduled" if yaml_status == "incubating" else "published"
+
             assets.append(ContentAsset(
                 id=slug,
                 slug=slug,
                 asset_type="app",
-                status="published",
+                status=asset_status,
                 visibility="public",
                 title_es=title_es,
                 title_en=title_en,
@@ -447,7 +461,7 @@ def scan_apps(git_map: Dict[str, datetime]) -> List[ContentAsset]:
                 language_parity="complete",
                 category="Aplicaciones Web",
                 categories=["Apps", app_meta.get("tier", "lab")],
-                tags=app_meta.get("technologies", []),
+                tags=tags_list,
                 series=None,
                 related_app=slug,
                 freshness_status="fresh",

@@ -1,6 +1,6 @@
 ---
 title: "Matriz RACI Cuantitativa: Balance de Carga Operativa, Unicidad de Accountable y Detección de Cuellos de Botella"
-date: 2026-10-30
+date: 2026-11-25
 draft: false
 category: "Artículos Técnicos"
 categories: ["Control Operativo", "Gobernanza de Equipos", "Plantillas Ejecutivas"]

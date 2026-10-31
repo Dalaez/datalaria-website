@@ -1,6 +1,6 @@
 ---
 title: "Kurt Gödel: El Teorema de la Incompletitud, los Límites de la Lógica y si una AGI Podrá Jamás Conocerlo Todo"
-date: 2026-12-13
+date: 2026-10-31
 draft: false
 category: "Biografías"
 categories: ["casos_exito", "Inteligencia Artificial", "Deep Tech", "Filosofía"]
@@ -38,7 +38,10 @@ Dotado de una precisión matemática milimétrica, su vida personal estuvo marca
 * **El Universo Rotatorio de Einstein (1949)**: Como regalo para el 70º cumpleaños de Albert Einstein, Gödel encontró una solución exacta y desconcertante a las ecuaciones de campo de la Relatividad General (la célebre *Métrica de Gödel*). En su modelo, el universo entero rota sobre sí mismo. La consecuencia física de esta solución era tan espeluznante que desconcertó al propio Einstein: en un universo rotatorio existen **curvas temporales cerradas**, lo que significa que un viajero espacial podría viajar al pasado y alterar su propia historia sin violar las leyes de la física relativista.
 * **La tragedia de la paranoia y el final en Princeton**: Durante décadas, Gödel vivió convencido de que emanaban gases venenosos de los radiadores de su casa y de que agentes secretos intentaban asesinarlo envenenando su comida. Su único escudo protector fue su devota esposa, Adele Nimbursky, una exbailarina de cabaret vienesa varios años mayor que él, quien probaba cada bocado de comida antes de que Kurt se lo llevara a la boca. A finales de 1977, Adele cayó gravemente enferma y fue hospitalizada durante meses. Incapaz de superar su pánico a comer alimentos no probados por ella, Gödel dejó de alimentarse. Murió de inanición en el hospital de Princeton el 14 de enero de 1978, pesando apenas veintinueve kilos.
 
-![Kurt Gödel en sus años de madurez en el Instituto de Estudios Avanzados de Princeton, con sus características gafas redondas](godel_glasses.jpg)
+<div class="img-center">
+  <img src="godel_glasses.jpg" alt="Kurt Gödel en sus años de madurez en el Instituto de Estudios Avanzados de Princeton, con sus características gafas redondas" />
+  <em>Kurt Gödel en sus años de madurez en el Instituto de Estudios Avanzados de Princeton, con sus características gafas redondas</em>
+</div>
 
 ---
 

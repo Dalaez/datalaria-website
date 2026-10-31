@@ -99,6 +99,97 @@ def resolve_image_urls(content, file_path):
     new_content = re.sub(pattern, replacer, content)
     return new_content
 
+def resolve_markdown_links(content, file_path, lang="es", base_url="https://datalaria.com"):
+    """
+    Convierte todas las rutas relativas en enlaces Markdown [Texto](url)
+    a URLs absolutas que apunten a https://datalaria.com (o GitHub Raw para assets descargables).
+    Evita que Dev.to genere enlaces rotos internos hacia https://dev.to/...
+    """
+    normalized_path = file_path.replace('\\', '/')
+    dir_path = os.path.dirname(normalized_path)
+    github_base = "https://raw.githubusercontent.com/Dalaez/datalaria-website/main"
+    file_extensions = ('.docx', '.pptx', '.pdf', '.xlsx', '.zip', '.csv')
+
+    def resolve_target(target):
+        target = target.strip()
+        
+        # 1. Anclas (#), mailto, tel o javascript -> dejar intactos
+        if not target or target.startswith(('#', 'mailto:', 'tel:', 'javascript:')):
+            return target
+            
+        # 2. URLs absolutas externas (http://, https://, //) -> no tocar
+        if target.startswith(('http://', 'https://', '//')):
+            return target
+            
+        # 3. Corrección de URLs malformadas heredadas (ej: https:www.datalaria.com)
+        if target.startswith('https:www.datalaria.com'):
+            return target.replace('https:www.datalaria.com', 'https://www.datalaria.com')
+            
+        # 4. Shortcodes Hugo ref / relref: {{< ref "slug" >}} o {{< relref "slug" >}}
+        ref_match = re.search(r'\{\{<\s*(?:ref|relref)\s+["\']([^"\']+)["\']\s*>\}\}', target)
+        if ref_match:
+            ref_slug = ref_match.group(1).strip().lstrip('./').lstrip('/')
+            if ref_slug.startswith('posts/'):
+                ref_slug = ref_slug[len('posts/'):]
+            return f"{base_url}/{lang}/posts/{ref_slug.strip('/')}/"
+            
+        # 5. Archivos locales descargables (.docx, .pptx, etc.)
+        if any(target.lower().endswith(ext) for ext in file_extensions) and not target.startswith('/'):
+            clean_file = target.lstrip('./')
+            return f"{github_base}/{dir_path}/{clean_file}"
+            
+        # 6. URLs relativas a raíz con barra inicial (/es/..., /en/..., /apps/..., /recursos/...)
+        if target.startswith('/'):
+            return f"{base_url}{target}"
+            
+        # 7. URLs relativas con prefijo de idioma (es/posts/..., en/posts/...)
+        if target.startswith(('es/', 'en/')):
+            return f"{base_url}/{target}"
+            
+        # 8. Prefijos de sección (posts/..., apps/..., recursos/...)
+        if target.startswith('posts/'):
+            return f"{base_url}/{lang}/{target}"
+        if target.startswith(('apps/', 'recursos/', 'blog/')):
+            return f"{base_url}/{target}"
+            
+        # 9. Slug relativo directo a otro post
+        clean_target = target.lstrip('./').strip('/')
+        return f"{base_url}/{lang}/posts/{clean_target}/"
+
+    # Regex con negative lookbehind (?<!\!) para no capturar imágenes ![Alt](url)
+    # y soporte de corchetes anidados para [![Imagen](url_img)](url_enlace)
+    pattern = r'(?<!\!)\[((?:[^\[\]]|\[[^\[\]]*\])*)\]\(([^)]+)\)'
+    
+    def replacer(match):
+        label = match.group(1)
+        raw_target = match.group(2)
+        
+        # Preservar title opcional en enlace (ej: [text](url "title"))
+        parts = raw_target.split(' ', 1)
+        if len(parts) > 1 and (parts[1].startswith('"') or parts[1].startswith("'")):
+            url_part = parts[0]
+            title_part = " " + parts[1]
+        else:
+            url_part = raw_target
+            title_part = ""
+            
+        new_url = resolve_target(url_part)
+        return f"[{label}]({new_url}{title_part})"
+        
+    content = re.sub(pattern, replacer, content)
+
+    # Transformar shortcode {{< app-ref slug="..." >}} a Callout Markdown en Dev.to
+    app_ref_pattern = r'\{\{<\s*app-ref\s+(?:slug=)?["\']?([a-zA-Z0-9_-]+)["\']?\s*>\}\}'
+    def app_ref_replacer(match):
+        app_slug = match.group(1)
+        app_name = app_slug.replace('-', ' ').title()
+        if lang == 'es':
+            return f"> 🚀 **App Oficial en Datalaria**: [{app_name}]({base_url}/es/apps/{app_slug}/) — [Probar Demo en Vivo]({base_url}/apps/{app_slug}/?mock=true)"
+        return f"> 🚀 **Official Datalaria App**: [{app_name}]({base_url}/en/apps/{app_slug}/) — [Try Live Demo]({base_url}/apps/{app_slug}/?mock=true)"
+
+    content = re.sub(app_ref_pattern, app_ref_replacer, content)
+    return content
+
 def load_post_content(file_path):
     """Lee el archivo markdown y extrae metadatos calculando la URL correcta por idioma."""
     if not os.path.exists(file_path):
@@ -303,9 +394,10 @@ def main():
             print(f"\n💼 [LINKEDIN]:\n{linkedin_text}")
         if enable_devto:
             print(f"\n🦄 [DEV.TO]:\n(Original Markdown Content will be published)")
-            # Preview de URLs
-            preview_content = resolve_image_urls(post_data['content'][:500], file_path)
-            print(f"   Sample Processing: {preview_content}...")
+            # Preview de imágenes y URLs resueltas
+            preview_content = resolve_image_urls(post_data['content'], file_path)
+            preview_content = resolve_markdown_links(preview_content, file_path, lang=post_data['lang'])
+            print(f"   Sample Processing:\n{preview_content[:500]}...\n")
         if enable_newsletter:
             post_lang = post_data['lang']
             list_id = 3 if post_lang == 'es' else 4
@@ -344,9 +436,14 @@ def main():
     # 3. Publicar en Dev.to
     if enable_devto:
         try:
-            # Procesar imágenes para que sean URLs absolutas
-            print("🦄 Procesando imágenes para Dev.to...")
+            # Procesar imágenes y enlaces para que sean URLs absolutas
+            print("🦄 Procesando imágenes y enlaces para Dev.to...")
             processed_content = resolve_image_urls(post_data['content'], file_path)
+            processed_content = resolve_markdown_links(
+                processed_content, 
+                file_path, 
+                lang=post_data['lang']
+            )
             
             manager.post_to_devto(
                 title=post_data['title'], 

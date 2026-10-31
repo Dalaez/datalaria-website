@@ -1,6 +1,6 @@
 ---
 title: "Rational Decision-Making & Prioritization: The 3-Tier Quantitative Framework"
-date: 2026-10-31
+date: 2026-11-02
 draft: false
 category: "Technical Articles"
 categories: ["Decision Making", "Corporate Strategy", "Product Management", "Corporate Finance"]

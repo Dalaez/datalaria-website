@@ -1,12 +1,12 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-10-30T09:45:59.539334Z",
-  "total_assets": 135,
-  "published_assets": 119,
-  "scheduled_assets": 12,
+  "generated_at": "2026-10-31T08:31:07.414823Z",
+  "total_assets": 140,
+  "published_assets": 116,
+  "scheduled_assets": 20,
   "ideas_count": 0,
   "parity_summary": {
-    "complete": 135
+    "complete": 140
   },
   "monthly_traffic_index": [
     {
@@ -77,7 +77,7 @@
     {
       "month": "2026-10",
       "label": "Oct '26",
-      "index_100": 487
+      "index_100": 563
     }
   ],
   "assets": [
@@ -142,8 +142,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 967,
-        "rank_pct": 98,
+        "index_100": 543,
+        "rank_pct": 96,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -209,7 +209,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 1817,
+        "index_100": 1586,
         "rank_pct": 100,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -277,7 +277,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -342,8 +342,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 283,
-        "rank_pct": 86,
+        "index_100": 271,
+        "rank_pct": 84,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -413,8 +413,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 17,
-        "rank_pct": 33,
+        "index_100": 229,
+        "rank_pct": 82,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -481,8 +481,271 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 383,
-        "rank_pct": 90,
+        "index_100": 343,
+        "rank_pct": 89,
+        "trend_30d_pct": 0.0,
+        "gsc_opportunity": false
+      },
+      "metrics_absolute": null
+    },
+    {
+      "id": "pulse-part1",
+      "slug": "pulse-parte1-adios-notion-content-ops",
+      "asset_type": "post",
+      "status": "scheduled",
+      "visibility": "public",
+      "title_es": "Adiós Notion: Datalaria Pulse o la Gestión Editorial que se Escribe Sola desde Git",
+      "title_en": "Goodbye Notion: Datalaria Pulse and Editorial Management Written Directly from Git",
+      "url_es": "/es/posts/pulse-parte1-adios-notion-content-ops/",
+      "url_en": "/en/posts/pulse-part1-goodbye-notion-content-ops/",
+      "brief_es": "Por qué las bases de datos en Notion o Airtable se desincronizan del repositorio y cómo la filosofía Content Ops as Code indexa tu blog técnico directamente desde Markdown.",
+      "brief_en": "Why Notion and Airtable databases inevitably drift from code repos, and how Content Ops as Code indexes your technical blog directly from Markdown commits.",
+      "publish_date": "2026-11-18",
+      "last_modified_es": "2026-10-31T08:30:29.822118Z",
+      "last_modified_en": "2026-10-31T08:30:29.504822Z",
+      "language_parity": "complete",
+      "category": "Artículos Técnicos",
+      "categories": [
+        "Content Ops",
+        "Ingeniería de Software",
+        "Automatización"
+      ],
+      "tags": [
+        "Content Ops as Code",
+        "Git",
+        "Notion",
+        "Hugo",
+        "Markdown",
+        "Pydantic",
+        "Blogging Técnico",
+        "SEO"
+      ],
+      "series": null,
+      "word_count_es": 2164,
+      "word_count_en": 1887,
+      "reading_time_min": 11,
+      "related_app": "pulse",
+      "related_kit": "/recursos/#pack-pulse",
+      "included_kits": [],
+      "price": null,
+      "original_price": null,
+      "checkout_url": null,
+      "deliverables": [],
+      "seo_audit": {
+        "score_0_100": 100,
+        "title_ok": true,
+        "description_ok": true,
+        "parity_ok": true,
+        "taxonomy_ok": true,
+        "internal_links_ok": true,
+        "issues": []
+      },
+      "freshness_status": "fresh",
+      "owner": "Daniel Alaez",
+      "campaign": null,
+      "social_channels": [],
+      "metrics_relative": {
+        "index_100": 571,
+        "rank_pct": 97,
+        "trend_30d_pct": 0.0,
+        "gsc_opportunity": false
+      },
+      "metrics_absolute": null
+    },
+    {
+      "id": "pulse-part2",
+      "slug": "pulse-parte2-indexador-pydantic-paridad-ci",
+      "asset_type": "post",
+      "status": "scheduled",
+      "visibility": "public",
+      "title_es": "Del Front Matter al Índice: Pydantic v2, Paridad Bilingüe ES/EN y Automatización con GitHub Actions",
+      "title_en": "From Front Matter to Index: Pydantic v2, Bilingual ES/EN Parity, and GitHub Actions Automation",
+      "url_es": "/es/posts/pulse-parte2-indexador-pydantic-paridad-ci/",
+      "url_en": "/en/posts/pulse-part2-pydantic-indexer-bilingual-parity-ci/",
+      "brief_es": "Cómo construir un pipeline de validación estricta con Pydantic v2, garantizar paridad bilingüe ES ⇔ EN al 100% y orquestar la compilación editorial en CI/CD con GitHub Actions.",
+      "brief_en": "How to build a strict data validation pipeline with Pydantic v2, enforce 100% bilingual ES ⇔ EN parity, and automate editorial builds via GitHub Actions CI/CD.",
+      "publish_date": "2026-11-25",
+      "last_modified_es": "2026-10-31T08:30:29.838072Z",
+      "last_modified_en": "2026-10-31T08:30:29.522774Z",
+      "language_parity": "complete",
+      "category": "Artículos Técnicos",
+      "categories": [
+        "Content Ops",
+        "Ingeniería de Software",
+        "Automatización"
+      ],
+      "tags": [
+        "Pydantic",
+        "Python",
+        "GitHub Actions",
+        "CI/CD",
+        "Content Ops as Code",
+        "Bilingüe",
+        "Hugo",
+        "Markdown"
+      ],
+      "series": null,
+      "word_count_es": 1592,
+      "word_count_en": 1392,
+      "reading_time_min": 8,
+      "related_app": null,
+      "related_kit": "/recursos/#pack-pulse",
+      "included_kits": [],
+      "price": null,
+      "original_price": null,
+      "checkout_url": null,
+      "deliverables": [],
+      "seo_audit": {
+        "score_0_100": 80,
+        "title_ok": false,
+        "description_ok": true,
+        "parity_ok": true,
+        "taxonomy_ok": true,
+        "internal_links_ok": true,
+        "issues": [
+          "Longitud de título no óptima (99 caracteres; ideal: 35-95)"
+        ]
+      },
+      "freshness_status": "fresh",
+      "owner": "Daniel Alaez",
+      "campaign": null,
+      "social_channels": [],
+      "metrics_relative": {
+        "index_100": 29,
+        "rank_pct": 41,
+        "trend_30d_pct": 0.0,
+        "gsc_opportunity": false
+      },
+      "metrics_absolute": null
+    },
+    {
+      "id": "pulse-part3",
+      "slug": "pulse-parte3-tablero-react-tabla-kanban-calendario",
+      "asset_type": "post",
+      "status": "scheduled",
+      "visibility": "public",
+      "title_es": "Tabla Ejecutiva, Tablero Kanban y Calendario Mensual en React 19 sobre un Índice Estático",
+      "title_en": "Executive Table, Kanban Board, and Monthly Calendar in React 19 Over a Static Index",
+      "url_es": "/es/posts/pulse-parte3-tablero-react-tabla-kanban-calendario/",
+      "url_en": "/en/posts/pulse-part3-react-dashboard-table-kanban-calendar/",
+      "brief_es": "Cómo diseñar una Single Page Application de alto rendimiento en React 19 que proyecta analítica, tablero Kanban y calendario editorial consumiendo un índice estático con latencia cero.",
+      "brief_en": "How to design a high-performance Single Page Application in React 19 delivering analytics, Kanban boards, and editorial calendars over a zero-latency static index.",
+      "publish_date": "2026-12-02",
+      "last_modified_es": "2026-10-31T08:30:29.844056Z",
+      "last_modified_en": "2026-10-31T08:30:29.527762Z",
+      "language_parity": "complete",
+      "category": "Artículos Técnicos",
+      "categories": [
+        "Content Ops",
+        "Frontend",
+        "React",
+        "Ingeniería de Software"
+      ],
+      "tags": [
+        "React 19",
+        "TypeScript",
+        "Vite",
+        "Kanban",
+        "Tailwind CSS",
+        "Content Ops as Code",
+        "Jamstack",
+        "Hugo"
+      ],
+      "series": null,
+      "word_count_es": 1279,
+      "word_count_en": 1113,
+      "reading_time_min": 7,
+      "related_app": null,
+      "related_kit": "/recursos/#pack-pulse",
+      "included_kits": [],
+      "price": null,
+      "original_price": null,
+      "checkout_url": null,
+      "deliverables": [],
+      "seo_audit": {
+        "score_0_100": 100,
+        "title_ok": true,
+        "description_ok": true,
+        "parity_ok": true,
+        "taxonomy_ok": true,
+        "internal_links_ok": true,
+        "issues": []
+      },
+      "freshness_status": "fresh",
+      "owner": "Daniel Alaez",
+      "campaign": null,
+      "social_channels": [],
+      "metrics_relative": {
+        "index_100": 500,
+        "rank_pct": 94,
+        "trend_30d_pct": 0.0,
+        "gsc_opportunity": false
+      },
+      "metrics_absolute": null
+    },
+    {
+      "id": "pulse-part4",
+      "slug": "pulse-parte4-ga4-search-console-automatico",
+      "asset_type": "post",
+      "status": "scheduled",
+      "visibility": "public",
+      "title_es": "Google Analytics 4 y Search Console Automatizados: Cómo Medir el ROI Orgánico de Cada Post, App y Kit",
+      "title_en": "Automated GA4 and Search Console: Measuring Organic ROI, Content Equity, and Freshness for Every Post, App, and Kit",
+      "url_es": "/es/posts/pulse-parte4-ga4-search-console-automatico/",
+      "url_en": "/en/posts/pulse-part4-ga4-search-console-automated/",
+      "brief_es": "Cómo conectar las APIs de GA4 y Search Console mediante Service Account para auditar el tráfico orgánico, calcular el patrimonio editorial y detectar obsolescencia sin vulnerar la privacidad comercial.",
+      "brief_en": "How to connect the GA4 and Search Console APIs via Service Account to audit organic traffic, calculate content equity, and detect freshness decay without compromising commercial privacy.",
+      "publish_date": "2026-12-09",
+      "last_modified_es": "2026-10-31T08:30:29.891928Z",
+      "last_modified_en": "2026-10-31T08:30:29.602237Z",
+      "language_parity": "complete",
+      "category": "Artículos Técnicos",
+      "categories": [
+        "Content Ops",
+        "Analítica Web",
+        "SEO",
+        "Automatización",
+        "Ingeniería de Software"
+      ],
+      "tags": [
+        "Google Analytics 4",
+        "Search Console",
+        "Python",
+        "Content Ops as Code",
+        "SEO Técnico",
+        "Pydantic",
+        "ROI Editorial",
+        "Privacidad de Datos"
+      ],
+      "series": null,
+      "word_count_es": 2080,
+      "word_count_en": 1853,
+      "reading_time_min": 11,
+      "related_app": null,
+      "related_kit": "/recursos/](/es/recursos/",
+      "included_kits": [],
+      "price": null,
+      "original_price": null,
+      "checkout_url": null,
+      "deliverables": [],
+      "seo_audit": {
+        "score_0_100": 80,
+        "title_ok": false,
+        "description_ok": true,
+        "parity_ok": true,
+        "taxonomy_ok": true,
+        "internal_links_ok": true,
+        "issues": [
+          "Longitud de título no óptima (101 caracteres; ideal: 35-95)"
+        ]
+      },
+      "freshness_status": "fresh",
+      "owner": "Daniel Alaez",
+      "campaign": null,
+      "social_channels": [],
+      "metrics_relative": {
+        "index_100": 0,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -492,7 +755,7 @@
       "id": "business-case-financiero-van-tir",
       "slug": "business-case-financiero-van-tir",
       "asset_type": "post",
-      "status": "published",
+      "status": "scheduled",
       "visibility": "public",
       "title_es": "Business Case Financiero: Cómo Calcular VAN, TIR, Payback Descontado y Análisis de Sensibilidad Tornado en Excel",
       "title_en": "Financial Business Case: How to Calculate NPV, IRR, Discounted Payback, and Tornado Sensitivity Analysis in Excel",
@@ -500,7 +763,7 @@
       "url_en": "/en/posts/financial-business-case-npv-irr/",
       "brief_es": "Guía metodológica y cuantitativa para construir un Business Case de grado Consejo de Administración: Flujo de Caja Libre Descontado (DCF), cálculo de WACC vía CAPM, VAN, TIR, MIRR, Payback con interpolación, Gráfico Tornado y gobernanza con stage gates.",
       "brief_en": "Comprehensive quantitative methodology to build a Board-ready Financial Business Case: Discounted Free Cash Flow (DCF), WACC estimation via CAPM, NPV, IRR, MIRR, interpolated Discounted Payback, Tornado sensitivity chart, and stage-gate governance.",
-      "publish_date": "2026-10-30",
+      "publish_date": "2026-11-20",
       "last_modified_es": "2026-10-14T08:20:12+02:00",
       "last_modified_en": "2026-10-14T08:20:12+02:00",
       "language_parity": "complete",
@@ -553,7 +816,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -563,7 +826,7 @@
       "id": "estimacion-pert-3-puntos",
       "slug": "estimacion-pert-3-puntos",
       "asset_type": "post",
-      "status": "published",
+      "status": "scheduled",
       "visibility": "public",
       "title_es": "Estimación PERT de 3 Puntos Estocástica: De la Ilusión Determinista a la Certidumbre Estadística de Cronograma",
       "title_en": "Stochastic 3-Point PERT Estimation: Moving from Deterministic Schedule Illusion to Statistical Board Certainty",
@@ -571,7 +834,7 @@
       "url_en": "/en/posts/stochastic-3-point-pert-estimation/",
       "brief_es": "Guía cuantitativa y metodológica para erradicar las estimaciones deterministas de cronograma: Distribución Beta de 3 puntos (Optimista, Más Probable, Pesimista), agregación probabilística del Camino Crítico (CLT), Z-Score para fechas compromiso y dimensionamiento científico de buffers ante el Consejo de Administración.",
       "brief_en": "Comprehensive quantitative methodology to overcome deterministic schedule slippage: 3-point Beta Distribution (Optimistic, Most Likely, Pessimistic), Critical Path Central Limit Theorem (CLT) aggregation, Z-Score commitment probability, and scientific buffer sizing for Executive Boards.",
-      "publish_date": "2026-10-30",
+      "publish_date": "2026-11-30",
       "last_modified_es": "2026-10-14T08:20:12+02:00",
       "last_modified_en": "2026-10-14T08:20:12+02:00",
       "language_parity": "complete",
@@ -623,8 +886,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 33,
-        "rank_pct": 43,
+        "index_100": 29,
+        "rank_pct": 41,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -634,7 +897,7 @@
       "id": "matriz-raci-balance-carga",
       "slug": "matriz-raci-balance-carga",
       "asset_type": "post",
-      "status": "published",
+      "status": "scheduled",
       "visibility": "public",
       "title_es": "Matriz RACI Cuantitativa: Balance de Carga Operativa, Unicidad de Accountable y Detección de Cuellos de Botella",
       "title_en": "Quantitative RACI Matrix: Operational Workload Balancing, Single Accountability & Bottleneck Detection",
@@ -642,7 +905,7 @@
       "url_en": "/en/posts/quantitative-raci-workload-matrix/",
       "brief_es": "Guía metodológica y cuantitativa para transformar la matriz RACI tradicional en un motor dinámico de control operativo: principio de Accountable único, cálculo de saturación por rol, semáforos de riesgo de burnout y plan de rebalanceo C-Level.",
       "brief_en": "A comprehensive guide to transforming traditional qualitative RACI charts into an automated quantitative workload engine: single accountability enforcement, role-based FTE saturation formulas, burnout heatmaps, and C-Level rebalancing plans.",
-      "publish_date": "2026-10-30",
+      "publish_date": "2026-11-25",
       "last_modified_es": "2026-10-14T08:20:12+02:00",
       "last_modified_en": "2026-10-14T08:20:12+02:00",
       "language_parity": "complete",
@@ -691,8 +954,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 17,
-        "rank_pct": 33,
+        "index_100": 14,
+        "rank_pct": 31,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -702,7 +965,7 @@
       "id": "matriz-riesgos-amfe-fmea",
       "slug": "matriz-riesgos-amfe-fmea",
       "asset_type": "post",
-      "status": "published",
+      "status": "scheduled",
       "visibility": "public",
       "title_es": "Matriz de Riesgos Cuantitativa & AMFE / FMEA: De la Intuición Cualitativa al Número de Prioridad de Riesgo (NPR)",
       "title_en": "Quantitative Risk Matrix & Operational FMEA: From Qualitative Intuition to Risk Priority Number (RPN)",
@@ -710,7 +973,7 @@
       "url_en": "/en/posts/quantitative-risk-matrix-fmea/",
       "brief_es": "Guía metodológica y cuantitativa para transformar la matriz de riesgos subjetiva en un motor analítico bidimensional (ISO 31000) y tridimensional (AMFE/FMEA AIAG-VDA): cálculo de Severidad x Ocurrencia x Detección, curvas Pareto, ROI del control (CER) y defensa C-Level ante el Consejo de Administración.",
       "brief_en": "A comprehensive guide to upgrading subjective risk matrices into a dual-engine quantitative framework (ISO 31000 and AIAG-VDA FMEA): Severity x Occurrence x Detection scoring, Pareto criticality curves, Control Cost-Effectiveness Ratio (CER), and Boardroom defense protocols.",
-      "publish_date": "2026-10-30",
+      "publish_date": "2026-11-20",
       "last_modified_es": "2026-10-14T08:20:12+02:00",
       "last_modified_en": "2026-10-14T08:20:12+02:00",
       "language_parity": "complete",
@@ -762,8 +1025,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 17,
-        "rank_pct": 33,
+        "index_100": 14,
+        "rank_pct": 31,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -831,7 +1094,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -892,8 +1155,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 17,
-        "rank_pct": 33,
+        "index_100": 14,
+        "rank_pct": 31,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -956,8 +1219,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 17,
-        "rank_pct": 33,
+        "index_100": 14,
+        "rank_pct": 31,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1019,8 +1282,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 67,
-        "rank_pct": 56,
+        "index_100": 57,
+        "rank_pct": 52,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1081,7 +1344,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1145,7 +1408,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1206,7 +1469,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 583,
+        "index_100": 500,
         "rank_pct": 94,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -1269,8 +1532,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 317,
-        "rank_pct": 87,
+        "index_100": 71,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1341,7 +1604,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1405,8 +1668,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 400,
-        "rank_pct": 91,
+        "index_100": 357,
+        "rank_pct": 90,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1472,8 +1735,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 133,
-        "rank_pct": 69,
+        "index_100": 114,
+        "rank_pct": 66,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1540,8 +1803,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 100,
-        "rank_pct": 63,
+        "index_100": 86,
+        "rank_pct": 60,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1609,8 +1872,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 83,
-        "rank_pct": 59,
+        "index_100": 71,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1678,8 +1941,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 267,
-        "rank_pct": 84,
+        "index_100": 214,
+        "rank_pct": 80,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1746,8 +2009,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 83,
-        "rank_pct": 59,
+        "index_100": 71,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1814,8 +2077,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 600,
-        "rank_pct": 95,
+        "index_100": 543,
+        "rank_pct": 96,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1876,8 +2139,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 0,
-        "rank_pct": 14,
+        "index_100": 14,
+        "rank_pct": 31,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1943,8 +2206,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 83,
-        "rank_pct": 59,
+        "index_100": 143,
+        "rank_pct": 69,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2012,8 +2275,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 33,
-        "rank_pct": 43,
+        "index_100": 100,
+        "rank_pct": 63,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2081,8 +2344,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 33,
-        "rank_pct": 43,
+        "index_100": 29,
+        "rank_pct": 41,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2145,8 +2408,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 183,
-        "rank_pct": 73,
+        "index_100": 157,
+        "rank_pct": 71,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2211,10 +2474,10 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 117,
-        "rank_pct": 67,
+        "index_100": 57,
+        "rank_pct": 52,
         "trend_30d_pct": 0.0,
-        "gsc_opportunity": false
+        "gsc_opportunity": true
       },
       "metrics_absolute": null
     },
@@ -2272,10 +2535,10 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 50,
-        "rank_pct": 51,
+        "index_100": 57,
+        "rank_pct": 52,
         "trend_30d_pct": 0.0,
-        "gsc_opportunity": false
+        "gsc_opportunity": true
       },
       "metrics_absolute": null
     },
@@ -2334,7 +2597,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2395,8 +2658,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 100,
-        "rank_pct": 63,
+        "index_100": 86,
+        "rank_pct": 60,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2462,8 +2725,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 17,
-        "rank_pct": 33,
+        "index_100": 14,
+        "rank_pct": 31,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2530,8 +2793,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 33,
-        "rank_pct": 43,
+        "index_100": 29,
+        "rank_pct": 41,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2594,8 +2857,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 100,
-        "rank_pct": 63,
+        "index_100": 86,
+        "rank_pct": 60,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2663,8 +2926,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 317,
-        "rank_pct": 87,
+        "index_100": 286,
+        "rank_pct": 85,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2729,8 +2992,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 200,
-        "rank_pct": 74,
+        "index_100": 157,
+        "rank_pct": 71,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2789,8 +3052,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 33,
-        "rank_pct": 43,
+        "index_100": 29,
+        "rank_pct": 41,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2853,8 +3116,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 133,
-        "rank_pct": 69,
+        "index_100": 114,
+        "rank_pct": 66,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2917,8 +3180,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 217,
-        "rank_pct": 77,
+        "index_100": 171,
+        "rank_pct": 74,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2981,8 +3244,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 333,
-        "rank_pct": 88,
+        "index_100": 300,
+        "rank_pct": 86,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3045,8 +3308,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 83,
-        "rank_pct": 59,
+        "index_100": 57,
+        "rank_pct": 52,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3111,8 +3374,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 617,
-        "rank_pct": 96,
+        "index_100": 529,
+        "rank_pct": 95,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3177,8 +3440,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 267,
-        "rank_pct": 84,
+        "index_100": 229,
+        "rank_pct": 82,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3243,8 +3506,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 417,
-        "rank_pct": 91,
+        "index_100": 343,
+        "rank_pct": 89,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3311,7 +3574,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3373,8 +3636,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 250,
-        "rank_pct": 81,
+        "index_100": 200,
+        "rank_pct": 79,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3441,7 +3704,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 1050,
+        "index_100": 957,
         "rank_pct": 99,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -3502,8 +3765,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 533,
-        "rank_pct": 93,
+        "index_100": 414,
+        "rank_pct": 92,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3513,7 +3776,7 @@
       "id": "kurt_godel",
       "slug": "kurt_godel",
       "asset_type": "post",
-      "status": "scheduled",
+      "status": "published",
       "visibility": "public",
       "title_es": "Kurt Gödel: El Teorema de la Incompletitud, los Límites de la Lógica y si una AGI Podrá Jamás Conocerlo Todo",
       "title_en": "Kurt Gödel: The Incompleteness Theorems, the Limits of Logic, and Can an AGI Ever Know Everything?",
@@ -3521,7 +3784,7 @@
       "url_en": "/en/posts/kurt_godel/",
       "brief_es": "Un recorrido fascinante por la vida y el genio atormentado de Kurt Gödel: sus paseos con Einstein, la demolición del programa de Hilbert, la numeración de Gödel que inspiró a Turing y el debate sobre si la AGI está limitada por los teoremas de incompletitud.",
       "brief_en": "A deep dive into the extraordinary life and tormented genius of Kurt Gödel: his daily walks with Einstein, the demolition of Hilbert's program, Gödel numbering that inspired Turing, and whether Artificial General Intelligence is bounded by mathematical incompleteness.",
-      "publish_date": "2026-12-13",
+      "publish_date": "2026-10-31",
       "last_modified_es": "2026-10-25T12:42:15+01:00",
       "last_modified_en": "2026-10-25T12:42:15+01:00",
       "language_parity": "complete",
@@ -3545,8 +3808,8 @@
         "historia"
       ],
       "series": null,
-      "word_count_es": 2683,
-      "word_count_en": 2463,
+      "word_count_es": 2681,
+      "word_count_en": 2461,
       "reading_time_min": 14,
       "related_app": null,
       "related_kit": null,
@@ -3572,8 +3835,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 0,
-        "rank_pct": 14,
+        "index_100": 100,
+        "rank_pct": 63,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3634,8 +3897,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 67,
-        "rank_pct": 56,
+        "index_100": 143,
+        "rank_pct": 69,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3703,8 +3966,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 200,
-        "rank_pct": 74,
+        "index_100": 186,
+        "rank_pct": 77,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3766,10 +4029,10 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 100,
-        "rank_pct": 63,
+        "index_100": 86,
+        "rank_pct": 60,
         "trend_30d_pct": 0.0,
-        "gsc_opportunity": false
+        "gsc_opportunity": true
       },
       "metrics_absolute": null
     },
@@ -3834,7 +4097,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 367,
+        "index_100": 343,
         "rank_pct": 89,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -3897,8 +4160,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 33,
-        "rank_pct": 43,
+        "index_100": 29,
+        "rank_pct": 41,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3962,8 +4225,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 33,
-        "rank_pct": 43,
+        "index_100": 57,
+        "rank_pct": 52,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4029,8 +4292,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 433,
-        "rank_pct": 92,
+        "index_100": 371,
+        "rank_pct": 91,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4095,8 +4358,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 267,
-        "rank_pct": 84,
+        "index_100": 171,
+        "rank_pct": 74,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4162,8 +4425,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 250,
-        "rank_pct": 81,
+        "index_100": 257,
+        "rank_pct": 83,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4232,8 +4495,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 333,
-        "rank_pct": 88,
+        "index_100": 300,
+        "rank_pct": 86,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4300,8 +4563,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 150,
-        "rank_pct": 71,
+        "index_100": 129,
+        "rank_pct": 68,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4369,8 +4632,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 533,
-        "rank_pct": 93,
+        "index_100": 471,
+        "rank_pct": 92,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4437,8 +4700,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 650,
-        "rank_pct": 97,
+        "index_100": 600,
+        "rank_pct": 98,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4505,7 +4768,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 217,
+        "index_100": 186,
         "rank_pct": 77,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -4573,8 +4836,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 183,
-        "rank_pct": 73,
+        "index_100": 171,
+        "rank_pct": 74,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4636,8 +4899,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 117,
-        "rank_pct": 67,
+        "index_100": 100,
+        "rank_pct": 63,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4702,7 +4965,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 217,
+        "index_100": 186,
         "rank_pct": 77,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -4764,8 +5027,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 17,
-        "rank_pct": 33,
+        "index_100": 14,
+        "rank_pct": 31,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4829,8 +5092,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 200,
-        "rank_pct": 74,
+        "index_100": 343,
+        "rank_pct": 89,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4902,7 +5165,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4975,7 +5238,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5047,7 +5310,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5112,8 +5375,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 117,
-        "rank_pct": 67,
+        "index_100": 114,
+        "rank_pct": 66,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5181,7 +5444,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5245,8 +5508,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 667,
-        "rank_pct": 97,
+        "index_100": 614,
+        "rank_pct": 98,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5309,7 +5572,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5373,8 +5636,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 33,
-        "rank_pct": 43,
+        "index_100": 14,
+        "rank_pct": 31,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5439,8 +5702,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 0,
-        "rank_pct": 14,
+        "index_100": 14,
+        "rank_pct": 31,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5502,8 +5765,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 17,
-        "rank_pct": 33,
+        "index_100": 29,
+        "rank_pct": 41,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5566,8 +5829,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 50,
-        "rank_pct": 51,
+        "index_100": 143,
+        "rank_pct": 69,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5630,8 +5893,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 17,
-        "rank_pct": 33,
+        "index_100": 43,
+        "rank_pct": 47,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5693,8 +5956,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 17,
-        "rank_pct": 33,
+        "index_100": 29,
+        "rank_pct": 41,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5757,8 +6020,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 50,
-        "rank_pct": 51,
+        "index_100": 57,
+        "rank_pct": 52,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5820,8 +6083,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 33,
-        "rank_pct": 43,
+        "index_100": 29,
+        "rank_pct": 41,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5886,7 +6149,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 67,
+        "index_100": 71,
         "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -5950,8 +6213,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 67,
-        "rank_pct": 56,
+        "index_100": 114,
+        "rank_pct": 66,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6009,8 +6272,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 17,
-        "rank_pct": 33,
+        "index_100": 14,
+        "rank_pct": 31,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6079,7 +6342,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6145,8 +6408,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 233,
-        "rank_pct": 80,
+        "index_100": 171,
+        "rank_pct": 74,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6215,8 +6478,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 33,
-        "rank_pct": 43,
+        "index_100": 43,
+        "rank_pct": 47,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6278,8 +6541,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 67,
-        "rank_pct": 56,
+        "index_100": 57,
+        "rank_pct": 52,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6341,8 +6604,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 50,
-        "rank_pct": 51,
+        "index_100": 43,
+        "rank_pct": 47,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6403,8 +6666,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 167,
-        "rank_pct": 71,
+        "index_100": 271,
+        "rank_pct": 84,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6465,8 +6728,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 50,
-        "rank_pct": 51,
+        "index_100": 14,
+        "rank_pct": 31,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6529,8 +6792,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 50,
-        "rank_pct": 51,
+        "index_100": 43,
+        "rank_pct": 47,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6590,8 +6853,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 17,
-        "rank_pct": 33,
+        "index_100": 14,
+        "rank_pct": 31,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6651,8 +6914,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 100,
-        "rank_pct": 63,
+        "index_100": 86,
+        "rank_pct": 60,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6716,8 +6979,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 133,
-        "rank_pct": 69,
+        "index_100": 157,
+        "rank_pct": 71,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6779,8 +7042,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 17,
-        "rank_pct": 33,
+        "index_100": 14,
+        "rank_pct": 31,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6840,8 +7103,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 50,
-        "rank_pct": 51,
+        "index_100": 43,
+        "rank_pct": 47,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6901,8 +7164,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 50,
-        "rank_pct": 51,
+        "index_100": 29,
+        "rank_pct": 41,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6962,8 +7225,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 217,
-        "rank_pct": 77,
+        "index_100": 171,
+        "rank_pct": 74,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7025,8 +7288,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 17,
-        "rank_pct": 33,
+        "index_100": 14,
+        "rank_pct": 31,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7088,8 +7351,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 50,
-        "rank_pct": 51,
+        "index_100": 29,
+        "rank_pct": 41,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7154,8 +7417,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 100,
-        "rank_pct": 63,
+        "index_100": 86,
+        "rank_pct": 60,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7173,7 +7436,7 @@
       "url_en": "/en/posts/decision-making-prioritization-quantitative-framework/",
       "brief_es": "De los trade-offs de arquitectura y proveedores a la asignación de backlog y la defensa del CAPEX ante el CFO. Guía metodológica integrando Matriz DAR, RICE/ICE y Business Case Financiero.",
       "brief_en": "From vendor and architecture trade-offs to backlog capacity and CFO Capex justification. How to integrate DAR Matrix, RICE/ICE, and DCF Business Cases into a unified decision pipeline.",
-      "publish_date": "2026-10-31",
+      "publish_date": "2026-11-02",
       "last_modified_es": "2026-10-14T08:20:12+02:00",
       "last_modified_en": "2026-10-14T08:20:12+02:00",
       "language_parity": "complete",
@@ -7223,7 +7486,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7250,7 +7513,15 @@
         "Apps",
         "lab"
       ],
-      "tags": [],
+      "tags": [
+        "Vanilla JS (ES6+)",
+        "HTML5 semántico",
+        "CSS Grid & Flexbox",
+        "Sistema Internacional de Unidades (SI)",
+        "Constantes Físicas CODATA",
+        "Soporte bilingüe espejo (rutas /es/ y /en/)",
+        "Hugo Static Engine (/apps/conversor/)"
+      ],
       "series": null,
       "word_count_es": 0,
       "word_count_en": 0,
@@ -7276,8 +7547,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 33,
-        "rank_pct": 43,
+        "index_100": 43,
+        "rank_pct": 47,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7304,7 +7575,16 @@
         "Apps",
         "lab"
       ],
-      "tags": [],
+      "tags": [
+        "Vanilla JS",
+        "HTML5",
+        "CSS 3D Transforms (rotateY)",
+        "PapaParse.js (Parser CSV)",
+        "Web Speech Synthesis API",
+        "Web Storage API (LocalStorage)",
+        "Google Gemini API (Gemini 1.5 Flash via REST)",
+        "Hugo Static Engine (/apps/flashcards/)"
+      ],
       "series": null,
       "word_count_es": 0,
       "word_count_en": 0,
@@ -7330,8 +7610,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 17,
-        "rank_pct": 33,
+        "index_100": 14,
+        "rank_pct": 31,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7358,7 +7638,26 @@
         "Apps",
         "flagship"
       ],
-      "tags": [],
+      "tags": [
+        "React 19",
+        "Vite 8",
+        "React Router 7",
+        "Recharts",
+        "Lucide Icons",
+        "Python 3.11",
+        "FastAPI",
+        "Pydantic v2",
+        "PyJWT",
+        "python-docx",
+        "openpyxl",
+        "SlowAPI",
+        "PostgreSQL 15 (Supabase)",
+        "Row-Level Security (RLS)",
+        "JSONB Storage",
+        "Netlify Static Hosting",
+        "Render Cloud API",
+        "Supabase Auth"
+      ],
       "series": null,
       "word_count_es": 0,
       "word_count_en": 0,
@@ -7384,7 +7683,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 217,
+        "index_100": 186,
         "rank_pct": 77,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -7412,7 +7711,16 @@
         "Apps",
         "lab"
       ],
-      "tags": [],
+      "tags": [
+        "HTML5",
+        "CSS3 (Flexbox & Animaciones)",
+        "Vanilla JS",
+        "Generación procedimental acotada a niveles escolares (5 a 7 años)",
+        "Prompt Engineering iterativo",
+        "ChatGPT (OpenAI)",
+        "Metodología Founderz",
+        "Hugo Static Engine (/apps/maths/)"
+      ],
       "series": null,
       "word_count_es": 0,
       "word_count_en": 0,
@@ -7438,8 +7746,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 17,
-        "rank_pct": 33,
+        "index_100": 14,
+        "rank_pct": 31,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7466,7 +7774,25 @@
         "Apps",
         "b2b"
       ],
-      "tags": [],
+      "tags": [
+        "Vanilla JS",
+        "Tailwind CSS",
+        "HTML5 Cyber Terminal",
+        "Responsive Viewports",
+        "Python 3.11",
+        "FastAPI",
+        "CrewAI",
+        "Pydantic v2",
+        "Pandas",
+        "Uvicorn",
+        "PostgreSQL 15 (Supabase)",
+        "Schema obs_radar",
+        "IEC 62402 BOM Graph",
+        "Gemini LLM",
+        "Tool Calling",
+        "Semantic Extraction",
+        "EDA Background Workers"
+      ],
       "series": null,
       "word_count_es": 0,
       "word_count_en": 0,
@@ -7492,8 +7818,77 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 250,
-        "rank_pct": 81,
+        "index_100": 214,
+        "rank_pct": 80,
+        "trend_30d_pct": 0.0,
+        "gsc_opportunity": false
+      },
+      "metrics_absolute": null
+    },
+    {
+      "id": "pulse",
+      "slug": "pulse",
+      "asset_type": "app",
+      "status": "scheduled",
+      "visibility": "public",
+      "title_es": "Datalaria Pulse",
+      "title_en": "Datalaria Pulse",
+      "url_es": "/es/apps/pulse/",
+      "url_en": "/en/apps/pulse/",
+      "brief_es": "Content Ops as Code — Gobernanza editorial, paridad bilingüe y retorno orgánico desde Git.",
+      "brief_en": "Content Ops as Code — Editorial governance, bilingual parity, and organic ROI directly from Git.",
+      "publish_date": "2026-10-28",
+      "last_modified_es": "2026-10-31T08:31:05.113523Z",
+      "last_modified_en": "2026-10-31T08:31:05.113523Z",
+      "language_parity": "complete",
+      "category": "Aplicaciones Web",
+      "categories": [
+        "Apps",
+        "b2b"
+      ],
+      "tags": [
+        "React 19",
+        "TypeScript",
+        "Vite 8",
+        "Lucide Icons",
+        "Python 3.13",
+        "Pydantic v2",
+        "PyYAML",
+        "OpenPyXL",
+        "PostgreSQL 15 (Supabase)",
+        "Row-Level Security (RLS)",
+        "pulse schema",
+        "Hugo Static Portal",
+        "GitHub Actions CI/CD",
+        "Git Pre-Commit Hooks"
+      ],
+      "series": null,
+      "word_count_es": 0,
+      "word_count_en": 0,
+      "reading_time_min": 0,
+      "related_app": "pulse",
+      "related_kit": null,
+      "included_kits": [],
+      "price": null,
+      "original_price": null,
+      "checkout_url": null,
+      "deliverables": [],
+      "seo_audit": {
+        "score_0_100": 0,
+        "title_ok": true,
+        "description_ok": true,
+        "parity_ok": true,
+        "taxonomy_ok": true,
+        "internal_links_ok": true,
+        "issues": []
+      },
+      "freshness_status": "fresh",
+      "owner": "Daniel Alaez",
+      "campaign": null,
+      "social_channels": [],
+      "metrics_relative": {
+        "index_100": 29,
+        "rank_pct": 41,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7520,7 +7915,16 @@
         "Apps",
         "lab"
       ],
-      "tags": [],
+      "tags": [
+        "Vanilla JS (ES6+)",
+        "HTML5 Canvas 2D",
+        "Tailwind CSS CDN",
+        "Web Audio API (OscillatorNode, GainNode)",
+        "Supabase (PostgreSQL 15)",
+        "Row Level Security (RLS)",
+        "Supabase Realtime",
+        "Hugo Static Engine (/games/snake/)"
+      ],
       "series": null,
       "word_count_es": 0,
       "word_count_en": 0,
@@ -7546,8 +7950,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 100,
-        "rank_pct": 63,
+        "index_100": 86,
+        "rank_pct": 60,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7574,7 +7978,24 @@
         "Apps",
         "flagship"
       ],
-      "tags": [],
+      "tags": [
+        "Vanilla JS",
+        "Tailwind CSS CDN",
+        "Chart.js",
+        "Leaflet.js",
+        "PapaParse.js",
+        "Choices.js",
+        "Feather Icons",
+        "Python 3.10",
+        "Scikit-Learn",
+        "Pandas",
+        "Requests",
+        "GitHub Actions Cron",
+        "Netlify Hosting",
+        "Netlify 200! Proxy Rewrite",
+        "OpenWeatherMap Current Weather (2.5)",
+        "OpenWeatherMap 5-Day Forecast (2.5)"
+      ],
       "series": null,
       "word_count_es": 0,
       "word_count_en": 0,
@@ -7600,8 +8021,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 267,
-        "rank_pct": 84,
+        "index_100": 229,
+        "rank_pct": 82,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7661,7 +8082,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7727,7 +8148,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7791,7 +8212,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7857,7 +8278,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7919,7 +8340,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7982,7 +8403,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8045,7 +8466,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8108,7 +8529,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8171,7 +8592,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8234,7 +8655,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8297,7 +8718,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8360,7 +8781,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8423,7 +8844,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8486,7 +8907,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8549,7 +8970,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8612,7 +9033,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8675,7 +9096,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8738,7 +9159,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8803,7 +9224,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 14,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },

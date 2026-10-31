@@ -1,6 +1,6 @@
 ---
 title: "Estimación PERT de 3 Puntos Estocástica: De la Ilusión Determinista a la Certidumbre Estadística de Cronograma"
-date: 2026-10-30
+date: 2026-11-30
 draft: false
 category: "Artículos Técnicos"
 categories: ["Control Operativo", "Gestión de Proyectos", "Plantillas Ejecutivas"]

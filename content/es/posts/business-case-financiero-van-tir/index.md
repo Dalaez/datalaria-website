@@ -1,6 +1,6 @@
 ---
 title: "Business Case Financiero: Cómo Calcular VAN, TIR, Payback Descontado y Análisis de Sensibilidad Tornado en Excel"
-date: 2026-10-30
+date: 2026-11-20
 draft: false
 category: "Artículos Técnicos"
 categories: ["Finanzas Corporativas", "Estrategia Corporativa", "Plantillas Ejecutivas"]

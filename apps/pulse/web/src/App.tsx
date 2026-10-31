@@ -29,11 +29,28 @@ import {
   Plus,
   Download,
   Trash2,
-  Edit3
+  Edit3,
+  Cloud,
+  LogIn,
+  LogOut,
+  CheckCircle2
 } from 'lucide-react';
-import { ContentAsset, PublicPulseDataset } from './types';
+import type { User } from '@supabase/supabase-js';
+import { ContentAsset, PublicPulseDataset, AssetType, AssetStatus } from './types';
 import { i18n } from './lib/i18n';
 import { parseNotionCsv } from './lib/notionImporter';
+import { DEMO_SYNTHETIC_ASSETS } from './lib/demoData';
+import {
+  supabase,
+  getCurrentUser,
+  signInWithDemo,
+  signOut as supabaseSignOut,
+  fetchUserIdeas,
+  insertUserIdea,
+  updateUserIdea,
+  deleteUserIdea,
+  isSupabaseConfigured
+} from './lib/supabase';
 import './App.css';
 
 type SortField =
@@ -51,8 +68,14 @@ export function App() {
   const [lang, setLang] = useState<'es' | 'en'>('es');
   const t = i18n[lang];
 
-  // Vistas: Dashboard, Tabla, Kanban, Calendario, Salud & ROI
-  const [activeTab, setActiveTab] = useState<'dashboard' | 'table' | 'kanban' | 'calendar' | 'health'>('dashboard');
+  // Vistas: Dashboard, Tabla, Kanban, Calendario, Salud & ROI (con soporte para deep linking URL ?tab=...)
+  const [activeTab, setActiveTab] = useState<'dashboard' | 'table' | 'kanban' | 'calendar' | 'health'>(() => {
+    if (typeof window !== 'undefined') {
+      const p = new URLSearchParams(window.location.search).get('tab');
+      if (p === 'table' || p === 'kanban' || p === 'calendar' || p === 'health') return p;
+    }
+    return 'dashboard';
+  });
   const [dataset, setDataset] = useState<PublicPulseDataset | null>(null);
   const [customAssets, setCustomAssets] = useState<ContentAsset[] | null>(null);
 
@@ -69,8 +92,14 @@ export function App() {
   const [pageSize, setPageSize] = useState<number>(25);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
-  // Kanban: filtro temporal por defecto
-  const [kanbanTimeWindow, setKanbanTimeWindow] = useState<'recent' | 'all'>('recent');
+  // Kanban: filtro temporal por defecto (soporte URL ?kanbanWindow=all)
+  const [kanbanTimeWindow, setKanbanTimeWindow] = useState<'recent' | 'all'>(() => {
+    if (typeof window !== 'undefined') {
+      const kw = new URLSearchParams(window.location.search).get('kanbanWindow');
+      if (kw === 'all') return 'all';
+    }
+    return 'recent';
+  });
 
   // Dashboard: modos de vista de categorías y cadencia
   const [categoryViewMode, setCategoryViewMode] = useState<'ecosystem' | 'themes' | 'categories'>('ecosystem');
@@ -122,26 +151,130 @@ export function App() {
   const [ideaStatus, setIdeaStatus] = useState<AssetStatus>('idea');
   const [ideaSuccessMsg, setIdeaSuccessMsg] = useState('');
 
+  // Supabase Cloud & Auth Estados (ADR-015)
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [cloudIdeas, setCloudIdeas] = useState<ContentAsset[]>([]);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [authEmail, setAuthEmail] = useState('');
+  const [authPassword, setAuthPassword] = useState('');
+  const [authLoading, setAuthLoading] = useState(false);
+  const [authError, setAuthError] = useState('');
+  const [authSuccessMsg, setAuthSuccessMsg] = useState('');
+
   // Estado del botón de refresco HTTP
   const [isRefreshing, setIsRefreshing] = useState(false);
 
-  // Carga de datos pública
+  // Cargar ideas desde Supabase Cloud
+  const loadCloudIdeas = async () => {
+    try {
+      const rows = await fetchUserIdeas();
+      const mapped: ContentAsset[] = rows.map((r) => ({
+        id: r.id,
+        slug: `cloud-idea-${r.id.slice(0, 8)}`,
+        asset_type: (r.category === 'Aplicaciones' ? 'app' : r.category === 'Kits' ? 'kit' : 'post') as AssetType,
+        status: (r.status || 'idea') as AssetStatus,
+        visibility: 'private',
+        title_es: r.title,
+        title_en: r.title,
+        category: r.category || 'General',
+        categories: [r.category || 'General'],
+        tags: r.tags || ['idea', 'cloud'],
+        publish_date: r.target_date || null,
+        brief_es: r.notes || null,
+        language_parity: 'complete',
+        word_count_es: 0,
+        word_count_en: 0,
+        reading_time_min: 0,
+        seo_audit: {
+          score_0_100: 70,
+          title_ok: true,
+          description_ok: Boolean(r.notes),
+          parity_ok: true,
+          taxonomy_ok: true,
+          internal_links_ok: false,
+          issues: ['Idea sincronizada en Supabase PostgreSQL']
+        },
+        freshness_status: 'fresh',
+        owner: r.user_id,
+        social_channels: [],
+        is_cloud_idea: true
+      }));
+      setCloudIdeas(mapped);
+    } catch (e) {
+      console.warn('Error cargando ideas de Supabase Cloud:', e);
+    }
+  };
+
+  // Carga de datos pública y suscripción Supabase Auth
   useEffect(() => {
     fetch('./data/public.json')
       .then((res) => res.json())
       .then((data: PublicPulseDataset) => setDataset(data))
       .catch((err) => console.error('Error cargando public.json:', err));
+
+    if (isSupabaseConfigured) {
+      getCurrentUser().then((u) => {
+        setCurrentUser(u);
+        if (u) loadCloudIdeas();
+      });
+
+      const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+        const u = session?.user || null;
+        setCurrentUser(u);
+        if (u) {
+          loadCloudIdeas();
+        } else {
+          setCloudIdeas([]);
+        }
+      });
+
+      return () => {
+        subscription.unsubscribe();
+      };
+    }
   }, []);
+
+  // Control de roles de usuario y permisos de catálogo (ADR-015)
+  const ADMIN_EMAILS = ['dalaez1@gmail.com', 'datalaria@gmail.com'];
+  const userEmail = currentUser?.email?.toLowerCase() || '';
+  const isAdmin = Boolean(currentUser && ADMIN_EMAILS.includes(userEmail));
+  const isDemo = Boolean(currentUser && userEmail === 'demo@datalaria.com');
+  const isClientUser = Boolean(currentUser && !isAdmin && !isDemo);
 
   const datasetAssets = dataset?.assets;
   const currentAssets = useMemo(() => {
-    const base = customAssets || datasetAssets || [];
-    // Si hay ideas creadas localmente, fusionarlas al inicio para visibilidad inmediata
-    if (localIdeas.length > 0 && !customAssets) {
-      return [...localIdeas, ...base];
+    // 1. Si el usuario arrastró o importó un CSV de Notion, siempre tiene prioridad
+    if (customAssets) return customAssets;
+
+    // 2. Si no hay usuario logueado: Catálogo público oficial de Datalaria (135 activos)
+    if (!currentUser) {
+      return datasetAssets || [];
     }
-    return base;
-  }, [customAssets, datasetAssets, localIdeas]);
+
+    // 3. Si es el Administrador de Datalaria (dalaez1@gmail.com o datalaria@gmail.com):
+    // Ve el catálogo oficial de Datalaria + sus ideas privadas en la nube
+    if (isAdmin) {
+      const extras = [...cloudIdeas, ...localIdeas];
+      return [...extras, ...(datasetAssets || [])];
+    }
+
+    // 4. Si es la cuenta Demo (demo@datalaria.com):
+    // Ve los 10 activos sintéticos interactivos + cualquier idea que cree en Supabase
+    if (isDemo) {
+      const userCreatedIds = new Set(cloudIdeas.map((c) => c.id));
+      const demoFiltered = DEMO_SYNTHETIC_ASSETS.filter((d) => !userCreatedIds.has(d.id));
+      return [...cloudIdeas, ...localIdeas, ...demoFiltered];
+    }
+
+    // 5. Si es un nuevo usuario o cliente Pro (ej. dalaez@hotmail.com o empresa externa):
+    // Empieza con SU PROPIO espacio limpio (cero activos de Datalaria)
+    return [...cloudIdeas, ...localIdeas];
+  }, [customAssets, datasetAssets, currentUser, isAdmin, isDemo, cloudIdeas, localIdeas]);
+
+  // Cargar plantilla de datos de ejemplo para clientes que quieran explorar inmediatamente
+  const handleLoadSampleData = () => {
+    setCustomAssets(DEMO_SYNTHETIC_ASSETS);
+  };
 
   // Handlers para filtros y paginación
   const handleSearchChange = (val: string) => {
@@ -191,7 +324,7 @@ export function App() {
     setCustomAssets(null);
   };
 
-  // Refrescar dataset con bypass de caché HTTP
+  // Refrescar dataset con bypass de caché HTTP y sincronización Cloud
   const handleRefreshData = async () => {
     setIsRefreshing(true);
     try {
@@ -199,6 +332,9 @@ export function App() {
       if (res.ok) {
         const data: PublicPulseDataset = await res.json();
         setDataset(data);
+      }
+      if (currentUser) {
+        await loadCloudIdeas();
       }
     } catch (e) {
       console.error('Error al refrescar datos:', e);
@@ -220,7 +356,7 @@ export function App() {
     setIsIdeaModalOpen(true);
   };
 
-  // Abrir modal de edición para una idea local existente
+  // Abrir modal de edición para una idea local o de Cloud
   const openEditIdeaModal = (asset: ContentAsset) => {
     setEditingIdeaId(asset.id);
     setIdeaTitle(asset.title_es || asset.title_en || '');
@@ -234,68 +370,167 @@ export function App() {
     setIsIdeaModalOpen(true);
   };
 
-  // Guardar nueva idea o actualizar idea existente en localStorage
-  const handleSaveIdea = (e: React.FormEvent) => {
+  // Guardar nueva idea o actualizar idea existente (Cloud en Supabase o Local en localStorage)
+  const handleSaveIdea = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!ideaTitle.trim()) return;
 
-    if (editingIdeaId) {
-      // Modo edición: actualizar idea existente
-      setLocalIdeas((prev) =>
-        prev.map((item) => {
-          if (item.id === editingIdeaId) {
-            return {
-              ...item,
-              title_es: ideaTitle.trim(),
-              title_en: ideaTitle.trim(),
-              asset_type: ideaType,
-              status: ideaStatus,
-              category: ideaCategory || 'General',
-              categories: [ideaCategory || 'General'],
-              publish_date: ideaDate || null,
-              brief_es: ideaBrief.trim() || null
-            };
+    if (currentUser) {
+      // Modo Pro / Cloud: sincronización directa con Supabase
+      if (editingIdeaId) {
+        const isCloud = cloudIdeas.some((c) => c.id === editingIdeaId);
+        if (isCloud) {
+          const updated = await updateUserIdea(editingIdeaId, {
+            title: ideaTitle.trim(),
+            category: ideaCategory || 'General',
+            status: ideaStatus,
+            target_date: ideaDate || null,
+            notes: ideaBrief.trim() || ''
+          });
+          if (updated) {
+            setCloudIdeas((prev) =>
+              prev.map((item) =>
+                item.id === editingIdeaId
+                  ? {
+                      ...item,
+                      title_es: ideaTitle.trim(),
+                      title_en: ideaTitle.trim(),
+                      asset_type: ideaType,
+                      status: ideaStatus,
+                      category: ideaCategory || 'General',
+                      categories: [ideaCategory || 'General'],
+                      publish_date: ideaDate || null,
+                      brief_es: ideaBrief.trim() || null
+                    }
+                  : item
+              )
+            );
+            setIdeaSuccessMsg(t.idea_updated_success);
           }
-          return item;
-        })
-      );
-      setIdeaSuccessMsg(t.idea_updated_success);
+        } else {
+          // Idea local en modo autenticado
+          setLocalIdeas((prev) =>
+            prev.map((item) =>
+              item.id === editingIdeaId
+                ? {
+                    ...item,
+                    title_es: ideaTitle.trim(),
+                    title_en: ideaTitle.trim(),
+                    asset_type: ideaType,
+                    status: ideaStatus,
+                    category: ideaCategory || 'General',
+                    categories: [ideaCategory || 'General'],
+                    publish_date: ideaDate || null,
+                    brief_es: ideaBrief.trim() || null
+                  }
+                : item
+            )
+          );
+          setIdeaSuccessMsg(t.idea_updated_success);
+        }
+      } else {
+        // Inserción de nueva idea en Supabase Cloud
+        const created = await insertUserIdea({
+          title: ideaTitle.trim(),
+          category: ideaCategory || 'General',
+          status: ideaStatus,
+          target_date: ideaDate || null,
+          notes: ideaBrief.trim() || ''
+        });
+        if (created) {
+          const newCloudAsset: ContentAsset = {
+            id: created.id,
+            slug: `cloud-idea-${created.id.slice(0, 8)}`,
+            asset_type: ideaType,
+            status: ideaStatus,
+            visibility: 'private',
+            title_es: created.title,
+            title_en: created.title,
+            category: created.category || 'General',
+            categories: [created.category || 'General'],
+            tags: ['idea', 'cloud'],
+            publish_date: created.target_date || null,
+            brief_es: created.notes || null,
+            language_parity: 'complete',
+            word_count_es: 0,
+            word_count_en: 0,
+            reading_time_min: 0,
+            seo_audit: {
+              score_0_100: 70,
+              title_ok: true,
+              description_ok: Boolean(created.notes),
+              parity_ok: true,
+              taxonomy_ok: true,
+              internal_links_ok: false,
+              issues: ['Idea sincronizada en Supabase PostgreSQL']
+            },
+            freshness_status: 'fresh',
+            owner: currentUser.id,
+            social_channels: [],
+            is_cloud_idea: true
+          };
+          setCloudIdeas((prev) => [newCloudAsset, ...prev]);
+          setIdeaSuccessMsg(t.idea_saved_success);
+        }
+      }
     } else {
-      // Modo creación: nueva idea
-      const newIdea: ContentAsset = {
-        id: `local-idea-${Date.now()}`,
-        slug: `idea-${ideaTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 40)}`,
-        asset_type: ideaType,
-        status: ideaStatus,
-        visibility: 'private',
-        title_es: ideaTitle.trim(),
-        title_en: ideaTitle.trim(),
-        category: ideaCategory || 'General',
-        categories: [ideaCategory || 'General'],
-        tags: ['idea', 'backlog'],
-        publish_date: ideaDate || null,
-        brief_es: ideaBrief.trim() || null,
-        language_parity: 'missing_en',
-        word_count_es: 0,
-        word_count_en: 0,
-        reading_time_min: 0,
-        seo_audit: {
-          score_0_100: 50,
-          title_ok: true,
-          description_ok: false,
-          parity_ok: false,
-          taxonomy_ok: true,
-          internal_links_ok: false,
-          issues: ['Idea local pendiente de redacción de borrador']
-        },
-        freshness_status: 'fresh',
-        owner: 'Daniel Alaez',
-        social_channels: [],
-        is_local_idea: true
-      };
+      // Modo Sandbox Offline (localStorage)
+      if (editingIdeaId) {
+        setLocalIdeas((prev) =>
+          prev.map((item) => {
+            if (item.id === editingIdeaId) {
+              return {
+                ...item,
+                title_es: ideaTitle.trim(),
+                title_en: ideaTitle.trim(),
+                asset_type: ideaType,
+                status: ideaStatus,
+                category: ideaCategory || 'General',
+                categories: [ideaCategory || 'General'],
+                publish_date: ideaDate || null,
+                brief_es: ideaBrief.trim() || null
+              };
+            }
+            return item;
+          })
+        );
+        setIdeaSuccessMsg(t.idea_updated_success);
+      } else {
+        const newIdea: ContentAsset = {
+          id: `local-idea-${Date.now()}`,
+          slug: `idea-${ideaTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 40)}`,
+          asset_type: ideaType,
+          status: ideaStatus,
+          visibility: 'private',
+          title_es: ideaTitle.trim(),
+          title_en: ideaTitle.trim(),
+          category: ideaCategory || 'General',
+          categories: [ideaCategory || 'General'],
+          tags: ['idea', 'backlog'],
+          publish_date: ideaDate || null,
+          brief_es: ideaBrief.trim() || null,
+          language_parity: 'missing_en',
+          word_count_es: 0,
+          word_count_en: 0,
+          reading_time_min: 0,
+          seo_audit: {
+            score_0_100: 50,
+            title_ok: true,
+            description_ok: false,
+            parity_ok: false,
+            taxonomy_ok: true,
+            internal_links_ok: false,
+            issues: ['Idea local pendiente de redacción de borrador']
+          },
+          freshness_status: 'fresh',
+          owner: 'Daniel Alaez',
+          social_channels: [],
+          is_local_idea: true
+        };
 
-      setLocalIdeas((prev) => [newIdea, ...prev]);
-      setIdeaSuccessMsg(t.idea_saved_success);
+        setLocalIdeas((prev) => [newIdea, ...prev]);
+        setIdeaSuccessMsg(t.idea_saved_success);
+      }
     }
 
     setTimeout(() => {
@@ -305,22 +540,108 @@ export function App() {
     }, 800);
   };
 
-  // Eliminar idea local
-  const handleDeleteLocalIdea = (id: string) => {
+  // Eliminar idea (Cloud o Local)
+  const handleDeleteLocalIdea = async (id: string) => {
     if (window.confirm(t.confirm_delete_idea)) {
-      setLocalIdeas((prev) => prev.filter((item) => item.id !== id));
+      const isCloud = cloudIdeas.some((c) => c.id === id);
+      if (isCloud && currentUser) {
+        const ok = await deleteUserIdea(id);
+        if (ok) {
+          setCloudIdeas((prev) => prev.filter((item) => item.id !== id));
+        }
+      } else {
+        setLocalIdeas((prev) => prev.filter((item) => item.id !== id));
+      }
       if (selectedAssetForModal?.id === id) {
         setSelectedAssetForModal(null);
       }
     }
   };
 
-  // Exportar ideas locales a YAML compatible con data/editorial/backlog.yaml
-  const handleExportIdeasYaml = () => {
-    if (localIdeas.length === 0) return;
+  // Handlers de Autenticación Supabase Pro / Demo
+  const handleDemoLogin = async () => {
+    setAuthLoading(true);
+    setAuthError('');
+    const { user, error } = await signInWithDemo();
+    setAuthLoading(false);
+    if (error) {
+      setAuthError(error.message);
+    } else if (user) {
+      setCurrentUser(user);
+      setAuthSuccessMsg(t.auth_success);
+      setTimeout(() => {
+        setIsAuthModalOpen(false);
+        setAuthSuccessMsg('');
+      }, 1000);
+    }
+  };
 
-    let yaml = '# Backlog de Ideas y Propuestas Editoriales\n# Generado desde Datalaria Pulse Sandbox\nitems:\n';
-    localIdeas.forEach((item) => {
+  const handlePasswordLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!authEmail || !authPassword) return;
+    setAuthLoading(true);
+    setAuthError('');
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: authEmail,
+        password: authPassword,
+      });
+      setAuthLoading(false);
+      if (error) {
+        setAuthError(error.message);
+      } else if (data.user) {
+        setCurrentUser(data.user);
+        setAuthSuccessMsg(t.auth_success);
+        setTimeout(() => {
+          setIsAuthModalOpen(false);
+          setAuthSuccessMsg('');
+        }, 1000);
+      }
+    } catch (err: unknown) {
+      setAuthLoading(false);
+      setAuthError(err instanceof Error ? err.message : String(err));
+    }
+  };
+
+  const handleSignUp = async () => {
+    if (!authEmail || !authPassword) return;
+    setAuthLoading(true);
+    setAuthError('');
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email: authEmail,
+        password: authPassword,
+      });
+      setAuthLoading(false);
+      if (error) {
+        setAuthError(error.message);
+      } else if (data.user) {
+        setCurrentUser(data.user);
+        setAuthSuccessMsg('¡Cuenta creada y sesión iniciada!');
+        setTimeout(() => {
+          setIsAuthModalOpen(false);
+          setAuthSuccessMsg('');
+        }, 1000);
+      }
+    } catch (err: unknown) {
+      setAuthLoading(false);
+      setAuthError(err instanceof Error ? err.message : String(err));
+    }
+  };
+
+  const handleLogout = async () => {
+    await supabaseSignOut();
+    setCurrentUser(null);
+    setCloudIdeas([]);
+  };
+
+  // Exportar ideas a YAML compatible con data/editorial/backlog.yaml
+  const handleExportIdeasYaml = () => {
+    const ideasToExport = currentUser ? (cloudIdeas.length > 0 ? cloudIdeas : localIdeas) : localIdeas;
+    if (ideasToExport.length === 0) return;
+
+    let yaml = '# Backlog de Ideas y Propuestas Editoriales\n# Generado desde Datalaria Pulse\nitems:\n';
+    ideasToExport.forEach((item) => {
       yaml += `  - id: "${item.id}"\n`;
       yaml += `    title_es: "${(item.title_es || '').replace(/"/g, '\\"')}"\n`;
       yaml += `    type: "${item.asset_type}"\n`;
@@ -335,7 +656,8 @@ export function App() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.setAttribute('download', 'backlog_ideas.yaml');
+    const filename = `backlog_${currentUser?.email?.split('@')[0] || 'ideas'}.yaml`;
+    link.setAttribute('download', filename);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -714,9 +1036,10 @@ export function App() {
     const map = new Map<string, ContentAsset[]>();
     filteredAssets.forEach((a) => {
       if (a.publish_date) {
-        const arr = map.get(a.publish_date) || [];
+        const dateKey = a.publish_date.slice(0, 10);
+        const arr = map.get(dateKey) || [];
         arr.push(a);
-        map.set(a.publish_date, arr);
+        map.set(dateKey, arr);
       }
     });
     return map;
@@ -772,8 +1095,8 @@ export function App() {
               <span>{t.btn_new_idea}</span>
             </button>
 
-            {/* Botón Exportar Ideas Locales a YAML */}
-            {localIdeas.length > 0 && (
+            {/* Botón Exportar Ideas a YAML */}
+            {((currentUser ? (cloudIdeas.length > 0 ? cloudIdeas : localIdeas) : localIdeas).length > 0) && (
               <button
                 className="btn btn-ghost"
                 onClick={handleExportIdeasYaml}
@@ -781,7 +1104,7 @@ export function App() {
                 style={{ color: '#c084fc', border: '1px solid rgba(168, 85, 247, 0.3)' }}
               >
                 <Download size={15} />
-                <span>YAML ({localIdeas.length})</span>
+                <span>YAML ({(currentUser ? (cloudIdeas.length > 0 ? cloudIdeas : localIdeas) : localIdeas).length})</span>
               </button>
             )}
 
@@ -796,8 +1119,80 @@ export function App() {
 
             {customAssets && (
               <button className="btn btn-ghost" onClick={resetToDefault}>
-                <RefreshCw size={16} />
-                <span>{t.btn_reset_dataset}</span>
+                <RefreshCw size={15} />
+                <span>{currentUser ? t.btn_back_to_my_data : t.btn_reset_dataset}</span>
+              </button>
+            )}
+
+            {/* Botón / Píldora de Autenticación Supabase Pro Cloud (ADR-015) */}
+            {currentUser ? (
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.45rem',
+                  background: isAdmin
+                    ? 'rgba(234, 179, 8, 0.12)'
+                    : isDemo
+                    ? 'rgba(6, 182, 212, 0.12)'
+                    : 'rgba(16, 185, 129, 0.12)',
+                  border: `1px solid ${
+                    isAdmin
+                      ? 'rgba(234, 179, 8, 0.35)'
+                      : isDemo
+                      ? 'rgba(6, 182, 212, 0.35)'
+                      : 'rgba(16, 185, 129, 0.35)'
+                  }`,
+                  borderRadius: '9999px',
+                  padding: '0.25rem 0.65rem'
+                }}
+                title={t.cloud_synced_msg}
+              >
+                <Cloud
+                  size={14}
+                  color={isAdmin ? '#facc15' : isDemo ? '#22d3ee' : '#34d399'}
+                />
+                <span style={{ fontSize: '0.8rem', fontWeight: 600, color: '#e0f2fe' }}>
+                  {isAdmin
+                    ? 'dalaez1 (Admin)'
+                    : isDemo
+                    ? t.badge_demo_user
+                    : currentUser.email?.split('@')[0]}
+                </span>
+                <span
+                  style={{
+                    fontSize: '0.7rem',
+                    padding: '0.1rem 0.35rem',
+                    background: isAdmin
+                      ? 'rgba(234, 179, 8, 0.2)'
+                      : isDemo
+                      ? 'rgba(6, 182, 212, 0.2)'
+                      : 'rgba(16, 185, 129, 0.2)',
+                    color: isAdmin ? '#facc15' : isDemo ? '#22d3ee' : '#34d399',
+                    borderRadius: '4px',
+                    fontWeight: 700
+                  }}
+                >
+                  {isAdmin ? 'ADMIN' : isDemo ? 'DEMO' : 'PRO'}
+                </span>
+                <button
+                  onClick={handleLogout}
+                  className="btn btn-ghost"
+                  style={{ padding: '0.15rem 0.3rem', minHeight: 'unset', height: 'auto', color: '#94a3b8' }}
+                  title={t.btn_logout}
+                >
+                  <LogOut size={13} />
+                </button>
+              </div>
+            ) : (
+              <button
+                className="btn btn-outline"
+                onClick={() => setIsAuthModalOpen(true)}
+                style={{ borderColor: 'rgba(6, 182, 212, 0.5)', color: '#22d3ee' }}
+                title={t.btn_pro_login}
+              >
+                <Zap size={15} />
+                <span>{t.btn_pro_login}</span>
               </button>
             )}
 
@@ -848,11 +1243,188 @@ export function App() {
           </a>
         </div>
 
-        {/* KPIs Principales (LifeOps style cards) */}
+        {/* Banner de Contexto de Espacio de Trabajo */}
+        {!currentUser && (
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              background: 'rgba(15, 23, 42, 0.75)',
+              border: '1px solid rgba(51, 65, 85, 0.6)',
+              borderRadius: '8px',
+              padding: '0.65rem 1rem',
+              marginBottom: '1.25rem',
+              fontSize: '0.85rem',
+              color: '#94a3b8'
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <span style={{ fontSize: '1.1rem' }}>👁️</span>
+              <span>{t.banner_public_showcase}</span>
+            </div>
+            <button
+              className="btn btn-ghost"
+              onClick={() => setIsAuthModalOpen(true)}
+              style={{ color: '#22d3ee', fontSize: '0.8rem', padding: '0.2rem 0.5rem', whiteSpace: 'nowrap' }}
+            >
+              <Zap size={14} />
+              <span>{t.btn_pro_login}</span>
+            </button>
+          </div>
+        )}
+
+        {isAdmin && (
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.6rem',
+              background: 'rgba(234, 179, 8, 0.08)',
+              border: '1px solid rgba(234, 179, 8, 0.25)',
+              borderRadius: '8px',
+              padding: '0.6rem 1rem',
+              marginBottom: '1.25rem',
+              fontSize: '0.82rem',
+              color: '#fef08a'
+            }}
+          >
+            <span style={{ fontSize: '1.1rem' }}>🛠️</span>
+            <span>
+              <strong>Modo Administrador Datalaria ({currentUser?.email}):</strong> Catálogo maestro de {datasetAssets?.length || 135} activos sincronizado con el repositorio Git + {cloudIdeas.length} ideas privadas en Supabase Cloud.
+            </span>
+          </div>
+        )}
+
+        {isDemo && (
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              background: 'rgba(6, 182, 212, 0.08)',
+              border: '1px solid rgba(6, 182, 212, 0.25)',
+              borderRadius: '8px',
+              padding: '0.6rem 1rem',
+              marginBottom: '1.25rem',
+              fontSize: '0.82rem',
+              color: '#a5f3fc'
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <Zap size={16} color="#22d3ee" />
+              <span>
+                <strong>Modo Demostración ({t.badge_demo_user}):</strong> Espacio interactivo con {currentAssets.length} activos sintéticos en Supabase Cloud. Prueba a crear, editar o mover ideas.
+              </span>
+            </div>
+            <button
+              className="btn btn-ghost"
+              onClick={() => openNewIdeaModal()}
+              style={{ color: '#22d3ee', fontSize: '0.78rem', padding: '0.2rem 0.5rem' }}
+            >
+              + {t.btn_new_idea}
+            </button>
+          </div>
+        )}
+
+        {isClientUser && currentAssets.length === 0 && (
+          <div
+            style={{
+              background: 'rgba(15, 23, 42, 0.85)',
+              border: '1px solid rgba(56, 189, 248, 0.2)',
+              borderRadius: '12px',
+              padding: '2.5rem 1.5rem',
+              textAlign: 'center',
+              marginBottom: '1.5rem'
+            }}
+          >
+            <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🚀</div>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#f8fafc', marginBottom: '0.5rem', fontFamily: 'var(--font-heading)' }}>
+              {t.banner_client_empty_title}
+            </h3>
+            <p style={{ fontSize: '0.875rem', color: '#94a3b8', maxWidth: '640px', margin: '0 auto 1.5rem auto', lineHeight: 1.5 }}>
+              {t.banner_client_empty_desc}
+            </p>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+              <button className="btn btn-primary" onClick={() => openNewIdeaModal()}>
+                <Plus size={16} />
+                <span>+ {t.btn_new_idea}</span>
+              </button>
+              <button className="btn btn-outline" onClick={() => setIsNotionModalOpen(true)}>
+                <Upload size={16} />
+                <span>{t.btn_import_notion}</span>
+              </button>
+              <button className="btn btn-outline" onClick={handleLoadSampleData}>
+                <Sparkles size={16} />
+                <span>{t.btn_load_sample_data}</span>
+              </button>
+            </div>
+          </div>
+        )}
+
+        {isClientUser && currentAssets.length > 0 && (
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              background: 'rgba(16, 185, 129, 0.08)',
+              border: '1px solid rgba(16, 185, 129, 0.25)',
+              borderRadius: '8px',
+              padding: '0.6rem 1rem',
+              marginBottom: '1.25rem',
+              fontSize: '0.82rem',
+              color: '#a7f3d0'
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <Cloud size={16} color="#34d399" />
+              <span>
+                <strong>{t.badge_client_user} ({currentUser?.email}):</strong> {currentAssets.length} activos gestionados en tu base de datos privada Supabase.
+              </span>
+            </div>
+            {customAssets ? (
+              <button
+                className="btn btn-ghost"
+                onClick={resetToDefault}
+                style={{ color: '#34d399', fontSize: '0.78rem', padding: '0.2rem 0.5rem' }}
+              >
+                <RefreshCw size={13} />
+                <span>{t.btn_back_to_my_data}</span>
+              </button>
+            ) : (
+              <button
+                className="btn btn-ghost"
+                onClick={() => openNewIdeaModal()}
+                style={{ color: '#34d399', fontSize: '0.78rem', padding: '0.2rem 0.5rem' }}
+              >
+                + {t.btn_new_idea}
+              </button>
+            )}
+          </div>
+        )}
+
+        {/* Encabezado de Sección: KPIs Generales Macro */}
+        <div className="kpi-section-header">
+          <div>
+            <div className="kpi-section-title">
+              <Layers size={18} color="#06b6d4" />
+              <span>{t.kpi_macro_section_title}</span>
+            </div>
+            <div className="kpi-section-sub">{t.kpi_macro_section_sub}</div>
+          </div>
+        </div>
+
+        {/* KPIs Principales (Macro Ecosistema) */}
         <div className="kpi-grid">
-          <div className="kpi-card">
+          <div className="kpi-card macro-total">
             <div className="kpi-label">
-              <span>{t.stat_total_assets}</span>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                <span className="macro-tag-pill" style={{ background: 'rgba(6, 182, 212, 0.15)', color: '#22d3ee', border: '1px solid rgba(6, 182, 212, 0.35)' }}>
+                  {t.badge_inventory}
+                </span>
+                <span>{t.stat_total_assets}</span>
+              </span>
               <Layers size={18} color="#06b6d4" />
             </div>
             <div className="kpi-value">{currentAssets.length}</div>
@@ -861,9 +1433,14 @@ export function App() {
             </div>
           </div>
 
-          <div className="kpi-card">
+          <div className="kpi-card macro-published">
             <div className="kpi-label">
-              <span>{t.stat_published}</span>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                <span className="macro-tag-pill" style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#34d399', border: '1px solid rgba(16, 185, 129, 0.35)' }}>
+                  {t.badge_live}
+                </span>
+                <span>{t.stat_published}</span>
+              </span>
               <Award size={18} color="#10b981" />
             </div>
             <div className="kpi-value" style={{ color: '#10b981' }}>
@@ -874,12 +1451,17 @@ export function App() {
             </div>
           </div>
 
-          <div className="kpi-card">
+          <div className="kpi-card macro-scheduled">
             <div className="kpi-label">
-              <span>{t.stat_scheduled}</span>
-              <Clock size={18} color="#06b6d4" />
+              <span style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                <span className="macro-tag-pill" style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38bdf8', border: '1px solid rgba(56, 189, 248, 0.35)' }}>
+                  {t.badge_roadmap}
+                </span>
+                <span>{t.stat_scheduled}</span>
+              </span>
+              <Clock size={18} color="#38bdf8" />
             </div>
-            <div className="kpi-value" style={{ color: '#06b6d4' }}>
+            <div className="kpi-value" style={{ color: '#38bdf8' }}>
               {currentAssets.filter((a) => a.status === 'scheduled').length}
             </div>
             <div className="kpi-subtitle">
@@ -887,12 +1469,17 @@ export function App() {
             </div>
           </div>
 
-          <div className="kpi-card">
+          <div className="kpi-card macro-parity">
             <div className="kpi-label">
-              <span>{t.stat_parity}</span>
-              <Globe size={18} color="#8b5cf6" />
+              <span style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                <span className="macro-tag-pill" style={{ background: 'rgba(168, 85, 247, 0.15)', color: '#c084fc', border: '1px solid rgba(168, 85, 247, 0.35)' }}>
+                  {t.badge_parity}
+                </span>
+                <span>{t.stat_parity}</span>
+              </span>
+              <Globe size={18} color="#a855f7" />
             </div>
-            <div className="kpi-value" style={{ color: '#8b5cf6' }}>
+            <div className="kpi-value" style={{ color: '#c084fc' }}>
               {currentAssets.filter((a) => a.language_parity === 'complete').length} / {currentAssets.length}
             </div>
             <div className="kpi-subtitle">
@@ -901,43 +1488,57 @@ export function App() {
           </div>
         </div>
 
-        {/* Barra de Navegación entre Vistas */}
-        <div className="view-nav">
-          <button
-            className={`tab-btn ${activeTab === 'dashboard' ? 'active' : ''}`}
-            onClick={() => setActiveTab('dashboard')}
-          >
-            <BarChart3 size={18} />
-            <span>{t.view_dashboard}</span>
-          </button>
-          <button
-            className={`tab-btn ${activeTab === 'table' ? 'active' : ''}`}
-            onClick={() => setActiveTab('table')}
-          >
-            <TableIcon size={18} />
-            <span>{t.view_table}</span>
-          </button>
-          <button
-            className={`tab-btn ${activeTab === 'kanban' ? 'active' : ''}`}
-            onClick={() => setActiveTab('kanban')}
-          >
-            <Columns3 size={18} />
-            <span>{t.view_kanban}</span>
-          </button>
-          <button
-            className={`tab-btn ${activeTab === 'calendar' ? 'active' : ''}`}
-            onClick={() => setActiveTab('calendar')}
-          >
-            <CalendarIcon size={18} />
-            <span>{t.view_calendar}</span>
-          </button>
-          <button
-            className={`tab-btn ${activeTab === 'health' ? 'active' : ''}`}
-            onClick={() => setActiveTab('health')}
-          >
-            <ShieldCheck size={18} />
-            <span>{t.view_health}</span>
-          </button>
+        {/* Barra de Navegación entre Vistas (Deck Segmentado) */}
+        <div className="view-nav-wrapper">
+          <div className="view-nav">
+            <button
+              className={`tab-btn ${activeTab === 'dashboard' ? 'active' : ''}`}
+              onClick={() => setActiveTab('dashboard')}
+            >
+              <BarChart3 size={18} />
+              <span>{t.view_dashboard}</span>
+            </button>
+            <button
+              className={`tab-btn ${activeTab === 'table' ? 'active' : ''}`}
+              onClick={() => setActiveTab('table')}
+            >
+              <TableIcon size={18} />
+              <span>{t.view_table}</span>
+            </button>
+            <button
+              className={`tab-btn ${activeTab === 'kanban' ? 'active' : ''}`}
+              onClick={() => setActiveTab('kanban')}
+            >
+              <Columns3 size={18} />
+              <span>{t.view_kanban}</span>
+            </button>
+            <button
+              className={`tab-btn ${activeTab === 'calendar' ? 'active' : ''}`}
+              onClick={() => setActiveTab('calendar')}
+            >
+              <CalendarIcon size={18} />
+              <span>{t.view_calendar}</span>
+            </button>
+            <button
+              className={`tab-btn ${activeTab === 'health' ? 'active' : ''}`}
+              onClick={() => setActiveTab('health')}
+            >
+              <ShieldCheck size={18} />
+              <span>{t.view_health}</span>
+            </button>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+            <span style={{ fontSize: '0.78rem', color: '#64748b', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+              {activeTab === 'dashboard' && t.view_dashboard}
+              {activeTab === 'table' && t.view_table}
+              {activeTab === 'kanban' && t.view_kanban}
+              {activeTab === 'calendar' && t.view_calendar}
+              {activeTab === 'health' && t.view_health}
+            </span>
+            <span style={{ background: 'rgba(16, 185, 129, 0.12)', color: '#34d399', border: '1px solid rgba(16, 185, 129, 0.3)', borderRadius: '9999px', padding: '0.2rem 0.55rem', fontSize: '0.72rem', fontWeight: 700 }}>
+              {currentAssets.length} activos
+            </span>
+          </div>
         </div>
 
         {/* Barra de Filtros Interactivos Tipo Píldora (Visible en Tabla, Kanban y Calendario) */}
@@ -1047,6 +1648,9 @@ export function App() {
                   >
                     <span className="pill-dot" style={{ background: '#f59e0b' }} />
                     <span>{t.status_draft}</span>
+                    <span className="pill-count">
+                      {currentAssets.filter((a) => a.status === 'draft').length}
+                    </span>
                   </button>
                   <button
                     className={`pill-item ${statusFilter === 'idea' ? 'active' : ''}`}
@@ -1054,6 +1658,9 @@ export function App() {
                   >
                     <span className="pill-dot" style={{ background: '#8b5cf6' }} />
                     <span>{t.status_idea}</span>
+                    <span className="pill-count">
+                      {currentAssets.filter((a) => a.status === 'idea').length}
+                    </span>
                   </button>
                 </div>
               </div>
@@ -1064,12 +1671,25 @@ export function App() {
         {/* 1. VISTA DASHBOARD / ANALYTICS */}
         {activeTab === 'dashboard' && (
           <div className="analytics-wrapper">
-            {/* Top Métricas Clave de Negocio */}
+            {/* Encabezado temático para KPIs Específicos de la Vista Analytics */}
+            <div className="section-header-analytics">
+              <div>
+                <div className="section-header-title">
+                  <BarChart3 size={18} color="#10b981" />
+                  <span>{t.kpi_analytics_section_title}</span>
+                </div>
+                <div className="kpi-section-sub">{t.kpi_analytics_section_sub}</div>
+              </div>
+            </div>
+
+            {/* Top Métricas Específicas de Rendimiento y SEO */}
             <div className="kpi-grid">
-              <div className="kpi-card">
+              <div className="kpi-card specific-card">
                 <div className="kpi-label">
                   <span>{t.kpi_total_words}</span>
-                  <FileSpreadsheet size={18} color="#10b981" />
+                  <div className="icon-box-badge" style={{ background: 'rgba(16, 185, 129, 0.12)', color: '#10b981' }}>
+                    <FileSpreadsheet size={18} />
+                  </div>
                 </div>
                 <div className="kpi-value">{totalWords.toLocaleString()}</div>
                 <div className="kpi-subtitle">
@@ -1077,10 +1697,12 @@ export function App() {
                 </div>
               </div>
 
-              <div className="kpi-card">
+              <div className="kpi-card specific-card">
                 <div className="kpi-label">
                   <span>{t.kpi_avg_seo}</span>
-                  <Target size={18} color="#06b6d4" />
+                  <div className="icon-box-badge" style={{ background: 'rgba(6, 182, 212, 0.12)', color: '#06b6d4' }}>
+                    <Target size={18} />
+                  </div>
                 </div>
                 <div className="kpi-value" style={{ color: '#06b6d4' }}>
                   {avgSeoScore} <span style={{ fontSize: '1.1rem', color: '#6b7280' }}>/ 100</span>
@@ -1090,10 +1712,12 @@ export function App() {
                 </div>
               </div>
 
-              <div className="kpi-card">
+              <div className="kpi-card specific-card">
                 <div className="kpi-label">
                   <span>{t.kpi_content_equity}</span>
-                  <DollarSign size={18} color="#10b981" />
+                  <div className="icon-box-badge" style={{ background: 'rgba(16, 185, 129, 0.12)', color: '#10b981' }}>
+                    <DollarSign size={18} />
+                  </div>
                 </div>
                 <div className="kpi-value" style={{ color: '#10b981' }}>
                   ${contentEquityUSD.toLocaleString()}
@@ -1103,15 +1727,22 @@ export function App() {
                 </div>
               </div>
 
-              <div className="kpi-card">
+              <div className="kpi-card specific-card specific-featured">
                 <div className="kpi-label">
-                  <span>{t.kpi_top_performer}</span>
-                  <TrendingUp size={18} color="#8b5cf6" />
+                  <span style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                    <span style={{ fontSize: '0.62rem', fontWeight: 800, background: 'rgba(168, 85, 247, 0.2)', color: '#c084fc', border: '1px solid rgba(168, 85, 247, 0.4)', borderRadius: '4px', padding: '0.1rem 0.35rem' }}>
+                      TOP GA4
+                    </span>
+                    <span>{t.kpi_top_performer}</span>
+                  </span>
+                  <div className="icon-box-badge" style={{ background: 'rgba(168, 85, 247, 0.15)', color: '#a855f7' }}>
+                    <TrendingUp size={18} />
+                  </div>
                 </div>
                 <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#f9fafb', marginTop: '0.4rem', lineHeight: 1.3 }}>
                   {topTrafficAsset ? (lang === 'es' ? topTrafficAsset.title_es : topTrafficAsset.title_en) : '—'}
                 </div>
-                <div className="kpi-subtitle" style={{ color: '#8b5cf6', fontWeight: 700 }}>
+                <div className="kpi-subtitle" style={{ color: '#c084fc', fontWeight: 700 }}>
                   Índice {topTrafficAsset?.metrics_relative?.index_100} · Percentil 100%
                 </div>
               </div>
@@ -1666,6 +2297,11 @@ export function App() {
                                 {title || a.id}
                               </span>
                             )}
+                            {a.is_cloud_idea && (
+                              <span className="badge badge-cloud" style={{ background: 'rgba(6, 182, 212, 0.15)', color: '#22d3ee', border: '1px solid rgba(6, 182, 212, 0.4)', marginLeft: '0.35rem' }}>
+                                ☁️ {t.badge_cloud_idea}
+                              </span>
+                            )}
                             {a.is_local_idea && (
                               <span className="badge badge-local">{t.badge_local_idea}</span>
                             )}
@@ -1886,6 +2522,11 @@ export function App() {
                                   <span className={`badge badge-${a.asset_type}`} style={{ fontSize: '0.6875rem' }}>
                                     {a.asset_type.toUpperCase()}
                                   </span>
+                                  {a.is_cloud_idea && (
+                                    <span className="badge badge-cloud" style={{ fontSize: '0.6875rem', background: 'rgba(6, 182, 212, 0.15)', color: '#22d3ee', border: '1px solid rgba(6, 182, 212, 0.4)' }}>
+                                      ☁️ {t.badge_cloud_idea}
+                                    </span>
+                                  )}
                                   {a.is_local_idea && (
                                     <span className="badge badge-local">{t.badge_local_idea}</span>
                                   )}
@@ -2264,10 +2905,14 @@ export function App() {
               }}
             >
               <span style={{ fontSize: '0.85rem', color: '#9ca3af' }}>
-                {selectedAssetForModal.is_local_idea ? '💡 ' + t.badge_local_idea : t.modal_preview_confirm}
+                {selectedAssetForModal.is_cloud_idea
+                  ? '☁️ ' + t.badge_cloud_idea
+                  : selectedAssetForModal.is_local_idea
+                  ? '💡 ' + t.badge_local_idea
+                  : t.modal_preview_confirm}
               </span>
               <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                {selectedAssetForModal.is_local_idea && (
+                {(selectedAssetForModal.is_local_idea || selectedAssetForModal.is_cloud_idea) && (
                   <>
                     <button
                       className="btn btn-outline"
@@ -2292,7 +2937,7 @@ export function App() {
                 <button className="btn btn-ghost" onClick={() => setSelectedAssetForModal(null)}>
                   {t.btn_close}
                 </button>
-                {!selectedAssetForModal.is_local_idea && (
+                {!(selectedAssetForModal.is_local_idea || selectedAssetForModal.is_cloud_idea) && (
                   <button
                     className="btn btn-primary"
                     onClick={() => {
@@ -2508,6 +3153,125 @@ export function App() {
                 {notionSuccessMsg}
               </div>
             )}
+          </div>
+        </div>
+      )}
+
+      {/* MODAL AUTENTICACIÓN SUPABASE PRO CLOUD (ADR-015) */}
+      {isAuthModalOpen && (
+        <div className="modal-overlay" onClick={() => setIsAuthModalOpen(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '440px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <div style={{ background: 'rgba(6, 182, 212, 0.2)', padding: '0.4rem', borderRadius: '8px' }}>
+                  <Cloud size={20} color="#22d3ee" />
+                </div>
+                <h3 style={{ fontSize: '1.2rem', fontWeight: 700, fontFamily: 'var(--font-heading)' }}>
+                  {t.modal_auth_title}
+                </h3>
+              </div>
+              <button
+                className="btn-ghost"
+                onClick={() => setIsAuthModalOpen(false)}
+                style={{ padding: '0.25rem', cursor: 'pointer', borderRadius: '6px' }}
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            <p style={{ fontSize: '0.85rem', color: '#94a3b8', lineHeight: 1.5, marginTop: '0.5rem' }}>
+              {t.modal_auth_desc}
+            </p>
+
+            {/* Acceso Rápido Demo 1-Clic */}
+            <div style={{ background: 'rgba(6, 182, 212, 0.08)', border: '1px solid rgba(6, 182, 212, 0.3)', borderRadius: '10px', padding: '1rem', marginTop: '1rem' }}>
+              <div style={{ fontSize: '0.8rem', color: '#22d3ee', fontWeight: 600, marginBottom: '0.5rem' }}>
+                {t.demo_login_hint}
+              </div>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={handleDemoLogin}
+                disabled={authLoading}
+                style={{ width: '100%', justifyContent: 'center', background: 'linear-gradient(135deg, #0891b2 0%, #06b6d4 100%)' }}
+              >
+                <Zap size={16} />
+                <span>{authLoading ? 'Iniciando...' : t.btn_demo_login_1click}</span>
+              </button>
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', margin: '1.25rem 0', color: '#64748b', fontSize: '0.8rem' }}>
+              <div style={{ flex: 1, height: '1px', background: '#334155' }} />
+              <span>{t.auth_divider}</span>
+              <div style={{ flex: 1, height: '1px', background: '#334155' }} />
+            </div>
+
+            {/* Formulario de Login Personal */}
+            <form onSubmit={handlePasswordLogin} style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', color: '#94a3b8', marginBottom: '0.3rem' }}>
+                  {t.field_email}
+                </label>
+                <input
+                  type="email"
+                  className="search-input"
+                  value={authEmail}
+                  onChange={(e) => setAuthEmail(e.target.value)}
+                  placeholder="tu-email@empresa.com"
+                  required
+                  style={{ width: '100%', background: '#0f172a' }}
+                />
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', color: '#94a3b8', marginBottom: '0.3rem' }}>
+                  {t.field_password}
+                </label>
+                <input
+                  type="password"
+                  className="search-input"
+                  value={authPassword}
+                  onChange={(e) => setAuthPassword(e.target.value)}
+                  placeholder="••••••••"
+                  required
+                  style={{ width: '100%', background: '#0f172a' }}
+                />
+              </div>
+
+              {authError && (
+                <div style={{ background: 'rgba(239, 68, 68, 0.15)', border: '1px solid #ef4444', color: '#f87171', padding: '0.6rem', borderRadius: '6px', fontSize: '0.8rem' }}>
+                  {authError}
+                </div>
+              )}
+
+              {authSuccessMsg && (
+                <div style={{ background: 'rgba(16, 185, 129, 0.15)', border: '1px solid #10b981', color: '#34d399', padding: '0.6rem', borderRadius: '6px', fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                  <CheckCircle2 size={16} />
+                  <span>{authSuccessMsg}</span>
+                </div>
+              )}
+
+              <div style={{ display: 'flex', gap: '0.6rem', marginTop: '0.5rem' }}>
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  disabled={authLoading}
+                  style={{ flex: 1, justifyContent: 'center' }}
+                >
+                  <LogIn size={15} />
+                  <span>{t.btn_sign_in}</span>
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-outline"
+                  onClick={handleSignUp}
+                  disabled={authLoading}
+                  style={{ flex: 1, justifyContent: 'center' }}
+                >
+                  <span>{t.btn_sign_up}</span>
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}

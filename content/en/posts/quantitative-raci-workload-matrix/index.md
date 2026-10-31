@@ -1,6 +1,6 @@
 ---
 title: "Quantitative RACI Matrix: Operational Workload Balancing, Single Accountability & Bottleneck Detection"
-date: 2026-10-30
+date: 2026-11-25
 draft: false
 category: "Technical Articles"
 categories: ["Operational Control", "Team Governance", "Executive Templates"]

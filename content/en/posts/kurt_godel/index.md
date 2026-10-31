@@ -1,6 +1,6 @@
 ---
 title: "Kurt Gödel: The Incompleteness Theorems, the Limits of Logic, and Can an AGI Ever Know Everything?"
-date: 2026-12-13
+date: 2026-10-31
 draft: false
 category: "Biographies"
 categories: ["case-studies", "Artificial Intelligence", "Deep Tech", "Philosophy"]
@@ -38,7 +38,10 @@ Endowed with razor-sharp mathematical precision, his personal life was shadowed 
 * **Einstein’s Rotating Universe (1949)**: As a 70th birthday gift for Albert Einstein, Gödel formulated an exact and deeply unsettling solution to the field equations of General Relativity (the celebrated *Gödel Metric*). In his model, the entire cosmos rotates. The mathematical consequence was staggering: a rotating universe admits **closed timelike curves**, meaning an interstellar traveler could journey into their own past without violating the laws of relativistic physics.
 * **Tragic Paranoia and the Princeton Finale**: For decades, Gödel suffered from an unshakable fear that toxic gases were leaking from his radiators and that secret conspirators were trying to poison his food. His sole lifeline was his devoted wife, Adele Nimbursky, a former Viennese cabaret dancer several years his senior, who tasted every morsel of food in his presence before he would eat. In late 1977, Adele suffered a severe illness and was hospitalized for months. Paralyzed by the terror of unverified food, Gödel refused to eat. He passed away from self-starvation at Princeton Hospital on January 14, 1978, weighing a mere sixty-five pounds (twenty-nine kilograms).
 
-![Kurt Gödel during his mature years at Princeton's Institute for Advanced Study, wearing his signature round glasses](godel_glasses.jpg)
+<div class="img-center">
+  <img src="godel_glasses.jpg" alt="Kurt Gödel during his mature years at Princeton's Institute for Advanced Study, wearing his signature round glasses" />
+  <em>Kurt Gödel during his mature years at Princeton's Institute for Advanced Study, wearing his signature round glasses</em>
+</div>
 
 ---
 

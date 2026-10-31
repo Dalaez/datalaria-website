@@ -64,6 +64,8 @@ export interface ContentAsset {
 
   metrics_relative?: RelativeMetrics | null;
   is_local_idea?: boolean;
+  is_cloud_idea?: boolean;
+  cloud_user_id?: string;
 }
 
 export interface MonthlyTrafficPoint {
