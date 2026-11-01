@@ -2,8 +2,8 @@
   {
     "year_month": "202509",
     "month": "2025-09",
-    "views": 74,
-    "users": 31
+    "views": 73,
+    "users": 30
   },
   {
     "year_month": "202510",
@@ -80,7 +80,13 @@
   {
     "year_month": "202610",
     "month": "2026-10",
-    "views": 3062,
-    "users": 1256
+    "views": 3157,
+    "users": 1266
+  },
+  {
+    "year_month": "202611",
+    "month": "2026-11",
+    "views": 32,
+    "users": 32
   }
 ]

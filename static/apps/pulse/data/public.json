@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-11-01T08:06:13.285347Z",
+  "generated_at": "2026-11-01T08:14:35.198159Z",
   "total_assets": 141,
   "published_assets": 117,
   "scheduled_assets": 20,
@@ -12,72 +12,77 @@
     {
       "month": "2025-09",
       "label": "Sep '25",
-      "index_100": 15
+      "index_100": 18
     },
     {
       "month": "2025-10",
       "label": "Oct '25",
-      "index_100": 40
+      "index_100": 49
     },
     {
       "month": "2025-11",
       "label": "Nov '25",
-      "index_100": 54
+      "index_100": 67
     },
     {
       "month": "2025-12",
       "label": "Dic '25",
-      "index_100": 53
+      "index_100": 67
     },
     {
       "month": "2026-01",
       "label": "Ene '26",
-      "index_100": 130
+      "index_100": 162
     },
     {
       "month": "2026-02",
       "label": "Feb '26",
-      "index_100": 151
+      "index_100": 189
     },
     {
       "month": "2026-03",
       "label": "Mar '26",
-      "index_100": 120
+      "index_100": 149
     },
     {
       "month": "2026-04",
       "label": "Abr '26",
-      "index_100": 71
+      "index_100": 89
     },
     {
       "month": "2026-05",
       "label": "May '26",
-      "index_100": 186
+      "index_100": 232
     },
     {
       "month": "2026-06",
       "label": "Jun '26",
-      "index_100": 75
+      "index_100": 94
     },
     {
       "month": "2026-07",
       "label": "Jul '26",
-      "index_100": 80
+      "index_100": 100
     },
     {
       "month": "2026-08",
       "label": "Ago '26",
-      "index_100": 297
+      "index_100": 370
     },
     {
       "month": "2026-09",
       "label": "Sep '26",
-      "index_100": 254
+      "index_100": 317
     },
     {
       "month": "2026-10",
       "label": "Oct '26",
-      "index_100": 603
+      "index_100": 776
+    },
+    {
+      "month": "2026-11",
+      "label": "Nov '26",
+      "index_100": 8
     }
   ],
   "assets": [
@@ -280,8 +285,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 150,
-        "rank_pct": 72,
+        "index_100": 200,
+        "rank_pct": 80,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -416,7 +421,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 262,
-        "rank_pct": 86,
+        "rank_pct": 85,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -487,8 +492,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 200,
-        "rank_pct": 81,
+        "index_100": 212,
+        "rank_pct": 82,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -556,7 +561,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 300,
+        "index_100": 312,
         "rank_pct": 89,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -755,7 +760,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 438,
-        "rank_pct": 93,
+        "rank_pct": 94,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1399,7 +1404,7 @@
       "brief_es": "De los trade-offs de arquitectura y proveedores a la asignación de backlog y la defensa del CAPEX ante el CFO. Guía metodológica integrando Matriz DAR, RICE/ICE y Business Case Financiero.",
       "brief_en": "From vendor and architecture trade-offs to backlog capacity and CFO Capex justification. How to integrate DAR Matrix, RICE/ICE, and DCF Business Cases into a unified decision pipeline.",
       "publish_date": "2026-11-11",
-      "last_modified_es": "2026-10-31T20:23:26+01:00",
+      "last_modified_es": "2026-11-01T09:06:03+01:00",
       "last_modified_en": "2026-10-31T20:23:26+01:00",
       "language_parity": "complete",
       "category": "Estrategia y Operaciones",
@@ -1513,7 +1518,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 50,
-        "rank_pct": 51,
+        "rank_pct": 50,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1702,7 +1707,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 450,
+        "index_100": 438,
         "rank_pct": 94,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -1767,7 +1772,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 62,
-        "rank_pct": 55,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1904,7 +1909,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 325,
+        "index_100": 338,
         "rank_pct": 90,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -2112,7 +2117,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 62,
-        "rank_pct": 55,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2181,8 +2186,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 188,
-        "rank_pct": 79,
+        "index_100": 175,
+        "rank_pct": 77,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2251,7 +2256,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 62,
-        "rank_pct": 55,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2319,7 +2324,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 475,
+        "index_100": 488,
         "rank_pct": 95,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -2590,8 +2595,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 38,
-        "rank_pct": 46,
+        "index_100": 50,
+        "rank_pct": 50,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2656,7 +2661,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 138,
-        "rank_pct": 70,
+        "rank_pct": 71,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2723,7 +2728,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 50,
-        "rank_pct": 51,
+        "rank_pct": 50,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": true
       },
@@ -2785,7 +2790,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 50,
-        "rank_pct": 51,
+        "rank_pct": 50,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": true
       },
@@ -3111,8 +3116,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 75,
-        "rank_pct": 59,
+        "index_100": 62,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3249,7 +3254,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 138,
-        "rank_pct": 70,
+        "rank_pct": 71,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3309,8 +3314,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 25,
-        "rank_pct": 40,
+        "index_100": 38,
+        "rank_pct": 45,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3440,7 +3445,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 150,
-        "rank_pct": 72,
+        "rank_pct": 73,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3505,7 +3510,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 262,
-        "rank_pct": 86,
+        "rank_pct": 85,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3570,7 +3575,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 50,
-        "rank_pct": 51,
+        "rank_pct": 50,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3704,7 +3709,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 200,
-        "rank_pct": 81,
+        "rank_pct": 80,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3770,8 +3775,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 300,
-        "rank_pct": 89,
+        "index_100": 288,
+        "rank_pct": 87,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3972,8 +3977,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 175,
-        "rank_pct": 77,
+        "index_100": 138,
+        "rank_pct": 71,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4041,7 +4046,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 888,
+        "index_100": 900,
         "rank_pct": 99,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -4174,8 +4179,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 262,
-        "rank_pct": 86,
+        "index_100": 300,
+        "rank_pct": 88,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4441,7 +4446,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 300,
-        "rank_pct": 89,
+        "rank_pct": 88,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4571,7 +4576,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 50,
-        "rank_pct": 51,
+        "rank_pct": 50,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4705,8 +4710,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 150,
-        "rank_pct": 72,
+        "index_100": 138,
+        "rank_pct": 71,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4845,7 +4850,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 262,
-        "rank_pct": 86,
+        "rank_pct": 85,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4983,7 +4988,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 412,
+        "index_100": 400,
         "rank_pct": 93,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -5450,7 +5455,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 300,
+        "index_100": 312,
         "rank_pct": 89,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -5729,7 +5734,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 538,
+        "index_100": 550,
         "rank_pct": 98,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -6120,8 +6125,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 38,
-        "rank_pct": 46,
+        "index_100": 50,
+        "rank_pct": 50,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6250,7 +6255,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 50,
-        "rank_pct": 51,
+        "rank_pct": 50,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6381,7 +6386,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 62,
-        "rank_pct": 55,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6524,8 +6529,8 @@
       "brief_es": "Guía metodológica y cuantitativa para implementar la matriz CMMI DAR (Decision Analysis and Resolution) y Kepner-Tregoe: filtros veto booleanos, scoring multicriterio ponderado, análisis de sensibilidad What-If y gobierno corporativo ante Consejos de Administración.",
       "brief_en": "A comprehensive methodological guide to implementing the CMMI DAR (Decision Analysis and Resolution) and Kepner-Tregoe framework: Boolean veto gatekeepers, weighted multi-criteria scoring, What-If sensitivity modeling, and boardroom governance.",
       "publish_date": "2026-11-02",
-      "last_modified_es": "2026-10-31T20:23:26+01:00",
-      "last_modified_en": "2026-10-31T20:23:26+01:00",
+      "last_modified_es": "2026-11-01T09:06:03+01:00",
+      "last_modified_en": "2026-11-01T09:06:03+01:00",
       "language_parity": "complete",
       "category": "Estrategia y Operaciones",
       "categories": [
@@ -6643,7 +6648,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 150,
-        "rank_pct": 72,
+        "rank_pct": 73,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6713,8 +6718,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 38,
-        "rank_pct": 46,
+        "index_100": 50,
+        "rank_pct": 50,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6778,7 +6783,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 50,
-        "rank_pct": 51,
+        "rank_pct": 50,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6842,7 +6847,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 38,
-        "rank_pct": 46,
+        "rank_pct": 45,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7032,8 +7037,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 38,
-        "rank_pct": 46,
+        "index_100": 50,
+        "rank_pct": 50,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7222,8 +7227,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 138,
-        "rank_pct": 70,
+        "index_100": 125,
+        "rank_pct": 68,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7349,7 +7354,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 38,
-        "rank_pct": 46,
+        "rank_pct": 45,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7730,7 +7735,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 38,
-        "rank_pct": 46,
+        "rank_pct": 45,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8204,7 +8209,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 200,
-        "rank_pct": 81,
+        "rank_pct": 80,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
