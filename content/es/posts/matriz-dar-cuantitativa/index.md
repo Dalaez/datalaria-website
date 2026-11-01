@@ -1,6 +1,6 @@
 ---
 title: "Matriz DAR Cuantitativa: Criterios Veto, Ponderación Multicriterio y Análisis de Decisiones C-Level"
-date: 2026-11-11
+date: 2026-11-02
 draft: false
 category: "Estrategia y Operaciones"
 categories: ["Toma de Decisiones", "Estrategia Corporativa", "Plantillas Ejecutivas", "Estrategia y Operaciones"]

@@ -1,6 +1,6 @@
 ---
 title: "Quantitative DAR Matrix: Decision Analysis & Resolution, Veto Criteria & C-Suite Multi-Criteria Scoring"
-date: 2026-11-11
+date: 2026-11-02
 draft: false
 category: "Strategy & Operations"
 categories: ["Decision Making", "Corporate Strategy", "Executive Toolkits", "Strategy & Operations"]
