@@ -1,5 +1,6 @@
 # Ficheros y carpetas de construcción de Hugo
 /public/
+/public_test/
 /resources/
 
 # Ficheros de sistema operativo
