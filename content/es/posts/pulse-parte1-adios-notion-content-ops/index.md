@@ -2,6 +2,11 @@
 title: "Adiós Notion: Datalaria Pulse o la Gestión Editorial que se Escribe Sola desde Git"
 date: 2026-11-18
 draft: false
+cover:
+  image: "cover.png"
+  alt: "Datalaria Pulse: Content Ops as Code"
+  caption: "Datalaria Pulse (1/5) — Adiós Notion: Gobernanza editorial desde Git"
+  relative: true
 image: "cover.png"
 category: "IA, Ingeniería y Proyectos"
 categories: ["Content Ops", "Ingeniería de Software", "Automatización", "IA, Ingeniería y Proyectos"]
@@ -16,6 +21,18 @@ Durante años, los equipos de ingeniería y creadores técnicos que publicamos e
 En el papel, el flujo parecía inmejorable. Creas una base de datos relacional en **Notion** o una tabla en **Airtable**, diseñas un tablero Kanban con columnas cromáticas (*Idea*, *Borrador*, *En Revisión*, *Programado*, *Publicado*), configuras vistas de calendario y añades propiedades para el recuento de palabras, las categorías SEO y los enlaces bilingües.
 
 Sin embargo, a medida que el blog escala y supera el umbral de los 50 o 100 artículos técnicos, se manifiesta de forma inevitable la **patología de la doble entrada**: la realidad del repositorio Git y la ficción de la base de datos externa divergen irremediablemente.
+
+
+---
+
+### 🗺️ Hoja de Ruta de la Serie Datalaria Pulse
+Para entender cómo encaja cada pieza del rompecabezas de *Content Ops as Code*, esta serie se compone de 5 entregas estructuradas:
+
+1. 🟢 **Parte 1 (Este artículo)**: Adiós Notion: Datalaria Pulse o la Gestión Editorial que se Escribe Sola desde Git.
+2. ⚪ **Parte 2**: [Del Front Matter al Índice: Pydantic v2, Paridad Bilingüe y Automatización con CI/CD](/es/posts/pulse-parte2-indexador-pydantic-paridad-ci/).
+3. ⚪ **Parte 3**: [Tabla Ejecutiva, Tablero Kanban y Calendario Mensual en React 19 sobre un Índice Estático](/es/posts/pulse-parte3-tablero-react-tabla-kanban-calendario/).
+4. ⚪ **Parte 4**: [Google Analytics 4 y Search Console Automatizados: Cómo Medir el ROI Orgánico de Cada Post, App y Kit](/es/posts/pulse-parte4-ga4-search-console-automatico/).
+5. ⚪ **Parte 5**: [Gestión Editorial para Equipos de Documentación, SEO y Marketing: de Notion a Excel en 5 minutos y Fábrica con IA](/es/posts/pulse-parte5-kit-excel-migracion-notion-equipos/).
 
 ---
 

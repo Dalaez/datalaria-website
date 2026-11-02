@@ -2,6 +2,11 @@
 title: "Executive Table, Kanban Board, and Monthly Calendar in React 19 Over a Static Index"
 date: 2026-12-02
 draft: false
+cover:
+  image: "cover.png"
+  alt: "Executive Table, Kanban, and Calendar in React 19"
+  caption: "Datalaria Pulse (3/5) — React 19 Cockpit: Table, Kanban, and Calendar"
+  relative: true
 image: "cover.png"
 category: "AI, Engineering & Projects"
 categories: ["Content Ops", "Frontend", "React", "Software Engineering", "AI, Engineering & Projects"]
@@ -18,6 +23,18 @@ At the conclusion of that backend pipeline, we produce an exceptional data asset
 However, structured data on disk remains inaccessible if technical editors and engineering leaders must inspect it by reading raw code or running CLI commands. Making strategic publication decisions demands a **high-level executive cockpit**: an operations center capable of filtering by taxonomy, identifying workflow bottlenecks in a Kanban pipeline, scheduling future releases on a monthly calendar, and capturing spontaneous ideas on the fly.
 
 In this article, we break down the frontend engineering behind **Datalaria Pulse**: how we architected a Single Page Application (SPA) in **React 19 + TypeScript** that mounts directly over a static index, delivering instantaneous interactivity with **zero network latency** without server overhead or sluggish database queries.
+
+
+---
+
+### 🗺️ Datalaria Pulse Series Roadmap
+To understand how each piece of the *Content Ops as Code* architecture fits together, this series consists of 5 structured installments:
+
+1. ⚪ **Part 1**: [Goodbye Notion: Datalaria Pulse and Editorial Governance that Writes Itself from Git](/en/posts/pulse-part1-goodbye-notion-content-ops/).
+2. ⚪ **Part 2**: [From Front Matter to Index: Pydantic v2, Bilingual Parity, and CI/CD Automation](/en/posts/pulse-part2-pydantic-indexer-bilingual-parity-ci/).
+3. 🟢 **Part 3 (This article)**: Executive Table, Kanban Board, and Monthly Calendar in React 19 over a Static Index.
+4. ⚪ **Part 4**: [Automated Google Analytics 4 and Search Console: Measuring the Organic ROI of Every Post, App, and Kit](/en/posts/pulse-part4-ga4-search-console-automated/).
+5. ⚪ **Part 5**: [Editorial Operations for Docs, SEO, and Marketing Teams: From Notion to Excel in 5 Minutes and AI Agent Factory](/en/posts/pulse-part5-excel-kit-notion-migration-teams/).
 
 ---
 
@@ -43,7 +60,7 @@ The core objective of this stage in **Phase 5 at Datalaria** is to democratize a
 
 The interface design of Datalaria Pulse directly inherits the ergonomics, boardroom aesthetic, and quantitative rigor established in our earlier suites:
 
-```mermaid
+{{< mermaid >}}
 flowchart TD
     subgraph BACKEND ["1. Backend Pipeline (Posts 1 & 2)"]
         GIT["Markdown + YAML"] --> PYD["Pydantic v2 Engine"]
@@ -70,7 +87,7 @@ flowchart TD
 
     JSON --> HOOK
     FRONTEND -.-> ECOSYSTEM
-```
+{{< /mermaid >}}
 
 1. **The Visual Ergonomics of [LifeOps](/en/apps/lifeops/):** Pulse adopts the *Outfit + Inter* corporate typography, deep dark slate styling (`#080d1a` to `#0f172a`), neon cyan/emerald atmospheric accents, and the floating segmented navigation deck originally developed for our LifeOps platform.
 2. **C-Level Executive Presentation from the [Decision Suite](/en/posts/executive-decision-packs-quantitative-framework/):** The Pulse navbar follows executive boardroom standards: 4 Macro KPIs highlighted by neon top borders (`Total Assets`, `Published`, `Scheduled`, and `Bilingual Parity`), complemented by contextual operational metrics (indexed words, estimated content equity, and top organic traffic driver).
@@ -128,16 +145,11 @@ export function App() {
 
 The **Executive Table** serves as the primary instrument for deep catalog auditing. When an organization manages over 100 technical articles, editorial leaders must answer complex questions in seconds: *which articles score below 70 in SEO audit?*, *which long-form guides exceed 3,000 words but lack English translations?*, *which asset leads organic search traffic?*.
 
-```
-┌─────────────────────────────────────────────────────────────────────────────────────────────┐
-│ 🔍 Search by title, tag, or slug...    [All Asset Types ▼]       [All Statuses ▼]          │
-├─────────────────────────────────────────────────────────────────────────────────────────────┤
-│ ASSET / TITLE               TYPE   STATUS      PUB DATE     WORDS      PARITY    SEO SCORE  │
-│ Porter's Five Forces...     POST   PUBLISHED   2026-10-19   4,218 w.   complete   60 / 100  │
-│ Quantitative SWOT & CAME... POST   PUBLISHED   2026-10-13   4,867 w.   complete   60 / 100  │
-│ Dynamic BCG Matrix...       POST   PUBLISHED   2026-10-26   3,920 w.   complete  100 / 100  │
-└─────────────────────────────────────────────────────────────────────────────────────────────┘
-```
+| Asset / Title | Type | Status | Pub Date | Words | Parity | SEO Score |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Porter's Five Forces...** | `POST` | `Published` | 2026-10-19 | 4,218 w. | complete | 60 / 100 |
+| **Quantitative SWOT & CAME...** | `POST` | `Published` | 2026-10-13 | 4,867 w. | complete | 60 / 100 |
+| **Dynamic BCG Matrix...** | `POST` | `Published` | 2026-10-26 | 3,920 w. | complete | 100 / 100 |
 
 ### Key Engineering Features:
 1. **Multi-Criteria Filtering:** The control bar enables simultaneous filtering by predictive text (fuzzy matches across titles, slugs, and tags), asset class (`post`, `app`, `kit`, `suite`), and editorial state (`published`, `scheduled`, `draft`, `idea`).
@@ -151,13 +163,13 @@ The **Executive Table** serves as the primary instrument for deep catalog auditi
 
 While the table specializes in analytical auditing, the **Kanban Board** manages the day-to-day workflow of technical writing and peer review. We structure the editorial lifecycle into 5 immutable stages:
 
-```mermaid
+{{< mermaid >}}
 flowchart LR
     C1["💡 IDEA\n(Notes & Backlog)"] --> C2["✍️ DRAFT\n(Markdown Writing)"]
     C2 --> C3["🔍 IN REVIEW\n(Pydantic & SEO Audit)"]
     C3 --> C4["📅 SCHEDULED\n(Future-Dated Commit)"]
     C4 --> C5["🚀 PUBLISHED\n(Live in Production)"]
-```
+{{< /mermaid >}}
 
 ### Card Architecture in the Kanban Grid:
 Each card in the board functions as an autonomous component displaying:
@@ -174,23 +186,23 @@ With 138 assets distributed across these 5 stages, engineering managers instantl
 
 An editorial calendar is not merely a list of dates; it is an instrument of strategic rhythm. The **Monthly Calendar** view in Datalaria Pulse projects upcoming releases on an interactive chronological timeline:
 
-```
-┌────────────────────────────────────────────────────────────────────────────────────────┐
-│ 📅 Editorial Calendar — Chronological Release Planning                                │
-├────────────────────────────────────────────────────────────────────────────────────────┤
-│ 2026-11-18   Goodbye Notion: Datalaria Pulse and Editorial Ops from Git      [POST]     │
-│ 2026-11-25   From Front Matter to Index: Pydantic v2 & GitHub Actions        [POST]     │
-│ 2026-12-02   Executive Table, Kanban Board, and Monthly Calendar in React 19 [POST]     │
-│ 2026-12-09   Automated GA4 and Search Console to Measure Organic ROI         [POST]     │
-│ 2026-12-16   Datalaria Pulse Pro: Cloud Sync and Team Collaboration           [POST]     │
-└────────────────────────────────────────────────────────────────────────────────────────┘
-```
+| Date | Asset Title | Type |
+| :--- | :--- | :--- |
+| **2026-11-18** | Goodbye Notion: Datalaria Pulse and Editorial Ops from Git | `POST` |
+| **2026-11-25** | From Front Matter to Index: Pydantic v2 & GitHub Actions | `POST` |
+| **2026-12-02** | Executive Table, Kanban Board, and Monthly Calendar in React 19 | `POST` |
+| **2026-12-09** | Automated GA4 and Search Console to Measure Organic ROI | `POST` |
+| **2026-12-16** | Datalaria Pulse Pro: Cloud Sync and Team Collaboration | `POST` |
 
 ### Rapid Idea Capture with Local Persistence:
 To maintain creative flow while authors research or code, we engineered the **`+ New Idea`** modal:
 1. **Quick-Entry Modal:** Enables technical writers to record working titles, assign categories, tag relevant technologies, and write briefing notes.
 2. **Optimistic In-Memory Merging:** Saving an idea writes it instantly to browser `localStorage` and optimistically merges it with the in-memory `public.json` array, updating the *Idea* Kanban column and top-level KPIs in zero milliseconds.
 3. **Atomic Git Export (`YAML`):** The top navbar includes a dedicated **`YAML (N)`** button that formats all local ideas into valid YAML ready to commit directly into `data/editorial/backlog.yaml`. This bridges the web interface into Git without manual data entry.
+
+---
+
+{{< app-ref slug="pulse" >}}
 
 ---
 

@@ -2,6 +2,11 @@
 title: "Google Analytics 4 y Search Console Automatizados: Cómo Medir el ROI Orgánico de Cada Post, App y Kit"
 date: 2026-12-09
 draft: false
+cover:
+  image: "cover.png"
+  alt: "Google Analytics 4 y Search Console Automatizados"
+  caption: "Datalaria Pulse (4/5) — Telemetría Orgánica y Salud & ROI"
+  relative: true
 image: "cover.png"
 category: "IA, Ingeniería y Proyectos"
 categories: ["Content Ops", "Analítica Web", "SEO", "Automatización", "Ingeniería de Software", "IA, Ingeniería y Proyectos"]
@@ -18,6 +23,18 @@ Por un lado, los desarrolladores y creadores técnicos escriben artículos en Ma
 El resultado es la ausencia sistemática de retroalimentación cuantitativa. ¿Qué artículos atraen visitas cualificadas pero carecen de una llamada a la acción para monetizar? ¿Qué tutoriales superan los 180 días de antigüedad y sufren una pérdida paulatina de tracción (*content decay*)? ¿Qué piezas cuentan con una optimización SEO sobresaliente pero necesitan enlaces internos para despegar?
 
 En este cuarto artículo de la serie **Datalaria Pulse** abordamos la capa analítica de la filosofía *Content Ops as Code*: cómo conectamos las APIs oficiales de **GA4 Data API** y **Search Console v1** mediante una *Service Account* en Python, cómo resolvemos el compromiso entre transparencia analítica y secreto comercial mediante el **Principio de Relativización Matemática**, y cómo estructuramos un panel de **Salud & ROI** que calcula el patrimonio editorial y prioriza las acciones de mantenimiento de catálogo.
+
+
+---
+
+### 🗺️ Hoja de Ruta de la Serie Datalaria Pulse
+Para entender cómo encaja cada pieza del rompecabezas de *Content Ops as Code*, esta serie se compone de 5 entregas estructuradas:
+
+1. ⚪ **Parte 1**: [Adiós Notion: Datalaria Pulse o la Gestión Editorial que se Escribe Sola desde Git](/es/posts/pulse-parte1-adios-notion-content-ops/).
+2. ⚪ **Parte 2**: [Del Front Matter al Índice: Pydantic v2, Paridad Bilingüe y Automatización con CI/CD](/es/posts/pulse-parte2-indexador-pydantic-paridad-ci/).
+3. ⚪ **Parte 3**: [Tabla Ejecutiva, Tablero Kanban y Calendario Mensual en React 19 sobre un Índice Estático](/es/posts/pulse-parte3-tablero-react-tabla-kanban-calendario/).
+4. 🟢 **Parte 4 (Este artículo)**: Google Analytics 4 y Search Console Automatizados: Cómo Medir el ROI Orgánico de Cada Post, App y Kit.
+5. ⚪ **Parte 5**: [Gestión Editorial para Equipos de Documentación, SEO y Marketing: de Notion a Excel en 5 minutos y Fábrica con IA](/es/posts/pulse-parte5-kit-excel-migracion-notion-equipos/).
 
 ---
 
@@ -44,7 +61,7 @@ Esta entrega se enmarca en la recta final de la **Fase 5 de Datalaria**, cuyo ob
 
 La automatización analítica de Datalaria Pulse no es una pieza aislada: responde a los mismos principios de ingeniería cuantitativa y toma de decisiones basados en datos que articulan el resto de metodologías del portal:
 
-```mermaid
+{{< mermaid >}}
 flowchart TD
     subgraph GOOGLE ["1. Telemetría Externa (Google Cloud)"]
         GA4["Google Analytics 4\n(Data API v1beta)"]
@@ -68,7 +85,7 @@ flowchart TD
     SYNC --> PRIV
     PRIV --> PUB --> DATA --> APP
     PRIV --> XLS
-```
+{{< /mermaid >}}
 
 ### Relaciones Clave con otros Frameworks del Portal:
 - **[Ingeniería S&OP e Higiene de Datos](/es/posts/sop_ingenieria-higiene-datos/):** Así como en las operaciones de cadena de suministro el inventario obsoleto inmoviliza capital de trabajo, en una biblioteca técnica los artículos desactualizados deterioran la reputación del dominio y el posicionamiento de marca. La monitorización de caducidad documental aplica el concepto de *rotación de inventario* a los activos de contenido.
@@ -211,9 +228,11 @@ Para un catálogo consolidado como el de Datalaria, con más de **214.800 palabr
 
 La integración de **GA4 Data API** y **Search Console** en un pipeline de *Content Ops as Code* cierra el círculo de la ingeniería editorial. Los contenidos ya no son textos inertes almacenados en carpetas olvidadas: son activos de software auditados, correlacionados con telemetría en tiempo real y gestionados con disciplina cuantitativa.
 
+{{< app-ref slug="pulse" >}}
+
 ### Recursos Disponibles y Demostración Interactiva:
 - **Prueba el Cockpit de Datalaria Pulse:** Explora en vivo la pestaña **Salud & ROI**, filtra por cuadrantes de oportunidad y examina el índice relativo Base 100 de cada activo en **[/apps/pulse/](/apps/pulse/)**.
-- **Descarga Datalaria Pulse Kit:** Si gestionas un blog corporativo o equipo editorial y deseas la **Plantilla Maestra Excel 2016/365 con el importador automático de Notion, conector Power Query M y scripts de sincronización**, accede a la suite comercial en **[/es/recursos/](/es/recursos/)**.
+- **Descarga Datalaria Pulse Kit:** Si gestionas un blog corporativo o equipo editorial y deseas la **Plantilla Maestra Excel 2016/365 con el importador automático de Notion, conector Power Query M y scripts de sincronización**, accede a la suite comercial en **[Datalaria Pulse Kit en Recursos](/es/recursos/#pack-pulse)**.
 
 ### Próxima Entrega de la Serie (Artículo 5 - Cierre):
 En el quinto y último artículo de la serie abordaremos el traspaso operativo para equipos reales:

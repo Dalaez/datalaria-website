@@ -2,6 +2,11 @@
 title: "Goodbye Notion: Datalaria Pulse and Editorial Management Written Directly from Git"
 date: 2026-11-18
 draft: false
+cover:
+  image: "cover.png"
+  alt: "Datalaria Pulse: Content Ops as Code"
+  caption: "Datalaria Pulse (1/5) — Goodbye Notion: Editorial Governance from Git"
+  relative: true
 image: "cover.png"
 category: "AI, Engineering & Projects"
 categories: ["Content Ops", "Software Engineering", "Automation", "AI, Engineering & Projects"]
@@ -16,6 +21,18 @@ For years, engineering teams and technical authors publishing on static architec
 On paper, the workflow looked pristine. You build a relational database in **Notion** or a base in **Airtable**, design a chromatic Kanban board (*Idea*, *Draft*, *In Review*, *Scheduled*, *Published*), set up calendar views, and configure custom fields for word counts, SEO tags, and bilingual cross-references.
 
 Yet, as the blog scales past 50 or 100 technical articles, the **double-entry failure mode** strikes with mathematical certainty: the ground truth in the Git repository and the fictional state of the external database inevitably diverge.
+
+
+---
+
+### 🗺️ Datalaria Pulse Series Roadmap
+To understand how each piece of the *Content Ops as Code* architecture fits together, this series consists of 5 structured installments:
+
+1. 🟢 **Part 1 (This article)**: Goodbye Notion: Datalaria Pulse and Editorial Governance that Writes Itself from Git.
+2. ⚪ **Part 2**: [From Front Matter to Index: Pydantic v2, Bilingual Parity, and CI/CD Automation](/en/posts/pulse-part2-pydantic-indexer-bilingual-parity-ci/).
+3. ⚪ **Part 3**: [Executive Table, Kanban Board, and Monthly Calendar in React 19 over a Static Index](/en/posts/pulse-part3-react-dashboard-table-kanban-calendar/).
+4. ⚪ **Part 4**: [Automated Google Analytics 4 and Search Console: Measuring the Organic ROI of Every Post, App, and Kit](/en/posts/pulse-part4-ga4-search-console-automated/).
+5. ⚪ **Part 5**: [Editorial Operations for Docs, SEO, and Marketing Teams: From Notion to Excel in 5 Minutes and AI Agent Factory](/en/posts/pulse-part5-excel-kit-notion-migration-teams/).
 
 ---
 

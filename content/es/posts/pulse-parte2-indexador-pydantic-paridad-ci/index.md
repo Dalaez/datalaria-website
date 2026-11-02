@@ -2,6 +2,11 @@
 title: "Del Front Matter al Índice: Pydantic v2, Paridad Bilingüe ES/EN y Automatización con GitHub Actions"
 date: 2026-11-25
 draft: false
+cover:
+  image: "cover.png"
+  alt: "Indexador Pydantic v2 y Paridad Bilingüe"
+  caption: "Datalaria Pulse (2/5) — Del Front Matter al Índice con Pydantic v2"
+  relative: true
 image: "cover.png"
 category: "IA, Ingeniería y Proyectos"
 categories: ["Content Ops", "Ingeniería de Software", "Automatización", "IA, Ingeniería y Proyectos"]
@@ -18,6 +23,18 @@ Sin embargo, adoptar Git como Fuente Única de Verdad (*Single Source of Truth* 
 Un error tipográfico en una clave (`category` en lugar de `categories`), una fecha escrita como texto plano con formato inconsistente (`"25-11-2026"` en vez del estándar ISO `2026-11-25`), o un tag introducido como string en lugar de lista generan roturas silenciosas en generadores estáticos como Hugo, Astro o Next.js. Peor aún: cuando se publica un blog técnico bilingüe en español e inglés, comprobar manualmente que cada traducción conserva su correspondencia exacta, sus enlaces canónicos y su frescura técnica se convierte en un laberinto inmanejable.
 
 En este artículo desglosamos la ingeniería interna de **Datalaria Pulse**: cómo modelamos nuestros contratos de datos con **Pydantic v2**, cómo resolvemos la paridad lingüística mediante un grafo determinista y cómo integramos la validación en **GitHub Actions** bajo una regla inquebrantable: si hay un solo dato inconsistente, el pipeline falla en modo cerrado (*Fail-Closed*).
+
+
+---
+
+### 🗺️ Hoja de Ruta de la Serie Datalaria Pulse
+Para entender cómo encaja cada pieza del rompecabezas de *Content Ops as Code*, esta serie se compone de 5 entregas estructuradas:
+
+1. ⚪ **Parte 1**: [Adiós Notion: Datalaria Pulse o la Gestión Editorial que se Escribe Sola desde Git](/es/posts/pulse-parte1-adios-notion-content-ops/).
+2. 🟢 **Parte 2 (Este artículo)**: Del Front Matter al Índice: Pydantic v2, Paridad Bilingüe y Automatización con CI/CD.
+3. ⚪ **Parte 3**: [Tabla Ejecutiva, Tablero Kanban y Calendario Mensual en React 19 sobre un Índice Estático](/es/posts/pulse-parte3-tablero-react-tabla-kanban-calendario/).
+4. ⚪ **Parte 4**: [Google Analytics 4 y Search Console Automatizados: Cómo Medir el ROI Orgánico de Cada Post, App y Kit](/es/posts/pulse-parte4-ga4-search-console-automatico/).
+5. ⚪ **Parte 5**: [Gestión Editorial para Equipos de Documentación, SEO y Marketing: de Notion a Excel en 5 minutos y Fábrica con IA](/es/posts/pulse-parte5-kit-excel-migracion-notion-equipos/).
 
 ---
 
@@ -43,7 +60,7 @@ El objetivo neurálgico de la **Fase 5 de Datalaria** consiste en reemplazar la 
 
 Datalaria Pulse aplica a la estrategia de contenidos los mismos principios de rigor matemático, contratos de interfaz y gobernanza formal desarrollados en nuestras herramientas anteriores:
 
-```mermaid
+{{< mermaid >}}
 flowchart TD
     subgraph SDD ["Spec-Driven Development (Gobernanza)"]
         SPEC["specs/apps/pulse/spec.md\nInvariantes INV-PULSE-1..5"]
@@ -63,7 +80,7 @@ flowchart TD
     SPEC --> PYD
     PYD --> SCAN
     SCAN --> ECOSYSTEM
-```
+{{< /mermaid >}}
 
 1. **La Filosofía de Contratos de [LifeOps](/es/apps/lifeops/):** En el backend de LifeOps demostramos que la persistencia en base de datos debe estar protegida por validaciones estrictas en servidor para evitar estados corrompidos. Pulse traslada este principio al sistema de ficheros: el Markdown es el backend, y Pydantic actúa como la capa de abstracción de datos.
 2. **Evaluación Objetiva en la [Suite de Toma de Decisiones](/es/posts/toma-decisiones-priorizacion-framework-cuantitativo/):** En lugar de evaluar la calidad de un post por apreciaciones subjetivas, Pulse implementa un algoritmo cuantitativo de scoring SEO (0 a 100) que audita parámetros objetivos: longitud óptima de título, presencia de descripción, recuento léxico superior al umbral y paridad idiomática completa.
@@ -84,6 +101,11 @@ date: "2026/11/25"           # Formato no ISO: Hugo puede interpretar texto en l
 category: "Ingenieria"       # Singular en vez de plural: rompe el filtro de categorías
 tags: "python, pydantic"     # String en vez de lista: rompe el renderizado de etiquetas
 draft: False                 # Mayúscula no estándar en YAML: comportamiento impredecible
+cover:
+  image: "cover.png"
+  alt: "Indexador Pydantic v2 y Paridad Bilingüe"
+  caption: "Datalaria Pulse (2/5) — Del Front Matter al Índice con Pydantic v2"
+  relative: true
 image: "cover.png"           # ¿Existe realmente el archivo cover.png en la carpeta?
 ---
 ```
@@ -169,7 +191,7 @@ Mantener paridad completa en un blog con decenas de artículos técnicos requier
 
 El motor de escaneo `ops/pulse/build_index.py` resuelve este emparejamiento siguiendo un algoritmo de tres fases:
 
-```mermaid
+{{< mermaid >}}
 flowchart LR
     subgraph ES ["1. Escaneo ES (/content/es/)"]
         P_ES["Post ES\ntranslationKey: pulse-part2\ndate: 2026-11-25"]
@@ -189,7 +211,7 @@ flowchart LR
     P_EN --> MATCH
     MATCH -- SÍ --> STATUS_OK
     MATCH -- NO --> STATUS_ERR
-```
+{{< /mermaid >}}
 
 ### Reglas de Clasificación de Paridad:
 - **`complete`:** Ambos archivos existen, comparten `translationKey`, poseen título y descripción en sus respectivos idiomas, y su fecha de modificación tiene un desfase inferior a 15 días.
@@ -263,6 +285,10 @@ jobs:
 1. **Detección Previa a Producción:** Si un autor olvida rellenar un campo obligatorio en el front matter, Pydantic emite un error de validación `ValidationError` con la ruta exacta del archivo y el campo infractor, abortando el commit.
 2. **Validación de Enlaces Cruzados:** Si un post referencia una App que no existe en `data/apps/` o viceversa, Hugo detiene el proceso con código de salida no cero gracias al principio de invarianza de nuestra plantilla.
 3. **Generación Determinista de `public.json`:** La web de Datalaria Pulse siempre consume un índice fresco y verificado generado automáticamente en el propio proceso de build, eliminando cualquier intervención manual en bases de datos externas.
+
+---
+
+{{< app-ref slug="pulse" >}}
 
 ---
 

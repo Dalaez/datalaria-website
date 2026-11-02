@@ -149,3 +149,7 @@ posts:
       es: pulse-parte4-ga4-search-console-automatico
       en: pulse-part4-ga4-search-console-automated
     part: 4
+  - slug:
+      es: pulse-parte5-kit-excel-migracion-notion-equipos
+      en: pulse-part5-excel-kit-notion-migration-teams
+    part: 5

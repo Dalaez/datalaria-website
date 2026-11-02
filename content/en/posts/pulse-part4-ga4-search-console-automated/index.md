@@ -2,6 +2,11 @@
 title: "Automated GA4 and Search Console: Measuring Organic ROI, Content Equity, and Freshness for Every Post, App, and Kit"
 date: 2026-12-09
 draft: false
+cover:
+  image: "cover.png"
+  alt: "Automated Google Analytics 4 and Search Console"
+  caption: "Datalaria Pulse (4/5) — Organic Telemetry and Health & ROI"
+  relative: true
 image: "cover.png"
 category: "AI, Engineering & Projects"
 categories: ["Content Ops", "Web Analytics", "SEO", "Automation", "Software Engineering", "AI, Engineering & Projects"]
@@ -18,6 +23,18 @@ On one side, engineers and technical writers craft documentation in Markdown, ve
 The inevitable consequence is a total absence of quantitative feedback. Which technical guides attract qualified executive audiences yet lack a conversion trigger? Which architectural tutorials are older than 180 days and suffering from progressive decay in search relevance? Which deeply researched posts achieve outstanding SEO hygiene but remain buried due to insufficient internal link architecture?
 
 In this fourth installment of the **Datalaria Pulse** series, we tackle the analytical dimension of the *Content Ops as Code* paradigm: how we connect to the official **GA4 Data API** and **Google Search Console v1** via a headless **Google Cloud Service Account** in Python, how we resolve the tension between analytical transparency and commercial secrecy through the **Principio of Mathematical Relativization**, and how we project a **Health & Content ROI** cockpit that values technical assets and prioritizes maintenance workflows.
+
+
+---
+
+### 🗺️ Datalaria Pulse Series Roadmap
+To understand how each piece of the *Content Ops as Code* architecture fits together, this series consists of 5 structured installments:
+
+1. ⚪ **Part 1**: [Goodbye Notion: Datalaria Pulse and Editorial Governance that Writes Itself from Git](/en/posts/pulse-part1-goodbye-notion-content-ops/).
+2. ⚪ **Part 2**: [From Front Matter to Index: Pydantic v2, Bilingual Parity, and CI/CD Automation](/en/posts/pulse-part2-pydantic-indexer-bilingual-parity-ci/).
+3. ⚪ **Part 3**: [Executive Table, Kanban Board, and Monthly Calendar in React 19 over a Static Index](/en/posts/pulse-part3-react-dashboard-table-kanban-calendar/).
+4. 🟢 **Part 4 (This article)**: Automated Google Analytics 4 and Search Console: Measuring the Organic ROI of Every Post, App, and Kit.
+5. ⚪ **Part 5**: [Editorial Operations for Docs, SEO, and Marketing Teams: From Notion to Excel in 5 Minutes and AI Agent Factory](/en/posts/pulse-part5-excel-kit-notion-migration-teams/).
 
 ---
 
@@ -44,7 +61,7 @@ This article forms part of the final stretch of **Datalaria Phase 5**, dedicated
 
 Analytics automation within Datalaria Pulse is not an isolated utility: it builds upon the exact quantitative principles, operational frameworks, and decision-making disciplines established throughout our platform:
 
-```mermaid
+{{< mermaid >}}
 flowchart TD
     subgraph GOOGLE ["1. External Telemetry (Google Cloud)"]
         GA4["Google Analytics 4\n(Data API v1beta)"]
@@ -68,7 +85,7 @@ flowchart TD
     SYNC --> PRIV
     PRIV --> PUB --> DATA --> APP
     PRIV --> XLS
-```
+{{< /mermaid >}}
 
 ### Strategic Connections with Sister Frameworks:
 - **[S&OP Engineering and Data Hygiene](/en/posts/sop_ingenieria-higiene-datos/):** Just as slow-moving physical inventory ties up operational working capital in manufacturing, obsolete technical documentation erodes domain authority and brand credibility. Telemetry-driven freshness monitoring applies *inventory turnover principles* directly to digital content assets.
@@ -211,9 +228,11 @@ For a mature technical publication such as Datalaria—comprising more than **21
 
 Integrating **GA4 Data API** and **Search Console** into a unified *Content Ops as Code* pipeline completes the lifecycle loop. Content is no longer dead text idling inside static markdown directories: it is living software, audited in real-time, validated against strict invariants, and managed with quantitative precision.
 
+{{< app-ref slug="pulse" >}}
+
 ### Explore the Interactive Tools:
 - **Test the Datalaria Pulse Cockpit:** Explore the live **Health & ROI** tab, filter across the 4 opportunity quadrants, and review the median-centered Base 100 Index for every published asset at **[/apps/pulse/](/apps/pulse/)**.
-- **Download the Datalaria Pulse Kit:** If you lead an engineering documentation or content operations team and want the **complete Excel 2016/365 master spreadsheet, automated Notion migration scripts, Power Query M connectors, and CI/CD pipelines**, visit **[/en/resources/](/en/resources/)**.
+- **Download the Datalaria Pulse Kit:** If you lead an engineering documentation or content operations team and want the **complete Excel 2016/365 master spreadsheet, automated Notion migration scripts, Power Query M connectors, and CI/CD pipelines**, visit **[Datalaria Pulse Kit in Resources](/en/resources/#pack-pulse)**.
 
 ### What Comes Next in the Final Installment (Article 5):
 In our concluding post of this series, we walk through practical team adoption:
