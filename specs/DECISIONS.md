@@ -251,3 +251,26 @@
   - Cero roturas de URLs ni pérdida de posicionamiento orgánico en Google.
   - Mayor conversión hacia productos de Lemon Squeezy gracias a la pestaña dedicada `Estrategia & Operaciones`.
   - Presentación equilibrada y profesional en el portal sin saturación de artículos.
+
+
+## ADR-017: Nuevo Producto "Datalaria Helix" (Kit SDD con Escuadrón de 12 Agentes) para Profesionales No Desarrolladores
+- **Fecha:** 2026-11-01
+- **Estado:** Aceptado (Estrategia y Plan) — la especificación técnica se formalizará en el Hito 6.1 (`specs/apps/helix/spec.md`).
+- **Contexto:**
+  1. El catálogo `data/pulse/kits.yaml` y `/recursos/` (`recursos_catalog.html`) contenían una tarjeta `pack-sdd` / `suite-sdd` en estado `coming` (8 € / 29 €) basada únicamente en plantillas Markdown y con un botón `Avisarme` implementado como enlace `mailto:contacto@datalaria.com` sin telemetría GA4 ni formulario web (lo que provocaba abandono casi total en usuarios de correo en navegador y cero registros recibidos). Además, en noviembre de 2026 existen alternativas gratuitas (GitHub spec-kit, BMAD Method, IDEs spec-driven), por lo que las plantillas aisladas a 8 € carecen de valor comercial diferencial.
+  2. Datalaria dispone de un sistema SDD probado en producción (`AGENTS.md`, Constitución, ROADMAP, ADRs, specs, gates y rollback) que gobierna el portal y sus apps, y del patrón Dual-Mode validado en Datalaria Pulse (Sandbox → Kit ZIP → Pro Supabase).
+  3. El boom de las aplicaciones personales construidas con agentes de IA por profesionales sin formación técnica genera *Vibe Debt*, un dolor no atendido en español.
+- **Decisión:**
+  1. **Producto:** "Datalaria Helix" (*la spec es el ADN de tu app*), dirigido prioritariamente a **profesionales no desarrolladores**, agnóstico de la herramienta (Antigravity, Claude Code, Cursor, Codex) mediante núcleo Markdown + `AGENTS.md` y adaptadores generados.
+  2. **Escuadrón de 12 roles en 4 células:** Dirección (Orquestador/Delivery Lead, Product Analyst, Arquitecto), Diseño y Construcción (UX/UI, Frontend, Backend y Datos, APIs e Integraciones, Media/Contenido/i18n, Monetización y Analítica), Garantía (Seguridad y Privacidad, QA Verifier con veto) y Entrega (Release y DevOps).
+     - El **Orquestador** realiza un triaje determinista (tallas XS–XL + disparadores automáticos de Seguridad, UX/UI, Media y QA) para activar solo los roles necesarios (media objetivo 2–4 por tarea) y es el único interlocutor del usuario. Se descarta el nombre "Scrum Master" porque en Scrum ese rol facilita y no asigna trabajo.
+     - El **Diseñador UX/UI** es dueño de `design.md` (dirección de diseño por preset, design tokens, flujos, estados, WCAG 2.2 AA) y de la revisión visual previa al gate de QA.
+     - Principio rector: **nadie verifica su propio trabajo**.
+  3. **Sandbox gratuito A+B:** Spec Builder determinista en navegador + exportador de prompt (sin API key, coste cero). BYOK Gemini (opción C) aplazado a v1.1.
+  4. **Oferta de partida:** Starter (~9 €) y Kit Core (39–49 €, 29 € en lanzamiento) en Lemon Squeezy. **El modelo Pro (suscripción / lifetime) queda pendiente** hasta medir tracción (Hito 6.9: ≥300 emails, ≥50 ventas Core, ≥30 % de demanda de actualizaciones/dashboard).
+  5. **Integración de la tarjeta previa en `/recursos/` y Waitlist Brevo:** Se transforma *in-place* la ficha `pack-sdd` / `suite-sdd` en **Datalaria Helix** (eliminando el ancla de 8 €, activando el enlace al artículo técnico desde el 4 de noviembre y reemplazando los 3 enlaces `mailto:` por un formulario/modal web conectado a 2 nuevas listas de Brevo ES/EN vía `/.netlify/functions/subscribe` + evento GA4 `join_waitlist_helix`).
+  6. **Calendario y Secuencia:** post `sdd_vs_vibe_coding` el 2026-11-04; ejecución del Hito 6.0 el día 2026-11-04; post `agentes_ia_operativa_sdd` adelantado en exclusiva al 2026-11-11 (desplazando el otro post de esa fecha) con apertura oficial de lista de espera; cierre del Hito 5.8 (Pulse) en cuanto todos sus activos estén redactados, programados y publicados en Lemon Squeezy (sin esperar a la fecha del último post); dogfooding del escuadrón en Datalaria (Hito 6.2, ADR-018 futuro) y lanzamiento objetivo ~2027-01-19.
+- **Alternativas descartadas:** vender solo plantillas (commodity); escuadrón de 10 roles sin Orquestador (sobrecarga en tareas pequeñas); BYOK obligatorio desde el día 1 (fricción para no devs); intercambiar el orden de lanzamiento Pulse/Helix (Pulse ya está escrito y programado).
+- **Consecuencias:**
+  - Nueva FASE 6 en `ROADMAP.md` (Hitos 6.0–6.9).
+  - La adopción interna del escuadrón (Constitución v1.1.0, Art. 9) será aditiva, con carga de roles bajo demanda y sin cambios retroactivos en specs existentes; se registrará en ADR-018 al ejecutar el Hito 6.2.

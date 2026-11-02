@@ -444,7 +444,7 @@ Detalles ℹ️
 <button type="button" class="btn-kit-info" onclick="openModal('pack-dar')">
 Detalles ℹ️
 </button>
-<span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
+<a href="/es/posts/matriz-dar-cuantitativa/" class="btn-kit-info" title="Leer artículo técnico">Artículo técnico 📖</a>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/17db9367-dd18-4bb6-8f47-722d738c43c3" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
@@ -917,7 +917,7 @@ Detalles ℹ️
             <button type="button" class="btn-kit-info" onclick="openModal('pack-dar')">
               Detalles ℹ️
             </button>
-            <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Guía metodológica próximamente en el blog">Guía ⏳</span>
+            <a href="/es/posts/matriz-dar-cuantitativa/" class="btn-kit-info" title="Leer artículo técnico">Artículo técnico 📖</a>
             <a href="https://datalaria.lemonsqueezy.com/checkout/buy/17db9367-dd18-4bb6-8f47-722d738c43c3" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
           </div>
         </div>
@@ -1471,7 +1471,7 @@ Detalles ℹ️
         "Guía metodológica de gobernanza de decisiones corporativas"
       ],
       checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/17db9367-dd18-4bb6-8f47-722d738c43c3",
-      guideUrl: null
+      guideUrl: "/es/posts/matriz-dar-cuantitativa/"
     },
 
     // 7. Matriz RICE & ICE (DISPONIBLE)

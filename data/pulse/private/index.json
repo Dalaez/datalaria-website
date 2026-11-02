@@ -5953,7 +5953,7 @@
     "id": "matriz-dar-cuantitativa",
     "slug": "matriz-dar-cuantitativa",
     "asset_type": "post",
-    "status": "scheduled",
+    "status": "published",
     "visibility": "public",
     "title_es": "Matriz DAR Cuantitativa: Criterios Veto, Ponderación Multicriterio y Análisis de Decisiones C-Level",
     "title_en": "Quantitative DAR Matrix: Decision Analysis & Resolution, Veto Criteria & C-Suite Multi-Criteria Scoring",
@@ -5984,9 +5984,9 @@
       "C-Level"
     ],
     "series": null,
-    "word_count_es": 2917,
-    "word_count_en": 2602,
-    "reading_time_min": 15,
+    "word_count_es": 4244,
+    "word_count_en": 3748,
+    "reading_time_min": 22,
     "related_app": null,
     "related_kit": "datalaria.lemonsqueezy.com/checkout/buy/17db9367-dd18-4bb6-8f47-722d738c43c3",
     "included_kits": [],
@@ -5995,16 +5995,15 @@
     "checkout_url": null,
     "deliverables": [],
     "seo_audit": {
-      "score_0_100": 40,
+      "score_0_100": 60,
       "title_ok": false,
       "description_ok": false,
       "parity_ok": true,
       "taxonomy_ok": true,
-      "internal_links_ok": false,
+      "internal_links_ok": true,
       "issues": [
         "Longitud de título no óptima (99 caracteres; ideal: 35-95)",
-        "Meta descripción no óptima (266 caracteres; ideal: 75-250)",
-        "Sin enlaces internos hacia el portal o shortcodes de apps"
+        "Meta descripción no óptima (266 caracteres; ideal: 75-250)"
       ]
     },
     "freshness_status": "fresh",

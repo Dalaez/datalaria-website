@@ -1398,6 +1398,14 @@ def generate_workbook(lang='ES', out_path=None):
     build_tab1_dashboard(wb, ws_dashboard, lang=lang)
     build_tab4_sensitivity(wb, ws_sensitivity, lang=lang)
 
+    # Configurar orientación horizontal y ajuste a 1 página de ancho
+    for ws_each in wb.worksheets:
+        ws_each.page_setup.orientation = ws_each.ORIENTATION_LANDSCAPE
+        ws_each.page_setup.paperSize = ws_each.PAPERSIZE_A4
+        ws_each.page_setup.fitToWidth = 1
+        ws_each.page_setup.fitToHeight = 1
+        ws_each.sheet_properties.pageSetUpPr.fitToPage = True
+
     wb.save(out_path)
     print(f"[OK] Generado exitosamente: {out_path}")
     return out_path

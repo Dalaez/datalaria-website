@@ -1,0 +1,1864 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datalaria - Dashboard Climático</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://datalaria.com/apps/weather/">
+    <meta property="og:title" content="Dashboard Climático Global | Datalaria">
+    <meta property="og:description"
+        content="Explora datos meteorológicos de ciudades de todo el mundo con gráficos interactivos, mapa y predicciones de IA. Gratis y en tiempo real.">
+    <meta property="og:image" content="https://datalaria.com/apps/weather/cover.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:locale:alternate" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@datalaria">
+    <meta name="twitter:title" content="Dashboard Climático Global | Datalaria">
+    <meta name="twitter:description"
+        content="Explora datos meteorológicos de ciudades de todo el mundo con gráficos interactivos, mapa y predicciones de IA.">
+    <meta name="twitter:image" content="https://datalaria.com/apps/weather/cover.png">
+
+    <!-- General Meta -->
+    <meta name="description"
+        content="Dashboard climático interactivo con datos de más de 100 ciudades. Gráficos históricos, predicciones de IA y mapa en tiempo real.">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/2.30.0/date-fns.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/2.30.0/locale/es/index.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/2.30.0/locale/en-US/index.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/styles/choices.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/scripts/choices.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+        body,
+        #controls-container,
+        #chart-container,
+        .kpi-card,
+        .selector-group label,
+        .time-btn {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #d6e0ea 100%);
+            color: #2c3e50;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* --- MODIFICADO: Estilos H1 para el nuevo header --- */
+        h1 {
+            color: #1a2533;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+            margin: 0;
+            font-size: 1.8em;
+            /* Quitado text-align: center para que se alinee con el logo */
+        }
+
+        h2 {
+            color: #34495e;
+            border-bottom: 2px solid #bdc3c7;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+
+        #map-container {
+            width: 100%;
+            height: 450px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            z-index: 5;
+            background: #fff;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        #controls-container,
+        #chart-container,
+        .kpi-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        #controls-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        #city-select-container {
+            min-width: 300px;
+            max-width: 400px;
+        }
+
+        .choices__inner {
+            border-radius: 8px;
+        }
+
+        fieldset {
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        fieldset legend {
+            font-weight: bold;
+            padding: 0;
+            margin-bottom: 8px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .selector-group {
+            display: flex;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .selector-group input {
+            opacity: 0;
+            position: fixed;
+            width: 0;
+        }
+
+        .selector-group label,
+        .time-btn {
+            background-color: #fff;
+            border: none;
+            padding: 8px 14px;
+            cursor: pointer;
+            color: #555;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            border-right: 1px solid #eee;
+        }
+
+        .selector-group label:last-of-type,
+        .time-btn:last-of-type {
+            border-right: none;
+        }
+
+        .selector-group input:not(:checked)+label:hover,
+        .time-btn:not(.active):hover {
+            background-color: #f4f4f4;
+            color: #000;
+        }
+
+        .selector-group input:checked+label,
+        .time-btn.active {
+            color: white;
+            background-image: linear-gradient(to right, #4363d8, #6a82e0);
+            box-shadow: 0 2px 8px rgba(67, 99, 216, 0.3);
+            transform: scale(1.05);
+        }
+
+        #kpi-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .kpi-card {
+            padding: 20px;
+            border-left: 6px solid;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+
+        .kpi-card h3 {
+            margin: 0 0 12px 0;
+            color: #2c3e50;
+            font-size: 1.25em;
+        }
+
+        .kpi-card p {
+            margin: 8px 0;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+        }
+
+        .kpi-card .kpi-main {
+            font-weight: 700;
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .kpi-card .kpi-main span {
+            font-size: 0.7em;
+            font-weight: 400;
+            color: #555;
+        }
+
+        .kpi-hist {
+            font-size: 0.9em;
+            color: #555;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        .kpi-hist-item {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .kpi-hist-item .date {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            padding-left: 5px;
+        }
+
+        #chart-container {
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            min-height: 500px;
+            position: relative;
+        }
+
+        #chart-container-variation {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        #custom-range-container {
+            display: none;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .custom-range-inputs {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #fff;
+            padding: 8px 14px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .custom-range-inputs label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .custom-range-inputs input[type="date"] {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+        }
+
+        .leaflet-popup-content-wrapper {
+            border-radius: 8px;
+        }
+
+        .leaflet-popup-content {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .popup-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+        }
+
+        .popup-temp {
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+
+        .kpi-icon,
+        .kpi-icon-main {
+            width: 1em;
+            height: 1em;
+            margin-right: 8px;
+            vertical-align: -0.125em;
+            stroke-width: 2.5;
+            color: #555;
+        }
+
+        .kpi-icon-main {
+            width: 1.2em;
+            height: 1.2em;
+            margin-right: 10px;
+            color: #333;
+        }
+
+        .sparkline-container {
+            width: 100%;
+            height: 50px;
+            margin: 15px 0 10px 0;
+        }
+
+        #loading-spinner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(4px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #4363d8;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* --- MODIFICADO: Contenedor de settings movido al header --- */
+        #settings-toggles {
+            display: flex;
+            gap: 10px;
+            /* Ya no necesita position: absolute */
+        }
+
+        #dark-mode-toggle,
+        #language-toggle {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            color: #555;
+        }
+
+        #dark-mode-toggle:hover,
+        #language-toggle:hover {
+            background: #f4f4f4;
+            transform: scale(1.1);
+        }
+
+        #dark-mode-toggle i {
+            color: #555;
+            transition: color 0.3s ease;
+        }
+
+        /* --- NUEVO: Estilos del Header --- */
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            /* Para centrado absoluto del título */
+            flex-wrap: wrap;
+            /* Para móviles */
+            gap: 15px;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #bdc3c7;
+        }
+
+        .header-logo-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            /* Centrado absoluto */
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .header-logo {
+            height: 50px;
+            /* Ajusta la altura del logo */
+            width: auto;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-left: auto;
+            /* Empuja a la derecha */
+        }
+
+        .header-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: #4363d8;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            /* Evita que el texto se parta */
+        }
+
+        .header-link:hover {
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Media query para centrar en pantallas pequeñas */
+        @media (max-width: 768px) {
+            .main-header {
+                justify-content: center;
+                /* Centra todo en móvil */
+            }
+
+            .header-logo-title {
+                position: static;
+                /* Quita el centrado absoluto */
+                transform: none;
+                order: 1;
+                /* El título va primero */
+            }
+
+            .header-right {
+                order: 2;
+                /* Los controles van después */
+                margin-left: 0;
+                /* Quita el empuje a la derecha */
+            }
+        }
+
+
+        body.dark-mode {
+            background: #1a2533;
+            color: #f5f7fa;
+        }
+
+        body.dark-mode h1 {
+            color: #f5f7fa;
+        }
+
+        body.dark-mode h2 {
+            color: #9ab, #ecf0f1;
+            border-bottom-color: #34495e;
+        }
+
+        body.dark-mode #map-container {
+            background: #111;
+            border-color: #34495e;
+        }
+
+        body.dark-mode #controls-container,
+        body.dark-mode #chart-container,
+        body.dark-mode #chart-container-variation,
+        body.dark-mode .kpi-card {
+            background: rgba(44, 62, 80, 0.85);
+            border-color: rgba(93, 109, 126, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode .selector-group label,
+        body.dark-mode .time-btn {
+            background-color: #34495e;
+            color: #bdc3c7;
+            border-right: 1px solid #2c3e50;
+        }
+
+        body.dark-mode .selector-group input:not(:checked)+label:hover,
+        body.dark-mode .time-btn:not(.active):hover {
+            background-color: #4a6582;
+            color: #fff;
+        }
+
+        body.dark-mode .selector-group input:checked+label,
+        body.dark-mode .time-btn.active {
+            background-image: linear-gradient(to right, #4e73e0, #6a82e0);
+            box-shadow: 0 2px 8px rgba(78, 115, 224, 0.3);
+        }
+
+        body.dark-mode .custom-range-inputs {
+            background-color: #34495e;
+            border-right: 1px solid #2c3e50;
+        }
+
+        body.dark-mode .custom-range-inputs label {
+            color: #bdc3c7;
+        }
+
+        body.dark-mode .custom-range-inputs input[type="date"] {
+            background-color: #4a6582;
+            border-color: #5d6d7e;
+            color: #f5f7fa;
+            color-scheme: dark;
+        }
+
+        body.dark-mode .choices__inner {
+            background-color: #34495e;
+            border-color: #5d6d7e;
+            color: #f5f7fa;
+        }
+
+        body.dark-mode .choices__list--dropdown,
+        body.dark-mode .choices__list[aria-expanded] {
+            background-color: #34495e;
+            border-color: #5d6d7e;
+        }
+
+        body.dark-mode .choices__item--choice {
+            color: #f5f7fa;
+        }
+
+        body.dark-mode .choices__item--choice.is-highlighted {
+            background-color: #4a6582;
+        }
+
+        body.dark-mode .kpi-card h3 {
+            color: #ecf0f1;
+        }
+
+        body.dark-mode .kpi-card .kpi-main {
+            color: #f5f7fa;
+        }
+
+        body.dark-mode .kpi-card .kpi-main span {
+            color: #bdc3c7;
+        }
+
+        body.dark-mode .kpi-card p {
+            color: #bdc3c7;
+        }
+
+        body.dark-mode .kpi-icon,
+        body.dark-mode .kpi-icon-main {
+            color: #bdc3c7;
+        }
+
+        body.dark-mode .kpi-hist {
+            color: #bdc3c7;
+            border-top-color: #34495e;
+        }
+
+        body.dark-mode .kpi-hist-item .date {
+            color: #95a5a6;
+        }
+
+        body.dark-mode .leaflet-popup-content-wrapper {
+            background-color: #2c3e50;
+            color: #f5f7fa;
+        }
+
+        body.dark-mode .leaflet-popup-content {
+            color: #f5f7fa;
+        }
+
+        body.dark-mode .leaflet-popup-tip {
+            background-color: #2c3e50;
+        }
+
+        body.dark-mode .popup-title {
+            border-bottom-color: #34495e;
+        }
+
+        body.dark-mode #loading-spinner {
+            background: rgba(26, 37, 51, 0.7);
+        }
+
+        body.dark-mode .spinner {
+            border: 5px solid #34495e;
+            border-top: 5px solid #4e73e0;
+        }
+
+        body.dark-mode #dark-mode-toggle,
+        body.dark-mode #language-toggle {
+            background: #2c3e50;
+            border-color: #34495e;
+            color: #f5f7fa;
+        }
+
+        body.dark-mode #dark-mode-toggle:hover,
+        body.dark-mode #language-toggle:hover {
+            background: #34495e;
+        }
+
+        body.dark-mode #dark-mode-toggle i {
+            color: #f5f7fa;
+        }
+
+        body.dark-mode .main-header {
+            border-bottom-color: #34495e;
+        }
+
+        body.dark-mode .header-link {
+            background: rgba(44, 62, 80, 0.85);
+            color: #4e73e0;
+            border-color: rgba(93, 109, 126, 0.5);
+        }
+
+        body.dark-mode .header-link:hover {
+            background: #34495e;
+            color: #6a82e0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="loading-spinner">
+        <div class="spinner"></div>
+    </div>
+
+    <header class="main-header">
+        <div style="flex-basis: 150px;"></div>
+
+        <div class="header-logo-title">
+            <img src="/apps/weather/datalaria_logo_transp.png" alt="Datalaria Logo" class="header-logo">
+            <h1 data-i18n-key="mainTitle"></h1>
+        </div>
+
+        <div class="header-right">
+            <a id="how-to-link" href="#" class="header-link" target="_blank" rel="noopener noreferrer">
+                <span data-i18n-key="howToLink"></span> <i data-feather="external-link"
+                    style="width:1em; height:1em; vertical-align: -0.1em;"></i>
+            </a>
+            <div id="settings-toggles">
+                <button id="language-toggle" aria-label="Toggle Language"></button>
+                <button id="dark-mode-toggle" aria-label="Toggle Dark Mode">
+                    <i data-feather="moon" id="dark-mode-icon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    <div id="controls-container">
+        <div id="city-select-container">
+            <label for="city-select" style="font-weight: bold; margin-bottom: 5px; display: block;"
+                data-i18n-key="citySelectLabel"></label>
+            <select id="city-select" multiple></select>
+        </div>
+
+        <div id="metric-select">
+            <fieldset>
+                <legend data-i18n-key="metricLegend"></legend>
+                <div class="selector-group">
+                    <input type="radio" name="metric" value="temp" id="m-temp" checked>
+                    <label for="m-temp" data-i18n-key="metricTemp"></label>
+                    <input type="radio" name="metric" value="humidity" id="m-humidity">
+                    <label for="m-humidity" data-i18n-key="metricHum"></label>
+                    <input type="radio" name="metric" value="wind" id="m-wind">
+                    <label for="m-wind" data-i18n-key="metricWind"></label>
+                    <input type="radio" name="metric" value="clouds" id="m-clouds">
+                    <label for="m-clouds" data-i18n-key="metricClouds"></label>
+                    <input type="radio" name="metric" value="rain" id="m-rain">
+                    <label for="m-rain" data-i18n-key="metricRain"></label>
+                </div>
+            </fieldset>
+        </div>
+
+        <div id="time-range-select">
+            <fieldset>
+                <legend data-i18n-key="rangeLegend"></legend>
+                <div class="selector-group">
+                    <button class="time-btn" data-range="7" data-i18n-key="range1S"></button>
+                    <button class="time-btn" data-range="30" data-i18n-key="range1M"></button>
+                    <button class="time-btn" data-range="90" data-i18n-key="range3M"></button>
+                    <button class="time-btn" data-range="365" data-i18n-key="range1A"></button>
+                    <button class="time-btn" data-range="1825" data-i18n-key="range5A"></button>
+                    <button class="time-btn active" data-range="all" data-i18n-key="rangeAll"></button>
+                    <button class="time-btn" data-range="custom" data-i18n-key="rangeCustom"></button>
+                </div>
+            </fieldset>
+        </div>
+
+        <div id="custom-range-container">
+            <fieldset>
+                <legend data-i18n-key="customRangeLegend"></legend>
+                <div class="custom-range-inputs">
+                    <label for="start-date" data-i18n-key="customRangeFrom"></label>
+                    <input type="date" id="start-date">
+                    <label for="end-date" data-i18n-key="customRangeTo"></label>
+                    <input type="date" id="end-date">
+                </div>
+            </fieldset>
+        </div>
+
+        <div id="hour-filter-select">
+            <fieldset>
+                <legend data-i18n-key="hourLegend"></legend>
+                <div class="selector-group">
+                    <input type="radio" name="hour-filter" value="all" id="h-all" checked>
+                    <label for="h-all" data-i18n-key="hourAll"></label>
+                    <input type="radio" name="hour-filter" value="6" id="h-morning">
+                    <label for="h-morning" data-i18n-key="hourMorning"></label>
+                    <input type="radio" name="hour-filter" value="14" id="h-afternoon">
+                    <label for="h-afternoon" data-i18n-key="hourAfternoon"></label>
+                    <input type="radio" name="hour-filter" value="22" id="h-night">
+                    <label for="h-night" data-i18n-key="hourNight"></label>
+                </div>
+            </fieldset>
+        </div>
+
+    </div>
+
+    <h2 data-i18n-key="mapTitle"></h2>
+    <div id="map-container"></div>
+
+    <h2 data-i18n-key="kpiTitle"></h2>
+    <div id="kpi-container"></div>
+
+    <h2 data-i18n-key="historyTitle"></h2>
+    <p style="text-align: center; margin-top: -10px; color: #555;" data-i18n-key="historySubtitle"></p>
+    <div id="chart-container">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <h2 data-i18n-key="variationTitle"></h2>
+    <p style="text-align: center; margin-top: -10px; color: #555;" data-i18n-key="variationSubtitle"></p>
+    <div id="chart-container-variation" style="min-height: 300px; position: relative; margin-top: 20px;">
+        <canvas id="variationChart"></canvas>
+    </div>
+
+    <script>
+        // --- Diccionario de Traducciones (CORREGIDO) ---
+        const translations = {
+            'es': {
+                'mainTitle': 'Datalaria - Dashboard Climático',
+                'howToLink': 'Cómo se hizo', // <-- NUEVO
+                'citySelectLabel': 'Selecciona hasta 5 ciudades:',
+                'metricLegend': 'Métrica',
+                'metricTemp': 'Temperatura',
+                'metricHum': 'Humedad',
+                'metricWind': 'Viento',
+                'metricClouds': 'Nubosidad',
+                'metricRain': 'Lluvia (1h)',
+                'rangeLegend': 'Rango',
+                'range1S': '1S',
+                'range1M': '1M',
+                'range3M': '3M',
+                'range1A': '1A',
+                'range5A': '5A',
+                'rangeAll': 'Todo',
+                'rangeCustom': 'Personalizado',
+                'customRangeLegend': 'Rango Personalizado',
+                'customRangeFrom': 'Desde:',
+                'customRangeTo': 'Hasta:',
+                'hourLegend': 'Hora del Día',
+                'hourAll': 'Todas',
+                'hourMorning': 'Mañana (06h)',
+                'hourAfternoon': 'Tarde (14h)',
+                'hourNight': 'Noche (22h)',
+                'mapTitle': 'Mapa Interactivo',
+                'kpiTitle': 'Datos más recientes',
+                'historyTitle': 'Evolución Histórica',
+                'historySubtitle': '(Todas las horas se muestran en tu zona horaria local)',
+                'variationTitle': 'Variación Diaria',
+                'variationSubtitle': '(Rango entre la temperatura Máx. y Mín. de cada día)',
+                'kpiNoData': 'No hay datos recientes.',
+                'kpiEmpty': 'Selecciona una o más ciudades para ver los datos.',
+                'kpiFeels': 'Sensación',
+                'kpiHumidity': 'Humedad',
+                'kpiWind': 'Viento',
+                'kpiClouds': 'Nubosidad',
+                'kpiVisibility': 'Visibilidad',
+                'kpiRain': 'Lluvia (1h)',
+                'kpiSnow': 'Nieve (1h)',
+                'kpiHist': 'Histórico',
+                'kpiMax': 'Max',
+                'kpiMin': 'Min',
+                'forecastTitle': 'Pronóstico OWM (Max/Min)',
+                'iaTitle': 'Predicción IA (Mañana)',
+                'iaNoData': 'Datos insuf.',
+                'iaVsOWM': 'OWM',
+                'kpiMedia': 'Media',
+                'chartDateHour': 'Fecha y Hora',
+                'chartDate': 'Fecha',
+                'chartVariation': 'Variación',
+                'chartEmpty': 'No hay datos disponibles para la selección actual.',
+                'varChartEmpty': 'No hay suficientes datos para calcular la variación diaria.',
+                'fatalError': 'Error fatal: No se pudo cargar la lista de ciudades',
+                'choicesPlaceholder': 'Escribe para buscar...',
+            },
+            'en': {
+                'mainTitle': 'Datalaria - Climate Dashboard',
+                'howToLink': 'How it was made', // <-- NUEVO
+                'citySelectLabel': 'Select up to 5 cities:',
+                'metricLegend': 'Metric',
+                'metricTemp': 'Temperature',
+                'metricHum': 'Humidity',
+                'metricWind': 'Wind',
+                'metricClouds': 'Cloudiness',
+                'metricRain': 'Rain (1h)',
+                'rangeLegend': 'Range',
+                'range1S': '1W',
+                'range1M': '1M',
+                'range3M': '3M',
+                'range1A': '1Y',
+                'range5A': '5Y',
+                'rangeAll': 'All',
+                'rangeCustom': 'Custom',
+                'customRangeLegend': 'Custom Range',
+                'customRangeFrom': 'From:',
+                'customRangeTo': 'To:',
+                'hourLegend': 'Time of Day',
+                'hourAll': 'All',
+                'hourMorning': 'Morning (06h)',
+                'hourAfternoon': 'Afternoon (14h)',
+                'hourNight': 'Night (22h)',
+                'mapTitle': 'Interactive Map',
+                'kpiTitle': 'Most Recent Data',
+                'historyTitle': 'Historical Evolution',
+                'historySubtitle': '(All times are shown in your local timezone)',
+                'variationTitle': 'Daily Variation',
+                'variationSubtitle': '(Range between Max. and Min. temperature of each day)',
+                'kpiNoData': 'No recent data.',
+                'kpiEmpty': 'Select one or more cities to see data.',
+                'kpiFeels': 'Feels like',
+                'kpiHumidity': 'Humidity',
+                'kpiWind': 'Wind',
+                'kpiClouds': 'Cloudiness',
+                'kpiVisibility': 'Visibility',
+                'kpiRain': 'Rain (1h)',
+                'kpiSnow': 'Snow (1h)',
+                'kpiHist': 'Historical',
+                'kpiMax': 'Max',
+                'kpiMin': 'Min',
+                'forecastTitle': 'OWM Forecast (Max/Min)',
+                'iaTitle': 'AI Prediction (Tomorrow)',
+                'iaNoData': 'Insuff. data',
+                'iaVsOWM': 'OWM',
+                'kpiMedia': 'Mean',
+                'chartDateHour': 'Date and Time',
+                'chartDate': 'Date',
+                'chartVariation': 'Variation',
+                'chartEmpty': 'No data available for the current selection.',
+                'varChartEmpty': 'Not enough data to calculate daily variation.',
+                'fatalError': 'Fatal Error: Could not load city list',
+                'choicesPlaceholder': 'Type to search...',
+            }
+        };
+
+        // --- Configuración Global (CORREGIDO: Rutas absolutas) ---
+        // Al usar /apps/weather/ al inicio, el navegador busca desde la raíz,
+        // solucionando el problema cuando falta la barra final en la URL.
+        const CITIES_LIST_URL = '/apps/weather/ciudades.txt';
+        const DATA_FOLDER_URL = '/apps/weather/datos/';
+        const MAP_DATA_URL = '/apps/weather/city_locations.json';
+        const PREDICTIONS_URL = '/apps/weather/predicciones.json';
+        const MIN_RECORDS_FOR_IA = 10;
+
+        // --- NUEVO: URLs del Blog ---
+        const BLOG_LINKS = {
+            'es': 'https://datalaria.com/es/posts/app-openweather_part1_backend/',
+            'en': 'https://datalaria.com/en/posts/app_openweather_part1_backend/'
+        };
+
+        const citySelectorElement = document.getElementById('city-select');
+        const kpiContainer = document.getElementById('kpi-container');
+        const metricRadios = document.querySelectorAll('input[name="metric"]');
+        const timeRangeButtons = document.querySelectorAll('.time-btn');
+        const hourFilterRadios = document.querySelectorAll('input[name="hour-filter"]');
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const variationCtx = document.getElementById('variationChart').getContext('2d');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const languageToggle = document.getElementById('language-toggle');
+
+        const customRangeContainer = document.getElementById('custom-range-container');
+        const startDateInput = document.getElementById('start-date');
+        const endDateInput = document.getElementById('end-date');
+
+        let myChart;
+        let myVariationChart;
+        let choicesInstance;
+        let allDataCache = {};
+        let allPredictionsCache = {};
+
+        let currentLang = 'es';
+        let currentTimeRange = 'all';
+        let customStartDate = null;
+        let customEndDate = null;
+
+        const COLOR_PALETTE = ['#e6194B', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4', '#42d4f4', '#f032e6', '#bfef45', '#fabed4'];
+
+        let map;
+        let mapMarkers = {};
+        let cityOptionsList = [];
+        let lightTileLayer, darkTileLayer;
+
+        function getMetricMap() {
+            const lang = currentLang;
+            return {
+                'temp': { key: 'temperatura_c', label: translations[lang].metricTemp, unit: '°C', icon: 'thermometer' },
+                'humidity': { key: 'humedad_porc', label: translations[lang].metricHum, unit: '%', icon: 'droplet' },
+                'wind': { key: 'viento_kmh', label: translations[lang].metricWind, unit: 'km/h', icon: 'wind' },
+                'clouds': { key: 'nubosidad_porc', label: translations[lang].metricClouds, unit: '%', icon: 'cloud' },
+                'rain': { key: 'lluvia_1h', label: translations[lang].metricRain, unit: 'mm', icon: 'umbrella' },
+                'snow': { key: 'nieve_1h', label: translations[lang].kpiSnow, unit: 'mm', icon: 'cloud-snow' },
+                'visibility': { key: 'visibilidad_m', label: translations[lang].kpiVisibility, unit: 'm', icon: 'eye' }
+            };
+        }
+
+        function createStripedPattern(color) {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 10;
+            canvas.height = 10;
+            ctx.fillStyle = color + '60';
+            ctx.fillRect(0, 0, 10, 10);
+            ctx.strokeStyle = color + 'B3';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(0, 10);
+            ctx.lineTo(10, 0);
+            ctx.stroke();
+            return ctx.createPattern(canvas, 'repeat');
+        }
+
+        function getWeatherIcon(description, cloudPercent) {
+            if (!description) return 'sun';
+            const desc = description.toLowerCase();
+            if (desc.includes('lluvia') || desc.includes('llovizna')) return 'cloud-rain';
+            if (desc.includes('nieve') || desc.includes('nevada')) return 'cloud-snow';
+            if (desc.includes('tormenta')) return 'cloud-lightning';
+            if (desc.includes('niebla') || desc.includes('neblina')) return 'eye-off';
+            if (desc.includes('cielo claro')) return 'sun';
+            if (desc.includes('pocas nubes')) return 'cloud-sun';
+            if (desc.includes('nubes') || cloudPercent > 50) return 'cloud';
+            return 'sun';
+        }
+
+        // --- Funciones de Carga de Datos ---
+        async function loadPredictions() {
+            try {
+                const response = await fetch(PREDICTIONS_URL + '?v=' + new Date().getTime());
+                if (!response.ok) {
+                    throw new Error(`Error HTTP! status: ${response.status}`);
+                }
+                allPredictionsCache = await response.json();
+                console.log("Datos de predicción cargados:", allPredictionsCache);
+            } catch (error) {
+                console.error("Error al cargar predicciones.json:", error);
+                allPredictionsCache = {};
+            }
+        }
+
+        function calculateStats(records) {
+            if (records.length === 0) return {};
+            const stats = {
+                temp: { min: { val: Infinity, date: null }, max: { val: -Infinity, date: null } },
+                humidity: { min: { val: Infinity, date: null }, max: { val: -Infinity, date: null } },
+                wind: { min: { val: Infinity, date: null }, max: { val: -Infinity, date: null } },
+                clouds: { min: { val: Infinity, date: null }, max: { val: -Infinity, date: null } },
+                rain: { min: { val: 0, date: null }, max: { val: -Infinity, date: null } }
+            };
+
+            records.forEach(row => {
+                const date = row.fecha_hora;
+                if (row.temperatura_c < stats.temp.min.val) { stats.temp.min = { val: row.temperatura_c, date: date }; }
+                if (row.temperatura_c > stats.temp.max.val) { stats.temp.max = { val: row.temperatura_c, date: date }; }
+                if (row.humedad_porc < stats.humidity.min.val) { stats.humidity.min = { val: row.humedad_porc, date: date }; }
+                if (row.humedad_porc > stats.humidity.max.val) { stats.humidity.max = { val: row.humedad_porc, date: date }; }
+                if (row.viento_kmh < stats.wind.min.val) { stats.wind.min = { val: row.viento_kmh, date: date }; }
+                if (row.viento_kmh > stats.wind.max.val) { stats.wind.max = { val: row.viento_kmh, date: date }; }
+                if (row.nubosidad_porc < stats.clouds.min.val) { stats.clouds.min = { val: row.nubosidad_porc, date: date }; }
+                if (row.nubosidad_porc > stats.clouds.max.val) { stats.clouds.max = { val: row.nubosidad_porc, date: date }; }
+                if (row.lluvia_1h > stats.rain.max.val) { stats.rain.max = { val: row.lluvia_1h, date: date }; }
+            });
+            stats.latest = records[records.length - 1];
+            return stats;
+        }
+
+
+        function loadCSV(ciudadQuery) {
+            if (allDataCache[ciudadQuery]) {
+                return Promise.resolve(allDataCache[ciudadQuery]);
+            }
+            const nombreCiudadLimpio = ciudadQuery.split(',')[0];
+            const nombreFichero = nombreCiudadLimpio.replace(/ /g, '_') + '.csv';
+            const csvUrl = DATA_FOLDER_URL + nombreFichero;
+            return new Promise((resolve, reject) => {
+                Papa.parse(csvUrl, {
+                    download: true, header: true, dynamicTyping: true, skipEmptyLines: true,
+                    complete: (results) => {
+                        const records = results.data.map(row => ({
+                            ...row,
+                            fecha_hora: new Date(row.fecha_hora),
+                            nubosidad_porc: row.nubosidad_porc || 0,
+                            visibilidad_m: row.visibilidad_m || 0,
+                            lluvia_1h: row.lluvia_1h || 0,
+                            nieve_1h: row.nieve_1h || 0
+                        })).sort((a, b) => a.fecha_hora - b.fecha_hora);
+                        if (records.length === 0) {
+                            console.warn(`No se encontraron registros en ${csvUrl}`);
+                            allDataCache[ciudadQuery] = { records: [], stats: {} };
+                            resolve(allDataCache[ciudadQuery]);
+                            return;
+                        }
+                        const stats = calculateStats(records);
+                        allDataCache[ciudadQuery] = { records, stats };
+                        resolve(allDataCache[ciudadQuery]);
+                    },
+                    error: (err) => { console.error(`Error cargando ${csvUrl}:`, err); reject(err); }
+                });
+            });
+        }
+
+        async function loadDataForCities(ciudadesQuery) {
+            const promises = ciudadesQuery.map(ciudadQuery => loadCSV(ciudadQuery));
+            try {
+                const datasets = await Promise.all(promises);
+                const cityDataMap = {};
+                ciudadesQuery.forEach((ciudadQuery, index) => {
+                    cityDataMap[ciudadQuery.split(',')[0]] = datasets[index];
+                });
+                return cityDataMap;
+            } catch (error) {
+                console.error("Fallo al cargar uno o más datasets:", error);
+                kpiContainer.innerHTML = `<p style="color: red; grid-column: 1 / -1;">${translations[currentLang].fatalError.replace('lista de ciudades', 'datos CSV')}</p>`;
+                return null;
+            }
+        }
+
+        // --- Funciones de UI ---
+
+        function animateCountUp(element, end, duration = 800, decimals = 1) {
+            let startTime = null;
+            const start = 0;
+            if (isNaN(end) || !isFinite(end)) {
+                element.textContent = (0).toFixed(decimals);
+                return;
+            }
+            function step(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const progress = Math.min((timestamp - startTime) / duration, 1);
+                const easedProgress = progress * (2 - progress);
+                let currentValue = start + (end * easedProgress);
+                element.textContent = currentValue.toFixed(decimals);
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    element.textContent = end.toFixed(decimals);
+                }
+            }
+            requestAnimationFrame(step);
+        }
+
+        function buildForecastHTML(forecastList, selectedMetric) {
+            if (selectedMetric !== 'temp' || !forecastList || forecastList.length === 0) {
+                return '';
+            }
+            const dateFormatter = new Intl.DateTimeFormat(currentLang, {
+                weekday: 'short',
+                day: 'numeric',
+                month: 'short'
+            });
+            const forecastRows = forecastList.map(day => {
+                const dateObj = new Date(day.date);
+                dateObj.setUTCHours(0, 0, 0, 0);
+                const displayDate = dateFormatter.format(dateObj);
+                return `
+                    <div class="kpi-hist-item">
+                        <span style="text-transform: capitalize;">${displayDate}</span>
+                        <span class="date" style="font-weight: 600;">
+                            ${day.max.toFixed(1)}°C / ${day.min.toFixed(1)}°C
+                        </span>
+                    </div>
+                `;
+            }).join('');
+            return `
+                <div class="kpi-hist" style="margin-top: 15px;">
+                    <strong>${translations[currentLang].forecastTitle}:</strong>
+                    ${forecastRows}
+                </div>
+            `;
+        }
+
+        function buildIAForecastHTML(cityPredictionData, selectedMetric) {
+            if (selectedMetric !== 'temp' || !cityPredictionData) {
+                return '';
+            }
+            const ia_preds = cityPredictionData.pred_ia;
+            const owm_forecast = cityPredictionData.pred_owm_5day;
+            if (!ia_preds) return '';
+
+            let html = `
+                <div class="kpi-hist" style="margin-top: 15px;">
+                    <strong>${translations[currentLang].iaTitle}:</strong>
+            `;
+
+            if (ia_preds.max === null) {
+                html += `
+                    <div class="kpi-hist-item">
+                        <span><i data-feather="cpu" class="kpi-icon"></i> Mi IA</span>
+                        <span class="date" style="font-weight: 600;">
+                            ${translations[currentLang].iaNoData} (${ia_preds.registros}/${MIN_RECORDS_FOR_IA})
+                        </span>
+                    </div>
+                `;
+            }
+            else if (owm_forecast && owm_forecast.length > 0) {
+                const owm_tomorrow = owm_forecast[0];
+                const getComparisonHTML = (ia_val, owm_val, unit) => {
+                    if (owm_val === undefined || owm_val === null) return '';
+                    const diff = ia_val - owm_val;
+                    let color = '#7f8c8d';
+                    if (diff > 0.5) color = '#e6194B';
+                    if (diff < -0.5) color = '#4363d8';
+                    return `
+                        (vs ${owm_val.toFixed(1)}${unit} ${translations[currentLang].iaVsOWM}) 
+                        <span style="color: ${color}; font-weight: 600;">
+                            (${diff >= 0 ? '+' : ''}${diff.toFixed(1)}${unit})
+                        </span>
+                    `;
+                };
+                html += `
+                    <div class="kpi-hist-item">
+                        <span><i data-feather="cpu" class="kpi-icon"></i> ${translations[currentLang].kpiMax}: <strong>${ia_preds.max.toFixed(1)}°C</strong></span>
+                        <span class="date">${getComparisonHTML(ia_preds.max, owm_tomorrow.max, '°C')}</span>
+                    </div>
+                    <div class="kpi-hist-item">
+                        <span><i data-feather="cpu" class="kpi-icon"></i> ${translations[currentLang].kpiMin}: <strong>${ia_preds.min.toFixed(1)}°C</strong></span>
+                        <span class="date">${getComparisonHTML(ia_preds.min, owm_tomorrow.min, '°C')}</span>
+                    </div>
+                    <div class="kpi-hist-item">
+                        <span><i data-feather="cpu" class="kpi-icon"></i> ${translations[currentLang].kpiMedia}: <strong>${ia_preds.media.toFixed(1)}°C</strong></span>
+                        <span class="date">${getComparisonHTML(ia_preds.media, owm_tomorrow.media, '°C')}</span>
+                    </div>
+                `;
+            }
+            else if (ia_preds.max !== null) {
+                html += `
+                    <div class="kpi-hist-item">
+                        <span><i data-feather="cpu" class="kpi-icon"></i> ${translations[currentLang].kpiMax}: <strong>${ia_preds.max.toFixed(1)}°C</strong></span>
+                    </div>
+                    <div class="kpi-hist-item">
+                        <span><i data-feather="cpu" class="kpi-icon"></i> ${translations[currentLang].kpiMin}: <strong>${ia_preds.min.toFixed(1)}°C</strong></span>
+                    </div>
+                `;
+            }
+            html += '</div>';
+            return html;
+        }
+
+
+        async function updateDashboard() {
+            loadingSpinner.style.display = 'flex';
+            const selectedCitiesValues = choicesInstance.getValue(true);
+            const checkedMetricRadio = document.querySelector('input[name="metric"]:checked');
+            const selectedMetric = checkedMetricRadio ? checkedMetricRadio.value : 'temp';
+            const checkedHourRadio = document.querySelector('input[name="hour-filter"]:checked');
+            const selectedHour = checkedHourRadio ? checkedHourRadio.value : 'all';
+
+            if (selectedCitiesValues.length === 0) {
+                kpiContainer.innerHTML = `<p>${translations[currentLang].kpiEmpty}</p>`;
+                if (myChart) myChart.destroy();
+                if (myVariationChart) myVariationChart.destroy();
+                highlightMapMarkers([]);
+                loadingSpinner.style.display = 'none';
+                return;
+            }
+
+            kpiContainer.innerHTML = "";
+            if (myChart) {
+                myChart.data.datasets = [];
+                myChart.data.labels = [];
+                myChart.update();
+            }
+            if (myVariationChart) {
+                myVariationChart.data.datasets = [];
+                myVariationChart.data.labels = [];
+                myVariationChart.update();
+            }
+
+            const cityDataMap = await loadDataForCities(selectedCitiesValues);
+            if (!cityDataMap) {
+                console.error("No se pudieron cargar los datos para las ciudades seleccionadas.");
+                loadingSpinner.style.display = 'none';
+                return;
+            }
+
+            const selectedCitiesClean = selectedCitiesValues.map(v => v.split(',')[0]);
+            updateKPIs(cityDataMap, selectedMetric);
+            updateChart(cityDataMap, selectedMetric, selectedHour);
+            updateVariationChart(cityDataMap, selectedMetric);
+            highlightMapMarkers(selectedCitiesClean);
+            loadingSpinner.style.display = 'none';
+        }
+
+        function updateKPIs(cityDataMap, selectedMetric) {
+            kpiContainer.innerHTML = "";
+            const metricInfo = getMetricMap()[selectedMetric];
+
+            Object.keys(cityDataMap).forEach((ciudad, index) => {
+                const data = cityDataMap[ciudad];
+                if (!data || !data.stats || !data.stats.latest) {
+                    kpiContainer.innerHTML += `<div class="kpi-card" style="border-left-color: #ccc;"><h3>${ciudad}</h3><p>${translations[currentLang].kpiNoData}</p></div>`;
+                    return;
+                }
+                const stats = data.stats;
+                const latest = stats.latest;
+                const metricStats = stats[selectedMetric] || stats['temp'];
+
+                const card = document.createElement('div');
+                card.className = 'kpi-card';
+                card.style.borderLeftColor = COLOR_PALETTE[index % COLOR_PALETTE.length];
+
+                const latestDate = latest.fecha_hora.toLocaleString(currentLang, { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+                const minDate = (metricStats.min && metricStats.min.date) ? metricStats.min.date.toLocaleDateString(currentLang) : 'N/A';
+                const maxDate = (metricStats.max && metricStats.max.date) ? metricStats.max.date.toLocaleDateString(currentLang) : 'N/A';
+
+                const now = new Date();
+                const sevenDaysAgo = new Date(now.getTime() - (7 * 24 * 60 * 60 * 1000));
+
+                const sparklineData = data.records
+                    .filter(row => row.fecha_hora >= sevenDaysAgo && row[metricInfo.key] !== null && row[metricInfo.key] !== undefined)
+                    .map(row => ({ x: row.fecha_hora, y: row[metricInfo.key] }));
+
+                const sparkCanvasId = `spark-${ciudad.replace(/ /g, '_')}-${selectedMetric}`;
+                const kpiMainId = `kpi-main-${ciudad.replace(/ /g, '_')}-${selectedMetric}`;
+
+                const cityPredictionData = allPredictionsCache[ciudad];
+                const forecast_list = cityPredictionData?.pred_owm_5day;
+
+                const weatherIcon = getWeatherIcon(latest.descripcion, latest.nubosidad_porc);
+
+                card.innerHTML = `
+                    <h3><i data-feather="${weatherIcon}" class="kpi-icon" style="vertical-align: -0.1em; margin-right: 4px;"></i> ${ciudad}</h3>
+                    
+                    <p class="kpi-main">
+                        <i data-feather="${metricInfo.icon}" class="kpi-icon-main"></i>
+                        <span id="${kpiMainId}">${(0).toFixed(1)}</span> ${metricInfo.unit} 
+                        <span>(${latestDate})</span>
+                    </p>
+                    <p><i data-feather="thermometer" class="kpi-icon"></i> ${translations[currentLang].kpiFeels}: ${latest.sensacion_c.toFixed(1)}°C</p>
+                    <p><i data-feather="droplet" class="kpi-icon"></i> ${translations[currentLang].kpiHumidity}: ${latest.humedad_porc}%</p>
+                    <p><i data-feather="wind" class="kpi-icon"></i> ${translations[currentLang].kpiWind}: ${latest.viento_kmh.toFixed(1)} km/h</p>
+                    <p><i data-feather="cloud" class="kpi-icon"></i> ${translations[currentLang].kpiClouds}: ${latest.nubosidad_porc}%</p>
+                    <p><i data-feather="eye" class="kpi-icon"></i> ${translations[currentLang].kpiVisibility}: ${(latest.visibilidad_m / 1000).toFixed(1)} km</p>
+                    ${latest.lluvia_1h > 0
+                        ? `<p><i data-feather="umbrella" class="kpi-icon" style="color: #4363d8;"></i> ${translations[currentLang].kpiRain}: ${latest.lluvia_1h.toFixed(2)} mm</p>`
+                        : ''}
+                    ${latest.nieve_1h > 0
+                        ? `<p><i data-feather="cloud-snow" class="kpi-icon" style="color: #42d4f4;"></i> ${translations[currentLang].kpiSnow}: ${latest.nieve_1h.toFixed(2)} mm</p>`
+                        : ''}
+                    
+                    <div class="sparkline-container">
+                        <canvas id="${sparkCanvasId}"></canvas>
+                    </div>
+                    <div class="kpi-hist">
+                        <strong>${translations[currentLang].kpiHist} (${metricInfo.label}):</strong>
+                        <div class="kpi-hist-item">
+                            <span>${translations[currentLang].kpiMax}: ${metricStats.max.val > -Infinity ? metricStats.max.val.toFixed(1) : '-'} ${metricInfo.unit}</span>
+                            <span class="date">(${maxDate})</span>
+                        </div>
+                        <div class="kpi-hist-item">
+                            <span>${translations[currentLang].kpiMin}: ${metricStats.min.val < Infinity ? metricStats.min.val.toFixed(1) : '-'} ${metricInfo.unit}</span>
+                            <span class="date">(${minDate})</span>
+                        </div>
+                    </div>
+
+                    ${buildForecastHTML(forecast_list, selectedMetric)} 
+                    ${buildIAForecastHTML(cityPredictionData, selectedMetric)} 
+                `;
+                kpiContainer.appendChild(card);
+
+                const kpiElement = document.getElementById(kpiMainId);
+                if (kpiElement) {
+                    const latestValue = (latest[metricInfo.key] !== undefined && latest[metricInfo.key] !== null) ? latest[metricInfo.key] : 0;
+                    // --- CORRECCIÓN DEL BUG DEL SPINNER ---
+                    animateCountUp(kpiElement, latestValue, 800, (selectedMetric === 'rain' || selectedMetric === 'snow' ? 2 : 1));
+                }
+
+                if (sparklineData.length > 1) {
+                    const sparkCtx = document.getElementById(sparkCanvasId).getContext('2d');
+                    new Chart(sparkCtx, {
+                        type: 'line',
+                        data: {
+                            datasets: [{
+                                data: sparklineData,
+                                borderColor: COLOR_PALETTE[index % COLOR_PALETTE.length],
+                                borderWidth: 2, pointRadius: 0, fill: false, tension: 0.1
+                            }]
+                        },
+                        options: {
+                            responsive: true, maintainAspectRatio: false,
+                            scales: { x: { display: false, type: 'time' }, y: { display: false } },
+                            plugins: { legend: { display: false }, tooltip: { enabled: false } },
+                            interaction: { intersect: false, mode: 'index' }
+                        }
+                    });
+                }
+            });
+            feather.replace();
+        }
+
+
+        function updateChart(cityDataMap, metric, selectedHour) {
+            if (myChart) { myChart.destroy(); }
+            const currentMetric = getMetricMap()[metric];
+            if (!currentMetric) { console.error("ERROR: Métrica inválida:", metric); return; }
+
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            const gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.1)';
+            const textColor = isDarkMode ? '#f5f7fa' : '#2c3e50';
+
+            const now = new Date();
+            let startDate, endDate;
+            endDate = new Date();
+
+            if (currentTimeRange === 'custom' && customStartDate && customEndDate) {
+                startDate = customStartDate;
+                endDate = customEndDate;
+            } else if (currentTimeRange !== 'all') {
+                startDate = new Date(now.getTime() - (Number(currentTimeRange) * 24 * 60 * 60 * 1000));
+            } else {
+                startDate = new Date(0);
+            }
+
+            const datasets = [];
+            Object.keys(cityDataMap).forEach((ciudad, index) => {
+                const data = cityDataMap[ciudad];
+                if (!data || !data.records || data.records.length === 0) { return; }
+
+                const filteredData = data.records
+                    .filter(row => {
+                        const dateFilter = row.fecha_hora >= startDate && row.fecha_hora <= endDate;
+                        const valueFilter = row[currentMetric.key] !== null && row[currentMetric.key] !== undefined;
+
+                        let hourFilterCheck = true;
+                        if (selectedHour !== 'all') {
+                            const filterHour = Number(selectedHour);
+                            hourFilterCheck = (row.fecha_hora.getHours() === filterHour);
+                        }
+
+                        return dateFilter && valueFilter && hourFilterCheck;
+                    })
+                    .map(row => ({ x: row.fecha_hora, y: row[currentMetric.key] }));
+
+                let chartType = 'line';
+                let fillChart = false;
+                if (metric === 'rain' || metric === 'snow') {
+                    chartType = 'bar';
+                }
+                if (metric === 'humidity' || metric === 'clouds') {
+                    fillChart = true;
+                }
+
+                if (filteredData.length > 0) {
+                    datasets.push({
+                        label: ciudad,
+                        data: filteredData,
+                        borderColor: COLOR_PALETTE[index % COLOR_PALETTE.length],
+                        backgroundColor: COLOR_PALETTE[index % COLOR_PALETTE.length] + '80',
+                        tension: 0.1,
+                        fill: fillChart,
+                        pointRadius: 2,
+                        pointHoverRadius: 5
+                    });
+                }
+
+                const forecast_list = allPredictionsCache[ciudad]?.pred_owm_5day;
+                if (metric === 'temp' && selectedHour === 'all' && forecast_list && forecast_list.length > 0) {
+                    const forecastData = forecast_list.map(day => {
+                        const dateObj = new Date(day.date);
+                        dateObj.setUTCHours(12, 0, 0, 0);
+                        return { x: dateObj, y: day.media };
+                    });
+                    if (filteredData.length > 0) {
+                        const lastRealPoint = filteredData[filteredData.length - 1];
+                        forecastData.unshift({ x: lastRealPoint.x, y: lastRealPoint.y });
+                    }
+                    datasets.push({
+                        label: `${translations[currentLang].forecastTitle.split('(')[0]} ${ciudad}`,
+                        data: forecastData,
+                        borderColor: COLOR_PALETTE[index % COLOR_PALETTE.length],
+                        borderDash: [5, 5],
+                        borderWidth: 2,
+                        fill: false,
+                        pointRadius: 2,
+                        pointHoverRadius: 4,
+                        tension: 0.1,
+                    });
+                }
+            });
+
+            if (datasets.length > 0) {
+                myChart = new Chart(ctx, {
+                    type: (metric === 'rain' || metric === 'snow' ? 'bar' : 'line'),
+                    data: { datasets: datasets },
+                    options: {
+                        locale: currentLang,
+                        responsive: true, maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                type: 'time',
+                                time: { unit: 'day', tooltipFormat: 'dd MMM yyyy, HH:mm', displayFormats: { hour: 'HH:mm', day: 'dd MMM', month: 'MMM yyyy' } },
+                                title: { display: true, text: translations[currentLang].chartDateHour, color: textColor },
+                                ticks: { color: textColor, autoSkip: true, maxTicksLimit: 20 },
+                                grid: { color: gridColor }
+                            },
+                            y: {
+                                title: { display: true, text: currentMetric.label + ' (' + currentMetric.unit + ')', color: textColor },
+                                ticks: { color: textColor },
+                                grid: { color: gridColor },
+                                beginAtZero: (metric === 'humidity' || metric === 'rain' || metric === 'snow' || metric === 'clouds')
+                            }
+                        },
+                        plugins: {
+                            tooltip: { mode: 'index', intersect: false },
+                            legend: { position: 'top', labels: { color: textColor } }
+                        },
+                        interaction: { mode: 'nearest', axis: 'x', intersect: false }
+                    }
+                });
+            } else {
+                ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+                ctx.font = "16px Inter";
+                ctx.fillStyle = textColor;
+                ctx.textAlign = "center";
+                ctx.fillText(translations[currentLang].chartEmpty, ctx.canvas.width / 2, 50);
+            }
+        }
+
+
+        function updateVariationChart(cityDataMap, metric) {
+            if (myVariationChart) { myVariationChart.destroy(); }
+            const currentMetric = getMetricMap()[metric];
+            if (!currentMetric) return;
+            if (metric === 'rain' || metric === 'snow') {
+                variationCtx.clearRect(0, 0, variationCtx.canvas.width, variationCtx.canvas.height);
+                return;
+            }
+
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            const gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.1)';
+            const textColor = isDarkMode ? '#f5f7fa' : '#2c3e50';
+
+            const now = new Date();
+            let startDate, endDate;
+            endDate = new Date();
+
+            if (currentTimeRange === 'custom' && customStartDate && customEndDate) {
+                startDate = customStartDate;
+                endDate = customEndDate;
+            } else if (currentTimeRange !== 'all') {
+                startDate = new Date(now.getTime() - (Number(currentTimeRange) * 24 * 60 * 60 * 1000));
+            } else {
+                startDate = new Date(0);
+            }
+
+            const datasets = [];
+
+            Object.keys(cityDataMap).forEach((ciudad, index) => {
+                const data = cityDataMap[ciudad];
+                if (!data || !data.records || data.records.length === 0) { return; }
+
+                const filteredRecords = data.records
+                    .filter(row => row.fecha_hora >= startDate && row.fecha_hora <= endDate && row[currentMetric.key] !== null && row[currentMetric.key] !== undefined);
+
+                const dailyData = {};
+                filteredRecords.forEach(row => {
+                    const day = row.fecha_hora.toISOString().split('T')[0];
+                    if (!dailyData[day]) dailyData[day] = [];
+                    dailyData[day].push(row[currentMetric.key]);
+                });
+
+                const variationData = [];
+                Object.keys(dailyData).forEach(day => {
+                    const values = dailyData[day];
+                    if (values.length > 1) {
+                        const max = Math.max(...values);
+                        const min = Math.min(...values);
+                        variationData.push({
+                            x: new Date(day),
+                            y: (max - min)
+                        });
+                    }
+                });
+                variationData.sort((a, b) => a.x - b.x);
+
+                if (variationData.length > 0) {
+                    datasets.push({
+                        label: `${translations[currentLang].chartVariation} ${ciudad} (${currentMetric.unit})`,
+                        data: variationData,
+                        backgroundColor: COLOR_PALETTE[index % COLOR_PALETTE.length] + '90',
+                        borderColor: COLOR_PALETTE[index % COLOR_PALETTE.length],
+                        borderWidth: 1
+                    });
+                }
+
+                const forecast_list = allPredictionsCache[ciudad]?.pred_owm_5day;
+                if (metric === 'temp' && forecast_list && forecast_list.length > 0) {
+                    const forecastVariationData = forecast_list.map(day => {
+                        const dateObj = new Date(day.date);
+                        dateObj.setUTCHours(12, 0, 0, 0);
+                        return {
+                            x: dateObj,
+                            y: (day.max - day.min)
+                        };
+                    });
+
+                    if (forecastVariationData.length > 0) {
+                        const color = COLOR_PALETTE[index % COLOR_PALETTE.length];
+                        datasets.push({
+                            label: `${translations[currentLang].forecastTitle.split('(')[0]} ${ciudad}`,
+                            data: forecastVariationData,
+                            backgroundColor: createStripedPattern(color),
+                            borderColor: color,
+                            borderWidth: 1
+                        });
+                    }
+                }
+            });
+
+            if (datasets.length > 0) {
+                myVariationChart = new Chart(variationCtx, {
+                    type: 'bar',
+                    data: { datasets: datasets },
+                    options: {
+                        locale: currentLang,
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                type: 'time',
+                                time: { unit: 'day', tooltipFormat: 'dd MMM yyyy', displayFormats: { day: 'dd MMM' } },
+                                title: { display: true, text: translations[currentLang].chartDate, color: textColor },
+                                ticks: { color: textColor, autoSkip: true, maxTicksLimit: 20 },
+                                grid: { color: 'rgba(0,0,0,0)' }
+                            },
+                            y: {
+                                title: { display: true, text: `${translations[currentLang].chartVariation} ${currentMetric.label} (${currentMetric.unit})`, color: textColor },
+                                ticks: { color: textColor },
+                                grid: { color: gridColor },
+                                beginAtZero: true
+                            }
+                        },
+                        plugins: {
+                            tooltip: { mode: 'index', intersect: false },
+                            legend: { position: 'top', labels: { color: textColor } }
+                        }
+                    }
+                });
+            } else {
+                variationCtx.clearRect(0, 0, variationCtx.canvas.width, variationCtx.canvas.height);
+                variationCtx.font = "16px Inter";
+                variationCtx.fillStyle = textColor;
+                variationCtx.textAlign = "center";
+                variationCtx.fillText(translations[currentLang].varChartEmpty, variationCtx.canvas.width / 2, 50);
+            }
+        }
+
+
+        // --- Funciones del Mapa ---
+        async function initMap() {
+            try {
+                map = L.map('map-container').setView([20, 0], 2);
+
+                lightTileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                });
+
+                darkTileLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+                });
+
+                if (document.body.classList.contains('dark-mode')) {
+                    darkTileLayer.addTo(map);
+                } else {
+                    lightTileLayer.addTo(map);
+                }
+
+                const response = await fetch(MAP_DATA_URL);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const locations = await response.json();
+
+                locations.forEach(city => {
+                    const color = getTempColor(city.temp);
+                    const marker = L.circleMarker([city.lat, city.lon], {
+                        radius: 8, color: '#FFFFFF', weight: 2,
+                        fillColor: color, fillOpacity: 0.8, opacity: 0.9
+                    }).addTo(map);
+                    marker.bindPopup(`<div class="popup-title">${city.ciudad}</div><div class="popup-temp" style="color: ${color};">${city.temp.toFixed(1)}°C</div>`);
+                    marker.on('click', () => {
+                        const cityOption = cityOptionsList.find(opt => opt.label === city.ciudad);
+                        if (!cityOption) { return; }
+                        const currentValues = choicesInstance.getValue(true);
+                        if (!currentValues.includes(cityOption.value) && currentValues.length < 5) {
+                            const newValues = [...currentValues, cityOption.value];
+                            choicesInstance.setChoiceByValue(newValues);
+                            updateDashboard();
+                        }
+                    });
+                    mapMarkers[city.ciudad] = marker;
+                });
+            } catch (error) {
+                console.error("Error al inicializar el mapa:", error);
+                document.getElementById('map-container').innerHTML = `<p style='color:red; padding: 20px;'>Error al cargar los datos del mapa.</p>`;
+            }
+        }
+
+        function highlightMapMarkers(selectedCitiesClean) {
+            Object.keys(mapMarkers).forEach(ciudad => {
+                const marker = mapMarkers[ciudad];
+                if (selectedCitiesClean.includes(ciudad)) {
+                    marker.setStyle({ weight: 3, radius: 10, fillOpacity: 1.0, opacity: 1.0, color: '#000000' });
+                    marker.bringToFront();
+                } else {
+                    marker.setStyle({ weight: 2, radius: 8, fillOpacity: 0.8, opacity: 0.9, color: '#FFFFFF' });
+                }
+            });
+        }
+
+        function getTempColor(temp) {
+            if (temp < 0) return '#0033cc';
+            if (temp < 10) return '#0099ff';
+            if (temp < 20) return '#66cc66';
+            if (temp < 30) return '#ffcc00';
+            return '#ff3300';
+        }
+
+        // --- Funciones de Dark Mode y Traducción ---
+
+        function toggleDarkMode() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+            const isDarkMode = body.classList.contains('dark-mode');
+
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+
+            document.getElementById('dark-mode-icon').setAttribute('data-feather', isDarkMode ? 'sun' : 'moon');
+            feather.replace();
+
+            updateMapTiles(isDarkMode);
+
+            const checkedMetricRadio = document.querySelector('input[name="metric"]:checked');
+            const selectedMetric = checkedMetricRadio ? checkedMetricRadio.value : 'temp';
+            const checkedHourRadio = document.querySelector('input[name="hour-filter"]:checked');
+            const selectedHour = checkedHourRadio ? checkedHourRadio.value : 'all';
+            const selectedCitiesValues = choicesInstance.getValue(true);
+
+            if (selectedCitiesValues.length > 0) {
+                const cityDataMap = {};
+                selectedCitiesValues.forEach(val => {
+                    if (allDataCache[val]) {
+                        cityDataMap[val.split(',')[0]] = allDataCache[val];
+                    }
+                });
+                updateChart(cityDataMap, selectedMetric, selectedHour);
+                updateVariationChart(cityDataMap, selectedMetric);
+            }
+        }
+
+        function updateMapTiles(isDarkMode) {
+            if (!map || !lightTileLayer || !darkTileLayer) return;
+            if (isDarkMode) {
+                if (map.hasLayer(lightTileLayer)) map.removeLayer(lightTileLayer);
+                if (!map.hasLayer(darkTileLayer)) map.addLayer(darkTileLayer);
+            } else {
+                if (map.hasLayer(darkTileLayer)) map.removeLayer(darkTileLayer);
+                if (!map.hasLayer(lightTileLayer)) map.addLayer(lightTileLayer);
+            }
+        }
+
+        function translatePage(lang) {
+            if (!translations[lang]) lang = 'es';
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
+
+            document.documentElement.lang = lang;
+            languageToggle.textContent = lang === 'es' ? 'EN' : 'ES';
+
+            // --- NUEVO: Actualizar el enlace del blog ---
+            const blogLinkElement = document.getElementById('how-to-link');
+            if (blogLinkElement) {
+                blogLinkElement.href = BLOG_LINKS[lang] || BLOG_LINKS['es'];
+            }
+
+            document.querySelectorAll('[data-i18n-key]').forEach(el => {
+                const key = el.getAttribute('data-i18n-key');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            if (choicesInstance && choicesInstance.input) {
+                choicesInstance.input.placeholder = translations[lang].choicesPlaceholder;
+            }
+
+            Chart.defaults.locale = lang;
+        }
+
+        async function toggleLanguage() {
+            const newLang = currentLang === 'es' ? 'en' : 'es';
+            translatePage(newLang);
+            await updateDashboard();
+        }
+
+
+        // --- Función de Inicialización (MODIFICADA) ---
+        async function init() {
+            // 1. Set Dark Mode
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                document.getElementById('dark-mode-icon').setAttribute('data-feather', 'sun');
+            } else {
+                document.getElementById('dark-mode-icon').setAttribute('data-feather', 'moon');
+            }
+            feather.replace();
+
+            // 2. Set Language (ANTES de crear Choices.js)
+            const savedLang = localStorage.getItem('lang') || 'es';
+            translatePage(savedLang);
+
+            // 3. Cargar predicciones
+            await loadPredictions();
+
+            // 4. Crear Choices (ahora usará el placeholder correcto)
+            choicesInstance = new Choices(citySelectorElement, {
+                allowHTML: false, maxItemCount: 5, removeItemButton: true,
+                placeholder: true,
+                placeholderValue: translations[currentLang].choicesPlaceholder, // Set inicial
+                searchResultLimit: 10,
+            });
+
+            // 5. Cargar datos de ciudades y mapa
+            try {
+                const ciudadesResponse = await fetch(CITIES_LIST_URL);
+                if (!ciudadesResponse.ok) throw new Error(`Error al cargar ${CITIES_LIST_URL}`);
+                const text = await ciudadesResponse.text();
+                const ciudades = text.split('\n')
+                    .map(line => line.trim().split(','))
+                    .filter(parts => parts.length >= 2 && parts[0] && !parts[0].startsWith('#'))
+                    .map(parts => ({ value: `${parts[0]},${parts[1]}`, label: parts[0] }));
+                cityOptionsList = ciudades;
+
+                await initMap();
+
+                choicesInstance.setChoices(ciudades, 'value', 'label', false);
+
+                choicesInstance.setChoiceByValue(['Madrid,ES', 'León,ES']);
+
+                // 6. Carga inicial del dashboard
+                await updateDashboard();
+
+            } catch (error) {
+                console.error("Error al inicializar la aplicación:", error);
+                kpiContainer.innerHTML = `<p style="color: red;"><b>${translations[currentLang].fatalError} (${CITIES_LIST_URL}).</b></p>`;
+                loadingSpinner.style.display = 'none';
+            }
+
+            // 7. Configurar todos los Listeners
+            citySelectorElement.addEventListener('change', async () => await updateDashboard());
+            metricRadios.forEach(radio => radio.addEventListener('change', async () => await updateDashboard()));
+            hourFilterRadios.forEach(radio => radio.addEventListener('change', async () => await updateDashboard()));
+            darkModeToggle.addEventListener('click', toggleDarkMode);
+            languageToggle.addEventListener('click', toggleLanguage);
+
+            timeRangeButtons.forEach(button => {
+                button.addEventListener('click', async (e) => {
+                    e.preventDefault();
+                    timeRangeButtons.forEach(btn => btn.classList.remove('active'));
+                    e.target.classList.add('active');
+                    currentTimeRange = e.target.dataset.range;
+
+                    if (currentTimeRange === 'custom') {
+                        customRangeContainer.style.display = 'block';
+                    } else {
+                        customRangeContainer.style.display = 'none';
+                        customStartDate = null;
+                        customEndDate = null;
+                        await updateDashboard();
+                    }
+                });
+            });
+
+            startDateInput.addEventListener('change', async () => {
+                customStartDate = new Date(startDateInput.value);
+                if (customEndDate) {
+                    await updateDashboard();
+                }
+            });
+
+            endDateInput.addEventListener('change', async () => {
+                customEndDate = new Date(endDateInput.value);
+                customEndDate.setHours(23, 59, 59, 999);
+
+                if (customStartDate) {
+                    await updateDashboard();
+                }
+            });
+        }
+
+        // --- INICIO DE LA APLICACIÓN ---
+        document.addEventListener('DOMContentLoaded', init);
+
+    </script>
+</body>
+
+</html>

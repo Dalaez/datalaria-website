@@ -22,29 +22,23 @@ Para erradicar estas patologías y blindar la toma de decisiones estratégicas a
 
 En esta guía metodológica oficial, formalizamos el motor matemático del modelo DAR, el protocolo de exclusión binaria mediante **Filtros Veto (*Must-Haves*)**, la calibración de **Ponderaciones Multicriterio (*Wants*)**, el test de sensibilidad marginal *What-If*, y la presentación ejecutiva estructurada bajo el principio de la **Pirámide de Minto**.
 
----
-
-## 1. El Embudo de Decisión Metodológico CMMI DAR
-
-El marco DAR no es un formulario burocrático de homologación de compras; es un **algoritmo de decisión secuencial y vinculante** diseñado para transformar la incertidumbre cualitativa en una recomendación cuantitativa auditable:
-
 {{< mermaid >}}
 flowchart TD
-    A["<b>1. Encuadre Estratégico & Alternativas</b><br/><small>Identificación de la decisión crítica (ERP, M&A, Make vs. Buy)<br/>Definición formal de hasta 5 alternativas viables</small>"]
+    A["<b>1. Encuadre Estratégico y Alternativas</b><br/><small>Identificación de la decisión crítica (ERP, M&A, Make vs. Buy)<br/>Definición formal de hasta 5 alternativas viables</small>"]
     
-    B{"<b>2. Puerta de Filtros Veto (Must-Haves)</b><br/><small>Evaluación booleana de requisitos no negociables<br/>RGPD, Techo CAPEX, Plazo Go-Live, ISO 27001</small>"}
+    B["<b>2. Puerta de Filtros Veto (Must-Haves)</b><br/><small>Evaluación booleana de requisitos no negociables<br/>RGPD, Techo CAPEX, Plazo Go-Live e ISO 27001</small>"]
     
     C["<b>DESCALIFICACIÓN INAPELABLE</b><br/><small>Factor Booleano Vk = 0<br/>Exclusión automática del ranking (Score = 0)</small>"]
     
-    D["<b>3. Scoring Multicriterio Ponderado (Wants)</b><br/><small>Evaluación de 13 criterios en 4 pilares estratégicos:<br/>Ajuste Técnico (30%) • TCO 3A (25%) • SLA (20%) • Seguridad (25%)</small>"]
+    D["<b>3. Scoring Multicriterio Ponderado (Wants)</b><br/><small>Evaluación de 13 criterios en 4 pilares estratégicos:<br/>Ajuste Técnico (30%) • TCO 3A (25%) • SLA (20%) • Seguridad (25%)\nSuma formal Σw = 100%</small>"]
     
     E["<b>4. Test de Sensibilidad What-If</b><br/><small>Simulación de estrés: +/- 20% Coste vs. Calidad Técnica<br/>Validación de robustez e invarianza del ranking ganador</small>"]
     
     F["<b>5. Board Decision Gateway (C-Level)</b><br/><small>Presentación ejecutiva 16:9 widescreen (Minto Pyramid)<br/>4 resoluciones vinculantes y firmas (CEO, CFO, CIO, CPO)</small>"]
 
     A --> B
-    B -->|"Incumple 1 criterio (vi = 0)"| C
-    B -->|"Cumple 100% criterios (Vk = 1)"| D
+    B -->|Incumple 1 criterio veto| C
+    B -->|Supera 100% criterios veto| D
     D --> E
     E --> F
 
@@ -55,6 +49,91 @@ flowchart TD
     style E fill:#FEF3C7,stroke:#F59E0B,stroke-width:1.5px,color:#92400E
     style F fill:#D1FAE5,stroke:#10B981,stroke-width:2px,color:#065F46
 {{< /mermaid >}}
+
+{{< product-card
+  variant="compact"
+  title="Executive Decision Pack: Matriz DAR Cuantitativa & Criterios Veto"
+  price="6€"
+  original_price="24€"
+  badge="★ Estándar CMMI DAR & Kepner-Tregoe"
+  icon="⚖️"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/17db9367-dd18-4bb6-8f47-722d738c43c3"
+  button_text="Descargar Kit Ahora (.ZIP) • 6€"
+>}}
+¿Afrontando una decisión estratégica crítica de selección de ERP, M&A o contratación clave? Descarga el motor cuantitativo en Excel con Filtros Veto y Scoring Ponderado, modelo de sensibilidad What-If y presentación 16:9 editable para Consejo de Administración.
+{{< /product-card >}}
+
+---
+
+## 1. ¿Qué es la Matriz DAR (Decision Analysis and Resolution)? Fundamentos, Componentes y Objetivos
+
+Para cualquier director general (CEO), director financiero (CFO), director de tecnología (CIO/CTO), director de operaciones (COO) o comité de inversiones que deba resolver una encrucijada corporativa de alto impacto—o para quienes se aproximen por primera vez a esta disciplina—, la **Matriz DAR** constituye el estándar metodológico internacional por excelencia para la resolución rigurosa, cuantitativa y auditable de decisiones complejas.
+
+El marco nace formalmente en la ingeniería de sistemas aeroespaciales, de defensa y software crítico a través del modelo **CMMI (Capability Maturity Model Integration)** del Software Engineering Institute (Carnegie Mellon University), específicamente en su área de proceso formal de Nivel 3: **Decision Analysis and Resolution (DAR)**. Su fundamento lógico converge armónicamente con la obra seminal de **Charles Kepner y Benjamin Tregoe** (*The Rational Manager*, 1965), quienes establecieron la regla de oro del análisis de decisiones corporativas: **la separación tajante e inviolable entre objetivos no negociables (*Must-Haves*) y objetivos ponderables de deseabilidad (*Wants*)**.
+
+### La Anatomía del Modelo: Los Dos Componentes Estructurales
+
+A diferencia de los cuestionarios habituales de compras o las tablas informales con simples medias aritméticas, la Matriz DAR opera mediante una arquitectura de dos etapas secuenciales:
+
+1. **Filtros Veto o Requisitos Irrenunciables (*Must-Haves*):** Son las condiciones mínimas indispensables para que una alternativa pueda ser considerada viable (por ejemplo: cumplimiento estricto del RGPD con soberanía de datos en la UE, solvencia patrimonial mínima auditada, certificación ISO 27001 o techo presupuestario máximo de CAPEX). Se evalúan con lógica booleana binaria: **CUMPLE (1) o NO CUMPLE (0)**. Si un candidato falla un solo criterio veto, su multiplicador es $V_k = 0$ y sufre una **descalificación fulminante e inapelable**, sin importar cuán sobresaliente sea su puntuación en el resto de áreas.
+2. **Scoring Multicriterio Ponderado (*Wants*):** Solo las alternativas que han superado el 100% de los filtros veto acceden a esta fase. Aquí se evalúan los criterios de rendimiento, calidad, coste y servicio agrupados en cuatro pilares homogéneos, calibrados en escala de 1 a 10 y ponderados con un vector porcentual cuya suma obligatoria es exactamente el 100% ($\sum w_j = 1.00$).
+
+### Tabla Comparativa: Evaluación Tradicional vs. Matriz DAR Cuantitativa
+
+| Dimensión Analítica | Enfoque Tradicional / Homologación de Compras | Matriz DAR Cuantitativa (CMMI / Kepner-Tregoe) | Ventaja Estratégica C-Level |
+| :--- | :--- | :--- | :--- |
+| **Tratamiento de Requisitos Críticos** | Puntuación continua integrada (una nota baja en seguridad se compensa con un precio barato). | **Filtros Veto Booleanos Binarios ($V_k \in \{0, 1\}$)**: Exclusión fulminante si se incumple una cláusula crítica. | Blindaje absoluto frente a riesgos regulatorios, quiebras de seguridad y contingencias legales. |
+| **Fijación de Ponderaciones** | Ponderaciones abiertas o definidas *a posteriori*, susceptibles de ser modificadas tras ver los precios. | **Protocolo de Congelamiento Previo (*Freeze Protocol*)**: Pesos bloqueados antes de abrir ofertas comerciales. | Neutraliza el sesgo de confirmación y la presión política de patrocinadores internos. |
+| **Estructura de Evaluación** | Listado desordenado de características o preguntas cualitativas abiertas. | **4 Pilares Estratégicos Homogéneos (13 Criterios)**: Técnico, Coste TCO 3A, SLA y Seguridad. | Comparabilidad estricta y visión holística equilibrada (técnica + finanzas + riesgo). |
+| **Verificación de Sensibilidad** | No existe; se asume la puntuación estática como verdad absoluta. | **Test de Sensibilidad Marginal What-If ($\pm 20\%$)**: Simulación de estrés en pesos y costes. | Demuestra invarianza del ganador ante el Comité de Auditoría y el Consejo. |
+| **Entregable de Decisión** | Informe textual extenso de decenas de páginas sin síntesis accionable. | **Board Decision Gateway en 16:9 (Minto)**: 4 resoluciones formales y bloques de firmas vinculantes. | Agilidad ejecutiva y rendición de cuentas inequívoca ante el Consejo de Administración. |
+
+### Cómo Funciona: El Embudo Estratégico Integral (De Suite 01 Estrategia a Suite 02 Decisiones)
+
+En las organizaciones de alto rendimiento y en la práctica de la consultoría estratégica Tier-1 (McKinsey, BCG, Bain), **las herramientas cuantitativas no operan de forma aislada**. La Matriz DAR de la **Suite 02 (Toma de Decisiones & Priorización)** representa la fase de ejecución y cierre vinculante de las directrices emanadas del diagnóstico estratégico de la **Suite 01 (Estrategia Corporativa MBA)**:
+
+{{< mermaid >}}
+flowchart TD
+    S1["<b>Nivel 1: Macroentorno Exógeno</b><br/><b>Matriz PESTEL Cuantitativa</b><br/><small>Riesgos regulatorios, inflación, tipos de interés y ESG</small>"]
+    S2["<b>Nivel 2: Microentorno Sectorial</b><br/><b>5 Fuerzas de Porter Ponderadas</b><br/><small>Intensidad competitiva, barreras de entrada y margen estructural</small>"]
+    S3["<b>Nivel 3: Diagnóstico Interno y Cruce</b><br/><b>DAFO Cuantitativo y Matriz CAME</b><br/><small>Alineación de fortalezas/debilidades con oportunidades/amenazas</small>"]
+    S4["<b>Nivel 4: Gestión de Cartera</b><br/><b>Matriz BCG y Matriz McKinsey / GE 3x3</b><br/><small>Asignación de CAPEX corporativo, zonas de inversión y ROIC</small>"]
+    S5["<b>Nivel 5: Adjudicación y Selección Ejecutiva</b><br/><b>Matriz DAR Cuantitativa (CMMI / KT)</b><br/><small>Filtros Veto, scoring multicriterio, What-If y Board Decision Gateway</small>"]
+
+    S1 --> S2
+    S2 --> S3
+    S3 --> S4
+    S4 --> S5
+
+    style S1 fill:#EFF6FF,stroke:#3B82F6,stroke-width:1.5px,color:#1E3A8A
+    style S2 fill:#EEF2FF,stroke:#6366F1,stroke-width:1.5px,color:#312E81
+    style S3 fill:#ECFDF5,stroke:#10B981,stroke-width:1.5px,color:#064E3B
+    style S4 fill:#FFFBEB,stroke:#F59E0B,stroke-width:1.5px,color:#92400E
+    style S5 fill:#0F172A,stroke:#2563EB,stroke-width:2.5px,color:#FFFFFF
+{{< /mermaid >}}
+
+1. **Nivel 1 — Escaneo del Macroentorno Exógeno ([Matriz PESTEL Cuantitativa](/es/posts/matriz-pestel-cuantitativa/)):** Calibra las tendencias regulatorias, geopolíticas y macroeconómicas que impactan la viabilidad de inversiones a largo plazo.
+2. **Nivel 2 — Dinámica Microeconómica e Industria ([5 Fuerzas de Porter Ponderadas](/es/posts/5-fuerzas-porter-cuantitativas/)):** Determina el poder de negociación de proveedores tecnológicos y barreras de entrada en los mercados donde opera la firma.
+3. **Nivel 3 — Diagnóstico Situacional y Cruce Operativo ([DAFO Cuantitativo & Matriz CAME](/es/posts/dafo-cuantitativo-matriz-came/)):** Identifica las brechas operativas críticas internas que exigen modernizar sistemas o ejecutar compras clave.
+4. **Nivel 4 — Asignación de Capital y Gestión de Cartera ([Matriz BCG Dinámica](/es/posts/matriz-bcg-dinamica/) y [Matriz McKinsey / GE 3x3](/es/posts/matriz-mckinsey-ge/)):** Define el volumen de CAPEX disponible y prioriza las Unidades Estratégicas de Negocio que deben recibir inversión prioritaria (todos integrados en el [Kit de Estrategia Corporativa MBA](/es/posts/estrategia-corporativa-mba-framework-cuantitativo/)).
+5. **Nivel 5 — Adjudicación y Selección de Alternativas Críticas (Matriz DAR Cuantitativa):** Una vez que el Consejo aprueba el presupuesto y el mandato estratégico, la Matriz DAR asume el control: selecciona objetivamente el proveedor tecnológico (ERP/CRM), el contratista de ingeniería, la empresa diana en un proceso de M&A o la disyuntiva Make vs. Buy mediante filtros veto y scoring multicriterio.
+
+### ¿Cuáles son los Objetivos Principales de la Matriz DAR?
+
+El objetivo primordial de una Matriz DAR corporativa es resolver cuatro vulnerabilidades universales del gobierno corporativo:
+
+1. **Erradicar el Efecto HiPPO (*Highest Paid Person's Opinion*):** Sustituir la imposición unilateral del directivo de mayor rango por un modelo matemático donde las opiniones deben respaldarse con métricas objetivas auditables.
+2. **Neutralizar el Efecto Halo y el Carisma Comercial:** Evitar que un despliegue de marketing impecable o un comercial elocuente desvíen la atención de deficiencias graves en arquitectura, ciberseguridad o soporte postventa.
+3. **Eliminar la Compensación Ilícita de Deficiencias Graves:** Asegurar que ninguna ventaja secundaria en precio u operatividad pueda anular el incumplimiento de requisitos regulatorios o de continuidad del negocio.
+4. **Blindar la Decisión ante Auditorías y Comités de Consejo:** Proveer un rastro documental inalterable con fórmulas protegidas, análisis de sensibilidad marginal y actas ejecutivas vinculantes.
+
+### Resultados Esperados: ¿Qué debe Arrojar una Matriz DAR Eficaz?
+
+Bajo los estándares de consultoría de Datalaria, la ejecución de la Matriz DAR culmina en tres entregables de grado Consejo:
+
+* **Motor de Cálculo Auditable en Excel (.xlsx):** Un libro estructurado con tres capas interconectadas (Filtros Veto, Scoring Ponderado y Dashboard Ejecutivo), con fórmulas matriciales protegidas y celdas de entrada desbloqueadas para inputs del usuario.
+* **Presentación Ejecutiva en PowerPoint (.pptx 16:9 Widescreen):** Diseñada bajo la Pirámide de Minto con *Action Titles*, síntesis visual del embudo de descalificación y el **Board Decision Gateway** con 4 resoluciones formales y bloques de firmas digitales para el CEO, CFO, CIO y CPO.
+* **Guía Metodológica Oficial en PDF (5 Páginas):** Demostración matemática formal, protocolo de auditoría antisesgo y catálogo de respuestas para comités de auditoría (Board Defense FAQ).
 
 ---
 
@@ -223,6 +302,8 @@ Para directores generales (CEO), directores financieros (CFO), directores de tec
   original_price="24€"
   badge="⚖️ Decisión Objetiva CMMI"
   icon="⚖️"
+  preview_image="preview-pack.png"
+  preview_caption="Vista previa real de los entregables incluidos: Motor Excel (.xlsx) con Filtros Veto y Scoring Ponderado, Presentación C-Level (.pptx 16:9 Widescreen) y Guía Metodológica Oficial (.pdf)."
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Guía Metodológica PDF"
   features="Algoritmo de scoring ponderado con Criterios Veto (Non-Negotiable)|Comparativa cuantitativa de hasta 5 alternativas o proveedores|Slide PPTX con tabla ejecutiva de trade-offs y recomendación final|Guía metodológica con protocolo de auditoría de decisiones|Descarga directa inmediata (.ZIP con versiones ES y EN)"
   checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/17db9367-dd18-4bb6-8f47-722d738c43c3"

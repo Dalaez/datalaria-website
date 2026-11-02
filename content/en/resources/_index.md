@@ -442,7 +442,7 @@ Details ℹ️
 <button type="button" class="btn-kit-info" onclick="openModal('pack-dar')">
 Details ℹ️
 </button>
-<span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Methodological guide coming soon on the blog">Guide ⏳</span>
+<a href="/en/posts/quantitative-dar-matrix/" class="btn-kit-info" title="Read technical article">Technical Article 📖</a>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/17db9367-dd18-4bb6-8f47-722d738c43c3" class="btn-kit-buy lemonsqueezy-button">Download →</a>
 </div>
 </div>
@@ -915,7 +915,7 @@ Details ℹ️
             <button type="button" class="btn-kit-info" onclick="openModal('pack-dar')">
               Details ℹ️
             </button>
-            <span class="btn-kit-info btn-disabled" style="opacity: 0.55; cursor: default; border-style: dashed;" title="Methodological guide coming soon on the blog">Guide ⏳</span>
+            <a href="/en/posts/quantitative-dar-matrix/" class="btn-kit-info" title="Read technical article">Technical Article 📖</a>
             <a href="https://datalaria.lemonsqueezy.com/checkout/buy/17db9367-dd18-4bb6-8f47-722d738c43c3" class="btn-kit-buy lemonsqueezy-button">Download →</a>
           </div>
         </div>
@@ -1469,7 +1469,7 @@ Details ℹ️
         "Corporate governance decision-making methodology guide"
       ],
       checkoutUrl: "https://datalaria.lemonsqueezy.com/checkout/buy/17db9367-dd18-4bb6-8f47-722d738c43c3",
-      guideUrl: null
+      guideUrl: "/en/posts/quantitative-dar-matrix/"
     },
 
     // 7. RICE & ICE Matrix (AVAILABLE)
