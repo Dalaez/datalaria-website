@@ -1,5 +1,6 @@
 {{- $isES := eq .Page.Language.Lang "es" -}}
 {{- $uid := printf "helix-wl-%d" .Ordinal -}}
+<div id="helix-waitlist" style="position: relative; top: -40px; visibility: hidden;"></div>
 <div class="helix-waitlist-card" id="{{ $uid }}" style="margin: 2.2rem 0; padding: 1.75rem; border-radius: 14px; background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%); border: 1px solid rgba(56, 189, 248, 0.35); box-shadow: 0 12px 32px -8px rgba(2, 6, 23, 0.65); color: #f8fafc;">
   <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; margin-bottom: 0.85rem;">
     <span style="display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.3rem 0.75rem; border-radius: 999px; background: rgba(56, 189, 248, 0.14); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3);">
