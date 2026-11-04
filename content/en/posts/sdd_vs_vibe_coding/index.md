@@ -23,7 +23,7 @@ By late 2026, however, that initial euphoria has given way to a brutal engineeri
 
 Applications that performed seamlessly in local development crash violently under real production concurrency; bloated repositories accumulate redundant dependencies and hallucinated external APIs; and any attempt to refactor a core module triggers an unpredictable cascade of silent regressions that no human engineer understands or knows how to debug.
 
-As we analyzed in [How to Build AI Agents for Daily Enterprise Operations with SDD](/en/posts/agentes_ia_operativa_sdd/), in [AI Agent Evaluation & Testing in Production](/en/posts/evaluating_ai_agents/) when warning against the perils of superficial *vibe checking*, and in [Silicon Valley and the PiperNet Dilemma](/en/posts/silicon_valley/) regarding rogue autonomous agents, software engineering has reached a historic fork in the road.
+As we analyzed in [AI Agent Evaluation & Testing in Production](/en/posts/evaluating_ai_agents/) when warning against the perils of superficial *vibe checking*, in [Silicon Valley and the PiperNet Dilemma](/en/posts/silicon_valley/) regarding rogue autonomous agents, and as we will explore in our upcoming **November 11** companion guide (*How to Build AI Agents for Daily Enterprise Operations with SDD*), software engineering has reached a historic fork in the road.
 
 The professional response to this crisis has not been to abandon AI and revert to manual keystroke typing, but rather to embrace a mature, disciplined methodology: **SDD (*Spec-Driven Development*)**.
 
@@ -37,16 +37,7 @@ Vibe Coding is undeniably phenomenal for one specific use case: **zero-to-one ve
 
 The catastrophe begins the exact moment that prototype must mature into a scalable, secure, enterprise-grade software product.
 
-```
-Software Lifecycle Velocity Curve:
-Velocity ^
-         |  /-- Vibe Coding (Initial explosive velocity, collapse from Vibe Debt)
-         | / \
-         |/   \___________
-         |   /------------ SDD (Initial specification investment, sustained velocity)
-         |  /
-         +-----------------------------------> Time (Weeks)
-```
+![Software Lifecycle Velocity Curve: Vibe Coding vs. Spec-Driven Development (SDD)](velocity_curve_sdd_vs_vibe_coding.svg)
 
 The underlying pathologies of *Vibe Coding* are structural:
 
@@ -162,13 +153,13 @@ The defining technical breakthrough of SDD in 2026 is the automated **Self-Heali
 3. **Self-Healing**: If a test fails or a schema validation errors out, the pipeline requires zero manual developer intervention. The compiler traceback is piped directly back into the agent context: *“Idempotency test failed because the header key does not persist in Redis cache. Refactor the implementation to comply with Section 1 of the specification.”*
 4. **Convergence**: Within one or two autonomous feedback cycles, the code compiles cleanly, passing 100% of defined acceptance criteria.
 
-This workflow aligns directly with the decoupled tool architecture explored in our analysis of the [Model Context Protocol (MCP)](/en/posts/mcp_protocol/) and the standardized operational engineering of [Project Operations Engineering](/en/posts/proj_ops_parte1_intro/).
+This workflow aligns directly with the decoupled tool architecture explored in our analysis of the [Model Context Protocol (MCP)](/en/posts/mcp_protocol/) and the deterministic telemetry of [Operational Observability & Agentic Radar](/en/posts/obs_part1_intro/).
 
 ---
 
 ### The Evolution of the Software Engineer in the AGI Era
 
-The rapid advancement of deep reasoning models and inference-time scaling—which we explore in our upcoming article—will not make software engineers obsolete; it will **liberate them from the mechanical drudgery of syntax**.
+The rapid advancement of deep reasoning models and inference-time scaling—which we will explore in an upcoming installment—will not make software engineers obsolete; it will **liberate them from the mechanical drudgery of syntax**.
 
 In 2026, writing a `for` loop, structuring CRUD endpoints, or handwriting JSON serializers is no longer an intellectual skill that justifies a senior engineer’s salary. Those are commoditized compute operations.
 
@@ -177,6 +168,10 @@ The irreplaceable value of senior engineers has shifted upwards to:
 * **Invariant & Security Governance**: Identifying concurrency race conditions, security vectors, and regulatory compliance requirements mandated by standards like the [EU AI Act](/en/posts/eu_ai_act/).
 * **Flawless Specification Authoring**: The engineers who write the clearest, most precise specifications for AI agents will build software with 10x the velocity, 10x lower operational costs, and zero technical debt.
 
+
+In fact, this exact paradigm powers **Datalaria Helix**, our upcoming SDD engineering operating system featuring a **coordinated squad of 12 specialized AI agents** (launching as a downloadable toolkit in **January 2027**), which we are currently using internally to audit and harden **Datalaria Pulse** (our *Content Ops as Code* platform launching on **November 18**).
+
+{{< helix-waitlist >}}
 ---
 
 ### An Open Question for the Reader
@@ -189,17 +184,15 @@ In your day-to-day work with AI coding agents:
 
 **Do you believe that future programming languages will evolve into formal specification formats rather than executable syntax?**
 
-We would love to hear your experiences. Share your thoughts in the comments below.
-
 ---
 
 #### References and Further Reading:
 * [**Andrej Karpathy (2025/2026)**: *From Vibe Coding to Agentic Engineering — AI Ascent Keynote*](https://www.youtube.com/watch?v=96jN2OCOfLs)
 * [**Martin Fowler**: *Specification-By-Example and Contract-Driven Design Patterns*](https://martinfowler.com/)
 * [**OpenAPI Specification**: *The Standard for Machine-Readable Interface Contracts*](https://spec.openapis.org/oas/latest.html)
-* [**Datalaria**: AI Agent Evaluation & Testing in Production — How to Measure the Unpredictable](/en/posts/evaluacion_agentes_ia/)
-* [**Datalaria**: 2026 Data & AI Productivity Stack](/en/posts/stack_productividad_2026/)
+* [**Datalaria**: AI Agent Evaluation & Testing in Production — How to Measure the Unpredictable](/en/posts/evaluating_ai_agents/)
+* [**Datalaria**: 2026 Data & AI Productivity Stack](/en/posts/productivity_stack_2026/)
 * [**Datalaria**: Model Context Protocol (MCP) — The Open Integration Standard](/en/posts/mcp_protocol/)
 * [**Datalaria**: Silicon Valley and the PiperNet Dilemma — Uncontrollable Autonomous AI](/en/posts/silicon_valley/)
-* [**Datalaria**: Project Operations Engineering — Systems Management & Standards](/en/posts/proj_ops_parte1_intro/)
+* [**Datalaria**: Operational Observability & Agentic Radar](/en/posts/obs_part1_intro/)
 * [**Datalaria**: EU AI Act — Governance & Technical Oversight Framework](/en/posts/eu_ai_act/)
