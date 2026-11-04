@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-11-04T07:24:01.599070Z",
+  "generated_at": "2026-11-04T07:27:03.286360Z",
   "total_assets": 142,
   "published_assets": 119,
   "scheduled_assets": 19,
@@ -4938,8 +4938,8 @@
       "brief_es": "Por qué el 'Vibe Coding' es una máquina de acumular deuda técnica invisible y cómo SDD (Spec-Driven Development) invierte el rol del ingeniero: de escribir sintaxis manual a diseñar contratos de interfaz, diagramas de estado y suites de test que la IA ejecuta sin alucinaciones.",
       "brief_en": "Why 'Vibe Coding' accumulates invisible technical debt and how Spec-Driven Development (SDD) inverts the software engineer's role: from writing manual syntax to authoring interface contracts, state diagrams, and invariant test suites that AI agents execute without hallucination.",
       "publish_date": "2026-11-04",
-      "last_modified_es": "2026-10-31T20:23:26+01:00",
-      "last_modified_en": "2026-10-31T20:23:26+01:00",
+      "last_modified_es": "2026-11-04T08:23:47+01:00",
+      "last_modified_en": "2026-11-04T08:23:47+01:00",
       "language_parity": "complete",
       "category": "IA, Ingeniería y Proyectos",
       "categories": [
