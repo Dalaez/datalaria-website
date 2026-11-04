@@ -163,7 +163,7 @@ Migrating from an existing Notion database to the structured Pulse schema takes 
 3. Run our automated migration script:
 
 ```bash
-python -m ops.pulse.migrate_notion_csv --input notion_export.csv --output Pulse_Tracker.xlsx
+python migrate_notion.py --input sample_notion_export.csv --output Pulse_Tracker.xlsx --format xlsx
 ```
 
 The script performs the following automatic transformations:
@@ -216,17 +216,20 @@ The scanner completes an audit of hundreds of technical files in under **200 mil
 The **Datalaria Pulse Kit** (available on Lemon Squeezy) adheres strictly to the *Buy Once, Own Forever* philosophy:
 
 ```
-Datalaria_Pulse_Kit_v0.1.0.zip
+Datalaria_Pulse_Kit.zip
 ├── 01_Excel_Templates/
 │   ├── Pulse_Content_Ops_Template.xlsx    (Master Template with cell validations)
-│   └── notion_power_query.m         (Power Query M connector source)
+│   ├── notion_power_query.m               (Power Query M connector: Notion CSV ➔ Excel)
+│   └── git_public_json_power_query.m      (Power Query M connector: Git public.json ➔ Excel)
 ├── 02_Migration_Scripts/
-│   ├── migrate_notion.py          (Notion ➔ Excel/Git migration engine)
-│   └── pulse_repo_scanner.py          (Universal zero-dependency CLI)
+│   ├── migrate_notion.py                  (Notion CSV ➔ Excel .xlsx / YAML / JSON engine)
+│   ├── pulse_repo_scanner.py              (Universal zero-dependency CLI)
+│   └── sample_notion_export.csv           (60-second test CSV dataset)
 ├── 03_Documentation/
-│   ├── GUIA_PULSE_KIT.md         (Step-by-step setup guide)
-│   └── DATA_DICTIONARY.md             (Canonical attribute specification)
-└── LICENSE.txt                        (Perpetual Commercial License)
+│   ├── GUIA_EJECUTIVA_PULSE.pdf           (Executive manual formatted in PDF)
+│   ├── GUIA_PULSE_KIT.md                  (Step-by-step instructions and CI/CD)
+│   └── ESPECIFICACION_CAMPOS.md           (Canonical data dictionary)
+└── LICENSE.txt                            (Perpetual Commercial License)
 ```
 
 ### 3-Year Total Cost of Ownership (TCO) Comparison:

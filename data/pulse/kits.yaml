@@ -83,16 +83,18 @@ suites:
   type: suite
   topic: software
   status: coming
-  price: 8 €
-  original_price: 25 €
-  icon: 💻
+  price: 19 €
+  original_price: 39 €
+  icon: 🧬
   checkout_url: '#'
-  title_es: 'Suite de Ingeniería: Software, IA & SDD'
-  title_en: 'Engineering Suite: Software, AI & SDD'
-  description_es: Kits de especificación formal ejecutable, arquitectura de agentes
-    y contratos tipados para erradicar la deuda técnica.
-  description_en: Executable formal specification kits, agent architecture rules and
-    typed contracts to eliminate technical debt.
+  title_es: 'Datalaria Helix: Suite SDD & Escuadrón de 12 Agentes IA'
+  title_en: 'Datalaria Helix: SDD Suite & 12-Agent AI Engineering Squad'
+  description_es: Sistema operativo SDD con escuadrón coordinado de 12 agentes especializados,
+    triaje determinista XS–XL, contratos de diseño UX/UI y CLI de verificación con rollback.
+  description_en: SDD operating system with a coordinated 12-agent engineering squad,
+    deterministic XS–XL triage, UX/UI design contracts, and verification & rollback CLI.
+  guide_url_es: /es/posts/sdd_vs_vibe_coding/
+  guide_url_en: /en/posts/sdd_vs_vibe_coding/
   included_kits:
   - pack-sdd
 kits:
@@ -615,41 +617,36 @@ kits:
   topic: software
   category_es: Software, IA & SDD
   status: coming
-  price: 8€
-  original_price: 25€
-  icon: 📐
+  price: 19€
+  original_price: 39€
+  icon: 🧬
   deliverables_es:
-  - Spec Templates .md
-  - OpenAPI & JSON Schemas
-  - Cursor / AGY Rules
-  - Guía PDF
+  - 12 AI Agents Squad
+  - CLI Verify & Rollback
+  - Spec & UX Blueprints
   features_es:
-  - Plantilla maestra de Especificación Funcional con Architecture Decisions (ADR)
-  - Contratos tipados en JSON Schema y OpenAPI v3 para compilar sin alucinaciones
-  - Archivo de directivas optimizadas (.cursorrules / AGY instructions) para agentes
-    de código
-  - Checklist de verificación formal y rúbrica de pruebas deterministas de integración
-  - Guía metodológica PDF con flujo de trabajo Spec-First para ingenieros y PMs técnicos
+  - Escuadrón coordinado de 12 Agentes IA (Orquestador XS–XL, Product Analyst, Arquitecto, UX/UI, Frontend, Backend, APIs/MCP, Media/i18n, Monetización, Seguridad, QA con veto y Release)
+  - Adaptadores listos para Google Antigravity, Claude Code, Cursor y Codex con memoria persistente (ROADMAP.md y DECISIONS.md)
+  - Plantillas ejecutables SPEC.md, AGENT_SPEC.md y contrato visual design.md anti-plantilla genérica
+  - CLI determinista en Python (init, triage, new-spec, checkpoint, verify, rollback) y Guía Ejecutiva PDF
   checkout_url: '#'
-  title_es: Kit Spec-Driven Development (SDD) para Equipos de Software e IA
-  description_es: Especificaciones ejecutables, contratos tipados y directrices para
-    agentes de IA que erradican la deuda técnica del vibe coding.
-  article_url_es: null
-  guide_url_es: null
-  title_en: Spec-Driven Development (SDD) Kit for AI & Software
+  title_es: 'Datalaria Helix: Kit SDD & Escuadrón de 12 Agentes IA'
+  description_es: Sistema operativo Spec-Driven Development con 12 agentes especializados,
+    triaje XS–XL, contrato UX/UI y verificación determinista (Lanzamiento Enero 2027).
+  article_url_es: /es/posts/sdd_vs_vibe_coding/
+  guide_url_es: /es/posts/sdd_vs_vibe_coding/
+  title_en: 'Datalaria Helix: SDD Kit & 12-Agent AI Engineering Squad'
   category_en: Software, AI & SDD
-  description_en: Executable formal specifications, typed contracts, and AI agent
-    instructions to eradicate vibe coding tech debt.
+  description_en: Spec-Driven Development operating system with 12 specialized AI agents,
+    XS–XL triage, UX/UI contracts, and deterministic verification (Launching January 2027).
   deliverables_en:
-  - Spec Templates .md
-  - OpenAPI & JSON Schemas
-  - Cursor / AGY Rules
-  - PDF Guide
+  - 12 AI Agents Squad
+  - CLI Verify & Rollback
+  - Spec & UX Blueprints
   features_en:
-  - Master Functional Specification template with Architecture Decisions (ADRs)
-  - Typed contracts in JSON Schema and OpenAPI v3 for hallucination-free codegen
-  - Optimized prompt & agent directives (.cursorrules / AGY instructions)
-  - Formal verification checklist and deterministic integration test rubrics
-  - PDF Spec-First methodology guide for engineering leads and technical PMs
-  article_url_en: null
-  guide_url_en: null
+  - Coordinated 12-Agent AI Squad (XS–XL Orchestrator, Product Analyst, Architect, UX/UI, Frontend, Backend, APIs/MCP, Media/i18n, Monetization, Security, Veto QA, and Release)
+  - Ready-to-use adapters for Google Antigravity, Claude Code, Cursor, and Codex with persistent state memory (ROADMAP.md & DECISIONS.md)
+  - Executable SPEC.md, AGENT_SPEC.md, and anti-cookie-cutter design.md visual contracts
+  - Zero-dependency Python CLI (init, triage, new-spec, checkpoint, verify, rollback) and Executive PDF Playbook
+  article_url_en: /en/posts/sdd_vs_vibe_coding/
+  guide_url_en: /en/posts/sdd_vs_vibe_coding/

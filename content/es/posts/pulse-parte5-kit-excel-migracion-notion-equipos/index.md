@@ -163,7 +163,7 @@ Si tu equipo ya gestiona una base de datos en Notion, migrar a la estructura est
 3. Ejecuta el script de migración determinista:
 
 ```bash
-python -m ops.pulse.migrate_notion_csv --input notion_export.csv --output Pulse_Tracker.xlsx
+python migrate_notion.py --input sample_notion_export.csv --output Pulse_Tracker.xlsx --format xlsx
 ```
 
 El script ejecuta las siguientes transformaciones automáticas:
@@ -217,17 +217,20 @@ Este script se ejecuta en menos de **200 milisegundos** sobre repositorios con c
 El paquete **Datalaria Pulse Kit** (disponible en Lemon Squeezy) se distribuye bajo una filosofía de soberanía de datos estricta:
 
 ```
-Datalaria_Pulse_Kit_v0.1.0.zip
+Datalaria_Pulse_Kit.zip
 ├── 01_Excel_Templates/
 │   ├── Pulse_Content_Ops_Template.xlsx    (Plantilla Maestra con validaciones)
-│   └── notion_power_query.m         (Código fuente de consulta Power Query)
+│   ├── notion_power_query.m               (Conector Power Query: Notion CSV ➔ Excel)
+│   └── git_public_json_power_query.m      (Conector Power Query: Git public.json ➔ Excel)
 ├── 02_Migration_Scripts/
-│   ├── migrate_notion.py          (Conversor Notion ➔ Excel/Git)
-│   └── pulse_repo_scanner.py          (CLI universal sin dependencias)
+│   ├── migrate_notion.py                  (Conversor Notion CSV ➔ Excel .xlsx / YAML / JSON)
+│   ├── pulse_repo_scanner.py              (CLI universal sin dependencias)
+│   └── sample_notion_export.csv           (Dataset CSV de prueba en 60 segundos)
 ├── 03_Documentation/
-│   ├── GUIA_PULSE_KIT.md       (Instrucciones paso a paso)
-│   └── ESPECIFICACION_CAMPOS.md       (Diccionario de datos canónico)
-└── LICENSE.txt                        (Licencia Comercial Perpetua)
+│   ├── GUIA_EJECUTIVA_PULSE.pdf           (Manual ejecutivo maquetado en PDF)
+│   ├── GUIA_PULSE_KIT.md                  (Instrucciones paso a paso y CI/CD)
+│   └── ESPECIFICACION_CAMPOS.md           (Diccionario de datos canónico)
+└── LICENSE.txt                            (Licencia Comercial Perpetua)
 ```
 
 ### Análisis Comparativo de Costes (TCO a 3 Años):

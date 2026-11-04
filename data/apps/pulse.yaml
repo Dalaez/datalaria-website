@@ -7,7 +7,7 @@ cover: cover.png
 app_url: /apps/pulse/
 demo_url: /apps/pulse/#/?demo=true
 source_spec: specs/apps/pulse/spec.md
-current_version: v0.2.0
+current_version: v0.3.0
 
 title:
   es: "Datalaria Pulse"
@@ -81,6 +81,22 @@ tech:
     items: ["Hugo Static Portal", "GitHub Actions CI/CD", "Git Pre-Commit Hooks"]
 
 releases:
+  - version: "v0.3.0"
+    date: "2026-11-03"
+    state: released
+    type: feature
+    title:
+      es: "Operación Crisol (Datalaria Helix): Kit v1.1 con 3 Carpetas, Exportador Excel Directo, Guía PDF y Diagnóstico Notion 1-Clic"
+      en: "Operation Crucible (Datalaria Helix): Kit v1.1 with 3 Folders, Direct Excel Exporter, PDF Guide, and 1-Click Notion Diagnostic"
+    changes:
+      - es: "Empaquetado comercial en 3 carpetas numeradas (01_Excel_Templates, 02_Migration_Scripts, 03_Documentation) con conectores duales Power Query M y dataset de muestra."
+        en: "Commercial bundle in 3 numbered directories (01_Excel_Templates, 02_Migration_Scripts, 03_Documentation) with dual Power Query M connectors and sample dataset."
+      - es: "Migrador migrate_notion.py con soporte directo de exportación a Excel .xlsx preservando las 6 hojas y fórmulas universales."
+        en: "migrate_notion.py with direct Excel .xlsx export support preserving all 6 sheets and universal formulas."
+      - es: "Guía Ejecutiva Datalaria Pulse maquetada en PDF (GUIA_EJECUTIVA_PULSE.pdf) y especificación canónica de campos (ESPECIFICACION_CAMPOS.md)."
+        en: "Datalaria Pulse Executive PDF Guide (GUIA_EJECUTIVA_PULSE.pdf) and canonical fields specification (ESPECIFICACION_CAMPOS.md)."
+      - es: "Evolución UX/PLG en React SPA: botón de prueba Notion 1-clic con tarjeta de diagnóstico ejecutivo, enlace de retorno ← Datalaria y avance rápido en Kanban."
+        en: "React SPA UX/PLG evolution: 1-click sample Notion test with executive diagnostic card, ← Datalaria back-navigation, and Kanban quick-advance."
   - version: "v0.2.0"
     date: "2026-10-29"
     state: released

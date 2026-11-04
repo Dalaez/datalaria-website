@@ -83,26 +83,40 @@
             messageEl.textContent = '';
             messageEl.className = 'newsletter-message';
 
+            var isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
             fetch('/.netlify/functions/subscribe', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email: email, name: name, language: language })
             })
-                .then(function (response) { return response.json(); })
+                .then(function (response) {
+                    if (isLocalhost && response.status === 404) {
+                        return { success: true, isDev: true };
+                    }
+                    return response.json();
+                })
                 .then(function (data) {
-                    if (data.success) {
-                        messageEl.textContent = msg.success;
+                    if (data && data.success) {
+                        messageEl.textContent = msg.success + (data.isDev ? (pageLang === 'es' ? ' [Modo Localhost: En producción Netlify conecta con Brevo]' : ' [Localhost Mode: In Netlify production Brevo connects]') : '');
                         messageEl.classList.add('success');
                         form.reset();
                         langSelect.value = pageLang;
                     } else {
-                        throw new Error(data.error);
+                        throw new Error(data ? data.error : 'Unknown error');
                     }
                 })
                 .catch(function (error) {
-                    console.error('Newsletter error:', error);
-                    messageEl.textContent = msg.error;
-                    messageEl.classList.add('error');
+                    if (isLocalhost) {
+                        messageEl.textContent = msg.success + (pageLang === 'es' ? ' [Modo Localhost: En producción Netlify conecta con Brevo]' : ' [Localhost Mode: In Netlify production Brevo connects]');
+                        messageEl.classList.add('success');
+                        form.reset();
+                        langSelect.value = pageLang;
+                    } else {
+                        console.error('Newsletter error:', error);
+                        messageEl.textContent = msg.error;
+                        messageEl.classList.add('error');
+                    }
                 })
                 .finally(function () {
                     submitBtn.disabled = false;

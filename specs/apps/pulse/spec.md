@@ -1,7 +1,7 @@
 # Especificación Técnica SDD: Datalaria Pulse (`pulse`)
 
 > **ID de Especificación:** `SPEC-APP-PULSE`  
-> **Versión:** `1.0.0`  
+> **Versión:** `1.1.0`  
 > **Estado:** `APPROVED`  
 > **Propietario de Dominio:** Datalaria (Operations Engineering & Applied AI)  
 > **Ubicación del Código Fuente:** `apps/pulse/web/` (Frontend SPA) · `ops/pulse/` (Motor Python ETL + Kit Factory)  
@@ -78,6 +78,17 @@ flowchart LR
 | `apps/pulse/web/` | Código fuente de la SPA (React 19 + Vite + TypeScript + Tailwind/CSS variables de Datalaria): vistas Tabla, Kanban, Calendario, Salud Editorial e importador CSV de Notion en cliente. |
 | `static/apps/pulse/` | Bundle estático compilado (`index.html`, `assets/`, `data/public.json`). Cero archivos `.py`, `.env` o datos privados. |
 | `.github/workflows/pulse.yml` | Pipeline CI/CD ejecutado en cada `push` a `content/**` y mediante `schedule` diario para mantener `public.json` sincronizado. |
+| `specs/apps/pulse/design.md` | Sistema de diseño UX/UI, tokens CSS, *Signature Wow Moment* y estados de interfaz (`04-ux-ui`). |
+| `ops/pulse/kit/build_pdf_guide.py` | Generador determinista de `packages/pulse/GUIA_EJECUTIVA_PULSE.pdf` mediante PyMuPDF (`fitz`). |
+| `ops/pulse/release_18nov.py` | Script de gobernanza de embargo (`--verify-embargo`) y preparación/activación atómica para el lanzamiento del 18 de noviembre. |
+
+### 2.2 Triaje y Asignación del Escuadrón Datalaria Helix (`ADR-018`)
+- **Rúbrica aplicable:** [`specs/squad/triage-rubric.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/triage-rubric.md)
+- **Roles Principales en la Operación Crisol (Hito 6.3):**
+  - **Dirección:** `01-orchestrator`, `02-product-analyst`, `03-architect`
+  - **Construcción:** `04-ux-ui` (`design.md`, UI shell), `05-frontend` (`App.tsx`), `06-backend-data` (`migrate_notion.py`, openpyxl), `07-apis-integrations` (GA4/GSC, Supabase), `08-media-i18n` (i18n, paridad bilingüe, PDF), `09-monetization` (pricing 19€, Lemon Squeezy, PLG)
+  - **Garantía (Con Veto — `INV-HELIX-1`):** `10-security-privacy` (`TRG-SEC`), `11-qa-verifier` (`TRG-QA`)
+  - **Entrega:** `12-release-devops` (empaquetado ZIP en 3 carpetas, embargo 18 nov, checkpoints)
 
 ---
 
@@ -251,3 +262,4 @@ Para dar por completado cada hito de la Fase 5, deben superarse con código `0` 
 | :--- | :--- | :--- | :--- | :--- |
 | `v0.1.0` | 2026-10-28 | 📐 Spec | Aprobación de la especificación técnica SDD (`SPEC-APP-PULSE`), modelo unificado de activos (`post`/`app`/`kit`), privacidad por métricas relativas y diseño del Kit Excel + importador de Notion (Hitos 5.0 y 5.1). | *Completado* |
 | `v0.2.0` | 2026-10-29 | ⚡ Pro Cloud | Arquitectura Pro Cloud sobre Supabase cluster datalaria-core (esquema pulse, RLS estricto auth.uid() = user_id, Auth en React SPA, sincronización bidireccional Web ↔ Localhost, usuario demo confirmado y suite pytest 18/18 verde — Hito 5.7 / ADR-015). | *Completado* |
+| `v0.3.0` | 2026-11-03 | 🛡️ Operación Crisol | Auditoría integral del escuadrón Datalaria Helix (Hito 6.3): `design.md`, re-empaquetado del Kit en 3 carpetas numeradas, exportador Excel directo `.xlsx` en `migrate_notion.py`, Guía Ejecutiva PDF (`GUIA_EJECUTIVA_PULSE.pdf`), dataset de muestra `sample_notion_export.csv`, conectores duales Power Query M, evolución UX/PLG en React SPA (diagnóstico de Notion en 1 clic, enlace `← Datalaria`, avance rápido Kanban y URLs dinámicas del Kit), script de gobernanza de embargo `release_18nov.py` y suite de 20 tests pytest. | *Completado* |

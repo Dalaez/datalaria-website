@@ -278,3 +278,27 @@
 - **Consecuencias:**
   - FASE 6 estructurada en Hitos 6.0–6.10 en `ROADMAP.md`, convirtiendo a Datalaria Pulse en el *Case Study #1* auditado por el escuadrón de 12 agentes antes de su salida el 18 de noviembre.
   - La adopción interna del escuadrón (Constitución v1.1.0, Art. 9) será aditiva, con carga de roles bajo demanda y sin cambios retroactivos en specs existentes; se registrará en ADR-018 al ejecutar el Hito 6.2.
+
+
+---
+
+## ADR-018: Despliegue Interno (Dogfooding) del Escuadrón de 12 Agentes Datalaria Helix, Constitución v1.1.0 (Art. 9) y Compilador Multi-Herramienta (`ops/helix/build_adapters.py`)
+- **Fecha:** 2026-11-03
+- **Estado:** Aceptado (Implementado en Hito 6.2)
+- **Contexto:**
+  1. Con la especificación maestra `SPEC-APP-HELIX` y las 12 fichas canónicas `AGENT_SPEC` aprobadas en `specs/squad/` (Hito 6.1), Datalaria debe convertirse en el **Caso Cero (*Dogfooding*)** de su propio producto antes de auditar Datalaria Pulse en el Hito 6.3 (*Operación Crisol*).
+  2. Existen dos riesgos técnicos documentados en la literatura de sistemas multi-agente para codificación: (a) la **saturación de ventana de contexto** si se cargan las 12 fichas simultáneamente en cada sesión, y (b) la **deriva de configuración (*Adapter Drift*)** entre distintas herramientas de IA (Google Antigravity, Claude Code, Cursor, Codex).
+- **Decisión:**
+  1. **Elevar la Constitución SDD a la versión `1.1.0` incorporando el Artículo 9 (`Gobernanza del Escuadrón de 12 Agentes Datalaria Helix`):**
+     - Instituye con rango constitucional las invariantes `INV-HELIX-1` (separación estricta Construcción vs. Verificación y derecho a veto exclusivo de `10-security-privacy` y `11-qa-verifier`), `INV-HELIX-2` (triaje determinista `XS–XL` y carga de fichas bajo demanda), `INV-HELIX-3` (disparadores automáticos innegociables `TRG-SEC`, `TRG-UX`, `TRG-I18N`, `TRG-MON`, `TRG-QA`) e `INV-HELIX-4` (fuente única en `specs/squad/`).
+  2. **Ampliación Aditiva de `AGENTS.md` (§5), `CLAUDE.md` y `_templates/app-spec.template.md`:**
+     - Se mantiene intacta la secuencia de arranque rápida en 3 pasos y se añade en `AGENTS.md` §5 la emisión obligatoria de la **Tarjeta de Triaje de 6 líneas** y la lectura selectiva de fichas.
+     - No se modifican retroactivamente las especificaciones de aplicaciones ya cerradas; la nueva sección §2.2 de la plantilla se aplica a nuevas apps o al auditar módulos activos (empezando por Datalaria Pulse en el Hito 6.3).
+  3. **Construcción del Motor de Validación y Compilador Multi-Herramienta (`ops/helix/`):**
+     - `ops/helix/models.py`: Contratos Pydantic v2 (`AgentSpecFrontmatter`, `TriageDecision`) y motor determinista `calculate_triage()` que implementa el algoritmo matemático de `SPEC-APP-HELIX` §4.1.
+     - `ops/helix/build_adapters.py`: Compilador determinista e idempotente (con soporte `--check` para CI/CD) que transforma `specs/squad/*.md` en adaptadores nativos para **Antigravity** (`.agents/squad/`), **Claude Code** (`.claude/agents/`) y **Cursor** (`.cursor/rules/helix-squad.mdc`), insertando cabeceras `DO NOT EDIT MANUALLY`.
+- **Alternativas descartadas:**
+  - *Incrustar el texto de los 12 agentes dentro de `AGENTS.md`:* Descartado por multiplicar por 8 el consumo de tokens de entrada en cada turno y degradar la atención del modelo en tareas pequeñas (`XS`/`S`).
+  - *Mantener archivos separados a mano en `.claude/agents/` y `specs/squad/`:* Descartado por garantizar desincronización a corto plazo.
+- **Consecuencias:**
+  - El repositorio de Datalaria opera desde hoy bajo el escuadrón de 12 agentes con verificación automatizada en `ops/helix/tests/` (`10/10 tests pytest`), dejando todo listo para ejecutar la **Operación Crisol sobre Datalaria Pulse (Hito 6.3)**.

@@ -169,7 +169,16 @@ export const i18n = {
     banner_client_empty_desc: 'Tu espacio está conectado a Supabase Cloud con aislamiento Row-Level Security. Registra tu primera idea, importa un CSV de Notion o carga datos de ejemplo para explorar.',
     btn_load_sample_data: 'Cargar Datos de Ejemplo',
     btn_back_to_my_data: 'Volver a mis datos',
-    empty_client_workspace: 'Aún no tienes contenidos registrados en tu espacio privado.'
+    empty_client_workspace: 'Aún no tienes contenidos registrados en tu espacio privado.',
+
+    // Mejoras Operación Crisol (Hito 6.3)
+    nav_back_portal: '← Datalaria',
+    btn_try_sample_csv: '⚡ Probar con CSV de Notion de ejemplo (1 clic)',
+    diag_card_title: 'Diagnóstico Instantáneo de tu Catálogo Notion',
+    diag_card_summary: 'Analizados {total} activos: {missingParity} sin paridad bilingüe ES/EN y {drafts} borradores/ideas listos para estructurar.',
+    diag_card_cta: 'Descargar Datalaria Pulse Kit (19€) →',
+    btn_advance_status: 'Avanzar fase →',
+    btn_rentabilizar_kit: 'Rentabilizar con Pulse Kit (19€)'
   },
   en: {
     brand_subtitle: 'Content Ops as Code — Editorial Governance & Organic ROI',
@@ -341,6 +350,15 @@ export const i18n = {
     banner_client_empty_desc: 'Your workspace is connected to Supabase Cloud with Row-Level Security isolation. Capture your first idea, import a Notion CSV, or load sample data to explore.',
     btn_load_sample_data: 'Load Sample Data',
     btn_back_to_my_data: 'Back to my data',
-    empty_client_workspace: 'You don\'t have any content registered in your private workspace yet.'
+    empty_client_workspace: 'You don\'t have any content registered in your private workspace yet.',
+
+    // Mejoras Operación Crisol (Hito 6.3)
+    nav_back_portal: '← Datalaria',
+    btn_try_sample_csv: '⚡ Try with Sample Notion CSV (1-Click)',
+    diag_card_title: 'Instant Notion Catalog Diagnostic',
+    diag_card_summary: 'Analyzed {total} assets: {missingParity} missing EN/ES parity and {drafts} drafts/ideas ready to structure.',
+    diag_card_cta: 'Get Datalaria Pulse Kit (19€) →',
+    btn_advance_status: 'Advance stage →',
+    btn_rentabilizar_kit: 'Monetize with Pulse Kit (19€)'
   }
 };

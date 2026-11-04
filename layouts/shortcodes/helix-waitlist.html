@@ -1,0 +1,155 @@
+{{- $isES := eq .Page.Language.Lang "es" -}}
+{{- $uid := printf "helix-wl-%d" .Ordinal -}}
+<div class="helix-waitlist-card" id="{{ $uid }}" style="margin: 2.2rem 0; padding: 1.75rem; border-radius: 14px; background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%); border: 1px solid rgba(56, 189, 248, 0.35); box-shadow: 0 12px 32px -8px rgba(2, 6, 23, 0.65); color: #f8fafc;">
+  <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; margin-bottom: 0.85rem;">
+    <span style="display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.3rem 0.75rem; border-radius: 999px; background: rgba(56, 189, 248, 0.14); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3);">
+      🧬 {{ if $isES }}Lanzamiento Enero 2027 · Acceso Prioritario{{ else }}January 2027 Launch · Priority Access{{ end }}
+    </span>
+    <span style="font-family: monospace; font-size: 0.9rem; font-weight: 700; color: #34d399; background: rgba(16, 185, 129, 0.14); padding: 0.28rem 0.7rem; border-radius: 8px; border: 1px solid rgba(52, 211, 153, 0.3);">
+      {{ if $isES }}Early-Bird: 19€ <s style="color: #94a3b8; font-weight: 400; margin-left: 4px;">39€</s>{{ else }}Early-Bird: 19€ <s style="color: #94a3b8; font-weight: 400; margin-left: 4px;">39€</s>{{ end }}
+    </span>
+  </div>
+
+  <h3 style="margin: 0 0 0.6rem 0; font-size: 1.35rem; line-height: 1.3; color: #f8fafc;">
+    {{ if $isES }}Datalaria Helix: Tu Escuadrón de Ingeniería IA de 12 Agentes bajo SDD{{ else }}Datalaria Helix: Your 12-Agent AI Engineering Squad Powered by SDD{{ end }}
+  </h3>
+
+  <p style="margin: 0 0 1rem 0; font-size: 0.95rem; line-height: 1.6; color: #cbd5e1;">
+    {{ if $isES }}
+      Despliega en tu propio proyecto el mismo sistema operativo de <strong>12 agentes especializados</strong> (<em>Orquestador con triaje XS–XL, Product Analyst, Arquitecto de Sistemas, Diseñador UX/UI, Frontend, Backend, APIs &amp; MCP, Media &amp; i18n, Monetización, Seguridad, QA Verifier con derecho a veto y Release/DevOps</em>) con el que estamos auditando y construyendo las aplicaciones de Datalaria.
+    {{ else }}
+      Deploy in your own project the exact <strong>12-specialized-agent operating system</strong> (<em>Orchestrator with XS–XL triage, Product Analyst, Systems Architect, UX/UI Designer, Frontend, Backend, APIs &amp; MCP, Media &amp; i18n, Monetization, Security, QA Verifier with veto power, and Release/DevOps</em>) we use to audit and ship Datalaria's production apps.
+    {{ end }}
+  </p>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 1.25rem;">
+    <span style="font-size: 0.75rem; padding: 0.22rem 0.6rem; border-radius: 6px; background: rgba(148, 163, 184, 0.14); color: #e2e8f0;">🧭 {{ if $isES }}Orquestador XS–XL{{ else }}XS–XL Orchestrator{{ end }}</span>
+    <span style="font-size: 0.75rem; padding: 0.22rem 0.6rem; border-radius: 6px; background: rgba(148, 163, 184, 0.14); color: #e2e8f0;">🎨 {{ if $isES }}UX/UI &amp; design.md{{ else }}UX/UI &amp; design.md{{ end }}</span>
+    <span style="font-size: 0.75rem; padding: 0.22rem 0.6rem; border-radius: 6px; background: rgba(148, 163, 184, 0.14); color: #e2e8f0;">🧪 {{ if $isES }}QA con Veto + CLI Rollback{{ else }}Veto QA + Rollback CLI{{ end }}</span>
+    <span style="font-size: 0.75rem; padding: 0.22rem 0.6rem; border-radius: 6px; background: rgba(148, 163, 184, 0.14); color: #e2e8f0;">⚡ {{ if $isES }}Antigravity · Claude · Cursor{{ else }}Antigravity · Claude · Cursor{{ end }}</span>
+  </div>
+
+  <form class="helix-wl-form" data-lang="{{ if $isES }}es{{ else }}en{{ end }}" style="display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center;">
+    <input type="text" name="name" required placeholder="{{ if $isES }}Tu nombre{{ else }}Your name{{ end }}" aria-label="{{ if $isES }}Tu nombre{{ else }}Your name{{ end }}" style="flex: 1 1 160px; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid #334155; background: #020617; color: #f8fafc; font-size: 0.9rem;" />
+    <input type="email" name="email" required placeholder="{{ if $isES }}Tu correo profesional{{ else }}Your work email{{ end }}" aria-label="{{ if $isES }}Tu correo profesional{{ else }}Your work email{{ end }}" style="flex: 1.4 1 220px; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid #334155; background: #020617; color: #f8fafc; font-size: 0.9rem;" />
+    <button type="submit" style="flex: 0 0 auto; padding: 0.68rem 1.25rem; border-radius: 8px; border: none; background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%); color: #ffffff; font-weight: 700; font-size: 0.9rem; cursor: pointer;">
+      {{ if $isES }}Unirme a la Lista Prioritaria →{{ else }}Join Priority Waitlist →{{ end }}
+    </button>
+  </form>
+
+  <div class="helix-wl-feedback" style="display: none; margin-top: 0.75rem; font-size: 0.88rem; font-weight: 600;"></div>
+
+  <div style="margin-top: 0.85rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.5rem; font-size: 0.78rem; color: #94a3b8;">
+    <span>🔒 {{ if $isES }}Cero spam. Recibirás el Starter Kit gratuito y el precio fundador de 19€.{{ else }}Zero spam. Receive the free Starter Kit and the 19€ founder price at launch.{{ end }}</span>
+    <a href="{{ if $isES }}/es/recursos/#software{{ else }}/en/resources/#software{{ end }}" style="color: #38bdf8; text-decoration: none; font-weight: 600;">
+      {{ if $isES }}Ver ficha en Recursos ↗{{ else }}View pack in Resources ↗{{ end }}
+    </a>
+  </div>
+</div>
+
+<script>
+(function() {
+  var root = document.getElementById('{{ $uid }}');
+  if (!root) return;
+  var form = root.querySelector('.helix-wl-form');
+  var feedback = root.querySelector('.helix-wl-feedback');
+  if (!form) return;
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var lang = form.getAttribute('data-lang') || 'es';
+    var nameInput = form.querySelector('input[name="name"]');
+    var emailInput = form.querySelector('input[name="email"]');
+    var btn = form.querySelector('button[type="submit"]');
+    var origText = btn.textContent;
+    var isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
+    btn.disabled = true;
+    btn.textContent = lang === 'es' ? 'Registrando...' : 'Registering...';
+    feedback.style.display = 'none';
+
+    function fireTelemetry() {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'join_waitlist_helix', {
+          item_id: 'pack-sdd',
+          item_name: 'Datalaria Helix',
+          language: lang,
+          source: 'post_shortcode'
+        });
+      } else if (Array.isArray(window.dataLayer)) {
+        window.dataLayer.push({
+          event: 'join_waitlist_helix',
+          item_id: 'pack-sdd',
+          item_name: 'Datalaria Helix',
+          language: lang,
+          source: 'post_shortcode'
+        });
+      }
+    }
+
+    try {
+      var res = await fetch('/.netlify/functions/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: nameInput.value.trim(),
+          email: emailInput.value.trim(),
+          language: lang,
+          list: 'helix'
+        })
+      });
+
+      // Si estamos en localhost y no hay backend serverless de Netlify corriendo (HTTP 404),
+      // simulamos el registro con éxito para el entorno de desarrollo local
+      if (isLocalhost && (!res.ok && res.status === 404)) {
+        console.info('[Helix Waitlist Dev] Registro simulado en localhost (Hugo Server):', {
+          name: nameInput.value.trim(),
+          email: emailInput.value.trim(),
+          language: lang,
+          list: 'helix',
+          brevoListId: lang === 'es' ? 5 : 6
+        });
+        feedback.style.display = 'block';
+        feedback.style.color = '#34d399';
+        feedback.textContent = lang === 'es'
+          ? '✅ ¡Plaza reservada! [Modo Localhost: En producción Netlify registrará el contacto en Brevo (Lista #' + (lang === 'es' ? '5' : '6') + ')].'
+          : '✅ Spot reserved! [Localhost Mode: In Netlify production contact is registered in Brevo (List #' + (lang === 'es' ? '5' : '6') + ')].';
+        form.reset();
+        fireTelemetry();
+        return;
+      }
+
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+
+      feedback.style.display = 'block';
+      feedback.style.color = '#34d399';
+      feedback.textContent = lang === 'es'
+        ? '✅ ¡Plaza reservada! Te avisaremos con acceso prioritario y precio fundador (19€).'
+        : '✅ Spot reserved! We will notify you with priority access and founder pricing (19€).';
+      form.reset();
+      fireTelemetry();
+
+    } catch (err) {
+      if (isLocalhost) {
+        console.info('[Helix Waitlist Dev] Fallback localhost activado:', err);
+        feedback.style.display = 'block';
+        feedback.style.color = '#34d399';
+        feedback.textContent = lang === 'es'
+          ? '✅ ¡Plaza reservada! [Modo Localhost: En producción Netlify registrará el contacto en Brevo (Lista #' + (lang === 'es' ? '5' : '6') + ')].'
+          : '✅ Spot reserved! [Localhost Mode: In Netlify production contact is registered in Brevo (List #' + (lang === 'es' ? '5' : '6') + ')].';
+        form.reset();
+        fireTelemetry();
+      } else {
+        feedback.style.display = 'block';
+        feedback.style.color = '#f87171';
+        feedback.textContent = lang === 'es'
+          ? '⚠️ No se pudo completar el registro. Por favor, inténtalo de nuevo en unos segundos.'
+          : '⚠️ Could not complete registration. Please try again in a few seconds.';
+      }
+    } finally {
+      btn.disabled = false;
+      btn.textContent = origText;
+    }
+  });
+})();
+</script>

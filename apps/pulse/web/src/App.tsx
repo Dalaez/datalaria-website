@@ -64,8 +64,66 @@ type SortField =
   | 'traffic_index'
   | 'rank_pct';
 
+// Muestra CSV para prueba interactiva en 1 clic (Hito 6.3 Operación Crisol)
+const SAMPLE_NOTION_CSV_TEXT = `Name,Status,Publish Date,Category,Asset Type,Tags,Title EN,Summary
+Arquitectura S&OP Cuantitativa con Python y PuLP,Published,2026-10-12,Estrategia y Operaciones,post,"sop,pulp,supply-chain",Quantitative S&OP Architecture with PuLP,Modelo de programación lineal mixta.
+Auditoría de Paridad Bilingüe con Pydantic v2,Published,2026-10-28,IA Ingeniería y Proyectos,post,"pydantic,python,ci-cd",Bilingual Parity Auditing with Pydantic v2,Indexador determinista sin DB.
+Guía Ejecutiva de Simulación Monte Carlo en CAPEX,Scheduled,2026-11-22,Estrategia y Operaciones,post,"monte-carlo,finanzas,capex",Executive Guide to Monte Carlo CAPEX,Evaluación estocástica de riesgos.
+Automatización de Reportes GA4 y Search Console,In Review,2026-11-29,IA Ingeniería y Proyectos,post,"ga4,seo,analytics",Automated GA4 and GSC Reporting,Extracción automatizada con Service Account.
+Framework de Priorización RICE y Matriz DAR,Draft,2026-12-05,Estrategia y Operaciones,post,"rice,dar,product-management",,Comparativa cuantitativa sin sesgo HiPPO.
+Caso de Estudio: Escuadrón de 12 Agentes IA bajo SDD,Draft,2026-12-12,IA Ingeniería y Proyectos,post,"sdd,ai-agents,helix",,12 roles agénticos con separación build/verify.
+Radar de Obsolescencia de Componentes Electrónicos,Idea,,IA Ingeniería y Proyectos,app,"bom,obsolescencia,fastapi",,Auditoría de árboles BOM de hardware.
+Datalaria Pulse Content Ops Kit,Published,2026-11-18,Software IA & SDD,kit,"excel,power-query,notion",Datalaria Pulse Content Ops Kit,Plantilla Excel y migrador de Notion en 5 min.`;
+
 export function App() {
-  const [lang, setLang] = useState<'es' | 'en'>('es');
+  const [lang, setLang] = useState<'es' | 'en'>(() => {
+    if (typeof window !== 'undefined') {
+      const searchParam = new URLSearchParams(window.location.search).get('lang');
+      if (searchParam === 'es' || searchParam === 'en') return searchParam;
+      const hashMatch = window.location.hash.match(/[?&]lang=(es|en)/);
+      if (hashMatch) return hashMatch[1] as 'es' | 'en';
+      const stored = localStorage.getItem('datalaria_lang');
+      if (stored === 'es' || stored === 'en') return stored;
+    }
+    return 'es';
+  });
+
+  const handleToggleLang = () => {
+    const next = lang === 'es' ? 'en' : 'es';
+    setLang(next);
+    try {
+      localStorage.setItem('datalaria_lang', next);
+    } catch {
+      // Ignore
+    }
+  };
+
+  const kitCheckoutUrl =
+    lang === 'es'
+      ? 'https://datalaria.com/es/recursos/#pack-pulse'
+      : 'https://datalaria.com/en/resources/#pack-pulse';
+  const portalHomeUrl = lang === 'es' ? 'https://datalaria.com/es/' : 'https://datalaria.com/en/';
+
+  const trackPulseEvent = (eventName: string, params?: Record<string, any>) => {
+    try {
+      if (typeof window !== 'undefined') {
+        if ((window as any).gtag) {
+          (window as any).gtag('event', eventName, params);
+        } else if ((window as any).datalariaTrack) {
+          (window as any).datalariaTrack(eventName, params);
+        }
+      }
+    } catch {
+      // Ignore
+    }
+  };
+
+  const [showShowcaseBanner, setShowShowcaseBanner] = useState(true);
+  const [notionDiagnostic, setNotionDiagnostic] = useState<{
+    total: number;
+    missingParity: number;
+    drafts: number;
+  } | null>(null);
   const t = i18n[lang];
 
   // Vistas: Dashboard, Tabla, Kanban, Calendario, Salud & ROI (con soporte para deep linking URL ?tab=...)
@@ -77,7 +135,13 @@ export function App() {
     return 'dashboard';
   });
   const [dataset, setDataset] = useState<PublicPulseDataset | null>(null);
-  const [customAssets, setCustomAssets] = useState<ContentAsset[] | null>(null);
+  const [customAssets, setCustomAssets] = useState<ContentAsset[] | null>(() => {
+    if (typeof window !== 'undefined') {
+      const isDemo = window.location.search.includes('demo=true') || window.location.hash.includes('demo=true');
+      if (isDemo) return DEMO_SYNTHETIC_ASSETS;
+    }
+    return null;
+  });
 
   // Filtros interactivos
   const [search, setSearch] = useState('');
@@ -212,6 +276,16 @@ export function App() {
       .then((data: PublicPulseDataset) => setDataset(data))
       .catch((err) => console.error('Error cargando public.json:', err));
 
+    const isDemoRequested =
+      typeof window !== 'undefined' &&
+      (window.location.search.includes('demo=true') || window.location.hash.includes('demo=true'));
+    if (isDemoRequested) {
+      trackPulseEvent('start_pulse_demo', { source: 'url_param' });
+      if (isSupabaseConfigured) {
+        signInWithDemo().catch(() => {});
+      }
+    }
+
     if (isSupabaseConfigured) {
       getCurrentUser().then((u) => {
         setCurrentUser(u);
@@ -297,6 +371,21 @@ export function App() {
     setCurrentPage(1);
   };
 
+  const processParsedNotionAssets = (parsed: ContentAsset[], source: string) => {
+    if (parsed.length > 0) {
+      setCustomAssets(parsed);
+      const missingParity = parsed.filter((a) => a.language_parity !== 'complete').length;
+      const drafts = parsed.filter((a) => a.status === 'draft' || a.status === 'idea').length;
+      setNotionDiagnostic({
+        total: parsed.length,
+        missingParity,
+        drafts
+      });
+      setNotionSuccessMsg(t.notion_loaded_success.replace('{count}', parsed.length.toString()));
+      trackPulseEvent('import_notion_csv', { count: parsed.length, source });
+    }
+  };
+
   // Manejador carga CSV Notion
   const handleNotionFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -307,17 +396,65 @@ export function App() {
       const text = event.target?.result as string;
       if (text) {
         const parsed = parseNotionCsv(text);
-        if (parsed.length > 0) {
-          setCustomAssets(parsed);
-          setNotionSuccessMsg(t.notion_loaded_success.replace('{count}', parsed.length.toString()));
-          setTimeout(() => {
-            setIsNotionModalOpen(false);
-            setNotionSuccessMsg('');
-          }, 1500);
-        }
+        processParsedNotionAssets(parsed, 'file_upload');
       }
     };
     reader.readAsText(file);
+  };
+
+  const handleTrySampleCsv = () => {
+    const parsed = parseNotionCsv(SAMPLE_NOTION_CSV_TEXT);
+    processParsedNotionAssets(parsed, 'sample_1click');
+  };
+
+    // Avance rápido de fase en Kanban (Hito 6.3 Operación Crisol)
+  const handleQuickAdvanceStatus = async (asset: ContentAsset) => {
+    const nextStatusMap: Record<AssetStatus, AssetStatus | null> = {
+      idea: 'draft',
+      draft: 'review',
+      review: 'scheduled',
+      scheduled: 'published',
+      published: null,
+      archived: null
+    };
+
+    const nextStatus = nextStatusMap[asset.status];
+    if (!nextStatus) return;
+
+    trackPulseEvent('advance_kanban_status', {
+      asset_id: asset.id,
+      from_status: asset.status,
+      to_status: nextStatus
+    });
+
+    if (asset.is_cloud_idea && currentUser && isSupabaseConfigured) {
+      try {
+        await updateUserIdea(asset.id, { status: nextStatus });
+        await loadCloudIdeas();
+        return;
+      } catch (err) {
+        console.warn('Error actualizando estado en Supabase:', err);
+      }
+    }
+
+    if (asset.is_local_idea) {
+      setLocalIdeas((prev) =>
+        prev.map((item) => (item.id === asset.id ? { ...item, status: nextStatus } : item))
+      );
+      return;
+    }
+
+    if (customAssets) {
+      setCustomAssets((prev) =>
+        prev ? prev.map((item) => (item.id === asset.id ? { ...item, status: nextStatus } : item)) : null
+      );
+      return;
+    }
+
+    setCustomAssets(() => {
+      const base = currentAssets;
+      return base.map((item) => (item.id === asset.id ? { ...item, status: nextStatus } : item));
+    });
   };
 
   const resetToDefault = () => {
@@ -1091,6 +1228,24 @@ export function App() {
       <header className="pulse-header">
         <div className="header-inner">
           <div className="brand-section">
+            <a
+              href={portalHomeUrl}
+              className="btn btn-ghost"
+              style={{
+                color: '#94a3b8',
+                padding: '0.3rem 0.6rem',
+                fontSize: '0.85rem',
+                textDecoration: 'none',
+                marginRight: '0.5rem',
+                border: '1px solid rgba(148, 163, 184, 0.2)',
+                borderRadius: '6px',
+                display: 'inline-flex',
+                alignItems: 'center'
+              }}
+              title="Volver al portal Datalaria"
+            >
+              <span>{t.nav_back_portal}</span>
+            </a>
             <div className="brand-icon">
               <Activity size={24} />
             </div>
@@ -1225,10 +1380,11 @@ export function App() {
             )}
 
             <a
-              href="https://datalaria.com/es/recursos/#pack-pulse"
+              href={kitCheckoutUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary"
+              onClick={() => trackPulseEvent('begin_checkout_kit', { placement: 'header' })}
             >
               <FileSpreadsheet size={16} />
               <span>{t.btn_get_kit}</span>
@@ -1236,7 +1392,7 @@ export function App() {
 
             <button
               className="btn btn-ghost"
-              onClick={() => setLang(lang === 'es' ? 'en' : 'es')}
+              onClick={handleToggleLang}
               style={{ fontWeight: 700 }}
             >
               <Globe size={16} />
@@ -1262,17 +1418,18 @@ export function App() {
             </p>
           </div>
           <a
-            href="https://datalaria.com/es/recursos/#pack-pulse"
+            href={kitCheckoutUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-primary"
+            onClick={() => trackPulseEvent('begin_checkout_kit', { placement: 'top_banner' })}
           >
             {t.btn_get_kit}
           </a>
         </div>
 
         {/* Banner de Contexto de Espacio de Trabajo */}
-        {!currentUser && (
+        {!currentUser && showShowcaseBanner && (
           <div
             style={{
               display: 'flex',
@@ -1291,14 +1448,25 @@ export function App() {
               <span style={{ fontSize: '1.1rem' }}>👁️</span>
               <span>{t.banner_public_showcase}</span>
             </div>
-            <button
-              className="btn btn-ghost"
-              onClick={() => setIsAuthModalOpen(true)}
-              style={{ color: '#22d3ee', fontSize: '0.8rem', padding: '0.2rem 0.5rem', whiteSpace: 'nowrap' }}
-            >
-              <Zap size={14} />
-              <span>{t.btn_pro_login}</span>
-            </button>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <button
+                className="btn btn-ghost"
+                onClick={() => setIsAuthModalOpen(true)}
+                style={{ color: '#22d3ee', fontSize: '0.8rem', padding: '0.2rem 0.5rem', whiteSpace: 'nowrap' }}
+              >
+                <Zap size={14} />
+                <span>{t.btn_pro_login}</span>
+              </button>
+              <button
+                type="button"
+                className="btn btn-ghost"
+                onClick={() => setShowShowcaseBanner(false)}
+                style={{ color: '#64748b', padding: '0.15rem 0.35rem', cursor: 'pointer' }}
+                title="Ocultar aviso"
+              >
+                <X size={14} />
+              </button>
+            </div>
           </div>
         )}
 
@@ -2570,6 +2738,32 @@ export function App() {
                                   Score: {a.seo_audit?.score_0_100 ?? 0}
                                 </span>
                               </div>
+                              {a.status !== 'published' && (
+                                <div style={{ marginTop: '0.4rem', display: 'flex' }}>
+                                  <button
+                                    type="button"
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      handleQuickAdvanceStatus(a);
+                                    }}
+                                    title={t.btn_advance_status}
+                                    style={{
+                                      padding: '0.2rem 0.5rem',
+                                      fontSize: '0.72rem',
+                                      borderRadius: '4px',
+                                      background: 'rgba(16, 185, 129, 0.12)',
+                                      border: '1px solid rgba(16, 185, 129, 0.35)',
+                                      color: '#34d399',
+                                      cursor: 'pointer',
+                                      display: 'inline-flex',
+                                      alignItems: 'center',
+                                      gap: '0.25rem'
+                                    }}
+                                  >
+                                    <span>{t.btn_advance_status}</span>
+                                  </button>
+                                </div>
+                              )}
                             </div>
                           );
                         })
@@ -2704,14 +2898,15 @@ export function App() {
               </div>
 
               <a
-                href="https://datalaria.com/es/recursos/#pack-pulse"
+                href={kitCheckoutUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-primary"
+                onClick={() => trackPulseEvent('begin_checkout_kit', { placement: 'equity_card' })}
                 style={{ padding: '0.85rem 1.5rem', fontSize: '0.95rem' }}
               >
                 <Zap size={18} />
-                <span>Rentabilizar con Pulse Kit</span>
+                <span>{t.btn_rentabilizar_kit}</span>
               </a>
             </div>
 
@@ -3162,6 +3357,59 @@ export function App() {
                 Formatos soportados: CSV exportado de Notion (con columnas Title, Status, Category, Date...)
               </div>
             </div>
+
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '0.75rem' }}>
+              <button
+                type="button"
+                className="btn btn-outline"
+                onClick={handleTrySampleCsv}
+                style={{ borderColor: 'rgba(6, 182, 212, 0.5)', color: '#22d3ee', fontSize: '0.85rem' }}
+              >
+                <Zap size={15} />
+                <span>{t.btn_try_sample_csv}</span>
+              </button>
+            </div>
+
+            {notionDiagnostic && (
+              <div
+                style={{
+                  marginTop: '1rem',
+                  background: 'rgba(17, 24, 39, 0.95)',
+                  border: '1px solid rgba(16, 185, 129, 0.4)',
+                  borderRadius: '8px',
+                  padding: '1rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '0.6rem'
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <CheckCircle2 size={18} color="#10b981" />
+                  <strong style={{ color: '#f9fafb', fontSize: '0.95rem' }}>
+                    {t.diag_card_title}
+                  </strong>
+                </div>
+                <p style={{ margin: 0, fontSize: '0.85rem', color: '#9ca3af', lineHeight: 1.5 }}>
+                  {t.diag_card_summary
+                    .replace('{total}', notionDiagnostic.total.toString())
+                    .replace('{missingParity}', notionDiagnostic.missingParity.toString())
+                    .replace('{drafts}', notionDiagnostic.drafts.toString())}
+                </p>
+                <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '0.25rem' }}>
+                  <a
+                    href={kitCheckoutUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary"
+                    onClick={() => trackPulseEvent('begin_checkout_kit', { placement: 'notion_diagnostic_card' })}
+                    style={{ fontSize: '0.85rem', padding: '0.45rem 0.9rem' }}
+                  >
+                    <Zap size={14} />
+                    <span>{t.diag_card_cta}</span>
+                  </a>
+                </div>
+              </div>
+            )}
 
             {notionSuccessMsg && (
               <div

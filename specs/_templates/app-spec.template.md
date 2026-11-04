@@ -39,6 +39,15 @@ flowchart LR
 | Archivo | Rol y Responsabilidad |
 | :--- | :--- |
 | `apps/[app-slug]/...` | [Descripción exacta de la responsabilidad única del archivo] |
+| `specs/apps/[app-slug]/design.md` | Sistema de diseño UX/UI, tokens CSS, *Signature Wow Moment* y estados de interfaz (`04-ux-ui`). |
+
+### 2.2 Triaje y Asignación del Escuadrón Datalaria Helix (`ADR-018`)
+- **Rúbrica aplicable:** [`specs/squad/triage-rubric.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/triage-rubric.md)
+- **Roles Principales por Fase:**
+  - **Dirección:** `01-orchestrator`, `02-product-analyst`, `03-architect`
+  - **Construcción:** `04-ux-ui`, `05-frontend`, `06-backend-data`, `07-apis-integrations`, `08-media-i18n`, `09-monetization`
+  - **Garantía (Con Veto — `INV-HELIX-1`):** `10-security-privacy` (`TRG-SEC`), `11-qa-verifier` (`TRG-QA`)
+  - **Entrega:** `12-release-devops`
 
 ---
 

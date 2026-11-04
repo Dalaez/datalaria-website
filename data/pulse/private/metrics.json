@@ -9,9 +9,9 @@
     "gsc_avg_position": 0.0
   },
   "quantitative-swot-tows-matrix": {
-    "ga4_views_30d": 113,
-    "ga4_users_30d": 24,
-    "ga4_engagement_sec": 1295.0,
+    "ga4_views_30d": 115,
+    "ga4_users_30d": 26,
+    "ga4_engagement_sec": 1307.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -36,8 +36,8 @@
     "gsc_avg_position": 0.0
   },
   "dynamic-bcg-matrix": {
-    "ga4_views_30d": 21,
-    "ga4_users_30d": 12,
+    "ga4_views_30d": 23,
+    "ga4_users_30d": 14,
     "ga4_engagement_sec": 432.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -81,27 +81,27 @@
     "gsc_avg_position": 0.0
   },
   "pulse-part3": {
-    "ga4_views_30d": 35,
+    "ga4_views_30d": 36,
     "ga4_users_30d": 1,
-    "ga4_engagement_sec": 60.0,
+    "ga4_engagement_sec": 76.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 0.0
   },
   "pulse-part4": {
-    "ga4_views_30d": 12,
+    "ga4_views_30d": 14,
     "ga4_users_30d": 1,
-    "ga4_engagement_sec": 118.0,
+    "ga4_engagement_sec": 137.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 0.0
   },
   "pulse-part5": {
-    "ga4_views_30d": 0,
-    "ga4_users_30d": 0,
-    "ga4_engagement_sec": 0.0,
+    "ga4_views_30d": 17,
+    "ga4_users_30d": 2,
+    "ga4_engagement_sec": 378.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -189,8 +189,8 @@
     "gsc_avg_position": 0.0
   },
   "app_conversor_unidades": {
-    "ga4_views_30d": 4,
-    "ga4_users_30d": 4,
+    "ga4_views_30d": 3,
+    "ga4_users_30d": 3,
     "ga4_engagement_sec": 3.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -216,8 +216,8 @@
     "gsc_avg_position": 0.0
   },
   "abraham_wald": {
-    "ga4_views_30d": 33,
-    "ga4_users_30d": 31,
+    "ga4_views_30d": 32,
+    "ga4_users_30d": 30,
     "ga4_engagement_sec": 404.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -261,8 +261,8 @@
     "gsc_avg_position": 0.0
   },
   "app-lifeops_part2_frontend_dashboard": {
-    "ga4_views_30d": 6,
-    "ga4_users_30d": 6,
+    "ga4_views_30d": 5,
+    "ga4_users_30d": 5,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -342,8 +342,8 @@
     "gsc_avg_position": 0.0
   },
   "carto": {
-    "ga4_views_30d": 11,
-    "ga4_users_30d": 11,
+    "ga4_views_30d": 10,
+    "ga4_users_30d": 10,
     "ga4_engagement_sec": 12.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -351,8 +351,8 @@
     "gsc_avg_position": 0.0
   },
   "clarity_ai": {
-    "ga4_views_30d": 3,
-    "ga4_users_30d": 3,
+    "ga4_views_30d": 4,
+    "ga4_users_30d": 4,
     "ga4_engagement_sec": 246.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -360,8 +360,8 @@
     "gsc_avg_position": 0.0
   },
   "claude_shannon": {
-    "ga4_views_30d": 4,
-    "ga4_users_30d": 4,
+    "ga4_views_30d": 5,
+    "ga4_users_30d": 5,
     "ga4_engagement_sec": 165.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -423,9 +423,9 @@
     "gsc_avg_position": 0.0
   },
   "finetuning_vs_rag": {
-    "ga4_views_30d": 11,
-    "ga4_users_30d": 11,
-    "ga4_engagement_sec": 0.0,
+    "ga4_views_30d": 12,
+    "ga4_users_30d": 12,
+    "ga4_engagement_sec": 1.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -459,8 +459,8 @@
     "gsc_avg_position": 0.0
   },
   "game_snake": {
-    "ga4_views_30d": 21,
-    "ga4_users_30d": 21,
+    "ga4_views_30d": 25,
+    "ga4_users_30d": 25,
     "ga4_engagement_sec": 17.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -477,8 +477,8 @@
     "gsc_avg_position": 0.0
   },
   "graphrag": {
-    "ga4_views_30d": 37,
-    "ga4_users_30d": 28,
+    "ga4_views_30d": 35,
+    "ga4_users_30d": 26,
     "ga4_engagement_sec": 127.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -495,8 +495,8 @@
     "gsc_avg_position": 0.0
   },
   "happyrobot": {
-    "ga4_views_30d": 23,
-    "ga4_users_30d": 22,
+    "ga4_views_30d": 19,
+    "ga4_users_30d": 18,
     "ga4_engagement_sec": 623.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -522,8 +522,8 @@
     "gsc_avg_position": 0.0
   },
   "john-snow": {
-    "ga4_views_30d": 11,
-    "ga4_users_30d": 11,
+    "ga4_views_30d": 10,
+    "ga4_users_30d": 10,
     "ga4_engagement_sec": 53.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -531,18 +531,18 @@
     "gsc_avg_position": 0.0
   },
   "john_von_neumann": {
-    "ga4_views_30d": 73,
-    "ga4_users_30d": 57,
-    "ga4_engagement_sec": 1722.0,
+    "ga4_views_30d": 75,
+    "ga4_users_30d": 59,
+    "ga4_engagement_sec": 1753.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 0.0
   },
   "kantorovich": {
-    "ga4_views_30d": 29,
-    "ga4_users_30d": 28,
-    "ga4_engagement_sec": 972.0,
+    "ga4_views_30d": 31,
+    "ga4_users_30d": 30,
+    "ga4_engagement_sec": 1131.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -567,9 +567,9 @@
     "gsc_avg_position": 0.0
   },
   "multiverse_computing": {
-    "ga4_views_30d": 13,
-    "ga4_users_30d": 13,
-    "ga4_engagement_sec": 4.0,
+    "ga4_views_30d": 19,
+    "ga4_users_30d": 17,
+    "ga4_engagement_sec": 186.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -587,7 +587,7 @@
   "nextail": {
     "ga4_views_30d": 24,
     "ga4_users_30d": 19,
-    "ga4_engagement_sec": 473.0,
+    "ga4_engagement_sec": 500.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -612,17 +612,17 @@
     "gsc_avg_position": 0.0
   },
   "oppenheimer": {
-    "ga4_views_30d": 29,
-    "ga4_users_30d": 24,
-    "ga4_engagement_sec": 470.0,
+    "ga4_views_30d": 24,
+    "ga4_users_30d": 20,
+    "ga4_engagement_sec": 357.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 0.0
   },
   "pgvector_vs_vectordb": {
-    "ga4_views_30d": 11,
-    "ga4_users_30d": 11,
+    "ga4_views_30d": 10,
+    "ga4_users_30d": 10,
     "ga4_engagement_sec": 263.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -630,8 +630,8 @@
     "gsc_avg_position": 0.0
   },
   "prompt_injection": {
-    "ga4_views_30d": 19,
-    "ga4_users_30d": 19,
+    "ga4_views_30d": 18,
+    "ga4_users_30d": 18,
     "ga4_engagement_sec": 20.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -648,17 +648,17 @@
     "gsc_avg_position": 0.0
   },
   "sdd_vs_vibe_coding": {
-    "ga4_views_30d": 9,
-    "ga4_users_30d": 1,
-    "ga4_engagement_sec": 546.0,
+    "ga4_views_30d": 28,
+    "ga4_users_30d": 2,
+    "ga4_engagement_sec": 853.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 0.0
   },
   "silicon_valley": {
-    "ga4_views_30d": 30,
-    "ga4_users_30d": 27,
+    "ga4_views_30d": 28,
+    "ga4_users_30d": 25,
     "ga4_engagement_sec": 180.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -666,9 +666,9 @@
     "gsc_avg_position": 0.0
   },
   "submer": {
-    "ga4_views_30d": 43,
-    "ga4_users_30d": 31,
-    "ga4_engagement_sec": 583.0,
+    "ga4_views_30d": 44,
+    "ga4_users_30d": 32,
+    "ga4_engagement_sec": 721.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -684,17 +684,17 @@
     "gsc_avg_position": 0.0
   },
   "the_thinking_game": {
-    "ga4_views_30d": 14,
-    "ga4_users_30d": 14,
-    "ga4_engagement_sec": 161.0,
+    "ga4_views_30d": 15,
+    "ga4_users_30d": 15,
+    "ga4_engagement_sec": 221.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 0.0
   },
   "thomas_bayes": {
-    "ga4_views_30d": 6,
-    "ga4_users_30d": 6,
+    "ga4_views_30d": 7,
+    "ga4_users_30d": 7,
     "ga4_engagement_sec": 4.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -702,8 +702,8 @@
     "gsc_avg_position": 0.0
   },
   "wallapop": {
-    "ga4_views_30d": 13,
-    "ga4_users_30d": 13,
+    "ga4_views_30d": 10,
+    "ga4_users_30d": 10,
     "ga4_engagement_sec": 30.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -756,9 +756,9 @@
     "gsc_avg_position": 0.0
   },
   "evaluacion_agentes_ia": {
-    "ga4_views_30d": 44,
-    "ga4_users_30d": 36,
-    "ga4_engagement_sec": 275.0,
+    "ga4_views_30d": 47,
+    "ga4_users_30d": 38,
+    "ga4_engagement_sec": 276.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -792,8 +792,8 @@
     "gsc_avg_position": 0.0
   },
   "ia_agents_part2": {
-    "ga4_views_30d": 2,
-    "ga4_users_30d": 2,
+    "ga4_views_30d": 3,
+    "ga4_users_30d": 3,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -837,8 +837,8 @@
     "gsc_avg_position": 0.0
   },
   "ia_agents_part7": {
-    "ga4_views_30d": 2,
-    "ga4_users_30d": 2,
+    "ga4_views_30d": 3,
+    "ga4_users_30d": 3,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -873,9 +873,9 @@
     "gsc_avg_position": 0.0
   },
   "matriz-dar-cuantitativa": {
-    "ga4_views_30d": 29,
-    "ga4_users_30d": 5,
-    "ga4_engagement_sec": 422.0,
+    "ga4_views_30d": 32,
+    "ga4_users_30d": 8,
+    "ga4_engagement_sec": 446.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -900,9 +900,9 @@
     "gsc_avg_position": 0.0
   },
   "obs_parte1_intro": {
-    "ga4_views_30d": 4,
-    "ga4_users_30d": 2,
-    "ga4_engagement_sec": 19.0,
+    "ga4_views_30d": 5,
+    "ga4_users_30d": 3,
+    "ga4_engagement_sec": 23.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -918,7 +918,7 @@
     "gsc_avg_position": 0.0
   },
   "obs_parte3_arquitectura": {
-    "ga4_views_30d": 19,
+    "ga4_views_30d": 18,
     "ga4_users_30d": 16,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
@@ -936,8 +936,8 @@
     "gsc_avg_position": 0.0
   },
   "obs_parte5_radar": {
-    "ga4_views_30d": 4,
-    "ga4_users_30d": 4,
+    "ga4_views_30d": 5,
+    "ga4_users_30d": 5,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -1026,8 +1026,8 @@
     "gsc_avg_position": 0.0
   },
   "stack_productividad_2026": {
-    "ga4_views_30d": 6,
-    "ga4_users_30d": 6,
+    "ga4_views_30d": 5,
+    "ga4_users_30d": 5,
     "ga4_engagement_sec": 28.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -1035,8 +1035,8 @@
     "gsc_avg_position": 0.0
   },
   "conversor": {
-    "ga4_views_30d": 3,
-    "ga4_users_30d": 2,
+    "ga4_views_30d": 4,
+    "ga4_users_30d": 3,
     "ga4_engagement_sec": 42.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -1062,8 +1062,8 @@
     "gsc_avg_position": 0.0
   },
   "maths": {
-    "ga4_views_30d": 1,
-    "ga4_users_30d": 1,
+    "ga4_views_30d": 2,
+    "ga4_users_30d": 2,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -1098,8 +1098,8 @@
     "gsc_avg_position": 0.0
   },
   "weather": {
-    "ga4_views_30d": 17,
-    "ga4_users_30d": 4,
+    "ga4_views_30d": 18,
+    "ga4_users_30d": 5,
     "ga4_engagement_sec": 151.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,

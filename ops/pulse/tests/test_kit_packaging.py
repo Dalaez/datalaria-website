@@ -2,13 +2,14 @@
 ops/pulse/tests/test_kit_packaging.py
 -------------------------------------
 Suite de pruebas automatizadas para el Kit comercial descargable de Datalaria Pulse.
-Especificación: Hito 5.6 (specs/apps/pulse/spec.md).
+Especificación: Hito 5.6 & 6.3 (specs/apps/pulse/spec.md & plan_hito_6_3_ejecucion_flash.md).
 
 Valida:
-1. Estructura, fórmulas e integridad de la plantilla Excel y taxonomía.
-2. Migrador de bases de datos de Notion (normalización de estados y fechas).
-3. Escáner universal de repositorios de contenidos sin dependencias de terceros.
-4. Empaquetado e integridad del archivo ZIP final para Lemon Squeezy.
+1. Estructura, fórmulas e integridad de la plantilla Excel y taxonomía (6 hojas).
+2. Migrador de bases de datos de Notion (YAML y exportación directa a Excel .xlsx).
+3. Escáner universal de repositorios de contenidos sin dependencias externas.
+4. Empaquetado comercial en 3 carpetas numeradas en packages/pulse/ y 00_DISTRIBUCION_LEMONSQUEEZY/.
+5. Cumplimiento determinista del embargo comercial del 18 de noviembre y existencia de previews.
 """
 
 import sys
@@ -22,8 +23,9 @@ if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
 from ops.pulse.kit.build_pulse_kit import build_pulse_excel
-from ops.pulse.kit.package_kit import package_kit, ZIP_OUTPUT_PATH
+from ops.pulse.kit.package_kit import package_kit, ZIP_OUTPUT_PATH, LEMON_DIST_DIR
 from ops.pulse.migrate_notion import migrate_notion, normalize_status, parse_date_str
+from ops.pulse.release_18nov import verify_embargo
 from packages.pulse.pulse_repo_scanner import scan_directory, audit_seo, parse_simple_front_matter
 
 
@@ -57,14 +59,12 @@ def test_template_excel_structure(tmp_path):
 
     # Comprobar fórmulas universales en Dashboard (INV-PULSE-5)
     ws_dash = wb["Dashboard"]
-    # Total Activos
     assert "COUNTA(" in str(ws_dash.cell(row=4, column=4).value)
-    # Artículos Publicados
     assert 'COUNTIF(Activos!C2:C5, "Published")' in str(ws_dash.cell(row=5, column=4).value) or "COUNTIF" in str(ws_dash.cell(row=5, column=4).value)
 
 
 def test_migrate_notion_csv(tmp_path):
-    """Verifica la importación y normalización determinista de un CSV exportado de Notion."""
+    """Verifica la importación y normalización determinista de un CSV exportado de Notion a YAML."""
     csv_file = tmp_path / "notion_export.csv"
     csv_content = (
         "Name,Status,Date,Category,Tags,Summary\n"
@@ -91,6 +91,34 @@ def test_migrate_notion_csv(tmp_path):
     assert by_title["Idea de Podcast"]["publish_date"] is None
     assert by_title["Post sobre Machine Learning"]["status"] == "scheduled"
     assert by_title["Post sobre Machine Learning"]["publish_date"] == "2026-12-01"
+
+
+def test_migrate_notion_xlsx_export(tmp_path):
+    """Verifica que el migrador exporta directamente a un libro Excel (.xlsx) estructurado."""
+    csv_file = tmp_path / "sample_notion.csv"
+    csv_content = (
+        "Name,Status,Publish Date,Category,Asset Type,Tags,Title EN,Summary\n"
+        "Modelo Financiero Monte Carlo,Published,2026-10-15,Estrategia,post,\"finanzas\",Monte Carlo Financial Model,Guía de simulación estocástica\n"
+        "Arquitectura de Microservicios,In Review,2026-11-20,IA,post,\"cloud\",Microservices Architecture,Estrategia multi-cloud\n"
+    )
+    csv_file.write_text(csv_content, encoding="utf-8")
+
+    out_xlsx = tmp_path / "Migrated_Pulse_Tracker.xlsx"
+    assets = migrate_notion(csv_file, output_path=out_xlsx, out_format="xlsx")
+
+    assert len(assets) == 2
+    assert out_xlsx.exists()
+
+    wb = openpyxl.load_workbook(out_xlsx, data_only=False)
+    assert "Activos" in wb.sheetnames
+    assert "Dashboard" in wb.sheetnames
+    assert "Kanban" in wb.sheetnames
+
+    ws_act = wb["Activos"]
+    assert ws_act.max_row == 3  # 1 cabecera + 2 activos
+    assert ws_act.cell(row=2, column=1).value == "modelo-financiero-monte-carlo"
+    assert ws_act.cell(row=2, column=3).value == "Published"
+    assert ws_act.cell(row=3, column=3).value == "Review"
 
 
 def test_pulse_repo_scanner(tmp_path):
@@ -143,23 +171,44 @@ def test_pulse_repo_scanner(tmp_path):
 
 
 def test_package_kit_zip():
-    """Verifica que el archivo ZIP comercial se genera correctamente con todos los ficheros."""
+    """Verifica que el archivo ZIP comercial se genera correctamente en 3 carpetas numeradas."""
     zip_path = package_kit()
     assert zip_path.exists()
     assert zip_path == ZIP_OUTPUT_PATH
-    assert zip_path.stat().st_size > 10000 # Al menos 10 KB
+    assert zip_path.stat().st_size > 15000  # Al menos 15 KB con PDF y plantillas
+
+    # Verificar sincronización en 00_DISTRIBUCION_LEMONSQUEEZY
+    lemon_zip = LEMON_DIST_DIR / "Datalaria_Pulse_Kit.zip"
+    assert lemon_zip.exists(), f"Falta sincronización en {lemon_zip}"
+    assert lemon_zip.stat().st_size == zip_path.stat().st_size
 
     with zipfile.ZipFile(zip_path, "r") as zf:
         bad_file = zf.testzip()
         assert bad_file is None, f"Archivo ZIP corrupto: {bad_file}"
         names = zf.namelist()
         expected_files = [
-            "Pulse_Content_Ops_Template.xlsx",
-            "pulse_repo_scanner.py",
-            "migrate_notion.py",
-            "notion_power_query.m",
-            "GUIA_PULSE_KIT.md",
+            "01_Excel_Templates/Pulse_Content_Ops_Template.xlsx",
+            "01_Excel_Templates/notion_power_query.m",
+            "01_Excel_Templates/git_public_json_power_query.m",
+            "02_Migration_Scripts/migrate_notion.py",
+            "02_Migration_Scripts/pulse_repo_scanner.py",
+            "02_Migration_Scripts/sample_notion_export.csv",
+            "03_Documentation/GUIA_EJECUTIVA_PULSE.pdf",
+            "03_Documentation/GUIA_PULSE_KIT.md",
+            "03_Documentation/ESPECIFICACION_CAMPOS.md",
             "LICENSE.txt"
         ]
         for ef in expected_files:
             assert ef in names, f"Fichero faltante en el ZIP comercial: {ef}"
+
+
+def test_embargo_18nov_and_previews():
+    """Verifica que el embargo comercial hasta el 18-11-2026 se cumple y los assets existen."""
+    ok, errors = verify_embargo()
+    assert ok, f"Fallos en verificación de embargo: {errors}"
+
+    # Verificar que las imágenes preview de alta resolución existen
+    img_es = ROOT_DIR / "static" / "images" / "recursos" / "pulse-preview-es.png"
+    img_en = ROOT_DIR / "static" / "images" / "recursos" / "pulse-preview-en.png"
+    assert img_es.exists() and img_es.stat().st_size > 50000
+    assert img_en.exists() and img_en.stat().st_size > 50000
