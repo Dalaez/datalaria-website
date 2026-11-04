@@ -1,0 +1,4 @@
+# Archivos generados automáticamente por Datalaria Pulse
+# En caso de fusión entre local y bot remoto, mantener siempre la versión local sin generar conflictos
+static/apps/pulse/data/public.json merge=ours
+data/pulse/private/index.json merge=ours
