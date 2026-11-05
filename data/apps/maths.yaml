@@ -6,7 +6,7 @@ icon: "🧮"
 cover: cover.png
 app_url: /apps/maths/
 source_spec: specs/apps/maths/spec.md
-current_version: v2.0.0
+current_version: v2.1.0
 
 title:
   es: "Ábaco Arcade (Matemáticas Lúdicas)"
@@ -46,6 +46,9 @@ features:
   - icon: "🎮"
     es: "3 Modos de Juego y Medallas: Modo Zen (sin reloj), Clásico (10 rondas con tiempo) y Contrarreloj 60s con 6 medallas de logros."
     en: "3 Game Modes & Badges: Zen Mode (relaxed), Classic (10 timed rounds), and 60s Time Attack with 6 unlockable badges."
+  - icon: "📲"
+    es: "PWA 100% Offline e Instalable: botón de instalación en pantalla de inicio (Android, iOS y escritorio), Service Worker y cero dependencias de red."
+    en: "100% Offline Installable PWA: home screen install button (Android, iOS, desktop), Service Worker cache, and zero network dependencies."
 
 design:
   architecture:
@@ -90,6 +93,25 @@ posts:
     part: 1
 
 releases:
+  - version: v2.1.0
+    date: "2026-11-05"
+    state: released
+    type: release
+    title:
+      es: "Ábaco Arcade v2.1: Soporte PWA 100% Offline, Botón Instalar App y Feedback Formativo"
+      en: "Abacus Arcade v2.1: 100% Offline PWA Support, Install App Button, and Formative Feedback"
+    changes:
+      - es: "PWA Offline completa con Service Worker (sw.js), manifest.json e icono vectorial icon.svg instalable en móviles y tablets."
+        en: "Full offline PWA with Service Worker (sw.js), manifest.json, and vector icon.svg installable on mobile and tablet home screens."
+      - es: "Botón dinámico en cabecera '📲 Instalar App' con captura de beforeinstallprompt y guía paso a paso para iOS Safari y escritorio."
+        en: "Dynamic header '📲 Install App' button capturing beforeinstallprompt and step-by-step guidance for iOS Safari and desktop."
+      - es: "Banner de feedback pedagógico formativo en cada operación (refuerzo positivo inmediato o solución correcta explicada durante 1.8s)."
+        en: "Pedagogical formative feedback banner on each answer (instant positive points reinforcement or 1.8s explained solution)."
+      - es: "Persistencia anti-FOUC de tema Daylight/Cosmic Night, estado de sonido en localStorage y atajos rápidos de teclado (T, M, H)."
+        en: "Anti-FOUC persistence for Daylight/Cosmic Night themes, localStorage sound state, and quick keyboard shortcuts (T, M, H)."
+      - es: "Erradicación de confirm() nativos del navegador, sustituidos por sistema de toasts flotantes lúdicos."
+        en: "Removal of browser native confirm() popups, replaced by playful floating toast notifications."
+
   - version: v2.0.0
     date: "2026-11-05"
     state: released

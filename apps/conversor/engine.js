@@ -344,3 +344,151 @@ export function processBatchText(rawText, options = {}) {
     errors: errorCount
   };
 }
+
+/**
+ * Evaluador Seguro de Expresiones Aritméticas (Invariante INV-CONV-9)
+ * Analizador sintáctico determinista recursivo (sin 'eval' ni 'Function').
+ * Soporta: +, -, *, /, ^, %, (), constantes pi, e, funciones sqrt, abs, sin, cos, tan, log, exp.
+ */
+export function evaluateMathExpression(input) {
+  if (input === null || input === undefined) return NaN;
+  const str = String(input).trim();
+  if (!str) return NaN;
+
+  // Si es un número estándar directo sin operadores aritméticos
+  const simpleNum = Number(str);
+  if (!isNaN(simpleNum) && !/[+\-*/^%()]/.test(str)) {
+    return simpleNum;
+  }
+
+  // Normalizar símbolos matemáticos y comas decimales
+  const normalized = str
+    .replace(/×/g, '*')
+    .replace(/÷/g, '/')
+    .replace(/\*\*/g, '^')
+    .replace(/,/g, '.')
+    .replace(/\s+/g, '');
+
+  let pos = 0;
+
+  function peek() {
+    return normalized[pos];
+  }
+
+  function get() {
+    return normalized[pos++];
+  }
+
+  function parseExpression() {
+    let result = parseTerm();
+    while (pos < normalized.length) {
+      const op = peek();
+      if (op === '+' || op === '-') {
+        get();
+        const nextTerm = parseTerm();
+        result = op === '+' ? result + nextTerm : result - nextTerm;
+      } else {
+        break;
+      }
+    }
+    return result;
+  }
+
+  function parseTerm() {
+    let result = parsePower();
+    while (pos < normalized.length) {
+      const op = peek();
+      if (op === '*' || op === '/' || op === '%') {
+        get();
+        const nextFactor = parsePower();
+        if (op === '*') result *= nextFactor;
+        else if (op === '/') result /= nextFactor;
+        else if (op === '%') result %= nextFactor;
+      } else {
+        break;
+      }
+    }
+    return result;
+  }
+
+  function parsePower() {
+    let result = parseFactor();
+    if (pos < normalized.length && peek() === '^') {
+      get();
+      const exponent = parsePower(); // Asociativo por la derecha
+      result = Math.pow(result, exponent);
+    }
+    return result;
+  }
+
+  function parseFactor() {
+    if (pos >= normalized.length) return NaN;
+
+    // Operador unario + / -
+    if (peek() === '+') {
+      get();
+      return parseFactor();
+    }
+    if (peek() === '-') {
+      get();
+      return -parseFactor();
+    }
+
+    // Paréntesis
+    if (peek() === '(') {
+      get();
+      const val = parseExpression();
+      if (get() !== ')') return NaN;
+      return val;
+    }
+
+    // Literal numérico (incluyendo notación científica 1.5e-3)
+    const numMatch = normalized.slice(pos).match(/^(\d+(?:\.\d+)?(?:[eE][+-]?\d+)?)/);
+    if (numMatch) {
+      pos += numMatch[0].length;
+      return parseFloat(numMatch[0]);
+    }
+
+    // Identificador: constante o nombre de función
+    const idMatch = normalized.slice(pos).match(/^([a-zA-Z_]\w*)/);
+    if (idMatch) {
+      const id = idMatch[1].toLowerCase();
+      pos += idMatch[0].length;
+
+      // Llamada a función matemática: ej. sqrt(144)
+      if (peek() === '(') {
+        get();
+        const arg = parseExpression();
+        if (get() !== ')') return NaN;
+
+        switch (id) {
+          case 'sqrt': return Math.sqrt(arg);
+          case 'abs': return Math.abs(arg);
+          case 'sin': return Math.sin(arg);
+          case 'cos': return Math.cos(arg);
+          case 'tan': return Math.tan(arg);
+          case 'log': return Math.log(arg);
+          case 'log10': return Math.log10(arg);
+          case 'exp': return Math.exp(arg);
+          default: return NaN;
+        }
+      }
+
+      // Constantes conocidas
+      if (id === 'pi') return Math.PI;
+      if (id === 'e') return Math.E;
+
+      return NaN;
+    }
+
+    return NaN;
+  }
+
+  try {
+    const val = parseExpression();
+    if (pos < normalized.length) return NaN;
+    return isFinite(val) ? val : NaN;
+  } catch {
+    return NaN;
+  }
+}

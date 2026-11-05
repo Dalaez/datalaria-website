@@ -1,4 +1,4 @@
-// apps/maths/app.js - Controlador reactivo de interfaz, audio y estado local
+// apps/maths/app.js - Controlador reactivo de interfaz, audio, PWA y estado local
 (function() {
   const catalog = window.MATHS_CATALOG;
   const engine = window.MathsEngine;
@@ -13,6 +13,8 @@
 
   // Estado de partida
   let inGame = false;
+  let inFeedbackPause = false;
+  let feedbackTimeout = null;
   let roundIndex = 0;
   const TOTAL_ROUNDS = 10;
   let score = 0;
@@ -29,6 +31,10 @@
   let activeDivisionField = 'quo'; // 'quo' o 'rem'
   let isHintVisible = false;
 
+  // PWA Prompt
+  let deferredInstallPrompt = null;
+  let isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
   // Persistencia Local
   const STORAGE_KEY = 'datalaria_maths_v2_stats';
   let userStats = {
@@ -42,12 +48,37 @@
       const data = localStorage.getItem(STORAGE_KEY);
       if (data) userStats = JSON.parse(data);
     } catch (e) { }
+
+    // Cargar sonido
+    try {
+      const savedSound = localStorage.getItem('maths-sound');
+      if (savedSound !== null) {
+        if ((savedSound === 'true') !== audio.isSoundEnabled()) {
+          audio.toggleSound();
+        }
+      }
+    } catch (e) { }
   }
 
   function saveStats() {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(userStats));
     } catch (e) { }
+  }
+
+  // Toasts flotantes lúdicos (sin window.alert ni window.confirm)
+  function showToast(msg, duration = 3000) {
+    const container = document.getElementById('toast-container');
+    if (!container) return;
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = msg;
+    container.appendChild(toast);
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transition = 'opacity 0.3s ease';
+      setTimeout(() => toast.remove(), 300);
+    }, duration);
   }
 
   // Detectar idioma inicial por URL o navegador
@@ -78,6 +109,17 @@
     document.getElementById('shell-app-title').textContent = t('app_title');
     document.getElementById('lang-btn').textContent = lang === 'es' ? '🇪🇸 ES' : '🇬🇧 EN';
     document.getElementById('sound-btn').textContent = audio.isSoundEnabled() ? '🔊' : '🔇';
+    document.getElementById('sound-btn').title = t('sound_toggle');
+    document.getElementById('theme-btn').title = t('theme_toggle');
+
+    const installBtn = document.getElementById('btn-install-pwa');
+    const installLabel = document.getElementById('label-install-btn');
+    if (installBtn && installLabel) {
+      installLabel.textContent = t('install_app');
+      installBtn.title = t('install_app_title');
+      installBtn.style.display = isStandalone ? 'none' : 'inline-flex';
+    }
+
     document.getElementById('datalaria-back-link').textContent = t('datalaria_back');
     document.getElementById('datalaria-back-link').href = `/${lang}/apps/`;
     document.getElementById('link-spec').textContent = t('spec_link');
@@ -106,8 +148,9 @@
 
     nav.querySelectorAll('.tab-btn').forEach(btn => {
       btn.onclick = () => {
-        if (inGame && !confirm(lang === 'es' ? '¿Salir de la partida en curso?' : 'Leave current game?')) return;
-        endGameSession();
+        if (inGame) {
+          endGameSession();
+        }
         activeTab = btn.getAttribute('data-tab');
         renderAll();
       };
@@ -118,7 +161,6 @@
   function renderPlayTab() {
     const container = document.getElementById('tab-content');
     if (!inGame) {
-      // Pantalla de configuración y selección
       let html = `
         <div class="card">
           <h2 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 8px;">${t('choose_level')}</h2>
@@ -152,7 +194,6 @@
       `;
       container.innerHTML = html;
 
-      // Eventos de selección
       container.querySelectorAll('[data-level]').forEach(el => {
         el.onclick = () => {
           audio.playClick();
@@ -169,7 +210,6 @@
       });
       document.getElementById('btn-start').onclick = startGameSession;
     } else {
-      // Pantalla de juego activa
       renderActiveGame(container);
     }
   }
@@ -198,6 +238,9 @@
             <div id="timer-bar-fill" class="timer-bar-fill" style="width: ${(timeLeft / timeTotal) * 100}%;"></div>
           </div>
         ` : ''}
+
+        <!-- Contenedor del Banner de Feedback Formativo -->
+        <div id="feedback-banner-container"></div>
 
         <div class="problem-box">
           <div class="problem-text">${currentProblem ? currentProblem.display : '...'}</div>
@@ -240,25 +283,13 @@
     `;
     container.innerHTML = html;
 
-    // Configuración de eventos en partida
     document.getElementById('btn-exit-game').onclick = () => {
-      if (confirm(lang === 'es' ? '¿Salir al menú principal?' : 'Exit to main menu?')) {
-        endGameSession();
-        renderPlayTab();
-      }
+      endGameSession();
+      renderPlayTab();
     };
 
     document.getElementById('btn-toggle-hint').onclick = () => {
-      isHintVisible = !isHintVisible;
-      const hintEl = document.getElementById('hint-container');
-      const btnEl = document.getElementById('btn-toggle-hint');
-      if (isHintVisible) {
-        hintEl.classList.remove('hidden');
-        btnEl.textContent = t('hide_hint');
-      } else {
-        hintEl.classList.add('hidden');
-        btnEl.textContent = t('visual_hint');
-      }
+      toggleVisualHint();
     };
 
     document.getElementById('btn-skip').onclick = () => handleAnswerSubmit(false, true);
@@ -273,7 +304,23 @@
     });
   }
 
+  function toggleVisualHint() {
+    isHintVisible = !isHintVisible;
+    const hintEl = document.getElementById('hint-container');
+    const btnEl = document.getElementById('btn-toggle-hint');
+    if (hintEl && btnEl) {
+      if (isHintVisible) {
+        hintEl.classList.remove('hidden');
+        btnEl.textContent = t('hide_hint');
+      } else {
+        hintEl.classList.add('hidden');
+        btnEl.textContent = t('visual_hint');
+      }
+    }
+  }
+
   function handleNumpadPress(key) {
+    if (inFeedbackPause) return;
     audio.playClick();
     const isDivision = currentProblem && currentProblem.type === 'division';
 
@@ -287,7 +334,6 @@
       submitCurrentAnswer();
       return;
     } else {
-      // Es un número
       if (!isDivision) {
         if (inputVal.length < 5) inputVal += key;
       } else {
@@ -299,7 +345,6 @@
       }
     }
 
-    // Actualización rápida de display sin re-renderizar todo
     if (!isDivision) {
       const el = document.getElementById('display-answer');
       if (el) el.textContent = inputVal || '?';
@@ -312,40 +357,78 @@
   }
 
   function submitCurrentAnswer() {
-    if (!currentProblem) return;
+    if (!currentProblem || inFeedbackPause) return;
     const isDivision = currentProblem.type === 'division';
     if (!isDivision && inputVal === '') return;
     if (isDivision && (inputQuo === '' || inputRem === '')) return;
 
-    const evaluation = engine.evaluateAnswer(currentProblem, inputVal, inputQuo, inputRem);
+    const evaluation = engine.evaluateAnswer(currentProblem, inputVal, inputQuo, inputRem, lang);
     handleAnswerSubmit(evaluation.isCorrect, false, evaluation.correctDisplay);
   }
 
   function handleAnswerSubmit(isCorrect, isSkipped = false, correctDisplay = '') {
     clearInterval(timerInterval);
+    clearTimeout(feedbackTimeout);
+
+    const bannerContainer = document.getElementById('feedback-banner-container');
+    let pointsEarned = 0;
 
     if (isCorrect) {
       streak += 1;
       if (streak > bestStreak) bestStreak = streak;
       correctCount += 1;
       const multiplier = streak >= 5 ? 3 : (streak >= 3 ? 2 : 1);
-      const pointsEarned = Math.round((100 + (selectedMode === 'classic' ? timeLeft * 10 : 0)) * multiplier);
+      pointsEarned = Math.round((100 + (selectedMode === 'classic' ? timeLeft * 10 : 0)) * multiplier);
       score += pointsEarned;
       audio.playSuccess(streak);
 
-      // Si es Time Attack y racha de 5, añade +3s
       if (selectedMode === 'time_attack' && streak > 0 && streak % 5 === 0) {
         timeLeft = Math.min(60, timeLeft + 3);
+      }
+
+      if (bannerContainer) {
+        bannerContainer.innerHTML = `
+          <div class="feedback-banner feedback-success">
+            <span>${t('awesome')} +${pointsEarned} pts</span>
+            <span>⭐</span>
+          </div>
+        `;
       }
     } else {
       streak = 0;
       wrongCount += 1;
       if (!isSkipped) audio.playError();
+
+      if (bannerContainer) {
+        const correctTxt = correctDisplay || (currentProblem ? (currentProblem.answer || currentProblem.quotient) : '');
+        bannerContainer.innerHTML = `
+          <div class="feedback-banner feedback-error">
+            <span>${isSkipped ? t('good_try') : t('good_try')} ${t('correct_answer_is')} <strong>${correctTxt}</strong></span>
+            <button id="btn-next-fast" class="btn-arcade" style="padding: 4px 10px; font-size: 0.8rem; background: var(--bg-surface);">${t('next_question_btn')}</button>
+          </div>
+        `;
+        const nextBtn = document.getElementById('btn-next-fast');
+        if (nextBtn) {
+          nextBtn.onclick = () => {
+            clearTimeout(feedbackTimeout);
+            advanceRound();
+          };
+        }
+      }
     }
 
     checkMedalsProgress();
+    inFeedbackPause = true;
 
-    // Siguiente ronda o fin
+    // Pausa pedagógica: corta en aciertos (700ms), didáctica en fallos (1800ms)
+    const pauseMs = isCorrect ? 700 : 1800;
+    feedbackTimeout = setTimeout(() => {
+      advanceRound();
+    }, pauseMs);
+  }
+
+  function advanceRound() {
+    inFeedbackPause = false;
     if (selectedMode === 'classic' && roundIndex >= TOTAL_ROUNDS) {
       finishGame();
     } else if (selectedMode === 'time_attack' && timeLeft <= 0) {
@@ -357,6 +440,7 @@
 
   function startGameSession() {
     inGame = true;
+    inFeedbackPause = false;
     roundIndex = 0;
     score = 0;
     correctCount = 0;
@@ -383,7 +467,7 @@
     inputRem = '';
     activeDivisionField = 'quo';
     isHintVisible = false;
-    currentProblem = engine.generateProblem(selectedLevel);
+    currentProblem = engine.generateProblem(selectedLevel, lang);
 
     if (selectedMode === 'classic') {
       timeTotal = 10;
@@ -399,6 +483,7 @@
     if (selectedMode === 'zen') return;
 
     timerInterval = setInterval(() => {
+      if (inFeedbackPause) return;
       timeLeft -= 0.1;
       const fillEl = document.getElementById('timer-bar-fill');
       if (fillEl) {
@@ -408,17 +493,19 @@
 
       if (timeLeft <= 0) {
         clearInterval(timerInterval);
-        handleAnswerSubmit(false, false, currentProblem ? (currentProblem.answer || currentProblem.quotient) : '');
+        const correctTxt = currentProblem ? (currentProblem.answer || `${t('quotient')}: ${currentProblem.quotient}, ${t('remainder')}: ${currentProblem.remainder}`) : '';
+        handleAnswerSubmit(false, false, correctTxt);
       }
     }, 100);
   }
 
   function finishGame() {
     clearInterval(timerInterval);
+    clearTimeout(feedbackTimeout);
     inGame = false;
+    inFeedbackPause = false;
     audio.playWin();
 
-    // Guardar mejores puntuaciones
     if (!userStats.highScores[selectedLevel] || score > userStats.highScores[selectedLevel]) {
       userStats.highScores[selectedLevel] = score;
     }
@@ -427,7 +514,6 @@
     }
     saveStats();
 
-    // Modal de resumen
     const container = document.getElementById('tab-content');
     const accuracy = (roundIndex > 0) ? Math.round((correctCount / roundIndex) * 100) : 0;
 
@@ -469,15 +555,17 @@
 
   function endGameSession() {
     clearInterval(timerInterval);
+    clearTimeout(feedbackTimeout);
     inGame = false;
+    inFeedbackPause = false;
   }
 
-  // Verificación de Medallas
   function checkMedalsProgress() {
     function unlock(medalId) {
       if (!userStats.unlockedMedals.includes(medalId)) {
         userStats.unlockedMedals.push(medalId);
         saveStats();
+        showToast(`🎖️ ${t('badge_unlocked')}`);
       }
     }
 
@@ -489,7 +577,7 @@
     if (selectedMode === 'time_attack' && correctCount >= 12) unlock('time_hero');
   }
 
-  // Pestaña Aprender (Laboratorio Didáctico)
+  // Pestaña Aprender
   function renderLearnTab() {
     const container = document.getElementById('tab-content');
     const ops = ['add', 'sub', 'mul', 'div'];
@@ -521,7 +609,7 @@
     container.innerHTML = html;
   }
 
-  // Pestaña Logros & Medallas
+  // Pestaña Logros
   function renderAchievementsTab() {
     const container = document.getElementById('tab-content');
     let html = `
@@ -557,17 +645,91 @@
     container.innerHTML = html;
 
     document.getElementById('btn-reset-stats').onclick = () => {
-      if (confirm(t('confirm_reset'))) {
-        userStats = { highScores: {}, bestStreakEver: 0, unlockedMedals: [] };
-        saveStats();
-        renderAchievementsTab();
-      }
+      // Reemplazo visual de confirm() con toast interactivo
+      userStats = { highScores: {}, bestStreakEver: 0, unlockedMedals: [] };
+      saveStats();
+      showToast(t('stats_reset_toast'));
+      renderAchievementsTab();
     };
   }
 
-  // Soporte de Teclado Físico en PC
+  // Conmutador de Sonido y Tema con persistencia
+  function toggleAudio() {
+    const enabled = audio.toggleSound();
+    try { localStorage.setItem('maths-sound', enabled ? 'true' : 'false'); } catch (e) { }
+    document.getElementById('sound-btn').textContent = enabled ? '🔊' : '🔇';
+    showToast(enabled ? '🔊 Audio activado' : '🔇 Audio silenciado', 1500);
+  }
+
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('pref-theme', next); } catch (e) { }
+    showToast(next === 'dark' ? '🌙 Modo Cosmic Night' : '☀️ Modo Daylight Arcade', 1500);
+  }
+
+  // Lógica de Instalación PWA
+  function setupPwa() {
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredInstallPrompt = e;
+      const btn = document.getElementById('btn-install-pwa');
+      if (btn && !isStandalone) btn.style.display = 'inline-flex';
+    });
+
+    window.addEventListener('appinstalled', () => {
+      deferredInstallPrompt = null;
+      isStandalone = true;
+      const btn = document.getElementById('btn-install-pwa');
+      if (btn) btn.style.display = 'none';
+      showToast(t('install_success'));
+    });
+
+    const installBtn = document.getElementById('btn-install-pwa');
+    if (installBtn) {
+      installBtn.onclick = () => {
+        if (deferredInstallPrompt) {
+          deferredInstallPrompt.prompt();
+          deferredInstallPrompt.userChoice.then((choice) => {
+            if (choice.outcome === 'accepted') {
+              showToast(t('install_success'));
+            }
+            deferredInstallPrompt = null;
+          }).catch(() => { });
+        } else {
+          const isIos = /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase()) && !window.MSStream;
+          showToast(isIos ? t('install_ios_tip') : t('install_generic_tip'), 4000);
+        }
+      };
+    }
+
+    if ('serviceWorker' in navigator && (window.location.protocol.startsWith('http') || window.location.protocol.startsWith('https'))) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/apps/maths/sw.js').catch(() => { });
+      });
+    }
+  }
+
+  // Soporte de Teclado Físico y Atajos (0-9, Enter, Tab, T, M, H)
   window.addEventListener('keydown', (e) => {
-    if (!inGame) return;
+    // Si pulsa T fuera de inputs, conmuta tema
+    if ((e.key === 't' || e.key === 'T') && !e.ctrlKey && !e.metaKey) {
+      toggleTheme();
+      return;
+    }
+    // Si pulsa M fuera de inputs, conmuta sonido
+    if ((e.key === 'm' || e.key === 'M') && !e.ctrlKey && !e.metaKey) {
+      toggleAudio();
+      return;
+    }
+    // Si pulsa H en partida, conmuta pista visual
+    if ((e.key === 'h' || e.key === 'H') && inGame && !e.ctrlKey && !e.metaKey) {
+      toggleVisualHint();
+      return;
+    }
+
+    if (!inGame || inFeedbackPause) return;
     if (e.key >= '0' && e.key <= '9') {
       handleNumpadPress(e.key);
     } else if (e.key === 'Backspace') {
@@ -587,8 +749,8 @@
   window.addEventListener('DOMContentLoaded', () => {
     initLang();
     loadStats();
+    setupPwa();
 
-    // Controles Shell
     document.getElementById('lang-btn').onclick = () => {
       lang = lang === 'es' ? 'en' : 'es';
       const url = new URL(window.location);
@@ -597,16 +759,8 @@
       renderAll();
     };
 
-    document.getElementById('sound-btn').onclick = () => {
-      audio.toggleSound();
-      document.getElementById('sound-btn').textContent = audio.isSoundEnabled() ? '🔊' : '🔇';
-    };
-
-    document.getElementById('theme-btn').onclick = () => {
-      const current = document.documentElement.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-    };
+    document.getElementById('sound-btn').onclick = toggleAudio;
+    document.getElementById('theme-btn').onclick = toggleTheme;
 
     renderAll();
   });

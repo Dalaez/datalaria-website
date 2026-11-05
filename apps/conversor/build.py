@@ -4,6 +4,7 @@ Genera static/apps/conversor/index.html y los 14 shims de retrocompatibilidad SE
 Datalaria Helix — Single Source of Truth
 """
 
+import re
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
@@ -75,26 +76,45 @@ def build():
         engine_code.replace("export const ", "const ")
         .replace("export function ", "function ")
     )
-    clean_app = (
-        app_code.replace("import { PHYSICAL_CONSTANTS, CATEGORIES } from './catalog.js';", "")
-        .replace("import {\n  convertLinear,\n  convertTemperature,\n  convertRfPower,\n  convertRfWavFreq,\n  formatEngineeredNumber,\n  processBatchText,\n  WAVELENGTH_FACTORS,\n  FREQ_FACTORS\n} from './engine.js';", "")
-        .replace("export class UnitConverterApp", "class UnitConverterApp")
-    )
+    clean_app = re.sub(r'import\s+{[^}]+}\s+from\s+[\'"][^\'"]+[\'"];?\n?', '', app_code)
+    clean_app = clean_app.replace("export class UnitConverterApp", "class UnitConverterApp")
 
     index_html = f"""<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversor Universal Pro — Engineering Workbench v2.0 | Datalaria</title>
+    <title>Conversor Universal Pro — Engineering Workbench v2.1 | Datalaria</title>
     <meta name="description" content="Navaja suiza digital para conversiones científicas y técnicas en 6 disciplinas de ingeniería. Precisión SI/CODATA 2022, formato de separadores numéricos y batch scratchpad.">
     <link rel="canonical" href="https://datalaria.com/apps/conversor/">
+    <link rel="manifest" href="/apps/conversor/manifest.json">
+    <meta name="theme-color" content="#0b0f17" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Conversor Pro">
+    <link rel="icon" type="image/svg+xml" href="/apps/conversor/icon.svg">
+    <link rel="apple-touch-icon" href="/apps/conversor/datalaria_logo_transp.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
     <style>
 {css_code}
     </style>
+    <script>
+        (function() {{
+            var saved = localStorage.getItem('pref-theme') || localStorage.getItem('datalaria_theme');
+            var isDark = saved === 'dark' || (!saved && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) || !saved;
+            var theme = isDark ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+            if (theme === 'dark') {{
+                document.documentElement.classList.add('dark');
+            }} else {{
+                document.documentElement.classList.remove('dark');
+            }}
+        }})();
+    </script>
 </head>
 <body>
     <header id="app-header" class="app-header"></header>
@@ -172,7 +192,14 @@ document.addEventListener('DOMContentLoaded', () => {{
         shim_path.write_text(generate_shim_html(target, title, "en"), encoding="utf-8")
         print(f"  [+] Shim EN: {shim_path.relative_to(REPO_ROOT)} -> {target}")
 
-    print("[OK] Build de Conversor v2.0.0 completado con exito.")
+    # PWA Assets
+    for pwa_file in ["manifest.json", "sw.js", "icon.svg"]:
+        src_pwa = SRC_DIR / pwa_file
+        if src_pwa.exists():
+            (STATIC_DIR / pwa_file).write_text(src_pwa.read_text(encoding="utf-8"), encoding="utf-8")
+            print(f"  [+] PWA Asset: static/apps/conversor/{pwa_file}")
+
+    print("[OK] Build de Conversor v2.1.0 completado con exito.")
 
 
 if __name__ == "__main__":

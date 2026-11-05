@@ -1,7 +1,7 @@
 # SPEC-APP-MATHS: Matemáticas Interactivas ("Ábaco Arcade v2.0")
 
 > **Identificador:** `SPEC-APP-MATHS`  
-> **Versión:** `v2.0.0` (Estado: `active`)  
+> **Versión:** `v2.1.0` (Estado: `active`)  
 > **Fecha:** `2026-11-05`  
 > **Clasificación:** Tier `lab` | Educational & Cognitive Game  
 > **Ruta Canónica:** `https://datalaria.com/apps/maths/`  
@@ -85,12 +85,19 @@ flowchart TD
 - **`INV-MATHS-5` (Inmunidad XSS):** Ninguna entrada del usuario ni dato de `localStorage` o `URLSearchParams` se renderiza sin sanitización en el DOM.
 - **`INV-MATHS-6` (Paridad Bilingüe Total ES ⇔ EN):** La totalidad de textos, botones, explicaciones y medallas existe en ambos idiomas sin omisión alguna.
 - **`INV-MATHS-7` (Tríada de Enlaces Datalaria):** La cabecera superior integra los tres accesos directos al ecosistema: Ficha de la App (`/apps/maths/`), Historia IA (`/posts/founderz-.../`) y Recursos B2B (`/recursos/`).
+- **`INV-MATHS-8` (PWA 100% Offline e Instalación Standalone):** La aplicación debe contar con `manifest.json`, icono vectorial `icon.svg` y un Service Worker (`sw.js`) con estrategia Cache-First/Stale-While-Revalidate que precachee todos sus activos, permitiendo su instalación en pantalla de inicio de móviles/tablets y ejecución 100% offline.
+- **`INV-MATHS-9` (Persistencia de Tema Anti-FOUC, Sonido y Atajos de Teclado):** La aplicación debe persistir el tema (`pref-theme`) y sonido (`maths-sound`) en `localStorage`, ejecutando un micro-script inline en `<head>` para evitar destellos (FOUC), y ofrecer atajos rápidos de teclado (`T` para alternar tema, `M` para silenciar/activar audio, `H` para conmutar pista visual).
 
 ---
 
 ## 5. HISTORIAL DE VERSIONES Y EVOLUCIÓN
 
-- **`v2.0.0` (2026-11-05) — [ESTADO: ACTIVO — ÁBACO ARCADE SDD]:**
+- **`v2.1.0` (2026-11-05) — [ESTADO: ACTIVO — PWA OFFLINE & FEEDBACK FORMATIVO]:**
+  - **PWA Offline e Instalable (`INV-MATHS-8`):** `manifest.json`, Service Worker `sw.js` y botón `📲 Instalar App` con soporte para instalación nativa en tablets, móviles (iOS/Android) y escritorio.
+  - **Feedback Formativo y Didáctico:** Banner animado tras responder que muestra refuerzo positivo inmediato al acertar o solución correcta durante 1.8s (con botón `Siguiente ➔` opcional) al fallar o acabarse el tiempo, antes de avanzar de ronda.
+  - **Corrección de Localización y Paridad:** Localización dinámica de expresiones numéricas (`% of` en inglés) y erradicación de `window.confirm()` nativo reemplazado por toasts y confirmaciones visuales integradas.
+  - **Persistencia Anti-FOUC y Atajos (`INV-MATHS-9`):** Persistencia en `localStorage` del tema Daylight/Cosmic Night y estado de sonido, script inline anti-FOUC y atajos de teclado `T`, `M`, `H`.
+- **`v2.0.0` (2026-11-05) — [SUPERSEDED]:**
   - **Evolución Multigeneracional:** Ampliación del rango didáctico de 4 niveles infantiles a 6 niveles adaptativos (Infantil a Reto Mental de Adultos con porcentajes y combinadas).
   - **Sintetizador Web Audio & Confeti:** Cierre de drift histórico de sonido mediante sintetizador nativo procedural de 8-bit y motor de confeti en Canvas.
   - **Manipulador Visual Interactivo:** Pistas visuales con objetos agrupables y reparto matricial/cajas para comprensión tangible de los conceptos.

@@ -1,7 +1,7 @@
 # Especificación Técnica SDD: Datalaria Helix (`helix`)
 
 > **ID de Especificación:** `SPEC-APP-HELIX`  
-> **Versión:** `1.1.0`  
+> **Versión:** `1.2.0`  
 > **Estado:** `APPROVED`  
 > **Propietario de Dominio:** Datalaria (Operations Engineering & Applied AI)  
 > **Referencia ADR:** [`ADR-017`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/DECISIONS.md)  
@@ -129,6 +129,17 @@ Verification Gate: <Comandos exactos de validación que ejecutará 11-qa-verifie
 Presupuesto y Gobernanza: Máx. 2 intentos por gate · Checkpoint <tag> · Aprobación humana previa: <SÍ | NO>
 ```
 
+### 3.3 Contrato de Línea de Comandos (`ops/helix/cli.py` — INV-HELIX-5)
+El CLI de Datalaria Helix (`helix` / `python -m ops.helix.cli` o `python helix.py`) se implementa con **cero dependencias externas** utilizando exclusivamente la librería estándar de Python $\ge 3.10$. Expone 7 subcomandos deterministas:
+
+1. **`helix init [--target <dir>] [--blueprint <id>]`**: Inicializa un repositorio vacío clonando cimientos SDD (`AGENTS.md`, `CLAUDE.md`, `specs/`, adaptadores y opcionalmente un blueprint). Código de salida `0` si tiene éxito, `1` si hay error.
+2. **`helix triage --milestone <id> --files <int> --surfaces <s1,s2,...> [--spec-change] [--new-app] [--gate <cmd>] [--json]`**: Ejecuta el algoritmo determinista de triaje emitiendo la Tarjeta `TRIAGE HELIX` canónica de 6 líneas (o JSON estructurado).
+3. **`helix new-spec <slug> [--title <name>] [--tier <lab|pro|flagship>] [--with-design]`**: Crea la especificación `specs/apps/<slug>/spec.md` (y opcionalmente `design.md`) a partir de la plantilla estándar superando automáticamente el umbral de `SpecQualityScore >= 80`.
+4. **`helix checkpoint <id> [--post] [--allow-dirty]`**: Valida el estado Git e implanta el tag `sdd-checkpoint-pre-<id>` (o `post-` si se pasa `--post`).
+5. **`helix verify [--spec <path>] [--min-score <0..100>] [--run-gate <cmd>] [--json]`**: Evalúa `SpecQualityScore` (0..100), verifica el firewall de `static/` (`INV-HELIX-6`), audita el anti-bloat de `specs/squad/*.md` (`INV-HELIX-8`) y ejecuta el comando de gate especificado devolviendo código `0` si todo pasa o `1` si hay violaciones.
+6. **`helix rollback <tag_or_id> [--confirm] [--log-reason <text>]`**: Modo dry-run por defecto mostrando archivos afectados; con `--confirm` restaura el árbol de trabajo al tag `sdd-checkpoint-pre-<id>` y registra la incidencia en el `Audit Log` de `specs/ROADMAP.md`.
+7. **`helix status [--root <dir>] [--json]`**: Inspecciona el estado de la hoja de ruta, las especificaciones activas, la salud del escuadrón y los puntos de restauración disponibles.
+
 ---
 
 ## 4. El Músculo Determinista e Invariantes de Dominio (`INV-HELIX-*`)
@@ -207,5 +218,8 @@ donde cada indicador $I_k \in \{0, 0.5, 1\}$ verifica determinísticamente por e
 
 | Versión | Fecha | Tipo | Cambios | Commit(s) |
 | :--- | :--- | :--- | :--- | :--- |
+| `v0.5.0` | 2026-11-05 | 🏆 Case Study | Construcción y verificación de principio a fin del Caso Demo #2 `MarginGuard B2B` (micro-app para profesional no-dev) con timeline de 3 iteraciones SDD, veto real de `11-qa-verifier` resuelto mediante `INV-MARGIN-2` e integración en Core Kit y Sandbox Web. | *Hito 6.7* |
+| `v0.4.0` | 2026-11-05 | 🎨 UX/Frontend | Aprobación de `specs/apps/helix/design.md` (preset Executive Data-Dense Cockpit), construcción de la SPA React 19 + TypeScript en `apps/helix/web/` con Modo A (Spec Builder determinista + ZIP en navegador) y Modo B (Mega-Prompt), conmutador bilingüe ES/EN y compilación estática hacia `static/apps/helix/`. | *Hito 6.6* |
+| `v0.3.0` | 2026-11-05 | ⚡ Tooling | Implementación de `ops/helix/cli.py` en Python estándar con 7 subcomandos (`init`, `triage`, `new-spec`, `checkpoint`, `verify`, `rollback`, `status`), motor `SpecQualityScore` 0..100, empaquetado `helix.py` en Core Kit y guía de paridad Sin-CLI (`INV-HELIX-5`). | *Hito 6.5* |
 | `v0.2.0` | 2026-11-04 | 🧬 Evolución | Incorporación de `INV-HELIX-8` (control anti-bloat <= 85 líneas, lecciones de fricción real [USER-FIX]/[ENV-FIX]), creación de `TECH_RADAR.yaml`, `OPPORTUNITY_BACKLOG.md` y compilador del Kit Core genérico (`build_core_kit.py`) con 3 blueprints y suite pytest de init en directorio vacío (`ADR-019`). | *Hito 6.4* |
 | `v0.1.0` | 2026-11-03 | 📐 Spec | Aprobación de `SPEC-APP-HELIX`, definición de las 7 invariantes `INV-HELIX-1..7`, rúbrica determinista de triaje `XS–XL`, plantilla `design.template.md` y creación de las 12 fichas `AGENT_SPEC` en `specs/squad/` (Hito 6.1 / `ADR-017`). | *Hito 6.1* |

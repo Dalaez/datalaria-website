@@ -11,8 +11,8 @@
   const MathsEngine = {
     randInt,
 
-    // Genera un reto determinista según nivel
-    generateProblem: function(levelId) {
+    // Genera un reto determinista según nivel e idioma
+    generateProblem: function(levelId, lang = 'es') {
       switch (levelId) {
         case 'l1': {
           // Nivel 1: Sumas de 1 dígito con resultado <= 10
@@ -173,11 +173,12 @@
             else if (pct === 50) base = randInt(2, 20) * 10;
             else base = randInt(2, 25) * 10;
             const answer = (pct / 100) * base;
+            const ofWord = lang === 'en' ? 'of' : 'de';
             return {
               type: 'standard',
               op: '%',
               answer,
-              display: `${pct}% de ${base} = ?`,
+              display: `${pct}% ${ofWord} ${base} = ?`,
               hintText: { es: `${pct}% equivale a la fracción adecuada`, en: `${pct}% equals the corresponding fraction` },
               visual: null
             };
@@ -212,14 +213,16 @@
     },
 
     // Evalúa si la respuesta proporcionada por el usuario es correcta
-    evaluateAnswer: function(problem, userVal, userQuo, userRem) {
+    evaluateAnswer: function(problem, userVal, userQuo, userRem, lang = 'es') {
       if (problem.type === 'division') {
         const q = parseInt(userQuo, 10);
         const r = parseInt(userRem, 10);
         const isCorrect = (!isNaN(q) && !isNaN(r) && q === problem.quotient && r === problem.remainder);
+        const qLabel = lang === 'en' ? 'Quotient' : 'Cociente';
+        const rLabel = lang === 'en' ? 'Remainder' : 'Resto';
         return {
           isCorrect,
-          correctDisplay: `Cociente: ${problem.quotient}, Resto: ${problem.remainder}`
+          correctDisplay: `${qLabel}: ${problem.quotient}, ${rLabel}: ${problem.remainder}`
         };
       } else {
         const val = parseInt(userVal, 10);

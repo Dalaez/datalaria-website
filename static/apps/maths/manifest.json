@@ -1,0 +1,27 @@
+{
+  "name": "Ábaco Arcade — Matemáticas Lúdicas (Datalaria)",
+  "short_name": "Ábaco Arcade",
+  "description": "Juego educativo y entrenamiento de cálculo mental gamificado para niños y adultos con 6 niveles y pistas visuales.",
+  "start_url": "/apps/maths/",
+  "scope": "/apps/maths/",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#0ea5e9",
+  "background_color": "#f0f4ff",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "/apps/maths/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/apps/maths/datalaria_logo_transp.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["education", "games", "kids"]
+}

@@ -12,6 +12,7 @@ import {
   convertRfWavFreq,
   formatEngineeredNumber,
   processBatchText,
+  evaluateMathExpression,
   WAVELENGTH_FACTORS,
   FREQ_FACTORS
 } from './engine.js';
@@ -23,6 +24,15 @@ const I18N = {
     appSheet: '📋 Ficha de la App',
     guidePost: '📖 Guía Técnica',
     b2bKits: '📦 Kits B2B →',
+    themeToggleLight: 'Cambiar a modo día (claro)',
+    themeToggleDark: 'Cambiar a modo noche (oscuro)',
+    toastLightMode: '☀️ Modo día activado',
+    toastDarkMode: '🌙 Modo noche activado',
+    installAppBtn: 'Instalar App',
+    installAppTitle: 'Instalar Conversor Pro en tu dispositivo (PWA)',
+    installSuccessToast: '✓ ¡Conversor Pro instalado con éxito!',
+    installIosInstructions: '📲 En Safari iOS: pulsa Compartir (⎙) y elige "Añadir a pantalla de inicio"',
+    installGenericInstructions: '📲 Pulsa el menú (⋮) del navegador y elige "Instalar aplicación" o "Añadir a pantalla de inicio"',
     constantsLabel: 'Constantes CODATA:',
     viewCodataTable: 'Tabla completa',
     closeCodataTable: 'Cerrar tabla',
@@ -60,6 +70,15 @@ const I18N = {
     appSheet: '📋 App Overview',
     guidePost: '📖 Technical Guide',
     b2bKits: '📦 B2B Kits →',
+    themeToggleLight: 'Switch to light mode',
+    themeToggleDark: 'Switch to dark mode',
+    toastLightMode: '☀️ Light mode activated',
+    toastDarkMode: '🌙 Dark mode activated',
+    installAppBtn: 'Install App',
+    installAppTitle: 'Install Converter Pro on your device (PWA)',
+    installSuccessToast: '✓ Converter Pro successfully installed!',
+    installIosInstructions: '📲 In Safari iOS: tap Share (⎙) and choose "Add to Home Screen"',
+    installGenericInstructions: '📲 Tap browser menu (⋮) and select "Install app" or "Add to Home Screen"',
     constantsLabel: 'CODATA Constants:',
     viewCodataTable: 'Full Table',
     closeCodataTable: 'Close Table',
@@ -146,18 +165,125 @@ export class UnitConverterApp {
       batchToUnit: 'psi',
       history: [],
       historyCollapsed: false,
-      codataTableOpen: false
+      codataTableOpen: false,
+      theme: 'dark'
     };
   }
 
   init() {
+    this.readThemePreference();
     this.readUrlParams();
     this.loadHistory();
+    this.setupPwaInstallPrompt();
     this.renderShell();
     this.renderCategoryNav();
     this.renderConstantsBar();
     this.bindEvents();
     this.updateView();
+    this.registerServiceWorker();
+  }
+
+  setupPwaInstallPrompt() {
+    this._deferredInstallPrompt = null;
+    this._isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+    // Si ya corre instalada en modo standalone, no mostramos el botón
+    if (this._isStandalone) return;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      this._deferredInstallPrompt = e;
+      this.updateInstallButtonVisibility(true);
+    });
+
+    window.addEventListener('appinstalled', () => {
+      this._deferredInstallPrompt = null;
+      this._isStandalone = true;
+      this.updateInstallButtonVisibility(false);
+      const t = I18N[this.state.lang];
+      this.showToast(t.installSuccessToast);
+    });
+  }
+
+  updateInstallButtonVisibility(visible) {
+    const btn = document.getElementById('btn-install-pwa');
+    if (btn) {
+      btn.style.display = visible ? 'inline-flex' : 'none';
+    }
+  }
+
+  async triggerPwaInstall() {
+    const t = I18N[this.state.lang];
+    if (this._deferredInstallPrompt) {
+      this._deferredInstallPrompt.prompt();
+      try {
+        const { outcome } = await this._deferredInstallPrompt.userChoice;
+        if (outcome === 'accepted') {
+          this.updateInstallButtonVisibility(false);
+          this.showToast(t.installSuccessToast);
+        }
+      } catch {
+        // Fallback silencioso
+      }
+      this._deferredInstallPrompt = null;
+    } else {
+      const isIos = /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase()) && !window.MSStream;
+      if (isIos) {
+        this.showToast(t.installIosInstructions);
+      } else {
+        this.showToast(t.installGenericInstructions);
+      }
+    }
+  }
+
+  registerServiceWorker() {
+    if ('serviceWorker' in navigator && (window.location.protocol.startsWith('http') || window.location.protocol.startsWith('https'))) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/apps/conversor/sw.js')
+          .catch(() => {
+            // Ignorado silenciosamente en entornos sandbox o sin soporte
+          });
+      });
+    }
+  }
+
+  readThemePreference() {
+    const saved = localStorage.getItem('pref-theme') || localStorage.getItem('datalaria_theme');
+    if (saved === 'light' || saved === 'dark') {
+      this.state.theme = saved;
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+      this.state.theme = 'light';
+    } else {
+      this.state.theme = 'dark';
+    }
+    this.applyTheme();
+  }
+
+  applyTheme() {
+    document.documentElement.setAttribute('data-theme', this.state.theme);
+    if (this.state.theme === 'dark') {
+      document.documentElement.classList.add('dark');
+      if (document.body) {
+        document.body.classList.add('dark');
+        document.body.classList.remove('light');
+      }
+    } else {
+      document.documentElement.classList.remove('dark');
+      if (document.body) {
+        document.body.classList.remove('dark');
+        document.body.classList.add('light');
+      }
+    }
+    localStorage.setItem('pref-theme', this.state.theme);
+    localStorage.setItem('datalaria_theme', this.state.theme);
+  }
+
+  toggleTheme() {
+    this.state.theme = this.state.theme === 'dark' ? 'light' : 'dark';
+    this.applyTheme();
+    this.renderShell();
+    const t = I18N[this.state.lang];
+    this.showToast(this.state.theme === 'light' ? t.toastLightMode : t.toastDarkMode);
   }
 
   readUrlParams() {
@@ -241,7 +367,7 @@ export class UnitConverterApp {
         </a>
         <div class="app-title-badge">
           <span>${t.appTitle}</span>
-          <span class="version-chip">v2.0.0</span>
+          <span class="version-chip">v2.1.0</span>
         </div>
       </div>
       <div class="header-right">
@@ -249,6 +375,33 @@ export class UnitConverterApp {
           <button class="lang-btn ${this.state.lang === 'es' ? 'active' : ''}" data-lang="es">ES</button>
           <button class="lang-btn ${this.state.lang === 'en' ? 'active' : ''}" data-lang="en">EN</button>
         </div>
+        <button id="theme-toggle" class="btn-theme-toggle" accesskey="t" title="${this.state.theme === 'dark' ? t.themeToggleLight : t.themeToggleDark} (Alt + T)" aria-label="Toggle theme">
+          ${this.state.theme === 'dark' ? `
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          ` : `
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          `}
+        </button>
+        <button id="btn-install-pwa" class="btn-install-pwa" style="${this._isStandalone ? 'display: none;' : 'display: inline-flex;'}" title="${t.installAppTitle}">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span>${t.installAppBtn}</span>
+        </button>
         <a href="${appSheetUrl}" class="btn-ghost" title="${t.appSheet}">
           <span>${t.appSheet}</span>
         </a>
@@ -264,6 +417,16 @@ export class UnitConverterApp {
     headerEl.querySelectorAll('.lang-btn').forEach(btn => {
       btn.addEventListener('click', () => this.setLanguage(btn.dataset.lang));
     });
+
+    const themeBtn = headerEl.querySelector('#theme-toggle');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => this.toggleTheme());
+    }
+
+    const installBtn = headerEl.querySelector('#btn-install-pwa');
+    if (installBtn) {
+      installBtn.addEventListener('click', () => this.triggerPwaInstall());
+    }
   }
 
   renderCategoryNav() {
@@ -579,8 +742,9 @@ export class UnitConverterApp {
         <div class="unit-cell">
           <label class="cell-label" for="main-unit-input">
             <span>${t.inputLabel}</span>
+            <span id="input-expr-preview" class="expr-preview" style="display: none;"></span>
           </label>
-          <input type="number" id="main-unit-input" class="unit-input" value="${this.state.inputValue}" step="any">
+          <input type="text" id="main-unit-input" class="unit-input" value="${this.state.inputValue}" placeholder="Ej: 100 o 2*pi*50" autocomplete="off" spellcheck="false">
           <select id="main-from-unit-select" class="unit-select">
             ${units.map(u => `<option value="${u.id}" ${u.id === this.state.fromUnit ? 'selected' : ''}>${u.name[lang]}</option>`).join('')}
           </select>
@@ -615,8 +779,9 @@ export class UnitConverterApp {
         <div class="unit-cell">
           <label class="cell-label" for="main-unit-input">
             <span>${isFreqToWav ? 'Frecuencia (f)' : 'Longitud de Onda (λ)'}</span>
+            <span id="input-expr-preview" class="expr-preview" style="display: none;"></span>
           </label>
-          <input type="number" id="main-unit-input" class="unit-input" value="${this.state.inputValue}" step="any">
+          <input type="text" id="main-unit-input" class="unit-input" value="${this.state.inputValue}" placeholder="Ej: 100 o 2*pi*50" autocomplete="off" spellcheck="false">
           <select id="rf-from-select" class="unit-select">
             ${(isFreqToWav ? freqUnits : wavUnits).map(u => `
               <option value="${u}" ${u === (isFreqToWav ? this.state.rfWavFromUnit : this.state.rfWavToUnit) ? 'selected' : ''}>${u.toUpperCase()}</option>
@@ -653,9 +818,48 @@ export class UnitConverterApp {
 
     if (inputEl) {
       inputEl.addEventListener('input', (e) => {
-        this.state.inputValue = Number(e.target.value);
-        this.calculateAndRender();
-        this.syncUrlParams();
+        const raw = e.target.value.trim();
+        const previewEl = document.getElementById('input-expr-preview');
+        const evaluated = evaluateMathExpression(raw);
+
+        if (!isNaN(evaluated)) {
+          this.state.inputValue = evaluated;
+          if (/[+\-*/^%()]|[a-zA-Z]/.test(raw) && previewEl) {
+            previewEl.textContent = `= ${formatEngineeredNumber(evaluated, this.state.precision, this.state.lang)}`;
+            previewEl.style.display = 'inline-block';
+            inputEl.classList.add('has-expr');
+          } else if (previewEl) {
+            previewEl.style.display = 'none';
+            inputEl.classList.remove('has-expr');
+          }
+          this.calculateAndRender();
+          this.syncUrlParams();
+        } else if (raw === '') {
+          this.state.inputValue = 0;
+          if (previewEl) previewEl.style.display = 'none';
+          inputEl.classList.remove('has-expr');
+          this.calculateAndRender();
+        } else if (previewEl) {
+          previewEl.textContent = '...';
+          previewEl.style.display = 'inline-block';
+        }
+      });
+
+      inputEl.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          const raw = inputEl.value.trim();
+          const evaluated = evaluateMathExpression(raw);
+          if (!isNaN(evaluated)) {
+            inputEl.value = evaluated;
+            const previewEl = document.getElementById('input-expr-preview');
+            if (previewEl) previewEl.style.display = 'none';
+            inputEl.classList.remove('has-expr');
+            this.state.inputValue = evaluated;
+            this.calculateAndRender();
+            this.syncUrlParams();
+            this.showToast(`= ${evaluated}`);
+          }
+        }
       });
     }
 
@@ -1140,6 +1344,9 @@ export class UnitConverterApp {
       } else if (e.key === 'c' || e.key === 'C') {
         const copyBtn = document.getElementById('btn-copy-result');
         if (copyBtn) copyBtn.click();
+      } else if (e.key === 't' || e.key === 'T') {
+        const themeBtn = document.getElementById('theme-toggle');
+        if (themeBtn) themeBtn.click();
       }
     });
   }

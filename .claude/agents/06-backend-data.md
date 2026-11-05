@@ -38,6 +38,7 @@ Construir **«El Músculo» determinista** de las aplicaciones y Kits de Datalar
 - ❌ **Prohibido ejecutar scripts de seeding sobre cuentas reales (`ADR-014`).**
 
 ## 6. Reglas de Fricción Real y Correcciones ([USER-FIX] / [ENV-FIX])
-- **[USER-FIX] Paridad de Formatos en Scripts CLI:** Si la documentación o el post prometen exportar a .xlsx (--format xlsx), el script Python debe generar el libro Excel completo con sus hojas y validaciones, no solo YAML/JSON.
-- **[ENV-FIX] Codificación UTF-8 Explícita en Windows:** Abrir y escribir siempre archivos en Python con encoding='utf-8' para evitar corrupciones cp1252 en caracteres acentuados o flechas (➔).
-- **[RADAR-SKILL] Eficiencia Cuantitativa:** Proponer optimizaciones de procesamiento de datos o validación de esquemas solo cuando reduzcan latencia o dependencia externa.
+- `[USER-FIX]` **Paridad de Formatos en Scripts CLI:** Si la documentación o el post prometen exportar a .xlsx (--format xlsx), el script Python debe generar el libro Excel completo con sus hojas y validaciones, no solo YAML/JSON.
+- `[ENV-FIX]` **Codificación UTF-8 Explícita en Windows:** Abrir y escribir siempre archivos en Python con encoding='utf-8' para evitar corrupciones cp1252 en caracteres acentuados o flechas (➔).
+- `[ENV-FIX]` **Salida de Consola UTF-8 en CLI Windows:** En scripts CLI con salida por terminal, aplicar `sys.stdout.reconfigure(encoding='utf-8', errors='replace')` para evitar fallos de codec `charmap` con emojis o glifos.
+- `[RADAR-SKILL]` **Eficiencia Cuantitativa:** Proponer optimizaciones de procesamiento de datos o validación de esquemas solo cuando reduzcan latencia o dependencia externa.

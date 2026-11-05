@@ -1,0 +1,27 @@
+{
+  "name": "Conversor Universal Pro — Datalaria",
+  "short_name": "Conversor Pro",
+  "description": "Engineering Workbench v2.1: Navaja suiza científica para conversiones técnicas, metrología SI y procesamiento masivo.",
+  "start_url": "/apps/conversor/",
+  "scope": "/apps/conversor/",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#0b0f17",
+  "background_color": "#0b0f17",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "/apps/conversor/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/apps/conversor/datalaria_logo_transp.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["utilities", "productivity", "education"]
+}

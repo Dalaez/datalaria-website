@@ -24,22 +24,24 @@
 
 > **Invariante `INV-CONV-3`:** 100% CSS nativo sin dependencias externas (erradicación completa de `cdn.tailwindcss.com`).
 
-### 2.1 Paleta Semántica de Color
-| Token CSS | Valor (Dark Mode Canónico) | Uso Semántico Exclusivo |
-| :--- | :--- | :--- |
-| `--bg-canvas` | `#0b0f17` | Fondo principal de la aplicación y rejilla sutil |
-| `--bg-surface` | `#111827` | Tarjetas de cálculo, paneles de control, contenedor activo |
-| `--bg-elevated` | `#1e293b` | Desplegables, modales, píldoras activas, hover de tarjetas |
-| `--bg-input` | `#1e293b` | Fondo de inputs numéricos y áreas de texto |
-| `--text-primary` | `#f8fafc` | Cifras de resultados, encabezados, títulos |
-| `--text-secondary` | `#94a3b8` | Etiquetas de unidades, fórmulas, notas explicativas |
-| `--text-muted` | `#64748b` | Atajos, marcas secundarias, tooltips |
-| `--accent-primary` | `#0ea5e9` | Píldora activa, foco de inputs, botón intercambiar `⇄` |
-| `--accent-hover` | `#38bdf8` | Estado hover de botones primarios |
-| `--accent-secondary` | `#8b5cf6` | Acciones de lote (Batch Scratchpad) y constantes |
-| `--status-success` | `#10b981` | Notificación de copiado al portapapeles (`✓ Copiado`) |
-| `--border-subtle` | `rgba(148, 163, 184, 0.15)` | Bordes de tarjetas y divisiones |
-| `--border-focus` | `#0ea5e9` | Anillo de enfoque accesible (WCAG 2.2 AA) |
+### 2.1 Paleta Semántica de Color Dual (Dark Mode & Light Mode)
+| Token CSS | Valor Dark (Canónico) | Valor Light (`data-theme="light"`) | Uso Semántico Exclusivo |
+| :--- | :--- | :--- | :--- |
+| `--bg-canvas` | `#0b0f17` | `#f8fafc` | Fondo principal de la aplicación y rejilla sutil |
+| `--bg-surface` | `#111827` | `#ffffff` | Tarjetas de cálculo, paneles de control, contenedor activo |
+| `--bg-elevated` | `#1e293b` | `#f1f5f9` | Desplegables, modales, píldoras activas, hover de tarjetas |
+| `--bg-input` | `#151d2c` | `#ffffff` | Fondo de inputs numéricos y áreas de texto |
+| `--bg-header` | `rgba(17, 24, 39, 0.88)` | `rgba(255, 255, 255, 0.92)` | Fondo translúcido con backdrop-filter de cabecera |
+| `--bg-surface-subtle` | `rgba(30, 41, 59, 0.45)` | `rgba(241, 245, 249, 0.85)` | Contenedores auxiliares (Constantes, Omni-Matrix) |
+| `--text-primary` | `#f8fafc` | `#0f172a` | Cifras de resultados, encabezados, títulos |
+| `--text-secondary` | `#94a3b8` | `#334155` | Etiquetas de unidades, fórmulas, notas explicativas |
+| `--text-muted` | `#64748b` | `#64748b` | Atajos, marcas secundarias, tooltips |
+| `--accent-primary` | `#0ea5e9` | `#0284c7` | Píldora activa, foco de inputs, botón intercambiar `⇄` |
+| `--accent-hover` | `#38bdf8` | `#0369a1` | Estado hover de botones primarios y acentos |
+| `--accent-secondary` | `#8b5cf6` | `#7c3aed` | Acciones de lote (Batch Scratchpad) y constantes |
+| `--status-success` | `#10b981` | `#059669` | Notificación de copiado al portapapeles (`✓ Copiado`) |
+| `--border-subtle` | `rgba(148, 163, 184, 0.14)` | `rgba(100, 116, 139, 0.22)` | Bordes de tarjetas y divisiones |
+| `--border-focus` | `#0ea5e9` | `#0284c7` | Anillo de enfoque accesible (WCAG 2.2 AA) |
 
 ### 2.2 Escala Tipográfica y Espaciado
 - **Fuente de Títulos y Categorías (`--font-display`):** `'Outfit', system-ui, -apple-system, sans-serif` (Pesos `600`, `700`).

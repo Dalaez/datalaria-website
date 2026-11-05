@@ -41,3 +41,4 @@ Garantizar el principio fundamental de Datalaria Helix: **«Nadie verifica su pr
 ## 6. Reglas de Fricción Real y Correcciones ([USER-FIX] / [ENV-FIX])
 - `[ENV-FIX]` **Ejecución de npm en Windows PowerShell:** En entornos Windows donde la política de ejecución bloquea scripts `.ps1`, invocar determinísticamente `npm.cmd run lint` y `npm.cmd run build:portal`.
 - `[ENV-FIX]` **Reconstrucción de Datos Públicos Post-Vite:** Dado que `vite build --emptyOutDir` limpia `static/apps/<slug>/`, ejecutar siempre `build_index` y `publish_public` inmediatamente después del build frontend.
+- `[ENV-FIX]` **Encadenamiento de Comandos en Windows PowerShell:** En PowerShell 5.1 no emplear `&&` (genera `ParserError`), sino el delimitador `;` o llamadas secuenciales independientes en los Verification Gates.

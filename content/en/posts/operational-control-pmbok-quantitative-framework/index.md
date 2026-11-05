@@ -1,6 +1,6 @@
 ---
 title: "Quantitative Operational Control & PMBOK: The 5-Pillar Executive Framework for COOs and PMOs"
-date: 2026-11-07
+date: 2026-11-29
 draft: false
 category: "Strategy & Operations"
 categories: ["Operational Control", "Project Management", "Corporate PMO", "Supply Chain", "Strategy & Operations"]

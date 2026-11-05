@@ -6,15 +6,15 @@ icon: "🔄"
 cover: cover.png
 app_url: /apps/conversor/
 source_spec: specs/apps/conversor/spec.md
-current_version: v2.0.0
+current_version: v2.1.0
 
 title:
   es: "Conversor de Unidades"
   en: "Unit Converter"
 
 tagline:
-  es: "Engineering Workbench v2.0: Navaja suiza científica para conversiones técnicas, metrología SI y procesamiento masivo."
-  en: "Engineering Workbench v2.0: Scientific Swiss Army knife for technical conversions, SI metrology, and batch processing."
+  es: "Engineering Workbench v2.1: Navaja suiza científica para conversiones técnicas, PWA offline, evaluación de fórmulas y metrología SI."
+  en: "Engineering Workbench v2.1: Scientific Swiss Army knife for technical conversions, offline PWA, formula evaluation, and SI metrology."
 
 summary:
   es: "Suite de ingeniería de alta precisión para conversión de magnitudes físicas, metrología SI/CODATA 2022 y formateo numérico internacional. Integra 6 disciplinas científicas (Dimensión, Energía, Tiempo, Mecánica, Informática y Radiofrecuencia) con cálculo bidireccional de dBm ⇔ W, relación λ ⇔ f, y un Batch Scratchpad multilínea para limpiar y transformar columnas de Excel sin enviar datos a la red."
@@ -49,6 +49,15 @@ features:
   - icon: "⚡"
     es: "Cero Dependencias: arquitectura Single-Source-of-Truth en Vanilla JS y CSS nativo con shims retrocompatibles para preservar el 100% de enlaces históricos y SEO."
     en: "Zero Dependencies: Single-Source-of-Truth architecture in Vanilla JS and native CSS with backward-compatible shims preserving 100% of legacy URLs and SEO."
+  - icon: "📱"
+    es: "PWA Offline Nativa: Web App Manifest, Service Worker y caché local resiliente para ejecución 100% offline sin conexión."
+    en: "Native Offline PWA: Web App Manifest, Service Worker, and resilient local cache for 100% offline execution without network."
+  - icon: "🧮"
+    es: "Calculadora de Fórmulas Inline: escribe expresiones aritméticas directas en el campo de entrada (ej: 2*pi*50, sqrt(144), 2^10) con evaluación determinista segura."
+    en: "Inline Formula Calculator: enter arithmetic expressions directly into the input field (e.g. 2*pi*50, sqrt(144), 2^10) with secure deterministic evaluation."
+  - icon: "🌓"
+    es: "Modo Dual Día / Noche: temas visuales de alto contraste con atajo directo (T / Alt+T), sincronización con el portal Datalaria y cero parpadeo (anti-FOUC)."
+    en: "Dual Day / Night Mode: high-contrast themes with direct shortcut (T / Alt+T), Datalaria portal synchronization, and zero FOUC."
 
 design:
   architecture:
@@ -86,6 +95,23 @@ posts:
     part: 1
 
 releases:
+  - version: v2.1.0
+    date: "2026-11-05"
+    state: released
+    type: minor
+    title:
+      es: "Engineering Workbench v2.1: PWA Offline, Calculadora de Fórmulas Inline y Modo Dual Día/Noche"
+      en: "Engineering Workbench v2.1: Offline PWA, Inline Formula Calculator, and Dual Day/Night Mode"
+    changes:
+      - es: "Soporte PWA (Progressive Web App) con Service Worker (`sw.js`), Web App Manifest (`manifest.json`), icono vectorial (`icon.svg`) y botón integrado de instalación 1-clic (`#btn-install-pwa`), garantizando operatividad 100% offline (OPP-01 / INV-CONV-10)."
+        en: "Full PWA (Progressive Web App) support with Service Worker (`sw.js`), Web App Manifest (`manifest.json`), vector icon (`icon.svg`), and integrated 1-click install button (`#btn-install-pwa`), ensuring 100% offline availability (OPP-01 / INV-CONV-10)."
+      - es: "Evaluador aritmético recursivo directo en el campo de entrada (`INV-CONV-9` / OPP-03), permitiendo evaluar expresiones como `2*pi*50`, `sqrt(144)` o `2^10` con cero uso de 'eval'."
+        en: "Direct recursive arithmetic evaluator in the input field (`INV-CONV-9` / OPP-03), supporting expressions like `2*pi*50`, `sqrt(144)` or `2^10` with zero 'eval' usage."
+      - es: "Integración de Modo Dual Día / Noche (`INV-CONV-8`) con conmutador en cabecera, atajo de teclado (`T` / `Alt+T`), sincronización con `pref-theme` y script anti-FOUC en `<head>`."
+        en: "Dual Day / Night Mode integration (`INV-CONV-8`) with top bar switcher, keyboard shortcut (`T` / `Alt+T`), `pref-theme` synchronization, and zero-FOUC inline script in `<head>`."
+      - es: "Inclusión de botón canónico hacia la Ficha de la App en cabecera superior (`INV-CONV-7`) consolidando el estándar de navegación del ecosistema."
+        en: "Canonical link to App Overview sheet added to top header bar (`INV-CONV-7`) establishing the ecosystem navigation standard."
+
   - version: v2.0.0
     date: "2026-11-04"
     state: released

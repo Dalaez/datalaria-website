@@ -5,6 +5,9 @@
   --bg-surface: #111827;
   --bg-elevated: #1e293b;
   --bg-input: #151d2c;
+  --bg-header: rgba(17, 24, 39, 0.88);
+  --bg-surface-subtle: rgba(30, 41, 59, 0.45);
+  --bg-grid-dot: rgba(148, 163, 184, 0.08);
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
@@ -30,6 +33,30 @@
   --shadow-glow: 0 0 20px rgba(14, 165, 233, 0.2);
 }
 
+[data-theme="light"] {
+  --bg-canvas: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-elevated: #f1f5f9;
+  --bg-input: #ffffff;
+  --bg-header: rgba(255, 255, 255, 0.92);
+  --bg-surface-subtle: rgba(241, 245, 249, 0.85);
+  --bg-grid-dot: rgba(100, 116, 139, 0.14);
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --accent-primary: #0284c7;
+  --accent-hover: #0369a1;
+  --accent-secondary: #7c3aed;
+  --status-success: #059669;
+  --status-warning: #d97706;
+  --status-danger: #dc2626;
+  --border-subtle: rgba(100, 116, 139, 0.22);
+  --border-focus: #0284c7;
+
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --shadow-glow: 0 0 20px rgba(2, 132, 199, 0.15);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -39,7 +66,7 @@
 body {
   font-family: var(--font-sans);
   background-color: var(--bg-canvas);
-  background-image: radial-gradient(circle at 1px 1px, rgba(148, 163, 184, 0.08) 1px, transparent 0);
+  background-image: radial-gradient(circle at 1px 1px, var(--bg-grid-dot) 1px, transparent 0);
   background-size: 24px 24px;
   color: var(--text-primary);
   min-height: 100vh;
@@ -51,7 +78,7 @@ body {
 /* 1. Header Shell Datalaria (<= 64px) */
 .app-header {
   height: 56px;
-  background-color: rgba(17, 24, 39, 0.85);
+  background-color: var(--bg-header);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-subtle);
   display: flex;
@@ -61,6 +88,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 50;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .header-left, .header-right {
@@ -133,7 +161,61 @@ body {
 
 .lang-btn.active {
   background-color: var(--accent-primary);
-  color: #0b0f17;
+  color: #ffffff;
+}
+
+.btn-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 28px;
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-theme-toggle:hover {
+  color: var(--accent-hover);
+  border-color: var(--accent-primary);
+  transform: translateY(-1px);
+}
+
+.btn-theme-toggle:active {
+  transform: translateY(0);
+}
+
+.btn-install-pwa {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #10b981;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+[data-theme="light"] .btn-install-pwa {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #059669;
+}
+
+.btn-install-pwa:hover {
+  background: #10b981;
+  border-color: #10b981;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
 }
 
 .btn-ghost {
@@ -237,7 +319,7 @@ body {
   flex-direction: column;
   gap: 0.75rem;
   padding: 0.65rem 0.9rem;
-  background-color: rgba(30, 41, 59, 0.45);
+  background-color: var(--bg-surface-subtle);
   border-radius: var(--radius-md);
   border: 1px dashed var(--border-subtle);
   overflow: visible;
@@ -532,6 +614,20 @@ body {
   letter-spacing: 0.05em;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.expr-preview {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-hover);
+  background: var(--bg-elevated);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .unit-input {
@@ -548,7 +644,7 @@ body {
 
 .unit-output {
   width: 100%;
-  color: #38bdf8;
+  color: var(--accent-hover);
   font-family: var(--font-mono);
   font-size: 1.75rem;
   font-weight: 700;
@@ -645,7 +741,7 @@ body {
 /* 8. Omni-Matrix Multi-Scale View & Formula */
 .omni-matrix-panel {
   margin-top: 1.25rem;
-  background: rgba(15, 23, 42, 0.6);
+  background: var(--bg-surface-subtle);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: 1.25rem;
@@ -701,7 +797,7 @@ body {
   border: 1px dashed var(--border-subtle);
   padding: 0.6rem 0.85rem;
   border-radius: var(--radius-sm);
-  color: #38bdf8;
+  color: var(--accent-hover);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -897,7 +993,7 @@ body {
   font-family: var(--font-display);
   font-size: 1.15rem;
   font-weight: 700;
-  color: #38bdf8;
+  color: var(--accent-hover);
 }
 
 .didactic-content {
@@ -931,7 +1027,7 @@ body {
   position: fixed;
   bottom: 24px;
   right: 24px;
-  background: #0f172a;
+  background: var(--bg-surface);
   border: 1px solid var(--accent-primary);
   color: var(--text-primary);
   padding: 0.65rem 1.1rem;
@@ -977,7 +1073,7 @@ body {
     gap: 0.4rem;
   }
 
-  .btn-ghost, .btn-b2b {
+  .btn-ghost, .btn-b2b, .btn-install-pwa {
     padding: 0.25rem 0.5rem;
     font-size: 0.75rem;
   }

@@ -3,9 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversor Universal Pro — Engineering Workbench v2.0 | Datalaria</title>
+    <title>Conversor Universal Pro — Engineering Workbench v2.1 | Datalaria</title>
     <meta name="description" content="Navaja suiza digital para conversiones científicas y técnicas en 6 disciplinas de ingeniería. Precisión SI/CODATA 2022, formato de separadores numéricos y batch scratchpad.">
     <link rel="canonical" href="https://datalaria.com/apps/conversor/">
+    <link rel="manifest" href="/apps/conversor/manifest.json">
+    <meta name="theme-color" content="#0b0f17" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Conversor Pro">
+    <link rel="icon" type="image/svg+xml" href="/apps/conversor/icon.svg">
+    <link rel="apple-touch-icon" href="/apps/conversor/datalaria_logo_transp.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
@@ -17,6 +26,9 @@
   --bg-surface: #111827;
   --bg-elevated: #1e293b;
   --bg-input: #151d2c;
+  --bg-header: rgba(17, 24, 39, 0.88);
+  --bg-surface-subtle: rgba(30, 41, 59, 0.45);
+  --bg-grid-dot: rgba(148, 163, 184, 0.08);
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
@@ -42,6 +54,30 @@
   --shadow-glow: 0 0 20px rgba(14, 165, 233, 0.2);
 }
 
+[data-theme="light"] {
+  --bg-canvas: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-elevated: #f1f5f9;
+  --bg-input: #ffffff;
+  --bg-header: rgba(255, 255, 255, 0.92);
+  --bg-surface-subtle: rgba(241, 245, 249, 0.85);
+  --bg-grid-dot: rgba(100, 116, 139, 0.14);
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --accent-primary: #0284c7;
+  --accent-hover: #0369a1;
+  --accent-secondary: #7c3aed;
+  --status-success: #059669;
+  --status-warning: #d97706;
+  --status-danger: #dc2626;
+  --border-subtle: rgba(100, 116, 139, 0.22);
+  --border-focus: #0284c7;
+
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --shadow-glow: 0 0 20px rgba(2, 132, 199, 0.15);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -51,7 +87,7 @@
 body {
   font-family: var(--font-sans);
   background-color: var(--bg-canvas);
-  background-image: radial-gradient(circle at 1px 1px, rgba(148, 163, 184, 0.08) 1px, transparent 0);
+  background-image: radial-gradient(circle at 1px 1px, var(--bg-grid-dot) 1px, transparent 0);
   background-size: 24px 24px;
   color: var(--text-primary);
   min-height: 100vh;
@@ -63,7 +99,7 @@ body {
 /* 1. Header Shell Datalaria (<= 64px) */
 .app-header {
   height: 56px;
-  background-color: rgba(17, 24, 39, 0.85);
+  background-color: var(--bg-header);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-subtle);
   display: flex;
@@ -73,6 +109,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 50;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .header-left, .header-right {
@@ -145,7 +182,61 @@ body {
 
 .lang-btn.active {
   background-color: var(--accent-primary);
-  color: #0b0f17;
+  color: #ffffff;
+}
+
+.btn-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 28px;
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-theme-toggle:hover {
+  color: var(--accent-hover);
+  border-color: var(--accent-primary);
+  transform: translateY(-1px);
+}
+
+.btn-theme-toggle:active {
+  transform: translateY(0);
+}
+
+.btn-install-pwa {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #10b981;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+[data-theme="light"] .btn-install-pwa {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #059669;
+}
+
+.btn-install-pwa:hover {
+  background: #10b981;
+  border-color: #10b981;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
 }
 
 .btn-ghost {
@@ -249,7 +340,7 @@ body {
   flex-direction: column;
   gap: 0.75rem;
   padding: 0.65rem 0.9rem;
-  background-color: rgba(30, 41, 59, 0.45);
+  background-color: var(--bg-surface-subtle);
   border-radius: var(--radius-md);
   border: 1px dashed var(--border-subtle);
   overflow: visible;
@@ -544,6 +635,20 @@ body {
   letter-spacing: 0.05em;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.expr-preview {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-hover);
+  background: var(--bg-elevated);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .unit-input {
@@ -560,7 +665,7 @@ body {
 
 .unit-output {
   width: 100%;
-  color: #38bdf8;
+  color: var(--accent-hover);
   font-family: var(--font-mono);
   font-size: 1.75rem;
   font-weight: 700;
@@ -657,7 +762,7 @@ body {
 /* 8. Omni-Matrix Multi-Scale View & Formula */
 .omni-matrix-panel {
   margin-top: 1.25rem;
-  background: rgba(15, 23, 42, 0.6);
+  background: var(--bg-surface-subtle);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: 1.25rem;
@@ -713,7 +818,7 @@ body {
   border: 1px dashed var(--border-subtle);
   padding: 0.6rem 0.85rem;
   border-radius: var(--radius-sm);
-  color: #38bdf8;
+  color: var(--accent-hover);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -909,7 +1014,7 @@ body {
   font-family: var(--font-display);
   font-size: 1.15rem;
   font-weight: 700;
-  color: #38bdf8;
+  color: var(--accent-hover);
 }
 
 .didactic-content {
@@ -943,7 +1048,7 @@ body {
   position: fixed;
   bottom: 24px;
   right: 24px;
-  background: #0f172a;
+  background: var(--bg-surface);
   border: 1px solid var(--accent-primary);
   color: var(--text-primary);
   padding: 0.65rem 1.1rem;
@@ -989,13 +1094,26 @@ body {
     gap: 0.4rem;
   }
 
-  .btn-ghost, .btn-b2b {
+  .btn-ghost, .btn-b2b, .btn-install-pwa {
     padding: 0.25rem 0.5rem;
     font-size: 0.75rem;
   }
 }
 
     </style>
+    <script>
+        (function() {
+            var saved = localStorage.getItem('pref-theme') || localStorage.getItem('datalaria_theme');
+            var isDark = saved === 'dark' || (!saved && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) || !saved;
+            var theme = isDark ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        })();
+    </script>
 </head>
 <body>
     <header id="app-header" class="app-header"></header>
@@ -1694,14 +1812,160 @@ function processBatchText(rawText, options = {}) {
   };
 }
 
+/**
+ * Evaluador Seguro de Expresiones Aritméticas (Invariante INV-CONV-9)
+ * Analizador sintáctico determinista recursivo (sin 'eval' ni 'Function').
+ * Soporta: +, -, *, /, ^, %, (), constantes pi, e, funciones sqrt, abs, sin, cos, tan, log, exp.
+ */
+function evaluateMathExpression(input) {
+  if (input === null || input === undefined) return NaN;
+  const str = String(input).trim();
+  if (!str) return NaN;
+
+  // Si es un número estándar directo sin operadores aritméticos
+  const simpleNum = Number(str);
+  if (!isNaN(simpleNum) && !/[+\-*/^%()]/.test(str)) {
+    return simpleNum;
+  }
+
+  // Normalizar símbolos matemáticos y comas decimales
+  const normalized = str
+    .replace(/×/g, '*')
+    .replace(/÷/g, '/')
+    .replace(/\*\*/g, '^')
+    .replace(/,/g, '.')
+    .replace(/\s+/g, '');
+
+  let pos = 0;
+
+  function peek() {
+    return normalized[pos];
+  }
+
+  function get() {
+    return normalized[pos++];
+  }
+
+  function parseExpression() {
+    let result = parseTerm();
+    while (pos < normalized.length) {
+      const op = peek();
+      if (op === '+' || op === '-') {
+        get();
+        const nextTerm = parseTerm();
+        result = op === '+' ? result + nextTerm : result - nextTerm;
+      } else {
+        break;
+      }
+    }
+    return result;
+  }
+
+  function parseTerm() {
+    let result = parsePower();
+    while (pos < normalized.length) {
+      const op = peek();
+      if (op === '*' || op === '/' || op === '%') {
+        get();
+        const nextFactor = parsePower();
+        if (op === '*') result *= nextFactor;
+        else if (op === '/') result /= nextFactor;
+        else if (op === '%') result %= nextFactor;
+      } else {
+        break;
+      }
+    }
+    return result;
+  }
+
+  function parsePower() {
+    let result = parseFactor();
+    if (pos < normalized.length && peek() === '^') {
+      get();
+      const exponent = parsePower(); // Asociativo por la derecha
+      result = Math.pow(result, exponent);
+    }
+    return result;
+  }
+
+  function parseFactor() {
+    if (pos >= normalized.length) return NaN;
+
+    // Operador unario + / -
+    if (peek() === '+') {
+      get();
+      return parseFactor();
+    }
+    if (peek() === '-') {
+      get();
+      return -parseFactor();
+    }
+
+    // Paréntesis
+    if (peek() === '(') {
+      get();
+      const val = parseExpression();
+      if (get() !== ')') return NaN;
+      return val;
+    }
+
+    // Literal numérico (incluyendo notación científica 1.5e-3)
+    const numMatch = normalized.slice(pos).match(/^(\d+(?:\.\d+)?(?:[eE][+-]?\d+)?)/);
+    if (numMatch) {
+      pos += numMatch[0].length;
+      return parseFloat(numMatch[0]);
+    }
+
+    // Identificador: constante o nombre de función
+    const idMatch = normalized.slice(pos).match(/^([a-zA-Z_]\w*)/);
+    if (idMatch) {
+      const id = idMatch[1].toLowerCase();
+      pos += idMatch[0].length;
+
+      // Llamada a función matemática: ej. sqrt(144)
+      if (peek() === '(') {
+        get();
+        const arg = parseExpression();
+        if (get() !== ')') return NaN;
+
+        switch (id) {
+          case 'sqrt': return Math.sqrt(arg);
+          case 'abs': return Math.abs(arg);
+          case 'sin': return Math.sin(arg);
+          case 'cos': return Math.cos(arg);
+          case 'tan': return Math.tan(arg);
+          case 'log': return Math.log(arg);
+          case 'log10': return Math.log10(arg);
+          case 'exp': return Math.exp(arg);
+          default: return NaN;
+        }
+      }
+
+      // Constantes conocidas
+      if (id === 'pi') return Math.PI;
+      if (id === 'e') return Math.E;
+
+      return NaN;
+    }
+
+    return NaN;
+  }
+
+  try {
+    const val = parseExpression();
+    if (pos < normalized.length) return NaN;
+    return isFinite(val) ? val : NaN;
+  } catch {
+    return NaN;
+  }
+}
+
 
 /**
  * apps/conversor/app.js
  * Interfaz y Controlador Reactivo del Engineering Workbench v2.0
  * Datalaria Helix — Single-Source-of-Truth
  */
-
-
 
 
 const I18N = {
@@ -1711,6 +1975,15 @@ const I18N = {
     appSheet: '📋 Ficha de la App',
     guidePost: '📖 Guía Técnica',
     b2bKits: '📦 Kits B2B →',
+    themeToggleLight: 'Cambiar a modo día (claro)',
+    themeToggleDark: 'Cambiar a modo noche (oscuro)',
+    toastLightMode: '☀️ Modo día activado',
+    toastDarkMode: '🌙 Modo noche activado',
+    installAppBtn: 'Instalar App',
+    installAppTitle: 'Instalar Conversor Pro en tu dispositivo (PWA)',
+    installSuccessToast: '✓ ¡Conversor Pro instalado con éxito!',
+    installIosInstructions: '📲 En Safari iOS: pulsa Compartir (⎙) y elige "Añadir a pantalla de inicio"',
+    installGenericInstructions: '📲 Pulsa el menú (⋮) del navegador y elige "Instalar aplicación" o "Añadir a pantalla de inicio"',
     constantsLabel: 'Constantes CODATA:',
     viewCodataTable: 'Tabla completa',
     closeCodataTable: 'Cerrar tabla',
@@ -1748,6 +2021,15 @@ const I18N = {
     appSheet: '📋 App Overview',
     guidePost: '📖 Technical Guide',
     b2bKits: '📦 B2B Kits →',
+    themeToggleLight: 'Switch to light mode',
+    themeToggleDark: 'Switch to dark mode',
+    toastLightMode: '☀️ Light mode activated',
+    toastDarkMode: '🌙 Dark mode activated',
+    installAppBtn: 'Install App',
+    installAppTitle: 'Install Converter Pro on your device (PWA)',
+    installSuccessToast: '✓ Converter Pro successfully installed!',
+    installIosInstructions: '📲 In Safari iOS: tap Share (⎙) and choose "Add to Home Screen"',
+    installGenericInstructions: '📲 Tap browser menu (⋮) and select "Install app" or "Add to Home Screen"',
     constantsLabel: 'CODATA Constants:',
     viewCodataTable: 'Full Table',
     closeCodataTable: 'Close Table',
@@ -1834,18 +2116,125 @@ class UnitConverterApp {
       batchToUnit: 'psi',
       history: [],
       historyCollapsed: false,
-      codataTableOpen: false
+      codataTableOpen: false,
+      theme: 'dark'
     };
   }
 
   init() {
+    this.readThemePreference();
     this.readUrlParams();
     this.loadHistory();
+    this.setupPwaInstallPrompt();
     this.renderShell();
     this.renderCategoryNav();
     this.renderConstantsBar();
     this.bindEvents();
     this.updateView();
+    this.registerServiceWorker();
+  }
+
+  setupPwaInstallPrompt() {
+    this._deferredInstallPrompt = null;
+    this._isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+    // Si ya corre instalada en modo standalone, no mostramos el botón
+    if (this._isStandalone) return;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      this._deferredInstallPrompt = e;
+      this.updateInstallButtonVisibility(true);
+    });
+
+    window.addEventListener('appinstalled', () => {
+      this._deferredInstallPrompt = null;
+      this._isStandalone = true;
+      this.updateInstallButtonVisibility(false);
+      const t = I18N[this.state.lang];
+      this.showToast(t.installSuccessToast);
+    });
+  }
+
+  updateInstallButtonVisibility(visible) {
+    const btn = document.getElementById('btn-install-pwa');
+    if (btn) {
+      btn.style.display = visible ? 'inline-flex' : 'none';
+    }
+  }
+
+  async triggerPwaInstall() {
+    const t = I18N[this.state.lang];
+    if (this._deferredInstallPrompt) {
+      this._deferredInstallPrompt.prompt();
+      try {
+        const { outcome } = await this._deferredInstallPrompt.userChoice;
+        if (outcome === 'accepted') {
+          this.updateInstallButtonVisibility(false);
+          this.showToast(t.installSuccessToast);
+        }
+      } catch {
+        // Fallback silencioso
+      }
+      this._deferredInstallPrompt = null;
+    } else {
+      const isIos = /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase()) && !window.MSStream;
+      if (isIos) {
+        this.showToast(t.installIosInstructions);
+      } else {
+        this.showToast(t.installGenericInstructions);
+      }
+    }
+  }
+
+  registerServiceWorker() {
+    if ('serviceWorker' in navigator && (window.location.protocol.startsWith('http') || window.location.protocol.startsWith('https'))) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/apps/conversor/sw.js')
+          .catch(() => {
+            // Ignorado silenciosamente en entornos sandbox o sin soporte
+          });
+      });
+    }
+  }
+
+  readThemePreference() {
+    const saved = localStorage.getItem('pref-theme') || localStorage.getItem('datalaria_theme');
+    if (saved === 'light' || saved === 'dark') {
+      this.state.theme = saved;
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+      this.state.theme = 'light';
+    } else {
+      this.state.theme = 'dark';
+    }
+    this.applyTheme();
+  }
+
+  applyTheme() {
+    document.documentElement.setAttribute('data-theme', this.state.theme);
+    if (this.state.theme === 'dark') {
+      document.documentElement.classList.add('dark');
+      if (document.body) {
+        document.body.classList.add('dark');
+        document.body.classList.remove('light');
+      }
+    } else {
+      document.documentElement.classList.remove('dark');
+      if (document.body) {
+        document.body.classList.remove('dark');
+        document.body.classList.add('light');
+      }
+    }
+    localStorage.setItem('pref-theme', this.state.theme);
+    localStorage.setItem('datalaria_theme', this.state.theme);
+  }
+
+  toggleTheme() {
+    this.state.theme = this.state.theme === 'dark' ? 'light' : 'dark';
+    this.applyTheme();
+    this.renderShell();
+    const t = I18N[this.state.lang];
+    this.showToast(this.state.theme === 'light' ? t.toastLightMode : t.toastDarkMode);
   }
 
   readUrlParams() {
@@ -1929,7 +2318,7 @@ class UnitConverterApp {
         </a>
         <div class="app-title-badge">
           <span>${t.appTitle}</span>
-          <span class="version-chip">v2.0.0</span>
+          <span class="version-chip">v2.1.0</span>
         </div>
       </div>
       <div class="header-right">
@@ -1937,6 +2326,33 @@ class UnitConverterApp {
           <button class="lang-btn ${this.state.lang === 'es' ? 'active' : ''}" data-lang="es">ES</button>
           <button class="lang-btn ${this.state.lang === 'en' ? 'active' : ''}" data-lang="en">EN</button>
         </div>
+        <button id="theme-toggle" class="btn-theme-toggle" accesskey="t" title="${this.state.theme === 'dark' ? t.themeToggleLight : t.themeToggleDark} (Alt + T)" aria-label="Toggle theme">
+          ${this.state.theme === 'dark' ? `
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          ` : `
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          `}
+        </button>
+        <button id="btn-install-pwa" class="btn-install-pwa" style="${this._isStandalone ? 'display: none;' : 'display: inline-flex;'}" title="${t.installAppTitle}">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span>${t.installAppBtn}</span>
+        </button>
         <a href="${appSheetUrl}" class="btn-ghost" title="${t.appSheet}">
           <span>${t.appSheet}</span>
         </a>
@@ -1952,6 +2368,16 @@ class UnitConverterApp {
     headerEl.querySelectorAll('.lang-btn').forEach(btn => {
       btn.addEventListener('click', () => this.setLanguage(btn.dataset.lang));
     });
+
+    const themeBtn = headerEl.querySelector('#theme-toggle');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => this.toggleTheme());
+    }
+
+    const installBtn = headerEl.querySelector('#btn-install-pwa');
+    if (installBtn) {
+      installBtn.addEventListener('click', () => this.triggerPwaInstall());
+    }
   }
 
   renderCategoryNav() {
@@ -2267,8 +2693,9 @@ class UnitConverterApp {
         <div class="unit-cell">
           <label class="cell-label" for="main-unit-input">
             <span>${t.inputLabel}</span>
+            <span id="input-expr-preview" class="expr-preview" style="display: none;"></span>
           </label>
-          <input type="number" id="main-unit-input" class="unit-input" value="${this.state.inputValue}" step="any">
+          <input type="text" id="main-unit-input" class="unit-input" value="${this.state.inputValue}" placeholder="Ej: 100 o 2*pi*50" autocomplete="off" spellcheck="false">
           <select id="main-from-unit-select" class="unit-select">
             ${units.map(u => `<option value="${u.id}" ${u.id === this.state.fromUnit ? 'selected' : ''}>${u.name[lang]}</option>`).join('')}
           </select>
@@ -2303,8 +2730,9 @@ class UnitConverterApp {
         <div class="unit-cell">
           <label class="cell-label" for="main-unit-input">
             <span>${isFreqToWav ? 'Frecuencia (f)' : 'Longitud de Onda (λ)'}</span>
+            <span id="input-expr-preview" class="expr-preview" style="display: none;"></span>
           </label>
-          <input type="number" id="main-unit-input" class="unit-input" value="${this.state.inputValue}" step="any">
+          <input type="text" id="main-unit-input" class="unit-input" value="${this.state.inputValue}" placeholder="Ej: 100 o 2*pi*50" autocomplete="off" spellcheck="false">
           <select id="rf-from-select" class="unit-select">
             ${(isFreqToWav ? freqUnits : wavUnits).map(u => `
               <option value="${u}" ${u === (isFreqToWav ? this.state.rfWavFromUnit : this.state.rfWavToUnit) ? 'selected' : ''}>${u.toUpperCase()}</option>
@@ -2341,9 +2769,48 @@ class UnitConverterApp {
 
     if (inputEl) {
       inputEl.addEventListener('input', (e) => {
-        this.state.inputValue = Number(e.target.value);
-        this.calculateAndRender();
-        this.syncUrlParams();
+        const raw = e.target.value.trim();
+        const previewEl = document.getElementById('input-expr-preview');
+        const evaluated = evaluateMathExpression(raw);
+
+        if (!isNaN(evaluated)) {
+          this.state.inputValue = evaluated;
+          if (/[+\-*/^%()]|[a-zA-Z]/.test(raw) && previewEl) {
+            previewEl.textContent = `= ${formatEngineeredNumber(evaluated, this.state.precision, this.state.lang)}`;
+            previewEl.style.display = 'inline-block';
+            inputEl.classList.add('has-expr');
+          } else if (previewEl) {
+            previewEl.style.display = 'none';
+            inputEl.classList.remove('has-expr');
+          }
+          this.calculateAndRender();
+          this.syncUrlParams();
+        } else if (raw === '') {
+          this.state.inputValue = 0;
+          if (previewEl) previewEl.style.display = 'none';
+          inputEl.classList.remove('has-expr');
+          this.calculateAndRender();
+        } else if (previewEl) {
+          previewEl.textContent = '...';
+          previewEl.style.display = 'inline-block';
+        }
+      });
+
+      inputEl.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          const raw = inputEl.value.trim();
+          const evaluated = evaluateMathExpression(raw);
+          if (!isNaN(evaluated)) {
+            inputEl.value = evaluated;
+            const previewEl = document.getElementById('input-expr-preview');
+            if (previewEl) previewEl.style.display = 'none';
+            inputEl.classList.remove('has-expr');
+            this.state.inputValue = evaluated;
+            this.calculateAndRender();
+            this.syncUrlParams();
+            this.showToast(`= ${evaluated}`);
+          }
+        }
       });
     }
 
@@ -2828,6 +3295,9 @@ class UnitConverterApp {
       } else if (e.key === 'c' || e.key === 'C') {
         const copyBtn = document.getElementById('btn-copy-result');
         if (copyBtn) copyBtn.click();
+      } else if (e.key === 't' || e.key === 'T') {
+        const themeBtn = document.getElementById('theme-toggle');
+        if (themeBtn) themeBtn.click();
       }
     });
   }

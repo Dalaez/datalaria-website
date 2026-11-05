@@ -326,25 +326,28 @@ def test_inv_conv_4_shims_and_mecanica_en_fix():
 # -------------------------------------------------------------------------
 
 def test_inv_conv_6_metadata_and_spec_alignment():
-    """Valida la coherencia de versión v2.0.0 y estado active entre spec.md y conversor.yaml."""
+    """Valida la coherencia de versión v2.1.0 y estado active entre spec.md y conversor.yaml."""
     assert DATA_YAML.exists(), f"Falta {DATA_YAML}"
     data = yaml.safe_load(DATA_YAML.read_text(encoding="utf-8"))
 
     assert data["slug"] == "conversor"
-    assert data["current_version"] == "v2.0.0"
+    assert data["current_version"] == "v2.1.0"
     assert data["status"] == "active"
     assert data["tier"] == "lab"
 
-    # Verificar que v2.0.0 está en releases
+    # Verificar que v2.1.0 y v2.0.0 están en releases
     release_versions = [r["version"] for r in data.get("releases", [])]
+    assert "v2.1.0" in release_versions, "v2.1.0 debe estar listado en releases de conversor.yaml"
     assert "v2.0.0" in release_versions, "v2.0.0 debe estar listado en releases de conversor.yaml"
 
     # Verificar spec.md
     assert SPEC_FILE.exists(), f"Falta {SPEC_FILE}"
     spec_content = SPEC_FILE.read_text(encoding="utf-8")
-    assert "v2.0.0" in spec_content
+    assert "v2.1.0" in spec_content
     assert "INV-CONV-1" in spec_content
     assert "INV-CONV-6" in spec_content
+    assert "INV-CONV-9" in spec_content
+    assert "INV-CONV-10" in spec_content
 
     # Verificar design.md
     assert DESIGN_FILE.exists(), f"Falta {DESIGN_FILE}"
@@ -364,4 +367,110 @@ def test_inv_conv_5_header_shell_links():
     index_html = (STATIC_CONV / "index.html").read_text(encoding="utf-8")
     assert "appSheetUrl" in index_html
     assert "appSheet" in index_html
+
+
+def test_inv_conv_8_day_night_theme_support():
+    """Valida la implementación completa del modo día / noche (Design Tokens, persistencia y accesibilidad)."""
+    styles_css = (APP_SRC / "styles.css").read_text(encoding="utf-8")
+    assert '[data-theme="light"]' in styles_css, "styles.css debe definir el bloque de tokens para modo día ([data-theme='light'])"
+    assert "--bg-header" in styles_css
+    assert "--bg-surface-subtle" in styles_css
+    assert ".btn-theme-toggle" in styles_css
+
+    app_js = (APP_SRC / "app.js").read_text(encoding="utf-8")
+    assert "theme-toggle" in app_js, "app.js debe enlazar el botón #theme-toggle"
+    assert "toggleTheme" in app_js, "app.js debe implementar el método toggleTheme"
+    assert "pref-theme" in app_js, "app.js debe sincronizar con 'pref-theme' de PaperMod"
+    assert "datalaria_theme" in app_js
+
+    # Verificar index.html generado con script anti-FOUC
+    index_html = (STATIC_CONV / "index.html").read_text(encoding="utf-8")
+    assert "pref-theme" in index_html, "index.html debe incluir script anti-FOUC en <head>"
+    assert 'data-theme' in index_html
+    assert 'id="theme-toggle"' in index_html
+
+
+# -------------------------------------------------------------------------
+# 6. Invariante INV-CONV-9: Calculadora Segura de Fórmulas en Input
+# -------------------------------------------------------------------------
+
+def test_inv_conv_9_secure_math_expression_evaluator():
+    """Valida el evaluador aritmético recursivo: precisión, constantes y seguridad XSS."""
+    js_code = """
+    const cases = [
+        { expr: '2 * pi * 50', expected: 314.1592653589793 },
+        { expr: '12 / 3', expected: 4 },
+        { expr: '2^10', expected: 1024 },
+        { expr: '2**8', expected: 256 },
+        { expr: 'sqrt(144) + 8', expected: 20 },
+        { expr: '(5 + 3) * 2', expected: 16 },
+        { expr: '12,5 * 4', expected: 50 },
+        { expr: '1.5e3 + 500', expected: 2000 },
+        { expr: 'abs(-42)', expected: 42 },
+        { expr: 'sin(0)', expected: 0 },
+        { expr: 'cos(0)', expected: 1 },
+        { expr: '10 % 3', expected: 1 }
+    ];
+
+    for (const c of cases) {
+        const res = engine.evaluateMathExpression(c.expr);
+        if (Math.abs(res - c.expected) > 1e-6) {
+            throw new Error(`Fallo en evaluación '${c.expr}': obtenido ${res}, esperado ${c.expected}`);
+        }
+    }
+
+    // Casos inválidos o maliciosos deben retornar NaN de forma segura
+    const invalidCases = ['2 + * 3', 'alert(1)', 'function(){}', 'var x = 1', '<script>'];
+    for (const inv of invalidCases) {
+        const res = engine.evaluateMathExpression(inv);
+        if (!isNaN(res)) {
+            throw new Error(`Entrada maliciosa '${inv}' no retornó NaN: ${res}`);
+        }
+    }
+
+    console.log(JSON.stringify({ passed: true, testedCount: cases.length + invalidCases.length }));
+    """
+    out = run_node_eval(js_code)
+    data = json.loads(out)
+    assert data["passed"] is True
+    assert data["testedCount"] == 17
+
+
+# -------------------------------------------------------------------------
+# 7. Invariante INV-CONV-10: PWA Offline & Service Worker
+# -------------------------------------------------------------------------
+
+def test_inv_conv_10_pwa_offline_service_worker():
+    """Certifica la existencia, validez de manifest.json, sw.js e icono SVG."""
+    manifest_path = STATIC_CONV / "manifest.json"
+    assert manifest_path.exists(), "Falta static/apps/conversor/manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    assert manifest["display"] == "standalone"
+    assert manifest["start_url"] == "/apps/conversor/"
+    assert len(manifest["icons"]) >= 2
+
+    sw_path = STATIC_CONV / "sw.js"
+    assert sw_path.exists(), "Falta static/apps/conversor/sw.js"
+    sw_code = sw_path.read_text(encoding="utf-8")
+    assert "datalaria-conversor-" in sw_code
+    assert "caches.open" in sw_code
+    assert "PRECACHE_ASSETS" in sw_code
+
+    icon_svg = STATIC_CONV / "icon.svg"
+    assert icon_svg.exists(), "Falta static/apps/conversor/icon.svg"
+    assert icon_svg.read_text(encoding="utf-8").startswith("<svg")
+
+    index_html = (STATIC_CONV / "index.html").read_text(encoding="utf-8")
+    assert 'rel="manifest"' in index_html
+    assert 'sw.js' in index_html
+    assert 'input-expr-preview' in index_html
+    assert 'btn-install-pwa' in index_html, "index.html debe incluir el botón #btn-install-pwa"
+    assert 'triggerPwaInstall' in index_html, "index.html debe contener el controlador de instalación triggerPwaInstall"
+    assert 'beforeinstallprompt' in index_html, "index.html debe capturar el evento beforeinstallprompt"
+
+    styles_css = (APP_SRC / "styles.css").read_text(encoding="utf-8")
+    assert ".btn-install-pwa" in styles_css, "styles.css debe definir el estilo para .btn-install-pwa"
+
+
+
 

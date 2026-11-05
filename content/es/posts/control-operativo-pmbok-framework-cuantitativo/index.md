@@ -1,6 +1,6 @@
 ---
 title: "Control Operativo & PMBOK Cuantitativo: El Framework Integral de 5 Pilares para Directores de Operaciones"
-date: 2026-11-07
+date: 2026-11-29
 draft: false
 category: "Estrategia y Operaciones"
 categories: ["Control Operativo", "Gestión de Proyectos", "PMO Corporativa", "Cadena de Suministro", "Estrategia y Operaciones"]

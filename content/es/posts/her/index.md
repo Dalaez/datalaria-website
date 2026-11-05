@@ -1,6 +1,6 @@
 ---
 title: "💔 \"Her\": Apego Emocional, Interfaces Invisibles y la Inevitable Divergencia de la AGI"
-date: 2026-12-27
+date: 2026-11-07
 draft: false
 category: "Cultura Tech y Media"
 categories: ["Inteligencia Artificial", "Cine", "Filosofía", "Sociedad", "Cultura Tech y Media"]

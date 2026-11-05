@@ -1,6 +1,6 @@
 ---
 title: "Financial Business Case: How to Calculate NPV, IRR, Discounted Payback, and Tornado Sensitivity Analysis in Excel"
-date: 2026-11-08
+date: 2026-11-09
 draft: false
 category: "Strategy & Operations"
 categories: ["Corporate Finance", "Corporate Strategy", "Executive Templates", "Strategy & Operations"]

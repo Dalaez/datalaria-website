@@ -1,7 +1,8 @@
-# Especificación de Diseño UX/UI: Matemáticas Interactivas ("Ábaco Arcade v2.0") (`maths`)
+# Especificación de Diseño UX/UI: Matemáticas Interactivas ("Ábaco Arcade v2.1") (`maths`)
 
 > **ID de Diseño:** `DESIGN-APP-MATHS`  
 > **Spec Técnica Vinculada:** [`specs/apps/maths/spec.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/apps/maths/spec.md)  
+> **Versión de Diseño:** `v2.1.0` (PWA Offline, Feedback Formativo y Anti-FOUC)  
 > **Agente Propietario:** [`04-ux-ui` (Diseñador UX/UI)](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/04-ux-ui.md)  
 > **Preset Estético Seleccionado:** `Consumer Playful` (Datalaria Arcade Academy)  
 > **Aislamiento de Excepción:** Esta especificación aplica un estilo lúdico e informal adaptado para niños y adultos por instrucción explícita del usuario, sin que afecte ni persista en los estándares de las aplicaciones B2B de Datalaria.

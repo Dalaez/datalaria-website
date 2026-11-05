@@ -1,8 +1,8 @@
-# SPEC-APP-CONVERSOR: Conversor de Unidades ("Engineering Workbench v2.0")
+# SPEC-APP-CONVERSOR: Conversor de Unidades ("Engineering Workbench v2.1")
 
 > **Identificador:** `SPEC-APP-CONVERSOR`  
-> **Versión:** `v2.0.0` (Estado: `active`)  
-> **Fecha:** `2026-11-04`  
+> **Versión:** `v2.1.0` (Estado: `active`)  
+> **Fecha:** `2026-11-05`  
 > **Clasificación:** Tier `lab` | Scientific & Engineering Toolkit  
 > **Ruta Canónica:** `https://datalaria.com/apps/conversor/`  
 > **Ficha Técnica:** `https://datalaria.com/es/apps/conversor/` (EN: `/en/apps/conversor/`)  
@@ -112,12 +112,20 @@ flowchart TD
 - **`INV-CONV-5` (Inmunidad XSS en Manipulación de Cadenas):** Ninguna entrada del usuario en el formateador de números o parámetros URL se inyecta en el DOM mediante `innerHTML`.
 - **`INV-CONV-6` (Paridad Bilingüe Total):** Todo elemento textual de la interfaz, nombres de unidades y mensajes didácticos debe contar con su correspondiente traducción en el diccionario bilingüe (`es` y `en`).
 - **`INV-CONV-7` (Tríada de Enlaces del Ecosistema Datalaria):** La cabecera superior debe integrar de forma obligatoria los tres enlaces canónicos del ecosistema: 1. Enlace a la Ficha de la App (`/apps/<slug>/`) con objetivos y roadmap; 2. Enlace a la Guía Técnica (`/posts/<post>/`) con el post técnico; 3. Enlace a Kits B2B (`/recursos/`) para conversión y monetización no intrusiva.
+- **`INV-CONV-8` (Soporte Dual Modo Día / Modo Noche y Cero FOUC):** La interfaz debe implementar soporte nativo completo para tema claro (`[data-theme="light"]`) y oscuro (`[data-theme="dark"]`), con persistencia en `localStorage` (`pref-theme`), conmutador en cabecera con atajo de teclado (`T` / `Alt + T`), detección de preferencia del sistema operativo (`prefers-color-scheme`) y script inline en `<head>` para garantizar cero parpadeo visual en carga (anti-FOUC).
+- **`INV-CONV-9` (Evaluación Segura de Expresiones Aritméticas):** El campo de entrada debe evaluar expresiones matemáticas de forma determinista mediante analizador sintáctico recursivo propio sin utilizar `eval()` ni `Function()`, soportando operadores estándar, constantes (`pi`, `e`) y funciones analíticas (`sqrt`, `abs`, trigonométricas).
+- **`INV-CONV-10` (PWA Offline, Resiliencia sin Conexión y Botón de Instalación In-App):** La aplicación debe incluir `manifest.json` válido, un Service Worker (`sw.js`) ligero que precachee los activos nucleares de la app permitiendo funcionamiento 100% offline, y un botón in-app (`#btn-install-pwa`) en cabecera que capture `beforeinstallprompt` en navegadores Chromium/Android, guíe en iOS Safari (Compartir -> Añadir a inicio) y se oculte automáticamente en modo `standalone` tras su instalación.
 
 ---
 
 ## 5. HISTORIAL DE VERSIONES Y EVOLUCIÓN
 
-- **`v2.0.0` (2026-11-04) — [ESTADO: ACTIVO — ENGINEERING WORKBENCH SDD]:**
+- **`v2.1.0` (2026-11-05) — [ESTADO: ACTIVO — PWA OFFLINE & MATH EVALUATOR]:**
+  - **PWA Offline Nativa (`INV-CONV-10` / OPP-01):** Soporte de instalación en escritorio y móvil, Service Worker con estrategia Cache-First/Stale-While-Revalidate y Web App Manifest con icono SVG vectorial.
+  - **Calculadora de Expresiones Inline (`INV-CONV-9` / OPP-03):** Campo de entrada con soporte para expresiones matemáticas directas (`2*pi*50`, `sqrt(144)`, `2^10`) con previsualización en tiempo real y cero vulnerabilidad XSS.
+  - **Modo Dual Día / Noche (`INV-CONV-8`):** Design tokens duales de alto contraste, conmutador en cabecera, persistencia en `pref-theme`, atajo `T` / `Alt+T` y script anti-FOUC.
+  - **Ecosistema Canónico (`INV-CONV-7`):** Integración de botón directo a Ficha de la App en cabecera superior.
+- **`v2.0.0` (2026-11-04) — [SUPERSEDED]:**
   - **Refactorización Arquitectónica:** Migración a arquitectura *Single-Source-of-Truth* en `/apps/conversor/` con compilación estática y 14 shims de redirección retrocompatibles (eliminación del antipatrón de 15 HTML duplicados y corrección de la corrupción de cabecera en `en/mecanica_en.html`).
   - **Cierre de Contract Drift:** Implementación de potencia en dBm ⇔ W/mW, cálculo bidireccional $\lambda \iff f$, soporte de BTU y diferenciación estricta entre almacenamiento decimal SI y binario IEC (KiB..TiB).
   - **Resolución de Bugs Numéricos:** Corrección del truncamiento de 3 decimales provocado por `toLocaleString`, formateador de salida con precisión configurable (`Auto`, `2..8`, `Sci`) y motor de parseo robusto para separadores de miles y decimales que no corrompe entradas de 3 decimales (`1,234`).
