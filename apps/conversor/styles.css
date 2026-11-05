@@ -148,6 +148,7 @@ body {
   border: 1px solid var(--border-subtle);
   background-color: var(--bg-elevated);
   transition: all 0.2s;
+  white-space: nowrap;
 }
 
 .btn-ghost:hover {
@@ -167,6 +168,7 @@ body {
   padding: 0.35rem 0.75rem;
   border-radius: var(--radius-sm);
   transition: opacity 0.2s;
+  white-space: nowrap;
 }
 
 .btn-b2b:hover {
@@ -232,42 +234,194 @@ body {
 /* 4. CODATA Quick Constants Bar */
 .constants-bar {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  overflow-x: auto;
-  padding: 0.4rem 0.75rem;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.65rem 0.9rem;
   background-color: rgba(30, 41, 59, 0.45);
   border-radius: var(--radius-md);
   border: 1px dashed var(--border-subtle);
-  scrollbar-width: thin;
+  overflow: visible;
+}
+
+.constants-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.constants-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.constants-badge {
+  background: rgba(14, 165, 233, 0.15);
+  color: var(--accent-primary);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  letter-spacing: 0.04em;
 }
 
 .constants-label {
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   color: var(--text-muted);
   font-weight: 600;
-  white-space: nowrap;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
 }
 
-.constant-chip {
+.constants-chips-deck {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.constant-micro-chip {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.constant-micro-chip:hover {
+  background: var(--bg-elevated);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(14, 165, 233, 0.2);
+}
+
+.constant-micro-chip:active {
+  transform: translateY(0);
+}
+
+.btn-codata-toggle {
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
   font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.15s ease-in-out;
+}
+
+.btn-codata-toggle:hover,
+.btn-codata-toggle.active {
+  background: var(--bg-surface);
+  border-color: var(--accent-primary);
+  color: var(--text-primary);
+}
+
+.codata-toggle-arrow {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+/* Expandable CODATA Table Panel */
+.codata-table-panel {
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--border-subtle);
+  animation: fadeInDown 0.2s ease-out;
+}
+
+.codata-table-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.6rem;
+}
+
+.codata-card-row {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  transition: border-color 0.15s;
+}
+
+.codata-card-row:hover {
+  border-color: rgba(14, 165, 233, 0.4);
+}
+
+.codata-card-sym-badge {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  min-width: 2.2rem;
+  text-align: center;
+  background: rgba(14, 165, 233, 0.1);
+  padding: 0.2rem 0.4rem;
+  border-radius: var(--radius-sm);
+}
+
+.codata-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.codata-card-title {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.codata-card-val {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.codata-card-unit {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.btn-codata-inject {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 0.72rem;
+  font-weight: 600;
   padding: 0.25rem 0.55rem;
   border-radius: var(--radius-sm);
   cursor: pointer;
   white-space: nowrap;
-  transition: all 0.2s;
+  transition: all 0.15s;
 }
 
-.constant-chip:hover {
+.btn-codata-inject:hover {
+  background: var(--accent-primary);
   border-color: var(--accent-primary);
-  color: var(--text-primary);
-  transform: translateY(-1px);
+  color: #0b1120;
 }
 
 /* 5. Main Converter Card */
@@ -605,48 +759,127 @@ body {
   justify-content: space-between;
 }
 
-/* 10. History Strip */
+/* 10. History Section */
 .history-strip {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: 0.85rem 1.25rem;
   display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  overflow: visible;
+}
+
+.history-header {
+  display: flex;
   align-items: center;
-  gap: 1rem;
-  overflow-x: auto;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.history-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
 }
 
 .history-title {
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   font-weight: 600;
   text-transform: uppercase;
-  color: var(--text-muted);
-  white-space: nowrap;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
 }
 
-.history-items {
+.history-badge {
+  background: var(--bg-elevated);
+  color: var(--accent-primary);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.1rem 0.45rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border-subtle);
+}
+
+.history-actions {
   display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-history-toggle,
+.btn-history-clear {
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.15s;
+}
+
+.btn-history-toggle:hover {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border-color: var(--accent-primary);
+}
+
+.btn-history-clear:hover {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.history-items-grid {
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
   align-items: center;
 }
 
-.history-pill {
+.history-pill-card {
   background: var(--bg-elevated);
   border: 1px solid var(--border-subtle);
   color: var(--text-secondary);
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  padding: 0.25rem 0.5rem;
+  font-size: 0.76rem;
+  padding: 0.35rem 0.7rem;
   border-radius: var(--radius-sm);
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.15s;
   white-space: nowrap;
-  transition: all 0.2s;
 }
 
-.history-pill:hover {
+.history-pill-card:hover {
   border-color: var(--accent-primary);
   color: var(--text-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.hist-from, .hist-to {
+  font-weight: 500;
+}
+
+.hist-arrow {
+  color: var(--accent-primary);
+  font-size: 0.72rem;
+}
+
+.hist-unit {
+  color: var(--text-muted);
+  font-size: 0.7rem;
 }
 
 /* 11. Didactic Section */
@@ -691,4 +924,61 @@ body {
 
 .app-footer a:hover {
   color: var(--accent-primary);
+}
+
+/* 13. Toast Notification */
+.workbench-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #0f172a;
+  border: 1px solid var(--accent-primary);
+  color: var(--text-primary);
+  padding: 0.65rem 1.1rem;
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 12px rgba(14, 165, 233, 0.25);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+.workbench-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 14. Responsive Header Shell */
+@media (max-width: 768px) {
+  .app-header {
+    height: auto;
+    min-height: 56px;
+    padding: 0.5rem 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .header-left, .header-right {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .btn-ghost, .btn-b2b {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+  }
 }

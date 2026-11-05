@@ -340,7 +340,7 @@ kits:
   topic: decisiones
   category_es: Decisiones
   status: available
-  price: 6€
+  price: 5€
   original_price: 19€
   icon: 🚀
   deliverables_es:
@@ -356,8 +356,8 @@ kits:
   title_es: Matriz RICE & ICE de Priorización Ágil
   description_es: Prioriza el backlog de producto y características técnicas defendiendo
     ante el CPO y CEO qué construir primero con rigor de datos.
-  article_url_es: null
-  guide_url_es: null
+  article_url_es: /es/posts/matriz-rice-ice-priorizacion/
+  guide_url_es: /es/posts/matriz-rice-ice-priorizacion/
   title_en: Agile RICE & ICE Prioritization Matrix
   category_en: Decisions
   description_en: Prioritize product backlogs and technical roadmaps with empirical
@@ -371,8 +371,8 @@ kits:
   - Complementary ICE scoring for rapid feature experimentation
   - 16:9 PPTX quadrant chart of Effort vs. Impact for Roadmap reviews
   - PDF guide on confidence calibration and net squad capacity
-  article_url_en: null
-  guide_url_en: null
+  article_url_en: /en/posts/rice-ice-prioritization-matrix/
+  guide_url_en: /en/posts/rice-ice-prioritization-matrix/
 - id: pack-business-case
   slug: business-case
   type: kit

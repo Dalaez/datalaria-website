@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-11-05T06:59:45.091689Z",
+  "generated_at": "2026-11-05T16:21:25.904361Z",
   "total_assets": 142,
   "published_assets": 120,
   "scheduled_assets": 18,
@@ -1202,8 +1202,8 @@
       "brief_es": "Guía metodológica y cuantitativa para implementar la matriz RICE (Reach, Impact, Confidence, Effort) e ICE: cálculo de densidad de valor, descuento bayesiano de confianza, matriz cuadrante 2x2 Impacto vs. Esfuerzo, línea de corte por capacidad de squads y gobernanza ante Comités de Dirección.",
       "brief_en": "Comprehensive executive methodology to implement the RICE (Reach, Impact, Confidence, Effort) and ICE frameworks: value density calculations, Bayesian risk discounts, 2x2 Impact vs. Effort matrix, squad capacity cut-lines, and C-Suite Product Council governance.",
       "publish_date": "2026-11-05",
-      "last_modified_es": "2026-10-31T20:23:26+01:00",
-      "last_modified_en": "2026-10-31T20:23:26+01:00",
+      "last_modified_es": "2026-11-05T07:59:35+01:00",
+      "last_modified_en": "2026-11-05T07:59:35+01:00",
       "language_parity": "complete",
       "category": "Estrategia y Operaciones",
       "categories": [
@@ -1542,8 +1542,8 @@
       "brief_es": "Un caso práctico de cómo utilicé Gemini Canvas para desarrollar desde cero una aplicación web de conversión de unidades de medida, organizada por categorías y adaptada a mis necesidades profesionales.",
       "brief_en": "A practical case study of how I used Gemini Canvas to develop a multi-category unit conversion web application from scratch, tailored to my professional needs.",
       "publish_date": "2025-10-04",
-      "last_modified_es": "2026-10-31T20:23:26+01:00",
-      "last_modified_en": "2026-10-31T20:23:26+01:00",
+      "last_modified_es": "2026-11-05T07:59:35+01:00",
+      "last_modified_en": "2026-11-05T07:59:35+01:00",
       "language_parity": "complete",
       "category": "IA, Ingeniería y Proyectos",
       "categories": [
@@ -7760,8 +7760,8 @@
       "brief_es": "Engineering Workbench v2.0: Navaja suiza científica para conversiones técnicas, metrología SI y procesamiento masivo.",
       "brief_en": "Engineering Workbench v2.0: Scientific Swiss Army knife for technical conversions, SI metrology, and batch processing.",
       "publish_date": "2025-09-20",
-      "last_modified_es": "2026-10-25T10:03:25+01:00",
-      "last_modified_en": "2026-10-25T10:03:25+01:00",
+      "last_modified_es": "2026-11-05T07:59:35+01:00",
+      "last_modified_en": "2026-11-05T07:59:35+01:00",
       "language_parity": "complete",
       "category": "Aplicaciones Web",
       "categories": [
@@ -9017,7 +9017,7 @@
       "related_app": null,
       "related_kit": null,
       "included_kits": [],
-      "price": "6€",
+      "price": "5€",
       "original_price": "19€",
       "checkout_url": "https://datalaria.lemonsqueezy.com/checkout/buy/4d360fcd-60d5-402a-9e58-3833e467fd3a",
       "deliverables": [

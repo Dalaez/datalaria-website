@@ -52,12 +52,16 @@
 
 ## 3. Arquitectura de Información y Presupuesto *Above-the-Fold*
 
-1. **Shell Visual Datalaria (Constitución Art. 5.2):**
-   - Altura de cabecera: exactamente `56px`.
+1. **Shell Visual Datalaria (Constitución Art. 5.2 — Estándar Ecosistema Apps):**
+   - Altura de cabecera: adaptativa (`56px` base, auto en móvil con wrap ergonómico).
    - Elementos alineados horizontalmente:
-     - Izquierda: `← Datalaria` (enlace con chevron hacia `/es/apps/conversor/` o `/en/apps/conversor/`) + Icono `🔄` + Título `Conversor Pro v2.0`.
+     - Izquierda: `← Datalaria` (enlace al catálogo general `/es/apps/` o `/en/apps/`) + Icono `🔄` + Título `Conversor Pro` + Badge `v2.0.0`.
      - Centro: Conmutador de vista rápida de categorías (Píldoras compactas o select en móvil).
-     - Derecha: Botón selector de idioma `ES | EN` + Enlace al post `📖 Guía` + CTA sutil `📦 Kits B2B →` hacia `/recursos/`.
+     - Derecha (Tríada de Enlaces del Ecosistema):
+       1. Botón selector de idioma `ES | EN`.
+       2. Botón a la Ficha de la App (`📋 Ficha de la App` -> `/es/apps/conversor/` o `/en/apps/conversor/`) para consultar objetivos, tecnologías y roadmap evolutivo.
+       3. Botón al Post Editorial (`📖 Guía Técnica` -> `/es/posts/app_conversor_unidades/` o `/en/posts/app_unit_converter/`).
+       4. CTA sutil a recursos (`📦 Kits B2B →` -> `/es/recursos/` o `/en/resources/`).
 2. **Distribución del Espacio de Trabajo:**
    - **Fila Superior:** Barra de categorías (7 pestañas: *Dimensión, Energía, Tiempo, Mecánica, Informática, Radiofrecuencia, Scratchpad Masivo*) + Barra de Constantes CODATA rápidas.
    - **Panel Central (Conversión Dual Directa):**

@@ -7,6 +7,17 @@ categories: ["Toma de Decisiones", "Gestión de Producto", "Plantillas Ejecutiva
 tags: ["Matriz RICE", "Matriz ICE", "Priorización de Producto", "Backlog Ágil", "Línea de Corte", "Capacidad de Ingeniería", "HiPPO", "Quick Wins", "C-Level"]
 description: "Guía metodológica y cuantitativa para implementar la matriz RICE (Reach, Impact, Confidence, Effort) e ICE: cálculo de densidad de valor, descuento bayesiano de confianza, matriz cuadrante 2x2 Impacto vs. Esfuerzo, línea de corte por capacidad de squads y gobernanza ante Comités de Dirección."
 summary: "Sustituye la priorización por intuición (síndrome HiPPO) y la 'fábrica de funcionalidades' por un motor cuantitativo defendible ante Consejos de Administración y Comités de Producto. Combina la puntuación estructural RICE de Intercom con el framework ágil de experimentación ICE de Growth, una matriz cartesiana 2x2 de cuadrantes estratégicos y una línea de corte automática ajustada a la capacidad neta de ingeniería en persona-mes."
+cover:
+  image: "cover.png"
+  alt: "Matriz RICE & ICE de Priorización Ágil: Backlog Cuantitativo, Matriz Impacto vs. Esfuerzo y Línea de Corte de Capacidad"
+  caption: "Matriz RICE & ICE Ágil: Motor de priorización cuantitativa, calibración bayesiana, matriz de cuadrantes 2x2 y línea de corte de capacidad para Comités de Producto C-Level."
+  relative: true
+images:
+  - "cover.png"
+  - "diagrama-1-embudo-decisiones.png"
+  - "diagrama-2-flujo-priorizacion-rice.png"
+  - "diagrama-3-matriz-impacto-esfuerzo.png"
+  - "preview-pack.png"
 ---
 
 En casi cualquier comité de producto, sesión trimestral de planificación de roadmap (QBR) o reunión ejecutiva entre el Director de Producto (CPO), el Director de Tecnología (CTO) y el Director General (CEO), se reproduce de manera predecible la mayor patología de la gestión tecnológica moderna: **la trampa de la última milla de priorización**.
@@ -92,6 +103,11 @@ flowchart TD
     style S5 fill:#0F172A,stroke:#64748B,stroke-width:2px,color:#FFFFFF
     style S6 fill:#0F172A,stroke:#2563EB,stroke-width:2.5px,color:#FFFFFF
 {{< /mermaid >}}
+<noscript>
+  <p align="center">
+    <img src="diagrama-1-embudo-decisiones.png" alt="Diagrama 1: Embudo Estratégico Integral (De Suite 01 Estrategia a Suite 02 Decisiones)" width="100%" />
+  </p>
+</noscript>
 
 1. **Nivel 1 — Escaneo del Macroentorno ([Matriz PESTEL Cuantitativa](/es/posts/matriz-pestel-cuantitativa/)):** Detecta tendencias regulatorias y macroeconómicas (como el EU AI Act o las restricciones de soberanía en la nube) que condicionan el marco de actuación de la empresa.
 2. **Nivel 2 — Dinámica Microeconómica e Industria ([5 Fuerzas de Porter Ponderadas](/es/posts/5-fuerzas-porter-cuantitativas/)):** Evalúa la intensidad competitiva, la presión sobre precios y la amenaza de sustitutos para definir la ventaja competitiva sostenible.
@@ -146,6 +162,11 @@ flowchart TD
     style H fill:#F8FAFC,stroke:#475569,stroke-width:1.5px,color:#0F172A
     style I fill:#D1FAE5,stroke:#10B981,stroke-width:2.5px,color:#065F46
 {{< /mermaid >}}
+<noscript>
+  <p align="center">
+    <img src="diagrama-2-flujo-priorizacion-rice.png" alt="Diagrama 2: Pipeline de Priorización Cuantitativa de Producto (6 Fases Secuenciales)" width="100%" />
+  </p>
+</noscript>
 
 ---
 
@@ -259,6 +280,11 @@ quadrantChart
   "INIT-14 GraphQL Layer": [0.75, 0.18]
   "INIT-19 DB Rust Rewrite": [0.95, 0.12]
 {{< /mermaid >}}
+<noscript>
+  <p align="center">
+    <img src="diagrama-3-matriz-impacto-esfuerzo.png" alt="Diagrama 3: Matriz Estratégica: Valor Esperado vs. Esfuerzo & Distribución Cartesiana" width="100%" />
+  </p>
+</noscript>
 
 ### Definición Canónica de los Cuadrantes
 

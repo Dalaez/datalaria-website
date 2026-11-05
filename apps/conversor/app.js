@@ -20,9 +20,14 @@ const I18N = {
   es: {
     backToPortal: '← Datalaria',
     appTitle: 'Conversor Pro',
+    appSheet: '📋 Ficha de la App',
     guidePost: '📖 Guía Técnica',
     b2bKits: '📦 Kits B2B →',
     constantsLabel: 'Constantes CODATA:',
+    viewCodataTable: 'Tabla completa',
+    closeCodataTable: 'Cerrar tabla',
+    injectBtn: 'Inyectar',
+    injectedToast: 'Inyectada constante',
     inputLabel: 'Entrada',
     outputLabel: 'Resultado',
     swapTooltip: 'Invertir unidades (Atajo: X)',
@@ -33,8 +38,10 @@ const I18N = {
     precisionLabel: 'Precisión:',
     omniTitle: 'Omni-Matrix Multi-Escala',
     formulaTraceLabel: 'Fórmula Base SI:',
-    historyTitle: 'Historial Reciente:',
+    historyTitle: 'Historial Reciente',
     clearHistory: 'Limpiar',
+    collapseHistory: 'Plegar',
+    expandHistory: 'Desplegar',
     scratchpadInputLabel: 'Datos de Entrada (Pega columnas de Excel o números multilínea):',
     scratchpadOutputLabel: 'Datos Convertidos / Formateados:',
     scratchpadTargetFormat: 'Formato numérico objetivo:',
@@ -50,9 +57,14 @@ const I18N = {
   en: {
     backToPortal: '← Datalaria',
     appTitle: 'Converter Pro',
+    appSheet: '📋 App Overview',
     guidePost: '📖 Technical Guide',
     b2bKits: '📦 B2B Kits →',
     constantsLabel: 'CODATA Constants:',
+    viewCodataTable: 'Full Table',
+    closeCodataTable: 'Close Table',
+    injectBtn: 'Inject',
+    injectedToast: 'Injected constant',
     inputLabel: 'Input Value',
     outputLabel: 'Converted Result',
     swapTooltip: 'Swap units (Shortcut: X)',
@@ -63,8 +75,10 @@ const I18N = {
     precisionLabel: 'Precision:',
     omniTitle: 'Multi-Scale Omni-Matrix',
     formulaTraceLabel: 'Canonical SI Formula:',
-    historyTitle: 'Recent History:',
+    historyTitle: 'Recent History',
     clearHistory: 'Clear',
+    collapseHistory: 'Collapse',
+    expandHistory: 'Expand',
     scratchpadInputLabel: 'Input Data (Paste Excel columns or multiline numbers):',
     scratchpadOutputLabel: 'Converted & Formatted Output:',
     scratchpadTargetFormat: 'Target number format:',
@@ -130,7 +144,9 @@ export class UnitConverterApp {
       batchUnitCategory: 'pressure',
       batchFromUnit: 'bar',
       batchToUnit: 'psi',
-      history: []
+      history: [],
+      historyCollapsed: false,
+      codataTableOpen: false
     };
   }
 
@@ -209,7 +225,8 @@ export class UnitConverterApp {
 
   renderShell() {
     const t = I18N[this.state.lang];
-    const portalUrl = this.state.lang === 'en' ? '/en/apps/conversor/' : '/es/apps/conversor/';
+    const portalUrl = this.state.lang === 'en' ? '/en/apps/' : '/es/apps/';
+    const appSheetUrl = this.state.lang === 'en' ? '/en/apps/conversor/' : '/es/apps/conversor/';
     const postUrl = this.state.lang === 'en' ? '/en/posts/app_unit_converter/' : '/es/posts/app_conversor_unidades/';
     const resourcesUrl = this.state.lang === 'en' ? '/en/resources/' : '/es/recursos/';
 
@@ -232,8 +249,15 @@ export class UnitConverterApp {
           <button class="lang-btn ${this.state.lang === 'es' ? 'active' : ''}" data-lang="es">ES</button>
           <button class="lang-btn ${this.state.lang === 'en' ? 'active' : ''}" data-lang="en">EN</button>
         </div>
-        <a href="${postUrl}" class="btn-ghost" title="${t.guidePost}">${t.guidePost}</a>
-        <a href="${resourcesUrl}" class="btn-b2b" title="${t.b2bKits}">${t.b2bKits}</a>
+        <a href="${appSheetUrl}" class="btn-ghost" title="${t.appSheet}">
+          <span>${t.appSheet}</span>
+        </a>
+        <a href="${postUrl}" class="btn-ghost" title="${t.guidePost}">
+          <span>${t.guidePost}</span>
+        </a>
+        <a href="${resourcesUrl}" class="btn-b2b" title="${t.b2bKits}">
+          <span>${t.b2bKits}</span>
+        </a>
       </div>
     `;
 
@@ -270,26 +294,100 @@ export class UnitConverterApp {
     if (!barEl) return;
     const t = I18N[this.state.lang];
     const lang = this.state.lang;
+    const isOpen = this.state.codataTableOpen;
 
     barEl.innerHTML = `
-      <span class="constants-label">${t.constantsLabel}</span>
-      ${PHYSICAL_CONSTANTS.map(c => `
-        <button class="constant-chip" data-val="${c.value}" title="${c.name[lang]}: ${c.value} ${c.unit}">
-          <strong>${c.symbol}</strong> = ${formatEngineeredNumber(c.value, 'sci', lang)} ${c.unit}
+      <div class="constants-header">
+        <div class="constants-title-group">
+          <span class="constants-badge">CODATA</span>
+          <span class="constants-label">${t.constantsLabel}</span>
+        </div>
+        <div class="constants-chips-deck">
+          ${PHYSICAL_CONSTANTS.map(c => `
+            <button class="constant-micro-chip" data-val="${c.value}" data-symbol="${c.symbol}" data-unit="${c.unit}" title="${c.name[lang]}: ${formatEngineeredNumber(c.value, 'sci', lang)} ${c.unit} (${t.injectBtn})">
+              <span class="chip-symbol">${c.symbol}</span>
+            </button>
+          `).join('')}
+        </div>
+        <button id="btn-toggle-codata-table" class="btn-codata-toggle ${isOpen ? 'active' : ''}" aria-expanded="${isOpen}">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+          <span>${isOpen ? t.closeCodataTable : t.viewCodataTable}</span>
+          <span class="codata-toggle-arrow">${isOpen ? '▲' : '▼'}</span>
         </button>
-      `).join('')}
+      </div>
+
+      <div id="codata-table-panel" class="codata-table-panel" style="${isOpen ? 'display: block;' : 'display: none;'}">
+        <div class="codata-table-grid">
+          ${PHYSICAL_CONSTANTS.map(c => `
+            <div class="codata-card-row">
+              <div class="codata-card-sym-badge">${c.symbol}</div>
+              <div class="codata-card-body">
+                <div class="codata-card-title">${c.name[lang]}</div>
+                <div class="codata-card-val">${formatEngineeredNumber(c.value, 'sci', lang)} <span class="codata-card-unit">${c.unit}</span></div>
+              </div>
+              <button class="btn-codata-inject" data-val="${c.value}" data-symbol="${c.symbol}" data-unit="${c.unit}" title="${t.injectBtn}">
+                ${t.injectBtn}
+              </button>
+            </div>
+          `).join('')}
+        </div>
+      </div>
     `;
 
-    barEl.querySelectorAll('.constant-chip').forEach(chip => {
+    barEl.querySelectorAll('.constant-micro-chip').forEach(chip => {
       chip.addEventListener('click', () => {
         const val = Number(chip.dataset.val);
-        this.state.inputValue = val;
-        const inputEl = document.getElementById('main-unit-input');
-        if (inputEl) inputEl.value = val;
-        this.calculateAndRender();
-        this.syncUrlParams();
+        const sym = chip.dataset.symbol;
+        const unit = chip.dataset.unit || '';
+        this.injectConstantValue(val, sym, unit);
       });
     });
+
+    barEl.querySelectorAll('.btn-codata-inject').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const val = Number(btn.dataset.val);
+        const sym = btn.dataset.symbol;
+        const unit = btn.dataset.unit || '';
+        this.injectConstantValue(val, sym, unit);
+      });
+    });
+
+    const toggleBtn = barEl.querySelector('#btn-toggle-codata-table');
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        this.state.codataTableOpen = !this.state.codataTableOpen;
+        this.renderConstantsBar();
+      });
+    }
+  }
+
+  injectConstantValue(val, sym, unit = '') {
+    const t = I18N[this.state.lang];
+    this.state.inputValue = val;
+    const inputEl = document.getElementById('main-unit-input');
+    if (inputEl) {
+      inputEl.value = val;
+      inputEl.focus();
+    }
+    this.calculateAndRender();
+    this.syncUrlParams();
+    this.showToast(`${t.injectedToast}: ${sym} = ${formatEngineeredNumber(val, 'sci', this.state.lang)} ${unit}`);
+  }
+
+  showToast(msg) {
+    let toast = document.getElementById('workbench-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'workbench-toast';
+      toast.className = 'workbench-toast';
+      document.body.appendChild(toast);
+    }
+    toast.textContent = msg;
+    toast.classList.add('show');
+    if (this._toastTimer) clearTimeout(this._toastTimer);
+    this._toastTimer = setTimeout(() => {
+      toast.classList.remove('show');
+    }, 2200);
   }
 
   selectCategory(catId) {
@@ -955,6 +1053,7 @@ export class UnitConverterApp {
     const stripEl = document.getElementById('history-strip');
     if (!stripEl) return;
     const t = I18N[this.state.lang];
+    const lang = this.state.lang;
 
     if (this.state.history.length === 0) {
       stripEl.style.display = 'none';
@@ -962,18 +1061,56 @@ export class UnitConverterApp {
     }
 
     stripEl.style.display = 'flex';
+    const isCollapsed = this.state.historyCollapsed;
+
     stripEl.innerHTML = `
-      <span class="history-title">${t.historyTitle}</span>
-      <div class="history-items">
+      <div class="history-header">
+        <div class="history-title-group">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span class="history-title">${t.historyTitle}</span>
+          <span class="history-badge">${this.state.history.length}</span>
+        </div>
+        <div class="history-actions">
+          <button id="btn-toggle-history" class="btn-history-toggle" title="${isCollapsed ? t.expandHistory : t.collapseHistory}">
+            <span class="history-toggle-arrow">${isCollapsed ? '▶' : '▼'}</span>
+            <span>${isCollapsed ? t.expandHistory : t.collapseHistory}</span>
+          </button>
+          <button id="btn-clear-history" class="btn-history-clear" title="${t.clearHistory}">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+            <span>${t.clearHistory}</span>
+          </button>
+        </div>
+      </div>
+      <div id="history-items-container" class="history-items-grid" style="${isCollapsed ? 'display: none;' : 'display: flex;'}">
         ${this.state.history.map((h, i) => `
-          <button class="history-pill" data-idx="${i}">
-            ${h.fromVal} ${h.fromUnit} ➔ ${h.toVal} ${h.toUnit}
+          <button class="history-pill-card" data-idx="${i}" title="${h.fromVal} ${h.fromUnit} = ${h.toVal} ${h.toUnit}">
+            <span class="hist-from">${h.fromVal} <small class="hist-unit">${h.fromUnit}</small></span>
+            <span class="hist-arrow">➔</span>
+            <span class="hist-to">${h.toVal} <small class="hist-unit">${h.toUnit}</small></span>
           </button>
         `).join('')}
       </div>
     `;
 
-    stripEl.querySelectorAll('.history-pill').forEach(btn => {
+    const clearBtn = stripEl.querySelector('#btn-clear-history');
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        this.state.history = [];
+        localStorage.removeItem('datalaria_conversor_hist');
+        this.renderHistory();
+        this.showToast('✓ ' + (lang === 'es' ? 'Historial limpiado' : 'History cleared'));
+      });
+    }
+
+    const toggleBtn = stripEl.querySelector('#btn-toggle-history');
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        this.state.historyCollapsed = !this.state.historyCollapsed;
+        this.renderHistory();
+      });
+    }
+
+    stripEl.querySelectorAll('.history-pill-card').forEach(btn => {
       btn.addEventListener('click', () => {
         const item = this.state.history[Number(btn.dataset.idx)];
         if (item) {
@@ -985,6 +1122,7 @@ export class UnitConverterApp {
           this.renderCategoryNav();
           this.updateView();
           this.syncUrlParams();
+          this.showToast(`✓ ${item.fromVal} ${item.fromUnit} ➔ ${item.toVal} ${item.toUnit}`);
         }
       });
     });

@@ -350,3 +350,18 @@ def test_inv_conv_6_metadata_and_spec_alignment():
     assert DESIGN_FILE.exists(), f"Falta {DESIGN_FILE}"
     design_content = DESIGN_FILE.read_text(encoding="utf-8")
     assert "DESIGN-APP-CONVERSOR" in design_content
+
+
+def test_inv_conv_5_header_shell_links():
+    """Valida que la barra superior integra los enlaces obligatorios: Ficha de la App, Guía y Kits."""
+    app_js = (APP_SRC / "app.js").read_text(encoding="utf-8")
+    assert "appSheetUrl" in app_js, "app.js debe definir appSheetUrl hacia la Ficha de la App"
+    assert "/apps/conversor/" in app_js, "app.js debe enlazar a la ficha /apps/conversor/"
+    assert "postUrl" in app_js, "app.js debe definir postUrl hacia la Guía Técnica"
+    assert "resourcesUrl" in app_js, "app.js debe definir resourcesUrl hacia los Kits B2B"
+
+    # Verificar index.html generado
+    index_html = (STATIC_CONV / "index.html").read_text(encoding="utf-8")
+    assert "appSheetUrl" in index_html
+    assert "appSheet" in index_html
+

@@ -111,6 +111,7 @@ flowchart TD
 - **`INV-CONV-4` (Retrocompatibilidad 100% de Enlaces Históricos):** Los 14 archivos HTML previos en `static/apps/conversor/es/` y `en/` se reemplazan por shims de redirección válidos que preservan la categoría en la URL (`/apps/conversor/?lang=...&cat=...`).
 - **`INV-CONV-5` (Inmunidad XSS en Manipulación de Cadenas):** Ninguna entrada del usuario en el formateador de números o parámetros URL se inyecta en el DOM mediante `innerHTML`.
 - **`INV-CONV-6` (Paridad Bilingüe Total):** Todo elemento textual de la interfaz, nombres de unidades y mensajes didácticos debe contar con su correspondiente traducción en el diccionario bilingüe (`es` y `en`).
+- **`INV-CONV-7` (Tríada de Enlaces del Ecosistema Datalaria):** La cabecera superior debe integrar de forma obligatoria los tres enlaces canónicos del ecosistema: 1. Enlace a la Ficha de la App (`/apps/<slug>/`) con objetivos y roadmap; 2. Enlace a la Guía Técnica (`/posts/<post>/`) con el post técnico; 3. Enlace a Kits B2B (`/recursos/`) para conversión y monetización no intrusiva.
 
 ---
 

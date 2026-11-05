@@ -7,6 +7,17 @@ categories: ["Decision Making", "Product Management", "Executive Templates", "St
 tags: ["RICE Matrix", "ICE Matrix", "Product Prioritization", "Agile Backlog", "Capacity Cut-Line", "Engineering Capacity", "HiPPO Bias", "Quick Wins", "C-Level"]
 description: "Comprehensive executive methodology to implement the RICE (Reach, Impact, Confidence, Effort) and ICE frameworks: value density calculations, Bayesian risk discounts, 2x2 Impact vs. Effort matrix, squad capacity cut-lines, and C-Suite Product Council governance."
 summary: "Replace intuition-based prioritization (HiPPO syndrome) and the 'feature factory' with a defensible quantitative engine tailored for Corporate Boards and Executive Product Councils. Combines Intercom's foundational RICE score with the high-velocity ICE growth framework, an objective 2x2 strategic quadrant matrix, and an automated capacity cut-line anchored in real engineering person-months."
+cover:
+  image: "cover.png"
+  alt: "Agile RICE & ICE Prioritization Matrix: Quantitative Backlog, Impact vs. Effort Matrix & Capacity Cut-Line"
+  caption: "Agile RICE & ICE Matrix: Quantitative prioritization engine, Bayesian calibration, 2x2 quadrant matrix, and net squad capacity cut-line for C-Level Product Councils."
+  relative: true
+images:
+  - "cover.png"
+  - "diagram-1-decision-funnel.png"
+  - "diagram-2-rice-prioritization-pipeline.png"
+  - "diagram-3-impact-effort-matrix.png"
+  - "preview-pack.png"
 ---
 
 In nearly every quarterly business review (QBR), product council, or executive steering committee between the Chief Product Officer (CPO), Chief Technology Officer (CTO), and Chief Executive Officer (CEO), modern technology organizations fall victim to a predictable dysfunction: **the prioritization last-mile trap**.
@@ -92,6 +103,11 @@ flowchart TD
     style S5 fill:#0F172A,stroke:#64748B,stroke-width:2px,color:#FFFFFF
     style S6 fill:#0F172A,stroke:#2563EB,stroke-width:2.5px,color:#FFFFFF
 {{< /mermaid >}}
+<noscript>
+  <p align="center">
+    <img src="diagram-1-decision-funnel.png" alt="Diagram 1: Strategic Decision Funnel (From Suite 01 Strategy to Suite 02 Decisions)" width="100%" />
+  </p>
+</noscript>
 
 1. **Level 1 — Macro-Environment Scanning ([Quantitative PESTEL Matrix](/en/posts/quantitative-pestel-matrix/)):** Identifies macro trends and regulatory shifts (such as the EU AI Act or cloud sovereignty mandates) that define corporate operational boundaries.
 2. **Level 2 — Industry Microeconomics ([Weighted Porter's 5 Forces](/en/posts/quantitative-porter-5-forces/)):** Evaluates competitive rivalry, buyer leverage, and substitute threats to establish structural competitive advantages.
@@ -146,6 +162,11 @@ flowchart TD
     style H fill:#F8FAFC,stroke:#475569,stroke-width:1.5px,color:#0F172A
     style I fill:#D1FAE5,stroke:#10B981,stroke-width:2.5px,color:#065F46
 {{< /mermaid >}}
+<noscript>
+  <p align="center">
+    <img src="diagram-2-rice-prioritization-pipeline.png" alt="Diagram 2: Quantitative Product Prioritization Pipeline (6 Sequential Phases)" width="100%" />
+  </p>
+</noscript>
 
 ---
 
@@ -259,6 +280,11 @@ quadrantChart
   "INIT-14 GraphQL Layer": [0.75, 0.18]
   "INIT-19 DB Rust Rewrite": [0.95, 0.12]
 {{< /mermaid >}}
+<noscript>
+  <p align="center">
+    <img src="diagram-3-impact-effort-matrix.png" alt="Diagram 3: Strategic Matrix: Expected Value vs. Effort & Cartesian Backlog Distribution" width="100%" />
+  </p>
+</noscript>
 
 ### Canonical Quadrant Governance
 
