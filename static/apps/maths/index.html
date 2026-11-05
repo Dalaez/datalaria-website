@@ -1,258 +1,1649 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Fun App / Juego de Matemáticas</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Ábaco Arcade — Matemáticas Lúdicas (Datalaria)</title>
+  <style>
+/* apps/maths/styles.css - Design Tokens nativos y estilos Arcade 3D */
+:root {
+  --bg-canvas: #f0f4ff;
+  --bg-surface: #ffffff;
+  --bg-elevated: #f8faff;
+  --bg-inset: #eef2ff;
+  --text-primary: #1e1b4b;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --border-card: #e2e8f0;
+  --border-strong: #cbd5e1;
 
-        body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
+  --op-add: #0ea5e9;
+  --op-add-shadow: #0284c7;
+  --op-sub: #f59e0b;
+  --op-sub-shadow: #d97706;
+  --op-mul: #10b981;
+  --op-mul-shadow: #059669;
+  --op-div: #8b5cf6;
+  --op-div-shadow: #7c3aed;
+  --op-mixed: #ec4899;
+  --op-mixed-shadow: #db2777;
 
-        .container {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 30px;
-            padding: 60px 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 600px;
-            width: 90%;
-            position: relative;
-            backdrop-filter: blur(10px);
-            animation: slideIn 0.8s ease-out;
-        }
+  --status-success: #10b981;
+  --status-error: #f43f5e;
+  --status-warning: #f59e0b;
+  --accent-combo: #ff007a;
 
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 9999px;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+[data-theme="dark"] {
+  --bg-canvas: #0b1120;
+  --bg-surface: #1e293b;
+  --bg-elevated: #334155;
+  --bg-inset: #0f172a;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --border-card: #334155;
+  --border-strong: #475569;
+}
 
-        .title {
-            font-size: 3rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            animation: glow 2s ease-in-out infinite alternate;
-        }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
 
-        @keyframes glow {
-            from {
-                filter: brightness(1);
-            }
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
 
-            to {
-                filter: brightness(1.1);
-            }
-        }
+/* Shell Datalaria */
+.datalaria-shell {
+  background: var(--bg-surface);
+  border-bottom: 2px solid var(--border-card);
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  z-index: 50;
+}
 
-        .subtitle {
-            font-size: 1.3rem;
-            color: #6b7280;
-            margin-bottom: 50px;
-            font-weight: 500;
-        }
+.shell-left, .shell-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-        .language-buttons {
-            display: flex;
-            gap: 30px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+.shell-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  text-decoration: none;
+}
 
-        .language-btn {
-            display: inline-block;
-            padding: 20px 40px;
-            font-size: 1.8rem;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-            position: relative;
-            overflow: hidden;
-            min-width: 150px;
-            cursor: pointer;
-        }
+.shell-badge {
+  background: var(--bg-inset);
+  color: var(--op-add);
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
 
-        .language-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s;
-        }
+.btn-arcade {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+  border-bottom: 3px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.1s ease, background 0.2s ease;
+  user-select: none;
+}
 
-        .language-btn:hover::before {
-            left: 100%;
-        }
+.btn-arcade:active {
+  transform: translateY(2px);
+  border-bottom-width: 1px;
+}
 
-        .btn-es {
-            background: linear-gradient(135deg, #fbbf24, #f59e0b);
-            color: white;
-            border: 3px solid #d97706;
-        }
+.btn-arcade-primary {
+  background: var(--op-add);
+  color: #ffffff;
+  border-color: var(--op-add-shadow);
+  border-bottom: 4px solid var(--op-add-shadow);
+}
+.btn-arcade-primary:active {
+  border-bottom-width: 1px;
+}
 
-        .btn-es:hover {
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 35px rgba(217, 119, 6, 0.4);
-        }
+.btn-arcade-success {
+  background: var(--status-success);
+  color: #ffffff;
+  border-color: var(--op-mul-shadow);
+  border-bottom: 4px solid var(--op-mul-shadow);
+}
 
-        .btn-en {
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            color: white;
-            border: 3px solid #1e40af;
-        }
+.btn-arcade-danger {
+  background: var(--status-error);
+  color: #ffffff;
+  border-color: #be123c;
+  border-bottom: 4px solid #be123c;
+}
 
-        .btn-en:hover {
-            background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 35px rgba(30, 64, 175, 0.4);
-        }
+/* Pestañas */
+.tabs-nav {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 16px auto;
+  max-width: 600px;
+  background: var(--bg-surface);
+  padding: 6px;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--border-card);
+}
 
-        .floating-shapes {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
+.tab-btn {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: var(--radius-pill);
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
 
-        .shape {
-            position: absolute;
-            opacity: 0.7;
-            animation: float 6s ease-in-out infinite;
-        }
+.tab-btn.active {
+  background: var(--op-add);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+}
 
-        .shape:nth-child(1) {
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
-        }
+/* Contenedores */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 16px;
+  flex: 1;
+  width: 100%;
+}
 
-        .shape:nth-child(2) {
-            top: 60%;
-            right: 10%;
-            animation-delay: 2s;
-        }
+.card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--border-card);
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+  position: relative;
+}
 
-        .shape:nth-child(3) {
-            bottom: 20%;
-            left: 20%;
-            animation-delay: 4s;
-        }
+/* Grid de Niveles y Modos */
+.levels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
 
-        .shape:nth-child(4) {
-            top: 10%;
-            right: 30%;
-            animation-delay: 1s;
-        }
+.selectable-item {
+  border: 2px solid var(--border-card);
+  border-bottom: 4px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  background: var(--bg-elevated);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
 
-        @keyframes float {
+.selectable-item:hover {
+  border-color: var(--op-add);
+}
 
-            0%,
-            100% {
-                transform: translateY(0px) rotate(0deg);
-            }
+.selectable-item.selected {
+  border-color: var(--op-add);
+  border-bottom-color: var(--op-add-shadow);
+  background: var(--bg-inset);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(14, 165, 233, 0.2);
+}
 
-            50% {
-                transform: translateY(-20px) rotate(180deg);
-            }
-        }
+/* Tablero de Juego */
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px dashed var(--border-card);
+}
 
-        .math-symbol {
-            font-size: 4rem;
-            font-weight: bold;
-            color: rgba(255, 255, 255, 0.8);
-        }
+.stat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-inset);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
 
-        .star {
-            color: #fbbf24;
-            font-size: 3rem;
-        }
+.streak-badge {
+  background: linear-gradient(135deg, #f59e0b, #ec4899);
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-weight: 800;
+  animation: pulse 1.5s infinite;
+}
 
-        @media (max-width: 768px) {
-            .title {
-                font-size: 2.5rem;
-            }
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
 
-            .subtitle {
-                font-size: 1.1rem;
-            }
+.timer-bar-container {
+  width: 100%;
+  height: 10px;
+  background: var(--bg-inset);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  margin: 12px 0;
+}
 
-            .language-buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 20px;
-            }
+.timer-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--status-success), var(--status-warning), var(--status-error));
+  width: 100%;
+  transition: width 0.1s linear;
+}
 
-            .language-btn {
-                width: 200px;
-                padding: 18px 30px;
-                font-size: 1.6rem;
-            }
+/* Área de Problema */
+.problem-box {
+  text-align: center;
+  padding: 20px;
+  background: var(--bg-inset);
+  border-radius: var(--radius-md);
+  margin: 16px 0;
+}
 
-            .container {
-                padding: 40px 30px;
-                margin: 20px;
-            }
-        }
-    </style>
+.problem-text {
+  font-family: var(--font-mono);
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.answer-display-box {
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--op-add);
+  background: var(--bg-surface);
+  border: 2px solid var(--op-add);
+  border-radius: var(--radius-md);
+  max-width: 260px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Numpad Táctil 3D */
+.numpad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  max-width: 320px;
+  margin: 20px auto 0;
+}
+
+.numpad-btn {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+  height: 60px;
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  border: 2px solid var(--border-strong);
+  border-bottom: 5px solid var(--border-strong);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: transform 0.08s ease;
+  user-select: none;
+}
+
+.numpad-btn:active {
+  transform: translateY(3px);
+  border-bottom-width: 2px;
+}
+
+.numpad-btn.action-enter {
+  background: var(--status-success);
+  color: #ffffff;
+  border-color: var(--op-mul-shadow);
+  border-bottom-color: var(--op-mul-shadow);
+}
+
+.numpad-btn.action-del {
+  background: var(--status-error);
+  color: #ffffff;
+  border-color: #be123c;
+  border-bottom-color: #be123c;
+}
+
+/* Confeti Canvas */
+#confetti-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* Medallas */
+.medals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.medal-card {
+  padding: 16px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--border-card);
+  background: var(--bg-elevated);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.medal-card.unlocked {
+  border-color: #fbbf24;
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), var(--bg-elevated));
+}
+
+.medal-icon {
+  font-size: 3rem;
+  margin-bottom: 8px;
+}
+
+.medal-card.locked .medal-icon {
+  filter: grayscale(1) opacity(0.4);
+}
+
+/* Utilidades */
+.hidden { display: none !important; }
+.text-center { text-align: center; }
+.mt-4 { margin-top: 16px; }
+
+  </style>
 </head>
-
 <body>
-    <div class="floating-shapes">
-        <div class="shape math-symbol">+</div>
-        <div class="shape math-symbol">×</div>
-        <div class="shape math-symbol">−</div>
-        <div class="shape math-symbol">÷</div>
-        <div class="shape star">★</div>
+  <header class="datalaria-shell">
+    <div class="shell-left">
+      <a id="datalaria-back-link" href="/es/apps/" class="btn-arcade">← Datalaria</a>
+      <a href="/apps/maths/" class="shell-brand">
+        <span>🧮</span>
+        <span id="shell-app-title">Ábaco Arcade</span>
+        <span class="shell-badge">v2.0.0</span>
+      </a>
     </div>
 
-    <div class="container">
-        <img src="datalaria_logo_transp.png" alt="Logo Datalaria"
-            style="max-width: 200px; height: auto; margin: 0 auto 30px; display: block;">
-        <h1 class="title">Math Fun App<br>Juego de Matemáticas</h1>
-        <p class="subtitle">Choose your language / Elige tu idioma</p>
+    <div class="shell-right">
+      <button id="sound-btn" class="btn-arcade" title="Sonido">🔊</button>
+      <button id="theme-btn" class="btn-arcade" title="Tema">☀️/🌙</button>
+      <button id="lang-btn" class="btn-arcade" style="font-weight: 700;">🇪🇸 ES</button>
+      <a id="link-spec" href="/es/apps/maths/" class="btn-arcade">📋 Ficha App</a>
+      <a id="link-post" href="/es/posts/founderz-programando-chatGPT/" class="btn-arcade">📖 Historia IA</a>
+      <a id="link-kits" href="/es/recursos/" class="btn-arcade btn-arcade-primary">📦 Recursos</a>
+    </div>
+  </header>
 
-        <div class="language-buttons">
-            <a href="/apps/maths/es/index.html" class="language-btn btn-es">
-                🇪🇸 ES
-            </a>
-            <a href="/apps/maths/en/index.html" class="language-btn btn-en">
-                🇬🇧 EN
-            </a>
+  <nav class="tabs-nav" id="tabs-nav"></nav>
+
+  <main class="container">
+    <div id="tab-content"></div>
+  </main>
+
+  <script>
+// apps/maths/catalog.js - Catálogo unificado de niveles, modos, medallas, lecciones e i18n
+window.MATHS_CATALOG = {
+  levels: [
+    { id: 'l1', icon: '🌱', range: '5-6', name: { es: 'Nivel 1: Explorador', en: 'Level 1: Explorer' }, desc: { es: 'Sumas visuales de 1 dígito (hasta 10)', en: 'Visual 1-digit addition (up to 10)' } },
+    { id: 'l2', icon: '🎈', range: '6-7', name: { es: 'Nivel 2: Aventurero', en: 'Level 2: Adventurer' }, desc: { es: 'Sumas y restas sin resultados negativos', en: 'Addition & subtraction (no negatives)' } },
+    { id: 'l3', icon: '🚀', range: '7-9', name: { es: 'Nivel 3: Cadete', en: 'Level 3: Cadet' }, desc: { es: 'Sumas, restas y tablas de multiplicar (2 al 9)', en: 'Add, subtract & times tables (2 to 9)' } },
+    { id: 'l4', icon: '🏆', range: '9-11', name: { es: 'Nivel 4: Maestro', en: 'Level 4: Master' }, desc: { es: 'Las 4 operaciones y división con cociente y resto', en: 'All 4 operations & division with remainder' } },
+    { id: 'l5', icon: '🧠', range: '12-99', name: { es: 'Nivel 5: Cerebro Ágil', en: 'Level 5: Agile Brain' }, desc: { es: 'Operaciones combinadas, jerarquía e incógnitas (a + ? = c)', en: 'Order of operations & missing unknowns' } },
+    { id: 'l6', icon: '⚡', range: 'Pro', name: { es: 'Nivel 6: Leyenda Cuántica', en: 'Level 6: Quantum Legend' }, desc: { es: 'Porcentajes rápidos, cuadrados y cálculo mental extremo', en: 'Fast percentages, squares & mental math' } }
+  ],
+
+  modes: [
+    { id: 'zen', icon: '🧘', name: { es: 'Modo Zen', en: 'Zen Mode' }, desc: { es: 'Sin reloj ni estrés. Pistas visuales libres para aprender.', en: 'No timer, no stress. Free visual hints for learning.' } },
+    { id: 'classic', icon: '🎯', name: { es: 'Clásico (10 Rondas)', en: 'Classic (10 Rounds)' }, desc: { es: '10 preguntas con reloj (10s), puntos y combos de racha.', en: '10 questions with 10s timer, score & streak combos.' } },
+    { id: 'time_attack', icon: '⏱️', name: { es: 'Contrarreloj 60s', en: 'Time Attack 60s' }, desc: { es: '¡1 minuto a tope! Cada 5 aciertos seguidos suman +3s.', en: '1 minute rush! Every 5 streak answers add +3s.' } }
+  ],
+
+  medals: [
+    { id: 'first_win', icon: '🌟', name: { es: 'Primer Vuelo', en: 'First Flight' }, desc: { es: 'Completa tu primera partida con éxito', en: 'Complete your first successful game' } },
+    { id: 'streak_5', icon: '🔥', name: { es: 'Fuego x5', en: 'Fire x5' }, desc: { es: 'Consigue una racha de 5 aciertos seguidos', en: 'Get a streak of 5 correct answers' } },
+    { id: 'streak_10', icon: '⚡', name: { es: 'Rayo x10', en: 'Lightning x10' }, desc: { es: 'Alcanza una racha perfecta de 10 aciertos', en: 'Reach a perfect 10 answer streak' } },
+    { id: 'div_master', icon: '➗', name: { es: 'As de la División', en: 'Division Ace' }, desc: { es: 'Resuelve una división con cociente y resto exactos', en: 'Solve a division with exact quotient & remainder' } },
+    { id: 'brain_power', icon: '🧠', name: { es: 'Mente Prodigiosa', en: 'Prodigious Mind' }, desc: { es: 'Supera el Nivel 5 o 6 con más del 80% de aciertos', en: 'Pass Level 5 or 6 with over 80% accuracy' } },
+    { id: 'time_hero', icon: '⏱️', name: { es: 'Velocidad Sónica', en: 'Sonic Speed' }, desc: { es: 'Acierta 12 o más operaciones en Contrarreloj 60s', en: 'Solve 12+ operations in Time Attack 60s' } }
+  ],
+
+  lessons: {
+    add: {
+      title: { es: 'Suma (+)', en: 'Addition (+)' },
+      concept: { es: 'Juntar o añadir cantidades. Las partes se llaman sumandos y el resultado es la suma o total.', en: 'Putting quantities together. The parts are addends and the result is the sum.' },
+      formula: '3 + 2 = 5',
+      visual: { type: 'group', a: 3, b: 2, op: '+', symbol: '⭐' }
+    },
+    sub: {
+      title: { es: 'Resta (−)', en: 'Subtraction (−)' },
+      concept: { es: 'Quitar o comparar cantidades. Minuendo menos sustraendo da la diferencia.', en: 'Taking away or comparing. Minuend minus subtrahend equals difference.' },
+      formula: '6 − 2 = 4',
+      visual: { type: 'takeaway', total: 6, remove: 2, symbol: '🍎' }
+    },
+    mul: {
+      title: { es: 'Multiplicación (×)', en: 'Multiplication (×)' },
+      concept: { es: 'Sumar un mismo número varias veces de forma rápida. Los elementos son factores y producto.', en: 'Repeated addition in equal groups. Factors multiply to give a product.' },
+      formula: '3 × 4 = 12',
+      visual: { type: 'grid', rows: 3, cols: 4, symbol: '🟦' }
+    },
+    div: {
+      title: { es: 'División (÷)', en: 'Division (÷)' },
+      concept: { es: 'Repartir en partes iguales. Dividendo entre divisor da el cociente y lo que sobra es el resto.', en: 'Sharing equally into groups. Dividend by divisor gives quotient plus remainder.' },
+      formula: '7 ÷ 3 = 2 (Resto: 1)',
+      visual: { type: 'share', total: 7, groups: 3, quotient: 2, remainder: 1, symbol: '🍪' }
+    }
+  },
+
+  i18n: {
+    es: {
+      app_title: 'Ábaco Arcade',
+      app_subtitle: 'Cálculo mental lúdico para niños y adultos',
+      tab_play: '🎮 Jugar',
+      tab_learn: '💡 Aprender',
+      tab_achievements: '🏆 Logros',
+      choose_level: '1. Elige tu Nivel',
+      choose_mode: '2. Elige el Modo de Juego',
+      start_game: '¡A Jugar! 🚀',
+      back_menu: '← Menú',
+      round: 'Ronda',
+      time_left: 'Tiempo',
+      points: 'Puntos',
+      streak: 'Racha',
+      combo: 'Combo',
+      best_streak: 'Mejor Racha',
+      score: 'Puntuación',
+      accuracy: 'Precisión',
+      correct: 'Aciertos',
+      wrong: 'Fallos',
+      visual_hint: '💡 Pista Visual',
+      hide_hint: 'Ocultar Pista',
+      type_answer: 'Tu respuesta...',
+      quotient: 'Cociente',
+      remainder: 'Resto',
+      check: 'Comprobar ⏎',
+      skip: 'Saltar ↷',
+      awesome: '¡Excelente! 🎉',
+      good_try: '¡Casi! 😅',
+      time_up: '¡Tiempo agotado! ⏱️',
+      game_over: '¡Partida Terminada! 🏆',
+      play_again: 'Jugar de nuevo 🔁',
+      view_achievements: 'Ver Logros 🌟',
+      badge_unlocked: '¡Nueva Medalla Desbloqueada!',
+      clean_history: 'Reiniciar Estadísticas',
+      confirm_reset: '¿Seguro que deseas reiniciar tus medallas y récords?',
+      tutorial_hint_tip: 'Haz clic en "Pista Visual" si necesitas ver los objetos con tus propios ojos.',
+      sound_toggle: 'Sonido',
+      theme_toggle: 'Tema',
+      datalaria_back: '← Datalaria',
+      post_link: '📖 Historia IA',
+      spec_link: '📋 Ficha App',
+      kits_link: '📦 Recursos'
+    },
+    en: {
+      app_title: 'Abacus Arcade',
+      app_subtitle: 'Engaging mental math for kids & adults',
+      tab_play: '🎮 Play',
+      tab_learn: '💡 Learn',
+      tab_achievements: '🏆 Badges',
+      choose_level: '1. Choose your Level',
+      choose_mode: '2. Choose Game Mode',
+      start_game: 'Start Game! 🚀',
+      back_menu: '← Menu',
+      round: 'Round',
+      time_left: 'Time',
+      points: 'Points',
+      streak: 'Streak',
+      combo: 'Combo',
+      best_streak: 'Best Streak',
+      score: 'Score',
+      accuracy: 'Accuracy',
+      correct: 'Correct',
+      wrong: 'Wrong',
+      visual_hint: '💡 Visual Hint',
+      hide_hint: 'Hide Hint',
+      type_answer: 'Your answer...',
+      quotient: 'Quotient',
+      remainder: 'Remainder',
+      check: 'Check ⏎',
+      skip: 'Skip ↷',
+      awesome: 'Awesome! 🎉',
+      good_try: 'Almost! 😅',
+      time_up: "Time's up! ⏱️",
+      game_over: 'Game Over! 🏆',
+      play_again: 'Play Again 🔁',
+      view_achievements: 'View Badges 🌟',
+      badge_unlocked: 'New Badge Unlocked!',
+      clean_history: 'Reset Stats',
+      confirm_reset: 'Are you sure you want to reset your badges and records?',
+      tutorial_hint_tip: 'Click on "Visual Hint" if you need to see the items with your own eyes.',
+      sound_toggle: 'Sound',
+      theme_toggle: 'Theme',
+      datalaria_back: '← Datalaria',
+      post_link: '📖 AI Story',
+      spec_link: '📋 App Spec',
+      kits_link: '📦 Resources'
+    }
+  }
+};
+
+// apps/maths/engine.js - Motor aritmético procedural, evaluador y pistas visuales
+(function(window) {
+  function randInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  function pickRandom(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  const MathsEngine = {
+    randInt,
+
+    // Genera un reto determinista según nivel
+    generateProblem: function(levelId) {
+      switch (levelId) {
+        case 'l1': {
+          // Nivel 1: Sumas de 1 dígito con resultado <= 10
+          const a = randInt(1, 5);
+          const b = randInt(1, 5);
+          return {
+            type: 'standard',
+            op: '+',
+            a, b,
+            answer: a + b,
+            display: `${a} + ${b} = ?`,
+            visual: { type: 'group', a, b, symbol: '🍎' }
+          };
+        }
+        case 'l2': {
+          // Nivel 2: Sumas y restas (1-2 dígitos, sin negativos)
+          const op = pickRandom(['+', '-']);
+          if (op === '+') {
+            const a = randInt(2, 9);
+            const b = randInt(2, 9);
+            return {
+              type: 'standard',
+              op: '+',
+              a, b,
+              answer: a + b,
+              display: `${a} + ${b} = ?`,
+              visual: { type: 'group', a, b, symbol: '⭐' }
+            };
+          } else {
+            let a = randInt(3, 15);
+            let b = randInt(1, a); // asegura a >= b
+            return {
+              type: 'standard',
+              op: '-',
+              a, b,
+              answer: a - b,
+              display: `${a} − ${b} = ?`,
+              visual: { type: 'takeaway', total: a, remove: b, symbol: '🎈' }
+            };
+          }
+        }
+        case 'l3': {
+          // Nivel 3: Sumas, Restas y Multiplicación
+          const op = pickRandom(['+', '-', '×']);
+          if (op === '×') {
+            const a = randInt(2, 9);
+            const b = randInt(2, 9);
+            return {
+              type: 'standard',
+              op: '×',
+              a, b,
+              answer: a * b,
+              display: `${a} × ${b} = ?`,
+              visual: { type: 'grid', rows: a, cols: b, symbol: '🟦' }
+            };
+          } else if (op === '+') {
+            const a = randInt(10, 50);
+            const b = randInt(5, 40);
+            return {
+              type: 'standard',
+              op: '+',
+              a, b,
+              answer: a + b,
+              display: `${a} + ${b} = ?`,
+              visual: null
+            };
+          } else {
+            let a = randInt(15, 60);
+            let b = randInt(5, a);
+            return {
+              type: 'standard',
+              op: '-',
+              a, b,
+              answer: a - b,
+              display: `${a} − ${b} = ?`,
+              visual: null
+            };
+          }
+        }
+        case 'l4': {
+          // Nivel 4: 4 operaciones (División con cociente y resto)
+          const op = pickRandom(['+', '-', '×', '÷']);
+          if (op === '÷') {
+            const divisor = randInt(2, 9);
+            const quotient = randInt(1, 9);
+            const remainder = randInt(0, divisor - 1);
+            const dividend = divisor * quotient + remainder;
+            return {
+              type: 'division',
+              op: '÷',
+              dividend,
+              divisor,
+              quotient,
+              remainder,
+              display: `${dividend} ÷ ${divisor} = ?`,
+              visual: { type: 'share', total: dividend, groups: divisor, quotient, remainder, symbol: '🍪' }
+            };
+          } else if (op === '×') {
+            const a = randInt(3, 12);
+            const b = randInt(3, 9);
+            return {
+              type: 'standard',
+              op: '×',
+              a, b,
+              answer: a * b,
+              display: `${a} × ${b} = ?`,
+              visual: { type: 'grid', rows: a, cols: b, symbol: '💎' }
+            };
+          } else if (op === '+') {
+            const a = randInt(25, 99);
+            const b = randInt(15, 99);
+            return { type: 'standard', op: '+', a, b, answer: a + b, display: `${a} + ${b} = ?`, visual: null };
+          } else {
+            let a = randInt(30, 99);
+            let b = randInt(10, a);
+            return { type: 'standard', op: '-', a, b, answer: a - b, display: `${a} − ${b} = ?`, visual: null };
+          }
+        }
+        case 'l5': {
+          // Nivel 5: Cerebro Ágil (Combinadas e Incógnitas)
+          const kind = pickRandom(['combined', 'unknown']);
+          if (kind === 'combined') {
+            // ej: a + b × c
+            const a = randInt(2, 20);
+            const b = randInt(2, 8);
+            const c = randInt(2, 9);
+            const answer = a + (b * c);
+            return {
+              type: 'standard',
+              op: 'combined',
+              answer,
+              display: `${a} + ${b} × ${c} = ?`,
+              hintText: { es: 'Recuerda: la multiplicación se hace primero', en: 'Remember: multiplication comes first' },
+              visual: null
+            };
+          } else {
+            // incógnita: a + ? = total
+            const a = randInt(12, 50);
+            const answer = randInt(5, 40);
+            const total = a + answer;
+            return {
+              type: 'standard',
+              op: 'unknown',
+              answer,
+              display: `${a} + ? = ${total}`,
+              hintText: { es: 'Resta el primer número al total', en: 'Subtract the first number from total' },
+              visual: null
+            };
+          }
+        }
+        case 'l6': {
+          // Nivel 6: Leyenda Cuántica (Porcentajes y Potencias)
+          const kind = pickRandom(['pct', 'square', 'math_fast']);
+          if (kind === 'pct') {
+            const pct = pickRandom([10, 20, 25, 50]);
+            let base;
+            if (pct === 25) base = randInt(1, 10) * 40;
+            else if (pct === 50) base = randInt(2, 20) * 10;
+            else base = randInt(2, 25) * 10;
+            const answer = (pct / 100) * base;
+            return {
+              type: 'standard',
+              op: '%',
+              answer,
+              display: `${pct}% de ${base} = ?`,
+              hintText: { es: `${pct}% equivale a la fracción adecuada`, en: `${pct}% equals the corresponding fraction` },
+              visual: null
+            };
+          } else if (kind === 'square') {
+            const num = randInt(6, 16);
+            const answer = num * num;
+            return {
+              type: 'standard',
+              op: 'sq',
+              answer,
+              display: `${num}² = ?`,
+              hintText: { es: `Multiplica ${num} por sí mismo`, en: `Multiply ${num} by itself` },
+              visual: null
+            };
+          } else {
+            // multiplicación rápida
+            const a = randInt(11, 25);
+            const b = randInt(3, 9);
+            return {
+              type: 'standard',
+              op: '×',
+              a, b,
+              answer: a * b,
+              display: `${a} × ${b} = ?`,
+              visual: null
+            };
+          }
+        }
+        default:
+          return this.generateProblem('l1');
+      }
+    },
+
+    // Evalúa si la respuesta proporcionada por el usuario es correcta
+    evaluateAnswer: function(problem, userVal, userQuo, userRem) {
+      if (problem.type === 'division') {
+        const q = parseInt(userQuo, 10);
+        const r = parseInt(userRem, 10);
+        const isCorrect = (!isNaN(q) && !isNaN(r) && q === problem.quotient && r === problem.remainder);
+        return {
+          isCorrect,
+          correctDisplay: `Cociente: ${problem.quotient}, Resto: ${problem.remainder}`
+        };
+      } else {
+        const val = parseInt(userVal, 10);
+        const isCorrect = (!isNaN(val) && val === problem.answer);
+        return {
+          isCorrect,
+          correctDisplay: `${problem.answer}`
+        };
+      }
+    },
+
+    // Generador de HTML para el manipulador visual interactivo
+    renderVisualHint: function(visual, lang) {
+      if (!visual) {
+        return `<div class="p-3 text-center text-sm opacity-80">${lang === 'es' ? '💡 Reto abstracto. ¡Usa tu mente y lápiz si lo necesitas!' : '💡 Abstract challenge. Use your mind or a scratchpad!'}</div>`;
+      }
+
+      let html = '<div class="visual-hint-box p-4 rounded-2xl bg-white/70 shadow-inner flex flex-wrap items-center justify-center gap-3">';
+      if (visual.type === 'group') {
+        // Dos grupos sumándose
+        html += `<div class="flex items-center gap-2 bg-sky-50 px-3 py-2 rounded-xl border border-sky-200">`;
+        for (let i = 0; i < visual.a; i++) html += `<span class="text-2xl">${visual.symbol}</span>`;
+        html += `<strong class="ml-1 text-sky-800">(${visual.a})</strong></div>`;
+        html += `<span class="text-2xl font-bold text-sky-600">+</span>`;
+        html += `<div class="flex items-center gap-2 bg-amber-50 px-3 py-2 rounded-xl border border-amber-200">`;
+        for (let i = 0; i < visual.b; i++) html += `<span class="text-2xl">${visual.symbol}</span>`;
+        html += `<strong class="ml-1 text-amber-800">(${visual.b})</strong></div>`;
+      } else if (visual.type === 'takeaway') {
+        // Resta: muestra el total y tacha los que se quitan
+        html += `<div class="flex flex-wrap items-center gap-2 bg-amber-50 px-3 py-2 rounded-xl border border-amber-200">`;
+        for (let i = 0; i < visual.total; i++) {
+          if (i >= visual.total - visual.remove) {
+            html += `<span class="text-2xl opacity-40 line-through filter grayscale">${visual.symbol}</span>`;
+          } else {
+            html += `<span class="text-2xl">${visual.symbol}</span>`;
+          }
+        }
+        html += `<span class="ml-2 text-sm text-amber-800 font-semibold">${lang === 'es' ? `Había ${visual.total}, quitamos ${visual.remove}` : `There were ${visual.total}, took away ${visual.remove}`}</span></div>`;
+      } else if (visual.type === 'grid') {
+        // Multiplicación: matriz de filas x columnas
+        html += `<div class="inline-grid gap-1 bg-emerald-50 p-3 rounded-xl border border-emerald-200" style="grid-template-columns: repeat(${visual.cols}, minmax(0, 1fr));">`;
+        for (let r = 0; r < visual.rows; r++) {
+          for (let c = 0; c < visual.cols; c++) {
+            html += `<span class="text-xl">${visual.symbol}</span>`;
+          }
+        }
+        html += `</div><div class="text-sm font-semibold text-emerald-800">${visual.rows} ${lang === 'es' ? 'filas' : 'rows'} × ${visual.cols} ${lang === 'es' ? 'columnas' : 'cols'}</div>`;
+      } else if (visual.type === 'share') {
+        // División: reparto en cajas + resto
+        html += `<div class="flex flex-wrap gap-2 justify-center items-center">`;
+        for (let g = 0; g < visual.groups; g++) {
+          html += `<div class="bg-purple-50 p-2 rounded-xl border-2 border-dashed border-purple-300 text-center min-w-[60px]"><span class="text-xs block text-purple-700 font-bold">${lang === 'es' ? 'Caja' : 'Box'} ${g+1}</span><div class="flex gap-1 justify-center mt-1">`;
+          for (let q = 0; q < visual.quotient; q++) html += `<span class="text-xl">${visual.symbol}</span>`;
+          html += `</div></div>`;
+        }
+        if (visual.remainder > 0) {
+          html += `<div class="bg-rose-50 p-2 rounded-xl border border-rose-300 text-center"><span class="text-xs block text-rose-700 font-bold">${lang === 'es' ? 'Sobra (Resto)' : 'Leftover (Rem)'}</span><div class="flex gap-1 justify-center mt-1">`;
+          for (let rem = 0; rem < visual.remainder; rem++) html += `<span class="text-xl">${visual.symbol}</span>`;
+          html += `</div></div>`;
+        }
+        html += `</div>`;
+      }
+      html += '</div>';
+      return html;
+    }
+  };
+
+  window.MathsEngine = MathsEngine;
+})(window);
+
+// apps/maths/audio.js - Sintetizador nativo procedural con Web Audio API y confeti físico
+(function(window) {
+  let audioCtx = null;
+  let soundEnabled = true;
+
+  function initAudio() {
+    if (!audioCtx && (window.AudioContext || window.webkitAudioContext)) {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      audioCtx = new AudioContextClass();
+    }
+    if (audioCtx && audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+  }
+
+  const MathsAudio = {
+    toggleSound: function() {
+      soundEnabled = !soundEnabled;
+      return soundEnabled;
+    },
+    isSoundEnabled: function() {
+      return soundEnabled;
+    },
+    playTone: function(freq, type = 'sine', duration = 0.15, gainVal = 0.1) {
+      if (!soundEnabled) return;
+      initAudio();
+      if (!audioCtx) return;
+
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+        gain.gain.setValueAtTime(gainVal, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {
+        // Ignorar de forma resiliente si el navegador bloquea audio
+      }
+    },
+
+    playSuccess: function(combo = 1) {
+      if (!soundEnabled) return;
+      initAudio();
+      // Arpegio alegre ascendente
+      const base = 523.25; // Do5
+      const note2 = base * (combo >= 2 ? 1.25 : 1.2); 
+      const note3 = base * (combo >= 3 ? 1.5 : 1.33);
+
+      this.playTone(base, 'triangle', 0.12, 0.12);
+      setTimeout(() => this.playTone(note2, 'triangle', 0.12, 0.12), 80);
+      setTimeout(() => this.playTone(note3, 'sine', 0.25, 0.15), 160);
+      if (combo >= 5) {
+        setTimeout(() => this.playTone(base * 2, 'square', 0.3, 0.08), 240);
+      }
+    },
+
+    playError: function() {
+      if (!soundEnabled) return;
+      initAudio();
+      // Tono descendente suave tipo "oh-oh"
+      this.playTone(280, 'sawtooth', 0.15, 0.06);
+      setTimeout(() => this.playTone(220, 'sawtooth', 0.2, 0.06), 120);
+    },
+
+    playClick: function() {
+      this.playTone(600, 'sine', 0.04, 0.05);
+    },
+
+    playWin: function() {
+      if (!soundEnabled) return;
+      const notes = [440, 554.37, 659.25, 880];
+      notes.forEach((freq, idx) => {
+        setTimeout(() => this.playTone(freq, 'triangle', 0.2, 0.12), idx * 100);
+      });
+    },
+
+    // Confeti físico sobre canvas
+    launchConfetti: function(canvasEl) {
+      if (!canvasEl) return;
+      const ctx = canvasEl.getContext('2d');
+      const width = canvasEl.width = canvasEl.offsetWidth;
+      const height = canvasEl.height = canvasEl.offsetHeight;
+
+      const particles = [];
+      const colors = ['#0ea5e9', '#f59e0b', '#10b981', '#8b5cf6', '#ec4899', '#f43f5e'];
+
+      for (let i = 0; i < 70; i++) {
+        particles.push({
+          x: width / 2,
+          y: height / 2,
+          vx: (Math.random() - 0.5) * 12,
+          vy: (Math.random() - 0.7) * 14,
+          size: Math.random() * 8 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          rotation: Math.random() * 360,
+          vRot: (Math.random() - 0.5) * 10,
+          opacity: 1
+        });
+      }
+
+      let animId;
+      function render() {
+        ctx.clearRect(0, 0, width, height);
+        let active = false;
+
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.35; // gravedad
+          p.rotation += p.vRot;
+          p.opacity -= 0.012;
+
+          if (p.opacity > 0) {
+            active = true;
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate((p.rotation * Math.PI) / 180);
+            ctx.fillStyle = p.color;
+            ctx.globalAlpha = Math.max(0, p.opacity);
+            ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+            ctx.restore();
+          }
+        });
+
+        if (active) {
+          animId = requestAnimationFrame(render);
+        } else {
+          ctx.clearRect(0, 0, width, height);
+          cancelAnimationFrame(animId);
+        }
+      }
+
+      render();
+    }
+  };
+
+  window.MathsAudio = MathsAudio;
+})(window);
+
+// apps/maths/app.js - Controlador reactivo de interfaz, audio y estado local
+(function() {
+  const catalog = window.MATHS_CATALOG;
+  const engine = window.MathsEngine;
+  const audio = window.MathsAudio;
+
+  // Estado reactivo
+  let lang = 'es';
+  let activeTab = 'play';
+  let selectedLevel = 'l1';
+  let selectedMode = 'classic';
+  let currentProblem = null;
+
+  // Estado de partida
+  let inGame = false;
+  let roundIndex = 0;
+  const TOTAL_ROUNDS = 10;
+  let score = 0;
+  let correctCount = 0;
+  let wrongCount = 0;
+  let streak = 0;
+  let bestStreak = 0;
+  let timerInterval = null;
+  let timeLeft = 10;
+  let timeTotal = 10;
+  let inputVal = '';
+  let inputQuo = '';
+  let inputRem = '';
+  let activeDivisionField = 'quo'; // 'quo' o 'rem'
+  let isHintVisible = false;
+
+  // Persistencia Local
+  const STORAGE_KEY = 'datalaria_maths_v2_stats';
+  let userStats = {
+    highScores: {},
+    bestStreakEver: 0,
+    unlockedMedals: []
+  };
+
+  function loadStats() {
+    try {
+      const data = localStorage.getItem(STORAGE_KEY);
+      if (data) userStats = JSON.parse(data);
+    } catch (e) { }
+  }
+
+  function saveStats() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(userStats));
+    } catch (e) { }
+  }
+
+  // Detectar idioma inicial por URL o navegador
+  function initLang() {
+    const params = new URLSearchParams(window.location.search);
+    const urlLang = params.get('lang');
+    if (urlLang === 'en' || urlLang === 'es') {
+      lang = urlLang;
+    } else {
+      lang = (navigator.language && navigator.language.startsWith('en')) ? 'en' : 'es';
+    }
+  }
+
+  function t(key) {
+    return (catalog.i18n[lang] && catalog.i18n[lang][key]) || key;
+  }
+
+  // Renderizadores de UI
+  function renderAll() {
+    renderShell();
+    renderTabs();
+    if (activeTab === 'play') renderPlayTab();
+    else if (activeTab === 'learn') renderLearnTab();
+    else if (activeTab === 'achievements') renderAchievementsTab();
+  }
+
+  function renderShell() {
+    document.getElementById('shell-app-title').textContent = t('app_title');
+    document.getElementById('lang-btn').textContent = lang === 'es' ? '🇪🇸 ES' : '🇬🇧 EN';
+    document.getElementById('sound-btn').textContent = audio.isSoundEnabled() ? '🔊' : '🔇';
+    document.getElementById('datalaria-back-link').textContent = t('datalaria_back');
+    document.getElementById('datalaria-back-link').href = `/${lang}/apps/`;
+    document.getElementById('link-spec').textContent = t('spec_link');
+    document.getElementById('link-spec').href = `/${lang}/apps/maths/`;
+    document.getElementById('link-post').textContent = t('post_link');
+    document.getElementById('link-post').href = lang === 'es' 
+      ? '/es/posts/founderz-programando-chatGPT/' 
+      : '/en/posts/founderz-coding-chatGPT/';
+    document.getElementById('link-kits').textContent = t('kits_link');
+    document.getElementById('link-kits').href = `/${lang}/recursos/`;
+  }
+
+  function renderTabs() {
+    const tabs = [
+      { id: 'play', label: t('tab_play') },
+      { id: 'learn', label: t('tab_learn') },
+      { id: 'achievements', label: t('tab_achievements') }
+    ];
+
+    const nav = document.getElementById('tabs-nav');
+    nav.innerHTML = tabs.map(tab => `
+      <button class="tab-btn ${activeTab === tab.id ? 'active' : ''}" data-tab="${tab.id}">
+        ${tab.label}
+      </button>
+    `).join('');
+
+    nav.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.onclick = () => {
+        if (inGame && !confirm(lang === 'es' ? '¿Salir de la partida en curso?' : 'Leave current game?')) return;
+        endGameSession();
+        activeTab = btn.getAttribute('data-tab');
+        renderAll();
+      };
+    });
+  }
+
+  // Pestaña Jugar
+  function renderPlayTab() {
+    const container = document.getElementById('tab-content');
+    if (!inGame) {
+      // Pantalla de configuración y selección
+      let html = `
+        <div class="card">
+          <h2 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 8px;">${t('choose_level')}</h2>
+          <div class="levels-grid">
+            ${catalog.levels.map(lvl => `
+              <div class="selectable-item ${selectedLevel === lvl.id ? 'selected' : ''}" data-level="${lvl.id}">
+                <div style="font-size: 1.8rem; margin-bottom: 4px;">${lvl.icon}</div>
+                <strong style="display: block; font-size: 1.05rem;">${lvl.name[lang]}</strong>
+                <span style="font-size: 0.85rem; color: var(--text-secondary); display: block; margin-top: 4px;">${lvl.desc[lang]}</span>
+              </div>
+            `).join('')}
+          </div>
+
+          <h2 style="font-size: 1.4rem; font-weight: 800; margin: 24px 0 8px;">${t('choose_mode')}</h2>
+          <div class="levels-grid">
+            ${catalog.modes.map(m => `
+              <div class="selectable-item ${selectedMode === m.id ? 'selected' : ''}" data-mode="${m.id}">
+                <div style="font-size: 1.8rem; margin-bottom: 4px;">${m.icon}</div>
+                <strong style="display: block; font-size: 1.05rem;">${m.name[lang]}</strong>
+                <span style="font-size: 0.85rem; color: var(--text-secondary); display: block; margin-top: 4px;">${m.desc[lang]}</span>
+              </div>
+            `).join('')}
+          </div>
+
+          <div style="text-align: center; margin-top: 30px;">
+            <button id="btn-start" class="btn-arcade btn-arcade-primary" style="font-size: 1.3rem; padding: 14px 36px; border-radius: var(--radius-pill);">
+              ${t('start_game')}
+            </button>
+          </div>
         </div>
-    </div>
-</body>
+      `;
+      container.innerHTML = html;
 
+      // Eventos de selección
+      container.querySelectorAll('[data-level]').forEach(el => {
+        el.onclick = () => {
+          audio.playClick();
+          selectedLevel = el.getAttribute('data-level');
+          renderPlayTab();
+        };
+      });
+      container.querySelectorAll('[data-mode]').forEach(el => {
+        el.onclick = () => {
+          audio.playClick();
+          selectedMode = el.getAttribute('data-mode');
+          renderPlayTab();
+        };
+      });
+      document.getElementById('btn-start').onclick = startGameSession;
+    } else {
+      // Pantalla de juego activa
+      renderActiveGame(container);
+    }
+  }
+
+  function renderActiveGame(container) {
+    const isDivision = currentProblem && currentProblem.type === 'division';
+    let roundLabel = '';
+    if (selectedMode === 'classic') roundLabel = `${t('round')} ${roundIndex}/${TOTAL_ROUNDS}`;
+    else if (selectedMode === 'time_attack') roundLabel = `⚡ ${t('round')} ${roundIndex}`;
+    else roundLabel = `🧘 ${t('round')} ${roundIndex}`;
+
+    const comboMultiplier = streak >= 5 ? 3 : (streak >= 3 ? 2 : 1);
+
+    let html = `
+      <div class="card" style="position: relative;">
+        <canvas id="confetti-canvas"></canvas>
+        <div class="game-header">
+          <button id="btn-exit-game" class="btn-arcade">${t('back_menu')}</button>
+          <div class="stat-chip">${roundLabel}</div>
+          <div class="stat-chip">⭐ ${t('points')}: <strong style="font-family: var(--font-mono); margin-left: 4px;">${score}</strong></div>
+          ${streak >= 2 ? `<div class="streak-badge">🔥 ${streak} ${t('streak')} (x${comboMultiplier})</div>` : ''}
+        </div>
+
+        ${selectedMode !== 'zen' ? `
+          <div class="timer-bar-container">
+            <div id="timer-bar-fill" class="timer-bar-fill" style="width: ${(timeLeft / timeTotal) * 100}%;"></div>
+          </div>
+        ` : ''}
+
+        <div class="problem-box">
+          <div class="problem-text">${currentProblem ? currentProblem.display : '...'}</div>
+          
+          ${!isDivision ? `
+            <div class="answer-display-box" id="display-answer">${inputVal || '?'}</div>
+          ` : `
+            <div style="display: flex; gap: 10px; justify-content: center; align-items: center;">
+              <div class="answer-display-box ${activeDivisionField === 'quo' ? 'border-primary' : ''}" id="display-quo" style="cursor: pointer;">
+                <span style="font-size: 0.9rem; margin-right: 4px; color: var(--text-muted);">${t('quotient')}:</span> ${inputQuo || '?'}
+              </div>
+              <div class="answer-display-box ${activeDivisionField === 'rem' ? 'border-primary' : ''}" id="display-rem" style="cursor: pointer;">
+                <span style="font-size: 0.9rem; margin-right: 4px; color: var(--text-muted);">${t('remainder')}:</span> ${inputRem || '?'}
+              </div>
+            </div>
+          `}
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 12px;">
+          <button id="btn-toggle-hint" class="btn-arcade" style="background: var(--bg-inset);">
+            ${isHintVisible ? t('hide_hint') : t('visual_hint')}
+          </button>
+          <button id="btn-skip" class="btn-arcade" style="background: var(--bg-inset);">
+            ${t('skip')}
+          </button>
+        </div>
+
+        <div id="hint-container" class="${isHintVisible ? '' : 'hidden'}" style="margin-bottom: 16px;">
+          ${currentProblem ? engine.renderVisualHint(currentProblem.visual, lang) : ''}
+        </div>
+
+        <!-- Numpad 3D -->
+        <div class="numpad">
+          ${[1,2,3,4,5,6,7,8,9].map(n => `<button class="numpad-btn" data-key="${n}">${n}</button>`).join('')}
+          <button class="numpad-btn action-del" data-key="del">⌫</button>
+          <button class="numpad-btn" data-key="0">0</button>
+          <button class="numpad-btn action-enter" data-key="enter">⏎</button>
+        </div>
+      </div>
+    `;
+    container.innerHTML = html;
+
+    // Configuración de eventos en partida
+    document.getElementById('btn-exit-game').onclick = () => {
+      if (confirm(lang === 'es' ? '¿Salir al menú principal?' : 'Exit to main menu?')) {
+        endGameSession();
+        renderPlayTab();
+      }
+    };
+
+    document.getElementById('btn-toggle-hint').onclick = () => {
+      isHintVisible = !isHintVisible;
+      const hintEl = document.getElementById('hint-container');
+      const btnEl = document.getElementById('btn-toggle-hint');
+      if (isHintVisible) {
+        hintEl.classList.remove('hidden');
+        btnEl.textContent = t('hide_hint');
+      } else {
+        hintEl.classList.add('hidden');
+        btnEl.textContent = t('visual_hint');
+      }
+    };
+
+    document.getElementById('btn-skip').onclick = () => handleAnswerSubmit(false, true);
+
+    if (isDivision) {
+      document.getElementById('display-quo').onclick = () => { activeDivisionField = 'quo'; renderActiveGame(container); };
+      document.getElementById('display-rem').onclick = () => { activeDivisionField = 'rem'; renderActiveGame(container); };
+    }
+
+    container.querySelectorAll('.numpad-btn').forEach(btn => {
+      btn.onclick = () => handleNumpadPress(btn.getAttribute('data-key'));
+    });
+  }
+
+  function handleNumpadPress(key) {
+    audio.playClick();
+    const isDivision = currentProblem && currentProblem.type === 'division';
+
+    if (key === 'del') {
+      if (!isDivision) inputVal = inputVal.slice(0, -1);
+      else {
+        if (activeDivisionField === 'quo') inputQuo = inputQuo.slice(0, -1);
+        else inputRem = inputRem.slice(0, -1);
+      }
+    } else if (key === 'enter') {
+      submitCurrentAnswer();
+      return;
+    } else {
+      // Es un número
+      if (!isDivision) {
+        if (inputVal.length < 5) inputVal += key;
+      } else {
+        if (activeDivisionField === 'quo') {
+          if (inputQuo.length < 4) inputQuo += key;
+        } else {
+          if (inputRem.length < 4) inputRem += key;
+        }
+      }
+    }
+
+    // Actualización rápida de display sin re-renderizar todo
+    if (!isDivision) {
+      const el = document.getElementById('display-answer');
+      if (el) el.textContent = inputVal || '?';
+    } else {
+      const elQ = document.getElementById('display-quo');
+      const elR = document.getElementById('display-rem');
+      if (elQ) elQ.innerHTML = `<span style="font-size: 0.9rem; margin-right: 4px; color: var(--text-muted);">${t('quotient')}:</span> ${inputQuo || '?'}`;
+      if (elR) elR.innerHTML = `<span style="font-size: 0.9rem; margin-right: 4px; color: var(--text-muted);">${t('remainder')}:</span> ${inputRem || '?'}`;
+    }
+  }
+
+  function submitCurrentAnswer() {
+    if (!currentProblem) return;
+    const isDivision = currentProblem.type === 'division';
+    if (!isDivision && inputVal === '') return;
+    if (isDivision && (inputQuo === '' || inputRem === '')) return;
+
+    const evaluation = engine.evaluateAnswer(currentProblem, inputVal, inputQuo, inputRem);
+    handleAnswerSubmit(evaluation.isCorrect, false, evaluation.correctDisplay);
+  }
+
+  function handleAnswerSubmit(isCorrect, isSkipped = false, correctDisplay = '') {
+    clearInterval(timerInterval);
+
+    if (isCorrect) {
+      streak += 1;
+      if (streak > bestStreak) bestStreak = streak;
+      correctCount += 1;
+      const multiplier = streak >= 5 ? 3 : (streak >= 3 ? 2 : 1);
+      const pointsEarned = Math.round((100 + (selectedMode === 'classic' ? timeLeft * 10 : 0)) * multiplier);
+      score += pointsEarned;
+      audio.playSuccess(streak);
+
+      // Si es Time Attack y racha de 5, añade +3s
+      if (selectedMode === 'time_attack' && streak > 0 && streak % 5 === 0) {
+        timeLeft = Math.min(60, timeLeft + 3);
+      }
+    } else {
+      streak = 0;
+      wrongCount += 1;
+      if (!isSkipped) audio.playError();
+    }
+
+    checkMedalsProgress();
+
+    // Siguiente ronda o fin
+    if (selectedMode === 'classic' && roundIndex >= TOTAL_ROUNDS) {
+      finishGame();
+    } else if (selectedMode === 'time_attack' && timeLeft <= 0) {
+      finishGame();
+    } else {
+      nextProblem();
+    }
+  }
+
+  function startGameSession() {
+    inGame = true;
+    roundIndex = 0;
+    score = 0;
+    correctCount = 0;
+    wrongCount = 0;
+    streak = 0;
+    bestStreak = 0;
+    isHintVisible = false;
+
+    if (selectedMode === 'time_attack') {
+      timeTotal = 60;
+      timeLeft = 60;
+    } else {
+      timeTotal = 10;
+      timeLeft = 10;
+    }
+
+    nextProblem();
+  }
+
+  function nextProblem() {
+    roundIndex += 1;
+    inputVal = '';
+    inputQuo = '';
+    inputRem = '';
+    activeDivisionField = 'quo';
+    isHintVisible = false;
+    currentProblem = engine.generateProblem(selectedLevel);
+
+    if (selectedMode === 'classic') {
+      timeTotal = 10;
+      timeLeft = 10;
+    }
+
+    renderActiveGame(document.getElementById('tab-content'));
+    startTimer();
+  }
+
+  function startTimer() {
+    clearInterval(timerInterval);
+    if (selectedMode === 'zen') return;
+
+    timerInterval = setInterval(() => {
+      timeLeft -= 0.1;
+      const fillEl = document.getElementById('timer-bar-fill');
+      if (fillEl) {
+        const pct = Math.max(0, (timeLeft / timeTotal) * 100);
+        fillEl.style.width = pct + '%';
+      }
+
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        handleAnswerSubmit(false, false, currentProblem ? (currentProblem.answer || currentProblem.quotient) : '');
+      }
+    }, 100);
+  }
+
+  function finishGame() {
+    clearInterval(timerInterval);
+    inGame = false;
+    audio.playWin();
+
+    // Guardar mejores puntuaciones
+    if (!userStats.highScores[selectedLevel] || score > userStats.highScores[selectedLevel]) {
+      userStats.highScores[selectedLevel] = score;
+    }
+    if (bestStreak > userStats.bestStreakEver) {
+      userStats.bestStreakEver = bestStreak;
+    }
+    saveStats();
+
+    // Modal de resumen
+    const container = document.getElementById('tab-content');
+    const accuracy = (roundIndex > 0) ? Math.round((correctCount / roundIndex) * 100) : 0;
+
+    let html = `
+      <div class="card text-center" style="position: relative;">
+        <canvas id="confetti-canvas"></canvas>
+        <div style="font-size: 4rem; margin-bottom: 12px;">🏆</div>
+        <h2 style="font-size: 2rem; font-weight: 800; color: var(--text-primary);">${t('game_over')}</h2>
+        
+        <div style="display: flex; gap: 16px; justify-content: center; margin: 24px 0; flex-wrap: wrap;">
+          <div class="stat-chip" style="font-size: 1.1rem; padding: 10px 18px;">⭐ ${t('points')}: <strong>${score}</strong></div>
+          <div class="stat-chip" style="font-size: 1.1rem; padding: 10px 18px;">🎯 ${t('accuracy')}: <strong>${accuracy}%</strong></div>
+          <div class="stat-chip" style="font-size: 1.1rem; padding: 10px 18px;">🔥 ${t('best_streak')}: <strong>${bestStreak}</strong></div>
+        </div>
+
+        <div style="display: flex; gap: 12px; justify-content: center; margin-top: 24px;">
+          <button id="btn-again" class="btn-arcade btn-arcade-primary" style="font-size: 1.1rem; padding: 12px 24px;">
+            ${t('play_again')}
+          </button>
+          <button id="btn-badges" class="btn-arcade" style="font-size: 1.1rem; padding: 12px 24px;">
+            ${t('view_achievements')}
+          </button>
+        </div>
+      </div>
+    `;
+    container.innerHTML = html;
+
+    const canvas = document.getElementById('confetti-canvas');
+    if (canvas) audio.launchConfetti(canvas);
+
+    document.getElementById('btn-again').onclick = () => {
+      startGameSession();
+    };
+    document.getElementById('btn-badges').onclick = () => {
+      activeTab = 'achievements';
+      renderAll();
+    };
+  }
+
+  function endGameSession() {
+    clearInterval(timerInterval);
+    inGame = false;
+  }
+
+  // Verificación de Medallas
+  function checkMedalsProgress() {
+    function unlock(medalId) {
+      if (!userStats.unlockedMedals.includes(medalId)) {
+        userStats.unlockedMedals.push(medalId);
+        saveStats();
+      }
+    }
+
+    if (correctCount >= 1) unlock('first_win');
+    if (streak >= 5) unlock('streak_5');
+    if (streak >= 10) unlock('streak_10');
+    if (currentProblem && currentProblem.type === 'division') unlock('div_master');
+    if ((selectedLevel === 'l5' || selectedLevel === 'l6') && correctCount >= 8) unlock('brain_power');
+    if (selectedMode === 'time_attack' && correctCount >= 12) unlock('time_hero');
+  }
+
+  // Pestaña Aprender (Laboratorio Didáctico)
+  function renderLearnTab() {
+    const container = document.getElementById('tab-content');
+    const ops = ['add', 'sub', 'mul', 'div'];
+
+    let html = `
+      <div class="card">
+        <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 8px;">💡 ${lang === 'es' ? 'Laboratorio Didáctico de Matemáticas' : 'Interactive Math Lab'}</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 20px;">
+          ${t('tutorial_hint_tip')}
+        </p>
+
+        <div style="display: grid; gap: 20px;">
+          ${ops.map(k => {
+            const lesson = catalog.lessons[k];
+            return `
+              <div style="border: 2px solid var(--border-card); border-radius: var(--radius-md); padding: 16px; background: var(--bg-elevated);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                  <h3 style="font-size: 1.2rem; font-weight: 800; color: var(--text-primary);">${lesson.title[lang]}</h3>
+                  <code style="background: var(--bg-inset); padding: 4px 10px; border-radius: var(--radius-sm); font-weight: 700; color: var(--op-add);">${lesson.formula}</code>
+                </div>
+                <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 12px;">${lesson.concept[lang]}</p>
+                <div>${engine.renderVisualHint(lesson.visual, lang)}</div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    `;
+    container.innerHTML = html;
+  }
+
+  // Pestaña Logros & Medallas
+  function renderAchievementsTab() {
+    const container = document.getElementById('tab-content');
+    let html = `
+      <div class="card">
+        <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 8px;">🏆 ${t('tab_achievements')}</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 20px;">
+          ${lang === 'es' ? 'Desbloquea medallas demostrando tu agilidad mental.' : 'Unlock badges by sharpening your mental agility.'}
+        </p>
+
+        <div class="medals-grid">
+          ${catalog.medals.map(m => {
+            const isUnlocked = userStats.unlockedMedals.includes(m.id);
+            return `
+              <div class="medal-card ${isUnlocked ? 'unlocked' : 'locked'}">
+                <div class="medal-icon">${m.icon}</div>
+                <strong style="display: block; font-size: 1.1rem; margin-bottom: 4px;">${m.name[lang]}</strong>
+                <span style="font-size: 0.85rem; color: var(--text-secondary);">${m.desc[lang]}</span>
+                <div style="margin-top: 10px; font-size: 0.8rem; font-weight: 700; color: ${isUnlocked ? 'var(--status-success)' : 'var(--text-muted)'};">
+                  ${isUnlocked ? (lang === 'es' ? '✓ Desbloqueada' : '✓ Unlocked') : (lang === 'es' ? '🔒 Bloqueada' : '🔒 Locked')}
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+          <button id="btn-reset-stats" class="btn-arcade btn-arcade-danger" style="font-size: 0.85rem;">
+            ${t('clean_history')}
+          </button>
+        </div>
+      </div>
+    `;
+    container.innerHTML = html;
+
+    document.getElementById('btn-reset-stats').onclick = () => {
+      if (confirm(t('confirm_reset'))) {
+        userStats = { highScores: {}, bestStreakEver: 0, unlockedMedals: [] };
+        saveStats();
+        renderAchievementsTab();
+      }
+    };
+  }
+
+  // Soporte de Teclado Físico en PC
+  window.addEventListener('keydown', (e) => {
+    if (!inGame) return;
+    if (e.key >= '0' && e.key <= '9') {
+      handleNumpadPress(e.key);
+    } else if (e.key === 'Backspace') {
+      handleNumpadPress('del');
+    } else if (e.key === 'Enter') {
+      handleNumpadPress('enter');
+    } else if (e.key === 'Tab') {
+      e.preventDefault();
+      if (currentProblem && currentProblem.type === 'division') {
+        activeDivisionField = activeDivisionField === 'quo' ? 'rem' : 'quo';
+        renderActiveGame(document.getElementById('tab-content'));
+      }
+    }
+  });
+
+  // Inicialización Global
+  window.addEventListener('DOMContentLoaded', () => {
+    initLang();
+    loadStats();
+
+    // Controles Shell
+    document.getElementById('lang-btn').onclick = () => {
+      lang = lang === 'es' ? 'en' : 'es';
+      const url = new URL(window.location);
+      url.searchParams.set('lang', lang);
+      window.history.replaceState({}, '', url);
+      renderAll();
+    };
+
+    document.getElementById('sound-btn').onclick = () => {
+      audio.toggleSound();
+      document.getElementById('sound-btn').textContent = audio.isSoundEnabled() ? '🔊' : '🔇';
+    };
+
+    document.getElementById('theme-btn').onclick = () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+    };
+
+    renderAll();
+  });
+})();
+
+  </script>
+</body>
 </html>

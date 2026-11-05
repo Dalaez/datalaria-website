@@ -81,7 +81,7 @@ This is the most rewarding part. To run the application we just created, just fo
 
 And that's it! The file will open in your web browser, and you'll have a fully functional educational application, created by you and your AI copilot.
 
-!(app_matematicas_chatgpt.png)
+![Math app for kids created with ChatGPT](app_matematicas_chatgpt.png)
 
 ### Conclusion and Next Steps
 

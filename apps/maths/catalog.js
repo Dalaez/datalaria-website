@@ -1,0 +1,144 @@
+// apps/maths/catalog.js - Catálogo unificado de niveles, modos, medallas, lecciones e i18n
+window.MATHS_CATALOG = {
+  levels: [
+    { id: 'l1', icon: '🌱', range: '5-6', name: { es: 'Nivel 1: Explorador', en: 'Level 1: Explorer' }, desc: { es: 'Sumas visuales de 1 dígito (hasta 10)', en: 'Visual 1-digit addition (up to 10)' } },
+    { id: 'l2', icon: '🎈', range: '6-7', name: { es: 'Nivel 2: Aventurero', en: 'Level 2: Adventurer' }, desc: { es: 'Sumas y restas sin resultados negativos', en: 'Addition & subtraction (no negatives)' } },
+    { id: 'l3', icon: '🚀', range: '7-9', name: { es: 'Nivel 3: Cadete', en: 'Level 3: Cadet' }, desc: { es: 'Sumas, restas y tablas de multiplicar (2 al 9)', en: 'Add, subtract & times tables (2 to 9)' } },
+    { id: 'l4', icon: '🏆', range: '9-11', name: { es: 'Nivel 4: Maestro', en: 'Level 4: Master' }, desc: { es: 'Las 4 operaciones y división con cociente y resto', en: 'All 4 operations & division with remainder' } },
+    { id: 'l5', icon: '🧠', range: '12-99', name: { es: 'Nivel 5: Cerebro Ágil', en: 'Level 5: Agile Brain' }, desc: { es: 'Operaciones combinadas, jerarquía e incógnitas (a + ? = c)', en: 'Order of operations & missing unknowns' } },
+    { id: 'l6', icon: '⚡', range: 'Pro', name: { es: 'Nivel 6: Leyenda Cuántica', en: 'Level 6: Quantum Legend' }, desc: { es: 'Porcentajes rápidos, cuadrados y cálculo mental extremo', en: 'Fast percentages, squares & mental math' } }
+  ],
+
+  modes: [
+    { id: 'zen', icon: '🧘', name: { es: 'Modo Zen', en: 'Zen Mode' }, desc: { es: 'Sin reloj ni estrés. Pistas visuales libres para aprender.', en: 'No timer, no stress. Free visual hints for learning.' } },
+    { id: 'classic', icon: '🎯', name: { es: 'Clásico (10 Rondas)', en: 'Classic (10 Rounds)' }, desc: { es: '10 preguntas con reloj (10s), puntos y combos de racha.', en: '10 questions with 10s timer, score & streak combos.' } },
+    { id: 'time_attack', icon: '⏱️', name: { es: 'Contrarreloj 60s', en: 'Time Attack 60s' }, desc: { es: '¡1 minuto a tope! Cada 5 aciertos seguidos suman +3s.', en: '1 minute rush! Every 5 streak answers add +3s.' } }
+  ],
+
+  medals: [
+    { id: 'first_win', icon: '🌟', name: { es: 'Primer Vuelo', en: 'First Flight' }, desc: { es: 'Completa tu primera partida con éxito', en: 'Complete your first successful game' } },
+    { id: 'streak_5', icon: '🔥', name: { es: 'Fuego x5', en: 'Fire x5' }, desc: { es: 'Consigue una racha de 5 aciertos seguidos', en: 'Get a streak of 5 correct answers' } },
+    { id: 'streak_10', icon: '⚡', name: { es: 'Rayo x10', en: 'Lightning x10' }, desc: { es: 'Alcanza una racha perfecta de 10 aciertos', en: 'Reach a perfect 10 answer streak' } },
+    { id: 'div_master', icon: '➗', name: { es: 'As de la División', en: 'Division Ace' }, desc: { es: 'Resuelve una división con cociente y resto exactos', en: 'Solve a division with exact quotient & remainder' } },
+    { id: 'brain_power', icon: '🧠', name: { es: 'Mente Prodigiosa', en: 'Prodigious Mind' }, desc: { es: 'Supera el Nivel 5 o 6 con más del 80% de aciertos', en: 'Pass Level 5 or 6 with over 80% accuracy' } },
+    { id: 'time_hero', icon: '⏱️', name: { es: 'Velocidad Sónica', en: 'Sonic Speed' }, desc: { es: 'Acierta 12 o más operaciones en Contrarreloj 60s', en: 'Solve 12+ operations in Time Attack 60s' } }
+  ],
+
+  lessons: {
+    add: {
+      title: { es: 'Suma (+)', en: 'Addition (+)' },
+      concept: { es: 'Juntar o añadir cantidades. Las partes se llaman sumandos y el resultado es la suma o total.', en: 'Putting quantities together. The parts are addends and the result is the sum.' },
+      formula: '3 + 2 = 5',
+      visual: { type: 'group', a: 3, b: 2, op: '+', symbol: '⭐' }
+    },
+    sub: {
+      title: { es: 'Resta (−)', en: 'Subtraction (−)' },
+      concept: { es: 'Quitar o comparar cantidades. Minuendo menos sustraendo da la diferencia.', en: 'Taking away or comparing. Minuend minus subtrahend equals difference.' },
+      formula: '6 − 2 = 4',
+      visual: { type: 'takeaway', total: 6, remove: 2, symbol: '🍎' }
+    },
+    mul: {
+      title: { es: 'Multiplicación (×)', en: 'Multiplication (×)' },
+      concept: { es: 'Sumar un mismo número varias veces de forma rápida. Los elementos son factores y producto.', en: 'Repeated addition in equal groups. Factors multiply to give a product.' },
+      formula: '3 × 4 = 12',
+      visual: { type: 'grid', rows: 3, cols: 4, symbol: '🟦' }
+    },
+    div: {
+      title: { es: 'División (÷)', en: 'Division (÷)' },
+      concept: { es: 'Repartir en partes iguales. Dividendo entre divisor da el cociente y lo que sobra es el resto.', en: 'Sharing equally into groups. Dividend by divisor gives quotient plus remainder.' },
+      formula: '7 ÷ 3 = 2 (Resto: 1)',
+      visual: { type: 'share', total: 7, groups: 3, quotient: 2, remainder: 1, symbol: '🍪' }
+    }
+  },
+
+  i18n: {
+    es: {
+      app_title: 'Ábaco Arcade',
+      app_subtitle: 'Cálculo mental lúdico para niños y adultos',
+      tab_play: '🎮 Jugar',
+      tab_learn: '💡 Aprender',
+      tab_achievements: '🏆 Logros',
+      choose_level: '1. Elige tu Nivel',
+      choose_mode: '2. Elige el Modo de Juego',
+      start_game: '¡A Jugar! 🚀',
+      back_menu: '← Menú',
+      round: 'Ronda',
+      time_left: 'Tiempo',
+      points: 'Puntos',
+      streak: 'Racha',
+      combo: 'Combo',
+      best_streak: 'Mejor Racha',
+      score: 'Puntuación',
+      accuracy: 'Precisión',
+      correct: 'Aciertos',
+      wrong: 'Fallos',
+      visual_hint: '💡 Pista Visual',
+      hide_hint: 'Ocultar Pista',
+      type_answer: 'Tu respuesta...',
+      quotient: 'Cociente',
+      remainder: 'Resto',
+      check: 'Comprobar ⏎',
+      skip: 'Saltar ↷',
+      awesome: '¡Excelente! 🎉',
+      good_try: '¡Casi! 😅',
+      time_up: '¡Tiempo agotado! ⏱️',
+      game_over: '¡Partida Terminada! 🏆',
+      play_again: 'Jugar de nuevo 🔁',
+      view_achievements: 'Ver Logros 🌟',
+      badge_unlocked: '¡Nueva Medalla Desbloqueada!',
+      clean_history: 'Reiniciar Estadísticas',
+      confirm_reset: '¿Seguro que deseas reiniciar tus medallas y récords?',
+      tutorial_hint_tip: 'Haz clic en "Pista Visual" si necesitas ver los objetos con tus propios ojos.',
+      sound_toggle: 'Sonido',
+      theme_toggle: 'Tema',
+      datalaria_back: '← Datalaria',
+      post_link: '📖 Historia IA',
+      spec_link: '📋 Ficha App',
+      kits_link: '📦 Recursos'
+    },
+    en: {
+      app_title: 'Abacus Arcade',
+      app_subtitle: 'Engaging mental math for kids & adults',
+      tab_play: '🎮 Play',
+      tab_learn: '💡 Learn',
+      tab_achievements: '🏆 Badges',
+      choose_level: '1. Choose your Level',
+      choose_mode: '2. Choose Game Mode',
+      start_game: 'Start Game! 🚀',
+      back_menu: '← Menu',
+      round: 'Round',
+      time_left: 'Time',
+      points: 'Points',
+      streak: 'Streak',
+      combo: 'Combo',
+      best_streak: 'Best Streak',
+      score: 'Score',
+      accuracy: 'Accuracy',
+      correct: 'Correct',
+      wrong: 'Wrong',
+      visual_hint: '💡 Visual Hint',
+      hide_hint: 'Hide Hint',
+      type_answer: 'Your answer...',
+      quotient: 'Quotient',
+      remainder: 'Remainder',
+      check: 'Check ⏎',
+      skip: 'Skip ↷',
+      awesome: 'Awesome! 🎉',
+      good_try: 'Almost! 😅',
+      time_up: "Time's up! ⏱️",
+      game_over: 'Game Over! 🏆',
+      play_again: 'Play Again 🔁',
+      view_achievements: 'View Badges 🌟',
+      badge_unlocked: 'New Badge Unlocked!',
+      clean_history: 'Reset Stats',
+      confirm_reset: 'Are you sure you want to reset your badges and records?',
+      tutorial_hint_tip: 'Click on "Visual Hint" if you need to see the items with your own eyes.',
+      sound_toggle: 'Sound',
+      theme_toggle: 'Theme',
+      datalaria_back: '← Datalaria',
+      post_link: '📖 AI Story',
+      spec_link: '📋 App Spec',
+      kits_link: '📦 Resources'
+    }
+  }
+};

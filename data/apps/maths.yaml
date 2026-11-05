@@ -1,82 +1,85 @@
 slug: maths
 order: 70
 tier: lab
-status: frozen
+status: active
 icon: "🧮"
 cover: cover.png
 app_url: /apps/maths/
 source_spec: specs/apps/maths/spec.md
-current_version: v1.0.0
+current_version: v2.0.0
 
 title:
-  es: "Matemáticas Interactivas"
-  en: "Interactive Maths"
+  es: "Ábaco Arcade (Matemáticas Lúdicas)"
+  en: "Abacus Arcade (Playful Mental Math)"
 
 tagline:
-  es: "Juego educativo gamificado para el entrenamiento de cálculo mental en 4 niveles con copilotaje de IA."
-  en: "Gamified educational web game for mental math arithmetic training across 4 mastery levels built with AI."
+  es: "Entrenamiento de cálculo mental gamificado con 6 niveles adaptativos, audio nativo y pistas visuales para niños y adultos."
+  en: "Gamified mental arithmetic arcade across 6 adaptive levels with native audio and visual hints for kids and adults."
 
 summary:
-  es: "Aplicación interactiva diseñada para la enseñanza y práctica lúdica de las cuatro operaciones aritméticas elementales (sumas, restas, multiplicaciones y divisiones) en niños de infantil y primaria. Creada íntegramente mediante pair-programming guiado por IA (ChatGPT y metodología Prompt Engineering de Founderz), ofrece explicaciones teóricas visuales, selección de dificultad (1 y 2 dígitos) y feedback motivador inmediato con emoticonos y sonidos sin requerir librerías externas."
-  en: "Interactive educational game designed for engaging mental arithmetic practice (addition, subtraction, multiplication, and division) for primary school students. Built entirely through AI-guided pair programming (ChatGPT and Founderz Prompt Engineering methodology), it features conceptual visual tutorials, difficulty tiers (1 and 2 digits), and instant motivational reinforcement with sounds and dynamic emojis without external dependencies."
+  es: "Aplicación interactiva y lúdica diseñada para la enseñanza y práctica del cálculo mental en niños (5 a 11 años) y adultos. Nacida como testimonio pionero de pair-programming con IA (ChatGPT y metodología Prompt Engineering de Founderz), la versión 2.0 incorpora 6 niveles progresivos (desde sumas infantiles hasta retos de agilidad mental con combinadas y porcentajes), sintetizador nativo de audio 8-bit con Web Audio API, manipuladores visuales con agrupaciones de objetos, numpad táctil 3D para tablets, 3 modos de juego (Zen, Clásico y Contrarreloj 60s) y 6 medallas coleccionables, operando 100% offline y sin librerías externas."
+  en: "Interactive mental math arcade game crafted for kids (ages 5 to 11) and adults. Originating as a pioneering AI pair-programming case study (ChatGPT & Founderz Prompt Engineering), v2.0 introduces 6 adaptive levels (from primary foundations to adult mental agility challenges with combined operations and percentages), native 8-bit procedural Web Audio synthesis, visual math manipulatives with grouped objects, 3D on-screen tactile numpad for tablets, 3 game modes (Zen, Classic, and 60s Time Attack), and 6 collectible badges, operating 100% offline with zero external dependencies."
 
 objectives:
-  - es: "Crear un entorno interactivo y accesible para el entrenamiento del cálculo mental y las operaciones matemáticas básicas."
-    en: "Create an interactive and accessible web game for mental math practice and basic arithmetic operations."
-  - es: "Diseñar un sistema progresivo adaptado para niños y estudiantes de primaria con 4 niveles de aprendizaje y dificultad seleccionable."
-    en: "Design a progressive learning system adapted for primary school students with 4 mastery tiers and customizable difficulty."
-  - es: "Implementar un ciclo completo de feedback formativo con explicaciones conceptuales previas, puntuación y mensajes motivadores."
-    en: "Implement a comprehensive formative feedback loop with conceptual tutorials, real-time score tracking, and motivational reinforcement."
-  - es: "Documentar y demostrar el potencial del pair-programming asistido por IA (ChatGPT / Prompt Engineering) para construir aplicaciones completas desde cero."
-    en: "Document and showcase the power of AI-assisted pair programming (ChatGPT / Prompt Engineering) to build complete, functional apps from scratch in minutes."
+  - es: "Crear un entorno arcade lúdico, táctil y accesible para el entrenamiento del cálculo mental sin estrés ni formalismos rígidos."
+    en: "Create an engaging, tactile, and accessible arcade environment for mental arithmetic practice free of rigid corporate friction."
+  - es: "Proporcionar una experiencia adaptada y divertida tanto para niños en aprendizaje elemental como para adultos que buscan agilidad cognitiva."
+    en: "Provide an adaptive and fun experience for both primary school children and adults seeking cognitive agility."
+  - es: "Cerrar la brecha de contract drift con audio nativo 8-bit, pistas visuales con objetos tangibles y sistema de medallas coleccionables."
+    en: "Eliminate historical contract drift with native 8-bit audio synthesis, visual object manipulatives, and collectible badges."
+  - es: "Consolidar una arquitectura Single-Source-of-Truth sin dependencias CDN externas con shims de redirección SEO en /es/ y /en/."
+    en: "Consolidate a Single-Source-of-Truth architecture without external CDN dependencies, preserving legacy SEO with redirection shims."
 
 features:
-  - icon: "➕"
-    es: "4 Operaciones Fundamentales: selección independiente de Sumas, Restas, Multiplicaciones y Divisiones."
-    en: "4 Fundamental Operations: individual selection of Addition, Subtraction, Multiplication, and Division."
-  - icon: "🎓"
-    es: "4 Niveles Escolares Progresivos: Infantil 1 y 2, Primaria 1 y 2 con adaptación algorítmica de los rangos numéricos."
-    en: "4 Progressive Academic Tiers: Kindergarten 1 & 2, Primary 1 & 2 with algorithmic number range adaptation."
-  - icon: "🎯"
-    es: "Control de Dificultad: alternativa entre cálculos sencillos de 1 dígito o retos matemáticos avanzados de 2 dígitos."
-    en: "Custom Difficulty Controls: toggle between simple 1-digit foundations or advanced 2-digit arithmetic challenges."
+  - icon: "🌱"
+    es: "6 Niveles Adaptativos: desde conteo básico de 1 dígito hasta jerarquía de operaciones, incógnitas y porcentajes para adultos."
+    en: "6 Adaptive Levels: ranging from 1-digit addition foundations to adult order of operations, missing unknowns, and percentages."
   - icon: "💡"
-    es: "Módulo Teórico Previo: pantalla pedagógica con explicaciones visuales de cada operación antes de empezar a jugar."
-    en: "Conceptual Tutorial Module: didactic introductory screen visually explaining each arithmetic concept before practice."
-  - icon: "🎉"
-    es: "Gamificación y Motivación: marcador de aciertos, temporizador opcional, emoticonos reactivos y felicitaciones animadas."
-    en: "Gamified Reinforcement: real-time scorekeeper, optional round timer, reactive emojis, and animated positive feedback."
+    es: "Manipulador Visual Interactivo: representaciones gráficas tangibles (manzanas, estrellas, cuadrículas y cajas de reparto con resto)."
+    en: "Interactive Math Manipulative: tangible visual representations (apples, stars, grids, and division boxes with remainder)."
+  - icon: "⌨️"
+    es: "Numpad Arcade Táctil 3D: teclado numérico integrado en pantalla que evita que el teclado del sistema tape el juego en tablets y móviles."
+    en: "Tactile 3D Arcade Numpad: on-screen keypad preventing system soft keyboards from covering the play area on tablets and mobile devices."
+  - icon: "🔊"
+    es: "Sintetizador Web Audio & Confeti: efectos sonoros alegres procedurales, combos de racha y lluvia de confeti física en Canvas."
+    en: "Web Audio Synthesizer & Confetti: cheerful procedural 8-bit soundscapes, streak combo multipliers, and canvas confetti."
+  - icon: "🎮"
+    es: "3 Modos de Juego y Medallas: Modo Zen (sin reloj), Clásico (10 rondas con tiempo) y Contrarreloj 60s con 6 medallas de logros."
+    en: "3 Game Modes & Badges: Zen Mode (relaxed), Classic (10 timed rounds), and 60s Time Attack with 6 unlockable badges."
 
 design:
   architecture:
-    es: "Arquitectura SPA autocontenida y reactiva en cliente: la aplicación genera retos matemáticos pseudoaleatorios dentro de los rangos numéricos acotados por el nivel seleccionado. La validación de respuestas y el cálculo del marcador se procesan en la memoria local del navegador, actualizando el DOM reactivamente sin dependencias de red."
-    en: "Self-contained reactive client-side SPA: the application procedurally generates random arithmetic problems bounded by the selected grade level. Answer validation and score tallying run inside the browser's local runtime, updating the DOM reactively with zero network dependencies."
+    es: "Arquitectura SPA estática y autónoma bajo Single-Source-of-Truth en /apps/maths/: el motor procedural genera retos aritméticos deterministas según el nivel y valida respuestas en memoria cliente. Se elimina la duplicación de código en carpetas de idiomas mediante un diccionario i18n unificado y shims retrocompatibles en /es/ y /en/."
+    en: "Self-contained Single-Source-of-Truth client-side SPA in /apps/maths/: procedural math engine generates deterministic arithmetic challenges bounded by grade level, validating answers in browser memory. Eliminates legacy language folder duplication via unified i18n dictionaries and redirection shims in /es/ and /en/."
   principles:
-    - es: "Pedagogía Positiva: el error se acompaña de pistas y explicaciones amigables sin penalizaciones punitivas."
-      en: "Positive Pedagogy: mistakes trigger encouraging hints and friendly correction without punitive penalties."
-    - es: "Accesibilidad e Inmediatez: cero tiempos de carga, interfaz de alto contraste táctil apta para tablets y móviles."
-      en: "Immediate Accessibility: zero load times, high-contrast touch interface optimized for tablets and mobile devices."
-    - es: "Simplicidad Arquitectónica: todo el código HTML, CSS y JavaScript vive de forma autónoma y transparente."
-      en: "Architectural Simplicity: clean, self-contained HTML, CSS, and JavaScript delivering full offline autonomy."
+    - es: "Pedagogía y Estética Lúdica (Consumer Playful): botones arcade 3D, pistas visuales amigables y diseño sin penalizaciones punitivas."
+      en: "Playful Pedagogy & Aesthetics (Consumer Playful): 3D arcade buttons, friendly visual hints, and positive reinforcement."
+    - es: "Cero Dependencias de Red Externas: 100% CSS nativo sin Tailwind CDN ni fuentes bloqueantes de Google Fonts."
+      en: "Zero External Network Dependencies: 100% native CSS eliminating Tailwind CDN and blocking Google Fonts."
+    - es: "Ergonomía Multidispositivo: Numpad táctil para pantallas táctiles y atajos de teclado completos (0-9, Enter, Tab) para PC."
+      en: "Multi-Device Ergonomics: On-screen numpad for tablets and full keyboard shortcuts (0-9, Enter, Tab) for desktop."
   diagram: |
-    flowchart LR
-      START["Inicio (Selección Nivel / Dificultad)"] --> TUTO["Módulo Teórico de Aprendizaje"]
-      START --> GAME["Pantalla de Operaciones"]
-      GAME --> GEN["Generador Procedural de Retos"]
-      GEN --> EVAL{"Validación de Respuesta"}
-      EVAL -- "Correcto" --> REWARD["Feedback Positivo & +Puntos"]
-      EVAL -- "Incorrecto" --> HINT["Pista / Corrección Amigable"]
-      REWARD --> NEXT["Siguiente Operación"]
-      HINT --> NEXT
-      NEXT --> STATS["Resumen de Sesión & Logros"]
+    flowchart TD
+      START["Selección de Nivel (1-6) & Modo (Zen / Clásico / 60s)"] --> GAME["Tablero de Cálculo"]
+      GAME --> HINT{"¿Necesita Pista?"}
+      HINT -- "Sí" --> VISUAL["Manipulador Visual (Manzanas / Rejilla / Reparto)"]
+      HINT -- "No" --> NUMPAD["Entrada por Numpad Táctil o Teclado"]
+      NUMPAD --> EVAL{"Validación en Cliente"}
+      EVAL -- "Correcto" --> COMBO["+Puntos & Combo Racha & Audio Alegre"]
+      EVAL -- "Fallo / Tiempo" --> CORR["Corrección Constructiva"]
+      COMBO --> NEXT["Siguiente Reto"]
+      CORR --> NEXT
+      NEXT --> STATS["Resumen de Sesión & Medallas Desbloqueadas"]
 
 tech:
   - layer: frontend
-    items: ["HTML5", "CSS3 (Flexbox & Animaciones)", "Vanilla JS"]
+    items: ["HTML5 Nativo", "CSS3 Design Tokens (Daylight Arcade & Cosmic Night)", "Vanilla JavaScript Moderno"]
+  - layer: audio_canvas
+    items: ["Web Audio API Procedural (8-bit)", "Canvas 2D Confetti Engine"]
   - layer: pedagogy
-    items: ["Generación procedimental acotada a niveles escolares (5 a 7 años)"]
-  - layer: ai_methodology
-    items: ["Prompt Engineering iterativo", "ChatGPT (OpenAI)", "Metodología Founderz"]
+    items: ["Generación procedimental acotada a niveles (Infantil a Reto Adultos)", "Manipuladores visuales concretos"]
+  - layer: methodology
+    items: ["Prompt Engineering evolutivo", "Spec-Driven Development (SDD)", "Datalaria Helix"]
   - layer: hosting
     items: ["Hugo Static Engine (/apps/maths/)"]
 
@@ -87,10 +90,31 @@ posts:
     part: 1
 
 releases:
+  - version: v2.0.0
+    date: "2026-11-05"
+    state: released
+    type: release
+    title:
+      es: "Evolución integral Ábaco Arcade v2.0: 6 niveles adaptativos (niños y adultos), audio nativo y pistas visuales"
+      en: "Comprehensive Abacus Arcade v2.0 evolution: 6 adaptive levels (kids and adults), native audio, and visual manipulatives"
+    changes:
+      - es: "Ampliación de niveles a 6 peldaños adaptativos, cubriendo desde infantil hasta adultos con operaciones combinadas y porcentajes."
+        en: "Expanded level system to 6 adaptive tiers, from kindergarten foundations to adult arithmetic agility and percentages."
+      - es: "Sintetizador de audio nativo 8-bit con Web Audio API y motor físico de confeti en Canvas (cierre de contract drift)."
+        en: "Native 8-bit procedural Web Audio synthesizer and Canvas confetti physics engine (closing contract drift)."
+      - es: "Manipulador matemático visual con representaciones tangibles (bloques, frutas, matrices de multiplicar y cajas de reparto)."
+        en: "Visual math manipulative displaying concrete representations (blocks, fruit, multiplication grids, and division boxes)."
+      - es: "Numpad táctil arcade en pantalla para máxima ergonomía en tablets y móviles sin bloqueos de teclado nativo."
+        en: "On-screen 3D arcade numpad for optimal tablet and mobile ergonomics without virtual keyboard obstruction."
+      - es: "3 modos de juego seleccionables (Modo Zen sin reloj, Clásico 10 rondas y Contrarreloj 60s) y 6 medallas coleccionables."
+        en: "3 game modes (Zen relaxed, Classic 10 rounds, and 60s Time Attack) and 6 collectible achievement badges."
+      - es: "Arquitectura Single-Source-of-Truth en /apps/maths/, eliminación de dependencias externas (Tailwind CDN) y shims SEO."
+        en: "Single-Source-of-Truth architecture in /apps/maths/, removal of external CDN dependencies (Tailwind), and legacy SEO shims."
+
   - version: v1.0.0
     date: "2025-09-11"
     state: released
-    type: release
+    type: feature
     title:
       es: "Lanzamiento oficial de Matemáticas Interactivas con 4 niveles escolares y despliegue bilingüe"
       en: "Official Interactive Maths release featuring 4 academic tiers and bilingual deployment"
@@ -99,8 +123,8 @@ releases:
         en: "Integration of 4 core operations (addition, subtraction, multiplication, division) and 4 school tiers."
       - es: "Control de dificultad de 1 y 2 dígitos con módulo conceptual de aprendizaje previo."
         en: "1 and 2-digit difficulty toggle with introductory didactic learning module."
-      - es: "Marcador de puntuación gamificado con emoticonos dinámicos y feedback auditivo."
-        en: "Gamified scorekeeper with reactive emojis and friendly auditory feedback."
+      - es: "Marcador de puntuación gamificado con emoticonos dinámicos y feedback visual."
+        en: "Gamified scorekeeper with dynamic emojis and visual feedback."
       - es: "Soporte de localización con rutas independientes en español (/es/) e inglés (/en/)."
         en: "Localization support with independent routes in Spanish (/es/) and English (/en/)."
       - es: "Estado congelado como proyecto educativo y testimonio de pair-programming con IA."
