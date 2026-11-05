@@ -14,15 +14,15 @@ alwaysApply: true
 
 | ID | Rol | Célula | Tallas | ¿Código Prod? | ¿Veto? | Ficha Canónica |
 | :--- | :--- | :--- | :--- | :-: | :-: | :--- |
-| `01-orchestrator` | 🎯 **Orquestador / Delivery Lead** | `direction` | `XS, S, M, L, XL` | No | No | `specs/squad/01-orchestrator.md` |
-| `02-product-analyst` | 🧭 **Product Analyst / Product Owner** | `direction` | `L, XL` | No | No | `specs/squad/02-product-analyst.md` |
-| `03-architect` | 🏛️ **Arquitecto de Sistemas / Tech Lead** | `direction` | `M, L, XL` | No | No | `specs/squad/03-architect.md` |
-| `04-ux-ui` | 🎨 **Diseñador UX/UI y Sistemas de Diseño** | `construction` | `S, M, L, XL` | Sí | No | `specs/squad/04-ux-ui.md` |
-| `05-frontend` | ⚡ **Ingeniero Frontend** | `construction` | `XS, S, M, L, XL` | Sí | No | `specs/squad/05-frontend.md` |
-| `06-backend-data` | 🗄️ **Ingeniero Backend, Datos y Motor Cuantitativo** | `construction` | `XS, S, M, L, XL` | Sí | No | `specs/squad/06-backend-data.md` |
-| `07-apis-integrations` | 🔌 **Especialista en APIs, Integraciones y MCP** | `construction` | `S, M, L, XL` | Sí | No | `specs/squad/07-apis-integrations.md` |
-| `08-media-i18n` | 🎬 **Especialista en Media, Contenido, SEO e i18n** | `construction` | `XS, S, M, L, XL` | Sí | No | `specs/squad/08-media-i18n.md` |
-| `09-monetization` | 💳 **Especialista en Monetización, Checkout y Analítica PLG** | `construction` | `S, M, L, XL` | Sí | No | `specs/squad/09-monetization.md` |
-| `10-security-privacy` | 🛡️ **Auditor de Seguridad, Privacidad y RLS** | `assurance` | `XS, S, M, L, XL` | No | SÍ (VETO) | `specs/squad/10-security-privacy.md` |
-| `11-qa-verifier` | ✅ **QA Verifier Independiente (Con Derecho a Veto)** | `assurance` | `XS, S, M, L, XL` | No | SÍ (VETO) | `specs/squad/11-qa-verifier.md` |
-| `12-release-devops` | 🚀 **Ingeniero de Release, Empaquetado y DevOps** | `delivery` | `M, L, XL` | No | No | `specs/squad/12-release-devops.md` |
+| `01-orchestrator` | 🎯 **Orquestador / Delivery Lead** | `direction` | `XS, S, M, L, XL` | No | No | `C:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/01-orchestrator.md` |
+| `02-product-analyst` | 🧭 **Product Analyst / Product Owner** | `direction` | `L, XL` | No | No | `C:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/02-product-analyst.md` |
+| `03-architect` | 🏛️ **Arquitecto de Sistemas / Tech Lead** | `direction` | `M, L, XL` | No | No | `C:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/03-architect.md` |
+| `04-ux-ui` | 🎨 **Diseñador UX/UI y Sistemas de Diseño** | `construction` | `S, M, L, XL` | Sí | No | `C:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/04-ux-ui.md` |
+| `05-frontend` | ⚡ **Ingeniero Frontend** | `construction` | `XS, S, M, L, XL` | Sí | No | `C:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/05-frontend.md` |
+| `06-backend-data` | 🗄️ **Ingeniero Backend, Datos y Motor Cuantitativo** | `construction` | `XS, S, M, L, XL` | Sí | No | `C:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/06-backend-data.md` |
+| `07-apis-integrations` | 🔌 **Especialista en APIs, Integraciones y MCP** | `construction` | `S, M, L, XL` | Sí | No | `C:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/07-apis-integrations.md` |
+| `08-media-i18n` | 🎬 **Especialista en Media, Contenido, SEO e i18n** | `construction` | `XS, S, M, L, XL` | Sí | No | `C:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/08-media-i18n.md` |
+| `09-monetization` | 💳 **Especialista en Monetización, Checkout y Analítica PLG** | `construction` | `S, M, L, XL` | Sí | No | `C:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/09-monetization.md` |
+| `10-security-privacy` | 🛡️ **Auditor de Seguridad, Privacidad y RLS** | `assurance` | `XS, S, M, L, XL` | No | SÍ (VETO) | `C:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/10-security-privacy.md` |
+| `11-qa-verifier` | ✅ **QA Verifier Independiente (Con Derecho a Veto)** | `assurance` | `XS, S, M, L, XL` | No | SÍ (VETO) | `C:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/11-qa-verifier.md` |
+| `12-release-devops` | 🚀 **Ingeniero de Release, Empaquetado y DevOps** | `delivery` | `M, L, XL` | No | No | `C:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/12-release-devops.md` |

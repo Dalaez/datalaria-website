@@ -1,86 +1,2416 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversor Universal de Medidas - Datalaria</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Conversor Universal Pro — Engineering Workbench v2.0 | Datalaria</title>
+    <meta name="description" content="Navaja suiza digital para conversiones científicas y técnicas en 6 disciplinas de ingeniería. Precisión SI/CODATA 2022, formato de separadores numéricos y batch scratchpad.">
+    <link rel="canonical" href="https://datalaria.com/apps/conversor/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #111827;
-            background-image: radial-gradient(circle at 1px 1px, #374151 1px, transparent 0);
-            background-size: 2rem 2rem;
-        }
+/* apps/conversor/styles.css — Datalaria Helix Engineering Workbench v2.0 Tokens & Layout */
 
-        .center-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 1rem;
-        }
+:root {
+  --bg-canvas: #0b0f17;
+  --bg-surface: #111827;
+  --bg-elevated: #1e293b;
+  --bg-input: #151d2c;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent-primary: #0ea5e9;
+  --accent-hover: #38bdf8;
+  --accent-secondary: #8b5cf6;
+  --status-success: #10b981;
+  --status-warning: #f59e0b;
+  --status-danger: #ef4444;
+  --border-subtle: rgba(148, 163, 184, 0.14);
+  --border-focus: #0ea5e9;
 
-        .content-box {
-            background-color: rgba(31, 41, 55, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid #374151;
-            border-radius: 1.5rem;
-            padding: 2.5rem;
-            text-align: center;
-            max-width: 600px;
-            width: 100%;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Menlo, Consolas, monospace;
 
-        .lang-button {
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
 
-        .lang-button:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
-            border-color: #3b82f6;
-        }
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.45);
+  --shadow-glow: 0 0 20px rgba(14, 165, 233, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-canvas);
+  background-image: radial-gradient(circle at 1px 1px, rgba(148, 163, 184, 0.08) 1px, transparent 0);
+  background-size: 24px 24px;
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 1. Header Shell Datalaria (<= 64px) */
+.app-header {
+  height: 56px;
+  background-color: rgba(17, 24, 39, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.25rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.header-left, .header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.back-link:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-elevated);
+  border-color: var(--border-subtle);
+}
+
+.app-title-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+}
+
+.version-chip {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.15rem 0.45rem;
+  background-color: rgba(14, 165, 233, 0.15);
+  color: var(--accent-primary);
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  border-radius: var(--radius-full);
+}
+
+.lang-switch {
+  display: flex;
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 2px;
+}
+
+.lang-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.lang-btn.active {
+  background-color: var(--accent-primary);
+  color: #0b0f17;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.8rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  background-color: var(--bg-elevated);
+  transition: all 0.2s;
+}
+
+.btn-ghost:hover {
+  color: var(--text-primary);
+  border-color: var(--accent-primary);
+}
+
+.btn-b2b {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: linear-gradient(135deg, #0ea5e9, #6366f1);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-sm);
+  transition: opacity 0.2s;
+}
+
+.btn-b2b:hover {
+  opacity: 0.9;
+}
+
+/* 2. Main Container */
+.workbench-container {
+  width: 100%;
+  max-width: 1080px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* 3. Categories Navigation Bar */
+.categories-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  background-color: var(--bg-surface);
+  padding: 0.4rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+}
+
+.category-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.category-pill:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-elevated);
+}
+
+.category-pill.active {
+  background-color: var(--accent-primary);
+  color: #0b0f17;
+  font-weight: 600;
+}
+
+.category-pill.scratchpad-pill.active {
+  background-color: var(--accent-secondary);
+  color: #ffffff;
+}
+
+/* 4. CODATA Quick Constants Bar */
+.constants-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding: 0.4rem 0.75rem;
+  background-color: rgba(30, 41, 59, 0.45);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--border-subtle);
+  scrollbar-width: thin;
+}
+
+.constants-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.constant-chip {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.constant-chip:hover {
+  border-color: var(--accent-primary);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+/* 5. Main Converter Card */
+.converter-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-card);
+  position: relative;
+}
+
+.card-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.subcat-selector {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.subcat-btn {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.subcat-btn.active {
+  background-color: var(--bg-canvas);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  font-weight: 600;
+}
+
+.card-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.precision-control {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.select-compact {
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.25rem 0.45rem;
+  border-radius: var(--radius-sm);
+}
+
+/* 6. Conversion Dual Cockpit Grid */
+.cockpit-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1.25rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .cockpit-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}
+
+.unit-cell {
+  background: var(--bg-canvas);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  transition: border-color 0.2s;
+}
+
+.unit-cell:focus-within {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 1px var(--accent-primary);
+}
+
+.cell-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.unit-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 1.75rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.unit-output {
+  width: 100%;
+  color: #38bdf8;
+  font-family: var(--font-mono);
+  font-size: 1.75rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  word-break: break-all;
+  min-height: 2.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.unit-select {
+  width: 100%;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  padding: 0.5rem 0.65rem;
+  border-radius: var(--radius-sm);
+  outline: none;
+  cursor: pointer;
+}
+
+.swap-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-swap {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--accent-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.25rem;
+  transition: all 0.25s ease;
+}
+
+.btn-swap:hover {
+  background: var(--accent-primary);
+  color: #0b0f17;
+  transform: rotate(180deg) scale(1.08);
+}
+
+/* 7. Action Bar (Copy, Share, Invert) */
+.action-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-action:hover {
+  color: var(--text-primary);
+  border-color: var(--accent-primary);
+}
+
+.btn-action.copied {
+  background-color: rgba(16, 185, 129, 0.2);
+  border-color: var(--status-success);
+  color: var(--status-success);
+}
+
+/* 8. Omni-Matrix Multi-Scale View & Formula */
+.omni-matrix-panel {
+  margin-top: 1.25rem;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+}
+
+.omni-title {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.omni-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.omni-item {
+  background: var(--bg-canvas);
+  border: 1px solid rgba(148, 163, 184, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.omni-item-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.omni-item-val {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  word-break: break-all;
+}
+
+.formula-trace {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  background: var(--bg-canvas);
+  border: 1px dashed var(--border-subtle);
+  padding: 0.6rem 0.85rem;
+  border-radius: var(--radius-sm);
+  color: #38bdf8;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+}
+
+/* 9. Batch Scratchpad View */
+.scratchpad-view {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .scratchpad-view {
+    grid-template-columns: 1fr;
+  }
+}
+
+.scratchpad-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.scratchpad-textarea {
+  width: 100%;
+  height: 260px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0.85rem;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  resize: vertical;
+  outline: none;
+}
+
+.scratchpad-textarea:focus {
+  border-color: var(--accent-secondary);
+}
+
+.scratchpad-textarea[readonly] {
+  background: var(--bg-canvas);
+  color: #4ade80;
+}
+
+.scratchpad-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 10. History Strip */
+.history-strip {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  overflow-x: auto;
+}
+
+.history-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.history-items {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.history-pill {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.history-pill:hover {
+  border-color: var(--accent-primary);
+  color: var(--text-primary);
+}
+
+/* 11. Didactic Section */
+.didactic-section {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.didactic-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.didactic-content {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* 12. Footer */
+.app-footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: auto;
+}
+
+.app-footer a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.app-footer a:hover {
+  color: var(--accent-primary);
+}
+
     </style>
 </head>
+<body>
+    <header id="app-header" class="app-header"></header>
 
-<body class="text-white">
+    <main class="workbench-container">
+        <nav id="categories-nav" class="categories-nav" aria-label="Categorías"></nav>
 
-    <div class="center-container">
-        <div class="content-box">
-            <img src="datalaria_logo_transp.png" alt="Logo Datalaria" class="mx-auto mb-6 h-12 sm:h-16">
+        <section id="constants-bar" class="constants-bar" aria-label="Constantes CODATA"></section>
 
-            <h1
-                class="text-3xl sm:text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600 mb-3">
-                Conversor Universal
-            </h1>
-            <p class="text-gray-300 text-lg sm:text-xl mb-8">
-                Selecciona tu idioma / Select your language
-            </p>
+        <!-- Conversor Estándar -->
+        <section id="main-converter-card" class="converter-card" style="display: none;"></section>
 
-            <div class="flex justify-center items-center gap-4 sm:gap-8">
-                <a href="/apps/conversor/es/index.html"
-                    class="lang-button bg-blue-600 text-white font-bold text-2xl sm:text-3xl py-4 px-10 sm:py-6 sm:px-16 rounded-xl">
-                    ES
-                </a>
-                <a href="/apps/conversor/en/index.html"
-                    class="lang-button bg-indigo-600 text-white font-bold text-2xl sm:text-3xl py-4 px-10 sm:py-6 sm:px-16 rounded-xl">
-                    EN
-                </a>
-            </div>
+        <!-- Batch Scratchpad -->
+        <section id="scratchpad-card" style="display: none;"></section>
+
+        <!-- Historial Reciente -->
+        <section id="history-strip" class="history-strip" style="display: none;"></section>
+
+        <!-- Sección Didáctica -->
+        <article id="didactic-card" class="didactic-section"></article>
+    </main>
+
+    <footer class="app-footer">
+        <p>Una herramienta de <a href="https://datalaria.com">Datalaria</a> · Precisión SI/CODATA 2022 · 100% Client-Side</p>
+    </footer>
+
+    <script type="module">
+/**
+ * apps/conversor/catalog.js
+ * Catálogo Canónico de Unidades, Factores SI y Constantes CODATA
+ * Datalaria Helix — Single Source of Truth
+ */
+
+const PHYSICAL_CONSTANTS = [
+  { id: 'c', symbol: 'c', name: { es: 'Velocidad de la luz en el vacío', en: 'Speed of light in vacuum' }, value: 299792458, unit: 'm/s', exact: true },
+  { id: 'g0', symbol: 'g₀', name: { es: 'Gravedad estándar terrestre', en: 'Standard gravity' }, value: 9.80665, unit: 'm/s²', exact: true },
+  { id: 'h', symbol: 'h', name: { es: 'Constante de Planck', en: 'Planck constant' }, value: 6.62607015e-34, unit: 'J·s', exact: true },
+  { id: 'kb', symbol: 'k_B', name: { es: 'Constante de Boltzmann', en: 'Boltzmann constant' }, value: 1.380649e-23, unit: 'J/K', exact: true },
+  { id: 'na', symbol: 'N_A', name: { es: 'Número de Avogadro', en: 'Avogadro constant' }, value: 6.02214076e23, unit: 'mol⁻¹', exact: true },
+  { id: 'eps0', symbol: 'ε₀', name: { es: 'Permitividad del vacío', en: 'Vacuum permittivity' }, value: 8.8541878128e-12, unit: 'F/m', exact: false },
+  { id: 'r_gas', symbol: 'R', name: { es: 'Constante universal de los gases', en: 'Gas constant' }, value: 8.314462618, unit: 'J/(mol·K)', exact: true },
+  { id: 'elem_charge', symbol: 'e', name: { es: 'Carga elemental', en: 'Elementary charge' }, value: 1.602176634e-19, unit: 'C', exact: true }
+];
+
+const CATEGORIES = {
+  dimension: {
+    id: 'dimension',
+    icon: '📐',
+    title: { es: 'Dimensión', en: 'Dimension' },
+    magnitudes: {
+      length: {
+        id: 'length',
+        title: { es: 'Longitud', en: 'Length' },
+        baseUnit: 'm',
+        units: {
+          m: { id: 'm', symbol: 'm', factor: 1, name: { es: 'Metros (m)', en: 'Meters (m)' } },
+          km: { id: 'km', symbol: 'km', factor: 1000, name: { es: 'Kilómetros (km)', en: 'Kilometers (km)' } },
+          cm: { id: 'cm', symbol: 'cm', factor: 0.01, name: { es: 'Centímetros (cm)', en: 'Centimeters (cm)' } },
+          mm: { id: 'mm', symbol: 'mm', factor: 0.001, name: { es: 'Milímetros (mm)', en: 'Millimeters (mm)' } },
+          um: { id: 'um', symbol: 'µm', factor: 1e-6, name: { es: 'Micrómetros (µm)', en: 'Micrometers (µm)' } },
+          nm: { id: 'nm', symbol: 'nm', factor: 1e-9, name: { es: 'Nanómetros (nm)', en: 'Nanometers (nm)' } },
+          mi: { id: 'mi', symbol: 'mi', factor: 1609.344, name: { es: 'Millas (mi)', en: 'Miles (mi)' } },
+          yd: { id: 'yd', symbol: 'yd', factor: 0.9144, name: { es: 'Yardas (yd)', en: 'Yards (yd)' } },
+          ft: { id: 'ft', symbol: 'ft', factor: 0.3048, name: { es: 'Pies (ft)', en: 'Feet (ft)' } },
+          in: { id: 'in', symbol: 'in', factor: 0.0254, name: { es: 'Pulgadas (in)', en: 'Inches (in)' } },
+          nmi: { id: 'nmi', symbol: 'NM', factor: 1852, name: { es: 'Millas náuticas (NM)', en: 'Nautical Miles (NM)' } }
+        },
+        defaultFrom: 'm',
+        defaultTo: 'ft'
+      },
+      area: {
+        id: 'area',
+        title: { es: 'Área', en: 'Area' },
+        baseUnit: 'm2',
+        units: {
+          m2: { id: 'm2', symbol: 'm²', factor: 1, name: { es: 'Metros² (m²)', en: 'Square Meters (m²)' } },
+          km2: { id: 'km2', symbol: 'km²', factor: 1e6, name: { es: 'Kilómetros² (km²)', en: 'Square Kilometers (km²)' } },
+          ha: { id: 'ha', symbol: 'ha', factor: 10000, name: { es: 'Hectáreas (ha)', en: 'Hectares (ha)' } },
+          mi2: { id: 'mi2', symbol: 'mi²', factor: 2589988.110336, name: { es: 'Millas² (mi²)', en: 'Square Miles (mi²)' } },
+          ac: { id: 'ac', symbol: 'ac', factor: 4046.8564224, name: { es: 'Acres (ac)', en: 'Acres (ac)' } },
+          yd2: { id: 'yd2', symbol: 'yd²', factor: 0.83612736, name: { es: 'Yardas² (yd²)', en: 'Square Yards (yd²)' } },
+          ft2: { id: 'ft2', symbol: 'ft²', factor: 0.09290304, name: { es: 'Pies² (ft²)', en: 'Square Feet (ft²)' } },
+          in2: { id: 'in2', symbol: 'in²', factor: 0.00064516, name: { es: 'Pulgadas² (in²)', en: 'Square Inches (in²)' } }
+        },
+        defaultFrom: 'm2',
+        defaultTo: 'ft2'
+      },
+      volume: {
+        id: 'volume',
+        title: { es: 'Volumen', en: 'Volume' },
+        baseUnit: 'm3',
+        units: {
+          m3: { id: 'm3', symbol: 'm³', factor: 1, name: { es: 'Metros³ (m³)', en: 'Cubic Meters (m³)' } },
+          l: { id: 'l', symbol: 'L', factor: 0.001, name: { es: 'Litros (L)', en: 'Liters (L)' } },
+          ml: { id: 'ml', symbol: 'mL', factor: 1e-6, name: { es: 'Mililitros (mL)', en: 'Milliliters (mL)' } },
+          cm3: { id: 'cm3', symbol: 'cm³', factor: 1e-6, name: { es: 'Centímetros³ (cm³)', en: 'Cubic Centimeters (cm³)' } },
+          gal_us: { id: 'gal_us', symbol: 'gal (US)', factor: 0.003785411784, name: { es: 'Galones US (gal)', en: 'Gallons US (gal)' } },
+          qt_us: { id: 'qt_us', symbol: 'qt (US)', factor: 0.000946352946, name: { es: 'Cuartos US (qt)', en: 'Quarts US (qt)' } },
+          pt_us: { id: 'pt_us', symbol: 'pt (US)', factor: 0.000473176473, name: { es: 'Pintas US (pt)', en: 'Pints US (pt)' } },
+          cup_us: { id: 'cup_us', symbol: 'taza (US)', factor: 0.0002365882365, name: { es: 'Tazas US', en: 'Cups US' } },
+          floz_us: { id: 'floz_us', symbol: 'fl oz (US)', factor: 2.95735295625e-5, name: { es: 'Onzas fluidas US (fl oz)', en: 'Fluid Ounces US (fl oz)' } }
+        },
+        defaultFrom: 'l',
+        defaultTo: 'gal_us'
+      }
+    }
+  },
+
+  energia: {
+    id: 'energia',
+    icon: '⚡',
+    title: { es: 'Energía', en: 'Energy' },
+    magnitudes: {
+      energy: {
+        id: 'energy',
+        title: { es: 'Energía', en: 'Energy' },
+        baseUnit: 'j',
+        units: {
+          j: { id: 'j', symbol: 'J', factor: 1, name: { es: 'Julios (J)', en: 'Joules (J)' } },
+          kj: { id: 'kj', symbol: 'kJ', factor: 1000, name: { es: 'Kilojulios (kJ)', en: 'Kilojoules (kJ)' } },
+          mj: { id: 'mj', symbol: 'MJ', factor: 1e6, name: { es: 'Megajulios (MJ)', en: 'Megajoules (MJ)' } },
+          cal: { id: 'cal', symbol: 'cal', factor: 4.184, name: { es: 'Calorías (cal)', en: 'Calories (cal)' } },
+          kcal: { id: 'kcal', symbol: 'kcal', factor: 4184, name: { es: 'Kilocalorías (kcal)', en: 'Kilocalories (kcal)' } },
+          wh: { id: 'wh', symbol: 'Wh', factor: 3600, name: { es: 'Vatios-hora (Wh)', en: 'Watt-hours (Wh)' } },
+          kwh: { id: 'kwh', symbol: 'kWh', factor: 3.6e6, name: { es: 'Kilovatios-hora (kWh)', en: 'Kilowatt-hours (kWh)' } },
+          btu: { id: 'btu', symbol: 'BTU', factor: 1055.056, name: { es: 'BTU (Tabla Internacional)', en: 'BTU (IT)' } },
+          ev: { id: 'ev', symbol: 'eV', factor: 1.602176634e-19, name: { es: 'Electronvoltios (eV)', en: 'Electronvolts (eV)' } },
+          ftlbf: { id: 'ftlbf', symbol: 'ft·lbf', factor: 1.3558179483314004, name: { es: 'Pies-libra fuerza (ft·lbf)', en: 'Foot-pounds force (ft·lbf)' } }
+        },
+        defaultFrom: 'kwh',
+        defaultTo: 'btu'
+      },
+      power: {
+        id: 'power',
+        title: { es: 'Potencia', en: 'Power' },
+        baseUnit: 'w',
+        units: {
+          w: { id: 'w', symbol: 'W', factor: 1, name: { es: 'Vatios (W)', en: 'Watts (W)' } },
+          kw: { id: 'kw', symbol: 'kW', factor: 1000, name: { es: 'Kilovatios (kW)', en: 'Kilowatts (kW)' } },
+          mw: { id: 'mw', symbol: 'MW', factor: 1e6, name: { es: 'Megavatios (MW)', en: 'Megawatts (MW)' } },
+          hp_m: { id: 'hp_m', symbol: 'CV', factor: 735.49875, name: { es: 'Caballos de vapor (CV métrico)', en: 'Metric Horsepower (CV)' } },
+          hp_mech: { id: 'hp_mech', symbol: 'HP', factor: 745.69987158227022, name: { es: 'Caballos de fuerza (HP mecánico)', en: 'Mechanical Horsepower (HP)' } },
+          btu_h: { id: 'btu_h', symbol: 'BTU/h', factor: 0.29307107, name: { es: 'BTU por hora (BTU/h)', en: 'BTU per hour (BTU/h)' } }
+        },
+        defaultFrom: 'kw',
+        defaultTo: 'hp_mech'
+      },
+      temperature: {
+        id: 'temperature',
+        title: { es: 'Temperatura', en: 'Temperature' },
+        isNonLinear: true,
+        baseUnit: 'k',
+        units: {
+          c: { id: 'c', symbol: '°C', name: { es: 'Grados Celsius (°C)', en: 'Degrees Celsius (°C)' } },
+          f: { id: 'f', symbol: '°F', name: { es: 'Grados Fahrenheit (°F)', en: 'Degrees Fahrenheit (°F)' } },
+          k: { id: 'k', symbol: 'K', name: { es: 'Kelvin (K)', en: 'Kelvin (K)' } },
+          r: { id: 'r', symbol: '°R', name: { es: 'Rankine (°R)', en: 'Rankine (°R)' } }
+        },
+        defaultFrom: 'c',
+        defaultTo: 'f'
+      }
+    }
+  },
+
+  tiempo: {
+    id: 'tiempo',
+    icon: '⏱️',
+    title: { es: 'Tiempo', en: 'Time' },
+    magnitudes: {
+      time: {
+        id: 'time',
+        title: { es: 'Tiempo y Duración', en: 'Time & Duration' },
+        baseUnit: 's',
+        units: {
+          s: { id: 's', symbol: 's', factor: 1, name: { es: 'Segundos (s)', en: 'Seconds (s)' } },
+          ms: { id: 'ms', symbol: 'ms', factor: 0.001, name: { es: 'Milisegundos (ms)', en: 'Milliseconds (ms)' } },
+          us: { id: 'us', symbol: 'µs', factor: 1e-6, name: { es: 'Microsegundos (µs)', en: 'Microseconds (µs)' } },
+          ns: { id: 'ns', symbol: 'ns', factor: 1e-9, name: { es: 'Nanosegundos (ns)', en: 'Nanoseconds (ns)' } },
+          min: { id: 'min', symbol: 'min', factor: 60, name: { es: 'Minutos (min)', en: 'Minutes (min)' } },
+          h: { id: 'h', symbol: 'h', factor: 3600, name: { es: 'Horas (h)', en: 'Hours (h)' } },
+          d: { id: 'd', symbol: 'd', factor: 86400, name: { es: 'Días (d)', en: 'Days (d)' } },
+          w: { id: 'w', symbol: 'sem', factor: 604800, name: { es: 'Semanas', en: 'Weeks' } },
+          y: { id: 'y', symbol: 'a', factor: 31536000, name: { es: 'Años estándar (365 d)', en: 'Standard Years (365 d)' } },
+          yj: { id: 'yj', symbol: 'a_jul', factor: 31557600, name: { es: 'Años julianos (365.25 d)', en: 'Julian Years (365.25 d)' } }
+        },
+        defaultFrom: 'h',
+        defaultTo: 'min'
+      }
+    }
+  },
+
+  mecanica: {
+    id: 'mecanica',
+    icon: '⚙️',
+    title: { es: 'Mecánica', en: 'Mechanics' },
+    magnitudes: {
+      mass: {
+        id: 'mass',
+        title: { es: 'Masa', en: 'Mass' },
+        baseUnit: 'kg',
+        units: {
+          kg: { id: 'kg', symbol: 'kg', factor: 1, name: { es: 'Kilogramos (kg)', en: 'Kilograms (kg)' } },
+          g: { id: 'g', symbol: 'g', factor: 0.001, name: { es: 'Gramos (g)', en: 'Grams (g)' } },
+          mg: { id: 'mg', symbol: 'mg', factor: 1e-6, name: { es: 'Miligramos (mg)', en: 'Milligrams (mg)' } },
+          ug: { id: 'ug', symbol: 'µg', factor: 1e-9, name: { es: 'Microgramos (µg)', en: 'Micrograms (µg)' } },
+          lb: { id: 'lb', symbol: 'lb', factor: 0.45359237, name: { es: 'Libras (lb)', en: 'Pounds (lb)' } },
+          oz: { id: 'oz', symbol: 'oz', factor: 0.028349523125, name: { es: 'Onzas (oz)', en: 'Ounces (oz)' } },
+          t: { id: 't', symbol: 't', factor: 1000, name: { es: 'Toneladas métricas (t)', en: 'Metric Tonnes (t)' } },
+          ton_us: { id: 'ton_us', symbol: 'ton (US)', factor: 907.18474, name: { es: 'Toneladas cortas US', en: 'Short Tons US' } }
+        },
+        defaultFrom: 'kg',
+        defaultTo: 'lb'
+      },
+      force: {
+        id: 'force',
+        title: { es: 'Fuerza', en: 'Force' },
+        baseUnit: 'n',
+        units: {
+          n: { id: 'n', symbol: 'N', factor: 1, name: { es: 'Newtons (N)', en: 'Newtons (N)' } },
+          kn: { id: 'kn', symbol: 'kN', factor: 1000, name: { es: 'Kilonewtons (kN)', en: 'Kilonewtons (kN)' } },
+          mn: { id: 'mn', symbol: 'MN', factor: 1e6, name: { es: 'Meganewtons (MN)', en: 'Meganewtons (MN)' } },
+          lbf: { id: 'lbf', symbol: 'lbf', factor: 4.4482216152605, name: { es: 'Libras-fuerza (lbf)', en: 'Pounds-force (lbf)' } },
+          dyn: { id: 'dyn', symbol: 'dyn', factor: 1e-5, name: { es: 'Dinas (dyn)', en: 'Dynes (dyn)' } },
+          kgf: { id: 'kgf', symbol: 'kgf', factor: 9.80665, name: { es: 'Kilogramos-fuerza (kgf)', en: 'Kilograms-force (kgf)' } }
+        },
+        defaultFrom: 'n',
+        defaultTo: 'lbf'
+      },
+      pressure: {
+        id: 'pressure',
+        title: { es: 'Presión', en: 'Pressure' },
+        baseUnit: 'pa',
+        units: {
+          pa: { id: 'pa', symbol: 'Pa', factor: 1, name: { es: 'Pascales (Pa)', en: 'Pascals (Pa)' } },
+          kpa: { id: 'kpa', symbol: 'kPa', factor: 1000, name: { es: 'Kilopascales (kPa)', en: 'Kilopascals (kPa)' } },
+          mpa: { id: 'mpa', symbol: 'MPa', factor: 1e6, name: { es: 'Megapascales (MPa)', en: 'Megapascals (MPa)' } },
+          bar: { id: 'bar', symbol: 'bar', factor: 100000, name: { es: 'Bares (bar)', en: 'Bars (bar)' } },
+          mbar: { id: 'mbar', symbol: 'mbar', factor: 100, name: { es: 'Milibares (mbar)', en: 'Millibars (mbar)' } },
+          psi: { id: 'psi', symbol: 'psi', factor: 6894.757293168, name: { es: 'PSI (lbf/in²)', en: 'PSI (lbf/in²)' } },
+          atm: { id: 'atm', symbol: 'atm', factor: 101325, name: { es: 'Atmósferas estándar (atm)', en: 'Standard Atmospheres (atm)' } },
+          torr: { id: 'torr', symbol: 'Torr', factor: 133.322368421, name: { es: 'Torr / mmHg', en: 'Torr / mmHg' } }
+        },
+        defaultFrom: 'bar',
+        defaultTo: 'psi'
+      }
+    }
+  },
+
+  informatica: {
+    id: 'informatica',
+    icon: '💻',
+    title: { es: 'Informática', en: 'Computing' },
+    magnitudes: {
+      storage_binary: {
+        id: 'storage_binary',
+        title: { es: 'Almacenamiento Binario (IEC: 1024)', en: 'Binary Storage (IEC: 1024)' },
+        baseUnit: 'b',
+        units: {
+          b: { id: 'b', symbol: 'B', factor: 1, name: { es: 'Bytes (B)', en: 'Bytes (B)' } },
+          kib: { id: 'kib', symbol: 'KiB', factor: 1024, name: { es: 'Kibibytes (KiB)', en: 'Kibibytes (KiB)' } },
+          mib: { id: 'mib', symbol: 'MiB', factor: 1048576, name: { es: 'Mebibytes (MiB)', en: 'Mebibytes (MiB)' } },
+          gib: { id: 'gib', symbol: 'GiB', factor: 1073741824, name: { es: 'Gibibytes (GiB)', en: 'Gibibytes (GiB)' } },
+          tib: { id: 'tib', symbol: 'TiB', factor: 1099511627776, name: { es: 'Tebibytes (TiB)', en: 'Tebibytes (TiB)' } },
+          pib: { id: 'pib', symbol: 'PiB', factor: 1125899906842624, name: { es: 'Pebibytes (PiB)', en: 'Pebibytes (PiB)' } }
+        },
+        defaultFrom: 'gib',
+        defaultTo: 'mib'
+      },
+      storage_decimal: {
+        id: 'storage_decimal',
+        title: { es: 'Almacenamiento Decimal (SI: 1000)', en: 'Decimal Storage (SI: 1000)' },
+        baseUnit: 'b',
+        units: {
+          b: { id: 'b', symbol: 'B', factor: 1, name: { es: 'Bytes (B)', en: 'Bytes (B)' } },
+          kb: { id: 'kb', symbol: 'kB', factor: 1000, name: { es: 'Kilobytes (kB)', en: 'Kilobytes (kB)' } },
+          mb: { id: 'mb', symbol: 'MB', factor: 1e6, name: { es: 'Megabytes (MB)', en: 'Megabytes (MB)' } },
+          gb: { id: 'gb', symbol: 'GB', factor: 1e9, name: { es: 'Gigabytes (GB)', en: 'Gigabytes (GB)' } },
+          tb: { id: 'tb', symbol: 'TB', factor: 1e12, name: { es: 'Terabytes (TB)', en: 'Terabytes (TB)' } },
+          pb: { id: 'pb', symbol: 'PB', factor: 1e15, name: { es: 'Petabytes (PB)', en: 'Petabytes (PB)' } }
+        },
+        defaultFrom: 'gb',
+        defaultTo: 'mb'
+      },
+      bandwidth: {
+        id: 'bandwidth',
+        title: { es: 'Ancho de Banda / Red', en: 'Bandwidth & Data Rate' },
+        baseUnit: 'bps',
+        units: {
+          bps: { id: 'bps', symbol: 'bps', factor: 1, name: { es: 'Bits por segundo (bps)', en: 'Bits per second (bps)' } },
+          kbps: { id: 'kbps', symbol: 'kbps', factor: 1000, name: { es: 'Kilobits por segundo (kbps)', en: 'Kilobits per second (kbps)' } },
+          mbps: { id: 'mbps', symbol: 'Mbps', factor: 1e6, name: { es: 'Megabits por segundo (Mbps)', en: 'Megabits per second (Mbps)' } },
+          gbps: { id: 'gbps', symbol: 'Gbps', factor: 1e9, name: { es: 'Gigabits por segundo (Gbps)', en: 'Gigabits per second (Gbps)' } },
+          tbps: { id: 'tbps', symbol: 'Tbps', factor: 1e12, name: { es: 'Terabits por segundo (Tbps)', en: 'Terabits per second (Tbps)' } }
+        },
+        defaultFrom: 'mbps',
+        defaultTo: 'kbps'
+      }
+    }
+  },
+
+  radiofrecuencia: {
+    id: 'radiofrecuencia',
+    icon: '📡',
+    title: { es: 'Radiofrecuencia', en: 'Radiofrequency' },
+    magnitudes: {
+      frequency: {
+        id: 'frequency',
+        title: { es: 'Frecuencia', en: 'Frequency' },
+        baseUnit: 'hz',
+        units: {
+          hz: { id: 'hz', symbol: 'Hz', factor: 1, name: { es: 'Hertz (Hz)', en: 'Hertz (Hz)' } },
+          khz: { id: 'khz', symbol: 'kHz', factor: 1000, name: { es: 'Kilohertz (kHz)', en: 'Kilohertz (kHz)' } },
+          mhz: { id: 'mhz', symbol: 'MHz', factor: 1e6, name: { es: 'Megahertz (MHz)', en: 'Megahertz (MHz)' } },
+          ghz: { id: 'ghz', symbol: 'GHz', factor: 1e9, name: { es: 'Gigahertz (GHz)', en: 'Gigahertz (GHz)' } },
+          thz: { id: 'thz', symbol: 'THz', factor: 1e12, name: { es: 'Terahertz (THz)', en: 'Terahertz (THz)' } }
+        },
+        defaultFrom: 'mhz',
+        defaultTo: 'khz'
+      },
+      wavelength_freq: {
+        id: 'wavelength_freq',
+        title: { es: 'Frecuencia ⇔ Longitud de Onda (λ = c/f)', en: 'Frequency ⇔ Wavelength (λ = c/f)' },
+        isSpecialRfWav: true,
+        defaultFrom: '100_mhz',
+        defaultTo: 'm'
+      },
+      rf_power: {
+        id: 'rf_power',
+        title: { es: 'Potencia RF (dBm ⇔ W / mW)', en: 'RF Power (dBm ⇔ W / mW)' },
+        isSpecialRfPower: true,
+        units: {
+          dbm: { id: 'dbm', symbol: 'dBm', name: { es: 'Decibelios-milivatio (dBm)', en: 'Decibel-milliwatts (dBm)' } },
+          mw: { id: 'mw', symbol: 'mW', name: { es: 'Milivatios (mW)', en: 'Milliwatts (mW)' } },
+          w: { id: 'w', symbol: 'W', name: { es: 'Vatios (W)', en: 'Watts (W)' } },
+          kw: { id: 'kw', symbol: 'kW', name: { es: 'Kilovatios (kW)', en: 'Kilowatts (kW)' } }
+        },
+        defaultFrom: 'dbm',
+        defaultTo: 'w'
+      }
+    }
+  },
+
+  scratchpad: {
+    id: 'scratchpad',
+    icon: '📋',
+    title: { es: 'Batch Scratchpad', en: 'Batch Scratchpad' },
+    isBatchMode: true
+  }
+};
+
+
+/**
+ * apps/conversor/engine.js
+ * Motor Matemático Determinista y Formateador Numérico
+ * Datalaria Helix — Strict SI & Metrology Engine
+ */
+
+const SPEED_OF_LIGHT = 299792458; // m/s (CODATA Exact)
+
+const WAVELENGTH_FACTORS = {
+  m: 1,
+  km: 1000,
+  cm: 0.01,
+  mm: 0.001,
+  um: 1e-6,
+  nm: 1e-9
+};
+
+const FREQ_FACTORS = {
+  hz: 1,
+  khz: 1e3,
+  mhz: 1e6,
+  ghz: 1e9,
+  thz: 1e12
+};
+
+/**
+ * Conversión lineal canónica
+ * Invariante INV-CONV-1: convert(convert(x, A, B), B, A) == x
+ */
+function convertLinear(value, fromUnitKey, toUnitKey, unitsMap) {
+  if (value === null || value === undefined || isNaN(value)) return NaN;
+  const fromUnit = unitsMap[fromUnitKey];
+  const toUnit = unitsMap[toUnitKey];
+  if (!fromUnit || !toUnit) {
+    throw new Error(`Unidades desconocidas: ${fromUnitKey} -> ${toUnitKey}`);
+  }
+  const baseValue = Number(value) * fromUnit.factor;
+  return baseValue / toUnit.factor;
+}
+
+/**
+ * Conversión de temperatura (No lineal)
+ */
+function convertTemperature(value, fromKey, toKey) {
+  if (value === null || value === undefined || isNaN(value)) return NaN;
+  const val = Number(value);
+  if (fromKey === toKey) return val;
+
+  // 1. A Kelvin
+  let kelvin;
+  switch (fromKey) {
+    case 'c': kelvin = val + 273.15; break;
+    case 'f': kelvin = (val - 32) * (5 / 9) + 273.15; break;
+    case 'k': kelvin = val; break;
+    case 'r': kelvin = val * (5 / 9); break;
+    default: throw new Error(`Escala desconocida: ${fromKey}`);
+  }
+
+  // 2. De Kelvin a Destino
+  switch (toKey) {
+    case 'c': return kelvin - 273.15;
+    case 'f': return (kelvin - 273.15) * (9 / 5) + 32;
+    case 'k': return kelvin;
+    case 'r': return kelvin * (9 / 5);
+    default: throw new Error(`Escala desconocida: ${toKey}`);
+  }
+}
+
+/**
+ * Conversión de potencia logarítmica RF (dBm ⇔ W / mW / kW)
+ */
+function convertRfPower(value, fromKey, toKey) {
+  if (value === null || value === undefined || isNaN(value)) return NaN;
+  const val = Number(value);
+  if (fromKey === toKey) return val;
+
+  // 1. A milivatios (mW)
+  let mw;
+  switch (fromKey) {
+    case 'dbm':
+      mw = Math.pow(10, val / 10);
+      break;
+    case 'mw':
+      mw = val;
+      break;
+    case 'w':
+      mw = val * 1000;
+      break;
+    case 'kw':
+      mw = val * 1e6;
+      break;
+    default:
+      throw new Error(`Unidad RF desconocida: ${fromKey}`);
+  }
+
+  // 2. De milivatios a Destino
+  switch (toKey) {
+    case 'dbm':
+      if (mw <= 0) return -Infinity;
+      return 10 * Math.log10(mw);
+    case 'mw':
+      return mw;
+    case 'w':
+      return mw / 1000;
+    case 'kw':
+      return mw / 1e6;
+    default:
+      throw new Error(`Unidad RF desconocida: ${toKey}`);
+  }
+}
+
+/**
+ * Conversión Frecuencia ⇔ Longitud de Onda electromagnética en el vacío (λ = c / f)
+ * Bidireccional
+ */
+function convertRfWavFreq(value, mode, fromUnit, toUnit) {
+  if (value === null || value === undefined || isNaN(value)) return NaN;
+  const val = Number(value);
+  if (val <= 0) return NaN;
+
+  if (mode === 'freq_to_wav') {
+    // fromUnit es frecuencia (hz, mhz..), toUnit es longitud (m, cm, nm..)
+    const freqFactor = FREQ_FACTORS[fromUnit] || 1;
+    const wavFactor = WAVELENGTH_FACTORS[toUnit] || 1;
+    const fHz = val * freqFactor;
+    if (fHz === 0) return Infinity;
+    const lambdaMeters = SPEED_OF_LIGHT / fHz;
+    return lambdaMeters / wavFactor;
+  } else if (mode === 'wav_to_freq') {
+    // fromUnit es longitud (m, cm, nm..), toUnit es frecuencia (hz, mhz..)
+    const wavFactor = WAVELENGTH_FACTORS[fromUnit] || 1;
+    const freqFactor = FREQ_FACTORS[toUnit] || 1;
+    const lambdaMeters = val * wavFactor;
+    if (lambdaMeters === 0) return Infinity;
+    const fHz = SPEED_OF_LIGHT / lambdaMeters;
+    return fHz / freqFactor;
+  }
+
+  throw new Error(`Modo RF λ-f inválido: ${mode}`);
+}
+
+/**
+ * Parser numérico robusto
+ * Maneja notación científica (1e-4), formatos US (1,234.56), EU (1.234,56),
+ * números negativos y extracción limpia de cantidades con unidades ('15.4 bar').
+ */
+function parseRobustNumber(str, forceFormat = 'auto') {
+  if (!str) return NaN;
+  const trimmed = String(str).trim();
+  if (!trimmed) return NaN;
+
+  // Extracción del bloque numérico principal (respetando signos y exponente e/E)
+  const match = trimmed.match(/[-+]?(?:[\d.,]+(?:[eE][-+]?\d+)?|\d+)/);
+  if (!match) return NaN;
+
+  let numStr = match[0];
+  const hasDot = numStr.includes('.');
+  const hasComma = numStr.includes(',');
+
+  // Separar exponente si existe (ej. 1.23e-4)
+  let exponent = '';
+  const eIndex = numStr.search(/[eE]/);
+  if (eIndex !== -1) {
+    exponent = numStr.slice(eIndex);
+    numStr = numStr.slice(0, eIndex);
+  }
+
+  let finalNumber = NaN;
+
+  if (hasDot && hasComma) {
+    // Ambos separadores presentes: el último determina el decimal
+    const lastDot = numStr.lastIndexOf('.');
+    const lastComma = numStr.lastIndexOf(',');
+    if (lastDot > lastComma) {
+      // Formato US: 1,234.56 -> comas son miles, punto es decimal
+      finalNumber = parseFloat(numStr.replace(/,/g, ''));
+    } else {
+      // Formato EU: 1.234,56 -> puntos son miles, coma es decimal
+      finalNumber = parseFloat(numStr.replace(/\./g, '').replace(',', '.'));
+    }
+  } else if (hasDot) {
+    const parts = numStr.split('.');
+    if (forceFormat === 'eu' && parts.length === 2 && parts[1].length === 3 && parts[0].length >= 1) {
+      // Usuario forzó EU y es un único punto con 3 dígitos (ej. 1.234 en miles)
+      finalNumber = parseFloat(numStr.replace(/\./g, ''));
+    } else if (parts.length > 2) {
+      // Múltiples puntos: deben ser miles (ej. 1.000.000)
+      finalNumber = parseFloat(parts.slice(0, -1).join('') + '.' + parts[parts.length - 1]);
+    } else {
+      finalNumber = parseFloat(numStr);
+    }
+  } else if (hasComma) {
+    const parts = numStr.split(',');
+    if (parts.length > 2) {
+      // Múltiples comas: miles US (ej. 1,000,000)
+      finalNumber = parseFloat(numStr.replace(/,/g, ''));
+    } else if (forceFormat === 'us' && parts[1] && parts[1].length === 3) {
+      // Forzado US y 3 dígitos después de coma -> miles
+      finalNumber = parseFloat(numStr.replace(/,/g, ''));
+    } else {
+      // Caso estándar: coma decimal (ej. 1,234 en español o 0,025)
+      // FIX del bug anterior donde 1,234 se convertía forzosamente a 1234
+      finalNumber = parseFloat(numStr.replace(',', '.'));
+    }
+  } else {
+    finalNumber = parseFloat(numStr);
+  }
+
+  if (isNaN(finalNumber)) return NaN;
+  if (exponent) {
+    return parseFloat(`${finalNumber}${exponent}`);
+  }
+  return finalNumber;
+}
+
+/**
+ * Formateador de números científicos y comerciales de alta fidelidad
+ * Evita el doble truncamiento de toLocaleString()
+ */
+function formatEngineeredNumber(num, precision = 'auto', targetFormat = 'es') {
+  if (num === null || num === undefined || isNaN(num)) return '--';
+  if (!isFinite(num)) return num > 0 ? '∞' : '-∞';
+  if (num === 0) return '0';
+
+  const thousandsSep = targetFormat === 'es' || targetFormat === 'eu' ? '.' : ',';
+  const decimalSep = targetFormat === 'es' || targetFormat === 'eu' ? ',' : '.';
+
+  let formattedStr = '';
+  const absVal = Math.abs(num);
+
+  if (precision === 'sci' || (precision === 'auto' && (absVal < 1e-4 || absVal >= 1e9))) {
+    // Formato científico elegante
+    const expStr = num.toExponential(4);
+    const [mantissa, exp] = expStr.split('e');
+    const localizedMantissa = mantissa.replace('.', decimalSep);
+    return `${localizedMantissa} × 10${formatSuperscript(exp)}`;
+  }
+
+  if (precision === 'auto') {
+    // Si es un entero o casi entero
+    if (Number.isInteger(num)) {
+      formattedStr = String(num);
+    } else {
+      // Hasta 6 cifras significativas sin ceros superfluos
+      const str = num.toPrecision(6);
+      formattedStr = String(parseFloat(str));
+    }
+  } else {
+    const decimals = parseInt(precision, 10);
+    if (!isNaN(decimals) && decimals >= 0 && decimals <= 12) {
+      formattedStr = num.toFixed(decimals);
+    } else {
+      formattedStr = String(num);
+    }
+  }
+
+  // Inyectar separadores de miles y decimales
+  const [intPart, decPart] = formattedStr.split('.');
+  const formattedInt = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, thousandsSep);
+
+  if (decPart !== undefined && decPart !== '') {
+    return `${formattedInt}${decimalSep}${decPart}`;
+  }
+  return formattedInt;
+}
+
+function formatSuperscript(expString) {
+  const supers = {
+    '-': '⁻',
+    '+': '⁺',
+    '0': '⁰',
+    '1': '¹',
+    '2': '²',
+    '3': '³',
+    '4': '⁴',
+    '5': '⁵',
+    '6': '⁶',
+    '7': '⁷',
+    '8': '⁸',
+    '9': '⁹'
+  };
+  return expString.replace(/[-+0-9]/g, char => supers[char] || char);
+}
+
+/**
+ * Procesador en lote (Batch Scratchpad)
+ */
+function processBatchText(rawText, options = {}) {
+  const {
+    targetFormat = 'eu', // 'eu' o 'us'
+    convertUnits = false,
+    unitCategory = null,
+    fromUnit = null,
+    toUnit = null,
+    precision = 'auto',
+    categoriesCatalog = null
+  } = options;
+
+  if (!rawText || !rawText.trim()) {
+    return { output: '', count: 0, errors: 0 };
+  }
+
+  const lines = rawText.split(/\r?\n/);
+  let processedCount = 0;
+  let errorCount = 0;
+
+  const resultLines = lines.map((line, idx) => {
+    if (!line.trim()) return '';
+
+    const parsed = parseRobustNumber(line);
+    if (isNaN(parsed)) {
+      errorCount++;
+      return `[Línea ${idx + 1}: Entrada inválida '${line.trim()}']`;
+    }
+
+    let finalVal = parsed;
+
+    if (convertUnits && unitCategory && fromUnit && toUnit && categoriesCatalog) {
+      try {
+        if (unitCategory === 'temperature') {
+          finalVal = convertTemperature(parsed, fromUnit, toUnit);
+        } else if (unitCategory === 'rf_power') {
+          finalVal = convertRfPower(parsed, fromUnit, toUnit);
+        } else {
+          // Linear conversion
+          const cat = categoriesCatalog[unitCategory];
+          if (cat && cat.units) {
+            finalVal = convertLinear(parsed, fromUnit, toUnit, cat.units);
+          }
+        }
+      } catch {
+        errorCount++;
+        return `[Línea ${idx + 1}: Error de conversión]`;
+      }
+    }
+
+    processedCount++;
+    return formatEngineeredNumber(finalVal, precision, targetFormat);
+  });
+
+  return {
+    output: resultLines.join('\n'),
+    count: processedCount,
+    errors: errorCount
+  };
+}
+
+
+/**
+ * apps/conversor/app.js
+ * Interfaz y Controlador Reactivo del Engineering Workbench v2.0
+ * Datalaria Helix — Single-Source-of-Truth
+ */
+
+
+
+
+const I18N = {
+  es: {
+    backToPortal: '← Datalaria',
+    appTitle: 'Conversor Pro',
+    guidePost: '📖 Guía Técnica',
+    b2bKits: '📦 Kits B2B →',
+    constantsLabel: 'Constantes CODATA:',
+    inputLabel: 'Entrada',
+    outputLabel: 'Resultado',
+    swapTooltip: 'Invertir unidades (Atajo: X)',
+    copyTooltip: 'Copiar (Atajo: C)',
+    copiedFeedback: '✓ ¡Copiado!',
+    shareTooltip: 'Compartir cálculo',
+    linkCopied: '✓ Enlace copiado',
+    precisionLabel: 'Precisión:',
+    omniTitle: 'Omni-Matrix Multi-Escala',
+    formulaTraceLabel: 'Fórmula Base SI:',
+    historyTitle: 'Historial Reciente:',
+    clearHistory: 'Limpiar',
+    scratchpadInputLabel: 'Datos de Entrada (Pega columnas de Excel o números multilínea):',
+    scratchpadOutputLabel: 'Datos Convertidos / Formateados:',
+    scratchpadTargetFormat: 'Formato numérico objetivo:',
+    formatUS: 'US: Miles con coma (,), decimal con punto (.)',
+    formatEU: 'EU: Miles con punto (.), decimal con coma (,)',
+    enableUnitConversion: 'Convertir también magnitud física en cada fila',
+    loadSampleBtn: '⚡ Cargar lote de ejemplo (1 clic)',
+    copyOutputBtn: '📋 Copiar salida',
+    downloadCsvBtn: '💾 Descargar CSV',
+    footerMadeWith: 'Herramienta técnica de Datalaria · Precisión metrológica SI/CODATA 2022 · Cero dependencias externas.',
+    scratchpadSample: `101325\n100000\n150000\n200000\n6894.757\n250000`
+  },
+  en: {
+    backToPortal: '← Datalaria',
+    appTitle: 'Converter Pro',
+    guidePost: '📖 Technical Guide',
+    b2bKits: '📦 B2B Kits →',
+    constantsLabel: 'CODATA Constants:',
+    inputLabel: 'Input Value',
+    outputLabel: 'Converted Result',
+    swapTooltip: 'Swap units (Shortcut: X)',
+    copyTooltip: 'Copy (Shortcut: C)',
+    copiedFeedback: '✓ Copied!',
+    shareTooltip: 'Share calculation',
+    linkCopied: '✓ Link copied',
+    precisionLabel: 'Precision:',
+    omniTitle: 'Multi-Scale Omni-Matrix',
+    formulaTraceLabel: 'Canonical SI Formula:',
+    historyTitle: 'Recent History:',
+    clearHistory: 'Clear',
+    scratchpadInputLabel: 'Input Data (Paste Excel columns or multiline numbers):',
+    scratchpadOutputLabel: 'Converted & Formatted Output:',
+    scratchpadTargetFormat: 'Target number format:',
+    formatUS: 'US: Thousands with comma (,), decimal with dot (.)',
+    formatEU: 'EU: Thousands with dot (.), decimal with comma (,)',
+    enableUnitConversion: 'Also convert physical unit for each row',
+    loadSampleBtn: '⚡ Load sample batch (1-click)',
+    copyOutputBtn: '📋 Copy output',
+    downloadCsvBtn: '💾 Download CSV',
+    footerMadeWith: 'Datalaria engineering toolkit · SI/CODATA 2022 metrological rigor · Zero external dependencies.',
+    scratchpadSample: `101325\n100000\n150000\n200000\n6894.757\n250000`
+  }
+};
+
+const DIDACTIC_TEXTS = {
+  dimension: {
+    es: 'Todas las medidas lineales se normalizan al metro (m) según la definición oficial del BIPM (la distancia recorrida por la luz en el vacío en 1/299.792.458 s). Las áreas se computan en metros cuadrados (m²) y los volúmenes en metros cúbicos (m³), utilizando factores exactos para yardas, pulgadas y galones.',
+    en: 'All spatial measurements are strictly normalized around the canonical meter (m) as defined by the BIPM (distance light travels in vacuum in 1/299,792,458 s). Surface areas derive to square meters (m²) and volume to cubic meters (m³), using exact legal factors for yards, feet, and gallons.'
+  },
+  energia: {
+    es: 'El Julio (J) es la unidad base de energía del Sistema Internacional (1 J = 1 N·m = 1 W·s). La potencia se mide en Vatios (W = J/s). Para la temperatura se aplican transformaciones afines respecto al Kelvin (K).',
+    en: 'The Joule (J) is the canonical SI unit for work and energy (1 J = 1 N·m = 1 W·s). Power is rated in Watts (W = J/s). Thermodynamic temperature transformations map affinely to and from the absolute Kelvin scale (K).'
+  },
+  tiempo: {
+    es: 'El segundo (s) está definido por la frecuencia de transición hiperfina del cesio-133 (9.192.631.770 Hz). Todos los múltiplos estándar (minutos, horas, días y años julianos) se calculan con factores enteros deterministas.',
+    en: 'The second (s) is fixed by the transition frequency of cesium-133 atoms (9,192,631,770 Hz). All standard intervals (minutes, hours, days, and Julian years) are computed deterministically.'
+  },
+  mecanica: {
+    es: 'El Kilogramo (kg) es la unidad fundamental de masa fijada por la constante de Planck. El Newton (N = kg·m/s²) cuantifica la fuerza, y el Pascal (Pa = N/m²) la presión sobre superficies.',
+    en: 'The Kilogram (kg) is the fundamental mass base defined via Planck’s constant. The Newton (N = kg·m/s²) quantifies force, and the Pascal (Pa = N/m²) gauges pressure across areas.'
+  },
+  informatica: {
+    es: 'Diferenciamos estrictamente entre el estándar decimal SI (kB = 1000 B, MB = 10⁶ B) adoptado por fabricantes de discos y redes, y el estándar binario IEC 80000-13 (KiB = 1024 B, MiB = 1024² B) empleado por los sistemas operativos y memorias RAM.',
+    en: 'We strictly distinguish between the decimal SI standard (kB = 1000 B, MB = 10⁶ B) used in network throughput and drive capacities, and the IEC 80000-13 binary standard (KiB = 1024 B, MiB = 1024² B) used by operating systems and memory.'
+  },
+  radiofrecuencia: {
+    es: 'En el espectro electromagnético en el vacío, la frecuencia f y la longitud de onda λ están unidas de forma unívoca por la velocidad de la luz c: λ = c / f. La escala logarítmica dBm expresa potencia relativa a 1 milivatio: P(dBm) = 10·log₁₀(P/1mW).',
+    en: 'In electromagnetic propagation through vacuum, frequency f and wavelength λ are inextricably linked by the speed of light c: λ = c / f. The logarithmic dBm metric gauges power relative to 1 milliwatt: P(dBm) = 10·log₁₀(P/1mW).'
+  },
+  scratchpad: {
+    es: 'El Workbench Masivo permite limpiar columnas completas copiadas desde Excel o CSV. Puedes alternar el formato de separadores numéricos entre notación anglosajona (US) y europea (EU), y opcionalmente convertir unidades físicas fila por fila.',
+    en: 'The Batch Workbench lets you sanitize and convert tabular columns pasted from Excel or CSV. Toggle thousands/decimal separators between US and EU notations, and optionally execute physical unit conversions row by row.'
+  }
+};
+
+class UnitConverterApp {
+  constructor() {
+    this.state = {
+      lang: 'es',
+      category: 'dimension',
+      magnitude: 'length',
+      fromUnit: 'm',
+      toUnit: 'ft',
+      inputValue: 1,
+      precision: 'auto',
+      // RF Special modes
+      rfWavMode: 'freq_to_wav', // or 'wav_to_freq'
+      rfWavFromUnit: 'mhz',
+      rfWavToUnit: 'm',
+      // Batch Scratchpad
+      batchTargetFormat: 'eu',
+      batchConvertUnits: false,
+      batchUnitCategory: 'pressure',
+      batchFromUnit: 'bar',
+      batchToUnit: 'psi',
+      history: []
+    };
+  }
+
+  init() {
+    this.readUrlParams();
+    this.loadHistory();
+    this.renderShell();
+    this.renderCategoryNav();
+    this.renderConstantsBar();
+    this.bindEvents();
+    this.updateView();
+  }
+
+  readUrlParams() {
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get('lang');
+    if (lang === 'en' || lang === 'es') {
+      this.state.lang = lang;
+    } else {
+      const stored = localStorage.getItem('datalaria_lang');
+      if (stored === 'en' || stored === 'es') this.state.lang = stored;
+    }
+
+    const cat = params.get('cat');
+    if (cat && CATEGORIES[cat]) {
+      this.state.category = cat;
+      const mag = params.get('mag');
+      if (mag && CATEGORIES[cat].magnitudes && CATEGORIES[cat].magnitudes[mag]) {
+        this.state.magnitude = mag;
+      } else if (CATEGORIES[cat].magnitudes) {
+        this.state.magnitude = Object.keys(CATEGORIES[cat].magnitudes)[0];
+      }
+    }
+
+    const val = params.get('val');
+    if (val !== null && !isNaN(Number(val))) {
+      this.state.inputValue = Number(val);
+    }
+
+    const from = params.get('from');
+    const to = params.get('to');
+    if (from) this.state.fromUnit = from;
+    if (to) this.state.toUnit = to;
+
+    const prec = params.get('prec');
+    if (prec) this.state.precision = prec;
+  }
+
+  syncUrlParams() {
+    const params = new URLSearchParams();
+    params.set('lang', this.state.lang);
+    params.set('cat', this.state.category);
+    if (this.state.category !== 'scratchpad') {
+      params.set('mag', this.state.magnitude);
+      params.set('val', this.state.inputValue);
+      params.set('from', this.state.fromUnit);
+      params.set('to', this.state.toUnit);
+      if (this.state.precision !== 'auto') {
+        params.set('prec', this.state.precision);
+      }
+    }
+    const newUrl = `${window.location.pathname}?${params.toString()}`;
+    window.history.replaceState({}, '', newUrl);
+  }
+
+  setLanguage(lang) {
+    if (this.state.lang === lang) return;
+    this.state.lang = lang;
+    localStorage.setItem('datalaria_lang', lang);
+    this.renderShell();
+    this.renderCategoryNav();
+    this.renderConstantsBar();
+    this.updateView();
+    this.syncUrlParams();
+  }
+
+  renderShell() {
+    const t = I18N[this.state.lang];
+    const portalUrl = this.state.lang === 'en' ? '/en/apps/conversor/' : '/es/apps/conversor/';
+    const postUrl = this.state.lang === 'en' ? '/en/posts/app_unit_converter/' : '/es/posts/app_conversor_unidades/';
+    const resourcesUrl = this.state.lang === 'en' ? '/en/resources/' : '/es/recursos/';
+
+    const headerEl = document.getElementById('app-header');
+    if (!headerEl) return;
+
+    headerEl.innerHTML = `
+      <div class="header-left">
+        <a href="${portalUrl}" class="back-link" title="${t.backToPortal}">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+          <span>Datalaria</span>
+        </a>
+        <div class="app-title-badge">
+          <span>${t.appTitle}</span>
+          <span class="version-chip">v2.0.0</span>
         </div>
-        <footer class="text-center mt-8 text-gray-500">
-            <p>Una herramienta de Datalaria</p>
-        </footer>
-    </div>
+      </div>
+      <div class="header-right">
+        <div class="lang-switch">
+          <button class="lang-btn ${this.state.lang === 'es' ? 'active' : ''}" data-lang="es">ES</button>
+          <button class="lang-btn ${this.state.lang === 'en' ? 'active' : ''}" data-lang="en">EN</button>
+        </div>
+        <a href="${postUrl}" class="btn-ghost" title="${t.guidePost}">${t.guidePost}</a>
+        <a href="${resourcesUrl}" class="btn-b2b" title="${t.b2bKits}">${t.b2bKits}</a>
+      </div>
+    `;
 
+    headerEl.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => this.setLanguage(btn.dataset.lang));
+    });
+  }
+
+  renderCategoryNav() {
+    const navEl = document.getElementById('categories-nav');
+    if (!navEl) return;
+    const lang = this.state.lang;
+
+    navEl.innerHTML = Object.values(CATEGORIES).map(cat => {
+      const isActive = this.state.category === cat.id;
+      const isScratchpad = cat.id === 'scratchpad';
+      return `
+        <button class="category-pill ${isActive ? 'active' : ''} ${isScratchpad ? 'scratchpad-pill' : ''}" data-cat="${cat.id}">
+          <span>${cat.icon}</span>
+          <span>${cat.title[lang]}</span>
+        </button>
+      `;
+    }).join('');
+
+    navEl.querySelectorAll('.category-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        this.selectCategory(btn.dataset.cat);
+      });
+    });
+  }
+
+  renderConstantsBar() {
+    const barEl = document.getElementById('constants-bar');
+    if (!barEl) return;
+    const t = I18N[this.state.lang];
+    const lang = this.state.lang;
+
+    barEl.innerHTML = `
+      <span class="constants-label">${t.constantsLabel}</span>
+      ${PHYSICAL_CONSTANTS.map(c => `
+        <button class="constant-chip" data-val="${c.value}" title="${c.name[lang]}: ${c.value} ${c.unit}">
+          <strong>${c.symbol}</strong> = ${formatEngineeredNumber(c.value, 'sci', lang)} ${c.unit}
+        </button>
+      `).join('')}
+    `;
+
+    barEl.querySelectorAll('.constant-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const val = Number(chip.dataset.val);
+        this.state.inputValue = val;
+        const inputEl = document.getElementById('main-unit-input');
+        if (inputEl) inputEl.value = val;
+        this.calculateAndRender();
+        this.syncUrlParams();
+      });
+    });
+  }
+
+  selectCategory(catId) {
+    if (this.state.category === catId) return;
+    this.state.category = catId;
+    const cat = CATEGORIES[catId];
+    if (cat.magnitudes) {
+      this.state.magnitude = Object.keys(cat.magnitudes)[0];
+      const mag = cat.magnitudes[this.state.magnitude];
+      if (mag.units) {
+        this.state.fromUnit = mag.defaultFrom || Object.keys(mag.units)[0];
+        this.state.toUnit = mag.defaultTo || Object.keys(mag.units)[1] || Object.keys(mag.units)[0];
+      }
+    }
+    this.renderCategoryNav();
+    this.updateView();
+    this.syncUrlParams();
+  }
+
+  selectMagnitude(magId) {
+    if (this.state.magnitude === magId) return;
+    this.state.magnitude = magId;
+    const cat = CATEGORIES[this.state.category];
+    const mag = cat.magnitudes[magId];
+    if (mag.units) {
+      this.state.fromUnit = mag.defaultFrom || Object.keys(mag.units)[0];
+      this.state.toUnit = mag.defaultTo || Object.keys(mag.units)[1] || Object.keys(mag.units)[0];
+    }
+    this.updateView();
+    this.syncUrlParams();
+  }
+
+  updateView() {
+    const mainCard = document.getElementById('main-converter-card');
+    const scratchpadCard = document.getElementById('scratchpad-card');
+    const didacticCard = document.getElementById('didactic-card');
+
+    if (this.state.category === 'scratchpad') {
+      if (mainCard) mainCard.style.display = 'none';
+      if (scratchpadCard) scratchpadCard.style.display = 'block';
+      this.renderScratchpad();
+    } else {
+      if (scratchpadCard) scratchpadCard.style.display = 'none';
+      if (mainCard) mainCard.style.display = 'block';
+      this.renderConverterCard();
+    }
+
+    if (didacticCard) {
+      const lang = this.state.lang;
+      const text = DIDACTIC_TEXTS[this.state.category] ? DIDACTIC_TEXTS[this.state.category][lang] : '';
+      didacticCard.innerHTML = `
+        <h3 class="didactic-title">${CATEGORIES[this.state.category].icon} ${CATEGORIES[this.state.category].title[lang]}</h3>
+        <p class="didactic-content">${text}</p>
+      `;
+    }
+
+    this.renderHistory();
+  }
+
+  renderConverterCard() {
+    const cardEl = document.getElementById('main-converter-card');
+    if (!cardEl) return;
+    const t = I18N[this.state.lang];
+    const lang = this.state.lang;
+    const cat = CATEGORIES[this.state.category];
+    const mag = cat.magnitudes[this.state.magnitude];
+
+    // Subcategories pill selector
+    const subcats = Object.values(cat.magnitudes);
+    const subcatsHtml = subcats.length > 1 ? `
+      <div class="subcat-selector">
+        ${subcats.map(s => `
+          <button class="subcat-btn ${s.id === this.state.magnitude ? 'active' : ''}" data-mag="${s.id}">
+            ${s.title[lang]}
+          </button>
+        `).join('')}
+      </div>
+    ` : `<div></div>`;
+
+    let cockpitHtml = '';
+
+    if (mag.isSpecialRfWav) {
+      cockpitHtml = this.getRfWavCockpitHtml(t, lang);
+    } else {
+      cockpitHtml = this.getStandardCockpitHtml(mag, t, lang);
+    }
+
+    cardEl.innerHTML = `
+      <div class="card-topbar">
+        ${subcatsHtml}
+        <div class="card-controls">
+          <div class="precision-control">
+            <span>${t.precisionLabel}</span>
+            <select id="precision-select" class="select-compact">
+              <option value="auto" ${this.state.precision === 'auto' ? 'selected' : ''}>Auto</option>
+              <option value="2" ${this.state.precision === '2' ? 'selected' : ''}>2 dec</option>
+              <option value="4" ${this.state.precision === '4' ? 'selected' : ''}>4 dec</option>
+              <option value="6" ${this.state.precision === '6' ? 'selected' : ''}>6 dec</option>
+              <option value="8" ${this.state.precision === '8' ? 'selected' : ''}>8 dec</option>
+              <option value="sci" ${this.state.precision === 'sci' ? 'selected' : ''}>Sci (×10ⁿ)</option>
+            </select>
+          </div>
+          <button id="btn-share" class="btn-action" title="${t.shareTooltip}">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            <span>URL</span>
+          </button>
+        </div>
+      </div>
+
+      ${cockpitHtml}
+
+      <div class="action-strip">
+        <div class="action-buttons">
+          <button id="btn-copy-result" class="btn-action" title="${t.copyTooltip}">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span id="copy-btn-text">${t.copyTooltip}</span>
+          </button>
+        </div>
+        <div id="formula-trace-container" class="formula-trace">
+          <!-- Live formula will populate here -->
+        </div>
+      </div>
+
+      <div id="omni-matrix-container" class="omni-matrix-panel">
+        <!-- Omni matrix will populate here -->
+      </div>
+    `;
+
+    // Bind subcategory click
+    cardEl.querySelectorAll('.subcat-btn').forEach(btn => {
+      btn.addEventListener('click', () => this.selectMagnitude(btn.dataset.mag));
+    });
+
+    // Precision select
+    const precSelect = cardEl.querySelector('#precision-select');
+    if (precSelect) {
+      precSelect.addEventListener('change', (e) => {
+        this.state.precision = e.target.value;
+        this.calculateAndRender();
+        this.syncUrlParams();
+      });
+    }
+
+    // Share button
+    const shareBtn = cardEl.querySelector('#btn-share');
+    if (shareBtn) {
+      shareBtn.addEventListener('click', () => {
+        this.syncUrlParams();
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          shareBtn.innerHTML = `<span>${t.linkCopied}</span>`;
+          setTimeout(() => {
+            shareBtn.innerHTML = `
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+              <span>URL</span>
+            `;
+          }, 1800);
+        });
+      });
+    }
+
+    // Copy result button
+    const copyBtn = cardEl.querySelector('#btn-copy-result');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', () => {
+        const outEl = document.getElementById('main-unit-output');
+        if (outEl) {
+          const text = outEl.textContent.trim();
+          navigator.clipboard.writeText(text).then(() => {
+            copyBtn.classList.add('copied');
+            const btnText = cardEl.querySelector('#copy-btn-text');
+            if (btnText) btnText.textContent = t.copiedFeedback;
+            setTimeout(() => {
+              copyBtn.classList.remove('copied');
+              if (btnText) btnText.textContent = t.copyTooltip;
+            }, 1800);
+          });
+        }
+      });
+    }
+
+    this.bindConverterInputs();
+    this.calculateAndRender();
+  }
+
+  getStandardCockpitHtml(mag, t, lang) {
+    const units = Object.values(mag.units);
+    return `
+      <div class="cockpit-grid">
+        <div class="unit-cell">
+          <label class="cell-label" for="main-unit-input">
+            <span>${t.inputLabel}</span>
+          </label>
+          <input type="number" id="main-unit-input" class="unit-input" value="${this.state.inputValue}" step="any">
+          <select id="main-from-unit-select" class="unit-select">
+            ${units.map(u => `<option value="${u.id}" ${u.id === this.state.fromUnit ? 'selected' : ''}>${u.name[lang]}</option>`).join('')}
+          </select>
+        </div>
+
+        <div class="swap-btn-container">
+          <button id="btn-swap-units" class="btn-swap" title="${t.swapTooltip}">
+            ⇄
+          </button>
+        </div>
+
+        <div class="unit-cell">
+          <span class="cell-label">
+            <span>${t.outputLabel}</span>
+          </span>
+          <div id="main-unit-output" class="unit-output">--</div>
+          <select id="main-to-unit-select" class="unit-select">
+            ${units.map(u => `<option value="${u.id}" ${u.id === this.state.toUnit ? 'selected' : ''}>${u.name[lang]}</option>`).join('')}
+          </select>
+        </div>
+      </div>
+    `;
+  }
+
+  getRfWavCockpitHtml(t, lang) {
+    const isFreqToWav = this.state.rfWavMode === 'freq_to_wav';
+    const freqUnits = Object.keys(FREQ_FACTORS);
+    const wavUnits = Object.keys(WAVELENGTH_FACTORS);
+
+    return `
+      <div class="cockpit-grid">
+        <div class="unit-cell">
+          <label class="cell-label" for="main-unit-input">
+            <span>${isFreqToWav ? 'Frecuencia (f)' : 'Longitud de Onda (λ)'}</span>
+          </label>
+          <input type="number" id="main-unit-input" class="unit-input" value="${this.state.inputValue}" step="any">
+          <select id="rf-from-select" class="unit-select">
+            ${(isFreqToWav ? freqUnits : wavUnits).map(u => `
+              <option value="${u}" ${u === (isFreqToWav ? this.state.rfWavFromUnit : this.state.rfWavToUnit) ? 'selected' : ''}>${u.toUpperCase()}</option>
+            `).join('')}
+          </select>
+        </div>
+
+        <div class="swap-btn-container">
+          <button id="btn-swap-rf-wav" class="btn-swap" title="${t.swapTooltip}">
+            ⇄
+          </button>
+        </div>
+
+        <div class="unit-cell">
+          <span class="cell-label">
+            <span>${isFreqToWav ? 'Longitud de Onda (λ = c/f)' : 'Frecuencia (f = c/λ)'}</span>
+          </span>
+          <div id="main-unit-output" class="unit-output">--</div>
+          <select id="rf-to-select" class="unit-select">
+            ${(isFreqToWav ? wavUnits : freqUnits).map(u => `
+              <option value="${u}" ${u === (isFreqToWav ? this.state.rfWavToUnit : this.state.rfWavFromUnit) ? 'selected' : ''}>${u.toUpperCase()}</option>
+            `).join('')}
+          </select>
+        </div>
+      </div>
+    `;
+  }
+
+  bindConverterInputs() {
+    const inputEl = document.getElementById('main-unit-input');
+    const fromSelect = document.getElementById('main-from-unit-select');
+    const toSelect = document.getElementById('main-to-unit-select');
+    const swapBtn = document.getElementById('btn-swap-units');
+
+    if (inputEl) {
+      inputEl.addEventListener('input', (e) => {
+        this.state.inputValue = Number(e.target.value);
+        this.calculateAndRender();
+        this.syncUrlParams();
+      });
+    }
+
+    if (fromSelect) {
+      fromSelect.addEventListener('change', (e) => {
+        this.state.fromUnit = e.target.value;
+        this.calculateAndRender();
+        this.syncUrlParams();
+      });
+    }
+
+    if (toSelect) {
+      toSelect.addEventListener('change', (e) => {
+        this.state.toUnit = e.target.value;
+        this.calculateAndRender();
+        this.syncUrlParams();
+      });
+    }
+
+    if (swapBtn) {
+      swapBtn.addEventListener('click', () => {
+        const temp = this.state.fromUnit;
+        this.state.fromUnit = this.state.toUnit;
+        this.state.toUnit = temp;
+        if (fromSelect) fromSelect.value = this.state.fromUnit;
+        if (toSelect) toSelect.value = this.state.toUnit;
+        this.calculateAndRender();
+        this.syncUrlParams();
+      });
+    }
+
+    // Special RF λ-f binding
+    const rfSwapBtn = document.getElementById('btn-swap-rf-wav');
+    const rfFromSelect = document.getElementById('rf-from-select');
+    const rfToSelect = document.getElementById('rf-to-select');
+
+    if (rfSwapBtn) {
+      rfSwapBtn.addEventListener('click', () => {
+        this.state.rfWavMode = this.state.rfWavMode === 'freq_to_wav' ? 'wav_to_freq' : 'freq_to_wav';
+        this.renderConverterCard();
+      });
+    }
+
+    if (rfFromSelect) {
+      rfFromSelect.addEventListener('change', (e) => {
+        if (this.state.rfWavMode === 'freq_to_wav') this.state.rfWavFromUnit = e.target.value;
+        else this.state.rfWavToUnit = e.target.value;
+        this.calculateAndRender();
+      });
+    }
+
+    if (rfToSelect) {
+      rfToSelect.addEventListener('change', (e) => {
+        if (this.state.rfWavMode === 'freq_to_wav') this.state.rfWavToUnit = e.target.value;
+        else this.state.rfWavFromUnit = e.target.value;
+        this.calculateAndRender();
+      });
+    }
+  }
+
+  calculateAndRender() {
+    const outputEl = document.getElementById('main-unit-output');
+    const traceEl = document.getElementById('formula-trace-container');
+    const omniEl = document.getElementById('omni-matrix-container');
+    if (!outputEl) return;
+
+    const cat = CATEGORIES[this.state.category];
+    const mag = cat.magnitudes[this.state.magnitude];
+    const val = this.state.inputValue;
+    const lang = this.state.lang;
+    let result = NaN;
+    let traceText = '';
+
+    if (mag.isSpecialRfWav) {
+      const mode = this.state.rfWavMode;
+      const fromU = mode === 'freq_to_wav' ? this.state.rfWavFromUnit : this.state.rfWavToUnit;
+      const toU = mode === 'freq_to_wav' ? this.state.rfWavToUnit : this.state.rfWavFromUnit;
+      result = convertRfWavFreq(val, mode, fromU, toU);
+      traceText = mode === 'freq_to_wav' ?
+        `λ = c / f = 299.792.458 m/s ÷ (${val} ${fromU.toUpperCase()})` :
+        `f = c / λ = 299.792.458 m/s ÷ (${val} ${fromU.toUpperCase()})`;
+    } else if (mag.isSpecialRfPower) {
+      result = convertRfPower(val, this.state.fromUnit, this.state.toUnit);
+      traceText = `dBm ⇔ W/mW: P(mW) = 10^(dBm / 10)`;
+    } else if (mag.isNonLinear && mag.id === 'temperature') {
+      result = convertTemperature(val, this.state.fromUnit, this.state.toUnit);
+      traceText = `T(${this.state.toUnit.toUpperCase()}) = escala(${this.state.fromUnit.toUpperCase()} ➔ K ➔ ${this.state.toUnit.toUpperCase()})`;
+    } else {
+      result = convertLinear(val, this.state.fromUnit, this.state.toUnit, mag.units);
+      const fromU = mag.units[this.state.fromUnit];
+      const toU = mag.units[this.state.toUnit];
+      if (fromU && toU) {
+        traceText = `${val} × ${fromU.factor} ${mag.baseUnit} ÷ ${toU.factor} = ${toU.symbol}`;
+      }
+    }
+
+    const formatted = formatEngineeredNumber(result, this.state.precision, lang);
+    outputEl.textContent = formatted;
+
+    if (traceEl) {
+      traceEl.innerHTML = `<strong>${I18N[lang].formulaTraceLabel}</strong> <span>${traceText}</span>`;
+    }
+
+    // Omni Matrix rendering
+    if (omniEl && mag.units && !mag.isSpecialRfWav) {
+      this.renderOmniMatrix(omniEl, val, mag, lang);
+    } else if (omniEl) {
+      omniEl.innerHTML = '';
+    }
+
+    // Save calculation to history
+    this.saveCalculationToHistory(val, this.state.fromUnit, result, this.state.toUnit, mag);
+  }
+
+  renderOmniMatrix(container, val, mag, lang) {
+    const t = I18N[lang];
+    const allUnits = Object.values(mag.units);
+    // Take 4 representative units different from current from/to
+    const otherUnits = allUnits.filter(u => u.id !== this.state.fromUnit && u.id !== this.state.toUnit).slice(0, 4);
+
+    if (otherUnits.length === 0) {
+      container.innerHTML = '';
+      return;
+    }
+
+    const cardsHtml = otherUnits.map(u => {
+      let r = NaN;
+      if (mag.isNonLinear && mag.id === 'temperature') {
+        r = convertTemperature(val, this.state.fromUnit, u.id);
+      } else if (mag.isSpecialRfPower) {
+        r = convertRfPower(val, this.state.fromUnit, u.id);
+      } else {
+        r = convertLinear(val, this.state.fromUnit, u.id, mag.units);
+      }
+      return `
+        <div class="omni-item">
+          <span class="omni-item-label">${u.name[lang]}</span>
+          <span class="omni-item-val">${formatEngineeredNumber(r, this.state.precision, lang)}</span>
+        </div>
+      `;
+    }).join('');
+
+    container.innerHTML = `
+      <div class="omni-title">
+        <span>${t.omniTitle}</span>
+        <span>Equivalencias Simultáneas</span>
+      </div>
+      <div class="omni-grid">
+        ${cardsHtml}
+      </div>
+    `;
+  }
+
+  renderScratchpad() {
+    const cardEl = document.getElementById('scratchpad-card');
+    if (!cardEl) return;
+    const t = I18N[this.state.lang];
+    const lang = this.state.lang;
+
+    // Build categories options for optional batch unit conversion
+    const availableCategories = Object.values(CATEGORIES).filter(c => c.magnitudes);
+
+    cardEl.innerHTML = `
+      <div class="converter-card">
+        <h2 class="didactic-title" style="margin-bottom: 1rem;">📋 ${CATEGORIES.scratchpad.title[lang]}</h2>
+        <div class="scratchpad-toolbar" style="margin-bottom: 1rem;">
+          <div style="display:flex; align-items:center; gap:0.5rem;">
+            <label style="font-size:0.8rem; color:var(--text-secondary);">${t.scratchpadTargetFormat}</label>
+            <select id="batch-format-select" class="select-compact">
+              <option value="eu" ${this.state.batchTargetFormat === 'eu' ? 'selected' : ''}>EU (1.234,56)</option>
+              <option value="us" ${this.state.batchTargetFormat === 'us' ? 'selected' : ''}>US (1,234.56)</option>
+            </select>
+          </div>
+
+          <div style="display:flex; align-items:center; gap:0.5rem;">
+            <input type="checkbox" id="batch-unit-toggle" ${this.state.batchConvertUnits ? 'checked' : ''}>
+            <label for="batch-unit-toggle" style="font-size:0.8rem; color:var(--text-secondary); cursor:pointer;">
+              ${t.enableUnitConversion}
+            </label>
+          </div>
+
+          <button id="btn-batch-sample" class="btn-action">
+            ${t.loadSampleBtn}
+          </button>
+        </div>
+
+        <div id="batch-unit-selector-row" style="display: ${this.state.batchConvertUnits ? 'flex' : 'none'}; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; background: var(--bg-canvas); padding: 0.75rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+          <select id="batch-category-select" class="select-compact">
+            <option value="pressure">Presión (Mecánica)</option>
+            <option value="length">Longitud (Dimensión)</option>
+            <option value="mass">Masa (Mecánica)</option>
+            <option value="energy">Energía</option>
+            <option value="power">Potencia</option>
+            <option value="storage_binary">Almacenamiento (IEC)</option>
+          </select>
+          <span style="font-size:0.8rem; color:var(--text-muted); align-self:center;">de</span>
+          <select id="batch-from-select" class="select-compact"></select>
+          <span style="font-size:0.8rem; color:var(--text-muted); align-self:center;">a</span>
+          <select id="batch-to-select" class="select-compact"></select>
+        </div>
+
+        <div class="scratchpad-view">
+          <div class="scratchpad-panel">
+            <label class="cell-label" for="batch-input">${t.scratchpadInputLabel}</label>
+            <textarea id="batch-input" class="scratchpad-textarea" placeholder="Pega números aquí, uno por línea..."></textarea>
+          </div>
+          <div class="scratchpad-panel">
+            <label class="cell-label" for="batch-output">${t.scratchpadOutputLabel}</label>
+            <textarea id="batch-output" class="scratchpad-textarea" readonly></textarea>
+          </div>
+        </div>
+
+        <div class="scratchpad-toolbar" style="margin-top: 1rem;">
+          <div style="font-size:0.8rem; color:var(--text-muted);" id="batch-status-text">0 líneas procesadas</div>
+          <div style="display:flex; gap:0.5rem;">
+            <button id="btn-batch-copy" class="btn-action">${t.copyOutputBtn}</button>
+            <button id="btn-batch-csv" class="btn-action">${t.downloadCsvBtn}</button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    this.bindScratchpadEvents();
+  }
+
+  bindScratchpadEvents() {
+    const inputEl = document.getElementById('batch-input');
+    const outputEl = document.getElementById('batch-output');
+    const formatSelect = document.getElementById('batch-format-select');
+    const unitToggle = document.getElementById('batch-unit-toggle');
+    const sampleBtn = document.getElementById('btn-batch-sample');
+    const copyBtn = document.getElementById('btn-batch-copy');
+    const csvBtn = document.getElementById('btn-batch-csv');
+    const statusText = document.getElementById('batch-status-text');
+
+    const updateBatch = () => {
+      if (!inputEl || !outputEl) return;
+      const text = inputEl.value;
+      const res = processBatchText(text, {
+        targetFormat: this.state.batchTargetFormat,
+        convertUnits: this.state.batchConvertUnits,
+        unitCategory: this.state.batchUnitCategory,
+        fromUnit: this.state.batchFromUnit,
+        toUnit: this.state.batchToUnit,
+        precision: this.state.precision,
+        categoriesCatalog: this.getFlattenedCatalog()
+      });
+      outputEl.value = res.output;
+      if (statusText) {
+        statusText.textContent = `${res.count} líneas procesadas (${res.errors} errores)`;
+      }
+    };
+
+    if (inputEl) inputEl.addEventListener('input', updateBatch);
+
+    if (formatSelect) {
+      formatSelect.addEventListener('change', (e) => {
+        this.state.batchTargetFormat = e.target.value;
+        updateBatch();
+      });
+    }
+
+    if (unitToggle) {
+      unitToggle.addEventListener('change', (e) => {
+        this.state.batchConvertUnits = e.target.checked;
+        const row = document.getElementById('batch-unit-selector-row');
+        if (row) row.style.display = e.target.checked ? 'flex' : 'none';
+        this.populateBatchUnits();
+        updateBatch();
+      });
+    }
+
+    if (sampleBtn) {
+      sampleBtn.addEventListener('click', () => {
+        if (inputEl) {
+          inputEl.value = I18N[this.state.lang].scratchpadSample;
+          updateBatch();
+        }
+      });
+    }
+
+    if (copyBtn) {
+      copyBtn.addEventListener('click', () => {
+        if (outputEl && outputEl.value) {
+          navigator.clipboard.writeText(outputEl.value).then(() => {
+            copyBtn.textContent = I18N[this.state.lang].copiedFeedback;
+            setTimeout(() => { copyBtn.textContent = I18N[this.state.lang].copyOutputBtn; }, 1800);
+          });
+        }
+      });
+    }
+
+    if (csvBtn) {
+      csvBtn.addEventListener('click', () => {
+        if (outputEl && outputEl.value) {
+          const blob = new Blob([outputEl.value], { type: 'text/csv;charset=utf-8;' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `datalaria_conversor_lote_${Date.now()}.csv`;
+          a.click();
+          URL.revokeObjectURL(url);
+        }
+      });
+    }
+
+    this.populateBatchUnits();
+  }
+
+  getFlattenedCatalog() {
+    const flat = {};
+    Object.values(CATEGORIES).forEach(c => {
+      if (c.magnitudes) {
+        Object.entries(c.magnitudes).forEach(([magKey, magObj]) => {
+          flat[magKey] = magObj;
+        });
+      }
+    });
+    return flat;
+  }
+
+  populateBatchUnits() {
+    const catSelect = document.getElementById('batch-category-select');
+    const fromSelect = document.getElementById('batch-from-select');
+    const toSelect = document.getElementById('batch-to-select');
+    if (!catSelect || !fromSelect || !toSelect) return;
+
+    const flat = this.getFlattenedCatalog();
+    const currentMag = flat[this.state.batchUnitCategory];
+    if (!currentMag || !currentMag.units) return;
+
+    const units = Object.values(currentMag.units);
+    const lang = this.state.lang;
+
+    fromSelect.innerHTML = units.map(u => `<option value="${u.id}" ${u.id === this.state.batchFromUnit ? 'selected' : ''}>${u.name[lang]}</option>`).join('');
+    toSelect.innerHTML = units.map(u => `<option value="${u.id}" ${u.id === this.state.batchToUnit ? 'selected' : ''}>${u.name[lang]}</option>`).join('');
+
+    catSelect.value = this.state.batchUnitCategory;
+
+    catSelect.onchange = (e) => {
+      this.state.batchUnitCategory = e.target.value;
+      const m = flat[e.target.value];
+      if (m && m.units) {
+        const uKeys = Object.keys(m.units);
+        this.state.batchFromUnit = uKeys[0];
+        this.state.batchToUnit = uKeys[1] || uKeys[0];
+      }
+      this.populateBatchUnits();
+      const inEl = document.getElementById('batch-input');
+      if (inEl) inEl.dispatchEvent(new Event('input'));
+    };
+
+    fromSelect.onchange = (e) => {
+      this.state.batchFromUnit = e.target.value;
+      const inEl = document.getElementById('batch-input');
+      if (inEl) inEl.dispatchEvent(new Event('input'));
+    };
+
+    toSelect.onchange = (e) => {
+      this.state.batchToUnit = e.target.value;
+      const inEl = document.getElementById('batch-input');
+      if (inEl) inEl.dispatchEvent(new Event('input'));
+    };
+  }
+
+  saveCalculationToHistory(fromVal, fromUnit, toVal, toUnit, mag) {
+    if (isNaN(toVal) || !isFinite(toVal)) return;
+    const item = {
+      fromVal,
+      fromUnit,
+      toVal: formatEngineeredNumber(toVal, 'auto', this.state.lang),
+      toUnit,
+      category: this.state.category,
+      magnitude: this.state.magnitude,
+      time: Date.now()
+    };
+    // Keep max 8 unique items
+    const filtered = this.state.history.filter(h => !(h.fromUnit === fromUnit && h.toUnit === toUnit && h.fromVal === fromVal));
+    filtered.unshift(item);
+    this.state.history = filtered.slice(0, 8);
+    localStorage.setItem('datalaria_conversor_hist', JSON.stringify(this.state.history));
+    this.renderHistory();
+  }
+
+  loadHistory() {
+    try {
+      const data = localStorage.getItem('datalaria_conversor_hist');
+      if (data) this.state.history = JSON.parse(data);
+    } catch {
+      this.state.history = [];
+    }
+  }
+
+  renderHistory() {
+    const stripEl = document.getElementById('history-strip');
+    if (!stripEl) return;
+    const t = I18N[this.state.lang];
+
+    if (this.state.history.length === 0) {
+      stripEl.style.display = 'none';
+      return;
+    }
+
+    stripEl.style.display = 'flex';
+    stripEl.innerHTML = `
+      <span class="history-title">${t.historyTitle}</span>
+      <div class="history-items">
+        ${this.state.history.map((h, i) => `
+          <button class="history-pill" data-idx="${i}">
+            ${h.fromVal} ${h.fromUnit} ➔ ${h.toVal} ${h.toUnit}
+          </button>
+        `).join('')}
+      </div>
+    `;
+
+    stripEl.querySelectorAll('.history-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = this.state.history[Number(btn.dataset.idx)];
+        if (item) {
+          this.state.category = item.category;
+          this.state.magnitude = item.magnitude;
+          this.state.fromUnit = item.fromUnit;
+          this.state.toUnit = item.toUnit;
+          this.state.inputValue = item.fromVal;
+          this.renderCategoryNav();
+          this.updateView();
+          this.syncUrlParams();
+        }
+      });
+    });
+  }
+
+  bindEvents() {
+    // Keyboard shortcuts
+    window.addEventListener('keydown', (e) => {
+      // Don't trigger if typing in textarea or input
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+      if (e.key === 'x' || e.key === 'X') {
+        const swapBtn = document.getElementById('btn-swap-units') || document.getElementById('btn-swap-rf-wav');
+        if (swapBtn) swapBtn.click();
+      } else if (e.key === 'c' || e.key === 'C') {
+        const copyBtn = document.getElementById('btn-copy-result');
+        if (copyBtn) copyBtn.click();
+      }
+    });
+  }
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const app = new UnitConverterApp();
+    app.init();
+    window._datalariaConversorApp = app;
+});
+    </script>
 </body>
-
 </html>

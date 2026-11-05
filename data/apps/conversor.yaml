@@ -1,86 +1,81 @@
 slug: conversor
 order: 60
 tier: lab
-status: frozen
+status: active
 icon: "🔄"
 cover: cover.png
 app_url: /apps/conversor/
 source_spec: specs/apps/conversor/spec.md
-current_version: v1.0.0
+current_version: v2.0.0
 
 title:
   es: "Conversor de Unidades"
   en: "Unit Converter"
 
 tagline:
-  es: "Navaja suiza digital para conversiones científicas y técnicas en 6 disciplinas de ingeniería."
-  en: "Digital Swiss Army knife for scientific and engineering unit conversions across 6 core disciplines."
+  es: "Engineering Workbench v2.0: Navaja suiza científica para conversiones técnicas, metrología SI y procesamiento masivo."
+  en: "Engineering Workbench v2.0: Scientific Swiss Army knife for technical conversions, SI metrology, and batch processing."
 
 summary:
-  es: "Suite integral y multipágina de conversión de unidades de medida diseñada para ingenieros, científicos y estudiantes técnicos. Agrupa 6 calculadoras especializadas: Dimensión, Energía, Tiempo, Mecánica, Informática y Radiofrecuencia. Integra un conversor en vivo de formato de separador numérico (punto vs coma) y realiza todos los cálculos normalizando analíticamente a las unidades base del Sistema Internacional (SI) con cero dependencias externas."
-  en: "Comprehensive multi-page unit conversion suite designed for engineers, scientists, and STEM students. Groups 6 dedicated modules: Dimension, Energy, Time, Mechanics, Computing, and Radiofrequency. Features live bidirectional number formatting conversion (decimal point vs comma) and executes all math normalized around canonical International System (SI) base units with zero external dependencies."
+  es: "Suite de ingeniería de alta precisión para conversión de magnitudes físicas, metrología SI/CODATA 2022 y formateo numérico internacional. Integra 6 disciplinas científicas (Dimensión, Energía, Tiempo, Mecánica, Informática y Radiofrecuencia) con cálculo bidireccional de dBm ⇔ W, relación λ ⇔ f, y un Batch Scratchpad multilínea para limpiar y transformar columnas de Excel sin enviar datos a la red."
+  en: "High-precision engineering workbench for physical unit conversion, SI/CODATA 2022 metrology, and international number formatting. Integrates 6 scientific domains (Dimension, Energy, Time, Mechanics, Computing, and Radiofrequency) with bidirectional dBm ⇔ W power, λ ⇔ f wavelength math, and a multiline Batch Scratchpad to sanitize and transform Excel columns entirely in the browser."
 
 objectives:
-  - es: "Proporcionar una navaja suiza digital para realizar conversiones de magnitudes científicas y de ingeniería de forma instantánea, precisa y sin publicidad."
-    en: "Provide a digital Swiss Army knife for instantaneous, precise, and ad-free scientific and engineering unit conversions."
-  - es: "Abarcar 6 disciplinas clave: Dimensión (longitud, área, volumen), Energía/Potencia, Tiempo, Mecánica (fuerza, presión), Informática/Datos y Radiofrecuencia."
-    en: "Cover 6 core disciplines: Dimension (length, area, volume), Energy/Power, Time, Mechanics (force, pressure), Computing/Data, and Radiofrequency."
-  - es: "Normalizar analíticamente todas las fórmulas tomando como base el Sistema Internacional (SI) para garantizar máxima fidelidad numérica."
-    en: "Analytically normalize all formulas around canonical International System (SI) base units to guarantee maximum numerical fidelity."
-  - es: "Asegurar un funcionamiento 100% offline, ultraligero y con paridad bilingüe completa en español e inglés."
-    en: "Ensure 100% offline, ultra-lightweight performance with full bilingual parity across Spanish and English."
+  - es: "Proporcionar un Engineering Workbench digital para realizar conversiones de magnitudes científicas y de ingeniería con rigor SI/CODATA, carga instantánea y cero publicidad."
+    en: "Provide a digital Engineering Workbench for scientific and engineering conversions with SI/CODATA rigor, instantaneous loading, and zero ads."
+  - es: "Abarcar 6 disciplinas clave: Dimensión (longitud, área, volumen), Energía/Potencia/Temperatura, Tiempo, Mecánica (fuerza, presión), Informática (IEC binario vs SI decimal) y Radiofrecuencia (frecuencia, λ, dBm)."
+    en: "Cover 6 core disciplines: Dimension (length, area, volume), Energy/Power/Temperature, Time, Mechanics (force, pressure), Computing (IEC binary vs SI decimal), and Radiofrequency (frequency, λ, dBm)."
+  - es: "Garantizar reversibilidad matemática exacta (INV-CONV-1) y permitir el procesamiento multilínea por lotes desde hojas de cálculo."
+    en: "Guarantee strict mathematical reversibility (INV-CONV-1) and enable multiline batch transformation from spreadsheets."
+  - es: "Asegurar un funcionamiento 100% offline en el cliente, con paridad bilingüe completa (ES/EN), deep-linking y cero dependencias externas."
+    en: "Ensure 100% offline client-side performance with full bilingual parity (ES/EN), deep-linking, and zero external runtime dependencies."
 
 features:
   - icon: "📐"
-    es: "6 Módulos Especializados: Dimensión (m, ft, in), Energía (J, kWh, BTU), Tiempo, Mecánica (N, Bar, PSI), Informática (Bytes, GB) y Radiofrecuencia (dBm, λ)."
-    en: "6 Dedicated Modules: Dimension (m, ft, in), Energy (J, kWh, BTU), Time, Mechanics (N, Bar, PSI), Computing (Bytes, GB), and Radiofrequency (dBm, λ)."
-  - icon: "🔢"
-    es: "Conversor de Separador Decimal: alterna instantáneamente entre punto (.) y coma (,) para cifras de miles y decimales internacionales."
-    en: "Decimal Separator Converter: instantly toggle between dot (.) and comma (,) formatting for international thousands and decimal figures."
+    es: "6 Módulos Especializados: Dimensión (m, ft, in, NM), Energía (J, kWh, BTU, cal), Tiempo, Mecánica (N, Bar, PSI, atm), Informática (KiB/MiB vs kB/MB) y Radiofrecuencia (dBm ⇔ W, λ ⇔ f)."
+    en: "6 Dedicated Modules: Dimension (m, ft, in, NM), Energy (J, kWh, BTU, cal), Time, Mechanics (N, Bar, PSI, atm), Computing (KiB/MiB vs kB/MB), and Radiofrequency (dBm ⇔ W, λ ⇔ f)."
+  - icon: "📋"
+    es: "Batch Scratchpad Multilínea: pega columnas enteras de Excel o CSV para convertir separadores (US ⇔ EU) y/o transformar magnitudes físicas fila por fila."
+    en: "Multiline Batch Scratchpad: paste entire Excel or CSV columns to toggle number formats (US ⇔ EU) and/or convert physical units row by row."
   - icon: "📡"
-    es: "Fórmulas Avanzadas de RF: conversor de potencia en escala logarítmica (dBm a vatios) y relación frecuencia-longitud de onda electromagnética."
-    en: "Advanced RF Math: logarithmic power conversion (dBm to Watts) and electromagnetic frequency-to-wavelength relationship calculations."
+    es: "Fórmulas Avanzadas de RF: cálculo bidireccional de potencia logarítmica (dBm ⇔ mW / W / kW) y relación exacta frecuencia-longitud de onda (λ = c / f)."
+    en: "Advanced RF Math: bidirectional logarithmic power math (dBm ⇔ mW / W / kW) and exact frequency-to-wavelength calculations (λ = c / f)."
+  - icon: "🔬"
+    es: "Omni-Matrix Multi-Escala & Constantes CODATA: previsualiza al instante 4 equivalencias complementarias y accede en 1 clic a constantes universales (c, g₀, h, k_B, N_A, ε₀, R, e)."
+    en: "Multi-Scale Omni-Matrix & CODATA Constants: instantly preview 4 simultaneous equivalents and inject fundamental constants in 1 click (c, g₀, h, k_B, N_A, ε₀, R, e)."
+  - icon: "🔗"
+    es: "Deep-Linking y Ergonomía: atajos de teclado (X invertir, C copiar), control de precisión/notación científica y URLs permanentes para compartir cálculos técnicos."
+    en: "Deep-Linking & Ergonomics: keyboard shortcuts (X swap, C copy), precision/scientific notation control, and permanent shareable calculation URLs."
   - icon: "⚡"
-    es: "Cero Dependencias: código puro en HTML5 semántico, CSS moderno y JavaScript Vanilla para una carga ultrarrápida en cualquier dispositivo."
-    en: "Zero Dependencies: pure semantic HTML5, modern CSS, and Vanilla JavaScript guaranteeing instant loading across all devices."
-  - icon: "🌐"
-    es: "Arquitectura Espejo Bilingüe: páginas dedicadas y explicaciones físicas traducidas al 100% en rutas `/es/` y `/en/`."
-    en: "Bilingual Mirror Architecture: dedicated pages and physical concept explainers 100% localized across `/es/` and `/en/` routes."
+    es: "Cero Dependencias: arquitectura Single-Source-of-Truth en Vanilla JS y CSS nativo con shims retrocompatibles para preservar el 100% de enlaces históricos y SEO."
+    en: "Zero Dependencies: Single-Source-of-Truth architecture in Vanilla JS and native CSS with backward-compatible shims preserving 100% of legacy URLs and SEO."
 
 design:
   architecture:
-    es: "Arquitectura modular estática desacoplada: cada disciplina física cuenta con su propia pantalla de conversión (`dimension.html`, `energia.html`, etc.) orquestada desde un índice principal. Las conversiones normalizan el valor de entrada a la unidad base del SI antes de proyectarlo analíticamente a la unidad solicitada."
-    en: "Decoupled static modular architecture: each physical domain is encapsulated in an isolated conversion page (`dimension.html`, `energy.html`, etc.) routed from a central hub. Input numbers are systematically normalized to canonical SI base units before projecting to target units."
+    es: "Arquitectura Single-Source-of-Truth desacoplada: el catálogo canónico y motor matemático residen centralizados en `apps/conversor/` y compilan a un único artefacto estático SPA ultraligero (`static/apps/conversor/index.html`). Los 14 accesos históricos en `/es/` y `/en/` cuentan con shims de redirección inmediata con meta refresh y JS para blindar el SEO y marcadores preexistentes."
+    en: "Decoupled Single-Source-of-Truth architecture: canonical catalog and math engine reside in `apps/conversor/` and compile to a single lightweight static SPA (`static/apps/conversor/index.html`). The 14 legacy endpoints across `/es/` and `/en/` are preserved via instant meta refresh and JS shims protecting SEO and existing bookmarks."
   principles:
-    - es: "Rigor Metrológico: estandarización sobre las definiciones del Sistema Internacional (SI) y constantes físicas CODATA."
-      en: "Metrological Rigor: standardized on official International System (SI) definitions and CODATA fundamental constants."
+    - es: "Rigor Metrológico: estandarización sobre las definiciones del Sistema Internacional (SI) y constantes físicas CODATA 2022."
+      en: "Metrological Rigor: standardized on official International System (SI) definitions and CODATA 2022 fundamental constants."
     - es: "Velocidad y Cero Bloqueo: todo cálculo se procesa en el hilo principal del navegador en microsegundos sin requerir peticiones de red."
       en: "Instantaneous Speed: all arithmetic runs on the browser's main thread in microseconds with zero network roundtrips."
-    - es: "Didáctica y Contexto: cada pantalla explica conceptualmente la magnitud física medida para educar al usuario durante el cálculo."
-      en: "Educational Context: each conversion screen provides didactic background on the physical quantity being measured."
+    - es: "Didáctica y Contexto: cada magnitud detalla la fórmula analítica base SI utilizada para verificar el cálculo."
+      en: "Educational Context: each magnitude displays the analytical canonical SI formula used to verify calculation steps."
   diagram: |
     flowchart LR
-      INDEX["Página Principal (Categorías & Separador Decimal)"] --> DIMS["Dimensión (m, m², m³)"]
-      INDEX --> ENERG["Energía & Potencia (J, kWh, HP)"]
-      INDEX --> TIEMP["Tiempo & Frecuencia (s, h, días)"]
-      INDEX --> MECAN["Mecánica (N, Bar, PSI)"]
-      INDEX --> INFOR["Informática (Bytes, GiB, Bits)"]
-      INDEX --> RADIO["Radiofrecuencia (Hz, dBm, λ)"]
-      DIMS --> SI[("Cálculo Normalizado Base SI")]
-      ENERG --> SI
-      TIEMP --> SI
-      MECAN --> SI
-      INFOR --> SI
-      RADIO --> SI
-      SI --> RES["Resultado Instantáneo en Pantalla"]
+      CATALOG["Catálogo Canónico SI/CODATA"] --> ENGINE["Motor Matemático Determinista"]
+      ENGINE --> SPA["SPA Workbench v2.0 (index.html)"]
+      SPA --> OMNI["Omni-Matrix Multi-Escala"]
+      SPA --> SCRATCH["Batch Scratchpad Multilínea"]
+      SHIMS["14 Shims Retrocompatibles (/es/, /en/)"] -. "301 Redirect" .-> SPA
 
 tech:
   - layer: frontend
-    items: ["Vanilla JS (ES6+)", "HTML5 semántico", "CSS Grid & Flexbox"]
+    items: ["Vanilla JS (ES6+)", "HTML5 semántico", "CSS Design Tokens nativos", "Outfit & JetBrains Mono"]
   - layer: standards
-    items: ["Sistema Internacional de Unidades (SI)", "Constantes Físicas CODATA"]
+    items: ["Sistema Internacional de Unidades (SI)", "Constantes Físicas CODATA 2022", "IEC 80000-13"]
   - layer: i18n
-    items: ["Soporte bilingüe espejo (rutas /es/ y /en/)"]
+    items: ["Diccionario unificado ES/EN", "Detección dinámica URL (?lang=es|en)", "Shims localizados"]
   - layer: hosting
     items: ["Hugo Static Engine (/apps/conversor/)"]
 
@@ -91,6 +86,31 @@ posts:
     part: 1
 
 releases:
+  - version: v2.0.0
+    date: "2026-11-04"
+    state: released
+    type: major
+    title:
+      es: "Engineering Workbench v2.0: arquitectura unificada, Scratchpad multilínea, RF avanzada y rigor CODATA"
+      en: "Engineering Workbench v2.0: unified architecture, multiline Scratchpad, advanced RF, and CODATA rigor"
+    changes:
+      - es: "Refactorización a arquitectura Single-Source-of-Truth en `apps/conversor/` eliminando 14 archivos HTML duplicados."
+        en: "Refactored to Single-Source-of-Truth architecture in `apps/conversor/` eliminating 14 duplicated HTML files."
+      - es: "Despliegue de shims de redirección SEO para las 14 URLs históricas y reparación de archivo truncado `en/mecanica_en.html`."
+        en: "Deployed SEO redirect shims across all 14 legacy URLs and fixed corrupted file `en/mecanica_en.html`."
+      - es: "Incorporación completa de potencia logarítmica RF (dBm ⇔ W / mW / kW) y longitud de onda bidireccional (λ = c / f)."
+        en: "Full addition of logarithmic RF power (dBm ⇔ W / mW / kW) and bidirectional wavelength math (λ = c / f)."
+      - es: "Soporte de unidades de almacenamiento binario IEC (KiB..TiB) frente a decimales SI (kB..TB) y BTU en energía."
+        en: "Support for IEC binary storage units (KiB..TiB) vs SI decimal (kB..TB) and BTU in energy."
+      - es: "Nuevo módulo Batch Scratchpad para transformar y formatear columnas multilínea pegadas desde Excel o CSV."
+        en: "New multiline Batch Scratchpad module to transform and format columns pasted from Excel or CSV."
+      - es: "Corrección de truncamiento numérico a 3 decimales y nuevo selector de precisión (Auto, 2-8 dec, Sci)."
+        en: "Fixed 3-decimal rounding truncation bug and added precision selector (Auto, 2-8 dec, Sci)."
+      - es: "Barra de acceso rápido a 8 constantes físicas universales CODATA y visualización Omni-Matrix multi-escala."
+        en: "Quick-access bar for 8 CODATA fundamental physical constants and multi-scale Omni-Matrix live view."
+      - es: "Shell visual Datalaria con selector ES/EN dinámico, deep-linking URL, atajos de teclado y enlace a Kits B2B."
+        en: "Datalaria visual shell with dynamic ES/EN toggle, deep-linking URLs, keyboard shortcuts, and B2B Kits CTA."
+
   - version: v1.0.0
     date: "2025-10-04"
     state: released

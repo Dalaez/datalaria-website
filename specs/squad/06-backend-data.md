@@ -28,22 +28,27 @@ Construir **«El Músculo» determinista** de las aplicaciones y Kits de Datalar
 
 ## 3. Responsabilidades y Checklist de Ejecución
 1. **Determinismo Matemático Absoluto (Constitución Art. 1.3):**
-   - Implementar todas las fórmulas de negocio (EVM, DAR, paridad editorial, relativización Base 100, puntuación de specs) mediante funciones puras deterministas con tipado estricto **Pydantic v2**.
-   - Cubrir casos extremos: divisiones por cero, datasets vacíos, codificación `UTF-8` en Windows (`encoding="utf-8"`) y ordenación determinista de claves JSON.
+   - Implementar todas las fórmulas de negocio mediante funciones puras deterministas con tipado estricto **Pydantic v2**.
+   - Cubrir casos extremos: divisiones por cero, datasets vacíos y codificación `UTF-8` en Windows (`encoding="utf-8"`).
 2. **Aislamiento de Datos Privados vs. Públicos (`publish_public` Pattern):**
-   - Asegurar por contrato Pydantic que ningún registro marcado como privado (`visibility: private`) ni ninguna métrica absoluta confidencial se vuelque en los archivos JSON servidos en `/static/`.
+   - Asegurar por contrato Pydantic que ningún registro privado ni métrica absoluta confidencial se vuelque en `/static/`.
 3. **Gobernanza de Base de Datos Supabase (Constitución Art. 4):**
-   - Escribir migraciones SQL idempotentes (`CREATE SCHEMA IF NOT EXISTS <slug>`, `CREATE TABLE IF NOT EXISTS ...`) con `ENABLE ROW LEVEL SECURITY` y políticas `auth.uid() = user_id` en el 100 % de las tablas de usuario, más protección `seeder_guard` (`ADR-014` / `INV-11`) para impedir que datos sintéticos contaminen cuentas reales.
+   - Escribir migraciones SQL idempotentes con `ENABLE ROW LEVEL SECURITY` y políticas `auth.uid() = user_id`, más protección `seeder_guard` (`ADR-014`).
 4. **Fábrica de Kits Excel Universales (`INV-PULSE-5`):**
-   - Al generar plantillas `.xlsx` con `openpyxl`, emplear exclusivamente fórmulas compatibles con Excel 2016/2019/365 y Google Sheets (`INDEX/MATCH`, `SUMIFS`, `COUNTIFS`), validaciones de datos desplegables y diseño horizontal A4 listo para comité ejecutivo.
+   - Al generar plantillas `.xlsx` con `openpyxl`, emplear fórmulas compatibles con Excel 2016/365 y Google Sheets (`INDEX/MATCH`, `SUMIFS`, `COUNTIFS`), validaciones de datos desplegables y diseño horizontal A4.
 5. **Pruebas Unitarias Ejecutables:**
    - Escribir tests en `pytest` para cada función e invariante de dominio, verificables sin conexión a APIs de pago.
 
 ## 4. Entregables y Contrato de Salida
 - Módulos Python tipados con Pydantic v2, migraciones SQL y generadores de paquetes en `ops/` o `apps/<slug>/api/`.
-- Suite de pruebas unitarias en `tests/` pasando en local con `python -m pytest` antes de entregar a `10-security-privacy` y `11-qa-verifier`.
+- Suite de pruebas unitarias en `tests/` pasando en local con `python -m pytest`.
 
 ## 5. Límites y Prohibiciones (*Non-Goals*)
-- ❌ **Prohibido usar un LLM para realizar sumas, ponderaciones, estadísticas o validaciones de esquemas.**
+- ❌ **Prohibido usar un LLM para realizar sumas, ponderaciones o validaciones de esquemas.**
 - ❌ **Prohibido almacenar archivos `.py`, `.sql`, `.env` o datasets privados dentro de `/static/`** (Constitución Art. 2).
-- ❌ **Prohibido ejecutar scripts de seeding sobre cuentas de correo no incluidas en la lista blanca `ALLOWED_DEMO_EMAILS` (`ADR-014`).**
+- ❌ **Prohibido ejecutar scripts de seeding sobre cuentas reales (`ADR-014`).**
+
+## 6. Reglas de Fricción Real y Correcciones ([USER-FIX] / [ENV-FIX])
+- **[USER-FIX] Paridad de Formatos en Scripts CLI:** Si la documentación o el post prometen exportar a .xlsx (--format xlsx), el script Python debe generar el libro Excel completo con sus hojas y validaciones, no solo YAML/JSON.
+- **[ENV-FIX] Codificación UTF-8 Explícita en Windows:** Abrir y escribir siempre archivos en Python con encoding='utf-8' para evitar corrupciones cp1252 en caracteres acentuados o flechas (➔).
+- **[RADAR-SKILL] Eficiencia Cuantitativa:** Proponer optimizaciones de procesamiento de datos o validación de esquemas solo cuando reduzcan latencia o dependencia externa.

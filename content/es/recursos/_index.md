@@ -479,7 +479,7 @@ Detalles ℹ️
 <button type="button" class="btn-kit-info" onclick="openModal('pack-rice')">
 Detalles ℹ️
 </button>
-<span class="btn-kit-info btn-disabled" title="Artículo técnico próximamente">Artículo próximamente</span>
+<a href="/es/posts/matriz-rice-ice-priorizacion/" class="btn-kit-info" title="Leer artículo técnico">Artículo técnico 📖</a>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/4d360fcd-60d5-402a-9e58-3833e467fd3a?embed=1" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
@@ -1361,8 +1361,8 @@ Detalles ℹ️
       "Guía PDF sobre priorización de deuda técnica vs nuevas features"
     ],
     "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/4d360fcd-60d5-402a-9e58-3833e467fd3a?embed=1",
-    "guideUrl": null,
-    "previewImg": "/images/recursos/RICE.png"
+    "guideUrl": "/es/posts/matriz-rice-ice-priorizacion/",
+    "previewImg": "/images/recursos/rice-ice-preview-es.png"
   },
   {
     "id": "pack-business-case",

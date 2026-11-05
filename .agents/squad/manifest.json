@@ -8,7 +8,8 @@
     "INV-HELIX-4",
     "INV-HELIX-5",
     "INV-HELIX-6",
-    "INV-HELIX-7"
+    "INV-HELIX-7",
+    "INV-HELIX-8"
   ],
   "total_agents": 12,
   "agents": [
@@ -38,9 +39,10 @@
       ],
       "outputs": [
         "triage_card",
-        "specs/ROADMAP.md"
+        "specs/ROADMAP.md",
+        "debrief_helix_card"
       ],
-      "source_path": "specs/squad/01-orchestrator.md",
+      "source_path": "C:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/01-orchestrator.md",
       "antigravity_adapter": ".agents/squad/01-orchestrator.md",
       "claude_adapter": ".claude/agents/01-orchestrator.md"
     },
@@ -70,7 +72,7 @@
         "specs/apps/<slug>/spec.md#section-1",
         "product_audit_report"
       ],
-      "source_path": "specs/squad/02-product-analyst.md",
+      "source_path": "C:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/02-product-analyst.md",
       "antigravity_adapter": ".agents/squad/02-product-analyst.md",
       "claude_adapter": ".claude/agents/02-product-analyst.md"
     },
@@ -102,7 +104,7 @@
         "specs/apps/<slug>/spec.md",
         "specs/DECISIONS.md"
       ],
-      "source_path": "specs/squad/03-architect.md",
+      "source_path": "C:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/03-architect.md",
       "antigravity_adapter": ".agents/squad/03-architect.md",
       "claude_adapter": ".claude/agents/03-architect.md"
     },
@@ -135,7 +137,7 @@
         "css_design_tokens",
         "ux_review_verdict"
       ],
-      "source_path": "specs/squad/04-ux-ui.md",
+      "source_path": "C:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/04-ux-ui.md",
       "antigravity_adapter": ".agents/squad/04-ux-ui.md",
       "claude_adapter": ".claude/agents/04-ux-ui.md"
     },
@@ -166,7 +168,7 @@
         "layouts/**",
         "static/apps/<slug>/**"
       ],
-      "source_path": "specs/squad/05-frontend.md",
+      "source_path": "C:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/05-frontend.md",
       "antigravity_adapter": ".agents/squad/05-frontend.md",
       "claude_adapter": ".claude/agents/05-frontend.md"
     },
@@ -200,7 +202,7 @@
         "apps/<slug>/api/**",
         "packages/**"
       ],
-      "source_path": "specs/squad/06-backend-data.md",
+      "source_path": "C:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/06-backend-data.md",
       "antigravity_adapter": ".agents/squad/06-backend-data.md",
       "claude_adapter": ".claude/agents/06-backend-data.md"
     },
@@ -233,7 +235,7 @@
         "ops/<slug>/sync_*.py",
         "ops/<slug>/kit/*.m"
       ],
-      "source_path": "specs/squad/07-apis-integrations.md",
+      "source_path": "C:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/07-apis-integrations.md",
       "antigravity_adapter": ".agents/squad/07-apis-integrations.md",
       "claude_adapter": ".claude/agents/07-apis-integrations.md"
     },
@@ -261,9 +263,7 @@
       "inputs": [
         "specs/apps/<slug>/spec.md",
         "specs/portal/blog-taxonomy/spec.md",
-        "specs/_constitution.md#articulo-5",
-        "specs/_constitution.md#articulo-7",
-        "specs/_constitution.md#articulo-8"
+        "specs/_constitution.md#articulo-5"
       ],
       "outputs": [
         "content/{es,en}/**",
@@ -271,7 +271,7 @@
         "static/images/recursos/**",
         "apps/<slug>/web/src/i18n/**"
       ],
-      "source_path": "specs/squad/08-media-i18n.md",
+      "source_path": "C:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/08-media-i18n.md",
       "antigravity_adapter": ".agents/squad/08-media-i18n.md",
       "claude_adapter": ".claude/agents/08-media-i18n.md"
     },
@@ -305,7 +305,7 @@
         "layouts/partials/recursos_catalog.html",
         "scripts/generate_recursos_pages.py"
       ],
-      "source_path": "specs/squad/09-monetization.md",
+      "source_path": "C:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/09-monetization.md",
       "antigravity_adapter": ".agents/squad/09-monetization.md",
       "claude_adapter": ".claude/agents/09-monetization.md"
     },
@@ -335,13 +335,12 @@
       "inputs": [
         "specs/apps/<slug>/spec.md",
         "specs/_constitution.md#articulo-2",
-        "specs/_constitution.md#articulo-4",
-        "specs/DECISIONS.md#adr-014"
+        "specs/_constitution.md#articulo-4"
       ],
       "outputs": [
         "security_audit_verdict"
       ],
-      "source_path": "specs/squad/10-security-privacy.md",
+      "source_path": "C:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/10-security-privacy.md",
       "antigravity_adapter": ".agents/squad/10-security-privacy.md",
       "claude_adapter": ".claude/agents/10-security-privacy.md"
     },
@@ -373,7 +372,7 @@
         "qa_verdict",
         "verification_logs"
       ],
-      "source_path": "specs/squad/11-qa-verifier.md",
+      "source_path": "C:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/11-qa-verifier.md",
       "antigravity_adapter": ".agents/squad/11-qa-verifier.md",
       "claude_adapter": ".claude/agents/11-qa-verifier.md"
     },
@@ -408,7 +407,7 @@
         "data/apps/*.yaml#releases",
         "specs/apps/<slug>/spec.md#changelog"
       ],
-      "source_path": "specs/squad/12-release-devops.md",
+      "source_path": "C:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/12-release-devops.md",
       "antigravity_adapter": ".agents/squad/12-release-devops.md",
       "claude_adapter": ".claude/agents/12-release-devops.md"
     }

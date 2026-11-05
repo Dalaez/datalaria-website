@@ -93,3 +93,17 @@ Presupuesto y Gobernanza: Máx. 2 intentos por gate · Checkpoint <tag Git> · A
 | **2. Construcción** | 🎨 [`04-ux-ui`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/04-ux-ui.md) · ⚡ [`05-frontend`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/05-frontend.md) · 🗄️ [`06-backend-data`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/06-backend-data.md) · 🔌 [`07-apis-integrations`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/07-apis-integrations.md) · 🎬 [`08-media-i18n`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/08-media-i18n.md) · 💳 [`09-monetization`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/09-monetization.md) | Según superficie: `TRG-UX` → `04`; UI código → `05`; Python/SQL/Excel → `06`; APIs/Serverless/M → `07`; `TRG-I18N` → `08`; `TRG-MON` → `09`. |
 | **3. Garantía (Veto)** | 🛡️ [`10-security-privacy`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/10-security-privacy.md) · ✅ [`11-qa-verifier`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/11-qa-verifier.md) | `TRG-SEC` (auth, RLS, `.env`, serverless, `static/`) → `10` con veto; `TRG-QA` (toda tarea) → `11` con veto. **Nadie verifica su propio trabajo (`INV-HELIX-1`).** |
 | **4. Entrega** | 🚀 [`12-release-devops`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/12-release-devops.md) | Checkpoints `sdd-checkpoint-*`, empaquetado `.zip`, versionado SemVer (`data/apps/*.yaml`) y ejecución de Rollback. |
+
+
+### 5.3 Higiene de Contexto (`INV-HELIX-8`), Lecciones de Fricción Real (`[USER-FIX]`) y Cierre `DEBRIEF HELIX` (`ADR-019`)
+
+Para garantizar que el escuadrón aprenda de forma acumulativa sin degradar la ventana de contexto, todo agente y especialmente el Coordinador (`01-orchestrator`) DEBE aplicar estas tres reglas:
+
+1. **Control Anti-Bloat y Carga Selectiva del Radar (`INV-HELIX-8`):**
+   - Las fichas canónicas en `specs/squad/*.md` tienen un **tope duro de $\le 85$ líneas** y un máximo de **6 reglas en su Sección §6**.
+   - Los archivos de radar [`specs/squad/TECH_RADAR.yaml`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/TECH_RADAR.yaml) y [`specs/squad/OPPORTUNITY_BACKLOG.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/OPPORTUNITY_BACKLOG.md) pertenecen a la *Memoria Templada*: **está prohibido cargarlos en tareas rutinarias `XS`, `S`, `M` o `L`**. Solo se consultan o actualizan cuando el usuario lo solicita explícitamente o en hitos estratégicos `XL`.
+2. **Criterio de Lección Aprendida (`User-Correction & Friction First`):**
+   - En la Sección `## 6` de cada agente **solo** se registran reglas originadas por **correcciones explícitas del usuario vía nuevos prompts (`[USER-FIX]`)** o **errores empíricos de ejecución/entorno (`[ENV-FIX]`)**. Jamás se añade teoría general o conocimientos estándar de IA.
+   - Cuando se alcanza el tope de 6 reglas en una ficha, el Coordinador aplica reemplazo FIFO o fusiona reglas relacionadas y ejecuta `python -m ops.helix.build_adapters`.
+3. **Tarjeta de Cierre `DEBRIEF HELIX`:**
+   - Al finalizar cualquier tarea de desarrollo o auditoría (`M`, `L` o `XL`), el Coordinador emite obligatoriamente antes de despedirse el bloque `DEBRIEF HELIX` (1. Participación por rol convocado, 2. Conclusiones y ajustes destilados, 3. Riesgos y mitigación, 4. Propuestas proactivas de alto ROI).

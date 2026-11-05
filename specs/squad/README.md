@@ -44,3 +44,16 @@
 | ID | Icono y Rol | Misión Principal | Entregable Clave | ¿Escribe Código Prod? |
 | :--- | :--- | :--- | :--- | :-: |
 | [`12-release-devops`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/12-release-devops.md) | 🚀 **Release, Empaquetado & DevOps** | Tags `sdd-checkpoint-*`, empaquetado de `.zip` comerciales, versionado SemVer (`data/apps/*.yaml`), CI/CD y rollback. | Artefactos `.zip`, tags Git y changelog actualizado | ❌ Solo Ops/CI/Release |
+
+
+---
+
+## 3. Protocolo de Aprendizaje y Radar Tecnológico (`ADR-019` / `INV-HELIX-8`)
+
+1. **Higiene de Contexto Anti-Bloat:** Las fichas `01` a `12` tienen un límite duro de **$\le 85$ líneas** y máximo **6 reglas en su Sección §6**.
+2. **Lecciones por Fricción Real:** En §6 solo se registran correcciones explicitadas por el usuario (`[USER-FIX]`) o soluciones a errores reales de entorno (`[ENV-FIX]`).
+3. **Memoria Templada Bajo Demanda:**
+   - [`TECH_RADAR.yaml`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/TECH_RADAR.yaml): Clasificación oficial de tecnologías y prácticas en 4 anillos (`ADOPT`, `TRIAL`, `ASSESS`, `HOLD`).
+   - [`OPPORTUNITY_BACKLOG.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/OPPORTUNITY_BACKLOG.md): Backlog priorizado RICE de propuestas proactivas de UX, arquitectura y monetización.
+   - *Regla:* No se leen durante tareas rutinarias; solo se consultan bajo demanda expresa o en planificación `XL`.
+4. **Cierre de Tarea con `DEBRIEF HELIX`:** Todo hito `M`, `L` o `XL` concluye con el informe estructurado del Orquestador (participación, aprendizajes, riesgos y propuestas de alto ROI).

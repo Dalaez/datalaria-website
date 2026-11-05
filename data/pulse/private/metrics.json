@@ -216,9 +216,9 @@
     "gsc_avg_position": 0.0
   },
   "abraham_wald": {
-    "ga4_views_30d": 32,
-    "ga4_users_30d": 30,
-    "ga4_engagement_sec": 404.0,
+    "ga4_views_30d": 30,
+    "ga4_users_30d": 28,
+    "ga4_engagement_sec": 403.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -243,7 +243,7 @@
     "gsc_avg_position": 0.0
   },
   "alan_turing": {
-    "ga4_views_30d": 26,
+    "ga4_views_30d": 28,
     "ga4_users_30d": 27,
     "ga4_engagement_sec": 273.0,
     "gsc_clicks_30d": 0,
@@ -477,8 +477,8 @@
     "gsc_avg_position": 0.0
   },
   "graphrag": {
-    "ga4_views_30d": 35,
-    "ga4_users_30d": 26,
+    "ga4_views_30d": 34,
+    "ga4_users_30d": 25,
     "ga4_engagement_sec": 127.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -495,8 +495,8 @@
     "gsc_avg_position": 0.0
   },
   "happyrobot": {
-    "ga4_views_30d": 19,
-    "ga4_users_30d": 18,
+    "ga4_views_30d": 18,
+    "ga4_users_30d": 17,
     "ga4_engagement_sec": 623.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -540,8 +540,8 @@
     "gsc_avg_position": 0.0
   },
   "kantorovich": {
-    "ga4_views_30d": 31,
-    "ga4_users_30d": 30,
+    "ga4_views_30d": 30,
+    "ga4_users_30d": 29,
     "ga4_engagement_sec": 1131.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -549,9 +549,9 @@
     "gsc_avg_position": 0.0
   },
   "kurt_godel": {
-    "ga4_views_30d": 24,
-    "ga4_users_30d": 16,
-    "ga4_engagement_sec": 698.0,
+    "ga4_views_30d": 26,
+    "ga4_users_30d": 18,
+    "ga4_engagement_sec": 1297.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -576,8 +576,8 @@
     "gsc_avg_position": 0.0
   },
   "netflix": {
-    "ga4_views_30d": 5,
-    "ga4_users_30d": 4,
+    "ga4_views_30d": 6,
+    "ga4_users_30d": 5,
     "ga4_engagement_sec": 118.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -612,17 +612,17 @@
     "gsc_avg_position": 0.0
   },
   "oppenheimer": {
-    "ga4_views_30d": 24,
-    "ga4_users_30d": 20,
-    "ga4_engagement_sec": 357.0,
+    "ga4_views_30d": 25,
+    "ga4_users_30d": 22,
+    "ga4_engagement_sec": 367.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 0.0
   },
   "pgvector_vs_vectordb": {
-    "ga4_views_30d": 10,
-    "ga4_users_30d": 10,
+    "ga4_views_30d": 8,
+    "ga4_users_30d": 8,
     "ga4_engagement_sec": 263.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -648,9 +648,9 @@
     "gsc_avg_position": 0.0
   },
   "sdd_vs_vibe_coding": {
-    "ga4_views_30d": 28,
+    "ga4_views_30d": 56,
     "ga4_users_30d": 2,
-    "ga4_engagement_sec": 853.0,
+    "ga4_engagement_sec": 919.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -675,8 +675,8 @@
     "gsc_avg_position": 0.0
   },
   "the-goal": {
-    "ga4_views_30d": 14,
-    "ga4_users_30d": 14,
+    "ga4_views_30d": 13,
+    "ga4_users_30d": 13,
     "ga4_engagement_sec": 6.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -693,8 +693,8 @@
     "gsc_avg_position": 0.0
   },
   "thomas_bayes": {
-    "ga4_views_30d": 7,
-    "ga4_users_30d": 7,
+    "ga4_views_30d": 6,
+    "ga4_users_30d": 6,
     "ga4_engagement_sec": 4.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -747,8 +747,8 @@
     "gsc_avg_position": 0.0
   },
   "economia_oculta_ia": {
-    "ga4_views_30d": 9,
-    "ga4_users_30d": 9,
+    "ga4_views_30d": 10,
+    "ga4_users_30d": 10,
     "ga4_engagement_sec": 66.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -891,8 +891,8 @@
     "gsc_avg_position": 0.0
   },
   "nanobanana-ingenieria": {
-    "ga4_views_30d": 4,
-    "ga4_users_30d": 4,
+    "ga4_views_30d": 3,
+    "ga4_users_30d": 3,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -918,8 +918,8 @@
     "gsc_avg_position": 0.0
   },
   "obs_parte3_arquitectura": {
-    "ga4_views_30d": 18,
-    "ga4_users_30d": 16,
+    "ga4_views_30d": 15,
+    "ga4_users_30d": 15,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -963,8 +963,8 @@
     "gsc_avg_position": 0.0
   },
   "rag_antipatrones": {
-    "ga4_views_30d": 10,
-    "ga4_users_30d": 9,
+    "ga4_views_30d": 9,
+    "ga4_users_30d": 8,
     "ga4_engagement_sec": 27.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,

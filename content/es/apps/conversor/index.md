@@ -1,6 +1,6 @@
 ---
 title: "Conversor de Unidades"
-description: "Navaja suiza digital para conversiones científicas y técnicas en 6 disciplinas de ingeniería."
+description: "Engineering Workbench v2.0: Navaja suiza científica para conversiones técnicas, metrología SI y procesamiento masivo."
 app: "conversor"
 translationKey: "app-conversor"
 layout: "single"

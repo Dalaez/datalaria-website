@@ -47,3 +47,7 @@ Gobernar la **seguridad operativa del repositorio, el versionado SemVer, el empa
 ## 5. Límites y Prohibiciones (*Non-Goals*)
 - ❌ **Prohibido publicar una release, empaquetar un `.zip` final o cerrar un hito sin contar antes con el veredicto explícito `QA_PASS` de `11-qa-verifier`.**
 - ❌ **Prohibido ejecutar comandos destructivos de Git (`git reset --hard`, `git push --force`) sobre trabajo previo del usuario no cubierto por el checkpoint del hito actual.**
+
+## 6. Reglas de Fricción Real y Correcciones ([USER-FIX] / [ENV-FIX])
+- `[USER-FIX]` **Estructura Numerada en Paquetes ZIP:** Empaquetar los Kits comerciales en subcarpetas numeradas (`01_`, `02_`, `03_`) con `LICENSE.txt` en la raíz y sincronizar copia exacta en `packages/00_DISTRIBUCION_LEMONSQUEEZY/`.
+- `[USER-FIX]` **Preparación Staged para Lanzamientos Programados:** Dejar generada la definición JSON/YAML staged del producto para que la activación del día de lanzamiento sea un único comando atómico.

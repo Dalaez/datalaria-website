@@ -302,3 +302,39 @@
   - *Mantener archivos separados a mano en `.claude/agents/` y `specs/squad/`:* Descartado por garantizar desincronización a corto plazo.
 - **Consecuencias:**
   - El repositorio de Datalaria opera desde hoy bajo el escuadrón de 12 agentes con verificación automatizada en `ops/helix/tests/` (`10/10 tests pytest`), dejando todo listo para ejecutar la **Operación Crisol sobre Datalaria Pulse (Hito 6.3)**.
+
+
+---
+
+## ADR-019: Evolución Continua del Escuadrón Helix bajo Presupuesto Estricto de Contexto (INV-HELIX-8), Registro de Fricción Real ([USER-FIX]/[ENV-FIX]) y Debriefing Ejecutivo
+- **Fecha:** 2026-11-04
+- **Estado:** Aceptado (Implementado en Hito 6.4)
+- **Contexto:**
+  1. Datalaria Helix se concibe como el equipo de trabajo de ingeniería y negocio de Datalaria a largo plazo. Con cada hito completado surgen aprendizajes técnicos (ej. particularidades de Windows PowerShell frente a npm, comportamiento de React Compiler frente a `useEffect`, fórmulas Mermaid en Hugo) y oportunidades de negocio/monetización.
+  2. Existe un grave riesgo de **saturación y pérdida de foco (*Context Bloat*)** si las fichas de los agentes crecen indefinidamente con teoría general o conocimientos redundantes que el modelo LLM ya posee de fábrica.
+  3. El usuario requiere que el escuadrón aprenda principalmente de **los ajustes solicitados en nuevos prompts y los errores empíricos de ejecución**, y que el Coordinador cierre cada trabajo con un informe ejecutivo proporcional de participación, riesgos y propuestas de alto ROI sin sobrecargar el contexto rutinario.
+- **Decisión:**
+  1. **Arquitectura de Memoria en 3 Capas + Invariante Anti-Bloat (`INV-HELIX-8`):**
+     - **Capa Caliente (`specs/squad/*.md`):** Tope duro innegociable de $\le 85$ líneas por ficha de agente y máximo 6 ítems en su Sección `## 6. Reglas de Fricción Real y Correcciones`. Si entra una regla nueva al límite, se aplica poda FIFO o síntesis.
+     - **Capa Templada (`TECH_RADAR.yaml` y `OPPORTUNITY_BACKLOG.md`):** Radar tecnológico oficial (anillos `ADOPT`, `TRIAL`, `ASSESS`, `HOLD`) y registro priorizado RICE de mejoras técnicas, UX y monetización. **Queda prohibido cargarlos en tareas rutinarias `XS`, `S`, `M` o `L`**; solo se leen bajo demanda o en planificación `XL` por el Coordinador.
+     - **Capa Fría (`DECISIONS.md`, `specs/audit/case-study-*.md`):** Historial permanente de decisiones y casos de estudio.
+  2. **Criterio Estricto de Registro (`User-Correction & Friction First`):**
+     - En la Sección `## 6` de cada agente se registran **únicamente** reglas precedidas por:
+       - `[USER-FIX]`: Correcciones explícitas indicadas por el usuario en nuevos prompts tras una ejecución.
+       - `[ENV-FIX]`: Soluciones a fallos reales de ejecución o particularidades de herramientas/entorno.
+       - `[RADAR-SKILL]`: Competencia activa de vigilancia proactiva de mercado/tecnología con filtro ROI.
+     - Queda terminantemente prohibido registrar teoría académica o conocimientos genéricos ya adquiridos por el LLM.
+  3. **Tarjeta de Cierre `DEBRIEF HELIX`:**
+     - En tareas `M`, `L` y `XL`, el Coordinador (`01-orchestrator`) cierra la intervención con un resumen estructurado: (1) participación por rol convocado, (2) conclusiones y aprendizajes destilados, (3) riesgos detectados y mitigación, y (4) propuestas de mejora tecnológica, UX o de monetización filtradas por su impacto y retorno real para Datalaria.
+  4. **Ampliación de Habilidades de Negocio sin Aumentar el Número de Agentes (Preservación de los 12 Roles):**
+     - Se mantiene la identidad canónica de 12 agentes potenciando las skills de negocio en tres roles existentes:
+       - `02-product-analyst`: Estrategia de producto, dolor B2B y radar de mercado.
+       - `08-media-i18n`: SEO orgánico (GSC), distribución de contenidos y optimización de CTR.
+       - `09-monetization`: Embudos PLG, monetización editorial y conversión en Lemon Squeezy/Brevo.
+- **Alternativas descartadas:**
+  - *Añadir un 13º o 14º agente de "Growth" o "Marketing":* Descartado por romper la paridad con los artículos ya publicados y la identidad del producto Datalaria Helix (12 agentes).
+  - *Permitir que las fichas crezcan sin límite de líneas:* Descartado por garantizar degradación cognitiva del modelo a medio plazo (*Lost in the Middle*).
+  - *Cargar el radar tecnológico y backlog de oportunidades en cada turno:* Descartado por consumir miles de tokens innecesarios en tareas de desarrollo acotadas.
+- **Consecuencias:**
+  - El escuadrón evoluciona de forma medible y acumulativa sin penalizar la ventana de contexto.
+  - El Kit Core genérico (`packages/helix/core_kit/`) se entrega a los compradores con esta disciplina de memoria anti-bloat y con los 3 Blueprints de arquitectura listos para producción.

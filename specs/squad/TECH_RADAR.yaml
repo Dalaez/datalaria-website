@@ -1,0 +1,72 @@
+# specs/squad/TECH_RADAR.yaml
+# Radar Tecnológico Datalaria Helix (v1.0.0)
+# Fuente de consulta aislada: NUNCA se inyecta en prompts de tareas rutinarias.
+# Se actualiza en hitos mayores de roadmap o revisiones trimestrales de capacidades.
+
+metadata:
+  version: "1.0.0"
+  last_updated: "2026-11-04"
+  governance: "ADR-019 / INV-HELIX-8"
+  evaluator: "01-orchestrator + 03-architect"
+
+rings:
+  - id: "ADOPT"
+    description: "Tecnologías nucleares probadas en producción, estandarizadas y obligatorias para nuevos módulos."
+    technologies:
+      - name: "Pydantic v2"
+        role_domain: "06-backend-data"
+        use_case: "Validación estricta de esquemas de datos, modelos de agentes y contratos de API."
+      - name: "Vite + React + TypeScript"
+        role_domain: "05-frontend"
+        use_case: "Frontend moderno de aplicaciones Datalaria con builds reproducibles y tipado seguro."
+      - name: "Tailwind CSS v3"
+        role_domain: "04-ux-ui"
+        use_case: "Sistema de diseño utilitario alineado con la paleta editorial Slate/Indigo/Teal."
+      - name: "Hugo + PaperMod"
+        role_domain: "08-media-i18n"
+        use_case: "Generador de sitios estáticos ultra-rápido para portal bilingüe ES/EN."
+      - name: "Pytest"
+        role_domain: "11-qa-verifier"
+        use_case: "Verificación automatizada determinista de motores cuantitativos y tooling."
+      - name: "Lemon Squeezy Webhooks + HMAC"
+        role_domain: "09-monetization"
+        use_case: "Pasarela Merchant of Record para licencias de Kits y validación criptográfica."
+
+  - id: "TRIAL"
+    description: "Tecnologías evaluadas con éxito en pilotos internos que muestran valor tangible."
+    technologies:
+      - name: "oxlint"
+        role_domain: "11-qa-verifier"
+        use_case: "Linter ultrarrápido en Rust adoptado en Hito 6.2 como reemplazo ligero de eslint."
+      - name: "OpenPyXL con Data Validation"
+        role_domain: "06-backend-data"
+        use_case: "Generación programática de libros contables y financieros XLSX para Kits."
+      - name: "Supabase PostgREST + RLS"
+        role_domain: "07-apis-integrations"
+        use_case: "Persistencia multi-inquilino segura para backends serverless en modo SaaS."
+
+  - id: "ASSESS"
+    description: "Tecnologías emergentes prometedoras bajo exploración que requieren prototipo."
+    technologies:
+      - name: "Wasm / Pyodide en navegador"
+        role_domain: "05-frontend"
+        use_case: "Ejecución de simulaciones financieras Python cliente sin servidor backend."
+      - name: "Tailwind CSS v4"
+        role_domain: "04-ux-ui"
+        use_case: "Nueva arquitectura de compilación basada en Lightning CSS (evaluar estabilidad)."
+      - name: "DuckDB-Wasm"
+        role_domain: "06-backend-data"
+        use_case: "Motor SQL analítico local embebido para dashboards de alta densidad en el navegador."
+
+  - id: "HOLD"
+    description: "Tecnologías desaconsejadas o prohibidas para evitar complejidad innecesaria o riesgos."
+    technologies:
+      - name: "Next.js / SSR pesado"
+        role_domain: "03-architect"
+        use_case: "Evitar lock-in y costes recurrentes de hosting dinámico; preferir SSG (Hugo) + SPA (Vite)."
+      - name: "ORM pesados (SQLAlchemy completo en lambdas)"
+        role_domain: "06-backend-data"
+        use_case: "Evitar tiempos de arranque lentos (cold starts) y complejidad de mapping innecesaria."
+      - name: "TypeScript backend monolítico"
+        role_domain: "03-architect"
+        use_case: "Mantener separación estricta: Python para motores analíticos, TS para cliente."

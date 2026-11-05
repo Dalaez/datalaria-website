@@ -44,3 +44,9 @@ Traducir ideas, dolores operativos o necesidades expresadas en lenguaje cotidian
 - ❌ **Prohibido escribir código de aplicación** ni elegir librerías internas o esquemas SQL (responsabilidad de [`03-architect`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/03-architect.md)).
 - ❌ **Prohibido aprobar una especificación sin sección de *Non-Goals*** (lo que NO hace la versión 1.0 es tan obligatorio como lo que sí hace).
 - ❌ **Prohibido proponer flujos que exijan al usuario no-dev configurar API keys de pago o levantar servidores locales por terminal** para poder probar la demostración gratuita.
+
+## 6. Reglas de Fricción Real y Correcciones ([USER-FIX] / [ENV-FIX])
+- **[USER-FIX] Embargo Estricto Pre-Lanzamiento:** Si un Kit o App tiene fecha de salida futura (ej. 18 nov), construir y verificar el 100% hoy pero mantener status: incubating, draft: true y cero exposición en /recursos/ hasta el día D.
+- **[USER-FIX] Precio Oficial Unificado:** El precio de lanzamiento Early-Bird de los Kits de Software/Estrategia es 19 € (PVP 39 €); nunca mezclar 29 € ni 29 USD en textos o tarjetas.
+- **[USER-FIX] Posicionamiento Modo Pro/Cloud:** Presentar el modo Pro/Cloud en el cierre de la serie como servicio B2B a medida / CMS agéntico, manteniendo el Kit descargable como producto directo de pago único.
+- **[RADAR-SKILL] Propuesta Proactiva de Mercado:** Sugerir nuevos Kits o artículos solo cuando resuelvan un dolor B2B cuantificable y se integren en la escalera Sandbox Gratis → Kit 19€.

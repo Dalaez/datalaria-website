@@ -1,7 +1,7 @@
 # Especificación Técnica SDD: Datalaria Helix (`helix`)
 
 > **ID de Especificación:** `SPEC-APP-HELIX`  
-> **Versión:** `1.0.0`  
+> **Versión:** `1.1.0`  
 > **Estado:** `APPROVED`  
 > **Propietario de Dominio:** Datalaria (Operations Engineering & Applied AI)  
 > **Referencia ADR:** [`ADR-017`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/DECISIONS.md)  
@@ -82,10 +82,13 @@ flowchart TB
 | :--- | :--- | :-: |
 | `specs/apps/helix/spec.md` | Especificación técnica SDD maestra de Datalaria Helix. | `6.1` |
 | `specs/squad/README.md` | Índice operativo del escuadrón de 12 agentes y protocolo de carga bajo demanda. | `6.1` |
+| `specs/squad/TECH_RADAR.yaml` | Radar tecnológico y de mercado bajo demanda (anillos ADOPT, TRIAL, ASSESS, HOLD). | `6.4` |
+| `specs/squad/OPPORTUNITY_BACKLOG.md` | Registro priorizado RICE de mejoras técnicas, UX y monetización/contenidos. | `6.4` |
 | `specs/squad/triage-rubric.md` | Reglas deterministas de dimensionamiento (`XS–XL`), disparadores y plantilla de Tarjeta de Triaje. | `6.1` |
 | `specs/_templates/design.template.md` | Plantilla canónica `design.md` para sistemas de diseño y auditoría UX/UI por aplicación. | `6.1` |
 | `specs/squad/01-orchestrator.md` .. `12-release-devops.md` | Las 12 fichas canónicas `AGENT_SPEC` con frontmatter YAML estructurado. | `6.1` |
 | `ops/helix/build_adapters.py` | Compilador determinista que lee `specs/squad/*.md` y genera adaptadores para Antigravity, Claude Code, Cursor y Codex. | `6.2 / 6.4` |
+| `ops/helix/build_core_kit.py` | Generador del Kit Core genérico, 12 agentes agnósticos, adaptadores y 3 blueprints. | `6.4` |
 | `ops/helix/cli.py` | CLI multiplataforma (`helix`) en Python estándar (`0` dependencias) para `init`, `triage`, `checkpoint`, `verify` y `rollback`. | `6.5` |
 | `ops/helix/build_kit.py` | Empaquetador programático de `Datalaria_Helix_Starter.zip` y `Datalaria_Helix_Core_Kit.zip`. | `6.8` |
 | `ops/helix/tests/` | Suite `pytest` que verifica esquemas YAML de los 12 agentes, rúbrica de triaje, adaptadores y CLI. | `6.2–6.8` |
@@ -149,7 +152,7 @@ El Sandbox *Helix Spec Builder* y el CLI `helix verify` evalúan cualquier `spec
 $$\text{Score}_{\text{spec}} = 20 \cdot I_{\text{problem}} + 20 \cdot I_{\text{nongoals}} + 20 \cdot I_{\text{contracts}} + 20 \cdot I_{\text{invariants}} + 20 \cdot I_{\text{gates}}$$
 donde cada indicador $I_k \in \{0, 0.5, 1\}$ verifica determinísticamente por expresiones regulares y AST Markdown la presencia y completitud de: (1) Problema y Usuario objetivo, (2) *Non-Goals* explícitos, (3) Modelo de datos/contratos tipados, (4) Invariantes `INV-*` y seguridad, y (5) Comandos ejecutables de verificación con código de salida `0`.
 
-### 4.3 Las 7 Invariantes Innegociables de Datalaria Helix
+### 4.3 Las 8 Invariantes Innegociables de Datalaria Helix
 - **`INV-HELIX-1` (Separación Estricta Construcción vs. Verificación):** Ningún agente constructor (`04-ux-ui` a `09-monetization`) puede marcar un hito como `[x]` ni aprobar su propio entregable. `11-qa-verifier` (y `10-security-privacy` cuando se activa) tienen derecho a veto vinculante.
 - **`INV-HELIX-2` (Carga Bajo Demanda / Protección de Ventana de Contexto):** Queda prohibido cargar en el contexto de la sesión las 12 fichas de `specs/squad/` simultáneamente para tareas `XS`, `S` o `M`. El agente ejecuta el arranque en 3 pasos de `AGENTS.md`, realiza el triaje con `triage-rubric.md` y lee **únicamente** las fichas de los roles activados en la Tarjeta de Triaje.
 - **`INV-HELIX-3` (Disparadores Automáticos de Seguridad, UX e i18n):** Ninguna talla reducida (`XS` o `S`) puede usarse para eludir a `10-security-privacy` si el cambio toca variables de entorno, `.env`, autenticación, políticas RLS, pagos o archivos en `/static/`.
@@ -157,6 +160,10 @@ donde cada indicador $I_k \in \{0, 0.5, 1\}$ verifica determinísticamente por e
 - **`INV-HELIX-5` (CLI Cero-Dependencias y Paridad Sin-CLI):** El ejecutable `ops/helix/cli.py` debe funcionar en Windows, macOS y Linux utilizando exclusivamente la librería estándar de Python $\ge 3.10$ (`argparse`, `pathlib`, `subprocess`, `json`, `zipfile`, `hashlib`), sin requerir `pip install`. Toda operación del CLI debe tener su equivalente mediante prompt directo al Orquestador para usuarios no técnicos.
 - **`INV-HELIX-6` (Privacidad Client-Side en el Sandbox y Firewall `static/`):** El Sandbox web (`/apps/helix/`) ejecuta toda la entrevista, puntuación y generación del `.zip` en la memoria del navegador del usuario, sin transmitir sus respuestas a ningún backend salvo que el usuario se registre voluntariamente en la Waitlist de Brevo. `static/apps/helix/` jamás contendrá archivos `.py`, `.sql` ni `.env`.
 - **`INV-HELIX-7` (Protocolo de Rollback Automático al 2.º Fallo):** Si un Verification Gate falla en 2 intentos consecutivos de reparación, el flujo se detiene obligatoriamente, restaura el estado limpio del checkpoint (`git checkout` / `git restore` al tag `sdd-checkpoint-*`) y documenta el bloqueo en el `Audit Log` de `ROADMAP.md`.
+- **`INV-HELIX-8` (Presupuesto Estricto de Contexto, Control Anti-Bloat y Criterio de Lección Aprendida):**
+  1. *Tope Duro por Ficha:* Ninguna ficha canónica en `specs/squad/<id>.md` puede superar jamás las **85 líneas totales** ni contener más de **6 ítems** en su Sección `## 6. Reglas de Fricción Real y Correcciones ([USER-FIX] / [ENV-FIX])`. Cuando entra una regla nueva y se alcanza el límite de 6, el Orquestador aplica poda FIFO o fusión sintética.
+  2. *Criterio Exclusivo de Registro (`User-Correction & Friction First`):* Queda **prohibido** registrar en la Sección 6 conocimientos teóricos generales ya adquiridos por el modelo LLM. **Únicamente** se registran ajustes derivados de **correcciones posteriores del usuario vía prompt (`[USER-FIX]`)** o **errores empíricos de ejecución/entorno (`[ENV-FIX]`)** ocurridos durante un hito real.
+  3. *Aislamiento de Archivos de Radar (`Lazy Radar Loading`):* Los archivos `specs/squad/TECH_RADAR.yaml` y `specs/squad/OPPORTUNITY_BACKLOG.md` **nunca se cargan por defecto** en el arranque de tareas `XS`, `S`, `M` o `L`. Solo se leen cuando el Coordinador (`01-orchestrator`) ejecuta una ceremonia de actualización de skills/radar o al planificar un hito estratégico `XL`.
 
 ---
 
@@ -200,4 +207,5 @@ donde cada indicador $I_k \in \{0, 0.5, 1\}$ verifica determinísticamente por e
 
 | Versión | Fecha | Tipo | Cambios | Commit(s) |
 | :--- | :--- | :--- | :--- | :--- |
+| `v0.2.0` | 2026-11-04 | 🧬 Evolución | Incorporación de `INV-HELIX-8` (control anti-bloat <= 85 líneas, lecciones de fricción real [USER-FIX]/[ENV-FIX]), creación de `TECH_RADAR.yaml`, `OPPORTUNITY_BACKLOG.md` y compilador del Kit Core genérico (`build_core_kit.py`) con 3 blueprints y suite pytest de init en directorio vacío (`ADR-019`). | *Hito 6.4* |
 | `v0.1.0` | 2026-11-03 | 📐 Spec | Aprobación de `SPEC-APP-HELIX`, definición de las 7 invariantes `INV-HELIX-1..7`, rúbrica determinista de triaje `XS–XL`, plantilla `design.template.md` y creación de las 12 fichas `AGENT_SPEC` en `specs/squad/` (Hito 6.1 / `ADR-017`). | *Hito 6.1* |

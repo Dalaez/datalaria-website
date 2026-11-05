@@ -11,7 +11,12 @@ from pydantic import ValidationError
 from ops.helix.build_adapters import build_adapters
 from ops.helix.models import (
     EXPECTED_AGENT_IDS,
+    MAX_AGENT_SPEC_LINES,
+    MAX_FRICTION_RULES,
+    AgentDebriefItem,
+    AgentSpecDocument,
     AgentSpecFrontmatter,
+    DebriefReport,
     calculate_triage,
     load_squad_specs,
 )
@@ -170,3 +175,79 @@ def test_no_python_or_adapters_leaked_into_static() -> None:
         if p.is_file() and p.suffix.lower() in forbidden_suffixes
     ]
     assert not leaked, f"Archivos prohibidos detectados en static/: {leaked}"
+
+
+def test_inv_helix_8_anti_bloat_and_friction_rules() -> None:
+    """INV-HELIX-8: Cada ficha tiene <= 85 líneas y entre 1 y 6 reglas en Sección 6."""
+    docs = load_squad_specs(Path("specs/squad"))
+    assert len(docs) == 12
+
+    for d in docs:
+        fp = Path(d.source_path)
+        lines = fp.read_text(encoding="utf-8").splitlines()
+        assert len(lines) <= MAX_AGENT_SPEC_LINES, (
+            f"Ficha {d.frontmatter.id} excede {MAX_AGENT_SPEC_LINES} líneas ({len(lines)} líneas)."
+        )
+        assert d.total_lines <= MAX_AGENT_SPEC_LINES
+        assert "## 6. Reglas de Fricción Real y Correcciones" in d.body_markdown
+
+    # Verificar que el modelo Pydantic rechaza violaciones de INV-HELIX-8
+    sample = docs[0]
+    with pytest.raises(ValidationError):
+        AgentSpecDocument(
+            frontmatter=sample.frontmatter,
+            body_markdown=sample.body_markdown,
+            source_path=sample.source_path,
+            total_lines=90,  # Excede límite
+        )
+
+
+def test_debrief_report_formatting() -> None:
+    """Verifica que DebriefReport genera la tarjeta estructurada DEBRIEF HELIX."""
+    report = DebriefReport(
+        milestone_id="6.4",
+        size="L",
+        items=[
+            AgentDebriefItem(
+                agent_id="01-orchestrator",
+                icon="🎯",
+                summary="Coordinación general del Kit Helix Core y Anti-Bloat.",
+                conclusions="Arquitectura modular completada sin sobrecargar prompts.",
+                risks="Riesgo de desactualización mitigado con revisiones periódicas.",
+                improvements="Automatizar chequeo de nuevas versiones de librerías base.",
+                friction_learned="[USER-FIX] Jamás cargar TECH_RADAR en prompts rutinarios.",
+            ),
+            AgentDebriefItem(
+                agent_id="11-qa-verifier",
+                icon="✅",
+                summary="Ejecución de gates y aserciones deterministas.",
+                conclusions="100% de tests y validaciones superados.",
+                risks="Ninguno.",
+                improvements="Añadir tests de idempotencia en todos los paquetes.",
+            ),
+        ],
+    )
+    card = report.format_debrief_card()
+    assert "### 📋 DEBRIEF HELIX · Hito 6.4 (L)" in card
+    assert "🎯 `01-orchestrator`:" in card
+    assert "✅ `11-qa-verifier`:" in card
+    assert "Fricción Registrada:" in card
+
+
+def test_anti_bloat_files_exist_and_isolated() -> None:
+    """Verifica la existencia y aislamiento de TECH_RADAR.yaml y OPPORTUNITY_BACKLOG.md."""
+    radar_path = Path("specs/squad/TECH_RADAR.yaml")
+    assert radar_path.exists()
+    radar_content = radar_path.read_text(encoding="utf-8")
+    assert "ADOPT" in radar_content
+    assert "TRIAL" in radar_content
+    assert "ASSESS" in radar_content
+    assert "HOLD" in radar_content
+
+    backlog_path = Path("specs/squad/OPPORTUNITY_BACKLOG.md")
+    assert backlog_path.exists()
+    backlog_content = backlog_path.read_text(encoding="utf-8")
+    assert "Score RICE" in backlog_content
+    assert "OPP-UX-01" in backlog_content
+    assert "OPP-MON-01" in backlog_content
+

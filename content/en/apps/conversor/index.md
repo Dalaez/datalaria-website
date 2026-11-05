@@ -1,6 +1,6 @@
 ---
 title: "Unit Converter"
-description: "Digital Swiss Army knife for scientific and engineering unit conversions across 6 core disciplines."
+description: "Engineering Workbench v2.0: Scientific Swiss Army knife for technical conversions, SI metrology, and batch processing."
 app: "conversor"
 translationKey: "app-conversor"
 layout: "single"

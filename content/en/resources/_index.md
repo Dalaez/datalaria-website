@@ -479,7 +479,7 @@ Details ℹ️
 <button type="button" class="btn-kit-info" onclick="openModal('pack-rice')">
 Details ℹ️
 </button>
-<span class="btn-kit-info btn-disabled" title="Technical article coming soon">Article coming soon</span>
+<a href="/en/posts/rice-ice-prioritization-matrix/" class="btn-kit-info" title="Read technical article">Technical Article 📖</a>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/4d360fcd-60d5-402a-9e58-3833e467fd3a?embed=1" class="btn-kit-buy lemonsqueezy-button">Download →</a>
 </div>
 </div>
@@ -1361,8 +1361,8 @@ Details ℹ️
       "PDF guide on technical debt vs new feature prioritization"
     ],
     "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/4d360fcd-60d5-402a-9e58-3833e467fd3a?embed=1",
-    "guideUrl": null,
-    "previewImg": "/images/recursos/RICE.png"
+    "guideUrl": "/en/posts/rice-ice-prioritization-matrix/",
+    "previewImg": "/images/recursos/rice-ice-preview-en.png"
   },
   {
     "id": "pack-business-case",

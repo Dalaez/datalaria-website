@@ -95,7 +95,7 @@ def render_manifest_json(docs: list[AgentSpecDocument]) -> str:
     payload = {
         "schema_version": "1.0.0",
         "generator": "ops/helix/build_adapters.py",
-        "invariants": [f"INV-HELIX-{i}" for i in range(1, 8)],
+        "invariants": [f"INV-HELIX-{i}" for i in range(1, 9)],
         "total_agents": len(docs),
         "agents": [
             {

@@ -23,6 +23,10 @@ SurfaceType = Literal[
     "auth_security",
 ]
 
+MAX_AGENT_SPEC_LINES: int = 85
+MAX_FRICTION_RULES: int = 6
+ALLOWED_FRICTION_PREFIXES: tuple[str, ...] = ("[USER-FIX]", "[ENV-FIX]", "[RADAR-SKILL]")
+
 EXPECTED_AGENT_IDS: tuple[str, ...] = (
     "01-orchestrator",
     "02-product-analyst",
@@ -79,6 +83,7 @@ class AgentSpecDocument(BaseModel):
     frontmatter: AgentSpecFrontmatter
     body_markdown: str = Field(..., min_length=100)
     source_path: str
+    total_lines: int = Field(default=0)
 
     @field_validator("body_markdown")
     @classmethod
@@ -89,11 +94,84 @@ class AgentSpecDocument(BaseModel):
             "## 3. Responsabilidades",
             "## 4. Entregables y Contrato de Salida",
             "## 5. Límites y Prohibiciones",
+            "## 6. Reglas de Fricción Real y Correcciones",
         ]
         for heading in required_headings:
             if heading not in v:
                 raise ValueError(f"Falta la sección obligatoria '{heading}' en el cuerpo del AGENT_SPEC.")
         return v
+
+    @model_validator(mode="after")
+    def validate_inv_helix_8_anti_bloat(self) -> "AgentSpecDocument":
+        """Valida las restricciones estrictas de INV-HELIX-8 (Anti-Bloat y Reglas de Fricción)."""
+        # 1. Límite máximo de líneas de la ficha
+        if self.total_lines > MAX_AGENT_SPEC_LINES:
+            raise ValueError(
+                f"Violación INV-HELIX-8 en {self.frontmatter.id}: la ficha tiene {self.total_lines} líneas "
+                f"(máximo permitido: {MAX_AGENT_SPEC_LINES})."
+            )
+
+        # 2. Validación de la Sección 6: reglas entre 1 y MAX_FRICTION_RULES y prefijos autorizados
+        match = re.search(
+            r"## 6\. Reglas de Fricción Real y Correcciones[^\n]*\n([\s\S]*?)(?=\n## |\Z)",
+            self.body_markdown,
+        )
+        if not match:
+            raise ValueError(
+                f"Violación INV-HELIX-8 en {self.frontmatter.id}: no se encontró la Sección 6 estructurada."
+            )
+        sec6_text = match.group(1).strip()
+        rules = [line.strip() for line in sec6_text.splitlines() if line.strip().startswith(("-", "*"))]
+
+        if len(rules) < 1 or len(rules) > MAX_FRICTION_RULES:
+            raise ValueError(
+                f"Violación INV-HELIX-8 en {self.frontmatter.id}: contiene {len(rules)} reglas en Sección 6 "
+                f"(debe contener entre 1 y {MAX_FRICTION_RULES})."
+            )
+
+        for rule in rules:
+            if not re.search(r"\[(USER-FIX|ENV-FIX|RADAR-SKILL)\]", rule):
+                raise ValueError(
+                    f"Violación INV-HELIX-8 en {self.frontmatter.id}: la regla '{rule}' no contiene "
+                    f"ninguno de los prefijos obligatorios {ALLOWED_FRICTION_PREFIXES}."
+                )
+
+        return self
+
+
+class AgentDebriefItem(BaseModel):
+    """Resumen estructurado de la actuación de un agente convocado en el hito."""
+
+    agent_id: str
+    icon: str
+    summary: str
+    conclusions: str
+    risks: str
+    improvements: str
+    friction_learned: str | None = None
+
+
+class DebriefReport(BaseModel):
+    """Informe de Debrief al cierre de un hito emitido por 01-orchestrator (ADR-019)."""
+
+    milestone_id: str
+    size: TaskSize
+    items: list[AgentDebriefItem]
+
+    def format_debrief_card(self) -> str:
+        """Formatea la tarjeta Markdown canónica de DEBRIEF HELIX."""
+        lines = [
+            f"### 📋 DEBRIEF HELIX · Hito {self.milestone_id} ({self.size})",
+            "**Resumen de Participación por Agentes Convocados:**",
+        ]
+        for it in self.items:
+            lines.append(f"- {it.icon} `{it.agent_id}`: {it.summary}")
+            lines.append(f"  - **Conclusiones:** {it.conclusions}")
+            lines.append(f"  - **Riesgos:** {it.risks}")
+            lines.append(f"  - **Mejoras:** {it.improvements}")
+            if it.friction_learned:
+                lines.append(f"  - **Fricción Registrada:** `{it.friction_learned}`")
+        return "\n".join(lines)
 
 
 class TriageDecision(BaseModel):
@@ -148,6 +226,7 @@ def load_squad_specs(squad_dir: Path | str = Path("specs/squad")) -> list[AgentS
                 frontmatter=frontmatter,
                 body_markdown=parts[2].strip(),
                 source_path=fp.as_posix(),
+                total_lines=len(raw.splitlines()),
             )
         )
     return docs
