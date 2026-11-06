@@ -4,22 +4,32 @@
  * Datalaria Helix — Strict Offline Resilience (Invariante INV-MATHS-8)
  */
 
-const CACHE_NAME = 'datalaria-maths-v2.1.0';
+const CACHE_NAME = 'datalaria-maths-v2.1.1';
 
 const PRECACHE_ASSETS = [
   '/apps/maths/',
   '/apps/maths/index.html',
   '/apps/maths/manifest.json',
   '/apps/maths/icon.svg',
-  '/apps/maths/datalaria_logo_transp.png'
+  '/apps/maths/icon-192.png',
+  '/apps/maths/icon-512.png',
+  '/apps/maths/icon-maskable-192.png',
+  '/apps/maths/icon-maskable-512.png',
+  '/apps/maths/apple-touch-icon.png'
 ];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(PRECACHE_ASSETS);
-    }).then(() => self.skipWaiting())
+    })
   );
+});
+
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.action === 'skipWaiting') {
+    self.skipWaiting();
+  }
 });
 
 self.addEventListener('activate', (event) => {

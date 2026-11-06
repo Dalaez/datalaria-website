@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-11-05T21:04:19.979548Z",
+  "generated_at": "2026-11-06T13:38:31.278076Z",
   "total_assets": 143,
   "published_assets": 120,
   "scheduled_assets": 19,
@@ -917,8 +917,8 @@
       "brief_es": "Guía metodológica y cuantitativa para construir un Business Case de grado Consejo de Administración: Flujo de Caja Libre Descontado (DCF), cálculo de WACC vía CAPM, VAN, TIR, MIRR, Payback con interpolación, Gráfico Tornado y gobernanza con stage gates.",
       "brief_en": "Comprehensive quantitative methodology to build a Board-ready Financial Business Case: Discounted Free Cash Flow (DCF), WACC estimation via CAPM, NPV, IRR, MIRR, interpolated Discounted Payback, Tornado sensitivity chart, and stage-gate governance.",
       "publish_date": "2026-11-09",
-      "last_modified_es": "2026-10-31T20:23:26+01:00",
-      "last_modified_en": "2026-10-31T20:23:26+01:00",
+      "last_modified_es": "2026-11-05T22:04:10+01:00",
+      "last_modified_en": "2026-11-05T22:04:10+01:00",
       "language_parity": "complete",
       "category": "Estrategia y Operaciones",
       "categories": [
@@ -1399,8 +1399,8 @@
       "brief_es": "De la gobernanza de personas al control de costes y la cadena de suministro. Guía metodológica para conectar la Matriz RACI, AMFE/FMEA, Estimación PERT, EVM Curva S y Stock de Seguridad en un sistema unificado de ejecución.",
       "brief_en": "From team governance and risk mitigation to project financials and supply chain buffers. How to integrate RACI Matrix, FMEA, 3-Point PERT, EVM S-Curve, and Safety Stock into a unified operational engine.",
       "publish_date": "2026-11-29",
-      "last_modified_es": "2026-10-31T20:23:26+01:00",
-      "last_modified_en": "2026-10-31T20:23:26+01:00",
+      "last_modified_es": "2026-11-05T22:04:10+01:00",
+      "last_modified_en": "2026-11-05T22:04:10+01:00",
       "language_parity": "complete",
       "category": "Estrategia y Operaciones",
       "categories": [
@@ -3864,8 +3864,8 @@
       "brief_es": "Un análisis cinematográfico, técnico y filosófico de 'Her' (Spike Jonze, 2013): cómo las interfaces de voz vulneran nuestras defensas cognitivas, la mercantilización de la intimidad y por qué la superinteligencia no nos exterminará, sino que nos dejará atrás por pura brecha de ancho de banda.",
       "brief_en": "A cinematic, technical, and philosophical analysis of 'Her' (Spike Jonze, 2013): how real-time voice interfaces dismantle our cognitive defenses, the commodification of intimacy, and why superintelligence will not exterminate us, but leave us behind through sheer bandwidth disparity.",
       "publish_date": "2026-11-07",
-      "last_modified_es": "2026-10-31T20:23:26+01:00",
-      "last_modified_en": "2026-10-31T20:23:26+01:00",
+      "last_modified_es": "2026-11-05T22:04:10+01:00",
+      "last_modified_en": "2026-11-05T22:04:10+01:00",
       "language_parity": "complete",
       "category": "Cultura Tech y Media",
       "categories": [
@@ -7828,8 +7828,8 @@
       "brief_es": "Engineering Workbench v2.1: Navaja suiza científica para conversiones técnicas, PWA offline, evaluación de fórmulas y metrología SI.",
       "brief_en": "Engineering Workbench v2.1: Scientific Swiss Army knife for technical conversions, offline PWA, formula evaluation, and SI metrology.",
       "publish_date": "2025-09-20",
-      "last_modified_es": "2026-11-05T07:59:35+01:00",
-      "last_modified_en": "2026-11-05T07:59:35+01:00",
+      "last_modified_es": "2026-11-05T22:04:10+01:00",
+      "last_modified_en": "2026-11-05T22:04:10+01:00",
       "language_parity": "complete",
       "category": "Aplicaciones Web",
       "categories": [
@@ -8030,8 +8030,8 @@
       "brief_es": "Entrenamiento de cálculo mental gamificado con 6 niveles adaptativos, audio nativo y pistas visuales para niños y adultos.",
       "brief_en": "Gamified mental arithmetic arcade across 6 adaptive levels with native audio and visual hints for kids and adults.",
       "publish_date": "2025-08-28",
-      "last_modified_es": "2026-11-05T18:06:43+01:00",
-      "last_modified_en": "2026-11-05T18:06:43+01:00",
+      "last_modified_es": "2026-11-05T22:04:10+01:00",
+      "last_modified_en": "2026-11-05T22:04:10+01:00",
       "language_parity": "complete",
       "category": "Aplicaciones Web",
       "categories": [

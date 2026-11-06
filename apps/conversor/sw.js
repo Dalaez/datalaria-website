@@ -4,22 +4,32 @@
  * Datalaria Helix — Strict Offline Resilience (Invariante INV-CONV-10)
  */
 
-const CACHE_NAME = 'datalaria-conversor-v2.1.0';
+const CACHE_NAME = 'datalaria-conversor-v2.1.1';
 
 const PRECACHE_ASSETS = [
   '/apps/conversor/',
   '/apps/conversor/index.html',
   '/apps/conversor/manifest.json',
   '/apps/conversor/icon.svg',
-  '/apps/conversor/datalaria_logo_transp.png'
+  '/apps/conversor/icon-192.png',
+  '/apps/conversor/icon-512.png',
+  '/apps/conversor/icon-maskable-192.png',
+  '/apps/conversor/icon-maskable-512.png',
+  '/apps/conversor/apple-touch-icon.png'
 ];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(PRECACHE_ASSETS);
-    }).then(() => self.skipWaiting())
+    })
   );
+});
+
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.action === 'skipWaiting') {
+    self.skipWaiting();
+  }
 });
 
 self.addEventListener('activate', (event) => {

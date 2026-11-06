@@ -33,6 +33,11 @@ const I18N = {
     installSuccessToast: '✓ ¡Conversor Pro instalado con éxito!',
     installIosInstructions: '📲 En Safari iOS: pulsa Compartir (⎙) y elige "Añadir a pantalla de inicio"',
     installGenericInstructions: '📲 Pulsa el menú (⋮) del navegador y elige "Instalar aplicación" o "Añadir a pantalla de inicio"',
+    updateAvailable: 'Nueva versión v2.1.0 disponible',
+    updateNowBtn: 'Actualizar ahora',
+    checkingUpdate: 'Buscando actualizaciones...',
+    upToDate: '✓ Tienes la última versión instalada (v2.1.0)',
+    checkUpdateTitle: 'Buscar actualizaciones de la aplicación (v2.1.0)',
     constantsLabel: 'Constantes CODATA:',
     viewCodataTable: 'Tabla completa',
     closeCodataTable: 'Cerrar tabla',
@@ -79,6 +84,11 @@ const I18N = {
     installSuccessToast: '✓ Converter Pro successfully installed!',
     installIosInstructions: '📲 In Safari iOS: tap Share (⎙) and choose "Add to Home Screen"',
     installGenericInstructions: '📲 Tap browser menu (⋮) and select "Install app" or "Add to Home Screen"',
+    updateAvailable: 'New version v2.1.0 available',
+    updateNowBtn: 'Update now',
+    checkingUpdate: 'Checking for updates...',
+    upToDate: '✓ You have the latest version (v2.1.0)',
+    checkUpdateTitle: 'Check for app updates (v2.1.0)',
     constantsLabel: 'CODATA Constants:',
     viewCodataTable: 'Full Table',
     closeCodataTable: 'Close Table',
@@ -237,13 +247,116 @@ export class UnitConverterApp {
   }
 
   registerServiceWorker() {
-    if ('serviceWorker' in navigator && (window.location.protocol.startsWith('http') || window.location.protocol.startsWith('https'))) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/apps/conversor/sw.js')
-          .catch(() => {
-            // Ignorado silenciosamente en entornos sandbox o sin soporte
-          });
+    if (!('serviceWorker' in navigator) || (!window.location.protocol.startsWith('http') && !window.location.protocol.startsWith('https'))) {
+      return;
+    }
+
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/apps/conversor/sw.js').then((reg) => {
+        this._swRegistration = reg;
+        this.setupPwaUpdateFlow(reg);
+      }).catch(() => {
+        // Ignorado silenciosamente en entornos sandbox o sin soporte
       });
+
+      // Refresco limpio cuando el nuevo Service Worker toma el control
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (!this._swRefreshing) {
+          this._swRefreshing = true;
+          window.location.reload();
+        }
+      });
+    });
+
+    // Comprobación de actualizaciones al volver a enfocar la aplicación/pestaña
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible' && this._swRegistration) {
+        this._swRegistration.update().catch(() => {});
+      }
+    });
+  }
+
+  setupPwaUpdateFlow(registration) {
+    if (!registration) return;
+
+    // 1. Si ya hay un worker instalado y esperando ser activado
+    if (registration.waiting && navigator.serviceWorker.controller) {
+      this.showUpdateBanner(registration.waiting);
+      return;
+    }
+
+    // 2. Si se detecta un nuevo worker descargándose
+    registration.addEventListener('updatefound', () => {
+      const newWorker = registration.installing;
+      if (!newWorker) return;
+
+      newWorker.addEventListener('statechange', () => {
+        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+          this.showUpdateBanner(newWorker);
+        }
+      });
+    });
+  }
+
+  showUpdateBanner(waitingWorker) {
+    if (document.getElementById('pwa-update-banner')) return;
+
+    const t = I18N[this.state.lang];
+    const banner = document.createElement('div');
+    banner.id = 'pwa-update-banner';
+    banner.className = 'pwa-update-banner';
+    banner.innerHTML = `
+      <div class="update-banner-content">
+        <span class="update-icon">⚡</span>
+        <span class="update-text">${t.updateAvailable}</span>
+      </div>
+      <button id="btn-pwa-apply-update" class="btn-pwa-update-action" title="${t.updateNowBtn}">
+        <span>🔄</span> <span>${t.updateNowBtn}</span>
+      </button>
+    `;
+
+    document.body.appendChild(banner);
+
+    const btn = banner.querySelector('#btn-pwa-apply-update');
+    if (btn) {
+      btn.addEventListener('click', () => {
+        btn.disabled = true;
+        btn.innerHTML = `<span>⏳</span> <span>...</span>`;
+        if (waitingWorker) {
+          waitingWorker.postMessage({ action: 'skipWaiting' });
+        }
+        setTimeout(() => {
+          window.location.reload();
+        }, 1200);
+      });
+    }
+  }
+
+  async checkForUpdatesManual() {
+    const t = I18N[this.state.lang];
+    this.showToast(`🔍 ${t.checkingUpdate}`, 1800);
+
+    if (!this._swRegistration) {
+      setTimeout(() => {
+        this.showToast(t.upToDate, 3000);
+      }, 800);
+      return;
+    }
+
+    if (this._swRegistration.waiting) {
+      this.showUpdateBanner(this._swRegistration.waiting);
+      return;
+    }
+
+    try {
+      await this._swRegistration.update();
+      setTimeout(() => {
+        if (!this._swRegistration.waiting && !document.getElementById('pwa-update-banner')) {
+          this.showToast(t.upToDate, 3000);
+        }
+      }, 1500);
+    } catch {
+      this.showToast(t.upToDate, 3000);
     }
   }
 
@@ -367,7 +480,7 @@ export class UnitConverterApp {
         </a>
         <div class="app-title-badge">
           <span>${t.appTitle}</span>
-          <span class="version-chip">v2.1.0</span>
+          <button id="btn-check-update" class="version-chip" title="${t.checkUpdateTitle}">v2.1.0</button>
         </div>
       </div>
       <div class="header-right">
@@ -426,6 +539,11 @@ export class UnitConverterApp {
     const installBtn = headerEl.querySelector('#btn-install-pwa');
     if (installBtn) {
       installBtn.addEventListener('click', () => this.triggerPwaInstall());
+    }
+
+    const checkUpdateBtn = headerEl.querySelector('#btn-check-update');
+    if (checkUpdateBtn) {
+      checkUpdateBtn.addEventListener('click', () => this.checkForUpdatesManual());
     }
   }
 

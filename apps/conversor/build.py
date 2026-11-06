@@ -5,6 +5,7 @@ Datalaria Helix — Single Source of Truth
 """
 
 import re
+import shutil
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
@@ -95,7 +96,8 @@ def build():
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Conversor Pro">
     <link rel="icon" type="image/svg+xml" href="/apps/conversor/icon.svg">
-    <link rel="apple-touch-icon" href="/apps/conversor/datalaria_logo_transp.png">
+    <link rel="alternate icon" type="image/png" href="/apps/conversor/icon-192.png">
+    <link rel="apple-touch-icon" href="/apps/conversor/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
@@ -193,10 +195,20 @@ document.addEventListener('DOMContentLoaded', () => {{
         print(f"  [+] Shim EN: {shim_path.relative_to(REPO_ROOT)} -> {target}")
 
     # PWA Assets
-    for pwa_file in ["manifest.json", "sw.js", "icon.svg"]:
+    pwa_files = [
+        "manifest.json",
+        "sw.js",
+        "icon.svg",
+        "icon-192.png",
+        "icon-512.png",
+        "icon-maskable-192.png",
+        "icon-maskable-512.png",
+        "apple-touch-icon.png",
+    ]
+    for pwa_file in pwa_files:
         src_pwa = SRC_DIR / pwa_file
         if src_pwa.exists():
-            (STATIC_DIR / pwa_file).write_text(src_pwa.read_text(encoding="utf-8"), encoding="utf-8")
+            shutil.copy2(src_pwa, STATIC_DIR / pwa_file)
             print(f"  [+] PWA Asset: static/apps/conversor/{pwa_file}")
 
     print("[OK] Build de Conversor v2.1.0 completado con exito.")

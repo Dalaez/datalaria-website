@@ -441,13 +441,25 @@ def test_inv_conv_9_secure_math_expression_evaluator():
 # -------------------------------------------------------------------------
 
 def test_inv_conv_10_pwa_offline_service_worker():
-    """Certifica la existencia, validez de manifest.json, sw.js e icono SVG."""
+    """Certifica la existencia, validez de manifest.json, sw.js e iconos SVG y PNG adaptativos."""
     manifest_path = STATIC_CONV / "manifest.json"
     assert manifest_path.exists(), "Falta static/apps/conversor/manifest.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     assert manifest["display"] == "standalone"
     assert manifest["start_url"] == "/apps/conversor/"
-    assert len(manifest["icons"]) >= 2
+    assert len(manifest["icons"]) >= 5
+
+    # Certificar presencia de iconos estándar y maskable específicos de Conversor (no genéricos)
+    maskable_icons = [i for i in manifest["icons"] if i.get("purpose") == "maskable"]
+    assert len(maskable_icons) >= 2, "Debe incluir iconos maskable para Android"
+    for icon in maskable_icons:
+        assert "datalaria_logo_transp.png" not in icon["src"], "Los iconos maskable deben ser propios de la app"
+        assert "icon-maskable" in icon["src"]
+
+    for icon_name in ["icon.svg", "icon-192.png", "icon-512.png", "icon-maskable-192.png", "icon-maskable-512.png", "apple-touch-icon.png"]:
+        icon_file = STATIC_CONV / icon_name
+        assert icon_file.exists(), f"Falta {icon_file}"
+        assert icon_file.stat().st_size > 500, f"Icono {icon_name} corrupto o vacío"
 
     sw_path = STATIC_CONV / "sw.js"
     assert sw_path.exists(), "Falta static/apps/conversor/sw.js"
@@ -455,21 +467,24 @@ def test_inv_conv_10_pwa_offline_service_worker():
     assert "datalaria-conversor-" in sw_code
     assert "caches.open" in sw_code
     assert "PRECACHE_ASSETS" in sw_code
-
-    icon_svg = STATIC_CONV / "icon.svg"
-    assert icon_svg.exists(), "Falta static/apps/conversor/icon.svg"
-    assert icon_svg.read_text(encoding="utf-8").startswith("<svg")
+    assert "icon-maskable-512.png" in sw_code
+    assert "skipWaiting" in sw_code
 
     index_html = (STATIC_CONV / "index.html").read_text(encoding="utf-8")
     assert 'rel="manifest"' in index_html
     assert 'sw.js' in index_html
+    assert 'apple-touch-icon.png' in index_html
+    assert 'datalaria_logo_transp.png' not in index_html
     assert 'input-expr-preview' in index_html
     assert 'btn-install-pwa' in index_html, "index.html debe incluir el botón #btn-install-pwa"
+    assert 'btn-check-update' in index_html, "index.html debe incluir el botón interactivo de comprobación de actualización"
+    assert 'setupPwaUpdateFlow' in index_html, "index.html debe contener el orquestador de actualización reactiva PWA"
     assert 'triggerPwaInstall' in index_html, "index.html debe contener el controlador de instalación triggerPwaInstall"
     assert 'beforeinstallprompt' in index_html, "index.html debe capturar el evento beforeinstallprompt"
 
     styles_css = (APP_SRC / "styles.css").read_text(encoding="utf-8")
     assert ".btn-install-pwa" in styles_css, "styles.css debe definir el estilo para .btn-install-pwa"
+    assert ".pwa-update-banner" in styles_css, "styles.css debe definir el estilo para el banner de actualización"
 
 
 

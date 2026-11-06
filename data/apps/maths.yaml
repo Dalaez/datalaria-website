@@ -101,8 +101,10 @@ releases:
       es: "Ábaco Arcade v2.1: Soporte PWA 100% Offline, Botón Instalar App y Feedback Formativo"
       en: "Abacus Arcade v2.1: 100% Offline PWA Support, Install App Button, and Formative Feedback"
     changes:
-      - es: "PWA Offline completa con Service Worker (sw.js), manifest.json e icono vectorial icon.svg instalable en móviles y tablets."
-        en: "Full offline PWA with Service Worker (sw.js), manifest.json, and vector icon.svg installable on mobile and tablet home screens."
+      - es: "PWA Offline completa con Service Worker (sw.js), manifest.json y batería completa de iconos PNG rasterizados y adaptativos (maskable 192/512 para Android e iOS) con safe-zone circular del 80%."
+        en: "Full offline PWA with Service Worker (sw.js), manifest.json, and full raster/adaptive PNG icon set (maskable 192/512 for Android and iOS) with 80% circular safe-zone."
+      - es: "Módulo de Actualización Reactiva PWA: banner flotante '⚡ Nueva versión disponible' con actualización en 1 clic y chip interactivo de versión (`#btn-check-update`) para verificación manual instantánea sin desinstalar."
+        en: "Reactive PWA Update Module: floating '⚡ New version available' banner with 1-click update and interactive version badge (`#btn-check-update`) for instant manual update verification without uninstalling."
       - es: "Botón dinámico en cabecera '📲 Instalar App' con captura de beforeinstallprompt y guía paso a paso para iOS Safari y escritorio."
         en: "Dynamic header '📲 Install App' button capturing beforeinstallprompt and step-by-step guidance for iOS Safari and desktop."
       - es: "Banner de feedback pedagógico formativo en cada operación (refuerzo positivo inmediato o solución correcta explicada durante 1.8s)."

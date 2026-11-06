@@ -72,7 +72,7 @@ def test_inv_maths_7_datalaria_shell_links():
     assert 'id="link-kits"' in content, "Falta enlace a Recursos"
 
 def test_inv_maths_8_pwa_offline_resilience():
-    """INV-MATHS-8: PWA 100% Offline con manifest.json, sw.js e icon.svg."""
+    """INV-MATHS-8: PWA 100% Offline con manifest.json, sw.js e iconos adaptativos."""
     manifest_path = os.path.join(STATIC_DIR, "manifest.json")
     sw_path = os.path.join(STATIC_DIR, "sw.js")
     icon_path = os.path.join(STATIC_DIR, "icon.svg")
@@ -81,21 +81,37 @@ def test_inv_maths_8_pwa_offline_resilience():
     assert os.path.exists(sw_path), "Falta static/apps/maths/sw.js"
     assert os.path.exists(icon_path), "Falta static/apps/maths/icon.svg"
 
+    for icon_name in ["icon.svg", "icon-192.png", "icon-512.png", "icon-maskable-192.png", "icon-maskable-512.png", "apple-touch-icon.png"]:
+        p = os.path.join(STATIC_DIR, icon_name)
+        assert os.path.exists(p), f"Falta {icon_name} en static/apps/maths/"
+        assert os.path.getsize(p) > 500, f"Icono {icon_name} corrupto o vacío"
+
     with open(manifest_path, "r", encoding="utf-8") as f:
         data = json.load(f)
         assert data.get("display") == "standalone", "PWA display debe ser standalone"
         assert data.get("start_url") == "/apps/maths/", "start_url inválido"
+        maskables = [i for i in data.get("icons", []) if i.get("purpose") == "maskable"]
+        assert len(maskables) >= 2, "Debe tener al menos 2 iconos maskables"
+        for m in maskables:
+            assert "datalaria_logo_transp.png" not in m["src"], "Icono maskable debe ser propio de Maths"
+            assert "icon-maskable" in m["src"]
 
     with open(sw_path, "r", encoding="utf-8") as f:
         sw_code = f.read()
         assert "PRECACHE_ASSETS" in sw_code, "Falta lista de precaché en sw.js"
         assert "/apps/maths/index.html" in sw_code, "index.html no precacheado en sw.js"
+        assert "icon-maskable-512.png" in sw_code
+        assert "skipWaiting" in sw_code
 
     # Verificar enlace al manifest en index.html y botón de instalación
     with open(os.path.join(STATIC_DIR, "index.html"), "r", encoding="utf-8") as f:
         index_code = f.read()
         assert 'rel="manifest"' in index_code, "Falta rel=manifest en index.html"
         assert 'id="btn-install-pwa"' in index_code, "Falta botón #btn-install-pwa en cabecera"
+        assert 'id="btn-check-update"' in index_code, "Falta botón #btn-check-update en cabecera"
+        assert 'setupPwaUpdateFlow' in index_code, "Falta setupPwaUpdateFlow en app.js"
+        assert 'apple-touch-icon.png' in index_code, "Falta apple-touch-icon en index.html"
+        assert 'datalaria_logo_transp.png' not in index_code
 
 def test_inv_maths_9_anti_fouc_and_persistence():
     """INV-MATHS-9: Persistencia de tema y micro-script anti-FOUC."""

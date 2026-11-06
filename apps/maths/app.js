@@ -704,10 +704,114 @@
       };
     }
 
+    const checkUpdateBtn = document.getElementById('btn-check-update');
+    if (checkUpdateBtn) {
+      checkUpdateBtn.onclick = () => checkForUpdatesManual();
+    }
+
     if ('serviceWorker' in navigator && (window.location.protocol.startsWith('http') || window.location.protocol.startsWith('https'))) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/apps/maths/sw.js').catch(() => { });
+        navigator.serviceWorker.register('/apps/maths/sw.js').then((reg) => {
+          swRegistration = reg;
+          setupPwaUpdateFlow(reg);
+        }).catch(() => { });
+
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+          if (!swRefreshing) {
+            swRefreshing = true;
+            window.location.reload();
+          }
+        });
       });
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible' && swRegistration) {
+          swRegistration.update().catch(() => {});
+        }
+      });
+    }
+  }
+
+  let swRegistration = null;
+  let swRefreshing = false;
+
+  function setupPwaUpdateFlow(registration) {
+    if (!registration) return;
+
+    if (registration.waiting && navigator.serviceWorker.controller) {
+      showUpdateBanner(registration.waiting);
+      return;
+    }
+
+    registration.addEventListener('updatefound', () => {
+      const newWorker = registration.installing;
+      if (!newWorker) return;
+
+      newWorker.addEventListener('statechange', () => {
+        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+          showUpdateBanner(newWorker);
+        }
+      });
+    });
+  }
+
+  function showUpdateBanner(waitingWorker) {
+    if (document.getElementById('pwa-update-banner')) return;
+
+    const banner = document.createElement('div');
+    banner.id = 'pwa-update-banner';
+    banner.className = 'pwa-update-banner';
+    banner.innerHTML = `
+      <div class="update-banner-content">
+        <span class="update-icon">⚡</span>
+        <span class="update-text">${t('update_available')}</span>
+      </div>
+      <button id="btn-pwa-apply-update" class="btn-pwa-update-action" title="${t('update_now_btn')}">
+        <span>🔄</span> <span>${t('update_now_btn')}</span>
+      </button>
+    `;
+
+    document.body.appendChild(banner);
+
+    const btn = banner.querySelector('#btn-pwa-apply-update');
+    if (btn) {
+      btn.addEventListener('click', () => {
+        btn.disabled = true;
+        btn.innerHTML = `<span>⏳</span> <span>...</span>`;
+        if (waitingWorker) {
+          waitingWorker.postMessage({ action: 'skipWaiting' });
+        }
+        setTimeout(() => {
+          window.location.reload();
+        }, 1200);
+      });
+    }
+  }
+
+  async function checkForUpdatesManual() {
+    showToast(`🔍 ${t('checking_update')}`, 1800);
+
+    if (!swRegistration) {
+      setTimeout(() => {
+        showToast(t('up_to_date'), 3000);
+      }, 800);
+      return;
+    }
+
+    if (swRegistration.waiting) {
+      showUpdateBanner(swRegistration.waiting);
+      return;
+    }
+
+    try {
+      await swRegistration.update();
+      setTimeout(() => {
+        if (!swRegistration.waiting && !document.getElementById('pwa-update-banner')) {
+          showToast(t('up_to_date'), 3000);
+        }
+      }, 1500);
+    } catch {
+      showToast(t('up_to_date'), 3000);
     }
   }
 

@@ -36,6 +36,8 @@ def build():
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <link rel="manifest" href="/apps/maths/manifest.json">
   <link rel="icon" type="image/svg+xml" href="/apps/maths/icon.svg">
+  <link rel="alternate icon" type="image/png" href="/apps/maths/icon-192.png">
+  <link rel="apple-touch-icon" href="/apps/maths/apple-touch-icon.png">
   <script>
     // Script Anti-FOUC para tema visual instantáneo
     (function() {{
@@ -60,7 +62,7 @@ def build():
       <a href="/apps/maths/" class="shell-brand">
         <span>🧮</span>
         <span id="shell-app-title">Ábaco Arcade</span>
-        <span class="shell-badge">v2.1.0</span>
+        <button id="btn-check-update" class="shell-badge" title="Buscar actualizaciones (v2.1.0)">v2.1.0</button>
       </a>
     </div>
 
@@ -103,7 +105,17 @@ def build():
     print(f"Generado {out_index} ({len(html_content)} bytes)")
 
     # Copiar PWA assets a static/apps/maths/
-    for pwa_file in ["manifest.json", "sw.js", "icon.svg"]:
+    pwa_files = [
+        "manifest.json",
+        "sw.js",
+        "icon.svg",
+        "icon-192.png",
+        "icon-512.png",
+        "icon-maskable-192.png",
+        "icon-maskable-512.png",
+        "apple-touch-icon.png",
+    ]
+    for pwa_file in pwa_files:
         src = os.path.join(BASE_DIR, pwa_file)
         dst = os.path.join(STATIC_DIR, pwa_file)
         if os.path.exists(src):

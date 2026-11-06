@@ -9,6 +9,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <link rel="manifest" href="/apps/maths/manifest.json">
   <link rel="icon" type="image/svg+xml" href="/apps/maths/icon.svg">
+  <link rel="alternate icon" type="image/png" href="/apps/maths/icon-192.png">
+  <link rel="apple-touch-icon" href="/apps/maths/apple-touch-icon.png">
   <script>
     // Script Anti-FOUC para tema visual instantáneo
     (function() {
@@ -126,6 +128,17 @@ body {
   font-size: 0.75rem;
   font-weight: 700;
   font-family: var(--font-mono);
+  border: 1px solid rgba(14, 165, 233, 0.25);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.shell-badge:hover {
+  background: var(--op-add);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.35);
 }
 
 .btn-arcade {
@@ -514,6 +527,92 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* PWA Reactive Update Banner */
+.pwa-update-banner {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 0 15px rgba(56, 189, 248, 0.2);
+  padding: 0.65rem 1rem;
+  border-radius: var(--radius-md, 12px);
+  color: #f8fafc;
+  animation: slideUpUpdate 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="light"] .pwa-update-banner {
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(14, 165, 233, 0.45);
+  box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.2);
+  color: #0f172a;
+}
+
+@keyframes slideUpUpdate {
+  from {
+    transform: translateY(100%) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.update-banner-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.update-icon {
+  font-size: 1.1rem;
+  animation: pulseIcon 1.5s infinite;
+}
+
+@keyframes pulseIcon {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.btn-pwa-update-action {
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+  color: #ffffff;
+  border: none;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-sm, 6px);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-pwa-update-action:hover {
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4);
+}
+
+@media (max-width: 640px) {
+  .pwa-update-banner {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    justify-content: space-between;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -523,7 +622,7 @@ body {
       <a href="/apps/maths/" class="shell-brand">
         <span>🧮</span>
         <span id="shell-app-title">Ábaco Arcade</span>
-        <span class="shell-badge">v2.1.0</span>
+        <button id="btn-check-update" class="shell-badge" title="Buscar actualizaciones (v2.1.0)">v2.1.0</button>
       </a>
     </div>
 
@@ -648,6 +747,11 @@ window.MATHS_CATALOG = {
       install_success: '¡Ábaco Arcade instalado con éxito! 🎉',
       install_ios_tip: 'En Safari iOS: pulsa Compartir (⬆️) y "Añadir a pantalla de inicio"',
       install_generic_tip: 'Pulsa el menú (⋮) del navegador y selecciona "Instalar aplicación"',
+      update_available: 'Nueva versión v2.1.0 disponible',
+      update_now_btn: 'Actualizar ahora',
+      checking_update: 'Buscando actualizaciones...',
+      up_to_date: '✓ Ábaco Arcade al día (v2.1.0)',
+      check_update_title: 'Buscar actualizaciones de la aplicación (v2.1.0)',
       stats_reset_toast: 'Estadísticas y medallas reiniciadas',
       correct_answer_is: 'Respuesta correcta:',
       next_question_btn: 'Siguiente ➔',
@@ -700,6 +804,11 @@ window.MATHS_CATALOG = {
       install_success: 'Abacus Arcade successfully installed! 🎉',
       install_ios_tip: 'In Safari iOS: tap Share (⬆️) and select "Add to Home Screen"',
       install_generic_tip: 'Tap browser menu (⋮) and select "Install app"',
+      update_available: 'New version v2.1.0 available',
+      update_now_btn: 'Update now',
+      checking_update: 'Checking for updates...',
+      up_to_date: '✓ Abacus Arcade is up to date (v2.1.0)',
+      check_update_title: 'Check for app updates (v2.1.0)',
       stats_reset_toast: 'Stats and badges have been reset',
       correct_answer_is: 'Correct answer:',
       next_question_btn: 'Next ➔',
@@ -1859,10 +1968,114 @@ window.MATHS_CATALOG = {
       };
     }
 
+    const checkUpdateBtn = document.getElementById('btn-check-update');
+    if (checkUpdateBtn) {
+      checkUpdateBtn.onclick = () => checkForUpdatesManual();
+    }
+
     if ('serviceWorker' in navigator && (window.location.protocol.startsWith('http') || window.location.protocol.startsWith('https'))) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/apps/maths/sw.js').catch(() => { });
+        navigator.serviceWorker.register('/apps/maths/sw.js').then((reg) => {
+          swRegistration = reg;
+          setupPwaUpdateFlow(reg);
+        }).catch(() => { });
+
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+          if (!swRefreshing) {
+            swRefreshing = true;
+            window.location.reload();
+          }
+        });
       });
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible' && swRegistration) {
+          swRegistration.update().catch(() => {});
+        }
+      });
+    }
+  }
+
+  let swRegistration = null;
+  let swRefreshing = false;
+
+  function setupPwaUpdateFlow(registration) {
+    if (!registration) return;
+
+    if (registration.waiting && navigator.serviceWorker.controller) {
+      showUpdateBanner(registration.waiting);
+      return;
+    }
+
+    registration.addEventListener('updatefound', () => {
+      const newWorker = registration.installing;
+      if (!newWorker) return;
+
+      newWorker.addEventListener('statechange', () => {
+        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+          showUpdateBanner(newWorker);
+        }
+      });
+    });
+  }
+
+  function showUpdateBanner(waitingWorker) {
+    if (document.getElementById('pwa-update-banner')) return;
+
+    const banner = document.createElement('div');
+    banner.id = 'pwa-update-banner';
+    banner.className = 'pwa-update-banner';
+    banner.innerHTML = `
+      <div class="update-banner-content">
+        <span class="update-icon">⚡</span>
+        <span class="update-text">${t('update_available')}</span>
+      </div>
+      <button id="btn-pwa-apply-update" class="btn-pwa-update-action" title="${t('update_now_btn')}">
+        <span>🔄</span> <span>${t('update_now_btn')}</span>
+      </button>
+    `;
+
+    document.body.appendChild(banner);
+
+    const btn = banner.querySelector('#btn-pwa-apply-update');
+    if (btn) {
+      btn.addEventListener('click', () => {
+        btn.disabled = true;
+        btn.innerHTML = `<span>⏳</span> <span>...</span>`;
+        if (waitingWorker) {
+          waitingWorker.postMessage({ action: 'skipWaiting' });
+        }
+        setTimeout(() => {
+          window.location.reload();
+        }, 1200);
+      });
+    }
+  }
+
+  async function checkForUpdatesManual() {
+    showToast(`🔍 ${t('checking_update')}`, 1800);
+
+    if (!swRegistration) {
+      setTimeout(() => {
+        showToast(t('up_to_date'), 3000);
+      }, 800);
+      return;
+    }
+
+    if (swRegistration.waiting) {
+      showUpdateBanner(swRegistration.waiting);
+      return;
+    }
+
+    try {
+      await swRegistration.update();
+      setTimeout(() => {
+        if (!swRegistration.waiting && !document.getElementById('pwa-update-banner')) {
+          showToast(t('up_to_date'), 3000);
+        }
+      }, 1500);
+    } catch {
+      showToast(t('up_to_date'), 3000);
     }
   }
 
