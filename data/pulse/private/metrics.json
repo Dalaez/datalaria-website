@@ -602,15 +602,6 @@
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 0.0
   },
-  "norbert_wiener": {
-    "ga4_views_30d": 0,
-    "ga4_users_30d": 0,
-    "ga4_engagement_sec": 0.0,
-    "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 0,
-    "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 0.0
-  },
   "notebooklm-sql": {
     "ga4_views_30d": 2,
     "ga4_users_30d": 2,
