@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-11-06T13:38:31.278076Z",
+  "generated_at": "2026-11-06T13:39:32.661051Z",
   "total_assets": 143,
   "published_assets": 120,
   "scheduled_assets": 19,
@@ -7828,8 +7828,8 @@
       "brief_es": "Engineering Workbench v2.1: Navaja suiza científica para conversiones técnicas, PWA offline, evaluación de fórmulas y metrología SI.",
       "brief_en": "Engineering Workbench v2.1: Scientific Swiss Army knife for technical conversions, offline PWA, formula evaluation, and SI metrology.",
       "publish_date": "2025-09-20",
-      "last_modified_es": "2026-11-05T22:04:10+01:00",
-      "last_modified_en": "2026-11-05T22:04:10+01:00",
+      "last_modified_es": "2026-11-06T14:38:18+01:00",
+      "last_modified_en": "2026-11-06T14:38:18+01:00",
       "language_parity": "complete",
       "category": "Aplicaciones Web",
       "categories": [
@@ -8030,8 +8030,8 @@
       "brief_es": "Entrenamiento de cálculo mental gamificado con 6 niveles adaptativos, audio nativo y pistas visuales para niños y adultos.",
       "brief_en": "Gamified mental arithmetic arcade across 6 adaptive levels with native audio and visual hints for kids and adults.",
       "publish_date": "2025-08-28",
-      "last_modified_es": "2026-11-05T22:04:10+01:00",
-      "last_modified_en": "2026-11-05T22:04:10+01:00",
+      "last_modified_es": "2026-11-06T14:38:18+01:00",
+      "last_modified_en": "2026-11-06T14:38:18+01:00",
       "language_parity": "complete",
       "category": "Aplicaciones Web",
       "categories": [
