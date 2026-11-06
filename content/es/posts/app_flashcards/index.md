@@ -55,7 +55,7 @@ La aplicación dispone de traducciones y generación de definiciones en varios i
 
 Para listas más largas (vocabularios de un tema completo, listas de capitales, etc.), la aplicación permite subir un fichero de texto (`.txt`) o CSV (`.csv`) con los términos y definiciones. Simplemente preparas tu lista en un fichero, la subes y la aplicación genera las tarjetas al instante. Esta función es ideal para aquellos que quieran preparar material para sus hijos o para estudiantes que necesiten digitalizar temas enteros.
 
-[Plantilla de importación](https://github.com/Dalaez/flashcards-app/blob/main/es/plantilla_flashcards.csv)
+[Plantilla de importación descargable](/apps/flashcards/es/plantilla_flashcards.csv) | [Repositorio en GitHub](https://github.com/Dalaez/flashcards-app/blob/main/es/plantilla_flashcards.csv)
 
 ### Funcionamiento: Fácil y entretenido
 
@@ -88,4 +88,4 @@ Espero que esta herramienta os sea de utilidad. Os invito a probarla [app de *fl
 #### Fuentes y Recursos:
 * **Prueba la App**: [Aplicación de Estudio - Flashcards](https://datalaria.com/apps/flashcards) | [Ver Ficha Técnica y Evolución de Flashcards AI](/es/apps/flashcards/)
 * **Código Fuente**: [Repositorio del Proyecto en GitHub](https://github.com/dalaez/flashcards-app)
-* **Google AI Studio**[Google AI Studio](https://aistudio.google.com/app/api-keys)
+* **Google AI Studio**: [Obtener API Key gratuita](https://aistudio.google.com/app/api-keys)

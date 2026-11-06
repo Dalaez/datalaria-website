@@ -1,47 +1,3054 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="es" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aplicación de Flashcards de Estudio / Study Flashcards App</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Flashcards Mágico · Datalaria</title>
+  <meta name="description" content="Estudio activo bilingüe, pronunciación fonética por voz y generador con IA.">
+  <meta name="theme-color" content="#8b5cf6">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="manifest" href="/apps/flashcards/manifest.json">
+  <link rel="icon" type="image/svg+xml" href="/apps/flashcards/icon.svg">
+  <link rel="alternate icon" type="image/png" href="/apps/flashcards/icon-192.png">
+  <link rel="apple-touch-icon" href="/apps/flashcards/apple-touch-icon.png">
+  <!-- Micro-script Anti-FOUC inyectado en <head> -->
+  <script>
+    (function() {
+      try {
+        const saved = localStorage.getItem('pref-theme') ||
+          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', saved);
+      } catch (e) {}
+    })();
+  </script>
+  <style>
+/* apps/flashcards/styles.css */
+/* Sistema de Diseño "Consumer Playful" (Flashcards Magic Academy) */
+/* Cero dependencias externas - 100% CSS Nativo */
+
+:root {
+  --bg-canvas: #f4f7ff;
+  --bg-surface: #ffffff;
+  --bg-elevated: #f8faff;
+  --bg-inset: #eef2ff;
+  --text-primary: #1e1b4b;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --border-card: #e2e8f0;
+  --border-strong: #cbd5e1;
+
+  --accent-primary: #8b5cf6;
+  --accent-primary-hover: #7c3aed;
+  --accent-primary-shadow: #6d28d9;
+
+  --box-repeat: #f59e0b;
+  --box-repeat-bg: #fffbeb;
+  --box-good: #0ea5e9;
+  --box-good-bg: #f0f9ff;
+  --box-mastered: #10b981;
+  --box-mastered-bg: #ecfdf5;
+
+  --status-error: #ef4444;
+  --status-success: #10b981;
+
+  --btn-3d-shadow: 0 4px 0 var(--border-strong);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 9999px;
+
+  --font-main: 'Outfit', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+[data-theme="dark"] {
+  --bg-canvas: #0c1222;
+  --bg-surface: #1e293b;
+  --bg-elevated: #334155;
+  --bg-inset: #0f172a;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --border-card: #334155;
+  --border-strong: #475569;
+
+  --box-repeat-bg: rgba(245, 158, 11, 0.15);
+  --box-good-bg: rgba(14, 165, 233, 0.15);
+  --box-mastered-bg: rgba(16, 185, 129, 0.15);
+
+  --btn-3d-shadow: 0 4px 0 #0f172a;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-canvas);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.25s ease, color 0.25s ease;
+  overflow-x: hidden;
+}
+
+/* Cabecera Institucional Datalaria Shell */
+.app-header {
+  height: 60px;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-card);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.25rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(8px);
+}
+
+.brand-section {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-back {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-inset);
+  transition: all 0.2s;
+}
+
+.btn-back:hover {
+  color: var(--text-primary);
+  background: var(--border-card);
+}
+
+.brand-title {
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.badge-version {
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: var(--accent-primary);
+  color: #ffffff;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-pill);
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+.badge-version:hover {
+  transform: scale(1.05);
+  opacity: 0.95;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ctrl-btn {
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid var(--border-card);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.ctrl-btn:hover {
+  background: var(--bg-inset);
+  border-color: var(--border-strong);
+}
+
+.ctrl-btn-accent {
+  background: var(--accent-primary);
+  color: #ffffff;
+  border-color: var(--accent-primary-shadow);
+}
+.ctrl-btn-accent:hover {
+  background: var(--accent-primary-hover);
+  color: #ffffff;
+}
+
+/* Pestañas de Navegación */
+.nav-deck {
+  max-width: 650px;
+  margin: 1rem auto 0;
+  display: flex;
+  background: var(--bg-inset);
+  padding: 0.25rem;
+  border-radius: var(--radius-pill);
+  gap: 0.25rem;
+  border: 1px solid var(--border-card);
+}
+
+.nav-tab {
+  flex: 1;
+  text-align: center;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 0.9rem;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.nav-tab.active {
+  background: var(--bg-surface);
+  color: var(--accent-primary);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Contenedor Principal */
+.app-container {
+  max-width: 820px;
+  width: 100%;
+  margin: 1.5rem auto 3rem;
+  padding: 0 1rem;
+  flex: 1;
+}
+
+.view-panel {
+  display: none;
+  animation: fadeIn 0.25s ease forwards;
+}
+
+.view-panel.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Tarjetas y Cuadrícula de Mazos */
+.section-title {
+  font-family: var(--font-main);
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.section-sub {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 1.25rem;
+}
+
+.category-badge {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent-primary);
+  margin: 1.5rem 0 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.decks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.deck-card {
+  background: var(--bg-surface);
+  border: 2px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--btn-3d-shadow);
+  user-select: none;
+}
+
+.deck-card:hover {
+  border-color: var(--accent-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 var(--border-strong);
+}
+
+.deck-card.selected {
+  border-color: var(--accent-primary);
+  background: var(--box-good-bg);
+  box-shadow: 0 4px 0 var(--accent-primary-shadow);
+}
+
+.deck-icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.deck-title {
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 0.35rem;
+  line-height: 1.3;
+}
+
+.deck-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+  flex: 1;
+}
+
+.deck-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+/* Modos de Estudio Selector */
+.modes-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.mode-btn {
+  background: var(--bg-surface);
+  border: 2px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+  box-shadow: var(--btn-3d-shadow);
+}
+
+.mode-btn:hover {
+  border-color: var(--accent-primary);
+}
+
+.mode-btn.selected {
+  border-color: var(--accent-primary);
+  background: var(--box-good-bg);
+  box-shadow: 0 4px 0 var(--accent-primary-shadow);
+}
+
+.mode-btn-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.25rem;
+}
+
+.mode-btn-desc {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.3;
+}
+
+.btn-primary-big {
+  width: 100%;
+  padding: 1rem;
+  font-family: var(--font-main);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+  background: var(--accent-primary);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  box-shadow: 0 5px 0 var(--accent-primary-shadow);
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-primary-big:hover {
+  background: var(--accent-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 0 var(--accent-primary-shadow);
+}
+
+.btn-primary-big:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 var(--accent-primary-shadow);
+}
+
+.btn-primary-big:disabled {
+  background: var(--border-strong);
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Área de Estudio y Tarjeta 3D */
+.study-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  background: var(--bg-surface);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-card);
+}
+
+.study-progress {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.study-mastery-chip {
+  font-size: 0.85rem;
+  font-weight: 700;
+  background: var(--box-mastered-bg);
+  color: var(--box-mastered);
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--box-mastered);
+}
+
+/* Perspectiva y Volteo 3D */
+.card-container {
+  perspective: 1200px;
+  width: 100%;
+  height: 320px;
+  margin-bottom: 1.25rem;
+  cursor: pointer;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+}
+
+.card-container.is-flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  border: 2px solid var(--border-card);
+}
+
+.card-front {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+}
+
+.card-back {
+  background: var(--box-good-bg);
+  color: var(--text-primary);
+  transform: rotateY(180deg);
+  border-color: var(--accent-primary);
+}
+
+.card-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.card-main-text {
+  font-family: var(--font-main);
+  font-size: 1.85rem;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 0.75rem;
+}
+
+.card-phonetic {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  color: var(--accent-primary);
+  background: var(--bg-surface);
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: 0.75rem;
+  display: inline-block;
+}
+
+.card-hint-box {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  background: var(--bg-inset);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-sm);
+  max-width: 90%;
+  margin-top: 0.5rem;
+}
+
+.card-audio-controls {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.audio-btn {
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-card);
+  background: var(--bg-surface);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.audio-btn:hover {
+  background: var(--bg-inset);
+  border-color: var(--accent-primary);
+}
+
+/* Acciones Leitner (Botones Inferiores) */
+.leitner-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.btn-leitner {
+  padding: 0.85rem;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.15s;
+  text-align: center;
+}
+
+.btn-leitner-repeat {
+  background: var(--box-repeat);
+  color: #ffffff;
+  box-shadow: 0 4px 0 #d97706;
+}
+.btn-leitner-repeat:active { transform: translateY(3px); box-shadow: 0 1px 0 #d97706; }
+
+.btn-leitner-good {
+  background: var(--box-good);
+  color: #ffffff;
+  box-shadow: 0 4px 0 #0284c7;
+}
+.btn-leitner-good:active { transform: translateY(3px); box-shadow: 0 1px 0 #0284c7; }
+
+.btn-leitner-mastered {
+  background: var(--box-mastered);
+  color: #ffffff;
+  box-shadow: 0 4px 0 #059669;
+}
+.btn-leitner-mastered:active { transform: translateY(3px); box-shadow: 0 1px 0 #059669; }
+
+/* Controles de Modo Quiz */
+.quiz-options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.quiz-option-btn {
+  padding: 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: left;
+  background: var(--bg-surface);
+  border: 2px solid var(--border-card);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  box-shadow: var(--btn-3d-shadow);
+  transition: all 0.15s;
+}
+
+.quiz-option-btn:hover {
+  border-color: var(--accent-primary);
+}
+
+.quiz-option-btn.correct {
+  background: var(--box-mastered-bg);
+  border-color: var(--box-mastered);
+  color: #065f46;
+}
+
+.quiz-option-btn.wrong {
+  background: #fef2f2;
+  border-color: var(--status-error);
+  color: #991b1b;
+}
+
+/* Modo Escritura (Spelling) */
+.spelling-box {
+  background: var(--bg-surface);
+  border: 2px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  margin-top: 1rem;
+}
+
+.spelling-mask {
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  letter-spacing: 0.2em;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--accent-primary);
+  font-weight: 700;
+}
+
+.spelling-input-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.spelling-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid var(--border-card);
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  outline: none;
+}
+
+.spelling-input:focus {
+  border-color: var(--accent-primary);
+}
+
+/* Creador Mágico (Formularios) */
+.creator-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.input-group {
+  margin-bottom: 1.25rem;
+}
+
+.input-label {
+  display: block;
+  font-weight: 700;
+  font-size: 0.88rem;
+  margin-bottom: 0.4rem;
+}
+
+.input-subhint {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+}
+
+.text-input, .select-input, .textarea-input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 0.95rem;
+  border: 2px solid var(--border-card);
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  outline: none;
+  font-family: inherit;
+}
+
+.text-input:focus, .select-input:focus, .textarea-input:focus {
+  border-color: var(--accent-primary);
+}
+
+.textarea-input {
+  min-height: 110px;
+  resize: vertical;
+}
+
+/* Manual Table Rows */
+.rows-container {
+  max-height: 240px;
+  overflow-y: auto;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem;
+  background: var(--bg-inset);
+  margin-bottom: 0.75rem;
+}
+
+.input-row-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr 36px;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  align-items: center;
+}
+
+.btn-del-row {
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.btn-del-row:hover {
+  color: var(--status-error);
+}
+
+/* Logros / Medallas */
+.medals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.medal-card {
+  background: var(--bg-surface);
+  border: 2px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.medal-card.locked {
+  opacity: 0.45;
+  filter: grayscale(1);
+}
+
+.medal-card.unlocked {
+  border-color: #f59e0b;
+  background: #fffbeb;
+  box-shadow: 0 4px 0 #d97706;
+}
+
+.medal-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.medal-title {
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.medal-desc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* Canvas Confetti */
+#confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Footer */
+.app-footer {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border-card);
+  margin-top: auto;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .brand-title span { display: none; }
+  .decks-grid { grid-template-columns: 1fr; }
+  .quiz-options-grid { grid-template-columns: 1fr; }
+  .card-container { height: 280px; }
+  .card-main-text { font-size: 1.45rem; }
+  .leitner-actions { grid-template-columns: 1fr; }
+}
+
+/* Toasts flotantes y PWA System */
+.toast-container {
+  position: fixed;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  pointer-events: none;
+  max-width: 90vw;
+}
+
+.toast {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border: 2px solid var(--accent-primary);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 0.9rem;
+  pointer-events: auto;
+  animation: toastSlideDown 0.25s ease;
+  text-align: center;
+}
+
+@keyframes toastSlideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* PWA Update Banner */
+.pwa-update-banner {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border: 2px solid var(--accent-primary);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 9999;
+  animation: toastSlideUp 0.3s ease;
+}
+
+@keyframes toastSlideUp {
+  from { opacity: 0; transform: translate(-50%, 15px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+.btn-pwa-update-action {
+  background: var(--accent-primary);
+  color: #ffffff;
+  border: none;
+  padding: 0.4rem 0.95rem;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.btn-pwa-update-action:hover {
+  background: var(--accent-primary-hover);
+  transform: scale(1.03);
+}
+
+  </style>
 </head>
+<body>
+  <header id="app-header" class="app-header"></header>
+  <nav id="nav-deck" class="nav-deck"></nav>
+  <main id="app-container" class="app-container"></main>
+  <canvas id="confetti-canvas"></canvas>
+  <div id="toast-container" class="toast-container"></div>
+  <footer class="app-footer">
+    <p>Datalaria Flashcards AI · Una herramienta educativa abierta para niños y adultos</p>
+  </footer>
 
-<body class="bg-gray-100 text-gray-800 flex flex-col items-center justify-center min-h-screen p-4">
+  <script>
+// --- INLINE BUNDLE: catalog.js ---
+// apps/flashcards/catalog.js
+// Catálogo de Mazos Curados, Modos de Juego, Medallas y Diccionarios i18n
+// Datalaria Flashcards AI ("Mazo Mágico v2.0")
+const PRESET_DECKS = [
+  {
+    id: 'body_science',
+    tier: 'kids',
+    icon: '🦴',
+    title: {
+      es: 'Ciencias Bilingües: El Cuerpo Humano',
+      en: 'Bilingual Science: The Human Body'
+    },
+    description: {
+      es: 'Aprende los huesos, órganos y articulaciones en inglés con fonética clara.',
+      en: 'Master bones, organs, and joints in English with phonetic pronunciation.'
+    },
+    langFront: 'es',
+    langBack: 'en',
+    cards: [
+      { front: 'Articulaciones', back: 'Joints', phonetic: '/dʒɔɪnts/', hint: 'Lugares donde se unen dos huesos' },
+      { front: 'Columna vertebral', back: 'Spinal column', phonetic: '/ˈspaɪ.nəl ˈkɒl.əm/', hint: 'Eje central que protege la médula' },
+      { front: 'Cráneo', back: 'Skull', phonetic: '/skʌl/', hint: 'Protege el cerebro' },
+      { front: 'Costillas', back: 'Ribs', phonetic: '/rɪbz/', hint: 'Protegen el corazón y los pulmones' },
+      { front: 'Pulmones', back: 'Lungs', phonetic: '/lʌŋz/', hint: 'Órganos para la respiración' },
+      { front: 'Fémur', back: 'Femur', phonetic: '/ˈfiː.mər/', hint: 'El hueso más largo del cuerpo' },
+      { front: 'Corazón', back: 'Heart', phonetic: '/hɑːt/', hint: 'Bomba de sangre muscular' },
+      { front: 'Cerebro', back: 'Brain', phonetic: '/breɪn/', hint: 'Centro de control del sistema nervioso' },
+      { front: 'Músculos', back: 'Muscles', phonetic: '/ˈmʌs.əlz/', hint: 'Permiten el movimiento del esqueleto' },
+      { front: 'Hígado', back: 'Liver', phonetic: '/ˈlɪv.ər/', hint: 'Filtra toxinas y produce bilis' }
+    ]
+  },
+  {
+    id: 'space_nature',
+    tier: 'kids',
+    icon: '🪐',
+    title: {
+      es: 'Exploradores del Espacio & Naturaleza',
+      en: 'Space & Nature Explorers'
+    },
+    description: {
+      es: 'Planetas, fenómenos astronómicos y maravillas de la biología.',
+      en: 'Planets, astronomical phenomena, and natural wonders.'
+    },
+    langFront: 'es',
+    langBack: 'en',
+    cards: [
+      { front: 'Fotosíntesis', back: 'Photosynthesis', phonetic: '/ˌfəʊ.təʊˈsɪn.θə.sɪs/', hint: 'Proceso de plantas con luz solar' },
+      { front: 'Vía Láctea', back: 'Milky Way', phonetic: '/ˈmɪl.ki weɪ/', hint: 'Nuestra galaxia espiral' },
+      { front: 'Gravedad', back: 'Gravity', phonetic: '/ˈɡræv.ə.ti/', hint: 'Fuerza que atrae los cuerpos' },
+      { front: 'Agujero negro', back: 'Black hole', phonetic: '/blæk həʊl/', hint: 'Región donde nada escapa, ni la luz' },
+      { front: 'Ecosistema', back: 'Ecosystem', phonetic: '/ˈiː.kəʊˌsɪs.təm/', hint: 'Comunidad de seres vivos y su entorno' },
+      { front: 'Atmósfera', back: 'Atmosphere', phonetic: '/ˈæt.məs.fɪər/', hint: 'Capa gaseosa protectora del planeta' },
+      { front: 'Biodiversidad', back: 'Biodiversity', phonetic: '/ˌbaɪ.əʊ.daɪˈvɜː.sə.ti/', hint: 'Variedad de vida en la Tierra' },
+      { front: 'Cometa', back: 'Comet', phonetic: '/ˈkɒm.ɪt/', hint: 'Cuerpo celeste de hielo y polvo con cola' }
+    ]
+  },
+  {
+    id: 'world_capitals',
+    tier: 'kids',
+    icon: '🌍',
+    title: {
+      es: 'Capitales y Maravillas del Mundo',
+      en: 'World Capitals & Wonders'
+    },
+    description: {
+      es: 'Desafío geográfico con pistas culturales de cada rincón del planeta.',
+      en: 'Geography challenge with cultural hints from across the globe.'
+    },
+    langFront: 'es',
+    langBack: 'es',
+    cards: [
+      { front: 'Japón', back: 'Tokio', phonetic: '[To-kio]', hint: 'Metrópolis vanguardista junto al monte Fuji' },
+      { front: 'Australia', back: 'Canberra', phonetic: '[Can-be-rra]', hint: 'No es Sídney ni Melbourne, elegida por consenso' },
+      { front: 'Canadá', back: 'Ottawa', phonetic: '[O-tta-wa]', hint: 'Ciudad federal entre Quebec y Ontario' },
+      { front: 'Brasil', back: 'Brasilia', phonetic: '[Bra-si-lia]', hint: 'Diseñada con forma de avión por Oscar Niemeyer' },
+      { front: 'Islandia', back: 'Reikiavik', phonetic: '[Rei-kia-vik]', hint: 'La capital más septentrional del mundo' },
+      { front: 'Sudáfrica', back: 'Pretoria (Ejecutiva)', phonetic: '[Pre-to-ria]', hint: 'Tiene 3 capitales: Pretoria, Ciudad del Cabo y Bloemfontein' },
+      { front: 'Turquía', back: 'Ankara', phonetic: '[An-ka-ra]', hint: 'Capital política en el corazón de Anatolia, no Estambul' },
+      { front: 'Egipto', back: 'El Cairo', phonetic: '[El Cai-ro]', hint: 'La ciudad de los mil minaretes a orillas del Nilo' }
+    ]
+  },
+  {
+    id: 'business_english',
+    tier: 'adults',
+    icon: '💼',
+    title: {
+      es: 'Business & Tech English (Falsos Amigos)',
+      en: 'Business & Tech English (False Friends)'
+    },
+    description: {
+      es: 'Domina los términos en inglés que más inducen a error en entornos profesionales.',
+      en: 'Master tricky English terms and false friends in professional settings.'
+    },
+    langFront: 'en',
+    langBack: 'es',
+    cards: [
+      { front: 'Actually', back: 'En realidad / De hecho (NO actualmente)', phonetic: '/ˈæk.tʃu.ə.li/', hint: 'Usa "currently" para actualmente' },
+      { front: 'Embarrassed', back: 'Avergonzado / Incómodo (NO embarazada)', phonetic: '/ɪmˈbær.əst/', hint: 'Usa "pregnant" para embarazada' },
+      { front: 'Compromise', back: 'Llegar a un acuerdo / Ceder mutuamente', phonetic: '/ˈkɒm.prə.maɪz/', hint: 'Usa "commitment" para compromiso' },
+      { front: 'Sensible', back: 'Sensato / Razonable (NO sensible)', phonetic: '/ˈsen.sə.bəl/', hint: 'Usa "sensitive" para sensible emocional' },
+      { front: 'Deliverable', back: 'Entregable del proyecto', phonetic: '/dɪˈlɪv.ər.ə.bəl/', hint: 'Producto final pactado en el contrato' },
+      { front: 'Throughput', back: 'Capacidad de procesamiento / Rendimiento', phonetic: '/ˈθruː.pʊt/', hint: 'Volumen de trabajo procesado por unidad de tiempo' },
+      { front: 'Stakeholder', back: 'Parte interesada / Actor clave', phonetic: '/ˈsteɪkˌhəʊl.dər/', hint: 'Cualquiera afectado por las decisiones del proyecto' },
+      { front: 'Bottleneck', back: 'Cuello de botella / Restricción', phonetic: '/ˈbɒt.əl.nek/', hint: 'Etapa que limita el flujo total según la Teoría de Restricciones' }
+    ]
+  },
+  {
+    id: 'ai_concepts',
+    tier: 'adults',
+    icon: '🤖',
+    title: {
+      es: 'Conceptos Clave de IA & Data Science',
+      en: 'Key Concepts in AI & Data Science'
+    },
+    description: {
+      es: 'Terminología moderna de modelos de lenguaje, agentes y computación cuántica.',
+      en: 'Modern terminology for LLMs, agents, and applied data science.'
+    },
+    langFront: 'es',
+    langBack: 'es',
+    cards: [
+      { front: 'RAG (Retrieval-Augmented Generation)', back: 'Inyección de contexto documental externo en el prompt antes de generar respuesta', phonetic: '[R-A-G]', hint: 'Combina base de datos vectorial y LLM para evitar alucinaciones' },
+      { front: 'Alucinación (Hallucination)', back: 'Generación de información falsa con alta confianza sintáctica', phonetic: '[A-lu-ci-na-ción]', hint: 'Riesgo probabilístico inherente al modelo de lenguaje' },
+      { front: 'Overfitting (Sobreajuste)', back: 'El modelo memoriza el ruido de entrenamiento y no generaliza ante datos nuevos', phonetic: '[O-ver-fi-tting]', hint: 'Se detecta cuando la pérdida de validación empieza a subir' },
+      { front: 'Embeddings', back: 'Vectores matemáticos densos que representan significado semántico en n-dimensiones', phonetic: '[Em-be-ddings]', hint: 'Palabras afines quedan geométricamente cerca (coseno)' },
+      { front: 'Spec-Driven Development (SDD)', back: 'Desarrollo donde la especificación inmutable precede y gobierna la generación de código', phonetic: '[S-D-D]', hint: 'Constitución Datalaria vs Vibe Coding sin memoria' },
+      { front: 'Ventana de Contexto (Context Window)', back: 'Número máximo de tokens que el modelo puede retener simultáneamente en memoria', phonetic: '[Con-text Win-dow]', hint: 'Límite operativo de tokens de entrada + salida' },
+      { front: 'Temperature (Temperatura)', back: 'Parámetro estocástico que controla la aleatoriedad de muestreo (0 = determinista)', phonetic: '[Tem-pe-ra-tu-ra]', hint: '0 para código y aritmética, 0.7 para redacción creativa' },
+      { front: 'Quantization (Cuantización)', back: 'Reducción de precisión de pesos (FP16 a INT8/INT4) para inferencia local rápida', phonetic: '[Quan-ti-za-tion]', hint: 'Reduce el consumo de VRAM manteniendo la calidad' }
+    ]
+  },
+  {
+    id: 'mba_strategy',
+    tier: 'adults',
+    icon: '⚡',
+    title: {
+      es: 'Productividad, Finanzas & Estrategia MBA',
+      en: 'Productivity, Finance & MBA Strategy'
+    },
+    description: {
+      es: 'Métricas financieras, modelos cuantitativos y toma de decisiones ejecutivas.',
+      en: 'Financial metrics, quantitative models, and executive decision frameworks.'
+    },
+    langFront: 'es',
+    langBack: 'es',
+    cards: [
+      { front: 'EBITDA', back: 'Resultado operativo bruto antes de intereses, impuestos, depreciaciones y amortizaciones', phonetic: '[E-bit-da]', hint: 'Mide la rentabilidad operativa pura del negocio' },
+      { front: 'Punto de Equilibrio (Break-even)', back: 'Volumen de ventas donde los ingresos igualan exactamente a los costes fijos + variables', phonetic: '[Breik-i-ven]', hint: 'Delta V = d / (m - d) ante descuentos comerciales' },
+      { front: 'Coste de Oportunidad', back: 'El beneficio al que se renuncia al elegir una alternativa frente a la mejor descartada', phonetic: '[Cos-te O-por-tu-ni-dad]', hint: 'El coste real de cualquier decisión económica' },
+      { front: 'Ley de Little', back: 'WIP = Throughput × Tiempo de Ciclo (L = λ × W en colas y procesos)', phonetic: '[Ley de Li-ttle]', hint: 'Fundamento matemático de Lean, Kanban y operaciones' },
+      { front: 'Coste Hundido (Sunk Cost Fallacy)', back: 'Coste no recuperable en el pasado que jamás debe influir en decisiones futuras', phonetic: '[Cos-te Hun-di-do]', hint: 'Ignóralo y evalúa solo flujos de caja incrementales' },
+      { front: 'Matriz DAR (CMMI)', back: 'Framework formal ponderado para Análisis y Resolución de Decisiones con veto Must-Have', phonetic: '[D-A-R]', hint: 'Elimina el sesgo de la persona mejor pagada (HiPPO)' }
+    ]
+  }
+];
+const STUDY_MODES = [
+  {
+    id: 'flip',
+    icon: '🎴',
+    title: { es: 'Modo Giro 3D', en: '3D Flip Mode' },
+    subtitle: { es: 'Active recall clásico con 3 cajas Leitner de dominio', en: 'Classic active recall with 3 Leitner mastery boxes' }
+  },
+  {
+    id: 'quiz',
+    icon: '🎯',
+    title: { es: 'Modo Quiz Arcade', en: 'Quiz Arcade Mode' },
+    subtitle: { es: '4 opciones por tarjeta con distractores automáticos', en: '4 options per card with dynamic distractors' }
+  },
+  {
+    id: 'spelling',
+    icon: '✍️',
+    title: { es: 'Modo Escritura', en: 'Spelling Mode' },
+    subtitle: { es: 'Escribe la respuesta exacta con botón de pistas por letras', en: 'Type the exact answer with letter-by-letter hint reveal' }
+  }
+];
+const MEDALS = [
+  {
+    id: 'first_session',
+    icon: '🌱',
+    title: { es: 'Primeros Pasos', en: 'First Steps' },
+    description: { es: 'Completa tu primera sesión de estudio.', en: 'Complete your first study session.' }
+  },
+  {
+    id: 'streak_5',
+    icon: '🔥',
+    title: { es: 'Mente Veloz', en: 'Fast Mind' },
+    description: { es: 'Alcanza una racha de 5 aciertos seguidos.', en: 'Reach a streak of 5 consecutive correct answers.' }
+  },
+  {
+    id: 'master_10',
+    icon: '👑',
+    title: { es: 'Coleccionista de Cartas', en: 'Card Collector' },
+    description: { es: 'Domina al menos 10 tarjetas en tu baraja.', en: 'Master at least 10 cards across decks.' }
+  },
+  {
+    id: 'quiz_ace',
+    icon: '🎯',
+    title: { es: 'Ojo de Halcón', en: 'Hawk Eye' },
+    description: { es: 'Termina un Quiz Arcade con más del 80% de aciertos.', en: 'Finish a Quiz Arcade session with 80%+ accuracy.' }
+  },
+  {
+    id: 'spelling_pro',
+    icon: '✍️',
+    title: { es: 'Maestro de la Ortografía', en: 'Spelling Master' },
+    description: { es: 'Acierta 3 tarjetas seguidas en el modo escritura sin pistas.', en: 'Get 3 correct in spelling mode without hints.' }
+  },
+  {
+    id: 'ai_creator',
+    icon: '✨',
+    title: { es: 'Alquimista Digital', en: 'Digital Alchemist' },
+    description: { es: 'Genera o importa un mazo personalizado con éxito.', en: 'Successfully generate or import a custom deck.' }
+  }
+];
+const I18N = {
+  es: {
+    appTitle: 'Flashcards Mágico',
+    tagline: 'Estudio activo bilingüe, pronunciación por voz y generación con IA',
+    backDatalaria: '← Datalaria',
+    linkSpec: '📋 Ficha',
+    linkPost: '📖 Historia',
+    linkKits: '📦 Kits',
+    btnInstallPwa: '📲 Instalar App',
+    installApp: '📲 Instalar',
+    installAppTitle: 'Instalar en pantalla de inicio',
+    installSuccessToast: '¡Aplicación instalada con éxito!',
+    installIosInstructions: '📲 En iPhone/iPad: pulsa el botón Compartir (↑) y selecciona "Añadir a pantalla de inicio".',
+    installGenericInstructions: '📲 Para instalar: abre el menú de tu navegador y pulsa "Instalar aplicación".',
+    updateAvailable: 'Nueva versión disponible de Flashcards AI',
+    updateNowBtn: 'Actualizar ahora',
+    checkingUpdate: 'Buscando actualizaciones...',
+    upToDate: '✅ Ya tienes la última versión instalada (v2.1.0)',
+    badgeCheckTitle: 'Buscar actualizaciones (v2.1.0)',
+    tabStudy: '🎮 Estudiar',
+    tabCreator: '✨ Creador Mágico',
+    tabStats: '🏆 Logros',
+    
+    // Vista Selector
+    selectDeckTitle: 'Elige tu Mazo de Estudio',
+    selectDeckSub: 'Selecciona una baraja curada o crea tus propias tarjetas en segundos:',
+    categoryKids: '🎒 Niños & Escolares',
+    categoryAdults: '💼 Adultos & Profesionales',
+    categoryCustom: '⭐ Tus Mazos Guardados',
+    cardsCount: 'tarjetas',
+    selectModeTitle: 'Modo de Estudio',
+    btnStartStudy: '¡Aprender Ahora! 🚀',
+    
+    // Vista Estudio
+    sessionProgress: 'Tarjeta {current} de {total}',
+    masteryBadge: 'Dominio: {percent}%',
+    speakNormal: '🔊 Pronunciar',
+    speakSlow: '🐢 Modo Lento (0.75x)',
+    tapToFlip: 'Toca o pulsa Espacio para voltear 🔄',
+    btnRepeat: '🌱 Repetir (+0)',
+    btnGood: '👍 Bien (+2)',
+    btnMastered: '👑 ¡Dominada! (+3)',
+    hintLabel: '💡 Pista:',
+    typeAnswerPlaceholder: 'Escribe tu respuesta aquí...',
+    btnCheck: 'Comprobar ➔',
+    btnRevealLetter: '💡 Revelar Letra',
+    feedbackCorrect: '¡Excelente! 🎉',
+    feedbackIncorrect: '¡Casi! Repasémosla pronto 🧐',
+    btnNext: 'Siguiente ➔',
+    
+    // Resumen Final
+    summaryTitle: '¡Sesión Completada!',
+    summaryScore: 'Puntuación: {score} puntos',
+    summaryMastered: 'Tarjetas Dominadas: {mastered} de {total}',
+    btnStudyAgain: 'Repasar de nuevo 🔁',
+    btnStudyFailed: 'Repasar pendientes ({count}) 🎯',
+    btnBackHome: 'Elegir otro mazo 🏠',
+    
+    // Creador
+    creatorTitle: 'Creador de Mazos (IA, CSV y Manual)',
+    creatorSub: 'Genera mazos enteros con Google Gemini (BYOK), importa desde CSV o añade términos a mano.',
+    creatorModeAi: '✨ Modo Mágico (IA Gemini)',
+    creatorModeManual: '✍️ Modo Manual / CSV',
+    aiApiKeyLabel: 'Tu clave API de Google Gemini (Gratuita en AI Studio):',
+    aiApiKeyPlaceholder: 'Pega tu API Key (AIzaSy...)',
+    aiApiKeyHint: 'Tu clave se guarda exclusivamente en tu navegador (LocalStorage) y nunca se comparte.',
+    aiTargetLang: 'Acción de Generación:',
+    optTranslateEn: 'Traducir a Inglés (con fonética)',
+    optTranslateEs: 'Traducir a Español',
+    optTranslateFr: 'Traducir a Francés',
+    optTranslateDe: 'Traducir a Alemán',
+    optDefineEs: 'Generar Definición Concisa en Español',
+    optDefineEn: 'Generar Definición Concisa en Inglés',
+    deckNameLabel: 'Nombre del Mazo:',
+    deckNamePlaceholder: 'Ej: Vocabulario Examen Tema 4',
+    termsInputLabel: 'Lista de Términos (uno por línea o separados por comas):',
+    termsInputPlaceholder: 'Articulación\nColumna vertebral\nCráneo\nCostillas...',
+    btnGenerateAi: 'Generar Mazo con IA ⚡',
+    btnImportCsv: 'Subir Archivo CSV / TXT 📂',
+    btnDownloadTemplate: 'Descargar Plantilla CSV 📥',
+    btnExportCurrentDeck: 'Exportar Mazo a CSV 💾',
+    btnSaveDeck: 'Guardar Mazo en Biblioteca 💾',
+    manualTermHeader: 'Término',
+    manualDefHeader: 'Definición / Traducción',
+    btnAddRow: '+ Añadir Fila',
+    
+    // Logros
+    statsTitle: 'Tus Logros y Pasaporte de Estudio',
+    totalMasteredLabel: 'Tarjetas Dominadas',
+    totalDecksLabel: 'Mazos Creados/Estudiados',
+    totalSessionsLabel: 'Sesiones Completadas',
+    medalsUnlockedLabel: 'Medallas Desbloqueadas: {count} de 6'
+  },
+  en: {
+    appTitle: 'Magic Flashcards',
+    tagline: 'Bilingual active recall, speech audio, and AI card generation',
+    backDatalaria: '← Datalaria',
+    linkSpec: '📋 Spec',
+    linkPost: '📖 Story',
+    linkKits: '📦 Kits',
+    btnInstallPwa: '📲 Install App',
+    installApp: '📲 Install',
+    installAppTitle: 'Install to home screen',
+    installSuccessToast: 'App installed successfully!',
+    installIosInstructions: '📲 On iPhone/iPad: tap Share (↑) and select "Add to Home Screen".',
+    installGenericInstructions: '📲 To install: open browser menu and tap "Install app".',
+    updateAvailable: 'New version of Flashcards AI available',
+    updateNowBtn: 'Update now',
+    checkingUpdate: 'Checking for updates...',
+    upToDate: '✅ You have the latest version installed (v2.1.0)',
+    badgeCheckTitle: 'Check for updates (v2.1.0)',
+    tabStudy: '🎮 Study',
+    tabCreator: '✨ Magic Creator',
+    tabStats: '🏆 Medals',
+    
+    // Deck Selector
+    selectDeckTitle: 'Choose Your Study Deck',
+    selectDeckSub: 'Select a curated deck or create your own custom flashcards in seconds:',
+    categoryKids: '🎒 Kids & Students',
+    categoryAdults: '💼 Adults & Professionals',
+    categoryCustom: '⭐ Your Saved Decks',
+    cardsCount: 'cards',
+    selectModeTitle: 'Study Mode',
+    btnStartStudy: 'Start Learning Now! 🚀',
+    
+    // Study View
+    sessionProgress: 'Card {current} of {total}',
+    masteryBadge: 'Mastery: {percent}%',
+    speakNormal: '🔊 Pronounce',
+    speakSlow: '🐢 Slow Mode (0.75x)',
+    tapToFlip: 'Tap or press Space to flip 🔄',
+    btnRepeat: '🌱 Repeat (+0)',
+    btnGood: '👍 Good (+2)',
+    btnMastered: '👑 Mastered! (+3)',
+    hintLabel: '💡 Hint:',
+    typeAnswerPlaceholder: 'Type your answer here...',
+    btnCheck: 'Check ➔',
+    btnRevealLetter: '💡 Reveal Letter',
+    feedbackCorrect: 'Great job! 🎉',
+    feedbackIncorrect: 'Almost! Let\'s review it soon 🧐',
+    btnNext: 'Next ➔',
+    
+    // Summary
+    summaryTitle: 'Session Completed!',
+    summaryScore: 'Score: {score} points',
+    summaryMastered: 'Mastered Cards: {mastered} of {total}',
+    btnStudyAgain: 'Study Again 🔁',
+    btnStudyFailed: 'Review Pending ({count}) 🎯',
+    btnBackHome: 'Choose Another Deck 🏠',
+    
+    // Creator
+    creatorTitle: 'Deck Creator (AI, CSV & Manual)',
+    creatorSub: 'Generate full decks with Google Gemini (BYOK), import standard CSVs, or add cards manually.',
+    creatorModeAi: '✨ Magic Mode (Gemini AI)',
+    creatorModeManual: '✍️ Manual / CSV Mode',
+    aiApiKeyLabel: 'Your Google Gemini API Key (Free on AI Studio):',
+    aiApiKeyPlaceholder: 'Paste your API Key (AIzaSy...)',
+    aiApiKeyHint: 'Your key is kept strictly in your local browser (LocalStorage) and never shared.',
+    aiTargetLang: 'Generation Action:',
+    optTranslateEn: 'Translate to English (with phonetics)',
+    optTranslateEs: 'Translate to Spanish',
+    optTranslateFr: 'Translate to French',
+    optTranslateDe: 'Translate to German',
+    optDefineEs: 'Generate Concise Spanish Definition',
+    optDefineEn: 'Generate Concise English Definition',
+    deckNameLabel: 'Deck Name:',
+    deckNamePlaceholder: 'E.g., Chapter 4 Vocabulary Review',
+    termsInputLabel: 'Terms List (one per line or comma-separated):',
+    termsInputPlaceholder: 'Joints\nSpinal column\nSkull\nRibs...',
+    btnGenerateAi: 'Generate Deck with AI ⚡',
+    btnImportCsv: 'Upload CSV / TXT File 📂',
+    btnDownloadTemplate: 'Download CSV Template 📥',
+    btnExportCurrentDeck: 'Export Deck to CSV 💾',
+    btnSaveDeck: 'Save Deck to Library 💾',
+    manualTermHeader: 'Term',
+    manualDefHeader: 'Definition / Translation',
+    btnAddRow: '+ Add Row',
+    
+    // Medals
+    statsTitle: 'Your Achievements & Study Passport',
+    totalMasteredLabel: 'Mastered Cards',
+    totalDecksLabel: 'Decks Created/Studied',
+    totalSessionsLabel: 'Sessions Completed',
+    medalsUnlockedLabel: 'Medals Unlocked: {count} of 6'
+  }
+};
 
-    <main class="w-full max-w-md mx-auto text-center">
-        <div class="bg-white p-8 rounded-2xl shadow-lg">
-            <img src="datalaria_logo_transp.png" alt="Logo Datalaria" class="mx-auto mb-6 h-12 sm:h-16">
 
-            <h1 class="text-3xl font-bold text-sky-700 mb-8">
-                Aplicación de Flashcards de Estudio / Study Flashcards App
-            </h1>
+// --- INLINE BUNDLE: engine.js ---
+// apps/flashcards/engine.js
+// Motor Lógico: Parser/Exportador CSV RFC-4180, Cajas Leitner, Quiz Distractors y Spelling Helper
+// Datalaria Flashcards AI ("Mazo Mágico v2.0")
 
-            <p class="mb-6 text-gray-500">Selecciona tu idioma / Select your language:</p>
+/**
+ * Parsea un contenido CSV / TSV cumpliendo con RFC-4180 (soporte para comillas y saltos).
+ * @param {string} text - Contenido en texto crudo del fichero CSV.
+ * @returns {Array<{front: string, back: string, phonetic?: string, hint?: string}>}
+ */
+function parseCSV(text) {
+  if (!text || typeof text !== 'string') return [];
+  
+  const clean = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+  const rows = [];
+  let currentRow = [];
+  let currentField = '';
+  let inQuotes = false;
 
-            <div class="flex justify-center gap-6">
-                <a href="/apps/flashcards/es/index.html"
-                    class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-4 px-10 rounded-lg text-lg transition shadow-md hover:shadow-lg">
-                    ES
-                </a>
-                <a href="/apps/flashcards/en/index.html"
-                    class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 px-10 rounded-lg text-lg transition shadow-md hover:shadow-lg">
-                    EN
-                </a>
-            </div>
+  // Detección automática de delimitador preponderante fuera de comillas (, ; o \t)
+  const firstLine = clean.split('\n')[0] || '';
+  let delimiter = ',';
+  const commaCount = (firstLine.match(/,/g) || []).length;
+  const semiCount = (firstLine.match(/;/g) || []).length;
+  const tabCount = (firstLine.match(/\t/g) || []).length;
+  if (semiCount > commaCount && semiCount > tabCount) delimiter = ';';
+  else if (tabCount > commaCount && tabCount > semiCount) delimiter = '\t';
+
+  for (let i = 0; i < clean.length; i++) {
+    const char = clean[i];
+    const nextChar = clean[i + 1];
+
+    if (inQuotes) {
+      if (char === '"' && nextChar === '"') {
+        currentField += '"';
+        i++; // Saltar comilla escapada
+      } else if (char === '"') {
+        inQuotes = false;
+      } else {
+        currentField += char;
+      }
+    } else {
+      if (char === '"') {
+        inQuotes = true;
+      } else if (char === delimiter) {
+        currentRow.push(currentField.trim());
+        currentField = '';
+      } else if (char === '\n') {
+        currentRow.push(currentField.trim());
+        if (currentRow.some(f => f.length > 0)) {
+          rows.push(currentRow);
+        }
+        currentRow = [];
+        currentField = '';
+      } else {
+        currentField += char;
+      }
+    }
+  }
+
+  if (currentField.length > 0 || currentRow.length > 0) {
+    currentRow.push(currentField.trim());
+    if (currentRow.some(f => f.length > 0)) {
+      rows.push(currentRow);
+    }
+  }
+
+  if (rows.length === 0) return [];
+
+  // Detección y filtrado de cabecera si incluye palabras clave
+  let startIndex = 0;
+  const headerCandidate = rows[0].map(c => c.toLowerCase());
+  if (
+    headerCandidate.some(h =>
+      h.includes('término') || h.includes('termino') ||
+      h.includes('term') || h.includes('pregunta') ||
+      h.includes('front') || h.includes('word')
+    )
+  ) {
+    startIndex = 1;
+  }
+
+  const cards = [];
+  for (let r = startIndex; r < rows.length; r++) {
+    const cols = rows[r];
+    if (!cols || cols.length === 0) continue;
+    const front = cols[0] ? cols[0].trim() : '';
+    const back = cols[1] ? cols[1].trim() : '';
+    const phonetic = cols[2] ? cols[2].trim() : '';
+    const hint = cols[3] ? cols[3].trim() : '';
+
+    if (front && back) {
+      cards.push({
+        front,
+        back,
+        ...(phonetic ? { phonetic } : {}),
+        ...(hint ? { hint } : {})
+      });
+    }
+  }
+
+  return cards;
+}
+
+/**
+ * Serializa un mazo de tarjetas a formato CSV estándar RFC-4180.
+ * @param {Array<{front: string, back: string, phonetic?: string, hint?: string}>} cards
+ * @returns {string} Contenido CSV seguro con comillas escapadas
+ */
+function exportCSV(cards) {
+  if (!Array.isArray(cards) || cards.length === 0) {
+    return 'Term,Definition/Translation,Phonetic,Hint\r\n';
+  }
+
+  const escapeField = (val) => {
+    if (val === undefined || val === null) return '""';
+    const str = String(val);
+    if (str.includes(',') || str.includes(';') || str.includes('"') || str.includes('\n')) {
+      return `"${str.replace(/"/g, '""')}"`;
+    }
+    return str;
+  };
+
+  const lines = ['Term,Definition/Translation,Phonetic,Hint'];
+  for (const card of cards) {
+    const f = escapeField(card.front);
+    const b = escapeField(card.back);
+    const p = escapeField(card.phonetic || '');
+    const h = escapeField(card.hint || '');
+    lines.push(`${f},${b},${p},${h}`);
+  }
+
+  return lines.join('\r\n') + '\r\n';
+}
+
+/**
+ * Genera 4 opciones para el Modo Quiz: 1 correcta y 3 distractores aleatorios.
+ * @param {object} currentCard - Tarjeta activa.
+ * @param {Array<object>} deck - Baraja completa para extraer distractores.
+ * @returns {Array<{text: string, isCorrect: boolean}>}
+ */
+function generateQuizOptions(currentCard, deck) {
+  if (!currentCard) return [];
+  const correctText = currentCard.back;
+  
+  // Extraer posibles respuestas distintas a la correcta
+  const otherOptions = deck
+    .map(c => c.back)
+    .filter(b => b && b.toLowerCase() !== correctText.toLowerCase());
+
+  // Mezclar alternativas
+  const shuffledOthers = [...otherOptions].sort(() => 0.5 - Math.random());
+  const selectedDistractors = shuffledOthers.slice(0, 3);
+
+  // Fallbacks si el mazo tiene menos de 4 cartas
+  const fallbacks = [
+    'Ninguna de las anteriores',
+    'Concepto en proceso de consolidación',
+    'Definición alternativa no aplicable'
+  ];
+  while (selectedDistractors.length < 3) {
+    const fb = fallbacks[selectedDistractors.length] || `Alternativa ${selectedDistractors.length + 1}`;
+    selectedDistractors.push(fb);
+  }
+
+  const options = [
+    { text: correctText, isCorrect: true },
+    ...selectedDistractors.map(d => ({ text: d, isCorrect: false }))
+  ];
+
+  // Mezclar las 4 opciones finales
+  return options.sort(() => 0.5 - Math.random());
+}
+
+/**
+ * Normaliza una cadena para comparaciones ortográficas flexibles en Modo Spelling.
+ * @param {string} str 
+ * @returns {string}
+ */
+function normalizeAnswer(str) {
+  if (!str) return '';
+  return str
+    .trim()
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '') // Quita tildes para tolerancia ortográfica
+    .replace(/[.,/#!$%^&*;:{}=\-_`~()?"']/g, '') // Quita signos
+    .replace(/\s+/g, ' ');
+}
+
+/**
+ * Valida si la respuesta escrita coincide con la definición objetivo.
+ * @param {string} userAttempt 
+ * @param {string} targetBack 
+ * @returns {boolean}
+ */
+function validateSpelling(userAttempt, targetBack) {
+  if (!userAttempt || !targetBack) return false;
+  const cleanUser = normalizeAnswer(userAttempt);
+  const cleanTarget = normalizeAnswer(targetBack);
+  
+  // Acierto exacto
+  if (cleanUser === cleanTarget) return true;
+
+  // Tolerancia para respuestas con alternativas como "Joint / Joints" o "Avergonzado / Incómodo"
+  const alternatives = targetBack.split(/[/;,()]/).map(normalizeAnswer).filter(Boolean);
+  return alternatives.includes(cleanUser);
+}
+
+/**
+ * Genera la máscara de pista para el Modo Spelling revelando N caracteres.
+ * @param {string} targetBack - Texto objetivo.
+ * @param {number} revealedCount - Cuántas letras se desvelan.
+ * @returns {string} Ej: "J o i _ _ _"
+ */
+function getSpellingMask(targetBack, revealedCount = 1) {
+  if (!targetBack) return '';
+  const chars = targetBack.split('');
+  let revealedSoFar = 0;
+
+  return chars.map((char) => {
+    if (char === ' ' || char === '/' || char === '(' || char === ')' || char === '-') {
+      return char;
+    }
+    if (revealedSoFar < revealedCount) {
+      revealedSoFar++;
+      return char;
+    }
+    return '_';
+  }).join(' ');
+}
+
+/**
+ * Calcula el puntaje y porcentaje de dominio Leitner de un mazo.
+ * @param {object} masteryState - Mapa de cardId/front -> 'repeat' | 'good' | 'mastered'
+ * @param {number} totalCards 
+ * @returns {{ score: number, masteredCount: number, percent: number }}
+ */
+function calculateDeckMastery(masteryState, totalCards) {
+  if (!masteryState || totalCards <= 0) {
+    return { score: 0, masteredCount: 0, percent: 0 };
+  }
+  let score = 0;
+  let masteredCount = 0;
+
+  for (const status of Object.values(masteryState)) {
+    if (status === 'mastered') {
+      score += 3;
+      masteredCount++;
+    } else if (status === 'good') {
+      score += 2;
+    }
+  }
+
+  const percent = Math.min(100, Math.round((masteredCount / totalCards) * 100));
+  return { score, masteredCount, percent };
+}
+
+
+// --- INLINE BUNDLE: ai.js ---
+// apps/flashcards/ai.js
+// Cliente Google Gemini API BYOK (Batch Structured JSON con Fallback de Modelo)
+// Datalaria Flashcards AI ("Mazo Mágico v2.0")
+
+const PRIMARY_MODEL = 'gemini-2.5-flash';
+const FALLBACK_MODEL = 'gemini-2.0-flash';
+
+/**
+ * Genera un conjunto completo de tarjetas flashcards mediante una única llamada Batch JSON a Gemini.
+ * @param {Array<string>} termsList - Lista de palabras/conceptos introducidos por el usuario.
+ * @param {string} generationMode - Modo (ej: 'translate_en', 'translate_es', 'define_es', etc.)
+ * @param {string} apiKey - Clave de Google AI Studio del usuario.
+ * @returns {Promise<{success: boolean, cards?: Array<{front: string, back: string, phonetic: string, hint: string}>, error?: string}>}
+ */
+async function generateBatchDeckWithGemini(termsList, generationMode, apiKey) {
+  if (!apiKey || typeof apiKey !== 'string' || apiKey.trim().length < 10) {
+    return {
+      success: false,
+      error: 'Por favor, introduce una API Key válida de Google Gemini (AI Studio).'
+    };
+  }
+
+  const cleanTerms = termsList
+    .map(t => (typeof t === 'string' ? t.trim() : ''))
+    .filter(Boolean);
+
+  if (cleanTerms.length === 0) {
+    return {
+      success: false,
+      error: 'No se encontraron términos para generar.'
+    };
+  }
+
+  const [action, lang] = (generationMode || 'translate_en').split('_');
+  const langMap = {
+    en: 'English',
+    es: 'Spanish',
+    fr: 'French',
+    de: 'German',
+    pt: 'Portuguese',
+    it: 'Italian'
+  };
+  const targetLanguage = langMap[lang] || 'English';
+
+  let systemInstruction = '';
+  if (action === 'translate') {
+    systemInstruction = `You are an expert bilingual educational tutor. Given a list of terms, translate each term to ${targetLanguage}.
+For each term, provide:
+1. "front": The original input term.
+2. "back": The accurate and natural translation in ${targetLanguage}.
+3. "phonetic": A clear phonetic pronunciation guide (IPA or intuitive syllabic transcription, e.g., "/dʒɔɪnts/").
+4. "hint": A short pedagogical hint or mnemonic in Spanish (max 12 words) to help remember the concept.`;
+  } else {
+    // Action: define
+    systemInstruction = `You are an expert educational tutor. Given a list of terms, provide a single, short, and crystal-clear definition in ${targetLanguage} suitable for active recall flashcards.
+For each term, provide:
+1. "front": The original input term.
+2. "back": A concise, pedagogical definition (max 15 words) in ${targetLanguage}.
+3. "phonetic": A pronunciation hint or syllables.
+4. "hint": A short mnemonic hint (max 10 words).`;
+  }
+
+  const promptText = `Generate flashcards for the following terms in valid JSON format.
+Terms to process:
+${cleanTerms.map((t, idx) => `${idx + 1}. ${t}`).join('\n')}
+
+Output MUST be a single raw JSON array containing objects with keys: "front", "back", "phonetic", "hint". Do not include extra conversational text.`;
+
+  // Intentar con modelo primario y luego fallback
+  const modelsToTry = [PRIMARY_MODEL, FALLBACK_MODEL];
+  let lastErrorMsg = '';
+
+  for (const model of modelsToTry) {
+    try {
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(apiKey.trim())}`;
+      
+      const payload = {
+        contents: [
+          {
+            role: 'user',
+            parts: [{ text: `${systemInstruction}\n\n${promptText}` }]
+          }
+        ],
+        generationConfig: {
+          temperature: 0.2,
+          responseMimeType: 'application/json'
+        }
+      };
+
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        const msg = errorData?.error?.message || `HTTP ${res.status} ${res.statusText}`;
+        lastErrorMsg = msg;
+        // Si es 404 o problema de modelo, probar fallback
+        if (res.status === 404 || res.status === 400) {
+          continue;
+        }
+        return { success: false, error: `Error Gemini (${model}): ${msg}` };
+      }
+
+      const data = await res.json();
+      const rawText = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+      if (!rawText) {
+        throw new Error('Respuesta vacía del modelo Gemini.');
+      }
+
+      // Limpieza de posibles delimitadores markdown json
+      let sanitizedJson = rawText.trim();
+      if (sanitizedJson.startsWith('```json')) {
+        sanitizedJson = sanitizedJson.replace(/^```json\s*/i, '').replace(/\s*```$/, '');
+      } else if (sanitizedJson.startsWith('```')) {
+        sanitizedJson = sanitizedJson.replace(/^```\s*/, '').replace(/\s*```$/, '');
+      }
+
+      const parsedArray = JSON.parse(sanitizedJson);
+      if (!Array.isArray(parsedArray) || parsedArray.length === 0) {
+        throw new Error('El modelo no devolvió una lista válida de tarjetas.');
+      }
+
+      const cleanCards = parsedArray.map(item => ({
+        front: String(item.front || '').trim(),
+        back: String(item.back || '').trim(),
+        phonetic: String(item.phonetic || '').trim(),
+        hint: String(item.hint || '').trim()
+      })).filter(c => c.front && c.back);
+
+      return {
+        success: true,
+        cards: cleanCards
+      };
+
+    } catch (err) {
+      lastErrorMsg = err.message || String(err);
+    }
+  }
+
+  return {
+    success: false,
+    error: `No se pudo conectar con la API de Gemini: ${lastErrorMsg}`
+  };
+}
+
+
+// --- INLINE BUNDLE: audio.js ---
+// apps/flashcards/audio.js
+// Síntesis de Voz Web Speech API (Velocidad Normal y Modo Tortuga) + Sintetizador Web Audio + Confeti
+// Datalaria Flashcards AI ("Mazo Mágico v2.0")
+
+class SoundController {
+  constructor() {
+    this.soundEnabled = true;
+    this.audioCtx = null;
+  }
+
+  initAudio() {
+    if (!this.audioCtx && typeof window !== 'undefined' && (window.AudioContext || window.webkitAudioContext)) {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      this.audioCtx = new AudioContextClass();
+    }
+    if (this.audioCtx && this.audioCtx.state === 'suspended') {
+      this.audioCtx.resume();
+    }
+  }
+
+  toggleSound() {
+    this.soundEnabled = !this.soundEnabled;
+    return this.soundEnabled;
+  }
+
+  playTone(type) {
+    if (!this.soundEnabled) return;
+    try {
+      this.initAudio();
+      if (!this.audioCtx) return;
+
+      const now = this.audioCtx.currentTime;
+      const osc = this.audioCtx.createOscillator();
+      const gain = this.audioCtx.createGain();
+      osc.connect(gain);
+      gain.connect(this.audioCtx.destination);
+
+      if (type === 'flip') {
+        // Sonido suave de giro de carta
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(320, now);
+        osc.frequency.exponentialRampToValueAtTime(180, now + 0.08);
+        gain.gain.setValueAtTime(0.08, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+        osc.start(now);
+        osc.stop(now + 0.08);
+      } else if (type === 'good') {
+        // Acorde ascendente afirmativo
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(440, now); // A4
+        osc.frequency.setValueAtTime(554.37, now + 0.08); // C#5
+        gain.gain.setValueAtTime(0.12, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
+        osc.start(now);
+        osc.stop(now + 0.22);
+      } else if (type === 'mastered') {
+        // Fanfarria brillante de dominio
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(523.25, now); // C5
+        osc.frequency.setValueAtTime(659.25, now + 0.07); // E5
+        osc.frequency.setValueAtTime(783.99, now + 0.14); // G5
+        osc.frequency.setValueAtTime(1046.50, now + 0.21); // C6
+        gain.gain.setValueAtTime(0.15, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
+        osc.start(now);
+        osc.stop(now + 0.45);
+      } else if (type === 'error') {
+        // Tono grave de aliento
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(260, now);
+        osc.frequency.exponentialRampToValueAtTime(170, now + 0.18);
+        gain.gain.setValueAtTime(0.08, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+        osc.start(now);
+        osc.stop(now + 0.18);
+      } else if (type === 'hint') {
+        // Campanilla suave de pista
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(880, now); // A5
+        gain.gain.setValueAtTime(0.06, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+        osc.start(now);
+        osc.stop(now + 0.12);
+      }
+    } catch (e) {
+      // Audio no bloqueante
+    }
+  }
+
+  /**
+   * Pronuncia un texto usando la Web Speech API nativa.
+   * @param {string} text - Texto a pronunciar.
+   * @param {string} lang - Código de idioma (ej: 'en', 'es', 'fr', 'de').
+   * @param {number} rate - Velocidad de reproducción (1.0 = normal, 0.75 = modo tortuga).
+   */
+  speakText(text, lang = 'en', rate = 1.0) {
+    if (!text || typeof window === 'undefined' || !('speechSynthesis' in window)) {
+      return false;
+    }
+
+    try {
+      window.speechSynthesis.cancel(); // Detener pronunciación anterior
+
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = Math.max(0.5, Math.min(2.0, rate));
+      utterance.pitch = 1.0;
+
+      // Normalizar código de idioma
+      const normLang = lang.toLowerCase();
+      let targetLang = 'en-US';
+      if (normLang.startsWith('es')) targetLang = 'es-ES';
+      else if (normLang.startsWith('fr')) targetLang = 'fr-FR';
+      else if (normLang.startsWith('de')) targetLang = 'de-DE';
+      else if (normLang.startsWith('it')) targetLang = 'it-IT';
+      else if (normLang.startsWith('pt')) targetLang = 'pt-PT';
+
+      utterance.lang = targetLang;
+
+      // Buscar voz nativa adecuada si las voces ya están cargadas
+      const voices = window.speechSynthesis.getVoices();
+      if (voices && voices.length > 0) {
+        const matchingVoice = voices.find(v => v.lang.startsWith(normLang.slice(0, 2)));
+        if (matchingVoice) {
+          utterance.voice = matchingVoice;
+        }
+      }
+
+      window.speechSynthesis.speak(utterance);
+      return true;
+    } catch (e) {
+      console.warn('SpeechSynthesis error:', e);
+      return false;
+    }
+  }
+}
+const soundController = new SoundController();
+
+/**
+ * Lanza una animación de lluvia de confeti en un canvas HTML5 sin librerías externas.
+ * @param {HTMLCanvasElement} canvas
+ */
+function triggerConfetti(canvas) {
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const count = 75;
+  const particles = [];
+  const colors = ['#8b5cf6', '#3b82f6', '#10b981', '#f59e0b', '#ec4899', '#06b6d4'];
+
+  for (let i = 0; i < count; i++) {
+    particles.push({
+      x: canvas.width / 2 + (Math.random() - 0.5) * 200,
+      y: canvas.height * 0.4 + (Math.random() - 0.5) * 100,
+      vx: (Math.random() - 0.5) * 14,
+      vy: (Math.random() - 0.9) * 16,
+      size: Math.random() * 8 + 4,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      rotation: Math.random() * 360,
+      vrot: (Math.random() - 0.5) * 10,
+      life: 1.0
+    });
+  }
+
+  let animationFrame;
+  const render = () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    let activeCount = 0;
+
+    for (const p of particles) {
+      if (p.life > 0.01) {
+        activeCount++;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.35; // Gravedad
+        p.rotation += p.vrot;
+        p.life -= 0.015;
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rotation * Math.PI) / 180);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = Math.max(0, p.life);
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.7);
+        ctx.restore();
+      }
+    }
+
+    if (activeCount > 0) {
+      animationFrame = requestAnimationFrame(render);
+    } else {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      cancelAnimationFrame(animationFrame);
+    }
+  };
+
+  render();
+}
+
+
+// --- INLINE BUNDLE: app.js ---
+// apps/flashcards/app.js
+// Controlador SPA Reactivo, LocalStorage, Atajos y PWA
+// Datalaria Flashcards AI ("Mazo Mágico v2.0")
+
+
+
+
+class FlashcardsApp {
+  constructor() {
+    this.currentLang = this.detectLanguage();
+    this.activeTab = 'study'; // 'study' | 'creator' | 'stats'
+    this.selectedDeckId = 'body_science';
+    this.selectedModeId = 'flip'; // 'flip' | 'quiz' | 'spelling'
+
+    this.customDecks = this.loadCustomDecks();
+    this.masteryData = this.loadMasteryData(); // { [deckId]: { [cardFront]: 'repeat'|'good'|'mastered' } }
+    this.unlockedMedals = this.loadUnlockedMedals(); // ['first_session', ...]
+    this.stats = this.loadStats(); // { sessions: 0, totalMastered: 0 }
+
+    this.activeDeck = null;
+    this.sessionCards = [];
+    this.currentIndex = 0;
+    this.isFlipped = false;
+    this.revealedHintCount = 0;
+    this.currentStreak = 0;
+    this.sessionScore = 0;
+    this.failedCards = [];
+    this.quizSelected = false;
+
+    this.isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+    this.swRegistration = null;
+    this.swRefreshing = false;
+    this.deferredPrompt = null;
+    this.initPwa();
+  }
+
+  detectLanguage() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const langParam = urlParams.get('lang');
+    if (langParam === 'es' || langParam === 'en') return langParam;
+    const saved = localStorage.getItem('pref-lang');
+    if (saved === 'es' || saved === 'en') return saved;
+    const nav = navigator.language || navigator.userLanguage || 'es';
+    return nav.startsWith('en') ? 'en' : 'es';
+  }
+
+  t(key, params = {}) {
+    const dict = I18N[this.currentLang] || I18N.es;
+    let str = dict[key] || I18N.es[key] || key;
+    for (const [k, v] of Object.entries(params)) {
+      str = str.replace(new RegExp(`\\{${k}\\}`, 'g'), v);
+    }
+    return str;
+  }
+
+  loadCustomDecks() {
+    try {
+      const data = localStorage.getItem('flashcards-custom-decks');
+      return data ? JSON.parse(data) : [];
+    } catch {
+      return [];
+    }
+  }
+
+  saveCustomDecks() {
+    try {
+      localStorage.setItem('flashcards-custom-decks', JSON.stringify(this.customDecks));
+    } catch {}
+  }
+
+  loadMasteryData() {
+    try {
+      const data = localStorage.getItem('flashcards-mastery');
+      return data ? JSON.parse(data) : {};
+    } catch {
+      return {};
+    }
+  }
+
+  saveMasteryData() {
+    try {
+      localStorage.setItem('flashcards-mastery', JSON.stringify(this.masteryData));
+    } catch {}
+  }
+
+  loadUnlockedMedals() {
+    try {
+      const data = localStorage.getItem('flashcards-medals');
+      return data ? JSON.parse(data) : [];
+    } catch {
+      return [];
+    }
+  }
+
+  saveUnlockedMedals() {
+    try {
+      localStorage.setItem('flashcards-medals', JSON.stringify(this.unlockedMedals));
+    } catch {}
+  }
+
+  loadStats() {
+    try {
+      const data = localStorage.getItem('flashcards-stats');
+      return data ? JSON.parse(data) : { sessions: 0, totalMastered: 0 };
+    } catch {
+      return { sessions: 0, totalMastered: 0 };
+    }
+  }
+
+  saveStats() {
+    try {
+      localStorage.setItem('flashcards-stats', JSON.stringify(this.stats));
+    } catch {}
+  }
+
+  unlockMedal(medalId) {
+    if (!this.unlockedMedals.includes(medalId)) {
+      this.unlockedMedals.push(medalId);
+      this.saveUnlockedMedals();
+      soundController.playTone('mastered');
+      const medal = MEDALS.find(m => m.id === medalId);
+      if (medal) {
+        const title = (medal.title && medal.title[this.currentLang]) || medal.title.es;
+        this.showToast(`🏆 ¡${title}!`, 3500);
+      }
+    }
+  }
+
+  showToast(msg, duration = 3000) {
+    const container = document.getElementById('toast-container');
+    if (!container) return;
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = msg;
+    container.appendChild(toast);
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transition = 'opacity 0.3s ease';
+      setTimeout(() => toast.remove(), 300);
+    }, duration);
+  }
+
+  getAllDecks() {
+    return [...PRESET_DECKS, ...this.customDecks];
+  }
+
+  getDeckById(id) {
+    return this.getAllDecks().find(d => d.id === id) || PRESET_DECKS[0];
+  }
+
+  init() {
+    this.initTheme();
+    this.renderHeader();
+    this.renderNavTabs();
+    this.renderView();
+    this.bindGlobalEvents();
+  }
+
+  initTheme() {
+    const saved = localStorage.getItem('pref-theme') ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', saved);
+  }
+
+  toggleTheme() {
+    const cur = document.documentElement.getAttribute('data-theme') || 'light';
+    const next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('pref-theme', next);
+    this.renderHeader();
+  }
+
+  toggleLang() {
+    this.currentLang = this.currentLang === 'es' ? 'en' : 'es';
+    localStorage.setItem('pref-lang', this.currentLang);
+    const url = new URL(window.location);
+    url.searchParams.set('lang', this.currentLang);
+    window.history.replaceState({}, '', url);
+    this.renderHeader();
+    this.renderNavTabs();
+    this.renderView();
+  }
+
+  initPwa() {
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      this.deferredPrompt = e;
+      const btn = document.getElementById('btn-install-pwa');
+      if (btn && !this.isStandalone) btn.style.display = 'inline-flex';
+    });
+
+    window.addEventListener('appinstalled', () => {
+      this.deferredPrompt = null;
+      this.isStandalone = true;
+      const btn = document.getElementById('btn-install-pwa');
+      if (btn) btn.style.display = 'none';
+      this.showToast(this.t('installSuccessToast'));
+    });
+
+    if ('serviceWorker' in navigator && (window.location.protocol.startsWith('http') || window.location.protocol.startsWith('https'))) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').then((reg) => {
+          this.swRegistration = reg;
+          this.setupPwaUpdateFlow(reg);
+        }).catch(() => {});
+
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+          if (!this.swRefreshing) {
+            this.swRefreshing = true;
+            window.location.reload();
+          }
+        });
+      });
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible' && this.swRegistration) {
+          this.swRegistration.update().catch(() => {});
+        }
+      });
+    }
+  }
+
+  setupPwaUpdateFlow(registration) {
+    if (!registration) return;
+
+    if (registration.waiting && navigator.serviceWorker.controller) {
+      this.showUpdateBanner(registration.waiting);
+      return;
+    }
+
+    registration.addEventListener('updatefound', () => {
+      const newWorker = registration.installing;
+      if (!newWorker) return;
+
+      newWorker.addEventListener('statechange', () => {
+        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+          this.showUpdateBanner(newWorker);
+        }
+      });
+    });
+  }
+
+  showUpdateBanner(waitingWorker) {
+    if (document.getElementById('pwa-update-banner')) return;
+
+    const banner = document.createElement('div');
+    banner.id = 'pwa-update-banner';
+    banner.className = 'pwa-update-banner';
+    banner.innerHTML = `
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <span>⚡</span>
+        <span>${this.t('updateAvailable')}</span>
+      </div>
+      <button id="btn-pwa-apply-update" class="btn-pwa-update-action" title="${this.t('updateNowBtn')}">
+        🔄 ${this.t('updateNowBtn')}
+      </button>
+    `;
+
+    document.body.appendChild(banner);
+
+    const btn = banner.querySelector('#btn-pwa-apply-update');
+    if (btn) {
+      btn.addEventListener('click', () => {
+        btn.disabled = true;
+        btn.innerHTML = `⏳ ...`;
+        if (waitingWorker) {
+          waitingWorker.postMessage({ action: 'skipWaiting' });
+        }
+        setTimeout(() => {
+          window.location.reload();
+        }, 1200);
+      });
+    }
+  }
+
+  async checkForUpdatesManual() {
+    this.showToast(`🔍 ${this.t('checkingUpdate')}`, 1800);
+
+    if (!this.swRegistration) {
+      setTimeout(() => {
+        this.showToast(this.t('upToDate'), 3000);
+      }, 800);
+      return;
+    }
+
+    if (this.swRegistration.waiting) {
+      this.showUpdateBanner(this.swRegistration.waiting);
+      return;
+    }
+
+    try {
+      await this.swRegistration.update();
+      setTimeout(() => {
+        if (!this.swRegistration.waiting && !document.getElementById('pwa-update-banner')) {
+          this.showToast(this.t('upToDate'), 3000);
+        }
+      }, 1500);
+    } catch {
+      this.showToast(this.t('upToDate'), 3000);
+    }
+  }
+
+  renderHeader() {
+    const header = document.getElementById('app-header');
+    if (!header) return;
+
+    const theme = document.documentElement.getAttribute('data-theme') || 'light';
+    const themeIcon = theme === 'dark' ? '☀️' : '🌙';
+    const soundIcon = soundController.soundEnabled ? '🔊' : '🔇';
+    const portalUrl = `/${this.currentLang}/apps/`;
+    const specUrl = `/${this.currentLang}/apps/flashcards/`;
+    const postUrl = `/${this.currentLang}/posts/app_flashcards/`;
+    const kitsUrl = this.currentLang === 'en' ? '/en/resources/' : '/es/recursos/';
+
+    header.innerHTML = `
+      <div class="brand-section">
+        <a href="${portalUrl}" class="btn-back">${this.t('backDatalaria')}</a>
+        <div class="brand-title">
+          <span>🎴</span> ${this.t('appTitle')}
+          <button id="btn-check-update" class="badge-version" title="${this.t('badgeCheckTitle')}">v2.1.0</button>
         </div>
-    </main>
+      </div>
+      <div class="header-controls">
+        <button id="btn-theme-toggle" class="ctrl-btn" title="Tema (T)">${themeIcon}</button>
+        <button id="btn-sound-toggle" class="ctrl-btn" title="Sonido (M)">${soundIcon}</button>
+        <button id="btn-lang-toggle" class="ctrl-btn" title="Idioma"><strong>${this.currentLang.toUpperCase()}</strong></button>
+        <button id="btn-install-pwa" class="ctrl-btn ctrl-btn-accent" style="display: ${this.isStandalone ? 'none' : 'inline-flex'};" title="${this.t('installAppTitle')}">
+          ${this.t('installApp')}
+        </button>
+        <a href="${specUrl}" class="ctrl-btn" target="_blank">${this.t('linkSpec')}</a>
+        <a href="${postUrl}" class="ctrl-btn" target="_blank">${this.t('linkPost')}</a>
+        <a href="${kitsUrl}" class="ctrl-btn ctrl-btn-accent" target="_blank">${this.t('linkKits')}</a>
+      </div>
+    `;
 
-    <footer class="mt-8 text-sm text-gray-500">
-        <p>Una aplicación de Datalaria</p>
-    </footer>
+    document.getElementById('btn-check-update')?.addEventListener('click', () => this.checkForUpdatesManual());
+    document.getElementById('btn-theme-toggle')?.addEventListener('click', () => this.toggleTheme());
+    document.getElementById('btn-sound-toggle')?.addEventListener('click', () => {
+      soundController.toggleSound();
+      this.renderHeader();
+    });
+    document.getElementById('btn-lang-toggle')?.addEventListener('click', () => this.toggleLang());
+    document.getElementById('btn-install-pwa')?.addEventListener('click', async () => {
+      if (this.deferredPrompt) {
+        this.deferredPrompt.prompt();
+        try {
+          const { outcome } = await this.deferredPrompt.userChoice;
+          if (outcome === 'accepted') {
+            this.showToast(this.t('installSuccessToast'));
+          }
+        } catch {}
+        this.deferredPrompt = null;
+      } else {
+        const isIos = /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase()) && !window.MSStream;
+        this.showToast(isIos ? this.t('installIosInstructions') : this.t('installGenericInstructions'), 4000);
+      }
+    });
+  }
+
+  renderNavTabs() {
+    const nav = document.getElementById('nav-deck');
+    if (!nav) return;
+    nav.innerHTML = `
+      <button class="nav-tab ${this.activeTab === 'study' ? 'active' : ''}" data-tab="study">${this.t('tabStudy')}</button>
+      <button class="nav-tab ${this.activeTab === 'creator' ? 'active' : ''}" data-tab="creator">${this.t('tabCreator')}</button>
+      <button class="nav-tab ${this.activeTab === 'stats' ? 'active' : ''}" data-tab="stats">${this.t('tabStats')}</button>
+    `;
+
+    nav.querySelectorAll('.nav-tab').forEach(tab => {
+      tab.addEventListener('click', (e) => {
+        this.activeTab = e.currentTarget.getAttribute('data-tab');
+        this.renderNavTabs();
+        this.renderView();
+      });
+    });
+  }
+
+  renderView() {
+    const container = document.getElementById('app-container');
+    if (!container) return;
+
+    if (this.activeTab === 'study') {
+      if (!this.activeDeck) {
+        this.renderDeckSelector(container);
+      } else {
+        this.renderStudySession(container);
+      }
+    } else if (this.activeTab === 'creator') {
+      this.renderCreatorView(container);
+    } else if (this.activeTab === 'stats') {
+      this.renderStatsView(container);
+    }
+  }
+
+  // --- VISTA 1: SELECTOR DE MAZO Y MODO ---
+  renderDeckSelector(container) {
+    const all = this.getAllDecks();
+    const kidsDecks = all.filter(d => d.tier === 'kids');
+    const adultsDecks = all.filter(d => d.tier === 'adults');
+    const customDecks = all.filter(d => d.tier === 'custom');
+
+    const renderDeckCards = (list) => list.map(d => {
+      const isSelected = d.id === this.selectedDeckId;
+      const title = d.title[this.currentLang] || d.title.es;
+      const desc = d.description ? (d.description[this.currentLang] || d.description.es) : '';
+      const count = d.cards.length;
+      return `
+        <div class="deck-card ${isSelected ? 'selected' : ''}" data-deck-id="${d.id}">
+          <div class="deck-icon">${d.icon || '🎴'}</div>
+          <div class="deck-title">${title}</div>
+          <div class="deck-desc">${desc}</div>
+          <div class="deck-footer">
+            <span>${count} ${this.t('cardsCount')}</span>
+            <span>${d.langFront.toUpperCase()} ➔ ${d.langBack.toUpperCase()}</span>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    const renderModes = () => STUDY_MODES.map(m => {
+      const isSelected = m.id === this.selectedModeId;
+      const title = m.title[this.currentLang] || m.title.es;
+      const sub = m.subtitle[this.currentLang] || m.subtitle.es;
+      return `
+        <div class="mode-btn ${isSelected ? 'selected' : ''}" data-mode-id="${m.id}">
+          <div class="mode-btn-title"><span>${m.icon}</span> ${title}</div>
+          <div class="mode-btn-desc">${sub}</div>
+        </div>
+      `;
+    }).join('');
+
+    container.innerHTML = `
+      <div class="view-panel active">
+        <h2 class="section-title">${this.t('selectDeckTitle')}</h2>
+        <p class="section-sub">${this.t('selectDeckSub')}</p>
+
+        <div class="category-badge"><span>🎒</span> ${this.t('categoryKids')}</div>
+        <div class="decks-grid">${renderDeckCards(kidsDecks)}</div>
+
+        <div class="category-badge"><span>💼</span> ${this.t('categoryAdults')}</div>
+        <div class="decks-grid">${renderDeckCards(adultsDecks)}</div>
+
+        ${customDecks.length > 0 ? `
+          <div class="category-badge"><span>⭐</span> ${this.t('categoryCustom')}</div>
+          <div class="decks-grid">${renderDeckCards(customDecks)}</div>
+        ` : ''}
+
+        <h3 class="section-title" style="margin-top: 2rem;">${this.t('selectModeTitle')}</h3>
+        <div class="modes-row">${renderModes()}</div>
+
+        <button id="btn-start-study" class="btn-primary-big">
+          ${this.t('btnStartStudy')}
+        </button>
+      </div>
+    `;
+
+    container.querySelectorAll('.deck-card').forEach(c => {
+      c.addEventListener('click', (e) => {
+        this.selectedDeckId = e.currentTarget.getAttribute('data-deck-id');
+        this.renderDeckSelector(container);
+      });
+    });
+
+    container.querySelectorAll('.mode-btn').forEach(m => {
+      m.addEventListener('click', (e) => {
+        this.selectedModeId = e.currentTarget.getAttribute('data-mode-id');
+        this.renderDeckSelector(container);
+      });
+    });
+
+    document.getElementById('btn-start-study')?.addEventListener('click', () => {
+      this.startStudySession(this.selectedDeckId, this.selectedModeId);
+    });
+  }
+
+  startStudySession(deckId, modeId, customCards = null) {
+    this.activeDeck = this.getDeckById(deckId);
+    this.selectedModeId = modeId;
+    this.sessionCards = customCards ? [...customCards] : [...this.activeDeck.cards].sort(() => 0.5 - Math.random());
+    this.currentIndex = 0;
+    this.isFlipped = false;
+    this.revealedHintCount = 0;
+    this.currentStreak = 0;
+    this.sessionScore = 0;
+    this.failedCards = [];
+    this.quizSelected = false;
+
+    if (!this.masteryData[deckId]) {
+      this.masteryData[deckId] = {};
+    }
+
+    this.renderView();
+  }
+
+  // --- VISTA 2: SESIÓN DE ESTUDIO ACTIVA ---
+  renderStudySession(container) {
+    if (this.currentIndex >= this.sessionCards.length) {
+      this.renderSessionSummary(container);
+      return;
+    }
+
+    const card = this.sessionCards[this.currentIndex];
+    const total = this.sessionCards.length;
+    const progressText = this.t('sessionProgress', { current: this.currentIndex + 1, total });
+    const mastery = calculateDeckMastery(this.masteryData[this.activeDeck.id] || {}, this.activeDeck.cards.length);
+
+    container.innerHTML = `
+      <div class="view-panel active">
+        <div class="study-header">
+          <div class="study-progress">${progressText}</div>
+          <button id="btn-exit-session" class="ctrl-btn">← ${this.t('btnBackHome')}</button>
+          <div class="study-mastery-chip">${this.t('masteryBadge', { percent: mastery.percent })}</div>
+        </div>
+
+        <div id="flashcard-element" class="card-container ${this.isFlipped ? 'is-flipped' : ''}">
+          <div class="card-inner">
+            <div class="card-face card-front">
+              <span class="card-label">${this.t('manualTermHeader')} (${this.activeDeck.langFront.toUpperCase()})</span>
+              <div class="card-main-text">${card.front}</div>
+              ${card.hint ? `<div class="card-hint-box">${this.t('hintLabel')} ${card.hint}</div>` : ''}
+              
+              <div class="card-audio-controls" onclick="event.stopPropagation();">
+                <button class="audio-btn btn-speak-front" title="Voz Normal">🔊 1.0x</button>
+                <button class="audio-btn btn-speak-front-slow" title="Modo Tortuga">🐢 0.75x</button>
+              </div>
+              <div style="margin-top: 1.5rem; font-size: 0.82rem; color: var(--text-muted);">${this.t('tapToFlip')}</div>
+            </div>
+
+            <div class="card-face card-back">
+              <span class="card-label">${this.t('manualDefHeader')} (${this.activeDeck.langBack.toUpperCase()})</span>
+              <div class="card-main-text">${card.back}</div>
+              ${card.phonetic ? `<span class="card-phonetic">${card.phonetic}</span>` : ''}
+              
+              <div class="card-audio-controls" onclick="event.stopPropagation();">
+                <button class="audio-btn btn-speak-back" title="Voz Normal">🔊 1.0x</button>
+                <button class="audio-btn btn-speak-back-slow" title="Modo Tortuga">🐢 0.75x</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Acciones según el Modo Seleccionado -->
+        <div id="mode-interaction-container">
+          ${this.renderModeInteractionHtml(card)}
+        </div>
+      </div>
+    `;
+
+    const cardEl = document.getElementById('flashcard-element');
+    cardEl?.addEventListener('click', () => {
+      this.flipCard();
+    });
+
+    document.getElementById('btn-exit-session')?.addEventListener('click', () => {
+      this.activeDeck = null;
+      this.renderView();
+    });
+
+    // Pronunciación Frontal
+    container.querySelectorAll('.btn-speak-front').forEach(b => {
+      b.addEventListener('click', (e) => {
+        e.stopPropagation();
+        soundController.speakText(card.front, this.activeDeck.langFront, 1.0);
+      });
+    });
+    container.querySelectorAll('.btn-speak-front-slow').forEach(b => {
+      b.addEventListener('click', (e) => {
+        e.stopPropagation();
+        soundController.speakText(card.front, this.activeDeck.langFront, 0.75);
+      });
+    });
+
+    // Pronunciación Trasera
+    container.querySelectorAll('.btn-speak-back').forEach(b => {
+      b.addEventListener('click', (e) => {
+        e.stopPropagation();
+        soundController.speakText(card.back, this.activeDeck.langBack, 1.0);
+      });
+    });
+    container.querySelectorAll('.btn-speak-back-slow').forEach(b => {
+      b.addEventListener('click', (e) => {
+        e.stopPropagation();
+        soundController.speakText(card.back, this.activeDeck.langBack, 0.75);
+      });
+    });
+
+    this.bindModeInteractionEvents(card);
+  }
+
+  flipCard() {
+    this.isFlipped = !this.isFlipped;
+    soundController.playTone('flip');
+    const el = document.getElementById('flashcard-element');
+    if (el) {
+      if (this.isFlipped) el.classList.add('is-flipped');
+      else el.classList.remove('is-flipped');
+    }
+  }
+
+  renderModeInteractionHtml(card) {
+    if (this.selectedModeId === 'flip') {
+      return `
+        <div class="leitner-actions">
+          <button id="btn-leitner-repeat" class="btn-leitner btn-leitner-repeat">${this.t('btnRepeat')}</button>
+          <button id="btn-leitner-good" class="btn-leitner btn-leitner-good">${this.t('btnGood')}</button>
+          <button id="btn-leitner-mastered" class="btn-leitner btn-leitner-mastered">${this.t('btnMastered')}</button>
+        </div>
+      `;
+    } else if (this.selectedModeId === 'quiz') {
+      const options = generateQuizOptions(card, this.activeDeck.cards);
+      return `
+        <div class="quiz-options-grid">
+          ${options.map(opt => `
+            <button class="quiz-option-btn" data-correct="${opt.isCorrect}">
+              ${opt.text}
+            </button>
+          `).join('')}
+        </div>
+      `;
+    } else if (this.selectedModeId === 'spelling') {
+      const mask = getSpellingMask(card.back, this.revealedHintCount);
+      return `
+        <div class="spelling-box">
+          <div class="spelling-mask">${mask}</div>
+          <div class="spelling-input-row">
+            <input type="text" id="spelling-input" class="spelling-input" placeholder="${this.t('typeAnswerPlaceholder')}" autocomplete="off" autofocus />
+            <button id="btn-spelling-check" class="ctrl-btn ctrl-btn-accent">${this.t('btnCheck')}</button>
+            <button id="btn-spelling-reveal" class="ctrl-btn">${this.t('btnRevealLetter')}</button>
+          </div>
+          <div id="spelling-feedback" style="margin-top: 0.75rem; font-weight: 700; text-align: center;"></div>
+        </div>
+      `;
+    }
+    return '';
+  }
+
+  bindModeInteractionEvents(card) {
+    if (this.selectedModeId === 'flip') {
+      document.getElementById('btn-leitner-repeat')?.addEventListener('click', () => this.handleAnswer('repeat', card));
+      document.getElementById('btn-leitner-good')?.addEventListener('click', () => this.handleAnswer('good', card));
+      document.getElementById('btn-leitner-mastered')?.addEventListener('click', () => this.handleAnswer('mastered', card));
+    } else if (this.selectedModeId === 'quiz') {
+      document.querySelectorAll('.quiz-option-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          if (this.quizSelected) return;
+          this.quizSelected = true;
+          const isCorrect = e.currentTarget.getAttribute('data-correct') === 'true';
+          if (isCorrect) {
+            e.currentTarget.classList.add('correct');
+            this.handleAnswer('good', card);
+          } else {
+            e.currentTarget.classList.add('wrong');
+            // Señalar la correcta
+            document.querySelector('.quiz-option-btn[data-correct="true"]')?.classList.add('correct');
+            this.handleAnswer('repeat', card);
+          }
+        });
+      });
+    } else if (this.selectedModeId === 'spelling') {
+      const input = document.getElementById('spelling-input');
+      const checkBtn = document.getElementById('btn-spelling-check');
+      const revealBtn = document.getElementById('btn-spelling-reveal');
+      const feedback = document.getElementById('spelling-feedback');
+
+      const submitAttempt = () => {
+        const attempt = input.value;
+        const isOk = validateSpelling(attempt, card.back);
+        if (isOk) {
+          feedback.style.color = 'var(--status-success)';
+          feedback.textContent = this.t('feedbackCorrect');
+          soundController.playTone('good');
+          setTimeout(() => this.handleAnswer(this.revealedHintCount === 0 ? 'mastered' : 'good', card), 800);
+        } else {
+          feedback.style.color = 'var(--status-error)';
+          feedback.textContent = `${this.t('feedbackIncorrect')} (${card.back})`;
+          soundController.playTone('error');
+          setTimeout(() => this.handleAnswer('repeat', card), 1400);
+        }
+      };
+
+      input?.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') submitAttempt();
+      });
+      checkBtn?.addEventListener('click', submitAttempt);
+      revealBtn?.addEventListener('click', () => {
+        soundController.playTone('hint');
+        this.revealedHintCount++;
+        const maskEl = document.querySelector('.spelling-mask');
+        if (maskEl) maskEl.textContent = getSpellingMask(card.back, this.revealedHintCount);
+      });
+    }
+  }
+
+  handleAnswer(status, card) {
+    if (!this.masteryData[this.activeDeck.id]) {
+      this.masteryData[this.activeDeck.id] = {};
+    }
+    this.masteryData[this.activeDeck.id][card.front] = status;
+    this.saveMasteryData();
+
+    if (status === 'mastered') {
+      this.sessionScore += 3;
+      this.currentStreak++;
+      soundController.playTone('mastered');
+    } else if (status === 'good') {
+      this.sessionScore += 2;
+      this.currentStreak++;
+      soundController.playTone('good');
+    } else {
+      this.failedCards.push(card);
+      this.currentStreak = 0;
+      soundController.playTone('error');
+    }
+
+    if (this.currentStreak >= 5) {
+      this.unlockMedal('streak_5');
+    }
+
+    this.currentIndex++;
+    this.isFlipped = false;
+    this.revealedHintCount = 0;
+    this.quizSelected = false;
+    setTimeout(() => this.renderView(), 300);
+  }
+
+  // --- VISTA RESUMEN FINAL ---
+  renderSessionSummary(container) {
+    this.stats.sessions++;
+    const mastery = calculateDeckMastery(this.masteryData[this.activeDeck.id] || {}, this.activeDeck.cards.length);
+    this.stats.totalMastered = Object.values(this.masteryData)
+      .flatMap(d => Object.values(d))
+      .filter(s => s === 'mastered').length;
+    this.saveStats();
+
+    this.unlockMedal('first_session');
+    if (this.stats.totalMastered >= 10) this.unlockMedal('master_10');
+    if (this.selectedModeId === 'quiz' && this.failedCards.length === 0) this.unlockMedal('quiz_ace');
+
+    triggerConfetti(document.getElementById('confetti-canvas'));
+
+    container.innerHTML = `
+      <div class="view-panel active creator-card text-center" style="max-width: 600px; margin: 0 auto;">
+        <div style="font-size: 3rem; margin-bottom: 0.5rem;">🎉</div>
+        <h2 class="section-title">${this.t('summaryTitle')}</h2>
+        <p class="section-sub">${this.activeDeck.title[this.currentLang] || this.activeDeck.title.es}</p>
+
+        <div style="background: var(--bg-inset); padding: 1.25rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
+          <div style="font-size: 1.4rem; font-weight: 800; color: var(--accent-primary); margin-bottom: 0.5rem;">
+            ${this.t('summaryScore', { score: this.sessionScore })}
+          </div>
+          <div style="font-weight: 700; color: var(--text-secondary);">
+            ${this.t('summaryMastered', { mastered: mastery.masteredCount, total: this.activeDeck.cards.length })}
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+          ${this.failedCards.length > 0 ? `
+            <button id="btn-study-failed" class="btn-primary-big" style="background: var(--box-repeat); box-shadow: 0 4px 0 #d97706;">
+              ${this.t('btnStudyFailed', { count: this.failedCards.length })}
+            </button>
+          ` : ''}
+          <button id="btn-study-again" class="btn-primary-big">
+            ${this.t('btnStudyAgain')}
+          </button>
+          <button id="btn-choose-another" class="ctrl-btn" style="justify-content: center; padding: 0.85rem; font-size: 1rem;">
+            ${this.t('btnBackHome')}
+          </button>
+        </div>
+      </div>
+    `;
+
+    document.getElementById('btn-study-failed')?.addEventListener('click', () => {
+      this.startStudySession(this.activeDeck.id, this.selectedModeId, this.failedCards);
+    });
+    document.getElementById('btn-study-again')?.addEventListener('click', () => {
+      this.startStudySession(this.activeDeck.id, this.selectedModeId);
+    });
+    document.getElementById('btn-choose-another')?.addEventListener('click', () => {
+      this.activeDeck = null;
+      this.renderView();
+    });
+  }
+
+  // --- VISTA 3: CREADOR MÁGICO (IA, CSV Y MANUAL) ---
+  renderCreatorView(container) {
+    const savedApiKey = localStorage.getItem('geminiApiKey') || '';
+
+    container.innerHTML = `
+      <div class="view-panel active creator-card">
+        <h2 class="section-title">${this.t('creatorTitle')}</h2>
+        <p class="section-sub">${this.t('creatorSub')}</p>
+
+        <div class="flex justify-center gap-4" style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+          <label style="font-weight: 700; cursor: pointer;">
+            <input type="radio" name="creator-mode" value="ai" checked /> ${this.t('creatorModeAi')}
+          </label>
+          <label style="font-weight: 700; cursor: pointer;">
+            <input type="radio" name="creator-mode" value="manual" /> ${this.t('creatorModeManual')}
+          </label>
+        </div>
+
+        <div class="input-group">
+          <label class="input-label">${this.t('deckNameLabel')}</label>
+          <input type="text" id="deck-name-input" class="text-input" placeholder="${this.t('deckNamePlaceholder')}" />
+        </div>
+
+        <!-- Opciones Modo IA -->
+        <div id="ai-creator-block">
+          <div class="input-group">
+            <label class="input-label">${this.t('aiApiKeyLabel')}</label>
+            <input type="password" id="gemini-key-input" class="text-input" value="${savedApiKey}" placeholder="${this.t('aiApiKeyPlaceholder')}" />
+            <p class="input-subhint">${this.t('aiApiKeyHint')}</p>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label">${this.t('aiTargetLang')}</label>
+            <select id="ai-action-select" class="select-input">
+              <option value="translate_en" selected>${this.t('optTranslateEn')}</option>
+              <option value="translate_es">${this.t('optTranslateEs')}</option>
+              <option value="translate_fr">${this.t('optTranslateFr')}</option>
+              <option value="translate_de">${this.t('optTranslateDe')}</option>
+              <option value="define_es">${this.t('optDefineEs')}</option>
+              <option value="define_en">${this.t('optDefineEn')}</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label">${this.t('termsInputLabel')}</label>
+            <textarea id="terms-textarea" class="textarea-input" placeholder="${this.t('termsInputPlaceholder')}"></textarea>
+          </div>
+
+          <button id="btn-trigger-ai" class="btn-primary-big" style="margin-bottom: 1rem;">
+            ${this.t('btnGenerateAi')}
+          </button>
+        </div>
+
+        <!-- Opciones Modo Manual / CSV -->
+        <div id="manual-creator-block" style="display: none;">
+          <div class="input-group">
+            <div style="display: flex; gap: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap;">
+              <label for="csv-file-input" class="ctrl-btn ctrl-btn-accent" style="cursor: pointer;">
+                ${this.t('btnImportCsv')}
+              </label>
+              <input type="file" id="csv-file-input" accept=".csv,.txt" style="display: none;" />
+              <button id="btn-download-tpl" class="ctrl-btn">${this.t('btnDownloadTemplate')}</button>
+            </div>
+            <div id="manual-rows" class="rows-container"></div>
+            <button id="btn-add-manual-row" class="ctrl-btn" style="width: 100%; justify-content: center;">
+              ${this.t('btnAddRow')}
+            </button>
+          </div>
+
+          <button id="btn-save-manual-deck" class="btn-primary-big">
+            ${this.t('btnSaveDeck')}
+          </button>
+        </div>
+
+        <div id="creator-status" style="margin-top: 1rem; font-weight: 700; text-align: center;"></div>
+      </div>
+    `;
+
+    const aiBlock = document.getElementById('ai-creator-block');
+    const manualBlock = document.getElementById('manual-creator-block');
+    const rowsContainer = document.getElementById('manual-rows');
+    const statusEl = document.getElementById('creator-status');
+
+    document.querySelectorAll('input[name="creator-mode"]').forEach(r => {
+      r.addEventListener('change', (e) => {
+        if (e.target.value === 'ai') {
+          aiBlock.style.display = 'block';
+          manualBlock.style.display = 'none';
+        } else {
+          aiBlock.style.display = 'none';
+          manualBlock.style.display = 'block';
+        }
+      });
+    });
+
+    // Helper filas manuales
+    const addManualRow = (f = '', b = '') => {
+      const row = document.createElement('div');
+      row.className = 'input-row-item';
+      row.innerHTML = `
+        <input type="text" class="text-input row-front" value="${f}" placeholder="${this.t('manualTermHeader')}" />
+        <input type="text" class="text-input row-back" value="${b}" placeholder="${this.t('manualDefHeader')}" />
+        <button class="btn-del-row" title="Eliminar">&times;</button>
+      `;
+      row.querySelector('.btn-del-row').addEventListener('click', () => row.remove());
+      rowsContainer.appendChild(row);
+    };
+
+    addManualRow('Ejemplo', 'Example');
+    addManualRow();
+
+    document.getElementById('btn-add-manual-row')?.addEventListener('click', () => addManualRow());
+
+    // Descarga de Plantilla CSV
+    document.getElementById('btn-download-tpl')?.addEventListener('click', () => {
+      const sample = [
+        { front: 'Articulación', back: 'Joint', phonetic: '/dʒɔɪnt/', hint: 'Unión de huesos' },
+        { front: 'Cráneo', back: 'Skull', phonetic: '/skʌl/', hint: 'Protege el cerebro' }
+      ];
+      const csvStr = exportCSV(sample);
+      const blob = new Blob([csvStr], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'plantilla_flashcards.csv';
+      link.click();
+      URL.revokeObjectURL(url);
+    });
+
+    // Importador CSV
+    document.getElementById('csv-file-input')?.addEventListener('change', (e) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (evt) => {
+        const text = evt.target?.result;
+        const parsed = parseCSV(String(text));
+        if (parsed.length > 0) {
+          rowsContainer.innerHTML = '';
+          parsed.forEach(p => addManualRow(p.front, p.back));
+          statusEl.style.color = 'var(--status-success)';
+          statusEl.textContent = `¡Importadas ${parsed.length} tarjetas con éxito!`;
+        } else {
+          statusEl.style.color = 'var(--status-error)';
+          statusEl.textContent = 'No se encontraron tarjetas válidas en el archivo.';
+        }
+      };
+      reader.readAsText(file);
+    });
+
+    // Guardar Manual
+    document.getElementById('btn-save-manual-deck')?.addEventListener('click', () => {
+      const name = document.getElementById('deck-name-input').value.trim() || 'Mazo Personalizado';
+      const rows = rowsContainer.querySelectorAll('.input-row-item');
+      const cards = [];
+      rows.forEach(r => {
+        const f = r.querySelector('.row-front').value.trim();
+        const b = r.querySelector('.row-back').value.trim();
+        if (f && b) cards.push({ front: f, back: b });
+      });
+
+      if (cards.length === 0) {
+        statusEl.style.color = 'var(--status-error)';
+        statusEl.textContent = 'Introduce al menos una tarjeta con término y definición.';
+        return;
+      }
+
+      const newDeck = {
+        id: 'custom_' + Date.now(),
+        tier: 'custom',
+        icon: '⭐',
+        title: { es: name, en: name },
+        description: { es: 'Mazo creado manualmente', en: 'Custom user deck' },
+        langFront: 'es',
+        langBack: 'en',
+        cards
+      };
+
+      this.customDecks.push(newDeck);
+      this.saveCustomDecks();
+      this.unlockMedal('ai_creator');
+      this.selectedDeckId = newDeck.id;
+      this.activeTab = 'study';
+      this.renderNavTabs();
+      this.renderView();
+    });
+
+    // Generar con IA (Gemini Batch)
+    document.getElementById('btn-trigger-ai')?.addEventListener('click', async () => {
+      const apiKey = document.getElementById('gemini-key-input').value.trim();
+      const action = document.getElementById('ai-action-select').value;
+      const termsRaw = document.getElementById('terms-textarea').value;
+      const name = document.getElementById('deck-name-input').value.trim() || 'Mazo Generado con IA';
+
+      if (!apiKey) {
+        statusEl.style.color = 'var(--status-error)';
+        statusEl.textContent = this.t('aiApiKeyLabel');
+        return;
+      }
+      localStorage.setItem('geminiApiKey', apiKey);
+
+      const termsList = termsRaw.split(/[\n,;]+/).map(t => t.trim()).filter(Boolean);
+      if (termsList.length === 0) {
+        statusEl.style.color = 'var(--status-error)';
+        statusEl.textContent = 'Introduce al menos un término para generar.';
+        return;
+      }
+
+      statusEl.style.color = 'var(--accent-primary)';
+      statusEl.textContent = '⚡ Conectando con Gemini y generando tarjetas en lote...';
+      const btn = document.getElementById('btn-trigger-ai');
+      btn.disabled = true;
+
+      const result = await generateBatchDeckWithGemini(termsList, action, apiKey);
+      btn.disabled = false;
+
+      if (!result.success || !result.cards || result.cards.length === 0) {
+        statusEl.style.color = 'var(--status-error)';
+        statusEl.textContent = result.error || 'No se pudieron generar las tarjetas.';
+        return;
+      }
+
+      const newDeck = {
+        id: 'ai_' + Date.now(),
+        tier: 'custom',
+        icon: '✨',
+        title: { es: name, en: name },
+        description: { es: 'Generado con Google Gemini', en: 'Generated with Google Gemini' },
+        langFront: action.includes('en') ? 'es' : 'en',
+        langBack: action.includes('en') ? 'en' : 'es',
+        cards: result.cards
+      };
+
+      this.customDecks.push(newDeck);
+      this.saveCustomDecks();
+      this.unlockMedal('ai_creator');
+      this.selectedDeckId = newDeck.id;
+      this.activeTab = 'study';
+      this.renderNavTabs();
+      this.renderView();
+    });
+  }
+
+  // --- VISTA 4: MEDALLAS Y PASAPORTE DE ESTUDIO ---
+  renderStatsView(container) {
+    const totalMastered = Object.values(this.masteryData)
+      .flatMap(d => Object.values(d))
+      .filter(s => s === 'mastered').length;
+
+    container.innerHTML = `
+      <div class="view-panel active">
+        <h2 class="section-title">${this.t('statsTitle')}</h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem;">
+          <div style="background: var(--bg-surface); padding: 1.25rem; border-radius: var(--radius-md); text-align: center; border: 1px solid var(--border-card);">
+            <div style="font-size: 2rem; font-weight: 800; color: var(--box-mastered);">${totalMastered}</div>
+            <div style="font-size: 0.85rem; font-weight: 700; color: var(--text-secondary);">${this.t('totalMasteredLabel')}</div>
+          </div>
+          <div style="background: var(--bg-surface); padding: 1.25rem; border-radius: var(--radius-md); text-align: center; border: 1px solid var(--border-card);">
+            <div style="font-size: 2rem; font-weight: 800; color: var(--accent-primary);">${this.getAllDecks().length}</div>
+            <div style="font-size: 0.85rem; font-weight: 700; color: var(--text-secondary);">${this.t('totalDecksLabel')}</div>
+          </div>
+          <div style="background: var(--bg-surface); padding: 1.25rem; border-radius: var(--radius-md); text-align: center; border: 1px solid var(--border-card);">
+            <div style="font-size: 2rem; font-weight: 800; color: var(--box-good);">${this.stats.sessions}</div>
+            <div style="font-size: 0.85rem; font-weight: 700; color: var(--text-secondary);">${this.t('totalSessionsLabel')}</div>
+          </div>
+        </div>
+
+        <h3 class="section-title" style="margin-bottom: 1rem;">
+          ${this.t('medalsUnlockedLabel', { count: this.unlockedMedals.length })}
+        </h3>
+        <div class="medals-grid">
+          ${MEDALS.map(m => {
+            const isUnlocked = this.unlockedMedals.includes(m.id);
+            const title = m.title[this.currentLang] || m.title.es;
+            const desc = m.description[this.currentLang] || m.description.es;
+            return `
+              <div class="medal-card ${isUnlocked ? 'unlocked' : 'locked'}">
+                <div class="medal-icon">${m.icon}</div>
+                <div class="medal-title">${title}</div>
+                <div class="medal-desc">${desc}</div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  bindGlobalEvents() {
+    window.addEventListener('keydown', (e) => {
+      // Atajos de accesibilidad
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+      if (e.key === ' ' || e.key === 'Enter') {
+        if (this.activeTab === 'study' && this.activeDeck) {
+          e.preventDefault();
+          this.flipCard();
+        }
+      } else if (e.key === '1') {
+        document.getElementById('btn-leitner-repeat')?.click();
+      } else if (e.key === '2') {
+        document.getElementById('btn-leitner-good')?.click();
+      } else if (e.key === '3') {
+        document.getElementById('btn-leitner-mastered')?.click();
+      } else if (e.key === 't' || e.key === 'T') {
+        this.toggleTheme();
+      } else if (e.key === 'm' || e.key === 'M') {
+        soundController.toggleSound();
+        this.renderHeader();
+      } else if (e.key === 'v' || e.key === 'V') {
+        if (this.activeTab === 'study' && this.sessionCards[this.currentIndex]) {
+          const card = this.sessionCards[this.currentIndex];
+          if (this.isFlipped) soundController.speakText(card.back, this.activeDeck.langBack, 1.0);
+          else soundController.speakText(card.front, this.activeDeck.langFront, 1.0);
+        }
+      }
+    });
+  }
+}
+
+// Iniciar aplicación al cargar el DOM
+window.addEventListener('DOMContentLoaded', () => {
+  const app = new FlashcardsApp();
+  app.init();
+});
+
+  </script>
 </body>
-
 </html>

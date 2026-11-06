@@ -8,8 +8,10 @@
 # ==============================================================================
 # CONSOLIDACIÓN APPS Y JUEGOS (301 PERMANENT REDIRECTS)
 # ==============================================================================
-/games           /apps/         301
-/games/          /apps/         301
+/apps            /es/apps/      301
+/apps/           /es/apps/      301
+/games           /es/apps/      301
+/games/          /es/apps/      301
 /es/games        /es/apps/      301
 /es/games/       /es/apps/      301
 /en/games        /en/apps/      301

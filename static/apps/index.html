@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirigiendo a las Aplicaciones de Datalaria...</title>
+  <script>
+    (function() {
+      try {
+        var nav = navigator.language || navigator.userLanguage || 'es';
+        var lang = nav.startsWith('en') ? 'en' : 'es';
+        var saved = localStorage.getItem('pref-lang');
+        if (saved === 'es' || saved === 'en') lang = saved;
+        window.location.replace('/' + lang + '/apps/');
+      } catch(e) {
+        window.location.replace('/es/apps/');
+      }
+    })();
+  </script>
+  <meta http-equiv="refresh" content="0; url=/es/apps/">
+  <link rel="canonical" href="https://datalaria.com/es/apps/">
+</head>
+<body>
+  <p>Redirigiendo al catálogo de aplicaciones de Datalaria... Si no eres redirigido, <a href="/es/apps/">pulsa aquí</a>.</p>
+</body>
+</html>

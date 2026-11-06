@@ -55,7 +55,7 @@ The application supports translations and definition generation in several langu
 
 For longer lists (vocabulary for an entire topic, lists of capitals, etc.), the application allows you to upload a text (`.txt`) or CSV (`.csv`) file with the terms and definitions. You simply prepare your list in a file, upload it, and the application generates the cards instantly. This feature is ideal for those who want to prepare material for their children or for students who need to digitize entire subjects.
 
-[Flashcards Template](https://github.com/Dalaez/flashcards-app/blob/main/en/flashcards_template.csv)
+[Downloadable study template](/apps/flashcards/en/flashcards_template.csv) | [GitHub Repository](https://github.com/Dalaez/flashcards-app/blob/main/en/flashcards_template.csv)
 
 ### How It Works: Easy and Fun
 
@@ -88,4 +88,4 @@ I hope you find this tool useful. I invite you to try the [flashcards app](https
 #### Sources and Resources:
 * **Try the App**: [Flashcards Study App](https://datalaria.com/apps/flashcards) | [View Flashcards AI Technical Details & Evolution](/en/apps/flashcards/)
 * **Source Code**: [Project Repository on GitHub](https://github.com/dalaez/flashcards-app)
-* **Google AI Studio**[Google AI Studio](https://aistudio.google.com/app/api-keys)
+* **Google AI Studio**: [Get free Gemini API Key](https://aistudio.google.com/app/api-keys)

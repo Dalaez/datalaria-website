@@ -1,6 +1,6 @@
 """
 apps/maths/build.py
-Empaquetador estático para la aplicación Ábaco Arcade v2.1.0 (Maths).
+Empaquetador estático para la aplicación Ábaco Arcade v2.3.0 (Maths).
 Genera static/apps/maths/index.html, sincroniza manifest.json, sw.js, icon.svg y los 2 shims retrocompatibles.
 """
 import os
@@ -10,7 +10,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_DIR = os.path.abspath(os.path.join(BASE_DIR, "../../static/apps/maths"))
 
 def build():
-    print("Iniciando build de Maths v2.1.0...")
+    print("Iniciando build de Maths v2.3.0...")
     
     # Leer componentes
     with open(os.path.join(BASE_DIR, "styles.css"), "r", encoding="utf-8") as f:
@@ -62,7 +62,7 @@ def build():
       <a href="/apps/maths/" class="shell-brand">
         <span>🧮</span>
         <span id="shell-app-title">Ábaco Arcade</span>
-        <button id="btn-check-update" class="shell-badge" title="Buscar actualizaciones (v2.1.0)">v2.1.0</button>
+        <button id="btn-check-update" class="shell-badge" title="Buscar actualizaciones (v2.3.0)">v2.3.0</button>
       </a>
     </div>
 
@@ -78,6 +78,9 @@ def build():
       <a id="link-kits" href="/es/recursos/" class="btn-arcade btn-arcade-primary">📦 Recursos</a>
     </div>
   </header>
+
+  <!-- Selector de Perfiles Familiares Multi-Jugador -->
+  <div id="profile-bar" class="profile-bar"></div>
 
   <nav class="tabs-nav" id="tabs-nav"></nav>
 

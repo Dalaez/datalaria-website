@@ -1,0 +1,49 @@
+{
+  "name": "Flashcards Mágico - Datalaria",
+  "short_name": "Flashcards AI",
+  "description": "Estudio activo bilingüe, pronunciación fonética por voz y generador con IA.",
+  "start_url": "/apps/flashcards/",
+  "scope": "/apps/flashcards/",
+  "display": "standalone",
+  "background_color": "#f4f7ff",
+  "theme_color": "#8b5cf6",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/apps/flashcards/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/apps/flashcards/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apps/flashcards/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apps/flashcards/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/apps/flashcards/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/apps/flashcards/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

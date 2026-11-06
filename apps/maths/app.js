@@ -30,26 +30,55 @@
   let inputRem = '';
   let activeDivisionField = 'quo'; // 'quo' o 'rem'
   let isHintVisible = false;
+  let hintUsedThisRound = false;
+  let roundHistory = [];
+  let dailyRng = null;
 
   // PWA Prompt
   let deferredInstallPrompt = null;
   let isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
 
-  // Persistencia Local
-  const STORAGE_KEY = 'datalaria_maths_v2_stats';
+  // Perfiles Familiares y Persistencia Local Aislada (INV-MATHS-11)
+  let activeProfileId = 'player_1';
   let userStats = {
     highScores: {},
     bestStreakEver: 0,
     unlockedMedals: []
   };
 
+  function getStorageKey(profileId = activeProfileId) {
+    return `datalaria_maths_v2_stats_${profileId}`;
+  }
+
   function loadStats() {
+    // 1. Cargar perfil activo guardado
     try {
-      const data = localStorage.getItem(STORAGE_KEY);
+      const savedProfile = localStorage.getItem('datalaria_maths_active_profile');
+      if (savedProfile && catalog.profiles && catalog.profiles.some(p => p.id === savedProfile)) {
+        activeProfileId = savedProfile;
+      }
+    } catch (e) { }
+
+    // 2. Migración retrocompatible de datos anteriores a player_1
+    try {
+      const legacyData = localStorage.getItem('datalaria_maths_v2_stats');
+      if (legacyData && !localStorage.getItem('datalaria_maths_v2_stats_player_1')) {
+        localStorage.setItem('datalaria_maths_v2_stats_player_1', legacyData);
+      }
+    } catch (e) { }
+
+    // 3. Cargar estadísticas aisladas del perfil activo
+    userStats = {
+      highScores: {},
+      bestStreakEver: 0,
+      unlockedMedals: []
+    };
+    try {
+      const data = localStorage.getItem(getStorageKey());
       if (data) userStats = JSON.parse(data);
     } catch (e) { }
 
-    // Cargar sonido
+    // 4. Cargar sonido
     try {
       const savedSound = localStorage.getItem('maths-sound');
       if (savedSound !== null) {
@@ -62,8 +91,22 @@
 
   function saveStats() {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(userStats));
+      localStorage.setItem(getStorageKey(), JSON.stringify(userStats));
     } catch (e) { }
+  }
+
+  function switchProfile(profileId) {
+    if (profileId === activeProfileId) return;
+    audio.playClick();
+    activeProfileId = profileId;
+    try {
+      localStorage.setItem('datalaria_maths_active_profile', profileId);
+    } catch (e) { }
+    loadStats();
+    const profileObj = catalog.profiles ? catalog.profiles.find(p => p.id === profileId) : null;
+    const profileName = profileObj ? `${profileObj.avatar} ${profileObj.name[lang]}` : profileId;
+    showToast(`${t('profile_switched')} ${profileName}`);
+    renderAll();
   }
 
   // Toasts flotantes lúdicos (sin window.alert ni window.confirm)
@@ -81,7 +124,7 @@
     }, duration);
   }
 
-  // Detectar idioma inicial por URL o navegador
+  // Detectar idioma inicial y parámetros por URL o navegador
   function initLang() {
     const params = new URLSearchParams(window.location.search);
     const urlLang = params.get('lang');
@@ -89,6 +132,15 @@
       lang = urlLang;
     } else {
       lang = (navigator.language && navigator.language.startsWith('en')) ? 'en' : 'es';
+    }
+
+    const queryMode = params.get('mode');
+    if (queryMode && ['classic', 'time_attack', 'zen', 'daily'].includes(queryMode)) {
+      selectedMode = queryMode;
+    }
+    const queryLevel = params.get('level');
+    if (queryLevel && catalog.levels.some(l => l.id === queryLevel)) {
+      selectedLevel = queryLevel;
     }
   }
 
@@ -130,6 +182,30 @@
       : '/en/posts/founderz-coding-chatGPT/';
     document.getElementById('link-kits').textContent = t('kits_link');
     document.getElementById('link-kits').href = `/${lang}/recursos/`;
+
+    renderProfileBar();
+  }
+
+  function renderProfileBar() {
+    const bar = document.getElementById('profile-bar');
+    if (!bar || !catalog.profiles) return;
+    bar.innerHTML = `
+      <span class="profile-bar-label">👥 ${t('profile_label')}</span>
+      ${catalog.profiles.map(p => `
+        <button class="profile-chip ${activeProfileId === p.id ? 'active' : ''}" data-profile-id="${p.id}" title="${p.title[lang]}">
+          <span>${p.avatar}</span>
+          <span>${p.name[lang]}</span>
+          ${activeProfileId === p.id ? '<span style="font-size: 0.75rem; margin-left: 2px;">✓</span>' : ''}
+        </button>
+      `).join('')}
+    `;
+
+    bar.querySelectorAll('.profile-chip').forEach(chip => {
+      chip.onclick = () => {
+        const pId = chip.getAttribute('data-profile-id');
+        switchProfile(pId);
+      };
+    });
   }
 
   function renderTabs() {
@@ -218,6 +294,7 @@
     const isDivision = currentProblem && currentProblem.type === 'division';
     let roundLabel = '';
     if (selectedMode === 'classic') roundLabel = `${t('round')} ${roundIndex}/${TOTAL_ROUNDS}`;
+    else if (selectedMode === 'daily') roundLabel = `📅 ${t('daily_challenge_label')} ${roundIndex}/${TOTAL_ROUNDS}`;
     else if (selectedMode === 'time_attack') roundLabel = `⚡ ${t('round')} ${roundIndex}`;
     else roundLabel = `🧘 ${t('round')} ${roundIndex}`;
 
@@ -306,6 +383,7 @@
 
   function toggleVisualHint() {
     isHintVisible = !isHintVisible;
+    if (isHintVisible) hintUsedThisRound = true;
     const hintEl = document.getElementById('hint-container');
     const btnEl = document.getElementById('btn-toggle-hint');
     if (hintEl && btnEl) {
@@ -372,13 +450,27 @@
 
     const bannerContainer = document.getElementById('feedback-banner-container');
     let pointsEarned = 0;
+    const resolvedCorrectDisplay = correctDisplay || (currentProblem ? (currentProblem.answer !== undefined ? String(currentProblem.answer) : `${t('quotient')}: ${currentProblem.quotient}, ${t('remainder')}: ${currentProblem.remainder}`) : '');
+
+    // Registro de ronda para tira Wordle y repaso de fallos
+    roundHistory.push({
+      round: roundIndex,
+      problem: currentProblem,
+      isCorrect: isCorrect,
+      usedHint: hintUsedThisRound,
+      skipped: isSkipped,
+      userVal: inputVal,
+      userQuo: inputQuo,
+      userRem: inputRem,
+      correctDisplay: resolvedCorrectDisplay
+    });
 
     if (isCorrect) {
       streak += 1;
       if (streak > bestStreak) bestStreak = streak;
       correctCount += 1;
       const multiplier = streak >= 5 ? 3 : (streak >= 3 ? 2 : 1);
-      pointsEarned = Math.round((100 + (selectedMode === 'classic' ? timeLeft * 10 : 0)) * multiplier);
+      pointsEarned = Math.round((100 + (selectedMode === 'classic' || selectedMode === 'daily' ? timeLeft * 10 : 0)) * multiplier);
       score += pointsEarned;
       audio.playSuccess(streak);
 
@@ -400,10 +492,9 @@
       if (!isSkipped) audio.playError();
 
       if (bannerContainer) {
-        const correctTxt = correctDisplay || (currentProblem ? (currentProblem.answer || currentProblem.quotient) : '');
         bannerContainer.innerHTML = `
           <div class="feedback-banner feedback-error">
-            <span>${isSkipped ? t('good_try') : t('good_try')} ${t('correct_answer_is')} <strong>${correctTxt}</strong></span>
+            <span>${isSkipped ? t('good_try') : t('good_try')} ${t('correct_answer_is')} <strong>${resolvedCorrectDisplay}</strong></span>
             <button id="btn-next-fast" class="btn-arcade" style="padding: 4px 10px; font-size: 0.8rem; background: var(--bg-surface);">${t('next_question_btn')}</button>
           </div>
         `;
@@ -429,7 +520,7 @@
 
   function advanceRound() {
     inFeedbackPause = false;
-    if (selectedMode === 'classic' && roundIndex >= TOTAL_ROUNDS) {
+    if ((selectedMode === 'classic' || selectedMode === 'daily') && roundIndex >= TOTAL_ROUNDS) {
       finishGame();
     } else if (selectedMode === 'time_attack' && timeLeft <= 0) {
       finishGame();
@@ -448,6 +539,16 @@
     streak = 0;
     bestStreak = 0;
     isHintVisible = false;
+    hintUsedThisRound = false;
+    roundHistory = [];
+
+    if (selectedMode === 'daily') {
+      const todayStr = new Date().toISOString().slice(0, 10);
+      const dailySeed = `${todayStr}_${selectedLevel}`;
+      dailyRng = engine.createSeededRng(dailySeed);
+    } else {
+      dailyRng = null;
+    }
 
     if (selectedMode === 'time_attack') {
       timeTotal = 60;
@@ -467,9 +568,10 @@
     inputRem = '';
     activeDivisionField = 'quo';
     isHintVisible = false;
-    currentProblem = engine.generateProblem(selectedLevel, lang);
+    hintUsedThisRound = false;
+    currentProblem = engine.generateProblem(selectedLevel, lang, dailyRng);
 
-    if (selectedMode === 'classic') {
+    if (selectedMode === 'classic' || selectedMode === 'daily') {
       timeTotal = 10;
       timeLeft = 10;
     }
@@ -493,7 +595,7 @@
 
       if (timeLeft <= 0) {
         clearInterval(timerInterval);
-        const correctTxt = currentProblem ? (currentProblem.answer || `${t('quotient')}: ${currentProblem.quotient}, ${t('remainder')}: ${currentProblem.remainder}`) : '';
+        const correctTxt = currentProblem ? (currentProblem.answer !== undefined ? String(currentProblem.answer) : `${t('quotient')}: ${currentProblem.quotient}, ${t('remainder')}: ${currentProblem.remainder}`) : '';
         handleAnswerSubmit(false, false, correctTxt);
       }
     }, 100);
@@ -515,7 +617,59 @@
     saveStats();
 
     const container = document.getElementById('tab-content');
-    const accuracy = (roundIndex > 0) ? Math.round((correctCount / roundIndex) * 100) : 0;
+    const totalPlayed = roundHistory.length || roundIndex;
+    const accuracy = (totalPlayed > 0) ? Math.round((correctCount / totalPlayed) * 100) : 0;
+
+    // Tira visual estilo Wordle (🟩 Acierto limpio, 💡 Acierto con pista, 🟥 Fallo)
+    const emojiStrip = roundHistory.map(r => {
+      if (r.isCorrect && !r.usedHint) return '🟩';
+      if (r.isCorrect && r.usedHint) return '💡';
+      return '🟥';
+    }).join('');
+
+    // Preparar lista de fallos para repaso didáctico
+    const mistakes = roundHistory.filter(r => !r.isCorrect);
+    let mistakesHtml = '';
+    if (mistakes.length > 0) {
+      mistakesHtml = `
+        <div class="mistake-review-section">
+          <div class="mistake-review-title">
+            <span>${t('mistake_review_title')}</span>
+            <span style="font-size: 0.9rem; font-weight: 600; color: var(--text-muted);">(${mistakes.length})</span>
+          </div>
+          <div class="mistake-list">
+            ${mistakes.map((m, idx) => `
+              <div class="mistake-card">
+                <div class="mistake-header">
+                  <span class="mistake-problem-text">${m.problem ? m.problem.display : '...'}</span>
+                  <span style="font-size: 0.85rem; color: var(--status-error); font-weight: 700;">${t('round')} ${m.round}</span>
+                </div>
+                <div class="mistake-details">
+                  <span>${t('mistake_your_answer')} <strong>${m.userVal || (m.userQuo !== '' ? `${m.userQuo} (r:${m.userRem})` : (m.skipped ? t('skip') : '⏱️'))}</strong></span>
+                  <span>${t('mistake_correct_answer')} <strong style="color: var(--status-success);">${m.correctDisplay}</strong></span>
+                </div>
+                <div class="mistake-hint-toggle">
+                  <button class="btn-arcade btn-mistake-hint" data-mistake-idx="${idx}" style="font-size: 0.8rem; padding: 4px 10px; background: var(--bg-surface);">
+                    ${t('view_hint_btn')}
+                  </button>
+                  <div id="mistake-hint-${idx}" class="mistake-hint-container hidden">
+                    ${m.problem ? engine.renderVisualHint(m.problem.visual, lang) : ''}
+                  </div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    } else if (roundHistory.length > 0) {
+      mistakesHtml = `
+        <div class="mistake-review-section" style="text-align: center;">
+          <div style="background: rgba(16, 185, 129, 0.15); border: 2px solid var(--status-success); border-radius: var(--radius-md); padding: 14px 20px; color: #065f46; font-weight: 700;">
+            ${t('mistake_review_empty')}
+          </div>
+        </div>
+      `;
+    }
 
     let html = `
       <div class="card text-center" style="position: relative;">
@@ -523,20 +677,32 @@
         <div style="font-size: 4rem; margin-bottom: 12px;">🏆</div>
         <h2 style="font-size: 2rem; font-weight: 800; color: var(--text-primary);">${t('game_over')}</h2>
         
-        <div style="display: flex; gap: 16px; justify-content: center; margin: 24px 0; flex-wrap: wrap;">
+        <div style="display: flex; gap: 16px; justify-content: center; margin: 20px 0 12px; flex-wrap: wrap;">
           <div class="stat-chip" style="font-size: 1.1rem; padding: 10px 18px;">⭐ ${t('points')}: <strong>${score}</strong></div>
           <div class="stat-chip" style="font-size: 1.1rem; padding: 10px 18px;">🎯 ${t('accuracy')}: <strong>${accuracy}%</strong></div>
           <div class="stat-chip" style="font-size: 1.1rem; padding: 10px 18px;">🔥 ${t('best_streak')}: <strong>${bestStreak}</strong></div>
         </div>
 
-        <div style="display: flex; gap: 12px; justify-content: center; margin-top: 24px;">
-          <button id="btn-again" class="btn-arcade btn-arcade-primary" style="font-size: 1.1rem; padding: 12px 24px;">
+        ${emojiStrip ? `
+          <div class="round-blocks-strip" title="Resumen gráfico de respuestas">${emojiStrip}</div>
+        ` : ''}
+
+        <div style="display: flex; gap: 12px; justify-content: center; margin-top: 20px; flex-wrap: wrap;">
+          <button id="btn-share-result" class="btn-arcade btn-share-result" style="font-size: 1.05rem; padding: 12px 22px;">
+            ${t('share_result_btn')}
+          </button>
+          <button id="btn-again" class="btn-arcade btn-arcade-primary" style="font-size: 1.05rem; padding: 12px 22px;">
             ${t('play_again')}
           </button>
-          <button id="btn-badges" class="btn-arcade" style="font-size: 1.1rem; padding: 12px 24px;">
+          <button id="btn-finish-diploma" class="btn-arcade btn-arcade-diploma" style="font-size: 1.05rem; padding: 12px 22px;">
+            ${t('download_diploma_btn')}
+          </button>
+          <button id="btn-badges" class="btn-arcade" style="font-size: 1.05rem; padding: 12px 22px;">
             ${t('view_achievements')}
           </button>
         </div>
+
+        ${mistakesHtml}
       </div>
     `;
     container.innerHTML = html;
@@ -547,10 +713,43 @@
     document.getElementById('btn-again').onclick = () => {
       startGameSession();
     };
+    document.getElementById('btn-finish-diploma').onclick = downloadArcadeDiploma;
     document.getElementById('btn-badges').onclick = () => {
       activeTab = 'achievements';
       renderAll();
     };
+
+    document.getElementById('btn-share-result').onclick = () => {
+      audio.playClick();
+      const todayStr = new Date().toISOString().slice(0, 10);
+      const levelObj = catalog.levels.find(l => l.id === selectedLevel);
+      const levelName = levelObj ? levelObj.name[lang] : selectedLevel;
+      const modeObj = catalog.modes.find(m => m.id === selectedMode);
+      const modeName = selectedMode === 'daily'
+        ? `${t('daily_challenge_label')} (${todayStr})`
+        : (modeObj ? modeObj.name[lang] : selectedMode);
+
+      const shareUrl = `${window.location.origin}${window.location.pathname}?mode=${selectedMode}&level=${selectedLevel}${selectedMode === 'daily' ? '&date=' + todayStr : ''}`;
+      const shareText = `Datalaria Maths · ${modeName}\n${levelName} | ⭐ ${score} pts (${correctCount}/${totalPlayed})\n${emojiStrip}\n${shareUrl}`;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(shareText).then(() => {
+          showToast(t('share_result_copied'));
+        }).catch(() => {
+          showToast(t('share_result_copied'));
+        });
+      } else {
+        showToast(t('share_result_copied'));
+      }
+    };
+
+    container.querySelectorAll('.btn-mistake-hint').forEach(btn => {
+      btn.onclick = () => {
+        const idx = btn.getAttribute('data-mistake-idx');
+        const box = document.getElementById(`mistake-hint-${idx}`);
+        if (box) box.classList.toggle('hidden');
+      };
+    });
   }
 
   function endGameSession() {
@@ -635,6 +834,17 @@
           }).join('')}
         </div>
 
+        <div class="diploma-promo-card">
+          <div style="font-size: 2.4rem; margin-bottom: 6px;">🎓</div>
+          <h3 style="font-size: 1.3rem; font-weight: 800; color: #b45309; margin-bottom: 6px;">${t('diploma_card_title')}</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); max-width: 520px; margin: 0 auto 16px;">
+            ${t('diploma_card_desc')}
+          </p>
+          <button id="btn-download-diploma" class="btn-arcade btn-arcade-diploma" style="font-size: 1.05rem; padding: 10px 24px;">
+            ${t('download_diploma_btn')}
+          </button>
+        </div>
+
         <div style="text-align: center; margin-top: 30px;">
           <button id="btn-reset-stats" class="btn-arcade btn-arcade-danger" style="font-size: 0.85rem;">
             ${t('clean_history')}
@@ -644,6 +854,8 @@
     `;
     container.innerHTML = html;
 
+    document.getElementById('btn-download-diploma').onclick = downloadArcadeDiploma;
+
     document.getElementById('btn-reset-stats').onclick = () => {
       // Reemplazo visual de confirm() con toast interactivo
       userStats = { highScores: {}, bestStreakEver: 0, unlockedMedals: [] };
@@ -652,6 +864,198 @@
       renderAchievementsTab();
     };
   }
+
+  // Generador de Diploma Arcade PNG en Canvas 2D (INV-MATHS-11)
+  function downloadArcadeDiploma() {
+    audio.playSuccess(3);
+    showToast(t('diploma_downloaded_toast'), 3000);
+
+    const canvas = document.createElement('canvas');
+    canvas.width = 1200;
+    canvas.height = 800;
+    const ctx = canvas.getContext('2d');
+
+    // 1. Fondo suave pergamino / marfil
+    ctx.fillStyle = '#fdfbf7';
+    ctx.fillRect(0, 0, 1200, 800);
+
+    const bgGrad = ctx.createLinearGradient(0, 0, 1200, 800);
+    bgGrad.addColorStop(0, 'rgba(254, 243, 199, 0.35)');
+    bgGrad.addColorStop(0.5, 'rgba(255, 255, 255, 0.15)');
+    bgGrad.addColorStop(1, 'rgba(219, 234, 254, 0.35)');
+    ctx.fillStyle = bgGrad;
+    ctx.fillRect(0, 0, 1200, 800);
+
+    // 2. Orla Dorada Doble y esquinas ornamentales
+    ctx.strokeStyle = '#d97706';
+    ctx.lineWidth = 8;
+    ctx.strokeRect(30, 30, 1140, 740);
+
+    ctx.strokeStyle = '#fbbf24';
+    ctx.lineWidth = 3;
+    ctx.strokeRect(42, 42, 1116, 716);
+
+    const corners = [[30, 30], [1170, 30], [30, 770], [1170, 770]];
+    ctx.fillStyle = '#b45309';
+    corners.forEach(([cx, cy]) => {
+      ctx.beginPath();
+      ctx.arc(cx, cy, 14, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    // 3. Encabezados Institucionales
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#0284c7';
+    ctx.font = 'bold 22px system-ui, -apple-system, sans-serif';
+    ctx.fillText('DATALARIA ÁBACO ARCADE • ACADEMIA MATEMÁTICA', 600, 95);
+
+    ctx.fillStyle = '#1e1b4b';
+    ctx.font = '800 48px system-ui, -apple-system, sans-serif';
+    ctx.fillText(lang === 'es' ? 'DIPLOMA DE HONOR' : 'DIPLOMA OF HONOR', 600, 160);
+
+    ctx.fillStyle = '#64748b';
+    ctx.font = '600 20px system-ui, -apple-system, sans-serif';
+    ctx.fillText(
+      lang === 'es' 
+        ? 'Por su destacada agilidad mental, razonamiento aritmético y perseverancia' 
+        : 'In recognition of outstanding mental arithmetic agility and perseverance',
+      600, 202
+    );
+
+    // 4. Perfil Activo
+    const profileObj = catalog.profiles ? catalog.profiles.find(p => p.id === activeProfileId) : null;
+    const profileAvatar = profileObj ? profileObj.avatar : '🦁';
+    const profileName = profileObj ? profileObj.name[lang] : 'Jugador 1';
+    const profileTitle = profileObj ? profileObj.title[lang] : 'Explorador';
+
+    ctx.fillStyle = '#ffffff';
+    ctx.strokeStyle = '#cbd5e1';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.roundRect(260, 235, 680, 135, 16);
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.font = '64px system-ui, sans-serif';
+    ctx.fillText(profileAvatar, 335, 325);
+
+    ctx.textAlign = 'left';
+    ctx.fillStyle = '#1e1b4b';
+    ctx.font = '800 36px system-ui, -apple-system, sans-serif';
+    ctx.fillText(profileName, 400, 295);
+
+    ctx.fillStyle = '#0ea5e9';
+    ctx.font = '700 20px system-ui, -apple-system, sans-serif';
+    ctx.fillText(`★ ${profileTitle}`, 400, 332);
+
+    // 5. Estadísticas de Logros
+    let maxScore = 0;
+    Object.values(userStats.highScores || {}).forEach(s => {
+      if (s > maxScore) maxScore = s;
+    });
+
+    ctx.textAlign = 'center';
+    const statBoxes = [
+      { label: lang === 'es' ? 'Récord Máximo' : 'High Score', val: `${maxScore} pts` },
+      { label: lang === 'es' ? 'Mejor Racha' : 'Best Streak', val: `🔥 ${userStats.bestStreakEver || 0}` },
+      { label: lang === 'es' ? 'Medallas de Honor' : 'Badges Earned', val: `🎖️ ${userStats.unlockedMedals.length}/${catalog.medals.length}` }
+    ];
+
+    statBoxes.forEach((st, i) => {
+      const bx = 220 + i * 260;
+      ctx.fillStyle = '#f8faff';
+      ctx.strokeStyle = '#cbd5e1';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.roundRect(bx - 110, 400, 220, 85, 12);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = '#64748b';
+      ctx.font = '600 14px system-ui, sans-serif';
+      ctx.fillText(st.label, bx, 432);
+
+      ctx.fillStyle = '#0f172a';
+      ctx.font = '800 22px system-ui, sans-serif';
+      ctx.fillText(st.val, bx, 465);
+    });
+
+    // 6. Fila de Medallas
+    ctx.fillStyle = '#475569';
+    ctx.font = '700 16px system-ui, sans-serif';
+    ctx.fillText(lang === 'es' ? 'COLECCIÓN DE MEDALLAS OBTENIDAS:' : 'EARNED BADGES COLLECTION:', 600, 525);
+
+    const medalIcons = catalog.medals.map(m => {
+      return userStats.unlockedMedals.includes(m.id) ? m.icon : '⚪';
+    }).join('   ');
+    ctx.font = '36px system-ui, sans-serif';
+    ctx.fillText(medalIcons, 600, 575);
+
+    // 7. Sello Circular
+    ctx.save();
+    ctx.translate(990, 660);
+    ctx.strokeStyle = '#d97706';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.arc(0, 0, 54, 0, Math.PI * 2);
+    ctx.stroke();
+
+    ctx.strokeStyle = '#fbbf24';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.arc(0, 0, 48, 0, Math.PI * 2);
+    ctx.stroke();
+
+    ctx.fillStyle = '#b45309';
+    ctx.font = 'bold 9px system-ui, sans-serif';
+    ctx.fillText('DATALARIA VERIFIED', 0, -20);
+    ctx.font = '18px system-ui, sans-serif';
+    ctx.fillText('★ 🧮 ★', 0, 4);
+    ctx.font = 'bold 9px system-ui, sans-serif';
+    ctx.fillText('EXCELENCIA ARCADE', 0, 22);
+    ctx.font = 'bold 8px system-ui, sans-serif';
+    ctx.fillText('2026', 0, 34);
+    ctx.restore();
+
+    // 8. Fecha y Firma
+    ctx.textAlign = 'left';
+    const nowStr = new Date().toLocaleDateString(lang === 'es' ? 'es-ES' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    ctx.fillStyle = '#64748b';
+    ctx.font = '600 15px system-ui, sans-serif';
+    ctx.fillText((lang === 'es' ? 'Fecha de Expedición: ' : 'Issued on: ') + nowStr, 90, 680);
+    ctx.fillText('Certificado Digital Client-Side (Datalaria SDD)', 90, 705);
+
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#334155';
+    ctx.font = 'italic 16px serif';
+    ctx.fillText('Datalaria Engineering & Pedagogy Team', 580, 685);
+    ctx.strokeStyle = '#94a3b8';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(430, 695);
+    ctx.lineTo(730, 695);
+    ctx.stroke();
+    ctx.font = '600 12px system-ui, sans-serif';
+    ctx.fillStyle = '#64748b';
+    ctx.fillText(lang === 'es' ? 'Firma Institucional Acreditada' : 'Accredited Institutional Signature', 580, 715);
+
+    // 9. Descarga PNG
+    try {
+      const dataUrl = canvas.toDataURL('image/png');
+      const a = document.createElement('a');
+      a.href = dataUrl;
+      a.download = `diploma_abaco_arcade_${activeProfileId}_${new Date().toISOString().slice(0, 10)}.png`;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => {
+        document.body.removeChild(a);
+      }, 300);
+    } catch (err) {
+      showToast('Error al exportar diploma PNG', 2500);
+    }
+  }
+
+  window.downloadArcadeDiploma = downloadArcadeDiploma;
 
   // Conmutador de Sonido y Tema con persistencia
   function toggleAudio() {

@@ -1,86 +1,96 @@
 slug: flashcards
 order: 50
 tier: lab
-status: frozen
+status: active
 icon: "🎴"
 cover: cover.png
 app_url: /apps/flashcards/
 source_spec: specs/apps/flashcards/spec.md
-current_version: v1.0.0
+current_version: v2.1.0
 
 title:
   es: "Flashcards AI"
   en: "Flashcards AI"
 
 tagline:
-  es: "Herramienta interactiva de estudio activo con giro 3D, soporte de audio fonético y generación mágica con IA."
-  en: "Interactive active recall study tool featuring 3D card flips, phonetic speech audio, and AI magic generation."
+  es: "Mazo mágico interactivo de estudio activo con giro 3D, pronunciación fonética por voz (1x y 0.75x), 3 modos de juego y generación masiva con IA."
+  en: "Magic active recall study deck with 3D flips, speech phonetics (1x & 0.75x slow mode), 3 study modes, and batch AI card generation."
 
 summary:
-  es: "Aplicación de estudio y memorización activa (Active Recall) diseñada para aprender términos técnicos y vocabulario bilingüe sin distracciones. Ofrece animación tridimensional de tarjetas con CSS 3D, lector de pronunciación por voz con Web Speech API, carga y exportación de mazos en ficheros CSV con PapaParse, y un modo mágico impulsado por la API de Google Gemini para autogenerar definiciones y traducciones con un solo clic."
-  en: "Active Recall study and memorization web application designed to master technical terms and bilingual vocabulary without friction. Features realistic 3D card-flip animations via CSS 3D, spoken phonetic pronunciation using Web Speech API, CSV deck import/export powered by PapaParse, and an AI magic mode powered by Google Gemini API to autocomplete definitions and translations in one click."
+  es: "Aplicación de estudio activo (Active Recall) y memorización bilingüe diseñada para niños (ciencias escolares, espacio, capitales) y adultos (Business English, conceptos de IA, finanzas). Incorpora giro tridimensional de tarjetas con CSS 3D, pronunciación por voz nativa con Web Speech API en velocidad normal y lenta (modo tortuga), 3 modos de estudio (Giro Leitner, Quiz Arcade 4 opciones y Modo Escritura con pistas), importación/exportación CSV RFC-4180 y autogeneración mágica en lote con Google Gemini API."
+  en: "Active Recall and bilingual memorization web app tailored for kids (school science, space, world geography) and adults (Business English, AI concepts, MBA strategy). Features 3D card-flip animations, native speech pronunciation via Web Speech API with regular and slow turtle modes, 3 study modes (Leitner 3D Flip, 4-Option Quiz Arcade, and Spelling Mode with progressive hint reveals), RFC-4180 CSV import/export, and batch AI magic generation with Google Gemini API."
 
 objectives:
-  - es: "Facilitar el estudio bilingüe y la memorización activa (Active Recall) eliminando la fricción de los métodos estáticos tradicionales."
-    en: "Facilitate bilingual study and Active Recall memorization, removing friction from traditional static study methods."
-  - es: "Permitir la importación y exportación de mazos de estudio mediante ficheros CSV estándar y persistencia local en LocalStorage."
-    en: "Enable study deck import and export via standard CSV files and persistent client-side LocalStorage."
-  - es: "Integrar capacidades generativas de IA (Google Gemini API) para autocompletar traducciones, definiciones y fonética con un solo clic."
-    en: "Integrate generative AI capabilities (Google Gemini API) to autocomplete translations, definitions, and phonetics in one click."
-  - es: "Proporcionar una experiencia fluida y accesible con animaciones 3D de giro de tarjetas y pronunciación por voz en múltiples idiomas."
-    en: "Deliver a fluid and accessible user experience with 3D card-flip animations and speech pronunciation across multiple languages."
+  - es: "Facilitar el estudio bilingüe multigeneracional (niños y adultos) eliminando la monotonía de los métodos tradicionales y la frialdad de pantallas vacías."
+    en: "Empower multigenerational bilingual study (kids and adults) eliminating monotonous manual rote methods and cold empty screens."
+  - es: "Proporcionar pronunciación fonética por voz nativa (Web Speech API) con selector de velocidad dual (1.0x y modo tortuga 0.75x)."
+    en: "Deliver native phonetic speech pronunciation (Web Speech API) with dual speed modes (1.0x and 0.75x turtle slow mode)."
+  - es: "Ofrecer 3 modos de estudio interactivos: Giro Clásico con Cajas Leitner, Quiz Arcade con distractores y Modo Ortográfico con pistas."
+    en: "Offer 3 interactive study modes: Classic 3D Leitner Flip, Quiz Arcade with dynamic distractors, and Spelling Mode with progressive hints."
+  - es: "Integrar generación estructurada en lote con la API de Google Gemini (gemini-2.5-flash / gemini-2.0-flash BYOK) en formato JSON."
+    en: "Integrate batch structured card generation using Google Gemini API (gemini-2.5-flash / gemini-2.0-flash BYOK) in pure JSON."
+  - es: "Garantizar privacidad 100% en cliente, persistencia de progreso y medallas en LocalStorage, y funcionamiento offline como PWA instalable."
+    en: "Ensure 100% client-side privacy, progress and medals persistence in LocalStorage, and full offline PWA installability."
 
 features:
-  - icon: "✨"
-    es: "Modo Mágico con Gemini: genera automáticamente definiciones completas y traducciones precisas conectando tu API Key de Gemini."
-    en: "Gemini Magic Mode: automatically generate comprehensive definitions and accurate translations by connecting your Gemini API Key."
-  - icon: "🔄"
-    es: "Giro 3D Realista: efecto tridimensional fluido con CSS transform rotateY para voltear entre anverso y reverso de la tarjeta."
-    en: "Realistic 3D Card Flip: smooth 3D CSS rotateY transform effects allowing fluid toggling between question and answer sides."
   - icon: "🗣️"
-    es: "Pronunciación Fonética en Vivo: síntesis de voz en el navegador con Web Speech API para escuchar la pronunciación exacta en idiomas."
-    en: "Live Phonetic Pronunciation: in-browser text-to-speech synthesis via Web Speech API to practice accurate language pronunciation."
+    es: "Pronunciación Fonética Dual (1.0x y Tortuga 0.75x): síntesis de voz en el navegador con Web Speech API para escuchar la pronunciación exacta sílaba a sílaba."
+    en: "Dual Phonetic Speech (1.0x & 0.75x Turtle): native in-browser voice synthesis via Web Speech API to master accurate pronunciation syllable by syllable."
+  - icon: "🎒"
+    es: "6 Mazos Curados en 1 Clic: barajas listas para niños (Ciencias Bilingües, Espacio, Capitales) y adultos (Business English, Conceptos IA, Estrategia MBA)."
+    en: "6 Curated Decks in 1 Click: pre-loaded study decks for kids (Bilingual Science, Space, Capitals) and adults (Business English, AI Concepts, MBA Strategy)."
+  - icon: "🎯"
+    es: "3 Modos de Estudio Adaptativos: Giro Clásico 3D con Cajas Leitner, Quiz Arcade de 4 opciones y Reto de Escritura con revelación de pistas."
+    en: "3 Adaptive Study Modes: Classic 3D Leitner Flip, 4-Option Quiz Arcade, and Spelling Mode with progressive letter hints."
+  - icon: "⚡"
+    es: "Generación en Lote con Gemini: autocompleta decenas de términos, definiciones, fonética y pistas mnemotécnicas en una sola llamada JSON."
+    en: "Batch AI Generation with Gemini: autocompletes dozens of terms, definitions, phonetics, and mnemonic hints in a single JSON payload."
   - icon: "📂"
-    es: "Importación y Exportación CSV: procesa listas de estudio tabulares al instante en el navegador utilizando PapaParse."
-    en: "CSV Import & Export: instantly process and backup structured tabular study decks in the browser using PapaParse."
-  - icon: "🔒"
-    es: "Privacidad Total en Cliente: los datos y claves API residen exclusivamente en tu navegador (LocalStorage) sin rastreo externo."
-    en: "Client-Side Privacy: study decks and user API keys reside strictly inside your browser (LocalStorage) with zero external tracking."
+    es: "Importación y Exportación CSV RFC-4180: procesa y descarga listas tabulares compatibles con Excel, soportando comas y comillas."
+    en: "RFC-4180 CSV Import & Export: process and backup tabular study decks compatible with Excel, safely handling commas and quotes."
+  - icon: "📲"
+    es: "PWA 100% Offline e Instalable: cero CDNs externos, diseño adaptativo Sunny Studio / Starlight Deck anti-FOUC y medallas de logros."
+    en: "100% Offline Installable PWA: zero external CDNs, adaptive Sunny Studio / Starlight Deck design with anti-FOUC, and achievement medals."
 
 design:
   architecture:
-    es: "Arquitectura cliente estricta (Client-Only Privacy): toda la lógica de gestión de mazos y progreso de estudio reside en el motor JavaScript del navegador. Cuando se activa el modo IA, la app realiza llamadas HTTPS directas a la API de Gemini mediante la API Key suministrada por el usuario, sin servidores intermediarios."
-    en: "Strict client-only privacy architecture: deck management and study state reside entirely within the browser's JavaScript runtime. When the AI mode is triggered, direct client-side HTTPS calls hit the Gemini API via the user's provided API Key with zero intermediate servers."
+    es: "Arquitectura cliente estricta Single-Source-of-Truth: toda la lógica de estudio, parser CSV y síntesis de audio se ejecuta de forma determinista en el navegador. La clave API de Gemini del usuario reside exclusivamente en su LocalStorage y se comunica de forma directa y segura con los endpoints de Google AI Studio sin intermediarios."
+    en: "Strict client-side Single-Source-of-Truth architecture: study logic, CSV parsing, and speech audio run deterministically inside the browser. The user's Gemini API key stays strictly in LocalStorage and communicates directly and securely with Google AI Studio endpoints with zero intermediate servers."
   principles:
-    - es: "Privacidad y Soberanía de Datos: nada se envía a servidores de terceros salvo las llamadas directas de inferencia a la API de Gemini."
-      en: "Data Sovereignty & Privacy: zero user data is logged on backend servers, keeping all study progress strictly inside LocalStorage."
-    - es: "Fricción Cero: entrada directa manual, masiva por CSV o asistida por IA sin requerir registro de cuenta ni login obligatorio."
-      en: "Zero Friction: direct manual input, bulk CSV ingestion, or AI-assisted generation with no mandatory accounts or login walls."
-    - es: "Sensorial y Accesible: feedback visual 3D enriquecido con síntesis fonética por voz para afianzar el aprendizaje bilingüe."
-      en: "Sensory & Accessible: 3D tactile feedback paired with speech synthesis to reinforce multi-sensory bilingual retention."
+    - es: "Privacidad y Soberanía Local: los mazos y claves API residen exclusivamente en el navegador del usuario sin analítica invasiva ni trackers de terceros."
+      en: "Privacy & Local Sovereignty: study decks and user keys reside strictly in the local browser with zero invasive trackers or third-party ad networks."
+    - es: "Inclusión y Motivación Lúdica: colores amigables, relieve 3D táctil, confeti nativo y refuerzo sonoro para entusiasmar a niños y adultos sin formalismos rígidos."
+      en: "Inclusion & Playful Motivation: warm colors, 3D tactile buttons, native canvas confetti, and positive audio reinforcement for both kids and adults."
+    - es: "Cero Dependencias de Red: eliminación total de librerías externas o CDNs, garantizando funcionamiento instantáneo y 100% offline."
+      en: "Zero Network Dependencies: complete removal of third-party CDNs, ensuring instant loading and reliable offline execution."
   diagram: |
-    flowchart LR
-      USER["Estudiante"] --> UI["Interfaz Flashcards (3D CSS)"]
-      UI -->|"Modo Manual / CSV"| PARSER["PapaParse / CSV Parser"]
-      UI -->|"Modo IA (Gemini API)"| GEMINI["Google Gemini API (Generación)"]
-      PARSER --> DECK["Gestor de Mazos en Memoria"]
+    flowchart TD
+      USER["Estudiante (Niño / Adulto)"] --> UI["Interfaz Flashcards 3D (Sunny / Starlight)"]
+      UI -->|"Modo Manual / CSV"| PARSER["Parser/Exportador CSV RFC-4180"]
+      UI -->|"Modo IA (Gemini Batch)"| GEMINI["Google Gemini API (gemini-2.5-flash / 2.0-flash)"]
+      PARSER --> DECK["Gestor de Mazos (6 Curados + Personalizados)"]
       GEMINI --> DECK
       DECK -->|"Persistencia Local"| LS[("Navegador LocalStorage")]
-      DECK --> TTS["Web Speech API (Pronunciación)"]
-      DECK --> CARD["Giro 3D & Sistema de Puntos"]
-      CARD --> UI
+      DECK --> TTS["Web Speech API (Voz 1.0x & Tortuga 0.75x)"]
+      DECK --> MODES{"3 Modos de Juego"}
+      MODES -->|"1"| M1["Giro 3D & Cajas Leitner"]
+      MODES -->|"2"| M2["Quiz Arcade (4 Opciones)"]
+      MODES -->|"3"| M3["Escritura & Pistas"]
+      M1 --> UI
+      M2 --> UI
+      M3 --> UI
 
 tech:
   - layer: frontend
-    items: ["Vanilla JS", "HTML5", "CSS 3D Transforms (rotateY)"]
-  - layer: libraries
-    items: ["PapaParse.js (Parser CSV)"]
+    items: ["Vanilla JS (ES Modules)", "HTML5 Semantic", "CSS 3D Transforms", "CSS Design Tokens"]
+  - layer: pwa
+    items: ["Web App Manifest (PWA)", "Service Worker (Cache-First / Stale-While-Revalidate)", "SVG Vector Icon"]
   - layer: apis
-    items: ["Web Speech Synthesis API", "Web Storage API (LocalStorage)"]
+    items: ["Web Speech Synthesis API (TTS)", "Web Audio API (Sintetizador 8-bit)", "Web Storage API (LocalStorage)"]
   - layer: ai
-    items: ["Google Gemini API (Gemini 1.5 Flash via REST)"]
+    items: ["Google Gemini API (gemini-2.5-flash / gemini-2.0-flash via REST JSON)"]
   - layer: hosting
-    items: ["Hugo Static Engine (/apps/flashcards/)"]
+    items: ["Hugo Static Engine (/apps/flashcards/)", "Shims SEO Retrocompatibles (/es/, /en/)"]
 
 posts:
   - slug:
@@ -89,43 +99,59 @@ posts:
     part: 1
 
 releases:
+  - version: v2.1.0
+    date: "2026-11-06"
+    state: released
+    type: release
+    title:
+      es: "Flashcards v2.1.0: PWA Offline Completa, Suite de Iconos Maskable, Instalación Universal y Actualización In-App"
+      en: "Flashcards v2.1.0: Full Offline PWA, Maskable Icon Suite, Universal Install and In-App Update"
+    changes:
+      - es: "Suite completa de 6 iconos PNG y SVG con soporte nativo de capa maskable (192px y 512px) y apple-touch-icon para Android e iOS."
+        en: "Full suite of 6 PNG and SVG icons with native maskable support (192px & 512px) and apple-touch-icon for Android & iOS."
+      - es: "Actualización de Service Worker v2.1.0 con soporte skipWaiting, precaché integral de iconos y recarga instantánea via controllerchange."
+        en: "Service Worker v2.1.0 update with skipWaiting support, full icon precaching, and instant reload via controllerchange."
+      - es: "Botón de instalación PWA universal en barra superior con detección inteligente de standalone y guía en toast para Safari en iOS."
+        en: "Universal PWA install button in header with smart standalone detection and toast guidance for iOS Safari."
+      - es: "Badge interactivo #btn-check-update (v2.1.0) para comprobación manual de versión y banner flotante #pwa-update-banner."
+        en: "Interactive #btn-check-update (v2.1.0) badge for manual version checks and #pwa-update-banner floating action."
+      - es: "Empaquetado Single-File Inline: inyección directa de CSS y módulos JS en index.html, eliminando peticiones sueltas y asegurando carga offline instantánea."
+        en: "Single-File Inline bundling: direct injection of CSS and JS modules into index.html, removing loose requests and guaranteeing instant offline startup."
+      - es: "Sistema flotante de notificaciones Toasts (#toast-container) para feedback lúdico, logros y estados de la app."
+        en: "Floating Toasts notification system (#toast-container) for playful feedback, achievements, and app status."
+
+  - version: v2.0.0
+    date: "2026-11-06"
+    state: released
+    type: release
+    title:
+      es: "Evolución a Mazo Mágico v2.0: Audio Fonético, 6 Mazos Curados, 3 Modos y Gemini Batch"
+      en: "Evolution to Magic Deck v2.0: Phonetic Speech, 6 Curated Decks, 3 Modes and Gemini Batch"
+    changes:
+      - es: "Cierre de drift de contrato: integración de síntesis de voz Web Speech API con velocidad normal (1.0x) y modo tortuga (0.75x) para practicar pronunciación bilingüe."
+        en: "Contract drift resolution: native Web Speech API voice synthesis with normal (1.0x) and turtle (0.75x) speeds for bilingual pronunciation."
+      - es: "6 mazos pre-cargados para niños (Ciencias del Cuerpo Humano, Espacio, Capitales) y adultos (Business English, Conceptos IA, Estrategia MBA)."
+        en: "6 pre-loaded curated study decks for kids (Human Body Science, Space, Capitals) and adults (Business English, AI Concepts, MBA Strategy)."
+      - es: "3 modos de estudio interactivos: Giro 3D con Cajas Leitner, Quiz Arcade de 4 opciones y Reto de Escritura con pistas ortográficas progresivas."
+        en: "3 interactive study modes: 3D Leitner Flip, 4-Option Quiz Arcade, and Spelling Mode with progressive letter-by-letter hints."
+      - es: "Migración de la API de Gemini a llamadas en lote estructuradas en JSON (gemini-2.5-flash con fallback a gemini-2.0-flash), acelerando 10x la generación de cartas."
+        en: "Gemini API upgrade to structured batch JSON calls (gemini-2.5-flash with gemini-2.0-flash fallback), accelerating generation 10x."
+      - es: "Parser y exportador CSV estándar RFC-4180 con descarga de mazos y plantillas de ejemplo descargables."
+        en: "Standard RFC-4180 CSV parser and exporter with full deck download and sample templates."
+      - es: "PWA 100% Offline: manifest.json, sw.js, icono vectorial y erradicación total de CDNs externos (Tailwind y Giphy)."
+        en: "100% Offline PWA: manifest.json, sw.js, vector icon, and complete elimination of external CDNs (Tailwind and Giphy)."
+      - es: "Persistencia completa de mazos, récords y 6 medallas coleccionables en LocalStorage con lluvia de confeti en Canvas."
+        en: "Full persistence of custom decks, records, and 6 achievement medals in LocalStorage with native Canvas confetti."
+      - es: "Shims de redirección SEO en /es/ y /en/ con reparación de errata UTF-g."
+        en: "SEO redirection shims in /es/ and /en/ fixing legacy UTF-g charset bug."
+
   - version: v1.0.0
     date: "2025-10-17"
     state: released
     type: release
     title:
-      es: "Lanzamiento oficial de Flashcards con motor IA de Gemini y pronunciación fonética"
-      en: "Official Flashcards release with Gemini AI engine and phonetic speech synthesis"
+      es: "Lanzamiento oficial inicial de Flashcards con motor IA de Gemini"
+      en: "Official initial Flashcards release with Gemini AI engine"
     changes:
-      - es: "Integración del modo de autocompletado inteligente con Google Gemini API para generación de términos y definiciones."
-        en: "Intelligent autocomplete mode integration with Google Gemini API for automated term and definition generation."
-      - es: "Implementación de síntesis fonética por voz mediante la Web Speech Synthesis API nativa del navegador."
-        en: "Phonetic voice synthesis implementation powered by the browser's native Web Speech Synthesis API."
-      - es: "Soporte de importación y exportación de archivos CSV con PapaParse y plantillas de ejemplo descargables."
-        en: "CSV import and export support with PapaParse including downloadable sample templates."
-      - es: "Animación de tarjeta tridimensional (CSS 3D rotateY) y persistencia de progreso en LocalStorage."
-        en: "Three-dimensional card flipping animation (CSS 3D rotateY) and progress persistence in LocalStorage."
-      - es: "Estado congelado como herramienta de estudio terminada y autónoma."
-        en: "Frozen state as a completed and self-contained study application."
-
-  - version: v0.5.0
-    date: "2025-10-10"
-    state: released
-    type: feature
-    title:
-      es: "Motor de animación 3D y soporte de plantillas CSV"
-      en: "3D animation engine and CSV template support"
-    changes:
-      - es: "Implementación del giro de tarjetas tridimensional y procesamiento básico de archivos de texto."
-        en: "Three-dimensional card flip implementation and basic text file processing."
-
-  - version: v0.1.0
-    date: "2025-10-02"
-    state: released
-    type: feature
-    title:
-      es: "Prototipo inicial de tarjetas manuales y repaso bilingüe"
-      en: "Initial manual cards and bilingual study prototype"
-    changes:
-      - es: "Interfaz simple con entrada manual de pares término/definición y contador básico de aciertos."
-        en: "Simple interface with manual term/definition pairs and basic score counter."
+      - es: "Integración básica con API de Gemini y animación de tarjeta 3D."
+        en: "Basic Gemini API integration and 3D card flip animation."

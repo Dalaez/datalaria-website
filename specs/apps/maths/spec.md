@@ -1,8 +1,8 @@
-# SPEC-APP-MATHS: Matemáticas Interactivas ("Ábaco Arcade v2.0")
+# SPEC-APP-MATHS: Matemáticas Interactivas ("Ábaco Arcade v2.3")
 
 > **Identificador:** `SPEC-APP-MATHS`  
-> **Versión:** `v2.1.0` (Estado: `active`)  
-> **Fecha:** `2026-11-05`  
+> **Versión:** `v2.3.0` (Estado: `active`)  
+> **Fecha:** `2026-11-06`  
 > **Clasificación:** Tier `lab` | Educational & Cognitive Game  
 > **Ruta Canónica:** `https://datalaria.com/apps/maths/`  
 > **Ficha Técnica:** `https://datalaria.com/es/apps/maths/` (EN: `/en/apps/maths/`)  
@@ -87,12 +87,21 @@ flowchart TD
 - **`INV-MATHS-7` (Tríada de Enlaces Datalaria):** La cabecera superior integra los tres accesos directos al ecosistema: Ficha de la App (`/apps/maths/`), Historia IA (`/posts/founderz-.../`) y Recursos B2B (`/recursos/`).
 - **`INV-MATHS-8` (PWA 100% Offline, Iconos Adaptativos y Actualización Reactiva):** La aplicación debe contar con `manifest.json`, batería completa de iconos SVG y PNG adaptativos (maskable 192/512 para Android e iOS) y un Service Worker (`sw.js`) con estrategia Cache-First/Stale-While-Revalidate que precachee todos sus activos, permitiendo instalación en pantalla de inicio, ejecución 100% offline y actualización reactiva in-app mediante banner flotante `[ 🔄 Actualizar ahora ]` y botón interactivo `#btn-check-update` sin necesidad de desinstalar.
 - **`INV-MATHS-9` (Persistencia de Tema Anti-FOUC, Sonido y Atajos de Teclado):** La aplicación debe persistir el tema (`pref-theme`) y sonido (`maths-sound`) en `localStorage`, ejecutando un micro-script inline en `<head>` para evitar destellos (FOUC), y ofrecer atajos rápidos de teclado (`T` para alternar tema, `M` para silenciar/activar audio, `H` para conmutar pista visual).
+- **`INV-MATHS-10` (Determinismo de Semilla Diaria e Historial Formativo):** Para una misma fecha calendario (`YYYY-MM-DD`) y nivel seleccionado, la secuencia de 10 problemas del modo `daily` es 100% idéntica y reproducible matemáticamente mediante un PRNG basado en semilla (hash determinista). Al finalizar cualquier partida, se genera una tira visual de bloques (`🟩` acierto directo, `💡` acierto con pista, `🟥` fallo/tiempo) con exportación social al portapapeles y un mazo pedagógico de repaso de fallos (*Mistake Review*) con sus soluciones y pistas visuales.
+- **`INV-MATHS-11` (Perfiles Familiares Multi-Jugador y Diploma Arcade en PNG):** La aplicación debe permitir alternar entre múltiples perfiles familiares locales ('🦁 Jugador 1', '🦊 Jugador 2', '🦉 Adulto') almacenando sus récords, medallas desbloqueadas y rachas en `localStorage` de forma estrictamente aislada por perfil (`datalaria_maths_v2_stats_<profileId>`), y disponer de una función determinista `downloadArcadeDiploma()` en `<canvas>` 2D client-side que exporta un diploma/certificado PNG de alta resolución (1200x800) con orla dorada, avatar, nivel, medallas obtenidas, puntuación y fecha sin dependencias externas ni librerías de servidor.
 
 ---
 
 ## 5. HISTORIAL DE VERSIONES Y EVOLUCIÓN
 
-- **`v2.1.0` (2026-11-05) — [ESTADO: ACTIVO — PWA OFFLINE & FEEDBACK FORMATIVO]:**
+- **`v2.3.0` (2026-11-06) — [ESTADO: ACTIVO — PERFILES MULTI-JUGADOR Y DIPLOMA ARCADE EN PNG]:**
+  - **Selector de Perfiles Familiares (`INV-MATHS-11`):** Conmutador superior de 3 perfiles ('🦁 Jugador 1', '🦊 Jugador 2', '🦉 Adulto') con aislamiento estricto de estadísticas, medallas conseguidas y récords en `localStorage`.
+  - **Generador de Diploma Arcade PNG (`downloadArcadeDiploma()`):** Exportación en 1 clic desde la pestaña de Medallas y pantalla final de un certificado de honor en formato PNG de alta resolución generado 100% en el cliente mediante `<canvas>` 2D nativo.
+- **`v2.2.0` (2026-11-06) — [SUPERSEDED]:**
+  - **Modo Reto Diario Determinista (`INV-MATHS-10`):** Implementación del 4.º modo de juego con generador PRNG pseudoaleatorio por semilla (`createSeededRng(seedStr)`) basada en fecha `YYYY-MM-DD` y nivel, garantizando retos globales idénticos para competir en familia y comunidad.
+  - **Compartir Resultado estilo Wordle:** Generación automática de resumen visual con mosaico de emojis (`🟩🟩🟩💡🟩🟥🟩🟩🟩🟩`), puntuación, racha máxima y botón para copiar al portapapeles con enlace profundo reproducible (`?mode=daily&level=...`).
+  - **Mazo de Repaso de Errores (Mistake Review):** Sección post-partida que lista todas las operaciones falladas o saltadas, mostrando su solución correcta y permitiendo desplegar la pista visual interactiva de inmediato.
+- **`v2.1.0` (2026-11-05) — [SUPERSEDED]:**
   - **PWA Offline e Instalable (`INV-MATHS-8`):** `manifest.json`, Service Worker `sw.js` y botón `📲 Instalar App` con soporte para instalación nativa en tablets, móviles (iOS/Android) y escritorio.
   - **Feedback Formativo y Didáctico:** Banner animado tras responder que muestra refuerzo positivo inmediato al acertar o solución correcta durante 1.8s (con botón `Siguiente ➔` opcional) al fallar o acabarse el tiempo, antes de avanzar de ronda.
   - **Corrección de Localización y Paridad:** Localización dinámica de expresiones numéricas (`% of` en inglés) y erradicación de `window.confirm()` nativo reemplazado por toasts y confirmaciones visuales integradas.

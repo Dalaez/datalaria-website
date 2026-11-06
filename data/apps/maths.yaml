@@ -6,7 +6,7 @@ icon: "🧮"
 cover: cover.png
 app_url: /apps/maths/
 source_spec: specs/apps/maths/spec.md
-current_version: v2.1.0
+current_version: v2.3.0
 
 title:
   es: "Ábaco Arcade (Matemáticas Lúdicas)"
@@ -49,6 +49,12 @@ features:
   - icon: "📲"
     es: "PWA 100% Offline e Instalable: botón de instalación en pantalla de inicio (Android, iOS y escritorio), Service Worker y cero dependencias de red."
     en: "100% Offline Installable PWA: home screen install button (Android, iOS, desktop), Service Worker cache, and zero network dependencies."
+  - icon: "📅"
+    es: "Reto Diario Determinista & Repaso de Fallos: reto diario estilo Wordle reproducible por semilla, tarjeta visual para compartir en redes y módulo didáctico de repaso de errores."
+    en: "Deterministic Daily Challenge & Mistake Review: Wordle-style seed-based daily challenge, visual share card with deep linking, and pedagogical mistake review module."
+  - icon: "🎓"
+    es: "Perfiles Familiares & Diploma Arcade PNG: selector de múltiples jugadores locales con estadísticas aisladas y generador de certificado de honor en PNG de alta resolución mediante Canvas 2D nativo."
+    en: "Family Profiles & Arcade PNG Diploma: multi-player local switcher with isolated stats and high-resolution honors certificate PNG generator via native Canvas 2D."
 
 design:
   architecture:
@@ -93,6 +99,38 @@ posts:
     part: 1
 
 releases:
+  - version: v2.3.0
+    date: "2026-11-06"
+    state: released
+    type: release
+    title:
+      es: "Ábaco Arcade v2.3: Perfiles Familiares Multi-Jugador y Generador de Diploma Arcade PNG"
+      en: "Abacus Arcade v2.3: Multi-Player Family Profiles and Arcade PNG Diploma Generator"
+    changes:
+      - es: "Selector de Perfiles Familiares ('🦁 Jugador 1', '🦊 Jugador 2', '🦉 Adulto') con almacenamiento aislado de récords, rachas y medallas desbloqueadas por perfil en localStorage."
+        en: "Family Profile Switcher ('🦁 Player 1', '🦊 Player 2', '🦉 Adult') isolating high scores, streaks, and unlocked badges in localStorage."
+      - es: "Generador de Diploma Arcade PNG client-side con Canvas 2D: certificado de excelencia matemática en alta resolución (1200x800) con orla dorada, avatar, récords, colección de medallas y sello oficial descargable en 1 clic."
+        en: "Client-side Canvas 2D Arcade PNG Diploma generator: high-resolution (1200x800) mathematical excellence certificate with gold border, avatar, records, badge collection, and official stamp downloaded in 1 click."
+      - es: "Acceso al diploma desde la pestaña de Medallas y directamente en la pantalla de finalización de partida tras superar nuevos récords."
+        en: "Direct diploma generation access from the Badges tab and on the post-game victory screen upon setting new milestones."
+
+  - version: v2.2.0
+    date: "2026-11-06"
+    state: released
+    type: release
+    title:
+      es: "Ábaco Arcade v2.2: Reto Diario Determinista, Compartir Wordle y Repaso Didáctico de Fallos"
+      en: "Abacus Arcade v2.2: Deterministic Daily Challenge, Wordle Share, and Mistake Review"
+    changes:
+      - es: "Nuevo modo '📅 Reto Diario' con PRNG determinista Mulberry32: la misma fecha YYYY-MM-DD y nivel producen 10 problemas exactamente reproducibles para competir en igualdad de condiciones."
+        en: "New '📅 Daily Challenge' mode with Mulberry32 deterministic PRNG: identical date YYYY-MM-DD and level generate 10 strictly reproducible problems for fair competition."
+      - es: "Tira visual de rendimiento estilo Wordle (🟩 acierto limpio, 💡 acierto con pista visual, 🟥 fallo) en el resumen de fin de partida."
+        en: "Wordle-style visual performance strip (🟩 clean hit, 💡 hit with visual hint, 🟥 mistake) on the post-game summary."
+      - es: "Botón '📤 Compartir Resultado' con copiado automático de tarjeta formateada al portapapeles y enlace profundo '?mode=daily&level=...'."
+        en: "'📤 Share Result' button with automatic formatted clipboard card copy and deep link '?mode=daily&level=...'."
+      - es: "Módulo pedagógico '🧠 Repaso de Fallos de la Ronda': desglose de operaciones erradas con su solución correcta y pista visual didáctica bajo demanda."
+        en: "Pedagogical '🧠 Round Mistake Review' module: breakdown of missed operations with correct solution and on-demand visual hints."
+
   - version: v2.1.0
     date: "2026-11-05"
     state: released

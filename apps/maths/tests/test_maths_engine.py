@@ -119,3 +119,89 @@ def test_inv_maths_9_anti_fouc_and_persistence():
         content = f.read()
         assert "localStorage.getItem('pref-theme')" in content, "Falta script anti-FOUC para pref-theme en <head>"
         assert "toast-container" in content, "Falta contenedor para toasts interactivos"
+
+def test_inv_maths_10_daily_seed_determinism():
+    """INV-MATHS-10: Determinismo de Semilla en Reto Diario (Mulberry32)."""
+    import subprocess
+    import json
+
+    # 1. Verificar presencia de componentes en el bundle
+    with open(os.path.join(STATIC_DIR, "index.html"), "r", encoding="utf-8") as f:
+        html = f.read()
+        assert "createSeededRng" in html, "Falta createSeededRng en el bundle compilado"
+        assert "btn-share-result" in html, "Falta btn-share-result en el bundle compilado"
+        assert "round-blocks-strip" in html, "Falta round-blocks-strip en el bundle compilado"
+        assert "mistake-review-section" in html, "Falta mistake-review-section en el bundle compilado"
+
+    # 2. Ejecutar prueba de determinismo con Node.js cargando engine.js
+    node_script = """
+    const fs = require('fs');
+    const path = require('path');
+    const engineCode = fs.readFileSync(path.join(process.cwd(), 'apps/maths/engine.js'), 'utf8');
+    
+    // Evaluar en contexto global simulando window.MathsEngine
+    const window = {};
+    eval(engineCode);
+    const engine = window.MathsEngine;
+
+    const seed = '2026-11-06_l3';
+    
+    // Generar secuencia 1
+    const rng1 = engine.createSeededRng(seed);
+    const seq1 = [];
+    for (let i = 0; i < 10; i++) {
+        seq1.push(engine.generateProblem('l3', 'es', rng1).display);
+    }
+
+    // Generar secuencia 2 con la misma semilla
+    const rng2 = engine.createSeededRng(seed);
+    const seq2 = [];
+    for (let i = 0; i < 10; i++) {
+        seq2.push(engine.generateProblem('l3', 'es', rng2).display);
+    }
+
+    // Generar secuencia 3 con diferente fecha
+    const rng3 = engine.createSeededRng('2026-11-07_l3');
+    const seq3 = [];
+    for (let i = 0; i < 10; i++) {
+        seq3.push(engine.generateProblem('l3', 'es', rng3).display);
+    }
+
+    console.log(JSON.stringify({
+        match: JSON.stringify(seq1) === JSON.stringify(seq2),
+        seq1,
+        diff: JSON.stringify(seq1) !== JSON.stringify(seq3)
+    }));
+    """
+    proc = subprocess.run(["node", "-e", node_script], capture_output=True, text=True)
+    assert proc.returncode == 0, f"Error ejecutando node: {proc.stderr}"
+    res = json.loads(proc.stdout.strip())
+    assert res["match"] is True, f"Las secuencias generadas con la misma semilla no coinciden: {res}"
+    assert res["diff"] is True, "Dos fechas distintas produjeron la misma secuencia (falta variabilidad)"
+    assert len(res["seq1"]) == 10, "No se generaron exactamente 10 problemas"
+
+def test_inv_maths_11_profiles_and_diploma():
+    """INV-MATHS-11: Perfiles Familiares Multi-Jugador y Generador de Diploma Arcade PNG."""
+    # 1. Verificar catálogo y perfiles
+    with open(os.path.join(MATHS_APP_DIR, "catalog.js"), "r", encoding="utf-8") as f:
+        catalog_code = f.read()
+        assert "player_1" in catalog_code
+        assert "player_2" in catalog_code
+        assert "adult" in catalog_code
+        assert "🦁" in catalog_code
+        assert "🦊" in catalog_code
+        assert "🦉" in catalog_code
+        assert "download_diploma_btn" in catalog_code
+        assert "diploma_card_title" in catalog_code
+
+    # 2. Verificar presencia de componentes en el bundle compilado
+    with open(os.path.join(STATIC_DIR, "index.html"), "r", encoding="utf-8") as f:
+        html = f.read()
+        assert 'id="profile-bar"' in html, "Falta #profile-bar en el HTML compilado"
+        assert 'profile-chip' in html, "Falta clase profile-chip en index.html"
+        assert 'btn-arcade-diploma' in html, "Falta clase btn-arcade-diploma en index.html"
+        assert 'downloadArcadeDiploma' in html, "Falta downloadArcadeDiploma en index.html"
+        assert 'datalaria_maths_v2_stats_' in html, "Falta clave aislada por perfil en index.html"
+        assert 'diploma-promo-card' in html, "Falta diploma-promo-card en index.html"
+
+

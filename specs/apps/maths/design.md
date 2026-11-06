@@ -1,8 +1,8 @@
-# Especificación de Diseño UX/UI: Matemáticas Interactivas ("Ábaco Arcade v2.1") (`maths`)
+# Especificación de Diseño UX/UI: Matemáticas Interactivas ("Ábaco Arcade v2.3") (`maths`)
 
 > **ID de Diseño:** `DESIGN-APP-MATHS`  
 > **Spec Técnica Vinculada:** [`specs/apps/maths/spec.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/apps/maths/spec.md)  
-> **Versión de Diseño:** `v2.1.0` (PWA Offline, Feedback Formativo y Anti-FOUC)  
+> **Versión de Diseño:** `v2.3.0` (Perfiles Familiares Multi-Jugador y Generador de Diploma Arcade en PNG)  
 > **Agente Propietario:** [`04-ux-ui` (Diseñador UX/UI)](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/04-ux-ui.md)  
 > **Preset Estético Seleccionado:** `Consumer Playful` (Datalaria Arcade Academy)  
 > **Aislamiento de Excepción:** Esta especificación aplica un estilo lúdico e informal adaptado para niños y adultos por instrucción explícita del usuario, sin que afecte ni persista en los estándares de las aplicaciones B2B de Datalaria.
@@ -96,12 +96,23 @@
 
 1. **Shell Visual Datalaria (Lúdico pero Institucional):**
    - Altura de cabecera: adaptativa $\le 60\text{ px}$.
-   - Izquierda: Botón `← Datalaria` hacia `/apps/` + Icono `🧮` + Título `Ábaco Arcade` + Badge `v2.0.0`.
-   - Derecha: Selector `ES | EN`, Botón de Sonido `🔊 / 🔇`, Conmutador de Tema `☀️ / 🌙`, Enlace a Ficha `📋 Ficha`, Enlace a Post `📖 Historia IA`, y Botón `📦 Kits`.
+   - Izquierda: Botón `← Datalaria` hacia `/apps/` + Icono `🧮` + Título `Ábaco Arcade` + Badge `v2.3.0`.
+   - Derecha: Selector de Perfil Familiar (`🦁 Jugador 1` / `🦊 Jugador 2` / `🦉 Adulto`), Selector `ES | EN`, Botón de Sonido `🔊 / 🔇`, Conmutador de Tema `☀️ / 🌙`, Enlace a Ficha `📋 Ficha`, Enlace a Post `📖 Historia IA`, y Botón `📦 Kits`.
 2. **Pestañas Principales de la Aplicación:**
-   - **🎮 Jugar (Arcade):** Configuración de nivel (1 a 6) y modo (Zen, Clásico 10, Contrarreloj 60s) ➔ Tablero de cálculo interactivo con Numpad y Pista Visual.
+   - **🎮 Jugar (Arcade):** Configuración de nivel (1 a 6) y modo (Zen, Clásico 10, Contrarreloj 60s, Reto Diario) ➔ Tablero de cálculo interactivo con Numpad y Pista Visual.
    - **💡 Aprender (Laboratorio Didáctico):** Explicación animada de las 4 operaciones y manipuladores visuales con ejemplos interactivos.
-   - **🏆 Logros & Medallas:** Pasaporte con 6 medallas coleccionables y mejores récords guardados localmente.
+   - **🏆 Logros & Medallas:** Pasaporte con 6 medallas coleccionables, estadísticas aisladas por perfil y botón `🎓 Descargar Diploma Arcade (PNG)`.
+
+---
+
+## 3.1 Especificación del Selector de Perfil Familiar y Diploma Arcade PNG (`INV-MATHS-11`)
+- **Selector de Perfiles:** Chips interactivos con avatar animal emoji en el header o barra superior. Al cambiar de perfil, las medallas, récords y rachas se recargan inmediatamente desde `localStorage` sin recargar la página.
+- **Diploma Arcade PNG (`downloadArcadeDiploma()`):**
+  - Lienzo `<canvas>` 2D generado a 1200x800 px (3:2 horizontal).
+  - Fondo pergamino/arcade con orla dorada doble y esquinas ornamentales.
+  - Tipografía jerárquica con encabezado "DATALARIA ÁBACO ARCADE", "DIPLOMA DE HONOR EN CÁLCULO MENTAL", avatar del jugador, nombre del perfil, nivel máximo desbloqueado, medallas conseguidas (emojis/nombres), puntuación récord y fecha de expedición.
+  - Sello circular oficial "DATALARIA VERIFIED • EXCELENCIA MATEMÁTICA".
+  - Descarga instantánea vía `canvas.toDataURL('image/png')` con el nombre `diploma_abaco_arcade_<perfil>.png`.
 
 ---
 
