@@ -204,4 +204,46 @@ def test_inv_maths_11_profiles_and_diploma():
         assert 'datalaria_maths_v2_stats_' in html, "Falta clave aislada por perfil en index.html"
         assert 'diploma-promo-card' in html, "Falta diploma-promo-card en index.html"
 
+def test_inv_maths_12_generate_problem_null_rng_robustness():
+    """Verifica que generateProblem es 100% inmune a rng=null, undefined o ausente en todos los niveles."""
+    import subprocess
+    import json
+
+    node_script = """
+    const fs = require('fs');
+    const path = require('path');
+    const engineCode = fs.readFileSync(path.join(process.cwd(), 'apps/maths/engine.js'), 'utf8');
+    
+    const window = {};
+    eval(engineCode);
+    const engine = window.MathsEngine;
+
+    const levels = ['l1', 'l2', 'l3', 'l4', 'l5', 'l6'];
+    const results = [];
+
+    for (const lvl of levels) {
+      // 1. Probar con null explícito (causa raíz del bug reportado)
+      const pNull = engine.generateProblem(lvl, 'es', null);
+      if (!pNull || !pNull.display) throw new Error(`Fallo con null en ${lvl}`);
+
+      // 2. Probar con undefined
+      const pUndef = engine.generateProblem(lvl, 'es', undefined);
+      if (!pUndef || !pUndef.display) throw new Error(`Fallo con undefined en ${lvl}`);
+
+      // 3. Probar sin 3er argumento
+      const pNone = engine.generateProblem(lvl, 'es');
+      if (!pNone || !pNone.display) throw new Error(`Fallo sin 3er arg en ${lvl}`);
+
+      results.push({ lvl, ok: true });
+    }
+
+    console.log(JSON.stringify({ success: true, count: results.length }));
+    """
+    proc = subprocess.run(["node", "-e", node_script], capture_output=True, text=True)
+    assert proc.returncode == 0, f"Fallo en robustez de engine: {proc.stderr}"
+    res = json.loads(proc.stdout.strip())
+    assert res["success"] is True
+    assert res["count"] == 6
+
+
 

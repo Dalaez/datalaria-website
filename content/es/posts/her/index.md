@@ -19,7 +19,7 @@ Sin embargo, a finales de 2013, el cineasta y guionista **Spike Jonze** (*Being 
 
 En la visión de Jonze, el futuro no es frío, ni cibernético, ni opresivo. Es una **distopía suave (*soft dystopia*)** empapada de luz natural dorada, maderas nobles, muebles de diseño escandinavo, pantalones de talle alto de pana y camisas en tonos salmón, coral y mostaza. El director de fotografía **Hoyte van Hoytema** (futuro colaborador predilecto de Christopher Nolan en *Interstellar*, *Dunkirk* y *Oppenheimer*) eliminó deliberadamente el color azul de casi todo el metraje para desterrar cualquier reminiscencia de frialdad tecnológica.
 
-{{< youtube 6k3iXk5wKkg >}}
+{{< youtube M7oBRAG8NBg >}}
 
 Y, sin embargo, detrás de esa atmósfera acogedora y melancólica, *Her* encierra **la advertencia más lúcida, sutil y científicamente profética jamás filmada sobre nuestro destino junto a la AGI**. 
 

@@ -14,20 +14,25 @@
     };
   }
 
-  function randInt(min, max, rng = Math.random) {
-    return Math.floor(rng() * (max - min + 1)) + min;
+  function randInt(min, max, rng) {
+    const f = (typeof rng === 'function') ? rng : Math.random;
+    return Math.floor(f() * (max - min + 1)) + min;
   }
 
-  function pickRandom(arr, rng = Math.random) {
-    return arr[Math.floor(rng() * arr.length)];
+  function pickRandom(arr, rng) {
+    const f = (typeof rng === 'function') ? rng : Math.random;
+    return arr[Math.floor(f() * arr.length)];
   }
 
   const MathsEngine = {
     randInt,
     createSeededRng,
 
-    // Genera un reto determinista según nivel, idioma y generador PRNG
-    generateProblem: function(levelId, lang = 'es', rng = Math.random) {
+    // Genera un reto determinista según nivel, idioma y generador PRNG (robusto ante null/undefined)
+    generateProblem: function(levelId, lang = 'es', rng) {
+      if (typeof rng !== 'function') {
+        rng = Math.random;
+      }
       switch (levelId) {
         case 'l1': {
           // Nivel 1: Sumas de 1 dígito con resultado <= 10

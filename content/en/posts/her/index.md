@@ -19,7 +19,7 @@ Yet in late 2013, writer and director **Spike Jonze** (*Being John Malkovich*, *
 
 In Jonze's vision, the future is neither cold, nor cybernetic, nor openly oppressive. It is a **soft dystopia** bathed in golden natural light, fine wood grains, minimalist Scandinavian furniture, high-waisted corduroy trousers, and shirts in shades of salmon, coral, and mustard. Cinematographer **Hoyte van Hoytema** (who would go on to become Christopher Nolan's trusted visual collaborator on *Interstellar*, *Dunkirk*, and *Oppenheimer*) deliberately banquished the color blue from nearly every interior frame to purge any lingering impression of sterile tech chill.
 
-{{< youtube ne6p6MfLBxc >}}
+{{< youtube dJTU48_yghs >}}
 
 And yet, beneath that cozy, melancholic warmth, *Her* conceals **the most lucid, subtle, and scientifically prophetic warning ever put on film regarding our coexistence with AGI**.
 

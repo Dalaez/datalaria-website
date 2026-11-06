@@ -569,7 +569,8 @@
     activeDivisionField = 'quo';
     isHintVisible = false;
     hintUsedThisRound = false;
-    currentProblem = engine.generateProblem(selectedLevel, lang, dailyRng);
+    const prng = (selectedMode === 'daily' && typeof dailyRng === 'function') ? dailyRng : Math.random;
+    currentProblem = engine.generateProblem(selectedLevel, lang, prng);
 
     if (selectedMode === 'classic' || selectedMode === 'daily') {
       timeTotal = 10;
