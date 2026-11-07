@@ -79,10 +79,19 @@
     background: var(--entry);
     border: 1px solid var(--border);
     border-radius: var(--dlh-radius);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.dlh-compass-main {
     padding: 12px 14px;
     display: flex;
     align-items: center;
     gap: 14px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .dlh-compass-icon {
@@ -235,6 +244,363 @@ a.dlh-disco:hover,
     color: var(--primary);
     border-color: var(--tertiary);
     background: var(--entry);
+}
+
+/* --------------------------------------------------------------------------
+   Helix Release Radar (in-compass app evolution bar)
+   -------------------------------------------------------------------------- */
+.dlh-rel-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 8px 14px;
+    border-top: 1px solid var(--border);
+    background: var(--dlh-accent-soft);
+    font-size: 0.78rem;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.dlh-rel-bar-summary {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    min-width: 0;
+    flex-grow: 1;
+    cursor: pointer;
+    user-select: none;
+}
+
+.dlh-rel-bar-summary:focus-visible {
+    outline: 2px solid var(--dlh-accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+.dlh-rel-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 2px 7px;
+    border-radius: 999px;
+    background: rgba(22, 163, 74, 0.12);
+    color: #16a34a;
+    border: 1px solid rgba(22, 163, 74, 0.28);
+    flex-shrink: 0;
+}
+
+.dark .dlh-rel-badge {
+    background: rgba(74, 222, 128, 0.14);
+    color: #4ade80;
+    border-color: rgba(74, 222, 128, 0.3);
+}
+
+.dlh-rel-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+}
+
+@keyframes dlh-rel-pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.35); opacity: 0.55; }
+}
+
+.dlh-rel-dot.pulse-dot {
+    animation: dlh-rel-pulse 2s infinite ease-in-out;
+}
+
+.dlh-rel-icon {
+    font-size: 1rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.dlh-rel-name {
+    font-weight: 700;
+    color: var(--primary);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.dlh-rel-ver {
+    font-family: var(--dlh-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 4px;
+    background: var(--dlh-accent-soft);
+    color: var(--dlh-accent);
+    flex-shrink: 0;
+}
+
+.dlh-rel-date {
+    font-family: var(--dlh-mono);
+    font-size: 0.72rem;
+    color: var(--secondary);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.dlh-rel-sep {
+    color: var(--tertiary);
+    flex-shrink: 0;
+}
+
+.dlh-rel-title {
+    color: var(--primary);
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+}
+
+.dlh-rel-controls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.dlh-rel-nav {
+    display: inline-flex;
+    align-items: center;
+    background: var(--theme);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1px 2px;
+}
+
+.dlh-rel-nav-btn {
+    background: transparent;
+    border: none;
+    color: var(--secondary);
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 2px 7px;
+    cursor: pointer;
+    line-height: 1;
+    border-radius: 4px;
+    transition: color 0.15s, background-color 0.15s;
+}
+
+.dlh-rel-nav-btn:hover {
+    color: var(--primary);
+    background: var(--dlh-accent-soft);
+}
+
+.dlh-rel-counter {
+    font-family: var(--dlh-mono);
+    font-size: 0.68rem;
+    color: var(--secondary);
+    padding: 0 4px;
+}
+
+.dlh-rel-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--theme);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 4px 9px;
+    font-family: inherit;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--primary);
+    cursor: pointer;
+    transition: border-color 0.15s, background-color 0.15s, color 0.15s;
+}
+
+.dlh-rel-toggle:hover {
+    border-color: var(--dlh-accent);
+    color: var(--dlh-accent);
+}
+
+.dlh-rel-drawer {
+    padding: 14px 16px;
+    border-top: 1px solid var(--border);
+    background: var(--theme);
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.dlh-rel-drawer[hidden] {
+    display: none !important;
+}
+
+.dlh-rel-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.dlh-rel-info {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.dlh-rel-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 5px;
+}
+
+.dlh-rel-meta-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--dlh-accent);
+}
+
+.dlh-rel-meta-date {
+    font-size: 0.72rem;
+    font-family: var(--dlh-mono);
+    color: var(--secondary);
+}
+
+.dlh-rel-headline {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--primary);
+    line-height: 1.4;
+    margin-bottom: 8px;
+}
+
+.dlh-rel-changes {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--secondary);
+}
+
+.dlh-rel-changes li {
+    margin-bottom: 4px;
+}
+
+.dlh-rel-changes li:last-child {
+    margin-bottom: 0;
+}
+
+.dlh-rel-actions {
+    width: 220px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--dlh-radius-sm);
+    box-sizing: border-box;
+}
+
+.dlh-rel-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 10px;
+    border-radius: 6px;
+    font-size: 0.74rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    transition: opacity 0.15s, transform 0.15s, border-color 0.15s, background-color 0.15s;
+    line-height: 1.25;
+}
+
+.dlh-rel-btn--primary {
+    background: var(--dlh-accent);
+    color: #ffffff !important;
+}
+
+.dlh-rel-btn--primary:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+}
+
+.dark .dlh-rel-btn--primary {
+    background: #0284c7;
+    color: #ffffff !important;
+}
+
+.dlh-rel-btn--secondary {
+    background: var(--theme);
+    color: var(--primary) !important;
+    border: 1px solid var(--border);
+}
+
+.dlh-rel-btn--secondary:hover {
+    border-color: var(--dlh-accent);
+    color: var(--dlh-accent) !important;
+}
+
+.dlh-rel-chips-row {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.dlh-rel-chips-label {
+    font-family: var(--dlh-mono);
+    font-size: 0.7rem;
+    color: var(--secondary);
+}
+
+.dlh-rel-chips {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.dlh-rel-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 8px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--secondary);
+    background: var(--entry);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s, background-color 0.15s;
+}
+
+.dlh-rel-chip:hover {
+    border-color: var(--dlh-accent);
+    color: var(--primary);
+}
+
+.dlh-rel-chip.is-active {
+    font-weight: 700;
+    border-color: var(--dlh-accent);
+    background: var(--dlh-accent-soft);
+    color: var(--dlh-accent);
+}
+
+.dlh-rel-chip-ver {
+    font-family: var(--dlh-mono);
+    font-size: 0.65rem;
+    opacity: 0.85;
 }
 
 /* --------------------------------------------------------------------------
@@ -1145,11 +1511,41 @@ a.dlh-disco:hover,
 }
 
 @media (max-width: 780px) {
-    .dlh-compass {
+    .dlh-compass-main {
         flex-direction: column;
         align-items: stretch;
         gap: 10px;
         padding: 10px;
+    }
+
+    .dlh-rel-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .dlh-rel-bar-summary {
+        flex-wrap: wrap;
+    }
+
+    .dlh-rel-title {
+        white-space: normal;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .dlh-rel-controls {
+        justify-content: space-between;
+    }
+
+    .dlh-rel-content {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .dlh-rel-actions {
+        width: 100%;
     }
 
     .dlh-compass-icon {

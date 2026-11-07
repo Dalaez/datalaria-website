@@ -1,11 +1,11 @@
 # SPEC-PORTAL: Catálogo de Aplicaciones & Escaparate Tecnológico (`apps-showcase`)
 
 > **Identificador:** `SPEC-PORTAL`  
-> **Versión:** `v1.1.0`  
-> **Fecha:** `2026-10-26` (Hito 3.2 SDD)  
+> **Versión:** `v1.2.0`  
+> **Fecha:** `2026-11-07` (Hito Helix Release Radar SDD)  
 > **Estado:** `APROBADO & EN PRODUCCIÓN`  
 > **Ámbito:** Portal Editorial Hugo (`content/{es,en}/apps/`, `layouts/apps/`, `layouts/partials/index_profile.html`, `data/apps/`, `assets/css/extended/apps-showcase.css`, `assets/css/extended/home-portal.css`)  
-> **Normativa:** [specs/_constitution.md](../../specs/_constitution.md) (Artículos 7 y 8) y [specs/DECISIONS.md](../../specs/DECISIONS.md) (ADR-007, ADR-009, ADR-010, ADR-011)
+> **Normativa:** [specs/_constitution.md](../../specs/_constitution.md) (Artículos 7 y 8) y [specs/DECISIONS.md](../../specs/DECISIONS.md) (ADR-007, ADR-009, ADR-010, ADR-011, ADR-018)
 
 ---
 
@@ -135,3 +135,31 @@ El compilador Hugo (`hugo --renderToMemory`) actúa como gate determinista autom
 - **Validación SemVer:** Falla si `current_version` no coincide con la primera release marcada como `state: released`.
 - **Validación de Posts:** Falla si algún `posts[].slug` no resuelve a un artículo real publicado en el idioma activo.
 - **Validación de Enlaces:** Todos los enlaces a fichas, posts, apps y recursos responden `200 OK`.
+
+---
+
+## 6. HELIX RELEASE RADAR: NOVEDADES EVOLUTIVAS DE APPS (`dlh-releases`)
+
+### 6.1 Propósito y Ubicación
+El componente **Helix Release Radar (`dlh-releases`)** se integra en la base de la **Brújula del Descubrimiento (`.dlh-compass`)** en la página de inicio (`index_profile.html`). Su objetivo es anunciar de forma sutil y elegante las últimas mejoras y versiones lanzadas de las aplicaciones activas sin canibalizar el espacio visual ni la atención de las 3 tarjetas de publicaciones del blog (`Más leído`, `Última publicación`, `Aleatorio`).
+
+### 6.2 Invariantes de Dominio
+- **`INV-PORTAL-REL-1 (Filtro de Embargo y Estado Público)`:** Solo se procesan ficheros en `site.Data.apps` cuyo `status` sea `"live"` o `"active"`. Quedan estrictamente excluidas las apps con `status: "incubating"`, `draft: true` o cuya página en `content/{es,en}/apps/<slug>/` esté en borrador (`draft: true`).
+- **`INV-PORTAL-REL-2 (Ventana Dinámica de 14 Días + Fallback Resiliente)`:** Se consideran únicamente releases con `state: "released"` cuya fecha esté comprendida en los últimos 14 días respecto a la fecha actual. En tiempo de ejecución en el cliente (JS), se valida la ventana de 14 días (`(ahora - fecha_release) <= 14 * 86400000 ms`). Si en algún periodo futuro transcurren más de 14 días sin nuevos lanzamientos, el componente activa un fallback resiliente que muestra la release más reciente del ecosistema, garantizando que el radar nunca quede vacío ni roto.
+- **`INV-PORTAL-REL-3 (Estado Minimizado por Defecto y SEO Crawlable)`:** La barra se presenta minimizada por defecto ocupando una sola línea compacta de 44px (`#dlh-rel-drawer` con atributo `hidden` y `aria-expanded="false"`). Todos los enlaces hacia las Fichas Técnicas (`/{lang}/apps/<slug>/`) y las Apps existen estáticamente en el código HTML para garantizar indexación completa por crawlers y lectores de pantalla.
+- **`INV-PORTAL-REL-4 (Doble CTA Exclusivo hacia Ficha y App)`:** Al desplegar el cajón de mejoras, la caja de acciones ofrece **únicamente dos botones**:
+  1. **Primario:** `Probar App ↗` / `Open App ↗` (o `Jugar ↗` / `Play ↗` para `snake`), con enlace directo a `.app_url`.
+  2. **Secundario:** `📋 Ficha & Especificaciones →` / `📋 App Specs & Changelog →`, con enlace directo a `/{lang}/apps/<slug>/`. No se incluye enlace directo al artículo del blog en este cajón para evitar desactualizaciones y concentrar el tráfico en la ficha técnica completa.
+
+### 6.3 Especificación del Flujo de Datos y Plantilla
+1. **Colección Data-Driven (Build-Time):**
+   - Hugo recorre `site.Data.apps` filtrando por `status in ["live", "active"]`.
+   - Extrae la última release con `state: "released"` de cada app.
+   - Ordena las releases por `date` descendente y por `order` ascendente como desempate.
+   - Exporta el dataset JSON embebido en `<script type="application/json" id="dlh-releases-data">`.
+2. **Interactividad Client-Side (Zero Dependencies):**
+   - El script en `index_profile.html` hidrata la primera release en la barra minimizada `#dlh-rel-bar`.
+   - Permite rotar entre las releases de la ventana con los controles `#dlh-rel-prev` y `#dlh-rel-next` (`‹ 1/N ›`).
+   - El botón `#dlh-rel-toggle` y el cuerpo de la barra conmutan el estado del cajón `#dlh-rel-drawer` (`aria-expanded="true/false"`), alternando el texto entre `✨ Ver mejoras ▾` / `✨ What's new ▾` y `Ocultar ▴` / `Hide ▴`.
+   - La fila de píldoras inferiores `#dlh-rel-chips` permite saltar directamente a cualquier release de los últimos 14 días.
+   - Telemetría GA4: emite los eventos `home_release_radar_toggle` y `home_release_radar_select`.

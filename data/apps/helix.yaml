@@ -1,0 +1,183 @@
+slug: helix
+order: 12
+tier: b2b
+status: incubating
+icon: "🧬"
+cover: cover.png
+app_url: /apps/helix/
+demo_url: /apps/helix/?example=margin
+source_spec: specs/apps/helix/spec.md
+current_version: v1.0.0
+
+title:
+  es: "Datalaria Helix"
+  en: "Datalaria Helix"
+
+tagline:
+  es: "Spec-Driven Development OS — La spec es el ADN de tu app; los agentes solo la expresan."
+  en: "Spec-Driven Development OS — The spec is your app's DNA; AI agents merely express it."
+
+summary:
+  es: "Sistema operativo de ingeniería para gobernar el desarrollo de software asistido por IA mediante Spec-Driven Development (SDD). Elimina la degradación de contexto y el colapso arquitectónico (Vibe Debt) coordinando un escuadrón de 12 agentes especializados con triaje determinista XS-XL, sistema de diseño por tokens, evaluación matemática formal SpecQualityScore (0..100), verificación independiente con derecho a veto en Seguridad y QA, y CLI multiplataforma en Python puro para crear checkpoints y ejecutar rollback en un comando."
+  en: "Engineering operating system designed to govern AI-assisted software development through Spec-Driven Development (SDD). Eradicates context drift and architectural collapse (Vibe Debt) by coordinating a specialized 12-agent squad with deterministic XS-XL triage, token-driven design systems, formal mathematical SpecQualityScore auditing (0..100), independent verification with binding veto power in Security and QA, and a pure Python cross-platform CLI for instantaneous git checkpoints and 1-command rollback."
+
+objectives:
+  - es: "Garantizar la Primacía de la Especificación (Spec-First Invariant): cero código de producción sin contrato tipado ni verificación previa."
+    en: "Enforce the Spec-First Invariant: zero production code written without approved typed contracts and predefined verification gates."
+  - es: "Reducir el gasto de contexto LLM en un ~87% mediante triaje determinista y carga bajo demanda de roles (INV-HELIX-2)."
+    en: "Reduce LLM context spend by ~87% through deterministic triage and on-demand role loading (INV-HELIX-2)."
+  - es: "Blindar la calidad mediante veto vinculante e independiente de Seguridad y QA Verifier (INV-HELIX-1)."
+    en: "Enforce quality assurance via independent binding veto power in Security and QA Verifier roles (INV-HELIX-1)."
+  - es: "Ofrecer arquitectura Dual-Mode: Sandbox gratuito en navegador (Modo A+B) y Kits descargables Starter y Core en Lemon Squeezy."
+    en: "Provide a robust Dual-Mode architecture: free client-side browser Sandbox (Modes A+B) and commercial Starter and Core Kits on Lemon Squeezy."
+
+features:
+  - icon: "🎯"
+    es: "Escuadrón Canónico de 12 Agentes: 4 células especializadas (Dirección, Construcción, Garantía con Veto y Entrega) agnósticas de modelo."
+    en: "Canonical 12-Agent Squad: 4 specialized cells (Direction, Construction, Veto Assurance, and Delivery) fully model-agnostic."
+  - icon: "⚡"
+    es: "Triaje Determinista XS–XL: algoritmo estricto que dimensiona tareas y convoca solo 2-4 agentes por turno protegiendo el contexto."
+    en: "Deterministic XS–XL Triage: strict algorithm sizing tasks and activating only 2-4 agents per session to preserve context."
+  - icon: "📐"
+    es: "SpecQualityScore (0..100): auditoría matemática en 5 pilares de 20 puntos (Problema, Non-Goals, Contratos, Invariantes y Gates)."
+    en: "SpecQualityScore (0..100): 5-pillar mathematical auditing of Problem, Non-Goals, Contracts, Invariants, and Gates."
+  - icon: "🛡️"
+    es: "Separación de Poderes y Veto Vinculante: Seguridad y QA operan de forma independiente; nadie valida su propio trabajo."
+    en: "Separation of Powers and Binding Veto: Security and QA act independently; no builder role ever approves its own work."
+  - icon: "🔄"
+    es: "CLI helix.py en Python Puro: subcomandos init, triage, new-spec, checkpoint, verify y rollback sin dependencias externas."
+    en: "Zero-Dependency CLI helix.py: subcommands for init, triage, new-spec, checkpoint, verify, and rollback in standard Python."
+  - icon: "🚀"
+    es: "3 Blueprints y 2 Casos Reales: arquitecturas llave en mano para calculadoras estáticas, SaaS Supabase y motores cuantitativos."
+    en: "3 Blueprints and 2 Real-World Case Studies: turnkey reference setups for static tools, Supabase SaaS, and quant engines."
+
+design:
+  architecture:
+    es: "Arquitectura agnóstica de múltiples capas: las 12 fichas canónicas en Markdown estructurado (specs/squad/) son la Fuente Única de Verdad. El compilador Python ops/helix/build_adapters.py genera adaptadores sincronizados para Google Antigravity (.agents/), Claude Code (.claude/ + CLAUDE.md) y Cursor (.cursor/). La SPA web React 19 + TypeScript ejecuta el Spec Builder determinista en el cliente con empaquetado ZIP en TypeScript puro sin enviar datos a servidores."
+    en: "Multi-layered tool-agnostic architecture: 12 canonical Markdown specifications (specs/squad/) form the Single Source of Truth. The Python adapter compiler ops/helix/build_adapters.py deterministically generates adapters for Google Antigravity (.agents/), Claude Code (.claude/ + CLAUDE.md), and Cursor (.cursor/). The React 19 + TypeScript SPA executes client-side deterministic spec generation with pure TypeScript ZIP bundling without transmitting user data."
+  principles:
+    - es: "Spec-First & Agnosticismo: la especificación gobierna el código y opera de forma idéntica con Gemini, Claude o Codex."
+      en: "Spec-First and Agnosticism: the specification governs implementation across Gemini, Claude, or Codex models identically."
+    - es: "Separación Construcción vs Verificación: ningún agente constructor puede validar sus propios entregables (INV-HELIX-1)."
+      en: "Separation of Construction and Verification: no builder role may approve its own deliverables (INV-HELIX-1)."
+    - es: "Capacidad de Rollback Inmediata: todo cambio cuenta con checkpoint Git y vuelta atrás automática al segundo fallo (INV-HELIX-7)."
+      en: "Instant Rollback Guarantee: every task is tagged before coding and rolls back cleanly on two consecutive gate failures (INV-HELIX-7)."
+  diagram: |
+    flowchart LR
+      SPEC["12 Canonical Specs\n(specs/squad/*.md)"] --> COMP["Adapter Compiler\n(build_adapters.py)"]
+      COMP --> AGY[".agents/squad/\n(Antigravity)"]
+      COMP --> CLD[".claude/agents/\n(Claude Code)"]
+      COMP --> CUR[".cursor/rules/\n(Cursor IDE)"]
+      SPEC --> CLI["CLI helix.py\n(Python Stdlib)"]
+      SPEC --> WEB["Helix Spec Builder\n(React 19 / Vite)"]
+
+tech:
+  - layer: frontend
+    items: ["React 19", "TypeScript", "Vite 8", "HTML5 Canvas", "Lucide Icons"]
+  - layer: backend
+    items: ["Python 3.13 Stdlib", "Pydantic v2", "PyMuPDF (fitz)", "Pillow", "PyYAML"]
+  - layer: multi_agent
+    items: ["Google Antigravity", "Claude Code", "Cursor Rules", "OpenAI Codex"]
+  - layer: infra
+    items: ["Hugo Static Portal", "Git Pre-Commit Hooks", "GitHub Actions CI/CD"]
+
+releases:
+  - version: "v1.0.0"
+    date: "2026-11-07"
+    state: released
+    type: release
+    title:
+      es: "Lanzamiento Comercial Staged: Starter Kit, Core Kit, Guía Ejecutiva PDF y Gobernanza Enero 2027"
+      en: "Commercial Staged Release: Starter Kit, Core Kit, Executive PDF Guide, and Jan 2027 Embargo"
+    changes:
+      - es: "Generador comercial ops/helix/build_kit.py: empaquetado del Starter Kit (9 €) en 3 carpetas y Core Kit (19 € / 39 €) en 5 carpetas."
+        en: "Commercial factory ops/helix/build_kit.py: packaging Starter Kit (9 €) in 3 directories and Core Kit (19 € / 39 €) in 5 directories."
+      - es: "Guía Ejecutiva PDF A4 de 4 páginas (GUIA_EJECUTIVA_HELIX_SDD.pdf) generada programáticamente con PyMuPDF."
+        en: "4-page A4 Executive PDF Playbook (GUIA_EJECUTIVA_HELIX_SDD.pdf) generated programmatically with PyMuPDF."
+      - es: "Capturas reales de producto (1600x980 px) y portadas cover.png (1200x750 px, ratio 16:10) para el catálogo de recursos."
+        en: "High-resolution real previews (1600x980 px) and cover.png assets (1200x750 px, 16:10 ratio) for resources catalog."
+      - es: "Script de gobernanza de embargo ops/helix/release_jan2027.py con verificación determinista y preparación staged para Lemon Squeezy."
+        en: "Embargo governance script ops/helix/release_jan2027.py with deterministic verification and staged Lemon Squeezy metadata."
+
+  - version: "v0.5.0"
+    date: "2026-11-05"
+    state: released
+    type: feature
+    title:
+      es: "Caso Demo #2 MarginGuard B2B: Micro-App Real para Profesional No-Dev con Veto de QA"
+      en: "Case Study #2 MarginGuard B2B: Real-World Micro-App for Non-Devs with QA Veto"
+    changes:
+      - es: "Construcción y verificación del Caso Demo #2 MarginGuard B2B (simulador de pricing y breakeven de descuentos)."
+        en: "Implementation and verification of Case Study #2 MarginGuard B2B (pricing simulator and discount breakeven volume)."
+      - es: "Resolución del veto vinculante de 11-qa-verifier mediante la invariante formal INV-MARGIN-2 (alerta de zona de destrucción)."
+        en: "Resolution of 11-qa-verifier binding veto via formal invariant INV-MARGIN-2 (value destruction zone alert)."
+      - es: "Integración del preset MarginGuard en el Web Sandbox (/apps/helix/) con recálculo en < 16ms y selector bilingüe ES/EN."
+        en: "Integration of MarginGuard preset into Web Sandbox (/apps/helix/) with < 16ms recalculation and ES/EN language switch."
+
+  - version: "v0.4.0"
+    date: "2026-11-05"
+    state: released
+    type: feature
+    title:
+      es: "Sandbox Helix Spec Builder (/apps/helix/): React 19 + TypeScript, Modo A+B y ZIP Client-Side"
+      en: "Helix Spec Builder Sandbox (/apps/helix/): React 19 + TypeScript, Mode A+B, and Client-Side ZIP"
+    changes:
+      - es: "Construcción de la SPA en apps/helix/web/ con Modo A (Spec Builder determinista) y Modo B (Mega-Prompt copiable en 1 clic)."
+        en: "Built SPA at apps/helix/web/ featuring Mode A (deterministic Spec Builder) and Mode B (1-click copyable Mega-Prompt)."
+      - es: "Empaquetador PKZIP en TypeScript puro (zipBuilder.ts) y evaluador reactivo de SpecQualityScore (0..100) en tiempo real."
+        en: "Pure TypeScript PKZIP packager (zipBuilder.ts) and real-time reactive SpecQualityScore evaluator (0..100)."
+      - es: "Cockpit visual de los 12 agentes (activos vs banquillo) y formulario de lista de espera conectado a Brevo."
+        en: "Visual 12-agent cockpit showing active vs benched roles with Brevo-connected early waitlist form."
+
+  - version: "v0.3.0"
+    date: "2026-11-05"
+    state: released
+    type: feature
+    title:
+      es: "CLI helix Multiplataforma en Python Puro (0 Dependencias) y Motor SpecQualityScore"
+      en: "Pure Python Cross-Platform helix CLI (0 Dependencies) and SpecQualityScore Engine"
+    changes:
+      - es: "Implementación de ops/helix/cli.py con 7 subcomandos: init, triage, new-spec, checkpoint, verify, rollback y status."
+        en: "Implementation of ops/helix/cli.py with 7 subcommands: init, triage, new-spec, checkpoint, verify, rollback, and status."
+      - es: "Motor matemático determinista SpecQualityScore (0..100) evaluando los 5 pilares de calidad formal."
+        en: "Deterministic mathematical SpecQualityScore engine (0..100) evaluating the 5 pillars of formal spec quality."
+      - es: "Guía de Paridad Sin-CLI (NO_CLI_PARITY_GUIDE.md) asegurando equivalencia 1:1 por prompt para profesionales no técnicos."
+        en: "No-CLI Parity Guide (NO_CLI_PARITY_GUIDE.md) guaranteeing 1:1 prompt equivalence for non-dev professionals."
+
+  - version: "v0.2.0"
+    date: "2026-11-04"
+    state: released
+    type: feature
+    title:
+      es: "Sistema Anti-Bloat, Lecciones de Fricción Real (INV-HELIX-8) y Blueprints de Proyecto"
+      en: "Anti-Bloat System, Real Friction Lessons (INV-HELIX-8), and Turnkey Project Blueprints"
+    changes:
+      - es: "Incorporación de la invariante INV-HELIX-8 (techo <= 85 líneas y máximo 6 reglas [USER-FIX]/[ENV-FIX] en Sección 6)."
+        en: "Enacted invariant INV-HELIX-8 (<= 85 lines ceiling and max 6 rules [USER-FIX]/[ENV-FIX] in Section 6)."
+      - es: "Creación de TECH_RADAR.yaml y OPPORTUNITY_BACKLOG.md aislados de tareas rutinarias en memoria templada."
+        en: "Created TECH_RADAR.yaml and OPPORTUNITY_BACKLOG.md isolated from routine tasks in warm memory."
+      - es: "Compilador ops/helix/build_core_kit.py con 3 blueprints y función determinista init_project_from_core_kit()."
+        en: "Compiler ops/helix/build_core_kit.py with 3 project blueprints and deterministic init_project_from_core_kit() helper."
+
+  - version: "v0.1.0"
+    date: "2026-11-03"
+    state: released
+    type: release
+    title:
+      es: "Especificación Técnica SDD Maestra y Escuadrón Canónico de 12 Agentes (Hito 6.1)"
+      en: "Master SDD Technical Specification and Canonical 12-Agent Squad (Milestone 6.1)"
+    changes:
+      - es: "Aprobación de SPEC-APP-HELIX con las 7 invariantes iniciales INV-HELIX-1..7 y modelo Dual-Mode (ADR-017)."
+        en: "Approved SPEC-APP-HELIX with initial 7 invariants INV-HELIX-1..7 and Dual-Mode architecture (ADR-017)."
+      - es: "Creación de las 12 fichas canónicas AGENT_SPEC en specs/squad/ y rúbrica determinista triage-rubric.md."
+        en: "Authored 12 canonical AGENT_SPEC cards in specs/squad/ and deterministic triage-rubric.md framework."
+
+posts:
+  - slug:
+      es: sdd_vs_vibe_coding
+      en: sdd_vs_vibe_coding
+    part: 1
+  - slug:
+      es: agentes_ia_operativa_sdd
+      en: agentes_ia_operativa_sdd
+    part: 2

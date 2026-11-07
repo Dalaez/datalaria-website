@@ -1,12 +1,12 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-11-07T11:10:26.452930Z",
-  "total_assets": 143,
+  "generated_at": "2026-11-07T16:18:51.326303Z",
+  "total_assets": 147,
   "published_assets": 121,
-  "scheduled_assets": 18,
+  "scheduled_assets": 22,
   "ideas_count": 0,
   "parity_summary": {
-    "complete": 143
+    "complete": 147
   },
   "monthly_traffic_index": [
     {
@@ -82,7 +82,7 @@
     {
       "month": "2026-11",
       "label": "Nov '26",
-      "index_100": 171
+      "index_100": 195
     }
   ],
   "assets": [
@@ -286,7 +286,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 270,
-        "rank_pct": 86,
+        "rank_pct": 85,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -354,7 +354,210 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 10,
+        "rank_pct": 12,
+        "trend_30d_pct": 0.0,
+        "gsc_opportunity": false
+      },
+      "metrics_absolute": null
+    },
+    {
+      "id": "helix-part1",
+      "slug": "helix-parte1-especificacion-adn-escuadron-12-agentes",
+      "asset_type": "post",
+      "status": "scheduled",
+      "visibility": "public",
+      "title_es": "La Especificación es el ADN de tu App: Por Qué el Vibe Coding Colapsa a las 48 Horas y Cómo los 12 Agentes de Helix Gobiernan el Desarrollo con IA",
+      "title_en": "The Specification is Your App's DNA: Why Vibe Coding Collapses in 48 Hours and How Helix's 12-Agent Squad Governs AI Development",
+      "url_es": "/es/posts/helix-parte1-especificacion-adn-escuadron-12-agentes/",
+      "url_en": "/en/posts/helix-part1-spec-dna-12-agent-engineering-squad/",
+      "brief_es": "Por qué el 'prompt-and-pray' acumula deuda técnica invisible que revienta a los pocos días y cómo Datalaria Helix estructura un escuadrón coordinado de 12 agentes especializados con separación de poderes y veto vinculante.",
+      "brief_en": "Why 'prompt-and-pray' accumulates invisible technical debt that collapses within days, and how Datalaria Helix structures a coordinated squad of 12 specialized agents with separation of powers and binding veto authority.",
+      "publish_date": "2027-01-19",
+      "last_modified_es": "2026-11-07T15:13:20.822629Z",
+      "last_modified_en": "2026-11-07T15:13:56.669931Z",
+      "language_parity": "complete",
+      "category": "IA, Ingeniería y Proyectos",
+      "categories": [
+        "Ingeniería de Software",
+        "Spec-Driven Development",
+        "Agentes IA",
+        "IA, Ingeniería y Proyectos"
+      ],
+      "tags": [
+        "Datalaria Helix",
+        "Spec-Driven Development",
+        "SDD",
+        "Agentes IA",
+        "Vibe Coding",
+        "Arquitectura de Software",
+        "QA",
+        "Google Antigravity",
+        "Claude Code"
+      ],
+      "series": null,
+      "word_count_es": 2222,
+      "word_count_en": 2000,
+      "reading_time_min": 12,
+      "related_app": "helix",
+      "related_kit": "/recursos/#pack-sdd",
+      "included_kits": [],
+      "price": null,
+      "original_price": null,
+      "checkout_url": null,
+      "deliverables": [],
+      "seo_audit": {
+        "score_0_100": 80,
+        "title_ok": false,
+        "description_ok": true,
+        "parity_ok": true,
+        "taxonomy_ok": true,
+        "internal_links_ok": true,
+        "issues": [
+          "Longitud de título no óptima (146 caracteres; ideal: 35-95)"
+        ]
+      },
+      "freshness_status": "fresh",
+      "owner": "Daniel Alaez",
+      "campaign": null,
+      "social_channels": [],
+      "metrics_relative": {
+        "index_100": 0,
+        "rank_pct": 12,
+        "trend_30d_pct": 0.0,
+        "gsc_opportunity": false
+      },
+      "metrics_absolute": null
+    },
+    {
+      "id": "helix-part2",
+      "slug": "helix-parte2-triaje-determinista-adaptadores-antigravity-claude-cursor",
+      "asset_type": "post",
+      "status": "scheduled",
+      "visibility": "public",
+      "title_es": "Triaje Determinista XS–XL y Adaptadores Multi-Herramienta: Cómo Reducir un 87 % el Gasto de Tokens en Antigravity, Claude Code, Cursor y Codex",
+      "title_en": "Deterministic XS–XL Triage and Multi-Tool Adapters: How to Cut Token Spend by 87% in Antigravity, Claude Code, Cursor, and Codex",
+      "url_es": "/es/posts/helix-parte2-triaje-determinista-adaptadores-antigravity-claude-cursor/",
+      "url_en": "/en/posts/helix-part2-deterministic-triage-adapters-antigravity-claude-cursor/",
+      "brief_es": "Por qué cargar decenas de reglas agénticas satura el contexto de los LLMs y cómo el algoritmo matemático de triaje de Helix y su compilador determinista reducen un 87 % el consumo de tokens manteniendo cero fricción en Antigravity, Claude y Cursor.",
+      "brief_en": "Why loading dozens of agentic instructions degrades LLM context windows, and how Helix's mathematical triage algorithm and deterministic compiler slash token consumption by 87% with zero friction across Antigravity, Claude, and Cursor.",
+      "publish_date": "2027-01-26",
+      "last_modified_es": "2026-11-07T15:14:42.071925Z",
+      "last_modified_en": "2026-11-07T15:15:14.767298Z",
+      "language_parity": "complete",
+      "category": "IA, Ingeniería y Proyectos",
+      "categories": [
+        "Ingeniería de Software",
+        "Spec-Driven Development",
+        "Agentes IA",
+        "IA, Ingeniería y Proyectos"
+      ],
+      "tags": [
+        "Datalaria Helix",
+        "Spec-Driven Development",
+        "SDD",
+        "Triaje Agéntico",
+        "Token Optimization",
+        "Google Antigravity",
+        "Claude Code",
+        "Cursor Rules",
+        "DevOps"
+      ],
+      "series": null,
+      "word_count_es": 1860,
+      "word_count_en": 1713,
+      "reading_time_min": 10,
+      "related_app": "helix",
+      "related_kit": "/recursos/`",
+      "included_kits": [],
+      "price": null,
+      "original_price": null,
+      "checkout_url": null,
+      "deliverables": [],
+      "seo_audit": {
+        "score_0_100": 80,
+        "title_ok": false,
+        "description_ok": true,
+        "parity_ok": true,
+        "taxonomy_ok": true,
+        "internal_links_ok": true,
+        "issues": [
+          "Longitud de título no óptima (142 caracteres; ideal: 35-95)"
+        ]
+      },
+      "freshness_status": "fresh",
+      "owner": "Daniel Alaez",
+      "campaign": null,
+      "social_channels": [],
+      "metrics_relative": {
+        "index_100": 0,
+        "rank_pct": 12,
+        "trend_30d_pct": 0.0,
+        "gsc_opportunity": false
+      },
+      "metrics_absolute": null
+    },
+    {
+      "id": "helix-part3",
+      "slug": "helix-parte3-cli-python-cero-dependencias-spec-score-rollback",
+      "asset_type": "post",
+      "status": "scheduled",
+      "visibility": "public",
+      "title_es": "El Músculo Determinista: CLI helix.py en Python Puro, Evaluación SpecQualityScore (0..100) y Rollback Automático al Segundo Fallo",
+      "title_en": "The Deterministic Muscle: Zero-Dependency Python CLI helix.py, Formal SpecQualityScore (0..100), and 2-Failure Automatic Rollback",
+      "url_es": "/es/posts/helix-parte3-cli-python-cero-dependencias-spec-score-rollback/",
+      "url_en": "/en/posts/helix-part3-zero-dependency-python-cli-spec-score-rollback/",
+      "brief_es": "Por qué pedirle a un LLM que evalúe su propio código es una trampa cognitiva y cómo el CLI helix.py de cero dependencias implementa un motor matemático de SpecQualityScore y marcha atrás automática ante dos fallos consecutivos.",
+      "brief_en": "Why asking an LLM to evaluate its own code is a cognitive trap, and how the zero-dependency helix.py CLI implements a mathematical SpecQualityScore engine and automatic rollback upon two consecutive failures.",
+      "publish_date": "2027-02-02",
+      "last_modified_es": "2026-11-07T15:15:57.952500Z",
+      "last_modified_en": "2026-11-07T15:17:24.635670Z",
+      "language_parity": "complete",
+      "category": "IA, Ingeniería y Proyectos",
+      "categories": [
+        "Ingeniería de Software",
+        "Spec-Driven Development",
+        "Python",
+        "IA, Ingeniería y Proyectos"
+      ],
+      "tags": [
+        "Datalaria Helix",
+        "Spec-Driven Development",
+        "SDD",
+        "CLI",
+        "Python Stdlib",
+        "Calidad de Software",
+        "Git Rollback",
+        "Testing Automatizado"
+      ],
+      "series": null,
+      "word_count_es": 1832,
+      "word_count_en": 1724,
+      "reading_time_min": 10,
+      "related_app": "helix",
+      "related_kit": "/recursos/#pack-sdd",
+      "included_kits": [],
+      "price": null,
+      "original_price": null,
+      "checkout_url": null,
+      "deliverables": [],
+      "seo_audit": {
+        "score_0_100": 80,
+        "title_ok": false,
+        "description_ok": true,
+        "parity_ok": true,
+        "taxonomy_ok": true,
+        "internal_links_ok": true,
+        "issues": [
+          "Longitud de título no óptima (129 caracteres; ideal: 35-95)"
+        ]
+      },
+      "freshness_status": "fresh",
+      "owner": "Daniel Alaez",
+      "campaign": null,
+      "social_channels": [],
+      "metrics_relative": {
+        "index_100": 0,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -421,7 +624,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 250,
-        "rank_pct": 84,
+        "rank_pct": 83,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -493,7 +696,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 190,
-        "rank_pct": 80,
+        "rank_pct": 79,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -562,7 +765,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 270,
-        "rank_pct": 86,
+        "rank_pct": 85,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -694,7 +897,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 32,
+        "rank_pct": 34,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -829,7 +1032,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 140,
-        "rank_pct": 73,
+        "rank_pct": 72,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -970,7 +1173,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1042,7 +1245,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 32,
+        "rank_pct": 34,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1111,7 +1314,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 25,
+        "rank_pct": 27,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1183,7 +1386,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 25,
+        "rank_pct": 27,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1315,7 +1518,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 25,
+        "rank_pct": 27,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1380,7 +1583,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 25,
+        "rank_pct": 27,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1454,7 +1657,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1523,7 +1726,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 25,
+        "rank_pct": 27,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1587,7 +1790,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 50,
-        "rank_pct": 48,
+        "rank_pct": 49,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1649,7 +1852,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1714,7 +1917,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1777,7 +1980,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 310,
-        "rank_pct": 91,
+        "rank_pct": 90,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1841,7 +2044,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 42,
+        "rank_pct": 44,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1913,7 +2116,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1979,7 +2182,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 280,
-        "rank_pct": 88,
+        "rank_pct": 87,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2116,7 +2319,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 60,
-        "rank_pct": 51,
+        "rank_pct": 52,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2186,7 +2389,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 42,
+        "rank_pct": 44,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2256,7 +2459,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 130,
-        "rank_pct": 70,
+        "rank_pct": 69,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2325,7 +2528,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 50,
-        "rank_pct": 48,
+        "rank_pct": 49,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2457,7 +2660,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 32,
+        "rank_pct": 34,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2525,7 +2728,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 100,
-        "rank_pct": 64,
+        "rank_pct": 63,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2595,7 +2798,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 70,
-        "rank_pct": 55,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2665,7 +2868,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 42,
+        "rank_pct": 44,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2730,7 +2933,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 60,
-        "rank_pct": 51,
+        "rank_pct": 52,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2797,7 +3000,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 50,
-        "rank_pct": 48,
+        "rank_pct": 49,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": true
       },
@@ -2859,7 +3062,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 70,
-        "rank_pct": 55,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": true
       },
@@ -2921,7 +3124,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 32,
+        "rank_pct": 34,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2984,7 +3187,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 100,
-        "rank_pct": 64,
+        "rank_pct": 63,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3052,7 +3255,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 32,
+        "rank_pct": 34,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3121,7 +3324,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 30,
-        "rank_pct": 37,
+        "rank_pct": 39,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3186,7 +3389,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 42,
+        "rank_pct": 44,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3255,8 +3458,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 240,
-        "rank_pct": 84,
+        "index_100": 270,
+        "rank_pct": 85,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3323,7 +3526,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 110,
-        "rank_pct": 66,
+        "rank_pct": 65,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3384,7 +3587,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 50,
-        "rank_pct": 48,
+        "rank_pct": 49,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3448,8 +3651,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 100,
-        "rank_pct": 64,
+        "index_100": 110,
+        "rank_pct": 65,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3514,7 +3717,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 140,
-        "rank_pct": 73,
+        "rank_pct": 72,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3534,7 +3737,7 @@
       "brief_en": "Learn to create a neon arcade-style web game using only HTML5 Canvas and Vanilla JS. Discover how to integrate a global real-time leaderboard using Supabase's PostgreSQL database.",
       "publish_date": "2026-02-14",
       "last_modified_es": "2026-10-31T20:23:26+01:00",
-      "last_modified_en": "2026-10-31T20:23:26+01:00",
+      "last_modified_en": "2026-11-07T12:10:09+01:00",
       "language_parity": "complete",
       "category": "IA, Ingeniería y Proyectos",
       "categories": [
@@ -3579,7 +3782,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 260,
-        "rank_pct": 85,
+        "rank_pct": 84,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3644,7 +3847,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 42,
+        "rank_pct": 44,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3914,8 +4117,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 80,
-        "rank_pct": 59,
+        "index_100": 230,
+        "rank_pct": 81,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3983,7 +4186,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4115,7 +4318,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 780,
+        "index_100": 790,
         "rank_pct": 98,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -4249,7 +4452,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 300,
-        "rank_pct": 90,
+        "rank_pct": 89,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4312,7 +4515,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 120,
-        "rank_pct": 68,
+        "rank_pct": 67,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4446,7 +4649,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 60,
-        "rank_pct": 51,
+        "rank_pct": 52,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4514,8 +4717,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 230,
-        "rank_pct": 82,
+        "index_100": 240,
+        "rank_pct": 83,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4583,7 +4786,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4647,7 +4850,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 25,
+        "rank_pct": 27,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4713,7 +4916,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 60,
-        "rank_pct": 51,
+        "rank_pct": 52,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4781,7 +4984,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 230,
-        "rank_pct": 82,
+        "rank_pct": 81,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4916,7 +5119,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 140,
-        "rank_pct": 73,
+        "rank_pct": 72,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4987,7 +5190,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 230,
-        "rank_pct": 82,
+        "rank_pct": 81,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5125,7 +5328,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 220,
+        "index_100": 230,
         "rank_pct": 81,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -5263,8 +5466,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 120,
-        "rank_pct": 68,
+        "index_100": 130,
+        "rank_pct": 69,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5333,7 +5536,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 140,
-        "rank_pct": 73,
+        "rank_pct": 72,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5397,7 +5600,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 50,
-        "rank_pct": 48,
+        "rank_pct": 49,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5464,7 +5667,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 100,
-        "rank_pct": 64,
+        "rank_pct": 63,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5527,7 +5730,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 25,
+        "rank_pct": 27,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5593,7 +5796,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 280,
-        "rank_pct": 88,
+        "rank_pct": 87,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5666,7 +5869,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5739,7 +5942,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5806,7 +6009,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 120,
-        "rank_pct": 68,
+        "rank_pct": 67,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5936,7 +6139,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6002,7 +6205,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 25,
+        "rank_pct": 27,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6069,7 +6272,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 42,
+        "rank_pct": 44,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6133,7 +6336,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 150,
-        "rank_pct": 75,
+        "rank_pct": 74,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6198,7 +6401,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 130,
-        "rank_pct": 70,
+        "rank_pct": 69,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6263,7 +6466,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 70,
-        "rank_pct": 55,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6327,7 +6530,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 42,
+        "rank_pct": 44,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6392,7 +6595,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 42,
+        "rank_pct": 44,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6456,7 +6659,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 30,
-        "rank_pct": 37,
+        "rank_pct": 39,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6523,7 +6726,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 42,
+        "rank_pct": 44,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6588,7 +6791,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 70,
-        "rank_pct": 55,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6647,7 +6850,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 25,
+        "rank_pct": 27,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6783,8 +6986,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 60,
-        "rank_pct": 51,
+        "index_100": 70,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6855,7 +7058,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 30,
-        "rank_pct": 37,
+        "rank_pct": 39,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6919,7 +7122,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 70,
-        "rank_pct": 55,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6983,7 +7186,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 30,
-        "rank_pct": 37,
+        "rank_pct": 39,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7046,7 +7249,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 140,
-        "rank_pct": 73,
+        "rank_pct": 72,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7109,7 +7312,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 32,
+        "rank_pct": 34,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7236,7 +7439,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 25,
+        "rank_pct": 27,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7364,7 +7567,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 100,
-        "rank_pct": 64,
+        "rank_pct": 63,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7428,7 +7631,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 25,
+        "rank_pct": 27,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7490,7 +7693,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 30,
-        "rank_pct": 37,
+        "rank_pct": 39,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7552,7 +7755,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 32,
+        "rank_pct": 34,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7614,7 +7817,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 120,
-        "rank_pct": 68,
+        "rank_pct": 67,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7678,7 +7881,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 32,
+        "rank_pct": 34,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7742,7 +7945,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 32,
+        "rank_pct": 34,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7809,7 +8012,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 50,
-        "rank_pct": 48,
+        "rank_pct": 49,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7943,7 +8146,79 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 100,
-        "rank_pct": 64,
+        "rank_pct": 63,
+        "trend_30d_pct": 0.0,
+        "gsc_opportunity": false
+      },
+      "metrics_absolute": null
+    },
+    {
+      "id": "helix",
+      "slug": "helix",
+      "asset_type": "app",
+      "status": "scheduled",
+      "visibility": "public",
+      "title_es": "Datalaria Helix",
+      "title_en": "Datalaria Helix",
+      "url_es": "/es/apps/helix/",
+      "url_en": "/en/apps/helix/",
+      "brief_es": "Spec-Driven Development OS — La spec es el ADN de tu app; los agentes solo la expresan.",
+      "brief_en": "Spec-Driven Development OS — The spec is your app's DNA; AI agents merely express it.",
+      "publish_date": "2026-11-03",
+      "last_modified_es": "2026-11-07T16:18:49.699072Z",
+      "last_modified_en": "2026-11-07T16:18:49.699072Z",
+      "language_parity": "complete",
+      "category": "Aplicaciones Web",
+      "categories": [
+        "Apps",
+        "b2b"
+      ],
+      "tags": [
+        "React 19",
+        "TypeScript",
+        "Vite 8",
+        "HTML5 Canvas",
+        "Lucide Icons",
+        "Python 3.13 Stdlib",
+        "Pydantic v2",
+        "PyMuPDF (fitz)",
+        "Pillow",
+        "PyYAML",
+        "Google Antigravity",
+        "Claude Code",
+        "Cursor Rules",
+        "OpenAI Codex",
+        "Hugo Static Portal",
+        "Git Pre-Commit Hooks",
+        "GitHub Actions CI/CD"
+      ],
+      "series": null,
+      "word_count_es": 0,
+      "word_count_en": 0,
+      "reading_time_min": 0,
+      "related_app": "helix",
+      "related_kit": null,
+      "included_kits": [],
+      "price": null,
+      "original_price": null,
+      "checkout_url": null,
+      "deliverables": [],
+      "seo_audit": {
+        "score_0_100": 0,
+        "title_ok": true,
+        "description_ok": true,
+        "parity_ok": true,
+        "taxonomy_ok": true,
+        "internal_links_ok": true,
+        "issues": []
+      },
+      "freshness_status": "fresh",
+      "owner": "Daniel Alaez",
+      "campaign": null,
+      "social_channels": [],
+      "metrics_relative": {
+        "index_100": 0,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8016,7 +8291,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 130,
-        "rank_pct": 70,
+        "rank_pct": 69,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8081,8 +8356,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 180,
-        "rank_pct": 79,
+        "index_100": 160,
+        "rank_pct": 76,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8223,7 +8498,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 32,
+        "rank_pct": 34,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8242,8 +8517,8 @@
       "brief_es": "Arcade Cyberpunk retro del clásico Snake con ranking global en tiempo real y audio sintetizado.",
       "brief_en": "Cyberpunk retro arcade of classic Snake with real-time global leaderboard and synthesized audio.",
       "publish_date": "2026-01-20",
-      "last_modified_es": "2026-10-25T10:03:25+01:00",
-      "last_modified_en": "2026-10-25T10:03:25+01:00",
+      "last_modified_es": "2026-11-07T12:10:09+01:00",
+      "last_modified_en": "2026-11-07T12:10:09+01:00",
       "language_parity": "complete",
       "category": "Aplicaciones Web",
       "categories": [
@@ -8285,8 +8560,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 70,
-        "rank_pct": 55,
+        "index_100": 400,
+        "rank_pct": 95,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8357,7 +8632,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 280,
-        "rank_pct": 88,
+        "rank_pct": 87,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8417,7 +8692,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8483,7 +8758,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8547,7 +8822,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8613,7 +8888,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8675,7 +8950,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8738,7 +9013,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8801,7 +9076,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8864,7 +9139,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8927,7 +9202,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8990,7 +9265,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9053,7 +9328,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9116,7 +9391,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9179,7 +9454,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9242,7 +9517,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9305,7 +9580,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9368,7 +9643,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9431,7 +9706,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9494,7 +9769,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9557,7 +9832,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },

@@ -1178,7 +1178,7 @@ Details ℹ️
     ],
     "checkoutUrl": "#",
     "guideUrl": "/en/posts/sdd_vs_vibe_coding/",
-    "previewImg": ""
+    "previewImg": "/images/recursos/helix-preview-en.png"
   }
 };
   const KITS_DATA = [
@@ -1544,7 +1544,7 @@ Details ℹ️
     ],
     "checkoutUrl": "#",
     "guideUrl": "/en/posts/sdd_vs_vibe_coding/",
-    "previewImg": ""
+    "previewImg": "/images/recursos/helix-preview-en.png"
   }
 ];
 

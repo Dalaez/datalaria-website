@@ -68,6 +68,17 @@
     "s3desc" "Sistemas full-stack en producción, sandboxes ejecutivos de IA agéntica y laboratorios interactivos desplegados bajo arquitectura Cloud de coste cero."
     "appsAll" "Ver todas las Apps & Experimentos →"
     "social" "Conéctate y sigue las novedades de Datalaria:"
+    "relBadge" "NOVEDADES APPS"
+    "relBadgeTitle" "Actualizaciones lanzadas en las últimas 2 semanas"
+    "relPrev" "Anterior"
+    "relNext" "Siguiente"
+    "relToggleMore" "✨ Ver mejoras ▾"
+    "relToggleLess" "Ocultar ▴"
+    "relVersion" "Versión"
+    "relChipsLabel" "Últimas 2 semanas:"
+    "relSpecsCta" "📋 Ficha & Especificaciones →"
+    "relPlayCta" "Jugar ↗"
+    "relAppCta" "Probar App ↗"
   )
   "en" (dict
     "compass" "Discovery compass"
@@ -107,12 +118,68 @@
     "s3desc" "Production full-stack systems, agentic AI executive sandboxes, and interactive labs deployed on zero-cost cloud architecture."
     "appsAll" "See all Apps & Experiments →"
     "social" "Connect and follow Datalaria's updates:"
+    "relBadge" "APP RELEASES"
+    "relBadgeTitle" "Updates shipped in the last 2 weeks"
+    "relPrev" "Previous"
+    "relNext" "Next"
+    "relToggleMore" "✨ What's new ▾"
+    "relToggleLess" "Hide ▴"
+    "relVersion" "Version"
+    "relChipsLabel" "Last 2 weeks:"
+    "relSpecsCta" "📋 App Specs & Changelog →"
+    "relPlayCta" "Play ↗"
+    "relAppCta" "Open App ↗"
   )
 -}}
 {{- $t := index $i18n $lang | default (index $i18n "en") -}}
 
 {{- /* ---------- Posts of the current language, newest first ---------- */ -}}
 {{- $posts := (where site.RegularPages "Section" "posts").ByDate.Reverse -}}
+
+{{- /* ---------- Helix Release Radar: Public Apps with Released Releases ---------- */ -}}
+{{- $rawReleases := slice -}}
+{{- range $slug, $meta := site.Data.apps -}}
+  {{- $status := $meta.status | default "incubating" -}}
+  {{- if or (eq $status "live") (eq $status "active") -}}
+    {{- $appPage := site.GetPage (printf "apps/%s" $slug) -}}
+    {{- if and $appPage (not $appPage.Draft) -}}
+      {{- $firstRel := false -}}
+      {{- range $meta.releases -}}
+        {{- if and (not $firstRel) (eq .state "released") -}}
+          {{- $firstRel = . -}}
+        {{- end -}}
+      {{- end -}}
+      {{- with $firstRel -}}
+        {{- $title := index $meta.title $lang | default (index $meta.title "es") | default $slug -}}
+        {{- $relTitle := index .title $lang | default (index .title "es") | default .version -}}
+        {{- $changes := slice -}}
+        {{- range .changes -}}
+          {{- $cText := index . $lang | default (index . "es") -}}
+          {{- with $cText }}{{ $changes = $changes | append . }}{{ end -}}
+        {{- end -}}
+        {{- $fichaUrl := "apps/" | relLangURL -}}
+        {{- with $appPage }}{{ $fichaUrl = .RelPermalink }}{{ end -}}
+        {{- $rawReleases = $rawReleases | append (dict
+          "slug" $slug
+          "order" ($meta.order | default 99)
+          "icon" ($meta.icon | default "🚀")
+          "name" $title
+          "tier" ($meta.tier | default "lab")
+          "appUrl" ($meta.app_url | default $fichaUrl)
+          "fichaUrl" $fichaUrl
+          "version" .version
+          "date" .date
+          "title" $relTitle
+          "changes" $changes
+          "isArcade" (eq $slug "snake")
+        ) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $sortedReleases := sort (sort $rawReleases "order" "asc") "date" "desc" -}}
+{{- $initialRel := false -}}
+{{- with $sortedReleases }}{{ $initialRel = index . 0 }}{{ end -}}
 
 {{- /* ---------- Discovery compass data ---------- */ -}}
 {{- $latest := false -}}
@@ -242,54 +309,120 @@
     {{- /* ======================= DISCOVERY COMPASS ======================= */}}
     {{- if $latest }}
     <nav class="dlh-compass" aria-label="{{ $t.compass }}">
-        <div class="dlh-compass-icon" title="{{ $t.compass }}" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
-            </svg>
-        </div>
-        <div class="dlh-compass-grid">
-            {{- with $mostRead }}
-            {{- $mrCover := partial "post_cover_url.html" . }}
-            <a class="dlh-disco" href="{{ .RelPermalink }}" title="{{ .Title }}">
-                <span class="dlh-disco-media">
-                    <img class="dlh-disco-thumb" src="{{ $mrCover }}" alt="{{ .Title }}" width="56" height="56" loading="lazy">
-                </span>
-                <span class="dlh-disco-text">
-                    <span class="dlh-disco-tag dlh-tag-pop">{{ $t.pop }}</span>
-                    <span class="dlh-disco-title">{{ .Title }}</span>
-                </span>
-                <span class="dlh-disco-arrow" aria-hidden="true">→</span>
-            </a>
-            {{- end }}
-            {{- $latCover := partial "post_cover_url.html" $latest }}
-            <a class="dlh-disco" href="{{ $latest.RelPermalink }}" title="{{ $latest.Title }}">
-                <span class="dlh-disco-media">
-                    <img class="dlh-disco-thumb" src="{{ $latCover }}" alt="{{ $latest.Title }}" width="56" height="56" loading="lazy">
-                </span>
-                <span class="dlh-disco-text">
-                    <span class="dlh-disco-tag dlh-tag-lat">{{ $t.lat }}</span>
-                    <span class="dlh-disco-title">{{ $latest.Title }}</span>
-                </span>
-                <span class="dlh-disco-arrow" aria-hidden="true">→</span>
-            </a>
-            {{- with $random }}
-            {{- $rndCover := partial "post_cover_url.html" . }}
-            <div class="dlh-disco dlh-disco--rnd">
-                <a class="dlh-disco-media" id="dlh-rnd-media" href="{{ .RelPermalink }}" title="{{ .Title }}" tabindex="-1" aria-hidden="true">
-                    <img class="dlh-disco-thumb" id="dlh-rnd-thumb" src="{{ $rndCover }}" alt="{{ .Title }}" width="56" height="56" loading="lazy">
+        <div class="dlh-compass-main">
+            <div class="dlh-compass-icon" title="{{ $t.compass }}" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                </svg>
+            </div>
+            <div class="dlh-compass-grid">
+                {{- with $mostRead }}
+                {{- $mrCover := partial "post_cover_url.html" . }}
+                <a class="dlh-disco" href="{{ .RelPermalink }}" title="{{ .Title }}">
+                    <span class="dlh-disco-media">
+                        <img class="dlh-disco-thumb" src="{{ $mrCover }}" alt="{{ .Title }}" width="56" height="56" loading="lazy">
+                    </span>
+                    <span class="dlh-disco-text">
+                        <span class="dlh-disco-tag dlh-tag-pop">{{ $t.pop }}</span>
+                        <span class="dlh-disco-title">{{ .Title }}</span>
+                    </span>
+                    <span class="dlh-disco-arrow" aria-hidden="true">→</span>
                 </a>
-                <span class="dlh-disco-text">
-                    <span class="dlh-disco-tag dlh-tag-rnd">{{ $t.rnd }}</span>
-                    <a class="dlh-disco-title" id="dlh-rnd-link" href="{{ .RelPermalink }}" title="{{ .Title }}">{{ .Title }}</a>
+                {{- end }}
+                {{- $latCover := partial "post_cover_url.html" $latest }}
+                <a class="dlh-disco" href="{{ $latest.RelPermalink }}" title="{{ $latest.Title }}">
+                    <span class="dlh-disco-media">
+                        <img class="dlh-disco-thumb" src="{{ $latCover }}" alt="{{ $latest.Title }}" width="56" height="56" loading="lazy">
+                    </span>
+                    <span class="dlh-disco-text">
+                        <span class="dlh-disco-tag dlh-tag-lat">{{ $t.lat }}</span>
+                        <span class="dlh-disco-title">{{ $latest.Title }}</span>
+                    </span>
+                    <span class="dlh-disco-arrow" aria-hidden="true">→</span>
+                </a>
+                {{- with $random }}
+                {{- $rndCover := partial "post_cover_url.html" . }}
+                <div class="dlh-disco dlh-disco--rnd">
+                    <a class="dlh-disco-media" id="dlh-rnd-media" href="{{ .RelPermalink }}" title="{{ .Title }}" tabindex="-1" aria-hidden="true">
+                        <img class="dlh-disco-thumb" id="dlh-rnd-thumb" src="{{ $rndCover }}" alt="{{ .Title }}" width="56" height="56" loading="lazy">
+                    </a>
+                    <span class="dlh-disco-text">
+                        <span class="dlh-disco-tag dlh-tag-rnd">{{ $t.rnd }}</span>
+                        <a class="dlh-disco-title" id="dlh-rnd-link" href="{{ .RelPermalink }}" title="{{ .Title }}">{{ .Title }}</a>
+                    </span>
+                    <button type="button" class="dlh-shuffle" id="dlh-rnd-btn" title="{{ $t.shuffleTitle }}" hidden>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                        <span>{{ $t.shuffle }}</span>
+                    </button>
+                </div>
+                {{- end }}
+            </div>
+        </div>
+
+        {{- with $initialRel }}
+        {{- /* ---------- Helix Release Radar: In-Compass App Evolution Bar ---------- */ -}}
+        <div class="dlh-rel-bar" id="dlh-rel-bar" role="region" aria-label="{{ $t.relBadge }}">
+            <div class="dlh-rel-bar-summary" id="dlh-rel-summary" tabindex="0" role="button" aria-expanded="false" aria-controls="dlh-rel-drawer" title="{{ $t.relBadgeTitle }}">
+                <span class="dlh-rel-badge" id="dlh-rel-badge">
+                    <span class="dlh-rel-dot pulse-dot" aria-hidden="true"></span>
+                    <span>{{ $t.relBadge }}</span>
                 </span>
-                <button type="button" class="dlh-shuffle" id="dlh-rnd-btn" title="{{ $t.shuffleTitle }}" hidden>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
-                    <span>{{ $t.shuffle }}</span>
+                <span class="dlh-rel-icon" id="dlh-rel-icon" aria-hidden="true">{{ .icon }}</span>
+                <strong class="dlh-rel-name" id="dlh-rel-name">{{ .name }}</strong>
+                <span class="dlh-rel-ver" id="dlh-rel-ver">{{ .version }}</span>
+                <span class="dlh-rel-date" id="dlh-rel-date">({{ .date }})</span>
+                <span class="dlh-rel-sep" aria-hidden="true">—</span>
+                <span class="dlh-rel-title" id="dlh-rel-title" title="{{ .title }}">{{ .title }}</span>
+            </div>
+            <div class="dlh-rel-controls">
+                <div class="dlh-rel-nav" id="dlh-rel-nav" aria-label="{{ $t.relBadge }}">
+                    <button type="button" class="dlh-rel-nav-btn" id="dlh-rel-prev" title="{{ $t.relPrev }}" aria-label="{{ $t.relPrev }}">‹</button>
+                    <span class="dlh-rel-counter" id="dlh-rel-counter" aria-live="polite">1/{{ len $sortedReleases }}</span>
+                    <button type="button" class="dlh-rel-nav-btn" id="dlh-rel-next" title="{{ $t.relNext }}" aria-label="{{ $t.relNext }}">›</button>
+                </div>
+                <button type="button" class="dlh-rel-toggle" id="dlh-rel-toggle" aria-expanded="false" aria-controls="dlh-rel-drawer">
+                    <span class="dlh-rel-toggle-text" id="dlh-rel-toggle-text">{{ $t.relToggleMore }}</span>
                 </button>
             </div>
-            {{- end }}
         </div>
+
+        <div class="dlh-rel-drawer" id="dlh-rel-drawer" hidden>
+            <div class="dlh-rel-content">
+                <div class="dlh-rel-info">
+                    <div class="dlh-rel-meta-row">
+                        <span class="dlh-rel-meta-tag" id="dlh-drawer-app">{{ .icon }} {{ .name }} · {{ $t.relVersion }} {{ .version }}</span>
+                        <span class="dlh-rel-meta-date" id="dlh-drawer-date">· {{ .date }}</span>
+                    </div>
+                    <div class="dlh-rel-headline" id="dlh-drawer-headline">{{ .title }}</div>
+                    <ul class="dlh-rel-changes" id="dlh-drawer-changes">
+                        {{- range .changes }}
+                        <li>{{ . }}</li>
+                        {{- end }}
+                    </ul>
+                </div>
+                <div class="dlh-rel-actions" id="dlh-drawer-actions">
+                    <a class="dlh-rel-btn dlh-rel-btn--primary" id="dlh-drawer-cta-primary" href="{{ .appUrl }}" target="_blank" rel="noopener">
+                        {{ if .isArcade }}{{ $t.relPlayCta }}{{ else }}{{ $t.relAppCta }}{{ end }}
+                    </a>
+                    <a class="dlh-rel-btn dlh-rel-btn--secondary" id="dlh-drawer-cta-secondary" href="{{ .fichaUrl }}">
+                        {{ $t.relSpecsCta }}
+                    </a>
+                </div>
+            </div>
+            <div class="dlh-rel-chips-row" id="dlh-rel-chips-row">
+                <span class="dlh-rel-chips-label">{{ $t.relChipsLabel }}</span>
+                <div class="dlh-rel-chips" id="dlh-rel-chips">
+                    {{- range $i, $r := $sortedReleases }}
+                    <button type="button" class="dlh-rel-chip{{ if eq $i 0 }} is-active{{ end }}" data-index="{{ $i }}" data-slug="{{ $r.slug }}" data-date="{{ $r.date }}">
+                        <span>{{ $r.icon }} {{ $r.name }}</span>
+                        <span class="dlh-rel-chip-ver">{{ $r.version }}</span>
+                    </button>
+                    {{- end }}
+                </div>
+            </div>
+        </div>
+        {{- end }}
     </nav>
     {{- end }}
 
@@ -564,6 +697,9 @@
       {{- $pool = $pool | append (dict "t" .Title "u" .RelPermalink "c" $cUrl) }}
     {{- end }}
     <script type="application/json" id="dlh-rnd-data">{{ $pool | jsonify | safeJS }}</script>
+    {{- with $sortedReleases }}
+    <script type="application/json" id="dlh-rel-data">{{ . | jsonify | safeJS }}</script>
+    {{- end }}
 </div>
 
 <script>
@@ -764,6 +900,215 @@
                 }
                 pick();
             }
+        }
+
+        /* ---- Helix Release Radar (in-compass app evolution bar) ---- */
+        var relBar = document.getElementById('dlh-rel-bar');
+        var relDataEl = document.getElementById('dlh-rel-data');
+        var relDrawer = document.getElementById('dlh-rel-drawer');
+        var relToggle = document.getElementById('dlh-rel-toggle');
+        var relToggleText = document.getElementById('dlh-rel-toggle-text');
+        var relSummary = document.getElementById('dlh-rel-summary');
+        var relPrev = document.getElementById('dlh-rel-prev');
+        var relNext = document.getElementById('dlh-rel-next');
+        var relCounter = document.getElementById('dlh-rel-counter');
+        var relChips = document.getElementById('dlh-rel-chips');
+
+        if (relBar && relDataEl) {
+            var pool = [];
+            try { pool = JSON.parse(relDataEl.textContent) || []; } catch (e) { pool = []; }
+
+            // Reference date: latest release in pool or current time
+            var now = new Date().getTime();
+            var latestDate = (pool.length > 0 && pool[0].date) ? new Date(pool[0].date + 'T00:00:00').getTime() : now;
+            var refTime = Math.max(now, latestDate);
+            var fourteenDaysMs = 14.5 * 24 * 60 * 60 * 1000;
+
+            // Filter releases within 14 days of refTime
+            var activeReleases = pool.filter(function (r) {
+                if (!r.date) { return false; }
+                var rTime = new Date(r.date + 'T00:00:00').getTime();
+                var diff = refTime - rTime;
+                return diff >= 0 && diff <= fourteenDaysMs;
+            });
+
+            // Fallback: if no releases in the last 14 days, keep the latest release
+            if (activeReleases.length === 0 && pool.length > 0) {
+                activeReleases = [pool[0]];
+            }
+
+            var currentIndex = 0;
+            var textToggleMore = {{ $t.relToggleMore | jsonify }};
+            var textToggleLess = {{ $t.relToggleLess | jsonify }};
+            var textVersion = {{ $t.relVersion | jsonify }};
+            var textPlayCta = {{ $t.relPlayCta | jsonify }};
+            var textAppCta = {{ $t.relAppCta | jsonify }};
+
+            // Filter chips in drawer to match activeReleases
+            if (relChips) {
+                var chips = Array.prototype.slice.call(relChips.querySelectorAll('.dlh-rel-chip'));
+                chips.forEach(function (ch) {
+                    var slug = ch.getAttribute('data-slug');
+                    var inActive = activeReleases.some(function (r) { return r.slug === slug; });
+                    ch.hidden = !inActive;
+                });
+            }
+
+            function updateView(idx) {
+                if (idx < 0) { idx = activeReleases.length - 1; }
+                if (idx >= activeReleases.length) { idx = 0; }
+                currentIndex = idx;
+                var cur = activeReleases[currentIndex];
+                if (!cur) { return; }
+
+                var iconEl = document.getElementById('dlh-rel-icon');
+                var nameEl = document.getElementById('dlh-rel-name');
+                var verEl = document.getElementById('dlh-rel-ver');
+                var dateEl = document.getElementById('dlh-rel-date');
+                var titleEl = document.getElementById('dlh-rel-title');
+
+                if (iconEl) { iconEl.textContent = cur.icon; }
+                if (nameEl) { nameEl.textContent = cur.name; }
+                if (verEl) { verEl.textContent = cur.version; }
+                if (dateEl) { dateEl.textContent = '(' + cur.date + ')'; }
+                if (titleEl) {
+                    titleEl.textContent = cur.title;
+                    titleEl.setAttribute('title', cur.title);
+                }
+                if (relCounter) {
+                    relCounter.textContent = (currentIndex + 1) + '/' + activeReleases.length;
+                }
+
+                var drawerApp = document.getElementById('dlh-drawer-app');
+                var drawerDate = document.getElementById('dlh-drawer-date');
+                var drawerHeadline = document.getElementById('dlh-drawer-headline');
+                var drawerChanges = document.getElementById('dlh-drawer-changes');
+                var ctaPrimary = document.getElementById('dlh-drawer-cta-primary');
+                var ctaSecondary = document.getElementById('dlh-drawer-cta-secondary');
+
+                if (drawerApp) {
+                    drawerApp.textContent = cur.icon + ' ' + cur.name + ' · ' + textVersion + ' ' + cur.version;
+                }
+                if (drawerDate) { drawerDate.textContent = '· ' + cur.date; }
+                if (drawerHeadline) { drawerHeadline.textContent = cur.title; }
+
+                if (drawerChanges && cur.changes) {
+                    drawerChanges.innerHTML = '';
+                    cur.changes.forEach(function (ch) {
+                        var li = document.createElement('li');
+                        li.textContent = ch;
+                        drawerChanges.appendChild(li);
+                    });
+                }
+
+                if (ctaPrimary) {
+                    ctaPrimary.setAttribute('href', cur.appUrl);
+                    ctaPrimary.textContent = cur.isArcade ? textPlayCta : textAppCta;
+                }
+                if (ctaSecondary) {
+                    ctaSecondary.setAttribute('href', cur.fichaUrl);
+                }
+
+                if (relChips) {
+                    var chipsList = relChips.querySelectorAll('.dlh-rel-chip');
+                    chipsList.forEach(function (ch) {
+                        var slug = ch.getAttribute('data-slug');
+                        ch.classList.toggle('is-active', slug === cur.slug);
+                    });
+                }
+            }
+
+            function toggleDrawer() {
+                if (!relDrawer) { return; }
+                var isHidden = relDrawer.hidden;
+                relDrawer.hidden = !isHidden;
+                var expanded = isHidden ? 'true' : 'false';
+                if (relToggle) { relToggle.setAttribute('aria-expanded', expanded); }
+                if (relSummary) { relSummary.setAttribute('aria-expanded', expanded); }
+                if (relToggleText) {
+                    relToggleText.textContent = isHidden ? textToggleLess : textToggleMore;
+                }
+                if (typeof gtag === 'function' && activeReleases[currentIndex]) {
+                    gtag('event', 'home_release_radar_toggle', {
+                        app_slug: activeReleases[currentIndex].slug,
+                        version: activeReleases[currentIndex].version,
+                        state: isHidden ? 'opened' : 'closed'
+                    });
+                }
+            }
+
+            if (relSummary) {
+                relSummary.addEventListener('click', function () {
+                    toggleDrawer();
+                });
+                relSummary.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleDrawer();
+                    }
+                });
+            }
+
+            if (relToggle) {
+                relToggle.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    toggleDrawer();
+                });
+            }
+
+            if (relPrev) {
+                relPrev.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    updateView(currentIndex - 1);
+                    if (typeof gtag === 'function' && activeReleases[currentIndex]) {
+                        gtag('event', 'home_release_radar_select', {
+                            app_slug: activeReleases[currentIndex].slug,
+                            version: activeReleases[currentIndex].version,
+                            action: 'prev'
+                        });
+                    }
+                });
+            }
+
+            if (relNext) {
+                relNext.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    updateView(currentIndex + 1);
+                    if (typeof gtag === 'function' && activeReleases[currentIndex]) {
+                        gtag('event', 'home_release_radar_select', {
+                            app_slug: activeReleases[currentIndex].slug,
+                            version: activeReleases[currentIndex].version,
+                            action: 'next'
+                        });
+                    }
+                });
+            }
+
+            if (relChips) {
+                var chipsBtns = relChips.querySelectorAll('.dlh-rel-chip');
+                chipsBtns.forEach(function (ch) {
+                    ch.addEventListener('click', function (e) {
+                        e.stopPropagation();
+                        var slug = ch.getAttribute('data-slug');
+                        var targetIdx = -1;
+                        activeReleases.forEach(function (r, rIdx) {
+                            if (r.slug === slug) { targetIdx = rIdx; }
+                        });
+                        if (targetIdx !== -1) {
+                            updateView(targetIdx);
+                            if (typeof gtag === 'function' && activeReleases[currentIndex]) {
+                                gtag('event', 'home_release_radar_select', {
+                                    app_slug: activeReleases[currentIndex].slug,
+                                    version: activeReleases[currentIndex].version,
+                                    action: 'chip'
+                                });
+                            }
+                        }
+                    });
+                });
+            }
+
+            updateView(0);
         }
 
         /* ---- GA4 Telemetry for Home Pack Download clicks ---- */
