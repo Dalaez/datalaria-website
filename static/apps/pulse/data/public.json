@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-11-07T11:10:26.452930Z",
+  "generated_at": "2026-11-07T11:11:24.962035Z",
   "total_assets": 143,
   "published_assets": 121,
   "scheduled_assets": 18,
@@ -3534,7 +3534,7 @@
       "brief_en": "Learn to create a neon arcade-style web game using only HTML5 Canvas and Vanilla JS. Discover how to integrate a global real-time leaderboard using Supabase's PostgreSQL database.",
       "publish_date": "2026-02-14",
       "last_modified_es": "2026-10-31T20:23:26+01:00",
-      "last_modified_en": "2026-10-31T20:23:26+01:00",
+      "last_modified_en": "2026-11-07T12:10:09+01:00",
       "language_parity": "complete",
       "category": "IA, Ingeniería y Proyectos",
       "categories": [
@@ -8242,8 +8242,8 @@
       "brief_es": "Arcade Cyberpunk retro del clásico Snake con ranking global en tiempo real y audio sintetizado.",
       "brief_en": "Cyberpunk retro arcade of classic Snake with real-time global leaderboard and synthesized audio.",
       "publish_date": "2026-01-20",
-      "last_modified_es": "2026-10-25T10:03:25+01:00",
-      "last_modified_en": "2026-10-25T10:03:25+01:00",
+      "last_modified_es": "2026-11-07T12:10:09+01:00",
+      "last_modified_en": "2026-11-07T12:10:09+01:00",
       "language_parity": "complete",
       "category": "Aplicaciones Web",
       "categories": [
