@@ -338,3 +338,33 @@
 - **Consecuencias:**
   - El escuadrón evoluciona de forma medible y acumulativa sin penalizar la ventana de contexto.
   - El Kit Core genérico (`packages/helix/core_kit/`) se entrega a los compradores con esta disciplina de memoria anti-bloat y con los 3 Blueprints de arquitectura listos para producción.
+
+
+---
+
+## ADR-020: Despliegue del Segundo Escuadrón "Datalaria Scriba" (8 Agentes Editoriales & Growth), Analista SEO/GA4 (`impact_analyzer.py`), Brevo Newsletter 2.0 y Autopilot 2.0
+- **Fecha:** 2026-11-07
+- **Estado:** Aceptado (Planificado como FASE 7 en `specs/ROADMAP.md`, a ejecutar inmediatamente tras cerrar y congelar los Hitos 6.8 y 6.9 de Datalaria Helix)
+- **Contexto:**
+  1. El blog técnico bilingüe (`ES ⇔ EN`) es el principal motor de captación de usuarios y autoridad orgánica de Datalaria. Con el escuadrón de ingeniería **Datalaria Helix** (`specs/squad/`) consolidado para construir aplicaciones y Kits B2B, se requiere un equipo homólogo especializado exclusivamente en la cadena de valor editorial: calendario, redacción orientada a conversión pasiva, sindicación omnicanal y análisis cuantitativo post-publicación.
+  2. La auditoría de [`autopilot/`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/autopilot/src/orchestrator.py) reveló oportunidades críticas de mejora y alineación con SDD:
+     - **Newsletter Brevo (`newsletter_manager.py`):** Todos los correos compartían un asunto fijo (`🚀 Nuevo en Datalaria: ...`), carecían de la imagen de portada del artículo (`cover.png`) y operaban como meros *teasers* sin valor autónomo en bandeja de entrada, provocando fatiga y bajas de suscriptores (*churn*).
+     - **Canales Sociales:** X/Twitter eliminó su capa gratuita de publicación por API (`402 Payment Required`), mientras que **CoderLegion** dispone de API activa (`/api/v1/posts` con clave ya configurada en `autopilot/.env` y GitHub Secrets como `CODERLEGION_API_KEY`).
+     - **Solapamiento y Deuda:** `autopilot/ctrl/` dependía de llamadas a `gh copilot suggest` por subproceso y mantenía archivos `*_OLD_DEPRECATED.py` fuera del estándar de contratos Pydantic v2.
+- **Decisión:**
+  1. **Arquitectura Federada del "Superequipo Datalaria" (Helix + Scriba):**
+     - Crear el escuadrón **`Datalaria Scriba`** (comercializable a futuro dentro de la suite como *Datalaria Pulse Scriba*) en `specs/squad-editorial/` con **8 agentes en 4 células** bajo las mismas invariantes de higiene de contexto (`INV-HELIX-2`, `INV-HELIX-8`, fichas $\le 85$ líneas) y separación Creación vs. Verificación con Veto (`E07-editorial-qa`).
+     - Coordinación mediante dos directores específicos: `01-orchestrator` (Ingeniería/Producto en Helix) y `E01-editorial-orchestrator` (Calendario/Contenido/Growth en Scriba).
+  2. **Analista SEO y Consultor Estratégico (`E02-seo-impact-strategist`) + Músculo Determinista (`ops/pulse/impact_analyzer.py`):**
+     - Cumpliendo el Art. 1.3 de la Constitución (*Separación Cerebro vs. Músculo*), se desarrollará `ops/pulse/impact_analyzer.py` para cruzar automáticamente `metrics.json` (GA4 + Search Console) e `index.json` tras cada actualización y generar reportes accionables de *Quick Wins de CTR*, *Huérfanos de Monetización (PLG)*, *Decay Alerts* y *Editorial ROI Score*.
+  3. **Brevo Newsletter 2.0 Anti-Churn (`newsletter_manager.py` + `E05-content-monetizer`):**
+     - Eliminar el prefijo fijo de asunto e implantar rotación entre 5 arquetipos de alto Open Rate + Preheader dinámico.
+     - Incluir **1 única imagen Hero clicable (`cover.png` del post)** manteniendo un ratio Texto/Imagen $>80\%$ para proteger la entregabilidad en la bandeja Principal.
+     - Incorporar la caja visual **"⚡ En 60 segundos: Los 3 Insights Clave"** (*Zero-Click Value*) para que el suscriptor reciba valor tangible sin salir del correo, reduciendo las bajas, junto con doble CTA (Artículo + Sandbox/Kit) y bucle de recomendación.
+  4. **Autopilot 2.0 con Coste Fijo 0 €/mes e Integración `CoderLegion`:**
+     - **LinkedIn, Dev.to, CoderLegion (`/api/v1/posts`) y Brevo:** 100 % automatizados vía API gratuita a partir del paquete `social_pack.yaml` validado por `E07-editorial-qa` y el transformador universal `markdown_syndicator.py`.
+     - **X / Twitter:** Política de coste 0 € (`ENABLE_TWITTER_API=false`), generando automáticamente el Tweet gancho + Hilo de 4–5 tweets + enlace `X Web Intent` (`https://x.com/intent/tweet?...`) para publicación manual en 1 clic sin pagar créditos de API.
+  5. **Orden de Ejecución Estricto:**
+     - Completar y dejar congelados primero los **Hitos 6.8 y 6.9 de Datalaria Helix** (empaquetado comercial y serie de posts programados para enero de 2027), y a continuación ejecutar los **Hitos 7.1 a 7.5 de Datalaria Scriba**.
+- **Consecuencias:**
+  - Sincronización total entre el blog, los productos de 19 € en Lemon Squeezy, la lista de Brevo y la distribución en 5 canales sin costes fijos de APIs.

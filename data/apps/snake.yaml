@@ -1,12 +1,12 @@
 slug: snake
 order: 40
 tier: lab
-status: frozen
+status: active
 icon: "🐍"
 cover: cover.png
 app_url: /games/snake/
 source_spec: specs/apps/snake/spec.md
-current_version: v1.0.0
+current_version: v2.3.0
 
 title:
   es: "Neon Snake"
@@ -31,26 +31,32 @@ objectives:
     en: "Demonstrate the power of pure frontend web development (Vanilla JS ES6+) achieving a smooth deterministic 60 FPS Game Loop."
 
 features:
+  - icon: "🎮"
+    es: "Ergonomía Táctil Full-Swipe: conmutador de D-Pad opcional para ganar hasta 160 px extra de tablero móvil, feedback háptico nativo y cuenta atrás animada 3-2-1 al reanudar."
+    en: "Full-Swipe Touch Ergonomics: optional D-Pad toggle to gain up to 160 px extra mobile board space, native haptic feedback, and animated 3-2-1 countdown upon resume."
   - icon: "🕹️"
     es: "Game Loop a 60 FPS: bucle de renderizado ultrafluido en HTML5 Canvas con aceleración progresiva y colisiones en rejilla."
     en: "60 FPS Game Loop: ultra-smooth HTML5 Canvas render loop featuring progressive velocity scaling and precision grid collisions."
+  - icon: "🔥"
+    es: "Combo Overclock & Hyper-Dash: multiplica puntos hasta x8 encadenando capturas en menos de 4s y duplica velocidad voluntariamente con doble puntuación."
+    en: "Overclock Combo & Hyper-Dash: multiply score up to x8 by chaining catches in under 4s and voluntarily boost velocity for double points."
   - icon: "✨"
-    es: "Estética Neón Cyberpunk: estelas de partículas luminosas, efectos de glow perimetral y feedback visual tipo glitch en colisiones."
-    en: "Cyberpunk Neon Aesthetic: glowing particle trails, perimeter bloom effects, and dynamic glitch visual feedback on collision."
-  - icon: "🏆"
-    es: "Ranking Global en Tiempo Real: tabla de récords mundial sincronizada instantáneamente a través de canales Supabase Realtime."
-    en: "Real-Time Global Leaderboard: worldwide high-score rankings synchronized instantaneously through Supabase Realtime channels."
-  - icon: "🎵"
-    es: "Sintetizador Web Audio 8-Bit: síntesis procedimental en el navegador de ondas cuadradas y efectos de sonido retro sin descargas de audio."
-    en: "8-Bit Web Audio Synthesizer: procedural in-browser square-wave synthesis producing retro sound effects with zero audio file downloads."
-  - icon: "📱"
-    es: "Controles Multiplataforma: soporte fluido de teclado (cursores / WASD) y botones virtuales táctiles adaptados a pantallas móviles."
-    en: "Cross-Platform Controls: seamless support for keyboard (arrows / WASD) and touch-screen virtual D-pad on mobile devices."
+    es: "4 Modos de Juego: Arcade Overdrive de 10 niveles, Reto Diario reproducible estilo Wordle, Contrarreloj 90s y Modo Zen relajante."
+    en: "4 Game Modes: 10-level Arcade Overdrive, deterministic Wordle-style Daily Challenge, 90s Time Attack, and relaxing Zen Mode."
+  - icon: "🛡️"
+    es: "4 Nodos y Telegraphing Justo: datos normales, núcleo dorado bonus, ralentizador criogénico y protocolo fantasma con preaviso visual de firewalls."
+    en: "4 Nodes & Fair Telegraphing: standard data, bonus golden core, cryo slow-down, and ghost protocol with visual firewall warnings."
+  - icon: "🎨"
+    es: "Hangar de Skins y Medallas: 5 Cyber-Skins desbloqueables por mérito, 6 medallas coleccionables y tarjeta Cyber-Agent descargable en PNG."
+    en: "Skins Hangar & Medals: 5 unlockable merit Cyber-Skins, 6 collectible medals, and downloadable PNG Cyber-Agent card."
+  - icon: "📲"
+    es: "PWA 100% Offline & Supabase Seguro: funciona sin conexión, previene inyecciones XSS y ofrece ranking híbrido con cola de sincronización."
+    en: "100% Offline PWA & Secure Supabase: runs offline, prevents XSS injections, and delivers a hybrid leaderboard with queue sync."
 
 design:
   architecture:
-    es: "Arquitectura desacoplada cliente-BaaS: el cliente es un juego monobloque HTML5/Canvas que corre a 60 FPS en el navegador. Al finalizar la partida, despacha una llamada REST/WebSocket asíncrona a Supabase para validar y registrar la puntuación con políticas de seguridad a nivel de fila (RLS)."
-    en: "Decoupled client-BaaS architecture: the client is a self-contained HTML5/Canvas game running at 60 FPS in browser memory. Upon game over, it dispatches an asynchronous REST/WebSocket call to Supabase to register high scores governed by Row Level Security (RLS) policies."
+    es: "Arquitectura desacoplada cliente-BaaS: el cliente es un juego monobloque HTML5/Canvas que corre a 60 FPS en el navegador. Al finalizar la partida, despacha una llamada REST asíncrona a Supabase para validar y registrar la puntuación con políticas de seguridad a nivel de fila (RLS)."
+    en: "Decoupled client-BaaS architecture: the client is a self-contained HTML5/Canvas game running at 60 FPS in browser memory. Upon game over, it dispatches an asynchronous REST call to Supabase to register high scores governed by Row Level Security (RLS) policies."
   principles:
     - es: "Pureza Frontend: cero frameworks de renderizado, aprovechando directamente las primitivas gráficas del Canvas 2D."
       en: "Pure Frontend Philosophy: zero bloated frameworks, leveraging native 2D Canvas graphics primitives directly."
@@ -70,11 +76,11 @@ design:
 
 tech:
   - layer: frontend
-    items: ["Vanilla JS (ES6+)", "HTML5 Canvas 2D", "Tailwind CSS CDN"]
+    items: ["Vanilla JS (ES6+)", "HTML5 Canvas 2D", "PWA (Service Worker + Manifest)"]
   - layer: audio
     items: ["Web Audio API (OscillatorNode, GainNode)"]
   - layer: backend
-    items: ["Supabase (PostgreSQL 15)", "Row Level Security (RLS)", "Supabase Realtime"]
+    items: ["Supabase (PostgreSQL 15)", "Row Level Security (RLS)", "PostgREST REST API"]
   - layer: hosting
     items: ["Hugo Static Engine (/games/snake/)"]
 
@@ -85,6 +91,87 @@ posts:
     part: 1
 
 releases:
+  - version: v2.3.0
+    date: "2026-11-07"
+    state: released
+    type: feature
+    title:
+      es: "Ergonomía Táctil Full-Swipe, Hit-Stop de Colisión, Inspección de Tablero y Cuenta Atrás 3-2-1"
+      en: "Full-Swipe Touch Ergonomics, Collision Hit-Stop, Board Inspection & 3-2-1 Countdown"
+    changes:
+      - es: "Conmutador D-Pad / Modo Full-Swipe: permite alternar entre cruceta virtual o swipe puro en dispositivos táctiles, ganando hasta 160 px adicionales de altura útil de canvas."
+        en: "D-Pad / Full-Swipe Mode toggle: switch between virtual d-pad or pure gestures on touch devices, expanding active canvas height by up to 160 px."
+      - es: "Feedback háptico nativo (navigator.vibrate): pulsos táctiles diferenciados al capturar nodos (15 ms), subir de nivel (doble pulso) y colisionar (80 ms), sincronizados con el audio."
+        en: "Native haptic feedback (navigator.vibrate): distinct tactile pulses upon eating nodes (15 ms), leveling up (double pulse), and crashing (80 ms), synchronized with sound."
+      - es: "Pausa dramática (Hit-Stop) de 450 ms y botón de Inspección de Tablero: resalta la casilla exacta del impacto y permite transparentar el modal de Game Over para estudiar la jugada final."
+        en: "450 ms dramatic Hit-Stop and Board Inspection button: highlights exact impact tile and lets player fade the Game Over modal to review the final position."
+      - es: "Cuenta atrás animada 3-2-1-HACK! con audio 8-bit al reanudar partida desde Pausa para evitar colisiones involuntarias a alta velocidad."
+        en: "Animated 3-2-1-HACK! countdown with synthesized 8-bit beeps when resuming from Pause, preventing accidental high-speed collisions."
+
+  - version: v2.2.0
+    date: "2026-11-07"
+    state: released
+    type: feature
+    title:
+      es: "Homologación Cyber-PWA Gold, Actualización In-App y Ranking Offline Optimista"
+      en: "Cyber-PWA Gold Compliance, In-App Updates & Optimistic Offline Leaderboard"
+    changes:
+      - es: "Homologación PWA Gold: detección standalone y appinstalled para ocultar botón instalar, e instrucciones diferenciadas para iOS Safari vs Android/Desktop en ES/EN."
+        en: "PWA Gold compliance: standalone and appinstalled detection to auto-hide install button, and contextual guidance for iOS Safari vs Android/Desktop in ES/EN."
+      - es: "Actualizador in-app reactivo: badge interactivo v2.2.0 con comprobación en visibilitychange, protección contra dobles recargas en controllerchange y caché datalaria-snake-v2.2.0."
+        en: "Reactive in-app updater: interactive v2.2.0 badge checking on visibilitychange, refresh guard in controllerchange and datalaria-snake-v2.2.0 cache."
+      - es: "Clasificación offline optimista: inserción inmediata en la caché del ranking con badge de estado OFFLINE y auto-sincronización desatendida con Supabase al recuperar conexión (evento online)."
+        en: "Optimistic offline leaderboard: immediate local cache insertion with OFFLINE status badge and automated background sync with Supabase on reconnect (online event)."
+
+  - version: v2.1.0
+    date: "2026-11-07"
+    state: released
+    type: feature
+    title:
+      es: "Modo Inmersivo Full-Viewport, Encuadre Anti-Clipping y Hall of Fame Leaderboard"
+      en: "Full-Viewport Immersive Mode, Anti-Clipping Framing & Hall of Fame Leaderboard"
+    changes:
+      - es: "Modo Inmersivo (body.is-playing): oculta cabecera y navegación secundaria durante la partida activa para maximizar el tablero hasta 720x720 px en escritorio y ancho completo en móvil."
+        en: "Immersive Mode (body.is-playing): hides header and secondary navigation during active gameplay to maximize the board up to 720x720 px on desktop and full width on mobile."
+      - es: "Encuadre elástico de modales (.canvas-overlay) sin recortes de texto, eliminación de emojis duplicados y traducción reactiva completa ES/EN."
+        en: "Elastic modal framing (.canvas-overlay) with zero text clipping, removal of duplicate tab emojis, and complete reactive ES/EN translation."
+      - es: "Rediseño visual de la Clasificación Global (Hall of Fame Cyberpunk) con tarjetas de podio (Oro, Plata, Bronce), KPIs personales y resaltado del agente activo."
+        en: "Visual redesign of the Global Leaderboard (Cyberpunk Hall of Fame) featuring podium cards (Gold, Silver, Bronze), personal KPIs, and active agent highlight."
+
+  - version: v2.0.1
+    date: "2026-11-07"
+    state: released
+    type: patch
+    title:
+      es: "Patch sintáctico de inlining y compatibilidad PWA móvil"
+      en: "Inlining syntax patch and mobile PWA compatibility"
+    changes:
+      - es: "Subsanada colisión de GRID_SIZE en el script inlined y eliminado el bloqueo de arranque SyntaxError."
+        en: "Resolved GRID_SIZE identifier collision in inlined script and eliminated startup SyntaxError."
+      - es: "Añadida etiqueta meta mobile-web-app-capable para eliminar advertencias de deprecación en navegadores modernos."
+        en: "Added mobile-web-app-capable meta tag to eliminate deprecation warnings in modern browsers."
+      - es: "Añadida suite de pruebas automatizadas INV-SNAKE-11 para validación de sintaxis con Node.js."
+        en: "Added INV-SNAKE-11 automated test suite for inlined bundle syntax validation with Node.js."
+
+  - version: v2.0.0
+    date: "2026-11-07"
+    state: released
+    type: release
+    title:
+      es: "Evolución Cyberpunk Overdrive: Combo, 4 modos, skins, telegraphing y PWA 100% offline"
+      en: "Cyberpunk Overdrive Evolution: Combo, 4 modes, skins, telegraphing and 100% offline PWA"
+    changes:
+      - es: "Sistema de Combo Overclock x8 con temporizador de enfriamiento y mecánica activa Hyper-Dash."
+        en: "Overclock Combo x8 system with cooldown timer and active Hyper-Dash boost mechanics."
+      - es: "4 modos de juego: Arcade Overdrive (10 niveles), Reto Diario Wordle determinista, Contrarreloj 90s y Modo Zen."
+        en: "4 game modes: Arcade Overdrive (10 levels), deterministic Daily Challenge, 90s Time Attack, and Zen Mode."
+      - es: "4 tipos de nodos cibernéticos (Data, Golden Core, Cryo, Ghost) y telegraphing preventivo de firewalls rojos."
+        en: "4 cyber node types (Data, Golden Core, Cryo, Ghost) and preventative telegraphing for red firewalls."
+      - es: "Hangar con 5 Cyber-Skins desbloqueables por mérito, 6 medallas y exportador de tarjeta Cyber-Agent PNG."
+        en: "Hangar with 5 merit-based Cyber-Skins, 6 medals, and downloadable PNG Cyber-Agent card."
+      - es: "Arquitectura Single-Source-of-Truth en /apps/snake/ compilada a static/ con PWA 100% offline y shims retrocompatibles."
+        en: "Single-Source-of-Truth architecture in /apps/snake/ compiled to static/ with 100% offline PWA and shims."
+
   - version: v1.0.0
     date: "2026-02-14"
     state: released

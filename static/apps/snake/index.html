@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirigiendo a la ficha de Neon Snake · Datalaria...</title>
+  <script>
+    (function() {
+      try {
+        var nav = navigator.language || navigator.userLanguage || 'es';
+        var lang = nav.startsWith('en') ? 'en' : 'es';
+        var saved = localStorage.getItem('pref-lang');
+        if (saved === 'es' || saved === 'en') lang = saved;
+        window.location.replace('/' + lang + '/apps/snake/');
+      } catch(e) {
+        window.location.replace('/es/apps/snake/');
+      }
+    })();
+  </script>
+  <meta http-equiv="refresh" content="0; url=/es/apps/snake/">
+  <link rel="canonical" href="https://datalaria.com/es/apps/snake/">
+</head>
+<body style="background:#05070d;color:#00f0ff;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;">
+  <p>Redirigiendo a la ficha de Neon Snake... <a href="/es/apps/snake/" style="color:#00f0ff;">Pulsa aquí si no eres redirigido</a>.</p>
+</body>
+</html>

@@ -1,8 +1,8 @@
-# Especificación de Diseño UX/UI: Neon Snake ("Cyberpunk Overdrive v2.0") (`snake`)
+# Especificación de Diseño UX/UI: Neon Snake ("Cyberpunk Overdrive v2.3") (`snake`)
 
 > **ID de Diseño:** `DESIGN-APP-SNAKE`  
 > **Spec Técnica Vinculada:** [`specs/apps/snake/spec.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/apps/snake/spec.md)  
-> **Versión de Diseño:** `v2.0.0` (Cyberpunk Overdrive, Combo HUD, Telegraphing, Hangar de Skins, Cyber-Card PNG y PWA Offline)  
+> **Versión de Diseño:** `v2.3.0` (Ergonomía Táctil Full-Swipe, Vibración Háptica, Hit-Stop e Inspección de Tablero)  
 > **Agente Propietario:** [`04-ux-ui` (Diseñador UX/UI)](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/04-ux-ui.md)  
 > **Preset Estético Seleccionado:** `Arcade Cyberpunk Neon` (Datalaria Retro Arcade Deck)  
 > **Aislamiento de Excepción (`[SCOPE-ISOLATION: ARCADE-GAME]`):** Esta especificación aplica un estilo estético Cyberpunk de alto contraste, brillos de neón (`box-shadow` / `text-shadow` bloom), tipografía arcade de ciencia ficción, animaciones de glitch/screen-shake y mecánicas de gamificación adictiva concebidas exclusivamente para este videojuego arcade por instrucción explícita del usuario. Estas reglas de diseño y tokens lúdicos **no persisten ni contaminan los estándares de diseño corporativo o herramientas ejecutivas B2B de Datalaria**.
@@ -99,19 +99,25 @@
 
 ---
 
-## 3. Arquitectura de Información y Presupuesto Above-the-Fold
+## 3. Arquitectura de Información, Presupuesto Above-the-Fold y Modo Inmersivo (`v2.2.0`)
 
-1. **Shell Superior de Datalaria:**
-   - Botón `← Datalaria` hacia `/apps/` + Icono `🐍` + Título `Neon Snake` + Badge `v2.0.0` (o botón de actualización).
-   - Selector de Perfil Familiar (`👾 Hacker 1` / `🤖 Hacker 2` / `⚡ Pro`).
-   - Selector bilingüe `ES | EN`.
-   - Botón de audio `🔊 / 🔇`, conmutador de tema `🌆 / 📺`, botón `📲 Instalar`.
+1. **Shell Superior de Datalaria (Visible en Menú, Pausa, Game Over y Pestañas):**
+   - Botón `← Datalaria` hacia `/{lang}/apps/` + Icono `🐍` + Título `Neon Snake` + Badge interactivo `#btn-check-update` (`v2.3.0`).
+   - Selector de Perfil Familiar (`👾 Hacker 1` / `🤖 Hacker 2` / `⚡ Pro`), selector bilingüe `ES | EN`, botón de audio `🔊 / 🔇`, conmutador de tema `🌆 / 📺`, conmutador `🎮 D-Pad / 👆 Swipe` y botón de instalación inteligente `#btn-install-pwa`.
    - Tríada de enlaces: `📋 Ficha`, `📖 Tutorial`, `📦 Kits`.
-2. **Pestañas del Juego:**
-   - **🕹️ Jugar:** Selector de 4 modos (Arcade, Reto Diario Wordle, Contrarreloj 90s, Zen) + Tablero Canvas 60 FPS con D-Pad táctil responsivo, botón Pausa y botón `⚡ BOOST`.
-   - **🏆 Leaderboard:** Ranking en tiempo real (Top 20 global vía Supabase + pestaña Récords Locales Offline).
-   - **🎨 Hangar Skins:** Selector de 5 skins con requisitos de desbloqueo, vista previa interactiva en Canvas y botón equipar.
-   - **🎖️ Medallas:** Pasaporte con 6 logros desbloqueables y botón `🎓 Descargar Cyber-Card (PNG)`.
+2. **Modo Juego Inmersivo Maximizado (`body.is-playing`) y Modo Móvil Full-Swipe:**
+   - Al iniciar una partida activa (`!isPaused && !isGameOver`), el `<body>` adquiere la clase `.is-playing`, ocultando automáticamente `#app-header` y `.nav-deck` para entregar el **100% del alto útil de pantalla (`100dvh`)** al tablero y los controles.
+   - **Modo Swipe Puro:** Los jugadores móviles pueden desactivar la cruceta virtual mediante `#btn-toggle-dpad`. El panel de controles táctiles oculta el D-Pad (`.touch-controls-deck.dpad-disabled`) dejando únicamente un botón de Hyper-Dash compacto, y `resizeCanvas()` recalcula el lienzo ganando hasta **160 px extra** de altura útil para un tablero gigante.
+   - El `.game-hud` incorpora un botón directo **`⏸ Pausa / Menú`** (`#btn-hud-pause`) accesible con 1 clic o pulsando `P` / `Escape`, que pausa la partida y restaura instantáneamente la cabecera completa y las pestañas.
+3. **Pausa Dramática (*Hit-Stop* 450 ms) e Inspección de Tablero (`#btn-inspect-board`):**
+   - Al chocar, el juego congela el fotograma durante 450 ms con destello estroboscópico en la casilla del impacto y vibración háptica de 80 ms antes de desplegar el modal de Game Over.
+   - En `#gameover-overlay`, el botón `#btn-inspect-board` (`👁️ Ver Tablero`) permite atenuar la opacidad del modal al 15% para que el jugador pueda revisar visualmente la jugada y la causa del choque antes de reiniciar.
+4. **Cuenta Atrás Animada `3 - 2 - 1 - HACK!` al Reanudar:**
+   - Al reanudar desde pausa, se muestra una cuenta atrás superpuesta en el Canvas (`3`, `2`, `1`, `HACK!`) acompañada de pulsos sintetizados 8-bit (`440 Hz` y `880 Hz`), garantizando que el usuario esté preparado antes de que la serpiente vuelva a avanzar.
+5. **Pestañas del Juego y Hall of Fame Leaderboard con Ranking Offline Optimista:**
+   - **🕹️ Jugar:** Selector de 4 modos 100% bilingüe + Tablero Canvas 60 FPS + D-Pad táctil ergonómico / Swipe + botón `⚡ BOOST`.
+   - **🏆 Leaderboard (Cyberpunk Hall of Fame):** Barra superior de KPIs personales (`Mi Récord`, `Combo Máx`, `Estado Red`) seguida de tarjetas `.ranking-row` con medallas diferenciadas para el Podio Top 3 (Oro `#1`, Plata `#2`, Bronce `#3`), indicador `TÚ / YOU` para el jugador activo, badge `⏳ OFFLINE` y borde discontinuo en entradas pendientes de sincronización (`.is-offline-pending`), y tipografía monoespaciada `tabular-nums`.
+   - **🎨 Hangar Skins & 🎖️ Medallas:** Tarjetas interactivas con estado equipado/desbloqueado y descarga directa de `🎓 Cyber-Card (PNG)`.
 
 ---
 
@@ -120,7 +126,7 @@
 | Componente | Estado Vacío / Inactivo | Estado Activo / En Partida | Estado de Feedback | Estado Final (Game Over) |
 | :--- | :--- | :--- | :--- | :--- |
 | **Tablero Canvas** | Pantalla de inicio con demo animada de fondo | Serpiente en movimiento con rejilla reactiva y partículas | Flash de combo, aviso de firewall ámbar y texto flotante `+pts` | Screen-shake leve, overlay con puntuación, medallas y botones |
-| **Ranking** | Indicador de conexión o récords locales en caché | Lista ordenada con badges de posición (#1 oro, #2 plata, #3 bronce) | Indicador `Guardando en la red...` | Resaltado del agente actual con borde cian brillante |
+| **Ranking** | Indicador de conexión o récords locales en caché | Lista ordenada con badges de posición (#1 oro, #2 plata, #3 bronce) | Indicador `Guardando en la red...` o `⏳ Guardado offline` | Resaltado del agente actual con borde cian brillante y badge `⏳ OFFLINE` si está pendiente |
 | **Skins** | Siluetas bloqueadas con candado y objetivo claro | Skin seleccionada con borde de neón y efecto de pulso | Notificación toast: `🔓 ¡Nueva Skin desbloqueada!` | Previsualización renderizada en tarjeta PNG |
 
 ---

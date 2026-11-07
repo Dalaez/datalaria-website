@@ -18,8 +18,8 @@
     "gsc_avg_position": 0.0
   },
   "corporate-strategy-mba-quantitative-framework": {
-    "ga4_views_30d": 26,
-    "ga4_users_30d": 10,
+    "ga4_views_30d": 27,
+    "ga4_users_30d": 11,
     "ga4_engagement_sec": 528.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -36,7 +36,7 @@
     "gsc_avg_position": 0.0
   },
   "dynamic-bcg-matrix": {
-    "ga4_views_30d": 24,
+    "ga4_views_30d": 25,
     "ga4_users_30d": 15,
     "ga4_engagement_sec": 432.0,
     "gsc_clicks_30d": 0,
@@ -45,8 +45,8 @@
     "gsc_avg_position": 0.0
   },
   "mckinsey-ge-matrix": {
-    "ga4_views_30d": 18,
-    "ga4_users_30d": 13,
+    "ga4_views_30d": 19,
+    "ga4_users_30d": 14,
     "ga4_engagement_sec": 102.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -54,9 +54,9 @@
     "gsc_avg_position": 0.0
   },
   "quantitative-pestel-matrix": {
-    "ga4_views_30d": 26,
-    "ga4_users_30d": 14,
-    "ga4_engagement_sec": 341.0,
+    "ga4_views_30d": 27,
+    "ga4_users_30d": 15,
+    "ga4_engagement_sec": 385.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -144,9 +144,9 @@
     "gsc_avg_position": 0.0
   },
   "matriz-rice-ice-priorizacion": {
-    "ga4_views_30d": 35,
-    "ga4_users_30d": 6,
-    "ga4_engagement_sec": 443.0,
+    "ga4_views_30d": 38,
+    "ga4_users_30d": 9,
+    "ga4_engagement_sec": 454.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -225,9 +225,9 @@
     "gsc_avg_position": 0.0
   },
   "ada_lovelace": {
-    "ga4_views_30d": 5,
-    "ga4_users_30d": 5,
-    "ga4_engagement_sec": 8.0,
+    "ga4_views_30d": 4,
+    "ga4_users_30d": 4,
+    "ga4_engagement_sec": 2.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -245,7 +245,7 @@
   "alan_turing": {
     "ga4_views_30d": 28,
     "ga4_users_30d": 26,
-    "ga4_engagement_sec": 274.0,
+    "ga4_engagement_sec": 272.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -261,8 +261,8 @@
     "gsc_avg_position": 0.0
   },
   "app-lifeops_part2_frontend_dashboard": {
-    "ga4_views_30d": 5,
-    "ga4_users_30d": 5,
+    "ga4_views_30d": 6,
+    "ga4_users_30d": 6,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -279,8 +279,8 @@
     "gsc_avg_position": 0.0
   },
   "app-lifeops_part4_informes_word_excel": {
-    "ga4_views_30d": 14,
-    "ga4_users_30d": 14,
+    "ga4_views_30d": 13,
+    "ga4_users_30d": 13,
     "ga4_engagement_sec": 19.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -306,8 +306,8 @@
     "gsc_avg_position": 0.0
   },
   "app_flashcards": {
-    "ga4_views_30d": 1,
-    "ga4_users_30d": 1,
+    "ga4_views_30d": 2,
+    "ga4_users_30d": 2,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -342,9 +342,9 @@
     "gsc_avg_position": 0.0
   },
   "carto": {
-    "ga4_views_30d": 9,
-    "ga4_users_30d": 9,
-    "ga4_engagement_sec": 9.0,
+    "ga4_views_30d": 6,
+    "ga4_users_30d": 6,
+    "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -360,8 +360,8 @@
     "gsc_avg_position": 0.0
   },
   "claude_shannon": {
-    "ga4_views_30d": 6,
-    "ga4_users_30d": 5,
+    "ga4_views_30d": 7,
+    "ga4_users_30d": 6,
     "ga4_engagement_sec": 189.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -369,8 +369,8 @@
     "gsc_avg_position": 0.0
   },
   "datalaria-blog": {
-    "ga4_views_30d": 1,
-    "ga4_users_30d": 1,
+    "ga4_views_30d": 2,
+    "ga4_users_30d": 2,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -378,8 +378,8 @@
     "gsc_avg_position": 0.0
   },
   "deming": {
-    "ga4_views_30d": 9,
-    "ga4_users_30d": 9,
+    "ga4_views_30d": 10,
+    "ga4_users_30d": 10,
     "ga4_engagement_sec": 36.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -432,8 +432,8 @@
     "gsc_avg_position": 0.0
   },
   "florence-nightingale": {
-    "ga4_views_30d": 4,
-    "ga4_users_30d": 2,
+    "ga4_views_30d": 5,
+    "ga4_users_30d": 3,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -441,8 +441,8 @@
     "gsc_avg_position": 0.0
   },
   "flywire": {
-    "ga4_views_30d": 9,
-    "ga4_users_30d": 9,
+    "ga4_views_30d": 10,
+    "ga4_users_30d": 10,
     "ga4_engagement_sec": 14.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -450,8 +450,8 @@
     "gsc_avg_position": 0.0
   },
   "freepik": {
-    "ga4_views_30d": 12,
-    "ga4_users_30d": 11,
+    "ga4_views_30d": 14,
+    "ga4_users_30d": 13,
     "ga4_engagement_sec": 483.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -468,8 +468,8 @@
     "gsc_avg_position": 0.0
   },
   "graphext": {
-    "ga4_views_30d": 3,
-    "ga4_users_30d": 3,
+    "ga4_views_30d": 4,
+    "ga4_users_30d": 4,
     "ga4_engagement_sec": 16.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -495,8 +495,8 @@
     "gsc_avg_position": 0.0
   },
   "happyrobot": {
-    "ga4_views_30d": 18,
-    "ga4_users_30d": 18,
+    "ga4_views_30d": 17,
+    "ga4_users_30d": 16,
     "ga4_engagement_sec": 1000.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -504,9 +504,9 @@
     "gsc_avg_position": 0.0
   },
   "her": {
-    "ga4_views_30d": 1,
+    "ga4_views_30d": 8,
     "ga4_users_30d": 1,
-    "ga4_engagement_sec": 14.0,
+    "ga4_engagement_sec": 49.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -531,7 +531,7 @@
     "gsc_avg_position": 0.0
   },
   "john_von_neumann": {
-    "ga4_views_30d": 77,
+    "ga4_views_30d": 78,
     "ga4_users_30d": 61,
     "ga4_engagement_sec": 1778.0,
     "gsc_clicks_30d": 0,
@@ -549,8 +549,8 @@
     "gsc_avg_position": 0.0
   },
   "kurt_godel": {
-    "ga4_views_30d": 29,
-    "ga4_users_30d": 21,
+    "ga4_views_30d": 30,
+    "ga4_users_30d": 22,
     "ga4_engagement_sec": 2715.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -558,8 +558,8 @@
     "gsc_avg_position": 0.0
   },
   "mcp_protocol": {
-    "ga4_views_30d": 11,
-    "ga4_users_30d": 11,
+    "ga4_views_30d": 12,
+    "ga4_users_30d": 12,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -585,8 +585,8 @@
     "gsc_avg_position": 0.0
   },
   "nextail": {
-    "ga4_views_30d": 25,
-    "ga4_users_30d": 22,
+    "ga4_views_30d": 23,
+    "ga4_users_30d": 21,
     "ga4_engagement_sec": 553.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -603,17 +603,17 @@
     "gsc_avg_position": 0.0
   },
   "notebooklm-sql": {
-    "ga4_views_30d": 2,
-    "ga4_users_30d": 2,
-    "ga4_engagement_sec": 54.0,
+    "ga4_views_30d": 1,
+    "ga4_users_30d": 1,
+    "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 0.0
   },
   "onboarding": {
-    "ga4_views_30d": 5,
-    "ga4_users_30d": 5,
+    "ga4_views_30d": 6,
+    "ga4_users_30d": 6,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -621,8 +621,8 @@
     "gsc_avg_position": 0.0
   },
   "oppenheimer": {
-    "ga4_views_30d": 24,
-    "ga4_users_30d": 21,
+    "ga4_views_30d": 23,
+    "ga4_users_30d": 20,
     "ga4_engagement_sec": 366.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -666,8 +666,8 @@
     "gsc_avg_position": 0.0
   },
   "silicon_valley": {
-    "ga4_views_30d": 23,
-    "ga4_users_30d": 22,
+    "ga4_views_30d": 22,
+    "ga4_users_30d": 21,
     "ga4_engagement_sec": 161.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -684,8 +684,8 @@
     "gsc_avg_position": 0.0
   },
   "the-goal": {
-    "ga4_views_30d": 13,
-    "ga4_users_30d": 13,
+    "ga4_views_30d": 12,
+    "ga4_users_30d": 12,
     "ga4_engagement_sec": 6.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -702,8 +702,8 @@
     "gsc_avg_position": 0.0
   },
   "thomas_bayes": {
-    "ga4_views_30d": 6,
-    "ga4_users_30d": 6,
+    "ga4_views_30d": 5,
+    "ga4_users_30d": 5,
     "ga4_engagement_sec": 4.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -713,7 +713,7 @@
   "wallapop": {
     "ga4_views_30d": 10,
     "ga4_users_30d": 10,
-    "ga4_engagement_sec": 30.0,
+    "ga4_engagement_sec": 160.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -729,8 +729,8 @@
     "gsc_avg_position": 0.0
   },
   "app-openweather_part1_backend": {
-    "ga4_views_30d": 25,
-    "ga4_users_30d": 25,
+    "ga4_views_30d": 28,
+    "ga4_users_30d": 28,
     "ga4_engagement_sec": 43.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -765,8 +765,8 @@
     "gsc_avg_position": 0.0
   },
   "evaluacion_agentes_ia": {
-    "ga4_views_30d": 31,
-    "ga4_users_30d": 31,
+    "ga4_views_30d": 29,
+    "ga4_users_30d": 29,
     "ga4_engagement_sec": 34.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -792,8 +792,8 @@
     "gsc_avg_position": 0.0
   },
   "ia_agents_part1": {
-    "ga4_views_30d": 3,
-    "ga4_users_30d": 3,
+    "ga4_views_30d": 4,
+    "ga4_users_30d": 4,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -801,8 +801,8 @@
     "gsc_avg_position": 0.0
   },
   "ia_agents_part2": {
-    "ga4_views_30d": 13,
-    "ga4_users_30d": 13,
+    "ga4_views_30d": 15,
+    "ga4_users_30d": 15,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -819,8 +819,8 @@
     "gsc_avg_position": 0.0
   },
   "ia_agents_part4": {
-    "ga4_views_30d": 4,
-    "ga4_users_30d": 4,
+    "ga4_views_30d": 7,
+    "ga4_users_30d": 7,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -893,7 +893,7 @@
   "mlops_para_ingenieros": {
     "ga4_views_30d": 6,
     "ga4_users_30d": 6,
-    "ga4_engagement_sec": 4.0,
+    "ga4_engagement_sec": 21.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -909,8 +909,8 @@
     "gsc_avg_position": 0.0
   },
   "obs_parte1_intro": {
-    "ga4_views_30d": 6,
-    "ga4_users_30d": 4,
+    "ga4_views_30d": 7,
+    "ga4_users_30d": 5,
     "ga4_engagement_sec": 23.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -927,8 +927,8 @@
     "gsc_avg_position": 0.0
   },
   "obs_parte3_arquitectura": {
-    "ga4_views_30d": 15,
-    "ga4_users_30d": 15,
+    "ga4_views_30d": 14,
+    "ga4_users_30d": 14,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -972,8 +972,8 @@
     "gsc_avg_position": 0.0
   },
   "rag_antipatrones": {
-    "ga4_views_30d": 9,
-    "ga4_users_30d": 8,
+    "ga4_views_30d": 10,
+    "ga4_users_30d": 9,
     "ga4_engagement_sec": 27.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -1017,8 +1017,8 @@
     "gsc_avg_position": 0.0
   },
   "sop-ingenieria-parte5-agentes_autonomos": {
-    "ga4_views_30d": 1,
-    "ga4_users_30d": 1,
+    "ga4_views_30d": 2,
+    "ga4_users_30d": 2,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -1053,9 +1053,9 @@
     "gsc_avg_position": 0.0
   },
   "flashcards": {
-    "ga4_views_30d": 1,
-    "ga4_users_30d": 1,
-    "ga4_engagement_sec": 0.0,
+    "ga4_views_30d": 10,
+    "ga4_users_30d": 3,
+    "ga4_engagement_sec": 297.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -1071,9 +1071,9 @@
     "gsc_avg_position": 0.0
   },
   "maths": {
-    "ga4_views_30d": 13,
-    "ga4_users_30d": 6,
-    "ga4_engagement_sec": 65.0,
+    "ga4_views_30d": 18,
+    "ga4_users_30d": 8,
+    "ga4_engagement_sec": 125.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -1107,8 +1107,8 @@
     "gsc_avg_position": 0.0
   },
   "weather": {
-    "ga4_views_30d": 26,
-    "ga4_users_30d": 13,
+    "ga4_views_30d": 28,
+    "ga4_users_30d": 15,
     "ga4_engagement_sec": 151.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,

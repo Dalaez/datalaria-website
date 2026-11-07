@@ -4,4 +4,6 @@ description: "Arcade Cyberpunk retro del clásico Snake con ranking global en ti
 app: "snake"
 translationKey: "app-snake"
 layout: "single"
+aliases:
+  - /apps/snake/
 ---

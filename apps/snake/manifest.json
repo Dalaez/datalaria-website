@@ -1,0 +1,44 @@
+{
+  "name": "Neon Snake · Cyberpunk Overdrive",
+  "short_name": "Neon Snake",
+  "start_url": "/games/snake/",
+  "scope": "/games/snake/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#05070d",
+  "theme_color": "#00f0ff",
+  "description": "Arcade Cyberpunk retro del clásico Snake con ranking global en tiempo real y audio sintetizado.",
+  "categories": ["games", "arcade", "entertainment"],
+  "icons": [
+    {
+      "src": "/games/snake/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/games/snake/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/games/snake/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/games/snake/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/games/snake/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

@@ -84,9 +84,9 @@ The basic structure is as follows:
 <head>
     <meta charset="UTF-8">
     <title>Neon Snake 2077</title>
-    <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('[https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap](https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap)');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
         body { font-family: 'Orbitron', sans-serif; background-color: #050505; }
         /* Neon glow effect for the canvas */
         canvas { box-shadow: 0 0 20px #0ff; border: 2px solid #0ff; }
@@ -109,7 +109,7 @@ The basic structure is as follows:
     </div>
 
     <script type="module">
-        import { createClient } from '[https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm](https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm)'
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
         
         // ... Game Logic here (See step 3) ...
     </script>
