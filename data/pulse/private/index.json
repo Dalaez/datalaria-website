@@ -266,8 +266,8 @@
     "brief_es": "Por qué el 'prompt-and-pray' acumula deuda técnica invisible que revienta a los pocos días y cómo Datalaria Helix estructura un escuadrón coordinado de 12 agentes especializados con separación de poderes y veto vinculante.",
     "brief_en": "Why 'prompt-and-pray' accumulates invisible technical debt that collapses within days, and how Datalaria Helix structures a coordinated squad of 12 specialized agents with separation of powers and binding veto authority.",
     "publish_date": "2027-01-19",
-    "last_modified_es": "2026-11-07T15:13:20.822629Z",
-    "last_modified_en": "2026-11-07T15:13:56.669931Z",
+    "last_modified_es": "2026-11-07T17:18:43+01:00",
+    "last_modified_en": "2026-11-07T17:18:43+01:00",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -329,8 +329,8 @@
     "brief_es": "Por qué cargar decenas de reglas agénticas satura el contexto de los LLMs y cómo el algoritmo matemático de triaje de Helix y su compilador determinista reducen un 87 % el consumo de tokens manteniendo cero fricción en Antigravity, Claude y Cursor.",
     "brief_en": "Why loading dozens of agentic instructions degrades LLM context windows, and how Helix's mathematical triage algorithm and deterministic compiler slash token consumption by 87% with zero friction across Antigravity, Claude, and Cursor.",
     "publish_date": "2027-01-26",
-    "last_modified_es": "2026-11-07T15:14:42.071925Z",
-    "last_modified_en": "2026-11-07T15:15:14.767298Z",
+    "last_modified_es": "2026-11-07T17:18:43+01:00",
+    "last_modified_en": "2026-11-07T17:18:43+01:00",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -392,8 +392,8 @@
     "brief_es": "Por qué pedirle a un LLM que evalúe su propio código es una trampa cognitiva y cómo el CLI helix.py de cero dependencias implementa un motor matemático de SpecQualityScore y marcha atrás automática ante dos fallos consecutivos.",
     "brief_en": "Why asking an LLM to evaluate its own code is a cognitive trap, and how the zero-dependency helix.py CLI implements a mathematical SpecQualityScore engine and automatic rollback upon two consecutive failures.",
     "publish_date": "2027-02-02",
-    "last_modified_es": "2026-11-07T15:15:57.952500Z",
-    "last_modified_en": "2026-11-07T15:17:24.635670Z",
+    "last_modified_es": "2026-11-07T17:18:43+01:00",
+    "last_modified_en": "2026-11-07T17:18:43+01:00",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -7473,8 +7473,8 @@
     "brief_es": "Spec-Driven Development OS — La spec es el ADN de tu app; los agentes solo la expresan.",
     "brief_en": "Spec-Driven Development OS — The spec is your app's DNA; AI agents merely express it.",
     "publish_date": "2026-11-03",
-    "last_modified_es": "2026-11-07T16:18:49.699072Z",
-    "last_modified_en": "2026-11-07T16:18:49.699072Z",
+    "last_modified_es": "2026-11-07T17:18:43+01:00",
+    "last_modified_en": "2026-11-07T17:18:43+01:00",
     "language_parity": "complete",
     "category": "Aplicaciones Web",
     "categories": [
