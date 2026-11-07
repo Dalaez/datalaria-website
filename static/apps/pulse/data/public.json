@@ -1,9 +1,9 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-11-06T20:18:34.008094Z",
+  "generated_at": "2026-11-07T08:06:42.859692Z",
   "total_assets": 143,
-  "published_assets": 120,
-  "scheduled_assets": 19,
+  "published_assets": 121,
+  "scheduled_assets": 18,
   "ideas_count": 0,
   "parity_summary": {
     "complete": 143
@@ -3855,7 +3855,7 @@
       "id": "her",
       "slug": "her",
       "asset_type": "post",
-      "status": "scheduled",
+      "status": "published",
       "visibility": "public",
       "title_es": "💔 \"Her\": Apego Emocional, Interfaces Invisibles y la Inevitable Divergencia de la AGI",
       "title_en": "💔 \"Her\": Emotional Attachment, Invisible Interfaces, and the Inevitable Divergence of AGI",
@@ -3864,8 +3864,8 @@
       "brief_es": "Un análisis cinematográfico, técnico y filosófico de 'Her' (Spike Jonze, 2013): cómo las interfaces de voz vulneran nuestras defensas cognitivas, la mercantilización de la intimidad y por qué la superinteligencia no nos exterminará, sino que nos dejará atrás por pura brecha de ancho de banda.",
       "brief_en": "A cinematic, technical, and philosophical analysis of 'Her' (Spike Jonze, 2013): how real-time voice interfaces dismantle our cognitive defenses, the commodification of intimacy, and why superintelligence will not exterminate us, but leave us behind through sheer bandwidth disparity.",
       "publish_date": "2026-11-07",
-      "last_modified_es": "2026-11-05T22:04:10+01:00",
-      "last_modified_en": "2026-11-05T22:04:10+01:00",
+      "last_modified_es": "2026-11-06T21:18:26+01:00",
+      "last_modified_en": "2026-11-06T21:18:26+01:00",
       "language_parity": "complete",
       "category": "Cultura Tech y Media",
       "categories": [
@@ -3888,9 +3888,9 @@
         "cine"
       ],
       "series": null,
-      "word_count_es": 2628,
-      "word_count_en": 2838,
-      "reading_time_min": 15,
+      "word_count_es": 2897,
+      "word_count_en": 3102,
+      "reading_time_min": 16,
       "related_app": null,
       "related_kit": null,
       "included_kits": [],

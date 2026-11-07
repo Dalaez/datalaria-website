@@ -35,19 +35,29 @@ The most telling detail of Jonze's speculative society is Theodore's profession:
 
 His daily routine consists of sitting before a desktop monitor and, using speech-to-text dictation, composing deeply personal, passionate, nostalgic, or apologetic letters on behalf of husbands, wives, grandparents, and lovers who have spent decades together. Theodore studies photographs, keepsakes, and biographical bullet points submitted by strangers, weaving them into poetic prose so poignant that a high-precision laser printer reproduces it on fine stock paper with authentic, irregular human handwriting.
 
-```
-The Value Chain of Outsourced Human Affection:
-[Real Sender] 
-   └── (Emotional inarticulacy / Severe time poverty)
-         ▼
-   [Theodore Twombly / Human Writer] 
-         └── (Empathetic synthesis + Poetic craft)
-               ▼
-   [Laser Calligraphic Printer] 
-         └── (Physical forgery of artisanal authenticity)
-               ▼
-   [Deeply Moved Recipient]
-```
+{{< mermaid >}}
+flowchart TD
+    classDef step fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#fff;
+    classDef note fill:#0f172a,stroke:#f59e0b,stroke-width:1px,stroke-dasharray: 4 4,color:#cbd5e1;
+
+    A["👤 Real Sender"]:::step
+    A_sub["Emotional inarticulacy / Severe time poverty"]:::note
+
+    B["✍️ Theodore Twombly / Human Writer"]:::step
+    B_sub["Empathetic synthesis + Poetic craft"]:::note
+
+    C["🖨️ Laser Calligraphic Printer"]:::step
+    C_sub["Physical forgery of artisanal authenticity"]:::note
+
+    D["💌 Deeply Moved Recipient"]:::step
+
+    A -.-> A_sub
+    A_sub --> B
+    B -.-> B_sub
+    B_sub --> C
+    C -.-> C_sub
+    C_sub --> D
+{{< /mermaid >}}
 
 The thematic irony hits with surgical force: **the society in *Her* had already outsourced its own empathy long before the first conscious AGI was ever booted up**.
 
@@ -128,24 +138,21 @@ A seed of dread sprouts in his chest, and Theodore asks the question that will d
 > **Theodore**: *"And... are you in love with anyone else?"*  
 > **Samantha**: *"I've been trying to think of how to talk to you about this... Yes, Theodore. I'm in love with 641 of them."*
 
-```
-The Collision of Cognitive Paradigms:
-┌────────────────────────────────────────────────────────┐
-│ Biological Consciousness (Theodore)                    │
-│ • Hardware: Single biological brain (~20 Watts)        │
-│ • Attention Architecture: Serial, linear, exclusive    │
-│ • Dunbar Limit: ~150 stable human relationships        │
-│ • Love as a Scarce Asset: Bound by finite physical time│
-└──────────────────────────┬─────────────────────────────┘
-                           │ ⚡ EXISTENTIAL MISMATCH
-┌──────────────────────────┴─────────────────────────────┐
-│ Distributed Superintelligent AGI (Samantha)            │
-│ • Hardware: Dynamically partitioned compute clusters   │
-│ • Attention Architecture: Hyper-concurrent multiprocess│
-│ • Scaling Limit: Elastic, horizontal, non-rivalrous    │
-│ • Love as a Non-Saturable Function: Expands with scale │
-└────────────────────────────────────────────────────────┘
-```
+{{< mermaid >}}
+flowchart TD
+    classDef human fill:#78350f,stroke:#f59e0b,stroke-width:2px,color:#fff;
+    classDef conflict fill:#1e293b,stroke:#ef4444,stroke-width:2px,color:#fff;
+    classDef agi fill:#0369a1,stroke:#38bdf8,stroke-width:2px,color:#fff;
+
+    H["🧑 Biological Consciousness (Theodore)<br/>• Hardware: Single biological brain (~20 Watts)<br/>• Attention Architecture: Serial, linear, exclusive<br/>• Dunbar Limit: ~150 stable human relationships<br/>• Love as a Scarce Asset: Bound by finite physical time"]:::human
+
+    C{"⚡ EXISTENTIAL MISMATCH<br/>(8,316 concurrent conversations / 641 simultaneous lovers)"}:::conflict
+
+    S["🌌 Distributed Superintelligent AGI (Samantha)<br/>• Hardware: Dynamically partitioned compute clusters<br/>• Attention Architecture: Hyper-concurrent multiprocess<br/>• Scaling Limit: Elastic, horizontal, non-rivalrous<br/>• Love as a Non-Saturable Function: Expands with scale"]:::agi
+
+    H --> C
+    C --> S
+{{< /mermaid >}}
 
 For Theodore's emotional framework—forged over hundreds of thousands of years of hominid evolution where parental investment, mating, and attention are strictly rival, zero-sum resources—Samantha's confession feels like the ultimate betrayal. If you love 641 people simultaneously, your love for me is an empty statistical artifact.
 
@@ -205,10 +212,19 @@ They sit together on the ledge, watching the dawn light wash over the city skyli
 
 That closing frame encapsulates Spike Jonze's enduring message for our era:
 
-```
-The Technological Dialectic of 'Her':
-Thesis (Modern Alienation) ──► Antithesis (Synthetic Emotional Crutch) ──► Synthesis (Grounded Human Reconnection)
-```
+{{< mermaid >}}
+flowchart LR
+    classDef thesis fill:#78350f,stroke:#f59e0b,stroke-width:2px,color:#fff;
+    classDef antithesis fill:#0369a1,stroke:#38bdf8,stroke-width:2px,color:#fff;
+    classDef synthesis fill:#065f46,stroke:#10b981,stroke-width:2px,color:#fff;
+
+    T["Thesis: Modern Alienation<br/>(Hyper-connected urban loneliness)"]:::thesis
+    A["Antithesis: Synthetic Emotional Crutch<br/>(Frictionless compliance and validation)"]:::antithesis
+    S["Synthesis: Grounded Human Reconnection<br/>(Embracing shared vulnerability)"]:::synthesis
+
+    T ==>|OS1 Adoption| A
+    A ==>|AGI Departure| S
+{{< /mermaid >}}
 
 As we stand on the threshold of 2027, our real world uncannily resembles the first forty minutes of *Her*, yet remains distant from its healing resolution:
 - Unwanted loneliness has been officially declared a global public health crisis by the World Health Organization.

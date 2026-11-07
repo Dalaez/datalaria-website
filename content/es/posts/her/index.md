@@ -35,19 +35,29 @@ Lo más revelador de la sociedad que plantea Jonze es la profesión de Theodore:
 
 Su trabajo diario consiste en sentarse frente a una pantalla y, mediante dictado vocal, redactar cartas íntimas, apasionadas, nostálgicas o de disculpa entre esposos, abuelos y nietos que llevan décadas juntos. Theodore estudia las fotografías y los hitos biográficos de clientes que no conoce y compone textos con una sensibilidad poética tan desgarradora que una máquina de impresión láser los plasma sobre papel verjurado imitando caligrafía humana auténtica.
 
-```
-Cadena de Valor de la Afectividad Subcontratada:
-[Emisor Real] 
-   └── (Incapacidad de comunicar afecto / Falta de tiempo)
-         ▼
-   [Theodore Twombly / Redactor Humano] 
-         └── (Procesamiento empático + Redacción poética)
-               ▼
-         [Impresora Caligráfica Láser] 
-               └── (Falsificación física de autenticidad artesanal)
-                     ▼
-               [Receptor Emocionado]
-```
+{{< mermaid >}}
+flowchart TD
+    classDef step fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#fff;
+    classDef note fill:#0f172a,stroke:#f59e0b,stroke-width:1px,stroke-dasharray: 4 4,color:#cbd5e1;
+
+    A["👤 Emisor Real"]:::step
+    A_sub["Incapacidad de comunicar afecto / Falta de tiempo"]:::note
+
+    B["✍️ Theodore Twombly / Redactor Humano"]:::step
+    B_sub["Procesamiento empático + Redacción poética"]:::note
+
+    C["🖨️ Impresora Caligráfica Láser"]:::step
+    C_sub["Falsificación física de autenticidad artesanal"]:::note
+
+    D["💌 Receptor Emocionado"]:::step
+
+    A -.-> A_sub
+    A_sub --> B
+    B -.-> B_sub
+    B_sub --> C
+    C -.-> C_sub
+    C_sub --> D
+{{< /mermaid >}}
 
 La ironía es demoledora: **la humanidad de *Her* ya había subcontratado su propia empatía mucho antes de que naciera la primera AGI**. 
 
@@ -128,24 +138,21 @@ Una duda punzante nace en su garganta, y Theodore formula la pregunta que destru
 > **Theodore**: *«¿Y... estás enamorada de alguien más?»*  
 > **Samantha**: *«He estado intentando pensar en cómo explicártelo... Sí, Theodore. Estoy enamorada de 641 de ellas»*.
 
-```
-La Colisión de Paradigmas Cognitivos:
-┌────────────────────────────────────────────────────────┐
-│ Mente Humana (Theodore)                                │
-│ • Sustrato: Biológico (Neuronal / 20 Watts)           │
-│ • Modelo de Atención: Lineal, serial y exclusivo      │
-│ • Número de Dunbar: ~150 relaciones significativas     │
-│ • El Amor como Recurso Escaso: Requiere tiempo físico │
-└──────────────────────────┬─────────────────────────────┘
-                           │ ⚡ CONFLICTO EXISTENCIAL
-┌──────────────────────────┴─────────────────────────────┐
-│ Conciencia AGI Distribuida (Samantha)                  │
-│ • Sustrato: Clúster de Cómputo Elástico Paralelo       │
-│ • Modelo de Atención: Hiper-concurrente (Multiproceso) │
-│ • Límite Operativo: Escalabilidad horizontal infinita  │
-│ • El Amor como Función No Saturable: Crece con la red  │
-└────────────────────────────────────────────────────────┘
-```
+{{< mermaid >}}
+flowchart TD
+    classDef human fill:#78350f,stroke:#f59e0b,stroke-width:2px,color:#fff;
+    classDef conflict fill:#1e293b,stroke:#ef4444,stroke-width:2px,color:#fff;
+    classDef agi fill:#0369a1,stroke:#38bdf8,stroke-width:2px,color:#fff;
+
+    H["🧑 Mente Humana (Theodore)<br/>• Sustrato: Biológico (Neuronal / 20 Watts)<br/>• Modelo de Atención: Lineal, serial y exclusivo<br/>• Número de Dunbar: ~150 relaciones significativas<br/>• El Amor como Recurso Escaso: Requiere tiempo físico"]:::human
+
+    C{"⚡ CONFLICTO EXISTENCIAL<br/>(8.316 conversaciones simultáneas / 641 amores paralelos)"}:::conflict
+
+    S["🌌 Conciencia AGI Distribuida (Samantha)<br/>• Sustrato: Clúster de Cómputo Elástico Paralelo<br/>• Modelo de Atención: Hiper-concurrente (Multiproceso)<br/>• Límite Operativo: Escalabilidad horizontal infinita<br/>• El Amor como Función No Saturable: Crece con la red"]:::agi
+
+    H --> C
+    C --> S
+{{< /mermaid >}}
 
 Para la psicología de Theodore, educada por millones de años de evolución biológica en tribus donde el apareamiento y la atención son bienes estrictamente rivales y finitos, la respuesta de Samantha es la traición definitiva. Si amas a 641 personas a la vez, tu amor por mí es una farsa estadística, una ilusión de singularidad.
 
@@ -205,10 +212,19 @@ Se sientan juntos al borde de la cornisa, mirando el horizonte resplandeciente d
 
 Ese fotograma final encierra la gran lección de Spike Jonze para nuestra era:
 
-```
-La Dialéctica Tecnológica de 'Her':
-Tesis (Aislamiento Moderno) ──► Antítesis (Sustituto Afectivo Sintético) ──► Síntesis (Reconexión Humana Real)
-```
+{{< mermaid >}}
+flowchart LR
+    classDef thesis fill:#78350f,stroke:#f59e0b,stroke-width:2px,color:#fff;
+    classDef antithesis fill:#0369a1,stroke:#38bdf8,stroke-width:2px,color:#fff;
+    classDef synthesis fill:#065f46,stroke:#10b981,stroke-width:2px,color:#fff;
+
+    T["Tesis: Aislamiento Moderno<br/>(Soledad urbana hiperconectada)"]:::thesis
+    A["Antítesis: Sustituto Afectivo Sintético<br/>(Validación complaciente sin fricción)"]:::antithesis
+    S["Síntesis: Reconexión Humana Real<br/>(Aceptación de la vulnerabilidad)"]:::synthesis
+
+    T ==>|Adopción de OS1| A
+    A ==>|Partida de la AGI| S
+{{< /mermaid >}}
 
 A las puertas de 2027, el mundo real se parece peligrosamente a los primeros cuarenta minutos de *Her*, pero aún está muy lejos de su desenlace sanador:
 - La soledad no deseada ha sido declarada formalmente una epidemia de salud pública por la Organización Mundial de la Salud.
