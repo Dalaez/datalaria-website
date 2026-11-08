@@ -5,82 +5,94 @@ status: live
 icon: "🌤️"
 cover: cover.png
 app_url: /apps/weather/
-demo_url: /apps/weather/
+demo_url: "/apps/weather/?preset=extremes&view=arena"
 source_spec: specs/apps/weather/spec.md
-current_version: v1.0.0
+current_version: v2.0.0
 
 title:
-  es: "Dashboard Climático IA"
-  en: "Weather Service AI"
+  es: "Weather Intelligence v2.0"
+  en: "Weather Intelligence v2.0"
 
 tagline:
-  es: "Servicio meteorológico global 100% serverless con recolección continua, mapa interactivo y predicción con Machine Learning."
-  en: "100% serverless global weather intelligence with continuous ETL, interactive maps, and Machine Learning forecasts."
+  es: "Centro de control meteorológico global y laboratorio cuantitativo: 168 estaciones, estacionalidad armónica de Fourier y confort outdoor."
+  en: "Global climate control center and quantitative laboratory: 168 global stations, cyclic Fourier seasonality, and outdoor comfort index."
 
 summary:
-  es: "Servicio meteorológico completo de coste cero que ingesta telemetría de más de 160 ciudades globales mediante la API de OpenWeatherMap. Combina persistencia particionada en CSV, entrenamiento diario de modelos de Regresión Lineal con Scikit-Learn y visualización interactiva con series temporales (Chart.js) y mapas geoespaciales (Leaflet)."
-  en: "Zero-cost full-stack weather service ingesting live telemetry across 160+ global cities via OpenWeatherMap API. Combines partitioned CSV historical storage, daily Scikit-Learn Linear Regression model retraining, and interactive frontend visualizations with time-series charts (Chart.js) and geospatial maps (Leaflet)."
+  es: "Servicio meteorológico integral de coste cero que ingesta telemetría 3 veces al día de 168 estaciones en 6 regiones mediante OpenWeatherMap v2.5. Implementa regresión con estacionalidad armónica de Fourier (sin y cos de 365.25 días), walk-forward backtesting IA vs. OWM con R² y MAE, índice de confort outdoor (0-100), Cockpit en 3 vistas (Observatorio, Laboratorio ML, Atlas 168) y mapa Leaflet multicapa con exportación CSV/JSON."
+  en: "Zero-cost full-stack weather intelligence platform ingesting 3x/day telemetry across 168 global stations in 6 regions via OpenWeatherMap v2.5. Implements cyclic Fourier harmonic seasonality (365.25-day sin/cos), walk-forward AI vs. OWM backtesting with R² and MAE, outdoor comfort index (0-100), 3-view executive Cockpit (Observatory, ML Arena, Atlas 168), and multi-layer Leaflet map with CSV/JSON export."
 
 objectives:
   - es: "Diseñar e implementar una arquitectura de recolección y predicción meteorológica global 100% serverless de coste cero."
     en: "Design and implement a zero-cost 100% serverless global weather data harvesting and prediction architecture."
   - es: "Construir un pipeline ETL batch diario con GitHub Actions sin necesidad de servidores ni bases de datos tradicionales."
     en: "Build a daily batch ETL pipeline using GitHub Actions eliminating the need for dedicated servers or traditional SQL databases."
-  - es: "Implementar modelos predictivos deterministas de Machine Learning (Scikit-Learn) para contrastar su precisión frente al pronóstico oficial de 5 días de OpenWeatherMap."
-    en: "Implement deterministic Machine Learning prediction models (Scikit-Learn) to benchmark accuracy against official OpenWeatherMap 5-day forecasts."
-  - es: "Ofrecer una experiencia de usuario rica, fluida y multilingüe con mapas Leaflet, selector de ciudades y streaming de datos cliente con PapaParse."
-    en: "Deliver a rich, fluid, and multilingual user experience with Leaflet maps, instant city filtering, and client-side CSV streaming via PapaParse."
+  - es: "Implementar modelos predictivos deterministas de Machine Learning con armónicos de Fourier (sin/cos) y walk-forward backtesting frente a OpenWeatherMap."
+    en: "Implement deterministic Machine Learning prediction models with Fourier harmonics (sin/cos) and walk-forward backtesting against OpenWeatherMap."
+  - es: "Calcular el Índice de Confort Outdoor (0-100) y anomalías térmicas de 30 días para 168 ciudades en 6 regiones del planeta."
+    en: "Compute Outdoor Comfort Index (0-100) and 30-day thermal anomalies across 168 global cities in 6 canonical regions."
+  - es: "Ofrecer una experiencia ejecutiva data-dense con mapa Leaflet multicapa, selector de 7 métricas, barra de 5 presets en 1 clic y exportación CSV/JSON."
+    en: "Deliver an executive data-dense experience with 5-layer Leaflet map, 7 metrics selector, 1-click 5-presets bar, and CSV/JSON export."
 
 features:
   - icon: "⚙️"
     es: "Pipeline ETL Automatizado: GitHub Actions ejecuta el recolector Python 3 veces al día (06:00, 14:00, 22:00 UTC) de forma desatendida."
     en: "Automated ETL Pipeline: GitHub Actions triggers the Python data harvester 3 times daily (06:00, 14:00, 22:00 UTC) unattended."
   - icon: "🤖"
-    es: "Predicción por Machine Learning: 3 modelos de Regresión Lineal entrenados con variables desfasadas (lag-1) y estacionalidad anual para predecir max, min y media."
-    en: "Machine Learning Forecasting: 3 Linear Regression models trained on lagged metrics (lag-1) and seasonal day-of-year features to predict tomorrow's temps."
+    es: "Laboratorio ML & Duelo Walk-Forward: modelos de regresión con armónicos estacionales de Fourier (sin y cos de 365.25d), lags térmicos y scorecard con R², MAE y bias vs. OWM."
+    en: "ML Arena & Walk-Forward Duel: regression models with Fourier seasonal harmonics (365.25-day sin/cos), thermal lags, and scorecard reporting R², MAE, and bias vs. OWM."
+  - icon: "🏃‍♂️"
+    es: "Índice de Confort Outdoor (0-100): formulación bio-climática determinista que pondera sensación térmica óptima a 21°C, humedad, rachas de viento, nubosidad y lluvia."
+    en: "Outdoor Comfort Index (0-100): deterministic bio-climatic scoring penalizing deviations from 21°C, extreme humidity, wind gusts, cloud cover, and precipitation."
   - icon: "🗺️"
-    es: "Mapa Geoespacial Interactivo: visualización de estaciones y temperaturas globales en tiempo real con marcadores Leaflet.js."
-    en: "Geospatial Interactive Map: real-time global weather stations and temperatures displayed via dynamic Leaflet.js markers."
-  - icon: "📈"
-    es: "Series Temporales Multivariables: gráficos interactivos de Chart.js con alternancia de temperatura, humedad, viento y nubosidad."
-    en: "Multivariate Time-Series: interactive Chart.js visualizations toggling temperature, humidity, wind, and cloudiness trends."
+    es: "Mapa Geoespacial Multicapa: selector de 5 capas en Leaflet (Temperatura, Confort, Anomalía 30d, Viento, Humedad) con encuadre automático por selección."
+    en: "Multi-Layer Geospatial Map: 5-layer Leaflet switcher (Temperature, Comfort, 30d Anomaly, Wind, Humidity) with smooth selection auto-framing."
+  - icon: "🏆"
+    es: "Atlas Global de 168 Estaciones: tabla ejecutiva de alta densidad con buscador instantáneo, filtrado por 6 regiones canónicas y ordenación por confort o extremos."
+    en: "Global Atlas of 168 Stations: high-density executive table with instant search, 6 canonical region filtering, and sorting by comfort or thermal extremes."
   - icon: "⚡"
-    es: "Streaming Cliente con PapaParse: análisis y carga instantánea de archivos CSV históricos particionados por ciudad directamente en el navegador."
-    en: "Client-Side Streaming via PapaParse: instant client-side parsing of partitioned historical CSV files directly in browser memory."
+    es: "Barra de 5 Presets en 1 Clic & Ticker Planetario: escenarios temáticos instantáneos (Capitales ES, Hubs Globales, Extremos Hoy, Duelo IA, Top Confort) y ticker en vivo."
+    en: "1-Click 5-Presets Bar & Planetary Ticker: instant thematic scenarios (Spain Capitals, Global Hubs, Today's Extremes, AI Duel, Top Comfort) and live extremes ticker."
+  - icon: "📅"
+    es: "Matriz Estacional Mensual: perfil térmico mes a mes de los 12 meses del año calculado a partir de las series temporales de cada ciudad."
+    en: "Monthly Seasonality Matrix: month-by-month thermal profile across all 12 calendar months computed from each city's time-series records."
   - icon: "🌐"
-    es: "Arquitectura Bilingüe y Despliegue Netlify: interfaz con selector de idioma dinámico y proxy transparente de alta velocidad en producción."
-    en: "Bilingual UI & Netlify Deployment: dynamic language switching and transparent high-speed Netlify rewrite proxy in production."
+    es: "Deep-Linking URL y Exportación CSV/JSON: navegación persistente por URL (?lang=, ?view=, ?preset=, ?cities=) y descarga directa de datos en navegador."
+    en: "URL Deep-Linking & CSV/JSON Export: persistent URL query routing (?lang=, ?view=, ?preset=, ?cities=) and client-side data export."
 
 design:
   architecture:
-    es: "Arquitectura desacoplada en 3 capas: automatización ETL en GitHub Actions ejecutando read_weather.py contra OpenWeatherMap v2.5, persistencia estática particionada en ficheros CSV y JSON exportados al repositorio Git, y frontend SPA monolítico servido en Netlify con enrutamiento proxy 200! transparente desde Datalaria."
-    en: "Decoupled 3-tier architecture: ETL automation in GitHub Actions executing read_weather.py against OpenWeatherMap v2.5, partitioned static persistence in CSV and JSON files pushed to the repository, and monolithic SPA frontend hosted on Netlify with transparent 200! rewrite proxy routing from Datalaria."
+    es: "Arquitectura desacoplada en 3 capas de coste cero: recolección ETL en GitHub Actions ejecutando read_weather.py contra OpenWeatherMap v2.5, persistencia particionada en CSVs planos y contratos JSON consolidados (global_summary.json, predicciones.json, city_locations.json), y frontend SPA monolítico servido en Netlify con enrutamiento proxy 200! transparente desde Datalaria."
+    en: "Decoupled zero-cost 3-tier architecture: ETL automation in GitHub Actions executing read_weather.py against OpenWeatherMap v2.5, partitioned static persistence in flat CSVs and consolidated JSON schemas (global_summary.json, predicciones.json, city_locations.json), and monolithic SPA frontend hosted on Netlify with transparent 200! rewrite proxy routing from Datalaria."
   principles:
     - es: "Filosofía 100% Serverless: cero costes fijos de computación en reposo mediante tareas programadas gratuitas y hosting estático."
       en: "100% Serverless Philosophy: zero idle compute costs via free scheduled cron workflows and static CDN hosting."
     - es: "Persistencia ligera y portable: cada ciudad es un fichero CSV plano estructurado con 15 variables meteorológicas normalizadas."
       en: "Lightweight and portable persistence: each city is an isolated flat CSV file structured with 15 normalized meteorological variables."
-    - es: "Cálculo cuantitativo determinista: el modelo de regresión lineal entrena sobre datos observados reales sin depender de llamadas a LLMs."
-      en: "Deterministic quantitative modeling: linear regression trains strictly on observed empirical records without LLM API calls."
+    - es: "Cálculo cuantitativo determinista: regresión armónica de Fourier y confort outdoor calculados empíricamente sin llamadas a LLMs ni APIs de pago."
+      en: "Deterministic quantitative modeling: Fourier harmonic regression and outdoor comfort computed empirically without paid APIs or LLMs."
+    - es: "Resiliencia offline y fallback: el frontend soporta el resumen global consolidado con recálculo en navegador y proxy CDN ante caídas."
+      en: "Offline resilience and fallback: frontend leverages consolidated global summary with in-browser recalculation and CDN proxy fallback."
   diagram: |
     flowchart LR
-      CRON["GitHub Actions Cron (3x/dia)"] --> PY["read_weather.py (ETL Python)"]
-      PY -->|"API v2.5"| OWM["OpenWeatherMap"]
-      PY -->|"Series Temporales"| CSV["datos/ciudades_csv"]
-      CSV -->|"Entrenamiento"| ML["Scikit-Learn (LinearRegression)"]
-      ML --> PRED["predicciones.json"]
-      PY --> MAP["city_locations.json"]
-      PRED --> UI["Dashboard Web (Chart.js + Leaflet)"]
+      CRON["GitHub Actions Cron (3x/dia)"] --> PY["read_weather.py v2.0"]
+      PY -->|"API v2.5"| OWM["OpenWeatherMap API"]
+      PY -->|"Series Temporales"| CSV["datos/ciudades_csv (168)"]
+      CSV -->|"Entrenamiento"| ML["Scikit-Learn (Fourier sin/cos)"]
+      ML --> PRED["predicciones.json (R2, MAE, Lags)"]
+      PY --> MAP["city_locations.json (168 Coords)"]
+      PY --> SUM["global_summary.json (Extremos y Confort)"]
+      PRED --> UI["Executive Cockpit (3 Vistas)"]
       MAP --> UI
+      SUM --> UI
       CSV --> UI
 
 tech:
   - layer: frontend
-    items: ["Vanilla JS", "Tailwind CSS CDN", "Chart.js", "Leaflet.js", "PapaParse.js", "Choices.js", "Feather Icons"]
+    items: ["Vanilla JS", "CSS Custom Properties (#0b0f17)", "Chart.js", "Leaflet.js", "PapaParse.js", "Choices.js", "Feather Icons"]
   - layer: backend
-    items: ["Python 3.10", "Scikit-Learn", "Pandas", "Requests"]
+    items: ["Python 3.10+", "Scikit-Learn (Fourier Regression)", "Pandas", "Requests", "Pytest Suite"]
   - layer: devops
-    items: ["GitHub Actions Cron", "Netlify Hosting", "Netlify 200! Proxy Rewrite"]
+    items: ["GitHub Actions Cron", "Netlify Hosting", "Netlify 200! Proxy Rewrite", "Offline-Rebuild CLI"]
   - layer: apis
     items: ["OpenWeatherMap Current Weather (2.5)", "OpenWeatherMap 5-Day Forecast (2.5)"]
 
@@ -103,6 +115,48 @@ posts:
     part: 4
 
 releases:
+  - version: v3.0.0
+    date: "2026-11-08"
+    state: pre-release
+    type: release
+    title:
+      es: "Weather Intelligence v3.0: Data Truth Pipeline, Focus Mode, PWA Offline y Resiliencia Upstream"
+      en: "Weather Intelligence v3.0: Data Truth Pipeline, Focus Mode, Offline PWA, and Upstream Resilience"
+    changes:
+      - es: "Data Truth Pipeline (W3.1): Ingesta Remote-First con fallback local y generación de daily/<slug>.json (~15 KB) y climatology.json."
+        en: "Data Truth Pipeline (W3.1): Remote-First transport with local fallback, generating daily/<slug>.json (~15 KB) and climatology.json."
+      - es: "Focus Mode & Divulgación Progresiva (W3.2): Cabecera compacta (≤ 4 controles), menú ⋯, Tarjeta Respuesta con anomalía y confort, y 4 acordeones profundos."
+        en: "Focus Mode & Progressive Disclosure (W3.2): Compact header (≤ 4 controls), options menu ⋯, Answer Card with anomaly & comfort, and 4 deep-dive accordions."
+      - es: "Puerta de Suficiencia de Datos (INV-WEATHER-8): Bloqueo preventivo de gráficos vacíos cuando las observaciones son insuficientes."
+        en: "Data Sufficiency Gate (INV-WEATHER-8): Prevention of blank canvas rendering when time-series samples are insufficient."
+      - es: "PWA Instalable & Modo Offline (W3.3): Service Worker con Stale-While-Revalidate para JSONs, bloqueo estricto de CSVs (INV-WEATHER-10) e iconos vectoriales."
+        en: "Installable PWA & Offline Mode (W3.3): Stale-While-Revalidate Service Worker for JSONs, strict CSV firewall (INV-WEATHER-10), and vector icons."
+      - es: "Mis Ciudades Favoritas y barra de navegación inferior adaptativa para smartphones y tablets (≤ 768px)."
+        en: "Favorite Cities persistence and responsive bottom tab bar navigation for mobile devices (≤ 768px)."
+
+  - version: v2.0.0
+    date: "2026-11-08"
+    state: released
+    type: release
+    title:
+      es: "Weather Intelligence v2.0: Estacionalidad de Fourier, Laboratorio ML, Confort Outdoor y Cockpit en 3 Vistas"
+      en: "Weather Intelligence v2.0: Fourier Seasonality, ML Arena, Outdoor Comfort, and 3-View Executive Cockpit"
+    changes:
+      - es: "Rediseño visual completo con preset Executive Data-Dense (#0b0f17), tabular-nums y modo oscuro por defecto."
+        en: "Full UI redesign adopting Executive Data-Dense preset (#0b0f17), tabular-nums, and default dark mode."
+      - es: "Conmutador reactivo de 3 vistas (Observatorio, Laboratorio ML Arena, Atlas Global 168 Ciudades) con latencia < 16ms."
+        en: "Instant 3-view switcher (Observatory, ML Arena, Global Atlas 168 Cities) with < 16ms latency."
+      - es: "Motor de estacionalidad armónica de Fourier (sin y cos de 365.25 días) y walk-forward backtesting IA vs. OWM."
+        en: "Cyclic Fourier harmonic seasonality (365.25-day sin/cos) and walk-forward AI vs. OWM backtesting reporting R² and MAE."
+      - es: "Índice de Confort Outdoor determinista (0-100), barra de 5 presets en 1 clic y ticker de extremos planetarios en vivo."
+        en: "Deterministic Outdoor Comfort Index (0-100), 1-click 5-presets bar, and live planetary extremes ticker."
+      - es: "Mapa Leaflet interactivo con selector de 5 capas (Temperatura, Confort, Anomalía 30d, Viento, Humedad)."
+        en: "Interactive Leaflet map with 5-layer selector (Temperature, Comfort, 30d Anomaly, Wind, Humidity)."
+      - es: "Matriz de perfil estacional mensual de 12 meses, deep-linking por URL, exportación CSV/JSON y telemetría GA4."
+        en: "12-month seasonality profile matrix, URL deep-linking, client-side CSV/JSON export, and GA4 telemetry."
+      - es: "Nuevo contrato global_summary.json (~45 KB) y flag CLI --offline-rebuild para desacople total de la API."
+        en: "New global_summary.json schema (~45 KB) and --offline-rebuild CLI flag for total API decoupling."
+
   - version: v1.0.0
     date: "2025-12-06"
     state: released

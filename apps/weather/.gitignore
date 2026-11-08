@@ -1,5 +1,6 @@
 # Weather data - populated dynamically by GitHub Actions / read_weather.py
 datos/
+derived/
 
 # Python cache & virtual environments
 __pycache__/

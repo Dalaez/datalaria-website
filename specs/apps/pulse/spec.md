@@ -1,7 +1,7 @@
 # Especificación Técnica SDD: Datalaria Pulse (`pulse`)
 
 > **ID de Especificación:** `SPEC-APP-PULSE`  
-> **Versión:** `1.1.0`  
+> **Versión:** `1.2.0`  
 > **Estado:** `APPROVED`  
 > **Propietario de Dominio:** Datalaria (Operations Engineering & Applied AI)  
 > **Ubicación del Código Fuente:** `apps/pulse/web/` (Frontend SPA) · `ops/pulse/` (Motor Python ETL + Kit Factory)  
@@ -165,6 +165,7 @@ Cada fila o tarjeta representa un **activo único bilingüe** (`post`, `app` o `
 - **INV-PULSE-3 (Emparejamiento Bilingüe Exacto):** Todo par de artículos en `content/es/posts/<slug>` y `content/en/posts/<slug>` que comparta `translationKey` (o nombre de carpeta) debe consolidarse en un único `ContentAsset` sin duplicar filas.
 - **INV-PULSE-4 (Firewall `static/` — Constitución Art. 2):** `static/apps/pulse/` solo puede contener HTML, JS, CSS, imágenes y `data/public.json`. Cero archivos `.py`, `.yaml`, `.xlsx` o `.env`.
 - **INV-PULSE-5 (Compatibilidad Universal del Excel del Kit):** El libro `Pulse_Content_Ops.xlsx` debe generarse usando fórmulas compatibles con Excel 2016/2019/365 y Google Sheets (`COUNTIFS`, `SUMIFS`, `INDEX/MATCH`), sin depender de funciones exclusivas de insiders para garantizar que cualquier comprador B2B pueda abrirlo sin errores `#NAME?`.
+- **INV-PULSE-6 (Determinismo y Privacidad del Motor de Impacto SEO/GA4):** `ops/pulse/impact_analyzer.py` cruza métricas privadas (`metrics.json`, `monthly_metrics.json`, `index.json`) y exporta `data/pulse/private/impact_report.json` con `visibility: "private"`. Queda terminantemente prohibido alojar `impact_report.json` o métricas absolutas dentro de `static/`.
 
 ---
 
@@ -263,3 +264,4 @@ Para dar por completado cada hito de la Fase 5, deben superarse con código `0` 
 | `v0.1.0` | 2026-10-28 | 📐 Spec | Aprobación de la especificación técnica SDD (`SPEC-APP-PULSE`), modelo unificado de activos (`post`/`app`/`kit`), privacidad por métricas relativas y diseño del Kit Excel + importador de Notion (Hitos 5.0 y 5.1). | *Completado* |
 | `v0.2.0` | 2026-10-29 | ⚡ Pro Cloud | Arquitectura Pro Cloud sobre Supabase cluster datalaria-core (esquema pulse, RLS estricto auth.uid() = user_id, Auth en React SPA, sincronización bidireccional Web ↔ Localhost, usuario demo confirmado y suite pytest 18/18 verde — Hito 5.7 / ADR-015). | *Completado* |
 | `v0.3.0` | 2026-11-03 | 🛡️ Operación Crisol | Auditoría integral del escuadrón Datalaria Helix (Hito 6.3): `design.md`, re-empaquetado del Kit en 3 carpetas numeradas, exportador Excel directo `.xlsx` en `migrate_notion.py`, Guía Ejecutiva PDF (`GUIA_EJECUTIVA_PULSE.pdf`), dataset de muestra `sample_notion_export.csv`, conectores duales Power Query M, evolución UX/PLG en React SPA (diagnóstico de Notion en 1 clic, enlace `← Datalaria`, avance rápido Kanban y URLs dinámicas del Kit), script de gobernanza de embargo `release_18nov.py` y suite de 20 tests pytest. | *Completado* |
+| `v0.4.0` | 2026-11-08 | 📈 Impact Analyzer | Construcción del analizador de impacto SEO/GA4 (`ops/pulse/impact_analyzer.py`), contratos Pydantic v2 (`PulseImpactReport`, `QuickWinItem`, `MonetizationOrphanItem`), detección de 12 Quick Wins de CTR/SERP, 15 Huérfanos de Monetización, fórmula `Editorial ROI Score`, invariante `INV-PULSE-6` y primera auditoría estratégica en `specs/audit/IMPACT_REPORT.md` (Hito 7.2 / ADR-020). | *Completado* |

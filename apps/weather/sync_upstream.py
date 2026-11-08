@@ -1,0 +1,217 @@
+# -*- coding: utf-8 -*-
+"""Sincronizador y verificador de artefactos upstream para Weather Service v3.0 (Dalaez/app_weather)."""
+
+from __future__ import annotations
+
+import argparse
+import json
+import os
+from pathlib import Path
+import shutil
+import sys
+import urllib.request
+import urllib.error
+
+if sys.platform == "win32":
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+        sys.stderr.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
+
+BASE_DIR = Path(__file__).resolve().parent
+
+REQUIRED_ROOT_FILES = [
+    "index.html",
+    "read_weather.py",
+    "build_derived.py",
+    "_headers",
+    "requirements.txt",
+    "ciudades.txt",
+    "predicciones.json",
+    "city_locations.json",
+    "global_summary.json",
+    "README.md",
+    ".github/workflows/actualizar-clima.yml"
+]
+
+REMOTE_BASE_URL = "https://datalaria-app-weather.netlify.app"
+
+
+def verify_upstream_sync(app_dir: Path | None = None) -> tuple[bool, list[str]]:
+    """Verifica que todos los artefactos canónicos existen y cumplen sus contratos."""
+    if app_dir is None:
+        app_dir = BASE_DIR
+
+    issues: list[str] = []
+
+    for rel_path in REQUIRED_ROOT_FILES:
+        target = app_dir / rel_path
+        if not target.exists():
+            issues.append(f"Falta archivo requerido: {rel_path}")
+
+    # Verificar que global_summary.json es válido
+    summary_file = app_dir / "global_summary.json"
+    if summary_file.exists():
+        try:
+            with open(summary_file, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            if not isinstance(data, dict) or "cities" not in data or len(data["cities"]) < 100:
+                issues.append("global_summary.json no contiene al menos 100 ciudades válidas.")
+        except Exception as e:
+            issues.append(f"global_summary.json corrupto: {e}")
+
+    # Verificar que predicciones.json contiene model_metrics o pred_ia
+    pred_file = app_dir / "predicciones.json"
+    if pred_file.exists():
+        try:
+            with open(pred_file, "r", encoding="utf-8") as f:
+                preds = json.load(f)
+            sample_city = next(iter(preds.values()), {})
+            if "model_metrics" not in sample_city and "pred_ia" not in sample_city:
+                issues.append("predicciones.json no contiene la estructura esperada.")
+        except Exception as e:
+            issues.append(f"predicciones.json corrupto: {e}")
+
+    # Verificar datos/ con CSVs
+    datos_dir = app_dir / "datos"
+    if not datos_dir.exists() or len(list(datos_dir.glob("*.csv"))) < 50:
+        issues.append("datos/ no contiene al menos 50 archivos CSV históricos.")
+
+    return len(issues) == 0, issues
+
+
+def export_to_upstream(app_dir: Path, target_dir: Path) -> int:
+    """Exporta el árbol limpio hacia el clon local de Dalaez/app_weather."""
+    ok, issues = verify_upstream_sync(app_dir)
+    if not ok:
+        print("Error de verificación antes de exportar:")
+        for issue in issues:
+            print(f"  - {issue}")
+        return 1
+
+    target_dir.mkdir(parents=True, exist_ok=True)
+
+    # Copiar archivos raíz requeridos
+    for rel_path in REQUIRED_ROOT_FILES:
+        src = app_dir / rel_path
+        dst = target_dir / rel_path
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(src, dst)
+        print(f"Copiado: {rel_path}")
+
+    # Copiar datos/*.csv si existen
+    datos_dir = app_dir / "datos"
+    if datos_dir.exists():
+        datos_dst = target_dir / "datos"
+        datos_dst.mkdir(parents=True, exist_ok=True)
+        csv_count = 0
+        for csv_file in datos_dir.glob("*.csv"):
+            shutil.copy2(csv_file, datos_dst / csv_file.name)
+            csv_count += 1
+        print(f"Copiados {csv_count} archivos CSV en datos/")
+
+    print(f"\n✅ Exportación upstream completada con éxito en: {target_dir}")
+    print("\n--- INSTRUCCIONES MANUALES PARA UPSTREAM (Dalaez/app_weather) ---")
+    print("1. En tu clon local de app_weather, crea un tag de seguridad: git tag pre-w3.1")
+    print(f"2. Copia los archivos desde {target_dir} a la raíz del repositorio.")
+    print("3. Haz commit y push: git add . && git commit -m 'feat: Data Truth Pipeline v3.0' && git push origin main")
+    print("4. En GitHub Actions, ejecuta manualmente el workflow 'Actualizar Datos Climáticos' (workflow_dispatch).")
+    print("5. Comprueba en tu navegador que https://datalaria-app-weather.netlify.app/derived/index.json devuelve código 200.")
+    return 0
+
+
+def pull_from_remote(app_dir: Path, cities: list[str] | None = None, with_daily: bool = False) -> int:
+    """Descarga de Netlify los resúmenes y derivados JSON compactos hacia apps/weather/derived/."""
+    derived_dir = app_dir / "derived"
+    derived_dir.mkdir(parents=True, exist_ok=True)
+
+    files_to_pull = [
+        ("derived/index.json", derived_dir / "index.json"),
+        ("derived/climatology.json", derived_dir / "climatology.json"),
+        ("global_summary.json", app_dir / "global_summary.json"),
+        ("predicciones.json", app_dir / "predicciones.json"),
+        ("city_locations.json", app_dir / "city_locations.json")
+    ]
+
+    print(f"Descargando metadatos y resúmenes desde {REMOTE_BASE_URL}...")
+    pulled_count = 0
+    for remote_rel, local_path in files_to_pull:
+        url = f"{REMOTE_BASE_URL}/{remote_rel}"
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "Datalaria-Sync/3.0"})
+            with urllib.request.urlopen(req, timeout=8) as resp:
+                content = resp.read()
+                local_path.parent.mkdir(parents=True, exist_ok=True)
+                with open(local_path, "wb") as f:
+                    f.write(content)
+                print(f"  ✓ {remote_rel} ({len(content)} bytes)")
+                pulled_count += 1
+        except urllib.error.HTTPError as e:
+            if e.code == 404:
+                print(f"  - {remote_rel}: No publicado aún en remoto (HTTP 404, fallback local activo).")
+            else:
+                print(f"  ! {remote_rel}: Error HTTP {e.code}")
+        except Exception as e:
+            print(f"  ! {remote_rel}: Error de conexión: {e}")
+
+    # Descarga selectiva de daily si se solicita
+    if cities:
+        daily_dir = derived_dir / "daily"
+        daily_dir.mkdir(parents=True, exist_ok=True)
+        for city_slug in cities:
+            slug_clean = city_slug.lower().strip()
+            remote_rel = f"derived/daily/{slug_clean}.json"
+            url = f"{REMOTE_BASE_URL}/{remote_rel}"
+            local_path = daily_dir / f"{slug_clean}.json"
+            try:
+                req = urllib.request.Request(url, headers={"User-Agent": "Datalaria-Sync/3.0"})
+                with urllib.request.urlopen(req, timeout=8) as resp:
+                    content = resp.read()
+                    with open(local_path, "wb") as f:
+                        f.write(content)
+                    print(f"  ✓ {remote_rel} ({len(content)} bytes)")
+                    pulled_count += 1
+            except urllib.error.HTTPError as e:
+                if e.code == 404:
+                    print(f"  - {remote_rel}: No encontrado en remoto (HTTP 404).")
+                else:
+                    print(f"  ! {remote_rel}: HTTP {e.code}")
+            except Exception as e:
+                print(f"  ! {remote_rel}: Error: {e}")
+
+    print(f"Sincronización --pull finalizada: {pulled_count} ficheros actualizados.")
+    return 0
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Verificador y sincronizador upstream para Weather Service v3.0.")
+    parser.add_argument("--check", action="store_true", help="Verifica la integridad de los archivos canónicos.")
+    parser.add_argument("--export-dir", type=str, help="Directorio destino hacia donde exportar los archivos para git push.")
+    parser.add_argument("--pull", action="store_true", help="Descarga resúmenes compactos desde producción (Netlify).")
+    parser.add_argument("--cities", type=str, default=None, help="Lista separada por comas de ciudades/slugs para --pull.")
+    parser.add_argument("--with-daily", action="store_true", help="Descarga series daily para las ciudades especificadas.")
+
+    args = parser.parse_args()
+
+    if args.pull:
+        cities_list = [c.strip() for c in args.cities.split(",")] if args.cities else None
+        return pull_from_remote(BASE_DIR, cities=cities_list, with_daily=args.with_daily)
+
+    if args.export_dir:
+        return export_to_upstream(BASE_DIR, Path(args.export_dir))
+
+    # Por defecto --check
+    ok, issues = verify_upstream_sync()
+    if ok:
+        print("OK: Todos los artefactos canónicos de Weather Service v3.0 están presentes y válidos para upstream.")
+        return 0
+    else:
+        print("FALLO: Se encontraron discrepancias en los artefactos:")
+        for issue in issues:
+            print(f"  - {issue}")
+        return 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

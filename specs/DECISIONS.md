@@ -368,3 +368,69 @@
      - Completar y dejar congelados primero los **Hitos 6.8 y 6.9 de Datalaria Helix** (empaquetado comercial y serie de posts programados para enero de 2027), y a continuación ejecutar los **Hitos 7.1 a 7.5 de Datalaria Scriba**.
 - **Consecuencias:**
   - Sincronización total entre el blog, los productos de 19 € en Lemon Squeezy, la lista de Brevo y la distribución en 5 canales sin costes fijos de APIs.
+
+
+---
+
+## ADR-021: Evolución de Weather Service a Observatorio Climático & Laboratorio ML (`v2.0.0`), Estrategia de Almacenamiento en 3 Etapas de Coste 0 € y Ejecución Híbrida Argon/Flash
+- **Fecha:** 2026-11-08
+- **Estado:** Aceptado (En ejecución en Hitos 2.3 a 2.7)
+- **Contexto:**
+  1. La aplicación Flagship **Weather Service** (`/apps/weather/`) acumula en producción (`Dalaez/app_weather` → `datalaria-app-weather.netlify.app`) más de **377 días continuos** de telemetría real (**~192.360 registros** en **168 ciudades globales** con 15 variables cada 8 horas), habiendo cruzado por primera vez un ciclo estacional completo (>365 días).
+  2. La auditoría del Escuadrón Datalaria Helix detectó 5 oportunidades de alto impacto:
+     - **Modelo ML sin memoria ni estacionalidad cíclica:** `read_weather.py` utilizaba `dia_del_anio` ($1 \dots 366$) como variable lineal directa en `LinearRegression` (provocando distorsión en el cambio de año y al modelar una curva anual sinusoidal como una recta) y sobrescribía las predicciones diarias sin medir su acierto real (MAE / $R^2$ / Win-Rate) frente a OpenWeatherMap.
+     - **168 ciudades sin agregación global:** El cliente solo cargaba `city_locations.json` (4 campos) y obligaba a buscar ciudades a ciegas, sin rankings de extremos, anomalías térmicas ($\Delta_{30\text{d}}$) ni Índice de Confort Outdoor.
+     - **Desconexión UX/UI, i18n y GA4:** Interfaz legacy en modo claro por defecto, pérdida de idioma al cruzar desde `/en/apps/weather/`, `app_url` y `demo_url` idénticos en `data/apps/weather.yaml`, y cero telemetría GA4 ni conversión PLG.
+     - **Copias CSV obsoletas en `static/apps/weather/datos/`:** 168 archivos CSV de noviembre de 2025 residían en `static/apps/weather/datos/` sin ser utilizados en producción debido al proxy `200!` de `_redirects`.
+  3. El usuario requiere mantener **coste fijo 0,00 €/mes** hasta que el producto monetice por sí mismo, preparando una ruta limpia hacia Supabase u otra plataforma cuando el volumen escale sustancialmente en ~1 año, y optimizar la agilidad y el consumo de tokens combinando **Gemini 4 Argon** (Diseño/Specs) con **Gemini 3.8 Flash** (Ejecución hito a hito).
+- **Decisión:**
+  1. **Estrategia de Persistencia Escalable en 3 Etapas (Coste 0,00 € Garantizado):**
+     - **Etapa 1 (Actual — Hitos 2.3 a 2.7, hasta ~550k filas / 3 años):** Mantener Git + Netlify CDN con pre-agregación en `global_summary.json` ($\sim 45\text{ KB}$) generado por `read_weather.py v2.0` para carga instantánea ($< 15\text{ ms}$) y lectura de CSVs bajo demanda. Eliminar los 168 CSVs obsoletos de `static/apps/weather/datos/`.
+     - **Etapa 2 (Horizonte +12–18 meses):** Compactación columnar en **Apache Parquet** (reducción de tamaño $10\times$) consultable en cliente con DuckDB-Wasm o desde CDN gratuito, evitando saturar los 500 MB del Free Tier PostgreSQL de `datalaria-core` con series temporales *append-only*.
+     - **Etapa 3 (Monetización Pro):** Esquema `weather` en Supabase (`datalaria-core`) reservado exclusivamente a tablas transaccionales ligeras de usuarios registrados (`weather.user_alerts`, `weather.favorite_cities`, `weather.daily_model_scores`, $< 5\text{ MB}$ con RLS).
+  2. **Evolución Funcional a `Weather Service v2.0` (`SPEC-APP-WEATHER` v2.0.0 y `DESIGN-APP-WEATHER`):**
+     - **Motor ML v2.0:** Transformación armónica de Fourier ($\sin/\cos$ del día del año), retardos a 24h/48h, amplitud térmica diurna, coherencia física $\min \le \text{media} \le \max$, walk-forward backtesting ($\text{MAE}_{30\text{d}}$, $R^2$, importancia de variables) e **Índice de Confort Outdoor (`0..100`)**.
+     - **Executive Weather Cockpit en 3 Vistas:** `Observatorio` (Mapa multicapa + Presets en 1 clic + Super-Cards + Matriz estacional), `Laboratorio ML (IA vs OWM)` y `Atlas Global (168 Ciudades)` con exportación CSV/JSON, Deep-Links (`?lang=`, `?preset=`, `?cities=`, `?view=`) y eventos GA4.
+  3. **Protocolo de Ejecución Híbrida Argon + Flash:**
+     - **Gemini 4 Argon** diseña y cierra los contratos formales (`spec.md`, `design.md`, fórmulas e invariantes) en el Hito 2.3.
+     - **Gemini 3.8 Flash** ejecuta secuencialmente los Hitos 2.4 (Backend Python + `pytest`), 2.5 (Frontend Cockpit `index.html`), 2.6 (Fichas ES/EN + `weather.yaml` + sync upstream) y 2.7 (Artículo Parte 5 ES/EN) guiado por los Verification Gates deterministas.
+- **Consecuencias:**
+  - Máxima velocidad de entrega y ahorro de tokens de modelo pesado sin pérdida de calidad gracias a contratos SDD verificables al 100% por CLI (`pytest` + `hugo`).
+  - Protección total de la cuota gratuita de Supabase (`datalaria-core`) mientras `Weather Service` multiplica por 10 el valor percibido de sus +192.000 registros.
+
+---
+
+## ADR-022: Data Truth Pipeline: Derivados JSON en Upstream, Frontend Remote-First y Persistencia Local Opcional (`v3.0.0`)
+- **Fecha:** 2026-11-08
+- **Estado:** Aceptado (En ejecución en Hitos W3.1, W3.2 y W3.3)
+- **Contexto:**
+  1. La auditoría empírica de la interfaz `v2.0` reveló que las gráficas de evolución temporal, amplitud diurna y perfil estacional aparecían incompletas o vacías en entornos locales y de producción porque:
+     - Los CSVs locales en `apps/weather/datos/*.csv` estaban congelados en el 30 de noviembre de 2025 (124 registros por estación), mientras que el repositorio upstream en producción (`Dalaez/app_weather`) alojaba más de 1.147 registros por ciudad hasta la fecha actual (>192.000 lecturas en total).
+     - La lógica de carga del cliente solo recurría al CDN remoto si el archivo local devolvía HTTP 404, bloqueando el refresco de datos reales.
+     - OpenWeatherMap v2.5 devuelve frecuentemente `temp_min == temp_max` en cada lectura puntual tri-diaria, provocando que la amplitud térmica diurna calculada en crudo fuese 0.
+     - La columna `ciudad` presenta variaciones nominales respecto al estándar (ej. "Sol" en lugar de "Madrid").
+  2. El usuario requiere resolver la veracidad y completitud de datos sin saturar el almacenamiento de su equipo local con descargas masivas de CSVs ni introducir sobrecargas de commits diarios en el monorepo web `datalaria-website`, al tiempo que se habilita uso offline y experiencia PWA instalable de alta usabilidad sin abrumar con controles redundantes.
+- **Decisión:**
+  1. **Generación de Derivados Compactos en el Upstream (`build_derived.py`):**
+     - La automatización de GitHub Actions en `Dalaez/app_weather` (`actualizar-clima.yml`) incorporará un paso diario nocturno (`22:00 UTC`) no bloqueante (`continue-on-error: true`) que pre-calcula y emite:
+       - `derived/daily/<slug>.json`: Series agregadas diarias (~15 KB/ciudad vs. 130 KB de CSV crudo), con amplitud calculada como `max - min` de las muestras del día (`n >= 2`).
+       - `derived/climatology.json`: Normales mensuales y armónicos de Fourier de 168 estaciones.
+       - `derived/index.json`: Índice rápido de estaciones y recuentos de registros.
+       - `derived/forecast_log/AAAA-MM.csv`: Auditoría idempotente de acierto IA vs. OWM.
+  2. **Arquitectura Frontend "Remote-First":**
+     - El cliente web (`apps/weather/index.html`) prioriza la lectura directa de los derivados JSON servidos por el CDN de Netlify (`REMOTE_BASE`), utilizando la copia local solo como fallback de contingencia.
+     - Se ancla la ventana temporal al último registro real (`last_date`) y se despliega un badge de frescura contextual (`INV-WEATHER-7`).
+  3. **Almacenamiento Local Opcional y Acotado (`sync_upstream.py --pull`):**
+     - La máquina local no requiere descargar los 168 CSVs completos. El CLI `--pull` descarga exclusivamente los metadatos y resúmenes compactos (≤ 2 MB en total).
+  4. **Divulgación Progresiva y Puerta de Suficiencia (`INV-WEATHER-8`):**
+     - Se reemplaza la sobrecarga de controles por una Tarjeta Respuesta ejecutiva por ciudad, agrupando gráficas bajo demanda en acordeones `<details>` que solo se renderizan si superan el umbral mínimo de datos históricos.
+  5. **PWA Offline Determinista (`INV-WEATHER-10`):**
+     - Service Worker (`sw.js`) con estrategia `stale-while-revalidate` para derivados JSON y prohibición estricta de cachear CSVs planos.
+- **Alternativas Descartadas:**
+  - *Alternativa A: Parsear los 168 CSVs crudos en el navegador con PapaParse.* Descartada porque saturaría el ancho de banda del cliente (>25 MB de descarga total) y degradaría severamente la CPU móvil.
+  - *Alternativa B: Generar derivados durante el build estático de Netlify.* Descartada porque Netlify aloja un deploy estático sin runtime persistente de Python programado cada 8 horas.
+  - *Alternativa C: Commits y pushes diarios de datos meteorológicos dentro de `datalaria-website`.* Descartada taxativamente para preservar la limpieza del monorepo principal y evitar inundar el historial Git local con telemetría no editable.
+- **Consecuencias:**
+  - Cero riesgo de pérdida de datos históricos y preservación absoluta del SEO existente.
+  - Carga inmediata (<100 ms) de visualizaciones ricas y fiables en cualquier dispositivo sin consumir almacenamiento en la máquina local del desarrollador.
+  - Base de datos relacional implícita lista para una migración limpia hacia Supabase en la Etapa 3.
