@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-11-08T12:24:59.756417Z",
+  "generated_at": "2026-11-08T12:26:42.725307Z",
   "total_assets": 149,
   "published_assets": 122,
   "scheduled_assets": 23,
@@ -82,7 +82,7 @@
     {
       "month": "2026-11",
       "label": "Nov '26",
-      "index_100": 226
+      "index_100": 211
     }
   ],
   "assets": [
@@ -149,7 +149,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 410,
-        "rank_pct": 95,
+        "rank_pct": 96,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -286,7 +286,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 270,
-        "rank_pct": 86,
+        "rank_pct": 87,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -354,7 +354,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -422,7 +422,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -490,7 +490,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -557,7 +557,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -625,7 +625,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -692,7 +692,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -759,7 +759,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 250,
-        "rank_pct": 83,
+        "rank_pct": 84,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -831,7 +831,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 190,
-        "rank_pct": 79,
+        "rank_pct": 80,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -900,7 +900,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 270,
-        "rank_pct": 86,
+        "rank_pct": 87,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -965,7 +965,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 400,
-        "rank_pct": 94,
+        "rank_pct": 95,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1032,7 +1032,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 34,
+        "rank_pct": 35,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1098,7 +1098,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 360,
-        "rank_pct": 92,
+        "rank_pct": 93,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1167,7 +1167,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 140,
-        "rank_pct": 72,
+        "rank_pct": 73,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1236,7 +1236,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 170,
-        "rank_pct": 78,
+        "rank_pct": 79,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1306,8 +1306,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 430,
-        "rank_pct": 96,
+        "index_100": 0,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1379,7 +1379,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 34,
+        "rank_pct": 35,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1448,7 +1448,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1520,7 +1520,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1588,8 +1588,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 600,
-        "rank_pct": 97,
+        "index_100": 400,
+        "rank_pct": 95,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1652,7 +1652,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1717,7 +1717,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1791,7 +1791,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1860,7 +1860,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1924,7 +1924,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 50,
-        "rank_pct": 49,
+        "rank_pct": 50,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1986,7 +1986,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2051,7 +2051,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2114,7 +2114,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 300,
-        "rank_pct": 90,
+        "rank_pct": 91,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2178,7 +2178,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 44,
+        "rank_pct": 45,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2250,7 +2250,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2316,7 +2316,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 270,
-        "rank_pct": 86,
+        "rank_pct": 87,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2453,7 +2453,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 60,
-        "rank_pct": 52,
+        "rank_pct": 53,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2523,7 +2523,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 44,
+        "rank_pct": 45,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2593,7 +2593,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 110,
-        "rank_pct": 65,
+        "rank_pct": 66,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2662,7 +2662,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 50,
-        "rank_pct": 49,
+        "rank_pct": 50,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2731,7 +2731,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 410,
-        "rank_pct": 95,
+        "rank_pct": 96,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2794,7 +2794,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 34,
+        "rank_pct": 35,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2932,7 +2932,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 70,
-        "rank_pct": 55,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3002,7 +3002,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 44,
+        "rank_pct": 45,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3067,7 +3067,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 60,
-        "rank_pct": 52,
+        "rank_pct": 53,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3134,7 +3134,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 50,
-        "rank_pct": 49,
+        "rank_pct": 50,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": true
       },
@@ -3196,7 +3196,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 60,
-        "rank_pct": 52,
+        "rank_pct": 53,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": true
       },
@@ -3258,7 +3258,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 34,
+        "rank_pct": 35,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3389,7 +3389,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 34,
+        "rank_pct": 35,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3458,7 +3458,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 30,
-        "rank_pct": 39,
+        "rank_pct": 40,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3523,7 +3523,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 44,
+        "rank_pct": 45,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3593,7 +3593,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 270,
-        "rank_pct": 86,
+        "rank_pct": 87,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3660,7 +3660,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 110,
-        "rank_pct": 65,
+        "rank_pct": 66,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3721,7 +3721,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 50,
-        "rank_pct": 49,
+        "rank_pct": 50,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3786,7 +3786,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 110,
-        "rank_pct": 65,
+        "rank_pct": 66,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3851,7 +3851,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 140,
-        "rank_pct": 72,
+        "rank_pct": 73,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3916,7 +3916,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 260,
-        "rank_pct": 84,
+        "rank_pct": 85,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3981,7 +3981,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 44,
+        "rank_pct": 45,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4047,8 +4047,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 320,
-        "rank_pct": 91,
+        "index_100": 310,
+        "rank_pct": 92,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4182,7 +4182,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 150,
-        "rank_pct": 74,
+        "rank_pct": 75,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4252,7 +4252,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 230,
-        "rank_pct": 82,
+        "rank_pct": 83,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4320,7 +4320,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4514,8 +4514,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 380,
-        "rank_pct": 93,
+        "index_100": 370,
+        "rank_pct": 94,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4586,7 +4586,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 300,
-        "rank_pct": 90,
+        "rank_pct": 91,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4783,7 +4783,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 70,
-        "rank_pct": 55,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4852,7 +4852,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 220,
-        "rank_pct": 81,
+        "rank_pct": 82,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4920,7 +4920,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4984,7 +4984,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5050,7 +5050,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 70,
-        "rank_pct": 55,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5253,7 +5253,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 140,
-        "rank_pct": 72,
+        "rank_pct": 73,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5324,7 +5324,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 230,
-        "rank_pct": 82,
+        "rank_pct": 83,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5463,7 +5463,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 210,
-        "rank_pct": 80,
+        "rank_pct": 81,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5532,7 +5532,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 280,
-        "rank_pct": 88,
+        "rank_pct": 89,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5734,7 +5734,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 50,
-        "rank_pct": 49,
+        "rank_pct": 50,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5864,7 +5864,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5930,7 +5930,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 260,
-        "rank_pct": 84,
+        "rank_pct": 85,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6003,7 +6003,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6076,7 +6076,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6209,7 +6209,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 280,
-        "rank_pct": 88,
+        "rank_pct": 89,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6273,7 +6273,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6339,7 +6339,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6406,7 +6406,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 44,
+        "rank_pct": 45,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6470,7 +6470,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 150,
-        "rank_pct": 74,
+        "rank_pct": 75,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6600,7 +6600,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 70,
-        "rank_pct": 55,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6664,7 +6664,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 44,
+        "rank_pct": 45,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6729,7 +6729,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 44,
+        "rank_pct": 45,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6793,7 +6793,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 30,
-        "rank_pct": 39,
+        "rank_pct": 40,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6860,7 +6860,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 44,
+        "rank_pct": 45,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6925,7 +6925,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 70,
-        "rank_pct": 55,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6984,7 +6984,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7121,7 +7121,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 70,
-        "rank_pct": 55,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7192,7 +7192,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 30,
-        "rank_pct": 39,
+        "rank_pct": 40,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7256,7 +7256,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 70,
-        "rank_pct": 55,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7320,7 +7320,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 30,
-        "rank_pct": 39,
+        "rank_pct": 40,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7383,7 +7383,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 140,
-        "rank_pct": 72,
+        "rank_pct": 73,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7446,7 +7446,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 34,
+        "rank_pct": 35,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7573,7 +7573,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7765,7 +7765,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7827,7 +7827,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 30,
-        "rank_pct": 39,
+        "rank_pct": 40,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7889,7 +7889,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 34,
+        "rank_pct": 35,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7951,7 +7951,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 140,
-        "rank_pct": 72,
+        "rank_pct": 73,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8015,7 +8015,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 34,
+        "rank_pct": 35,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8079,7 +8079,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 34,
+        "rank_pct": 35,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8146,7 +8146,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 44,
+        "rank_pct": 45,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8211,7 +8211,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 610,
+        "index_100": 600,
         "rank_pct": 98,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -8280,7 +8280,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 110,
-        "rank_pct": 65,
+        "rank_pct": 66,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8352,7 +8352,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8632,7 +8632,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 34,
+        "rank_pct": 35,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8651,8 +8651,8 @@
       "brief_es": "Arcade Cyberpunk retro del clásico Snake con ranking global en tiempo real y audio sintetizado.",
       "brief_en": "Cyberpunk retro arcade of classic Snake with real-time global leaderboard and synthesized audio.",
       "publish_date": "2026-01-20",
-      "last_modified_es": "2026-11-07T12:10:09+01:00",
-      "last_modified_en": "2026-11-07T12:10:09+01:00",
+      "last_modified_es": "2026-11-08T13:24:50+01:00",
+      "last_modified_en": "2026-11-08T13:24:50+01:00",
       "language_parity": "complete",
       "category": "Aplicaciones Web",
       "categories": [
@@ -8695,7 +8695,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 410,
-        "rank_pct": 95,
+        "rank_pct": 96,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8766,7 +8766,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 280,
-        "rank_pct": 88,
+        "rank_pct": 89,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8826,7 +8826,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8892,7 +8892,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8956,7 +8956,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9022,7 +9022,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9084,7 +9084,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9147,7 +9147,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9210,7 +9210,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9273,7 +9273,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9336,7 +9336,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9399,7 +9399,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9462,7 +9462,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9525,7 +9525,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9588,7 +9588,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9651,7 +9651,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9714,7 +9714,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9777,7 +9777,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9840,7 +9840,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9903,7 +9903,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9966,7 +9966,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
