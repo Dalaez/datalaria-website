@@ -181,3 +181,23 @@ posts:
       es: agentes_ia_operativa_sdd
       en: agentes_ia_operativa_sdd
     part: 2
+  - slug:
+      es: helix-parte1-especificacion-adn-escuadron-12-agentes
+      en: helix-part1-spec-dna-12-agent-engineering-squad
+    part: 3
+  - slug:
+      es: helix-parte2-triaje-determinista-adaptadores-antigravity-claude-cursor
+      en: helix-part2-deterministic-triage-adapters-antigravity-claude-cursor
+    part: 4
+  - slug:
+      es: helix-parte3-cli-python-cero-dependencias-spec-score-rollback
+      en: helix-part3-zero-dependency-python-cli-spec-score-rollback
+    part: 5
+  - slug:
+      es: helix-parte4-sandbox-react-spec-builder-zip-client-side
+      en: helix-part4-react-sandbox-spec-builder-client-side-zip
+    part: 6
+  - slug:
+      es: helix-parte5-casos-reales-operacion-crisol-pulse-marginguard-kits
+      en: helix-part5-real-case-studies-pulse-crisol-marginguard-kits
+    part: 7

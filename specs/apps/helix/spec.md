@@ -201,16 +201,21 @@ donde cada indicador $I_k \in \{0, 0.5, 1\}$ verifica determinísticamente por e
    - `python -m pytest ops/pulse/tests -v` + `cd apps/pulse/web && npm run lint && npm run build:portal` + `hugo --renderToMemory` (verificando embargo público de Pulse hasta el `2026-11-18`).
 4. **Gate Hitos 6.4–6.8 (Kit Core, CLI `helix`, Sandbox Web y Empaquetado Comercial):**
    - `python -m pytest ops/helix/tests -v` + `cd apps/helix/web && npm run lint && npm run build:portal` + `hugo --gc --minify` (código `0` y firewall `static/` limpio).
+5. **Gate Hito 6.9 (Lanzamiento Editorial Oficial, Serie de 5 Posts y Campaña Brevo):**
+   - 10 artículos bilingües ES/EN (`helix-parte1..5` y `helix-part1..5`) programados bajo embargo (`date >= 2027-01-19`), con $\ge 1.850$ palabras, diagramas Mermaid seguros, sin tablas ASCII y shortcode `app-ref`.
+   - 10 portadas `cover.png` oficiales a 1200×630 px con Pillow.
+   - Generador `ops/helix/build_launch_campaign.py` ejecutado (`brevo_waitlist_sequence.json`, 6 plantillas HTML anti-churn, `SOCIAL_LAUNCH_PACK_ES_EN.md`).
+   - Suite `ops/helix/tests/test_launch_series.py` (7 tests en verde), 79/79 tests en verde y Hugo `--renderToMemory` código `0` (2.427 páginas).
 
 ---
 
 ## 7. Ficha Pública y Respaldo Editorial
 
-- **Fichero de datos (Hito 6.8):** `data/apps/helix.yaml` (`tier: flagship`, `status: incubating` hasta enero 2027).
+- **Fichero de datos (Hito 6.8 y 6.9):** `data/apps/helix.yaml` (`tier: flagship`, `status: incubating` hasta enero 2027, con los 7 posts registrados en `posts:`).
 - **Artículos publicados de pre-lanzamiento (Hito 6.0):**
   1. `sdd_vs_vibe_coding` (`2026-11-04`, ES/EN).
   2. `agentes_ia_operativa_sdd` (`2026-11-11`, ES/EN).
-- **Serie de lanzamiento oficial (Hito 6.9, Enero 2027):** 5 artículos técnicos bilingües documentando la arquitectura de los 12 agentes, la *Operación Crisol* sobre Datalaria Pulse, el CLI de rollback y el caso demo de principio a fin.
+- **Serie de lanzamiento oficial (Hito 6.9, Enero-Febrero 2027):** 5 artículos técnicos bilingües documentando la arquitectura de los 12 agentes, el triaje determinista con adaptadores multi-herramienta, el CLI en Python puro con SpecQualityScore y rollback, el Sandbox web en React 19 con PKZIP client-side y la evidencia empírica de veto en Pulse y MarginGuard.
 
 ---
 
@@ -218,7 +223,8 @@ donde cada indicador $I_k \in \{0, 0.5, 1\}$ verifica determinísticamente por e
 
 | Versión | Fecha | Tipo | Cambios | Commit(s) |
 | :--- | :--- | :--- | :--- | :--- |
-| `v1.0.0` | 2026-11-07 | 🚀 Release Candidate | Empaquetado comercial completo Staged (Enero 2027): `ops/helix/build_kit.py` con Starter Kit (9 €) en 3 carpetas, Core Kit (19 € / 39 €) en 5 carpetas con CLI `helix.py`, Guía Ejecutiva PDF A4 con PyMuPDF, capturas de alta definición `1600×980 px`, metadatos `data/apps/helix.yaml`, fichas bilingües en `draft: true` y script de gobernanza de embargo `release_jan2027.py`. | *Hito 6.8* |
+| `v1.0.0` | 2026-11-08 | 🚀 Editorial Launch | Finalización de la campaña editorial oficial: 10 artículos bilingües ES/EN de la serie Helix (19 ene a 16 feb 2027), 10 portadas conceptuales a 1200×630 px, generador `ops/helix/build_launch_campaign.py` (secuencia Brevo listas #5/#6, 6 plantillas HTML anti-churn, social pack LinkedIn/X) y suite determinista `test_launch_series.py` (7/7 tests en verde). | *Hito 6.9* |
+| `v1.0.0-rc1` | 2026-11-07 | 📦 Release Candidate | Empaquetado comercial completo Staged (Enero 2027): `ops/helix/build_kit.py` con Starter Kit (9 €) en 3 carpetas, Core Kit (19 € / 39 €) en 5 carpetas con CLI `helix.py`, Guía Ejecutiva PDF A4 con PyMuPDF, capturas de alta definición `1600×980 px`, metadatos `data/apps/helix.yaml`, fichas bilingües en `draft: true` y script de gobernanza de embargo `release_jan2027.py`. | *Hito 6.8* |
 | `v0.5.0` | 2026-11-05 | 🏆 Case Study | Construcción y verificación de principio a fin del Caso Demo #2 `MarginGuard B2B` (micro-app para profesional no-dev) con timeline de 3 iteraciones SDD, veto real de `11-qa-verifier` resuelto mediante `INV-MARGIN-2` e integración en Core Kit y Sandbox Web. | *Hito 6.7* |
 | `v0.4.0` | 2026-11-05 | 🎨 UX/Frontend | Aprobación de `specs/apps/helix/design.md` (preset Executive Data-Dense Cockpit), construcción de la SPA React 19 + TypeScript en `apps/helix/web/` con Modo A (Spec Builder determinista + ZIP en navegador) y Modo B (Mega-Prompt), conmutador bilingüe ES/EN y compilación estática hacia `static/apps/helix/`. | *Hito 6.6* |
 | `v0.3.0` | 2026-11-05 | ⚡ Tooling | Implementación de `ops/helix/cli.py` en Python estándar con 7 subcomandos (`init`, `triage`, `new-spec`, `checkpoint`, `verify`, `rollback`, `status`), motor `SpecQualityScore` 0..100, empaquetado `helix.py` en Core Kit y guía de paridad Sin-CLI (`INV-HELIX-5`). | *Hito 6.5* |

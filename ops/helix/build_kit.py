@@ -777,11 +777,11 @@ def main() -> int:
         # 1. Guía PDF
         pdf_path = build_helix_pdf_guide()
 
-        # 2. Starter Kit
-        starter_zip = build_starter_kit()
-
-        # 3. Core Kit
+        # 2. Core Kit (debe preceder al Starter Kit para poblar core_kit/)
         versioned_zip, core_zip = build_full_core_kit()
+
+        # 3. Starter Kit
+        starter_zip = build_starter_kit()
 
         # 4. Activos Visuales
         build_helix_visual_assets()

@@ -513,7 +513,7 @@ Detalles ℹ️
 <button type="button" class="btn-kit-info" onclick="openModal('pack-business-case')">
 Detalles ℹ️
 </button>
-<span class="btn-kit-info btn-disabled" title="Artículo técnico próximamente">Artículo próximamente</span>
+<a href="/es/posts/business-case-financiero-van-tir/" class="btn-kit-info" title="Leer artículo técnico">Artículo técnico 📖</a>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/c2ff153f-2f95-4671-ab14-1b8e02301079?embed=1" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
@@ -1387,8 +1387,8 @@ Detalles ℹ️
       "Guía PDF de finanzas corporativas aplicadas a proyectos de tecnología"
     ],
     "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/c2ff153f-2f95-4671-ab14-1b8e02301079?embed=1",
-    "guideUrl": null,
-    "previewImg": "/images/recursos/BusinessCase.png"
+    "guideUrl": "/es/posts/business-case-financiero-van-tir/",
+    "previewImg": "/images/recursos/business-case-preview-es.png"
   },
   {
     "id": "pack-raci",

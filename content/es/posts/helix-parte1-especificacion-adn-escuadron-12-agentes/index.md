@@ -44,18 +44,12 @@ Para comprender cómo transformar el caos del desarrollo asistido por IA en una 
 
 Esta entrega marca el lanzamiento oficial de la **Fase 6 del Ecosistema Datalaria**, dedicada por entero a resolver de raíz la gobernanza, escalabilidad y rentabilidad del desarrollo asistido por agentes autónomos de IA.
 
-```
-Escalera de Valor Datalaria Helix:
-┌─────────────────────────────────────────────────────────────┐
-│ Nivel 3 · Helix Pro B2B (Consultoría e Implantación Cloud)   │
-├─────────────────────────────────────────────────────────────┤
-│ Nivel 2 · Datalaria Helix Core Kit (19 € Early-Bird / 39 €) │
-├─────────────────────────────────────────────────────────────┤
-│ Nivel 1 · Datalaria Helix Starter Kit (9 € en Lemon Squeezy)│
-├─────────────────────────────────────────────────────────────┤
-│ Nivel 0 · Sandbox Web Gratis (/apps/helix/ · Modo A + B)    │
-└─────────────────────────────────────────────────────────────┘
-```
+| Nivel | Oferta Datalaria Helix | Modalidad y Acceso |
+| :---: | :--- | :--- |
+| **Nivel 3** | **Helix Pro B2B** | Consultoría e Implantación Cloud a Medida |
+| **Nivel 2** | **Datalaria Helix Core Kit** | 19 € Lanzamiento Early-Bird (PVP regular 39 €) |
+| **Nivel 1** | **Datalaria Helix Starter Kit** | 9 € en Lemon Squeezy (2 agentes + PDF) |
+| **Nivel 0** | **Sandbox Web Gratuito** | `/apps/helix/` (Modo A + Modo B en cliente) |
 
 ### La Escalera de Valor Dual-Mode (Constitución Art. 3):
 1. **Nivel 0 — Sandbox Web Gratis ([/apps/helix/](/apps/helix/)):** Herramienta client-side en React 19 + TypeScript que permite a cualquier usuario diagnosticar su proyecto en 5 minutos, calcular su *SpecQualityScore (0..100)*, generar su primer paquete `.zip` de especificación en memoria (Modo A) o exportar un Mega-Prompt estructurado sin requerir API keys ni tarjetas de crédito (Modo B).

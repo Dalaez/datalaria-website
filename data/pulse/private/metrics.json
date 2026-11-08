@@ -54,6 +54,24 @@
     "gsc_avg_position": 0.0
   },
   "helix-part3": {
+    "ga4_views_30d": 1,
+    "ga4_users_30d": 1,
+    "ga4_engagement_sec": 17.0,
+    "gsc_clicks_30d": 0,
+    "gsc_impressions_30d": 0,
+    "gsc_ctr_pct": 0.0,
+    "gsc_avg_position": 0.0
+  },
+  "helix-part4": {
+    "ga4_views_30d": 0,
+    "ga4_users_30d": 0,
+    "ga4_engagement_sec": 0.0,
+    "gsc_clicks_30d": 0,
+    "gsc_impressions_30d": 0,
+    "gsc_ctr_pct": 0.0,
+    "gsc_avg_position": 0.0
+  },
+  "helix-part5": {
     "ga4_views_30d": 0,
     "ga4_users_30d": 0,
     "ga4_engagement_sec": 0.0,
@@ -171,9 +189,9 @@
     "gsc_avg_position": 0.0
   },
   "matriz-rice-ice-priorizacion": {
-    "ga4_views_30d": 38,
-    "ga4_users_30d": 9,
-    "ga4_engagement_sec": 454.0,
+    "ga4_views_30d": 40,
+    "ga4_users_30d": 11,
+    "ga4_engagement_sec": 528.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -243,8 +261,8 @@
     "gsc_avg_position": 0.0
   },
   "abraham_wald": {
-    "ga4_views_30d": 31,
-    "ga4_users_30d": 29,
+    "ga4_views_30d": 30,
+    "ga4_users_30d": 28,
     "ga4_engagement_sec": 295.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -270,8 +288,8 @@
     "gsc_avg_position": 0.0
   },
   "alan_turing": {
-    "ga4_views_30d": 28,
-    "ga4_users_30d": 26,
+    "ga4_views_30d": 27,
+    "ga4_users_30d": 25,
     "ga4_engagement_sec": 272.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -306,9 +324,9 @@
     "gsc_avg_position": 0.0
   },
   "app-lifeops_part4_informes_word_excel": {
-    "ga4_views_30d": 13,
-    "ga4_users_30d": 13,
-    "ga4_engagement_sec": 19.0,
+    "ga4_views_30d": 11,
+    "ga4_users_30d": 11,
+    "ga4_engagement_sec": 4.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -387,9 +405,9 @@
     "gsc_avg_position": 0.0
   },
   "claude_shannon": {
-    "ga4_views_30d": 7,
-    "ga4_users_30d": 6,
-    "ga4_engagement_sec": 189.0,
+    "ga4_views_30d": 6,
+    "ga4_users_30d": 5,
+    "ga4_engagement_sec": 160.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -479,7 +497,7 @@
   "freepik": {
     "ga4_views_30d": 14,
     "ga4_users_30d": 13,
-    "ga4_engagement_sec": 483.0,
+    "ga4_engagement_sec": 456.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -504,8 +522,8 @@
     "gsc_avg_position": 0.0
   },
   "graphrag": {
-    "ga4_views_30d": 33,
-    "ga4_users_30d": 24,
+    "ga4_views_30d": 31,
+    "ga4_users_30d": 22,
     "ga4_engagement_sec": 125.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -522,8 +540,8 @@
     "gsc_avg_position": 0.0
   },
   "happyrobot": {
-    "ga4_views_30d": 17,
-    "ga4_users_30d": 16,
+    "ga4_views_30d": 15,
+    "ga4_users_30d": 14,
     "ga4_engagement_sec": 1000.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -558,8 +576,8 @@
     "gsc_avg_position": 0.0
   },
   "john_von_neumann": {
-    "ga4_views_30d": 79,
-    "ga4_users_30d": 62,
+    "ga4_views_30d": 80,
+    "ga4_users_30d": 63,
     "ga4_engagement_sec": 1778.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -567,9 +585,9 @@
     "gsc_avg_position": 0.0
   },
   "kantorovich": {
-    "ga4_views_30d": 34,
-    "ga4_users_30d": 33,
-    "ga4_engagement_sec": 1131.0,
+    "ga4_views_30d": 37,
+    "ga4_users_30d": 36,
+    "ga4_engagement_sec": 1330.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -585,8 +603,8 @@
     "gsc_avg_position": 0.0
   },
   "mcp_protocol": {
-    "ga4_views_30d": 12,
-    "ga4_users_30d": 12,
+    "ga4_views_30d": 13,
+    "ga4_users_30d": 13,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -594,17 +612,17 @@
     "gsc_avg_position": 0.0
   },
   "multiverse_computing": {
-    "ga4_views_30d": 18,
-    "ga4_users_30d": 16,
-    "ga4_engagement_sec": 182.0,
+    "ga4_views_30d": 16,
+    "ga4_users_30d": 14,
+    "ga4_engagement_sec": 204.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 0.0
   },
   "netflix": {
-    "ga4_views_30d": 6,
-    "ga4_users_30d": 5,
+    "ga4_views_30d": 7,
+    "ga4_users_30d": 6,
     "ga4_engagement_sec": 118.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -612,8 +630,8 @@
     "gsc_avg_position": 0.0
   },
   "nextail": {
-    "ga4_views_30d": 24,
-    "ga4_users_30d": 22,
+    "ga4_views_30d": 22,
+    "ga4_users_30d": 20,
     "ga4_engagement_sec": 553.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -639,8 +657,8 @@
     "gsc_avg_position": 0.0
   },
   "onboarding": {
-    "ga4_views_30d": 6,
-    "ga4_users_30d": 6,
+    "ga4_views_30d": 7,
+    "ga4_users_30d": 7,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -648,8 +666,8 @@
     "gsc_avg_position": 0.0
   },
   "oppenheimer": {
-    "ga4_views_30d": 23,
-    "ga4_users_30d": 20,
+    "ga4_views_30d": 20,
+    "ga4_users_30d": 17,
     "ga4_engagement_sec": 366.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -684,8 +702,8 @@
     "gsc_avg_position": 0.0
   },
   "sdd_vs_vibe_coding": {
-    "ga4_views_30d": 99,
-    "ga4_users_30d": 12,
+    "ga4_views_30d": 100,
+    "ga4_users_30d": 13,
     "ga4_engagement_sec": 1125.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -693,8 +711,8 @@
     "gsc_avg_position": 0.0
   },
   "silicon_valley": {
-    "ga4_views_30d": 23,
-    "ga4_users_30d": 22,
+    "ga4_views_30d": 21,
+    "ga4_users_30d": 20,
     "ga4_engagement_sec": 161.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -702,17 +720,17 @@
     "gsc_avg_position": 0.0
   },
   "submer": {
-    "ga4_views_30d": 45,
-    "ga4_users_30d": 32,
-    "ga4_engagement_sec": 722.0,
+    "ga4_views_30d": 28,
+    "ga4_users_30d": 23,
+    "ga4_engagement_sec": 432.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 0.0
   },
   "the-goal": {
-    "ga4_views_30d": 13,
-    "ga4_users_30d": 13,
+    "ga4_views_30d": 12,
+    "ga4_users_30d": 12,
     "ga4_engagement_sec": 6.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -720,8 +738,8 @@
     "gsc_avg_position": 0.0
   },
   "the_thinking_game": {
-    "ga4_views_30d": 14,
-    "ga4_users_30d": 14,
+    "ga4_views_30d": 13,
+    "ga4_users_30d": 13,
     "ga4_engagement_sec": 221.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -756,8 +774,8 @@
     "gsc_avg_position": 0.0
   },
   "app-openweather_part1_backend": {
-    "ga4_views_30d": 28,
-    "ga4_users_30d": 28,
+    "ga4_views_30d": 26,
+    "ga4_users_30d": 26,
     "ga4_engagement_sec": 43.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -783,8 +801,8 @@
     "gsc_avg_position": 0.0
   },
   "economia_oculta_ia": {
-    "ga4_views_30d": 12,
-    "ga4_users_30d": 12,
+    "ga4_views_30d": 13,
+    "ga4_users_30d": 13,
     "ga4_engagement_sec": 66.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -792,8 +810,8 @@
     "gsc_avg_position": 0.0
   },
   "evaluacion_agentes_ia": {
-    "ga4_views_30d": 29,
-    "ga4_users_30d": 29,
+    "ga4_views_30d": 28,
+    "ga4_users_30d": 28,
     "ga4_engagement_sec": 34.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -999,8 +1017,8 @@
     "gsc_avg_position": 0.0
   },
   "rag_antipatrones": {
-    "ga4_views_30d": 10,
-    "ga4_users_30d": 9,
+    "ga4_views_30d": 9,
+    "ga4_users_30d": 8,
     "ga4_engagement_sec": 27.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -1035,9 +1053,9 @@
     "gsc_avg_position": 0.0
   },
   "sop-ingenieria-parte4-enterprise": {
-    "ga4_views_30d": 12,
-    "ga4_users_30d": 12,
-    "ga4_engagement_sec": 37.0,
+    "ga4_views_30d": 14,
+    "ga4_users_30d": 14,
+    "ga4_engagement_sec": 43.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -1062,8 +1080,8 @@
     "gsc_avg_position": 0.0
   },
   "stack_productividad_2026": {
-    "ga4_views_30d": 5,
-    "ga4_users_30d": 5,
+    "ga4_views_30d": 4,
+    "ga4_users_30d": 4,
     "ga4_engagement_sec": 28.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -1071,18 +1089,18 @@
     "gsc_avg_position": 0.0
   },
   "conversor": {
-    "ga4_views_30d": 58,
+    "ga4_views_30d": 60,
     "ga4_users_30d": 7,
-    "ga4_engagement_sec": 165.0,
+    "ga4_engagement_sec": 167.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 0.0
   },
   "flashcards": {
-    "ga4_views_30d": 10,
+    "ga4_views_30d": 11,
     "ga4_users_30d": 3,
-    "ga4_engagement_sec": 297.0,
+    "ga4_engagement_sec": 298.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -1134,9 +1152,9 @@
     "gsc_avg_position": 0.0
   },
   "snake": {
-    "ga4_views_30d": 40,
+    "ga4_views_30d": 41,
     "ga4_users_30d": 4,
-    "ga4_engagement_sec": 153.0,
+    "ga4_engagement_sec": 154.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,

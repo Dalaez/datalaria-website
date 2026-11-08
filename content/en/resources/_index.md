@@ -513,7 +513,7 @@ Details ℹ️
 <button type="button" class="btn-kit-info" onclick="openModal('pack-business-case')">
 Details ℹ️
 </button>
-<span class="btn-kit-info btn-disabled" title="Technical article coming soon">Article coming soon</span>
+<a href="/en/posts/financial-business-case-npv-irr/" class="btn-kit-info" title="Read technical article">Technical Article 📖</a>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/c2ff153f-2f95-4671-ab14-1b8e02301079?embed=1" class="btn-kit-buy lemonsqueezy-button">Download →</a>
 </div>
 </div>
@@ -1387,8 +1387,8 @@ Details ℹ️
       "PDF guide on corporate finance applied to tech projects"
     ],
     "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/c2ff153f-2f95-4671-ab14-1b8e02301079?embed=1",
-    "guideUrl": null,
-    "previewImg": "/images/recursos/BusinessCase.png"
+    "guideUrl": "/en/posts/financial-business-case-npv-irr/",
+    "previewImg": "/images/recursos/business-case-preview-en.png"
   },
   {
     "id": "pack-raci",

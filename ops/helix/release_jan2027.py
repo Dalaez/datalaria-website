@@ -114,10 +114,10 @@ def get_staged_helix_data(core_checkout_url: str = "#", starter_checkout_url: st
                 "description_en": "Complete agentic operating system for AI-assisted software engineering: 12 canonical Helix agent specs, zero-dependency Python CLI, 3 production blueprints, 2 real-world case studies, and a 4-page Executive PDF Guide.",
                 "preview_image_es": "/images/recursos/helix-preview-es.png",
                 "preview_image_en": "/images/recursos/helix-preview-en.png",
-                "article_url_es": "/es/posts/sdd_vs_vibe_coding/",
-                "article_url_en": "/en/posts/sdd_vs_vibe_coding/",
-                "guide_url_es": "/es/posts/sdd_vs_vibe_coding/",
-                "guide_url_en": "/en/posts/sdd_vs_vibe_coding/",
+                "article_url_es": "/es/posts/helix-parte1-especificacion-adn-escuadron-12-agentes/",
+                "article_url_en": "/en/posts/helix-part1-spec-dna-12-agent-engineering-squad/",
+                "guide_url_es": "/es/posts/helix-parte1-especificacion-adn-escuadron-12-agentes/",
+                "guide_url_en": "/en/posts/helix-part1-spec-dna-12-agent-engineering-squad/",
                 "deliverables_es": [
                     "12 Fichas Canónicas Helix + CLI Python Determinista",
                     "3 Blueprints de Producción + 2 Casos Demo Completos",
@@ -175,6 +175,10 @@ def verify_embargo() -> Tuple[bool, List[str]]:
             errors.append("data/apps/helix.yaml DEBE tener 'status: incubating' durante el embargo.")
         if "current_version: v1.0.0" not in text:
             errors.append("data/apps/helix.yaml DEBE tener 'current_version: v1.0.0'.")
+        # Verificar que lista los 7 posts (2 prelanzamiento + 5 serie)
+        for part_num in range(1, 8):
+            if f"part: {part_num}" not in text:
+                errors.append(f"data/apps/helix.yaml DEBE incluir 'part: {part_num}' en la lista posts.")
 
     # 2. Verificar content/{es,en}/apps/helix/index.md (draft: true)
     for lang in ["es", "en"]:
@@ -226,6 +230,53 @@ def verify_embargo() -> Tuple[bool, List[str]]:
     for art in required_artifacts:
         if not art.exists():
             errors.append(f"Artefacto de entrega Helix no encontrado: {art}")
+
+    # 5. Verificar los 10 artículos de la serie Helix (5 ES + 5 EN) con fecha >= 2027-01-19 y cover.png
+    series_slugs = [
+        ("content/es/posts/helix-parte1-especificacion-adn-escuadron-12-agentes", "2027-01-19"),
+        ("content/en/posts/helix-part1-spec-dna-12-agent-engineering-squad", "2027-01-19"),
+        ("content/es/posts/helix-parte2-triaje-determinista-adaptadores-antigravity-claude-cursor", "2027-01-26"),
+        ("content/en/posts/helix-part2-deterministic-triage-adapters-antigravity-claude-cursor", "2027-01-26"),
+        ("content/es/posts/helix-parte3-cli-python-cero-dependencias-spec-score-rollback", "2027-02-02"),
+        ("content/en/posts/helix-part3-zero-dependency-python-cli-spec-score-rollback", "2027-02-02"),
+        ("content/es/posts/helix-parte4-sandbox-react-spec-builder-zip-client-side", "2027-02-09"),
+        ("content/en/posts/helix-part4-react-sandbox-spec-builder-client-side-zip", "2027-02-09"),
+        ("content/es/posts/helix-parte5-casos-reales-operacion-crisol-pulse-marginguard-kits", "2027-02-16"),
+        ("content/en/posts/helix-part5-real-case-studies-pulse-crisol-marginguard-kits", "2027-02-16"),
+    ]
+
+    for rel_folder, expected_date in series_slugs:
+        folder = ROOT_DIR / rel_folder
+        if not folder.exists():
+            errors.append(f"Carpeta de post de serie no encontrada: {folder}")
+            continue
+        index_file = folder / "index.md"
+        cover_file = folder / "cover.png"
+        if not index_file.exists():
+            errors.append(f"Falta index.md en {folder}")
+        else:
+            text = index_file.read_text(encoding="utf-8")
+            if f"date: {expected_date}" not in text:
+                errors.append(f"{index_file} DEBE tener 'date: {expected_date}' para cumplir el embargo.")
+        if not cover_file.exists():
+            errors.append(f"Falta cover.png en {folder}")
+
+    # 6. Verificar artefactos de campaña en packages/helix/campaign_jan2027/
+    campaign_dir = ROOT_DIR / "packages" / "helix" / "campaign_jan2027"
+    campaign_files = [
+        "brevo_waitlist_sequence.json",
+        "email_01_warmup_es.html",
+        "email_01_warmup_en.html",
+        "email_02_launch_es.html",
+        "email_02_launch_en.html",
+        "email_03_closing_es.html",
+        "email_03_closing_en.html",
+        "SOCIAL_LAUNCH_PACK_ES_EN.md",
+    ]
+    for cf in campaign_files:
+        p = campaign_dir / cf
+        if not p.exists() or p.stat().st_size == 0:
+            errors.append(f"Falta artefacto de campaña: {p}")
 
     return (len(errors) == 0, errors)
 

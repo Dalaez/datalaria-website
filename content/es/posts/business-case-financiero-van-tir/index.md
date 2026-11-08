@@ -1,12 +1,21 @@
 ---
 title: "Business Case Financiero: Cómo Calcular VAN, TIR, Payback Descontado y Análisis de Sensibilidad Tornado en Excel"
-date: 2026-11-09
+date: 2026-11-08
 draft: false
 category: "Estrategia y Operaciones"
 categories: ["Finanzas Corporativas", "Estrategia Corporativa", "Plantillas Ejecutivas", "Estrategia y Operaciones"]
 tags: ["Business Case", "VAN", "TIR", "MIRR", "Payback Descontado", "WACC", "CAPM", "Gráfico Tornado", "Análisis de Sensibilidad", "CFO", "C-Level"]
 description: "Guía metodológica y cuantitativa para construir un Business Case de grado Consejo de Administración: Flujo de Caja Libre Descontado (DCF), cálculo de WACC vía CAPM, VAN, TIR, MIRR, Payback con interpolación, Gráfico Tornado y gobernanza con stage gates."
 summary: "Sustituye las hojas de cálculo artesanales basadas en beneficio contable y sesgo optimista por un modelo financiero institucional de Flujo de Caja Libre Descontado (DCF). Aprende a calcular el WACC mediante CAPM, evaluar VAN y TIR sin trampas de reinversión, modelar el Gráfico Tornado y estructurar la financiación en tramos condicionados ante el Comité de Inversiones."
+cover:
+  image: "cover.png"
+  alt: "Business Case Financiero: Cómo Calcular VAN, TIR, Payback Descontado y Análisis de Sensibilidad Tornado en Excel"
+  caption: "Business Case Financiero: Flujo de caja libre descontado (DCF), WACC por CAPM, evaluación VAN/TIR, gráfico Tornado y gobernanza de capital con stage gates."
+  relative: true
+images:
+  - "cover.png"
+  - "tornado_chart.png"
+  - "preview-pack.png"
 ---
 
 En cualquier comité de dirección, consejo de administración o sesión de asignación de capital donde un director de operaciones (COO), un director de tecnología (CTO) o un director de unidad de negocio defiende una inversión significativa (CAPEX), se reproduce de manera casi invariable la mayor patología de las finanzas corporativas: **la trampa de la última milla del Business Case**.
@@ -21,9 +30,90 @@ Las consecuencias de este vacío técnico son multimillonarias:
 
 Para erradicar estas deficiencias y elevar la toma de decisiones al estándar de las principales firmas de consultoría estratégica y banca de inversión (McKinsey Corporate Finance Practice, BCG Corporate Development y Goldman Sachs), en esta guía oficial de Datalaria formalizamos la arquitectura completa de un **Business Case Financiero Institucional**: formulación rigurosa del Flujo de Caja Libre Descontado (DCF), estimación del WACC mediante el modelo CAPM, cálculo del VAN a 3 y 5 años, TIR y TIR Modificada (MIRR), Payback descontado con interpolación lineal, Índice de Rentabilidad (PI), análisis de sensibilidad univariable mediante Gráfico Tornado y gobernanza de capital con *stage gates* y *kill criteria*.
 
+{{< product-card
+  variant="compact"
+  title="Executive Decision Pack: Business Case Financiero (VAN, TIR & Tornado)"
+  price="9€"
+  original_price="29€"
+  badge="★ Estándar CFO & Consejo de Administración"
+  icon="📈"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/c2ff153f-2f95-4671-ab14-1b8e02301079"
+  button_text="Descargar Kit Ahora (.ZIP) • 9€"
+>}}
+¿Preparando la justificación de una inversión en CAPEX o transformación digital ante el Comité de Inversiones? Descarga el modelo financiero institucional en Excel con DCF a 5 años, cálculo de WACC vía CAPM, Gráfico Tornado automatizado y presentación 16:9 editable para el Consejo de Administración.
+{{< /product-card >}}
+
 ---
 
-## 1. El Pipeline Metodológico del Business Case Institucional
+## 1. ¿Qué es un Business Case Financiero Institucional? Fundamentos, Componentes y el Embudo Estratégico Integral
+
+Para cualquier director financiero (CFO), director general (CEO), director de operaciones (COO), director de tecnología (CIO/CTO) o comité de inversiones que deba evaluar una asignación de capital sustancial—o para quienes se aproximen por primera vez a esta disciplina—, el **Business Case Financiero** constituye el estándar metodológico internacional por excelencia para la justificación rigurosa, cuantitativa y auditable de decisiones de inversión corporativa.
+
+En las finanzas corporativas canónicas (McKinsey Corporate Finance Practice, Stern School of Business de la Universidad de Nueva York y Harvard Business School), un caso de negocio no es un documento decorativo de marketing interno ni una mera hoja de cálculo con previsiones de ventas. Su objetivo primordial es responder con rigor matemático irrebatible a la pregunta fundamental de los accionistas y del Consejo de Administración:
+
+> **"¿Genera esta asignación de recursos un retorno en tesorería real superior al coste de oportunidad del capital (WACC), resiste el estrés de mercado y cuenta con salvaguardas de salida para proteger la liquidez corporativa?"**
+
+### 1.1. La Anatomía del Modelo: Los Cuatro Componentes Estructurales
+
+A diferencia de los presupuestos departamentales ordinarios o las estimaciones informales basadas en beneficio neto, el Business Case Financiero Institucional descansa sobre cuatro pilares interconectados:
+
+1. **Modelo de Flujo de Caja Libre Descontado (FCFF / DCF):** La liquidez neta real generada por las operaciones del proyecto disponible para retribuir a todos los proveedores de capital (NOPAT + Amortización − CAPEX − $\Delta$NWC), erradicando las distorsiones del beneficio contable devengado.
+2. **Coste del Capital WACC derivado de CAPM:** La tasa de corte (*hurdle rate*) científicamente justificada que pondera el coste de los fondos propios ($K_e$) mediante el modelo CAPM (incorporando la prima de riesgo de mercado y la beta del sector) y el coste de la deuda neto del escudo fiscal ($K_d \cdot (1-t)$).
+3. **Análisis Cuantitativo de Riesgo (Gráfico Tornado & Puntos de Equilibrio):** Un test de estrés univariable que cuantifica la sensibilidad del VAN ante variaciones aisladas de cada driver operativo (precio, volumen, costes variables, OPEX, CAPEX y tipo de descuento), clasificando los factores de riesgo por su amplitud (*swing*) e identificando los umbrales exactos de rentabilidad nula (*break-even*).
+4. **Gobernanza de Capital por Tramos (*Staging, Stage Gates & Kill Criteria*):** El blindaje jurídico y operativo que divide la inversión en tramos condicionados a la superación de pruebas técnicas auditables (pruebas FAT/SAT en planta y OEE $\ge 75\%$), acompañado de reglas vinculantes de cancelación (*stop-loss*) para evitar que un proyecto desviado drene la tesorería de la compañía.
+
+### 1.2. Tabla Comparativa: Enfoque Tradicional vs. Business Case Financiero Institucional
+
+| Dimensión Analítica | Enfoque Tradicional / Hoja de Cálculo Informal | Business Case Financiero Institucional (Datalaria / McKinsey) | Ventaja Estratégica C-Level |
+| :--- | :--- | :--- | :--- |
+| **Métrica de Retorno** | Beneficio contable o EBITDA acumulado. | **Flujo de Caja Libre Descontado (FCFF)** neto de impuestos, CAPEX y capital circulante. | Elimina la ilusión monetaria del beneficio contable; mide liquidez real en balance. |
+| **Tasa de Descuento** | Tipo de interés del crédito bancario o porcentaje arbitrario (ej. 10% redondo). | **WACC Ponderado vía CAPM** ($K_e$ con Beta sectorial Damodaran + $K_d$ con escudo fiscal). | Refleja el verdadero coste de oportunidad y el riesgo sistemático exigido por los accionistas. |
+| **Capital Circulante** | Omitido por completo o asumido como constante. | **Variación Dinámica de NWC ($\Delta\text{NWC}$)** en función del crecimiento de ingresos. | Previene crisis de liquidez y descalces de tesorería durante la rampa de escalado. |
+| **Tratamiento del Riesgo** | Escenario único estático con sesgo optimista (Kahneman & Lovallo). | **Matriz de 3 Escenarios Ponderados ($E[\text{VAN}]$)** y **Gráfico Tornado Univariable**. | Visibiliza los factores dominantes de varianza y calcula márgenes de seguridad objetivos. |
+| **Métricas de Rentabilidad** | Foco exclusivo en la TIR simple o Payback contable sin descontar. | **Cuarteto Canónico**: VAN a 3 y 5 años, TIR, TIR Modificada (MIRR) y Payback descontado con interpolación. | Corrige el defecto de reinversión de la TIR y fija el momento exacto de recuperación del capital. |
+| **Desembolso y Control** | Liberación del 100% del presupuesto al inicio sin condiciones. | **Financiación en Tramos (*Staging*)** con *Stage Gates* de OEE y *Kill Criteria* vinculantes. | Limita la exposición máxima de caja (*Peak Funding*) y establece cláusulas de salida irrevocables. |
+
+### 1.3. Cómo Funciona: El Embudo Estratégico Integral (De Suite 01 Estrategia a Suite 02 Decisiones)
+
+En las organizaciones de alto rendimiento y en la práctica de la consultoría estratégica de élite, **ningún modelo financiero opera de manera aislada**. El Business Case Financiero de la **Suite 02 (Toma de Decisiones & Priorización)** representa la culminación económica y el filtro de aprobación vinculante de un embudo analítico que conecta el macroentorno global con la asignación final de cada euro de capital:
+
+{{< mermaid >}}
+flowchart TD
+    S1["<b>Nivel 1: Macroentorno Exógeno</b><br/><b>Matriz PESTEL Cuantitativa</b><br/><small>Riesgos geopolíticos, tipos de interés, inflación y marco ESG</small>"]
+    S2["<b>Nivel 2: Dinámica Microeconómica e Industria</b><br/><b>5 Fuerzas de Porter Ponderadas</b><br/><small>Poder de negociación, barreras de entrada y foso defensivo (Moat)</small>"]
+    S3["<b>Nivel 3: Diagnóstico Situacional y Cruce Operativo</b><br/><b>DAFO Cuantitativo y Matriz CAME</b><br/><small>Alineación de fortalezas internas con oportunidades del mercado</small>"]
+    S4["<b>Nivel 4: Gestión de Cartera y Asignación de Capital</b><br/><b>Matriz BCG y Matriz McKinsey / GE 3x3</b><br/><small>Asignación de CAPEX corporativo por UEN (Kit de Estrategia MBA)</small>"]
+    S5["<b>Nivel 5: Adjudicación y Selección de Alternativas</b><br/><b>Matriz DAR Cuantitativa (CMMI / KT)</b><br/><small>Filtros Veto booleanos, scoring multicriterio y Make vs. Buy</small>"]
+    S6["<b>Nivel 6: Priorización de Roadmap y Capacidad</b><br/><b>Matriz RICE & ICE Ágil</b><br/><small>Densidad de valor por persona-mes, línea de corte y experimentos rápidos</small>"]
+    S7["<b>Nivel 7: Autorización Financiera y Gobernanza de Capital</b><br/><b>Business Case Financiero (VAN, TIR, Payback & Tornado)</b><br/><small>DCF a 5 años, WACC (CAPM), análisis de sensibilidad y Board Decision Gateway</small>"]
+
+    S1 --> S2
+    S2 --> S3
+    S3 --> S4
+    S4 --> S5
+    S5 --> S6
+    S6 --> S7
+
+    style S1 fill:#EFF6FF,stroke:#3B82F6,stroke-width:1.5px,color:#1E3A8A
+    style S2 fill:#EEF2FF,stroke:#6366F1,stroke-width:1.5px,color:#312E81
+    style S3 fill:#ECFDF5,stroke:#10B981,stroke-width:2px,color:#064E3B
+    style S4 fill:#FFFBEB,stroke:#F59E0B,stroke-width:1.5px,color:#92400E
+    style S5 fill:#F8FAFC,stroke:#64748B,stroke-width:1.5px,color:#0F172A
+    style S6 fill:#EFF6FF,stroke:#2563EB,stroke-width:1.5px,color:#1E40AF
+    style S7 fill:#0F172A,stroke:#10B981,stroke-width:2.5px,color:#FFFFFF
+{{< /mermaid >}}
+
+1. **Nivel 1 — Escaneo del Macroentorno ([Matriz PESTEL Cuantitativa](/es/posts/matriz-pestel-cuantitativa/)):** Calibra las variables macroeconómicas exógenas (inflación, tipos de interés soberanos para el cálculo de la tasa libre de riesgo $R_f$, regulaciones industriales) que definen el contexto de inversión.
+2. **Nivel 2 — Dinámica Microeconómica e Industria ([5 Fuerzas de Porter Ponderadas](/es/posts/5-fuerzas-porter-cuantitativas/)):** Evalúa las presiones competitivas del sector, determinando si la compañía posee un foso defensivo (*Economic Moat*) capaz de proteger los márgenes operativos a medio y largo plazo.
+3. **Nivel 3 — Diagnóstico Situacional y Cruce Operativo ([DAFO Cuantitativo & Matriz CAME](/es/posts/dafo-cuantitativo-matriz-came/)):** Identifica las brechas de capacidad interna y define si una inversión en digitalización o automatización es una estrategia ofensiva de crecimiento o una medida defensiva de supervivencia.
+4. **Nivel 4 — Asignación de Capital y Cartera de Negocios ([Matriz BCG Dinámica](/es/posts/matriz-bcg-dinamica/) y [Matriz McKinsey / GE 3x3](/es/posts/matriz-mckinsey-ge/)):** Canaliza el presupuesto corporativo hacia las Unidades Estratégicas de Negocio prioritarias (todas integradas en el [Kit de Estrategia Corporativa MBA](/es/posts/estrategia-corporativa-mba-framework-cuantitativo/)).
+5. **Nivel 5 — Adjudicación y Selección de Alternativas Críticas ([Matriz DAR Cuantitativa con Criterios Veto](/es/posts/matriz-dar-cuantitativa/)):** Cuando se deben seleccionar proveedores tecnológicos, contratistas de ingeniería o dilemas Make vs. Buy, la Matriz DAR evalúa las alternativas bajo cláusulas veto no negociables y scoring multicriterio ponderado.
+6. **Nivel 6 — Priorización de Backlog y Capacidad de Ejecución ([Matriz RICE & ICE Ágil](/es/posts/matriz-rice-ice-priorizacion/)):** Organiza la capacidad finita de los squads de ingeniería y producto mediante densidad de valor por persona-mes y líneas de corte de capacidad para garantizar entregas ágiles y ordenadas.
+7. **Nivel 7 — La Última Milla Financiera y Autorización de Desembolso (Business Case Financiero VAN / TIR / Tornado):** Una vez que un proyecto ha sido validado estratégicamente (Suite 01), adjudicado con criterios objetivos (DAR) y priorizado en capacidad (RICE), **llega la prueba de fuego del capital**: modelar la tesorería libre a 5 años, aplicar la tasa de corte WACC, someter el caso al estrés del Gráfico Tornado y estructurar los tramos de desembolso con *stage gates* auditables antes de que el CFO y el Consejo firmen la resolución de inversión.
+
+---
+
+## 2. El Pipeline Metodológico del Business Case Institucional
 
 La formulación de un caso de negocio para someter a aprobación de capital no es un mero ejercicio de proyección numérica aislada; es un **proceso secuencial y vinculante** que conecta las hipótesis operativas de la fábrica o el mercado con el coste del capital corporativo y la gobernanza del Consejo:
 
@@ -61,11 +151,11 @@ flowchart TD
 
 ---
 
-## 2. Fundamentación Matemática: Flujo de Caja Libre, WACC y Métricas de Rentabilidad
+## 3. Fundamentación Matemática: Flujo de Caja Libre, WACC y Métricas de Rentabilidad
 
 Para que un modelo financiero soporte el escrutinio de directores independientes, auditores y directores de control de gestión, cada métrica debe estar anclada en la teoría canónica de las finanzas corporativas.
 
-### 2.1. Definición Formal del Flujo de Caja Libre de la Empresa (FCFF)
+### 3.1. Definición Formal del Flujo de Caja Libre de la Empresa (FCFF)
 
 El Flujo de Caja Libre para la Empresa (*Free Cash Flow to Firm* o FCF) representa la liquidez neta generada por las operaciones del negocio disponible para ser distribuida a todos los proveedores de capital (acreedores financieros y accionistas), una vez cubiertas todas las inversiones necesarias en inmovilizado y capital circulante.
 
@@ -83,7 +173,7 @@ Donde:
   $$\text{NWC}_t = \text{Clientes}_t + \text{Inventarios}_t - \text{Proveedores}_t \approx \text{Ingresos}_t \cdot \% \text{NWC}$$
   $$\Delta\text{NWC}_t = \text{NWC}_t - \text{NWC}_{t-1}$$
 
-### 2.2. Coste Medio Ponderado del Capital (WACC) mediante CAPM
+### 3.2. Coste Medio Ponderado del Capital (WACC) mediante CAPM
 
 La tasa de descuento aplicada al flujo de caja libre no es una cifra arbitraria; es el **coste de oportunidad del capital (WACC)** que compensa a acreedores y accionistas por el riesgo sistemático del proyecto:
 
@@ -108,7 +198,7 @@ $$K_e = 3,50\% + 1,20 \cdot 5,50\% + 1,40\% = 11,50\%$$
 $$K_d \cdot (1 - t) = 4,667\% \cdot (1 - 0,25) = 3,50\%$$
 $$\text{WACC} = 0,75 \cdot 11,50\% + 0,25 \cdot 3,50\% = 8,625\% + 0,875\% = \mathbf{9,50\%}$$
 
-### 2.3. Valor Actual Neto (VAN) y la Regla de Inversión
+### 3.3. Valor Actual Neto (VAN) y la Regla de Inversión
 
 El Valor Actual Neto mide el valor monetario absoluto que el proyecto genera hoy por encima del coste de oportunidad exigido al capital:
 
@@ -123,7 +213,7 @@ $$\text{VR} = \frac{\text{FCF}_n \cdot (1 + g)}{\text{WACC} - g} \quad \text{con
 > * Si $\text{VAN} = 0$: El proyecto cubre exactamente la rentabilidad exigida al WACC. Indiferente.
 > * Si $\text{VAN} < 0$: El proyecto destruye capital corporativo. **RECHAZAR**.
 
-### 2.4. La Trampa de la Función NPV de Excel en el Año 0
+### 3.4. La Trampa de la Función NPV de Excel en el Año 0
 
 Uno de los errores más extendidos en la práctica corporativa ocurre al utilizar la función nativa `=NPV(tasa, rango)` (o `=VNA` en español) en Microsoft Excel o Google Sheets.
 
@@ -132,7 +222,7 @@ Por construcción de la especificación técnica de Excel, la función `NPV(r, f
 La formulación técnica obligatoria es:
 $$\text{Fórmula Correcta en Excel:} \quad = \text{FCF}_0 + \text{NPV}(\text{WACC}, \text{FCF}_1:\text{FCF}_5)$$
 
-### 2.5. TIR vs. TIR Modificada (MIRR) y Payback Descontado
+### 3.5. TIR vs. TIR Modificada (MIRR) y Payback Descontado
 
 * **Tasa Interna de Retorno (TIR):** La tasa intrínseca $r$ que anula el VAN:
   $$\sum_{t=0}^n \frac{\text{FCF}_t}{(1 + \text{TIR})^t} = 0$$
@@ -145,7 +235,7 @@ $$\text{Fórmula Correcta en Excel:} \quad = \text{FCF}_0 + \text{NPV}(\text{WAC
 
 ---
 
-## 3. Matriz Comparativa: Qué Responde Cada Métrica Financiera y Sus Trampas
+## 4. Matriz Comparativa: Qué Responde Cada Métrica Financiera y Sus Trampas
 
 | Métrica Financiera | Pregunta de Negocio que Responde | Ventaja Principal | Trampa o Limitación Crítica | Estándar Datalaria |
 | :--- | :--- | :--- | :--- | :--- |
@@ -158,11 +248,11 @@ $$\text{Fórmula Correcta en Excel:} \quad = \text{FCF}_0 + \text{NPV}(\text{WAC
 
 ---
 
-## 4. Análisis de Riesgo: Gráfico Tornado y Puntos de Equilibrio (Break-Even)
+## 5. Análisis de Riesgo: Gráfico Tornado y Puntos de Equilibrio (Break-Even)
 
 Un Business Case que se limite a un único escenario determinista carece de credibilidad ante un Consejo de Administración. La dirección ejecutiva no busca predicciones infalibles; busca entender **dónde se concentra el riesgo y cuál es el margen de error tolerable**.
 
-### 4.1. Metodología del Gráfico Tornado
+### 5.1. Metodología del Gráfico Tornado
 
 El Gráfico Tornado somete el modelo a un test de estrés univariable normalizado. Sobre el Escenario Base, se altera un único parámetro en su rango bajo y alto (típicamente $\pm 15\%$ en variables comerciales, $\pm 5\text{ pp}$ en costes y $\pm 2\text{ pp}$ en WACC) mientras todos los demás permanecen fijos.
 
@@ -171,72 +261,55 @@ $$\text{Swing}_i = |\text{VAN}_i^{\text{Alto}} - \text{VAN}_i^{\text{Bajo}}|$$
 
 Los drivers se ordenan de mayor a menor amplitud, generando la silueta cónica característica que da nombre al gráfico:
 
-![Gráfico Tornado de Sensibilidad en VAN](tornado_chart.png)
+<p align="center">
+  <img src="tornado_chart.png" alt="Gráfico Tornado de Sensibilidad en VAN" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #cbd5e1; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);" />
+</p>
+<p align="center" style="font-size: 0.85rem; color: #64748b; font-style: italic; margin-top: -0.5rem; margin-bottom: 2rem;">
+  Gráfico Tornado Oficial: Clasificación de variables críticas por amplitud de impacto en el VAN (±20% de perturbación univariable sobre el caso base de 693 k€).
+</p>
 
-### 4.2. Puntos de Equilibrio Lineales (Break-Even)
+### 5.2. Puntos de Equilibrio Lineales (Break-Even)
 
 El análisis de sensibilidad permite deducir los umbrales críticos de seguridad donde $\text{VAN} = 0$:
 1. **Precio de Equilibrio (19,21 €/u):** El proyecto resiste una erosión comercial de hasta el **-23,2%** en el precio de venta unitario antes de entrar en zona destructora de valor.
 2. **Volumen de Equilibrio (76.840 unidades):** La línea soporta una pérdida de demanda del **-23,2%** respecto al objetivo de 100.000 unidades anuales.
-3. **Sobrecoste Máximo de CAPEX (2.070.561 €):** La inversión inicial soporta un desvío o retraso de ingeniería de hasta el **+72,5%** (+870 k€ adicionales) manteniendo un VAN positivo.
+3. **Sobrecoste Máximo en CAPEX (2.070.561 €):** La inversión total en maquinaria e ingeniería admite un sobrecoste de hasta el **+72,5%** sobre el presupuesto base de 1,2 M€ antes de comprometer la rentabilidad mínima exigida al capital.
 
 ---
 
-## 5. El Árbol de Decisión del Comité de Inversiones (Hurdle Policy Gateway)
+## 6. Gobernanza de Capital: Staging, Stage Gates y Kill Criteria
 
-Para eliminar debates subjetivos y decisiones basadas en la jerarquía (*síndrome HiPPO*), el modelo implementa un protocolo algorítmico de dictamen vinculante:
+La aprobación de un proyecto multimillonario no debe implicar la entrega incondicional de los fondos desde el día uno. Las finanzas corporativas avanzadas implementan la técnica de **desembolso por tramos condicionados (*capital staging*)**:
 
-{{< mermaid >}}
-flowchart TD
-    A{"<b>¿VAN a 5 Años > 0?</b>"}
-    
-    B{"<b>¿TIR ≥ WACC + 3 pp?</b><br/><small>TIR ≥ 12,50%</small>"}
-    C["<b>⛔ RECHAZAR</b><br/><small>El proyecto destruye riqueza neta<br/>para el accionista</small>"]
-    
-    D{"<b>¿Payback Descontado ≤ 4,0 años?</b>"}
-    E["<b>🟠 REVISAR</b><br/><small>VAN positivo pero rentabilidad insuficiente<br/>Optimizar CAPEX o estructura</small>"]
-    
-    F["<b>✅ APROBAR</b><br/><small>Cumple simultáneamente valor, rentabilidad<br/>y liquidez. Liberar Tramo 1</small>"]
-    G["<b>🟠 REVISAR</b><br/><small>Recuperación de capital excesivamente lenta<br/>Riesgo de liquidez inaceptable</small>"]
+1. **Tramo 1 (Q1 Año 0) | 850.000 €:** Ingeniería de detalle, obra civil y pedido en firme de la maquinaria robótica principal.
+   * *Stage Gate 1:* Superación al 100% de las pruebas de aceptación en fábrica (*Factory Acceptance Testing* o FAT) con cero incidencias críticas de seguridad.
+2. **Tramo 2 (Q4 Año 1) | 350.000 €:** Integración del software de control de producción (MES), conexionado de células y comisionado final en planta.
+   * *Stage Gate 2:* Pruebas de aceptación en planta (*Site Acceptance Testing* o SAT) firmadas formalmente y alcance de una Eficiencia General de los Equipos (OEE) preliminar $\ge 75\%$.
 
-    A -->|Sí| B
-    A -->|No| C
-    B -->|Sí| D
-    B -->|No| E
-    D -->|Sí| F
-    D -->|No| G
-
-    style A fill:#0F172A,stroke:#2563EB,stroke-width:2px,color:#FFFFFF
-    style B fill:#0F172A,stroke:#2563EB,stroke-width:2px,color:#FFFFFF
-    style C fill:#FEE2E2,stroke:#EF4444,stroke-width:2px,color:#991B1B
-    style D fill:#0F172A,stroke:#2563EB,stroke-width:2px,color:#FFFFFF
-    style E fill:#FEF3C7,stroke:#F59E0B,stroke-width:2px,color:#92400E
-    style F fill:#D1FAE5,stroke:#10B981,stroke-width:2.5px,color:#065F46
-    style G fill:#FEF3C7,stroke:#F59E0B,stroke-width:2px,color:#92400E
-{{< /mermaid >}}
+### Reglas Vinculantes de Cancelación (Kill Criteria / Stop-Loss)
+* **Desviación de Ingeniería:** Si el coste acumulado en Q3 supera en más de un 15% el presupuesto del Tramo 1 (> 127.500 € de sobrecoste), se congela automáticamente el Tramo 2 y se eleva informe de auditoría técnica extraordinaria al Consejo.
+* **Falta de Demanda Comercial:** Si a los 9 meses de proyecto los compromisos comerciales firmados no alcanzan el 75% del volumen previsto (69.000 unidades), se suspende la instalación de la segunda célula de automatización.
+* **Deterioro de la Rentabilidad:** Si en la revisión anual obligatoria la TIR recalculada cae por debajo del WACC (9,50%), se activa el protocolo formal de desinversión o renegociación contractual con penalizaciones.
 
 ---
 
-## 6. Caso Práctico Resuelto: Automatización y Digitalización de Línea de Producción
+## 7. Caso Práctico Resuelto: Automatización de Línea de Producción (1,2 M€)
 
-Para ilustrar la aplicación práctica de la metodología, modelamos una inversión real en una planta de manufactura industrial:
-* **Inversión Inicial (CAPEX):** 1.200.000 € en dos tramos (850.000 € en Año 0 y 350.000 € en Año 1).
-* **Horizonte:** 5 años operativos.
-* **WACC:** 9,50% (Fondos propios: 75% a Ke = 11,50%; Deuda: 25% a Kd neto = 3,50%).
+Para ilustrar el modelo en un entorno industrial real, hemos calibrado el proyecto de modernización de una planta manufacturera mediana:
 
-### 6.1. Cuenta de Resultados y Flujo de Caja Libre (Años 0 a 5)
+### 7.1. Tabla Consolidada de la Proyección DCF (Cifras en k€)
 
-| Concepto Financiero (k€) | Año 0 | Año 1 | Año 2 | Año 3 | Año 4 | Año 5 |
+| Línea de Proyección (k€) | Año 0 | Año 1 | Año 2 | Año 3 | Año 4 | Año 5 |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Volumen de Ventas (u.)** | 0 | 100.000 | 105.000 | 110.250 | 115.763 | 121.551 |
-| **Precio Unitario (€/u)** | 0,00 | 25,00 | 25,50 | 26,01 | 26,53 | 27,06 |
-| **Ingresos por Ventas** | **-** | **2.500,0** | **2.677,5** | **2.867,6** | **3.071,2** | **3.289,2** |
-| (-) Costes Variables (60%) | - | -1.500,0 | -1.606,5 | -1.720,6 | -1.842,7 | -1.973,5 |
-| (-) OPEX Fijo Anual | - | -450,0 | -459,0 | -468,2 | -477,5 | -487,1 |
-| **EBITDA** | **-** | **550,0** | **612,0** | **678,9** | **750,9** | **828,6** |
-| (-) Amortización Lineal (5 a.) | - | -170,0 | -240,0 | -240,0 | -240,0 | -240,0 |
-| **EBIT** | **-** | **380,0** | **372,0** | **438,9** | **510,9** | **588,6** |
-| (-) Impuestos sobre EBIT (25%) | - | -95,0 | -93,0 | -109,7 | -127,7 | -147,2 |
+| Volumen (u.) | - | 100.000 | 105.000 | 110.250 | 115.763 | 121.551 |
+| Precio Unitario (€) | - | 25,00 | 25,50 | 26,01 | 26,53 | 27,06 |
+| **Ingresos por Ventas** | **-** | **2.500,0** | **2.677,5** | **2.867,6** | **3.071,2** | **3.289,3** |
+| (-) Costes Variables (60%) | - | -1.500,0 | -1.606,5 | -1.720,6 | -1.842,7 | -1.973,6 |
+| (-) OPEX Fijo Anual | - | -250,0 | -257,5 | -265,2 | -273,2 | -281,4 |
+| **EBITDA** | **-** | **+750,0** | **+813,5** | **+881,8** | **+955,3** | **+1.034,3** |
+| (-) Amortización Lineal | - | -170,0 | -240,0 | -240,0 | -240,0 | -240,0 |
+| **EBIT** | **-** | **+580,0** | **+573,5** | **+641,8** | **+715,3** | **+794,3** |
+| (-) Impuestos (25%) | - | -145,0 | -143,4 | -160,5 | -178,8 | -198,6 |
 | **NOPAT** | **-** | **285,0** | **279,0** | **329,1** | **383,2** | **441,5** |
 | (+) Amortización (no monetaria) | - | +170,0 | +240,0 | +240,0 | +240,0 | +240,0 |
 | (-) CAPEX por Tramos | -850,0 | -350,0 | 0,0 | 0,0 | 0,0 | 0,0 |
@@ -245,7 +318,7 @@ Para ilustrar la aplicación práctica de la metodología, modelamos una inversi
 | FCF Acumulado Nominal | -850,0 | -995,0 | -493,8 | +56,4 | +659,2 | +1.318,9 |
 | **VP del FCF Acumulado (Curva J)** | **-850,0** | **-982,4** | **-564,4** | **-145,4** | **+274,0** | **+693,0** |
 
-### 6.2. Diagnóstico Financiero de las Métricas
+### 7.2. Diagnóstico Financiero de las Métricas
 
 1. **Creación de Riqueza Absoluta:** El proyecto genera un **VAN a 5 años de +692.991 €** (superior a medio millón de euros de riqueza neta generada para la firma tras descontar el WACC).
 2. **Rentabilidad Intrínseca Robusta:** La **TIR se sitúa en el 28,89%**, superando ampliamente el WACC del 9,50% por un margen de **+19,39 puntos porcentuales** (muy por encima de los +3,0 pp exigidos por la política de inversión). La **MIRR alcanza el 21,84%**, confirmando un rendimiento excelente bajo el supuesto realista de reinversión al coste del capital.
@@ -254,7 +327,7 @@ Para ilustrar la aplicación práctica de la metodología, modelamos una inversi
 
 ---
 
-## 7. Protocolo de Defensa ante el Consejo (Board Defense FAQ)
+## 8. Protocolo de Defensa ante el Consejo (Board Defense FAQ)
 
 Cuando el equipo promotor presenta el Business Case ante el CFO y el Comité de Inversiones, surgen de manera predecible las siguientes cuestiones de gobernanza:
 
@@ -278,21 +351,23 @@ Cuando el equipo promotor presenta el Business Case ante el CFO y el Comité de 
 
 ---
 
-## 8. Executive Decision Pack Oficial: Business Case Financiero (VAN, TIR, Payback)
+## 9. Executive Decision Pack Oficial: Business Case Financiero (VAN, TIR, Payback)
 
 Para directores financieros (CFO), directores generales (CEO), analistas de M&A y consultores estratégicos que requieran implementar este marco analítico con calidad de producción inmediata y grado Consejo de Administración, hemos empaquetado todos los activos programáticos oficiales de la Suite 02:
 
 {{< product-card
   title="Business Case Financiero (VAN, TIR, Payback)"
   category="Finanzas & Inversión"
-  price="8€"
-  original_price="25€"
+  price="9€"
+  original_price="29€"
   badge="📈 Estándar CFO"
   icon="📈"
+  preview_image="preview-pack.png"
+  preview_caption="Vista previa real de los entregables incluidos: Modelo Financiero DCF en Excel (.xlsx con fórmulas protegidas), Presentación C-Level (.pptx 16:9 Widescreen con Gráfico Tornado y Board Decision Gateway) y Guía Metodológica Oficial (.pdf)."
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Guía Metodológica PDF"
   features="Modelo financiero de flujo de caja descontado a 3 y 5 años|Cálculo automático de VAN (NPV), TIR (IRR), MIRR y Payback descontado|WACC por CAPM, 3 escenarios y VAN esperado ponderado|Análisis de sensibilidad y Gráfico Tornado para análisis de riesgo|Slide PPTX C-Level estructurada según las exigencias del CFO|Descarga directa inmediata (.ZIP con versiones ES y EN)"
   checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/c2ff153f-2f95-4671-ab14-1b8e02301079"
-  button_text="Descargar Pack Completo (.ZIP) • 8€"
+  button_text="Descargar Pack Completo (.ZIP) • 9€"
 >}}
 El paquete descargable incluye los libros de cálculo en **Excel (.xlsx)** estructurados en 6 pestañas interconectadas con protección estándar ECMA-376 (fórmulas protegidas bajo contraseña proporcionada en las instrucciones y celdas de entrada 100% editables en blanco), las presentaciones ejecutivas en **PowerPoint (.pptx 16:9 widescreen)** bajo la Pirámide de Minto con Gráfico Tornado nativo editable y Board Decision Gateway con 4 firmas de C-Level, las **Guías Metodológicas Oficiales en PDF** de 5 páginas con la demostración matemática formal y FAQ ante el Consejo, e instrucciones de importación fluida a Google Sheets.
 {{< /product-card >}}
@@ -301,7 +376,7 @@ El paquete descargable incluye los libros de cálculo en **Excel (.xlsx)** estru
 
 ---
 
-## 9. Referencias Bibliográficas Canónicas de Autoridad
+## 10. Referencias Bibliográficas Canónicas de Autoridad
 
 1. **Brealey, Richard A., Myers, Stewart C., & Allen, Franklin (2020).** *Principles of Corporate Finance*. McGraw-Hill Education, Nueva York (13ª Edición).  
    *El tratado seminal de finanzas corporativas que formaliza la superioridad matemática del VAN sobre la TIR, el descuento de flujos libres y la evaluación de proyectos de inversión bajo incertidumbre.* ISBN: `978-1260565553`

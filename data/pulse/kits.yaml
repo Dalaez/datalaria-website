@@ -379,8 +379,8 @@ kits:
   topic: decisiones
   category_es: Decisiones
   status: available
-  price: 8€
-  original_price: 25€
+  price: 9€
+  original_price: 29€
   icon: 📈
   deliverables_es:
   - Excel .xlsx + Sheets
@@ -395,8 +395,8 @@ kits:
   title_es: Business Case Financiero (VAN, TIR, Payback)
   description_es: Justifica el retorno de proyectos de transformación digital, IA
     o infraestructura ante el comité de inversiones y el CFO.
-  article_url_es: null
-  guide_url_es: null
+  article_url_es: /es/posts/business-case-financiero-van-tir/
+  guide_url_es: /es/posts/business-case-financiero-van-tir/
   title_en: Financial Business Case (NPV, IRR, Payback)
   category_en: Decisions
   description_en: Justify capital allocation for digital transformation, AI platforms,
@@ -410,8 +410,8 @@ kits:
   - Automated NPV, IRR, and discounted payback calculations
   - Two-way sensitivity tables and Tornado risk variance analysis
   - 16:9 C-Level slide with capital request summary for the CFO
-  article_url_en: null
-  guide_url_en: null
+  article_url_en: /en/posts/financial-business-case-npv-irr/
+  guide_url_en: /en/posts/financial-business-case-npv-irr/
 - id: pack-raci
   slug: raci
   type: kit

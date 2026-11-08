@@ -44,18 +44,12 @@ To understand how to transform the chaos of AI-assisted development into a repro
 
 This release marks the official launch of **Phase 6 of the Datalaria Ecosystem**, dedicated entirely to solving the governance, scalability, and profitability of autonomous AI-assisted software development.
 
-```
-Datalaria Helix Value Ladder:
-┌─────────────────────────────────────────────────────────────┐
-│ Tier 3 · Helix Pro B2B (Enterprise Consulting & Cloud Sync) │
-├─────────────────────────────────────────────────────────────┤
-│ Tier 2 · Datalaria Helix Core Kit (19 € Early-Bird / 39 €)  │
-├─────────────────────────────────────────────────────────────┤
-│ Tier 1 · Datalaria Helix Starter Kit (9 € on Lemon Squeezy) │
-├─────────────────────────────────────────────────────────────┤
-│ Tier 0 · Free Web Sandbox (/apps/helix/ · Mode A + B)       │
-└─────────────────────────────────────────────────────────────┘
-```
+| Tier | Datalaria Helix Offering | Delivery & Pricing |
+| :---: | :--- | :--- |
+| **Tier 3** | **Helix Pro B2B** | Custom Enterprise Architecture & Cloud Integration |
+| **Tier 2** | **Datalaria Helix Core Kit** | 19 € Early-Bird Launch Price (Regular 39 €) |
+| **Tier 1** | **Datalaria Helix Starter Kit** | 9 € on Lemon Squeezy (2 agents + PDF) |
+| **Tier 0** | **Free Web Sandbox** | `/apps/helix/` (Mode A + Mode B client-side) |
 
 ### The Dual-Mode Value Ladder (Constitution Art. 3):
 1. **Tier 0 — Free Web Sandbox ([/apps/helix/](/apps/helix/)):** A client-side React 19 + TypeScript tool allowing any user to audit their project in 5 minutes, calculate their *SpecQualityScore (0..100)*, generate their initial `.zip` specification package directly in browser memory (Mode A), or export an executive Mega-Prompt without requiring API keys or payment credentials (Mode B).
@@ -111,28 +105,28 @@ flowchart TB
         U["User: Approves Specifications and Authorizes Releases"]
     end
 
-    subgraph Cell1["1. DIRECTION CELL (Strategy & Contracts)"]
-        A01["01 · 🎯 Orchestrator\n(XS-XL Sizing & Routing)"]
-        A02["02 · 🧭 Product Analyst\n(Interview & spec.md)"]
-        A03["03 · 🏛️ Architect\n(Constitution, ADRs & Modularity)"]
+    subgraph Cell1["1. DIRECTION CELL (Strategy and Contracts)"]
+        A01["01 · 🎯 Orchestrator\n(XS-XL Sizing and Routing)"]
+        A02["02 · 🧭 Product Analyst\n(Interview and spec.md)"]
+        A03["03 · 🏛️ Architect\n(Constitution, ADRs and Modularity)"]
     end
 
     subgraph Cell2["2. CONSTRUCTION CELL (Technical Muscle)"]
-        A04["04 · 🎨 UX/UI Designer\n(Tokens & design.md)"]
-        A05["05 · ⚡ Frontend\n(React 19, UI & A11y)"]
-        A06["06 · 🗄️ Backend & Data\n(Python, SQL & RLS)"]
-        A07["07 · 🔌 APIs & Integrations\n(MCP, Webhooks & Fetch)"]
-        A08["08 · 🎬 Media & i18n\n(ES/EN Parity & SEO)"]
-        A09["09 · 💳 Monetization & PLG\n(Catalog, Pricing & GA4)"]
+        A04["04 · 🎨 UX/UI Designer\n(Tokens and design.md)"]
+        A05["05 · ⚡ Frontend\n(React 19, UI and A11y)"]
+        A06["06 · 🗄️ Backend and Data\n(Python, SQL and RLS)"]
+        A07["07 · 🔌 APIs and Integrations\n(MCP, Webhooks and Fetch)"]
+        A08["08 · 🎬 Media and i18n\n(ES/EN Parity and SEO)"]
+        A09["09 · 💳 Monetization and PLG\n(Catalog, Pricing and GA4)"]
     end
 
     subgraph Cell3["3. ASSURANCE CELL (Independent with VETO)"]
-        A10["10 · 🛡️ Security & Privacy\n(Secrets, RLS & Firewall)"]
-        A11["11 · ✅ QA Verifier (VETO)\n(Tests, Gates & Code 0)"]
+        A10["10 · 🛡️ Security and Privacy\n(Secrets, RLS and Firewall)"]
+        A11["11 · ✅ QA Verifier (VETO)\n(Tests, Gates and Code 0)"]
     end
 
-    subgraph Cell4["4. DELIVERY CELL (Operations & Memory)"]
-        A12["12 · 🚀 Release & DevOps\n(Checkpoints, SemVer & Rollback)"]
+    subgraph Cell4["4. DELIVERY CELL (Operations and Memory)"]
+        A12["12 · 🚀 Release and DevOps\n(Checkpoints, SemVer and Rollback)"]
     end
 
     U <-->|"Single Interlocutor"| A01
