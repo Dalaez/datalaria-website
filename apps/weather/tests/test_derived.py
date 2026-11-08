@@ -369,3 +369,93 @@ def test_frontend_inline_js_syntax():
         os.unlink(tmp_name)
 
 
+# ---------------------------------------------------------------------------
+# 11. Tests de Contrato Real de Producción & Zero-404 Inventory (W3.3-FIX)
+# ---------------------------------------------------------------------------
+
+def test_production_derived_inventory_168_cities():
+    """Verifica que el inventario completo de 168 ciudades derivadas existe en apps y static."""
+    # 1. Verificar index.json y climatology.json en apps/weather y static/apps/weather
+    for base in [BASE_DIR, BASE_DIR.parent.parent / "static" / "apps" / "weather"]:
+        index_file = base / "derived" / "index.json"
+        assert index_file.exists(), f"Falta {index_file}"
+        with open(index_file, "r", encoding="utf-8") as f:
+            idx_data = json.load(f)
+
+        cities = idx_data.get("cities", [])
+        assert len(cities) == 168, f"Esperadas 168 ciudades en {index_file}, obtenidas {len(cities)}"
+
+        climatology_file = base / "derived" / "climatology.json"
+        assert climatology_file.exists(), f"Falta {climatology_file}"
+        with open(climatology_file, "r", encoding="utf-8") as f:
+            clim_data = json.load(f)
+        assert len(clim_data.get("cities", {})) == 168
+
+    # 2. Verificar que las 168 ciudades tienen su daily JSON generado en apps/weather/derived/daily/
+    daily_dir = BASE_DIR / "derived" / "daily"
+    assert daily_dir.exists(), f"Falta {daily_dir}"
+    daily_files = list(daily_dir.glob("*.json"))
+    assert len(daily_files) == 168, f"Esperados 168 daily JSON en {daily_dir}, encontrados {len(daily_files)}"
+
+    with open(BASE_DIR / "derived" / "index.json", "r", encoding="utf-8") as f:
+        idx_data = json.load(f)
+
+    for c in idx_data.get("cities", []):
+        slug = c.get("slug")
+        city_json = daily_dir / f"{slug}.json"
+        assert city_json.exists(), f"Falta daily JSON para ciudad {c.get('name', slug)} (slug {slug}) en {city_json}"
+        with open(city_json, "r", encoding="utf-8") as f:
+            city_data = json.load(f)
+        assert len(city_data.get("rows", [])) >= 1, f"Filas vacías en {city_json}"
+
+
+def test_presets_and_global_summary_zero_404_contract():
+    """Verifica que global_summary.json contiene las 168 ciudades reales y los presets resuelven con 0 errores 404."""
+    summary_file = BASE_DIR / "global_summary.json"
+    assert summary_file.exists()
+    with open(summary_file, "r", encoding="utf-8") as f:
+        summary_data = json.load(f)
+
+    assert summary_data.get("total_cities") == 168
+    assert summary_data.get("total_records", 0) >= 180000
+
+    # Todos los slugs de los presets 1-clic deben existir en derived/daily/<slug>.json
+    preset_slugs = [
+        "madrid", "barcelona", "bilbao", "sevilla", "leon",
+        "london", "new-york", "tokyo", "singapore",
+        "sao-paulo", "sydney", "panama-city", "los-angeles",
+        "beijing", "ulaanbaatar"
+    ]
+    daily_dir = BASE_DIR / "derived" / "daily"
+    for slug in preset_slugs:
+        target = daily_dir / f"{slug}.json"
+        assert target.exists(), f"El slug del preset '{slug}' no existe en {target} (provocaría 404)"
+
+
+def test_workflow_generates_derived_on_every_event():
+    """Verifica que el workflow de CI/CD genera los derivados compactos en push, dispatch y schedule sin bloqueos."""
+    workflow_file = BASE_DIR / ".github" / "workflows" / "actualizar-clima.yml"
+    assert workflow_file.exists()
+    content = workflow_file.read_text(encoding="utf-8")
+
+    assert "build_derived.py --source datos --out derived --month-log" in content
+    assert "if: github.event.schedule == '0 22 * * *'" not in content, "El workflow bloquea la generación de derivados en eventos push"
+
+
+def test_frontend_zero_404_and_instant_kpi_architecture():
+    """Verifica la arquitectura frontend Zero-404, el renderizado de KPIs en 0ms y el Service Worker v3.0.2."""
+    html_content = (BASE_DIR / "index.html").read_text(encoding="utf-8")
+
+    # 1. derivedIndexSet para prevenir 404s
+    assert "derivedIndexSet" in html_content
+    assert "derivedIndexSet.has(slug)" in html_content
+
+    # 2. Renderizado instantáneo de KPIs en updateDashboard
+    assert "updateKPIs({}, checkedMetric, selectedValues)" in html_content
+
+    # 3. Service Worker versión 3.0.2
+    sw_content = (BASE_DIR / "sw.js").read_text(encoding="utf-8")
+    assert "weather-v3.0.2" in sw_content
+
+
+

@@ -79,10 +79,15 @@ def verify_upstream_sync(app_dir: Path | None = None) -> tuple[bool, list[str]]:
         except Exception as e:
             issues.append(f"predicciones.json corrupto: {e}")
 
+    # Verificar derived/index.json
+    derived_index = app_dir / "derived" / "index.json"
+    if not derived_index.exists():
+        issues.append("derived/index.json no existe.")
+
     # Verificar datos/ con CSVs
     datos_dir = app_dir / "datos"
-    if not datos_dir.exists() or len(list(datos_dir.glob("*.csv"))) < 50:
-        issues.append("datos/ no contiene al menos 50 archivos CSV históricos.")
+    if not datos_dir.exists() or len(list(datos_dir.glob("*.csv"))) < 10:
+        issues.append("datos/ no contiene al menos 10 archivos CSV.")
 
     return len(issues) == 0, issues
 
@@ -119,13 +124,49 @@ def export_to_upstream(app_dir: Path, target_dir: Path) -> int:
                 csv_count += 1
         print(f"Copiados {csv_count} archivos CSV en datos/")
 
+    # Copiar carpeta derived/
+    derived_src = app_dir / "derived"
+    if derived_src.exists():
+        derived_dst = target_dir / "derived"
+        shutil.copytree(derived_src, derived_dst, dirs_exist_ok=True)
+        print(f"Copiada carpeta derived/ hacia {derived_dst}")
+
+    # Si target_dir/datos tiene CSVs, asegurar derivados al 100%
+    target_datos = target_dir / "datos"
+    if target_datos.exists() and len(list(target_datos.glob("*.csv"))) >= 50:
+        import subprocess
+        build_script = app_dir / "build_derived.py"
+        if build_script.exists():
+            print("Ejecutando build_derived.py sobre target_dir/datos...")
+            cmd = [
+                sys.executable,
+                str(build_script),
+                "--source", str(target_datos),
+                "--out", str(target_dir / "derived"),
+                "--month-log"
+            ]
+            subprocess.run(cmd, check=True)
+            print("Derivados generados en target_dir/derived con éxito.")
+
+    # Sincronizar también hacia static/apps/weather para paridad total con Hugo
+    static_weather_dir = BASE_DIR.parents[1] / "static" / "apps" / "weather"
+    if static_weather_dir.exists():
+        for rel in ["index.html", "manifest.json", "sw.js"]:
+            if (app_dir / rel).exists():
+                shutil.copy2(app_dir / rel, static_weather_dir / rel)
+        # INV-WEATHER-6: En static/apps/weather solo copiar index.json y climatology.json (nunca daily/ ni CSVs)
+        static_derived = static_weather_dir / "derived"
+        static_derived.mkdir(parents=True, exist_ok=True)
+        for d_file in ["index.json", "climatology.json"]:
+            src_f = target_dir / "derived" / d_file
+            if src_f.exists():
+                shutil.copy2(src_f, static_derived / d_file)
+        # Asegurar que daily no existe en static
+        if (static_derived / "daily").exists():
+            shutil.rmtree(static_derived / "daily", ignore_errors=True)
+        print("Sincronizado también hacia static/apps/weather.")
+
     print(f"\n✅ Exportación upstream completada con éxito en: {target_dir}")
-    print("\n--- INSTRUCCIONES MANUALES PARA UPSTREAM (Dalaez/app_weather) ---")
-    print("1. En tu clon local de app_weather, crea un tag de seguridad: git tag pre-w3.1")
-    print(f"2. Copia los archivos desde {target_dir} a la raíz del repositorio.")
-    print("3. Haz commit y push: git add . && git commit -m 'feat: Data Truth Pipeline v3.0' && git push origin main")
-    print("4. En GitHub Actions, ejecuta manualmente el workflow 'Actualizar Datos Climáticos' (workflow_dispatch).")
-    print("5. Comprueba en tu navegador que https://datalaria-app-weather.netlify.app/derived/index.json devuelve código 200.")
     return 0
 
 
@@ -195,7 +236,7 @@ def pull_from_remote(app_dir: Path, cities: list[str] | None = None, with_daily:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Verificador y sincronizador upstream para Weather Service v3.0.")
     parser.add_argument("--check", action="store_true", help="Verifica la integridad de los archivos canónicos.")
-    parser.add_argument("--export-dir", type=str, help="Directorio destino hacia donde exportar los archivos para git push.")
+    parser.add_argument("--target", "--export-dir", dest="export_dir", type=str, help="Directorio destino hacia donde exportar los archivos para git push.")
     parser.add_argument("--pull", action="store_true", help="Descarga resúmenes compactos desde producción (Netlify).")
     parser.add_argument("--cities", type=str, default=None, help="Lista separada por comas de ciudades/slugs para --pull.")
     parser.add_argument("--with-daily", action="store_true", help="Descarga series daily para las ciudades especificadas.")

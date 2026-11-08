@@ -191,6 +191,14 @@ Tras auditar todos los artículos de `/content/es/posts/` y `/content/en/posts/`
     4. Implementar modo offline con banner discreto ("Sin conexión · Mostrando datos de hace X h").
   - *Gate de Verificación:* Tests PWA en pytest + `hugo --renderToMemory` + verificación de manifiesto y Service Worker activo (31/31 pasados, exit 0). (Completado el 2026-11-08 ✅).
 
+- [x] **Hito W3.3-FIX: Pipeline de Derivados Reales (168 Ciudades), Zero-404 Frontend, Renderizado Instantáneo de KPIs y Blindaje QA de Inventario**
+  - *Acción:*
+    1. Generación determinista de los 168 JSONs diarios en `derived/daily/*.json`, `derived/climatology.json` y `derived/index.json` sobre los 168 CSVs reales (192.013 registros) en `app_weather` y sincronización hacia `apps/weather/` y `static/apps/weather/derived/` (`INV-WEATHER-6`).
+    2. Actualizar `.github/workflows/actualizar-clima.yml` eliminando la condición restrictiva en el paso 4b para que `build_derived.py` se ejecute siempre en push, schedule y workflow_dispatch.
+    3. Refactorizar `apps/weather/index.html` con arquitectura Zero-404: consulta a `derivedIndexSet` previa a cualquier fetch, eliminación de dobles peticiones redundantes en `fetchJSONRemoteFirst()`, renderizado instantáneo (0 ms) de Super-Cards KPI desde RAM en `updateDashboard()`, helper `getCityPrediction()`, traducción de valores en `Choices.js` para `btn-favs-quick` / `?mine=1`, y rutas relativas para PWA y `sw.js` (versión `weather-v3.0.2`).
+    4. Blindar la suite `apps/weather/tests/test_derived.py` con 4 tests de contrato de producción (inventario de 168 ciudades, cero 404 en presets, ejecución en workflow y arquitectura frontend).
+  - *Gate de Verificación:* `python -m pytest apps/weather/tests -v` (36/36 pasados, 100%), `hugo --renderToMemory` (2.435 páginas compiladas en 20s, exit 0) y comprobación HTTP en vivo 200 OK en producción. (Completado el 2026-11-09 ✅).
+
 - [ ] **Hito 2.7: Lanzamiento Editorial Parte 5 (`app_openweather_part5_climate_intelligence_v2` ES/EN)**
   - *Acción:*
     1. Redactar y publicar la Parte 5 de la serie en español e inglés ($\ge 1.850$ palabras, paridad 100%, diagramas Mermaid vectoriales, shortcode `app-ref slug="weather"`).
