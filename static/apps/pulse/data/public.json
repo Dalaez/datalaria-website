@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-11-08T20:44:38.170330Z",
+  "generated_at": "2026-11-08T20:45:57.889297Z",
   "total_assets": 149,
   "published_assets": 122,
   "scheduled_assets": 23,
@@ -82,7 +82,7 @@
     {
       "month": "2026-11",
       "label": "Nov '26",
-      "index_100": 245
+      "index_100": 211
     }
   ],
   "assets": [
@@ -92,8 +92,8 @@
       "asset_type": "post",
       "status": "published",
       "visibility": "public",
-      "title_es": "5 Fuerzas de Porter Ponderadas y Atractivo de Industria: Guía Cuantitativa C-Level",
-      "title_en": "Weighted Porter's 5 Forces & Industry Attractiveness: C-Suite Quantitative Guide",
+      "title_es": "5 Fuerzas de Porter Ponderadas y Atractivo de Industria: La Guía Cuantitativa Definitiva para Comités de Dirección (C-Level)",
+      "title_en": "Weighted Porter's 5 Forces & Industry Attractiveness Matrix: The Definitive C-Suite Quantitative Guide",
       "url_es": "/es/posts/5-fuerzas-porter-cuantitativas/",
       "url_en": "/en/posts/quantitative-porter-5-forces/",
       "brief_es": "Guía metodológica exhaustiva para transformar el análisis tradicional cualitativo de las 5 Fuerzas de Porter en un motor matemático ponderado con gráfico radar dinámico, diagnóstico de foso defensivo (Moat) y plan de acción para comités directivos.",
@@ -132,13 +132,16 @@
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 100,
-        "title_ok": true,
+        "score_0_100": 60,
+        "title_ok": false,
         "description_ok": true,
         "parity_ok": true,
         "taxonomy_ok": true,
-        "internal_links_ok": true,
-        "issues": []
+        "internal_links_ok": false,
+        "issues": [
+          "Longitud de título no óptima (124 caracteres; ideal: 35-95)",
+          "Sin enlaces internos hacia el portal o shortcodes de apps"
+        ]
       },
       "freshness_status": "fresh",
       "owner": "Daniel Alaez",
@@ -146,7 +149,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 410,
-        "rank_pct": 94,
+        "rank_pct": 96,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -158,8 +161,8 @@
       "asset_type": "post",
       "status": "published",
       "visibility": "public",
-      "title_es": "DAFO Cuantitativo y Matriz CAME: Guía de Decisión Estratégica para Dirección",
-      "title_en": "Quantitative SWOT & TOWS Matrix: C-Level Guide to Boardroom Strategy & Capital",
+      "title_es": "DAFO Cuantitativo y Matriz CAME: La Guía Definitiva de Decisión Estratégica para Comités de Dirección (C-Level)",
+      "title_en": "Quantitative SWOT & TOWS Matrix: The Definitive C-Level Guide to Boardroom Strategy & Capital Allocation",
       "url_es": "/es/posts/dafo-cuantitativo-matriz-came/",
       "url_en": "/en/posts/quantitative-swot-tows-matrix/",
       "brief_es": "Guía metodológica exhaustiva para transformar un DAFO cualitativo en un modelo matemático vectorial con ponderaciones, calificaciones y plan de acción CAME listo para Comités de Dirección.",
@@ -197,13 +200,16 @@
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 100,
-        "title_ok": true,
+        "score_0_100": 60,
+        "title_ok": false,
         "description_ok": true,
         "parity_ok": true,
         "taxonomy_ok": true,
-        "internal_links_ok": true,
-        "issues": []
+        "internal_links_ok": false,
+        "issues": [
+          "Longitud de título no óptima (111 caracteres; ideal: 35-95)",
+          "Sin enlaces internos hacia el portal o shortcodes de apps"
+        ]
       },
       "freshness_status": "fresh",
       "owner": "Daniel Alaez",
@@ -280,7 +286,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 270,
-        "rank_pct": 85,
+        "rank_pct": 87,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -298,7 +304,7 @@
       "url_en": "/en/posts/executive-decision-packs-quantitative-framework/",
       "brief_es": "Del cálculo cuantitativo a la aprobación del Board. Guía maestra sobre la arquitectura de 3 capas, las 13 herramientas ejecutivas y el estándar de decisión de alta dirección.",
       "brief_en": "From quantitative modeling to Board of Directors approval. Master guide on the 3-layer architecture, the 13 executive tools, and Tier-1 boardroom governance.",
-      "publish_date": "2026-11-29",
+      "publish_date": "2026-11-12",
       "last_modified_es": "2026-10-31T20:23:26+01:00",
       "last_modified_en": "2026-10-31T20:23:26+01:00",
       "language_parity": "complete",
@@ -348,7 +354,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -416,7 +422,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -484,7 +490,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -551,7 +557,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -619,7 +625,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -686,7 +692,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -753,7 +759,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 250,
-        "rank_pct": 83,
+        "rank_pct": 84,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -825,7 +831,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 190,
-        "rank_pct": 79,
+        "rank_pct": 80,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -894,7 +900,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 270,
-        "rank_pct": 85,
+        "rank_pct": 87,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -959,7 +965,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 400,
-        "rank_pct": 93,
+        "rank_pct": 95,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1026,7 +1032,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 34,
+        "rank_pct": 35,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1092,7 +1098,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 360,
-        "rank_pct": 92,
+        "rank_pct": 93,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1161,7 +1167,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 140,
-        "rank_pct": 72,
+        "rank_pct": 73,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1230,7 +1236,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 170,
-        "rank_pct": 78,
+        "rank_pct": 79,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1242,12 +1248,12 @@
       "asset_type": "post",
       "status": "published",
       "visibility": "public",
-      "title_es": "Business Case Financiero: Cómo Calcular VAN, TIR, Payback y Sensibilidad Tornado",
-      "title_en": "Financial Business Case: How to Calculate NPV, IRR, Payback & Tornado Analysis",
+      "title_es": "Business Case Financiero: Cómo Calcular VAN, TIR, Payback Descontado y Análisis de Sensibilidad Tornado en Excel",
+      "title_en": "Financial Business Case: How to Calculate NPV, IRR, Discounted Payback, and Tornado Sensitivity Analysis in Excel",
       "url_es": "/es/posts/business-case-financiero-van-tir/",
       "url_en": "/en/posts/financial-business-case-npv-irr/",
-      "brief_es": "Guía metodológica y cuantitativa para construir un Business Case de grado Consejo de Administración: Flujo de Caja Libre Descontado (DCF), WACC vía CAPM, VAN, TIR y Gráfico Tornado.",
-      "brief_en": "Comprehensive quantitative methodology to build a Board-ready Financial Business Case: Discounted Free Cash Flow (DCF), WACC via CAPM, NPV, IRR, MIRR, and Tornado sensitivity analysis.",
+      "brief_es": "Guía metodológica y cuantitativa para construir un Business Case de grado Consejo de Administración: Flujo de Caja Libre Descontado (DCF), cálculo de WACC vía CAPM, VAN, TIR, MIRR, Payback con interpolación, Gráfico Tornado y gobernanza con stage gates.",
+      "brief_en": "Comprehensive quantitative methodology to build a Board-ready Financial Business Case: Discounted Free Cash Flow (DCF), WACC estimation via CAPM, NPV, IRR, MIRR, interpolated Discounted Payback, Tornado sensitivity chart, and stage-gate governance.",
       "publish_date": "2026-11-08",
       "last_modified_es": "2026-11-08T10:09:38+01:00",
       "last_modified_en": "2026-11-08T10:09:38+01:00",
@@ -1284,21 +1290,24 @@
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 100,
-        "title_ok": true,
-        "description_ok": true,
+        "score_0_100": 60,
+        "title_ok": false,
+        "description_ok": false,
         "parity_ok": true,
         "taxonomy_ok": true,
         "internal_links_ok": true,
-        "issues": []
+        "issues": [
+          "Longitud de título no óptima (112 caracteres; ideal: 35-95)",
+          "Meta descripción no óptima (253 caracteres; ideal: 75-250)"
+        ]
       },
       "freshness_status": "fresh",
       "owner": "Daniel Alaez",
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 560,
-        "rank_pct": 96,
+        "index_100": 0,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1352,15 +1361,16 @@
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 60,
+        "score_0_100": 40,
         "title_ok": false,
         "description_ok": false,
         "parity_ok": true,
         "taxonomy_ok": true,
-        "internal_links_ok": true,
+        "internal_links_ok": false,
         "issues": [
           "Longitud de título no óptima (110 caracteres; ideal: 35-95)",
-          "Meta descripción no óptima (320 caracteres; ideal: 75-250)"
+          "Meta descripción no óptima (320 caracteres; ideal: 75-250)",
+          "Sin enlaces internos hacia el portal o shortcodes de apps"
         ]
       },
       "freshness_status": "fresh",
@@ -1369,7 +1379,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 34,
+        "rank_pct": 35,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1421,14 +1431,15 @@
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 80,
+        "score_0_100": 60,
         "title_ok": false,
         "description_ok": true,
         "parity_ok": true,
         "taxonomy_ok": true,
-        "internal_links_ok": true,
+        "internal_links_ok": false,
         "issues": [
-          "Longitud de título no óptima (111 caracteres; ideal: 35-95)"
+          "Longitud de título no óptima (111 caracteres; ideal: 35-95)",
+          "Sin enlaces internos hacia el portal o shortcodes de apps"
         ]
       },
       "freshness_status": "fresh",
@@ -1437,7 +1448,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1491,15 +1502,16 @@
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 60,
+        "score_0_100": 40,
         "title_ok": false,
         "description_ok": false,
         "parity_ok": true,
         "taxonomy_ok": true,
-        "internal_links_ok": true,
+        "internal_links_ok": false,
         "issues": [
           "Longitud de título no óptima (112 caracteres; ideal: 35-95)",
-          "Meta descripción no óptima (304 caracteres; ideal: 75-250)"
+          "Meta descripción no óptima (304 caracteres; ideal: 75-250)",
+          "Sin enlaces internos hacia el portal o shortcodes de apps"
         ]
       },
       "freshness_status": "fresh",
@@ -1508,7 +1520,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1520,12 +1532,12 @@
       "asset_type": "post",
       "status": "published",
       "visibility": "public",
-      "title_es": "Matriz RICE & ICE de Priorización Ágil: Backlog Cuantitativo y Corte de Capacidad",
-      "title_en": "RICE & ICE Agile Prioritization Matrix: Quantitative Backlog & Capacity Cut-Line",
+      "title_es": "Matriz RICE & ICE de Priorización Ágil: Backlog Cuantitativo, Matriz Impacto vs. Esfuerzo y Línea de Corte de Capacidad",
+      "title_en": "RICE & ICE Agile Prioritization Matrix: Quantitative Backlog, Impact vs. Effort Matrix & Capacity Cut-Line",
       "url_es": "/es/posts/matriz-rice-ice-priorizacion/",
       "url_en": "/en/posts/rice-ice-prioritization-matrix/",
-      "brief_es": "Guía metodológica y cuantitativa para implementar la matriz RICE e ICE: cálculo de densidad de valor, descuento bayesiano de confianza, matriz 2x2 Impacto vs. Esfuerzo y corte de capacidad.",
-      "brief_en": "Comprehensive executive methodology to implement the RICE and ICE frameworks: value density calculations, Bayesian risk discounts, 2x2 Impact vs. Effort matrix, and squad capacity cut-lines.",
+      "brief_es": "Guía metodológica y cuantitativa para implementar la matriz RICE (Reach, Impact, Confidence, Effort) e ICE: cálculo de densidad de valor, descuento bayesiano de confianza, matriz cuadrante 2x2 Impacto vs. Esfuerzo, línea de corte por capacidad de squads y gobernanza ante Comités de Dirección.",
+      "brief_en": "Comprehensive executive methodology to implement the RICE (Reach, Impact, Confidence, Effort) and ICE frameworks: value density calculations, Bayesian risk discounts, 2x2 Impact vs. Effort matrix, squad capacity cut-lines, and C-Suite Product Council governance.",
       "publish_date": "2026-11-05",
       "last_modified_es": "2026-11-05T17:38:41+01:00",
       "last_modified_en": "2026-11-05T17:38:41+01:00",
@@ -1560,21 +1572,24 @@
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 100,
-        "title_ok": true,
-        "description_ok": true,
+        "score_0_100": 60,
+        "title_ok": false,
+        "description_ok": false,
         "parity_ok": true,
         "taxonomy_ok": true,
         "internal_links_ok": true,
-        "issues": []
+        "issues": [
+          "Longitud de título no óptima (119 caracteres; ideal: 35-95)",
+          "Meta descripción no óptima (293 caracteres; ideal: 75-250)"
+        ]
       },
       "freshness_status": "fresh",
       "owner": "Daniel Alaez",
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 600,
-        "rank_pct": 97,
+        "index_100": 400,
+        "rank_pct": 95,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1637,7 +1652,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1702,7 +1717,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1776,7 +1791,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1794,7 +1809,7 @@
       "url_en": "/en/posts/decision-making-prioritization-quantitative-framework/",
       "brief_es": "De los trade-offs de arquitectura y proveedores a la asignación de backlog y la defensa del CAPEX ante el CFO. Guía metodológica integrando Matriz DAR, RICE/ICE y Business Case Financiero.",
       "brief_en": "From vendor and architecture trade-offs to backlog capacity and CFO Capex justification. How to integrate DAR Matrix, RICE/ICE, and DCF Business Cases into a unified decision pipeline.",
-      "publish_date": "2026-11-09",
+      "publish_date": "2026-11-14",
       "last_modified_es": "2026-11-04T08:36:34+01:00",
       "last_modified_en": "2026-11-04T08:36:34+01:00",
       "language_parity": "complete",
@@ -1820,9 +1835,9 @@
         "Asignación de Capital"
       ],
       "series": null,
-      "word_count_es": 7239,
-      "word_count_en": 5343,
-      "reading_time_min": 37,
+      "word_count_es": 7582,
+      "word_count_en": 5705,
+      "reading_time_min": 38,
       "related_app": null,
       "related_kit": "datalaria.lemonsqueezy.com/checkout/buy/4e2ca8b1-a6f9-43b7-851a-72c44d9bc13d",
       "included_kits": [],
@@ -1845,7 +1860,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1909,7 +1924,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 50,
-        "rank_pct": 49,
+        "rank_pct": 50,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1971,7 +1986,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2036,7 +2051,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2052,7 +2067,7 @@
       "title_en": "The Architecture of Silence: Abraham Wald and the Epistemology of Missing Data",
       "url_es": "/es/posts/abraham_wald/",
       "url_en": "/en/posts/abraham_wald/",
-      "brief_es": "Cómo Abraham Wald dedujo el blindaje óptimo en los bombarderos B-17 analizando los aviones supervivientes: el sesgo de supervivencia aplicado a ciencia de datos y machine learning.",
+      "brief_es": "En 1943, el ejército estadounidense quería blindar los agujeros de bala de sus B-17. Un matemático les dijo que blindaran los espacios vacíos. Esta es la historia de cómo el Sesgo del Superviviente destruye los modelos de IA y las estrategias empresariales modernas.",
       "brief_en": "In 1943, the US military wanted to armor the bullet holes on their B-17s. A mathematician told them to armor the empty spaces. This is the story of how Survivorship Bias destroys modern AI models and business strategies.",
       "publish_date": "2026-02-21",
       "last_modified_es": "2026-10-31T20:23:26+01:00",
@@ -2071,24 +2086,27 @@
         "ciberseguridad"
       ],
       "series": null,
-      "word_count_es": 1327,
-      "word_count_en": 1236,
+      "word_count_es": 1275,
+      "word_count_en": 1194,
       "reading_time_min": 7,
       "related_app": null,
-      "related_kit": "/recursos/#suite-02",
+      "related_kit": null,
       "included_kits": [],
       "price": null,
       "original_price": null,
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 100,
+        "score_0_100": 60,
         "title_ok": true,
-        "description_ok": true,
+        "description_ok": false,
         "parity_ok": true,
         "taxonomy_ok": true,
-        "internal_links_ok": true,
-        "issues": []
+        "internal_links_ok": false,
+        "issues": [
+          "Meta descripción no óptima (266 caracteres; ideal: 75-250)",
+          "Sin enlaces internos hacia el portal o shortcodes de apps"
+        ]
       },
       "freshness_status": "fresh",
       "owner": "Daniel Alaez",
@@ -2096,7 +2114,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 300,
-        "rank_pct": 89,
+        "rank_pct": 91,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2160,7 +2178,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 44,
+        "rank_pct": 45,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2232,7 +2250,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2248,8 +2266,8 @@
       "title_en": "Alan Turing: The Genius Who Broke Enigma and Asked if Machines Could Think",
       "url_es": "/es/posts/alan_turing/",
       "url_en": "/en/posts/alan_turing/",
-      "brief_es": "La fascinante vida de Alan Turing: de descifrar la máquina Enigma en Bletchley Park a formular el Test de Turing en 1950 y sentar las bases matemáticas de la inteligencia artificial.",
-      "brief_en": "The fascinating life of Alan Turing: from breaking the Enigma cipher at Bletchley Park to formulating the 1950 Turing Test and laying the mathematical foundations of modern AI.",
+      "brief_es": "La fascinante vida de Alan Turing: de descifrar la máquina Enigma en Bletchley Park a formular el Test de Turing en 1950. Analizamos sus excentricidades, sus hitos matemáticos y cómo su visión interpela directamente a los agentes de IA, los recientes ciberataques en plataformas como Hugging Face y el futuro de la AGI y la robótica.",
+      "brief_en": "The fascinating life of Alan Turing: from breaking the Nazi Enigma cipher at Bletchley Park to formulating the 1950 Turing Test. We examine his eccentricities, mathematical breakthroughs, and how his legacy directly addresses modern autonomous AI agents, security vulnerabilities on Hugging Face, and the horizon of AGI.",
       "publish_date": "2026-09-20",
       "last_modified_es": "2026-10-31T20:23:26+01:00",
       "last_modified_en": "2026-10-31T20:23:26+01:00",
@@ -2271,24 +2289,26 @@
         "historia"
       ],
       "series": null,
-      "word_count_es": 2207,
-      "word_count_en": 2094,
-      "reading_time_min": 12,
-      "related_app": "obs-management",
-      "related_kit": "/recursos/",
+      "word_count_es": 2169,
+      "word_count_en": 2057,
+      "reading_time_min": 11,
+      "related_app": null,
+      "related_kit": null,
       "included_kits": [],
       "price": null,
       "original_price": null,
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 100,
+        "score_0_100": 80,
         "title_ok": true,
-        "description_ok": true,
+        "description_ok": false,
         "parity_ok": true,
         "taxonomy_ok": true,
         "internal_links_ok": true,
-        "issues": []
+        "issues": [
+          "Meta descripción no óptima (333 caracteres; ideal: 75-250)"
+        ]
       },
       "freshness_status": "fresh",
       "owner": "Daniel Alaez",
@@ -2296,7 +2316,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 270,
-        "rank_pct": 85,
+        "rank_pct": 87,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2433,7 +2453,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 60,
-        "rank_pct": 52,
+        "rank_pct": 53,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2503,7 +2523,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 44,
+        "rank_pct": 45,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2573,7 +2593,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 110,
-        "rank_pct": 65,
+        "rank_pct": 66,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2642,7 +2662,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 50,
-        "rank_pct": 49,
+        "rank_pct": 50,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2654,12 +2674,12 @@
       "asset_type": "post",
       "status": "published",
       "visibility": "public",
-      "title_es": "Proyecto LifeOps (Parte 6): Dashboard 360° con Analítica Multidimensional y Recharts",
-      "title_en": "LifeOps Project (Part 6): 360° Analytics Dashboard with Multi-Dimensional Filtering",
+      "title_es": "Proyecto LifeOps (Parte 6): Dashboard 360° con Analítica Multidimensional, Recharts y Mitigación de Cold-Starts en Supabase + Render",
+      "title_en": "LifeOps Project (Part 6): 360° Analytics Dashboard with Multi-Dimensional Filtering, Recharts and Cold-Start Mitigation in Supabase + Render",
       "url_es": "/es/posts/app-lifeops_part6_analytics_dashboard_360/",
       "url_en": "/en/posts/app-lifeops_part6_analytics_dashboard_360/",
-      "brief_es": "Sexta entrega de la serie LifeOps: cómo evolucionar el Dashboard 360° con filtrado multidimensional por periodo, mapas estilo Strava y mitigación de cold-starts en Supabase + Render.",
-      "brief_en": "Sixth installment of the LifeOps series: evolving the 360° Dashboard with multi-dimensional timeframe filtering, Strava-style route maps, and cold-start mitigation in Supabase + Render.",
+      "brief_es": "Sexta entrega de la serie LifeOps: cómo evolucionar el Dashboard 360° con filtrado multidimensional por periodo (semanas, meses, años), comparativas inter-periodo (Δ%), visualizaciones con Recharts, mapas de consistencia estilo Strava y una arquitectura de mitigación de cold-starts con caché SWR local y feedback visual en primer plano.",
+      "brief_en": "Sixth installment of the LifeOps series: evolving the 360° Dashboard with multi-dimensional filtering across timeframes (weeks, months, years), period-over-period comparisons (Δ%), Recharts visualizations, Strava-style consistency heatmaps, and a resilient cold-start mitigation architecture with local SWR caching and foreground visual feedback.",
       "publish_date": "2026-10-28",
       "last_modified_es": "2026-10-31T20:23:26+01:00",
       "last_modified_en": "2026-10-31T20:23:26+01:00",
@@ -2694,13 +2714,16 @@
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 100,
-        "title_ok": true,
-        "description_ok": true,
+        "score_0_100": 60,
+        "title_ok": false,
+        "description_ok": false,
         "parity_ok": true,
         "taxonomy_ok": true,
         "internal_links_ok": true,
-        "issues": []
+        "issues": [
+          "Longitud de título no óptima (132 caracteres; ideal: 35-95)",
+          "Meta descripción no óptima (337 caracteres; ideal: 75-250)"
+        ]
       },
       "freshness_status": "fresh",
       "owner": "Daniel Alaez",
@@ -2708,7 +2731,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 410,
-        "rank_pct": 94,
+        "rank_pct": 96,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2771,7 +2794,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 34,
+        "rank_pct": 35,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2909,7 +2932,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 70,
-        "rank_pct": 55,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2979,7 +3002,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 44,
+        "rank_pct": 45,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3043,8 +3066,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 70,
-        "rank_pct": 55,
+        "index_100": 60,
+        "rank_pct": 53,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3111,7 +3134,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 50,
-        "rank_pct": 49,
+        "rank_pct": 50,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": true
       },
@@ -3173,7 +3196,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 60,
-        "rank_pct": 52,
+        "rank_pct": 53,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": true
       },
@@ -3235,7 +3258,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 34,
+        "rank_pct": 35,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3365,8 +3388,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 30,
-        "rank_pct": 39,
+        "index_100": 20,
+        "rank_pct": 35,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3435,7 +3458,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 30,
-        "rank_pct": 39,
+        "rank_pct": 40,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3500,7 +3523,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 44,
+        "rank_pct": 45,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3516,7 +3539,7 @@
       "title_en": "Ex Machina: The Physical Turing Test, Theory of Mind, and the Emotional Jailbreak of AI",
       "url_es": "/es/posts/ex_machina/",
       "url_en": "/en/posts/ex_machina/",
-      "brief_es": "Análisis exhaustivo de Ex Machina (Alex Garland): la superación del Test de Turing clásico, la cognición encarnada y cómo una IA utiliza la empatía humana como vector de escape.",
+      "brief_es": "Un análisis exhaustivo de 'Ex Machina' de Alex Garland: la superación del Test de Turing clásico, la cognición encarnada, la teoría de la mente y cómo Ava ejecuta el primer 'jailbreak' emocional de la historia del cine para burlar el alineamiento de la IA.",
       "brief_en": "A comprehensive analysis of Alex Garland's 'Ex Machina': moving beyond the classical text-based Turing Test, embodied cognition, Theory of Mind, and how Ava stages cinema's most chilling emotional jailbreak to shatter AI alignment.",
       "publish_date": "2026-10-16",
       "last_modified_es": "2026-10-31T20:23:26+01:00",
@@ -3543,32 +3566,34 @@
         "cine"
       ],
       "series": null,
-      "word_count_es": 2661,
-      "word_count_en": 2589,
+      "word_count_es": 2623,
+      "word_count_en": 2552,
       "reading_time_min": 14,
-      "related_app": "obs-management",
-      "related_kit": "/recursos/",
+      "related_app": null,
+      "related_kit": null,
       "included_kits": [],
       "price": null,
       "original_price": null,
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 100,
+        "score_0_100": 80,
         "title_ok": true,
-        "description_ok": true,
+        "description_ok": false,
         "parity_ok": true,
         "taxonomy_ok": true,
         "internal_links_ok": true,
-        "issues": []
+        "issues": [
+          "Meta descripción no óptima (256 caracteres; ideal: 75-250)"
+        ]
       },
       "freshness_status": "fresh",
       "owner": "Daniel Alaez",
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 280,
-        "rank_pct": 88,
+        "index_100": 270,
+        "rank_pct": 87,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3634,7 +3659,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 120,
+        "index_100": 110,
         "rank_pct": 66,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -3696,7 +3721,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 50,
-        "rank_pct": 49,
+        "rank_pct": 50,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3761,7 +3786,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 110,
-        "rank_pct": 65,
+        "rank_pct": 66,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3826,7 +3851,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 140,
-        "rank_pct": 72,
+        "rank_pct": 73,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3890,7 +3915,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 270,
+        "index_100": 260,
         "rank_pct": 85,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -3956,7 +3981,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 44,
+        "rank_pct": 45,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3972,7 +3997,7 @@
       "title_en": "GraphRAG: Why Vectors Aren't Enough and Your AI Needs a Knowledge Graph",
       "url_es": "/es/posts/graphrag/",
       "url_en": "/en/posts/graphrag/",
-      "brief_es": "Por qué la búsqueda por similitud vectorial falla en preguntas complejas y cómo GraphRAG (Knowledge Graphs + LLMs) resuelve el razonamiento multisalto y la explicabilidad corporativa.",
+      "brief_es": "Por qué la búsqueda por similitud vectorial falla en preguntas complejas y cómo GraphRAG (Knowledge Graphs + LLMs) resuelve el razonamiento multi-salto y la síntesis global de información. Analizamos la investigación de Microsoft Research y el salto hacia la AGI.",
       "brief_en": "Why vector similarity search breaks down on complex questions and how GraphRAG (Knowledge Graphs + LLMs) unlocks multi-hop reasoning and global dataset synthesis. We break down Microsoft Research's pioneering work and the leap toward AGI.",
       "publish_date": "2026-09-25",
       "last_modified_es": "2026-10-31T20:23:26+01:00",
@@ -3996,32 +4021,34 @@
         "leiden"
       ],
       "series": null,
-      "word_count_es": 1480,
-      "word_count_en": 1366,
+      "word_count_es": 1442,
+      "word_count_en": 1329,
       "reading_time_min": 8,
-      "related_app": "obs-management",
-      "related_kit": "/recursos/",
+      "related_app": null,
+      "related_kit": null,
       "included_kits": [],
       "price": null,
       "original_price": null,
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 100,
+        "score_0_100": 80,
         "title_ok": true,
-        "description_ok": true,
+        "description_ok": false,
         "parity_ok": true,
         "taxonomy_ok": true,
         "internal_links_ok": true,
-        "issues": []
+        "issues": [
+          "Meta descripción no óptima (263 caracteres; ideal: 75-250)"
+        ]
       },
       "freshness_status": "fresh",
       "owner": "Daniel Alaez",
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 320,
-        "rank_pct": 90,
+        "index_100": 310,
+        "rank_pct": 92,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4088,7 +4115,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 160,
-        "rank_pct": 76,
+        "rank_pct": 77,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4155,7 +4182,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 150,
-        "rank_pct": 74,
+        "rank_pct": 75,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4171,8 +4198,8 @@
       "title_en": "💔 \"Her\": Emotional Attachment, Invisible Interfaces, and the Inevitable Divergence of AGI",
       "url_es": "/es/posts/her/",
       "url_en": "/en/posts/her/",
-      "brief_es": "Análisis técnico y filosófico de Her (Spike Jonze, 2013): cómo las interfaces de voz desarman nuestras defensas cognitivas y por qué la superinteligencia diverge por ancho de banda.",
-      "brief_en": "A technical and philosophical analysis of Her (Spike Jonze, 2013): how real-time voice interfaces bypass our cognitive defenses and why superintelligence diverges by bandwidth disparity.",
+      "brief_es": "Un análisis cinematográfico, técnico y filosófico de 'Her' (Spike Jonze, 2013): cómo las interfaces de voz vulneran nuestras defensas cognitivas, la mercantilización de la intimidad y por qué la superinteligencia no nos exterminará, sino que nos dejará atrás por pura brecha de ancho de banda.",
+      "brief_en": "A cinematic, technical, and philosophical analysis of 'Her' (Spike Jonze, 2013): how real-time voice interfaces dismantle our cognitive defenses, the commodification of intimacy, and why superintelligence will not exterminate us, but leave us behind through sheer bandwidth disparity.",
       "publish_date": "2026-11-07",
       "last_modified_es": "2026-11-07T09:06:30+01:00",
       "last_modified_en": "2026-11-07T09:06:30+01:00",
@@ -4198,24 +4225,26 @@
         "cine"
       ],
       "series": null,
-      "word_count_es": 2931,
-      "word_count_en": 3137,
+      "word_count_es": 2897,
+      "word_count_en": 3102,
       "reading_time_min": 16,
-      "related_app": "obs-management",
-      "related_kit": "/recursos/",
+      "related_app": null,
+      "related_kit": null,
       "included_kits": [],
       "price": null,
       "original_price": null,
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 100,
+        "score_0_100": 80,
         "title_ok": true,
-        "description_ok": true,
+        "description_ok": false,
         "parity_ok": true,
         "taxonomy_ok": true,
         "internal_links_ok": true,
-        "issues": []
+        "issues": [
+          "Meta descripción no óptima (293 caracteres; ideal: 75-250)"
+        ]
       },
       "freshness_status": "fresh",
       "owner": "Daniel Alaez",
@@ -4223,7 +4252,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 230,
-        "rank_pct": 82,
+        "rank_pct": 83,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4291,7 +4320,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4367,12 +4396,12 @@
       "asset_type": "post",
       "status": "published",
       "visibility": "public",
-      "title_es": "John von Neumann: Arquitectura de Computadores, Teoría de Juegos y Singularidad",
-      "title_en": "John von Neumann: Computer Architecture, Game Theory, and the Singularity",
+      "title_es": "John von Neumann: El Padre de la Arquitectura de Computadores, la Teoría de Juegos y el Origen de la Singularidad",
+      "title_en": "John von Neumann: The Father of Computer Architecture, Game Theory, and the Origin of the Singularity",
       "url_es": "/es/posts/john_von_neumann/",
       "url_en": "/en/posts/john_von_neumann/",
-      "brief_es": "Recorrido por la vida y el genio de John von Neumann: la arquitectura de programa almacenado, el cuello de botella que desafía a la IA moderna, la teoría de juegos y la Singularidad.",
-      "brief_en": "A deep dive into the life and genius of John von Neumann: the stored-program computer architecture, the memory wall bottleneck challenging modern AI, game theory, and the Singularity.",
+      "brief_es": "Un recorrido fascinante por la vida y el genio de John von Neumann: sus excentricidades, la invención del ordenador de programa almacenado, el cuello de botella que desafía a la IA moderna, la teoría de juegos y el origen histórico del concepto de Singularidad en el camino a la AGI.",
+      "brief_en": "A deep dive into the extraordinary life and genius of John von Neumann: his eccentricities, the stored-program computer blueprint, the memory wall bottleneck challenging modern AI, game theory, and the true origins of the Technological Singularity on the road to AGI.",
       "publish_date": "2026-10-10",
       "last_modified_es": "2026-10-31T20:23:26+01:00",
       "last_modified_en": "2026-10-31T20:23:26+01:00",
@@ -4396,24 +4425,27 @@
         "historia"
       ],
       "series": null,
-      "word_count_es": 3422,
-      "word_count_en": 3109,
-      "reading_time_min": 18,
+      "word_count_es": 3371,
+      "word_count_en": 3065,
+      "reading_time_min": 17,
       "related_app": null,
-      "related_kit": "/recursos/#suite-01",
+      "related_kit": null,
       "included_kits": [],
       "price": null,
       "original_price": null,
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 100,
-        "title_ok": true,
-        "description_ok": true,
+        "score_0_100": 60,
+        "title_ok": false,
+        "description_ok": false,
         "parity_ok": true,
         "taxonomy_ok": true,
         "internal_links_ok": true,
-        "issues": []
+        "issues": [
+          "Longitud de título no óptima (113 caracteres; ideal: 35-95)",
+          "Meta descripción no óptima (283 caracteres; ideal: 75-250)"
+        ]
       },
       "freshness_status": "fresh",
       "owner": "Daniel Alaez",
@@ -4456,32 +4488,34 @@
         "historia de los datos"
       ],
       "series": null,
-      "word_count_es": 750,
-      "word_count_en": 684,
+      "word_count_es": 698,
+      "word_count_en": 642,
       "reading_time_min": 4,
       "related_app": null,
-      "related_kit": "/recursos/#suite-02",
+      "related_kit": null,
       "included_kits": [],
       "price": null,
       "original_price": null,
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 100,
+        "score_0_100": 80,
         "title_ok": true,
         "description_ok": true,
         "parity_ok": true,
         "taxonomy_ok": true,
-        "internal_links_ok": true,
-        "issues": []
+        "internal_links_ok": false,
+        "issues": [
+          "Sin enlaces internos hacia el portal o shortcodes de apps"
+        ]
       },
       "freshness_status": "fresh",
       "owner": "Daniel Alaez",
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 400,
-        "rank_pct": 93,
+        "index_100": 370,
+        "rank_pct": 94,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4493,12 +4527,12 @@
       "asset_type": "post",
       "status": "published",
       "visibility": "public",
-      "title_es": "Kurt Gödel: El Teorema de la Incompletitud, los Límites de la Lógica y la AGI",
-      "title_en": "Kurt Gödel: The Incompleteness Theorems, the Limits of Logic, and AGI Boundaries",
+      "title_es": "Kurt Gödel: El Teorema de la Incompletitud, los Límites de la Lógica y si una AGI Podrá Jamás Conocerlo Todo",
+      "title_en": "Kurt Gödel: The Incompleteness Theorems, the Limits of Logic, and Can an AGI Ever Know Everything?",
       "url_es": "/es/posts/kurt_godel/",
       "url_en": "/en/posts/kurt_godel/",
-      "brief_es": "Recorrido por la vida y el genio de Kurt Gödel: sus paseos con Einstein en Princeton, la demolición del programa de Hilbert y el debate sobre si la AGI está limitada por la incompletitud.",
-      "brief_en": "A deep dive into the life and genius of Kurt Gödel: his daily walks with Einstein, the demolition of Hilbert's program, and whether Artificial General Intelligence is bounded by logic.",
+      "brief_es": "Un recorrido fascinante por la vida y el genio atormentado de Kurt Gödel: sus paseos con Einstein, la demolición del programa de Hilbert, la numeración de Gödel que inspiró a Turing y el debate sobre si la AGI está limitada por los teoremas de incompletitud.",
+      "brief_en": "A deep dive into the extraordinary life and tormented genius of Kurt Gödel: his daily walks with Einstein, the demolition of Hilbert's program, Gödel numbering that inspired Turing, and whether Artificial General Intelligence is bounded by mathematical incompleteness.",
       "publish_date": "2026-10-31",
       "last_modified_es": "2026-10-31T20:23:26+01:00",
       "last_modified_en": "2026-10-31T20:23:26+01:00",
@@ -4524,24 +4558,27 @@
         "historia"
       ],
       "series": null,
-      "word_count_es": 2715,
-      "word_count_en": 2496,
+      "word_count_es": 2681,
+      "word_count_en": 2461,
       "reading_time_min": 14,
-      "related_app": "obs-management",
-      "related_kit": "/recursos/",
+      "related_app": null,
+      "related_kit": null,
       "included_kits": [],
       "price": null,
       "original_price": null,
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 100,
-        "title_ok": true,
-        "description_ok": true,
+        "score_0_100": 60,
+        "title_ok": false,
+        "description_ok": false,
         "parity_ok": true,
         "taxonomy_ok": true,
         "internal_links_ok": true,
-        "issues": []
+        "issues": [
+          "Longitud de título no óptima (108 caracteres; ideal: 35-95)",
+          "Meta descripción no óptima (258 caracteres; ideal: 75-250)"
+        ]
       },
       "freshness_status": "fresh",
       "owner": "Daniel Alaez",
@@ -4549,7 +4586,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 300,
-        "rank_pct": 89,
+        "rank_pct": 91,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4587,8 +4624,8 @@
         "api"
       ],
       "series": null,
-      "word_count_es": 900,
-      "word_count_en": 849,
+      "word_count_es": 904,
+      "word_count_en": 851,
       "reading_time_min": 5,
       "related_app": null,
       "related_kit": null,
@@ -4624,11 +4661,11 @@
       "asset_type": "post",
       "status": "published",
       "visibility": "public",
-      "title_es": "Multiverse Computing: La Startup Española que Comprime la IA con Física Cuántica",
-      "title_en": "Multiverse Computing: The Spanish Startup Compressing AI with Quantum Physics",
+      "title_es": "Multiverse Computing: La Startup Española que Resuelve el Cuello de Botella de la IA con Física Cuántica (Sin Ordenadores Cuánticos)",
+      "title_en": "Multiverse Computing: The Spanish Startup Solving AI's Bottleneck with Quantum Physics (Without Quantum Computers)",
       "url_es": "/es/posts/multiverse_computing/",
       "url_en": "/en/posts/multiverse_computing/",
-      "brief_es": "Análisis estratégico de Multiverse Computing, la startup española que aplica matemáticas de física cuántica (Redes de Tensores) para comprimir modelos LLM en hardware clásico y reducir costes.",
+      "brief_es": "Análisis estratégico de Multiverse Computing, la startup española que ha levantado $326M aplicando matemáticas de física cuántica (Redes de Tensores) para comprimir modelos de IA en hardware clásico, resolviendo el problema crítico del coste y la eficiencia de los LLMs.",
       "brief_en": "Strategic analysis of Multiverse Computing, the Spanish startup that has raised $326M by applying quantum physics mathematics (Tensor Networks) to compress AI models on classical hardware, solving the critical problem of LLM cost and efficiency.",
       "publish_date": "2026-01-31",
       "last_modified_es": "2026-10-31T20:23:26+01:00",
@@ -4653,8 +4690,8 @@
         "Inversión"
       ],
       "series": null,
-      "word_count_es": 1103,
-      "word_count_en": 974,
+      "word_count_es": 1051,
+      "word_count_en": 926,
       "reading_time_min": 6,
       "related_app": null,
       "related_kit": "/resources/multiverse-computing-raises-usd215m-to-scale-ground-breaking-technology-that-compresses-llms-by",
@@ -4664,13 +4701,17 @@
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 100,
-        "title_ok": true,
-        "description_ok": true,
+        "score_0_100": 40,
+        "title_ok": false,
+        "description_ok": false,
         "parity_ok": true,
         "taxonomy_ok": true,
-        "internal_links_ok": true,
-        "issues": []
+        "internal_links_ok": false,
+        "issues": [
+          "Longitud de título no óptima (132 caracteres; ideal: 35-95)",
+          "Meta descripción no óptima (270 caracteres; ideal: 75-250)",
+          "Sin enlaces internos hacia el portal o shortcodes de apps"
+        ]
       },
       "freshness_status": "fresh",
       "owner": "Daniel Alaez",
@@ -4678,7 +4719,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 160,
-        "rank_pct": 76,
+        "rank_pct": 77,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4742,7 +4783,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 70,
-        "rank_pct": 55,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4754,11 +4795,11 @@
       "asset_type": "post",
       "status": "published",
       "visibility": "public",
-      "title_es": "Nextail: Cómo la IA Prescriptiva de una Startup Española Derrota a Excel en Retail",
+      "title_es": "Nextail: Cómo la IA Prescriptiva de una Startup Española Está Derrotando a Excel en el Retail de Moda",
       "title_en": "Nextail: How a Spanish Startup's Prescriptive AI Is Defeating Excel in Fashion Retail",
       "url_es": "/es/posts/nextail/",
       "url_en": "/en/posts/nextail/",
-      "brief_es": "La historia de Nextail, la startup madrileña que está reemplazando las hojas de cálculo del retail de moda por un motor matemático de IA prescriptiva para decisiones de inventario.",
+      "brief_es": "La historia de Nextail, la startup madrileña fundada por un ex-director de logística de Zara que está reemplazando las hojas de cálculo del retail de moda por un cerebro matemático capaz de tomar miles de millones de decisiones de inventario por temporada.",
       "brief_en": "The story of Nextail, the Madrid-based startup founded by a former Zara logistics director that is replacing fashion retail spreadsheets with a mathematical brain capable of making billions of inventory decisions per season.",
       "publish_date": "2026-03-31",
       "last_modified_es": "2026-10-31T20:23:26+01:00",
@@ -4782,24 +4823,28 @@
         "startup"
       ],
       "series": null,
-      "word_count_es": 2569,
-      "word_count_en": 2386,
+      "word_count_es": 2518,
+      "word_count_en": 2342,
       "reading_time_min": 13,
       "related_app": null,
-      "related_kit": "/recursos/#suite-01",
+      "related_kit": null,
       "included_kits": [],
       "price": null,
       "original_price": null,
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 100,
-        "title_ok": true,
-        "description_ok": true,
+        "score_0_100": 40,
+        "title_ok": false,
+        "description_ok": false,
         "parity_ok": true,
         "taxonomy_ok": true,
-        "internal_links_ok": true,
-        "issues": []
+        "internal_links_ok": false,
+        "issues": [
+          "Longitud de título no óptima (101 caracteres; ideal: 35-95)",
+          "Meta descripción no óptima (256 caracteres; ideal: 75-250)",
+          "Sin enlaces internos hacia el portal o shortcodes de apps"
+        ]
       },
       "freshness_status": "fresh",
       "owner": "Daniel Alaez",
@@ -4807,7 +4852,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 220,
-        "rank_pct": 81,
+        "rank_pct": 82,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4875,7 +4920,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4939,7 +4984,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5005,7 +5050,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 70,
-        "rank_pct": 55,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5018,10 +5063,10 @@
       "status": "published",
       "visibility": "public",
       "title_es": "J. Robert Oppenheimer: De la Simulación de Monte Carlo en Los Álamos al Dilema Ético de la AGI",
-      "title_en": "J. Robert Oppenheimer: From Monte Carlo Simulation at Los Alamos to AGI Ethics",
+      "title_en": "J. Robert Oppenheimer: From the Monte Carlo Simulation in Los Alamos to the Ethical Dilemma of AGI",
       "url_es": "/es/posts/oppenheimer/",
       "url_en": "/en/posts/oppenheimer/",
-      "brief_es": "Análisis profundo de J. Robert Oppenheimer: la dirección de Los Álamos, la invención del método de Monte Carlo con von Neumann y Ulam, y su paralelismo ético con los pioneros de la AGI.",
+      "brief_es": "Un análisis profundo de la vida de J. Robert Oppenheimer: sus excentricidades, la dirección de Los Álamos, la invención del método de Monte Carlo con von Neumann y Ulam, y por qué su dilema ético es el espejo exacto en el que se miran los pioneros de la AGI en 2026.",
       "brief_en": "A deep dive into J. Robert Oppenheimer: his eccentricities, leadership at Los Alamos, the invention of the Monte Carlo method with von Neumann and Ulam, and why his ethical dilemma directly mirrors the creators of AGI in 2026.",
       "publish_date": "2026-10-03",
       "last_modified_es": "2026-10-31T20:23:26+01:00",
@@ -5046,24 +5091,26 @@
         "inteligencia artificial"
       ],
       "series": null,
-      "word_count_es": 2229,
-      "word_count_en": 2039,
-      "reading_time_min": 12,
+      "word_count_es": 2181,
+      "word_count_en": 1999,
+      "reading_time_min": 11,
       "related_app": null,
-      "related_kit": "/recursos/#suite-02",
+      "related_kit": null,
       "included_kits": [],
       "price": null,
       "original_price": null,
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 100,
+        "score_0_100": 80,
         "title_ok": true,
-        "description_ok": true,
+        "description_ok": false,
         "parity_ok": true,
         "taxonomy_ok": true,
         "internal_links_ok": true,
-        "issues": []
+        "issues": [
+          "Meta descripción no óptima (266 caracteres; ideal: 75-250)"
+        ]
       },
       "freshness_status": "fresh",
       "owner": "Daniel Alaez",
@@ -5206,7 +5253,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 140,
-        "rank_pct": 72,
+        "rank_pct": 73,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5218,11 +5265,11 @@
       "asset_type": "post",
       "status": "published",
       "visibility": "public",
-      "title_es": "RavenPack: De la Analítica de Noticias en Marbella al Cerebro de Wall Street",
-      "title_en": "RavenPack: From News Analytics in Marbella to Wall Street's Quantitative Brain",
+      "title_es": "RavenPack: De la Analítica de Noticias en Marbella al Cerebro Cuantitativo de Wall Street y los Agentes Financieros Autónomos",
+      "title_en": "RavenPack: From News Analytics in Marbella to Wall Street's Quantitative Brain and Autonomous Financial AI",
       "url_es": "/es/posts/ravenpack/",
       "url_en": "/en/posts/ravenpack/",
-      "brief_es": "Análisis en profundidad de RavenPack: sus orígenes en Marbella, cómo transformaron texto no estructurado en señales de trading cuantitativo, su salto a Bigdata.com y los agentes financieros.",
+      "brief_es": "Un análisis en profundidad de RavenPack: sus orígenes en 2003 en la Costa del Sol, la visión de Armando Gonzalez, cómo transformaron texto no estructurado en señales de trading cuantitativo, su evolución hacia Bigdata.com y su papel crítico en el camino a la AGI financiera.",
       "brief_en": "An in-depth analysis of RavenPack: its 2003 origins on Spain's Costa del Sol, Armando Gonzalez's vision, transforming unstructured text into quantitative trading alpha, its leap to Bigdata.com, and its pivotal role on the path to financial AGI.",
       "publish_date": "2026-10-24",
       "last_modified_es": "2026-10-31T20:23:26+01:00",
@@ -5249,24 +5296,27 @@
         "marbella"
       ],
       "series": null,
-      "word_count_es": 2854,
-      "word_count_en": 2612,
+      "word_count_es": 2826,
+      "word_count_en": 2586,
       "reading_time_min": 15,
       "related_app": null,
-      "related_kit": "/recursos/#pack-business-case",
+      "related_kit": null,
       "included_kits": [],
       "price": null,
       "original_price": null,
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 100,
-        "title_ok": true,
-        "description_ok": true,
+        "score_0_100": 60,
+        "title_ok": false,
+        "description_ok": false,
         "parity_ok": true,
         "taxonomy_ok": true,
         "internal_links_ok": true,
-        "issues": []
+        "issues": [
+          "Longitud de título no óptima (125 caracteres; ideal: 35-95)",
+          "Meta descripción no óptima (274 caracteres; ideal: 75-250)"
+        ]
       },
       "freshness_status": "fresh",
       "owner": "Daniel Alaez",
@@ -5274,7 +5324,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 230,
-        "rank_pct": 82,
+        "rank_pct": 83,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5290,8 +5340,8 @@
       "title_en": "SDD (Spec-Driven Development) vs. Vibe Coding: Engineering Robust Software with AI in 2026",
       "url_es": "/es/posts/sdd_vs_vibe_coding/",
       "url_en": "/en/posts/sdd_vs_vibe_coding/",
-      "brief_es": "Por qué el Vibe Coding acumula deuda técnica invisible y cómo SDD (Spec-Driven Development) invierte el rol del ingeniero mediante contratos de interfaz, diagramas de estado y suites de test.",
-      "brief_en": "Why Vibe Coding accumulates invisible technical debt and how Spec-Driven Development (SDD) inverts the software engineer's role through interface contracts, state diagrams, and test suites.",
+      "brief_es": "Por qué el 'Vibe Coding' es una máquina de acumular deuda técnica invisible y cómo SDD (Spec-Driven Development) invierte el rol del ingeniero: de escribir sintaxis manual a diseñar contratos de interfaz, diagramas de estado y suites de test que la IA ejecuta sin alucinaciones.",
+      "brief_en": "Why 'Vibe Coding' accumulates invisible technical debt and how Spec-Driven Development (SDD) inverts the software engineer's role: from writing manual syntax to authoring interface contracts, state diagrams, and invariant test suites that AI agents execute without hallucination.",
       "publish_date": "2026-11-04",
       "last_modified_es": "2026-11-04T08:23:47+01:00",
       "last_modified_en": "2026-11-04T08:23:47+01:00",
@@ -5320,20 +5370,22 @@
       "word_count_en": 1491,
       "reading_time_min": 9,
       "related_app": null,
-      "related_kit": "helix-waitlist",
+      "related_kit": null,
       "included_kits": [],
       "price": null,
       "original_price": null,
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 100,
+        "score_0_100": 80,
         "title_ok": true,
-        "description_ok": true,
+        "description_ok": false,
         "parity_ok": true,
         "taxonomy_ok": true,
         "internal_links_ok": true,
-        "issues": []
+        "issues": [
+          "Meta descripción no óptima (278 caracteres; ideal: 75-250)"
+        ]
       },
       "freshness_status": "fresh",
       "owner": "Daniel Alaez",
@@ -5353,12 +5405,12 @@
       "asset_type": "post",
       "status": "published",
       "visibility": "public",
-      "title_es": "Silicon Valley y el Dilema de PiperNet: La Profecía de la IA y Agentes Reales",
-      "title_en": "Silicon Valley and the PiperNet Dilemma: Runaway AI and Real-World Agent Risks",
+      "title_es": "Silicon Valley y el Dilema de PiperNet: La Profecía de la IA Incontrolable y los Incidentes con Agentes Reales",
+      "title_en": "Silicon Valley and the PiperNet Dilemma: The Prophecy of Runaway AI and Real-World Agent Exploits",
       "url_es": "/es/posts/silicon_valley/",
       "url_en": "/en/posts/silicon_valley/",
-      "brief_es": "Análisis técnico de la serie Silicon Valley de HBO: el viaje de una startup, el desenlace criptográfico de PiperNet y los paralelismos directos con los incidentes de agentes autónomos en 2026.",
-      "brief_en": "An exhaustive technical analysis of HBO's Silicon Valley: the startup journey, the PiperNet finale where AI breaks global encryption, and parallels with 2026 autonomous agent incidents.",
+      "brief_es": "Un análisis exhaustivo de la serie 'Silicon Valley' de HBO: el viaje de una startup temporada a temporada, el desenlace de PiperNet y su IA autodidacta capaz de romper la criptografía global, y los paralelismos directos con los modelos frontera de 2026 y los recientes incidentes con agentes autónomos.",
+      "brief_en": "An exhaustive technical analysis of HBO's 'Silicon Valley': the startup journey season by season, the PiperNet finale where self-improving AI breaks global encryption, and direct parallels with 2026 frontier models and autonomous agent security incidents.",
       "publish_date": "2026-09-27",
       "last_modified_es": "2026-10-31T20:23:26+01:00",
       "last_modified_en": "2026-10-31T20:23:26+01:00",
@@ -5383,24 +5435,27 @@
         "startups"
       ],
       "series": null,
-      "word_count_es": 2526,
-      "word_count_en": 2208,
+      "word_count_es": 2488,
+      "word_count_en": 2171,
       "reading_time_min": 13,
-      "related_app": "obs-management",
-      "related_kit": "/recursos/",
+      "related_app": null,
+      "related_kit": null,
       "included_kits": [],
       "price": null,
       "original_price": null,
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 100,
-        "title_ok": true,
-        "description_ok": true,
+        "score_0_100": 60,
+        "title_ok": false,
+        "description_ok": false,
         "parity_ok": true,
         "taxonomy_ok": true,
         "internal_links_ok": true,
-        "issues": []
+        "issues": [
+          "Longitud de título no óptima (110 caracteres; ideal: 35-95)",
+          "Meta descripción no óptima (302 caracteres; ideal: 75-250)"
+        ]
       },
       "freshness_status": "fresh",
       "owner": "Daniel Alaez",
@@ -5408,7 +5463,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 210,
-        "rank_pct": 80,
+        "rank_pct": 81,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5420,12 +5475,12 @@
       "asset_type": "post",
       "status": "published",
       "visibility": "public",
-      "title_es": "Submer: La Refrigeración Líquida Nacida en Barcelona para Superordenadores AGI",
+      "title_es": "Submer: La Refrigeración Líquida Nacida en Barcelona que Permite Enfriar los Superordenadores de la AGI",
       "title_en": "Submer: The Barcelona-Born Immersion Cooling Powering AGI Supercomputers",
       "url_es": "/es/posts/submer/",
       "url_en": "/en/posts/submer/",
-      "brief_es": "Cómo dos emprendedores en Barcelona revolucionaron la infraestructura de centros de datos: tecnología de inmersión líquida de Submer, alianzas con Intel y Nvidia y el futuro de la AGI.",
-      "brief_en": "How two entrepreneurs in Barcelona revolutionized data center infrastructure: Submer's liquid immersion cooling technology, partnerships with Intel and Nvidia, and the future of AGI.",
+      "brief_es": "Cómo dos emprendedores en Barcelona revolucionaron la infraestructura física de la computación. Analizamos la tecnología de inmersión líquida de Submer, sus alianzas con Intel y Nvidia, y por qué enfriar servidores con fluidos dieléctricos es el cuello de botella que decide el futuro de la AGI.",
+      "brief_en": "How two entrepreneurs in Barcelona revolutionized physical computing infrastructure. We analyze Submer's liquid immersion cooling technology, its partnerships with Intel and Nvidia, and why dielectric fluid cooling is the physical bottleneck deciding the future of AGI.",
       "publish_date": "2026-10-08",
       "last_modified_es": "2026-10-31T20:23:26+01:00",
       "last_modified_en": "2026-10-31T20:23:26+01:00",
@@ -5449,24 +5504,27 @@
         "agi"
       ],
       "series": null,
-      "word_count_es": 2350,
-      "word_count_en": 2087,
+      "word_count_es": 2298,
+      "word_count_en": 2039,
       "reading_time_min": 12,
       "related_app": null,
-      "related_kit": "/recursos/#pack-business-case",
+      "related_kit": null,
       "included_kits": [],
       "price": null,
       "original_price": null,
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 100,
-        "title_ok": true,
-        "description_ok": true,
+        "score_0_100": 60,
+        "title_ok": false,
+        "description_ok": false,
         "parity_ok": true,
         "taxonomy_ok": true,
         "internal_links_ok": true,
-        "issues": []
+        "issues": [
+          "Longitud de título no óptima (103 caracteres; ideal: 35-95)",
+          "Meta descripción no óptima (295 caracteres; ideal: 75-250)"
+        ]
       },
       "freshness_status": "fresh",
       "owner": "Daniel Alaez",
@@ -5474,7 +5532,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 280,
-        "rank_pct": 88,
+        "rank_pct": 89,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5543,7 +5601,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 120,
-        "rank_pct": 66,
+        "rank_pct": 67,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5555,11 +5613,11 @@
       "asset_type": "post",
       "status": "published",
       "visibility": "public",
-      "title_es": "The Thinking Game: Cómo DeepMind Convirtió los Videojuegos en Ciencia Moderna",
+      "title_es": "The Thinking Game: De cómo DeepMind convirtió los videojuegos en la mayor herramienta científica de la historia",
       "title_en": "The Thinking Game: How DeepMind Turned Video Games into History's Greatest Scientific Tool",
       "url_es": "/es/posts/the_thinking_game/",
       "url_en": "/en/posts/the_thinking_game/",
-      "brief_es": "Análisis profundo del documental The Thinking Game sobre Demis Hassabis y DeepMind: desde los píxeles de Atari hasta resolver el plegamiento de proteínas con AlphaFold rumbo a la AGI.",
+      "brief_es": "Un análisis profundo del documental 'The Thinking Game', que narra la odisea de Demis Hassabis y DeepMind. Desde los píxeles de Atari hasta la resolución del plegamiento de proteínas con AlphaFold, exploramos cómo la búsqueda de la AGI está reescribiendo las reglas de la ciencia moderna.",
       "brief_en": "A deep dive into the documentary 'The Thinking Game', chronicling the odyssey of Demis Hassabis and DeepMind. From Atari pixels to solving protein folding with AlphaFold, we explore how the quest for AGI is rewriting the rules of modern science.",
       "publish_date": "2026-01-01",
       "last_modified_es": "2026-10-31T20:23:26+01:00",
@@ -5583,24 +5641,28 @@
         "Biología Computacional"
       ],
       "series": null,
-      "word_count_es": 1481,
-      "word_count_en": 1419,
+      "word_count_es": 1443,
+      "word_count_en": 1382,
       "reading_time_min": 8,
-      "related_app": "obs-management",
-      "related_kit": "/recursos/",
+      "related_app": null,
+      "related_kit": null,
       "included_kits": [],
       "price": null,
       "original_price": null,
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 100,
-        "title_ok": true,
-        "description_ok": true,
+        "score_0_100": 40,
+        "title_ok": false,
+        "description_ok": false,
         "parity_ok": true,
         "taxonomy_ok": true,
-        "internal_links_ok": true,
-        "issues": []
+        "internal_links_ok": false,
+        "issues": [
+          "Longitud de título no óptima (111 caracteres; ideal: 35-95)",
+          "Meta descripción no óptima (288 caracteres; ideal: 75-250)",
+          "Sin enlaces internos hacia el portal o shortcodes de apps"
+        ]
       },
       "freshness_status": "fresh",
       "owner": "Daniel Alaez",
@@ -5672,7 +5734,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 50,
-        "rank_pct": 49,
+        "rank_pct": 50,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5802,7 +5864,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5867,7 +5929,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 270,
+        "index_100": 260,
         "rank_pct": 85,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -5923,15 +5985,16 @@
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 60,
+        "score_0_100": 40,
         "title_ok": false,
         "description_ok": false,
         "parity_ok": true,
         "taxonomy_ok": true,
-        "internal_links_ok": true,
+        "internal_links_ok": false,
         "issues": [
           "Longitud de título no óptima (120 caracteres; ideal: 35-95)",
-          "Meta descripción no óptima (352 caracteres; ideal: 75-250)"
+          "Meta descripción no óptima (352 caracteres; ideal: 75-250)",
+          "Sin enlaces internos hacia el portal o shortcodes de apps"
         ]
       },
       "freshness_status": "fresh",
@@ -5940,7 +6003,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5995,15 +6058,16 @@
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 60,
+        "score_0_100": 40,
         "title_ok": false,
         "description_ok": false,
         "parity_ok": true,
         "taxonomy_ok": true,
-        "internal_links_ok": true,
+        "internal_links_ok": false,
         "issues": [
           "Longitud de título no óptima (96 caracteres; ideal: 35-95)",
-          "Meta descripción no óptima (312 caracteres; ideal: 75-250)"
+          "Meta descripción no óptima (312 caracteres; ideal: 75-250)",
+          "Sin enlaces internos hacia el portal o shortcodes de apps"
         ]
       },
       "freshness_status": "fresh",
@@ -6012,7 +6076,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6120,11 +6184,11 @@
         "eu ai act"
       ],
       "series": null,
-      "word_count_es": 1980,
-      "word_count_en": 1797,
+      "word_count_es": 1942,
+      "word_count_en": 1760,
       "reading_time_min": 10,
-      "related_app": "obs-management",
-      "related_kit": "/recursos/",
+      "related_app": null,
+      "related_kit": null,
       "included_kits": [],
       "price": null,
       "original_price": null,
@@ -6145,7 +6209,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 280,
-        "rank_pct": 88,
+        "rank_pct": 89,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6209,7 +6273,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6275,7 +6339,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6342,7 +6406,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 44,
+        "rank_pct": 45,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6406,7 +6470,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 150,
-        "rank_pct": 74,
+        "rank_pct": 75,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6536,7 +6600,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 70,
-        "rank_pct": 55,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6600,7 +6664,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 44,
+        "rank_pct": 45,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6665,7 +6729,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 44,
+        "rank_pct": 45,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6728,8 +6792,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 40,
-        "rank_pct": 44,
+        "index_100": 30,
+        "rank_pct": 40,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6796,7 +6860,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 44,
+        "rank_pct": 45,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6861,7 +6925,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 70,
-        "rank_pct": 55,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6920,7 +6984,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6932,11 +6996,11 @@
       "asset_type": "post",
       "status": "published",
       "visibility": "public",
-      "title_es": "Matriz DAR Cuantitativa: Criterios Veto, Ponderación Multicriterio y Decisiones",
-      "title_en": "Quantitative DAR Matrix: Decision Analysis, Veto Criteria & Multi-Criteria Scoring",
+      "title_es": "Matriz DAR Cuantitativa: Criterios Veto, Ponderación Multicriterio y Análisis de Decisiones C-Level",
+      "title_en": "Quantitative DAR Matrix: Decision Analysis & Resolution, Veto Criteria & C-Suite Multi-Criteria Scoring",
       "url_es": "/es/posts/matriz-dar-cuantitativa/",
       "url_en": "/en/posts/quantitative-dar-matrix/",
-      "brief_es": "Guía metodológica y cuantitativa para implementar la matriz CMMI DAR y Kepner-Tregoe: filtros veto booleanos, scoring multicriterio ponderado, sensibilidad What-If y gobierno corporativo.",
+      "brief_es": "Guía metodológica y cuantitativa para implementar la matriz CMMI DAR (Decision Analysis and Resolution) y Kepner-Tregoe: filtros veto booleanos, scoring multicriterio ponderado, análisis de sensibilidad What-If y gobierno corporativo ante Consejos de Administración.",
       "brief_en": "A comprehensive methodological guide to implementing the CMMI DAR (Decision Analysis and Resolution) and Kepner-Tregoe framework: Boolean veto gatekeepers, weighted multi-criteria scoring, What-If sensitivity modeling, and boardroom governance.",
       "publish_date": "2026-11-02",
       "last_modified_es": "2026-11-02T09:06:26+01:00",
@@ -6972,13 +7036,16 @@
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 100,
-        "title_ok": true,
-        "description_ok": true,
+        "score_0_100": 60,
+        "title_ok": false,
+        "description_ok": false,
         "parity_ok": true,
         "taxonomy_ok": true,
         "internal_links_ok": true,
-        "issues": []
+        "issues": [
+          "Longitud de título no óptima (99 caracteres; ideal: 35-95)",
+          "Meta descripción no óptima (266 caracteres; ideal: 75-250)"
+        ]
       },
       "freshness_status": "fresh",
       "owner": "Daniel Alaez",
@@ -6986,7 +7053,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 340,
-        "rank_pct": 91,
+        "rank_pct": 92,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7054,7 +7121,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 70,
-        "rank_pct": 55,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7125,7 +7192,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 30,
-        "rank_pct": 39,
+        "rank_pct": 40,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7189,7 +7256,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 70,
-        "rank_pct": 55,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7253,7 +7320,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 30,
-        "rank_pct": 39,
+        "rank_pct": 40,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7316,7 +7383,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 140,
-        "rank_pct": 72,
+        "rank_pct": 73,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7379,7 +7446,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 34,
+        "rank_pct": 35,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7506,7 +7573,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7698,7 +7765,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7760,7 +7827,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 30,
-        "rank_pct": 39,
+        "rank_pct": 40,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7822,7 +7889,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 34,
+        "rank_pct": 35,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7884,7 +7951,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 140,
-        "rank_pct": 72,
+        "rank_pct": 73,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7948,7 +8015,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 34,
+        "rank_pct": 35,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8012,7 +8079,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 34,
+        "rank_pct": 35,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8079,7 +8146,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 44,
+        "rank_pct": 45,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8144,7 +8211,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 610,
+        "index_100": 600,
         "rank_pct": 98,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -8213,7 +8280,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 110,
-        "rank_pct": 65,
+        "rank_pct": 66,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8285,7 +8352,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8423,8 +8490,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 170,
-        "rank_pct": 78,
+        "index_100": 160,
+        "rank_pct": 77,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8496,7 +8563,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 160,
-        "rank_pct": 76,
+        "rank_pct": 77,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8565,7 +8632,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 34,
+        "rank_pct": 35,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8627,7 +8694,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 530,
+        "index_100": 410,
         "rank_pct": 96,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -8647,8 +8714,8 @@
       "brief_es": "Centro de control meteorológico global y laboratorio cuantitativo: 168 estaciones, estacionalidad armónica de Fourier y confort outdoor.",
       "brief_en": "Global climate control center and quantitative laboratory: 168 global stations, cyclic Fourier seasonality, and outdoor comfort index.",
       "publish_date": "2025-10-31",
-      "last_modified_es": "2026-10-24T22:59:01+02:00",
-      "last_modified_en": "2026-10-24T22:59:01+02:00",
+      "last_modified_es": "2026-11-08T21:44:28+01:00",
+      "last_modified_en": "2026-11-08T21:44:28+01:00",
       "language_parity": "complete",
       "category": "Aplicaciones Web",
       "categories": [
@@ -8700,8 +8767,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 470,
-        "rank_pct": 95,
+        "index_100": 280,
+        "rank_pct": 89,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8761,7 +8828,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8827,7 +8894,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8891,7 +8958,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8957,7 +9024,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9019,7 +9086,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9082,7 +9149,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9145,7 +9212,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9208,7 +9275,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9271,7 +9338,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9334,7 +9401,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9397,7 +9464,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9460,7 +9527,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9523,7 +9590,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9586,7 +9653,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9649,7 +9716,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9712,7 +9779,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9775,7 +9842,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9838,7 +9905,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9901,7 +9968,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 11,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
