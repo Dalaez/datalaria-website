@@ -1,10 +1,10 @@
 /**
  * apps/snake/sw.js
- * Service Worker PWA Offline — Neon Snake v2.3.0
- * Datalaria Helix — Strict Offline Resilience (Invariante INV-SNAKE-8, INV-SNAKE-13 & INV-SNAKE-14)
+ * Service Worker PWA Offline — Neon Snake v2.3.1
+ * Datalaria Helix — Strict Offline Resilience (Invariante INV-SNAKE-8, INV-SNAKE-13, INV-SNAKE-14 & INV-SNAKE-15)
  */
 
-const CACHE_NAME = 'datalaria-snake-v2.3.0';
+const CACHE_NAME = 'datalaria-snake-v2.3.1';
 
 const PRECACHE_ASSETS = [
   '/games/snake/',

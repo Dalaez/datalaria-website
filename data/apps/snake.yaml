@@ -6,7 +6,7 @@ icon: "🐍"
 cover: cover.png
 app_url: /games/snake/
 source_spec: specs/apps/snake/spec.md
-current_version: v2.3.0
+current_version: v2.3.1
 
 title:
   es: "Neon Snake"
@@ -91,6 +91,21 @@ posts:
     part: 1
 
 releases:
+  - version: v2.3.1
+    date: "2026-11-08"
+    state: released
+    type: fix
+    title:
+      es: "Homologación Universal Tablets Samsung/iPads y Erradicación de Pull-to-Refresh"
+      en: "Universal Tablet Compliance (Samsung/iPad) & Anti-Pull-to-Refresh Protection"
+    changes:
+      - es: "Soporte Universal Tablet (Samsung Galaxy Tab, iPads): reemplazo de media queries de ancho por detección pointer: coarse y maxTouchPoints, manteniendo la cruceta D-Pad activa en cualquier diagonal táctil."
+        en: "Universal Tablet Support (Samsung Galaxy Tab, iPads): replaced rigid width media queries with pointer: coarse and maxTouchPoints detection, keeping virtual D-Pad active across all tablet sizes."
+      - es: "Erradicación de Pull-to-Refresh: bloqueo global mediante overscroll-behavior: none y guardas en touchmove durante la partida activa, impidiendo recargas accidentales al deslizar hacia abajo."
+        en: "Pull-to-Refresh Eradication: global lock via overscroll-behavior: none and active game touchmove guards, preventing accidental page reloads when swiping down."
+      - es: "Escalado y Ergonomía Tablet: botones D-Pad ampliados a 56x52px y recálculo de reserva en resizeCanvas() para visualizar tablero y cruceta simultáneamente sin scroll."
+        en: "Tablet Scaling & Ergonomics: enlarged 56x52px D-Pad buttons and reserved height recalculation in resizeCanvas() to display board and controls without scrolling."
+
   - version: v2.3.0
     date: "2026-11-07"
     state: released

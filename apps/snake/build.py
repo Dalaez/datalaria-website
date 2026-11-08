@@ -75,7 +75,7 @@ def build():
       <div class="app-title-group">
         <h1 class="cyber-font neon-text-cyan">🐍 Neon Snake</h1>
       </div>
-      <button id="btn-check-update" class="version-badge" title="Comprobar actualización">v2.3.0</button>
+      <button id="btn-check-update" class="version-badge" title="Comprobar actualización">v2.3.1</button>
     </div>
 
     <div class="header-controls">

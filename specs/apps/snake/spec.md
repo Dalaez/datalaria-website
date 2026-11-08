@@ -1,8 +1,8 @@
 # SPEC-APP-SNAKE: Neon Snake ("Cyberpunk Overdrive v2.3")
 
 > **Identificador:** `SPEC-APP-SNAKE`  
-> **Versión:** `v2.3.0` (Estado: `active`)  
-> **Fecha:** `2026-11-07`  
+> **Versión:** `v2.3.1` (Estado: `active`)  
+> **Fecha:** `2026-11-08`  
 > **Clasificación:** Tier `lab` | Arcade & Client-Side GameDev  
 > **Ruta Canónica:** `https://datalaria.com/games/snake/`  
 > **Ficha Técnica:** `https://datalaria.com/es/apps/snake/` (EN: `/en/apps/snake/`)  
@@ -140,12 +140,20 @@ flowchart TD
   2. **Vibración Háptica Nativa (`navigator.vibrate`):** En dispositivos compatibles y si el audio no está silenciado, se emiten pulsos táctiles deterministas: 15 ms al capturar un nodo, doble pulso `[30, 40, 30]` al subir de nivel y pulso de 80 ms al colisionar.
   3. **Pausa Dramática (*Hit-Stop* de 450 ms) e Inspección de Tablero:** Al ocurrir un impacto letal, el motor retiene el frame durante 450 ms destacando la casilla exacta del choque con efecto estroboscópico antes de abrir el modal de fin de partida. En `#gameover-overlay`, el botón `#btn-inspect-board` (`👁️ Ver Tablero` / `👁️ View Board`) atenúa la opacidad del modal al 15% permitiendo al usuario auditar la posición final de la serpiente.
   4. **Cuenta Atrás Animada `3 - 2 - 1 - HACK!` al Reanudar:** Al salir del menú de pausa, el juego ejecuta una transición visual sobre el Canvas con 3 pulsos sonoros sintetizados de aviso (`440 Hz`) y un pulso final agudo (`880 Hz`), impidiendo muertes injustas instantáneas en niveles de alta velocidad.
+- **`INV-SNAKE-15` (Soporte Universal Tablet/Touchscreen, Pointer Coarse y Erradicación de Pull-to-Refresh):**
+  1. **Soporte Dinámico para Tablets y Pantallas Táctiles:** Los controles virtuales (`#touch-controls-deck`) no se ocultan mediante anchos fijos de pantalla (`min-width: 768px`). En dispositivos táctiles de cualquier resolución (smartphones, tablets Android como Samsung Galaxy Tab, iPads y convertibles) detectados mediante `@media (pointer: coarse)`, `('ontouchstart' in window)` o `(navigator.maxTouchPoints > 0)`, el D-Pad y los controles táctiles permanecen activos y accesibles. Solo en escritorios estrictamente de ratón (`@media (hover: hover) and (pointer: fine) and (min-width: 1024px)`) se ocultan por defecto, manteniendo siempre el conmutador `#btn-toggle-dpad` para habilitarlos manualmente.
+  2. **Erradicación Total de Pull-to-Refresh y Navegación Accidental:** Se aplica `overscroll-behavior: none !important;` y `overscroll-behavior-y: none !important;` en `html`, `body`, `#game-canvas-wrapper` y controles táctiles. Durante la partida activa (`body.is-playing`), un guardia en `touchmove` intercepta los desplazamientos verticales ejecutando `if (e.cancelable) e.preventDefault();`, evitando recargas accidentales o salidas involuntarias del juego.
+  3. **Ergonomía Adaptativa Tablet:** En pantallas medianas y grandes (`768px <= winW <= 1280px`), `resizeCanvas()` calcula el espacio reservado garantizando que tanto el tablero como la cruceta táctil y botones se visualicen de forma holgada sin provocar desbordamiento vertical.
 
 ---
 
 ## 5. HISTORIAL DE VERSIONES Y EVOLUCIÓN
 
-- **`v2.3.0` (2026-11-07) — [ESTADO: ACTIVO — "TACTILE ERGONOMICS, HIT-STOP & COUNTDOWN"]:**
+- **`v2.3.1` (2026-11-08) — [ESTADO: ACTIVO — "TABLET UNIVERSAL & ANTI-PULL-TO-REFRESH"]:**
+  - **Homologación Tablet Samsung / iPads:** Sustitución de media queries rígidas de ancho por detección `pointer: coarse` y `maxTouchPoints`, garantizando la presencia del D-Pad en tablets de cualquier diagonal.
+  - **Erradicación de Pull-to-Refresh:** Blindaje mediante `overscroll-behavior: none` y prevención de gestos verticales en `touchmove` durante la partida activa.
+  - **Ergonomía de Botones en Tablet:** Botones D-Pad escalados a 52–60px y distribución optimizada para agarre con dos manos en tablets.
+- **`v2.3.0` (2026-11-07) — [SUPERSEDED — "TACTILE ERGONOMICS, HIT-STOP & COUNTDOWN"]:**
   - **Modo Móvil Full-Swipe:** Conmutador para ocultar el D-Pad en móvil ganando hasta 160 px de altura adicional para el tablero.
   - **Feedback Háptico:** Micro-pulsos de vibración para capturas, subidas de nivel y choques coordinados con el mute.
   - **Hit-Stop & Ver Tablero:** Pausa dramática de 450 ms en la celda del impacto y botón para inspeccionar el tablero tras Game Over.

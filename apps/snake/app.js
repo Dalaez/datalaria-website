@@ -262,28 +262,33 @@ function resizeCanvas() {
 
   const winW = window.innerWidth || 800;
   const winH = window.innerHeight || 700;
-  const isMobile = winW < 768;
+  const isTouchDevice = (typeof window !== "undefined") && (
+    ("ontouchstart" in window) ||
+    (navigator.maxTouchPoints > 0) ||
+    (window.matchMedia && window.matchMedia("(pointer: coarse)").matches)
+  );
+  const showTouchControls = isTouchDevice || document.body.classList.contains("force-touch-controls") || winW < 1024;
   const isPlaying = document.body.classList.contains("is-playing");
 
-  // Ancho disponible descontando márgenes mínimos laterales (máx 720px en escritorio)
-  const marginSide = isMobile ? 8 : 20;
+  // Ancho disponible descontando márgenes mínimos laterales (máx 720px en escritorio/tablet)
+  const isSmallMobile = winW < 600;
+  const marginSide = isSmallMobile ? 8 : 24;
   const availW = Math.min(winW - marginSide, 720);
 
   // Espacio vertical reservado para HUD y controles táctiles / cabecera
   let reservedH;
-  if (isMobile) {
-    // Si el D-Pad está desactivado (modo swipe), la zona inferior es más compacta
-    const dpadAllowance = dpadEnabled ? 135 : 75;
-    reservedH = isPlaying ? (60 + dpadAllowance) : 250;
+  if (showTouchControls) {
+    const touchAllowance = dpadEnabled ? 150 : 80;
+    reservedH = isPlaying ? (60 + touchAllowance) : (180 + touchAllowance);
   } else {
     reservedH = isPlaying ? 85 : 180;
   }
 
-  const minFloor = isMobile ? 260 : 380;
+  const minFloor = isSmallMobile ? 260 : 340;
   const availH = Math.max(minFloor, winH - reservedH);
   const rawSize = Math.min(availW, availH);
 
-  // En móvil aprovechamos todo el ancho útil disponible sin forzar truncado agresivo
+  // En móvil/tablet aprovechamos todo el espacio útil disponible de forma proporcional
   const boardSize = Math.max(260, Math.round(rawSize));
 
   document.documentElement.style.setProperty("--board-size", `${boardSize}px`);
@@ -1324,10 +1329,24 @@ function setupEventListeners() {
   };
 
   canvas?.addEventListener("touchstart", handleTouchStart, { passive: true });
+  canvas?.addEventListener("touchmove", (e) => {
+    if (e.cancelable) e.preventDefault();
+  }, { passive: false });
   canvas?.addEventListener("touchend", handleTouchEnd, { passive: true });
+
   const touchpadZone = document.getElementById("swipe-touchpad-zone");
   touchpadZone?.addEventListener("touchstart", handleTouchStart, { passive: true });
+  touchpadZone?.addEventListener("touchmove", (e) => {
+    if (e.cancelable) e.preventDefault();
+  }, { passive: false });
   touchpadZone?.addEventListener("touchend", handleTouchEnd, { passive: true });
+
+  // Prevenir gestos nativos de pull-to-refresh y navegación accidental al deslizar (INV-SNAKE-15)
+  window.addEventListener("touchmove", (e) => {
+    if (document.body.classList.contains("is-playing")) {
+      if (e.cancelable) e.preventDefault();
+    }
+  }, { passive: false });
 }
 
 function startResumeCountdown() {

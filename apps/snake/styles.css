@@ -78,6 +78,11 @@
   display: none !important;
 }
 
+html {
+  overscroll-behavior: none !important;
+  overscroll-behavior-y: none !important;
+}
+
 body {
   font-family: var(--font-sans);
   background-color: var(--bg-deep);
@@ -88,8 +93,9 @@ body {
   flex-direction: column;
   align-items: center;
   overflow-x: hidden;
-  touch-action: pan-y;
   position: relative;
+  overscroll-behavior: none !important;
+  overscroll-behavior-y: none !important;
 }
 
 /* Modo Juego Inmersivo: oculta cabecera y pestañas durante la partida activa */
@@ -98,10 +104,20 @@ body.is-playing .nav-deck {
   display: none !important;
 }
 
+body.is-playing {
+  touch-action: none !important;
+  overscroll-behavior: none !important;
+  overscroll-behavior-y: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
 body.is-playing .app-container {
   padding-top: 6px;
   padding-bottom: 6px;
   justify-content: center;
+  touch-action: none !important;
+  overscroll-behavior: none !important;
 }
 
 /* Efecto Scanlines opcional para modo CRT */
@@ -1292,13 +1308,42 @@ canvas#gameCanvas {
   to { transform: translateY(0); opacity: 1; }
 }
 
-/* Responsive Desktop vs Mobile */
-@media (min-width: 768px) {
-  .d-pad-container {
-    display: none;
-  }
+/* Responsive Desktop, Tablets & Mobile (INV-SNAKE-15) */
+@media (min-width: 641px) {
   .help-grid {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Ocultar D-Pad ÚNICAMENTE en ordenadores de escritorio con ratón fino (sin pantalla táctil) */
+@media (hover: hover) and (pointer: fine) and (min-width: 1024px) {
+  body:not(.force-touch-controls) .d-pad-container {
+    display: none !important;
+  }
+}
+
+/* Optimización para Tablets (Samsung Galaxy Tab, iPads, pantallas táctiles medianas) */
+@media (min-width: 641px) and (pointer: coarse), (min-width: 641px) and (max-width: 1024px) {
+  .d-pad-container {
+    max-width: 500px;
+    margin-top: 10px;
+  }
+
+  .d-pad-grid {
+    grid-template-columns: repeat(3, 56px);
+    grid-template-rows: repeat(3, 52px);
+    gap: 6px;
+  }
+
+  .d-pad-btn {
+    font-size: 1.35rem;
+    border-radius: var(--radius-md);
+  }
+
+  .btn-boost-touch {
+    max-width: 125px;
+    height: 110px;
+    font-size: 0.92rem;
   }
 }
 

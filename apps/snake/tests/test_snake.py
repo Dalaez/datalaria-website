@@ -174,7 +174,7 @@ def test_inv_snake_8_pwa_offline_assets():
     assert os.path.exists(sw_path), "Falta sw.js en static/games/snake/"
     with open(sw_path, "r", encoding="utf-8") as f:
         sw_code = f.read()
-        assert "datalaria-snake-v2.3.0" in sw_code
+        assert "datalaria-snake-v2.3.1" in sw_code
         assert "skipWaiting" in sw_code
 
     icons = [
@@ -289,8 +289,8 @@ def test_inv_snake_13_pwa_gold_and_offline_optimistic_ranking():
     with open(index_html, "r", encoding="utf-8") as f:
         content = f.read()
 
-    # 1. Badge de versión sincronizado a v2.3.0
-    assert ">v2.3.0</button>" in content, "El badge interactivo de versión en cabecera debe indicar v2.3.0"
+    # 1. Badge de versión sincronizado a v2.3.1
+    assert ">v2.3.1</button>" in content, "El badge interactivo de versión en cabecera debe indicar v2.3.1"
 
     # 2. Detección de standalone e instalación PWA
     assert "display-mode: standalone" in content, "Falta detección de display-mode: standalone en app.js"
@@ -406,6 +406,27 @@ def test_inv_snake_14_ergonomics_hitstop_and_countdown():
     res = subprocess.run(["node", "--input-type=module", "-e", node_script], capture_output=True, text=True)
     assert res.returncode == 0, f"Error en verificación de colisión con Node.js:\n{res.stderr}"
     assert "NODE_HITSTOP_CRASH_OK" in res.stdout
+
+
+def test_inv_snake_15_tablet_support_and_anti_pull_to_refresh():
+    """INV-SNAKE-15: Homologación para tablets (Samsung Galaxy Tab, iPad), pointer coarse y bloqueo de pull-to-refresh."""
+    index_html = os.path.join(STATIC_DIR, "index.html")
+    with open(index_html, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    # 1. Erradicación de pull-to-refresh en CSS y JS
+    assert "overscroll-behavior: none" in content, "Falta overscroll-behavior: none en CSS"
+    assert "overscroll-behavior-y: none" in content, "Falta overscroll-behavior-y: none en CSS"
+    assert "touchmove" in content, "Falta listener touchmove para prevención de recarga"
+
+    # 2. Detección de dispositivos táctiles Coarse y tablets
+    assert "pointer: coarse" in content, "Falta media query (pointer: coarse) para tablets táctiles"
+    assert "pointer: fine" in content, "Falta restricción de ocultación solo a pointer: fine"
+    assert "showTouchControls" in content, "Falta lógica showTouchControls en resizeCanvas"
+
+    # 3. Verificación de que .d-pad-container NO está oculto incondicionalmente en tablets min-width: 768px
+    assert "@media (min-width: 768px) {\n  .d-pad-container {\n    display: none;" not in content, \
+        "Violación: D-Pad oculto incondicionalmente en tablets min-width: 768px"
 
 
 def test_static_firewall_compliance():

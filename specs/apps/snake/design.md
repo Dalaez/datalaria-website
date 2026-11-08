@@ -1,8 +1,8 @@
-# Especificación de Diseño UX/UI: Neon Snake ("Cyberpunk Overdrive v2.3") (`snake`)
+# Especificación de Diseño UX/UI: Neon Snake ("Cyberpunk Overdrive v2.3.1") (`snake`)
 
 > **ID de Diseño:** `DESIGN-APP-SNAKE`  
 > **Spec Técnica Vinculada:** [`specs/apps/snake/spec.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/apps/snake/spec.md)  
-> **Versión de Diseño:** `v2.3.0` (Ergonomía Táctil Full-Swipe, Vibración Háptica, Hit-Stop e Inspección de Tablero)  
+> **Versión de Diseño:** `v2.3.1` (Homologación Universal Tablets Samsung/iPads, Anti-Pull-to-Refresh y D-Pad Coarse)  
 > **Agente Propietario:** [`04-ux-ui` (Diseñador UX/UI)](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/04-ux-ui.md)  
 > **Preset Estético Seleccionado:** `Arcade Cyberpunk Neon` (Datalaria Retro Arcade Deck)  
 > **Aislamiento de Excepción (`[SCOPE-ISOLATION: ARCADE-GAME]`):** Esta especificación aplica un estilo estético Cyberpunk de alto contraste, brillos de neón (`box-shadow` / `text-shadow` bloom), tipografía arcade de ciencia ficción, animaciones de glitch/screen-shake y mecánicas de gamificación adictiva concebidas exclusivamente para este videojuego arcade por instrucción explícita del usuario. Estas reglas de diseño y tokens lúdicos **no persisten ni contaminan los estándares de diseño corporativo o herramientas ejecutivas B2B de Datalaria**.
@@ -133,7 +133,8 @@
 
 ## 5. Checklist del Gate de Revisión UX/UI (Pre-QA)
 
-- [x] **Adaptabilidad Multidispositivo:** Optimizado para smartphones (`360px`–`420px`), tablets (`768px`) y desktop (`1080p`–`1440p`).
-- [x] **Controles Táctiles de Alta Precisión:** Botones D-Pad con área de impacto $\ge 52\times52\text{ px}$ + soporte de gestos táctiles *Swipe* en el Canvas.
+- [x] **Adaptabilidad Multidispositivo:** Optimizado para smartphones (`360px`–`420px`), tablets Samsung/iPad (`768px`–`1280px` con detección `@media (pointer: coarse)`) y desktop (`1080p`–`1440p`).
+- [x] **Blindaje Anti-Pull-To-Refresh:** Erradicación del refresco de página involuntario mediante `overscroll-behavior: none` y guardas de gestos verticales durante la partida activa.
+- [x] **Controles Táctiles de Alta Precisión:** Botones D-Pad con área de impacto $\ge 52\times52\text{ px}$ en móvil y tablet + soporte de gestos táctiles *Swipe* en el Canvas y Touchpad.
 - [x] **Accesibilidad WCAG 2.2 AA:** Contraste $\ge 4.5:1$ en todos los textos sobre fondos oscuros, soporte total de teclado (`WASD`, `Flechas`, `Espacio`, `P`, `M`, `T`, `1-4`).
 - [x] **Cero CDNs Externos:** Todo el CSS, iconos SVG y sintetizador de audio cargan al 100% de manera local y offline.
