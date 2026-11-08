@@ -1,25 +1,27 @@
 // sw.js - Service Worker para Weather Intelligence v3.0 (INV-WEATHER-10)
-const CACHE_NAME = 'weather-v3.0.0';
+const CACHE_NAME = 'weather-v3.0.1';
 const SHELL_ASSETS = [
-    '/apps/weather/',
-    '/apps/weather/index.html',
-    '/apps/weather/manifest.json',
-    '/apps/weather/icon.svg',
-    '/apps/weather/icon-192.png',
-    '/apps/weather/icon-512.png',
-    '/apps/weather/datalaria_logo_transp.png'
+    './',
+    'index.html',
+    'manifest.json',
+    'icon.svg',
+    'icon-192.png',
+    'icon-512.png',
+    'datalaria_logo_transp.png'
 ];
 
-// 1. Install - Pre-cache Shell
+// 1. Install - Pre-cache Shell de forma tolerante a fallos
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
-            return cache.addAll(SHELL_ASSETS);
+            return Promise.allSettled(
+                SHELL_ASSETS.map((asset) => cache.add(asset).catch(() => {}))
+            );
         }).then(() => self.skipWaiting())
     );
 });
 
-// 2. Activate - Limpiar versiones obsoletas
+// 2. Activate - Limpiar versiones obsoletas inmediatamente
 self.addEventListener('activate', (event) => {
     event.waitUntil(
         caches.keys().then((keys) => {
@@ -38,59 +40,41 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
     const url = new URL(event.request.url);
 
+    // Solo gestionar peticiones GET
+    if (event.request.method !== 'GET') return;
+
     // REGLA ESTRICTA INV-WEATHER-10: NUNCA cachear archivos CSV planos
     if (url.pathname.endsWith('.csv') || url.pathname.includes('/datos/')) {
-        return; // Petición directa a red sin pasar por el Service Worker
+        return; // Petición directa a red
     }
 
-    // A. Shell / Assets locales (Cache-First)
-    if (url.pathname.startsWith('/apps/weather/') && (
+    // A. Shell / Assets locales (Stale-While-Revalidate)
+    if (
         url.pathname.endsWith('.html') ||
         url.pathname.endsWith('.svg') ||
         url.pathname.endsWith('.png') ||
-        url.pathname.endsWith('.json') && url.pathname.includes('manifest')
-    )) {
-        event.respondWith(
-            caches.match(event.request).then((cached) => {
-                return cached || fetch(event.request).then((response) => {
-                    if (response && response.status === 200) {
-                        const clone = response.clone();
-                        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
-                    }
-                    return response;
-                });
-            })
-        );
-        return;
-    }
-
-    // B. CDN Assets (Fonts, Leaflet, Chart.js, Feather, PapaParse) -> Cache-First
-    if (
-        url.hostname.includes('fonts.googleapis.com') ||
-        url.hostname.includes('fonts.gstatic.com') ||
-        url.hostname.includes('cdn.jsdelivr.net') ||
-        url.hostname.includes('cdnjs.cloudflare.com') ||
-        url.hostname.includes('unpkg.com')
+        (url.pathname.endsWith('.json') && url.pathname.includes('manifest'))
     ) {
         event.respondWith(
             caches.match(event.request).then((cached) => {
-                if (cached) return cached;
-                return fetch(event.request).then((response) => {
+                const networkFetch = fetch(event.request).then((response) => {
                     if (response && response.status === 200) {
                         const clone = response.clone();
                         caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
                     }
                     return response;
-                });
-            })
+                }).catch(() => cached);
+
+                return cached || networkFetch;
+            }).catch(() => fetch(event.request))
         );
         return;
     }
 
-    // C. JSON de Datos (derived/**, global_summary, predicciones) -> Stale-While-Revalidate
+    // B. JSON de Datos (derived/**, global_summary, predicciones) -> Stale-While-Revalidate
     if (
         (url.pathname.endsWith('.json') || url.pathname.includes('/derived/')) &&
-        (url.hostname.includes('datalaria-app-weather.netlify.app') || url.pathname.startsWith('/apps/weather/'))
+        (url.hostname.includes('datalaria-app-weather.netlify.app') || url.pathname.includes('/apps/weather/'))
     ) {
         event.respondWith(
             caches.open(CACHE_NAME).then((cache) => {
@@ -104,13 +88,13 @@ self.addEventListener('fetch', (event) => {
 
                     return cached || fetchPromise;
                 });
-            })
+            }).catch(() => fetch(event.request))
         );
         return;
     }
 
-    // D. Teselas del mapa Leaflet -> Network-first con fallback a caché
-    if (url.hostname.includes('tile.openstreetmap.org') || url.hostname.includes('basemaps.cartocdn.com')) {
+    // C. Teselas del mapa Leaflet -> Network-first con fallback a caché
+    if (url.hostname.includes('tile.openstreetmap.org')) {
         event.respondWith(
             fetch(event.request).then((networkResponse) => {
                 if (networkResponse && networkResponse.status === 200) {
@@ -122,4 +106,7 @@ self.addEventListener('fetch', (event) => {
         );
         return;
     }
+
+    // Nota: Las librerías CDN (Choices, Leaflet, Chart.js, Feather) no se interceptan;
+    // se delegan a la caché nativa HTTP del navegador para evitar ERR_CACHE_READ_FAILURE.
 });

@@ -23,6 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent
 
 REQUIRED_ROOT_FILES = [
     "index.html",
+    "manifest.json",
+    "sw.js",
+    "icon.svg",
+    "icon-192.png",
+    "icon-512.png",
+    "datalaria_logo_transp.png",
     "read_weather.py",
     "build_derived.py",
     "_headers",
@@ -107,8 +113,10 @@ def export_to_upstream(app_dir: Path, target_dir: Path) -> int:
         datos_dst.mkdir(parents=True, exist_ok=True)
         csv_count = 0
         for csv_file in datos_dir.glob("*.csv"):
-            shutil.copy2(csv_file, datos_dst / csv_file.name)
-            csv_count += 1
+            target_csv = datos_dst / csv_file.name
+            if not target_csv.exists():
+                shutil.copy2(csv_file, target_csv)
+                csv_count += 1
         print(f"Copiados {csv_count} archivos CSV en datos/")
 
     print(f"\n✅ Exportación upstream completada con éxito en: {target_dir}")
