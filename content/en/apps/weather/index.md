@@ -1,14 +1,25 @@
 ---
-title: "Weather Intelligence v2.0"
+title: "Weather Intelligence v3.1"
 description: "Global climate control center and quantitative laboratory: 168 stations, cyclic Fourier seasonality, walk-forward AI vs. OWM backtesting, and outdoor comfort index."
 app: "weather"
 translationKey: "app-weather"
 layout: "single"
 ---
 
+## 🌟 What's New in Weather Intelligence v3.1
+
+Weather Intelligence v3.1 introduces a new dimension of **statistical transparency and climate disclosure**:
+
+- **"Is it Normal?" Diagnostics:** Every station evaluates its current temperature against its own historical baseline across the last 375 days ($\pm 7$ days of the year excluding the target day, per `INV-WEATHER-11`), identifying whether today falls into an extreme percentile ($p \le 10$ or $p \ge 90$) or sets a new monthly record measured since October 2025.
+- **Thermal Warming Stripes Calendar:** Interactive climate stripes visualization across 365 days for each city, mapping thermal anomalies on a $\pm 5^\circ\text{C}$ divergent colormap with real-time tooltips.
+- **Public AI vs. OpenWeatherMap Scorecard:** Transparent dual-layer audit reporting mean absolute error (MAE) at $D+1..D+5$ and tracking weekly prediction wins (`INV-WEATHER-12`).
+- **ML Lab "Why this prediction?":** Deterministic explainability without black-box models, breaking down tomorrow's forecast into percentage contributions of thermal inertia, Fourier annual cycles, and humidity dynamics (`INV-WEATHER-13`).
+
+---
+
 ## 🚀 Control Center & 1-Click Scenario Launchers (Deep-Linking)
 
-Weather Intelligence v2.0 introduces a comprehensive **Deep-Linking system** that lets you jump directly into curated analytical presets without configuring filters manually:
+Weather Intelligence v3.1 introduces a comprehensive **Deep-Linking system** that lets you jump directly into curated analytical presets without configuring filters manually:
 
 | Thematic Scenario | Target View | Focus & Stations | Direct Link |
 | :--- | :--- | :--- | :--- |
@@ -43,7 +54,7 @@ Each station holds **over 375 continuous days of historical observations** sampl
 
 Traditional calendar-day regression ($d \in [1, 365]$) suffers from an acute **year-boundary discontinuity**: between December 31 ($d=365$) and January 1 ($d=1$), linear models erroneously estimate an artificial drop of $-364$ units.
 
-To eradicate this boundary drift, Weather Intelligence v2.0 projects day-of-year onto the continuous 2D unit circle:
+To eradicate this boundary drift, Weather Intelligence v3.1 projects day-of-year onto the continuous 2D unit circle:
 
 $$\sin_{\text{day}} = \sin\left(\frac{2\pi \cdot \text{doy}}{365.25}\right), \quad \cos_{\text{day}} = \cos\left(\frac{2\pi \cdot \text{doy}}{365.25}\right)$$
 

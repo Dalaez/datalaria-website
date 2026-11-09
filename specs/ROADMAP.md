@@ -199,6 +199,15 @@ Tras auditar todos los artículos de `/content/es/posts/` y `/content/en/posts/`
     4. Blindar la suite `apps/weather/tests/test_derived.py` con 4 tests de contrato de producción (inventario de 168 ciudades, cero 404 en presets, ejecución en workflow y arquitectura frontend).
   - *Gate de Verificación:* `python -m pytest apps/weather/tests -v` (36/36 pasados, 100%), `hugo --renderToMemory` (2.435 páginas compiladas en 20s, exit 0) y comprobación HTTP en vivo 200 OK en producción. (Completado el 2026-11-09 ✅).
 
+- [x] **Hito W3.4: "¿Es normal?" + Marcador Público IA vs OWM + Calendario Térmico Warming Stripes (Weather Intelligence v3.1.0)**
+  - *Acción:*
+    1. Corrección de esquema P0 en `build_derived.py`: mapeo de columnas en español (`temp_min_c`, `temp_max_c`, `lluvia_1h`), reemplazo de falsos `0.0` por `np.nan` y cálculo seguro de amplitudes diurnas reales.
+    2. Motor analítico en `read_weather.py`: predicción recursiva a 5 horizontes (`pred_ia_5day`), backtest walk-forward determinista (`model_metrics.walkforward_mae_c`) y explicabilidad lineal transparente (`explain` con contribuciones relativas y absolutas) sin llamadas a LLMs externos.
+    3. Generador de derivados en `build_derived.py`: cálculo de anomalías térmicas frente a línea base cíclica DOY ±7 días excluyendo el día objetivo (`compute_doy_baseline()`), síntesis de `derived/insights.json` (168 ciudades) y auditoría en 2 capas en `derived/scorecard.json` (capa en vivo y retrospectiva estrictamente separadas según `INV-WEATHER-12`).
+    4. Rediseño UI en `apps/weather/index.html`: chip instantáneo (0 ms) "¿Es normal?" en las Super-Cards KPI, acordeón interactivo de calentamiento térmico "Warming Stripes" con canvas divergente a 365 días, y vista Arena rediseñada con el marcador "¿Quién acierta?" y laboratorio "¿Por qué predice esto?". Incremento de Service Worker a `weather-v3.1.0`.
+    5. Armonización SemVer y fichas técnicas: versión `v3.1.0` documentada en `spec.md`, `weather.yaml`, `layouts/apps/list.html`, `index.html` y novedades v3.1 en `content/{es,en}/apps/weather/index.md`. Sincronización upstream con exportador automático a `../app_weather` y Netlify.
+  - *Gate de Verificación:* 45/45 tests unitarios y de contrato pasando al 100% en `apps/weather/tests`, 95/95 tests globales en `ops/pulse/tests` y `ops/helix/tests`, compilación Hugo limpia (`hugo --renderToMemory` con código de salida 0 en 2.435 páginas), push exitoso a upstream SSH (`ca23299b8`), y verificación de HTTP 200 OK en producción. (Completado el 2026-11-09 ✅).
+
 - [ ] **Hito 2.7: Lanzamiento Editorial Parte 5 (`app_openweather_part5_climate_intelligence_v2` ES/EN)**
   - *Acción:*
     1. Redactar y publicar la Parte 5 de la serie en español e inglés ($\ge 1.850$ palabras, paridad 100%, diagramas Mermaid vectoriales, shortcode `app-ref slug="weather"`).

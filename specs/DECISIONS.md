@@ -434,3 +434,28 @@
   - Cero riesgo de pérdida de datos históricos y preservación absoluta del SEO existente.
   - Carga inmediata (<100 ms) de visualizaciones ricas y fiables en cualquier dispositivo sin consumir almacenamiento en la máquina local del desarrollador.
   - Base de datos relacional implícita lista para una migración limpia hacia Supabase en la Etapa 3.
+
+---
+
+## ADR-023: Diagnóstico "¿Es normal?", Warming Stripes, Marcador Público IA vs OWM en Dos Capas y Corrección del Mapeo de Variables (`v3.1.0`)
+- **Fecha:** 2026-11-09
+- **Estado:** Aceptado (En ejecución en Hito W3.4)
+- **Contexto:**
+  1. La auditoría empírica de datos en `build_derived.py` reveló un bug crítico de esquema: `col_map` no mapeaba las columnas canónicas `temp_min_c`, `temp_max_c` ni `lluvia_1h`, provocando que en la agregación diaria `tmin` se rellenase con `0.0` y la precipitación diaria fuese evaluada en `0.0 mm` en prácticamente todas las estaciones, distorsionando las normales mensuales de `climatology.json`.
+  2. El producto carecía de un diagnóstico contextual intuitivo ("¿Es normal el tiempo de hoy?") que explique la anomalía actual respecto a la ventana estacional real de la ciudad, de una visualización compartible de impacto ("warming stripes" anuales) y de un marcador transparente que audite el acierto predictivo de la IA frente a OpenWeatherMap a 5 días de horizonte.
+  3. El registro histórico de predicciones (`forecast_log/`) contenía solo observaciones preliminares de emisión reciente, haciendo inviable computar un MAE en vivo a 5 días con significación estadística sin antes acumular pares reales.
+- **Decisión:**
+  1. **Corrección P0 del Mapeo de Columnas:** Mapear explícitamente `temp_min_c → temp_min`, `temp_max_c → temp_max` y `lluvia_1h → rain_1h` en `build_derived.py`, rellenando con `NaN` y aplicando `nanmin`/`nanmax` para erradicar el falso cero en mínimas y calcular lluvia real como el máximo horario del día.
+  2. **Línea Base Honesta Móvil ($\pm 7$ días del año):** Computar la anomalía y el percentil térmico para `derived/insights.json` y el vector `anom` en cada `daily/<slug>.json` evaluando la media de $tmean$ en una ventana de $\pm 7$ días del año sobre el histórico medido, excluyendo estrictamente el día analizado. Récords mensuales limitados a meses con $\ge 20$ días observados y acotados con la coletilla "desde oct. 2025".
+  3. **Marcador Auditable en Dos Capas Desacopladas:**
+     - *Capa A (En vivo):* Registra emisiones diarias $[D+1..D+5]$ en `derived/forecast_log/` con upsert por `(fecha_emision, slug)`. Emite `derived/scorecard.json` exigiendo $\ge 7$ pares por horizonte para el estado `"ok"`, manteniendo `"calibrating"` mientras se acumulan observaciones.
+     - *Capa B (Retrospectiva):* Computa el backtest walk-forward de la IA a 5 días sobre los últimos 60 días, etiquetado inequívocamente como "Retrospectivo (solo IA)" sin mezclarlo jamás en el MAE observado.
+  4. **Explicabilidad Lineal Determinista:** `predicciones.json` incorpora `explain` desglosando la contribución de cada variable temporal y meteorológica ($\text{coef}_k \times (x_k - \bar{x}_k)$) en °C y porcentaje, traducida por plantillas i18n sin recurrir a LLMs.
+  5. **Coherencia de Versión `v3.1.0`:** Sincronización atómica de versión en `weather.yaml`, release changelogs, fichas ES/EN y metadatos públicos de la SPA.
+- **Alternativas Descartadas:**
+  - *Alternativa A: Usar una climatología fija mensual.* Descartada porque una media mensual plana introduce discontinuidades bruscas en los cambios de mes y falsea los percentiles en estaciones de transición como primavera y otoño.
+  - *Alternativa B: Reconstruir artificialmente el historial de OWM para simular un marcador en vivo completo.* Descartada por violar el principio de honestidad técnica y veracidad de datos; el marcador en vivo debe reflejar exclusivamente telemetría real capturada por el sistema.
+- **Consecuencias:**
+  - Corrección matemática de la amplitud térmica diurna y de los días de lluvia en todas las 168 estaciones.
+  - Disponibilidad de diagnósticos climáticos inmediatos (0 ms) comprensibles para el usuario general y visualizaciones compartibles (calendario térmico en stripes).
+  - Marcador auditable pionero que fortalece la credibilidad técnica de Datalaria sin comprometer la integridad metodológica.

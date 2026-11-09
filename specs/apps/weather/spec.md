@@ -1,8 +1,8 @@
 # Especificación Técnica SDD: Weather Service (`weather`)
 
 > **ID de Especificación:** `SPEC-APP-WEATHER`  
-> **Versión de la Spec:** `3.0.0-draft` (Evolución a Weather Intelligence v3.0: Data Truth Pipeline, Focus Mode y PWA — `ADR-022`)  
-> **Versión de la App documentada:** `v3.0.0-beta` (En evolución desde `v2.0.0`)  
+> **Versión de la Spec:** `3.1.0` (Evolución a Weather Intelligence v3.1: "¿Es normal?", Warming Stripes, Marcador IA vs OWM y Explicabilidad — `ADR-023`)  
+> **Versión de la App documentada:** `v3.1.0` (Release de producción)  
 > **Contrato de Diseño Vinculado:** [`specs/apps/weather/design.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/apps/weather/design.md)  
 > **Estado:** `APPROVED`  
 > **Categoría SDD:** 🟢 App Flagship #3 de 7 — Observatorio Climático Serverless & Laboratorio ML  
@@ -296,6 +296,74 @@ El frontend opera bajo el patrón **Remote-First con Fallback en Cascada**:
   3. Si la red está desconectada, recurre al almacenamiento offline (PWA / `sw.js`).
 - Anclaje temporal: La ventana por defecto (`30D`) se ancla al `last_date` real reportado en los datos y no a la fecha del navegador (`new Date()`).
 
+### 4.8 Contratos de Datos v3.1: "¿Es normal?", Warming Stripes y Marcador IA vs OWM
+
+1. **Clave `anom` en `derived/daily/<slug>.json`:**
+   - Vector de anomalías térmicas en °C alineado posición por posición con `rows` (`len(anom) == len(rows)`).
+   - Preserva `columns` y `rows` intactos para garantizar retrocompatibilidad.
+   - Fórmula: $\text{anom}_i = \text{round}(tmean_i - \text{baseline}_i, 1)$, donde $\text{baseline}_i$ es la media de $tmean$ en la ventana de $\pm 7$ días del año en el histórico medido excluyendo el día evaluado (`null` si $n_{\text{window}} < 5$).
+
+2. **Contrato `derived/insights.json` (Diagnóstico "¿Es normal?" para 168 Ciudades):**
+   ```json
+   {
+     "generated_at": "2026-11-09T18:00:00Z",
+     "since": "2025-10-27",
+     "cities": {
+       "madrid": {
+         "date": "2026-11-08",
+         "tmean_c": 13.0,
+         "baseline_c": 11.2,
+         "anomaly_c": 1.8,
+         "percentile": 82,
+         "month": 11,
+         "n_month_days": 28,
+         "rank_month": 4,
+         "record": null,
+         "label_key": "masCalido"
+       }
+     }
+   }
+   ```
+   - `record`: `"warmest" | "coldest" | null`. Solo se emite si $n_{\text{month\_days}} \ge 20$.
+   - `label_key`: `muchoMasCalido` ($\ge 90$), `masCalido` ($\ge 70$), `normal` ($30..70$), `masFrio` ($\le 30$), `muchoMasFrio` ($\le 10$).
+
+3. **Contrato `derived/scorecard.json` (Marcador Público IA vs OWM y Victorias Semanales):**
+   ```json
+   {
+     "generated_at": "2026-11-09T18:00:00Z",
+     "min_pairs": 7,
+     "tie_eps_c": 0.05,
+     "global": {
+       "ia_mae": [1.12, 1.35, 1.58, 1.82, 2.05],
+       "owm_mae": [1.05, 1.28, 1.51, 1.76, 1.99],
+       "n": [1, 0, 0, 0, 0],
+       "status": "calibrating"
+     },
+     "retrospective_ia_mae": [1.08, 1.29, 1.52, 1.75, 1.98],
+     "weekly": [
+       { "iso_week": "2026-W46", "ia_wins": 0, "owm_wins": 0, "ties": 0, "cities": 0 }
+     ],
+     "cities": {
+       "madrid": {
+         "ia_mae": [1.1, null, null, null, null],
+         "owm_mae": [1.0, null, null, null, null],
+         "n": [1, 0, 0, 0, 0],
+         "status": "calibrating"
+       }
+     }
+   }
+   ```
+   - Cero nulos como 0: los horizontes sin observaciones registran `null`, nunca `0.0`.
+   - `status`: `"ok"` si $\min(n) \ge 7$; `"calibrating"` si no se alcanza el umbral de pares auditados.
+
+4. **Extensiones en `predicciones.json`:**
+   - `pred_ia_5day`: lista de 5 días $[D+1..D+5]$ con `date`, `media`, `min`, `max` (coherencia física $\min \le \text{media} \le \max$).
+   - `model_metrics.walkforward_mae_c`: lista de 5 valores MAE $[D+1..D+5]$ etiquetados como `"retrospective"`.
+   - `explain`: `{ "inputs": {...}, "contributions_c": {...}, "contributions_pct": {...}, "baseline_c": float }`.
+
+5. **Upsert Idempotente en `derived/forecast_log/AAAA-MM.csv`:**
+   - Clave única `(fecha_emision, slug)`. Emisiones subsecuentes del mismo día actualizan la fila sin duplicarla. Columnas: `fecha_emision,slug,ia_d1,ia_d2,ia_d3,ia_d4,ia_d5,owm_d1,owm_d2,owm_d3,owm_d4,owm_d5`.
+
 ---
 
 ## 5. Invariantes de Dominio (`INV-WEATHER-*`)
@@ -315,6 +383,10 @@ El frontend opera bajo el patrón **Remote-First con Fallback en Cascada**:
    Si una estación no cumple el umbral, el contenedor se renderiza colapsado con badge informativo ("Disponible cuando haya más histórico (X/Y días)").
 9. **`INV-WEATHER-9` (Clave Canónica por Slug Inmutable):** El identificador unívoco de estación y el nombre de archivo derivado (`<slug>.json`) DEBE calcularse a partir de las entradas oficiales de `ciudades.txt` mediante normalización (`slugify(name)`). Queda terminantemente prohibido utilizar el texto volátil de la columna `ciudad` devuelto por OpenWeatherMap para generar claves o particiones.
 10. **`INV-WEATHER-10` (PWA Offline y Aislamiento de Caché):** El Service Worker (`sw.js`) opera exclusivamente dentro del ámbito `scope: /apps/weather/`. Implementa estrategia `stale-while-revalidate` para ficheros `.json` y `derived/**`, `cache-first` para assets estáticos y fuentes, y tiene terminantemente prohibido cachear archivos `.csv` planos en la caché del navegador para proteger la memoria del dispositivo.
+11. **`INV-WEATHER-11` (Línea Base Honesta y Ventana Móvil DOY):** El cálculo de anomalía y percentil para "¿Es normal?" se evalúa contra la ventana de $\pm 7$ días del año en el histórico medido de la ciudad excluyendo estrictamente el día objetivo. Solo se anunciará récord térmico si el mes dispone de $\ge 20$ días medidos en el histórico y el texto DEBE explicitar siempre la coletilla temporal "desde oct. 2025".
+12. **`INV-WEATHER-12` (Marcador Auditable en Dos Capas):** El marcador público IA vs OWM no mezclará jamás en un mismo agregado el MAE observado en vivo (`forecast_log/`) con el backtest retrospectivo. La capa en vivo exige $\ge 7$ pares por horizonte para el estado `"ok"` (mostrando `"calibrating"` en caso contrario). La capa retrospectiva se etiquetará inequívocamente como "Retrospectivo (solo IA)".
+13. **`INV-WEATHER-13` (Explicabilidad Determinista sin LLM):** El módulo "¿Por qué predice esto?" descompondrá la predicción en contribuciones lineales deterministas $\text{coef}_k \times (x_k - \bar{x}_k)$ en °C y porcentaje, mapeadas a plantillas i18n comprensibles sin recurrir a llamadas de modelos de lenguaje en tiempo de ejecución.
+14. **`INV-WEATHER-14` (Coherencia Estricta de Versión Pública):** `data/apps/weather.yaml` (`current_version`), la primera release `released`, el título de las fichas en `content/{es,en}/apps/weather/index.md` y las etiquetas públicas del frontend (`<title>`, `og:title`, `twitter:title`, `mainTitle`) DEBEN coincidir exactamente en el valor SemVer de release activa (`v3.1.0`).
 
 ---
 
@@ -324,8 +396,8 @@ El frontend opera bajo el patrón **Remote-First con Fallback en Cascada**:
 | :--- | :--- | :--- | :--- |
 | **G-01** | Calidad de Especificación SDD | `python -m ops.helix.cli verify --spec specs/apps/weather/spec.md` | `SpecQualityScore` $\ge 90/100$ (Objetivo: `100/100`) y código `0`. |
 | **G-02** | Higiene de `/static/apps/weather/` (`INV-WEATHER-6`) | `python -m pytest ops/helix/tests -v` | Cero archivos `.py`/`.env`/`.git` y cero CSVs obsoletos en `static/apps/weather/datos/`. |
-| **G-03** | Suite Unitaria del Motor Cuantitativo (`INV-WEATHER-1..4`) | `python -m pytest apps/weather/tests -v` | 100% de tests en verde validando Fourier, coherencia $\min \le \text{media} \le \max$, `comfort_index` $\in [0,100]$ y `global_summary.json`. |
-| **G-04** | Integridad de UI, i18n y GA4 (`INV-WEATHER-5`) | `python -m pytest apps/weather/tests -v` | Paridad 100% de claves `es`/`en`, presencia de los 5 Presets, 3 Vistas, deep-links y eventos `gtag`. |
+| **G-03** | Suite Unitaria del Motor Cuantitativo (`INV-WEATHER-1..4`, `11..13`) | `python -m pytest apps/weather/tests -v` | 100% de tests en verde validando Fourier, coherencia $\min \le \text{media} \le \max$, `comfort_index` $\in [0,100]$, `insights.json` y `scorecard.json`. |
+| **G-04** | Integridad de UI, i18n, Versión y GA4 (`INV-WEATHER-5, 14`) | `python -m pytest apps/weather/tests -v` | Paridad 100% de claves `es`/`en`, coherencia `v3.1.0` en todas las superficies, deep-links y eventos `gtag`. |
 | **G-05** | Compilación del Portal Hugo y Fichas ES/EN | `hugo --renderToMemory` | Código de salida `0`, fichas `/es/apps/weather/` y `/en/apps/weather/` compiladas sin errores. |
 | **G-06** | Gobernanza Editorial Datalaria Pulse | `python -m ops.pulse.build_index` y `python -m ops.pulse.publish_public` | Sincronización al 100% del catálogo de apps y posts sin violar `INV-PULSE-1..2`. |
 
@@ -335,26 +407,12 @@ El frontend opera bajo el patrón **Remote-First con Fallback en Cascada**:
 
 Para maximizar la velocidad y eficiencia de tokens, los hitos de implementación están acotados con contratos cerrados:
 
-### Hito 2.4 (`L` — Backend Python + Datos + Pytest)
-1. **En [`apps/weather/read_weather.py`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/apps/weather/read_weather.py):**
-   - Añadir funciones puras exportables y testeables sin requerir red ni `OPENWEATHER_API_KEY` en importación (mover la validación obligatoria de `API_KEY` dentro de `main()`):
-     - `compute_comfort_index(temp_c, feels_c, humidity, wind_kmh, clouds, visibility_m=10000, rain_1h=0.0, snow_1h=0.0) -> int` (aplicando la fórmula de §4.3).
-     - `infer_region(city_query: str, lat: float, lon: float) -> str` (clasificando en `spain`, `europe`, `asia`, `oceania`, `americas`, `africa` según el código de país ISO o coordenadas/bloques de `ciudades.txt`).
-     - `generar_prediccion_ia_ciudad(csv_path: str) -> dict` actualizado con armónicos `sin_day`, `cos_day`, `temp_media_lag2`, `diurnal_range_lag1`, garantía de coherencia física `min <= media <= max`, y cálculo de `model_metrics` (`r2_media`, `mae_30d_c`, `bias_30d_c`, `top_features`).
-     - `build_city_summary(ciudad_query: str, csv_path: str, pred_entry: dict | None = None) -> dict | None` y `build_global_summary(city_summaries: list[dict]) -> dict` que genera `global_summary.json` según §4.5.
-     - Soporte de flag CLI `--offline-rebuild`: permite regenerar `predicciones.json`, `city_locations.json` y `global_summary.json` a partir de los CSVs existentes en `datos/` sin llamar a la API de OpenWeatherMap.
-2. **En `apps/weather/tests/test_weather_engine.py`:**
-   - Crear suite `pytest` con al menos 8 tests deterministas verificando `INV-WEATHER-1` a `INV-WEATHER-4` y el modo `--offline-rebuild`.
-
-### Hito 2.5 (`L` — Frontend Executive Cockpit `apps/weather/index.html`)
-1. Implementar los tokens CSS y estructura de [`specs/apps/weather/design.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/apps/weather/design.md) en `apps/weather/index.html`.
-2. Conectar `global_summary.json` (con fallback automático a `city_locations.json` + CSVs si aún no está desplegado en el CDN remoto), añadir la barra de 5 Presets en 1 clic, el conmutador de 3 Vistas (`Observatorio`, `Laboratorio ML`, `Atlas 168 Ciudades`), selector de capas en el mapa Leaflet, gráficos de sensación térmica y visibilidad, exportación CSV/JSON, deep-linking por URL y eventos GA4.
-
-### Hito 2.6 (`M` — Fichas `/es/` y `/en/apps/weather/`, `weather.yaml` y Sync Upstream)
-1. Actualizar `data/apps/weather.yaml` a `v2.0.0`, enriquecer `content/{es,en}/apps/weather/index.md` con el Anuario Climático SEO y Deep-Links, actualizar `cover.png` y preparar el script de sincronización hacia `Dalaez/app_weather`.
-
-### Hito 2.7 (`M` — Artículo Parte 5 ES/EN)
-1. Publicar `content/{es,en}/posts/app_openweather_part5_climate_intelligence_v2/index.md` ($\ge 1.850$ palabras, paridad 100%, diagramas Mermaid seguros, `app-ref slug="weather"`) y actualizar `data/apps/weather.yaml`.
+### Hito W3.4 (`M` — "¿Es normal?", Warming Stripes, Marcador IA vs OWM y Versión Coherente v3.1.0)
+1. Corrección del bug P0 en `col_map` de `build_derived.py` asegurando mapeo correcto de `temp_min_c`, `temp_max_c` y `lluvia_1h`.
+2. Implementación de `pred_ia_5day`, `model_metrics.walkforward_mae_c` y `explain` en `read_weather.py`.
+3. Cálculo de `insights.json`, clave `anom` en series diarias y `scorecard.json` en `build_derived.py`.
+4. Integración frontend en `apps/weather/index.html`: chip "¿Es normal?" en Super-Cards, acordeón de Warming Stripes y rediseño de vista `arena` ("¿Quién acierta?" y "¿Por qué predice esto?").
+5. Publicación coherente de la release `v3.1.0` en `data/apps/weather.yaml`, fichas editoriales ES/EN y metadatos del portal.
 
 ---
 
@@ -362,7 +420,8 @@ Para maximizar la velocidad y eficiencia de tokens, los hitos de implementación
 
 | Versión | Fecha | Tipo | Resumen de Cambios |
 | :-: | :-: | :-: | :--- |
-| **`v3.0.0`** | 2026-11-08 | `pre-release` | Weather Intelligence v3.0: Data Truth Pipeline con derivados compactos en upstream (daily, climatology, index, forecast_log), ingesta remote-first, Focus Mode con Tarjeta Respuesta y acordeones de divulgación progresiva, puerta de suficiencia de datos (INV-WEATHER-8) y PWA instalable offline con Service Worker (stale-while-revalidate). |
+| **`v3.1.0`** | 2026-11-09 | `release` | Weather Intelligence v3.1: Diagnóstico "¿Es normal?" con percentil y récords honestos desde oct. 2025, Warming Stripes por ciudad, Marcador Público IA vs OWM con MAE a D+1..D+5 y victorias semanales, módulo de explicabilidad ("¿Por qué predice esto?") y corrección de agregación diurna de temperaturas mínimas y precipitación. |
+| **`v3.0.0`** | 2026-11-08 | `release` | Weather Intelligence v3.0: Data Truth Pipeline con derivados compactos en upstream (daily, climatology, index, forecast_log), ingesta remote-first, Focus Mode con Tarjeta Respuesta y acordeones de divulgación progresiva, puerta de suficiencia de datos (INV-WEATHER-8), PWA instalable offline con Service Worker (stale-while-revalidate) y hotfix W3.3-FIX de inventario completo de 168 estaciones. |
 | **`v2.0.0`** | 2026-11-08 | `release` | Release oficial de Weather Intelligence v2.0: estacionalidad armónica de Fourier (sin/cos), walk-forward backtesting IA vs. OWM con R² y MAE, Índice de Confort Outdoor (0–100), Cockpit en 3 vistas (Observatorio, ML Arena, Atlas 168), 5 Presets en 1 clic, Deep-Linking, exportación CSV/JSON y contrato global_summary.json. |
 | **`v1.0.0`** | 2025-12-06 | `release` | Lanzamiento con mapa interactivo Leaflet, soporte bilingüe ES/EN, selector Choices.js (168 estaciones) y streaming PapaParse. |
 | **`v0.3.0`** | 2025-11-15 | `feature` | Módulo de Machine Learning con Scikit-Learn (`LinearRegression` lag-1) y comparativa vs. OpenWeatherMap 5D. |

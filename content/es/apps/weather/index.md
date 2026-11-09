@@ -1,14 +1,25 @@
 ---
-title: "Weather Intelligence v2.0"
+title: "Weather Intelligence v3.1"
 description: "Centro de control meteorológico global y laboratorio cuantitativo: 168 estaciones, estacionalidad armónica de Fourier, walk-forward backtesting IA vs. OWM e índice de confort outdoor."
 app: "weather"
 translationKey: "app-weather"
 layout: "single"
 ---
 
+## 🌟 Novedades de Weather Intelligence v3.1
+
+Weather Intelligence v3.1 incorpora una nueva dimensión de **honestidad estadística y divulgación climática**:
+
+- **Diagnóstico "¿Es normal?":** Cada estación evalúa su temperatura actual frente a la línea base propia de los últimos 375 días ($\pm 7$ días del año excluyendo el propio día, según `INV-WEATHER-11`), determinando si la jornada se sitúa en un percentil extremo ($p \le 10$ o $p \ge 90$) o bate un récord mensual medido desde octubre de 2025.
+- **Calendario Térmico (Warming Stripes):** Visualización interactiva de franjas climáticas para los 365 días del año por ciudad, mapeando anomalías térmicas en escala divergente de $\pm 5^\circ\text{C}$ con tooltip dinámico al milisegundo.
+- **Marcador Público IA vs. OpenWeatherMap:** Auditoría auditable en dos capas que transparenta el error absoluto medio (MAE) a $D+1..D+5$ y recuenta las victorias semanales de acierto (`INV-WEATHER-12`).
+- **Laboratorio ML "¿Por qué predice esto?":** Explicabilidad determinista sin modelos de caja negra, descomponiendo la predicción en contribuciones lineales de inercia térmica, ciclo armónico de Fourier y humedad (`INV-WEATHER-13`).
+
+---
+
 ## 🚀 Centro de Control y Acceso Directo por Escenarios (1 Clic)
 
-Weather Intelligence v2.0 incorpora un sistema de **enlaces profundos (*Deep-Linking*)** que te permite saltar de forma instantánea a configuraciones analíticas preparadas sin necesidad de configurar filtros manualmente:
+Weather Intelligence v3.1 incorpora un sistema de **enlaces profundos (*Deep-Linking*)** que te permite saltar de forma instantánea a configuraciones analíticas preparadas sin necesidad de configurar filtros manualmente:
 
 | Escenario Temático | Vista Objetivo | Ciudades & Enfoque | Enlace Directo |
 | :--- | :--- | :--- | :--- |
@@ -43,7 +54,7 @@ Cada estación acumula **más de 375 días continuos de registros** muestreados 
 
 Las regresiones meteorológicas tradicionales sobre el día del año ($d \in [1, 365]$) sufren una severa **discontinuidad de fin de año**: entre el 31 de diciembre ($d=365$) y el 1 de enero ($d=1$) el modelo detecta erróneamente un salto artificial de $-364$ unidades. 
 
-Para resolverlo, Weather Intelligence v2.0 proyecta el ciclo anual sobre el círculo unitario mediante dos variables trigonométricas continuas:
+Para resolverlo, Weather Intelligence v3.1 proyecta el ciclo anual sobre el círculo unitario mediante dos variables trigonométricas continuas:
 
 $$\sin_{\text{day}} = \sin\left(\frac{2\pi \cdot \text{doy}}{365.25}\right), \quad \cos_{\text{day}} = \cos\left(\frac{2\pi \cdot \text{doy}}{365.25}\right)$$
 

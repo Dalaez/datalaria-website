@@ -7,11 +7,11 @@ cover: cover.png
 app_url: /apps/weather/
 demo_url: "/apps/weather/?preset=extremes&view=arena"
 source_spec: specs/apps/weather/spec.md
-current_version: v2.0.0
+current_version: v3.1.0
 
 title:
-  es: "Weather Intelligence v2.0"
-  en: "Weather Intelligence v2.0"
+  es: "Weather Intelligence v3.1"
+  en: "Weather Intelligence v3.1"
 
 tagline:
   es: "Centro de control meteorológico global y laboratorio cuantitativo: 168 estaciones, estacionalidad armónica de Fourier y confort outdoor."
@@ -115,9 +115,28 @@ posts:
     part: 4
 
 releases:
+  - version: v3.1.0
+    date: "2026-11-09"
+    state: released
+    type: release
+    title:
+      es: "Weather Intelligence v3.1: Diagnóstico '¿Es normal?', Warming Stripes, Marcador IA vs OWM y Explicabilidad ML"
+      en: "Weather Intelligence v3.1: 'Is it Normal?' Diagnostics, Warming Stripes, AI vs OWM Public Scorecard, and ML Explainability"
+    changes:
+      - es: "Diagnóstico '¿Es normal?' (W3.4): Super-Cards con chip en 0 ms que evalúa percentil térmico y récords honestos desde oct. 2025 (INV-WEATHER-11)."
+        en: "'Is it Normal?' Diagnostics (W3.4): Instant 0ms Super-Cards chip evaluating thermal percentile and honest records since Oct. 2025 (INV-WEATHER-11)."
+      - es: "Calendario Térmico Warming Stripes: acordeón interactivo de 365 días con escala divergente (±5°C) y tooltip interactivo por estación."
+        en: "Thermal Warming Stripes Calendar: interactive 365-day deep-dive accordion with divergent colormap (±5°C) and station tooltips."
+      - es: "Marcador Público IA vs. OWM (INV-WEATHER-12): auditoría transparente de error absoluto medio (MAE) a D+1..D+5, recuento de victorias semanales y estado de calibración en dos capas."
+        en: "Public AI vs. OWM Scorecard (INV-WEATHER-12): transparent audit of mean absolute error (MAE) at D+1..D+5, weekly win tracking, and dual-layer calibration status."
+      - es: "Laboratorio ML '¿Por qué predice esto?' (INV-WEATHER-13): explicabilidad determinista en lenguaje natural con descomposición porcentual de inercia y ciclo de Fourier sin LLMs."
+        en: "ML Lab 'Why this prediction?' (INV-WEATHER-13): deterministic natural language explainability with percentage decomposition of inertia and Fourier cycle without LLMs."
+      - es: "Corrección de esquema P0 en agregación diurna de temperaturas mínimas (nanmin) y precipitaciones acumuladas (ADR-023)."
+        en: "P0 schema fix in daytime aggregation of minimum temperatures (nanmin) and accumulated precipitation (ADR-023)."
+
   - version: v3.0.0
     date: "2026-11-08"
-    state: pre-release
+    state: released
     type: release
     title:
       es: "Weather Intelligence v3.0: Data Truth Pipeline, Focus Mode, PWA Offline y Resiliencia Upstream"

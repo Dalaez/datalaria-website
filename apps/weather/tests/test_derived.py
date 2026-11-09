@@ -455,7 +455,205 @@ def test_frontend_zero_404_and_instant_kpi_architecture():
 
     # 3. Service Worker versión 3.0.2
     sw_content = (BASE_DIR / "sw.js").read_text(encoding="utf-8")
-    assert "weather-v3.0.2" in sw_content
+    assert "weather-v3.1.0" in sw_content
 
 
 
+
+
+# ---------------------------------------------------------------------------
+# 5. Tests de W3.4: "Es normal?", Warming Stripes, Marcador y Explicabilidad
+# ---------------------------------------------------------------------------
+
+def test_col_map_maps_spanish_min_max_and_rain():
+    """Verifica la correccion del bug P0 en col_map (temp_min_c, temp_max_c, lluvia_1h)."""
+    from apps.weather.build_derived import aggregate_daily
+    df = pd.DataFrame([
+        {"fecha_hora": "2026-11-08T06:00:00Z", "temperatura_c": 12.0, "temp_min_c": 8.5, "temp_max_c": 13.0, "lluvia_1h": 1.2},
+        {"fecha_hora": "2026-11-08T14:00:00Z", "temperatura_c": 19.5, "temp_min_c": 18.0, "temp_max_c": 21.5, "lluvia_1h": 0.5},
+    ])
+    rows = aggregate_daily(df)
+    assert len(rows) == 1
+    # row = [date, tmin, tmax, tmean, amp, feels, hum, wind, rain, clouds, n]
+    r = rows[0]
+    assert r[1] == 8.5, f"tmin debe ser 8.5, no {r[1]}"
+    assert r[2] == 21.5, f"tmax debe ser 21.5, no {r[2]}"
+    assert r[4] == round(21.5 - 8.5, 1)  # amp
+    assert r[8] == 1.7  # rain acumulada (1.2 + 0.5)
+
+
+def test_doy_baseline_excludes_target_and_wraps_year():
+    """Verifica INV-WEATHER-11: linea base +/- 7 dias excluyendo el dia evaluado y cruzando ano."""
+    from apps.weather.build_derived import compute_doy_baseline
+    # Sintetizar serie que cruza fin de ano
+    rows = [
+        ["2025-12-30", 5.0, 10.0, 7.0, 5.0, 6.0, 70, 10, 0, 0, 3],
+        ["2025-12-31", 6.0, 11.0, 8.0, 5.0, 7.0, 70, 10, 0, 0, 3],
+        ["2026-01-01", 7.0, 12.0, 9.0, 5.0, 8.0, 70, 10, 0, 0, 3],  # target
+        ["2026-01-02", 8.0, 13.0, 10.0, 5.0, 9.0, 70, 10, 0, 0, 3],
+    ]
+    # Para 2026-01-01 (doy 1), debe incluir 2025-12-30 (doy 364), 2025-12-31 (doy 365) y 2026-01-02 (doy 2)
+    # y EXCLUIR 2026-01-01 (tmean = 9.0)
+    baseline = compute_doy_baseline(rows, "2026-01-01")
+    assert baseline is not None
+    expected_mean = round((7.0 + 8.0 + 10.0) / 3, 2)
+    assert baseline == expected_mean, f"Baseline debe ser {expected_mean}, no {baseline}"
+
+
+def test_percentile_and_record_requires_20_days():
+    """Verifica que el record requiera >= 20 dias en el mes segun INV-WEATHER-11."""
+    from apps.weather.build_derived import build_insights
+    # Caso 1: Menos de 20 dias en el mes -> record = False
+    short_rows = [
+        [f"2026-11-{i:02d}", 10.0, 20.0, 15.0 + i, 10.0, 15.0, 60, 5, 0, 0, 3]
+        for i in range(1, 15)  # 14 dias
+    ]
+    ins_short = build_insights({"test-city": short_rows}, {"test-city": [0.0]*14})
+    city_res = ins_short["cities"]["test-city"]
+    assert city_res["record"] is False, "No debe registrar record con < 20 dias en el mes"
+
+    # Caso 2: >= 20 dias y valor maximo -> record = True
+    long_rows = [
+        [f"2026-11-{i:02d}", 10.0, 20.0, 10.0 + i, 10.0, 15.0, 60, 5, 0, 0, 3]
+        for i in range(1, 26)  # 25 dias
+    ]
+    ins_long = build_insights({"test-city": long_rows}, {"test-city": [0.0]*25})
+    assert ins_long["cities"]["test-city"]["record"] is True
+    assert ins_long["cities"]["test-city"]["record_type"] == "warm"
+    assert ins_long["cities"]["test-city"]["history_since"] == "oct. 2025"
+
+
+def test_scorecard_mae_math_and_calibrating_status(tmp_path):
+    """Verifica INV-WEATHER-12: status calibrating cuando n < 7 y calculo correcto de MAE."""
+    from apps.weather.build_derived import build_scorecard
+    log_dir = tmp_path / "forecast_log"
+    log_dir.mkdir()
+    # Escribir log con 2 emisiones (< 7)
+    log_content = (
+        "fecha_emision,slug,ia_d1,ia_d2,ia_d3,ia_d4,ia_d5,owm_d1,owm_d2,owm_d3,owm_d4,owm_d5\n"
+        "2026-11-01,test-city,15.0,16.0,17.0,18.0,19.0,14.0,15.0,16.0,17.0,18.0\n"
+        "2026-11-02,test-city,16.0,17.0,18.0,19.0,20.0,15.0,16.0,17.0,18.0,19.0\n"
+    )
+    (log_dir / "2026-11.csv").write_text(log_content, encoding="utf-8")
+
+    # Observaciones reales: D+1 para emision 2026-11-01 es 2026-11-02 (tmean=15.5)
+    daily_by_slug = {
+        "test-city": [
+            ["2026-11-01", 10.0, 20.0, 14.0, 10.0, 14.0, 60, 5, 0, 0, 3],
+            ["2026-11-02", 10.0, 20.0, 15.5, 10.0, 15.5, 60, 5, 0, 0, 3],
+            ["2026-11-03", 10.0, 20.0, 16.5, 10.0, 16.5, 60, 5, 0, 0, 3],
+        ]
+    }
+    scorecard = build_scorecard(log_dir, daily_by_slug, {})
+    assert scorecard["status"] == "calibrating"
+    assert scorecard["live_horizons"]["d1"]["status"] == "calibrating"
+    assert scorecard["live_horizons"]["d1"]["n_audited"] == 2
+    # IA D+1: emision 1 -> target 2026-11-02, obs=15.5, pred=15.0, err=0.5
+    #         emision 2 -> target 2026-11-03, obs=16.5, pred=16.0, err=0.5
+    # mean err IA = 0.5
+    assert scorecard["live_horizons"]["d1"]["mae_ia"] == 0.5
+
+
+def test_forecast_log_upsert_idempotent_5_horizons(tmp_path):
+    """Verifica que append_forecast_log haga upsert idempotentemente sobre las 12 columnas."""
+    from apps.weather.build_derived import append_forecast_log
+    month_file = tmp_path / "forecast_log" / "2026-11.csv"
+    preds_v1 = {
+        "Madrid": {
+            "pred_ia_5day": [{"date": "2026-11-10", "media": 14.0, "min": 10.0, "max": 18.0}],
+            "pred_owm_5day": [{"media": 13.5}],
+        }
+    }
+    # Primera ejecucion: anade fila
+    count1 = append_forecast_log(preds_v1, month_file)
+    assert count1 == 1
+    lines1 = month_file.read_text(encoding="utf-8").strip().splitlines()
+    assert len(lines1) == 2  # header + 1 row
+    assert "14.0" in lines1[1]
+
+    # Segunda ejecucion con actualizacion para la misma fecha: debe actualizar sin duplicar fila
+    preds_v2 = {
+        "Madrid": {
+            "pred_ia_5day": [{"date": "2026-11-10", "media": 14.5, "min": 10.0, "max": 18.0}],
+            "pred_owm_5day": [{"media": 13.5}],
+        }
+    }
+    count2 = append_forecast_log(preds_v2, month_file)
+    assert count2 == 0, 'No debe anadir nuevas filas en update'
+    lines2 = month_file.read_text(encoding="utf-8").strip().splitlines()
+    assert len(lines2) == 2, "El upsert duplico la fila en vez de actualizarla"
+    assert "14.5" in lines2[1]
+
+
+def test_pred_ia_5day_shape_and_physics():
+    """Verifica INV-WEATHER-3: pred_ia_5day tiene 5 horizontes y cumple coherencia min <= media <= max."""
+    from apps.weather.read_weather import generar_prediccion_ia_ciudad
+    madrid_csv = BASE_DIR / "datos" / "Madrid.csv"
+    if not madrid_csv.exists():
+        madrid_csv = Path(__file__).resolve().parent.parent.parent.parent / "app_weather" / "datos" / "Madrid.csv"
+    if madrid_csv.exists():
+        res = generar_prediccion_ia_ciudad(str(madrid_csv))
+        assert "pred_ia_5day" in res
+        p5 = res["pred_ia_5day"]
+        assert len(p5) == 5
+        for day in p5:
+            assert "date" in day
+            assert day["min"] <= day["media"] <= day["max"], f"Coherencia fisica violada: {day}"
+
+
+def test_explain_contributions_sum_to_prediction():
+    """Verifica INV-WEATHER-13: explain contiene inputs, contributions y suma a baseline + delta."""
+    from apps.weather.read_weather import generar_prediccion_ia_ciudad
+    madrid_csv = BASE_DIR / "datos" / "Madrid.csv"
+    if not madrid_csv.exists():
+        madrid_csv = Path(__file__).resolve().parent.parent.parent.parent / "app_weather" / "datos" / "Madrid.csv"
+    if madrid_csv.exists():
+        res = generar_prediccion_ia_ciudad(str(madrid_csv))
+        assert "explain" in res and res["explain"] is not None
+        exp = res["explain"]
+        assert "baseline_c" in exp
+        assert "contributions_c" in exp
+        assert "contributions_pct" in exp
+        base = exp["baseline_c"]
+        delta = sum(exp["contributions_c"].values())
+        # base + delta debe ser muy cercano al valor medio predicho D+1 (+/- 0.2C por redondeo)
+        pred_media = res["media"]
+        reconstructed = round(base + delta, 1)
+        assert abs(reconstructed - pred_media) <= 0.2, f"Explain no reconstruye media: {reconstructed} vs {pred_media}"
+
+
+def test_w34_frontend_dom_and_i18n():
+    """Verifica integracion DOM de Warming Stripes, Marcador Scorecard y paridad i18n."""
+    html_content = (BASE_DIR / "index.html").read_text(encoding="utf-8")
+    assert "accordion-stripes" in html_content
+    assert "stripesCanvas" in html_content
+    assert "scorecard-hero" in html_content
+    assert "why-card" in html_content
+    assert "weather-normal-chip" in html_content
+    assert "renderWarmingStripes" in html_content
+    assert "renderScorecardAndExplain" in html_content
+
+
+def test_inv_weather_14_version_coherence():
+    """Verifica INV-WEATHER-14: Version v3.1.0 exacta en YAML, fichas Markdown y frontend."""
+    import yaml
+    yaml_file = Path(__file__).resolve().parent.parent.parent.parent / "data" / "apps" / "weather.yaml"
+    assert yaml_file.exists()
+    ydata = yaml.safe_load(yaml_file.read_text(encoding="utf-8"))
+    assert ydata["current_version"] == "v3.1.0"
+    assert "v3.1" in ydata["title"]["es"]
+    assert "v3.1" in ydata["title"]["en"]
+
+    # Primer release debe ser v3.1.0 y released
+    assert ydata["releases"][0]["version"] == "v3.1.0"
+    assert ydata["releases"][0]["state"] == "released"
+
+    # Fichas Markdown
+    es_md = Path(__file__).resolve().parent.parent.parent.parent / "content" / "es" / "apps" / "weather" / "index.md"
+    en_md = Path(__file__).resolve().parent.parent.parent.parent / "content" / "en" / "apps" / "weather" / "index.md"
+    assert 'title: "Weather Intelligence v3.1"' in es_md.read_text(encoding="utf-8")
+    assert 'title: "Weather Intelligence v3.1"' in en_md.read_text(encoding="utf-8")
+
+    # Frontend
+    html = (BASE_DIR / "index.html").read_text(encoding="utf-8")
+    assert "Weather Intelligence v3.1" in html

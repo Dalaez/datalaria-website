@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-11-09T11:07:17.197091Z",
+  "generated_at": "2026-11-09T19:40:40.696335Z",
   "total_assets": 149,
   "published_assets": 123,
   "scheduled_assets": 22,
@@ -82,7 +82,7 @@
     {
       "month": "2026-11",
       "label": "Nov '26",
-      "index_100": 245
+      "index_100": 287
     }
   ],
   "assets": [
@@ -8640,8 +8640,8 @@
       "asset_type": "app",
       "status": "published",
       "visibility": "public",
-      "title_es": "Weather Intelligence v2.0",
-      "title_en": "Weather Intelligence v2.0",
+      "title_es": "Weather Intelligence v3.1",
+      "title_en": "Weather Intelligence v3.1",
       "url_es": "/es/apps/weather/",
       "url_en": "/en/apps/weather/",
       "brief_es": "Centro de control meteorológico global y laboratorio cuantitativo: 168 estaciones, estacionalidad armónica de Fourier y confort outdoor.",

@@ -79,10 +79,11 @@ def verify_upstream_sync(app_dir: Path | None = None) -> tuple[bool, list[str]]:
         except Exception as e:
             issues.append(f"predicciones.json corrupto: {e}")
 
-    # Verificar derived/index.json
-    derived_index = app_dir / "derived" / "index.json"
-    if not derived_index.exists():
-        issues.append("derived/index.json no existe.")
+    # Verificar derived/*.json agregados (W3.4)
+    for fname in ["index.json", "climatology.json", "insights.json", "scorecard.json"]:
+        d_file = app_dir / "derived" / fname
+        if not d_file.exists():
+            issues.append(f"derived/{fname} no existe.")
 
     # Verificar datos/ con CSVs
     datos_dir = app_dir / "datos"
