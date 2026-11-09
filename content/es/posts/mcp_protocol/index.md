@@ -84,7 +84,7 @@ Tiene dos ventajas enormes a su favor. La primera es que **resuelve un dolor rea
 
 Sin embargo, el éxito de MCP dependerá de la adopción por parte del duopolio dominante: Google y OpenAI. Si Anthropic logra crear un ecosistema open-source lo suficientemente grande (como Kubernetes hizo en su día contra las nubes propietarias), los demás gigantes se verán obligados a soportarlo de forma nativa. 
 
-Si estás diseñando la [arquitectura de un Project Management Office Agéntico](/es/posts/proj_ops_parte2_agentic_pmo/) o cualquier sistema donde necesites conectar agentes de IA con ERPs heredados, PLMs o repositorios documentales, mi recomendación es apostar por aislar tus conectores. Hoy puede ser mediante funciones de Python independientes, y mañana, probablemente, envolviendo esas mismas funciones en un Servidor MCP.
+Si estás diseñando la **arquitectura de un Project Management Office Agéntico** *(próximamente)* o cualquier sistema donde necesites conectar agentes de IA con ERPs heredados, PLMs o repositorios documentales, mi recomendación es apostar por aislar tus conectores. Hoy puede ser mediante funciones de Python independientes, y mañana, probablemente, envolviendo esas mismas funciones en un Servidor MCP.
 
 Al igual que el USB mató a cientos de conectores propietarios, MCP tiene el potencial de democratizar finalmente el acceso de los LLMs a la "musculatura" de los datos empresariales.
 
@@ -95,4 +95,4 @@ Al igual que el USB mató a cientos de conectores propietarios, MCP tiene el pot
 * [**Anthropic**: Introducing the Model Context Protocol](https://www.anthropic.com/news/model-context-protocol)
 * [**GitHub**: Directorio de Servidores MCP Open Source](https://github.com/modelcontextprotocol/servers)
 * [**Datalaria**: El Radar Agéntico: Por qué los LLMs no salvarán tu cadena de suministro (y el Tool Calling sí)](/es/posts/obs_parte5_radar/)
-* [**Datalaria**: Project Operations Engineering Parte 2: La Agentic PMO](/es/posts/proj_ops_parte2_agentic_pmo/)
+* * **Datalaria**: Project Operations Engineering Parte 2: La Agentic PMO *(próximamente)*

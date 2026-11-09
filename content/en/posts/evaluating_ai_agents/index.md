@@ -171,3 +171,10 @@ Deploying autonomous AI agents without a multi-layer evaluation framework is lik
 * [**Datalaria**: GraphRAG — Why Vectors Aren't Enough](/en/posts/graphrag/)
 * [**Datalaria**: Silicon Valley and the PiperNet Dilemma — Runaway Optimization](/en/posts/silicon_valley/)
 * [**Datalaria**: EU AI Act — Practical Guide to Technical Compliance and Robustness](/en/posts/eu_ai_act/)
+---
+
+### 🧭 Put AI Agent Governance and Observability into Practice
+
+Explore how we audit, monitor, and govern autonomous agent systems in real time by trying our interactive application for free and browsing our **[Executive Resources & Frameworks Catalog](/en/resources/)**:
+
+{{< app-ref slug="obs-management" >}}

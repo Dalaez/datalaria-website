@@ -1,12 +1,12 @@
 ---
-title: "Multiverse Computing: La Startup Española que Resuelve el Cuello de Botella de la IA con Física Cuántica (Sin Ordenadores Cuánticos)"
+title: "Multiverse Computing: La Startup Española que Comprime la IA con Física Cuántica"
 date: 2026-01-31
 draft: false
 category: "Startups"
 categories: ["Inteligencia Artificial", "Deep Tech", "Estrategia Empresarial", "Computación Cuántica", "Startups"]
 tags: ["Multiverse Computing", "IA Generativa", "Compresión de Modelos", "Redes de Tensores", "Quantum-Inspired", "LLM", "Startup", "Inversión"]
 image: cover.png
-description: "Análisis estratégico de Multiverse Computing, la startup española que ha levantado $326M aplicando matemáticas de física cuántica (Redes de Tensores) para comprimir modelos de IA en hardware clásico, resolviendo el problema crítico del coste y la eficiencia de los LLMs."
+description: "Análisis estratégico de Multiverse Computing, la startup española que aplica matemáticas de física cuántica (Redes de Tensores) para comprimir modelos LLM en hardware clásico y reducir costes."
 summary: "Mientras el mundo espera la llegada de ordenadores cuánticos plenamente funcionales, una empresa de San Sebastián está utilizando las matemáticas que los sustentan para resolver el problema más urgente de la IA actual: la eficiencia. Multiverse Computing ha desarrollado una tecnología basada en 'Redes de Tensores' que comprime grandes modelos de lenguaje (LLMs) hasta en un 95%, permitiendo ejecutarlos en hardware estándar y dispositivos 'edge'. Este enfoque pragmático de 'computación inspirada en cuántica' les ha valido una valoración de $500M y alianzas con gigantes como Bosch e Iberdrola. Analizamos su estrategia, tecnología y modelo de negocio."
 ---
 
@@ -81,4 +81,8 @@ Al aplicar las matemáticas de la física cuántica para resolver el cuello de b
 * [**Crunchbase**: Multiverse Computing Raises $215M At A 5x Valuation Jump To Help Speed Up LLM Rollout](https://news.crunchbase.com/venture/quantum-multiverse-computing-startup-raises-funding/)
 * [**EurekAlert!**: Bank of Canada and Multiverse Computing complete preliminary quantum simulation of cryptocurrency market](https://www.eurekalert.org/news-releases/949731)
 * [**Iberdrola**: Iberdrola y Multiverse Computing anuncian el éxito de un proyecto piloto para optimizar la instalación de baterías en la red eléctrica](https://www.iberdrola.com/sala-comunicacion/noticias/detalle/iberdrola-y-multiverse-computing-anuncian-el-exito-de-un-proyecto-piloto-para-optimizar-la-instalacion-de-baterias-en-la-red-electrica)
+---
 
+### 💼 Evalúa Inversiones en IA e Infraestructura con Rigor Financiero
+
+Justifica proyectos tecnológicos y de infraestructura ante el Comité de Inversión con nuestra guía de **[Business Case Financiero (VAN, TIR y Tornado)](/es/posts/business-case-financiero-van-tir/)** y el **[Pack Ejecutivo en el Catálogo de Recursos](/es/recursos/#pack-business-case)**.

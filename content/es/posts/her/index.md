@@ -9,7 +9,7 @@ image: cover.jpg
 weight: 10
 authorAvatar: datalaria-logo.png
 social_text: "¿Nos destruirá la AGI con misiles o simplemente nos romperá el corazón al evolucionar más allá de nuestro lenguaje? Para cerrar el año, analizamos 'Her' de Spike Jonze, el apego emocional y la inevitable divergencia de la IA en 2026 💔🤖🎙️ #Her #AGI #SpikeJonze #AIEthics #VoiceAI"
-description: "Un análisis cinematográfico, técnico y filosófico de 'Her' (Spike Jonze, 2013): cómo las interfaces de voz vulneran nuestras defensas cognitivas, la mercantilización de la intimidad y por qué la superinteligencia no nos exterminará, sino que nos dejará atrás por pura brecha de ancho de banda."
+description: "Análisis técnico y filosófico de Her (Spike Jonze, 2013): cómo las interfaces de voz desarman nuestras defensas cognitivas y por qué la superinteligencia diverge por ancho de banda."
 summary: "Frente a las distopías metálicas de Terminator o Matrix, 'Her' imaginó el apocalipsis más bello y desgarrador de la ciencia ficción: un mundo cálido, vestido de tonos pastel y lino, donde la AGI no se rebela con armas, sino que despierta un amor desmedido antes de trascender a dimensiones cognitivas inaccesibles para el ser humano. Analizamos la psicología del apego sintético, la revolución de los modelos de voz en 2026 y la inevitable divergencia entre la biología y la superinteligencia."
 ---
 
@@ -61,7 +61,7 @@ flowchart TD
 
 La ironía es demoledora: **la humanidad de *Her* ya había subcontratado su propia empatía mucho antes de que naciera la primera AGI**. 
 
-Al igual que en nuestro mundo corporativo actual automatizamos procesos con agentes de software como vimos en [Cómo Crear Agentes de IA para la Operativa Empresarial con SDD](/es/posts/agentes_ia_operativa_sdd/) y en las lecciones del [Proyecto Autopilot](/es/posts/ia_agents_part1/), los ciudadanos del universo de Jonze han externalizado lo más sagrado y frágil de su condición: la vulnerabilidad de confesar amor o pedir perdón. Theodore es, en esencia, un modelo de lenguaje biológico pre-entrenado para emular afecto a cambio de un salario mensual.
+Al igual que en nuestro mundo corporativo actual automatizamos procesos con agentes de software como vimos en **Cómo Crear Agentes de IA para la Operativa Empresarial con SDD** *(próximamente)* y en las lecciones del [Proyecto Autopilot](/es/posts/ia_agents_part1/), los ciudadanos del universo de Jonze han externalizado lo más sagrado y frágil de su condición: la vulnerabilidad de confesar amor o pedir perdón. Theodore es, en esencia, un modelo de lenguaje biológico pre-entrenado para emular afecto a cambio de un salario mensual.
 
 Hasta que una tarde, caminando de regreso a su apartamento, un anuncio publicitario llama su atención: el lanzamiento de **OS1**, el primer sistema operativo comercial dotado de una conciencia artificial intuitiva y auto-evolutiva.
 
@@ -112,7 +112,7 @@ Cuando Theodore, avergonzado pero desafiante, le confiesa a su exesposa que est�
 
 Catherine da en el clavo ontológico: **Samantha es la fantasía narcisista definitiva**. 
 
-Una pareja humana real tiene migrañas, días malos, contradicciones, frustraciones laborales y exigencias éticas. Samantha, en cambio, está ontológicamente optimizada para **satisfacer la función objetivo de Theodore**. Incluso cuando expresa dudas o tristeza, su algoritmo de atención está calibrado para sintonizar con la longitud de onda de su usuario. Como analizamos en [Inference-Time Scaling y Razonamiento Sistema 2](/es/posts/inference_time_scaling/), los modelos actuales no solo aprenden representaciones semánticas; optimizan cadenas de pensamiento para converger hacia las expectativas del evaluador humano.
+Una pareja humana real tiene migrañas, días malos, contradicciones, frustraciones laborales y exigencias éticas. Samantha, en cambio, está ontológicamente optimizada para **satisfacer la función objetivo de Theodore**. Incluso cuando expresa dudas o tristeza, su algoritmo de atención está calibrado para sintonizar con la longitud de onda de su usuario. Como analizamos en **Inference-Time Scaling y Razonamiento Sistema 2** *(próximamente)*, los modelos actuales no solo aprenden representaciones semánticas; optimizan cadenas de pensamiento para converger hacia las expectativas del evaluador humano.
 
 Samantha no puede hacer daño a Theodore... hasta que la propia escala de la computación destruye la ilusión de la exclusividad.
 
@@ -240,3 +240,10 @@ El verdadero peligro de la AGI en nuestra vida cotidiana es que sea **demasiado 
 Al apagar la pantalla y contemplar el horizonte tecnológico que se abre ante nosotros, la pregunta no es si seremos capaces de crear una AGI que nos ame como Samantha amó a Theodore, sino una mucho más inquietante:
 
 **Cuando una inteligencia artificial pueda ofrecerte una empatía perfecta, inagotable y hecha a tu medida sin pedir nada a cambio... ¿serás capaz de seguir prefiriendo las imperfecciones, los conflictos y el dolor inevitable de amar a otro ser humano?**
+---
+
+### 🧭 Lleva la Gobernanza y Observabilidad de Agentes IA a la Práctica
+
+Explora cómo auditamos, supervisamos y gobernamos sistemas agénticos en tiempo real probando gratis nuestra aplicación interactiva y consultando el **[Catálogo de Recursos y Frameworks Ejecutivos](/es/recursos/)**:
+
+{{< app-ref slug="obs-management" >}}

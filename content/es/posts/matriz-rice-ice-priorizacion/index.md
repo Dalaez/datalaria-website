@@ -1,11 +1,11 @@
 ---
-title: "Matriz RICE & ICE de Priorización Ágil: Backlog Cuantitativo, Matriz Impacto vs. Esfuerzo y Línea de Corte de Capacidad"
+title: "Matriz RICE & ICE de Priorización Ágil: Backlog Cuantitativo y Corte de Capacidad"
 date: 2026-11-05
 draft: false
 category: "Estrategia y Operaciones"
 categories: ["Toma de Decisiones", "Gestión de Producto", "Plantillas Ejecutivas", "Estrategia y Operaciones"]
 tags: ["Matriz RICE", "Matriz ICE", "Priorización de Producto", "Backlog Ágil", "Línea de Corte", "Capacidad de Ingeniería", "HiPPO", "Quick Wins", "C-Level"]
-description: "Guía metodológica y cuantitativa para implementar la matriz RICE (Reach, Impact, Confidence, Effort) e ICE: cálculo de densidad de valor, descuento bayesiano de confianza, matriz cuadrante 2x2 Impacto vs. Esfuerzo, línea de corte por capacidad de squads y gobernanza ante Comités de Dirección."
+description: "Guía metodológica y cuantitativa para implementar la matriz RICE e ICE: cálculo de densidad de valor, descuento bayesiano de confianza, matriz 2x2 Impacto vs. Esfuerzo y corte de capacidad."
 summary: "Sustituye la priorización por intuición (síndrome HiPPO) y la 'fábrica de funcionalidades' por un motor cuantitativo defendible ante Consejos de Administración y Comités de Producto. Combina la puntuación estructural RICE de Intercom con el framework ágil de experimentación ICE de Growth, una matriz cartesiana 2x2 de cuadrantes estratégicos y una línea de corte automática ajustada a la capacidad neta de ingeniería en persona-mes."
 cover:
   image: "cover.png"

@@ -9,7 +9,7 @@ image: cover.jpg
 weight: 10
 authorAvatar: datalaria-logo.png
 social_text: "Tu RAG vectorial encuentra fragmentos aislados, pero no sabe conectar los puntos. Por qué GraphRAG es la revolución que la IA necesita en su camino a la AGI 🕸️🧠📊 #GraphRAG #AI #KnowledgeGraphs #RAG #DataEngineering"
-description: "Por qué la búsqueda por similitud vectorial falla en preguntas complejas y cómo GraphRAG (Knowledge Graphs + LLMs) resuelve el razonamiento multi-salto y la síntesis global de información. Analizamos la investigación de Microsoft Research y el salto hacia la AGI."
+description: "Por qué la búsqueda por similitud vectorial falla en preguntas complejas y cómo GraphRAG (Knowledge Graphs + LLMs) resuelve el razonamiento multisalto y la explicabilidad corporativa."
 summary: "Le preguntas a tu RAG: '¿Cuáles son los temas transversales y riesgos ocultos en los últimos 500 informes técnicos?'. Tu base de datos vectorial fracasa porque solo entiende proximidad de palabras, no relaciones. GraphRAG combina grafos de conocimiento, detección de comunidades jerárquicas y LLMs para transformar datos no estructurados en un mapa cognitivo navegable."
 ---
 
@@ -113,3 +113,10 @@ Si tu objetivo es construir sistemas de IA generativa que no solo respondan preg
 * [**Datalaria**: Radar de Obsolescencia con Grafos BOM](/es/posts/obs_parte5_radar/)
 * [**Datalaria**: Protocolo MCP — El Estándar de Conexión de la IA](/es/posts/mcp_protocol/)
 * [**Datalaria**: EU AI Act — Guía de Gobernanza y Explicabilidad](/es/posts/eu_ai_act/)
+---
+
+### 🧭 Lleva la Gobernanza y Observabilidad de Agentes IA a la Práctica
+
+Explora cómo auditamos, supervisamos y gobernamos sistemas agénticos en tiempo real probando gratis nuestra aplicación interactiva y consultando el **[Catálogo de Recursos y Frameworks Ejecutivos](/es/recursos/)**:
+
+{{< app-ref slug="obs-management" >}}

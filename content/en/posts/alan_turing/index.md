@@ -5,7 +5,7 @@ draft: false
 category: "Pioneers & Icons"
 categories: ["case-studies", "Pioneers & Icons"]
 tags: ["alan turing", "enigma", "turing test", "artificial intelligence", "agi", "ai agents", "cryptography", "hugging face", "history"]
-description: "The fascinating life of Alan Turing: from breaking the Nazi Enigma cipher at Bletchley Park to formulating the 1950 Turing Test. We examine his eccentricities, mathematical breakthroughs, and how his legacy directly addresses modern autonomous AI agents, security vulnerabilities on Hugging Face, and the horizon of AGI."
+description: "The fascinating life of Alan Turing: from breaking the Enigma cipher at Bletchley Park to formulating the 1950 Turing Test and laying the mathematical foundations of modern AI."
 summary: "In 1950, Alan Turing opened an academic paper with a question that still keeps engineers awake at night: 'Can machines think?'. From his eccentricities at Bletchley Park chaining his teacup to the radiator to cracking Enigma and inventing the universal computer, this article examines Turing's legacy through the lens of modern AI: autonomous agents, cybersecurity episodes like the Hugging Face agent exploits, and the approaching horizon of AGI."
 social_text: "Can machines think, or have they simply learned to fool us? From Bletchley Park and Enigma to 2026 autonomous agents and AGI. The story and enduring dilemma of Alan Turing 🧠📜🤖 #AlanTuring #ArtificialIntelligence #AGI #TechHistory #DataScience"
 image: cover.jpg
@@ -116,3 +116,10 @@ We would love to hear your perspective. Do you believe we are on the verge of br
 * [**Datalaria**: Prompt Injection — Security and Agentic Vulnerabilities](/en/posts/prompt_injection/)
 * [**Datalaria**: The Thinking Game — Demis Hassabis, DeepMind and the Quest for AGI](/en/posts/the_thinking_game/)
 * [**Datalaria**: EU AI Act — Practical Guide to Governance and System Robustness](/en/posts/eu_ai_act/)
+---
+
+### 🧭 Put AI Agent Governance and Observability into Practice
+
+Explore how we audit, monitor, and govern autonomous agent systems in real time by trying our interactive application for free and browsing our **[Executive Resources & Frameworks Catalog](/en/resources/)**:
+
+{{< app-ref slug="obs-management" >}}

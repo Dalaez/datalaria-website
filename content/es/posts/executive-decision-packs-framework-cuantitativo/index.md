@@ -1,6 +1,6 @@
 ---
 title: "Executive Decision Packs: El Ecosistema Cuantitativo para la Aprobación del Comité de Dirección"
-date: 2026-11-12
+date: 2026-11-29
 draft: false
 category: "Estrategia y Operaciones"
 categories: ["Estrategia Corporativa", "Toma de Decisiones", "Gestión de Proyectos", "Finanzas Corporativas", "Estrategia y Operaciones"]

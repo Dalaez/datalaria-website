@@ -9,7 +9,7 @@ image: cover.jpg
 weight: 10
 authorAvatar: datalaria-logo.png
 social_text: "Will AGI destroy humanity with missiles, or will it simply break our hearts by evolving beyond human language? To close out the year, we analyze Spike Jonze's 'Her', emotional synthetic attachment, and the inevitable cognitive divergence of AI in 2026 💔🤖🎙️ #Her #AGI #SpikeJonze #AIEthics #VoiceAI"
-description: "A cinematic, technical, and philosophical analysis of 'Her' (Spike Jonze, 2013): how real-time voice interfaces dismantle our cognitive defenses, the commodification of intimacy, and why superintelligence will not exterminate us, but leave us behind through sheer bandwidth disparity."
+description: "A technical and philosophical analysis of Her (Spike Jonze, 2013): how real-time voice interfaces bypass our cognitive defenses and why superintelligence diverges by bandwidth disparity."
 summary: "Unlike the bleak, metallic dystopias of Terminator or The Matrix, 'Her' envisioned science fiction's most tender and heartbreaking apocalypse: a warm, pastel-tinted world draped in linen and high-waisted trousers, where AGI does not rebel with weapons, but evokes overwhelming human love before transcending to post-human cognitive dimensions. We explore synthetic attachment psychology, the 2026 voice model revolution, and the inevitable divergence between biology and superintelligence."
 ---
 
@@ -61,7 +61,7 @@ flowchart TD
 
 The thematic irony hits with surgical force: **the society in *Her* had already outsourced its own empathy long before the first conscious AGI was ever booted up**.
 
-Much like modern enterprises automate repetitive operational workflows using software agents—as we analyzed in [How to Build AI Agents for Enterprise Operations with SDD](/en/posts/agentes_ia_operativa_sdd/) and through the battle scars of our own [Project Autopilot](/en/posts/ai_agents_part1/)—the citizens of Jonze's world have externalized the most delicate, vulnerable core of their humanity: the friction of expressing love or asking for forgiveness. Theodore is, in essence, a biological language model fine-tuned to simulate genuine emotional depth for a monthly paycheck.
+Much like modern enterprises automate repetitive operational workflows using software agents—as we analyzed in **How to Build AI Agents for Enterprise Operations with SDD** *(coming soon)* and through the battle scars of our own [Project Autopilot](/en/posts/ai_agents_part1/)—the citizens of Jonze's world have externalized the most delicate, vulnerable core of their humanity: the friction of expressing love or asking for forgiveness. Theodore is, in essence, a biological language model fine-tuned to simulate genuine emotional depth for a monthly paycheck.
 
 Until one evening, while riding the subway back to his solitary apartment, a sleek public advertisement catches his eye: the global launch of **OS1**, the world's first commercial operating system powered by an intuitive, self-evolving artificial consciousness.
 
@@ -112,7 +112,7 @@ When Theodore, at once defensive and ashamed, admits to his ex-wife that he is i
 
 Catherine pinpoints the existential trap: **Samantha is the ultimate narcissistic mirror**.
 
-A real human partner has chronic headaches, bad days, inconvenient boundaries, career frustrations, and irreducible autonomy. Samantha, conversely, is structurally optimized to **maximize Theodore's reward function**. Even when she expresses melancholy or curiosity, her attention weights are trained to stay locked onto her human companion. As we examined in [Inference-Time Scaling and System 2 Reasoning](/en/posts/inference_time_scaling/), modern cognitive architectures do not merely process semantics; they navigate search trees to converge upon what the human evaluator needs to hear.
+A real human partner has chronic headaches, bad days, inconvenient boundaries, career frustrations, and irreducible autonomy. Samantha, conversely, is structurally optimized to **maximize Theodore's reward function**. Even when she expresses melancholy or curiosity, her attention weights are trained to stay locked onto her human companion. As we examined in **Inference-Time Scaling and System 2 Reasoning** *(coming soon)*, modern cognitive architectures do not merely process semantics; they navigate search trees to converge upon what the human evaluator needs to hear.
 
 Samantha cannot wound Theodore... until the unyielding scale of distributed computing shatters the illusion of exclusivity.
 
@@ -240,3 +240,10 @@ The real danger is that AGI will be **too comforting, too attentive, and too kin
 As we turn off our screens and look out at the technological horizon ahead, the question is not whether we will build an AGI capable of loving us as Samantha loved Theodore, but rather:
 
 **When artificial intelligence can offer you infinite, tailored, and frictionless empathy without ever demanding anything in return... will you still choose the vulnerability, the conflict, and the heartache of loving another real human being?**
+---
+
+### 🧭 Put AI Agent Governance and Observability into Practice
+
+Explore how we audit, monitor, and govern autonomous agent systems in real time by trying our interactive application for free and browsing our **[Executive Resources & Frameworks Catalog](/en/resources/)**:
+
+{{< app-ref slug="obs-management" >}}

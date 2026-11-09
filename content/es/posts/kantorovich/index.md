@@ -64,3 +64,8 @@ La próxima vez que importes una librería de optimización en Python o ejecutes
 - Kantorovich, L. V. (1939). *Métodos Matemáticos de Organización y Planificación de la Producción*.
 - [Leonid Kantorovich - Biografía (Premio Nobel)](https://www.nobelprize.org/prizes/economic-sciences/1975/kantorovich/biographical/)
 - [Historia de la Investigación de Operaciones (INFORMS)](https://www.informs.org/Explore/History-of-O.R.-Excellence/Biographical-Profiles/Kantorovich-Leonid-V)
+---
+
+### ⚖️ Toma de Decisiones Cuantitativa Bajo Incertidumbre
+
+Lleva la optimización matemática, los filtros de veto y el análisis de sensibilidad a tus proyectos con nuestra guía de **[Matriz DAR Cuantitativa](/es/posts/matriz-dar-cuantitativa/)** y la **[Suite 2: Toma de Decisiones y Priorización en el Catálogo de Recursos](/es/recursos/#suite-02)**.

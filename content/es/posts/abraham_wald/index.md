@@ -5,7 +5,7 @@ draft: false
 category: "Pioneros y Referentes"
 categories: ["casos_exito", "Pioneros y Referentes"]
 tags: ["sesgo del superviviente", "abraham wald", "teoría de decisiones", "machine learning", "ciberseguridad"]
-description: "En 1943, el ejército estadounidense quería blindar los agujeros de bala de sus B-17. Un matemático les dijo que blindaran los espacios vacíos. Esta es la historia de cómo el Sesgo del Superviviente destruye los modelos de IA y las estrategias empresariales modernas."
+description: "Cómo Abraham Wald dedujo el blindaje óptimo en los bombarderos B-17 analizando los aviones supervivientes: el sesgo de supervivencia aplicado a ciencia de datos y machine learning."
 summary: "Abraham Wald enseñó a los militares que los datos ausentes—los aviones que nunca regresaron—contenían más verdad que los agujeros de bala de los supervivientes. Este principio sigue siendo crítico para la ética de la IA, la ciberseguridad y la estrategia empresarial."
 social_text: En 1943, los militares querían blindar los agujeros de bala de los B-17. El matemático Abraham Wald les dijo que blindaran los ESPACIOS VACÍOS—esos aviones nunca regresaron. El Sesgo del Superviviente sigue destruyendo modelos de IA hoy. 🎯✈️ #DataScience #IA
 weight: 10
@@ -110,3 +110,8 @@ La próxima vez que mires un dashboard que apunta a una conclusión obvia, recue
 3.  **Mangel, M., & Samaniego, F. J. (1984).** *Abraham Wald's Work on Aircraft Survivability*. Journal of the American Statistical Association.
 4.  **Crescendo.ai.** *16 Real AI Bias Examples & Mitigation Guide*. (Caso de estudio sobre el algoritmo de contratación de Amazon).
 5.  **Forbes Tech Council.** *The Ostrich Effect And Survivorship Bias: The Real Cyber Threats*.
+---
+
+### ⚖️ Toma de Decisiones Cuantitativa Bajo Incertidumbre
+
+Lleva la optimización matemática, los filtros de veto y el análisis de sensibilidad a tus proyectos con nuestra guía de **[Matriz DAR Cuantitativa](/es/posts/matriz-dar-cuantitativa/)** y la **[Suite 2: Toma de Decisiones y Priorización en el Catálogo de Recursos](/es/recursos/#suite-02)**.

@@ -147,3 +147,8 @@ As Villalba discovered in the corridors of Zara: the agility of the future isn't
 * [**Deloitte**: AI - The Helping Hand in Sales and Operations Planning](https://www.deloitte.com/us/en/services/consulting/blogs/business-operations-room/llm-for-supply-chain-optimization.html)
 * [**Mark Lewis on Nextail**: Dispelling the magic - 5 retail realities about AI in fashion](https://nextail.co/resource/dispellling-ai-magic-fashion-retail-mark-lewis)
 * [**Retail Tech Innovation Hub**: Scotta taps Nextail AI technology](https://retailtechinnovationhub.com/home/2025/7/10/scotta-taps-nextail-ai-powered-technology-to-support-retailers-growth-across-stores-and-online)
+---
+
+### 📊 From Mathematical Modeling to the Boardroom
+
+Apply quantitative decision theory and competitive strategy models in your organization with our **[Quantitative SWOT & TOWS Matrix Guide](/en/posts/quantitative-swot-tows-matrix/)** and **[Suite 1: MBA Corporate Strategy in the Resources Catalog](/en/resources/#suite-01)**.

@@ -9,7 +9,7 @@ image: cover.jpg
 weight: 10
 authorAvatar: datalaria-logo.png
 social_text: "En Los Álamos no solo nació la bomba atómica; nació la simulación computacional de Monte Carlo y el mayor dilema ético de la ciencia. ¿Estamos viviendo hoy el 'Momento Oppenheimer' de la AGI? ⚛️🧠📜 #Oppenheimer #AGI #MonteCarlo #AIethics #DataScience"
-description: "Un análisis profundo de la vida de J. Robert Oppenheimer: sus excentricidades, la dirección de Los Álamos, la invención del método de Monte Carlo con von Neumann y Ulam, y por qué su dilema ético es el espejo exacto en el que se miran los pioneros de la AGI en 2026."
+description: "Análisis profundo de J. Robert Oppenheimer: la dirección de Los Álamos, la invención del método de Monte Carlo con von Neumann y Ulam, y su paralelismo ético con los pioneros de la AGI."
 summary: "A las 5:29 de la madrugada del 16 de julio de 1945, la prueba Trinity desató una energía que transformó la civilización. Detrás de aquel hito no solo hubo física nuclear, sino el nacimiento de la ciencia de datos moderna: la invención de la simulación de Monte Carlo por von Neumann y Ulam. Analizamos la figura poliédrica de Oppenheimer y por qué la carrera actual hacia la AGI es el reflejo directo de Los Álamos."
 ---
 
@@ -50,7 +50,7 @@ En menos de tres años, Oppenheimer transformó un internado aislado de montaña
 
 Su liderazgo no fue burocrático; fue de integración de sistemas (*Systems Engineering*):
 1. **Derribar el secretismo interno**: Pese a la obsesión militar por la compartimentación, Oppenheimer impuso coloquios semanales abiertos donde físicos teóricos, químicos de explosivos, metalúrgicos y militares debatían libremente los cuellos de botella del proyecto.
-2. **Modularidad y orquestación extrema**: Al igual que analizamos en la gestión de operaciones críticas en [Project Operations Engineering](/es/posts/proj_ops_parte1_intro/) y en las restricciones de planta de [The Goal](/es/posts/the-goal/), Oppenheimer sincronizó dos vías de enriquecimiento de material fisible completamente dispares (el uranio-235 en Oak Ridge y el plutonio-239 en Hanford) con el diseño mecánico de la bomba de implosión.
+2. **Modularidad y orquestación extrema**: Al igual que analizamos en la gestión de operaciones críticas en **Project Operations Engineering** *(próximamente)* y en las restricciones de planta de [The Goal](/es/posts/the-goal/), Oppenheimer sincronizó dos vías de enriquecimiento de material fisible completamente dispares (el uranio-235 en Oak Ridge y el plutonio-239 en Hanford) con el diseño mecánico de la bomba de implosión.
 
 ![Evolución técnica: de las ecuaciones de neutrones y el método de Monte Carlo en Los Álamos al razonamiento estocástico en la AGI](monte_carlo_a_agi.jpg)
 
@@ -124,4 +124,9 @@ Nos encantaría conocer tu reflexión. Déjanos tu opinión en los comentarios.
 * [**Datalaria**: The Thinking Game — Demis Hassabis, DeepMind y el Monte Carlo Tree Search](/es/posts/the_thinking_game/)
 * [**Datalaria**: Silicon Valley y el Dilema de PiperNet — La IA Incontrolable](/es/posts/silicon_valley/)
 * [**Datalaria**: EU AI Act — Marco de Gobernanza y Supervisión Humana de la IA](/es/posts/eu_ai_act/)
-* [**Datalaria**: Project Operations Engineering — Gestión de Megaproyectos Extremos](/es/posts/proj_ops_parte1_intro/)
+* * **Datalaria**: Project Operations Engineering — Gestión de Megaproyectos Extremos *(próximamente)*
+---
+
+### ⚖️ Toma de Decisiones Cuantitativa Bajo Incertidumbre
+
+Lleva la optimización matemática, los filtros de veto y el análisis de sensibilidad a tus proyectos con nuestra guía de **[Matriz DAR Cuantitativa](/es/posts/matriz-dar-cuantitativa/)** y la **[Suite 2: Toma de Decisiones y Priorización en el Catálogo de Recursos](/es/recursos/#suite-02)**.

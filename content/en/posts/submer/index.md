@@ -9,7 +9,7 @@ image: cover.jpg
 weight: 10
 authorAvatar: datalaria-logo.png
 social_text: "How did a startup from Barcelona become the invisible physical foundation cooling the supercomputers of AGI? The engineering story of Submer and liquid immersion cooling 🧊🖥️⚡ #Submer #DataCenters #ImmersionCooling #Hardware #AI"
-description: "How two entrepreneurs in Barcelona revolutionized physical computing infrastructure. We analyze Submer's liquid immersion cooling technology, its partnerships with Intel and Nvidia, and why dielectric fluid cooling is the physical bottleneck deciding the future of AGI."
+description: "How two entrepreneurs in Barcelona revolutionized data center infrastructure: Submer's liquid immersion cooling technology, partnerships with Intel and Nvidia, and the future of AGI."
 summary: "Training and running frontier AI models generates thermal densities that shatter the physical limits of traditional air cooling. Submer, founded in Barcelona by Daniel Pope and Pol Valls, submerges servers in biodegradable dielectric fluids, achieving a record-breaking PUE of 1.03. We break down its technology, funding rounds, and why it is an indispensable physical pillar in the race toward AGI."
 ---
 
@@ -148,3 +148,8 @@ From an industrial warehouse in Barcelona, Daniel Pope and Pol Valls realized th
 * [**Datalaria**: J. Robert Oppenheimer — From Monte Carlo to the Ethical Dilemma of AGI](/en/posts/oppenheimer/)
 * [**Datalaria**: EU AI Act — Practical Guide to AI Governance and Efficiency](/en/posts/eu_ai_act/)
 * [**Datalaria**: Silicon Valley and the PiperNet Dilemma — Runaway Optimization](/en/posts/silicon_valley/)
+---
+
+### 💼 Evaluate AI and Infrastructure Investments with Financial Rigor
+
+Justify complex deep-tech and infrastructure capex to your Investment Committee with our **[Financial Business Case Guide (NPV, IRR & Tornado)](/en/posts/financial-business-case-npv-irr/)** and the **[Executive Pack in the Resources Catalog](/en/resources/#pack-business-case)**.

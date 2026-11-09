@@ -113,3 +113,10 @@ If your ambition is to build AI architectures that do not merely recite text, bu
 * [**Datalaria**: Obsolescence Radar with BOM Component Graphs](/en/posts/obs_part5_radar/)
 * [**Datalaria**: MCP Protocol — The Connection Standard for AI](/en/posts/mcp_protocol/)
 * [**Datalaria**: EU AI Act — Practical Guide to Governance and Explainability](/en/posts/eu_ai_act/)
+---
+
+### 🧭 Put AI Agent Governance and Observability into Practice
+
+Explore how we audit, monitor, and govern autonomous agent systems in real time by trying our interactive application for free and browsing our **[Executive Resources & Frameworks Catalog](/en/resources/)**:
+
+{{< app-ref slug="obs-management" >}}

@@ -1,5 +1,5 @@
 ---
-title: "The Thinking Game: De cómo DeepMind convirtió los videojuegos en la mayor herramienta científica de la historia"
+title: "The Thinking Game: Cómo DeepMind Convirtió los Videojuegos en Ciencia Moderna"
 date: 2026-01-01
 draft: false
 category: "Cultura Tech y Media"
@@ -7,7 +7,7 @@ categories: ["Inteligencia Artificial", "Deep Tech", "Ciencia", "Documentales", 
 tags: ["DeepMind", "Demis Hassabis", "AlphaFold", "AGI", "AlphaGo", "The Thinking Game", "Biología Computacional"]
 image: the_thinking_game.jpg
 social_text: ¿Y si la clave para resolver TODO estuviera en los videojuegos? 🤔 DeepMind lo hizo. De niño prodigio a revolucionar la ciencia. Su viaje de los píxeles a AlphaFold, el mayor telescopio biológico.
-description: "Un análisis profundo del documental 'The Thinking Game', que narra la odisea de Demis Hassabis y DeepMind. Desde los píxeles de Atari hasta la resolución del plegamiento de proteínas con AlphaFold, exploramos cómo la búsqueda de la AGI está reescribiendo las reglas de la ciencia moderna."
+description: "Análisis profundo del documental The Thinking Game sobre Demis Hassabis y DeepMind: desde los píxeles de Atari hasta resolver el plegamiento de proteínas con AlphaFold rumbo a la AGI."
 summary: "Mientras el mundo se distrae con chatbots que escriben poemas, DeepMind ha estado jugando a un juego mucho más profundo. El documental 'The Thinking Game' revela la historia no contada detrás de AlphaGo y AlphaFold: una misión de décadas para resolver la inteligencia y usarla para decodificar la biología misma. Analizamos los hitos técnicos, la filosofía ética y por qué Demis Hassabis cree que la IA es un descubrimiento al nivel del fuego o la electricidad."
 ---
 
@@ -92,3 +92,10 @@ Si tienes oportunidad de ver el documental, hazlo. No es solo historia de la com
 * <a name="ref-8"></a>[8] **Nature:** [Highly accurate protein structure prediction with AlphaFold](https://www.nature.com/articles/s41586-021-03819-2)
 * <a name="ref-9"></a>[9] **AlphaFold Database:** [EMBL-EBI AlphaFold Protein Structure Database](https://alphafold.ebi.ac.uk/)
 * <a name="ref-10"></a>[10] **Time Magazine:** [DeepMind's Demis Hassabis on the Future of AI](https://time.com/7277608/demis-hassabis-interview-time100-2025//)
+---
+
+### 🧭 Lleva la Gobernanza y Observabilidad de Agentes IA a la Práctica
+
+Explora cómo auditamos, supervisamos y gobernamos sistemas agénticos en tiempo real probando gratis nuestra aplicación interactiva y consultando el **[Catálogo de Recursos y Frameworks Ejecutivos](/es/recursos/)**:
+
+{{< app-ref slug="obs-management" >}}

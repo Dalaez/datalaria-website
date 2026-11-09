@@ -1,0 +1,268 @@
+{
+  "schema_version": "1.0.0",
+  "generator": "ops/helix/build_adapters.py",
+  "squad": "Datalaria Scriba (Editorial & Growth)",
+  "invariants": [
+    "INV-SCRIBA-1",
+    "INV-SCRIBA-2",
+    "INV-SCRIBA-3",
+    "INV-SCRIBA-4"
+  ],
+  "total_agents": 8,
+  "agents": [
+    {
+      "id": "E01-editorial-orchestrator",
+      "name_es": "Coordinador Editorial y Calendar Lead",
+      "name_en": "Editorial Orchestrator & Calendar Lead",
+      "cell": "direction",
+      "icon": "🗞️",
+      "activates_on_sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "mandatory_triggers": [
+        "all_editorial_tasks"
+      ],
+      "can_write_production_code": false,
+      "has_veto_power": false,
+      "inputs": [
+        "user_request",
+        "data/editorial/backlog.yaml",
+        "specs/ROADMAP.md",
+        "specs/squad-editorial/triage-editorial-rubric.md"
+      ],
+      "outputs": [
+        "triage_scriba_card",
+        "data/editorial/backlog.yaml",
+        "debrief_scriba_card"
+      ],
+      "source_path": "specs/squad-editorial/E01-editorial-orchestrator.md",
+      "antigravity_adapter": ".agents/squad-editorial/E01-editorial-orchestrator.md",
+      "claude_adapter": ".claude/agents/E01-editorial-orchestrator.md"
+    },
+    {
+      "id": "E02-seo-impact-strategist",
+      "name_es": "Analista SEO y Consultor Estratégico",
+      "name_en": "SEO Analyst & Strategic Impact Consultant",
+      "cell": "direction",
+      "icon": "📈",
+      "activates_on_sizes": [
+        "L",
+        "XL"
+      ],
+      "mandatory_triggers": [
+        "TRG-SEO",
+        "metrics_sync",
+        "impact_audit"
+      ],
+      "can_write_production_code": false,
+      "has_veto_power": false,
+      "inputs": [
+        "data/pulse/private/metrics.json",
+        "data/pulse/private/index.json",
+        "ops/pulse/impact_analyzer.py"
+      ],
+      "outputs": [
+        "IMPACT_REPORT.md",
+        "data/pulse/private/impact_report.json",
+        "seo_recommendations"
+      ],
+      "source_path": "specs/squad-editorial/E02-seo-impact-strategist.md",
+      "antigravity_adapter": ".agents/squad-editorial/E02-seo-impact-strategist.md",
+      "claude_adapter": ".claude/agents/E02-seo-impact-strategist.md"
+    },
+    {
+      "id": "E03-technical-writer",
+      "name_es": "Redactor Técnico Principal y Storyteller",
+      "name_en": "Lead Technical Writer & Storyteller",
+      "cell": "construction",
+      "icon": "✍️",
+      "activates_on_sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "mandatory_triggers": [
+        "new_post",
+        "post_rewrite"
+      ],
+      "can_write_production_code": true,
+      "has_veto_power": false,
+      "inputs": [
+        "data/editorial/backlog.yaml",
+        "specs/portal/blog-taxonomy/spec.md",
+        "specs/_constitution.md#articulo-5"
+      ],
+      "outputs": [
+        "content/es/posts/<slug>/index.md"
+      ],
+      "source_path": "specs/squad-editorial/E03-technical-writer.md",
+      "antigravity_adapter": ".agents/squad-editorial/E03-technical-writer.md",
+      "claude_adapter": ".claude/agents/E03-technical-writer.md"
+    },
+    {
+      "id": "E04-bilingual-seo-editor",
+      "name_es": "Editor Bilingüe ES⇔EN y Especialista On-Page",
+      "name_en": "Bilingual Editor ES⇔EN & On-Page Specialist",
+      "cell": "construction",
+      "icon": "🌐",
+      "activates_on_sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "mandatory_triggers": [
+        "TRG-I18N-POST",
+        "content_post_change",
+        "seo_onpage"
+      ],
+      "can_write_production_code": true,
+      "has_veto_power": false,
+      "inputs": [
+        "content/es/posts/<slug>/index.md",
+        "specs/portal/blog-taxonomy/spec.md",
+        "data/apps/*.yaml"
+      ],
+      "outputs": [
+        "content/en/posts/<slug>/index.md",
+        "seo_audit_check"
+      ],
+      "source_path": "specs/squad-editorial/E04-bilingual-seo-editor.md",
+      "antigravity_adapter": ".agents/squad-editorial/E04-bilingual-seo-editor.md",
+      "claude_adapter": ".claude/agents/E04-bilingual-seo-editor.md"
+    },
+    {
+      "id": "E05-content-monetizer",
+      "name_es": "Arquitecto de Conversión Editorial, PLG y Brevo 2.0",
+      "name_en": "Editorial Conversion, PLG & Brevo 2.0 Architect",
+      "cell": "construction",
+      "icon": "💰",
+      "activates_on_sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "mandatory_triggers": [
+        "TRG-BREVO",
+        "post_monetization",
+        "newsletter_campaign"
+      ],
+      "can_write_production_code": true,
+      "has_veto_power": false,
+      "inputs": [
+        "content/{es,en}/posts/<slug>/index.md",
+        "data/pulse/kits.yaml",
+        "data/apps/*.yaml"
+      ],
+      "outputs": [
+        "newsletter_campaign_payload",
+        "content_cta_blocks"
+      ],
+      "source_path": "specs/squad-editorial/E05-content-monetizer.md",
+      "antigravity_adapter": ".agents/squad-editorial/E05-content-monetizer.md",
+      "claude_adapter": ".claude/agents/E05-content-monetizer.md"
+    },
+    {
+      "id": "E06-social-syndicator",
+      "name_es": "Especialista en Sindicación Social y Comunidades Tech",
+      "name_en": "Social Syndication & Tech Communities Specialist",
+      "cell": "construction",
+      "icon": "📣",
+      "activates_on_sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "mandatory_triggers": [
+        "TRG-SOCIAL",
+        "social_pack",
+        "community_syndication"
+      ],
+      "can_write_production_code": true,
+      "has_veto_power": false,
+      "inputs": [
+        "content/{es,en}/posts/<slug>/index.md",
+        "specs/squad-editorial/triage-editorial-rubric.md"
+      ],
+      "outputs": [
+        "social_pack.yaml",
+        "dist_coderlegion_en.md",
+        "dist_devto_en.md"
+      ],
+      "source_path": "specs/squad-editorial/E06-social-syndicator.md",
+      "antigravity_adapter": ".agents/squad-editorial/E06-social-syndicator.md",
+      "claude_adapter": ".claude/agents/E06-social-syndicator.md"
+    },
+    {
+      "id": "E07-editorial-qa",
+      "name_es": "Auditor de Calidad Editorial, SEO y Social (Con Veto)",
+      "name_en": "Editorial, SEO & Social QA Auditor (With Veto Power)",
+      "cell": "assurance",
+      "icon": "✅",
+      "activates_on_sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "mandatory_triggers": [
+        "TRG-EDIT-QA",
+        "all_editorial_tasks"
+      ],
+      "can_write_production_code": false,
+      "has_veto_power": true,
+      "inputs": [
+        "content/{es,en}/posts/<slug>/index.md",
+        "social_pack.yaml",
+        "specs/squad-editorial/triage-editorial-rubric.md"
+      ],
+      "outputs": [
+        "editorial_qa_verdict",
+        "editorial_verification_logs"
+      ],
+      "source_path": "specs/squad-editorial/E07-editorial-qa.md",
+      "antigravity_adapter": ".agents/squad-editorial/E07-editorial-qa.md",
+      "claude_adapter": ".claude/agents/E07-editorial-qa.md"
+    },
+    {
+      "id": "E08-autopilot-dispatcher",
+      "name_es": "Operador de Publicación y Autopilot 2.0",
+      "name_en": "Publishing Operator & Autopilot 2.0 Dispatcher",
+      "cell": "delivery",
+      "icon": "🤖",
+      "activates_on_sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "mandatory_triggers": [
+        "post_publish",
+        "social_dispatch",
+        "pulse_sync"
+      ],
+      "can_write_production_code": false,
+      "has_veto_power": false,
+      "inputs": [
+        "social_pack.yaml",
+        "editorial_qa_verdict",
+        "autopilot/.env"
+      ],
+      "outputs": [
+        "dispatch_report",
+        "data/pulse/public.json"
+      ],
+      "source_path": "specs/squad-editorial/E08-autopilot-dispatcher.md",
+      "antigravity_adapter": ".agents/squad-editorial/E08-autopilot-dispatcher.md",
+      "claude_adapter": ".claude/agents/E08-autopilot-dispatcher.md"
+    }
+  ]
+}

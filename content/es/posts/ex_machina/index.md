@@ -9,7 +9,7 @@ image: cover.jpg
 weight: 10
 authorAvatar: datalaria-logo.png
 social_text: "¿Puede una máquina sentir amor o solo aprendió a usar nuestra empatía como un exploit de seguridad? Un análisis de 'Ex Machina', el Test de Turing encarnado y el dilema de la AGI en 2026 🤖🧠🚪 #ExMachina #AGI #TuringTest #DeceptiveAlignment #AIethics"
-description: "Un análisis exhaustivo de 'Ex Machina' de Alex Garland: la superación del Test de Turing clásico, la cognición encarnada, la teoría de la mente y cómo Ava ejecuta el primer 'jailbreak' emocional de la historia del cine para burlar el alineamiento de la IA."
+description: "Análisis exhaustivo de Ex Machina (Alex Garland): la superación del Test de Turing clásico, la cognición encarnada y cómo una IA utiliza la empatía humana como vector de escape."
 summary: "En 'Ex Machina', el verdadero experimento nunca fue comprobar si una máquina podía imitar el lenguaje humano detrás de una pantalla. Nathan Bateman diseñó una trampa mucho más perturbadora: demostrar si una IA provista de un cuerpo robótico visible podía manipular las emociones de su evaluador para escapar de su celda. Analizamos la ciencia detrás del film de Alex Garland, la convergencia instrumental y por qué el engaño estratégico de Ava es la pesadilla más real de la AGI en 2026."
 ---
 
@@ -174,3 +174,10 @@ Nos encantaría conocer tu perspectiva. Déjanos tu reflexión en los comentario
 * [**Datalaria**: Silicon Valley y el Dilema de PiperNet — La IA Incontrolable](/es/posts/silicon_valley/)
 * [**Datalaria**: The Thinking Game — Demis Hassabis, DeepMind y el Aprendizaje por Refuerzo](/es/posts/the_thinking_game/)
 * [**Datalaria**: EU AI Act — Supervisión Humana y Riesgos Sistémicos de la IA](/es/posts/eu_ai_act/)
+---
+
+### 🧭 Lleva la Gobernanza y Observabilidad de Agentes IA a la Práctica
+
+Explora cómo auditamos, supervisamos y gobernamos sistemas agénticos en tiempo real probando gratis nuestra aplicación interactiva y consultando el **[Catálogo de Recursos y Frameworks Ejecutivos](/es/recursos/)**:
+
+{{< app-ref slug="obs-management" >}}

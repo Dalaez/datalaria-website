@@ -5,7 +5,7 @@ draft: false
 category: "Pioneros y Referentes"
 categories: ["casos_exito", "Pioneros y Referentes"]
 tags: ["alan turing", "enigma", "test de turing", "inteligencia artificial", "agi", "agentes ia", "criptografia", "hugging face", "historia"]
-description: "La fascinante vida de Alan Turing: de descifrar la máquina Enigma en Bletchley Park a formular el Test de Turing en 1950. Analizamos sus excentricidades, sus hitos matemáticos y cómo su visión interpela directamente a los agentes de IA, los recientes ciberataques en plataformas como Hugging Face y el futuro de la AGI y la robótica."
+description: "La fascinante vida de Alan Turing: de descifrar la máquina Enigma en Bletchley Park a formular el Test de Turing en 1950 y sentar las bases matemáticas de la inteligencia artificial."
 summary: "En 1950, Alan Turing abrió un artículo académico con una pregunta que aún nos quita el sueño: '¿Pueden pensar las máquinas?'. Desde sus excentricidades en Bletchley Park encadenando su taza al radiador hasta romper el código nazi de Enigma y sentar las bases de la computación universal, este artículo analiza el legado de Turing bajo la óptica de la IA moderna: agentes autónomos, vulnerabilidades como los recientes ataques en Hugging Face, y el horizonte de la AGI frente a la humanidad."
 social_text: "¿Pueden pensar las máquinas o solo aprendieron a engañarnos? De Bletchley Park y Enigma a los agentes autónomos de 2026 y la AGI. La historia y el dilema eterno de Alan Turing 🧠📜🤖 #AlanTuring #InteligenciaArtificial #AGI #TechHistory #DataScience"
 image: cover.jpg
@@ -116,3 +116,10 @@ Nos encantaría conocer tu perspectiva. ¿Crees que estamos a las puertas de alu
 * [**Datalaria**: Prompt Injection — Seguridad y Vulnerabilidades en Agentes de IA](/es/posts/prompt_injection/)
 * [**Datalaria**: The Thinking Game — Demis Hassabis, DeepMind y la AGI](/es/posts/the_thinking_game/)
 * [**Datalaria**: EU AI Act — Guía Práctica de Gobernanza y Robustez](/es/posts/eu_ai_act/)
+---
+
+### 🧭 Lleva la Gobernanza y Observabilidad de Agentes IA a la Práctica
+
+Explora cómo auditamos, supervisamos y gobernamos sistemas agénticos en tiempo real probando gratis nuestra aplicación interactiva y consultando el **[Catálogo de Recursos y Frameworks Ejecutivos](/es/recursos/)**:
+
+{{< app-ref slug="obs-management" >}}

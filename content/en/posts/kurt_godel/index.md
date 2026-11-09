@@ -1,5 +1,5 @@
 ---
-title: "Kurt Gödel: The Incompleteness Theorems, the Limits of Logic, and Can an AGI Ever Know Everything?"
+title: "Kurt Gödel: The Incompleteness Theorems, the Limits of Logic, and AGI Boundaries"
 date: 2026-10-31
 draft: false
 category: "Pioneers & Icons"
@@ -9,7 +9,7 @@ image: cover.jpg
 weight: 10
 authorAvatar: datalaria-logo.png
 social_text: "Einstein confessed he went to his Princeton office solely for the privilege of walking home with Kurt Gödel. Why does the man who shattered mathematical certainty define the absolute boundaries of AGI? 🧩🧠📜 #KurtGodel #Incompleteness #AlanTuring #AI #ComputerScience #Philosophy"
-description: "A deep dive into the extraordinary life and tormented genius of Kurt Gödel: his daily walks with Einstein, the demolition of Hilbert's program, Gödel numbering that inspired Turing, and whether Artificial General Intelligence is bounded by mathematical incompleteness."
+description: "A deep dive into the life and genius of Kurt Gödel: his daily walks with Einstein, the demolition of Hilbert's program, and whether Artificial General Intelligence is bounded by logic."
 summary: "In 1931, at just twenty-five years old, a shy Austrian mathematician delivered the most devastating shockwave in intellectual history: he proved that within any consistent mathematical formal system, there will always be true statements that can never be proven. We explore Kurt Gödel's tormented mind, his paranoias, the direct bridge to Turing's Halting Problem, and the defining question haunting AI researchers in 2026: will AGI inevitably hit the brick wall of incompleteness?"
 ---
 
@@ -137,7 +137,7 @@ In 1961, Oxford philosopher John Lucas, and later in 1989 the eminent mathematic
 #### 2. The Modern AI Counterargument: Adaptive and Probabilistic Systems
 Against Penrose’s thesis, contemporary machine learning theorists present equally robust counterarguments:
 * **Humans are not consistent formal systems**: Human beings contradict themselves daily, hold mutually incompatible beliefs, forget edge cases, and make logical errors. If a system is not strictly consistent, Gödel's theorems do not preclude its real-world effectiveness.
-* **Reasoning is not static formal deduction**: As we analyzed in our recent study on [Inference-Time Scaling and System 2 Reasoning](/en/posts/inference_time_scaling/), 2026 frontier models do not function as rigid first-order logic provers. They leverage heuristic search, test-time exploration (MCTS), self-reflection scratchpads, and reinforcement learning to dynamically alter and expand their own reference frameworks.
+* **Reasoning is not static formal deduction**: As we analyzed in our recent study on **Inference-Time Scaling and System 2 Reasoning** *(coming soon)*, 2026 frontier models do not function as rigid first-order logic provers. They leverage heuristic search, test-time exploration (MCTS), self-reflection scratchpads, and reinforcement learning to dynamically alter and expand their own reference frameworks.
 
 #### The Real Frontier: The Impossibility of Total Formal Verification
 Where Gödel imposes an absolute, non-negotiable barrier in 2026 is in **AI Safety and Autonomous Governance** (as discussed in [AI Agent Evaluation & Testing](/en/posts/evaluacion_agentes_ia/) and the [EU AI Act](/en/posts/eu_ai_act/)):
@@ -169,9 +169,16 @@ We would love to hear your thoughts. Share your perspective in the comments belo
 * [**Douglas Hofstadter (1979)**: *Gödel, Escher, Bach: An Eternal Golden Braid* — Basic Books](https://www.basicbooks.com/titles/douglas-r-hofstadter/godel-escher-bach/9780465026562/)
 * [**Datalaria**: Alan Turing — The Genius Who Cracked Enigma and Asked if Machines Could Think](/en/posts/alan_turing/)
 * [**Datalaria**: John von Neumann — The Father of Computer Architecture and the Singularity](/en/posts/john_von_neumann/)
-* [**Datalaria**: Inference-Time Scaling and System 2 Reasoning](/en/posts/inference_time_scaling/)
+* * **Datalaria**: Inference-Time Scaling and System 2 Reasoning *(coming soon)*
 * [**Datalaria**: J. Robert Oppenheimer — From Monte Carlo to the Ethical Dilemma of AGI](/en/posts/oppenheimer/)
 * [**Datalaria**: AI Agent Evaluation & Testing in Production](/en/posts/evaluacion_agentes_ia/)
 * [**Datalaria**: Spec-Driven Development (SDD) vs. Vibe Coding](/en/posts/sdd_vs_vibe_coding/)
 * [**Datalaria**: Thomas Bayes — Probabilistic Inference and the Weight of Evidence](/en/posts/thomas_bayes/)
 * [**Datalaria**: EU AI Act — Governance & Technical Oversight Framework](/en/posts/eu_ai_act/)
+---
+
+### 🧭 Put AI Agent Governance and Observability into Practice
+
+Explore how we audit, monitor, and govern autonomous agent systems in real time by trying our interactive application for free and browsing our **[Executive Resources & Frameworks Catalog](/en/resources/)**:
+
+{{< app-ref slug="obs-management" >}}

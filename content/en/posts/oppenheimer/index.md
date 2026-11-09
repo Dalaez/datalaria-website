@@ -1,5 +1,5 @@
 ---
-title: "J. Robert Oppenheimer: From the Monte Carlo Simulation in Los Alamos to the Ethical Dilemma of AGI"
+title: "J. Robert Oppenheimer: From Monte Carlo Simulation at Los Alamos to AGI Ethics"
 date: 2026-10-03
 draft: false
 category: "Pioneers & Icons"
@@ -50,7 +50,7 @@ In less than three years, Oppenheimer transformed an isolated boys' ranch school
 
 His management model was an early triumph of **Systems Engineering**:
 1. **Dismantling Internal Silos**: Defying the military's demand for strict compartmentalization, Oppenheimer established weekly open colloquia where theoretical physicists, explosive chemists, metallurgists, and military liaisons openly debated project bottlenecks.
-2. **Extreme Cross-Disciplinary Orchestration**: Exactly as we explore in [Project Operations Engineering](/en/posts/proj_ops_parte1_intro/) and the theory of constraints in [The Goal](/en/posts/the-goal/), Oppenheimer synchronized two wildly divergent fissile material pipelines (uranium-235 at Oak Ridge and plutonium-239 at Hanford) with the mechanical design of the implosion weapon.
+2. **Extreme Cross-Disciplinary Orchestration**: Exactly as we explore in **Project Operations Engineering** *(coming soon)* and the theory of constraints in [The Goal](/en/posts/the-goal/), Oppenheimer synchronized two wildly divergent fissile material pipelines (uranium-235 at Oak Ridge and plutonium-239 at Hanford) with the mechanical design of the implosion weapon.
 
 ![Technical progression: from neutron diffusion equations and the Monte Carlo method in Los Alamos to stochastic reasoning in AGI](monte_carlo_to_agi.jpg)
 
@@ -124,4 +124,9 @@ We would love to hear your perspective. Share your thoughts and reflections in t
 * [**Datalaria**: The Thinking Game — Demis Hassabis, DeepMind and Monte Carlo Tree Search](/en/posts/the_thinking_game/)
 * [**Datalaria**: Silicon Valley and the PiperNet Dilemma — Runaway AI](/en/posts/silicon_valley/)
 * [**Datalaria**: EU AI Act — Practical Guide to Governance and Human Oversight](/en/posts/eu_ai_act/)
-* [**Datalaria**: Project Operations Engineering — Managing Extreme Megaprojects](/en/posts/proj_ops_parte1_intro/)
+* * **Datalaria**: Project Operations Engineering — Managing Extreme Megaprojects *(coming soon)*
+---
+
+### ⚖️ Quantitative Decision-Making Under Uncertainty
+
+Bring mathematical optimization, Boolean veto gates, and sensitivity modeling to your projects with our **[Quantitative DAR Matrix Guide](/en/posts/quantitative-dar-matrix/)** and **[Suite 2: Decision-Making & Prioritization in the Resources Catalog](/en/resources/#suite-02)**.

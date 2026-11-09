@@ -1,5 +1,5 @@
 ---
-title: "DAFO Cuantitativo y Matriz CAME: La Guía Definitiva de Decisión Estratégica para Comités de Dirección (C-Level)"
+title: "DAFO Cuantitativo y Matriz CAME: Guía de Decisión Estratégica para Dirección"
 date: 2026-10-13
 draft: false
 translationKey: quantitative-swot-tows-matrix

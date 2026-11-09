@@ -64,3 +64,8 @@ The next time you import an optimization library in Python or run a linear solve
 - Kantorovich, L. V. (1939). *Mathematical Methods of Organizing and Planning Production*.
 - [Leonid Kantorovich - Biographical (Nobel Prize)](https://www.nobelprize.org/prizes/economic-sciences/1975/kantorovich/biographical/)
 - [History of Operations Research (INFORMS)](https://www.informs.org/Explore/History-of-O.R.-Excellence/Biographical-Profiles/Kantorovich-Leonid-V)
+---
+
+### ⚖️ Quantitative Decision-Making Under Uncertainty
+
+Bring mathematical optimization, Boolean veto gates, and sensitivity modeling to your projects with our **[Quantitative DAR Matrix Guide](/en/posts/quantitative-dar-matrix/)** and **[Suite 2: Decision-Making & Prioritization in the Resources Catalog](/en/resources/#suite-02)**.

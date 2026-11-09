@@ -1,5 +1,5 @@
 ---
-title: "Proyecto LifeOps (Parte 6): Dashboard 360° con Analítica Multidimensional, Recharts y Mitigación de Cold-Starts en Supabase + Render"
+title: "Proyecto LifeOps (Parte 6): Dashboard 360° con Analítica Multidimensional y Recharts"
 date: 2026-10-28
 draft: false
 category: "IA, Ingeniería y Proyectos"
@@ -10,7 +10,7 @@ cover:
   alt: "Dashboard 360° LifeOps"
   relative: true
 image: cover.png
-description: "Sexta entrega de la serie LifeOps: cómo evolucionar el Dashboard 360° con filtrado multidimensional por periodo (semanas, meses, años), comparativas inter-periodo (Δ%), visualizaciones con Recharts, mapas de consistencia estilo Strava y una arquitectura de mitigación de cold-starts con caché SWR local y feedback visual en primer plano."
+description: "Sexta entrega de la serie LifeOps: cómo evolucionar el Dashboard 360° con filtrado multidimensional por periodo, mapas estilo Strava y mitigación de cold-starts en Supabase + Render."
 summary: "Evolucionamos LifeOps con un potente motor analítico 360° nativo en React 19 y Recharts: filtrado en cascada por periodo y subcategoría (running, ciclismo, gym, libros, cine, kanban), comparativas inter-periodo (Δ%), mapa de calor de 16 semanas y mitigación total de cold-starts de Render con caché Stale-While-Revalidate a 0 ms."
 ---
 

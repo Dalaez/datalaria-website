@@ -1,5 +1,5 @@
 ---
-title: "RavenPack: From News Analytics in Marbella to Wall Street's Quantitative Brain and Autonomous Financial AI"
+title: "RavenPack: From News Analytics in Marbella to Wall Street's Quantitative Brain"
 date: 2026-10-24
 draft: false
 category: "Startups"
@@ -135,7 +135,7 @@ With the addition of RavenPack, Datalaria’s benchmark of Spain’s premier tec
 
 ### The Future: RavenPack and the Road to Financial AGI
 
-RavenPack's trajectory connects directly with our recent technical retrospectives on [Inference-Time Scaling](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/content/en/posts/inference_time_scaling/index.md) and [Spec-Driven Development](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/content/en/posts/sdd_vs_vibe_coding/index.md):
+RavenPack's trajectory connects directly with our recent technical retrospectives on **Inference-Time Scaling** *(coming soon)* and [Spec-Driven Development](/en/posts/sdd_vs_vibe_coding/):
 
 Capital markets cannot be navigated through naive intuition or casual vibe coding. They are the ultimate real-world manifestation of the non-stationary, adversarial multi-agent game theory modeled by [John von Neumann](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/content/en/posts/john_von_neumann/): a high-frequency ecosystem where every action immediately alters the state of the board.
 
@@ -171,6 +171,11 @@ We would love to hear your thoughts. Share your perspective in the comments belo
 * [**Datalaria**: Devo — The Log Ingestion & Observability Revolution](/en/posts/devo/)
 * [**Datalaria**: Carto — Cloud-Native Geospatial Intelligence](/en/posts/carto/)
 * [**Datalaria**: HappyRobot — Voice AI Agents for Supply Chain Logistics](/en/posts/happyrobot/)
-* [**Datalaria**: Inference-Time Scaling and System 2 Reasoning](/en/posts/inference_time_scaling/)
+* * **Datalaria**: Inference-Time Scaling and System 2 Reasoning *(coming soon)*
 * [**Datalaria**: GraphRAG — Why Vectors Aren't Enough](/en/posts/graphrag/)
 * [**Datalaria**: John von Neumann — Game Theory and the Technological Singularity](/en/posts/john_von_neumann/)
+---
+
+### 💼 Evaluate AI and Infrastructure Investments with Financial Rigor
+
+Justify complex deep-tech and infrastructure capex to your Investment Committee with our **[Financial Business Case Guide (NPV, IRR & Tornado)](/en/posts/financial-business-case-npv-irr/)** and the **[Executive Pack in the Resources Catalog](/en/resources/#pack-business-case)**.

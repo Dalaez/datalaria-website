@@ -1,5 +1,67 @@
 version: 1.0.0
-updated_at: '2026-10-28'
-description: Backlog de ideas prospectivas y artículos planificados (sin post en content/
-  todavía). Cero dependencia de Notion.
+updated_at: '2026-11-08'
+description: Backlog de ideas prospectivas y artículos planificados (sin post en content/ todavía). Cero dependencia de Notion.
 ideas: []
+
+# Backlog Prospectivo Estratégico evaluado por E02 (SEO & Impact Strategist)
+# Gobernanza: Priorizado mediante Editorial ROI Score (Demanda SEO 40% + Fit Monetización 35% + Sinergia Ecosistema 25%)
+strategic_backlog:
+  - id: idea-monte-carlo-capex-risk
+    title_es: "Simulación de Monte Carlo en Excel y Python para Business Cases: Más Allá del VAN Determinista"
+    title_en: "Monte Carlo Simulation in Excel & Python for Business Cases: Beyond Deterministic NPV"
+    category: "Estrategia y Operaciones"
+    target_kit_or_app: "pack-business-case"
+    seo_demand_score: 82.0
+    monetization_fit_score: 95.0
+    ecosystem_synergy_score: 88.0
+    rationale_es: "Demanda orgánica creciente de modelos estocásticos para comités de inversión. Puente directo hacia el Executive Decision Pack Business Case (9€) y Suite 02."
+
+  - id: idea-pareto-multiobjective-portfolio
+    title_es: "Frontera Eficiente de Pareto en Priorización de Producto: Combinando RICE, DAR y Presupuesto"
+    title_en: "Pareto Efficient Frontier in Product Prioritization: Combining RICE, DAR & Budget Constraints"
+    category: "Estrategia y Operaciones"
+    target_kit_or_app: "suite-02"
+    seo_demand_score: 78.0
+    monetization_fit_score: 92.0
+    ecosystem_synergy_score: 90.0
+    rationale_es: "Resuelve el cuello de botella de priorización en C-Level y VPs de Producto. Conecta directamente la Suite 02 (Pack DAR 19€ y Pack RICE 19€)."
+
+  - id: idea-claude-subagents-sdd-contracts
+    title_es: "Anatomía de un Escuadrón de Subagentes con Derecho a Veto: De Prompts Frágiles a Contratos Pydantic"
+    title_en: "Anatomy of a Subagent Squad with Veto Power: From Fragile Prompts to Pydantic Contracts"
+    category: "IA, Ingeniería y Proyectos"
+    target_kit_or_app: "helix"
+    seo_demand_score: 92.0
+    monetization_fit_score: 96.0
+    ecosystem_synergy_score: 98.0
+    rationale_es: "Máxima relevancia técnica para la comunidad de agentes de IA y Spec-Driven Development. Embudo directo hacia la Waitlist de Datalaria Helix y Suite SDD (19€/39€)."
+
+  - id: idea-little-law-kingman-ops
+    title_es: "Ley de Little y Fórmula de Kingman en Operaciones: Por Qué Tu Backlog Colapsa al 85% de Carga"
+    title_en: "Little's Law & Kingman's Formula in Operations: Why Your Backlog Collapses at 85% Capacity"
+    category: "Estrategia y Operaciones"
+    target_kit_or_app: "suite-03"
+    seo_demand_score: 75.0
+    monetization_fit_score: 88.0
+    ecosystem_synergy_score: 85.0
+    rationale_es: "Fundamentación matemática rigurosa para directores de operaciones y manufactura. Activa el interés por el Pack PERT y la Suite 03 de Control Operativo (22€)."
+
+  - id: idea-edsger-dijkstra-formal-verification
+    title_es: "Edsger Dijkstra: La Cruzada contra el GOTO, la Verificación Formal y por qué Habría Vetado el Vibe Coding"
+    title_en: "Edsger Dijkstra: The Crusade Against GOTO, Formal Verification and Why He Would Veto Vibe Coding"
+    category: "Pioneros y Referentes"
+    target_kit_or_app: "helix"
+    seo_demand_score: 80.0
+    monetization_fit_score: 82.0
+    ecosystem_synergy_score: 92.0
+    rationale_es: "Monetiza el altísimo tráfico de la categoría Pioneros mediante puente temático natural hacia la verificación determinista de Datalaria Helix (INV-HELIX-1)."
+
+  - id: idea-claude-shannon-information-theory
+    title_es: "Claude Shannon: El Padre de la Teoría de la Información, la Entropía en LLMs y el Malabarista del Bell Labs"
+    title_en: "Claude Shannon: The Father of Information Theory, Entropy in LLMs and the Juggler of Bell Labs"
+    category: "Pioneros y Referentes"
+    target_kit_or_app: "flashcards"
+    seo_demand_score: 85.0
+    monetization_fit_score: 75.0
+    ecosystem_synergy_score: 82.0
+    rationale_es: "Perfil biográfico y matemático de alta atracción con puente pedagógico hacia Mazo Mágico (Flashcards AI) y la Suite SDD."

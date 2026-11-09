@@ -153,9 +153,9 @@
     "gsc_avg_position": 0.0
   },
   "business-case-financiero-van-tir": {
-    "ga4_views_30d": 0,
-    "ga4_users_30d": 0,
-    "ga4_engagement_sec": 0.0,
+    "ga4_views_30d": 56,
+    "ga4_users_30d": 7,
+    "ga4_engagement_sec": 293.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -189,9 +189,9 @@
     "gsc_avg_position": 0.0
   },
   "matriz-rice-ice-priorizacion": {
-    "ga4_views_30d": 40,
+    "ga4_views_30d": 60,
     "ga4_users_30d": 11,
-    "ga4_engagement_sec": 528.0,
+    "ga4_engagement_sec": 558.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -387,8 +387,8 @@
     "gsc_avg_position": 0.0
   },
   "carto": {
-    "ga4_views_30d": 6,
-    "ga4_users_30d": 6,
+    "ga4_views_30d": 7,
+    "ga4_users_30d": 7,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -432,8 +432,8 @@
     "gsc_avg_position": 0.0
   },
   "devo": {
-    "ga4_views_30d": 2,
-    "ga4_users_30d": 2,
+    "ga4_views_30d": 3,
+    "ga4_users_30d": 3,
     "ga4_engagement_sec": 3.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -459,8 +459,8 @@
     "gsc_avg_position": 0.0
   },
   "ex_machina": {
-    "ga4_views_30d": 27,
-    "ga4_users_30d": 22,
+    "ga4_views_30d": 28,
+    "ga4_users_30d": 23,
     "ga4_engagement_sec": 44.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -468,8 +468,8 @@
     "gsc_avg_position": 0.0
   },
   "finetuning_vs_rag": {
-    "ga4_views_30d": 11,
-    "ga4_users_30d": 11,
+    "ga4_views_30d": 12,
+    "ga4_users_30d": 12,
     "ga4_engagement_sec": 1.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -504,8 +504,8 @@
     "gsc_avg_position": 0.0
   },
   "game_snake": {
-    "ga4_views_30d": 26,
-    "ga4_users_30d": 26,
+    "ga4_views_30d": 27,
+    "ga4_users_30d": 27,
     "ga4_engagement_sec": 23.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -522,8 +522,8 @@
     "gsc_avg_position": 0.0
   },
   "graphrag": {
-    "ga4_views_30d": 31,
-    "ga4_users_30d": 22,
+    "ga4_views_30d": 32,
+    "ga4_users_30d": 23,
     "ga4_engagement_sec": 125.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -585,9 +585,9 @@
     "gsc_avg_position": 0.0
   },
   "kantorovich": {
-    "ga4_views_30d": 37,
-    "ga4_users_30d": 36,
-    "ga4_engagement_sec": 1330.0,
+    "ga4_views_30d": 40,
+    "ga4_users_30d": 37,
+    "ga4_engagement_sec": 1403.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -774,9 +774,9 @@
     "gsc_avg_position": 0.0
   },
   "app-openweather_part1_backend": {
-    "ga4_views_30d": 26,
+    "ga4_views_30d": 27,
     "ga4_users_30d": 26,
-    "ga4_engagement_sec": 43.0,
+    "ga4_engagement_sec": 44.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -891,9 +891,9 @@
     "gsc_avg_position": 0.0
   },
   "ia_agents_part7": {
-    "ga4_views_30d": 3,
-    "ga4_users_30d": 3,
-    "ga4_engagement_sec": 0.0,
+    "ga4_views_30d": 4,
+    "ga4_users_30d": 4,
+    "ga4_engagement_sec": 4.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -1089,9 +1089,9 @@
     "gsc_avg_position": 0.0
   },
   "conversor": {
-    "ga4_views_30d": 60,
+    "ga4_views_30d": 61,
     "ga4_users_30d": 7,
-    "ga4_engagement_sec": 167.0,
+    "ga4_engagement_sec": 169.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -1125,9 +1125,9 @@
     "gsc_avg_position": 0.0
   },
   "maths": {
-    "ga4_views_30d": 16,
-    "ga4_users_30d": 7,
-    "ga4_engagement_sec": 122.0,
+    "ga4_views_30d": 17,
+    "ga4_users_30d": 8,
+    "ga4_engagement_sec": 123.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -1152,18 +1152,18 @@
     "gsc_avg_position": 0.0
   },
   "snake": {
-    "ga4_views_30d": 41,
-    "ga4_users_30d": 4,
-    "ga4_engagement_sec": 154.0,
+    "ga4_views_30d": 53,
+    "ga4_users_30d": 5,
+    "ga4_engagement_sec": 170.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 0.0
   },
   "weather": {
-    "ga4_views_30d": 28,
-    "ga4_users_30d": 15,
-    "ga4_engagement_sec": 151.0,
+    "ga4_views_30d": 47,
+    "ga4_users_30d": 16,
+    "ga4_engagement_sec": 224.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,

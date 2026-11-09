@@ -84,7 +84,7 @@ It has two massive advantages in its favor. The first is that **it solves a real
 
 However, MCP's success will depend on adoption by the dominant duopoly: Google and OpenAI. If Anthropic manages to create a large enough open-source ecosystem (like Kubernetes once did against proprietary clouds), the other giants will be forced to support it natively.
 
-If you are designing the [architecture for an Agentic Project Management Office](/en/posts/proj_ops_part2_agentic_pmo/) or any system where you need to connect AI agents with legacy ERPs, PLMs, or document repositories, my recommendation is to bet on isolating your connectors. Today it might be through independent Python functions, and tomorrow, probably, wrapping those same functions in an MCP Server.
+If you are designing the **architecture for an Agentic Project Management Office** *(coming soon)* or any system where you need to connect AI agents with legacy ERPs, PLMs, or document repositories, my recommendation is to bet on isolating your connectors. Today it might be through independent Python functions, and tomorrow, probably, wrapping those same functions in an MCP Server.
 
 Just as USB killed hundreds of proprietary connectors, MCP has the potential to finally democratize LLM access to the "muscle" of enterprise data.
 
@@ -95,4 +95,4 @@ Just as USB killed hundreds of proprietary connectors, MCP has the potential to 
 * [**Anthropic**: Introducing the Model Context Protocol](https://www.anthropic.com/news/model-context-protocol)
 * [**GitHub**: Open Source MCP Servers Directory](https://github.com/modelcontextprotocol/servers)
 * [**Datalaria**: The Agentic Radar: Why LLMs Won't Save Your Supply Chain (And Tool Calling Will)](/en/posts/obs_part5_radar_agent/)
-* [**Datalaria**: Project Operations Engineering Part 2: The Agentic PMO](/en/posts/proj_ops_part2_agentic_pmo/)
+* * **Datalaria**: Project Operations Engineering Part 2: The Agentic PMO *(coming soon)*

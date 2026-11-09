@@ -1,5 +1,5 @@
 ---
-title: "RavenPack: De la Analítica de Noticias en Marbella al Cerebro Cuantitativo de Wall Street y los Agentes Financieros Autónomos"
+title: "RavenPack: De la Analítica de Noticias en Marbella al Cerebro de Wall Street"
 date: 2026-10-24
 draft: false
 category: "Startups"
@@ -9,7 +9,7 @@ image: cover.jpg
 weight: 10
 authorAvatar: datalaria-logo.png
 social_text: "¿Cómo se construye desde Marbella el motor de IA que guía las decisiones de los mayores fondos de Wall Street? La historia, arquitectura y futuro de RavenPack en la era de los agentes financieros autónomos 📈🧠🌊 #RavenPack #Fintech #NLP #QuantitativeTrading #WallStreet #AI"
-description: "Un análisis en profundidad de RavenPack: sus orígenes en 2003 en la Costa del Sol, la visión de Armando Gonzalez, cómo transformaron texto no estructurado en señales de trading cuantitativo, su evolución hacia Bigdata.com y su papel crítico en el camino a la AGI financiera."
+description: "Análisis en profundidad de RavenPack: sus orígenes en Marbella, cómo transformaron texto no estructurado en señales de trading cuantitativo, su salto a Bigdata.com y los agentes financieros."
 summary: "En 2003, en plena Milla de Oro de Marbella, un joven emprendedor californiano fundó RavenPack con una visión insólita: procesar cada noticia del planeta en milisegundos para alimentar los modelos matemáticos de Wall Street. Dos décadas después, la compañía es el oráculo silencioso de los mayores hedge funds y bancos de inversión mundiales. Desgranamos su tecnología de NLP, sus rondas, su foso defensivo y cómo sus grafos de conocimiento impulsan a los agentes de IA de 2026."
 ---
 
@@ -135,7 +135,7 @@ Con la incorporación de RavenPack, la comparativa de los grandes casos de éxit
 
 ### El Futuro: RavenPack en el Camino hacia la AGI Financiera
 
-La evolución de RavenPack conecta de forma orgánica con los artículos técnicos más recientes de Datalaria sobre [Inference-Time Scaling](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/content/es/posts/inference_time_scaling/index.md) y [Spec-Driven Development](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/content/es/posts/sdd_vs_vibe_coding/index.md):
+La evolución de RavenPack conecta de forma orgánica con los artículos técnicos más recientes de Datalaria sobre **Inference-Time Scaling** *(próximamente)* y [Spec-Driven Development](/es/posts/sdd_vs_vibe_coding/):
 
 Los mercados de capitales no se resuelven con intuición superficial ni con "vibe coding". Son el tablero definitivo de teoría de juegos analizado por [John von Neumann](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/content/es/posts/john_von_neumann/): un entorno no estacionario donde cada decisión genera una reacción adversaria en milisegundos.
 
@@ -171,6 +171,11 @@ Nos encantaría conocer tu reflexión. Déjanos tu opinión en los comentarios.
 * [**Datalaria**: Devo — La Revolución de la Observabilidad y los Logs](/es/posts/devo/)
 * [**Datalaria**: Carto — Inteligencia Geoespacial en la Nube](/es/posts/carto/)
 * [**Datalaria**: HappyRobot — Agentes de Voz para la Cadena de Suministro](/es/posts/happyrobot/)
-* [**Datalaria**: Inference-Time Scaling y Razonamiento Sistema 2](/es/posts/inference_time_scaling/)
+* * **Datalaria**: Inference-Time Scaling y Razonamiento Sistema 2 *(próximamente)*
 * [**Datalaria**: GraphRAG — Por Qué los Vectores No Bastan](/es/posts/graphrag/)
 * [**Datalaria**: John von Neumann — Teoría de Juegos y la Singularidad](/es/posts/john_von_neumann/)
+---
+
+### 💼 Evalúa Inversiones en IA e Infraestructura con Rigor Financiero
+
+Justifica proyectos tecnológicos y de infraestructura ante el Comité de Inversión con nuestra guía de **[Business Case Financiero (VAN, TIR y Tornado)](/es/posts/business-case-financiero-van-tir/)** y el **[Pack Ejecutivo en el Catálogo de Recursos](/es/recursos/#pack-business-case)**.

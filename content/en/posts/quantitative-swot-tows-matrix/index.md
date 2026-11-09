@@ -1,5 +1,5 @@
 ---
-title: "Quantitative SWOT & TOWS Matrix: The Definitive C-Level Guide to Boardroom Strategy & Capital Allocation"
+title: "Quantitative SWOT & TOWS Matrix: C-Level Guide to Boardroom Strategy & Capital"
 date: 2026-10-13
 draft: false
 translationKey: quantitative-swot-tows-matrix

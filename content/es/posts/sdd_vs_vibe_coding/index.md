@@ -9,7 +9,7 @@ image: cover.jpg
 weight: 10
 authorAvatar: datalaria-logo.png
 social_text: "¿'Vibe coding' hasta que producción revienta, o Especificaciones Formales (SDD) que los agentes compilan de forma determinista? El mayor debate del desarrollo de software en 2026 💻📐🧪 #SpecDrivenDevelopment #VibeCoding #SoftwareEngineering #AIAgents #DevOps"
-description: "Por qué el 'Vibe Coding' es una máquina de acumular deuda técnica invisible y cómo SDD (Spec-Driven Development) invierte el rol del ingeniero: de escribir sintaxis manual a diseñar contratos de interfaz, diagramas de estado y suites de test que la IA ejecuta sin alucinaciones."
+description: "Por qué el Vibe Coding acumula deuda técnica invisible y cómo SDD (Spec-Driven Development) invierte el rol del ingeniero mediante contratos de interfaz, diagramas de estado y suites de test."
 summary: "A principios de 2025, el término 'Vibe Coding' cautivó al mundo: programar a base de intuición, chats en lenguaje natural y copiar y pegar sin leer el código. En 2026, la resaca del 'Vibe Debt' ha golpeado a las empresas con bases de código incomprensibles y regresiones silenciosas. Analizamos el ascenso de SDD (Spec-Driven Development), la metodología que sustituye el 'prompt-and-pray' por especificaciones ejecutables, contratos tipados y bucles de verificación automatizados con agentes de IA."
 ---
 

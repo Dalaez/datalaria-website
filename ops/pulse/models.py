@@ -151,3 +151,112 @@ class PublicPulseDataset(BaseModel):
                 raise ValueError(f"INV-PULSE-1 FAILED: Activo privado {asset.id} detectado en dataset público.")
             if asset.metrics_absolute is not None:
                 raise ValueError(f"INV-PULSE-2 FAILED: Métricas absolutas detectadas en activo {asset.id}.")
+
+
+# ==============================================================================
+# CONTRATOS PYDANTIC V2 PARA EL ANALIZADOR DE IMPACTO SEO/GA4 (HITO 7.2 / ADR-020)
+# ==============================================================================
+
+OpportunityType = Literal[
+    "gsc_position_4_20",
+    "serp_snippet_truncation",
+    "high_retention_low_ctr",
+]
+BridgeType = Literal["kit_b2b", "app_sandbox", "helix_waitlist"]
+
+
+class QuickWinItem(BaseModel):
+    """Oportunidad accionable de mejora de CTR y posicionamiento en buscadores."""
+    id: str
+    slug: str
+    title_es: str
+    title_en: str
+    category: str
+    ga4_views_30d: int = Field(ge=0)
+    ga4_users_30d: int = Field(ge=0)
+    avg_engagement_sec: float = Field(ge=0.0)
+    gsc_impressions_30d: int = Field(ge=0)
+    gsc_avg_position: float = Field(ge=0.0)
+    gsc_ctr_pct: float = Field(ge=0.0)
+    seo_score: int = Field(ge=0, le=100)
+    seo_issues: List[str] = Field(default_factory=list)
+    opportunity_type: OpportunityType
+    priority_score: float = Field(ge=0.0, le=100.0)
+    recommended_title_es: str = Field(min_length=35, max_length=95)
+    recommended_title_en: str = Field(min_length=35, max_length=95)
+    recommended_desc_es: str = Field(min_length=75, max_length=245)
+
+
+class MonetizationOrphanItem(BaseModel):
+    """Post de alto tráfico/retención que carece de puente hacia Kits B2B o Apps Sandbox."""
+    id: str
+    slug: str
+    title_es: str
+    category: str
+    ga4_views_30d: int = Field(ge=0)
+    ga4_users_30d: int = Field(ge=0)
+    avg_engagement_sec: float = Field(ge=0.0)
+    rank_pct: int = Field(ge=0, le=100)
+    recommended_bridge_type: BridgeType
+    recommended_target_id: str
+    recommended_shortcode_or_url: str
+    rationale_es: str
+
+
+class DecayAlertItem(BaseModel):
+    """Activo evergreen con signos de fatiga orgánica o déficit de enlazado interno."""
+    id: str
+    slug: str
+    title_es: str
+    category: str
+    publish_date: Optional[date] = None
+    days_since_publish: int = Field(ge=0)
+    ga4_views_30d: int = Field(ge=0)
+    seo_score: int = Field(ge=0, le=100)
+    recommended_action: str
+
+
+class CategoryPerformanceItem(BaseModel):
+    """Rendimiento agregado y cobertura de monetización por categoría oficial."""
+    category: str
+    published_posts: int = Field(ge=0)
+    total_views_30d: int = Field(ge=0)
+    avg_views_per_post: float = Field(ge=0.0)
+    total_users_30d: int = Field(ge=0)
+    avg_engagement_sec: float = Field(ge=0.0)
+    monetized_posts: int = Field(ge=0)
+    monetization_coverage_pct: float = Field(ge=0.0, le=100.0)
+    editorial_roi_score: float = Field(ge=0.0, le=100.0)
+
+
+class BacklogPrioritizedItem(BaseModel):
+    """Idea editorial prospectiva priorizada mediante Editorial ROI Score."""
+    id: str
+    title_es: str
+    title_en: str
+    category: str
+    target_kit_or_app: str
+    seo_demand_score: float = Field(ge=0.0, le=100.0)
+    monetization_fit_score: float = Field(ge=0.0, le=100.0)
+    ecosystem_synergy_score: float = Field(ge=0.0, le=100.0)
+    editorial_roi_score: float = Field(ge=0.0, le=100.0)
+    rationale_es: str
+
+
+class PulseImpactReport(BaseModel):
+    """Contrato raíz de data/pulse/private/impact_report.json (INV-PULSE-6)."""
+    version: str = "1.0.0"
+    generated_at: datetime
+    visibility: Literal["private"] = "private"
+    total_published_posts: int = Field(ge=0)
+    total_scheduled_posts: int = Field(ge=0)
+    total_30d_post_views: int = Field(ge=0)
+    median_post_views: float = Field(ge=0.0)
+    p75_post_views: float = Field(ge=0.0)
+    monthly_growth_yoy_pct: float
+    category_performance: List[CategoryPerformanceItem]
+    quick_wins_ctr: List[QuickWinItem]
+    monetization_orphans: List[MonetizationOrphanItem]
+    decay_alerts: List[DecayAlertItem]
+    prioritized_backlog: List[BacklogPrioritizedItem]
+

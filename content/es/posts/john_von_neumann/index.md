@@ -1,5 +1,5 @@
 ---
-title: "John von Neumann: El Padre de la Arquitectura de Computadores, la Teoría de Juegos y el Origen de la Singularidad"
+title: "John von Neumann: Arquitectura de Computadores, Teoría de Juegos y Singularidad"
 date: 2026-10-10
 draft: false
 category: "Pioneros y Referentes"
@@ -9,7 +9,7 @@ image: cover.jpg
 weight: 10
 authorAvatar: datalaria-logo.png
 social_text: "Diseñó la arquitectura de cada ordenador del planeta, inventó la Teoría de Juegos y acuñó el término 'Singularidad Tecnológica'. ¿Fue John von Neumann la mente más asombrosa del siglo XX? 🧠💻♟️ #JohnVonNeumann #AGI #ComputerScience #GameTheory #TechHistory"
-description: "Un recorrido fascinante por la vida y el genio de John von Neumann: sus excentricidades, la invención del ordenador de programa almacenado, el cuello de botella que desafía a la IA moderna, la teoría de juegos y el origen histórico del concepto de Singularidad en el camino a la AGI."
+description: "Recorrido por la vida y el genio de John von Neumann: la arquitectura de programa almacenado, el cuello de botella que desafía a la IA moderna, la teoría de juegos y la Singularidad."
 summary: "En la década de 1950, Eugene Wigner sentenció: 'Solo Johnny von Neumann estaba completamente despierto'. Desde calcular divisiones de ocho dígitos de cabeza con seis años hasta diseñar el plano maestro de todos los procesadores modernos y anticipar que el progreso tecnológico nos conducía a una 'singularidad esencial', analizamos el legado del polímata que moldeó el hardware, la estrategia de los agentes y el destino de la AGI."
 ---
 
@@ -230,3 +230,8 @@ Nos encantaría conocer tu reflexión. Déjanos tu opinión en los comentarios.
 * [**Datalaria**: Leonid Kantorovich — La Optimización Matemática y la Dualidad](/es/posts/kantorovich/)
 * [**Datalaria**: The Thinking Game — Demis Hassabis, DeepMind y el Auto-Juego](/es/posts/the_thinking_game/)
 * [**Datalaria**: Submer — El Muro Térmico de la IA y la Refrigeración Líquida](/es/posts/submer/)
+---
+
+### 📊 Del Modelo Matemático al Comité de Dirección
+
+Aplica modelos cuantitativos de teoría de decisión y estrategia competitiva en tu organización con nuestro análisis de **[DAFO Cuantitativo y Matriz CAME](/es/posts/dafo-cuantitativo-matriz-came/)** y la **[Suite 1: Estrategia Corporativa MBA en el Catálogo de Recursos](/es/recursos/#suite-01)**.

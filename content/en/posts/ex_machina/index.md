@@ -174,3 +174,10 @@ We would love to hear your thoughts. Share your perspective in the comments belo
 * [**Datalaria**: Silicon Valley and the PiperNet Dilemma — Uncontrollable Autonomous AI](/en/posts/silicon_valley/)
 * [**Datalaria**: The Thinking Game — Demis Hassabis, DeepMind, and Reinforcement Learning](/en/posts/the_thinking_game/)
 * [**Datalaria**: EU AI Act — Human Oversight and Systemic AI Risks](/en/posts/eu_ai_act/)
+---
+
+### 🧭 Put AI Agent Governance and Observability into Practice
+
+Explore how we audit, monitor, and govern autonomous agent systems in real time by trying our interactive application for free and browsing our **[Executive Resources & Frameworks Catalog](/en/resources/)**:
+
+{{< app-ref slug="obs-management" >}}

@@ -1,6 +1,6 @@
 ---
 title: "Executive Decision Packs: The Quantitative Framework for Boardroom Decision-Making"
-date: 2026-11-15
+date: 2026-11-29
 draft: false
 category: "Strategy & Operations"
 categories: ["Corporate Strategy", "Decision Making", "Project Management", "Corporate Finance", "Strategy & Operations"]

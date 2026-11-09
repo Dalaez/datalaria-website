@@ -171,3 +171,10 @@ Construir agentes autónomos de IA sin un framework de evaluación riguroso es c
 * [**Datalaria**: GraphRAG — Por Qué los Vectores No Bastan](/es/posts/graphrag/)
 * [**Datalaria**: Silicon Valley y el Dilema de PiperNet — Seguridad y Pérdida de Control](/es/posts/silicon_valley/)
 * [**Datalaria**: EU AI Act — Guía Práctica de Robustez y Compliance Técnico](/es/posts/eu_ai_act/)
+---
+
+### 🧭 Lleva la Gobernanza y Observabilidad de Agentes IA a la Práctica
+
+Explora cómo auditamos, supervisamos y gobernamos sistemas agénticos en tiempo real probando gratis nuestra aplicación interactiva y consultando el **[Catálogo de Recursos y Frameworks Ejecutivos](/es/recursos/)**:
+
+{{< app-ref slug="obs-management" >}}

@@ -92,3 +92,10 @@ If you have the chance to see the documentary, do it. It is not just computer hi
 * <a name="ref-8"></a>[8] **Nature:** [Highly accurate protein structure prediction with AlphaFold](https://www.nature.com/articles/s41586-021-03819-2)
 * <a name="ref-9"></a>[9] **AlphaFold Database:** [EMBL-EBI AlphaFold Protein Structure Database](https://alphafold.ebi.ac.uk/)
 * <a name="ref-10"></a>[10] **Time Magazine:** [DeepMind's Demis Hassabis on the Future of AI](https://time.com/7277608/demis-hassabis-interview-time100-2025//)
+---
+
+### 🧭 Put AI Agent Governance and Observability into Practice
+
+Explore how we audit, monitor, and govern autonomous agent systems in real time by trying our interactive application for free and browsing our **[Executive Resources & Frameworks Catalog](/en/resources/)**:
+
+{{< app-ref slug="obs-management" >}}

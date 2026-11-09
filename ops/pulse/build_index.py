@@ -134,7 +134,7 @@ def audit_seo(
         issues.append("Taxonomía insuficiente: requiere al menos 1 categoría y 3 tags")
 
     has_internal_link = bool(re.search(r'\[.*?\]\((/|https?://datalaria\.com)', content_text))
-    has_app_ref = bool(re.search(r'\{\{<\s*app-ref', content_text))
+    has_app_ref = bool(re.search(r'\{\{<\s*(?:app-ref|product-card|helix-waitlist)', content_text))
     internal_links_ok = (has_internal_link or has_app_ref)
     if not internal_links_ok:
         issues.append("Sin enlaces internos hacia el portal o shortcodes de apps")
@@ -338,6 +338,8 @@ def scan_posts(git_map: Dict[str, datetime]) -> List[ContentAsset]:
         kit_match = re.search(r'(?:/recursos/|/resources/|datalaria\.lemonsqueezy\.com)[^"\'\s)]*', body_eval)
         if kit_match:
             related_kit = kit_match.group(0)
+        elif re.search(r'\{\{<\s*helix-waitlist', body_eval):
+            related_kit = "helix-waitlist"
 
         series = meta_primary.get("series")
         slug_ref = (es or en)["slug"]

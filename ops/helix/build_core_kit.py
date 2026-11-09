@@ -1351,7 +1351,7 @@ def build_core_kit(
         shutil.copy2(sf, canonical_specs_target / sf.name)
 
     # Generar / copiar adaptadores
-    build_adapters(root_dir=root, check_only=False)
+    build_adapters(root_dir=Path(source_root), check_only=False)
     for ad_dir in [".agents", ".claude", ".cursor"]:
         src_ad = root / ad_dir
         if src_ad.exists():

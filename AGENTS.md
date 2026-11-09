@@ -25,6 +25,7 @@
 | :--- | :--- | :--- |
 | **`/specs/`** | **El Corazón SDD (Fuente Única de Verdad).** Contiene `_constitution.md`, `ROADMAP.md`, `DECISIONS.md` (ADRs), `_templates/`, `audit/`, `squad/` (las 12 fichas `AGENT_SPEC` de Helix) y las especificaciones por app (`/specs/apps/<slug>/spec.md`). | **Lectura obligatoria.** Todo cambio arquitectónico o funcional empieza aquí. |
 | **`/specs/squad/`** | **Escuadrón Canónico Datalaria Helix (12 Agentes).** Contiene `README.md`, `triage-rubric.md` y las 12 fichas `01-orchestrator.md` a `12-release-devops.md`. | **Carga bajo demanda (`INV-HELIX-2`).** Prohibido editar a mano los adaptadores compilados en `.agents/`, `.claude/` o `.cursor/`. |
+| **`/specs/squad-editorial/`** | **Escuadrón Canónico Datalaria Scriba (8 Agentes).** Contiene `README.md`, `triage-editorial-rubric.md` y las 8 fichas `E01-editorial-orchestrator.md` a `E08-autopilot-dispatcher.md`. | **Carga bajo demanda (`INV-SCRIBA-2`).** Prohibido editar a mano los adaptadores compilados en `.agents/squad-editorial/`, `.claude/` o `.cursor/`. |
 | **`/apps/`** | **Código Fuente de Aplicaciones.** Contiene frontends (React/Vite/TS) y backends/motores cuantitativos (FastAPI/Python). | Solo modificar bajo cobertura de un `spec.md` activo y tests automatizados. |
 | **`/static/`** | **Assets Públicos de Hugo.** Todo archivo aquí se copia literalmente a `public/` y es accesible por Internet en `https://datalaria.com/*`. | **PROHIBIDO** alojar archivos `.py`, `.sql`, `.env` o código backend aquí. Solo bundles compilados, imágenes y apps estáticas congeladas. |
 | **`/content/`, `/layouts/`** | **Portal Editorial Hugo y Catálogo B2B (Lemon Squeezy).** Contenido bilingüe (`/es/`, `/en/`) y plantillas Go HTML. Las fichas de App viven en `/content/{es,en}/apps/<slug>/`. | Preservar paridad estricta bilingüe ES/EN y telemetría GA4 / Lemon Squeezy. |
@@ -107,3 +108,35 @@ Para garantizar que el escuadrón aprenda de forma acumulativa sin degradar la v
    - Cuando se alcanza el tope de 6 reglas en una ficha, el Coordinador aplica reemplazo FIFO o fusiona reglas relacionadas y ejecuta `python -m ops.helix.build_adapters`.
 3. **Tarjeta de Cierre `DEBRIEF HELIX`:**
    - Al finalizar cualquier tarea de desarrollo o auditoría (`M`, `L` o `XL`), el Coordinador emite obligatoriamente antes de despedirse el bloque `DEBRIEF HELIX` (1. Participación por rol convocado, 2. Conclusiones y ajustes destilados, 3. Riesgos y mitigación, 4. Propuestas proactivas de alto ROI).
+
+---
+
+## 6. ESCUADRÓN EDITORIAL DATALARIA SCRIBA Y PROTOCOLO DEL SUPEREQUIPO (`ADR-020`)
+
+La gestión del blog, estrategia SEO/GA4, redacción bilingüe (`ES ⇔ EN`), campañas de Brevo Newsletter 2.0 y sindicación omnicanal automatizada (X/Twitter, LinkedIn, Dev.to, CoderLegion) está gobernada por el **Escuadrón de 8 Agentes Datalaria Scriba** definido en [`/specs/squad-editorial/`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-editorial/README.md):
+
+### 6.1 Protocolo de Federación del Superequipo (`01-orchestrator` ⇔ `E01-editorial-orchestrator`)
+- **Tareas de Ingeniería, Código y Kits B2B (`/apps/`, `/ops/helix/`, `.zip`):** Toma el mando [`01-orchestrator`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/01-orchestrator.md) aplicando [`specs/squad/triage-rubric.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/triage-rubric.md).
+- **Tareas de Blog, Contenido, Redes y Métricas (`content/**`, `autopilot/`, Brevo, GA4/GSC):** Toma el mando [`E01-editorial-orchestrator`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-editorial/E01-editorial-orchestrator.md) aplicando [`specs/squad-editorial/triage-editorial-rubric.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-editorial/triage-editorial-rubric.md).
+- **Protocolo de Relevo (Handoff):** Al concluir una App o Kit (`QA_PASS`), `01-orchestrator` transfiere el contexto y las URLs a `E01-editorial-orchestrator` para activar la producción de posts y la campaña de distribución.
+
+### 6.2 Tarjeta de Triaje Editorial (`TRIAGE SCRIBA`)
+Al iniciar una tarea de contenido o sindicación, el agente emite la tarjeta canónica de 6 líneas:
+
+```text
+TRIAGE SCRIBA · Tarea <ID> · Talla: <XS|S|M|L|XL>
+Superficies afectadas: <content_es | content_en | seo_metadata | newsletter_brevo | social_syndication | pulse_index>
+Roles activados (<N> de 8): <iconos e IDs de los agentes convocados>
+Roles en banquillo: <agentes no requeridos>
+Verification Gate: <comandos exactos con código de salida 0>
+Presupuesto y Gobernanza: Máx. 2 intentos por gate · Checkpoint <tag Git> · Aprobación humana previa: <SÍ|NO>
+```
+
+### 6.3 Mapa de las 4 Células de Datalaria Scriba
+
+| Célula | Agente (`specs/squad-editorial/<id>.md`) | Cuándo se convoca obligatoriamente |
+| :--- | :--- | :--- |
+| **1. Dirección** | 🗞️ [`E01-editorial-orchestrator`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-editorial/E01-editorial-orchestrator.md) · 📈 [`E02-seo-impact-strategist`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-editorial/E02-seo-impact-strategist.md) | `E01` en toda tarea editorial; `E02` en `TRG-SEO`, auditorías de impacto GA4/GSC y tallas `L`/`XL`. |
+| **2. Creación** | ✍️ [`E03-technical-writer`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-editorial/E03-technical-writer.md) · 🌐 [`E04-bilingual-seo-editor`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-editorial/E04-bilingual-seo-editor.md) · 💰 [`E05-content-monetizer`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-editorial/E05-content-monetizer.md) | `E03` en redacción de posts; `E04` en `TRG-I18N-POST` (paridad ES/EN y SEO); `E05` en `TRG-BREVO` y CTAs. |
+| **3. Sindicación** | 📣 [`E06-social-syndicator`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-editorial/E06-social-syndicator.md) | `TRG-SOCIAL` (LinkedIn, hilos X coste 0€, Dev.to y CoderLegion con `canonical_url`). |
+| **4. Garantía** | ✅ [`E07-editorial-qa`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-editorial/E07-editorial-qa.md) · 🤖 [`E08-autopilot-dispatcher`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-editorial/E08-autopilot-dispatcher.md) | `TRG-EDIT-QA` (toda tarea editorial) → `E07` con veto vinculante (`INV-SCRIBA-1`). `E08` para publicación tras `EDITORIAL_QA_PASS`. |

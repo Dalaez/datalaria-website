@@ -1,5 +1,5 @@
 ---
-title: "Kurt Gödel: El Teorema de la Incompletitud, los Límites de la Lógica y si una AGI Podrá Jamás Conocerlo Todo"
+title: "Kurt Gödel: El Teorema de la Incompletitud, los Límites de la Lógica y la AGI"
 date: 2026-10-31
 draft: false
 category: "Pioneros y Referentes"
@@ -9,7 +9,7 @@ image: cover.jpg
 weight: 10
 authorAvatar: datalaria-logo.png
 social_text: "Einstein confesó que iba a su despacho en Princeton solo por el privilegio de caminar a casa junto a Kurt Gödel. ¿Por qué el hombre que destruyó la certeza matemática define los límites últimos de la AGI? 🧩🧠📜 #KurtGodel #Incompleteness #AlanTuring #AI #ComputerScience #Philosophy"
-description: "Un recorrido fascinante por la vida y el genio atormentado de Kurt Gödel: sus paseos con Einstein, la demolición del programa de Hilbert, la numeración de Gödel que inspiró a Turing y el debate sobre si la AGI está limitada por los teoremas de incompletitud."
+description: "Recorrido por la vida y el genio de Kurt Gödel: sus paseos con Einstein en Princeton, la demolición del programa de Hilbert y el debate sobre si la AGI está limitada por la incompletitud."
 summary: "En 1931, con apenas veinticinco años, un tímido matemático austríaco asestó el golpe más demoledor de la historia del pensamiento formal: demostró que en cualquier sistema matemático consistente siempre existirán verdades que jamás podrán ser probadas. Analizamos la mente atormentada de Kurt Gödel, sus obsesiones, la conexión directa con el 'Halting Problem' de Turing y la pregunta que quita el sueño a los teóricos de 2026: ¿chocará la AGI contra el muro de la incompletitud?"
 ---
 
@@ -137,7 +137,7 @@ En 1961, el filósofo de Oxford John Lucas, y más tarde en 1989 el eminente fí
 #### 2. La Respuesta de la IA Moderna y los Sistemas Adaptativos
 Frente a la tesis de Penrose, los científicos de la computación y teóricos del aprendizaje automático moderno esgrimen objeciones igualmente contundentes:
 * **Los humanos tampoco somos sistemas axiomáticos consistentes**: Los seres humanos nos contradecimos a diario, albergamos creencias incompatibles, olvidamos variables y cometemos errores de cálculo. Si un sistema no es perfectamente consistente, los teoremas de Gödel no impiden su funcionamiento práctico.
-* **El razonamiento no es una demostración rígida cerrada**: Como analizamos en nuestro reciente artículo sobre [Inference-Time Scaling y Razonamiento Sistema 2](/es/posts/inference_time_scaling/), los modelos frontera de 2026 no operan como demostradores estáticos de lógica de primer orden. Utilizan búsqueda heurística probabilística, aprendizaje por refuerzo, simulación de Monte Carlo e inducción adaptativa para cambiar dinámicamente sus marcos de referencia.
+* **El razonamiento no es una demostración rígida cerrada**: Como analizamos en nuestro reciente artículo sobre **Inference-Time Scaling y Razonamiento Sistema 2** *(próximamente)*, los modelos frontera de 2026 no operan como demostradores estáticos de lógica de primer orden. Utilizan búsqueda heurística probabilística, aprendizaje por refuerzo, simulación de Monte Carlo e inducción adaptativa para cambiar dinámicamente sus marcos de referencia.
 
 #### La Muralla Real: Los Límites de la Verificación Formal
 Donde Gödel impone una barrera de acero incontestable en 2026 es en la **Seguridad y la Gobernanza de la IA** (como abordamos en [Evaluación y Testing de Agentes](/es/posts/evaluacion_agentes_ia/) y el [EU AI Act](/es/posts/eu_ai_act/)):
@@ -172,9 +172,16 @@ Nos encantaría conocer tu reflexión. Déjanos tu opinión en los comentarios.
 * [**Douglas Hofstadter (1979)**: *Gödel, Escher, Bach: An Eternal Golden Braid* — Basic Books](https://www.basicbooks.com/titles/douglas-r-hofstadter/godel-escher-bach/9780465026562/)
 * [**Datalaria**: Alan Turing — El Genio que Rompió Enigma y Preguntó si las Máquinas Podían Pensar](/es/posts/alan_turing/)
 * [**Datalaria**: John von Neumann — El Padre de la Arquitectura y el Origen de la Singularidad](/es/posts/john_von_neumann/)
-* [**Datalaria**: Inference-Time Scaling y Razonamiento Sistema 2](/es/posts/inference_time_scaling/)
+* * **Datalaria**: Inference-Time Scaling y Razonamiento Sistema 2 *(próximamente)*
 * [**Datalaria**: J. Robert Oppenheimer — De Monte Carlo al Dilema Ético de la AGI](/es/posts/oppenheimer/)
 * [**Datalaria**: Evaluación y Testing de Agentes de IA en Producción](/es/posts/evaluacion_agentes_ia/)
 * [**Datalaria**: SDD (Spec-Driven Development) vs. Vibe Coding](/es/posts/sdd_vs_vibe_coding/)
 * [**Datalaria**: Thomas Bayes — Inferencia Probabilística y el Peso de la Evidencia](/es/posts/thomas_bayes/)
 * [**Datalaria**: EU AI Act — Marco de Gobernanza y Supervisión Técnica](/es/posts/eu_ai_act/)
+---
+
+### 🧭 Lleva la Gobernanza y Observabilidad de Agentes IA a la Práctica
+
+Explora cómo auditamos, supervisamos y gobernamos sistemas agénticos en tiempo real probando gratis nuestra aplicación interactiva y consultando el **[Catálogo de Recursos y Frameworks Ejecutivos](/es/recursos/)**:
+
+{{< app-ref slug="obs-management" >}}

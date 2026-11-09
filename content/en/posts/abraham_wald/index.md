@@ -110,3 +110,8 @@ The next time you look at a dashboard that points to an obvious conclusion, reme
 3.  **Mangel, M., & Samaniego, F. J. (1984).** *Abraham Wald's Work on Aircraft Survivability*. Journal of the American Statistical Association.
 4.  **Crescendo.ai.** *16 Real AI Bias Examples & Mitigation Guide*. (Case study on Amazon's hiring algorithm).
 5.  **Forbes Tech Council.** *The Ostrich Effect And Survivorship Bias: The Real Cyber Threats*.
+---
+
+### ⚖️ Quantitative Decision-Making Under Uncertainty
+
+Bring mathematical optimization, Boolean veto gates, and sensitivity modeling to your projects with our **[Quantitative DAR Matrix Guide](/en/posts/quantitative-dar-matrix/)** and **[Suite 2: Decision-Making & Prioritization in the Resources Catalog](/en/resources/#suite-02)**.

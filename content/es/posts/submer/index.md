@@ -1,5 +1,5 @@
 ---
-title: "Submer: La Refrigeración Líquida Nacida en Barcelona que Permite Enfriar los Superordenadores de la AGI"
+title: "Submer: La Refrigeración Líquida Nacida en Barcelona para Superordenadores AGI"
 date: 2026-10-08
 draft: false
 category: "Startups"
@@ -9,7 +9,7 @@ image: cover.jpg
 weight: 10
 authorAvatar: datalaria-logo.png
 social_text: "¿Cómo una startup de Barcelona se convirtió en la pieza física invisible para enfriar los superordenadores de la AGI? La historia de Submer y la refrigeración líquida por inmersión 🧊🖥️⚡ #Submer #DataCenters #ImmersionCooling #Hardware #AI"
-description: "Cómo dos emprendedores en Barcelona revolucionaron la infraestructura física de la computación. Analizamos la tecnología de inmersión líquida de Submer, sus alianzas con Intel y Nvidia, y por qué enfriar servidores con fluidos dieléctricos es el cuello de botella que decide el futuro de la AGI."
+description: "Cómo dos emprendedores en Barcelona revolucionaron la infraestructura de centros de datos: tecnología de inmersión líquida de Submer, alianzas con Intel y Nvidia y el futuro de la AGI."
 summary: "Entrenar y ejecutar modelos frontera de IA genera una densidad térmica que pulveriza los límites de la refrigeración por aire tradicional. Submer, fundada en Barcelona por Daniel Pope y Pol Valls, sumerge servidores en fluidos dieléctricos biodegradables logrando un PUE récord de 1.03. Analizamos su tecnología, rondas de inversión y por qué son la pieza invisible indispensable en la carrera hacia la AGI."
 ---
 
@@ -148,3 +148,8 @@ Desde una nave industrial en Barcelona, Daniel Pope y Pol Valls comprendieron qu
 * [**Datalaria**: J. Robert Oppenheimer — De Monte Carlo al Dilema Ético de la AGI](/es/posts/oppenheimer/)
 * [**Datalaria**: EU AI Act — Guía Práctica de Gobernanza y Eficiencia de la IA](/es/posts/eu_ai_act/)
 * [**Datalaria**: Silicon Valley y el Dilema de PiperNet — La IA Incontrolable](/es/posts/silicon_valley/)
+---
+
+### 💼 Evalúa Inversiones en IA e Infraestructura con Rigor Financiero
+
+Justifica proyectos tecnológicos y de infraestructura ante el Comité de Inversión con nuestra guía de **[Business Case Financiero (VAN, TIR y Tornado)](/es/posts/business-case-financiero-van-tir/)** y el **[Pack Ejecutivo en el Catálogo de Recursos](/es/recursos/#pack-business-case)**.

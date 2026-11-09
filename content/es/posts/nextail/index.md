@@ -1,11 +1,11 @@
 ---
-title: "Nextail: Cómo la IA Prescriptiva de una Startup Española Está Derrotando a Excel en el Retail de Moda"
+title: "Nextail: Cómo la IA Prescriptiva de una Startup Española Derrota a Excel en Retail"
 date: 2026-03-31
 draft: false
 category: "Startups"
 categories: ["casos_exito", "IA", "Startups"]
 tags: ["nextail", "ia", "retail", "supply chain", "S&OP", "machine learning", "optimización", "moda", "startup"]
-description: "La historia de Nextail, la startup madrileña fundada por un ex-director de logística de Zara que está reemplazando las hojas de cálculo del retail de moda por un cerebro matemático capaz de tomar miles de millones de decisiones de inventario por temporada."
+description: "La historia de Nextail, la startup madrileña que está reemplazando las hojas de cálculo del retail de moda por un motor matemático de IA prescriptiva para decisiones de inventario."
 summary: "El futuro del retail no cabe en Excel. Un ex-directivo de Zara fundó Nextail para demostrarlo, construyendo un motor de IA prescriptiva que procesa miles de millones de combinaciones de inventario y libera hasta el 75% del tiempo de los equipos de merchandising. Esta es la historia de cómo la optimización matemática está conquistando el fast fashion."
 social_text: "El futuro del retail no cabe en Excel. Un ex-directivo de Zara fundó Nextail para demostrarlo con IA prescriptiva que procesa miles de millones de decisiones de inventario. La historia de cómo las matemáticas están conquistando el fast fashion 🧠👗📊 #RetailTech #IA #SupplyChain"
 image: cover.png
@@ -146,3 +146,8 @@ Como Villalba descubrió en los pasillos de Zare: la agilidad del futuro no se c
 * [**Deloitte**: AI - The Helping Hand in Sales and Operations Planning](https://www.deloitte.com/us/en/services/consulting/blogs/business-operations-room/llm-for-supply-chain-optimization.html)
 * [**Mark Lewis en Nextail**: Dispelling the magic - 5 retail realities about AI in fashion](https://nextail.co/resource/dispellling-ai-magic-fashion-retail-mark-lewis)
 * [**Retail Tech Innovation Hub**: Scotta adopta la tecnología IA de Nextail](https://retailtechinnovationhub.com/home/2025/7/10/scotta-taps-nextail-ai-powered-technology-to-support-retailers-growth-across-stores-and-online)
+---
+
+### 📊 Del Modelo Matemático al Comité de Dirección
+
+Aplica modelos cuantitativos de teoría de decisión y estrategia competitiva en tu organización con nuestro análisis de **[DAFO Cuantitativo y Matriz CAME](/es/posts/dafo-cuantitativo-matriz-came/)** y la **[Suite 1: Estrategia Corporativa MBA en el Catálogo de Recursos](/es/recursos/#suite-01)**.

@@ -1,5 +1,5 @@
 ---
-title: "Multiverse Computing: The Spanish Startup Solving AI's Bottleneck with Quantum Physics (Without Quantum Computers)"
+title: "Multiverse Computing: The Spanish Startup Compressing AI with Quantum Physics"
 date: 2026-01-31
 draft: false
 category: "Startups"
@@ -81,3 +81,8 @@ By applying quantum physics mathematics to solve today's most urgent AI bottlene
 * [**Crunchbase**: Multiverse Computing Raises $215M At A 5x Valuation Jump To Help Speed Up LLM Rollout](https://news.crunchbase.com/venture/quantum-multiverse-computing-startup-raises-funding/)
 * [**EurekAlert!**: Bank of Canada and Multiverse Computing complete preliminary quantum simulation of cryptocurrency market](https://www.eurekalert.org/news-releases/949731)
 * [**Iberdrola**: Iberdrola and Multiverse Computing announce pilot project success to optimise battery installation in the grid](https://www.iberdrola.com/press-room/news/detail/iberdrola-and-multiverse-computing-announce-pilot-project-success-to-optimise-battery-installation-in-the-grid)
+---
+
+### 💼 Evaluate AI and Infrastructure Investments with Financial Rigor
+
+Justify complex deep-tech and infrastructure capex to your Investment Committee with our **[Financial Business Case Guide (NPV, IRR & Tornado)](/en/posts/financial-business-case-npv-irr/)** and the **[Executive Pack in the Resources Catalog](/en/resources/#pack-business-case)**.

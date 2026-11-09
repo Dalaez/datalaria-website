@@ -9,7 +9,7 @@ image: cover.jpg
 weight: 10
 authorAvatar: datalaria-logo.png
 social_text: "'Vibe coding' until production crashes, or Formal Machine-Readable Specs (SDD) that agents compile deterministically? The defining software engineering debate of 2026 💻📐🧪 #SpecDrivenDevelopment #VibeCoding #SoftwareEngineering #AIAgents #DevOps"
-description: "Why 'Vibe Coding' accumulates invisible technical debt and how Spec-Driven Development (SDD) inverts the software engineer's role: from writing manual syntax to authoring interface contracts, state diagrams, and invariant test suites that AI agents execute without hallucination."
+description: "Why Vibe Coding accumulates invisible technical debt and how Spec-Driven Development (SDD) inverts the software engineer's role through interface contracts, state diagrams, and test suites."
 summary: "In early 2025, 'Vibe Coding' took the tech world by storm: conversational programming driven by intuition, natural language chats, and copy-pasting code without reading it. By late 2026, the harsh hangover of 'Vibe Debt' has crippled engineering teams with unmaintainable spaghetti codebases and silent regressions. We analyze the rise of Spec-Driven Development (SDD), the mature engineering methodology replacing 'prompt-and-pray' with executable specifications, typed schema contracts, and automated agentic verification loops."
 ---
 
