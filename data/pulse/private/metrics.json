@@ -152,6 +152,15 @@
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 0.0
   },
+  "decision-making-prioritization-quantitative-framework": {
+    "ga4_views_30d": 0,
+    "ga4_users_30d": 0,
+    "ga4_engagement_sec": 0.0,
+    "gsc_clicks_30d": 0,
+    "gsc_impressions_30d": 0,
+    "gsc_ctr_pct": 0.0,
+    "gsc_avg_position": 0.0
+  },
   "business-case-financiero-van-tir": {
     "ga4_views_30d": 56,
     "ga4_users_30d": 7,
@@ -218,15 +227,6 @@
   "control-operativo-pmbok-framework-cuantitativo": {
     "ga4_views_30d": 0,
     "ga4_users_30d": 0,
-    "ga4_engagement_sec": 0.0,
-    "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 0,
-    "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 0.0
-  },
-  "toma-decisiones-priorizacion-framework-cuantitativo": {
-    "ga4_views_30d": 1,
-    "ga4_users_30d": 1,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
