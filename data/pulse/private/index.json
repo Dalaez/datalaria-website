@@ -3845,8 +3845,8 @@
     "brief_es": "El fin del escalado exclusivo por pre-entrenamiento y el auge del Test-Time Compute (TTC): cómo los modelos de razonamiento (de o1 y DeepSeek-R1 a los modelos frontera de 2026) sustituyen el autocompletado probabilístico por búsqueda deliberativa en árboles de pensamiento (MCTS) y modelos de recompensa por procesos (PRM).",
     "brief_en": "The end of exclusive pre-training scaling laws and the rise of Test-Time Compute (TTC): how frontier reasoning models replace naive probabilistic autocomplete with deliberate search over trees of thought (MCTS) and Process Reward Models (PRMs).",
     "publish_date": "2026-11-29",
-    "last_modified_es": "2026-10-31T20:23:26+01:00",
-    "last_modified_en": "2026-10-31T20:23:26+01:00",
+    "last_modified_es": "2026-11-11T08:00:04+01:00",
+    "last_modified_en": "2026-11-11T08:00:04+01:00",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
