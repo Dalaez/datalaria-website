@@ -50,6 +50,10 @@ export function AuthProvider({ children }) {
   const signIn = async (email, password) => {
     const { data, error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) throw error;
+    if (data?.session) {
+      setSession(data.session);
+      setUser(data.user);
+    }
     return data;
   };
 

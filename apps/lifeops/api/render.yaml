@@ -18,4 +18,4 @@ services:
       - key: SUPABASE_SCHEMA
         value: lifeops
       - key: CORS_ORIGINS
-        value: "https://datalaria.com,https://www.datalaria.com,http://localhost:5173,http://localhost:1313"
+        value: "https://datalaria.com,https://www.datalaria.com,http://localhost:5173,http://127.0.0.1:5173,http://localhost:1313,http://127.0.0.1:1313,http://localhost:3000,http://127.0.0.1:3000,https://datalaria-app-lifeops.netlify.app"

@@ -146,6 +146,20 @@ La supervisión e interpretabilidad de las cadenas de pensamiento es hoy el camp
 
 ---
 
+### Del Razonamiento de Sistema 2 al Escuadrón de Ingeniería: Nace Datalaria Helix
+
+El *Inference-Time Scaling* demuestra que los modelos de lenguaje ya no son simples loros estocásticos: cuando disponen de tiempo y cómputo para dudar, explorar árboles de alternativas y retroceder ante el error, se convierten en auténticos motores de razonamiento de Sistema 2.
+
+Sin embargo, en el mundo real del software y las operaciones corporativas, **el razonamiento sin estructura sigue siendo vulnerable al caos**. Para que un enjambre de agentes con capacidad de deliberación no quede atrapado en bucles estériles ni degrade la arquitectura del sistema, necesita gobernarse mediante **Especificaciones Ejecutables (SDD)** y puertas de veto deterministas donde cada rol conoce con precisión milimétrica su frontera de responsabilidad:
+
+1. **El marco de ingeniería completo**: Como analizamos en **[SDD (Spec-Driven Development) vs. Vibe Coding](/es/posts/sdd_vs_vibe_coding/)**, sustituir los prompts improvisados por contratos formales de interfaz, diagramas de estado y suites de tests es la única vía para erradicar la deuda técnica invisible en la era de los modelos frontera.
+2. **Nace Datalaria Helix (Enero 2027)**: Para poner en manos de cualquier equipo o profesional este paradigma de ingeniería agéntica de Sistema 2, en **enero de 2027** lanzaremos **Datalaria Helix** en el **[Catálogo de Recursos](/es/recursos/#software)** (con precio Early-Bird de lanzamiento a **19 €**). Helix empaqueta un **escuadrón canónico de 12 agentes especializados** (*Orquestador con triaje determinista XS–XL, Product Analyst, Arquitecto de Sistemas, Diseñador UX/UI con `design.md`, Frontend, Backend, APIs & MCP, Media & i18n, Monetización, Seguridad, QA Verifier con derecho a veto vinculante y Release/DevOps*), blueprints de arquitectura y CLI de verificación y rollback.
+3. **Validación empírica en producción (*Operación Crisol*)**: Hemos sometido a **Datalaria Helix** a su prueba de fuego real usándolo internamente para auditar y blindar de extremo a extremo **Datalaria Pulse**, nuestra plataforma de *Content Ops as Code* que estrenamos el **18 de noviembre**.
+
+{{< helix-waitlist >}}
+
+---
+
 ### Una Pregunta Abierta para el Lector
 
 Durante décadas nos obsesionamos con el tamaño del cerebro de silicio: contábamos parámetros como quien cuenta neuronas, creyendo que la superinteligencia emergería simplemente inflando la masa encefálica del modelo.

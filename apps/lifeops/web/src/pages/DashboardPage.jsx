@@ -163,13 +163,35 @@ export function DashboardPage() {
     async function loadDashboardData() {
       if (isMounted) setIsSyncing(true);
       try {
+        let isAuthError = false;
         const [summaryData, activitiesData, tasksData] = await Promise.all([
-          api.getDashboardSummary().catch(() => null),
-          api.getActivitiesWithDetails(null, { limit: 200 }).catch(() => null),
-          api.getTasks().catch(() => null),
+          api.getDashboardSummary().catch((err) => {
+            if (err?.message?.includes('401') || err?.message?.includes('403') || err?.message?.includes('Invalid') || err?.message?.includes('expired')) {
+              isAuthError = true;
+            }
+            return null;
+          }),
+          api.getActivitiesWithDetails(null, { limit: 200 }).catch((err) => {
+            if (err?.message?.includes('401') || err?.message?.includes('403') || err?.message?.includes('Invalid') || err?.message?.includes('expired')) {
+              isAuthError = true;
+            }
+            return null;
+          }),
+          api.getTasks().catch((err) => {
+            if (err?.message?.includes('401') || err?.message?.includes('403') || err?.message?.includes('Invalid') || err?.message?.includes('expired')) {
+              isAuthError = true;
+            }
+            return null;
+          }),
         ]);
 
         if (!isMounted) return;
+
+        if (isAuthError) {
+          console.warn('LifeOps session expired or invalid. Stopping sync retry loop.');
+          setIsSyncing(false);
+          return;
+        }
 
         if (summaryData) setSummary(summaryData);
         if (Array.isArray(activitiesData)) {
