@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-11-11T07:34:47.422686Z",
+  "generated_at": "2026-11-11T07:35:37.373651Z",
   "total_assets": 149,
   "published_assets": 124,
   "scheduled_assets": 21,
@@ -2204,9 +2204,9 @@
         "productividad"
       ],
       "series": null,
-      "word_count_es": 3105,
-      "word_count_en": 2904,
-      "reading_time_min": 16,
+      "word_count_es": 3235,
+      "word_count_en": 3036,
+      "reading_time_min": 17,
       "related_app": null,
       "related_kit": "/recursos/#software",
       "included_kits": [],
