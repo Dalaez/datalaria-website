@@ -6,6 +6,8 @@ on:
       - main
     paths:
       - 'content/**/posts/**/*.md'
+      - 'content/**/posts/**/social_pack.yaml'
+      - 'content/**/posts/**/social_pack.yml'
       - 'autopilot/**'
   workflow_dispatch:
     inputs:
@@ -46,6 +48,10 @@ jobs:
         run: |
           pip install -r autopilot/requirements.txt
 
+      - name: Run Deterministic Autopilot Tests
+        run: |
+          python -m pytest autopilot/tests -v
+
       - name: Determine File to Publish
         id: file_check
         run: |
@@ -54,11 +60,19 @@ jobs:
             echo "file_path=${{ inputs.file_path }}" >> $GITHUB_OUTPUT
           else
             echo "Push Trigger detected."
-            # Get the list of changed files in the last commit (added or modified)
-            # Filter for markdown files in content/**/posts
-            CHANGED_FILE=$(git diff --name-only --diff-filter=ACMRT HEAD^ HEAD | grep -E '^content/.*\.md$' | head -n 1)
-            
-            if [ -n "$CHANGED_FILE" ]; then
+            # Detecta cambios en el post Markdown o en su social_pack.yaml adyacente
+            CHANGED_MD=$(git diff --name-only --diff-filter=ACMRT HEAD^ HEAD | grep -E '^content/.*/posts/.*\.md$' | head -n 1 || true)
+            if [ -n "$CHANGED_MD" ]; then
+              CHANGED_FILE="$CHANGED_MD"
+            else
+              CHANGED_PACK=$(git diff --name-only --diff-filter=ACMRT HEAD^ HEAD | grep -E '^content/.*/posts/.*/social_pack\.ya?ml$' | head -n 1 || true)
+              if [ -n "$CHANGED_PACK" ]; then
+                CANDIDATE_INDEX="$(dirname "$CHANGED_PACK")/index.md"
+                [ -f "$CANDIDATE_INDEX" ] && CHANGED_FILE="$CANDIDATE_INDEX"
+              fi
+            fi
+
+            if [ -n "${CHANGED_FILE:-}" ]; then
               echo "Found changed file: $CHANGED_FILE"
               echo "file_path=$CHANGED_FILE" >> $GITHUB_OUTPUT
             else
@@ -70,6 +84,7 @@ jobs:
         if: steps.file_check.outputs.file_path != ''
         env:
           DRY_RUN: "true"
+          ENABLE_TWITTER_API: "false"
           # Mock Secrets or Real Secrets (Dry Run won't use them, but script might need env vars to init class)
           TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
           TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
@@ -81,13 +96,17 @@ jobs:
           LINKEDIN_REFRESH_TOKEN: ${{ secrets.LINKEDIN_REFRESH_TOKEN }}
           LINKEDIN_COMPANY_ID: ${{ secrets.LINKEDIN_COMPANY_ID }}
           GEMINI_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
-          # Dev.to
+          # Dev.to & CoderLegion
           DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
           DEVTO_ORG_ID: ${{ secrets.DEVTO_ORG_ID }}
-          # Feature Flags
-          ENABLE_TWITTER: ${{ vars.ENABLE_TWITTER }}
+          CODERLEGION_API_KEY: ${{ secrets.CODERLEGION_API_KEY }}
+          CODERLEGION_CATEGORY_ID: ${{ vars.CODERLEGION_CATEGORY_ID }}
+          CODERLEGION_LANGS: ${{ vars.CODERLEGION_LANGS || 'en' }}
+          # Feature Flags (X/Twitter API desactivada por política coste 0 EUR)
+          ENABLE_TWITTER: "false"
           ENABLE_LINKEDIN: ${{ vars.ENABLE_LINKEDIN }}
           ENABLE_DEVTO: ${{ vars.ENABLE_DEVTO }}
+          ENABLE_CODERLEGION: ${{ vars.ENABLE_CODERLEGION }}
           ENABLE_NEWSLETTER: ${{ vars.ENABLE_NEWSLETTER }}
           # Brevo (Newsletter)
           BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
@@ -102,8 +121,10 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: autopilot-content
-          path: generated_content.json
-          if-no-files-found: warn
+          path: |
+            generated_content.json
+            autopilot/dist/
+          if-no-files-found: ignore
           retention-days: 1
 
   publish:
@@ -148,14 +169,19 @@ jobs:
           LINKEDIN_COMPANY_ID: ${{ secrets.LINKEDIN_COMPANY_ID }}
           GEMINI_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
           
-          # Dev.to
+          # Dev.to & CoderLegion
           DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
           DEVTO_ORG_ID: ${{ secrets.DEVTO_ORG_ID }}
+          CODERLEGION_API_KEY: ${{ secrets.CODERLEGION_API_KEY }}
+          CODERLEGION_CATEGORY_ID: ${{ vars.CODERLEGION_CATEGORY_ID }}
+          CODERLEGION_LANGS: ${{ vars.CODERLEGION_LANGS || 'en' }}
           
-          # Feature Flags
-          ENABLE_TWITTER: ${{ vars.ENABLE_TWITTER }}
+          # Feature Flags (X/Twitter API desactivada por política coste 0 EUR)
+          ENABLE_TWITTER: "false"
+          ENABLE_TWITTER_API: "false"
           ENABLE_LINKEDIN: ${{ vars.ENABLE_LINKEDIN }}
           ENABLE_DEVTO: ${{ vars.ENABLE_DEVTO }}
+          ENABLE_CODERLEGION: ${{ vars.ENABLE_CODERLEGION }}
           ENABLE_NEWSLETTER: ${{ vars.ENABLE_NEWSLETTER }}
           # Brevo (Newsletter)
           BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}

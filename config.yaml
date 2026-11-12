@@ -8,6 +8,8 @@ timeout: "300s"
 ignoreFiles:
   - '(?i)desktop\.ini$'
   - '\.ini$'
+  - '(?i)social_pack\.ya?ml$'
+  - '(?i)dist_(devto|coderlegion)(_[a-z]{2})?\.md$'
 
 # --- PAGINACIÓN ---
 pagination:

@@ -1,5 +1,0 @@
-{
-    "twitter": "nuevo post en el blog",
-    "linkedin": "¿Sabías que el 80% de los proyectos de data fallan antes de llegar a producción?\n\nLa razón no es la tecnología, sino algo mucho más básico: la calidad de los datos.\n\nEn mi último artículo exploro las técnicas de higiene de datos que todo Data Engineer debería conocer:\n\n🔹 Detección de outliers con IQR\n🔹 Validación de tipos\n🔹 Pipelines de limpieza automatizados\n\n¿Qué estrategias usas tú para garantizar la calidad de tus datos?",
-    "newsletter": "Esta semana me sumergí en algo que parece aburrido pero es CRÍTICO: la higiene de datos. 🔍\n\nResulta que el 80% de los proyectos de data fallan no por la tecnología, sino por datos sucios. Y créeme, he visto proyectos millonarios caer por un simple NULL en el lugar equivocado.\n\nEn este artículo te muestro las técnicas que uso para detectar outliers y limpiar datasets antes de que lleguen a producción. Spoiler: Python + estadística básica hacen magia. ✨"
-}

@@ -1,505 +1,713 @@
+"""Orquestador principal de Autopilot 2.0 y Sindicación Universal (SPEC-OPS-AUTOPILOT v2.1.0)."""
+
+from __future__ import annotations
+
 import os
+import re
 import sys
 import json
-import frontmatter
 from pathlib import Path
-import re
+from typing import Any, Dict, List, Literal, Optional, Tuple
 
-# Add the parent directory to sys.path to resolve imports from src
-current_dir = Path(__file__).resolve().parent
-parent_dir = current_dir.parent
-sys.path.append(str(parent_dir))
+import frontmatter
+import yaml
 
-from src.social_manager import SocialMediaManager
-from src.newsletter_manager import NewsletterManager
-from src import brain
+REPO_ROOT = Path(__file__).resolve().parent.parent.parent
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
-# Cache file path (will be uploaded/downloaded as GitHub Actions artifact)
+from autopilot.src import brain
+from autopilot.src.markdown_syndicator import (
+    GITHUB_RAW_BASE,
+    SITE_BASE_URL,
+    _APP_REF_RE,
+    build_syndication_artifact,
+    get_app_catalog_entry,
+    is_app_status_embargoed,
+    resolve_image_urls,
+    resolve_markdown_links,
+)
+from autopilot.src.models import (
+    NewsletterContent,
+    SocialPack,
+    SocialPackLanguageSection,
+    SocialPlatformLinkedIn,
+    SocialPlatformX,
+    SyndicationArtifact,
+    build_x_web_intent_url,
+)
+from autopilot.src.newsletter_manager import NewsletterManager
+from autopilot.src.quality_validator import audit_social_bundle
+from autopilot.src.social_manager import SocialMediaManager
+
 CACHE_FILE = "generated_content.json"
+DEFAULT_HERO_FALLBACK_URL = f"{SITE_BASE_URL}/images/Datalaria_blog.png"
 
-def save_generated_content(twitter_text, linkedin_text, newsletter_text=None):
-    """
-    Guarda el contenido generado por los agentes en un archivo JSON.
-    Este archivo se sube como artifact de GitHub Actions para persistir entre jobs.
-    """
-    cache_data = {
+
+def _configure_utf8_console() -> None:
+    """Evita UnicodeEncodeError en consolas Windows cp1252 al imprimir emojis o acentos."""
+    if hasattr(sys.stdout, "reconfigure"):
+        try:
+            sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        except Exception:
+            pass
+
+
+def save_generated_content(
+    twitter_text: str,
+    linkedin_text: str,
+    newsletter_text: Any = None,
+    extra_payload: Optional[Dict[str, Any]] = None,
+    cache_file: str = CACHE_FILE,
+) -> bool:
+    """Guarda el contenido generado por Autopilot en JSON para persistir entre jobs de CI."""
+    cache_data: Dict[str, Any] = {
         "twitter": twitter_text,
         "linkedin": linkedin_text,
-        "newsletter": newsletter_text
+        "newsletter": newsletter_text,
     }
+    if extra_payload:
+        cache_data.update(extra_payload)
     try:
-        with open(CACHE_FILE, 'w', encoding='utf-8') as f:
-            json.dump(cache_data, f, ensure_ascii=False, indent=2)
-        print(f"💾 Contenido guardado en {CACHE_FILE}")
+        with open(cache_file, "w", encoding="utf-8") as fh:
+            json.dump(cache_data, fh, ensure_ascii=False, indent=2)
+        print(f"💾 Contenido guardado en {cache_file}")
         return True
-    except Exception as e:
-        print(f"⚠️ Error guardando cache: {e}")
+    except Exception as exc:
+        print(f"⚠️ Error guardando cache: {exc}")
         return False
 
-def load_generated_content():
-    """
-    Carga el contenido generado previamente desde el archivo JSON.
-    Retorna None si no existe o hay errores.
-    """
-    if not os.path.exists(CACHE_FILE):
+
+def load_generated_content(cache_file: str = CACHE_FILE) -> Optional[Dict[str, Any]]:
+    """Carga el contenido generado previamente desde generated_content.json."""
+    if not os.path.exists(cache_file):
         return None
-    
     try:
-        with open(CACHE_FILE, 'r', encoding='utf-8') as f:
-            cache_data = json.load(f)
-        print(f"📦 Contenido cargado desde cache ({CACHE_FILE})")
+        with open(cache_file, "r", encoding="utf-8") as fh:
+            cache_data = json.load(fh)
+        print(f"📦 Contenido cargado desde cache ({cache_file})")
         return cache_data
-    except Exception as e:
-        print(f"⚠️ Error leyendo cache: {e}")
+    except Exception as exc:
+        print(f"⚠️ Error leyendo cache: {exc}")
         return None
 
-def str_to_bool(value):
-    """Convierte strings de entorno 'true', 'false', '1', '0' a booleano."""
+
+def str_to_bool(value: Any) -> bool:
+    """Convierte strings de entorno ('true', 'false', '1', '0') a booleano."""
     return str(value).lower() in ("yes", "true", "t", "1")
 
-def resolve_image_urls(content, file_path):
-    """
-    Reemplaza rutas relativas de imágenes por URLs absolutas de GitHub Raw.
-    Dev.to no puede leer imágenes locales (./img.png), necesita una URL pública.
-    
-    Ejemplo transf: 
-    ![Alt](image.png) -> ![Alt](https://raw.githubusercontent.com/Dalaez/datalaria-website/main/content/es/posts/mi-post/image.png)
-    """
-    # 1. Base URL de Raw GitHub
-    # ATENCIÓN: Asumimos que la estructura en GitHub es idéntica a la local.
-    github_base = "https://raw.githubusercontent.com/Dalaez/datalaria-website/main"
-    
-    # 2. Calcular la ruta relativa del directorio del post
-    # file_path = content/es/posts/X/index.md -> dir_path = content/es/posts/X
-    # Debemos normalizar separadores a /
-    normalized_path = file_path.replace('\\', '/')
-    dir_path = os.path.dirname(normalized_path)
-    
-    def replacer(match):
-        alt_text = match.group(1)
-        img_path = match.group(2)
-        
-        # Si ya es http, no tocamos
-        if img_path.startswith("http"):
-            return match.group(0)
-            
-        # Si es ruta relativa (empieza por ./ o nombre directo)
-        clean_img_path = img_path.lstrip("./")
-        
-        # Construimos la URL absoluta
-        # github_base + / + dir_path + / + clean_img_path
-        abs_url = f"{github_base}/{dir_path}/{clean_img_path}"
-        
-        return f"![{alt_text}]({abs_url})"
-        
-    # Regex para capturar ![Alt](path)
-    # Group 1: Alt, Group 2: Path
-    pattern = r'!\[(.*?)\]\((.*?)\)'
-    
-    new_content = re.sub(pattern, replacer, content)
-    return new_content
 
-def resolve_markdown_links(content, file_path, lang="es", base_url="https://datalaria.com"):
-    """
-    Convierte todas las rutas relativas en enlaces Markdown [Texto](url)
-    a URLs absolutas que apunten a https://datalaria.com (o GitHub Raw para assets descargables).
-    Evita que Dev.to genere enlaces rotos internos hacia https://dev.to/...
-    """
-    normalized_path = file_path.replace('\\', '/')
-    dir_path = os.path.dirname(normalized_path)
-    github_base = "https://raw.githubusercontent.com/Dalaez/datalaria-website/main"
-    file_extensions = ('.docx', '.pptx', '.pdf', '.xlsx', '.zip', '.csv')
+def _summarize_syndication_artifact(
+    artifact: Optional[SyndicationArtifact],
+) -> Optional[Dict[str, Any]]:
+    """Convierte un SyndicationArtifact en resumen serializable para caché y retorno."""
+    if artifact is None:
+        return None
+    return {
+        "platform": artifact.platform,
+        "lang": artifact.lang,
+        "slug": artifact.slug,
+        "title": artifact.title,
+        "description": artifact.description,
+        "canonical_url": artifact.canonical_url,
+        "cover_image_url": artifact.cover_image_url,
+        "tags": list(artifact.tags),
+        "output_path": artifact.output_path,
+        "char_count": len(artifact.markdown),
+    }
 
-    def resolve_target(target):
-        target = target.strip()
-        
-        # 1. Anclas (#), mailto, tel o javascript -> dejar intactos
-        if not target or target.startswith(('#', 'mailto:', 'tel:', 'javascript:')):
-            return target
-            
-        # 2. URLs absolutas externas (http://, https://, //) -> no tocar
-        if target.startswith(('http://', 'https://', '//')):
-            return target
-            
-        # 3. Corrección de URLs malformadas heredadas (ej: https:www.datalaria.com)
-        if target.startswith('https:www.datalaria.com'):
-            return target.replace('https:www.datalaria.com', 'https://www.datalaria.com')
-            
-        # 4. Shortcodes Hugo ref / relref: {{< ref "slug" >}} o {{< relref "slug" >}}
-        ref_match = re.search(r'\{\{<\s*(?:ref|relref)\s+["\']([^"\']+)["\']\s*>\}\}', target)
-        if ref_match:
-            ref_slug = ref_match.group(1).strip().lstrip('./').lstrip('/')
-            if ref_slug.startswith('posts/'):
-                ref_slug = ref_slug[len('posts/'):]
-            return f"{base_url}/{lang}/posts/{ref_slug.strip('/')}/"
-            
-        # 5. Archivos locales descargables (.docx, .pptx, etc.)
-        if any(target.lower().endswith(ext) for ext in file_extensions) and not target.startswith('/'):
-            clean_file = target.lstrip('./')
-            return f"{github_base}/{dir_path}/{clean_file}"
-            
-        # 6. URLs relativas a raíz con barra inicial (/es/..., /en/..., /apps/..., /recursos/...)
-        if target.startswith('/'):
-            return f"{base_url}{target}"
-            
-        # 7. URLs relativas con prefijo de idioma (es/posts/..., en/posts/...)
-        if target.startswith(('es/', 'en/')):
-            return f"{base_url}/{target}"
-            
-        # 8. Prefijos de sección (posts/..., apps/..., recursos/...)
-        if target.startswith('posts/'):
-            return f"{base_url}/{lang}/{target}"
-        if target.startswith(('apps/', 'recursos/', 'blog/')):
-            return f"{base_url}/{target}"
-            
-        # 9. Slug relativo directo a otro post
-        clean_target = target.lstrip('./').strip('/')
-        return f"{base_url}/{lang}/posts/{clean_target}/"
 
-    # Regex con negative lookbehind (?<!\!) para no capturar imágenes ![Alt](url)
-    # y soporte de corchetes anidados para [![Imagen](url_img)](url_enlace)
-    pattern = r'(?<!\!)\[((?:[^\[\]]|\[[^\[\]]*\])*)\]\(([^)]+)\)'
-    
-    def replacer(match):
-        label = match.group(1)
-        raw_target = match.group(2)
-        
-        # Preservar title opcional en enlace (ej: [text](url "title"))
-        parts = raw_target.split(' ', 1)
-        if len(parts) > 1 and (parts[1].startswith('"') or parts[1].startswith("'")):
-            url_part = parts[0]
-            title_part = " " + parts[1]
-        else:
-            url_part = raw_target
-            title_part = ""
-            
-        new_url = resolve_target(url_part)
-        return f"[{label}]({new_url}{title_part})"
-        
-    content = re.sub(pattern, replacer, content)
+def load_social_pack(
+    file_path: str,
+    slug: str,
+    lang: Literal["es", "en"] = "es",
+) -> Optional[SocialPackLanguageSection]:
+    """Busca y valida social_pack.yaml junto al post o en data/editorial/social_packs/."""
+    post_dir = Path(file_path).resolve().parent
+    candidates = [
+        post_dir / "social_pack.yaml",
+        post_dir / "social_pack.yml",
+        REPO_ROOT / "data" / "editorial" / "social_packs" / f"{slug}.yaml",
+        REPO_ROOT / "data" / "editorial" / "social_packs" / f"{slug}.yml",
+    ]
+    for candidate in candidates:
+        if candidate.is_file():
+            try:
+                with open(candidate, "r", encoding="utf-8") as fh:
+                    raw = yaml.safe_load(fh) or {}
+                if not isinstance(raw, dict):
+                    print(f"⚠️ {candidate} no contiene un mapeo YAML válido.")
+                    continue
+                pack = SocialPack(**raw)
+                return pack.resolve_language(lang)
+            except Exception as exc:
+                print(f"⚠️ Error validando social_pack en {candidate}: {exc}")
+    return None
 
-    # Transformar shortcode {{< app-ref slug="..." >}} a Callout Markdown en Dev.to
-    app_ref_pattern = r'\{\{<\s*app-ref\s+(?:slug=)?["\']?([a-zA-Z0-9_-]+)["\']?\s*>\}\}'
-    def app_ref_replacer(match):
+
+def _relative_repo_posix(path: Path) -> str:
+    resolved = path.resolve()
+    try:
+        return resolved.relative_to(REPO_ROOT).as_posix()
+    except ValueError:
+        return resolved.as_posix()
+
+
+def resolve_hero_image_url(
+    file_path: str,
+    post_meta: Dict[str, Any],
+    lang: str = "es",
+    slug: str = "",
+) -> str:
+    """Resuelve la imagen Hero clicable (GitHub Raw en bundles o URL pública Datalaria)."""
+    cover_meta = post_meta.get("cover")
+    image_ref: Optional[str] = None
+    if isinstance(cover_meta, dict):
+        image_ref = cover_meta.get("image")
+    elif isinstance(cover_meta, str):
+        image_ref = cover_meta
+
+    if not image_ref:
+        image_ref = post_meta.get("image")
+
+    post_dir = Path(file_path).resolve().parent
+    if not image_ref:
+        for default_name in ("cover.png", "cover.jpg", "cover.jpeg", "cover.webp"):
+            if (post_dir / default_name).is_file():
+                image_ref = default_name
+                break
+
+    if not image_ref:
+        return DEFAULT_HERO_FALLBACK_URL
+
+    ref = str(image_ref).strip()
+    if ref.startswith(("http://", "https://")):
+        return ref
+    if ref.startswith("/"):
+        return f"{SITE_BASE_URL}{ref}"
+
+    clean_ref = ref.lstrip("./")
+    rel_dir = _relative_repo_posix(post_dir)
+    if rel_dir.startswith("content/"):
+        return f"{GITHUB_RAW_BASE}/{rel_dir}/{clean_ref}"
+
+    if slug and lang in ("es", "en"):
+        return f"{GITHUB_RAW_BASE}/content/{lang}/posts/{slug}/{clean_ref}"
+    return DEFAULT_HERO_FALLBACK_URL
+
+
+def resolve_secondary_cta(
+    post_content: str,
+    lang: str = "es",
+    apps_dir: Optional[Path] = None,
+) -> Tuple[str, str]:
+    """Determina el CTA secundario seguro respetando embargos status: incubating (INV-AUTO-6)."""
+    for match in _APP_REF_RE.finditer(post_content or ""):
         app_slug = match.group(1)
-        app_name = app_slug.replace('-', ' ').title()
-        if lang == 'es':
-            return f"> 🚀 **App Oficial en Datalaria**: [{app_name}]({base_url}/es/apps/{app_slug}/) — [Probar Demo en Vivo]({base_url}/apps/{app_slug}/?mock=true)"
-        return f"> 🚀 **Official Datalaria App**: [{app_name}]({base_url}/en/apps/{app_slug}/) — [Try Live Demo]({base_url}/apps/{app_slug}/?mock=true)"
+        app_data = get_app_catalog_entry(app_slug, apps_dir=apps_dir)
+        if not app_data or is_app_status_embargoed(app_data):
+            continue
 
-    content = re.sub(app_ref_pattern, app_ref_replacer, content)
-    return content
+        target_path = str(app_data.get("demo_url") or app_data.get("app_url") or "").strip()
+        if not target_path:
+            continue
+        full_url = target_path if target_path.startswith("http") else f"{SITE_BASE_URL}{target_path}"
+        title_map = app_data.get("title") or {}
+        app_title = (
+            title_map.get(lang)
+            or title_map.get("es")
+            or app_slug.replace("-", " ").title()
+        )
+        label = (
+            f"Probar Demo Sandbox de {app_title}"
+            if lang == "es"
+            else f"Try {app_title} Live Sandbox"
+        )
+        return label, full_url
 
-def load_post_content(file_path):
-    """Lee el archivo markdown y extrae metadatos calculando la URL correcta por idioma."""
+    if lang == "es":
+        return "Explorar Kits y Apps en /recursos/", f"{SITE_BASE_URL}/es/recursos/"
+    return "Explore Kits & Apps at /resources/", f"{SITE_BASE_URL}/en/resources/"
+
+
+def load_post_content(file_path: str) -> Dict[str, Any]:
+    """Lee el archivo Markdown y extrae metadatos normalizados calculando idioma, slug y URL."""
     if not os.path.exists(file_path):
         print(f"❌ El archivo no existe: {file_path}")
         sys.exit(1)
-        
+
     try:
-        with open(file_path, 'r', encoding='utf-8') as f:
-            post = frontmatter.load(f)
-            
-            norm_path = file_path.replace('\\', '/')
-            lang = "es" # Default
-            if "/es/" in norm_path:
-                lang = "es"
-            elif "/en/" in norm_path:
-                lang = "en"
-            
-            filename = os.path.basename(file_path)
-            if filename.lower() == 'index.md':
-                slug = os.path.basename(os.path.dirname(file_path))
-            else:
-                slug = filename.replace('.md', '')
-            
-            base_url = "https://datalaria.com"
-            if lang:
-                url = f"{base_url}/{lang}/posts/{slug}/"
-            else:
-                url = f"{base_url}/posts/{slug}/"
-            
-            social_override = post.metadata.get('social_text', None)
+        with open(file_path, "r", encoding="utf-8") as fh:
+            post = frontmatter.load(fh)
 
-            return {
-                "title": post.metadata.get('title', 'Sin título'),
-                "url": url,
-                "content": post.content,
-                "social_text": social_override,
-                "lang": lang,
-                "image": post.metadata.get('image'),
-                "cover": post.metadata.get('cover')
-            }
-    except Exception as e:
-        print(f"❌ Error leyendo el archivo {file_path}: {e}")
+        norm_path = file_path.replace("\\", "/")
+        lang: Literal["es", "en"] = "en" if "/en/" in norm_path else "es"
+
+        filename = os.path.basename(file_path)
+        if filename.lower() == "index.md":
+            slug = os.path.basename(os.path.dirname(os.path.abspath(file_path)))
+        else:
+            slug = os.path.splitext(filename)[0]
+
+        url = f"{SITE_BASE_URL}/{lang}/posts/{slug}/"
+        return {
+            "title": str(post.metadata.get("title", "Sin título")),
+            "slug": slug,
+            "url": url,
+            "content": post.content or "",
+            "social_text": post.metadata.get("social_text"),
+            "lang": lang,
+            "image": post.metadata.get("image"),
+            "cover": post.metadata.get("cover"),
+            "metadata": dict(post.metadata),
+        }
+    except Exception as exc:
+        print(f"❌ Error leyendo el archivo {file_path}: {exc}")
         sys.exit(1)
 
-def main():
-    if len(sys.argv) < 2:
-        print("❌ Uso: python orchestrator.py <ruta_al_post.md>")
-        sys.exit(1)
-        
-    file_path = sys.argv[1]
+
+def _wrap_x_override(
+    raw_override: str,
+    title: str,
+    content: str,
+    lang: str,
+    post_url: str,
+) -> SocialPlatformX:
+    fallback_pack = brain.build_deterministic_fallback_x(
+        title=title, content=content, lang=lang, post_url=post_url
+    )
+    cleaned_hook = re.sub(r"https?://\S+", "", raw_override or "").strip()
+    if len(cleaned_hook) < 10:
+        return fallback_pack
+    return SocialPlatformX(
+        hook=cleaned_hook[:195],
+        thread=fallback_pack.thread,
+        hashtags=fallback_pack.hashtags,
+        web_intent_url=build_x_web_intent_url(cleaned_hook[:195], post_url, fallback_pack.hashtags),
+    )
+
+
+def _resolve_local_image_for_legacy(file_path: str, post_meta: Dict[str, Any]) -> Optional[str]:
+    cover_meta = post_meta.get("cover", {})
+    image_filename: Optional[str] = None
+    if isinstance(cover_meta, dict):
+        image_filename = cover_meta.get("image")
+    elif isinstance(cover_meta, str):
+        image_filename = cover_meta
+    if not image_filename:
+        image_filename = post_meta.get("image")
+    if not image_filename:
+        return None
+    if str(image_filename).startswith("/"):
+        candidate = REPO_ROOT / "static" / str(image_filename).lstrip("/")
+    else:
+        candidate = Path(file_path).resolve().parent / str(image_filename)
+    return str(candidate) if candidate.is_file() else None
+
+
+def run_orchestration(
+    file_path: str,
+    dry_run: Optional[bool] = None,
+    cache_file: str = CACHE_FILE,
+    apps_dir: Optional[Path] = None,
+    dist_dir: Optional[Path] = None,
+) -> Dict[str, Any]:
+    """Ejecuta el pipeline completo de Autopilot 2.0 y sindicación universal sobre un artículo."""
     print(f"🔍 Analizando archivo: {file_path}")
-    
     post_data = load_post_content(file_path)
-    if not post_data:
-        sys.exit(1)
-        
-    print(f"📄 Post cargado: '{post_data['title']}' ({post_data['lang']})")
-    post_url = post_data['url']
+    lang: Literal["es", "en"] = post_data["lang"]
+    slug: str = post_data["slug"]
+    post_url: str = post_data["url"]
+    post_title: str = post_data["title"]
+    post_content: str = post_data["content"]
+    post_meta: Dict[str, Any] = post_data["metadata"]
+
+    print(f"📄 Post cargado: '{post_title}' ({lang})")
     print(f"🔗 URL Calculada: {post_url}")
 
-    # --- LEER INTERRUPTORES DE ENTORNO (Por defecto TRUE) ---
+    is_dry_run = str_to_bool(os.getenv("DRY_RUN", "false")) if dry_run is None else dry_run
+    strict_qa = str_to_bool(os.getenv("STRICT_QA", "true"))
+
     enable_twitter = str_to_bool(os.getenv("ENABLE_TWITTER", "true"))
     enable_linkedin = str_to_bool(os.getenv("ENABLE_LINKEDIN", "true"))
-    enable_devto = str_to_bool(os.getenv("ENABLE_DEVTO", "false")) # Default false for safety
-    enable_newsletter = str_to_bool(os.getenv("ENABLE_NEWSLETTER", "false")) # Default false
-    
-    # --- GENERACIÓN DE CONTENIDO ---
-    
-    dry_run = os.getenv("DRY_RUN", "false").lower() == "true"
-    twitter_text = ""
-    linkedin_text = ""
-    newsletter_override = ""
-    used_cache = False
+    enable_devto = str_to_bool(os.getenv("ENABLE_DEVTO", "false"))
+    enable_coderlegion = str_to_bool(os.getenv("ENABLE_CODERLEGION", "false"))
+    coderlegion_langs = [
+        item.strip().lower()
+        for item in os.getenv("CODERLEGION_LANGS", "en").split(",")
+        if item.strip()
+    ]
+    enable_newsletter = str_to_bool(os.getenv("ENABLE_NEWSLETTER", "false"))
+    target_dist_dir = dist_dir if dist_dir is not None else (REPO_ROOT / "autopilot" / "dist" / slug)
 
-    # --- PRIORIDAD DE CONTENIDO ---
-    # 1. Override desde variables de entorno (workflow_dispatch manual)
-    # 2. Override desde frontmatter (social_text)
-    # 3. Cache del preview anterior
-    # 4. Generación con IA
+    hero_image_url = resolve_hero_image_url(file_path, post_meta, lang=lang, slug=slug)
+    sec_label, sec_url = resolve_secondary_cta(post_content, lang=lang, apps_dir=apps_dir)
 
-    # Opción 1: Override desde environment (máxima prioridad - workflow_dispatch)
+    # Prioridad 1: social_pack.yaml generado en design-time
+    design_pack = load_social_pack(file_path, slug=slug, lang=lang)
+    if design_pack is not None:
+        print("📦 social_pack.yaml detectado (Prioridad #1 Design-Time).")
+
+    # Prioridad 2: overrides manuales (workflow_dispatch)
     env_twitter = os.getenv("TWITTER_OVERRIDE", "").strip()
     env_linkedin = os.getenv("LINKEDIN_OVERRIDE", "").strip()
     env_newsletter = os.getenv("NEWSLETTER_OVERRIDE", "").strip()
-    
-    if env_twitter or env_linkedin:
-        print("✍️ Override manual detectado desde workflow_dispatch")
-        if env_twitter:
-            twitter_text = env_twitter
-            print(f"   🐦 Twitter override: {twitter_text[:50]}...")
-        if env_linkedin:
-            linkedin_text = env_linkedin
-            print(f"   💼 LinkedIn override: {linkedin_text[:50]}...")
-        if env_newsletter:
-            newsletter_override = env_newsletter
-            print(f"   📧 Newsletter override: {newsletter_override[:50]}...")
 
-    # Opción 2: Override desde frontmatter (social_text)
-    elif post_data.get('social_text'):
-        print("✍️ Texto manual detectado en frontmatter.")
-        twitter_text = post_data['social_text']
-        linkedin_text = post_data['social_text']
-    
-    # Opción 3: En modo LIVE, intentar cargar desde cache primero
-    elif not dry_run:
-        cached = load_generated_content()
-        if cached:
-            print("✅ Usando contenido cacheado del preview (consistencia garantizada)")
-            twitter_text = cached.get('twitter', '')
-            linkedin_text = cached.get('linkedin', '')
-            used_cache = True
-        else:
-            print("⚠️ No se encontró cache. Generando contenido nuevo...")
-    
-    # Opción 3: Generar con IA (dry_run o si no hay cache en live)
-    if not twitter_text and not linkedin_text:
-        print(f"🧠 Invocando a los Agentes Creativos ({post_data['lang']})...")
-        
-        # 1. Agente Twitter (Solo si está activado)
-        if enable_twitter:
-            print("   🐦 Agente Twitter escribiendo...")
-            twitter_gen = brain.generate_social_copy(
-                post_data['title'], post_data['content'], platform='twitter', lang=post_data['lang']
-            )
-            twitter_text = twitter_gen if twitter_gen else f"🚀 Nuevo post: {post_data['title']} #Datalaria"
-        else:
-            print("   🚫 Agente Twitter DESACTIVADO por configuración.")
+    # Prioridad 3: caché previa en live / frontmatter social_text
+    cached = load_generated_content(cache_file=cache_file) if not is_dry_run else None
+    frontmatter_social = post_data.get("social_text")
 
-        # 2. Agente LinkedIn (Solo si está activado)
-        if enable_linkedin:
-            print("   💼 Agente LinkedIn escribiendo...")
-            linkedin_gen = brain.generate_social_copy(
-                post_data['title'], post_data['content'], platform='linkedin', lang=post_data['lang']
-            )
-            linkedin_text = linkedin_gen if linkedin_gen else f"🚀 Nuevo artículo recomendado: {post_data['title']}. #DataEngineering"
-        else:
-            print("   🚫 Agente LinkedIn DESACTIVADO por configuración.")
-
-        # En DRY RUN, guardar el contenido generado para que publish lo use
-        if dry_run:
-            save_generated_content(twitter_text, linkedin_text)
-
-    # También guardar si el contenido viene de override o social_text (no solo de IA)
-    if dry_run and not os.path.exists(CACHE_FILE):
-        save_generated_content(twitter_text, linkedin_text)
-
-    # NOTA: Newsletter genera contenido en el momento del envío
-
-    # --- RESOLUCIÓN DE IMAGEN LOCAL ---
-    # Buscamos la imagen para subirla nativamente a Twitter (y opcionalmente a Dev.to si no usara URL)
-    local_image_path = None
-    
-    # 1. Mirar si hay 'cover' (PaperMod)
-    # Puede ser un dict {image: "..."} o directamente un string si el usuario se equivocó
-    cover_meta = post_data.get('cover', {})
-    image_filename = None
-    
-    if isinstance(cover_meta, dict):
-        image_filename = cover_meta.get('image')
-    elif isinstance(cover_meta, str):
-        # Fallback por si alguien pone cover: "imagen.png"
-        image_filename = cover_meta
-        
-    # 2. Si no, mirar 'image' (compatible)
-    if not image_filename:
-        image_filename = post_data.get('image')
-        
-    if image_filename:
-        # Asumimos que la imagen está AL LADO del markdown (Page Bundle)
-        # o en static/images si empieza por /
-        
-        if image_filename.startswith("/"):
-            # Ruta absoluta desde la raíz del sitio (habitual en /static)
-            # Datalaria root = parent_dir (autopilot) -> parent (datalaria)??
-            # parent_dir = datalaria/autopilot/.. = datalaria/
-            # Pero orchestrator está en src.
-            # current_dir = src
-            # parent_dir = autopilot
-            # root_dir = autopilot/.. = datalaria
-            root_dir = parent_dir.parent
-            local_image_path = os.path.join(root_dir, "static", image_filename.lstrip("/"))
-        else:
-            # Ruta relativa al post (Page Bundle)
-            post_dir = os.path.dirname(os.path.abspath(file_path))
-            local_image_path = os.path.join(post_dir, image_filename)
-            
-        if not os.path.exists(local_image_path):
-            print(f"⚠️ Imagen referenciada no encontrada en disco: {local_image_path}")
-            local_image_path = None
-        else:
-            print(f"📸 Imagen local detectada: {local_image_path}")
-
-    # --- PUBLICACIÓN ---
-    
-    if dry_run:
-        print(f"\n💾 Contenido guardado en: {os.path.abspath(CACHE_FILE)}")
-        print("\n🚧 --- DRY RUN MODE (Preview) --- 🚧")
-        if enable_twitter:
-            print(f"\n🐦 [TWITTER]:\n{twitter_text}")
-            print(f"   [Mode]: Twitter Cards (image from meta tags)")
-        if enable_linkedin:
-            print(f"\n💼 [LINKEDIN]:\n{linkedin_text}")
-        if enable_devto:
-            print(f"\n🦄 [DEV.TO]:\n(Original Markdown Content will be published)")
-            # Preview de imágenes y URLs resueltas
-            preview_content = resolve_image_urls(post_data['content'], file_path)
-            preview_content = resolve_markdown_links(preview_content, file_path, lang=post_data['lang'])
-            print(f"   Sample Processing:\n{preview_content[:500]}...\n")
-        if enable_newsletter:
-            post_lang = post_data['lang']
-            list_id = 3 if post_lang == 'es' else 4
-            print(f"\n📧 [NEWSLETTER]:")
-            if post_lang == 'es':
-                print(f"   Subject: 🚀 Nuevo en Datalaria: {post_data['title']}")
-            else:
-                print(f"   Subject: 🚀 New on Datalaria: {post_data['title']}")
-            print(f"   Recipients: Lista Brevo #{list_id} ({post_lang.upper()})")
-        
-        print(f"\n🔗 URL: {post_url}")
-        sys.exit(0)
-
-    print("\n🚀 --- LIVE MODE (Posting to Social Media) --- 🚀")
-    manager = SocialMediaManager()
-    
-    # 1. Publicar en Twitter (sin imagen para usar Twitter Cards)
+    # --- RESOLVER CANAL X (Coste 0 EUR) ---
+    x_pack: Optional[SocialPlatformX] = None
     if enable_twitter:
-        try:
-            # No pasamos image_path para que Twitter use las Twitter Cards del meta tag
-            manager.post_to_twitter(text=twitter_text, url=post_url)
-        except Exception as e:
-            print(f"⚠️ Falló Twitter: {e}")
+        if design_pack and design_pack.x is not None:
+            x_pack = design_pack.x
+            if not x_pack.web_intent_url:
+                x_pack.web_intent_url = build_x_web_intent_url(
+                    x_pack.hook, post_url, x_pack.hashtags
+                )
+        elif env_twitter:
+            x_pack = _wrap_x_override(env_twitter, post_title, post_content, lang, post_url)
+        elif frontmatter_social:
+            x_pack = _wrap_x_override(
+                str(frontmatter_social), post_title, post_content, lang, post_url
+            )
+        elif cached and isinstance(cached.get("x"), dict):
+            try:
+                x_pack = SocialPlatformX(**cached["x"])
+            except Exception:
+                x_pack = None
+        if x_pack is None:
+            x_pack = brain.generate_x_thread_pack(
+                post_title, post_content, lang=lang, post_url=post_url
+            )
+
+    # --- RESOLVER CANAL LINKEDIN ---
+    linkedin_text: Optional[str] = None
+    if enable_linkedin:
+        if design_pack and design_pack.linkedin is not None:
+            linkedin_text = design_pack.linkedin.text
+        elif env_linkedin:
+            linkedin_text = env_linkedin
+        elif frontmatter_social:
+            linkedin_text = str(frontmatter_social)
+        elif cached and cached.get("linkedin"):
+            linkedin_text = str(cached["linkedin"])
+        else:
+            linkedin_text = brain.generate_linkedin_copy(post_title, post_content, lang=lang)
+
+    # --- RESOLVER CANAL NEWSLETTER BREVO 2.0 ---
+    newsletter_manager = NewsletterManager()
+    newsletter_payload: Optional[NewsletterContent] = None
+    newsletter_html: Optional[str] = None
+
+    if enable_newsletter:
+        if design_pack and design_pack.newsletter is not None:
+            newsletter_payload = design_pack.newsletter
+        elif env_newsletter:
+            newsletter_payload = newsletter_manager._coerce_newsletter_payload(
+                env_newsletter,
+                subject=post_title,
+                post_title=post_title,
+                lang=lang,
+                slug=slug,
+            )
+        elif cached and isinstance(cached.get("newsletter"), dict):
+            try:
+                newsletter_payload = NewsletterContent(**cached["newsletter"])
+            except Exception:
+                newsletter_payload = None
+
+        if newsletter_payload is None:
+            newsletter_payload = brain.generate_newsletter_payload(
+                title=post_title,
+                content=post_content,
+                slug=slug,
+                lang=lang,
+                secondary_cta_label=sec_label,
+                secondary_cta_url=sec_url,
+            )
+
+        if not newsletter_payload.secondary_cta_url:
+            newsletter_payload.secondary_cta_url = sec_url
+        if not newsletter_payload.secondary_cta_label:
+            newsletter_payload.secondary_cta_label = sec_label
+
+        newsletter_html = newsletter_manager._build_html_template(
+            newsletter_payload,
+            post_title=post_title,
+            post_url=post_url,
+            lang=lang,
+            hero_image_url=hero_image_url,
+            slug=slug,
+        )
+
+    # --- RESOLVER SINDICACIÓN MARKDOWN (Dev.to + CoderLegion) ---
+    devto_cfg = design_pack.devto if design_pack else None
+    coderlegion_cfg = design_pack.coderlegion if design_pack else None
+    devto_artifact: Optional[SyndicationArtifact] = None
+    coderlegion_artifact: Optional[SyndicationArtifact] = None
+
+    if enable_devto and not (devto_cfg and devto_cfg.enabled is False):
+        devto_artifact = build_syndication_artifact(
+            post_content,
+            file_path,
+            platform="devto",
+            lang=lang,
+            slug=slug,
+            post_title=post_title,
+            canonical_url=post_url,
+            post_meta=post_meta,
+            config=devto_cfg,
+            cover_image_url=hero_image_url,
+            apps_dir=apps_dir,
+            output_dir=target_dist_dir,
+        )
+
+    if enable_coderlegion and not (coderlegion_cfg and coderlegion_cfg.enabled is False):
+        if lang in coderlegion_langs:
+            coderlegion_artifact = build_syndication_artifact(
+                post_content,
+                file_path,
+                platform="coderlegion",
+                lang=lang,
+                slug=slug,
+                post_title=post_title,
+                canonical_url=post_url,
+                post_meta=post_meta,
+                config=coderlegion_cfg,
+                cover_image_url=hero_image_url,
+                apps_dir=apps_dir,
+                output_dir=target_dist_dir,
+            )
+        else:
+            print(
+                f"🔕 CoderLegion omitido para idioma '{lang}' (CODERLEGION_LANGS={coderlegion_langs})"
+            )
+
+    # --- ASSURANCE QA GATE INTEGRADO ---
+    audit_report = audit_social_bundle(
+        x_pack=x_pack,
+        linkedin_text=linkedin_text,
+        newsletter_payload=newsletter_payload,
+        newsletter_html=newsletter_html,
+        post_url=post_url,
+        devto_artifact=devto_artifact,
+        coderlegion_artifact=coderlegion_artifact,
+    )
+    print(f"🛡️ Quality Gate Autopilot 2.0: {audit_report.overall_status}")
+    for channel_name, res in audit_report.results.items():
+        if res.issues:
+            summary_msgs = "; ".join(f"{i.code}: {i.message}" for i in res.issues)
+            print(f"   ⚠️ [{channel_name}] {res.status} -> {summary_msgs}")
+
+    x_summary: Optional[Dict[str, Any]] = None
+    if x_pack is not None:
+        x_summary = {
+            "mode": "zero_cost_intent",
+            "hook": x_pack.hook,
+            "hashtags": x_pack.hashtags,
+            "web_intent_url": x_pack.web_intent_url
+            or build_x_web_intent_url(x_pack.hook, post_url, x_pack.hashtags),
+            "thread": x_pack.thread,
+        }
+
+    nl_summary: Optional[Dict[str, Any]] = None
+    if newsletter_payload is not None:
+        nl_summary = {
+            "archetype": newsletter_payload.archetype,
+            "subject": newsletter_payload.subject,
+            "preheader": newsletter_payload.preheader,
+            "hook_paragraphs": newsletter_payload.hook_paragraphs,
+            "insights_60s": newsletter_payload.insights_60s,
+            "hero_image_url": hero_image_url,
+            "secondary_cta_label": newsletter_payload.secondary_cta_label,
+            "secondary_cta_url": newsletter_payload.secondary_cta_url,
+            "ps_referral_text": newsletter_payload.ps_referral_text,
+            "list_id": newsletter_manager._get_list_id(lang),
+        }
+
+    devto_summary = _summarize_syndication_artifact(devto_artifact)
+    coderlegion_summary = _summarize_syndication_artifact(coderlegion_artifact)
+    dist_files = [
+        item["output_path"]
+        for item in (devto_summary, coderlegion_summary)
+        if item and item.get("output_path")
+    ]
+    audit_dict = audit_report.model_dump()
+
+    if is_dry_run:
+        save_generated_content(
+            twitter_text=x_pack.hook if x_pack else "",
+            linkedin_text=linkedin_text or "",
+            newsletter_text=nl_summary,
+            extra_payload={
+                "post_url": post_url,
+                "lang": lang,
+                "slug": slug,
+                "x": x_summary,
+                "devto": devto_summary,
+                "coderlegion": coderlegion_summary,
+                "dist_files": dist_files,
+                "audit_report": audit_dict,
+            },
+            cache_file=cache_file,
+        )
+
+        print("\n🚧 --- DRY RUN MODE (Autopilot 2.0 Preview) --- 🚧")
+        if enable_twitter and x_pack is not None:
+            SocialMediaManager().prepare_x_zero_cost(x_pack, post_url=post_url)
+        if enable_linkedin and linkedin_text:
+            print(f"\n💼 [LINKEDIN]:\n{linkedin_text}")
+        if devto_artifact is not None:
+            print(
+                f"\n🦄 [DEV.TO Preview] tags={devto_artifact.tags} -> {devto_artifact.output_path}\n"
+                f"{devto_artifact.markdown[:500]}...\n"
+            )
+        if coderlegion_artifact is not None:
+            print(
+                f"\n🛡️ [CODERLEGION Preview] source_url={coderlegion_artifact.canonical_url} "
+                f"tags={coderlegion_artifact.tags} -> {coderlegion_artifact.output_path}\n"
+                f"{coderlegion_artifact.markdown[:500]}...\n"
+            )
+        if enable_newsletter and newsletter_payload is not None:
+            newsletter_manager.preview_campaign(
+                subject=newsletter_payload.subject,
+                intro_text=newsletter_payload,
+                post_title=post_title,
+                post_url=post_url,
+                lang=lang,
+                hero_image_url=hero_image_url,
+                slug=slug,
+            )
+
+        return {
+            "dry_run": True,
+            "post_url": post_url,
+            "slug": slug,
+            "lang": lang,
+            "hero_image_url": hero_image_url,
+            "secondary_cta": {"label": sec_label, "url": sec_url},
+            "x": x_summary,
+            "linkedin": linkedin_text,
+            "newsletter": nl_summary,
+            "newsletter_html": newsletter_html,
+            "devto": devto_summary,
+            "coderlegion": coderlegion_summary,
+            "dist_files": dist_files,
+            "audit_report": audit_dict,
+        }
+
+    # --- LIVE MODE ---
+    print("\n🚀 --- LIVE MODE (Autopilot 2.0 Dispatch) --- 🚀")
+    manager = SocialMediaManager()
+    local_img = _resolve_local_image_for_legacy(file_path, post_meta)
+
+    if enable_twitter and x_pack is not None:
+        x_audit = audit_report.results.get("x")
+        if strict_qa and x_audit and x_audit.status == "FAIL":
+            print(f"⛔ Envío X bloqueado por Quality Gate: {[i.code for i in x_audit.issues]}")
+        else:
+            manager.post_to_twitter(
+                text=x_pack.hook, url=post_url, image_path=local_img, x_pack=x_pack
+            )
     else:
         print("🔕 Twitter omitido (ENABLE_TWITTER=false)")
-        
-    # 2. Publicar en LinkedIn    
-    if enable_linkedin:
-        try:
+
+    if enable_linkedin and linkedin_text:
+        li_audit = audit_report.results.get("linkedin")
+        if strict_qa and li_audit and li_audit.status == "FAIL":
+            print(
+                f"⛔ Envío LinkedIn bloqueado por Quality Gate: {[i.code for i in li_audit.issues]}"
+            )
+        else:
             manager.post_to_linkedin(text=linkedin_text, url=post_url)
-        except Exception as e:
-            print(f"⚠️ Falló LinkedIn: {e}")
     else:
         print("🔕 LinkedIn omitido (ENABLE_LINKEDIN=false)")
 
-    # 3. Publicar en Dev.to
-    if enable_devto:
-        try:
-            # Procesar imágenes y enlaces para que sean URLs absolutas
-            print("🦄 Procesando imágenes y enlaces para Dev.to...")
-            processed_content = resolve_image_urls(post_data['content'], file_path)
-            processed_content = resolve_markdown_links(
-                processed_content, 
-                file_path, 
-                lang=post_data['lang']
+    if devto_artifact is not None:
+        devto_audit = audit_report.results.get("devto")
+        if strict_qa and devto_audit and devto_audit.status == "FAIL":
+            print(
+                f"⛔ Envío Dev.to bloqueado por Quality Gate: {[i.code for i in devto_audit.issues]}"
             )
-            
+        else:
             manager.post_to_devto(
-                title=post_data['title'], 
-                content_markdown=processed_content, 
-                canonical_url=post_url
+                title=devto_artifact.title,
+                content_markdown=devto_artifact.markdown,
+                canonical_url=devto_artifact.canonical_url,
+                main_image=devto_artifact.cover_image_url,
+                tags=devto_artifact.tags,
+                description=devto_artifact.description or None,
+                published=devto_cfg.published if devto_cfg else True,
             )
-        except Exception as e:
-            print(f"⚠️ Falló Dev.to: {e}")
     else:
-        print("🔕 Dev.to omitido (ENABLE_DEVTO=false)")
+        print("🔕 Dev.to omitido (ENABLE_DEVTO=false o deshabilitado en social_pack)")
 
-    # 4. Enviar Newsletter (solo al idioma del post)
-    if enable_newsletter:
-        try:
-            post_lang = post_data['lang']  # 'es' o 'en' según el directorio del post
-            print(f"📧 Preparando campaña de Newsletter ({post_lang.upper()})...")
-            newsletter_manager = NewsletterManager()
-            
-            # Usar override si está disponible, sino generar con IA
-            if newsletter_override:
-                print("   ✍️ Usando texto de newsletter desde override...")
-                newsletter_text = newsletter_override
-            else:
-                print(f"   Generando contenido en {post_lang.upper()}...")
-                newsletter_text = brain.generate_social_copy(
-                    post_data['title'], post_data['content'], platform='newsletter', lang=post_lang
-                )
-            
-            if not newsletter_text:
-                if post_lang == 'es':
-                    newsletter_text = f"He publicado un nuevo artículo que creo que te va a interesar: {post_data['title']}"
-                else:
-                    newsletter_text = f"I just published a new article I think you'll find interesting: {post_data['title']}"
-            
-            # Asunto según idioma
-            if post_lang == 'es':
-                subject = f"🚀 Nuevo en Datalaria: {post_data['title']}"
-            else:
-                subject = f"🚀 New on Datalaria: {post_data['title']}"
-            
-            # Enviar campaña SOLO a suscriptores del idioma correspondiente
-            print(f"   📤 Enviando a suscriptores con LANGUAGE={post_lang}...")
-            newsletter_manager.send_campaign(
-                subject=subject,
-                intro_text=newsletter_text,
-                post_title=post_data['title'],
-                post_url=post_url,
-                lang=post_lang
+    if coderlegion_artifact is not None:
+        cl_audit = audit_report.results.get("coderlegion")
+        if strict_qa and cl_audit and cl_audit.status == "FAIL":
+            print(
+                f"⛔ Envío CoderLegion bloqueado por Quality Gate: {[i.code for i in cl_audit.issues]}"
             )
-            
-        except Exception as e:
-            print(f"⚠️ Falló Newsletter: {e}")
+        else:
+            manager.post_to_coderlegion(
+                title=coderlegion_artifact.title,
+                content_markdown=coderlegion_artifact.markdown,
+                canonical_url=coderlegion_artifact.canonical_url,
+                cover_image_url=coderlegion_artifact.cover_image_url,
+                tags=coderlegion_artifact.tags,
+                description=coderlegion_artifact.description or None,
+                category_id=coderlegion_cfg.category if coderlegion_cfg else None,
+            )
+    else:
+        print("🔕 CoderLegion omitido (ENABLE_CODERLEGION=false, idioma excluido o deshabilitado)")
+
+    if enable_newsletter and newsletter_payload is not None:
+        nl_audit = audit_report.results.get("newsletter")
+        if strict_qa and nl_audit and nl_audit.status == "FAIL":
+            print(
+                f"⛔ Envío Brevo bloqueado por Quality Gate: {[i.code for i in nl_audit.issues]}"
+            )
+        else:
+            newsletter_manager.send_campaign(
+                subject=newsletter_payload.subject,
+                intro_text=newsletter_payload,
+                post_title=post_title,
+                post_url=post_url,
+                lang=lang,
+                hero_image_url=hero_image_url,
+                slug=slug,
+            )
     else:
         print("🔕 Newsletter omitida (ENABLE_NEWSLETTER=false)")
-    
+
     print("\n✅ Orquestación finalizada.")
+    return {
+        "dry_run": False,
+        "post_url": post_url,
+        "slug": slug,
+        "lang": lang,
+        "hero_image_url": hero_image_url,
+        "secondary_cta": {"label": sec_label, "url": sec_url},
+        "x": x_summary,
+        "linkedin": linkedin_text,
+        "newsletter": nl_summary,
+        "newsletter_html": newsletter_html,
+        "devto": devto_summary,
+        "coderlegion": coderlegion_summary,
+        "dist_files": dist_files,
+        "audit_report": audit_dict,
+    }
+
+
+def main() -> None:
+    _configure_utf8_console()
+    if len(sys.argv) < 2:
+        print("❌ Uso: python orchestrator.py <ruta_al_post.md>")
+        sys.exit(1)
+    run_orchestration(sys.argv[1])
+
 
 if __name__ == "__main__":
     main()

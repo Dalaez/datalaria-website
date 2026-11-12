@@ -766,8 +766,8 @@
     "brief_es": "Guía metodológica y cuantitativa para transformar la matriz RACI tradicional en un motor dinámico de control operativo: principio de Accountable único, cálculo de saturación por rol, semáforos de riesgo de burnout y plan de rebalanceo C-Level.",
     "brief_en": "A comprehensive guide to transforming traditional qualitative RACI charts into an automated quantitative workload engine: single accountability enforcement, role-based FTE saturation formulas, burnout heatmaps, and C-Level rebalancing plans.",
     "publish_date": "2026-11-12",
-    "last_modified_es": "2026-10-31T20:23:26+01:00",
-    "last_modified_en": "2026-10-31T20:23:26+01:00",
+    "last_modified_es": "2026-11-12T08:02:37+01:00",
+    "last_modified_en": "2026-11-12T08:02:37+01:00",
     "language_parity": "complete",
     "category": "Estrategia y Operaciones",
     "categories": [
@@ -1937,8 +1937,8 @@
     "brief_es": "Guía práctica y metodológica para diseñar, construir y gobernar agentes de IA en la operativa diaria de una empresa. Aprende qué herramientas elegir (n8n, CrewAI, LangGraph, MCP) y cómo aplicar Spec-Driven Development (SDD) para evitar agentes descontrolados.",
     "brief_en": "A practical and methodological guide to designing, building, and governing AI agents in daily business operations. Learn which tools to choose (n8n, CrewAI, LangGraph, MCP) and how to apply Spec-Driven Development (SDD) to prevent rogue agents.",
     "publish_date": "2026-11-11",
-    "last_modified_es": "2026-11-04T08:36:34+01:00",
-    "last_modified_en": "2026-11-04T08:36:34+01:00",
+    "last_modified_es": "2026-11-12T08:02:37+01:00",
+    "last_modified_en": "2026-11-12T08:02:37+01:00",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [

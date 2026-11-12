@@ -1,301 +1,342 @@
+"""SocialMediaManager - Gestor omnicanal con política X/Twitter Coste 0 EUR."""
+
+from __future__ import annotations
+
+import json
 import os
-import tweepy
+import re
+import tempfile
+from typing import Any, Dict, List, Optional, Union, Union
+
 import requests
-import time
-import random
+import tweepy
 from dotenv import load_dotenv
 
+from autopilot.src.models import (
+    SocialPlatformX,
+    build_x_web_intent_url,
+    count_twitter_weighted_length,
+)
+
+
 class SocialMediaManager:
-    def __init__(self):
-        # Cargar .env desde el directorio autopilot/ (padre de src/)
+    """Gestiona publicación en X (Web Intent 0 EUR por defecto), LinkedIn y Dev.to."""
+
+    def __init__(self) -> None:
         env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".env")
         load_dotenv(env_path)
+
+        self.twitter_api_enabled = os.getenv("ENABLE_TWITTER_API", "false").lower() == "true"
         self.twitter_api_key = os.getenv("TWITTER_API_KEY")
         self.twitter_api_secret = os.getenv("TWITTER_API_SECRET")
         self.twitter_access_token = os.getenv("TWITTER_ACCESS_TOKEN")
         self.twitter_access_token_secret = os.getenv("TWITTER_ACCESS_TOKEN_SECRET")
+
         self.linkedin_token = os.getenv("LINKEDIN_ACCESS_TOKEN")
         self.linkedin_client_id = os.getenv("LINKEDIN_CLIENT_ID")
         self.linkedin_client_secret = os.getenv("LINKEDIN_CLIENT_SECRET")
         self.linkedin_refresh_token = os.getenv("LINKEDIN_REFRESH_TOKEN")
         self.company_id = os.getenv("LINKEDIN_COMPANY_ID")
+
         self.devto_api_key = os.getenv("DEVTO_API_KEY")
         self.devto_org_id = os.getenv("DEVTO_ORG_ID")
 
-        # Configurar Tweepy Client (v2) - Para postear tweets
+        self.coderlegion_api_key = os.getenv("CODERLEGION_API_KEY")
+        self.coderlegion_api_url = os.getenv(
+            "CODERLEGION_API_URL", "https://coderlegion.com/api/v1/posts"
+        )
+        self.coderlegion_category_id = os.getenv("CODERLEGION_CATEGORY_ID")
+
         self.client_v2 = None
-        # Configurar Tweepy API (v1.1) - Para subir imágenes (media_upload)
         self.api_v1 = None
 
-        if self.twitter_api_key:
+        if self.twitter_api_enabled and self.twitter_api_key:
             try:
-                # Client v2
                 self.client_v2 = tweepy.Client(
                     consumer_key=self.twitter_api_key,
                     consumer_secret=self.twitter_api_secret,
                     access_token=self.twitter_access_token,
-                    access_token_secret=self.twitter_access_token_secret
+                    access_token_secret=self.twitter_access_token_secret,
                 )
-                
-                # API v1.1 (Auth OAuth1UserHandler)
                 auth = tweepy.OAuth1UserHandler(
-                    self.twitter_api_key, self.twitter_api_secret,
-                    self.twitter_access_token, self.twitter_access_token_secret
+                    self.twitter_api_key,
+                    self.twitter_api_secret,
+                    self.twitter_access_token,
+                    self.twitter_access_token_secret,
                 )
                 self.api_v1 = tweepy.API(auth)
-            except Exception as e:
-                print(f"⚠️ Error inicializando Twitter clients: {e}")
+            except Exception as exc:
+                print(f"⚠️ Error inicializando Twitter clients: {exc}")
 
-    def _clean_text(self, text):
-        return " ".join(text.split())
+    def _clean_text(self, text: str) -> str:
+        return " ".join((text or "").split())
 
-    def _count_twitter_length(self, text):
-        """Cuenta la longitud real del texto para Twitter (emojis cuentan x2, URLs cuentan como 23 caracteres t.co)."""
-        import re
-        # Twitter acorta cualquier URL (http/https) a 23 caracteres vía t.co
-        normalized_text = re.sub(r'https?://\S+', 'x' * 23, text)
-        length = 0
-        for char in normalized_text:
-            # Caracteres fuera del BMP (emojis, etc.) cuentan como 2
-            if ord(char) > 0xFFFF:
-                length += 2
-            else:
-                length += 1
-        return length
+    def _count_twitter_length(self, text: str) -> int:
+        """Delega en el cálculo ponderado oficial compartido en autopilot.src.models."""
+        return count_twitter_weighted_length(text)
 
-    def _smart_truncate(self, text, url, max_length=250):
-        """Trunca el texto de forma inteligente para Twitter (280 chars max)."""
-        # 1. Limpieza básica
-        text = self._clean_text(text)
-        
-        # 2. Eliminar "..." existentes al final (pueden venir del generador IA)
-        text = text.rstrip('.')
-        if text.endswith('…'):
-            text = text[:-1]
-        
-        # 3. Calcular espacio disponible
-        # Twitter acorta URLs a 23 caracteres. +1 espacio. +4 para "... "
-        url_length = 23
-        reserved_chars = url_length + 5  # " ... " + URL
-        target_len = max_length - reserved_chars
-        
-        # 4. Verificar longitud ponderada (emojis = 2)
-        twitter_len = self._count_twitter_length(text)
-        
-        if twitter_len <= target_len:
-            return f"{text} {url}"
-        
-        # 5. Truncar respetando palabras y emojis
+    def _smart_truncate(self, text: str, url: str, max_length: int = 250) -> str:
+        """Trunca el texto respetando longitud ponderada para incluir URL (23 chars t.co)."""
+        cleaned = self._clean_text(text).rstrip(".…")
+        target_len = max_length - (23 + 5)
+
+        if self._count_twitter_length(cleaned) <= target_len:
+            return f"{cleaned} {url}".strip()
+
         truncated = ""
         current_len = 0
-        
-        for word in text.split():
+        for word in cleaned.split():
             word_len = self._count_twitter_length(word)
-            if current_len + word_len + 1 > target_len:  # +1 por espacio
+            if current_len + word_len + 1 > target_len:
                 break
             if truncated:
                 truncated += " "
                 current_len += 1
             truncated += word
             current_len += word_len
-        
-        return f"{truncated}... {url}"
+        return f"{truncated}... {url}".strip()
 
-    def _compress_image(self, image_path, max_size_mb=4.5):
-        """Comprime la imagen si excede el límite de Twitter (5MB)."""
+    def _compress_image(self, image_path: str, max_size_mb: float = 4.5) -> str:
+        """Comprime la imagen si excede el límite de Twitter (5 MB)."""
         try:
             from PIL import Image
         except ImportError:
             print("   ⚠️ Pillow no instalado. Ejecuta: pip install Pillow")
             return image_path
-        
-        import tempfile
-        
+
         file_size_mb = os.path.getsize(image_path) / (1024 * 1024)
         print(f"   📏 Tamaño original: {file_size_mb:.2f} MB")
-        
         if file_size_mb <= max_size_mb:
             return image_path
-        
-        print(f"   🔄 Comprimiendo imagen (límite Twitter: 5 MB)...")
-        
+
+        print("   🔄 Comprimiendo imagen (límite Twitter: 5 MB)...")
         try:
             with Image.open(image_path) as img:
-                # Convertir a RGB si es necesario
-                if img.mode in ('RGBA', 'P'):
-                    img = img.convert('RGB')
-                
-                # Redimensionar si es muy grande
+                if img.mode in ("RGBA", "P"):
+                    img = img.convert("RGB")
                 max_dimension = 2048
                 if max(img.size) > max_dimension:
                     ratio = max_dimension / max(img.size)
                     new_size = (int(img.size[0] * ratio), int(img.size[1] * ratio))
                     img = img.resize(new_size, Image.Resampling.LANCZOS)
-                    print(f"   📐 Redimensionada a: {new_size[0]}x{new_size[1]}")
-                
-                # Guardar como JPEG con compresión progresiva
-                temp_file = tempfile.NamedTemporaryFile(suffix='.jpg', delete=False)
+
+                temp_file = tempfile.NamedTemporaryFile(suffix=".jpg", delete=False)
                 temp_path = temp_file.name
                 temp_file.close()
-                
+
                 quality = 85
                 while quality >= 20:
-                    img.save(temp_path, 'JPEG', quality=quality, optimize=True)
-                    new_size_mb = os.path.getsize(temp_path) / (1024 * 1024)
-                    
-                    if new_size_mb <= max_size_mb:
-                        print(f"   ✅ Comprimida a: {new_size_mb:.2f} MB (calidad: {quality}%)")
+                    img.save(temp_path, "JPEG", quality=quality, optimize=True)
+                    if os.path.getsize(temp_path) / (1024 * 1024) <= max_size_mb:
                         return temp_path
-                    
                     quality -= 10
-                
-                print(f"   ⚠️ No se pudo comprimir lo suficiente: {new_size_mb:.2f} MB")
                 return temp_path
-                
-        except Exception as e:
-            print(f"   ❌ Error comprimiendo: {e}")
+        except Exception as exc:
+            print(f"   ❌ Error comprimiendo: {exc}")
             return image_path
 
-    def post_to_devto(self, title, content_markdown, canonical_url, main_image=None):
-        """Publica el artículo completo en Dev.to con URL canónica."""
+    def prepare_x_zero_cost(
+        self,
+        x_pack_or_text: Union[SocialPlatformX, str],
+        post_url: str,
+        hashtags: Optional[List[str]] = None,
+    ) -> Dict[str, Any]:
+        """Genera e imprime paquete X/Twitter a coste 0 EUR/mes (Web Intent + hilo copiable)."""
+        if isinstance(x_pack_or_text, SocialPlatformX):
+            hook = x_pack_or_text.hook
+            thread = list(x_pack_or_text.thread)
+            tags = list(x_pack_or_text.hashtags or hashtags or [])
+            intent_url = x_pack_or_text.web_intent_url or build_x_web_intent_url(hook, post_url, tags)
+        else:
+            hook = self._clean_text(str(x_pack_or_text))
+            tags = list(hashtags or [])
+            intent_url = build_x_web_intent_url(hook, post_url, tags)
+            thread = [f"1/1 {hook} {post_url}".strip()]
+
+        print("\n🐦 [X / TWITTER - MODO COSTE 0 EUR/MES]")
+        print(f"   👉 1-Clic X Web Intent: {intent_url}")
+        print("   🧵 Hilo listo para copiar:")
+        for idx, tweet in enumerate(thread, start=1):
+            print(f"      [{idx}/{len(thread)}] ({count_twitter_weighted_length(tweet)}/280) {tweet}")
+
+        return {
+            "mode": "zero_cost_intent",
+            "hook": hook,
+            "hashtags": tags,
+            "web_intent_url": intent_url,
+            "thread": thread,
+        }
+
+    def post_to_devto(
+        self,
+        title: str,
+        content_markdown: str,
+        canonical_url: str,
+        main_image: Optional[str] = None,
+        tags: Optional[List[str]] = None,
+        description: Optional[str] = None,
+        published: bool = True,
+    ) -> Optional[Dict[str, Any]]:
+        """Publica el artículo completo en Dev.to con URL canónica y metadatos enriquecidos."""
         print(f"DTO - Posting to Dev.to: '{title}'...")
-        
         if not self.devto_api_key:
             print("⚠️ BLOQUEADO Dev.to: Faltan credenciales (DEVTO_API_KEY).")
-            return
+            return None
 
         api_url = "https://dev.to/api/articles"
-        
         headers = {
             "api-key": self.devto_api_key,
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
         }
-
-        # Construir payload
-        article_data = {
+        article_data: Dict[str, Any] = {
             "title": title,
             "body_markdown": content_markdown,
-            "published": True,
-            "canonical_url": canonical_url
+            "published": published,
+            "canonical_url": canonical_url,
         }
-
-        # Si hay Organization ID, lo añadimos
         if self.devto_org_id:
             article_data["organization_id"] = int(self.devto_org_id)
-
-        # Si hay imagen de portada (opcional)
         if main_image:
             article_data["main_image"] = main_image
-
-        payload = {"article": article_data}
+        if tags:
+            article_data["tags"] = list(tags)
+        if description:
+            article_data["description"] = description
 
         try:
-            response = requests.post(api_url, headers=headers, json=payload)
+            response = requests.post(
+                api_url,
+                headers=headers,
+                json={"article": article_data},
+                timeout=15,
+            )
             response.raise_for_status()
-            print(f"✅ Dev.to Success! URL: {response.json().get('url')}")
-        except Exception as e:
-            print(f"⚠️ Falló Dev.to: {e}")
-            if 'response' in locals() and response is not None:
-                print(f"   🔴 Dev.to Response: {response.text}")
+            payload = response.json()
+            print(f"✅ Dev.to Success! URL: {payload.get('url') if isinstance(payload, dict) else ''}")
+            return payload if isinstance(payload, dict) else {}
+        except requests.exceptions.HTTPError as exc:
+            status_code = exc.response.status_code if exc.response is not None else "?"
+            preview = (exc.response.text or "")[:250] if exc.response is not None else ""
+            print(f"⚠️ Falló Dev.to (HTTP {status_code}): {preview}")
+            return None
+        except Exception as exc:
+            print(f"⚠️ Falló Dev.to: {exc}")
+            return None
 
-    def post_to_twitter(self, text, url, image_path=None):
-        """Publica en Twitter gestionando la longitud automáticamente.
-        
-        Args:
-            text: Texto del tweet
-            url: URL a incluir
-            image_path: Ruta opcional a imagen local para subir con el tweet
-        """
+    def post_to_coderlegion(
+        self,
+        title: str,
+        content_markdown: str,
+        canonical_url: str,
+        cover_image_url: Optional[str] = None,
+        tags: Optional[List[str]] = None,
+        description: Optional[str] = None,
+        category_id: Optional[Union[str, int]] = None,
+    ) -> Optional[Dict[str, Any]]:
+        """Publica el artículo en CoderLegion (/api/v1/posts) usando X-API-Key y source_url."""
+        print(f"CLG - Posting to CoderLegion: '{title}'...")
+        if not self.coderlegion_api_key:
+            print("⚠️ BLOQUEADO CoderLegion: Faltan credenciales (CODERLEGION_API_KEY).")
+            return None
+
+        clean_source = (canonical_url or "").strip()
+        if not clean_source.startswith("https://"):
+            print("⛔ BLOQUEADO CoderLegion: source_url canónica HTTPS obligatoria (INV-AUTO-8).")
+            return None
+
+        headers = {
+            "X-API-Key": self.coderlegion_api_key,
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        }
+        payload: Dict[str, Any] = {
+            "title": title,
+            "content": content_markdown,
+            "source_url": clean_source,
+            "tags": list(tags or []),
+        }
+        if cover_image_url:
+            payload["cover_image_url"] = cover_image_url
+        if description:
+            payload["description"] = description
+
+        raw_category = category_id if category_id is not None else self.coderlegion_category_id
+        if raw_category is not None and str(raw_category).strip():
+            cat_str = str(raw_category).strip()
+            payload["category_id"] = int(cat_str) if cat_str.isdigit() else cat_str
+
+        try:
+            response = requests.post(
+                self.coderlegion_api_url,
+                headers=headers,
+                json=payload,
+                timeout=15,
+            )
+            response.raise_for_status()
+            data = response.json()
+            post_id = data.get("id") if isinstance(data, dict) else ""
+            print(f"✅ CoderLegion Success! Post ID: {post_id}")
+            return data if isinstance(data, dict) else {}
+        except requests.exceptions.HTTPError as exc:
+            status_code = exc.response.status_code if exc.response is not None else "?"
+            preview = (exc.response.text or "")[:250] if exc.response is not None else ""
+            print(f"⚠️ Falló CoderLegion (HTTP {status_code}): {preview}")
+            return None
+        except Exception as exc:
+            print(f"⚠️ Falló CoderLegion: {exc}")
+            return None
+
+    def post_to_twitter(
+        self,
+        text: str,
+        url: str,
+        image_path: Optional[str] = None,
+        x_pack: Optional[SocialPlatformX] = None,
+    ) -> Dict[str, Any]:
+        """Publica en X vía Web Intent coste 0 EUR por defecto (solo usa Tweepy si ENABLE_TWITTER_API=true)."""
+        if not self.twitter_api_enabled:
+            return self.prepare_x_zero_cost(x_pack or text, post_url=url)
+
         if not self.client_v2:
-            print("⚠️ Twitter no configurado (Faltan credenciales o error init).")
-            return
+            print("⚠️ ENABLE_TWITTER_API=true pero faltan credenciales; emitiendo X Web Intent 0 EUR.")
+            return self.prepare_x_zero_cost(x_pack or text, post_url=url)
 
         full_text = self._smart_truncate(text, url)
         twitter_length = self._count_twitter_length(full_text)
-        print(f"DTO - Posting to Twitter ({twitter_length} weighted chars, {len(full_text)} raw): {full_text[:100]}...")
-        
-        # Subir imagen si existe
+        print(f"DTO - Posting to Twitter ({twitter_length} weighted chars): {full_text[:100]}...")
+
         media_ids = None
-        if image_path and self.api_v1:
-            if os.path.exists(image_path):
-                try:
-                    print(f"📸 Subiendo imagen: {image_path}")
-                    
-                    # Comprimir si es necesario (límite Twitter: 5MB)
-                    final_path = self._compress_image(image_path)
-                    
-                    media = self.api_v1.media_upload(filename=final_path)
-                    media_ids = [media.media_id]
-                    print(f"   ✅ Imagen subida. Media ID: {media.media_id}")
-                    
-                    # Limpiar archivo temporal si fue creado
-                    if final_path != image_path and os.path.exists(final_path):
-                        os.remove(final_path)
-                        
-                except Exception as e:
-                    print(f"   ⚠️ Error subiendo imagen: {e}")
-            else:
-                print(f"⚠️ Imagen no encontrada: {image_path}")
-        
+        if image_path and self.api_v1 and os.path.exists(image_path):
+            try:
+                final_path = self._compress_image(image_path)
+                media = self.api_v1.media_upload(filename=final_path)
+                media_ids = [media.media_id]
+                if final_path != image_path and os.path.exists(final_path):
+                    os.remove(final_path)
+            except Exception as exc:
+                print(f"   ⚠️ Error subiendo imagen: {exc}")
+
         try:
             if media_ids:
                 response = self.client_v2.create_tweet(text=full_text, media_ids=media_ids)
             else:
                 response = self.client_v2.create_tweet(text=full_text)
             print(f"✅ Twitter Success! Tweet ID: {response.data['id']}")
-        
-        except tweepy.errors.TweepyException as e:
-            # Enhanced Debugging
-            print(f"⚠️ Falló Twitter (Tweepy Error): {e}")
-            print(f"   🔍 Debug Info: {type(e)}")
-            
-            if hasattr(e, 'response') and e.response is not None:
-                print(f"   🔴 Status Code: {e.response.status_code}")
-                try: 
-                    error_json = e.response.json()
-                    print(f"   🔴 Response JSON: {error_json}")
-                    if 'detail' in error_json:
-                        print(f"   🔴 Detail: {error_json['detail']}")
-                except:
-                    print(f"   🔴 Response Text: {e.response.text}")
-            
-            if hasattr(e, 'api_messages'):
-                print(f"   🔴 API Messages: {e.api_messages}")
-            
-            if "402" in str(e) or (hasattr(e, 'response') and e.response is not None and e.response.status_code == 402):
-                print("   💡 PISTA 402: Payment Required ('credits depleted').")
-                print("      Tu cuenta o proyecto de Twitter/X Developer se ha quedado sin créditos de API.")
-                print("      Twitter/X ahora utiliza un sistema de créditos prepago (Pay-as-you-go).")
-                print("      Para solucionarlo:")
-                print("      1. Accede a https://developer.x.com/en/portal/dashboard")
-                print("      2. Revisa la sección 'Billing' / 'Usage' de tu proyecto.")
-                print("      3. Recarga créditos o actualiza tu suscripción.")
-                print("      4. Si deseas omitir Twitter temporalmente, pon ENABLE_TWITTER=false en autopilot/.env.")
-            elif "403" in str(e):
-                print("   💡 PISTA 403: Forbidden. Puede ser:")
-                print("      1. Contenido duplicado (intenta texto diferente).")
-                print("      2. Credenciales sin permisos de escritura (regenera tokens).")
-                print("      3. Rate limit alcanzado.")
-            elif "401" in str(e):
-                print("   💡 PISTA 401: Unauthorized. Revisa tus API KEYS y TOKENS.")
+            return {"mode": "twitter_api_v2", "tweet_id": response.data.get("id")}
+        except tweepy.errors.TweepyException as exc:
+            print(f"⚠️ Falló Twitter API ({exc}); fallback a X Web Intent coste 0 EUR:")
+            return self.prepare_x_zero_cost(x_pack or text, post_url=url)
 
-    def _refresh_linkedin_token(self):
-        """Renueva el access token de LinkedIn usando el refresh token.
-        
-        Actualiza la variable en memoria y el archivo .env automáticamente.
-        Returns:
-            True si se renovó con éxito, False en caso contrario.
-        """
+    def _refresh_linkedin_token(self) -> bool:
+        """Renueva el access token de LinkedIn usando el refresh token."""
         if not self.linkedin_refresh_token:
-            print("   ❌ No hay LINKEDIN_REFRESH_TOKEN. Configúralo en .env (local) o en GitHub Secrets (CI).")
+            print("   ❌ No hay LINKEDIN_REFRESH_TOKEN.")
             return False
-        
         if not self.linkedin_client_id or not self.linkedin_client_secret:
-            print("   ❌ Faltan LINKEDIN_CLIENT_ID o LINKEDIN_CLIENT_SECRET. Configúralos en .env (local) o en GitHub Secrets (CI).")
+            print("   ❌ Faltan LINKEDIN_CLIENT_ID o LINKEDIN_CLIENT_SECRET.")
             return False
-        
+
         print("   🔄 Renovando token de LinkedIn...")
-        
         try:
             response = requests.post(
                 "https://www.linkedin.com/oauth/v2/accessToken",
@@ -304,153 +345,108 @@ class SocialMediaManager:
                     "refresh_token": self.linkedin_refresh_token,
                     "client_id": self.linkedin_client_id,
                     "client_secret": self.linkedin_client_secret,
-                }
+                },
+                timeout=15,
             )
             response.raise_for_status()
             data = response.json()
-            
             new_token = data.get("access_token")
             new_refresh = data.get("refresh_token")
-            
             if not new_token:
                 print("   ❌ La respuesta de LinkedIn no incluyó un nuevo access_token.")
                 return False
-            
-            # Actualizar en memoria
+
             self.linkedin_token = new_token
             if new_refresh:
                 self.linkedin_refresh_token = new_refresh
-            
-            # Actualizar el archivo .env (solo funciona en local)
+
             self._update_env_file("LINKEDIN_ACCESS_TOKEN", new_token)
             if new_refresh:
                 self._update_env_file("LINKEDIN_REFRESH_TOKEN", new_refresh)
-            
-            # Guardar nuevos tokens en archivo JSON para que CI los persista en GitHub Secrets
             self._save_refreshed_tokens(new_token, new_refresh)
-            
-            expires_in = data.get("expires_in", "?")
-            print(f"   ✅ Token renovado (expira en {expires_in}s).")
+            print(f"   ✅ Token renovado (expira en {data.get('expires_in', '?')}s).")
             return True
-            
-        except Exception as e:
-            print(f"   ❌ Error renovando token: {e}")
-            if hasattr(e, 'response') and e.response is not None:
-                print(f"   🔴 Detalle: {e.response.text}")
+        except Exception as exc:
+            print(f"   ❌ Error renovando token: {exc}")
             return False
 
-    def _update_env_file(self, key, value):
-        """Actualiza una clave en el archivo .env del directorio autopilot."""
-        import re
-        
-        # Buscar el .env en el directorio del proyecto autopilot
+    def _update_env_file(self, key: str, value: str) -> None:
         env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".env")
-        
         if not os.path.exists(env_path):
-            # En CI (GitHub Actions) no hay .env, los tokens se gestionan como secrets
             return
-        
-        with open(env_path, "r", encoding="utf-8") as f:
-            content = f.read()
-        
-        # Reemplazar la línea que contiene la clave
+
+        with open(env_path, "r", encoding="utf-8") as fh:
+            content = fh.read()
+
         pattern = rf"^{re.escape(key)}=.*$"
         replacement = f"{key}={value}"
         new_content, count = re.subn(pattern, replacement, content, flags=re.MULTILINE)
-        
         if count == 0:
-            # La clave no existía, añadirla al final
             new_content = content.rstrip() + f"\n{replacement}\n"
-        
-        with open(env_path, "w", encoding="utf-8") as f:
-            f.write(new_content)
 
-    def _save_refreshed_tokens(self, access_token, refresh_token=None):
-        """Guarda los tokens renovados en un archivo JSON para que CI los persista.
-        
-        En GitHub Actions, el workflow lee este archivo y actualiza los Secrets
-        automáticamente con `gh secret set`.
-        """
-        import json
-        
-        token_data = {"access_token": access_token}
+        with open(env_path, "w", encoding="utf-8") as fh:
+            fh.write(new_content)
+
+    def _save_refreshed_tokens(self, access_token: str, refresh_token: Optional[str] = None) -> None:
+        token_data: Dict[str, str] = {"access_token": access_token}
         if refresh_token:
             token_data["refresh_token"] = refresh_token
-        
         tokens_file = os.path.join(os.getcwd(), ".linkedin_new_tokens.json")
         try:
-            with open(tokens_file, "w") as f:
-                json.dump(token_data, f)
-            print(f"   📝 Nuevos tokens guardados para persistir en CI.")
-        except Exception as e:
-            print(f"   ⚠️ No se pudieron guardar tokens para CI: {e}")
+            with open(tokens_file, "w", encoding="utf-8") as fh:
+                json.dump(token_data, fh)
+            print("   📝 Nuevos tokens guardados para persistir en CI.")
+        except Exception as exc:
+            print(f"   ⚠️ No se pudieron guardar tokens para CI: {exc}")
 
-    def post_to_linkedin(self, text, url):
-        """Publica en LinkedIn. Si el token ha expirado, lo renueva automáticamente."""
-        # CORRECCIÓN: NO usamos _clean_text aquí para respetar los saltos de línea
-        # text = self._clean_text(text) <-- ELIMINADO
-        
-        # Solo hacemos un strip() básico por si acaso
-        text = text.strip()
-        
-        print(f"DTO - Posting to LinkedIn: {text[:50]}...")
-        
+    def post_to_linkedin(self, text: str, url: str) -> None:
+        """Publica en LinkedIn preservando saltos de línea Broetry y renovando token en 401."""
+        cleaned_text = (text or "").strip()
+        print(f"DTO - Posting to LinkedIn: {cleaned_text[:50]}...")
+
         if not self.company_id:
             print("⚠️ BLOQUEADO LinkedIn: No se encontró LINKEDIN_COMPANY_ID.")
             return
 
         api_url = "https://api.linkedin.com/v2/ugcPosts"
         author = f"urn:li:organization:{self.company_id}"
-        
-        for attempt in range(2):  # Máximo 2 intentos: original + retry tras refresh
+
+        for attempt in range(2):
             headers = {
                 "Authorization": f"Bearer {self.linkedin_token}",
                 "Content-Type": "application/json",
-                "X-Restli-Protocol-Version": "2.0.0"
+                "X-Restli-Protocol-Version": "2.0.0",
             }
-            
             payload = {
                 "author": author,
                 "lifecycleState": "PUBLISHED",
                 "specificContent": {
                     "com.linkedin.ugc.ShareContent": {
-                        "shareCommentary": {
-                            "text": text
-                        },
+                        "shareCommentary": {"text": cleaned_text},
                         "shareMediaCategory": "ARTICLE",
-                        "media": [
-                            {
-                                "status": "READY",
-                                "originalUrl": url
-                            }
-                        ]
+                        "media": [{"status": "READY", "originalUrl": url}],
                     }
                 },
-                "visibility": {
-                    "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"
-                }
+                "visibility": {"com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"},
             }
-
             try:
-                response = requests.post(api_url, headers=headers, json=payload)
+                response = requests.post(api_url, headers=headers, json=payload, timeout=15)
                 response.raise_for_status()
                 print(f"✅ LinkedIn Success! Post ID: {response.json().get('id')}")
-                return  # Éxito, salimos
-            except requests.exceptions.HTTPError as e:
-                if response.status_code == 401 and attempt == 0:
-                    print(f"   ⚠️ Token expirado (401). Intentando renovar...")
-                    if self._refresh_linkedin_token():
-                        print(f"   🔁 Reintentando publicación...")
-                        continue  # Reintentar con el token nuevo
-                    else:
-                        print(f"⚠️ Falló LinkedIn: No se pudo renovar el token.")
-                        return
-                else:
-                    print(f"⚠️ Falló LinkedIn: {e}")
-                    return
-            except Exception as e:
-                print(f"⚠️ Falló LinkedIn: {e}")
                 return
+            except requests.exceptions.HTTPError as exc:
+                if response.status_code == 401 and attempt == 0:
+                    print("   ⚠️ Token expirado (401). Intentando renovar...")
+                    if self._refresh_linkedin_token():
+                        continue
+                    print("⚠️ Falló LinkedIn: No se pudo renovar el token.")
+                    return
+                print(f"⚠️ Falló LinkedIn: {exc}")
+                return
+            except Exception as exc:
+                print(f"⚠️ Falló LinkedIn: {exc}")
+                return
+
 
 if __name__ == "__main__":
     pass

@@ -459,3 +459,43 @@
   - Corrección matemática de la amplitud térmica diurna y de los días de lluvia en todas las 168 estaciones.
   - Disponibilidad de diagnósticos climáticos inmediatos (0 ms) comprensibles para el usuario general y visualizaciones compartibles (calendario térmico en stripes).
   - Marcador auditable pionero que fortalece la credibilidad técnica de Datalaria sin comprometer la integridad metodológica.
+
+---
+
+## ADR-024: Refactorización SDD de `Autopilot 2.0`, Retirada de `gh copilot` / CrewAI y Arquitectura `Brevo Newsletter 2.0 Anti-Churn`
+- **Fecha:** 2026-11-12
+- **Estado:** Aceptado (En ejecución en Hito 7.3)
+- **Contexto:**
+  1. La auditoría de `autopilot/` reveló deuda técnica incompatible con SDD: archivos legacy `*_OLD_DEPRECATED.py`, dependencias pesadas sin uso activo (`crewai`, `langchain-google-genai`), un submódulo `autopilot/ctrl/` acoplado a llamadas externas no deterministas a `gh copilot suggest`, un bug en `NewsletterManager.preview_campaign()` (`AttributeError` por `self.list_id`), asuntos robóticos fijos (`🚀 Nuevo en Datalaria:`) y una plantilla HTML sin imagen Hero, sin bloque *Zero-Click Value*, sin UTMs y con logo duplicado.
+  2. La API de pago de X/Twitter supone un coste recurrente innecesario para Datalaria, mientras que `social_pack.yaml` generado en *design-time* por `E06-social-syndicator` requería soporte prioritario en `orchestrator.py` y protección explícita en `config.yaml` (`ignoreFiles`) para evitar su copia hacia `public/`.
+- **Decisión:**
+  1. **Formalización SDD (`SPEC-OPS-AUTOPILOT v2.0.0`):** Se aprueba `specs/ops/autopilot/spec.md` con las invariantes `INV-AUTO-1..6`, retirando `autopilot/ctrl/` y los archivos `*_OLD_DEPRECATED.py` junto con `crewai` y `langchain-google-genai`.
+  2. **Sustitución Determinista (`models.py` + `quality_validator.py`):** Contratos Pydantic v2, cálculo ponderado de Twitter (URL = `23`, emojis fuera de BMP = `2`), `X Web Intent` (`https://x.com/intent/tweet`), validación Broetry de LinkedIn y verificación anti-spam HTML de Brevo 2.0, 100 % cubiertos por `pytest` offline.
+  3. **Política X Coste 0 €/mes (`INV-AUTO-1`):** `ENABLE_TWITTER_API="false"` por defecto en código y `.github/workflows/autopilot.yml`; generación sistemática de URL `Web Intent` + hilo de 4–6 tweets listos para copiar.
+  4. **Brevo Newsletter 2.0 Anti-Churn (`INV-AUTO-2`):** Rotación determinista de los 5 arquetipos de asunto de `E05`, diseño tabular claro compatible con Outlook/Gmail, preheader oculto, exactamente 1 imagen Hero clicable (`max-width: 560px`, `border-radius: 12px`), caja *"En 60 segundos: Los 3 Insights Clave"*, doble CTA con UTMs seguras ante `HashRouter` (`urlsplit` antes de `#`) y bucle de reenvío `P.D.`.
+  5. **Blindaje de Catálogo y Hugo (`INV-AUTO-5` y `INV-AUTO-6`):** Exclusión de `social_pack.ya?ml` en `config.yaml` (`ignoreFiles`) y bloqueo de CTAs hacia apps con `status: incubating` en `data/apps/*.yaml`.
+- **Alternativas Descartadas:**
+  - *Alternativa A: Mantener `autopilot/ctrl/` con llamadas wrapper a CLI externas.* Descartada por ser opaca, no determinista y requerir autenticación CLI interactiva imposible de reproducir en `pytest` CI.
+  - *Alternativa B: Migrar ya CoderLegion y un transformador universal completo en el mismo commit.* Pospuesta al **Hito 7.4** para conservar entregas atómicas (`1 Hito = 1 Turno`) sin romper `test_link_resolver.py`.
+- **Consecuencias:**
+  - Reducción drástica de dependencias en CI, eliminación de fallos en `DRY_RUN`, cero coste mensual en X/Twitter y garantía reproducible de calidad social/email mediante `pytest`.
+
+---
+
+## ADR-025: Transformador Universal de Markdown (`markdown_syndicator.py`), API `CoderLegion` y Sindicación Canónica (`Hito 7.4`)
+- **Fecha:** 2026-11-12
+- **Estado:** Aceptado (En ejecución en Hito 7.4)
+- **Contexto:**
+  1. Aunque `Autopilot 2.0` (`v2.0.0`) consolidó X, LinkedIn y Brevo 2.0, el canal `Dev.to` seguía recibiendo Markdown con shortcodes Hugo complejos sin transformar (`product-card` y `bundle-card` multilínea, `mermaid`, `helix-waitlist`, `youtube`, `buymeacoffee`, `app-ref`), imágenes con títulos opcionales o prefijo `/images/...` sin normalizar, enlaces internos sin UTMs de sindicación ni atribución canónica explícita, y sin integración con **CoderLegion**.
+  2. La verificación empírica en esta sesión sobre `GET https://coderlegion.com/api/v1/posts` demostró que el endpoint rechaza `Authorization: Bearer` (`401`) y autentica exclusivamente mediante cabecera **`X-API-Key` (`200`)**, usando el campo **`source_url`** (equivalente a `canonical_url` en Dev.to), `title`, `content`, `tags`, `cover_image_url` y `category`.
+  3. Además, generar artefactos `dist_*.md` dentro de `content/` habría provocado páginas duplicadas en Hugo si no se aislaba su ruta de salida y se reforzaba `ignoreFiles`.
+- **Decisión:**
+  1. **Módulo Dedicado `autopilot/src/markdown_syndicator.py` (`INV-AUTO-7`):** Transforma todos los shortcodes Hugo del repositorio preservando bloques cercados ```` ```...``` ```` (previa conversión de `{{< mermaid >}}` a ```` ```mermaid ````), reutilizando `resolve_image_urls()`, `resolve_markdown_links()`, `append_utm_params()` y el helper compartido de embargo de apps `data/apps/*.yaml` (`INV-AUTO-6`).
+  2. **Contratos Tipados (`models.py`) y Auditoría QA (`quality_validator.py`):** Se añaden `SyndicationConfig`, `SyndicationArtifact`, `normalize_syndication_tags()` y `audit_markdown_syndication()` dentro de `audit_social_bundle()`, exigiendo `0` shortcodes residuales, `0` imágenes o enlaces relativos, presencia de atribución canónica, UTMs y validación de tags Dev.to (`^[a-z0-9]{1,30}$`, máx. 4).
+  3. **Contrato CoderLegion + Dev.to Enriquecido (`INV-AUTO-8`):** `SocialMediaManager.post_to_coderlegion()` exige `source_url` (`https://datalaria.com/...`) y envía `X-API-Key` desde entorno/Secrets sin imprimir credenciales. Por defecto `CODERLEGION_LANGS="en"` limita la sindicación en CoderLegion a inglés.
+  4. **Aislamiento en Dos Capas frente a Hugo:** Los artefactos `dist_devto_{lang}.md` y `dist_coderlegion_{lang}.md` se escriben bajo `autopilot/dist/<slug>/` (ignorado en `autopilot/.gitignore`) y `config.yaml` añade `'(?i)dist_(devto|coderlegion)(_[a-z]{2})?\.md$'` en `ignoreFiles`.
+- **Alternativas Descartadas:**
+  - *Alternativa A: Sobrecargar `orchestrator.py` con regex ad-hoc de shortcodes y perder la firma de `resolve_markdown_links`.* Descartada para mantener separación de responsabilidades y preservar intactos los 8 tests de `autopilot/tests/test_link_resolver.py`.
+  - *Alternativa B: Emitir `dist_*.md` dentro de `content/`.* Descartada por riesgo de contaminación del sitemap e índice de búsqueda de Hugo.
+- **Consecuencias:**
+  - Sindicación multiplataforma determinista en Dev.to y CoderLegion con protección SEO canónica, trazabilidad completa por UTMs y verificación automatizada offline vía `pytest`.

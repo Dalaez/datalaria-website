@@ -9,3 +9,7 @@ __pycache__/
 venv/
 .vscode/
 .idea/
+
+# Artefactos temporales y dist de sindicación (Hito 7.4)
+dist/
+generated_content.json
