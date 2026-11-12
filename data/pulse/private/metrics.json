@@ -107,6 +107,15 @@
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 0.0
   },
+  "quantitative-raci-workload-matrix": {
+    "ga4_views_30d": 0,
+    "ga4_users_30d": 0,
+    "ga4_engagement_sec": 0.0,
+    "gsc_clicks_30d": 0,
+    "gsc_impressions_30d": 0,
+    "gsc_ctr_pct": 0.0,
+    "gsc_avg_position": 0.0
+  },
   "pulse-part1": {
     "ga4_views_30d": 40,
     "ga4_users_30d": 2,
@@ -174,15 +183,6 @@
     "ga4_views_30d": 2,
     "ga4_users_30d": 2,
     "ga4_engagement_sec": 10.0,
-    "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 0,
-    "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 0.0
-  },
-  "matriz-raci-balance-carga": {
-    "ga4_views_30d": 1,
-    "ga4_users_30d": 1,
-    "ga4_engagement_sec": 5.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
