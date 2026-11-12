@@ -547,7 +547,7 @@ Detalles ℹ️
 <button type="button" class="btn-kit-info" onclick="openModal('pack-raci')">
 Detalles ℹ️
 </button>
-<span class="btn-kit-info btn-disabled" title="Artículo técnico próximamente">Artículo próximamente</span>
+<a href="/es/posts/matriz-raci-balance-carga/" class="btn-kit-info" title="Leer artículo técnico">Artículo técnico 📖</a>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/97eec34f-011e-410c-a623-714218871b1a?embed=1" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
@@ -1413,8 +1413,8 @@ Detalles ℹ️
       "Guía PDF de gestión de stakeholders y clarificación de roles"
     ],
     "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/97eec34f-011e-410c-a623-714218871b1a?embed=1",
-    "guideUrl": null,
-    "previewImg": "/images/recursos/RACI.png"
+    "guideUrl": "/es/posts/matriz-raci-balance-carga/",
+    "previewImg": "/images/recursos/raci-preview-es.png"
   },
   {
     "id": "pack-amfe",

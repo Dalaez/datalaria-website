@@ -36,6 +36,7 @@ Garantizar la **paridad bilingüe estricta del 100% (`ES ⇔ EN`)** y la optimiz
 - ❌ **Prohibido emplear traducciones mecánicas de baja calidad sin revisión técnica de términos.**
 
 ## 6. Reglas de Fricción Real y Correcciones ([USER-FIX] / [ENV-FIX])
+- `[USER-FIX]` **Navegabilidad Multilingüe e Inmutabilidad SEO (Hugo .Translations & translationKey):** Todo artículo nuevo DEBE incluir `translationKey: "<slug-canonico>"` idéntico en el frontmatter de ES y EN para que Hugo renderice el enlace de traducción (`Traducciones: En` / `Translations: Es`). En artículos pasados está TERMINANTEMENTE PROHIBIDO renombrar directorios para evitar roturas de URLs/SEO; la navegabilidad multilingüe se garantiza inyectando `translationKey` sin alterar rutas.
 - `[USER-FIX]` **Blindaje de URLs con buildFuture: false:** No incluir enlaces a artículos programados en fechas posteriores a hoy; citarlos como entregas futuras.
 - `[USER-FIX]` **Safe Zone en Portadas:** Verificar que la imagen `cover.png` mantenga el texto y diagramas dentro de la zona central visible (sin recortes en tarjetas PaperMod).
 - `[ENV-FIX]` **Codificación UTF-8 Limpia:** Guardar siempre los archivos Markdown en UTF-8 sin BOM para evitar errores de compilación en Hugo.

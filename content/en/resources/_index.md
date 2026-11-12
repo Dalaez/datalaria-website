@@ -547,7 +547,7 @@ Details ℹ️
 <button type="button" class="btn-kit-info" onclick="openModal('pack-raci')">
 Details ℹ️
 </button>
-<span class="btn-kit-info btn-disabled" title="Technical article coming soon">Article coming soon</span>
+<a href="/en/posts/quantitative-raci-workload-matrix/" class="btn-kit-info" title="Read technical article">Technical Article 📖</a>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/97eec34f-011e-410c-a623-714218871b1a?embed=1" class="btn-kit-buy lemonsqueezy-button">Download →</a>
 </div>
 </div>
@@ -1413,8 +1413,8 @@ Details ℹ️
       "PDF guide on stakeholder management and role clarity"
     ],
     "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/97eec34f-011e-410c-a623-714218871b1a?embed=1",
-    "guideUrl": null,
-    "previewImg": "/images/recursos/RACI.png"
+    "guideUrl": "/en/posts/quantitative-raci-workload-matrix/",
+    "previewImg": "/images/recursos/raci-preview-en.png"
   },
   {
     "id": "pack-amfe",

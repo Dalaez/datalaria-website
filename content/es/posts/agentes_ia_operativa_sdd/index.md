@@ -81,26 +81,8 @@ Cuando unimos ambos conceptos, obtenemos la **Metodología SOP-to-SDD para Agent
 
 A nivel de ejecución en tiempo real, este diseño envuelve el cerebro probabilístico de la IA dentro de compuertas lógicas deterministas:
 
-{{< mermaid >}}
-flowchart LR
-    classDef trigger fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#fff;
-    classDef spec fill:#0f172a,stroke:#a855f7,stroke-width:2px,color:#fff;
-    classDef brain fill:#0369a1,stroke:#7dd3fc,stroke-width:2px,color:#fff;
-    classDef gate fill:#334155,stroke:#f59e0b,stroke-width:2px,color:#fff;
-    classDef green fill:#065f46,stroke:#34d399,stroke-width:2px,color:#fff;
-    classDef amber fill:#78350f,stroke:#fbbf24,stroke-width:2px,color:#fff;
-    classDef red fill:#7f1d1d,stroke:#f87171,stroke-width:2px,color:#fff;
-
-    T["⚡ Evento Disparador<br/>(Email / Webhook / Cron)"]:::trigger --> V1{"🛡️ Compuerta 1:<br/>Saneado de Entrada"}:::gate
-    S["📐 Especificación SDD<br/>(SOP.md + JSON Schema)"]:::spec -.->|Inyecta Contrato| B
-    S -.->|Reglas de Validación| G2
-    V1 -->|Payload Limpio| B["🧠 Cerebro Agéntico<br/>(LLM + Herramientas MCP)"]:::brain
-    B -->|Salida JSON| G2{"⚖️ Compuerta 2:<br/>Validador Pydantic + Reglas"}:::gate
-    
-    G2 -->|🟢 Confianza > 95%<br/>Desviación 0%| ZG["✅ Zona Verde:<br/>Auto-Ejecución en ERP"]:::green
-    G2 -->|🟡 Discrepancia < 5%<br/>o Importe Medio| ZA["👀 Zona Ámbar (HITL):<br/>Aprobación en Slack/Teams"]:::amber
-    G2 -->|🔴 Error Esquema /<br/>Desviación Crítica| ZR["🚨 Zona Roja:<br/>Bloqueo y Alerta Humana"]:::red
-{{< /mermaid >}}
+![Pipeline de Ejecución SOP-to-SDD](flujo-sdd-compuertas-agente.png "Pipeline de Ejecución SOP-to-SDD: Gobernando la IA con Compuertas Lógicas")
+*Figura 2: Pipeline de ejecución en tiempo real gobernado por especificaciones SDD y compuertas lógicas deterministas.*
 
 ---
 

@@ -1,9 +1,9 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-11-11T07:34:47.422686Z",
+  "generated_at": "2026-11-12T07:02:54.080537Z",
   "total_assets": 149,
-  "published_assets": 124,
-  "scheduled_assets": 21,
+  "published_assets": 125,
+  "scheduled_assets": 20,
   "ideas_count": 0,
   "parity_summary": {
     "complete": 149
@@ -551,7 +551,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -895,6 +895,74 @@
       "metrics_relative": {
         "index_100": 270,
         "rank_pct": 85,
+        "trend_30d_pct": 0.0,
+        "gsc_opportunity": false
+      },
+      "metrics_absolute": null
+    },
+    {
+      "id": "quantitative-raci-workload-matrix",
+      "slug": "matriz-raci-balance-carga",
+      "asset_type": "post",
+      "status": "published",
+      "visibility": "public",
+      "title_es": "Matriz RACI Cuantitativa: Balance de Carga Operativa, Unicidad de Accountable y Detección de Cuellos de Botella",
+      "title_en": "Quantitative RACI Matrix: Operational Workload Balancing, Single Accountability & Bottleneck Detection",
+      "url_es": "/es/posts/matriz-raci-balance-carga/",
+      "url_en": "/en/posts/quantitative-raci-workload-matrix/",
+      "brief_es": "Guía metodológica y cuantitativa para transformar la matriz RACI tradicional en un motor dinámico de control operativo: principio de Accountable único, cálculo de saturación por rol, semáforos de riesgo de burnout y plan de rebalanceo C-Level.",
+      "brief_en": "A comprehensive guide to transforming traditional qualitative RACI charts into an automated quantitative workload engine: single accountability enforcement, role-based FTE saturation formulas, burnout heatmaps, and C-Level rebalancing plans.",
+      "publish_date": "2026-11-12",
+      "last_modified_es": "2026-10-31T20:23:26+01:00",
+      "last_modified_en": "2026-10-31T20:23:26+01:00",
+      "language_parity": "complete",
+      "category": "Estrategia y Operaciones",
+      "categories": [
+        "Control Operativo",
+        "Gobernanza de Equipos",
+        "Plantillas Ejecutivas",
+        "Estrategia y Operaciones"
+      ],
+      "tags": [
+        "Matriz RACI",
+        "PMBOK",
+        "PRINCE2",
+        "Balance de Carga",
+        "Gobernanza de Equipos",
+        "Cuellos de Botella",
+        "FTE",
+        "C-Level",
+        "PMO"
+      ],
+      "series": null,
+      "word_count_es": 3896,
+      "word_count_en": 3321,
+      "reading_time_min": 20,
+      "related_app": null,
+      "related_kit": "datalaria.lemonsqueezy.com/checkout/buy/97eec34f-011e-410c-a623-714218871b1a",
+      "included_kits": [],
+      "price": null,
+      "original_price": null,
+      "checkout_url": null,
+      "deliverables": [],
+      "seo_audit": {
+        "score_0_100": 80,
+        "title_ok": false,
+        "description_ok": true,
+        "parity_ok": true,
+        "taxonomy_ok": true,
+        "internal_links_ok": true,
+        "issues": [
+          "Longitud de título no óptima (111 caracteres; ideal: 35-95)"
+        ]
+      },
+      "freshness_status": "fresh",
+      "owner": "Daniel Alaez",
+      "campaign": null,
+      "social_channels": [],
+      "metrics_relative": {
+        "index_100": 0,
+        "rank_pct": 12,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1445,74 +1513,6 @@
       "metrics_absolute": null
     },
     {
-      "id": "matriz-raci-balance-carga",
-      "slug": "matriz-raci-balance-carga",
-      "asset_type": "post",
-      "status": "scheduled",
-      "visibility": "public",
-      "title_es": "Matriz RACI Cuantitativa: Balance de Carga Operativa, Unicidad de Accountable y Detección de Cuellos de Botella",
-      "title_en": "Quantitative RACI Matrix: Operational Workload Balancing, Single Accountability & Bottleneck Detection",
-      "url_es": "/es/posts/matriz-raci-balance-carga/",
-      "url_en": "/en/posts/quantitative-raci-workload-matrix/",
-      "brief_es": "Guía metodológica y cuantitativa para transformar la matriz RACI tradicional en un motor dinámico de control operativo: principio de Accountable único, cálculo de saturación por rol, semáforos de riesgo de burnout y plan de rebalanceo C-Level.",
-      "brief_en": "A comprehensive guide to transforming traditional qualitative RACI charts into an automated quantitative workload engine: single accountability enforcement, role-based FTE saturation formulas, burnout heatmaps, and C-Level rebalancing plans.",
-      "publish_date": "2026-11-25",
-      "last_modified_es": "2026-10-31T20:23:26+01:00",
-      "last_modified_en": "2026-10-31T20:23:26+01:00",
-      "language_parity": "complete",
-      "category": "Estrategia y Operaciones",
-      "categories": [
-        "Control Operativo",
-        "Gobernanza de Equipos",
-        "Plantillas Ejecutivas",
-        "Estrategia y Operaciones"
-      ],
-      "tags": [
-        "Matriz RACI",
-        "PMBOK",
-        "PRINCE2",
-        "Balance de Carga",
-        "Gobernanza de Equipos",
-        "Cuellos de Botella",
-        "FTE",
-        "C-Level",
-        "PMO"
-      ],
-      "series": null,
-      "word_count_es": 3177,
-      "word_count_en": 2727,
-      "reading_time_min": 16,
-      "related_app": null,
-      "related_kit": "datalaria.lemonsqueezy.com/checkout/buy/97eec34f-011e-410c-a623-714218871b1a",
-      "included_kits": [],
-      "price": null,
-      "original_price": null,
-      "checkout_url": null,
-      "deliverables": [],
-      "seo_audit": {
-        "score_0_100": 80,
-        "title_ok": false,
-        "description_ok": true,
-        "parity_ok": true,
-        "taxonomy_ok": true,
-        "internal_links_ok": true,
-        "issues": [
-          "Longitud de título no óptima (111 caracteres; ideal: 35-95)"
-        ]
-      },
-      "freshness_status": "fresh",
-      "owner": "Daniel Alaez",
-      "campaign": null,
-      "social_channels": [],
-      "metrics_relative": {
-        "index_100": 10,
-        "rank_pct": 27,
-        "trend_30d_pct": 0.0,
-        "gsc_opportunity": false
-      },
-      "metrics_absolute": null
-    },
-    {
       "id": "matriz-riesgos-amfe-fmea",
       "slug": "matriz-riesgos-amfe-fmea",
       "asset_type": "post",
@@ -1577,7 +1577,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1706,7 +1706,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1771,7 +1771,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4939,7 +4939,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5802,7 +5802,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6275,7 +6275,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6920,7 +6920,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7506,7 +7506,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7698,7 +7698,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 10,
-        "rank_pct": 27,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },

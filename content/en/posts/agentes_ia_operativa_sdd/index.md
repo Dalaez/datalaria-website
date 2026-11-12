@@ -81,26 +81,8 @@ When we fuse both disciplines, we get the **SOP-to-SDD Methodology for Enterpris
 
 At runtime, this architecture wraps the probabilistic LLM brain inside deterministic logic gates:
 
-{{< mermaid >}}
-flowchart LR
-    classDef trigger fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#fff;
-    classDef spec fill:#0f172a,stroke:#a855f7,stroke-width:2px,color:#fff;
-    classDef brain fill:#0369a1,stroke:#7dd3fc,stroke-width:2px,color:#fff;
-    classDef gate fill:#334155,stroke:#f59e0b,stroke-width:2px,color:#fff;
-    classDef green fill:#065f46,stroke:#34d399,stroke-width:2px,color:#fff;
-    classDef amber fill:#78350f,stroke:#fbbf24,stroke-width:2px,color:#fff;
-    classDef red fill:#7f1d1d,stroke:#f87171,stroke-width:2px,color:#fff;
-
-    T["⚡ Event Trigger<br/>(Email / Webhook / Cron)"]:::trigger --> V1{"🛡️ Gate 1:<br/>Input Sanitization"}:::gate
-    S["📐 SDD Specification<br/>(SOP.md + JSON Schema)"]:::spec -.->|Injects Contract| B
-    S -.->|Validation Rules| G2
-    V1 -->|Clean Payload| B["🧠 Agentic Brain<br/>(LLM + Scoped MCP Tools)"]:::brain
-    B -->|JSON Output| G2{"⚖️ Gate 2:<br/>Pydantic Validator + Rules"}:::gate
-    
-    G2 -->|🟢 Confidence > 95%<br/>Variance 0%| ZG["✅ Green Zone:<br/>Auto-Execute in ERP"]:::green
-    G2 -->|🟡 Variance < 5%<br/>or Medium Amount| ZA["👀 Amber Zone (HITL):<br/>Slack/Teams Approval"]:::amber
-    G2 -->|🔴 Schema Error /<br/>Critical Variance| ZR["🚨 Red Zone:<br/>Hard Block & Human Alert"]:::red
-{{< /mermaid >}}
+![SOP-to-SDD Runtime Pipeline](sdd-agent-gates-pipeline.png "SOP-to-SDD Runtime Pipeline: Governing Autonomous AI with Logic Gates")
+*Figure 2: Real-time execution pipeline governed by SDD specifications and deterministic logic gates.*
 
 ---
 
