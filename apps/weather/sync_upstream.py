@@ -29,6 +29,9 @@ REQUIRED_ROOT_FILES = [
     "icon.svg",
     "icon-192.png",
     "icon-512.png",
+    "icon-maskable-192.png",
+    "icon-maskable-512.png",
+    "apple-touch-icon.png",
     "datalaria_logo_transp.png",
     "read_weather.py",
     "build_derived.py",
@@ -189,15 +192,31 @@ def export_to_upstream(app_dir: Path, target_dir: Path, sync_hugo_catalog: bool 
     # Sincronizar también hacia static/apps/weather para paridad total con Hugo
     static_weather_dir = BASE_DIR.parents[1] / "static" / "apps" / "weather"
     if static_weather_dir.exists():
-        for rel in ["index.html", "embed.html", "manifest.json", "sw.js", "_headers"]:
+        for rel in [
+            "index.html",
+            "embed.html",
+            "manifest.json",
+            "sw.js",
+            "_headers",
+            "icon.svg",
+            "icon-192.png",
+            "icon-512.png",
+            "icon-maskable-192.png",
+            "icon-maskable-512.png",
+            "apple-touch-icon.png",
+        ]:
             if (app_dir / rel).exists():
                 shutil.copy2(app_dir / rel, static_weather_dir / rel)
         # INV-WEATHER-6: En static/apps/weather solo copiar los agregados JSON (nunca daily/ ni CSVs)
+        app_derived = BASE_DIR / "derived"
+        app_derived.mkdir(parents=True, exist_ok=True)
         static_derived = static_weather_dir / "derived"
         static_derived.mkdir(parents=True, exist_ok=True)
         for d_file in ["index.json", "climatology.json", "insights.json", "scorecard.json", "weekly_extremes.json"]:
             src_f = target_dir / "derived" / d_file
             if src_f.exists():
+                if target_dir.resolve() != BASE_DIR.resolve():
+                    shutil.copy2(src_f, app_derived / d_file)
                 shutil.copy2(src_f, static_derived / d_file)
         # Asegurar que daily no existe en static
         if (static_derived / "daily").exists():

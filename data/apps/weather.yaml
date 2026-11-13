@@ -7,7 +7,7 @@ cover: cover.png
 app_url: /apps/weather/
 demo_url: "/apps/weather/?preset=extremes&view=arena"
 source_spec: specs/apps/weather/spec.md
-current_version: v3.3.1
+current_version: v3.3.2
 
 title:
   es: "Weather Intelligence v3.3"
@@ -115,6 +115,21 @@ posts:
     part: 4
 
 releases:
+  - version: v3.3.2
+    date: "2026-11-13"
+    state: released
+    type: patch
+    title:
+      es: "Weather Intelligence v3.3.2: Contención Mobile, Guardia Anti-NaN Leaflet y Homologación PWA Gold (W3.6-FIX)"
+      en: "Weather Intelligence v3.3.2: Mobile Layout Containment, Leaflet NaN Guard & PWA Gold Compliance (W3.6-FIX)"
+    changes:
+      - es: "Contención responsive de cabecera (<header>), menú desplegable (⋯) y viewport móvil (<= 960px / <= 768px) ocultando badges secundarios a favor del título y acciones, eliminando desbordamiento horizontal y manteniendo visible #mobile-bottom-tabs sincronizado con la vista activa (INV-WEATHER-22)."
+        en: "Responsive mobile containment for header, options dropdown (⋯), and document viewport (<= 960px / <= 768px) hiding secondary badges to preserve title and controls without horizontal overflow, keeping #mobile-bottom-tabs visible and synced."
+      - es: "Guardia espacial en Leaflet (isMapContainerReady, safeFlyTo, safeFlyToBounds, pendingMapViewport y map.stop) que difiere transiciones mientras el Observatorio está oculto, erradicando excepciones 'Invalid LatLng object: (NaN, NaN)'."
+        en: "Spatial Leaflet transition guard (isMapContainerReady, safeFlyTo, safeFlyToBounds, pendingMapViewport, and map.stop) deferring bounds updates while Observatory is hidden and eliminating 'Invalid LatLng object: (NaN, NaN)' runtime errors."
+      - es: "Homologación PWA Gold: registro inmediato de sw.js cuando document.readyState !== 'loading', caché offline del shell raíz con ignoreSearch preservando el veto CSV (INV-WEATHER-10), manifest.json relativo con iconos any/maskable + apple-touch-icon 180×180, regla global .hidden, guía bilingüe iOS/Desktop y redirección 301! en /apps/weather."
+        en: "PWA Gold upgrade: immediate Service Worker registration when document.readyState !== 'loading', offline root navigation caching with ignoreSearch while preserving the CSV exclusion (INV-WEATHER-10), relative manifest.json with separate any/maskable icons + 180×180 apple-touch-icon, global .hidden utility, bilingual install guide, and 301! canonical redirect on /apps/weather."
+
   - version: v3.3.1
     date: "2026-11-13"
     state: released

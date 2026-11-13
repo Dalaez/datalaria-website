@@ -1,18 +1,18 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-11-13T15:30:55.124233Z",
-  "total_assets": 149,
-  "published_assets": 125,
+  "generated_at": "2026-11-13T23:20:10.746114Z",
+  "total_assets": 150,
+  "published_assets": 126,
   "scheduled_assets": 20,
   "ideas_count": 0,
   "parity_summary": {
-    "complete": 149
+    "complete": 150
   },
   "monthly_traffic_index": [
     {
       "month": "2025-09",
       "label": "Sep '25",
-      "index_100": 10
+      "index_100": 7
     },
     {
       "month": "2025-10",
@@ -82,7 +82,7 @@
     {
       "month": "2026-11",
       "label": "Nov '26",
-      "index_100": 287
+      "index_100": 376
     }
   ],
   "assets": [
@@ -145,8 +145,73 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 410,
-        "rank_pct": 94,
+        "index_100": 382,
+        "rank_pct": 93,
+        "trend_30d_pct": 0.0,
+        "gsc_opportunity": false
+      },
+      "metrics_absolute": null
+    },
+    {
+      "id": "autopilot-part10-scriba-pulse-bridge",
+      "slug": "autopilot-parte10-scriba-sindicacion-puente-pulse",
+      "asset_type": "post",
+      "status": "published",
+      "visibility": "public",
+      "title_es": "Autopilot 2.0: De CrewAI a Pydantic v2, Sindicación Universal y el Puente a Pulse",
+      "title_en": "Autopilot 2.0: From CrewAI to Pydantic v2, Universal Syndication, and the Pulse Bridge",
+      "url_es": "/es/posts/autopilot-parte10-scriba-sindicacion-puente-pulse/",
+      "url_en": "/en/posts/autopilot-part10-scriba-syndication-pulse-bridge/",
+      "brief_es": "Cierre técnico de la serie Autopilot: cómo sustituimos CrewAI y APIs caras por contratos Pydantic v2, validador determinista, X a 0 € y sindicación en Dev.to y CoderLegion.",
+      "brief_en": "Technical finale of the Autopilot series: replacing CrewAI and brittle CI calls with Pydantic v2 contracts, deterministic QA gates, 0-cost X Web Intents, and Dev.to/CoderLegion syndication.",
+      "publish_date": "2026-11-13",
+      "last_modified_es": "2026-11-13T07:18:27.714581Z",
+      "last_modified_en": "2026-11-13T07:18:29.484467Z",
+      "language_parity": "complete",
+      "category": "IA, Ingeniería y Proyectos",
+      "categories": [
+        "Ingeniería",
+        "Inteligencia Artificial",
+        "DevOps",
+        "IA, Ingeniería y Proyectos"
+      ],
+      "tags": [
+        "autopilot",
+        "pydantic",
+        "sdd",
+        "scriba",
+        "python",
+        "github-actions",
+        "seo",
+        "syndication"
+      ],
+      "series": null,
+      "word_count_es": 1869,
+      "word_count_en": 1621,
+      "reading_time_min": 10,
+      "related_app": "obs-management",
+      "related_kit": "helix-waitlist",
+      "included_kits": [],
+      "price": null,
+      "original_price": null,
+      "checkout_url": null,
+      "deliverables": [],
+      "seo_audit": {
+        "score_0_100": 100,
+        "title_ok": true,
+        "description_ok": true,
+        "parity_ok": true,
+        "taxonomy_ok": true,
+        "internal_links_ok": true,
+        "issues": []
+      },
+      "freshness_status": "fresh",
+      "owner": "Daniel Alaez",
+      "campaign": null,
+      "social_channels": [],
+      "metrics_relative": {
+        "index_100": 9,
+        "rank_pct": 23,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -210,8 +275,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 1160,
-        "rank_pct": 100,
+        "index_100": 655,
+        "rank_pct": 99,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -279,8 +344,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 270,
-        "rank_pct": 85,
+        "index_100": 273,
+        "rank_pct": 87,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -348,7 +413,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 12,
+        "rank_pct": 10,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -416,7 +481,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 12,
+        "rank_pct": 10,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -484,7 +549,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 12,
+        "rank_pct": 10,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -550,8 +615,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 10,
-        "rank_pct": 28,
+        "index_100": 9,
+        "rank_pct": 23,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -619,7 +684,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 12,
+        "rank_pct": 10,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -685,8 +750,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 0,
-        "rank_pct": 12,
+        "index_100": 9,
+        "rank_pct": 23,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -752,8 +817,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 250,
-        "rank_pct": 83,
+        "index_100": 255,
+        "rank_pct": 85,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -824,7 +889,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 190,
+        "index_100": 200,
         "rank_pct": 79,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -893,8 +958,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 270,
-        "rank_pct": 85,
+        "index_100": 264,
+        "rank_pct": 86,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -961,8 +1026,74 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 0,
-        "rank_pct": 12,
+        "index_100": 309,
+        "rank_pct": 89,
+        "trend_30d_pct": 0.0,
+        "gsc_opportunity": false
+      },
+      "metrics_absolute": null
+    },
+    {
+      "id": "norbert_wiener",
+      "slug": "norbert_wiener",
+      "asset_type": "post",
+      "status": "scheduled",
+      "visibility": "public",
+      "title_es": "Norbert Wiener: Cibernética, Feedback Loops y el Control de las Máquinas",
+      "title_en": "Norbert Wiener: The Father of Cybernetics, Feedback Loops, and the Machine Control Problem",
+      "url_es": "/es/posts/norbert_wiener/",
+      "url_en": "/en/posts/norbert_wiener/",
+      "brief_es": "La vida de Norbert Wiener: sus excentricidades en el MIT, el predictor antiaéreo de la WWII, el nacimiento de la Cibernética y su profética advertencia de 1960 sobre el alineamiento de la IA.",
+      "brief_en": "A deep dive into the life and legacy of Norbert Wiener: his eccentricities at MIT, the WWII anti-aircraft predictor, the birth of Cybernetics, and his prophetic 1960 warning on the AI alignment problem.",
+      "publish_date": "2026-11-15",
+      "last_modified_es": "2026-11-05T18:06:43+01:00",
+      "last_modified_en": "2026-11-05T18:06:43+01:00",
+      "language_parity": "complete",
+      "category": "Pioneros y Referentes",
+      "categories": [
+        "casos_exito",
+        "Inteligencia Artificial",
+        "Ingeniería",
+        "Pioneros y Referentes"
+      ],
+      "tags": [
+        "norbert wiener",
+        "cibernetica",
+        "feedback loops",
+        "retroalimentacion",
+        "agi",
+        "alineamiento",
+        "teoria del control",
+        "historia",
+        "inteligencia artificial"
+      ],
+      "series": null,
+      "word_count_es": 3411,
+      "word_count_en": 3376,
+      "reading_time_min": 18,
+      "related_app": "obs-management",
+      "related_kit": "/recursos/",
+      "included_kits": [],
+      "price": null,
+      "original_price": null,
+      "checkout_url": null,
+      "deliverables": [],
+      "seo_audit": {
+        "score_0_100": 100,
+        "title_ok": true,
+        "description_ok": true,
+        "parity_ok": true,
+        "taxonomy_ok": true,
+        "internal_links_ok": true,
+        "issues": []
+      },
+      "freshness_status": "fresh",
+      "owner": "Daniel Alaez",
+      "campaign": null,
+      "social_channels": [],
+      "metrics_relative": {
+        "index_100": 227,
+        "rank_pct": 82,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1026,8 +1157,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 400,
-        "rank_pct": 93,
+        "index_100": 364,
+        "rank_pct": 92,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1039,7 +1170,7 @@
       "asset_type": "post",
       "status": "scheduled",
       "visibility": "public",
-      "title_es": "Del Front Matter al Índice: Pydantic v2, Paridad Bilingüe ES/EN y Automatización con GitHub Actions",
+      "title_es": "Del Front Matter al Índice: Pydantic v2, Paridad ES/EN y Automatización en GitHub Actions",
       "title_en": "From Front Matter to Index: Pydantic v2, Bilingual ES/EN Parity, and GitHub Actions Automation",
       "url_es": "/es/posts/pulse-parte2-indexador-pydantic-paridad-ci/",
       "url_en": "/en/posts/pulse-part2-pydantic-indexer-bilingual-parity-ci/",
@@ -1078,23 +1209,21 @@
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 80,
-        "title_ok": false,
+        "score_0_100": 100,
+        "title_ok": true,
         "description_ok": true,
         "parity_ok": true,
         "taxonomy_ok": true,
         "internal_links_ok": true,
-        "issues": [
-          "Longitud de título no óptima (99 caracteres; ideal: 35-95)"
-        ]
+        "issues": []
       },
       "freshness_status": "fresh",
       "owner": "Daniel Alaez",
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 20,
-        "rank_pct": 34,
+        "index_100": 18,
+        "rank_pct": 30,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1159,8 +1288,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 360,
-        "rank_pct": 92,
+        "index_100": 327,
+        "rank_pct": 90,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1172,8 +1301,8 @@
       "asset_type": "post",
       "status": "scheduled",
       "visibility": "public",
-      "title_es": "Google Analytics 4 y Search Console Automatizados: Cómo Medir el ROI Orgánico de Cada Post, App y Kit",
-      "title_en": "Automated GA4 and Search Console: Measuring Organic ROI, Content Equity, and Freshness for Every Post, App, and Kit",
+      "title_es": "Google Analytics 4 y Search Console Automatizados: Cómo Medir el ROI Orgánico del Blog",
+      "title_en": "Automated GA4 and Search Console: Measuring Organic ROI and Content Freshness",
       "url_es": "/es/posts/pulse-parte4-ga4-search-console-automatico/",
       "url_en": "/en/posts/pulse-part4-ga4-search-console-automated/",
       "brief_es": "Cómo conectar las APIs de GA4 y Search Console mediante Service Account para auditar el tráfico orgánico, calcular el patrimonio editorial y detectar obsolescencia sin vulnerar la privacidad comercial.",
@@ -1213,23 +1342,21 @@
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 80,
-        "title_ok": false,
+        "score_0_100": 100,
+        "title_ok": true,
         "description_ok": true,
         "parity_ok": true,
         "taxonomy_ok": true,
         "internal_links_ok": true,
-        "issues": [
-          "Longitud de título no óptima (101 caracteres; ideal: 35-95)"
-        ]
+        "issues": []
       },
       "freshness_status": "fresh",
       "owner": "Daniel Alaez",
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 140,
-        "rank_pct": 72,
+        "index_100": 127,
+        "rank_pct": 68,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1241,7 +1368,7 @@
       "asset_type": "post",
       "status": "scheduled",
       "visibility": "public",
-      "title_es": "Gestión Editorial para Equipos de Documentación, SEO y Marketing: de Notion a Excel en 5 minutos",
+      "title_es": "Gestión Editorial para Equipos SEO y Marketing: de Notion a Excel en 5 Minutos",
       "title_en": "Editorial Operations for Docs, SEO, and Marketing Teams: From Notion to Excel in 5 Minutes",
       "url_es": "/es/posts/pulse-parte5-kit-excel-migracion-notion-equipos/",
       "url_en": "/en/posts/pulse-part5-excel-kit-notion-migration-teams/",
@@ -1282,23 +1409,21 @@
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 80,
-        "title_ok": false,
+        "score_0_100": 100,
+        "title_ok": true,
         "description_ok": true,
         "parity_ok": true,
         "taxonomy_ok": true,
         "internal_links_ok": true,
-        "issues": [
-          "Longitud de título no óptima (96 caracteres; ideal: 35-95)"
-        ]
+        "issues": []
       },
       "freshness_status": "fresh",
       "owner": "Daniel Alaez",
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 170,
-        "rank_pct": 78,
+        "index_100": 155,
+        "rank_pct": 73,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1366,8 +1491,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 0,
-        "rank_pct": 12,
+        "index_100": 545,
+        "rank_pct": 96,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1434,8 +1559,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 560,
-        "rank_pct": 96,
+        "index_100": 573,
+        "rank_pct": 97,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1505,8 +1630,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 20,
-        "rank_pct": 34,
+        "index_100": 18,
+        "rank_pct": 30,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1576,8 +1701,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 10,
-        "rank_pct": 28,
+        "index_100": 9,
+        "rank_pct": 23,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1642,8 +1767,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 600,
-        "rank_pct": 97,
+        "index_100": 627,
+        "rank_pct": 98,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1705,8 +1830,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 10,
-        "rank_pct": 28,
+        "index_100": 9,
+        "rank_pct": 23,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1770,8 +1895,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 10,
-        "rank_pct": 28,
+        "index_100": 9,
+        "rank_pct": 23,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1845,7 +1970,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 12,
+        "rank_pct": 10,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1908,8 +2033,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 50,
-        "rank_pct": 49,
+        "index_100": 64,
+        "rank_pct": 52,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1971,7 +2096,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 12,
+        "rank_pct": 10,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2036,7 +2161,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 12,
+        "rank_pct": 10,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2095,8 +2220,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 300,
-        "rank_pct": 89,
+        "index_100": 236,
+        "rank_pct": 83,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2159,8 +2284,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 40,
-        "rank_pct": 44,
+        "index_100": 27,
+        "rank_pct": 36,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2231,8 +2356,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 0,
-        "rank_pct": 12,
+        "index_100": 464,
+        "rank_pct": 94,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2295,8 +2420,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 270,
-        "rank_pct": 85,
+        "index_100": 209,
+        "rank_pct": 81,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2363,8 +2488,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 80,
-        "rank_pct": 59,
+        "index_100": 73,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2432,8 +2557,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 60,
-        "rank_pct": 52,
+        "index_100": 36,
+        "rank_pct": 43,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2502,8 +2627,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 40,
-        "rank_pct": 44,
+        "index_100": 27,
+        "rank_pct": 36,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2572,8 +2697,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 110,
-        "rank_pct": 65,
+        "index_100": 55,
+        "rank_pct": 49,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2641,8 +2766,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 50,
-        "rank_pct": 49,
+        "index_100": 36,
+        "rank_pct": 43,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2707,8 +2832,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 410,
-        "rank_pct": 94,
+        "index_100": 373,
+        "rank_pct": 92,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2770,8 +2895,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 20,
-        "rank_pct": 34,
+        "index_100": 27,
+        "rank_pct": 36,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2838,8 +2963,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 100,
-        "rank_pct": 63,
+        "index_100": 91,
+        "rank_pct": 60,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2908,8 +3033,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 70,
-        "rank_pct": 55,
+        "index_100": 55,
+        "rank_pct": 49,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2978,8 +3103,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 40,
-        "rank_pct": 44,
+        "index_100": 27,
+        "rank_pct": 36,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3043,8 +3168,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 70,
-        "rank_pct": 55,
+        "index_100": 55,
+        "rank_pct": 49,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3110,8 +3235,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 50,
-        "rank_pct": 49,
+        "index_100": 36,
+        "rank_pct": 43,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": true
       },
@@ -3172,10 +3297,10 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 60,
-        "rank_pct": 52,
+        "index_100": 227,
+        "rank_pct": 82,
         "trend_30d_pct": 0.0,
-        "gsc_opportunity": true
+        "gsc_opportunity": false
       },
       "metrics_absolute": null
     },
@@ -3234,8 +3359,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 20,
-        "rank_pct": 34,
+        "index_100": 18,
+        "rank_pct": 30,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3297,8 +3422,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 100,
-        "rank_pct": 63,
+        "index_100": 82,
+        "rank_pct": 59,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3365,8 +3490,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 30,
-        "rank_pct": 39,
+        "index_100": 36,
+        "rank_pct": 43,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3434,8 +3559,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 30,
-        "rank_pct": 39,
+        "index_100": 27,
+        "rank_pct": 36,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3499,8 +3624,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 40,
-        "rank_pct": 44,
+        "index_100": 36,
+        "rank_pct": 43,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3567,8 +3692,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 280,
-        "rank_pct": 88,
+        "index_100": 264,
+        "rank_pct": 86,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3634,8 +3759,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 120,
-        "rank_pct": 66,
+        "index_100": 100,
+        "rank_pct": 63,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3695,8 +3820,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 50,
-        "rank_pct": 49,
+        "index_100": 45,
+        "rank_pct": 47,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3760,8 +3885,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 110,
-        "rank_pct": 65,
+        "index_100": 100,
+        "rank_pct": 63,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3825,8 +3950,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 140,
-        "rank_pct": 72,
+        "index_100": 145,
+        "rank_pct": 71,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3890,8 +4015,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 270,
-        "rank_pct": 85,
+        "index_100": 200,
+        "rank_pct": 79,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3955,8 +4080,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 40,
-        "rank_pct": 44,
+        "index_100": 36,
+        "rank_pct": 43,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4020,8 +4145,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 320,
-        "rank_pct": 90,
+        "index_100": 200,
+        "rank_pct": 79,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4087,8 +4212,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 160,
-        "rank_pct": 76,
+        "index_100": 155,
+        "rank_pct": 73,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4154,8 +4279,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 150,
-        "rank_pct": 74,
+        "index_100": 164,
+        "rank_pct": 75,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4222,8 +4347,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 230,
-        "rank_pct": 82,
+        "index_100": 236,
+        "rank_pct": 83,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4290,8 +4415,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 0,
-        "rank_pct": 12,
+        "index_100": 18,
+        "rank_pct": 30,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4354,8 +4479,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 80,
-        "rank_pct": 59,
+        "index_100": 73,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4420,8 +4545,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 800,
-        "rank_pct": 98,
+        "index_100": 473,
+        "rank_pct": 94,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4480,8 +4605,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 400,
-        "rank_pct": 93,
+        "index_100": 327,
+        "rank_pct": 90,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4548,8 +4673,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 300,
-        "rank_pct": 89,
+        "index_100": 291,
+        "rank_pct": 88,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4611,8 +4736,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 130,
-        "rank_pct": 69,
+        "index_100": 100,
+        "rank_pct": 63,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4677,8 +4802,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 160,
-        "rank_pct": 76,
+        "index_100": 164,
+        "rank_pct": 75,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4741,8 +4866,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 70,
-        "rank_pct": 55,
+        "index_100": 64,
+        "rank_pct": 52,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4806,76 +4931,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 220,
-        "rank_pct": 81,
-        "trend_30d_pct": 0.0,
-        "gsc_opportunity": false
-      },
-      "metrics_absolute": null
-    },
-    {
-      "id": "norbert_wiener",
-      "slug": "norbert_wiener",
-      "asset_type": "post",
-      "status": "scheduled",
-      "visibility": "public",
-      "title_es": "Norbert Wiener: El Padre de la Cibernética, los Bucles de Retroalimentación y el Problema del Control de las Máquinas",
-      "title_en": "Norbert Wiener: The Father of Cybernetics, Feedback Loops, and the Machine Control Problem",
-      "url_es": "/es/posts/norbert_wiener/",
-      "url_en": "/en/posts/norbert_wiener/",
-      "brief_es": "Un fascinante recorrido por la vida de Norbert Wiener: sus excentricidades en el MIT, el predictor antiaéreo de la Segunda Guerra Mundial, la invención de la Cibernética y su profética advertencia de 1960 sobre el problema del alineamiento de la IA.",
-      "brief_en": "A deep dive into the life and legacy of Norbert Wiener: his eccentricities at MIT, the WWII anti-aircraft predictor, the birth of Cybernetics, and his prophetic 1960 warning on the AI alignment problem.",
-      "publish_date": "2026-11-15",
-      "last_modified_es": "2026-11-05T18:06:43+01:00",
-      "last_modified_en": "2026-11-05T18:06:43+01:00",
-      "language_parity": "complete",
-      "category": "Pioneros y Referentes",
-      "categories": [
-        "casos_exito",
-        "Inteligencia Artificial",
-        "Ingeniería",
-        "Pioneros y Referentes"
-      ],
-      "tags": [
-        "norbert wiener",
-        "cibernetica",
-        "feedback loops",
-        "retroalimentacion",
-        "agi",
-        "alineamiento",
-        "teoria del control",
-        "historia",
-        "inteligencia artificial"
-      ],
-      "series": null,
-      "word_count_es": 3358,
-      "word_count_en": 3334,
-      "reading_time_min": 17,
-      "related_app": null,
-      "related_kit": null,
-      "included_kits": [],
-      "price": null,
-      "original_price": null,
-      "checkout_url": null,
-      "deliverables": [],
-      "seo_audit": {
-        "score_0_100": 80,
-        "title_ok": false,
-        "description_ok": true,
-        "parity_ok": true,
-        "taxonomy_ok": true,
-        "internal_links_ok": true,
-        "issues": [
-          "Longitud de título no óptima (117 caracteres; ideal: 35-95)"
-        ]
-      },
-      "freshness_status": "fresh",
-      "owner": "Daniel Alaez",
-      "campaign": null,
-      "social_channels": [],
-      "metrics_relative": {
-        "index_100": 0,
-        "rank_pct": 12,
+        "index_100": 191,
+        "rank_pct": 77,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4938,8 +4995,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 10,
-        "rank_pct": 28,
+        "index_100": 9,
+        "rank_pct": 23,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5004,8 +5061,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 70,
-        "rank_pct": 55,
+        "index_100": 64,
+        "rank_pct": 52,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5070,8 +5127,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 200,
-        "rank_pct": 80,
+        "index_100": 127,
+        "rank_pct": 68,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5137,8 +5194,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 90,
-        "rank_pct": 61,
+        "index_100": 73,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": true
       },
@@ -5205,8 +5262,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 140,
-        "rank_pct": 72,
+        "index_100": 136,
+        "rank_pct": 70,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5273,8 +5330,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 230,
-        "rank_pct": 82,
+        "index_100": 291,
+        "rank_pct": 88,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5340,8 +5397,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 1000,
-        "rank_pct": 99,
+        "index_100": 982,
+        "rank_pct": 100,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5407,8 +5464,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 210,
-        "rank_pct": 80,
+        "index_100": 200,
+        "rank_pct": 79,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5473,8 +5530,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 280,
-        "rank_pct": 88,
+        "index_100": 182,
+        "rank_pct": 76,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5542,8 +5599,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 120,
-        "rank_pct": 66,
+        "index_100": 82,
+        "rank_pct": 59,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5607,8 +5664,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 130,
-        "rank_pct": 69,
+        "index_100": 100,
+        "rank_pct": 63,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5671,7 +5728,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 50,
+        "index_100": 55,
         "rank_pct": 49,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -5738,10 +5795,10 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 100,
-        "rank_pct": 63,
+        "index_100": 91,
+        "rank_pct": 60,
         "trend_30d_pct": 0.0,
-        "gsc_opportunity": false
+        "gsc_opportunity": true
       },
       "metrics_absolute": null
     },
@@ -5801,8 +5858,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 10,
-        "rank_pct": 28,
+        "index_100": 9,
+        "rank_pct": 23,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5867,8 +5924,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 270,
-        "rank_pct": 85,
+        "index_100": 245,
+        "rank_pct": 84,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5940,7 +5997,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 12,
+        "rank_pct": 10,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6012,7 +6069,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 12,
+        "rank_pct": 10,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6078,8 +6135,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 130,
-        "rank_pct": 69,
+        "index_100": 155,
+        "rank_pct": 73,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6144,8 +6201,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 280,
-        "rank_pct": 88,
+        "index_100": 200,
+        "rank_pct": 79,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6209,7 +6266,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 12,
+        "rank_pct": 10,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6274,8 +6331,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 10,
-        "rank_pct": 28,
+        "index_100": 18,
+        "rank_pct": 30,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6341,8 +6398,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 40,
-        "rank_pct": 44,
+        "index_100": 36,
+        "rank_pct": 43,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6405,8 +6462,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 150,
-        "rank_pct": 74,
+        "index_100": 145,
+        "rank_pct": 71,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6470,8 +6527,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 130,
-        "rank_pct": 69,
+        "index_100": 118,
+        "rank_pct": 66,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6535,8 +6592,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 70,
-        "rank_pct": 55,
+        "index_100": 73,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6599,8 +6656,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 40,
-        "rank_pct": 44,
+        "index_100": 36,
+        "rank_pct": 43,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6664,8 +6721,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 40,
-        "rank_pct": 44,
+        "index_100": 36,
+        "rank_pct": 43,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6728,8 +6785,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 40,
-        "rank_pct": 44,
+        "index_100": 36,
+        "rank_pct": 43,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6795,8 +6852,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 40,
-        "rank_pct": 44,
+        "index_100": 27,
+        "rank_pct": 36,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6860,8 +6917,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 70,
-        "rank_pct": 55,
+        "index_100": 64,
+        "rank_pct": 52,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6919,8 +6976,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 10,
-        "rank_pct": 28,
+        "index_100": 9,
+        "rank_pct": 23,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6985,7 +7042,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 340,
+        "index_100": 336,
         "rank_pct": 91,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -7053,8 +7110,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 70,
-        "rank_pct": 55,
+        "index_100": 45,
+        "rank_pct": 47,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7124,8 +7181,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 30,
-        "rank_pct": 39,
+        "index_100": 36,
+        "rank_pct": 43,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7188,8 +7245,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 70,
-        "rank_pct": 55,
+        "index_100": 73,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7252,8 +7309,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 30,
-        "rank_pct": 39,
+        "index_100": 18,
+        "rank_pct": 30,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7315,8 +7372,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 140,
-        "rank_pct": 72,
+        "index_100": 127,
+        "rank_pct": 68,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7378,8 +7435,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 20,
-        "rank_pct": 34,
+        "index_100": 36,
+        "rank_pct": 43,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7443,8 +7500,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 90,
-        "rank_pct": 61,
+        "index_100": 100,
+        "rank_pct": 63,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7505,8 +7562,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 10,
-        "rank_pct": 28,
+        "index_100": 27,
+        "rank_pct": 36,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7567,8 +7624,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 80,
-        "rank_pct": 59,
+        "index_100": 73,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7633,8 +7690,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 90,
-        "rank_pct": 61,
+        "index_100": 73,
+        "rank_pct": 56,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7697,8 +7754,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 10,
-        "rank_pct": 28,
+        "index_100": 18,
+        "rank_pct": 30,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7759,8 +7816,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 30,
-        "rank_pct": 39,
+        "index_100": 18,
+        "rank_pct": 30,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7821,8 +7878,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 20,
-        "rank_pct": 34,
+        "index_100": 18,
+        "rank_pct": 30,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7883,8 +7940,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 140,
-        "rank_pct": 72,
+        "index_100": 100,
+        "rank_pct": 63,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7947,8 +8004,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 20,
-        "rank_pct": 34,
+        "index_100": 27,
+        "rank_pct": 36,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8011,8 +8068,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 20,
-        "rank_pct": 34,
+        "index_100": 18,
+        "rank_pct": 30,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8078,8 +8135,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 40,
-        "rank_pct": 44,
+        "index_100": 127,
+        "rank_pct": 68,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8144,8 +8201,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 610,
-        "rank_pct": 98,
+        "index_100": 573,
+        "rank_pct": 97,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8212,8 +8269,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 110,
-        "rank_pct": 65,
+        "index_100": 100,
+        "rank_pct": 63,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8285,7 +8342,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 12,
+        "rank_pct": 10,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8357,8 +8414,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 130,
-        "rank_pct": 69,
+        "index_100": 127,
+        "rank_pct": 68,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8423,8 +8480,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 170,
-        "rank_pct": 78,
+        "index_100": 164,
+        "rank_pct": 75,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8495,8 +8552,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 160,
-        "rank_pct": 76,
+        "index_100": 145,
+        "rank_pct": 71,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8564,8 +8621,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 20,
-        "rank_pct": 34,
+        "index_100": 18,
+        "rank_pct": 30,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8627,8 +8684,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 530,
-        "rank_pct": 96,
+        "index_100": 518,
+        "rank_pct": 95,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8700,8 +8757,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 470,
-        "rank_pct": 95,
+        "index_100": 655,
+        "rank_pct": 99,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8761,7 +8818,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 12,
+        "rank_pct": 10,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8827,7 +8884,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 12,
+        "rank_pct": 10,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8891,7 +8948,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 12,
+        "rank_pct": 10,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8957,7 +9014,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 12,
+        "rank_pct": 10,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9019,7 +9076,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 12,
+        "rank_pct": 10,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9082,7 +9139,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 12,
+        "rank_pct": 10,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9145,7 +9202,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 12,
+        "rank_pct": 10,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9208,7 +9265,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 12,
+        "rank_pct": 10,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9271,7 +9328,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 12,
+        "rank_pct": 10,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9334,7 +9391,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 12,
+        "rank_pct": 10,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9397,7 +9454,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 12,
+        "rank_pct": 10,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9460,7 +9517,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 12,
+        "rank_pct": 10,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9523,7 +9580,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 12,
+        "rank_pct": 10,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9586,7 +9643,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 12,
+        "rank_pct": 10,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9649,7 +9706,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 12,
+        "rank_pct": 10,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9712,7 +9769,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 12,
+        "rank_pct": 10,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9775,7 +9832,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 12,
+        "rank_pct": 10,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9838,7 +9895,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 12,
+        "rank_pct": 10,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9901,7 +9958,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 12,
+        "rank_pct": 10,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },

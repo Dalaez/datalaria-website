@@ -204,3 +204,17 @@ Cada ciudad activa en el Observatorio (máximo 5) cuenta con una tarjeta ejecuti
 2. **Descarte Rápido en `.super-card` y Estado Vacío Accionable:**
    - **Botón `✕` (`.card-mini-btn.card-remove-btn`):** Integrado en el extremo derecho de `.card-actions-inline` dentro de cada `.super-card` (discreto en reposo, alerta roja sutil en `:hover`/`:focus-visible`, con área táctil ampliada en `<= 768px`) para eliminar la ciudad en 1 clic sin volver arriba.
    - **Estado Vacío Ejecutivo (`.kpi-empty-state`):** Al retirar todas las ciudades (`0/5`), `#kpi-container` muestra una tarjeta centrada con guía visual y botón primario en 1 clic `#btn-empty-load-spain` (`⚡ Cargar Capitales ES`), manteniendo operativo el mapa Leaflet.
+
+---
+
+## 10. Extensión v3.3.2: Estabilidad Mobile, Guardia Anti-NaN Leaflet y PWA Gold (`W3.6-FIX`)
+
+1. **Contención Mobile de Cabecera y Viewport (`<= 960px` y `<= 768px`):**
+   - `html, body` aplican `overflow-x: clip; max-width: 100%;` (preservando `position: sticky` de `.main-header` sin permitir ensanchamiento horizontal artificial del viewport en móviles `390×844` o `440×956`).
+   - En `<= 960px` se ocultan `#live-status-badge` y `#freshness-badge` para liberar ancho horizontal; en `<= 768px`, `.header-brand` usa `min-width: 0; flex: 1 1 auto; overflow: hidden;` mientras `.brand-title` trunca limpiamente con `text-overflow: ellipsis` y `.header-actions-group` mantiene `flex-shrink: 0`.
+   - `#app-options-menu` se acota con `max-width: calc(100vw - 20px)` y `#mobile-bottom-tabs` permanece visible dentro del viewport inicial y sincronizada con `currentView` al pulsar cualquier botón o transición (`Hoy` / `Comparar` / `Ranking` / `IA`).
+2. **Transiciones Espaciales Seguras en Leaflet (`0` Errores `NaN`):**
+   - Toda operación `flyTo` / `flyToBounds` pasa por `safeFlyTo` / `safeFlyToBounds`, verificando `isMapContainerReady()` (`map.getSize().x > 0 && map.getSize().y > 0` y `#view-observatory.active`). Si el usuario cambia ciudades/presets desde `#view-atlas` o `#view-arena`, la petición se difiere en `pendingMapViewport` y se aplica en `requestAnimationFrame` tras `map.invalidateSize({ animate: false })` al volver al Observatorio, precedida por `map.stop()`.
+3. **Homologación PWA Gold y Guía Bilingüe Multi-Plataforma (`⋯`):**
+   - Manifiesto `manifest.json` 100 % portable con rutas relativas (`id: "./"`, `start_url: "./?source=pwa"`, `scope: "./"`), iconos separados `any` (`icon.svg`, `192`, `512`) y `maskable` (`icon-maskable-192.png`, `512`) más `apple-touch-icon.png` (`180×180`), y redirección canónica `301!` de `/apps/weather` a `/apps/weather/` en `static/_redirects`.
+   - Regla global `.hidden { display: none !important; }` efectiva sobre ítems del menú y toasts; detección de `isStandalone` para ocultar `#menu-opt-install-pwa` solo cuando ya está instalada; si el navegador aún no emitió `beforeinstallprompt` (iOS Safari o Chromium previo al heurístico), pulsar `#menu-opt-install-pwa` muestra instrucciones claras ES/EN en toast en vez de fallar silenciosamente.
