@@ -192,3 +192,15 @@ Cada ciudad activa en el Observatorio (máximo 5) cuenta con una tarjeta ejecuti
    - Tarjeta única compacta (`max-width: 100%`, altura adaptable `~220px`) sin barras laterales ni dependencias CDN externas, con variables CSS dedicadas para `theme=dark` (`#0b0f17`/`#111827`) y `theme=light` (`#f8fafc`/`#ffffff`), 3 métricas clave (Temp actual, Confort, chip "¿Es normal?"), miniprevisión de 3 días y pie con atribución clicable a Datalaria.
 4. **Landing SEO Intermedia (`layouts/weather-city/single.html`):**
    - Compatible con los estilos claros y oscuros de PaperMod (`body.dark` y modo claro por defecto), con tarjeta hero dinámica para la ciudad seleccionada, tabla climatológica responsive de 12 meses (`tabular-nums`, badges de confort) y rejilla/acordeón SSR colapsable por región con las 168 estaciones enlazadas (`?city=<slug>`).
+
+---
+
+## 9. Extensión v3.3.1: Controles Ejecutivos y Descarte Rápido en Tarjetas (`W3.6-UX`)
+
+1. **Panel de Control Estructurado en 2 Franjas (`#controls-container`):**
+   - **Franja Superior (`.controls-cities-row`):** Selector múltiple `Choices.js` a todo el ancho (`100%`) con cabecera compacta (`📍 Ciudades comparadas`), badge contador en tiempo real `#city-count-badge` (`N/5`, `tabular-nums`, con estado `.is-full` al alcanzar `5/5`) y botón `#btn-clear-cities` (`Limpiar` / `Clear`).
+   - **Saneamiento `Choices.js`:** Fondo de `.choices__input` estrictamente transparente (`background-color: transparent !important`) para erradicar el recuadro blanco en modo oscuro; cápsulas de ciudad ejecutivas con borde/acento cromático sincronizado (`COLOR_PALETTE[idx]`) entre cada chip, su `.super-card` y su serie temporal.
+   - **Franja Inferior (`.controls-filters-row`):** Contenedor alineado que reúne **Métrica** (`#metric-select`), **Rango** (`#time-range-select`) y **Hora** (`#hour-filter-select`) a la misma cota visual con etiquetas compactas superiores (`11px`, `uppercase`) y segmented controls modernos con padding interior y píldoras sin divisores verticales duros, evitando filas huérfanas.
+2. **Descarte Rápido en `.super-card` y Estado Vacío Accionable:**
+   - **Botón `✕` (`.card-mini-btn.card-remove-btn`):** Integrado en el extremo derecho de `.card-actions-inline` dentro de cada `.super-card` (discreto en reposo, alerta roja sutil en `:hover`/`:focus-visible`, con área táctil ampliada en `<= 768px`) para eliminar la ciudad en 1 clic sin volver arriba.
+   - **Estado Vacío Ejecutivo (`.kpi-empty-state`):** Al retirar todas las ciudades (`0/5`), `#kpi-container` muestra una tarjeta centrada con guía visual y botón primario en 1 clic `#btn-empty-load-spain` (`⚡ Cargar Capitales ES`), manteniendo operativo el mapa Leaflet.

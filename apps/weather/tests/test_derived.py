@@ -457,9 +457,9 @@ def test_frontend_zero_404_and_instant_kpi_architecture():
     # 2. Renderizado instantáneo de KPIs en updateDashboard
     assert "updateKPIs({}, checkedMetric, selectedValues)" in html_content
 
-    # 3. Service Worker versión 3.3.0
+    # 3. Service Worker versión 3.3.1
     sw_content = (BASE_DIR / "sw.js").read_text(encoding="utf-8")
-    assert "weather-v3.3.0" in sw_content
+    assert "weather-v3.3.1" in sw_content
 
 
 
@@ -639,22 +639,29 @@ def test_w34_frontend_dom_and_i18n():
 
 
 def test_inv_weather_14_version_coherence():
-    """Verifica INV-WEATHER-14: Version v3.3.0 exacta en YAML, fichas Markdown y frontend."""
+    """Verifica INV-WEATHER-14: Version v3.3.1 exacta en YAML, sw.js, catalogo y títulos v3.3."""
     import yaml
-    yaml_file = Path(__file__).resolve().parent.parent.parent.parent / "data" / "apps" / "weather.yaml"
+    repo_root = Path(__file__).resolve().parent.parent.parent.parent
+    yaml_file = repo_root / "data" / "apps" / "weather.yaml"
     assert yaml_file.exists()
     ydata = yaml.safe_load(yaml_file.read_text(encoding="utf-8"))
-    assert ydata["current_version"] == "v3.3.0"
+    assert ydata["current_version"] == "v3.3.1"
     assert "v3.3" in ydata["title"]["es"]
     assert "v3.3" in ydata["title"]["en"]
 
-    # Primer release debe ser v3.3.0 y released
-    assert ydata["releases"][0]["version"] == "v3.3.0"
+    # Primer release debe ser v3.3.1 y released
+    assert ydata["releases"][0]["version"] == "v3.3.1"
     assert ydata["releases"][0]["state"] == "released"
 
+    # Service Worker y lista de apps
+    sw_txt = (BASE_DIR / "sw.js").read_text(encoding="utf-8")
+    assert "weather-v3.3.1" in sw_txt
+    apps_list_txt = (repo_root / "layouts" / "apps" / "list.html").read_text(encoding="utf-8")
+    assert '"v3.3.1"' in apps_list_txt
+
     # Fichas Markdown
-    es_md = Path(__file__).resolve().parent.parent.parent.parent / "content" / "es" / "apps" / "weather" / "index.md"
-    en_md = Path(__file__).resolve().parent.parent.parent.parent / "content" / "en" / "apps" / "weather" / "index.md"
+    es_md = repo_root / "content" / "es" / "apps" / "weather" / "index.md"
+    en_md = repo_root / "content" / "en" / "apps" / "weather" / "index.md"
     assert 'title: "Weather Intelligence v3.3"' in es_md.read_text(encoding="utf-8")
     assert 'title: "Weather Intelligence v3.3"' in en_md.read_text(encoding="utf-8")
 
@@ -935,4 +942,34 @@ def test_share_card_png_and_hugo_seo_landing_dom():
     assert "^[a-z0-9-]+$" in tpl_txt
     assert "weather_city_landing_view" in tpl_txt
     assert "/apps/helix/" not in tpl_txt
+
+
+def test_w36_ux_card_remove_and_controls_polish():
+    """Valida INV-WEATHER-21: botón '✕' en Super-Cards, Choices transparente y filtros alineados."""
+    html_txt = (BASE_DIR / "index.html").read_text(encoding="utf-8")
+    for token in (
+        "card-remove-btn",
+        "removeCityFromSelection",
+        "clearAllCities",
+        "btn-clear-cities",
+        "city-count-badge",
+        "kpi-empty-state",
+        "btn-empty-load-spain",
+        "controls-cities-row",
+        "controls-filters-row",
+        "syncChoiceChipAccents",
+        "weather_city_remove",
+        "weather_city_clear",
+        "btnRemoveCity",
+        "btnClearCities",
+        "kpiEmptyTitle",
+        "btnLoadSpainPreset",
+        "choicesMaxItems",
+        "choicesNoResults",
+    ):
+        assert token in html_txt, f"Falta token W3.6-UX en index.html: {token}"
+
+    assert "background-color: transparent !important;" in html_txt
+    assert 'onclick="removeCity' not in html_txt
+    assert "body.light-mode #city-select-container" in html_txt
 

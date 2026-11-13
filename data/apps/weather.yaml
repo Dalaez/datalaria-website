@@ -7,7 +7,7 @@ cover: cover.png
 app_url: /apps/weather/
 demo_url: "/apps/weather/?preset=extremes&view=arena"
 source_spec: specs/apps/weather/spec.md
-current_version: v3.3.0
+current_version: v3.3.1
 
 title:
   es: "Weather Intelligence v3.3"
@@ -115,6 +115,21 @@ posts:
     part: 4
 
 releases:
+  - version: v3.3.1
+    date: "2026-11-13"
+    state: released
+    type: patch
+    title:
+      es: "Weather Intelligence v3.3.1: Descarte Rápido '✕' en Super-Cards y Panel Ejecutivo de Selección y Filtros (W3.6-UX)"
+      en: "Weather Intelligence v3.3.1: Super-Card Quick Remove '✕' & Redesigned Executive City/Filter Bar (W3.6-UX)"
+    changes:
+      - es: "Botón discreto '✕' (.card-remove-btn) en cada Super-Card sincronizado bidireccionalmente con Choices.js, mapa Leaflet, gráficas y URL, más estado vacío accionable en 1 clic (INV-WEATHER-21)."
+        en: "Discreet '✕' quick-remove button (.card-remove-btn) on each Super-Card synced bidirectionally with Choices.js, Leaflet map, charts, and URL, plus 1-click actionable empty state (INV-WEATHER-21)."
+      - es: "Rediseño del panel de selección de ciudades al 100 % de ancho con contador en tiempo real (N/5), botón Limpiar, input de búsqueda transparente y chips con acento cromático coordinado."
+        en: "Full-width city selection bar redesign featuring a live N/5 counter badge, Clear action, transparent search input, and color-coordinated city chips."
+      - es: "Reorganización equilibrada de Métrica, Rango y Hora en una única franja alineada con segmented controls modernos sin huecos huérfanos en ambos temas (Dark/Light)."
+        en: "Balanced single-band layout for Metric, Range, and Hour segmented controls eliminating orphaned rows and supporting both Dark and Light themes."
+
   - version: v3.3.0
     date: "2026-11-13"
     state: released
