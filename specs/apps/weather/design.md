@@ -1,7 +1,7 @@
 # Especificación de Diseño UX/UI: Weather Service (`weather`)
 
 > **ID de Diseño:** `DESIGN-APP-WEATHER`  
-> **Spec Técnica Vinculada:** [`specs/apps/weather/spec.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/apps/weather/spec.md) (`v2.0.0`)  
+> **Spec Técnica Vinculada:** [`specs/apps/weather/spec.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/apps/weather/spec.md) (`v3.2.0`)  
 > **Agente Propietario:** 🎨 [`04-ux-ui` (Diseñador UX/UI)](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/04-ux-ui.md)  
 > **Preset Estético Seleccionado:** `Executive Data-Dense` (Observatorio Climático & Laboratorio ML C-Level)
 
@@ -165,3 +165,17 @@ Cada ciudad activa en el Observatorio (máximo 5) cuenta con una tarjeta ejecuti
 - **Barra Inferior de 4 Pestañas Táctiles:** Pestañas fijas en el pie con altura de toque $\ge 44\text{px}$: `Hoy` (Observatorio 1 ciudad), `Comparar` (Observatorio multiciudad), `Ranking` (Atlas 168), `IA` (Model Arena).
 - **Toast No Intrusivo de Instalación PWA:** Notificación emergente discreta a partir de la 2ª visita (`localStorage.weather_visits >= 2`), respetando si el usuario la descarta. Guía paso a paso para iOS Safari integrada en el menú `⋯`.
 - **Modo Offline:** Banner flotante superior discreto en caso de pérdida de conexión: *"Sin conexión · Mostrando datos guardados de hace X h"*, sin bloquear la navegación ni emitir alertas modales intrusivas.
+
+---
+
+## 7. Extensión v3.1 y v3.2: W3.4 (Normalidad, Stripes, Arena) y W3.5 (Atlas Finder & Clima Gemelo)
+
+1. **W3.4 (`v3.1.0`):** Chip instantáneo "¿Es normal?" en Super-Cards (0 ms desde `insights.json`), acordeón `#accordion-stripes` con canvas divergente ±5 °C a 365 días, y vista `arena` reorientada a "¿Quién acierta?" (dos capas desacopladas) y "¿Por qué predice esto?".
+2. **W3.5 (`v3.2.0` — Sin alteración de `<header>`):**
+   - La regla de $\le 4$ grupos en cabecera y exactamente 3 vistas top-level (`observatory`, `arena`, `atlas`) permanece inalterada.
+   - Dentro de `#view-atlas`, se introduce `#atlas-subnav` (barra segmentada accesible con tokens `--bg-elevated`, `--accent-primary` y estado activo resaltado) con 3 modos:
+     - `🏆 Ranking Hoy (168)` (`#atlas-pane-ranking`)
+     - `✈️ Buscador de Destinos` (`#atlas-pane-finder`)
+     - `🧬 Clima Gemelo` (`#atlas-pane-twin`)
+   - **Buscador de Destinos (`#atlas-pane-finder`):** Fila de controles compacta en flex/grid (Mes `1..12`, Temperatura ideal `°C` con slider `tabular-nums`, Lluvia, Viento, Región y botón `🔗 Compartir búsqueda`), renderizando tarjetas/filas ordenadas con puntuación `0..100` y **2 acciones directas**: `Ver Tarjeta Respuesta →` (`focusCityInObservatory`) y `🔗 Deep-link`.
+   - **Clima Gemelo (`#atlas-pane-twin`):** Selector de estación referencia + mes referencia + mes candidato (`Cualquier mes` o `1..12`, precargado por defecto con **Madrid · Mayo vs Diciembre**), tarjeta resumen de referencia y lista de gemelos ordenados por `% Similitud` con chips de deltas ($\Delta T$, $\Delta\text{Lluvia}$, $\Delta\text{Viento}$, $\Delta\text{Humedad}$) y doble botón hacia Tarjeta Respuesta y deep-link compartible.

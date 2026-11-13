@@ -1,14 +1,22 @@
 ---
-title: "Weather Intelligence v3.1"
-description: "Centro de control meteorológico global y laboratorio cuantitativo: 168 estaciones, estacionalidad armónica de Fourier, walk-forward backtesting IA vs. OWM e índice de confort outdoor."
+title: "Weather Intelligence v3.2"
+description: "Centro de control meteorológico global y laboratorio cuantitativo: 168 estaciones, Fourier, Buscador de Destinos, Clima Gemelo e índice de confort outdoor."
 app: "weather"
 translationKey: "app-weather"
 layout: "single"
 ---
 
-## 🌟 Novedades de Weather Intelligence v3.1
+## 🌟 Novedades de Weather Intelligence v3.2
 
-Weather Intelligence v3.1 incorpora una nueva dimensión de **honestidad estadística y divulgación climática**:
+Weather Intelligence v3.2 amplía el **Atlas Global (168 estaciones)** con planificación climática cuantitativa en tiempo real (`0 ms` desde cliente):
+
+- **Buscador de Destinos ("¿Dónde se está mejor en…?"):** Elige mes del año, temperatura ideal, tolerancia a la lluvia (usando `rain_pct` normalizado frente a meses de distinta longitud muestral, `INV-WEATHER-15`) y preferencia de viento para ordenar las 168 ciudades del planeta según tu perfil bioclimático.
+- **Comparador de Clima Gemelo:** Calcula mediante distancia euclídea estandarizada por *z-score* ($k=5$ dimensiones: temperatura media, amplitud diurna, humedad, viento y porcentaje de días con lluvia, `INV-WEATHER-16`) qué ciudad disfruta en diciembre —o en cualquier mes— del clima medido en Madrid en mayo.
+- **Salto a Tarjeta Respuesta & Deep-Links Compartibles:** Cada resultado incluye acceso inmediato a su Super-Card en el Observatorio y un enlace compartible con la consulta completa.
+
+### Novedades incorporadas en v3.1
+
+Weather Intelligence v3.1 consolidó nuestra base de **honestidad estadística y divulgación climática**:
 
 - **Diagnóstico "¿Es normal?":** Cada estación evalúa su temperatura actual frente a la línea base propia de los últimos 375 días ($\pm 7$ días del año excluyendo el propio día, según `INV-WEATHER-11`), determinando si la jornada se sitúa en un percentil extremo ($p \le 10$ o $p \ge 90$) o bate un récord mensual medido desde octubre de 2025.
 - **Calendario Térmico (Warming Stripes):** Visualización interactiva de franjas climáticas para los 365 días del año por ciudad, mapeando anomalías térmicas en escala divergente de $\pm 5^\circ\text{C}$ con tooltip dinámico al milisegundo.
@@ -19,7 +27,7 @@ Weather Intelligence v3.1 incorpora una nueva dimensión de **honestidad estadí
 
 ## 🚀 Centro de Control y Acceso Directo por Escenarios (1 Clic)
 
-Weather Intelligence v3.1 incorpora un sistema de **enlaces profundos (*Deep-Linking*)** que te permite saltar de forma instantánea a configuraciones analíticas preparadas sin necesidad de configurar filtros manualmente:
+Weather Intelligence v3.2 incorpora un sistema ampliado de **enlaces profundos (*Deep-Linking*)** que te permite saltar de forma instantánea a configuraciones analíticas y búsquedas climáticas preparadas:
 
 | Escenario Temático | Vista Objetivo | Ciudades & Enfoque | Enlace Directo |
 | :--- | :--- | :--- | :--- |
@@ -28,6 +36,8 @@ Weather Intelligence v3.1 incorpora un sistema de **enlaces profundos (*Deep-Lin
 | **🔥❄️ Extremos Hoy** | Observatorio | Filtro dinámico de las 2 más cálidas y 2 más frías del planeta | [Explorar Extremos Térmicos ↗](/apps/weather/?preset=extremes&lang=es) |
 | **🤖 Duelo IA vs. OWM** | Laboratorio ML | Comparativa Walk-Forward: Regresión Fourier vs. Pronóstico Oficial | [Abrir Laboratorio ML Arena ↗](/apps/weather/?preset=ai_duel&view=arena&lang=es) |
 | **🏃‍♂️ Top Confort Outdoor** | Atlas Global | Ranking ordenado de mayor a menor índice bioclimático (0–100) | [Explorar Atlas de Confort ↗](/apps/weather/?preset=comfort&view=atlas&lang=es) |
+| **✈️ Buscador de Destinos** | Atlas · Destinos | Ranking personalizado para mayo (22 °C, poca lluvia y poco viento) | [Abrir Buscador de Destinos ↗](/apps/weather/?view=atlas&atlasMode=finder&month=5&tOpt=22&lang=es) |
+| **🧬 Clima Gemelo** | Atlas · Gemelo | ¿Qué ciudad en diciembre tiene el clima de Madrid en mayo? | [Explorar Clima Gemelo ↗](/apps/weather/?view=atlas&atlasMode=twin&twinCity=madrid&twinMonth=5&candMonth=12&lang=es) |
 
 ---
 

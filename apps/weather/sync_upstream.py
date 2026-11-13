@@ -79,11 +79,20 @@ def verify_upstream_sync(app_dir: Path | None = None) -> tuple[bool, list[str]]:
         except Exception as e:
             issues.append(f"predicciones.json corrupto: {e}")
 
-    # Verificar derived/*.json agregados (W3.4)
+    # Verificar derived/*.json agregados (W3.4 / W3.5)
     for fname in ["index.json", "climatology.json", "insights.json", "scorecard.json"]:
         d_file = app_dir / "derived" / fname
         if not d_file.exists():
             issues.append(f"derived/{fname} no existe.")
+    clim_file = app_dir / "derived" / "climatology.json"
+    if clim_file.exists():
+        try:
+            with open(clim_file, "r", encoding="utf-8") as cf:
+                clim_data = json.load(cf)
+            if "feature_stats" not in clim_data:
+                issues.append("derived/climatology.json no contiene feature_stats (W3.5).")
+        except Exception as e:
+            issues.append(f"derived/climatology.json corrupto: {e}")
 
     # Verificar datos/ con CSVs
     datos_dir = app_dir / "datos"
@@ -155,10 +164,10 @@ def export_to_upstream(app_dir: Path, target_dir: Path) -> int:
         for rel in ["index.html", "manifest.json", "sw.js"]:
             if (app_dir / rel).exists():
                 shutil.copy2(app_dir / rel, static_weather_dir / rel)
-        # INV-WEATHER-6: En static/apps/weather solo copiar index.json y climatology.json (nunca daily/ ni CSVs)
+        # INV-WEATHER-6: En static/apps/weather solo copiar los agregados JSON (nunca daily/ ni CSVs)
         static_derived = static_weather_dir / "derived"
         static_derived.mkdir(parents=True, exist_ok=True)
-        for d_file in ["index.json", "climatology.json"]:
+        for d_file in ["index.json", "climatology.json", "insights.json", "scorecard.json"]:
             src_f = target_dir / "derived" / d_file
             if src_f.exists():
                 shutil.copy2(src_f, static_derived / d_file)

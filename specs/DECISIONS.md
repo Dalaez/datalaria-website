@@ -499,3 +499,23 @@
   - *Alternativa B: Emitir `dist_*.md` dentro de `content/`.* Descartada por riesgo de contaminación del sitemap e índice de búsqueda de Hugo.
 - **Consecuencias:**
   - Sindicación multiplataforma determinista en Dev.to y CoderLegion con protección SEO canónica, trazabilidad completa por UTMs y verificación automatizada offline vía `pytest`.
+
+---
+
+## ADR-026: Buscador Bioclimático de Destinos, Clima Gemelo Z-Score y Enriquecimiento Retrocompatible de `climatology.json` (`Hito W3.5` / `v3.2.0`)
+- **Fecha:** 2026-11-13
+- **Estado:** Aceptado (En ejecución en Hito W3.5)
+- **Contexto:**
+  1. En `Weather Intelligence v3.1.0`, `build_derived.py` (`build_climatology`) ya calculaba promedios mensuales de humedad, viento y nubosidad de las 168 estaciones, pero solo serializaba `{tmin, tmax, tmean, rain_days, comfort, n_days}` en `derived/climatology.json`.
+  2. Además, debido al arranque de la serie el `2025-10-27`, octubre y noviembre acumulan `36..38` días medidos frente a `28..31` en el resto de meses, por lo que usar `rain_days` crudo introduciría sesgo estacional.
+  3. El diseño Focus Mode (W3.2) y el contrato `INV-WEATHER-5` exigen mantener $\le 4$ agrupaciones en cabecera y exactamente 3 vistas top-level (`observatory`, `arena`, `atlas`). Asimismo se detectó que `sync_upstream.py` solo replicaba `index.json` y `climatology.json` hacia `static/apps/weather/derived/`, omitiendo `insights.json` y `scorecard.json`.
+- **Decisión:**
+  1. **Enriquecimiento Retrocompatible de `climatology.json`:** Se conservan las claves existentes en `months[m]` y se añaden `amp`, `hum`, `wind`, `clouds` y la tasa normalizada `rain_pct = round(100.0 * rain_days / n_days, 1)`, junto con el objeto raíz `feature_stats` (`mean`, `std`) para `{tmean, amp, hum, wind, rain_pct}`.
+  2. **Algoritmos 100 % Deterministas en Cliente y Replicados en Python (`INV-WEATHER-15` e `INV-WEATHER-16`):** El Buscador de Destinos evalúa confort personalizado (`0..100`) parametrizado por temperatura ideal y tolerancias de lluvia/viento; Clima Gemelo calcula distancia euclídea ponderada sobre z-scores ($w = [1.5, 0.8, 0.9, 0.8, 1.0]$) excluyendo la ciudad de origen. Ambos enlazan directamente a `focusCityInObservatory()` y copian deep-links compartibles.
+  3. **Alojamiento Segmentado en `#view-atlas` (`#atlas-subnav`) y Parche en `sync_upstream.py`:** Se añaden pestañas internas dentro de Atlas sin tocar `<header>` y se amplía la lista de espejo estático de `sync_upstream.py` a `["index.json", "climatology.json", "insights.json", "scorecard.json"]`.
+- **Alternativas Descartadas:**
+  - *Alternativa A: Crear un endpoint separado `matrix_168x12.json`.* Descartada por duplicar datos ya presentes en `climatology.json` y añadir peticiones extra en red.
+  - *Alternativa B: Usar `rain_days` absoluto o distancia euclídea sin estandarizar.* Descartada porque las magnitudes (`0..100 %` humedad vs `-20..40 °C` temperatura) y los meses con `36..38` días distorsionarían las similitudes reales.
+  - *Alternativa C: Añadir una 4.ª vista top-level en cabecera.* Descartada por romper la arquitectura Focus Mode W3.2 y los tests `test_inv_weather_5_frontend_contracts_and_tokens`.
+- **Consecuencias:**
+  - Respuesta instantánea en `0 ms` para las 168 estaciones con una sola descarga cacheable en Service Worker (`weather-v3.2.0`) y cero peticiones HTTP adicionales.

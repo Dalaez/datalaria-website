@@ -1,14 +1,22 @@
 ---
-title: "Weather Intelligence v3.1"
-description: "Global climate control center and quantitative laboratory: 168 stations, cyclic Fourier seasonality, walk-forward AI vs. OWM backtesting, and outdoor comfort index."
+title: "Weather Intelligence v3.2"
+description: "Global climate control center and quantitative laboratory: 168 stations, Fourier harmonics, Destination Finder, Twin Climate matcher, and outdoor comfort index."
 app: "weather"
 translationKey: "app-weather"
 layout: "single"
 ---
 
-## 🌟 What's New in Weather Intelligence v3.1
+## 🌟 What's New in Weather Intelligence v3.2
 
-Weather Intelligence v3.1 introduces a new dimension of **statistical transparency and climate disclosure**:
+Weather Intelligence v3.2 expands the **Global Atlas (168 stations)** with quantitative climate planning in `0 ms` directly in the browser:
+
+- **Destination Finder ("Where is the weather best in…?"):** Pick a target month, ideal temperature, rain tolerance (using sample-normalized `rain_pct` across varying month lengths, `INV-WEATHER-15`), and wind preference to rank all 168 global cities by your custom bioclimatic fit.
+- **Twin Climate Comparator:** Uses weighted *z-score* Euclidean distance across 5 monthly climate dimensions (mean temp, diurnal thermal range, humidity, wind, and percentage of rainy days, `INV-WEATHER-16`) to uncover which destination in December—or any month—matches Madrid in May.
+- **Jump to Answer Card & Shareable Deep-Links:** Every result links straight to its live Observatory Answer Card and copies a reproducible URL deep-link.
+
+### Previously introduced in v3.1
+
+Weather Intelligence v3.1 established our **statistical transparency and climate disclosure** baseline:
 
 - **"Is it Normal?" Diagnostics:** Every station evaluates its current temperature against its own historical baseline across the last 375 days ($\pm 7$ days of the year excluding the target day, per `INV-WEATHER-11`), identifying whether today falls into an extreme percentile ($p \le 10$ or $p \ge 90$) or sets a new monthly record measured since October 2025.
 - **Thermal Warming Stripes Calendar:** Interactive climate stripes visualization across 365 days for each city, mapping thermal anomalies on a $\pm 5^\circ\text{C}$ divergent colormap with real-time tooltips.
@@ -19,7 +27,7 @@ Weather Intelligence v3.1 introduces a new dimension of **statistical transparen
 
 ## 🚀 Control Center & 1-Click Scenario Launchers (Deep-Linking)
 
-Weather Intelligence v3.1 introduces a comprehensive **Deep-Linking system** that lets you jump directly into curated analytical presets without configuring filters manually:
+Weather Intelligence v3.2 extends its **Deep-Linking system** so you can jump straight into curated analytical presets and custom climate searches:
 
 | Thematic Scenario | Target View | Focus & Stations | Direct Link |
 | :--- | :--- | :--- | :--- |
@@ -28,6 +36,8 @@ Weather Intelligence v3.1 introduces a comprehensive **Deep-Linking system** tha
 | **🔥❄️ Planet Extremes** | Observatory | Dynamic filter of the 2 hottest and 2 coldest global stations today | [Explore Thermal Extremes ↗](/apps/weather/?preset=extremes&lang=en) |
 | **🤖 AI vs. OWM Duel** | ML Arena | Walk-Forward benchmark: Cyclic Fourier Regression vs. Official Forecast | [Open ML Arena Lab ↗](/apps/weather/?preset=ai_duel&view=arena&lang=en) |
 | **🏃‍♂️ Top Outdoor Comfort** | Global Atlas | Stations ranked by bio-climatic comfort score (0–100) | [Explore Comfort Atlas ↗](/apps/weather/?preset=comfort&view=atlas&lang=en) |
+| **✈️ Destination Finder** | Atlas · Finder | Custom comfort ranking for May (22 °C, low rain and calm wind) | [Open Destination Finder ↗](/apps/weather/?view=atlas&atlasMode=finder&month=5&tOpt=22&lang=en) |
+| **🧬 Twin Climate** | Atlas · Twin | Which city in December mirrors Madrid's climate in May? | [Explore Twin Climate ↗](/apps/weather/?view=atlas&atlasMode=twin&twinCity=madrid&twinMonth=5&candMonth=12&lang=en) |
 
 ---
 

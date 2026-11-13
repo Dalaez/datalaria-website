@@ -18,6 +18,8 @@ from apps.weather.build_derived import (
     slugify,
     aggregate_daily,
     build_climatology,
+    compute_custom_comfort_score,
+    compute_twin_climates,
     append_forecast_log,
     process_derived_pipeline,
     parse_ciudades_txt,
@@ -453,9 +455,9 @@ def test_frontend_zero_404_and_instant_kpi_architecture():
     # 2. Renderizado instantáneo de KPIs en updateDashboard
     assert "updateKPIs({}, checkedMetric, selectedValues)" in html_content
 
-    # 3. Service Worker versión 3.0.2
+    # 3. Service Worker versión 3.2.0
     sw_content = (BASE_DIR / "sw.js").read_text(encoding="utf-8")
-    assert "weather-v3.1.0" in sw_content
+    assert "weather-v3.2.0" in sw_content
 
 
 
@@ -635,25 +637,155 @@ def test_w34_frontend_dom_and_i18n():
 
 
 def test_inv_weather_14_version_coherence():
-    """Verifica INV-WEATHER-14: Version v3.1.0 exacta en YAML, fichas Markdown y frontend."""
+    """Verifica INV-WEATHER-14: Version v3.2.0 exacta en YAML, fichas Markdown y frontend."""
     import yaml
     yaml_file = Path(__file__).resolve().parent.parent.parent.parent / "data" / "apps" / "weather.yaml"
     assert yaml_file.exists()
     ydata = yaml.safe_load(yaml_file.read_text(encoding="utf-8"))
-    assert ydata["current_version"] == "v3.1.0"
-    assert "v3.1" in ydata["title"]["es"]
-    assert "v3.1" in ydata["title"]["en"]
+    assert ydata["current_version"] == "v3.2.0"
+    assert "v3.2" in ydata["title"]["es"]
+    assert "v3.2" in ydata["title"]["en"]
 
-    # Primer release debe ser v3.1.0 y released
-    assert ydata["releases"][0]["version"] == "v3.1.0"
+    # Primer release debe ser v3.2.0 y released
+    assert ydata["releases"][0]["version"] == "v3.2.0"
     assert ydata["releases"][0]["state"] == "released"
 
     # Fichas Markdown
     es_md = Path(__file__).resolve().parent.parent.parent.parent / "content" / "es" / "apps" / "weather" / "index.md"
     en_md = Path(__file__).resolve().parent.parent.parent.parent / "content" / "en" / "apps" / "weather" / "index.md"
-    assert 'title: "Weather Intelligence v3.1"' in es_md.read_text(encoding="utf-8")
-    assert 'title: "Weather Intelligence v3.1"' in en_md.read_text(encoding="utf-8")
+    assert 'title: "Weather Intelligence v3.2"' in es_md.read_text(encoding="utf-8")
+    assert 'title: "Weather Intelligence v3.2"' in en_md.read_text(encoding="utf-8")
 
     # Frontend
     html = (BASE_DIR / "index.html").read_text(encoding="utf-8")
-    assert "Weather Intelligence v3.1" in html
+    assert "Weather Intelligence v3.2" in html
+
+
+# ---------------------------------------------------------------------------
+# 6. Tests de W3.5: Buscador de Destinos, Clima Gemelo y Deep-Links
+# ---------------------------------------------------------------------------
+
+def test_climatology_enriched_fields_and_rain_pct():
+    """Verifica que build_climatology incluya amp, hum, wind, clouds, rain_pct normalizado y feature_stats."""
+    rows_nov = [
+        [f"2025-11-{min(30, d):02d}", 6.0, 16.0, 11.0, 10.0, 10.5, 60.0, 12.0, (1.2 if d <= 9 else 0.0), 30.0, 3]
+        for d in range(1, 39)  # 38 días acumulados en noviembre (9 con lluvia -> 23.7%)
+    ]
+    rows_feb = [
+        [f"2026-02-{d:02d}", 4.0, 14.0, 9.0, 10.0, 8.5, 70.0, 15.0, (0.5 if d <= 7 else 0.0), 40.0, 3]
+        for d in range(1, 29)  # 28 días en febrero (7 con lluvia -> 25.0%)
+    ]
+    rows_short = [
+        [f"2026-05-{d:02d}", 10.0, 20.0, 15.0, 10.0, 14.5, 50.0, 8.0, 0.0, 10.0, 3]
+        for d in range(1, 6)  # 5 < 10 -> null
+    ]
+    clim = build_climatology({"test-city": rows_nov + rows_feb + rows_short})
+    assert "feature_stats" in clim
+    fstats = clim["feature_stats"]
+    assert fstats["features"] == ["tmean", "amp", "hum", "wind", "rain_pct"]
+    for feat in fstats["features"]:
+        assert fstats["std"][feat] > 0
+
+    m_nov = clim["cities"]["test-city"]["months"]["11"]
+    m_feb = clim["cities"]["test-city"]["months"]["2"]
+    assert clim["cities"]["test-city"]["months"]["5"] is None
+    for key in ("amp", "hum", "wind", "clouds", "rain_pct"):
+        assert key in m_nov and key in m_feb
+    assert m_nov["rain_pct"] == pytest.approx(round(100.0 * 9 / 38, 1), abs=0.1)
+    assert m_feb["rain_pct"] == pytest.approx(25.0, abs=0.1)
+
+
+def test_custom_comfort_finder_ranking():
+    """Valida INV-WEATHER-15: el ranking personalizado reacciona a ideal_temp, rain_pref y wind_pref."""
+    dry_warm = {"tmean": 22.0, "hum": 50.0, "wind": 8.0, "rain_pct": 4.0, "n_days": 30, "rain_days": 1, "comfort": 92}
+    wet_windy = {"tmean": 22.0, "hum": 82.0, "wind": 28.0, "rain_pct": 48.0, "n_days": 30, "rain_days": 14, "comfort": 48}
+    cold_crisp = {"tmean": 6.0, "hum": 45.0, "wind": 6.0, "rain_pct": 5.0, "n_days": 30, "rain_days": 1, "comfort": 55}
+
+    s_dry = compute_custom_comfort_score(dry_warm, ideal_temp=22.0, rain_pref="dry", wind_pref="calm")
+    s_wet = compute_custom_comfort_score(wet_windy, ideal_temp=22.0, rain_pref="dry", wind_pref="calm")
+    s_cold_pref = compute_custom_comfort_score(cold_crisp, ideal_temp=6.0, rain_pref="dry", wind_pref="calm")
+
+    assert 0 <= s_wet < s_dry <= 100
+    assert s_cold_pref > compute_custom_comfort_score(dry_warm, ideal_temp=6.0, rain_pref="dry", wind_pref="calm")
+    assert compute_custom_comfort_score(None) == 0
+
+
+def test_twin_climate_zscore_euclidean_symmetry():
+    """Valida INV-WEATHER-16: Clima Gemelo excluye origen, puntua ~100% ante clon y ordena por z-score."""
+    clim = {
+        "feature_stats": {
+            "features": ["tmean", "amp", "hum", "wind", "rain_pct"],
+            "mean": {"tmean": 15.0, "amp": 8.0, "hum": 60.0, "wind": 12.0, "rain_pct": 20.0},
+            "std": {"tmean": 8.0, "amp": 3.0, "hum": 15.0, "wind": 5.0, "rain_pct": 15.0},
+        },
+        "cities": {
+            "madrid": {
+                "months": {
+                    "5": {"tmean": 18.0, "amp": 11.0, "hum": 52.0, "wind": 10.0, "rain_pct": 12.0}
+                }
+            },
+            "clone-dec": {
+                "months": {
+                    "12": {"tmean": 18.0, "amp": 11.0, "hum": 52.0, "wind": 10.0, "rain_pct": 12.0}
+                }
+            },
+            "polar-dec": {
+                "months": {
+                    "12": {"tmean": -10.0, "amp": 4.0, "hum": 85.0, "wind": 30.0, "rain_pct": 60.0}
+                }
+            },
+        },
+    }
+    res = compute_twin_climates(clim, target_slug="madrid", target_month=5, candidate_month=12, top_n=5)
+    assert len(res) == 2
+    assert all(r["slug"] != "madrid" for r in res)
+    assert res[0]["slug"] == "clone-dec"
+    assert res[0]["distance"] == 0.0
+    assert res[0]["similarity_pct"] == 100
+    assert res[1]["slug"] == "polar-dec" and res[1]["similarity_pct"] < 50
+
+
+def test_w35_climatology_168_cities_contract():
+    """Valida contrato real de climatology.json en apps/weather y static/apps/weather (168 ciudades, feature_stats)."""
+    repo_root = BASE_DIR.parent.parent
+    app_clim = BASE_DIR / "derived" / "climatology.json"
+    static_clim = repo_root / "static" / "apps" / "weather" / "derived" / "climatology.json"
+    assert app_clim.exists() and static_clim.exists()
+    assert app_clim.read_bytes() == static_clim.read_bytes()
+
+    data = json.loads(app_clim.read_text(encoding="utf-8"))
+    assert "feature_stats" in data
+    assert len(data["cities"]) == 168
+    madrid_may = data["cities"]["madrid"]["months"]["5"]
+    for key in ("amp", "hum", "wind", "clouds", "rain_pct"):
+        assert key in madrid_may
+
+    for fname in ("index.json", "climatology.json", "insights.json", "scorecard.json"):
+        assert (repo_root / "static" / "apps" / "weather" / "derived" / fname).exists()
+
+
+def test_w35_frontend_dom_i18n_and_deeplinks():
+    """Valida DOM W3.5 dentro de view-atlas, eventos GA4, paridad ES/EN y cero botones extra en cabecera."""
+    html_content = (BASE_DIR / "index.html").read_text(encoding="utf-8")
+    for token in (
+        'id="atlas-subnav"',
+        'id="atlas-pane-ranking"',
+        'id="atlas-pane-finder"',
+        'id="atlas-pane-twin"',
+        'ensureClimatologyLoaded',
+        'focusCityInObservatory',
+        'computeCustomComfortScore',
+        'weather_finder_search',
+        'weather_twin_search',
+        'weather_finder_open_city',
+        'weather_deeplink_copy',
+        'atlasMode',
+    ):
+        assert token in html_content, f"Falta token W3.5 en index.html: {token}"
+
+    # Cabecera mantiene exactamente las 3 vistas top-level (sin botón W3.5 en header)
+    header_match = re.search(r'<header class="main-header">([\s\S]*?)</header>', html_content)
+    assert header_match
+    header_html = header_match.group(1)
+    assert 'data-atlas-mode' not in header_html
+

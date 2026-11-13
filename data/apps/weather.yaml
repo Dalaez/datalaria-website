@@ -7,15 +7,15 @@ cover: cover.png
 app_url: /apps/weather/
 demo_url: "/apps/weather/?preset=extremes&view=arena"
 source_spec: specs/apps/weather/spec.md
-current_version: v3.1.0
+current_version: v3.2.0
 
 title:
-  es: "Weather Intelligence v3.1"
-  en: "Weather Intelligence v3.1"
+  es: "Weather Intelligence v3.2"
+  en: "Weather Intelligence v3.2"
 
 tagline:
-  es: "Centro de control meteorológico global y laboratorio cuantitativo: 168 estaciones, estacionalidad armónica de Fourier y confort outdoor."
-  en: "Global climate control center and quantitative laboratory: 168 global stations, cyclic Fourier seasonality, and outdoor comfort index."
+  es: "Centro de control meteorológico global y laboratorio cuantitativo: 168 estaciones, Fourier, Buscador de Destinos y Clima Gemelo."
+  en: "Global climate control center and quantitative laboratory: 168 stations, Fourier ML, Destination Finder, and Twin Climate."
 
 summary:
   es: "Servicio meteorológico integral de coste cero que ingesta telemetría 3 veces al día de 168 estaciones en 6 regiones mediante OpenWeatherMap v2.5. Implementa regresión con estacionalidad armónica de Fourier (sin y cos de 365.25 días), walk-forward backtesting IA vs. OWM con R² y MAE, índice de confort outdoor (0-100), Cockpit en 3 vistas (Observatorio, Laboratorio ML, Atlas 168) y mapa Leaflet multicapa con exportación CSV/JSON."
@@ -47,8 +47,8 @@ features:
     es: "Mapa Geoespacial Multicapa: selector de 5 capas en Leaflet (Temperatura, Confort, Anomalía 30d, Viento, Humedad) con encuadre automático por selección."
     en: "Multi-Layer Geospatial Map: 5-layer Leaflet switcher (Temperature, Comfort, 30d Anomaly, Wind, Humidity) with smooth selection auto-framing."
   - icon: "🏆"
-    es: "Atlas Global de 168 Estaciones: tabla ejecutiva de alta densidad con buscador instantáneo, filtrado por 6 regiones canónicas y ordenación por confort o extremos."
-    en: "Global Atlas of 168 Stations: high-density executive table with instant search, 6 canonical region filtering, and sorting by comfort or thermal extremes."
+    es: "Atlas Global 168 + Buscador de Destinos & Clima Gemelo: ranking actual por regiones, buscador bioclimático por mes/preferencias y emparejador z-score de climas gemelos."
+    en: "Global Atlas 168 + Destination Finder & Twin Climate: live regional ranking, bioclimatic finder by month/preferences, and z-score twin climate matcher."
   - icon: "⚡"
     es: "Barra de 5 Presets en 1 Clic & Ticker Planetario: escenarios temáticos instantáneos (Capitales ES, Hubs Globales, Extremos Hoy, Duelo IA, Top Confort) y ticker en vivo."
     en: "1-Click 5-Presets Bar & Planetary Ticker: instant thematic scenarios (Spain Capitals, Global Hubs, Today's Extremes, AI Duel, Top Comfort) and live extremes ticker."
@@ -115,6 +115,21 @@ posts:
     part: 4
 
 releases:
+  - version: v3.2.0
+    date: "2026-11-13"
+    state: released
+    type: release
+    title:
+      es: "Weather Intelligence v3.2: Buscador de Destinos y Comparador de Clima Gemelo"
+      en: "Weather Intelligence v3.2: Destination Finder and Twin Climate Comparator"
+    changes:
+      - es: "Buscador de Destinos '¿Dónde se está mejor en…?' (INV-WEATHER-15): ranking bioclimático personalizado 0-100 en 0 ms sobre las 168 estaciones por mes, temperatura ideal, tolerancia a lluvia (rain_pct normalizado) y viento."
+        en: "Destination Finder 'Where is the weather best in…?' (INV-WEATHER-15): 0ms personalized 0-100 bioclimatic ranking across 168 stations by month, ideal temp, rain tolerance (normalized rain_pct), and wind."
+      - es: "Comparador de Clima Gemelo (INV-WEATHER-16): distancia euclídea ponderada z-score sobre 5 dimensiones mensuales (tmean, amplitud diurna, humedad, viento y rain_pct) con deltas medidos."
+        en: "Twin Climate Comparator (INV-WEATHER-16): z-score weighted Euclidean distance across 5 monthly climate dimensions (tmean, diurnal range, humidity, wind, and rain_pct) with measured deltas."
+      - es: "Enriquecimiento retrocompatible de derived/climatology.json con métricas ampliadas y feature_stats globales, más enlace directo a Tarjeta Respuesta y deep-links compartibles."
+        en: "Backward-compatible enrichment of derived/climatology.json with expanded metrics and global feature_stats, plus 1-click Answer Card jump and shareable deep-links."
+
   - version: v3.1.0
     date: "2026-11-09"
     state: released

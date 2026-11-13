@@ -1,8 +1,8 @@
 # Especificación Técnica SDD: Weather Service (`weather`)
 
 > **ID de Especificación:** `SPEC-APP-WEATHER`  
-> **Versión de la Spec:** `3.1.0` (Evolución a Weather Intelligence v3.1: "¿Es normal?", Warming Stripes, Marcador IA vs OWM y Explicabilidad — `ADR-023`)  
-> **Versión de la App documentada:** `v3.1.0` (Release de producción)  
+> **Versión de la Spec:** `3.2.0` (Evolución a Weather Intelligence v3.2: "Buscador de Destinos" y "Clima Gemelo" — `ADR-026`)  
+> **Versión de la App documentada:** `v3.2.0` (Release de producción)  
 > **Contrato de Diseño Vinculado:** [`specs/apps/weather/design.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/apps/weather/design.md)  
 > **Estado:** `APPROVED`  
 > **Categoría SDD:** 🟢 App Flagship #3 de 7 — Observatorio Climático Serverless & Laboratorio ML  
@@ -255,12 +255,17 @@ Para garantizar tiempos de carga sub-segundo, eliminar la descarga masiva de CSV
 2. **Climatología Normalizada de 168 Estaciones (`derived/climatology.json`):**
    ```json
    {
-     "generated_at": "2026-11-08T22:00:00Z",
+     "generated_at": "2026-11-13T08:00:00Z",
+     "feature_stats": {
+       "features": ["tmean", "amp", "hum", "wind", "rain_pct"],
+       "mean": { "tmean": 16.412, "amp": 7.821, "hum": 68.304, "wind": 12.145, "rain_pct": 18.42 },
+       "std": { "tmean": 8.915, "amp": 3.412, "hum": 15.221, "wind": 6.104, "rain_pct": 16.883 }
+     },
      "cities": {
        "madrid": {
          "months": {
-           "1": { "tmin": 2.1, "tmax": 11.2, "tmean": 6.4, "rain_days": 5, "comfort": 48, "n_days": 31 },
-           "11": { "tmin": 5.4, "tmax": 14.8, "tmean": 9.8, "rain_days": 4, "comfort": 68, "n_days": 38 }
+           "1": { "tmin": 2.1, "tmax": 11.2, "tmean": 6.4, "amp": 9.1, "hum": 74.2, "wind": 9.5, "clouds": 42.0, "rain_days": 5, "rain_pct": 16.1, "comfort": 48, "n_days": 31 },
+           "11": { "tmin": 5.4, "tmax": 14.8, "tmean": 9.8, "amp": 9.4, "hum": 71.0, "wind": 8.8, "clouds": 38.5, "rain_days": 4, "rain_pct": 10.5, "comfort": 68, "n_days": 38 }
          },
          "fourier": { "a0": 15.2, "a1": -8.4, "b1": -4.2, "a2": 0.8, "b2": -0.3 },
          "baseline_days": 377
@@ -269,6 +274,8 @@ Para garantizar tiempos de carga sub-segundo, eliminar la descarga masiva de CSV
    }
    ```
    - Si `n_days < 10` para un mes determinado, la entrada mensual es `null`.
+   - `rain_pct = round(100.0 * rain_days / n_days, 1)` normaliza la frecuencia de lluvia frente a meses con distinta longitud muestral (p. ej. oct/nov con 36–38 días frente a 28–31 días).
+   - `feature_stats` publica la media y desviación estándar poblacional (`ddof=0`, piso `1e-6`) sobre todas las tuplas `(ciudad, mes)` no nulas para estandarización z-score determinista en cliente.
 3. **Índice Rápido del Atlas (`derived/index.json`):**
    ```json
    {
@@ -364,6 +371,19 @@ El frontend opera bajo el patrón **Remote-First con Fallback en Cascada**:
 5. **Upsert Idempotente en `derived/forecast_log/AAAA-MM.csv`:**
    - Clave única `(fecha_emision, slug)`. Emisiones subsecuentes del mismo día actualizan la fila sin duplicarla. Columnas: `fecha_emision,slug,ia_d1,ia_d2,ia_d3,ia_d4,ia_d5,owm_d1,owm_d2,owm_d3,owm_d4,owm_d5`.
 
+### 4.9 Motores y Deep-Linking v3.2: Buscador de Destinos & Clima Gemelo (W3.5)
+
+1. **Buscador Bioclimático Personalizado (`atlasMode=finder`):**
+   - Evalúa de forma determinista las 168 estaciones para un mes `month` (`1..12`) y preferencias `{tOpt, rainPref, windPref, region}` sobre los datos medidos de `climatology.json`.
+   - Puntuación en $[0, 100]$: penaliza la distancia térmica $|T_{\text{mean}} - T_{\text{opt}}|^{1.25} \times 3.2$ (tope `55`), la frecuencia normalizada `rain_pct` según `rainPref` (`dry` / `low` / `any`), el viento medio `wind` según `windPref` (`calm` / `breezy` / `any`) y humedades extremas ($<25\%$ o $>75\%$). Desempate por `comfort` base descendente y `slug` ascendente.
+   - Parámetros URL: `?view=atlas&atlasMode=finder&month=<1..12>&tOpt=<5..35>&rainPref=<dry|low|any>&windPref=<calm|breezy|any>&region=<all|...>&lang=<es|en>`.
+2. **Buscador de Clima Gemelo (`atlasMode=twin`):**
+   - Responde a *"¿Qué ciudad tiene en [Mes candidato] el clima que tiene [Ciudad ref] en [Mes ref]?"* usando distancia euclídea ponderada sobre vectores z-score $z_k = (x_k - \mu_k)/\sigma_k$ para $k \in \{\text{tmean}, \text{amp}, \text{hum}, \text{wind}, \text{rain\_pct}\}$ con pesos calibrados $w = [1.5, 0.8, 0.9, 0.8, 1.0]$ (media $1.0$):
+     $$d = \sqrt{\frac{1}{5}\sum_{k=1}^{5} w_k (z(c,m)_k - z(c_0,m_0)_k)^2}, \qquad \text{similitud (\%)} = \text{round}\left(100 \cdot e^{-0.55 \cdot d}\right)$$
+   - Excluye la ciudad de origen (`c != c0`), admite un mes candidato específico (`1..12`) o cualquiera (`any`) y expone deltas reales ($\Delta T$, $\Delta\text{Lluvia}$, $\Delta\text{Viento}$, $\Delta\text{Humedad}$).
+   - Parámetros URL: `?view=atlas&atlasMode=twin&twinCity=<slug>&twinMonth=<1..12>&candMonth=<any|1..12>&lang=<es|en>`.
+3. **Salto Directo a Tarjeta Respuesta y Compartición:** Cada resultado ofrece botón hacia `focusCityInObservatory(cityName)` y botón `🔗 Deep-link` para copiar `?cities=<City,CC>&view=observatory&lang=<es|en>`.
+
 ---
 
 ## 5. Invariantes de Dominio (`INV-WEATHER-*`)
@@ -386,7 +406,9 @@ El frontend opera bajo el patrón **Remote-First con Fallback en Cascada**:
 11. **`INV-WEATHER-11` (Línea Base Honesta y Ventana Móvil DOY):** El cálculo de anomalía y percentil para "¿Es normal?" se evalúa contra la ventana de $\pm 7$ días del año en el histórico medido de la ciudad excluyendo estrictamente el día objetivo. Solo se anunciará récord térmico si el mes dispone de $\ge 20$ días medidos en el histórico y el texto DEBE explicitar siempre la coletilla temporal "desde oct. 2025".
 12. **`INV-WEATHER-12` (Marcador Auditable en Dos Capas):** El marcador público IA vs OWM no mezclará jamás en un mismo agregado el MAE observado en vivo (`forecast_log/`) con el backtest retrospectivo. La capa en vivo exige $\ge 7$ pares por horizonte para el estado `"ok"` (mostrando `"calibrating"` en caso contrario). La capa retrospectiva se etiquetará inequívocamente como "Retrospectivo (solo IA)".
 13. **`INV-WEATHER-13` (Explicabilidad Determinista sin LLM):** El módulo "¿Por qué predice esto?" descompondrá la predicción en contribuciones lineales deterministas $\text{coef}_k \times (x_k - \bar{x}_k)$ en °C y porcentaje, mapeadas a plantillas i18n comprensibles sin recurrir a llamadas de modelos de lenguaje en tiempo de ejecución.
-14. **`INV-WEATHER-14` (Coherencia Estricta de Versión Pública):** `data/apps/weather.yaml` (`current_version`), la primera release `released`, el título de las fichas en `content/{es,en}/apps/weather/index.md` y las etiquetas públicas del frontend (`<title>`, `og:title`, `twitter:title`, `mainTitle`) DEBEN coincidir exactamente en el valor SemVer de release activa (`v3.1.0`).
+14. **`INV-WEATHER-14` (Coherencia Estricta de Versión Pública):** `data/apps/weather.yaml` (`current_version`), la primera release `released`, el título de las fichas en `content/{es,en}/apps/weather/index.md` y las etiquetas públicas del frontend (`<title>`, `og:title`, `twitter:title`, `mainTitle`) DEBEN coincidir exactamente en el valor SemVer de release activa (`v3.2.0`).
+15. **`INV-WEATHER-15` (Buscador Bioclimático Personalizado sobre Climatología Medida):** El Buscador de Destinos evalúa exclusivamente normales medidas en `climatology.json` con precipitación normalizada (`rain_pct = 100 * rain_days / n_days`, omitiendo meses `null` con $<10$ días), aplicando puntuación determinista `0..100` en cliente sin LLM, con enlace directo a la Tarjeta Respuesta y deep-link compartible.
+16. **`INV-WEATHER-16` (Similitud Climática Estandarizada — Clima Gemelo):** La búsqueda de Clima Gemelo calcula la distancia euclídea ponderada sobre vectores z-score desde `climatology.json.feature_stats` de `{tmean, amp, hum, wind, rain_pct}`, excluyendo la ciudad de referencia y presentando deltas medidos junto al acceso directo a Tarjeta Respuesta.
 
 ---
 
@@ -396,14 +418,14 @@ El frontend opera bajo el patrón **Remote-First con Fallback en Cascada**:
 | :--- | :--- | :--- | :--- |
 | **G-01** | Calidad de Especificación SDD | `python -m ops.helix.cli verify --spec specs/apps/weather/spec.md` | `SpecQualityScore` $\ge 90/100$ (Objetivo: `100/100`) y código `0`. |
 | **G-02** | Higiene de `/static/apps/weather/` (`INV-WEATHER-6`) | `python -m pytest ops/helix/tests -v` | Cero archivos `.py`/`.env`/`.git` y cero CSVs obsoletos en `static/apps/weather/datos/`. |
-| **G-03** | Suite Unitaria del Motor Cuantitativo (`INV-WEATHER-1..4`, `11..13`) | `python -m pytest apps/weather/tests -v` | 100% de tests en verde validando Fourier, coherencia $\min \le \text{media} \le \max$, `comfort_index` $\in [0,100]$, `insights.json` y `scorecard.json`. |
-| **G-04** | Integridad de UI, i18n, Versión y GA4 (`INV-WEATHER-5, 14`) | `python -m pytest apps/weather/tests -v` | Paridad 100% de claves `es`/`en`, coherencia `v3.1.0` en todas las superficies, deep-links y eventos `gtag`. |
+| **G-03** | Suite Unitaria del Motor Cuantitativo (`INV-WEATHER-1..4`, `11..16`) | `python -m pytest apps/weather/tests -v` | 100% de tests en verde validando Fourier, coherencia $\min \le \text{media} \le \max$, `comfort_index`, `insights.json`, `scorecard.json` y climatología enriquecida (`rain_pct`, `feature_stats`, ranking y gemelo). |
+| **G-04** | Integridad de UI, i18n, Versión y GA4 (`INV-WEATHER-5, 14`) | `python -m pytest apps/weather/tests -v` | Paridad 100% de claves `es`/`en`, coherencia `v3.2.0` en todas las superficies, deep-links (`finder`/`twin`) y eventos `gtag`. |
 | **G-05** | Compilación del Portal Hugo y Fichas ES/EN | `hugo --renderToMemory` | Código de salida `0`, fichas `/es/apps/weather/` y `/en/apps/weather/` compiladas sin errores. |
 | **G-06** | Gobernanza Editorial Datalaria Pulse | `python -m ops.pulse.build_index` y `python -m ops.pulse.publish_public` | Sincronización al 100% del catálogo de apps y posts sin violar `INV-PULSE-1..2`. |
 
 ---
 
-## 7. Blueprint de Ejecución Hito a Hito (Guía para Ejecución Ágil con Gemini 3.8 Flash)
+## 7. Blueprint de Ejecución Hito a Hito
 
 Para maximizar la velocidad y eficiencia de tokens, los hitos de implementación están acotados con contratos cerrados:
 
@@ -414,12 +436,19 @@ Para maximizar la velocidad y eficiencia de tokens, los hitos de implementación
 4. Integración frontend en `apps/weather/index.html`: chip "¿Es normal?" en Super-Cards, acordeón de Warming Stripes y rediseño de vista `arena` ("¿Quién acierta?" y "¿Por qué predice esto?").
 5. Publicación coherente de la release `v3.1.0` en `data/apps/weather.yaml`, fichas editoriales ES/EN y metadatos del portal.
 
+### Hito W3.5 (`M` — "Buscador de Destinos y Clima Gemelo" y Versión Coherente v3.2.0)
+1. Enriquecimiento retrocompatible de `climatology.json` en `build_derived.py` (`amp`, `hum`, `wind`, `clouds`, `rain_pct`, `feature_stats`) y funciones deterministas puras para ranking bioclimático y similitud euclídea z-score.
+2. Fix en `sync_upstream.py` copiando los 4 agregados (`index.json`, `climatology.json`, `insights.json`, `scorecard.json`) a `static/apps/weather/derived/`.
+3. UI segmentada `#atlas-subnav` dentro de `#view-atlas` sin tocar `<header>`: `Ranking Hoy`, `Buscador de Destinos` y `Clima Gemelo` con carga singleton `ensureClimatologyLoaded()`, enlace directo a Tarjeta Respuesta y deep-links compartibles.
+4. Armonización pública `v3.2.0` (`weather.yaml`, fichas ES/EN, `index.html`, `sw.js`, `list.html` y tests) + validación dual-repo.
+
 ---
 
 ## 8. Historial Evolutivo (Changelog SemVer)
 
 | Versión | Fecha | Tipo | Resumen de Cambios |
 | :-: | :-: | :-: | :--- |
+| **`v3.2.0`** | 2026-11-13 | `release` | Weather Intelligence v3.2: Buscador de Destinos "¿Dónde se está mejor en…?" con puntuación de confort personalizada sobre normales medidas y `rain_pct`, comparador de Clima Gemelo mediante distancia euclídea z-score sobre 5 variables, climatología enriquecida (`feature_stats`), enlace directo a Tarjeta Respuesta y deep-links compartibles. |
 | **`v3.1.0`** | 2026-11-09 | `release` | Weather Intelligence v3.1: Diagnóstico "¿Es normal?" con percentil y récords honestos desde oct. 2025, Warming Stripes por ciudad, Marcador Público IA vs OWM con MAE a D+1..D+5 y victorias semanales, módulo de explicabilidad ("¿Por qué predice esto?") y corrección de agregación diurna de temperaturas mínimas y precipitación. |
 | **`v3.0.0`** | 2026-11-08 | `release` | Weather Intelligence v3.0: Data Truth Pipeline con derivados compactos en upstream (daily, climatology, index, forecast_log), ingesta remote-first, Focus Mode con Tarjeta Respuesta y acordeones de divulgación progresiva, puerta de suficiencia de datos (INV-WEATHER-8), PWA instalable offline con Service Worker (stale-while-revalidate) y hotfix W3.3-FIX de inventario completo de 168 estaciones. |
 | **`v2.0.0`** | 2026-11-08 | `release` | Release oficial de Weather Intelligence v2.0: estacionalidad armónica de Fourier (sin/cos), walk-forward backtesting IA vs. OWM con R² y MAE, Índice de Confort Outdoor (0–100), Cockpit en 3 vistas (Observatorio, ML Arena, Atlas 168), 5 Presets en 1 clic, Deep-Linking, exportación CSV/JSON y contrato global_summary.json. |
