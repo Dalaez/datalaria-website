@@ -1,8 +1,8 @@
 # Especificación Técnica SDD: Weather Service (`weather`)
 
 > **ID de Especificación:** `SPEC-APP-WEATHER`  
-> **Versión de la Spec:** `3.2.0` (Evolución a Weather Intelligence v3.2: "Buscador de Destinos" y "Clima Gemelo" — `ADR-026`)  
-> **Versión de la App documentada:** `v3.2.0` (Release de producción)  
+> **Versión de la Spec:** `3.3.0` (Evolución a Weather Intelligence v3.3: Motor de Crecimiento W3.6 — Share PNG, Embed `<iframe>`, Solución Intermedia SEO y Feed Semanal Scriba — `ADR-027`)  
+> **Versión de la App documentada:** `v3.3.0` (Release de producción)  
 > **Contrato de Diseño Vinculado:** [`specs/apps/weather/design.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/apps/weather/design.md)  
 > **Estado:** `APPROVED`  
 > **Categoría SDD:** 🟢 App Flagship #3 de 7 — Observatorio Climático Serverless & Laboratorio ML  
@@ -384,6 +384,48 @@ El frontend opera bajo el patrón **Remote-First con Fallback en Cascada**:
    - Parámetros URL: `?view=atlas&atlasMode=twin&twinCity=<slug>&twinMonth=<1..12>&candMonth=<any|1..12>&lang=<es|en>`.
 3. **Salto Directo a Tarjeta Respuesta y Compartición:** Cada resultado ofrece botón hacia `focusCityInObservatory(cityName)` y botón `🔗 Deep-link` para copiar `?cities=<City,CC>&view=observatory&lang=<es|en>`.
 
+### 4.10 Contratos del Motor de Crecimiento v3.3 (Hito W3.6)
+
+1. **Generador de Tarjeta PNG en Cliente (`Canvas 1200×630`):**
+   - Botón compacto `📸` dentro de cada `.super-card` (sin añadir controles a `<header>`).
+   - Dibuja en HTML5 `<canvas width="1200" height="630">` (paleta Executive Dark `#0b0f17`/`#111827`): cabecera de marca `Datalaria · Weather Intelligence`, ciudad y fecha (`"desde oct. 2025"`), temperatura principal, píldora de Confort (`0..100`), badge de anomalía *"¿Es normal?"* (`±X.X °C`, percentil), minigráfica vectorizada de últimos registros diarios (`records`) y deep-link compartible. Exporta PNG (`weather-<slug>-YYYY-MM-DD.png`) vía `navigator.share` (si hay soporte de archivos) o descarga directa + copia del deep-link al portapapeles.
+2. **Widget Embebible Ultraligero (`apps/weather/embed.html`):**
+   - Documento HTML autónomo (`< 25 KB`, cero dependencias externas CDN como Leaflet o Chart.js).
+   - Parámetros URL sanitizados: `?city=<slug>` (validado por whitelist `^[a-z0-9-]+$`, fallback `madrid`), `?lang=es|en`, `?theme=dark|light`.
+   - Consume exclusivamente `global_summary.json`, `derived/insights.json` y `predicciones.json` mediante estrategia remote-first (`REMOTE_BASE` con fallback `/apps/weather/`).
+   - Cabeceras en `apps/weather/_headers`: `/embed.html` expone `Access-Control-Allow-Origin: *` y `Content-Security-Policy: frame-ancestors *;`.
+   - Incluye pie de atribución visible con enlace `dofollow` hacia `/es/apps/weather/clima/?city=<slug>` (o `/en/apps/weather/climate/?city=<slug>`) y al Cockpit completo (`/apps/weather/?cities=...`).
+3. **Solución Intermedia SEO en Hugo (2 Landings Dinámicas + Catálogo SSR de 168 Estaciones):**
+   - Evita generar `168 × 2 = 336` archivos Markdown estáticos hasta validar tracción en Search Console (`ADR-027`).
+   - Dos páginas Hugo dedicadas: `/es/apps/weather/clima/` (`content/es/clima-ciudad.md`) y `/en/apps/weather/climate/` (`content/en/weather-city.md`) renderizadas mediante `layouts/weather-city/single.html` sin alterar el leaf bundle `content/{es,en}/apps/weather/index.md` ni `static/_redirects`.
+   - SSR (Zero-JS): lee `data/weather/cities_catalog.json` (~14 KB, `168` estaciones ordenadas por región) y emite directorio navegable completo indexable + schema JSON-LD `WebApplication`/`Dataset`.
+   - Hidratación en cliente (`?city=<slug>&month=<1..12>`): valida `slug` contra el catálogo, consulta `climatology.json`, `insights.json`, `global_summary.json` y `predicciones.json`, actualiza `<title>`/`meta description` y renderiza KPIs en vivo + tabla climatológica de los 12 meses (`tmin`, `tmax`, `tmean`, `amp`, `rain_pct`, `hum`, `wind`, `comfort`).
+4. **Contrato `derived/weekly_extremes.json` (Feed Semanal para Datalaria Scriba):**
+   ```json
+   {
+     "generated_at": "2026-11-13T14:00:00Z",
+     "since": "2025-10-27",
+     "window": { "start_date": "2026-11-07", "end_date": "2026-11-13", "iso_week": "2026-W46", "days": 7 },
+     "hottest": [{ "slug": "abuja", "name": "Abuja", "country": "NG", "region": "africa", "tmax_c": 35.8, "date": "2026-11-12", "deep_link": "..." }],
+     "coldest": [{ "slug": "ulaanbaatar", "name": "Ulaanbaatar", "country": "MN", "region": "asia", "tmin_c": -23.4, "date": "2026-11-11", "deep_link": "..." }],
+     "wettest": [{ "slug": "...", "name": "...", "country": "...", "rain_7d_mm": 84.2, "rainy_days": 5, "deep_link": "..." }],
+     "biggest_positive_anomaly": { "slug": "...", "name": "...", "anomaly_c": 9.5, "tmean_c": 26.1, "date": "2026-11-10" },
+     "biggest_negative_anomaly": { "slug": "...", "name": "...", "anomaly_c": -7.2, "tmean_c": -12.4, "date": "2026-11-11" },
+     "comfort_leaders": [{ "slug": "...", "name": "...", "comfort_avg": 97.5, "tmean_avg": 21.8 }],
+     "scorecard_snapshot": {
+       "status": "calibrating",
+       "live_horizons": {},
+       "weekly_wins": {},
+       "retrospective_ia": {}
+     },
+     "scriba_ready_snippets": {
+       "es": { "headline": "...", "x_post": "...", "linkedin_bullets": ["..."], "newsletter_box": "..." },
+       "en": { "headline": "...", "x_post": "...", "linkedin_bullets": ["..."], "newsletter_box": "..." }
+     }
+   }
+   ```
+   - `x_post` ≤ 240 caracteres ponderados incluyendo URL canónica; `scorecard_snapshot` mantiene estricta separación de capa en vivo vs retrospectiva (`INV-WEATHER-12`).
+
 ---
 
 ## 5. Invariantes de Dominio (`INV-WEATHER-*`)
@@ -406,9 +448,13 @@ El frontend opera bajo el patrón **Remote-First con Fallback en Cascada**:
 11. **`INV-WEATHER-11` (Línea Base Honesta y Ventana Móvil DOY):** El cálculo de anomalía y percentil para "¿Es normal?" se evalúa contra la ventana de $\pm 7$ días del año en el histórico medido de la ciudad excluyendo estrictamente el día objetivo. Solo se anunciará récord térmico si el mes dispone de $\ge 20$ días medidos en el histórico y el texto DEBE explicitar siempre la coletilla temporal "desde oct. 2025".
 12. **`INV-WEATHER-12` (Marcador Auditable en Dos Capas):** El marcador público IA vs OWM no mezclará jamás en un mismo agregado el MAE observado en vivo (`forecast_log/`) con el backtest retrospectivo. La capa en vivo exige $\ge 7$ pares por horizonte para el estado `"ok"` (mostrando `"calibrating"` en caso contrario). La capa retrospectiva se etiquetará inequívocamente como "Retrospectivo (solo IA)".
 13. **`INV-WEATHER-13` (Explicabilidad Determinista sin LLM):** El módulo "¿Por qué predice esto?" descompondrá la predicción en contribuciones lineales deterministas $\text{coef}_k \times (x_k - \bar{x}_k)$ en °C y porcentaje, mapeadas a plantillas i18n comprensibles sin recurrir a llamadas de modelos de lenguaje en tiempo de ejecución.
-14. **`INV-WEATHER-14` (Coherencia Estricta de Versión Pública):** `data/apps/weather.yaml` (`current_version`), la primera release `released`, el título de las fichas en `content/{es,en}/apps/weather/index.md` y las etiquetas públicas del frontend (`<title>`, `og:title`, `twitter:title`, `mainTitle`) DEBEN coincidir exactamente en el valor SemVer de release activa (`v3.2.0`).
+14. **`INV-WEATHER-14` (Coherencia Estricta de Versión Pública):** `data/apps/weather.yaml` (`current_version`), la primera release `released`, el título de las fichas en `content/{es,en}/apps/weather/index.md` y las etiquetas públicas del frontend (`<title>`, `og:title`, `twitter:title`, `mainTitle`) DEBEN coincidir exactamente en el valor SemVer de release activa (`v3.3.0`).
 15. **`INV-WEATHER-15` (Buscador Bioclimático Personalizado sobre Climatología Medida):** El Buscador de Destinos evalúa exclusivamente normales medidas en `climatology.json` con precipitación normalizada (`rain_pct = 100 * rain_days / n_days`, omitiendo meses `null` con $<10$ días), aplicando puntuación determinista `0..100` en cliente sin LLM, con enlace directo a la Tarjeta Respuesta y deep-link compartible.
 16. **`INV-WEATHER-16` (Similitud Climática Estandarizada — Clima Gemelo):** La búsqueda de Clima Gemelo calcula la distancia euclídea ponderada sobre vectores z-score desde `climatology.json.feature_stats` de `{tmean, amp, hum, wind, rain_pct}`, excluyendo la ciudad de referencia y presentando deltas medidos junto al acceso directo a Tarjeta Respuesta.
+17. **`INV-WEATHER-17` (Compartición Visual Determinista en Cliente):** La generación de imágenes compartibles PNG (`1200×630`) se ejecuta 100 % en `<canvas>` en el navegador sobre datos ya cargados en memoria sin microservicios externos ni llamadas a LLMs.
+18. **`INV-WEATHER-18` (Widget Embebible Seguro y Ligero):** `apps/weather/embed.html` pesa `< 25 KB`, no importa librerías pesadas externas, sanitiza estrictamente `?city=` contra formato de slug válido (sin inyección DOM/XSS), expone `Content-Security-Policy: frame-ancestors *` exclusivamente en `/embed.html` e incluye atribución clickable hacia Datalaria.
+19. **`INV-WEATHER-19` (Resumen Semanal Auditable para Scriba):** `derived/weekly_extremes.json` calcula extremos y anomalías sobre los últimos 7 días reales medidos, preserva intacta la separación entre capa en vivo y retrospectiva de `scorecard.json` (`INV-WEATHER-12`) y construye snippets bilingües ES/EN deterministas (`x_post <= 240` caracteres).
+20. **`INV-WEATHER-20` (Solución Intermedia SEO sin Bloat de 336 Archivos):** La exploración SEO de ciudades opera con 2 páginas dinámicas en Hugo (`/es/apps/weather/clima/` y `/en/apps/weather/climate/`) alimentadas por el directorio SSR `data/weather/cities_catalog.json` (168 enlaces por región) e hidratación remota, evitando crear 336 archivos estáticos hasta validar tracción orgánica en Search Console.
 
 ---
 
@@ -417,10 +463,10 @@ El frontend opera bajo el patrón **Remote-First con Fallback en Cascada**:
 | ID | Requisito | Comando de Verificación Determinista | Criterio de Éxito |
 | :--- | :--- | :--- | :--- |
 | **G-01** | Calidad de Especificación SDD | `python -m ops.helix.cli verify --spec specs/apps/weather/spec.md` | `SpecQualityScore` $\ge 90/100$ (Objetivo: `100/100`) y código `0`. |
-| **G-02** | Higiene de `/static/apps/weather/` (`INV-WEATHER-6`) | `python -m pytest ops/helix/tests -v` | Cero archivos `.py`/`.env`/`.git` y cero CSVs obsoletos en `static/apps/weather/datos/`. |
-| **G-03** | Suite Unitaria del Motor Cuantitativo (`INV-WEATHER-1..4`, `11..16`) | `python -m pytest apps/weather/tests -v` | 100% de tests en verde validando Fourier, coherencia $\min \le \text{media} \le \max$, `comfort_index`, `insights.json`, `scorecard.json` y climatología enriquecida (`rain_pct`, `feature_stats`, ranking y gemelo). |
-| **G-04** | Integridad de UI, i18n, Versión y GA4 (`INV-WEATHER-5, 14`) | `python -m pytest apps/weather/tests -v` | Paridad 100% de claves `es`/`en`, coherencia `v3.2.0` en todas las superficies, deep-links (`finder`/`twin`) y eventos `gtag`. |
-| **G-05** | Compilación del Portal Hugo y Fichas ES/EN | `hugo --renderToMemory` | Código de salida `0`, fichas `/es/apps/weather/` y `/en/apps/weather/` compiladas sin errores. |
+| **G-02** | Higiene de `/static/apps/weather/` (`INV-WEATHER-6, 18`) | `python -m pytest ops/helix/tests -v` y `sync_upstream.py --check` | Cero archivos `.py`/`.env`/`.git`, cero CSVs/daily en `static/`, `_headers` con CSP `frame-ancestors *` en `/embed.html`. |
+| **G-03** | Suite Unitaria del Motor Cuantitativo (`INV-WEATHER-1..4`, `11..19`) | `python -m pytest apps/weather/tests -v` | 100% de tests en verde validando Fourier, coherencia $\min \le \text{media} \le \max$, `comfort_index`, `insights.json`, `scorecard.json`, climatología (`rain_pct`, `feature_stats`), `weekly_extremes.json` y `cities_catalog.json`. |
+| **G-04** | Integridad de UI, Embed, Landing SEO, i18n y GA4 (`INV-WEATHER-5, 14, 17..20`) | `python -m pytest apps/weather/tests -v` | Paridad 100% de claves `es`/`en`, coherencia `v3.3.0` en todas las superficies, `embed.html`, Share PNG, landing ES/EN y eventos `gtag`. |
+| **G-05** | Compilación del Portal Hugo y Landings ES/EN | `hugo --renderToMemory` y `hugo --minify` | Código de salida `0`, fichas `/es/apps/weather/`, `/en/apps/weather/`, `/es/apps/weather/clima/` y `/en/apps/weather/climate/` compiladas sin errores ni `/apps/helix/`. |
 | **G-06** | Gobernanza Editorial Datalaria Pulse | `python -m ops.pulse.build_index` y `python -m ops.pulse.publish_public` | Sincronización al 100% del catálogo de apps y posts sin violar `INV-PULSE-1..2`. |
 
 ---
@@ -442,12 +488,19 @@ Para maximizar la velocidad y eficiencia de tokens, los hitos de implementación
 3. UI segmentada `#atlas-subnav` dentro de `#view-atlas` sin tocar `<header>`: `Ranking Hoy`, `Buscador de Destinos` y `Clima Gemelo` con carga singleton `ensureClimatologyLoaded()`, enlace directo a Tarjeta Respuesta y deep-links compartibles.
 4. Armonización pública `v3.2.0` (`weather.yaml`, fichas ES/EN, `index.html`, `sw.js`, `list.html` y tests) + validación dual-repo.
 
+### Hito W3.6 (`M` — "Motor de Crecimiento: Compartir PNG, Widget Embebible, Solución Intermedia SEO y Feed Semanal Scriba" — v3.3.0)
+1. Generación determinista en `build_derived.py` de `derived/weekly_extremes.json` (top extremos 7D + anomalías + `scorecard_snapshot` desacoplado + `scriba_ready_snippets` ES/EN) y catálogo estático `data/weather/cities_catalog.json` (168 estaciones).
+2. Generador de Tarjeta PNG `1200×630` en `<canvas>` dentro de `.super-card` + Modal copiador `</>` y widget autónomo ultraligero `apps/weather/embed.html` con cabecera CSP `frame-ancestors *` en `_headers`.
+3. Solución Intermedia SEO: 2 páginas dinámicas en Hugo (`/es/apps/weather/clima/` y `/en/apps/weather/climate/`) con directorio SSR de 168 enlaces en `layouts/weather-city/single.html` e hidratación remota sin crear 336 páginas estáticas.
+4. Armonización SemVer `v3.3.0` (`weather.yaml`, `index.html`, `sw.js`, `list.html`, fichas ES/EN), suite `pytest`, compilación Hugo, sincronización upstream y verificación HTTP 200 en producción.
+
 ---
 
 ## 8. Historial Evolutivo (Changelog SemVer)
 
 | Versión | Fecha | Tipo | Resumen de Cambios |
 | :-: | :-: | :-: | :--- |
+| **`v3.3.0`** | 2026-11-13 | `release` | Weather Intelligence v3.3: Motor de Crecimiento W3.6 con generación en cliente de Tarjeta PNG compartible (1200×630 + deep-link), widget embebible ultraligero `embed.html` (`frame-ancestors *` y atribución SEO), Solución Intermedia SEO en Hugo (`/es/apps/weather/clima/` y `/en/apps/weather/climate/` con directorio SSR de 168 ciudades sin generar 336 archivos) y feed semanal automático `derived/weekly_extremes.json` listo para Scriba. |
 | **`v3.2.0`** | 2026-11-13 | `release` | Weather Intelligence v3.2: Buscador de Destinos "¿Dónde se está mejor en…?" con puntuación de confort personalizada sobre normales medidas y `rain_pct`, comparador de Clima Gemelo mediante distancia euclídea z-score sobre 5 variables, climatología enriquecida (`feature_stats`), enlace directo a Tarjeta Respuesta y deep-links compartibles. |
 | **`v3.1.0`** | 2026-11-09 | `release` | Weather Intelligence v3.1: Diagnóstico "¿Es normal?" con percentil y récords honestos desde oct. 2025, Warming Stripes por ciudad, Marcador Público IA vs OWM con MAE a D+1..D+5 y victorias semanales, módulo de explicabilidad ("¿Por qué predice esto?") y corrección de agregación diurna de temperaturas mínimas y precipitación. |
 | **`v3.0.0`** | 2026-11-08 | `release` | Weather Intelligence v3.0: Data Truth Pipeline con derivados compactos en upstream (daily, climatology, index, forecast_log), ingesta remote-first, Focus Mode con Tarjeta Respuesta y acordeones de divulgación progresiva, puerta de suficiencia de datos (INV-WEATHER-8), PWA instalable offline con Service Worker (stale-while-revalidate) y hotfix W3.3-FIX de inventario completo de 168 estaciones. |

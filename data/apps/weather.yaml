@@ -7,15 +7,15 @@ cover: cover.png
 app_url: /apps/weather/
 demo_url: "/apps/weather/?preset=extremes&view=arena"
 source_spec: specs/apps/weather/spec.md
-current_version: v3.2.0
+current_version: v3.3.0
 
 title:
-  es: "Weather Intelligence v3.2"
-  en: "Weather Intelligence v3.2"
+  es: "Weather Intelligence v3.3"
+  en: "Weather Intelligence v3.3"
 
 tagline:
-  es: "Centro de control meteorológico global y laboratorio cuantitativo: 168 estaciones, Fourier, Buscador de Destinos y Clima Gemelo."
-  en: "Global climate control center and quantitative laboratory: 168 stations, Fourier ML, Destination Finder, and Twin Climate."
+  es: "Centro de control meteorológico global y laboratorio cuantitativo: 168 estaciones, Fourier, Buscador de Destinos, Clima Gemelo y widgets embebibles."
+  en: "Global climate control center and quantitative laboratory: 168 stations, Fourier ML, Destination Finder, Twin Climate, and embeddable widgets."
 
 summary:
   es: "Servicio meteorológico integral de coste cero que ingesta telemetría 3 veces al día de 168 estaciones en 6 regiones mediante OpenWeatherMap v2.5. Implementa regresión con estacionalidad armónica de Fourier (sin y cos de 365.25 días), walk-forward backtesting IA vs. OWM con R² y MAE, índice de confort outdoor (0-100), Cockpit en 3 vistas (Observatorio, Laboratorio ML, Atlas 168) y mapa Leaflet multicapa con exportación CSV/JSON."
@@ -56,8 +56,8 @@ features:
     es: "Matriz Estacional Mensual: perfil térmico mes a mes de los 12 meses del año calculado a partir de las series temporales de cada ciudad."
     en: "Monthly Seasonality Matrix: month-by-month thermal profile across all 12 calendar months computed from each city's time-series records."
   - icon: "🌐"
-    es: "Deep-Linking URL y Exportación CSV/JSON: navegación persistente por URL (?lang=, ?view=, ?preset=, ?cities=) y descarga directa de datos en navegador."
-    en: "URL Deep-Linking & CSV/JSON Export: persistent URL query routing (?lang=, ?view=, ?preset=, ?cities=) and client-side data export."
+    es: "Deep-Linking URL, Tarjetas PNG 1200×630, Widgets Embebibles & Explorador SEO 168 Ciudades: exportación de imágenes sociales, <iframe> con atribución y resumen semanal para Scriba."
+    en: "URL Deep-Linking, 1200×630 PNG Cards, Embeddable Widgets & 168-City SEO Explorer: client-side social cards, attribution <iframe> widgets, and weekly Scriba extremes JSON."
 
 design:
   architecture:
@@ -115,6 +115,23 @@ posts:
     part: 4
 
 releases:
+  - version: v3.3.0
+    date: "2026-11-13"
+    state: released
+    type: release
+    title:
+      es: "Weather Intelligence v3.3: Motor de Crecimiento (Tarjetas PNG, Widgets Embebibles, Explorador SEO 168 Ciudades y Resumen Semanal Scriba)"
+      en: "Weather Intelligence v3.3: Growth Engine (PNG Share Cards, Embeddable Widgets, 168-City SEO Explorer & Weekly Scriba Extremes)"
+    changes:
+      - es: "Tarjeta Respuesta Compartible 1200×630 PNG generada 100 % en cliente (Canvas API) desde cada Super-Card sin dependencias ni servidores externos (INV-WEATHER-20)."
+        en: "Shareable 1200×630 PNG Answer Card rendered 100% client-side (Canvas API) directly from each Super-Card without external servers or libraries (INV-WEATHER-20)."
+      - es: "Widget HTML embebible autónomo (embed.html < 25 KB) con CSP frame-ancestors *, temas dark/light, i18n ES/EN, sparkline 14d y modal generador en un clic (INV-WEATHER-18)."
+        en: "Autonomous embeddable HTML widget (embed.html < 25 KB) with CSP frame-ancestors *, dark/light themes, ES/EN i18n, 14d sparkline, and 1-click generator modal (INV-WEATHER-18)."
+      - es: "Solución Intermedia SEO en Hugo (/es/apps/weather/clima/ y /en/apps/weather/climate/): directorio SSR de 168 estaciones por región e hidratación remota Netlify sin explosión de commits (INV-WEATHER-17)."
+        en: "Intermediate Hugo SEO landing pages (/es/apps/weather/clima/ and /en/apps/weather/climate/): SSR 168-station directory by region with remote Netlify hydration without commit bloat (INV-WEATHER-17)."
+      - es: "Contrato automatizado derived/weekly_extremes.json (INV-WEATHER-19) con extremos 7D reales y copys ES/EN coste 0 € listos para Datalaria Scriba."
+        en: "Automated derived/weekly_extremes.json contract (INV-WEATHER-19) with measured 7D extremes and zero-cost ES/EN copy snippets ready for Datalaria Scriba."
+
   - version: v3.2.0
     date: "2026-11-13"
     state: released

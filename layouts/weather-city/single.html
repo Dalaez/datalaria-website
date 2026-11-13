@@ -1,0 +1,634 @@
+{{- define "main" }}
+{{- $lang := .Site.Language.Lang | default "es" -}}
+{{- $catalog := site.Data.weather.cities_catalog -}}
+{{- $basePath := cond (eq $lang "en") "/en/apps/weather/climate/" "/es/apps/weather/clima/" -}}
+{{- $altPath := cond (eq $lang "en") "/es/apps/weather/clima/" "/en/apps/weather/climate/" -}}
+{{- $appHref := "/apps/weather/" -}}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": {{ cond (eq $lang "en") "Datalaria Weather Intelligence — 168-City Climate Explorer" "Datalaria Weather Intelligence — Explorador Climático de 168 Ciudades" | jsonify }},
+  "url": {{ printf "https://datalaria.com%s" $basePath | jsonify }},
+  "applicationCategory": "WeatherApplication",
+  "operatingSystem": "Web",
+  "inLanguage": {{ $lang | jsonify }},
+  "isBasedOn": {
+    "@type": "Dataset",
+    "name": "Datalaria Global Climate Telemetry (168 Stations)",
+    "description": "Measured daily climate normals, thermal anomalies since October 2025, and OpenWeatherMap + Fourier AI forecasts.",
+    "license": "https://datalaria.com/es/privacy/"
+  }
+}
+</script>
+
+<style>
+  .wc-shell {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 16px 0 48px;
+  }
+  .wc-hero {
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  .wc-breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 0.84rem;
+    color: var(--secondary);
+    margin-bottom: 10px;
+  }
+  .wc-breadcrumb a {
+    color: #0ea5e9;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .wc-breadcrumb a:hover { text-decoration: underline; }
+  .wc-title {
+    font-size: clamp(1.45rem, 2.5vw, 2.05rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 0 0 10px;
+    color: var(--primary);
+  }
+  .wc-subtitle {
+    color: var(--secondary);
+    font-size: 0.96rem;
+    line-height: 1.55;
+    margin: 0 0 16px;
+  }
+  .wc-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+  .wc-search {
+    flex: 1 1 260px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--theme);
+    color: var(--primary);
+    font-size: 0.94rem;
+  }
+  .wc-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--code-bg);
+    color: var(--primary);
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .wc-btn-primary {
+    background: #0ea5e9;
+    border-color: #0ea5e9;
+    color: #ffffff !important;
+  }
+  .wc-btn:hover { opacity: 0.92; }
+
+  .wc-detail-card {
+    display: none;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 28px;
+  }
+  .wc-detail-card.visible { display: block; }
+  .wc-detail-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .wc-detail-city {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin: 0 0 4px;
+    color: var(--primary);
+  }
+  .wc-detail-meta {
+    font-size: 0.85rem;
+    color: var(--secondary);
+  }
+  .wc-temp-now {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #0ea5e9;
+    line-height: 1;
+  }
+  .wc-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .wc-pill {
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 5px 11px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--code-bg);
+    color: var(--primary);
+  }
+  .wc-pill.warm { color: #f97316; border-color: rgba(249, 115, 22, 0.4); }
+  .wc-pill.cool { color: #38bdf8; border-color: rgba(56, 189, 248, 0.4); }
+  .wc-pill.ok { color: #10b981; border-color: rgba(16, 185, 129, 0.4); }
+
+  .wc-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .wc-subbox {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px;
+  }
+  .wc-subbox h3 {
+    margin: 0 0 10px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--primary);
+  }
+  .wc-forecast-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px dashed var(--border);
+    font-size: 0.86rem;
+  }
+  .wc-forecast-row:last-child { border-bottom: 0; }
+
+  .wc-table-wrap {
+    overflow-x: auto;
+    margin-top: 14px;
+  }
+  .wc-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.84rem;
+    text-align: right;
+  }
+  .wc-table th, .wc-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  .wc-table th:first-child, .wc-table td:first-child {
+    text-align: left;
+    font-weight: 600;
+  }
+  .wc-table thead th {
+    color: var(--secondary);
+    font-weight: 700;
+    background: var(--code-bg);
+  }
+
+  .wc-embed-panel {
+    margin-top: 16px;
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px;
+  }
+  .wc-embed-panel[hidden] { display: none; }
+  .wc-embed-panel textarea {
+    width: 100%;
+    min-height: 76px;
+    margin-top: 8px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--theme);
+    color: var(--primary);
+    font-family: monospace;
+    font-size: 0.78rem;
+  }
+
+  .wc-directory {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .wc-region-card {
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 20px;
+  }
+  .wc-region-title {
+    margin: 0 0 12px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .wc-city-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+    gap: 8px;
+  }
+  .wc-city-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 11px;
+    border-radius: 9px;
+    border: 1px solid var(--border);
+    background: var(--code-bg);
+    color: var(--primary);
+    font-size: 0.84rem;
+    text-decoration: none;
+    transition: border-color 0.15s ease;
+  }
+  .wc-city-link:hover, .wc-city-link.active {
+    border-color: #0ea5e9;
+    color: #0ea5e9;
+  }
+  .wc-city-cc {
+    font-size: 0.72rem;
+    color: var(--secondary);
+    font-family: monospace;
+  }
+</style>
+
+<section class="wc-shell">
+  <header class="wc-hero">
+    <nav class="wc-breadcrumb" aria-label="Breadcrumb">
+      <a href="{{ cond (eq $lang "en") "/en/apps/weather/" "/es/apps/weather/" }}">Weather Intelligence v3.3</a>
+      <span>/</span>
+      <span>{{ cond (eq $lang "en") "168-City Climate Explorer" "Explorador 168 Ciudades" }}</span>
+      <span>·</span>
+      <a id="wc-lang-switch" href="{{ $altPath }}">{{ cond (eq $lang "en") "ES" "EN" }}</a>
+    </nav>
+    <h1 class="wc-title" id="wc-hero-title">
+      {{ cond (eq $lang "en") "Global Climate Explorer: 168 Measured Cities" "Explorador Climático Global: 168 Ciudades Medidas" }}
+    </h1>
+    <p class="wc-subtitle" id="wc-hero-subtitle">
+      {{ cond (eq $lang "en") "Select any station below to inspect live conditions, thermal anomalies since Oct 2025, 12-month measured climate normals, Fourier AI forecasts, and embeddable widgets." "Selecciona cualquier estación para consultar telemetría en vivo, anomalía térmica desde oct. 2025, normales mensuales medidas, pronóstico Fourier IA y código embebible." }}
+    </p>
+    <div class="wc-toolbar">
+      <input type="search" id="wc-search" class="wc-search"
+        placeholder="{{ cond (eq $lang "en") "Filter by city or country (e.g. Madrid, Tokyo, Lisbon)..." "Filtrar por ciudad o país (ej. Madrid, Tokio, Lisboa)..." }}"
+        aria-label="{{ cond (eq $lang "en") "Filter cities" "Filtrar ciudades" }}" />
+      <a href="{{ $appHref }}?lang={{ $lang }}" class="wc-btn wc-btn-primary">
+        {{ cond (eq $lang "en") "Open Live Cockpit ↗" "Abrir Cockpit en Vivo ↗" }}
+      </a>
+      <a href="{{ $appHref }}?view=atlas&atlasMode=finder&lang={{ $lang }}" class="wc-btn">
+        {{ cond (eq $lang "en") "Destination Finder" "Buscador de Destinos" }}
+      </a>
+    </div>
+  </header>
+
+  <article id="wc-detail-card" class="wc-detail-card" aria-live="polite">
+    <div class="wc-detail-top">
+      <div>
+        <h2 class="wc-detail-city" id="wc-d-city">—</h2>
+        <div class="wc-detail-meta" id="wc-d-meta">—</div>
+      </div>
+      <div style="text-align:right;">
+        <div class="wc-temp-now" id="wc-d-temp">--°C</div>
+        <div class="wc-detail-meta" id="wc-d-cond">--</div>
+      </div>
+    </div>
+
+    <div class="wc-pills" id="wc-d-pills"></div>
+
+    <div class="wc-grid-2">
+      <div class="wc-subbox">
+        <h3>{{ cond (eq $lang "en") "5-Day Forecast (OpenWeather vs Fourier AI)" "Pronóstico 5 Días (OWM vs Fourier IA)" }}</h3>
+        <div id="wc-d-forecast"></div>
+      </div>
+      <div class="wc-subbox">
+        <h3>{{ cond (eq $lang "en") "Quick Actions & Attribution" "Acciones Rápidas y Compartir" }}</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <a id="wc-cta-cockpit" href="{{ $appHref }}" class="wc-btn wc-btn-primary" target="_blank" rel="noopener">
+            {{ cond (eq $lang "en") "Open Answer Card ↗" "Ver Tarjeta Respuesta ↗" }}
+          </a>
+          <a id="wc-cta-twin" href="{{ $appHref }}?view=atlas&atlasMode=twin" class="wc-btn" target="_blank" rel="noopener">
+            {{ cond (eq $lang "en") "Find Twin Climate" "Buscar Clima Gemelo" }}
+          </a>
+          <button type="button" id="wc-cta-embed-toggle" class="wc-btn">
+            &lt;/&gt; {{ cond (eq $lang "en") "Embed Widget" "Embeber Widget" }}
+          </button>
+        </div>
+        <div id="wc-embed-panel" class="wc-embed-panel" hidden>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;">
+            <strong style="font-size:0.84rem;">{{ cond (eq $lang "en") "Copy & paste into your site:" "Copia y pega en tu web:" }}</strong>
+            <button type="button" id="wc-embed-copy-btn" class="wc-btn">{{ cond (eq $lang "en") "Copy HTML" "Copiar HTML" }}</button>
+          </div>
+          <textarea id="wc-embed-textarea" readonly></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="wc-subbox">
+      <h3>{{ cond (eq $lang "en") "Measured Monthly Climatology (12 Months)" "Climatología Mensual Medida (12 Meses)" }}</h3>
+      <div class="wc-table-wrap">
+        <table class="wc-table">
+          <thead>
+            <tr>
+              <th>{{ cond (eq $lang "en") "Month" "Mes" }}</th>
+              <th>{{ cond (eq $lang "en") "Mean °C" "Media °C" }}</th>
+              <th>{{ cond (eq $lang "en") "Min / Max" "Mín / Máx" }}</th>
+              <th>{{ cond (eq $lang "en") "Range" "Amplitud" }}</th>
+              <th>{{ cond (eq $lang "en") "Rain Days %" "% Días Lluvia" }}</th>
+              <th>{{ cond (eq $lang "en") "Wind km/h" "Viento km/h" }}</th>
+              <th>{{ cond (eq $lang "en") "Humidity %" "Humedad %" }}</th>
+            </tr>
+          </thead>
+          <tbody id="wc-d-months"></tbody>
+        </table>
+      </div>
+    </div>
+  </article>
+
+  <section class="wc-directory" id="wc-directory" aria-label="{{ cond (eq $lang "en") "All 168 Stations" "Todas las 168 Estaciones" }}">
+    {{- $regions := slice
+      (dict "key" "spain" "es" "🇪🇸 España (56)" "en" "🇪🇸 Spain (56)")
+      (dict "key" "europe" "es" "🇪🇺 Europa (47)" "en" "🇪🇺 Europe (47)")
+      (dict "key" "asia" "es" "🌏 Asia (25)" "en" "🌏 Asia (25)")
+      (dict "key" "americas" "es" "🌎 América (23)" "en" "🌎 Americas (23)")
+      (dict "key" "africa" "es" "🌍 África (13)" "en" "🌍 Africa (13)")
+      (dict "key" "oceania" "es" "🇦🇺 Oceanía (4)" "en" "🇦🇺 Oceania (4)")
+    -}}
+    {{- range $reg := $regions -}}
+      {{- $rKey := $reg.key -}}
+      {{- $rLabel := index $reg $lang -}}
+      {{- $regCities := where $catalog "region" $rKey -}}
+      {{- if gt (len $regCities) 0 -}}
+      <div class="wc-region-card" data-region="{{ $rKey }}">
+        <h2 class="wc-region-title">
+          <span>{{ $rLabel }}</span>
+          <span style="font-size:0.78rem;color:var(--secondary);">{{ len $regCities }}</span>
+        </h2>
+        <div class="wc-city-grid">
+          {{- range $c := $regCities -}}
+          <a class="wc-city-link" data-slug="{{ $c.slug }}" data-search="{{ lower $c.name }} {{ lower $c.country }}" href="{{ $basePath }}?city={{ $c.slug }}">
+            <span>{{ $c.name }}</span>
+            <span class="wc-city-cc">{{ $c.country }}</span>
+          </a>
+          {{- end -}}
+        </div>
+      </div>
+      {{- end -}}
+    {{- end -}}
+  </section>
+</section>
+
+<script>
+  (function () {
+    const LANG = {{ $lang | jsonify }};
+    const REMOTE_BASE = 'https://datalaria-app-weather.netlify.app';
+    const SLUG_RE = /^[a-z0-9-]+$/;
+
+    const MONTHS = LANG === 'en'
+      ? ['January','February','March','April','May','June','July','August','September','October','November','December']
+      : ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+
+    const I18N = {
+      es: {
+        since: 'desde oct. 2025',
+        vsNormal: 'vs normal',
+        comfort: 'Confort Outdoor',
+        humidity: 'Humedad',
+        wind: 'Viento',
+        copied: 'Copiado ✓',
+        noMonthly: 'Aún sin suficientes muestras mensuales para esta estación.',
+        titleTpl: (name) => `Clima de ${name} por meses · Datos medidos | Datalaria`,
+        descTpl: (name) => `Temperaturas mensuales medidas, anomalía térmica desde oct. 2025, confort outdoor y predicción IA para ${name}.`
+      },
+      en: {
+        since: 'since Oct 2025',
+        vsNormal: 'vs normal',
+        comfort: 'Outdoor Comfort',
+        humidity: 'Humidity',
+        wind: 'Wind',
+        copied: 'Copied ✓',
+        noMonthly: 'Insufficient monthly observations recorded yet for this station.',
+        titleTpl: (name) => `${name} Climate by Month · Measured Data | Datalaria`,
+        descTpl: (name) => `Measured monthly climate normals, anomaly since Oct 2025, outdoor comfort, and AI forecast for ${name}.`
+      }
+    };
+    const t = I18N[LANG] || I18N.es;
+
+    function slugify(str) {
+      return String(str || '')
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase().trim()
+        .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    }
+
+    async function fetchRemoteFirst(relPath) {
+      const urls = [REMOTE_BASE + '/' + relPath, '/apps/weather/' + relPath];
+      for (const u of urls) {
+        try {
+          const r = await fetch(u, { cache: 'default' });
+          if (r.ok) return await r.json();
+        } catch (_) {}
+      }
+      return null;
+    }
+
+    // Live filter on the 168-station SSR directory
+    const searchEl = document.getElementById('wc-search');
+    if (searchEl) {
+      searchEl.addEventListener('input', () => {
+        const q = searchEl.value.trim().toLowerCase();
+        document.querySelectorAll('.wc-region-card').forEach((card) => {
+          let visibleCount = 0;
+          card.querySelectorAll('.wc-city-link').forEach((link) => {
+            const hay = link.getAttribute('data-search') || '';
+            const match = !q || hay.includes(q);
+            link.style.display = match ? '' : 'none';
+            if (match) visibleCount++;
+          });
+          card.style.display = visibleCount > 0 ? '' : 'none';
+        });
+      });
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const rawCity = (params.get('city') || '').trim().toLowerCase();
+    if (!rawCity || !SLUG_RE.test(rawCity)) return;
+
+    const matchingLink = document.querySelector(`.wc-city-link[data-slug="${rawCity}"]`);
+    if (!matchingLink) return;
+    matchingLink.classList.add('active');
+
+    const altLink = document.getElementById('wc-lang-switch');
+    if (altLink) {
+      altLink.href = altLink.getAttribute('href') + '?city=' + encodeURIComponent(rawCity);
+    }
+
+    function addPill(container, text, cls) {
+      const el = document.createElement('span');
+      el.className = 'wc-pill' + (cls ? ' ' + cls : '');
+      el.textContent = text;
+      container.appendChild(el);
+    }
+
+    async function hydrateCity(slug) {
+      const [indexData, summaryData, insightsData, climData, predData] = await Promise.all([
+        fetchRemoteFirst('derived/index.json'),
+        fetchRemoteFirst('global_summary.json'),
+        fetchRemoteFirst('derived/insights.json'),
+        fetchRemoteFirst('derived/climatology.json'),
+        fetchRemoteFirst('predicciones.json')
+      ]);
+
+      const citiesMeta = Array.isArray(indexData?.cities) ? indexData.cities : [];
+      const meta = citiesMeta.find((c) => c.slug === slug);
+      if (!meta) return;
+
+      const cityName = meta.name || slug;
+      const summaryCities = Array.isArray(summaryData?.cities) ? summaryData.cities : [];
+      const sumRow = summaryCities.find((r) => slugify(r.ciudad || r.city) === slug) || null;
+      const insRow = insightsData?.cities ? insightsData.cities[slug] : null;
+      const climCity = climData?.cities ? climData.cities[slug] : null;
+      const predKey = Object.keys(predData || {}).find((k) => slugify(k) === slug);
+      const predRow = predKey ? predData[predKey] : null;
+
+      document.title = t.titleTpl(cityName);
+      const descMeta = document.querySelector('meta[name="description"]');
+      if (descMeta) descMeta.setAttribute('content', t.descTpl(cityName));
+
+      const cc = sumRow?.country || '';
+      document.getElementById('wc-d-city').textContent = cityName + (cc ? ` (${cc})` : '');
+      const lastDt = sumRow?.latest?.fecha_hora ? String(sumRow.latest.fecha_hora).slice(0, 16).replace('T', ' ') : (meta.last_date || '');
+      document.getElementById('wc-d-meta').textContent = `${(meta.region || '').toUpperCase()} · ${meta.days || 0}d · ${lastDt} (${t.since})`;
+
+      const tempVal = typeof sumRow?.latest?.temp === 'number' ? sumRow.latest.temp.toFixed(1) : '--';
+      document.getElementById('wc-d-temp').textContent = `${tempVal}°C`;
+      document.getElementById('wc-d-cond').textContent = sumRow?.latest?.description || 'OpenWeather + Fourier IA';
+
+      const pillsEl = document.getElementById('wc-d-pills');
+      while (pillsEl.firstChild) pillsEl.removeChild(pillsEl.firstChild);
+      if (typeof insRow?.anomaly_c === 'number') {
+        const sign = insRow.anomaly_c >= 0 ? '+' : '';
+        const cls = insRow.anomaly_c >= 1 ? 'warm' : (insRow.anomaly_c <= -1 ? 'cool' : '');
+        const pct = typeof insRow.percentil === 'number' ? ` · p${insRow.percentil}` : '';
+        addPill(pillsEl, `${sign}${insRow.anomaly_c.toFixed(1)} °C ${t.vsNormal}${pct}`, cls);
+      }
+      if (typeof sumRow?.stats?.comfort_index === 'number') {
+        addPill(pillsEl, `${t.comfort}: ${Math.round(sumRow.stats.comfort_index)}/100`, 'ok');
+      }
+      if (typeof sumRow?.latest?.humidity === 'number') {
+        addPill(pillsEl, `${t.humidity}: ${Math.round(sumRow.latest.humidity)}%`, '');
+      }
+      if (typeof sumRow?.latest?.wind_kmh === 'number') {
+        addPill(pillsEl, `${t.wind}: ${sumRow.latest.wind_kmh.toFixed(1)} km/h`, '');
+      }
+
+      const fBox = document.getElementById('wc-d-forecast');
+      while (fBox.firstChild) fBox.removeChild(fBox.firstChild);
+      const owmList = Array.isArray(predRow?.pred_owm_5day) ? predRow.pred_owm_5day : [];
+      const iaList = Array.isArray(predRow?.pred_ia?.pred_ia_5day) ? predRow.pred_ia.pred_ia_5day : [];
+      owmList.slice(0, 5).forEach((owm, idx) => {
+        const ia = iaList[idx];
+        const row = document.createElement('div');
+        row.className = 'wc-forecast-row';
+        const left = document.createElement('span');
+        left.textContent = owm.date || ('D+' + (idx + 1));
+        const right = document.createElement('span');
+        const owmStr = `OWM ${Number(owm.max).toFixed(0)}°/${Number(owm.min).toFixed(0)}°`;
+        const iaStr = ia && typeof ia.media === 'number' ? ` · IA ${ia.media.toFixed(1)}°C` : '';
+        right.textContent = owmStr + iaStr;
+        row.appendChild(left);
+        row.appendChild(right);
+        fBox.appendChild(row);
+      });
+
+      const tbody = document.getElementById('wc-d-months');
+      while (tbody.firstChild) tbody.removeChild(tbody.firstChild);
+      const monthsObj = climCity?.months || {};
+      let addedMonths = 0;
+      for (let m = 1; m <= 12; m++) {
+        const mData = monthsObj[String(m)];
+        if (!mData) continue;
+        addedMonths++;
+        const tr = document.createElement('tr');
+        const rainPct = mData.rain_pct != null
+          ? Number(mData.rain_pct)
+          : (100 * Number(mData.rain_days || 0) / Math.max(1, Number(mData.n_days || 30)));
+        const cells = [
+          MONTHS[m - 1],
+          `${Number(mData.tmean).toFixed(1)} °C`,
+          `${Number(mData.tmin).toFixed(1)} / ${Number(mData.tmax).toFixed(1)}°`,
+          `${Number(mData.amp ?? (mData.tmax - mData.tmin)).toFixed(1)} °C`,
+          `${rainPct.toFixed(0)} %`,
+          `${Number(mData.wind ?? 0).toFixed(1)} km/h`,
+          `${Number(mData.hum ?? 0).toFixed(0)} %`
+        ];
+        cells.forEach((val) => {
+          const td = document.createElement('td');
+          td.textContent = val;
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      }
+      if (addedMonths === 0) {
+        const tr = document.createElement('tr');
+        const td = document.createElement('td');
+        td.colSpan = 7;
+        td.textContent = t.noMonthly;
+        tr.appendChild(td);
+        tbody.appendChild(tr);
+      }
+
+      document.getElementById('wc-cta-cockpit').href =
+        `/apps/weather/?cities=${encodeURIComponent(cityName)}&view=observatory&lang=${LANG}`;
+      document.getElementById('wc-cta-twin').href =
+        `/apps/weather/?view=atlas&atlasMode=twin&twinCity=${encodeURIComponent(slug)}&lang=${LANG}`;
+
+      const embedSrc = `https://datalaria.com/apps/weather/embed.html?city=${encodeURIComponent(slug)}&theme=dark&lang=${LANG}`;
+      const citySeoUrl = `https://datalaria.com{{ $basePath }}?city=${encodeURIComponent(slug)}`;
+      const embedSnippet = `<iframe src="${embedSrc}" width="100%" height="260" style="border:0;border-radius:14px;overflow:hidden;" loading="lazy" title="${cityName} Weather Widget"></iframe>\n<p style="font-size:12px;margin:4px 0 0;"><a href="${citySeoUrl}" target="_blank" rel="noopener">${cityName} — Datalaria Weather Intelligence</a></p>`;
+      document.getElementById('wc-embed-textarea').value = embedSnippet;
+
+      const detailCard = document.getElementById('wc-detail-card');
+      detailCard.classList.add('visible');
+
+      document.getElementById('wc-cta-embed-toggle')?.addEventListener('click', () => {
+        const panel = document.getElementById('wc-embed-panel');
+        if (panel) panel.hidden = !panel.hidden;
+      });
+      document.getElementById('wc-embed-copy-btn')?.addEventListener('click', (e) => {
+        const txt = document.getElementById('wc-embed-textarea').value;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(txt).catch(() => {});
+        }
+        e.currentTarget.textContent = t.copied;
+      });
+
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'weather_city_landing_view', { city: slug, lang: LANG });
+      }
+    }
+
+    hydrateCity(rawCity);
+  })();
+</script>
+{{- end }}

@@ -1,14 +1,23 @@
 ---
-title: "Weather Intelligence v3.2"
-description: "Centro de control meteorológico global y laboratorio cuantitativo: 168 estaciones, Fourier, Buscador de Destinos, Clima Gemelo e índice de confort outdoor."
+title: "Weather Intelligence v3.3"
+description: "Centro de control meteorológico global y laboratorio cuantitativo: 168 estaciones, Fourier, Buscador de Destinos, Clima Gemelo, widgets embebibles y tarjetas PNG."
 app: "weather"
 translationKey: "app-weather"
 layout: "single"
 ---
 
-## 🌟 Novedades de Weather Intelligence v3.2
+## 🌟 Novedades de Weather Intelligence v3.3
 
-Weather Intelligence v3.2 amplía el **Atlas Global (168 estaciones)** con planificación climática cuantitativa en tiempo real (`0 ms` desde cliente):
+Weather Intelligence v3.3 incorpora el **Motor de Crecimiento y Distribución Orgánica** sobre las **168 estaciones globales**:
+
+- **Tarjetas Sociales PNG (1200×630) en 1 Clic (`INV-WEATHER-20`):** Cada *Super-Card* incluye el botón `📸` para renderizar al instante en cliente una postal térmica con la temperatura, diagnóstico *"¿Es normal?"*, confort outdoor, tendencia 14d y *deep-link* compartible.
+- **Widget Embebible Autónomo (`embed.html`, `INV-WEATHER-18`):** Cualquier blog o medio puede incrustar el tiempo en vivo y la predicción IA de cualquiera de las 168 ciudades mediante `<iframe>` ligero (< 25 KB, tema *dark/light* y ES/EN) generado desde el botón `</>` de cada tarjeta.
+- **Explorador SEO de las 168 Ciudades ([/es/apps/weather/clima/](/es/apps/weather/clima/)):** Solución intermedia SSR + hidratación en tiempo real que expone el catálogo de las 168 estaciones por región y ficha climática interactiva (ej. [Clima en Lisboa](/es/apps/weather/clima/?city=lisbon)) sin sobrecargar el repositorio con cientos de commits diarios (`INV-WEATHER-17`).
+- **Resumen Semanal para Datalaria Scriba (`weekly_extremes.json`, `INV-WEATHER-19`):** Cálculo automático de los extremos planetarios de los últimos 7 días reales medidos con copys bilingües listos para X, LinkedIn y Newsletter.
+
+### Novedades incorporadas en v3.2
+
+Weather Intelligence v3.2 amplió el **Atlas Global (168 estaciones)** con planificación climática cuantitativa en tiempo real (`0 ms` desde cliente):
 
 - **Buscador de Destinos ("¿Dónde se está mejor en…?"):** Elige mes del año, temperatura ideal, tolerancia a la lluvia (usando `rain_pct` normalizado frente a meses de distinta longitud muestral, `INV-WEATHER-15`) y preferencia de viento para ordenar las 168 ciudades del planeta según tu perfil bioclimático.
 - **Comparador de Clima Gemelo:** Calcula mediante distancia euclídea estandarizada por *z-score* ($k=5$ dimensiones: temperatura media, amplitud diurna, humedad, viento y porcentaje de días con lluvia, `INV-WEATHER-16`) qué ciudad disfruta en diciembre —o en cualquier mes— del clima medido en Madrid en mayo.

@@ -18,6 +18,8 @@ from apps.weather.build_derived import (
     slugify,
     aggregate_daily,
     build_climatology,
+    build_weekly_summary,
+    build_cities_catalog,
     compute_custom_comfort_score,
     compute_twin_climates,
     append_forecast_log,
@@ -455,9 +457,9 @@ def test_frontend_zero_404_and_instant_kpi_architecture():
     # 2. Renderizado instantáneo de KPIs en updateDashboard
     assert "updateKPIs({}, checkedMetric, selectedValues)" in html_content
 
-    # 3. Service Worker versión 3.2.0
+    # 3. Service Worker versión 3.3.0
     sw_content = (BASE_DIR / "sw.js").read_text(encoding="utf-8")
-    assert "weather-v3.2.0" in sw_content
+    assert "weather-v3.3.0" in sw_content
 
 
 
@@ -637,28 +639,28 @@ def test_w34_frontend_dom_and_i18n():
 
 
 def test_inv_weather_14_version_coherence():
-    """Verifica INV-WEATHER-14: Version v3.2.0 exacta en YAML, fichas Markdown y frontend."""
+    """Verifica INV-WEATHER-14: Version v3.3.0 exacta en YAML, fichas Markdown y frontend."""
     import yaml
     yaml_file = Path(__file__).resolve().parent.parent.parent.parent / "data" / "apps" / "weather.yaml"
     assert yaml_file.exists()
     ydata = yaml.safe_load(yaml_file.read_text(encoding="utf-8"))
-    assert ydata["current_version"] == "v3.2.0"
-    assert "v3.2" in ydata["title"]["es"]
-    assert "v3.2" in ydata["title"]["en"]
+    assert ydata["current_version"] == "v3.3.0"
+    assert "v3.3" in ydata["title"]["es"]
+    assert "v3.3" in ydata["title"]["en"]
 
-    # Primer release debe ser v3.2.0 y released
-    assert ydata["releases"][0]["version"] == "v3.2.0"
+    # Primer release debe ser v3.3.0 y released
+    assert ydata["releases"][0]["version"] == "v3.3.0"
     assert ydata["releases"][0]["state"] == "released"
 
     # Fichas Markdown
     es_md = Path(__file__).resolve().parent.parent.parent.parent / "content" / "es" / "apps" / "weather" / "index.md"
     en_md = Path(__file__).resolve().parent.parent.parent.parent / "content" / "en" / "apps" / "weather" / "index.md"
-    assert 'title: "Weather Intelligence v3.2"' in es_md.read_text(encoding="utf-8")
-    assert 'title: "Weather Intelligence v3.2"' in en_md.read_text(encoding="utf-8")
+    assert 'title: "Weather Intelligence v3.3"' in es_md.read_text(encoding="utf-8")
+    assert 'title: "Weather Intelligence v3.3"' in en_md.read_text(encoding="utf-8")
 
     # Frontend
     html = (BASE_DIR / "index.html").read_text(encoding="utf-8")
-    assert "Weather Intelligence v3.2" in html
+    assert "Weather Intelligence v3.3" in html
 
 
 # ---------------------------------------------------------------------------
@@ -760,7 +762,7 @@ def test_w35_climatology_168_cities_contract():
     for key in ("amp", "hum", "wind", "clouds", "rain_pct"):
         assert key in madrid_may
 
-    for fname in ("index.json", "climatology.json", "insights.json", "scorecard.json"):
+    for fname in ("index.json", "climatology.json", "insights.json", "scorecard.json", "weekly_extremes.json"):
         assert (repo_root / "static" / "apps" / "weather" / "derived" / fname).exists()
 
 
@@ -788,4 +790,149 @@ def test_w35_frontend_dom_i18n_and_deeplinks():
     assert header_match
     header_html = header_match.group(1)
     assert 'data-atlas-mode' not in header_html
+
+
+# ---------------------------------------------------------------------------
+# 7. Tests de W3.6: Motor de Crecimiento (PNG, Embed, SEO Hugo y Scriba)
+# ---------------------------------------------------------------------------
+
+def test_weekly_extremes_summary_and_scriba_snippets():
+    """Valida INV-WEATHER-19 & INV-WEATHER-12: extremos 7D reales, desacople scorecard y copys ES/EN <= 240 chars."""
+    daily_by_slug = {
+        "abuja": [
+            ["2026-11-10", 24.0, 35.0, 29.5, 11.0, 30.0, 45.0, 8.0, 0.0, 10.0, 3],
+            ["2026-11-11", 25.0, 36.6, 30.8, 11.6, 31.2, 42.0, 7.0, 0.0, 5.0, 3],
+        ],
+        "ulaanbaatar": [
+            ["2026-11-08", -23.0, -9.0, -16.0, 14.0, -21.0, 65.0, 14.0, 0.0, 20.0, 3],
+        ],
+        "tokyo": [
+            ["2026-11-11", 12.0, 18.0, 15.0, 6.0, 14.5, 82.0, 18.0, 22.5, 90.0, 3],
+            ["2026-11-12", 13.0, 19.0, 16.0, 6.0, 15.5, 78.0, 12.0, 10.8, 70.0, 3],
+        ],
+        "madrid": [
+            ["2026-11-12", 14.0, 22.0, 18.0, 8.0, 17.8, 50.0, 6.0, 0.0, 10.0, 3],
+        ],
+    }
+    anoms = {
+        "abuja": [2.0, 3.1],
+        "ulaanbaatar": [-11.0],
+        "tokyo": [1.0, 0.5],
+        "madrid": [6.5],
+    }
+    scorecard = {
+        "status": "calibrating",
+        "min_samples_required": 7,
+        "total_audited_pairs": 12,
+        "live_horizons": {"d1": {"horizon_days": 1, "mae_ia": 1.6, "mae_owm": 1.2, "n_audited": 12, "status": "ok"}},
+        "weekly_wins": {"ia": 5, "owm": 6, "draws": 1, "total_audited": 12},
+        "retrospective_ia": {"label": "Retrospectivo 60d (solo IA)", "mae_d1_d5": [1.3, 1.6, 1.8, 1.9, 2.0]},
+    }
+    meta = {
+        "abuja": {"name": "Abuja", "country": "NG", "region": "africa"},
+        "ulaanbaatar": {"name": "Ulaanbaatar", "country": "MN", "region": "asia"},
+        "tokyo": {"name": "Tokyo", "country": "JP", "region": "asia"},
+        "madrid": {"name": "Madrid", "country": "ES", "region": "spain"},
+    }
+    summary = build_weekly_summary(daily_by_slug, anoms, scorecard=scorecard, slug_to_meta=meta, days=7)
+    assert summary["window"]["end_date"] == "2026-11-12"
+    assert summary["hottest"][0]["slug"] == "abuja" and summary["hottest"][0]["tmax_c"] == 36.6
+    assert summary["coldest"][0]["slug"] == "ulaanbaatar" and summary["coldest"][0]["tmin_c"] == -23.0
+    assert summary["wettest"][0]["slug"] == "tokyo" and summary["wettest"][0]["rain_7d_mm"] == 33.3
+    assert summary["biggest_positive_anomaly"]["slug"] == "madrid" and summary["biggest_positive_anomaly"]["anomaly_c"] == 6.5
+    assert summary["biggest_negative_anomaly"]["slug"] == "ulaanbaatar"
+    assert "live_horizons" in summary["scorecard_snapshot"]
+    assert "retrospective_ia" in summary["scorecard_snapshot"]
+    for lang_key in ("es", "en"):
+        snip = summary["scriba_ready_snippets"][lang_key]
+        assert len(snip["x_post"]) <= 240
+        assert len(snip["linkedin_bullets"]) >= 3
+        assert snip["newsletter_box"]
+
+
+def test_weekly_extremes_168_cities_and_cities_catalog_contract():
+    """Valida contrato real de weekly_extremes.json y data/weather/cities_catalog.json (168 estaciones, INV-WEATHER-6)."""
+    repo_root = BASE_DIR.parent.parent
+    app_weekly = BASE_DIR / "derived" / "weekly_extremes.json"
+    static_weekly = repo_root / "static" / "apps" / "weather" / "derived" / "weekly_extremes.json"
+    assert app_weekly.exists() and static_weekly.exists()
+    assert app_weekly.read_bytes() == static_weekly.read_bytes()
+
+    weekly = json.loads(app_weekly.read_text(encoding="utf-8"))
+    for k in ("window", "hottest", "coldest", "wettest", "comfort_leaders", "scorecard_snapshot", "scriba_ready_snippets"):
+        assert k in weekly
+    assert len(weekly["scriba_ready_snippets"]["es"]["x_post"]) <= 240
+    assert len(weekly["scriba_ready_snippets"]["en"]["x_post"]) <= 240
+
+    catalog_file = repo_root / "data" / "weather" / "cities_catalog.json"
+    assert catalog_file.exists()
+    catalog = json.loads(catalog_file.read_text(encoding="utf-8"))
+    assert len(catalog) == 168
+    regions = set()
+    for row in catalog:
+        for field in ("slug", "name", "country", "region", "lat", "lon"):
+            assert field in row
+        regions.add(row["region"])
+    assert regions == {"spain", "europe", "asia", "americas", "africa", "oceania"}
+
+    # INV-WEATHER-6: firewall estático sin daily/ ni CSVs
+    assert not (repo_root / "static" / "apps" / "weather" / "derived" / "daily").exists()
+
+
+def test_embed_widget_and_headers_security():
+    """Valida INV-WEATHER-18: embed.html autónomo (< 25 KB), seguro sin XSS, atribución y headers CSP."""
+    repo_root = BASE_DIR.parent.parent
+    app_embed = BASE_DIR / "embed.html"
+    static_embed = repo_root / "static" / "apps" / "weather" / "embed.html"
+    assert app_embed.exists() and static_embed.exists()
+    assert app_embed.read_bytes() == static_embed.read_bytes()
+    assert app_embed.stat().st_size < 25 * 1024
+
+    embed_html = app_embed.read_text(encoding="utf-8")
+    assert "^[a-z0-9-]+$" in embed_html
+    assert "textContent" in embed_html
+    assert "https://datalaria.com/" in embed_html
+    assert "https://cdn." not in embed_html
+
+    headers_txt = (BASE_DIR / "_headers").read_text(encoding="utf-8")
+    assert "/embed.html" in headers_txt
+    assert "Content-Security-Policy: frame-ancestors *;" in headers_txt
+    assert "Access-Control-Allow-Origin: *" in headers_txt
+
+
+def test_share_card_png_and_hugo_seo_landing_dom():
+    """Valida INV-WEATHER-20 (PNG 1200x630), Focus Mode intacto y Solución Intermedia SEO Hugo (168 enlaces)."""
+    repo_root = BASE_DIR.parent.parent
+    index_html = (BASE_DIR / "index.html").read_text(encoding="utf-8")
+    for token in (
+        "shareCityCardPNG",
+        "openEmbedModal",
+        "w36-embed-modal",
+        "canvas.width = 1200",
+        "canvas.height = 630",
+        "weather_share_card_png",
+        "weather_embed_copy",
+        "menu-city-explorer-link",
+    ):
+        assert token in index_html, f"Falta token W3.6 en index.html: {token}"
+
+    # Focus Mode (W3.2): <header> mantiene exactamente 3 vistas top-level sin botones extra
+    header_match = re.search(r'<header class="main-header">([\s\S]*?)</header>', index_html)
+    assert header_match
+    header_html = header_match.group(1)
+    assert len(re.findall(r'class="view-btn', header_html)) == 3
+    assert "shareCityCardPNG" not in header_html and "openEmbedModal" not in header_html
+
+    es_seo = repo_root / "content" / "es" / "clima-ciudad.md"
+    en_seo = repo_root / "content" / "en" / "weather-city.md"
+    tpl_seo = repo_root / "layouts" / "weather-city" / "single.html"
+    assert es_seo.exists() and en_seo.exists() and tpl_seo.exists()
+    assert 'url: "/es/apps/weather/clima/"' in es_seo.read_text(encoding="utf-8")
+    assert 'url: "/en/apps/weather/climate/"' in en_seo.read_text(encoding="utf-8")
+
+    tpl_txt = tpl_seo.read_text(encoding="utf-8")
+    assert "site.Data.weather.cities_catalog" in tpl_txt
+    assert "^[a-z0-9-]+$" in tpl_txt
+    assert "weather_city_landing_view" in tpl_txt
+    assert "/apps/helix/" not in tpl_txt
 

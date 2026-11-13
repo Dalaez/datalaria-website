@@ -1,14 +1,23 @@
 ---
-title: "Weather Intelligence v3.2"
-description: "Global climate control center and quantitative laboratory: 168 stations, Fourier harmonics, Destination Finder, Twin Climate matcher, and outdoor comfort index."
+title: "Weather Intelligence v3.3"
+description: "Global climate control center and quantitative laboratory: 168 stations, Fourier harmonics, Destination Finder, Twin Climate, embeddable widgets, and PNG cards."
 app: "weather"
 translationKey: "app-weather"
 layout: "single"
 ---
 
-## 🌟 What's New in Weather Intelligence v3.2
+## 🌟 What's New in Weather Intelligence v3.3
 
-Weather Intelligence v3.2 expands the **Global Atlas (168 stations)** with quantitative climate planning in `0 ms` directly in the browser:
+Weather Intelligence v3.3 launches our **Growth & Organic Distribution Engine** across all **168 global stations**:
+
+- **1-Click 1200×630 PNG Social Cards (`INV-WEATHER-20`):** Every *Super-Card* features a `📸` button rendering a shareable postcard directly in Canvas (temp, *"Is it Normal?"* percentile, outdoor comfort, 14d sparkline, and shareable deep-link).
+- **Lightweight Embeddable Widget (`embed.html`, `INV-WEATHER-18`):** Blogs and newsrooms can embed live observations and AI forecasts for any of the 168 cities via a `< 25 KB` `<iframe>` (dark/light, ES/EN) generated straight from the Card `</>` modal.
+- **168-City SEO Climate Explorer ([/en/apps/weather/climate/](/en/apps/weather/climate/)):** Clean SSR directory grouped by the 6 canonical regions paired with remote Netlify hydration (e.g., [Climate in Madrid](/en/apps/weather/climate/?city=madrid)) without polluting daily commits (`INV-WEATHER-17`).
+- **Automated Weekly Extremes for Scriba (`weekly_extremes.json`, `INV-WEATHER-19`):** Computes 7-day planetary extremes and zero-cost bilingual X/LinkedIn/Newsletter snippets on every pipeline run.
+
+### Previously introduced in v3.2
+
+Weather Intelligence v3.2 expanded the **Global Atlas (168 stations)** with quantitative climate planning in `0 ms` directly in the browser:
 
 - **Destination Finder ("Where is the weather best in…?"):** Pick a target month, ideal temperature, rain tolerance (using sample-normalized `rain_pct` across varying month lengths, `INV-WEATHER-15`), and wind preference to rank all 168 global cities by your custom bioclimatic fit.
 - **Twin Climate Comparator:** Uses weighted *z-score* Euclidean distance across 5 monthly climate dimensions (mean temp, diurnal thermal range, humidity, wind, and percentage of rainy days, `INV-WEATHER-16`) to uncover which destination in December—or any month—matches Madrid in May.

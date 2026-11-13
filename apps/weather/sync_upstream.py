@@ -23,6 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent
 
 REQUIRED_ROOT_FILES = [
     "index.html",
+    "embed.html",
     "manifest.json",
     "sw.js",
     "icon.svg",
@@ -79,8 +80,8 @@ def verify_upstream_sync(app_dir: Path | None = None) -> tuple[bool, list[str]]:
         except Exception as e:
             issues.append(f"predicciones.json corrupto: {e}")
 
-    # Verificar derived/*.json agregados (W3.4 / W3.5)
-    for fname in ["index.json", "climatology.json", "insights.json", "scorecard.json"]:
+    # Verificar derived/*.json agregados (W3.4 / W3.5 / W3.6)
+    for fname in ["index.json", "climatology.json", "insights.json", "scorecard.json", "weekly_extremes.json"]:
         d_file = app_dir / "derived" / fname
         if not d_file.exists():
             issues.append(f"derived/{fname} no existe.")
@@ -94,6 +95,26 @@ def verify_upstream_sync(app_dir: Path | None = None) -> tuple[bool, list[str]]:
         except Exception as e:
             issues.append(f"derived/climatology.json corrupto: {e}")
 
+    weekly_file = app_dir / "derived" / "weekly_extremes.json"
+    if weekly_file.exists():
+        try:
+            with open(weekly_file, "r", encoding="utf-8") as wf:
+                weekly_data = json.load(wf)
+            for req_key in ("window", "hottest", "coldest", "wettest", "scriba_ready_snippets"):
+                if req_key not in weekly_data:
+                    issues.append(f"derived/weekly_extremes.json no contiene '{req_key}' (W3.6).")
+        except Exception as e:
+            issues.append(f"derived/weekly_extremes.json corrupto: {e}")
+
+    headers_file = app_dir / "_headers"
+    if headers_file.exists():
+        try:
+            headers_txt = headers_file.read_text(encoding="utf-8")
+            if "/embed.html" not in headers_txt or "frame-ancestors" not in headers_txt:
+                issues.append("_headers no incluye regla /embed.html con frame-ancestors (W3.6).")
+        except Exception as e:
+            issues.append(f"Error leyendo _headers: {e}")
+
     # Verificar datos/ con CSVs
     datos_dir = app_dir / "datos"
     if not datos_dir.exists() or len(list(datos_dir.glob("*.csv"))) < 10:
@@ -102,7 +123,7 @@ def verify_upstream_sync(app_dir: Path | None = None) -> tuple[bool, list[str]]:
     return len(issues) == 0, issues
 
 
-def export_to_upstream(app_dir: Path, target_dir: Path) -> int:
+def export_to_upstream(app_dir: Path, target_dir: Path, sync_hugo_catalog: bool = False) -> int:
     """Exporta el árbol limpio hacia el clon local de Dalaez/app_weather."""
     ok, issues = verify_upstream_sync(app_dir)
     if not ok:
@@ -155,19 +176,26 @@ def export_to_upstream(app_dir: Path, target_dir: Path) -> int:
                 "--out", str(target_dir / "derived"),
                 "--month-log"
             ]
+            if (target_dir / "ciudades.txt").exists():
+                cmd.extend(["--ciudades", str(target_dir / "ciudades.txt")])
+            if (target_dir / "predicciones.json").exists():
+                cmd.extend(["--predicciones", str(target_dir / "predicciones.json")])
+            if sync_hugo_catalog:
+                catalog_dst = BASE_DIR.parents[1] / "data" / "weather" / "cities_catalog.json"
+                cmd.extend(["--hugo-catalog", str(catalog_dst)])
             subprocess.run(cmd, check=True)
             print("Derivados generados en target_dir/derived con éxito.")
 
     # Sincronizar también hacia static/apps/weather para paridad total con Hugo
     static_weather_dir = BASE_DIR.parents[1] / "static" / "apps" / "weather"
     if static_weather_dir.exists():
-        for rel in ["index.html", "manifest.json", "sw.js"]:
+        for rel in ["index.html", "embed.html", "manifest.json", "sw.js", "_headers"]:
             if (app_dir / rel).exists():
                 shutil.copy2(app_dir / rel, static_weather_dir / rel)
         # INV-WEATHER-6: En static/apps/weather solo copiar los agregados JSON (nunca daily/ ni CSVs)
         static_derived = static_weather_dir / "derived"
         static_derived.mkdir(parents=True, exist_ok=True)
-        for d_file in ["index.json", "climatology.json", "insights.json", "scorecard.json"]:
+        for d_file in ["index.json", "climatology.json", "insights.json", "scorecard.json", "weekly_extremes.json"]:
             src_f = target_dir / "derived" / d_file
             if src_f.exists():
                 shutil.copy2(src_f, static_derived / d_file)
@@ -188,6 +216,9 @@ def pull_from_remote(app_dir: Path, cities: list[str] | None = None, with_daily:
     files_to_pull = [
         ("derived/index.json", derived_dir / "index.json"),
         ("derived/climatology.json", derived_dir / "climatology.json"),
+        ("derived/insights.json", derived_dir / "insights.json"),
+        ("derived/scorecard.json", derived_dir / "scorecard.json"),
+        ("derived/weekly_extremes.json", derived_dir / "weekly_extremes.json"),
         ("global_summary.json", app_dir / "global_summary.json"),
         ("predicciones.json", app_dir / "predicciones.json"),
         ("city_locations.json", app_dir / "city_locations.json")
@@ -250,6 +281,7 @@ def main() -> int:
     parser.add_argument("--pull", action="store_true", help="Descarga resúmenes compactos desde producción (Netlify).")
     parser.add_argument("--cities", type=str, default=None, help="Lista separada por comas de ciudades/slugs para --pull.")
     parser.add_argument("--with-daily", action="store_true", help="Descarga series daily para las ciudades especificadas.")
+    parser.add_argument("--sync-hugo-catalog", action="store_true", help="Actualiza data/weather/cities_catalog.json al exportar.")
 
     args = parser.parse_args()
 
@@ -258,7 +290,7 @@ def main() -> int:
         return pull_from_remote(BASE_DIR, cities=cities_list, with_daily=args.with_daily)
 
     if args.export_dir:
-        return export_to_upstream(BASE_DIR, Path(args.export_dir))
+        return export_to_upstream(BASE_DIR, Path(args.export_dir), sync_hugo_catalog=args.sync_hugo_catalog)
 
     # Por defecto --check
     ok, issues = verify_upstream_sync()

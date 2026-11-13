@@ -1,7 +1,7 @@
 # Especificación de Diseño UX/UI: Weather Service (`weather`)
 
 > **ID de Diseño:** `DESIGN-APP-WEATHER`  
-> **Spec Técnica Vinculada:** [`specs/apps/weather/spec.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/apps/weather/spec.md) (`v3.2.0`)  
+> **Spec Técnica Vinculada:** [`specs/apps/weather/spec.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/apps/weather/spec.md) (`v3.3.0`)  
 > **Agente Propietario:** 🎨 [`04-ux-ui` (Diseñador UX/UI)](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/04-ux-ui.md)  
 > **Preset Estético Seleccionado:** `Executive Data-Dense` (Observatorio Climático & Laboratorio ML C-Level)
 
@@ -179,3 +179,16 @@ Cada ciudad activa en el Observatorio (máximo 5) cuenta con una tarjeta ejecuti
      - `🧬 Clima Gemelo` (`#atlas-pane-twin`)
    - **Buscador de Destinos (`#atlas-pane-finder`):** Fila de controles compacta en flex/grid (Mes `1..12`, Temperatura ideal `°C` con slider `tabular-nums`, Lluvia, Viento, Región y botón `🔗 Compartir búsqueda`), renderizando tarjetas/filas ordenadas con puntuación `0..100` y **2 acciones directas**: `Ver Tarjeta Respuesta →` (`focusCityInObservatory`) y `🔗 Deep-link`.
    - **Clima Gemelo (`#atlas-pane-twin`):** Selector de estación referencia + mes referencia + mes candidato (`Cualquier mes` o `1..12`, precargado por defecto con **Madrid · Mayo vs Diciembre**), tarjeta resumen de referencia y lista de gemelos ordenados por `% Similitud` con chips de deltas ($\Delta T$, $\Delta\text{Lluvia}$, $\Delta\text{Viento}$, $\Delta\text{Humedad}$) y doble botón hacia Tarjeta Respuesta y deep-link compartible.
+
+---
+
+## 8. Extensión v3.3: Motor de Crecimiento W3.6 (Share PNG, Embed Ultraligero y Landing SEO Intermedia)
+
+1. **Acciones Discretas en `.super-card` (Sin tocar `<header>`):**
+   - Junto al botón de favoritos (`☆`), `.card-actions-inline` agrupa botones ghost compactos (`min-width: 28px`, `height: 28px`, borde `--border-subtle`) para `📸` (descarga/comparte PNG `1200×630`) y `</>` (abre modal copiador del `<iframe>` embebible) más enlace directo a la ficha SEO climática de esa ciudad.
+2. **Tarjeta PNG Compartible (`Canvas 1200×630`):**
+   - Fondo degradado `#0b0f17 → #111827` con acento `--accent-primary` (`#0ea5e9`), bloque superior con identidad `Datalaria · Weather Intelligence` y fecha de medición (`"desde oct. 2025"`), KPI principal (`56px`), badge de Confort `0..100`, badge semántico de anomalía *"¿Es normal?"* + percentil, sparkline vectorial de últimos registros diarios en trazado azul cyan, y footer con deep-link legible.
+3. **Widget Embebible (`apps/weather/embed.html`):**
+   - Tarjeta única compacta (`max-width: 100%`, altura adaptable `~220px`) sin barras laterales ni dependencias CDN externas, con variables CSS dedicadas para `theme=dark` (`#0b0f17`/`#111827`) y `theme=light` (`#f8fafc`/`#ffffff`), 3 métricas clave (Temp actual, Confort, chip "¿Es normal?"), miniprevisión de 3 días y pie con atribución clicable a Datalaria.
+4. **Landing SEO Intermedia (`layouts/weather-city/single.html`):**
+   - Compatible con los estilos claros y oscuros de PaperMod (`body.dark` y modo claro por defecto), con tarjeta hero dinámica para la ciudad seleccionada, tabla climatológica responsive de 12 meses (`tabular-nums`, badges de confort) y rejilla/acordeón SSR colapsable por región con las 168 estaciones enlazadas (`?city=<slug>`).

@@ -519,3 +519,23 @@
   - *Alternativa C: Añadir una 4.ª vista top-level en cabecera.* Descartada por romper la arquitectura Focus Mode W3.2 y los tests `test_inv_weather_5_frontend_contracts_and_tokens`.
 - **Consecuencias:**
   - Respuesta instantánea en `0 ms` para las 168 estaciones con una sola descarga cacheable en Service Worker (`weather-v3.2.0`) y cero peticiones HTTP adicionales.
+
+---
+
+## ADR-027: Motor de Crecimiento W3.6 y Solución Intermedia SEO (`v3.3.0`)
+- **Fecha:** 2026-11-13
+- **Estado:** Aceptado (En ejecución en Hito W3.6)
+- **Contexto:**
+  1. Tras lanzar el Buscador de Destinos y Clima Gemelo (`v3.2.0`), el *Weather V3 Improvement Plan* contempla cuatro palancas de crecimiento orgánico y viralidad en **W3.6**: tarjeta compartible en PNG (`1200×630`), widget `<iframe>` embebible para sitios externos, exploración SEO de cola larga por ciudad y resumen semanal automático para **Datalaria Scriba**.
+  2. Generar de entrada `168 ciudades × 2 idiomas = 336` archivos Markdown/HTML estáticos incrementaría el peso de mantenimiento y los commits en el monorepo antes de comprobar en Google Search Console qué ciudades captan demanda orgánica real. Asimismo, los leaf bundles `content/{es,en}/apps/weather/index.md` y el proxy `static/_redirects` (`/apps/weather/*`) restringen cómo se enrutan sub-URLs en Hugo.
+- **Decisión:**
+  1. **Solución Intermedia SEO en 2 Páginas Hugo + Directorio SSR (`INV-WEATHER-20`):** Se publican **únicamente 2 páginas** (`/es/apps/weather/clima/` vía `content/es/clima-ciudad.md` y `/en/apps/weather/climate/` vía `content/en/weather-city.md` con `type: weather-city`) servidas por `layouts/weather-city/single.html`. En tiempo de build leen el catálogo compacto `data/weather/cities_catalog.json` (~14 KB, `0` commits diarios) para renderizar enlaces SSR de las 168 estaciones por región y JSON-LD, mientras hidratan la tabla climatológica de 12 meses y KPIs vía `?city=<slug>` desde Netlify CDN. Si Search Console valida tracción futura, la misma plantilla escalará a rutas dedicadas sin refactor.
+  2. **Widget Embebible Autónomo (`apps/weather/embed.html` + CSP `frame-ancestors *`):** Se crea un widget independiente `< 25 KB` sin librerías CDN externas (`Leaflet`/`Chart.js`), con sanitización estricta de `?city=` por whitelist de slug y cabeceras `Access-Control-Allow-Origin: *` y `Content-Security-Policy: frame-ancestors *;` exclusivamente en `/embed.html` (`apps/weather/_headers`).
+  3. **Share Card PNG 100 % Cliente (`<canvas> 1200×630`):** Generación instantánea sin servidor ni backend de renderizado, respetando el Focus Mode de cabecera al ubicar `📸` y `</>` dentro de `.super-card`.
+  4. **Feed Semanal Determinista `derived/weekly_extremes.json` (`INV-WEATHER-19`):** `build_derived.py` calcula los extremos de la última ventana real de 7 días, respeta el aislamiento de capas de `scorecard.json` (`INV-WEATHER-12`) y emite `scriba_ready_snippets` bilingües sin LLM.
+- **Alternativas Descartadas:**
+  - *Alternativa A: Crear 336 archivos Markdown/Hugo desde el día 1 (`168 × 2`).* Descartada por sobrecarga innecesaria en repo/sitemap antes de validar demanda en GSC.
+  - *Alternativa B: Embeber `index.html?embed=1` dentro de `<iframe>`.* Descartada por arrastrar ~280 KB y librerías CDN pesadas en blogs de terceros.
+  - *Alternativa C: Servidor Node/Playwright para generar PNGs en servidor.* Descartada por introducir costes/infraestructura fuera de arquitectura 0 € serverless (`Non-Goal #1`).
+- **Consecuencias:**
+  - Cero costes adicionales, cero mantenimiento diario en `datalaria`, backlinks limpios desde widgets externos y camino despejado para que Datalaria Scriba distribuya resúmenes semanales automatizados.
