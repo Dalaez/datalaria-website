@@ -84,7 +84,6 @@ jobs:
         if: steps.file_check.outputs.file_path != ''
         env:
           DRY_RUN: "true"
-          ENABLE_TWITTER_API: "false"
           # Mock Secrets or Real Secrets (Dry Run won't use them, but script might need env vars to init class)
           TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
           TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
