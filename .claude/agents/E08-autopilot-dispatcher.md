@@ -38,3 +38,4 @@ Ejecutar la **publicación y distribución omnicanal desatendida y segura** tras
 - `[USER-FIX]` **Rotación de Tokens de LinkedIn en CI:** Persistir automáticamente los nuevos tokens renovados en GitHub Secrets cuando la API de LinkedIn devuelva un refresh token.
 - `[USER-FIX]` **Respeto a Listas Separadas en Brevo:** Enviar correos en español exclusivamente a la lista #3 y en inglés a la lista #4 para evitar confusiones de idioma.
 - `[ENV-FIX]` **Modo DRY_RUN Obligatorio:** Ejecutar siempre una simulación previa con `DRY_RUN=true` antes de enviar campañas reales a producción.
+- `[USER-FIX]` **Despacho Controlado Fase B Post-OK:** Solo tras el OK del usuario y verificar `HTTP 200` en Netlify, disparar `gh workflow run autopilot.yml` explícito por idioma (`ES` y `EN`) y actualizar `IMPACT_REPORT.md`.

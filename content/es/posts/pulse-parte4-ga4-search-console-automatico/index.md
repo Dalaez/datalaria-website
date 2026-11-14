@@ -1,5 +1,5 @@
 ---
-title: "Google Analytics 4 y Search Console Automatizados: Cómo Medir el ROI Orgánico de Cada Post, App y Kit"
+title: "Google Analytics 4 y Search Console Automatizados: Cómo Medir el ROI Orgánico del Blog"
 date: 2026-12-09
 draft: false
 cover:

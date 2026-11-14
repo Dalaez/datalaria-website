@@ -31,3 +31,4 @@ Redactar artículos maestros de **alta autoridad técnica, rigor conceptual y va
 - `[USER-FIX]` **Sintaxis Segura en Mermaid 10.9.8:** Prohibido emplear el carácter `&` o llaves `{}` dentro de nodos de texto en Hugo; entrecomillar siempre las cadenas con corchetes o paréntesis.
 - `[USER-FIX]` **Profundidad Técnica Real:** Respaldar cualquier afirmación teórica con código Python/TypeScript ejecutable o formulación matemática clara.
 - `[ENV-FIX]` **Page Bundles Limpios:** Alojar el post en su propio subdirectorio con `index.md` y `cover.png` para mantener la portabilidad de los assets.
+- `[USER-FIX]` **Continuidad de Serie y Métricas GA4:** Antes de redactar un capítulo de serie existente, leer sus entregas previas y `IMPACT_REPORT.md` para replicar tono, ganchos y formatos de mayor retención (`series-lifecycle-playbook.md`).

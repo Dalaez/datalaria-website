@@ -102,8 +102,9 @@ jobs:
           CODERLEGION_API_KEY: ${{ secrets.CODERLEGION_API_KEY }}
           CODERLEGION_CATEGORY_ID: ${{ vars.CODERLEGION_CATEGORY_ID }}
           CODERLEGION_LANGS: ${{ vars.CODERLEGION_LANGS || 'en' }}
-          # Feature Flags (X/Twitter API desactivada por política coste 0 EUR)
-          ENABLE_TWITTER: "false"
+          # Feature Flags (X/Twitter API desactivada por política coste 0 EUR; Web Intent activo)
+          ENABLE_TWITTER: "true"
+          ENABLE_TWITTER_API: "false"
           ENABLE_LINKEDIN: ${{ vars.ENABLE_LINKEDIN }}
           ENABLE_DEVTO: ${{ vars.ENABLE_DEVTO }}
           ENABLE_CODERLEGION: ${{ vars.ENABLE_CODERLEGION }}
@@ -176,8 +177,8 @@ jobs:
           CODERLEGION_CATEGORY_ID: ${{ vars.CODERLEGION_CATEGORY_ID }}
           CODERLEGION_LANGS: ${{ vars.CODERLEGION_LANGS || 'en' }}
           
-          # Feature Flags (X/Twitter API desactivada por política coste 0 EUR)
-          ENABLE_TWITTER: "false"
+          # Feature Flags (X/Twitter API desactivada por política coste 0 EUR; Web Intent activo)
+          ENABLE_TWITTER: "true"
           ENABLE_TWITTER_API: "false"
           ENABLE_LINKEDIN: ${{ vars.ENABLE_LINKEDIN }}
           ENABLE_DEVTO: ${{ vars.ENABLE_DEVTO }}

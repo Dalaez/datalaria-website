@@ -1,0 +1,75 @@
+es:
+  x:
+    hook: "En 1960 Norbert Wiener formuló el mayor peligro de la AGI antes de que existiera el término IA: pedirle a una máquina un objetivo literal mal alineado."
+    thread:
+      - "1/5 Arrastraba el dedo por las paredes del MIT para no perderse leyendo poesía griega, pero Norbert Wiener fundó la Cibernética y formalizó el bucle de feedback negativo que hoy sostiene a los agentes autónomos."
+      - "2/5 Durante la WWII diseñó el predictor antiaéreo con cálculo estocástico: descubrió que humanos y máquinas comparten una ley universal basada en error, retroalimentación y ajuste continuo."
+      - "3/5 Décadas antes del RLHF, Wiener advirtió sobre el Aprendiz de Brujo: si delegas un fin a una máquina imposible de interrumpir, ejecutará lo que pediste literalmente, no lo que deseabas."
+      - "4/5 Hoy, cuando orquestamos agentes multi-herramienta sobre protocolos abiertos en milisegundos, cada umbral de error y señal humana sigue bebiendo de su timón cibernético (kybernetes)."
+      - "5/5 Repasa la biografía, paradojas y profecías técnicas del padre de la Cibernética en Datalaria: https://datalaria.com/es/posts/norbert_wiener/"
+    hashtags:
+      - "NorbertWiener"
+      - "Cibernetica"
+      - "AIAlignment"
+      - "AGI"
+  linkedin:
+    text: |-
+      En 1948 un matemático tan distraído como genial del MIT descubrió la ley matemática que une a los sistemas biológicos y a las máquinas modernas: el bucle de retroalimentación cerrada.
+
+      Norbert Wiener no solo acuñó la Cibernética; en 1960 lanzó una advertencia sobre la AGI que hoy resuena en cada despliegue de agentes autónomos.
+
+      Tres ideas clave de su legado que siguen vigentes en 2026:
+
+      🔹 Retroalimentación negativa: sin señal de error real, todo sistema complejo oscila hacia el colapso.
+
+      🔹 Teoría del control estocástico: predecir trayectorias bajo ruido nació de su predictor de 1940.
+
+      🔹 Alineamiento literal: las máquinas cumplen la sintaxis de tu especificación, no la intención implícita de tus valores.
+
+      Cuando automatizas operaciones o decisiones críticas con IA, diseñar bien la especificación y el bucle de control vale más que multiplicar la potencia de cómputo.
+
+      Descubre su historia completa y las lecciones prácticas para tus sistemas: https://datalaria.com/es/posts/norbert_wiener/
+
+      ¿Qué bucle de control consideras imprescindible hoy antes de delegar decisiones críticas en agentes autónomos?
+    hashtags:
+      - "Cibernetica"
+      - "InteligenciaArtificial"
+      - "AlineamientoIA"
+      - "IngenieriaDeSistemas"
+      - "HistoriaTech"
+  newsletter:
+    archetype: "counterintuitive_question"
+    subject: "¿Y si tu agente ejecuta exactamente lo que pediste y aun así falla?"
+    preheader: "La profecía de Norbert Wiener en 1960 sobre el alineamiento literal y los bucles de feedback en la era de la IA."
+    hook_paragraphs:
+      - "En los pasillos del MIT era famoso por olvidar dónde vivía el día que se mudó, pero su mente vio sesenta años por delante del software moderno. Norbert Wiener descubrió que sin un bucle de feedback cerrado y bien calibrado, la automatización amplifica el error."
+      - "En esta edición rescatamos cómo pasó de niño prodigio en Harvard a formular en 1960 la advertencia fundacional del alineamiento en IA, mucho antes de que existieran los modelos de razonamiento actuales."
+    insights_60s:
+      - "Feedback negativo como motor: tanto un termostato como el RLHF moderno dependen de medir continuamente la distancia entre estado real y objetivo."
+      - "El dilema del Aprendiz de Brujo: una máquina ultraeficiente optimizará la métrica literal que redactaste, castigando cualquier matiz humano omitido en el spec."
+      - "Control operativo hoy: llevar bucles cerrados de cibernética a la gestión diaria reduce incertidumbre antes de escalar automatización."
+    secondary_cta_label: "Probar OBS Management en vivo"
+    secondary_cta_url: "https://datalaria.com/apps/obs-management/?mock=true"
+    ps_referral_text: "Si trabajas con equipos diseñando sistemas de control o agentes de IA, comparte este perfil histórico con alguien que disfrute uniendo teoría clásica e ingeniería actual."
+  devto:
+    enabled: true
+    title: "Norbert Wiener: Cibernética, Feedback Loops y el Problema del Control en IA"
+    description: "Perfil técnico e histórico de Norbert Wiener: del predictor estocástico en el MIT a su profética advertencia de 1960 sobre alineamiento y agentes."
+    tags:
+      - "ai"
+      - "history"
+      - "architecture"
+      - "cybernetics"
+    canonical_url: "https://datalaria.com/es/posts/norbert_wiener/"
+    published: true
+  coderlegion:
+    enabled: false
+    title: "Norbert Wiener: Cibernética y Control en IA"
+    description: "Perfil histórico sobre bucles de feedback y alineamiento."
+    tags:
+      - "ai"
+      - "cybernetics"
+      - "ai-alignment"
+      - "history"
+    canonical_url: "https://datalaria.com/es/posts/norbert_wiener/"
+    published: false

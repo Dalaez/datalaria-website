@@ -1,0 +1,75 @@
+en:
+  x:
+    hook: "In 1960, Norbert Wiener issued humanity's earliest warning on AI alignment: a fast machine will ruthlessly execute what you literally specified, not what you truly meant."
+    thread:
+      - "1/5 He dragged a finger along MIT brick walls so he wouldn't wander off while reading Greek poetry—yet Norbert Wiener founded Cybernetics and formalized the closed feedback loop behind modern agents."
+      - "2/5 During WWII, building an anti-aircraft predictor led him to a universal mathematical insight: biological minds and engineered machines survive through error measurement and continuous feedback."
+      - "3/5 Decades before RLHF or multi-agent systems, Wiener cited Goethe's Sorcerer's Apprentice: hand your goals to an uninterruptible system and any gap in your objective function becomes dangerous."
+      - "4/5 Today, as reasoning models negotiate actions across open protocols in microseconds, every guardrail and operational feedback check still traces back to his kybernetes—the steersman."
+      - "5/5 Dive into the life, MIT folklore, and prophetic AI control warnings of the Father of Cybernetics: https://datalaria.com/en/posts/norbert_wiener/"
+    hashtags:
+      - "NorbertWiener"
+      - "Cybernetics"
+      - "AIAlignment"
+      - "AGI"
+  linkedin:
+    text: |-
+      In 1948, a famously absent-minded MIT mathematician uncovered the universal mathematical principle linking nervous systems and intelligent machines: the closed feedback loop.
+
+      Norbert Wiener didn't just invent Cybernetics—by 1960 he had articulated the exact alignment dilemma keeping frontier AI engineers awake today.
+
+      Three timeless engineering lessons from Wiener's work:
+
+      🔹 Negative feedback stabilizes systems: without measurable error signals, complex pipelines oscillate out of control.
+
+      🔹 Stochastic prediction under noise: born in his 1940 predictor, foundational to modern filtering and control.
+
+      🔹 Literal specification vs human intent: autonomous systems optimize what you write, not what you quietly assume.
+
+      Before delegating high-stakes operational decisions to AI, closing the gap between specification and human intent matters more than raw compute.
+
+      Explore Wiener's story and how cybernetic feedback translates into modern operational systems: https://datalaria.com/en/posts/norbert_wiener/
+
+      Which human-in-the-loop feedback check do you refuse to automate away in production systems?
+    hashtags:
+      - "Cybernetics"
+      - "AIAlignment"
+      - "ArtificialIntelligence"
+      - "SystemsEngineering"
+      - "TechHistory"
+  newsletter:
+    archetype: "counterintuitive_question"
+    subject: "What happens when an AI agent executes your literal spec too well?"
+    preheader: "Norbert Wiener's 1960 warning on machine alignment, closed feedback loops, and why specs beat blind automation."
+    hook_paragraphs:
+      - "On the MIT campus he famously forgot his own new house address on moving day, yet his equations mapped the next sixty years of computing. Norbert Wiener proved that intelligent control depends on measuring error signals continuously."
+      - "In this story we trace his path from Harvard child prodigy to the 1960 warning on literal machine alignment—years before modern RLHF or autonomous multi-agent workflows existed."
+    insights_60s:
+      - "Feedback loops prevent runaway drift: whether in a thermostat or RLHF training, stability depends on closing the loop between output and desired state."
+      - "The Sorcerer's Apprentice trap: faster machines ruthlessly optimize literal wording in specs while amplifying any human constraint you forgot to encode."
+      - "From theory to daily ops: structuring work packages cleanly gives both teams and agents verifiable feedback before mistakes compound."
+    secondary_cta_label: "Try OBS Management Live Demo"
+    secondary_cta_url: "https://datalaria.com/apps/obs-management/?mock=true"
+    ps_referral_text: "If an engineer on your team loves connecting foundational math history to modern AI systems, feel free to forward this edition."
+  devto:
+    enabled: true
+    title: "Norbert Wiener: Cybernetics, Feedback Loops & the AI Control Problem"
+    description: "Exploring Norbert Wiener's MIT years, stochastic predictors, the birth of Cybernetics, and his prophetic 1960 warning on AI alignment."
+    tags:
+      - "ai"
+      - "history"
+      - "architecture"
+      - "cybernetics"
+    canonical_url: "https://datalaria.com/en/posts/norbert_wiener/"
+    published: true
+  coderlegion:
+    enabled: true
+    title: "Norbert Wiener: Cybernetics, Feedback Loops & the AI Control Problem"
+    description: "From WWII stochastic predictors at MIT to humanity's earliest formal warning on literal AI alignment and autonomous feedback loops."
+    tags:
+      - "ai"
+      - "cybernetics"
+      - "ai-alignment"
+      - "history"
+    canonical_url: "https://datalaria.com/en/posts/norbert_wiener/"
+    published: true

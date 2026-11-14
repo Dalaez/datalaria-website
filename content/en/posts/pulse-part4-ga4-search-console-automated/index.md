@@ -1,5 +1,5 @@
 ---
-title: "Automated GA4 and Search Console: Measuring Organic ROI, Content Equity, and Freshness for Every Post, App, and Kit"
+title: "Automated GA4 and Search Console: Measuring Organic ROI and Content Freshness"
 date: 2026-12-09
 draft: false
 cover:

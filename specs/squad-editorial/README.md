@@ -56,3 +56,11 @@ flowchart LR
     E -- "EDITORIAL_QA_PASS" --> F["E08-autopilot-dispatcher\nPublicación & Sync Pulse"]
     E -- "REJECT" --> C
 ```
+
+---
+
+## 4. Playbook Oficial de Creación de Series y Divulgación Controlada (`INV-SCRIBA-5`)
+
+Toda producción de un nuevo capítulo dentro de una serie conocida de Datalaria (*Proyecto Autopilot*, *Datalaria Pulse*, *Datalaria Helix*, *Estrategia*, *Pioneros*, *Cultura Tech*) sigue el ciclo obligatorio en **2 Fases** definido en [`series-lifecycle-playbook.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-editorial/series-lifecycle-playbook.md):
+- **Fase A (Preparación & Propuesta):** Auditoría de capítulos previos + `IMPACT_REPORT.md` → redacción ES/EN + `cover.png` coherente + `social_pack.yaml` → gate local `E07`/`DRY_RUN`/`hugo` → **parada obligatoria** entregando al usuario las sugerencias de LinkedIn, X/Twitter y Brevo antes de tocar GitHub.
+- **Fase B (Publicación Forzada tras OK):** `git commit` + `git push origin main` → verificación HTTP `200` en Netlify → `workflow_dispatch` ES/EN (`environment: production`) → sincronización final de `IMPACT_REPORT.md`.

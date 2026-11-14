@@ -1,6 +1,7 @@
 ---
-title: "Norbert Wiener: El Padre de la Cibernética, los Bucles de Retroalimentación y el Problema del Control de las Máquinas"
-date: 2026-11-15
+title: "Norbert Wiener: Cibernética, Feedback Loops y el Control de las Máquinas"
+date: 2026-11-14
+translationKey: "norbert_wiener"
 draft: false
 category: "Pioneros y Referentes"
 categories: ["casos_exito", "Inteligencia Artificial", "Ingeniería", "Pioneros y Referentes"]
@@ -9,7 +10,7 @@ image: cover.jpg
 weight: 10
 authorAvatar: datalaria-logo.png
 social_text: "En 1948 un matemático distraído del MIT descubrió el secreto que une a los cerebros biológicos y a las máquinas: los bucles de feedback. Y en 1960 advirtió sobre el mayor peligro de la AGI. Descubre la vida y profecía de Norbert Wiener 🧠⚙️🔄 #NorbertWiener #Cybernetics #AIAlignment #AGI #TechHistory"
-description: "Un fascinante recorrido por la vida de Norbert Wiener: sus excentricidades en el MIT, el predictor antiaéreo de la Segunda Guerra Mundial, la invención de la Cibernética y su profética advertencia de 1960 sobre el problema del alineamiento de la IA."
+description: "La vida de Norbert Wiener: sus excentricidades en el MIT, el predictor antiaéreo de la WWII, el nacimiento de la Cibernética y su profética advertencia de 1960 sobre el alineamiento de la IA."
 summary: "Caminaba arrastrando el dedo por las paredes del MIT para no perderse mientras leía, pero su mente vio el futuro con sesenta años de antelación. Norbert Wiener no solo formalizó el concepto de feedback negativo que hoy impulsa el RLHF y los agentes autónomos; en 1960 formuló la advertencia definitiva sobre la AGI: si delegamos nuestros objetivos en una máquina que no podemos detener, más nos vale que su propósito sea exactamente lo que deseamos, y no una simple imitación. Analizamos la vida, genialidad y advertencia del padre de la Cibernética."
 ---
 
@@ -139,24 +140,26 @@ A menudo se reduce erróneamente la historia de la inteligencia artificial a un 
 
 Para comprender el renacimiento contemporáneo de la Cibernética en 2026, basta con observar la evolución de los Modelos de Lenguaje de Frontera:
 
-```
-El Salto Cibernético en la IA:
-[Modelo Pre-entrenado (Feed-Forward)] 
-   └── Loro estocástico estático: predice tokens sin conciencia del error.
-         ▼
-[Bucle Cibernético 1: RLHF (Reinforcement Learning from Human Feedback)]
-   └── Sensor (Preferencia Humana) ──► Comparador de Error ──► Ajuste de Pesos.
-         ▼
-[Bucle Cibernético 2: Inference-Time Reasoning / Test-Time Search]
-   └── El modelo genera un borrador ──► Validador interno ──► Auto-corrección reflexiva.
-         ▼
-[Bucle Cibernético 3: Agentes SDD en Producción (Spec-Driven Development)]
-   └── Agente ejecuta acción ──► Guardrail / Validador Pydantic ──► Feedback determinista.
-```
+{{< mermaid >}}
+flowchart TD
+    classDef openloop fill:#7f1d1d,stroke:#f87171,stroke-width:2px,color:#fff;
+    classDef loop1 fill:#1e3a8a,stroke:#60a5fa,stroke-width:2px,color:#fff;
+    classDef loop2 fill:#312e81,stroke:#818cf8,stroke-width:2px,color:#fff;
+    classDef loop3 fill:#065f46,stroke:#34d399,stroke-width:2px,color:#fff;
+
+    L0["Modelo Pre-entrenado (Feed-Forward)<br/>Loro estocastico estatico sin conciencia del error"]:::openloop
+    L1["Bucle 1: RLHF<br/>Sensor humano -> Comparador de error -> Ajuste de pesos"]:::loop1
+    L2["Bucle 2: Inference-Time Reasoning<br/>Borrador interno -> Verificador logico -> Auto-correccion"]:::loop2
+    L3["Bucle 3: Agentes SDD con Guardrails Pydantic<br/>Accion del agente -> Validador determinista -> Feedback cerrado"]:::loop3
+
+    L0 -->|"Inyeccion de feedback humano"| L1
+    L1 -->|"Bucle dentro de la inferencia"| L2
+    L2 -->|"Contratos y veto en produccion"| L3
+{{< /mermaid >}}
 
 1. **El fracaso del modelo puramente *Feed-Forward***: Un modelo de lenguaje tradicional es una tubería unidireccional: introduces un texto y calcula la siguiente palabra. Carece de bucle de corrección. Si comete un error en el tercer token, ese error se propaga como una avalancha estocástica hasta la alucinación completa.
 2. **El rescate mediante el Feedback (RLHF)**: La revolución que transformó los modelos brutos en herramientas útiles como ChatGPT, Claude o Gemini fue precisamente la inyección del bucle cibernético de Wiener: el aprendizaje por refuerzo a partir de retroalimentación humana (*RLHF*). El modelo genera una salida, un evaluador calcula la divergencia respecto a la expectativa humana y la señal de error se retropropaga para ajustar su comportamiento.
-3. **Razonamiento en Tiempo de Inferencia (*System 2*)**: Como analizamos en [Inference-Time Scaling y Razonamiento Sistema 2](/es/posts/inference_time_scaling/), el salto cualitativo actual consiste en incorporar el bucle cibernético **dentro del propio proceso de inferencia**: el modelo genera una cadena de pensamiento, un verificador interno contrasta la coherencia lógica de cada paso y, si detecta una señal de error, poda la rama y reintenta la solución antes de responder.
+3. **Razonamiento en Tiempo de Inferencia (*System 2*)**: Como analizamos en **Inference-Time Scaling y Razonamiento Sistema 2** *(próximamente)*, el salto cualitativo actual consiste en incorporar el bucle cibernético **dentro del propio proceso de inferencia**: el modelo genera una cadena de pensamiento, un verificador interno contrasta la coherencia lógica de cada paso y, si detecta una señal de error, poda la rama y reintenta la solución antes de responder.
 4. **Agentes Autónomos y la Gobernanza SDD**: En nuestra guía sobre [Cómo Crear Agentes de IA para la Operativa Empresarial con SDD](/es/posts/agentes_ia_operativa_sdd/) y en los incidentes reales del [Proyecto Autopilot](/es/posts/ia_agents_part9/), aprendimos una lección cibernética pura: **un agente sin bucle de retroalimentación cerrado y delimitado entra en inestabilidad oscilatoria**. Necesita compuertas deterministas donde el error de salida reingrese al contexto como señal de ajuste.
 
 Wiener lo sintetizó en una sola frase legendaria:
@@ -231,3 +234,11 @@ En 2026, cuando observamos a los modelos de razonamiento navegar grafos de decis
 Al mirar hacia el futuro que Wiener anticipó en su soledad visionaria, la pregunta definitiva no es si alcanzaremos la AGI, sino la que él dejó suspendida en el aire en 1960:
 
 **Cuando delegues en una inteligencia artificial el control de tus sistemas, tu economía y tus decisiones más críticas... ¿estás completamente seguro de que la máquina perseguirá lo que tu corazón realmente desea, o ejecutará de forma fría, implacable y destructiva la orden literal que le pediste?**
+
+---
+
+### Del Control Cibernético a tus Operaciones en 2026
+
+Si quieres llevar los **bucles de retroalimentación cerrados** del plano teórico de Wiener al control operativo diario de tus equipos y proyectos sin fricción ni ambigüedad, explora nuestra herramienta cuantitativa de gestión operativa o revisa el [catálogo de recursos de ingeniería de Datalaria](/es/recursos/):
+
+{{< app-ref slug="obs-management" >}}

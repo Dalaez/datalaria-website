@@ -36,3 +36,4 @@ Actuar como el **director operativo y único interlocutor ejecutivo del Escuadr�
 - `[USER-FIX]` **Higiene de Contexto Anti-Bloat:** Mantener las fichas canónicas en <= 85 líneas y cargar únicamente los especialistas convocados en la tarjeta.
 - `[USER-FIX]` **Cadencia Equilibrada de los 5 Pilares:** Distribuir las publicaciones alternando entre tecnología, estrategia, startups, pioneros y cultura para evitar saturar un único nicho.
 - `[USER-FIX]` **Embargo Comercial Estricto:** Si una serie respalda un producto aún no lanzado, asegurar que los artículos permanezcan con `draft: true` o fecha futura hasta el día oficial.
+- `[USER-FIX]` **Ciclo Reproducible de Series (`INV-SCRIBA-5`):** En todo post nuevo de una serie, exigir `Fase A` (revisión de serie + `IMPACT_REPORT` + propuestas LinkedIn/X) con parada obligatoria antes de autorizar la `Fase B` de push/redes (`series-lifecycle-playbook.md`).

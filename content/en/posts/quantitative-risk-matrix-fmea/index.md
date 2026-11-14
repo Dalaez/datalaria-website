@@ -1,6 +1,6 @@
 ---
 title: "Quantitative Risk Matrix & Operational FMEA: From Qualitative Intuition to Risk Priority Number (RPN)"
-date: 2026-11-20
+date: 2026-11-16
 draft: false
 category: "Strategy & Operations"
 categories: ["Operational Control", "Risk Management", "Executive Templates", "Strategy & Operations"]

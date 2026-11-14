@@ -1,5 +1,5 @@
 ---
-title: "Del Front Matter al Índice: Pydantic v2, Paridad Bilingüe ES/EN y Automatización con GitHub Actions"
+title: "Del Front Matter al Índice: Pydantic v2, Paridad ES/EN y Automatización en GitHub Actions"
 date: 2026-11-25
 draft: false
 cover:

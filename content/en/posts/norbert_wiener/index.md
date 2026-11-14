@@ -1,6 +1,7 @@
 ---
 title: "Norbert Wiener: The Father of Cybernetics, Feedback Loops, and the Machine Control Problem"
-date: 2026-11-15
+date: 2026-11-14
+translationKey: "norbert_wiener"
 draft: false
 category: "Pioneers & Icons"
 categories: ["casos_exito", "Inteligencia Artificial", "Ingeniería", "Pioneers & Icons"]
@@ -141,24 +142,26 @@ The history of artificial intelligence is frequently mischaracterized as a clean
 
 To understand why Cybernetics is enjoying a massive intellectual renaissance in 2026, one need only look at how frontier Large Language Models evolved from raw auto-regressive text engines into capable agents:
 
-```
-The Cybernetic Leap in AI:
-[Raw Pre-Trained Model (Feed-Forward)] 
-   └── Static stochastic parrot: predicts next token with zero error awareness.
-         ▼
-[Cybernetic Loop 1: RLHF (Reinforcement Learning from Human Feedback)]
-   └── Sensor (Human Preference) ──► Error Comparator ──► Gradient Weight Adjustment.
-         ▼
-[Cybernetic Loop 2: Inference-Time Reasoning / Test-Time Search]
-   └── Model drafts reasoning step ──► Internal Verifier checks logic ──► Self-Correction.
-         ▼
-[Cybernetic Loop 3: Enterprise SDD Agents (Spec-Driven Development)]
-   └── Agent executes action ──► Deterministic Pydantic Guardrail ──► Closed Feedback Loop.
-```
+{{< mermaid >}}
+flowchart TD
+    classDef openloop fill:#7f1d1d,stroke:#f87171,stroke-width:2px,color:#fff;
+    classDef loop1 fill:#1e3a8a,stroke:#60a5fa,stroke-width:2px,color:#fff;
+    classDef loop2 fill:#312e81,stroke:#818cf8,stroke-width:2px,color:#fff;
+    classDef loop3 fill:#065f46,stroke:#34d399,stroke-width:2px,color:#fff;
+
+    L0["Pre-Trained Model (Feed-Forward)<br/>Static stochastic parrot with zero error awareness"]:::openloop
+    L1["Cybernetic Loop 1: RLHF<br/>Human preference sensor -> Error comparator -> Weight adjustment"]:::loop1
+    L2["Cybernetic Loop 2: Inference-Time Reasoning<br/>Internal draft -> Logic verifier -> Reflective self-correction"]:::loop2
+    L3["Cybernetic Loop 3: SDD Agents with Pydantic Guardrails<br/>Agent action -> Deterministic validator -> Closed feedback loop"]:::loop3
+
+    L0 -->|"Injecting human feedback"| L1
+    L1 -->|"Loop inside inference"| L2
+    L2 -->|"Contracts and veto in production"| L3
+{{< /mermaid >}}
 
 1. **The Failure of Pure *Feed-Forward* Inference**: A raw pre-trained LLM is an open-loop, feed-forward pipeline: you supply an input prompt and it computes the next token. It possesses zero inherent mechanism for self-correction. If it commits a logical error on token three, that error cascades down the generation chain until the entire output degenerates into confident hallucination.
 2. **The Rescue via Feedback (RLHF)**: What transformed raw foundational models into breakthrough tools like ChatGPT, Claude, and Gemini was precisely the injection of Wiener’s cybernetic feedback loop: Reinforcement Learning from Human Feedback (*RLHF*). The model outputs candidate responses, an evaluator measures the discrepancy against human expectations, and that error signal is backpropagated to alter behavioral trajectories.
-3. **Inference-Time Reasoning (*System 2*)**: As we explored in [Inference-Time Scaling and System 2 Reasoning](/en/posts/inference_time_scaling/), the current frontier leap involves embedding the cybernetic loop **directly inside the inference window**: the model drafts a chain of thought, an internal verifier computes error states at each reasoning node, and if inconsistency is detected, it prunes the branch and navigates an alternative search path before returning a final answer.
+3. **Inference-Time Reasoning (*System 2*)**: As we explored in **Inference-Time Scaling and System 2 Reasoning** *(coming soon)*, the current frontier leap involves embedding the cybernetic loop **directly inside the inference window**: the model drafts a chain of thought, an internal verifier computes error states at each reasoning node, and if inconsistency is detected, it prunes the branch and navigates an alternative search path before returning a final answer.
 4. **Autonomous Agents and SDD Governance**: In our operational guide on [How to Build AI Agents for Enterprise Operations with SDD](/en/posts/agentes_ia_operativa_sdd/) and throughout the real-world trials of [Project Autopilot](/en/posts/ai_agents_part1/), we encountered an undeniable cybernetic reality: **an agent lacking a bounded, closed feedback loop inevitably falls into runaway oscillatory instability**. It requires deterministic guardrails where output discrepancies are immediately fed back into the agent’s execution context as a corrective signal.
 
 Wiener captured this fundamental truth with crystalline brevity:
@@ -233,3 +236,11 @@ In 2026, as we watch reasoning models navigate multi-agent decision trees, as au
 As we gaze into the accelerating frontier that Wiener glimpsed in his solitary brilliance, the defining question of our time is not whether we will create an AGI, but the one he left hanging in the air in 1960:
 
 **When you delegate control of your systems, your economy, and your most critical decisions to artificial intelligence... are you completely sure the machine will pursue what your heart truly desires, or will it execute with cold, ruthless precision the literal command you asked for?**
+
+---
+
+### From Cybernetic Control to Operational Precision in 2026
+
+To bring Wiener's **closed feedback loops** from mathematical theory into daily project and workload control with zero ambiguity, try our interactive operational breakdown tool or explore the [Datalaria engineering resource catalog](/en/resources/):
+
+{{< app-ref slug="obs-management" >}}

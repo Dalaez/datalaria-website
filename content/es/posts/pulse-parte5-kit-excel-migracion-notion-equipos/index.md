@@ -1,5 +1,5 @@
 ---
-title: "Gestión Editorial para Equipos de Documentación, SEO y Marketing: de Notion a Excel en 5 minutos"
+title: "Gestión Editorial para Equipos SEO y Marketing: de Notion a Excel en 5 Minutos"
 date: 2026-12-16
 draft: false
 cover:
