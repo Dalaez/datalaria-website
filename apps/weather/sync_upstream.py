@@ -223,6 +223,12 @@ def export_to_upstream(app_dir: Path, target_dir: Path, sync_hugo_catalog: bool 
             shutil.rmtree(static_derived / "daily", ignore_errors=True)
         print("Sincronizado también hacia static/apps/weather.")
 
+    # Evitar copias obsoletas en public/apps/weather/ que puedan ocultar static/ al previsualizar en local
+    public_weather_dir = BASE_DIR.parents[1] / "public" / "apps" / "weather"
+    if public_weather_dir.exists():
+        shutil.rmtree(public_weather_dir, ignore_errors=True)
+        print("Limpiado artefacto obsoleto public/apps/weather/.")
+
     print(f"\n✅ Exportación upstream completada con éxito en: {target_dir}")
     return 0
 

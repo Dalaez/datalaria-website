@@ -371,16 +371,16 @@ def test_weather_yaml_and_showcase_sheets_v2():
     with open(yaml_file, "r", encoding="utf-8") as f:
         data = yaml.safe_load(f)
 
-    assert data["current_version"] in ("v2.0.0", "v3.0.0-beta", "v3.0.0", "v3.1.0", "v3.2.0", "v3.3.0", "v3.3.1", "v3.3.2"), f"current_version inesperada: {data.get('current_version')}"
+    assert data["current_version"] in ("v2.0.0", "v3.0.0-beta", "v3.0.0", "v3.1.0", "v3.2.0", "v3.3.0", "v3.3.1", "v3.3.2", "v3.3.3"), f"current_version inesperada: {data.get('current_version')}"
     assert data["app_url"] == "/apps/weather/"
     assert "preset=extremes" in data.get("demo_url", "")
     assert "view=arena" in data.get("demo_url", "")
 
-    # Releases: primera entrada debe ser v2.0.0..v3.3.2
+    # Releases: primera entrada debe ser v2.0.0..v3.3.3
     releases = data.get("releases", [])
     assert len(releases) >= 4
     first_release = releases[0]
-    assert first_release["version"] in ("v2.0.0", "v3.0.0", "v3.1.0", "v3.2.0", "v3.3.0", "v3.3.1", "v3.3.2")
+    assert first_release["version"] in ("v2.0.0", "v3.0.0", "v3.1.0", "v3.2.0", "v3.3.0", "v3.3.1", "v3.3.2", "v3.3.3")
     assert first_release["state"] in ("released", "pre-release")
     assert first_release["type"] in ("release", "patch")
 

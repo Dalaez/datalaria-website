@@ -7,7 +7,7 @@ cover: cover.png
 app_url: /apps/weather/
 demo_url: "/apps/weather/?preset=extremes&view=arena"
 source_spec: specs/apps/weather/spec.md
-current_version: v3.3.2
+current_version: v3.3.3
 
 title:
   es: "Weather Intelligence v3.3"
@@ -115,6 +115,21 @@ posts:
     part: 4
 
 releases:
+  - version: v3.3.3
+    date: "2026-11-14"
+    state: released
+    type: patch
+    title:
+      es: "Weather Intelligence v3.3.3: Proxy Netlify Sin Bucle, Zero-404 Localhost y SW Network-First (W3.6-FIX2)"
+      en: "Weather Intelligence v3.3.3: Loop-Free Netlify Proxy, Zero-404 Localhost & Network-First SW (W3.6-FIX2)"
+    changes:
+      - es: "Sustitución de la regla 301! en /apps/weather por proxy 200! directo en static/_redirects evitando bucles ERR_TOO_MANY_REDIRECTS en Netlify Edge, junto con normalización cliente history.replaceState en <head>."
+        en: "Replaced the 301! rule on /apps/weather with direct 200! proxy rewrites in static/_redirects to prevent Netlify Edge ERR_TOO_MANY_REDIRECTS loops, paired with client-side history.replaceState normalization in <head>."
+      - es: "Enrutado remoto automático de derived/daily/*.json en localhost/127.0.0.1 hacia Netlify CDN (0 errores 404 en consola manteniendo intacto INV-WEATHER-6)."
+        en: "Automatic remote routing of derived/daily/*.json on localhost/127.0.0.1 to Netlify CDN (0 console 404 errors while keeping INV-WEATHER-6 intact)."
+      - es: "Actualización de sw.js (weather-v3.3.3) a estrategia Network-First con fallback offline para navegación HTML, auto-desregistro de Service Workers obsoletos en localhost y limpieza de public/apps/weather/ durante sync_upstream."
+        en: "Upgraded sw.js (weather-v3.3.3) to Network-First with offline fallback for HTML navigation, automatic cleanup of stale Service Workers on localhost, and public/apps/weather/ purge during sync_upstream."
+
   - version: v3.3.2
     date: "2026-11-13"
     state: released

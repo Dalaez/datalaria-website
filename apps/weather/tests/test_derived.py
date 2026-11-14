@@ -466,9 +466,9 @@ def test_frontend_zero_404_and_instant_kpi_architecture():
     # 2. Renderizado instantáneo de KPIs en updateDashboard
     assert "updateKPIs({}, checkedMetric, selectedValues)" in html_content
 
-    # 3. Service Worker versión 3.3.2
+    # 3. Service Worker versión 3.3.3
     sw_content = (BASE_DIR / "sw.js").read_text(encoding="utf-8")
-    assert "weather-v3.3.2" in sw_content
+    assert "weather-v3.3.3" in sw_content
 
 
 
@@ -648,25 +648,25 @@ def test_w34_frontend_dom_and_i18n():
 
 
 def test_inv_weather_14_version_coherence():
-    """Verifica INV-WEATHER-14: Version v3.3.2 exacta en YAML, sw.js, catalogo y títulos v3.3."""
+    """Verifica INV-WEATHER-14: Version v3.3.3 exacta en YAML, sw.js, catalogo y títulos v3.3."""
     import yaml
     repo_root = Path(__file__).resolve().parent.parent.parent.parent
     yaml_file = repo_root / "data" / "apps" / "weather.yaml"
     assert yaml_file.exists()
     ydata = yaml.safe_load(yaml_file.read_text(encoding="utf-8"))
-    assert ydata["current_version"] == "v3.3.2"
+    assert ydata["current_version"] == "v3.3.3"
     assert "v3.3" in ydata["title"]["es"]
     assert "v3.3" in ydata["title"]["en"]
 
-    # Primer release debe ser v3.3.2 y released
-    assert ydata["releases"][0]["version"] == "v3.3.2"
+    # Primer release debe ser v3.3.3 y released
+    assert ydata["releases"][0]["version"] == "v3.3.3"
     assert ydata["releases"][0]["state"] == "released"
 
     # Service Worker y lista de apps
     sw_txt = (BASE_DIR / "sw.js").read_text(encoding="utf-8")
-    assert "weather-v3.3.2" in sw_txt
+    assert "weather-v3.3.3" in sw_txt
     apps_list_txt = (repo_root / "layouts" / "apps" / "list.html").read_text(encoding="utf-8")
-    assert '"v3.3.2"' in apps_list_txt
+    assert '"v3.3.3"' in apps_list_txt
 
     # Fichas Markdown
     es_md = repo_root / "content" / "es" / "apps" / "weather" / "index.md"
@@ -1053,15 +1053,22 @@ def test_w36_fix_mobile_pwa_gold_and_leaflet_guards():
         assert (BASE_DIR / icon_name).exists(), f"Falta {icon_name} en apps/weather/"
         assert (static_dir / icon_name).exists(), f"Falta {icon_name} en static/apps/weather/"
 
-    # 5. Service Worker offline start_url preservando INV-WEATHER-10 (no CSV caching)
+    # 5. Service Worker Network-First en navegación HTML y offline start_url preservando INV-WEATHER-10 (no CSV caching)
     sw_txt = (BASE_DIR / "sw.js").read_text(encoding="utf-8")
     assert "isAppShellNav" in sw_txt
     assert "ignoreSearch" in sw_txt
     assert "SKIP_WAITING" in sw_txt
+    assert "Network-First" in sw_txt
     assert "url.pathname.endsWith('.csv') || url.pathname.includes('/datos/')" in sw_txt
 
-    # 6. Redirección canónica 301! en static/_redirects
+    # 6. Proxy 200! sin bucles 301! en static/_redirects + normalización cliente + localhost Zero-404
     redirects_txt = (repo_root / "static" / "_redirects").read_text(encoding="utf-8")
-    assert "/apps/weather/" in redirects_txt and "301!" in redirects_txt
-    assert re.search(r"^/apps/weather\s+/apps/weather/\s+301!\s*$", redirects_txt, re.MULTILINE)
+    assert not re.search(r"^/apps/weather\s+/apps/weather/\s+301!\s*$", redirects_txt, re.MULTILINE)
+    assert re.search(r"^/apps/weather\s+https://datalaria-app-weather\.netlify\.app/index\.html\s+200!\s*$", redirects_txt, re.MULTILINE)
+    assert re.search(r"^/apps/weather/\s+https://datalaria-app-weather\.netlify\.app/index\.html\s+200!\s*$", redirects_txt, re.MULTILINE)
+    assert re.search(r"^/apps/weather/\*\s+https://datalaria-app-weather\.netlify\.app/:splat\s+200!\s*$", redirects_txt, re.MULTILINE)
+    assert "window.history.replaceState(null, '', '/apps/weather/'" in html_txt
+    assert "isDailyDerived" in html_txt
+    assert "weather_sw_purged_v333" in html_txt
+    assert "pwa_test" in html_txt
 
