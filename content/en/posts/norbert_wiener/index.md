@@ -80,14 +80,28 @@ Traditional Newtonian ballistics tables were helpless against one decisive facto
 
 Wiener accepted an urgent war research contract from the National Defense Research Committee (NDRC) and recruited a gifted young MIT engineer: **Julian Bigelow**. Working out of an MIT basement laboratory, they set out to construct what became known as the **Wiener Anti-Aircraft (AA) Predictor**.
 
-```
-The Anti-Aircraft Target Prediction Dilemma:
-Enemy Aircraft t=0 ────────► Deliberate Evasive Zigzagging ────────► Aircraft at t=20s (Where?)
-         ▲                                                                     ▲
-         │                                                                     │
-Anti-Aircraft Gun ─────────────────────────────────────────────── Fire shell to future point
-         └──────── Radar / Tracking Sensors with Stochastic Noise ─────────────┘
-```
+{{< mermaid image="aa_predictor_feedback.png" alt="Diagram: The Anti-Aircraft Target Prediction Dilemma and Wiener AA Predictor Closed Feedback Loop (1940-1943)" >}}
+flowchart TD
+    classDef target fill:#7f1d1d,stroke:#f87171,stroke-width:2px,color:#fff;
+    classDef sensor fill:#1e293b,stroke:#f59e0b,stroke-width:2px,color:#fff;
+    classDef filter fill:#1e3a8a,stroke:#60a5fa,stroke-width:2px,color:#fff;
+    classDef servo fill:#065f46,stroke:#34d399,stroke-width:2px,color:#fff;
+
+    subgraph SKY ["Airspace: 15-25s Shell Flight Time"]
+        direction LR
+        A["✈️ Enemy Aircraft (t=0)<br/>Deliberate Evasive Zigzagging"]:::target -->|"Unpredictable pilot path"| F["🎯 Aircraft at t=20s<br/>(Where to intercept?)"]:::target
+    end
+
+    subgraph CONTROL ["Wiener AA Predictor (Closed Feedback Loop)"]
+        direction LR
+        R["📡 Radar & Sensors<br/>Stochastic Noise"]:::sensor -->|"Wiener Filter"| W["🧠 Trajectory Extrapolation<br/>Probable Future Cone"]:::filter
+        W -->|"Lead target"| G["⚙️ AA Gun Servomechanism<br/>Error(t) = Desired - Current"]:::servo
+    end
+
+    A -->|"Tracking signal"| R
+    G ==>|"Fire shell to future point"| F
+    F -.->|"Measured tracking error"| R
+{{< /mermaid >}}
 
 Wiener tackled this lethal challenge by synthesizing three disciplines that had never before intersected:
 1. **Statistical Information Theory and Noise Filtering**: Early radar tracking was riddled with electromagnetic noise and atmospheric static. Wiener invented the **Wiener Filter**, a mathematical operator designed to separate the true underlying flight trajectory from high-frequency random noise—a direct forerunner to Kalman filters.
@@ -142,7 +156,7 @@ The history of artificial intelligence is frequently mischaracterized as a clean
 
 To understand why Cybernetics is enjoying a massive intellectual renaissance in 2026, one need only look at how frontier Large Language Models evolved from raw auto-regressive text engines into capable agents:
 
-{{< mermaid >}}
+{{< mermaid image="cybernetic_loops_ai.png" alt="Diagram: Evolution from Open-Loop Feed-Forward LLMs to Cybernetic SDD Agents with Closed Feedback Loops" >}}
 flowchart TD
     classDef openloop fill:#7f1d1d,stroke:#f87171,stroke-width:2px,color:#fff;
     classDef loop1 fill:#1e3a8a,stroke:#60a5fa,stroke-width:2px,color:#fff;
@@ -185,7 +199,7 @@ And in **May 1960**, in the peer-reviewed pages of *Science*, Norbert Wiener pub
 
 That article contains **history’s very first rigorous articulation of the AI Alignment Problem**:
 
-{{< mermaid >}}
+{{< mermaid image="alignment_specification_gap.png" alt="Diagram: The Specification Gap and AI Alignment Problem (The Midas Dilemma, Norbert Wiener 1960)" >}}
 flowchart TD
     classDef literal fill:#7f1d1d,stroke:#f87171,stroke-width:2px,color:#fff;
     classDef intent fill:#065f46,stroke:#34d399,stroke-width:2px,color:#fff;

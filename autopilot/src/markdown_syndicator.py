@@ -25,7 +25,7 @@ EMBARGOED_APP_STATUSES = frozenset({"incubating", "draft", "deprecated", "archiv
 
 _CODE_FENCE_RE = re.compile(r"(^```[^\n]*\n.*?^```|^~~~[^\n]*\n.*?^~~~)", re.MULTILINE | re.DOTALL)
 _MERMAID_SHORTCODE_RE = re.compile(
-    r"\{\{[<%]\s*mermaid\b[^>%]*[>%]\}\}(.*?)\{\{[<%]\s*/mermaid\s*[>%]\}\}",
+    r"\{\{[<%]\s*mermaid\b([^>%]*)[>%]\}\}(.*?)\{\{[<%]\s*/mermaid\s*[>%]\}\}",
     re.DOTALL | re.IGNORECASE,
 )
 _APP_REF_RE = re.compile(
@@ -499,10 +499,21 @@ def transform_markdown_for_syndication(
     base_url: str = SITE_BASE_URL,
 ) -> str:
     """Ejecuta el pipeline completo de transformación Hugo -> Markdown estándar con atribución y UTMs."""
-    body = _MERMAID_SHORTCODE_RE.sub(
-        lambda m: "\n```mermaid\n" + m.group(1).strip() + "\n```\n",
-        post_content or "",
-    )
+    def replace_mermaid(match: re.Match[str]) -> str:
+        attrs = _parse_shortcode_attrs(match.group(1))
+        diagram_body = match.group(2).strip()
+        image_ref = attrs.get("image") or attrs.get("img") or attrs.get("src") or ""
+        if image_ref:
+            alt_text = (
+                attrs.get("alt")
+                or attrs.get("title")
+                or attrs.get("caption")
+                or "Architecture Diagram"
+            )
+            return f"\n![{alt_text}]({image_ref})\n"
+        return f"\n```mermaid\n{diagram_body}\n```\n"
+
+    body = _MERMAID_SHORTCODE_RE.sub(replace_mermaid, post_content or "")
     masked_body, code_blocks = _split_fenced_code_blocks(body)
 
     masked_body = _transform_shortcodes(

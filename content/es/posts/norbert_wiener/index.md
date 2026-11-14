@@ -80,14 +80,28 @@ Pero había un problema crítico que ninguna tabla de tiro balístico tradiciona
 
 Wiener asumió el encargo del Comité de Investigación para la Defensa Nacional (NDRC) y reclutó a un joven y prodigioso ingeniero del MIT: **Julian Bigelow**. Juntos se encerraron en un laboratorio para construir lo que se conoció como el **Wiener AA Predictor** (*Predictor Antiaéreo de Wiener*).
 
-```
-Dilema del Predictor Antiaéreo:
-Avión enemigo t=0 ────────► Maniobras evasivas zizagueantes ────────► Avión en t=20s (¿Dónde?)
-         ▲                                                              ▲
-         │                                                              │
-Cañón antiaéreo ──────────────────────────────────────────────── Disparo al punto futuro
-         └───────── Radar / Sensores con Ruido Estocástico ─────────────┘
-```
+{{< mermaid image="aa_predictor_feedback.png" alt="Diagrama: El Dilema del Predictor Antiaéreo de Wiener y el Bucle de Retroalimentación Cerrado (1940-1943)" >}}
+flowchart TD
+    classDef target fill:#7f1d1d,stroke:#f87171,stroke-width:2px,color:#fff;
+    classDef sensor fill:#1e293b,stroke:#f59e0b,stroke-width:2px,color:#fff;
+    classDef filter fill:#1e3a8a,stroke:#60a5fa,stroke-width:2px,color:#fff;
+    classDef servo fill:#065f46,stroke:#34d399,stroke-width:2px,color:#fff;
+
+    subgraph SKY ["Espacio Aéreo: 15-25 s de vuelo del proyectil"]
+        direction LR
+        A["✈️ Avión enemigo (t=0)<br/>Maniobras evasivas zigzagueantes"]:::target -->|"Trayectoria pilotada"| F["🎯 Avión en t=20 s<br/>(¿Dónde interceptar?)"]:::target
+    end
+
+    subgraph CONTROL ["Predictor Antiaéreo de Wiener (Bucle Cerrado)"]
+        direction LR
+        R["📡 Radar y Sensores<br/>Ruido Estocástico"]:::sensor -->|"Filtro de Wiener"| W["🧠 Extrapolación Temporal<br/>Cono de trayectoria probable"]:::filter
+        W -->|"Coordenada futura"| G["⚙️ Servomecanismo del Cañón<br/>Error(t) = Deseada - Actual"]:::servo
+    end
+
+    A -->|"Lectura con interferencias"| R
+    G ==>|"Disparo al punto futuro"| F
+    F -.->|"Señal de error medida"| R
+{{< /mermaid >}}
 
 Wiener abordó el problema uniendo tres disciplinas que hasta entonces jamás habían dialogado:
 1. **La Teoría de la Información y el Filtrado Estadístico**: Los radares de la época introducían una cantidad brutal de interferencias estáticas (ruido). Wiener inventó el **Filtro de Wiener**, un operador matemático capaz de separar la señal verdadera de la trayectoria del ruido aleatorio, anticipándose a los filtros de Kalman.
@@ -140,7 +154,7 @@ A menudo se reduce erróneamente la historia de la inteligencia artificial a un 
 
 Para comprender el renacimiento contemporáneo de la Cibernética en 2026, basta con observar la evolución de los Modelos de Lenguaje de Frontera:
 
-{{< mermaid >}}
+{{< mermaid image="cybernetic_loops_ai.png" alt="Diagrama: Evolución desde Modelos Feed-Forward hasta Agentes SDD con Bucles Cibernéticos Cerrados" >}}
 flowchart TD
     classDef openloop fill:#7f1d1d,stroke:#f87171,stroke-width:2px,color:#fff;
     classDef loop1 fill:#1e3a8a,stroke:#60a5fa,stroke-width:2px,color:#fff;
@@ -183,7 +197,7 @@ Y en **mayo de 1960**, en las páginas de la prestigiosa revista *Science*, Norb
 
 Aquella publicación contiene **la primera formulación rigurosa de la historia sobre el Problema del Alineamiento de la IA (*AI Alignment Problem*)**:
 
-{{< mermaid >}}
+{{< mermaid image="alignment_specification_gap.png" alt="Diagrama: La Brecha de Especificación y el Problema del Alineamiento de la IA (Dilema de Midas, Norbert Wiener 1960)" >}}
 flowchart TD
     classDef literal fill:#7f1d1d,stroke:#f87171,stroke-width:2px,color:#fff;
     classDef intent fill:#065f46,stroke:#34d399,stroke-width:2px,color:#fff;

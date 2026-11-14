@@ -29,6 +29,11 @@ flowchart LR
     A[Start] --> B[End]
 {{< /mermaid >}}
 
+{{< mermaid image="diagram-flow.png" alt="Rendered Architecture Flow" >}}
+flowchart TD
+    X[Input] --> Y[Output]
+{{< /mermaid >}}
+
 {{< helix-waitlist >}}
 
 {{< product-card
@@ -62,6 +67,11 @@ Incluye casos reales listos para comité.
 
     assert "```mermaid" in rendered
     assert "A[Start] --> B[End]" in rendered
+    assert (
+        "![Rendered Architecture Flow](https://raw.githubusercontent.com/Dalaez/datalaria-website/main/content/es/posts/demo-shortcodes/diagram-flow.png)"
+        in rendered
+    )
+    assert "X[Input] --> Y[Output]" not in rendered
     assert "{{" not in rendered
     assert "utm_content=helix_waitlist#software" in rendered
     assert "https://datalaria.com/es/recursos/" in rendered
