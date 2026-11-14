@@ -14,23 +14,23 @@ es:
       - "AGI"
   linkedin:
     text: |-
-      En 1948 un matemático tan distraído como genial del MIT descubrió la ley matemática que une a los sistemas biológicos y a las máquinas modernas: el bucle de retroalimentación cerrada.
+      🧠 En 1948 un matemático tan distraído como genial del MIT descubrió la ley matemática que une a los sistemas biológicos y a las máquinas modernas: el bucle de retroalimentación cerrada.
 
       Norbert Wiener no solo acuñó la Cibernética; en 1960 lanzó una advertencia sobre la AGI que hoy resuena en cada despliegue de agentes autónomos.
 
-      Tres ideas clave de su legado que siguen vigentes en 2026:
+      Tres ideas clave de su legado que siguen vigentes en 2026: 👇
 
-      🔹 Retroalimentación negativa: sin señal de error real, todo sistema complejo oscila hacia el colapso.
+      🔄 Retroalimentación negativa: sin señal de error real, todo sistema complejo oscila hacia el colapso.
 
-      🔹 Teoría del control estocástico: predecir trayectorias bajo ruido nació de su predictor de 1940.
+      📡 Teoría del control estocástico: predecir trayectorias bajo ruido nació de su predictor de 1940.
 
-      🔹 Alineamiento literal: las máquinas cumplen la sintaxis de tu especificación, no la intención implícita de tus valores.
+      ⚠️ Alineamiento literal: las máquinas cumplen la sintaxis de tu especificación, no la intención implícita de tus valores.
 
       Cuando automatizas operaciones o decisiones críticas con IA, diseñar bien la especificación y el bucle de control vale más que multiplicar la potencia de cómputo.
 
-      Descubre su historia completa y las lecciones prácticas para tus sistemas: https://datalaria.com/es/posts/norbert_wiener/
+      📖 Descubre su historia completa y las lecciones prácticas para tus sistemas: https://datalaria.com/es/posts/norbert_wiener/
 
-      ¿Qué bucle de control consideras imprescindible hoy antes de delegar decisiones críticas en agentes autónomos?
+      💬 ¿Qué bucle de control consideras imprescindible hoy antes de delegar decisiones críticas en agentes autónomos?
     hashtags:
       - "Cibernetica"
       - "InteligenciaArtificial"
@@ -48,8 +48,8 @@ es:
       - "Feedback negativo como motor: tanto un termostato como el RLHF moderno dependen de medir continuamente la distancia entre estado real y objetivo."
       - "El dilema del Aprendiz de Brujo: una máquina ultraeficiente optimizará la métrica literal que redactaste, castigando cualquier matiz humano omitido en el spec."
       - "Control operativo hoy: llevar bucles cerrados de cibernética a la gestión diaria reduce incertidumbre antes de escalar automatización."
-    secondary_cta_label: "Probar OBS Management en vivo"
-    secondary_cta_url: "https://datalaria.com/apps/obs-management/?mock=true"
+    secondary_cta_label: "Explorar Kits y Apps en /recursos/"
+    secondary_cta_url: "https://datalaria.com/es/recursos/"
     ps_referral_text: "Si trabajas con equipos diseñando sistemas de control o agentes de IA, comparte este perfil histórico con alguien que disfrute uniendo teoría clásica e ingeniería actual."
   devto:
     enabled: true

@@ -14,23 +14,23 @@ en:
       - "AGI"
   linkedin:
     text: |-
-      In 1948, a famously absent-minded MIT mathematician uncovered the universal mathematical principle linking nervous systems and intelligent machines: the closed feedback loop.
+      🧠 In 1948, a famously absent-minded MIT mathematician uncovered the universal mathematical principle linking nervous systems and intelligent machines: the closed feedback loop.
 
       Norbert Wiener didn't just invent Cybernetics—by 1960 he had articulated the exact alignment dilemma keeping frontier AI engineers awake today.
 
-      Three timeless engineering lessons from Wiener's work:
+      Three timeless engineering lessons from Wiener's work: 👇
 
-      🔹 Negative feedback stabilizes systems: without measurable error signals, complex pipelines oscillate out of control.
+      🔄 Negative feedback stabilizes systems: without measurable error signals, complex pipelines oscillate out of control.
 
-      🔹 Stochastic prediction under noise: born in his 1940 predictor, foundational to modern filtering and control.
+      📡 Stochastic prediction under noise: born in his 1940 predictor, foundational to modern filtering and control.
 
-      🔹 Literal specification vs human intent: autonomous systems optimize what you write, not what you quietly assume.
+      ⚠️ Literal specification vs human intent: autonomous systems optimize what you write, not what you quietly assume.
 
       Before delegating high-stakes operational decisions to AI, closing the gap between specification and human intent matters more than raw compute.
 
-      Explore Wiener's story and how cybernetic feedback translates into modern operational systems: https://datalaria.com/en/posts/norbert_wiener/
+      📖 Explore Wiener's story and how cybernetic feedback translates into modern operational systems: https://datalaria.com/en/posts/norbert_wiener/
 
-      Which human-in-the-loop feedback check do you refuse to automate away in production systems?
+      💬 Which human-in-the-loop feedback check do you refuse to automate away in production systems?
     hashtags:
       - "Cybernetics"
       - "AIAlignment"
@@ -48,8 +48,8 @@ en:
       - "Feedback loops prevent runaway drift: whether in a thermostat or RLHF training, stability depends on closing the loop between output and desired state."
       - "The Sorcerer's Apprentice trap: faster machines ruthlessly optimize literal wording in specs while amplifying any human constraint you forgot to encode."
       - "From theory to daily ops: structuring work packages cleanly gives both teams and agents verifiable feedback before mistakes compound."
-    secondary_cta_label: "Try OBS Management Live Demo"
-    secondary_cta_url: "https://datalaria.com/apps/obs-management/?mock=true"
+    secondary_cta_label: "Explore Kits & Apps at /resources/"
+    secondary_cta_url: "https://datalaria.com/en/resources/"
     ps_referral_text: "If an engineer on your team loves connecting foundational math history to modern AI systems, feel free to forward this edition."
   devto:
     enabled: true
