@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-11-14T09:16:35.464376Z",
+  "generated_at": "2026-11-14T09:18:37.390056Z",
   "total_assets": 149,
   "published_assets": 126,
   "scheduled_assets": 19,
@@ -982,8 +982,8 @@
       "brief_es": "La vida de Norbert Wiener: sus excentricidades en el MIT, el predictor antiaéreo de la WWII, el nacimiento de la Cibernética y su profética advertencia de 1960 sobre el alineamiento de la IA.",
       "brief_en": "A deep dive into the life and legacy of Norbert Wiener: his eccentricities at MIT, the WWII anti-aircraft predictor, the birth of Cybernetics, and his prophetic 1960 warning on the AI alignment problem.",
       "publish_date": "2026-11-14",
-      "last_modified_es": "2026-11-14T09:43:57+01:00",
-      "last_modified_en": "2026-11-14T09:43:57+01:00",
+      "last_modified_es": "2026-11-14T10:17:46+01:00",
+      "last_modified_en": "2026-11-14T10:17:46+01:00",
       "language_parity": "complete",
       "category": "Pioneros y Referentes",
       "categories": [
@@ -1004,9 +1004,9 @@
         "inteligencia artificial"
       ],
       "series": null,
-      "word_count_es": 3531,
-      "word_count_en": 3497,
-      "reading_time_min": 18,
+      "word_count_es": 3669,
+      "word_count_en": 3629,
+      "reading_time_min": 19,
       "related_app": "obs-management",
       "related_kit": "/recursos/",
       "included_kits": [],
