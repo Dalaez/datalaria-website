@@ -73,8 +73,8 @@
     "brief_es": "Cierre técnico de la serie Autopilot: cómo sustituimos CrewAI y APIs caras por contratos Pydantic v2, validador determinista, X a 0 € y sindicación en Dev.to y CoderLegion.",
     "brief_en": "Technical finale of the Autopilot series: replacing CrewAI and brittle CI calls with Pydantic v2 contracts, deterministic QA gates, 0-cost X Web Intents, and Dev.to/CoderLegion syndication.",
     "publish_date": "2026-11-15",
-    "last_modified_es": "2026-11-15T07:32:32.818188Z",
-    "last_modified_en": "2026-11-15T07:32:32.803229Z",
+    "last_modified_es": "2026-11-15T08:35:52+01:00",
+    "last_modified_en": "2026-11-15T08:35:52+01:00",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
