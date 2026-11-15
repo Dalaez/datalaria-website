@@ -1,68 +1,68 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-11-14T08:40:33.308766Z",
+  "generated_at": "2026-11-15T07:43:03.256605Z",
   "visibility": "private",
-  "total_published_posts": 102,
-  "total_scheduled_posts": 18,
-  "total_30d_post_views": 1631,
-  "median_post_views": 9.0,
+  "total_published_posts": 103,
+  "total_scheduled_posts": 17,
+  "total_30d_post_views": 1612,
+  "median_post_views": 8.0,
   "p75_post_views": 22.0,
-  "monthly_growth_yoy_pct": 7075.0,
+  "monthly_growth_yoy_pct": 7241.9,
   "category_performance": [
     {
       "category": "Estrategia y Operaciones",
       "published_posts": 14,
-      "total_views_30d": 495,
-      "avg_views_per_post": 35.4,
-      "total_users_30d": 178,
-      "avg_engagement_sec": 32.5,
+      "total_views_30d": 483,
+      "avg_views_per_post": 34.5,
+      "total_users_30d": 181,
+      "avg_engagement_sec": 31.8,
       "monetized_posts": 12,
       "monetization_coverage_pct": 85.7,
-      "editorial_roi_score": 90.3
+      "editorial_roi_score": 89.9
     },
     {
       "category": "Pioneros y Referentes",
       "published_posts": 13,
-      "total_views_30d": 264,
-      "avg_views_per_post": 20.3,
-      "total_users_30d": 217,
+      "total_views_30d": 258,
+      "avg_views_per_post": 19.8,
+      "total_users_30d": 212,
       "avg_engagement_sec": 29.6,
       "monetized_posts": 7,
       "monetization_coverage_pct": 53.8,
-      "editorial_roi_score": 65.8
+      "editorial_roi_score": 65.0
     },
     {
       "category": "Startups",
       "published_posts": 13,
       "total_views_30d": 171,
       "avg_views_per_post": 13.2,
-      "total_users_30d": 151,
-      "avg_engagement_sec": 29.8,
+      "total_users_30d": 154,
+      "avg_engagement_sec": 29.0,
       "monetized_posts": 4,
       "monetization_coverage_pct": 30.8,
-      "editorial_roi_score": 47.9
+      "editorial_roi_score": 47.4
     },
     {
       "category": "IA, Ingeniería y Proyectos",
-      "published_posts": 50,
-      "total_views_30d": 576,
-      "avg_views_per_post": 11.5,
-      "total_users_30d": 395,
-      "avg_engagement_sec": 8.1,
-      "monetized_posts": 24,
-      "monetization_coverage_pct": 48.0,
+      "published_posts": 51,
+      "total_views_30d": 573,
+      "avg_views_per_post": 11.2,
+      "total_users_30d": 392,
+      "avg_engagement_sec": 8.2,
+      "monetized_posts": 25,
+      "monetization_coverage_pct": 49.0,
       "editorial_roi_score": 38.0
     },
     {
       "category": "Cultura Tech y Media",
       "published_posts": 12,
-      "total_views_30d": 125,
-      "avg_views_per_post": 10.4,
-      "total_users_30d": 92,
-      "avg_engagement_sec": 6.0,
+      "total_views_30d": 127,
+      "avg_views_per_post": 10.6,
+      "total_users_30d": 93,
+      "avg_engagement_sec": 5.9,
       "monetized_posts": 5,
       "monetization_coverage_pct": 41.7,
-      "editorial_roi_score": 32.9
+      "editorial_roi_score": 33.1
     }
   ],
   "quick_wins_ctr": [
@@ -141,9 +141,9 @@
       "title_es": "Matriz RACI Cuantitativa: Balance de Carga Operativa, Unicidad de Accountable y Detección de Cuellos de Botella",
       "title_en": "Quantitative RACI Matrix: Operational Workload Balancing, Single Accountability & Bottleneck Detection",
       "category": "Estrategia y Operaciones",
-      "ga4_views_30d": 34,
+      "ga4_views_30d": 35,
       "ga4_users_30d": 9,
-      "avg_engagement_sec": 32.3,
+      "avg_engagement_sec": 32.7,
       "gsc_impressions_30d": 0,
       "gsc_avg_position": 0.0,
       "gsc_ctr_pct": 0.0,
@@ -152,7 +152,7 @@
         "Longitud de título no óptima (111 caracteres; ideal: 35-95)"
       ],
       "opportunity_type": "serp_snippet_truncation",
-      "priority_score": 27.0,
+      "priority_score": 27.5,
       "recommended_title_es": "Matriz RACI Cuantitativa: Balance de Carga Operativa, Unicidad de Accountable y Detección de",
       "recommended_title_en": "Quantitative RACI Matrix: Operational Workload Balancing, Single Accountability & Bottleneck",
       "recommended_desc_es": "Guía metodológica y cuantitativa para transformar la matriz RACI tradicional en un motor dinámico de control operativo: principio de Accountable único, cálculo de saturación por rol, semáforos de riesgo de burnout y plan de rebalanceo C-Level."
@@ -181,6 +181,29 @@
       "recommended_desc_es": "Tercer capítulo de Proyecto Autopilot. Transformamos datos fríos en historias virales creando dos agentes con personalidades opuestas: un influencer cínico y un líder corporativo."
     },
     {
+      "id": "ia_agents_part4",
+      "slug": "ia_agents_part4",
+      "title_es": "Autopilot - La Pesadilla de las APIs: Cómo vencí a la burocracia de LinkedIn para automatizar mi empresa",
+      "title_en": "Autopilot - the API Nightmare: How I Defeated LinkedIn Bureaucracy to Automate My Company",
+      "category": "IA, Ingeniería y Proyectos",
+      "ga4_views_30d": 8,
+      "ga4_users_30d": 8,
+      "avg_engagement_sec": 0.6,
+      "gsc_impressions_30d": 0,
+      "gsc_avg_position": 0.0,
+      "gsc_ctr_pct": 0.0,
+      "seo_score": 60,
+      "seo_issues": [
+        "Longitud de título no óptima (104 caracteres; ideal: 35-95)",
+        "Sin enlaces internos hacia el portal o shortcodes de apps"
+      ],
+      "opportunity_type": "serp_snippet_truncation",
+      "priority_score": 24.0,
+      "recommended_title_es": "Autopilot - La Pesadilla de las APIs: Cómo vencí a la burocracia de LinkedIn para automatizar",
+      "recommended_title_en": "Autopilot - the API Nightmare: How I Defeated LinkedIn Bureaucracy to Automate My Company",
+      "recommended_desc_es": "Cuarto capítulo de Proyecto Autopilot. Lo que iba a ser un script de 10 minutos se convirtió en una guerra de formularios. Narramos cómo desbloqueamos el permiso 'w_organization_social' para publicar como Empresa."
+    },
+    {
       "id": "app-openweather_part1_backend",
       "slug": "app-openweather_part1_backend",
       "title_es": "Proyecto Weather Service (Parte 1): Construyendo el Recolector de Datos con Python y GitHub Actions o Netlify",
@@ -188,7 +211,7 @@
       "category": "IA, Ingeniería y Proyectos",
       "ga4_views_30d": 27,
       "ga4_users_30d": 27,
-      "avg_engagement_sec": 1.6,
+      "avg_engagement_sec": 0.6,
       "gsc_impressions_30d": 0,
       "gsc_avg_position": 0.0,
       "gsc_ctr_pct": 0.0,
@@ -225,6 +248,28 @@
       "recommended_desc_es": "Aprende a crear un juego web estilo arcade con estética neón utilizando solo HTML5 Canvas y JS Vanilla. Descubre cómo integrar un ranking global en tiempo real usando la base de datos PostgreSQL de Supabase."
     },
     {
+      "id": "halt_and_catch_fire",
+      "slug": "halt_and_catch_fire",
+      "title_es": "Halt and Catch Fire: La Serie de Culto que Entendió la Ingeniería de Software Mejor que Silicon Valley",
+      "title_en": "Halt and Catch Fire: The Cult TV Series That Understood Software Engineering Better Than Silicon Valley",
+      "category": "Cultura Tech y Media",
+      "ga4_views_30d": 18,
+      "ga4_users_30d": 7,
+      "avg_engagement_sec": 8.0,
+      "gsc_impressions_30d": 0,
+      "gsc_avg_position": 0.0,
+      "gsc_ctr_pct": 0.0,
+      "seo_score": 80,
+      "seo_issues": [
+        "Longitud de título no óptima (102 caracteres; ideal: 35-95)"
+      ],
+      "opportunity_type": "serp_snippet_truncation",
+      "priority_score": 19.0,
+      "recommended_title_es": "Halt and Catch Fire: La Serie de Culto que Entendió la Ingeniería de Software Mejor que",
+      "recommended_title_en": "Halt and Catch Fire: The Cult TV Series That Understood Software Engineering Better Than",
+      "recommended_desc_es": "Un análisis exhaustivo de 'Halt and Catch Fire', la obra maestra televisiva de AMC que retrató con precisión quirúrgica el nacimiento del PC clónico, los videojuegos multijugador online, el comercio electrónico y la World Wide Web."
+    },
+    {
       "id": "happyrobot",
       "slug": "happyrobot",
       "title_es": "HappyRobot: Cómo los Agentes de Voz Autónomos Conquistaron la Logística Global",
@@ -245,50 +290,6 @@
       "recommended_title_es": "HappyRobot: Cómo los Agentes de Voz Autónomos Conquistaron la Logística Global",
       "recommended_title_en": "HappyRobot: How Autonomous Voice Agents Conquered Global Logistics",
       "recommended_desc_es": "De graduarse en Y Combinator a alcanzar el estatus de unicornio (1.200M$ de valoración): analizamos la arquitectura técnica de HappyRobot, sus agentes de voz en tiempo real con latencia sub-500ms y cómo automatizan las operaciones de gigantes"
-    },
-    {
-      "id": "halt_and_catch_fire",
-      "slug": "halt_and_catch_fire",
-      "title_es": "Halt and Catch Fire: La Serie de Culto que Entendió la Ingeniería de Software Mejor que Silicon Valley",
-      "title_en": "Halt and Catch Fire: The Cult TV Series That Understood Software Engineering Better Than Silicon Valley",
-      "category": "Cultura Tech y Media",
-      "ga4_views_30d": 17,
-      "ga4_users_30d": 6,
-      "avg_engagement_sec": 9.3,
-      "gsc_impressions_30d": 0,
-      "gsc_avg_position": 0.0,
-      "gsc_ctr_pct": 0.0,
-      "seo_score": 80,
-      "seo_issues": [
-        "Longitud de título no óptima (102 caracteres; ideal: 35-95)"
-      ],
-      "opportunity_type": "serp_snippet_truncation",
-      "priority_score": 18.5,
-      "recommended_title_es": "Halt and Catch Fire: La Serie de Culto que Entendió la Ingeniería de Software Mejor que",
-      "recommended_title_en": "Halt and Catch Fire: The Cult TV Series That Understood Software Engineering Better Than",
-      "recommended_desc_es": "Un análisis exhaustivo de 'Halt and Catch Fire', la obra maestra televisiva de AMC que retrató con precisión quirúrgica el nacimiento del PC clónico, los videojuegos multijugador online, el comercio electrónico y la World Wide Web."
-    },
-    {
-      "id": "freepik",
-      "slug": "freepik",
-      "title_es": "Freepik: La Historia del Gigante Malagueño que Domó a la IA para Conquistar el Mundo Creativo",
-      "title_en": "Freepik: The Story of the Giant from Málaga that Tamed AI to Conquer the Creative World",
-      "category": "Startups",
-      "ga4_views_30d": 16,
-      "ga4_users_30d": 15,
-      "avg_engagement_sec": 28.0,
-      "gsc_impressions_30d": 0,
-      "gsc_avg_position": 0.0,
-      "gsc_ctr_pct": 0.0,
-      "seo_score": 80,
-      "seo_issues": [
-        "Sin enlaces internos hacia el portal o shortcodes de apps"
-      ],
-      "opportunity_type": "serp_snippet_truncation",
-      "priority_score": 18.0,
-      "recommended_title_es": "Freepik: La Historia del Gigante Malagueño que Domó a la IA para Conquistar el Mundo Creativo",
-      "recommended_title_en": "Freepik: The Story of the Giant from Málaga that Tamed AI to Conquer the Creative World",
-      "recommended_desc_es": "Un análisis profundo de cómo Freepik, la startup malagueña, pasó de ser un buscador de imágenes a un líder global, enfrentándose a la disrupción de la IA con una estrategia audaz que está redefiniendo el futuro de la creatividad."
     },
     {
       "id": "ia_agents_part2",
@@ -340,7 +341,7 @@
       "title_es": "El Stack de Productividad de un Ingeniero en 2026: Las Herramientas que Uso Cada Día",
       "title_en": "An Engineer's Productivity Stack in 2026: The Tools I Use Every Day",
       "category": "IA, Ingeniería y Proyectos",
-      "ga4_views_30d": 14,
+      "ga4_views_30d": 15,
       "ga4_users_30d": 4,
       "avg_engagement_sec": 0.0,
       "gsc_impressions_30d": 0,
@@ -351,10 +352,32 @@
         "Meta descripción no óptima (255 caracteres; ideal: 75-250)"
       ],
       "opportunity_type": "serp_snippet_truncation",
-      "priority_score": 17.0,
+      "priority_score": 17.5,
       "recommended_title_es": "El Stack de Productividad de un Ingeniero en 2026: Las Herramientas que Uso Cada Día",
       "recommended_title_en": "An Engineer's Productivity Stack in 2026: The Tools I Use Every Day",
       "recommended_desc_es": "El stack real de herramientas de un ingeniero de datos en 2026: desde Gemini Deep Research hasta GitHub Actions, pasando por Python, Supabase, CrewAI y Hugo. Sin patrocinios, sin afiliados, sin filtros. Cada herramienta explicada con el post"
+    },
+    {
+      "id": "freepik",
+      "slug": "freepik",
+      "title_es": "Freepik: La Historia del Gigante Malagueño que Domó a la IA para Conquistar el Mundo Creativo",
+      "title_en": "Freepik: The Story of the Giant from Málaga that Tamed AI to Conquer the Creative World",
+      "category": "Startups",
+      "ga4_views_30d": 14,
+      "ga4_users_30d": 14,
+      "avg_engagement_sec": 25.6,
+      "gsc_impressions_30d": 0,
+      "gsc_avg_position": 0.0,
+      "gsc_ctr_pct": 0.0,
+      "seo_score": 80,
+      "seo_issues": [
+        "Sin enlaces internos hacia el portal o shortcodes de apps"
+      ],
+      "opportunity_type": "serp_snippet_truncation",
+      "priority_score": 17.0,
+      "recommended_title_es": "Freepik: La Historia del Gigante Malagueño que Domó a la IA para Conquistar el Mundo Creativo",
+      "recommended_title_en": "Freepik: The Story of the Giant from Málaga that Tamed AI to Conquer the Creative World",
+      "recommended_desc_es": "Un análisis profundo de cómo Freepik, la startup malagueña, pasó de ser un buscador de imágenes a un líder global, enfrentándose a la disrupción de la IA con una estrategia audaz que está redefiniendo el futuro de la creatividad."
     },
     {
       "id": "finetuning_vs_rag",
@@ -445,6 +468,28 @@
       "recommended_desc_es": "Segunda entrega del proyecto Weather Service. Nos adentramos en el frontend: sirviendo un dashboard dinámico con GitHub Pages o Netlify, leyendo datos CSV con PapaParse.js y creando gráficos interactivos con Chart.js."
     },
     {
+      "id": "the-goal",
+      "slug": "the-goal",
+      "title_es": "La Meta no es (solo) sobre fábricas: Sincronizando tu empresa en la era de la IA",
+      "title_en": "The Goal is Not (Just) About Factories: Synchronizing Your Enterprise in the Age of AI",
+      "category": "Cultura Tech y Media",
+      "ga4_views_30d": 10,
+      "ga4_users_30d": 10,
+      "avg_engagement_sec": 0.2,
+      "gsc_impressions_30d": 0,
+      "gsc_avg_position": 0.0,
+      "gsc_ctr_pct": 0.0,
+      "seo_score": 80,
+      "seo_issues": [
+        "Sin enlaces internos hacia el portal o shortcodes de apps"
+      ],
+      "opportunity_type": "serp_snippet_truncation",
+      "priority_score": 15.0,
+      "recommended_title_es": "La Meta no es (solo) sobre fábricas: Sincronizando tu empresa en la era de la IA",
+      "recommended_title_en": "The Goal is Not (Just) About Factories: Synchronizing Your Enterprise in the Age of AI",
+      "recommended_desc_es": "Un análisis profundo de 'La Meta' de Eli Goldratt y cómo la Teoría de Restricciones (TOC) se aplica más allá de la producción, a la ingeniería, la gestión de proyectos y la cadena de suministro, potenciada por la IA y la Industria 4.0."
+    },
+    {
       "id": "wallapop",
       "slug": "wallapop",
       "title_es": "Wallapop: La Ingeniería Invisible detrás del Mayor Marketplace Circular de Europa",
@@ -467,14 +512,36 @@
       "recommended_desc_es": "Cómo Wallapop transformó la compraventa de segunda mano en una plataforma tecnológica de 19 millones de usuarios. Analizamos su arquitectura de Machine Learning: búsqueda visual multimodal, algoritmos de pricing dinámico, grafos antifraude"
     },
     {
+      "id": "app-lifeops_part1_arquitectura_backend",
+      "slug": "app-lifeops_part1_arquitectura_backend",
+      "title_es": "Proyecto LifeOps (Parte 1): Arquitectura de un Sistema Operativo Personal y Backend con FastAPI + Supabase",
+      "title_en": "Project LifeOps (Part 1): Personal Operating System Architecture and FastAPI + Supabase Backend",
+      "category": "IA, Ingeniería y Proyectos",
+      "ga4_views_30d": 8,
+      "ga4_users_30d": 5,
+      "avg_engagement_sec": 2.2,
+      "gsc_impressions_30d": 0,
+      "gsc_avg_position": 0.0,
+      "gsc_ctr_pct": 0.0,
+      "seo_score": 80,
+      "seo_issues": [
+        "Longitud de título no óptima (106 caracteres; ideal: 35-95)"
+      ],
+      "opportunity_type": "serp_snippet_truncation",
+      "priority_score": 14.0,
+      "recommended_title_es": "Proyecto LifeOps (Parte 1): Arquitectura de un Sistema Operativo Personal y Backend con",
+      "recommended_title_en": "Project LifeOps (Part 1): Personal Operating System Architecture and FastAPI + Supabase Backend",
+      "recommended_desc_es": "Primera entrega de la serie LifeOps: cómo diseñé y construí mi propio sistema operativo personal y profesional a coste cero ($0/mes) unificando deporte, lecturas, cine, tareas Kanban y proyectos con FastAPI y Supabase."
+    },
+    {
       "id": "deming",
       "slug": "deming",
       "title_es": "W. Edwards Deming: El Padre de la Calidad Total que Predijo el Futuro de la IA",
       "title_en": "W. Edwards Deming: The Father of Total Quality Who Predicted the Future of AI",
       "category": "Pioneros y Referentes",
-      "ga4_views_30d": 9,
-      "ga4_users_30d": 9,
-      "avg_engagement_sec": 3.7,
+      "ga4_views_30d": 8,
+      "ga4_users_30d": 8,
+      "avg_engagement_sec": 4.1,
       "gsc_impressions_30d": 0,
       "gsc_avg_position": 0.0,
       "gsc_ctr_pct": 0.0,
@@ -483,32 +550,54 @@
         "Sin enlaces internos hacia el portal o shortcodes de apps"
       ],
       "opportunity_type": "serp_snippet_truncation",
-      "priority_score": 14.5,
+      "priority_score": 14.0,
       "recommended_title_es": "W. Edwards Deming: El Padre de la Calidad Total que Predijo el Futuro de la IA",
       "recommended_title_en": "W. Edwards Deming: The Father of Total Quality Who Predicted the Future of AI",
       "recommended_desc_es": "Descubre cómo W. Edwards Deming revolucionó la manufactura con el Control Estadístico de Procesos, salvó a Toyota y estableció los principios que hoy rigen la Inteligencia Artificial y el S&OP moderno."
     },
     {
-      "id": "the-goal",
-      "slug": "the-goal",
-      "title_es": "La Meta no es (solo) sobre fábricas: Sincronizando tu empresa en la era de la IA",
-      "title_en": "The Goal is Not (Just) About Factories: Synchronizing Your Enterprise in the Age of AI",
-      "category": "Cultura Tech y Media",
-      "ga4_views_30d": 9,
-      "ga4_users_30d": 9,
-      "avg_engagement_sec": 0.2,
+      "id": "obs_parte1_intro",
+      "slug": "obs_parte1_intro",
+      "title_es": "El Ajedrez de la Obsolescencia: Cómo convertir el colapso de la cadena de suministro en tu mayor ventaja competitiva",
+      "title_en": "The Chess of Obsolescence: Turning Supply Chain Collapse into Your Ultimate Competitive Advantage",
+      "category": "IA, Ingeniería y Proyectos",
+      "ga4_views_30d": 8,
+      "ga4_users_30d": 5,
+      "avg_engagement_sec": 4.6,
       "gsc_impressions_30d": 0,
       "gsc_avg_position": 0.0,
       "gsc_ctr_pct": 0.0,
       "seo_score": 80,
       "seo_issues": [
-        "Sin enlaces internos hacia el portal o shortcodes de apps"
+        "Longitud de título no óptima (116 caracteres; ideal: 35-95)"
       ],
       "opportunity_type": "serp_snippet_truncation",
-      "priority_score": 14.5,
-      "recommended_title_es": "La Meta no es (solo) sobre fábricas: Sincronizando tu empresa en la era de la IA",
-      "recommended_title_en": "The Goal is Not (Just) About Factories: Synchronizing Your Enterprise in the Age of AI",
-      "recommended_desc_es": "Un análisis profundo de 'La Meta' de Eli Goldratt y cómo la Teoría de Restricciones (TOC) se aplica más allá de la producción, a la ingeniería, la gestión de proyectos y la cadena de suministro, potenciada por la IA y la Industria 4.0."
+      "priority_score": 14.0,
+      "recommended_title_es": "El Ajedrez de la Obsolescencia: Cómo convertir el colapso de la cadena de suministro en tu",
+      "recommended_title_en": "The Chess of Obsolescence: Turning Supply Chain Collapse into Your Ultimate Competitive",
+      "recommended_desc_es": "La obsolescencia de componentes no es un accidente, sino una entropía predecible que, gestionada con precisión, se convierte en una ventaja competitiva masiva. Rompiendo la falacia del Cisne Negro industrial."
+    },
+    {
+      "id": "rag_antipatrones",
+      "slug": "rag_antipatrones",
+      "title_es": "RAG en Producción: 7 Antipatrones que Destruyen la Precisión (y Cómo los Solucioné)",
+      "title_en": "RAG in Production: 7 Anti-Patterns That Destroy Precision (And How I Fixed Them)",
+      "category": "IA, Ingeniería y Proyectos",
+      "ga4_views_30d": 8,
+      "ga4_users_30d": 8,
+      "avg_engagement_sec": 0.0,
+      "gsc_impressions_30d": 0,
+      "gsc_avg_position": 0.0,
+      "gsc_ctr_pct": 0.0,
+      "seo_score": 80,
+      "seo_issues": [
+        "Meta descripción no óptima (267 caracteres; ideal: 75-250)"
+      ],
+      "opportunity_type": "serp_snippet_truncation",
+      "priority_score": 14.0,
+      "recommended_title_es": "RAG en Producción: 7 Antipatrones que Destruyen la Precisión (y Cómo los Solucioné)",
+      "recommended_title_en": "RAG in Production: 7 Anti-Patterns That Destroy Precision (And How I Fixed Them)",
+      "recommended_desc_es": "Análisis de los 7 errores más comunes al implementar RAG (Retrieval-Augmented Generation) en producción real. Con lecciones aprendidas del Ops Engineering Copilot y el radar agéntico de obsolescencia de Datalaria, y la comparativa definitiva"
     }
   ],
   "monetization_orphans": [
@@ -517,10 +606,10 @@
       "slug": "claude_shannon",
       "title_es": "Claude Shannon: El Hombre que Convirtió el Mundo en Bits y Definió el Futuro de la IA",
       "category": "Pioneros y Referentes",
-      "ga4_views_30d": 25,
-      "ga4_users_30d": 21,
-      "avg_engagement_sec": 33.1,
-      "rank_pct": 78,
+      "ga4_views_30d": 26,
+      "ga4_users_30d": 22,
+      "avg_engagement_sec": 31.6,
+      "rank_pct": 81,
       "recommended_bridge_type": "helix_waitlist",
       "recommended_target_id": "helix",
       "recommended_shortcode_or_url": "{{< helix-waitlist >}}",
@@ -534,7 +623,7 @@
       "title_es": "Visualizaciones básicas",
       "category": "IA, Ingeniería y Proyectos",
       "publish_date": "2025-08-12",
-      "days_since_publish": 459,
+      "days_since_publish": 460,
       "ga4_views_30d": 0,
       "seo_score": 80,
       "recommended_action": "Refrescar contenido y re-sindicar en redes sociales"
@@ -545,7 +634,7 @@
       "title_es": "De la Narrativa al Diagrama: Diseñando Procesos S&OP con IA y BPMN",
       "category": "Estrategia y Operaciones",
       "publish_date": "2025-12-19",
-      "days_since_publish": 330,
+      "days_since_publish": 331,
       "ga4_views_30d": 0,
       "seo_score": 80,
       "recommended_action": "Refrescar contenido y re-sindicar en redes sociales"
@@ -556,7 +645,7 @@
       "title_es": "Copilotando con IA: Aprendiendo con Founderz y ChatGPT",
       "category": "Cultura Tech y Media",
       "publish_date": "2025-09-11",
-      "days_since_publish": 429,
+      "days_since_publish": 430,
       "ga4_views_30d": 0,
       "seo_score": 100,
       "recommended_action": "Refrescar contenido y re-sindicar en redes sociales"
@@ -567,7 +656,7 @@
       "title_es": "Estadística Descriptiva",
       "category": "IA, Ingeniería y Proyectos",
       "publish_date": "2025-08-09",
-      "days_since_publish": 462,
+      "days_since_publish": 463,
       "ga4_views_30d": 1,
       "seo_score": 60,
       "recommended_action": "Actualizar título y añadir enlaces internos hacia Kits/Apps"
@@ -578,7 +667,7 @@
       "title_es": "Kilómetro 0: Por qué nace Datalaria",
       "category": "Cultura Tech y Media",
       "publish_date": "2025-08-06",
-      "days_since_publish": 465,
+      "days_since_publish": 466,
       "ga4_views_30d": 1,
       "seo_score": 60,
       "recommended_action": "Actualizar título y añadir enlaces internos hacia Kits/Apps"
@@ -589,9 +678,42 @@
       "title_es": "Aprendiendo con IA - NotebookLM: De un libro a una plataforma de aprendizaje multimedia",
       "category": "Cultura Tech y Media",
       "publish_date": "2025-08-31",
-      "days_since_publish": 440,
+      "days_since_publish": 441,
       "ga4_views_30d": 1,
       "seo_score": 80,
+      "recommended_action": "Refrescar contenido y re-sindicar en redes sociales"
+    },
+    {
+      "id": "sop_ingenieria-higiene-datos",
+      "slug": "sop_ingenieria-higiene-datos",
+      "title_es": "S&OP: Por qué tu Excel te miente (y cómo interrogarlo con Python)",
+      "category": "IA, Ingeniería y Proyectos",
+      "publish_date": "2026-02-28",
+      "days_since_publish": 260,
+      "ga4_views_30d": 1,
+      "seo_score": 80,
+      "recommended_action": "Refrescar contenido y re-sindicar en redes sociales"
+    },
+    {
+      "id": "sop-ingenieria-parte2-prediccion",
+      "slug": "sop-ingenieria-parte2-prediccion",
+      "title_es": "Ingeniería S&OP II: Demand Planning, de la Adivinación a la Probabilidad",
+      "category": "IA, Ingeniería y Proyectos",
+      "publish_date": "2026-03-07",
+      "days_since_publish": 253,
+      "ga4_views_30d": 1,
+      "seo_score": 100,
+      "recommended_action": "Refrescar contenido y re-sindicar en redes sociales"
+    },
+    {
+      "id": "sop-ingenieria-parte3-optimizacion",
+      "slug": "sop-ingenieria-parte3-optimizacion",
+      "title_es": "Ingeniería S&OP III: El Fin de Excel (Programación Lineal para Supply Planning)",
+      "category": "IA, Ingeniería y Proyectos",
+      "publish_date": "2026-03-13",
+      "days_since_publish": 247,
+      "ga4_views_30d": 1,
+      "seo_score": 100,
       "recommended_action": "Refrescar contenido y re-sindicar en redes sociales"
     },
     {
@@ -600,7 +722,7 @@
       "title_es": "Investigando con IA: Cómo Creé un Informe detallado sobre el impacto de la IA en la Educación a nivel global en Minutos con Deep Research de Gemini",
       "category": "Cultura Tech y Media",
       "publish_date": "2025-09-27",
-      "days_since_publish": 413,
+      "days_since_publish": 414,
       "ga4_views_30d": 2,
       "seo_score": 80,
       "recommended_action": "Refrescar contenido y re-sindicar en redes sociales"
@@ -611,7 +733,7 @@
       "title_es": "El Arsenal Táctico: Por qué comprar Software especializado para la gestiónd de la cadena de suministro no salvará tu producción de las obsolescencias",
       "category": "IA, Ingeniería y Proyectos",
       "publish_date": "2026-04-14",
-      "days_since_publish": 214,
+      "days_since_publish": 215,
       "ga4_views_30d": 2,
       "seo_score": 80,
       "recommended_action": "Refrescar contenido y re-sindicar en redes sociales"
@@ -622,18 +744,7 @@
       "title_es": "Reuniones Excelentes en la Era de la IA: El Decálogo Definitivo",
       "category": "Estrategia y Operaciones",
       "publish_date": "2025-11-21",
-      "days_since_publish": 358,
-      "ga4_views_30d": 2,
-      "seo_score": 80,
-      "recommended_action": "Refrescar contenido y re-sindicar en redes sociales"
-    },
-    {
-      "id": "sop_ingenieria-higiene-datos",
-      "slug": "sop_ingenieria-higiene-datos",
-      "title_es": "S&OP: Por qué tu Excel te miente (y cómo interrogarlo con Python)",
-      "category": "IA, Ingeniería y Proyectos",
-      "publish_date": "2026-02-28",
-      "days_since_publish": 259,
+      "days_since_publish": 359,
       "ga4_views_30d": 2,
       "seo_score": 80,
       "recommended_action": "Refrescar contenido y re-sindicar en redes sociales"
@@ -644,29 +755,7 @@
       "title_es": "Construyendo Datalaria: Tecnologías y herramientas",
       "category": "IA, Ingeniería y Proyectos",
       "publish_date": "2025-08-17",
-      "days_since_publish": 454,
-      "ga4_views_30d": 2,
-      "seo_score": 100,
-      "recommended_action": "Refrescar contenido y re-sindicar en redes sociales"
-    },
-    {
-      "id": "sop-ingenieria-parte2-prediccion",
-      "slug": "sop-ingenieria-parte2-prediccion",
-      "title_es": "Ingeniería S&OP II: Demand Planning, de la Adivinación a la Probabilidad",
-      "category": "IA, Ingeniería y Proyectos",
-      "publish_date": "2026-03-07",
-      "days_since_publish": 252,
-      "ga4_views_30d": 2,
-      "seo_score": 100,
-      "recommended_action": "Refrescar contenido y re-sindicar en redes sociales"
-    },
-    {
-      "id": "sop-ingenieria-parte3-optimizacion",
-      "slug": "sop-ingenieria-parte3-optimizacion",
-      "title_es": "Ingeniería S&OP III: El Fin de Excel (Programación Lineal para Supply Planning)",
-      "category": "IA, Ingeniería y Proyectos",
-      "publish_date": "2026-03-13",
-      "days_since_publish": 246,
+      "days_since_publish": 455,
       "ga4_views_30d": 2,
       "seo_score": 100,
       "recommended_action": "Refrescar contenido y re-sindicar en redes sociales"
@@ -677,7 +766,7 @@
       "title_es": "Proyecto Weather (Extras): Más Allá de la IA - Construyendo un Dashboard Robusto y Centrado en el Usuario",
       "category": "IA, Ingeniería y Proyectos",
       "publish_date": "2025-12-06",
-      "days_since_publish": 343,
+      "days_since_publish": 344,
       "ga4_views_30d": 3,
       "seo_score": 60,
       "recommended_action": "Actualizar título y añadir enlaces internos hacia Kits/Apps"
@@ -688,20 +777,9 @@
       "title_es": "Proyecto Autopilot: Por qué me despedí como Community Manager para construir un Ejército de agentes de IA",
       "category": "IA, Ingeniería y Proyectos",
       "publish_date": "2025-12-27",
-      "days_since_publish": 322,
+      "days_since_publish": 323,
       "ga4_views_30d": 4,
       "seo_score": 40,
-      "recommended_action": "Actualizar título y añadir enlaces internos hacia Kits/Apps"
-    },
-    {
-      "id": "clarity_ai",
-      "slug": "clarity_ai",
-      "title_es": "Clarity AI: Cómo Rebeca Minguela y la IA Están Redefiniendo y Cuantificando la Sostenibilidad Financiera",
-      "category": "Startups",
-      "publish_date": "2026-04-03",
-      "days_since_publish": 225,
-      "ga4_views_30d": 4,
-      "seo_score": 60,
       "recommended_action": "Actualizar título y añadir enlaces internos hacia Kits/Apps"
     },
     {
@@ -710,19 +788,19 @@
       "title_es": "Devo: Cómo un Químico Autodidacta Construyó desde Madrid el Motor de Datos que Defiende a la Fuerza Aérea de EE.UU.",
       "category": "Startups",
       "publish_date": "2026-06-07",
-      "days_since_publish": 160,
+      "days_since_publish": 161,
       "ga4_views_30d": 4,
       "seo_score": 60,
       "recommended_action": "Actualizar título y añadir enlaces internos hacia Kits/Apps"
     },
     {
-      "id": "onboarding",
-      "slug": "onboarding",
-      "title_es": "De los '24 Días' al Éxito Inmediato: Revolucionando el Onboarding con Inteligencia Artificial",
-      "category": "Estrategia y Operaciones",
-      "publish_date": "2026-01-17",
-      "days_since_publish": 301,
-      "ga4_views_30d": 7,
+      "id": "clarity_ai",
+      "slug": "clarity_ai",
+      "title_es": "Clarity AI: Cómo Rebeca Minguela y la IA Están Redefiniendo y Cuantificando la Sostenibilidad Financiera",
+      "category": "Startups",
+      "publish_date": "2026-04-03",
+      "days_since_publish": 226,
+      "ga4_views_30d": 5,
       "seo_score": 60,
       "recommended_action": "Actualizar título y añadir enlaces internos hacia Kits/Apps"
     },
@@ -732,8 +810,19 @@
       "title_es": "El auténtico John Snow, precursor de la Geolocalización",
       "category": "Pioneros y Referentes",
       "publish_date": "2025-08-26",
-      "days_since_publish": 445,
-      "ga4_views_30d": 8,
+      "days_since_publish": 446,
+      "ga4_views_30d": 7,
+      "seo_score": 60,
+      "recommended_action": "Actualizar título y añadir enlaces internos hacia Kits/Apps"
+    },
+    {
+      "id": "onboarding",
+      "slug": "onboarding",
+      "title_es": "De los '24 Días' al Éxito Inmediato: Revolucionando el Onboarding con Inteligencia Artificial",
+      "category": "Estrategia y Operaciones",
+      "publish_date": "2026-01-17",
+      "days_since_publish": 302,
+      "ga4_views_30d": 7,
       "seo_score": 60,
       "recommended_action": "Actualizar título y añadir enlaces internos hacia Kits/Apps"
     },
@@ -743,7 +832,7 @@
       "title_es": "Autopilot - La Pesadilla de las APIs: Cómo vencí a la burocracia de LinkedIn para automatizar mi empresa",
       "category": "IA, Ingeniería y Proyectos",
       "publish_date": "2026-01-07",
-      "days_since_publish": 311,
+      "days_since_publish": 312,
       "ga4_views_30d": 8,
       "seo_score": 60,
       "recommended_action": "Actualizar título y añadir enlaces internos hacia Kits/Apps"
@@ -754,7 +843,7 @@
       "title_es": "Autopilot - Los Creativos: Cómo programé a una IA para que fuera cínica en Twitter y corporativa en LinkedIn",
       "category": "IA, Ingeniería y Proyectos",
       "publish_date": "2026-01-03",
-      "days_since_publish": 315,
+      "days_since_publish": 316,
       "ga4_views_30d": 13,
       "seo_score": 60,
       "recommended_action": "Actualizar título y añadir enlaces internos hacia Kits/Apps"
