@@ -1,0 +1,77 @@
+en:
+  x:
+    hook: "We stripped CrewAI out of GitHub Actions and rebuilt Autopilot 2.0 around Pydantic v2, deterministic QA gates, and zero-cost X Web Intents. Here is the architecture."
+    thread:
+      - "1/5 Eight months ago we shared the Autopilot 1.0 post-mortem: running live LLM agent chains in CI to improvise social copy was slow and brittle. So we inverted the boundary under SDD."
+      - "2/5 Creative authoring now happens at design time with Datalaria Scriba inside social_pack.yaml. CI only enforces strict Pydantic v2 contracts—including anti-churn email subject archetypes."
+      - "3/5 We replaced ad-hoc CLI checks with deterministic quality_validator.py: weighted X hook length (<200 chars), 4-6 tweet threads (<=280), LinkedIn Broetry structure, and >80% text ratio in Brevo 2.0."
+      - "4/5 We also built markdown_syndicator.py for Dev.to and CoderLegion: shields code fences, converts Hugo shortcodes, guards early-access apps, and injects canonical_url + UTM tracking."
+      - "5/5 This finale bridges straight into our November 18 flagship launch: Datalaria Pulse. Read the full breakdown and live Python code: https://datalaria.com/en/posts/autopilot-part10-scriba-syndication-pulse-bridge/"
+    hashtags:
+      - "Python"
+      - "AI"
+      - "SDD"
+      - "Autopilot"
+  linkedin:
+    text: |-
+      ⚠️ Eight months ago we learned an uncomfortable truth with Autopilot 1.0: letting autonomous agents improvise marketing copy inside CI builds adds latency and flakiness without guaranteeing voice.
+
+      🚀 Today we wrap up the 10-part series with Autopilot 2.0 running in production under Spec-Driven Development.
+
+      ⚙️ Our core architectural shift splits editorial creativity from runtime determinism:
+
+      🎨 Design time: Datalaria Scriba collaborates on the bilingual post, cover, and social_pack.yaml before push.
+
+      🛡️ CI runtime: Pydantic v2 and quality_validator.py enforce hard QA gates with zero token burn.
+
+      🌍 Universal syndication: compiles Hugo shortcodes safely for Dev.to & CoderLegion with canonical_url intact.
+
+      🐦 0-EUR X workflow: audited threads plus 1-click Web Intent URLs without paid API tiers.
+
+      📅 Chapter 10 also sets the stage for our flagship milestone arriving November 18: Datalaria Pulse, our automated Content Ops and SEO observability cockpit.
+
+      📖 Read the full engineering breakdown and code contracts: https://datalaria.com/en/posts/autopilot-part10-scriba-syndication-pulse-bridge/
+
+      💬 Where do you draw the line between AI generation at design time and deterministic enforcement in CI?
+    hashtags:
+      - "SoftwareEngineering"
+      - "Python"
+      - "SpecDrivenDevelopment"
+      - "DevOps"
+      - "ContentOps"
+  newsletter:
+    archetype: "architecture_inside"
+    subject: "Why we removed CrewAI from CI to harden Autopilot 2.0 with Pydantic v2"
+    preheader: "Inside our deterministic QA gate, universal Dev.to/CoderLegion syndicator, and the Nov 18 Datalaria Pulse launch."
+    hook_paragraphs:
+      - "For months it felt natural to run live agent crews inside GitHub Actions after every git push. Production reality proved the opposite: CI pipelines thrive on deterministic contracts, speed, and zero surprises."
+      - "In Chapter 10 closing our Autopilot series, we walk through how we moved creative drafting to Datalaria Scriba at design time while letting Pydantic v2 govern email, social, and syndication—clearing the runway for Datalaria Pulse on November 18."
+    insights_60s:
+      - "Anti-churn email contracts: quality_validator.py bans robotic subject prefixes and guarantees a >80% visible text ratio with a single clickable Hero image."
+      - "Zero-cost X and Broetry LinkedIn gates: exact t.co weighted URL length auditing, 4-6 tweet threads, and mandatory closing debate questions before any push."
+      - "Universal Markdown compiler: transforms Hugo shortcodes safely for Dev.to and CoderLegion while honoring unreleased app embargoes and canonical attribution."
+    secondary_cta_label: "Try OBS Management Live Demo"
+    secondary_cta_url: "https://datalaria.com/apps/obs-management/?mock=true"
+    ps_referral_text: "Know a staff engineer wrestling with flaky LLM pipelines in CI? Forward this issue—and mark November 18 for the Datalaria Pulse release."
+  devto:
+    enabled: true
+    title: "Autopilot 2.0: From CrewAI to Pydantic v2 and Universal Markdown Syndication"
+    description: "Rebuilding an omnichannel distribution engine under SDD with Pydantic v2 contracts, deterministic QA, 0-cost X Web Intents, and Dev.to/CoderLegion syndication."
+    tags:
+      - "python"
+      - "ai"
+      - "pydantic"
+      - "devops"
+    canonical_url: "https://datalaria.com/en/posts/autopilot-part10-scriba-syndication-pulse-bridge/"
+    published: true
+  coderlegion:
+    enabled: true
+    title: "Autopilot 2.0: From CrewAI to Pydantic v2 and Universal Markdown Syndication"
+    description: "How we replaced live CI agent frameworks with Pydantic v2 contracts, deterministic QA gates, and canonical syndication to CoderLegion & Dev.to."
+    tags:
+      - "python"
+      - "pydantic"
+      - "ai-agents"
+      - "sdd"
+    canonical_url: "https://datalaria.com/en/posts/autopilot-part10-scriba-syndication-pulse-bridge/"
+    published: true

@@ -1,0 +1,77 @@
+es:
+  x:
+    hook: "Reconstruimos Autopilot 1.0 eliminando CrewAI del CI. Ahora Pydantic v2, un validador determinista y Datalaria Scriba gobiernan la distribución a coste 0 € en X."
+    thread:
+      - "1/5 Hace 8 meses publicamos el post-mortem de Autopilot 1.0: ejecutar agentes improvisando copy en GitHub Actions era frágil y opaco. Decidimos separar diseño creativo de ejecución determinista."
+      - "2/5 En Autopilot 2.0 la narrativa nace en design-time con Datalaria Scriba dentro de social_pack.yaml. En CI solo entran contratos Pydantic v2 y Pydantic valida incluso los 5 arquetipos de asunto anti-churn."
+      - "3/5 ¿El validador? Sustituimos heurísticas y llamadas externas por quality_validator.py: audita hilos de X (<200 hook, 4-6 tweets <=280), formato Broetry en LinkedIn y >80 % texto en Brevo 2.0."
+      - "4/5 Además creamos un sindicador Markdown universal para Dev.to y CoderLegion que protege bloques de código, convierte shortcodes Hugo y blinda canonical_url con trazabilidad UTM automática."
+      - "5/5 Cerramos así la serie Autopilot y abrimos el puente hacia nuestro próximo lanzamiento del 18 de noviembre: Datalaria Pulse. Arquitectura y código real aquí: https://datalaria.com/es/posts/autopilot-parte10-scriba-sindicacion-puente-pulse/"
+    hashtags:
+      - "Python"
+      - "IA"
+      - "SDD"
+      - "Autopilot"
+  linkedin:
+    text: |-
+      ⚠️ Hace ocho meses aprendimos una lección incómoda con Autopilot 1.0: delegar marketing improvisado a agentes en vivo dentro de GitHub Actions añade fricción y latencia sin garantizar calidad.
+
+      🚀 Hoy cerramos la serie con el capítulo 10 y presentamos Autopilot 2.0 en producción bajo Spec-Driven Development.
+
+      ⚙️ La decisión arquitectónica clave fue separar la creatividad editorial del determinismo en CI:
+
+      🎨 Design-time: Datalaria Scriba diseña contigo el post, portada y social_pack.yaml antes del commit.
+
+      🛡️ Runtime CI: Pydantic v2 y quality_validator.py auditan sin coste de tokens cada canal.
+
+      🌍 Sindicación universal: transpila shortcodes Hugo hacia Dev.to y CoderLegion protegiendo canonical_url.
+
+      🐦 Modo X coste 0 EUR: hilo validado y Web Intent 1-clic sin suscripciones de API.
+
+      📅 Este capítulo tiende además el puente oficial hacia nuestro lanzamiento del 18 de noviembre: Datalaria Pulse, nuestra plataforma de Content Ops y observabilidad SEO.
+
+      📖 Lee la arquitectura completa y los contratos reales en Python: https://datalaria.com/es/posts/autopilot-parte10-scriba-sindicacion-puente-pulse/
+
+      💬 ¿En qué punto de tu pipeline de contenido separas la generación creativa con IA de la validación determinista?
+    hashtags:
+      - "IngenieriaDeSoftware"
+      - "InteligenciaArtificial"
+      - "Python"
+      - "SpecDrivenDevelopment"
+      - "ContentOps"
+  newsletter:
+    archetype: "architecture_inside"
+    subject: "Por qué sacamos CrewAI de GitHub Actions para blindar Autopilot 2.0"
+    preheader: "Contratos Pydantic v2, QA determinista en redes y el puente oficial hacia Datalaria Pulse este 18 de noviembre."
+    hook_paragraphs:
+      - "Durante meses asumimos que un pipeline automático de distribución necesitaba agentes LLM improvisando titulares después de cada git push. La realidad en producción nos demostró lo contrario: en CI quieres velocidad, trazabilidad y contratos estrictos."
+      - "En el capítulo 10 que cierra nuestra saga Autopilot explicamos cómo movimos la síntesis editorial a Datalaria Scriba en design-time y dejamos a Python + Pydantic v2 al mando del despliegue omnicanal, abriendo la puerta al lanzamiento de Datalaria Pulse este 18 de noviembre."
+    insights_60s:
+      - "Contratos Pydantic v2 anti-churn: quality_validator.py rechaza asuntos robóticos y verifica >80 % de texto visible con 1 única imagen Hero en cada envío Brevo."
+      - "X/Twitter a coste 0 EUR y LinkedIn Broetry auditado: longitud ponderada real para URLs t.co, hilos de 4 a 6 tweets y cierre obligatorio con pregunta de debate."
+      - "Sindicador Markdown Universal: transpila shortcodes Hugo respetando bloques de código y embargos para publicar en Dev.to y CoderLegion con canonical_url intacta."
+    secondary_cta_label: "Explorar OBS Management en vivo"
+    secondary_cta_url: "https://datalaria.com/apps/obs-management/?mock=true"
+    ps_referral_text: "Si conoces a algún líder técnico cansado de pipelines frágiles con LLMs, reenvíale esta edición: el 18 de noviembre desvelamos Datalaria Pulse."
+  devto:
+    enabled: true
+    title: "Autopilot 2.0: De CrewAI a Pydantic v2 y Sindicación Universal en Python"
+    description: "Cómo rediseñamos nuestro motor editorial bajo SDD con Pydantic v2, QA determinista, modo X coste 0 € y sindicación canónica en Dev.to y CoderLegion."
+    tags:
+      - "python"
+      - "ai"
+      - "pydantic"
+      - "devops"
+    canonical_url: "https://datalaria.com/es/posts/autopilot-parte10-scriba-sindicacion-puente-pulse/"
+    published: true
+  coderlegion:
+    enabled: false
+    title: "Autopilot 2.0: De CrewAI a Pydantic v2 y Sindicación Universal"
+    description: "Rediseño SDD con contratos Pydantic v2 y validador determinista."
+    tags:
+      - "python"
+      - "pydantic"
+      - "ai-agents"
+      - "sdd"
+    canonical_url: "https://datalaria.com/es/posts/autopilot-parte10-scriba-sindicacion-puente-pulse/"
+    published: false
