@@ -11,6 +11,17 @@ entries:
   executed_at_utc: '2026-11-16T08:17:38Z'
   notes: 'Ola 1 cerrada en vivo (Run 43829777204): LinkedIn ES urn:li:share:7528008366615412736 (X ES publicado manualmente previamente)'
   last_error: null
+- id: amfe-2026-11-16-wave1-es-brevo
+  file_path: content/es/posts/matriz-riesgos-amfe-fmea/index.md
+  lang: es
+  wave: 1_es_native
+  channels:
+  - newsletter
+  scheduled_at_utc: '2026-11-16T14:36:25Z'
+  status: completed
+  executed_at_utc: '2026-11-16T14:56:00Z'
+  notes: 'Recuperacion Brevo ES Lista #3 (Run 43887477531): Campaña ID 167 enviada'
+  last_error: null
 - id: amfe-2026-11-16-wave2-en-native
   file_path: content/en/posts/quantitative-risk-matrix-fmea/index.md
   lang: en
@@ -19,9 +30,20 @@ entries:
   - linkedin
   - x
   scheduled_at_utc: '2026-11-16T14:30:00Z'
-  status: pending
-  executed_at_utc: null
-  notes: 'Ola 2 (15:30 CET · Apertura USA): EN LinkedIn + X Web Intent 0 EUR'
+  status: completed
+  executed_at_utc: '2026-11-16T15:17:53Z'
+  notes: 'Ola 2 cerrada (Run 43891174137): LinkedIn EN urn:li:share:7528114124669689856 + X Web Intent 0 EUR'
+  last_error: null
+- id: amfe-2026-11-16-wave2-en-brevo
+  file_path: content/en/posts/quantitative-risk-matrix-fmea/index.md
+  lang: en
+  wave: 2_en_native
+  channels:
+  - newsletter
+  scheduled_at_utc: '2026-11-16T15:19:39Z'
+  status: completed
+  executed_at_utc: '2026-11-16T15:26:14Z'
+  notes: 'Brevo EN Lista #4 (Run 43895126793): Campaña ID 168 enviada'
   last_error: null
 - id: amfe-2026-11-16-wave3a-es-devto
   file_path: content/es/posts/matriz-riesgos-amfe-fmea/index.md
