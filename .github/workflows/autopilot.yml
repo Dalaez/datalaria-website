@@ -99,7 +99,7 @@ jobs:
           DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
           DEVTO_ORG_ID: ${{ secrets.DEVTO_ORG_ID }}
           CODERLEGION_API_KEY: ${{ secrets.CODERLEGION_API_KEY }}
-          CODERLEGION_CATEGORY_ID: ${{ vars.CODERLEGION_CATEGORY_ID }}
+          CODERLEGION_CATEGORY_ID: ${{ vars.CODERLEGION_CATEGORY_ID || '2' }}
           CODERLEGION_LANGS: ${{ vars.CODERLEGION_LANGS || 'en' }}
           # Feature Flags (X/Twitter API desactivada por política coste 0 EUR; Web Intent activo)
           ENABLE_TWITTER: "true"
@@ -173,7 +173,7 @@ jobs:
           DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
           DEVTO_ORG_ID: ${{ secrets.DEVTO_ORG_ID }}
           CODERLEGION_API_KEY: ${{ secrets.CODERLEGION_API_KEY }}
-          CODERLEGION_CATEGORY_ID: ${{ vars.CODERLEGION_CATEGORY_ID }}
+          CODERLEGION_CATEGORY_ID: ${{ vars.CODERLEGION_CATEGORY_ID || '2' }}
           CODERLEGION_LANGS: ${{ vars.CODERLEGION_LANGS || 'en' }}
           
           # Feature Flags (X/Twitter API desactivada por política coste 0 EUR; Web Intent activo)

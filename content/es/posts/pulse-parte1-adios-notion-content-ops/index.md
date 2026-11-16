@@ -28,19 +28,19 @@ Sin embargo, a medida que el blog escala y supera el umbral de los 50 o 100 art�
 ### 🗺️ Hoja de Ruta de la Serie Datalaria Pulse
 Para entender cómo encaja cada pieza del rompecabezas de *Content Ops as Code*, esta serie se compone de 5 entregas estructuradas:
 
-1. 🟢 **Parte 1 (Este artículo)**: Adiós Notion: Datalaria Pulse o la Gestión Editorial que se Escribe Sola desde Git.
-2. ⚪ **Parte 2**: [Del Front Matter al Índice: Pydantic v2, Paridad Bilingüe y Automatización con CI/CD](/es/posts/pulse-parte2-indexador-pydantic-paridad-ci/).
-3. ⚪ **Parte 3**: [Tabla Ejecutiva, Tablero Kanban y Calendario Mensual en React 19 sobre un Índice Estático](/es/posts/pulse-parte3-tablero-react-tabla-kanban-calendario/).
-4. ⚪ **Parte 4**: [Google Analytics 4 y Search Console Automatizados: Cómo Medir el ROI Orgánico de Cada Post, App y Kit](/es/posts/pulse-parte4-ga4-search-console-automatico/).
-5. ⚪ **Parte 5**: [Gestión Editorial para Equipos de Documentación, SEO y Marketing: de Notion a Excel en 5 minutos y Fábrica con IA](/es/posts/pulse-parte5-kit-excel-migracion-notion-equipos/).
+1. 🟢 **Parte 1 (Este artículo)**: Adiós Notion: Datalaria Pulse o la Gestión Editorial que se Escribe Sola desde Git
+2. ⚪ **Parte 2 (Dom 22/11)**: Del Front Matter al Índice: Pydantic v2, Paridad Bilingüe y Automatización con CI/CD
+3. ⚪ **Parte 3 (Mié 25/11)**: Tabla Ejecutiva, Tablero Kanban y Calendario Mensual en React 19 sobre un Índice Estático
+4. ⚪ **Parte 4 (Dom 29/11)**: Google Analytics 4 y Search Console Automatizados: Cómo Medir el ROI Orgánico de Cada Post, App y Kit
+5. ⚪ **Parte 5 (Mié 02/12)**: Gestión Editorial para Equipos de Documentación, SEO y Marketing: de Notion a Excel en 5 minutos y Fábrica con IA
 
 ---
 
 ## 0. Objetivos de la Fase y de este Artículo: Hacia la Gobernanza Editorial Autónoma
 
-Esta entrega marca el pistoletazo de salida de la **Fase 5 de Datalaria**, dedicada por entero a resolver de raíz la gobernanza de activos editoriales técnicos mediante nuestro sistema operativo propio: **Datalaria Pulse**.
+Esta entrega marca el pistoletazo de salida de **Datalaria Pulse**, dedicado por entero a resolver de raíz la gobernanza de activos editoriales técnicos mediante nuestro sistema operativo propio:
 
-### Objetivos Estratégicos de la Fase 5:
+### Objetivos Estratégicos:
 1. **Erradicar la Doble Entrada Administrativa:** Eliminar para siempre la necesidad de mantener sincronizadas manualmente bases de datos externas (Notion, Airtable, Trello) frente al repositorio Git.
 2. **Implantar la Filosofía Content Ops as Code:** Tratar los artículos Markdown y sus metadatos YAML con las mismas disciplinas de la ingeniería de software: validación por esquemas estrictos (Pydantic v2), paridad bilingüe determinista y compilación automatizada en CI/CD.
 3. **Monetización y Modelo Dual-Mode:** Poner a disposición de la comunidad dos modalidades operativas:
@@ -75,13 +75,16 @@ Cualquier profesional que haya intentado mantener un calendario editorial en Not
 3. **La Ceguera de la Paridad Bilingüe:** Si publicas en español y en inglés, mantener la trazabilidad manual de qué traducciones están pendientes, cuáles quedaron desactualizadas tras un cambio técnico y cuáles tienen paridad completa exige un esfuerzo administrativo insostenible. El resultado habitual son artículos huérfanos y enlaces cruzados rotos.
 4. **La Deuda Administrativa (*Toil*):** El autor técnico termina dedicando el 20% de su tiempo productivo a tareas burocráticas de actualización manual de tarjetas en lugar de redactar contenido de alto valor o programar algoritmos.
 
-```
-[Markdown en Git]  ── (git push) ──>  [Producción / Hugo / Vercel]
-       │
-   (Abismo)  <── Desincronización humana inevitable
-       │
-[Tablero Notion]   ── (manual)   ──>  [Información Caducada / Falsa]
-```
+{{< mermaid >}}
+flowchart LR
+    subgraph GIT ["1. Fuente Única de Verdad (Git)"]
+        A["Markdown en Git"] -->|git push| B["Producción / Hugo / Vercel"]
+    end
+    subgraph NOTION ["2. Silo Externo Manual (Notion)"]
+        C["Tablero Notion"] -->|Manual| D["Información Caducada / 404"]
+    end
+    GIT -.-|"Abismo de Desincronización"| NOTION
+{{< /mermaid >}}
 
 En la ingeniería de software moderna resolvimos este problema hace décadas bajo el paradigma **Infrastructure as Code** (Terraform) y **Configuration as Code** (Kubernetes): la infraestructura no se administra rellenando formularios en portales web; se declara en código auditable y versionado.
 
@@ -175,7 +178,7 @@ El resultado visible de este pipeline es una aplicación web reactiva construida
 
 La plataforma articula 5 vistas complementarias:
 
-1. **Dashboard Analytics & KPIs:** Muestra métricas macro del ecosistema (total de activos, desglose de posts/apps/kits, tasa de paridad bilingüe), profundidad léxica acumulada (~210.000 palabras técnicas indexadas), tiempo de lectura total (~18,4 horas) y valoración económica del patrimonio de contenidos.
+1. **Dashboard Analytics & KPIs:** Muestra métricas macro del ecosistema (183 activos gobernados: 118 artículos bilingües, 47 lanzamientos y versiones SemVer de aplicaciones 🚀 APP / ⚡ APP vX.Y y 18 ediciones de Kits B2B 📦 KIT bajo las invariantes `INV-PULSE-1..8`, con 100% de paridad bilingüe), profundidad léxica acumulada (~215.000 palabras técnicas indexadas), tiempo de lectura total (~18,5 horas) y valoración económica del patrimonio de contenidos.
 2. **Tabla Ejecutiva con Filtros Interactivos:** Búsqueda en tiempo real por título, filtro tipo píldora por estado (*Publicado*, *Programado*, *Borrador*), ordenación multidireccional por fecha o score SEO, y paginación rápida (10, 25 o 50 registros).
 3. **Tablero Kanban de 5 Columnas:** Flujo visual estilo Notion (*Idea ➔ Borrador ➔ En Revisión ➔ Programado ➔ Publicado*) con conteo dinámico de tarjetas y tarjetas interactivas que abren el modal de detalle editorial.
 4. **Calendario Mensual Notion:** Proyección cuadrangular de 35 casillas por mes con navegación cronológica, destacando los lanzamientos programados para los próximos trimestres.
@@ -203,6 +206,24 @@ Si gestionas un blog técnico, un portal de documentación o una publicación co
    Consigue en nuestra sección de recursos la suite completa con la **Plantilla Maestra Excel** con validaciones automáticas, el **migrador por script de Notion a Excel en 5 minutos**, el conector **Power Query M** y el script universal de escaneo de repositorios `pulse_repo_scanner.py` listo para incorporar a tu CI/CD.  
    👉 [**Descargar Datalaria Pulse Kit en Recursos →**](/es/recursos/#pack-pulse)
 
+{{< product-card
+  id="pack-pulse"
+  title="Datalaria Pulse: Content Ops & Notion Migration Kit"
+  category="Software, IA & SDD"
+  price="19€"
+  original_price="39€"
+  badge="📊 Estándar Content Ops as Code"
+  icon="📊"
+  preview_image="pulse-preview-es.png"
+  preview_caption="Vista previa de los entregables: Plantilla Maestra Excel (.xlsx) con 6 hojas, doble conector Power Query M y scripts CLI de migración y escáner."
+  deliverables="Plantilla Excel Master (6 Hojas)|Doble Conector Power Query M|Migrador Notion CLI + Guía PDF"
+  features="Plantilla Maestra Excel (.xlsx) con 6 hojas (Taxonomía, Activos, Kanban, Métricas y Dashboard ejecutivo)|Doble conector Power Query M: sincronización en 1 clic desde Notion CSV y Git public.json|Script de migración determinista en Python (migrate_notion.py) con exportación directa|Escáner universal de repositorios (pulse_repo_scanner.py) de cero dependencias externas|Guía ejecutiva maquetada en PDF de 4 páginas y especificación técnica de campos"
+  checkout_url="/es/recursos/#pack-pulse"
+  button_text="Descargar Kit Comercial (.ZIP) • 19€"
+>}}
+El paquete descargable incluye la **Plantilla Maestra Excel (.xlsx)** estructurada en 6 hojas interconectadas con validaciones estrictas y formato condicional ejecutivo, el **Doble Conector Power Query M** para sincronizar Notion CSV y repositorios Git locales con un solo clic, el **Script CLI de Migración (migrate_notion.py)**, el **Escáner Universal de Repositorios (pulse_repo_scanner.py)** sin dependencias y la **Guía Ejecutiva en PDF**.
+{{< /product-card >}}
+
 2. **Explora el Sandbox en Vivo y el Modo Pro / Demo:**  
-   Accede a la aplicación interactiva directamente en el navegador. Puedes explorar los más de 130 activos reales indexados de Datalaria en el Sandbox público, o iniciar sesión en el **Modo Pro / Demo** para probar la captura de ideas, la sincronización en tiempo real y la gestión multi-tenant sobre PostgreSQL.  
+   Accede a la aplicación interactiva directamente en el navegador. Puedes explorar los 183 activos reales indexados de Datalaria en el Sandbox público, o iniciar sesión en el **Modo Pro / Demo** para probar la captura de ideas, la sincronización en tiempo real y la gestión multi-tenant sobre PostgreSQL.  
    🚀 [**Abrir Datalaria Pulse Web App en Vivo →**](/apps/pulse/)

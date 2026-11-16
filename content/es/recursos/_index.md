@@ -117,9 +117,9 @@ translationKey: resources
             <button type="button" class="btn-kit-info" onclick="event.stopPropagation(); openModal('suite-02')">
               Detalles ℹ️
             </button>
-            <span class="btn-kit-info btn-disabled" onclick="event.stopPropagation()" title="Artículo técnico próximamente">
-              Artículo próximamente
-            </span>
+            <a href="/es/posts/toma-decisiones-priorizacion-framework-cuantitativo/" class="btn-kit-info" onclick="event.stopPropagation()" title="Leer artículo técnico">
+              Artículo técnico 📖
+            </a>
             <a href="https://datalaria.lemonsqueezy.com/checkout/buy/4e2ca8b1-a6f9-43b7-851a-72c44d9bc13d?embed=1" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
               Comprar Suite →
             </a>
@@ -574,14 +574,14 @@ Detalles ℹ️
 </div>
 <div class="kit-card-foot">
 <div class="kit-pricing-box">
-<span class="kit-price-curr">6€</span>
-<span class="kit-price-orig">19€</span>
+<span class="kit-price-curr">7€</span>
+<span class="kit-price-orig">22€</span>
 </div>
 <div class="kit-btns-group">
 <button type="button" class="btn-kit-info" onclick="openModal('pack-amfe')">
 Detalles ℹ️
 </button>
-<span class="btn-kit-info btn-disabled" title="Artículo técnico próximamente">Artículo próximamente</span>
+<a href="/es/posts/matriz-riesgos-amfe-fmea/" class="btn-kit-info" title="Leer artículo técnico">Artículo técnico 📖</a>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/6eea6aa0-fe9f-440b-8bb9-6f29b303e57a?embed=1" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
@@ -1122,8 +1122,8 @@ Detalles ℹ️
       "Decks ejecutivos PowerPoint 16:9 y guías paso a paso"
     ],
     "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/4e2ca8b1-a6f9-43b7-851a-72c44d9bc13d?embed=1",
-    "guideUrl": "",
-    "previewImg": ""
+    "guideUrl": "/es/posts/toma-decisiones-priorizacion-framework-cuantitativo/",
+    "previewImg": "/images/recursos/suite-02-preview-es.png"
   },
   "operaciones": {
     "id": "suite-03",
@@ -1423,8 +1423,8 @@ Detalles ℹ️
     "topicLabel": "Control Operativo",
     "status": "available",
     "statusLabel": "🟢 DISPONIBLE • Calidad & Riesgos",
-    "price": "6€",
-    "origPrice": "19€",
+    "price": "7€",
+    "origPrice": "22€",
     "icon": "⚠️",
     "delivs": [
       "Excel .xlsx + Sheets",
@@ -1439,8 +1439,8 @@ Detalles ℹ️
       "Guía PDF metodológica de fiabilidad y mitigación de defectos"
     ],
     "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/6eea6aa0-fe9f-440b-8bb9-6f29b303e57a?embed=1",
-    "guideUrl": null,
-    "previewImg": "/images/recursos/AMFE.png"
+    "guideUrl": "/es/posts/matriz-riesgos-amfe-fmea/",
+    "previewImg": "/images/recursos/amfe-preview-es.png"
   },
   {
     "id": "pack-pert",

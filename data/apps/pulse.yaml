@@ -5,9 +5,21 @@ status: incubating
 icon: "⚡"
 cover: cover.png
 app_url: /apps/pulse/
-demo_url: /apps/pulse/#/?demo=true
+demo_url: /apps/pulse/?demo=true
 source_spec: specs/apps/pulse/spec.md
-current_version: v0.3.0
+current_version: v1.0.0
+launch_date: "2026-11-18"
+
+related_products:
+  - name:
+      es: "Datalaria Pulse: Content Ops & Notion Migration Kit"
+      en: "Datalaria Pulse: Content Ops & Notion Migration Kit"
+    description:
+      es: "Plantilla maestra Excel (.xlsx) con 6 hojas y validaciones, conectores Power Query M (Notion CSV & Git public.json), script CLI de migración y Guía ejecutiva PDF."
+      en: "Master Excel workbook with 6 sheets and data validations, dual Power Query M connectors (Notion CSV & Git public.json), Python migration CLI, and Executive PDF Guide."
+    checkout_url:
+      es: "/es/recursos/#pack-pulse"
+      en: "/en/resources/#pack-pulse"
 
 title:
   es: "Datalaria Pulse"
@@ -81,9 +93,41 @@ tech:
     items: ["Hugo Static Portal", "GitHub Actions CI/CD", "Git Pre-Commit Hooks"]
 
 releases:
+  - version: "v1.0.0"
+    date: "2026-11-18"
+    state: released
+    type: release
+    title:
+      es: "Lanzamiento Oficial: Content Ops as Code, Gobernanza de 182 Activos y Cuadrante Scriba"
+      en: "Official Launch: Content Ops as Code, 182 Assets Governance and Scriba Quadrant"
+    changes:
+      - es: "Consolidación de 182 activos (152 publicados, 30 programados) con trazabilidad SemVer de estrenos (🚀 APP), actualizaciones (⚡ APP vX.Y) y ediciones de Kits (📦 KIT)."
+        en: "Consolidated 182 assets (152 live, 30 scheduled) with SemVer release tracking for initial launches (🚀 APP), updates (⚡ APP vX.Y) and Kits (📦 KIT)."
+      - es: "Filtro conmutable de historial de versiones (🔀) en controles y visualización enriquecida en Tabla, Kanban (ventana ampliada) y Calendario mensual."
+        en: "Toggleable version history filter (🔀) and rich visualization in Table, Kanban (expanded window) and monthly Calendar."
+      - es: "Cuadrante 5 de Sincronización Editorial Scriba en Salud & ROI: detección de releases silenciosas que demandan artículo de acompañamiento."
+        en: "Quadrant 5 Scriba Editorial Release Sync in Health & ROI: detection of silent releases requiring companion articles."
+      - es: "Serie técnica integral de 5 artículos bilingües con Hoja de Ruta escalonada y cero enlaces rotos."
+        en: "Comprehensive 5-article bilingual engineering series with phased roadmap and zero broken links."
+
+  - version: "v0.4.0"
+    date: "2026-11-08"
+    state: internal
+    type: feature
+    title:
+      es: "Motor Cuantitativo de Impacto SEO/GA4 (impact_analyzer.py) y Auditoría Estratégica E02"
+      en: "Quantitative SEO/GA4 Impact Analyzer (impact_analyzer.py) and E02 Strategic Audit"
+    changes:
+      - es: "Motor determinista impact_analyzer.py: scoring ponderado de Quick Wins CTR, detección de 15 huérfanos de monetización y ratio de retorno orgánico por categoría."
+        en: "Deterministic impact_analyzer.py engine: weighted CTR Quick Wins scoring, detection of 15 monetization orphans, and category organic ROI."
+      - es: "Contratos de datos Pydantic v2 ampliados con PulseImpactReport y aislamiento estricto de informes estratégicos bajo INV-PULSE-6."
+        en: "Pydantic v2 data models expanded with PulseImpactReport and strict strategic report isolation under INV-PULSE-6."
+      - es: "Integración de auditoría de enlaces entre artículos publicados y programados garantizando INV-SCRIBA-CHRONO."
+        en: "Cross-link audit between live and scheduled articles enforcing INV-SCRIBA-CHRONO."
+
   - version: "v0.3.0"
     date: "2026-11-03"
-    state: released
+    state: internal
     type: feature
     title:
       es: "Operación Crisol (Datalaria Helix): Kit v1.1 con 3 Carpetas, Exportador Excel Directo, Guía PDF y Diagnóstico Notion 1-Clic"
@@ -99,7 +143,7 @@ releases:
         en: "React SPA UX/PLG evolution: 1-click sample Notion test with executive diagnostic card, ← Datalaria back-navigation, and Kanban quick-advance."
   - version: "v0.2.0"
     date: "2026-10-29"
-    state: released
+    state: internal
     type: feature
     title:
       es: "Versión Pro Cloud: Supabase PostgreSQL, Auth, Modo Demo y Rediseño Visual"
@@ -116,7 +160,7 @@ releases:
 
   - version: "v0.1.5"
     date: "2026-10-28"
-    state: released
+    state: internal
     type: feature
     title:
       es: "Mejoras en Analytics: Gráficos a Ancho Completo, Taxonomía Triple y Captura de Ideas"
@@ -133,7 +177,7 @@ releases:
 
   - version: "v0.1.0"
     date: "2026-10-28"
-    state: released
+    state: internal
     type: release
     title:
       es: "Versión Básica Inicial: Content Ops as Code y Kit Standalone Descargable"
@@ -153,19 +197,54 @@ posts:
       es: pulse-parte1-adios-notion-content-ops
       en: pulse-part1-goodbye-notion-content-ops
     part: 1
+    date: "2026-11-18"
+    title:
+      es: "Adiós Notion: Datalaria Pulse o la Gestión Editorial que se Escribe Sola desde Git"
+      en: "Goodbye Notion: Datalaria Pulse or the Editorial System That Writes Itself from Git"
+    summary:
+      es: "Por qué las bases de datos externas se desincronizan del repositorio y cómo indexar el blog directamente desde Markdown con validación Pydantic."
+      en: "Why external databases drift away from Git and how to index technical blogs directly from Markdown with Pydantic validation."
   - slug:
       es: pulse-parte2-indexador-pydantic-paridad-ci
       en: pulse-part2-pydantic-indexer-bilingual-parity-ci
     part: 2
+    date: "2026-11-22"
+    title:
+      es: "Del Front Matter al Índice: Pydantic v2, Paridad ES/EN y Automatización en GitHub Actions"
+      en: "From Front Matter to Index: Pydantic v2, ES/EN Parity and GitHub Actions Automation"
+    summary:
+      es: "Modelado estricto con Pydantic v2, grafo determinista de paridad bilingüe y pipeline CI/CD en modo cerrado ante cualquier inconsistencia."
+      en: "Strict data contracts with Pydantic v2, deterministic bilingual parity graph, and fail-closed GitHub Actions CI/CD pipeline."
   - slug:
       es: pulse-parte3-tablero-react-tabla-kanban-calendario
       en: pulse-part3-react-dashboard-table-kanban-calendar
     part: 3
+    date: "2026-11-25"
+    title:
+      es: "Tabla Ejecutiva, Tablero Kanban y Calendario Mensual en React 19 sobre un Índice Estático"
+      en: "Executive Table, Kanban Board, and Monthly Calendar in React 19 Over a Static Index"
+    summary:
+      es: "Arquitectura frontend de alto rendimiento en React 19 + TypeScript sobre índice estático con cero latencia y captura optimista de ideas."
+      en: "High-performance React 19 + TypeScript SPA atop a static precompiled index with zero latency and optimistic idea capture."
   - slug:
       es: pulse-parte4-ga4-search-console-automatico
       en: pulse-part4-ga4-search-console-automated
     part: 4
+    date: "2026-11-29"
+    title:
+      es: "Google Analytics 4 y Search Console Automatizados: Cómo Medir el ROI Orgánico del Blog"
+      en: "Automated GA4 and Search Console: Measuring Organic ROI and Content Freshness"
+    summary:
+      es: "Extracción automatizada de telemetría con Service Account, relativización determinista (Base 100) y matriz de decisión de Salud & ROI."
+      en: "Automated telemetry extraction with Python Service Account, privacy-safe Base 100 normalization, and Health & ROI decision matrix."
   - slug:
       es: pulse-parte5-kit-excel-migracion-notion-equipos
       en: pulse-part5-excel-kit-notion-migration-teams
     part: 5
+    date: "2026-12-02"
+    title:
+      es: "Gestión Editorial para Equipos SEO y Marketing: de Notion a Excel en 5 Minutos"
+      en: "Editorial Operations for SEO and Marketing Teams: From Notion to Excel in 5 Minutes"
+    summary:
+      es: "Migración desde Notion en 5 minutos, plantilla maestra Excel con doble conector Power Query y evolución Pro con Supabase y agentes de IA."
+      en: "5-minute Notion migration, master Excel template with dual Power Query M connectors, and Pro cloud evolution with Supabase and AI agents."

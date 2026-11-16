@@ -1,0 +1,110 @@
+es:
+  x:
+    hook: ¿Por qué pagar una base de datos pesada para un Kanban editorial cuando
+      puedes proyectar 183 activos en React 19 con latencia cero sobre un JSON estático?
+    thread:
+    - 1/5 Un archivo JSON generado en CI/CD es un gran activo, pero un equipo editorial
+      necesita una consola visual para tomar decisiones estratégicas de publicación.
+    - 2/5 La convención dice que necesitas PostgreSQL o un SaaS de pago para tener
+      filtros multifactoriales, tablero Kanban y calendario interactivo.
+    - '3/5 En Datalaria Pulse rompemos esa premisa: construimos una SPA en React 19
+      + TypeScript que monta la interfaz directamente sobre el archivo estático public.json.'
+    - '4/5 Resultado: 183 activos cargados en memoria en < 16ms, ordenación instantánea,
+      filtros reactivos por estado y captura optimista de ideas sin servidores.'
+    - '5/5 Descubre la arquitectura de este cockpit ejecutivo de alto rendimiento
+      en la Parte 3: https://datalaria.com/es/posts/pulse-parte3-tablero-react-tabla-kanban-calendario/'
+    hashtags:
+    - React
+    - TypeScript
+    - Frontend
+    - WebDev
+    web_intent_url: https://x.com/intent/tweet?text=%C2%BFPor+qu%C3%A9+pagar+una+base+de+datos+pesada+para+un+Kanban+editorial+cuando+puedes+proyectar+183+activos+en+React+19+con+latencia+cero+sobre+un+JSON+est%C3%A1tico%3F&url=https%3A%2F%2Fdatalaria.com%2Fes%2Fposts%2Fpulse-parte3-tablero-react-tabla-kanban-calendario%2F&hashtags=React%2CTypeScript%2CFrontend%2CWebDev
+  linkedin:
+    text: 'La sabiduría convencional del desarrollo web asume que para construir un
+      tablero Kanban editorial necesitas un backend con base de datos relacional.
+
+
+      Pero cuando tu repositorio Git es la única fuente de verdad, esa arquitectura
+      añade complejidad y latencia innecesarias.
+
+
+      En la tercera entrega de Datalaria Pulse mostramos cómo construimos nuestro
+      cockpit ejecutivo en React 19 sobre un archivo JSON estático: 👇
+
+
+      ⚡ Rendimiento instantáneo: 183 activos (artículos, aplicaciones y kits) cargados
+      en memoria en menos de 16 milisegundos.
+
+
+      ⚡ Vistas sincronizadas: alterna en un clic entre tabla multifactorial, tablero
+      Kanban con avance de estados y calendario mensual.
+
+
+      ⚡ Cero coste operativo: sin servidores dedicados, sin cuotas mensuales de SaaS
+      y con despliegue automático en cada push.
+
+
+      El resultado es la fluidez de una aplicación de escritorio nativa combinada
+      con la inmutabilidad y seguridad de Git.
+
+
+      📖 Conoce los patrones de diseño y componentes en el nuevo artículo: https://datalaria.com/es/posts/pulse-parte3-tablero-react-tabla-kanban-calendario/
+
+
+      💬 ¿Prefieres arquitecturas serverless sobre datos estáticos o sigues apostando
+      por bases de datos tradicionales para dashboards internos?'
+    hashtags:
+    - React
+    - TypeScript
+    - Frontend
+    - SoftwareArchitecture
+    - WebDevelopment
+  newsletter:
+    archetype: direct_framework
+    subject: El framework directo para un cockpit React 19 sobre índice estático
+    preheader: Cómo construir una SPA interactiva en React 19 que proyecta analítica,
+      Kanban y calendario con latencia cero.
+    hook_paragraphs:
+    - Disponer de un dataset limpio en disco no sirve de nada si tu equipo editorial
+      tiene que inspeccionarlo abriendo la terminal. Hacía falta una consola ejecutiva
+      de alto nivel.
+    - En esta tercera entrega mostramos cómo diseñamos la Single Page Application
+      de Datalaria Pulse en React 19 + TypeScript montada directamente sobre el índice
+      estático precompilado.
+    insights_60s:
+    - 'Latencia cero de red: la aplicación consume public.json una sola vez y ejecuta
+      búsquedas, ordenaciones y filtros reactivos en memoria.'
+    - 'Triple proyección interactiva: tabla multifactorial para auditoría, tablero
+      Kanban para flujo de trabajo y calendario mensual de lanzamientos.'
+    - 'Captura optimista de ideas: persistencia local de nuevos borradores e ideas
+      con exportación determinista a formato Markdown.'
+    secondary_cta_label: Probar Demo Sandbox de Datalaria Pulse
+    secondary_cta_url: https://datalaria.com/apps/pulse/?demo=true&utm_source=brevo&utm_medium=email&utm_campaign=pulse-launch-p3
+    ps_referral_text: Si lideras equipos frontend o producto buscando inspiración
+      en herramientas de alto rendimiento, reenvíales este análisis.
+  devto:
+    enabled: false
+    title: Tabla Ejecutiva, Kanban y Calendario en React 19 sobre un Índice Estático
+    description: Cómo diseñar una SPA de alto rendimiento en React 19 que proyecta
+      analítica, tablero Kanban y calendario consumiendo un índice estático con latencia
+      cero.
+    tags:
+    - react
+    - typescript
+    - frontend
+    - webdev
+    canonical_url: https://datalaria.com/es/posts/pulse-parte3-tablero-react-tabla-kanban-calendario/
+    published: false
+  coderlegion:
+    enabled: false
+    title: Tabla Ejecutiva, Kanban y Calendario en React 19 sobre un Índice Estático
+    description: Diseño de una SPA en React 19 con analítica, Kanban y calendario
+      consumiendo un índice estático con latencia cero.
+    tags:
+    - react
+    - typescript
+    - frontend
+    - web-dev
+    canonical_url: https://datalaria.com/es/posts/pulse-parte3-tablero-react-tabla-kanban-calendario/
+    published: false
+    category: 2

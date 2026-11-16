@@ -185,6 +185,81 @@ def test_no_published_post_links_to_scheduled_or_draft_post() -> None:
     assert not leaks, f"Violación INV-SCRIBA-CHRONO: enlaces a posts futuros/drafts detectados:\n" + "\n".join(leaks)
 
 
+def test_pulse_series_links_integrity_and_chronology() -> None:
+    """
+    Verifica que los 10 posts de la serie Pulse (pulse-parte1..5 y pulse-part1..5):
+    1. Todo enlace interno /(es|en)/posts/<slug>/ apunta a un post existente en disco.
+    2. El post destino no es draft y cumple target_publish_date <= source_publish_date (INV-SCRIBA-CHRONO).
+    3. Ningún post en inglés contiene '/en/recursos/'.
+    """
+    index_path = Path("data/pulse/private/index.json")
+    assert index_path.exists(), "data/pulse/private/index.json debe existir"
+    with open(index_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    assets_list = data if isinstance(data, list) else data.get("assets", [])
+    posts = [a for a in assets_list if a.get("asset_type") == "post"]
+
+    slug_to_post: Dict[str, Dict[str, Any]] = {}
+    for p in posts:
+        if p.get("url_es"):
+            slug_to_post[p["url_es"].strip("/").split("/")[-1]] = p
+        if p.get("url_en"):
+            slug_to_post[p["url_en"].strip("/").split("/")[-1]] = p
+
+    pulse_series_slugs = [
+        ("content/es/posts", "pulse-parte1-adios-notion-content-ops"),
+        ("content/en/posts", "pulse-part1-goodbye-notion-content-ops"),
+        ("content/es/posts", "pulse-parte2-indexador-pydantic-paridad-ci"),
+        ("content/en/posts", "pulse-part2-pydantic-indexer-bilingual-parity-ci"),
+        ("content/es/posts", "pulse-parte3-tablero-react-tabla-kanban-calendario"),
+        ("content/en/posts", "pulse-part3-react-dashboard-table-kanban-calendar"),
+        ("content/es/posts", "pulse-parte4-ga4-search-console-automatico"),
+        ("content/en/posts", "pulse-part4-ga4-search-console-automated"),
+        ("content/es/posts", "pulse-parte5-kit-excel-migracion-notion-equipos"),
+        ("content/en/posts", "pulse-part5-excel-kit-notion-migration-teams"),
+    ]
+
+    errors: List[str] = []
+    for base_dir, slug in pulse_series_slugs:
+        md_path = Path(base_dir) / slug / "index.md"
+        assert md_path.exists(), f"Fichero no encontrado: {md_path}"
+        fm = frontmatter.load(md_path)
+        source_date = str(fm.metadata.get("date", ""))[:10]
+
+        # 3. Comprobar /en/recursos/ en posts en inglés
+        if "content/en" in base_dir:
+            if "/en/recursos" in fm.content:
+                errors.append(f"{md_path.as_posix()} contiene enlace prohibido /en/recursos/")
+
+        # Extraer enlaces a posts (Markdown links [texto](/es/posts/slug/) o [texto](/en/posts/slug/))
+        links = re.findall(r"\]\((?:https?://datalaria\.com)?/(?:es|en)/posts/([^/\"\'\s)#]+)", fm.content)
+        for target_slug in links:
+            target_post = slug_to_post.get(target_slug)
+            if not target_post:
+                target_es_path = Path("content/es/posts") / target_slug / "index.md"
+                target_en_path = Path("content/en/posts") / target_slug / "index.md"
+                if not (target_es_path.exists() or target_en_path.exists()):
+                    errors.append(f"{md_path.as_posix()} -> slug destino no existe en disco: {target_slug}")
+                    continue
+                target_fm = frontmatter.load(target_es_path if target_es_path.exists() else target_en_path)
+                target_date = str(target_fm.metadata.get("date", ""))[:10]
+                target_draft = target_fm.metadata.get("draft", False)
+            else:
+                target_date = str(target_post.get("publish_date", ""))[:10]
+                target_draft = target_post.get("status") == "draft"
+
+            if target_draft:
+                errors.append(f"{md_path.as_posix()} -> enlaza a draft: {target_slug}")
+            if target_date and source_date and target_date > source_date:
+                errors.append(
+                    f"{md_path.as_posix()} (fecha {source_date}) -> "
+                    f"enlaza a post con fecha posterior ({target_date}): {target_slug}"
+                )
+
+    assert not errors, "Fallo de integridad o cronología en la serie Pulse:\n" + "\n".join(errors)
+
+
 def test_backlog_prioritization_formula_determinism() -> None:
     """Verifica el determinismo de la fórmula Editorial ROI Score y el orden del backlog."""
     # 0.40 * 80 + 0.35 * 90 + 0.25 * 70 = 32.0 + 31.5 + 17.5 = 81.0
@@ -228,3 +303,42 @@ def test_inv_pulse_6_impact_report_never_leaked_to_static() -> None:
         if p.is_file() and ("impact_report" in p.name.lower() or p.suffix.lower() == ".py")
     ]
     assert not leaked, f"Archivos privados detectados en static/: {leaked}"
+
+
+def test_release_editorial_impact_and_silent_releases() -> None:
+    """Verifica que el informe evalúa Apps, Versiones y Kits, detectando releases silenciosas."""
+    report = run_impact_analysis()
+    assert hasattr(report, "release_editorial_impact")
+    assert len(report.release_editorial_impact) >= 50
+    assert report.silent_releases_count > 0
+
+    # Mapa por ID para verificación unívoca
+    by_id = {item.asset_id: item for item in report.release_editorial_impact}
+
+    # 1. Weather v3.3.0: versión evolutiva desplegada tras el último post de la serie -> silent_release_alert
+    assert "weather-v3.3.0" in by_id, "weather-v3.3.0 debe figurar en el análisis de impacto"
+    w330 = by_id["weather-v3.3.0"]
+    assert w330.release_type == "version_upgrade"
+    assert w330.editorial_coverage_status == "silent_release_alert"
+    assert "E03" in w330.recommended_scriba_action or "Brevo" in w330.recommended_scriba_action
+
+    # 2. LifeOps v1.1.0: versión evolutiva con editorial_post_slug publicado -> covered
+    assert "lifeops-v1.1.0" in by_id, "lifeops-v1.1.0 debe figurar en el análisis de impacto"
+    l110 = by_id["lifeops-v1.1.0"]
+    assert l110.editorial_coverage_status == "covered"
+    assert l110.linked_posts_count >= 1
+
+    # 3. Datalaria Helix: lanzamiento programado con cobertura en calendario -> scheduled_coverage
+    assert "helix" in by_id
+    helix = by_id["helix"]
+    assert helix.editorial_coverage_status in ("scheduled_coverage", "pending_launch")
+
+    # 4. Total de alertas silenciosas coincide exactamente
+    actual_silent = sum(1 for item in report.release_editorial_impact if item.editorial_coverage_status == "silent_release_alert")
+    assert report.silent_releases_count == actual_silent
+
+    # 5. Reporte Markdown contiene la nueva sección 6 de gobernanza Scriba
+    report_md_path = Path("specs/audit/IMPACT_REPORT.md")
+    content = report_md_path.read_text(encoding="utf-8")
+    assert "## 6. Impacto Editorial de Lanzamientos de Apps, Versiones y Kits B2B (Gobernanza Scriba)" in content
+    assert "Alerta Silenciosa" in content

@@ -1,7 +1,8 @@
 ---
 title: "Estimación PERT de 3 Puntos Estocástica: De la Ilusión Determinista a la Certidumbre Estadística de Cronograma"
-date: 2026-11-30
+date: 2026-11-19
 draft: false
+translationKey: "stochastic-3-point-pert-estimation"
 category: "Estrategia y Operaciones"
 categories: ["Control Operativo", "Gestión de Proyectos", "Plantillas Ejecutivas", "Estrategia y Operaciones"]
 tags: ["Estimación PERT", "PERT 3 Puntos", "PMBOK 7th", "Camino Crítico", "Teorema del Límite Central", "Distribución Beta", "Z-Score", "Control Operativo", "C-Level", "Buffers de Proyecto", "Crashing de Cronograma"]

@@ -1,0 +1,112 @@
+es:
+  x:
+    hook: 'Publicar artículos técnicos sin medir su retorno orgánico es un acto de
+      fe: así conectamos GA4 y Search Console en Python protegiendo el secreto comercial.'
+    thread:
+    - 1/5 En la mayoría de blogs de ingeniería existe una desconexión total entre
+      los archivos Markdown en Git y las consolas de analítica web.
+    - 2/5 Los datos de GA4 y Search Console quedan atrapados en paneles complejos
+      y nadie audita qué artículos sufren obsolescencia o carecen de monetización.
+    - 3/5 En Datalaria Pulse automatizamos la ingesta de telemetría con una Service
+      Account de Python que cruza visitas, engagement e impresiones por ruta canónica.
+    - '4/5 Para proteger el secreto comercial aplicamos el Principio de Relativización
+      Matemática: transformamos cifras brutas en percentiles e índices Base 100 seguros.'
+    - '5/5 Aprende a calcular el patrimonio editorial y detectar quick wins de tráfico
+      en la Parte 4: https://datalaria.com/es/posts/pulse-parte4-ga4-search-console-automatico/'
+    hashtags:
+    - SEO
+    - Analytics
+    - GA4
+    - Python
+    web_intent_url: https://x.com/intent/tweet?text=Publicar+art%C3%ADculos+t%C3%A9cnicos+sin+medir+su+retorno+org%C3%A1nico+es+un+acto+de+fe%3A+as%C3%AD+conectamos+GA4+y+Search+Console+en+Python+protegiendo+el+secreto+comercial.&url=https%3A%2F%2Fdatalaria.com%2Fes%2Fposts%2Fpulse-parte4-ga4-search-console-automatico%2F&hashtags=SEO%2CAnalytics%2CGA4%2CPython
+  linkedin:
+    text: 'Uno de los mayores puntos ciegos en la gestión de medios de ingeniería
+      es la desconexión entre el repositorio de contenidos y las plataformas de analítica.
+
+
+      Por un lado, los desarrolladores versionan artículos en Git. Por otro lado,
+      la telemetría de rendimiento orgánico permanece atrapada en consolas de terceros.
+
+
+      Tres oportunidades críticas que pierdes cuando la analítica no retroalimenta
+      tu repositorio: 👇
+
+
+      📊 Huérfanos de monetización: artículos de alto tráfico orgánico que carecen
+      de una llamada a la acción hacia tus aplicaciones o kits comerciales.
+
+
+      📊 Obsolescencia silenciosa: tutoriales estratégicos con más de 180 días de antigüedad
+      que sufren caídas progresivas de posicionamiento.
+
+
+      📊 Joyas SEO ocultas: contenidos con alta tasa de clics y excelente puntuación
+      SEO que solo necesitan enlazado interno para escalar en Google.
+
+
+      En la cuarta entrega de Datalaria Pulse mostramos cómo conectamos GA4 Data API
+      y Google Search Console v1 con una Service Account en Python.
+
+
+      Y aplicamos el Principio de Relativización Matemática para hacer público el
+      análisis sin comprometer métricas comerciales sensibles.
+
+
+      📖 Descubre cómo auditar el ROI orgánico de tu contenido: https://datalaria.com/es/posts/pulse-parte4-ga4-search-console-automatico/
+
+
+      💬 ¿Cruzas automáticamente las métricas de tráfico y Search Console con los archivos
+      Markdown de tu repositorio?'
+    hashtags:
+    - SEO
+    - GoogleAnalytics
+    - SearchConsole
+    - Python
+    - ContentStrategy
+  newsletter:
+    archetype: real_case_number
+    subject: 183 activos auditados con Service Account en GA4 y Search Console
+    preheader: Cómo conectamos APIs de telemetría en Python para calcular el ROI orgánico
+      y detectar obsolescencia técnica.
+    hook_paragraphs:
+    - Publicar artículos técnicos y herramientas interactivas sin medir su retorno
+      orgánico convierte la estrategia editorial en un acto de fe.
+    - En esta cuarta entrega mostramos cómo automatizamos la extracción de telemetría
+      desde GA4 y Google Search Console con una Service Account en Python y formulación
+      matemática relativa.
+    insights_60s:
+    - 'Ingesta desatendida vía Service Account: sincronización en build time de visitas,
+      usuarios, engagement e impresiones por ruta canónica.'
+    - 'Principio de Relativización Matemática: anonimización determinista de cifras
+      absolutas en percentiles e índices Base 100 conformes con INV-PULSE-2.'
+    - 'Matriz de Salud & ROI: detección automática de huérfanos de monetización, alertas
+      de frescura (>180 días) y oportunidades orgánicas en SERP.'
+    secondary_cta_label: Probar Demo Sandbox de Datalaria Pulse
+    secondary_cta_url: https://datalaria.com/apps/pulse/?demo=true&utm_source=brevo&utm_medium=email&utm_campaign=pulse-launch-p4
+    ps_referral_text: Si colaboras con especialistas de SEO técnico o líderes analíticos,
+      este framework les ahorrará semanas de trabajo.
+  devto:
+    enabled: false
+    title: 'Google Analytics 4 y Search Console Automatizados: Cómo Medir el ROI Orgánico'
+    description: Cómo conectar las APIs de GA4 y Search Console mediante Service Account
+      para auditar tráfico orgánico y detectar obsolescencia sin vulnerar privacidad.
+    tags:
+    - seo
+    - analytics
+    - python
+    - automation
+    canonical_url: https://datalaria.com/es/posts/pulse-parte4-ga4-search-console-automatico/
+    published: false
+  coderlegion:
+    enabled: false
+    title: 'Google Analytics 4 y Search Console Automatizados: Cómo Medir el ROI Orgánico'
+    description: Conexión de APIs de GA4 y Search Console con Service Account para
+      auditar tráfico orgánico y detectar obsolescencia.
+    tags:
+    - seo
+    - analytics
+    - python
+    - automation
+    canonical_url: https://datalaria.com/es/posts/pulse-parte4-ga4-search-console-automatico/
+    published: false
+    category: 2

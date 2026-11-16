@@ -1,0 +1,113 @@
+en:
+  x:
+    hook: 'Publishing technical articles without measuring organic return is pure
+      guesswork: how we connected GA4 and Search Console in Python while safeguarding
+      data privacy.'
+    thread:
+    - 1/5 In most engineering blogs, there is a total disconnect between Markdown
+      files versioned in Git and web analytics dashboards.
+    - 2/5 Critical telemetry from GA4 and Search Console stays siloed in complex third-party
+      tools while technical decay goes unnoticed.
+    - 3/5 In Datalaria Pulse, we automated telemetry ingestion with a Python Service
+      Account aggregating pageviews, engagement, and impressions by canonical URL.
+    - '4/5 To safeguard commercial secrecy while sharing open benchmarks, we apply
+      Mathematical Relativization: converting raw visits into percentiles and Base
+      100 indices.'
+    - '5/5 Learn how to evaluate content equity and detect high-ROI SEO quick wins
+      in Part 4: https://datalaria.com/en/posts/pulse-part4-ga4-search-console-automated/'
+    hashtags:
+    - SEO
+    - Analytics
+    - GA4
+    - Python
+    web_intent_url: https://x.com/intent/tweet?text=Publishing+technical+articles+without+measuring+organic+return+is+pure+guesswork%3A+how+we+connected+GA4+and+Search+Console+in+Python+while+safeguarding+data+privacy.&url=https%3A%2F%2Fdatalaria.com%2Fen%2Fposts%2Fpulse-part4-ga4-search-console-automated%2F&hashtags=SEO%2CAnalytics%2CGA4%2CPython
+  linkedin:
+    text: 'One of the most persistent blind spots in engineering media operations
+      is the disconnect between content repositories and web analytics platforms.
+
+
+      On one side, developers version Markdown in Git. On the other side, organic
+      performance telemetry remains locked inside third-party consoles.
+
+
+      Three costly blind spots when telemetry fails to feed back into your content
+      operations: 👇
+
+
+      📊 Monetization orphans: high-traffic technical articles lacking an intentional
+      conversion link to your apps or paid product suites.
+
+
+      📊 Silent content decay: strategic tutorials older than 180 days suffering from
+      progressive erosion in search engine visibility.
+
+
+      📊 Hidden SEO gems: guides with strong CTR and outstanding on-page hygiene that
+      only need internal link equity to dominate rankings.
+
+
+      In Part 4 of Datalaria Pulse, we reveal how we connect to the GA4 Data API and
+      Google Search Console v1 using a headless Python Service Account.
+
+
+      And we apply the Principle of Mathematical Relativization to share transparent
+      public benchmarks without leaking proprietary commercial figures.
+
+
+      📖 Discover how to audit organic return across your technical catalog: https://datalaria.com/en/posts/pulse-part4-ga4-search-console-automated/
+
+
+      💬 Do you automatically pipe traffic and search impressions back into your repository''s
+      content metadata?'
+    hashtags:
+    - SEO
+    - GoogleAnalytics
+    - SearchConsole
+    - Python
+    - ContentOps
+  newsletter:
+    archetype: real_case_number
+    subject: Auditing 183 technical assets with GA4 and Search Console APIs
+    preheader: How we automated telemetry pipelines in Python to calculate organic
+      ROI and detect technical freshness decay.
+    hook_paragraphs:
+    - Publishing technical documentation and interactive tools without measuring their
+      organic return turns editorial strategy into pure guesswork.
+    - In this fourth installment, we demonstrate how we automate telemetry extraction
+      from GA4 and Google Search Console using a Python Service Account.
+    insights_60s:
+    - 'Headless Service Account ingestion: compile-time synchronization of pageviews,
+      users, engagement, and impressions by canonical path.'
+    - 'Mathematical Relativization Principle: deterministic normalization of raw metrics
+      into relative percentiles and Base 100 indices.'
+    - 'Health & Content ROI cockpit: automated surfacing of monetization orphans,
+      freshness decay warnings (>180 days), and SERP CTR quick wins.'
+    secondary_cta_label: Try Datalaria Pulse Live Sandbox
+    secondary_cta_url: https://datalaria.com/apps/pulse/?demo=true&utm_source=brevo&utm_medium=email&utm_campaign=pulse-launch-p4
+    ps_referral_text: Working with technical SEO specialists or analytics engineers?
+      Forward this architecture their way.
+  devto:
+    enabled: true
+    title: 'Automated GA4 and Search Console: Measuring Organic ROI and Content Freshness'
+    description: How to connect GA4 and Search Console APIs via Service Account to
+      audit organic traffic, calculate content equity, and detect freshness decay.
+    tags:
+    - seo
+    - analytics
+    - python
+    - automation
+    canonical_url: https://datalaria.com/en/posts/pulse-part4-ga4-search-console-automated/
+    published: true
+  coderlegion:
+    enabled: true
+    title: 'Automated GA4 and Search Console: Measuring Organic ROI and Content Freshness'
+    description: Connecting GA4 and Search Console APIs via Service Account to audit
+      organic traffic and detect content freshness decay.
+    tags:
+    - seo
+    - analytics
+    - python
+    - automation
+    canonical_url: https://datalaria.com/en/posts/pulse-part4-ga4-search-console-automated/
+    published: true
+    category: 2

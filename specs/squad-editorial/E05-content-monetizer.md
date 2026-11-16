@@ -47,3 +47,4 @@ Transformar el tráfico de lectores del blog en **ingresos pasivos recurrentes y
 - `[USER-FIX]` **Valor Inmediato Anti-Bajas:** Asegurar que cada correo aporte un insight accionable autónomo, de modo que el suscriptor gane valor aunque no haga clic en el enlace.
 - `[USER-FIX]` **Homologación de Precios:** Citar siempre 19 € como precio de lanzamiento de los Kits en los correos y CTAs (nunca 29 € ni dólares).
 - `[ENV-FIX]` **Renderizado Responsivo en Clientes de Correo:** Usar tablas HTML simples con estilos inline y fondo claro para garantizar legibilidad en Outlook y Gmail.
+- `[USER-FIX]` **Monetización de Nuevas Versiones y Kits:** Ante cualquier `kit_launch` o `version_upgrade` en producción, actualizar los CTAs y enlaces en los posts guía existentes y destacar las mejoras en la Newsletter Brevo 2.0 para reactivar antiguos lectores.

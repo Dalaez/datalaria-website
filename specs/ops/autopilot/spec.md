@@ -1,7 +1,7 @@
 # Especificación Técnica SDD: Datalaria `Autopilot 2.0` y `Brevo Newsletter 2.0 Anti-Churn` (`autopilot`)
 
 > **ID de Especificación:** `SPEC-OPS-AUTOPILOT`  
-> **Versión:** `2.1.0`  
+> **Versión:** `2.1.1`  
 > **Estado:** `APPROVED`  
 > **Propietario de Dominio:** Datalaria (Superequipo Helix + Scriba · `E05`, `E06`, `E07`, `E08`)  
 > **Ubicación del Código Fuente:** `autopilot/`  
@@ -86,7 +86,7 @@ flowchart LR
 4. **`INV-AUTO-4 (Deterministic Quality Gate):`** Reemplazo integral de `autopilot/ctrl/` (`gh copilot`) por `quality_validator.py`, validando longitud ponderada Twitter (`ord(c) > 0xFFFF -> 2`, `https?://\S+ -> 23`), Broetry LinkedIn y métricas anti-spam HTML (`>= 75` palabras visibles, `>= 400` chars visibles y única `<img>`).
 5. **`INV-AUTO-5 (Security, Privacy & Hugo Firewall):`** Cero secretos literales; `config.yaml` ignora `social_pack.ya?ml` para no exponerlo en `public/`; escape HTML (`html.escape`) obligatorio en todo texto dinámico inyectado en el email; prohibido imprimir `api-key` o tokens en stdout.
 6. **`INV-AUTO-6 (Chronological & Link Parity):`** El CTA secundario hacia Sandbox/Recursos inspecciona `data/apps/<slug>.yaml` y **bloquea** la promoción de cualquier app con `status == "incubating"` (ej. `helix` bajo embargo), haciendo fallback seguro a `/es/recursos/` o `/en/resources/`. Todo UTM se inyecta con `urlsplit`/`urlunsplit` **antes** del fragmento `#` (preservando rutas `HashRouter` como `/apps/lifeops/#/?mock=true`).
-7. **`INV-AUTO-7 (Universal Markdown Syndication & Firewall):`** Todo contenido sindicado transforma el 100 % de shortcodes Hugo soportados (`mermaid` — en bloque ```` ```mermaid ```` o en imagen externa `![alt](url)` cuando incluye el parámetro `image="..."` —, `app-ref`, `helix-waitlist`, `product-card`, `bundle-card`, `youtube`, `buymeacoffee`, `ref`/`relref`), imágenes relativas (`raw.githubusercontent.com` o `datalaria.com/images/...`) e hipervínculos (`datalaria.com` + `utm_source=<platform>&utm_medium=syndication&utm_campaign=<slug>`), protegiendo bloques de código cercados y garantizando `0` enlaces relativos residuales ni fuga hacia `public/` (`config.yaml` ignora `dist_(devto|coderlegion)(_[a-z]{2})?\.md$`, artefactos aislados en `autopilot/dist/`).
+7. **`INV-AUTO-7 (Universal Markdown Syndication & Firewall):`** Todo contenido sindicado transforma el 100 % de shortcodes Hugo soportados (`mermaid` — en bloque ```` ```mermaid ```` o en imagen externa `![alt](url)` cuando incluye el parámetro `image="..."` —, `app-ref`, `helix-waitlist`, `product-card`, `bundle-card`, `youtube` — `{% youtube <id> %}` en `devto` y miniatura clicable Markdown en `coderlegion` —, `buymeacoffee`, `ref`/`relref`), imágenes relativas (`raw.githubusercontent.com` o `datalaria.com/images/...`) e hipervínculos (`datalaria.com` + `utm_source=<platform>&utm_medium=syndication&utm_campaign=<slug>`), protegiendo bloques de código cercados y garantizando `0` enlaces relativos residuales ni fuga hacia `public/` (`config.yaml` ignora `dist_(devto|coderlegion)(_[a-z]{2})?\.md$`, artefactos aislados en `autopilot/dist/`).
 8. **`INV-AUTO-8 (Canonical Protection & CoderLegion Contract):`** Ninguna publicación hacia Dev.to (`canonical_url`) ni CoderLegion (`source_url`) puede emitirse sin URL canónica `https://datalaria.com/...`; la autenticación con CoderLegion emplea exclusivamente la cabecera `X-API-Key` desde entorno/Secrets (`0` credenciales en código o logs) y CoderLegion respeta `CODERLEGION_LANGS` (default `"en"`).
 
 ---
@@ -99,7 +99,7 @@ flowchart LR
   - `GEMINI_API_KEY`, `BREVO_API_KEY`, `BREVO_LIST_ID_ES` (default `3`), `BREVO_LIST_ID_EN` (default `4`)
   - `LINKEDIN_ACCESS_TOKEN`, `LINKEDIN_CLIENT_ID`, `LINKEDIN_CLIENT_SECRET`, `LINKEDIN_REFRESH_TOKEN`, `LINKEDIN_COMPANY_ID`
   - `DEVTO_API_KEY`, `DEVTO_ORG_ID`
-  - `CODERLEGION_API_KEY`, `CODERLEGION_API_URL` (default `https://coderlegion.com/api/v1/posts`), `CODERLEGION_CATEGORY_ID`, `CODERLEGION_LANGS` (default `en`)
+  - `CODERLEGION_API_KEY`, `CODERLEGION_API_URL` (default `https://coderlegion.com/api/v1/posts`), `CODERLEGION_CATEGORY_ID` (default `"2"` = `Articles`), `CODERLEGION_LANGS` (default `en`)
 
 ---
 
@@ -119,3 +119,4 @@ hugo --renderToMemory
 | :--- | :--- | :--- | :--- |
 | `2.0.0` | 2026-11-12 | Creación de especificación SDD de Autopilot 2.0 y Brevo Newsletter 2.0 Anti-Churn, retirada de `autopilot/ctrl/` y código CrewAI deprecado. | `ADR-024`, Hito `7.3` |
 | `2.1.0` | 2026-11-12 | Incorporación de `markdown_syndicator.py`, `SyndicationConfig`/`SyndicationArtifact`, auditoría `audit_markdown_syndication`, integración CoderLegion (`X-API-Key` + `source_url`) y firewall `dist_*.md`. | `ADR-025`, Hito `7.4` |
+| `2.1.1` | 2026-11-14 | Embed nativo de YouTube en Dev.to (`{% youtube <id> %}`) y categoría por defecto `CODERLEGION_CATEGORY_ID=2` (`Articles`) en `social_manager.py` y `autopilot.yml`. | Hito `7.5` |

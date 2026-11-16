@@ -1,6 +1,6 @@
 ---
 title: "Del Front Matter al Índice: Pydantic v2, Paridad ES/EN y Automatización en GitHub Actions"
-date: 2026-11-25
+date: 2026-11-22
 draft: false
 cover:
   image: "cover.png"
@@ -30,11 +30,11 @@ En este artículo desglosamos la ingeniería interna de **Datalaria Pulse**: có
 ### 🗺️ Hoja de Ruta de la Serie Datalaria Pulse
 Para entender cómo encaja cada pieza del rompecabezas de *Content Ops as Code*, esta serie se compone de 5 entregas estructuradas:
 
-1. ⚪ **Parte 1**: [Adiós Notion: Datalaria Pulse o la Gestión Editorial que se Escribe Sola desde Git](/es/posts/pulse-parte1-adios-notion-content-ops/).
-2. 🟢 **Parte 2 (Este artículo)**: Del Front Matter al Índice: Pydantic v2, Paridad Bilingüe y Automatización con CI/CD.
-3. ⚪ **Parte 3**: [Tabla Ejecutiva, Tablero Kanban y Calendario Mensual en React 19 sobre un Índice Estático](/es/posts/pulse-parte3-tablero-react-tabla-kanban-calendario/).
-4. ⚪ **Parte 4**: [Google Analytics 4 y Search Console Automatizados: Cómo Medir el ROI Orgánico de Cada Post, App y Kit](/es/posts/pulse-parte4-ga4-search-console-automatico/).
-5. ⚪ **Parte 5**: [Gestión Editorial para Equipos de Documentación, SEO y Marketing: de Notion a Excel en 5 minutos y Fábrica con IA](/es/posts/pulse-parte5-kit-excel-migracion-notion-equipos/).
+1. ⚪ **Parte 1**: [Adiós Notion: Datalaria Pulse o la Gestión Editorial que se Escribe Sola desde Git](/es/posts/pulse-parte1-adios-notion-content-ops/)
+2. 🟢 **Parte 2 (Este artículo)**: Del Front Matter al Índice: Pydantic v2, Paridad Bilingüe y Automatización con CI/CD
+3. ⚪ **Parte 3 (Mié 25/11)**: Tabla Ejecutiva, Tablero Kanban y Calendario Mensual en React 19 sobre un Índice Estático
+4. ⚪ **Parte 4 (Dom 29/11)**: Google Analytics 4 y Search Console Automatizados: Cómo Medir el ROI Orgánico de Cada Post, App y Kit
+5. ⚪ **Parte 5 (Mié 02/12)**: Gestión Editorial para Equipos de Documentación, SEO y Marketing: de Notion a Excel en 5 minutos y Fábrica con IA
 
 ---
 
@@ -51,7 +51,7 @@ El objetivo neurálgico de la **Fase 5 de Datalaria** consiste en reemplazar la 
 ### Objetivos Específicos de este Artículo 2:
 - Diseñar la entidad canónica `ContentAsset` en Pydantic v2 y analizar las ventajas de migrar desde diccionarios planos o Pydantic v1.
 - Implementar las dos invariantes de seguridad críticas: aislamiento de activos privados (`INV-PULSE-1`) y anonimización/relativización de analítica en base 100 (`INV-PULSE-2`).
-- Explicar el algoritmo determinista de emparejamiento bilingüe que mapea más de 135 activos cruzando `translationKey` y taxonomía.
+- Explicar el algoritmo determinista de emparejamiento bilingüe que mapea 183 activos (118 artículos bilingües, 47 versiones SemVer de aplicaciones 🚀 APP / ⚡ APP vX.Y y 18 ediciones de Kits B2B 📦 KIT bajo las invariantes `INV-PULSE-1..8`) cruzando `translationKey` y taxonomía.
 - Configurar el workflow de GitHub Actions que audita enlaces rotos, calcula el SEO Score (0 a 100) y genera el archivo `public.json` consumido por la interfaz web.
 
 ---
@@ -194,11 +194,11 @@ El motor de escaneo `ops/pulse/build_index.py` resuelve este emparejamiento sigu
 {{< mermaid >}}
 flowchart LR
     subgraph ES ["1. Escaneo ES (/content/es/)"]
-        P_ES["Post ES\ntranslationKey: pulse-part2\ndate: 2026-11-25"]
+        P_ES["Post ES\ntranslationKey: pulse-part2\ndate: 2026-11-22"]
     end
 
     subgraph EN ["2. Escaneo EN (/content/en/)"]
-        P_EN["Post EN\ntranslationKey: pulse-part2\ndate: 2026-11-25"]
+        P_EN["Post EN\ntranslationKey: pulse-part2\ndate: 2026-11-22"]
     end
 
     subgraph GRAPH ["3. Resolución de Grafo & Paridad"]
@@ -218,7 +218,7 @@ flowchart LR
 - **`missing_en` / `missing_es`:** El artículo ha sido publicado en un idioma, pero no existe fichero homólogo en el idioma complementario.
 - **`outdated_en` / `outdated_es`:** Ambos archivos existen, pero la versión en español ha recibido actualizaciones sustanciales en Git (commits recientes con cambios de más de 100 palabras) que aún no se han sincronizado en la versión inglesa.
 
-Gracias a esta clasificación, el Dashboard de Datalaria Pulse proyecta un indicador directo de **Salud Bilingüe** (actualmente `137 / 137 activos, 100% paridad`), alertando al equipo editorial si un borrador amenaza con desincronizar el catálogo internacional.
+Gracias a esta clasificación, el Dashboard de Datalaria Pulse proyecta un indicador directo de **Salud Bilingüe** (actualmente `183 / 183 activos, 100% paridad`), alertando al equipo editorial si un borrador amenaza con desincronizar el catálogo internacional.
 
 ---
 

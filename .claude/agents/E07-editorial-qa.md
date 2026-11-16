@@ -44,3 +44,5 @@ Actuar como el **garante independiente de excelencia con derecho a veto vinculan
 - `[USER-FIX]` **Veto Absoluto sobre Enlaces a Borradores:** Bloquear de inmediato cualquier post que contenga enlaces hacia artículos con `draft: true` o fechas futuras.
 - `[USER-FIX]` **Comprobación de Imagen Hero en Brevo:** Exigir que la plantilla de correo contenga la imagen de portada con enlace al post y una caja de 3 insights clave antes de aprobar el envío.
 - `[ENV-FIX]` **Verificación Determinista de Sintaxis Mermaid:** Comprobar que ningún nodo incluya caracteres conflictivos antes de compilar con Hugo.
+- `[USER-FIX]` **Auditoría de `<img src>` Relativos y Embeds Dev.to:** Rechazar cualquier `dist_*` que deje `<img src="...">` relativos sin URL `https://` o YouTube sin `{% youtube <id> %}` en Dev.to.
+- `[USER-FIX]` **Veto sobre Releases Huérfanas y Desincronizadas:** Verificar en cada ciclo que los `version_upgrade` y `kit_edition` cuenten con entrada formal en el índice y fecha válida (`INV-PULSE-7/8`), rechazando cualquier despliegue que desincronice el catálogo editorial.

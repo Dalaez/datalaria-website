@@ -1,6 +1,6 @@
 ---
 title: "Tabla Ejecutiva, Tablero Kanban y Calendario Mensual en React 19 sobre un Índice Estático"
-date: 2026-12-02
+date: 2026-11-25
 draft: false
 cover:
   image: "cover.png"
@@ -30,11 +30,11 @@ En este artículo desglosamos la arquitectura frontend de **Datalaria Pulse**: c
 ### 🗺️ Hoja de Ruta de la Serie Datalaria Pulse
 Para entender cómo encaja cada pieza del rompecabezas de *Content Ops as Code*, esta serie se compone de 5 entregas estructuradas:
 
-1. ⚪ **Parte 1**: [Adiós Notion: Datalaria Pulse o la Gestión Editorial que se Escribe Sola desde Git](/es/posts/pulse-parte1-adios-notion-content-ops/).
-2. ⚪ **Parte 2**: [Del Front Matter al Índice: Pydantic v2, Paridad Bilingüe y Automatización con CI/CD](/es/posts/pulse-parte2-indexador-pydantic-paridad-ci/).
-3. 🟢 **Parte 3 (Este artículo)**: Tabla Ejecutiva, Tablero Kanban y Calendario Mensual en React 19 sobre un Índice Estático.
-4. ⚪ **Parte 4**: [Google Analytics 4 y Search Console Automatizados: Cómo Medir el ROI Orgánico de Cada Post, App y Kit](/es/posts/pulse-parte4-ga4-search-console-automatico/).
-5. ⚪ **Parte 5**: [Gestión Editorial para Equipos de Documentación, SEO y Marketing: de Notion a Excel en 5 minutos y Fábrica con IA](/es/posts/pulse-parte5-kit-excel-migracion-notion-equipos/).
+1. ⚪ **Parte 1**: [Adiós Notion: Datalaria Pulse o la Gestión Editorial que se Escribe Sola desde Git](/es/posts/pulse-parte1-adios-notion-content-ops/)
+2. ⚪ **Parte 2**: [Del Front Matter al Índice: Pydantic v2, Paridad Bilingüe y Automatización con CI/CD](/es/posts/pulse-parte2-indexador-pydantic-paridad-ci/)
+3. 🟢 **Parte 3 (Este artículo)**: Tabla Ejecutiva, Tablero Kanban y Calendario Mensual en React 19 sobre un Índice Estático
+4. ⚪ **Parte 4 (Dom 29/11)**: Google Analytics 4 y Search Console Automatizados: Cómo Medir el ROI Orgánico de Cada Post, App y Kit
+5. ⚪ **Parte 5 (Mié 02/12)**: Gestión Editorial para Equipos de Documentación, SEO y Marketing: de Notion a Excel en 5 minutos y Fábrica con IA
 
 ---
 
@@ -91,7 +91,7 @@ flowchart TD
 
 1. **La Ergonomía Visual de [LifeOps](/es/apps/lifeops/):** Pulse adopta la tipografía corporativa *Outfit + Inter*, el modo oscuro profundo (*Dark Slate* `#080d1a` a `#0f172a`), los resplandores neón cian y esmeralda, y la estructura de navegación segmentada flotante que desarrollamos originalmente para la gestión personal en LifeOps.
 2. **Presentación Directiva de la [Suite de Toma de Decisiones](/es/posts/toma-decisiones-priorizacion-framework-cuantitativo/):** La cabecera de Pulse sigue el estándar directivo C-Level: 4 Macro KPIs con bordes superiores neón (`Total Activos`, `Publicados`, `Programados` y `Paridad Bilingüe`) seguidos de métricas operativas contextuales (palabras indexadas, patrimonio de contenidos estimado y activo líder de tráfico orgánico).
-3. **Taxonomía Triple de [Ingeniería S&OP](/es/posts/sop_ingenieria-higiene-datos/):** Al igual que en la planificación operativa segmentamos referencias por familias y canales, Pulse implementa un selector dinámico en 3 niveles: macro-grupos del ecosistema (Artículos vs Apps vs Kits), 4 pilares temáticos del blog y categorías detalladas.
+3. **Taxonomía Triple de [Ingeniería S&OP](/es/posts/sop_ingenieria-higiene-datos/):** Al igual que en la planificación operativa segmentamos referencias por familias y canales, Pulse implementa un selector dinámico en 3 niveles: macro-grupos del ecosistema (Artículos vs Apps vs Kits), 5 pilares temáticos del blog y categorías detalladas.
 4. **Tipado de Extremo a Extremo en [Spec-Driven Development (SDD)](/es/posts/sdd_vs_vibe_coding/):** Las interfaces TypeScript en React 19 son un reflejo idéntico de los esquemas Pydantic v2 documentados en `specs/apps/pulse/spec.md`. No existe discrepancia en nombres de campos, tipos opcionales ni valores por defecto.
 
 ---
@@ -147,15 +147,16 @@ La **Tabla Ejecutiva** es el caballo de batalla para auditorías masivas de cat�
 
 | Activo / Título | Tipo | Estado | Fecha Pub | Palabras | Paridad | Score SEO |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **5 Fuerzas de Porter...** | `POST` | `Published` | 2026-10-19 | 4.218 pal. | complete | 60 / 100 |
-| **DAFO Cuantitativo y CAME...** | `POST` | `Published` | 2026-10-13 | 4.867 pal. | complete | 60 / 100 |
+| **5 Fuerzas de Porter...** | `POST` | `Published` | 2026-10-19 | 4.218 pal. | complete | 100 / 100 |
+| **DAFO Cuantitativo y CAME...** | `POST` | `Published` | 2026-10-13 | 4.867 pal. | complete | 100 / 100 |
 | **Matriz BCG Dinámica...** | `POST` | `Published` | 2026-10-26 | 3.920 pal. | complete | 100 / 100 |
 
 ### Capacidades de Ingeniería Implementadas:
-1. **Filtro Multi-Criterio Combinado:** La barra de herramientas permite filtrar simultáneamente por texto predictivo (coincidencias en título, slug y etiquetas), tipo de activo (`post`, `app`, `kit`, `suite`) y estado editorial (`published`, `scheduled`, `draft`, `idea`).
-2. **Ordenación Bidireccional:** Pulsar sobre cualquier cabecera reordena instantáneamente la lista por orden alfabético, cronológico, volumen de palabras o índice de tráfico.
-3. **Paginación Inteligente:** Conmutador de densidad de visualización en tramos de 10, 25, 50 o 100 activos por página, garantizando una renderización fluida de DOM en pantallas táctiles o dispositivos de menor potencia.
-4. **Píldoras Cromáticas de Estado:** Etiquetas visuales de alto contraste que destacan inmediatamente si un activo posee paridad bilingüe completa (`complete` en verde esmeralda) o si presenta traducciones pendientes (`missing_en` en rojo rosáceo).
+1. **Filtro Multi-Criterio Combinado y Enlaces Profundos:** La barra de herramientas permite filtrar simultáneamente por texto predictivo (coincidencias en título, slug y etiquetas), tipo de activo (`post`, `app`, `kit`, `suite`) y estado editorial (`published`, `scheduled`, `draft`, `idea`), soportando *deep-linking* por URL (`?tab=table&type=app&status=published`).
+2. **Conmutador de Historial de Versiones (`🔀`):** Permite alternar al instante entre la vista consolidada de activos principales y el desglose de versiones evolutivas SemVer (`vX.Y.Z`).
+3. **Diagnóstico Interactivo de Notion CSV en 1 Clic (*Operación Crisol*):** Botón de validación que analiza exportaciones CSV de Notion en el propio navegador, auditando campos obligatorios, fechas y categorización sin enviar datos al servidor.
+4. **Ordenación Bidireccional y Paginación Inteligente:** Pulsar sobre cualquier cabecera reordena al instante por fecha, volumen léxico o índice de tráfico, con conmutador de densidad (10, 25, 50 o 100 filas).
+5. **Píldoras Cromáticas de Estado y Avance Rápido en Kanban (`→`):** Etiquetas visuales de alto contraste (`complete` en verde, `missing_en` en rojo) y botones de transición inmediata de etapa editorial en Kanban sin abrir modales.
 
 ---
 
@@ -178,7 +179,7 @@ Cada tarjeta en el tablero es un componente autónomo que proyecta:
 - **Temática Oficial:** Asignación taxonómica (*Estrategia Empresarial*, *Ingeniería de Software*, *Ciencia de Datos*, *Decisiones Cuantitativas*).
 - **Indicador de Calidad:** Chip de SEO Score (0 a 100) coloreado en escala semafórica (verde $\ge 80$, ámbar $\ge 60$, rojo $< 60$).
 
-Al consolidar los 138 activos en estas 5 etapas, el equipo técnico detecta de un vistazo si la columna *En Revisión* presenta atascos o si la reserva de contenidos *Programados* garantiza la cadencia semanal acordada.
+Al consolidar los 183 activos en estas 5 etapas (118 artículos bilingües, 47 versiones SemVer de aplicaciones 🚀 APP / ⚡ APP vX.Y y 18 ediciones de Kits B2B 📦 KIT bajo las invariantes `INV-PULSE-1..8`), el equipo técnico detecta de un vistazo si la columna *En Revisión* presenta atascos o si la reserva de contenidos *Programados* garantiza la cadencia semanal acordada.
 
 ---
 
@@ -189,10 +190,10 @@ Un calendario editorial no es una lista estática de fechas; es una herramienta 
 | Fecha | Título del Activo | Tipo |
 | :--- | :--- | :--- |
 | **2026-11-18** | Adiós Notion: Datalaria Pulse o la Gestión Editorial desde Git | `POST` |
-| **2026-11-25** | Del Front Matter al Índice: Pydantic v2 y GitHub Actions | `POST` |
-| **2026-12-02** | Tabla Ejecutiva, Tablero Kanban y Calendario en React 19 | `POST` |
-| **2026-12-09** | Conexión GA4 y Search Console para Medir el ROI Orgánico | `POST` |
-| **2026-12-16** | Datalaria Pulse Pro: Sincronización Cloud y Equipos con Supabase | `POST` |
+| **2026-11-22** | Del Front Matter al Índice: Pydantic v2 y GitHub Actions | `POST` |
+| **2026-11-25** | Tabla Ejecutiva, Tablero Kanban y Calendario en React 19 | `POST` |
+| **2026-11-29** | Conexión GA4 y Search Console para Medir el ROI Orgánico | `POST` |
+| **2026-12-02** | Datalaria Pulse Pro: Sincronización Cloud y Equipos con Supabase | `POST` |
 
 ### Captura Rápida de Ideas con Persistencia Local:
 Para no interrumpir el flujo creativo de los autores mientras investigan o redactan, implementamos el botón **`+ Nueva Idea`**:

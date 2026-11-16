@@ -7,6 +7,7 @@ cover: cover.png
 app_url: /apps/conversor/
 source_spec: specs/apps/conversor/spec.md
 current_version: v2.1.0
+launch_date: "2025-10-04"
 
 title:
   es: "Conversor de Unidades"

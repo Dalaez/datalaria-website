@@ -32,3 +32,4 @@ Analizar de forma rigurosa y cuantitativa el **impacto orgánico real de los art
 - `[USER-FIX]` **Separación Músculo vs Cerebro:** Delegar el cálculo estadístico y de percentiles al script Python determinista, reservando el análisis para la interpretación ejecutiva.
 - `[USER-FIX]` **Quick Wins de Alto Retorno:** Priorizar siempre la optimización de títulos en artículos ya indexados antes que la creación de contenido nuevo desde cero.
 - `[RADAR-SKILL]` **Detección de Canibalización:** Vigilar que dos artículos no compitan por las mismas palabras clave principales en Google Search Console.
+- `[USER-FIX]` **Matriz de Impacto de Versiones y Kits:** Cruzar obligatoriamente las Apps, versiones y Kits B2B en `analyze_release_editorial_impact()`, alertando de estrenos sin tracción y priorizando el backlog editorial según el ROI de nuevas versiones.

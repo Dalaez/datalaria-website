@@ -1,7 +1,8 @@
 ---
 title: "Safety Stock & Reorder Point (ROP) Calculator: Boardroom-Grade Inventory & Working Capital Optimization"
-date: 2026-11-22
+date: 2026-11-26
 draft: false
+translationKey: "safety-stock-reorder-point-calculator"
 category: "Strategy & Operations"
 categories: ["Operational Control", "Supply Chain", "Executive Templates", "Strategy & Operations"]
 tags: ["Safety Stock", "Reorder Point", "ROP", "EOQ", "Wilson Lot Sizing", "Working Capital", "Supply Chain Management", "APICS", "ASCM", "Inventory Optimization", "C-Level"]

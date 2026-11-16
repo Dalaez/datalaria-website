@@ -1,6 +1,6 @@
 ---
 title: "Inference-Time Scaling y Razonamiento Sistema 2: Cómo la IA Aprende a Pensar Antes de Hablar"
-date: 2026-11-29
+date: 2026-12-06
 draft: false
 category: "IA, Ingeniería y Proyectos"
 categories: ["Inteligencia Artificial", "Deep Tech", "Ingeniería", "IA, Ingeniería y Proyectos"]

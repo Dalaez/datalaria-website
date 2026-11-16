@@ -1,6 +1,6 @@
 ---
 title: "Executive Table, Kanban Board, and Monthly Calendar in React 19 Over a Static Index"
-date: 2026-12-02
+date: 2026-11-25
 draft: false
 cover:
   image: "cover.png"
@@ -30,11 +30,11 @@ In this article, we break down the frontend engineering behind **Datalaria Pulse
 ### 🗺️ Datalaria Pulse Series Roadmap
 To understand how each piece of the *Content Ops as Code* architecture fits together, this series consists of 5 structured installments:
 
-1. ⚪ **Part 1**: [Goodbye Notion: Datalaria Pulse and Editorial Governance that Writes Itself from Git](/en/posts/pulse-part1-goodbye-notion-content-ops/).
-2. ⚪ **Part 2**: [From Front Matter to Index: Pydantic v2, Bilingual Parity, and CI/CD Automation](/en/posts/pulse-part2-pydantic-indexer-bilingual-parity-ci/).
-3. 🟢 **Part 3 (This article)**: Executive Table, Kanban Board, and Monthly Calendar in React 19 over a Static Index.
-4. ⚪ **Part 4**: [Automated Google Analytics 4 and Search Console: Measuring the Organic ROI of Every Post, App, and Kit](/en/posts/pulse-part4-ga4-search-console-automated/).
-5. ⚪ **Part 5**: [Editorial Operations for Docs, SEO, and Marketing Teams: From Notion to Excel in 5 Minutes and AI Agent Factory](/en/posts/pulse-part5-excel-kit-notion-migration-teams/).
+1. ⚪ **Part 1**: [Goodbye Notion: Datalaria Pulse and Editorial Governance that Writes Itself from Git](/en/posts/pulse-part1-goodbye-notion-content-ops/)
+2. ⚪ **Part 2**: [From Front Matter to Index: Pydantic v2, Bilingual Parity, and CI/CD Automation](/en/posts/pulse-part2-pydantic-indexer-bilingual-parity-ci/)
+3. 🟢 **Part 3 (This article)**: Executive Table, Kanban Board, and Monthly Calendar in React 19 over a Static Index
+4. ⚪ **Part 4 (Sun Nov 29)**: Automated Google Analytics 4 and Search Console: Measuring the Organic ROI of Every Post, App, and Kit
+5. ⚪ **Part 5 (Wed Dec 02)**: Editorial Operations for Docs, SEO, and Marketing Teams: From Notion to Excel in 5 Minutes and AI Agent Factory
 
 ---
 
@@ -90,8 +90,8 @@ flowchart TD
 {{< /mermaid >}}
 
 1. **The Visual Ergonomics of [LifeOps](/en/apps/lifeops/):** Pulse adopts the *Outfit + Inter* corporate typography, deep dark slate styling (`#080d1a` to `#0f172a`), neon cyan/emerald atmospheric accents, and the floating segmented navigation deck originally developed for our LifeOps platform.
-2. **C-Level Executive Presentation from the [Decision Suite](/en/posts/executive-decision-packs-quantitative-framework/):** The Pulse navbar follows executive boardroom standards: 4 Macro KPIs highlighted by neon top borders (`Total Assets`, `Published`, `Scheduled`, and `Bilingual Parity`), complemented by contextual operational metrics (indexed words, estimated content equity, and top organic traffic driver).
-3. **Triple Taxonomy from [S&OP Engineering](/en/posts/sop_engineering-data-hygiene/):** Just as supply chain planners segment inventory by family and channel, Pulse incorporates a dynamic 3-level taxonomy selector: macro ecosystem tiers (Articles vs Apps vs Kits), official 4-pillar blog themes, and granular category breakdowns.
+2. **C-Level Executive Presentation from the [Decision Suite](/en/posts/decision-making-prioritization-quantitative-framework/):** The Pulse navbar follows executive boardroom standards: 4 Macro KPIs highlighted by neon top borders (`Total Assets`, `Published`, `Scheduled`, and `Bilingual Parity`), complemented by contextual operational metrics (indexed words, estimated content equity, and top organic traffic driver).
+3. **Triple Taxonomy from [S&OP Engineering](/en/posts/sop_engineering-data-hygiene/):** Just as supply chain planners segment inventory by family and channel, Pulse incorporates a dynamic 3-level taxonomy selector: macro ecosystem tiers (Articles vs Apps vs Kits), official 5-pillar blog themes, and granular category breakdowns.
 4. **End-to-End Type Safety under [Spec-Driven Development (SDD)](/en/posts/sdd_vs_vibe_coding/):** TypeScript interfaces in React 19 mirror the exact Pydantic v2 contracts specified in `specs/apps/pulse/spec.md`. There is zero divergence in field naming, optionality, or default structures.
 
 ---
@@ -145,17 +145,18 @@ export function App() {
 
 The **Executive Table** serves as the primary instrument for deep catalog auditing. When an organization manages over 100 technical articles, editorial leaders must answer complex questions in seconds: *which articles score below 70 in SEO audit?*, *which long-form guides exceed 3,000 words but lack English translations?*, *which asset leads organic search traffic?*.
 
-| Asset / Title | Type | Status | Pub Date | Words | Parity | SEO Score |
+| Activo / Title | Type | Status | Pub Date | Words | Parity | SEO Score |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Porter's Five Forces...** | `POST` | `Published` | 2026-10-19 | 4,218 w. | complete | 60 / 100 |
-| **Quantitative SWOT & CAME...** | `POST` | `Published` | 2026-10-13 | 4,867 w. | complete | 60 / 100 |
+| **Porter's Five Forces...** | `POST` | `Published` | 2026-10-19 | 4,218 w. | complete | 100 / 100 |
+| **Quantitative SWOT & CAME...** | `POST` | `Published` | 2026-10-13 | 4,867 w. | complete | 100 / 100 |
 | **Dynamic BCG Matrix...** | `POST` | `Published` | 2026-10-26 | 3,920 w. | complete | 100 / 100 |
 
 ### Key Engineering Features:
-1. **Multi-Criteria Filtering:** The control bar enables simultaneous filtering by predictive text (fuzzy matches across titles, slugs, and tags), asset class (`post`, `app`, `kit`, `suite`), and editorial state (`published`, `scheduled`, `draft`, `idea`).
-2. **Bi-Directional Sorting:** Clicking any header instantly reorders the catalog alphabetically, chronologically, by word count, or by relative traffic index.
-3. **Adaptive Pagination:** A responsive density switcher supports 10, 25, 50, or 100 records per page, ensuring smooth DOM rendering across all devices.
-4. **High-Contrast Parity Badges:** Clear chromatic indicators immediately highlight whether an asset maintains complete bilingual symmetry (`complete` in emerald green) or flags pending translations (`missing_en` in rose pink).
+1. **Multi-Criteria Filtering & URL Deep-Linking:** The control bar enables simultaneous filtering by predictive text (fuzzy matches across titles, slugs, and tags), asset class (`post`, `app`, `kit`, `suite`), and editorial state (`published`, `scheduled`, `draft`, `idea`), supporting URL deep linking (`?tab=table&type=app&status=published`).
+2. **Version History Switcher (`🔀`):** Instantly toggles between consolidated parent assets and granular SemVer release histories (`vX.Y.Z`).
+3. **1-Click Interactive Notion CSV Diagnostics (*Operation Crucible*):** Client-side validation button that parses Notion CSV exports in browser memory, auditing mandatory columns, dates, and taxonomy without sending data to servers.
+4. **Bi-Directional Sorting and Adaptive Pagination:** Clicking any header instantly reorders the catalog alphabetically, chronologically, by word count, or by relative traffic index, with configurable density (10, 25, 50, or 100 rows).
+5. **High-Contrast Parity Badges and Quick-Advance Kanban (`→`):** Clear chromatic indicators (`complete` in emerald green, `missing_en` in rose pink) and 1-click stage transition buttons in Kanban without opening modal dialogs.
 
 ---
 
@@ -178,7 +179,7 @@ Each card in the board functions as an autonomous component displaying:
 - **Taxonomy Pillar:** Official content category assignment (*Business Strategy*, *Software Engineering*, *Data Science*, *Quantitative Decisions*).
 - **Quality Score:** SEO Score badge (0 to 100) color-coded via a traffic light system (green $\ge 80$, amber $\ge 60$, red $< 60$).
 
-With 138 assets distributed across these 5 stages, engineering managers instantly identify review bottlenecks or verify whether upcoming scheduled releases satisfy weekly publishing quotas.
+With 183 assets distributed across these 5 stages (118 bilingual articles, 47 SemVer application releases 🚀 APP / ⚡ APP vX.Y, and 18 B2B Kit editions 📦 KIT under invariants `INV-PULSE-1..8`), engineering managers instantly identify review bottlenecks or verify whether upcoming scheduled releases satisfy weekly publishing quotas.
 
 ---
 
@@ -189,10 +190,10 @@ An editorial calendar is not merely a list of dates; it is an instrument of stra
 | Date | Asset Title | Type |
 | :--- | :--- | :--- |
 | **2026-11-18** | Goodbye Notion: Datalaria Pulse and Editorial Ops from Git | `POST` |
-| **2026-11-25** | From Front Matter to Index: Pydantic v2 & GitHub Actions | `POST` |
-| **2026-12-02** | Executive Table, Kanban Board, and Monthly Calendar in React 19 | `POST` |
-| **2026-12-09** | Automated GA4 and Search Console to Measure Organic ROI | `POST` |
-| **2026-12-16** | Datalaria Pulse Pro: Cloud Sync and Team Collaboration | `POST` |
+| **2026-11-22** | From Front Matter to Index: Pydantic v2 & GitHub Actions | `POST` |
+| **2026-11-25** | Executive Table, Kanban Board, and Monthly Calendar in React 19 | `POST` |
+| **2026-11-29** | Automated GA4 and Search Console to Measure Organic ROI | `POST` |
+| **2026-12-02** | Datalaria Pulse Pro: Cloud Sync and Team Collaboration | `POST` |
 
 ### Rapid Idea Capture with Local Persistence:
 To maintain creative flow while authors research or code, we engineered the **`+ New Idea`** modal:

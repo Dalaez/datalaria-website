@@ -1,0 +1,110 @@
+en:
+  x:
+    hook: 'Engineers want Git while marketing lives in Notion or Excel: how to build
+      a bi-directional bridge in 5 minutes using Power Query M and a Python CLI.'
+    thread:
+    - 1/5 The greatest cultural friction in tech companies happens between software
+      engineers demanding pull requests and content writers refusing to touch bash
+      terminals.
+    - 2/5 The typical workaround is marketing keeping a decoupled Notion database,
+      causing severe synchronization drift within weeks.
+    - '3/5 In the final installment of Datalaria Pulse, we introduce the Commercial
+      Kit: a 6-sheet Master Excel workbook with native validation and Power Query
+      M connectors.'
+    - 4/5 Includes a deterministic Python CLI to migrate Notion exports to Excel or
+      YAML in 5 minutes, plus our Pro cloud vision with Supabase and AI agents.
+    - '5/5 Close the loop on modern editorial governance and download the kit in Part
+      5: https://datalaria.com/en/posts/pulse-part5-excel-kit-notion-migration-teams/'
+    hashtags:
+    - ContentOps
+    - Excel
+    - Notion
+    - Automation
+    web_intent_url: https://x.com/intent/tweet?text=Engineers+want+Git+while+marketing+lives+in+Notion+or+Excel%3A+how+to+build+a+bi-directional+bridge+in+5+minutes+using+Power+Query+M+and+a+Python+CLI.&url=https%3A%2F%2Fdatalaria.com%2Fen%2Fposts%2Fpulse-part5-excel-kit-notion-migration-teams%2F&hashtags=ContentOps%2CExcel%2CNotion%2CAutomation
+  linkedin:
+    text: 'One of the most persistent organizational frictions in technology companies
+      occurs right at the cultural border between software engineers and content marketers.
+
+
+      Forcing technical writers and SEO strategists to clone Git repositories and
+      resolve merge conflicts inevitably breeds friction and resistance.
+
+
+      In the final installment of the Datalaria Pulse series, we show how to engineer
+      a bi-directional bridge without imposing foreign tools: 👇
+
+
+      🛠️ 5-minute Notion migration: a deterministic Python CLI engine that converts
+      exported Notion CSV databases into clean YAML or structured Excel workbooks.
+
+
+      🛠️ Master Excel Template with Power Query M: a 6-sheet operational workbook
+      with Kanban and Dashboard tabs syncing in 1 click against your Git repository.
+
+
+      🛠️ Pulse Pro cloud architecture: multi-tenant PostgreSQL persistence on Supabase
+      Cloud with Row-Level Security powering an autonomous AI agent factory.
+
+
+      When engineering and content teams share structured data contracts, publication
+      velocity multiplies without sacrificing technical rigor.
+
+
+      📖 Discover how to bridge your teams with the Content Ops Kit: https://datalaria.com/en/posts/pulse-part5-excel-kit-notion-migration-teams/
+
+
+      💬 How does your organization bridge collaboration between engineers working
+      in Git and marketing or editorial teams?'
+    hashtags:
+    - ContentOps
+    - Excel
+    - PowerQuery
+    - Notion
+    - CrossFunctional
+  newsletter:
+    archetype: counterintuitive_question
+    subject: Why force writers to use Git when you can connect Power Query?
+    preheader: 'Bridging the gap between software engineers and marketing: 5-minute
+      Notion migration, Master Excel template, and AI factory.'
+    hook_paragraphs:
+    - One of the most persistent organizational frictions occurs between developers
+      who demand Git version control and content writers who thrive in Notion or Excel.
+    - In this fifth and final installment of the Datalaria Pulse series, we reveal
+      how to build a bi-directional bridge using our Content Ops Kit and Supabase
+      Pro architecture.
+    insights_60s:
+    - '5-minute Notion migration CLI: deterministic Python engine transforming Notion
+      CSV exports into clean YAML or formatted Excel files.'
+    - 'Master Excel Template with Power Query M: 6 structured sheets synchronizing
+      in a single click directly against production Git repositories.'
+    - 'Pulse Pro evolution with AI: cloud PostgreSQL persistence on Supabase with
+      Row-Level Security powering an autonomous editorial factory.'
+    secondary_cta_label: View the Commercial Content Ops Kit
+    secondary_cta_url: https://datalaria.com/en/resources/?utm_source=brevo&utm_medium=email&utm_campaign=pulse-launch-p5#pack-pulse
+    ps_referral_text: Collaborating with content directors or product marketing leaders?
+      Forward this operational kit their way.
+  devto:
+    enabled: true
+    title: 'Content Ops for SEO and Marketing Teams: From Notion to Excel in 5 Minutes'
+    description: 'Bridging the gap between content writers, SEOs, and engineers: 5-minute
+      Notion migration, Excel template with Power Query, and Pro cloud evolution.'
+    tags:
+    - excel
+    - notion
+    - contentops
+    - automation
+    canonical_url: https://datalaria.com/en/posts/pulse-part5-excel-kit-notion-migration-teams/
+    published: true
+  coderlegion:
+    enabled: true
+    title: 'Content Ops for SEO and Marketing Teams: From Notion to Excel in 5 Minutes'
+    description: 'Bridging the gap between content writers, SEOs, and engineers: 5-minute
+      Notion migration, Excel template with Power Query, and AI factory.'
+    tags:
+    - excel
+    - notion
+    - content-ops
+    - automation
+    canonical_url: https://datalaria.com/en/posts/pulse-part5-excel-kit-notion-migration-teams/
+    published: true
+    category: 2

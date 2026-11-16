@@ -1,6 +1,6 @@
 ---
 title: "Inference-Time Scaling and System 2 Reasoning: How AI Learns to Think Before Speaking"
-date: 2026-11-29
+date: 2026-12-06
 draft: false
 category: "AI, Engineering & Projects"
 categories: ["Inteligencia Artificial", "Deep Tech", "Ingeniería", "AI, Engineering & Projects"]

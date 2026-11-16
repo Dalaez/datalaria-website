@@ -48,3 +48,5 @@ Amplificar la visibilidad de los artículos técnicos de Datalaria en las princi
 - `[USER-FIX]` **Formato Broetry Limpio en LinkedIn:** Utilizar siempre dobles saltos de línea entre párrafos y evitar bloques de texto densos de más de 3 líneas.
 - `[ENV-FIX]` **URLs Absolutas para Comunidades Externas:** Convertir cualquier referencia a imágenes locales (`./cover.png`) en URLs públicas de GitHub Raw antes de la publicación.
 - `[USER-FIX]` **Revisión Pre-Push de Propuestas Sociales:** Entregar al usuario en `Fase A` las sugerencias completas de LinkedIn (ES/EN) y X/Twitter (gancho, hilo y `Web Intent`) validadas en `DRY_RUN` antes de ejecutar `git push` (`series-lifecycle-playbook.md`).
+- `[USER-FIX]` **YouTube Liquid Tag en Dev.to:** En `platform="devto"`, convertir `{{< youtube ID >}}` en `{% youtube ID %}` (en CoderLegion mantener miniatura enlazada Markdown estándar).
+- `[USER-FIX]` **Imágenes HTML `<img src>` y .jpg en Comunidades:** Prohibir `<img src="relativo">` sin resolver (preferir sintaxis Markdown `![alt](...)` y formato `.png`) para evitar imágenes rotas en Dev.to/CoderLegion.

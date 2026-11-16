@@ -1,7 +1,8 @@
 ---
 title: "Stochastic 3-Point PERT Estimation: Moving from Deterministic Schedule Illusion to Statistical Board Certainty"
-date: 2026-11-30
+date: 2026-11-19
 draft: false
+translationKey: "stochastic-3-point-pert-estimation"
 category: "Strategy & Operations"
 categories: ["Operations Control", "Project Management", "Executive Templates", "Strategy & Operations"]
 tags: ["PERT Estimation", "3-Point PERT", "PMBOK 7th", "Critical Path", "Central Limit Theorem", "Beta Distribution", "Z-Score", "Operations Control", "C-Level", "Project Buffers", "Schedule Crashing"]

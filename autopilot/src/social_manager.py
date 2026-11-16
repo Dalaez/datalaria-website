@@ -45,7 +45,7 @@ class SocialMediaManager:
         self.coderlegion_api_url = os.getenv(
             "CODERLEGION_API_URL", "https://coderlegion.com/api/v1/posts"
         )
-        self.coderlegion_category_id = os.getenv("CODERLEGION_CATEGORY_ID")
+        self.coderlegion_category_id = (os.getenv("CODERLEGION_CATEGORY_ID") or "2").strip()
 
         self.client_v2 = None
         self.api_v1 = None

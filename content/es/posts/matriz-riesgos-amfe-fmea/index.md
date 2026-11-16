@@ -2,11 +2,20 @@
 title: "Matriz de Riesgos Cuantitativa & AMFE / FMEA: De la Intuición Cualitativa al Número de Prioridad de Riesgo (NPR)"
 date: 2026-11-16
 draft: false
+translationKey: "quantitative-risk-matrix-fmea"
 category: "Estrategia y Operaciones"
 categories: ["Control Operativo", "Gestión de Riesgos", "Plantillas Ejecutivas", "Estrategia y Operaciones"]
 tags: ["Matriz de Riesgos", "AMFE", "FMEA", "ISO 31000", "AIAG-VDA", "NPR", "RPN", "COSO ERM", "Control Operativo", "C-Level", "Auditoría de Riesgos"]
 description: "Guía metodológica y cuantitativa para transformar la matriz de riesgos subjetiva en un motor analítico bidimensional (ISO 31000) y tridimensional (AMFE/FMEA AIAG-VDA): cálculo de Severidad x Ocurrencia x Detección, curvas Pareto, ROI del control (CER) y defensa C-Level ante el Consejo de Administración."
 summary: "Transforma los tradicionales registros cualitativos de riesgos en un motor cuantitativo de grado Consejo de Administración. Esta metodología combina el estándar ISO 31000 (mapa de calor 5x5 de Probabilidad vs. Impacto) con el rigor industrial AIAG-VDA / IATF 16949 (Análisis de Modos de Fallo y Efectos: Severidad x Ocurrencia x Detección = NPR), cuantificando la pérdida monetaria esperada E(L), el retorno de inversión del control (CER) y el mapa de ruta de contingencia para comités de auditoría."
+cover:
+  image: "cover.png"
+  alt: "Matriz de Riesgos Cuantitativa & AMFE / FMEA: Matriz 5x5 ISO 31000, Cálculo NPR y Retorno de Control CER"
+  caption: "Matriz de Riesgos Cuantitativa & AMFE / FMEA: Modelo bidimensional ISO 31000, motor tridimensional AIAG-VDA (S × O × D = NPR), pérdida esperada E(L) y defensa C-Level."
+  relative: true
+images:
+  - "cover.png"
+  - "preview-pack.png"
 ---
 
 En comités de dirección ejecutiva (Executive Committee), consejos de administración y comisiones delegadas de auditoría y control de riesgos, directores generales (CEOs), directores de operaciones (COOs) y directores financieros (CFOs) se enfrentan con alarmante frecuencia a una patología metodológica crítica que en consultoría estratégica Tier-1 (*McKinsey Risk & Resilience Practice*, *BCG Center for Process Excellence*) denominamos **"la falacia de la última milla cualitativa"**:
@@ -21,41 +30,91 @@ En el momento en que el Consejo de Administración solicita justificar una inver
 
 Para erradicar estas vulnerabilidades y blindar la gobernanza corporativa, los marcos canónicos **ISO 31000:2018**, **COSO ERM** y el estándar unificado de automoción e industria crítica **AIAG-VDA (2019)** exigen articular un **motor cuantitativo dual**: una matriz bidimensional 5x5 calibrada monetariamente y un análisis tridimensional de **Modos de Fallo y Efectos (AMFE / FMEA)** sustentado en el **Número de Prioridad de Riesgo ($\text{NPR} = S \times O \times D$)** y en la **Prioridad de Acción (Action Priority)**.
 
-En este artículo maestro formalizamos el ciclo metodológico, la fundamentación matemática actuarial, los baremos objetivos de calibración 1-10, la arquitectura del modelo de cálculo y el protocolo de defensa ejecutiva ante el Consejo de Administración.
+En este artículo maestro formalizamos qué son y cómo funcionan la Matriz de Riesgos 5x5 y el AMFE / FMEA, su integración dentro del embudo estratégico-operativo, la fundamentación matemática actuarial, los baremos objetivos de calibración 1-10, la arquitectura del modelo de cálculo y el protocolo de defensa ejecutiva ante el Consejo de Administración.
+
+{{< product-card
+  variant="compact"
+  title="Executive Decision Pack: Matriz de Riesgos & AMFE / FMEA (NPR)"
+  price="7€"
+  original_price="22€"
+  badge="⚠️ Estándar ISO 31000 & AIAG-VDA"
+  icon="⚠️"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/6eea6aa0-fe9f-440b-8bb9-6f29b303e57a"
+  button_text="Descargar Kit Ahora (.ZIP) • 7€"
+>}}
+¿Necesitas defender un presupuesto de mitigación o auditoría operativa ante el CFO y el Comité de Riesgos? Descarga el motor cuantitativo en Excel con Matriz 5x5 ISO 31000, cálculo AMFE AIAG-VDA (NPR y Prioridad de Acción), ROI de control (CER), guía metodológica PDF y presentación editable 16:9.
+{{< /product-card >}}
 
 ---
 
-## 1. El Ciclo de Control Cuantitativo de Riesgos (ISO 31000 & AIAG-VDA)
+## 1. ¿Qué es la Matriz de Riesgos Cuantitativa & el AMFE / FMEA? Fundamentos, Componentes y Objetivos
+
+Para Directores de Operaciones (COO), Directores Financieros (CFO), Directores de Riesgos (CRO), CISOs, ingenieros de calidad o profesionales que se acercan por primera vez a estas disciplinas, el pack unifica **dos estándares complementarios de gestión preventiva**:
+
+1. **La Matriz de Riesgos 5x5 (Estándar ISO 31000 / COSO ERM):** Es una herramienta de gobierno corporativo macro que mapea todos los riesgos estratégicos, operativos, financieros, legales y de ciberseguridad en una cuadrícula cartesiana de **Probabilidad ($1\text{–}5$) frente a Impacto ($1\text{–}5$)**. Su objetivo es visualizar la exposición agregada (*Puntuación Inherente*, $1\text{–}25$), definir la estrategia de respuesta (*Mitigar, Evitar, Transferir o Aceptar*) y verificar cuánto riesgo permanece tras aplicar controles (*Puntuación Residual*).
+2. **El AMFE / FMEA Operativo (Análisis Modal de Fallos y Efectos — Estándar AIAG-VDA / IATF 16949):** Mientras la matriz 5x5 evalúa riesgos corporativos globales, el **AMFE** desciende a nivel micro de proceso o sistema para anticipar **cómo puede fallar exactamente un componente** (*Modo de Fallo*), **qué sufre el cliente o negocio** (*Efecto*), **por qué ocurre en raíz** (*Causa*) y **qué capacidad real tenemos de interceptarlo antes de que llegue a producción** (*Detección*). Su métrica central es el **Número de Prioridad de Riesgo ($\text{NPR} = S \times O \times D$, escala $1\text{–}1000$)** combinado con la lógica jerárquica de **Prioridad de Acción (AP)**.
+
+### 1.1 Los Cuatro Imperativos Estratégicos del Modelo Cuantitativo
+
+En la práctica ejecutiva moderna, las hojas de riesgo cualitativas fracasan porque se limitan a inventariar preocupaciones pasivas. El enfoque cuantitativo de Datalaria persigue cuatro objetivos operativos no negociables:
+
+1. **Traducir Riesgos Técnicos a Capital en Riesgo ($E(L)$):** Convertir amenazas abstractas en pérdida financiera anualizada esperada en euros para que el Comité de Auditoría y el CFO puedan comparar alternativas bajo el mismo idioma presupuestario.
+2. **Eliminar la Ceguera de Detección ($D$):** Penalizar explícitamente todo proceso crítico que carezca de telemetría automatizada o controles preventivos (*Poka-Yoke*), impidiendo que fallos silenciosos parezcan "riesgos medios".
+3. **Imponer Veto Jerárquico AIAG-VDA (`High AP`):** Evitar que un fallo catastrófico ($S \ge 9$) quede oculto por tener baja frecuencia histórica, activando bloqueo operativo obligatorio sobre cualquier modo de fallo de Severidad crítica o $\text{NPR} \ge 120$.
+4. **Justificar el CAPEX de Mitigación con Retorno Medible ($\text{CER}$):** Demostrar ante Dirección General cuántas veces se recupera cada euro invertido en redundancia, ciberseguridad o mantenimiento predictivo gracias a la reducción neta de pérdida esperada ($\Delta E(L)$).
+
+### 1.2 Tabla Comparativa: Gestión Cualitativa Tradicional vs. Motor Cuantitativo Datalaria
+
+| Dimensión de Gobierno | Matriz de Riesgos Cualitativa Tradicional | Motor Dual Cuantitativo (Datalaria ISO 31000 + AIAG-VDA) | Ventaja Estratégica C-Level |
+| :--- | :--- | :--- | :--- |
+| **Dimensionalidad Analítica** | Bidimensional subjetiva (*Probabilidad* $\times$ *Impacto* sin escala monetaria). | **Motor Dual:** Matriz 5x5 ISO 31000 **+** AMFE tridimensional ($S \times O \times D = \text{NPR}$). | Combina visión ejecutiva de portfolio con ingeniería de fiabilidad en procesos core. |
+| **Invisibilidad del Fallo** | Asume implícitamente detección inmediata cuando el incidente ocurre. | **Variable Detección ($D \in [1,10]$) inversa:** penaliza procesos sin observabilidad en tiempo real. | Intercepta fallos latentes (corrupción de datos, fatiga mecánica, brechas silenciosas) antes del cliente. |
+| **Priorización & Veto** | Regla plana o intuitiva; 80% de ítems concentrados en "zona amarilla". | **Prioridad de Acción AIAG-VDA (Alta/Media/Baja)** con veto directo si $S \ge 9$ o $\text{NPR} \ge 120$. | Protege frente a eventos de baja frecuencia y severidad letal (*Cisnes Negros*). |
+| **Justificación Financiera** | Coste de mitigación percibido como gasto improductivo sin cálculo de retorno. | **Pérdida Esperada $E(L)$ y Ratio CER ($\Delta E(L) / \text{CAPEX}$)** automatizados por iniciativa. | Convierte presupuestos de ciberseguridad y resiliencia en decisiones de ROI aprobables por el CFO. |
+| **Trazabilidad Post-Control** | Lista estática revisada una vez al año sin contraste cuantitativo. | **Doble Scoring (Inherente vs. Residual)** con medición exacta de $\Delta \text{NPR} \%$ y estado Q1–Q4. | Auditoría verificable de eficacia de los controles desplegados tras el desembolso. |
+| **Entregables Ejecutivos** | Hojas sueltas desprotegidas vulnerables a errores de fórmula. | **Pack Completo:** Excel 4 pestañas ECMA-376, Deck PPTX 16:9 Minto y Guía Metodológica PDF. | Despliegue inmediato en Comités de Auditoría y Dirección sin semanas de modelización. |
+
+### 1.3 El Embudo Estratégico-Operativo Integral: De la Estrategia Corporativa (Suite 01) y Decisión (Suite 02) al Blindaje AMFE (Suite 03)
+
+En organizaciones de alto rendimiento, el control de riesgos operativos no opera de forma aislada respecto a la estrategia de negocio ni a la asignación de inversiones. La **Matriz de Riesgos Cuantitativa & AMFE / FMEA** constituye el **Pilar 2 de la Suite 03 (Control Operativo PMBOK)**, cerrando el ciclo que conecta la formulación estratégica con la ejecución blindada frente a fallos:
+
+1. **Diagnóstico Macro, Competitivo y Portfolio de Negocio (Suite 01):** El análisis comienza evaluando presiones regulatorias y tecnológicas mediante la [Matriz PESTEL Cuantitativa](/es/posts/matriz-pestel-cuantitativa/) y la intensidad sectorial con las [5 Fuerzas de Porter Cuantitativas](/es/posts/5-fuerzas-porter-cuantitativas/). Tras cruzar capacidades internas en el [DAFO Cuantitativo & Matriz CAME](/es/posts/dafo-cuantitativo-matriz-came/), la dirección asigna capital por unidades de negocio mediante la [Matriz BCG Dinámica](/es/posts/matriz-bcg-dinamica/) y la [Matriz McKinsey / GE 3x3](/es/posts/matriz-mckinsey-ge/) (todas integradas en el [Kit Estrategia Corporativa MBA](/es/posts/estrategia-corporativa-mba-framework-cuantitativo/)).
+2. **Adjudicación de Alternativas, Backlog y Aprobación Financiera (Suite 02):** Una vez definida la estrategia, la [Matriz DAR Cuantitativa](/es/posts/matriz-dar-cuantitativa/) filtra proveedores y arquitecturas con criterios veto *Must-Have*, la [Matriz RICE & ICE](/es/posts/matriz-rice-ice-priorizacion/) ordena el roadmap por densidad de valor y el [Business Case Financiero (VAN, TIR & Tornado)](/es/posts/business-case-financiero-van-tir/) certifica la rentabilidad neta del CAPEX (integrados en el [Framework de Toma de Decisiones y Priorización](/es/posts/toma-decisiones-priorizacion-framework-cuantitativo/)).
+3. **Ejecución blindada y Control Operativo PMBOK (Suite 03):** Con el proyecto aprobado y financiado, primero la [Matriz RACI Cuantitativa & Balance de Carga](/es/posts/matriz-raci-balance-carga/) blinda quién es el **Accountable único ($A=1$)** y quién actúa como *Risk Owner* de cada entregable sin saturar al talento clave. Acto seguido, **esta Matriz de Riesgos & AMFE / FMEA** audita dónde pueden fallar los procesos críticos antes del lanzamiento, antes de gobernar plazos probabilísticos (Estimación PERT 3 Puntos), desviaciones presupuestarias (Cuadro de Mando EVM Curva S) y buffers de suministro (Stock de Seguridad ROP).
+
+---
+
+## 2. El Ciclo de Control Cuantitativo de Riesgos (ISO 31000 y AIAG-VDA)
 
 La gestión de riesgos rigurosa no es un ejercicio estático de cumplimiento burocrático que se archiva en una carpeta compartida tras la auditoría anual. Constituye un **circuito cerrado de ingeniería de fiabilidad, cuantificación actuarial y rebalanceo continuo de controles**:
 
 {{< mermaid >}}
 flowchart TD
-    A["<b>1. Desglose de Procesos & Activos Críticos</b><br/><small>Identificación de sistemas core, infraestructura cloud y supply chain<br/>Estructuración de operaciones y mapeo de dependencias funcionales</small>"]
+    A["<b>1. Desglose de Procesos y Activos Críticos</b><br/><small>Identificación de sistemas core, infraestructura cloud y supply chain<br/>Estructuración de operaciones y mapeo de dependencias funcionales</small>"]
     
-    B["<b>2. Análisis de Modos de Fallo & Efectos (AMFE)</b><br/><small>Identificación de Modos Potenciales de Fallo y Efectos en Cliente<br/>Aislamiento de Causas Raíz técnicas y Controles Actuales</small>"]
+    B["<b>2. Análisis de Modos de Fallo y Efectos (AMFE)</b><br/><small>Identificación de Modos Potenciales de Fallo y Efectos en Cliente<br/>Aislamiento de Causas Raíz técnicas y Controles Actuales</small>"]
     
-    C["<b>3. Calibración Cuantitativa Tridimensional</b><br/><small>Scoring objetivo 1-10: Severidad (S), Ocurrencia (O), Detección (D)<br/>Cálculo del Número de Prioridad de Riesgo: NPR = S &times; O &times; D</small>"]
+    C["<b>3. Calibración Cuantitativa Tridimensional</b><br/><small>Scoring objetivo 1-10: Severidad (S), Ocurrencia (O), Detección (D)<br/>Cálculo del Número de Prioridad de Riesgo: NPR = S x O x D</small>"]
     
-    D{"<b>4. Filtro de Prioridad de Acción (AP)</b><br/><small>Matriz de Decisión Jerárquica AIAG-VDA:<br/>¿S &ge; 9 o NPR &ge; 120? ¿Ocurrencia y Detección críticas?</small>"}
+    D{"<b>4. Filtro de Prioridad de Acción (AP)</b><br/><small>Matriz de Decisión Jerárquica AIAG-VDA:<br/>S >= 9 o NPR >= 120, o Ocurrencia y Detección críticas</small>"}
     
     E["<b>PRIORIDAD ALTA: BLOQUEO OPERATIVO</b><br/><small>Mandato de ingeniería inmediato (Bandera Roja)<br/>Prohibición de release o veto en comité de operaciones</small>"]
     
-    F["<b>5. Modelización Financiera de Mitigación</b><br/><small>Cálculo de Pérdida Esperada: E(L) = P &times; I &times; Exposición<br/>Evaluación del Cost-Effectiveness Ratio: CER = &Delta;E(L) / CAPEX</small>"]
+    F["<b>5. Modelización Financiera de Mitigación</b><br/><small>Cálculo de Pérdida Esperada: E(L) = P x I x Exposición<br/>Evaluación del Cost-Effectiveness Ratio: CER = Delta E(L) / CAPEX</small>"]
     
-    G["<b>6. Despliegue de Controles Preventivos & Telemetría</b><br/><small>Controles Poka-Yoke de prevención (reducen Ocurrencia)<br/>Observabilidad y fallback automático 24/7 (reducen Detección)</small>"]
+    G["<b>6. Despliegue de Controles Preventivos y Telemetría</b><br/><small>Controles Poka-Yoke de prevención (reducen Ocurrencia)<br/>Observabilidad y fallback automático 24/7 (reducen Detección)</small>"]
     
-    H["<b>7. Auditoría Residual & Board Decision Gateway</b><br/><small>Recálculo de S, O, D residuales &rarr; Verificación NPR &lt; 80<br/>Presentación C-Level 16:9 con Minto Pyramid y firma vinculante</small>"]
+    H["<b>7. Auditoría Residual y Board Decision Gateway</b><br/><small>Recálculo de S, O, D residuales -> Verificación NPR menor a 80<br/>Presentación C-Level 16:9 con Minto Pyramid y firma vinculante</small>"]
 
     A --> B
     B --> C
     C --> D
-    D -->|"Prioridad Alta (S &ge; 9 o NPR &ge; 120)"| E
+    D -->|"Prioridad Alta (S >= 9 o NPR >= 120)"| E
     E --> F
-    D -->|"Prioridad Media / Baja"| F
+    D -->|"Prioridad Media o Baja"| F
     F --> G
     G --> H
-    H -->|"Desviación Residual (NPR &ge; 80)"| B
+    H -->|"Desviación Residual (NPR >= 80)"| B
     H -->|"100% Conforme (Apetito de Riesgo Cumplido)"| A
 
     style A fill:#F8FAFC,stroke:#64748B,stroke-width:1.5px,color:#0F172A
@@ -72,11 +131,11 @@ Este flujo operacional garantiza que ningún riesgo crítico quede desatendido p
 
 ---
 
-## 2. Fundamentación Matemática y Dinámica Cuantitativa
+## 3. Fundamentación Matemática y Dinámica Cuantitativa
 
 Para que un modelo de riesgos sea computable en hojas de cálculo corporativas y defendible ante auditores independientes, cada dimensión del riesgo debe formalizarse como una relación matemática explícita.
 
-### 2.1 Modelo Actuarial de Pérdida Financiera Esperada ($E(L)$)
+### 3.1 Modelo Actuarial de Pérdida Financiera Esperada ($E(L)$)
 
 En gobernanza de riesgos corporativos (marco COSO ERM), la exposición al riesgo no se mide en puntos arbitrarios, sino en **capital económico probabilístico expuesto a pérdida**. Formalizamos el valor esperado de la pérdida $E(L)$ para un horizonte temporal de 12 meses:
 
@@ -93,7 +152,7 @@ $$E(L) = 0,15 \times 0,40 \times 2.000.000 € = 120.000 € / \text{año}$$
 
 Este valor define la **frontera económica racional de inversión**: cualquier control preventivo cuyo coste anualizado sea inferior a 120.000 € genera valor neto positivo para la compañía.
 
-### 2.2 Ecuación Tridimensional del Número de Prioridad de Riesgo (NPR / RPN)
+### 3.2 Ecuación Tridimensional del Número de Prioridad de Riesgo (NPR / RPN)
 
 En el ámbito de la ingeniería de fiabilidad y el control de procesos (estándar AIAG-VDA), la criticidad operacional se descompone en tres variables ortogonales calibradas en escala discreta de 1 a 10:
 
@@ -104,7 +163,7 @@ Cada parámetro cuantifica una dimensión física e independiente del modo de fa
 2. **Ocurrencia ($O \in \{1, \dots, 10\}$):** Probabilidad o frecuencia estadística con la que la causa raíz específica se manifestará en el sistema durante el ciclo de operación.
 3. **Detección ($D \in \{1, \dots, 10\}$):** Capacidad del sistema actual de controles y monitorización para interceptar la causa raíz o el modo de fallo antes de que el artefacto defectuoso alcance al cliente o genere una interrupción de servicio. **Atención a la escala inversa:** $D=1$ representa detección perfecta y automática, mientras que $D=10$ representa incapacidad absoluta de detección (el fallo es totalmente invisible).
 
-### 2.3 La Revolución Metodológica AIAG-VDA: Prioridad de Acción (Action Priority)
+### 3.3 La Revolución Metodológica AIAG-VDA: Prioridad de Acción (Action Priority)
 
 Durante décadas, los analistas de operaciones fijaban una "línea de corte" rígida de NPR (por ejemplo, $\text{NPR} \ge 100$) para decidir qué fallos mitigar. En 2019, la alianza de las asociaciones automotrices americana y alemana (**AIAG & VDA**) erradicó esta práctica tras demostrar matemáticamente su peligrosidad.
 
@@ -119,7 +178,7 @@ La matriz de **Prioridad de Acción (Action Priority - AP)** establece una jerar
 * **Media (Medium AP):** Asignación condicionada a optimización de controles ($60 \le \text{NPR} < 120$). Requiere justificación técnica si no se acomete mitigación antes del siguiente ciclo de auditoría.
 * **Baja (Low AP):** Riesgo tolerable ($NPR < 60$ con $S \le 6$). El proceso opera dentro de la capacidad de absorción habitual de la organización.
 
-### 2.4 Modelo de Retorno de la Inversión en Control: Cost-Effectiveness Ratio (CER)
+### 3.4 Modelo de Retorno de la Inversión en Control: Cost-Effectiveness Ratio (CER)
 
 Para justificar las partidas de mitigación ante el CFO, formalizamos el **Ratio de Eficacia del Control (CER)**:
 
@@ -130,7 +189,7 @@ $$\text{CER} = \frac{\Delta E(L)}{\text{Coste Total de la Mitigación}} = \frac{
 
 ---
 
-## 3. Baremos de Calibración Objetiva 1-10 (Estándar AIAG-VDA)
+## 4. Baremos de Calibración Objetiva 1-10 (Estándar AIAG-VDA)
 
 La consistencia de un análisis AMFE depende de eliminar la dispersión interpretativa entre evaluadores. La siguiente tabla consolida los baremos objetivos de puntuación utilizados por los auditores Tier-1:
 
@@ -147,11 +206,11 @@ La consistencia de un análisis AMFE depende de eliminar la dispersión interpre
 | **2** | **Inapreciable:** Defecto casi imperceptible para usuarios expertos. Cero impacto económico o de cumplimiento. | **Remota:** Tasa $< 0,01$ por 1.000 eventos ($< 1$ en $100.000$). Casi imposible físicamente. | **Muy Alta:** Detección en runtime con circuit-breakers que aíslan la transacción defectuosa en milisegundos. |
 | **1** | **Sin Efecto:** Ningún impacto técnico, operativo, financiero o reputacional discernible. | **Casi Imposible:** Cero precedentes en la industria. Probabilidad estadísticamente despreciable. | **Detección Absoluta / Preventiva:** Mecanismo físico Poka-Yoke o validación criptográfica que imposibilita el fallo. |
 
-> **La Regla de Oro de la Ingeniería de Mitigación:** La Severidad ($S$) es una propiedad intrínseca del daño: no puede reducirse salvo rediseñando la arquitectura del sistema desde sus cimientos. Por tanto, la intervención de controles eficaces debe concentrarse en **abator la Ocurrencia ($O$) mediante blindaje preventivo** y **abator la Detección ($D$) mediante telemetría automatizada en tiempo real**.
+> **La Regla de Oro de la Ingeniería de Mitigación:** La Severidad ($S$) es una propiedad intrínseca del daño: no puede reducirse salvo rediseñando la arquitectura del sistema desde sus cimientos. Por tanto, la intervención de controles eficaces debe concentrarse en **abatir la Ocurrencia ($O$) mediante blindaje preventivo** y **abatir la Detección ($D$) mediante telemetría automatizada en tiempo real**.
 
 ---
 
-## 4. Arquitectura del Motor de Cálculo en Excel y Google Sheets
+## 5. Arquitectura del Motor de Cálculo en Excel y Google Sheets
 
 El modelo analítico oficial de Datalaria articula un libro de cálculo estructurado en cuatro pestañas funcionales interconectadas, diseñado para conciliar la agilidad operativa del ingeniero con la sobriedad ejecutiva requerida por el CFO y el Consejo:
 
@@ -162,7 +221,7 @@ El modelo analítico oficial de Datalaria articula un libro de cálculo estructu
 └── Pestaña 4: Plan de Mitigación & CAPEX (Asignación Presupuestaria, E(L), Reducción ΔE(L) & Ratio CER)
 ```
 
-### 4.1 Pestaña 1: Dashboard Ejecutivo
+### 5.1 Pestaña 1: Dashboard Ejecutivo
 El panel de control directivo sintetiza la exposición agregada de la corporación mediante cuatro tarjetas KPI de alta visibilidad:
 * **Total Eventos Evaluados:** Conteo dinámico consolidado mediante `=COUNTA(...)` sumando los riesgos corporativos de la Pestaña 2 y los modos de fallo de la Pestaña 3.
 * **NPR Máximo Detectado:** Indicador de criticidad extrema calculado mediante `=MAX('AMFE Operativo'!L6:L20)`, alertando inmediatamente si existe algún proceso con puntuación superior al apetito corporativo.
@@ -180,14 +239,14 @@ Las celdas aplican formato condicional semafórico en tres zonas: **Zona Crític
 
 A su derecha, la **Tabla Pareto C-Level** vincula los modos de fallo de mayor criticidad ordenados de mayor a menor NPR, junto con el desglose de su Severidad y su clasificación de Prioridad de Acción.
 
-### 4.2 Pestaña 2: Matriz de Riesgos 5x5 (Estándar ISO 31000)
+### 5.2 Pestaña 2: Matriz de Riesgos 5x5 (Estándar ISO 31000)
 Alberga un registro corporativo de hasta 25 riesgos estratégicos, operativos, financieros, legales y de ciberseguridad. Para cada riesgo, el usuario introduce libremente el Impacto ($1-5$) y la Probabilidad ($1-5$). El motor calcula automáticamente:
 * **Puntuación Inherente:** `=E6*F6` (rango 1 a 25).
 * **Nivel de Riesgo:** `=IF(G6>=15, "Crítico", IF(G6>=8, "Medio", "Bajo"))`.
 * **Estrategia de Respuesta:** Selección entre *Mitigar*, *Evitar*, *Transferir* y *Aceptar*.
 * **Puntuación Residual:** Post-mitigación mediante `=K6*L6`, verificando la efectividad de las medidas antes de cerrar el expediente.
 
-### 4.3 Pestaña 3: AMFE Operativo (FMEA AIAG-VDA)
+### 5.3 Pestaña 3: AMFE Operativo (FMEA AIAG-VDA)
 Despliega el análisis granular de modos de fallo para procesos críticos (sistemas de pagos, almacenes logísticos, pipelines de software, líneas de producción). Sus columnas computan:
 * **NPR Inherente:** `=I6*J6*K6` (Severidad $\times$ Ocurrencia $\times$ Detección).
 * **Prioridad de Acción (AP):** Fórmula lógica jerarquizada:
@@ -197,7 +256,7 @@ Despliega el análisis granular de modos de fallo para procesos críticos (siste
 * **NPR Residual:** `=Q6*R6*S6` tras la reevaluación de los nuevos controles preventivos y de detección.
 * **% Reducción de Riesgo:** `=(L6-T6)/L6` con formato porcentual `0,0%`.
 
-### 4.4 Pestaña 4: Plan de Mitigación & CAPEX
+### 5.4 Pestaña 4: Plan de Mitigación & CAPEX
 Conecta la ingeniería de procesos con las finanzas corporativas. Permite imputar los presupuestos de inversión (CAPEX/OPEX) para cada control y computar:
 * **Pérdida Esperada Pre-Control ($E(L)_{\text{pre}}$) y Post-Control ($E(L)_{\text{post}}$).**
 * **Reducción Neta de Pérdida ($\Delta E(L)$):** `=G6-H6`.
@@ -206,11 +265,11 @@ Conecta la ingeniería de procesos con las finanzas corporativas. Permite imputa
 
 ---
 
-## 5. Caso de Estudio Realista: Resiliencia Transaccional en Plataforma Cloud
+## 6. Caso de Estudio Realista: Resiliencia Transaccional en Plataforma Cloud
 
 Para ilustrar la potencia del modelo, examinemos un caso real de una compañía tecnológica transaccional (**Nexus Global**) durante la preparación de la campaña de Black Friday:
 
-### 5.1 Diagnóstico Inicial del Modo de Fallo
+### 6.1 Diagnóstico Inicial del Modo de Fallo
 La plataforma identificó una vulnerabilidad crítica en su servicio central de procesamiento de transacciones:
 * **Proceso / Componente:** Pasarela de Pagos Transaccional Core.
 * **Modo Potencial de Fallo:** Interrupción de comunicación y timeout de red con el adquirente bancario principal.
@@ -218,7 +277,7 @@ La plataforma identificó una vulnerabilidad crítica en su servicio central de 
 * **Causa Raíz:** Saturación de red en el endpoint del proveedor financiero durante picos de 12.000 transacciones/minuto.
 * **Controles Actuales:** Reintentos síncronos simples y alertas manuales en canal de Slack cuando la tasa de error supera el 10% durante más de 15 minutos.
 
-### 5.2 Calibración Cuantitativa Inicial
+### 6.2 Calibración Cuantitativa Inicial
 1. **Severidad ($S = 8$):** La interrupción detiene los cobros durante el evento de mayor facturación del año. Pérdida directa estimada de 190.000 € en ventas irrecuperables.
 2. **Ocurrencia ($O = 6$):** Históricamente, el adquirente ha experimentado degradaciones en 2 de las últimas 3 campañas de alta demanda.
 3. **Detección ($D = 7$):** No existe desvío automático. La detección depende de alertas lentas y de quejas acumuladas de usuarios en soporte.
@@ -227,19 +286,19 @@ $$\text{NPR}_{\text{inherente}} = 8 \times 6 \times 7 = 336 \implies \mathbf{Pri
 
 El sistema operaba en **zona de riesgo inaceptable**, con una pérdida esperada actuarial $E(L) = 190.000 €$.
 
-### 5.3 Despliegue del Plan de Mitigación
+### 6.3 Despliegue del Plan de Mitigación
 La dirección de ingeniería y operaciones diseñó una intervención de control integral con un presupuesto asignado de **28.000 €**:
 * **Control Preventivo (Reduce Ocurrencia):** Implantación de una arquitectura de enrutamiento dinámico inteligente (*smart routing*) conectada simultáneamente a tres entidades bancarias adquirentes independientes. Si un proveedor eleva su latencia por encima de 450 ms, el tráfico se conmuta automáticamente.
 * **Control de Detección (Reduce Detección):** Monitorización sintética activa cada 500 ms con circuito de corte (*circuit breaker*) que intercepta fallos de conexión en menos de 1 segundo sin intervención humana.
 
-### 5.4 Reevaluación Post-Mitigación
+### 6.4 Reevaluación Post-Mitigación
 * **Severidad Residual ($S_{\text{res}} = 8$):** Invariable (el impacto si la pasarela cayera por completo seguiría siendo crítico).
 * **Ocurrencia Residual ($O_{\text{res}} = 2$):** La probabilidad de que tres adquirentes independientes fallen al mismo tiempo es estadísticamente remota.
 * **Detección Residual ($D_{\text{res}} = 2$):** El conmutador automático redirige las peticiones en submilisegundos antes de que el usuario perciba el error.
 
 $$\text{NPR}_{\text{residual}} = 8 \times 2 \times 2 = 32 \implies \mathbf{Prioridad\ de\ Acción:\ BAJA}$$
 
-### 5.5 Balance de Rentabilidad Económica (CER)
+### 6.5 Balance de Rentabilidad Económica (CER)
 * **Reducción del Riesgo Operacional:**
   $$\Delta \text{NPR} = \frac{336 - 32}{336} = \mathbf{90,5\% \text{ de Reducción}}$$
 * **Pérdida Financiera Evitada:** La pérdida esperada residual se redujo de 190.000 € a 25.000 €, liberando $\Delta E(L) = 165.000 €$.
@@ -250,7 +309,7 @@ Ante el Comité de Dirección, el COO defendió la partida demostrando que **cad
 
 ---
 
-## 6. Protocolo de Defensa ante el Comité de Dirección & Board Decision Gateway
+## 7. Protocolo de Defensa ante el Comité de Dirección & Board Decision Gateway
 
 Cuando un gestor de operaciones presenta un plan de mitigación de riesgos ante el Consejo de Administración, debe estar preparado para responder a las preguntas directivas más incisivas:
 
@@ -265,7 +324,7 @@ Cuando un gestor de operaciones presenta un plan de mitigación de riesgos ante 
 
 ---
 
-## 7. El Executive Decision Pack: Tu Infraestructura de Riesgos Lista para Producción
+## 8. El Executive Decision Pack: Tu Infraestructura de Riesgos Lista para Producción
 
 Para los líderes de operaciones, directores de riesgos y CFOs que necesitan implementar este estándar de inmediato sin invertir semanas de modelización manual, en Datalaria hemos empaquetado todos los activos en el **Executive Decision Pack oficial**:
 
@@ -276,6 +335,8 @@ Para los líderes de operaciones, directores de riesgos y CFOs que necesitan imp
   original_price="22€"
   badge="⚠️ Control Operativo"
   icon="⚠️"
+  preview_image="preview-pack.png"
+  preview_caption="Vista previa real de los entregables incluidos: Motor de cálculo en Excel (.xlsx) con Matriz 5x5 ISO 31000, AMFE Operativo y ROI de Control (CER), Presentación C-Level (.pptx 16:9 Widescreen) y Guía Metodológica Oficial (.pdf)."
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Guía Metodológica PDF"
   features="Cálculo del Número de Prioridad de Riesgo (NPR = Severidad x Ocurrencia x Detección)|Matriz de calor 5x5 dinámica según estándares ISO 31000 e IATF 16949|Slide PPTX con plan de mitigación y semáforo de contingencias|Guía metodológica de análisis de modos de fallo|Descarga directa inmediata (.ZIP con versiones ES y EN)"
   checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/6eea6aa0-fe9f-440b-8bb9-6f29b303e57a"
@@ -288,7 +349,7 @@ El archivo comprimido maestro incluye las versiones completas y auditadas en **E
 
 ---
 
-## 8. Referencias Bibliográficas Canónicas de Autoridad
+## 9. Referencias Bibliográficas Canónicas de Autoridad
 
 1. **International Organization for Standardization (2018).** *ISO 31000:2018 - Risk management: Guidelines*. International Organization for Standardization, Geneva, Switzerland.  
    *El marco canónico internacional de referencia para la identificación, evaluación y tratamiento del riesgo corporativo.* Referencia: `ISO 31000:2018`.

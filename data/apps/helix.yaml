@@ -8,6 +8,7 @@ app_url: /apps/helix/
 demo_url: /apps/helix/?example=margin
 source_spec: specs/apps/helix/spec.md
 current_version: v1.0.0
+launch_date: "2027-01-19"
 
 title:
   es: "Datalaria Helix"
@@ -83,8 +84,8 @@ tech:
 
 releases:
   - version: "v1.0.0"
-    date: "2026-11-07"
-    state: released
+    date: "2027-01-19"
+    state: scheduled
     type: release
     title:
       es: "Lanzamiento Comercial Staged: Starter Kit, Core Kit, Guía Ejecutiva PDF y Gobernanza Enero 2027"
@@ -101,7 +102,7 @@ releases:
 
   - version: "v0.5.0"
     date: "2026-11-05"
-    state: released
+    state: internal
     type: feature
     title:
       es: "Caso Demo #2 MarginGuard B2B: Micro-App Real para Profesional No-Dev con Veto de QA"
@@ -116,7 +117,7 @@ releases:
 
   - version: "v0.4.0"
     date: "2026-11-05"
-    state: released
+    state: internal
     type: feature
     title:
       es: "Sandbox Helix Spec Builder (/apps/helix/): React 19 + TypeScript, Modo A+B y ZIP Client-Side"
@@ -131,7 +132,7 @@ releases:
 
   - version: "v0.3.0"
     date: "2026-11-05"
-    state: released
+    state: internal
     type: feature
     title:
       es: "CLI helix Multiplataforma en Python Puro (0 Dependencias) y Motor SpecQualityScore"
@@ -146,7 +147,7 @@ releases:
 
   - version: "v0.2.0"
     date: "2026-11-04"
-    state: released
+    state: internal
     type: feature
     title:
       es: "Sistema Anti-Bloat, Lecciones de Fricción Real (INV-HELIX-8) y Blueprints de Proyecto"
@@ -161,10 +162,11 @@ releases:
 
   - version: "v0.1.0"
     date: "2026-11-03"
-    state: released
+    state: internal
     type: release
     title:
       es: "Especificación Técnica SDD Maestra y Escuadrón Canónico de 12 Agentes (Hito 6.1)"
+      en: "Master SDD Technical Specification and Canonical 12-Agent Squad (Milestone 6.1)"
       en: "Master SDD Technical Specification and Canonical 12-Agent Squad (Milestone 6.1)"
     changes:
       - es: "Aprobación de SPEC-APP-HELIX con las 7 invariantes iniciales INV-HELIX-1..7 y modelo Dual-Mode (ADR-017)."

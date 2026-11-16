@@ -28,19 +28,19 @@ Yet, as the blog scales past 50 or 100 technical articles, the **double-entry fa
 ### 🗺️ Datalaria Pulse Series Roadmap
 To understand how each piece of the *Content Ops as Code* architecture fits together, this series consists of 5 structured installments:
 
-1. 🟢 **Part 1 (This article)**: Goodbye Notion: Datalaria Pulse and Editorial Governance that Writes Itself from Git.
-2. ⚪ **Part 2**: [From Front Matter to Index: Pydantic v2, Bilingual Parity, and CI/CD Automation](/en/posts/pulse-part2-pydantic-indexer-bilingual-parity-ci/).
-3. ⚪ **Part 3**: [Executive Table, Kanban Board, and Monthly Calendar in React 19 over a Static Index](/en/posts/pulse-part3-react-dashboard-table-kanban-calendar/).
-4. ⚪ **Part 4**: [Automated Google Analytics 4 and Search Console: Measuring the Organic ROI of Every Post, App, and Kit](/en/posts/pulse-part4-ga4-search-console-automated/).
-5. ⚪ **Part 5**: [Editorial Operations for Docs, SEO, and Marketing Teams: From Notion to Excel in 5 Minutes and AI Agent Factory](/en/posts/pulse-part5-excel-kit-notion-migration-teams/).
+1. 🟢 **Part 1 (This article)**: Goodbye Notion: Datalaria Pulse and Editorial Governance that Writes Itself from Git
+2. ⚪ **Part 2 (Sun Nov 22)**: From Front Matter to Index: Pydantic v2, Bilingual Parity, and CI/CD Automation
+3. ⚪ **Part 3 (Wed Nov 25)**: Executive Table, Kanban Board, and Monthly Calendar in React 19 over a Static Index
+4. ⚪ **Part 4 (Sun Nov 29)**: Automated Google Analytics 4 and Search Console: Measuring the Organic ROI of Every Post, App, and Kit
+5. ⚪ **Part 5 (Wed Dec 02)**: Editorial Operations for Docs, SEO, and Marketing Teams: From Notion to Excel in 5 Minutes and AI Agent Factory
 
 ---
 
 ## 0. Phase Objectives and Article Scope: Toward Autonomous Editorial Governance
 
-This article marks the official kickoff of **Datalaria Phase 5**, entirely focused on resolving technical content asset governance through our native operating system: **Datalaria Pulse**.
+This article marks the official kickoff of **Datalaria Pulse**, entirely focused on resolving technical content asset governance through our native operating system:
 
-### Strategic Objectives of Phase 5:
+### Strategic Objectives:
 1. **Eradicate Administrative Double-Entry:** Permanently eliminate the friction of manually synchronizing third-party databases (Notion, Airtable, Trello) against Git repositories.
 2. **Establish the Content Ops as Code Philosophy:** Govern Markdown articles and YAML metadata with software engineering discipline: schema-based validation (Pydantic v2), deterministic bilingual parity, and automated CI/CD builds.
 3. **Dual-Mode Delivery Model:** Provide two operational tiers for authors and corporate teams:
@@ -62,7 +62,7 @@ Datalaria Pulse does not exist in isolation; it represents the operational conve
 1. **The Modular Platform Thesis of [LifeOps](/en/apps/lifeops/):** In our flagship LifeOps platform, we demonstrated how to construct a unified personal and professional operating system combining a responsive React SPA with serverless Supabase PostgreSQL. Pulse applies that exact modular architecture to the governance of technical content repositories.
 2. **Eliminating the HiPPO Bias in our [Decision-Making Framework](/en/posts/decision-making-prioritization-quantitative-framework/):** In our guide on quantitative prioritization (DAR, RICE, and Financial Business Cases), we showed how executive deliberation degenerates when guided by unanchored intuition. In Pulse, we enforce mathematical rigor on content ops: subjective guesswork is replaced by deterministic SEO scoring (0 to 100) and normalized organic traffic percentiles (Google Analytics 4 indexed to base 100).
 3. **Data Hygiene and Pipelines in [S&OP Engineering](/en/posts/sop_engineering-data-hygiene/):** Just as supply chain workflows filter ERP noise before training probabilistic demand models, Pulse lexically cleans content (stripping source code, math blocks, and template tags) to measure the true technical density of each asset.
-4. **Governance under [Spec-Driven Development (SDD)](/en/posts/sdd_vs_vibe_coding/):** In accordance with our technical constitution and [Autonomous AI Agent](/en/posts/autonomous_agents_operational_sdd/) architecture, Pulse guarantees that no post is published unless it satisfies all deterministic bilingual invariants (`INV-PULSE-1..5`).
+4. **Governance under [Spec-Driven Development (SDD)](/en/posts/sdd_vs_vibe_coding/):** In accordance with our technical constitution and [Autonomous AI Agent](/en/posts/agentes_ia_operativa_sdd/) architecture, Pulse guarantees that no post is published unless it satisfies all deterministic bilingual invariants (`INV-PULSE-1..5`).
 
 ---
 
@@ -75,13 +75,16 @@ Anyone who has attempted to maintain an editorial calendar in Notion in parallel
 3. **Bilingual Parity Blindness:** If you publish bilingually in Spanish and English, manually tracking which translations are pending, which fell out of sync after technical updates, and which maintain complete parity becomes an unsustainable administrative chore. The common outcome is orphan articles and broken cross-language references.
 4. **Administrative Toil:** Technical writers spend up to 20% of their productive bandwidth on administrative card-pushing bureaucracy instead of crafting high-value content or developing algorithms.
 
-```
-[Markdown in Git]   ── (git push) ──>  [Production / Hugo / Vercel]
-       │
-    (Chasm)   <── Inevitable human drift & administrative toil
-       │
-[Notion Database]   ── (manual)   ──>  [Stale / Inaccurate State]
-```
+{{< mermaid >}}
+flowchart LR
+    subgraph GIT ["1. Single Source of Truth (Git)"]
+        A["Markdown in Git"] -->|git push| B["Production / Hugo / Vercel"]
+    end
+    subgraph NOTION ["2. Manual External Silo (Notion)"]
+        C["Notion Database"] -->|Manual| D["Stale / 404 Inaccurate State"]
+    end
+    GIT -.-|"Human Drift & Chasm"| NOTION
+{{< /mermaid >}}
 
 Modern software engineering resolved this problem decades ago under the banner of **Infrastructure as Code** (Terraform) and **Configuration as Code** (Kubernetes): infrastructure is not configured via web forms; it is declared in versioned, auditable code.
 
@@ -175,7 +178,7 @@ The visible output of this compilation pipeline is a responsive web application 
 
 The interface delivers 5 integrated perspectives:
 
-1. **Analytics & KPIs Dashboard:** Macro ecosystem metrics (total assets, post/app/kit distribution, bilingual parity rate), cumulative lexical depth (~210,000 indexed technical words), total reading time (~18.4 hours), and replacement valuation of the content portfolio.
+1. **Analytics & KPIs Dashboard:** Macro ecosystem metrics (183 governed assets: 118 bilingual articles, 47 SemVer application releases 🚀 APP / ⚡ APP vX.Y, and 18 B2B Kit editions 📦 KIT under invariants `INV-PULSE-1..8`, 100% bilingual parity), cumulative lexical depth (~215,000 indexed technical words), total reading time (~18.5 hours), and replacement valuation of the content portfolio.
 2. **Executive Table with Live Filtering:** Real-time title search, pill status filters (*Published*, *Scheduled*, *Draft*), multi-criteria sorting by date or SEO score, and fast pagination (10, 25, or 50 rows).
 3. **5-Column Kanban Board:** Notion-style editorial pipeline (*Idea ➔ Draft ➔ In Review ➔ Scheduled ➔ Published*) featuring interactive cards that open full editorial inspection modals.
 4. **Notion Monthly Calendar:** 35-cell monthly grid with chronological navigation, highlighting scheduled asset drops across upcoming quarters.
@@ -201,8 +204,26 @@ If you maintain a technical blog, documentation hub, or engineering-led publicat
 
 1. **Download the Datalaria Pulse Kit (Standalone Edition):**  
    Access the complete bundle in our resources hub featuring the **Excel Master Template** with data validation rules, the **5-minute Notion-to-Excel Python migration script**, the **Power Query M connector**, and the standalone `pulse_repo_scanner.py` CLI ready for your CI/CD pipeline.  
-   👉 [**Download Datalaria Pulse Kit in Resources →**](/en/recursos/#pack-pulse)
+   👉 [**Download Datalaria Pulse Kit in Resources →**](/en/resources/#pack-pulse)
+
+{{< product-card
+  id="pack-pulse"
+  title="Datalaria Pulse: Content Ops & Notion Migration Kit"
+  category="Software, AI & SDD"
+  price="19€"
+  original_price="39€"
+  badge="📊 Content Ops as Code Standard"
+  icon="📊"
+  preview_image="pulse-preview-en.png"
+  preview_caption="Deliverables preview: 6-sheet Master Excel Template (.xlsx), dual Power Query M connectors, and standalone Python migration/scanner CLI scripts."
+  deliverables="6-Sheet Master Excel Workbook|Dual Power Query M Connectors|Notion Migration CLI + PDF Guide"
+  features="Master Excel Template (.xlsx) with 6 structured sheets (Taxonomy, Assets, Kanban, Metrics, and Executive Dashboard)|Dual Power Query M connectors: 1-click synchronization from Notion CSV exports and Git public.json manifests|Deterministic Python migration engine (migrate_notion.py) with direct multi-format export|Universal zero-dependency repository scanner (pulse_repo_scanner.py) for automated CI/CD audits|Executive 4-page A4 PDF guide and canonical data dictionary specification"
+  checkout_url="/en/resources/#pack-pulse"
+  button_text="Download Commercial Kit (.ZIP) • 19€"
+>}}
+The downloadable commercial bundle includes the **Master Excel Template (.xlsx)** with 6 structured sheets and strict cell validations, the **Dual Power Query M Connectors** to sync Notion CSV exports and local Git repositories in 1 click, the **Python Migration CLI (migrate_notion.py)**, the zero-dependency **Universal Repository Scanner (pulse_repo_scanner.py)**, and the **Executive PDF Guide**.
+{{< /product-card >}}
 
 2. **Explore the Live Sandbox and Pro / Demo Mode:**  
-   Launch the interactive web application directly in your browser. Explore Datalaria's 130+ live assets in the public Sandbox, or log in to **Pro / Demo Mode** to experience real-time idea drafting, instant cross-device synchronization, and multi-tenant PostgreSQL governance.  
+   Launch the interactive web application directly in your browser. Explore Datalaria's 183 live assets in the public Sandbox, or log in to **Pro / Demo Mode** to experience real-time idea drafting, instant cross-device synchronization, and multi-tenant PostgreSQL governance.  
    🚀 [**Open Datalaria Pulse Web App Live →**](/apps/pulse/)

@@ -8,6 +8,7 @@ app_url: /apps/weather/
 demo_url: "/apps/weather/?preset=extremes&view=arena"
 source_spec: specs/apps/weather/spec.md
 current_version: v3.3.3
+launch_date: "2025-10-25"
 
 title:
   es: "Weather Intelligence v3.3"

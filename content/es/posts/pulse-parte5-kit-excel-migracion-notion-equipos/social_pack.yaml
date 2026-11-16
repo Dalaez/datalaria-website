@@ -1,0 +1,113 @@
+es:
+  x:
+    hook: 'Los desarrolladores viven en Git pero redactores y SEOs prefieren Notion
+      o Excel: cómo tender un puente bidireccional en 5 minutos con Power Query M
+      y un migrador CLI.'
+    thread:
+    - 1/5 El mayor choque cultural en equipos de producto ocurre entre ingenieros
+      que exigen pull requests y redactores que no quieren tocar una terminal bash.
+    - 2/5 La solución habitual es que marketing mantenga un Notion desvinculado de
+      Git, provocando desincronización en cuestión de semanas.
+    - '3/5 En la entrega final de Datalaria Pulse presentamos el Kit Comercial: plantilla
+      Excel de 6 hojas con validaciones nativas y conectores Power Query M.'
+    - 4/5 Incluye un script CLI en Python para migrar bases de datos Notion a Excel
+      o YAML en 5 minutos y desvela la visión Pro con Supabase y agentes IA.
+    - '5/5 Cierra el círculo de la gobernanza editorial y descarga el kit completo
+      en la Parte 5: https://datalaria.com/es/posts/pulse-parte5-kit-excel-migracion-notion-equipos/'
+    hashtags:
+    - ContentOps
+    - Excel
+    - Notion
+    - Automation
+    web_intent_url: https://x.com/intent/tweet?text=Los+desarrolladores+viven+en+Git+pero+redactores+y+SEOs+prefieren+Notion+o+Excel%3A+c%C3%B3mo+tender+un+puente+bidireccional+en+5+minutos+con+Power+Query+M+y+un+migrador+CLI.&url=https%3A%2F%2Fdatalaria.com%2Fes%2Fposts%2Fpulse-parte5-kit-excel-migracion-notion-equipos%2F&hashtags=ContentOps%2CExcel%2CNotion%2CAutomation
+  linkedin:
+    text: 'Uno de los mayores conflictos en empresas tecnológicas ocurre en la frontera
+      entre dos culturas: los ingenieros que habitan en Git y los redactores que viven
+      en Notion o Excel.
+
+
+      Obligar a un equipo de marketing o redacción técnica a clonar repositorios y
+      resolver conflictos de merge en Git suele terminar en resistencia o fracaso.
+
+
+      En la entrega final de la serie Datalaria Pulse mostramos cómo construir un
+      puente bidireccional sin imponer herramientas: 👇
+
+
+      🛠️ Migración Notion en 5 minutos: script CLI en Python que transforma bases
+      de datos exportadas de Notion en YAML o libros Excel estructurados.
+
+
+      🛠️ Plantilla Maestra Excel con Power Query M: libro de 6 hojas con taxonomía,
+      Kanban y dashboard que se actualiza en 1 clic contra el repositorio Git.
+
+
+      🛠️ Visión Pulse Pro con Supabase y Agentes IA: persistencia en PostgreSQL con
+      Row-Level Security para orquestar una fábrica editorial autónoma.
+
+
+      Cuando la ingeniería y la redacción comparten contratos de datos claros, la
+      velocidad editorial se multiplica sin comprometer el rigor técnico.
+
+
+      📖 Descubre cómo conectar a tus equipos con el Kit de Content Ops: https://datalaria.com/es/posts/pulse-parte5-kit-excel-migracion-notion-equipos/
+
+
+      💬 ¿Cómo resuelves en tu empresa la colaboración entre desarrolladores en Git
+      y equipos editoriales o de marketing?'
+    hashtags:
+    - ContentOps
+    - Excel
+    - PowerQuery
+    - Notion
+    - TeamCollaboration
+  newsletter:
+    archetype: counterintuitive_question
+    subject: ¿Por qué forzar a redactores a usar Git si puedes usar Power Query?
+    preheader: 'Cómo cerrar la brecha entre desarrolladores y marketing: migración
+      Notion en 5 minutos, plantilla Excel y fábrica IA.'
+    hook_paragraphs:
+    - Uno de los mayores conflictos organizativos ocurre en la frontera entre ingenieros
+      que exigen la robustez de Git y redactores que prefieren la agilidad visual
+      de Notion o Excel.
+    - En esta quinta y última entrega de la serie Datalaria Pulse mostramos cómo tender
+      un puente bidireccional mediante el Kit Comercial y la arquitectura Pro con
+      Supabase y agentes de IA.
+    insights_60s:
+    - 'Migración desde Notion en 5 minutos: motor CLI en Python que normaliza exportaciones
+      CSV a YAML o libros Excel estructurados.'
+    - 'Plantilla Maestra Excel con Power Query M: 6 hojas operativas que se sincronizan
+      en 1 clic directamente contra el repositorio Git.'
+    - 'Evolución Pulse Pro con IA: base de datos relacional en Supabase Cloud con
+      RLS y fábrica editorial autónoma de contenidos.'
+    secondary_cta_label: Ver el Kit Comercial de Content Ops
+    secondary_cta_url: https://datalaria.com/es/recursos/?utm_source=brevo&utm_medium=email&utm_campaign=pulse-launch-p5#pack-pulse
+    ps_referral_text: Si colaboras con directores de marketing o consultores editoriales,
+      este kit les solucionará la gobernanza de contenidos.
+  devto:
+    enabled: false
+    title: 'Gestión Editorial para Equipos SEO y Marketing: de Notion a Excel en 5
+      Minutos'
+    description: 'Cómo resolver la brecha entre redactores, SEOs y desarrolladores:
+      migración desde Notion, plantilla Excel con Power Query y evolución con IA.'
+    tags:
+    - excel
+    - notion
+    - contentops
+    - automation
+    canonical_url: https://datalaria.com/es/posts/pulse-parte5-kit-excel-migracion-notion-equipos/
+    published: false
+  coderlegion:
+    enabled: false
+    title: 'Gestión Editorial para Equipos SEO y Marketing: de Notion a Excel en 5
+      Minutos'
+    description: Resolver la brecha entre redactores, SEOs y desarrolladores con migración
+      Notion, Excel con Power Query y agentes IA.
+    tags:
+    - excel
+    - notion
+    - content-ops
+    - automation
+    canonical_url: https://datalaria.com/es/posts/pulse-parte5-kit-excel-migracion-notion-equipos/
+    published: false
+    category: 2

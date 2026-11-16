@@ -173,12 +173,22 @@ export const i18n = {
 
     // Mejoras Operación Crisol (Hito 6.3)
     nav_back_portal: '← Datalaria',
+    nav_app_details: 'Ficha Técnica 📚',
+    nav_app_details_tooltip: 'Ver ficha técnica oficial y arquitectura en Datalaria',
     btn_try_sample_csv: '⚡ Probar con CSV de Notion de ejemplo (1 clic)',
     diag_card_title: 'Diagnóstico Instantáneo de tu Catálogo Notion',
     diag_card_summary: 'Analizados {total} activos: {missingParity} sin paridad bilingüe ES/EN y {drafts} borradores/ideas listos para estructurar.',
     diag_card_cta: 'Descargar Datalaria Pulse Kit (19€) →',
     btn_advance_status: 'Avanzar fase →',
-    btn_rentabilizar_kit: 'Rentabilizar con Pulse Kit (19€)'
+    btn_rentabilizar_kit: 'Rentabilizar con Pulse Kit (19€)',
+
+    // Lanzamientos, Versiones y Kits (Hito P2.3)
+    toggle_include_releases: 'Incluir historial de versiones',
+    badge_app_launch: 'LANZAMIENTO APP',
+    badge_app_upgrade: 'NUEVA VERSIÓN',
+    badge_kit_edition: 'EDICIÓN KIT',
+    quadrant_releases_title: 'Sincronización Editorial de Releases (Scriba)',
+    quadrant_releases_desc: 'Apps, versiones SemVer y Kits respaldados con cobertura editorial en el blog.'
   },
   en: {
     brand_subtitle: 'Content Ops as Code — Editorial Governance & Organic ROI',
@@ -354,11 +364,21 @@ export const i18n = {
 
     // Mejoras Operación Crisol (Hito 6.3)
     nav_back_portal: '← Datalaria',
+    nav_app_details: 'App Details 📚',
+    nav_app_details_tooltip: 'View official technical specs and architecture on Datalaria',
     btn_try_sample_csv: '⚡ Try with Sample Notion CSV (1-Click)',
     diag_card_title: 'Instant Notion Catalog Diagnostic',
     diag_card_summary: 'Analyzed {total} assets: {missingParity} missing EN/ES parity and {drafts} drafts/ideas ready to structure.',
     diag_card_cta: 'Get Datalaria Pulse Kit (19€) →',
     btn_advance_status: 'Advance stage →',
-    btn_rentabilizar_kit: 'Monetize with Pulse Kit (19€)'
+    btn_rentabilizar_kit: 'Monetize with Pulse Kit (19€)',
+
+    // Lanzamientos, Versiones y Kits (Hito P2.3)
+    toggle_include_releases: 'Include version releases',
+    badge_app_launch: 'APP LAUNCH',
+    badge_app_upgrade: 'NEW VERSION',
+    badge_kit_edition: 'KIT EDITION',
+    quadrant_releases_title: 'Release Editorial Sync (Scriba)',
+    quadrant_releases_desc: 'Apps, SemVer releases, and Kits backed by blog editorial coverage.'
   }
 };

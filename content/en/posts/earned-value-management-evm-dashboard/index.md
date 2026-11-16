@@ -1,7 +1,8 @@
 ---
 title: "Earned Value Management (EVM) Dashboard: S-Curve, Cost/Schedule Control & C-Level EAC Forecasting"
-date: 2026-11-21
+date: 2026-11-23
 draft: false
+translationKey: "earned-value-management-evm-dashboard"
 category: "Strategy & Operations"
 categories: ["Operational Control", "Project Finance", "Executive Templates", "Strategy & Operations"]
 tags: ["Earned Value Management", "EVM", "ANSI/EIA-748", "S-Curve", "CPI", "SPI", "EAC", "TCPI", "Operational Control", "Project Management", "PMBOK", "C-Level"]

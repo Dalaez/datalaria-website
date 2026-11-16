@@ -8,6 +8,7 @@ timeout: "300s"
 ignoreFiles:
   - '(?i)desktop\.ini$'
   - '\.ini$'
+  - '(?i)\.xlsx$'
   - '(?i)social_pack\.ya?ml$'
   - '(?i)dist_(devto|coderlegion)(_[a-z]{2})?\.md$'
 

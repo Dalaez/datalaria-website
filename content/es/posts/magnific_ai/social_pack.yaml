@@ -1,0 +1,76 @@
+es:
+  x:
+    hook: "2 fundadores en Murcia, 0 EUR en VC y ~50 % del código co-escrito con IA. Así nació Magnific AI en X hasta dar nombre a un gigante de 230M USD ARR."
+    thread:
+      - "1/5 En 2023 Javi López (@javilopen) y Emilio Nicolás crearon Magnific AI en 3 meses con menos de 5.000 USD. El ~50 % del código nació junto a Cursor y Claude tras vender Erasmusu."
+      - "2/5 Su truco técnico: mientras los LLMs combatían las alucinaciones, ellos inventaron un deslizador de 'Alucinación Controlada' (Creativity vs. Resemblance) por difusión latente en teselas."
+      - "3/5 Cero anuncios y cero prueba gratuita. En 18 meses habían construido audiencia en X y Substack: el 19/12 Beeple lo adoptó a diario y el 8/1/2024 Elon Musk respondió 'Computer, enhance!'."
+      - "4/5 En mayo de 2024, con 725.000 usuarios y 5 meses de vida, Freepik compró Magnific por 20M EUR fijos + variables. El 28 de abril de 2026 todo Freepik se rebautizó como Magnific (230M USD ARR)."
+      - "5/5 Analizamos su historia, hilos virales en X, pipeline técnico y lecciones post-AGI en Datalaria: https://datalaria.com/es/posts/magnific_ai/"
+    hashtags:
+      - "MagnificAI"
+      - "IAGenerativa"
+      - "Startups"
+      - "AGI"
+  linkedin:
+    text: |-
+      Dos fundadores desde Murcia. Cero euros de capital riesgo. Cero gasto en anuncios.
+
+      Y aproximadamente el 50 % de su código escrito junto a Claude y Cursor en pleno 2023.
+
+      Así nació Magnific AI de la mano de Javi López y Emilio Nicolás, convirtiéndose en el caso europeo más radical de equipo mínimo en la era pre-AGI.
+
+      🔹 Distribución antes que producto: 18 meses compartiendo experimentos en X y Substack antes de abrir la plataforma.
+
+      🔹 Inversión contraintuitiva: en lugar de eliminar la alucinación de la IA, convirtieron la alucinación guiada en tres diales de precisión (Creativity, Resemblance, HDR).
+
+      🔹 Efecto demostración en X: del reconocimiento diario de Beeple al célebre «Computer, enhance!» de Elon Musk en enero de 2024.
+
+      🔹 De startup de 5 meses a marca global: adquirida por Freepik (20M € fijos más variables con 725.000 usuarios) hasta que en abril de 2026 el propio grupo malagueño se rebautizó oficialmente como Magnific superando los 230M USD de ARR.
+
+      En el nuevo análisis de Datalaria desgranamos su cronología en X, la arquitectura de difusión por teselas y qué sobrevive de los fosos defensivos clásicos rumbo a la AGI: https://datalaria.com/es/posts/magnific_ai/
+
+      ¿Qué ventaja competitiva tradicional crees que resiste mejor cuando dos ingenieros apalancados en IA compiten de tú a tú contra grandes corporaciones?
+    hashtags:
+      - "MagnificAI"
+      - "InteligenciaArtificial"
+      - "StartupsEspaña"
+      - "Bootstrapping"
+      - "AGI"
+  newsletter:
+    archetype: "real_case_number"
+    subject: "725.000 usuarios con 2 personas, 0 € en anuncios y 50 % código IA"
+    preheader: "La crónica técnica y las anécdotas en X de Magnific AI: desde Murcia hasta renombrar todo Freepik con 230M USD ARR."
+    hook_paragraphs:
+      - "En noviembre de 2023 dos emprendedores españoles lanzaron una aplicación nacida de una frustración cotidiana con Midjourney. Sin inversores de Silicon Valley y cobrando desde el día uno para sostener el coste en GPU, crearon el prototipo europeo más claro de la economía post-AGI."
+      - "Repasamos los hilos virales de Javi López en X (incluyendo a Beeple y el meme 'Computer, enhance!' de Elon Musk), la ingeniería detrás de su alucinación controlada y el giro histórico de abril de 2026 cuando Freepik adoptó el nombre Magnific."
+    insights_60s:
+      - "Alucinación como producto: en lugar de borrar la imaginación del modelo, su pipeline de difusión por teselas la encuadra con Creativity, Resemblance y HDR."
+      - "Audience-First 18 meses antes del código: compartir aprendizajes técnicos reales en X y Substack redujo a 0 € el coste de adquisición al abrir la lista."
+      - "De 2 fundadores a marca matriz de 230M USD ARR: prueba empírica de que la especificación de producto y la distribución vencen al tamaño de plantilla."
+    secondary_cta_label: "Evaluar Business Cases de IA en /recursos/"
+    secondary_cta_url: "https://datalaria.com/es/recursos/#pack-business-case"
+    ps_referral_text: "Si trabajas con algún fundador técnico o líder de producto obsesionado con hacer más con equipos pequeños, reenvíale este caso de estudio."
+  devto:
+    enabled: false
+    title: "Magnific AI: Difusión Latente por Teselas y el Caso Español de 2 Fundadores rumbo a la AGI"
+    description: "Análisis técnico e histórico de Magnific AI: alucinación controlada por difusión latente, hilos virales en X, arquitectura y lecciones post-AGI."
+    tags:
+      - "ai"
+      - "generativeai"
+      - "startups"
+      - "architecture"
+    canonical_url: "https://datalaria.com/es/posts/magnific_ai/"
+    published: false
+  coderlegion:
+    enabled: false
+    title: "Magnific AI: Difusión Latente por Teselas y el Caso de 2 Fundadores"
+    description: "Cómo Javi López y Emilio Nicolás escalaron Magnific AI sin VC."
+    tags:
+      - "ai"
+      - "generative-ai"
+      - "architecture"
+      - "startups"
+    canonical_url: "https://datalaria.com/es/posts/magnific_ai/"
+    published: false
+    category: 2

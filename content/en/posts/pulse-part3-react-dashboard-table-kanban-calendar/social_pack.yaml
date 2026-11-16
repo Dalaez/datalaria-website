@@ -1,0 +1,109 @@
+en:
+  x:
+    hook: Why pay for heavy database infrastructure for an editorial Kanban when you
+      can project 183 assets in React 19 with zero latency over static JSON?
+    thread:
+    - 1/5 A clean JSON index generated in CI/CD is a great data asset, but editorial
+      teams need a visual cockpit to steer publication strategy.
+    - 2/5 Standard convention claims you need PostgreSQL or expensive SaaS to get
+      multi-criteria filtering, Kanban boards, and interactive calendars.
+    - '3/5 In Datalaria Pulse, we challenged that dogma: we engineered a React 19
+      + TypeScript SPA mounting directly over our static public.json manifest.'
+    - '4/5 Outcome: 183 technical assets loaded into client memory in < 16ms, instantaneous
+      sorting, reactive status filters, and optimistic idea capture.'
+    - '5/5 Check out the complete architecture behind this high-performance executive
+      cockpit in Part 3: https://datalaria.com/en/posts/pulse-part3-react-dashboard-table-kanban-calendar/'
+    hashtags:
+    - React
+    - TypeScript
+    - Frontend
+    - WebDev
+    web_intent_url: https://x.com/intent/tweet?text=Why+pay+for+heavy+database+infrastructure+for+an+editorial+Kanban+when+you+can+project+183+assets+in+React+19+with+zero+latency+over+static+JSON%3F&url=https%3A%2F%2Fdatalaria.com%2Fen%2Fposts%2Fpulse-part3-react-dashboard-table-kanban-calendar%2F&hashtags=React%2CTypeScript%2CFrontend%2CWebDev
+  linkedin:
+    text: 'Standard web development wisdom assumes that delivering an interactive
+      editorial Kanban requires a dedicated backend and relational database.
+
+
+      Yet when your Git repository is your Single Source of Truth, that legacy architecture
+      adds friction and unnecessary latency.
+
+
+      In Part 3 of Datalaria Pulse, we reveal how we engineered our React 19 executive
+      cockpit directly over precompiled static JSON: 👇
+
+
+      ⚡ Zero network latency: 183 technical assets (posts, applications, and kits)
+      loaded into client memory in under 16 milliseconds.
+
+
+      ⚡ Synchronized views: switch in a single click between an audit table, a Kanban
+      workflow board, and a monthly release calendar.
+
+
+      ⚡ Zero recurring server costs: no dedicated database clusters, no monthly SaaS
+      subscriptions, and instant updates on every Git push.
+
+
+      The result is the snappiness of a native desktop application paired with the
+      immutability of version control.
+
+
+      📖 Explore the frontend patterns and reactive architecture: https://datalaria.com/en/posts/pulse-part3-react-dashboard-table-kanban-calendar/
+
+
+      💬 Do you favor serverless architectures over static indexes, or do you still
+      rely on traditional databases for internal cockpits?'
+    hashtags:
+    - React
+    - TypeScript
+    - Frontend
+    - SoftwareArchitecture
+    - WebDevelopment
+  newsletter:
+    archetype: direct_framework
+    subject: A zero-latency React 19 dashboard built over a static index
+    preheader: How to engineer a high-performance React 19 SPA delivering analytics,
+      Kanban boards, and calendars over static data.
+    hook_paragraphs:
+    - Having a clean structured dataset on disk is useless if your editorial team
+      has to inspect it via terminal commands. An executive cockpit was essential.
+    - In this third installment, we break down our React 19 + TypeScript Single Page
+      Application that mounts directly over a precompiled static index.
+    insights_60s:
+    - 'Zero network latency: the SPA fetches public.json once and executes instant
+      search, multi-column sorting, and filtering in client memory.'
+    - 'Triple interactive projection: audit table for catalog hygiene, Kanban board
+      for editorial velocity, and monthly release calendar.'
+    - 'Optimistic idea capture: client-side drafting and workflow updates with deterministic
+      export back to Markdown front matter.'
+    secondary_cta_label: Try Datalaria Pulse Live Sandbox
+    secondary_cta_url: https://datalaria.com/apps/pulse/?demo=true&utm_source=brevo&utm_medium=email&utm_campaign=pulse-launch-p3
+    ps_referral_text: Know frontend engineers or product leads architecting internal
+      dashboards? Forward this analysis their way.
+  devto:
+    enabled: true
+    title: Executive Table, Kanban Board, and Monthly Calendar in React 19 Over Static
+      Data
+    description: How to design a high-performance SPA in React 19 delivering analytics,
+      Kanban boards, and calendars over a zero-latency static index.
+    tags:
+    - react
+    - typescript
+    - frontend
+    - webdev
+    canonical_url: https://datalaria.com/en/posts/pulse-part3-react-dashboard-table-kanban-calendar/
+    published: true
+  coderlegion:
+    enabled: true
+    title: Executive Table, Kanban Board, and Monthly Calendar in React 19 Over Static
+      Data
+    description: Designing a high-performance React 19 SPA delivering analytics, Kanban
+      boards, and calendars over a static index.
+    tags:
+    - react
+    - typescript
+    - frontend
+    - web-dev
+    canonical_url: https://datalaria.com/en/posts/pulse-part3-react-dashboard-table-kanban-calendar/
+    published: true
+    category: 2

@@ -1,0 +1,118 @@
+en:
+  x:
+    hook: 'Managing a technical blog in Notion or Airtable is a losing battle against
+      drift: your Git repository and external database inevitably diverge.'
+    thread:
+    - '1/5 If you publish technical articles with Hugo, Astro, or Next.js, you know
+      the paradox: strict CI/CD for application code, yet editorial strategy lives
+      in an external database decoupled from Git.'
+    - '2/5 It works fine with 20 posts. Past 100 articles, double-entry failure strikes:
+      broken slugs, stale status tags, and orphaned translations that go unnoticed
+      until a reader encounters a 404.'
+    - '3/5 The solution is Content Ops as Code: treat documentation and articles exactly
+      like software. Markdown is the database, and every Git commit triggers deterministic
+      Pydantic v2 validation.'
+    - 4/5 With Datalaria Pulse, we index 183 technical assets (articles, apps, and
+      kits) with zero latency in a React 19 executive cockpit while enforcing strict
+      ES/EN bilingual parity in CI/CD.
+    - '5/5 Read Part 1 of the series to explore the complete architecture that retires
+      disconnected editorial trackers: https://datalaria.com/en/posts/pulse-part1-goodbye-notion-content-ops/'
+    hashtags:
+    - ContentOps
+    - GitOps
+    - SoftwareEngineering
+    - DevOps
+    web_intent_url: https://x.com/intent/tweet?text=Managing+a+technical+blog+in+Notion+or+Airtable+is+a+losing+battle+against+drift%3A+your+Git+repository+and+external+database+inevitably+diverge.&url=https%3A%2F%2Fdatalaria.com%2Fen%2Fposts%2Fpulse-part1-goodbye-notion-content-ops%2F&hashtags=ContentOps%2CGitOps%2CSoftwareEngineering%2CDevOps
+  linkedin:
+    text: 'Managing a technical publication''s editorial calendar in Notion or Airtable
+      looks great during the first month.
+
+
+      Yet past 100 articles, the double-entry failure mode strikes without exception:
+      the ground truth in Git and the external database inevitably diverge.
+
+
+      Three invisible failure modes we faced before migrating to Content Ops as Code:
+      👇
+
+
+      🔴 Silent synchronization drift: slug updates in Markdown break production links
+      while external tables stay unaware.
+
+
+      🔴 Broken bilingual parity: articles published in Spanish while the English counterpart
+      remains stalled in draft status.
+
+
+      🔴 Pointless manual overhead: engineers writing code and having to manually fill
+      out redundant Notion database properties.
+
+
+      At Datalaria Pulse, we unified our entire workflow under one rule: the Git repository
+      is the Single Source of Truth.
+
+
+      We index 183 assets directly from Markdown using Pydantic v2, enforce linguistic
+      parity in CI/CD, and project a zero-latency React 19 cockpit.
+
+
+      📖 Explore the full architectural breakdown in Part 1 of our series: https://datalaria.com/en/posts/pulse-part1-goodbye-notion-content-ops/
+
+
+      💬 How does your engineering team manage technical documentation to prevent documentation
+      and code from drifting apart?'
+    hashtags:
+    - ContentOps
+    - GitOps
+    - SoftwareEngineering
+    - DevOps
+    - Blogging
+  newsletter:
+    archetype: invisible_error
+    subject: The invisible error of using Notion for technical blog ops
+    preheader: Why Notion and Airtable databases inevitably drift from Git, and how
+      Content Ops as Code solves the sync problem.
+    hook_paragraphs:
+    - 'For years, engineering teams publishing on static site generators have lived
+      with a glaring paradox: we enforce strict continuous integration on code, yet
+      manage editorial strategy in disconnected external tools.'
+    - 'Past 50 or 100 articles, the double-entry workflow inevitably breaks down.
+      In this first installment, we introduce Datalaria Pulse: the architecture that
+      turns your Markdown repo into a deterministic index.'
+    insights_60s:
+    - 'Eliminate double-entry drift: Git Markdown files serve as the single source
+      of truth; zero gap between code and editorial schedules.'
+    - 'Strict Pydantic v2 validation contracts: compile-time front matter validation
+      that halts the CI/CD pipeline upon any schema violation.'
+    - 'Zero-latency React 19 cockpit: 183 assets indexed in memory with multi-column
+      sorting, Kanban board, and monthly calendar views.'
+    secondary_cta_label: Try Datalaria Pulse Live Sandbox
+    secondary_cta_url: https://datalaria.com/apps/pulse/?demo=true&utm_source=brevo&utm_medium=email&utm_campaign=pulse-launch-p1
+    ps_referral_text: Know an engineering leader or technical writer struggling with
+      Notion drift? Forward this deep dive their way.
+  devto:
+    enabled: true
+    title: 'Goodbye Notion: Why We Migrated Our Tech Content Ops to Git and Pydantic'
+    description: Why Notion and Airtable databases inevitably drift from Git repos,
+      and how Content Ops as Code indexes your technical blog directly from Markdown
+      commits.
+    tags:
+    - contentops
+    - git
+    - python
+    - automation
+    canonical_url: https://datalaria.com/en/posts/pulse-part1-goodbye-notion-content-ops/
+    published: true
+  coderlegion:
+    enabled: true
+    title: 'Goodbye Notion: Why We Migrated Tech Content Ops to Git and Pydantic'
+    description: Why Notion databases drift from code repos, and how Content Ops as
+      Code indexes technical blogs from Markdown commits.
+    tags:
+    - content-ops
+    - git
+    - python
+    - automation
+    canonical_url: https://datalaria.com/en/posts/pulse-part1-goodbye-notion-content-ops/
+    published: true
+    category: 2

@@ -1,7 +1,8 @@
 ---
 title: "Calculadora de Stock de Seguridad & ROP: Optimización de Inventario y Working Capital de Grado Consejo de Administración"
-date: 2026-11-22
+date: 2026-11-26
 draft: false
+translationKey: "safety-stock-reorder-point-calculator"
 category: "Estrategia y Operaciones"
 categories: ["Control Operativo", "Supply Chain", "Plantillas Ejecutivas", "Estrategia y Operaciones"]
 tags: ["Stock de Seguridad", "Punto de Pedido", "ROP", "Safety Stock", "EOQ", "Wilson", "Working Capital", "Cadena de Suministro", "APICS", "ASCM", "Inventario", "C-Level"]

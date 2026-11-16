@@ -1,7 +1,8 @@
 ---
 title: "Quantitative Operational Control & PMBOK: The 5-Pillar Executive Framework for COOs and PMOs"
-date: 2026-11-29
+date: 2026-11-30
 draft: false
+translationKey: "operational-control-pmbok-quantitative-framework"
 category: "Strategy & Operations"
 categories: ["Operational Control", "Project Management", "Corporate PMO", "Supply Chain", "Strategy & Operations"]
 tags: ["Operational Control", "PMBOK", "RACI Matrix", "FMEA", "PERT Estimation", "EVM", "Earned Value Management", "Safety Stock", "Reorder Point", "S-Curve", "Working Capital", "C-Level", "PMO"]

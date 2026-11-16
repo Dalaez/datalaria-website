@@ -7,6 +7,7 @@ cover: cover.png
 app_url: /apps/maths/
 source_spec: specs/apps/maths/spec.md
 current_version: v2.3.0
+launch_date: "2025-09-11"
 
 title:
   es: "Ábaco Arcade (Matemáticas Lúdicas)"

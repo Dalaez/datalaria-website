@@ -228,139 +228,28 @@ def parse_notion_csv(csv_path: Path) -> List[Dict[str, Any]]:
     return assets
 
 
-def export_assets_to_xlsx(assets: List[Dict[str, Any]], output_path: Path) -> Path:
-    """Exporta los activos migrados de Notion a un libro Excel con las 6 hojas canónicas de Pulse."""
+try:
+    from ops.pulse.kit.build_pulse_kit import generate_pulse_workbook
+except ImportError:
+    generate_pulse_workbook = None
+
+
+def export_assets_to_xlsx(assets: List[Dict[str, Any]], output_path: Path, lang: str = "es") -> Path:
+    """Exporta los activos migrados de Notion a un libro Excel profesional reutilizando el motor centralizado de Pulse."""
     if openpyxl is None:
         raise RuntimeError("Se requiere 'openpyxl' para exportar a formato .xlsx.")
 
-    wb = openpyxl.Workbook()
-    wb.remove(wb.active)
-
-    font_family = "Segoe UI"
-    header_fill = PatternFill(start_color="1E293B", end_color="1E293B", fill_type="solid")
-    header_font = Font(name=font_family, size=11, bold=True, color="FFFFFF")
-    thin_border = Border(
-        left=Side(style="thin", color="E2E8F0"),
-        right=Side(style="thin", color="E2E8F0"),
-        top=Side(style="thin", color="E2E8F0"),
-        bottom=Side(style="thin", color="E2E8F0"),
-    )
-
-    # 1. Instrucciones
-    ws_intro = wb.create_sheet(title="Instrucciones")
-    ws_intro.cell(row=2, column=2, value="DATALARIA PULSE — LIBRO MIGRADO DESDE NOTION").font = Font(
-        name=font_family, size=15, bold=True, color="0F172A"
-    )
-    ws_intro.cell(
-        row=3,
-        column=2,
-        value=f"Generado automáticamente por migrate_notion.py ({len(assets)} activos normalizados).",
-    ).font = Font(name=font_family, size=11, italic=True, color="475569")
-
-    # 2. Taxonomía
-    ws_tax = wb.create_sheet(title="Taxonomía")
-    tax_headers = ["Tipo de Activo", "Estado", "Visibilidad", "Paridad Bilingüe", "Estado Frescura"]
-    for c_idx, th in enumerate(tax_headers, 1):
-        cell = ws_tax.cell(row=1, column=c_idx, value=th)
-        cell.fill = header_fill
-        cell.font = header_font
-    tax_data = {
-        1: ["POST", "APP", "KIT"],
-        2: ["Idea", "Draft", "Review", "Scheduled", "Published"],
-        3: ["public", "private"],
-        4: ["complete", "missing_es", "missing_en", "outdated_es", "outdated_en"],
-        5: ["fresh", "stale", "review_needed"],
-    }
-    for col_idx, values in tax_data.items():
-        for row_idx, val in enumerate(values, 2):
-            ws_tax.cell(row=row_idx, column=col_idx, value=val)
-
-    # 3. Activos
-    ws_act = wb.create_sheet(title="Activos")
-    headers = [
-        "ID",
-        "Tipo",
-        "Estado",
-        "Visibilidad",
-        "Título (ES)",
-        "Título (EN)",
-        "Fecha Pub",
-        "Paridad",
-        "Categoría",
-        "Tags",
-        "Score SEO",
-        "Frescura",
-        "Notas / Briefing",
-    ]
-    for c_idx, h in enumerate(headers, 1):
-        cell = ws_act.cell(row=1, column=c_idx, value=h)
-        cell.fill = header_fill
-        cell.font = header_font
-
-    dv_status = DataValidation(type="list", formula1="=Taxonomía!$B$2:$B$6", allow_blank=True)
-    ws_act.add_data_validation(dv_status)
-    dv_status.add("C2:C1000")
-
-    row_num = 2
-    for a in assets:
-        ws_act.cell(row=row_num, column=1, value=a["id"])
-        ws_act.cell(row=row_num, column=2, value=a.get("asset_type", "post").upper())
-        ws_act.cell(row=row_num, column=3, value=a.get("status", "idea").capitalize())
-        ws_act.cell(row=row_num, column=4, value=a.get("visibility", "public"))
-        ws_act.cell(row=row_num, column=5, value=a.get("title_es") or "")
-        ws_act.cell(row=row_num, column=6, value=a.get("title_en") or "")
-        ws_act.cell(row=row_num, column=7, value=str(a.get("publish_date") or ""))
-        ws_act.cell(row=row_num, column=8, value=a.get("language_parity", "missing_en"))
-        ws_act.cell(row=row_num, column=9, value=a.get("category", "General"))
-        ws_act.cell(row=row_num, column=10, value=", ".join(a.get("tags", [])))
-        ws_act.cell(row=row_num, column=11, value=a.get("seo_audit", {}).get("score_0_100", 70))
-        ws_act.cell(row=row_num, column=12, value=a.get("freshness_status", "fresh"))
-        ws_act.cell(row=row_num, column=13, value=a.get("notes", ""))
-        for col_i in range(1, len(headers) + 1):
-            ws_act.cell(row=row_num, column=col_i).border = thin_border
-        row_num += 1
-
-    # 4. Kanban
-    ws_kanban = wb.create_sheet(title="Kanban")
-    kanban_cols = ["Idea (Backlog)", "Borrador (Draft)", "En Revisión (Review)", "Programado (Scheduled)", "Publicado (Live)"]
-    for c_i, k_title in enumerate(kanban_cols, 1):
-        cell = ws_kanban.cell(row=1, column=c_i, value=k_title)
-        cell.fill = header_fill
-        cell.font = header_font
-    buckets: Dict[str, List[Dict[str, Any]]] = {k: [] for k in ["idea", "draft", "review", "scheduled", "published"]}
-    for a in assets:
-        st = a.get("status", "idea").lower()
-        buckets.get(st, buckets["idea"]).append(a)
-    max_items = max([len(v) for v in buckets.values()] or [1])
-    for r_idx in range(max_items):
-        for c_idx, st_key in enumerate(["idea", "draft", "review", "scheduled", "published"], 1):
-            if r_idx < len(buckets[st_key]):
-                item = buckets[st_key][r_idx]
-                ws_kanban.cell(row=r_idx + 2, column=c_idx, value=f"{item['title_es']} [{item['category']}]")
-
-    # 5. Métricas
-    ws_met = wb.create_sheet(title="Métricas")
-    for c_i, mh in enumerate(["ID Activo", "Tipo", "Visitas 30d", "Usuarios Únicos 30d", "Clics GSC", "Impresiones GSC"], 1):
-        cell = ws_met.cell(row=1, column=c_i, value=mh)
-        cell.fill = header_fill
-        cell.font = header_font
-
-    # 6. Dashboard
-    ws_dash = wb.create_sheet(title="Dashboard")
-    last_row = max(row_num - 1, 2)
-    ws_dash.cell(row=2, column=2, value="CUADRO DE MANDO EDITORIAL (MIGRACIÓN NOTION)").font = Font(
-        name=font_family, size=14, bold=True
-    )
-    kpis = [
-        ("Total Activos Migrados", f"=COUNTA(Activos!A2:A{last_row})"),
-        ("Artículos Publicados (Live)", f'=COUNTIF(Activos!C2:C{last_row}, "Published")'),
-        ("Activos Programados (Scheduled)", f'=COUNTIF(Activos!C2:C{last_row}, "Scheduled")'),
-        ("Borradores (Draft)", f'=COUNTIF(Activos!C2:C{last_row}, "Draft")'),
-        ("Ideas en Backlog", f'=COUNTIF(Activos!C2:C{last_row}, "Idea")'),
-    ]
-    for idx, (label, formula) in enumerate(kpis, start=4):
-        ws_dash.cell(row=idx, column=2, value=label)
-        ws_dash.cell(row=idx, column=4, value=formula)
+    if generate_pulse_workbook is not None:
+        wb = generate_pulse_workbook(assets=assets, metrics={}, is_template=False, lang=lang)
+    else:
+        # Fallback autónomo si no estuviera disponible el paquete
+        wb = openpyxl.Workbook()
+        ws = wb.active
+        ws.title = "Activos" if lang == "es" else "Assets"
+        headers = ["ID", "Tipo", "Estado", "Visibilidad", "Título (ES)", "Título (EN)"]
+        ws.append(headers)
+        for a in assets:
+            ws.append([a["id"], a.get("asset_type", "post").upper(), a.get("status", "idea").capitalize(), a.get("visibility", "public"), a.get("title_es", ""), a.get("title_en", "")])
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     wb.save(output_path)
@@ -368,7 +257,7 @@ def export_assets_to_xlsx(assets: List[Dict[str, Any]], output_path: Path) -> Pa
 
 
 def migrate_notion(
-    csv_path: Path, output_path: Optional[Path] = None, out_format: str = "yaml"
+    csv_path: Path, output_path: Optional[Path] = None, out_format: str = "yaml", lang: str = "es"
 ) -> List[Dict[str, Any]]:
     """Importa un CSV de Notion y lo guarda en formato YAML, JSON o Excel (.xlsx)."""
     assets = parse_notion_csv(csv_path)
@@ -382,7 +271,7 @@ def migrate_notion(
             effective_format = "json"
 
         if effective_format == "xlsx":
-            export_assets_to_xlsx(assets, output_path)
+            export_assets_to_xlsx(assets, output_path, lang=lang)
         elif effective_format == "json":
             with open(output_path, "w", encoding="utf-8") as f:
                 json.dump(assets, f, indent=2, ensure_ascii=False)
@@ -411,6 +300,7 @@ def main() -> None:
         default="yaml",
         help="Formato de salida (se autodetecta si --output termina en .xlsx o .json)",
     )
+    parser.add_argument("-l", "--lang", choices=["es", "en"], default="es", help="Idioma de salida en Excel (es o en)")
     parser.add_argument("-v", "--verbose", action="store_true", help="Mostrar desglose detallado")
 
     args = parser.parse_args()
@@ -419,7 +309,7 @@ def main() -> None:
         parser.error("Debes indicar la ruta al archivo CSV (posicional o mediante --input).")
 
     try:
-        assets = migrate_notion(csv_source, args.output, args.format)
+        assets = migrate_notion(csv_source, args.output, args.format, lang=args.lang)
         counts: Dict[str, int] = {}
         for a in assets:
             counts[a["status"]] = counts.get(a["status"], 0) + 1

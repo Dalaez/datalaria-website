@@ -117,9 +117,9 @@ translationKey: resources
             <button type="button" class="btn-kit-info" onclick="event.stopPropagation(); openModal('suite-02')">
               Details ℹ️
             </button>
-            <span class="btn-kit-info btn-disabled" onclick="event.stopPropagation()" title="Technical article coming soon">
-              Article coming soon
-            </span>
+            <a href="/en/posts/decision-making-prioritization-quantitative-framework/" class="btn-kit-info" onclick="event.stopPropagation()" title="Read technical article">
+              Technical article 📖
+            </a>
             <a href="https://datalaria.lemonsqueezy.com/checkout/buy/4e2ca8b1-a6f9-43b7-851a-72c44d9bc13d?embed=1" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
               Buy Suite →
             </a>
@@ -574,14 +574,14 @@ Details ℹ️
 </div>
 <div class="kit-card-foot">
 <div class="kit-pricing-box">
-<span class="kit-price-curr">6€</span>
-<span class="kit-price-orig">19€</span>
+<span class="kit-price-curr">7€</span>
+<span class="kit-price-orig">22€</span>
 </div>
 <div class="kit-btns-group">
 <button type="button" class="btn-kit-info" onclick="openModal('pack-amfe')">
 Details ℹ️
 </button>
-<span class="btn-kit-info btn-disabled" title="Technical article coming soon">Article coming soon</span>
+<a href="/en/posts/quantitative-risk-matrix-fmea/" class="btn-kit-info" title="Read technical article">Technical Article 📖</a>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/6eea6aa0-fe9f-440b-8bb9-6f29b303e57a?embed=1" class="btn-kit-buy lemonsqueezy-button">Download →</a>
 </div>
 </div>
@@ -1122,8 +1122,8 @@ Details ℹ️
       "Executive 16:9 slide decks and step-by-step implementation playbooks"
     ],
     "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/4e2ca8b1-a6f9-43b7-851a-72c44d9bc13d?embed=1",
-    "guideUrl": "",
-    "previewImg": ""
+    "guideUrl": "/en/posts/decision-making-prioritization-quantitative-framework/",
+    "previewImg": "/images/recursos/suite-02-preview-en.png"
   },
   "operaciones": {
     "id": "suite-03",
@@ -1423,8 +1423,8 @@ Details ℹ️
     "topicLabel": "Operations",
     "status": "available",
     "statusLabel": "🟢 AVAILABLE • Quality & Risk",
-    "price": "6€",
-    "origPrice": "19€",
+    "price": "7€",
+    "origPrice": "22€",
     "icon": "⚠️",
     "delivs": [
       "Excel .xlsx + Sheets",
@@ -1439,8 +1439,8 @@ Details ℹ️
       "PDF methodological guide on reliability and defect mitigation"
     ],
     "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/6eea6aa0-fe9f-440b-8bb9-6f29b303e57a?embed=1",
-    "guideUrl": null,
-    "previewImg": "/images/recursos/AMFE.png"
+    "guideUrl": "/en/posts/quantitative-risk-matrix-fmea/",
+    "previewImg": "/images/recursos/amfe-preview-en.png"
   },
   {
     "id": "pack-pert",

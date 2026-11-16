@@ -46,3 +46,6 @@ __pycache__/
 # Archivos comprimidos de productos
 Executive_Decision_Pack_*.zip
 *.zip
+
+# Tracker Excel privado local de Datalaria Pulse
+/data/pulse/private/Pulse_Private_Tracker.xlsx

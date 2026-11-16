@@ -1,0 +1,76 @@
+en:
+  x:
+    hook: "2 founders in Spain, $0 VC, and ~50% of code co-written with AI. How Magnific AI turned hallucination into a signature slider and scaled past $230M ARR."
+    thread:
+      - "1/5 In late 2023 Javi López (@javilopen) and Emilio Nicolás built Magnific AI in 3 months on <$5K. After selling Erasmusu, ~50% of their new codebase was co-written with Cursor and Claude."
+      - "2/5 Their contrarian insight: while LLMs fought to suppress hallucinations, they built a Tiled Latent Diffusion pipeline with a 'Controlled Hallucination' dial (Creativity vs. Resemblance)."
+      - "3/5 Zero ad spend, paid-only from day 1. Backed by 18 months of building in public on X: Beeple adopted it daily by Dec 19, and on Jan 8 2024 Elon Musk replied 'Computer, enhance!'."
+      - "4/5 Five months and 725K users later, Freepik acquired Magnific for €20M+ cash & earn-outs. On April 28, 2026 the entire parent group rebranded to Magnific at $230M ARR."
+      - "5/5 Full case study covering the viral X chronicle, tiled diffusion architecture, and post-AGI lessons for small engineering teams: https://datalaria.com/en/posts/magnific_ai/"
+    hashtags:
+      - "MagnificAI"
+      - "GenerativeAI"
+      - "AGI"
+      - "Bootstrapping"
+  linkedin:
+    text: |-
+      Two founders in Murcia, Spain. Zero venture capital. Zero dollars spent on paid ads.
+
+      And roughly 50% of their production codebase co-written with Claude and Cursor back in 2023.
+
+      Before Silicon Valley turned "tiny AI-leveraged teams" into a meme, Javi López and Emilio Nicolás shipped Magnific AI and ran the purest blueprint of it in Europe:
+
+      🔹 Audience before code: 18 months sharing real AI art experiments on X and Substack before opening paid access.
+
+      🔹 Contrarian product physics: instead of eliminating AI hallucinations, they framed tiled diffusion inside three crisp sliders (Creativity, Resemblance, HDR).
+
+      🔹 Organic X inflection: from Beeple's daily workflow adoption to Elon Musk replying "Computer, enhance!" in January 2024.
+
+      🔹 From 5-month exit to mothership brand: acquired by Freepik (€20M+ cash & earn-outs at 725K users), until the entire parent group rebranded to Magnific in April 2026 past $230M ARR.
+
+      In our latest Datalaria deep dive, we break down the X viral timeline, the tiled diffusion pipeline, and what legacy corporate moats survive in the post-AGI era: https://datalaria.com/en/posts/magnific_ai/
+
+      Which traditional moat do you think holds up best when a two-person AI-leveraged team can ship a category-defining product in 90 days?
+    hashtags:
+      - "MagnificAI"
+      - "GenerativeAI"
+      - "SoftwareEngineering"
+      - "AGI"
+      - "Bootstrapping"
+  newsletter:
+    archetype: "real_case_number"
+    subject: "725K users with 2 people, $0 ads, and ~50% AI-written code"
+    preheader: "Inside Magnific AI's viral X origins ('Computer, enhance!'), tiled diffusion tech, and Freepik's $230M ARR rebrand."
+    hook_paragraphs:
+      - "In November 2023, two Spanish founders shipped an app born out of daily frustration with blurry early Midjourney renders. With zero outside investors and paid-only pricing from day one to cover GPU bills, they built Europe's sharpest prototype of the post-AGI micro-giant."
+      - "We trace Javi López's viral X threads (including Beeple's daily adoption and Elon Musk's 'Computer, enhance!' reply), the tiled latent diffusion pipeline behind their Creativity slider, and the April 2026 corporate rebrand."
+    insights_60s:
+      - "Controlled Hallucination as a feature: tiled latent diffusion pairs Creativity, Resemblance, and HDR sliders to invent micro-textures without breaking geometry."
+      - "Distribution 18 months ahead of code: open prompt experiments on X and Substack drove 725,000 sign-ups with zero paid acquisition spend."
+      - "Tiny team leverage at scale: AI-assisted coding (~50% via Cursor + Claude) plus 13 years of founder discipline turned a 90-day sprint into a $230M ARR brand."
+    secondary_cta_label: "Model AI Unit Economics in /resources/"
+    secondary_cta_url: "https://datalaria.com/en/resources/#pack-business-case"
+    ps_referral_text: "Know a technical founder or product lead obsessing over high-leverage tiny teams? Forward this case study their way."
+  devto:
+    enabled: true
+    title: "Magnific AI: Tiled Latent Diffusion & How 2 Founders Scaled a GenAI Titan"
+    description: "Engineering & growth case study of Magnific AI: controlled hallucination via tiled diffusion, viral X origins, 50% AI-written code, and post-AGI economics."
+    tags:
+      - "ai"
+      - "generativeai"
+      - "startups"
+      - "architecture"
+    canonical_url: "https://datalaria.com/en/posts/magnific_ai/"
+    published: true
+  coderlegion:
+    enabled: true
+    title: "Magnific AI: Tiled Latent Diffusion & How 2 Founders Built a GenAI Titan"
+    description: "How Javi López and Emilio Nicolás shipped Magnific AI with ~50% AI-assisted code, controlled diffusion hallucination, and viral X distribution before rebranding Freepik."
+    tags:
+      - "ai"
+      - "generative-ai"
+      - "architecture"
+      - "startups"
+    canonical_url: "https://datalaria.com/en/posts/magnific_ai/"
+    published: true
+    category: 2

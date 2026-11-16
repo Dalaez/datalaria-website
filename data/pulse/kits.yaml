@@ -14,6 +14,8 @@ mega_bundle:
     de Datalaria (13 kits individuales).
   description_en: Full and unlimited access to all 3 Business Model Suites by Datalaria
     (13 individual packs).
+  publish_date: '2026-12-03'
+  version: v1.0.0
 suites:
 - id: suite-01
   slug: suite-1-estrategia-mba
@@ -38,6 +40,8 @@ suites:
   - pack-pestel
   - pack-bcg
   - pack-mckinsey
+  publish_date: '2026-11-01'
+  version: v1.0.0
 - id: suite-02
   slug: suite-2-decisiones
   type: suite
@@ -57,6 +61,8 @@ suites:
   - pack-dar
   - pack-rice
   - pack-business-case
+  publish_date: '2026-11-08'
+  version: v1.0.0
 - id: suite-03
   slug: suite-3-control-operativo
   type: suite
@@ -78,6 +84,8 @@ suites:
   - pack-pert
   - pack-evm
   - pack-stock
+  publish_date: '2026-11-30'
+  version: v1.0.0
 - id: suite-sdd
   slug: suite-software-ia-sdd
   type: suite
@@ -90,13 +98,17 @@ suites:
   title_es: 'Datalaria Helix: Suite SDD & Escuadrón de 12 Agentes IA'
   title_en: 'Datalaria Helix: SDD Suite & 12-Agent AI Engineering Squad'
   description_es: Sistema operativo SDD con escuadrón coordinado de 12 agentes especializados,
-    triaje determinista XS–XL, contratos de diseño UX/UI y CLI de verificación con rollback.
+    triaje determinista XS–XL, contratos de diseño UX/UI y CLI de verificación con
+    rollback.
   description_en: SDD operating system with a coordinated 12-agent engineering squad,
-    deterministic XS–XL triage, UX/UI design contracts, and verification & rollback CLI.
+    deterministic XS–XL triage, UX/UI design contracts, and verification & rollback
+    CLI.
   guide_url_es: /es/posts/sdd_vs_vibe_coding/
   guide_url_en: /en/posts/sdd_vs_vibe_coding/
   included_kits:
   - pack-sdd
+  publish_date: '2027-01-19'
+  version: v1.0.0
 kits:
 - id: pack-dafo
   slug: dafo
@@ -137,6 +149,8 @@ kits:
   - PDF methodology guide with formulas and real corporate case study
   article_url_en: null
   guide_url_en: /en/posts/quantitative-swot-tows-matrix/
+  publish_date: '2026-10-19'
+  version: v1.0.0
 - id: pack-porter
   slug: porter
   type: kit
@@ -176,6 +190,8 @@ kits:
   - Methodology guide covering barrier dynamics and industry rents
   article_url_en: null
   guide_url_en: /en/posts/quantitative-porter-5-forces/
+  publish_date: '2026-10-21'
+  version: v1.0.0
 - id: pack-pestel
   slug: pestel
   type: kit
@@ -217,6 +233,8 @@ kits:
   - PDF scenario planning and macro stress-testing guide
   article_url_en: null
   guide_url_en: /en/posts/quantitative-pestel-matrix/
+  publish_date: '2026-10-22'
+  version: v1.0.0
 - id: pack-bcg
   slug: bcg
   type: kit
@@ -256,6 +274,8 @@ kits:
   - PDF guide on product lifecycle cash flow balancing
   article_url_en: null
   guide_url_en: /en/posts/dynamic-bcg-matrix/
+  publish_date: '2026-10-26'
+  version: v1.0.0
 - id: pack-mckinsey
   slug: mckinsey
   type: kit
@@ -295,6 +315,8 @@ kits:
   - Tier-1 consulting calibration and scoring methodology guide
   article_url_en: null
   guide_url_en: /en/posts/mckinsey-ge-matrix/
+  publish_date: '2026-10-29'
+  version: v1.0.0
 - id: pack-dar
   slug: dar
   type: kit
@@ -334,6 +356,8 @@ kits:
   - Corporate governance decision-making methodology guide
   article_url_en: null
   guide_url_en: null
+  publish_date: '2026-11-02'
+  version: v1.0.0
 - id: pack-rice
   slug: rice
   type: kit
@@ -373,6 +397,8 @@ kits:
   - PDF guide on confidence calibration and net squad capacity
   article_url_en: /en/posts/rice-ice-prioritization-matrix/
   guide_url_en: /en/posts/rice-ice-prioritization-matrix/
+  publish_date: '2026-11-05'
+  version: v1.0.0
 - id: pack-business-case
   slug: business-case
   type: kit
@@ -412,6 +438,8 @@ kits:
   - 16:9 C-Level slide with capital request summary for the CFO
   article_url_en: /en/posts/financial-business-case-npv-irr/
   guide_url_en: /en/posts/financial-business-case-npv-irr/
+  publish_date: '2026-11-08'
+  version: v1.0.0
 - id: pack-raci
   slug: raci
   type: kit
@@ -452,6 +480,8 @@ kits:
   - PDF dispute resolution and organizational governance guide
   article_url_en: null
   guide_url_en: null
+  publish_date: '2026-11-12'
+  version: v1.0.0
 - id: pack-amfe
   slug: amfe
   type: kit
@@ -474,8 +504,8 @@ kits:
   title_es: Matriz de Riesgos & AMFE / FMEA Cuantitativo
   description_es: El estándar industrial para predecir y mitigar fallos antes de que
     ocurran en procesos operativos, software o cadenas de suministro.
-  article_url_es: null
-  guide_url_es: null
+  article_url_es: /es/posts/matriz-riesgos-amfe-fmea/
+  guide_url_es: /es/posts/matriz-riesgos-amfe-fmea/
   title_en: FMEA Quantitative Risk Matrix
   category_en: Operations Control
   description_en: Industrial standard for predicting and neutralizing failure modes
@@ -489,8 +519,10 @@ kits:
   - Dynamic 5x5 heatmap compliant with ISO 31000 and IATF 16949 standards
   - 16:9 PPTX slide with mitigation plans and contingency triggers
   - FMEA methodology guide covering root-cause preventive controls
-  article_url_en: null
-  guide_url_en: null
+  article_url_en: /en/posts/quantitative-risk-matrix-fmea/
+  guide_url_en: /en/posts/quantitative-risk-matrix-fmea/
+  publish_date: '2026-11-16'
+  version: v1.0.0
 - id: pack-pert
   slug: pert
   type: kit
@@ -531,6 +563,8 @@ kits:
   - PDF guide covering PMBOK standard statistical estimation techniques
   article_url_en: null
   guide_url_en: null
+  publish_date: '2026-11-19'
+  version: v1.0.0
 - id: pack-evm
   slug: evm
   type: kit
@@ -570,6 +604,8 @@ kits:
   - Official Earned Value Management methodology guide
   article_url_en: null
   guide_url_en: null
+  publish_date: '2026-11-23'
+  version: v1.0.0
 - id: pack-stock
   slug: stock
   type: kit
@@ -611,6 +647,8 @@ kits:
   - PDF working capital optimization guide for supply chain leaders
   article_url_en: null
   guide_url_en: null
+  publish_date: '2026-11-26'
+  version: v1.0.0
 - id: pack-sdd
   slug: sdd
   type: kit
@@ -625,10 +663,15 @@ kits:
   - CLI Verify & Rollback
   - Spec & UX Blueprints
   features_es:
-  - Escuadrón coordinado de 12 Agentes IA (Orquestador XS–XL, Product Analyst, Arquitecto, UX/UI, Frontend, Backend, APIs/MCP, Media/i18n, Monetización, Seguridad, QA con veto y Release)
-  - Adaptadores listos para Google Antigravity, Claude Code, Cursor y Codex con memoria persistente (ROADMAP.md y DECISIONS.md)
-  - Plantillas ejecutables SPEC.md, AGENT_SPEC.md y contrato visual design.md anti-plantilla genérica
-  - CLI determinista en Python (init, triage, new-spec, checkpoint, verify, rollback) y Guía Ejecutiva PDF
+  - Escuadrón coordinado de 12 Agentes IA (Orquestador XS–XL, Product Analyst, Arquitecto,
+    UX/UI, Frontend, Backend, APIs/MCP, Media/i18n, Monetización, Seguridad, QA con
+    veto y Release)
+  - Adaptadores listos para Google Antigravity, Claude Code, Cursor y Codex con memoria
+    persistente (ROADMAP.md y DECISIONS.md)
+  - Plantillas ejecutables SPEC.md, AGENT_SPEC.md y contrato visual design.md anti-plantilla
+    genérica
+  - CLI determinista en Python (init, triage, new-spec, checkpoint, verify, rollback)
+    y Guía Ejecutiva PDF
   checkout_url: '#'
   title_es: 'Datalaria Helix: Kit SDD & Escuadrón de 12 Agentes IA'
   description_es: Sistema operativo Spec-Driven Development con 12 agentes especializados,
@@ -637,16 +680,23 @@ kits:
   guide_url_es: /es/posts/sdd_vs_vibe_coding/
   title_en: 'Datalaria Helix: SDD Kit & 12-Agent AI Engineering Squad'
   category_en: Software, AI & SDD
-  description_en: Spec-Driven Development operating system with 12 specialized AI agents,
-    XS–XL triage, UX/UI contracts, and deterministic verification (Launching January 2027).
+  description_en: Spec-Driven Development operating system with 12 specialized AI
+    agents, XS–XL triage, UX/UI contracts, and deterministic verification (Launching
+    January 2027).
   deliverables_en:
   - 12 AI Agents Squad
   - CLI Verify & Rollback
   - Spec & UX Blueprints
   features_en:
-  - Coordinated 12-Agent AI Squad (XS–XL Orchestrator, Product Analyst, Architect, UX/UI, Frontend, Backend, APIs/MCP, Media/i18n, Monetization, Security, Veto QA, and Release)
-  - Ready-to-use adapters for Google Antigravity, Claude Code, Cursor, and Codex with persistent state memory (ROADMAP.md & DECISIONS.md)
+  - Coordinated 12-Agent AI Squad (XS–XL Orchestrator, Product Analyst, Architect,
+    UX/UI, Frontend, Backend, APIs/MCP, Media/i18n, Monetization, Security, Veto QA,
+    and Release)
+  - Ready-to-use adapters for Google Antigravity, Claude Code, Cursor, and Codex with
+    persistent state memory (ROADMAP.md & DECISIONS.md)
   - Executable SPEC.md, AGENT_SPEC.md, and anti-cookie-cutter design.md visual contracts
-  - Zero-dependency Python CLI (init, triage, new-spec, checkpoint, verify, rollback) and Executive PDF Playbook
+  - Zero-dependency Python CLI (init, triage, new-spec, checkpoint, verify, rollback)
+    and Executive PDF Playbook
   article_url_en: /en/posts/sdd_vs_vibe_coding/
   guide_url_en: /en/posts/sdd_vs_vibe_coding/
+  publish_date: '2027-01-19'
+  version: v1.0.0

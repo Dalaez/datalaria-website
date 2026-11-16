@@ -1,0 +1,118 @@
+es:
+  x:
+    hook: 'El Markdown es extraordinario para escribir pero pésimo como base de datos:
+      sin contratos tipados, una errata en el front matter rompe silenciosamente tu
+      compilador estático.'
+    thread:
+    - '1/5 Adoptar Git como fuente de verdad editorial plantea un dilema: el front
+      matter YAML carece de compilador con comprobación de tipos.'
+    - 2/5 Un campo mal nombrado ('category' en vez de 'categories') o una fecha sin
+      formato ISO rompe silenciosamente las plantillas en Hugo, Astro o Next.js.
+    - '3/5 En Datalaria Pulse resolvemos esto con Pydantic v2: modelamos ContentAsset
+      con validadores deterministas y resolución de grafos para paridad bilingüe ES
+      ⇔ EN.'
+    - '4/5 En GitHub Actions aplicamos política Fail-Closed: si un solo artículo viola
+      el esquema o queda desemparejado, la compilación de producción aborta al instante.'
+    - '5/5 Conoce los modelos de datos, validadores y el workflow de CI/CD paso a
+      paso en la Parte 2: https://datalaria.com/es/posts/pulse-parte2-indexador-pydantic-paridad-ci/'
+    hashtags:
+    - Python
+    - Pydantic
+    - CICD
+    - GitHubActions
+    web_intent_url: https://x.com/intent/tweet?text=El+Markdown+es+extraordinario+para+escribir+pero+p%C3%A9simo+como+base+de+datos%3A+sin+contratos+tipados%2C+una+errata+en+el+front+matter+rompe+silenciosamente+tu+compilador+est%C3%A1tico.&url=https%3A%2F%2Fdatalaria.com%2Fes%2Fposts%2Fpulse-parte2-indexador-pydantic-paridad-ci%2F&hashtags=Python%2CPydantic%2CCICD%2CGitHubActions
+  linkedin:
+    text: 'El formato Markdown con front matter YAML es una delicia para escribir
+      documentación técnica.
+
+
+      Pero es un pésimo sustituto de una base de datos relacional cuando carece de
+      un compilador estricto de tipos.
+
+
+      Tres fallos silenciosos que ocurren al escalar un blog técnico sin validación
+      de esquemas: 👇
+
+
+      ⚠️ Inconsistencia en metadatos: fechas con formatos dispares (''22/11/2026''
+      vs ''2026-11-22'') o listas serializadas como cadenas de texto.
+
+
+      ⚠️ Fugas en paridad bilingüe: traducciones con slugs desconectados o artículos
+      huérfanos que rompen el selector de idioma.
+
+
+      ⚠️ Despliegues corruptos: generadores estáticos como Hugo o Astro tragándose
+      errores silenciosos que solo el lector final descubre.
+
+
+      En la segunda entrega de Datalaria Pulse mostramos cómo blindamos el catálogo
+      con Pydantic v2 y GitHub Actions.
+
+
+      Si un solo post incumple el contrato o carece de paridad, el pipeline aborta
+      en modo cerrado (Fail-Closed) antes de tocar producción.
+
+
+      📖 Revisa el diseño del indexador y los contratos de datos: https://datalaria.com/es/posts/pulse-parte2-indexador-pydantic-paridad-ci/
+
+
+      💬 ¿Implementas validadores automáticos de esquemas sobre tus archivos Markdown
+      antes de desplegar en producción?'
+    hashtags:
+    - Pydantic
+    - Python
+    - GitHubActions
+    - CICD
+    - SoftwareEngineering
+  newsletter:
+    archetype: architecture_inside
+    subject: La arquitectura interna del indexador Pydantic v2 y paridad CI/CD
+    preheader: Cómo modelamos contratos de datos estrictos en Python para blindar
+      183 activos de contenido en GitHub Actions.
+    hook_paragraphs:
+    - 'En la entrega anterior expusimos por qué abandonamos Notion. Pero tratar los
+      archivos Markdown como código fuente introduce un reto inmediato: el YAML de
+      cabecera no tiene un compilador que verifique tipos.'
+    - Una simple errata en una clave o una fecha mal formateada rompe silenciosamente
+      tu generador estático. En este artículo desvelamos la arquitectura de nuestro
+      indexador en Python con Pydantic v2.
+    insights_60s:
+    - 'Contratos estrictos con Pydantic v2: tipado estricto de ContentAsset que rechaza
+      cualquier inconsistencia de campos en milisegundos.'
+    - 'Grafo de paridad lingüística ES ⇔ EN: emparejamiento determinista por translationKey
+      para evitar traducciones huérfanas o desfasadas.'
+    - 'Pipeline Fail-Closed en GitHub Actions: el proceso de CI/CD aborta de forma
+      no negociable ante cualquier error de validación o enlace roto.'
+    secondary_cta_label: Probar Demo Sandbox de Datalaria Pulse
+    secondary_cta_url: https://datalaria.com/apps/pulse/?demo=true&utm_source=brevo&utm_medium=email&utm_campaign=pulse-launch-p2
+    ps_referral_text: Si conoces desarrolladores de Python o DevOps que gestionan
+      plataformas de contenidos, compárteles este artículo.
+  devto:
+    enabled: false
+    title: 'Del Front Matter al Índice: Pydantic v2, Paridad Bilingüe y CI/CD en GitHub
+      Actions'
+    description: Cómo construir un pipeline de validación estricta con Pydantic v2,
+      garantizar paridad bilingüe ES/EN al 100% y orquestar la compilación editorial
+      en CI/CD.
+    tags:
+    - python
+    - pydantic
+    - githubactions
+    - cicd
+    canonical_url: https://datalaria.com/es/posts/pulse-parte2-indexador-pydantic-paridad-ci/
+    published: false
+  coderlegion:
+    enabled: false
+    title: 'Del Front Matter al Índice: Pydantic v2, Paridad Bilingüe y CI/CD en GitHub
+      Actions'
+    description: Cómo construir un pipeline de validación con Pydantic v2, paridad
+      bilingüe ES/EN y orquestar compilaciones en GitHub Actions.
+    tags:
+    - python
+    - pydantic
+    - github-actions
+    - ci-cd
+    canonical_url: https://datalaria.com/es/posts/pulse-parte2-indexador-pydantic-paridad-ci/
+    published: false
+    category: 2

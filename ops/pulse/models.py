@@ -13,6 +13,7 @@ AssetStatus = Literal["idea", "draft", "review", "scheduled", "published", "avai
 VisibilityType = Literal["public", "private"]
 LanguageParity = Literal["complete", "missing_en", "missing_es", "outdated_en", "outdated_es"]
 FreshnessStatus = Literal["fresh", "review_soon", "stale"]
+ReleaseType = Literal["article", "initial_launch", "version_upgrade", "kit_launch", "kit_edition"]
 
 
 class SeoAudit(BaseModel):
@@ -105,6 +106,12 @@ class ContentAsset(BaseModel):
     # Métricas
     metrics_relative: Optional[RelativeMetrics] = None
     metrics_absolute: Optional[AbsoluteMetrics] = None
+
+    # Versionado y control de publicaciones (Hito P2.1)
+    version: Optional[str] = None
+    release_type: Optional[ReleaseType] = None
+    parent_asset_id: Optional[str] = None
+    editorial_post_slug: Optional[str] = None
 
     def to_public_dict(self) -> Dict[str, Any]:
         """
@@ -243,6 +250,22 @@ class BacklogPrioritizedItem(BaseModel):
     rationale_es: str
 
 
+class ReleaseEditorialImpactItem(BaseModel):
+    """Impacto y cobertura editorial de un lanzamiento de App, Versión o Kit B2B."""
+    asset_id: str
+    asset_type: AssetType
+    version: str
+    release_type: str
+    title_es: str
+    publish_date: Optional[date] = None
+    status: str
+    linked_posts_count: int = Field(ge=0)
+    latest_post_date: Optional[date] = None
+    editorial_views_30d: int = Field(ge=0)
+    editorial_coverage_status: Literal["covered", "scheduled_coverage", "silent_release_alert", "pending_launch"]
+    recommended_scriba_action: str
+
+
 class PulseImpactReport(BaseModel):
     """Contrato raíz de data/pulse/private/impact_report.json (INV-PULSE-6)."""
     version: str = "1.0.0"
@@ -259,4 +282,6 @@ class PulseImpactReport(BaseModel):
     monetization_orphans: List[MonetizationOrphanItem]
     decay_alerts: List[DecayAlertItem]
     prioritized_backlog: List[BacklogPrioritizedItem]
+    release_editorial_impact: List[ReleaseEditorialImpactItem] = Field(default_factory=list)
+    silent_releases_count: int = 0
 

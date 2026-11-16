@@ -1,0 +1,113 @@
+en:
+  x:
+    hook: 'Markdown is great for writing but terrible as an untyped database: a single
+      typo in YAML front matter silently breaks your static site generator.'
+    thread:
+    - '1/5 Adopting Git as your Single Source of Truth introduces a major dilemma:
+      Markdown YAML front matter lacks a type-checking compiler.'
+    - 2/5 A misspelled dictionary key ('category' vs 'categories') or unformatted
+      dates silently crash static generators like Hugo, Astro, or Next.js.
+    - '3/5 In Datalaria Pulse, we resolve this with Pydantic v2: modeling ContentAsset
+      with strict validators and bipartite graph resolution for ES/EN parity.'
+    - '4/5 In GitHub Actions, we enforce a strict Fail-Closed policy: if a single
+      asset violates validation schemas, the production build aborts immediately.'
+    - '5/5 Discover our data contracts, custom validators, and full CI/CD workflow
+      in Part 2: https://datalaria.com/en/posts/pulse-part2-pydantic-indexer-bilingual-parity-ci/'
+    hashtags:
+    - Python
+    - Pydantic
+    - CICD
+    - GitHubActions
+    web_intent_url: https://x.com/intent/tweet?text=Markdown+is+great+for+writing+but+terrible+as+an+untyped+database%3A+a+single+typo+in+YAML+front+matter+silently+breaks+your+static+site+generator.&url=https%3A%2F%2Fdatalaria.com%2Fen%2Fposts%2Fpulse-part2-pydantic-indexer-bilingual-parity-ci%2F&hashtags=Python%2CPydantic%2CCICD%2CGitHubActions
+  linkedin:
+    text: 'Markdown with YAML front matter is a joy for authoring technical documentation.
+
+
+      Yet it makes a terrible substitute for a relational database when it lacks a
+      type-checking compiler.
+
+
+      Three silent failure modes when scaling an engineering blog without strict schema
+      validation: 👇
+
+
+      ⚠️ Metadata divergence: inconsistent date formats (''22/11/2026'' vs ''2026-11-22'')
+      or arrays accidentally formatted as raw strings.
+
+
+      ⚠️ Broken language parity: translation files with mismatched translation keys
+      or orphaned articles breaking the language switcher.
+
+
+      ⚠️ Corrupted static builds: static generators silently omitting pages without
+      raising an explicit error in CI.
+
+
+      In Part 2 of Datalaria Pulse, we show how we hardened our content operations
+      using Pydantic v2 and GitHub Actions.
+
+
+      If a single Markdown file violates schema contracts or lacks bilingual parity,
+      our pipeline aborts in a closed state (Fail-Closed).
+
+
+      📖 Check out the indexer architecture and data models: https://datalaria.com/en/posts/pulse-part2-pydantic-indexer-bilingual-parity-ci/
+
+
+      💬 Do you run automated schema validators on your Markdown files before deploying
+      to production?'
+    hashtags:
+    - Pydantic
+    - Python
+    - GitHubActions
+    - CICD
+    - SoftwareEngineering
+  newsletter:
+    archetype: architecture_inside
+    subject: Inside the Pydantic v2 deterministic indexer and CI/CD parity
+    preheader: How we model strict data contracts in Python to bulletproof 183 technical
+      content assets in GitHub Actions.
+    hook_paragraphs:
+    - 'In our previous post, we explained why we retired Notion. But treating Markdown
+      files as application source code brings an immediate hurdle: front matter YAML
+      lacks type checking.'
+    - A simple typo in a dictionary key or date format silently breaks your static
+      site generator. In this article, we lift the hood on our Python indexer powered
+      by Pydantic v2.
+    insights_60s:
+    - 'Strict Pydantic v2 data contracts: strict ContentAsset validation that catches
+      field inconsistencies in milliseconds.'
+    - 'Deterministic ES ⇔ EN parity graph: automated pairing via translationKey preventing
+      orphaned or outdated technical documentation.'
+    - 'Fail-Closed GitHub Actions pipeline: CI/CD process halts unconditionally upon
+      any schema error or broken internal link.'
+    secondary_cta_label: Try Datalaria Pulse Live Sandbox
+    secondary_cta_url: https://datalaria.com/apps/pulse/?demo=true&utm_source=brevo&utm_medium=email&utm_campaign=pulse-launch-p2
+    ps_referral_text: Know Python developers or DevOps engineers managing technical
+      content platforms? Forward this their way.
+  devto:
+    enabled: true
+    title: 'From Front Matter to Index: Pydantic v2, ES/EN Parity and GitHub Actions'
+    description: How to build a strict data validation pipeline with Pydantic v2,
+      enforce 100% bilingual ES/EN parity, and automate builds via GitHub Actions
+      CI/CD.
+    tags:
+    - python
+    - pydantic
+    - githubactions
+    - cicd
+    canonical_url: https://datalaria.com/en/posts/pulse-part2-pydantic-indexer-bilingual-parity-ci/
+    published: true
+  coderlegion:
+    enabled: true
+    title: 'From Front Matter to Index: Pydantic v2, ES/EN Parity and GitHub Actions'
+    description: How to build a validation pipeline with Pydantic v2, enforce bilingual
+      parity, and automate builds via GitHub Actions.
+    tags:
+    - python
+    - pydantic
+    - github-actions
+    - ci-cd
+    canonical_url: https://datalaria.com/en/posts/pulse-part2-pydantic-indexer-bilingual-parity-ci/
+    published: true
+    category: 2

@@ -8,6 +8,7 @@ app_url: /apps/obs-management/
 demo_url: /apps/obs-management/
 source_spec: specs/apps/obs-management/spec.md
 current_version: v1.0.1
+launch_date: "2026-05-17"
 
 title:
   es: "Radar de Obsolescencia"

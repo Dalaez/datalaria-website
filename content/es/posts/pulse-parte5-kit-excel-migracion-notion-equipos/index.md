@@ -1,6 +1,6 @@
 ---
 title: "Gestión Editorial para Equipos SEO y Marketing: de Notion a Excel en 5 Minutos"
-date: 2026-12-16
+date: 2026-12-02
 draft: false
 cover:
   image: "cover.png"
@@ -352,20 +352,38 @@ sequenceDiagram
 
 ## 6. Conclusiones y Cierre de la Serie Datalaria Pulse
 
-A lo largo de estas cinco semanas y cinco entregas en profundidad, hemos transformado la gestión de contenidos desde un proceso artesanal y desarticulado en una **disciplina de ingeniería reproducible**:
+A lo largo de estas tres semanas y cinco entregas en profundidad, hemos transformado la gestión de contenidos desde un proceso artesanal y desarticulado en una **disciplina de ingeniería reproducible**:
 
 1. **[Parte 1 — Adiós Notion: Content Ops as Code](/es/posts/pulse-parte1-adios-notion-content-ops/):** Definimos los principios de la Fuente Única de Verdad en Git y la eliminación de silos de datos externos.
-2. **[Parte 2 — Del Front Matter al Índice: Pydantic v2 y CI/CD](/es/posts/pulse-parte2-indexador-pydantic-paridad-ci/):** Construimos el motor de validación determinista que audita 140 activos en milisegundos con 100% de paridad bilingüe.
+2. **[Parte 2 — Del Front Matter al Índice: Pydantic v2 y CI/CD](/es/posts/pulse-parte2-indexador-pydantic-paridad-ci/):** Construimos el motor de validación determinista que audita 183 activos en milisegundos con 100% de paridad bilingüe.
 3. **[Parte 3 — Tabla Ejecutiva, Kanban y Calendario en React 19](/es/posts/pulse-parte3-tablero-react-tabla-kanban-calendario/):** Diseñamos una interfaz visual ultrarrápida con filtrado reactivo sobre un índice estático con latencia cero.
-4. **[Parte 4 — GA4 y Search Console Automatizados: Salud & ROI](/es/posts/pulse-parte4-ga4-search-console-automatico/):** Conectamos las APIs oficiales mediante Service Account, relativizando métricas privadas en un índice Base 100 y cuantificando \21.480€ de patrimonio editorial.
+4. **[Parte 4 — GA4 y Search Console Automatizados: Salud & ROI](/es/posts/pulse-parte4-ga4-search-console-automatico/):** Conectamos las APIs oficiales mediante Service Account, relativizando métricas privadas en un índice Base 100 y cuantificando 21.480 € de patrimonio editorial.
 5. **Parte 5 — De Notion a Excel en 5 Minutos, Supabase Pro y Fábrica IA:** Unificamos a los equipos con el Kit descargable y abrimos las puertas a la producción autónoma escalable en la nube.
 
 La gestión editorial de última generación ya no exige elegir entre la comodidad de una planilla y la seguridad de un repositorio de código. Con **Datalaria Pulse**, el catálogo completo se escribe, audita y monetiza desde la misma fuente de verdad.
 
 ---
 
+{{< product-card
+  id="pack-pulse"
+  title="Datalaria Pulse: Content Ops & Notion Migration Kit"
+  category="Software, IA & SDD"
+  price="19€"
+  original_price="39€"
+  badge="📊 Estándar Content Ops as Code"
+  icon="📊"
+  preview_image="pulse-preview-es.png"
+  preview_caption="Vista previa de los entregables: Plantilla Maestra Excel (.xlsx) con 6 hojas, doble conector Power Query M y scripts CLI de migración y escáner."
+  deliverables="Plantilla Excel Master (6 Hojas)|Doble Conector Power Query M|Migrador Notion CLI + Guía PDF"
+  features="Plantilla Maestra Excel (.xlsx) con 6 hojas (Taxonomía, Activos, Kanban, Métricas y Dashboard ejecutivo)|Doble conector Power Query M: sincronización en 1 clic desde Notion CSV y Git public.json|Script de migración determinista en Python (migrate_notion.py) con exportación directa|Escáner universal de repositorios (pulse_repo_scanner.py) de cero dependencias externas|Guía ejecutiva maquetada en PDF de 4 páginas y especificación técnica de campos"
+  checkout_url="/es/recursos/#pack-pulse"
+  button_text="Descargar Kit Comercial (.ZIP) • 19€"
+>}}
+El paquete descargable incluye la **Plantilla Maestra Excel (.xlsx)** estructurada en 6 hojas interconectadas con validaciones estrictas y formato condicional ejecutivo, el **Doble Conector Power Query M** para sincronizar Notion CSV y repositorios Git locales con un solo clic, el **Script CLI de Migración (migrate_notion.py)**, el **Escáner Universal de Repositorios (pulse_repo_scanner.py)** sin dependencias y la **Guía Ejecutiva en PDF**.
+{{< /product-card >}}
+
 > ### Da el Salto a Content Ops as Code
 > 
 > - **Explora la Consola Interactiva:** Accede ya a la versión en vivo de [Datalaria Pulse en el Portal](/apps/pulse/) (Modo Sandbox interactivo) y prueba las vistas de Tabla, Kanban, Calendario y Salud Editorial.
-> - **Descarga el Datalaria Pulse Kit:** Consigue el kit en **[Datalaria Pulse Kit en Recursos](/es/recursos/#pack-pulse)** (Plantilla Maestra Excel 2016/365, el conector Power Query M y el script de migración en 5 minutos para transformar tu equipo de contenidos hoy mismo.
+> - **Descarga el Datalaria Pulse Kit:** Consigue el kit en **[Datalaria Pulse Kit en Recursos](/es/recursos/#pack-pulse)** (Plantilla Maestra Excel 2016/365, el conector Power Query M y el script de migración en 5 minutos) para transformar tu equipo de contenidos hoy mismo.
 > - **Consulta la Ficha Oficial de la App:** Revisa todas las especificaciones, arquitectura y roadmap en la [Ficha Técnica de Datalaria Pulse](/es/apps/pulse/).

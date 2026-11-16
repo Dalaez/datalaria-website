@@ -1,0 +1,117 @@
+es:
+  x:
+    hook: 'Gestionar un blog técnico en Notion o Airtable es una batalla perdida contra
+      la desincronización: el repositorio Git y la base de datos externa siempre acaban
+      divergiendo.'
+    thread:
+    - '1/5 Si publicas un blog técnico o documentación con Hugo, Astro o Next.js,
+      conoces la contradicción: aplicas CI/CD estricto al código, pero gestionas los
+      contenidos en una tabla de Notion desconectada de Git.'
+    - '2/5 Con 20 posts funciona. Con más de 100 posts, la doble entrada colapsa:
+      URLs cambiadas, estados desfasados y traducciones huérfanas que nadie detecta
+      hasta que el usuario encuentra un 404.'
+    - '3/5 La solución es Content Ops as Code: tratar los artículos exactamente como
+      código fuente. El Markdown es la base de datos y cada commit en Git dispara
+      validación determinista con Pydantic v2.'
+    - 4/5 En Datalaria Pulse hemos indexado 183 activos (posts, apps y kits) con latencia
+      cero en un cockpit React 19 y paridad bilingüe ES/EN blindada en CI/CD.
+    - '5/5 Lee la Parte 1 de la serie y descubre la arquitectura completa que jubila
+      las hojas de cálculo externas: https://datalaria.com/es/posts/pulse-parte1-adios-notion-content-ops/'
+    hashtags:
+    - ContentOps
+    - GitOps
+    - Python
+    - BloggingTecnico
+    web_intent_url: https://x.com/intent/tweet?text=Gestionar+un+blog+t%C3%A9cnico+en+Notion+o+Airtable+es+una+batalla+perdida+contra+la+desincronizaci%C3%B3n%3A+el+repositorio+Git+y+la+base+de+datos+externa+siempre+acaban+divergiendo.&url=https%3A%2F%2Fdatalaria.com%2Fes%2Fposts%2Fpulse-parte1-adios-notion-content-ops%2F&hashtags=ContentOps%2CGitOps%2CPython%2CBloggingTecnico
+  linkedin:
+    text: 'Gestionar el calendario editorial de un blog técnico en Notion o Airtable
+      parece una gran idea el primer mes.
+
+
+      Pero al superar los 100 artículos, la patología de la doble entrada golpea sin
+      piedad: el repositorio Git y la base de datos externa divergen irremediablemente.
+
+
+      Tres problemas invisibles que sufríamos antes de migrar a Content Ops as Code:
+      👇
+
+
+      🔴 Desincronización silenciosa: cambios de slug en Markdown que rompen enlaces
+      en producción sin que la base de datos externa se entere.
+
+
+      🔴 Paridad bilingüe rota: artículos publicados en español cuya traducción al
+      inglés quedó en borrador sin que nadie lo detectase.
+
+
+      🔴 Doble mantenimiento inútil: ingenieros actualizando ficheros de código y teniendo
+      que rellenar a mano formularios en Notion.
+
+
+      En Datalaria Pulse hemos unificado todo bajo una regla: el repositorio Git es
+      la única fuente de verdad.
+
+
+      Indexamos 183 activos directamente desde Markdown con Pydantic v2, garantizamos
+      paridad en CI/CD y proyectamos un cockpit en React 19 con latencia cero.
+
+
+      📖 Conoce la arquitectura completa en la primera entrega de la serie: https://datalaria.com/es/posts/pulse-parte1-adios-notion-content-ops/
+
+
+      💬 ¿Cómo gestiona tu equipo la documentación técnica para evitar que la realidad
+      del código y la planificación se desincronicen?'
+    hashtags:
+    - ContentOps
+    - GitOps
+    - IngenieriaDeSoftware
+    - DevOps
+    - BloggingTecnico
+  newsletter:
+    archetype: invisible_error
+    subject: El error invisible de usar Notion para gestionar blogs técnicos
+    preheader: Por qué Notion y Airtable divergen de tu repositorio Git y cómo Content
+      Ops as Code resuelve la desincronización.
+    hook_paragraphs:
+    - 'Durante años los equipos de ingeniería hemos convivido con una contradicción
+      flagrante: aplicamos el máximo rigor de integración continua al código, pero
+      gestionamos los artículos en bases de datos externas desvinculadas de Git.'
+    - Al superar los 50 o 100 artículos, la doble entrada colapsa inevitablemente.
+      En esta primera entrega presentamos Datalaria Pulse, la arquitectura que indexa
+      tu repositorio Markdown directamente desde Git con Pydantic v2.
+    insights_60s:
+    - 'Doble entrada eliminada: el Markdown del repositorio es la única base de datos
+      válida; cero desfase entre código y calendario.'
+    - 'Contratos estrictos con Pydantic v2: validación estricta de front matter en
+      build time que aborta la compilación ante cualquier incoherencia.'
+    - 'Cockpit React 19 con latencia cero: 183 activos indexados en memoria con ordenación
+      instantánea, vista Kanban y calendario mensual.'
+    secondary_cta_label: Probar Demo Sandbox de Datalaria Pulse
+    secondary_cta_url: https://datalaria.com/apps/pulse/?demo=true&utm_source=brevo&utm_medium=email&utm_campaign=pulse-launch-p1
+    ps_referral_text: Si trabajas con líderes técnicos o redactores que sufren la
+      desincronización de Notion, reenvíales este artículo.
+  devto:
+    enabled: false
+    title: 'Adiós Notion: Datalaria Pulse o la Gestión Editorial desde Git'
+    description: Por qué Notion y Airtable divergen del repositorio y cómo Content
+      Ops as Code indexa tu blog técnico directamente desde Markdown.
+    tags:
+    - contentops
+    - git
+    - python
+    - automation
+    canonical_url: https://datalaria.com/es/posts/pulse-parte1-adios-notion-content-ops/
+    published: false
+  coderlegion:
+    enabled: false
+    title: 'Adiós Notion: Datalaria Pulse o la Gestión Editorial desde Git'
+    description: Por qué Notion y Airtable divergen del repositorio y cómo Content
+      Ops as Code indexa tu blog técnico directamente desde Markdown.
+    tags:
+    - content-ops
+    - git
+    - python
+    - automation
+    canonical_url: https://datalaria.com/es/posts/pulse-parte1-adios-notion-content-ops/
+    published: false
+    category: 2

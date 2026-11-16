@@ -215,6 +215,21 @@
   {{- /* SECCIÓN 6: ARTÍCULOS DE REFERENCIA (Invariante App <=> Post) */ -}}
   {{- /* ============================================================ */ -}}
   {{- with $app.posts -}}
+  {{- $publishedCount := 0 -}}
+  {{- range . -}}
+    {{- $slugVal := .slug -}}
+    {{- if reflect.IsMap .slug -}}
+      {{- $slugVal = index .slug $lang | default .slug.es -}}
+    {{- end -}}
+    {{- if site.GetPage (printf "/posts/%s" $slugVal) -}}
+      {{- $publishedCount = add $publishedCount 1 -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- if and (eq $app.status "live") (eq $publishedCount 0) -}}
+    {{- errorf "Apps Showcase: Invariant App <=> Post broken: app '%s' is live but has 0 published posts in language '%s'" $slug $lang -}}
+  {{- end -}}
+
   <section class="app-detail-section" id="articulos-referencia">
     <h2 class="app-section-title">
       <span class="app-section-icon">📚</span>
@@ -233,47 +248,82 @@
         {{- $partNum := .part -}}
         {{- $postPage := site.GetPage (printf "/posts/%s" $postSlug) -}}
         
-        {{- if not $postPage -}}
-          {{- errorf "Apps Showcase: Invariant App <=> Post broken: post '%s' referenced in data/apps/%s.yaml does not resolve to an existing page in language '%s'" $postSlug $slug $lang -}}
-        {{- end -}}
-
-        <div class="app-post-card">
-          {{- $postCover := "" -}}
-          {{- if $postPage.Params.cover.image -}}
-            {{- $postCover = $postPage.Resources.GetMatch $postPage.Params.cover.image -}}
-          {{- end -}}
-          {{- if not $postCover -}}
-            {{- with $postPage.Params.image -}}
-              {{- $postCover = $postPage.Resources.GetMatch . -}}
+        {{- if $postPage -}}
+          <div class="app-post-card">
+            {{- $postCover := "" -}}
+            {{- if $postPage.Params.cover.image -}}
+              {{- $postCover = $postPage.Resources.GetMatch $postPage.Params.cover.image -}}
             {{- end -}}
-          {{- end -}}
-          {{- if not $postCover -}}
-            {{- $postCover = $postPage.Resources.GetMatch "*cover*.{png,jpg,jpeg,webp,gif}" -}}
-          {{- end -}}
-          {{- if not $postCover -}}
-            {{- $postCover = $postPage.Resources.GetMatch "**{cover,feature,thumbnail}.{png,jpg,jpeg,webp,gif}" -}}
-          {{- end -}}
+            {{- if not $postCover -}}
+              {{- with $postPage.Params.image -}}
+                {{- $postCover = $postPage.Resources.GetMatch . -}}
+              {{- end -}}
+            {{- end -}}
+            {{- if not $postCover -}}
+              {{- $postCover = $postPage.Resources.GetMatch "*cover*.{png,jpg,jpeg,webp,gif}" -}}
+            {{- end -}}
+            {{- if not $postCover -}}
+              {{- $postCover = $postPage.Resources.GetMatch "**{cover,feature,thumbnail}.{png,jpg,jpeg,webp,gif}" -}}
+            {{- end -}}
 
-          {{- if $postCover -}}
-            {{- $thumb := $postCover.Resize "480x" -}}
-            <div class="app-post-thumb-wrapper">
-              <img src="{{ $thumb.RelPermalink }}" alt="{{ $postPage.Title }}" loading="lazy" class="app-post-thumb" />
+            {{- if $postCover -}}
+              {{- $thumb := $postCover.Resize "480x" -}}
+              <div class="app-post-thumb-wrapper">
+                <img src="{{ $thumb.RelPermalink }}" alt="{{ $postPage.Title }}" loading="lazy" class="app-post-thumb" />
+              </div>
+            {{- end -}}
+
+            <div class="app-post-card-content">
+              {{- with $partNum -}}
+              <span class="app-post-part-badge">{{ cond (eq $lang "es") "Parte" "Part" }} {{ . }}</span>
+              {{- end -}}
+              <h3 class="app-post-title">
+                <a href="{{ $postPage.RelPermalink }}">{{ $postPage.Title }}</a>
+              </h3>
+              <p class="app-post-summary">{{ $postPage.Summary | plainify | htmlUnescape | truncate 130 }}</p>
+              <a href="{{ $postPage.RelPermalink }}" class="app-post-link">
+                {{- cond (eq $lang "es") "Leer artículo completo →" "Read full article →" -}}
+              </a>
             </div>
+          </div>
+        {{- else -}}
+          {{- /* Post programado para el futuro o no compilado */ -}}
+          {{- $fallbackTitle := .title -}}
+          {{- if reflect.IsMap .title -}}
+            {{- $fallbackTitle = index .title $lang | default .title.es -}}
+          {{- end -}}
+          {{- $fallbackSummary := .summary -}}
+          {{- if reflect.IsMap .summary -}}
+            {{- $fallbackSummary = index .summary $lang | default .summary.es -}}
+          {{- end -}}
+          {{- $postDate := .date | default "" -}}
+
+          {{- if and (eq $app.status "live") (not $fallbackTitle) -}}
+            {{- errorf "Apps Showcase: Invariant App <=> Post broken: post '%s' referenced in data/apps/%s.yaml does not resolve to an existing page and has no fallback title in language '%s'" $postSlug $slug $lang -}}
           {{- end -}}
 
-          <div class="app-post-card-content">
-            {{- with $partNum -}}
-            <span class="app-post-part-badge">{{ cond (eq $lang "es") "Parte" "Part" }} {{ . }}</span>
-            {{- end -}}
-            <h3 class="app-post-title">
-              <a href="{{ $postPage.RelPermalink }}">{{ $postPage.Title }}</a>
-            </h3>
-            <p class="app-post-summary">{{ $postPage.Summary | plainify | htmlUnescape | truncate 130 }}</p>
-            <a href="{{ $postPage.RelPermalink }}" class="app-post-link">
-              {{- cond (eq $lang "es") "Leer artículo completo →" "Read full article →" -}}
-            </a>
+          <div class="app-post-card app-post-card--scheduled">
+            <div class="app-post-card-content">
+              <div class="app-post-card-scheduled-meta">
+                {{- with $partNum -}}
+                <span class="app-post-part-badge app-post-part-badge--scheduled">{{ cond (eq $lang "es") "Parte" "Part" }} {{ . }}</span>
+                {{- end -}}
+                {{- with $postDate -}}
+                <span class="app-post-date-badge">📅 {{ . }}</span>
+                {{- end -}}
+              </div>
+              <h3 class="app-post-title app-post-title--scheduled">
+                {{ $fallbackTitle | default $postSlug }}
+              </h3>
+              {{- with $fallbackSummary -}}
+              <p class="app-post-summary">{{ . | plainify | htmlUnescape | truncate 130 }}</p>
+              {{- end -}}
+              <span class="app-post-scheduled-label">
+                {{- cond (eq $lang "es") "⏳ Próxima entrega programada" "⏳ Scheduled upcoming release" -}}
+              </span>
+            </div>
           </div>
-        </div>
+        {{- end -}}
       {{- end -}}
     </div>
   </section>
@@ -336,11 +386,23 @@
       </h2>
       <div class="app-products-grid">
         {{- range . -}}
-          {{- /* Reutiliza integración Lemon Squeezy existente */ -}}
+          {{- /* Reutiliza integración Lemon Squeezy existente con soporte i18n */ -}}
+          {{- $prodName := .name -}}
+          {{- if reflect.IsMap .name -}}
+            {{- $prodName = index .name $lang | default .name.es -}}
+          {{- end -}}
+          {{- $prodDesc := .description -}}
+          {{- if reflect.IsMap .description -}}
+            {{- $prodDesc = index .description $lang | default .description.es -}}
+          {{- end -}}
+          {{- $prodUrl := .checkout_url -}}
+          {{- if reflect.IsMap .checkout_url -}}
+            {{- $prodUrl = index .checkout_url $lang | default .checkout_url.es -}}
+          {{- end -}}
           <div class="app-product-card">
-            <h4>{{ .name }}</h4>
-            <p>{{ .description }}</p>
-            <a href="{{ .checkout_url }}" class="app-btn app-btn-primary lemonsqueezy-button" data-product-name="{{ .name }}">
+            <h4>{{ $prodName }}</h4>
+            <p>{{ $prodDesc }}</p>
+            <a href="{{ $prodUrl }}" class="app-btn app-btn-primary lemonsqueezy-button" data-product-name="{{ $prodName }}">
               {{- cond (eq $lang "es") "Obtener Pack" "Get Pack" -}}
             </a>
           </div>

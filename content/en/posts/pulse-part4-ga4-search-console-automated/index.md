@@ -1,6 +1,6 @@
 ---
 title: "Automated GA4 and Search Console: Measuring Organic ROI and Content Freshness"
-date: 2026-12-09
+date: 2026-11-29
 draft: false
 cover:
   image: "cover.png"
@@ -30,11 +30,11 @@ In this fourth installment of the **Datalaria Pulse** series, we tackle the anal
 ### 🗺️ Datalaria Pulse Series Roadmap
 To understand how each piece of the *Content Ops as Code* architecture fits together, this series consists of 5 structured installments:
 
-1. ⚪ **Part 1**: [Goodbye Notion: Datalaria Pulse and Editorial Governance that Writes Itself from Git](/en/posts/pulse-part1-goodbye-notion-content-ops/).
-2. ⚪ **Part 2**: [From Front Matter to Index: Pydantic v2, Bilingual Parity, and CI/CD Automation](/en/posts/pulse-part2-pydantic-indexer-bilingual-parity-ci/).
-3. ⚪ **Part 3**: [Executive Table, Kanban Board, and Monthly Calendar in React 19 over a Static Index](/en/posts/pulse-part3-react-dashboard-table-kanban-calendar/).
-4. 🟢 **Part 4 (This article)**: Automated Google Analytics 4 and Search Console: Measuring the Organic ROI of Every Post, App, and Kit.
-5. ⚪ **Part 5**: [Editorial Operations for Docs, SEO, and Marketing Teams: From Notion to Excel in 5 Minutes and AI Agent Factory](/en/posts/pulse-part5-excel-kit-notion-migration-teams/).
+1. ⚪ **Part 1**: [Goodbye Notion: Datalaria Pulse and Editorial Governance that Writes Itself from Git](/en/posts/pulse-part1-goodbye-notion-content-ops/)
+2. ⚪ **Part 2**: [From Front Matter to Index: Pydantic v2, Bilingual Parity, and CI/CD Automation](/en/posts/pulse-part2-pydantic-indexer-bilingual-parity-ci/)
+3. ⚪ **Part 3**: [Executive Table, Kanban Board, and Monthly Calendar in React 19 over a Static Index](/en/posts/pulse-part3-react-dashboard-table-kanban-calendar/)
+4. 🟢 **Part 4 (This article)**: Automated Google Analytics 4 and Search Console: Measuring the Organic ROI of Every Post, App, and Kit
+5. ⚪ **Part 5 (Wed Dec 02)**: Editorial Operations for Docs, SEO, and Marketing Teams: From Notion to Excel in 5 Minutes and AI Agent Factory
 
 ---
 
@@ -88,7 +88,7 @@ flowchart TD
 {{< /mermaid >}}
 
 ### Strategic Connections with Sister Frameworks:
-- **[S&OP Engineering and Data Hygiene](/en/posts/sop_ingenieria-higiene-datos/):** Just as slow-moving physical inventory ties up operational working capital in manufacturing, obsolete technical documentation erodes domain authority and brand credibility. Telemetry-driven freshness monitoring applies *inventory turnover principles* directly to digital content assets.
+- **[S&OP Engineering and Data Hygiene](/en/posts/sop_engineering-data-hygiene/):** Just as slow-moving physical inventory ties up operational working capital in manufacturing, obsolete technical documentation erodes domain authority and brand credibility. Telemetry-driven freshness monitoring applies *inventory turnover principles* directly to digital content assets.
 - **[Rational Decision-Making & Prioritization Frameworks](/en/posts/decision-making-prioritization-quantitative-framework/):** The 4-quadrant opportunity matrix replaces subjective editorial planning with deterministic multicriteria evaluation: instead of guessing what to draft next week, engineering resources are dynamically allocated to high-leverage content assets.
 - **[Capital Budgeting & Business Case DCF/NPV Analysis](/en/posts/financial-business-case-npv-irr/):** Evaluating content return requires treating in-depth technical authoring as a capital asset (*CapEx* of engineering hours) and monitoring its long-term residual equity.
 - **[Spec-Driven Development (SDD)](/en/posts/sdd_vs_vibe_coding/):** Confidentiality constraints are enforced as formal architectural invariants (`INV-PULSE-1` and `INV-PULSE-2`), verified by automated pytest test suites prior to every deployment.
@@ -192,7 +192,7 @@ def test_publish_public_relativization_and_security():
 
 ## 4. Automated Content Health Diagnosis: Detecting Decay, Freshness, and Hidden Gems
 
-Once telemetry is aggregated and relative indices computed, the Pulse analytics engine classifies every asset into a **4-Quadrant Opportunity Matrix**.
+Once telemetry is aggregated and relative indices computed, the Pulse analytics engine classifies every asset into a **5-Quadrant Opportunity Matrix** (powered by the `ops/pulse/impact_analyzer.py` engine, auditing *Quick Wins CTR* and detecting *Monetization Orphans*).
 
 Projected dynamically within the **Health & ROI** tab of the web dashboard, this matrix guides immediate editorial action:
 
@@ -202,6 +202,7 @@ Projected dynamically within the **Health & ROI** tab of the web dashboard, this
 | **2. Organic Traffic Engines** | `rank_pct >= 80` | High-performing cornerstone assets capturing the vast majority of qualified search traffic. | Conversion optimization: insert targeted calls-to-action (CTAs) directing readers toward relevant Apps and downloadable Kits. |
 | **3. Refresh Candidates** | `age > 180 days` and `trend_30d < 0` | Freshness decay: mature documentation losing organic relevance against newly published external articles. | Update architectural code snippets, refresh benchmarks to modern standards (e.g. Node 24, Python 3.13), and republish. |
 | **4. Monetization Gaps** | `rank_pct >= 60` and `associated_kits == 0` | Deeply visited technical assets attracting senior engineering leaders but lacking any downloadable resource. | Commercial priority: design a specialized Excel template or standalone toolkit to sell via Lemon Squeezy. |
+| **5. Release Editorial Sync (Scriba)** | `release_type == version_upgrade` without post | *Silent Release Alert*: application or kit upgrade released to production without editorial coverage. | Immediately prompt `E03` to draft an update post or `E05` to dispatch a Brevo 2.0 release newsletter. |
 
 ---
 
@@ -218,9 +219,9 @@ $$V_{\text{equity}} = N_{\text{words}} \times C_{\text{market}}$$
 
 Where:
 - $N_{\text{words}}$ represents the verified count of indexed technical prose across production content (excluding boilerplate front matter, licenses, and repetitive code blocks).
-- $C_{\text{market}}$ is the institutional consulting benchmark rate for specialized engineering documentation (conservatively pegged at **$0.10 USD per word** for high-depth mathematical, operational, and software engineering material).
+- $C_{\text{market}}$ is the institutional consulting benchmark rate for specialized engineering documentation (conservatively pegged at **\$0.10 USD per word** for high-depth mathematical, operational, and software engineering material).
 
-For a mature technical publication such as Datalaria—comprising more than **214,800 technical words** across over one hundred paired bilingual assets—our Content Equity exceeds **$21,480 USD**. This shifts the executive perspective: authoring and maintaining deep documentation is not an expense, but a capital accumulation on the company's balance sheet.
+For a mature technical publication such as Datalaria—comprising more than **214,800 technical words** across over one hundred paired bilingual assets—our Content Equity exceeds **\$21,480 USD**. This shifts the executive perspective: authoring and maintaining deep documentation is not an expense, but a capital accumulation on the company's balance sheet.
 
 ---
 

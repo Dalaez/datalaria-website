@@ -35,3 +35,4 @@ Ejecutar la **publicación y distribución omnicanal desatendida y segura** tras
 - `[USER-FIX]` **Respeto a Listas Separadas en Brevo:** Enviar correos en español exclusivamente a la lista #3 y en inglés a la lista #4 para evitar confusiones de idioma.
 - `[ENV-FIX]` **Modo DRY_RUN Obligatorio:** Ejecutar siempre una simulación previa con `DRY_RUN=true` antes de enviar campañas reales a producción.
 - `[USER-FIX]` **Despacho Controlado Fase B Post-OK:** Solo tras el OK del usuario y verificar `HTTP 200` en Netlify, disparar `gh workflow run autopilot.yml` explícito por idioma (`ES` y `EN`) y actualizar `IMPACT_REPORT.md`.
+- `[ENV-FIX]` **Categoría Obligatoria en CoderLegion:** Verificar que `CODERLEGION_CATEGORY_ID` (o `coderlegion.category_id` en `social_pack.yaml`) tenga valor válido antes de llamar a `/api/v1/posts` para evitar rechazo `HTTP 422`.

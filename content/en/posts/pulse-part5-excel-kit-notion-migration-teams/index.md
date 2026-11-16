@@ -1,6 +1,6 @@
 ---
-title: "Editorial Operations for Docs, SEO, and Marketing Teams: From Notion to Excel in 5 Minutes"
-date: 2026-12-16
+title: "Editorial Operations for SEO and Marketing Teams: From Notion to Excel in 5 Minutes"
+date: 2026-12-02
 draft: false
 cover:
   image: "cover.png"
@@ -91,9 +91,9 @@ flowchart TD
 {{< /mermaid >}}
 
 ### Strategic Parity with Core Datalaria Frameworks:
-- **[S&OP Engineering & Data Hygiene](/en/posts/sop_ingenieria-higiene-datos/):** Editorial catalog management is fundamentally identical to inventory management in physical supply chains. Standardizing attributes (editorial SKUs, controlled taxonomies, closed status enums) eliminates data corruption and dead stock.
-- **[Rational Decision-Making & Quantitative Prioritization](/en/posts/toma-decisiones-priorizacion-framework-cuantitativo/):** The 4-quadrant opportunity matrix and executive filters inside our Excel tracker apply multi-criteria weighted scoring to determine what to publish or refresh each week.
-- **[Financial Business Case NPV / IRR](/en/posts/business-case-financiero-van-tir/):** SaaS tools like Notion Team or Airtable Plus incur cumulative recurring expenses (120 € to 240 € per user annually). Content Ops as Code with perpetual ownership slashes Total Cost of Ownership (TCO) by over 98%, breaking even within the first month.
+- **[S&OP Engineering & Data Hygiene](/en/posts/sop_engineering-data-hygiene/):** Editorial catalog management is fundamentally identical to inventory management in physical supply chains. Standardizing attributes (editorial SKUs, controlled taxonomies, closed status enums) eliminates data corruption and dead stock.
+- **[Rational Decision-Making & Quantitative Prioritization](/en/posts/decision-making-prioritization-quantitative-framework/):** The 4-quadrant opportunity matrix and executive filters inside our Excel tracker apply multi-criteria weighted scoring to determine what to publish or refresh each week.
+- **[Financial Business Case NPV / IRR](/en/posts/financial-business-case-npv-irr/):** SaaS tools like Notion Team or Airtable Plus incur cumulative recurring expenses (120 € to 240 € per user annually). Content Ops as Code with perpetual ownership slashes Total Cost of Ownership (TCO) by over 98%, breaking even within the first month.
 - **[Spec-Driven Development (SDD)](/en/posts/sdd_vs_vibe_coding/):** The AI content factory rejects undisciplined writing (*Vibe Writing*); it operates under strict specifications where every article must pass formal Pydantic data contracts before being accepted into production.
 
 ---
@@ -351,20 +351,38 @@ sequenceDiagram
 
 ## 6. Conclusions and Completion of the Datalaria Pulse Series
 
-Over the course of five weeks and five exhaustive engineering essays, we have elevated content management from an ad-hoc craft into a **predictable engineering discipline**:
+Over the course of three weeks and five exhaustive engineering essays, we have elevated content management from an ad-hoc craft into a **predictable engineering discipline**:
 
 1. **[Part 1 — Goodbye Notion: Content Ops as Code](/en/posts/pulse-part1-goodbye-notion-content-ops/):** Established Git as the single source of truth, removing external third-party database silos.
-2. **[Part 2 — From Front Matter to Index: Pydantic v2 and CI/CD](/en/posts/pulse-part2-pydantic-indexer-bilingual-parity-ci/):** Built the deterministic validation engine that indexes 140 technical assets in milliseconds with 100% bilingual parity.
+2. **[Part 2 — From Front Matter to Index: Pydantic v2 and CI/CD](/en/posts/pulse-part2-pydantic-indexer-bilingual-parity-ci/):** Built the deterministic validation engine that indexes 183 technical assets in milliseconds with 100% bilingual parity.
 3. **[Part 3 — Executive Table, Kanban, and Calendar in React 19](/en/posts/pulse-part3-react-dashboard-table-kanban-calendar/):** Designed a zero-latency interactive web cockpit over static JSON manifests.
-4. **[Part 4 — Automated GA4 & Search Console: Health & ROI](/en/posts/pulse-part4-ga4-search-console-automated/):** Integrated official Google APIs via Service Accounts, normalizing metrics into a Base-100 index and valuing content equity at \21,480€.
+4. **[Part 4 — Automated GA4 & Search Console: Health & ROI](/en/posts/pulse-part4-ga4-search-console-automated/):** Integrated official Google APIs via Service Accounts, normalizing metrics into a Base-100 index and valuing content equity at 21,480 €.
 5. **Part 5 — From Notion to Excel in 5 Minutes, Supabase Pro, and AI Agents:** United content and engineering teams with our standalone kit and paved the way for autonomous cloud-scale production.
 
 Modern content operations no longer require a trade-off between the flexibility of a spreadsheet and the resilience of a code repository. With **Datalaria Pulse**, your entire technical catalog is authored, audited, and monetized from the exact same source of truth.
 
 ---
 
+{{< product-card
+  id="pack-pulse"
+  title="Datalaria Pulse: Content Ops & Notion Migration Kit"
+  category="Software, AI & SDD"
+  price="19€"
+  original_price="39€"
+  badge="📊 Content Ops as Code Standard"
+  icon="📊"
+  preview_image="pulse-preview-en.png"
+  preview_caption="Deliverables preview: 6-sheet Master Excel Template (.xlsx), dual Power Query M connectors, and standalone Python migration/scanner CLI scripts."
+  deliverables="6-Sheet Master Excel Workbook|Dual Power Query M Connectors|Notion Migration CLI + PDF Guide"
+  features="Master Excel Template (.xlsx) with 6 structured sheets (Taxonomy, Assets, Kanban, Metrics, and Executive Dashboard)|Dual Power Query M connectors: 1-click synchronization from Notion CSV exports and Git public.json manifests|Deterministic Python migration engine (migrate_notion.py) with direct multi-format export|Universal zero-dependency repository scanner (pulse_repo_scanner.py) for automated CI/CD audits|Executive 4-page A4 PDF guide and canonical data dictionary specification"
+  checkout_url="/en/resources/#pack-pulse"
+  button_text="Download Commercial Kit (.ZIP) • 19€"
+>}}
+The downloadable commercial bundle includes the **Master Excel Template (.xlsx)** with 6 structured sheets and strict cell validations, the **Dual Power Query M Connectors** to sync Notion CSV exports and local Git repositories in 1 click, the **Python Migration CLI (migrate_notion.py)**, the zero-dependency **Universal Repository Scanner (pulse_repo_scanner.py)**, and the **Executive PDF Guide**.
+{{< /product-card >}}
+
 > ### Upgrade to Content Ops as Code
 > 
 > - **Experience the Live Web Cockpit:** Explore the live deployment of [Datalaria Pulse on the Web](/apps/pulse/) (Interactive Sandbox mode) with interactive Table, Kanban, Calendar, and Health views.
-> - **Download the Datalaria Pulse Kit:** Get the kit at **[Datalaria Pulse Kit in Resources](/en/resources/#pack-pulse)** (Excel 2016/365 Master Template, Power Query M connector, and 5-minute migration CLI to streamline your editorial workflow today.
+> - **Download the Datalaria Pulse Kit:** Get the kit at **[Datalaria Pulse Kit in Resources](/en/resources/#pack-pulse)** (Excel 2016/365 Master Template, Power Query M connector, and 5-minute migration CLI) to streamline your editorial workflow today.
 > - **Read the Official App Documentation:** Review the complete architecture and roadmap in the [Datalaria Pulse Technical App Specification](/en/apps/pulse/).

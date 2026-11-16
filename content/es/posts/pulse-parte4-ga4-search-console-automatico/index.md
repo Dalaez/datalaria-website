@@ -1,6 +1,6 @@
 ---
 title: "Google Analytics 4 y Search Console Automatizados: Cómo Medir el ROI Orgánico del Blog"
-date: 2026-12-09
+date: 2026-11-29
 draft: false
 cover:
   image: "cover.png"
@@ -30,11 +30,11 @@ En este cuarto artículo de la serie **Datalaria Pulse** abordamos la capa anal�
 ### 🗺️ Hoja de Ruta de la Serie Datalaria Pulse
 Para entender cómo encaja cada pieza del rompecabezas de *Content Ops as Code*, esta serie se compone de 5 entregas estructuradas:
 
-1. ⚪ **Parte 1**: [Adiós Notion: Datalaria Pulse o la Gestión Editorial que se Escribe Sola desde Git](/es/posts/pulse-parte1-adios-notion-content-ops/).
-2. ⚪ **Parte 2**: [Del Front Matter al Índice: Pydantic v2, Paridad Bilingüe y Automatización con CI/CD](/es/posts/pulse-parte2-indexador-pydantic-paridad-ci/).
-3. ⚪ **Parte 3**: [Tabla Ejecutiva, Tablero Kanban y Calendario Mensual en React 19 sobre un Índice Estático](/es/posts/pulse-parte3-tablero-react-tabla-kanban-calendario/).
-4. 🟢 **Parte 4 (Este artículo)**: Google Analytics 4 y Search Console Automatizados: Cómo Medir el ROI Orgánico de Cada Post, App y Kit.
-5. ⚪ **Parte 5**: [Gestión Editorial para Equipos de Documentación, SEO y Marketing: de Notion a Excel en 5 minutos y Fábrica con IA](/es/posts/pulse-parte5-kit-excel-migracion-notion-equipos/).
+1. ⚪ **Parte 1**: [Adiós Notion: Datalaria Pulse o la Gestión Editorial que se Escribe Sola desde Git](/es/posts/pulse-parte1-adios-notion-content-ops/)
+2. ⚪ **Parte 2**: [Del Front Matter al Índice: Pydantic v2, Paridad Bilingüe y Automatización con CI/CD](/es/posts/pulse-parte2-indexador-pydantic-paridad-ci/)
+3. ⚪ **Parte 3**: [Tabla Ejecutiva, Tablero Kanban y Calendario Mensual en React 19 sobre un Índice Estático](/es/posts/pulse-parte3-tablero-react-tabla-kanban-calendario/)
+4. 🟢 **Parte 4 (Este artículo)**: Google Analytics 4 y Search Console Automatizados: Cómo Medir el ROI Orgánico de Cada Post, App y Kit
+5. ⚪ **Parte 5 (Mié 02/12)**: Gestión Editorial para Equipos de Documentación, SEO y Marketing: de Notion a Excel en 5 minutos y Fábrica con IA
 
 ---
 
@@ -192,7 +192,7 @@ def test_publish_public_relativization_and_security():
 
 ## 4. Diagnóstico Automatizado de Salud Editorial: Detección de *Decay*, *Freshness* y Joyas SEO
 
-Una vez recopilada la telemetría y calculados los índices relativos, el motor de analítica de Pulse categoriza automáticamente cada activo en una **Matriz de 4 Cuadrantes Estratégicos**.
+Una vez recopilada la telemetría y calculados los índices relativos, el motor de analítica de Pulse categoriza automáticamente cada activo en una **Matriz de 5 Cuadrantes Estratégicos** (impulsada por el motor cuantitativo `ops/pulse/impact_analyzer.py`, que audita además los *Quick Wins de CTR* y detecta *Huérfanos de Monetización*).
 
 Esta matriz se proyecta visualmente en la pestaña **Salud & ROI** de la aplicación web y orienta directamente las tareas del equipo editorial:
 
@@ -202,6 +202,7 @@ Esta matriz se proyecta visualmente en la pestaña **Salud & ROI** de la aplicac
 | **2. Motores de Tráfico** | `rank_pct >= 80` | Activos de alto rendimiento que concentran la mayor atracción de audiencia técnica del portal. | Optimizar conversión: insertar llamadas a la acción (*CTAs*) directas hacia los Kits y Apps relacionados. |
 | **3. Candidatos a Refresh** | `antigüedad > 180 días` y `trend_30d < 0` | Obsolescencia documental (*content decay*): artículos maduros cuya tracción comienza a erosionarse frente a competidores más recientes. | Renovar ejemplos prácticos, actualizar referencias a estándares vigentes (ej. Node 24, Python 3.13) y relanzar. |
 | **4. Brecha de Monetización** | `rank_pct >= 60` y `kits_asociados == 0` | Artículos de alto interés profesional que atraen a comités y directivos pero no ofrecen ningún recurso descargable. | Oportunidad comercial prioritaria: diseñar una plantilla Excel o un kit interactivo para Lemon Squeezy. |
+| **5. Sincronización de Releases (Scriba)** | `release_type == version_upgrade` sin post | Alerta de *Release Silenciosa*: versión evolutiva de app o kit desplegada en producción sin artículo asociado. | Encargar de inmediato a `E03` la redacción de un post evolutivo o a `E05` la difusión de novedades en Brevo 2.0. |
 
 ---
 
@@ -218,9 +219,9 @@ $$V_{\text{patrimonio}} = N_{\text{palabras}} \times C_{\text{mercado}}$$
 
 Donde:
 - $N_{\text{palabras}}$ representa el recuento exhaustivo de palabras técnicas indexadas en los artículos de producción (excluyendo front matter, licencias y código auxiliar repetitivo).
-- $C_{\text{mercado}}$ es la tarifa de referencia de mercado para consultoría técnica y redacción especializada de ingeniería (fijada conservadoramente en **$0,10 USD por palabra** para documentación matemática, de arquitectura de software y operaciones).
+- $C_{\text{mercado}}$ es la tarifa de referencia de mercado para consultoría técnica y redacción especializada de ingeniería (fijada conservadoramente en **\$0,10 USD por palabra** para documentación matemática, de arquitectura de software y operaciones).
 
-Para un catálogo consolidado como el de Datalaria, con más de **214.800 palabras técnicas** estructuradas en más de un centenar de entregas bilingües, el patrimonio editorial supera los **$21.480 USD**. Esta métrica transforma la percepción del catálogo: cada nuevo artículo o actualización no es un coste, sino un incremento patrimonial duradero en el balance de activos intangibles de la empresa.
+Para un catálogo consolidado como el de Datalaria, con más de **214.800 palabras técnicas** estructuradas en más de un centenar de entregas bilingües, el patrimonio editorial supera los **\$21.480 USD**. Esta métrica transforma la percepción del catálogo: cada nuevo artículo o actualización no es un coste, sino un incremento patrimonial duradero en el balance de activos intangibles de la empresa.
 
 ---
 

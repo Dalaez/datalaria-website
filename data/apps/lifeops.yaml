@@ -8,6 +8,7 @@ app_url: /apps/lifeops/
 demo_url: /apps/lifeops/#/?mock=true
 source_spec: specs/apps/lifeops/spec.md
 current_version: v1.1.1
+launch_date: "2026-09-19"
 
 title:
   es: "LifeOps"
@@ -120,6 +121,7 @@ releases:
     date: "2026-10-27"
     state: released
     type: feature
+    editorial_post: app-lifeops_part6_analytics_dashboard_360
     title:
       es: "Motor Analítico 360° interactivo, comparativas inter-periodo (Δ%) y mapa de consistencia"
       en: "Interactive 360° Analytics Engine, period-over-period comparisons (Δ%) and consistency heatmap"

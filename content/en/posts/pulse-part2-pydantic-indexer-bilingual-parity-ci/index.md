@@ -1,6 +1,6 @@
 ---
-title: "From Front Matter to Index: Pydantic v2, Bilingual ES/EN Parity, and GitHub Actions Automation"
-date: 2026-11-25
+title: "From Front Matter to Index: Pydantic v2, ES/EN Parity and GitHub Actions Automation"
+date: 2026-11-22
 draft: false
 cover:
   image: "cover.png"
@@ -30,11 +30,11 @@ In this article, we break down the internal engineering behind **Datalaria Pulse
 ### 🗺️ Datalaria Pulse Series Roadmap
 To understand how each piece of the *Content Ops as Code* architecture fits together, this series consists of 5 structured installments:
 
-1. ⚪ **Part 1**: [Goodbye Notion: Datalaria Pulse and Editorial Governance that Writes Itself from Git](/en/posts/pulse-part1-goodbye-notion-content-ops/).
-2. 🟢 **Part 2 (This article)**: From Front Matter to Index: Pydantic v2, Bilingual Parity, and CI/CD Automation.
-3. ⚪ **Part 3**: [Executive Table, Kanban Board, and Monthly Calendar in React 19 over a Static Index](/en/posts/pulse-part3-react-dashboard-table-kanban-calendar/).
-4. ⚪ **Part 4**: [Automated Google Analytics 4 and Search Console: Measuring the Organic ROI of Every Post, App, and Kit](/en/posts/pulse-part4-ga4-search-console-automated/).
-5. ⚪ **Part 5**: [Editorial Operations for Docs, SEO, and Marketing Teams: From Notion to Excel in 5 Minutes and AI Agent Factory](/en/posts/pulse-part5-excel-kit-notion-migration-teams/).
+1. ⚪ **Part 1**: [Goodbye Notion: Datalaria Pulse and Editorial Governance that Writes Itself from Git](/en/posts/pulse-part1-goodbye-notion-content-ops/)
+2. 🟢 **Part 2 (This article)**: From Front Matter to Index: Pydantic v2, Bilingual Parity, and CI/CD Automation
+3. ⚪ **Part 3 (Wed Nov 25)**: Executive Table, Kanban Board, and Monthly Calendar in React 19 over a Static Index
+4. ⚪ **Part 4 (Sun Nov 29)**: Automated Google Analytics 4 and Search Console: Measuring the Organic ROI of Every Post, App, and Kit
+5. ⚪ **Part 5 (Wed Dec 02)**: Editorial Operations for Docs, SEO, and Marketing Teams: From Notion to Excel in 5 Minutes and AI Agent Factory
 
 ---
 
@@ -51,7 +51,7 @@ The central objective of **Phase 5 at Datalaria** is to replace manual administr
 ### Specific Objectives for this Article 2:
 - Design the canonical `ContentAsset` entity in Pydantic v2 and examine the architectural advantages over plain dictionaries and Pydantic v1.
 - Implement the two critical security invariants: private asset isolation (`INV-PULSE-1`) and base-100 analytics relativization (`INV-PULSE-2`).
-- Explain the deterministic bipartite graph matching algorithm that pairs over 135 assets using `translationKey` and taxonomy mapping.
+- Explain the deterministic bipartite graph matching algorithm that pairs 183 assets (118 bilingual articles, 47 SemVer application releases 🚀 APP / ⚡ APP vX.Y, and 18 B2B Kit editions 📦 KIT under invariants `INV-PULSE-1..8`) using `translationKey` and taxonomy mapping.
 - Configure the GitHub Actions workflow that detects broken references, computes SEO scores (0 to 100), and outputs the verified `public.json` dataset consumed by the web UI.
 
 ---
@@ -83,7 +83,7 @@ flowchart TD
 {{< /mermaid >}}
 
 1. **The Contract Philosophy of [LifeOps](/en/apps/lifeops/):** In our LifeOps backend, we demonstrated that database persistence must be guarded by strict server-side validation to prevent corrupted states. Pulse applies this principle to the file system: Markdown files represent our persistent database, and Pydantic acts as our Object-Document Mapper (ODM).
-2. **Objective Evaluation in the [Executive Decision Suite](/en/posts/executive-decision-packs-quantitative-framework/):** Rather than evaluating article quality through subjective opinions, Pulse implements a quantitative SEO scoring algorithm (0 to 100) auditing deterministic criteria: optimal title length, meta description presence, word count thresholds, and full linguistic parity.
+2. **Objective Evaluation in the [Executive Decision Suite](/en/posts/decision-making-prioritization-quantitative-framework/):** Rather than evaluating article quality through subjective opinions, Pulse implements a quantitative SEO scoring algorithm (0 to 100) auditing deterministic criteria: optimal title length, meta description presence, word count thresholds, and full linguistic parity.
 3. **Data Hygiene in [S&OP Engineering](/en/posts/sop_engineering-data-hygiene/):** Just as supply chain forecasting filters out ERP transactional noise before training demand models, our Python scanner strips source code blocks, Hugo shortcodes (`app-ref`, `mermaid`), and raw HTML to compute true **lexical depth** and technical reading time.
 4. **Deterministic Validation under [Spec-Driven Development (SDD)](/en/posts/sdd_vs_vibe_coding/):** In compliance with Datalaria's technical constitution, no content asset is merged into production without passing automated `pytest` test suites. Development is guided not by intuition (*vibe coding*), but by auditable specifications.
 
@@ -194,11 +194,11 @@ Our `ops/pulse/build_index.py` engine resolves this pairing through a three-stag
 {{< mermaid >}}
 flowchart LR
     subgraph ES ["1. Spanish Scan (/content/es/)"]
-        P_ES["Post ES\ntranslationKey: pulse-part2\ndate: 2026-11-25"]
+        P_ES["Post ES\ntranslationKey: pulse-part2\ndate: 2026-11-22"]
     end
 
     subgraph EN ["2. English Scan (/content/en/)"]
-        P_EN["Post EN\ntranslationKey: pulse-part2\ndate: 2026-11-25"]
+        P_EN["Post EN\ntranslationKey: pulse-part2\ndate: 2026-11-22"]
     end
 
     subgraph GRAPH ["3. Graph Resolution & Parity State"]
@@ -218,7 +218,7 @@ flowchart LR
 - **`missing_en` / `missing_es`:** An asset is published in one language, but completely missing from the target counterpart directory.
 - **`outdated_en` / `outdated_es`:** Both files exist, but the Spanish original has received significant Git revisions (recent commits modifying over 100 words) that have not yet been synchronized into the English version.
 
-This classification powers the **Bilingual Parity Card** in the Datalaria Pulse cockpit (currently standing at `137 / 137 assets, 100% parity`), alerting the team if a draft threatens international consistency.
+This classification powers the **Bilingual Parity Card** in the Datalaria Pulse cockpit (currently standing at `183 / 183 assets, 100% parity`), alerting the team if a draft threatens international consistency.
 
 ---
 

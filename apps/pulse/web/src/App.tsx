@@ -33,7 +33,8 @@ import {
   Cloud,
   LogIn,
   LogOut,
-  CheckCircle2
+  CheckCircle2,
+  BookOpen
 } from 'lucide-react';
 import type { User } from '@supabase/supabase-js';
 import { ContentAsset, PublicPulseDataset, AssetType, AssetStatus } from './types';
@@ -103,6 +104,10 @@ export function App() {
       ? 'https://datalaria.com/es/recursos/#pack-pulse'
       : 'https://datalaria.com/en/resources/#pack-pulse';
   const portalHomeUrl = lang === 'es' ? 'https://datalaria.com/es/' : 'https://datalaria.com/en/';
+  const appFichaUrl =
+    lang === 'es'
+      ? 'https://datalaria.com/es/apps/pulse/'
+      : 'https://datalaria.com/en/apps/pulse/';
 
   const trackPulseEvent = (eventName: string, params?: Record<string, any>) => {
     try {
@@ -143,10 +148,23 @@ export function App() {
     return null;
   });
 
-  // Filtros interactivos
+  // Filtros interactivos con soporte de URL Deep-Linking
   const [search, setSearch] = useState('');
-  const [typeFilter, setTypeFilter] = useState<string>('all');
-  const [statusFilter, setStatusFilter] = useState<string>('all');
+  const [typeFilter, setTypeFilter] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      const p = new URLSearchParams(window.location.search).get('type');
+      if (p === 'post' || p === 'app' || p === 'kit' || p === 'suite' || p === 'mega_bundle') return p;
+    }
+    return 'all';
+  });
+  const [statusFilter, setStatusFilter] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      const s = new URLSearchParams(window.location.search).get('status');
+      if (s === 'published' || s === 'scheduled' || s === 'draft' || s === 'idea' || s === 'review') return s;
+    }
+    return 'all';
+  });
+  const [includeVersionReleases, setIncludeVersionReleases] = useState<boolean>(true);
 
   // Ordenación interactiva de la tabla
   const [sortField, setSortField] = useState<SortField>('publish_date');
@@ -801,9 +819,19 @@ export function App() {
     URL.revokeObjectURL(url);
   };
 
+  // Conteo de versiones evolutivas disponibles
+  const versionReleasesCount = useMemo(() => {
+    return currentAssets.filter((a) => a.release_type === 'version_upgrade' || a.release_type === 'kit_edition').length;
+  }, [currentAssets]);
+
   // Filtrado reactivo de activos
   const filteredAssets = useMemo(() => {
     return currentAssets.filter((a) => {
+      // Filtro de versiones evolutivas (upgrades y kit editions)
+      if (!includeVersionReleases && (a.release_type === 'version_upgrade' || a.release_type === 'kit_edition')) {
+        return false;
+      }
+
       // Búsqueda
       const q = search.toLowerCase();
       const matchSearch =
@@ -826,7 +854,7 @@ export function App() {
 
       return matchSearch && matchType && matchStatus;
     });
-  }, [currentAssets, search, typeFilter, statusFilter]);
+  }, [currentAssets, search, typeFilter, statusFilter, includeVersionReleases]);
 
   // Ordenación de la tabla
   const sortedAssets = useMemo(() => {
@@ -1137,7 +1165,14 @@ export function App() {
       (a) => a.asset_type === 'post' && a.status === 'published' && !a.related_app && !a.related_kit
     );
 
-    return { gems, cashCows, decay, monetizationGap };
+    // 5. Sincronización Editorial de Releases (Scriba): Apps y Kits respaldados con post o guía editorial
+    const releaseSync = currentAssets.filter((a) => {
+      const isRelease = a.asset_type === 'app' || a.asset_type === 'kit' || a.asset_type === 'suite' || a.asset_type === 'mega_bundle';
+      if (!isRelease) return false;
+      return Boolean(a.editorial_post_slug || a.related_app || a.related_kit || a.release_type === 'initial_launch' || a.release_type === 'kit_launch');
+    });
+
+    return { gems, cashCows, decay, monetizationGap, releaseSync };
   }, [currentAssets]);
 
   // Calendario mensual: funciones de navegación
@@ -1222,6 +1257,46 @@ export function App() {
     );
   };
 
+  // Render Badge de Tipo con Trazabilidad SemVer (Hito P2.3)
+  const renderAssetTypeBadge = (a: ContentAsset, fontSize: string = '0.75rem') => {
+    if (a.asset_type === 'app') {
+      const isUpgrade = a.release_type === 'version_upgrade';
+      const versionLabel = a.version ? (a.version.startsWith('v') ? a.version : `v${a.version}`) : '';
+      return (
+        <span
+          className={`badge badge-app ${isUpgrade ? 'badge-upgrade' : ''}`}
+          style={{ fontSize, display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}
+          title={isUpgrade ? t.badge_app_upgrade : t.badge_app_launch}
+        >
+          <span>{isUpgrade ? '⚡' : '🚀'}</span>
+          <span>{isUpgrade ? `APP ${versionLabel}` : `APP ${versionLabel ? `(${versionLabel})` : ''}`}</span>
+        </span>
+      );
+    }
+
+    if (a.asset_type === 'kit' || a.asset_type === 'suite' || a.asset_type === 'mega_bundle') {
+      const isEdition = a.release_type === 'kit_edition';
+      const versionLabel = a.version ? (a.version.startsWith('v') ? a.version : `v${a.version}`) : '';
+      const typeLabel = a.asset_type === 'mega_bundle' ? 'BUNDLE' : a.asset_type.toUpperCase();
+      return (
+        <span
+          className={`badge badge-${a.asset_type} ${isEdition ? 'badge-edition' : ''}`}
+          style={{ fontSize, display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}
+          title={isEdition ? t.badge_kit_edition : typeLabel}
+        >
+          <span>{a.asset_type === 'kit' ? '📦' : '🏛️'}</span>
+          <span>{`${typeLabel} ${versionLabel ? `(${versionLabel})` : ''}`}</span>
+        </span>
+      );
+    }
+
+    return (
+      <span className={`badge badge-${a.asset_type}`} style={{ fontSize }}>
+        {a.asset_type.toUpperCase()}
+      </span>
+    );
+  };
+
   return (
     <div className="app-container">
       {/* HEADER */}
@@ -1250,7 +1325,44 @@ export function App() {
               <Activity size={24} />
             </div>
             <div>
-              <div className="brand-title">Datalaria Pulse</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', flexWrap: 'wrap' }}>
+                <span className="brand-title">Datalaria Pulse</span>
+                <span
+                  style={{
+                    fontSize: '0.75rem',
+                    fontFamily: 'var(--font-mono, monospace)',
+                    fontWeight: 700,
+                    padding: '0.12rem 0.45rem',
+                    background: 'rgba(6, 182, 212, 0.15)',
+                    color: '#22d3ee',
+                    border: '1px solid rgba(6, 182, 212, 0.35)',
+                    borderRadius: '9999px'
+                  }}
+                >
+                  v1.0.0
+                </span>
+                <a
+                  href={appFichaUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-ghost"
+                  style={{
+                    padding: '0.2rem 0.5rem',
+                    fontSize: '0.78rem',
+                    color: '#94a3b8',
+                    textDecoration: 'none',
+                    border: '1px solid rgba(148, 163, 184, 0.2)',
+                    borderRadius: '6px',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.3rem'
+                  }}
+                  title={t.nav_app_details_tooltip}
+                >
+                  <BookOpen size={13} color="#06b6d4" />
+                  <span>{t.nav_app_details}</span>
+                </a>
+              </div>
               <div className="brand-sub">{t.brand_subtitle}</div>
             </div>
           </div>
@@ -1860,6 +1972,23 @@ export function App() {
                   </button>
                 </div>
               </div>
+
+              {/* Filtro Historial de Versiones y Releases (Hito P2.3) */}
+              {versionReleasesCount > 0 && (
+                <div className="filter-pill-block">
+                  <div className="pills-group">
+                    <button
+                      className={`pill-item ${includeVersionReleases ? 'active' : ''}`}
+                      onClick={() => setIncludeVersionReleases((prev) => !prev)}
+                      title={t.toggle_include_releases}
+                    >
+                      <span>🔀</span>
+                      <span>{t.toggle_include_releases}</span>
+                      <span className="pill-count">{versionReleasesCount}</span>
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         )}
@@ -2507,9 +2636,7 @@ export function App() {
                           </div>
                         </td>
                         <td>
-                          <span className={`badge badge-${a.asset_type}`}>
-                            {a.asset_type.toUpperCase()}
-                          </span>
+                          {renderAssetTypeBadge(a)}
                         </td>
                         <td>
                           <span className={`badge badge-${a.status}`}>
@@ -2668,8 +2795,8 @@ export function App() {
                           return !a.publish_date || a.publish_date >= '2026-09-15';
                         }
                         if (colStatus === 'scheduled') {
-                          // Próximo mes programado (hasta 2026-11-30)
-                          return !a.publish_date || a.publish_date <= '2026-11-30';
+                          // Próximo horizonte programado (hasta 2027-02-28 para lanzamientos y kits)
+                          return !a.publish_date || a.publish_date <= '2027-02-28';
                         }
                         return true;
                       });
@@ -2714,10 +2841,8 @@ export function App() {
                               title={t.modal_preview_confirm}
                             >
                               <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.5rem', alignItems: 'center' }}>
-                                <div style={{ display: 'flex', gap: '0.35rem', alignItems: 'center' }}>
-                                  <span className={`badge badge-${a.asset_type}`} style={{ fontSize: '0.6875rem' }}>
-                                    {a.asset_type.toUpperCase()}
-                                  </span>
+                                <div style={{ display: 'flex', gap: '0.35rem', alignItems: 'center', flexWrap: 'wrap' }}>
+                                  {renderAssetTypeBadge(a, '0.6875rem')}
                                   {a.is_cloud_idea && (
                                     <span className="badge badge-cloud" style={{ fontSize: '0.6875rem', background: 'rgba(6, 182, 212, 0.15)', color: '#22d3ee', border: '1px solid rgba(6, 182, 212, 0.4)' }}>
                                       ☁️ {t.badge_cloud_idea}
@@ -2849,25 +2974,40 @@ export function App() {
                         const isScheduled = a.status === 'scheduled';
                         const isIdea = a.status === 'idea';
                         const isDraft = a.status === 'draft';
-                        const chipClass = isScheduled
+                        const chipStatusClass = isScheduled
                           ? 'chip-scheduled'
                           : isIdea
                           ? 'chip-idea'
                           : isDraft
                           ? 'chip-draft'
                           : 'chip-published';
-                        const chipIcon = isScheduled ? '🔵' : isIdea ? '💡' : isDraft ? '📝' : '🟢';
+
+                        let chipTypeClass = '';
+                        let chipIcon = isScheduled ? '🔵' : isIdea ? '💡' : isDraft ? '📝' : '🟢';
+
+                        if (a.asset_type === 'app') {
+                          chipTypeClass = 'chip-type-app';
+                          chipIcon = a.release_type === 'version_upgrade' ? '⚡' : '🚀';
+                        } else if (a.asset_type === 'kit' || a.asset_type === 'suite' || a.asset_type === 'mega_bundle') {
+                          chipTypeClass = 'chip-type-kit';
+                          chipIcon = (a.asset_type === 'suite' || a.asset_type === 'mega_bundle') ? '🏛️' : '📦';
+                        }
+
+                        const versionStr = a.version ? (a.version.startsWith('v') ? a.version : `v${a.version}`) : null;
 
                         return (
                           <div
                             key={a.id}
-                            className={`day-chip ${chipClass}`}
-                            title={`${title} (${a.status.toUpperCase()})`}
+                            className={`day-chip ${chipStatusClass} ${chipTypeClass}`}
+                            title={`${title} (${a.status.toUpperCase()}${a.version ? ` · ${a.version}` : ''})`}
                             onClick={() => setSelectedAssetForModal(a)}
-                            style={{ cursor: 'pointer' }}
+                            style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.25rem' }}
                           >
-                            <span style={{ fontSize: '0.65rem' }}>{chipIcon}</span>
-                            <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{title || a.id}</span>
+                            <span style={{ fontSize: '0.65rem', flexShrink: 0 }}>{chipIcon}</span>
+                            <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{title || a.id}</span>
+                            {versionStr && (
+                              <span className="chip-version-badge">{versionStr}</span>
+                            )}
                           </div>
                         );
                       })}
@@ -2970,6 +3110,20 @@ export function App() {
                   </div>
                   <p style={{ fontSize: '0.8rem', color: '#9ca3af', lineHeight: 1.45 }}>
                     {t.quadrant_gap_desc}
+                  </p>
+                </div>
+
+                {/* Cuadrante 5: Sincronización Editorial de Releases (Scriba - Hito P2.3) */}
+                <div className="quadrant-card">
+                  <div className="quadrant-header">
+                    <CheckCircle2 size={18} color="#10b981" />
+                    <span style={{ color: '#10b981' }}>{t.quadrant_releases_title}</span>
+                  </div>
+                  <div className="quadrant-count" style={{ color: '#10b981' }}>
+                    {healthMatrix.releaseSync.length}
+                  </div>
+                  <p style={{ fontSize: '0.8rem', color: '#9ca3af', lineHeight: 1.45 }}>
+                    {t.quadrant_releases_desc}
                   </p>
                 </div>
               </div>
@@ -3078,7 +3232,73 @@ export function App() {
                   {selectedAssetForModal.language_parity === 'complete' ? t.badge_parity_complete : t.badge_parity_missing}
                 </span>
               </div>
+              {selectedAssetForModal.version && (
+                <div>
+                  <span style={{ color: '#9ca3af', display: 'block', fontSize: '0.72rem', textTransform: 'uppercase', fontWeight: 700 }}>
+                    Versión SemVer
+                  </span>
+                  <span
+                    className="badge badge-app"
+                    style={{ marginTop: '0.25rem', fontFamily: 'var(--font-mono)', display: 'inline-block' }}
+                  >
+                    {selectedAssetForModal.version} {selectedAssetForModal.release_type ? `(${selectedAssetForModal.release_type})` : ''}
+                  </span>
+                </div>
+              )}
             </div>
+
+            {/* Vínculo a Post Guía o App Asociada (Hito P2.3) */}
+            {(selectedAssetForModal.editorial_post_slug || selectedAssetForModal.related_app) && (
+              <div
+                style={{
+                  background: 'rgba(6, 182, 212, 0.08)',
+                  border: '1px solid rgba(6, 182, 212, 0.25)',
+                  padding: '0.75rem 1rem',
+                  borderRadius: '8px',
+                  fontSize: '0.82rem',
+                  color: '#22d3ee',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.75rem',
+                  flexWrap: 'wrap'
+                }}
+              >
+                {selectedAssetForModal.editorial_post_slug && (
+                  <a
+                    href={`/es/posts/${selectedAssetForModal.editorial_post_slug}/`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      color: '#38bdf8',
+                      textDecoration: 'none',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.35rem',
+                      fontWeight: 600
+                    }}
+                  >
+                    📖 Post Guía: {selectedAssetForModal.editorial_post_slug} <ExternalLink size={13} />
+                  </a>
+                )}
+                {selectedAssetForModal.related_app && (
+                  <a
+                    href={`/apps/${selectedAssetForModal.related_app}/`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      color: '#34d399',
+                      textDecoration: 'none',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.35rem',
+                      fontWeight: 600
+                    }}
+                  >
+                    🚀 App Oficial: {selectedAssetForModal.related_app} <ExternalLink size={13} />
+                  </a>
+                )}
+              </div>
+            )}
 
             {selectedAssetForModal.status === 'scheduled' && (
               <div

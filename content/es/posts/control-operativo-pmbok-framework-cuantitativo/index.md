@@ -1,7 +1,8 @@
 ---
 title: "Control Operativo & PMBOK Cuantitativo: El Framework Integral de 5 Pilares para Directores de Operaciones"
-date: 2026-11-29
+date: 2026-11-30
 draft: false
+translationKey: "operational-control-pmbok-quantitative-framework"
 category: "Estrategia y Operaciones"
 categories: ["Control Operativo", "Gestión de Proyectos", "PMO Corporativa", "Cadena de Suministro", "Estrategia y Operaciones"]
 tags: ["Control Operativo", "PMBOK", "Matriz RACI", "AMFE", "FMEA", "Estimación PERT", "EVM", "Valor Ganado", "Stock de Seguridad", "ROP", "Curva S", "Working Capital", "C-Level", "PMO"]
@@ -118,11 +119,11 @@ flowchart TD
 
 | Pilar Operativo | Herramienta Clave Datalaria | Pregunta Crítica ante el Board | Algoritmo / Modelo Central | Entregable Ejecutivo Decisivo |
 | :--- | :--- | :--- | :--- | :--- |
-| **1. Gobernanza** | [Matriz RACI Cuantitativa](/posts/matriz-raci-balance-carga/) | *¿Quién responde con su firma de cada entrega y qué perfil técnico está al borde del colapso?* | $\sum A_i = 1$ (Unicidad)<br>$W_k = \sum (w_A A + w_R R + w_C C + w_I I)$ | Matriz de Carga de FTEs con semáforos de saturación y plan de rebalanceo |
-| **2. Prevención** | [Matriz de Riesgos & AMFE](/posts/matriz-riesgos-amfe-fmea/) | *¿Qué modos de fallo operativos paralizarán el negocio y cuál es el ROI de mitigarlos?* | $\text{NPR} = S \times O \times D$<br>$\text{CER} = \frac{\Delta E(L)}{C_{\text{control}}}$ | Curva Pareto de NPR y Matriz de Criticidad AIAG-VDA de Acciones Preventivas |
-| **3. Plazos** | [Estimación PERT de 3 Puntos](/posts/estimacion-pert-3-puntos/) | *¿Cuál es la probabilidad matemática real de cumplir la fecha prometida al cliente o al mercado?* | $\mu = \frac{o + 4m + p}{6}$<br>$Z = \frac{T_d - \mu_{\text{proj}}}{\sigma_{\text{proj}}}$ | Curva de Densidad Normal de Fechas y Dimensionamiento de Project Buffers (TOC) |
-| **4. Finanzas** | [Cuadro de Mando EVM](/posts/cuadro-mando-evm-valor-ganado/) | *¿Estamos generando valor físico al ritmo del gasto y cuánto costará exactamente terminar el proyecto?* | $CPI = \frac{EV}{AC}, \; SPI = \frac{EV}{PV}$<br>$EAC = \frac{BAC}{CPI}$ | Curva S de Valor Ganado (PV, EV, AC), radar de índices y abanico predictivo EAC |
-| **5. Suministros** | [Stock de Seguridad & ROP](/posts/calculadora-stock-seguridad-rop/) | *¿Cuánto capital circulante tenemos inmovilizado en el almacén y cuál es el riesgo de rotura de stock?* | $SS = Z \sqrt{L \sigma_d^2 + d^2 \sigma_L^2}$<br>$ROP = (d \cdot L) + SS$ | Gráfico Diente de Sierra interactivo y Curva de Trade-off Working Capital vs. Nivel de Servicio |
+| **1. Gobernanza** | [Matriz RACI Cuantitativa](/es/posts/matriz-raci-balance-carga/) | *¿Quién responde con su firma de cada entrega y qué perfil técnico está al borde del colapso?* | $\sum A_i = 1$ (Unicidad)<br>$W_k = \sum (w_A A + w_R R + w_C C + w_I I)$ | Matriz de Carga de FTEs con semáforos de saturación y plan de rebalanceo |
+| **2. Prevención** | [Matriz de Riesgos & AMFE](/es/posts/matriz-riesgos-amfe-fmea/) | *¿Qué modos de fallo operativos paralizarán el negocio y cuál es el ROI de mitigarlos?* | $\text{NPR} = S \times O \times D$<br>$\text{CER} = \frac{\Delta E(L)}{C_{\text{control}}}$ | Curva Pareto de NPR y Matriz de Criticidad AIAG-VDA de Acciones Preventivas |
+| **3. Plazos** | [Estimación PERT de 3 Puntos](/es/posts/estimacion-pert-3-puntos/) | *¿Cuál es la probabilidad matemática real de cumplir la fecha prometida al cliente o al mercado?* | $\mu = \frac{o + 4m + p}{6}$<br>$Z = \frac{T_d - \mu_{\text{proj}}}{\sigma_{\text{proj}}}$ | Curva de Densidad Normal de Fechas y Dimensionamiento de Project Buffers (TOC) |
+| **4. Finanzas** | [Cuadro de Mando EVM](/es/posts/cuadro-mando-evm-valor-ganado/) | *¿Estamos generando valor físico al ritmo del gasto y cuánto costará exactamente terminar el proyecto?* | $CPI = \frac{EV}{AC}, \; SPI = \frac{EV}{PV}$<br>$EAC = \frac{BAC}{CPI}$ | Curva S de Valor Ganado (PV, EV, AC), radar de índices y abanico predictivo EAC |
+| **5. Suministros** | [Stock de Seguridad & ROP](/es/posts/calculadora-stock-seguridad-rop/) | *¿Cuánto capital circulante tenemos inmovilizado en el almacén y cuál es el riesgo de rotura de stock?* | $SS = Z \sqrt{L \sigma_d^2 + d^2 \sigma_L^2}$<br>$ROP = (d \cdot L) + SS$ | Gráfico Diente de Sierra interactivo y Curva de Trade-off Working Capital vs. Nivel de Servicio |
 
 ---
 
@@ -182,7 +183,7 @@ El Comité de Dirección no visualiza una tabla interminable de letras; visualiz
 > [!TIP]
 > **Profundiza en la Metodología RACI Cuantitativa:**
 > Para acceder a la derivación matemática completa, las fórmulas de balance de FTEs y la plantilla interactiva en Excel y PowerPoint, consulta nuestra guía monográfica:
-> 🔗 **[Matriz RACI Cuantitativa: Balance de Carga Operativa, Unicidad de Accountable y Detección de Cuellos de Botella](/posts/matriz-raci-balance-carga/)**
+> 🔗 **[Matriz RACI Cuantitativa: Balance de Carga Operativa, Unicidad de Accountable y Detección de Cuellos de Botella](/es/posts/matriz-raci-balance-carga/)**
 
 ---
 
@@ -228,7 +229,7 @@ El Consejo de Administración recibe una **Curva Pareto de NPR Acumulado** (demo
 > [!TIP]
 > **Profundiza en la Metodología AMFE / FMEA Cuantitativa:**
 > Para acceder a las tablas maestras de puntuación AIAG-VDA, la lógica de Action Priority (AP) y el modelo de cálculo de NPR en Excel/Sheets, consulta nuestra guía monográfica:
-> 🔗 **[Matriz de Riesgos Cuantitativa & AMFE / FMEA: De la Intuición Cualitativa al Número de Prioridad de Riesgo (NPR)](/posts/matriz-riesgos-amfe-fmea/)**
+> 🔗 **[Matriz de Riesgos Cuantitativa & AMFE / FMEA: De la Intuición Cualitativa al Número de Prioridad de Riesgo (NPR)](/es/posts/matriz-riesgos-amfe-fmea/)**
 
 ---
 
@@ -293,7 +294,7 @@ Una **Curva de Densidad Normal de Fechas de Cierre**, donde el Director de Opera
 > [!TIP]
 > **Profundiza en la Metodología PERT Estocástica:**
 > Para acceder a la derivación matemática paso a paso, los algoritmos de crashing presupuestario y el simulador de distribución Beta en Excel/Sheets, consulta nuestra guía monográfica:
-> 🔗 **[Estimación PERT de 3 Puntos Estocástica: De la Ilusión Determinista a la Certidumbre Estadística de Cronograma](/posts/estimacion-pert-3-puntos/)**
+> 🔗 **[Estimación PERT de 3 Puntos Estocástica: De la Ilusión Determinista a la Certidumbre Estadística de Cronograma](/es/posts/estimacion-pert-3-puntos/)**
 
 ---
 
@@ -359,7 +360,7 @@ La célebre **Curva S Ejecutiva**, que superpone las tres trayectorias acumulada
 > [!TIP]
 > **Profundiza en la Metodología EVM / Curva S:**
 > Para acceder a la modelización completa de la Curva S, las fórmulas de EAC multivariante y el cuadro de mando automatizado en Excel y PowerPoint, consulta nuestra guía monográfica:
-> 🔗 **[Cuadro de Mando EVM: Valor Ganado, Curva S y Proyecciones EAC de Grado Consejo de Administración](/posts/cuadro-mando-evm-valor-ganado/)**
+> 🔗 **[Cuadro de Mando EVM: Valor Ganado, Curva S y Proyecciones EAC de Grado Consejo de Administración](/es/posts/cuadro-mando-evm-valor-ganado/)**
 
 ---
 
@@ -417,7 +418,7 @@ El interactivo **Gráfico Diente de Sierra (*Sawtooth Wave*)**, que modela el ci
 > [!TIP]
 > **Profundiza en la Metodología de Stock de Seguridad & ROP:**
 > Para acceder a la modelización estocástica completa, las fórmulas de convolución multivariante y el simulador de inventario Diente de Sierra en Excel y PowerPoint, consulta nuestra guía monográfica:
-> 🔗 **[Calculadora de Stock de Seguridad & ROP: Optimización de Inventario y Working Capital de Grado Consejo de Administración](/posts/calculadora-stock-seguridad-rop/)**
+> 🔗 **[Calculadora de Stock de Seguridad & ROP: Optimización de Inventario y Working Capital de Grado Consejo de Administración](/es/posts/calculadora-stock-seguridad-rop/)**
 
 ---
 

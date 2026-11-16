@@ -37,6 +37,7 @@ from ops.pulse.models import (
     OpportunityType,
     PulseImpactReport,
     QuickWinItem,
+    ReleaseEditorialImpactItem,
 )
 
 ROOT_DIR = Path(__file__).resolve().parent.parent.parent
@@ -543,6 +544,177 @@ def prioritize_backlog(backlog_file: Path = BACKLOG_PATH) -> List[BacklogPriorit
     return prioritized
 
 
+KIT_POST_MAPPING: Dict[str, List[str]] = {
+    "pack-dafo": ["dafo-cuantitativo-matriz-came", "quantitative-swot-tows-matrix"],
+    "pack-porter": ["5-fuerzas-porter-cuantitativas", "quantitative-porter-5-forces"],
+    "pack-pestel": ["matriz-pestel-cuantitativa", "quantitative-pestel-matrix"],
+    "pack-bcg": ["matriz-bcg-dinamica", "dynamic-bcg-matrix"],
+    "pack-mckinsey": ["matriz-mckinsey-ge", "mckinsey-ge-matrix"],
+    "pack-dar": ["matriz-dar-cuantitativa", "quantitative-dar-matrix"],
+    "pack-rice": ["matriz-rice-ice-priorizacion", "rice-ice-prioritization-matrix"],
+    "pack-business-case": ["business-case-financiero-van-tir", "financial-business-case-npv-irr"],
+    "pack-raci": ["matriz-raci-balance-carga", "quantitative-raci-workload-matrix"],
+    "pack-amfe": ["matriz-riesgos-amfe-fmea", "quantitative-risk-matrix-fmea"],
+    "pack-pert": ["estimacion-pert-3-puntos", "stochastic-3-point-pert-estimation"],
+    "pack-evm": ["cuadro-mando-evm-valor-ganado", "earned-value-management-evm-dashboard"],
+    "pack-stock": ["calculadora-stock-seguridad-rop", "safety-stock-reorder-point-calculator", "safety-stock-rop-calculator"],
+    "pack-sdd": ["sdd_vs_vibe_coding", "agentes_ia_operativa_sdd"],
+    "suite-01": ["estrategia-corporativa-mba-framework-cuantitativo", "corporate-strategy-mba-quantitative-framework"],
+    "suite-02": ["toma-decisiones-priorizacion-framework-cuantitativo", "decision-making-prioritization-quantitative-framework"],
+    "suite-03": ["control-operativo-pmbok-framework-cuantitativo", "operational-control-pmbok-quantitative-framework"],
+    "suite-sdd": ["sdd_vs_vibe_coding", "agentes_ia_operativa_sdd", "helix-parte1-especificacion-adn-escuadron-12-agentes"],
+    "mega-bundle": ["executive-decision-packs-framework-cuantitativo", "executive-decision-packs-quantitative-framework", "packs-decisiones-ejecutivas-framework-cuantitativo"],
+}
+
+
+def _parse_asset_date(d: Any) -> Optional[date]:
+    if not d:
+        return None
+    if isinstance(d, date):
+        return d
+    if isinstance(d, datetime):
+        return d.date()
+    try:
+        return datetime.fromisoformat(str(d)).date()
+    except Exception:
+        return None
+
+
+def analyze_release_editorial_impact(
+    all_assets: List[Dict[str, Any]],
+    metrics: Dict[str, Dict[str, Any]]
+) -> List[ReleaseEditorialImpactItem]:
+    """
+    Evalúa determinísticamente el impacto y la cobertura editorial de los lanzamientos
+    de aplicaciones, versiones evolutivas y kits/suites comerciales B2B.
+    Identifica releases silenciosas sin post de actualización o artículos sin salida comercial.
+    """
+    posts = [a for a in all_assets if a.get("asset_type") == "post"]
+    eval_assets = [
+        a for a in all_assets
+        if a.get("asset_type") in ("app", "kit", "suite", "mega_bundle")
+    ]
+
+    impact_items: List[ReleaseEditorialImpactItem] = []
+
+    for item in eval_assets:
+        aid = item["id"]
+        atype = item["asset_type"]
+        version = str(item.get("version") or "v1.0.0")
+        rel_type = str(item.get("release_type") or "initial_launch")
+        title_es = item.get("title_es") or aid
+        pub_d = _parse_asset_date(item.get("publish_date"))
+        status = item.get("status", "published")
+        parent_slug = item.get("parent_asset_id") or item.get("slug") or aid
+        editorial_post_slug = item.get("editorial_post_slug")
+
+        # Cruce de posts vinculados
+        matched_posts: List[Dict[str, Any]] = []
+        for p in posts:
+            pid = p.get("id")
+            pslug = p.get("slug")
+
+            # 1. Match directo con artículo editorial designado para la release
+            if editorial_post_slug and (pid == editorial_post_slug or pslug == editorial_post_slug):
+                matched_posts.append(p)
+                continue
+
+            # 2. Match por app y series
+            if atype == "app":
+                if p.get("related_app") == parent_slug or p.get("related_app") == aid:
+                    matched_posts.append(p)
+                elif parent_slug and parent_slug in str(pslug).lower():
+                    matched_posts.append(p)
+                elif p.get("series") and parent_slug and parent_slug.replace("-", "") in str(p.get("series")).lower().replace(" ", ""):
+                    matched_posts.append(p)
+
+            # 3. Match por kit / suite
+            elif atype in ("kit", "suite", "mega_bundle"):
+                guides = KIT_POST_MAPPING.get(aid, []) + KIT_POST_MAPPING.get(item.get("slug", ""), [])
+                if pid in guides or pslug in guides:
+                    matched_posts.append(p)
+                elif p.get("related_kit") and (aid in str(p.get("related_kit")) or str(item.get("slug")) in str(p.get("related_kit"))):
+                    matched_posts.append(p)
+
+        # Desduplicar posts manteniendo el orden
+        seen_pids = set()
+        unique_posts: List[Dict[str, Any]] = []
+        for p in matched_posts:
+            if p["id"] not in seen_pids:
+                seen_pids.add(p["id"])
+                unique_posts.append(p)
+
+        linked_count = len(unique_posts)
+        views_30d = sum(int(metrics.get(p["id"], {}).get("ga4_views_30d", 0)) for p in unique_posts)
+
+        pub_post_dates = [
+            _parse_asset_date(p.get("publish_date"))
+            for p in unique_posts
+            if p.get("status") == "published" and _parse_asset_date(p.get("publish_date"))
+        ]
+        latest_post_date = max(pub_post_dates) if pub_post_dates else None
+        has_scheduled_posts = any(p.get("status") == "scheduled" for p in unique_posts)
+
+        # Determinar estado de cobertura editorial
+        if status == "scheduled":
+            if has_scheduled_posts:
+                cov_status = "scheduled_coverage"
+                action = f"Campaña programada: coordinar con E06 sindicación omnicanal para el estreno el {pub_d}."
+            else:
+                cov_status = "pending_launch"
+                action = f"Lanzamiento programado el {pub_d}: coordinar con E01/E03 redacción anticipada de tutorial o post guía."
+        else:
+            if rel_type == "version_upgrade":
+                if editorial_post_slug:
+                    ed_post_obj = next(
+                        (p for p in posts if p.get("id") == editorial_post_slug or p.get("slug") == editorial_post_slug),
+                        None
+                    )
+                    if ed_post_obj and ed_post_obj.get("status") == "published":
+                        cov_status = "covered"
+                        action = f"Versión {version} cubierta con artículo propio publicado ({editorial_post_slug})."
+                    else:
+                        cov_status = "silent_release_alert"
+                        action = f"Alerta de release silenciosa: versión {version} en producción pero artículo {editorial_post_slug} no publicado."
+                else:
+                    if not latest_post_date or (pub_d and pub_d > latest_post_date):
+                        cov_status = "silent_release_alert"
+                        action = f"Alerta de release silenciosa: versión {version} ({pub_d}) posterior al último post ({latest_post_date}); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0."
+                    else:
+                        cov_status = "covered"
+                        action = f"Versión {version} respaldada por los artículos de la serie."
+            else:
+                if linked_count > 0 and latest_post_date:
+                    cov_status = "covered"
+                    action = f"Activo cubierto con {linked_count} post(s) en producción ({views_30d} vistas/30d)."
+                else:
+                    cov_status = "silent_release_alert"
+                    action = "Alerta: activo en producción sin artículo guía o tutorial en el blog; planificar post en E01."
+
+        impact_items.append(
+            ReleaseEditorialImpactItem(
+                asset_id=aid,
+                asset_type=atype,
+                version=version,
+                release_type=rel_type,
+                title_es=title_es,
+                publish_date=pub_d,
+                status=status,
+                linked_posts_count=linked_count,
+                latest_post_date=latest_post_date,
+                editorial_views_30d=views_30d,
+                editorial_coverage_status=cov_status,
+                recommended_scriba_action=action,
+            )
+        )
+
+    # Ordenar: silent_release_alert primero, luego pending_launch, scheduled_coverage, covered
+    status_order = {"silent_release_alert": 0, "pending_launch": 1, "scheduled_coverage": 2, "covered": 3}
+    impact_items.sort(key=lambda x: (status_order.get(x.editorial_coverage_status, 4), -(x.editorial_views_30d)))
+
+    return impact_items
+
+
 def generate_impact_report_markdown(report: PulseImpactReport) -> str:
     """Genera el informe ejecutivo completo en Markdown firmado por E02."""
     now_str = report.generated_at.strftime("%Y-%m-%d %H:%M UTC")
@@ -633,14 +805,37 @@ $$\\text{Editorial ROI Score} = 0.40 \\times \\text{Demanda SEO} + 0.35 \\times 
     for i, b in enumerate(report.prioritized_backlog, 1):
         md += f"| **#{i}** | `{b.id}` | {b.title_es} | {b.category} | `{b.target_kit_or_app}` | {b.seo_demand_score:.0f} | {b.monetization_fit_score:.0f} | {b.ecosystem_synergy_score:.0f} | **{b.editorial_roi_score:.1f}** |\n"
 
+    md += f"""
+---
+
+## 6. Impacto Editorial de Lanzamientos de Apps, Versiones y Kits B2B (Gobernanza Scriba)
+
+> **Invariantes SDD:** Supervisión determinista de estrenos (`initial_launch`, `kit_launch`) y versiones evolutivas (`version_upgrade`, `kit_edition`).  
+> **Balance General:** {len(report.release_editorial_impact)} activos evaluados · **{report.silent_releases_count} alerta(s) de release silenciosa** · {sum(1 for r in report.release_editorial_impact if r.editorial_coverage_status == 'scheduled_coverage')} cobertura(s) programada(s) · {sum(1 for r in report.release_editorial_impact if r.editorial_coverage_status == 'covered')} cubierto(s) al 100%.
+
+| Activo / ID | Tipo & Versión | Fecha Estreno | Estado Portal | Posts | Último Post | Vistas 30d | Cobertura Scriba | Acción Recomendada |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+"""
+    for r in report.release_editorial_impact:
+        badge = {
+            "silent_release_alert": "🔴 Alerta Silenciosa",
+            "pending_launch": "🟡 Lanzamiento Pendiente",
+            "scheduled_coverage": "🟢 Cobertura Programada",
+            "covered": "✅ Cubierto"
+        }.get(r.editorial_coverage_status, r.editorial_coverage_status)
+        pub_d_str = str(r.publish_date) if r.publish_date else "Pendiente"
+        latest_str = str(r.latest_post_date) if r.latest_post_date else "Ninguno"
+        md += f"| `{r.asset_id}` | `{r.release_type}` ({r.version}) | {pub_d_str} | `{r.status}` | {r.linked_posts_count} | {latest_str} | {r.editorial_views_30d} | {badge} | {r.recommended_scriba_action} |\n"
+
     md += """
 ---
 
-## 6. Plan de Acción Inmediato y Relevo Editorial
+## 7. Plan de Acción Inmediato y Relevo Editorial
 
 1. **Relevo a `E04-bilingual-seo-editor`:** Actualizar en `content/es/posts/` y `content/en/posts/` los títulos y descripciones de los **Top 12 Quick Wins**, eliminando el truncamiento en SERP y subiendo su `seo_audit.score` a 100/100.
 2. **Relevo a `E05-content-monetizer`:** Inyectar en los **15 Huérfanos de Monetización** los shortcodes `{{< helix-waitlist >}}`, `{{< app-ref slug="..." >}}` y las tarjetas de producto de Suite 01 / Suite 02.
-3. **Programación en Autopilot 2.0 (Hito 7.3):** Priorizar el desarrollo y redacción de la idea **#1** (`idea-claude-subagents-sdd-contracts`, ROI 94.9) y la idea **#2** (`idea-monte-carlo-capex-risk`, ROI 88.0).
+3. **Relevo a `E01-editorial-orchestrator` / `E03-technical-writer`:** Atender las **alertas de releases silenciosas**, planificando el artículo técnico evolutivo de `Weather v3.3.0` (Hito 2.7 Parte 5) y las notas de release para `Neon Snake v2.3.1`, `Mazo Mágico v2.1.0` y `Ábaco Arcade v2.3.0` en Brevo Newsletter 2.0.
+4. **Programación en Autopilot 2.0 (Hito 7.3):** Priorizar el desarrollo y redacción de la idea **#1** (`idea-claude-subagents-sdd-contracts`, ROI 94.9) y la idea **#2** (`idea-monte-carlo-capex-risk`, ROI 88.0).
 """
     return md
 
@@ -695,6 +890,8 @@ def run_impact_analysis() -> PulseImpactReport:
     orphans = detect_monetization_orphans(published_posts, metrics, p75_views)
     decay_alerts = detect_decay_alerts(published_posts, metrics)
     prioritized_bg = prioritize_backlog(BACKLOG_PATH)
+    release_impact = analyze_release_editorial_impact(all_assets, metrics)
+    silent_count = sum(1 for r in release_impact if r.editorial_coverage_status == "silent_release_alert")
 
     report = PulseImpactReport(
         version="1.0.0",
@@ -711,6 +908,8 @@ def run_impact_analysis() -> PulseImpactReport:
         monetization_orphans=orphans,
         decay_alerts=decay_alerts,
         prioritized_backlog=prioritized_bg,
+        release_editorial_impact=release_impact,
+        silent_releases_count=silent_count,
     )
 
     # 1. Guardar impact_report.json privado (INV-PULSE-6)

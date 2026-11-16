@@ -405,9 +405,15 @@ def _transform_shortcodes(
 
     def replace_youtube(match: re.Match[str]) -> str:
         attrs = _parse_shortcode_attrs(match.group(1))
-        video_id = attrs.get("id") or _first_positional_arg(match.group(1))
+        raw_video = (attrs.get("id") or _first_positional_arg(match.group(1)) or "").strip()
+        if not raw_video:
+            return ""
+        video_id = raw_video.rstrip("/").split("/")[-1].split("v=")[-1].split("&")[0].split("?")[0]
         if not video_id:
             return ""
+        if platform == "devto":
+            return f"{{% youtube {video_id} %}}"
+
         alt_text = "Ver vídeo en YouTube" if lang == "es" else "Watch video on YouTube"
         return (
             f"[![{alt_text}](https://img.youtube.com/vi/{video_id}/hqdefault.jpg)]"

@@ -82,10 +82,21 @@ Incluye casos reales listos para comité.
     assert "https://datalaria.com/es/posts/dafo-cuantitativo-matriz-came/" in rendered
     assert "Mini Kit" in rendered
     assert "Pack Completo" in rendered
-    assert "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg" in rendered
-    assert "https://www.youtube.com/watch?v=abc123XYZ" in rendered
+    assert "{% youtube dQw4w9WgXcQ %}" in rendered
+    assert "{% youtube abc123XYZ %}" in rendered
     assert "https://www.buymeacoffee.com/datalaria" in rendered
     assert "*Publicado originalmente en [Datalaria](" in rendered
+
+    cl_youtube = transform_markdown_for_syndication(
+        "{{< youtube dQw4w9WgXcQ >}}",
+        "content/en/posts/demo-shortcodes/index.md",
+        platform="coderlegion",
+        lang="en",
+        slug="demo-shortcodes",
+        canonical_url="https://datalaria.com/en/posts/demo-shortcodes/",
+    )
+    assert "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg" in cl_youtube
+    assert "https://www.youtube.com/watch?v=dQw4w9WgXcQ" in cl_youtube
 
 
 def test_images_with_titles_root_paths_and_code_fence_protection() -> None:

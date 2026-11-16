@@ -136,7 +136,15 @@
       </a>
     {{- end -}}
     {{- with $app.related_products -}}
+      {{- $firstProd := index . 0 -}}
       {{- $recUrl := cond (eq $lang "es") "/es/recursos/" "/en/resources/" -}}
+      {{- if $firstProd -}}
+        {{- if reflect.IsMap $firstProd.checkout_url -}}
+          {{- $recUrl = index $firstProd.checkout_url $lang | default $firstProd.checkout_url.es | default $recUrl -}}
+        {{- else if $firstProd.checkout_url -}}
+          {{- $recUrl = $firstProd.checkout_url -}}
+        {{- end -}}
+      {{- end -}}
       <a href="{{ $recUrl }}" class="app-card-btn app-card-btn-b2b">
         {{- cond (eq $lang "es") "Suite B2B ⚡" "B2B Suite ⚡" -}}
       </a>

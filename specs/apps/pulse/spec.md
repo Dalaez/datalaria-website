@@ -1,7 +1,7 @@
 # Especificación Técnica SDD: Datalaria Pulse (`pulse`)
 
 > **ID de Especificación:** `SPEC-APP-PULSE`  
-> **Versión:** `1.2.0`  
+> **Versión:** `1.3.0`  
 > **Estado:** `APPROVED`  
 > **Propietario de Dominio:** Datalaria (Operations Engineering & Applied AI)  
 > **Ubicación del Código Fuente:** `apps/pulse/web/` (Frontend SPA) · `ops/pulse/` (Motor Python ETL + Kit Factory)  
@@ -55,7 +55,7 @@ flowchart LR
     MD & AP & KT & BL --> IDX --> FULL["data/pulse/private/index.json\n(Ignorado en static/)"]
     GA & GSC --> MET --> MPRIV["data/pulse/private/metrics.json\n(Métricas Absolutas)"]
     FULL & MPRIV --> PUB --> PUBLIC["static/apps/pulse/data/public.json\n(Solo public + Métricas Relativas)"]
-    FULL & MPRIV --> XLS --> PRIVXLS["packages/pulse/Pulse_Private_Tracker.xlsx\n(Uso Interno Datalaria)"]
+    FULL & MPRIV --> XLS --> PRIVXLS["data/pulse/private/Pulse_Private_Tracker.xlsx\n(Uso Interno Datalaria - Fuera de packages/)"]
     XLS --> KITZIP["packages/pulse/Datalaria_Pulse_Kit.zip\n(Entregable Lemon Squeezy)"]
 
     PUBLIC --> WEB["Pulse Web App (React + Vite + TS)\n/apps/pulse/ (Tabla · Kanban · Calendario · Salud)"]
@@ -123,6 +123,10 @@ Cada fila o tarjeta representa un **activo único bilingüe** (`post`, `app` o `
 | `social_channels` | `list[str]` | Manual/Autopilot (`ops.social` — ej. `["linkedin", "x"]`) | ✅ | `Social Networks` |
 | `metrics_relative` | `RelativeMetrics \| None` | Automático (`publish_public.py` a partir de GA4 + GSC) | ✅ | `Performance Notes` |
 | `metrics_absolute` | `AbsoluteMetrics \| None` | Automático (`sync_metrics.py`: visitas, usuarios, tiempo, impresiones, clics, CTR, posición media) | ❌ **(Prohibido en `public.json`)** | *(No existía)* |
+| `version` | `str \| None` | Automático (`current_version`, versión de release o kit) | ✅ | *(No existía)* |
+| `release_type` | `Literal["article", "initial_launch", "version_upgrade", "kit_launch", "kit_edition"] \| None` | Automático (clasificación canónica del evento de publicación) | ✅ | *(No existía)* |
+| `parent_asset_id` | `str \| None` | Automático (ID del activo raíz en version upgrades o kit editions) | ✅ | *(No existía)* |
+| `editorial_post_slug` | `str \| None` | Automático (slug del artículo del blog que acompaña la release) | ✅ | *(No existía)* |
 
 > **Columnas eliminadas respecto a Notion:** `Related SEO Strategy` (100% vacía y redundante con `seo_audit` + `campaign`).
 
@@ -166,6 +170,8 @@ Cada fila o tarjeta representa un **activo único bilingüe** (`post`, `app` o `
 - **INV-PULSE-4 (Firewall `static/` — Constitución Art. 2):** `static/apps/pulse/` solo puede contener HTML, JS, CSS, imágenes y `data/public.json`. Cero archivos `.py`, `.yaml`, `.xlsx` o `.env`.
 - **INV-PULSE-5 (Compatibilidad Universal del Excel del Kit):** El libro `Pulse_Content_Ops.xlsx` debe generarse usando fórmulas compatibles con Excel 2016/2019/365 y Google Sheets (`COUNTIFS`, `SUMIFS`, `INDEX/MATCH`), sin depender de funciones exclusivas de insiders para garantizar que cualquier comprador B2B pueda abrirlo sin errores `#NAME?`.
 - **INV-PULSE-6 (Determinismo y Privacidad del Motor de Impacto SEO/GA4):** `ops/pulse/impact_analyzer.py` cruza métricas privadas (`metrics.json`, `monthly_metrics.json`, `index.json`) y exporta `data/pulse/private/impact_report.json` con `visibility: "private"`. Queda terminantemente prohibido alojar `impact_report.json` o métricas absolutas dentro de `static/`.
+- **INV-PULSE-7 (Coherencia Cronológica de Lanzamientos de Apps):** Ninguna app en incubación o en desarrollo utiliza fechas de versiones internas `v0.x` (`releases` con `state: "internal"`) como fecha de estreno público. El activo raíz de toda app toma obligatoriamente `launch_date` como su `publish_date`, asegurando que no aparezcan hitos de desarrollo pasados en el calendario público antes de su fecha de lanzamiento oficial al mercado.
+- **INV-PULSE-8 (Trazabilidad y Normalización de Kits/Suites):** Todo Kit, Suite y Mega Bundle en `data/pulse/kits.yaml` debe contar con `publish_date` no nulo, versión semántica normalizada (por defecto `v1.0.0`) y un estado normalizado exclusivamente entre `"published"` o `"scheduled"`. Ningún activo puede ser exportado al índice público con estado ambiguo (`"coming"` queda prohibido en `public.json`).
 
 ---
 
@@ -265,3 +271,5 @@ Para dar por completado cada hito de la Fase 5, deben superarse con código `0` 
 | `v0.2.0` | 2026-10-29 | ⚡ Pro Cloud | Arquitectura Pro Cloud sobre Supabase cluster datalaria-core (esquema pulse, RLS estricto auth.uid() = user_id, Auth en React SPA, sincronización bidireccional Web ↔ Localhost, usuario demo confirmado y suite pytest 18/18 verde — Hito 5.7 / ADR-015). | *Completado* |
 | `v0.3.0` | 2026-11-03 | 🛡️ Operación Crisol | Auditoría integral del escuadrón Datalaria Helix (Hito 6.3): `design.md`, re-empaquetado del Kit en 3 carpetas numeradas, exportador Excel directo `.xlsx` en `migrate_notion.py`, Guía Ejecutiva PDF (`GUIA_EJECUTIVA_PULSE.pdf`), dataset de muestra `sample_notion_export.csv`, conectores duales Power Query M, evolución UX/PLG en React SPA (diagnóstico de Notion en 1 clic, enlace `← Datalaria`, avance rápido Kanban y URLs dinámicas del Kit), script de gobernanza de embargo `release_18nov.py` y suite de 20 tests pytest. | *Completado* |
 | `v0.4.0` | 2026-11-08 | 📈 Impact Analyzer | Construcción del analizador de impacto SEO/GA4 (`ops/pulse/impact_analyzer.py`), contratos Pydantic v2 (`PulseImpactReport`, `QuickWinItem`, `MonetizationOrphanItem`), detección de 12 Quick Wins de CTR/SERP, 15 Huérfanos de Monetización, fórmula `Editorial ROI Score`, invariante `INV-PULSE-6` y primera auditoría estratégica en `specs/audit/IMPACT_REPORT.md` (Hito 7.2 / ADR-020). | *Completado* |
+| `v1.0.0-rc1` | 2026-11-14 | 💎 Dual Kit & UX | Hitos P-LAUNCH-3B y P-LAUNCH-3C: Kit Comercial Dual completo (ES/EN) en `Datalaria_Pulse_Kit.zip` (38 archivos, 804 KB). Excel automatizado con cero duplicación (vínculos dinámicos Activos ↔ Métricas ↔ Kanban ↔ Dashboard), tablas nativas `TableStyleMedium2`, `freeze_panes`, 6 pestañas codificadas por color (Azul `0284C7`, Esmeralda `059669`, Ámbar `D97706`), Guías Ejecutivas PDF de 5 páginas exactas TrueType sin desbordamientos (`GUIA_EJECUTIVA_PULSE_ES.pdf` y `PULSE_EXECUTIVE_GUIDE_EN.pdf`), aislamiento estricto de tracker privado y suite pytest 104/104 verde. | *Completado* |
+| `v1.0.0` | 2026-11-18 | 🚀 Release Oficial | Lanzamiento oficial de Datalaria Pulse v1.0.0 (Hitos P-LAUNCH-1 a P-LAUNCH-5): Ficha técnica enriquecida con deep-linking, Vitrina y App Web v1.0.0, 10 artículos de la serie con fechas Opción A y enlaces cronológicos anti-404, Kit comercial B2B Dual ES/EN, conectores Power Query M bilingües y script de activación atómica `release_18nov.py`. | *En preparación* |

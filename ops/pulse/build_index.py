@@ -176,9 +176,26 @@ def scan_posts(git_map: Dict[str, datetime]) -> List[ContentAsset]:
             post = frontmatter.load(path)
             norm = path.replace("\\", "/").lower()
             lastmod = git_map.get(norm)
-            if not lastmod:
-                mtime = os.path.getmtime(path)
-                lastmod = datetime.fromtimestamp(mtime, tz=timezone.utc)
+            mtime = os.path.getmtime(path)
+            mtime_dt = datetime.fromtimestamp(mtime, tz=timezone.utc)
+
+            # Si el archivo tiene modificaciones locales posteriores al último commit de Git, reflejar mtime
+            if not lastmod or (mtime_dt - lastmod).total_seconds() > 300:
+                lastmod = mtime_dt
+
+            # Si el frontmatter define lastmod explícito, prevalece la fecha editorial
+            raw_meta_lastmod = post.metadata.get("lastmod")
+            if raw_meta_lastmod:
+                try:
+                    if isinstance(raw_meta_lastmod, datetime):
+                        lastmod = raw_meta_lastmod.astimezone(timezone.utc) if raw_meta_lastmod.tzinfo else raw_meta_lastmod.replace(tzinfo=timezone.utc)
+                    elif isinstance(raw_meta_lastmod, date):
+                        lastmod = datetime.combine(raw_meta_lastmod, datetime.min.time(), tzinfo=timezone.utc)
+                    elif isinstance(raw_meta_lastmod, str):
+                        lastmod = datetime.fromisoformat(raw_meta_lastmod).replace(tzinfo=timezone.utc)
+                except Exception:
+                    pass
+
             return {
                 "metadata": post.metadata,
                 "content": post.content,
@@ -367,6 +384,7 @@ def scan_posts(git_map: Dict[str, datetime]) -> List[ContentAsset]:
             id=canonical_id,
             slug=slug_val,
             asset_type="post",
+            release_type="article",
             status=status,
             visibility="public",
             title_es=es["metadata"].get("title") if es else None,
@@ -421,11 +439,22 @@ def scan_apps(git_map: Dict[str, datetime]) -> List[ContentAsset]:
             lastmod = git_map.get(norm, datetime.now(timezone.utc))
 
             releases = app_meta.get("releases", [])
-            latest_release = releases[-1] if releases else {}
+            latest_release = releases[0] if releases else {}
+            today = date.today()
+
+            raw_launch = app_meta.get("launch_date")
             pub_date = None
-            if latest_release.get("date"):
+            if raw_launch:
                 try:
-                    pub_date = datetime.fromisoformat(latest_release["date"]).date()
+                    if isinstance(raw_launch, (datetime, date)):
+                        pub_date = raw_launch if isinstance(raw_launch, date) else raw_launch.date()
+                    else:
+                        pub_date = datetime.fromisoformat(str(raw_launch)).date()
+                except Exception:
+                    pass
+            elif latest_release.get("date"):
+                try:
+                    pub_date = datetime.fromisoformat(str(latest_release["date"])).date()
                 except Exception:
                     pass
 
@@ -446,12 +475,17 @@ def scan_apps(git_map: Dict[str, datetime]) -> List[ContentAsset]:
                 tags_list = app_meta["technologies"]
 
             yaml_status = app_meta.get("status", "live")
-            asset_status = "scheduled" if yaml_status == "incubating" else "published"
+            asset_status = "scheduled" if (yaml_status == "incubating" or (pub_date and pub_date > today)) else "published"
 
+            current_ver = app_meta.get("current_version")
+
+            # Activo principal de la App
             assets.append(ContentAsset(
                 id=slug,
                 slug=slug,
                 asset_type="app",
+                version=current_ver,
+                release_type="initial_launch",
                 status=asset_status,
                 visibility="public",
                 title_es=title_es,
@@ -472,6 +506,59 @@ def scan_apps(git_map: Dict[str, datetime]) -> List[ContentAsset]:
                 freshness_status="fresh",
                 owner="Daniel Alaez"
             ))
+
+            # Versionado evolutivo (releases públicas distintas a la fecha de lanzamiento inicial)
+            for rel in releases:
+                rel_state = rel.get("state")
+                rel_type = rel.get("type")
+                rel_ver = rel.get("version")
+                rel_date_raw = rel.get("date")
+
+                if rel_state == "internal" or rel_type not in ("release", "feature", "ux", "security"):
+                    continue
+                if not rel_date_raw or not rel_ver:
+                    continue
+
+                try:
+                    rel_date = datetime.fromisoformat(str(rel_date_raw)).date()
+                except Exception:
+                    continue
+
+                if pub_date and rel_date == pub_date:
+                    continue
+
+                rel_status = "scheduled" if rel_date > today else "published"
+                rel_title_es = resolve_i18n_field(rel.get("title"), "es") or f"Versión {rel_ver}"
+                rel_title_en = resolve_i18n_field(rel.get("title"), "en") or f"Version {rel_ver}"
+
+                assets.append(ContentAsset(
+                    id=f"{slug}-{rel_ver}",
+                    slug=slug,
+                    asset_type="app",
+                    version=rel_ver,
+                    release_type="version_upgrade",
+                    parent_asset_id=slug,
+                    editorial_post_slug=rel.get("editorial_post"),
+                    status=rel_status,
+                    visibility="public",
+                    title_es=f"{title_es} ({rel_ver}): {rel_title_es}",
+                    title_en=f"{title_en} ({rel_ver}): {rel_title_en}",
+                    url_es=f"/es/apps/{slug}/",
+                    url_en=f"/en/apps/{slug}/",
+                    brief_es=brief_es,
+                    brief_en=brief_en,
+                    publish_date=rel_date,
+                    last_modified_es=lastmod,
+                    last_modified_en=lastmod,
+                    language_parity="complete",
+                    category="Aplicaciones Web",
+                    categories=["Apps", app_meta.get("tier", "lab")],
+                    tags=tags_list,
+                    series=None,
+                    related_app=slug,
+                    freshness_status="fresh",
+                    owner="Daniel Alaez"
+                ))
         except Exception as e:
             print(f"[WARN] Error procesando app {fpath}: {e}")
 
@@ -481,6 +568,7 @@ def scan_apps(git_map: Dict[str, datetime]) -> List[ContentAsset]:
 def scan_kits(git_map: Dict[str, datetime]) -> List[ContentAsset]:
     """
     Escanea data/pulse/kits.yaml y construye los activos tipo 'kit', 'suite' y 'mega_bundle'.
+    Normaliza status a 'published' o 'scheduled' (INV-PULSE-8) e indexa versiones y ediciones.
     """
     assets: List[ContentAsset] = []
     kits_path = "data/pulse/kits.yaml"
@@ -489,6 +577,19 @@ def scan_kits(git_map: Dict[str, datetime]) -> List[ContentAsset]:
 
     norm_path = kits_path.replace("\\", "/").lower()
     lastmod = git_map.get(norm_path, datetime.now(timezone.utc))
+    today = date.today()
+
+    def parse_item_date(val: Any) -> Optional[date]:
+        if not val:
+            return None
+        if isinstance(val, date):
+            return val
+        if isinstance(val, datetime):
+            return val.date()
+        try:
+            return datetime.fromisoformat(str(val)).date()
+        except Exception:
+            return None
 
     try:
         with open(kits_path, "r", encoding="utf-8") as f:
@@ -497,11 +598,18 @@ def scan_kits(git_map: Dict[str, datetime]) -> List[ContentAsset]:
         # 1. Mega Bundle
         mb = data.get("mega_bundle")
         if mb:
+            mb_date = parse_item_date(mb.get("publish_date"))
+            mb_ver = mb.get("version", "v1.0.0")
+            mb_raw_status = mb.get("status", "available")
+            mb_status = "scheduled" if (mb_raw_status == "coming" or (mb_date and mb_date > today)) else "published"
+
             assets.append(ContentAsset(
                 id=mb["id"],
                 slug=mb["slug"],
                 asset_type="mega_bundle",
-                status="published" if mb.get("status") == "available" else "coming",
+                version=mb_ver,
+                release_type="kit_launch",
+                status=mb_status,
                 visibility="public",
                 title_es=mb.get("title_es"),
                 title_en=mb.get("title_en"),
@@ -509,6 +617,7 @@ def scan_kits(git_map: Dict[str, datetime]) -> List[ContentAsset]:
                 url_en="/en/resources/#mega-bundle",
                 brief_es=mb.get("description_es"),
                 brief_en=mb.get("description_en"),
+                publish_date=mb_date,
                 last_modified_es=lastmod,
                 last_modified_en=lastmod,
                 language_parity="complete",
@@ -520,13 +629,50 @@ def scan_kits(git_map: Dict[str, datetime]) -> List[ContentAsset]:
                 checkout_url=mb.get("checkout_url")
             ))
 
+            for ed in mb.get("editions", []):
+                ed_ver = ed.get("version")
+                ed_date = parse_item_date(ed.get("date"))
+                if not ed_ver or not ed_date:
+                    continue
+                ed_status = "scheduled" if ed_date > today else "published"
+                assets.append(ContentAsset(
+                    id=f"{mb['id']}-{ed_ver}",
+                    slug=mb["slug"],
+                    asset_type="mega_bundle",
+                    version=ed_ver,
+                    release_type="kit_edition",
+                    parent_asset_id=mb["id"],
+                    status=ed_status,
+                    visibility="public",
+                    title_es=f"{mb.get('title_es')} ({ed_ver})",
+                    title_en=f"{mb.get('title_en')} ({ed_ver})",
+                    url_es="/es/recursos/#mega-bundle",
+                    url_en="/en/resources/#mega-bundle",
+                    brief_es=ed.get("description_es") or mb.get("description_es"),
+                    brief_en=ed.get("description_en") or mb.get("description_en"),
+                    publish_date=ed_date,
+                    last_modified_es=lastmod,
+                    last_modified_en=lastmod,
+                    language_parity="complete",
+                    category="Mega Bundle",
+                    categories=["Recursos", "Suites", "Estrategia"],
+                    tags=["Mega Bundle", "C-Level", "Excel", "Templates"]
+                ))
+
         # 2. Suites
         for s in data.get("suites", []):
+            s_date = parse_item_date(s.get("publish_date"))
+            s_ver = s.get("version", "v1.0.0")
+            s_raw_status = s.get("status", "available")
+            s_status = "scheduled" if (s_raw_status == "coming" or (s_date and s_date > today)) else "published"
+
             assets.append(ContentAsset(
                 id=s["id"],
                 slug=s["slug"],
                 asset_type="suite",
-                status="published" if s.get("status") == "available" else "coming",
+                version=s_ver,
+                release_type="kit_launch",
+                status=s_status,
                 visibility="public",
                 title_es=s.get("title_es"),
                 title_en=s.get("title_en"),
@@ -534,6 +680,7 @@ def scan_kits(git_map: Dict[str, datetime]) -> List[ContentAsset]:
                 url_en=f"/en/resources/#{s['id']}",
                 brief_es=s.get("description_es"),
                 brief_en=s.get("description_en"),
+                publish_date=s_date,
                 last_modified_es=lastmod,
                 last_modified_en=lastmod,
                 language_parity="complete",
@@ -546,13 +693,50 @@ def scan_kits(git_map: Dict[str, datetime]) -> List[ContentAsset]:
                 included_kits=s.get("included_kits", [])
             ))
 
+            for ed in s.get("editions", []):
+                ed_ver = ed.get("version")
+                ed_date = parse_item_date(ed.get("date"))
+                if not ed_ver or not ed_date:
+                    continue
+                ed_status = "scheduled" if ed_date > today else "published"
+                assets.append(ContentAsset(
+                    id=f"{s['id']}-{ed_ver}",
+                    slug=s["slug"],
+                    asset_type="suite",
+                    version=ed_ver,
+                    release_type="kit_edition",
+                    parent_asset_id=s["id"],
+                    status=ed_status,
+                    visibility="public",
+                    title_es=f"{s.get('title_es')} ({ed_ver})",
+                    title_en=f"{s.get('title_en')} ({ed_ver})",
+                    url_es=f"/es/recursos/#{s['id']}",
+                    url_en=f"/en/resources/#{s['id']}",
+                    brief_es=ed.get("description_es") or s.get("description_es"),
+                    brief_en=ed.get("description_en") or s.get("description_en"),
+                    publish_date=ed_date,
+                    last_modified_es=lastmod,
+                    last_modified_en=lastmod,
+                    language_parity="complete",
+                    category="Suite B2B",
+                    categories=["Recursos", "Suites", s.get("topic", "estrategia")],
+                    tags=["Suite", s.get("topic", "estrategia"), "Excel", "C-Level"]
+                ))
+
         # 3. Kits individuales
         for k in data.get("kits", []):
+            k_date = parse_item_date(k.get("publish_date"))
+            k_ver = k.get("version", "v1.0.0")
+            k_raw_status = k.get("status", "available")
+            k_status = "scheduled" if (k_raw_status == "coming" or (k_date and k_date > today)) else "published"
+
             assets.append(ContentAsset(
                 id=k["id"],
                 slug=k["slug"],
                 asset_type="kit",
-                status="published" if k.get("status") == "available" else "coming",
+                version=k_ver,
+                release_type="kit_launch",
+                status=k_status,
                 visibility="public",
                 title_es=k.get("title_es"),
                 title_en=k.get("title_en"),
@@ -560,6 +744,7 @@ def scan_kits(git_map: Dict[str, datetime]) -> List[ContentAsset]:
                 url_en=f"/en/resources/#{k['id']}",
                 brief_es=k.get("description_es"),
                 brief_en=k.get("description_en"),
+                publish_date=k_date,
                 last_modified_es=lastmod,
                 last_modified_en=lastmod,
                 language_parity="complete",
@@ -571,6 +756,36 @@ def scan_kits(git_map: Dict[str, datetime]) -> List[ContentAsset]:
                 checkout_url=k.get("checkout_url"),
                 deliverables=k.get("deliverables_es", [])
             ))
+
+            for ed in k.get("editions", []):
+                ed_ver = ed.get("version")
+                ed_date = parse_item_date(ed.get("date"))
+                if not ed_ver or not ed_date:
+                    continue
+                ed_status = "scheduled" if ed_date > today else "published"
+                assets.append(ContentAsset(
+                    id=f"{k['id']}-{ed_ver}",
+                    slug=k["slug"],
+                    asset_type="kit",
+                    version=ed_ver,
+                    release_type="kit_edition",
+                    parent_asset_id=k["id"],
+                    status=ed_status,
+                    visibility="public",
+                    title_es=f"{k.get('title_es')} ({ed_ver})",
+                    title_en=f"{k.get('title_en')} ({ed_ver})",
+                    url_es=f"/es/recursos/#{k['id']}",
+                    url_en=f"/en/resources/#{k['id']}",
+                    brief_es=ed.get("description_es") or k.get("description_es"),
+                    brief_en=ed.get("description_en") or k.get("description_en"),
+                    publish_date=ed_date,
+                    last_modified_es=lastmod,
+                    last_modified_en=lastmod,
+                    language_parity="complete",
+                    category=k.get("category_es", "Recursos"),
+                    categories=["Recursos", k.get("topic", "estrategia")],
+                    tags=k.get("deliverables_es", []) + [k.get("topic", "estrategia")]
+                ))
 
     except Exception as e:
         print(f"[WARN] Error procesando kits: {e}")

@@ -27,6 +27,11 @@ export interface ContentAsset {
   status: AssetStatus;
   visibility: 'public' | 'private';
 
+  version?: string | null;
+  release_type?: 'article' | 'initial_launch' | 'version_upgrade' | 'kit_launch' | 'kit_edition' | null;
+  parent_asset_id?: string | null;
+  editorial_post_slug?: string | null;
+
   title_es?: string | null;
   title_en?: string | null;
   url_es?: string | null;
