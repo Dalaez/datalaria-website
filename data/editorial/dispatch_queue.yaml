@@ -1,5 +1,16 @@
 version: 1
 entries:
+- id: amfe-2026-11-16-wave1-es-linkedin
+  file_path: content/es/posts/matriz-riesgos-amfe-fmea/index.md
+  lang: es
+  wave: 1_es_native
+  channels:
+  - linkedin
+  scheduled_at_utc: '2026-11-16T08:15:00Z'
+  status: completed
+  executed_at_utc: '2026-11-16T08:17:38Z'
+  notes: 'Ola 1 cerrada en vivo (Run 43829777204): LinkedIn ES urn:li:share:7528008366615412736 (X ES publicado manualmente previamente)'
+  last_error: null
 - id: amfe-2026-11-16-wave2-en-native
   file_path: content/en/posts/quantitative-risk-matrix-fmea/index.md
   lang: en
