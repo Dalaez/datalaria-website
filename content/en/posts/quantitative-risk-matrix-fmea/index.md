@@ -88,7 +88,7 @@ In Tier-1 enterprises, operational risk engineering never operates in isolation 
 
 Rigorous enterprise risk management is not a static compliance exercise filed away after an annual audit. It represents a **closed-loop system of reliability engineering, actuarial loss quantification, and continuous control balancing**:
 
-{{< mermaid >}}
+{{< mermaid image="amfe_fmea_workflow.png" alt="Closed-loop ISO 31000 Quantitative Risk Management and AIAG-VDA FMEA workflow (RPN = S x O x D)" >}}
 flowchart TD
     A["<b>1. Critical Assets and Process Decomposition</b><br/><small>Identify mission-critical systems, cloud infrastructure and supply chains<br/>Map organizational dependencies and operational critical paths</small>"]
     

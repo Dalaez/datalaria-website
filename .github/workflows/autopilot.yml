@@ -1,5 +1,8 @@
 name: Datalaria Autopilot 🤖
 
+permissions:
+  contents: write
+
 on:
   push:
     branches:
@@ -9,11 +12,26 @@ on:
       - 'content/**/posts/**/social_pack.yaml'
       - 'content/**/posts/**/social_pack.yml'
       - 'autopilot/**'
+  schedule:
+    - cron: '30 14 * * *' # Ola 2 (15:30 CET / 14:30 UTC - EN Native + USA open)
+    - cron: '30 19 * * *' # Ola 3A (20:30 CET / 19:30 UTC - Dev.to ES)
+    - cron: '30 6 * * *'  # Ola 3B (07:30 CET / 06:30 UTC Día +1 - Dev.to EN + CoderLegion EN)
   workflow_dispatch:
     inputs:
       file_path:
-        description: 'Path del post a promocionar (ej: content/es/posts/mi-post/index.md)'
-        required: true
+        description: 'Path del post a promocionar (ej: content/es/posts/mi-post/index.md; omitir si wave=process_queue)'
+        required: false
+        default: ''
+        type: string
+      wave:
+        description: 'Ola a ejecutar: all | 1_es_native | 2_en_native | 3a_es_syndication | 3b_en_syndication | process_queue'
+        required: false
+        default: 'all'
+        type: string
+      channels:
+        description: '(Opcional) Filtro exacto de canales por coma, ej: linkedin o devto,coderlegion'
+        required: false
+        default: ''
         type: string
       twitter_override:
         description: '(Opcional) Texto editado para Twitter. Si se deja vacío, se usa IA o cache.'
@@ -33,11 +51,12 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       file_path: ${{ steps.file_check.outputs.file_path }}
+      mode: ${{ steps.file_check.outputs.mode }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Fix for "fatal: ambiguous argument 'HEAD^': unknown revision or path not in the working tree."
+          fetch-depth: 0  # Fix for "fatal: ambiguous argument 'HEAD^': unknown revision or path in the working tree."
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -52,15 +71,42 @@ jobs:
         run: |
           python -m pytest autopilot/tests -v
 
-      - name: Determine File to Publish
+      - name: Determine Dispatch Mode & Target File
         id: file_check
+        env:
+          ENABLE_STAGGERED_CRON: ${{ vars.ENABLE_STAGGERED_CRON || 'true' }}
         run: |
-          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
-            echo "Manual Trigger detected."
-            echo "file_path=${{ inputs.file_path }}" >> $GITHUB_OUTPUT
+          EVENT_NAME="${{ github.event_name }}"
+          INPUT_WAVE="${{ inputs.wave }}"
+          INPUT_FILE="${{ inputs.file_path }}"
+
+          if [ "$EVENT_NAME" == "schedule" ] || { [ "$EVENT_NAME" == "workflow_dispatch" ] && [ "$INPUT_WAVE" == "process_queue" ]; }; then
+            if [ "$EVENT_NAME" == "schedule" ] && [ "$ENABLE_STAGGERED_CRON" != "true" ]; then
+              echo "⏸️ Cron escalonado desactivado (ENABLE_STAGGERED_CRON=$ENABLE_STAGGERED_CRON)."
+              echo "file_path=" >> $GITHUB_OUTPUT
+              echo "mode=none" >> $GITHUB_OUTPUT
+              exit 0
+            fi
+
+            HAS_DUE=$(python -c "from datetime import datetime, timezone; from autopilot.src.wave_scheduler import load_dispatch_queue, parse_utc_timestamp; q=load_dispatch_queue(); now=datetime.now(timezone.utc); print('1' if any(e.status=='pending' and parse_utc_timestamp(e.scheduled_at_utc)<=now for e in q.entries) else '0')")
+            echo "file_path=" >> $GITHUB_OUTPUT
+            if [ "$HAS_DUE" == "1" ]; then
+              echo "⏰ Olas vencidas detectadas en data/editorial/dispatch_queue.yaml."
+              echo "mode=process_queue" >> $GITHUB_OUTPUT
+            else
+              echo "ℹ️ No hay olas pendientes vencidas en dispatch_queue.yaml."
+              echo "mode=none" >> $GITHUB_OUTPUT
+            fi
+          elif [ "$EVENT_NAME" == "workflow_dispatch" ]; then
+            echo "Manual Trigger detected: $INPUT_FILE (wave=${INPUT_WAVE:-all})"
+            echo "file_path=$INPUT_FILE" >> $GITHUB_OUTPUT
+            if [ -n "$INPUT_FILE" ]; then
+              echo "mode=single_post" >> $GITHUB_OUTPUT
+            else
+              echo "mode=none" >> $GITHUB_OUTPUT
+            fi
           else
-            echo "Push Trigger detected."
-            # Detecta cambios en el post Markdown o en su social_pack.yaml adyacente
+            echo "Push Trigger detected (validation + DRY_RUN only unless AUTO_PUBLISH_ON_PUSH=true)."
             CHANGED_MD=$(git diff --name-only --diff-filter=ACMRT HEAD^ HEAD | grep -E '^content/.*/posts/.*\.md$' | head -n 1 || true)
             if [ -n "$CHANGED_MD" ]; then
               CHANGED_FILE="$CHANGED_MD"
@@ -75,16 +121,18 @@ jobs:
             if [ -n "${CHANGED_FILE:-}" ]; then
               echo "Found changed file: $CHANGED_FILE"
               echo "file_path=$CHANGED_FILE" >> $GITHUB_OUTPUT
+              echo "mode=single_post" >> $GITHUB_OUTPUT
             else
               echo "No relevant markdown file changes detected."
+              echo "file_path=" >> $GITHUB_OUTPUT
+              echo "mode=none" >> $GITHUB_OUTPUT
             fi
           fi
 
       - name: Generate Preview (Dry Run)
-        if: steps.file_check.outputs.file_path != ''
+        if: steps.file_check.outputs.mode == 'single_post' && steps.file_check.outputs.file_path != ''
         env:
           DRY_RUN: "true"
-          # Mock Secrets or Real Secrets (Dry Run won't use them, but script might need env vars to init class)
           TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
           TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
           TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
@@ -95,29 +143,28 @@ jobs:
           LINKEDIN_REFRESH_TOKEN: ${{ secrets.LINKEDIN_REFRESH_TOKEN }}
           LINKEDIN_COMPANY_ID: ${{ secrets.LINKEDIN_COMPANY_ID }}
           GEMINI_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
-          # Dev.to & CoderLegion
           DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
           DEVTO_ORG_ID: ${{ secrets.DEVTO_ORG_ID }}
           CODERLEGION_API_KEY: ${{ secrets.CODERLEGION_API_KEY }}
           CODERLEGION_CATEGORY_ID: ${{ vars.CODERLEGION_CATEGORY_ID || '2' }}
           CODERLEGION_LANGS: ${{ vars.CODERLEGION_LANGS || 'en' }}
-          # Feature Flags (X/Twitter API desactivada por política coste 0 EUR; Web Intent activo)
           ENABLE_TWITTER: "true"
           ENABLE_TWITTER_API: "false"
           ENABLE_LINKEDIN: ${{ vars.ENABLE_LINKEDIN }}
           ENABLE_DEVTO: ${{ vars.ENABLE_DEVTO }}
           ENABLE_CODERLEGION: ${{ vars.ENABLE_CODERLEGION }}
           ENABLE_NEWSLETTER: ${{ vars.ENABLE_NEWSLETTER }}
-          # Brevo (Newsletter)
           BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
           BREVO_LIST_ID_ES: ${{ vars.BREVO_LIST_ID_ES }}
           BREVO_LIST_ID_EN: ${{ vars.BREVO_LIST_ID_EN }}
+          AUTOPILOT_WAVE: ${{ inputs.wave || 'all' }}
+          AUTOPILOT_CHANNELS: ${{ inputs.channels || '' }}
         run: |
           echo "👀 Generating Preview for: ${{ steps.file_check.outputs.file_path }}"
           python autopilot/src/orchestrator.py "${{ steps.file_check.outputs.file_path }}"
 
       - name: Upload Generated Content (for consistency)
-        if: steps.file_check.outputs.file_path != ''
+        if: steps.file_check.outputs.mode == 'single_post' && steps.file_check.outputs.file_path != ''
         uses: actions/upload-artifact@v4
         with:
           name: autopilot-content
@@ -129,21 +176,25 @@ jobs:
 
   publish:
     needs: check_changes
-    # Only run if a file was actually found/provided
-    if: needs.check_changes.outputs.file_path != ''
+    if: |
+      (needs.check_changes.outputs.mode == 'process_queue') ||
+      (needs.check_changes.outputs.mode == 'single_post' && (github.event_name != 'push' || vars.AUTO_PUBLISH_ON_PUSH == 'true'))
     runs-on: ubuntu-latest
-    environment: production  # <--- This requires manual approval in GitHub Settings
-    
+    environment: production
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT || github.token }}
 
       - name: Download Generated Content (from preview)
+        if: needs.check_changes.outputs.mode == 'single_post'
         uses: actions/download-artifact@v4
         continue-on-error: true
         with:
           name: autopilot-content
-      
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -153,46 +204,77 @@ jobs:
         run: |
           pip install -r autopilot/requirements.txt
 
-      - name: Run Autopilot Orchestrator
+      - name: Process Scheduled 24h Waves Queue
+        if: needs.check_changes.outputs.mode == 'process_queue'
         env:
-          # Twitter Credentials
           TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
           TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
           TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
           TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
-          
-          # LinkedIn Credentials
           LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
           LINKEDIN_CLIENT_ID: ${{ secrets.LINKEDIN_CLIENT_ID }}
           LINKEDIN_CLIENT_SECRET: ${{ secrets.LINKEDIN_CLIENT_SECRET }}
           LINKEDIN_REFRESH_TOKEN: ${{ secrets.LINKEDIN_REFRESH_TOKEN }}
           LINKEDIN_COMPANY_ID: ${{ secrets.LINKEDIN_COMPANY_ID }}
           GEMINI_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
-          
-          # Dev.to & CoderLegion
           DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
           DEVTO_ORG_ID: ${{ secrets.DEVTO_ORG_ID }}
           CODERLEGION_API_KEY: ${{ secrets.CODERLEGION_API_KEY }}
           CODERLEGION_CATEGORY_ID: ${{ vars.CODERLEGION_CATEGORY_ID || '2' }}
           CODERLEGION_LANGS: ${{ vars.CODERLEGION_LANGS || 'en' }}
-          
-          # Feature Flags (X/Twitter API desactivada por política coste 0 EUR; Web Intent activo)
           ENABLE_TWITTER: "true"
           ENABLE_TWITTER_API: "false"
           ENABLE_LINKEDIN: ${{ vars.ENABLE_LINKEDIN }}
           ENABLE_DEVTO: ${{ vars.ENABLE_DEVTO }}
           ENABLE_CODERLEGION: ${{ vars.ENABLE_CODERLEGION }}
           ENABLE_NEWSLETTER: ${{ vars.ENABLE_NEWSLETTER }}
-          # Brevo (Newsletter)
           BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
           BREVO_LIST_ID_ES: ${{ vars.BREVO_LIST_ID_ES }}
           BREVO_LIST_ID_EN: ${{ vars.BREVO_LIST_ID_EN }}
-          # Manual Content Overrides (from workflow_dispatch)
+        run: |
+          python -m autopilot.src.wave_scheduler --process-due
+          if ! git diff --quiet data/editorial/dispatch_queue.yaml; then
+            git config user.name "Datalaria Bot"
+            git config user.email "bot@datalaria.com"
+            git add data/editorial/dispatch_queue.yaml
+            git commit -m "chore(autopilot): update dispatch_queue.yaml wave status [skip ci]"
+            git push
+          fi
+
+      - name: Run Autopilot Orchestrator
+        if: needs.check_changes.outputs.mode == 'single_post'
+        env:
+          TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
+          TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
+          TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+          TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+          LINKEDIN_CLIENT_ID: ${{ secrets.LINKEDIN_CLIENT_ID }}
+          LINKEDIN_CLIENT_SECRET: ${{ secrets.LINKEDIN_CLIENT_SECRET }}
+          LINKEDIN_REFRESH_TOKEN: ${{ secrets.LINKEDIN_REFRESH_TOKEN }}
+          LINKEDIN_COMPANY_ID: ${{ secrets.LINKEDIN_COMPANY_ID }}
+          GEMINI_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
+          DEVTO_ORG_ID: ${{ secrets.DEVTO_ORG_ID }}
+          CODERLEGION_API_KEY: ${{ secrets.CODERLEGION_API_KEY }}
+          CODERLEGION_CATEGORY_ID: ${{ vars.CODERLEGION_CATEGORY_ID || '2' }}
+          CODERLEGION_LANGS: ${{ vars.CODERLEGION_LANGS || 'en' }}
+          ENABLE_TWITTER: "true"
+          ENABLE_TWITTER_API: "false"
+          ENABLE_LINKEDIN: ${{ vars.ENABLE_LINKEDIN }}
+          ENABLE_DEVTO: ${{ vars.ENABLE_DEVTO }}
+          ENABLE_CODERLEGION: ${{ vars.ENABLE_CODERLEGION }}
+          ENABLE_NEWSLETTER: ${{ vars.ENABLE_NEWSLETTER }}
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+          BREVO_LIST_ID_ES: ${{ vars.BREVO_LIST_ID_ES }}
+          BREVO_LIST_ID_EN: ${{ vars.BREVO_LIST_ID_EN }}
           TWITTER_OVERRIDE: ${{ inputs.twitter_override }}
           LINKEDIN_OVERRIDE: ${{ inputs.linkedin_override }}
           NEWSLETTER_OVERRIDE: ${{ inputs.newsletter_override }}
+          AUTOPILOT_WAVE: ${{ inputs.wave || 'all' }}
+          AUTOPILOT_CHANNELS: ${{ inputs.channels || '' }}
         run: |
-          echo "🚀 Launching Autopilot for: ${{ needs.check_changes.outputs.file_path }}"
+          echo "🚀 Launching Autopilot for: ${{ needs.check_changes.outputs.file_path }} (wave=${AUTOPILOT_WAVE} channels=${AUTOPILOT_CHANNELS})"
           python autopilot/src/orchestrator.py "${{ needs.check_changes.outputs.file_path }}"
 
       - name: Persist refreshed LinkedIn tokens
@@ -202,20 +284,20 @@ jobs:
         run: |
           if [ -f ".linkedin_new_tokens.json" ]; then
             echo "🔄 LinkedIn tokens were refreshed. Updating GitHub Secrets..."
-            
+
             NEW_ACCESS_TOKEN=$(jq -r '.access_token' .linkedin_new_tokens.json)
             NEW_REFRESH_TOKEN=$(jq -r '.refresh_token // empty' .linkedin_new_tokens.json)
-            
+
             if [ -n "$NEW_ACCESS_TOKEN" ]; then
               echo "$NEW_ACCESS_TOKEN" | gh secret set LINKEDIN_ACCESS_TOKEN
               echo "   ✅ LINKEDIN_ACCESS_TOKEN actualizado en GitHub Secrets."
             fi
-            
+
             if [ -n "$NEW_REFRESH_TOKEN" ]; then
               echo "$NEW_REFRESH_TOKEN" | gh secret set LINKEDIN_REFRESH_TOKEN
               echo "   ✅ LINKEDIN_REFRESH_TOKEN actualizado en GitHub Secrets."
             fi
-            
+
             rm -f .linkedin_new_tokens.json
           else
             echo "ℹ️ No se renovaron tokens de LinkedIn (no era necesario)."

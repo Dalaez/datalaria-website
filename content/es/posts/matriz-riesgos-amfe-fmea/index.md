@@ -88,7 +88,7 @@ En organizaciones de alto rendimiento, el control de riesgos operativos no opera
 
 La gestión de riesgos rigurosa no es un ejercicio estático de cumplimiento burocrático que se archiva en una carpeta compartida tras la auditoría anual. Constituye un **circuito cerrado de ingeniería de fiabilidad, cuantificación actuarial y rebalanceo continuo de controles**:
 
-{{< mermaid >}}
+{{< mermaid image="amfe_fmea_workflow.png" alt="Flujo cerrado de Gestión Cuantitativa de Riesgos ISO 31000 y AMFE AIAG-VDA (NPR = S x O x D)" >}}
 flowchart TD
     A["<b>1. Desglose de Procesos y Activos Críticos</b><br/><small>Identificación de sistemas core, infraestructura cloud y supply chain<br/>Estructuración de operaciones y mapeo de dependencias funcionales</small>"]
     

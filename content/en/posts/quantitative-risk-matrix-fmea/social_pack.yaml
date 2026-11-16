@@ -1,0 +1,77 @@
+en:
+  x:
+    hook: "80% of corporate 5x5 risk matrices cluster threats into 'amber noise' without pricing expected loss or detection blindness. Here is how ISO 31000 + AIAG-VDA FMEA (RPN & CER) fixes it."
+    thread:
+      - "1/5 The qualitative last-mile fallacy: a €40k workflow bug and a €4M GDPR breach end up sharing the exact same 'Red Risk' label. Your CFO has zero objective basis to rank mitigation CAPEX."
+      - "2/5 The Detection blindspot: classic Probability x Impact grids assume you catch failures instantly. Operational FMEA adds inverse Detection (D=1-10): zero real-time telemetry means critical risk."
+      - "3/5 Why AIAG-VDA killed flat RPN cutoffs: Severity 10 x Occurrence 2 x Detection 3 = 60 (catastrophic) used to lose against a cosmetic bug at RPN 90. Action Priority enforces immediate vetoes when S>=9 or RPN>=120."
+      - "4/5 Payment gateway case study: bank timeout at RPN 336 (€190k at risk). Multi-acquirer smart routing + circuit breakers (€28k CAPEX) slashed RPN to 32 (-90.5%), ringfencing €165k net (CER 5.89x)."
+      - "5/5 Full quantitative guide with E(L) math, 1-10 calibration tables, 4-sheet Excel engine & 16:9 Board Deck (7€): https://datalaria.com/en/posts/quantitative-risk-matrix-fmea/"
+    hashtags:
+      - "RiskManagement"
+      - "FMEA"
+      - "ISO31000"
+      - "Operations"
+      - "EngineeringManagement"
+  linkedin:
+    text: |-
+      80% of corporate 5x5 risk registers turn into undifferentiated "amber noise" that cannot justify a single euro of mitigation CAPEX.
+
+      ⚠️ When a €40,000 operational rework glitch and a €4,000,000 regulatory breach end up under the exact same red box, executive committees lose capital allocation clarity.
+
+      📘 I just published our deep-dive engineering guide on Quantitative Risk Matrices (ISO 31000) & Operational FMEA (AIAG-VDA) on Datalaria:
+
+      🔹 Dual 5x5 + 3D FMEA engine: pairs Probability x Impact portfolio scoring with Severity x Occurrence x Detection (RPN) to penalize unmonitored silent failures.
+
+      🔹 AIAG-VDA Action Priority gates: enforces mandatory engineering vetoes whenever S >= 9 or RPN >= 120 so rare catastrophic failures are never masked by linear multiplication.
+
+      🔹 Cloud checkout gateway case study: slashing RPN from 336 to 32 (-90.5%) via €28k in smart routing & circuit breakers ringfenced €165k in expected loss (5.89x CER).
+
+      🔹 Boardroom-ready infrastructure: 4-tab ECMA-376 Excel workbook, 16:9 Minto PPTX deck, and PDF guide bundled in the Executive Decision Pack (7€).
+
+      📖 Read the full mathematical model, 1-10 calibration tables, and workbook architecture: https://datalaria.com/en/posts/quantitative-risk-matrix-fmea/
+
+      💬 How does your engineering or operations team currently price unmonitored detection blindspots when defending resilience budgets to the CFO?
+    hashtags:
+      - "RiskManagement"
+      - "FMEA"
+      - "ISO31000"
+      - "OperationalControl"
+      - "EngineeringLeadership"
+  newsletter:
+    archetype: "real_case_number"
+    subject: "From RPN 336 to 32: how €28k in controls ringfenced €165k in checkout loss"
+    preheader: "Combining ISO 31000 5x5 heatmaps, AIAG-VDA Action Priority, and Control ROI (CER) to win CFO CAPEX sign-off."
+    hook_paragraphs:
+      - "Most enterprise risk spreadsheets collapse at the exact same point: they color-code threats in red and amber, yet fail to answer the CFO's core question when resilience budgets hit the table."
+      - "In Datalaria's new technical guide, we bridge the ISO 31000 5x5 Risk Matrix with 3D AIAG-VDA FMEA (Severity x Occurrence x Detection) and the Control Cost-Effectiveness Ratio (CER) to turn risk logs into capital ROI."
+    insights_60s:
+      - "Silent failures cost the most: FMEA scores inverse Detection (D=1-10) so workflows lacking real-time telemetry cannot masquerade as medium risks."
+      - "Ditch flat RPN thresholds: AIAG-VDA Action Priority triggers an automatic engineering veto whenever Severity >= 9 or RPN >= 120, even at low historical frequency."
+      - "Quantified CAPEX payback: €28,000 in multi-acquirer routing + circuit breakers cut RPN by 90.5% (336 to 32) and protected €165,000 in expected loss (5.89x CER)."
+    secondary_cta_label: "Get the Risk Matrix & FMEA Pack (7€)"
+    secondary_cta_url: "https://datalaria.com/en/resources/#pack-amfe"
+    ps_referral_text: "P.S. Know an engineering lead, COO, or risk officer defending reliability investments before the Board? Forward this briefing their way."
+  devto:
+    enabled: true
+    title: "Quantitative Risk Matrix & Operational FMEA: ISO 31000 + AIAG-VDA Guide"
+    description: "How to upgrade subjective 5x5 risk matrices into a quantitative ISO 31000 + AIAG-VDA FMEA engine with RPN scoring, Action Priority, and Control ROI (CER)."
+    tags:
+      - "riskmanagement"
+      - "fmea"
+      - "operations"
+      - "engineering"
+    canonical_url: "https://datalaria.com/en/posts/quantitative-risk-matrix-fmea/"
+    published: true
+  coderlegion:
+    enabled: true
+    title: "Quantitative Risk Matrix & Operational FMEA: ISO 31000 + AIAG-VDA Guide"
+    description: "Dual-engine quantitative framework combining ISO 31000 5x5 matrices with AIAG-VDA FMEA (RPN = S x O x D), Expected Loss E(L), and Control ROI (CER)."
+    tags:
+      - "risk-management"
+      - "fmea"
+      - "operations"
+      - "architecture"
+    canonical_url: "https://datalaria.com/en/posts/quantitative-risk-matrix-fmea/"
+    published: true
+    category: 2

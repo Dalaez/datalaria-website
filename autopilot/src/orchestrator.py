@@ -1,13 +1,14 @@
-"""Orquestador principal de Autopilot 2.0 y Sindicación Universal (SPEC-OPS-AUTOPILOT v2.1.0)."""
+"""Orquestador principal de Autopilot 2.0 y Sindicación Universal (SPEC-OPS-AUTOPILOT v2.2.0)."""
 
 from __future__ import annotations
 
+import argparse
 import os
 import re
 import sys
 import json
 from pathlib import Path
-from typing import Any, Dict, List, Literal, Optional, Tuple
+from typing import Any, Dict, List, Literal, Optional, Sequence, Tuple, Union
 
 import frontmatter
 import yaml
@@ -35,6 +36,7 @@ from autopilot.src.models import (
     SocialPlatformX,
     SyndicationArtifact,
     build_x_web_intent_url,
+    resolve_allowed_channels,
 )
 from autopilot.src.newsletter_manager import NewsletterManager
 from autopilot.src.quality_validator import audit_social_bundle
@@ -311,9 +313,16 @@ def run_orchestration(
     cache_file: str = CACHE_FILE,
     apps_dir: Optional[Path] = None,
     dist_dir: Optional[Path] = None,
+    wave: Optional[str] = None,
+    channels: Optional[Union[str, Sequence[str]]] = None,
 ) -> Dict[str, Any]:
     """Ejecuta el pipeline completo de Autopilot 2.0 y sindicación universal sobre un artículo."""
+    effective_wave = (wave if wave is not None else os.getenv("AUTOPILOT_WAVE", "all")).strip() or "all"
+    raw_channels = channels if channels is not None else os.getenv("AUTOPILOT_CHANNELS", "").strip()
+    allowed_channels = resolve_allowed_channels(wave=effective_wave, channels=raw_channels or None)
+
     print(f"🔍 Analizando archivo: {file_path}")
+    print(f"🌊 Ola/Canales activos para LIVE: wave={effective_wave} · channels={sorted(allowed_channels)}")
     post_data = load_post_content(file_path)
     lang: Literal["es", "en"] = post_data["lang"]
     slug: str = post_data["slug"]
@@ -586,6 +595,9 @@ def run_orchestration(
             "post_url": post_url,
             "slug": slug,
             "lang": lang,
+            "wave": effective_wave,
+            "allowed_channels": sorted(allowed_channels),
+            "dispatched_channels": [],
             "hero_image_url": hero_image_url,
             "secondary_cta": {"label": sec_label, "url": sec_url},
             "x": x_summary,
@@ -602,83 +614,108 @@ def run_orchestration(
     print("\n🚀 --- LIVE MODE (Autopilot 2.0 Dispatch) --- 🚀")
     manager = SocialMediaManager()
     local_img = _resolve_local_image_for_legacy(file_path, post_meta)
+    dispatched_channels: List[str] = []
 
     if enable_twitter and x_pack is not None:
-        x_audit = audit_report.results.get("x")
-        if strict_qa and x_audit and x_audit.status == "FAIL":
-            print(f"⛔ Envío X bloqueado por Quality Gate: {[i.code for i in x_audit.issues]}")
+        if "x" not in allowed_channels:
+            print(f"🔕 X/Twitter omitido por filtro de ola/canales ({sorted(allowed_channels)})")
         else:
-            manager.post_to_twitter(
-                text=x_pack.hook, url=post_url, image_path=local_img, x_pack=x_pack
-            )
+            x_audit = audit_report.results.get("x")
+            if strict_qa and x_audit and x_audit.status == "FAIL":
+                print(f"⛔ Envío X bloqueado por Quality Gate: {[i.code for i in x_audit.issues]}")
+            else:
+                manager.post_to_twitter(
+                    text=x_pack.hook, url=post_url, image_path=local_img, x_pack=x_pack
+                )
+                dispatched_channels.append("x")
     else:
         print("🔕 Twitter omitido (ENABLE_TWITTER=false)")
 
     if enable_linkedin and linkedin_text:
-        li_audit = audit_report.results.get("linkedin")
-        if strict_qa and li_audit and li_audit.status == "FAIL":
-            print(
-                f"⛔ Envío LinkedIn bloqueado por Quality Gate: {[i.code for i in li_audit.issues]}"
-            )
+        if "linkedin" not in allowed_channels:
+            print(f"🔕 LinkedIn omitido por filtro de ola/canales ({sorted(allowed_channels)})")
         else:
-            manager.post_to_linkedin(text=linkedin_text, url=post_url)
+            li_audit = audit_report.results.get("linkedin")
+            if strict_qa and li_audit and li_audit.status == "FAIL":
+                print(
+                    f"⛔ Envío LinkedIn bloqueado por Quality Gate: {[i.code for i in li_audit.issues]}"
+                )
+            else:
+                manager.post_to_linkedin(text=linkedin_text, url=post_url)
+                dispatched_channels.append("linkedin")
     else:
         print("🔕 LinkedIn omitido (ENABLE_LINKEDIN=false)")
 
     if devto_artifact is not None:
-        devto_audit = audit_report.results.get("devto")
-        if strict_qa and devto_audit and devto_audit.status == "FAIL":
-            print(
-                f"⛔ Envío Dev.to bloqueado por Quality Gate: {[i.code for i in devto_audit.issues]}"
-            )
+        if "devto" not in allowed_channels:
+            print(f"🔕 Dev.to omitido por filtro de ola/canales ({sorted(allowed_channels)})")
         else:
-            manager.post_to_devto(
-                title=devto_artifact.title,
-                content_markdown=devto_artifact.markdown,
-                canonical_url=devto_artifact.canonical_url,
-                main_image=devto_artifact.cover_image_url,
-                tags=devto_artifact.tags,
-                description=devto_artifact.description or None,
-                published=devto_cfg.published if devto_cfg else True,
-            )
+            devto_audit = audit_report.results.get("devto")
+            if strict_qa and devto_audit and devto_audit.status == "FAIL":
+                print(
+                    f"⛔ Envío Dev.to bloqueado por Quality Gate: {[i.code for i in devto_audit.issues]}"
+                )
+            else:
+                manager.post_to_devto(
+                    title=devto_artifact.title,
+                    content_markdown=devto_artifact.markdown,
+                    canonical_url=devto_artifact.canonical_url,
+                    main_image=devto_artifact.cover_image_url,
+                    tags=devto_artifact.tags,
+                    description=devto_artifact.description or None,
+                    published=devto_cfg.published if devto_cfg else True,
+                )
+                dispatched_channels.append("devto")
     else:
         print("🔕 Dev.to omitido (ENABLE_DEVTO=false o deshabilitado en social_pack)")
 
     if coderlegion_artifact is not None:
-        cl_audit = audit_report.results.get("coderlegion")
-        if strict_qa and cl_audit and cl_audit.status == "FAIL":
+        if "coderlegion" not in allowed_channels:
             print(
-                f"⛔ Envío CoderLegion bloqueado por Quality Gate: {[i.code for i in cl_audit.issues]}"
+                f"🔕 CoderLegion omitido por filtro de ola/canales ({sorted(allowed_channels)})"
             )
         else:
-            manager.post_to_coderlegion(
-                title=coderlegion_artifact.title,
-                content_markdown=coderlegion_artifact.markdown,
-                canonical_url=coderlegion_artifact.canonical_url,
-                cover_image_url=coderlegion_artifact.cover_image_url,
-                tags=coderlegion_artifact.tags,
-                description=coderlegion_artifact.description or None,
-                category_id=coderlegion_cfg.category if coderlegion_cfg else None,
-            )
+            cl_audit = audit_report.results.get("coderlegion")
+            if strict_qa and cl_audit and cl_audit.status == "FAIL":
+                print(
+                    f"⛔ Envío CoderLegion bloqueado por Quality Gate: {[i.code for i in cl_audit.issues]}"
+                )
+            else:
+                manager.post_to_coderlegion(
+                    title=coderlegion_artifact.title,
+                    content_markdown=coderlegion_artifact.markdown,
+                    canonical_url=coderlegion_artifact.canonical_url,
+                    cover_image_url=coderlegion_artifact.cover_image_url,
+                    tags=coderlegion_artifact.tags,
+                    description=coderlegion_artifact.description or None,
+                    category_id=coderlegion_cfg.category if coderlegion_cfg else None,
+                )
+                dispatched_channels.append("coderlegion")
     else:
         print("🔕 CoderLegion omitido (ENABLE_CODERLEGION=false, idioma excluido o deshabilitado)")
 
     if enable_newsletter and newsletter_payload is not None:
-        nl_audit = audit_report.results.get("newsletter")
-        if strict_qa and nl_audit and nl_audit.status == "FAIL":
+        if "newsletter" not in allowed_channels:
             print(
-                f"⛔ Envío Brevo bloqueado por Quality Gate: {[i.code for i in nl_audit.issues]}"
+                f"🔕 Newsletter Brevo omitida por filtro de ola/canales ({sorted(allowed_channels)})"
             )
         else:
-            newsletter_manager.send_campaign(
-                subject=newsletter_payload.subject,
-                intro_text=newsletter_payload,
-                post_title=post_title,
-                post_url=post_url,
-                lang=lang,
-                hero_image_url=hero_image_url,
-                slug=slug,
-            )
+            nl_audit = audit_report.results.get("newsletter")
+            if strict_qa and nl_audit and nl_audit.status == "FAIL":
+                print(
+                    f"⛔ Envío Brevo bloqueado por Quality Gate: {[i.code for i in nl_audit.issues]}"
+                )
+            else:
+                newsletter_manager.send_campaign(
+                    subject=newsletter_payload.subject,
+                    intro_text=newsletter_payload,
+                    post_title=post_title,
+                    post_url=post_url,
+                    lang=lang,
+                    hero_image_url=hero_image_url,
+                    slug=slug,
+                )
+                dispatched_channels.append("newsletter")
     else:
         print("🔕 Newsletter omitida (ENABLE_NEWSLETTER=false)")
 
@@ -688,6 +725,9 @@ def run_orchestration(
         "post_url": post_url,
         "slug": slug,
         "lang": lang,
+        "wave": effective_wave,
+        "allowed_channels": sorted(allowed_channels),
+        "dispatched_channels": dispatched_channels,
         "hero_image_url": hero_image_url,
         "secondary_cta": {"label": sec_label, "url": sec_url},
         "x": x_summary,
@@ -701,12 +741,24 @@ def run_orchestration(
     }
 
 
-def main() -> None:
+def main(argv: Optional[List[str]] = None) -> None:
     _configure_utf8_console()
-    if len(sys.argv) < 2:
-        print("❌ Uso: python orchestrator.py <ruta_al_post.md>")
-        sys.exit(1)
-    run_orchestration(sys.argv[1])
+    parser = argparse.ArgumentParser(
+        description="Orquestador Autopilot 2.0 (por defecto lee AUTOPILOT_WAVE / AUTOPILOT_CHANNELS)."
+    )
+    parser.add_argument("file_path", help="Ruta al archivo index.md del post.")
+    parser.add_argument(
+        "--wave",
+        default=None,
+        help="Ola de despliegue (all, 1_es_native, 2_en_native, 3a_es_syndication, 3b_en_syndication, native_only, syndication_only).",
+    )
+    parser.add_argument(
+        "--channels",
+        default=None,
+        help="Filtro explícito de canales separados por coma (ej. linkedin o devto,coderlegion).",
+    )
+    args = parser.parse_args(argv)
+    run_orchestration(args.file_path, wave=args.wave, channels=args.channels)
 
 
 if __name__ == "__main__":

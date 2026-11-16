@@ -1,0 +1,37 @@
+version: 1
+entries:
+- id: amfe-2026-11-16-wave2-en-native
+  file_path: content/en/posts/quantitative-risk-matrix-fmea/index.md
+  lang: en
+  wave: 2_en_native
+  channels:
+  - linkedin
+  - x
+  scheduled_at_utc: '2026-11-16T14:30:00Z'
+  status: pending
+  executed_at_utc: null
+  notes: 'Ola 2 (15:30 CET · Apertura USA): EN LinkedIn + X Web Intent 0 EUR'
+  last_error: null
+- id: amfe-2026-11-16-wave3a-es-devto
+  file_path: content/es/posts/matriz-riesgos-amfe-fmea/index.md
+  lang: es
+  wave: 3a_es_syndication
+  channels:
+  - devto
+  scheduled_at_utc: '2026-11-16T19:30:00Z'
+  status: pending
+  executed_at_utc: null
+  notes: 'Ola 3A (20:30 CET · 12h ventaja SEO): Dev.to ES con canonical_url e imagen PNG'
+  last_error: null
+- id: amfe-2026-11-17-wave3b-en-syndication
+  file_path: content/en/posts/quantitative-risk-matrix-fmea/index.md
+  lang: en
+  wave: 3b_en_syndication
+  channels:
+  - devto
+  - coderlegion
+  scheduled_at_utc: '2026-11-17T06:30:00Z'
+  status: pending
+  executed_at_utc: null
+  notes: 'Ola 3B (07:30 CET Dia +1 · 22h ventaja SEO): Dev.to EN + CoderLegion EN'
+  last_error: null

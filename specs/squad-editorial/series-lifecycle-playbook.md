@@ -1,8 +1,8 @@
 # 🔁 Playbook Oficial de Ciclo de Series y Divulgación Controlada (`SPEC-SQUAD-SCRIBA`)
 
-> **Versión:** `1.0.0` · **Estado:** `ACTIVE`  
+> **Versión:** `1.1.0` · **Estado:** `ACTIVE`  
 > **Propietario:** [`E01-editorial-orchestrator`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-editorial/E01-editorial-orchestrator.md) (en coordinación con `E02`–`E08`)  
-> **Invariantes Vinculadas:** `INV-SCRIBA-1..5`, `INV-SCRIBA-SEO-SAFE`, `INV-SCRIBA-CHRONO`, `INV-AUTO-1..8`
+> **Invariantes Vinculadas:** `INV-SCRIBA-1..5`, `INV-SCRIBA-SEO-SAFE`, `INV-SCRIBA-CHRONO`, `INV-AUTO-1..10`
 
 ---
 
@@ -34,9 +34,10 @@ flowchart LR
 1. **A1. Auditoría de Continuidad e Impacto (`E01` + `E02`):**
    - Leer los últimos 2–4 capítulos de la serie en `content/{es,en}/posts/` para capturar voz, hooks iniciales, formato de código/diagramas y estética de `cover.png`.
    - Consultar [`specs/audit/IMPACT_REPORT.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/audit/IMPACT_REPORT.md) y `data/pulse/private/metrics.json` para identificar qué enfoques y longitudes traccionan mejor dentro de esa serie/categoría y corregir errores históricos (p. ej. títulos `> 95` chars truncados).
-2. **A2. Redacción Bilingüe, Portada y Monetización Segura (`E03` + `E04` + `E05`):**
+2. **A2. Redacción Bilingüe, Portada, Diagramas PNG y Monetización Segura (`E03` + `E04` + `E05`):**
    - Crear `content/es/posts/<slug-es>/index.md` y `content/en/posts/<slug-en>/index.md` con `translationKey` idéntico, `title` en `[35, 95]` chars, `description` en `[75, 245]` chars y taxonomía completa (`INV-TAX-1`).
    - Generar `cover.png` (`1200×630 px`, foco centrado en *safe zone* coherente con la serie) en ambos bundles.
+   - Si el artículo incluye diagramas `{{< mermaid >}}`, renderizar cada diagrama a PNG de alta resolución dentro del bundle y declararlo obligatoriamente en el shortcode (`{{< mermaid image="<diagrama>.png" alt="..." >}}`) para evitar código Mermaid sin renderizar en Dev.to y CoderLegion.
    - Insertar puentes `INV-SCRIBA-CHRONO` exclusivamente hacia recursos/apps/posts ya publicados (`draft: false` y `date <= hoy`). Si el artículo abre paso a un lanzamiento próximo bajo embargo, usar *teaser* narrativo sin enlaces rotos `404`.
 3. **A3. Paquete Omnicanal y Gate Local (`E06` + `E07`):**
    - Crear `social_pack.yaml` (`es:` y `en:` con secciones `x`, `linkedin`, `newsletter`, `devto`, `coderlegion`) cumpliendo el esquema `SocialPack`.
@@ -52,8 +53,12 @@ flowchart LR
 1. **B1. Commit, Push y Verificación Pública:**
    - Aplicar eventuales retoques del usuario en `social_pack.yaml` o `index.md`, re-validar `DRY_RUN=true`, realizar commit atómico y ejecutar `git push origin main` para actualizar GitHub y Netlify.
    - Comprobar `HTTP 200` en las URLs públicas `https://datalaria.com/es/posts/...` y `https://datalaria.com/en/posts/...` antes de sindicar (`canonical_url` / `source_url`).
-2. **B2. Despacho Controlado Multi-Canal (`E08`):**
-   - Lanzar `gh workflow run autopilot.yml -f file_path="<ruta_es>"` y `-f file_path="<ruta_en>"` para garantizar que ambos idiomas se ejecuten sin omitir ninguno.
-   - Notificar al usuario para aprobar `environment: production`, verificar logs de LinkedIn, Dev.to, CoderLegion (`/api/v1/posts`) y Brevo (#3/#4), y entregar los enlaces finales más los clics directos de `X Web Intent`.
+2. **B2. Despacho Controlado en 3 Olas durante 24h (`E08` — Opción C Híbrida):**
+   - Nunca lanzar ES, EN, Dev.to y CoderLegion en el mismo minuto: tras el push conjunto en Hugo (`hreflang`), escalonar las olas en `data/editorial/dispatch_queue.yaml` o vía `workflow_dispatch`:
+     - **Ola 1 (`T+0h` · `08:30 CET`, `1_es_native`):** LinkedIn ES + X ES + Brevo #3 (ES).
+     - **Ola 2 (`T+7h` · `15:30 CET` / `09:30 EST`, `2_en_native`):** LinkedIn EN + X EN + Brevo #4 (EN).
+     - **Ola 3A (`T+12h` · `20:30 CET`, `3a_es_syndication`):** Dev.to ES (con `canonical_url` ya indexado).
+     - **Ola 3B (`T+22h` · `07:30 CET Día +1`, `3b_en_syndication`):** Dev.to EN + CoderLegion EN (`canonical_url` / `source_url` blindado).
+   - Notificar al usuario si `environment: production` requiere aprobación, verificar logs de cada ola y entregar los enlaces finales más los clics directos de `X Web Intent`.
 3. **B3. Retroalimentación Post-Publicación (`E02`):**
    - Ejecutar `gh workflow run pulse.yml` / `python -m ops.pulse.impact_analyzer` para actualizar [`specs/audit/IMPACT_REPORT.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/audit/IMPACT_REPORT.md) y nutrir las decisiones de la siguiente entrega.

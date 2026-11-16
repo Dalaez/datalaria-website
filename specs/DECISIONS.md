@@ -539,3 +539,23 @@
   - *Alternativa C: Servidor Node/Playwright para generar PNGs en servidor.* Descartada por introducir costes/infraestructura fuera de arquitectura 0 € serverless (`Non-Goal #1`).
 - **Consecuencias:**
   - Cero costes adicionales, cero mantenimiento diario en `datalaria`, backlinks limpios desde widgets externos y camino despejado para que Datalaria Scriba distribuya resúmenes semanales automatizados.
+
+---
+
+## ADR-028: Orquestación Omnicanal Escalonada en 24h (Protocolo Híbrido de 3 Olas para SEO Canónico y Algoritmo LinkedIn) (`Hito 7.6` / `SPEC-OPS-AUTOPILOT v2.2.0`)
+- **Fecha:** 2026-11-16
+- **Estado:** Aceptado (En ejecución en Hito 7.6)
+- **Contexto:**
+  1. Hasta `SPEC-OPS-AUTOPILOT v2.1.1`, cada disparo en vivo publicaba simultáneamente en el mismo minuto todos los idiomas y plataformas (`LinkedIn ES/EN`, `X ES/EN`, `Brevo`, `Dev.to` y `CoderLegion`).
+  2. Publicar ES y EN en paralelo genera tres fricciones cuantificables: (a) Dev.to/CoderLegion pueden indexarse antes que una URL recién desplegada en `datalaria.com`; (b) el algoritmo de LinkedIn penaliza publicar dos entradas desde el mismo perfil personal en menos de 4–6 horas, cortando el alcance del post en español y desalineando la ventana US/LATAM; (c) el tráfico inicial se dispersa hacia espejos externos sin modales interactivos de monetización (`19 €` / `7 €` / Sandboxes).
+  3. Además, cualquier diagrama `{{< mermaid >}}` sin parámetro `image="..."` se exporta como bloque ```` ```mermaid ```` crudo en plataformas sin renderizador nativo (ej. CoderLegion).
+- **Decisión:**
+  1. **Protocolo de 3 Olas en 24 Horas (Opción C Híbrida):** Tras el `git push` conjunto ES+EN (obligatorio para preservar `hreflang`) y verificación `HTTP 200` en Netlify, la distribución externa se escalona en **Ola 1 (`T+0h` — `1_es_native`: LinkedIn ES + X ES + Brevo #3)**, **Ola 2 (`T+7h` — `2_en_native`: LinkedIn EN + X EN + Brevo #4)**, **Ola 3A (`T+12h` — `3a_es_syndication`: Dev.to ES)** y **Ola 3B (`T+22h` — `3b_en_syndication`: Dev.to EN + CoderLegion EN)**.
+  2. **Filtrado Determinista (`INV-AUTO-9`):** `models.py` añade `ChannelName`, `DispatchWave`, `WAVE_DEFAULT_CHANNELS` y `resolve_allowed_channels(wave, channels)`. `orchestrator.py` audita el 100 % en `DRY_RUN=true` y filtra exclusivamente `allowed_channels` en `LIVE MODE`.
+  3. **Cola Declarativa y CI Híbrido (`INV-AUTO-10`):** Se crea `autopilot/src/wave_scheduler.py` operando `data/editorial/dispatch_queue.yaml`. En `.github/workflows/autopilot.yml`, un `push` solo ejecuta validación (`check_changes`), mientras `publish` corre bajo `workflow_dispatch` (con inputs `wave` y `channels`) o `schedule` cron (`ENABLE_STAGGERED_CRON=true`).
+  4. **Blindaje Visual Mermaid:** Todo diagrama `{{< mermaid >}}` debe incluir `image="<nombre>.png"` para que `markdown_syndicator.py` emita una imagen PNG verificada en comunidades externas manteniendo el SVG interactivo en Hugo.
+- **Alternativas Descartadas:**
+  - *Alternativa A: Retrasar el `git push` del artículo EN en Hugo 7 horas.* Descartada porque rompería `hreflang` y la invariante `test_post_bilingual_pairing_parity` (`INV-PULSE-1`).
+  - *Alternativa B: Usar trabajos `sleep` largos dentro de GitHub Actions.* Descartada por desperdicio de minutos de runner e inestabilidad ante límites de timeout.
+- **Consecuencias:**
+  - Coste `0 €`, cero disparos accidentales al hacer `git push`, protección del algoritmo de LinkedIn (`> 6h` de separación), ventaja de indexación de 12–22h para `datalaria.com` y control total manual/cron por ola y canal.

@@ -5,7 +5,8 @@ from __future__ import annotations
 import hashlib
 import re
 import unicodedata
-from typing import Any, Dict, List, Literal, Optional, Tuple, Union
+from datetime import datetime, timezone
+from typing import Any, Dict, List, Literal, Optional, Sequence, Set, Tuple, Union
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 from pydantic import AliasChoices, BaseModel, ConfigDict, Field, field_validator
@@ -317,3 +318,88 @@ class QualityAuditReport(BaseModel):
 
     overall_status: Literal["PASS", "WARN", "FAIL"]
     results: Dict[str, PlatformAuditResult] = Field(default_factory=dict)
+
+
+ChannelName = Literal["x", "linkedin", "newsletter", "devto", "coderlegion"]
+DispatchWave = Literal[
+    "all",
+    "1_es_native",
+    "2_en_native",
+    "3a_es_syndication",
+    "3b_en_syndication",
+    "native_only",
+    "syndication_only",
+]
+
+ALL_CHANNELS: Tuple[ChannelName, ...] = ("x", "linkedin", "newsletter", "devto", "coderlegion")
+
+WAVE_DEFAULT_CHANNELS: Dict[str, Tuple[ChannelName, ...]] = {
+    "all": ALL_CHANNELS,
+    "1_es_native": ("linkedin", "x", "newsletter"),
+    "2_en_native": ("linkedin", "x", "newsletter"),
+    "3a_es_syndication": ("devto",),
+    "3b_en_syndication": ("devto", "coderlegion"),
+    "native_only": ("linkedin", "x", "newsletter"),
+    "syndication_only": ("devto", "coderlegion"),
+}
+
+
+def resolve_allowed_channels(
+    wave: Optional[str] = None,
+    channels: Optional[Union[str, Sequence[str]]] = None,
+) -> Set[str]:
+    """Resuelve determinísticamente el conjunto de canales permitidos por ola o filtro explícito."""
+    explicit_tokens: List[str] = []
+    if channels is not None:
+        if isinstance(channels, str):
+            explicit_tokens = [tok.strip().lower() for tok in channels.split(",") if tok.strip()]
+        else:
+            explicit_tokens = [str(tok).strip().lower() for tok in channels if str(tok).strip()]
+
+    if explicit_tokens:
+        invalid = [tok for tok in explicit_tokens if tok not in ALL_CHANNELS]
+        if invalid:
+            raise ValueError(f"Canal(es) no soportado(s): {invalid}. Válidos: {list(ALL_CHANNELS)}")
+        return set(explicit_tokens)
+
+    wave_key = (wave or "all").strip().lower() or "all"
+    if wave_key not in WAVE_DEFAULT_CHANNELS:
+        raise ValueError(
+            f"Ola de despacho no soportada: '{wave}'. Válidas: {list(WAVE_DEFAULT_CHANNELS)}"
+        )
+    return set(WAVE_DEFAULT_CHANNELS[wave_key])
+
+
+class WaveQueueEntry(BaseModel):
+    """Entrada individual programada para el despacho escalonado en 24h (INV-AUTO-10)."""
+
+    model_config = ConfigDict(extra="ignore")
+
+    id: str = Field(min_length=3, max_length=120)
+    file_path: str = Field(min_length=5)
+    lang: Literal["es", "en"]
+    wave: DispatchWave
+    channels: List[ChannelName] = Field(min_length=1)
+    scheduled_at_utc: str
+    status: Literal["pending", "completed", "skipped", "failed"] = "pending"
+    executed_at_utc: Optional[str] = None
+    notes: Optional[str] = None
+    last_error: Optional[str] = None
+
+    @field_validator("scheduled_at_utc")
+    @classmethod
+    def _validate_iso_utc(cls, value: str) -> str:
+        raw = value.strip()
+        parsed = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+        if parsed.tzinfo is None:
+            raise ValueError("scheduled_at_utc debe incluir zona horaria explícita (ej. 'Z' o '+00:00').")
+        return parsed.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+class DispatchQueue(BaseModel):
+    """Cola declarativa persistida en data/editorial/dispatch_queue.yaml."""
+
+    model_config = ConfigDict(extra="ignore")
+
+    version: int = 1
+    entries: List[WaveQueueEntry] = Field(default_factory=list)

@@ -11,6 +11,7 @@ ignoreFiles:
   - '(?i)\.xlsx$'
   - '(?i)social_pack\.ya?ml$'
   - '(?i)dist_(devto|coderlegion)(_[a-z]{2})?\.md$'
+  - '(?i)dispatch_queue\.ya?ml$'
 
 # --- PAGINACIÓN ---
 pagination:

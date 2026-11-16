@@ -1,0 +1,77 @@
+es:
+  x:
+    hook: "El 80 % de las matrices 5x5 apilan riesgos en zona amarilla sin medir si el fallo es invisible ni su ROI. Así blindas operaciones con ISO 31000 y AMFE (NPR = S×O×D)."
+    thread:
+      - "1/5 El fallo de la última milla cualitativa: un error operativo de 40.000 € y una brecha RGPD de 4 M€ acaban con la misma etiqueta roja. El CFO no tiene criterio objetivo para asignar CAPEX."
+      - "2/5 La ceguera de Detección: las matrices Probabilidad × Impacto asumen que verás el fallo al instante. El AMFE (AIAG-VDA) introduce Detección inversa (D=1 a 10): si no hay telemetría en vivo, tu riesgo se dispara."
+      - "3/5 Por qué AIAG-VDA jubiló el corte lineal de NPR: Severidad 10 × Ocurrencia 2 × Detección 3 = 60 (catastrófico) perdía frente a un fallo estético de NPR 90. Hoy manda la Prioridad de Acción: veto directo si S>=9 o NPR>=120."
+      - "4/5 Caso real en pasarela de pagos: timeout bancario con NPR 336 (190.000 € en juego). Con smart routing a 3 adquirentes y circuit breaker (28.000 € CAPEX) bajó a NPR 32 (-90,5 %) y protegió 165.000 € netos (CER 5,89x)."
+      - "5/5 Guía completa con fórmula E(L), baremos 1-10 AIAG-VDA y arquitectura en Excel 4 pestañas + Deck C-Level (7 €): https://datalaria.com/es/posts/matriz-riesgos-amfe-fmea/"
+    hashtags:
+      - "GestionDeRiesgos"
+      - "AMFE"
+      - "FMEA"
+      - "ISO31000"
+      - "Operaciones"
+  linkedin:
+    text: |-
+      El 80 % de las matrices corporativas de riesgos acaban convertidas en un mosaico amarillo que no sirve para aprobar ni un euro de CAPEX.
+
+      ⚠️ Cuando un fallo operativo de 40.000 € y una brecha regulatoria de 4.000.000 € reciben la misma etiqueta roja, la alta dirección pierde visibilidad real sobre dónde proteger el negocio.
+
+      📘 Acabo de publicar la guía técnica completa de Matriz de Riesgos Cuantitativa 5x5 (ISO 31000) & AMFE / FMEA Operativo (AIAG-VDA) en Datalaria:
+
+      🔹 Matriz 5x5 + AMFE tridimensional: combinamos Probabilidad × Impacto con Severidad × Ocurrencia × Detección (NPR) para penalizar procesos ciegos sin telemetría.
+
+      🔹 Prioridad de Acción AIAG-VDA: veto automático cuando S >= 9 o NPR >= 120, evitando que fallos catastróficos de baja frecuencia queden ocultos bajo cortes lineales.
+
+      🔹 Caso real de pasarela cloud: pasar de NPR 336 a NPR 32 (-90,5 %) con 28.000 € en smart routing y circuit breakers evita 165.000 € en pérdidas esperadas (CER 5,89x).
+
+      🔹 Modelo listo para Comité de Dirección: Excel de 4 pestañas ECMA-376, Deck 16:9 y Guía PDF dentro del Executive Decision Pack (7 €).
+
+      📖 Lee el artículo técnico completo, baremos 1-10 y fórmulas aquí: https://datalaria.com/es/posts/matriz-riesgos-amfe-fmea/
+
+      💬 En tu organización, ¿seguís priorizando riesgos solo por Probabilidad × Impacto o ya penalizáis formalmente la falta de detección en tiempo real?
+    hashtags:
+      - "GestionDeRiesgos"
+      - "AMFE"
+      - "FMEA"
+      - "ISO31000"
+      - "ControlOperativo"
+  newsletter:
+    archetype: "real_case_number"
+    subject: "De NPR 336 a 32: cómo 28.000 € en controles evitaron 165.000 € en pérdidas"
+    preheader: "Matriz 5x5 ISO 31000, AMFE AIAG-VDA y ratio financiero CER para justificar CAPEX de resiliencia ante el CFO."
+    hook_paragraphs:
+      - "Casi todas las matrices de riesgos fallan en el mismo punto: etiquetan amenazas como 'riesgo alto' en rojo, pero no responden a la única pregunta que importa al CFO cuando toca aprobar presupuesto."
+      - "En la nueva guía técnica de Datalaria explicamos cómo unir la Matriz 5x5 (ISO 31000) con el AMFE tridimensional AIAG-VDA (Severidad × Ocurrencia × Detección) y el ratio CER para traducir fallos técnicos en capital protegido."
+    insights_60s:
+      - "El fallo ciego es el más caro: el AMFE introduce la Detección inversa (D=1 a 10) para penalizar procesos sin observabilidad ni alertas automáticas."
+      - "Adiós al corte plano de NPR: bajo AIAG-VDA, cualquier modo de fallo con Severidad >= 9 o NPR >= 120 dispara Prioridad de Acción Alta aunque ocurra pocas veces."
+      - "Rentabilidad demostrable (CER): pasar de NPR 336 a 32 con 28.000 € de inversión en smart routing protegió 165.000 € en pérdida esperada anual (retorno de 5,89x)."
+    secondary_cta_label: "Ver Pack Matriz de Riesgos & AMFE (7€)"
+    secondary_cta_url: "https://datalaria.com/es/recursos/#pack-amfe"
+    ps_referral_text: "P.D. Si trabajas con algún responsable de operaciones, calidad o auditoría que sufre defendiendo presupuestos de mitigación ante Dirección, reenvíale este análisis."
+  devto:
+    enabled: true
+    title: "Matriz de Riesgos Cuantitativa y AMFE / FMEA Operativo: ISO 31000 y AIAG-VDA"
+    description: "Guía cuantitativa para pasar de matrices 5x5 subjetivas al cálculo de NPR (S×O×D), Prioridad de Acción AIAG-VDA y ratio financiero CER."
+    tags:
+      - "riskmanagement"
+      - "fmea"
+      - "operations"
+      - "excel"
+    canonical_url: "https://datalaria.com/es/posts/matriz-riesgos-amfe-fmea/"
+    published: true
+  coderlegion:
+    enabled: false
+    title: "Matriz de Riesgos Cuantitativa y AMFE / FMEA Operativo: ISO 31000 y AIAG-VDA"
+    description: "Motor dual ISO 31000 5x5 y AMFE AIAG-VDA con cálculo de pérdida esperada E(L) y ROI de controles (CER)."
+    tags:
+      - "risk-management"
+      - "fmea"
+      - "operations"
+      - "architecture"
+    canonical_url: "https://datalaria.com/es/posts/matriz-riesgos-amfe-fmea/"
+    published: false
+    category: 2

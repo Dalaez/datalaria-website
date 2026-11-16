@@ -1,12 +1,12 @@
 # Especificación Técnica SDD: Datalaria `Autopilot 2.0` y `Brevo Newsletter 2.0 Anti-Churn` (`autopilot`)
 
 > **ID de Especificación:** `SPEC-OPS-AUTOPILOT`  
-> **Versión:** `2.1.1`  
+> **Versión:** `2.2.0`  
 > **Estado:** `APPROVED`  
 > **Propietario de Dominio:** Datalaria (Superequipo Helix + Scriba · `E05`, `E06`, `E07`, `E08`)  
 > **Ubicación del Código Fuente:** `autopilot/`  
 > **Workflow CI/CD:** `.github/workflows/autopilot.yml`  
-> **Decisiones Arquitectónicas:** `ADR-020`, `ADR-024` & `ADR-025`  
+> **Decisiones Arquitectónicas:** `ADR-020`, `ADR-024`, `ADR-025` & `ADR-028`  
 
 ---
 
@@ -18,6 +18,7 @@ Transformar la distribución editorial de Datalaria desde un script monolítico 
 ### 1.2 Frontera de Alcance (Hito 7.3 + Hito 7.4)
 - **Dentro de `v2.0.0` (Hito 7.3):** Especificación SDD, limpieza de deuda deprecada (`autopilot/ctrl/`, `*_OLD_DEPRECATED.py`), contratos Pydantic v2 (`models.py`), soporte prioritario para `social_pack.yaml`, blindaje de Hugo (`config.yaml`), validador determinista de calidad (`quality_validator.py`), modo X coste `0 €` (`x.com/intent/tweet` + hilos de 4–6 tweets), cerebro JSON + fallback offline determinista (`brain.py`), plantilla HTML clara anti-churn (`newsletter_manager.py`) y suite `pytest` sin llamadas a APIs externas.
 - **Dentro de `v2.1.0` (Hito 7.4):** Transformador universal de Markdown (`markdown_syndicator.py`), contratos `SyndicationConfig` / `SyndicationArtifact`, normalización de tags (`normalize_syndication_tags`), auditoría `audit_markdown_syndication` en `quality_validator.py`, integración REST **CoderLegion** (`/api/v1/posts` con `X-API-Key` y `source_url`) y metadatos enriquecidos de **Dev.to** (`social_manager.py`), aislamiento de `autopilot/dist/` y cortafuegos `config.yaml`, preservando intactos los 8 tests de `autopilot/tests/test_link_resolver.py`.
+- **Dentro de `v2.2.0` (Hito 7.6):** Orquestación omnicanal escalonada en **3 Olas dentro de una ventana de 24h** (Opción C Híbrida): selector determinista `--wave` / `--channels` (`AUTOPILOT_WAVE`, `AUTOPILOT_CHANNELS`) en `orchestrator.py`, cola declarativa Pydantic v2 en `data/editorial/dispatch_queue.yaml` operada por `autopilot/src/wave_scheduler.py`, y workflow híbrido (`push` solo valida + `DRY_RUN`; `workflow_dispatch` + `schedule` cron para ejecución controlada).
 
 ---
 
@@ -51,7 +52,9 @@ flowchart LR
 | `autopilot/src/brain.py` | **El Cerebro:** Extracción/generación JSON estructurada vía `google-genai` con fallback determinista offline a partir del Markdown real cuando no exista `GEMINI_API_KEY`. |
 | `autopilot/src/newsletter_manager.py` | Cliente Brevo API v3 (`#3` ES / `#4` EN) y constructor de la plantilla HTML tabular clara **Brevo Newsletter 2.0 Anti-Churn**. |
 | `autopilot/src/social_manager.py` | Gestor omnicanal con política **X Coste 0 €** (`ENABLE_TWITTER_API=false` por defecto), auto-refresh LinkedIn (`.linkedin_new_tokens.json`), `Dev.to` (`canonical_url` + tags) y **CoderLegion** (`/api/v1/posts` con `X-API-Key` y `source_url`). |
-| `autopilot/src/orchestrator.py` | Pipeline principal con cascada de prioridad, resolución de Hero cover y CTA secundario seguro (`INV-AUTO-6`), sindicación Dev.to/CoderLegion, validación QA y `DRY_RUN` completo. |
+| `autopilot/src/orchestrator.py` | Pipeline principal con cascada de prioridad, filtrado por `--wave` / `--channels` (`INV-AUTO-9`), resolución de Hero cover y CTA secundario seguro (`INV-AUTO-6`), sindicación Dev.to/CoderLegion, validación QA y `DRY_RUN` completo. |
+| `autopilot/src/wave_scheduler.py` | Gestor determinista de cola declarativa 24h (`data/editorial/dispatch_queue.yaml`) con encolado de 3 olas y despacho automático vía cron (`--process-due`, `--status`). |
+| `data/editorial/dispatch_queue.yaml` | Cola declarativa persistente de olas programadas (`WaveQueueEntry` / `DispatchQueue`) protegida frente a exposición en `public/`. |
 | `autopilot/requirements.txt` | Dependencias activas sin `crewai` ni `langchain-google-genai`. |
 | `config.yaml`, `autopilot/.gitignore` & `.github/workflows/autopilot.yml` | Exclusión de `social_pack.yaml` y `dist_*.md` en builds Hugo (`ignoreFiles`), aislamiento de `autopilot/dist/` y pipeline CI/CD con `pytest` previo a `publish`. |
 
@@ -75,10 +78,12 @@ flowchart LR
 - **`SyndicationArtifact`:** `platform` (`"devto" | "coderlegion"`), `lang` (`"es" | "en"`), `slug`, `title`, `description`, `canonical_url`, `cover_image_url`, `tags`, `markdown`, `output_path`.
 - **`SocialPack`:** Soporta formato raíz monolingüe o secciones `es:` / `en:` mediante `resolve_language(lang)` con campos tipados `devto: Optional[SyndicationConfig]` y `coderlegion: Optional[SyndicationConfig]`.
 - **`QualityAuditReport`:** Agrega `PlatformAuditResult` por canal (`x`, `linkedin`, `newsletter`, `devto`, `coderlegion`) con `overall_status: Literal["PASS", "WARN", "FAIL"]`.
+- **`ChannelName` & `DispatchWave`:** Literales cerrados de canal (`"x" | "linkedin" | "newsletter" | "devto" | "coderlegion"`) y ola (`"all" | "1_es_native" | "2_en_native" | "3a_es_syndication" | "3b_en_syndication" | "native_only" | "syndication_only"`).
+- **`WaveQueueEntry` & `DispatchQueue`:** Contratos Pydantic v2 para entradas programadas (`id`, `file_path`, `lang`, `wave`, `channels`, `scheduled_at_utc`, `status`, `executed_at_utc`, `run_url`, `error_message`) en `data/editorial/dispatch_queue.yaml`.
 
 ---
 
-## 4. El Músculo Determinista e Invariantes Inmutables (`INV-AUTO-1..8`)
+## 4. El Músculo Determinista e Invariantes Inmutables (`INV-AUTO-1..10`)
 
 1. **`INV-AUTO-1 (Zero-API-Cost X Policy):`** `ENABLE_TWITTER_API` vale `"false"` por defecto en código y CI. Toda ejecución genera `https://x.com/intent/tweet?...` e hilo de 4–6 tweets sin realizar llamadas de pago a `tweepy`.
 2. **`INV-AUTO-2 (Brevo 2.0 Anti-Churn Layout & Subjects):`** Prohibido emitir asuntos que comiencen por `🚀 Nuevo en Datalaria:`, `nuevo en datalaria:`, `🚀 New on Datalaria:` o `new on datalaria:`. Rotación determinista sobre los 5 arquetipos (`SHA-256(slug) % 5`). Plantilla tabular con fondo claro (`#f8fafc` / `#ffffff`, compatible con Outlook/Gmail), preheader oculto, **exactamente 1 etiqueta `<img>` Hero clicable** (`max-width: 560px`, `border-radius: 12px`), caja **"⚡ En 60 segundos: Los 3 Insights Clave"**, doble CTA con UTMs y `P.D.` viral + `{{ unsubscribe }}`.
@@ -88,6 +93,8 @@ flowchart LR
 6. **`INV-AUTO-6 (Chronological & Link Parity):`** El CTA secundario hacia Sandbox/Recursos inspecciona `data/apps/<slug>.yaml` y **bloquea** la promoción de cualquier app con `status == "incubating"` (ej. `helix` bajo embargo), haciendo fallback seguro a `/es/recursos/` o `/en/resources/`. Todo UTM se inyecta con `urlsplit`/`urlunsplit` **antes** del fragmento `#` (preservando rutas `HashRouter` como `/apps/lifeops/#/?mock=true`).
 7. **`INV-AUTO-7 (Universal Markdown Syndication & Firewall):`** Todo contenido sindicado transforma el 100 % de shortcodes Hugo soportados (`mermaid` — en bloque ```` ```mermaid ```` o en imagen externa `![alt](url)` cuando incluye el parámetro `image="..."` —, `app-ref`, `helix-waitlist`, `product-card`, `bundle-card`, `youtube` — `{% youtube <id> %}` en `devto` y miniatura clicable Markdown en `coderlegion` —, `buymeacoffee`, `ref`/`relref`), imágenes relativas (`raw.githubusercontent.com` o `datalaria.com/images/...`) e hipervínculos (`datalaria.com` + `utm_source=<platform>&utm_medium=syndication&utm_campaign=<slug>`), protegiendo bloques de código cercados y garantizando `0` enlaces relativos residuales ni fuga hacia `public/` (`config.yaml` ignora `dist_(devto|coderlegion)(_[a-z]{2})?\.md$`, artefactos aislados en `autopilot/dist/`).
 8. **`INV-AUTO-8 (Canonical Protection & CoderLegion Contract):`** Ninguna publicación hacia Dev.to (`canonical_url`) ni CoderLegion (`source_url`) puede emitirse sin URL canónica `https://datalaria.com/...`; la autenticación con CoderLegion emplea exclusivamente la cabecera `X-API-Key` desde entorno/Secrets (`0` credenciales en código o logs) y CoderLegion respeta `CODERLEGION_LANGS` (default `"en"`).
+9. **`INV-AUTO-9 (Filtrado Determinista por Canal y Ola):`** `run_orchestration()` acepta `wave` y `channels` (argumentos Python, ENV `AUTOPILOT_WAVE`/`AUTOPILOT_CHANNELS` y CLI `--wave`/`--channels`). En `DRY_RUN=true`, `audit_social_bundle` audita el **100 %** de los canales activos; en `LIVE MODE`, solo se despachan los canales presentes en `resolve_allowed_channels(wave, channels)`.
+10. **`INV-AUTO-10 (Cola Declarativa 24h y Disparo Controlado en CI):`** Las olas diferidas viven en `data/editorial/dispatch_queue.yaml` bajo contrato `DispatchQueue`. En `.github/workflows/autopilot.yml`, un `push` ordinario a `main` solo ejecuta `check_changes` (`pytest` + `DRY_RUN=true`) salvo que `AUTO_PUBLISH_ON_PUSH=true`, evitando disparos prematuros antes de `HTTP 200` en Netlify; el job `publish` solo se activa mediante `workflow_dispatch` o `schedule` cron (`ENABLE_STAGGERED_CRON=true`).
 
 ---
 
@@ -96,6 +103,7 @@ flowchart LR
 - **Codificación Windows:** Apertura/escritura de archivos explícita con `encoding="utf-8"` y `sys.stdout.reconfigure(encoding="utf-8", errors="replace")` cuando aplique en CLI.
 - **Variables de Entorno Soportadas:**
   - `DRY_RUN`, `STRICT_QA`, `ENABLE_TWITTER`, `ENABLE_TWITTER_API` (default `false`), `ENABLE_LINKEDIN`, `ENABLE_DEVTO`, `ENABLE_CODERLEGION` (default `false`), `ENABLE_NEWSLETTER`
+  - `AUTOPILOT_WAVE` (default `all`), `AUTOPILOT_CHANNELS` (opcional, CSV), `ENABLE_STAGGERED_CRON` (default `true`), `AUTO_PUBLISH_ON_PUSH` (default `false`)
   - `GEMINI_API_KEY`, `BREVO_API_KEY`, `BREVO_LIST_ID_ES` (default `3`), `BREVO_LIST_ID_EN` (default `4`)
   - `LINKEDIN_ACCESS_TOKEN`, `LINKEDIN_CLIENT_ID`, `LINKEDIN_CLIENT_SECRET`, `LINKEDIN_REFRESH_TOKEN`, `LINKEDIN_COMPANY_ID`
   - `DEVTO_API_KEY`, `DEVTO_ORG_ID`
@@ -120,3 +128,4 @@ hugo --renderToMemory
 | `2.0.0` | 2026-11-12 | Creación de especificación SDD de Autopilot 2.0 y Brevo Newsletter 2.0 Anti-Churn, retirada de `autopilot/ctrl/` y código CrewAI deprecado. | `ADR-024`, Hito `7.3` |
 | `2.1.0` | 2026-11-12 | Incorporación de `markdown_syndicator.py`, `SyndicationConfig`/`SyndicationArtifact`, auditoría `audit_markdown_syndication`, integración CoderLegion (`X-API-Key` + `source_url`) y firewall `dist_*.md`. | `ADR-025`, Hito `7.4` |
 | `2.1.1` | 2026-11-14 | Embed nativo de YouTube en Dev.to (`{% youtube <id> %}`) y categoría por defecto `CODERLEGION_CATEGORY_ID=2` (`Articles`) en `social_manager.py` y `autopilot.yml`. | Hito `7.5` |
+| `2.2.0` | 2026-11-16 | Orquestación escalonada en 24h (Opción C Híbrida): filtro `--wave`/`--channels` (`INV-AUTO-9`), `wave_scheduler.py` + `dispatch_queue.yaml` (`INV-AUTO-10`) y workflow CI cron + manual sin disparo prematuro en `push`. | `ADR-028`, Hito `7.6` |
