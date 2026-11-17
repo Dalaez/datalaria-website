@@ -9,7 +9,8 @@ entries:
   scheduled_at_utc: '2026-11-16T08:15:00Z'
   status: completed
   executed_at_utc: '2026-11-16T08:17:38Z'
-  notes: 'Ola 1 cerrada en vivo (Run 43829777204): LinkedIn ES urn:li:share:7528008366615412736 (X ES publicado manualmente previamente)'
+  notes: 'Ola 1 cerrada en vivo (Run 43829777204): LinkedIn ES urn:li:share:7528008366615412736
+    (X ES publicado manualmente previamente)'
   last_error: null
 - id: amfe-2026-11-16-wave1-es-brevo
   file_path: content/es/posts/matriz-riesgos-amfe-fmea/index.md
@@ -32,7 +33,8 @@ entries:
   scheduled_at_utc: '2026-11-16T14:30:00Z'
   status: completed
   executed_at_utc: '2026-11-16T15:17:53Z'
-  notes: 'Ola 2 cerrada (Run 43891174137): LinkedIn EN urn:li:share:7528114124669689856 + X Web Intent 0 EUR'
+  notes: 'Ola 2 cerrada (Run 43891174137): LinkedIn EN urn:li:share:7528114124669689856
+    + X Web Intent 0 EUR'
   last_error: null
 - id: amfe-2026-11-16-wave2-en-brevo
   file_path: content/en/posts/quantitative-risk-matrix-fmea/index.md
@@ -52,9 +54,10 @@ entries:
   channels:
   - devto
   scheduled_at_utc: '2026-11-16T19:30:00Z'
-  status: pending
-  executed_at_utc: null
-  notes: 'Ola 3A (20:30 CET · 12h ventaja SEO): Dev.to ES con canonical_url e imagen PNG'
+  status: completed
+  executed_at_utc: '2026-11-17T07:12:39Z'
+  notes: 'Ola 3A (20:30 CET · 12h ventaja SEO): Dev.to ES con canonical_url e imagen
+    PNG'
   last_error: null
 - id: amfe-2026-11-17-wave3b-en-syndication
   file_path: content/en/posts/quantitative-risk-matrix-fmea/index.md
@@ -64,7 +67,7 @@ entries:
   - devto
   - coderlegion
   scheduled_at_utc: '2026-11-17T06:30:00Z'
-  status: pending
-  executed_at_utc: null
+  status: completed
+  executed_at_utc: '2026-11-17T07:12:39Z'
   notes: 'Ola 3B (07:30 CET Dia +1 · 22h ventaja SEO): Dev.to EN + CoderLegion EN'
   last_error: null
