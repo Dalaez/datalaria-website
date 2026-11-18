@@ -116,7 +116,7 @@ Secciones en este orden (todas generadas desde `data/apps/<slug>.yaml`):
 | 3 | **Qué hace** | Grid `features`. |
 | 4 | **Especificaciones de diseño** | `design.architecture`, `design.principles`, diagrama Mermaid (reutiliza el soporte Mermaid ya existente del portal). |
 | 5 | **Tecnologías** | Chips agrupados por `layer`. |
-| 6 | **Artículos de referencia** | Tarjetas de los `posts` (portada, título, fecha) resueltas con `site.GetPage` en el idioma actual. |
+| 6 | **Artículos de referencia** | Tarjetas de los `posts` (portada encuadrada con `object-fit: contain`, título, fecha) resueltas con `site.GetPage`. Si el post aún no existe o su fecha es posterior a hoy (`date > now`, incluso bajo `hugo -F`), se renderiza como tarjeta **"Próximamente" / "Coming Soon"** **sin enlace clicable**, con su miniatura resuelta por `resources.Get .cover` si procede. |
 | 7 | **Historial evolutivo** | Timeline vertical de `releases` (versión, fecha, tipo con icono, título, cambios). Las `planned` se muestran como "Próximamente". |
 | 8 | **CTA** | `related_products` (Lemon Squeezy, con atributos de telemetría existentes) o, si vacío, la newsletter del footer. |
 

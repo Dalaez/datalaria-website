@@ -365,20 +365,20 @@ Modern content operations no longer require a trade-off between the flexibility 
 
 {{< product-card
   id="pack-pulse"
-  title="Datalaria Pulse: Content Ops & Notion Migration Kit"
+  title="Datalaria Pulse: Content Ops & Notion Migration Kit (Dual ES/EN)"
   category="Software, AI & SDD"
   price="19€"
   original_price="39€"
-  badge="📊 Content Ops as Code Standard"
+  badge="📊 Content Ops as Code Standard · Dual ES/EN"
   icon="📊"
   preview_image="pulse-preview-en.png"
-  preview_caption="Deliverables preview: 6-sheet Master Excel Template (.xlsx), dual Power Query M connectors, and standalone Python migration/scanner CLI scripts."
-  deliverables="6-Sheet Master Excel Workbook|Dual Power Query M Connectors|Notion Migration CLI + PDF Guide"
-  features="Master Excel Template (.xlsx) with 6 structured sheets (Taxonomy, Assets, Kanban, Metrics, and Executive Dashboard)|Dual Power Query M connectors: 1-click synchronization from Notion CSV exports and Git public.json manifests|Deterministic Python migration engine (migrate_notion.py) with direct multi-format export|Universal zero-dependency repository scanner (pulse_repo_scanner.py) for automated CI/CD audits|Executive 4-page A4 PDF guide and canonical data dictionary specification"
-  checkout_url="/en/resources/#pack-pulse"
+  preview_caption="Deliverables preview (Dual Edition ES/EN): Automated 6-sheet Excel workbooks, dual Power Query M connectors, Python CLI tools & 5-page Executive PDF Guide."
+  deliverables="Dual Automated Excel (6 Sheets)|Dual Power Query M Connectors|Python CLI + 5p PDF Guide"
+  features="Complete Dual Edition (ES/EN) packaged in standalone ES/ and EN/ folders for instant deployment|Automated 6-sheet Master Excel Workbooks (.xlsx) with native AutoFilter tables, live Kanban & Executive Dashboard (zero VBA)|Bilingual Power Query M connectors: 1-click synchronization from Notion CSV exports and Git public.json manifests|Zero-dependency Python CLI tools (migrate_notion.py & pulse_repo_scanner.py with --lang es/en support)|Executive 5-page A4 PDF Guides and full canonical data dictionary specifications"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/3aac3253-2081-44b5-af4d-c0ecfc257be0?embed=1"
   button_text="Download Commercial Kit (.ZIP) • 19€"
 >}}
-The downloadable commercial bundle includes the **Master Excel Template (.xlsx)** with 6 structured sheets and strict cell validations, the **Dual Power Query M Connectors** to sync Notion CSV exports and local Git repositories in 1 click, the **Python Migration CLI (migrate_notion.py)**, the zero-dependency **Universal Repository Scanner (pulse_repo_scanner.py)**, and the **Executive PDF Guide**.
+The downloadable commercial bundle (**Dual ES/EN Edition**) includes **Automated Master Excel Workbooks (.xlsx)** with 6 color-coded sheets, native AutoFilter tables and zero manual duplication (`INDEX/MATCH` + live Kanban), **Dual Power Query M Connectors** for Notion CSV and Git `public.json`, **Zero-Dependency Python CLI Tools** (`migrate_notion.py` & `pulse_repo_scanner.py`), and **5-Page Executive PDF Guides**.
 {{< /product-card >}}
 
 > ### Upgrade to Content Ops as Code

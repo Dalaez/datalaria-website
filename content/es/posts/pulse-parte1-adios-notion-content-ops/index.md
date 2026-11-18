@@ -75,7 +75,7 @@ Cualquier profesional que haya intentado mantener un calendario editorial en Not
 3. **La Ceguera de la Paridad Bilingüe:** Si publicas en español y en inglés, mantener la trazabilidad manual de qué traducciones están pendientes, cuáles quedaron desactualizadas tras un cambio técnico y cuáles tienen paridad completa exige un esfuerzo administrativo insostenible. El resultado habitual son artículos huérfanos y enlaces cruzados rotos.
 4. **La Deuda Administrativa (*Toil*):** El autor técnico termina dedicando el 20% de su tiempo productivo a tareas burocráticas de actualización manual de tarjetas en lugar de redactar contenido de alto valor o programar algoritmos.
 
-{{< mermaid >}}
+{{< mermaid image="pulse_notion_vs_git.png" alt="Comparativa entre la Fuente Única de Verdad en Git y el Silo Manual en Notion" >}}
 flowchart LR
     subgraph GIT ["1. Fuente Única de Verdad (Git)"]
         A["Markdown en Git"] -->|git push| B["Producción / Hugo / Vercel"]
@@ -115,7 +115,7 @@ Bajo este modelo, la gestión editorial deja de ser una tarea manual reactiva y 
 
 Para materializar esta filosofía en el ecosistema Datalaria, hemos construido y puesto en producción **Datalaria Pulse**: un motor integral que lee directamente nuestro árbol de contenidos y genera un panel ejecutivo en tiempo real.
 
-{{< mermaid >}}
+{{< mermaid image="pulse_architecture_flow.png" alt="Arquitectura de 4 Capas de Datalaria Pulse (Git, Pydantic v2, Datasets y React 19)" >}}
 flowchart TD
     subgraph Repositorio ["1. Single Source of Truth (Git)"]
         MD_ES["content/es/posts/**/index.md\n(Front Matter YAML)"]
@@ -128,7 +128,7 @@ flowchart TD
         SCAN["build_index.py\n(Escaneo léxico y hashes)"]
         SEO["audit_seo()\n(Score determinista 0-100)"]
         PARITY["Algoritmo de Paridad\n(Emparejamiento ES ⇔ EN)"]
-        METRICS["sync_metrics.py\n(Google Analytics 4 & Search Console)"]
+        METRICS["sync_metrics.py\n(Google Analytics 4 + Search Console)"]
         SCAN --> SEO & PARITY
         METRICS --> SCAN
     end
@@ -208,20 +208,20 @@ Si gestionas un blog técnico, un portal de documentación o una publicación co
 
 {{< product-card
   id="pack-pulse"
-  title="Datalaria Pulse: Content Ops & Notion Migration Kit"
+  title="Datalaria Pulse: Content Ops & Notion Migration Kit (Dual ES/EN)"
   category="Software, IA & SDD"
   price="19€"
   original_price="39€"
-  badge="📊 Estándar Content Ops as Code"
+  badge="📊 Estándar Content Ops as Code · Dual ES/EN"
   icon="📊"
   preview_image="pulse-preview-es.png"
-  preview_caption="Vista previa de los entregables: Plantilla Maestra Excel (.xlsx) con 6 hojas, doble conector Power Query M y scripts CLI de migración y escáner."
-  deliverables="Plantilla Excel Master (6 Hojas)|Doble Conector Power Query M|Migrador Notion CLI + Guía PDF"
-  features="Plantilla Maestra Excel (.xlsx) con 6 hojas (Taxonomía, Activos, Kanban, Métricas y Dashboard ejecutivo)|Doble conector Power Query M: sincronización en 1 clic desde Notion CSV y Git public.json|Script de migración determinista en Python (migrate_notion.py) con exportación directa|Escáner universal de repositorios (pulse_repo_scanner.py) de cero dependencias externas|Guía ejecutiva maquetada en PDF de 4 páginas y especificación técnica de campos"
-  checkout_url="/es/recursos/#pack-pulse"
+  preview_caption="Vista previa de los entregables (Edición Dual ES/EN): Plantillas Excel automatizadas (6 hojas), doble conector Power Query M, scripts CLI y Guía PDF de 5 páginas."
+  deliverables="Excel Dual Automatizado (6 Hojas)|Doble Conector Power Query M|CLI Python + Guía PDF 5p"
+  features="Edición Dual completa (ES/EN) en carpetas independientes para despliegue inmediato|Plantillas Maestras Excel (.xlsx) de 6 hojas automatizadas, tablas nativas con filtros, Kanban vivo y Dashboard sin macros VBA|Doble conector Power Query M bilingüe: sincronización en 1 clic desde Notion CSV y Git public.json|Scripts CLI en Python puro sin dependencias externas (migrate_notion.py y pulse_repo_scanner.py --lang es/en)|Guías ejecutivas maquetadas en PDF de 5 páginas A4 y especificación técnica de campos canónicos"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/3aac3253-2081-44b5-af4d-c0ecfc257be0?embed=1"
   button_text="Descargar Kit Comercial (.ZIP) • 19€"
 >}}
-El paquete descargable incluye la **Plantilla Maestra Excel (.xlsx)** estructurada en 6 hojas interconectadas con validaciones estrictas y formato condicional ejecutivo, el **Doble Conector Power Query M** para sincronizar Notion CSV y repositorios Git locales con un solo clic, el **Script CLI de Migración (migrate_notion.py)**, el **Escáner Universal de Repositorios (pulse_repo_scanner.py)** sin dependencias y la **Guía Ejecutiva en PDF**.
+El paquete descargable (**Edición Dual ES/EN**) incluye **Plantillas Maestras Excel (.xlsx)** automatizadas con 6 pestañas temáticas, tablas nativas con filtros y cero duplicación manual (`INDEX/MATCH` + Kanban vivo), **Conectores Power Query M duales** para Notion CSV y Git `public.json`, **Scripts CLI Python sin dependencias** (`migrate_notion.py` y `pulse_repo_scanner.py`) y **Guías Ejecutivas PDF de 5 páginas**.
 {{< /product-card >}}
 
 2. **Explora el Sandbox en Vivo y el Modo Pro / Demo:**  

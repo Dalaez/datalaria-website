@@ -240,6 +240,7 @@
     </p>
 
     <div class="app-posts-grid">
+      {{- $todayStr := now.Format "2006-01-02" -}}
       {{- range . -}}
         {{- $postSlug := .slug -}}
         {{- if reflect.IsMap .slug -}}
@@ -247,27 +248,38 @@
         {{- end -}}
         {{- $partNum := .part -}}
         {{- $postPage := site.GetPage (printf "/posts/%s" $postSlug) -}}
-        
-        {{- if $postPage -}}
-          <div class="app-post-card">
-            {{- $postCover := "" -}}
-            {{- if $postPage.Params.cover.image -}}
-              {{- $postCover = $postPage.Resources.GetMatch $postPage.Params.cover.image -}}
-            {{- end -}}
-            {{- if not $postCover -}}
-              {{- with $postPage.Params.image -}}
-                {{- $postCover = $postPage.Resources.GetMatch . -}}
-              {{- end -}}
-            {{- end -}}
-            {{- if not $postCover -}}
-              {{- $postCover = $postPage.Resources.GetMatch "*cover*.{png,jpg,jpeg,webp,gif}" -}}
-            {{- end -}}
-            {{- if not $postCover -}}
-              {{- $postCover = $postPage.Resources.GetMatch "**{cover,feature,thumbnail}.{png,jpg,jpeg,webp,gif}" -}}
-            {{- end -}}
+        {{- $postDateStr := .date | default "" -}}
+        {{- if and $postPage (not $postDateStr) -}}
+          {{- $postDateStr = $postPage.Date.Format "2006-01-02" -}}
+        {{- end -}}
+        {{- $isFuture := and $postDateStr (gt $postDateStr $todayStr) -}}
+        {{- $isLivePost := and $postPage (not $postPage.Draft) (not $isFuture) -}}
 
+        {{- $postCover := "" -}}
+        {{- if $postPage -}}
+          {{- if $postPage.Params.cover.image -}}
+            {{- $postCover = $postPage.Resources.GetMatch $postPage.Params.cover.image -}}
+          {{- end -}}
+          {{- if not $postCover -}}
+            {{- with $postPage.Params.image -}}
+              {{- $postCover = $postPage.Resources.GetMatch . -}}
+            {{- end -}}
+          {{- end -}}
+          {{- if not $postCover -}}
+            {{- $postCover = $postPage.Resources.GetMatch "*cover*.{png,jpg,jpeg,webp,gif}" -}}
+          {{- end -}}
+          {{- if not $postCover -}}
+            {{- $postCover = $postPage.Resources.GetMatch "**{cover,feature,thumbnail}.{png,jpg,jpeg,webp,gif}" -}}
+          {{- end -}}
+        {{- end -}}
+        {{- if and (not $postCover) .cover -}}
+          {{- $postCover = resources.Get .cover -}}
+        {{- end -}}
+
+        {{- if $isLivePost -}}
+          <div class="app-post-card">
             {{- if $postCover -}}
-              {{- $thumb := $postCover.Resize "480x" -}}
+              {{- $thumb := $postCover.Resize "720x" -}}
               <div class="app-post-thumb-wrapper">
                 <img src="{{ $thumb.RelPermalink }}" alt="{{ $postPage.Title }}" loading="lazy" class="app-post-thumb" />
               </div>
@@ -287,7 +299,7 @@
             </div>
           </div>
         {{- else -}}
-          {{- /* Post programado para el futuro o no compilado */ -}}
+          {{- /* Post programado para el futuro o no compilado: tarjeta sin enlace con etiqueta Próximamente */ -}}
           {{- $fallbackTitle := .title -}}
           {{- if reflect.IsMap .title -}}
             {{- $fallbackTitle = index .title $lang | default .title.es -}}
@@ -296,30 +308,44 @@
           {{- if reflect.IsMap .summary -}}
             {{- $fallbackSummary = index .summary $lang | default .summary.es -}}
           {{- end -}}
-          {{- $postDate := .date | default "" -}}
+          {{- $displayTitle := $fallbackTitle | default $postSlug -}}
+          {{- if $postPage -}}
+            {{- $displayTitle = $postPage.Title -}}
+          {{- end -}}
+          {{- $displaySummary := $fallbackSummary -}}
+          {{- if and (not $displaySummary) $postPage -}}
+            {{- $displaySummary = $postPage.Summary -}}
+          {{- end -}}
 
-          {{- if and (eq $app.status "live") (not $fallbackTitle) -}}
+          {{- if and (eq $app.status "live") (not $displayTitle) -}}
             {{- errorf "Apps Showcase: Invariant App <=> Post broken: post '%s' referenced in data/apps/%s.yaml does not resolve to an existing page and has no fallback title in language '%s'" $postSlug $slug $lang -}}
           {{- end -}}
 
           <div class="app-post-card app-post-card--scheduled">
+            {{- if $postCover -}}
+              {{- $thumb := $postCover.Resize "720x" -}}
+              <div class="app-post-thumb-wrapper">
+                <img src="{{ $thumb.RelPermalink }}" alt="{{ $displayTitle }}" loading="lazy" class="app-post-thumb" />
+                <span class="app-post-soon-pill">{{ cond (eq $lang "es") "Próximamente" "Coming Soon" }}</span>
+              </div>
+            {{- end -}}
             <div class="app-post-card-content">
               <div class="app-post-card-scheduled-meta">
                 {{- with $partNum -}}
                 <span class="app-post-part-badge app-post-part-badge--scheduled">{{ cond (eq $lang "es") "Parte" "Part" }} {{ . }}</span>
                 {{- end -}}
-                {{- with $postDate -}}
+                {{- with $postDateStr -}}
                 <span class="app-post-date-badge">📅 {{ . }}</span>
                 {{- end -}}
               </div>
               <h3 class="app-post-title app-post-title--scheduled">
-                {{ $fallbackTitle | default $postSlug }}
+                {{ $displayTitle }}
               </h3>
-              {{- with $fallbackSummary -}}
+              {{- with $displaySummary -}}
               <p class="app-post-summary">{{ . | plainify | htmlUnescape | truncate 130 }}</p>
               {{- end -}}
               <span class="app-post-scheduled-label">
-                {{- cond (eq $lang "es") "⏳ Próxima entrega programada" "⏳ Scheduled upcoming release" -}}
+                {{- cond (eq $lang "es") "⏳ Próximamente" "⏳ Coming Soon" -}}
               </span>
             </div>
           </div>

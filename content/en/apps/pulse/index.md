@@ -4,7 +4,7 @@ description: "Content Ops as Code: Deterministic editorial governance, strict ES
 app: "pulse"
 translationKey: "app-pulse"
 layout: "single"
-draft: true
+draft: false
 ---
 
 ## 🌟 What's New in Datalaria Pulse v1.0
@@ -67,5 +67,5 @@ An asset with $\text{Index}_{100} = 250$ delivers exactly $2.5\times$ the traffi
 
 Datalaria Pulse acts as the operational heartbeat linking engineering, content production, and monetization:
 
-- **Datalaria Pulse Kit (19 €):** Master Excel Workbook with 6 structured sheets (Taxonomy, Assets, Kanban, Metrics, and Executive Dashboard), Power Query M connector for 1-click Notion synchronization, and zero-dependency Python CLI migrator. Available at [/en/resources/#pack-pulse](/en/resources/#pack-pulse).
+- **Datalaria Pulse Kit (19 € · Dual Edition ES/EN):** Automated 6-sheet Master Excel workbooks (native tables, column filters & live Kanban), dual Power Query M connectors for 1-click Notion CSV and Git `public.json` sync, zero-dependency Python CLI tools, and 5-page Executive PDF Guide. Available via [Lemon Squeezy Checkout →](https://datalaria.lemonsqueezy.com/checkout/buy/3aac3253-2081-44b5-af4d-c0ecfc257be0?embed=1) and at [/en/resources/#pack-pulse](/en/resources/#pack-pulse).
 - **Engineering Architecture Series:** 5 in-depth technical guides walking through Pydantic v2 validation, React 19 UI mechanics, automated GA4/GSC ingestion, and AI agent integration.

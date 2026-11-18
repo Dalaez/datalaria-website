@@ -7,6 +7,7 @@
  */
 
 import { createClient, type User, type SupabaseClient } from '@supabase/supabase-js';
+import type { ContentAsset } from '../types';
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://wkbmxekmofrjtcsyytrv.supabase.co';
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndrYm14ZWttb2ZyanRjc3l5dHJ2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkyNjQyOTgsImV4cCI6MjA4NDg0MDI5OH0.h-oWBsGc493dSCYLw6CVbWTFvsX1aGh90yZuVINB14Y';
@@ -165,4 +166,40 @@ export async function deleteUserIdea(id: string): Promise<boolean> {
     return false;
   }
   return true;
+}
+
+/**
+ * Descarga el snapshot maestro privado de Datalaria (borradores y proyectos embargados)
+ * protegido por RLS exclusivo por email en pulse.private_snapshot.
+ */
+export async function fetchAdminCatalogSnapshot(): Promise<{
+  assets: ContentAsset[];
+  updatedAt?: string;
+} | null> {
+  if (!isSupabaseConfigured) return null;
+  try {
+    const { data, error } = await supabase
+      .from('private_snapshot')
+      .select('payload, updated_at')
+      .eq('id', 'master')
+      .maybeSingle();
+
+    if (error || !data) {
+      return null;
+    }
+
+    const rawPayload = (data as { payload?: unknown; updated_at?: string }).payload;
+    if (Array.isArray(rawPayload)) {
+      return { assets: rawPayload as ContentAsset[], updatedAt: data.updated_at };
+    }
+    if (rawPayload && typeof rawPayload === 'object' && Array.isArray((rawPayload as { assets?: unknown }).assets)) {
+      return {
+        assets: (rawPayload as { assets: ContentAsset[] }).assets,
+        updatedAt: data.updated_at,
+      };
+    }
+    return null;
+  } catch {
+    return null;
+  }
 }

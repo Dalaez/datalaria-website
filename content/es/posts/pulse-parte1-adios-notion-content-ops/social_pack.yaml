@@ -28,7 +28,7 @@ es:
       parece una gran idea el primer mes.
 
 
-      Pero al superar los 100 artículos, la patología de la doble entrada golpea sin
+      ⚠️ Pero al superar los 100 artículos, la patología de la doble entrada golpea sin
       piedad: el repositorio Git y la base de datos externa divergen irremediablemente.
 
 
@@ -48,11 +48,11 @@ es:
       que rellenar a mano formularios en Notion.
 
 
-      En Datalaria Pulse hemos unificado todo bajo una regla: el repositorio Git es
+      🚀 En Datalaria Pulse hemos unificado todo bajo una regla: el repositorio Git es
       la única fuente de verdad.
 
 
-      Indexamos 183 activos directamente desde Markdown con Pydantic v2, garantizamos
+      ⚡ Indexamos 183 activos directamente desde Markdown con Pydantic v2, garantizamos
       paridad en CI/CD y proyectamos un cockpit en React 19 con latencia cero.
 
 
@@ -91,7 +91,7 @@ es:
     ps_referral_text: Si trabajas con líderes técnicos o redactores que sufren la
       desincronización de Notion, reenvíales este artículo.
   devto:
-    enabled: false
+    enabled: true
     title: 'Adiós Notion: Datalaria Pulse o la Gestión Editorial desde Git'
     description: Por qué Notion y Airtable divergen del repositorio y cómo Content
       Ops as Code indexa tu blog técnico directamente desde Markdown.
@@ -101,7 +101,7 @@ es:
     - python
     - automation
     canonical_url: https://datalaria.com/es/posts/pulse-parte1-adios-notion-content-ops/
-    published: false
+    published: true
   coderlegion:
     enabled: false
     title: 'Adiós Notion: Datalaria Pulse o la Gestión Editorial desde Git'

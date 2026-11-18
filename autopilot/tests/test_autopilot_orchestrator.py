@@ -137,13 +137,15 @@ def test_resolve_hero_image_url_variants(tmp_path: Path) -> None:
 
 
 def test_secondary_cta_blocks_incubating_apps_and_allows_live_apps() -> None:
-    # helix.yaml y pulse.yaml están en status: incubating -> deben ser bloqueados por INV-AUTO-6
+    # helix.yaml está en status: incubating -> debe seguir bloqueado por INV-AUTO-6
     label_helix, url_helix = resolve_secondary_cta('Texto con {{< app-ref slug="helix" >}}', lang="es")
     assert url_helix == "https://datalaria.com/es/recursos/"
     assert "recursos" in label_helix.lower()
 
+    # pulse.yaml pasó a status: live en P-LAUNCH-5A -> habilita su enlace demo interactivo
     label_pulse, url_pulse = resolve_secondary_cta('Text with {{< app-ref slug="pulse" >}}', lang="en")
-    assert url_pulse == "https://datalaria.com/en/resources/"
+    assert url_pulse == "https://datalaria.com/apps/pulse/?demo=true"
+    assert "Pulse" in label_pulse
 
     # lifeops.yaml tiene status: live y demo_url con HashRouter
     label_live, url_live = resolve_secondary_cta('Prueba {{< app-ref slug="lifeops" >}}', lang="es")

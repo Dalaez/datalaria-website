@@ -62,3 +62,33 @@ def test_demo_seeder_safety():
     assert "demo@datalaria.com" in content
     # Verificar que no intenta insertar o asociar ideas a cuentas de producción
     assert "dalaez1@gmail.com" not in content
+
+
+def test_admin_snapshot_rls_and_graceful_sync(monkeypatch):
+    """Verifica el RLS estricto de pulse.private_snapshot y degradación limpia sin clave."""
+    admin_sql_file = ROOT_DIR / "ops" / "pulse" / "migrations" / "002_admin_snapshot_rls.sql"
+    assert admin_sql_file.exists(), "Falta ops/pulse/migrations/002_admin_snapshot_rls.sql"
+
+    sql = admin_sql_file.read_text(encoding="utf-8")
+    assert "CREATE TABLE IF NOT EXISTS pulse.private_snapshot" in sql
+    assert "ALTER TABLE pulse.private_snapshot ENABLE ROW LEVEL SECURITY;" in sql
+    assert "auth.jwt() ->> 'email'" in sql
+    assert "dalaez1@gmail.com" in sql
+    assert "REVOKE ALL ON pulse.private_snapshot FROM anon;" in sql
+    assert "GRANT ALL ON pulse.private_snapshot TO service_role;" in sql
+    assert "NOTIFY pgrst, 'reload config';" in sql
+
+    import ops.pulse.sync_admin_snapshot as sync_mod
+
+    monkeypatch.delenv("SUPABASE_SERVICE_ROLE_KEY", raising=False)
+    monkeypatch.setattr(sync_mod, "_load_env_fallback", lambda: {})
+    ok, msg = sync_mod.sync_admin_snapshot(service_role_key="")
+    assert ok is False
+    assert "SKIP" in msg
+
+    opaque_hdrs = sync_mod.build_supabase_headers("sb_secret_dummy_test_key")
+    assert opaque_hdrs["apikey"] == "sb_secret_dummy_test_key"
+    assert "Authorization" not in opaque_hdrs
+
+    jwt_hdrs = sync_mod.build_supabase_headers("aaa.bbb.ccc")
+    assert jwt_hdrs["Authorization"] == "Bearer aaa.bbb.ccc"

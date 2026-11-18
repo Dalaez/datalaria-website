@@ -75,7 +75,7 @@ Anyone who has attempted to maintain an editorial calendar in Notion in parallel
 3. **Bilingual Parity Blindness:** If you publish bilingually in Spanish and English, manually tracking which translations are pending, which fell out of sync after technical updates, and which maintain complete parity becomes an unsustainable administrative chore. The common outcome is orphan articles and broken cross-language references.
 4. **Administrative Toil:** Technical writers spend up to 20% of their productive bandwidth on administrative card-pushing bureaucracy instead of crafting high-value content or developing algorithms.
 
-{{< mermaid >}}
+{{< mermaid image="pulse_notion_vs_git.png" alt="Comparison between Git Single Source of Truth and Manual Notion Silo" >}}
 flowchart LR
     subgraph GIT ["1. Single Source of Truth (Git)"]
         A["Markdown in Git"] -->|git push| B["Production / Hugo / Vercel"]
@@ -83,7 +83,7 @@ flowchart LR
     subgraph NOTION ["2. Manual External Silo (Notion)"]
         C["Notion Database"] -->|Manual| D["Stale / 404 Inaccurate State"]
     end
-    GIT -.-|"Human Drift & Chasm"| NOTION
+    GIT -.-|"Human Drift and Chasm"| NOTION
 {{< /mermaid >}}
 
 Modern software engineering resolved this problem decades ago under the banner of **Infrastructure as Code** (Terraform) and **Configuration as Code** (Kubernetes): infrastructure is not configured via web forms; it is declared in versioned, auditable code.
@@ -115,7 +115,7 @@ Under this model, editorial management shifts from reactive manual upkeep to a *
 
 To bring this philosophy to life across the Datalaria ecosystem, we built and deployed **Datalaria Pulse**: a comprehensive engine that reads our content tree directly and generates a real-time executive cockpit.
 
-{{< mermaid >}}
+{{< mermaid image="pulse_architecture_flow.png" alt="Datalaria Pulse 4-Tier Architecture (Git, Pydantic v2, Datasets, and React 19)" >}}
 flowchart TD
     subgraph Repository ["1. Single Source of Truth (Git)"]
         MD_ES["content/es/posts/**/index.md\n(YAML Front Matter)"]
@@ -128,7 +128,7 @@ flowchart TD
         SCAN["build_index.py\n(Lexical scan and Git hashes)"]
         SEO["audit_seo()\n(Deterministic Score 0-100)"]
         PARITY["Parity Algorithm\n(ES ⇔ EN Matching)"]
-        METRICS["sync_metrics.py\n(Google Analytics 4 & Search Console)"]
+        METRICS["sync_metrics.py\n(Google Analytics 4 + Search Console)"]
         SCAN --> SEO & PARITY
         METRICS --> SCAN
     end
@@ -208,20 +208,20 @@ If you maintain a technical blog, documentation hub, or engineering-led publicat
 
 {{< product-card
   id="pack-pulse"
-  title="Datalaria Pulse: Content Ops & Notion Migration Kit"
+  title="Datalaria Pulse: Content Ops & Notion Migration Kit (Dual ES/EN)"
   category="Software, AI & SDD"
   price="19€"
   original_price="39€"
-  badge="📊 Content Ops as Code Standard"
+  badge="📊 Content Ops as Code Standard · Dual ES/EN"
   icon="📊"
   preview_image="pulse-preview-en.png"
-  preview_caption="Deliverables preview: 6-sheet Master Excel Template (.xlsx), dual Power Query M connectors, and standalone Python migration/scanner CLI scripts."
-  deliverables="6-Sheet Master Excel Workbook|Dual Power Query M Connectors|Notion Migration CLI + PDF Guide"
-  features="Master Excel Template (.xlsx) with 6 structured sheets (Taxonomy, Assets, Kanban, Metrics, and Executive Dashboard)|Dual Power Query M connectors: 1-click synchronization from Notion CSV exports and Git public.json manifests|Deterministic Python migration engine (migrate_notion.py) with direct multi-format export|Universal zero-dependency repository scanner (pulse_repo_scanner.py) for automated CI/CD audits|Executive 4-page A4 PDF guide and canonical data dictionary specification"
-  checkout_url="/en/resources/#pack-pulse"
+  preview_caption="Deliverables preview (Dual Edition ES/EN): Automated 6-sheet Excel workbooks, dual Power Query M connectors, Python CLI tools & 5-page Executive PDF Guide."
+  deliverables="Dual Automated Excel (6 Sheets)|Dual Power Query M Connectors|Python CLI + 5p PDF Guide"
+  features="Complete Dual Edition (ES/EN) packaged in standalone ES/ and EN/ folders for instant deployment|Automated 6-sheet Master Excel Workbooks (.xlsx) with native AutoFilter tables, live Kanban & Executive Dashboard (zero VBA)|Bilingual Power Query M connectors: 1-click synchronization from Notion CSV exports and Git public.json manifests|Zero-dependency Python CLI tools (migrate_notion.py & pulse_repo_scanner.py with --lang es/en support)|Executive 5-page A4 PDF Guides and full canonical data dictionary specifications"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/3aac3253-2081-44b5-af4d-c0ecfc257be0?embed=1"
   button_text="Download Commercial Kit (.ZIP) • 19€"
 >}}
-The downloadable commercial bundle includes the **Master Excel Template (.xlsx)** with 6 structured sheets and strict cell validations, the **Dual Power Query M Connectors** to sync Notion CSV exports and local Git repositories in 1 click, the **Python Migration CLI (migrate_notion.py)**, the zero-dependency **Universal Repository Scanner (pulse_repo_scanner.py)**, and the **Executive PDF Guide**.
+The downloadable commercial bundle (**Dual ES/EN Edition**) includes **Automated Master Excel Workbooks (.xlsx)** with 6 color-coded sheets, native AutoFilter tables and zero manual duplication (`INDEX/MATCH` + live Kanban), **Dual Power Query M Connectors** for Notion CSV and Git `public.json`, **Zero-Dependency Python CLI Tools** (`migrate_notion.py` & `pulse_repo_scanner.py`), and **5-Page Executive PDF Guides**.
 {{< /product-card >}}
 
 2. **Explore the Live Sandbox and Pro / Demo Mode:**  

@@ -14,7 +14,7 @@ translationKey: resources
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
       Volver a Portada
     </a>
-    <span style="font-size: 12px; color: var(--text-muted);" id="catalog-counter">Mostrando 14 Kits (13 Disponibles)</span>
+    <span style="font-size: 12px; color: var(--text-muted);" id="catalog-counter">Mostrando 15 Kits (14 Disponibles)</span>
   </div>
 
   <!-- HERO COMPACTO -->
@@ -200,7 +200,7 @@ translationKey: resources
     <div class="tabs-header">
       <div class="topic-pills" id="topic-pills-container">
         <button class="topic-pill active" data-topic="all" onclick="setTopic('all')">
-          ✨ Todos los Kits <span class="pill-count">14</span>
+          ✨ Todos los Kits <span class="pill-count">15</span>
         </button>
         <button class="topic-pill" data-topic="estrategia" onclick="setTopic('estrategia')">
           🏛️ Estrategia MBA <span class="pill-count">5</span>
@@ -212,7 +212,7 @@ translationKey: resources
           ⚙️ Control Operativo <span class="pill-count">5</span>
         </button>
         <button class="topic-pill" data-topic="software" onclick="setTopic('software')">
-          💻 Software, IA & SDD <span class="pill-count">1</span>
+          💻 Software, IA & SDD <span class="pill-count">2</span>
         </button>
       </div>
     </div>
@@ -226,8 +226,8 @@ translationKey: resources
 
       <div class="filter-right-tools">
         <div class="status-segment">
-          <button class="btn-segment active" data-status="all" onclick="setStatus('all')">Todos (14)</button>
-          <button class="btn-segment" data-status="available" onclick="setStatus('available')">🟢 Disponibles (13)</button>
+          <button class="btn-segment active" data-status="all" onclick="setStatus('all')">Todos (15)</button>
+          <button class="btn-segment" data-status="available" onclick="setStatus('available')">🟢 Disponibles (14)</button>
           <button class="btn-segment" data-status="coming" onclick="setStatus('coming')">🔒 Próximamente (1)</button>
         </div>
 
@@ -685,6 +685,40 @@ Detalles ℹ️
 </button>
 <span class="btn-kit-info btn-disabled" title="Artículo técnico próximamente">Artículo próximamente</span>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/513e5cad-9f9f-4b53-a435-b511a846d79e?embed=1" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
+</div>
+</div>
+</div>
+
+<div class="kit-card" id="pack-pulse">
+<div>
+<div class="kit-card-head">
+<div class="kit-card-icon">📊</div>
+<div class="kit-card-title-wrap">
+<div class="kit-card-meta">
+<span class="kit-card-cat">Software, IA & SDD</span>
+<span class="kit-status-badge avail">🟢 Disponible</span>
+</div>
+<h3 class="kit-card-title">Datalaria Pulse: Content Ops & Notion Migration Kit</h3>
+</div>
+</div>
+<p class="kit-card-desc">Toolkit comercial Dual (ES/EN) para equipos editoriales: Plantillas maestras Excel automatizadas con 6 hojas, tablas nativas y filtros, conectores Power Query M duales (Notion CSV & Git public.json), script CLI de migración y Guía ejecutiva PDF de 5 páginas.</p>
+<div class="kit-deliverables-row">
+<span class="deliv-chip">Excel Dual ES/EN</span>
+<span class="deliv-chip">Power Query M</span>
+<span class="deliv-chip">Guía PDF 5p + CLI</span>
+</div>
+</div>
+<div class="kit-card-foot">
+<div class="kit-pricing-box">
+<span class="kit-price-curr">19€</span>
+<span class="kit-price-orig">39€</span>
+</div>
+<div class="kit-btns-group">
+<button type="button" class="btn-kit-info" onclick="openModal('pack-pulse')">
+Detalles ℹ️
+</button>
+<a href="/es/posts/pulse-parte1-adios-notion-content-ops/" class="btn-kit-info" title="Leer artículo técnico">Artículo técnico 📖</a>
+<a href="https://datalaria.lemonsqueezy.com/checkout/buy/3aac3253-2081-44b5-af4d-c0ecfc257be0?embed=1" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
 </div>
@@ -1466,7 +1500,7 @@ Detalles ℹ️
     ],
     "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/47843201-4db9-4d80-bb88-e59364fb6117?embed=1",
     "guideUrl": null,
-    "previewImg": "/images/recursos/PERT.png"
+    "previewImg": "/images/recursos/pert-preview-es.png"
   },
   {
     "id": "pack-evm",
@@ -1520,7 +1554,35 @@ Detalles ℹ️
     "guideUrl": null,
     "previewImg": "/images/recursos/Stock.png"
   },
-  {
+    {
+    "id": "pack-pulse",
+    "title": "Datalaria Pulse: Content Ops & Notion Migration Kit",
+    "topic": "software",
+    "topicLabel": "Software, IA & SDD",
+    "status": "available",
+    "statusLabel": "🟢 DISPONIBLE • Content Ops",
+    "price": "19€",
+    "origPrice": "39€",
+    "icon": "📊",
+    "delivs": [
+      "Plantilla Excel Dual Automatizada (ES & EN)",
+      "Doble Conector Power Query M (Notion & Git)",
+      "Migrador CLI + Guías Ejecutivas PDF (5 págs)"
+    ],
+    "desc": "Toolkit comercial Dual (ES/EN) para equipos editoriales: Plantillas maestras Excel automatizadas con 6 hojas, tablas nativas y filtros, conectores Power Query M duales (Notion CSV & Git public.json), script CLI de migración y Guía ejecutiva PDF de 5 páginas.",
+    "features": [
+      "Edición Dual completa (ES/EN) con estructura independiente en carpetas ES/ y EN/ para descarga y uso inmediato",
+      "Plantillas Maestras Excel (.xlsx) con 6 hojas automatizadas, tablas nativas con filtros por columna, paneles congelados, Kanban dinámico y Dashboard ejecutivo sin macros VBA",
+      "Doble conector Power Query M bilingüe: sincronización en 1 clic desde Notion CSV y desde public.json de repositorios Git",
+      "Script de migración determinista en Python (migrate_notion.py) con soporte multi-idioma (--lang es/en), exportación directa a .xlsx, .yaml o .json y dataset de prueba",
+      "Escáner universal de repositorios (pulse_repo_scanner.py) con cero dependencias externas para auditorías editoriales y CI/CD",
+      "Guía ejecutiva maquetada en PDF de 5 páginas A4 y especificaciones técnicas de campos canónicos (ESPECIFICACION_CAMPOS_ES.md y FIELD_SPECIFICATION_EN.md)"
+    ],
+    "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/3aac3253-2081-44b5-af4d-c0ecfc257be0?embed=1",
+    "guideUrl": "/es/posts/pulse-parte1-adios-notion-content-ops/",
+    "previewImg": "/images/recursos/pulse-preview-es.png"
+  },
+{
     "id": "pack-sdd",
     "title": "Datalaria Helix: Kit SDD & Escuadrón 12 Agentes",
     "topic": "software",

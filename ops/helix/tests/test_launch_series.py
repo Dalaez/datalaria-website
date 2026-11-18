@@ -216,15 +216,15 @@ def test_brevo_waitlist_sequence_and_social_pack_generated():
 
 
 def test_dual_embargo_helix_jan2027_and_pulse_18nov_intact():
-    """Ejecuta verify_embargo() de Helix y Pulse verificando 0 errores y confirma que helix.yaml lista los 7 posts."""
+    """Verifica el embargo estricto de Helix Ene 2027 y el estado live activo de Pulse v1.0.0."""
     from ops.helix.release_jan2027 import verify_embargo as verify_helix
-    from ops.pulse.release_18nov import verify_embargo as verify_pulse
+    from ops.pulse.release_18nov import verify_live_launch as verify_pulse_live
 
     ok_helix, errors_helix = verify_helix()
     assert ok_helix is True, f"Fallo en embargo Helix: {errors_helix}"
 
-    ok_pulse, errors_pulse = verify_pulse()
-    assert ok_pulse is True, f"Fallo en embargo Pulse: {errors_pulse}"
+    ok_pulse, errors_pulse = verify_pulse_live()
+    assert ok_pulse is True, f"Fallo en activación live Pulse: {errors_pulse}"
 
     helix_yaml = ROOT_DIR / "data" / "apps" / "helix.yaml"
     content = helix_yaml.read_text(encoding="utf-8")

@@ -172,6 +172,7 @@ Cada fila o tarjeta representa un **activo único bilingüe** (`post`, `app` o `
 - **INV-PULSE-6 (Determinismo y Privacidad del Motor de Impacto SEO/GA4):** `ops/pulse/impact_analyzer.py` cruza métricas privadas (`metrics.json`, `monthly_metrics.json`, `index.json`) y exporta `data/pulse/private/impact_report.json` con `visibility: "private"`. Queda terminantemente prohibido alojar `impact_report.json` o métricas absolutas dentro de `static/`.
 - **INV-PULSE-7 (Coherencia Cronológica de Lanzamientos de Apps):** Ninguna app en incubación o en desarrollo utiliza fechas de versiones internas `v0.x` (`releases` con `state: "internal"`) como fecha de estreno público. El activo raíz de toda app toma obligatoriamente `launch_date` como su `publish_date`, asegurando que no aparezcan hitos de desarrollo pasados en el calendario público antes de su fecha de lanzamiento oficial al mercado.
 - **INV-PULSE-8 (Trazabilidad y Normalización de Kits/Suites):** Todo Kit, Suite y Mega Bundle en `data/pulse/kits.yaml` debe contar con `publish_date` no nulo, versión semántica normalizada (por defecto `v1.0.0`) y un estado normalizado exclusivamente entre `"published"` o `"scheduled"`. Ningún activo puede ser exportado al índice público con estado ambiguo (`"coming"` queda prohibido en `public.json`).
+- **INV-PULSE-9 (Filtro Público de Embargos, Borradores y Ventana de Roadmap +30d):** Ningún post en estado `draft: true` (`status == "draft"`), ninguna app en `status: incubating` (p. ej. `helix`), ningún post/kit/suite vinculado a un proyecto embargado (`helix-*`, `pack-sdd`, `suite-sdd`) ni ningún lanzamiento programado con `publish_date > today + 30 días` puede recibir `visibility == "public"`. Permanecen íntegros en `data/pulse/private/index.json` (y en Supabase `pulse.private_snapshot` bajo RLS exclusivo Admin) y quedan excluidos de `static/apps/pulse/data/public.json`.
 
 ---
 
@@ -195,9 +196,12 @@ otes TEXT DEFAULT ''
      - created_at TIMESTAMPTZ DEFAULT NOW()
      - updated_at TIMESTAMPTZ DEFAULT NOW()
    - **pulse.content_schedule:** Reprogramaciones y excepciones manuales del calendario editorial.
+   - **pulse.private_snapshot:** (`id TEXT PRIMARY KEY DEFAULT 'master'`, `payload JSONB NOT NULL`, `updated_at TIMESTAMPTZ DEFAULT NOW()`) — Snapshot maestro completo (`index.json` + `metrics_relative`, excluyendo `metrics_absolute`) sincronizado por `ops/pulse/sync_admin_snapshot.py` vía `service_role`.
 3. **Seguridad y RLS (Row-Level Security):**
-   - ALTER TABLE pulse.ideas ENABLE ROW LEVEL SECURITY;
-   - Política estricta: CREATE POLICY user_ideas_isolation ON pulse.ideas FOR ALL USING (auth.uid() = user_id);
+   - `ALTER TABLE pulse.ideas ENABLE ROW LEVEL SECURITY;`
+   - Política estricta: `CREATE POLICY user_ideas_isolation ON pulse.ideas FOR ALL USING (auth.uid() = user_id);`
+   - `ALTER TABLE pulse.private_snapshot ENABLE ROW LEVEL SECURITY;`
+   - Política exclusiva Admin: `FOR SELECT TO authenticated USING ((auth.jwt() ->> 'email') IN ('dalaez1@gmail.com', 'datalaria@gmail.com'));` (cero acceso `anon` ni a clientes/demo).
    - Permite a cualquier usuario visitante registrarse en modo Demo/Trial para gestionar su propio backlog en la nube sin interferir en los datos de otros usuarios ni en el repositorio maestro de Datalaria.
 4. **Sincronización Bidireccional Web ↔ Localhost:**
    - La SPA React conecta con Supabase Auth.

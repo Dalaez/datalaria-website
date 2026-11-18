@@ -118,26 +118,30 @@ def publish_public_dataset() -> PublicPulseDataset:
     # 1. Calcular métricas relativas
     rel_map = calculate_relative_metrics(raw_assets, metrics)
 
-    # 2. Filtrar solo los activos 'public' y mapear
+    # 2. Enriquecer `index.json` con metrics_relative (sin metrics_absolute) y compilar public.json
     public_content_assets: List[ContentAsset] = []
+    enriched_private_assets: List[Dict[str, Any]] = []
     parity_summary: Dict[str, int] = {}
 
     for item in raw_assets:
-        # INV-PULSE-1: Cero fuga de privados
+        aid = item["id"]
+        rel_obj = rel_map.get(aid)
+        item["metrics_relative"] = rel_obj.model_dump(mode="json") if rel_obj else None
+        item["metrics_absolute"] = None
+        enriched_private_assets.append(item)
+
+        # INV-PULSE-1 / INV-PULSE-9: Cero fuga de privados
         if item.get("visibility") == "private":
             continue
-
-        aid = item["id"]
-        # Enriquecer con métricas relativas calculadas
-        item["metrics_relative"] = rel_map.get(aid)
-        # Asegurar que metrics_absolute NUNCA esté presente en el objeto público
-        item["metrics_absolute"] = None
 
         asset_obj = ContentAsset(**item)
         public_content_assets.append(asset_obj)
 
         par = asset_obj.language_parity
         parity_summary[par] = parity_summary.get(par, 0) + 1
+
+    with open(INDEX_PRIVATE_PATH, "w", encoding="utf-8") as f:
+        json.dump(enriched_private_assets, f, ensure_ascii=False, indent=2)
 
     # 2.b Relativizar serie temporal mensual histórica (INV-PULSE-2)
     monthly_traffic_index: List[MonthlyTrafficPoint] = []

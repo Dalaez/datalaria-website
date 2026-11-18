@@ -42,11 +42,11 @@ def test_inv_portal_rel_1_embargo_and_public_status():
     assert "conversor" in candidates, "Conversor debe ser candidata activa"
     assert "flashcards" in candidates, "Flashcards debe ser candidata activa"
     assert "maths" in candidates, "Maths debe ser candidata activa"
+    assert "pulse" in candidates, "Pulse debe ser candidata live tras P-LAUNCH-5A"
 
     # Incubating apps must be excluded
     excluded_slugs = [s for s, _ in excluded]
     assert "helix" in excluded_slugs, "Helix debe estar excluida (status: incubating)"
-    assert "pulse" in excluded_slugs, "Pulse debe estar excluida (status: incubating)"
 
 
 def test_inv_portal_rel_2_fourteen_days_window_and_fallback():

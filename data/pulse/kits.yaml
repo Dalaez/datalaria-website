@@ -546,8 +546,8 @@ kits:
   description_es: Sustituye las estimaciones subjetivas de cronograma por modelos
     estadísticos de 3 puntos (Optimista, Más Probable, Pesimista) con intervalo de
     confianza.
-  article_url_es: null
-  guide_url_es: null
+  article_url_es: /es/posts/estimacion-pert-3-puntos/
+  guide_url_es: /es/posts/estimacion-pert-3-puntos/
   title_en: Stochastic 3-Point PERT Estimation
   category_en: Operations Control
   description_en: Replace subjective timeline guesses with statistical 3-point beta
@@ -561,8 +561,8 @@ kits:
   - Normal z-distribution probability of hitting contractual milestones
   - 16:9 PPTX slide with probability density curves for executive review
   - PDF guide covering PMBOK standard statistical estimation techniques
-  article_url_en: null
-  guide_url_en: null
+  article_url_en: /en/posts/stochastic-3-point-pert-estimation/
+  guide_url_en: /en/posts/stochastic-3-point-pert-estimation/
   publish_date: '2026-11-19'
   version: v1.0.0
 - id: pack-evm
@@ -648,6 +648,49 @@ kits:
   article_url_en: null
   guide_url_en: null
   publish_date: '2026-11-26'
+  version: v1.0.0
+- id: pack-pulse
+  slug: pack-pulse-content-ops
+  type: kit
+  topic: software
+  category_es: Software, IA & SDD
+  status: available
+  price: 19€
+  original_price: 39€
+  icon: 📊
+  deliverables_es:
+  - Plantilla Excel Dual Automatizada (ES & EN)
+  - Doble Conector Power Query M (Notion & Git)
+  - Migrador CLI + Guías Ejecutivas PDF (5 págs)
+  features_es:
+  - Edición Dual completa (ES/EN) con estructura independiente en carpetas ES/ y EN/ para descarga y uso inmediato
+  - Plantillas Maestras Excel (.xlsx) con 6 hojas automatizadas, tablas nativas con filtros por columna, paneles congelados, Kanban dinámico y Dashboard ejecutivo sin macros VBA
+  - Doble conector Power Query M bilingüe: sincronización en 1 clic desde Notion CSV y desde public.json de repositorios Git
+  - Script de migración determinista en Python (migrate_notion.py) con soporte multi-idioma (--lang es/en), exportación directa a .xlsx, .yaml o .json y dataset de prueba
+  - Escáner universal de repositorios (pulse_repo_scanner.py) con cero dependencias externas para auditorías editoriales y CI/CD
+  - Guía ejecutiva maquetada en PDF de 5 páginas A4 y especificaciones técnicas de campos canónicos (ESPECIFICACION_CAMPOS_ES.md y FIELD_SPECIFICATION_EN.md)
+  checkout_url: https://datalaria.lemonsqueezy.com/checkout/buy/3aac3253-2081-44b5-af4d-c0ecfc257be0?embed=1
+  title_es: 'Datalaria Pulse: Content Ops & Notion Migration Kit'
+  description_es: 'Toolkit comercial Dual (ES/EN) para equipos editoriales: Plantillas maestras Excel automatizadas con 6 hojas, tablas nativas y filtros, conectores Power Query M duales (Notion CSV & Git public.json), script CLI de migración y Guía ejecutiva PDF de 5 páginas.'
+  article_url_es: /es/posts/pulse-parte1-adios-notion-content-ops/
+  guide_url_es: /es/posts/pulse-parte1-adios-notion-content-ops/
+  title_en: 'Datalaria Pulse: Content Ops & Notion Migration Kit'
+  category_en: Software, AI & SDD
+  description_en: 'Commercial Dual Toolkit (ES/EN) for editorial teams: Automated master Excel workbooks with 6 sheets, native Tables and AutoFilters, dual Power Query M connectors (Notion CSV & Git public.json), Python migration CLI, and 5-page Executive PDF Guide.'
+  deliverables_en:
+  - Dual Automated Excel Workbook (ES & EN)
+  - Dual Power Query M Connectors (Notion & Git)
+  - CLI Migration Engine + Executive PDF Guides
+  features_en:
+  - Complete Dual Edition (ES/EN) organized into standalone ES/ and EN/ directories for immediate deployment
+  - Automated Master Excel Workbooks (.xlsx) with 6 sheets, native tables with column filters, freeze panes, live Kanban, and executive Dashboard without VBA macros
+  - Bilingual Power Query M connectors: 1-click synchronization from Notion CSV exports and Git public.json manifests
+  - Deterministic Python migration engine (migrate_notion.py) with multi-language support (--lang es/en), direct export to .xlsx, .yaml or .json + test dataset
+  - Universal zero-dependency repository scanner (pulse_repo_scanner.py) for editorial audits and CI/CD pipelines
+  - Executive 5-page A4 PDF guide and canonical data dictionary specifications (ESPECIFICACION_CAMPOS_ES.md & FIELD_SPECIFICATION_EN.md)
+  article_url_en: /en/posts/pulse-part1-goodbye-notion-content-ops/
+  guide_url_en: /en/posts/pulse-part1-goodbye-notion-content-ops/
+  publish_date: '2026-11-18'
   version: v1.0.0
 - id: pack-sdd
   slug: sdd

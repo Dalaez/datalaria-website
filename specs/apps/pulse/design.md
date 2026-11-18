@@ -97,3 +97,4 @@
 - [x] Enlace `← Datalaria` presente y funcional en ES y EN.
 - [x] Soporte verificado de `?lang=en|es` y `?demo=true` (en query string y hash `#/?demo=true`).
 - [x] Los 3 botones de compra del Kit enlazan a `/es/recursos/#pack-pulse` en español y a `/en/resources/#pack-pulse` en inglés.
+- [x] Captura de portada (`content/{es,en}/apps/pulse/cover.png`, `1280×800`) basada en la captura real de producción `v1.0.0` sin glifos `□` rotos y alineada con el ratio `16:10` de `/apps/`; tarjetas de la serie en la ficha sin enlaces hacia entregas futuras (`"Próximamente"`) y miniaturas encuadradas sin recortes (`object-fit: contain`).

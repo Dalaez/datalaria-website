@@ -80,6 +80,50 @@ def draw_technical_grid(draw, width, height):
             draw.line([(x, y - 3), (x, y + 3)], fill=(51, 65, 85), width=1)
 
 
+def draw_icon_excel(draw, x, y):
+    """Dibuja un icono vectorial de hoja de cálculo Excel."""
+    draw.rounded_rectangle([(x, y), (x + 14, y + 14)], radius=2, fill=(16, 185, 129))
+    draw.line([(x + 5, y + 2), (x + 5, y + 12)], fill=(15, 23, 42), width=1)
+    draw.line([(x + 10, y + 2), (x + 10, y + 12)], fill=(15, 23, 42), width=1)
+    draw.line([(x + 2, y + 5), (x + 12, y + 5)], fill=(15, 23, 42), width=1)
+    draw.line([(x + 2, y + 9), (x + 12, y + 9)], fill=(15, 23, 42), width=1)
+
+
+def draw_icon_pptx(draw, x, y):
+    """Dibuja un icono vectorial de presentación C-Level 16:9."""
+    draw.rounded_rectangle([(x, y + 1), (x + 15, y + 11)], radius=2, fill=(245, 158, 11))
+    draw.line([(x + 7, y + 11), (x + 7, y + 14)], fill=(251, 191, 36), width=2)
+    draw.line([(x + 4, y + 14), (x + 11, y + 14)], fill=(251, 191, 36), width=1)
+    draw.rectangle([(x + 3, y + 4), (x + 6, y + 8)], fill=(15, 23, 42))
+    draw.rectangle([(x + 8, y + 5), (x + 12, y + 8)], fill=(15, 23, 42))
+
+
+def draw_icon_pdf(draw, x, y):
+    """Dibuja un icono vectorial de documento guía PDF."""
+    draw.polygon([(x + 1, y), (x + 9, y), (x + 13, y + 4), (x + 13, y + 14), (x + 1, y + 14)], fill=(239, 68, 68))
+    draw.polygon([(x + 9, y), (x + 9, y + 4), (x + 13, y + 4)], fill=(252, 165, 165))
+    draw.line([(x + 3, y + 7), (x + 10, y + 7)], fill=(255, 255, 255), width=1)
+    draw.line([(x + 3, y + 10), (x + 10, y + 10)], fill=(255, 255, 255), width=1)
+
+
+def draw_icon_bolt(draw, x, y):
+    """Dibuja un icono vectorial de rayo (descarga instantánea)."""
+    pts = [
+        (x + 7, y),
+        (x + 2, y + 8),
+        (x + 6, y + 8),
+        (x + 4, y + 14),
+        (x + 11, y + 6),
+        (x + 7, y + 6),
+    ]
+    draw.polygon(pts, fill=(52, 211, 153))
+
+
+def text_width(draw, txt, font):
+    bbox = draw.textbbox((0, 0), txt, font=font)
+    return bbox[2] - bbox[0]
+
+
 def draw_pert_bell_graphic(draw, x0, y0, w, h, font_small, font_bold, font_mono, lang='ES'):
     """
     Dibuja el panel analítico del motor PERT:
@@ -94,9 +138,10 @@ def draw_pert_bell_graphic(draw, x0, y0, w, h, font_small, font_bold, font_mono,
     # 1. Cabecera del Panel Gráfico
     draw.rounded_rectangle([(x0 + 4, y0 + 4), (x0 + w - 4, y0 + 38)], radius=10, fill=(30, 41, 59))
     title_panel = "MOTOR ESTOCÁSTICO PERT (BETA & CLT)" if lang == 'ES' else "STOCHASTIC PERT ENGINE (BETA & CLT)"
-    draw.text((x0 + 16, y0 + 12), title_panel, fill=(2, 132, 199), font=font_bold)
-    sub_panel = "μ = (o+4m+p)/6 · σ_proj = √(Σσ²)" if lang == 'ES' else "μ = (o+4m+p)/6 · σ_proj = √(Σσ²)"
-    draw.text((x0 + w - 235, y0 + 13), sub_panel, fill=(148, 163, 184), font=font_small)
+    draw.text((x0 + 16, y0 + 12), title_panel, fill=(56, 189, 248), font=font_bold)
+    sub_panel = "μ = (o+4m+p)/6 · σ_proj = √(Σσ²)"
+    sub_w = text_width(draw, sub_panel, font_small)
+    draw.text((x0 + w - 16 - sub_w, y0 + 13), sub_panel, fill=(148, 163, 184), font=font_small)
 
     # 2. Área del Gráfico de Gauss
     gx0 = x0 + 20
@@ -157,21 +202,31 @@ def draw_pert_bell_graphic(draw, x0, y0, w, h, font_small, font_bold, font_mono,
         draw.line([points[i], points[i+1]], fill=(56, 189, 248), width=3)
 
     # Línea vertical de la media μ
-    draw.line([(cx_mu, base_y), (cx_mu, base_y - peak_h - 10)], fill=(148, 163, 184), width=1)
-    draw.text((cx_mu - 18, base_y + 8), "μ=132.5d", fill=(148, 163, 184), font=font_mono)
+    draw.line([(cx_mu, base_y), (cx_mu, base_y - peak_h - 14)], fill=(148, 163, 184), width=1)
+    mu_lbl = "μ=132.5d"
+    mu_w = text_width(draw, mu_lbl, font_mono)
+    draw.text((cx_mu - mu_w // 2, base_y + 8), mu_lbl, fill=(148, 163, 184), font=font_mono)
 
-    # Línea vertical de la fecha límite (rojo)
-    draw.line([(cx_deadline, base_y), (cx_deadline, base_y - peak_h * 0.8)], fill=(239, 68, 68), width=2)
+    # Línea vertical de la fecha límite (rojo) — etiqueta posicionada limpiamente a la izquierda
+    dead_top = gy0 + 16
+    draw.line([(cx_deadline, base_y), (cx_deadline, dead_top)], fill=(239, 68, 68), width=2)
     lbl_dead = "Target: 125d" if lang == 'EN' else "Límite: 125d"
-    draw.text((cx_deadline - 58, base_y - peak_h * 0.85), lbl_dead, fill=(239, 68, 68), font=font_bold)
-    lbl_prob = "P=34.2%"
-    draw.text((cx_deadline - 50, base_y - peak_h * 0.72), lbl_prob, fill=(252, 165, 165), font=font_mono)
+    lbl_prob = "P=34.2% (Risk)" if lang == 'EN' else "P=34.2% (Riesgo)"
+    dead_w = max(text_width(draw, lbl_dead, font_bold), text_width(draw, lbl_prob, font_mono))
+    pill_x0 = cx_deadline - dead_w - 22
+    draw.rounded_rectangle([(pill_x0, dead_top), (cx_deadline - 6, dead_top + 38)], radius=5, fill=(69, 18, 24), outline=(239, 68, 68), width=1)
+    draw.text((pill_x0 + 8, dead_top + 5), lbl_dead, fill=(254, 202, 202), font=font_bold)
+    draw.text((pill_x0 + 8, dead_top + 21), lbl_prob, fill=(252, 165, 165), font=font_mono)
 
-    # Línea vertical P90 (verde)
-    draw.line([(cx_p90, base_y), (cx_p90, base_y - peak_h * 0.9)], fill=(16, 185, 129), width=2)
+    # Línea vertical P90 (verde) — etiqueta en zona abierta derecha
+    p90_top = gy0 + 26
+    draw.line([(cx_p90, base_y), (cx_p90, p90_top)], fill=(16, 185, 129), width=2)
     lbl_p90 = "Board P90: 148d"
-    draw.text((cx_p90 + 6, base_y - peak_h * 0.92), lbl_p90, fill=(16, 185, 129), font=font_bold)
-    draw.text((cx_p90 + 6, base_y - peak_h * 0.78), "Certidumbre 90%", fill=(167, 243, 208), font=font_mono)
+    lbl_cert = "90% Certainty" if lang == 'EN' else "Certidumbre 90%"
+    p90_w = max(text_width(draw, lbl_p90, font_bold), text_width(draw, lbl_cert, font_mono))
+    draw.rounded_rectangle([(cx_p90 + 6, p90_top), (cx_p90 + 22 + p90_w, p90_top + 38)], radius=5, fill=(14, 48, 38), outline=(16, 185, 129), width=1)
+    draw.text((cx_p90 + 14, p90_top + 5), lbl_p90, fill=(110, 231, 183), font=font_bold)
+    draw.text((cx_p90 + 14, p90_top + 21), lbl_cert, fill=(167, 243, 208), font=font_mono)
 
     # 3. Mini KPI Cards inferiores (Filas y0 + 305 a y0 + 415)
     ky0 = y0 + 302
@@ -236,10 +291,12 @@ def generate_cover_image(lang='ES', out_path=None):
     # LADO IZQUIERDO: TEXTOS CORPORATIVOS
     left_x = 55
 
-    # 1. Kicker / Badge
-    badge_txt = "DATALARIA EXECUTIVE DECISION PACK · PMBOK 7th / STOCHASTIC MANAGEMENT"
-    draw.rounded_rectangle([(left_x, 48), (left_x + 520, 78)], radius=6, fill=(30, 58, 138), outline=(37, 99, 235), width=1)
-    draw.text((left_x + 14, 55), badge_txt, fill=(147, 197, 253), font=f_badge)
+    # 1. Kicker / Badge (ancho medido dinámicamente para evitar recortes)
+    badge_txt = "DATALARIA EXECUTIVE PACK · PMBOK 7th / STOCHASTIC ENGINE"
+    f_badge_fit = get_font("segoeuib.ttf", 11)
+    badge_w = text_width(draw, badge_txt, f_badge_fit) + 28
+    draw.rounded_rectangle([(left_x, 50), (left_x + badge_w, 78)], radius=6, fill=(30, 58, 138), outline=(37, 99, 235), width=1)
+    draw.text((left_x + 14, 57), badge_txt, fill=(147, 197, 253), font=f_badge_fit)
 
     # 2. Título Principal
     t1 = "ESTIMACIÓN PERT" if lang == 'ES' else "3-POINT PERT"
@@ -253,18 +310,25 @@ def generate_cover_image(lang='ES', out_path=None):
     draw.text((left_x, 210), sub1, fill=(203, 213, 225), font=f_sub)
     draw.text((left_x, 235), sub2, fill=(203, 213, 225), font=f_sub)
 
-    # 4. Píldoras de Entregables
+    # 4. Píldoras de Entregables con iconos vectoriales (cero cajas unicode rotas)
     pills = [
-        ("📊 Excel + Sheets", (30, 41, 59), (56, 189, 248)),
-        ("📑 PPTX 16:9 C-Level", (30, 41, 59), (56, 189, 248)),
-        ("📄 Guía PDF", (30, 41, 59), (56, 189, 248))
+        ("excel", "Excel + Sheets", (30, 41, 59), (56, 189, 248)),
+        ("pptx", "PPTX 16:9 C-Level", (30, 41, 59), (56, 189, 248)),
+        ("pdf", "Guía PDF" if lang == 'ES' else "PDF Guide", (30, 41, 59), (56, 189, 248)),
     ]
     px = left_x
     py = 285
-    for p_txt, p_bg, p_fg in pills:
-        pw = len(p_txt) * 9 + 20
-        draw.rounded_rectangle([(px, py), (px + pw, py + 30)], radius=6, fill=p_bg, outline=(71, 85, 105), width=1)
-        draw.text((px + 10, py + 7), p_txt, fill=p_fg, font=f_pill)
+    for icon_kind, p_txt, p_bg, p_fg in pills:
+        tw = text_width(draw, p_txt, f_pill)
+        pw = 12 + 15 + 8 + tw + 12
+        draw.rounded_rectangle([(px, py), (px + pw, py + 32)], radius=6, fill=p_bg, outline=(71, 85, 105), width=1)
+        if icon_kind == "excel":
+            draw_icon_excel(draw, px + 11, py + 9)
+        elif icon_kind == "pptx":
+            draw_icon_pptx(draw, px + 11, py + 9)
+        else:
+            draw_icon_pdf(draw, px + 11, py + 9)
+        draw.text((px + 34, py + 8), p_txt, fill=p_fg, font=f_pill)
         px += pw + 12
 
     # 5. Viñetas de valor
@@ -281,19 +345,21 @@ def generate_cover_image(lang='ES', out_path=None):
         "• Crashing matrix with marginal cost per day reduced"
     ]
     b_list = bullets_es if lang == 'ES' else bullets_en
-    by = 340
+    by = 342
     for b in b_list:
         draw.text((left_x, by), b, fill=(226, 232, 240), font=get_font("segoeui.ttf", 13))
         by += 24
 
-    # 6. Garantía de Entrega
-    guar_txt = "⚡ Descarga directa inmediata (.ZIP con versiones ES y EN)" if lang == 'ES' else "⚡ Instant direct download (.ZIP with ES & EN versions)"
-    draw.rounded_rectangle([(left_x, 460), (left_x + 480, 492)], radius=6, fill=(24, 45, 40), outline=(16, 185, 129), width=1)
-    draw.text((left_x + 14, 467), guar_txt, fill=(110, 231, 183), font=f_guarantee)
+    # 6. Garantía de Entrega con icono rayo vectorial
+    guar_txt = "Descarga directa inmediata (.ZIP con versiones ES y EN)" if lang == 'ES' else "Instant direct download (.ZIP with ES & EN versions)"
+    guar_w = max(470, 14 + 14 + 10 + text_width(draw, guar_txt, f_guarantee) + 16)
+    draw.rounded_rectangle([(left_x, 462), (left_x + guar_w, 494)], radius=6, fill=(24, 45, 40), outline=(16, 185, 129), width=1)
+    draw_icon_bolt(draw, left_x + 14, 471)
+    draw.text((left_x + 34, 470), guar_txt, fill=(110, 231, 183), font=f_guarantee)
 
     # 7. Marca de Agua Inferior
-    wm_txt = "DATALARIA.COM · EXECUTIVE DECISION PACKS · CONTROL OPERATIVO"
-    draw.text((left_x, 560), wm_txt, fill=(100, 116, 139), font=f_watermark)
+    wm_txt = "DATALARIA.COM · EXECUTIVE DECISION PACKS · CONTROL OPERATIVO" if lang == 'ES' else "DATALARIA.COM · EXECUTIVE DECISION PACKS · OPERATIONS CONTROL"
+    draw.text((left_x, 550), wm_txt, fill=(100, 116, 139), font=f_watermark)
 
     # LADO DERECHO: PANEL ANALÍTICO ESTOCÁSTICO
     panel_x = 590

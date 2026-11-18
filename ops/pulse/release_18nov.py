@@ -26,9 +26,10 @@ from typing import List, Tuple, Dict, Any
 ROOT_DIR = Path(__file__).resolve().parent.parent.parent
 PACKAGES_DIR = ROOT_DIR / "packages" / "pulse"
 STAGED_CARD_PATH = PACKAGES_DIR / "staged_pack_pulse_18nov.json"
+DEFAULT_CHECKOUT_URL = "https://datalaria.lemonsqueezy.com/checkout/buy/3aac3253-2081-44b5-af4d-c0ecfc257be0?embed=1"
 
 
-def get_staged_pack_data(checkout_url: str = "#") -> Dict[str, Any]:
+def get_staged_pack_data(checkout_url: str = DEFAULT_CHECKOUT_URL) -> Dict[str, Any]:
     """Retorna la ficha comercial completa de pack-pulse para data/pulse/kits.yaml."""
     return {
         "id": "pack-pulse",
@@ -84,8 +85,87 @@ def get_staged_pack_data(checkout_url: str = "#") -> Dict[str, Any]:
     }
 
 
+def _check_staged_card_and_artifacts(errors: List[str]) -> None:
+    """Valida la definición staged y la existencia física de los artefactos del lanzamiento."""
+    if not STAGED_CARD_PATH.exists():
+        errors.append(f"Falta el archivo staged card: {STAGED_CARD_PATH}")
+    else:
+        try:
+            staged_json = json.loads(STAGED_CARD_PATH.read_text(encoding="utf-8"))
+            if staged_json.get("article_url_es") != "/es/posts/pulse-parte1-adios-notion-content-ops/":
+                errors.append(f"staged card article_url_es DEBE apuntar a pulse-parte1, no a {staged_json.get('article_url_es')}")
+            if staged_json.get("guide_url_es") != "/es/posts/pulse-parte1-adios-notion-content-ops/":
+                errors.append(f"staged card guide_url_es DEBE apuntar a pulse-parte1, no a {staged_json.get('guide_url_es')}")
+        except Exception as e:
+            errors.append(f"Error leyendo staged card {STAGED_CARD_PATH}: {e}")
+
+    required_artifacts = [
+        ROOT_DIR / "packages" / "pulse" / "Datalaria_Pulse_Kit.zip",
+        ROOT_DIR / "packages" / "00_DISTRIBUCION_LEMONSQUEEZY" / "Datalaria_Pulse_Kit.zip",
+        ROOT_DIR / "static" / "images" / "recursos" / "pulse-preview-es.png",
+        ROOT_DIR / "static" / "images" / "recursos" / "pulse-preview-en.png",
+        ROOT_DIR / "static" / "apps" / "pulse" / "index.html",
+        ROOT_DIR / "static" / "apps" / "pulse" / "data" / "public.json",
+    ]
+    for art in required_artifacts:
+        if not art.exists():
+            errors.append(f"Artefacto de entrega no encontrado: {art}")
+
+
+def verify_live_launch() -> Tuple[bool, List[str]]:
+    """Verifica que Datalaria Pulse v1.0.0 está correctamente activado en modo live con su URL real de Lemon Squeezy."""
+    errors: List[str] = []
+    checkout_id = "3aac3253-2081-44b5-af4d-c0ecfc257be0"
+
+    pulse_yaml = ROOT_DIR / "data" / "apps" / "pulse.yaml"
+    if not pulse_yaml.exists():
+        errors.append(f"Falta el archivo: {pulse_yaml}")
+    else:
+        text = pulse_yaml.read_text(encoding="utf-8")
+        if "status: live" not in text or "status: incubating" in text:
+            errors.append("data/apps/pulse.yaml DEBE tener 'status: live' tras la activación.")
+        if "current_version: v1.0.0" not in text:
+            errors.append("data/apps/pulse.yaml DEBE tener 'current_version: v1.0.0'.")
+
+    for lang in ["es", "en"]:
+        app_page = ROOT_DIR / "content" / lang / "apps" / "pulse" / "index.md"
+        if not app_page.exists():
+            errors.append(f"Falta el archivo: {app_page}")
+        else:
+            text = app_page.read_text(encoding="utf-8")
+            if "draft: false" not in text:
+                errors.append(f"{app_page} DEBE tener 'draft: false' tras la activación.")
+
+    kits_yaml = ROOT_DIR / "data" / "pulse" / "kits.yaml"
+    if not kits_yaml.exists():
+        errors.append(f"Falta el archivo: {kits_yaml}")
+    else:
+        text = kits_yaml.read_text(encoding="utf-8")
+        if "id: pack-pulse" not in text:
+            errors.append("data/pulse/kits.yaml DEBE contener 'id: pack-pulse' tras la activación.")
+        if checkout_id not in text:
+            errors.append("data/pulse/kits.yaml DEBE incluir la URL oficial de checkout de Lemon Squeezy.")
+
+    recursos_catalog = ROOT_DIR / "layouts" / "partials" / "recursos_catalog.html"
+    if not recursos_catalog.exists():
+        errors.append(f"Falta el archivo: {recursos_catalog}")
+    else:
+        text = recursos_catalog.read_text(encoding="utf-8")
+        if 'id="pack-pulse"' not in text:
+            errors.append("layouts/partials/recursos_catalog.html DEBE contener 'id=\"pack-pulse\"' tras la activación.")
+        if checkout_id not in text:
+            errors.append("layouts/partials/recursos_catalog.html DEBE incluir la URL oficial de checkout de Lemon Squeezy.")
+
+    index_profile = ROOT_DIR / "layouts" / "partials" / "index_profile.html"
+    if index_profile.exists() and '"slug" "pulse"' not in index_profile.read_text(encoding="utf-8"):
+        errors.append("layouts/partials/index_profile.html DEBE listar 'pulse' en la sección de Apps.")
+
+    _check_staged_card_and_artifacts(errors)
+    return (len(errors) == 0, errors)
+
+
 def verify_embargo() -> Tuple[bool, List[str]]:
-    """Verifica que todas las reglas de embargo y artefactos requeridos están en regla."""
+    """Verifica el embargo pre-18N o, si Pulse ya está en status: live, delega en verify_live_launch()."""
     errors: List[str] = []
 
     # 1. Verificar data/apps/pulse.yaml
@@ -94,6 +174,8 @@ def verify_embargo() -> Tuple[bool, List[str]]:
         errors.append(f"Falta el archivo: {pulse_yaml}")
     else:
         text = pulse_yaml.read_text(encoding="utf-8")
+        if "status: live" in text:
+            return verify_live_launch()
         if "status: incubating" not in text:
             errors.append("data/apps/pulse.yaml DEBE tener 'status: incubating' durante el embargo.")
         if "current_version: v1.0.0" not in text:
@@ -147,38 +229,15 @@ def verify_embargo() -> Tuple[bool, List[str]]:
         if "pack-pulse" in text:
             errors.append("layouts/partials/recursos_catalog.html NO debe enlazar 'pack-pulse' antes del 18 de noviembre.")
 
-    # 5. Verificar que staged_pack_pulse_18nov.json existe y apunta a Parte 1
-    if not STAGED_CARD_PATH.exists():
-        errors.append(f"Falta el archivo staged card: {STAGED_CARD_PATH}")
-    else:
-        try:
-            staged_json = json.loads(STAGED_CARD_PATH.read_text(encoding="utf-8"))
-            if staged_json.get("article_url_es") != "/es/posts/pulse-parte1-adios-notion-content-ops/":
-                errors.append(f"staged card article_url_es DEBE apuntar a pulse-parte1, no a {staged_json.get('article_url_es')}")
-            if staged_json.get("guide_url_es") != "/es/posts/pulse-parte1-adios-notion-content-ops/":
-                errors.append(f"staged card guide_url_es DEBE apuntar a pulse-parte1, no a {staged_json.get('guide_url_es')}")
-        except Exception as e:
-            errors.append(f"Error leyendo staged card {STAGED_CARD_PATH}: {e}")
-
-    # 6. Verificar existencia de artefactos requeridos
-    required_artifacts = [
-        ROOT_DIR / "packages" / "pulse" / "Datalaria_Pulse_Kit.zip",
-        ROOT_DIR / "packages" / "00_DISTRIBUCION_LEMONSQUEEZY" / "Datalaria_Pulse_Kit.zip",
-        ROOT_DIR / "static" / "images" / "recursos" / "pulse-preview-es.png",
-        ROOT_DIR / "static" / "images" / "recursos" / "pulse-preview-en.png",
-        ROOT_DIR / "static" / "apps" / "pulse" / "index.html",
-        ROOT_DIR / "static" / "apps" / "pulse" / "data" / "public.json",
-    ]
-    for art in required_artifacts:
-        if not art.exists():
-            errors.append(f"Artefacto de entrega no encontrado: {art}")
+    # 5 y 6. Validar staged card y artefactos
+    _check_staged_card_and_artifacts(errors)
 
     return (len(errors) == 0, errors)
 
 
-def prepare_staged_card() -> Path:
+def prepare_staged_card(checkout_url: str = DEFAULT_CHECKOUT_URL) -> Path:
     """Genera packages/pulse/staged_pack_pulse_18nov.json con los metadatos comerciales."""
-    data = get_staged_pack_data(checkout_url="#")
+    data = get_staged_pack_data(checkout_url=checkout_url)
     PACKAGES_DIR.mkdir(parents=True, exist_ok=True)
     with open(STAGED_CARD_PATH, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
@@ -186,7 +245,7 @@ def prepare_staged_card() -> Path:
     return STAGED_CARD_PATH
 
 
-def activate_launch(checkout_url: str = "#", root_dir: Path = ROOT_DIR, dry_run: bool = False) -> Dict[str, Any]:
+def activate_launch(checkout_url: str = DEFAULT_CHECKOUT_URL, root_dir: Path = ROOT_DIR, dry_run: bool = False) -> Dict[str, Any]:
     """
     Descongela atómicamente la app y publica el kit pack-pulse en kits.yaml, recursos_catalog y index_profile.
     Si dry_run=True, calcula las mutaciones sin escribir en disco.
@@ -276,6 +335,7 @@ def activate_launch(checkout_url: str = "#", root_dir: Path = ROOT_DIR, dry_run:
     if recursos_cat_file.exists():
         cat_text = recursos_cat_file.read_text(encoding="utf-8")
         if "pack-pulse" not in cat_text:
+            pack_data = get_staged_pack_data(checkout_url=checkout_url)
             # HTML Card ES
             es_card_html = (
                 '<div class="kit-card" id="pack-pulse">\n'
@@ -287,26 +347,26 @@ def activate_launch(checkout_url: str = "#", root_dir: Path = ROOT_DIR, dry_run:
                 '<span class="kit-card-cat">Software, IA & SDD</span>\n'
                 '<span class="kit-status-badge avail">🟢 Disponible</span>\n'
                 '</div>\n'
-                '<h3 class="kit-card-title">Datalaria Pulse: Content Ops & Notion Migration Kit</h3>\n'
+                f'<h3 class="kit-card-title">{pack_data["title_es"]}</h3>\n'
                 '</div>\n'
                 '</div>\n'
-                '<p class="kit-card-desc">Toolkit comercial para equipos editoriales: Plantilla maestra Excel con 6 hojas y validaciones, conectores Power Query M (Notion CSV & Git public.json), script CLI de migración y Guía ejecutiva PDF.</p>\n'
+                f'<p class="kit-card-desc">{pack_data["description_es"]}</p>\n'
                 '<div class="kit-deliverables-row">\n'
-                '<span class="deliv-chip">Excel .xlsx + Sheets</span>\n'
+                '<span class="deliv-chip">Excel Dual ES/EN</span>\n'
                 '<span class="deliv-chip">Power Query M</span>\n'
-                '<span class="deliv-chip">Guía PDF + CLI</span>\n'
+                '<span class="deliv-chip">Guía PDF 5p + CLI</span>\n'
                 '</div>\n'
                 '</div>\n'
                 '<div class="kit-card-foot">\n'
                 '<div class="kit-pricing-box">\n'
-                '<span class="kit-price-curr">19€</span>\n'
-                '<span class="kit-price-orig">39€</span>\n'
+                f'<span class="kit-price-curr">{pack_data["price"]}</span>\n'
+                f'<span class="kit-price-orig">{pack_data["original_price"]}</span>\n'
                 '</div>\n'
                 '<div class="kit-btns-group">\n'
                 '<button type="button" class="btn-kit-info" onclick="openModal(\'pack-pulse\')">\n'
                 'Detalles ℹ️\n'
                 '</button>\n'
-                '<a href="/es/posts/pulse-parte1-adios-notion-content-ops/" class="btn-kit-info" title="Leer artículo técnico">Artículo técnico 📖</a>\n'
+                f'<a href="{pack_data["article_url_es"]}" class="btn-kit-info" title="Leer artículo técnico">Artículo técnico 📖</a>\n'
                 f'<a href="{checkout_url}" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>\n'
                 '</div>\n'
                 '</div>\n'
@@ -324,26 +384,26 @@ def activate_launch(checkout_url: str = "#", root_dir: Path = ROOT_DIR, dry_run:
                 '<span class="kit-card-cat">Software, AI & SDD</span>\n'
                 '<span class="kit-status-badge avail">🟢 Available</span>\n'
                 '</div>\n'
-                '<h3 class="kit-card-title">Datalaria Pulse: Content Ops & Notion Migration Kit</h3>\n'
+                f'<h3 class="kit-card-title">{pack_data["title_en"]}</h3>\n'
                 '</div>\n'
                 '</div>\n'
-                '<p class="kit-card-desc">Commercial toolkit for editorial teams: 6-sheet Master Excel workbook, dual Power Query M connectors (Notion CSV & Git public.json), Python migration CLI, and Executive PDF Guide.</p>\n'
+                f'<p class="kit-card-desc">{pack_data["description_en"]}</p>\n'
                 '<div class="kit-deliverables-row">\n'
-                '<span class="deliv-chip">Excel .xlsx + Sheets</span>\n'
+                '<span class="deliv-chip">Dual ES/EN Excel</span>\n'
                 '<span class="deliv-chip">Power Query M</span>\n'
-                '<span class="deliv-chip">PDF Guide + CLI</span>\n'
+                '<span class="deliv-chip">5p PDF + CLI</span>\n'
                 '</div>\n'
                 '</div>\n'
                 '<div class="kit-card-foot">\n'
                 '<div class="kit-pricing-box">\n'
-                '<span class="kit-price-curr">19€</span>\n'
-                '<span class="kit-price-orig">39€</span>\n'
+                f'<span class="kit-price-curr">{pack_data["price"]}</span>\n'
+                f'<span class="kit-price-orig">{pack_data["original_price"]}</span>\n'
                 '</div>\n'
                 '<div class="kit-btns-group">\n'
                 '<button type="button" class="btn-kit-info" onclick="openModal(\'pack-pulse\')">\n'
                 'Details ℹ️\n'
                 '</button>\n'
-                '<a href="/en/posts/pulse-part1-goodbye-notion-content-ops/" class="btn-kit-info" title="Read technical article">Technical Article 📖</a>\n'
+                f'<a href="{pack_data["article_url_en"]}" class="btn-kit-info" title="Read technical article">Technical Article 📖</a>\n'
                 f'<a href="{checkout_url}" class="btn-kit-buy lemonsqueezy-button">Download →</a>\n'
                 '</div>\n'
                 '</div>\n'
@@ -351,66 +411,44 @@ def activate_launch(checkout_url: str = "#", root_dir: Path = ROOT_DIR, dry_run:
             )
 
             # KITS_DATA JS object ES
-            es_js_obj = (
-                '  {\n'
-                '    "id": "pack-pulse",\n'
-                '    "title": "Datalaria Pulse: Content Ops & Notion Migration Kit",\n'
-                '    "topic": "software",\n'
-                '    "topicLabel": "Software, IA & SDD",\n'
-                '    "status": "available",\n'
-                '    "statusLabel": "🟢 DISPONIBLE • Content Ops",\n'
-                '    "price": "19€",\n'
-                '    "origPrice": "39€",\n'
-                '    "icon": "📊",\n'
-                '    "delivs": [\n'
-                '      "Excel .xlsx + Sheets",\n'
-                '      "Power Query M",\n'
-                '      "Guía PDF + CLI"\n'
-                '    ],\n'
-                '    "desc": "Toolkit comercial para equipos editoriales: Plantilla maestra Excel con 6 hojas y validaciones, conectores Power Query M (Notion CSV & Git public.json), script CLI de migración y Guía ejecutiva PDF.",\n'
-                '    "features": [\n'
-                '      "Plantilla Maestra Excel (.xlsx) con 6 hojas (Taxonomía, Activos, Kanban, Métricas y Dashboard ejecutivo)",\n'
-                '      "Doble conector Power Query M: sincronización en 1 clic desde Notion CSV y desde public.json de repositorios Git",\n'
-                '      "Script de migración determinista en Python (migrate_notion.py) con exportación directa a .xlsx, .yaml o .json",\n'
-                '      "Escáner universal de repositorios (pulse_repo_scanner.py) de cero dependencias externas para auditorías CI/CD",\n'
-                '      "Guía ejecutiva maquetada en PDF de 4 páginas A4 y especificación técnica de campos canónicos (ESPECIFICACION_CAMPOS.md)"\n'
-                '    ],\n'
-                f'    "checkoutUrl": "{checkout_url}",\n'
-                '    "guideUrl": "/es/posts/pulse-parte1-adios-notion-content-ops/",\n'
-                '    "previewImg": "/images/recursos/pulse-preview-es.png"\n'
-                '  },\n'
-            )
+            es_js_payload = {
+                "id": "pack-pulse",
+                "title": pack_data["title_es"],
+                "topic": "software",
+                "topicLabel": pack_data["category_es"],
+                "status": "available",
+                "statusLabel": "🟢 DISPONIBLE • Content Ops",
+                "price": pack_data["price"],
+                "origPrice": pack_data["original_price"],
+                "icon": pack_data["icon"],
+                "delivs": pack_data["deliverables_es"],
+                "desc": pack_data["description_es"],
+                "features": pack_data["features_es"],
+                "checkoutUrl": checkout_url,
+                "guideUrl": pack_data["guide_url_es"],
+                "previewImg": pack_data["preview_image_es"],
+            }
+            es_js_obj = "  " + json.dumps(es_js_payload, indent=2, ensure_ascii=False).replace("\n", "\n  ") + ",\n"
 
             # KITS_DATA JS object EN
-            en_js_obj = (
-                '  {\n'
-                '    "id": "pack-pulse",\n'
-                '    "title": "Datalaria Pulse: Content Ops & Notion Migration Kit",\n'
-                '    "topic": "software",\n'
-                '    "topicLabel": "Software, AI & SDD",\n'
-                '    "status": "available",\n'
-                '    "statusLabel": "🟢 AVAILABLE • Content Ops",\n'
-                '    "price": "19€",\n'
-                '    "origPrice": "39€",\n'
-                '    "icon": "📊",\n'
-                '    "delivs": [\n'
-                '      "Excel .xlsx + Sheets",\n'
-                '      "Power Query M",\n'
-                '      "PDF Guide + CLI"\n'
-                '    ],\n'
-                '    "desc": "Commercial toolkit for editorial teams: 6-sheet Master Excel workbook, dual Power Query M connectors (Notion CSV & Git public.json), Python migration CLI, and Executive PDF Guide.",\n'
-                '    "features": [\n'
-                '      "Master Excel Template (.xlsx) with 6 structured sheets (Taxonomy, Assets, Kanban, Metrics, and Dashboard with universal formulas)",\n'
-                '      "Dual Power Query M connectors: 1-click synchronization from Notion CSV exports and Git public.json manifests",\n'
-                '      "Deterministic Python migration engine (migrate_notion.py) with direct export to .xlsx, .yaml or .json + test dataset",\n'
-                '      "Universal zero-dependency repository scanner (pulse_repo_scanner.py) for automated CI/CD audits",\n'
-                '      "Executive 4-page A4 PDF guide and canonical data dictionary specification (ESPECIFICACION_CAMPOS.md)"\n'
-                '    ],\n'
-                f'    "checkoutUrl": "{checkout_url}",\n'
-                '    "guideUrl": "/en/posts/pulse-part1-goodbye-notion-content-ops/",\n'
-                '    "previewImg": "/images/recursos/pulse-preview-en.png"\n'
-                '  },\n'
-            )
+            en_js_payload = {
+                "id": "pack-pulse",
+                "title": pack_data["title_en"],
+                "topic": "software",
+                "topicLabel": pack_data["category_en"],
+                "status": "available",
+                "statusLabel": "🟢 AVAILABLE • Content Ops",
+                "price": pack_data["price"],
+                "origPrice": pack_data["original_price"],
+                "icon": pack_data["icon"],
+                "delivs": pack_data["deliverables_en"],
+                "desc": pack_data["description_en"],
+                "features": pack_data["features_en"],
+                "checkoutUrl": checkout_url,
+                "guideUrl": pack_data["guide_url_en"],
+                "previewImg": pack_data["preview_image_en"],
+            }
+            en_js_obj = "  " + json.dumps(en_js_payload, indent=2, ensure_ascii=False).replace("\n", "\n  ") + ",\n"
 
             new_cat_text = cat_text
             # Counters ES
@@ -481,7 +519,8 @@ def activate_launch(checkout_url: str = "#", root_dir: Path = ROOT_DIR, dry_run:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Gobernador de Embargo y Lanzamiento 18-Nov de Datalaria Pulse")
-    parser.add_argument("--verify-embargo", action="store_true", help="Verifica reglas de embargo y artefactos")
+    parser.add_argument("--verify-embargo", action="store_true", help="Verifica reglas de embargo o estado live si ya se activó")
+    parser.add_argument("--verify-live", action="store_true", help="Exige que el lanzamiento live esté activo con checkout URL real")
     parser.add_argument("--prepare-staged-card", action="store_true", help="Genera staged_pack_pulse_18nov.json")
     parser.add_argument("--activate", action="store_true", help="Activa el lanzamiento comercial (18 Nov)")
     parser.add_argument("--checkout-url", type=str, default=None, help="URL de checkout definitiva de Lemon Squeezy")
@@ -493,7 +532,7 @@ def main() -> None:
         prepare_staged_card()
 
     if args.activate:
-        checkout = args.checkout_url or "#"
+        checkout = args.checkout_url or DEFAULT_CHECKOUT_URL
         print("\n=== ACTIVACIÓN COMERCIAL (DATALARIA PULSE — 18 NOV 2026) ===")
         print(f"Modo: {'SIMULACIÓN (DRY-RUN)' if args.dry_run else 'EJECUCIÓN REAL'}")
         print(f"Checkout URL: {checkout}")
@@ -503,23 +542,54 @@ def main() -> None:
             print(f"  - {k}: {v}")
         print()
 
-    if args.verify_embargo or not (args.prepare_staged_card or args.activate):
-        print("\n=== VERIFICACIÓN DE EMBARGO COMERCIAL (DATALARIA PULSE — 18 NOV 2026) ===")
-        ok, errors = verify_embargo()
+    if args.verify_live:
+        print("\n=== VERIFICACIÓN DE LANZAMIENTO LIVE (DATALARIA PULSE v1.0.0) ===")
+        ok, errors = verify_live_launch()
         if ok:
-            print("[OK] Embargo comercial verificado al 100%:")
-            print("  - App status: incubating en data/apps/pulse.yaml (v1.0.0)")
-            print("  - Fichas de app: draft: true en ES y EN")
-            print("  - Posts de la serie: programados para >= 2026-11-18")
-            print("  - Catálogo público: pack-pulse embargado (no expuesto)")
-            print("  - Staged card: packages/pulse/staged_pack_pulse_18nov.json verificado")
-            print("  - Entregables comerciales: Datalaria_Pulse_Kit.zip y previews listos\n")
+            print("[OK] Lanzamiento Live verificado al 100%: status=live, draft=false, pack-pulse activo con Lemon Squeezy.\n")
         else:
-            print("[ERROR] Se encontraron fallos de embargo comercial:")
+            print("[ERROR] Fallos en la activación Live:")
             for err in errors:
                 print(f"  x {err}")
             print()
             sys.exit(1)
+
+    elif args.verify_embargo or not (args.prepare_staged_card or args.activate):
+        is_live = (ROOT_DIR / "data" / "apps" / "pulse.yaml").exists() and "status: live" in (
+            ROOT_DIR / "data" / "apps" / "pulse.yaml"
+        ).read_text(encoding="utf-8")
+        if is_live:
+            print("\n=== VERIFICACIÓN POST-EMBARGO / MODO LIVE (DATALARIA PULSE v1.0.0) ===")
+            ok, errors = verify_live_launch()
+            if ok:
+                print("[OK] Pulse activo en modo LIVE y artefactos verificados al 100%:")
+                print("  - App status: live en data/apps/pulse.yaml (v1.0.0)")
+                print("  - Fichas de app: draft: false en ES y EN")
+                print("  - Catálogo público: pack-pulse activo con Lemon Squeezy URL real")
+                print("  - Entregables comerciales: Datalaria_Pulse_Kit.zip y previews listos\n")
+            else:
+                print("[ERROR] Se encontraron fallos en modo LIVE:")
+                for err in errors:
+                    print(f"  x {err}")
+                print()
+                sys.exit(1)
+        else:
+            print("\n=== VERIFICACIÓN DE EMBARGO COMERCIAL (DATALARIA PULSE — 18 NOV 2026) ===")
+            ok, errors = verify_embargo()
+            if ok:
+                print("[OK] Embargo comercial verificado al 100%:")
+                print("  - App status: incubating en data/apps/pulse.yaml (v1.0.0)")
+                print("  - Fichas de app: draft: true en ES y EN")
+                print("  - Posts de la serie: programados para >= 2026-11-18")
+                print("  - Catálogo público: pack-pulse embargado (no expuesto)")
+                print("  - Staged card: packages/pulse/staged_pack_pulse_18nov.json verificado")
+                print("  - Entregables comerciales: Datalaria_Pulse_Kit.zip y previews listos\n")
+            else:
+                print("[ERROR] Se encontraron fallos de embargo comercial:")
+                for err in errors:
+                    print(f"  x {err}")
+                print()
+                sys.exit(1)
 
 
 if __name__ == "__main__":

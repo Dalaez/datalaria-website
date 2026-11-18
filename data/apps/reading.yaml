@@ -1,0 +1,135 @@
+slug: reading
+order: 75
+tier: lab
+status: incubating
+icon: "📖"
+cover: cover.png
+app_url: /apps/reading/
+source_spec: specs/apps/reading/spec.md
+current_version: v1.0.0
+launch_date: "2026-12-16"
+
+title:
+  es: "Lector Arcade (Aprendizaje de Lectura)"
+  en: "Reader Arcade (Playful Reading & Literacy)"
+
+tagline:
+  es: "Entrenamiento lúdico de fluidez lectora, sílabas y phonics con cronómetro split, audio nativo y perfiles familiares."
+  en: "Gamified reading fluency, syllables, and phonics arcade with split stopwatch, native audio, and family profiles."
+
+summary:
+  es: "Aplicación interactiva y lúdica diseñada para la enseñanza y práctica de la lectura progresiva en niños (4 a 11 años) y adultos en aprendizaje de segundas lenguas. Siguiendo la arquitectura y ergonomía de Ábaco Arcade (apps/maths/), Lector Arcade ofrece 6 niveles adaptativos (desde conciencia fonológica y silabario hasta mini-relatos de 3 líneas con micro-checks de comprensión), 4 modos de juego (Normal, Contrarreloj split con cálculo PPM/WPM, Sprint 60s y Reto Diario con PRNG determinista), sintetizador nativo de voz Web Speech API con velocidad normal (1.0x) y tortuga (0.65x), efectos 8-bit procedurales con Web Audio API, mesa de mezclas silábica interactiva, teclado táctil 3D para completar letras, 3 perfiles familiares locales aislados y generador de Diploma Arcade PNG en alta resolución (1200x800) mediante Canvas 2D nativo, operando 100% offline y sin librerías externas."
+  en: "Interactive reading arcade designed for progressive literacy and reading fluency training in children (ages 4 to 11) and second-language adult learners. Inheriting the architecture and ergonomic foundations of Abacus Arcade (apps/maths/), Reader Arcade delivers 6 adaptive levels (from phonological awareness and syllable matrices to 3-line short stories with comprehension micro-checks), 4 game modes (Relaxed Normal, Split Stopwatch with real-time WPM calculation, 60s Sprint, and Deterministic Daily Challenge with PRNG), native Web Speech API voice synthesis (1.0x normal and 0.65x turtle mode), procedural 8-bit Web Audio sound effects, tactile 3D on-screen keyboard, interactive syllable mixer, 3 isolated family profiles, and high-resolution Canvas 2D Arcade PNG Diploma generator (1200x800), operating 100% offline with zero external libraries."
+
+objectives:
+  - es: "Crear un entorno arcade lúdico, táctil y motivador para el aprendizaje lector infantil sin estrés ni frustración."
+    en: "Create an engaging, tactile, and motivating arcade environment for early literacy practice free of stress and penalty."
+  - es: "Desarrollar la conciencia fonológica y la fluidez lectora progresiva en español (silabario directo/inverso/trabado) e inglés (phonics, blends y digraphs)."
+    en: "Develop phonological awareness and reading fluency in Spanish (syllabic progression) and English (phonics, blends, and digraphs)."
+  - es: "Medir la velocidad lectora objetiva (PPM / WPM) mediante cronómetro split de parada voluntaria con micro-check de comprensión inmediata."
+    en: "Measure reading velocity objectively (WPM) via split stopwatch with instant freeze upon self-paced completion followed by comprehension checks."
+  - es: "Garantizar privacidad total infantil y resiliencia offline 100% client-side (PWA) sin micrófonos remotos ni dependencias externas."
+    en: "Guarantee strict child privacy and 100% client-side offline resilience (PWA) with zero cloud microphones or external CDNs."
+
+features:
+  - icon: "🌱"
+    es: "6 Niveles Adaptativos: desde letras iniciales y silabario básico hasta palabras complejas, frases de 2 líneas y mini-relatos de 3 líneas."
+    en: "6 Adaptive Levels: ranging from letter sounds and basic syllables to complex words, 2-line sentences, and 3-line short stories."
+  - icon: "⏱️"
+    es: "Contrarreloj Split con Cálculo PPM/WPM: cronómetro de alta precisión que se congela al pulsar '¡Leído!' y evalúa la fluidez con micro-check de comprensión."
+    en: "Split Stopwatch with WPM Calculation: high-precision timer freezing upon 'Read Done!' and validating comprehension via 1-tap checks."
+  - icon: "💡"
+    es: "Laboratorio Fonético & Mesa de Mezclas: módulo 'Aprender' con exploración silábica bilingüe, selector AA/Aa y sintetizador de voz normal (1.0x) y tortuga (0.65x)."
+    en: "Phonics Lab & Syllable Mixer: 'Learn' section featuring bilingual phonetic grids, AA/Aa case toggle, and normal (1.0x) / turtle (0.65x) voice synthesis."
+  - icon: "⌨️"
+    es: "Teclado Táctil 3D Integrado: teclado alfabético en pantalla con botones de 52px adaptados a pantallas táctiles de tablets y móviles."
+    en: "Integrated 3D Tactile Keypad: on-screen alphabetic keypad with 52px touch-friendly buttons preventing keyboard layout shift."
+  - icon: "🔊"
+    es: "Sintetizador Web Audio & Confeti Canvas: efectos sonoros alegres procedurales de 8-bit, combos de racha y lluvia física de confeti."
+    en: "Web Audio Synthesizer & Canvas Confetti: cheerful procedural 8-bit sound effects, combo multipliers, and canvas confetti physics."
+  - icon: "🎮"
+    es: "4 Modos de Juego y Medallas: Modo Normal, Contrarreloj Lector, Sprint 60s y Reto Diario determinista con 6 medallas coleccionables."
+    en: "4 Game Modes & Badges: Normal Mode, Reading Stopwatch, 60s Sprint, and Deterministic Daily Challenge with 6 unlockable badges."
+  - icon: "📲"
+    es: "PWA 100% Offline e Instalable: Service Worker con precaché resiliente, botón de instalación en pantalla de inicio y cero dependencias CDN."
+    en: "100% Offline Installable PWA: Service Worker with resilient precache, home screen install prompt, and zero CDN dependencies."
+  - icon: "📅"
+    es: "Reto Diario Wordle & Repaso Didáctico: reto diario determinista por fecha con tira visual para compartir y repaso guiado de fallos con audio tortuga."
+    en: "Wordle-Style Daily Challenge & Mistake Review: date-seeded daily challenge with share card and pedagogical review module with turtle audio."
+  - icon: "🎓"
+    es: "Perfiles Familiares & Diploma Arcade PNG: selector de 3 perfiles locales con estadísticas aisladas y certificado de excelencia descargable en 1 clic (1200x800)."
+    en: "Family Profiles & Arcade PNG Diploma: 3 isolated local player profiles with independent stats and 1-click honors certificate generator (1200x800)."
+
+design:
+  architecture:
+    es: "Arquitectura SPA estática y autónoma bajo Single-Source-of-Truth en /apps/reading/: el catálogo curricular bilingüe expone el banco léxico curado y las reglas fonéticas en memoria cliente. El motor procedimental determinista ReadingEngine valida las respuestas y calcula la fluidez lectora en PPM. El empaquetador build.py compila un bundle monolítico en static/apps/reading/index.html sin dependencias de red externas."
+    en: "Self-contained Single-Source-of-Truth client-side SPA in /apps/reading/: curated bilingual phonetic catalogs and lexical databases loaded in browser memory. The deterministic ReadingEngine validates answers and calculates reading speed (WPM). The build.py packager compiles an inlined monolithic bundle in static/apps/reading/index.html with zero external network dependencies."
+  principles:
+    - es: "Pedagogía y Estética Lúdica (Consumer Playful): botones arcade 3D, pistas visuales amigables, resaltado silábico cromático y diseño sin penalizaciones punitivas."
+      en: "Playful Pedagogy & Aesthetics (Consumer Playful): 3D arcade buttons, friendly visual hints, chromatic syllable highlighting, and positive reinforcement."
+    - es: "Cero Dependencias de Red Externas: 100% CSS nativo sin frameworks CDN y tipografía del sistema optimizada para legibilidad infantil."
+      en: "Zero External Network Dependencies: 100% native CSS eliminating CDN bloat with system typography optimized for early reader ergonomics."
+    - es: "Ergonomía Táctil y Multidispositivo: Teclado táctil en pantalla de gran tamaño (>= 52px) y soporte para atajos de teclado físicos (A-Z, Espacio, Enter, T, M, H)."
+      en: "Tactile & Multi-Device Ergonomics: Large on-screen keypad (>= 52px) paired with full desktop physical keyboard shortcuts (A-Z, Space, Enter, T, M, H)."
+  diagram: |
+    flowchart TD
+      START["Selección de Nivel (1-6) & Modo (Normal / Contrarreloj / Sprint / Diario)"] --> STAGE["Escenario Lector (reading-stage)"]
+      STAGE --> HINT{"¿Necesita Pista?"}
+      HINT -- "Sí" --> VISUAL["Pista Fonética / Audio Tortuga 0.65x / Letras Clave"]
+      HINT -- "No" --> ACTION["Lectura o Entrada por Teclado 3D"]
+      ACTION --> DONE["Congelación de Cronómetro Split ('¡Leído!')"]
+      DONE --> CHECK{"Micro-Check de Comprensión"}
+      CHECK -- "Acierto" --> COMBO["+Puntos & PPM & Combo Racha & Web Audio 8-bit"]
+      CHECK -- "Fallo" --> CORR["Feedback Didáctico & Registro para Repaso"]
+      COMBO --> NEXT["Siguiente Reto"]
+      CORR --> NEXT
+      NEXT --> STATS["Resumen de Sesión & Tira Wordle & Medallas"]
+
+tech:
+  - layer: frontend
+    items: ["HTML5 Nativo", "CSS3 Design Tokens (Daylight Arcade & Cosmic Night)", "Vanilla JavaScript Moderno", "Service Worker PWA Offline"]
+  - layer: audio_canvas
+    items: ["Web Audio API Procedural (8-bit)", "Web Speech API (TTS Bilingüe 1.0x / 0.65x)", "Canvas 2D Confetti Engine", "Canvas 2D Diploma Generator (1200x800)"]
+  - layer: pedagogy
+    items: ["Currículo Fonético Bilingüe (Silabario ES / Phonics EN)", "Micro-Checks de Comprensión en 1 Toque", "Cálculo Determinista de PPM / WPM", "Mesa de Mezclas Silábica"]
+  - layer: methodology
+    items: ["Spec-Driven Development (SDD)", "Datalaria Helix (12 Agentes)", "Test-Driven Development (pytest + Node.js)"]
+  - layer: hosting
+    items: ["Hugo Static Engine (/apps/reading/)"]
+
+posts:
+  - slug:
+      es: lector-arcade-aprendizaje-lectura-gamificada
+      en: reader-arcade-gamified-reading-learning
+    title:
+      es: "Lector Arcade: Alfabetización Lúdica, Sílabas y Phonics con Web Audio y PWA Offline"
+      en: "Reader Arcade: Gamified Early Literacy, Syllables, and Phonics with Web Audio and Offline PWA"
+    summary:
+      es: "Cómo diseñamos y construimos una aplicación interactiva bilingüe de aprendizaje lector con 6 niveles adaptativos, cronómetro de fluidez split, audio nativo y cero dependencias de nube."
+      en: "How we designed and built an interactive bilingual literacy app featuring 6 adaptive levels, split fluency stopwatch, native audio, and zero cloud dependencies."
+    part: 1
+    date: "2026-12-16"
+
+releases:
+  - version: v1.0.0
+    date: "2026-12-16"
+    state: released
+    type: release
+    title:
+      es: "Lector Arcade v1.0: Lanzamiento Inicial con 6 Niveles Adaptativos, Laboratorio Fonético y Cronómetro Split"
+      en: "Reader Arcade v1.0: Initial Release with 6 Adaptive Levels, Phonics Lab, and Split Stopwatch"
+    changes:
+      - es: "6 Niveles curriculares adaptativos en español (conciencia fonológica, silabario directo/inverso/trabado, palabras con hueco y mini-relatos) e inglés (phonics CVC, blends, digraphs y stories)."
+        en: "6 Adaptive curricular levels in Spanish (phonological awareness, syllables, missing letters, and stories) and English (phonics CVC, blends, digraphs, and stories)."
+      - es: "Laboratorio Fonético interactivo '💡 Aprender' con 6 módulos didácticos bilingües, mesa de mezclas silábica y síntesis de voz Web Speech API con velocidad normal (1.0x) y tortuga (0.65x)."
+        en: "Interactive Phonics Lab '💡 Learn' with 6 bilingual pedagogical modules, syllable mixer, and Web Speech API voice synthesis in normal (1.0x) and turtle (0.65x) speeds."
+      - es: "Cronómetro de lectura split en Modo Contrarreloj con congelación voluntaria al pulsar '¡Leído!' y micro-check instantáneo de comprensión para cálculo determinista de PPM / WPM."
+        en: "Split reading stopwatch in Time Attack mode freezing upon pressing 'Read Done!' followed by 1-tap comprehension check for deterministic WPM computation."
+      - es: "Teclado táctil alfabético 3D en pantalla (>= 52px) para Nivel 3 y soporte para teclado físico (A-Z, Ñ, Backspace, Espacio, Enter, T, M, H)."
+        en: "On-screen 3D alphabetic keypad (>= 52px) for Level 3 and physical keyboard shortcut support (A-Z, Ñ, Backspace, Space, Enter, T, M, H)."
+      - es: "Selector de 3 perfiles familiares locales ('🦁 Jugador 1', '🦊 Jugador 2', '🦉 Adulto') con persistencia aislada de estadísticas, récord PPM y 6 medallas arcade coleccionables."
+        en: "Family profile switcher with 3 local profiles ('🦁 Player 1', '🦊 Player 2', '🦉 Adult') isolating stats, WPM records, and 6 collectible arcade badges."
+      - es: "Generador client-side de Diploma Arcade PNG de alta resolución (1200x800) mediante Canvas 2D nativo con orla dorada, avatar, récord y sello oficial."
+        en: "Client-side high-resolution Arcade PNG Diploma generator (1200x800) via native Canvas 2D with golden border, avatar, records, and official seal."
+      - es: "Arquitectura PWA 100% offline con Service Worker inteligente, manifest.json, suite completa de iconos maskable y script anti-FOUC para temas Daylight Arcade y Cosmic Night."
+        en: "100% Offline PWA architecture with smart Service Worker, manifest.json, full maskable icon suite, and anti-FOUC theme persistence."

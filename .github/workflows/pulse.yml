@@ -52,6 +52,13 @@ jobs:
           python -m ops.pulse.sync_metrics
           python -m ops.pulse.publish_public
 
+      - name: Sync Admin Snapshot (Supabase RLS)
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          python -m ops.pulse.sync_admin_snapshot
+
       - name: Clean Service Account Key
         if: always()
         run: |

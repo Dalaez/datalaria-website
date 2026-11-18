@@ -269,7 +269,12 @@
         "badgeClass" "dlh-sys"
         "desc" (cond $isES "Sistema operativo personal y profesional: deporte, lecturas, cine, tablero Kanban y proyectos." "Personal & professional OS: fitness, reading, movies, Kanban board and projects.")
         "cta" (cond $isES "Abrir app ↗" "Open app ↗"))
-  (dict "slug" "obs-management" "icon" "📡" "name" (cond $isES "Radar de Obsolescencia" "Agentic Radar") "url" "/apps/obs-management/" "arcade" false
+    (dict "slug" "pulse" "icon" "📊" "name" "Datalaria Pulse" "url" "/apps/pulse/" "arcade" false
+        "badge" (cond $isES "IA · B2B" "AI · B2B")
+        "badgeClass" "dlh-ai"
+        "desc" (cond $isES "Sistema de Content Ops as Code: gobierno editorial, paridad bilingüe, salud SEO y retorno orgánico sobre Git." "Content Ops as Code system: editorial governance, bilingual parity, SEO health, and organic ROI on Git.")
+        "cta" (cond $isES "Abrir app ↗" "Open app ↗"))
+(dict "slug" "obs-management" "icon" "📡" "name" (cond $isES "Radar de Obsolescencia" "Agentic Radar") "url" "/apps/obs-management/" "arcade" false
         "badge" (cond $isES "IA · B2B" "AI · B2B")
         "badgeClass" "dlh-ai"
         "desc" (cond $isES "Dashboard ejecutivo impulsado por agentes de IA para mitigar el riesgo en la cadena de suministro." "AI agent-powered executive dashboard to mitigate supply chain risk.")
@@ -589,7 +594,7 @@
     {{- $appTiers := slice
         (dict "key" "all"      "icon" "✨" "label" (cond $isES "Todas las Apps" "All Apps")                         "count" (len $apps))
         (dict "key" "flagship" "icon" "🚀" "label" (cond $isES "Apps Destacadas" "Flagship Apps")                   "count" 2)
-        (dict "key" "b2b"      "icon" "💼" "label" (cond $isES "Suites B2B & IA Operacional" "B2B Suites & AI")     "count" 1)
+        (dict "key" "b2b"      "icon" "💼" "label" (cond $isES "Suites B2B & IA Operacional" "B2B Suites & AI")     "count" 2)
         (dict "key" "lab"      "icon" "🕹️" "label" (cond $isES "Laboratorio & Arcade" "Lab & Arcade")               "count" 4)
     }}
     <section class="dlh-section" id="apps">

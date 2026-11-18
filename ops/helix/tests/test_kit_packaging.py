@@ -18,7 +18,7 @@ from PIL import Image
 import pymupdf
 
 from ops.helix.release_jan2027 import verify_embargo as verify_helix_embargo
-from ops.pulse.release_18nov import verify_embargo as verify_pulse_embargo
+from ops.pulse.release_18nov import verify_live_launch as verify_pulse_live
 
 ROOT_DIR = Path(__file__).resolve().parent.parent.parent.parent
 PACKAGES_HELIX = ROOT_DIR / "packages" / "helix"
@@ -194,10 +194,10 @@ def test_helix_app_yaml_and_staged_fichas():
 
 
 def test_jan2027_embargo_and_pulse_18nov_embargo_coexistence():
-    # Validar Helix Embargo
+    # Validar Helix Embargo Enero 2027 (sigue estricto en incubating)
     ok_helix, errors_helix = verify_helix_embargo()
     assert ok_helix, f"Fallos en embargo comercial de Helix: {errors_helix}"
 
-    # Validar Pulse Embargo
-    ok_pulse, errors_pulse = verify_pulse_embargo()
-    assert ok_pulse, f"Fallos en embargo comercial de Pulse: {errors_pulse}"
+    # Validar Estado Live de Datalaria Pulse v1.0.0
+    ok_pulse, errors_pulse = verify_pulse_live()
+    assert ok_pulse, f"Fallos en activación live de Pulse: {errors_pulse}"

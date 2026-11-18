@@ -29,8 +29,8 @@ import glob
 import json
 import math
 import subprocess
-from datetime import datetime, date, timezone
-from typing import Dict, List, Optional, Tuple, Any, Set
+from datetime import datetime, date, timezone, timedelta
+from typing import Dict, List, Optional, Tuple, Any, Set, Literal
 
 import yaml
 import frontmatter
@@ -41,6 +41,63 @@ from ops.pulse.models import (
     RelativeMetrics,
     PublicPulseDataset
 )
+
+
+# ==============================================================================
+# GOBERNANZA DE VISIBILIDAD PÚBLICA (INV-PULSE-9)
+# ==============================================================================
+
+PUBLIC_ROADMAP_HORIZON_DAYS = 30
+EMBARGOED_KIT_IDS = {"pack-sdd", "suite-sdd"}
+
+
+def get_incubating_app_slugs() -> Set[str]:
+    """Devuelve los slugs de aplicaciones declaradas en status: incubating en data/apps/*.yaml."""
+    incubating: Set[str] = set()
+    for fpath in sorted(glob.glob("data/apps/*.yaml")):
+        try:
+            with open(fpath, "r", encoding="utf-8") as f:
+                app_meta = yaml.safe_load(f) or {}
+            slug = app_meta.get("slug") or os.path.splitext(os.path.basename(fpath))[0]
+            if app_meta.get("status") == "incubating":
+                incubating.add(str(slug))
+        except Exception:
+            continue
+    return incubating
+
+
+def resolve_public_visibility(
+    status: str,
+    publish_d: Optional[date],
+    incubating_apps: Set[str],
+    asset_id: str = "",
+    slug: str = "",
+    related_app: Optional[str] = None,
+    raw_status: Optional[str] = None,
+) -> Literal["public", "private"]:
+    """
+    Determina la visibilidad pública bajo INV-PULSE-9:
+    - Excluye borradores (draft) e ideas internas.
+    - Excluye apps en status incubating, sus posts/kits asociados (ej. helix, pack-sdd, suite-sdd).
+    - Excluye activos programados más allá de +30 días desde hoy.
+    """
+    if status in ("draft", "idea"):
+        return "private"
+    if raw_status in ("incubating", "coming"):
+        return "private"
+    if related_app and related_app in incubating_apps:
+        return "private"
+    if slug in incubating_apps or asset_id in incubating_apps:
+        return "private"
+    for inc in incubating_apps:
+        if slug.startswith(f"{inc}-") or asset_id.startswith(f"{inc}-"):
+            return "private"
+    if "helix" in incubating_apps and asset_id in EMBARGOED_KIT_IDS:
+        return "private"
+    horizon_limit = date.today() + timedelta(days=PUBLIC_ROADMAP_HORIZON_DAYS)
+    if status == "scheduled" and publish_d and publish_d > horizon_limit:
+        return "private"
+    return "public"
 
 
 # ==============================================================================
@@ -379,6 +436,15 @@ def scan_posts(git_map: Dict[str, datetime]) -> List[ContentAsset]:
 
         canonical_id = meta_primary.get("translationKey") or (es["slug"] if es else en["slug"])
         slug_val = es["slug"] if es else en["slug"]
+        incubating_apps = get_incubating_app_slugs()
+        post_visibility = resolve_public_visibility(
+            status=status,
+            publish_d=publish_d,
+            incubating_apps=incubating_apps,
+            asset_id=canonical_id,
+            slug=slug_val,
+            related_app=related_app,
+        )
 
         assets.append(ContentAsset(
             id=canonical_id,
@@ -386,7 +452,7 @@ def scan_posts(git_map: Dict[str, datetime]) -> List[ContentAsset]:
             asset_type="post",
             release_type="article",
             status=status,
-            visibility="public",
+            visibility=post_visibility,
             title_es=es["metadata"].get("title") if es else None,
             title_en=en["metadata"].get("title") if en else None,
             url_es=f"/es/posts/{es['slug']}/" if es else None,
@@ -476,6 +542,16 @@ def scan_apps(git_map: Dict[str, datetime]) -> List[ContentAsset]:
 
             yaml_status = app_meta.get("status", "live")
             asset_status = "scheduled" if (yaml_status == "incubating" or (pub_date and pub_date > today)) else "published"
+            incubating_apps = get_incubating_app_slugs()
+            app_visibility = resolve_public_visibility(
+                status=asset_status,
+                publish_d=pub_date,
+                incubating_apps=incubating_apps,
+                asset_id=slug,
+                slug=slug,
+                related_app=slug,
+                raw_status=yaml_status,
+            )
 
             current_ver = app_meta.get("current_version")
 
@@ -487,7 +563,7 @@ def scan_apps(git_map: Dict[str, datetime]) -> List[ContentAsset]:
                 version=current_ver,
                 release_type="initial_launch",
                 status=asset_status,
-                visibility="public",
+                visibility=app_visibility,
                 title_es=title_es,
                 title_en=title_en,
                 url_es=f"/es/apps/{slug}/",
@@ -530,6 +606,15 @@ def scan_apps(git_map: Dict[str, datetime]) -> List[ContentAsset]:
                 rel_status = "scheduled" if rel_date > today else "published"
                 rel_title_es = resolve_i18n_field(rel.get("title"), "es") or f"Versión {rel_ver}"
                 rel_title_en = resolve_i18n_field(rel.get("title"), "en") or f"Version {rel_ver}"
+                rel_visibility = resolve_public_visibility(
+                    status=rel_status,
+                    publish_d=rel_date,
+                    incubating_apps=incubating_apps,
+                    asset_id=f"{slug}-{rel_ver}",
+                    slug=slug,
+                    related_app=slug,
+                    raw_status=yaml_status,
+                )
 
                 assets.append(ContentAsset(
                     id=f"{slug}-{rel_ver}",
@@ -540,7 +625,7 @@ def scan_apps(git_map: Dict[str, datetime]) -> List[ContentAsset]:
                     parent_asset_id=slug,
                     editorial_post_slug=rel.get("editorial_post"),
                     status=rel_status,
-                    visibility="public",
+                    visibility=rel_visibility,
                     title_es=f"{title_es} ({rel_ver}): {rel_title_es}",
                     title_en=f"{title_en} ({rel_ver}): {rel_title_en}",
                     url_es=f"/es/apps/{slug}/",
@@ -595,6 +680,8 @@ def scan_kits(git_map: Dict[str, datetime]) -> List[ContentAsset]:
         with open(kits_path, "r", encoding="utf-8") as f:
             data = yaml.safe_load(f)
 
+        incubating_apps = get_incubating_app_slugs()
+
         # 1. Mega Bundle
         mb = data.get("mega_bundle")
         if mb:
@@ -602,6 +689,14 @@ def scan_kits(git_map: Dict[str, datetime]) -> List[ContentAsset]:
             mb_ver = mb.get("version", "v1.0.0")
             mb_raw_status = mb.get("status", "available")
             mb_status = "scheduled" if (mb_raw_status == "coming" or (mb_date and mb_date > today)) else "published"
+            mb_visibility = resolve_public_visibility(
+                status=mb_status,
+                publish_d=mb_date,
+                incubating_apps=incubating_apps,
+                asset_id=mb["id"],
+                slug=mb["slug"],
+                raw_status=mb_raw_status,
+            )
 
             assets.append(ContentAsset(
                 id=mb["id"],
@@ -610,7 +705,7 @@ def scan_kits(git_map: Dict[str, datetime]) -> List[ContentAsset]:
                 version=mb_ver,
                 release_type="kit_launch",
                 status=mb_status,
-                visibility="public",
+                visibility=mb_visibility,
                 title_es=mb.get("title_es"),
                 title_en=mb.get("title_en"),
                 url_es="/es/recursos/#mega-bundle",
@@ -635,6 +730,14 @@ def scan_kits(git_map: Dict[str, datetime]) -> List[ContentAsset]:
                 if not ed_ver or not ed_date:
                     continue
                 ed_status = "scheduled" if ed_date > today else "published"
+                ed_vis = resolve_public_visibility(
+                    status=ed_status,
+                    publish_d=ed_date,
+                    incubating_apps=incubating_apps,
+                    asset_id=mb["id"],
+                    slug=mb["slug"],
+                    raw_status=mb_raw_status,
+                )
                 assets.append(ContentAsset(
                     id=f"{mb['id']}-{ed_ver}",
                     slug=mb["slug"],
@@ -643,7 +746,7 @@ def scan_kits(git_map: Dict[str, datetime]) -> List[ContentAsset]:
                     release_type="kit_edition",
                     parent_asset_id=mb["id"],
                     status=ed_status,
-                    visibility="public",
+                    visibility=ed_vis,
                     title_es=f"{mb.get('title_es')} ({ed_ver})",
                     title_en=f"{mb.get('title_en')} ({ed_ver})",
                     url_es="/es/recursos/#mega-bundle",
@@ -665,6 +768,14 @@ def scan_kits(git_map: Dict[str, datetime]) -> List[ContentAsset]:
             s_ver = s.get("version", "v1.0.0")
             s_raw_status = s.get("status", "available")
             s_status = "scheduled" if (s_raw_status == "coming" or (s_date and s_date > today)) else "published"
+            s_vis = resolve_public_visibility(
+                status=s_status,
+                publish_d=s_date,
+                incubating_apps=incubating_apps,
+                asset_id=s["id"],
+                slug=s["slug"],
+                raw_status=s_raw_status,
+            )
 
             assets.append(ContentAsset(
                 id=s["id"],
@@ -673,7 +784,7 @@ def scan_kits(git_map: Dict[str, datetime]) -> List[ContentAsset]:
                 version=s_ver,
                 release_type="kit_launch",
                 status=s_status,
-                visibility="public",
+                visibility=s_vis,
                 title_es=s.get("title_es"),
                 title_en=s.get("title_en"),
                 url_es=f"/es/recursos/#{s['id']}",
@@ -699,6 +810,14 @@ def scan_kits(git_map: Dict[str, datetime]) -> List[ContentAsset]:
                 if not ed_ver or not ed_date:
                     continue
                 ed_status = "scheduled" if ed_date > today else "published"
+                ed_vis = resolve_public_visibility(
+                    status=ed_status,
+                    publish_d=ed_date,
+                    incubating_apps=incubating_apps,
+                    asset_id=s["id"],
+                    slug=s["slug"],
+                    raw_status=s_raw_status,
+                )
                 assets.append(ContentAsset(
                     id=f"{s['id']}-{ed_ver}",
                     slug=s["slug"],
@@ -707,7 +826,7 @@ def scan_kits(git_map: Dict[str, datetime]) -> List[ContentAsset]:
                     release_type="kit_edition",
                     parent_asset_id=s["id"],
                     status=ed_status,
-                    visibility="public",
+                    visibility=ed_vis,
                     title_es=f"{s.get('title_es')} ({ed_ver})",
                     title_en=f"{s.get('title_en')} ({ed_ver})",
                     url_es=f"/es/recursos/#{s['id']}",
@@ -729,6 +848,14 @@ def scan_kits(git_map: Dict[str, datetime]) -> List[ContentAsset]:
             k_ver = k.get("version", "v1.0.0")
             k_raw_status = k.get("status", "available")
             k_status = "scheduled" if (k_raw_status == "coming" or (k_date and k_date > today)) else "published"
+            k_vis = resolve_public_visibility(
+                status=k_status,
+                publish_d=k_date,
+                incubating_apps=incubating_apps,
+                asset_id=k["id"],
+                slug=k["slug"],
+                raw_status=k_raw_status,
+            )
 
             assets.append(ContentAsset(
                 id=k["id"],
@@ -737,7 +864,7 @@ def scan_kits(git_map: Dict[str, datetime]) -> List[ContentAsset]:
                 version=k_ver,
                 release_type="kit_launch",
                 status=k_status,
-                visibility="public",
+                visibility=k_vis,
                 title_es=k.get("title_es"),
                 title_en=k.get("title_en"),
                 url_es=f"/es/recursos/#{k['id']}",
@@ -763,6 +890,14 @@ def scan_kits(git_map: Dict[str, datetime]) -> List[ContentAsset]:
                 if not ed_ver or not ed_date:
                     continue
                 ed_status = "scheduled" if ed_date > today else "published"
+                ed_vis = resolve_public_visibility(
+                    status=ed_status,
+                    publish_d=ed_date,
+                    incubating_apps=incubating_apps,
+                    asset_id=k["id"],
+                    slug=k["slug"],
+                    raw_status=k_raw_status,
+                )
                 assets.append(ContentAsset(
                     id=f"{k['id']}-{ed_ver}",
                     slug=k["slug"],
@@ -771,7 +906,7 @@ def scan_kits(git_map: Dict[str, datetime]) -> List[ContentAsset]:
                     release_type="kit_edition",
                     parent_asset_id=k["id"],
                     status=ed_status,
-                    visibility="public",
+                    visibility=ed_vis,
                     title_es=f"{k.get('title_es')} ({ed_ver})",
                     title_en=f"{k.get('title_en')} ({ed_ver})",
                     url_es=f"/es/recursos/#{k['id']}",

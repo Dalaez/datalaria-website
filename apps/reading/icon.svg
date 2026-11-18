@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="50%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="bookLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <linearGradient id="bookRight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e2e8f0"/>
+      <stop offset="100%" stop-color="#ffffff"/>
+    </linearGradient>
+    <linearGradient id="coverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="starGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <filter id="dropShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Background with rounded corners -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)"/>
+
+  <!-- Subtle glow ring -->
+  <circle cx="256" cy="260" r="190" fill="none" stroke="#ffffff" stroke-width="2" stroke-opacity="0.15"/>
+
+  <!-- Book Container with 3D Shadow -->
+  <g filter="url(#dropShadow)" transform="translate(0, 10)">
+    <!-- Book Outer Cover Backing -->
+    <path d="M 96 350 C 150 365, 230 355, 256 370 C 282 355, 362 365, 416 350 L 416 190 C 362 205, 282 195, 256 210 C 230 195, 150 205, 96 190 Z" fill="url(#coverGrad)"/>
+
+    <!-- Left Page -->
+    <path d="M 106 338 C 156 350, 230 342, 254 354 L 254 196 C 230 184, 156 192, 106 180 Z" fill="url(#bookLeft)"/>
+
+    <!-- Right Page -->
+    <path d="M 406 338 C 356 350, 282 342, 258 354 L 258 196 C 282 184, 356 192, 406 180 Z" fill="url(#bookRight)"/>
+
+    <!-- Book Spine Fold -->
+    <path d="M 252 194 L 260 194 L 260 358 L 252 358 Z" fill="#94a3b8" opacity="0.4"/>
+
+    <!-- Text Lines Left Page -->
+    <rect x="136" y="218" width="80" height="12" rx="6" fill="#38bdf8" opacity="0.85"/>
+    <rect x="136" y="244" width="94" height="10" rx="5" fill="#94a3b8" opacity="0.55"/>
+    <rect x="136" y="266" width="70" height="10" rx="5" fill="#94a3b8" opacity="0.55"/>
+    <rect x="136" y="288" width="86" height="10" rx="5" fill="#94a3b8" opacity="0.55"/>
+
+    <!-- Syllable Badge Left ("A") -->
+    <circle cx="160" cy="224" r="16" fill="#0284c7"/>
+    <text x="160" y="230" font-family="system-ui, sans-serif" font-size="18" font-weight="900" fill="#ffffff" text-anchor="middle">A</text>
+
+    <!-- Text Lines Right Page -->
+    <rect x="286" y="218" width="90" height="12" rx="6" fill="#ec4899" opacity="0.85"/>
+    <rect x="286" y="244" width="76" height="10" rx="5" fill="#94a3b8" opacity="0.55"/>
+    <rect x="286" y="266" width="94" height="10" rx="5" fill="#94a3b8" opacity="0.55"/>
+    <rect x="286" y="288" width="60" height="10" rx="5" fill="#94a3b8" opacity="0.55"/>
+
+    <!-- Syllable Badge Right ("B") -->
+    <circle cx="352" cy="224" r="16" fill="#e11d48"/>
+    <text x="352" y="230" font-family="system-ui, sans-serif" font-size="18" font-weight="900" fill="#ffffff" text-anchor="middle">B</text>
+
+    <!-- Center Syllable Dot -->
+    <circle cx="256" cy="224" r="6" fill="#fbbf24"/>
+  </g>
+
+  <!-- Golden Arcade Star on Top Right -->
+  <g transform="translate(366, 100) scale(1.1)" filter="url(#dropShadow)">
+    <polygon points="0,-36 10,-11 36,-11 15,5 23,30 0,15 -23,30 -15,5 -36,-11 -10,-11" fill="url(#starGrad)"/>
+    <circle cx="0" cy="0" r="8" fill="#ffffff" opacity="0.6"/>
+  </g>
+
+  <!-- Sparkle small stars -->
+  <polygon points="120,130 123,138 131,141 123,144 120,152 117,144 109,141 117,138" fill="#fde047" opacity="0.9"/>
+  <polygon points="380,390 382,395 387,397 382,399 380,404 378,399 373,397 378,395" fill="#fde047" opacity="0.8"/>
+  <polygon points="100,380 102,385 107,387 102,389 100,394 98,389 93,387 98,385" fill="#38bdf8" opacity="0.8"/>
+</svg>

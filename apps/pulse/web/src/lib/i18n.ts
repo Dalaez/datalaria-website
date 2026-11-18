@@ -188,7 +188,19 @@ export const i18n = {
     badge_app_upgrade: 'NUEVA VERSIÓN',
     badge_kit_edition: 'EDICIÓN KIT',
     quadrant_releases_title: 'Sincronización Editorial de Releases (Scriba)',
-    quadrant_releases_desc: 'Apps, versiones SemVer y Kits respaldados con cobertura editorial en el blog.'
+    quadrant_releases_desc: 'Apps, versiones SemVer y Kits respaldados con cobertura editorial en el blog.',
+
+    // Modo Admin RLS, Anti-404 y Espacio Limpio (P-LAUNCH-5A-SEC)
+    badge_private_admin: '🔒 PRIVADO / ADMIN',
+    btn_load_private_json: '📂 Cargar index.json local',
+    admin_banner_synced: 'Catálogo maestro completo ({count} activos, incl. borradores y embargos) sincronizado vía Supabase RLS.',
+    admin_banner_fallback: 'Mostrando escaparate público + ideas Cloud. Carga index.json local o ejecuta sync_admin_snapshot para ver borradores/embargos.',
+    modal_blocked_scheduled: '⏳ Próximamente',
+    modal_blocked_private: '🔒 Borrador / Embargo Privado',
+    btn_clean_workspace: '✨ Mi Espacio (0)',
+    btn_back_showcase: '← Volver al Escaparate',
+    empty_guest_workspace_title: 'Tu Espacio Editorial desde Cero',
+    empty_guest_workspace_desc: 'Explora Datalaria Pulse con tu propio tablero en el navegador (localStorage): crea tus ideas o importa un CSV exportado de Notion.'
   },
   en: {
     brand_subtitle: 'Content Ops as Code — Editorial Governance & Organic ROI',
@@ -379,6 +391,18 @@ export const i18n = {
     badge_app_upgrade: 'NEW VERSION',
     badge_kit_edition: 'KIT EDITION',
     quadrant_releases_title: 'Release Editorial Sync (Scriba)',
-    quadrant_releases_desc: 'Apps, SemVer releases, and Kits backed by blog editorial coverage.'
+    quadrant_releases_desc: 'Apps, SemVer releases, and Kits backed by blog editorial coverage.',
+
+    // Admin RLS, Anti-404 & Clean Workspace (P-LAUNCH-5A-SEC)
+    badge_private_admin: '🔒 PRIVATE / ADMIN',
+    btn_load_private_json: '📂 Load local index.json',
+    admin_banner_synced: 'Master catalog ({count} assets, incl. drafts & embargoed items) synced via Supabase RLS.',
+    admin_banner_fallback: 'Showing public showcase + Cloud ideas. Load local index.json or run sync_admin_snapshot to view drafts/embargoes.',
+    modal_blocked_scheduled: '⏳ Coming Soon',
+    modal_blocked_private: '🔒 Draft / Private Embargo',
+    btn_clean_workspace: '✨ My Space (0)',
+    btn_back_showcase: '← Back to Showcase',
+    empty_guest_workspace_title: 'Your Clean Editorial Workspace',
+    empty_guest_workspace_desc: 'Explore Datalaria Pulse with your own browser workspace (localStorage): capture ideas or import a Notion CSV export.'
   }
 };

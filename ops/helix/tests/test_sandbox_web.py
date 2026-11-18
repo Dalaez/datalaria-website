@@ -88,10 +88,17 @@ def test_inv_helix_6_static_firewall_clean() -> None:
 
 
 def test_pulse_18nov_embargo_still_intact() -> None:
-    """Verifica que la compilación de Helix Sandbox no viola el embargo comercial de Pulse."""
+    """Verifica la activación live limpia de Pulse v1.0.0 manteniendo el embargo de Helix Enero 2027."""
     code = subprocess.run(
-        ["python", "-m", "ops.pulse.release_18nov", "--verify-embargo"],
+        ["python", "-m", "ops.pulse.release_18nov", "--verify-live"],
         capture_output=True,
         text=True,
     ).returncode
-    assert code == 0, "El embargo comercial de Pulse fue violado."
+    assert code == 0, "La verificación live de Pulse v1.0.0 falló."
+
+    helix_code = subprocess.run(
+        ["python", "-m", "ops.helix.release_jan2027", "--verify-embargo"],
+        capture_output=True,
+        text=True,
+    ).returncode
+    assert helix_code == 0, "El embargo comercial de Helix Enero 2027 fue violado."

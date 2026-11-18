@@ -50,9 +50,12 @@ import {
   insertUserIdea,
   updateUserIdea,
   deleteUserIdea,
+  fetchAdminCatalogSnapshot,
   isSupabaseConfigured
 } from './lib/supabase';
 import './App.css';
+
+const ADMIN_EMAILS = ['dalaez1@gmail.com', 'datalaria@gmail.com'];
 
 type SortField =
   | 'title'
@@ -100,9 +103,7 @@ export function App() {
   };
 
   const kitCheckoutUrl =
-    lang === 'es'
-      ? 'https://datalaria.com/es/recursos/#pack-pulse'
-      : 'https://datalaria.com/en/resources/#pack-pulse';
+    'https://datalaria.lemonsqueezy.com/checkout/buy/3aac3253-2081-44b5-af4d-c0ecfc257be0';
   const portalHomeUrl = lang === 'es' ? 'https://datalaria.com/es/' : 'https://datalaria.com/en/';
   const appFichaUrl =
     lang === 'es'
@@ -233,9 +234,18 @@ export function App() {
   const [ideaStatus, setIdeaStatus] = useState<AssetStatus>('idea');
   const [ideaSuccessMsg, setIdeaSuccessMsg] = useState('');
 
-  // Supabase Cloud & Auth Estados (ADR-015)
+  // Supabase Cloud & Auth Estados (ADR-015) + Admin RLS & Espacio Limpio (P-LAUNCH-5A-SEC)
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [cloudIdeas, setCloudIdeas] = useState<ContentAsset[]>([]);
+  const [adminSnapshotAssets, setAdminSnapshotAssets] = useState<ContentAsset[] | null>(null);
+  const [isAdminSnapshotSynced, setIsAdminSnapshotSynced] = useState(false);
+  const [isCleanWorkspace, setIsCleanWorkspace] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      return window.location.search.includes('workspace=clean') || window.location.hash.includes('workspace=clean');
+    }
+    return false;
+  });
+  const adminJsonInputRef = useRef<HTMLInputElement>(null);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [authEmail, setAuthEmail] = useState('');
   const [authPassword, setAuthPassword] = useState('');
@@ -287,6 +297,47 @@ export function App() {
     }
   };
 
+  // Cargar catálogo maestro Admin desde Supabase RLS (pulse.private_snapshot)
+  const loadAdminSnapshotIfAuthorized = async (u: User | null) => {
+    const email = u?.email?.toLowerCase() || '';
+    if (!u || !ADMIN_EMAILS.includes(email)) {
+      setAdminSnapshotAssets(null);
+      setIsAdminSnapshotSynced(false);
+      return;
+    }
+    const snap = await fetchAdminCatalogSnapshot();
+    if (snap && snap.assets.length > 0) {
+      setAdminSnapshotAssets(snap.assets);
+      setIsAdminSnapshotSynced(true);
+    }
+  };
+
+  // Carga local de respaldo index.json para Admin offline o pre-sync
+  const handleAdminJsonUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      try {
+        const text = event.target?.result as string;
+        const parsed = JSON.parse(text);
+        const list: ContentAsset[] = Array.isArray(parsed)
+          ? parsed
+          : Array.isArray(parsed?.assets)
+          ? parsed.assets
+          : [];
+        if (list.length > 0) {
+          setAdminSnapshotAssets(list);
+          setIsAdminSnapshotSynced(false);
+        }
+      } catch {
+        // Ignore invalid JSON
+      }
+    };
+    reader.readAsText(file);
+    e.target.value = '';
+  };
+
   // Carga de datos pública y suscripción Supabase Auth
   useEffect(() => {
     fetch('./data/public.json')
@@ -307,7 +358,10 @@ export function App() {
     if (isSupabaseConfigured) {
       getCurrentUser().then((u) => {
         setCurrentUser(u);
-        if (u) loadCloudIdeas();
+        if (u) {
+          loadCloudIdeas();
+          loadAdminSnapshotIfAuthorized(u);
+        }
       });
 
       const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
@@ -315,8 +369,11 @@ export function App() {
         setCurrentUser(u);
         if (u) {
           loadCloudIdeas();
+          loadAdminSnapshotIfAuthorized(u);
         } else {
           setCloudIdeas([]);
+          setAdminSnapshotAssets(null);
+          setIsAdminSnapshotSynced(false);
         }
       });
 
@@ -326,8 +383,7 @@ export function App() {
     }
   }, []);
 
-  // Control de roles de usuario y permisos de catálogo (ADR-015)
-  const ADMIN_EMAILS = ['dalaez1@gmail.com', 'datalaria@gmail.com'];
+  // Control de roles de usuario y permisos de catálogo (ADR-015 & P-LAUNCH-5A-SEC)
   const userEmail = currentUser?.email?.toLowerCase() || '';
   const isAdmin = Boolean(currentUser && ADMIN_EMAILS.includes(userEmail));
   const isDemo = Boolean(currentUser && userEmail === 'demo@datalaria.com');
@@ -335,22 +391,28 @@ export function App() {
 
   const datasetAssets = dataset?.assets;
   const currentAssets = useMemo(() => {
-    // 1. Si el usuario arrastró o importó un CSV de Notion, siempre tiene prioridad
+    // 1. Si el usuario arrastró o importó un CSV de Notion (o cargó datos demo locales), tiene prioridad
     if (customAssets) return customAssets;
 
-    // 2. Si no hay usuario logueado: Catálogo público oficial de Datalaria (135 activos)
+    // 2. Si el visitante sin login activó "Mi Espacio (0)" (?workspace=clean), empieza desde cero con localStorage
+    if (!currentUser && isCleanWorkspace) {
+      return localIdeas;
+    }
+
+    // 3. Si no hay usuario logueado: Escaparate público oficial filtrado (INV-PULSE-9)
     if (!currentUser) {
       return datasetAssets || [];
     }
 
-    // 3. Si es el Administrador de Datalaria (dalaez1@gmail.com o datalaria@gmail.com):
-    // Ve el catálogo oficial de Datalaria + sus ideas privadas en la nube
+    // 4. Si es el Administrador de Datalaria: Catálogo maestro RLS completo (incl. drafts/embargos) + ideas Cloud/locales
     if (isAdmin) {
+      const masterCatalog =
+        adminSnapshotAssets && adminSnapshotAssets.length > 0 ? adminSnapshotAssets : datasetAssets || [];
       const extras = [...cloudIdeas, ...localIdeas];
-      return [...extras, ...(datasetAssets || [])];
+      return [...extras, ...masterCatalog];
     }
 
-    // 4. Si es la cuenta Demo (demo@datalaria.com):
+    // 5. Si es la cuenta Demo (demo@datalaria.com):
     // Ve los 10 activos sintéticos interactivos + cualquier idea que cree en Supabase
     if (isDemo) {
       const userCreatedIds = new Set(cloudIdeas.map((c) => c.id));
@@ -358,10 +420,9 @@ export function App() {
       return [...cloudIdeas, ...localIdeas, ...demoFiltered];
     }
 
-    // 5. Si es un nuevo usuario o cliente Pro (ej. dalaez@hotmail.com o empresa externa):
-    // Empieza con SU PROPIO espacio limpio (cero activos de Datalaria)
+    // 6. Si es un nuevo usuario o cliente Pro: empieza con SU PROPIO espacio limpio (cero activos de Datalaria)
     return [...cloudIdeas, ...localIdeas];
-  }, [customAssets, datasetAssets, currentUser, isAdmin, isDemo, cloudIdeas, localIdeas]);
+  }, [customAssets, isCleanWorkspace, datasetAssets, adminSnapshotAssets, currentUser, isAdmin, isDemo, cloudIdeas, localIdeas]);
 
   // Cargar plantilla de datos de ejemplo para clientes que quieran explorar inmediatamente
   const handleLoadSampleData = () => {
@@ -490,6 +551,7 @@ export function App() {
       }
       if (currentUser) {
         await loadCloudIdeas();
+        await loadAdminSnapshotIfAuthorized(currentUser);
       }
     } catch (e) {
       console.error('Error al refrescar datos:', e);
@@ -788,6 +850,8 @@ export function App() {
     await supabaseSignOut();
     setCurrentUser(null);
     setCloudIdeas([]);
+    setAdminSnapshotAssets(null);
+    setIsAdminSnapshotSynced(false);
   };
 
   // Exportar ideas a YAML compatible con data/editorial/backlog.yaml
@@ -1297,6 +1361,27 @@ export function App() {
     );
   };
 
+  // Insignia exclusiva Admin para activos privados, drafts o embargados (INV-PULSE-9)
+  const renderPrivateAdminBadge = (a: ContentAsset, fontSize: string = '0.7rem') => {
+    if (!isAdmin || a.visibility !== 'private') return null;
+    return (
+      <span
+        className="badge"
+        style={{
+          fontSize,
+          background: 'rgba(245, 158, 11, 0.16)',
+          color: '#fbbf24',
+          border: '1px solid rgba(245, 158, 11, 0.45)',
+          fontWeight: 700,
+          whiteSpace: 'nowrap'
+        }}
+        title={t.modal_blocked_private}
+      >
+        {t.badge_private_admin}
+      </span>
+    );
+  };
+
   return (
     <div className="app-container">
       {/* HEADER */}
@@ -1412,12 +1497,34 @@ export function App() {
               <span>{t.btn_import_notion}</span>
             </button>
 
+            {!currentUser && !customAssets && (
+              <button
+                className="btn btn-outline"
+                onClick={() => setIsCleanWorkspace((prev) => !prev)}
+                style={{
+                  borderColor: isCleanWorkspace ? 'rgba(16, 185, 129, 0.5)' : 'rgba(148, 163, 184, 0.35)',
+                  color: isCleanWorkspace ? '#34d399' : '#cbd5e1'
+                }}
+                title={isCleanWorkspace ? t.btn_back_showcase : t.btn_clean_workspace}
+              >
+                <span>{isCleanWorkspace ? t.btn_back_showcase : t.btn_clean_workspace}</span>
+              </button>
+            )}
+
             {customAssets && (
               <button className="btn btn-ghost" onClick={resetToDefault}>
                 <RefreshCw size={15} />
                 <span>{currentUser ? t.btn_back_to_my_data : t.btn_reset_dataset}</span>
               </button>
             )}
+
+            <input
+              ref={adminJsonInputRef}
+              type="file"
+              accept=".json"
+              style={{ display: 'none' }}
+              onChange={handleAdminJsonUpload}
+            />
 
             {/* Botón / Píldora de Autenticación Supabase Pro Cloud (ADR-015) */}
             {currentUser ? (
@@ -1582,25 +1689,80 @@ export function App() {
           </div>
         )}
 
+        {!currentUser && isCleanWorkspace && !customAssets && localIdeas.length === 0 && (
+          <div
+            style={{
+              background: 'rgba(15, 23, 42, 0.85)',
+              border: '1px solid rgba(56, 189, 248, 0.25)',
+              borderRadius: '12px',
+              padding: '2.25rem 1.5rem',
+              textAlign: 'center',
+              marginBottom: '1.5rem'
+            }}
+          >
+            <div style={{ fontSize: '2.25rem', marginBottom: '0.6rem' }}>✨</div>
+            <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#f8fafc', marginBottom: '0.5rem', fontFamily: 'var(--font-heading)' }}>
+              {t.empty_guest_workspace_title}
+            </h3>
+            <p style={{ fontSize: '0.875rem', color: '#94a3b8', maxWidth: '640px', margin: '0 auto 1.4rem auto', lineHeight: 1.5 }}>
+              {t.empty_guest_workspace_desc}
+            </p>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+              <button className="btn btn-primary" onClick={() => openNewIdeaModal()}>
+                <Plus size={16} />
+                <span>+ {t.btn_new_idea}</span>
+              </button>
+              <button className="btn btn-outline" onClick={() => setIsNotionModalOpen(true)}>
+                <Upload size={16} />
+                <span>{t.btn_import_notion}</span>
+              </button>
+              <button className="btn btn-outline" onClick={handleLoadSampleData}>
+                <Sparkles size={16} />
+                <span>{t.btn_load_sample_data}</span>
+              </button>
+              <button className="btn btn-ghost" onClick={() => setIsCleanWorkspace(false)}>
+                <span>{t.btn_back_showcase}</span>
+              </button>
+            </div>
+          </div>
+        )}
+
         {isAdmin && (
           <div
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '0.6rem',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: '0.75rem',
               background: 'rgba(234, 179, 8, 0.08)',
               border: '1px solid rgba(234, 179, 8, 0.25)',
               borderRadius: '8px',
-              padding: '0.6rem 1rem',
+              padding: '0.65rem 1rem',
               marginBottom: '1.25rem',
               fontSize: '0.82rem',
               color: '#fef08a'
             }}
           >
-            <span style={{ fontSize: '1.1rem' }}>🛠️</span>
-            <span>
-              <strong>Modo Administrador Datalaria ({currentUser?.email}):</strong> Catálogo maestro de {datasetAssets?.length || 135} activos sincronizado con el repositorio Git + {cloudIdeas.length} ideas privadas en Supabase Cloud.
-            </span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+              <span style={{ fontSize: '1.1rem' }}>🛡️</span>
+              <span>
+                <strong>Modo Administrador Datalaria ({currentUser?.email}):</strong>{' '}
+                {adminSnapshotAssets && adminSnapshotAssets.length > 0
+                  ? t.admin_banner_synced.replace('{count}', String(adminSnapshotAssets.length))
+                  : t.admin_banner_fallback}{' '}
+                (+ {cloudIdeas.length} ideas Cloud).
+                {isAdminSnapshotSynced ? ' 🔒 RLS OK' : ''}
+              </span>
+            </div>
+            <button
+              type="button"
+              className="btn btn-ghost"
+              onClick={() => adminJsonInputRef.current?.click()}
+              style={{ color: '#fde047', fontSize: '0.78rem', padding: '0.2rem 0.55rem', border: '1px solid rgba(250, 204, 21, 0.35)' }}
+            >
+              <span>{t.btn_load_private_json}</span>
+            </button>
           </div>
         )}
 
@@ -2589,6 +2751,7 @@ export function App() {
                   pagedAssets.map((a) => {
                     const title = lang === 'es' ? a.title_es || a.title_en : a.title_en || a.title_es;
                     const url = lang === 'es' ? a.url_es || a.url_en : a.url_en || a.url_es;
+                    const isPublishedPublicUrl = Boolean(url && a.status === 'published' && a.visibility !== 'private');
                     const words = lang === 'es' ? a.word_count_es : a.word_count_en;
                     const seoScore = a.seo_audit?.score_0_100 ?? 0;
                     const rel = a.metrics_relative;
@@ -2597,9 +2760,9 @@ export function App() {
                       <tr key={a.id}>
                         <td>
                           <div style={{ fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
-                            {url ? (
+                            {isPublishedPublicUrl ? (
                               <a
-                                href={url}
+                                href={url || '#'}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 style={{
@@ -2622,6 +2785,7 @@ export function App() {
                                 {title || a.id}
                               </span>
                             )}
+                            {renderPrivateAdminBadge(a)}
                             {a.is_cloud_idea && (
                               <span className="badge badge-cloud" style={{ background: 'rgba(6, 182, 212, 0.15)', color: '#22d3ee', border: '1px solid rgba(6, 182, 212, 0.4)', marginLeft: '0.35rem' }}>
                                 ☁️ {t.badge_cloud_idea}
@@ -2843,6 +3007,7 @@ export function App() {
                               <div style={{ display: 'flex', justifyContent: 'space-between', gap: '0.5rem', alignItems: 'center' }}>
                                 <div style={{ display: 'flex', gap: '0.35rem', alignItems: 'center', flexWrap: 'wrap' }}>
                                   {renderAssetTypeBadge(a, '0.6875rem')}
+                                  {renderPrivateAdminBadge(a, '0.65rem')}
                                   {a.is_cloud_idea && (
                                     <span className="badge badge-cloud" style={{ fontSize: '0.6875rem', background: 'rgba(6, 182, 212, 0.15)', color: '#22d3ee', border: '1px solid rgba(6, 182, 212, 0.4)' }}>
                                       ☁️ {t.badge_cloud_idea}
@@ -3003,7 +3168,9 @@ export function App() {
                             onClick={() => setSelectedAssetForModal(a)}
                             style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.25rem' }}
                           >
-                            <span style={{ fontSize: '0.65rem', flexShrink: 0 }}>{chipIcon}</span>
+                            <span style={{ fontSize: '0.65rem', flexShrink: 0 }}>
+                              {isAdmin && a.visibility === 'private' ? '🔒' : chipIcon}
+                            </span>
                             <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{title || a.id}</span>
                             {versionStr && (
                               <span className="chip-version-badge">{versionStr}</span>
@@ -3138,9 +3305,12 @@ export function App() {
           <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '600px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1rem' }}>
               <div>
-                <span className={`badge badge-${selectedAssetForModal.asset_type}`} style={{ textTransform: 'uppercase', marginBottom: '0.4rem' }}>
-                  {selectedAssetForModal.asset_type}
-                </span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap', marginBottom: '0.4rem' }}>
+                  <span className={`badge badge-${selectedAssetForModal.asset_type}`} style={{ textTransform: 'uppercase' }}>
+                    {selectedAssetForModal.asset_type}
+                  </span>
+                  {renderPrivateAdminBadge(selectedAssetForModal)}
+                </div>
                 <h3 style={{ fontSize: '1.15rem', fontWeight: 800, margin: '0.35rem 0', color: '#f9fafb', lineHeight: 1.35, fontFamily: 'var(--font-heading)' }}>
                   {lang === 'es'
                     ? selectedAssetForModal.title_es || selectedAssetForModal.title_en
@@ -3247,7 +3417,7 @@ export function App() {
               )}
             </div>
 
-            {/* Vínculo a Post Guía o App Asociada (Hito P2.3) */}
+            {/* Vínculo a Post Guía o App Asociada (Hito P2.3, protegido contra 404 en no publicados) */}
             {(selectedAssetForModal.editorial_post_slug || selectedAssetForModal.related_app) && (
               <div
                 style={{
@@ -3264,38 +3434,50 @@ export function App() {
                 }}
               >
                 {selectedAssetForModal.editorial_post_slug && (
-                  <a
-                    href={`/es/posts/${selectedAssetForModal.editorial_post_slug}/`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      color: '#38bdf8',
-                      textDecoration: 'none',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '0.35rem',
-                      fontWeight: 600
-                    }}
-                  >
-                    📖 Post Guía: {selectedAssetForModal.editorial_post_slug} <ExternalLink size={13} />
-                  </a>
+                  selectedAssetForModal.status === 'published' && selectedAssetForModal.visibility !== 'private' ? (
+                    <a
+                      href={`/es/posts/${selectedAssetForModal.editorial_post_slug}/`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        color: '#38bdf8',
+                        textDecoration: 'none',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.35rem',
+                        fontWeight: 600
+                      }}
+                    >
+                      📖 Post Guía: {selectedAssetForModal.editorial_post_slug} <ExternalLink size={13} />
+                    </a>
+                  ) : (
+                    <span style={{ color: '#94a3b8', display: 'inline-flex', alignItems: 'center', gap: '0.35rem', fontWeight: 600 }}>
+                      📖 Post Guía: {selectedAssetForModal.editorial_post_slug}
+                    </span>
+                  )
                 )}
                 {selectedAssetForModal.related_app && (
-                  <a
-                    href={`/apps/${selectedAssetForModal.related_app}/`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      color: '#34d399',
-                      textDecoration: 'none',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '0.35rem',
-                      fontWeight: 600
-                    }}
-                  >
-                    🚀 App Oficial: {selectedAssetForModal.related_app} <ExternalLink size={13} />
-                  </a>
+                  selectedAssetForModal.status === 'published' && selectedAssetForModal.visibility !== 'private' ? (
+                    <a
+                      href={`/apps/${selectedAssetForModal.related_app}/`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        color: '#34d399',
+                        textDecoration: 'none',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.35rem',
+                        fontWeight: 600
+                      }}
+                    >
+                      🚀 App Oficial: {selectedAssetForModal.related_app} <ExternalLink size={13} />
+                    </a>
+                  ) : (
+                    <span style={{ color: '#94a3b8', display: 'inline-flex', alignItems: 'center', gap: '0.35rem', fontWeight: 600 }}>
+                      🚀 App Asociada: {selectedAssetForModal.related_app}
+                    </span>
+                  )
                 )}
               </div>
             )}
@@ -3381,18 +3563,48 @@ export function App() {
                   {t.btn_close}
                 </button>
                 {!(selectedAssetForModal.is_local_idea || selectedAssetForModal.is_cloud_idea) && (
-                  <button
-                    className="btn btn-primary"
-                    onClick={() => {
-                      const slugUrl = selectedAssetForModal.url_es || `/es/posts/${selectedAssetForModal.slug}/`;
-                      const fullUrl = slugUrl.startsWith('http') ? slugUrl : `https://datalaria.com${slugUrl}`;
-                      window.open(fullUrl, '_blank', 'noopener,noreferrer');
-                      setSelectedAssetForModal(null);
-                    }}
-                  >
-                    <ExternalLink size={16} />
-                    <span>{t.btn_open_article}</span>
-                  </button>
+                  selectedAssetForModal.status === 'published' && selectedAssetForModal.visibility !== 'private' ? (
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => {
+                        const slugUrl = selectedAssetForModal.url_es || `/es/posts/${selectedAssetForModal.slug}/`;
+                        const fullUrl = slugUrl.startsWith('http') ? slugUrl : `https://datalaria.com${slugUrl}`;
+                        window.open(fullUrl, '_blank', 'noopener,noreferrer');
+                        setSelectedAssetForModal(null);
+                      }}
+                    >
+                      <ExternalLink size={16} />
+                      <span>{t.btn_open_article}</span>
+                    </button>
+                  ) : (
+                    <span
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.4rem',
+                        padding: '0.45rem 0.85rem',
+                        borderRadius: '8px',
+                        fontSize: '0.82rem',
+                        fontWeight: 700,
+                        background:
+                          selectedAssetForModal.visibility === 'private' || selectedAssetForModal.status === 'draft'
+                            ? 'rgba(245, 158, 11, 0.14)'
+                            : 'rgba(14, 165, 233, 0.14)',
+                        color:
+                          selectedAssetForModal.visibility === 'private' || selectedAssetForModal.status === 'draft'
+                            ? '#fbbf24'
+                            : '#38bdf8',
+                        border:
+                          selectedAssetForModal.visibility === 'private' || selectedAssetForModal.status === 'draft'
+                            ? '1px solid rgba(245, 158, 11, 0.35)'
+                            : '1px solid rgba(56, 189, 248, 0.35)'
+                      }}
+                    >
+                      {selectedAssetForModal.visibility === 'private' || selectedAssetForModal.status === 'draft'
+                        ? t.modal_blocked_private
+                        : `${t.modal_blocked_scheduled}${selectedAssetForModal.publish_date ? ` (${selectedAssetForModal.publish_date})` : ''}`}
+                    </span>
+                  )
                 )}
               </div>
             </div>

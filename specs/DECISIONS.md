@@ -559,3 +559,24 @@
   - *Alternativa B: Usar trabajos `sleep` largos dentro de GitHub Actions.* Descartada por desperdicio de minutos de runner e inestabilidad ante límites de timeout.
 - **Consecuencias:**
   - Coste `0 €`, cero disparos accidentales al hacer `git push`, protección del algoritmo de LinkedIn (`> 6h` de separación), ventaja de indexación de 12–22h para `datalaria.com` y control total manual/cron por ola y canal.
+
+---
+
+## ADR-029: Arquitectura 100 % Client-Side Offline, Currículo Fonético Dual `ES ⇔ EN` y Verificación Lectora Determinista sin STT en Nube (`apps/reading/` / `v1.0.0`)
+- **Fecha:** 2026-11-17
+- **Estado:** Aceptado (En ejecución en Hito R.1)
+- **Contexto:**
+  1. Se requiere crear una nueva aplicación educativa lúdica de aprendizaje de la lectura (**Lector Arcade / Reader Arcade**, slug `reading`) con alta comunalidad visual, arquitectónica y de PWA offline respecto a [`apps/maths/`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/apps/maths/spec.md) (*Ábaco Arcade v2.3*).
+  2. El público objetivo abarca niños de 4 a 11 años y familias internacionales (`ES` y `EN`), cubriendo desde letras y sílabas simples/complejas hasta lectura cronometrada de palabras sin ayuda y frases de 2–3 líneas con cierre instantáneo del cronómetro al finalizar la lectura.
+  3. Validar la lectura mediante reconocimiento de voz en la nube (`SpeechRecognition`) rompería la invariante PWA 100 % offline (`INV-READ-8`), fallaría en navegadores sin soporte (Firefox / Safari restringido) y expondría audio infantil a servidores de terceros.
+- **Decisión:**
+  1. **Arquitectura Monolítica Estática Reutilizada de `apps/maths/` (`INV-READ-3`, `INV-READ-8`):** Código fuente modular en `apps/reading/` (`catalog.js`, `engine.js`, `audio.js`, `app.js`, `styles.css`, `build.py`, `build_icons.py`) compilado inline en `static/apps/reading/index.html` con cero CDNs externos, 6 iconos PWA y shims `/es/` + `/en/`.
+  2. **Currículo Fonético Nativo Bilingüe (`INV-READ-6`):** El conmutador `ES | EN` adapta tanto los textos de interfaz como el currículo de lectura (`es`: vocales, consonantes, sílabas directas, inversas, trabadas y dígrafos `CH/LL/RR/QU/Ñ`; `en`: *Phonics* CVC, *blends*, *digraphs* y *magic-e*), manteniendo paridad del 100 % en niveles (`l1`–`l6`), modos (`normal`, `stopwatch`, `sprint`, `daily`) y medallas.
+  3. **Verificación Determinista Offline sin STT en Nube (`INV-READ-2`):** En `stopwatch`, el cronómetro se congela determinísticamente al completar el teclado táctil 3D (`l3`) o al pulsar `✅ ¡Leído!` (`l2`, `l4`–`l6`) antes de mostrar un **Micro-Check de comprensión en 1 toque** (3 opciones) que valida la lectura real y calcula las Palabras Por Minuto (`computeWpm()`).
+  4. **Embargo Editorial (`Constitución Art. 7`):** La app permanece en `status: incubating` (`launch_date: "2026-12-16"`) hasta publicar su post bilingüe en la 2.ª–3.ª semana de diciembre de 2026.
+- **Alternativas Descartadas:**
+  - *Alternativa A: Usar `webkitSpeechRecognition` en nube para evaluar lectura en voz alta.* Descartada por pérdida de soporte offline, incompatibilidad cross-browser y privacidad infantil.
+  - *Alternativa B: Silabear palabras dinámicamente en runtime mediante heurísticas JS.* Descartada por riesgo de fallos en hiatos/diptongos; se impone segmentación curada en `catalog.js` verificada por `pytest` (`INV-READ-1`).
+  - *Alternativa C: Crear un proyecto React/Vite separado o backend Supabase.* Descartada por *over-engineering* frente a la arquitectura ligera probada de `apps/maths/`.
+- **Consecuencias:**
+  - Cero costes de servidor, latencia `0 ms` en tablet/móvil offline, privacidad total para menores y ~85 % de reutilización de patrones verificados de `apps/maths/` y `apps/flashcards/`.

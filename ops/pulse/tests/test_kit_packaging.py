@@ -25,7 +25,7 @@ if str(ROOT_DIR) not in sys.path:
 from ops.pulse.kit.build_pulse_kit import build_pulse_excel
 from ops.pulse.kit.package_kit import package_kit, ZIP_OUTPUT_PATH, LEMON_DIST_DIR
 from ops.pulse.migrate_notion import migrate_notion, normalize_status, parse_date_str
-from ops.pulse.release_18nov import verify_embargo, activate_launch, STAGED_CARD_PATH
+from ops.pulse.release_18nov import verify_embargo, verify_live_launch, activate_launch, STAGED_CARD_PATH
 from packages.pulse.pulse_repo_scanner import scan_directory, audit_seo, parse_simple_front_matter
 
 
@@ -368,9 +368,9 @@ def test_package_kit_zip():
 
 
 def test_embargo_18nov_and_previews():
-    """Verifica que el embargo comercial hasta el 18-11-2026 se cumple y los assets existen."""
-    ok, errors = verify_embargo()
-    assert ok, f"Fallos en verificación de embargo: {errors}"
+    """Verifica el lanzamiento live de Datalaria Pulse v1.0.0 (checkout Lemon Squeezy activo) y existencia de previews."""
+    ok, errors = verify_live_launch()
+    assert ok, f"Fallos en verificación live de Pulse: {errors}"
 
     # Verificar que las imágenes preview de alta resolución existen
     img_es = ROOT_DIR / "static" / "images" / "recursos" / "pulse-preview-es.png"

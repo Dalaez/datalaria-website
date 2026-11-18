@@ -28,7 +28,7 @@ en:
       looks great during the first month.
 
 
-      Yet past 100 articles, the double-entry failure mode strikes without exception:
+      ⚠️ Yet past 100 articles, the double-entry failure mode strikes without exception:
       the ground truth in Git and the external database inevitably diverge.
 
 
@@ -48,11 +48,11 @@ en:
       out redundant Notion database properties.
 
 
-      At Datalaria Pulse, we unified our entire workflow under one rule: the Git repository
+      🚀 At Datalaria Pulse, we unified our entire workflow under one rule: the Git repository
       is the Single Source of Truth.
 
 
-      We index 183 assets directly from Markdown using Pydantic v2, enforce linguistic
+      ⚡ We index 183 assets directly from Markdown using Pydantic v2, enforce linguistic
       parity in CI/CD, and project a zero-latency React 19 cockpit.
 
 
