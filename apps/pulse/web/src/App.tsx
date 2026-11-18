@@ -44,7 +44,6 @@ import { DEMO_SYNTHETIC_ASSETS } from './lib/demoData';
 import {
   supabase,
   getCurrentUser,
-  signInWithDemo,
   signOut as supabaseSignOut,
   fetchUserIdeas,
   insertUserIdea,
@@ -141,12 +140,12 @@ export function App() {
     return 'dashboard';
   });
   const [dataset, setDataset] = useState<PublicPulseDataset | null>(null);
-  const [customAssets, setCustomAssets] = useState<ContentAsset[] | null>(() => {
+  const [customAssets, setCustomAssets] = useState<ContentAsset[] | null>(null);
+  const [isSandboxDemo, setIsSandboxDemo] = useState<boolean>(() => {
     if (typeof window !== 'undefined') {
-      const isDemo = window.location.search.includes('demo=true') || window.location.hash.includes('demo=true');
-      if (isDemo) return DEMO_SYNTHETIC_ASSETS;
+      return window.location.search.includes('demo=true') || window.location.hash.includes('demo=true');
     }
-    return null;
+    return false;
   });
 
   // Filtros interactivos con soporte de URL Deep-Linking
@@ -350,9 +349,6 @@ export function App() {
       (window.location.search.includes('demo=true') || window.location.hash.includes('demo=true'));
     if (isDemoRequested) {
       trackPulseEvent('start_pulse_demo', { source: 'url_param' });
-      if (isSupabaseConfigured) {
-        signInWithDemo().catch(() => {});
-      }
     }
 
     if (isSupabaseConfigured) {
@@ -386,7 +382,7 @@ export function App() {
   // Control de roles de usuario y permisos de catálogo (ADR-015 & P-LAUNCH-5A-SEC)
   const userEmail = currentUser?.email?.toLowerCase() || '';
   const isAdmin = Boolean(currentUser && ADMIN_EMAILS.includes(userEmail));
-  const isDemo = Boolean(currentUser && userEmail === 'demo@datalaria.com');
+  const isDemo = Boolean(isSandboxDemo || (currentUser && userEmail === 'demo@datalaria.com'));
   const isClientUser = Boolean(currentUser && !isAdmin && !isDemo);
 
   const datasetAssets = dataset?.assets;
@@ -395,12 +391,12 @@ export function App() {
     if (customAssets) return customAssets;
 
     // 2. Si el visitante sin login activó "Mi Espacio (0)" (?workspace=clean), empieza desde cero con localStorage
-    if (!currentUser && isCleanWorkspace) {
+    if (!currentUser && !isDemo && isCleanWorkspace) {
       return localIdeas;
     }
 
-    // 3. Si no hay usuario logueado: Escaparate público oficial filtrado (INV-PULSE-9)
-    if (!currentUser) {
+    // 3. Si no hay usuario logueado ni modo Sandbox Demo: Escaparate público oficial filtrado (INV-PULSE-9)
+    if (!currentUser && !isDemo) {
       return datasetAssets || [];
     }
 
@@ -412,8 +408,8 @@ export function App() {
       return [...extras, ...masterCatalog];
     }
 
-    // 5. Si es la cuenta Demo (demo@datalaria.com):
-    // Ve los 10 activos sintéticos interactivos + cualquier idea que cree en Supabase
+    // 5. Si es el modo Demo (Sandbox interactivo sin credenciales hardcoded o sesión demo):
+    // Ve los activos sintéticos interactivos + cualquier idea local o Cloud
     if (isDemo) {
       const userCreatedIds = new Set(cloudIdeas.map((c) => c.id));
       const demoFiltered = DEMO_SYNTHETIC_ASSETS.filter((d) => !userCreatedIds.has(d.id));
@@ -775,22 +771,18 @@ export function App() {
     }
   };
 
-  // Handlers de Autenticación Supabase Pro / Demo
-  const handleDemoLogin = async () => {
-    setAuthLoading(true);
+  // Handlers de Autenticación Supabase Pro / Sandbox Demo sin credenciales hardcoded (INV-PULSE-10)
+  const handleDemoLogin = () => {
     setAuthError('');
-    const { user, error } = await signInWithDemo();
-    setAuthLoading(false);
-    if (error) {
-      setAuthError(error.message);
-    } else if (user) {
-      setCurrentUser(user);
-      setAuthSuccessMsg(t.auth_success);
-      setTimeout(() => {
-        setIsAuthModalOpen(false);
-        setAuthSuccessMsg('');
-      }, 1000);
-    }
+    setCustomAssets(null);
+    setIsCleanWorkspace(false);
+    setIsSandboxDemo(true);
+    trackPulseEvent('start_pulse_demo', { source: 'auth_modal_1click' });
+    setAuthSuccessMsg(t.auth_success);
+    setTimeout(() => {
+      setIsAuthModalOpen(false);
+      setAuthSuccessMsg('');
+    }, 600);
   };
 
   const handlePasswordLogin = async (e: React.FormEvent) => {
@@ -847,6 +839,8 @@ export function App() {
   };
 
   const handleLogout = async () => {
+    setIsSandboxDemo(false);
+    setCustomAssets(null);
     await supabaseSignOut();
     setCurrentUser(null);
     setCloudIdeas([]);
@@ -1527,7 +1521,7 @@ export function App() {
             />
 
             {/* Botón / Píldora de Autenticación Supabase Pro Cloud (ADR-015) */}
-            {currentUser ? (
+            {(currentUser || isSandboxDemo) ? (
               <div
                 style={{
                   display: 'flex',
@@ -1559,7 +1553,7 @@ export function App() {
                     ? 'dalaez1 (Admin)'
                     : isDemo
                     ? t.badge_demo_user
-                    : currentUser.email?.split('@')[0]}
+                    : (currentUser?.email?.split('@')[0] || 'Pro')}
                 </span>
                 <span
                   style={{
@@ -1784,7 +1778,7 @@ export function App() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <Zap size={16} color="#22d3ee" />
               <span>
-                <strong>Modo Demostración ({t.badge_demo_user}):</strong> Espacio interactivo con {currentAssets.length} activos sintéticos en Supabase Cloud. Prueba a crear, editar o mover ideas.
+                <strong>Modo Demostración ({t.badge_demo_user}):</strong> Espacio Sandbox interactivo con {currentAssets.length} activos sintéticos. Prueba a crear, editar o mover ideas.
               </span>
             </div>
             <button

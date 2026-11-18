@@ -92,3 +92,30 @@ def test_admin_snapshot_rls_and_graceful_sync(monkeypatch):
 
     jwt_hdrs = sync_mod.build_supabase_headers("aaa.bbb.ccc")
     assert jwt_hdrs["Authorization"] == "Bearer aaa.bbb.ccc"
+
+
+def test_inv_pulse_10_no_hardcoded_demo_password_in_source_or_static():
+    """INV-PULSE-10: Ninguna contraseña literal puede vivir en código cliente, bundle estático ni seed_demo.py."""
+    forbidden_patterns = [
+        re.compile("Demo" + "User2026!?"),
+        re.compile(r"""['"]password['"]?\s*[:=]\s*['"][^'"]+['"]""", re.I),
+        re.compile(r"""\bpassword\s*[:=]\s*['"][^'"]{4,}['"]""", re.I),
+    ]
+
+    targets = [
+        ROOT_DIR / "apps" / "pulse" / "web" / "src" / "lib" / "supabase.ts",
+        ROOT_DIR / "apps" / "pulse" / "web" / "src" / "App.tsx",
+        ROOT_DIR / "ops" / "pulse" / "seed_demo.py",
+    ]
+    static_assets_dir = ROOT_DIR / "static" / "apps" / "pulse" / "assets"
+    if static_assets_dir.is_dir():
+        targets.extend(static_assets_dir.glob("*.js"))
+
+    for file_path in targets:
+        assert file_path.exists(), f"Archivo esperado ausente: {file_path}"
+        content = file_path.read_text(encoding="utf-8", errors="ignore")
+        for pat in forbidden_patterns:
+            match = pat.search(content)
+            assert match is None, (
+                f"Credencial hardcoded prohibida por INV-PULSE-10 en {file_path}: {match.group(0)}"
+            )

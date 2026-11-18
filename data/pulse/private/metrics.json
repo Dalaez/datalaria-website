@@ -180,8 +180,8 @@
     "gsc_avg_position": 0.0
   },
   "norbert_wiener": {
-    "ga4_views_30d": 39,
-    "ga4_users_30d": 13,
+    "ga4_views_30d": 40,
+    "ga4_users_30d": 14,
     "ga4_engagement_sec": 514.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -189,9 +189,9 @@
     "gsc_avg_position": 0.0
   },
   "pulse-part1": {
-    "ga4_views_30d": 184,
-    "ga4_users_30d": 2,
-    "ga4_engagement_sec": 570.0,
+    "ga4_views_30d": 188,
+    "ga4_users_30d": 5,
+    "ga4_engagement_sec": 593.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -252,8 +252,8 @@
     "gsc_avg_position": 0.0
   },
   "matriz-rice-ice-priorizacion": {
-    "ga4_views_30d": 71,
-    "ga4_users_30d": 17,
+    "ga4_views_30d": 73,
+    "ga4_users_30d": 19,
     "ga4_engagement_sec": 674.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -279,8 +279,8 @@
     "gsc_avg_position": 0.0
   },
   "app_conversor_unidades": {
-    "ga4_views_30d": 6,
-    "ga4_users_30d": 5,
+    "ga4_views_30d": 7,
+    "ga4_users_30d": 6,
     "ga4_engagement_sec": 10.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -324,8 +324,8 @@
     "gsc_avg_position": 0.0
   },
   "agentes_ia_operativa_sdd": {
-    "ga4_views_30d": 57,
-    "ga4_users_30d": 17,
+    "ga4_views_30d": 58,
+    "ga4_users_30d": 18,
     "ga4_engagement_sec": 961.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -513,8 +513,8 @@
     "gsc_avg_position": 0.0
   },
   "finetuning_vs_rag": {
-    "ga4_views_30d": 7,
-    "ga4_users_30d": 7,
+    "ga4_views_30d": 8,
+    "ga4_users_30d": 8,
     "ga4_engagement_sec": 1.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -549,8 +549,8 @@
     "gsc_avg_position": 0.0
   },
   "game_snake": {
-    "ga4_views_30d": 21,
-    "ga4_users_30d": 21,
+    "ga4_views_30d": 23,
+    "ga4_users_30d": 23,
     "ga4_engagement_sec": 8.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -567,8 +567,8 @@
     "gsc_avg_position": 0.0
   },
   "graphrag": {
-    "ga4_views_30d": 20,
-    "ga4_users_30d": 19,
+    "ga4_views_30d": 21,
+    "ga4_users_30d": 20,
     "ga4_engagement_sec": 97.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -585,9 +585,9 @@
     "gsc_avg_position": 0.0
   },
   "happyrobot": {
-    "ga4_views_30d": 20,
-    "ga4_users_30d": 17,
-    "ga4_engagement_sec": 1288.0,
+    "ga4_views_30d": 23,
+    "ga4_users_30d": 20,
+    "ga4_engagement_sec": 1310.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -630,9 +630,9 @@
     "gsc_avg_position": 0.0
   },
   "kantorovich": {
-    "ga4_views_30d": 37,
-    "ga4_users_30d": 35,
-    "ga4_engagement_sec": 799.0,
+    "ga4_views_30d": 38,
+    "ga4_users_30d": 36,
+    "ga4_engagement_sec": 811.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -657,8 +657,8 @@
     "gsc_avg_position": 0.0
   },
   "multiverse_computing": {
-    "ga4_views_30d": 17,
-    "ga4_users_30d": 15,
+    "ga4_views_30d": 18,
+    "ga4_users_30d": 16,
     "ga4_engagement_sec": 246.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -684,8 +684,8 @@
     "gsc_avg_position": 0.0
   },
   "notebooklm-sql": {
-    "ga4_views_30d": 1,
-    "ga4_users_30d": 1,
+    "ga4_views_30d": 2,
+    "ga4_users_30d": 2,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -711,9 +711,9 @@
     "gsc_avg_position": 0.0
   },
   "pgvector_vs_vectordb": {
-    "ga4_views_30d": 9,
-    "ga4_users_30d": 9,
-    "ga4_engagement_sec": 42.0,
+    "ga4_views_30d": 10,
+    "ga4_users_30d": 10,
+    "ga4_engagement_sec": 301.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -729,9 +729,9 @@
     "gsc_avg_position": 0.0
   },
   "ravenpack": {
-    "ga4_views_30d": 38,
-    "ga4_users_30d": 30,
-    "ga4_engagement_sec": 1235.0,
+    "ga4_views_30d": 41,
+    "ga4_users_30d": 33,
+    "ga4_engagement_sec": 1240.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -747,9 +747,9 @@
     "gsc_avg_position": 0.0
   },
   "silicon_valley": {
-    "ga4_views_30d": 25,
-    "ga4_users_30d": 22,
-    "ga4_engagement_sec": 450.0,
+    "ga4_views_30d": 26,
+    "ga4_users_30d": 23,
+    "ga4_engagement_sec": 461.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -792,9 +792,9 @@
     "gsc_avg_position": 0.0
   },
   "wallapop": {
-    "ga4_views_30d": 13,
-    "ga4_users_30d": 13,
-    "ga4_engagement_sec": 394.0,
+    "ga4_views_30d": 14,
+    "ga4_users_30d": 14,
+    "ga4_engagement_sec": 397.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -828,8 +828,8 @@
     "gsc_avg_position": 0.0
   },
   "evaluacion_agentes_ia": {
-    "ga4_views_30d": 22,
-    "ga4_users_30d": 21,
+    "ga4_views_30d": 23,
+    "ga4_users_30d": 22,
     "ga4_engagement_sec": 18.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -846,8 +846,8 @@
     "gsc_avg_position": 0.0
   },
   "ia-educacion-deep_research": {
-    "ga4_views_30d": 3,
-    "ga4_users_30d": 3,
+    "ga4_views_30d": 4,
+    "ga4_users_30d": 4,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -1008,8 +1008,8 @@
     "gsc_avg_position": 0.0
   },
   "obs_parte5_radar": {
-    "ga4_views_30d": 11,
-    "ga4_users_30d": 11,
+    "ga4_views_30d": 12,
+    "ga4_users_30d": 12,
     "ga4_engagement_sec": 4.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -1098,7 +1098,7 @@
     "gsc_avg_position": 0.0
   },
   "stack_productividad_2026": {
-    "ga4_views_30d": 25,
+    "ga4_views_30d": 27,
     "ga4_users_30d": 6,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
@@ -1314,9 +1314,9 @@
     "gsc_avg_position": 0.0
   },
   "pulse": {
-    "ga4_views_30d": 101,
-    "ga4_users_30d": 2,
-    "ga4_engagement_sec": 298.0,
+    "ga4_views_30d": 102,
+    "ga4_users_30d": 3,
+    "ga4_engagement_sec": 303.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -1325,7 +1325,7 @@
   "reading": {
     "ga4_views_30d": 3,
     "ga4_users_30d": 1,
-    "ga4_engagement_sec": 4.0,
+    "ga4_engagement_sec": 24.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,

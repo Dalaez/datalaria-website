@@ -15,31 +15,39 @@ from pathlib import Path
 # Raíz del proyecto
 ROOT_DIR = Path(__file__).resolve().parent.parent.parent
 
-# Extraer variables de Supabase desde apps/lifeops/api/.env si no están en entorno
+# Extraer variables de Supabase desde .env o apps/lifeops/api/.env si no están en entorno
 def load_supabase_credentials():
     url = os.getenv("SUPABASE_URL")
     service_key = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
+    demo_password = os.getenv("PULSE_DEMO_PASSWORD")
 
-    env_file = ROOT_DIR / "apps" / "lifeops" / "api" / ".env"
-    if env_file.exists():
-        with open(env_file, "r", encoding="utf-8") as f:
-            for line in f:
-                line = line.strip()
-                if line.startswith("SUPABASE_URL=") and not url:
-                    url = line.split("=", 1)[1].strip()
-                elif line.startswith("SUPABASE_SERVICE_ROLE_KEY=") and not service_key:
-                    service_key = line.split("=", 1)[1].strip()
+    for env_file in (ROOT_DIR / ".env", ROOT_DIR / "apps" / "lifeops" / "api" / ".env"):
+        if env_file.exists():
+            with open(env_file, "r", encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if not line or line.startswith("#") or "=" not in line:
+                        continue
+                    k, v = line.split("=", 1)
+                    k = k.strip()
+                    v = v.strip().strip('"').strip("'")
+                    if k == "SUPABASE_URL" and not url:
+                        url = v
+                    elif k == "SUPABASE_SERVICE_ROLE_KEY" and not service_key:
+                        service_key = v
+                    elif k == "PULSE_DEMO_PASSWORD" and not demo_password:
+                        demo_password = v
 
     if not url:
         url = "https://wkbmxekmofrjtcsyytrv.supabase.co"
     if not service_key:
-        print("[ERROR] No se encontró SUPABASE_SERVICE_ROLE_KEY en el entorno ni en apps/lifeops/api/.env")
+        print("[ERROR] No se encontró SUPABASE_SERVICE_ROLE_KEY en el entorno ni en .env")
         sys.exit(1)
 
-    return url, service_key
+    return url, service_key, demo_password
 
 
-def get_or_create_demo_user(url: str, service_key: str) -> str:
+def get_or_create_demo_user(url: str, service_key: str, demo_password: str | None = None) -> str:
     """Asegura que el usuario demo@datalaria.com exista y tenga su email confirmado."""
     headers = {
         "apikey": service_key,
@@ -72,12 +80,15 @@ def get_or_create_demo_user(url: str, service_key: str) -> str:
     except Exception as e:
         print(f"[WARN] Error consultando lista de usuarios admin: {e}")
 
-    # 2. Si no existe, crearlo directamente
+    # 2. Si no existe, crearlo directamente usando contraseña inyectada por entorno (INV-PULSE-10)
     if not demo_user_id:
+        if not demo_password:
+            print("[ERROR] Define PULSE_DEMO_PASSWORD en .env para crear una cuenta demo (INV-PULSE-10).")
+            sys.exit(1)
         create_url = f"{url}/auth/v1/admin/users"
         payload = json.dumps({
             "email": "demo@datalaria.com",
-            "password": "DemoUser2026!",
+            "password": demo_password,
             "email_confirm": True,
             "user_metadata": {"full_name": "Usuario Demo Datalaria Pulse"}
         }).encode("utf-8")
@@ -176,8 +187,8 @@ def seed_demo_ideas(url: str, service_key: str, user_id: str):
 
 def main():
     print("[PULSE PRO] Verificando entorno Supabase Cloud...")
-    url, service_key = load_supabase_credentials()
-    user_id = get_or_create_demo_user(url, service_key)
+    url, service_key, demo_password = load_supabase_credentials()
+    user_id = get_or_create_demo_user(url, service_key, demo_password)
     success = seed_demo_ideas(url, service_key, user_id)
     if success:
         print("[PULSE PRO] Inicialización de cuenta Demo completada al 100%.")

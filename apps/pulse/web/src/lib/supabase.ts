@@ -48,32 +48,6 @@ export async function getCurrentUser(): Promise<User | null> {
   }
 }
 
-export async function signInWithDemo(): Promise<{ user: User | null; error: Error | null }> {
-  try {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email: 'demo@datalaria.com',
-      password: 'DemoUser2026!',
-    });
-    if (error) {
-      // Si la cuenta demo aún no existe en Supabase Auth, intentamos registrarla automáticamente
-      if (error.message.includes('Invalid login credentials')) {
-        const signUpRes = await supabase.auth.signUp({
-          email: 'demo@datalaria.com',
-          password: 'DemoUser2026!',
-        });
-        if (signUpRes.error) {
-          return { user: null, error: signUpRes.error };
-        }
-        return { user: signUpRes.data.user, error: null };
-      }
-      return { user: null, error };
-    }
-    return { user: data.user, error: null };
-  } catch (err: unknown) {
-    return { user: null, error: err instanceof Error ? err : new Error(String(err)) };
-  }
-}
-
 export async function signOut(): Promise<void> {
   await supabase.auth.signOut();
 }

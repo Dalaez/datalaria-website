@@ -1,35 +1,35 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-11-18T04:54:11.203608Z",
+  "generated_at": "2026-11-18T21:19:24.213140Z",
   "visibility": "private",
   "total_published_posts": 105,
   "total_scheduled_posts": 16,
-  "total_30d_post_views": 1904,
+  "total_30d_post_views": 1885,
   "median_post_views": 9.0,
-  "p75_post_views": 24.0,
-  "monthly_growth_yoy_pct": 12269.2,
+  "p75_post_views": 25.0,
+  "monthly_growth_yoy_pct": 14940.9,
   "category_performance": [
     {
       "category": "Estrategia y Operaciones",
       "published_posts": 15,
-      "total_views_30d": 526,
-      "avg_views_per_post": 35.1,
-      "total_users_30d": 214,
-      "avg_engagement_sec": 23.9,
+      "total_views_30d": 512,
+      "avg_views_per_post": 34.1,
+      "total_users_30d": 216,
+      "avg_engagement_sec": 22.3,
       "monetized_posts": 13,
       "monetization_coverage_pct": 86.7,
-      "editorial_roi_score": 85.3
+      "editorial_roi_score": 84.3
     },
     {
       "category": "Pioneros y Referentes",
       "published_posts": 13,
-      "total_views_30d": 283,
-      "avg_views_per_post": 21.8,
-      "total_users_30d": 230,
-      "avg_engagement_sec": 30.6,
+      "total_views_30d": 281,
+      "avg_views_per_post": 21.6,
+      "total_users_30d": 229,
+      "avg_engagement_sec": 30.7,
       "monetized_posts": 7,
       "monetization_coverage_pct": 53.8,
-      "editorial_roi_score": 68.5
+      "editorial_roi_score": 68.3
     },
     {
       "category": "Startups",
@@ -37,17 +37,17 @@
       "total_views_30d": 179,
       "avg_views_per_post": 13.8,
       "total_users_30d": 161,
-      "avg_engagement_sec": 28.5,
+      "avg_engagement_sec": 28.7,
       "monetized_posts": 4,
       "monetization_coverage_pct": 30.8,
-      "editorial_roi_score": 47.9
+      "editorial_roi_score": 48.0
     },
     {
       "category": "IA, Ingeniería y Proyectos",
       "published_posts": 52,
-      "total_views_30d": 802,
+      "total_views_30d": 803,
       "avg_views_per_post": 15.4,
-      "total_users_30d": 412,
+      "total_users_30d": 410,
       "avg_engagement_sec": 10.0,
       "monetized_posts": 26,
       "monetization_coverage_pct": 50.0,
@@ -56,13 +56,13 @@
     {
       "category": "Cultura Tech y Media",
       "published_posts": 12,
-      "total_views_30d": 114,
-      "avg_views_per_post": 9.5,
-      "total_users_30d": 89,
-      "avg_engagement_sec": 11.8,
+      "total_views_30d": 110,
+      "avg_views_per_post": 9.2,
+      "total_users_30d": 88,
+      "avg_engagement_sec": 10.9,
       "monetized_posts": 5,
       "monetization_coverage_pct": 41.7,
-      "editorial_roi_score": 35.3
+      "editorial_roi_score": 34.3
     }
   ],
   "quick_wins_ctr": [
@@ -95,9 +95,9 @@
       "title_es": "Matriz McKinsey / GE 3x3: Atractivo de la Industria, Fortaleza Competitiva y Asignación de Capital C-Level",
       "title_en": "McKinsey / GE 3x3 Matrix: Industry Attractiveness, Business Unit Strength & C-Level Capital Allocation",
       "category": "Estrategia y Operaciones",
-      "ga4_views_30d": 31,
-      "ga4_users_30d": 26,
-      "avg_engagement_sec": 5.7,
+      "ga4_views_30d": 32,
+      "ga4_users_30d": 27,
+      "avg_engagement_sec": 5.5,
       "gsc_impressions_30d": 0,
       "gsc_avg_position": 0.0,
       "gsc_ctr_pct": 0.0,
@@ -107,7 +107,7 @@
         "Meta descripción no óptima (254 caracteres; ideal: 75-250)"
       ],
       "opportunity_type": "serp_snippet_truncation",
-      "priority_score": 35.5,
+      "priority_score": 36.0,
       "recommended_title_es": "Matriz McKinsey / GE 3x3: Atractivo de la Industria, Fortaleza Competitiva y Asignación de",
       "recommended_title_en": "McKinsey / GE 3x3 Matrix: Industry Attractiveness, Business Unit Strength & C-Level Capital",
       "recommended_desc_es": "Guía metodológica exhaustiva para implementar la matriz McKinsey / General Electric 3x3 de 9 cajas: evaluación multifactorial, neutralización de sesgos del management y plan de asignación de capital para Comités de Inversión y Consejos de"
@@ -231,7 +231,7 @@
       "title_es": "El Stack de Productividad de un Ingeniero en 2026: Las Herramientas que Uso Cada Día",
       "title_en": "An Engineer's Productivity Stack in 2026: The Tools I Use Every Day",
       "category": "IA, Ingeniería y Proyectos",
-      "ga4_views_30d": 22,
+      "ga4_views_30d": 25,
       "ga4_users_30d": 6,
       "avg_engagement_sec": 0.0,
       "gsc_impressions_30d": 0,
@@ -242,32 +242,10 @@
         "Meta descripción no óptima (255 caracteres; ideal: 75-250)"
       ],
       "opportunity_type": "serp_snippet_truncation",
-      "priority_score": 21.0,
+      "priority_score": 22.5,
       "recommended_title_es": "El Stack de Productividad de un Ingeniero en 2026: Las Herramientas que Uso Cada Día",
       "recommended_title_en": "An Engineer's Productivity Stack in 2026: The Tools I Use Every Day",
       "recommended_desc_es": "El stack real de herramientas de un ingeniero de datos en 2026: desde Gemini Deep Research hasta GitHub Actions, pasando por Python, Supabase, CrewAI y Hugo. Sin patrocinios, sin afiliados, sin filtros. Cada herramienta explicada con el post"
-    },
-    {
-      "id": "happyrobot",
-      "slug": "happyrobot",
-      "title_es": "HappyRobot: Cómo los Agentes de Voz Autónomos Conquistaron la Logística Global",
-      "title_en": "HappyRobot: How Autonomous Voice Agents Conquered Global Logistics",
-      "category": "Startups",
-      "ga4_views_30d": 21,
-      "ga4_users_30d": 18,
-      "avg_engagement_sec": 71.6,
-      "gsc_impressions_30d": 0,
-      "gsc_avg_position": 0.0,
-      "gsc_ctr_pct": 0.0,
-      "seo_score": 80,
-      "seo_issues": [
-        "Meta descripción no óptima (278 caracteres; ideal: 75-250)"
-      ],
-      "opportunity_type": "serp_snippet_truncation",
-      "priority_score": 20.5,
-      "recommended_title_es": "HappyRobot: Cómo los Agentes de Voz Autónomos Conquistaron la Logística Global",
-      "recommended_title_en": "HappyRobot: How Autonomous Voice Agents Conquered Global Logistics",
-      "recommended_desc_es": "De graduarse en Y Combinator a alcanzar el estatus de unicornio (1.200M$ de valoración): analizamos la arquitectura técnica de HappyRobot, sus agentes de voz en tiempo real con latencia sub-500ms y cómo automatizan las operaciones de gigantes"
     },
     {
       "id": "game_snake",
@@ -275,9 +253,9 @@
       "title_es": "De Cero a Héroe: Crea un Snake Game Cyberpunk con Ranking en Tiempo Real usando Supabase y JS Vanilla",
       "title_en": "From Zero to Hero: Create a Cyberpunk Snake Game with Real-Time Ranking using Supabase and Vanilla JS",
       "category": "IA, Ingeniería y Proyectos",
-      "ga4_views_30d": 20,
-      "ga4_users_30d": 20,
-      "avg_engagement_sec": 0.3,
+      "ga4_views_30d": 21,
+      "ga4_users_30d": 21,
+      "avg_engagement_sec": 0.4,
       "gsc_impressions_30d": 0,
       "gsc_avg_position": 0.0,
       "gsc_ctr_pct": 0.0,
@@ -286,10 +264,32 @@
         "Longitud de título no óptima (101 caracteres; ideal: 35-95)"
       ],
       "opportunity_type": "serp_snippet_truncation",
-      "priority_score": 20.0,
+      "priority_score": 20.5,
       "recommended_title_es": "De Cero a Héroe: Crea un Snake Game Cyberpunk con Ranking en Tiempo Real usando Supabase y JS",
       "recommended_title_en": "From Zero to Hero: Create a Cyberpunk Snake Game with Real-Time Ranking using Supabase and",
       "recommended_desc_es": "Aprende a crear un juego web estilo arcade con estética neón utilizando solo HTML5 Canvas y JS Vanilla. Descubre cómo integrar un ranking global en tiempo real usando la base de datos PostgreSQL de Supabase."
+    },
+    {
+      "id": "happyrobot",
+      "slug": "happyrobot",
+      "title_es": "HappyRobot: Cómo los Agentes de Voz Autónomos Conquistaron la Logística Global",
+      "title_en": "HappyRobot: How Autonomous Voice Agents Conquered Global Logistics",
+      "category": "Startups",
+      "ga4_views_30d": 20,
+      "ga4_users_30d": 17,
+      "avg_engagement_sec": 75.8,
+      "gsc_impressions_30d": 0,
+      "gsc_avg_position": 0.0,
+      "gsc_ctr_pct": 0.0,
+      "seo_score": 80,
+      "seo_issues": [
+        "Meta descripción no óptima (278 caracteres; ideal: 75-250)"
+      ],
+      "opportunity_type": "serp_snippet_truncation",
+      "priority_score": 20.0,
+      "recommended_title_es": "HappyRobot: Cómo los Agentes de Voz Autónomos Conquistaron la Logística Global",
+      "recommended_title_en": "HappyRobot: How Autonomous Voice Agents Conquered Global Logistics",
+      "recommended_desc_es": "De graduarse en Y Combinator a alcanzar el estatus de unicornio (1.200M$ de valoración): analizamos la arquitectura técnica de HappyRobot, sus agentes de voz en tiempo real con latencia sub-500ms y cómo automatizan las operaciones de gigantes"
     },
     {
       "id": "ia_agents_part2",
@@ -363,9 +363,9 @@
       "title_es": "Wallapop: La Ingeniería Invisible detrás del Mayor Marketplace Circular de Europa",
       "title_en": "Wallapop: The Invisible Engineering Behind Europe's Largest Circular Marketplace",
       "category": "Startups",
-      "ga4_views_30d": 12,
-      "ga4_users_30d": 12,
-      "avg_engagement_sec": 29.8,
+      "ga4_views_30d": 13,
+      "ga4_users_30d": 13,
+      "avg_engagement_sec": 30.3,
       "gsc_impressions_30d": 0,
       "gsc_avg_position": 0.0,
       "gsc_ctr_pct": 0.0,
@@ -374,7 +374,7 @@
         "Meta descripción no óptima (299 caracteres; ideal: 75-250)"
       ],
       "opportunity_type": "serp_snippet_truncation",
-      "priority_score": 16.0,
+      "priority_score": 16.5,
       "recommended_title_es": "Wallapop: La Ingeniería Invisible detrás del Mayor Marketplace Circular de Europa",
       "recommended_title_en": "Wallapop: The Invisible Engineering Behind Europe's Largest Circular Marketplace",
       "recommended_desc_es": "Cómo Wallapop transformó la compraventa de segunda mano en una plataforma tecnológica de 19 millones de usuarios. Analizamos su arquitectura de Machine Learning: búsqueda visual multimodal, algoritmos de pricing dinámico, grafos antifraude"
@@ -512,6 +512,28 @@
       "recommended_desc_es": "Descubre cómo W. Edwards Deming revolucionó la manufactura con el Control Estadístico de Procesos, salvó a Toyota y estableció los principios que hoy rigen la Inteligencia Artificial y el S&OP moderno."
     },
     {
+      "id": "pgvector_vs_vectordb",
+      "slug": "pgvector_vs_vectordb",
+      "title_es": "PostgreSQL con pgvector vs Vector DBs: Por Qué Casi Nadie Necesita Pinecone",
+      "title_en": "PostgreSQL with pgvector vs Vector DBs: Why Almost Nobody Needs Pinecone",
+      "category": "IA, Ingeniería y Proyectos",
+      "ga4_views_30d": 9,
+      "ga4_users_30d": 9,
+      "avg_engagement_sec": 4.7,
+      "gsc_impressions_30d": 0,
+      "gsc_avg_position": 0.0,
+      "gsc_ctr_pct": 0.0,
+      "seo_score": 80,
+      "seo_issues": [
+        "Meta descripción no óptima (278 caracteres; ideal: 75-250)"
+      ],
+      "opportunity_type": "serp_snippet_truncation",
+      "priority_score": 14.5,
+      "recommended_title_es": "PostgreSQL con pgvector vs Vector DBs: Por Qué Casi Nadie Necesita Pinecone",
+      "recommended_title_en": "PostgreSQL with pgvector vs Vector DBs: Why Almost Nobody Needs Pinecone",
+      "recommended_desc_es": "¿Realmente necesitas una base de datos vectorial dedicada como Pinecone, Qdrant o Milvus? Analizamos el rendimiento de pgvector en PostgreSQL, el coste oculto de la arquitectura dual, los índices HNSW vs IVFFlat, y por qué la base de datos"
+    },
+    {
       "id": "obs_parte1_intro",
       "slug": "obs_parte1_intro",
       "title_es": "El Ajedrez de la Obsolescencia: Cómo convertir el colapso de la cadena de suministro en tu mayor ventaja competitiva",
@@ -540,10 +562,24 @@
       "slug": "claude_shannon",
       "title_es": "Claude Shannon: El Hombre que Convirtió el Mundo en Bits y Definió el Futuro de la IA",
       "category": "Pioneros y Referentes",
-      "ga4_views_30d": 28,
-      "ga4_users_30d": 23,
-      "avg_engagement_sec": 36.3,
-      "rank_pct": 79,
+      "ga4_views_30d": 27,
+      "ga4_users_30d": 22,
+      "avg_engagement_sec": 37.6,
+      "rank_pct": 78,
+      "recommended_bridge_type": "helix_waitlist",
+      "recommended_target_id": "helix",
+      "recommended_shortcode_or_url": "{{< helix-waitlist >}}",
+      "rationale_es": "Tráfico de alta retención técnica; dirigir hacia la lista de espera de Datalaria Helix."
+    },
+    {
+      "id": "stack_productividad_2026",
+      "slug": "stack_productividad_2026",
+      "title_es": "El Stack de Productividad de un Ingeniero en 2026: Las Herramientas que Uso Cada Día",
+      "category": "IA, Ingeniería y Proyectos",
+      "ga4_views_30d": 25,
+      "ga4_users_30d": 6,
+      "avg_engagement_sec": 0.0,
+      "rank_pct": 74,
       "recommended_bridge_type": "helix_waitlist",
       "recommended_target_id": "helix",
       "recommended_shortcode_or_url": "{{< helix-waitlist >}}",
@@ -927,7 +963,7 @@
       "status": "published",
       "linked_posts_count": 1,
       "latest_post_date": "2026-02-14",
-      "editorial_views_30d": 20,
+      "editorial_views_30d": 21,
       "editorial_coverage_status": "silent_release_alert",
       "recommended_scriba_action": "Alerta de release silenciosa: versión v2.3.0 (2026-11-07) posterior al último post (2026-02-14); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0."
     },
@@ -941,7 +977,7 @@
       "status": "published",
       "linked_posts_count": 1,
       "latest_post_date": "2026-02-14",
-      "editorial_views_30d": 20,
+      "editorial_views_30d": 21,
       "editorial_coverage_status": "silent_release_alert",
       "recommended_scriba_action": "Alerta de release silenciosa: versión v2.2.0 (2026-11-07) posterior al último post (2026-02-14); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0."
     },
@@ -955,7 +991,7 @@
       "status": "published",
       "linked_posts_count": 1,
       "latest_post_date": "2026-02-14",
-      "editorial_views_30d": 20,
+      "editorial_views_30d": 21,
       "editorial_coverage_status": "silent_release_alert",
       "recommended_scriba_action": "Alerta de release silenciosa: versión v2.1.0 (2026-11-07) posterior al último post (2026-02-14); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0."
     },
@@ -969,7 +1005,7 @@
       "status": "published",
       "linked_posts_count": 1,
       "latest_post_date": "2026-02-14",
-      "editorial_views_30d": 20,
+      "editorial_views_30d": 21,
       "editorial_coverage_status": "silent_release_alert",
       "recommended_scriba_action": "Alerta de release silenciosa: versión v2.0.0 (2026-11-07) posterior al último post (2026-02-14); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0."
     },
@@ -1207,9 +1243,9 @@
       "status": "published",
       "linked_posts_count": 16,
       "latest_post_date": "2026-11-14",
-      "editorial_views_30d": 276,
+      "editorial_views_30d": 271,
       "editorial_coverage_status": "covered",
-      "recommended_scriba_action": "Activo cubierto con 16 post(s) en producción (276 vistas/30d)."
+      "recommended_scriba_action": "Activo cubierto con 16 post(s) en producción (271 vistas/30d)."
     },
     {
       "asset_id": "obs-management-v1.0.1",
@@ -1221,7 +1257,7 @@
       "status": "published",
       "linked_posts_count": 16,
       "latest_post_date": "2026-11-14",
-      "editorial_views_30d": 276,
+      "editorial_views_30d": 271,
       "editorial_coverage_status": "covered",
       "recommended_scriba_action": "Versión v1.0.1 respaldada por los artículos de la serie."
     },
@@ -1249,9 +1285,9 @@
       "status": "published",
       "linked_posts_count": 4,
       "latest_post_date": "2026-11-08",
-      "editorial_views_30d": 150,
+      "editorial_views_30d": 151,
       "editorial_coverage_status": "covered",
-      "recommended_scriba_action": "Activo cubierto con 4 post(s) en producción (150 vistas/30d)."
+      "recommended_scriba_action": "Activo cubierto con 4 post(s) en producción (151 vistas/30d)."
     },
     {
       "asset_id": "pack-business-case",
@@ -1263,9 +1299,9 @@
       "status": "published",
       "linked_posts_count": 4,
       "latest_post_date": "2026-11-08",
-      "editorial_views_30d": 124,
+      "editorial_views_30d": 125,
       "editorial_coverage_status": "covered",
-      "recommended_scriba_action": "Activo cubierto con 4 post(s) en producción (124 vistas/30d)."
+      "recommended_scriba_action": "Activo cubierto con 4 post(s) en producción (125 vistas/30d)."
     },
     {
       "asset_id": "suite-01",
@@ -1277,9 +1313,9 @@
       "status": "published",
       "linked_posts_count": 3,
       "latest_post_date": "2026-11-01",
-      "editorial_views_30d": 102,
+      "editorial_views_30d": 101,
       "editorial_coverage_status": "covered",
-      "recommended_scriba_action": "Activo cubierto con 3 post(s) en producción (102 vistas/30d)."
+      "recommended_scriba_action": "Activo cubierto con 3 post(s) en producción (101 vistas/30d)."
     },
     {
       "asset_id": "pack-rice",
@@ -1473,23 +1509,9 @@
       "status": "published",
       "linked_posts_count": 1,
       "latest_post_date": "2026-11-02",
-      "editorial_views_30d": 45,
+      "editorial_views_30d": 46,
       "editorial_coverage_status": "covered",
-      "recommended_scriba_action": "Activo cubierto con 1 post(s) en producción (45 vistas/30d)."
-    },
-    {
-      "asset_id": "pack-porter",
-      "asset_type": "kit",
-      "version": "v1.0.0",
-      "release_type": "kit_launch",
-      "title_es": "5 Fuerzas de Porter Ponderadas",
-      "publish_date": "2026-10-21",
-      "status": "published",
-      "linked_posts_count": 1,
-      "latest_post_date": "2026-10-19",
-      "editorial_views_30d": 43,
-      "editorial_coverage_status": "covered",
-      "recommended_scriba_action": "Activo cubierto con 1 post(s) en producción (43 vistas/30d)."
+      "recommended_scriba_action": "Activo cubierto con 1 post(s) en producción (46 vistas/30d)."
     },
     {
       "asset_id": "pack-raci",
@@ -1515,9 +1537,9 @@
       "status": "published",
       "linked_posts_count": 1,
       "latest_post_date": "2026-10-13",
-      "editorial_views_30d": 33,
+      "editorial_views_30d": 32,
       "editorial_coverage_status": "covered",
-      "recommended_scriba_action": "Activo cubierto con 1 post(s) en producción (33 vistas/30d)."
+      "recommended_scriba_action": "Activo cubierto con 1 post(s) en producción (32 vistas/30d)."
     },
     {
       "asset_id": "pack-mckinsey",
@@ -1529,9 +1551,9 @@
       "status": "published",
       "linked_posts_count": 1,
       "latest_post_date": "2026-10-29",
-      "editorial_views_30d": 31,
+      "editorial_views_30d": 32,
       "editorial_coverage_status": "covered",
-      "recommended_scriba_action": "Activo cubierto con 1 post(s) en producción (31 vistas/30d)."
+      "recommended_scriba_action": "Activo cubierto con 1 post(s) en producción (32 vistas/30d)."
     },
     {
       "asset_id": "pack-bcg",
@@ -1562,6 +1584,20 @@
       "recommended_scriba_action": "Activo cubierto con 1 post(s) en producción (29 vistas/30d)."
     },
     {
+      "asset_id": "pack-porter",
+      "asset_type": "kit",
+      "version": "v1.0.0",
+      "release_type": "kit_launch",
+      "title_es": "5 Fuerzas de Porter Ponderadas",
+      "publish_date": "2026-10-21",
+      "status": "published",
+      "linked_posts_count": 1,
+      "latest_post_date": "2026-10-19",
+      "editorial_views_30d": 27,
+      "editorial_coverage_status": "covered",
+      "recommended_scriba_action": "Activo cubierto con 1 post(s) en producción (27 vistas/30d)."
+    },
+    {
       "asset_id": "pack-amfe",
       "asset_type": "kit",
       "version": "v1.0.0",
@@ -1585,9 +1621,9 @@
       "status": "published",
       "linked_posts_count": 1,
       "latest_post_date": "2026-02-14",
-      "editorial_views_30d": 20,
+      "editorial_views_30d": 21,
       "editorial_coverage_status": "covered",
-      "recommended_scriba_action": "Activo cubierto con 1 post(s) en producción (20 vistas/30d)."
+      "recommended_scriba_action": "Activo cubierto con 1 post(s) en producción (21 vistas/30d)."
     },
     {
       "asset_id": "snake-v0.5.0",
@@ -1599,7 +1635,7 @@
       "status": "published",
       "linked_posts_count": 1,
       "latest_post_date": "2026-02-14",
-      "editorial_views_30d": 20,
+      "editorial_views_30d": 21,
       "editorial_coverage_status": "covered",
       "recommended_scriba_action": "Versión v0.5.0 respaldada por los artículos de la serie."
     },
@@ -1613,7 +1649,7 @@
       "status": "published",
       "linked_posts_count": 1,
       "latest_post_date": "2026-02-14",
-      "editorial_views_30d": 20,
+      "editorial_views_30d": 21,
       "editorial_coverage_status": "covered",
       "recommended_scriba_action": "Versión v0.1.0 respaldada por los artículos de la serie."
     },
