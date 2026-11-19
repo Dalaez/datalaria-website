@@ -127,8 +127,8 @@ entries:
   channels:
   - devto
   scheduled_at_utc: '2026-11-19T19:30:00Z'
-  status: pending
-  executed_at_utc: null
+  status: completed
+  executed_at_utc: '2026-11-19T20:14:57Z'
   notes: 'Ola 3A (T+12h): Dev.to ES con ventaja de indexación canónica'
   last_error: null
 - id: pert-2026-11-19-wave3b-en-syndication
