@@ -3,7 +3,7 @@
 > **ID de Especificación:** `SPEC-APP-LIFEOPS`
 > **Versión de la Spec:** `1.2.0` (Actualizada el 2026-11-19 con Paginación Server-Side 12/24/48, Join Embebido PostgREST, Auth Local JWKS ECC P-256 / ES256 y Resiliencia Móvil — `ADR-030`)
 > **Versión de la App documentada:** `v1.2.0` (ver §9 Historial Evolutivo)
-> **Estado:** `APPROVED` — Hitos 1.1 a 1.8 completados ✅ · Hitos 1.9 a 1.11 en ejecución
+> **Estado:** `APPROVED` — Hitos 1.1 a 1.11 completados ✅ (`v1.2.0` en producción)
 > **Categoría SDD:** 🟢 Activa en Producción (App activa #1 de 7)
 > **Código fuente canónico:** [`apps/lifeops/web/`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/apps/lifeops/web) (frontend) · [`apps/lifeops/api/`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/apps/lifeops/api) (backend)
 > **Artefacto público:** [`static/apps/lifeops/`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/static/apps/lifeops) → `https://datalaria.com/apps/lifeops/`

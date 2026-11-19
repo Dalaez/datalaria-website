@@ -1,24 +1,24 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-11-19T18:59:52.532731Z",
+  "generated_at": "2026-11-19T19:42:35.269996Z",
   "visibility": "private",
   "total_published_posts": 106,
   "total_scheduled_posts": 15,
-  "total_30d_post_views": 1906,
+  "total_30d_post_views": 1907,
   "median_post_views": 9.0,
   "p75_post_views": 25.0,
-  "monthly_growth_yoy_pct": 15618.2,
+  "monthly_growth_yoy_pct": 15622.7,
   "category_performance": [
     {
       "category": "Estrategia y Operaciones",
       "published_posts": 16,
-      "total_views_30d": 503,
-      "avg_views_per_post": 31.4,
-      "total_users_30d": 224,
-      "avg_engagement_sec": 20.3,
+      "total_views_30d": 504,
+      "avg_views_per_post": 31.5,
+      "total_users_30d": 225,
+      "avg_engagement_sec": 20.2,
       "monetized_posts": 14,
       "monetization_coverage_pct": 87.5,
-      "editorial_roi_score": 83.3
+      "editorial_roi_score": 83.2
     },
     {
       "category": "Pioneros y Referentes",
@@ -1063,7 +1063,7 @@
     {
       "asset_id": "reading",
       "asset_type": "app",
-      "version": "v1.0.0",
+      "version": "v1.1.0",
       "release_type": "initial_launch",
       "title_es": "Lector Arcade (Aprendizaje de Lectura)",
       "publish_date": "2026-12-16",
@@ -1287,7 +1287,7 @@
     {
       "asset_id": "lifeops",
       "asset_type": "app",
-      "version": "v1.1.1",
+      "version": "v1.2.0",
       "release_type": "initial_launch",
       "title_es": "LifeOps",
       "publish_date": "2026-09-19",
@@ -1602,9 +1602,9 @@
       "status": "published",
       "linked_posts_count": 1,
       "latest_post_date": "2026-10-19",
-      "editorial_views_30d": 14,
+      "editorial_views_30d": 15,
       "editorial_coverage_status": "covered",
-      "recommended_scriba_action": "Activo cubierto con 1 post(s) en producción (14 vistas/30d)."
+      "recommended_scriba_action": "Activo cubierto con 1 post(s) en producción (15 vistas/30d)."
     },
     {
       "asset_id": "conversor",

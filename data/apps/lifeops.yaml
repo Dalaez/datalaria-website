@@ -15,12 +15,12 @@ title:
   en: "LifeOps"
 
 tagline:
-  es: "Sistema operativo integral personal y profesional: deporte, lecturas, cine, tablero Kanban y proyectos."
-  en: "All-in-one personal & professional OS: fitness tracking, book library, movies, Kanban tasks and projects."
+  es: "Sistema operativo integral personal y profesional: deporte paginado, lecturas, cine, tablero Kanban y analítica 360°."
+  en: "All-in-one personal & professional OS: paginated sport tracking, book library, movies, Kanban tasks & 360° analytics."
 
 summary:
-  es: "Plataforma modular full-stack para unificar la gestión de actividades personales (fitness, biblioteca, cine) y proyectos profesionales mediante tableros Kanban interactivos, generación de informes ejecutivos en Word/Excel/CSV y arquitectura cloud serverless con Supabase a coste cero."
-  en: "Full-stack modular platform unifying personal activity tracking (fitness, reading, cinema) and professional projects via interactive Kanban boards, automated executive reporting in Word/Excel/CSV, and cloud serverless Supabase architecture at zero cost."
+  es: "Plataforma modular full-stack para unificar la gestión de actividades personales (deporte paginado 12/24/48, biblioteca, cine) y proyectos profesionales mediante tableros Kanban interactivos, Dashboard Analítico 360°, informes ejecutivos en Word/Excel/CSV y arquitectura cloud serverless con caché SWR en 0 ms, verificación JWT ECC (P-256) local y Supabase PostgreSQL a coste cero."
+  en: "Full-stack modular platform unifying personal activity tracking (paginated sport 12/24/48, library, cinema) and professional projects via interactive Kanban boards, a 360° Analytics Dashboard, executive Word/Excel/CSV reporting, and a zero-cost serverless cloud architecture featuring 0 ms SWR caching, local ECC (P-256) JWT validation, and Supabase PostgreSQL."
 
 objectives:
   - es: "Centralizar en una sola interfaz reactiva datos que habitualmente se dispersan en múltiples aplicaciones de suscripción."
@@ -29,13 +29,13 @@ objectives:
     en: "Deliver an executive Kanban workflow with chronological activity trails persisted in PostgreSQL JSONB structures."
   - es: "Generar informes ejecutivos descargables en Word (.docx), hojas de cálculo Excel (.xlsx) y CSV con codificación UTF-8 BOM."
     en: "Generate downloadable executive reports in Word (.docx), Excel spreadsheets (.xlsx), and CSV with UTF-8 BOM encoding."
-  - es: "Operar bajo un modelo de infraestructura cloud 100% gratuito (Netlify + Render Free + Supabase Cloud)."
-    en: "Operate under a zero-cost cloud architecture using Netlify, Render free tier, and Supabase managed PostgreSQL."
+  - es: "Operar bajo una infraestructura cloud 100% gratuita (Netlify + Render Free + Supabase) mitigando arranques en frío con caché SWR de 0 ms, verificación JWT local y paginación O(12)."
+    en: "Operate under a zero-cost cloud architecture (Netlify + Render free tier + Supabase) while mitigating cold starts via 0 ms SWR caching, local JWT validation, and O(12) pagination."
 
 features:
   - icon: "🏃"
-    es: "Módulo Deportivo: registro de entrenamientos, ritmos, kilometraje, calorías y cálculo de promedios."
-    en: "Fitness Module: log workouts, pace, distance, calories, and automated average calculation."
+    es: "Módulo Deportivo Paginado (12/24/48): registro de entrenamientos con carga constante O(12), ritmos, kilometraje, calorías, marcas personales, KPIs históricos vía RPC y vista adaptada en tarjetas móviles."
+    en: "Paginated Fitness Module (12/24/48): workout logs with constant O(12) loading, pace, distance, calories, personal bests, RPC historical KPIs, and responsive mobile card layout."
   - icon: "📚"
     es: "Biblioteca de Lecturas: estado de libros (leyendo, completado, pendiente), calificación y notas clave."
     en: "Book Library: reading statuses (reading, completed, queue), personal ratings, and key takeaways."
@@ -51,39 +51,46 @@ features:
   - icon: "📈"
     es: "Dashboard Analítico 360°: filtrado temporal multidimensional (semanas, meses, año), comparativa inter-periodo (Δ%), drill-down por subcategorías, gráficos Recharts y mapa de consistencia de 16 semanas."
     en: "360° Analytics Dashboard: multi-dimensional timeframe filtering (weeks, months, year), period-over-period delta comparisons (Δ%), subcategory drill-down, Recharts visualizations and 16-week consistency heatmap."
+  - icon: "📱"
+    es: "Resiliencia Móvil & Caché SWR (0 ms): hidratación instantánea aislada por usuario, auto-refresco silencioso ante HTTP 401, reintentos con backoff ante Cold-Start y polling pausado en segundo plano."
+    en: "Mobile Resilience & 0 ms SWR Cache: user-isolated instant hydration, silent JWT refresh on HTTP 401, exponential backoff retries on Cold-Starts, and background-paused polling."
   - icon: "🚀"
-    es: "Modo Demo Sandbox: prueba interactiva instantánea con datos simulados sin requerir registro ni backend."
-    en: "Instant Sandbox Demo: explore all modules with deterministic mock data without sign-up or backend requirements."
+    es: "Modo Demo Sandbox (≥ 60 entrenamientos): prueba interactiva instantánea con paginación 12/24/48 y datos simulados deterministas sin requerir registro ni backend."
+    en: "Instant Sandbox Demo (≥ 60 workouts): explore all modules and 12/24/48 pagination with deterministic mock data without sign-up or backend requirements."
 
 design:
   architecture:
-    es: "Arquitectura desacoplada en 3 capas: Single Page Application (SPA) en React 19 servida desde CDN estática con HashRouter, API REST asíncrona en FastAPI desplegada en Render con autenticación JWT estricta y limitación de tasa SlowAPI, y base de datos relacional PostgreSQL en Supabase aislada en el esquema propio 'lifeops'."
-    en: "Decoupled 3-tier architecture: React 19 Single Page Application (SPA) served via static CDN using HashRouter, asynchronous FastAPI REST backend on Render with cryptographic JWT verification and SlowAPI rate limiting, and managed PostgreSQL on Supabase isolated in its own 'lifeops' schema."
+    es: "Arquitectura desacoplada en 3 capas de coste cero: Single Page Application (SPA) en React 19 servida desde CDN estática con HashRouter y caché SWR aislada por usuario; API REST asíncrona en FastAPI con compresión GZip, joins embebidos PostgREST, paginación server-side (12/24/48), rate limiting SlowAPI y validación local de tokens JWT ECC (P-256) / ES256 vía JWKS; y base de datos PostgreSQL en Supabase aislada en el esquema 'lifeops' con índices compuestos, RLS y funciones RPC."
+    en: "Zero-cost decoupled 3-tier architecture: React 19 SPA served via static CDN using HashRouter and user-isolated SWR cache; asynchronous FastAPI REST API featuring GZip compression, PostgREST embedded joins, server-side pagination (12/24/48), SlowAPI rate limiting, and local JWT ECC (P-256) / ES256 validation via cached JWKS; and managed PostgreSQL on Supabase isolated in the 'lifeops' schema with compound indexes, RLS, and RPC functions."
   principles:
-    - es: "Aislamiento de esquemas: ningún dato de LifeOps comparte tablas con el núcleo del portal (esquema 'lifeops')."
-      en: "Schema isolation: all tables reside exclusively within the dedicated 'lifeops' PostgreSQL schema."
-    - es: "Verificación criptográfica estricta: firma JWT obligatoria en backend mediante clave HMAC secreta de Supabase."
-      en: "Strict cryptographic validation: mandatory JWT signature verification via Supabase secret HMAC key."
-    - es: "Dual-Mode determinista: el modo de prueba (?mock=true) ejecuta 100% en cliente sin peticiones de red."
-      en: "Deterministic Dual-Mode: demo mode (?mock=true) runs 100% client-side without network requests."
+    - es: "Aislamiento de esquemas y datos: ningún dato de LifeOps comparte tablas con el núcleo del portal (esquema 'lifeops' con RLS estricto y guardia anti-contaminación en seeding)."
+      en: "Schema and tenant isolation: all tables reside exclusively within the dedicated 'lifeops' PostgreSQL schema with strict RLS and anti-leakage seeding guards."
+    - es: "Verificación criptográfica local JWKS (0 ms de red): validación estricta de firma JWT ECC (P-256 / ES256) en memoria mediante PyJWKClient cacheado (con soporte HS256), rechazando tokens forjados en O(1) sin saturar Supabase Auth."
+      en: "Zero-network local JWKS validation: mandatory in-memory JWT ECC (P-256 / ES256) signature verification via cached PyJWKClient (plus HS256 support), rejecting forged tokens in O(1) without calling Supabase Auth."
+    - es: "Paginación O(page_size) y joins embebidos: consultas PostgREST en un solo roundtrip sin cláusulas .in_() lineales ni bucles N+1, desacoplando los KPIs históricos en el RPC lifeops.sport_summary."
+      en: "Server-side O(page_size) pagination and embedded joins: single-roundtrip PostgREST queries without linear .in_() clauses or N+1 loops, decoupling historical KPIs via the lifeops.sport_summary RPC."
+    - es: "Resiliencia móvil y Dual-Mode determinista: caché SWR en 0 ms, auto-refresh ante 401, backoff exponencial hasta 75 s y modo demo (?mock=true) 100% en cliente con ≥ 60 actividades."
+      en: "Mobile resilience and deterministic Dual-Mode: 0 ms SWR caching, automatic 401 session refresh, exponential backoff up to 75s, and 100% client-side demo mode (?mock=true) with ≥ 60 activities."
   diagram: |
     flowchart LR
-      U["Usuario"] --> FE["LifeOps Web (React 19 SPA)\ndatalaria.com/apps/lifeops/"]
-      FE -->|"mock=true"| MOCK["Datos simulados en cliente\n(api.js)"]
-      FE -->|"Auth JWT"| API["LifeOps API (FastAPI)\nRender Cloud"]
-      API -->|"HMAC-SHA256"| JWT["PyJWT Validator"]
-      API -->|"schema: lifeops"| DB[("Supabase PostgreSQL\nlifeops.*")]
-      API --> DOCX["Word .docx & Excel .xlsx\n(Streaming)"]
+      U["Usuario (Movil y Desktop)"] --> FE["LifeOps Web (React 19 SPA)\ndatalaria.com/apps/lifeops/"]
+      FE -->|"mock=true (64 items)"| MOCK["Datos demo en cliente\n(api.js)"]
+      FE -->|"0 ms SWR Cache"| CACHE[("localStorage SWR\npor user_id y pagina")]
+      FE -->|"signIn / refreshSession 401"| AUTH["Supabase Auth\n(ECC P-256 / ES256)"]
+      FE -->|"Bearer JWT + GZip REST"| API["LifeOps API (FastAPI)\nRender Cloud"]
+      API -->|"ES256 JWKS (0 ms) / HS256"| JWT["PyJWKClient Validator"]
+      API -->|"Embedded Joins + RPC Summary"| DB[("Supabase PostgreSQL\nschema: lifeops · RLS + Indexes")]
+      API --> DOCX["Word .docx y Excel .xlsx\n(Streaming)"]
 
 tech:
   - layer: frontend
-    items: ["React 19", "Vite 8", "React Router 7", "Recharts", "Lucide Icons"]
+    items: ["React 19", "Vite 8", "React Router 7", "Recharts", "Lucide Icons", "SWR Cache (localStorage)"]
   - layer: backend
-    items: ["Python 3.11", "FastAPI", "Pydantic v2", "PyJWT", "python-docx", "openpyxl", "SlowAPI"]
+    items: ["Python 3.11", "FastAPI", "Pydantic v2", "PyJWT (ES256 JWKS)", "GZip + Server-Timing", "python-docx", "openpyxl", "SlowAPI"]
   - layer: data
-    items: ["PostgreSQL 15 (Supabase)", "Row-Level Security (RLS)", "JSONB Storage"]
+    items: ["PostgreSQL 15 (Supabase)", "PostgREST Embedded Joins", "RPC sport_summary", "Compound Indexes", "Row-Level Security (RLS)", "JSONB Storage"]
   - layer: infra
-    items: ["Netlify Static Hosting", "Render Cloud API", "Supabase Auth"]
+    items: ["Netlify Static Hosting", "Render Cloud API", "Supabase Auth (ECC P-256)"]
 
 posts:
   - slug: app-lifeops_part1_arquitectura_backend
