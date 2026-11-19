@@ -116,8 +116,8 @@ entries:
   - x
   - newsletter
   scheduled_at_utc: '2026-11-19T14:30:00Z'
-  status: pending
-  executed_at_utc: null
+  status: completed
+  executed_at_utc: '2026-11-19T16:57:04Z'
   notes: 'Ola 2 (T+7h · Apertura USA): EN Native Social'
   last_error: null
 - id: pert-2026-11-19-wave3a-es-devto
