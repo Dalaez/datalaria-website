@@ -1,0 +1,116 @@
+es:
+  x:
+    hook: Prometer una fecha fija con 15 tareas críticas al 50% equivale a un 0,003%
+      de éxito conjunto. Así blindas cronogramas al P90 con PERT de 3 puntos, CLT
+      y Project Buffers.
+    thread:
+    - '1/5 La falacia determinista: sumar estimaciones modales ignora la asimetría
+      del riesgo técnico, la Ley de Parkinson y el Síndrome del Estudiante. El cronograma
+      nace vencido antes del primer commit.'
+    - '2/5 El modelo PERT Beta (PMBOK 7th) calibra tres escenarios sin sesgo: Optimista
+      (o), Más Probable (m) y Pesimista (p). Calcula μ = (o + 4m + p) / 6 y varianza
+      individual σ² = ((p - o) / 6)².'
+    - 3/5 Por el Teorema del Límite Central (CLT), en el Camino Crítico se suman varianzas
+      (σ_proj² = Σσ²), nunca desviaciones estándar. Evitas colchones inflados y ofertas
+      fuera de mercado.
+    - '4/5 Caso real cloud (25 WBS, 15 críticas): pedían 125 días vs media 132,5 días
+      (σ=11,80). Z=-0,636 daba solo 34,2% de éxito. Con P90 (148 días, buffer 15,1
+      días) y 12.200 € en crashing, entregó el día 142.'
+    - '5/5 Guía completa con fórmulas CLT, tabla Z-Score, protocolo anti-sesgos y
+      Executive Decision Pack en Excel + PPTX 16:9 + PDF (6 €): https://datalaria.com/es/posts/estimacion-pert-3-puntos/'
+    hashtags: &id001
+    - GestionDeProyectos
+    - PERT
+    - PMBOK
+    - ControlOperativo
+    - PMO
+    web_intent_url: https://x.com/intent/tweet?text=Prometer+una+fecha+fija+con+15+tareas+cr%C3%ADticas+al+50%25+equivale+a+un+0%2C003%25+de+%C3%A9xito+conjunto.+As%C3%AD+blindas+cronogramas+al+P90+con+PERT+de+3+puntos%2C+CLT+y+Project+Buffers.&url=https%3A%2F%2Fdatalaria.com%2Fes%2Fposts%2Festimacion-pert-3-puntos%2F&hashtags=GestionDeProyectos%2CPERT%2CPMBOK%2CControlOperativo%2CPMO
+  linkedin:
+    text: 'Si un camino crítico encadena 15 tareas estimadas al 50 % de probabilidad,
+      la probabilidad matemática de cumplir la fecha fija es del 0,003 %.
+
+
+      ⚠️ Aun así, muchos comités de dirección siguen aprobando cronogramas deterministas
+      de un solo punto como si la incertidumbre técnica no existiera.
+
+
+      📘 Acabo de publicar la guía cuantitativa de Estimación PERT de 3 Puntos Estocástica
+      (PMBOK 7th & Teorema del Límite Central) en Datalaria:
+
+
+      🔹 Distribución Beta y agregación CLT: convertimos ternas (o, m, p) en duración
+      esperada μ y desviación estándar √(Σσ²), sin inflar plazos linealmente.
+
+
+      🔹 Auditoría Z-Score para fechas compromiso: en nuestro caso real (25 WBS, 15
+      críticas), exigir 125 días frente a μ = 132,5 días (σ = 11,80) daba Z = -0,636
+      y 65,8 % de fracaso.
+
+
+      🔹 Project Buffer P90 y Crashing por ROI: aprobar 148 días (buffer de 15,1 días
+      gobernado por PMO) y reserva de 12.200 € permitió entregar en el día 142 con
+      6 días de margen.
+
+
+      🔹 Executive Decision Pack (6 € oferta desde 19 €): motor Excel de 25 paquetes
+      WBS, calculadora Z-Score, Matriz de Crashing, Guía PDF y Deck 16:9.
+
+
+      📖 Lee la metodología completa, fórmulas y protocolo anti-sesgos aquí: https://datalaria.com/es/posts/estimacion-pert-3-puntos/
+
+
+      💬 En tu organización, ¿seguís comprometiéndoos con fechas modales únicas o ya
+      exigís el percentil P80/P90 antes de firmar ante el Consejo?'
+    hashtags: *id001
+  newsletter:
+    archetype: counterintuitive_question
+    subject: ¿Por qué un cronograma con 15 tareas al 50% solo tiene un 0,003% de éxito?
+    preheader: Distribución Beta PERT de 3 puntos, agregación CLT, Z-Score y Project
+      Buffers P90 para defender plazos.
+    hook_paragraphs:
+    - 'Cuando un equipo compromete una fecha fija de Go-Live sumando duraciones de
+      un solo punto, el proyecto suele estar estadísticamente vencido antes de empezar:
+      la asimetría del riesgo técnico, la Ley de Parkinson y el Síndrome del Estudiante
+      devoran cualquier margen oculto.'
+    - En nuestra nueva guía cuantitativa aplicamos la Estimación PERT de 3 Puntos
+      (PMBOK 7th) y el Teorema del Límite Central (CLT) para calcular la probabilidad
+      real de cumplimiento y dimensionar Project Buffers científicos ante el Consejo.
+    insights_60s:
+    - 'La suma modal miente: 15 tareas críticas al 50 % arrojan un (0,5)^15 = 0,003
+      % de éxito conjunto; PERT Beta pondera μ = (o + 4m + p) / 6.'
+    - 'Suma varianzas, nunca desviaciones: el CLT demuestra que σ_total = √(Σσ²),
+      reduciendo hasta 3x la incertidumbre aparente frente al pánico lineal.'
+    - 'Caso real (25 WBS): 125 días tenía solo un 34,2 % de éxito (Z = -0,636); fijar
+      P90 en 148 días (buffer de 15,1 días) y 12.200 € de crashing entregó el día
+      142.'
+    secondary_cta_label: Ver Pack PERT 3 Puntos (6€)
+    secondary_cta_url: https://datalaria.com/es/recursos/?utm_source=newsletter&utm_medium=email&utm_campaign=pert-launch#pack-pert
+    ps_referral_text: P.D. Si conoces a algún PMO, CTO o director de operaciones defendiendo
+      fechas imposibles ante Dirección, reenvíale este análisis.
+  devto:
+    enabled: true
+    title: 'Estimación PERT de 3 Puntos: Distribución Beta, CLT y Project Buffers
+      P90'
+    description: Cómo sustituir cronogramas deterministas por PERT Estocástico (Beta),
+      agregación de varianzas CLT, Z-Score y buffers científicos P90.
+    tags:
+    - projectmanagement
+    - pert
+    - operations
+    - excel
+    canonical_url: https://datalaria.com/es/posts/estimacion-pert-3-puntos/
+    published: true
+  coderlegion:
+    enabled: false
+    title: 'Estimación PERT de 3 Puntos: Distribución Beta, CLT y Project Buffers
+      P90'
+    description: Guía cuantitativa de Estimación PERT Estocástica con Distribución
+      Beta, Teorema del Límite Central, Z-Score y Crashing de cronograma.
+    tags:
+    - project-management
+    - pert
+    - operations
+    - pmbok
+    canonical_url: https://datalaria.com/es/posts/estimacion-pert-3-puntos/
+    published: false
+    category: 2

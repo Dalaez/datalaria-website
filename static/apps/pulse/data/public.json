@@ -1,9 +1,9 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-11-18T21:29:05.884697Z",
+  "generated_at": "2026-11-19T07:37:56.674935Z",
   "total_assets": 174,
-  "published_assets": 158,
-  "scheduled_assets": 16,
+  "published_assets": 160,
+  "scheduled_assets": 14,
   "ideas_count": 0,
   "parity_summary": {
     "complete": 174
@@ -82,7 +82,7 @@
     {
       "month": "2026-11",
       "label": "Nov '26",
-      "index_100": 557
+      "index_100": 563
     }
   ],
   "assets": [
@@ -145,8 +145,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 180,
-        "rank_pct": 75,
+        "index_100": 93,
+        "rank_pct": 57,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -214,8 +214,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 160,
-        "rank_pct": 73,
+        "index_100": 180,
+        "rank_pct": 76,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -513,8 +513,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 213,
-        "rank_pct": 79,
+        "index_100": 160,
+        "rank_pct": 73,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -528,17 +528,17 @@
       "id": "stochastic-3-point-pert-estimation",
       "slug": "estimacion-pert-3-puntos",
       "asset_type": "post",
-      "status": "scheduled",
+      "status": "published",
       "visibility": "public",
-      "title_es": "Estimación PERT de 3 Puntos Estocástica: De la Ilusión Determinista a la Certidumbre Estadística de Cronograma",
-      "title_en": "Stochastic 3-Point PERT Estimation: Moving from Deterministic Schedule Illusion to Statistical Board Certainty",
+      "title_es": "Estimación PERT de 3 Puntos: Distribución Beta, CLT, Z-Score y Project Buffers",
+      "title_en": "Stochastic 3-Point PERT: Beta Distribution, CLT, Z-Score & Project Buffers",
       "url_es": "/es/posts/estimacion-pert-3-puntos/",
       "url_en": "/en/posts/stochastic-3-point-pert-estimation/",
-      "brief_es": "Guía cuantitativa y metodológica para erradicar las estimaciones deterministas de cronograma: Distribución Beta de 3 puntos (Optimista, Más Probable, Pesimista), agregación probabilística del Camino Crítico (CLT), Z-Score para fechas compromiso y dimensionamiento científico de buffers ante el Consejo de Administración.",
-      "brief_en": "Comprehensive quantitative methodology to overcome deterministic schedule slippage: 3-point Beta Distribution (Optimistic, Most Likely, Pessimistic), Critical Path Central Limit Theorem (CLT) aggregation, Z-Score commitment probability, and scientific buffer sizing for Executive Boards.",
+      "brief_es": "Guía cuantitativa de Estimación PERT de 3 Puntos: Distribución Beta, Camino Crítico CLT, Z-Score para fechas compromiso y dimensionamiento de Project Buffers.",
+      "brief_en": "Quantitative 3-Point PERT guide: Beta distribution, Critical Path CLT variance, Z-Score deadline odds, and scientific Project Buffers for Executive Boards.",
       "publish_date": "2026-11-19",
-      "last_modified_es": "2026-11-18T06:02:45+01:00",
-      "last_modified_en": "2026-11-18T06:02:45+01:00",
+      "last_modified_es": "2026-11-19T07:35:13.438279Z",
+      "last_modified_en": "2026-11-19T07:35:13.436284Z",
       "language_parity": "complete",
       "category": "Estrategia y Operaciones",
       "categories": [
@@ -572,16 +572,13 @@
       "checkout_url": null,
       "deliverables": [],
       "seo_audit": {
-        "score_0_100": 60,
-        "title_ok": false,
-        "description_ok": false,
+        "score_0_100": 100,
+        "title_ok": true,
+        "description_ok": true,
         "parity_ok": true,
         "taxonomy_ok": true,
         "internal_links_ok": true,
-        "issues": [
-          "Longitud de título no óptima (110 caracteres; ideal: 35-95)",
-          "Meta descripción no óptima (320 caracteres; ideal: 75-250)"
-        ]
+        "issues": []
       },
       "freshness_status": "fresh",
       "owner": "Daniel Alaez",
@@ -875,8 +872,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 200,
-        "rank_pct": 78,
+        "index_100": 207,
+        "rank_pct": 79,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -951,8 +948,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 213,
-        "rank_pct": 79,
+        "index_100": 220,
+        "rank_pct": 80,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1024,8 +1021,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 193,
-        "rank_pct": 78,
+        "index_100": 180,
+        "rank_pct": 76,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1171,8 +1168,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 180,
-        "rank_pct": 75,
+        "index_100": 193,
+        "rank_pct": 78,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1310,7 +1307,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 1253,
+        "index_100": 1267,
         "rank_pct": 100,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -1521,7 +1518,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 93,
-        "rank_pct": 56,
+        "rank_pct": 57,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": true
       },
@@ -1592,7 +1589,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 113,
-        "rank_pct": 63,
+        "rank_pct": 64,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1664,7 +1661,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 467,
+        "index_100": 473,
         "rank_pct": 92,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -1875,7 +1872,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 47,
-        "rank_pct": 42,
+        "rank_pct": 44,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2142,7 +2139,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 13,
-        "rank_pct": 24,
+        "rank_pct": 25,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2286,7 +2283,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 180,
-        "rank_pct": 75,
+        "rank_pct": 76,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2358,7 +2355,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 60,
-        "rank_pct": 48,
+        "rank_pct": 49,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2578,8 +2575,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 33,
-        "rank_pct": 38,
+        "index_100": 27,
+        "rank_pct": 34,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2652,7 +2649,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 33,
-        "rank_pct": 38,
+        "rank_pct": 39,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2860,8 +2857,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 67,
-        "rank_pct": 50,
+        "index_100": 53,
+        "rank_pct": 46,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2935,7 +2932,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 47,
-        "rank_pct": 42,
+        "rank_pct": 44,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3077,8 +3074,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 47,
-        "rank_pct": 42,
+        "index_100": 40,
+        "rank_pct": 41,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3149,7 +3146,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 33,
-        "rank_pct": 38,
+        "rank_pct": 39,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": true
       },
@@ -3215,7 +3212,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 180,
-        "rank_pct": 75,
+        "rank_pct": 76,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3281,7 +3278,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 13,
-        "rank_pct": 24,
+        "rank_pct": 25,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3348,7 +3345,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 60,
-        "rank_pct": 48,
+        "rank_pct": 49,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3633,8 +3630,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 127,
-        "rank_pct": 67,
+        "index_100": 107,
+        "rank_pct": 63,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3704,8 +3701,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 53,
-        "rank_pct": 46,
+        "index_100": 47,
+        "rank_pct": 44,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3770,7 +3767,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 33,
-        "rank_pct": 38,
+        "rank_pct": 39,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -3838,8 +3835,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 67,
-        "rank_pct": 50,
+        "index_100": 60,
+        "rank_pct": 49,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": true
       },
@@ -3908,7 +3905,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 93,
-        "rank_pct": 56,
+        "rank_pct": 57,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": true
       },
@@ -3977,7 +3974,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 153,
-        "rank_pct": 72,
+        "rank_pct": 73,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4045,8 +4042,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 27,
-        "rank_pct": 34,
+        "index_100": 20,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4114,8 +4111,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 140,
-        "rank_pct": 70,
+        "index_100": 147,
+        "rank_pct": 72,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4185,8 +4182,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 47,
-        "rank_pct": 42,
+        "index_100": 33,
+        "rank_pct": 39,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": true
       },
@@ -4256,7 +4253,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 153,
+        "index_100": 147,
         "rank_pct": 72,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -4401,7 +4398,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 13,
-        "rank_pct": 24,
+        "rank_pct": 25,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4538,7 +4535,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 307,
+        "index_100": 300,
         "rank_pct": 85,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -4602,7 +4599,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 253,
+        "index_100": 260,
         "rank_pct": 82,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -4812,7 +4809,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 120,
-        "rank_pct": 64,
+        "rank_pct": 65,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4879,8 +4876,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 47,
-        "rank_pct": 42,
+        "index_100": 33,
+        "rank_pct": 39,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -4948,8 +4945,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 140,
-        "rank_pct": 70,
+        "index_100": 133,
+        "rank_pct": 71,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5017,7 +5014,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 13,
-        "rank_pct": 24,
+        "rank_pct": 25,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5087,7 +5084,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 47,
-        "rank_pct": 42,
+        "rank_pct": 44,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5156,8 +5153,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 93,
-        "rank_pct": 56,
+        "index_100": 87,
+        "rank_pct": 55,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": true
       },
@@ -5227,8 +5224,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 67,
-        "rank_pct": 50,
+        "index_100": 60,
+        "rank_pct": 49,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": true
       },
@@ -5299,8 +5296,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 93,
-        "rank_pct": 56,
+        "index_100": 87,
+        "rank_pct": 55,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5371,7 +5368,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 273,
+        "index_100": 280,
         "rank_pct": 84,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -5442,7 +5439,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 807,
+        "index_100": 813,
         "rank_pct": 99,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -5583,8 +5580,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 127,
-        "rank_pct": 67,
+        "index_100": 120,
+        "rank_pct": 65,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5725,8 +5722,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 60,
-        "rank_pct": 48,
+        "index_100": 67,
+        "rank_pct": 51,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -5864,10 +5861,10 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 93,
-        "rank_pct": 56,
+        "index_100": 100,
+        "rank_pct": 60,
         "trend_30d_pct": 0.0,
-        "gsc_opportunity": true
+        "gsc_opportunity": false
       },
       "metrics_absolute": null,
       "version": null,
@@ -5932,7 +5929,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 7,
-        "rank_pct": 20,
+        "rank_pct": 21,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6072,8 +6069,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 113,
-        "rank_pct": 63,
+        "index_100": 100,
+        "rank_pct": 60,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6142,7 +6139,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 153,
+        "index_100": 147,
         "rank_pct": 72,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -6351,8 +6348,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 27,
-        "rank_pct": 34,
+        "index_100": 33,
+        "rank_pct": 39,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6420,7 +6417,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 107,
-        "rank_pct": 62,
+        "rank_pct": 63,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6488,8 +6485,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 73,
-        "rank_pct": 52,
+        "index_100": 67,
+        "rank_pct": 51,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6903,7 +6900,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 47,
-        "rank_pct": 42,
+        "rank_pct": 44,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6966,7 +6963,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 7,
-        "rank_pct": 20,
+        "rank_pct": 21,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7035,7 +7032,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 307,
+        "index_100": 327,
         "rank_pct": 85,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -7108,7 +7105,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 40,
+        "rank_pct": 41,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7251,7 +7248,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 60,
-        "rank_pct": 48,
+        "rank_pct": 49,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7319,7 +7316,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 13,
-        "rank_pct": 24,
+        "rank_pct": 25,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7386,7 +7383,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 93,
-        "rank_pct": 56,
+        "rank_pct": 57,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7587,8 +7584,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 27,
-        "rank_pct": 34,
+        "index_100": 20,
+        "rank_pct": 28,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7654,7 +7651,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 40,
-        "rank_pct": 40,
+        "rank_pct": 41,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7791,8 +7788,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 13,
-        "rank_pct": 24,
+        "index_100": 7,
+        "rank_pct": 21,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7858,7 +7855,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 7,
-        "rank_pct": 20,
+        "rank_pct": 21,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7924,7 +7921,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 7,
-        "rank_pct": 20,
+        "rank_pct": 21,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8126,7 +8123,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 7,
-        "rank_pct": 20,
+        "rank_pct": 21,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8196,8 +8193,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 180,
-        "rank_pct": 75,
+        "index_100": 213,
+        "rank_pct": 79,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8266,7 +8263,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 427,
+        "index_100": 433,
         "rank_pct": 91,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -8336,7 +8333,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 427,
+        "index_100": 433,
         "rank_pct": 91,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -8406,7 +8403,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 427,
+        "index_100": 433,
         "rank_pct": 91,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -9232,7 +9229,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 127,
-        "rank_pct": 67,
+        "rank_pct": 68,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9302,7 +9299,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 127,
-        "rank_pct": 67,
+        "rank_pct": 68,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9372,7 +9369,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 127,
-        "rank_pct": 67,
+        "rank_pct": 68,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9442,7 +9439,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 127,
-        "rank_pct": 67,
+        "rank_pct": 68,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9512,7 +9509,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 127,
-        "rank_pct": 67,
+        "rank_pct": 68,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9582,7 +9579,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 127,
-        "rank_pct": 67,
+        "rank_pct": 68,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9652,7 +9649,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 127,
-        "rank_pct": 67,
+        "rank_pct": 68,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9728,7 +9725,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 120,
-        "rank_pct": 64,
+        "rank_pct": 65,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -9804,7 +9801,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 120,
-        "rank_pct": 64,
+        "rank_pct": 65,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -10422,7 +10419,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 547,
+        "index_100": 553,
         "rank_pct": 96,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -10499,7 +10496,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 547,
+        "index_100": 553,
         "rank_pct": 96,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -10576,7 +10573,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 547,
+        "index_100": 553,
         "rank_pct": 96,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -10653,7 +10650,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 547,
+        "index_100": 553,
         "rank_pct": 96,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -10730,7 +10727,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 547,
+        "index_100": 553,
         "rank_pct": 96,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -10807,7 +10804,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 547,
+        "index_100": 553,
         "rank_pct": 96,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -10884,7 +10881,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 547,
+        "index_100": 553,
         "rank_pct": 96,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -10961,7 +10958,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 547,
+        "index_100": 553,
         "rank_pct": 96,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -11038,7 +11035,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 547,
+        "index_100": 553,
         "rank_pct": 96,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -11115,7 +11112,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 547,
+        "index_100": 553,
         "rank_pct": 96,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
@@ -12072,7 +12069,7 @@
       "id": "pack-pert",
       "slug": "pert",
       "asset_type": "kit",
-      "status": "scheduled",
+      "status": "published",
       "visibility": "public",
       "title_es": "Estimación PERT de 3 Puntos Estocástica",
       "title_en": "Stochastic 3-Point PERT Estimation",

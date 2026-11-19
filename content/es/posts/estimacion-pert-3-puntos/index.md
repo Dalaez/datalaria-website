@@ -1,12 +1,12 @@
 ---
-title: "Estimación PERT de 3 Puntos Estocástica: De la Ilusión Determinista a la Certidumbre Estadística de Cronograma"
+title: "Estimación PERT de 3 Puntos: Distribución Beta, CLT, Z-Score y Project Buffers"
 date: 2026-11-19
 draft: false
 translationKey: "stochastic-3-point-pert-estimation"
 category: "Estrategia y Operaciones"
 categories: ["Control Operativo", "Gestión de Proyectos", "Plantillas Ejecutivas", "Estrategia y Operaciones"]
 tags: ["Estimación PERT", "PERT 3 Puntos", "PMBOK 7th", "Camino Crítico", "Teorema del Límite Central", "Distribución Beta", "Z-Score", "Control Operativo", "C-Level", "Buffers de Proyecto", "Crashing de Cronograma"]
-description: "Guía cuantitativa y metodológica para erradicar las estimaciones deterministas de cronograma: Distribución Beta de 3 puntos (Optimista, Más Probable, Pesimista), agregación probabilística del Camino Crítico (CLT), Z-Score para fechas compromiso y dimensionamiento científico de buffers ante el Consejo de Administración."
+description: "Guía cuantitativa de Estimación PERT de 3 Puntos: Distribución Beta, Camino Crítico CLT, Z-Score para fechas compromiso y dimensionamiento de Project Buffers."
 summary: "Sustituye las estimaciones subjetivas a un solo punto por un motor estocástico riguroso de 3 puntos basado en la Distribución Beta y el Teorema del Límite Central (PMBOK 7th / Operations Research). Cuantifica la probabilidad real de cumplimiento para cualquier fecha compromiso, dimensiona colchones de proyecto científicos (TOC) y optimiza el crashing presupuestario con calidad de grado directivo (C-Level)."
 cover:
   image: "cover.png"
@@ -95,7 +95,7 @@ La estimación probabilística de cronogramas no vive aislada: representa la cap
 
 La estimación probabilística no es un mero refinamiento matemático abstracto; constituye un **circuito cerrado de ingeniería de plazos, agregación de varianzas y toma de decisiones basada en el apetito de riesgo corporativo**:
 
-{{< mermaid >}}
+{{< mermaid image="pert_governance_workflow.png" alt="Circuito cerrado de gobernanza estocástica de cronograma PERT 3 Puntos, CLT, Z-Score y Project Buffers" >}}
 flowchart TD
     A["<b>1. Desglose WBS & Aislamiento de Entregables</b><br/><small>Estructuración de paquetes de trabajo independientes<br/>Mapeo de dependencias funcionales y precedencias</small>"]
     

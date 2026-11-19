@@ -1,12 +1,12 @@
 ---
-title: "Stochastic 3-Point PERT Estimation: Moving from Deterministic Schedule Illusion to Statistical Board Certainty"
+title: "Stochastic 3-Point PERT: Beta Distribution, CLT, Z-Score & Project Buffers"
 date: 2026-11-19
 draft: false
 translationKey: "stochastic-3-point-pert-estimation"
 category: "Strategy & Operations"
 categories: ["Operations Control", "Project Management", "Executive Templates", "Strategy & Operations"]
 tags: ["PERT Estimation", "3-Point PERT", "PMBOK 7th", "Critical Path", "Central Limit Theorem", "Beta Distribution", "Z-Score", "Operations Control", "C-Level", "Project Buffers", "Schedule Crashing"]
-description: "Comprehensive quantitative methodology to overcome deterministic schedule slippage: 3-point Beta Distribution (Optimistic, Most Likely, Pessimistic), Critical Path Central Limit Theorem (CLT) aggregation, Z-Score commitment probability, and scientific buffer sizing for Executive Boards."
+description: "Quantitative 3-Point PERT guide: Beta distribution, Critical Path CLT variance, Z-Score deadline odds, and scientific Project Buffers for Executive Boards."
 summary: "Replace subjective single-point schedule dates with a rigorous stochastic 3-point engine based on the Beta Distribution and the Central Limit Theorem (PMBOK 7th / Operations Research). Quantify delivery risk probabilities for contractual deadlines, calculate scientific project buffers (TOC), and optimize crashing economics with C-Level boardroom quality."
 cover:
   image: "cover.png"
@@ -95,7 +95,7 @@ Stochastic schedule estimation does not operate in a vacuum—it forms the timel
 
 Probabilistic schedule control is not an academic exercise; it represents a **closed-loop engineering workflow connecting mathematical variance with corporate risk appetite**:
 
-{{< mermaid >}}
+{{< mermaid image="pert_governance_workflow.png" alt="Closed-loop Stochastic 3-Point PERT Governance Lifecycle: Beta Model, CLT, Z-Score and Project Buffers" >}}
 flowchart TD
     A["<b>1. WBS Work Package Decomposition</b><br/><small>Isolating modular, independent work packages<br/>Mapping functional dependencies and predecessor links</small>"]
     
