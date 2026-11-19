@@ -3,7 +3,7 @@ services:
     name: lifeops-api
     runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT --proxy-headers --forwarded-allow-ips="*"
     rootDir: apps/lifeops/api
     plan: free
     envVars:
@@ -14,6 +14,8 @@ services:
       - key: SUPABASE_ANON_KEY
         sync: false
       - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: SUPABASE_JWT_SECRET
         sync: false
       - key: SUPABASE_SCHEMA
         value: lifeops

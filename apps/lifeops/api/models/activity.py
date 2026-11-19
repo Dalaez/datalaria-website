@@ -5,9 +5,35 @@ Data validation schemas for the personal area:
 activities, workouts, books, films.
 """
 import datetime as dt
-from typing import Optional
+from typing import Any, Literal, Optional
 from pydantic import BaseModel, Field
 from enum import Enum
+
+
+# ── Pagination & Summary Types (ADR-030) ───────────
+
+PageSize = Literal[12, 24, 48]
+ALLOWED_PAGE_SIZES: tuple[int, ...] = (12, 24, 48)
+
+
+class SportSummary(BaseModel):
+    """Historical KPI summary over the full filtered dataset (INV-14)."""
+    count: int = 0
+    total_km: float = 0.0
+    total_seconds: int = 0
+    total_kcal: int = 0
+    pb_count: int = 0
+
+
+class PagedActivitiesResponse(BaseModel):
+    """Paginated response contract for GET /api/v1/activities/paged (INV-12..14)."""
+    items: list[dict[str, Any]] = Field(default_factory=list)
+    page: int = Field(..., ge=1)
+    page_size: PageSize
+    total: int = Field(..., ge=0)
+    total_pages: int = Field(..., ge=1)
+    has_more: bool
+    summary: Optional[SportSummary] = None
 
 
 # ── Enums ──────────────────────────────────────────

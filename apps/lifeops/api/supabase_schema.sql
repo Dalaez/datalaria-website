@@ -43,6 +43,8 @@ CREATE TABLE lifeops.activities (
 
 CREATE INDEX idx_activities_user_date ON lifeops.activities(user_id, date DESC);
 CREATE INDEX idx_activities_type ON lifeops.activities(activity_type);
+CREATE INDEX IF NOT EXISTS idx_activities_user_type_date_order
+    ON lifeops.activities(user_id, activity_type, date DESC, created_at DESC, id DESC);
 
 -- Entrenamientos deportivos (detalle)
 CREATE TABLE lifeops.workouts (
@@ -56,6 +58,7 @@ CREATE TABLE lifeops.workouts (
     personal_best BOOLEAN DEFAULT false,
     notes TEXT
 );
+CREATE INDEX IF NOT EXISTS idx_workouts_activity_id ON lifeops.workouts(activity_id);
 
 -- Libros
 CREATE TABLE lifeops.books (
@@ -73,6 +76,7 @@ CREATE TABLE lifeops.books (
     start_date DATE,
     finish_date DATE
 );
+CREATE INDEX IF NOT EXISTS idx_books_activity_id ON lifeops.books(activity_id);
 
 -- Películas y Series
 CREATE TABLE lifeops.films (
@@ -89,6 +93,7 @@ CREATE TABLE lifeops.films (
     episode INTEGER,
     imdb_url TEXT
 );
+CREATE INDEX IF NOT EXISTS idx_films_activity_id ON lifeops.films(activity_id);
 
 -- Hábitos
 CREATE TABLE lifeops.habits (
@@ -329,3 +334,44 @@ CREATE TRIGGER set_updated_at_projects
 CREATE TRIGGER set_updated_at_tasks
     BEFORE UPDATE ON lifeops.tasks
     FOR EACH ROW EXECUTE FUNCTION lifeops.update_updated_at();
+
+
+-- ============================================================
+-- FUNCIÓN RPC: Resumen histórico deportivo (ADR-030 / INV-14)
+-- ============================================================
+CREATE OR REPLACE FUNCTION lifeops.sport_summary(p_user_id UUID)
+RETURNS TABLE (
+    count BIGINT,
+    total_km NUMERIC,
+    total_seconds BIGINT,
+    total_kcal BIGINT,
+    pb_count BIGINT
+)
+LANGUAGE sql
+STABLE
+SECURITY INVOKER
+AS $$
+    SELECT
+        COUNT(a.id)::BIGINT AS count,
+        COALESCE(ROUND(SUM(COALESCE(w.distance_km, 0))::NUMERIC, 2), 0)::NUMERIC AS total_km,
+        COALESCE(
+            SUM(
+                CASE
+                    WHEN (a.metadata->>'duration_seconds') ~ '^\d+$'
+                        THEN (a.metadata->>'duration_seconds')::BIGINT
+                    WHEN a.duration_minutes IS NOT NULL
+                        THEN (a.duration_minutes::BIGINT * 60)
+                    ELSE 0
+                END
+            ),
+            0
+        )::BIGINT AS total_seconds,
+        COALESCE(SUM(COALESCE(w.calories, 0)), 0)::BIGINT AS total_kcal,
+        COUNT(*) FILTER (WHERE COALESCE(w.personal_best, false) = true)::BIGINT AS pb_count
+    FROM lifeops.activities a
+    LEFT JOIN lifeops.workouts w ON w.activity_id = a.id
+    WHERE a.user_id = p_user_id
+      AND a.activity_type = 'sport';
+$$;
+
+GRANT EXECUTE ON FUNCTION lifeops.sport_summary(UUID) TO service_role, authenticated;

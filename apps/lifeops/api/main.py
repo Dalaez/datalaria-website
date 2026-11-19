@@ -10,6 +10,7 @@ Run with:
 """
 import os
 import socket
+import time
 
 # Prevent Windows DNS IPv6 blackhole timeout when resolving cloud services (local Windows only)
 if os.name == "nt":
@@ -24,6 +25,7 @@ if os.name == "nt":
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.gzip import GZipMiddleware
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
@@ -58,6 +60,18 @@ app = FastAPI(
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 app.add_middleware(SlowAPIMiddleware)
+app.add_middleware(GZipMiddleware, minimum_size=1024)
+
+
+@app.middleware("http")
+async def add_server_timing_header(request: Request, call_next):
+    """Expose per-request backend latency via standard Server-Timing header (ADR-030)."""
+    start = time.perf_counter()
+    response = await call_next(request)
+    elapsed_ms = (time.perf_counter() - start) * 1000.0
+    response.headers["Server-Timing"] = f"app;dur={elapsed_ms:.1f}"
+    return response
+
 
 # ── CORS Middleware ───────────────────────────────
 
@@ -67,6 +81,7 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["Server-Timing"],
 )
 
 # ── Register Routers ─────────────────────────────

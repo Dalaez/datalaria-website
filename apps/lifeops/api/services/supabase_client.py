@@ -39,3 +39,15 @@ def db(table_name: str):
     client = get_supabase_client()
     schema = get_supabase_schema()
     return client.schema(schema).table(table_name)
+
+
+def rpc(fn_name: str, params: dict | None = None):
+    """
+    Shortcut to invoke a PostgreSQL function (RPC) in the lifeops schema.
+
+    Usage:
+        result = rpc("sport_summary", {"p_user_id": uid}).execute()
+    """
+    client = get_supabase_client()
+    schema = get_supabase_schema()
+    return client.schema(schema).rpc(fn_name, params or {})
