@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-11-19T07:37:56.674935Z",
+  "generated_at": "2026-11-19T08:25:49.188360Z",
   "total_assets": 174,
   "published_assets": 160,
   "scheduled_assets": 14,
@@ -537,8 +537,8 @@
       "brief_es": "Guía cuantitativa de Estimación PERT de 3 Puntos: Distribución Beta, Camino Crítico CLT, Z-Score para fechas compromiso y dimensionamiento de Project Buffers.",
       "brief_en": "Quantitative 3-Point PERT guide: Beta distribution, Critical Path CLT variance, Z-Score deadline odds, and scientific Project Buffers for Executive Boards.",
       "publish_date": "2026-11-19",
-      "last_modified_es": "2026-11-19T07:35:13.438279Z",
-      "last_modified_en": "2026-11-19T07:35:13.436284Z",
+      "last_modified_es": "2026-11-19T08:36:35+01:00",
+      "last_modified_en": "2026-11-19T08:36:35+01:00",
       "language_parity": "complete",
       "category": "Estrategia y Operaciones",
       "categories": [
