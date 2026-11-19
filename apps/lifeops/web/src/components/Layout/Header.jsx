@@ -7,13 +7,14 @@ import { LanguageSwitcher } from '../common/LanguageSwitcher';
 import { LogOut, Bell, Search, ShieldCheck, PanelLeftClose, PanelLeftOpen, Menu } from 'lucide-react';
 import './Header.css';
 
-export function Header({ collapsed, toggleSidebar, mobileDrawerOpen }) {
+export function Header({ collapsed, toggleSidebar }) {
   const { user, signOut } = useAuth();
   const { t, language } = useLanguage();
   const [alerts, setAlerts] = useState([]);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const fetchAlerts = async () => {
+    if (typeof document !== 'undefined' && document.hidden) return;
     try {
       const data = await api.getAlerts();
       setAlerts(data || []);
@@ -23,9 +24,25 @@ export function Header({ collapsed, toggleSidebar, mobileDrawerOpen }) {
   };
 
   useEffect(() => {
-    fetchAlerts();
-    const interval = setInterval(fetchAlerts, 60000); // Poll every minute
-    return () => clearInterval(interval);
+    // INV-18: Defer initial alerts poll by 3s to avoid competing with critical cold-start data
+    const initialDelay = setTimeout(() => {
+      if (!document.hidden) fetchAlerts();
+    }, 3000);
+
+    const interval = setInterval(() => {
+      if (!document.hidden) fetchAlerts();
+    }, 60000);
+
+    const handleVisibilityChange = () => {
+      if (!document.hidden) fetchAlerts();
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      clearTimeout(initialDelay);
+      clearInterval(interval);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
   }, []);
 
   const handleDismiss = async (alertId) => {

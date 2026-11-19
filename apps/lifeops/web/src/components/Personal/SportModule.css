@@ -464,3 +464,170 @@
   align-items: center;
   gap: 2px;
 }
+
+
+/* ============================================================
+   PAGINATION TRANSITIONS, SKELETONS, SYNC & ERROR STATES (ADR-030)
+   ============================================================ */
+
+.sport-list-transition {
+  opacity: 0.55;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.sport-loading-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.workout-skeleton-card {
+  min-height: 156px;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.skeleton-line {
+  border-radius: 6px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.04) 25%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.04) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.4s ease-in-out infinite;
+}
+
+.skeleton-badge {
+  width: 96px;
+  height: 22px;
+}
+
+.skeleton-title {
+  width: 78%;
+  height: 20px;
+}
+
+.skeleton-sub {
+  width: 40%;
+  height: 14px;
+}
+
+.skeleton-chips {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.skeleton-chip {
+  width: 68px;
+  height: 26px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+@keyframes skeletonShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.sport-sync-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: flex-start;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  border-color: rgba(6, 182, 212, 0.35);
+}
+
+.sport-sync-timer {
+  color: var(--accent-emerald);
+  font-family: var(--font-heading);
+}
+
+.sport-sync-warning {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  border-color: rgba(245, 158, 11, 0.4);
+  background: rgba(245, 158, 11, 0.08);
+  flex-wrap: wrap;
+}
+
+.sport-sync-warning-msg {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.84rem;
+  color: var(--accent-amber);
+  font-weight: 500;
+}
+
+.sport-inline-retry-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 36px;
+  padding: 0.35rem 0.85rem;
+  border-radius: 8px;
+  background: rgba(245, 158, 11, 0.16);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  color: var(--accent-amber);
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: var(--transition-fast);
+}
+
+.sport-inline-retry-btn:hover {
+  background: rgba(245, 158, 11, 0.25);
+}
+
+.sport-error-state {
+  padding: 3rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  border-color: rgba(244, 63, 94, 0.35);
+}
+
+.sport-error-icon {
+  color: var(--accent-rose);
+  margin-bottom: 0.25rem;
+}
+
+.sport-error-state h3 {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.sport-error-state p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  max-width: 460px;
+}
+
+.sport-error-detail {
+  color: var(--text-muted);
+  font-size: 0.76rem;
+  font-family: monospace;
+  max-width: 520px;
+  word-break: break-word;
+}
+
+.sport-retry-btn {
+  min-height: 44px;
+  margin-top: 0.5rem;
+}

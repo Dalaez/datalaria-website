@@ -350,10 +350,10 @@ hugo --renderToMemory
 ```
 
 - [x] `python -m ops.helix.cli verify --spec specs/apps/lifeops/spec.md` alcanza `100/100` (Hito 1.8).
-- [ ] `.\.venv\Scripts\python.exe -m pytest -v` pasa al 100 % incluyendo `test_pagination.py` (`INV-12..15`) y `test_auth.py` (`INV-17`: ES256 JWKS + rechazo inmediato de firma inválida) (Hito 1.9).
-- [ ] `npm.cmd run lint` (`oxlint`: `0` errores) y `npm.cmd run build:portal` terminan con código `0` (Hito 1.10).
-- [ ] Verificación en navegador headless (`390×844` móvil y `1440×900` escritorio) sobre `/apps/lifeops/#/?mock=true` confirma 12 tarjetas iniciales, selector `12/24/48`, cambio de página y tarjeta de error ante caída de red (nunca falso estado vacío, `INV-16`) (Hito 1.10).
-- [ ] `hugo --renderToMemory` compila con código `0` y versión `v1.2.0` sincronizada en `data/apps/lifeops.yaml`, `spec.md`, `Sidebar.jsx` y `main.py` (Hito 1.11).
+- [x] `.\.venv\Scripts\python.exe -m pytest -v` pasa al 100 % incluyendo `test_pagination.py` (`INV-12..15`) y `test_auth.py` (`INV-17`: ES256 JWKS + rechazo inmediato de firma inválida) (Hito 1.9).
+- [x] `npm.cmd run lint` (`oxlint`: `0` errores) y `npm.cmd run build:portal` terminan con código `0` (Hito 1.10).
+- [x] Verificación en navegador headless (`390×844` móvil y `1440×900` escritorio) sobre `/apps/lifeops/#/?mock=true` confirma 12 tarjetas iniciales, selector `12/24/48`, cambio de página y tarjeta de error ante caída de red (nunca falso estado vacío, `INV-16`) (Hito 1.10).
+- [x] `hugo --renderToMemory` compila con código `0` y versión `v1.2.0` sincronizada en `data/apps/lifeops.yaml`, `spec.md`, `Sidebar.jsx` y `main.py` (Hito 1.11).
 
 ---
 

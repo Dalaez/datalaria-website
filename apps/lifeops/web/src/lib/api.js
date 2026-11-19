@@ -1,7 +1,14 @@
 import { supabase } from './supabase';
+import { computeSportSummaryClient } from './sportFormatters';
 
 export const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://lifeops-api.onrender.com';
 const SWR_CACHE_PREFIX = 'lifeops_swr_v2:';
+const PAGED_CACHE_MAX_ENTRIES = 10;
+const WAKEUP_IDLE_THRESHOLD_MS = 10 * 60 * 1000;
+const WAKEUP_MIN_GAP_MS = 30 * 1000;
+
+let lastSuccessfulApiAt = 0;
+let lastWakeUpAttemptAt = 0;
 
 if (typeof window !== 'undefined') {
   try {
@@ -16,13 +23,23 @@ if (typeof window !== 'undefined') {
   }
 }
 
+function normalizeCacheEndpoint(endpoint) {
+  if (!endpoint.startsWith('/api/v1/activities/paged?')) return endpoint;
+  const [path, qs] = endpoint.split('?');
+  const params = new URLSearchParams(qs);
+  params.delete('include_summary');
+  const cleanQs = params.toString();
+  return cleanQs ? `${path}?${cleanQs}` : path;
+}
+
 /**
  * INV-10: Stale-While-Revalidate local cache helpers strictly namespaced by user.id
  */
 export function getCachedEndpoint(userId, endpoint) {
   if (!userId || typeof window === 'undefined') return null;
   try {
-    const raw = localStorage.getItem(`${SWR_CACHE_PREFIX}${userId}:${endpoint}`);
+    const key = normalizeCacheEndpoint(endpoint);
+    const raw = localStorage.getItem(`${SWR_CACHE_PREFIX}${userId}:${key}`);
     if (!raw) return null;
     const parsed = JSON.parse(raw);
     return parsed?.data ?? null;
@@ -31,14 +48,54 @@ export function getCachedEndpoint(userId, endpoint) {
   }
 }
 
+function prunePagedCache(userId, maxEntries = PAGED_CACHE_MAX_ENTRIES) {
+  if (!userId || typeof window === 'undefined') return;
+  try {
+    const pagedPrefix = `${SWR_CACHE_PREFIX}${userId}:/api/v1/activities/paged?`;
+    const entries = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (k && k.startsWith(pagedPrefix)) {
+        let ts = 0;
+        try {
+          ts = JSON.parse(localStorage.getItem(k) || '{}')?.ts || 0;
+        } catch {
+          ts = 0;
+        }
+        entries.push({ key: k, ts });
+      }
+    }
+    if (entries.length <= maxEntries) return;
+    entries.sort((a, b) => a.ts - b.ts);
+    const excess = entries.length - maxEntries;
+    for (let i = 0; i < excess; i++) {
+      localStorage.removeItem(entries[i].key);
+    }
+  } catch {
+    // Ignore storage access errors
+  }
+}
+
 export function setCachedEndpoint(userId, endpoint, data) {
   if (!userId || typeof window === 'undefined') return;
   try {
     const now = Date.now();
+    const normEndpoint = normalizeCacheEndpoint(endpoint);
     localStorage.setItem(
-      `${SWR_CACHE_PREFIX}${userId}:${endpoint}`,
+      `${SWR_CACHE_PREFIX}${userId}:${normEndpoint}`,
       JSON.stringify({ ts: now, data })
     );
+    if (normEndpoint.startsWith('/api/v1/activities/paged?')) {
+      prunePagedCache(userId);
+      if (data?.summary) {
+        const qs = normEndpoint.split('?')[1] || '';
+        const actType = new URLSearchParams(qs).get('activity_type') || 'all';
+        localStorage.setItem(
+          `${SWR_CACHE_PREFIX}${userId}:/api/v1/activities/paged-summary?activity_type=${actType}`,
+          JSON.stringify({ ts: now, data: data.summary })
+        );
+      }
+    }
     // Cross-populate module-specific activity caches when full details are fetched
     if (endpoint.startsWith('/api/v1/activities/details') && !endpoint.includes('activity_type=') && Array.isArray(data)) {
       for (const t of ['sport', 'book', 'film']) {
@@ -49,7 +106,12 @@ export function setCachedEndpoint(userId, endpoint, data) {
       }
     }
   } catch {
-    // Ignore storage quota errors safely
+    // On quota error, prune paged cache and retry once safely
+    try {
+      prunePagedCache(userId, 2);
+    } catch {
+      // Ignore storage quota errors safely
+    }
   }
 }
 
@@ -68,14 +130,29 @@ export function clearUserCache(userId) {
   }
 }
 
-export function wakeUpServer() {
-  if (typeof window === 'undefined') return;
-  const isMock =
+export function isMockModeEnabled() {
+  if (typeof window === 'undefined') return false;
+  return (
     window.location.hash.includes('mock=true') ||
     window.location.search.includes('mock=true') ||
-    localStorage.getItem('lifeops_mock') === 'true';
-  if (isMock) return;
-  fetch(`${API_BASE_URL}/health`, { method: 'GET', mode: 'cors' }).catch(() => null);
+    localStorage.getItem('lifeops_mock') === 'true'
+  );
+}
+
+export function wakeUpServer(force = false) {
+  if (typeof window === 'undefined') return;
+  if (isMockModeEnabled()) return;
+  const now = Date.now();
+  if (now - lastWakeUpAttemptAt < WAKEUP_MIN_GAP_MS) return;
+  if (!force && lastSuccessfulApiAt > 0 && now - lastSuccessfulApiAt < WAKEUP_IDLE_THRESHOLD_MS) {
+    return;
+  }
+  lastWakeUpAttemptAt = now;
+  fetch(`${API_BASE_URL}/health`, { method: 'GET', mode: 'cors' })
+    .then((res) => {
+      if (res.ok) lastSuccessfulApiAt = Date.now();
+    })
+    .catch(() => null);
 }
 
 function relDate(daysAgo) {
@@ -268,8 +345,48 @@ function getMockSportActivities() {
         personal_best: false,
         notes: 'Cadencia media 90 rpm.'
       }
-    }
+    },
+    ...buildExtendedMockSportActivities(54)
   ];
+}
+
+function buildExtendedMockSportActivities(extraCount) {
+  const templates = [
+    { type: 'running', title: 'Rodaje Base Aeróbico', km: 9.2, min: 47, kcal: 610, hr: 143, elev: 55 },
+    { type: 'cycling', title: 'Ciclismo Intervalos Z4', km: 38.5, min: 82, kcal: 960, hr: 147, elev: 320 },
+    { type: 'gym', title: 'Fuerza Full-Body & Movilidad', km: null, min: 55, kcal: 420, hr: 126, elev: null },
+    { type: 'swimming', title: 'Natación Técnica 2000m', km: 2.0, min: 44, kcal: 480, hr: 134, elev: null },
+    { type: 'hiking', title: 'Ruta Senderismo Sierra', km: 14.3, min: 185, kcal: 1050, hr: 122, elev: 640 },
+    { type: 'crossfit', title: 'WOD Metabólico EMOM 30', km: null, min: 42, kcal: 530, hr: 158, elev: null },
+  ];
+  const extra = [];
+  for (let i = 0; i < extraCount; i++) {
+    const idx = i + 11;
+    const tpl = templates[i % templates.length];
+    const daysAgo = 47 + i * 3;
+    const durMin = tpl.min + (i % 7) * 2;
+    const durSec = durMin * 60 + ((i * 13) % 55);
+    const dist = tpl.km != null ? Number((tpl.km + (i % 4) * 0.6).toFixed(2)) : null;
+    extra.push({
+      id: `sport-${idx}`,
+      activity_type: 'sport',
+      title: `${tpl.title} #${idx}`,
+      date: relDate(daysAgo),
+      duration_minutes: durMin,
+      metadata: { duration_seconds: durSec },
+      description: `Sesión histórica sintética #${idx} para validación de paginación 12/24/48.`,
+      workout: {
+        workout_type: tpl.type,
+        distance_km: dist,
+        calories: tpl.kcal + (i % 5) * 35,
+        avg_heart_rate: tpl.hr + (i % 6),
+        elevation_m: tpl.elev,
+        personal_best: i % 19 === 0,
+        notes: 'Registro determinista Sandbox (INV-7).'
+      }
+    });
+  }
+  return extra;
 }
 
 function getMockBookActivities() {
@@ -547,6 +664,44 @@ export async function apiFetch(endpoint, options = {}) {
         }
       ];
     }
+    if (endpoint.startsWith('/api/v1/activities/paged')) {
+      const qs = endpoint.includes('?') ? endpoint.split('?')[1] : '';
+      const params = new URLSearchParams(qs);
+      const actType = params.get('activity_type');
+      const page = Math.max(1, parseInt(params.get('page') || '1', 10) || 1);
+      const rawSize = parseInt(params.get('page_size') || '12', 10) || 12;
+      const pageSize = [12, 24, 48].includes(rawSize) ? rawSize : 12;
+      const includeSummary = params.get('include_summary') !== 'false';
+
+      let pool;
+      if (actType === 'sport') pool = getMockSportActivities();
+      else if (actType === 'book') pool = getMockBookActivities();
+      else if (actType === 'film') pool = getMockFilmActivities();
+      else pool = [...getMockSportActivities(), ...getMockBookActivities(), ...getMockFilmActivities()];
+
+      const total = pool.length;
+      const totalPages = Math.max(1, Math.ceil(total / pageSize));
+      const offset = (page - 1) * pageSize;
+      const items = pool.slice(offset, offset + pageSize);
+      const hasMore = page * pageSize < total;
+
+      let summary = null;
+      if (includeSummary) {
+        summary = actType === 'sport'
+          ? computeSportSummaryClient(pool)
+          : { count: total, total_km: 0, total_seconds: 0, total_kcal: 0, pb_count: 0 };
+      }
+
+      return {
+        items,
+        page,
+        page_size: pageSize,
+        total,
+        total_pages: totalPages,
+        has_more: hasMore,
+        summary,
+      };
+    }
     if (endpoint.includes('activity_type=sport')) {
       return getMockSportActivities();
     }
@@ -598,53 +753,139 @@ export async function apiFetch(endpoint, options = {}) {
     }
   }
 
-  const { data: { session } } = await supabase.auth.getSession();
-  const token = session?.access_token;
-  const userId = session?.user?.id;
   const method = (options.method || 'GET').toUpperCase();
+  const isGet = method === 'GET';
+  const timeoutMs = options.timeoutMs ?? (isGet ? 75000 : 45000);
+  const enableRetry = Boolean(options.retry);
+  const maxRetryDurationMs = options.maxRetryDurationMs ?? 120000;
+  const backoffScheduleMs = [2000, 4000, 8000, 16000];
+  const retryStartedAt = Date.now();
 
-  const headers = {
-    'Content-Type': 'application/json',
-    ...(token ? { Authorization: `Bearer ${token}` } : {}),
-    ...(options.headers || {}),
+  const { data: { session } } = await supabase.auth.getSession();
+  let token = session?.access_token;
+  let userId = session?.user?.id;
+  let didAuthRefresh = false;
+
+  const buildFetchOptions = () => {
+    const {
+      timeoutMs: _t,
+      retry: _r,
+      maxRetryDurationMs: _m,
+      onRetryAttempt: _cb,
+      ...fetchOpts
+    } = options;
+    return {
+      ...fetchOpts,
+      headers: {
+        'Content-Type': 'application/json',
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        ...(options.headers || {}),
+      },
+    };
   };
 
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(new Error('Timeout: El servidor en Render tardó más de 45 segundos en responder.')), 45000);
-
-  let response;
-  try {
-    response = await fetch(`${API_BASE_URL}${endpoint}`, {
-      ...options,
-      headers,
-      signal: options.signal || controller.signal,
-    });
-  } finally {
-    clearTimeout(timeoutId);
-  }
-
-  if (!response.ok) {
-    const errorData = await response.json().catch(() => ({ detail: response.statusText }));
-    throw new Error(errorData.detail || `HTTP Error ${response.status}`);
-  }
-
-  // Handle 204 No Content
-  if (response.status === 204) {
-    if (userId && method !== 'GET') clearUserCache(userId);
-    return null;
-  }
-
-  const jsonData = await response.json();
-
-  if (userId) {
-    if (method === 'GET') {
-      setCachedEndpoint(userId, endpoint, jsonData);
-    } else {
-      clearUserCache(userId);
+  let attempt = 0;
+  while (true) {
+    if (options.signal?.aborted) {
+      throw options.signal.reason || new DOMException('Aborted', 'AbortError');
     }
-  }
 
-  return jsonData;
+    const controller = new AbortController();
+    const onExternalAbort = () => controller.abort(options.signal?.reason);
+    if (options.signal) {
+      options.signal.addEventListener('abort', onExternalAbort, { once: true });
+    }
+    const timeoutId = setTimeout(
+      () => controller.abort(new Error(`Timeout: El servidor en Render tardó más de ${Math.round(timeoutMs / 1000)}s en responder.`)),
+      timeoutMs
+    );
+
+    let response;
+    try {
+      response = await fetch(`${API_BASE_URL}${endpoint}`, {
+        ...buildFetchOptions(),
+        signal: controller.signal,
+      });
+    } catch (networkErr) {
+      clearTimeout(timeoutId);
+      if (options.signal) {
+        options.signal.removeEventListener('abort', onExternalAbort);
+      }
+      if (options.signal?.aborted) {
+        throw networkErr;
+      }
+      const elapsed = Date.now() - retryStartedAt;
+      if (enableRetry && elapsed < maxRetryDurationMs) {
+        const delayMs = backoffScheduleMs[Math.min(attempt, backoffScheduleMs.length - 1)];
+        if (elapsed + delayMs <= maxRetryDurationMs) {
+          attempt += 1;
+          options.onRetryAttempt?.(attempt, networkErr);
+          await new Promise((resolve) => setTimeout(resolve, delayMs));
+          continue;
+        }
+      }
+      throw networkErr;
+    } finally {
+      clearTimeout(timeoutId);
+      if (options.signal) {
+        options.signal.removeEventListener('abort', onExternalAbort);
+      }
+    }
+
+    // INV-18: Single automatic session refresh attempt on HTTP 401
+    if (response.status === 401 && !didAuthRefresh) {
+      didAuthRefresh = true;
+      try {
+        const { data: refreshed, error: refreshErr } = await supabase.auth.refreshSession();
+        if (!refreshErr && refreshed?.session?.access_token) {
+          token = refreshed.session.access_token;
+          userId = refreshed.session.user?.id || userId;
+          continue;
+        }
+      } catch {
+        // Fall through to 401 error below
+      }
+    }
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({ detail: response.statusText }));
+      const httpErr = new Error(errorData.detail || `HTTP Error ${response.status}`);
+      httpErr.status = response.status;
+
+      const isTransient5xx = response.status >= 500 && response.status < 600;
+      const elapsed = Date.now() - retryStartedAt;
+      if (enableRetry && isTransient5xx && elapsed < maxRetryDurationMs) {
+        const delayMs = backoffScheduleMs[Math.min(attempt, backoffScheduleMs.length - 1)];
+        if (elapsed + delayMs <= maxRetryDurationMs) {
+          attempt += 1;
+          options.onRetryAttempt?.(attempt, httpErr);
+          await new Promise((resolve) => setTimeout(resolve, delayMs));
+          continue;
+        }
+      }
+      throw httpErr;
+    }
+
+    lastSuccessfulApiAt = Date.now();
+
+    // Handle 204 No Content
+    if (response.status === 204) {
+      if (userId && method !== 'GET') clearUserCache(userId);
+      return null;
+    }
+
+    const jsonData = await response.json();
+
+    if (userId) {
+      if (method === 'GET') {
+        setCachedEndpoint(userId, endpoint, jsonData);
+      } else {
+        clearUserCache(userId);
+      }
+    }
+
+    return jsonData;
+  }
 }
 
 /**
@@ -655,6 +896,8 @@ export const api = {
   getHealth: () => fetch(`${API_BASE_URL}/health`).then((res) => res.json()),
   wakeUpServer,
   clearUserCache,
+  getCachedEndpoint,
+  setCachedEndpoint,
   getCachedDashboardBundle: (userId) => {
     if (!userId) return null;
     const summary = getCachedEndpoint(userId, '/api/v1/stats/dashboard');
@@ -662,6 +905,26 @@ export const api = {
     const tasks = getCachedEndpoint(userId, '/api/v1/tasks/');
     if (!summary && !activities && !tasks) return null;
     return { summary, activities, tasks };
+  },
+  getCachedSportSeed: (userId, pageSize = 12) => {
+    if (!userId) return null;
+    const list =
+      getCachedEndpoint(userId, '/api/v1/activities/details?activity_type=sport') ||
+      (getCachedEndpoint(userId, '/api/v1/activities/details?limit=200') || []).filter(
+        (a) => a.activity_type === 'sport'
+      );
+    if (!Array.isArray(list) || list.length === 0) return null;
+    const total = list.length;
+    const totalPages = Math.max(1, Math.ceil(total / pageSize));
+    return {
+      items: list.slice(0, pageSize),
+      page: 1,
+      page_size: pageSize,
+      total,
+      total_pages: totalPages,
+      has_more: pageSize < total,
+      summary: computeSportSummaryClient(list),
+    };
   },
 
   // Dashboard Stats
@@ -684,6 +947,53 @@ export const api = {
     if (options.limit) params.append('limit', String(options.limit));
     const qs = params.toString() ? `?${params.toString()}` : '';
     return apiFetch(`/api/v1/activities/details${qs}`);
+  },
+  getActivitiesPaged: async (type, options = {}) => {
+    const page = Math.max(1, Number(options.page) || 1);
+    const pageSize = [12, 24, 48].includes(Number(options.pageSize)) ? Number(options.pageSize) : 12;
+    const includeSummary = options.includeSummary !== false;
+
+    const params = new URLSearchParams();
+    if (type) params.append('activity_type', type);
+    params.append('page', String(page));
+    params.append('page_size', String(pageSize));
+    params.append('include_summary', includeSummary ? 'true' : 'false');
+    if (options.dateFrom) params.append('date_from', options.dateFrom);
+    if (options.dateTo) params.append('date_to', options.dateTo);
+
+    try {
+      return await apiFetch(`/api/v1/activities/paged?${params.toString()}`, {
+        retry: options.retry !== false,
+        maxRetryDurationMs: options.maxRetryDurationMs ?? 120000,
+        signal: options.signal,
+        onRetryAttempt: options.onRetryAttempt,
+      });
+    } catch (err) {
+      // Graceful fallback if backend deployment has not exposed /paged yet (HTTP 404)
+      if (err?.status === 404) {
+        const legacyParams = new URLSearchParams();
+        if (type) legacyParams.append('activity_type', type);
+        if (options.dateFrom) legacyParams.append('date_from', options.dateFrom);
+        if (options.dateTo) legacyParams.append('date_to', options.dateTo);
+        const qs = legacyParams.toString() ? `?${legacyParams.toString()}` : '';
+        const all = (await apiFetch(`/api/v1/activities/details${qs}`, {
+          retry: options.retry !== false,
+          signal: options.signal,
+        })) || [];
+        const total = all.length;
+        const offset = (page - 1) * pageSize;
+        return {
+          items: all.slice(offset, offset + pageSize),
+          page,
+          page_size: pageSize,
+          total,
+          total_pages: Math.max(1, Math.ceil(total / pageSize)),
+          has_more: page * pageSize < total,
+          summary: includeSummary && type === 'sport' ? computeSportSummaryClient(all) : null,
+        };
+      }
+      throw err;
+    }
   },
   createActivity: (data) => apiFetch('/api/v1/activities/', { method: 'POST', body: JSON.stringify(data) }),
   createSportActivity: (data) => apiFetch('/api/v1/activities/sport', { method: 'POST', body: JSON.stringify(data) }),

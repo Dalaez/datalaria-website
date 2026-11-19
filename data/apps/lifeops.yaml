@@ -7,7 +7,7 @@ cover: cover.png
 app_url: /apps/lifeops/
 demo_url: /apps/lifeops/#/?mock=true
 source_spec: specs/apps/lifeops/spec.md
-current_version: v1.1.1
+current_version: v1.2.0
 launch_date: "2026-09-19"
 
 title:
@@ -102,6 +102,23 @@ posts:
 related_products: []
 
 releases:
+  - version: v1.2.0
+    date: "2026-11-19"
+    state: released
+    type: perf
+    title:
+      es: "Paginación server-side 12/24/48, join embebido PostgREST y resiliencia móvil"
+      en: "Server-side 12/24/48 pagination, PostgREST embedded joins and mobile resilience"
+    changes:
+      - es: "Paginación determinista en Deporte (12/24/48) con resumen histórico desacoplado (include_summary) y carga constante O(12)."
+        en: "Deterministic Sport pagination (12/24/48) with decoupled historical summary (include_summary) and constant O(12) load."
+      - es: "Join embebido PostgREST select('*, workouts(*)') eliminando consultas .in_() dependientes de N."
+        en: "PostgREST embedded join select('*, workouts(*)') eliminating N-dependent .in_() queries."
+      - es: "Verificación criptográfica local JWT ECC (P-256) / ES256 vía JWKS cacheado (0 ms de red a Supabase Auth)."
+        en: "Local cryptographic JWT ECC (P-256) / ES256 verification via cached JWKS (0 ms network calls to Supabase Auth)."
+      - es: "Resiliencia móvil: auto-refresh de sesión ante HTTP 401, retry con backoff exponencial, timeout de 75s y polling de alertas pausado en segundo plano."
+        en: "Mobile resilience: auto session refresh on HTTP 401, exponential backoff retries, 75s timeout and background-paused alert polling."
+
   - version: v1.1.1
     date: "2026-10-27"
     state: released

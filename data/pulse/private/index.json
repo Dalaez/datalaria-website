@@ -58,8 +58,8 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 93,
-      "rank_pct": 56,
+      "index_100": 100,
+      "rank_pct": 60,
       "trend_30d_pct": 0.0,
       "gsc_opportunity": false
     },
@@ -9185,7 +9185,7 @@
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
-    "version": "v1.1.1",
+    "version": "v1.2.0",
     "release_type": "initial_launch",
     "parent_asset_id": null,
     "editorial_post_slug": null

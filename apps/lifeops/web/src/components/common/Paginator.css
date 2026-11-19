@@ -1,0 +1,200 @@
+/* Segmented Page Size Selector (12 · 24 · 48) */
+.page-size-selector {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 3px 4px 3px 0.65rem;
+}
+
+.page-size-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.page-size-pills {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.page-size-btn {
+  min-width: 34px;
+  min-height: 30px;
+  padding: 0.25rem 0.55rem;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 700;
+  transition: var(--transition-fast);
+}
+
+.page-size-btn:hover:not(:disabled) {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.page-size-btn.active {
+  background: rgba(16, 185, 129, 0.18);
+  color: var(--accent-emerald);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+.page-size-btn:focus-visible,
+.paginator-step-btn:focus-visible,
+.paginator-page-btn:focus-visible {
+  outline: 2px solid var(--accent-emerald);
+  outline-offset: 2px;
+}
+
+/* Adaptive Paginator Bar */
+.paginator-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.15rem;
+  border-radius: 14px;
+  flex-wrap: wrap;
+}
+
+.paginator-range-text {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.paginator-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.paginator-step-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  min-height: 36px;
+  padding: 0.4rem 0.75rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: var(--transition-fast);
+}
+
+.paginator-step-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.paginator-step-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.paginator-pages-desktop {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.paginator-page-btn {
+  min-width: 34px;
+  min-height: 34px;
+  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: var(--transition-fast);
+}
+
+.paginator-page-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--text-primary);
+}
+
+.paginator-page-btn.active {
+  background: rgba(16, 185, 129, 0.18);
+  border-color: rgba(16, 185, 129, 0.45);
+  color: var(--accent-emerald);
+}
+
+.paginator-ellipsis {
+  padding: 0 0.3rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.paginator-pages-mobile {
+  display: none;
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  padding: 0 0.6rem;
+  white-space: nowrap;
+}
+
+.paginator-size-inline {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .paginator-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    padding: 0.9rem;
+  }
+
+  .paginator-info {
+    text-align: center;
+  }
+
+  .paginator-nav {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .paginator-pages-desktop {
+    display: none;
+  }
+
+  .paginator-pages-mobile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+  }
+
+  /* WCAG 2.2 AA Touch Targets >= 44px on mobile */
+  .paginator-step-btn {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0.5rem 0.95rem;
+  }
+
+  .page-size-btn {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .paginator-size-inline {
+    justify-content: center;
+  }
+}

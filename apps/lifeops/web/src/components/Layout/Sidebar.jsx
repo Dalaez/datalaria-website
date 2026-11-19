@@ -132,9 +132,9 @@ export function Sidebar({ collapsed, toggleSidebar, mobileOpen, closeMobile }) {
 
       {/* Footer Version Badge */}
       <div className="sidebar-footer">
-        <div className="version-pill" title="LifeOps v0.1.0">
+        <div className="version-pill" title="LifeOps v1.2.0">
           <span className="dot-active"></span>
-          {!collapsed && <span>v0.1.0 (FastAPI + React)</span>}
+          {!collapsed && <span>v1.2.0 (FastAPI + React)</span>}
         </div>
       </div>
     </aside>

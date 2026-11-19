@@ -13,7 +13,12 @@ export function PersonalPage() {
   const { t } = useLanguage();
 
   const setTab = (tab) => {
-    setSearchParams({ tab });
+    const next = { tab };
+    const mockParam = searchParams.get('mock');
+    const langParam = searchParams.get('lang');
+    if (mockParam) next.mock = mockParam;
+    if (langParam) next.lang = langParam;
+    setSearchParams(next);
   };
 
   return (

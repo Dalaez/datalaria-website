@@ -46,7 +46,7 @@ limiter = Limiter(key_func=get_remote_address, default_limits=["120/minute"])
 
 app = FastAPI(
     title="LifeOps API",
-    version="0.1.0",
+    version="1.2.0",
     description=(
         "🚀 LifeOps — Your personal & professional life dashboard. "
         "Full-stack app combining activity tracking (sport, books, films, learning) "
@@ -101,7 +101,7 @@ async def root():
     """API root — welcome message."""
     return {
         "app": "LifeOps API",
-        "version": "0.1.0",
+        "version": "1.2.0",
         "docs": "/docs",
         "status": "operational",
     }
@@ -112,7 +112,7 @@ async def health():
     """Health check endpoint."""
     return {
         "status": "healthy",
-        "engine": "LifeOps v0.1.0",
+        "engine": "LifeOps v1.2.0",
         "database": "Supabase (datalaria-core)",
         "schema": settings.supabase_schema,
     }

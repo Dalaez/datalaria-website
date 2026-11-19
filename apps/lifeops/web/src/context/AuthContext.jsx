@@ -28,7 +28,15 @@ export function AuthProvider({ children }) {
     }
 
     // Pre-warm Render container immediately on app boot
-    wakeUpServer();
+    wakeUpServer(true);
+
+    const handleVisibilityOrFocus = () => {
+      if (document.visibilityState === 'visible') {
+        wakeUpServer(false);
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibilityOrFocus);
+    window.addEventListener('focus', handleVisibilityOrFocus);
 
     // 1. Get initial session
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -44,7 +52,11 @@ export function AuthProvider({ children }) {
       setLoading(false);
     });
 
-    return () => subscription.unsubscribe();
+    return () => {
+      subscription.unsubscribe();
+      document.removeEventListener('visibilitychange', handleVisibilityOrFocus);
+      window.removeEventListener('focus', handleVisibilityOrFocus);
+    };
   }, []);
 
   const signIn = async (email, password) => {
