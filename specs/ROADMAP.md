@@ -7,12 +7,13 @@
 
 ## 📍 ESTADO ACTUAL DEL PROYECTO (PUNTERO DE SESIÓN)
 
-- **Fase Activa:** `FASE 8 (LAB) CERRADA AL 100% ✅` *(Fases 0 a 6 cerradas al 100% ✅; Hitos 7.1 a 7.6 completados ✅; Fase 8 Lector Arcade Hitos R.1 a R.7 completados al 100% ✅)*
-- **Último Checkpoint Verificado:** Hito R.7 (`sdd-checkpoint-post-r7`) — Integración en Showcase (`data/apps/reading.yaml`), Fichas Embargadas Bilingües (`content/{es,en}/apps/reading/index.md`, `draft: true`), Portadas Oficiales 16:10 (`apps/reading/build_cover.py`, `cover.png` `1200×750` en `content/{es,en}/apps/reading/`), Sincronización Editorial Pulse (`185` activos, `155` publicados), `124/124` tests `pytest` (`19` en `reading`, `39` en `pulse`, `66` en `helix`) y compilación Hugo `3.003` páginas (`1508 ES / 1495 EN`) código `0` (Completado el 2026-11-17 ✅).
+- **Fase Activa:** `FASE 1 (EXTENSIÓN LO-PERF v1.2.0) — PAGINACIÓN SERVER-SIDE & RESILIENCIA MÓVIL DE LIFEOPS` *(Fases 0 a 6 y 8 cerradas al 100% ✅; Hitos 7.1 a 7.6 completados ✅; Hito 1.8 completado ✅)*
+- **Último Checkpoint Verificado:** Hito 1.8 — Especificación [`specs/apps/lifeops/spec.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/apps/lifeops/spec.md) `v1.2.0` (`SpecQualityScore` `100/100`), registro de **`ADR-030`** en [`specs/DECISIONS.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/DECISIONS.md) (paginación server-side `12/24/48` con `include_summary`, join embebido PostgREST, verificación JWT local `ECC P-256 / ES256` vía JWKS cacheado y resiliencia móvil `INV-12..18`) y diagnóstico T0 verificado (Completado el 2026-11-19 ✅).
 - **Próximos Hitos:**
-  - **Lanzamiento Oficial Datalaria Pulse (`18/11`):** Ejecución en producción bajo el protocolo de 3 olas en 24h (`dispatch_queue.yaml`).
-  - Hito 2.7 / W3.4 (evolución Weather Intelligence).
-  - **Lanzamiento Editorial Lector Arcade (`apps/reading/`):** Estreno editorial programado para la 2.ª–3.ª semana de diciembre 2026 (`launch_date: "2026-12-16"`), serie de posts bilingües con `E01`–`E08` y levantamiento de embargo.
+  - **Hito 1.9 (Backend LifeOps `v1.2.0`):** Endpoint `/api/v1/activities/paged`, join embebido PostgREST, migración SQL (`idx_workouts_activity_id`, `lifeops.sport_summary`), auth JWKS local `ECC (P-256)`, `GZipMiddleware` y suite `pytest`.
+  - **Hito 1.10 (Frontend LifeOps `v1.2.0`):** Componente `Paginator` (`12/24/48`), hook `usePagedActivities`, auto-refresh `401`, retry backoff, pausa de polling en `Header.jsx` y verificación headless (`390×844` / `1440×900`).
+  - **Hito 1.11 (Release LifeOps `v1.2.0`):** Armonización SemVer (`data/apps/lifeops.yaml`, `spec.md`, `Sidebar.jsx`, `main.py`), sincronización Pulse/Hugo y validación en móvil real.
+  - **Lanzamiento Editorial Lector Arcade (`apps/reading/`):** Estreno editorial programado para la 2.ª–3.ª semana de diciembre 2026 (`launch_date: "2026-12-16"`).
 ---
 
 ## 📋 PREMISA EDITORIAL VERIFICADA: LAS 7 APPS ACTIVAS EN PRODUCCIÓN
@@ -121,6 +122,40 @@ Tras auditar todos los artículos de `/content/es/posts/` y `/content/en/posts/`
     5. *Auditoría de Enlaces e Imágenes:* Corrección de enlaces internos con prefijo de idioma (`/es/posts/...` y `/en/posts/...`), sanitización de enlace en `AuthContext.jsx` y reinicio del servidor Hugo para montar en memoria los assets binarios recién agregados. Verificación HTTP 200 de todas las imágenes y enlaces internos.
     6. *Guardia de Seguridad Anti-Contaminación de Datos y Tests INV-11 (ADR-014):* Creación del servicio `services/seeder_guard.py` con listas blancas de seeding y nueva suite `tests/test_data_isolation.py` que bloquea y verifica el aislamiento estricto de cuentas de producción frente a inserciones sintéticas.
   - *Gate de Verificación:* `hugo --renderToMemory` compila limpiamente 2167 páginas con código de salida 0 y paridad total ES/EN; suite HTTP `verify_hugo_links.py` confirma código 200 en todas las imágenes y enlaces de la Parte 6; `pytest` 13/13 tests en verde (100%); `oxlint` 0 errores. (Completado el 2026-10-28 ✅).
+
+- [x] **Hito 1.8: Especificación `v1.2.0` (`LO-PERF`), `ADR-030` y Contrato de Paginación `12/24/48` + Resiliencia Móvil**
+  - *Acción:*
+    1. Actualizar [`/specs/apps/lifeops/spec.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/apps/lifeops/spec.md) a `v1.2.0` saneando rutas legacy (`apps/lifeops/web/` y `apps/lifeops/api/`), incorporando la sección `Non-Goals y Límites`, el contrato `GET /api/v1/activities/paged` (`page_size ∈ {12, 24, 48}`, `include_summary`), las invariantes `INV-12` a `INV-18` y el contrato UX de paginación y estados móviles (§4.2).
+    2. Registrar **`ADR-030`** en [`/specs/DECISIONS.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/DECISIONS.md) documentando el diagnóstico T0 (firma JWT asimétrica `ECC P-256 / ES256` en Supabase sin JWKS local en Render, 70+ actividades deportivas, `.in_()` lineal y bloqueo móvil por timeout/401/polling).
+    3. Dar de alta los Hitos `1.8` a `1.11` en `specs/ROADMAP.md`.
+  - *Gate de Verificación:* `python -m ops.helix.cli verify --spec specs/apps/lifeops/spec.md` (`100/100`); cero cambios en código de producción (`/apps/`). (Completado el 2026-11-19 ✅).
+
+- [ ] **Hito 1.9: Backend Paginado (`/activities/paged`), Join Embebido PostgREST, Índices SQL, Auth Local `JWKS (ES256)` y Compresión GZip**
+  - *Acción:*
+    1. Crear checkpoint `sdd-checkpoint-pre-1.9`.
+    2. Añadir modelos Pydantic v2 (`PageSize = Literal[12, 24, 48]`, `SportSummary`, `PagedActivitiesResponse`) en `apps/lifeops/api/models/activity.py`.
+    3. Implementar `GET /api/v1/activities/paged` (con `include_summary`, orden total `date DESC, created_at DESC, id DESC`, join embebido y RPC `lifeops.sport_summary` con fallback Python) y refactorizar `GET /api/v1/activities/details` a join embebido eliminando `.in_()` (`INV-12..15`).
+    4. Crear migración SQL idempotente `apps/lifeops/api/migrations/2026-11_lifeops_perf_indexes.sql` y actualizar `supabase_schema.sql` (índices FK en `workouts/books/films`, índice compuesto en `activities` y función `lifeops.sport_summary`).
+    5. Actualizar `apps/lifeops/api/middleware/auth.py` con inspección de `alg`, verificación local `ES256/RS256` mediante `PyJWKClient` cacheado (`lifespan=3600, timeout=5`), soporte `HS256` y rechazo inmediato `401` ante firma inválida (`INV-17`).
+    6. Activar `GZipMiddleware(minimum_size=1024)`, cabecera `Server-Timing` en `main.py` y `--proxy-headers` en `render.yaml`.
+    7. Actualizar mock de `INV-9` en `test_auth.py` y crear `tests/test_pagination.py` validando `INV-12..15` e `INV-17`.
+  - *Gate de Verificación:* `cd apps/lifeops/api; .\.venv\Scripts\python.exe -m pytest -v` (100% en verde) + despliegue en Render verificado (`/health` y `/api/v1/activities/paged` → `200`).
+
+- [ ] **Hito 1.10: Frontend Paginación `12/24/48` (`Paginator` + `usePagedActivities`) y Resiliencia Móvil (`INV-16`, `INV-18`)**
+  - *Acción:*
+    1. Crear checkpoint `sdd-checkpoint-pre-1.10`.
+    2. Actualizar `apps/lifeops/web/src/lib/api.js`: auto-refresh único ante `401` (`supabase.auth.refreshSession()`), timeout de `75 s` en `GET` + retry con backoff exponencial (`2-4-8-16 s`), `getActivitiesPaged` con fallback `404`, pre-warm en `visibilitychange`/`focus` (`> 10 min`) y $\ge 60$ entrenamientos mock (`INV-7`, `INV-18`).
+    3. Actualizar `Header.jsx` para diferir `3 s` la carga inicial de alertas y pausar el polling de `60 s` cuando `document.hidden === true`.
+    4. Extraer helpers puros a `src/lib/sportFormatters.js`, implementar `src/hooks/usePagedActivities.js` (SWR + seed desde caché del Dashboard + prefetch) y `src/components/common/Paginator.{jsx,css}` (`12 · 24 · 48`, compacto móvil `>= 44 px`, WCAG 2.2 AA).
+    5. Integrar en `SportModule.{jsx,css}` y `PersonalPage.jsx` (`useSearchParams`, KPIs desde `summary`, 4 estados explícitos sin falso vacío, vista Cards por defecto en móvil) y completar diccionarios `es.js` / `en.js` (`F-12`).
+  - *Gate de Verificación:* `cd apps/lifeops/web; npm.cmd run lint; npm.cmd run build:portal` (`0` errores) + `build_index` + `publish_public` + `hugo --renderToMemory` + verificación headless Edge (`390×844` y `1440×900`).
+
+- [ ] **Hito 1.11: Release `v1.2.0`, Armonización SemVer y Validación Real en Móvil**
+  - *Acción:*
+    1. Crear checkpoint `sdd-checkpoint-pre-1.11`.
+    2. Armonizar versión `v1.2.0` en `data/apps/lifeops.yaml`, `specs/apps/lifeops/spec.md` §9, `Sidebar.jsx` y `main.py` (Constitución Art. 8.3).
+    3. Regenerar índice de Datalaria Pulse (`build_index`, `publish_public`), verificar `hugo --renderToMemory` (código `0`), validar carga en móvil real tras `> 15 min` de inactividad y cerrar hito en `specs/ROADMAP.md` con `DEBRIEF HELIX`.
+  - *Gate de Verificación:* `hugo --renderToMemory` (código `0`) + suites `pytest` al 100% + prueba real en móvil confirmada.
 
 ---
 

@@ -580,3 +580,33 @@
   - *Alternativa C: Crear un proyecto React/Vite separado o backend Supabase.* Descartada por *over-engineering* frente a la arquitectura ligera probada de `apps/maths/`.
 - **Consecuencias:**
   - Cero costes de servidor, latencia `0 ms` en tablet/móvil offline, privacidad total para menores y ~85 % de reutilización de patrones verificados de `apps/maths/` y `apps/flashcards/`.
+
+---
+
+## ADR-030: Paginación Server-Side `12/24/48` con Resumen Desacoplado (`include_summary`), Join Embebido PostgREST, Verificación JWT Local `ECC (P-256)` vía JWKS y Resiliencia Móvil en LifeOps (`v1.2.0` — Hitos 1.8 a 1.11)
+- **Fecha:** 2026-11-19
+- **Estado:** Aceptado (En ejecución en Hitos 1.8 a 1.11)
+- **Contexto:**
+  1. Con 70+ actividades deportivas registradas y en crecimiento continuo, el módulo *Sport & Fitness* de **LifeOps** sufría degradación lineal $O(N)$ y bloqueos de carga de hasta 48 horas en móvil por la combinación de cinco factores empíricos verificados en el diagnóstico T0:
+     - **Descarga y renderizado completos ($O(N)$):** `SportModule.jsx` descargaba hasta 500 actividades sin paginar, serializaba la colección completa en `localStorage` y montaba todas las tarjetas/filas en el DOM.
+     - **Antipatrón `.in_()` lineal en PostgREST:** `activities.py` concatenaba los $N$ UUIDs de actividades en la URL HTTP (`workouts.in_("activity_id", activity_ids)`), creciendo a razón de ~37 bytes/UUID hasta arriesgar fallos `HTTP 414 / 400` en el gateway.
+     - **Autenticación remota por petición (`ECC P-256` sin JWKS local):** El proyecto Supabase `datalaria-core` firma los tokens JWT con criptografía asimétrica de curva elíptica **`ECC (P-256)` (`ES256`)**, mientras `auth.py` solo intentaba verificación local `HS256` (y Render carecía de `SUPABASE_JWT_SECRET`). Como resultado, el 100 % de las peticiones en producción caían al fallback de red `client.auth.get_user(token)`, añadiendo 200–500 ms por llamada.
+     - **Fragilidad móvil ante Cold-Start y suspensión de PWA:** El timeout de cliente (`45 s`) era inferior al spin-up de Render free (`~60 s`); `SportModule` no leía la caché SWR, no reintentaba, ocultaba cualquier excepción mostrando el estado vacío *"Aún no hay entrenamientos"*, `apiFetch` no ejecutaba `supabase.auth.refreshSession()` ante un `401` tras días de suspensión en móvil, y `Header.jsx` competía lanzando `/api/v1/alerts/` (3 queries SQL) al montar y cada 60 s incluso con la pestaña oculta.
+- **Decisión:**
+  1. **Endpoint Paginado Server-Side con Resumen Desacoplado (`GET /api/v1/activities/paged`, `INV-12..14`):**
+     - Soporta `page >= 1`, `page_size ∈ {12, 24, 48}` (por defecto `12`) y `include_summary: bool = True`.
+     - Garantiza orden total determinista (`date DESC, created_at DESC, id DESC`) con `.range(offset, offset + page_size - 1)` y `count="exact"`.
+     - Cuando `include_summary=true` (carga inicial o tras mutación CRUD), devuelve `summary` (`count`, `total_km`, `total_seconds`, `total_kcal`, `pb_count`) calculado sobre todo el histórico del usuario mediante la función SQL `lifeops.sport_summary(p_user_id UUID)` (`< 5 ms`, con fallback automático en Python por bloques si la RPC aún no ha sido aplicada). Cuando `include_summary=false` (cambio de página o prefetch), omite el cálculo de `summary` para que cada navegación sea **1 única consulta `O(page_size)`**.
+  2. **Join Embebido PostgREST e Índices SQL (`INV-15`):**
+     - Tanto `/paged` como `/details` reemplazan las consultas secundarias `.in_("activity_id", ...)` por join embebido PostgREST (`select("*, workouts(*)")`) normalizando la relación hija a objeto singular, respaldado por índices explícitos en `workouts/books/films(activity_id)` y el índice compuesto `idx_activities_user_type_date_order`.
+  3. **Verificación JWT Local por Algoritmo con `PyJWKClient` Cacheado (`INV-17`):**
+     - `get_current_user` inspecciona `alg` en la cabecera del token: para `ES256/RS256` verifica la firma en memoria (`~0,1 ms`, `0` llamadas de red) usando `PyJWKClient` cacheado (`lifespan=3600, timeout=5`) sobre `{SUPABASE_URL}/auth/v1/.well-known/jwks.json`; para `HS256` usa `SUPABASE_JWT_SECRET`. Ante `InvalidSignatureError` o `ExpiredSignatureError`, devuelve `HTTP 401` inmediato sin invocar `client.auth.get_user()`.
+  4. **Resiliencia Móvil, Hidratación SWR en `0 ms` y 4 Estados Explícitos (`INV-16`, `INV-18`):**
+     - `apiFetch` ejecuta 1 intento automático de `supabase.auth.refreshSession()` ante `HTTP 401`, amplía el timeout de lecturas a `75 s` con retry backoff exponencial (`2-4-8-16 s` en red/timeout/`5xx`), y `Header.jsx` difiere `3 s` la carga inicial de alertas pausando el polling cuando `document.hidden === true`.
+     - `usePagedActivities` hidrata en `0 ms` desde la caché SWR por página (o desde el *seed* del Dashboard en la página 1), precarga la página siguiente en idle y expone 4 estados diferenciados (nunca falso estado vacío ante error).
+- **Alternativas Descartadas:**
+  - *Alternativa A: Paginación únicamente en cliente (seguir descargando 500 filas y cortar a 12 en React).* Descartada porque mantiene el coste lineal de red, base de datos y `localStorage`, y no corrige el límite de URL de `.in_()`.
+  - *Alternativa C: Paginación por cursor/keyset opaco.* Descartada por impedir el salto directo a página $k$ (`1 2 3 … N`) y añadir complejidad innecesaria para volúmenes personales ($10^2$–$10^4$ filas).
+  - *Alternativa D: Cron externo haciendo ping a Render cada 14 minutos 24/7.* Descartada en esta fase porque consume $\sim 744\text{ h/mes}$ de las $750\text{ h/mes}$ gratuitas de Render.
+- **Consecuencias:**
+  - Coste fijo `0 €/mes`, reducción del payload y DOM inicial en un **> 80 %** (constante $O(12)$ aunque el histórico supere miles de actividades), autenticación JWT en `0,1 ms` sin viajes de red a Supabase Auth y recuperación automática en móvil tras cold-starts o sesiones suspendidas.
