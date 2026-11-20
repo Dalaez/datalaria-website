@@ -473,6 +473,51 @@ body {
   filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
 }
 
+/* ==========================================================================
+   Ilustraciones Vectoriales SVG Inline (INV-READ-13)
+   ========================================================================== */
+.reading-svg-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  display: inline-block;
+  vertical-align: middle;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.12));
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.reading-emoji-anchor .reading-svg-icon {
+  width: clamp(3.4rem, 8vw, 5.2rem);
+  height: clamp(3.4rem, 8vw, 5.2rem);
+}
+
+.phonics-emoji .reading-svg-icon {
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+.hint-emoji-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.hint-emoji-wrap .reading-svg-icon {
+  width: 1.9rem;
+  height: 1.9rem;
+}
+
+.micro-check-btn .reading-svg-icon {
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-right: 4px;
+}
+
+.reading-emoji-char {
+  display: inline-block;
+  vertical-align: middle;
+}
+
 /* Frases de 2 y 3 Líneas (L5, L6) */
 .reading-sentence-lines {
   max-width: var(--reading-max-width);
@@ -1202,6 +1247,101 @@ body {
 .hidden { display: none !important; }
 .text-center { text-align: center; }
 .mt-4 { margin-top: 16px; }
+
+/* ==========================================================================
+   Hito R.9: Karaoke Silábico, Estrellas, Modo Mis Palabras y Lámina Imprimible
+   ========================================================================== */
+.karaoke-active {
+  background: #fef3c7 !important;
+  color: #b45309 !important;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.45);
+  transform: scale(1.08);
+  display: inline-block;
+  transition: transform 0.12s ease, background 0.12s ease, box-shadow 0.12s ease;
+}
+
+[data-theme="dark"] .karaoke-active {
+  background: rgba(245, 158, 11, 0.25) !important;
+  color: #fbbf24 !important;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.6);
+}
+
+.level-stars-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.95rem;
+  margin-top: 6px;
+  padding: 3px 10px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  color: #d97706;
+}
+
+.custom-words-panel {
+  margin-top: 24px;
+  padding: 18px 20px;
+  background: var(--bg-elevated);
+  border: 2px dashed var(--op-add);
+  border-radius: var(--radius-lg);
+  text-align: left;
+}
+
+.custom-words-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: rgba(2, 132, 199, 0.12);
+  border: 1.5px solid var(--op-add);
+  border-radius: var(--radius-pill);
+  color: var(--op-add);
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.custom-words-input {
+  width: 100%;
+  padding: 10px 14px;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  border: 2px solid var(--border-card);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  margin: 8px 0 12px;
+  box-sizing: border-box;
+}
+
+.custom-words-input:focus {
+  outline: none;
+  border-color: var(--op-add);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2);
+}
+
+.parents-teachers-card {
+  margin-top: 28px;
+  padding: 18px 22px;
+  background: var(--bg-elevated);
+  border: 2px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  text-align: left;
+}
+
+.btn-arcade-sheet {
+  background: linear-gradient(135deg, #0284c7, #2563eb);
+  color: #ffffff;
+  border-color: #1d4ed8;
+  border-bottom-color: #1e40af;
+}
+
+.btn-arcade-sheet:hover {
+  background: linear-gradient(135deg, #0369a1, #1d4ed8);
+}
 
 @media (max-width: 640px) {
   .datalaria-shell {

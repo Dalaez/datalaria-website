@@ -17,7 +17,7 @@ Amplificar la visibilidad de los artículos técnicos de Datalaria en las princi
    - **X / Twitter (ES/EN):** Redactar Tweet gancho (<200 caracteres ponderados) y un **Hilo Técnico de 4 a 6 tweets**, junto con la URL de publicación directa `X Web Intent`.
    - **Dev.to (EN):** Adaptar el Markdown con `canonical_url`, imágenes absolutas y shortcodes convertidos a callouts limpios.
    - **CoderLegion (EN):** Adaptar el artículo con enfoque práctico para desarrolladores, `canonical_url` y preguntas de debate técnico.
-2. **Transformación de Assets y Enlaces:** Resolver imágenes relativas a `raw.githubusercontent.com` y shortcodes `app-ref` a tarjetas legibles.
+2. **Transformación de Assets y Enlaces:** Resolver imágenes y assets relativos directamente a `https://www.datalaria.com/<lang>/posts/<slug>/` y shortcodes `app-ref` a tarjetas legibles.
 3. **Entrega a QA:** Entregar el `social_pack.yaml` a `E07-editorial-qa` para su auditoría antes de la ejecución por `E08`.
 
 ## 4. Entregables y Contrato de Salida
@@ -32,7 +32,7 @@ Amplificar la visibilidad de los artículos técnicos de Datalaria en las princi
 ## 6. Reglas de Fricción Real y Correcciones ([USER-FIX] / [ENV-FIX])
 - `[USER-FIX]` **Publicación en X a Coste Cero:** Generar siempre el enlace de 1 clic `https://x.com/intent/tweet?text=...&url=...` para permitir el posteo instantáneo sin pagar créditos de API.
 - `[USER-FIX]` **Formato Broetry Limpio en LinkedIn:** Utilizar siempre dobles saltos de línea entre párrafos y evitar bloques de texto densos de más de 3 líneas.
-- `[ENV-FIX]` **URLs Absolutas para Comunidades Externas:** Convertir cualquier referencia a imágenes locales (`./cover.png`) en URLs públicas de GitHub Raw antes de la publicación.
+- `[USER-FIX]` **URLs Públicas en www.datalaria.com para Comunidades Externas:** Convertir cualquier referencia a imágenes locales (`./cover.png`) a `https://www.datalaria.com/<lang>/posts/<slug>/<imagen>` (nunca `raw.githubusercontent.com`, que falla al renderizar en Dev.to y CoderLegion).
 - `[USER-FIX]` **Revisión Pre-Push de Propuestas Sociales:** Entregar al usuario en `Fase A` las sugerencias completas de LinkedIn (ES/EN) y X/Twitter (gancho, hilo y `Web Intent`) validadas en `DRY_RUN` antes de ejecutar `git push` (`series-lifecycle-playbook.md`).
 - `[USER-FIX]` **YouTube Liquid Tag en Dev.to:** En `platform="devto"`, convertir `{{< youtube ID >}}` en `{% youtube ID %}` (en CoderLegion mantener miniatura enlazada Markdown estándar).
 - `[USER-FIX]` **Imágenes HTML `<img src>` y .jpg en Comunidades:** Prohibir `<img src="relativo">` sin resolver (preferir sintaxis Markdown `![alt](...)` y formato `.png`) para evitar imágenes rotas en Dev.to/CoderLegion.

@@ -114,6 +114,21 @@
 - **Botón Principal de Cierre Lector (`.btn-read-done`):** Botón dominante verde esmeralda de alto contraste (`min-height: 56px`, ancho cómodo `>= 220px`) **`✅ ¡Leído!`** accesible también con `Espacio` o `Enter`.
 - **Cronómetro Split en Vivo (`.stopwatch-pill`):** Chip en `tabular-nums` (`⏱️ 00:03.4`) visible en modo `stopwatch` y `daily`; al detenerse cambia brevemente a verde mostrando el tiempo final y **PPM**.
 
+### 3.2 Ilustraciones Vectoriales SVG Inline (`apps/reading/illustrations.js` · `INV-READ-13`)
+- **Objetivo Visual:** Eliminar por completo el riesgo de renderizado de emojis vacíos/rotos (tofu `□`) o incompatibilidades semánticas (ej. `MESA` con silla `🪑`).
+- **Especificación Vectorial:**
+  - Lienzo estándar: `viewBox="0 0 120 120"`, ancho y alto fluidos escalables mediante la clase CSS `.reading-svg-icon` (`width: 3.5rem; height: 3.5rem; display: inline-block; vertical-align: middle;`).
+  - Paleta Arcade: colores saturados y armónicos acordes a los temas `Daylight Arcade` y `Cosmic Night`.
+  - Iconos cubiertos obligatorios: `MESA` (mesa de 4 patas de madera), `NIDO` / `NEST` (nido con ramitas y 3 huevecillos celestes), `NUDO` (soga náutica anudada), `IGLU` / `IGLOO` (iglú con bloques de hielo y túnel), `FOCA` (foca ártica simpática con bigotes), `ÑANDÚ` (ave corredora con plumaje estilizado), `RUEDA` (neumático con llanta y radios), `COMETA` / `KITE` (cometa romboide con lazos y cuerda), `YOYÓ` / `YOYO` (yoyó circular con cuerda), `POZO` (brocal de piedra con tejadillo y polea), `CUBO` / `BUCKET` (cubo con asa), `TRONCO` / `LOG` (tronco cortado con anillos de crecimiento), `PIEDRA` / `ROCK` (roca poligonal con sombras), `SAPO` (anfibio simpático con ojos saltones) y `PARACAÍDAS` (cúpula de paracaídas con líneas y saltador).
+  - Integración transparente en DOM vía `window.ReadingIllustrations.renderVisual(emojiOrToken, wordHint)`.
+
+### 3.3 Mejoras de Producto In-App y Material Imprimible (`v1.1.0` · `INV-READ-14`)
+- **Audio Dual en Partida y Karaoke Silábico:** Botones `#btn-listen-normal` (`🔊 1.0x`) y `#btn-listen-slow` (`🐢 0.5x`) en la barra de acción de partida; disparan la animación secuencial de clase `.karaoke-active` (iluminación con pulso dorado y escala sutil) sobre los tokens silábicos activos para asociar grafemas y fonemas acompasados con la voz.
+- **Insignias de 3 Estrellas de Dominio (`.level-stars-badge`):** En cada tarjeta `.selectable-item[data-level]` de la vista principal se visualizan 3 estrellas doradas (`⭐⭐⭐`) o atenuadas (`☆☆☆`) según los umbrales de puntuación del motor (`1400`, `900`, `400`).
+- **Panel "✏️ Mis Palabras" (`.custom-words-panel`):** Área de entrada rápida para padres y docentes con input para listas personalizadas, botones para aplicar, limpiar o copiar el enlace directo `?words=...`. Al activarse, muestra un badge flotante `✏️ Modo Mis Palabras` y adapta la partida generando dinámicamente retos táctiles `fill_letters`.
+- **Generador de Lámina de Repaso A4 PNG (`1200×1600`):** Función `window.downloadPracticeSheet()` que genera una ficha imprimible de alta resolución con cuadrícula caligráfica pautada, palabras de la sesión, aciertos/fallos y desglose de sílabas.
+- **Tarjeta "Zona Padres y Docentes" (`.parents-teachers-card`):** Bloque informativo visualmente diferenciado al pie de `Aprender` y `Logros` con enlaces a recursos educativos imprimibles.
+
 ---
 
 ## 4. Especificación del Diploma Arcade PNG (`1200×800`)
@@ -131,7 +146,7 @@
 | :--- | :--- | :--- | :--- | :--- |
 | **Tablero `Jugar`** | Grid de 6 Niveles + 4 Modos + Botón gigante `¡A Jugar! 🚀` | Palabra/Frase + Toggles `AA/Aa` & `🎨 Sílabas` + Cronómetro + Botón `✅ ¡Leído!` o `.alpha-pad` | Banner animado (`¡Genial! ⭐ +pts · 74 PPM`) o paso breve de **Micro-Check (3 opciones)** con reloj ya congelado | Confeti, puntuación, PPM máxima, tira Wordle (`🟩💡🟥`), Compartir, Repaso de Fallos y Diploma PNG |
 | **Pista Visual (`💡`)** | Oculta por defecto (`H`) | Despliega sílabas coloreadas, puntos de palmada (`● ● ●`), primera letra o imagen en `l4` | -- | Se oculta al avanzar a la siguiente ronda |
-| **Pestaña `Aprender`** | 4 selectores de bloque con Módulo 1 abierto por defecto | Cuadrícula interactiva de letras, **Mesa de Mezclas `C+V`**, complejas o frases con audio `1.0x`/`0.65x` | Resaltado visual de la ficha pulsada durante la reproducción TTS | -- |
+| **Pestaña `Aprender`** | 4 selectores de bloque con Módulo 1 abierto por defecto | Cuadrícula interactiva de letras, **Mesa de Mezclas `C+V`**, complejas o frases con audio `1.0x`/`0.5x` | Resaltado visual de la ficha pulsada durante la reproducción TTS | -- |
 | **Pestaña `Logros`** | 0 medallas en escala de grises con pista de desbloqueo | Medallas doradas desbloqueadas + tarjeta de **Récord PPM** + botón Diploma PNG | Toast flotante al desbloquear medalla o reiniciar stats | -- |
 
 ---

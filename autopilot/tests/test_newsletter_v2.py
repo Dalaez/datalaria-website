@@ -101,7 +101,7 @@ def test_brevo_v2_html_single_hero_image_anti_spam_and_audit() -> None:
         post_title="Arquitectura Autopilot 2.0",
         post_url="https://datalaria.com/es/posts/autopilot-v2/",
         lang="es",
-        hero_image_url="https://raw.githubusercontent.com/Dalaez/datalaria-website/main/content/es/posts/autopilot-v2/cover.png",
+        hero_image_url="https://www.datalaria.com/es/posts/autopilot-v2/cover.png",
         slug="autopilot-v2",
     )
 

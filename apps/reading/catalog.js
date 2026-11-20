@@ -1,6 +1,8 @@
 // apps/reading/catalog.js - Catálogo unificado de niveles, modos, medallas, lecciones, léxico e i18n
 // Generated under SPEC-APP-READING v1.0.0 and SDD Helix
-window.READING_CATALOG = {
+(function() {
+  var root = typeof window !== 'undefined' ? window : (typeof globalThis !== 'undefined' ? globalThis : this);
+  var data = {
   "levels": [
     {
       "id": "l1",
@@ -316,13 +318,13 @@ window.READING_CATALOG = {
           "letter": "N",
           "sound": "ene",
           "anchor": "Nido",
-          "emoji": "🪺"
+          "emoji": "svg:nido"
         },
         {
           "letter": "F",
           "sound": "efe",
           "anchor": "Foca",
-          "emoji": "🦭"
+          "emoji": "svg:foca"
         },
         {
           "letter": "B",
@@ -370,7 +372,7 @@ window.READING_CATALOG = {
           "letter": "Ñ",
           "sound": "eñe",
           "anchor": "Ñandú",
-          "emoji": "🦤"
+          "emoji": "svg:ñandú"
         }
       ],
       "directSyllables": [
@@ -385,7 +387,7 @@ window.READING_CATALOG = {
             {
               "syllable": "ME",
               "word": "Mesa",
-              "emoji": "🪑"
+              "emoji": "svg:mesa"
             },
             {
               "syllable": "MI",
@@ -414,8 +416,8 @@ window.READING_CATALOG = {
             },
             {
               "syllable": "PE",
-              "word": "Pelo",
-              "emoji": "💇"
+              "word": "Pera",
+              "emoji": "🍐"
             },
             {
               "syllable": "PI",
@@ -424,8 +426,8 @@ window.READING_CATALOG = {
             },
             {
               "syllable": "PO",
-              "word": "Pozo",
-              "emoji": "🪣"
+              "word": "Pollo",
+              "emoji": "🐥"
             },
             {
               "syllable": "PU",
@@ -450,7 +452,7 @@ window.READING_CATALOG = {
             {
               "syllable": "SI",
               "word": "Silla",
-              "emoji": "🪑"
+              "emoji": "💺"
             },
             {
               "syllable": "SO",
@@ -544,8 +546,8 @@ window.READING_CATALOG = {
             },
             {
               "syllable": "DO",
-              "word": "Dominó",
-              "emoji": "🁛"
+              "word": "Dona",
+              "emoji": "🍩"
             },
             {
               "syllable": "DU",
@@ -570,7 +572,7 @@ window.READING_CATALOG = {
             {
               "syllable": "NI",
               "word": "Nido",
-              "emoji": "🪺"
+              "emoji": "svg:nido"
             },
             {
               "syllable": "NO",
@@ -605,7 +607,7 @@ window.READING_CATALOG = {
             {
               "syllable": "FO",
               "word": "Foca",
-              "emoji": "🦭"
+              "emoji": "svg:foca"
             },
             {
               "syllable": "FU",
@@ -690,7 +692,7 @@ window.READING_CATALOG = {
             {
               "syllable": "RU",
               "word": "Rueda",
-              "emoji": "🛞"
+              "emoji": "svg:rueda"
             }
           ]
         }
@@ -742,7 +744,7 @@ window.READING_CATALOG = {
             {
               "syllable": "OS",
               "word": "Ostra",
-              "emoji": "🦪"
+              "emoji": "🐚"
             }
           ]
         },
@@ -832,7 +834,7 @@ window.READING_CATALOG = {
           "prefix": "GR-",
           "syllable": "GRA",
           "word": "Granja",
-          "emoji": "🚜"
+          "emoji": "🏡"
         },
         {
           "prefix": "DR-",
@@ -996,7 +998,7 @@ window.READING_CATALOG = {
           "letter": "I",
           "sound": "/ɪ/",
           "anchor": "Igloo",
-          "emoji": "🛖"
+          "emoji": "svg:iglu"
         },
         {
           "letter": "J",
@@ -1008,7 +1010,7 @@ window.READING_CATALOG = {
           "letter": "K",
           "sound": "/k/",
           "anchor": "Kite",
-          "emoji": "🪁"
+          "emoji": "svg:cometa"
         },
         {
           "letter": "L",
@@ -1026,7 +1028,7 @@ window.READING_CATALOG = {
           "letter": "N",
           "sound": "/n/",
           "anchor": "Nest",
-          "emoji": "🪺"
+          "emoji": "svg:nido"
         },
         {
           "letter": "O",
@@ -1086,7 +1088,7 @@ window.READING_CATALOG = {
           "letter": "Y",
           "sound": "/j/",
           "anchor": "Yo-yo",
-          "emoji": "🪀"
+          "emoji": "svg:yoyo"
         },
         {
           "letter": "Z",
@@ -1143,7 +1145,7 @@ window.READING_CATALOG = {
             },
             {
               "word": "LOG",
-              "emoji": "🪵"
+              "emoji": "svg:tronco"
             }
           ]
         },
@@ -1269,7 +1271,7 @@ window.READING_CATALOG = {
           "digraph": "CH",
           "sound": "/tʃ/",
           "word": "CHAIR",
-          "emoji": "🪑"
+          "emoji": "💺"
         },
         {
           "digraph": "TH",
@@ -1431,7 +1433,7 @@ window.READING_CATALOG = {
           "id": "es_l1_07",
           "target": "N",
           "anchorWord": "NIDO",
-          "emoji": "🪺",
+          "emoji": "svg:nido",
           "distractors": [
             "M",
             "L",
@@ -1442,7 +1444,7 @@ window.READING_CATALOG = {
           "id": "es_l1_08",
           "target": "F",
           "anchorWord": "FOCA",
-          "emoji": "🦭",
+          "emoji": "svg:foca",
           "distractors": [
             "T",
             "P",
@@ -1552,7 +1554,7 @@ window.READING_CATALOG = {
           "id": "es_l1_18",
           "target": "Ñ",
           "anchorWord": "ÑANDU",
-          "emoji": "🦤",
+          "emoji": "svg:ñandú",
           "distractors": [
             "N",
             "M",
@@ -1676,7 +1678,7 @@ window.READING_CATALOG = {
             "ME",
             "SA"
           ],
-          "emoji": "🪑",
+          "emoji": "svg:mesa",
           "distractors": [
             "PESA",
             "TASA",
@@ -1732,7 +1734,7 @@ window.READING_CATALOG = {
             "FO",
             "CA"
           ],
-          "emoji": "🦭",
+          "emoji": "svg:foca",
           "distractors": [
             "BOCA",
             "ROCA",
@@ -1788,7 +1790,7 @@ window.READING_CATALOG = {
             "NI",
             "DO"
           ],
-          "emoji": "🪺",
+          "emoji": "svg:nido",
           "distractors": [
             "NUDO",
             "DADO",
@@ -1937,16 +1939,16 @@ window.READING_CATALOG = {
         },
         {
           "id": "es_l2_23",
-          "word": "VINO",
+          "word": "VELA",
           "syllables": [
-            "VI",
-            "NO"
+            "VE",
+            "LA"
           ],
-          "emoji": "🍷",
+          "emoji": "🕯️",
           "distractors": [
-            "PINO",
-            "LINO",
-            "TINO"
+            "TELA",
+            "PELA",
+            "BOLA"
           ]
         },
         {
@@ -1989,6 +1991,20 @@ window.READING_CATALOG = {
             "NIÑA",
             "PEÑA",
             "VIÑA"
+          ]
+        },
+        {
+          "id": "es_l2_27",
+          "word": "NUDO",
+          "syllables": [
+            "NU",
+            "DO"
+          ],
+          "emoji": "svg:nudo",
+          "distractors": [
+            "NIDO",
+            "LODO",
+            "DADO"
           ]
         }
       ],
@@ -2039,7 +2055,7 @@ window.READING_CATALOG = {
             "ME",
             "SA"
           ],
-          "emoji": "🪑",
+          "emoji": "svg:mesa",
           "missingIndices": [
             1,
             2
@@ -2065,7 +2081,7 @@ window.READING_CATALOG = {
             "FO",
             "CA"
           ],
-          "emoji": "🦭",
+          "emoji": "svg:foca",
           "missingIndices": [
             1,
             2
@@ -2117,7 +2133,7 @@ window.READING_CATALOG = {
             "NI",
             "DO"
           ],
-          "emoji": "🪺",
+          "emoji": "svg:nido",
           "missingIndices": [
             1,
             3
@@ -2324,6 +2340,19 @@ window.READING_CATALOG = {
           "missingIndices": [
             1,
             4
+          ]
+        },
+        {
+          "id": "es_l3_26",
+          "word": "NUDO",
+          "syllables": [
+            "NU",
+            "DO"
+          ],
+          "emoji": "svg:nudo",
+          "missingIndices": [
+            1,
+            2
           ]
         }
       ],
@@ -2599,22 +2628,22 @@ window.READING_CATALOG = {
             "NE",
             "TA"
           ],
-          "emoji": "🪐",
+          "emoji": "🌍",
           "microCheck": {
             "question": "¿Qué gran cuerpo viaja en el espacio?",
             "options": [
               {
-                "emoji": "🪐",
+                "emoji": "🌍",
                 "label": "Un planeta",
                 "isCorrect": true
               },
               {
-                "emoji": "🪁",
+                "emoji": "svg:cometa",
                 "label": "Una cometa",
                 "isCorrect": false
               },
               {
-                "emoji": "🪂",
+                "emoji": "svg:paracaídas",
                 "label": "Un paracaídas",
                 "isCorrect": false
               }
@@ -2695,7 +2724,7 @@ window.READING_CATALOG = {
                 "isCorrect": true
               },
               {
-                "emoji": "🪨",
+                "emoji": "svg:piedra",
                 "label": "Una piedra",
                 "isCorrect": false
               },
@@ -2815,7 +2844,7 @@ window.READING_CATALOG = {
                 "isCorrect": true
               },
               {
-                "emoji": "🛖",
+                "emoji": "🏡",
                 "label": "Una choza",
                 "isCorrect": false
               },
@@ -3087,7 +3116,7 @@ window.READING_CATALOG = {
                 "isCorrect": false
               },
               {
-                "emoji": "🪣",
+                "emoji": "svg:cubo",
                 "label": "Un cubo",
                 "isCorrect": false
               }
@@ -3190,7 +3219,7 @@ window.READING_CATALOG = {
           "id": "en_l1_09",
           "target": "I",
           "anchorWord": "IGLOO",
-          "emoji": "🛖",
+          "emoji": "svg:iglu",
           "distractors": [
             "E",
             "A",
@@ -3212,7 +3241,7 @@ window.READING_CATALOG = {
           "id": "en_l1_11",
           "target": "K",
           "anchorWord": "KITE",
-          "emoji": "🪁",
+          "emoji": "svg:cometa",
           "distractors": [
             "C",
             "T",
@@ -3245,7 +3274,7 @@ window.READING_CATALOG = {
           "id": "en_l1_14",
           "target": "N",
           "anchorWord": "NEST",
-          "emoji": "🪺",
+          "emoji": "svg:nido",
           "distractors": [
             "M",
             "U",
@@ -3344,7 +3373,7 @@ window.READING_CATALOG = {
           "id": "en_l1_23",
           "target": "Y",
           "anchorWord": "YOYO",
-          "emoji": "🪀",
+          "emoji": "svg:yoyo",
           "distractors": [
             "V",
             "J",
@@ -4069,22 +4098,22 @@ window.READING_CATALOG = {
             "PLAN",
             "ET"
           ],
-          "emoji": "🪐",
+          "emoji": "🌍",
           "microCheck": {
             "question": "What orbits the sun in outer space?",
             "options": [
               {
-                "emoji": "🪐",
+                "emoji": "🌍",
                 "label": "A planet",
                 "isCorrect": true
               },
               {
-                "emoji": "🪁",
+                "emoji": "svg:cometa",
                 "label": "A kite",
                 "isCorrect": false
               },
               {
-                "emoji": "🪂",
+                "emoji": "svg:paracaídas",
                 "label": "A parachute",
                 "isCorrect": false
               }
@@ -4137,7 +4166,7 @@ window.READING_CATALOG = {
                 "isCorrect": true
               },
               {
-                "emoji": "🛖",
+                "emoji": "🏡",
                 "label": "In a hut",
                 "isCorrect": false
               },
@@ -4403,7 +4432,7 @@ window.READING_CATALOG = {
                 "isCorrect": false
               },
               {
-                "emoji": "🪨",
+                "emoji": "svg:piedra",
                 "label": "A heavy rock",
                 "isCorrect": false
               }
@@ -4572,12 +4601,12 @@ window.READING_CATALOG = {
                 "isCorrect": true
               },
               {
-                "emoji": "🪵",
+                "emoji": "svg:tronco",
                 "label": "A log",
                 "isCorrect": false
               },
               {
-                "emoji": "🪨",
+                "emoji": "svg:piedra",
                 "label": "A stone",
                 "isCorrect": false
               }
@@ -4630,7 +4659,7 @@ window.READING_CATALOG = {
                 "isCorrect": true
               },
               {
-                "emoji": "🪣",
+                "emoji": "svg:cubo",
                 "label": "A steel bucket",
                 "isCorrect": false
               },
@@ -4707,12 +4736,12 @@ window.READING_CATALOG = {
             "DOC",
             "TOR"
           ],
-          "emoji": "🩺",
+          "emoji": "👨‍⚕️",
           "microCheck": {
             "question": "Who helps patients feel healthy and well?",
             "options": [
               {
-                "emoji": "🩺",
+                "emoji": "👨‍⚕️",
                 "label": "A doctor",
                 "isCorrect": true
               },
@@ -5205,7 +5234,7 @@ window.READING_CATALOG = {
                 "isCorrect": false
               },
               {
-                "icon": "🪵",
+                "icon": "svg:tronco",
                 "label": "Con ramas secas",
                 "isCorrect": false
               }
@@ -5461,7 +5490,7 @@ window.READING_CATALOG = {
                 "isCorrect": true
               },
               {
-                "icon": "🪨",
+                "icon": "svg:piedra",
                 "label": "Piedras pesadas",
                 "isCorrect": false
               },
@@ -5524,7 +5553,7 @@ window.READING_CATALOG = {
                 "isCorrect": false
               },
               {
-                "icon": "🪨",
+                "icon": "svg:piedra",
                 "label": "A piedras grises",
                 "isCorrect": false
               }
@@ -5659,7 +5688,7 @@ window.READING_CATALOG = {
             "question": "¿Con qué construye su presa el ingenioso castor?",
             "options": [
               {
-                "icon": "🪵",
+                "icon": "svg:tronco",
                 "label": "Con ramas y barro",
                 "isCorrect": true
               },
@@ -6174,7 +6203,7 @@ window.READING_CATALOG = {
                 "isCorrect": true
               },
               {
-                "icon": "🛖",
+                "icon": "🏡",
                 "label": "A wooden cabin",
                 "isCorrect": false
               },
@@ -6435,7 +6464,7 @@ window.READING_CATALOG = {
                 "isCorrect": true
               },
               {
-                "icon": "🪨",
+                "icon": "svg:piedra",
                 "label": "Heavy pebbles",
                 "isCorrect": false
               },
@@ -6498,7 +6527,7 @@ window.READING_CATALOG = {
                 "isCorrect": false
               },
               {
-                "icon": "🪨",
+                "icon": "svg:piedra",
                 "label": "Dark jagged granite stones",
                 "isCorrect": false
               }
@@ -6633,7 +6662,7 @@ window.READING_CATALOG = {
             "question": "What materials does the beaver use to build its dam?",
             "options": [
               {
-                "icon": "🪵",
+                "icon": "svg:tronco",
                 "label": "Branches and thick mud",
                 "isCorrect": true
               },
@@ -6752,7 +6781,8 @@ window.READING_CATALOG = {
       "font_case_toggle": "Letra (AA/Aa)",
       "syllable_toggle": "Sílabas (🎨)",
       "listen_btn": "Escuchar 🔊",
-      "listen_slow_btn": "Escuchar Despacio 🐢",
+      "listen_normal_btn": "Escuchar 🔊 (1.0x)",
+      "listen_slow_btn": "Escuchar Despacio 🐢 (0.5x)",
       "read_done_btn": "¡Leído! ✅",
       "clear_letter_btn": "Borrar ⌫",
       "install_app": "Instalar App",
@@ -6760,11 +6790,11 @@ window.READING_CATALOG = {
       "install_success": "¡Lector Arcade instalado con éxito! 🎉",
       "install_ios_tip": "En Safari iOS: pulsa Compartir (⬆️) y \"Añadir a pantalla de inicio\"",
       "install_generic_tip": "Pulsa el menú (⋮) del navegador y selecciona \"Instalar aplicación\"",
-      "update_available": "Nueva versión v1.0.0 disponible",
+      "update_available": "Nueva versión v1.1.0 disponible",
       "update_now_btn": "Actualizar ahora",
       "checking_update": "Buscando actualizaciones...",
-      "up_to_date": "✓ Lector Arcade al día (v1.0.0)",
-      "check_update_title": "Buscar actualizaciones de la aplicación (v1.0.0)",
+      "up_to_date": "✓ Lector Arcade al día (v1.1.0)",
+      "check_update_title": "Buscar actualizaciones de la aplicación (v1.1.0)",
       "stats_reset_toast": "Estadísticas y medallas reiniciadas con éxito",
       "correct_answer_is": "Lectura correcta:",
       "next_question_btn": "Siguiente ➔",
@@ -6782,11 +6812,26 @@ window.READING_CATALOG = {
       "diploma_downloaded_toast": "¡Diploma de Lector descargado con éxito! 🎓",
       "diploma_card_title": "Diploma Arcade de Lectura",
       "diploma_card_desc": "Genera un certificado oficial en PNG de alta resolución con tus medallas y velocidad lectora (PPM).",
+      "diploma_name_label": "Nombre en el Diploma (opcional):",
+      "diploma_name_placeholder": "Ej: Sofía Gómez",
+      "download_sheet_btn": "🖨️ Lámina de Repaso A4 (PNG)",
+      "sheet_downloaded_toast": "¡Lámina de repaso imprimible descargada con éxito! 🖨️",
+      "custom_words_title": "✏️ Mis Palabras (Familias y Colegios)",
+      "custom_words_desc": "Escribe o pega palabras separadas por comas para practicar tu vocabulario personalizado:",
+      "custom_words_placeholder": "Ej: MESA, NIDO, NUDO, CASA, ESCUELA...",
+      "custom_words_apply": "Activar Lista",
+      "custom_words_clear": "Quitar Lista",
+      "custom_words_share": "Copiar Enlace de Deberes 📋",
+      "custom_words_copied": "¡Enlace de deberes copiado al portapapeles! 📋",
+      "custom_words_active_badge": "✏️ Modo Mis Palabras Activo",
+      "parents_zone_title": "👨‍👩‍👧 Zona Padres y Docentes",
+      "parents_zone_desc": "Descarga láminas imprimibles, diplomas de honor y recursos complementarios de lectoescritura.",
       "datalaria_back": "← Datalaria",
       "post_link": "📖 Historia IA",
       "spec_link": "📋 Ficha App",
       "kits_link": "📦 Recursos",
       "wpm_label": "PPM",
+      "effective_wpm_label": "PPM Efectivas",
       "wpm_full": "Palabras Por Minuto",
       "words_read": "Palabras Leídas",
       "reading_time": "Tiempo de Lectura",
@@ -6840,7 +6885,8 @@ window.READING_CATALOG = {
       "font_case_toggle": "Font (AA/Aa)",
       "syllable_toggle": "Syllables (🎨)",
       "listen_btn": "Listen 🔊",
-      "listen_slow_btn": "Listen Slow 🐢",
+      "listen_normal_btn": "Listen 🔊 (1.0x)",
+      "listen_slow_btn": "Listen Slow 🐢 (0.5x)",
       "read_done_btn": "Done! ✅",
       "clear_letter_btn": "Erase ⌫",
       "install_app": "Install App",
@@ -6848,11 +6894,11 @@ window.READING_CATALOG = {
       "install_success": "Reader Arcade successfully installed! 🎉",
       "install_ios_tip": "In Safari iOS: tap Share (⬆️) and select \"Add to Home Screen\"",
       "install_generic_tip": "Tap browser menu (⋮) and select \"Install app\"",
-      "update_available": "New version v1.0.0 available",
+      "update_available": "New version v1.1.0 available",
       "update_now_btn": "Update now",
       "checking_update": "Checking for updates...",
-      "up_to_date": "✓ Reader Arcade is up to date (v1.0.0)",
-      "check_update_title": "Check for app updates (v1.0.0)",
+      "up_to_date": "✓ Reader Arcade is up to date (v1.1.0)",
+      "check_update_title": "Check for app updates (v1.1.0)",
       "stats_reset_toast": "Stats and badges reset successfully",
       "correct_answer_is": "Correct reading:",
       "next_question_btn": "Next ➔",
@@ -6870,11 +6916,26 @@ window.READING_CATALOG = {
       "diploma_downloaded_toast": "Reader Diploma downloaded successfully! 🎓",
       "diploma_card_title": "Arcade Reading Diploma",
       "diploma_card_desc": "Generate an official high-resolution PNG certificate with your badges and reading speed (WPM).",
+      "diploma_name_label": "Name on Diploma (optional):",
+      "diploma_name_placeholder": "E.g. Sophia Miller",
+      "download_sheet_btn": "🖨️ Printable A4 Sheet (PNG)",
+      "sheet_downloaded_toast": "Printable practice sheet downloaded successfully! 🖨️",
+      "custom_words_title": "✏️ Custom Words (Families & Schools)",
+      "custom_words_desc": "Type or paste comma-separated words to practice your personalized vocabulary:",
+      "custom_words_placeholder": "E.g. NEST, KITE, DESK, FROG, SCHOOL...",
+      "custom_words_apply": "Apply Words",
+      "custom_words_clear": "Clear Words",
+      "custom_words_share": "Share Homework Link 📋",
+      "custom_words_copied": "Homework link copied to clipboard! 📋",
+      "custom_words_active_badge": "✏️ Custom Words Active",
+      "parents_zone_title": "👨‍👩‍👧 Parents & Educators Zone",
+      "parents_zone_desc": "Download printable worksheets, diplomas of honor and literacy companion resources.",
       "datalaria_back": "← Datalaria",
       "post_link": "📖 AI Story",
       "spec_link": "📋 App Spec",
       "kits_link": "📦 Resources",
       "wpm_label": "WPM",
+      "effective_wpm_label": "Effective WPM",
       "wpm_full": "Words Per Minute",
       "words_read": "Words Read",
       "reading_time": "Reading Time",
@@ -6890,3 +6951,8 @@ window.READING_CATALOG = {
     }
   }
 };
+  root.READING_CATALOG = data;
+  if (typeof module === 'object' && module.exports) {
+    module.exports = data;
+  }
+})();

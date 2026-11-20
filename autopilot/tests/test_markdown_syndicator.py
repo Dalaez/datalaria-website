@@ -68,7 +68,7 @@ Incluye casos reales listos para comité.
     assert "```mermaid" in rendered
     assert "A[Start] --> B[End]" in rendered
     assert (
-        "![Rendered Architecture Flow](https://raw.githubusercontent.com/Dalaez/datalaria-website/main/content/es/posts/demo-shortcodes/diagram-flow.png)"
+        "![Rendered Architecture Flow](https://www.datalaria.com/es/posts/demo-shortcodes/diagram-flow.png)"
         in rendered
     )
     assert "X[Input] --> Y[Output]" not in rendered
@@ -121,10 +121,10 @@ link = "[Relative](other-post)"
     )
 
     assert (
-        '![Diagrama local](https://raw.githubusercontent.com/Dalaez/datalaria-website/main/content/en/posts/fence-test/preview-pack.png "Arquitectura Dual")'
+        '![Diagrama local](https://www.datalaria.com/en/posts/fence-test/preview-pack.png "Arquitectura Dual")'
         in rendered
     )
-    assert '![Logo global](https://datalaria.com/images/Datalaria_blog.png "Brand")' in rendered
+    assert '![Logo global](https://www.datalaria.com/images/Datalaria_blog.png "Brand")' in rendered
     assert 'sample = "{{< helix-waitlist >}}"' in rendered
     assert 'img = "![Raw](local.png)"' in rendered
     assert 'link = "[Relative](other-post)"' in rendered
@@ -251,8 +251,7 @@ def test_normalize_tags_and_social_pack_syndication_overrides(tmp_path: Path) ->
     assert artifact.title == "Dev.to Custom Title"
     assert artifact.description == "Custom Dev.to description"
     assert artifact.tags == ["python", "aiagents", "sdd", "cleancode"]
-    assert artifact.cover_image_url is not None
-    assert artifact.cover_image_url.endswith("override-post/hero-devto.png")
+    assert artifact.cover_image_url == "https://www.datalaria.com/en/posts/override-post/hero-devto.png"
     assert "How do you enforce specs in your repo?" in artifact.markdown
     assert artifact.output_path is not None and Path(artifact.output_path).is_file()
 
@@ -268,11 +267,29 @@ def test_audit_markdown_syndication_pass_and_fail_cases() -> None:
         markdown=(
             "> *Originally published at [Datalaria](https://datalaria.com/en/posts/clean-demo/?utm_source=devto&utm_medium=syndication&utm_campaign=clean-demo).*\n\n"
             "Detailed article content explaining deterministic architectures and verification pipelines in production systems.\n\n"
-            "![Banner](https://raw.githubusercontent.com/Dalaez/datalaria-website/main/content/en/posts/clean-demo/banner.png)\n"
+            "![Banner](https://www.datalaria.com/en/posts/clean-demo/banner.png)\n"
         ),
     )
     pass_result = audit_markdown_syndication(clean_artifact)
     assert pass_result.status == "PASS"
+
+    github_raw_artifact = SyndicationArtifact(
+        platform="coderlegion",
+        lang="en",
+        slug="raw-blocked",
+        title="Raw Blocked",
+        canonical_url="https://datalaria.com/en/posts/raw-blocked/",
+        cover_image_url="https://raw.githubusercontent.com/Dalaez/datalaria-website/main/content/en/posts/raw-blocked/cover.png",
+        tags=["python"],
+        markdown=(
+            "> *Originally published at [Datalaria](https://datalaria.com/en/posts/raw-blocked/?utm_source=coderlegion&utm_medium=syndication&utm_campaign=raw-blocked).*\n\n"
+            "Detailed article content explaining deterministic architectures and verification pipelines in production systems.\n\n"
+            "![Banner](https://raw.githubusercontent.com/Dalaez/datalaria-website/main/content/en/posts/raw-blocked/banner.png)\n"
+        ),
+    )
+    raw_fail = audit_markdown_syndication(github_raw_artifact)
+    assert raw_fail.status == "FAIL"
+    assert "SYNDICATION_GITHUB_RAW_FORBIDDEN" in {i.code for i in raw_fail.issues}
 
     broken_artifact = SyndicationArtifact(
         platform="devto",

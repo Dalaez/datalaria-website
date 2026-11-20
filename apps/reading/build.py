@@ -1,6 +1,6 @@
 """
 apps/reading/build.py
-Empaquetador estático para la aplicación Lector Arcade v1.0.0 (Reading).
+Empaquetador estático para la aplicación Lector Arcade v1.1.0 (Reading).
 Genera static/apps/reading/index.html (SPA autocontenida sin CDNs),
 sincroniza manifest.json, sw.js, 6 iconos SVG/PNG y los 2 shims retrocompatibles es/ y en/.
 """
@@ -12,12 +12,14 @@ STATIC_DIR = os.path.abspath(os.path.join(BASE_DIR, "../../static/apps/reading")
 
 
 def build():
-    print("Iniciando build de Lector Arcade v1.0.0...")
+    print("Iniciando build de Lector Arcade v1.1.0...")
 
     with open(os.path.join(BASE_DIR, "styles.css"), "r", encoding="utf-8") as f:
         styles_css = f.read()
     with open(os.path.join(BASE_DIR, "catalog.js"), "r", encoding="utf-8") as f:
         catalog_js = f.read()
+    with open(os.path.join(BASE_DIR, "illustrations.js"), "r", encoding="utf-8") as f:
+        illustrations_js = f.read()
     with open(os.path.join(BASE_DIR, "engine.js"), "r", encoding="utf-8") as f:
         engine_js = f.read()
     with open(os.path.join(BASE_DIR, "audio.js"), "r", encoding="utf-8") as f:
@@ -94,6 +96,7 @@ def build():
 
   <script>
 {catalog_js}
+{illustrations_js}
 {engine_js}
 {audio_js}
 {app_js}

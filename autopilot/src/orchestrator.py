@@ -19,7 +19,7 @@ if str(REPO_ROOT) not in sys.path:
 
 from autopilot.src import brain
 from autopilot.src.markdown_syndicator import (
-    GITHUB_RAW_BASE,
+    PUBLIC_MEDIA_BASE_URL,
     SITE_BASE_URL,
     _APP_REF_RE,
     build_syndication_artifact,
@@ -27,6 +27,7 @@ from autopilot.src.markdown_syndicator import (
     is_app_status_embargoed,
     resolve_image_urls,
     resolve_markdown_links,
+    resolve_single_image_ref,
 )
 from autopilot.src.models import (
     NewsletterContent,
@@ -43,7 +44,7 @@ from autopilot.src.quality_validator import audit_social_bundle
 from autopilot.src.social_manager import SocialMediaManager
 
 CACHE_FILE = "generated_content.json"
-DEFAULT_HERO_FALLBACK_URL = f"{SITE_BASE_URL}/images/Datalaria_blog.png"
+DEFAULT_HERO_FALLBACK_URL = f"{PUBLIC_MEDIA_BASE_URL}/images/Datalaria_blog.png"
 
 
 def _configure_utf8_console() -> None:
@@ -161,7 +162,7 @@ def resolve_hero_image_url(
     lang: str = "es",
     slug: str = "",
 ) -> str:
-    """Resuelve la imagen Hero clicable (GitHub Raw en bundles o URL pública Datalaria)."""
+    """Resuelve la imagen Hero clicable hacia el directorio público en www.datalaria.com."""
     cover_meta = post_meta.get("cover")
     image_ref: Optional[str] = None
     if isinstance(cover_meta, dict):
@@ -186,15 +187,17 @@ def resolve_hero_image_url(
     if ref.startswith(("http://", "https://")):
         return ref
     if ref.startswith("/"):
-        return f"{SITE_BASE_URL}{ref}"
+        return f"{PUBLIC_MEDIA_BASE_URL}{ref}"
 
-    clean_ref = ref.lstrip("./")
     rel_dir = _relative_repo_posix(post_dir)
-    if rel_dir.startswith("content/"):
-        return f"{GITHUB_RAW_BASE}/{rel_dir}/{clean_ref}"
-
-    if slug and lang in ("es", "en"):
-        return f"{GITHUB_RAW_BASE}/content/{lang}/posts/{slug}/{clean_ref}"
+    if rel_dir.startswith("content/") or (slug and lang in ("es", "en")):
+        return resolve_single_image_ref(
+            ref,
+            str(Path(file_path).resolve()),
+            lang=lang,
+            slug=slug,
+            base_url=PUBLIC_MEDIA_BASE_URL,
+        )
     return DEFAULT_HERO_FALLBACK_URL
 
 

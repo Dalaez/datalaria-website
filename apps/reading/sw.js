@@ -4,7 +4,7 @@
  * Datalaria Helix — Strict Offline Resilience (Invariante INV-READ-8)
  */
 
-const CACHE_NAME = 'datalaria-reading-v1.0.0';
+const CACHE_NAME = 'datalaria-reading-v1.1.0';
 
 const PRECACHE_ASSETS = [
   '/apps/reading/',

@@ -46,3 +46,4 @@ Actuar como el **garante independiente de excelencia con derecho a veto vinculan
 - `[ENV-FIX]` **Verificación Determinista de Sintaxis Mermaid:** Comprobar que ningún nodo incluya caracteres conflictivos antes de compilar con Hugo.
 - `[USER-FIX]` **Auditoría de `<img src>` Relativos y Embeds Dev.to:** Rechazar cualquier `dist_*` que deje `<img src="...">` relativos sin URL `https://` o YouTube sin `{% youtube <id> %}` en Dev.to.
 - `[USER-FIX]` **Veto sobre Releases Huérfanas y Desincronizadas:** Verificar en cada ciclo que los `version_upgrade` y `kit_edition` cuenten con entrada formal en el índice y fecha válida (`INV-PULSE-7/8`), rechazando cualquier despliegue que desincronice el catálogo editorial.
+- `[USER-FIX]` **Bloqueo de `raw.githubusercontent.com` en Sindicación:** Exigir que todas las portadas e imágenes de `dist_*` apunten a `https://www.datalaria.com/<lang>/posts/<slug>/...` (o `/images/...`), vetando `raw.githubusercontent.com`.

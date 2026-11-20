@@ -117,14 +117,14 @@ def test_resolve_hero_image_url_variants(tmp_path: Path) -> None:
         lang="es",
         slug="sample_post",
     )
-    assert url_abs == "https://datalaria.com/images/posts/ai-bpmn-sop-process.jpg"
+    assert url_abs == "https://www.datalaria.com/images/posts/ai-bpmn-sop-process.jpg"
 
     # 2. Portada cover.png real dentro de content/es/posts/...
     real_post = REPO_ROOT / "content" / "es" / "posts" / "matriz-dar-cuantitativa" / "index.md"
     if real_post.is_file():
         url_bundle = resolve_hero_image_url(str(real_post), {}, lang="es", slug="matriz-dar-cuantitativa")
         assert url_bundle.startswith(
-            "https://raw.githubusercontent.com/Dalaez/datalaria-website/main/content/es/posts/matriz-dar-cuantitativa/cover."
+            "https://www.datalaria.com/es/posts/matriz-dar-cuantitativa/cover."
         )
 
     # 3. Fallback limpio cuando no existe cover ni image
@@ -132,7 +132,7 @@ def test_resolve_hero_image_url_variants(tmp_path: Path) -> None:
     empty_post.write_text("---\ntitle: Vacío\n---\nTexto", encoding="utf-8")
     assert (
         resolve_hero_image_url(str(empty_post), {}, lang="es", slug="vacio")
-        == "https://datalaria.com/images/Datalaria_blog.png"
+        == "https://www.datalaria.com/images/Datalaria_blog.png"
     )
 
 

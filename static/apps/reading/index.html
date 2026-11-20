@@ -501,6 +501,51 @@ body {
   filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
 }
 
+/* ==========================================================================
+   Ilustraciones Vectoriales SVG Inline (INV-READ-13)
+   ========================================================================== */
+.reading-svg-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  display: inline-block;
+  vertical-align: middle;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.12));
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.reading-emoji-anchor .reading-svg-icon {
+  width: clamp(3.4rem, 8vw, 5.2rem);
+  height: clamp(3.4rem, 8vw, 5.2rem);
+}
+
+.phonics-emoji .reading-svg-icon {
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+.hint-emoji-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.hint-emoji-wrap .reading-svg-icon {
+  width: 1.9rem;
+  height: 1.9rem;
+}
+
+.micro-check-btn .reading-svg-icon {
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-right: 4px;
+}
+
+.reading-emoji-char {
+  display: inline-block;
+  vertical-align: middle;
+}
+
 /* Frases de 2 y 3 Líneas (L5, L6) */
 .reading-sentence-lines {
   max-width: var(--reading-max-width);
@@ -1231,6 +1276,101 @@ body {
 .text-center { text-align: center; }
 .mt-4 { margin-top: 16px; }
 
+/* ==========================================================================
+   Hito R.9: Karaoke Silábico, Estrellas, Modo Mis Palabras y Lámina Imprimible
+   ========================================================================== */
+.karaoke-active {
+  background: #fef3c7 !important;
+  color: #b45309 !important;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.45);
+  transform: scale(1.08);
+  display: inline-block;
+  transition: transform 0.12s ease, background 0.12s ease, box-shadow 0.12s ease;
+}
+
+[data-theme="dark"] .karaoke-active {
+  background: rgba(245, 158, 11, 0.25) !important;
+  color: #fbbf24 !important;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.6);
+}
+
+.level-stars-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.95rem;
+  margin-top: 6px;
+  padding: 3px 10px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  color: #d97706;
+}
+
+.custom-words-panel {
+  margin-top: 24px;
+  padding: 18px 20px;
+  background: var(--bg-elevated);
+  border: 2px dashed var(--op-add);
+  border-radius: var(--radius-lg);
+  text-align: left;
+}
+
+.custom-words-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: rgba(2, 132, 199, 0.12);
+  border: 1.5px solid var(--op-add);
+  border-radius: var(--radius-pill);
+  color: var(--op-add);
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.custom-words-input {
+  width: 100%;
+  padding: 10px 14px;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  border: 2px solid var(--border-card);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  margin: 8px 0 12px;
+  box-sizing: border-box;
+}
+
+.custom-words-input:focus {
+  outline: none;
+  border-color: var(--op-add);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2);
+}
+
+.parents-teachers-card {
+  margin-top: 28px;
+  padding: 18px 22px;
+  background: var(--bg-elevated);
+  border: 2px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  text-align: left;
+}
+
+.btn-arcade-sheet {
+  background: linear-gradient(135deg, #0284c7, #2563eb);
+  color: #ffffff;
+  border-color: #1d4ed8;
+  border-bottom-color: #1e40af;
+}
+
+.btn-arcade-sheet:hover {
+  background: linear-gradient(135deg, #0369a1, #1d4ed8);
+}
+
 @media (max-width: 640px) {
   .datalaria-shell {
     padding: 8px 10px;
@@ -1344,7 +1484,9 @@ body {
   <script>
 // apps/reading/catalog.js - Catálogo unificado de niveles, modos, medallas, lecciones, léxico e i18n
 // Generated under SPEC-APP-READING v1.0.0 and SDD Helix
-window.READING_CATALOG = {
+(function() {
+  var root = typeof window !== 'undefined' ? window : (typeof globalThis !== 'undefined' ? globalThis : this);
+  var data = {
   "levels": [
     {
       "id": "l1",
@@ -1660,13 +1802,13 @@ window.READING_CATALOG = {
           "letter": "N",
           "sound": "ene",
           "anchor": "Nido",
-          "emoji": "🪺"
+          "emoji": "svg:nido"
         },
         {
           "letter": "F",
           "sound": "efe",
           "anchor": "Foca",
-          "emoji": "🦭"
+          "emoji": "svg:foca"
         },
         {
           "letter": "B",
@@ -1714,7 +1856,7 @@ window.READING_CATALOG = {
           "letter": "Ñ",
           "sound": "eñe",
           "anchor": "Ñandú",
-          "emoji": "🦤"
+          "emoji": "svg:ñandú"
         }
       ],
       "directSyllables": [
@@ -1729,7 +1871,7 @@ window.READING_CATALOG = {
             {
               "syllable": "ME",
               "word": "Mesa",
-              "emoji": "🪑"
+              "emoji": "svg:mesa"
             },
             {
               "syllable": "MI",
@@ -1758,8 +1900,8 @@ window.READING_CATALOG = {
             },
             {
               "syllable": "PE",
-              "word": "Pelo",
-              "emoji": "💇"
+              "word": "Pera",
+              "emoji": "🍐"
             },
             {
               "syllable": "PI",
@@ -1768,8 +1910,8 @@ window.READING_CATALOG = {
             },
             {
               "syllable": "PO",
-              "word": "Pozo",
-              "emoji": "🪣"
+              "word": "Pollo",
+              "emoji": "🐥"
             },
             {
               "syllable": "PU",
@@ -1794,7 +1936,7 @@ window.READING_CATALOG = {
             {
               "syllable": "SI",
               "word": "Silla",
-              "emoji": "🪑"
+              "emoji": "💺"
             },
             {
               "syllable": "SO",
@@ -1888,8 +2030,8 @@ window.READING_CATALOG = {
             },
             {
               "syllable": "DO",
-              "word": "Dominó",
-              "emoji": "🁛"
+              "word": "Dona",
+              "emoji": "🍩"
             },
             {
               "syllable": "DU",
@@ -1914,7 +2056,7 @@ window.READING_CATALOG = {
             {
               "syllable": "NI",
               "word": "Nido",
-              "emoji": "🪺"
+              "emoji": "svg:nido"
             },
             {
               "syllable": "NO",
@@ -1949,7 +2091,7 @@ window.READING_CATALOG = {
             {
               "syllable": "FO",
               "word": "Foca",
-              "emoji": "🦭"
+              "emoji": "svg:foca"
             },
             {
               "syllable": "FU",
@@ -2034,7 +2176,7 @@ window.READING_CATALOG = {
             {
               "syllable": "RU",
               "word": "Rueda",
-              "emoji": "🛞"
+              "emoji": "svg:rueda"
             }
           ]
         }
@@ -2086,7 +2228,7 @@ window.READING_CATALOG = {
             {
               "syllable": "OS",
               "word": "Ostra",
-              "emoji": "🦪"
+              "emoji": "🐚"
             }
           ]
         },
@@ -2176,7 +2318,7 @@ window.READING_CATALOG = {
           "prefix": "GR-",
           "syllable": "GRA",
           "word": "Granja",
-          "emoji": "🚜"
+          "emoji": "🏡"
         },
         {
           "prefix": "DR-",
@@ -2340,7 +2482,7 @@ window.READING_CATALOG = {
           "letter": "I",
           "sound": "/ɪ/",
           "anchor": "Igloo",
-          "emoji": "🛖"
+          "emoji": "svg:iglu"
         },
         {
           "letter": "J",
@@ -2352,7 +2494,7 @@ window.READING_CATALOG = {
           "letter": "K",
           "sound": "/k/",
           "anchor": "Kite",
-          "emoji": "🪁"
+          "emoji": "svg:cometa"
         },
         {
           "letter": "L",
@@ -2370,7 +2512,7 @@ window.READING_CATALOG = {
           "letter": "N",
           "sound": "/n/",
           "anchor": "Nest",
-          "emoji": "🪺"
+          "emoji": "svg:nido"
         },
         {
           "letter": "O",
@@ -2430,7 +2572,7 @@ window.READING_CATALOG = {
           "letter": "Y",
           "sound": "/j/",
           "anchor": "Yo-yo",
-          "emoji": "🪀"
+          "emoji": "svg:yoyo"
         },
         {
           "letter": "Z",
@@ -2487,7 +2629,7 @@ window.READING_CATALOG = {
             },
             {
               "word": "LOG",
-              "emoji": "🪵"
+              "emoji": "svg:tronco"
             }
           ]
         },
@@ -2613,7 +2755,7 @@ window.READING_CATALOG = {
           "digraph": "CH",
           "sound": "/tʃ/",
           "word": "CHAIR",
-          "emoji": "🪑"
+          "emoji": "💺"
         },
         {
           "digraph": "TH",
@@ -2775,7 +2917,7 @@ window.READING_CATALOG = {
           "id": "es_l1_07",
           "target": "N",
           "anchorWord": "NIDO",
-          "emoji": "🪺",
+          "emoji": "svg:nido",
           "distractors": [
             "M",
             "L",
@@ -2786,7 +2928,7 @@ window.READING_CATALOG = {
           "id": "es_l1_08",
           "target": "F",
           "anchorWord": "FOCA",
-          "emoji": "🦭",
+          "emoji": "svg:foca",
           "distractors": [
             "T",
             "P",
@@ -2896,7 +3038,7 @@ window.READING_CATALOG = {
           "id": "es_l1_18",
           "target": "Ñ",
           "anchorWord": "ÑANDU",
-          "emoji": "🦤",
+          "emoji": "svg:ñandú",
           "distractors": [
             "N",
             "M",
@@ -3020,7 +3162,7 @@ window.READING_CATALOG = {
             "ME",
             "SA"
           ],
-          "emoji": "🪑",
+          "emoji": "svg:mesa",
           "distractors": [
             "PESA",
             "TASA",
@@ -3076,7 +3218,7 @@ window.READING_CATALOG = {
             "FO",
             "CA"
           ],
-          "emoji": "🦭",
+          "emoji": "svg:foca",
           "distractors": [
             "BOCA",
             "ROCA",
@@ -3132,7 +3274,7 @@ window.READING_CATALOG = {
             "NI",
             "DO"
           ],
-          "emoji": "🪺",
+          "emoji": "svg:nido",
           "distractors": [
             "NUDO",
             "DADO",
@@ -3281,16 +3423,16 @@ window.READING_CATALOG = {
         },
         {
           "id": "es_l2_23",
-          "word": "VINO",
+          "word": "VELA",
           "syllables": [
-            "VI",
-            "NO"
+            "VE",
+            "LA"
           ],
-          "emoji": "🍷",
+          "emoji": "🕯️",
           "distractors": [
-            "PINO",
-            "LINO",
-            "TINO"
+            "TELA",
+            "PELA",
+            "BOLA"
           ]
         },
         {
@@ -3333,6 +3475,20 @@ window.READING_CATALOG = {
             "NIÑA",
             "PEÑA",
             "VIÑA"
+          ]
+        },
+        {
+          "id": "es_l2_27",
+          "word": "NUDO",
+          "syllables": [
+            "NU",
+            "DO"
+          ],
+          "emoji": "svg:nudo",
+          "distractors": [
+            "NIDO",
+            "LODO",
+            "DADO"
           ]
         }
       ],
@@ -3383,7 +3539,7 @@ window.READING_CATALOG = {
             "ME",
             "SA"
           ],
-          "emoji": "🪑",
+          "emoji": "svg:mesa",
           "missingIndices": [
             1,
             2
@@ -3409,7 +3565,7 @@ window.READING_CATALOG = {
             "FO",
             "CA"
           ],
-          "emoji": "🦭",
+          "emoji": "svg:foca",
           "missingIndices": [
             1,
             2
@@ -3461,7 +3617,7 @@ window.READING_CATALOG = {
             "NI",
             "DO"
           ],
-          "emoji": "🪺",
+          "emoji": "svg:nido",
           "missingIndices": [
             1,
             3
@@ -3668,6 +3824,19 @@ window.READING_CATALOG = {
           "missingIndices": [
             1,
             4
+          ]
+        },
+        {
+          "id": "es_l3_26",
+          "word": "NUDO",
+          "syllables": [
+            "NU",
+            "DO"
+          ],
+          "emoji": "svg:nudo",
+          "missingIndices": [
+            1,
+            2
           ]
         }
       ],
@@ -3943,22 +4112,22 @@ window.READING_CATALOG = {
             "NE",
             "TA"
           ],
-          "emoji": "🪐",
+          "emoji": "🌍",
           "microCheck": {
             "question": "¿Qué gran cuerpo viaja en el espacio?",
             "options": [
               {
-                "emoji": "🪐",
+                "emoji": "🌍",
                 "label": "Un planeta",
                 "isCorrect": true
               },
               {
-                "emoji": "🪁",
+                "emoji": "svg:cometa",
                 "label": "Una cometa",
                 "isCorrect": false
               },
               {
-                "emoji": "🪂",
+                "emoji": "svg:paracaídas",
                 "label": "Un paracaídas",
                 "isCorrect": false
               }
@@ -4039,7 +4208,7 @@ window.READING_CATALOG = {
                 "isCorrect": true
               },
               {
-                "emoji": "🪨",
+                "emoji": "svg:piedra",
                 "label": "Una piedra",
                 "isCorrect": false
               },
@@ -4159,7 +4328,7 @@ window.READING_CATALOG = {
                 "isCorrect": true
               },
               {
-                "emoji": "🛖",
+                "emoji": "🏡",
                 "label": "Una choza",
                 "isCorrect": false
               },
@@ -4431,7 +4600,7 @@ window.READING_CATALOG = {
                 "isCorrect": false
               },
               {
-                "emoji": "🪣",
+                "emoji": "svg:cubo",
                 "label": "Un cubo",
                 "isCorrect": false
               }
@@ -4534,7 +4703,7 @@ window.READING_CATALOG = {
           "id": "en_l1_09",
           "target": "I",
           "anchorWord": "IGLOO",
-          "emoji": "🛖",
+          "emoji": "svg:iglu",
           "distractors": [
             "E",
             "A",
@@ -4556,7 +4725,7 @@ window.READING_CATALOG = {
           "id": "en_l1_11",
           "target": "K",
           "anchorWord": "KITE",
-          "emoji": "🪁",
+          "emoji": "svg:cometa",
           "distractors": [
             "C",
             "T",
@@ -4589,7 +4758,7 @@ window.READING_CATALOG = {
           "id": "en_l1_14",
           "target": "N",
           "anchorWord": "NEST",
-          "emoji": "🪺",
+          "emoji": "svg:nido",
           "distractors": [
             "M",
             "U",
@@ -4688,7 +4857,7 @@ window.READING_CATALOG = {
           "id": "en_l1_23",
           "target": "Y",
           "anchorWord": "YOYO",
-          "emoji": "🪀",
+          "emoji": "svg:yoyo",
           "distractors": [
             "V",
             "J",
@@ -5413,22 +5582,22 @@ window.READING_CATALOG = {
             "PLAN",
             "ET"
           ],
-          "emoji": "🪐",
+          "emoji": "🌍",
           "microCheck": {
             "question": "What orbits the sun in outer space?",
             "options": [
               {
-                "emoji": "🪐",
+                "emoji": "🌍",
                 "label": "A planet",
                 "isCorrect": true
               },
               {
-                "emoji": "🪁",
+                "emoji": "svg:cometa",
                 "label": "A kite",
                 "isCorrect": false
               },
               {
-                "emoji": "🪂",
+                "emoji": "svg:paracaídas",
                 "label": "A parachute",
                 "isCorrect": false
               }
@@ -5481,7 +5650,7 @@ window.READING_CATALOG = {
                 "isCorrect": true
               },
               {
-                "emoji": "🛖",
+                "emoji": "🏡",
                 "label": "In a hut",
                 "isCorrect": false
               },
@@ -5747,7 +5916,7 @@ window.READING_CATALOG = {
                 "isCorrect": false
               },
               {
-                "emoji": "🪨",
+                "emoji": "svg:piedra",
                 "label": "A heavy rock",
                 "isCorrect": false
               }
@@ -5916,12 +6085,12 @@ window.READING_CATALOG = {
                 "isCorrect": true
               },
               {
-                "emoji": "🪵",
+                "emoji": "svg:tronco",
                 "label": "A log",
                 "isCorrect": false
               },
               {
-                "emoji": "🪨",
+                "emoji": "svg:piedra",
                 "label": "A stone",
                 "isCorrect": false
               }
@@ -5974,7 +6143,7 @@ window.READING_CATALOG = {
                 "isCorrect": true
               },
               {
-                "emoji": "🪣",
+                "emoji": "svg:cubo",
                 "label": "A steel bucket",
                 "isCorrect": false
               },
@@ -6051,12 +6220,12 @@ window.READING_CATALOG = {
             "DOC",
             "TOR"
           ],
-          "emoji": "🩺",
+          "emoji": "👨‍⚕️",
           "microCheck": {
             "question": "Who helps patients feel healthy and well?",
             "options": [
               {
-                "emoji": "🩺",
+                "emoji": "👨‍⚕️",
                 "label": "A doctor",
                 "isCorrect": true
               },
@@ -6549,7 +6718,7 @@ window.READING_CATALOG = {
                 "isCorrect": false
               },
               {
-                "icon": "🪵",
+                "icon": "svg:tronco",
                 "label": "Con ramas secas",
                 "isCorrect": false
               }
@@ -6805,7 +6974,7 @@ window.READING_CATALOG = {
                 "isCorrect": true
               },
               {
-                "icon": "🪨",
+                "icon": "svg:piedra",
                 "label": "Piedras pesadas",
                 "isCorrect": false
               },
@@ -6868,7 +7037,7 @@ window.READING_CATALOG = {
                 "isCorrect": false
               },
               {
-                "icon": "🪨",
+                "icon": "svg:piedra",
                 "label": "A piedras grises",
                 "isCorrect": false
               }
@@ -7003,7 +7172,7 @@ window.READING_CATALOG = {
             "question": "¿Con qué construye su presa el ingenioso castor?",
             "options": [
               {
-                "icon": "🪵",
+                "icon": "svg:tronco",
                 "label": "Con ramas y barro",
                 "isCorrect": true
               },
@@ -7518,7 +7687,7 @@ window.READING_CATALOG = {
                 "isCorrect": true
               },
               {
-                "icon": "🛖",
+                "icon": "🏡",
                 "label": "A wooden cabin",
                 "isCorrect": false
               },
@@ -7779,7 +7948,7 @@ window.READING_CATALOG = {
                 "isCorrect": true
               },
               {
-                "icon": "🪨",
+                "icon": "svg:piedra",
                 "label": "Heavy pebbles",
                 "isCorrect": false
               },
@@ -7842,7 +8011,7 @@ window.READING_CATALOG = {
                 "isCorrect": false
               },
               {
-                "icon": "🪨",
+                "icon": "svg:piedra",
                 "label": "Dark jagged granite stones",
                 "isCorrect": false
               }
@@ -7977,7 +8146,7 @@ window.READING_CATALOG = {
             "question": "What materials does the beaver use to build its dam?",
             "options": [
               {
-                "icon": "🪵",
+                "icon": "svg:tronco",
                 "label": "Branches and thick mud",
                 "isCorrect": true
               },
@@ -8096,7 +8265,8 @@ window.READING_CATALOG = {
       "font_case_toggle": "Letra (AA/Aa)",
       "syllable_toggle": "Sílabas (🎨)",
       "listen_btn": "Escuchar 🔊",
-      "listen_slow_btn": "Escuchar Despacio 🐢",
+      "listen_normal_btn": "Escuchar 🔊 (1.0x)",
+      "listen_slow_btn": "Escuchar Despacio 🐢 (0.5x)",
       "read_done_btn": "¡Leído! ✅",
       "clear_letter_btn": "Borrar ⌫",
       "install_app": "Instalar App",
@@ -8104,11 +8274,11 @@ window.READING_CATALOG = {
       "install_success": "¡Lector Arcade instalado con éxito! 🎉",
       "install_ios_tip": "En Safari iOS: pulsa Compartir (⬆️) y \"Añadir a pantalla de inicio\"",
       "install_generic_tip": "Pulsa el menú (⋮) del navegador y selecciona \"Instalar aplicación\"",
-      "update_available": "Nueva versión v1.0.0 disponible",
+      "update_available": "Nueva versión v1.1.0 disponible",
       "update_now_btn": "Actualizar ahora",
       "checking_update": "Buscando actualizaciones...",
-      "up_to_date": "✓ Lector Arcade al día (v1.0.0)",
-      "check_update_title": "Buscar actualizaciones de la aplicación (v1.0.0)",
+      "up_to_date": "✓ Lector Arcade al día (v1.1.0)",
+      "check_update_title": "Buscar actualizaciones de la aplicación (v1.1.0)",
       "stats_reset_toast": "Estadísticas y medallas reiniciadas con éxito",
       "correct_answer_is": "Lectura correcta:",
       "next_question_btn": "Siguiente ➔",
@@ -8126,11 +8296,26 @@ window.READING_CATALOG = {
       "diploma_downloaded_toast": "¡Diploma de Lector descargado con éxito! 🎓",
       "diploma_card_title": "Diploma Arcade de Lectura",
       "diploma_card_desc": "Genera un certificado oficial en PNG de alta resolución con tus medallas y velocidad lectora (PPM).",
+      "diploma_name_label": "Nombre en el Diploma (opcional):",
+      "diploma_name_placeholder": "Ej: Sofía Gómez",
+      "download_sheet_btn": "🖨️ Lámina de Repaso A4 (PNG)",
+      "sheet_downloaded_toast": "¡Lámina de repaso imprimible descargada con éxito! 🖨️",
+      "custom_words_title": "✏️ Mis Palabras (Familias y Colegios)",
+      "custom_words_desc": "Escribe o pega palabras separadas por comas para practicar tu vocabulario personalizado:",
+      "custom_words_placeholder": "Ej: MESA, NIDO, NUDO, CASA, ESCUELA...",
+      "custom_words_apply": "Activar Lista",
+      "custom_words_clear": "Quitar Lista",
+      "custom_words_share": "Copiar Enlace de Deberes 📋",
+      "custom_words_copied": "¡Enlace de deberes copiado al portapapeles! 📋",
+      "custom_words_active_badge": "✏️ Modo Mis Palabras Activo",
+      "parents_zone_title": "👨‍👩‍👧 Zona Padres y Docentes",
+      "parents_zone_desc": "Descarga láminas imprimibles, diplomas de honor y recursos complementarios de lectoescritura.",
       "datalaria_back": "← Datalaria",
       "post_link": "📖 Historia IA",
       "spec_link": "📋 Ficha App",
       "kits_link": "📦 Recursos",
       "wpm_label": "PPM",
+      "effective_wpm_label": "PPM Efectivas",
       "wpm_full": "Palabras Por Minuto",
       "words_read": "Palabras Leídas",
       "reading_time": "Tiempo de Lectura",
@@ -8184,7 +8369,8 @@ window.READING_CATALOG = {
       "font_case_toggle": "Font (AA/Aa)",
       "syllable_toggle": "Syllables (🎨)",
       "listen_btn": "Listen 🔊",
-      "listen_slow_btn": "Listen Slow 🐢",
+      "listen_normal_btn": "Listen 🔊 (1.0x)",
+      "listen_slow_btn": "Listen Slow 🐢 (0.5x)",
       "read_done_btn": "Done! ✅",
       "clear_letter_btn": "Erase ⌫",
       "install_app": "Install App",
@@ -8192,11 +8378,11 @@ window.READING_CATALOG = {
       "install_success": "Reader Arcade successfully installed! 🎉",
       "install_ios_tip": "In Safari iOS: tap Share (⬆️) and select \"Add to Home Screen\"",
       "install_generic_tip": "Tap browser menu (⋮) and select \"Install app\"",
-      "update_available": "New version v1.0.0 available",
+      "update_available": "New version v1.1.0 available",
       "update_now_btn": "Update now",
       "checking_update": "Checking for updates...",
-      "up_to_date": "✓ Reader Arcade is up to date (v1.0.0)",
-      "check_update_title": "Check for app updates (v1.0.0)",
+      "up_to_date": "✓ Reader Arcade is up to date (v1.1.0)",
+      "check_update_title": "Check for app updates (v1.1.0)",
       "stats_reset_toast": "Stats and badges reset successfully",
       "correct_answer_is": "Correct reading:",
       "next_question_btn": "Next ➔",
@@ -8214,11 +8400,26 @@ window.READING_CATALOG = {
       "diploma_downloaded_toast": "Reader Diploma downloaded successfully! 🎓",
       "diploma_card_title": "Arcade Reading Diploma",
       "diploma_card_desc": "Generate an official high-resolution PNG certificate with your badges and reading speed (WPM).",
+      "diploma_name_label": "Name on Diploma (optional):",
+      "diploma_name_placeholder": "E.g. Sophia Miller",
+      "download_sheet_btn": "🖨️ Printable A4 Sheet (PNG)",
+      "sheet_downloaded_toast": "Printable practice sheet downloaded successfully! 🖨️",
+      "custom_words_title": "✏️ Custom Words (Families & Schools)",
+      "custom_words_desc": "Type or paste comma-separated words to practice your personalized vocabulary:",
+      "custom_words_placeholder": "E.g. NEST, KITE, DESK, FROG, SCHOOL...",
+      "custom_words_apply": "Apply Words",
+      "custom_words_clear": "Clear Words",
+      "custom_words_share": "Share Homework Link 📋",
+      "custom_words_copied": "Homework link copied to clipboard! 📋",
+      "custom_words_active_badge": "✏️ Custom Words Active",
+      "parents_zone_title": "👨‍👩‍👧 Parents & Educators Zone",
+      "parents_zone_desc": "Download printable worksheets, diplomas of honor and literacy companion resources.",
       "datalaria_back": "← Datalaria",
       "post_link": "📖 AI Story",
       "spec_link": "📋 App Spec",
       "kits_link": "📦 Resources",
       "wpm_label": "WPM",
+      "effective_wpm_label": "Effective WPM",
       "wpm_full": "Words Per Minute",
       "words_read": "Words Read",
       "reading_time": "Reading Time",
@@ -8234,6 +8435,541 @@ window.READING_CATALOG = {
     }
   }
 };
+  root.READING_CATALOG = data;
+  if (typeof module === 'object' && module.exports) {
+    module.exports = data;
+  }
+})();
+
+/**
+ * Lector Arcade — Catálogo de Ilustraciones Vectoriales SVG Inline (apps/reading/illustrations.js)
+ * Provee gráficos SVG vectoriales nítidos y optimizados para conceptos léxicos que sufren
+ * de semantic mismatches (ej. MESA con silla 🪑) o emojis Unicode >= 12.0 con riesgo de glifos vacíos (tofu □).
+ * Invariante: INV-READ-13 (Compatibilidad Visual Universal e Ilustraciones SVG Inline).
+ */
+(function (root, factory) {
+  var instance = factory();
+  if (typeof module === 'object' && module.exports) {
+    module.exports = instance;
+  }
+  if (typeof window !== 'undefined') {
+    window.ReadingIllustrations = instance;
+  }
+  if (typeof globalThis !== 'undefined') {
+    globalThis.ReadingIllustrations = instance;
+  }
+  if (root) {
+    root.ReadingIllustrations = instance;
+  }
+})(typeof self !== 'undefined' ? self : (typeof window !== 'undefined' ? window : this), function () {
+  'use strict';
+
+  var SVGS = {
+    // 1. MESA: Mesa de madera de 4 patas vista en perspectiva isométrica frontal
+    MESA: '<svg viewBox="0 0 120 120" class="reading-svg-icon" role="img" aria-label="Mesa">' +
+      '<defs>' +
+        '<linearGradient id="tbl-top" x1="0%" y1="0%" x2="100%" y2="100%">' +
+          '<stop offset="0%" stop-color="#F59E0B"/>' +
+          '<stop offset="100%" stop-color="#D97706"/>' +
+        '</linearGradient>' +
+        '<linearGradient id="tbl-side" x1="0%" y1="0%" x2="0%" y2="100%">' +
+          '<stop offset="0%" stop-color="#B45309"/>' +
+          '<stop offset="100%" stop-color="#78350F"/>' +
+        '</linearGradient>' +
+      '</defs>' +
+      // Sombra proyectada en el suelo
+      '<ellipse cx="60" cy="104" rx="46" ry="8" fill="#000000" opacity="0.18"/>' +
+      // Patas traseras
+      '<rect x="26" y="58" width="10" height="38" rx="3" fill="#92400E"/>' +
+      '<rect x="84" y="58" width="10" height="38" rx="3" fill="#92400E"/>' +
+      // Patas delanteras
+      '<rect x="18" y="66" width="11" height="36" rx="3" fill="url(#tbl-side)"/>' +
+      '<rect x="91" y="66" width="11" height="36" rx="3" fill="url(#tbl-side)"/>' +
+      // Faldón de la mesa
+      '<polygon points="18,62 102,62 98,68 22,68" fill="#78350F"/>' +
+      // Tablero superior
+      '<polygon points="12,58 108,58 98,42 22,42" fill="url(#tbl-top)"/>' +
+      // Borde frontal biselado
+      '<polygon points="12,58 108,58 108,63 12,63" fill="url(#tbl-side)"/>' +
+      // Vetas de madera sutiles
+      '<path d="M30 48 Q 60 45 90 48" stroke="#FDE68A" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.4"/>' +
+      '<path d="M26 53 Q 60 50 94 53" stroke="#FDE68A" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.3"/>' +
+    '</svg>',
+
+    // 2. NIDO: Nido de ramitas tejidas con 3 huevecillos celestes
+    NIDO: '<svg viewBox="0 0 120 120" class="reading-svg-icon" role="img" aria-label="Nido">' +
+      '<defs>' +
+        '<linearGradient id="egg-grad" x1="0%" y1="0%" x2="100%" y2="100%">' +
+          '<stop offset="0%" stop-color="#BAE6FD"/>' +
+          '<stop offset="100%" stop-color="#38BDF8"/>' +
+        '</linearGradient>' +
+        '<linearGradient id="nest-grad" x1="0%" y1="0%" x2="0%" y2="100%">' +
+          '<stop offset="0%" stop-color="#92400E"/>' +
+          '<stop offset="100%" stop-color="#451A03"/>' +
+        '</linearGradient>' +
+      '</defs>' +
+      // Sombra
+      '<ellipse cx="60" cy="100" rx="44" ry="10" fill="#000000" opacity="0.2"/>' +
+      // Huevos celestes
+      '<ellipse cx="46" cy="56" rx="12" ry="16" transform="rotate(-15 46 56)" fill="url(#egg-grad)"/>' +
+      '<ellipse cx="74" cy="56" rx="12" ry="16" transform="rotate(15 74 56)" fill="url(#egg-grad)"/>' +
+      '<ellipse cx="60" cy="51" rx="13" ry="17" fill="url(#egg-grad)"/>' +
+      // Motas de los huevos
+      '<circle cx="58" cy="48" r="1.5" fill="#0284C7" opacity="0.6"/>' +
+      '<circle cx="64" cy="54" r="1.5" fill="#0284C7" opacity="0.6"/>' +
+      '<circle cx="45" cy="55" r="1.2" fill="#0284C7" opacity="0.6"/>' +
+      '<circle cx="75" cy="58" r="1.2" fill="#0284C7" opacity="0.6"/>' +
+      // Cuenco del nido
+      '<path d="M14 62 C 16 98, 104 98, 106 62 C 86 70, 34 70, 14 62 Z" fill="url(#nest-grad)"/>' +
+      // Ramitas entrelazadas superpuestas
+      '<path d="M12 60 Q 60 76 108 60" stroke="#B45309" stroke-width="4" stroke-linecap="round" fill="none"/>' +
+      '<path d="M18 68 Q 60 88 102 68" stroke="#78350F" stroke-width="4.5" stroke-linecap="round" fill="none"/>' +
+      '<path d="M22 76 Q 60 96 98 76" stroke="#B45309" stroke-width="4" stroke-linecap="round" fill="none"/>' +
+      '<path d="M30 84 Q 60 100 90 84" stroke="#451A03" stroke-width="3.5" stroke-linecap="round" fill="none"/>' +
+      '<path d="M10 66 L 36 78 M 84 78 L 110 66 M 40 86 L 80 84" stroke="#D97706" stroke-width="2.5" stroke-linecap="round"/>' +
+    '</svg>',
+
+    // 3. NUDO: Cuerda gruesa dorada en nudo en ocho marinero
+    NUDO: '<svg viewBox="0 0 120 120" class="reading-svg-icon" role="img" aria-label="Nudo">' +
+      '<defs>' +
+        '<linearGradient id="rope-grad" x1="0%" y1="0%" x2="100%" y2="100%">' +
+          '<stop offset="0%" stop-color="#FCD34D"/>' +
+          '<stop offset="50%" stop-color="#F59E0B"/>' +
+          '<stop offset="100%" stop-color="#B45309"/>' +
+        '</linearGradient>' +
+      '</defs>' +
+      // Sombra
+      '<ellipse cx="60" cy="102" rx="36" ry="8" fill="#000000" opacity="0.2"/>' +
+      // Curvas del nudo marinero (cuerpo)
+      '<path d="M 28 24 C 28 50, 92 40, 92 72 C 92 94, 60 98, 48 82 C 34 64, 86 56, 86 32 C 86 16, 54 14, 38 34 L 20 88" ' +
+        'stroke="#78350F" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" fill="none"/>' +
+      '<path d="M 28 24 C 28 50, 92 40, 92 72 C 92 94, 60 98, 48 82 C 34 64, 86 56, 86 32 C 86 16, 54 14, 38 34 L 20 88" ' +
+        'stroke="url(#rope-grad)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/>' +
+      // Tramas de la cuerda
+      '<path d="M 32 30 L 36 34 M 44 42 L 48 46 M 60 48 L 64 52 M 76 48 L 80 52 M 88 64 L 92 68 M 86 78 L 82 82 M 66 90 L 62 94 M 48 82 L 44 86 M 24 78 L 28 82" ' +
+        'stroke="#FDE68A" stroke-width="2" stroke-linecap="round"/>' +
+    '</svg>',
+
+    // 4. IGLU: Cúpula de bloques de hielo polar con puerta abovedada
+    IGLU: '<svg viewBox="0 0 120 120" class="reading-svg-icon" role="img" aria-label="Iglú">' +
+      '<defs>' +
+        '<linearGradient id="ice-grad" x1="0%" y1="0%" x2="100%" y2="100%">' +
+          '<stop offset="0%" stop-color="#FFFFFF"/>' +
+          '<stop offset="50%" stop-color="#E0F2FE"/>' +
+          '<stop offset="100%" stop-color="#BAE6FD"/>' +
+        '</linearGradient>' +
+        '<linearGradient id="ice-door" x1="0%" y1="0%" x2="0%" y2="100%">' +
+          '<stop offset="0%" stop-color="#0284C7"/>' +
+          '<stop offset="100%" stop-color="#075985"/>' +
+        '</linearGradient>' +
+      '</defs>' +
+      // Sombra
+      '<ellipse cx="60" cy="100" rx="48" ry="10" fill="#000000" opacity="0.18"/>' +
+      // Cúpula principal
+      '<path d="M18 96 C 18 42, 102 42, 102 96 Z" fill="url(#ice-grad)" stroke="#0284C7" stroke-width="2.5"/>' +
+      // Líneas de bloques de hielo
+      '<path d="M22 80 Q 60 76 98 80" stroke="#0284C7" stroke-width="2" fill="none" opacity="0.6"/>' +
+      '<path d="M28 62 Q 60 58 92 62" stroke="#0284C7" stroke-width="2" fill="none" opacity="0.6"/>' +
+      '<path d="M42 46 Q 60 42 78 46" stroke="#0284C7" stroke-width="2" fill="none" opacity="0.6"/>' +
+      // Juntas verticales de bloques
+      '<line x1="38" y1="80" x2="38" y2="96" stroke="#0284C7" stroke-width="1.8" opacity="0.6"/>' +
+      '<line x1="82" y1="80" x2="82" y2="96" stroke="#0284C7" stroke-width="1.8" opacity="0.6"/>' +
+      '<line x1="48" y1="62" x2="48" y2="80" stroke="#0284C7" stroke-width="1.8" opacity="0.6"/>' +
+      '<line x1="72" y1="62" x2="72" y2="80" stroke="#0284C7" stroke-width="1.8" opacity="0.6"/>' +
+      '<line x1="60" y1="46" x2="60" y2="62" stroke="#0284C7" stroke-width="1.8" opacity="0.6"/>' +
+      // Túnel de entrada frontal
+      '<path d="M44 96 C 44 76, 76 76, 76 96 Z" fill="url(#ice-door)" stroke="#0284C7" stroke-width="2.5"/>' +
+      '<path d="M50 96 C 50 82, 70 82, 70 96 Z" fill="#0C4A6E"/>' +
+    '</svg>',
+
+    // 5. FOCA: Foca ártica redondeada gris con bigotes y ojos brillantes
+    FOCA: '<svg viewBox="0 0 120 120" class="reading-svg-icon" role="img" aria-label="Foca">' +
+      '<defs>' +
+        '<linearGradient id="seal-grad" x1="0%" y1="0%" x2="100%" y2="100%">' +
+          '<stop offset="0%" stop-color="#CBD5E1"/>' +
+          '<stop offset="60%" stop-color="#94A3B8"/>' +
+          '<stop offset="100%" stop-color="#64748B"/>' +
+        '</linearGradient>' +
+      '</defs>' +
+      // Sombra
+      '<ellipse cx="60" cy="102" rx="46" ry="8" fill="#000000" opacity="0.2"/>' +
+      // Cola trasera
+      '<path d="M88 88 Q 112 80 114 70 Q 104 84 94 92 Z" fill="#64748B"/>' +
+      '<path d="M92 92 Q 114 92 116 82 Q 104 90 92 96 Z" fill="#475569"/>' +
+      // Cuerpo regordete
+      '<path d="M22 66 C 22 36, 68 34, 76 54 C 84 72, 94 94, 78 98 C 50 102, 22 92, 22 66 Z" fill="url(#seal-grad)"/>' +
+      // Aleta delantera
+      '<path d="M42 86 C 46 98, 62 98, 58 86 Z" fill="#475569"/>' +
+      // Ojos simpáticos
+      '<circle cx="36" cy="50" r="4.5" fill="#0F172A"/>' +
+      '<circle cx="35" cy="48" r="1.5" fill="#FFFFFF"/>' +
+      // Hocico blanco crema
+      '<ellipse cx="26" cy="62" rx="9" ry="7" fill="#F8FAFC"/>' +
+      // Nariz negra
+      '<path d="M23 58 L 27 58 L 25 61 Z" fill="#0F172A"/>' +
+      // Bigotes nítidos
+      '<line x1="14" y1="60" x2="22" y2="61" stroke="#0F172A" stroke-width="1.6" stroke-linecap="round"/>' +
+      '<line x1="13" y1="64" x2="22" y2="63" stroke="#0F172A" stroke-width="1.6" stroke-linecap="round"/>' +
+      '<line x1="15" y1="68" x2="23" y2="65" stroke="#0F172A" stroke-width="1.6" stroke-linecap="round"/>' +
+    '</svg>',
+
+    // 6. ÑANDÚ: Ave corredora tipo avestruz con plumaje estilizado y patas fuertes
+    ÑANDÚ: '<svg viewBox="0 0 120 120" class="reading-svg-icon" role="img" aria-label="Ñandú">' +
+      '<defs>' +
+        '<linearGradient id="nandu-body" x1="0%" y1="0%" x2="100%" y2="100%">' +
+          '<stop offset="0%" stop-color="#94A3B8"/>' +
+          '<stop offset="100%" stop-color="#475569"/>' +
+        '</linearGradient>' +
+      '</defs>' +
+      // Sombra
+      '<ellipse cx="58" cy="106" rx="36" ry="6" fill="#000000" opacity="0.2"/>' +
+      // Patas fuertes zancudas
+      '<line x1="48" y1="78" x2="44" y2="104" stroke="#D97706" stroke-width="4" stroke-linecap="round"/>' +
+      '<line x1="44" y1="104" x2="36" y2="105" stroke="#D97706" stroke-width="3.5" stroke-linecap="round"/>' +
+      '<line x1="64" y1="78" x2="68" y2="104" stroke="#D97706" stroke-width="4" stroke-linecap="round"/>' +
+      '<line x1="68" y1="104" x2="76" y2="105" stroke="#D97706" stroke-width="3.5" stroke-linecap="round"/>' +
+      // Cuerpo plumoso
+      '<ellipse cx="56" cy="66" rx="28" ry="20" fill="url(#nandu-body)"/>' +
+      '<path d="M30 68 C 22 74, 26 84, 38 82 C 28 88, 36 94, 52 86 Z" fill="#334155"/>' +
+      // Cuello largo esbelto
+      '<path d="M72 68 Q 86 52 84 32 L 76 33 Q 76 54 64 68 Z" fill="#64748B"/>' +
+      // Cabeza
+      '<circle cx="82" cy="28" r="9" fill="#64748B"/>' +
+      // Ojo
+      '<circle cx="84" cy="26" r="2.2" fill="#0F172A"/>' +
+      '<circle cx="83.5" cy="25" r="0.8" fill="#FFFFFF"/>' +
+      // Pico
+      '<polygon points="90,26 104,29 90,32" fill="#F59E0B"/>' +
+    '</svg>',
+
+    // 7. RUEDA: Rueda de goma con llanta y radios nítidos
+    RUEDA: '<svg viewBox="0 0 120 120" class="reading-svg-icon" role="img" aria-label="Rueda">' +
+      '<defs>' +
+        '<linearGradient id="tire-grad" x1="0%" y1="0%" x2="100%" y2="100%">' +
+          '<stop offset="0%" stop-color="#475569"/>' +
+          '<stop offset="100%" stop-color="#0F172A"/>' +
+        '</linearGradient>' +
+        '<linearGradient id="rim-grad" x1="0%" y1="0%" x2="100%" y2="100%">' +
+          '<stop offset="0%" stop-color="#F1F5F9"/>' +
+          '<stop offset="100%" stop-color="#94A3B8"/>' +
+        '</linearGradient>' +
+      '</defs>' +
+      // Sombra
+      '<ellipse cx="60" cy="106" rx="40" ry="7" fill="#000000" opacity="0.25"/>' +
+      // Neumático exterior
+      '<circle cx="60" cy="58" r="46" fill="url(#tire-grad)"/>' +
+      '<circle cx="60" cy="58" r="38" fill="#1E293B"/>' +
+      // Llanta metálica
+      '<circle cx="60" cy="58" r="28" fill="url(#rim-grad)"/>' +
+      '<circle cx="60" cy="58" r="14" fill="#475569"/>' +
+      // Cubo central
+      '<circle cx="60" cy="58" r="6" fill="#F8FAFC"/>' +
+      // Radios
+      '<line x1="60" y1="32" x2="60" y2="44" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>' +
+      '<line x1="60" y1="72" x2="60" y2="84" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>' +
+      '<line x1="34" y1="58" x2="46" y2="58" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>' +
+      '<line x1="74" y1="58" x2="86" y2="58" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>' +
+      '<line x1="42" y1="40" x2="50" y2="48" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>' +
+      '<line x1="78" y1="40" x2="70" y2="48" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>' +
+      '<line x1="42" y1="76" x2="50" y2="68" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>' +
+      '<line x1="78" y1="76" x2="70" y2="68" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>' +
+    '</svg>',
+
+    // 8. COMETA: Cometa en rombo dividida en 4 sectores vivos con cola de lazos
+    COMETA: '<svg viewBox="0 0 120 120" class="reading-svg-icon" role="img" aria-label="Cometa">' +
+      // Rombo dividido en 4 colores
+      '<polygon points="56,12 88,44 56,44" fill="#EF4444"/>' +
+      '<polygon points="56,12 24,44 56,44" fill="#FBBF24"/>' +
+      '<polygon points="56,44 88,44 56,86" fill="#3B82F6"/>' +
+      '<polygon points="56,44 24,44 56,86" fill="#10B981"/>' +
+      // Varillas
+      '<line x1="56" y1="12" x2="56" y2="86" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>' +
+      '<line x1="24" y1="44" x2="88" y2="44" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>' +
+      // Cola sinuosa
+      '<path d="M56 86 Q 44 96 52 104 T 48 116" stroke="#94A3B8" stroke-width="2" fill="none"/>' +
+      // Lazos de la cola
+      '<polygon points="46,96 54,98 46,100" fill="#EC4899"/>' +
+      '<polygon points="54,96 46,98 54,100" fill="#EC4899"/>' +
+      '<polygon points="52,106 60,108 52,110" fill="#8B5CF6"/>' +
+      '<polygon points="60,106 52,108 60,110" fill="#8B5CF6"/>' +
+    '</svg>',
+
+    // 9. YOYÓ: Yoyó circular rojo brillante con cuerda
+    YOYÓ: '<svg viewBox="0 0 120 120" class="reading-svg-icon" role="img" aria-label="Yoyó">' +
+      '<defs>' +
+        '<linearGradient id="yoyo-body" x1="0%" y1="0%" x2="100%" y2="100%">' +
+          '<stop offset="0%" stop-color="#F87171"/>' +
+          '<stop offset="60%" stop-color="#EF4444"/>' +
+          '<stop offset="100%" stop-color="#B91C1C"/>' +
+        '</linearGradient>' +
+      '</defs>' +
+      // Sombra
+      '<ellipse cx="64" cy="104" rx="36" ry="8" fill="#000000" opacity="0.2"/>' +
+      // Cuerda hacia arriba
+      '<path d="M54 60 C 50 40, 70 24, 60 10" stroke="#FDE68A" stroke-width="3" stroke-linecap="round" fill="none"/>' +
+      // Disco trasero
+      '<ellipse cx="68" cy="64" rx="32" ry="32" fill="#991B1B"/>' +
+      // Eje central amarillo
+      '<rect x="52" y="58" width="12" height="12" rx="4" fill="#F59E0B"/>' +
+      // Disco delantero
+      '<ellipse cx="58" cy="64" rx="32" ry="32" fill="url(#yoyo-body)"/>' +
+      // Centro decorativo
+      '<circle cx="58" cy="64" r="14" fill="#FEF08A"/>' +
+      '<circle cx="58" cy="64" r="8" fill="#EF4444"/>' +
+      // Brillo
+      '<path d="M42 46 Q 58 38 74 46" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" fill="none" opacity="0.6"/>' +
+    '</svg>',
+
+    // 10. POZO: Brocal de piedra con tejadillo y cubo
+    POZO: '<svg viewBox="0 0 120 120" class="reading-svg-icon" role="img" aria-label="Pozo">' +
+      '<defs>' +
+        '<linearGradient id="roof-grad" x1="0%" y1="0%" x2="0%" y2="100%">' +
+          '<stop offset="0%" stop-color="#EF4444"/>' +
+          '<stop offset="100%" stop-color="#B91C1C"/>' +
+        '</linearGradient>' +
+      '</defs>' +
+      // Sombra
+      '<ellipse cx="60" cy="106" rx="46" ry="8" fill="#000000" opacity="0.2"/>' +
+      // Postes de madera
+      '<rect x="24" y="38" width="8" height="48" rx="2" fill="#78350F"/>' +
+      '<rect x="88" y="38" width="8" height="48" rx="2" fill="#78350F"/>' +
+      '<rect x="24" y="44" width="72" height="6" rx="2" fill="#92400E"/>' +
+      // Polea y cuerda con cubo
+      '<circle cx="60" cy="47" r="6" fill="#475569"/>' +
+      '<line x1="60" y1="52" x2="60" y2="68" stroke="#FDE68A" stroke-width="2"/>' +
+      // Cubito colgando
+      '<polygon points="54,68 66,68 64,78 56,78" fill="#0284C7"/>' +
+      // Tejadillo a dos aguas
+      '<polygon points="14,40 60,16 106,40 98,42 60,22 22,42" fill="url(#roof-grad)"/>' +
+      // Brocal de piedra
+      '<path d="M20 78 C 20 70, 100 70, 100 78 L 96 102 C 96 108, 24 108, 24 102 Z" fill="#64748B"/>' +
+      // Boca del pozo oscura
+      '<ellipse cx="60" cy="78" rx="38" ry="7" fill="#1E293B"/>' +
+      // Líneas de bloques de piedra
+      '<path d="M22 88 Q 60 94 98 88" stroke="#475569" stroke-width="2" fill="none"/>' +
+      '<path d="M23 96 Q 60 102 97 96" stroke="#475569" stroke-width="2" fill="none"/>' +
+    '</svg>',
+
+    // 11. CUBO: Cubo / balde azul con asa metálica
+    CUBO: '<svg viewBox="0 0 120 120" class="reading-svg-icon" role="img" aria-label="Cubo">' +
+      '<defs>' +
+        '<linearGradient id="bucket-grad" x1="0%" y1="0%" x2="100%" y2="100%">' +
+          '<stop offset="0%" stop-color="#38BDF8"/>' +
+          '<stop offset="100%" stop-color="#0284C7"/>' +
+        '</linearGradient>' +
+      '</defs>' +
+      // Sombra
+      '<ellipse cx="60" cy="104" rx="36" ry="8" fill="#000000" opacity="0.2"/>' +
+      // Asa de alambre levantada
+      '<path d="M28 50 C 28 20, 92 20, 92 50" stroke="#94A3B8" stroke-width="4" stroke-linecap="round" fill="none"/>' +
+      // Cuerpo del cubo
+      '<polygon points="26,50 94,50 82,100 38,100" fill="url(#bucket-grad)"/>' +
+      // Boca superior
+      '<ellipse cx="60" cy="50" rx="34" ry="8" fill="#7DD3FC"/>' +
+      '<ellipse cx="60" cy="50" rx="30" ry="6" fill="#0284C7"/>' +
+      // Remaches del asa
+      '<circle cx="28" cy="52" r="3.5" fill="#475569"/>' +
+      '<circle cx="92" cy="52" r="3.5" fill="#475569"/>' +
+      // Brillo frontal
+      '<path d="M38 58 L 44 94" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.4"/>' +
+    '</svg>',
+
+    // 12. TRONCO: Sección cortada de madera con anillos
+    TRONCO: '<svg viewBox="0 0 120 120" class="reading-svg-icon" role="img" aria-label="Tronco">' +
+      '<defs>' +
+        '<linearGradient id="bark-grad" x1="0%" y1="0%" x2="0%" y2="100%">' +
+          '<stop offset="0%" stop-color="#78350F"/>' +
+          '<stop offset="100%" stop-color="#451A03"/>' +
+        '</linearGradient>' +
+        '<linearGradient id="wood-top" x1="0%" y1="0%" x2="100%" y2="100%">' +
+          '<stop offset="0%" stop-color="#FEF08A"/>' +
+          '<stop offset="100%" stop-color="#F59E0B"/>' +
+        '</linearGradient>' +
+      '</defs>' +
+      // Sombra
+      '<ellipse cx="60" cy="104" rx="44" ry="8" fill="#000000" opacity="0.2"/>' +
+      // Cuerpo de corteza
+      '<path d="M20 54 L 20 92 C 20 104, 100 104, 100 92 L 100 54 Z" fill="url(#bark-grad)"/>' +
+      // Tapa superior elíptica
+      '<ellipse cx="60" cy="54" rx="40" ry="16" fill="url(#wood-top)" stroke="#78350F" stroke-width="3"/>' +
+      // Anillos de crecimiento concéntricos
+      '<ellipse cx="60" cy="54" rx="28" ry="10" stroke="#B45309" stroke-width="2" fill="none"/>' +
+      '<ellipse cx="60" cy="54" rx="16" ry="6" stroke="#B45309" stroke-width="2" fill="none"/>' +
+      '<circle cx="60" cy="54" r="3" fill="#78350F"/>' +
+      // Ranuras de la corteza
+      '<line x1="36" y1="68" x2="36" y2="96" stroke="#451A03" stroke-width="2.5" stroke-linecap="round"/>' +
+      '<line x1="60" y1="72" x2="60" y2="100" stroke="#451A03" stroke-width="2.5" stroke-linecap="round"/>' +
+      '<line x1="84" y1="68" x2="84" y2="96" stroke="#451A03" stroke-width="2.5" stroke-linecap="round"/>' +
+      // Pequeño brote verde
+      '<path d="M96 50 Q 110 44 108 34 Q 98 40 96 50 Z" fill="#22C55E"/>' +
+    '</svg>',
+
+    // 13. PIEDRA: Roca sólida poligonal con sombras
+    PIEDRA: '<svg viewBox="0 0 120 120" class="reading-svg-icon" role="img" aria-label="Piedra">' +
+      // Sombra
+      '<ellipse cx="60" cy="102" rx="44" ry="8" fill="#000000" opacity="0.2"/>' +
+      // Cara iluminada
+      '<polygon points="34,42 66,28 88,48 58,62" fill="#94A3B8"/>' +
+      // Cara frontal
+      '<polygon points="34,42 58,62 50,96 18,84" fill="#64748B"/>' +
+      // Cara derecha
+      '<polygon points="66,28 104,58 92,94 50,96 58,62 88,48" fill="#475569"/>' +
+      // Borde de sombra
+      '<polygon points="50,96 92,94 102,96 18,96" fill="#334155" opacity="0.6"/>' +
+      // Aristas destacadas
+      '<line x1="34" y1="42" x2="58" y2="62" stroke="#CBD5E1" stroke-width="2"/>' +
+      '<line x1="66" y1="28" x2="58" y2="62" stroke="#CBD5E1" stroke-width="2"/>' +
+      '<line x1="58" y1="62" x2="50" y2="96" stroke="#334155" stroke-width="2"/>' +
+    '</svg>',
+
+    // 14. SAPO: Sapo verde simpático con ojos saltones dorados
+    SAPO: '<svg viewBox="0 0 120 120" class="reading-svg-icon" role="img" aria-label="Sapo">' +
+      '<defs>' +
+        '<linearGradient id="toad-grad" x1="0%" y1="0%" x2="100%" y2="100%">' +
+          '<stop offset="0%" stop-color="#4ADE80"/>' +
+          '<stop offset="60%" stop-color="#22C55E"/>' +
+          '<stop offset="100%" stop-color="#15803D"/>' +
+        '</linearGradient>' +
+      '</defs>' +
+      // Sombra
+      '<ellipse cx="60" cy="102" rx="42" ry="8" fill="#000000" opacity="0.2"/>' +
+      // Patas traseras flexionadas
+      '<ellipse cx="26" cy="84" rx="14" ry="10" fill="#15803D"/>' +
+      '<ellipse cx="94" cy="84" rx="14" ry="10" fill="#15803D"/>' +
+      // Patas delanteras
+      '<rect x="40" y="80" width="8" height="20" rx="4" fill="#16A34A"/>' +
+      '<rect x="72" y="80" width="8" height="20" rx="4" fill="#16A34A"/>' +
+      // Cuerpo regordete
+      '<ellipse cx="60" cy="74" rx="32" ry="24" fill="url(#toad-grad)"/>' +
+      // Barriga clara
+      '<ellipse cx="60" cy="80" rx="20" ry="14" fill="#BBF7D0"/>' +
+      // Ojos saltones
+      '<circle cx="42" cy="46" r="13" fill="#22C55E"/>' +
+      '<circle cx="42" cy="46" r="9" fill="#FACC15"/>' +
+      '<ellipse cx="42" cy="46" rx="4" ry="7" fill="#0F172A"/>' +
+      '<circle cx="40" cy="43" r="2" fill="#FFFFFF"/>' +
+      '<circle cx="78" cy="46" r="13" fill="#22C55E"/>' +
+      '<circle cx="78" cy="46" r="9" fill="#FACC15"/>' +
+      '<ellipse cx="78" cy="46" rx="4" ry="7" fill="#0F172A"/>' +
+      '<circle cx="76" cy="43" r="2" fill="#FFFFFF"/>' +
+      // Sonrisa ancha
+      '<path d="M44 68 Q 60 78 76 68" stroke="#14532D" stroke-width="3" stroke-linecap="round" fill="none"/>' +
+      // Manchas decorativas
+      '<circle cx="34" cy="74" r="3" fill="#15803D"/>' +
+      '<circle cx="86" cy="74" r="3" fill="#15803D"/>' +
+      '<circle cx="60" cy="62" r="2.5" fill="#15803D"/>' +
+    '</svg>',
+
+    // 15. PARACAÍDAS: Paracaídas abierto con saltador
+    PARACAÍDAS: '<svg viewBox="0 0 120 120" class="reading-svg-icon" role="img" aria-label="Paracaídas">' +
+      // Cúpula en 3 franjas de colores
+      '<path d="M16 52 C 16 18, 45 18, 45 52 Z" fill="#EF4444"/>' +
+      '<path d="M45 52 C 45 18, 75 18, 75 52 Z" fill="#F8FAFC"/>' +
+      '<path d="M75 52 C 75 18, 104 18, 104 52 Z" fill="#3B82F6"/>' +
+      '<path d="M16 52 C 16 22, 104 22, 104 52 Q 60 56 16 52 Z" stroke="#1E293B" stroke-width="2" fill="none"/>' +
+      // Cuerdas convergiendo hacia el saltador
+      '<line x1="18" y1="52" x2="60" y2="94" stroke="#94A3B8" stroke-width="1.8"/>' +
+      '<line x1="45" y1="52" x2="60" y2="94" stroke="#94A3B8" stroke-width="1.8"/>' +
+      '<line x1="75" y1="52" x2="60" y2="94" stroke="#94A3B8" stroke-width="1.8"/>' +
+      '<line x1="102" y1="52" x2="60" y2="94" stroke="#94A3B8" stroke-width="1.8"/>' +
+      // Saltador estilizado
+      '<circle cx="60" cy="94" r="4" fill="#F59E0B"/>' +
+      '<rect x="56" y="98" width="8" height="12" rx="3" fill="#3B82F6"/>' +
+      '<line x1="58" y1="110" x2="56" y2="118" stroke="#1E293B" stroke-width="2.5" stroke-linecap="round"/>' +
+      '<line x1="62" y1="110" x2="64" y2="118" stroke="#1E293B" stroke-width="2.5" stroke-linecap="round"/>' +
+    '</svg>'
+  };
+
+  // Alias y normalización de claves
+  var KEY_MAP = {
+    'mesa': 'MESA',
+    'table': 'MESA',
+    'nido': 'NIDO',
+    'nest': 'NIDO',
+    'nudo': 'NUDO',
+    'knot': 'NUDO',
+    'iglu': 'IGLU',
+    'iglú': 'IGLU',
+    'igloo': 'IGLU',
+    'foca': 'FOCA',
+    'seal': 'FOCA',
+    'ñandú': 'ÑANDÚ',
+    'ñandu': 'ÑANDÚ',
+    'nandu': 'ÑANDÚ',
+    'rhea': 'ÑANDÚ',
+    'rueda': 'RUEDA',
+    'wheel': 'RUEDA',
+    'cometa': 'COMETA',
+    'kite': 'COMETA',
+    'yoyó': 'YOYÓ',
+    'yoyo': 'YOYÓ',
+    'pozo': 'POZO',
+    'well': 'POZO',
+    'cubo': 'CUBO',
+    'bucket': 'CUBO',
+    'tronco': 'TRONCO',
+    'log': 'TRONCO',
+    'piedra': 'PIEDRA',
+    'rock': 'PIEDRA',
+    'stone': 'PIEDRA',
+    'sapo': 'SAPO',
+    'toad': 'SAPO',
+    'paracaídas': 'PARACAÍDAS',
+    'paracaidas': 'PARACAÍDAS',
+    'parachute': 'PARACAÍDAS'
+  };
+
+  function normalizeKey(str) {
+    if (!str || typeof str !== 'string') return '';
+    return str.trim().toLowerCase().replace(/^svg:/, '');
+  }
+
+  function getSvg(keyOrWord) {
+    var raw = normalizeKey(keyOrWord);
+    var canonical = KEY_MAP[raw] || KEY_MAP[raw.toUpperCase()] || (SVGS[raw.toUpperCase()] ? raw.toUpperCase() : null);
+    if (canonical && SVGS[canonical]) {
+      return SVGS[canonical];
+    }
+    return null;
+  }
+
+  function hasSvg(keyOrWord) {
+    return !!getSvg(keyOrWord);
+  }
+
+  function escapeHtml(str) {
+    if (!str && str !== 0) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
+  function renderVisual(emojiOrToken, wordHint) {
+    var val = emojiOrToken || '';
+    // 1. Probar por token explícito si empieza por 'svg:' o coincide con una clave
+    var svg = getSvg(val);
+    if (!svg && wordHint) {
+      // 2. Probar por palabra de referencia (ej. word === 'MESA' o 'NUDO')
+      svg = getSvg(wordHint);
+    }
+    if (svg) {
+      return svg;
+    }
+    // 3. Fallback a emoji estándar encapsulado con escape HTML estricto (INV-READ-5)
+    return '<span class="reading-emoji-char">' + escapeHtml(val) + '</span>';
+  }
+
+  return {
+    SVGS: SVGS,
+    KEY_MAP: KEY_MAP,
+    getSvg: getSvg,
+    hasSvg: hasSvg,
+    renderVisual: renderVisual
+  };
+});
 
 // apps/reading/engine.js - Motor determinista de lectura, PRNG por semilla, PPM/WPM, evaluación ortográfica (Ñ !== N) y pistas visuales
 (function(window) {
@@ -8700,6 +9436,16 @@ window.READING_CATALOG = {
       `</div>`;
   }
 
+  function renderVisualToken(emojiOrToken, wordHint) {
+    if (typeof window !== 'undefined' && window.ReadingIllustrations && typeof window.ReadingIllustrations.renderVisual === 'function') {
+      return window.ReadingIllustrations.renderVisual(emojiOrToken, wordHint);
+    }
+    if (typeof globalThis !== 'undefined' && globalThis.ReadingIllustrations && typeof globalThis.ReadingIllustrations.renderVisual === 'function') {
+      return globalThis.ReadingIllustrations.renderVisual(emojiOrToken, wordHint);
+    }
+    return `<span class="hint-emoji">${escapeHtml(emojiOrToken || '')}</span>`;
+  }
+
   /**
    * Genera HTML seguro (anti-XSS) para la pista visual didáctica de cada nivel.
    */
@@ -8713,12 +9459,12 @@ window.READING_CATALOG = {
     }
 
     if (challenge.levelId === 'l1') {
-      const safeEmoji = escapeHtml(challenge.emoji || '');
+      const visualHtml = renderVisualToken(challenge.emoji || '', challenge.anchorWord || challenge.prompt || '');
       const safeAnchor = escapeHtml(challenge.anchorWord || challenge.prompt || '');
       const safeTarget = escapeHtml(challenge.prompt || '');
       const tipLabel = safeLang === 'en' ? 'Starts with:' : 'Empieza por:';
       return `<div class="visual-hint-box">` +
-        `<span class="hint-emoji">${safeEmoji}</span>` +
+        `<span class="hint-emoji-wrap">${visualHtml}</span>` +
         `<span class="hint-text">${escapeHtml(tipLabel)} <strong class="syl-a">${safeTarget}</strong> (${safeAnchor})</span>` +
         `</div>`;
     }
@@ -8734,10 +9480,10 @@ window.READING_CATALOG = {
 
     if (challenge.levelId === 'l4') {
       const sylHtml = renderSyllableTokens(challenge.syllables || [challenge.prompt], true);
-      const safeEmoji = escapeHtml(challenge.emoji || '');
+      const visualHtml = renderVisualToken(challenge.emoji || '', challenge.prompt || '');
       const clueLabel = safeLang === 'en' ? 'Visual clue unlocked:' : 'Pista visual desbloqueada:';
       return `<div class="visual-hint-box">` +
-        `<div class="hint-caption">${escapeHtml(clueLabel)} <span class="hint-emoji">${safeEmoji}</span></div>` +
+        `<div class="hint-caption">${escapeHtml(clueLabel)} <span class="hint-emoji-wrap">${visualHtml}</span></div>` +
         `${sylHtml}` +
         `</div>`;
     }
@@ -8749,6 +9495,210 @@ window.READING_CATALOG = {
     return `<div class="visual-hint-box"><div class="hint-caption">${escapeHtml(tipText)}</div></div>`;
   }
 
+  /**
+   * Calcula estrellas de dominio (0 a 3) según la puntuación obtenida.
+   * >= 1400: 3 estrellas (⭐⭐⭐)
+   * >= 900:  2 estrellas (⭐⭐☆)
+   * >= 400:  1 estrella  (⭐☆☆)
+   * < 400:   0 estrellas (☆☆☆)
+   */
+  function computeStarsForScore(score) {
+    const s = Number(score) || 0;
+    if (s >= 1400) return 3;
+    if (s >= 900) return 2;
+    if (s >= 400) return 1;
+    return 0;
+  }
+
+  /**
+   * Extrae y normaliza palabras personalizadas desde parámetros URL o inputs de texto.
+   * Filtra tokens de 2 a 18 letras alfabéticas preservando Ñ y vocales acentuadas.
+   * Máximo 20 palabras, sin duplicados e inmune a inyecciones XSS (INV-READ-5).
+   */
+  function parseCustomWordsParam(rawStr) {
+    if (!rawStr || typeof rawStr !== 'string') return [];
+    const tokens = rawStr.split(/[\s,;|]+/);
+    const seen = new Set();
+    const result = [];
+
+    for (const token of tokens) {
+      if (!token) continue;
+      const cleaned = token.replace(/[^a-zA-ZáéíóúÁÉÍÓÚüÜñÑ]/g, '').toUpperCase();
+      if (cleaned.length >= 2 && cleaned.length <= 18 && !seen.has(cleaned)) {
+        seen.add(cleaned);
+        result.push(cleaned);
+        if (result.length >= 20) break;
+      }
+    }
+    return result;
+  }
+
+  /**
+   * Heurística determinista de separación silábica para español / general.
+   * Garantiza estrictamente que syllables.join('') === word (INV-READ-1).
+   */
+  function heuristicHyphenate(word, lang = 'es') {
+    const w = String(word || '').trim().toUpperCase();
+    if (w.length <= 2) return [w];
+
+    const VOWELS = new Set(['A', 'E', 'I', 'O', 'U', 'Á', 'É', 'Í', 'Ó', 'Ú', 'Ü', 'Y']);
+    const STRONG_VOWELS = new Set(['A', 'E', 'O', 'Á', 'É', 'Ó', 'Í', 'Ú']);
+    const INSEPARABLE = new Set([
+      'CH', 'LL', 'RR',
+      'BL', 'BR', 'CL', 'CR', 'DR', 'FL', 'FR', 'GL', 'GR', 'PL', 'PR', 'TR'
+    ]);
+
+    const vowelIndices = [];
+    for (let i = 0; i < w.length; i++) {
+      if (VOWELS.has(w[i])) {
+        vowelIndices.push(i);
+      }
+    }
+
+    if (vowelIndices.length <= 1) {
+      return [w];
+    }
+
+    const splitPoints = [];
+    for (let vi = 0; vi < vowelIndices.length - 1; vi++) {
+      const v1 = vowelIndices[vi];
+      const v2 = vowelIndices[vi + 1];
+      const consLen = v2 - v1 - 1;
+
+      if (consLen === 0) {
+        const c1 = w[v1];
+        const c2 = w[v2];
+        if (STRONG_VOWELS.has(c1) && STRONG_VOWELS.has(c2)) {
+          splitPoints.push(v1);
+        }
+      } else if (consLen === 1) {
+        splitPoints.push(v1);
+      } else if (consLen === 2) {
+        const cluster = w.slice(v1 + 1, v2);
+        if (INSEPARABLE.has(cluster)) {
+          splitPoints.push(v1);
+        } else {
+          splitPoints.push(v1 + 1);
+        }
+      } else if (consLen === 3) {
+        const lastTwo = w.slice(v2 - 2, v2);
+        if (INSEPARABLE.has(lastTwo)) {
+          splitPoints.push(v1 + 1);
+        } else {
+          splitPoints.push(v1 + 2);
+        }
+      } else {
+        splitPoints.push(v1 + 2);
+      }
+    }
+
+    if (splitPoints.length === 0) return [w];
+
+    const syllables = [];
+    let start = 0;
+    for (const sp of splitPoints) {
+      const syl = w.slice(start, sp + 1);
+      if (syl) syllables.push(syl);
+      start = sp + 1;
+    }
+    const lastSyl = w.slice(start);
+    if (lastSyl) syllables.push(lastSyl);
+
+    if (syllables.join('') !== w) {
+      return [w];
+    }
+    return syllables;
+  }
+
+  /**
+   * Obtiene sílabas e ilustración para una palabra personalizada:
+   * 1. Si existe en el catálogo, reutiliza sus sílabas canónicas y emoji/SVG.
+   * 2. Si es una palabra libre, aplica partición silábica determinista (INV-READ-1).
+   */
+  function splitCustomSyllables(word, lang = 'es') {
+    const rawWord = String(word || '').trim().toUpperCase();
+    if (!rawWord) return { syllables: [], emoji: '⭐' };
+
+    const safeLang = (lang === 'en') ? 'en' : 'es';
+    let catalogObj = null;
+    try {
+      catalogObj = (typeof getCatalog === 'function') ? getCatalog() : (window.READING_CATALOG || globalThis.READING_CATALOG);
+    } catch {
+      catalogObj = (typeof window !== 'undefined' && window.READING_CATALOG) || (typeof globalThis !== 'undefined' && globalThis.READING_CATALOG);
+    }
+
+    if (catalogObj && catalogObj.wordBank && catalogObj.wordBank[safeLang]) {
+      const wb = catalogObj.wordBank[safeLang];
+      const pools = [wb.l2, wb.l3, wb.l4].filter(Boolean);
+      for (const pool of pools) {
+        const match = pool.find(item => item && item.word && item.word.toUpperCase() === rawWord);
+        if (match && Array.isArray(match.syllables) && match.syllables.length > 0) {
+          return {
+            syllables: match.syllables.slice(),
+            emoji: match.emoji || '⭐'
+          };
+        }
+      }
+    }
+
+    const syllables = heuristicHyphenate(rawWord, safeLang);
+    return {
+      syllables,
+      emoji: '⭐'
+    };
+  }
+
+  /**
+   * Genera un reto dinámico de tipo 'fill_letters' (Nivel 3 con teclado 3D táctil)
+   * a partir del listado de palabras personalizadas (Modo Mis Palabras).
+   */
+  function generateCustomChallenge(customWords, lang = 'es', rng = null, recentIds = null) {
+    const safeLang = (lang === 'en') ? 'en' : 'es';
+    const safeRng = (typeof rng === 'function') ? rng : Math.random;
+    const words = Array.isArray(customWords) && customWords.length > 0 ? customWords : ['LECTURA'];
+
+    let pool = words;
+    if (Array.isArray(recentIds) && recentIds.length > 0 && words.length > recentIds.length) {
+      const excluded = new Set(recentIds);
+      const filtered = words.filter(w => !excluded.has(`custom_${w}`));
+      if (filtered.length > 0) pool = filtered;
+    }
+
+    const pickedWord = pickRandom(pool, safeRng).toUpperCase();
+    const sylData = splitCustomSyllables(pickedWord, safeLang);
+    const syllables = sylData.syllables;
+    const emoji = sylData.emoji;
+
+    const len = pickedWord.length;
+    const missingCount = len >= 5 ? 2 : 1;
+    const indices = [];
+    for (let i = 0; i < len; i++) indices.push(i);
+    const shuffledIndices = shuffleArray(indices, safeRng);
+    const missingIndices = shuffledIndices.slice(0, missingCount).sort((a, b) => a - b);
+
+    const maskedSlots = missingIndices.map(idx => ({
+      index: idx,
+      expected: pickedWord.charAt(idx)
+    }));
+
+    const keyboardChars = buildKeyboardChars(pickedWord, missingIndices, safeLang, safeRng);
+
+    return {
+      id: `custom_${pickedWord}`,
+      levelId: 'l3',
+      lang: safeLang,
+      kind: 'fill_letters',
+      prompt: pickedWord,
+      syllables,
+      emoji,
+      wordCount: 1,
+      missingIndices,
+      maskedSlots,
+      keyboardChars,
+      isCustomWord: true
+    };
+  }
+
   const ReadingEngine = {
     createSeededRng,
     escapeHtml,
@@ -8756,16 +9706,24 @@ window.READING_CATALOG = {
     normalizeChar,
     computeWpm,
     computeRoundScore,
+    computeStarsForScore,
+    parseCustomWordsParam,
+    splitCustomSyllables,
+    generateCustomChallenge,
     generateChallenge,
     evaluateChallenge,
     renderSyllableTokens,
     renderVisualHint
   };
 
-  window.ReadingEngine = ReadingEngine;
-})(window);
+  const root = typeof window !== 'undefined' ? window : (typeof globalThis !== 'undefined' ? globalThis : this);
+  root.ReadingEngine = ReadingEngine;
+  if (typeof module === 'object' && module.exports) {
+    module.exports = ReadingEngine;
+  }
+})(typeof window !== 'undefined' ? window : globalThis);
 
-// apps/reading/audio.js - Sintetizador Web Audio 8-bit, Web Speech TTS Dual (1.0x / 0.65x tortuga) y confeti en Canvas
+// apps/reading/audio.js - Sintetizador Web Audio 8-bit, Web Speech TTS Dual (1.0x / 0.5x tortuga) y confeti en Canvas
 (function(window) {
   'use strict';
 
@@ -8867,7 +9825,7 @@ window.READING_CATALOG = {
 
     /**
      * Pronuncia un texto usando Web Speech API nativa sin llamadas a la nube (INV-READ-3).
-     * Soporta velocidad normal (1.0x) y modo tortuga (0.65x).
+     * Soporta velocidad normal (1.0x) y modo tortuga (0.5x).
      * Resiliente si window.speechSynthesis o SpeechSynthesisUtterance no existen.
      */
     speakText: function(text, lang = 'es', rate = 1.0) {
@@ -8880,7 +9838,7 @@ window.READING_CATALOG = {
 
         const UtteranceClass = window.SpeechSynthesisUtterance;
         const utterance = new UtteranceClass(String(text));
-        utterance.rate = Math.max(0.5, Math.min(2.0, Number(rate) || 1.0));
+        utterance.rate = Math.max(0.45, Math.min(2.0, Number(rate) || 1.0));
         utterance.pitch = 1.0;
 
         const normLang = String(lang || 'es').toLowerCase();
@@ -8985,7 +9943,7 @@ window.READING_CATALOG = {
   const audio = window.ReadingAudio;
   const esc = engine.escapeHtml;
 
-  const APP_VERSION = 'v1.0.0';
+  const APP_VERSION = 'v1.1.0';
   const TOTAL_ROUNDS = 10;
 
   // Estado global de UI y pedagogía
@@ -8998,6 +9956,10 @@ window.READING_CATALOG = {
   let colorSyllables = true;
   let learnSlowMode = false;
   let activeMixerIndex = 0;
+  let customWordsList = [];
+  let resetConfirmPending = false;
+  let resetConfirmTimer = null;
+  let karaokeTimeouts = [];
 
   // Estado de partida activa
   let inGame = false;
@@ -9044,13 +10006,18 @@ window.READING_CATALOG = {
       highScores: {},
       bestWpm: 0,
       bestStreakEver: 0,
-      unlockedMedals: []
+      unlockedMedals: [],
+      customName: ''
     };
   }
 
   function sanitizeStats(raw) {
     const clean = createEmptyStats();
     if (!raw || typeof raw !== 'object') return clean;
+
+    if (raw.customName && typeof raw.customName === 'string') {
+      clean.customName = raw.customName.slice(0, 28).trim();
+    }
 
     if (raw.highScores && typeof raw.highScores === 'object') {
       const validLevels = ['l1', 'l2', 'l3', 'l4', 'l5', 'l6'];
@@ -9181,6 +10148,16 @@ window.READING_CATALOG = {
     const queryDate = params.get('date');
     if (queryDate && /^\d{4}-\d{2}-\d{2}$/.test(queryDate)) {
       dailyDateParam = queryDate;
+    }
+
+    const queryWords = params.get('words');
+    if (queryWords && engine && typeof engine.parseCustomWordsParam === 'function') {
+      customWordsList = engine.parseCustomWordsParam(queryWords);
+    }
+
+    const queryTab = params.get('tab');
+    if (queryTab && ['play', 'learn', 'achievements'].includes(queryTab)) {
+      activeTab = queryTab;
     }
   }
 
@@ -9377,13 +10354,22 @@ window.READING_CATALOG = {
         <div class="card">
           <h2 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 8px;">${esc(t('choose_level'))}</h2>
           <div class="levels-grid">
-            ${catalog.levels.map(lvl => `
-              <div class="selectable-item ${selectedLevel === lvl.id ? 'selected' : ''}" data-level="${esc(lvl.id)}">
-                <div style="font-size: 1.8rem; margin-bottom: 4px;">${esc(lvl.icon)}</div>
-                <strong style="display: block; font-size: 1.05rem;">${esc(lvl.name[lang])}</strong>
-                <span style="font-size: 0.85rem; color: var(--text-secondary); display: block; margin-top: 4px;">${esc(lvl.desc[lang])}</span>
-              </div>
-            `).join('')}
+            ${catalog.levels.map(lvl => {
+              const bestScore = userStats.highScores[lvl.id] || 0;
+              const stars = engine.computeStarsForScore(bestScore);
+              const starsGlyph = '⭐'.repeat(stars) + '☆'.repeat(3 - stars);
+              return `
+                <div class="selectable-item ${selectedLevel === lvl.id ? 'selected' : ''}" data-level="${esc(lvl.id)}">
+                  <div style="font-size: 1.8rem; margin-bottom: 4px;">${esc(lvl.icon)}</div>
+                  <strong style="display: block; font-size: 1.05rem;">${esc(lvl.name[lang])}</strong>
+                  <span style="font-size: 0.85rem; color: var(--text-secondary); display: block; margin-top: 4px;">${esc(lvl.desc[lang])}</span>
+                  <div class="level-stars-badge" title="${stars}/3 estrellas">
+                    <span>${starsGlyph}</span>
+                    ${bestScore > 0 ? `<span style="font-size: 0.8rem; color: var(--text-muted); margin-left: 4px;">${bestScore} pts</span>` : ''}
+                  </div>
+                </div>
+              `;
+            }).join('')}
           </div>
 
           <h2 style="font-size: 1.4rem; font-weight: 800; margin: 24px 0 8px;">${esc(t('choose_mode'))}</h2>
@@ -9395,6 +10381,28 @@ window.READING_CATALOG = {
                 <span style="font-size: 0.85rem; color: var(--text-secondary); display: block; margin-top: 4px;">${esc(m.desc[lang])}</span>
               </div>
             `).join('')}
+          </div>
+
+          <div class="custom-words-panel">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+              <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-primary); margin:0;">${esc(t('custom_words_title'))}</h3>
+              ${customWordsList.length > 0 ? `<span class="custom-words-badge">${esc(t('custom_words_active_badge'))} (${customWordsList.length})</span>` : ''}
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 6px 0 8px;">${esc(t('custom_words_desc'))}</p>
+            <input id="custom-words-input" type="text" class="custom-words-input" placeholder="${esc(t('custom_words_placeholder'))}" value="${esc(customWordsList.join(', '))}" />
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <button id="btn-apply-custom-words" class="btn-arcade btn-arcade-primary" style="font-size: 0.9rem; padding: 8px 16px;">
+                ${esc(t('custom_words_apply'))}
+              </button>
+              ${customWordsList.length > 0 ? `
+                <button id="btn-clear-custom-words" class="btn-arcade" style="font-size: 0.9rem; padding: 8px 16px;">
+                  ${esc(t('custom_words_clear'))}
+                </button>
+                <button id="btn-share-custom-words" class="btn-arcade" style="font-size: 0.9rem; padding: 8px 16px;">
+                  ${esc(t('custom_words_share'))}
+                </button>
+              ` : ''}
+            </div>
           </div>
 
           <div style="text-align: center; margin-top: 30px;">
@@ -9420,12 +10428,62 @@ window.READING_CATALOG = {
           renderPlayTab();
         };
       });
+
+      const applyWordsBtn = document.getElementById('btn-apply-custom-words');
+      if (applyWordsBtn) {
+        applyWordsBtn.onclick = () => {
+          audio.playClick();
+          const inputEl = document.getElementById('custom-words-input');
+          if (inputEl) {
+            const parsed = engine.parseCustomWordsParam(inputEl.value);
+            if (parsed.length > 0) {
+              customWordsList = parsed;
+              showToast(`${t('custom_words_active_badge')} (${parsed.length})`);
+            } else {
+              customWordsList = [];
+            }
+            renderPlayTab();
+          }
+        };
+      }
+
+      const clearWordsBtn = document.getElementById('btn-clear-custom-words');
+      if (clearWordsBtn) {
+        clearWordsBtn.onclick = () => {
+          audio.playClick();
+          customWordsList = [];
+          renderPlayTab();
+        };
+      }
+
+      const shareWordsBtn = document.getElementById('btn-share-custom-words');
+      if (shareWordsBtn) {
+        shareWordsBtn.onclick = () => {
+          audio.playClick();
+          const url = `${window.location.origin}${window.location.pathname}?words=${encodeURIComponent(customWordsList.join(','))}`;
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(url)
+              .then(() => showToast(t('custom_words_copied')))
+              .catch(() => showToast(t('custom_words_copied')));
+          } else {
+            showToast(t('custom_words_copied'));
+          }
+        };
+      }
+
       const startBtn = document.getElementById('btn-start');
       if (startBtn) startBtn.onclick = startGameSession;
       return;
     }
 
     renderActiveGame(container);
+  }
+
+  function renderVisual(emojiOrToken, wordHint) {
+    if (typeof window !== 'undefined' && window.ReadingIllustrations && typeof window.ReadingIllustrations.renderVisual === 'function') {
+      return window.ReadingIllustrations.renderVisual(emojiOrToken, wordHint);
+    }
+    return `<span class="reading-emoji-char">${esc(emojiOrToken || '')}</span>`;
   }
 
   function renderActiveStageContent() {
@@ -9444,7 +10502,7 @@ window.READING_CATALOG = {
       const promptLabel = lang === 'es' ? '¿Con qué letra o sílaba empieza?' : 'Starts with which letter?';
 
       return `
-        <div class="reading-emoji-anchor" aria-hidden="true">${esc(ch.emoji || '')}</div>
+        <div class="reading-emoji-anchor" aria-hidden="true">${renderVisual(ch.emoji, ch.anchorWord || ch.prompt)}</div>
         <div class="reading-word-hero ${useUpperCase ? 'case-upper' : ''}">
           <span class="syl-a" style="border-bottom: 4px solid var(--op-add); padding: 0 6px;">?</span><span>${esc(formatWordCase(restWord))}</span>
         </div>
@@ -9462,7 +10520,7 @@ window.READING_CATALOG = {
     if (ch.levelId === 'l2') {
       const promptLabel = lang === 'es' ? 'Elige la palabra correcta para esta imagen:' : 'Pick the word matching this picture:';
       return `
-        <div class="reading-emoji-anchor" aria-hidden="true">${esc(ch.emoji || '')}</div>
+        <div class="reading-emoji-anchor" aria-hidden="true">${renderVisual(ch.emoji, ch.prompt)}</div>
         <div style="font-size: 0.95rem; color: var(--text-secondary); font-weight: 600;">${esc(promptLabel)}</div>
         <div class="choices-grid">
           ${(ch.choices || []).map((c, idx) => `
@@ -9494,7 +10552,7 @@ window.READING_CATALOG = {
       }).join('');
 
       return `
-        <div class="reading-emoji-anchor" aria-hidden="true">${esc(ch.emoji || '')}</div>
+        <div class="reading-emoji-anchor" aria-hidden="true">${renderVisual(ch.emoji, ch.prompt)}</div>
         <div style="font-size: 0.9rem; color: var(--text-secondary); font-weight: 600;">${esc(t('keyboard_tap_hint'))}</div>
         <div class="letter-slots-container ${useUpperCase ? 'case-upper' : ''}">
           ${slotsHtml}
@@ -9547,7 +10605,7 @@ window.READING_CATALOG = {
     // Estado 2 tras congelar cronómetro: Micro-Check de Comprensión
     const mc = ch.microCheck || { question: '', options: [] };
     return `
-      ${ch.levelId === 'l4' && ch.emoji ? `<div class="reading-emoji-anchor" style="font-size: 3rem;" aria-hidden="true">${esc(ch.emoji)}</div>` : ''}
+      ${ch.levelId === 'l4' && ch.emoji ? `<div class="reading-emoji-anchor" style="font-size: 3rem;" aria-hidden="true">${renderVisual(ch.emoji, ch.prompt)}</div>` : ''}
       <div class="micro-check-card">
         <div style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--op-add); margin-bottom: 6px;">
           ${esc(t('micro_check_title'))}
@@ -9556,7 +10614,7 @@ window.READING_CATALOG = {
         <div class="micro-check-options">
           ${(mc.options || []).map((opt, idx) => `
             <button class="micro-check-btn" data-mc-idx="${idx}" ${inFeedbackPause ? 'disabled' : ''}>
-              <span style="font-size: 1.5rem;">${esc(opt.icon || opt.emoji || '')}</span>
+              <span class="mc-icon-wrap" style="font-size: 1.5rem; display: inline-flex; align-items: center;">${renderVisual(opt.icon || opt.emoji || '', opt.label)}</span>
               <span>${esc(opt.label)}</span>
             </button>
           `).join('')}
@@ -9622,6 +10680,9 @@ window.READING_CATALOG = {
           <button id="btn-toggle-hint" class="btn-arcade" style="background: var(--bg-inset);">
             ${esc(isHintVisible ? t('hide_hint') : t('visual_hint'))}
           </button>
+          <button id="btn-listen-normal" class="btn-arcade" style="background: var(--bg-inset);">
+            🔊 ${esc(t('listen_normal_btn'))}
+          </button>
           <button id="btn-listen-slow" class="btn-arcade" style="background: var(--bg-inset);">
             🐢 ${esc(t('listen_slow_btn'))}
           </button>
@@ -9655,6 +10716,19 @@ window.READING_CATALOG = {
     const hintBtn = document.getElementById('btn-toggle-hint');
     if (hintBtn) hintBtn.onclick = toggleVisualHint;
 
+    const listenNormalBtn = document.getElementById('btn-listen-normal');
+    if (listenNormalBtn) {
+      listenNormalBtn.onclick = () => {
+        if (!currentChallenge || inFeedbackPause) return;
+        hintUsedThisRound = true;
+        const textToSpeak = currentChallenge.levelId === 'l1'
+          ? `${currentChallenge.prompt}. ${currentChallenge.anchorWord || ''}`
+          : currentChallenge.prompt;
+        audio.speakText(textToSpeak, lang, 1.0);
+        triggerSyllableKaraoke(1.0);
+      };
+    }
+
     const listenSlowBtn = document.getElementById('btn-listen-slow');
     if (listenSlowBtn) {
       listenSlowBtn.onclick = () => {
@@ -9663,7 +10737,8 @@ window.READING_CATALOG = {
         const textToSpeak = currentChallenge.levelId === 'l1'
           ? `${currentChallenge.prompt}. ${currentChallenge.anchorWord || ''}`
           : currentChallenge.prompt;
-        audio.speakText(textToSpeak, lang, 0.65);
+        audio.speakText(textToSpeak, lang, 0.5);
+        triggerSyllableKaraoke(0.5);
       };
     }
 
@@ -9686,7 +10761,7 @@ window.READING_CATALOG = {
         const elapsed = Math.max(400, Math.round(performance.now() - roundStartMs));
         freezeClockOnly(elapsed);
         const evalRes = engine.evaluateChallenge(currentChallenge, choice, lang);
-        handleChallengeResult(evalRes.isCorrect, false, evalRes.correctDisplay, elapsed, 0, evalRes.userDisplay);
+        handleChallengeResult(evalRes.isCorrect, false, evalRes.correctDisplay, elapsed, frozenWpm, evalRes.userDisplay);
       };
     });
 
@@ -9754,13 +10829,39 @@ window.READING_CATALOG = {
     }
   }
 
+  function triggerSyllableKaraoke(rate) {
+    karaokeTimeouts.forEach(t => clearTimeout(t));
+    karaokeTimeouts = [];
+    document.querySelectorAll('.karaoke-active').forEach(el => el.classList.remove('karaoke-active'));
+
+    let targets = Array.from(document.querySelectorAll('.reading-stage .syl-token, .reading-stage .syl-a, .reading-stage .syl-b, .reading-stage .letter-slot'));
+    if (targets.length === 0) {
+      targets = Array.from(document.querySelectorAll('.reading-stage .reading-sentence-line, .reading-stage .reading-word-hero'));
+    }
+    if (targets.length === 0) return;
+
+    const stepMs = rate <= 0.6 ? 620 : 320;
+    targets.forEach((el, idx) => {
+      const tStart = setTimeout(() => {
+        targets.forEach(t => t.classList.remove('karaoke-active'));
+        el.classList.add('karaoke-active');
+      }, idx * stepMs);
+
+      const tEnd = setTimeout(() => {
+        el.classList.remove('karaoke-active');
+      }, (idx + 1) * stepMs);
+
+      karaokeTimeouts.push(tStart, tEnd);
+    });
+  }
+
   function freezeClockOnly(elapsedMs) {
     if (selectedMode !== 'sprint') {
       clearInterval(timerInterval);
     }
     frozenElapsedMs = elapsedMs;
-    const isSentence = currentChallenge && (currentChallenge.levelId === 'l5' || currentChallenge.levelId === 'l6');
-    frozenWpm = isSentence ? engine.computeWpm(currentChallenge.wordCount, elapsedMs) : 0;
+    const count = (currentChallenge && currentChallenge.wordCount) || 1;
+    frozenWpm = currentChallenge ? engine.computeWpm(count, elapsedMs) : 0;
   }
 
   function handleReadDone() {
@@ -9799,7 +10900,7 @@ window.READING_CATALOG = {
       freezeClockOnly(elapsed);
       renderActiveGame(document.getElementById('tab-content'));
       const evalRes = engine.evaluateChallenge(currentChallenge, filledSlots, lang);
-      handleChallengeResult(evalRes.isCorrect, false, evalRes.correctDisplay, elapsed, 0, evalRes.userDisplay);
+      handleChallengeResult(evalRes.isCorrect, false, evalRes.correctDisplay, elapsed, frozenWpm, evalRes.userDisplay);
     } else {
       activeSlotCursor = nextEmpty;
       renderActiveGame(document.getElementById('tab-content'));
@@ -9838,7 +10939,7 @@ window.READING_CATALOG = {
     const elapsed = Math.max(400, Math.round(performance.now() - roundStartMs));
     freezeClockOnly(elapsed);
     const evalRes = engine.evaluateChallenge(currentChallenge, filledSlots, lang);
-    handleChallengeResult(evalRes.isCorrect, false, evalRes.correctDisplay, elapsed, 0, evalRes.userDisplay);
+    handleChallengeResult(evalRes.isCorrect, false, evalRes.correctDisplay, elapsed, frozenWpm, evalRes.userDisplay);
   }
 
   function handleChallengeResult(isCorrect, isSkipped, correctDisplay, elapsedMs, roundWpm, userDisplay) {
@@ -9990,7 +11091,11 @@ window.READING_CATALOG = {
     activeSlotCursor = 0;
 
     const prng = (selectedMode === 'daily' && typeof dailyRng === 'function') ? dailyRng : null;
-    currentChallenge = engine.generateChallenge(selectedLevel, lang, prng, recentIds);
+    if (customWordsList && customWordsList.length > 0) {
+      currentChallenge = engine.generateCustomChallenge(customWordsList, lang, prng, recentIds);
+    } else {
+      currentChallenge = engine.generateChallenge(selectedLevel, lang, prng, recentIds);
+    }
     if (currentChallenge && currentChallenge.id) {
       recentIds.push(currentChallenge.id);
       if (recentIds.length > 10) recentIds.shift();
@@ -10093,6 +11198,7 @@ window.READING_CATALOG = {
     const wpmList = roundHistory.map(r => r.wpm).filter(w => w > 0);
     const avgWpm = wpmList.length > 0 ? Math.round(wpmList.reduce((a, b) => a + b, 0) / wpmList.length) : 0;
     const maxWpmSession = wpmList.length > 0 ? Math.max(...wpmList) : 0;
+    const effectiveWpm = Math.round(avgWpm * (accuracy / 100));
 
     // Tira Wordle (🟩 Acierto limpio, 💡 Acierto con pista, 🟥 Fallo)
     const emojiStrip = roundHistory.map(r => {
@@ -10158,6 +11264,7 @@ window.READING_CATALOG = {
           <div class="stat-chip" style="font-size: 1.1rem; padding: 10px 18px;">🎯 ${esc(t('accuracy'))}: <strong>${accuracy}%</strong></div>
           <div class="stat-chip" style="font-size: 1.1rem; padding: 10px 18px;">🔥 ${esc(t('best_streak'))}: <strong>${bestStreak}</strong></div>
           ${avgWpm > 0 ? `<div class="stat-chip" style="font-size: 1.1rem; padding: 10px 18px;">⏱️ ${esc(t('wpm_label'))}: <strong>${avgWpm} (${lang === 'es' ? 'Máx' : 'Max'} ${maxWpmSession})</strong></div>` : ''}
+          ${avgWpm > 0 ? `<div class="stat-chip" style="font-size: 1.1rem; padding: 10px 18px;">🎯 ${esc(t('effective_wpm_label'))}: <strong>${effectiveWpm} ${esc(t('wpm_label'))}</strong></div>` : ''}
         </div>
 
         ${emojiStrip ? `
@@ -10170,6 +11277,9 @@ window.READING_CATALOG = {
           </button>
           <button id="btn-again" class="btn-arcade btn-arcade-primary" style="font-size: 1.05rem; padding: 12px 22px;">
             ${esc(t('play_again'))}
+          </button>
+          <button id="btn-download-sheet" class="btn-arcade btn-arcade-sheet" style="font-size: 1.05rem; padding: 12px 22px;">
+            ${esc(t('download_sheet_btn'))}
           </button>
           <button id="btn-finish-diploma" class="btn-arcade btn-arcade-diploma" style="font-size: 1.05rem; padding: 12px 22px;">
             ${esc(t('download_diploma_btn'))}
@@ -10189,6 +11299,9 @@ window.READING_CATALOG = {
 
     const againBtn = document.getElementById('btn-again');
     if (againBtn) againBtn.onclick = startGameSession;
+
+    const sheetBtn = document.getElementById('btn-download-sheet');
+    if (sheetBtn) sheetBtn.onclick = downloadPracticeSheet;
 
     const diplomaBtn = document.getElementById('btn-finish-diploma');
     if (diplomaBtn) diplomaBtn.onclick = downloadReadingDiploma;
@@ -10232,7 +11345,7 @@ window.READING_CATALOG = {
         const idx = Number(btn.getAttribute('data-mistake-idx'));
         const item = mistakes[idx];
         if (item && item.challenge) {
-          audio.speakText(item.challenge.prompt, lang, 0.65);
+          audio.speakText(item.challenge.prompt, lang, 0.5);
         }
       };
     });
@@ -10282,7 +11395,7 @@ window.READING_CATALOG = {
           ${(mods.letters || []).map((item, idx) => `
             <button class="phonics-card" data-speak-text="${esc(item.letter + '. ' + item.anchor)}" data-card-idx="${idx}">
               <div class="phonics-letter ${useUpperCase ? 'case-upper' : ''}">${esc(formatWordCase(item.letter))}</div>
-              <div class="phonics-emoji" aria-hidden="true">${esc(item.emoji)}</div>
+              <div class="phonics-emoji" aria-hidden="true">${renderVisual(item.emoji, item.anchor)}</div>
               <div class="phonics-anchor ${useUpperCase ? 'case-upper' : ''}">${esc(useUpperCase ? item.anchor.toUpperCase() : item.anchor)}</div>
               <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">${esc(item.sound)}</div>
             </button>
@@ -10317,7 +11430,7 @@ window.READING_CATALOG = {
                     <div class="phonics-letter ${useUpperCase ? 'case-upper' : ''}">
                       <span class="syl-a">${esc(consPart)}</span><span class="syl-b">${esc(vowelPart)}</span>
                     </div>
-                    <div class="phonics-emoji" aria-hidden="true">${esc(sylObj.emoji)}</div>
+                    <div class="phonics-emoji" aria-hidden="true">${renderVisual(sylObj.emoji, sylObj.word)}</div>
                     <div class="phonics-anchor ${useUpperCase ? 'case-upper' : ''}">${esc(useUpperCase ? sylObj.word.toUpperCase() : sylObj.word)}</div>
                   </button>
                 `;
@@ -10354,7 +11467,7 @@ window.READING_CATALOG = {
                     <div class="phonics-letter ${useUpperCase ? 'case-upper' : ''}">
                       <span class="syl-a">${esc(onset)}</span><span class="syl-b">${esc(rimePart)}</span>
                     </div>
-                    <div class="phonics-emoji" aria-hidden="true">${esc(wObj.emoji)}</div>
+                    <div class="phonics-emoji" aria-hidden="true">${renderVisual(wObj.emoji, wObj.word)}</div>
                   </button>
                 `;
               }).join('')}
@@ -10372,7 +11485,7 @@ window.READING_CATALOG = {
                 ${(mods.inverseSyllables || []).flatMap(g => g.syllables || []).map(item => `
                   <button class="phonics-card" data-speak-text="${esc(item.syllable.toLowerCase() + ', ' + item.word)}">
                     <div class="phonics-letter syl-complex ${useUpperCase ? 'case-upper' : ''}">${esc(formatWordCase(item.syllable))}</div>
-                    <div class="phonics-emoji" aria-hidden="true">${esc(item.emoji)}</div>
+                    <div class="phonics-emoji" aria-hidden="true">${renderVisual(item.emoji, item.word)}</div>
                     <div class="phonics-anchor">${esc(useUpperCase ? item.word.toUpperCase() : item.word)}</div>
                   </button>
                 `).join('')}
@@ -10385,7 +11498,7 @@ window.READING_CATALOG = {
                 ${(mods.complexSyllables || []).map(item => `
                   <button class="phonics-card" data-speak-text="${esc(item.syllable.toLowerCase() + ', ' + item.word)}">
                     <div class="phonics-letter ${useUpperCase ? 'case-upper' : ''}" style="color: var(--op-add);">${esc(formatWordCase(item.syllable))}</div>
-                    <div class="phonics-emoji" aria-hidden="true">${esc(item.emoji)}</div>
+                    <div class="phonics-emoji" aria-hidden="true">${renderVisual(item.emoji, item.word)}</div>
                     <div class="phonics-anchor">${esc(useUpperCase ? item.word.toUpperCase() : item.word)}</div>
                   </button>
                 `).join('')}
@@ -10421,7 +11534,7 @@ window.READING_CATALOG = {
                 ${(mods.blends || []).map(item => `
                   <button class="phonics-card" data-speak-text="${esc(item.word)}">
                     <div class="phonics-letter ${useUpperCase ? 'case-upper' : ''}">${esc(formatWordCase(item.blend))}</div>
-                    <div class="phonics-emoji" aria-hidden="true">${esc(item.emoji)}</div>
+                    <div class="phonics-emoji" aria-hidden="true">${renderVisual(item.emoji, item.word)}</div>
                     <div class="phonics-anchor">${esc(useUpperCase ? item.word.toUpperCase() : item.word)}</div>
                   </button>
                 `).join('')}
@@ -10434,7 +11547,7 @@ window.READING_CATALOG = {
                 ${(mods.digraphs || []).map(item => `
                   <button class="phonics-card" data-speak-text="${esc(item.word)}">
                     <div class="phonics-letter syl-complex ${useUpperCase ? 'case-upper' : ''}">${esc(formatWordCase(item.digraph))}</div>
-                    <div class="phonics-emoji" aria-hidden="true">${esc(item.emoji)}</div>
+                    <div class="phonics-emoji" aria-hidden="true">${renderVisual(item.emoji, item.word)}</div>
                     <div class="phonics-anchor">${esc(useUpperCase ? item.word.toUpperCase() : item.word)}</div>
                     <div style="font-size:0.75rem; color:var(--text-muted);">${esc(item.sound)}</div>
                   </button>
@@ -10448,7 +11561,7 @@ window.READING_CATALOG = {
                 ${(mods.vowelTeams || []).map(item => `
                   <button class="phonics-card" data-speak-text="${esc(item.word)}">
                     <div class="phonics-letter syl-b ${useUpperCase ? 'case-upper' : ''}">${esc(formatWordCase(item.pattern))}</div>
-                    <div class="phonics-emoji" aria-hidden="true">${esc(item.emoji)}</div>
+                    <div class="phonics-emoji" aria-hidden="true">${renderVisual(item.emoji, item.word)}</div>
                     <div class="phonics-anchor">${esc(useUpperCase ? item.word.toUpperCase() : item.word)}</div>
                     <div style="font-size:0.75rem; color:var(--text-muted);">${esc(item.sound)}</div>
                   </button>
@@ -10480,8 +11593,8 @@ window.READING_CATALOG = {
                 <button class="btn-arcade btn-arcade-primary btn-workshop-speak" data-rate="1.0" data-ws-idx="${idx}">
                   🔊 ${esc(t('listen_btn'))} (1.0x)
                 </button>
-                <button class="btn-arcade btn-workshop-speak" data-rate="0.65" data-ws-idx="${idx}">
-                  🐢 ${esc(t('listen_slow_btn'))} (0.65x)
+                <button class="btn-arcade btn-workshop-speak" data-rate="0.5" data-ws-idx="${idx}">
+                  🐢 ${esc(t('listen_slow_btn'))} (0.5x)
                 </button>
               </div>
             </div>
@@ -10504,7 +11617,7 @@ window.READING_CATALOG = {
             🔊 1.0x ${lang === 'es' ? 'Normal' : 'Normal'}
           </button>
           <button id="btn-learn-speed-slow" class="pedagogy-toggle-btn ${learnSlowMode ? 'active' : ''}">
-            🐢 0.65x ${lang === 'es' ? 'Despacio' : 'Turtle'}
+            🐢 0.5x ${lang === 'es' ? 'Despacio' : 'Turtle'}
           </button>
         </div>
 
@@ -10517,6 +11630,15 @@ window.READING_CATALOG = {
         </div>
 
         ${moduleContentHtml}
+
+        <div class="parents-teachers-card">
+          <h4 style="font-size:1.15rem; font-weight:800; color:var(--op-add); margin:0 0 6px;">${esc(t('parents_zone_title'))}</h4>
+          <p style="font-size:0.9rem; color:var(--text-secondary); margin:0 0 10px;">${esc(t('parents_zone_desc'))}</p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn-arcade" href="/${lang}/apps/reading/" style="font-size:0.85rem; padding:6px 14px;">${esc(t('spec_link'))}</a>
+            <a class="btn-arcade" href="${lang === 'es' ? '/es/recursos/' : '/en/resources/'}" style="font-size:0.85rem; padding:6px 14px;">${esc(t('kits_link'))}</a>
+          </div>
+        </div>
       </div>
     `;
 
@@ -10570,7 +11692,7 @@ window.READING_CATALOG = {
       btn.onclick = () => {
         audio.playClick();
         const text = btn.getAttribute('data-speak-text');
-        audio.speakText(text, lang, learnSlowMode ? 0.65 : 1.0);
+        audio.speakText(text, lang, learnSlowMode ? 0.5 : 1.0);
       };
     });
 
@@ -10632,12 +11754,27 @@ window.READING_CATALOG = {
         <div class="diploma-promo-card">
           <div style="font-size: 2.4rem; margin-bottom: 6px;">🎓</div>
           <h3 style="font-size: 1.3rem; font-weight: 800; color: #b45309; margin-bottom: 6px;">${esc(t('diploma_card_title'))}</h3>
-          <p style="font-size: 0.95rem; color: var(--text-secondary); max-width: 520px; margin: 0 auto 16px;">
+          <p style="font-size: 0.95rem; color: var(--text-secondary); max-width: 520px; margin: 0 auto 12px;">
             ${esc(t('diploma_card_desc'))}
           </p>
+          <div style="margin-bottom: 14px;">
+            <label for="diploma-custom-name" style="display:block; font-size:0.88rem; font-weight:700; color:var(--text-secondary); margin-bottom:4px;">
+              ${esc(t('diploma_name_label'))}
+            </label>
+            <input id="diploma-custom-name" type="text" maxlength="28" class="custom-words-input" style="max-width:320px; text-align:center; margin:0 auto;" placeholder="${esc(t('diploma_name_placeholder'))}" value="${esc(userStats.customName || '')}" />
+          </div>
           <button id="btn-download-diploma" class="btn-arcade btn-arcade-diploma" style="font-size: 1.05rem; padding: 10px 24px;">
             ${esc(t('download_diploma_btn'))}
           </button>
+        </div>
+
+        <div class="parents-teachers-card">
+          <h4 style="font-size:1.15rem; font-weight:800; color:var(--op-add); margin:0 0 6px;">${esc(t('parents_zone_title'))}</h4>
+          <p style="font-size:0.9rem; color:var(--text-secondary); margin:0 0 10px;">${esc(t('parents_zone_desc'))}</p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn-arcade" href="/${lang}/apps/reading/" style="font-size:0.85rem; padding:6px 14px;">${esc(t('spec_link'))}</a>
+            <a class="btn-arcade" href="${lang === 'es' ? '/es/recursos/' : '/en/resources/'}" style="font-size:0.85rem; padding:6px 14px;">${esc(t('kits_link'))}</a>
+          </div>
         </div>
 
         <div style="text-align: center; margin-top: 30px;">
@@ -10650,16 +11787,38 @@ window.READING_CATALOG = {
 
     container.innerHTML = html;
 
+    const nameInput = document.getElementById('diploma-custom-name');
+    if (nameInput) {
+      nameInput.oninput = () => {
+        userStats.customName = nameInput.value.slice(0, 28);
+        saveStats();
+      };
+    }
+
     const diplomaBtn = document.getElementById('btn-download-diploma');
     if (diplomaBtn) diplomaBtn.onclick = downloadReadingDiploma;
 
     const resetBtn = document.getElementById('btn-reset-stats');
     if (resetBtn) {
       resetBtn.onclick = () => {
-        userStats = createEmptyStats();
-        saveStats();
-        showToast(t('stats_reset_toast'));
-        renderAchievementsTab();
+        if (!resetConfirmPending) {
+          resetConfirmPending = true;
+          resetBtn.textContent = `⚠️ ${t('confirm_reset')}`;
+          resetBtn.style.background = '#dc2626';
+          if (resetConfirmTimer) clearTimeout(resetConfirmTimer);
+          resetConfirmTimer = setTimeout(() => {
+            resetConfirmPending = false;
+            resetBtn.textContent = t('clean_history');
+            resetBtn.style.background = '';
+          }, 4000);
+        } else {
+          clearTimeout(resetConfirmTimer);
+          resetConfirmPending = false;
+          userStats = createEmptyStats();
+          saveStats();
+          showToast(t('stats_reset_toast'));
+          renderAchievementsTab();
+        }
       };
     }
   }
@@ -10734,7 +11893,7 @@ window.READING_CATALOG = {
     // 4. Perfil Activo
     const profileObj = catalog.profiles ? catalog.profiles.find(p => p.id === activeProfileId) : null;
     const profileAvatar = profileObj ? profileObj.avatar : '🦁';
-    const profileName = profileObj ? profileObj.name[lang] : 'Jugador 1';
+    const profileName = (userStats.customName && userStats.customName.trim()) || (profileObj ? profileObj.name[lang] : 'Jugador 1');
     const profileTitle = profileObj ? profileObj.title[lang] : 'León Lector';
 
     ctx.fillStyle = '#ffffff';
@@ -10883,6 +12042,183 @@ window.READING_CATALOG = {
   }
 
   window.downloadReadingDiploma = downloadReadingDiploma;
+
+  // ==========================================================================
+  // Generador de Lámina Imprimible A4 PNG en Canvas 2D (INV-READ-14)
+  // ==========================================================================
+  function downloadPracticeSheet() {
+    audio.playSuccess(2);
+    showToast(t('sheet_downloaded_toast'), 3000);
+
+    const canvas = document.createElement('canvas');
+    canvas.width = 1200;
+    canvas.height = 1600;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    // 1. Fondo blanco puro
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, 1200, 1600);
+
+    // Orla exterior e interior
+    ctx.strokeStyle = '#0284c7';
+    ctx.lineWidth = 4;
+    ctx.strokeRect(30, 30, 1140, 1540);
+
+    ctx.strokeStyle = '#e2e8f0';
+    ctx.lineWidth = 1.5;
+    ctx.strokeRect(38, 38, 1124, 1524);
+
+    // 2. Cabecera
+    ctx.fillStyle = '#0284c7';
+    ctx.font = 'bold 24px system-ui, -apple-system, sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText('DATALARIA LECTOR ARCADE', 60, 80);
+
+    ctx.fillStyle = '#64748b';
+    ctx.font = '600 16px system-ui, -apple-system, sans-serif';
+    ctx.textAlign = 'right';
+    const dateStr = new Date().toLocaleDateString(lang === 'es' ? 'es-ES' : 'en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+    ctx.fillText(dateStr, 1140, 80);
+
+    // Título Principal
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#0f172a';
+    ctx.font = '800 36px system-ui, -apple-system, sans-serif';
+    ctx.fillText(
+      lang === 'es' ? 'LÁMINA IMPRIMIBLE DE REPASO Y CALIGRAFÍA' : 'PRINTABLE READING & PRACTICE WORKSHEET',
+      600,
+      140
+    );
+
+    // Datos del Alumno y Perfil
+    const profileObj = catalog.profiles ? catalog.profiles.find(p => p.id === activeProfileId) : null;
+    const profileName = (userStats.customName && userStats.customName.trim()) || (profileObj ? profileObj.name[lang] : 'Lector 1');
+    const levelObj = catalog.levels ? catalog.levels.find(l => l.id === selectedLevel) : null;
+    const levelName = levelObj ? levelObj.name[lang] : selectedLevel;
+    const accuracy = roundHistory.length > 0 ? Math.round((correctCount / roundHistory.length) * 100) : 100;
+
+    ctx.fillStyle = '#f8faff';
+    ctx.strokeStyle = '#cbd5e1';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    if (typeof ctx.roundRect === 'function') {
+      ctx.roundRect(60, 170, 1080, 80, 10);
+    } else {
+      ctx.rect(60, 170, 1080, 80);
+    }
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.textAlign = 'left';
+    ctx.fillStyle = '#1e293b';
+    ctx.font = '700 20px system-ui, -apple-system, sans-serif';
+    ctx.fillText(`${lang === 'es' ? 'Alumno/a:' : 'Student:'} ${profileName}`, 85, 218);
+    ctx.fillText(`${lang === 'es' ? 'Nivel:' : 'Level:'} ${levelName}`, 550, 218);
+    ctx.fillText(`⭐ ${score} pts · 🎯 ${accuracy}%`, 920, 218);
+
+    // 3. Tabla de Palabras de la Sesión
+    const tableTop = 290;
+    const rowHeight = 115;
+    const displayWords = roundHistory.slice(0, 10);
+
+    // Encabezado tabla
+    ctx.fillStyle = '#0284c7';
+    ctx.fillRect(60, tableTop, 1080, 42);
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 16px system-ui, -apple-system, sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText('#', 80, tableTop + 27);
+    ctx.fillText(lang === 'es' ? 'PALABRA / RETO' : 'WORD / PROMPT', 125, tableTop + 27);
+    ctx.fillText(lang === 'es' ? 'SÍLABAS' : 'SYLLABLES', 420, tableTop + 27);
+    ctx.fillText(lang === 'es' ? 'ESTADO' : 'STATUS', 650, tableTop + 27);
+    ctx.fillText(lang === 'es' ? 'PAUTA CALIGRÁFICA (PRÁCTICA A MANO)' : 'HANDWRITING PRACTICE', 800, tableTop + 27);
+
+    displayWords.forEach((item, idx) => {
+      const y = tableTop + 42 + idx * rowHeight;
+      const isAlt = idx % 2 === 1;
+      if (isAlt) {
+        ctx.fillStyle = '#f8fafc';
+        ctx.fillRect(60, y, 1080, rowHeight);
+      }
+
+      ctx.strokeStyle = '#e2e8f0';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(60, y + rowHeight);
+      ctx.lineTo(1140, y + rowHeight);
+      ctx.stroke();
+
+      // Número
+      ctx.fillStyle = '#64748b';
+      ctx.font = '700 18px system-ui, -apple-system, sans-serif';
+      ctx.fillText(String(idx + 1), 80, y + 50);
+
+      // Palabra
+      const wordText = item.challenge ? (item.challenge.prompt || '') : '';
+      ctx.fillStyle = '#0f172a';
+      ctx.font = '800 22px system-ui, -apple-system, sans-serif';
+      ctx.fillText(wordText.slice(0, 18), 125, y + 50);
+
+      // Sílabas
+      let sylStr = '';
+      if (item.challenge && Array.isArray(item.challenge.syllables)) {
+        sylStr = item.challenge.syllables.join(' · ');
+      } else {
+        const sylObj = engine.splitCustomSyllables(wordText, lang);
+        sylStr = (sylObj.syllables || []).join(' · ');
+      }
+      ctx.fillStyle = '#0284c7';
+      ctx.font = '700 18px monospace';
+      ctx.fillText(sylStr.slice(0, 20), 420, y + 50);
+
+      // Resultado
+      ctx.fillStyle = item.isCorrect ? '#16a34a' : '#dc2626';
+      ctx.font = '700 16px system-ui, -apple-system, sans-serif';
+      ctx.fillText(item.isCorrect ? '✓ Acierto' : '✗ Repasar', 650, y + 50);
+
+      // Pauta caligráfica (guías dobles para escritura a mano)
+      ctx.strokeStyle = '#cbd5e1';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(800, y + 60);
+      ctx.lineTo(1100, y + 60);
+      ctx.stroke();
+
+      ctx.strokeStyle = '#94a3b8';
+      ctx.lineWidth = 1.5;
+      ctx.setLineDash([4, 4]);
+      ctx.beginPath();
+      ctx.moveTo(800, y + 40);
+      ctx.lineTo(1100, y + 40);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    });
+
+    // 4. Pie de página institucional
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#64748b';
+    ctx.font = '600 14px system-ui, -apple-system, sans-serif';
+    ctx.fillText('Datalaria Lector Arcade · Material de Apoyo a la Lectoescritura Infantil y Familiar · Sin publicidad · https://datalaria.com', 600, 1540);
+
+    try {
+      const dataUrl = canvas.toDataURL('image/png');
+      const a = document.createElement('a');
+      a.href = dataUrl;
+      a.download = `lamina_repaso_lector_arcade_${activeProfileId}_${new Date().toISOString().slice(0, 10)}.png`;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => document.body.removeChild(a), 300);
+    } catch {
+      showToast(lang === 'es' ? 'Error al exportar lámina imprimible' : 'Failed to export practice sheet', 2500);
+    }
+  }
+
+  window.downloadPracticeSheet = downloadPracticeSheet;
 
   // ==========================================================================
   // Sonido, Tema y PWA (INV-READ-8, INV-READ-9)

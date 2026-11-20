@@ -1,7 +1,7 @@
 """
 Tests automatizados para la resolución de enlaces Markdown e imágenes en Autopilot (Dev.to).
 Verifica que las rutas relativas se transformen determinísticamente a URLs canónicas
-de https://datalaria.com y que los assets locales apunten a GitHub Raw.
+de https://datalaria.com y que las imágenes y assets de bundle apunten a https://www.datalaria.com.
 """
 
 import pytest
@@ -44,8 +44,8 @@ def test_resolve_hugo_ref_shortcodes():
 def test_resolve_downloadable_assets():
     content = "[Descargar PPTX](Nanobanana_ingenieria.pptx) y [Descargar DOCX](report.docx)"
     result = resolve_markdown_links(content, "content/es/posts/mi-post/index.md", lang="es")
-    expected_pptx = "https://raw.githubusercontent.com/Dalaez/datalaria-website/main/content/es/posts/mi-post/Nanobanana_ingenieria.pptx"
-    expected_docx = "https://raw.githubusercontent.com/Dalaez/datalaria-website/main/content/es/posts/mi-post/report.docx"
+    expected_pptx = "https://www.datalaria.com/es/posts/mi-post/Nanobanana_ingenieria.pptx"
+    expected_docx = "https://www.datalaria.com/es/posts/mi-post/report.docx"
     assert f"[Descargar PPTX]({expected_pptx})" in result
     assert f"[Descargar DOCX]({expected_docx})" in result
 
@@ -65,8 +65,8 @@ def test_nested_image_within_link_and_standalone_image():
     # Luego resolver enlaces
     final_result = resolve_markdown_links(with_images, "content/es/posts/mi-post/index.md", lang="es")
 
-    expected_banner = "https://raw.githubusercontent.com/Dalaez/datalaria-website/main/content/es/posts/mi-post/banner.png"
-    expected_diagram = "https://raw.githubusercontent.com/Dalaez/datalaria-website/main/content/es/posts/mi-post/diagram.png"
+    expected_banner = "https://www.datalaria.com/es/posts/mi-post/banner.png"
+    expected_diagram = "https://www.datalaria.com/es/posts/mi-post/diagram.png"
     
     assert f"[![App Banner]({expected_banner})](https://datalaria.com/es/apps/lifeops/)" in final_result
     assert f"![Standalone]({expected_diagram})" in final_result

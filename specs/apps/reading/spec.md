@@ -25,6 +25,7 @@
 ### 1.2 Gobernanza Editorial y Estrategia Dual-Mode (Constitución Art. 3 y Art. 7)
 - **Ejecución 100% Client-Side Offline (Sandbox Instantáneo 24x7):** La aplicación funciona íntegramente en el navegador como PWA instalable sin registro, sin APIs externas, sin servidores backend y sin pantallas `OFFLINE`.
 - **Embargo Editorial (`App Activa ⇔ Post Publicado`):** Permanecerá en estado `status: incubating` (`draft: true` en fichas `/apps/reading/`) hasta su lanzamiento editorial conjunto en la **2.ª–3.ª semana de diciembre de 2026** (`launch_date: "2026-12-16"`).
+- **Producto Comercial Descargable (Dual-Mode EdTech):** El kit comercial descargable para familias y centros educativos (`packages/reading/Kit_Imprimible_Lector_Arcade_Dual.zip`) es generado de forma determinista mediante `ops/reading/build_printable_kit.py`, integrando 120 Flashcards recortables en PDF, Cuaderno de Lectoescritura A4 de 6 niveles en PDF y Tracker Excel Docente/Familiar con fórmulas de fluidez lectora, manteniéndose staged y bajo embargo para Lemon Squeezy.
 
 ---
 
@@ -85,6 +86,7 @@ flowchart TD
 | `apps/reading/manifest.json` | Manifiesto PWA instalable (`start_url: "/apps/reading/"`, `display: "standalone"`, iconos `any` y `maskable`). |
 | `apps/reading/sw.js` | Service Worker offline (`CACHE_NAME = 'datalaria-reading-v1.0.0'`, `PRECACHE_ASSETS`, `skipWaiting`). |
 | `apps/reading/tests/test_reading_engine.py` | Suite `pytest` + Node.js verificando `INV-READ-1..12`. |
+| `ops/reading/build_printable_kit.py` | Generador determinista del Kit Imprimible Comercial ZIP (`PyMuPDF` + `openpyxl`) con Flashcards PDF, Cuaderno A4 y Tracker Excel. |
 | `specs/apps/reading/design.md` | Contrato visual UX/UI (`DESIGN-APP-READING`). |
 
 ### 3.2 Contratos de Datos en Cliente (`catalog.js` / `engine.js`)
@@ -145,7 +147,7 @@ export interface ProfileStats {
 1. **Letras y Sonidos:** Vocales + consonantes con toggle `AA / Aa` y ejemplo ilustrado (`A ➔ 🐝 Abeja`).
 2. **Sílabas Sencillas:** Mesa de Mezclas Silábica (`C + V` en ES / CVC Onset-Rime en EN).
 3. **Sílabas Complejas:** Inversas (`AL..UL`), Trabadas (`PLA, BRA, TRA...`) y Dígrafos/Reglas (`CH, LL, RR, QU, GUE/GUI, CE/CI, Ñ` en ES; `bl/st/tr`, `sh/ch/th/wh`, `magic-e` en EN).
-4. **Taller de Frases:** Entonación y pausas en `,`, `.`, `¿?`, `¡!` con lectura modelo (`1.0x` y `0.65x`).
+4. **Taller de Frases:** Entonación y pausas en `,`, `.`, `¿?`, `¡!` con lectura modelo (`1.0x` y `0.5x`).
 
 ---
 
@@ -157,13 +159,20 @@ export interface ProfileStats {
 1. **Velocidad Lectora (`computeWpm(wordCount, elapsedMs)`):**
    - Cláusula de guarda anti-división por cero o pulsación accidental: `elapsedSec = Math.max(0.4, elapsedMs / 1000)` y si `wordCount <= 0` devuelve `0`.
    - Fórmula: `Math.min(350, Math.round((wordCount * 60) / elapsedSec))`.
-2. **Puntuación de Ronda (`computeRoundScore({ mode, streak, usedHint, elapsedMs, targetSec })`):**
+2. **Fluidez Efectiva (`effectiveWpm`):**
+   - Métrica combinada de velocidad y comprensión: `effectiveWpm = Math.round(avgWpm * (accuracy / 100))`.
+3. **Puntuación de Ronda (`computeRoundScore({ mode, streak, usedHint, elapsedMs, targetSec })`):**
    - `base = 100`
    - `speedBonus = (mode === 'stopwatch' || mode === 'daily') ? Math.round(Math.max(0, targetSec - (elapsedMs / 1000)) * 12) : 0`
    - `multiplier = streak >= 5 ? 3 : (streak >= 3 ? 2 : 1)`
    - `cleanBonus = usedHint ? 0 : 20`
    - Total: `Math.round((base + speedBonus) * multiplier) + cleanBonus`.
-3. **Normalización Ortográfica Protegiendo `Ñ/ñ` (`normalizeAnswer(str)`):**
+4. **Estrellas de Dominio (`computeStarsForScore(score)`):**
+   - `score >= 1400` $\rightarrow$ 3 estrellas (`⭐⭐⭐`).
+   - `score >= 900` $\rightarrow$ 2 estrellas (`⭐⭐☆`).
+   - `score >= 400` $\rightarrow$ 1 estrella (`⭐☆☆`).
+   - `< 400` $\rightarrow$ 0 estrellas (`☆☆☆`).
+5. **Normalización Ortográfica Protegiendo `Ñ/ñ` (`normalizeAnswer(str)`):**
    - Sustituir temporalmente `Ñ/ñ` por un token centinela (`\u0001`), aplicar `.normalize('NFD').replace(/[\u0300-\u036f]/g, '')` para tolerar tildes opcionales (`Á -> A`), restaurar el centinela a `Ñ`, y convertir a `.toUpperCase().trim()`. De este modo `normalizeAnswer('piña') === 'PIÑA'` y `normalizeAnswer('PIÑA') !== normalizeAnswer('PINA')`.
 
 ---
@@ -182,6 +191,14 @@ export interface ProfileStats {
 - **`INV-READ-10` (Semilla Diaria Determinista y Repaso de Fallos):** `createSeededRng('YYYY-MM-DD_level')` genera secuencias reproducibles en `daily`; tira Wordle (`🟩`/`💡`/`🟥`) y *Mistake Review* al concluir la partida.
 - **`INV-READ-11` (Perfiles Familiares Aislados y Diploma PNG):** Perfiles aislados en `localStorage` (`datalaria_reading_v1_stats_<profileId>`) incluyendo `bestWpm`, y generador `downloadReadingDiploma()` en `<canvas>` 2D (`1200×800`).
 - **`INV-READ-12` (Integridad `Ñ/ñ` y Ergonomía Pedagógica):** Preservación estricta `Ñ !== N` en evaluación ortográfica, botones táctiles $\ge 48\times48\text{ px}$ y toggles `AA/Aa` + `🎨 Sílabas`.
+- **`INV-READ-13` (Compatibilidad Visual Universal e Ilustraciones SVG Inline):** Prohibido el uso de emojis pertenecientes a bloques Unicode $\ge 12.0$ que rendericen como glifos vacíos (tofu `□`) en sistemas operativos comunes o presenten *semantic mismatches* (ej. `MESA` con silla `🪑`). Todo concepto léxico sin representación emoji universal Unicode $\le 11.0$ o con riesgo visual se resuelve mediante ilustraciones vectoriales SVG inline optimizadas (`viewBox="0 0 120 120"`, clase `.reading-svg-icon`) expuestas por `window.ReadingIllustrations` (`apps/reading/illustrations.js`). El audio tortuga opera a velocidad exacta `0.5x`.
+- **`INV-READ-14` (Mejoras In-App de Producto, Fluidez y Lámina Imprimible):** 
+  1. El cálculo de velocidad lectora en modo contrarreloj (`computeWpm`) se aplica a todos los niveles (`l1` a `l6`), derivando además las **PPM Efectivas** ($\text{round}(\text{PPM}_{\text{avg}} \times \text{Precisión})$) al finalizar la partida.
+  2. En el escenario activo de juego se provee botón dual de audio **`🔊 1.0x`** y **`🐢 0.5x`** con resaltado fonético secuencial tipo **Karaoke Silábico** (`.karaoke-active`).
+  3. Cada tarjeta de nivel en la pantalla principal muestra sus **Estrellas de Dominio (`⭐⭐⭐`)** según `computeStarsForScore(bestScore)`.
+  4. Modo **"✏️ Mis Palabras"** activable por input o parámetro URL `?words=...` con filtrado estricto anti-XSS (`INV-READ-5`), preservación de la `Ñ/ñ` y generación dinámica de retos `fill_letters`.
+  5. Personalización opcional del nombre del alumno en el Diploma PNG (`1200×800`) y botón para exportar la **Lámina de Repaso Imprimible A4 PNG** (`1200×1600`) mediante `downloadPracticeSheet()`.
+  6. Confirmación de seguridad en 2 toques para el reinicio de estadísticas.
 
 ---
 
@@ -229,5 +246,6 @@ Para considerar válido cualquier hito de `apps/reading/`, deben pasar con códi
 
 | Versión | Fecha | Tipo | Cambios | Commit(s) |
 | :--- | :--- | :--- | :--- | :--- |
-| `v1.0.0` | `2026-11-17` *(estreno `2026-12-16`)* | 🚀 Lanzamiento | Hitos R.1 a R.7 completados: Construcción completa de Lector Arcade (`apps/reading/`), 6 niveles curriculares adaptativos (`l1`–`l6`), 4 modos de juego (Normal, Contrarreloj Split con cálculo PPM, Sprint 60s, Reto Diario determinista), Laboratorio Fonético bilingüe ES/EN con Mesa de Mezclas, Web Audio 8-bit + TTS bilingüe nativo (1.0x / 0.65x), teclado táctil 3D, 3 perfiles locales aislados, Diploma Arcade PNG (1200x800), PWA offline con precaché, ficha técnica (`data/apps/reading.yaml`) y portadas oficiales (`cover.png`). | *Hitos R.1–R.7* |
+| `v1.1.0` | `2026-11-19` *(estreno `2026-12-16`)* | 🚀 Feature | Hitos R.8 y R.9: Saneamiento Léxico completo y librería vectorial SVG `illustrations.js` (`INV-READ-13`); Audio dual en partida `1.0x` / `0.5x` con karaoke silábico sincronizado; cálculo universal de PPM en `l1`–`l6` y PPM efectivas; 3 estrellas de dominio por nivel (`computeStarsForScore`); modo «Mis Palabras» (`?words=...`) con retos dinámicos; nombre personalizado en diploma PNG; generador de Lámina de Repaso Imprimible A4 PNG (`downloadPracticeSheet`), confirmación en 2 toques para reset y tarjeta «Zona Padres y Docentes» (`INV-READ-14`). | *Hitos R.8–R.9* |
+| `v1.0.0` | `2026-11-17` *(estreno `2026-12-16`)* | 🚀 Lanzamiento | Hitos R.1 a R.7 completados: Construcción completa de Lector Arcade (`apps/reading/`), 6 niveles curriculares adaptativos (`l1`–`l6`), 4 modos de juego (Normal, Contrarreloj Split con cálculo PPM, Sprint 60s, Reto Diario determinista), Laboratorio Fonético bilingüe ES/EN con Mesa de Mezclas, Web Audio 8-bit + TTS bilingüe nativo (1.0x / 0.5x), teclado táctil 3D, 3 perfiles locales aislados, Diploma Arcade PNG (1200x800), PWA offline con precaché, ficha técnica (`data/apps/reading.yaml`) y portadas oficiales (`cover.png`). | *Hitos R.1–R.7* |
 | `v0.1.0` | `2026-11-17` | 📐 Spec | Hito R.1: Aprobación de `SPEC-APP-READING`, `DESIGN-APP-READING` y `ADR-029`. | *Hito R.1* |

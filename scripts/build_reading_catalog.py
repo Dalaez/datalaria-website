@@ -204,8 +204,8 @@ learnModules = {
             {"letter": "L", "sound": "ele", "anchor": "Luna", "emoji": "🌙"},
             {"letter": "T", "sound": "te", "anchor": "Tomate", "emoji": "🍅"},
             {"letter": "D", "sound": "de", "anchor": "Dado", "emoji": "🎲"},
-            {"letter": "N", "sound": "ene", "anchor": "Nido", "emoji": "🪺"},
-            {"letter": "F", "sound": "efe", "anchor": "Foca", "emoji": "🦭"},
+            {"letter": "N", "sound": "ene", "anchor": "Nido", "emoji": "svg:nido"},
+            {"letter": "F", "sound": "efe", "anchor": "Foca", "emoji": "svg:foca"},
             {"letter": "B", "sound": "be", "anchor": "Barco", "emoji": "⛵"},
             {"letter": "C", "sound": "ce", "anchor": "Casa", "emoji": "🏠"},
             {"letter": "R", "sound": "erre", "anchor": "Ratón", "emoji": "🐭"},
@@ -213,27 +213,27 @@ learnModules = {
             {"letter": "J", "sound": "jota", "anchor": "Jirafa", "emoji": "🦒"},
             {"letter": "V", "sound": "uve", "anchor": "Vaca", "emoji": "🐄"},
             {"letter": "Z", "sound": "zeta", "anchor": "Zapato", "emoji": "👟"},
-            {"letter": "Ñ", "sound": "eñe", "anchor": "Ñandú", "emoji": "🦤"}
+            {"letter": "Ñ", "sound": "eñe", "anchor": "Ñandú", "emoji": "svg:ñandú"}
         ],
         "directSyllables": [
             {"consonant": "M", "syllables": [
                 {"syllable": "MA", "word": "Mano", "emoji": "✋"},
-                {"syllable": "ME", "word": "Mesa", "emoji": "🪑"},
+                {"syllable": "ME", "word": "Mesa", "emoji": "svg:mesa"},
                 {"syllable": "MI", "word": "Miel", "emoji": "🍯"},
                 {"syllable": "MO", "word": "Moto", "emoji": "🛵"},
                 {"syllable": "MU", "word": "Muela", "emoji": "🦷"}
             ]},
             {"consonant": "P", "syllables": [
                 {"syllable": "PA", "word": "Pato", "emoji": "🦆"},
-                {"syllable": "PE", "word": "Pelo", "emoji": "💇"},
+                {"syllable": "PE", "word": "Pera", "emoji": "🍐"},
                 {"syllable": "PI", "word": "Pino", "emoji": "🌲"},
-                {"syllable": "PO", "word": "Pozo", "emoji": "🪣"},
+                {"syllable": "PO", "word": "Pollo", "emoji": "🐥"},
                 {"syllable": "PU", "word": "Puente", "emoji": "🌉"}
             ]},
             {"consonant": "S", "syllables": [
                 {"syllable": "SA", "word": "Sapo", "emoji": "🐸"},
                 {"syllable": "SE", "word": "Seta", "emoji": "🍄"},
-                {"syllable": "SI", "word": "Silla", "emoji": "🪑"},
+                {"syllable": "SI", "word": "Silla", "emoji": "💺"},
                 {"syllable": "SO", "word": "Sopa", "emoji": "🍲"},
                 {"syllable": "SU", "word": "Suma", "emoji": "➕"}
             ]},
@@ -255,13 +255,13 @@ learnModules = {
                 {"syllable": "DA", "word": "Dado", "emoji": "🎲"},
                 {"syllable": "DE", "word": "Dedo", "emoji": "☝️"},
                 {"syllable": "DI", "word": "Diente", "emoji": "🦷"},
-                {"syllable": "DO", "word": "Dominó", "emoji": "🁛"},
+                {"syllable": "DO", "word": "Dona", "emoji": "🍩"},
                 {"syllable": "DU", "word": "Ducha", "emoji": "🚿"}
             ]},
             {"consonant": "N", "syllables": [
                 {"syllable": "NA", "word": "Naranja", "emoji": "🍊"},
                 {"syllable": "NE", "word": "Nieve", "emoji": "❄️"},
-                {"syllable": "NI", "word": "Nido", "emoji": "🪺"},
+                {"syllable": "NI", "word": "Nido", "emoji": "svg:nido"},
                 {"syllable": "NO", "word": "Noche", "emoji": "🌃"},
                 {"syllable": "NU", "word": "Nube", "emoji": "☁️"}
             ]},
@@ -269,7 +269,7 @@ learnModules = {
                 {"syllable": "FA", "word": "Faro", "emoji": "🗼"},
                 {"syllable": "FE", "word": "Feliz", "emoji": "😄"},
                 {"syllable": "FI", "word": "Fila", "emoji": "🚶"},
-                {"syllable": "FO", "word": "Foca", "emoji": "🦭"},
+                {"syllable": "FO", "word": "Foca", "emoji": "svg:foca"},
                 {"syllable": "FU", "word": "Fuego", "emoji": "🔥"}
             ]},
             {"consonant": "B", "syllables": [
@@ -289,12 +289,12 @@ learnModules = {
                 {"syllable": "RE", "word": "Reloj", "emoji": "⏰"},
                 {"syllable": "RI", "word": "Río", "emoji": "🏞️"},
                 {"syllable": "RO", "word": "Rosa", "emoji": "🌹"},
-                {"syllable": "RU", "word": "Rueda", "emoji": "🛞"}
+                {"syllable": "RU", "word": "Rueda", "emoji": "svg:rueda"}
             ]}
         ],
         "inverseSyllables": [
             {"group": "-L", "syllables": [{"syllable": "AL", "word": "Alto", "emoji": "🦒"}, {"syllable": "EL", "word": "Elfo", "emoji": "🧝"}, {"syllable": "OL", "word": "Olla", "emoji": "🍲"}, {"syllable": "UL", "word": "Último", "emoji": "🏁"}]},
-            {"group": "-S", "syllables": [{"syllable": "AS", "word": "Astro", "emoji": "⭐"}, {"syllable": "ES", "word": "Escuela", "emoji": "🏫"}, {"syllable": "IS", "word": "Isla", "emoji": "🏝️"}, {"syllable": "OS", "word": "Ostra", "emoji": "🦪"}]},
+            {"group": "-S", "syllables": [{"syllable": "AS", "word": "Astro", "emoji": "⭐"}, {"syllable": "ES", "word": "Escuela", "emoji": "🏫"}, {"syllable": "IS", "word": "Isla", "emoji": "🏝️"}, {"syllable": "OS", "word": "Ostra", "emoji": "🐚"}]},
             {"group": "-R", "syllables": [{"syllable": "AR", "word": "Árbol", "emoji": "🌳"}, {"syllable": "ER", "word": "Erizo", "emoji": "🦔"}, {"syllable": "OR", "word": "Orquesta", "emoji": "🎻"}, {"syllable": "UR", "word": "Urna", "emoji": "🗳️"}]},
             {"group": "-N", "syllables": [{"syllable": "AN", "word": "Antena", "emoji": "📡"}, {"syllable": "EN", "word": "Enano", "emoji": "🧙"}, {"syllable": "IN", "word": "Indio", "emoji": "🏹"}, {"syllable": "ON", "word": "Onda", "emoji": "🌊"}]}
         ],
@@ -304,7 +304,7 @@ learnModules = {
             {"prefix": "TR-", "syllable": "TRA", "word": "Tractor", "emoji": "🚜"},
             {"prefix": "CR-", "syllable": "CRA", "word": "Crayón", "emoji": "🖍️"},
             {"prefix": "FR-", "syllable": "FRA", "word": "Fresa", "emoji": "🍓"},
-            {"prefix": "GR-", "syllable": "GRA", "word": "Granja", "emoji": "🚜"},
+            {"prefix": "GR-", "syllable": "GRA", "word": "Granja", "emoji": "🏡"},
             {"prefix": "DR-", "syllable": "DRA", "word": "Dragón", "emoji": "🐉"},
             {"prefix": "BL-", "syllable": "BLA", "word": "Blanco", "emoji": "⬜"}
         ],
@@ -334,12 +334,12 @@ learnModules = {
             {"letter": "F", "sound": "/f/", "anchor": "Fish", "emoji": "🐟"},
             {"letter": "G", "sound": "/g/", "anchor": "Goat", "emoji": "🐐"},
             {"letter": "H", "sound": "/h/", "anchor": "Hat", "emoji": "🎩"},
-            {"letter": "I", "sound": "/ɪ/", "anchor": "Igloo", "emoji": "🛖"},
+            {"letter": "I", "sound": "/ɪ/", "anchor": "Igloo", "emoji": "svg:iglu"},
             {"letter": "J", "sound": "/dʒ/", "anchor": "Jug", "emoji": "🏺"},
-            {"letter": "K", "sound": "/k/", "anchor": "Kite", "emoji": "🪁"},
+            {"letter": "K", "sound": "/k/", "anchor": "Kite", "emoji": "svg:cometa"},
             {"letter": "L", "sound": "/l/", "anchor": "Lion", "emoji": "🦁"},
             {"letter": "M", "sound": "/m/", "anchor": "Moon", "emoji": "🌙"},
-            {"letter": "N", "sound": "/n/", "anchor": "Nest", "emoji": "🪺"},
+            {"letter": "N", "sound": "/n/", "anchor": "Nest", "emoji": "svg:nido"},
             {"letter": "O", "sound": "/ɒ/", "anchor": "Octopus", "emoji": "🐙"},
             {"letter": "P", "sound": "/p/", "anchor": "Pig", "emoji": "🐷"},
             {"letter": "Q", "sound": "/kw/", "anchor": "Queen", "emoji": "👑"},
@@ -349,13 +349,13 @@ learnModules = {
             {"letter": "U", "sound": "/ʌ/", "anchor": "Umbrella", "emoji": "☂️"},
             {"letter": "V", "sound": "/v/", "anchor": "Van", "emoji": "🚐"},
             {"letter": "W", "sound": "/w/", "anchor": "Watch", "emoji": "⌚"},
-            {"letter": "Y", "sound": "/j/", "anchor": "Yo-yo", "emoji": "🪀"},
+            {"letter": "Y", "sound": "/j/", "anchor": "Yo-yo", "emoji": "svg:yoyo"},
             {"letter": "Z", "sound": "/z/", "anchor": "Zebra", "emoji": "🦓"}
         ],
         "cvcRimes": [
             {"rime": "-AT", "words": [{"word": "CAT", "emoji": "🐱"}, {"word": "BAT", "emoji": "🦇"}, {"word": "HAT", "emoji": "🎩"}]},
             {"rime": "-UN", "words": [{"word": "SUN", "emoji": "☀️"}, {"word": "RUN", "emoji": "🏃"}, {"word": "BUN", "emoji": "🥯"}]},
-            {"rime": "-OG", "words": [{"word": "DOG", "emoji": "🐶"}, {"word": "FROG", "emoji": "🐸"}, {"word": "LOG", "emoji": "🪵"}]},
+            {"rime": "-OG", "words": [{"word": "DOG", "emoji": "🐶"}, {"word": "FROG", "emoji": "🐸"}, {"word": "LOG", "emoji": "svg:tronco"}]},
             {"rime": "-IN", "words": [{"word": "PIN", "emoji": "📌"}, {"word": "WIN", "emoji": "🏆"}, {"word": "BIN", "emoji": "🗑️"}]},
             {"rime": "-ET", "words": [{"word": "NET", "emoji": "🥅"}, {"word": "PET", "emoji": "🐕"}, {"word": "WET", "emoji": "💧"}]},
             {"rime": "-OP", "words": [{"word": "TOP", "emoji": "🔝"}, {"word": "HOP", "emoji": "🦘"}, {"word": "MOP", "emoji": "🧹"}]},
@@ -373,7 +373,7 @@ learnModules = {
         ],
         "digraphs": [
             {"digraph": "SH", "sound": "/ʃ/", "word": "SHIP", "emoji": "🚢"},
-            {"digraph": "CH", "sound": "/tʃ/", "word": "CHAIR", "emoji": "🪑"},
+            {"digraph": "CH", "sound": "/tʃ/", "word": "CHAIR", "emoji": "💺"},
             {"digraph": "TH", "sound": "/θ/", "word": "THUMB", "emoji": "👍"},
             {"digraph": "PH", "sound": "/f/", "word": "PHONE", "emoji": "📱"},
             {"digraph": "WH", "sound": "/w/", "word": "WHALE", "emoji": "🐋"},
@@ -405,8 +405,8 @@ wordBank_es = {
         {"id": "es_l1_04", "target": "L", "anchorWord": "LUNA", "emoji": "🌙", "distractors": ["F", "C", "T"]},
         {"id": "es_l1_05", "target": "T", "anchorWord": "TOMATE", "emoji": "🍅", "distractors": ["D", "P", "B"]},
         {"id": "es_l1_06", "target": "D", "anchorWord": "DADO", "emoji": "🎲", "distractors": ["T", "B", "M"]},
-        {"id": "es_l1_07", "target": "N", "anchorWord": "NIDO", "emoji": "🪺", "distractors": ["M", "L", "S"]},
-        {"id": "es_l1_08", "target": "F", "anchorWord": "FOCA", "emoji": "🦭", "distractors": ["T", "P", "S"]},
+        {"id": "es_l1_07", "target": "N", "anchorWord": "NIDO", "emoji": "svg:nido", "distractors": ["M", "L", "S"]},
+        {"id": "es_l1_08", "target": "F", "anchorWord": "FOCA", "emoji": "svg:foca", "distractors": ["T", "P", "S"]},
         {"id": "es_l1_09", "target": "B", "anchorWord": "BARCO", "emoji": "⛵", "distractors": ["D", "P", "V"]},
         {"id": "es_l1_10", "target": "C", "anchorWord": "CASA", "emoji": "🏠", "distractors": ["S", "K", "Q"]},
         {"id": "es_l1_11", "target": "R", "anchorWord": "RATON", "emoji": "🐭", "distractors": ["L", "D", "B"]},
@@ -416,7 +416,7 @@ wordBank_es = {
         {"id": "es_l1_15", "target": "Z", "anchorWord": "ZAPATO", "emoji": "👟", "distractors": ["S", "C", "D"]},
         {"id": "es_l1_16", "target": "CH", "anchorWord": "CHOCOLATE", "emoji": "🍫", "distractors": ["LL", "RR", "QU"]},
         {"id": "es_l1_17", "target": "LL", "anchorWord": "LLAVE", "emoji": "🗝️", "distractors": ["CH", "Y", "L"]},
-        {"id": "es_l1_18", "target": "Ñ", "anchorWord": "ÑANDU", "emoji": "🦤", "distractors": ["N", "M", "U"]},
+        {"id": "es_l1_18", "target": "Ñ", "anchorWord": "ÑANDU", "emoji": "svg:ñandú", "distractors": ["N", "M", "U"]},
         {"id": "es_l1_19", "target": "A", "anchorWord": "ABEJA", "emoji": "🐝", "distractors": ["E", "I", "O"]},
         {"id": "es_l1_20", "target": "E", "anchorWord": "ELEFANTE", "emoji": "🐘", "distractors": ["A", "O", "U"]},
         {"id": "es_l1_21", "target": "I", "anchorWord": "ISLA", "emoji": "🏝️", "distractors": ["E", "U", "A"]},
@@ -428,15 +428,15 @@ wordBank_es = {
         {"id": "es_l2_01", "word": "CASA", "syllables": ["CA", "SA"], "emoji": "🏠", "distractors": ["PATO", "LUNA", "MESA"]},
         {"id": "es_l2_02", "word": "PATO", "syllables": ["PA", "TO"], "emoji": "🦆", "distractors": ["GATO", "SAPO", "TORO"]},
         {"id": "es_l2_03", "word": "LUNA", "syllables": ["LU", "NA"], "emoji": "🌙", "distractors": ["CUNA", "LANA", "ROPA"]},
-        {"id": "es_l2_04", "word": "MESA", "syllables": ["ME", "SA"], "emoji": "🪑", "distractors": ["PESA", "TASA", "CASA"]},
+        {"id": "es_l2_04", "word": "MESA", "syllables": ["ME", "SA"], "emoji": "svg:mesa", "distractors": ["PESA", "TASA", "CASA"]},
         {"id": "es_l2_05", "word": "PELO", "syllables": ["PE", "LO"], "emoji": "💇", "distractors": ["PALO", "SOLO", "POLO"]},
         {"id": "es_l2_06", "word": "BOCA", "syllables": ["BO", "CA"], "emoji": "👄", "distractors": ["ROCA", "FOCA", "COCA"]},
         {"id": "es_l2_07", "word": "DADO", "syllables": ["DA", "DO"], "emoji": "🎲", "distractors": ["DEDO", "LADO", "NUDO"]},
-        {"id": "es_l2_08", "word": "FOCA", "syllables": ["FO", "CA"], "emoji": "🦭", "distractors": ["BOCA", "ROCA", "SOPA"]},
+        {"id": "es_l2_08", "word": "FOCA", "syllables": ["FO", "CA"], "emoji": "svg:foca", "distractors": ["BOCA", "ROCA", "SOPA"]},
         {"id": "es_l2_09", "word": "GATO", "syllables": ["GA", "TO"], "emoji": "🐱", "distractors": ["PATO", "RATO", "FOTO"]},
         {"id": "es_l2_10", "word": "LOBO", "syllables": ["LO", "BO"], "emoji": "🐺", "distractors": ["CUBO", "TUBO", "ROBO"]},
         {"id": "es_l2_11", "word": "MANO", "syllables": ["MA", "NO"], "emoji": "✋", "distractors": ["MONO", "CONO", "PIANO"]},
-        {"id": "es_l2_12", "word": "NIDO", "syllables": ["NI", "DO"], "emoji": "🪺", "distractors": ["NUDO", "DADO", "LODO"]},
+        {"id": "es_l2_12", "word": "NIDO", "syllables": ["NI", "DO"], "emoji": "svg:nido", "distractors": ["NUDO", "DADO", "LODO"]},
         {"id": "es_l2_13", "word": "ROPA", "syllables": ["RO", "PA"], "emoji": "👕", "distractors": ["SOPA", "COPA", "TAPA"]},
         {"id": "es_l2_14", "word": "SAPO", "syllables": ["SA", "PO"], "emoji": "🐸", "distractors": ["PATO", "GATO", "PASO"]},
         {"id": "es_l2_15", "word": "TORO", "syllables": ["TO", "RO"], "emoji": "🐂", "distractors": ["CORO", "LORO", "MURO"]},
@@ -447,22 +447,23 @@ wordBank_es = {
         {"id": "es_l2_20", "word": "BOTA", "syllables": ["BO", "TA"], "emoji": "👢", "distractors": ["GOTA", "NOTA", "ROTA"]},
         {"id": "es_l2_21", "word": "COPA", "syllables": ["CO", "PA"], "emoji": "🏆", "distractors": ["SOPA", "ROPA", "CAPA"]},
         {"id": "es_l2_22", "word": "TAZA", "syllables": ["TA", "ZA"], "emoji": "🍵", "distractors": ["CASA", "MASA", "CAZA"]},
-        {"id": "es_l2_23", "word": "VINO", "syllables": ["VI", "NO"], "emoji": "🍷", "distractors": ["PINO", "LINO", "TINO"]},
+        {"id": "es_l2_23", "word": "VELA", "syllables": ["VE", "LA"], "emoji": "🕯️", "distractors": ["TELA", "PELA", "BOLA"]},
         {"id": "es_l2_24", "word": "RANA", "syllables": ["RA", "NA"], "emoji": "🐸", "distractors": ["LANA", "CANA", "SANA"]},
         {"id": "es_l2_25", "word": "MOTO", "syllables": ["MO", "TO"], "emoji": "🛵", "distractors": ["FOTO", "ROTO", "VOTO"]},
-        {"id": "es_l2_26", "word": "PIÑA", "syllables": ["PI", "ÑA"], "emoji": "🍍", "distractors": ["NIÑA", "PEÑA", "VIÑA"]}
+        {"id": "es_l2_26", "word": "PIÑA", "syllables": ["PI", "ÑA"], "emoji": "🍍", "distractors": ["NIÑA", "PEÑA", "VIÑA"]},
+        {"id": "es_l2_27", "word": "NUDO", "syllables": ["NU", "DO"], "emoji": "svg:nudo", "distractors": ["NIDO", "LODO", "DADO"]}
     ],
     "l3": [
         {"id": "es_l3_01", "word": "CASA", "syllables": ["CA", "SA"], "emoji": "🏠", "missingIndices": [1, 3]},
         {"id": "es_l3_02", "word": "PATO", "syllables": ["PA", "TO"], "emoji": "🦆", "missingIndices": [1, 3]},
         {"id": "es_l3_03", "word": "LUNA", "syllables": ["LU", "NA"], "emoji": "🌙", "missingIndices": [1, 3]},
-        {"id": "es_l3_04", "word": "MESA", "syllables": ["ME", "SA"], "emoji": "🪑", "missingIndices": [1, 2]},
+        {"id": "es_l3_04", "word": "MESA", "syllables": ["ME", "SA"], "emoji": "svg:mesa", "missingIndices": [1, 2]},
         {"id": "es_l3_05", "word": "DADO", "syllables": ["DA", "DO"], "emoji": "🎲", "missingIndices": [0, 2]},
-        {"id": "es_l3_06", "word": "FOCA", "syllables": ["FO", "CA"], "emoji": "🦭", "missingIndices": [1, 2]},
+        {"id": "es_l3_06", "word": "FOCA", "syllables": ["FO", "CA"], "emoji": "svg:foca", "missingIndices": [1, 2]},
         {"id": "es_l3_07", "word": "GATO", "syllables": ["GA", "TO"], "emoji": "🐱", "missingIndices": [1, 3]},
         {"id": "es_l3_08", "word": "LOBO", "syllables": ["LO", "BO"], "emoji": "🐺", "missingIndices": [0, 2]},
         {"id": "es_l3_09", "word": "MANO", "syllables": ["MA", "NO"], "emoji": "✋", "missingIndices": [1, 2]},
-        {"id": "es_l3_10", "word": "NIDO", "syllables": ["NI", "DO"], "emoji": "🪺", "missingIndices": [1, 3]},
+        {"id": "es_l3_10", "word": "NIDO", "syllables": ["NI", "DO"], "emoji": "svg:nido", "missingIndices": [1, 3]},
         {"id": "es_l3_11", "word": "ROPA", "syllables": ["RO", "PA"], "emoji": "👕", "missingIndices": [0, 3]},
         {"id": "es_l3_12", "word": "SAPO", "syllables": ["SA", "PO"], "emoji": "🐸", "missingIndices": [1, 2]},
         {"id": "es_l3_13", "word": "TORO", "syllables": ["TO", "RO"], "emoji": "🐂", "missingIndices": [0, 2]},
@@ -477,7 +478,8 @@ wordBank_es = {
         {"id": "es_l3_22", "word": "PAYASO", "syllables": ["PA", "YA", "SO"], "emoji": "🤡", "missingIndices": [2, 4]},
         {"id": "es_l3_23", "word": "SIRENA", "syllables": ["SI", "RE", "NA"], "emoji": "🧜", "missingIndices": [1, 4]},
         {"id": "es_l3_24", "word": "PALOMA", "syllables": ["PA", "LO", "MA"], "emoji": "🕊️", "missingIndices": [1, 3]},
-        {"id": "es_l3_25", "word": "CORONA", "syllables": ["CO", "RO", "NA"], "emoji": "👑", "missingIndices": [1, 4]}
+        {"id": "es_l3_25", "word": "CORONA", "syllables": ["CO", "RO", "NA"], "emoji": "👑", "missingIndices": [1, 4]},
+        {"id": "es_l3_26", "word": "NUDO", "syllables": ["NU", "DO"], "emoji": "svg:nudo", "missingIndices": [1, 2]}
     ],
     "l4": [
         {
@@ -610,13 +612,13 @@ wordBank_es = {
             "id": "es_l4_10",
             "word": "PLANETA",
             "syllables": ["PLA", "NE", "TA"],
-            "emoji": "🪐",
+            "emoji": "🌍",
             "microCheck": {
                 "question": "¿Qué gran cuerpo viaja en el espacio?",
                 "options": [
-                    {"emoji": "🪐", "label": "Un planeta", "isCorrect": True},
-                    {"emoji": "🪁", "label": "Una cometa", "isCorrect": False},
-                    {"emoji": "🪂", "label": "Un paracaídas", "isCorrect": False}
+                    {"emoji": "🌍", "label": "Un planeta", "isCorrect": True},
+                    {"emoji": "svg:cometa", "label": "Una cometa", "isCorrect": False},
+                    {"emoji": "svg:paracaídas", "label": "Un paracaídas", "isCorrect": False}
                 ]
             }
         },
@@ -657,7 +659,7 @@ wordBank_es = {
                 "question": "¿Qué ser vivo tiene tronco verde y hojas?",
                 "options": [
                     {"emoji": "🌳", "label": "Un árbol", "isCorrect": True},
-                    {"emoji": "🪨", "label": "Una piedra", "isCorrect": False},
+                    {"emoji": "svg:piedra", "label": "Una piedra", "isCorrect": False},
                     {"emoji": "🍄", "label": "Una seta", "isCorrect": False}
                 ]
             }
@@ -713,7 +715,7 @@ wordBank_es = {
                 "question": "¿Dónde vivían reyes y caballeros medievales?",
                 "options": [
                     {"emoji": "🏰", "label": "Un castillo", "isCorrect": True},
-                    {"emoji": "🛖", "label": "Una choza", "isCorrect": False},
+                    {"emoji": "🏡", "label": "Una choza", "isCorrect": False},
                     {"emoji": "⛺", "label": "Una tienda de campaña", "isCorrect": False}
                 ]
             }
@@ -840,7 +842,7 @@ wordBank_es = {
                 "options": [
                     {"emoji": "🧽", "label": "Una esponja", "isCorrect": True},
                     {"emoji": "🧹", "label": "Una escoba", "isCorrect": False},
-                    {"emoji": "🪣", "label": "Un cubo", "isCorrect": False}
+                    {"emoji": "svg:cubo", "label": "Un cubo", "isCorrect": False}
                 ]
             }
         }
@@ -1054,7 +1056,7 @@ sentenceBank_es = {
                 "options": [
                     {"icon": "🏖️", "label": "Con arena mojada", "isCorrect": True},
                     {"icon": "🧱", "label": "Con bloques de piedra", "isCorrect": False},
-                    {"icon": "🪵", "label": "Con ramas secas", "isCorrect": False}
+                    {"icon": "svg:tronco", "label": "Con ramas secas", "isCorrect": False}
                 ]
             }
         },
@@ -1200,7 +1202,7 @@ sentenceBank_es = {
                 "question": "¿Qué transportan las hormigas al hormiguero?",
                 "options": [
                     {"icon": "🌱", "label": "Semillas de plantas", "isCorrect": True},
-                    {"icon": "🪨", "label": "Piedras pesadas", "isCorrect": False},
+                    {"icon": "svg:piedra", "label": "Piedras pesadas", "isCorrect": False},
                     {"icon": "💧", "label": "Gotas de rocío", "isCorrect": False}
                 ]
             }
@@ -1235,7 +1237,7 @@ sentenceBank_es = {
                 "options": [
                     {"icon": "☁️", "label": "A algodón blanco", "isCorrect": True},
                     {"icon": "🍦", "label": "A helado de fresa", "isCorrect": False},
-                    {"icon": "🪨", "label": "A piedras grises", "isCorrect": False}
+                    {"icon": "svg:piedra", "label": "A piedras grises", "isCorrect": False}
                 ]
             }
         },
@@ -1318,7 +1320,7 @@ sentenceBank_es = {
             "microCheck": {
                 "question": "¿Con qué construye su presa el ingenioso castor?",
                 "options": [
-                    {"icon": "🪵", "label": "Con ramas y barro", "isCorrect": True},
+                    {"icon": "svg:tronco", "label": "Con ramas y barro", "isCorrect": True},
                     {"icon": "🧱", "label": "Con piedras y cemento", "isCorrect": False},
                     {"icon": "🌾", "label": "Con paja seca", "isCorrect": False}
                 ]
@@ -1372,12 +1374,12 @@ wordBank_en = {
         {"id": "en_l1_06", "target": "F", "anchorWord": "FISH", "emoji": "🐟", "distractors": ["V", "P", "T"]},
         {"id": "en_l1_07", "target": "G", "anchorWord": "GOAT", "emoji": "🐐", "distractors": ["C", "J", "K"]},
         {"id": "en_l1_08", "target": "H", "anchorWord": "HAT", "emoji": "🎩", "distractors": ["N", "M", "K"]},
-        {"id": "en_l1_09", "target": "I", "anchorWord": "IGLOO", "emoji": "🛖", "distractors": ["E", "A", "O"]},
+        {"id": "en_l1_09", "target": "I", "anchorWord": "IGLOO", "emoji": "svg:iglu", "distractors": ["E", "A", "O"]},
         {"id": "en_l1_10", "target": "J", "anchorWord": "JUG", "emoji": "🏺", "distractors": ["G", "Y", "L"]},
-        {"id": "en_l1_11", "target": "K", "anchorWord": "KITE", "emoji": "🪁", "distractors": ["C", "T", "P"]},
+        {"id": "en_l1_11", "target": "K", "anchorWord": "KITE", "emoji": "svg:cometa", "distractors": ["C", "T", "P"]},
         {"id": "en_l1_12", "target": "L", "anchorWord": "LION", "emoji": "🦁", "distractors": ["I", "T", "R"]},
         {"id": "en_l1_13", "target": "M", "anchorWord": "MOON", "emoji": "🌙", "distractors": ["N", "W", "H"]},
-        {"id": "en_l1_14", "target": "N", "anchorWord": "NEST", "emoji": "🪺", "distractors": ["M", "U", "H"]},
+        {"id": "en_l1_14", "target": "N", "anchorWord": "NEST", "emoji": "svg:nido", "distractors": ["M", "U", "H"]},
         {"id": "en_l1_15", "target": "O", "anchorWord": "OCTOPUS", "emoji": "🐙", "distractors": ["A", "U", "C"]},
         {"id": "en_l1_16", "target": "P", "anchorWord": "PIG", "emoji": "🐷", "distractors": ["B", "D", "Q"]},
         {"id": "en_l1_17", "target": "R", "anchorWord": "RING", "emoji": "💍", "distractors": ["P", "B", "N"]},
@@ -1386,7 +1388,7 @@ wordBank_en = {
         {"id": "en_l1_20", "target": "U", "anchorWord": "UMBRELLA", "emoji": "☂️", "distractors": ["V", "O", "W"]},
         {"id": "en_l1_21", "target": "V", "anchorWord": "VAN", "emoji": "🚐", "distractors": ["U", "W", "Y"]},
         {"id": "en_l1_22", "target": "W", "anchorWord": "WATCH", "emoji": "⌚", "distractors": ["M", "V", "N"]},
-        {"id": "en_l1_23", "target": "Y", "anchorWord": "YOYO", "emoji": "🪀", "distractors": ["V", "J", "U"]},
+        {"id": "en_l1_23", "target": "Y", "anchorWord": "YOYO", "emoji": "svg:yoyo", "distractors": ["V", "J", "U"]},
         {"id": "en_l1_24", "target": "Z", "anchorWord": "ZEBRA", "emoji": "🦓", "distractors": ["S", "X", "C"]}
     ],
     "l2": [
@@ -1477,13 +1479,13 @@ wordBank_en = {
             "id": "en_l4_03",
             "word": "PLANET",
             "syllables": ["PLAN", "ET"],
-            "emoji": "🪐",
+            "emoji": "🌍",
             "microCheck": {
                 "question": "What orbits the sun in outer space?",
                 "options": [
-                    {"emoji": "🪐", "label": "A planet", "isCorrect": True},
-                    {"emoji": "🪁", "label": "A kite", "isCorrect": False},
-                    {"emoji": "🪂", "label": "A parachute", "isCorrect": False}
+                    {"emoji": "🌍", "label": "A planet", "isCorrect": True},
+                    {"emoji": "svg:cometa", "label": "A kite", "isCorrect": False},
+                    {"emoji": "svg:paracaídas", "label": "A parachute", "isCorrect": False}
                 ]
             }
         },
@@ -1510,7 +1512,7 @@ wordBank_en = {
                 "question": "Where did kings and knights live?",
                 "options": [
                     {"emoji": "🏰", "label": "In a castle", "isCorrect": True},
-                    {"emoji": "🛖", "label": "In a hut", "isCorrect": False},
+                    {"emoji": "🏡", "label": "In a hut", "isCorrect": False},
                     {"emoji": "⛺", "label": "In a tent", "isCorrect": False}
                 ]
             }
@@ -1637,7 +1639,7 @@ wordBank_en = {
                 "options": [
                     {"emoji": "🎈", "label": "A balloon", "isCorrect": True},
                     {"emoji": "⚽", "label": "A soccer ball", "isCorrect": False},
-                    {"emoji": "🪨", "label": "A heavy rock", "isCorrect": False}
+                    {"emoji": "svg:piedra", "label": "A heavy rock", "isCorrect": False}
                 ]
             }
         },
@@ -1720,8 +1722,8 @@ wordBank_en = {
                 "question": "What colorful garden plant has fragrant petals?",
                 "options": [
                     {"emoji": "🌸", "label": "A flower", "isCorrect": True},
-                    {"emoji": "🪵", "label": "A log", "isCorrect": False},
-                    {"emoji": "🪨", "label": "A stone", "isCorrect": False}
+                    {"emoji": "svg:tronco", "label": "A log", "isCorrect": False},
+                    {"emoji": "svg:piedra", "label": "A stone", "isCorrect": False}
                 ]
             }
         },
@@ -1748,7 +1750,7 @@ wordBank_en = {
                 "question": "What woven container holds fruit and snacks?",
                 "options": [
                     {"emoji": "🧺", "label": "A basket", "isCorrect": True},
-                    {"emoji": "🪣", "label": "A steel bucket", "isCorrect": False},
+                    {"emoji": "svg:cubo", "label": "A steel bucket", "isCorrect": False},
                     {"emoji": "📦", "label": "A glass bottle", "isCorrect": False}
                 ]
             }
@@ -1785,11 +1787,11 @@ wordBank_en = {
             "id": "en_l4_25",
             "word": "DOCTOR",
             "syllables": ["DOC", "TOR"],
-            "emoji": "🩺",
+            "emoji": "👨‍⚕️",
             "microCheck": {
                 "question": "Who helps patients feel healthy and well?",
                 "options": [
-                    {"emoji": "🩺", "label": "A doctor", "isCorrect": True},
+                    {"emoji": "👨‍⚕️", "label": "A doctor", "isCorrect": True},
                     {"emoji": "🧑‍🍳", "label": "A baker", "isCorrect": False},
                     {"emoji": "🧑‍🎨", "label": "A painter", "isCorrect": False}
                 ]
@@ -2018,7 +2020,7 @@ sentenceBank_en = {
                 "question": "What are the happy children building?",
                 "options": [
                     {"icon": "🏖️", "label": "A sandcastle", "isCorrect": True},
-                    {"icon": "🛖", "label": "A wooden cabin", "isCorrect": False},
+                    {"icon": "🏡", "label": "A wooden cabin", "isCorrect": False},
                     {"icon": "🧱", "label": "A stone brick house", "isCorrect": False}
                 ]
             }
@@ -2165,7 +2167,7 @@ sentenceBank_en = {
                 "question": "What is each ant carrying back to the anthill?",
                 "options": [
                     {"icon": "🌱", "label": "A plant seed", "isCorrect": True},
-                    {"icon": "🪨", "label": "Heavy pebbles", "isCorrect": False},
+                    {"icon": "svg:piedra", "label": "Heavy pebbles", "isCorrect": False},
                     {"icon": "💧", "label": "Morning dew drops", "isCorrect": False}
                 ]
             }
@@ -2200,7 +2202,7 @@ sentenceBank_en = {
                 "options": [
                     {"icon": "☁️", "label": "Fluffy white cotton", "isCorrect": True},
                     {"icon": "🍦", "label": "Sweet strawberry ice cream", "isCorrect": False},
-                    {"icon": "🪨", "label": "Dark jagged granite stones", "isCorrect": False}
+                    {"icon": "svg:piedra", "label": "Dark jagged granite stones", "isCorrect": False}
                 ]
             }
         },
@@ -2283,7 +2285,7 @@ sentenceBank_en = {
             "microCheck": {
                 "question": "What materials does the beaver use to build its dam?",
                 "options": [
-                    {"icon": "🪵", "label": "Branches and thick mud", "isCorrect": True},
+                    {"icon": "svg:tronco", "label": "Branches and thick mud", "isCorrect": True},
                     {"icon": "🧱", "label": "Bricks and steel rods", "isCorrect": False},
                     {"icon": "🌾", "label": "Dry straw and reeds", "isCorrect": False}
                 ]
@@ -2374,7 +2376,8 @@ i18n_es = {
     "font_case_toggle": "Letra (AA/Aa)",
     "syllable_toggle": "Sílabas (🎨)",
     "listen_btn": "Escuchar 🔊",
-    "listen_slow_btn": "Escuchar Despacio 🐢",
+    "listen_normal_btn": "Escuchar 🔊 (1.0x)",
+    "listen_slow_btn": "Escuchar Despacio 🐢 (0.5x)",
     "read_done_btn": "¡Leído! ✅",
     "clear_letter_btn": "Borrar ⌫",
 
@@ -2384,11 +2387,11 @@ i18n_es = {
     "install_success": "¡Lector Arcade instalado con éxito! 🎉",
     "install_ios_tip": "En Safari iOS: pulsa Compartir (⬆️) y \"Añadir a pantalla de inicio\"",
     "install_generic_tip": "Pulsa el menú (⋮) del navegador y selecciona \"Instalar aplicación\"",
-    "update_available": "Nueva versión v1.0.0 disponible",
+    "update_available": "Nueva versión v1.1.0 disponible",
     "update_now_btn": "Actualizar ahora",
     "checking_update": "Buscando actualizaciones...",
-    "up_to_date": "✓ Lector Arcade al día (v1.0.0)",
-    "check_update_title": "Buscar actualizaciones de la aplicación (v1.0.0)",
+    "up_to_date": "✓ Lector Arcade al día (v1.1.0)",
+    "check_update_title": "Buscar actualizaciones de la aplicación (v1.1.0)",
     "stats_reset_toast": "Estadísticas y medallas reiniciadas con éxito",
 
     # Results & Review
@@ -2402,7 +2405,7 @@ i18n_es = {
     "mistake_correct_answer": "Palabra o frase:",
     "view_hint_btn": "Ver Pista 💡",
 
-    # Profiles & Diploma
+    # Profiles, Diploma & Practice Sheet
     "daily_challenge_label": "Reto Diario",
     "profile_label": "Perfil:",
     "profile_switched": "Cambiado a perfil:",
@@ -2410,6 +2413,22 @@ i18n_es = {
     "diploma_downloaded_toast": "¡Diploma de Lector descargado con éxito! 🎓",
     "diploma_card_title": "Diploma Arcade de Lectura",
     "diploma_card_desc": "Genera un certificado oficial en PNG de alta resolución con tus medallas y velocidad lectora (PPM).",
+    "diploma_name_label": "Nombre en el Diploma (opcional):",
+    "diploma_name_placeholder": "Ej: Sofía Gómez",
+    "download_sheet_btn": "🖨️ Lámina de Repaso A4 (PNG)",
+    "sheet_downloaded_toast": "¡Lámina de repaso imprimible descargada con éxito! 🖨️",
+
+    # Custom Words Mode (Parents & Teachers)
+    "custom_words_title": "✏️ Mis Palabras (Familias y Colegios)",
+    "custom_words_desc": "Escribe o pega palabras separadas por comas para practicar tu vocabulario personalizado:",
+    "custom_words_placeholder": "Ej: MESA, NIDO, NUDO, CASA, ESCUELA...",
+    "custom_words_apply": "Activar Lista",
+    "custom_words_clear": "Quitar Lista",
+    "custom_words_share": "Copiar Enlace de Deberes 📋",
+    "custom_words_copied": "¡Enlace de deberes copiado al portapapeles! 📋",
+    "custom_words_active_badge": "✏️ Modo Mis Palabras Activo",
+    "parents_zone_title": "👨‍👩‍👧 Zona Padres y Docentes",
+    "parents_zone_desc": "Descarga láminas imprimibles, diplomas de honor y recursos complementarios de lectoescritura.",
 
     # Footer triad links
     "datalaria_back": "← Datalaria",
@@ -2419,6 +2438,7 @@ i18n_es = {
 
     # Reading specific
     "wpm_label": "PPM",
+    "effective_wpm_label": "PPM Efectivas",
     "wpm_full": "Palabras Por Minuto",
     "words_read": "Palabras Leídas",
     "reading_time": "Tiempo de Lectura",
@@ -2480,7 +2500,8 @@ i18n_en = {
     "font_case_toggle": "Font (AA/Aa)",
     "syllable_toggle": "Syllables (🎨)",
     "listen_btn": "Listen 🔊",
-    "listen_slow_btn": "Listen Slow 🐢",
+    "listen_normal_btn": "Listen 🔊 (1.0x)",
+    "listen_slow_btn": "Listen Slow 🐢 (0.5x)",
     "read_done_btn": "Done! ✅",
     "clear_letter_btn": "Erase ⌫",
 
@@ -2490,11 +2511,11 @@ i18n_en = {
     "install_success": "Reader Arcade successfully installed! 🎉",
     "install_ios_tip": "In Safari iOS: tap Share (⬆️) and select \"Add to Home Screen\"",
     "install_generic_tip": "Tap browser menu (⋮) and select \"Install app\"",
-    "update_available": "New version v1.0.0 available",
+    "update_available": "New version v1.1.0 available",
     "update_now_btn": "Update now",
     "checking_update": "Checking for updates...",
-    "up_to_date": "✓ Reader Arcade is up to date (v1.0.0)",
-    "check_update_title": "Check for app updates (v1.0.0)",
+    "up_to_date": "✓ Reader Arcade is up to date (v1.1.0)",
+    "check_update_title": "Check for app updates (v1.1.0)",
     "stats_reset_toast": "Stats and badges reset successfully",
 
     # Results & Review
@@ -2508,7 +2529,7 @@ i18n_en = {
     "mistake_correct_answer": "Word or sentence:",
     "view_hint_btn": "View Hint 💡",
 
-    # Profiles & Diploma
+    # Profiles, Diploma & Practice Sheet
     "daily_challenge_label": "Daily Challenge",
     "profile_label": "Profile:",
     "profile_switched": "Switched to profile:",
@@ -2516,6 +2537,22 @@ i18n_en = {
     "diploma_downloaded_toast": "Reader Diploma downloaded successfully! 🎓",
     "diploma_card_title": "Arcade Reading Diploma",
     "diploma_card_desc": "Generate an official high-resolution PNG certificate with your badges and reading speed (WPM).",
+    "diploma_name_label": "Name on Diploma (optional):",
+    "diploma_name_placeholder": "E.g. Sophia Miller",
+    "download_sheet_btn": "🖨️ Printable A4 Sheet (PNG)",
+    "sheet_downloaded_toast": "Printable practice sheet downloaded successfully! 🖨️",
+
+    # Custom Words Mode (Parents & Teachers)
+    "custom_words_title": "✏️ Custom Words (Families & Schools)",
+    "custom_words_desc": "Type or paste comma-separated words to practice your personalized vocabulary:",
+    "custom_words_placeholder": "E.g. NEST, KITE, DESK, FROG, SCHOOL...",
+    "custom_words_apply": "Apply Words",
+    "custom_words_clear": "Clear Words",
+    "custom_words_share": "Share Homework Link 📋",
+    "custom_words_copied": "Homework link copied to clipboard! 📋",
+    "custom_words_active_badge": "✏️ Custom Words Active",
+    "parents_zone_title": "👨‍👩‍👧 Parents & Educators Zone",
+    "parents_zone_desc": "Download printable worksheets, diplomas of honor and literacy companion resources.",
 
     # Footer triad links
     "datalaria_back": "← Datalaria",
@@ -2525,6 +2562,7 @@ i18n_en = {
 
     # Reading specific
     "wpm_label": "WPM",
+    "effective_wpm_label": "Effective WPM",
     "wpm_full": "Words Per Minute",
     "words_read": "Words Read",
     "reading_time": "Reading Time",
@@ -2616,7 +2654,14 @@ def emit_catalog_js():
     os.makedirs(os.path.dirname(CATALOG_JS_PATH), exist_ok=True)
     js_content = f"// apps/reading/catalog.js - Catálogo unificado de niveles, modos, medallas, lecciones, léxico e i18n\n"
     js_content += f"// Generated under SPEC-APP-READING v1.0.0 and SDD Helix\n"
-    js_content += f"window.READING_CATALOG = {json.dumps(data, ensure_ascii=False, indent=2)};\n"
+    js_content += f"(function() {{\n"
+    js_content += f"  var root = typeof window !== 'undefined' ? window : (typeof globalThis !== 'undefined' ? globalThis : this);\n"
+    js_content += f"  var data = {json.dumps(data, ensure_ascii=False, indent=2)};\n"
+    js_content += f"  root.READING_CATALOG = data;\n"
+    js_content += f"  if (typeof module === 'object' && module.exports) {{\n"
+    js_content += f"    module.exports = data;\n"
+    js_content += f"  }}\n"
+    js_content += f"}})();\n"
     
     with open(CATALOG_JS_PATH, "w", encoding="utf-8") as f:
         f.write(js_content)

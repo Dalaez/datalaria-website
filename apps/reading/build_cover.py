@@ -109,7 +109,7 @@ def create_cover(lang: str = "es") -> Image.Image:
     draw.text((SAFE_LEFT + 16, 74), brand_text, fill=COLOR_CYAN, font=font_badge)
 
     # Título Principal
-    title_text = "Lector Arcade v1.0" if lang == "es" else "Reader Arcade v1.0"
+    title_text = "Lector Arcade v1.1" if lang == "es" else "Reader Arcade v1.1"
     draw.text((SAFE_LEFT, 114), title_text, fill=TEXT_PRIMARY, font=font_title)
 
     # Subtítulo y Tagline
@@ -121,14 +121,14 @@ def create_cover(lang: str = "es") -> Image.Image:
     draw.text((SAFE_LEFT, 172), sub_text, fill=COLOR_AMBER, font=font_subtitle)
 
     desc_line1 = (
-        "Entrenamiento adaptativo en 6 niveles con laboratorio fonético,"
+        "Entrenamiento adaptativo en 6 niveles con audio dual 1.0x/0.5x,"
         if lang == "es" else
-        "Adaptive 6-level reading training featuring interactive phonics lab,"
+        "Adaptive 6-level reading training featuring dual 1.0x/0.5x audio,"
     )
     desc_line2 = (
-        "mesa de mezclas silábica, cronómetro split de precisión y perfiles locales."
+        "karaoke silábico, SVGs nativos, modo 'Mis Palabras' y láminas A4."
         if lang == "es" else
-        "syllable mixer, split fluency stopwatch, and isolated family profiles."
+        "syllable karaoke, native SVGs, 'My Words' mode, and printable A4 sheets."
     )
     draw.text((SAFE_LEFT, 206), desc_line1, fill=TEXT_MUTED, font=font_body)
     draw.text((SAFE_LEFT, 230), desc_line2, fill=TEXT_MUTED, font=font_body)
@@ -137,10 +137,10 @@ def create_cover(lang: str = "es") -> Image.Image:
     pills = [
         ("🌱 6 Niveles Curriculares" if lang == "es" else "🌱 6 Curricular Levels", COLOR_EMERALD),
         ("⏱️ Cronómetro Split PPM" if lang == "es" else "⏱️ Split WPM Stopwatch", COLOR_CYAN),
-        ("💡 Mesa de Mezclas Silábica" if lang == "es" else "💡 Phonics Syllable Mixer", COLOR_PURPLE),
-        ("🔊 Web Audio 8-bit & TTS" if lang == "es" else "🔊 8-bit Audio & Dual TTS", COLOR_AMBER),
-        ("🎓 Diploma Arcade PNG 1200x800" if lang == "es" else "🎓 Arcade PNG Diploma 1200x800", COLOR_ROSE),
-        ("📲 PWA 100% Offline e Instalable" if lang == "es" else "📲 100% Offline Installable PWA", COLOR_CYAN),
+        ("🔊 Audio Dual · 🐢 0.5x" if lang == "es" else "🔊 Dual Audio · 🐢 0.5x", COLOR_AMBER),
+        ("🎨 Ilustraciones SVG" if lang == "es" else "🎨 Native SVG Icons", COLOR_PURPLE),
+        ("✏️ Modo Mis Palabras" if lang == "es" else "✏️ Custom Words Mode", COLOR_ROSE),
+        ("🖨️ Lámina A4 & Diploma" if lang == "es" else "🖨️ A4 Sheet & Diploma", COLOR_CYAN),
     ]
 
     pill_y = 280
@@ -190,7 +190,7 @@ def create_cover(lang: str = "es") -> Image.Image:
     draw_rounded_rect(draw, [CARD_X, CARD_Y, CARD_X + CARD_W, CARD_Y + 48], radius=18, fill=BG_CARD_INNER)
     draw.line([(CARD_X, CARD_Y + 48), (CARD_X + CARD_W, CARD_Y + 48)], fill=BORDER_COLOR, width=1)
 
-    level_header = "NIVEL 2: PALABRA CON IMAGEN" if lang == "es" else "LEVEL 2: WORD WITH IMAGE"
+    level_header = "NIVEL 2: PALABRA CON IMAGEN · ⭐⭐⭐" if lang == "es" else "LEVEL 2: WORD WITH IMAGE · ⭐⭐⭐"
     draw.text((CARD_X + 18, CARD_Y + 16), level_header, fill=COLOR_CYAN, font=font_badge)
 
     # Indicador de modo Contrarreloj (derecha de la cabecera)
@@ -202,31 +202,38 @@ def create_cover(lang: str = "es") -> Image.Image:
     box_x = CARD_X + 24
     box_y = CARD_Y + 66
     box_w = CARD_W - 48
-    box_h = 130
+    box_h = 138
     draw_rounded_rect(draw, [box_x, box_y, box_x + box_w, box_y + box_h], radius=12, fill=BG_SURFACE, outline=BORDER_COLOR)
 
     # Icono central representativo
     icon_text = "🦁"
-    draw.text((box_x + box_w // 2 - 24, box_y + 14), icon_text, fill=COLOR_AMBER, font=get_font(42))
+    draw.text((box_x + box_w // 2 - 24, box_y + 8), icon_text, fill=COLOR_AMBER, font=get_font(38))
 
     # Sílabas coloreadas debajo del icono
     syl_label = "[ LE ]   [ ÓN ]" if lang == "es" else "[ LI ]   [ ON ]"
-    draw.text((box_x + box_w // 2 - 46, box_y + 86), syl_label, fill=COLOR_CYAN, font=font_lg_bold)
+    draw.text((box_x + box_w // 2 - 46, box_y + 62), syl_label, fill=COLOR_CYAN, font=font_lg_bold)
+
+    # Botones Duales de Audio con Karaoke
+    audio_btn_y = box_y + 98
+    draw_rounded_rect(draw, [box_x + 36, audio_btn_y, box_x + 166, audio_btn_y + 28], radius=6, fill=BG_CARD_INNER, outline=COLOR_CYAN)
+    draw.text((box_x + 46, audio_btn_y + 6), "🔊 1.0x Normal", fill=TEXT_PRIMARY, font=get_font(10, bold=True))
+    draw_rounded_rect(draw, [box_x + 180, audio_btn_y, box_x + 310, audio_btn_y + 28], radius=6, fill=BG_CARD_INNER, outline=COLOR_AMBER)
+    draw.text((box_x + 190, audio_btn_y + 6), "🐢 0.5x Tortuga", fill=COLOR_AMBER, font=get_font(10, bold=True))
 
     # Barra del Cronómetro Split congelado
-    timer_box_y = box_y + box_h + 16
-    draw_rounded_rect(draw, [box_x, timer_box_y, box_x + box_w, timer_box_y + 44], radius=8, fill=BG_CARD_INNER, outline=COLOR_AMBER)
+    timer_box_y = box_y + box_h + 12
+    draw_rounded_rect(draw, [box_x, timer_box_y, box_x + box_w, timer_box_y + 42], radius=8, fill=BG_CARD_INNER, outline=COLOR_AMBER)
     timer_display = "⏱️ Tiempo: 01.8s   |   Fluidez: 120 PPM" if lang == "es" else "⏱️ Time: 01.8s   |   Fluency: 120 WPM"
-    draw.text((box_x + 18, timer_box_y + 12), timer_display, fill=COLOR_AMBER, font=font_md_bold)
+    draw.text((box_x + 18, timer_box_y + 11), timer_display, fill=COLOR_AMBER, font=font_md_bold)
 
     # Botón Principal Verde Arcade: "¡Leído!"
-    btn_y = timer_box_y + 58
-    draw_rounded_rect(draw, [box_x, btn_y, box_x + box_w, btn_y + 54], radius=12, fill=COLOR_EMERALD, outline=(255, 255, 255), width=2)
+    btn_y = timer_box_y + 54
+    draw_rounded_rect(draw, [box_x, btn_y, box_x + box_w, btn_y + 50], radius=12, fill=COLOR_EMERALD, outline=(255, 255, 255), width=2)
     btn_text = "✅  ¡LEÍDO! (Detener Cronómetro)" if lang == "es" else "✅  READ DONE! (Freeze Timer)"
-    draw.text((box_x + 28, btn_y + 16), btn_text, fill=(255, 255, 255), font=font_md_bold)
+    draw.text((box_x + 28, btn_y + 14), btn_text, fill=(255, 255, 255), font=font_md_bold)
 
     # Micro-check de comprensión (simulado en la parte inferior de la tarjeta)
-    check_y = btn_y + 68
+    check_y = btn_y + 60
     check_q = "¿Qué animal has leído?  [ 🦁 León ]  [ 🐻 Oso ]  [ 🦊 Zorro ]" if lang == "es" else "Which animal did you read?  [ 🦁 Lion ]  [ 🐻 Bear ]  [ 🦊 Fox ]"
     draw_rounded_rect(draw, [box_x, check_y, box_x + box_w, check_y + 32], radius=6, fill=BG_SURFACE, outline=BORDER_COLOR)
     draw.text((box_x + 12, check_y + 8), check_q, fill=TEXT_MUTED, font=get_font(11, bold=False))

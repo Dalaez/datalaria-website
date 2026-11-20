@@ -24,15 +24,18 @@ def _run_node(js_body: str) -> dict:
 
     const root = {json.dumps(READING_APP_DIR)};
     const catalogCode = fs.readFileSync(path.join(root, 'catalog.js'), 'utf8');
+    const illCode = fs.readFileSync(path.join(root, 'illustrations.js'), 'utf8');
     const engineCode = fs.readFileSync(path.join(root, 'engine.js'), 'utf8');
     const audioCode = fs.readFileSync(path.join(root, 'audio.js'), 'utf8');
 
     const window = global;
     eval(catalogCode);
+    eval(illCode);
     eval(engineCode);
     eval(audioCode);
 
     const catalog = window.READING_CATALOG;
+    const illustrations = window.ReadingIllustrations;
     const engine = window.ReadingEngine;
     const audio = window.ReadingAudio;
 
@@ -417,7 +420,7 @@ def test_reading_audio_headless_and_tts_contract():
       speak: (u) => spoken.push({ text: u.text, rate: u.rate, lang: u.lang, voice: u.voice && u.voice.name })
     };
 
-    const okEsTurtle = audio.speakText('Mariposa', 'es', 0.65);
+    const okEsTurtle = audio.speakText('Mariposa', 'es', 0.5);
     const okEnNormal = audio.speakText('Butterfly', 'en', 1.0);
 
     console.log(JSON.stringify({
@@ -437,7 +440,7 @@ def test_reading_audio_headless_and_tts_contract():
     assert res["okEsTurtle"] is True
     assert res["okEnNormal"] is True
     assert res["spoken"][0]["text"] == "Mariposa"
-    assert res["spoken"][0]["rate"] == 0.65
+    assert res["spoken"][0]["rate"] == 0.5
     assert res["spoken"][0]["lang"] == "es-ES"
     assert res["spoken"][0]["voice"] == "Helena"
     assert res["spoken"][1]["text"] == "Butterfly"
@@ -691,3 +694,324 @@ def test_inv_read_12_bundle_pedagogy_toggles_and_xss_hygiene():
     # Verificar dimensiones táctiles mínimas (>= 48px en móvil y >= 52px en desktop)
     assert re.search(r"\.alpha-btn\s*\{[^}]*width:\s*54px;\s*height:\s*56px;", css, re.DOTALL)
     assert re.search(r"\.alpha-btn\s*\{[^}]*width:\s*48px;\s*height:\s*50px;", css, re.DOTALL)
+
+
+def test_inv_read_13_universal_visuals_and_05x_turtle_audio():
+    """INV-READ-13: Compatibilidad Visual Universal, ilustraciones SVG inline (illustrations.js) y audio tortuga a 0.5x."""
+    res = _run_node("""
+    const requiredSvgs = [
+      'MESA', 'NIDO', 'NUDO', 'IGLU', 'FOCA', 'ÑANDÚ', 'RUEDA', 'COMETA',
+      'YOYÓ', 'POZO', 'CUBO', 'TRONCO', 'PIEDRA', 'SAPO', 'PARACAÍDAS'
+    ];
+
+    const hasAllSvgs = requiredSvgs.every(key => Boolean(illustrations.SVGS[key]));
+    const mesaSvg = illustrations.renderVisual('svg:mesa', 'MESA');
+    const nudoSvg = illustrations.renderVisual('svg:nudo', 'NUDO');
+    const nidoSvg = illustrations.renderVisual('svg:nido', 'NIDO');
+    const emojiFallback = illustrations.renderVisual('🦁', 'LEÓN');
+
+    // Verificar saneamiento de banco léxico (sin VINO, con VELA y NUDO)
+    const esL2 = catalog.wordBank.es.l2;
+    const hasVino = esL2.some(item => item.word === 'VINO');
+    const hasVela = esL2.some(item => item.word === 'VELA');
+    const hasNudoL2 = esL2.some(item => item.word === 'NUDO');
+
+    const esL3 = catalog.wordBank.es.l3;
+    const hasNudoL3 = esL3.some(item => item.word === 'NUDO');
+
+    // Escanear catálogo en busca de emojis Unicode >= 12.0 prohibidos
+    const forbiddenCodepoints = [
+      0x1faba, // 🪺 nest
+      0x1f6de, // 🛞 wheel
+      0x1f05b, // 🁛 domino
+      0x1f9ad, // 🦭 seal
+      0x1f9a4, // 🦤 dodo
+      0x1faa3, // 🪣 bucket
+      0x1f6d6, // 🛖 hut
+      0x1fab5, // 🪵 wood
+      0x1faa8, // 🪨 rock
+      0x1f9aa, // 🦪 oyster
+      0x1fa81, // 🪁 kite
+      0x1fa80, // 🪀 yo-yo
+      0x1fa82, // 🪂 parachute
+      0x1fa91  // 🪑 chair
+    ];
+
+    const catalogStr = JSON.stringify(catalog);
+    const foundForbidden = [];
+    for (let i = 0; i < catalogStr.length; i++) {
+      const cp = catalogStr.codePointAt(i);
+      if (forbiddenCodepoints.includes(cp)) {
+        foundForbidden.push('0x' + cp.toString(16));
+      }
+    }
+
+    console.log(JSON.stringify({
+      hasAllSvgs,
+      mesaSvgValid: mesaSvg.includes('<svg') && mesaSvg.includes('class="reading-svg-icon"'),
+      nudoSvgValid: nudoSvg.includes('<svg') && nudoSvg.includes('class="reading-svg-icon"'),
+      nidoSvgValid: nidoSvg.includes('<svg') && nidoSvg.includes('class="reading-svg-icon"'),
+      emojiFallbackValid: emojiFallback.includes('reading-emoji-char') && emojiFallback.includes('🦁'),
+      hasVino,
+      hasVela,
+      hasNudoL2,
+      hasNudoL3,
+      foundForbiddenCount: foundForbidden.length,
+      foundForbidden
+    }));
+    """)
+
+    assert res["hasAllSvgs"] is True, "Faltan SVGs requeridos en ReadingIllustrations"
+    assert res["mesaSvgValid"] is True, "Mesa SVG no es válido"
+    assert res["nudoSvgValid"] is True, "Nudo SVG no es válido"
+    assert res["nidoSvgValid"] is True, "Nido SVG no es válido"
+    assert res["emojiFallbackValid"] is True, "Fallback emoji no es válido"
+    assert res["hasVino"] is False, "VINO no debe estar presente en Nivel 2"
+    assert res["hasVela"] is True, "VELA debe estar presente en Nivel 2"
+    assert res["hasNudoL2"] is True, "NUDO debe estar presente en Nivel 2"
+    assert res["hasNudoL3"] is True, "NUDO debe estar presente en Nivel 3"
+    assert res["foundForbiddenCount"] == 0, f"Se encontraron emojis prohibidos en catalog: {res['foundForbidden']}"
+
+    # Verificar bundle compilado
+    html = _read_compiled_bundle()
+    assert "ReadingIllustrations" in html, "Falta ReadingIllustrations en bundle compilado"
+    assert "reading-svg-icon" in html, "Falta clase reading-svg-icon en bundle compilado"
+    assert "0.5x" in html, "Falta indicador de velocidad tortuga 0.5x en bundle compilado"
+    assert 'data-rate="0.5"' in html, "Falta data-rate='0.5' en bundle compilado"
+
+
+def test_hito_r9_in_app_product_enhancements():
+    """Hito R.9 e INV-READ-14: Validación de audio dual con karaoke, estrellas de dominio, modo Mis Palabras, diploma y lámina imprimible."""
+    res = _run_node("""
+    const stars0 = engine.computeStarsForScore(0);
+    const stars1 = engine.computeStarsForScore(450);
+    const stars2 = engine.computeStarsForScore(950);
+    const stars3 = engine.computeStarsForScore(1500);
+
+    const parsedWords = engine.parseCustomWordsParam('mesa, nido, nudo, <script>alert(1)</script>, niño, camión, piña, mesa');
+    const sylMesa = engine.splitCustomSyllables('MESA', 'es');
+    const sylEscuela = engine.splitCustomSyllables('ESCUELA', 'es');
+    const sylNino = engine.splitCustomSyllables('NIÑO', 'es');
+
+    const customChallenge = engine.generateCustomChallenge(['MESA', 'NIDO', 'PIÑA'], 'es');
+
+    console.log(JSON.stringify({
+      stars0,
+      stars1,
+      stars2,
+      stars3,
+      parsedWords,
+      sylMesaJoined: sylMesa.syllables.join(''),
+      sylEscuelaJoined: sylEscuela.syllables.join(''),
+      sylNinoJoined: sylNino.syllables.join(''),
+      customKind: customChallenge.kind,
+      customLevel: customChallenge.levelId,
+      customIsCustom: customChallenge.isCustomWord,
+      customKeyCharsLen: customChallenge.keyboardChars.length,
+      customHasExpected: customChallenge.maskedSlots.every(s => customChallenge.keyboardChars.includes(s.expected))
+    }));
+    """)
+
+    assert res["stars0"] == 0
+    assert res["stars1"] == 1
+    assert res["stars2"] == 2
+    assert res["stars3"] == 3
+
+    assert "MESA" in res["parsedWords"]
+    assert "NIDO" in res["parsedWords"]
+    assert "NUDO" in res["parsedWords"]
+    assert "NIÑO" in res["parsedWords"]
+    assert "PIÑA" in res["parsedWords"]
+    assert "CAMIÓN" in res["parsedWords"]
+    assert "<script>" not in " ".join(res["parsedWords"]), "Violación anti-XSS: etiquetas HTML sin sanitizar"
+
+    assert res["sylMesaJoined"] == "MESA"
+    assert res["sylEscuelaJoined"] == "ESCUELA"
+    assert res["sylNinoJoined"] == "NIÑO"
+
+    assert res["customKind"] == "fill_letters"
+    assert res["customLevel"] == "l3"
+    assert res["customIsCustom"] is True
+    assert 8 <= res["customKeyCharsLen"] <= 10
+    assert res["customHasExpected"] is True
+
+    # Validar presencia de componentes en bundle compilado
+    html = _read_compiled_bundle()
+    required_bundle_markers = [
+        'id="btn-listen-normal"',
+        'id="btn-download-sheet"',
+        'downloadPracticeSheet',
+        'id="diploma-custom-name"',
+        'id="custom-words-input"',
+        'id="btn-apply-custom-words"',
+        'karaoke-active',
+        'level-stars-badge',
+        'parents-teachers-card',
+        'effective_wpm_label',
+        'custom_words_title',
+        'v1.1.0'
+    ]
+    for marker in required_bundle_markers:
+        assert marker in html, f"Falta marcador {marker} en static/apps/reading/index.html"
+
+
+def test_hito_r10_flagship_sheet_embargo_and_covers():
+    """Hito R.10: Validación de ficha flagship, embargo editorial Art. 7, KaTeX, deep-links y portadas oficiales v1.1.0."""
+    from PIL import Image
+    import yaml
+
+    repo_root = os.path.abspath(os.path.join(READING_APP_DIR, "../.."))
+
+    # 1. data/apps/reading.yaml
+    yaml_path = os.path.join(repo_root, "data", "apps", "reading.yaml")
+    assert os.path.exists(yaml_path), "Falta data/apps/reading.yaml"
+    with open(yaml_path, "r", encoding="utf-8") as f:
+        raw_yaml = f.read()
+        ydata = yaml.safe_load(raw_yaml)
+
+    assert ydata.get("status") == "incubating", "Violación Art. 7: reading debe permanecer status: incubating"
+    assert ydata.get("current_version") == "v1.1.0", f"Versión esperada v1.1.0, obtenida {ydata.get('current_version')}"
+    assert ydata.get("launch_date") == "2026-12-16", "launch_date debe ser 2026-12-16"
+    assert "0.65x" not in raw_yaml, "Quedan referencias obsoletas a 0.65x en data/apps/reading.yaml"
+    assert "0.5x" in raw_yaml, "Falta mención a velocidad tortuga 0.5x en data/apps/reading.yaml"
+
+    releases = ydata.get("releases", [])
+    assert len(releases) >= 2, "releases debe contener al menos v1.1.0 y v1.0.0"
+    assert releases[0].get("version") == "v1.1.0", f"Primera release debe ser v1.1.0, obtenida {releases[0].get('version')}"
+    assert releases[1].get("version") == "v1.0.0", f"Segunda release debe ser v1.0.0, obtenida {releases[1].get('version')}"
+
+    # 2. content/{es,en}/apps/reading/index.md
+    for l_code in ["es", "en"]:
+        md_path = os.path.join(repo_root, "content", l_code, "apps", "reading", "index.md")
+        assert os.path.exists(md_path), f"Falta ficha {md_path}"
+        with open(md_path, "r", encoding="utf-8") as f:
+            md_content = f.read()
+
+        assert "draft: true" in md_content, f"Violación Art. 7: ficha {l_code} debe tener draft: true"
+        assert 'date: "2026-12-16"' in md_content, f"Fecha de lanzamiento 2026-12-16 requerida en {l_code}"
+        assert "$$" in md_content, f"Faltan fórmulas KaTeX ($$) en ficha {l_code}"
+        assert "?words=" in md_content, f"Falta deep-link ?words= en ficha {l_code}"
+        assert "?tab=learn" in md_content, f"Falta deep-link ?tab=learn en ficha {l_code}"
+        assert "0.65x" not in md_content, f"Quedan referencias obsoletas a 0.65x en ficha {l_code}"
+        assert "0.5x" in md_content, f"Falta velocidad 0.5x en ficha {l_code}"
+        assert "ReadingIllustrations" in md_content or "SVG" in md_content, f"Falta mención a SVGs en {l_code}"
+
+    # 3. Portadas oficiales cover.png
+    for l_code in ["es", "en"]:
+        cover_path = os.path.join(repo_root, "content", l_code, "apps", "reading", "cover.png")
+        assert os.path.exists(cover_path), f"Falta portada {cover_path}"
+        assert os.path.getsize(cover_path) > 20000, f"Portada {cover_path} demasiado pequeña"
+        with Image.open(cover_path) as im:
+            assert im.size == (1200, 750), f"Dimensiones portada {l_code} deben ser (1200, 750), obtenidas {im.size}"
+
+    # 4. Aislamiento y Embargo en static/apps/pulse/data/public.json
+    pulse_public_path = os.path.join(repo_root, "static", "apps", "pulse", "data", "public.json")
+    if os.path.exists(pulse_public_path):
+        with open(pulse_public_path, "r", encoding="utf-8") as f:
+            pdata = json.load(f)
+        leaked = [a for a in pdata.get("assets", []) if a.get("slug") == "reading" or a.get("id") == "app-reading"]
+        assert len(leaked) == 0, f"Fuga de seguridad Art. 7: reading expuesto en public.json antes de launch_date: {leaked}"
+
+    # 5. Soporte de deep-link ?tab= en bundle compilado
+    html = _read_compiled_bundle()
+    assert "queryTab" in html or "params.get('tab')" in html, "Falta soporte para ?tab= en el bundle compilado"
+
+
+def test_hito_r11_printable_kit_factory_and_zip_integrity():
+    """Hito R.11: Validación de factoría de Kit Imprimible Comercial ZIP, PyMuPDF, openpyxl y firewall estático."""
+    import zipfile
+    import fitz
+    import openpyxl
+
+    repo_root = os.path.abspath(os.path.join(READING_APP_DIR, "../.."))
+    pkg_reading_dir = os.path.join(repo_root, "packages", "reading")
+    lemon_dist_dir = os.path.join(repo_root, "packages", "00_DISTRIBUCION_LEMONSQUEEZY")
+
+    zip_path = os.path.join(pkg_reading_dir, "Kit_Imprimible_Lector_Arcade_Dual.zip")
+    lemon_zip_path = os.path.join(lemon_dist_dir, "Kit_Imprimible_Lector_Arcade_Dual.zip")
+
+    # 1. Existencia y tamaño del paquete comercial
+    assert os.path.exists(zip_path), f"Falta {zip_path}"
+    assert os.path.exists(lemon_zip_path), f"Falta copia en {lemon_zip_path}"
+    zip_size = os.path.getsize(zip_path)
+    assert zip_size > 30000, f"Tamaño del ZIP demasiado pequeño ({zip_size} bytes)"
+    assert os.path.getsize(lemon_zip_path) == zip_size, "Desajuste de tamaño entre copia reading y Lemon Squeezy"
+
+    # 2. Contenido exacto del ZIP
+    expected_files = [
+        "01_Flashcards_Recortables_Silabas_y_Phonics.pdf",
+        "02_Cuaderno_Trabajo_Lectoescritura_6_Niveles.pdf",
+        "03_Tracker_Fluidez_Lectora_Aula_y_Familia.xlsx",
+        "LEEME_GUIA_USO_FAMILIAS_Y_COLEGIOS.md",
+        "SHA256SUMS.txt",
+    ]
+    with zipfile.ZipFile(zip_path, "r") as zf:
+        namelist = zf.namelist()
+        for exp in expected_files:
+            assert exp in namelist, f"Falta archivo {exp} dentro del ZIP comercial"
+        assert len(namelist) == len(expected_files), f"Archivos inesperados en ZIP: {namelist}"
+
+    # 3. Inspección del PDF de Flashcards (fitz)
+    fc_pdf_path = os.path.join(pkg_reading_dir, "01_Flashcards_Recortables_Silabas_y_Phonics.pdf")
+    doc_fc = fitz.open(fc_pdf_path)
+    assert len(doc_fc) == 16, f"Se esperaban 16 páginas en Flashcards, obtenidas {len(doc_fc)}"
+
+    all_fc_text = ""
+    for page in doc_fc:
+        all_fc_text += page.get_text() + "\n"
+    doc_fc.close()
+
+    assert "CARD #001" in all_fc_text, "Falta CARD #001 en Flashcards"
+    assert "CARD #060" in all_fc_text, "Falta CARD #060 en Flashcards"
+    assert "CARD #061" in all_fc_text, "Falta CARD #061 en Flashcards"
+    assert "CARD #120" in all_fc_text, "Falta CARD #120 en Flashcards"
+    assert "MESA" in all_fc_text, "Falta MESA en Flashcards"
+    assert "NIDO" in all_fc_text, "Falta NIDO en Flashcards"
+    assert "NUDO" in all_fc_text, "Falta NUDO en Flashcards"
+    assert "\ufffd" not in all_fc_text, "Glifos tofu rotos detectados en Flashcards"
+
+    # 4. Inspección del PDF del Cuaderno (fitz)
+    wb_pdf_path = os.path.join(pkg_reading_dir, "02_Cuaderno_Trabajo_Lectoescritura_6_Niveles.pdf")
+    doc_wb = fitz.open(wb_pdf_path)
+    assert len(doc_wb) == 16, f"Se esperaban 16 páginas en Cuaderno, obtenidas {len(doc_wb)}"
+
+    all_wb_text = ""
+    for page in doc_wb:
+        all_wb_text += page.get_text() + "\n"
+    doc_wb.close()
+
+    for lvl_marker in ["NIVEL 1", "LEVEL 1", "NIVEL 2", "LEVEL 2", "NIVEL 3", "LEVEL 3", "NIVEL 4", "LEVEL 4", "NIVEL 5", "LEVEL 5", "NIVEL 6", "LEVEL 6"]:
+        assert lvl_marker in all_wb_text, f"Falta marcador {lvl_marker} en Cuaderno"
+    assert "DIPLOMA DE EXCELENCIA LECTORA" in all_wb_text, "Falta Diploma de Excelencia en última página del Cuaderno"
+    assert "\ufffd" not in all_wb_text, "Glifos tofu rotos detectados en Cuaderno"
+
+    # 5. Inspección del Tracker Excel (openpyxl)
+    xlsx_path = os.path.join(pkg_reading_dir, "03_Tracker_Fluidez_Lectora_Aula_y_Familia.xlsx")
+    wb_excel = openpyxl.load_workbook(xlsx_path, data_only=False)
+    assert wb_excel.sheetnames == [
+        "00_INSTRUCCIONES",
+        "01_REGISTRO_SESIONES",
+        "02_CUADRO_MANDO_AULA",
+        "03_GENERADOR_MIS_PALABRAS"
+    ], f"Hojas de Excel inesperadas: {wb_excel.sheetnames}"
+
+    ws_ses = wb_excel["01_REGISTRO_SESIONES"]
+    f_j2 = str(ws_ses["J2"].value)
+    assert "MIN(350" in f_j2, f"Fórmula J2 de PPM Bruta incorrecta: {f_j2}"
+    f_k2 = str(ws_ses["K2"].value)
+    assert "J2" in f_k2 and "I2" in f_k2, f"Fórmula K2 de PPM Efectiva incorrecta: {f_k2}"
+
+    ws_gen = wb_excel["03_GENERADOR_MIS_PALABRAS"]
+    f_b18 = str(ws_gen["B18"].value)
+    assert "?words=" in f_b18 and "lang=es" in f_b18, f"Fórmula B18 de generador incorrecta: {f_b18}"
+    wb_excel.close()
+
+    # 6. Firewall estático de static/apps/reading/
+    static_reading = os.path.join(repo_root, "static", "apps", "reading")
+    for fname in os.listdir(static_reading):
+        ext = os.path.splitext(fname)[1].lower()
+        assert ext not in [".zip", ".pdf", ".xlsx", ".py", ".sql", ".env"], f"Fuga de archivo no público {fname} en static/apps/reading/"
+
+
+
+

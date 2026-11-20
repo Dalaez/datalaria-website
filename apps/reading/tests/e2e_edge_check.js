@@ -229,15 +229,31 @@ async function runE2E() {
     const learnState = await client.evalJs(`({
       mixerPills: document.querySelectorAll('.mixer-pill').length,
       cards: document.querySelectorAll('.phonics-card').length,
-      overflow: document.documentElement.scrollWidth > window.innerWidth
+      overflow: document.documentElement.scrollWidth > window.innerWidth,
+      hasIllustrations: Boolean(window.ReadingIllustrations && window.ReadingIllustrations.SVGS.MESA),
+      slowSpeedText: document.getElementById('btn-learn-speed-slow')?.textContent || '',
+      hasSvgIcons: document.querySelectorAll('.reading-svg-icon').length > 0
     })`);
     assert(learnState.mixerPills >= 8, `Expected >=8 mixer pills, got ${learnState.mixerPills}`);
     assert(learnState.cards === 5, `Expected 5 direct syllable cards, got ${learnState.cards}`);
     assert(!learnState.overflow, 'Desktop Learn overflow');
+    assert(learnState.hasIllustrations, 'ReadingIllustrations must be loaded on window');
+    assert(learnState.slowSpeedText.includes('0.5x'), `Expected 0.5x in slow speed button, got ${learnState.slowSpeedText}`);
+    assert(learnState.hasSvgIcons, 'Expected .reading-svg-icon elements in learn view');
 
-    // Pestaña Jugar en Nivel l3 (Letras Faltantes + Teclado Táctil 3D)
+    // Pestaña Jugar: verificación de estrellas de nivel y panel Mis Palabras (Hito R.9)
     await client.evalJs(`document.querySelector('[data-tab="play"]').click()`);
     await sleep(150);
+    const playMenuState = await client.evalJs(`({
+      starsCount: document.querySelectorAll('.level-stars-badge').length,
+      hasCustomWordsInput: Boolean(document.getElementById('custom-words-input')),
+      hasApplyCustomWords: Boolean(document.getElementById('btn-apply-custom-words'))
+    })`);
+    assert(playMenuState.starsCount === 6, `Expected 6 level stars badges, got ${playMenuState.starsCount}`);
+    assert(playMenuState.hasCustomWordsInput, 'Missing #custom-words-input in play tab');
+    assert(playMenuState.hasApplyCustomWords, 'Missing #btn-apply-custom-words in play tab');
+
+    // Pestaña Jugar en Nivel l3 (Letras Faltantes + Teclado Táctil 3D)
     await client.evalJs(`document.querySelector('[data-level="l3"]').click(); document.querySelector('[data-mode="normal"]').click(); document.getElementById('btn-start').click();`);
     await sleep(200);
     const l3State = await client.evalJs(`(() => {
@@ -248,13 +264,17 @@ async function runE2E() {
         blanks: document.querySelectorAll('.letter-slot.blank').length,
         alphaCount: document.querySelectorAll('.alpha-btn[data-alpha-char]').length,
         btnW: rect.width,
-        btnH: rect.height
+        btnH: rect.height,
+        hasListenNormal: Boolean(document.getElementById('btn-listen-normal')),
+        hasListenSlow: Boolean(document.getElementById('btn-listen-slow'))
       };
     })()`);
     assert(l3State.slots >= 3, 'Expected >=3 letter slots in l3');
     assert(l3State.blanks >= 1, 'Expected >=1 blank slots in l3');
     assert(l3State.alphaCount >= 8 && l3State.alphaCount <= 10, `Expected 8-10 alpha keys, got ${l3State.alphaCount}`);
     assert(l3State.btnW >= 48 && l3State.btnH >= 48, `Alpha button too small: ${l3State.btnW}x${l3State.btnH}`);
+    assert(l3State.hasListenNormal, 'Missing #btn-listen-normal in game HUD (Hito R.9)');
+    assert(l3State.hasListenSlow, 'Missing #btn-listen-slow in game HUD (Hito R.9)');
 
     // Rellenar los huecos usando los botones táctiles y verificar feedback banner
     await client.evalJs(`(() => {
@@ -310,10 +330,27 @@ async function runE2E() {
     const achState = await client.evalJs(`({
       medals: document.querySelectorAll('.medal-card').length,
       hasDiplomaBtn: Boolean(document.getElementById('btn-download-diploma')),
-      hasDiplomaFn: typeof window.downloadReadingDiploma === 'function'
+      hasDiplomaFn: typeof window.downloadReadingDiploma === 'function',
+      hasDiplomaCustomName: Boolean(document.getElementById('diploma-custom-name')),
+      hasSheetFn: typeof window.downloadPracticeSheet === 'function',
+      hasParentsCard: Boolean(document.querySelector('.parents-teachers-card'))
     })`);
     assert(achState.medals === 6, `Expected 6 medals, got ${achState.medals}`);
     assert(achState.hasDiplomaBtn && achState.hasDiplomaFn, 'Missing diploma button or function');
+    assert(achState.hasDiplomaCustomName, 'Missing #diploma-custom-name in achievements tab');
+    assert(achState.hasSheetFn, 'Missing window.downloadPracticeSheet function');
+    assert(achState.hasParentsCard, 'Missing .parents-teachers-card in achievements tab');
+
+    // Verificar confirmación en 2 toques del botón Reiniciar Estadísticas
+    const resetInitialText = await client.evalJs(`document.getElementById('btn-reset-stats')?.textContent`);
+    await client.evalJs(`document.getElementById('btn-reset-stats').click()`);
+    await sleep(100);
+    const resetPromptText = await client.evalJs(`document.getElementById('btn-reset-stats')?.textContent`);
+    assert(resetPromptText.includes('⚠️'), `Expected ⚠️ confirmation prompt on first click, got ${resetPromptText}`);
+    await client.evalJs(`document.getElementById('btn-reset-stats').click()`);
+    await sleep(150);
+    const resetFinalText = await client.evalJs(`document.getElementById('btn-reset-stats')?.textContent`);
+    assert(!resetFinalText.includes('⚠️'), 'Reset button should return to default state after confirmation');
 
     // ==================== 2. MOBILE 390x844 ====================
     await client.send('Emulation.setDeviceMetricsOverride', {

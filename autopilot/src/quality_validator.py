@@ -464,6 +464,22 @@ def audit_markdown_syndication(artifact: SyndicationArtifact) -> PlatformAuditRe
             )
         )
 
+    if (
+        "raw.githubusercontent.com" in body_without_code.lower()
+        or (artifact.cover_image_url and "raw.githubusercontent.com" in artifact.cover_image_url.lower())
+    ):
+        issues.append(
+            QualityIssue(
+                code="SYNDICATION_GITHUB_RAW_FORBIDDEN",
+                severity="error",
+                message=(
+                    "Las imágenes sindicadas deben apuntar a https://www.datalaria.com/... "
+                    "y nunca a raw.githubusercontent.com."
+                ),
+                field="markdown",
+            )
+        )
+
     relative_links: List[str] = []
     datalaria_links: List[str] = []
     for match in _SYNDICATION_LINK_RE.finditer(body_without_code):

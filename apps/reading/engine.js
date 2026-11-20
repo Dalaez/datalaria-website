@@ -463,6 +463,16 @@
       `</div>`;
   }
 
+  function renderVisualToken(emojiOrToken, wordHint) {
+    if (typeof window !== 'undefined' && window.ReadingIllustrations && typeof window.ReadingIllustrations.renderVisual === 'function') {
+      return window.ReadingIllustrations.renderVisual(emojiOrToken, wordHint);
+    }
+    if (typeof globalThis !== 'undefined' && globalThis.ReadingIllustrations && typeof globalThis.ReadingIllustrations.renderVisual === 'function') {
+      return globalThis.ReadingIllustrations.renderVisual(emojiOrToken, wordHint);
+    }
+    return `<span class="hint-emoji">${escapeHtml(emojiOrToken || '')}</span>`;
+  }
+
   /**
    * Genera HTML seguro (anti-XSS) para la pista visual didáctica de cada nivel.
    */
@@ -476,12 +486,12 @@
     }
 
     if (challenge.levelId === 'l1') {
-      const safeEmoji = escapeHtml(challenge.emoji || '');
+      const visualHtml = renderVisualToken(challenge.emoji || '', challenge.anchorWord || challenge.prompt || '');
       const safeAnchor = escapeHtml(challenge.anchorWord || challenge.prompt || '');
       const safeTarget = escapeHtml(challenge.prompt || '');
       const tipLabel = safeLang === 'en' ? 'Starts with:' : 'Empieza por:';
       return `<div class="visual-hint-box">` +
-        `<span class="hint-emoji">${safeEmoji}</span>` +
+        `<span class="hint-emoji-wrap">${visualHtml}</span>` +
         `<span class="hint-text">${escapeHtml(tipLabel)} <strong class="syl-a">${safeTarget}</strong> (${safeAnchor})</span>` +
         `</div>`;
     }
@@ -497,10 +507,10 @@
 
     if (challenge.levelId === 'l4') {
       const sylHtml = renderSyllableTokens(challenge.syllables || [challenge.prompt], true);
-      const safeEmoji = escapeHtml(challenge.emoji || '');
+      const visualHtml = renderVisualToken(challenge.emoji || '', challenge.prompt || '');
       const clueLabel = safeLang === 'en' ? 'Visual clue unlocked:' : 'Pista visual desbloqueada:';
       return `<div class="visual-hint-box">` +
-        `<div class="hint-caption">${escapeHtml(clueLabel)} <span class="hint-emoji">${safeEmoji}</span></div>` +
+        `<div class="hint-caption">${escapeHtml(clueLabel)} <span class="hint-emoji-wrap">${visualHtml}</span></div>` +
         `${sylHtml}` +
         `</div>`;
     }
@@ -512,6 +522,210 @@
     return `<div class="visual-hint-box"><div class="hint-caption">${escapeHtml(tipText)}</div></div>`;
   }
 
+  /**
+   * Calcula estrellas de dominio (0 a 3) según la puntuación obtenida.
+   * >= 1400: 3 estrellas (⭐⭐⭐)
+   * >= 900:  2 estrellas (⭐⭐☆)
+   * >= 400:  1 estrella  (⭐☆☆)
+   * < 400:   0 estrellas (☆☆☆)
+   */
+  function computeStarsForScore(score) {
+    const s = Number(score) || 0;
+    if (s >= 1400) return 3;
+    if (s >= 900) return 2;
+    if (s >= 400) return 1;
+    return 0;
+  }
+
+  /**
+   * Extrae y normaliza palabras personalizadas desde parámetros URL o inputs de texto.
+   * Filtra tokens de 2 a 18 letras alfabéticas preservando Ñ y vocales acentuadas.
+   * Máximo 20 palabras, sin duplicados e inmune a inyecciones XSS (INV-READ-5).
+   */
+  function parseCustomWordsParam(rawStr) {
+    if (!rawStr || typeof rawStr !== 'string') return [];
+    const tokens = rawStr.split(/[\s,;|]+/);
+    const seen = new Set();
+    const result = [];
+
+    for (const token of tokens) {
+      if (!token) continue;
+      const cleaned = token.replace(/[^a-zA-ZáéíóúÁÉÍÓÚüÜñÑ]/g, '').toUpperCase();
+      if (cleaned.length >= 2 && cleaned.length <= 18 && !seen.has(cleaned)) {
+        seen.add(cleaned);
+        result.push(cleaned);
+        if (result.length >= 20) break;
+      }
+    }
+    return result;
+  }
+
+  /**
+   * Heurística determinista de separación silábica para español / general.
+   * Garantiza estrictamente que syllables.join('') === word (INV-READ-1).
+   */
+  function heuristicHyphenate(word, lang = 'es') {
+    const w = String(word || '').trim().toUpperCase();
+    if (w.length <= 2) return [w];
+
+    const VOWELS = new Set(['A', 'E', 'I', 'O', 'U', 'Á', 'É', 'Í', 'Ó', 'Ú', 'Ü', 'Y']);
+    const STRONG_VOWELS = new Set(['A', 'E', 'O', 'Á', 'É', 'Ó', 'Í', 'Ú']);
+    const INSEPARABLE = new Set([
+      'CH', 'LL', 'RR',
+      'BL', 'BR', 'CL', 'CR', 'DR', 'FL', 'FR', 'GL', 'GR', 'PL', 'PR', 'TR'
+    ]);
+
+    const vowelIndices = [];
+    for (let i = 0; i < w.length; i++) {
+      if (VOWELS.has(w[i])) {
+        vowelIndices.push(i);
+      }
+    }
+
+    if (vowelIndices.length <= 1) {
+      return [w];
+    }
+
+    const splitPoints = [];
+    for (let vi = 0; vi < vowelIndices.length - 1; vi++) {
+      const v1 = vowelIndices[vi];
+      const v2 = vowelIndices[vi + 1];
+      const consLen = v2 - v1 - 1;
+
+      if (consLen === 0) {
+        const c1 = w[v1];
+        const c2 = w[v2];
+        if (STRONG_VOWELS.has(c1) && STRONG_VOWELS.has(c2)) {
+          splitPoints.push(v1);
+        }
+      } else if (consLen === 1) {
+        splitPoints.push(v1);
+      } else if (consLen === 2) {
+        const cluster = w.slice(v1 + 1, v2);
+        if (INSEPARABLE.has(cluster)) {
+          splitPoints.push(v1);
+        } else {
+          splitPoints.push(v1 + 1);
+        }
+      } else if (consLen === 3) {
+        const lastTwo = w.slice(v2 - 2, v2);
+        if (INSEPARABLE.has(lastTwo)) {
+          splitPoints.push(v1 + 1);
+        } else {
+          splitPoints.push(v1 + 2);
+        }
+      } else {
+        splitPoints.push(v1 + 2);
+      }
+    }
+
+    if (splitPoints.length === 0) return [w];
+
+    const syllables = [];
+    let start = 0;
+    for (const sp of splitPoints) {
+      const syl = w.slice(start, sp + 1);
+      if (syl) syllables.push(syl);
+      start = sp + 1;
+    }
+    const lastSyl = w.slice(start);
+    if (lastSyl) syllables.push(lastSyl);
+
+    if (syllables.join('') !== w) {
+      return [w];
+    }
+    return syllables;
+  }
+
+  /**
+   * Obtiene sílabas e ilustración para una palabra personalizada:
+   * 1. Si existe en el catálogo, reutiliza sus sílabas canónicas y emoji/SVG.
+   * 2. Si es una palabra libre, aplica partición silábica determinista (INV-READ-1).
+   */
+  function splitCustomSyllables(word, lang = 'es') {
+    const rawWord = String(word || '').trim().toUpperCase();
+    if (!rawWord) return { syllables: [], emoji: '⭐' };
+
+    const safeLang = (lang === 'en') ? 'en' : 'es';
+    let catalogObj = null;
+    try {
+      catalogObj = (typeof getCatalog === 'function') ? getCatalog() : (window.READING_CATALOG || globalThis.READING_CATALOG);
+    } catch {
+      catalogObj = (typeof window !== 'undefined' && window.READING_CATALOG) || (typeof globalThis !== 'undefined' && globalThis.READING_CATALOG);
+    }
+
+    if (catalogObj && catalogObj.wordBank && catalogObj.wordBank[safeLang]) {
+      const wb = catalogObj.wordBank[safeLang];
+      const pools = [wb.l2, wb.l3, wb.l4].filter(Boolean);
+      for (const pool of pools) {
+        const match = pool.find(item => item && item.word && item.word.toUpperCase() === rawWord);
+        if (match && Array.isArray(match.syllables) && match.syllables.length > 0) {
+          return {
+            syllables: match.syllables.slice(),
+            emoji: match.emoji || '⭐'
+          };
+        }
+      }
+    }
+
+    const syllables = heuristicHyphenate(rawWord, safeLang);
+    return {
+      syllables,
+      emoji: '⭐'
+    };
+  }
+
+  /**
+   * Genera un reto dinámico de tipo 'fill_letters' (Nivel 3 con teclado 3D táctil)
+   * a partir del listado de palabras personalizadas (Modo Mis Palabras).
+   */
+  function generateCustomChallenge(customWords, lang = 'es', rng = null, recentIds = null) {
+    const safeLang = (lang === 'en') ? 'en' : 'es';
+    const safeRng = (typeof rng === 'function') ? rng : Math.random;
+    const words = Array.isArray(customWords) && customWords.length > 0 ? customWords : ['LECTURA'];
+
+    let pool = words;
+    if (Array.isArray(recentIds) && recentIds.length > 0 && words.length > recentIds.length) {
+      const excluded = new Set(recentIds);
+      const filtered = words.filter(w => !excluded.has(`custom_${w}`));
+      if (filtered.length > 0) pool = filtered;
+    }
+
+    const pickedWord = pickRandom(pool, safeRng).toUpperCase();
+    const sylData = splitCustomSyllables(pickedWord, safeLang);
+    const syllables = sylData.syllables;
+    const emoji = sylData.emoji;
+
+    const len = pickedWord.length;
+    const missingCount = len >= 5 ? 2 : 1;
+    const indices = [];
+    for (let i = 0; i < len; i++) indices.push(i);
+    const shuffledIndices = shuffleArray(indices, safeRng);
+    const missingIndices = shuffledIndices.slice(0, missingCount).sort((a, b) => a - b);
+
+    const maskedSlots = missingIndices.map(idx => ({
+      index: idx,
+      expected: pickedWord.charAt(idx)
+    }));
+
+    const keyboardChars = buildKeyboardChars(pickedWord, missingIndices, safeLang, safeRng);
+
+    return {
+      id: `custom_${pickedWord}`,
+      levelId: 'l3',
+      lang: safeLang,
+      kind: 'fill_letters',
+      prompt: pickedWord,
+      syllables,
+      emoji,
+      wordCount: 1,
+      missingIndices,
+      maskedSlots,
+      keyboardChars,
+      isCustomWord: true
+    };
+  }
+
   const ReadingEngine = {
     createSeededRng,
     escapeHtml,
@@ -519,11 +733,19 @@
     normalizeChar,
     computeWpm,
     computeRoundScore,
+    computeStarsForScore,
+    parseCustomWordsParam,
+    splitCustomSyllables,
+    generateCustomChallenge,
     generateChallenge,
     evaluateChallenge,
     renderSyllableTokens,
     renderVisualHint
   };
 
-  window.ReadingEngine = ReadingEngine;
-})(window);
+  const root = typeof window !== 'undefined' ? window : (typeof globalThis !== 'undefined' ? globalThis : this);
+  root.ReadingEngine = ReadingEngine;
+  if (typeof module === 'object' && module.exports) {
+    module.exports = ReadingEngine;
+  }
+})(typeof window !== 'undefined' ? window : globalThis);

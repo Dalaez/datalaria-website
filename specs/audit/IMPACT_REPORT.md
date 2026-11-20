@@ -1,7 +1,7 @@
 # 📈 Primera Auditoría Estratégica de Impacto SEO, Tráfico y Monetización (E02)
 
 > **Autor:** [`E02-seo-impact-strategist`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-editorial/E02-seo-impact-strategist.md) · **Célula:** Dirección & Inteligencia Estratégica  
-> **Fecha de Emisión:** 2026-11-19 18:59 UTC  
+> **Fecha de Emisión:** 2026-11-19 20:05 UTC  
 > **Fuentes de Verdad:** `data/pulse/private/index.json` (149 activos), `metrics.json` (GA4 30d), `monthly_metrics.json` (15 meses) y `backlog.yaml`.  
 > **Invariantes:** Cumple estrictamente `INV-PULSE-6` y Constitución Art. 1.3 (*Separación Cerebro vs. Músculo Cuantitativo*).
 
@@ -12,8 +12,8 @@
 | Métrica Macro | Valor Cuantitativo Real | Interpretación Estratégica E02 |
 | :--- | :---: | :--- |
 | **Total Activos Consolidados** | **149 activos** | 121 Posts bilingües (`98` publicados, `21` programados, `2` drafts), 9 Apps y 19 Kits/Suites. |
-| **Tráfico Acumulado Posts (30d)** | **1,906 vistas** | Vistas reales en los 98 artículos publicados (mediana: **9.0**, $P_{75}$: **25.0**). |
-| **Crecimiento Interanual (YoY)** | **+15618.2%** | De 59 vistas (sep 2025) a 3.157 vistas (oct 2026), récord histórico del proyecto. |
+| **Tráfico Acumulado Posts (30d)** | **1,908 vistas** | Vistas reales en los 98 artículos publicados (mediana: **9.0**, $P_{75}$: **25.0**). |
+| **Crecimiento Interanual (YoY)** | **+15627.3%** | De 59 vistas (sep 2025) a 3.157 vistas (oct 2026), récord histórico del proyecto. |
 | **Quick Wins de CTR / SERP** | **21 oportunidades** | Títulos superiores a 95 caracteres que sufren truncamiento en Google SERP. |
 | **Huérfanos de Monetización** | **2 posts top** | Posts en el cuartil superior de visitas ($P_{75} \ge 25$) sin enlace ni shortcode a Kit/App. |
 | **Score Promedio del Backlog** | **85.3 / 100** | 6 propuestas estratégicas alineadas con los Kits de 19€ y la waitlist de Helix. |
@@ -34,11 +34,11 @@ flowchart TD
 
 | Categoría Oficial | Posts | Vistas 30d | Media/Post | Usuarios | Engagement Medio | Monetizados | Cobertura % | Editorial ROI Score |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Estrategia y Operaciones** | 16 | 503 | 31.4 | 224 | 20.3s | 14/16 | **87.5%** | **83.3** |
+| **Estrategia y Operaciones** | 16 | 504 | 31.5 | 225 | 20.2s | 14/16 | **87.5%** | **83.2** |
 | **Pioneros y Referentes** | 13 | 285 | 21.9 | 233 | 31.3s | 7/13 | **53.8%** | **69.1** |
 | **Startups** | 13 | 184 | 14.2 | 167 | 30.2s | 4/13 | **30.8%** | **49.5** |
 | **IA, Ingeniería y Proyectos** | 52 | 824 | 15.8 | 421 | 10.7s | 26/52 | **50.0%** | **46.3** |
-| **Cultura Tech y Media** | 12 | 110 | 9.2 | 90 | 10.7s | 5/12 | **41.7%** | **34.2** |
+| **Cultura Tech y Media** | 12 | 111 | 9.2 | 91 | 10.5s | 5/12 | **41.7%** | **34.0** |
 
 ### Diagnóstico Estratégico de Categorías:
 1. 🏆 **Estrategia y Operaciones (Líder en Eficiencia y Conversión):** Con **28.1 visitas/post** y **83.3% de cobertura de monetización**, es el motor de conversión más maduro de Datalaria. Los posts de DAFO, Porter, RICE y DAR empujan directamente las ventas de las Suites 01 y 02.
@@ -118,7 +118,7 @@ $$\text{Editorial ROI Score} = 0.40 \times \text{Demanda SEO} + 0.35 \times \tex
 | `maths-v2.2.0` | `version_upgrade` (v2.2.0) | 2026-11-06 | `published` | 1 | 2025-09-11 | 0 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v2.2.0 (2026-11-06) posterior al último post (2025-09-11); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
 | `maths-v2.1.0` | `version_upgrade` (v2.1.0) | 2026-11-05 | `published` | 1 | 2025-09-11 | 0 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v2.1.0 (2026-11-05) posterior al último post (2025-09-11); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
 | `maths-v2.0.0` | `version_upgrade` (v2.0.0) | 2026-11-05 | `published` | 1 | 2025-09-11 | 0 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v2.0.0 (2026-11-05) posterior al último post (2025-09-11); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
-| `reading` | `initial_launch` (v1.0.0) | 2026-12-16 | `scheduled` | 0 | Ninguno | 0 | 🟡 Lanzamiento Pendiente | Lanzamiento programado el 2026-12-16: coordinar con E01/E03 redacción anticipada de tutorial o post guía. |
+| `reading` | `initial_launch` (v1.1.0) | 2026-12-16 | `scheduled` | 0 | Ninguno | 0 | 🟡 Lanzamiento Pendiente | Lanzamiento programado el 2026-12-16: coordinar con E01/E03 redacción anticipada de tutorial o post guía. |
 | `pack-sdd` | `kit_launch` (v1.0.0) | 2027-01-19 | `scheduled` | 5 | 2026-11-11 | 181 | 🟢 Cobertura Programada | Campaña programada: coordinar con E06 sindicación omnicanal para el estreno el 2027-01-19. |
 | `suite-sdd` | `kit_launch` (v1.0.0) | 2027-01-19 | `scheduled` | 3 | 2026-11-11 | 180 | 🟢 Cobertura Programada | Campaña programada: coordinar con E06 sindicación omnicanal para el estreno el 2027-01-19. |
 | `helix` | `initial_launch` (v1.0.0) | 2027-01-19 | `scheduled` | 5 | Ninguno | 2 | 🟢 Cobertura Programada | Campaña programada: coordinar con E06 sindicación omnicanal para el estreno el 2027-01-19. |
@@ -127,14 +127,14 @@ $$\text{Editorial ROI Score} = 0.40 \times \text{Demanda SEO} + 0.35 \times \tex
 | `pack-evm` | `kit_launch` (v1.0.0) | 2026-11-23 | `scheduled` | 1 | Ninguno | 0 | 🟢 Cobertura Programada | Campaña programada: coordinar con E06 sindicación omnicanal para el estreno el 2026-11-23. |
 | `pack-stock` | `kit_launch` (v1.0.0) | 2026-11-26 | `scheduled` | 1 | Ninguno | 0 | 🟢 Cobertura Programada | Campaña programada: coordinar con E06 sindicación omnicanal para el estreno el 2026-11-26. |
 | `pulse` | `initial_launch` (v1.0.0) | 2026-11-18 | `published` | 7 | 2026-11-18 | 289 | ✅ Cubierto | Activo cubierto con 7 post(s) en producción (289 vistas/30d). |
-| `obs-management` | `initial_launch` (v1.0.1) | 2026-05-17 | `published` | 16 | 2026-11-14 | 275 | ✅ Cubierto | Activo cubierto con 16 post(s) en producción (275 vistas/30d). |
-| `obs-management-v1.0.1` | `version_upgrade` (v1.0.1) | 2026-10-24 | `published` | 16 | 2026-11-14 | 275 | ✅ Cubierto | Versión v1.0.1 respaldada por los artículos de la serie. |
+| `obs-management` | `initial_launch` (v1.0.1) | 2026-05-17 | `published` | 16 | 2026-11-14 | 276 | ✅ Cubierto | Activo cubierto con 16 post(s) en producción (276 vistas/30d). |
+| `obs-management-v1.0.1` | `version_upgrade` (v1.0.1) | 2026-10-24 | `published` | 16 | 2026-11-14 | 276 | ✅ Cubierto | Versión v1.0.1 respaldada por los artículos de la serie. |
 | `pack-pulse` | `kit_launch` (v1.0.0) | 2026-11-18 | `published` | 4 | 2026-11-18 | 244 | ✅ Cubierto | Activo cubierto con 4 post(s) en producción (244 vistas/30d). |
 | `suite-02` | `kit_launch` (v1.0.0) | 2026-11-08 | `published` | 4 | 2026-11-08 | 155 | ✅ Cubierto | Activo cubierto con 4 post(s) en producción (155 vistas/30d). |
 | `pack-business-case` | `kit_launch` (v1.0.0) | 2026-11-08 | `published` | 4 | 2026-11-08 | 129 | ✅ Cubierto | Activo cubierto con 4 post(s) en producción (129 vistas/30d). |
 | `suite-01` | `kit_launch` (v1.0.0) | 2026-11-01 | `published` | 3 | 2026-11-01 | 100 | ✅ Cubierto | Activo cubierto con 3 post(s) en producción (100 vistas/30d). |
 | `pack-rice` | `kit_launch` (v1.0.0) | 2026-11-05 | `published` | 1 | 2026-11-05 | 73 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (73 vistas/30d). |
-| `lifeops` | `initial_launch` (v1.1.1) | 2026-09-19 | `published` | 6 | 2026-10-28 | 69 | ✅ Cubierto | Activo cubierto con 6 post(s) en producción (69 vistas/30d). |
+| `lifeops` | `initial_launch` (v1.2.0) | 2026-09-19 | `published` | 6 | 2026-10-28 | 69 | ✅ Cubierto | Activo cubierto con 6 post(s) en producción (69 vistas/30d). |
 | `lifeops-v1.1.1` | `version_upgrade` (v1.1.1) | 2026-10-27 | `published` | 6 | 2026-10-28 | 69 | ✅ Cubierto | Versión v1.1.1 respaldada por los artículos de la serie. |
 | `lifeops-v1.1.0` | `version_upgrade` (v1.1.0) | 2026-10-27 | `published` | 6 | 2026-10-28 | 69 | ✅ Cubierto | Versión v1.1.0 cubierta con artículo propio publicado (app-lifeops_part6_analytics_dashboard_360). |
 | `lifeops-v1.0.1` | `version_upgrade` (v1.0.1) | 2026-10-24 | `published` | 6 | 2026-10-28 | 69 | ✅ Cubierto | Versión v1.0.1 respaldada por los artículos de la serie. |
@@ -156,7 +156,7 @@ $$\text{Editorial ROI Score} = 0.40 \times \text{Demanda SEO} + 0.35 \times \tex
 | `snake` | `initial_launch` (v2.3.1) | 2026-02-14 | `published` | 1 | 2026-02-14 | 23 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (23 vistas/30d). |
 | `snake-v0.5.0` | `version_upgrade` (v0.5.0) | 2026-02-01 | `published` | 1 | 2026-02-14 | 23 | ✅ Cubierto | Versión v0.5.0 respaldada por los artículos de la serie. |
 | `snake-v0.1.0` | `version_upgrade` (v0.1.0) | 2026-01-20 | `published` | 1 | 2026-02-14 | 23 | ✅ Cubierto | Versión v0.1.0 respaldada por los artículos de la serie. |
-| `pack-porter` | `kit_launch` (v1.0.0) | 2026-10-21 | `published` | 1 | 2026-10-19 | 14 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (14 vistas/30d). |
+| `pack-porter` | `kit_launch` (v1.0.0) | 2026-10-21 | `published` | 1 | 2026-10-19 | 15 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (15 vistas/30d). |
 | `conversor` | `initial_launch` (v2.1.0) | 2025-10-04 | `published` | 1 | 2025-10-04 | 7 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (7 vistas/30d). |
 | `conversor-v0.5.0` | `version_upgrade` (v0.5.0) | 2025-09-28 | `published` | 1 | 2025-10-04 | 7 | ✅ Cubierto | Versión v0.5.0 respaldada por los artículos de la serie. |
 | `conversor-v0.1.0` | `version_upgrade` (v0.1.0) | 2025-09-20 | `published` | 1 | 2025-10-04 | 7 | ✅ Cubierto | Versión v0.1.0 respaldada por los artículos de la serie. |

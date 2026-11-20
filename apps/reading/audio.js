@@ -1,4 +1,4 @@
-// apps/reading/audio.js - Sintetizador Web Audio 8-bit, Web Speech TTS Dual (1.0x / 0.65x tortuga) y confeti en Canvas
+// apps/reading/audio.js - Sintetizador Web Audio 8-bit, Web Speech TTS Dual (1.0x / 0.5x tortuga) y confeti en Canvas
 (function(window) {
   'use strict';
 
@@ -100,7 +100,7 @@
 
     /**
      * Pronuncia un texto usando Web Speech API nativa sin llamadas a la nube (INV-READ-3).
-     * Soporta velocidad normal (1.0x) y modo tortuga (0.65x).
+     * Soporta velocidad normal (1.0x) y modo tortuga (0.5x).
      * Resiliente si window.speechSynthesis o SpeechSynthesisUtterance no existen.
      */
     speakText: function(text, lang = 'es', rate = 1.0) {
@@ -113,7 +113,7 @@
 
         const UtteranceClass = window.SpeechSynthesisUtterance;
         const utterance = new UtteranceClass(String(text));
-        utterance.rate = Math.max(0.5, Math.min(2.0, Number(rate) || 1.0));
+        utterance.rate = Math.max(0.45, Math.min(2.0, Number(rate) || 1.0));
         utterance.pitch = 1.0;
 
         const normLang = String(lang || 'es').toLowerCase();

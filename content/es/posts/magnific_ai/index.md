@@ -165,8 +165,6 @@ Si dos fundadores desde Murcia pudieron crear en tres meses —con menos de 5.00
 
 **¿Qué parte de la ventaja competitiva tradicional de una empresa (tamaño de plantilla, código propietario o sede en Silicon Valley) sobrevive realmente cuando entramos en la economía de los equipos mínimos potenciados por AGI?**
 
-Déjanos tu punto de vista en los comentarios.
-
 ---
 
 #### Fuentes y Enlaces de Interés:

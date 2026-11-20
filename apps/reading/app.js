@@ -7,7 +7,7 @@
   const audio = window.ReadingAudio;
   const esc = engine.escapeHtml;
 
-  const APP_VERSION = 'v1.0.0';
+  const APP_VERSION = 'v1.1.0';
   const TOTAL_ROUNDS = 10;
 
   // Estado global de UI y pedagogía
@@ -20,6 +20,10 @@
   let colorSyllables = true;
   let learnSlowMode = false;
   let activeMixerIndex = 0;
+  let customWordsList = [];
+  let resetConfirmPending = false;
+  let resetConfirmTimer = null;
+  let karaokeTimeouts = [];
 
   // Estado de partida activa
   let inGame = false;
@@ -66,13 +70,18 @@
       highScores: {},
       bestWpm: 0,
       bestStreakEver: 0,
-      unlockedMedals: []
+      unlockedMedals: [],
+      customName: ''
     };
   }
 
   function sanitizeStats(raw) {
     const clean = createEmptyStats();
     if (!raw || typeof raw !== 'object') return clean;
+
+    if (raw.customName && typeof raw.customName === 'string') {
+      clean.customName = raw.customName.slice(0, 28).trim();
+    }
 
     if (raw.highScores && typeof raw.highScores === 'object') {
       const validLevels = ['l1', 'l2', 'l3', 'l4', 'l5', 'l6'];
@@ -203,6 +212,16 @@
     const queryDate = params.get('date');
     if (queryDate && /^\d{4}-\d{2}-\d{2}$/.test(queryDate)) {
       dailyDateParam = queryDate;
+    }
+
+    const queryWords = params.get('words');
+    if (queryWords && engine && typeof engine.parseCustomWordsParam === 'function') {
+      customWordsList = engine.parseCustomWordsParam(queryWords);
+    }
+
+    const queryTab = params.get('tab');
+    if (queryTab && ['play', 'learn', 'achievements'].includes(queryTab)) {
+      activeTab = queryTab;
     }
   }
 
@@ -399,13 +418,22 @@
         <div class="card">
           <h2 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 8px;">${esc(t('choose_level'))}</h2>
           <div class="levels-grid">
-            ${catalog.levels.map(lvl => `
-              <div class="selectable-item ${selectedLevel === lvl.id ? 'selected' : ''}" data-level="${esc(lvl.id)}">
-                <div style="font-size: 1.8rem; margin-bottom: 4px;">${esc(lvl.icon)}</div>
-                <strong style="display: block; font-size: 1.05rem;">${esc(lvl.name[lang])}</strong>
-                <span style="font-size: 0.85rem; color: var(--text-secondary); display: block; margin-top: 4px;">${esc(lvl.desc[lang])}</span>
-              </div>
-            `).join('')}
+            ${catalog.levels.map(lvl => {
+              const bestScore = userStats.highScores[lvl.id] || 0;
+              const stars = engine.computeStarsForScore(bestScore);
+              const starsGlyph = '⭐'.repeat(stars) + '☆'.repeat(3 - stars);
+              return `
+                <div class="selectable-item ${selectedLevel === lvl.id ? 'selected' : ''}" data-level="${esc(lvl.id)}">
+                  <div style="font-size: 1.8rem; margin-bottom: 4px;">${esc(lvl.icon)}</div>
+                  <strong style="display: block; font-size: 1.05rem;">${esc(lvl.name[lang])}</strong>
+                  <span style="font-size: 0.85rem; color: var(--text-secondary); display: block; margin-top: 4px;">${esc(lvl.desc[lang])}</span>
+                  <div class="level-stars-badge" title="${stars}/3 estrellas">
+                    <span>${starsGlyph}</span>
+                    ${bestScore > 0 ? `<span style="font-size: 0.8rem; color: var(--text-muted); margin-left: 4px;">${bestScore} pts</span>` : ''}
+                  </div>
+                </div>
+              `;
+            }).join('')}
           </div>
 
           <h2 style="font-size: 1.4rem; font-weight: 800; margin: 24px 0 8px;">${esc(t('choose_mode'))}</h2>
@@ -417,6 +445,28 @@
                 <span style="font-size: 0.85rem; color: var(--text-secondary); display: block; margin-top: 4px;">${esc(m.desc[lang])}</span>
               </div>
             `).join('')}
+          </div>
+
+          <div class="custom-words-panel">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+              <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-primary); margin:0;">${esc(t('custom_words_title'))}</h3>
+              ${customWordsList.length > 0 ? `<span class="custom-words-badge">${esc(t('custom_words_active_badge'))} (${customWordsList.length})</span>` : ''}
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 6px 0 8px;">${esc(t('custom_words_desc'))}</p>
+            <input id="custom-words-input" type="text" class="custom-words-input" placeholder="${esc(t('custom_words_placeholder'))}" value="${esc(customWordsList.join(', '))}" />
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <button id="btn-apply-custom-words" class="btn-arcade btn-arcade-primary" style="font-size: 0.9rem; padding: 8px 16px;">
+                ${esc(t('custom_words_apply'))}
+              </button>
+              ${customWordsList.length > 0 ? `
+                <button id="btn-clear-custom-words" class="btn-arcade" style="font-size: 0.9rem; padding: 8px 16px;">
+                  ${esc(t('custom_words_clear'))}
+                </button>
+                <button id="btn-share-custom-words" class="btn-arcade" style="font-size: 0.9rem; padding: 8px 16px;">
+                  ${esc(t('custom_words_share'))}
+                </button>
+              ` : ''}
+            </div>
           </div>
 
           <div style="text-align: center; margin-top: 30px;">
@@ -442,12 +492,62 @@
           renderPlayTab();
         };
       });
+
+      const applyWordsBtn = document.getElementById('btn-apply-custom-words');
+      if (applyWordsBtn) {
+        applyWordsBtn.onclick = () => {
+          audio.playClick();
+          const inputEl = document.getElementById('custom-words-input');
+          if (inputEl) {
+            const parsed = engine.parseCustomWordsParam(inputEl.value);
+            if (parsed.length > 0) {
+              customWordsList = parsed;
+              showToast(`${t('custom_words_active_badge')} (${parsed.length})`);
+            } else {
+              customWordsList = [];
+            }
+            renderPlayTab();
+          }
+        };
+      }
+
+      const clearWordsBtn = document.getElementById('btn-clear-custom-words');
+      if (clearWordsBtn) {
+        clearWordsBtn.onclick = () => {
+          audio.playClick();
+          customWordsList = [];
+          renderPlayTab();
+        };
+      }
+
+      const shareWordsBtn = document.getElementById('btn-share-custom-words');
+      if (shareWordsBtn) {
+        shareWordsBtn.onclick = () => {
+          audio.playClick();
+          const url = `${window.location.origin}${window.location.pathname}?words=${encodeURIComponent(customWordsList.join(','))}`;
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(url)
+              .then(() => showToast(t('custom_words_copied')))
+              .catch(() => showToast(t('custom_words_copied')));
+          } else {
+            showToast(t('custom_words_copied'));
+          }
+        };
+      }
+
       const startBtn = document.getElementById('btn-start');
       if (startBtn) startBtn.onclick = startGameSession;
       return;
     }
 
     renderActiveGame(container);
+  }
+
+  function renderVisual(emojiOrToken, wordHint) {
+    if (typeof window !== 'undefined' && window.ReadingIllustrations && typeof window.ReadingIllustrations.renderVisual === 'function') {
+      return window.ReadingIllustrations.renderVisual(emojiOrToken, wordHint);
+    }
+    return `<span class="reading-emoji-char">${esc(emojiOrToken || '')}</span>`;
   }
 
   function renderActiveStageContent() {
@@ -466,7 +566,7 @@
       const promptLabel = lang === 'es' ? '¿Con qué letra o sílaba empieza?' : 'Starts with which letter?';
 
       return `
-        <div class="reading-emoji-anchor" aria-hidden="true">${esc(ch.emoji || '')}</div>
+        <div class="reading-emoji-anchor" aria-hidden="true">${renderVisual(ch.emoji, ch.anchorWord || ch.prompt)}</div>
         <div class="reading-word-hero ${useUpperCase ? 'case-upper' : ''}">
           <span class="syl-a" style="border-bottom: 4px solid var(--op-add); padding: 0 6px;">?</span><span>${esc(formatWordCase(restWord))}</span>
         </div>
@@ -484,7 +584,7 @@
     if (ch.levelId === 'l2') {
       const promptLabel = lang === 'es' ? 'Elige la palabra correcta para esta imagen:' : 'Pick the word matching this picture:';
       return `
-        <div class="reading-emoji-anchor" aria-hidden="true">${esc(ch.emoji || '')}</div>
+        <div class="reading-emoji-anchor" aria-hidden="true">${renderVisual(ch.emoji, ch.prompt)}</div>
         <div style="font-size: 0.95rem; color: var(--text-secondary); font-weight: 600;">${esc(promptLabel)}</div>
         <div class="choices-grid">
           ${(ch.choices || []).map((c, idx) => `
@@ -516,7 +616,7 @@
       }).join('');
 
       return `
-        <div class="reading-emoji-anchor" aria-hidden="true">${esc(ch.emoji || '')}</div>
+        <div class="reading-emoji-anchor" aria-hidden="true">${renderVisual(ch.emoji, ch.prompt)}</div>
         <div style="font-size: 0.9rem; color: var(--text-secondary); font-weight: 600;">${esc(t('keyboard_tap_hint'))}</div>
         <div class="letter-slots-container ${useUpperCase ? 'case-upper' : ''}">
           ${slotsHtml}
@@ -569,7 +669,7 @@
     // Estado 2 tras congelar cronómetro: Micro-Check de Comprensión
     const mc = ch.microCheck || { question: '', options: [] };
     return `
-      ${ch.levelId === 'l4' && ch.emoji ? `<div class="reading-emoji-anchor" style="font-size: 3rem;" aria-hidden="true">${esc(ch.emoji)}</div>` : ''}
+      ${ch.levelId === 'l4' && ch.emoji ? `<div class="reading-emoji-anchor" style="font-size: 3rem;" aria-hidden="true">${renderVisual(ch.emoji, ch.prompt)}</div>` : ''}
       <div class="micro-check-card">
         <div style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--op-add); margin-bottom: 6px;">
           ${esc(t('micro_check_title'))}
@@ -578,7 +678,7 @@
         <div class="micro-check-options">
           ${(mc.options || []).map((opt, idx) => `
             <button class="micro-check-btn" data-mc-idx="${idx}" ${inFeedbackPause ? 'disabled' : ''}>
-              <span style="font-size: 1.5rem;">${esc(opt.icon || opt.emoji || '')}</span>
+              <span class="mc-icon-wrap" style="font-size: 1.5rem; display: inline-flex; align-items: center;">${renderVisual(opt.icon || opt.emoji || '', opt.label)}</span>
               <span>${esc(opt.label)}</span>
             </button>
           `).join('')}
@@ -644,6 +744,9 @@
           <button id="btn-toggle-hint" class="btn-arcade" style="background: var(--bg-inset);">
             ${esc(isHintVisible ? t('hide_hint') : t('visual_hint'))}
           </button>
+          <button id="btn-listen-normal" class="btn-arcade" style="background: var(--bg-inset);">
+            🔊 ${esc(t('listen_normal_btn'))}
+          </button>
           <button id="btn-listen-slow" class="btn-arcade" style="background: var(--bg-inset);">
             🐢 ${esc(t('listen_slow_btn'))}
           </button>
@@ -677,6 +780,19 @@
     const hintBtn = document.getElementById('btn-toggle-hint');
     if (hintBtn) hintBtn.onclick = toggleVisualHint;
 
+    const listenNormalBtn = document.getElementById('btn-listen-normal');
+    if (listenNormalBtn) {
+      listenNormalBtn.onclick = () => {
+        if (!currentChallenge || inFeedbackPause) return;
+        hintUsedThisRound = true;
+        const textToSpeak = currentChallenge.levelId === 'l1'
+          ? `${currentChallenge.prompt}. ${currentChallenge.anchorWord || ''}`
+          : currentChallenge.prompt;
+        audio.speakText(textToSpeak, lang, 1.0);
+        triggerSyllableKaraoke(1.0);
+      };
+    }
+
     const listenSlowBtn = document.getElementById('btn-listen-slow');
     if (listenSlowBtn) {
       listenSlowBtn.onclick = () => {
@@ -685,7 +801,8 @@
         const textToSpeak = currentChallenge.levelId === 'l1'
           ? `${currentChallenge.prompt}. ${currentChallenge.anchorWord || ''}`
           : currentChallenge.prompt;
-        audio.speakText(textToSpeak, lang, 0.65);
+        audio.speakText(textToSpeak, lang, 0.5);
+        triggerSyllableKaraoke(0.5);
       };
     }
 
@@ -708,7 +825,7 @@
         const elapsed = Math.max(400, Math.round(performance.now() - roundStartMs));
         freezeClockOnly(elapsed);
         const evalRes = engine.evaluateChallenge(currentChallenge, choice, lang);
-        handleChallengeResult(evalRes.isCorrect, false, evalRes.correctDisplay, elapsed, 0, evalRes.userDisplay);
+        handleChallengeResult(evalRes.isCorrect, false, evalRes.correctDisplay, elapsed, frozenWpm, evalRes.userDisplay);
       };
     });
 
@@ -776,13 +893,39 @@
     }
   }
 
+  function triggerSyllableKaraoke(rate) {
+    karaokeTimeouts.forEach(t => clearTimeout(t));
+    karaokeTimeouts = [];
+    document.querySelectorAll('.karaoke-active').forEach(el => el.classList.remove('karaoke-active'));
+
+    let targets = Array.from(document.querySelectorAll('.reading-stage .syl-token, .reading-stage .syl-a, .reading-stage .syl-b, .reading-stage .letter-slot'));
+    if (targets.length === 0) {
+      targets = Array.from(document.querySelectorAll('.reading-stage .reading-sentence-line, .reading-stage .reading-word-hero'));
+    }
+    if (targets.length === 0) return;
+
+    const stepMs = rate <= 0.6 ? 620 : 320;
+    targets.forEach((el, idx) => {
+      const tStart = setTimeout(() => {
+        targets.forEach(t => t.classList.remove('karaoke-active'));
+        el.classList.add('karaoke-active');
+      }, idx * stepMs);
+
+      const tEnd = setTimeout(() => {
+        el.classList.remove('karaoke-active');
+      }, (idx + 1) * stepMs);
+
+      karaokeTimeouts.push(tStart, tEnd);
+    });
+  }
+
   function freezeClockOnly(elapsedMs) {
     if (selectedMode !== 'sprint') {
       clearInterval(timerInterval);
     }
     frozenElapsedMs = elapsedMs;
-    const isSentence = currentChallenge && (currentChallenge.levelId === 'l5' || currentChallenge.levelId === 'l6');
-    frozenWpm = isSentence ? engine.computeWpm(currentChallenge.wordCount, elapsedMs) : 0;
+    const count = (currentChallenge && currentChallenge.wordCount) || 1;
+    frozenWpm = currentChallenge ? engine.computeWpm(count, elapsedMs) : 0;
   }
 
   function handleReadDone() {
@@ -821,7 +964,7 @@
       freezeClockOnly(elapsed);
       renderActiveGame(document.getElementById('tab-content'));
       const evalRes = engine.evaluateChallenge(currentChallenge, filledSlots, lang);
-      handleChallengeResult(evalRes.isCorrect, false, evalRes.correctDisplay, elapsed, 0, evalRes.userDisplay);
+      handleChallengeResult(evalRes.isCorrect, false, evalRes.correctDisplay, elapsed, frozenWpm, evalRes.userDisplay);
     } else {
       activeSlotCursor = nextEmpty;
       renderActiveGame(document.getElementById('tab-content'));
@@ -860,7 +1003,7 @@
     const elapsed = Math.max(400, Math.round(performance.now() - roundStartMs));
     freezeClockOnly(elapsed);
     const evalRes = engine.evaluateChallenge(currentChallenge, filledSlots, lang);
-    handleChallengeResult(evalRes.isCorrect, false, evalRes.correctDisplay, elapsed, 0, evalRes.userDisplay);
+    handleChallengeResult(evalRes.isCorrect, false, evalRes.correctDisplay, elapsed, frozenWpm, evalRes.userDisplay);
   }
 
   function handleChallengeResult(isCorrect, isSkipped, correctDisplay, elapsedMs, roundWpm, userDisplay) {
@@ -1012,7 +1155,11 @@
     activeSlotCursor = 0;
 
     const prng = (selectedMode === 'daily' && typeof dailyRng === 'function') ? dailyRng : null;
-    currentChallenge = engine.generateChallenge(selectedLevel, lang, prng, recentIds);
+    if (customWordsList && customWordsList.length > 0) {
+      currentChallenge = engine.generateCustomChallenge(customWordsList, lang, prng, recentIds);
+    } else {
+      currentChallenge = engine.generateChallenge(selectedLevel, lang, prng, recentIds);
+    }
     if (currentChallenge && currentChallenge.id) {
       recentIds.push(currentChallenge.id);
       if (recentIds.length > 10) recentIds.shift();
@@ -1115,6 +1262,7 @@
     const wpmList = roundHistory.map(r => r.wpm).filter(w => w > 0);
     const avgWpm = wpmList.length > 0 ? Math.round(wpmList.reduce((a, b) => a + b, 0) / wpmList.length) : 0;
     const maxWpmSession = wpmList.length > 0 ? Math.max(...wpmList) : 0;
+    const effectiveWpm = Math.round(avgWpm * (accuracy / 100));
 
     // Tira Wordle (🟩 Acierto limpio, 💡 Acierto con pista, 🟥 Fallo)
     const emojiStrip = roundHistory.map(r => {
@@ -1180,6 +1328,7 @@
           <div class="stat-chip" style="font-size: 1.1rem; padding: 10px 18px;">🎯 ${esc(t('accuracy'))}: <strong>${accuracy}%</strong></div>
           <div class="stat-chip" style="font-size: 1.1rem; padding: 10px 18px;">🔥 ${esc(t('best_streak'))}: <strong>${bestStreak}</strong></div>
           ${avgWpm > 0 ? `<div class="stat-chip" style="font-size: 1.1rem; padding: 10px 18px;">⏱️ ${esc(t('wpm_label'))}: <strong>${avgWpm} (${lang === 'es' ? 'Máx' : 'Max'} ${maxWpmSession})</strong></div>` : ''}
+          ${avgWpm > 0 ? `<div class="stat-chip" style="font-size: 1.1rem; padding: 10px 18px;">🎯 ${esc(t('effective_wpm_label'))}: <strong>${effectiveWpm} ${esc(t('wpm_label'))}</strong></div>` : ''}
         </div>
 
         ${emojiStrip ? `
@@ -1192,6 +1341,9 @@
           </button>
           <button id="btn-again" class="btn-arcade btn-arcade-primary" style="font-size: 1.05rem; padding: 12px 22px;">
             ${esc(t('play_again'))}
+          </button>
+          <button id="btn-download-sheet" class="btn-arcade btn-arcade-sheet" style="font-size: 1.05rem; padding: 12px 22px;">
+            ${esc(t('download_sheet_btn'))}
           </button>
           <button id="btn-finish-diploma" class="btn-arcade btn-arcade-diploma" style="font-size: 1.05rem; padding: 12px 22px;">
             ${esc(t('download_diploma_btn'))}
@@ -1211,6 +1363,9 @@
 
     const againBtn = document.getElementById('btn-again');
     if (againBtn) againBtn.onclick = startGameSession;
+
+    const sheetBtn = document.getElementById('btn-download-sheet');
+    if (sheetBtn) sheetBtn.onclick = downloadPracticeSheet;
 
     const diplomaBtn = document.getElementById('btn-finish-diploma');
     if (diplomaBtn) diplomaBtn.onclick = downloadReadingDiploma;
@@ -1254,7 +1409,7 @@
         const idx = Number(btn.getAttribute('data-mistake-idx'));
         const item = mistakes[idx];
         if (item && item.challenge) {
-          audio.speakText(item.challenge.prompt, lang, 0.65);
+          audio.speakText(item.challenge.prompt, lang, 0.5);
         }
       };
     });
@@ -1304,7 +1459,7 @@
           ${(mods.letters || []).map((item, idx) => `
             <button class="phonics-card" data-speak-text="${esc(item.letter + '. ' + item.anchor)}" data-card-idx="${idx}">
               <div class="phonics-letter ${useUpperCase ? 'case-upper' : ''}">${esc(formatWordCase(item.letter))}</div>
-              <div class="phonics-emoji" aria-hidden="true">${esc(item.emoji)}</div>
+              <div class="phonics-emoji" aria-hidden="true">${renderVisual(item.emoji, item.anchor)}</div>
               <div class="phonics-anchor ${useUpperCase ? 'case-upper' : ''}">${esc(useUpperCase ? item.anchor.toUpperCase() : item.anchor)}</div>
               <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">${esc(item.sound)}</div>
             </button>
@@ -1339,7 +1494,7 @@
                     <div class="phonics-letter ${useUpperCase ? 'case-upper' : ''}">
                       <span class="syl-a">${esc(consPart)}</span><span class="syl-b">${esc(vowelPart)}</span>
                     </div>
-                    <div class="phonics-emoji" aria-hidden="true">${esc(sylObj.emoji)}</div>
+                    <div class="phonics-emoji" aria-hidden="true">${renderVisual(sylObj.emoji, sylObj.word)}</div>
                     <div class="phonics-anchor ${useUpperCase ? 'case-upper' : ''}">${esc(useUpperCase ? sylObj.word.toUpperCase() : sylObj.word)}</div>
                   </button>
                 `;
@@ -1376,7 +1531,7 @@
                     <div class="phonics-letter ${useUpperCase ? 'case-upper' : ''}">
                       <span class="syl-a">${esc(onset)}</span><span class="syl-b">${esc(rimePart)}</span>
                     </div>
-                    <div class="phonics-emoji" aria-hidden="true">${esc(wObj.emoji)}</div>
+                    <div class="phonics-emoji" aria-hidden="true">${renderVisual(wObj.emoji, wObj.word)}</div>
                   </button>
                 `;
               }).join('')}
@@ -1394,7 +1549,7 @@
                 ${(mods.inverseSyllables || []).flatMap(g => g.syllables || []).map(item => `
                   <button class="phonics-card" data-speak-text="${esc(item.syllable.toLowerCase() + ', ' + item.word)}">
                     <div class="phonics-letter syl-complex ${useUpperCase ? 'case-upper' : ''}">${esc(formatWordCase(item.syllable))}</div>
-                    <div class="phonics-emoji" aria-hidden="true">${esc(item.emoji)}</div>
+                    <div class="phonics-emoji" aria-hidden="true">${renderVisual(item.emoji, item.word)}</div>
                     <div class="phonics-anchor">${esc(useUpperCase ? item.word.toUpperCase() : item.word)}</div>
                   </button>
                 `).join('')}
@@ -1407,7 +1562,7 @@
                 ${(mods.complexSyllables || []).map(item => `
                   <button class="phonics-card" data-speak-text="${esc(item.syllable.toLowerCase() + ', ' + item.word)}">
                     <div class="phonics-letter ${useUpperCase ? 'case-upper' : ''}" style="color: var(--op-add);">${esc(formatWordCase(item.syllable))}</div>
-                    <div class="phonics-emoji" aria-hidden="true">${esc(item.emoji)}</div>
+                    <div class="phonics-emoji" aria-hidden="true">${renderVisual(item.emoji, item.word)}</div>
                     <div class="phonics-anchor">${esc(useUpperCase ? item.word.toUpperCase() : item.word)}</div>
                   </button>
                 `).join('')}
@@ -1443,7 +1598,7 @@
                 ${(mods.blends || []).map(item => `
                   <button class="phonics-card" data-speak-text="${esc(item.word)}">
                     <div class="phonics-letter ${useUpperCase ? 'case-upper' : ''}">${esc(formatWordCase(item.blend))}</div>
-                    <div class="phonics-emoji" aria-hidden="true">${esc(item.emoji)}</div>
+                    <div class="phonics-emoji" aria-hidden="true">${renderVisual(item.emoji, item.word)}</div>
                     <div class="phonics-anchor">${esc(useUpperCase ? item.word.toUpperCase() : item.word)}</div>
                   </button>
                 `).join('')}
@@ -1456,7 +1611,7 @@
                 ${(mods.digraphs || []).map(item => `
                   <button class="phonics-card" data-speak-text="${esc(item.word)}">
                     <div class="phonics-letter syl-complex ${useUpperCase ? 'case-upper' : ''}">${esc(formatWordCase(item.digraph))}</div>
-                    <div class="phonics-emoji" aria-hidden="true">${esc(item.emoji)}</div>
+                    <div class="phonics-emoji" aria-hidden="true">${renderVisual(item.emoji, item.word)}</div>
                     <div class="phonics-anchor">${esc(useUpperCase ? item.word.toUpperCase() : item.word)}</div>
                     <div style="font-size:0.75rem; color:var(--text-muted);">${esc(item.sound)}</div>
                   </button>
@@ -1470,7 +1625,7 @@
                 ${(mods.vowelTeams || []).map(item => `
                   <button class="phonics-card" data-speak-text="${esc(item.word)}">
                     <div class="phonics-letter syl-b ${useUpperCase ? 'case-upper' : ''}">${esc(formatWordCase(item.pattern))}</div>
-                    <div class="phonics-emoji" aria-hidden="true">${esc(item.emoji)}</div>
+                    <div class="phonics-emoji" aria-hidden="true">${renderVisual(item.emoji, item.word)}</div>
                     <div class="phonics-anchor">${esc(useUpperCase ? item.word.toUpperCase() : item.word)}</div>
                     <div style="font-size:0.75rem; color:var(--text-muted);">${esc(item.sound)}</div>
                   </button>
@@ -1502,8 +1657,8 @@
                 <button class="btn-arcade btn-arcade-primary btn-workshop-speak" data-rate="1.0" data-ws-idx="${idx}">
                   🔊 ${esc(t('listen_btn'))} (1.0x)
                 </button>
-                <button class="btn-arcade btn-workshop-speak" data-rate="0.65" data-ws-idx="${idx}">
-                  🐢 ${esc(t('listen_slow_btn'))} (0.65x)
+                <button class="btn-arcade btn-workshop-speak" data-rate="0.5" data-ws-idx="${idx}">
+                  🐢 ${esc(t('listen_slow_btn'))} (0.5x)
                 </button>
               </div>
             </div>
@@ -1526,7 +1681,7 @@
             🔊 1.0x ${lang === 'es' ? 'Normal' : 'Normal'}
           </button>
           <button id="btn-learn-speed-slow" class="pedagogy-toggle-btn ${learnSlowMode ? 'active' : ''}">
-            🐢 0.65x ${lang === 'es' ? 'Despacio' : 'Turtle'}
+            🐢 0.5x ${lang === 'es' ? 'Despacio' : 'Turtle'}
           </button>
         </div>
 
@@ -1539,6 +1694,15 @@
         </div>
 
         ${moduleContentHtml}
+
+        <div class="parents-teachers-card">
+          <h4 style="font-size:1.15rem; font-weight:800; color:var(--op-add); margin:0 0 6px;">${esc(t('parents_zone_title'))}</h4>
+          <p style="font-size:0.9rem; color:var(--text-secondary); margin:0 0 10px;">${esc(t('parents_zone_desc'))}</p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn-arcade" href="/${lang}/apps/reading/" style="font-size:0.85rem; padding:6px 14px;">${esc(t('spec_link'))}</a>
+            <a class="btn-arcade" href="${lang === 'es' ? '/es/recursos/' : '/en/resources/'}" style="font-size:0.85rem; padding:6px 14px;">${esc(t('kits_link'))}</a>
+          </div>
+        </div>
       </div>
     `;
 
@@ -1592,7 +1756,7 @@
       btn.onclick = () => {
         audio.playClick();
         const text = btn.getAttribute('data-speak-text');
-        audio.speakText(text, lang, learnSlowMode ? 0.65 : 1.0);
+        audio.speakText(text, lang, learnSlowMode ? 0.5 : 1.0);
       };
     });
 
@@ -1654,12 +1818,27 @@
         <div class="diploma-promo-card">
           <div style="font-size: 2.4rem; margin-bottom: 6px;">🎓</div>
           <h3 style="font-size: 1.3rem; font-weight: 800; color: #b45309; margin-bottom: 6px;">${esc(t('diploma_card_title'))}</h3>
-          <p style="font-size: 0.95rem; color: var(--text-secondary); max-width: 520px; margin: 0 auto 16px;">
+          <p style="font-size: 0.95rem; color: var(--text-secondary); max-width: 520px; margin: 0 auto 12px;">
             ${esc(t('diploma_card_desc'))}
           </p>
+          <div style="margin-bottom: 14px;">
+            <label for="diploma-custom-name" style="display:block; font-size:0.88rem; font-weight:700; color:var(--text-secondary); margin-bottom:4px;">
+              ${esc(t('diploma_name_label'))}
+            </label>
+            <input id="diploma-custom-name" type="text" maxlength="28" class="custom-words-input" style="max-width:320px; text-align:center; margin:0 auto;" placeholder="${esc(t('diploma_name_placeholder'))}" value="${esc(userStats.customName || '')}" />
+          </div>
           <button id="btn-download-diploma" class="btn-arcade btn-arcade-diploma" style="font-size: 1.05rem; padding: 10px 24px;">
             ${esc(t('download_diploma_btn'))}
           </button>
+        </div>
+
+        <div class="parents-teachers-card">
+          <h4 style="font-size:1.15rem; font-weight:800; color:var(--op-add); margin:0 0 6px;">${esc(t('parents_zone_title'))}</h4>
+          <p style="font-size:0.9rem; color:var(--text-secondary); margin:0 0 10px;">${esc(t('parents_zone_desc'))}</p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn-arcade" href="/${lang}/apps/reading/" style="font-size:0.85rem; padding:6px 14px;">${esc(t('spec_link'))}</a>
+            <a class="btn-arcade" href="${lang === 'es' ? '/es/recursos/' : '/en/resources/'}" style="font-size:0.85rem; padding:6px 14px;">${esc(t('kits_link'))}</a>
+          </div>
         </div>
 
         <div style="text-align: center; margin-top: 30px;">
@@ -1672,16 +1851,38 @@
 
     container.innerHTML = html;
 
+    const nameInput = document.getElementById('diploma-custom-name');
+    if (nameInput) {
+      nameInput.oninput = () => {
+        userStats.customName = nameInput.value.slice(0, 28);
+        saveStats();
+      };
+    }
+
     const diplomaBtn = document.getElementById('btn-download-diploma');
     if (diplomaBtn) diplomaBtn.onclick = downloadReadingDiploma;
 
     const resetBtn = document.getElementById('btn-reset-stats');
     if (resetBtn) {
       resetBtn.onclick = () => {
-        userStats = createEmptyStats();
-        saveStats();
-        showToast(t('stats_reset_toast'));
-        renderAchievementsTab();
+        if (!resetConfirmPending) {
+          resetConfirmPending = true;
+          resetBtn.textContent = `⚠️ ${t('confirm_reset')}`;
+          resetBtn.style.background = '#dc2626';
+          if (resetConfirmTimer) clearTimeout(resetConfirmTimer);
+          resetConfirmTimer = setTimeout(() => {
+            resetConfirmPending = false;
+            resetBtn.textContent = t('clean_history');
+            resetBtn.style.background = '';
+          }, 4000);
+        } else {
+          clearTimeout(resetConfirmTimer);
+          resetConfirmPending = false;
+          userStats = createEmptyStats();
+          saveStats();
+          showToast(t('stats_reset_toast'));
+          renderAchievementsTab();
+        }
       };
     }
   }
@@ -1756,7 +1957,7 @@
     // 4. Perfil Activo
     const profileObj = catalog.profiles ? catalog.profiles.find(p => p.id === activeProfileId) : null;
     const profileAvatar = profileObj ? profileObj.avatar : '🦁';
-    const profileName = profileObj ? profileObj.name[lang] : 'Jugador 1';
+    const profileName = (userStats.customName && userStats.customName.trim()) || (profileObj ? profileObj.name[lang] : 'Jugador 1');
     const profileTitle = profileObj ? profileObj.title[lang] : 'León Lector';
 
     ctx.fillStyle = '#ffffff';
@@ -1905,6 +2106,183 @@
   }
 
   window.downloadReadingDiploma = downloadReadingDiploma;
+
+  // ==========================================================================
+  // Generador de Lámina Imprimible A4 PNG en Canvas 2D (INV-READ-14)
+  // ==========================================================================
+  function downloadPracticeSheet() {
+    audio.playSuccess(2);
+    showToast(t('sheet_downloaded_toast'), 3000);
+
+    const canvas = document.createElement('canvas');
+    canvas.width = 1200;
+    canvas.height = 1600;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    // 1. Fondo blanco puro
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, 1200, 1600);
+
+    // Orla exterior e interior
+    ctx.strokeStyle = '#0284c7';
+    ctx.lineWidth = 4;
+    ctx.strokeRect(30, 30, 1140, 1540);
+
+    ctx.strokeStyle = '#e2e8f0';
+    ctx.lineWidth = 1.5;
+    ctx.strokeRect(38, 38, 1124, 1524);
+
+    // 2. Cabecera
+    ctx.fillStyle = '#0284c7';
+    ctx.font = 'bold 24px system-ui, -apple-system, sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText('DATALARIA LECTOR ARCADE', 60, 80);
+
+    ctx.fillStyle = '#64748b';
+    ctx.font = '600 16px system-ui, -apple-system, sans-serif';
+    ctx.textAlign = 'right';
+    const dateStr = new Date().toLocaleDateString(lang === 'es' ? 'es-ES' : 'en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+    ctx.fillText(dateStr, 1140, 80);
+
+    // Título Principal
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#0f172a';
+    ctx.font = '800 36px system-ui, -apple-system, sans-serif';
+    ctx.fillText(
+      lang === 'es' ? 'LÁMINA IMPRIMIBLE DE REPASO Y CALIGRAFÍA' : 'PRINTABLE READING & PRACTICE WORKSHEET',
+      600,
+      140
+    );
+
+    // Datos del Alumno y Perfil
+    const profileObj = catalog.profiles ? catalog.profiles.find(p => p.id === activeProfileId) : null;
+    const profileName = (userStats.customName && userStats.customName.trim()) || (profileObj ? profileObj.name[lang] : 'Lector 1');
+    const levelObj = catalog.levels ? catalog.levels.find(l => l.id === selectedLevel) : null;
+    const levelName = levelObj ? levelObj.name[lang] : selectedLevel;
+    const accuracy = roundHistory.length > 0 ? Math.round((correctCount / roundHistory.length) * 100) : 100;
+
+    ctx.fillStyle = '#f8faff';
+    ctx.strokeStyle = '#cbd5e1';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    if (typeof ctx.roundRect === 'function') {
+      ctx.roundRect(60, 170, 1080, 80, 10);
+    } else {
+      ctx.rect(60, 170, 1080, 80);
+    }
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.textAlign = 'left';
+    ctx.fillStyle = '#1e293b';
+    ctx.font = '700 20px system-ui, -apple-system, sans-serif';
+    ctx.fillText(`${lang === 'es' ? 'Alumno/a:' : 'Student:'} ${profileName}`, 85, 218);
+    ctx.fillText(`${lang === 'es' ? 'Nivel:' : 'Level:'} ${levelName}`, 550, 218);
+    ctx.fillText(`⭐ ${score} pts · 🎯 ${accuracy}%`, 920, 218);
+
+    // 3. Tabla de Palabras de la Sesión
+    const tableTop = 290;
+    const rowHeight = 115;
+    const displayWords = roundHistory.slice(0, 10);
+
+    // Encabezado tabla
+    ctx.fillStyle = '#0284c7';
+    ctx.fillRect(60, tableTop, 1080, 42);
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 16px system-ui, -apple-system, sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText('#', 80, tableTop + 27);
+    ctx.fillText(lang === 'es' ? 'PALABRA / RETO' : 'WORD / PROMPT', 125, tableTop + 27);
+    ctx.fillText(lang === 'es' ? 'SÍLABAS' : 'SYLLABLES', 420, tableTop + 27);
+    ctx.fillText(lang === 'es' ? 'ESTADO' : 'STATUS', 650, tableTop + 27);
+    ctx.fillText(lang === 'es' ? 'PAUTA CALIGRÁFICA (PRÁCTICA A MANO)' : 'HANDWRITING PRACTICE', 800, tableTop + 27);
+
+    displayWords.forEach((item, idx) => {
+      const y = tableTop + 42 + idx * rowHeight;
+      const isAlt = idx % 2 === 1;
+      if (isAlt) {
+        ctx.fillStyle = '#f8fafc';
+        ctx.fillRect(60, y, 1080, rowHeight);
+      }
+
+      ctx.strokeStyle = '#e2e8f0';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(60, y + rowHeight);
+      ctx.lineTo(1140, y + rowHeight);
+      ctx.stroke();
+
+      // Número
+      ctx.fillStyle = '#64748b';
+      ctx.font = '700 18px system-ui, -apple-system, sans-serif';
+      ctx.fillText(String(idx + 1), 80, y + 50);
+
+      // Palabra
+      const wordText = item.challenge ? (item.challenge.prompt || '') : '';
+      ctx.fillStyle = '#0f172a';
+      ctx.font = '800 22px system-ui, -apple-system, sans-serif';
+      ctx.fillText(wordText.slice(0, 18), 125, y + 50);
+
+      // Sílabas
+      let sylStr = '';
+      if (item.challenge && Array.isArray(item.challenge.syllables)) {
+        sylStr = item.challenge.syllables.join(' · ');
+      } else {
+        const sylObj = engine.splitCustomSyllables(wordText, lang);
+        sylStr = (sylObj.syllables || []).join(' · ');
+      }
+      ctx.fillStyle = '#0284c7';
+      ctx.font = '700 18px monospace';
+      ctx.fillText(sylStr.slice(0, 20), 420, y + 50);
+
+      // Resultado
+      ctx.fillStyle = item.isCorrect ? '#16a34a' : '#dc2626';
+      ctx.font = '700 16px system-ui, -apple-system, sans-serif';
+      ctx.fillText(item.isCorrect ? '✓ Acierto' : '✗ Repasar', 650, y + 50);
+
+      // Pauta caligráfica (guías dobles para escritura a mano)
+      ctx.strokeStyle = '#cbd5e1';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(800, y + 60);
+      ctx.lineTo(1100, y + 60);
+      ctx.stroke();
+
+      ctx.strokeStyle = '#94a3b8';
+      ctx.lineWidth = 1.5;
+      ctx.setLineDash([4, 4]);
+      ctx.beginPath();
+      ctx.moveTo(800, y + 40);
+      ctx.lineTo(1100, y + 40);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    });
+
+    // 4. Pie de página institucional
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#64748b';
+    ctx.font = '600 14px system-ui, -apple-system, sans-serif';
+    ctx.fillText('Datalaria Lector Arcade · Material de Apoyo a la Lectoescritura Infantil y Familiar · Sin publicidad · https://datalaria.com', 600, 1540);
+
+    try {
+      const dataUrl = canvas.toDataURL('image/png');
+      const a = document.createElement('a');
+      a.href = dataUrl;
+      a.download = `lamina_repaso_lector_arcade_${activeProfileId}_${new Date().toISOString().slice(0, 10)}.png`;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => document.body.removeChild(a), 300);
+    } catch {
+      showToast(lang === 'es' ? 'Error al exportar lámina imprimible' : 'Failed to export practice sheet', 2500);
+    }
+  }
+
+  window.downloadPracticeSheet = downloadPracticeSheet;
 
   // ==========================================================================
   // Sonido, Tema y PWA (INV-READ-8, INV-READ-9)

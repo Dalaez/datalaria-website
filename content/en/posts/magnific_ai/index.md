@@ -165,8 +165,6 @@ If two founders working out of Murcia can build a product in three months—on a
 
 **Which traditional corporate moats—headcount, proprietary boilerplate code, or a Silicon Valley zip code—truly survive intact as we enter the era of AGI-leveraged micro-teams?**
 
-Share your perspective in the comments below.
-
 ---
 
 #### References and Further Reading:

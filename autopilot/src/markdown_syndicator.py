@@ -20,7 +20,7 @@ from autopilot.src.models import (
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 SITE_BASE_URL = "https://datalaria.com"
-GITHUB_RAW_BASE = "https://raw.githubusercontent.com/Dalaez/datalaria-website/main"
+PUBLIC_MEDIA_BASE_URL = "https://www.datalaria.com"
 EMBARGOED_APP_STATUSES = frozenset({"incubating", "draft", "deprecated", "archived"})
 
 _CODE_FENCE_RE = re.compile(r"(^```[^\n]*\n.*?^```|^~~~[^\n]*\n.*?^~~~)", re.MULTILINE | re.DOTALL)
@@ -107,40 +107,61 @@ def _split_target_and_title(raw_target: str) -> Tuple[str, str]:
     return stripped, ""
 
 
+def _resolve_content_media_url(
+    asset_ref: str,
+    file_path: str,
+    *,
+    lang: str = "",
+    slug: str = "",
+    media_base_url: str = PUBLIC_MEDIA_BASE_URL,
+) -> str:
+    """Resuelve un asset relativo de bundle hacia su directorio público en www.datalaria.com."""
+    clean_base = media_base_url.rstrip("/")
+    clean_ref = asset_ref.lstrip("./")
+    normalized_path = file_path.replace("\\", "/")
+    dir_path = os.path.dirname(normalized_path).strip("/")
+    content_match = re.search(r"(?:^|/)content/(.+)$", dir_path)
+    if content_match:
+        public_dir = content_match.group(1).strip("/")
+        return f"{clean_base}/{public_dir}/{clean_ref}" if public_dir else f"{clean_base}/{clean_ref}"
+    if slug and lang in ("es", "en"):
+        return f"{clean_base}/{lang}/posts/{slug}/{clean_ref}"
+    if dir_path:
+        return f"{clean_base}/{dir_path}/{clean_ref}"
+    return f"{clean_base}/{clean_ref}"
+
+
 def resolve_single_image_ref(
     image_ref: str,
     file_path: str,
     lang: str = "es",
     slug: str = "",
-    base_url: str = SITE_BASE_URL,
+    base_url: str = PUBLIC_MEDIA_BASE_URL,
 ) -> str:
-    """Normaliza una referencia de imagen individual a URL absoluta pública o GitHub Raw."""
+    """Normaliza una referencia de imagen individual a URL absoluta pública en www.datalaria.com."""
     ref = str(image_ref or "").strip()
     if not ref:
         return ""
     if ref.startswith(("http://", "https://")):
         return ref
     if ref.startswith("/"):
-        return f"{base_url}{ref}"
+        return f"{base_url.rstrip('/')}{ref}"
 
-    clean_ref = ref.lstrip("./")
-    normalized_path = file_path.replace("\\", "/")
-    dir_path = os.path.dirname(normalized_path)
-    if dir_path:
-        return f"{GITHUB_RAW_BASE}/{dir_path}/{clean_ref}"
-    if slug and lang in ("es", "en"):
-        return f"{GITHUB_RAW_BASE}/content/{lang}/posts/{slug}/{clean_ref}"
-    return f"{GITHUB_RAW_BASE}/{clean_ref}"
+    return _resolve_content_media_url(
+        ref,
+        file_path,
+        lang=lang,
+        slug=slug,
+        media_base_url=base_url,
+    )
 
 
 def resolve_image_urls(
     content: str,
     file_path: str,
-    base_url: str = SITE_BASE_URL,
+    base_url: str = PUBLIC_MEDIA_BASE_URL,
 ) -> str:
-    """Reemplaza imágenes Markdown relativas por URLs absolutas preservando títulos y /images/."""
-    normalized_path = file_path.replace("\\", "/")
-    dir_path = os.path.dirname(normalized_path)
+    """Reemplaza imágenes Markdown relativas por URLs absolutas en www.datalaria.com."""
 
     def replacer(match: re.Match[str]) -> str:
         alt_text = match.group(1)
@@ -148,12 +169,11 @@ def resolve_image_urls(
         if img_path.startswith(("http://", "https://")):
             return match.group(0)
         if img_path.startswith("/"):
-            return f"![{alt_text}]({base_url}{img_path}{title_part})"
-        clean_img_path = img_path.lstrip("./")
-        abs_url = (
-            f"{GITHUB_RAW_BASE}/{dir_path}/{clean_img_path}"
-            if dir_path
-            else f"{GITHUB_RAW_BASE}/{clean_img_path}"
+            return f"![{alt_text}]({base_url.rstrip('/')}{img_path}{title_part})"
+        abs_url = _resolve_content_media_url(
+            img_path,
+            file_path,
+            media_base_url=base_url,
         )
         return f"![{alt_text}]({abs_url}{title_part})"
 
@@ -192,8 +212,12 @@ def resolve_markdown_links(
             return _resolve_ref_slug(ref_match.group(1), lang=lang, base_url=base_url)
 
         if any(target.lower().endswith(ext) for ext in file_extensions) and not target.startswith("/"):
-            clean_file = target.lstrip("./")
-            return f"{GITHUB_RAW_BASE}/{dir_path}/{clean_file}"
+            return _resolve_content_media_url(
+                target,
+                file_path,
+                lang=lang,
+                media_base_url=PUBLIC_MEDIA_BASE_URL,
+            )
 
         if target.startswith("/"):
             return f"{base_url}{target}"
@@ -530,7 +554,7 @@ def transform_markdown_for_syndication(
         apps_dir=apps_dir,
         base_url=base_url,
     )
-    masked_body = resolve_image_urls(masked_body, file_path, base_url=base_url)
+    masked_body = resolve_image_urls(masked_body, file_path, base_url=PUBLIC_MEDIA_BASE_URL)
     masked_body = resolve_markdown_links(masked_body, file_path, lang=lang, base_url=base_url)
     masked_body = _STANDALONE_REF_RE.sub(
         lambda m: _resolve_ref_slug(m.group(1), lang=lang, base_url=base_url),
