@@ -152,8 +152,8 @@ entries:
   - x
   - newsletter
   scheduled_at_utc: '2026-11-21T07:30:00Z'
-  status: pending
-  executed_at_utc: null
+  status: completed
+  executed_at_utc: '2026-11-21T08:17:09Z'
   notes: 'Ola 1 (T+0h): ES Native Social'
   last_error: null
 - id: magnific-ai-2026-11-21-wave2-en-native
