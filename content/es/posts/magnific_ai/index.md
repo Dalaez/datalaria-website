@@ -75,7 +75,7 @@ Mientras que la industria de los Grandes Modelos de Lenguaje (LLMs) invertía mi
 
 Si amplías una fotografía borrosa de 256×256 píxeles a 4K mediante matemáticas deterministas, el algoritmo solo puede suavizar bordes o inventar ruido promedio; no sabe cómo luce un poro de piel humana ni el tramado de un tejido de lino bajo luz lateral. Magnific AI resolvió el problema mediante un **pipeline de difusión latente por teselas (*Tiled Latent Diffusion*) condicionado por texto y parámetros de restricción**:
 
-{{< mermaid >}}
+{{< mermaid image="magnific_tiled_diffusion_pipeline.png" alt="Arquitectura del pipeline de difusión latente por teselas de Magnific AI con controles Creativity, Resemblance y HDR" >}}
 flowchart LR
     I["<b>1. Entrada Base</b><br/><small>Imagen Low-Res +<br/>Prompt Semántico</small>"] --> T["<b>2. Tiled Latent Split</b><br/><small>División en teselas con<br/>solapamiento y guía global</small>"]
     C["<b>Dial Creativity</b><br/><small>Grado de alucinación<br/>generativa permitida</small>"] --> D

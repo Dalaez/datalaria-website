@@ -75,7 +75,7 @@ While the Large Language Model (LLM) industry was pouring billions into **elimin
 
 When you enlarge a blurry 256×256 image up to 4K using strictly deterministic pixel math, the algorithm can only smooth edges or average surrounding colors; it cannot infer how brushed aluminum catches light or how woven linen behaves under soft shadows. Magnific solved this through a **text-conditioned Tiled Latent Diffusion pipeline governed by precision constraint sliders**:
 
-{{< mermaid >}}
+{{< mermaid image="magnific_tiled_diffusion_pipeline.png" alt="Magnific AI Tiled Latent Diffusion Pipeline Architecture governed by Creativity, Resemblance, and HDR sliders" >}}
 flowchart LR
     I["<b>1. Base Input</b><br/><small>Low-Res Image +<br/>Semantic Prompt</small>"] --> T["<b>2. Tiled Latent Split</b><br/><small>Overlapping latent tiles<br/>with global context guidance</small>"]
     C["<b>Creativity Slider</b><br/><small>Controls allowable generative<br/>detail hallucination</small>"] --> D

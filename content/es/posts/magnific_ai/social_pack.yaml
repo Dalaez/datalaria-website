@@ -12,6 +12,7 @@ es:
       - "IAGenerativa"
       - "Startups"
       - "AGI"
+    web_intent_url: "https://x.com/intent/tweet?text=2+fundadores+en+Murcia%2C+0+EUR+en+VC+y+~50+%25+del+c%C3%B3digo+co-escrito+con+IA.+As%C3%AD+naci%C3%B3+Magnific+AI+en+X+hasta+dar+nombre+a+un+gigante+de+230M+USD+ARR.&url=https%3A%2F%2Fdatalaria.com%2Fes%2Fposts%2Fmagnific_ai%2F&hashtags=MagnificAI%2CIAGenerativa%2CStartups%2CAGI"
   linkedin:
     text: |-
       Dos fundadores desde Murcia. Cero euros de capital riesgo. Cero gasto en anuncios.
@@ -52,7 +53,7 @@ es:
     secondary_cta_url: "https://datalaria.com/es/recursos/#pack-business-case"
     ps_referral_text: "Si trabajas con algún fundador técnico o líder de producto obsesionado con hacer más con equipos pequeños, reenvíale este caso de estudio."
   devto:
-    enabled: false
+    enabled: true
     title: "Magnific AI: Difusión Latente por Teselas y el Caso Español de 2 Fundadores rumbo a la AGI"
     description: "Análisis técnico e histórico de Magnific AI: alucinación controlada por difusión latente, hilos virales en X, arquitectura y lecciones post-AGI."
     tags:
@@ -61,7 +62,7 @@ es:
       - "startups"
       - "architecture"
     canonical_url: "https://datalaria.com/es/posts/magnific_ai/"
-    published: false
+    published: true
   coderlegion:
     enabled: false
     title: "Magnific AI: Difusión Latente por Teselas y el Caso de 2 Fundadores"

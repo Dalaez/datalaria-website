@@ -12,6 +12,7 @@ en:
       - "GenerativeAI"
       - "AGI"
       - "Bootstrapping"
+    web_intent_url: "https://x.com/intent/tweet?text=2+founders+in+Spain%2C+%240+VC%2C+and+~50%25+of+code+co-written+with+AI.+How+Magnific+AI+turned+hallucination+into+a+signature+slider+and+scaled+past+%24230M+ARR.&url=https%3A%2F%2Fdatalaria.com%2Fen%2Fposts%2Fmagnific_ai%2F&hashtags=MagnificAI%2CGenerativeAI%2CAGI%2CBootstrapping"
   linkedin:
     text: |-
       Two founders in Murcia, Spain. Zero venture capital. Zero dollars spent on paid ads.
