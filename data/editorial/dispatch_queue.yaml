@@ -164,10 +164,10 @@ entries:
   - linkedin
   - x
   - newsletter
-  scheduled_at_utc: '2026-11-21T14:30:00Z'
+  scheduled_at_utc: '2026-11-21T12:00:00Z'
   status: pending
   executed_at_utc: null
-  notes: 'Ola 2 (T+7h · Apertura USA): EN Native Social'
+  notes: 'Ola 2 (T+4.5h · Adelanto 13:00 CET): EN Native Social'
   last_error: null
 - id: magnific-ai-2026-11-21-wave3a-es-devto
   file_path: content/es/posts/magnific_ai/index.md
