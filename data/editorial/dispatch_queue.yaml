@@ -176,8 +176,8 @@ entries:
   channels:
   - devto
   scheduled_at_utc: '2026-11-21T19:30:00Z'
-  status: pending
-  executed_at_utc: null
+  status: completed
+  executed_at_utc: '2026-11-21T20:41:57Z'
   notes: 'Ola 3A (T+12h): Dev.to ES con ventaja de indexación canónica'
   last_error: null
 - id: magnific-ai-2026-11-21-wave3b-en-syndication
