@@ -339,7 +339,7 @@ export function App() {
 
   // Carga de datos pública y suscripción Supabase Auth
   useEffect(() => {
-    fetch('./data/public.json')
+    fetch(`./data/public.json?t=${Date.now()}`, { cache: 'no-store' })
       .then((res) => res.json())
       .then((data: PublicPulseDataset) => setDataset(data))
       .catch((err) => console.error('Error cargando public.json:', err));
@@ -916,7 +916,7 @@ export function App() {
 
   // Ordenación de la tabla
   const sortedAssets = useMemo(() => {
-    return [...filteredAssets].sort((a, b) => {
+    return filteredAssets.toSorted((a, b) => {
       let valA: string | number = '';
       let valB: string | number = '';
 
@@ -1008,7 +1008,7 @@ export function App() {
   const topTrafficAsset = useMemo(() => {
     const published = currentAssets.filter((a) => a.metrics_relative);
     if (published.length === 0) return null;
-    return [...published].sort(
+    return published.toSorted(
       (a, b) => (b.metrics_relative?.index_100 ?? 0) - (a.metrics_relative?.index_100 ?? 0)
     )[0];
   }, [currentAssets]);
@@ -3914,6 +3914,8 @@ export function App() {
                 </label>
                 <input
                   type="email"
+                  name="email"
+                  autoComplete="username"
                   className="search-input"
                   value={authEmail}
                   onChange={(e) => setAuthEmail(e.target.value)}
@@ -3929,6 +3931,8 @@ export function App() {
                 </label>
                 <input
                   type="password"
+                  name="password"
+                  autoComplete="current-password"
                   className="search-input"
                   value={authPassword}
                   onChange={(e) => setAuthPassword(e.target.value)}

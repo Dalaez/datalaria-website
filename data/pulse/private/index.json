@@ -1602,8 +1602,8 @@
     "brief_es": "Cómo construir un pipeline de validación estricta con Pydantic v2, garantizar paridad bilingüe ES ⇔ EN al 100% y orquestar la compilación editorial en CI/CD con GitHub Actions.",
     "brief_en": "How to build a strict data validation pipeline with Pydantic v2, enforce 100% bilingual ES ⇔ EN parity, and automate editorial builds via GitHub Actions CI/CD.",
     "publish_date": "2026-11-22",
-    "last_modified_es": "2026-11-16T08:01:25+01:00",
-    "last_modified_en": "2026-11-16T08:01:25+01:00",
+    "last_modified_es": "2026-11-21T09:25:31.826382Z",
+    "last_modified_en": "2026-11-21T09:25:55.354154Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -1623,8 +1623,8 @@
       "Markdown"
     ],
     "series": null,
-    "word_count_es": 1906,
-    "word_count_en": 1692,
+    "word_count_es": 1900,
+    "word_count_en": 1688,
     "reading_time_min": 10,
     "related_app": "pulse",
     "related_kit": "/recursos/#pack-pulse",
