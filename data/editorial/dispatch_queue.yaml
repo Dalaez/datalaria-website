@@ -192,3 +192,50 @@ entries:
   executed_at_utc: '2026-11-22T09:06:38Z'
   notes: 'Ola 3B (T+22h Día +1): Dev.to EN + CoderLegion EN'
   last_error: null
+- id: pulse-part2-2026-11-22-wave1-es-native
+  file_path: content/es/posts/pulse-parte2-indexador-pydantic-paridad-ci/index.md
+  lang: es
+  wave: 1_es_native
+  channels:
+  - linkedin
+  - x
+  scheduled_at_utc: '2026-11-22T09:45:00Z'
+  status: pending
+  executed_at_utc: null
+  notes: 'Ola 1 (T+0h): ES Native Social (Brevo desactivado)'
+  last_error: null
+- id: pulse-part2-2026-11-22-wave2-en-native
+  file_path: content/en/posts/pulse-part2-pydantic-indexer-bilingual-parity-ci/index.md
+  lang: en
+  wave: 2_en_native
+  channels:
+  - linkedin
+  - x
+  scheduled_at_utc: '2026-11-22T14:30:00Z'
+  status: pending
+  executed_at_utc: null
+  notes: 'Ola 2 (T+7h · Apertura USA): EN Native Social (Brevo desactivado)'
+  last_error: null
+- id: pulse-part2-2026-11-22-wave3a-es-devto
+  file_path: content/es/posts/pulse-parte2-indexador-pydantic-paridad-ci/index.md
+  lang: es
+  wave: 3a_es_syndication
+  channels:
+  - devto
+  scheduled_at_utc: '2026-11-22T19:30:00Z'
+  status: pending
+  executed_at_utc: null
+  notes: 'Ola 3A (T+12h): Dev.to ES con ventaja de indexación canónica'
+  last_error: null
+- id: pulse-part2-2026-11-22-wave3b-en-syndication
+  file_path: content/en/posts/pulse-part2-pydantic-indexer-bilingual-parity-ci/index.md
+  lang: en
+  wave: 3b_en_syndication
+  channels:
+  - devto
+  - coderlegion
+  scheduled_at_utc: '2026-11-23T05:30:00Z'
+  status: pending
+  executed_at_utc: null
+  notes: 'Ola 3B (T+22h Día +1): Dev.to EN + CoderLegion EN'
+  last_error: null

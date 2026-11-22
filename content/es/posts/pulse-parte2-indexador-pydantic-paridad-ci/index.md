@@ -40,9 +40,9 @@ Para entender cómo encaja cada pieza del rompecabezas de *Content Ops as Code*,
 
 ## 0. Objetivos de la Fase y de este Artículo: Del Caos de Texto a los Contratos de Tipado
 
-El objetivo neurálgico de la **Fase 5 de Datalaria** consiste en reemplazar la burocracia administrativa manual por una arquitectura determinista que indexe, valide y gobierne activos técnicos con latencia cero.
+El objetivo neurálgico de la **Datalaria Pulse** consiste en reemplazar la burocracia administrativa manual por una arquitectura determinista que indexe, valide y gobierne activos técnicos con latencia cero.
 
-### Objetivos Estratégicos de la Fase 5:
+### Objetivos Estratégicos:
 1. **Contratos de Datos Inmutables:** Establecer un esquema formal en Python que valide metadatos editoriales antes de cualquier despliegue a producción.
 2. **Paridad Bilingüe Automatizada (ES ⇔ EN):** Eliminar los artículos huérfanos y garantizar que cada actualización de un post en español refleje inmediatamente su estado de traducción al inglés.
 3. **Pipeline de Integración Continua (CI/CD):** Ejecutar pruebas automatizadas unitarias y de integración que verifiquen las invariantes de seguridad (`INV-PULSE-1..5`) en cada `git push`.
@@ -60,7 +60,7 @@ El objetivo neurálgico de la **Fase 5 de Datalaria** consiste en reemplazar la 
 
 Datalaria Pulse aplica a la estrategia de contenidos los mismos principios de rigor matemático, contratos de interfaz y gobernanza formal desarrollados en nuestras herramientas anteriores:
 
-{{< mermaid >}}
+{{< mermaid image="pulse_pydantic_architecture.png" alt="Arquitectura de gobernanza técnica Datalaria Pulse: Spec-Driven Development, Pydantic v2 y Ecosistema" >}}
 flowchart TD
     subgraph SDD ["Spec-Driven Development (Gobernanza)"]
         SPEC["specs/apps/pulse/spec.md\nInvariantes INV-PULSE-1..5"]
@@ -191,7 +191,7 @@ Mantener paridad completa en un blog con decenas de artículos técnicos requier
 
 El motor de escaneo `ops/pulse/build_index.py` resuelve este emparejamiento siguiendo un algoritmo de tres fases:
 
-{{< mermaid >}}
+{{< mermaid image="pulse_bilingual_parity_resolution.png" alt="Algoritmo de resolución de grafo bipartito para paridad bilingüe ES y EN en Datalaria Pulse" >}}
 flowchart LR
     subgraph ES ["1. Escaneo ES (/content/es/)"]
         P_ES["Post ES\ntranslationKey: pulse-part2\ndate: 2026-11-22"]

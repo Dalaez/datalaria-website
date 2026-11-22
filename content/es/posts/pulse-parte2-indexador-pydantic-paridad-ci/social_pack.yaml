@@ -89,19 +89,16 @@ es:
     ps_referral_text: Si conoces desarrolladores de Python o DevOps que gestionan
       plataformas de contenidos, compárteles este artículo.
   devto:
-    enabled: false
-    title: 'Del Front Matter al Índice: Pydantic v2, Paridad Bilingüe y CI/CD en GitHub
-      Actions'
-    description: Cómo construir un pipeline de validación estricta con Pydantic v2,
-      garantizar paridad bilingüe ES/EN al 100% y orquestar la compilación editorial
-      en CI/CD.
+    enabled: true
+    title: 'Del Front Matter al Índice: Pydantic v2, Paridad Bilingüe y CI/CD en GitHub Actions'
+    description: Cómo construir un pipeline de validación estricta con Pydantic v2, garantizar paridad bilingüe ES/EN al 100% y orquestar la compilación editorial en CI/CD.
     tags:
     - python
     - pydantic
     - githubactions
     - cicd
     canonical_url: https://datalaria.com/es/posts/pulse-parte2-indexador-pydantic-paridad-ci/
-    published: false
+    published: true
   coderlegion:
     enabled: false
     title: 'Del Front Matter al Índice: Pydantic v2, Paridad Bilingüe y CI/CD en GitHub

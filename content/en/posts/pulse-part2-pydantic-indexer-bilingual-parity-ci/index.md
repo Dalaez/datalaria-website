@@ -40,9 +40,9 @@ To understand how each piece of the *Content Ops as Code* architecture fits toge
 
 ## 0. Phase Objectives and Article Scope: Transitioning from Text Chaos to Data Contracts
 
-The central objective of **Phase 5 at Datalaria** is to replace manual administrative toil with a deterministic architecture that indexes, validates, and governs technical content assets with zero runtime latency.
+The central objective of **Datalaria Pulse** is to replace manual administrative toil with a deterministic architecture that indexes, validates, and governs technical content assets with zero runtime latency.
 
-### Phase 5 Strategic Objectives:
+### Strategic Objectives:
 1. **Immutable Data Contracts:** Establish a formal Python schema that validates editorial metadata before any production deployment.
 2. **Automated Bilingual Parity (ES ⇔ EN):** Eliminate orphaned articles and ensure that every update to a Spanish post immediately flags its translation status in English.
 3. **Continuous Integration Pipeline (CI/CD):** Execute automated unit and integration tests verifying security invariants (`INV-PULSE-1..5`) on every `git push`.
@@ -60,7 +60,7 @@ The central objective of **Phase 5 at Datalaria** is to replace manual administr
 
 Datalaria Pulse applies the same mathematical rigor, interface contracts, and formal governance developed throughout our previous engineering suites and applications:
 
-{{< mermaid >}}
+{{< mermaid image="pulse_pydantic_architecture.png" alt="Datalaria Pulse Technical Governance Architecture: Spec-Driven Development, Pydantic v2 and Ecosystem" >}}
 flowchart TD
     subgraph SDD ["Spec-Driven Development (Governance)"]
         SPEC["specs/apps/pulse/spec.md\nInvariants INV-PULSE-1..5"]
@@ -191,7 +191,7 @@ Sustaining bilingual symmetry across dozens of complex engineering posts require
 
 Our `ops/pulse/build_index.py` engine resolves this pairing through a three-stage matching algorithm:
 
-{{< mermaid >}}
+{{< mermaid image="pulse_bilingual_parity_resolution.png" alt="Bipartite graph resolution algorithm for 100% bilingual ES and EN parity in Datalaria Pulse" >}}
 flowchart LR
     subgraph ES ["1. Spanish Scan (/content/es/)"]
         P_ES["Post ES\ntranslationKey: pulse-part2\ndate: 2026-11-22"]

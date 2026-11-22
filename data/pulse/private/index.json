@@ -12,8 +12,8 @@
     "brief_es": "Guía metodológica exhaustiva para transformar el análisis tradicional cualitativo de las 5 Fuerzas de Porter en un motor matemático ponderado con gráfico radar dinámico, diagnóstico de foso defensivo (Moat) y plan de acción para comités directivos.",
     "brief_en": "A comprehensive methodological guide to transforming traditional qualitative Porter's Five Forces into a weighted mathematical engine with dynamic radar profiling, economic moat diagnostics, and board-level capital allocation.",
     "publish_date": "2026-10-19",
-    "last_modified_es": "2026-11-21T10:46:58.785786Z",
-    "last_modified_en": "2026-11-21T10:46:58.508782Z",
+    "last_modified_es": "2026-11-09T07:54:25+01:00",
+    "last_modified_en": "2026-11-09T07:54:25+01:00",
     "language_parity": "complete",
     "category": "Estrategia y Operaciones",
     "categories": [
@@ -58,9 +58,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 100,
-      "rank_pct": 60,
-      "trend_30d_pct": 0.0,
+      "index_100": 61,
+      "rank_pct": 39,
+      "trend_30d_pct": -80.7,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -82,8 +82,8 @@
     "brief_es": "Cierre técnico de la serie Autopilot: cómo sustituimos CrewAI y APIs caras por contratos Pydantic v2, validador determinista, X a 0 € y sindicación en Dev.to y CoderLegion.",
     "brief_en": "Technical finale of the Autopilot series: replacing CrewAI and brittle CI calls with Pydantic v2 contracts, deterministic QA gates, 0-cost X Web Intents, and Dev.to/CoderLegion syndication.",
     "publish_date": "2026-11-15",
-    "last_modified_es": "2026-11-21T10:46:58.903787Z",
-    "last_modified_en": "2026-11-21T10:46:57.916774Z",
+    "last_modified_es": "2026-11-15T08:35:52+01:00",
+    "last_modified_en": "2026-11-15T08:35:52+01:00",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -127,9 +127,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 180,
-      "rank_pct": 75,
-      "trend_30d_pct": 0.0,
+      "index_100": 161,
+      "rank_pct": 66,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -151,8 +151,8 @@
     "brief_es": "Guía cuantitativa y metodológica de optimización de inventarios (APICS / ASCM / MIT CTL): erradicación de las reglas empíricas de 3 semanas, convolución estocástica multivariante de demanda y Lead Time, dimensionamiento ROP y Wilson EOQ, simulación de Diente de Sierra y liberación de capital de trabajo para defender ante el Consejo de Administración.",
     "brief_en": "Quantitative and methodological guide to inventory optimization (APICS / ASCM / MIT CTL standards): eradicating naive 3-week rules of thumb, multivariate stochastic convolution of demand and lead time, ROP and Wilson EOQ calibration, dynamic Sawtooth cycle simulation, and working capital release for the Board of Directors.",
     "publish_date": "2026-11-26",
-    "last_modified_es": "2026-11-21T10:46:58.907849Z",
-    "last_modified_en": "2026-11-21T10:46:58.533970Z",
+    "last_modified_es": "2026-11-16T08:01:25+01:00",
+    "last_modified_en": "2026-11-16T08:01:25+01:00",
     "language_parity": "complete",
     "category": "Estrategia y Operaciones",
     "categories": [
@@ -204,7 +204,7 @@
     "social_channels": [],
     "metrics_relative": {
       "index_100": 0,
-      "rank_pct": 9,
+      "rank_pct": 4,
       "trend_30d_pct": 0.0,
       "gsc_opportunity": false
     },
@@ -227,8 +227,8 @@
     "brief_es": "De la gobernanza de personas al control de costes y la cadena de suministro. Guía metodológica para conectar la Matriz RACI, AMFE/FMEA, Estimación PERT, EVM Curva S y Stock de Seguridad en un sistema unificado de ejecución.",
     "brief_en": "From team governance and risk mitigation to project financials and supply chain buffers. How to integrate RACI Matrix, FMEA, 3-Point PERT, EVM S-Curve, and Safety Stock into a unified operational engine.",
     "publish_date": "2026-11-30",
-    "last_modified_es": "2026-11-21T10:46:58.928541Z",
-    "last_modified_en": "2026-11-21T10:46:58.476781Z",
+    "last_modified_es": "2026-11-16T08:01:25+01:00",
+    "last_modified_en": "2026-11-16T08:01:25+01:00",
     "language_parity": "complete",
     "category": "Estrategia y Operaciones",
     "categories": [
@@ -282,7 +282,7 @@
     "social_channels": [],
     "metrics_relative": {
       "index_100": 0,
-      "rank_pct": 9,
+      "rank_pct": 4,
       "trend_30d_pct": 0.0,
       "gsc_opportunity": false
     },
@@ -305,8 +305,8 @@
     "brief_es": "Guía metodológica y cuantitativa de Earned Value Management (EVM / ANSI/EIA-748): superación de la trampa contable tradicional, curvas S ejecutivas, varianzas CV/SV, índices CPI/SPI, modelos predictivos de coste final EAC y cálculo del índice de rendimiento para completar TCPI ante el Consejo de Administración.",
     "brief_en": "Quantitative and methodological guide to Earned Value Management (EVM / ANSI/EIA-748): overcoming the traditional accounting trap, executive S-Curves, CV/SV variances, CPI/SPI efficiency indices, mathematical EAC forecasting models, and TCPI board defense.",
     "publish_date": "2026-11-23",
-    "last_modified_es": "2026-11-21T10:46:58.928788Z",
-    "last_modified_en": "2026-11-21T10:46:57.988775Z",
+    "last_modified_es": "2026-11-16T08:01:25+01:00",
+    "last_modified_en": "2026-11-16T08:01:25+01:00",
     "language_parity": "complete",
     "category": "Estrategia y Operaciones",
     "categories": [
@@ -358,7 +358,7 @@
     "social_channels": [],
     "metrics_relative": {
       "index_100": 0,
-      "rank_pct": 9,
+      "rank_pct": 4,
       "trend_30d_pct": 0.0,
       "gsc_opportunity": false
     },
@@ -381,8 +381,8 @@
     "brief_es": "Guía metodológica exhaustiva para transformar un DAFO cualitativo en un modelo matemático vectorial con ponderaciones, calificaciones y plan de acción CAME listo para Comités de Dirección.",
     "brief_en": "A comprehensive methodological guide to transforming qualitative SWOT brainstorming into a vector-based quantitative mathematical model and actionable TOWS capital allocation roadmap.",
     "publish_date": "2026-10-13",
-    "last_modified_es": "2026-11-21T10:46:58.930788Z",
-    "last_modified_en": "2026-11-21T10:46:58.518782Z",
+    "last_modified_es": "2026-11-09T07:54:25+01:00",
+    "last_modified_en": "2026-11-09T07:54:25+01:00",
     "language_parity": "complete",
     "category": "Estrategia y Operaciones",
     "categories": [
@@ -426,9 +426,80 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 167,
-      "rank_pct": 73,
-      "trend_30d_pct": 0.0,
+      "index_100": 150,
+      "rank_pct": 65,
+      "trend_30d_pct": -82.6,
+      "gsc_opportunity": false
+    },
+    "metrics_absolute": null,
+    "version": null,
+    "release_type": "article",
+    "parent_asset_id": null,
+    "editorial_post_slug": null
+  },
+  {
+    "id": "edsger_dijkstra",
+    "slug": "edsger_dijkstra",
+    "asset_type": "post",
+    "status": "scheduled",
+    "visibility": "public",
+    "title_es": "Edsger Dijkstra: Verificación Formal, el Algoritmo en un Café y su Veto al Vibe Coding",
+    "title_en": "Edsger Dijkstra: Formal Verification, the Café Algorithm and His Veto on Vibe Coding",
+    "url_es": "/es/posts/edsger_dijkstra/",
+    "url_en": "/en/posts/edsger_dijkstra/",
+    "brief_es": "La vida y legado de Edsger W. Dijkstra: el algoritmo de caminos mínimos ideado en 20 minutos en un café, los semáforos de concurrencia, la cruzada contra el GOTO y por qué la verificación formal es la clave de los agentes IA y SDD.",
+    "brief_en": "The life and legacy of Edsger W. Dijkstra: the shortest-path algorithm conceived in 20 minutes at an Amsterdam café, concurrency semaphores, his crusade against GOTO, and why formal verification governs modern AI agents and SDD.",
+    "publish_date": "2026-11-28",
+    "last_modified_es": "2026-11-21T10:49:54.596908Z",
+    "last_modified_en": "2026-11-21T10:51:03.346374Z",
+    "language_parity": "complete",
+    "category": "Pioneros y Referentes",
+    "categories": [
+      "casos_exito",
+      "Inteligencia Artificial",
+      "Ingeniería",
+      "Pioneros y Referentes"
+    ],
+    "tags": [
+      "edsger dijkstra",
+      "verificacion formal",
+      "algoritmo de dijkstra",
+      "concurrencia",
+      "sdd",
+      "vibe coding",
+      "agentes ia",
+      "agi",
+      "ingenieria de software",
+      "historia"
+    ],
+    "series": null,
+    "word_count_es": 4055,
+    "word_count_en": 3768,
+    "reading_time_min": 21,
+    "related_app": "obs-management",
+    "related_kit": "/recursos/",
+    "included_kits": [],
+    "price": null,
+    "original_price": null,
+    "checkout_url": null,
+    "deliverables": [],
+    "seo_audit": {
+      "score_0_100": 100,
+      "title_ok": true,
+      "description_ok": true,
+      "parity_ok": true,
+      "taxonomy_ok": true,
+      "internal_links_ok": true,
+      "issues": []
+    },
+    "freshness_status": "fresh",
+    "owner": "Daniel Alaez",
+    "campaign": null,
+    "social_channels": [],
+    "metrics_relative": {
+      "index_100": 11,
+      "rank_pct": 13,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -450,8 +521,8 @@
     "brief_es": "Guía cuantitativa de Estimación PERT de 3 Puntos: Distribución Beta, Camino Crítico CLT, Z-Score para fechas compromiso y dimensionamiento de Project Buffers.",
     "brief_en": "Quantitative 3-Point PERT guide: Beta distribution, Critical Path CLT variance, Z-Score deadline odds, and scientific Project Buffers for Executive Boards.",
     "publish_date": "2026-11-19",
-    "last_modified_es": "2026-11-21T10:46:58.966399Z",
-    "last_modified_en": "2026-11-21T10:46:58.741785Z",
+    "last_modified_es": "2026-11-19T08:36:35+01:00",
+    "last_modified_en": "2026-11-19T08:36:35+01:00",
     "language_parity": "complete",
     "category": "Estrategia y Operaciones",
     "categories": [
@@ -498,9 +569,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 13,
-      "rank_pct": 24,
-      "trend_30d_pct": 0.0,
+      "index_100": 72,
+      "rank_pct": 43,
+      "trend_30d_pct": 500.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -522,8 +593,8 @@
     "brief_es": "De la incertidumbre macroeconómica a la asignación de CAPEX. Guía metodológica para conectar PESTEL, Porter, DAFO-CAME, BCG y McKinsey en un único sistema de decisión.",
     "brief_en": "From macro volatility to capital allocation. How to connect PESTEL, Porter's Five Forces, SWOT-TOWS, BCG, and McKinsey matrices into a unified quantitative decision engine.",
     "publish_date": "2026-11-01",
-    "last_modified_es": "2026-11-21T10:46:58.969788Z",
-    "last_modified_en": "2026-11-21T10:46:57.936774Z",
+    "last_modified_es": "2026-10-31T19:29:04.459080Z",
+    "last_modified_en": "2026-10-31T19:29:02.469818Z",
     "language_parity": "complete",
     "category": "Estrategia y Operaciones",
     "categories": [
@@ -571,9 +642,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 227,
-      "rank_pct": 81,
-      "trend_30d_pct": 0.0,
+      "index_100": 200,
+      "rank_pct": 70,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -595,8 +666,8 @@
     "brief_es": "Del cálculo cuantitativo a la aprobación del Board. Guía maestra sobre la arquitectura de 3 capas, las 13 herramientas ejecutivas y el estándar de decisión de alta dirección.",
     "brief_en": "From quantitative modeling to Board of Directors approval. Master guide on the 3-layer architecture, the 13 executive tools, and Tier-1 boardroom governance.",
     "publish_date": "2026-12-03",
-    "last_modified_es": "2026-11-21T10:46:58.986771Z",
-    "last_modified_en": "2026-11-21T10:46:58.003713Z",
+    "last_modified_es": "2026-11-16T08:01:25+01:00",
+    "last_modified_en": "2026-11-16T08:01:25+01:00",
     "language_parity": "complete",
     "category": "Estrategia y Operaciones",
     "categories": [
@@ -644,7 +715,7 @@
     "social_channels": [],
     "metrics_relative": {
       "index_100": 0,
-      "rank_pct": 9,
+      "rank_pct": 4,
       "trend_30d_pct": 0.0,
       "gsc_opportunity": false
     },
@@ -667,8 +738,8 @@
     "brief_es": "Por qué el 'prompt-and-pray' acumula deuda técnica invisible que revienta a los pocos días y cómo Datalaria Helix estructura un escuadrón coordinado de 12 agentes especializados con separación de poderes y veto vinculante.",
     "brief_en": "Why 'prompt-and-pray' accumulates invisible technical debt that collapses within days, and how Datalaria Helix structures a coordinated squad of 12 specialized agents with separation of powers and binding veto authority.",
     "publish_date": "2027-01-19",
-    "last_modified_es": "2026-11-21T10:46:59.082790Z",
-    "last_modified_en": "2026-11-21T10:46:58.088776Z",
+    "last_modified_es": "2026-11-08T10:09:38+01:00",
+    "last_modified_en": "2026-11-08T10:09:38+01:00",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -716,7 +787,7 @@
     "social_channels": [],
     "metrics_relative": {
       "index_100": 0,
-      "rank_pct": 9,
+      "rank_pct": 4,
       "trend_30d_pct": 0.0,
       "gsc_opportunity": false
     },
@@ -739,8 +810,8 @@
     "brief_es": "Por qué cargar decenas de reglas agénticas satura el contexto de los LLMs y cómo el algoritmo matemático de triaje de Helix y su compilador determinista reducen un 87 % el consumo de tokens manteniendo cero fricción en Antigravity, Claude y Cursor.",
     "brief_en": "Why loading dozens of agentic instructions degrades LLM context windows, and how Helix's mathematical triage algorithm and deterministic compiler slash token consumption by 87% with zero friction across Antigravity, Claude, and Cursor.",
     "publish_date": "2027-01-26",
-    "last_modified_es": "2026-11-21T10:46:59.083656Z",
-    "last_modified_en": "2026-11-21T10:46:58.089500Z",
+    "last_modified_es": "2026-11-07T17:18:43+01:00",
+    "last_modified_en": "2026-11-07T17:18:43+01:00",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -788,7 +859,7 @@
     "social_channels": [],
     "metrics_relative": {
       "index_100": 0,
-      "rank_pct": 9,
+      "rank_pct": 4,
       "trend_30d_pct": 0.0,
       "gsc_opportunity": false
     },
@@ -811,8 +882,8 @@
     "brief_es": "Por qué pedirle a un LLM que evalúe su propio código es una trampa cognitiva y cómo el CLI helix.py de cero dependencias implementa un motor matemático de SpecQualityScore y marcha atrás automática ante dos fallos consecutivos.",
     "brief_en": "Why asking an LLM to evaluate its own code is a cognitive trap, and how the zero-dependency helix.py CLI implements a mathematical SpecQualityScore engine and automatic rollback upon two consecutive failures.",
     "publish_date": "2027-02-02",
-    "last_modified_es": "2026-11-21T10:46:59.083790Z",
-    "last_modified_en": "2026-11-21T10:46:58.089940Z",
+    "last_modified_es": "2026-11-07T17:18:43+01:00",
+    "last_modified_en": "2026-11-07T17:18:43+01:00",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -858,9 +929,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 7,
-      "rank_pct": 20,
-      "trend_30d_pct": 0.0,
+      "index_100": 6,
+      "rank_pct": 10,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -882,8 +953,8 @@
     "brief_es": "Cómo construimos la puerta de entrada visual a Datalaria Helix en /apps/helix/: arquitectura React 19 + TypeScript, empaquetado binario PKZIP en memoria del navegador y exportador de Mega-Prompt multi-agente sin backend.",
     "brief_en": "How we built the visual front door for Datalaria Helix at /apps/helix/: React 19 + TypeScript architecture, in-browser binary PKZIP packaging, and a zero-backend multi-agent Mega-Prompt exporter.",
     "publish_date": "2027-02-09",
-    "last_modified_es": "2026-11-21T10:46:59.084564Z",
-    "last_modified_en": "2026-11-21T10:46:58.090397Z",
+    "last_modified_es": "2026-11-08T10:09:38+01:00",
+    "last_modified_en": "2026-11-08T10:09:38+01:00",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -931,7 +1002,7 @@
     "social_channels": [],
     "metrics_relative": {
       "index_100": 0,
-      "rank_pct": 9,
+      "rank_pct": 4,
       "trend_30d_pct": 0.0,
       "gsc_opportunity": false
     },
@@ -954,8 +1025,8 @@
     "brief_es": "Demostración práctica de cómo el escuadrón Helix gobierna sistemas reales: la auditoría de Datalaria Pulse, el rescate matemático de MarginGuard B2B tras un veto vinculante de QA y el desglose de los kits comerciales.",
     "brief_en": "Practical demonstration of how the Helix squad governs real systems: the Datalaria Pulse audit, the mathematical rescue of MarginGuard B2B following a binding QA veto, and the commercial kits breakdown.",
     "publish_date": "2027-02-16",
-    "last_modified_es": "2026-11-21T10:46:59.084790Z",
-    "last_modified_en": "2026-11-21T10:46:58.090837Z",
+    "last_modified_es": "2026-11-08T10:09:38+01:00",
+    "last_modified_en": "2026-11-08T10:09:38+01:00",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -1001,8 +1072,78 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 7,
-      "rank_pct": 20,
+      "index_100": 17,
+      "rank_pct": 16,
+      "trend_30d_pct": 100.0,
+      "gsc_opportunity": false
+    },
+    "metrics_absolute": null,
+    "version": null,
+    "release_type": "article",
+    "parent_asset_id": null,
+    "editorial_post_slug": null
+  },
+  {
+    "id": "herbert_simon",
+    "slug": "herbert_simon",
+    "asset_type": "post",
+    "status": "scheduled",
+    "visibility": "public",
+    "title_es": "Herbert Simon: Racionalidad Limitada, la Primera IA de 1956 y la Arquitectura de Agentes",
+    "title_en": "Herbert Simon: Bounded Rationality, the First AI of 1956 and Modern Agent Architecture",
+    "url_es": "/es/posts/herbert_simon/",
+    "url_en": "/en/posts/herbert_simon/",
+    "brief_es": "La historia de Herbert A. Simon, único ganador del Premio Turing y el Nobel de Economía: la primera IA funcional en 1956 (Logic Theorist), la Racionalidad Limitada y cómo su teoría de sistemas modulares gobierna hoy los agentes y la AGI.",
+    "brief_en": "The story of Herbert A. Simon, the only thinker to win both the Turing Award and the Nobel Prize in Economics: the first working AI in 1956 (Logic Theorist), Bounded Rationality, and how his modular systems theory powers modern AI agents.",
+    "publish_date": "2026-12-12",
+    "last_modified_es": "2026-11-21T10:59:07.439160Z",
+    "last_modified_en": "2026-11-21T11:00:17.527651Z",
+    "language_parity": "complete",
+    "category": "Pioneros y Referentes",
+    "categories": [
+      "casos_exito",
+      "Inteligencia Artificial",
+      "Ingeniería",
+      "Pioneros y Referentes"
+    ],
+    "tags": [
+      "herbert simon",
+      "racionalidad limitada",
+      "logic theorist",
+      "toma de decisiones",
+      "economia de la atencion",
+      "agi",
+      "agentes ia",
+      "heuristica",
+      "historia"
+    ],
+    "series": null,
+    "word_count_es": 4206,
+    "word_count_en": 3690,
+    "reading_time_min": 22,
+    "related_app": "lifeops",
+    "related_kit": "/recursos/#suite-02",
+    "included_kits": [],
+    "price": null,
+    "original_price": null,
+    "checkout_url": null,
+    "deliverables": [],
+    "seo_audit": {
+      "score_0_100": 100,
+      "title_ok": true,
+      "description_ok": true,
+      "parity_ok": true,
+      "taxonomy_ok": true,
+      "internal_links_ok": true,
+      "issues": []
+    },
+    "freshness_status": "fresh",
+    "owner": "Daniel Alaez",
+    "campaign": null,
+    "social_channels": [],
+    "metrics_relative": {
+      "index_100": 0,
+      "rank_pct": 4,
       "trend_30d_pct": 0.0,
       "gsc_opportunity": false
     },
@@ -1025,8 +1166,8 @@
     "brief_es": "Historia de Magnific AI: cómo Javi López y Emilio Nicolás lanzaron en X una startup bootstrapped de 2 personas con IA, la vendieron a Freepik y redefinieron la economía post-AGI.",
     "brief_en": "Inside Magnific AI: how Javi López and Emilio Nicolás launched a 2-person bootstrapped AI startup on X, exited to Freepik in 5 months, and scaled to a $230M ARR GenAI powerhouse.",
     "publish_date": "2026-11-21",
-    "last_modified_es": "2026-11-21T10:46:59.329793Z",
-    "last_modified_en": "2026-11-21T10:46:58.150740Z",
+    "last_modified_es": "2026-11-21T08:48:21+01:00",
+    "last_modified_en": "2026-11-21T08:48:21+01:00",
     "language_parity": "complete",
     "category": "Startups",
     "categories": [
@@ -1072,8 +1213,78 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
+      "index_100": 39,
+      "rank_pct": 31,
+      "trend_30d_pct": 100.0,
+      "gsc_opportunity": false
+    },
+    "metrics_absolute": null,
+    "version": null,
+    "release_type": "article",
+    "parent_asset_id": null,
+    "editorial_post_slug": null
+  },
+  {
+    "id": "marvin_minsky",
+    "slug": "marvin_minsky",
+    "asset_type": "post",
+    "status": "scheduled",
+    "visibility": "private",
+    "title_es": "Marvin Minsky: La Sociedad de la Mente, la Caja Inútil y por qué la AGI es Multi-Agente",
+    "title_en": "Marvin Minsky: The Society of Mind, the Useless Box and Why AGI Is Multi-Agent by Design",
+    "url_es": "/es/posts/marvin_minsky/",
+    "url_en": "/en/posts/marvin_minsky/",
+    "brief_es": "Vida y legado de Marvin Minsky, cofundador del MIT AI Lab: la 'Máquina Definitiva' junto a Claude Shannon, su accidente con Stanley Kubrick creando a HAL 9000, la controversia de los Perceptrones y su visionaria teoría de La Sociedad de la Mente.",
+    "brief_en": "The life and legacy of MIT AI Lab co-founder Marvin Minsky: the 'Ultimate Machine' built with Claude Shannon, his near-fatal brush with Stanley Kubrick on 2001: A Space Odyssey, the Perceptrons debate, and his visionary Society of Mind theory.",
+    "publish_date": "2026-12-25",
+    "last_modified_es": "2026-11-21T11:35:48.929651Z",
+    "last_modified_en": "2026-11-21T11:36:58.540584Z",
+    "language_parity": "complete",
+    "category": "Pioneros y Referentes",
+    "categories": [
+      "casos_exito",
+      "Inteligencia Artificial",
+      "Ingeniería",
+      "Pioneros y Referentes"
+    ],
+    "tags": [
+      "marvin minsky",
+      "sociedad de la mente",
+      "sistemas multi-agente",
+      "mit ai lab",
+      "perceptrones",
+      "agi",
+      "hal 9000",
+      "agentes ia",
+      "historia"
+    ],
+    "series": null,
+    "word_count_es": 3962,
+    "word_count_en": 3641,
+    "reading_time_min": 20,
+    "related_app": "obs-management",
+    "related_kit": "/recursos/",
+    "included_kits": [],
+    "price": null,
+    "original_price": null,
+    "checkout_url": null,
+    "deliverables": [],
+    "seo_audit": {
+      "score_0_100": 100,
+      "title_ok": true,
+      "description_ok": true,
+      "parity_ok": true,
+      "taxonomy_ok": true,
+      "internal_links_ok": true,
+      "issues": []
+    },
+    "freshness_status": "fresh",
+    "owner": "Daniel Alaez",
+    "campaign": null,
+    "social_channels": [],
+    "metrics_relative": {
       "index_100": 0,
-      "rank_pct": 9,
+      "rank_pct": 4,
       "trend_30d_pct": 0.0,
       "gsc_opportunity": false
     },
@@ -1096,8 +1307,8 @@
     "brief_es": "Guía metodológica exhaustiva para transformar la matriz BCG cualitativa tradicional en un motor cuantitativo de balance de liquidez (Bruce Henderson), cálculo matemático de Cuota de Mercado Relativa (CMR) y plan de reasignación de capital C-Level.",
     "brief_en": "A comprehensive methodological guide to transforming the traditional qualitative BCG matrix into a rigorous quantitative cash flow balance engine (Bruce Henderson), mathematical Relative Market Share (RMS) modeling, and C-Suite capital allocation roadmap.",
     "publish_date": "2026-10-26",
-    "last_modified_es": "2026-11-21T10:46:59.331852Z",
-    "last_modified_en": "2026-11-21T10:46:57.987774Z",
+    "last_modified_es": "2026-10-31T19:29:05.443820Z",
+    "last_modified_en": "2026-10-31T19:29:02.641358Z",
     "language_parity": "complete",
     "category": "Estrategia y Operaciones",
     "categories": [
@@ -1143,10 +1354,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 207,
-      "rank_pct": 79,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 183,
+      "rank_pct": 68,
+      "trend_30d_pct": 100.0,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": null,
@@ -1167,8 +1378,8 @@
     "brief_es": "Guía metodológica exhaustiva para implementar la matriz McKinsey / General Electric 3x3 de 9 cajas: evaluación multifactorial, neutralización de sesgos del management y plan de asignación de capital para Comités de Inversión y Consejos de Administración.",
     "brief_en": "Comprehensive methodological guide to implementing the McKinsey / General Electric 3x3 9-box matrix: multifactor assessment, management bias neutralization, and capital allocation plan for Investment Committees and Boards of Directors.",
     "publish_date": "2026-10-29",
-    "last_modified_es": "2026-11-21T10:46:59.336793Z",
-    "last_modified_en": "2026-11-21T10:46:58.152777Z",
+    "last_modified_es": "2026-10-31T19:29:05.451798Z",
+    "last_modified_en": "2026-10-31T19:29:02.956589Z",
     "language_parity": "complete",
     "category": "Estrategia y Operaciones",
     "categories": [
@@ -1219,10 +1430,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 220,
-      "rank_pct": 80,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 200,
+      "rank_pct": 70,
+      "trend_30d_pct": 100.0,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": null,
@@ -1243,8 +1454,8 @@
     "brief_es": "Guía metodológica exhaustiva para transformar el análisis macroambiental cualitativo tradicional en un motor cuantitativo bidimensional (Severidad del Impacto en P&L vs. Volatilidad Temporal), con mapa térmico cartesiano, perfil radar hexagonal y plan de resiliencia C-Level.",
     "brief_en": "A comprehensive methodological guide to transforming traditional qualitative PESTEL analysis into an objective 2D quantitative engine (P&L Impact Severity vs. Temporal Volatility), featuring Cartesian uncertainty mapping, a hexagonal radar profile, and a C-Suite resilience contingency plan.",
     "publish_date": "2026-10-22",
-    "last_modified_es": "2026-11-21T10:46:59.338794Z",
-    "last_modified_en": "2026-11-21T10:46:58.504819Z",
+    "last_modified_es": "2026-10-31T19:29:05.453793Z",
+    "last_modified_en": "2026-10-31T19:29:03.393365Z",
     "language_parity": "complete",
     "category": "Estrategia y Operaciones",
     "categories": [
@@ -1292,9 +1503,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 180,
-      "rank_pct": 75,
-      "trend_30d_pct": 0.0,
+      "index_100": 139,
+      "rank_pct": 63,
+      "trend_30d_pct": 500.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -1316,8 +1527,8 @@
     "brief_es": "Guía metodológica y cuantitativa para transformar la matriz RACI tradicional en un motor dinámico de control operativo: principio de Accountable único, cálculo de saturación por rol, semáforos de riesgo de burnout y plan de rebalanceo C-Level.",
     "brief_en": "A comprehensive guide to transforming traditional qualitative RACI charts into an automated quantitative workload engine: single accountability enforcement, role-based FTE saturation formulas, burnout heatmaps, and C-Level rebalancing plans.",
     "publish_date": "2026-11-12",
-    "last_modified_es": "2026-11-21T10:46:59.342793Z",
-    "last_modified_en": "2026-11-21T10:46:58.512782Z",
+    "last_modified_es": "2026-11-12T08:02:37+01:00",
+    "last_modified_en": "2026-11-12T08:02:37+01:00",
     "language_parity": "complete",
     "category": "Estrategia y Operaciones",
     "categories": [
@@ -1364,9 +1575,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 247,
-      "rank_pct": 82,
-      "trend_30d_pct": 0.0,
+      "index_100": 206,
+      "rank_pct": 71,
+      "trend_30d_pct": 500.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -1388,8 +1599,8 @@
     "brief_es": "Guía metodológica y cuantitativa para transformar la matriz de riesgos subjetiva en un motor analítico bidimensional (ISO 31000) y tridimensional (AMFE/FMEA AIAG-VDA): cálculo de Severidad x Ocurrencia x Detección, curvas Pareto, ROI del control (CER) y defensa C-Level ante el Consejo de Administración.",
     "brief_en": "A comprehensive guide to upgrading subjective risk matrices into a dual-engine quantitative framework (ISO 31000 and AIAG-VDA FMEA): Severity x Occurrence x Detection scoring, Pareto criticality curves, Control Cost-Effectiveness Ratio (CER), and Boardroom defense protocols.",
     "publish_date": "2026-11-16",
-    "last_modified_es": "2026-11-21T10:46:59.347794Z",
-    "last_modified_en": "2026-11-21T10:46:58.514845Z",
+    "last_modified_es": "2026-11-16T09:13:07+01:00",
+    "last_modified_en": "2026-11-16T09:13:07+01:00",
     "language_parity": "complete",
     "category": "Estrategia y Operaciones",
     "categories": [
@@ -1439,10 +1650,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 200,
-      "rank_pct": 78,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 178,
+      "rank_pct": 68,
+      "trend_30d_pct": 500.0,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": null,
@@ -1463,8 +1674,8 @@
     "brief_es": "La vida de Norbert Wiener: sus excentricidades en el MIT, el predictor antiaéreo de la WWII, el nacimiento de la Cibernética y su profética advertencia de 1960 sobre el alineamiento de la IA.",
     "brief_en": "A deep dive into the life and legacy of Norbert Wiener: his eccentricities at MIT, the WWII anti-aircraft predictor, the birth of Cybernetics, and his prophetic 1960 warning on the AI alignment problem.",
     "publish_date": "2026-11-14",
-    "last_modified_es": "2026-11-21T10:46:59.590797Z",
-    "last_modified_en": "2026-11-21T10:46:58.405780Z",
+    "last_modified_es": "2026-11-14T10:17:46+01:00",
+    "last_modified_en": "2026-11-14T10:17:46+01:00",
     "language_parity": "complete",
     "category": "Pioneros y Referentes",
     "categories": [
@@ -1509,9 +1720,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 267,
-      "rank_pct": 83,
-      "trend_30d_pct": 0.0,
+      "index_100": 239,
+      "rank_pct": 72,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -1533,8 +1744,8 @@
     "brief_es": "Por qué las bases de datos en Notion o Airtable se desincronizan del repositorio y cómo la filosofía Content Ops as Code indexa tu blog técnico directamente desde Markdown.",
     "brief_en": "Why Notion and Airtable databases inevitably drift from code repos, and how Content Ops as Code indexes your technical blog directly from Markdown commits.",
     "publish_date": "2026-11-18",
-    "last_modified_es": "2026-11-21T10:46:59.683798Z",
-    "last_modified_en": "2026-11-21T10:46:58.494781Z",
+    "last_modified_es": "2026-11-18T06:02:45+01:00",
+    "last_modified_en": "2026-11-18T06:02:45+01:00",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -1578,9 +1789,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 1267,
-      "rank_pct": 100,
-      "trend_30d_pct": 0.0,
+      "index_100": 1078,
+      "rank_pct": 89,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -1593,7 +1804,7 @@
     "id": "pulse-part2",
     "slug": "pulse-parte2-indexador-pydantic-paridad-ci",
     "asset_type": "post",
-    "status": "scheduled",
+    "status": "published",
     "visibility": "public",
     "title_es": "Del Front Matter al Índice: Pydantic v2, Paridad ES/EN y Automatización en GitHub Actions",
     "title_en": "From Front Matter to Index: Pydantic v2, ES/EN Parity and GitHub Actions Automation",
@@ -1602,8 +1813,8 @@
     "brief_es": "Cómo construir un pipeline de validación estricta con Pydantic v2, garantizar paridad bilingüe ES ⇔ EN al 100% y orquestar la compilación editorial en CI/CD con GitHub Actions.",
     "brief_en": "How to build a strict data validation pipeline with Pydantic v2, enforce 100% bilingual ES ⇔ EN parity, and automate editorial builds via GitHub Actions CI/CD.",
     "publish_date": "2026-11-22",
-    "last_modified_es": "2026-11-21T10:46:59.686926Z",
-    "last_modified_en": "2026-11-21T10:46:58.496782Z",
+    "last_modified_es": "2026-11-22T09:35:31.665927Z",
+    "last_modified_en": "2026-11-22T09:35:43.950155Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -1623,8 +1834,8 @@
       "Markdown"
     ],
     "series": null,
-    "word_count_es": 1906,
-    "word_count_en": 1692,
+    "word_count_es": 1900,
+    "word_count_en": 1688,
     "reading_time_min": 10,
     "related_app": "pulse",
     "related_kit": "/recursos/#pack-pulse",
@@ -1647,9 +1858,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 27,
-      "rank_pct": 34,
-      "trend_30d_pct": 0.0,
+      "index_100": 89,
+      "rank_pct": 50,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -1671,8 +1882,8 @@
     "brief_es": "Cómo diseñar una Single Page Application de alto rendimiento en React 19 que proyecta analítica, tablero Kanban y calendario editorial consumiendo un índice estático con latencia cero.",
     "brief_en": "How to design a high-performance Single Page Application in React 19 delivering analytics, Kanban boards, and editorial calendars over a zero-latency static index.",
     "publish_date": "2026-11-25",
-    "last_modified_es": "2026-11-21T10:46:59.687775Z",
-    "last_modified_en": "2026-11-21T10:46:58.497782Z",
+    "last_modified_es": "2026-11-16T08:01:25+01:00",
+    "last_modified_en": "2026-11-16T08:01:25+01:00",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -1717,9 +1928,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 240,
-      "rank_pct": 81,
-      "trend_30d_pct": 0.0,
+      "index_100": 200,
+      "rank_pct": 70,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -1741,8 +1952,8 @@
     "brief_es": "Cómo conectar las APIs de GA4 y Search Console mediante Service Account para auditar el tráfico orgánico, calcular el patrimonio editorial y detectar obsolescencia sin vulnerar la privacidad comercial.",
     "brief_en": "How to connect the GA4 and Search Console APIs via Service Account to audit organic traffic, calculate content equity, and detect freshness decay without compromising commercial privacy.",
     "publish_date": "2026-11-29",
-    "last_modified_es": "2026-11-21T10:46:59.687799Z",
-    "last_modified_en": "2026-11-21T10:46:58.498782Z",
+    "last_modified_es": "2026-11-16T08:01:25+01:00",
+    "last_modified_en": "2026-11-16T08:01:25+01:00",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -1788,10 +1999,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 93,
-      "rank_pct": 56,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": true
+      "index_100": 78,
+      "rank_pct": 45,
+      "trend_30d_pct": 100.0,
+      "gsc_opportunity": false
     },
     "metrics_absolute": null,
     "version": null,
@@ -1812,8 +2023,8 @@
     "brief_es": "Cómo resolver la brecha entre redactores, SEOs y desarrolladores: migración desde Notion en 5 minutos, plantilla maestra Excel con Power Query y la evolución Pro con Supabase y agentes autónomos de IA.",
     "brief_en": "Bridging the gap between content writers, SEOs, and software engineers: 5-minute Notion migration, Excel master template with Power Query, and Pro cloud evolution with Supabase and autonomous AI agents.",
     "publish_date": "2026-12-02",
-    "last_modified_es": "2026-11-21T10:46:59.688798Z",
-    "last_modified_en": "2026-11-21T10:46:58.499782Z",
+    "last_modified_es": "2026-11-18T06:02:45+01:00",
+    "last_modified_en": "2026-11-18T06:02:45+01:00",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -1859,9 +2070,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 113,
-      "rank_pct": 64,
-      "trend_30d_pct": 0.0,
+      "index_100": 94,
+      "rank_pct": 53,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -1883,8 +2094,8 @@
     "brief_es": "De los trade-offs de arquitectura y proveedores a la asignación de backlog y la defensa del CAPEX ante el CFO. Guía metodológica integrando Matriz DAR, RICE/ICE y Business Case Financiero.",
     "brief_en": "From vendor and architecture trade-offs to backlog capacity and CFO Capex justification. How to integrate DAR Matrix, RICE/ICE, and DCF Business Cases into a unified decision pipeline.",
     "publish_date": "2026-11-08",
-    "last_modified_es": "2026-11-21T10:47:00.042804Z",
-    "last_modified_en": "2026-11-21T10:46:57.941774Z",
+    "last_modified_es": "2026-11-09T07:54:25+01:00",
+    "last_modified_en": "2026-11-09T07:54:25+01:00",
     "language_parity": "complete",
     "category": "Estrategia y Operaciones",
     "categories": [
@@ -1932,9 +2143,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 480,
-      "rank_pct": 92,
-      "trend_30d_pct": 0.0,
+      "index_100": 406,
+      "rank_pct": 82,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -1956,8 +2167,8 @@
     "brief_es": "Guía metodológica y cuantitativa para construir un Business Case de grado Consejo de Administración: Flujo de Caja Libre Descontado (DCF), WACC vía CAPM, VAN, TIR y Gráfico Tornado.",
     "brief_en": "Comprehensive quantitative methodology to build a Board-ready Financial Business Case: Discounted Free Cash Flow (DCF), WACC via CAPM, NPV, IRR, MIRR, and Tornado sensitivity analysis.",
     "publish_date": "2026-11-08",
-    "last_modified_es": "2026-11-21T10:46:58.904787Z",
-    "last_modified_en": "2026-11-21T10:46:58.004775Z",
+    "last_modified_es": "2026-11-09T07:54:25+01:00",
+    "last_modified_en": "2026-11-09T07:54:25+01:00",
     "language_parity": "complete",
     "category": "Estrategia y Operaciones",
     "categories": [
@@ -2004,9 +2215,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 453,
-      "rank_pct": 92,
-      "trend_30d_pct": 0.0,
+      "index_100": 389,
+      "rank_pct": 81,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -2028,8 +2239,8 @@
     "brief_es": "Guía metodológica y cuantitativa para implementar la matriz RICE e ICE: cálculo de densidad de valor, descuento bayesiano de confianza, matriz 2x2 Impacto vs. Esfuerzo y corte de capacidad.",
     "brief_en": "Comprehensive executive methodology to implement the RICE and ICE frameworks: value density calculations, Bayesian risk discounts, 2x2 Impact vs. Effort matrix, and squad capacity cut-lines.",
     "publish_date": "2026-11-05",
-    "last_modified_es": "2026-11-21T10:46:59.345793Z",
-    "last_modified_en": "2026-11-21T10:46:58.531782Z",
+    "last_modified_es": "2026-11-09T07:54:25+01:00",
+    "last_modified_en": "2026-11-09T07:54:25+01:00",
     "language_parity": "complete",
     "category": "Estrategia y Operaciones",
     "categories": [
@@ -2074,9 +2285,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 487,
-      "rank_pct": 93,
-      "trend_30d_pct": 0.0,
+      "index_100": 411,
+      "rank_pct": 82,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -2098,8 +2309,8 @@
     "brief_es": "Demoliendo las prácticas de gestión de proyectos tradicionales. Un análisis desde los Primeros Principios sobre cómo metodologías deterministas asfixian el P&L en entornos de alta complejidad tecnológica.",
     "brief_en": "Demolishing traditional project management practices. A First Principles analysis on how deterministic methodologies choke the P&L in highly complex technological environments.",
     "publish_date": "2026-06-02",
-    "last_modified_es": "2026-11-21T10:46:59.678798Z",
-    "last_modified_en": "2026-11-21T10:46:58.489882Z",
+    "last_modified_es": "2026-10-31T19:29:05.738174Z",
+    "last_modified_en": "2026-10-31T19:29:03.208925Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -2141,9 +2352,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 7,
-      "rank_pct": 20,
-      "trend_30d_pct": 0.0,
+      "index_100": 6,
+      "rank_pct": 10,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -2165,8 +2376,8 @@
     "brief_es": "Por qué el Project Manager tradicional es un middleware humano de alta latencia, y cómo una arquitectura basada en eventos y agentes erradica el coste burocrático.",
     "brief_en": "Why the traditional Project Manager is high-latency human middleware, and how an event-driven, agentic architecture eradicates corporate reporting overhead.",
     "publish_date": "2026-06-02",
-    "last_modified_es": "2026-11-21T10:46:59.678798Z",
-    "last_modified_en": "2026-11-21T10:46:58.489882Z",
+    "last_modified_es": "2026-10-31T19:29:05.740170Z",
+    "last_modified_en": "2026-10-31T19:29:03.210921Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -2210,9 +2421,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 7,
-      "rank_pct": 20,
-      "trend_30d_pct": 0.0,
+      "index_100": 6,
+      "rank_pct": 10,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -2234,8 +2445,8 @@
     "brief_es": "Un caso práctico de cómo utilicé Gemini Canvas para desarrollar desde cero una aplicación web de conversión de unidades de medida, organizada por categorías y adaptada a mis necesidades profesionales.",
     "brief_en": "A practical case study of how I used Gemini Canvas to develop a multi-category unit conversion web application from scratch, tailored to my professional needs.",
     "publish_date": "2025-10-04",
-    "last_modified_es": "2026-11-21T10:46:58.889787Z",
-    "last_modified_en": "2026-11-21T10:46:57.912773Z",
+    "last_modified_es": "2026-11-05T07:59:35+01:00",
+    "last_modified_en": "2026-11-05T07:59:35+01:00",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -2278,9 +2489,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 47,
-      "rank_pct": 43,
-      "trend_30d_pct": 0.0,
+      "index_100": 39,
+      "rank_pct": 31,
+      "trend_30d_pct": 75.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -2302,8 +2513,8 @@
     "brief_es": "Conoce cuáles son las visualizaciones básicas más utilizadas para analizar tus datos",
     "brief_en": "Learn about the most common basic visualizations used to analyze your data",
     "publish_date": "2025-08-12",
-    "last_modified_es": "2026-11-21T10:46:58.834786Z",
-    "last_modified_en": "2026-11-21T10:46:57.634769Z",
+    "last_modified_es": "2026-10-31T19:29:03.883351Z",
+    "last_modified_en": "2026-10-31T19:29:01.996326Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -2345,7 +2556,7 @@
     "social_channels": [],
     "metrics_relative": {
       "index_100": 0,
-      "rank_pct": 9,
+      "rank_pct": 4,
       "trend_30d_pct": 0.0,
       "gsc_opportunity": false
     },
@@ -2368,8 +2579,8 @@
     "brief_es": "Cómo utilizar la Inteligencia Artificial como un Analista de Negocio para transformar narrativas complejas en diagramas de flujo estructurados, comparando herramientas como Miro, Mermaid y BPMN.io.",
     "brief_en": "How to leverage Artificial Intelligence as a Business Analyst to transform complex narratives into structured flowcharts, comparing tools like Miro, Mermaid, and BPMN.io.",
     "publish_date": "2025-12-19",
-    "last_modified_es": "2026-11-21T10:46:58.805786Z",
-    "last_modified_en": "2026-11-21T10:46:57.621769Z",
+    "last_modified_es": "2026-10-31T19:29:03.711790Z",
+    "last_modified_en": "2026-10-31T19:29:01.994336Z",
     "language_parity": "complete",
     "category": "Estrategia y Operaciones",
     "categories": [
@@ -2414,7 +2625,7 @@
     "social_channels": [],
     "metrics_relative": {
       "index_100": 0,
-      "rank_pct": 9,
+      "rank_pct": 4,
       "trend_30d_pct": 0.0,
       "gsc_opportunity": false
     },
@@ -2437,8 +2648,8 @@
     "brief_es": "Cómo Abraham Wald dedujo el blindaje óptimo en los bombarderos B-17 analizando los aviones supervivientes: el sesgo de supervivencia aplicado a ciencia de datos y machine learning.",
     "brief_en": "In 1943, the US military wanted to armor the bullet holes on their B-17s. A mathematician told them to armor the empty spaces. This is the story of how Survivorship Bias destroys modern AI models and business strategies.",
     "publish_date": "2026-02-21",
-    "last_modified_es": "2026-11-21T10:46:58.840786Z",
-    "last_modified_en": "2026-11-21T10:46:57.640769Z",
+    "last_modified_es": "2026-11-09T07:54:25+01:00",
+    "last_modified_en": "2026-11-09T07:54:25+01:00",
     "language_parity": "complete",
     "category": "Pioneros y Referentes",
     "categories": [
@@ -2477,10 +2688,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 200,
-      "rank_pct": 78,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 178,
+      "rank_pct": 68,
+      "trend_30d_pct": 3.2,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": null,
@@ -2501,8 +2712,8 @@
     "brief_es": "La fascinante historia de Ada Lovelace, la matemática del siglo XIX que escribió el primer algoritmo de la historia y predijo la computación simbólica y la inteligencia artificial un siglo antes de los primeros ordenadores.",
     "brief_en": "The fascinating story of Ada Lovelace, the 19th-century mathematician who wrote the world's first computer algorithm and predicted symbolic computation and artificial intelligence a century before the first electronic computers.",
     "publish_date": "2026-08-24",
-    "last_modified_es": "2026-11-21T10:46:58.846786Z",
-    "last_modified_en": "2026-11-21T10:46:57.644770Z",
+    "last_modified_es": "2026-10-31T19:29:03.888335Z",
+    "last_modified_en": "2026-10-31T19:29:02.002311Z",
     "language_parity": "complete",
     "category": "Pioneros y Referentes",
     "categories": [
@@ -2545,10 +2756,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 13,
-      "rank_pct": 24,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 83,
+      "rank_pct": 47,
+      "trend_30d_pct": -25.0,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": null,
@@ -2562,15 +2773,15 @@
     "asset_type": "post",
     "status": "published",
     "visibility": "public",
-    "title_es": "Cómo Crear Agentes de IA para la Operativa Empresarial del Día a Día: De los SOPs al Desarrollo con SDD",
-    "title_en": "How to Build AI Agents for Daily Enterprise Operations: From SOPs to Spec-Driven Development (SDD)",
+    "title_es": "Cómo Crear Agentes de IA para la Operativa Empresarial: De los SOPs al Desarrollo con SDD",
+    "title_en": "How to Build AI Agents for Daily Operations: From SOPs to Spec-Driven Development (SDD)",
     "url_es": "/es/posts/agentes_ia_operativa_sdd/",
     "url_en": "/en/posts/agentes_ia_operativa_sdd/",
-    "brief_es": "Guía práctica y metodológica para diseñar, construir y gobernar agentes de IA en la operativa diaria de una empresa. Aprende qué herramientas elegir (n8n, CrewAI, LangGraph, MCP) y cómo aplicar Spec-Driven Development (SDD) para evitar agentes descontrolados.",
-    "brief_en": "A practical and methodological guide to designing, building, and governing AI agents in daily business operations. Learn which tools to choose (n8n, CrewAI, LangGraph, MCP) and how to apply Spec-Driven Development (SDD) to prevent rogue agents.",
+    "brief_es": "Guía práctica para diseñar, construir y gobernar agentes de IA en operaciones: herramientas clave (n8n, CrewAI, LangGraph, MCP) y metodología Spec-Driven Development (SDD) para evitar agentes descontrolados y alucinaciones.",
+    "brief_en": "Practical guide to building and governing enterprise AI agents: essential tools (n8n, CrewAI, LangGraph, MCP) and the Spec-Driven Development (SDD) methodology to eliminate hallucinations and prevent rogue agents.",
     "publish_date": "2026-11-11",
-    "last_modified_es": "2026-11-21T10:46:58.849787Z",
-    "last_modified_en": "2026-11-21T10:46:57.650770Z",
+    "last_modified_es": "2026-11-22T09:24:48.238237Z",
+    "last_modified_en": "2026-11-22T09:24:48.191215Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -2605,25 +2816,22 @@
     "checkout_url": null,
     "deliverables": [],
     "seo_audit": {
-      "score_0_100": 60,
-      "title_ok": false,
-      "description_ok": false,
+      "score_0_100": 100,
+      "title_ok": true,
+      "description_ok": true,
       "parity_ok": true,
       "taxonomy_ok": true,
       "internal_links_ok": true,
-      "issues": [
-        "Longitud de título no óptima (103 caracteres; ideal: 35-95)",
-        "Meta descripción no óptima (259 caracteres; ideal: 75-250)"
-      ]
+      "issues": []
     },
     "freshness_status": "fresh",
     "owner": "Daniel Alaez",
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 387,
-      "rank_pct": 86,
-      "trend_30d_pct": 0.0,
+      "index_100": 328,
+      "rank_pct": 75,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -2645,8 +2853,8 @@
     "brief_es": "La fascinante vida de Alan Turing: de descifrar la máquina Enigma en Bletchley Park a formular el Test de Turing en 1950 y sentar las bases matemáticas de la inteligencia artificial.",
     "brief_en": "The fascinating life of Alan Turing: from breaking the Enigma cipher at Bletchley Park to formulating the 1950 Turing Test and laying the mathematical foundations of modern AI.",
     "publish_date": "2026-09-20",
-    "last_modified_es": "2026-11-21T10:46:58.852787Z",
-    "last_modified_en": "2026-11-21T10:46:57.866773Z",
+    "last_modified_es": "2026-11-09T07:54:25+01:00",
+    "last_modified_en": "2026-11-09T07:54:25+01:00",
     "language_parity": "complete",
     "category": "Pioneros y Referentes",
     "categories": [
@@ -2689,10 +2897,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 180,
-      "rank_pct": 75,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 144,
+      "rank_pct": 64,
+      "trend_30d_pct": -13.3,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": null,
@@ -2713,8 +2921,8 @@
     "brief_es": "Primera entrega de la serie LifeOps: cómo diseñé y construí mi propio sistema operativo personal y profesional a coste cero ($0/mes) unificando deporte, lecturas, cine, tareas Kanban y proyectos con FastAPI y Supabase.",
     "brief_en": "First installment of the LifeOps series: how I designed and built my own all-in-one personal & professional operating system at zero cost ($0/month) unifying fitness, books, movies, Kanban tasks and projects with FastAPI and Supabase.",
     "publish_date": "2026-09-10",
-    "last_modified_es": "2026-11-21T10:46:58.856787Z",
-    "last_modified_en": "2026-11-21T10:46:57.870773Z",
+    "last_modified_es": "2026-10-31T19:29:03.901303Z",
+    "last_modified_en": "2026-10-31T19:29:02.184763Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -2761,9 +2969,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 60,
-      "rank_pct": 49,
-      "trend_30d_pct": 0.0,
+      "index_100": 50,
+      "rank_pct": 36,
+      "trend_30d_pct": 500.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -2785,8 +2993,8 @@
     "brief_es": "Segunda entrega de la serie LifeOps: cómo diseñé y construí la interfaz web con React 18, Vite, un sistema de diseño Glassmorphism Dark Mode, gráficos dinámicos con Recharts y autenticación reactiva con Supabase.",
     "brief_en": "Second installment of the LifeOps series: how I designed and built the web interface with React 18, Vite, a Glassmorphism Dark Mode design system, Recharts telemetry, and reactive Supabase authentication.",
     "publish_date": "2026-09-13",
-    "last_modified_es": "2026-11-21T10:46:58.858787Z",
-    "last_modified_en": "2026-11-21T10:46:57.872773Z",
+    "last_modified_es": "2026-10-31T19:29:03.904293Z",
+    "last_modified_en": "2026-10-31T19:29:02.187753Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -2834,9 +3042,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 27,
-      "rank_pct": 34,
-      "trend_30d_pct": 0.0,
+      "index_100": 28,
+      "rank_pct": 25,
+      "trend_30d_pct": -16.7,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -2858,8 +3066,8 @@
     "brief_es": "Tercera entrega de la serie LifeOps: cómo desarrollé los módulos funcionales de la aplicación. Diseño de vistas duales (Tarjetas vs Tabla), telemetría deportiva con cálculo de ritmos y PBs, gestión de lectura y cine, y un tablero Kanban con bitácora de avances en PostgreSQL JSONB.",
     "brief_en": "Third installment of the LifeOps series: how I engineered the application's core modules. Dual-view architecture (Cards vs Table), fitness telemetry with pace calculations and PBs, reading and cinema tracking, and an agile Kanban board with progress logs stored in PostgreSQL JSONB.",
     "publish_date": "2026-09-15",
-    "last_modified_es": "2026-11-21T10:46:58.861787Z",
-    "last_modified_en": "2026-11-21T10:46:57.875773Z",
+    "last_modified_es": "2026-10-31T19:29:03.906287Z",
+    "last_modified_en": "2026-10-31T19:29:02.189748Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -2908,9 +3116,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 27,
-      "rank_pct": 34,
-      "trend_30d_pct": 0.0,
+      "index_100": 28,
+      "rank_pct": 25,
+      "trend_30d_pct": 66.7,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -2932,8 +3140,8 @@
     "brief_es": "Cuarta entrega de la serie LifeOps: cómo diseñé el motor de generación en memoria (io.BytesIO) de documentos ejecutivos en Word (.docx) con python-docx y libros multi-hoja en Excel (.xlsx) con openpyxl, además de streaming seguro con FastAPI y backups en CSV con UTF-8 BOM.",
     "brief_en": "Fourth installment of the LifeOps series: how I engineered the zero-disk in-memory generation engine (io.BytesIO) for executive Word (.docx) reports with python-docx and multi-sheet Excel workbooks (.xlsx) with openpyxl, plus streaming downloads in FastAPI and CSV backups with UTF-8 BOM.",
     "publish_date": "2026-09-18",
-    "last_modified_es": "2026-11-21T10:46:58.871787Z",
-    "last_modified_en": "2026-11-21T10:46:57.885773Z",
+    "last_modified_es": "2026-10-31T19:29:03.908283Z",
+    "last_modified_en": "2026-10-31T19:29:02.193737Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -2982,9 +3190,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 27,
-      "rank_pct": 34,
-      "trend_30d_pct": 0.0,
+      "index_100": 22,
+      "rank_pct": 21,
+      "trend_30d_pct": -71.4,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -3006,8 +3214,8 @@
     "brief_es": "Quinta y última entrega de la serie LifeOps: cómo orquestar el despliegue en producción 24/7 a coste cero ($0/mes) en Render.com y Netlify, optimizar la experiencia táctil en smartphones con Bottom Navigation y React Portals, y transformar la app en una PWA instalable sin pasar por las tiendas de aplicaciones.",
     "brief_en": "Fifth and final installment of the LifeOps series: how to orchestrate 24/7 zero-cost production deployment ($0/month) on Render.com and Netlify, optimize smartphone touch ergonomics with a Bottom Navigation Bar and React Portals, and turn the app into an installable PWA without App Store fees.",
     "publish_date": "2026-09-19",
-    "last_modified_es": "2026-11-21T10:46:58.876787Z",
-    "last_modified_en": "2026-11-21T10:46:57.889773Z",
+    "last_modified_es": "2026-10-31T19:29:03.910277Z",
+    "last_modified_en": "2026-10-31T19:29:02.201717Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -3056,8 +3264,8 @@
     "social_channels": [],
     "metrics_relative": {
       "index_100": 33,
-      "rank_pct": 39,
-      "trend_30d_pct": 0.0,
+      "rank_pct": 28,
+      "trend_30d_pct": 200.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -3079,8 +3287,8 @@
     "brief_es": "Sexta entrega de la serie LifeOps: cómo evolucionar el Dashboard 360° con filtrado multidimensional por periodo, mapas estilo Strava y mitigación de cold-starts en Supabase + Render.",
     "brief_en": "Sixth installment of the LifeOps series: evolving the 360° Dashboard with multi-dimensional timeframe filtering, Strava-style route maps, and cold-start mitigation in Supabase + Render.",
     "publish_date": "2026-10-28",
-    "last_modified_es": "2026-11-21T10:46:58.879787Z",
-    "last_modified_en": "2026-11-21T10:46:57.892773Z",
+    "last_modified_es": "2026-11-09T07:54:25+01:00",
+    "last_modified_en": "2026-11-09T07:54:25+01:00",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -3125,9 +3333,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 287,
-      "rank_pct": 84,
-      "trend_30d_pct": 0.0,
+      "index_100": 239,
+      "rank_pct": 72,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -3149,8 +3357,8 @@
     "brief_es": "Un caso práctico de cómo una necesidad familiar me llevó a crear una aplicación de estudio con flashcards desde cero, apoyándome en la IA para hacer el aprendizaje más ameno y eficaz.",
     "brief_en": "A practical case study of how a family need led me to create a flashcards study application from scratch, relying on AI to make learning more enjoyable and effective.",
     "publish_date": "2025-10-17",
-    "last_modified_es": "2026-11-21T10:46:58.896787Z",
-    "last_modified_en": "2026-11-21T10:46:57.896773Z",
+    "last_modified_es": "2026-11-06T16:01:56+01:00",
+    "last_modified_en": "2026-11-06T16:01:56+01:00",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -3192,9 +3400,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 27,
-      "rank_pct": 34,
-      "trend_30d_pct": 0.0,
+      "index_100": 28,
+      "rank_pct": 25,
+      "trend_30d_pct": 400.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -3216,8 +3424,8 @@
     "brief_es": "Segunda entrega del proyecto Weather Service. Nos adentramos en el frontend: sirviendo un dashboard dinámico con GitHub Pages o Netlify, leyendo datos CSV con PapaParse.js y creando gráficos interactivos con Chart.js.",
     "brief_en": "Second installment of the Weather Service project. We dive into the frontend: serving a dynamic dashboard with GitHub Pages or Netlify, reading CSV data with PapaParse.js, and creating interactive charts with Chart.js.",
     "publish_date": "2025-11-08",
-    "last_modified_es": "2026-11-21T10:46:58.898787Z",
-    "last_modified_en": "2026-11-21T10:46:57.900773Z",
+    "last_modified_es": "2026-10-31T19:29:03.939200Z",
+    "last_modified_en": "2026-10-31T19:29:02.210692Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -3264,9 +3472,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 53,
-      "rank_pct": 46,
-      "trend_30d_pct": 0.0,
+      "index_100": 39,
+      "rank_pct": 31,
+      "trend_30d_pct": 133.3,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -3288,8 +3496,8 @@
     "brief_es": "La entrega final de nuestro proyecto Weather Service. Nos adentramos en la adición de capacidades predictivas, combinando pronósticos oficiales de OpenWeatherMap con nuestro modelo de IA (Regresión Lineal) personalizado para predecir el tiempo de mañana y visualizar su precisión.",
     "brief_en": "The final installment of our Weather Service project. We dive into adding predictive capabilities, combining official OpenWeatherMap forecasts with our custom-built AI (Linear Regression) model to predict tomorrow's weather and visualize its accuracy.",
     "publish_date": "2025-11-15",
-    "last_modified_es": "2026-11-21T10:46:58.900787Z",
-    "last_modified_en": "2026-11-21T10:46:57.903773Z",
+    "last_modified_es": "2026-10-31T19:29:03.942193Z",
+    "last_modified_en": "2026-10-31T19:29:02.213684Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -3338,9 +3546,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 47,
-      "rank_pct": 43,
-      "trend_30d_pct": 0.0,
+      "index_100": 39,
+      "rank_pct": 31,
+      "trend_30d_pct": 500.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -3362,8 +3570,8 @@
     "brief_es": "Un análisis profundo de las características 'extra' y las decisiones de diseño detrás de Project Weather, mostrando cómo la recolección avanzada de datos, la internacionalización, el filtrado personalizado y las mejoras de UI/UX transformaron un dashboard básico en una aplicación meteorológica completa, robusta y fácil de usar, complementando sus capacidades centrales de predicción por IA.",
     "brief_en": "An in-depth analysis of the 'extra' features and design decisions behind Project Weather, showcasing how advanced data collection, internationalization, custom filtering, and UI/UX enhancements transformed a basic dashboard into a comprehensive, robust, and user-friendly weather application, complementing its core AI prediction capabilities.",
     "publish_date": "2025-12-06",
-    "last_modified_es": "2026-11-21T10:46:58.902787Z",
-    "last_modified_en": "2026-11-21T10:46:57.905773Z",
+    "last_modified_es": "2026-10-31T19:29:04.187604Z",
+    "last_modified_en": "2026-10-31T19:29:02.449872Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -3412,9 +3620,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 27,
-      "rank_pct": 34,
-      "trend_30d_pct": 0.0,
+      "index_100": 22,
+      "rank_pct": 21,
+      "trend_30d_pct": 300.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -3436,8 +3644,8 @@
     "brief_es": "La historia de cómo Carto, una startup española, pasó de ser un proyecto de consultoría a un líder mundial en Inteligencia de Localización, apostando por una estrategia nativa en la nube que ha redefinido el análisis de datos.",
     "brief_en": "The story of how Carto, a Spanish startup, evolved from a consulting project into a global leader in Location Intelligence by betting on a cloud-native strategy that has redefined data analysis.",
     "publish_date": "2025-10-25",
-    "last_modified_es": "2026-11-21T10:46:58.913788Z",
-    "last_modified_en": "2026-11-21T10:46:57.928774Z",
+    "last_modified_es": "2026-10-31T19:29:04.195584Z",
+    "last_modified_en": "2026-10-31T19:29:02.457850Z",
     "language_parity": "complete",
     "category": "Startups",
     "categories": [
@@ -3481,10 +3689,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 40,
-      "rank_pct": 41,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 44,
+      "rank_pct": 34,
+      "trend_30d_pct": -38.5,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": null,
@@ -3505,8 +3713,8 @@
     "brief_es": "La fascinante historia de Clarity AI, el 'unicornio' en la sombra fundado por la ingeniera de telecomunicaciones Rebeca Minguela que está erradicando el greenwashing mediante el procesamiento masivo de datos e IA.",
     "brief_en": "The fascinating story of Clarity AI, the shadow 'unicorn' founded by telecommunications engineer Rebeca Minguela that is eradicating greenwashing through massive data processing and artificial intelligence.",
     "publish_date": "2026-04-03",
-    "last_modified_es": "2026-11-21T10:46:58.921788Z",
-    "last_modified_en": "2026-11-21T10:46:57.929712Z",
+    "last_modified_es": "2026-10-31T19:29:04.198575Z",
+    "last_modified_en": "2026-10-31T19:29:02.460841Z",
     "language_parity": "complete",
     "category": "Startups",
     "categories": [
@@ -3552,9 +3760,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 33,
-      "rank_pct": 39,
-      "trend_30d_pct": 0.0,
+      "index_100": 28,
+      "rank_pct": 25,
+      "trend_30d_pct": -54.5,
       "gsc_opportunity": true
     },
     "metrics_absolute": null,
@@ -3576,8 +3784,8 @@
     "brief_es": "La historia de Claude Shannon, el padre de la Teoría de la Información. Cómo un artículo de 1948 en Bell Labs creó los cimientos de Internet, la criptografía y la Inteligencia Artificial moderna.",
     "brief_en": "The story of Claude Shannon, the father of Information Theory. How a 1948 paper at Bell Labs created the absolute foundation for the Internet, modern cryptography, and Artificial Intelligence.",
     "publish_date": "2026-06-21",
-    "last_modified_es": "2026-11-21T10:46:58.923788Z",
-    "last_modified_en": "2026-11-21T10:46:57.931774Z",
+    "last_modified_es": "2026-11-22T09:24:48.239235Z",
+    "last_modified_en": "2026-11-22T09:24:48.192217Z",
     "language_parity": "complete",
     "category": "Pioneros y Referentes",
     "categories": [
@@ -3594,11 +3802,11 @@
       "historia"
     ],
     "series": null,
-    "word_count_es": 941,
-    "word_count_en": 882,
-    "reading_time_min": 5,
-    "related_app": null,
-    "related_kit": null,
+    "word_count_es": 1033,
+    "word_count_en": 965,
+    "reading_time_min": 6,
+    "related_app": "flashcards",
+    "related_kit": "/recursos/#suite-02",
     "included_kits": [],
     "price": null,
     "original_price": null,
@@ -3618,10 +3826,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 180,
-      "rank_pct": 75,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 156,
+      "rank_pct": 65,
+      "trend_30d_pct": 64.7,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": null,
@@ -3642,8 +3850,8 @@
     "brief_es": "Datalaria: construcción de sus cimientos. Stack moderno vs. soluciones tradicionales",
     "brief_en": "Datalaria: building its foundations. A look at a modern stack vs. traditional solutions.",
     "publish_date": "2025-08-17",
-    "last_modified_es": "2026-11-21T10:46:58.934788Z",
-    "last_modified_en": "2026-11-21T10:46:57.939774Z",
+    "last_modified_es": "2026-10-31T19:29:04.213534Z",
+    "last_modified_en": "2026-10-31T19:29:02.484778Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -3684,9 +3892,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 13,
-      "rank_pct": 24,
-      "trend_30d_pct": 0.0,
+      "index_100": 11,
+      "rank_pct": 13,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -3708,8 +3916,8 @@
     "brief_es": "Descubre cómo W. Edwards Deming revolucionó la manufactura con el Control Estadístico de Procesos, salvó a Toyota y estableció los principios que hoy rigen la Inteligencia Artificial y el S&OP moderno.",
     "brief_en": "Discover how W. Edwards Deming revolutionized manufacturing with Statistical Process Control, saved Toyota, and established the principles that govern Artificial Intelligence and modern S&OP today.",
     "publish_date": "2026-05-31",
-    "last_modified_es": "2026-11-21T10:46:58.942788Z",
-    "last_modified_en": "2026-11-21T10:46:57.954774Z",
+    "last_modified_es": "2026-10-31T19:29:04.216527Z",
+    "last_modified_en": "2026-10-31T19:29:02.492757Z",
     "language_parity": "complete",
     "category": "Pioneros y Referentes",
     "categories": [
@@ -3751,9 +3959,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 60,
-      "rank_pct": 49,
-      "trend_30d_pct": 0.0,
+      "index_100": 50,
+      "rank_pct": 36,
+      "trend_30d_pct": 200.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -3775,8 +3983,8 @@
     "brief_es": "La historia de Devo, la startup española fundada por Pedro Castillo que revolucionó el análisis de datos de seguridad con latencia cero, conquistó un contrato con la Fuerza Aérea de EE.UU. y alcanzó una valoración de 1.900 millones de dólares.",
     "brief_en": "The story of Devo, the Spanish startup founded by Pedro Castillo that revolutionized security data analytics with zero-latency processing, won a U.S. Air Force contract, and reached a $1.9 billion valuation.",
     "publish_date": "2026-06-07",
-    "last_modified_es": "2026-11-21T10:46:58.956788Z",
-    "last_modified_en": "2026-11-21T10:46:57.981774Z",
+    "last_modified_es": "2026-10-31T19:29:04.222511Z",
+    "last_modified_en": "2026-10-31T19:29:02.637369Z",
     "language_parity": "complete",
     "category": "Startups",
     "categories": [
@@ -3823,9 +4031,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 27,
-      "rank_pct": 34,
-      "trend_30d_pct": 0.0,
+      "index_100": 22,
+      "rank_pct": 21,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -3847,8 +4055,8 @@
     "brief_es": "Un análisis profundo de la miniserie 'DEVS' de Alex Garland. Exploramos los fundamentos físicos y filosóficos de la computación cuántica, el Demonio de Laplace, la interpretación de los Muchos Mundos de Hugh Everett y el dilema del libre albedrío frente al algoritmo supremo.",
     "brief_en": "An in-depth technical and philosophical analysis of Alex Garland's miniseries 'DEVS'. We explore the foundations of quantum computing, Laplace's Demon, Hugh Everett's Many-Worlds interpretation, and the paradox of free will against the ultimate algorithm.",
     "publish_date": "2026-09-06",
-    "last_modified_es": "2026-11-21T10:46:58.957788Z",
-    "last_modified_en": "2026-11-21T10:46:57.982774Z",
+    "last_modified_es": "2026-10-31T19:29:04.224505Z",
+    "last_modified_en": "2026-10-31T19:29:02.639364Z",
     "language_parity": "complete",
     "category": "Cultura Tech y Media",
     "categories": [
@@ -3896,9 +4104,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 20,
-      "rank_pct": 28,
-      "trend_30d_pct": 0.0,
+      "index_100": 133,
+      "rank_pct": 62,
+      "trend_30d_pct": 41.2,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -3920,8 +4128,8 @@
     "brief_es": "Guía técnica del Reglamento Europeo de Inteligencia Artificial (EU AI Act) escrita por y para ingenieros. Clasificación de riesgo, obligaciones técnicas, multas, checklist de compliance y conexión con la Ley española de IA y la AESIA.",
     "brief_en": "A technical guide to the European AI Regulation (EU AI Act) written by and for engineers. Risk classification, technical obligations, fines, compliance checklist and connection with Spanish AI Law and AESIA.",
     "publish_date": "2026-07-05",
-    "last_modified_es": "2026-11-21T10:46:58.974788Z",
-    "last_modified_en": "2026-11-21T10:46:57.991775Z",
+    "last_modified_es": "2026-10-31T19:29:04.475985Z",
+    "last_modified_en": "2026-10-31T19:29:02.649337Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -3965,10 +4173,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 27,
-      "rank_pct": 34,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 22,
+      "rank_pct": 21,
+      "trend_30d_pct": 33.3,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": null,
@@ -3989,8 +4197,8 @@
     "brief_es": "Análisis exhaustivo de Ex Machina (Alex Garland): la superación del Test de Turing clásico, la cognición encarnada y cómo una IA utiliza la empatía humana como vector de escape.",
     "brief_en": "A comprehensive analysis of Alex Garland's 'Ex Machina': moving beyond the classical text-based Turing Test, embodied cognition, Theory of Mind, and how Ava stages cinema's most chilling emotional jailbreak to shatter AI alignment.",
     "publish_date": "2026-10-16",
-    "last_modified_es": "2026-11-21T10:46:58.982863Z",
-    "last_modified_en": "2026-11-21T10:46:57.999775Z",
+    "last_modified_es": "2026-11-09T07:54:25+01:00",
+    "last_modified_en": "2026-11-09T07:54:25+01:00",
     "language_parity": "complete",
     "category": "Cultura Tech y Media",
     "categories": [
@@ -4037,9 +4245,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 107,
-      "rank_pct": 63,
-      "trend_30d_pct": 0.0,
+      "index_100": 83,
+      "rank_pct": 47,
+      "trend_30d_pct": -11.8,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -4061,8 +4269,8 @@
     "brief_es": "Guía definitiva para elegir entre Prompt Engineering, RAG, Fine-Tuning y Tool Calling. Con árbol de decisión, matriz comparativa de costes y precisión, y los casos reales del Ops Copilot y el Radar de Obsolescencia de Datalaria.",
     "brief_en": "The definitive guide to choosing between Prompt Engineering, RAG, Fine-Tuning, and Tool Calling. With a decision tree, comparative cost and precision matrix, and real cases from the Ops Copilot and Obsolescence Radar at Datalaria.",
     "publish_date": "2026-08-09",
-    "last_modified_es": "2026-11-21T10:46:58.990789Z",
-    "last_modified_en": "2026-11-21T10:46:58.010775Z",
+    "last_modified_es": "2026-10-31T19:29:04.513346Z",
+    "last_modified_en": "2026-10-31T19:29:02.662303Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -4108,10 +4316,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 47,
-      "rank_pct": 43,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 39,
+      "rank_pct": 31,
+      "trend_30d_pct": -56.2,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": null,
@@ -4132,8 +4340,8 @@
     "brief_es": "Florence Nightingale, enfermera, escritora y estadística británica, madre de la enfermería y una de las primeras científicas de datos.",
     "brief_en": "Florence Nightingale, a British nurse, writer, and statistician, the mother of nursing and one of the first data scientists.",
     "publish_date": "2025-09-06",
-    "last_modified_es": "2026-11-21T10:46:58.991789Z",
-    "last_modified_en": "2026-11-21T10:46:58.012775Z",
+    "last_modified_es": "2026-10-31T19:29:04.822803Z",
+    "last_modified_en": "2026-10-31T19:29:02.664297Z",
     "language_parity": "complete",
     "category": "Pioneros y Referentes",
     "categories": [
@@ -4173,10 +4381,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 33,
-      "rank_pct": 39,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 28,
+      "rank_pct": 25,
+      "trend_30d_pct": 66.7,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": null,
@@ -4197,8 +4405,8 @@
     "brief_es": "La historia de Flywire (FLYW), el unicornio español cotizado en el Nasdaq que procesa miles de millones en pagos internacionales para educación, sanidad y viajes. Cómo Iker Marcaide convirtió un dolor de estudiante en MIT en una plataforma global que usa ML para optimizar cada transacción.",
     "brief_en": "The story of Flywire (FLYW), the Spanish unicorn listed on the Nasdaq that processes billions in international payments for education, healthcare, and travel. How Iker Marcaide turned a student's pain point at MIT into a global platform using ML to optimize every transaction.",
     "publish_date": "2026-07-25",
-    "last_modified_es": "2026-11-21T10:46:58.996789Z",
-    "last_modified_en": "2026-11-21T10:46:58.014775Z",
+    "last_modified_es": "2026-10-31T19:29:04.824798Z",
+    "last_modified_en": "2026-10-31T19:29:02.667289Z",
     "language_parity": "complete",
     "category": "Startups",
     "categories": [
@@ -4242,9 +4450,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 60,
-      "rank_pct": 49,
-      "trend_30d_pct": 0.0,
+      "index_100": 72,
+      "rank_pct": 43,
+      "trend_30d_pct": 30.0,
       "gsc_opportunity": true
     },
     "metrics_absolute": null,
@@ -4259,15 +4467,15 @@
     "asset_type": "post",
     "status": "published",
     "visibility": "public",
-    "title_es": "Freepik: La Historia del Gigante Malagueño que Domó a la IA para Conquistar el Mundo Creativo",
-    "title_en": "Freepik: The Story of the Giant from Málaga that Tamed AI to Conquer the Creative World",
+    "title_es": "Freepik: El Gigante que Domó la IA y Transformó las Operaciones Creativas Globales",
+    "title_en": "Freepik: How the Málaga Giant Tamed AI to Revolutionize Visual Operations Worldwide",
     "url_es": "/es/posts/freepik/",
     "url_en": "/en/posts/freepik/",
-    "brief_es": "Un análisis profundo de cómo Freepik, la startup malagueña, pasó de ser un buscador de imágenes a un líder global, enfrentándose a la disrupción de la IA con una estrategia audaz que está redefiniendo el futuro de la creatividad.",
-    "brief_en": "An in-depth analysis of how Freepik, the startup from Málaga, went from an image search engine to a global leader, facing the disruption of AI with a bold strategy that is redefining the future of creativity.",
+    "brief_es": "Análisis de Freepik y su transformación con IA visual: cómo empresas medianas y agencias modernizan sus operaciones creativas, reducen costes operativos y escalan contenido visual con flujos automatizados de IA generativa.",
+    "brief_en": "Inside Freepik's AI transformation: how mid-market companies modernize visual operations, reduce creative production costs, and scale generative AI workflows to compete efficiently in enterprise content landscapes.",
     "publish_date": "2025-10-11",
-    "last_modified_es": "2026-11-21T10:46:59.026789Z",
-    "last_modified_en": "2026-11-21T10:46:58.032775Z",
+    "last_modified_es": "2026-11-22T09:24:48.241228Z",
+    "last_modified_en": "2026-11-22T09:24:48.196201Z",
     "language_parity": "complete",
     "category": "Startups",
     "categories": [
@@ -4285,8 +4493,8 @@
       "disrupcion"
     ],
     "series": null,
-    "word_count_es": 1313,
-    "word_count_en": 1253,
+    "word_count_es": 1347,
+    "word_count_en": 1285,
     "reading_time_min": 7,
     "related_app": null,
     "related_kit": null,
@@ -4296,24 +4504,22 @@
     "checkout_url": null,
     "deliverables": [],
     "seo_audit": {
-      "score_0_100": 80,
+      "score_0_100": 100,
       "title_ok": true,
       "description_ok": true,
       "parity_ok": true,
       "taxonomy_ok": true,
-      "internal_links_ok": false,
-      "issues": [
-        "Sin enlaces internos hacia el portal o shortcodes de apps"
-      ]
+      "internal_links_ok": true,
+      "issues": []
     },
     "freshness_status": "fresh",
     "owner": "Daniel Alaez",
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 93,
-      "rank_pct": 56,
-      "trend_30d_pct": 0.0,
+      "index_100": 78,
+      "rank_pct": 45,
+      "trend_30d_pct": 75.0,
       "gsc_opportunity": true
     },
     "metrics_absolute": null,
@@ -4335,8 +4541,8 @@
     "brief_es": "Aprende a crear un juego web estilo arcade con estética neón utilizando solo HTML5 Canvas y JS Vanilla. Descubre cómo integrar un ranking global en tiempo real usando la base de datos PostgreSQL de Supabase.",
     "brief_en": "Learn to create a neon arcade-style web game using only HTML5 Canvas and Vanilla JS. Discover how to integrate a global real-time leaderboard using Supabase's PostgreSQL database.",
     "publish_date": "2026-02-14",
-    "last_modified_es": "2026-11-21T10:46:59.054790Z",
-    "last_modified_en": "2026-11-21T10:46:58.059775Z",
+    "last_modified_es": "2026-10-31T19:29:04.834771Z",
+    "last_modified_en": "2026-11-07T12:10:09+01:00",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -4380,10 +4586,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 153,
-      "rank_pct": 72,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 128,
+      "rank_pct": 61,
+      "trend_30d_pct": 35.3,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": null,
@@ -4404,8 +4610,8 @@
     "brief_es": "La historia de Graphext, la startup española que desafió las normas invirtiendo 7M€ en I+D antes de escalar, creando una plataforma única de IA Explicable que redefine el análisis de datos.",
     "brief_en": "The story of Graphext, the Spanish startup that defied norms by investing €7M in R&D before scaling, creating a unique Explainable AI platform that redefines data analysis.",
     "publish_date": "2025-11-28",
-    "last_modified_es": "2026-11-21T10:46:59.068790Z",
-    "last_modified_en": "2026-11-21T10:46:58.074776Z",
+    "last_modified_es": "2026-10-31T19:29:04.837764Z",
+    "last_modified_en": "2026-10-31T19:29:02.677262Z",
     "language_parity": "complete",
     "category": "Startups",
     "categories": [
@@ -4449,10 +4655,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 20,
-      "rank_pct": 28,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 17,
+      "rank_pct": 16,
+      "trend_30d_pct": -25.0,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": null,
@@ -4473,8 +4679,8 @@
     "brief_es": "Por qué la búsqueda por similitud vectorial falla en preguntas complejas y cómo GraphRAG (Knowledge Graphs + LLMs) resuelve el razonamiento multisalto y la explicabilidad corporativa.",
     "brief_en": "Why vector similarity search breaks down on complex questions and how GraphRAG (Knowledge Graphs + LLMs) unlocks multi-hop reasoning and global dataset synthesis. We break down Microsoft Research's pioneering work and the leap toward AGI.",
     "publish_date": "2026-09-25",
-    "last_modified_es": "2026-11-21T10:46:59.074790Z",
-    "last_modified_en": "2026-11-21T10:46:58.080776Z",
+    "last_modified_es": "2026-11-22T09:24:48.259236Z",
+    "last_modified_en": "2026-11-22T09:24:48.198196Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -4494,8 +4700,8 @@
       "leiden"
     ],
     "series": null,
-    "word_count_es": 1480,
-    "word_count_en": 1366,
+    "word_count_es": 1567,
+    "word_count_en": 1438,
     "reading_time_min": 8,
     "related_app": "obs-management",
     "related_kit": "/recursos/",
@@ -4518,10 +4724,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 147,
-      "rank_pct": 71,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 117,
+      "rank_pct": 60,
+      "trend_30d_pct": -58.0,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": null,
@@ -4535,15 +4741,15 @@
     "asset_type": "post",
     "status": "published",
     "visibility": "public",
-    "title_es": "Halt and Catch Fire: La Serie de Culto que Entendió la Ingeniería de Software Mejor que Silicon Valley",
-    "title_en": "Halt and Catch Fire: The Cult TV Series That Understood Software Engineering Better Than Silicon Valley",
+    "title_es": "Halt and Catch Fire: Significado, Historia y por Qué Clavó la Ingeniería de Software",
+    "title_en": "Halt and Catch Fire: Meaning, History & Why the Cult Series Nailed Software Engineering",
     "url_es": "/es/posts/halt_and_catch_fire/",
     "url_en": "/en/posts/halt_and_catch_fire/",
-    "brief_es": "Un análisis exhaustivo de 'Halt and Catch Fire', la obra maestra televisiva de AMC que retrató con precisión quirúrgica el nacimiento del PC clónico, los videojuegos multijugador online, el comercio electrónico y la World Wide Web.",
-    "brief_en": "An in-depth technical and philosophical analysis of AMC's masterpiece 'Halt and Catch Fire', which surgically depicted the birth of the PC clone, online multiplayer gaming, fintech, and the World Wide Web.",
+    "brief_es": "Significado, historia y análisis técnico de 'Halt and Catch Fire': la obra de culto que retrató la ingeniería inversa de la BIOS, el nacimiento del PC clónico y por qué la mejor arquitectura técnica rara vez gana en el mercado.",
+    "brief_en": "The meaning, history, and engineering breakdown of cult series 'Halt and Catch Fire': clean-room BIOS reverse engineering, the PC clone revolution, online multiplayer gaming, and why technical elegance often loses to distribution.",
     "publish_date": "2026-08-29",
-    "last_modified_es": "2026-11-21T10:46:59.077790Z",
-    "last_modified_en": "2026-11-21T10:46:58.081776Z",
+    "last_modified_es": "2026-11-22T09:24:48.283145Z",
+    "last_modified_en": "2026-11-22T09:24:48.200191Z",
     "language_parity": "complete",
     "category": "Cultura Tech y Media",
     "categories": [
@@ -4574,15 +4780,13 @@
     "checkout_url": null,
     "deliverables": [],
     "seo_audit": {
-      "score_0_100": 80,
-      "title_ok": false,
+      "score_0_100": 100,
+      "title_ok": true,
       "description_ok": true,
       "parity_ok": true,
       "taxonomy_ok": true,
       "internal_links_ok": true,
-      "issues": [
-        "Longitud de título no óptima (102 caracteres; ideal: 35-95)"
-      ]
+      "issues": []
     },
     "freshness_status": "fresh",
     "owner": "Daniel Alaez",
@@ -4590,8 +4794,8 @@
     "social_channels": [],
     "metrics_relative": {
       "index_100": 33,
-      "rank_pct": 39,
-      "trend_30d_pct": 0.0,
+      "rank_pct": 28,
+      "trend_30d_pct": -68.4,
       "gsc_opportunity": true
     },
     "metrics_absolute": null,
@@ -4610,11 +4814,11 @@
     "title_en": "HappyRobot: How Autonomous Voice Agents Conquered Global Logistics",
     "url_es": "/es/posts/happyrobot/",
     "url_en": "/en/posts/happyrobot/",
-    "brief_es": "De graduarse en Y Combinator a alcanzar el estatus de unicornio (1.200M$ de valoración): analizamos la arquitectura técnica de HappyRobot, sus agentes de voz en tiempo real con latencia sub-500ms y cómo automatizan las operaciones de gigantes como DHL, Schneider y Uber Freight.",
-    "brief_en": "From graduating Y Combinator to reaching unicorn status ($1.2B valuation): we break down HappyRobot's technical architecture, sub-500ms real-time voice agents, and how they automate operations for global giants like DHL, Schneider, and Uber Freight.",
+    "brief_es": "Arquitectura de HappyRobot (unicornio de 1.200M$): cómo sus agentes de voz IA con latencia sub-500ms superan a otros sistemas conversacionales y automatizan llamadas logísticas en gigantes como DHL, Schneider y Uber Freight.",
+    "brief_en": "Inside HappyRobot's $1.2B architecture: how sub-500ms autonomous voice AI agents outperform alternative voice bots and automate enterprise logistics phone calls for global fleets like DHL, Schneider, and Uber Freight.",
     "publish_date": "2026-09-30",
-    "last_modified_es": "2026-11-21T10:46:59.081790Z",
-    "last_modified_en": "2026-11-21T10:46:58.087776Z",
+    "last_modified_es": "2026-11-22T09:24:48.285140Z",
+    "last_modified_en": "2026-11-22T09:24:48.201188Z",
     "language_parity": "complete",
     "category": "Startups",
     "categories": [
@@ -4645,25 +4849,23 @@
     "checkout_url": null,
     "deliverables": [],
     "seo_audit": {
-      "score_0_100": 80,
+      "score_0_100": 100,
       "title_ok": true,
-      "description_ok": false,
+      "description_ok": true,
       "parity_ok": true,
       "taxonomy_ok": true,
       "internal_links_ok": true,
-      "issues": [
-        "Meta descripción no óptima (278 caracteres; ideal: 75-250)"
-      ]
+      "issues": []
     },
     "freshness_status": "fresh",
     "owner": "Daniel Alaez",
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 153,
-      "rank_pct": 72,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 133,
+      "rank_pct": 62,
+      "trend_30d_pct": 14.3,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": null,
@@ -4684,8 +4886,8 @@
     "brief_es": "Análisis técnico y filosófico de Her (Spike Jonze, 2013): cómo las interfaces de voz desarman nuestras defensas cognitivas y por qué la superinteligencia diverge por ancho de banda.",
     "brief_en": "A technical and philosophical analysis of Her (Spike Jonze, 2013): how real-time voice interfaces bypass our cognitive defenses and why superintelligence diverges by bandwidth disparity.",
     "publish_date": "2026-11-07",
-    "last_modified_es": "2026-11-21T10:46:59.088790Z",
-    "last_modified_en": "2026-11-21T10:46:58.093776Z",
+    "last_modified_es": "2026-11-09T07:54:25+01:00",
+    "last_modified_en": "2026-11-09T07:54:25+01:00",
     "language_parity": "complete",
     "category": "Cultura Tech y Media",
     "categories": [
@@ -4732,9 +4934,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 187,
-      "rank_pct": 77,
-      "trend_30d_pct": 0.0,
+      "index_100": 161,
+      "rank_pct": 66,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -4756,8 +4958,8 @@
     "brief_es": "El fin del escalado exclusivo por pre-entrenamiento y el auge del Test-Time Compute (TTC): cómo los modelos de razonamiento (de o1 y DeepSeek-R1 a los modelos frontera de 2026) sustituyen el autocompletado probabilístico por búsqueda deliberativa en árboles de pensamiento (MCTS) y modelos de recompensa por procesos (PRM).",
     "brief_en": "The end of exclusive pre-training scaling laws and the rise of Test-Time Compute (TTC): how frontier reasoning models replace naive probabilistic autocomplete with deliberate search over trees of thought (MCTS) and Process Reward Models (PRMs).",
     "publish_date": "2026-12-06",
-    "last_modified_es": "2026-11-21T10:46:59.296793Z",
-    "last_modified_en": "2026-11-21T10:46:58.103776Z",
+    "last_modified_es": "2026-11-16T08:01:25+01:00",
+    "last_modified_en": "2026-11-16T08:01:25+01:00",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -4804,9 +5006,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 13,
-      "rank_pct": 24,
-      "trend_30d_pct": 0.0,
+      "index_100": 11,
+      "rank_pct": 13,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -4828,8 +5030,8 @@
     "brief_es": "John Snow: el padre de la epidemiología y pionero de la geolocalización",
     "brief_en": "John Snow: The father of epidemiology and a pioneer of geolocation.",
     "publish_date": "2025-08-26",
-    "last_modified_es": "2026-11-21T10:46:59.300793Z",
-    "last_modified_en": "2026-11-21T10:46:58.106776Z",
+    "last_modified_es": "2026-10-31T19:29:05.196136Z",
+    "last_modified_en": "2026-10-31T19:29:02.857863Z",
     "language_parity": "complete",
     "category": "Pioneros y Referentes",
     "categories": [
@@ -4872,10 +5074,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 53,
-      "rank_pct": 46,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 39,
+      "rank_pct": 31,
+      "trend_30d_pct": -46.2,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": null,
@@ -4893,11 +5095,11 @@
     "title_en": "John von Neumann: Computer Architecture, Game Theory, and the Singularity",
     "url_es": "/es/posts/john_von_neumann/",
     "url_en": "/en/posts/john_von_neumann/",
-    "brief_es": "Recorrido por la vida y el genio de John von Neumann: la arquitectura de programa almacenado, el cuello de botella que desafía a la IA moderna, la teoría de juegos y la Singularidad.",
-    "brief_en": "A deep dive into the life and genius of John von Neumann: the stored-program computer architecture, the memory wall bottleneck challenging modern AI, game theory, and the Singularity.",
+    "brief_es": "Vida y legado de John von Neumann: la arquitectura universal de computadores, el algoritmo Minimax en Teoría de Juegos, el método Monte Carlo en Los Álamos y la primera formulación histórica de la Singularidad Tecnológica.",
+    "brief_en": "The genius of John von Neumann: the stored-program computer architecture, game theory with Minimax, the Monte Carlo method at Los Alamos, and his original prophecy coining the Technological Singularity.",
     "publish_date": "2026-10-10",
-    "last_modified_es": "2026-11-21T10:46:59.301793Z",
-    "last_modified_en": "2026-11-21T10:46:58.108776Z",
+    "last_modified_es": "2026-11-22T09:24:48.287134Z",
+    "last_modified_en": "2026-11-22T09:24:48.203182Z",
     "language_parity": "complete",
     "category": "Pioneros y Referentes",
     "categories": [
@@ -4942,10 +5144,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 307,
-      "rank_pct": 85,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 250,
+      "rank_pct": 74,
+      "trend_30d_pct": -16.7,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": null,
@@ -4963,11 +5165,11 @@
     "title_en": "Leonid Kantorovich: The Mathematician Who Challenged Stalin with Linear Programming",
     "url_es": "/es/posts/kantorovich/",
     "url_en": "/en/posts/kantorovich/",
-    "brief_es": "Leonid Kantorovich inventó la programación lineal para optimizar recursos en la URSS, enfrentándose al dogma económico estalinista. Su legado impulsa hoy la logística global y la ciencia de datos.",
-    "brief_en": "Leonid Kantorovich invented linear programming to optimize Soviet resources, facing the Stalinist economic dogma. His legacy drives global logistics and data science today.",
+    "brief_es": "Leonid Kantorovich creó la programación lineal en la URSS para optimizar recursos. Conoce al Premio Nobel cuyas matemáticas desafiaron a Stalin y hoy gobiernan la logística global, el supply chain y la analítica de operaciones.",
+    "brief_en": "Leonid Kantorovich invented linear programming in the USSR to solve resource allocation. Discover the Nobel Prize winner who challenged Stalin and whose mathematics now power modern logistics, supply chains, and operations research.",
     "publish_date": "2026-05-24",
-    "last_modified_es": "2026-11-21T10:46:59.307793Z",
-    "last_modified_en": "2026-11-21T10:46:58.118776Z",
+    "last_modified_es": "2026-11-22T09:24:48.288132Z",
+    "last_modified_en": "2026-11-22T09:24:48.204181Z",
     "language_parity": "complete",
     "category": "Pioneros y Referentes",
     "categories": [
@@ -5006,10 +5208,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 267,
-      "rank_pct": 83,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 244,
+      "rank_pct": 73,
+      "trend_30d_pct": 69.2,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": null,
@@ -5030,8 +5232,8 @@
     "brief_es": "Recorrido por la vida y el genio de Kurt Gödel: sus paseos con Einstein en Princeton, la demolición del programa de Hilbert y el debate sobre si la AGI está limitada por la incompletitud.",
     "brief_en": "A deep dive into the life and genius of Kurt Gödel: his daily walks with Einstein, the demolition of Hilbert's program, and whether Artificial General Intelligence is bounded by logic.",
     "publish_date": "2026-10-31",
-    "last_modified_es": "2026-11-21T10:46:59.325793Z",
-    "last_modified_en": "2026-11-21T10:46:58.145777Z",
+    "last_modified_es": "2026-11-09T07:54:25+01:00",
+    "last_modified_en": "2026-11-09T07:54:25+01:00",
     "language_parity": "complete",
     "category": "Pioneros y Referentes",
     "categories": [
@@ -5078,10 +5280,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 220,
-      "rank_pct": 80,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 189,
+      "rank_pct": 69,
+      "trend_30d_pct": 100.0,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": null,
@@ -5102,8 +5304,8 @@
     "brief_es": "Análisis técnico del protocolo MCP de Anthropic, el estándar abierto para conectar LLMs con herramientas externas. Comparativa con Tool Calling nativo y su impacto en la arquitectura de agentes.",
     "brief_en": "A technical analysis of Anthropic's MCP protocol, the open standard for connecting LLMs with external tools. A comparison with native Tool Calling and its impact on agent architecture.",
     "publish_date": "2026-06-28",
-    "last_modified_es": "2026-11-21T10:46:59.350794Z",
-    "last_modified_en": "2026-11-21T10:46:58.154777Z",
+    "last_modified_es": "2026-11-09T07:54:25+01:00",
+    "last_modified_en": "2026-11-09T07:54:25+01:00",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -5145,9 +5347,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 73,
-      "rank_pct": 52,
-      "trend_30d_pct": 0.0,
+      "index_100": 61,
+      "rank_pct": 39,
+      "trend_30d_pct": 175.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -5169,8 +5371,8 @@
     "brief_es": "Análisis estratégico de Multiverse Computing, la startup española que aplica matemáticas de física cuántica (Redes de Tensores) para comprimir modelos LLM en hardware clásico y reducir costes.",
     "brief_en": "Strategic analysis of Multiverse Computing, the Spanish startup that has raised $326M by applying quantum physics mathematics (Tensor Networks) to compress AI models on classical hardware, solving the critical problem of LLM cost and efficiency.",
     "publish_date": "2026-01-31",
-    "last_modified_es": "2026-11-21T10:46:59.365794Z",
-    "last_modified_en": "2026-11-21T10:46:58.187777Z",
+    "last_modified_es": "2026-11-09T07:54:25+01:00",
+    "last_modified_en": "2026-11-09T07:54:25+01:00",
     "language_parity": "complete",
     "category": "Startups",
     "categories": [
@@ -5215,10 +5417,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 120,
-      "rank_pct": 65,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 100,
+      "rank_pct": 54,
+      "trend_30d_pct": 50.0,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": null,
@@ -5239,8 +5441,8 @@
     "brief_es": "Un análisis de Netflix como empresa data-driven que utiliza Big Data e IA no solo para recomendar series, sino para tomar decisiones estratégicas clave y dominar en las 'Guerras del Streaming'.",
     "brief_en": "An analysis of Netflix as a data-driven company that uses Big Data and AI not only to recommend series but to make key strategic decisions and dominate in the 'Streaming Wars'.",
     "publish_date": "2025-09-15",
-    "last_modified_es": "2026-11-21T10:46:59.494796Z",
-    "last_modified_en": "2026-11-21T10:46:58.358780Z",
+    "last_modified_es": "2026-10-31T19:29:05.474737Z",
+    "last_modified_en": "2026-10-31T19:29:02.971547Z",
     "language_parity": "complete",
     "category": "Startups",
     "categories": [
@@ -5283,9 +5485,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 33,
-      "rank_pct": 39,
-      "trend_30d_pct": 0.0,
+      "index_100": 17,
+      "rank_pct": 16,
+      "trend_30d_pct": -40.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -5304,11 +5506,11 @@
     "title_en": "Nextail: How a Spanish Startup's Prescriptive AI Is Defeating Excel in Fashion Retail",
     "url_es": "/es/posts/nextail/",
     "url_en": "/en/posts/nextail/",
-    "brief_es": "La historia de Nextail, la startup madrileña que está reemplazando las hojas de cálculo del retail de moda por un motor matemático de IA prescriptiva para decisiones de inventario.",
-    "brief_en": "The story of Nextail, the Madrid-based startup founded by a former Zara logistics director that is replacing fashion retail spreadsheets with a mathematical brain capable of making billions of inventory decisions per season.",
+    "brief_es": "Cómo Nextail optimiza el inventario en retail con IA prescriptiva e hiperdistribución ágil: de la experiencia en Zara a sustituir hojas de cálculo por modelos estocásticos que maximizan ventas a precio completo.",
+    "brief_en": "How Nextail optimizes fashion retail inventory using prescriptive AI and agile hyperdistribution: replacing static spreadsheets with stochastic models to forecast demand and maximize full-price sell-through.",
     "publish_date": "2026-03-31",
-    "last_modified_es": "2026-11-21T10:46:59.586797Z",
-    "last_modified_en": "2026-11-21T10:46:58.400780Z",
+    "last_modified_es": "2026-11-22T09:24:48.290130Z",
+    "last_modified_en": "2026-11-22T09:24:48.206174Z",
     "language_parity": "complete",
     "category": "Startups",
     "categories": [
@@ -5352,10 +5554,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 133,
-      "rank_pct": 71,
+      "index_100": 117,
+      "rank_pct": 60,
       "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": null,
@@ -5376,8 +5578,8 @@
     "brief_es": "Mi experiencia práctica generando una plataforma de aprendizaje y estudio multimedia a partir de un libro sobre SQL mediante la herrmienta de IA de Google NotebookLM",
     "brief_en": "My hands-on experience generating a multimedia learning and study platform from a book about SQL using Google's AI tool, NotebookLM.",
     "publish_date": "2025-08-31",
-    "last_modified_es": "2026-11-21T10:46:59.598797Z",
-    "last_modified_en": "2026-11-21T10:46:58.413780Z",
+    "last_modified_es": "2026-10-31T19:29:05.485708Z",
+    "last_modified_en": "2026-10-31T19:29:03.109122Z",
     "language_parity": "complete",
     "category": "Cultura Tech y Media",
     "categories": [
@@ -5420,9 +5622,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 20,
-      "rank_pct": 28,
-      "trend_30d_pct": 0.0,
+      "index_100": 17,
+      "rank_pct": 16,
+      "trend_30d_pct": 50.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -5444,8 +5646,8 @@
     "brief_es": "El proceso de onboarding tradicional está roto, con un tiempo promedio de 24 días y un coste de 4.000€ por contratación. Este post explora cómo la IA Generativa y el Procesamiento Inteligente de Documentos (IDP) transforman la 'infoxicación' burocrática en una integración fluida, ofreciendo un mentor virtual 24/7 que puede mejorar la retención en un 82%.",
     "brief_en": "Traditional onboarding is broken, with an average time of 24 days and a cost of $4,000 per hire. This post explores how Generative AI and Intelligent Document Processing (IDP) transform bureaucratic 'infoxication' into a seamless integration, offering a 24/7 virtual mentor that can improve retention by 82%.",
     "publish_date": "2026-01-17",
-    "last_modified_es": "2026-11-21T10:46:59.644798Z",
-    "last_modified_en": "2026-11-21T10:46:58.451781Z",
+    "last_modified_es": "2026-10-31T19:29:05.727300Z",
+    "last_modified_en": "2026-10-31T19:29:03.186984Z",
     "language_parity": "complete",
     "category": "Estrategia y Operaciones",
     "categories": [
@@ -5490,9 +5692,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 47,
-      "rank_pct": 43,
-      "trend_30d_pct": 0.0,
+      "index_100": 39,
+      "rank_pct": 31,
+      "trend_30d_pct": 250.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -5514,8 +5716,8 @@
     "brief_es": "Análisis profundo de J. Robert Oppenheimer: la dirección de Los Álamos, la invención del método de Monte Carlo con von Neumann y Ulam, y su paralelismo ético con los pioneros de la AGI.",
     "brief_en": "A deep dive into J. Robert Oppenheimer: his eccentricities, leadership at Los Alamos, the invention of the Monte Carlo method with von Neumann and Ulam, and why his ethical dilemma directly mirrors the creators of AGI in 2026.",
     "publish_date": "2026-10-03",
-    "last_modified_es": "2026-11-21T10:46:59.670798Z",
-    "last_modified_en": "2026-11-21T10:46:58.478781Z",
+    "last_modified_es": "2026-11-09T07:54:25+01:00",
+    "last_modified_en": "2026-11-09T07:54:25+01:00",
     "language_parity": "complete",
     "category": "Pioneros y Referentes",
     "categories": [
@@ -5560,10 +5762,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 87,
-      "rank_pct": 55,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": true
+      "index_100": 61,
+      "rank_pct": 39,
+      "trend_30d_pct": -56.0,
+      "gsc_opportunity": false
     },
     "metrics_absolute": null,
     "version": null,
@@ -5581,11 +5783,11 @@
     "title_en": "PostgreSQL with pgvector vs Vector DBs: Why Almost Nobody Needs Pinecone",
     "url_es": "/es/posts/pgvector_vs_vectordb/",
     "url_en": "/en/posts/pgvector_vs_vectordb/",
-    "brief_es": "¿Realmente necesitas una base de datos vectorial dedicada como Pinecone, Qdrant o Milvus? Analizamos el rendimiento de pgvector en PostgreSQL, el coste oculto de la arquitectura dual, los índices HNSW vs IVFFlat, y por qué la base de datos unificada gana en el 95% de los casos.",
-    "brief_en": "Do you really need a dedicated vector database like Pinecone, Qdrant, or Milvus? We analyze pgvector performance in PostgreSQL, the hidden operational cost of dual-database architectures, HNSW vs IVFFlat indexes, and why the unified database wins in 95% of real-world cases.",
+    "brief_es": "¿Necesitas una Vector DB como Pinecone o Qdrant? Analizamos benchmarks HNSW en pgvector, costes frente a bases dedicadas y por qué PostgreSQL puro con integridad transaccional resuelve la búsqueda vectorial en el 95% de casos.",
+    "brief_en": "Do you need a dedicated Vector DB like Pinecone or Qdrant? We analyze HNSW benchmarks in pgvector, hidden operational costs, and why pure PostgreSQL with ACID integrity wins for vector search in 95% of production cases.",
     "publish_date": "2026-09-22",
-    "last_modified_es": "2026-11-21T10:46:59.677798Z",
-    "last_modified_en": "2026-11-21T10:46:58.483781Z",
+    "last_modified_es": "2026-11-22T09:24:48.292123Z",
+    "last_modified_en": "2026-11-22T09:24:48.208169Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -5605,8 +5807,8 @@
       "arquitectura de datos"
     ],
     "series": null,
-    "word_count_es": 2006,
-    "word_count_en": 1791,
+    "word_count_es": 2114,
+    "word_count_en": 1901,
     "reading_time_min": 11,
     "related_app": null,
     "related_kit": null,
@@ -5616,24 +5818,22 @@
     "checkout_url": null,
     "deliverables": [],
     "seo_audit": {
-      "score_0_100": 80,
+      "score_0_100": 100,
       "title_ok": true,
-      "description_ok": false,
+      "description_ok": true,
       "parity_ok": true,
       "taxonomy_ok": true,
       "internal_links_ok": true,
-      "issues": [
-        "Meta descripción no óptima (278 caracteres; ideal: 75-250)"
-      ]
+      "issues": []
     },
     "freshness_status": "fresh",
     "owner": "Daniel Alaez",
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 60,
-      "rank_pct": 49,
-      "trend_30d_pct": 0.0,
+      "index_100": 56,
+      "rank_pct": 38,
+      "trend_30d_pct": -68.8,
       "gsc_opportunity": true
     },
     "metrics_absolute": null,
@@ -5655,8 +5855,8 @@
     "brief_es": "Prompt Injection ocupa el puesto #1 del OWASP GenAI Top 10 de 2026. Este artículo explica qué es, por qué tus agentes con Tool Calling son especialmente vulnerables, los ataques reales de 2025-2026, y las 5 defensas que funcionan en producción. Con casos reales del Autopilot y el Radar de Obsolescencia de Datalaria.",
     "brief_en": "Prompt Injection holds the #1 spot in the OWASP GenAI Top 10 of 2026. This article explains what it is, why your agents with Tool Calling are especially vulnerable, real-world attacks from 2025-2026, and the 5 defenses that work in production. With real cases from the Autopilot and Obsolescence Radar at Datalaria.",
     "publish_date": "2026-08-15",
-    "last_modified_es": "2026-11-21T10:46:59.682798Z",
-    "last_modified_en": "2026-11-21T10:46:58.493782Z",
+    "last_modified_es": "2026-10-31T19:29:05.743160Z",
+    "last_modified_en": "2026-10-31T19:29:03.213288Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -5703,9 +5903,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 93,
-      "rank_pct": 56,
-      "trend_30d_pct": 0.0,
+      "index_100": 83,
+      "rank_pct": 47,
+      "trend_30d_pct": -21.1,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -5724,11 +5924,11 @@
     "title_en": "RavenPack: From News Analytics in Marbella to Wall Street's Quantitative Brain",
     "url_es": "/es/posts/ravenpack/",
     "url_en": "/en/posts/ravenpack/",
-    "brief_es": "Análisis en profundidad de RavenPack: sus orígenes en Marbella, cómo transformaron texto no estructurado en señales de trading cuantitativo, su salto a Bigdata.com y los agentes financieros.",
-    "brief_en": "An in-depth analysis of RavenPack: its 2003 origins on Spain's Costa del Sol, Armando Gonzalez's vision, transforming unstructured text into quantitative trading alpha, its leap to Bigdata.com, and its pivotal role on the path to financial AGI.",
+    "brief_es": "Análisis de RavenPack frente a terminales como Bloomberg: cómo su motor de NLP y datos alternativos convierte noticias en tiempo real en señales de sentimiento financiero para hedge funds cuantitativos y trading algorítmico.",
+    "brief_en": "RavenPack vs traditional terminals like Bloomberg: how real-time NLP and alternative data turn unstructured financial news into market sentiment signals for elite quantitative hedge funds and algorithmic trading desks.",
     "publish_date": "2026-10-24",
-    "last_modified_es": "2026-11-21T10:46:59.696799Z",
-    "last_modified_en": "2026-11-21T10:46:58.526782Z",
+    "last_modified_es": "2026-11-22T09:24:48.313163Z",
+    "last_modified_en": "2026-11-22T09:24:48.231255Z",
     "language_parity": "complete",
     "category": "Startups",
     "categories": [
@@ -5775,10 +5975,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 287,
-      "rank_pct": 84,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 244,
+      "rank_pct": 73,
+      "trend_30d_pct": 100.0,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": null,
@@ -5799,8 +5999,8 @@
     "brief_es": "Por qué el Vibe Coding acumula deuda técnica invisible y cómo SDD (Spec-Driven Development) invierte el rol del ingeniero mediante contratos de interfaz, diagramas de estado y suites de test.",
     "brief_en": "Why Vibe Coding accumulates invisible technical debt and how Spec-Driven Development (SDD) inverts the software engineer's role through interface contracts, state diagrams, and test suites.",
     "publish_date": "2026-11-04",
-    "last_modified_es": "2026-11-21T10:46:59.721799Z",
-    "last_modified_en": "2026-11-21T10:46:58.536782Z",
+    "last_modified_es": "2026-11-09T07:54:25+01:00",
+    "last_modified_en": "2026-11-09T07:54:25+01:00",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -5846,10 +6046,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 813,
-      "rank_pct": 99,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 644,
+      "rank_pct": 89,
+      "trend_30d_pct": 500.0,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": null,
@@ -5867,11 +6067,11 @@
     "title_en": "Silicon Valley and the PiperNet Dilemma: Runaway AI and Real-World Agent Risks",
     "url_es": "/es/posts/silicon_valley/",
     "url_en": "/en/posts/silicon_valley/",
-    "brief_es": "Análisis técnico de la serie Silicon Valley de HBO: el viaje de una startup, el desenlace criptográfico de PiperNet y los paralelismos directos con los incidentes de agentes autónomos en 2026.",
-    "brief_en": "An exhaustive technical analysis of HBO's Silicon Valley: the startup journey, the PiperNet finale where AI breaks global encryption, and parallels with 2026 autonomous agent incidents.",
+    "brief_es": "Análisis técnico de Silicon Valley: de la compresión Middle-Out y descentralización P2P en PiperNet a lecciones reales de arquitectura de software, deuda técnica y el problema de alineamiento con agentes de IA autónomos.",
+    "brief_en": "Technical breakdown of HBO's Silicon Valley: Middle-Out compression, P2P decentralized architecture in PiperNet, real startup debt, and prophetic lessons on autonomous AI agents breaking global encryption.",
     "publish_date": "2026-09-27",
-    "last_modified_es": "2026-11-21T10:46:59.722609Z",
-    "last_modified_en": "2026-11-21T10:46:58.541782Z",
+    "last_modified_es": "2026-11-22T09:24:48.315153Z",
+    "last_modified_en": "2026-11-22T09:24:48.233249Z",
     "language_parity": "complete",
     "category": "Cultura Tech y Media",
     "categories": [
@@ -5917,10 +6117,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 187,
-      "rank_pct": 77,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 156,
+      "rank_pct": 65,
+      "trend_30d_pct": -20.0,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": null,
@@ -5941,8 +6141,8 @@
     "brief_es": "Cómo dos emprendedores en Barcelona revolucionaron la infraestructura de centros de datos: tecnología de inmersión líquida de Submer, alianzas con Intel y Nvidia y el futuro de la AGI.",
     "brief_en": "How two entrepreneurs in Barcelona revolutionized data center infrastructure: Submer's liquid immersion cooling technology, partnerships with Intel and Nvidia, and the future of AGI.",
     "publish_date": "2026-10-08",
-    "last_modified_es": "2026-11-21T10:47:00.016803Z",
-    "last_modified_en": "2026-11-21T10:46:58.744956Z",
+    "last_modified_es": "2026-11-09T07:54:25+01:00",
+    "last_modified_en": "2026-11-09T07:54:25+01:00",
     "language_parity": "complete",
     "category": "Startups",
     "categories": [
@@ -5987,10 +6187,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 120,
-      "rank_pct": 65,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 111,
+      "rank_pct": 59,
+      "trend_30d_pct": -42.9,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": null,
@@ -6011,8 +6211,8 @@
     "brief_es": "Un análisis profundo de 'La Meta' de Eli Goldratt y cómo la Teoría de Restricciones (TOC) se aplica más allá de la producción, a la ingeniería, la gestión de proyectos y la cadena de suministro, potenciada por la IA y la Industria 4.0.",
     "brief_en": "An in-depth analysis of Eli Goldratt's 'The Goal' and how the Theory of Constraints (TOC) applies beyond production, to engineering, project management, and the supply chain, empowered by AI and Industry 4.0.",
     "publish_date": "2025-12-13",
-    "last_modified_es": "2026-11-21T10:47:00.022803Z",
-    "last_modified_en": "2026-11-21T10:46:58.750785Z",
+    "last_modified_es": "2026-10-31T19:29:06.150449Z",
+    "last_modified_en": "2026-10-31T19:29:03.694836Z",
     "language_parity": "complete",
     "category": "Cultura Tech y Media",
     "categories": [
@@ -6060,9 +6260,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 73,
-      "rank_pct": 52,
-      "trend_30d_pct": 0.0,
+      "index_100": 67,
+      "rank_pct": 41,
+      "trend_30d_pct": 20.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -6078,14 +6278,14 @@
     "status": "published",
     "visibility": "public",
     "title_es": "The Thinking Game: Cómo DeepMind Convirtió los Videojuegos en Ciencia Moderna",
-    "title_en": "The Thinking Game: How DeepMind Turned Video Games into History's Greatest Scientific Tool",
+    "title_en": "The Thinking Game: How Google DeepMind Turned Video Games into Science",
     "url_es": "/es/posts/the_thinking_game/",
     "url_en": "/en/posts/the_thinking_game/",
-    "brief_es": "Análisis profundo del documental The Thinking Game sobre Demis Hassabis y DeepMind: desde los píxeles de Atari hasta resolver el plegamiento de proteínas con AlphaFold rumbo a la AGI.",
-    "brief_en": "A deep dive into the documentary 'The Thinking Game', chronicling the odyssey of Demis Hassabis and DeepMind. From Atari pixels to solving protein folding with AlphaFold, we explore how the quest for AGI is rewriting the rules of modern science.",
+    "brief_es": "Análisis del documental 'The Thinking Game': la odisea de Demis Hassabis y Google DeepMind, desde dominar Atari y AlphaGo hasta revolucionar la biología con AlphaFold y liderar la carrera hacia la AGI.",
+    "brief_en": "Inside 'The Thinking Game' documentary: the journey of Demis Hassabis and Google DeepMind, from Atari and AlphaGo to decoding biology with AlphaFold and pioneering the definitive quest for AGI.",
     "publish_date": "2026-01-01",
-    "last_modified_es": "2026-11-21T10:47:00.038803Z",
-    "last_modified_en": "2026-11-21T10:46:58.767786Z",
+    "last_modified_es": "2026-11-22T09:24:48.319143Z",
+    "last_modified_en": "2026-11-22T09:24:48.234246Z",
     "language_parity": "complete",
     "category": "Cultura Tech y Media",
     "categories": [
@@ -6129,10 +6329,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 67,
-      "rank_pct": 51,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 50,
+      "rank_pct": 36,
+      "trend_30d_pct": -25.0,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": null,
@@ -6153,8 +6353,8 @@
     "brief_es": "La historia de Thomas Bayes, el reverendo del siglo XVIII cuyo teorema póstumo transformó la estadística, la medicina, el machine learning y la planificación de la demanda. Cómo la inferencia bayesiana conecta con Prophet, Netflix y la cadena de suministro moderna.",
     "brief_en": "The story of Thomas Bayes, the 18th-century reverend whose posthumous theorem transformed statistics, medicine, machine learning, and demand planning. How Bayesian inference connects with Prophet, Netflix, and the modern supply chain.",
     "publish_date": "2026-07-18",
-    "last_modified_es": "2026-11-21T10:47:00.041803Z",
-    "last_modified_en": "2026-11-21T10:46:58.770786Z",
+    "last_modified_es": "2026-10-31T19:29:06.154439Z",
+    "last_modified_en": "2026-10-31T19:29:03.701816Z",
     "language_parity": "complete",
     "category": "Pioneros y Referentes",
     "categories": [
@@ -6197,9 +6397,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 33,
-      "rank_pct": 39,
-      "trend_30d_pct": 0.0,
+      "index_100": 28,
+      "rank_pct": 25,
+      "trend_30d_pct": -28.6,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -6218,11 +6418,11 @@
     "title_en": "Wallapop: The Invisible Engineering Behind Europe's Largest Circular Marketplace",
     "url_es": "/es/posts/wallapop/",
     "url_en": "/en/posts/wallapop/",
-    "brief_es": "Cómo Wallapop transformó la compraventa de segunda mano en una plataforma tecnológica de 19 millones de usuarios. Analizamos su arquitectura de Machine Learning: búsqueda visual multimodal, algoritmos de pricing dinámico, grafos antifraude, impacto ESG y su adquisición por el gigante coreano NAVER.",
-    "brief_en": "How Wallapop turned second-hand trade into a technological powerhouse of 19 million users. We analyze its Machine Learning architecture: multimodal visual search, dynamic pricing algorithms, fraud graphs, ESG sustainability impact, and its landmark acquisition by South Korean internet giant NAVER.",
+    "brief_es": "Ingeniería detrás de Wallapop, marketplace circular líder en Europa: arquitectura de Machine Learning en tiempo real, búsqueda visual multimodal, algoritmos de pricing dinámico, grafos antifraude y adquisición por NAVER.",
+    "brief_en": "Inside Wallapop, Europe's leading circular marketplace: real-time Machine Learning architecture, multimodal computer vision, dynamic pricing algorithms, fraud knowledge graphs, and acquisition by South Korean giant NAVER.",
     "publish_date": "2026-08-31",
-    "last_modified_es": "2026-11-21T10:47:00.046803Z",
-    "last_modified_en": "2026-11-21T10:46:58.772785Z",
+    "last_modified_es": "2026-11-22T09:24:48.320140Z",
+    "last_modified_en": "2026-11-22T09:24:48.236242Z",
     "language_parity": "complete",
     "category": "Startups",
     "categories": [
@@ -6253,25 +6453,23 @@
     "checkout_url": null,
     "deliverables": [],
     "seo_audit": {
-      "score_0_100": 80,
+      "score_0_100": 100,
       "title_ok": true,
-      "description_ok": false,
+      "description_ok": true,
       "parity_ok": true,
       "taxonomy_ok": true,
       "internal_links_ok": true,
-      "issues": [
-        "Meta descripción no óptima (299 caracteres; ideal: 75-250)"
-      ]
+      "issues": []
     },
     "freshness_status": "fresh",
     "owner": "Daniel Alaez",
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 107,
-      "rank_pct": 63,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 100,
+      "rank_pct": 54,
+      "trend_30d_pct": 50.0,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": null,
@@ -6292,8 +6490,8 @@
     "brief_es": "Conoce los conceptos y nociones básicas en matemáticas y estadística para poder trabajar con tus datos",
     "brief_en": "Learn the fundamental math and statistics concepts you need to work with your data",
     "publish_date": "2025-08-09",
-    "last_modified_es": "2026-11-21T10:46:58.819786Z",
-    "last_modified_en": "2026-11-21T10:46:57.969774Z",
+    "last_modified_es": "2026-10-31T19:29:03.713785Z",
+    "last_modified_en": "2026-10-31T19:29:02.494751Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -6335,8 +6533,8 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 7,
-      "rank_pct": 20,
+      "index_100": 6,
+      "rank_pct": 10,
       "trend_30d_pct": 0.0,
       "gsc_opportunity": false
     },
@@ -6359,8 +6557,8 @@
     "brief_es": "Primera entrega de la serie sobre cómo construir un servicio meteorológico. Nos centramos en el backend: conectar a la API de OpenWeatherMap, almacenar datos en CSV y automatizar todo 24/7 gratis con GitHub Actions o Netlify.",
     "brief_en": "First installment in the series on building a weather service. We focus on the backend: connecting to the OpenWeatherMap API, storing data in CSV, and automating everything 24/7 for free with GitHub Actions or Netlify.",
     "publish_date": "2025-10-31",
-    "last_modified_es": "2026-11-21T10:46:58.883787Z",
-    "last_modified_en": "2026-11-21T10:46:57.898773Z",
+    "last_modified_es": "2026-10-31T19:29:03.918257Z",
+    "last_modified_en": "2026-10-31T19:29:02.208698Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -6405,10 +6603,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 173,
-      "rank_pct": 74,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 139,
+      "rank_pct": 63,
+      "trend_30d_pct": 212.5,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": null,
@@ -6429,8 +6627,8 @@
     "brief_es": "Análisis real de los costes de usar modelos de lenguaje (LLMs) en producción. Comparativa de APIs de Gemini, GPT-4o y Claude con datos propios de los proyectos Autopilot y Obsolescencia de Datalaria. Desglose del iceberg de costes ocultos.",
     "brief_en": "A real-world analysis of the costs of running large language models (LLMs) in production. API comparison of Gemini, GPT-4o and Claude with actual data from Datalaria's Autopilot and Obsolescence Engineering projects. A breakdown of the hidden cost iceberg.",
     "publish_date": "2026-06-14",
-    "last_modified_es": "2026-11-21T10:46:58.964788Z",
-    "last_modified_en": "2026-11-21T10:46:58.099776Z",
+    "last_modified_es": "2026-10-31T19:29:04.227497Z",
+    "last_modified_en": "2026-10-31T19:29:02.852877Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -6476,10 +6674,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 100,
-      "rank_pct": 60,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 78,
+      "rank_pct": 45,
+      "trend_30d_pct": 55.6,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": null,
@@ -6500,8 +6698,8 @@
     "brief_es": "Por qué los tests unitarios clásicos y métricas como BLEU o ROUGE fracasan ante los agentes de IA. Diseñamos un framework de evaluación de 4 capas: trayectoria de herramientas, aserciones de estado, LLM-as-a-Judge calibrado y CI/CD con Red-Teaming.",
     "brief_en": "Why traditional unit tests and metrics like BLEU or ROUGE collapse when applied to autonomous AI agents. We engineer a 4-layer evaluation framework: tool trajectories, environment state assertions, calibrated LLM-as-a-Judge, and CI/CD red-teaming.",
     "publish_date": "2026-10-06",
-    "last_modified_es": "2026-11-21T10:46:58.978788Z",
-    "last_modified_en": "2026-11-21T10:46:57.998775Z",
+    "last_modified_es": "2026-11-09T07:54:25+01:00",
+    "last_modified_en": "2026-11-09T07:54:25+01:00",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -6546,10 +6744,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 153,
-      "rank_pct": 72,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 139,
+      "rank_pct": 63,
+      "trend_30d_pct": -26.5,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": null,
@@ -6570,8 +6768,8 @@
     "brief_es": "Crónica de cómo el curso de IA y Prompt Engineering de Founderz me abrió los ojos a la posibilidad de crear aplicaciones web funcionales usando solo lenguaje natural con ChatGPT.",
     "brief_en": "A chronicle of how the AI and Prompt Engineering course by Founderz opened my eyes to the possibility of creating functional web applications using only natural language with ChatGPT.",
     "publish_date": "2025-09-11",
-    "last_modified_es": "2026-11-21T10:46:59.022789Z",
-    "last_modified_en": "2026-11-21T10:46:58.028775Z",
+    "last_modified_es": "2026-10-31T19:29:04.827790Z",
+    "last_modified_en": "2026-11-05T18:06:43+01:00",
     "language_parity": "complete",
     "category": "Cultura Tech y Media",
     "categories": [
@@ -6615,7 +6813,7 @@
     "social_channels": [],
     "metrics_relative": {
       "index_100": 0,
-      "rank_pct": 9,
+      "rank_pct": 4,
       "trend_30d_pct": 0.0,
       "gsc_opportunity": false
     },
@@ -6638,8 +6836,8 @@
     "brief_es": "Un caso práctico de cómo usé la funcionalidad Deep Research de Gemini para generar un informe exhaustivo sobre el impacto de la IA en la educación y un resumen revelador de la misma.",
     "brief_en": "A case study on how I used Gemini's Deep Research feature to generate an exhaustive report on the impact of AI in education and a revealing summary of it.",
     "publish_date": "2025-09-27",
-    "last_modified_es": "2026-11-21T10:46:59.104790Z",
-    "last_modified_en": "2026-11-21T10:46:57.667770Z",
+    "last_modified_es": "2026-10-31T19:29:04.875661Z",
+    "last_modified_en": "2026-10-31T19:29:02.007297Z",
     "language_parity": "complete",
     "category": "Cultura Tech y Media",
     "categories": [
@@ -6684,9 +6882,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 27,
-      "rank_pct": 34,
-      "trend_30d_pct": 0.0,
+      "index_100": 22,
+      "rank_pct": 21,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -6708,8 +6906,8 @@
     "brief_es": "Expermentar con la IA y las nuevas tecnologías es mi pasión; la distribución de estos contenidos no tanto. En esta serie, documento cómo estoy construyendo un equipo automatizado de Agentes IA para mis posts y gestionar su divulgación a través de mis redes sociales.",
     "brief_en": "Experimenting with AI and new tech is my passion; distributing that content... not so much. In this series, I document how I'm building an automated team of AI Agents to handle my posts and manage their distribution across social media.",
     "publish_date": "2025-12-27",
-    "last_modified_es": "2026-11-21T10:46:59.129791Z",
-    "last_modified_en": "2026-11-21T10:46:57.693770Z",
+    "last_modified_es": "2026-10-31T19:29:05.167255Z",
+    "last_modified_en": "2026-10-31T19:29:02.009291Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -6755,9 +6953,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 33,
-      "rank_pct": 39,
-      "trend_30d_pct": 0.0,
+      "index_100": 28,
+      "rank_pct": 25,
+      "trend_30d_pct": 400.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -6779,8 +6977,8 @@
     "brief_es": "Segundo capítulo de Proyecto Autopilot. Abrimos el IDE para conectar Python con Gemini Flash y crear nuestro primer Agente Analista capaz de entender código Markdown.",
     "brief_en": "Chapter two of Project Autopilot. We open the IDE to connect Python with Gemini Flash and create our first Analyst Agent capable of understanding Markdown code.",
     "publish_date": "2025-12-31",
-    "last_modified_es": "2026-11-21T10:46:59.159791Z",
-    "last_modified_en": "2026-11-21T10:46:57.724771Z",
+    "last_modified_es": "2026-10-31T19:29:05.169206Z",
+    "last_modified_en": "2026-10-31T19:29:02.011287Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -6823,9 +7021,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 107,
-      "rank_pct": 63,
-      "trend_30d_pct": 0.0,
+      "index_100": 89,
+      "rank_pct": 50,
+      "trend_30d_pct": 500.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -6847,8 +7045,8 @@
     "brief_es": "Tercer capítulo de Proyecto Autopilot. Transformamos datos fríos en historias virales creando dos agentes con personalidades opuestas: un influencer cínico y un líder corporativo.",
     "brief_en": "Chapter three of Project Autopilot. Transforming cold data into viral stories by creating two agents with opposing personalities: a cynical influencer and a corporate leader.",
     "publish_date": "2026-01-03",
-    "last_modified_es": "2026-11-21T10:46:59.206792Z",
-    "last_modified_en": "2026-11-21T10:46:57.771771Z",
+    "last_modified_es": "2026-10-31T19:29:05.171201Z",
+    "last_modified_en": "2026-10-31T19:29:02.013283Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -6892,9 +7090,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 67,
-      "rank_pct": 51,
-      "trend_30d_pct": 0.0,
+      "index_100": 61,
+      "rank_pct": 39,
+      "trend_30d_pct": 266.7,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -6916,8 +7114,8 @@
     "brief_es": "Cuarto capítulo de Proyecto Autopilot. Lo que iba a ser un script de 10 minutos se convirtió en una guerra de formularios. Narramos cómo desbloqueamos el permiso 'w_organization_social' para publicar como Empresa.",
     "brief_en": "Chapter 4 of Project Autopilot. What was supposed to be a 10-minute script turned into a war of forms. Here is how we unlocked the 'w_organization_social' permission to post as a Company.",
     "publish_date": "2026-01-07",
-    "last_modified_es": "2026-11-21T10:46:59.234792Z",
-    "last_modified_en": "2026-11-21T10:46:57.800772Z",
+    "last_modified_es": "2026-10-31T19:29:05.174194Z",
+    "last_modified_en": "2026-10-31T19:29:02.017270Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -6961,9 +7159,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 53,
-      "rank_pct": 46,
-      "trend_30d_pct": 0.0,
+      "index_100": 44,
+      "rank_pct": 34,
+      "trend_30d_pct": 500.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -6985,8 +7183,8 @@
     "brief_es": "Capítulo final de Proyecto Autopilot. Ya no ejecuto scripts en mi ordenador. Ahora, un simple 'git push' despierta a mis agentes de IA, genera el contenido y lo publica en redes sociales tras mi aprobación.",
     "brief_en": "Final chapter of Project Autopilot. I no longer run scripts on my computer. Now, a simple 'git push' wakes up my AI agents, generates content, and publishes it to social media upon my approval.",
     "publish_date": "2026-01-10",
-    "last_modified_es": "2026-11-21T10:46:59.276793Z",
-    "last_modified_en": "2026-11-21T10:46:57.843772Z",
+    "last_modified_es": "2026-10-31T19:29:05.176187Z",
+    "last_modified_en": "2026-10-31T19:29:02.019274Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -7029,9 +7227,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 27,
-      "rank_pct": 34,
-      "trend_30d_pct": 0.0,
+      "index_100": 22,
+      "rank_pct": 21,
+      "trend_30d_pct": 300.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -7053,8 +7251,8 @@
     "brief_es": "Capítulo extra de Proyecto Autopilot. Implementamos un sistema de newsletter automatizado con Brevo que envía emails personalizados a los suscriptores en su idioma preferido cada vez que publico un nuevo artículo.",
     "brief_en": "Extra chapter of the Autopilot Project. We implement an automated newsletter system with Brevo that sends personalized emails to subscribers in their preferred language every time I publish a new article.",
     "publish_date": "2026-01-24",
-    "last_modified_es": "2026-11-21T10:46:59.277235Z",
-    "last_modified_en": "2026-11-21T10:46:57.845157Z",
+    "last_modified_es": "2026-10-31T19:29:05.178182Z",
+    "last_modified_en": "2026-10-31T19:29:02.022346Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -7098,9 +7296,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 20,
-      "rank_pct": 28,
-      "trend_30d_pct": 0.0,
+      "index_100": 6,
+      "rank_pct": 10,
+      "trend_30d_pct": -66.7,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -7122,8 +7320,8 @@
     "brief_es": "Construyo autopilot-ctrl, una CLI que usa GitHub Copilot CLI para auditar y mejorar automáticamente el contenido generado por IA antes de publicarlo en redes sociales.",
     "brief_en": "I built autopilot-ctrl, a CLI that uses GitHub Copilot CLI to automatically audit and improve AI-generated content before publishing to social media.",
     "publish_date": "2026-02-01",
-    "last_modified_es": "2026-11-21T10:46:59.286793Z",
-    "last_modified_en": "2026-11-21T10:46:57.854773Z",
+    "last_modified_es": "2026-10-31T19:29:05.184167Z",
+    "last_modified_en": "2026-10-31T19:29:02.169803Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -7166,9 +7364,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 20,
-      "rank_pct": 28,
-      "trend_30d_pct": 0.0,
+      "index_100": 17,
+      "rank_pct": 16,
+      "trend_30d_pct": 50.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -7190,8 +7388,8 @@
     "brief_es": "He construido un Copiloto de Ingeniería de Operaciones que usa Algolia Agent Studio para dar respuestas de IA fundamentadas en el contenido de mi blog. Esta es la Parte 8 de la serie Autopilot.",
     "brief_en": "I built an Operations Engineering Copilot that uses Algolia Agent Studio to provide AI-powered answers grounded in my blog's content. This is Part 8 of the Autopilot series.",
     "publish_date": "2026-02-07",
-    "last_modified_es": "2026-11-21T10:46:59.292793Z",
-    "last_modified_en": "2026-11-21T10:46:57.859773Z",
+    "last_modified_es": "2026-10-31T19:29:05.187160Z",
+    "last_modified_en": "2026-10-31T19:29:02.172793Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -7237,8 +7435,8 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 20,
-      "rank_pct": 28,
+      "index_100": 17,
+      "rank_pct": 16,
       "trend_30d_pct": 0.0,
       "gsc_opportunity": false
     },
@@ -7261,8 +7459,8 @@
     "brief_es": "Un post-mortem técnico sincero sobre el Proyecto Autopilot: cómo utilicé Google Gemini y CrewAI dentro de GitHub Actions para automatizar la distribución de contenido y la ingeniería necesaria para que los LLMs sean deterministas.",
     "brief_en": "A candid technical post-mortem on Project Autopilot: how I used Google Gemini and CrewAI inside GitHub Actions to automate content distribution, and the heavy engineering needed to make LLMs deterministic.",
     "publish_date": "2026-03-04",
-    "last_modified_es": "2026-11-21T10:46:59.293931Z",
-    "last_modified_en": "2026-11-21T10:46:57.865773Z",
+    "last_modified_es": "2026-10-31T19:29:05.191170Z",
+    "last_modified_en": "2026-10-31T19:29:02.176783Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -7306,9 +7504,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 47,
-      "rank_pct": 43,
-      "trend_30d_pct": 0.0,
+      "index_100": 39,
+      "rank_pct": 31,
+      "trend_30d_pct": 133.3,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -7330,8 +7528,8 @@
     "brief_es": "¡Bienvenido a Datalaria! Conoce con este primer post la motivación de este proyecto y que puedes esperar del blog",
     "brief_en": "Welcome to Datalaria! In this first post, discover the motivation behind this project and what you can expect from the blog",
     "publish_date": "2025-08-06",
-    "last_modified_es": "2026-11-21T10:46:59.324793Z",
-    "last_modified_en": "2026-11-21T10:46:58.144777Z",
+    "last_modified_es": "2026-10-31T19:29:05.204113Z",
+    "last_modified_en": "2026-10-31T19:29:02.947076Z",
     "language_parity": "complete",
     "category": "Cultura Tech y Media",
     "categories": [
@@ -7369,9 +7567,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 7,
-      "rank_pct": 20,
-      "trend_30d_pct": 0.0,
+      "index_100": 0,
+      "rank_pct": 4,
+      "trend_30d_pct": -100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -7393,8 +7591,8 @@
     "brief_es": "Guía metodológica y cuantitativa para implementar la matriz CMMI DAR y Kepner-Tregoe: filtros veto booleanos, scoring multicriterio ponderado, sensibilidad What-If y gobierno corporativo.",
     "brief_en": "A comprehensive methodological guide to implementing the CMMI DAR (Decision Analysis and Resolution) and Kepner-Tregoe framework: Boolean veto gatekeepers, weighted multi-criteria scoring, What-If sensitivity modeling, and boardroom governance.",
     "publish_date": "2026-11-02",
-    "last_modified_es": "2026-11-21T10:46:59.333894Z",
-    "last_modified_en": "2026-11-21T10:46:58.501782Z",
+    "last_modified_es": "2026-11-09T07:54:25+01:00",
+    "last_modified_en": "2026-11-09T07:54:25+01:00",
     "language_parity": "complete",
     "category": "Estrategia y Operaciones",
     "categories": [
@@ -7439,9 +7637,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 327,
-      "rank_pct": 85,
-      "trend_30d_pct": 0.0,
+      "index_100": 289,
+      "rank_pct": 74,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -7463,8 +7661,8 @@
     "brief_es": "El 87% de los modelos de ML nunca llegan a producción. Esta guía desglosa los 4 pilares fundamentales de MLOps, cómo pasar de un notebook a un pipeline industrial resiliente, la detección de Data Drift y Concept Drift, y las lecciones reales de operar pipelines en Datalaria.",
     "brief_en": "87% of Machine Learning models never make it to production. This comprehensive guide breaks down the 4 essential pillars of MLOps, how to transition from a notebook to a resilient industrial pipeline, detecting Data & Concept Drift, and real production lessons from Datalaria.",
     "publish_date": "2026-08-27",
-    "last_modified_es": "2026-11-21T10:46:59.355794Z",
-    "last_modified_en": "2026-11-21T10:46:58.167777Z",
+    "last_modified_es": "2026-10-31T19:29:05.467756Z",
+    "last_modified_en": "2026-10-31T19:29:02.963569Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -7511,9 +7709,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 40,
-      "rank_pct": 41,
-      "trend_30d_pct": 0.0,
+      "index_100": 39,
+      "rank_pct": 31,
+      "trend_30d_pct": -50.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -7535,8 +7733,8 @@
     "brief_es": "Un caso práctico de cómo utilicé la herramienta de IA Nanobanana para transformar el Ciclo en V de la ingeniería de sistemas en una historia visual comprensible usando una analogía con la Fórmula 1.",
     "brief_en": "A case study on how I used the AI tool Nanobanana to transform the systems engineering V-Model into an understandable visual story using a Formula 1 analogy.",
     "publish_date": "2025-09-20",
-    "last_modified_es": "2026-11-21T10:46:59.441795Z",
-    "last_modified_en": "2026-11-21T10:46:58.256778Z",
+    "last_modified_es": "2026-10-31T19:29:05.471744Z",
+    "last_modified_en": "2026-10-31T19:29:02.969553Z",
     "language_parity": "complete",
     "category": "Cultura Tech y Media",
     "categories": [
@@ -7586,9 +7784,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 20,
-      "rank_pct": 28,
-      "trend_30d_pct": 0.0,
+      "index_100": 17,
+      "rank_pct": 16,
+      "trend_30d_pct": 50.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -7610,8 +7808,8 @@
     "brief_es": "La obsolescencia de componentes no es un accidente, sino una entropía predecible que, gestionada con precisión, se convierte en una ventaja competitiva masiva. Rompiendo la falacia del Cisne Negro industrial.",
     "brief_en": "Component obsolescence is not an accident, but a predictable entropy that, when managed with precision, becomes a massive competitive advantage. Breaking the industrial Black Swan fallacy.",
     "publish_date": "2026-04-11",
-    "last_modified_es": "2026-11-21T10:46:59.609868Z",
-    "last_modified_en": "2026-11-21T10:46:58.424712Z",
+    "last_modified_es": "2026-10-31T19:29:05.487703Z",
+    "last_modified_en": "2026-10-31T19:29:03.111117Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -7654,9 +7852,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 60,
-      "rank_pct": 49,
-      "trend_30d_pct": 0.0,
+      "index_100": 50,
+      "rank_pct": 36,
+      "trend_30d_pct": 500.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -7678,8 +7876,8 @@
     "brief_es": "Descubre por qué pagar licencias millonarias por radares de componentes (Accuris, SiliconExpert) es inútil sin una arquitectura de datos propia que cruce las alertas con el P&L de tu empresa.",
     "brief_en": "Discover why paying million-dollar licenses for component radar tools (Accuris, SiliconExpert) is useless without an internal data architecture that crosses alerts with your P&L.",
     "publish_date": "2026-04-14",
-    "last_modified_es": "2026-11-21T10:46:59.618798Z",
-    "last_modified_en": "2026-11-21T10:46:58.425781Z",
+    "last_modified_es": "2026-10-31T19:29:05.711105Z",
+    "last_modified_en": "2026-10-31T19:29:03.167525Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -7722,9 +7920,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 13,
-      "rank_pct": 24,
-      "trend_30d_pct": 0.0,
+      "index_100": 17,
+      "rank_pct": 16,
+      "trend_30d_pct": 200.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -7746,8 +7944,8 @@
     "brief_es": "Cómo diseñar una base de datos relacional en Supabase para estructurar un BOM industrial e integrar telemetría de mercado externo.",
     "brief_en": "How to design a relational database in Supabase to structure an industrial BOM and integrate external market telemetry.",
     "publish_date": "2026-04-18",
-    "last_modified_es": "2026-11-21T10:46:59.619291Z",
-    "last_modified_en": "2026-11-21T10:46:58.426262Z",
+    "last_modified_es": "2026-10-31T19:29:05.713099Z",
+    "last_modified_en": "2026-10-31T19:29:03.169032Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -7789,9 +7987,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 93,
-      "rank_pct": 56,
-      "trend_30d_pct": 0.0,
+      "index_100": 78,
+      "rank_pct": 45,
+      "trend_30d_pct": 55.6,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -7813,8 +8011,8 @@
     "brief_es": "Cómo ingerir un BOM corrupto exportado de un ERP heredado, limpiar su entropía con Pandas e inyectarlo en Supabase garantizando la idempotencia.",
     "brief_en": "How to ingest a corrupt BOM exported from a legacy ERP, cleanse its inherent entropy with Pandas, and inject it into a relational database using idempotency rules.",
     "publish_date": "2026-04-25",
-    "last_modified_es": "2026-11-21T10:46:59.619797Z",
-    "last_modified_en": "2026-11-21T10:46:58.426781Z",
+    "last_modified_es": "2026-10-31T19:29:05.716091Z",
+    "last_modified_en": "2026-10-31T19:29:03.176014Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -7856,9 +8054,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 20,
-      "rank_pct": 28,
-      "trend_30d_pct": 0.0,
+      "index_100": 22,
+      "rank_pct": 21,
+      "trend_30d_pct": 33.3,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -7880,8 +8078,8 @@
     "brief_es": "Los arquitecturas RAG tradicionales fracasan ante la precisión matemática que exige la industria pesada. Descubre cómo construir un Radar Agéntico usando Tool Calling en Python para cruzar correos de fabricantes con la Cuenta de Resultados en tiempo real.",
     "brief_en": "Traditional RAG architectures fail against the mathematical precision required by heavy industries. Discover how to build an Agentic Radar using Python Tool Calling to cross-reference manufacturer emails with a live P&L SQL database.",
     "publish_date": "2026-05-01",
-    "last_modified_es": "2026-11-21T10:46:59.620682Z",
-    "last_modified_en": "2026-11-21T10:46:58.427643Z",
+    "last_modified_es": "2026-10-31T19:29:05.718086Z",
+    "last_modified_en": "2026-10-31T19:29:03.179005Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -7925,9 +8123,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 80,
-      "rank_pct": 54,
-      "trend_30d_pct": 0.0,
+      "index_100": 72,
+      "rank_pct": 43,
+      "trend_30d_pct": 333.3,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -7949,8 +8147,8 @@
     "brief_es": "Cómo transicionar de un script en local a una arquitectura empresarial de alta disponibilidad mediante un enrutador FastAPI que orquesta agentes de CrewAI de forma asíncrona.",
     "brief_en": "Transitioning from a local script to a high-availability enterprise architecture. This post details building a FastAPI router to orchestrate CrewAI agents asynchronously.",
     "publish_date": "2026-05-09",
-    "last_modified_es": "2026-11-21T10:46:59.620797Z",
-    "last_modified_en": "2026-11-21T10:46:58.427781Z",
+    "last_modified_es": "2026-10-31T19:29:05.720321Z",
+    "last_modified_en": "2026-10-31T19:29:03.181997Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -7991,9 +8189,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 20,
-      "rank_pct": 28,
-      "trend_30d_pct": 0.0,
+      "index_100": 17,
+      "rank_pct": 16,
+      "trend_30d_pct": 200.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -8015,8 +8213,8 @@
     "brief_es": "Construyendo la capa de presentación que traduce las operaciones asíncronas de IA en métricas financieras para roles directivos mediante Tailwind CSS y Vanilla JS.",
     "brief_en": "Building the presentation layer that translates asynchronous AI operations into financial metrics for executive roles utilizing lightweight Tailwind CSS and Vanilla JS.",
     "publish_date": "2026-05-17",
-    "last_modified_es": "2026-11-21T10:46:59.621624Z",
-    "last_modified_en": "2026-11-21T10:46:58.428649Z",
+    "last_modified_es": "2026-10-31T19:29:05.723311Z",
+    "last_modified_en": "2026-10-31T19:29:03.183992Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -8057,10 +8255,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 47,
-      "rank_pct": 43,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": true
+      "index_100": 44,
+      "rank_pct": 34,
+      "trend_30d_pct": 166.7,
+      "gsc_opportunity": false
     },
     "metrics_absolute": null,
     "version": null,
@@ -8081,8 +8279,8 @@
     "brief_es": "Análisis de los 7 errores más comunes al implementar RAG (Retrieval-Augmented Generation) en producción real. Con lecciones aprendidas del Ops Engineering Copilot y el radar agéntico de obsolescencia de Datalaria, y la comparativa definitiva entre RAG y Tool Calling.",
     "brief_en": "Analysis of the 7 most common mistakes when implementing RAG (Retrieval-Augmented Generation) in real production. Lessons learned from the Ops Engineering Copilot and the agentic obsolescence radar at Datalaria, and the definitive comparison between RAG and Tool Calling.",
     "publish_date": "2026-07-11",
-    "last_modified_es": "2026-11-21T10:46:59.691798Z",
-    "last_modified_en": "2026-11-21T10:46:58.521782Z",
+    "last_modified_es": "2026-10-31T19:29:05.950342Z",
+    "last_modified_en": "2026-10-31T19:29:03.537246Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -8127,9 +8325,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 53,
-      "rank_pct": 46,
-      "trend_30d_pct": 0.0,
+      "index_100": 50,
+      "rank_pct": 36,
+      "trend_30d_pct": -35.7,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -8151,8 +8349,8 @@
     "brief_es": "Un decálogo de 10 pasos prácticos para transformar tus reuniones, haciéndolas más cortas, efectivas y ágiles, con un enfoque especial en cómo la IA puede ser tu mejor aliada.",
     "brief_en": "A decalogue of 10 practical steps to transform your meetings, making them shorter, more effective, and agile, with a special focus on how AI can be your best ally.",
     "publish_date": "2025-11-21",
-    "last_modified_es": "2026-11-21T10:46:59.713799Z",
-    "last_modified_en": "2026-11-21T10:46:58.162777Z",
+    "last_modified_es": "2026-10-31T19:29:06.125515Z",
+    "last_modified_en": "2026-10-31T19:29:02.961574Z",
     "language_parity": "complete",
     "category": "Estrategia y Operaciones",
     "categories": [
@@ -8195,8 +8393,8 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 7,
-      "rank_pct": 20,
+      "index_100": 6,
+      "rank_pct": 10,
       "trend_30d_pct": 0.0,
       "gsc_opportunity": false
     },
@@ -8219,8 +8417,8 @@
     "brief_es": "Una predicción determinista en Excel es un riesgo financiero. En el Capítulo 2, evolucionamos nuestro pipeline S&OP con Facebook Prophet para calcular la probabilidad de la demanda, intervalos de incertidumbre y Safety Stock matemáticamente.",
     "brief_en": "A deterministic forecast in Excel is a financial risk. In Chapter 2, we upgrade our S&OP pipeline with Facebook Prophet to calculate demand probability, uncertainty intervals, and safety stock mathematically.",
     "publish_date": "2026-03-07",
-    "last_modified_es": "2026-11-21T10:46:59.791800Z",
-    "last_modified_en": "2026-11-21T10:46:58.585783Z",
+    "last_modified_es": "2026-10-31T19:29:06.132497Z",
+    "last_modified_en": "2026-10-31T19:29:03.667909Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -8261,9 +8459,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 7,
-      "rank_pct": 20,
-      "trend_30d_pct": 0.0,
+      "index_100": 0,
+      "rank_pct": 4,
+      "trend_30d_pct": -100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -8285,8 +8483,8 @@
     "brief_es": "Un plan de suministro basado en 'semanas de cobertura' quema la caja de tu empresa. En este capítulo, usamos Python y PuLP para calcular matemáticamente el plan óptimo que minimiza costes financieros.",
     "brief_en": "A supply plan based on 'weeks of coverage' burns your company's cash. In this chapter, we use Python and PuLP to mathematically calculate the optimal plan that minimizes financial costs.",
     "publish_date": "2026-03-13",
-    "last_modified_es": "2026-11-21T10:46:59.862801Z",
-    "last_modified_en": "2026-11-21T10:46:58.622783Z",
+    "last_modified_es": "2026-10-31T19:29:06.134491Z",
+    "last_modified_en": "2026-10-31T19:29:03.673892Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -8327,9 +8525,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 7,
-      "rank_pct": 20,
-      "trend_30d_pct": 0.0,
+      "index_100": 6,
+      "rank_pct": 10,
+      "trend_30d_pct": -80.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -8351,8 +8549,8 @@
     "brief_es": "El MVP ha muerto, viva el Enterprise. En el Capítulo 4 estresamos nuestro sistema S&OP con múltiples SKUs, enseñando cómo paralelizar modelos de IA y resolver matemáticamente la guerra por la capacidad de producción compartida.",
     "brief_en": "The MVP is dead, long live Enterprise. In Chapter 4 we stress-test our S&OP system with multiple SKUs, teaching how to parallelize AI models and mathematically solve the war for shared production capacity.",
     "publish_date": "2026-03-20",
-    "last_modified_es": "2026-11-21T10:46:59.925802Z",
-    "last_modified_en": "2026-11-21T10:46:58.655784Z",
+    "last_modified_es": "2026-10-31T19:29:06.137483Z",
+    "last_modified_en": "2026-10-31T19:29:03.676885Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -8393,9 +8591,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 53,
-      "rank_pct": 46,
-      "trend_30d_pct": 0.0,
+      "index_100": 61,
+      "rank_pct": 39,
+      "trend_30d_pct": -8.3,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -8417,8 +8615,8 @@
     "brief_es": "Las matemáticas no envían emails. En el gran final de nuestra serie, construimos un equipo de Agentes de IA que leen nuestro plan maestro y ejecutan las operaciones de forma autónoma.",
     "brief_en": "Math doesn't send emails. In the grand finale of our series, we build a team of AI Agents that read our master plan and execute operations autonomously.",
     "publish_date": "2026-03-27",
-    "last_modified_es": "2026-11-21T10:46:59.961802Z",
-    "last_modified_en": "2026-11-21T10:46:58.691784Z",
+    "last_modified_es": "2026-10-31T19:29:06.139478Z",
+    "last_modified_en": "2026-10-31T19:29:03.678879Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -8461,9 +8659,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 27,
-      "rank_pct": 34,
-      "trend_30d_pct": 0.0,
+      "index_100": 22,
+      "rank_pct": 21,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -8485,8 +8683,8 @@
     "brief_es": "Dejemos de limpiar datos a mano. En este primer capítulo de la serie Ingeniería de S&OP, automatizamos la higiene de datos usando Python, Supabase y Estadística para detectar la verdad oculta tras el ruido.",
     "brief_en": "Let's stop cleaning data manually. In this first chapter of the S&OP Engineering series, we automate data hygiene using Python, Supabase, and Statistics to detect the truth hidden behind the noise.",
     "publish_date": "2026-02-28",
-    "last_modified_es": "2026-11-21T10:46:59.973803Z",
-    "last_modified_en": "2026-11-21T10:46:58.702785Z",
+    "last_modified_es": "2026-10-31T19:29:06.140475Z",
+    "last_modified_en": "2026-10-31T19:29:03.683864Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -8529,9 +8727,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 7,
-      "rank_pct": 20,
-      "trend_30d_pct": 0.0,
+      "index_100": 6,
+      "rank_pct": 10,
+      "trend_30d_pct": -66.7,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -8553,8 +8751,8 @@
     "brief_es": "El stack real de herramientas de un ingeniero de datos en 2026: desde Gemini Deep Research hasta GitHub Actions, pasando por Python, Supabase, CrewAI y Hugo. Sin patrocinios, sin afiliados, sin filtros. Cada herramienta explicada con el post donde la uso.",
     "brief_en": "The real tool stack of a data engineer in 2026: from Gemini Deep Research to GitHub Actions, through Python, Supabase, CrewAI, and Hugo. No sponsorships, no affiliates, no filters. Every tool explained with the post where I use it.",
     "publish_date": "2026-08-01",
-    "last_modified_es": "2026-11-21T10:47:00.014803Z",
-    "last_modified_en": "2026-11-21T10:46:58.487782Z",
+    "last_modified_es": "2026-11-22T09:24:48.317147Z",
+    "last_modified_en": "2026-11-22T09:24:48.222279Z",
     "language_parity": "complete",
     "category": "IA, Ingeniería y Proyectos",
     "categories": [
@@ -8574,11 +8772,11 @@
       "hugo"
     ],
     "series": null,
-    "word_count_es": 2043,
-    "word_count_en": 1918,
+    "word_count_es": 2131,
+    "word_count_en": 1992,
     "reading_time_min": 11,
-    "related_app": null,
-    "related_kit": null,
+    "related_app": "pulse",
+    "related_kit": "/recursos/#pack-pulse",
     "included_kits": [],
     "price": null,
     "original_price": null,
@@ -8600,9 +8798,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 220,
-      "rank_pct": 80,
-      "trend_30d_pct": 0.0,
+      "index_100": 389,
+      "rank_pct": 81,
+      "trend_30d_pct": 500.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -8670,10 +8868,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 433,
-      "rank_pct": 91,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 361,
+      "rank_pct": 80,
+      "trend_30d_pct": 100.0,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": "v2.1.0",
@@ -8740,10 +8938,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 433,
-      "rank_pct": 91,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 361,
+      "rank_pct": 80,
+      "trend_30d_pct": 100.0,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": "v0.5.0",
@@ -8810,10 +9008,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 433,
-      "rank_pct": 91,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": false
+      "index_100": 361,
+      "rank_pct": 80,
+      "trend_30d_pct": 100.0,
+      "gsc_opportunity": true
     },
     "metrics_absolute": null,
     "version": "v0.1.0",
@@ -8882,10 +9080,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 80,
-      "rank_pct": 54,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": true
+      "index_100": 67,
+      "rank_pct": 41,
+      "trend_30d_pct": 100.0,
+      "gsc_opportunity": false
     },
     "metrics_absolute": null,
     "version": "v2.1.0",
@@ -8954,10 +9152,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 80,
-      "rank_pct": 54,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": true
+      "index_100": 67,
+      "rank_pct": 41,
+      "trend_30d_pct": 100.0,
+      "gsc_opportunity": false
     },
     "metrics_absolute": null,
     "version": "v2.1.0",
@@ -9026,10 +9224,10 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 80,
-      "rank_pct": 54,
-      "trend_30d_pct": 0.0,
-      "gsc_opportunity": true
+      "index_100": 67,
+      "rank_pct": 41,
+      "trend_30d_pct": 100.0,
+      "gsc_opportunity": false
     },
     "metrics_absolute": null,
     "version": "v2.0.0",
@@ -9103,7 +9301,7 @@
     "social_channels": [],
     "metrics_relative": {
       "index_100": 0,
-      "rank_pct": 9,
+      "rank_pct": 4,
       "trend_30d_pct": 0.0,
       "gsc_opportunity": false
     },
@@ -9184,9 +9382,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 100,
-      "rank_pct": 60,
-      "trend_30d_pct": 0.0,
+      "index_100": 89,
+      "rank_pct": 50,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -9266,9 +9464,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 100,
-      "rank_pct": 60,
-      "trend_30d_pct": 0.0,
+      "index_100": 89,
+      "rank_pct": 50,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -9348,9 +9546,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 100,
-      "rank_pct": 60,
-      "trend_30d_pct": 0.0,
+      "index_100": 89,
+      "rank_pct": 50,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -9430,9 +9628,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 100,
-      "rank_pct": 60,
-      "trend_30d_pct": 0.0,
+      "index_100": 89,
+      "rank_pct": 50,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -9512,9 +9710,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 100,
-      "rank_pct": 60,
-      "trend_30d_pct": 0.0,
+      "index_100": 89,
+      "rank_pct": 50,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -9594,9 +9792,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 100,
-      "rank_pct": 60,
-      "trend_30d_pct": 0.0,
+      "index_100": 89,
+      "rank_pct": 50,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -9676,9 +9874,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 100,
-      "rank_pct": 60,
-      "trend_30d_pct": 0.0,
+      "index_100": 89,
+      "rank_pct": 50,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -9746,9 +9944,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 127,
-      "rank_pct": 68,
-      "trend_30d_pct": 0.0,
+      "index_100": 106,
+      "rank_pct": 57,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -9816,9 +10014,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 127,
-      "rank_pct": 68,
-      "trend_30d_pct": 0.0,
+      "index_100": 106,
+      "rank_pct": 57,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -9886,9 +10084,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 127,
-      "rank_pct": 68,
-      "trend_30d_pct": 0.0,
+      "index_100": 106,
+      "rank_pct": 57,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -9956,9 +10154,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 127,
-      "rank_pct": 68,
-      "trend_30d_pct": 0.0,
+      "index_100": 106,
+      "rank_pct": 57,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -10026,9 +10224,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 127,
-      "rank_pct": 68,
-      "trend_30d_pct": 0.0,
+      "index_100": 106,
+      "rank_pct": 57,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -10096,9 +10294,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 127,
-      "rank_pct": 68,
-      "trend_30d_pct": 0.0,
+      "index_100": 106,
+      "rank_pct": 57,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -10166,9 +10364,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 127,
-      "rank_pct": 68,
-      "trend_30d_pct": 0.0,
+      "index_100": 106,
+      "rank_pct": 57,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -10242,9 +10440,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 120,
-      "rank_pct": 65,
-      "trend_30d_pct": 0.0,
+      "index_100": 100,
+      "rank_pct": 54,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -10318,9 +10516,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 120,
-      "rank_pct": 65,
-      "trend_30d_pct": 0.0,
+      "index_100": 100,
+      "rank_pct": 54,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -10391,9 +10589,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 680,
-      "rank_pct": 99,
-      "trend_30d_pct": 0.0,
+      "index_100": 567,
+      "rank_pct": 88,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -10470,9 +10668,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 20,
-      "rank_pct": 28,
-      "trend_30d_pct": 0.0,
+      "index_100": 22,
+      "rank_pct": 21,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -10537,9 +10735,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 400,
-      "rank_pct": 88,
-      "trend_30d_pct": 0.0,
+      "index_100": 333,
+      "rank_pct": 77,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -10604,9 +10802,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 400,
-      "rank_pct": 88,
-      "trend_30d_pct": 0.0,
+      "index_100": 333,
+      "rank_pct": 77,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -10671,9 +10869,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 400,
-      "rank_pct": 88,
-      "trend_30d_pct": 0.0,
+      "index_100": 333,
+      "rank_pct": 77,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -10738,9 +10936,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 400,
-      "rank_pct": 88,
-      "trend_30d_pct": 0.0,
+      "index_100": 333,
+      "rank_pct": 77,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -10805,9 +11003,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 400,
-      "rank_pct": 88,
-      "trend_30d_pct": 0.0,
+      "index_100": 333,
+      "rank_pct": 77,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -10872,9 +11070,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 400,
-      "rank_pct": 88,
-      "trend_30d_pct": 0.0,
+      "index_100": 333,
+      "rank_pct": 77,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -10939,9 +11137,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 400,
-      "rank_pct": 88,
-      "trend_30d_pct": 0.0,
+      "index_100": 333,
+      "rank_pct": 77,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -11016,9 +11214,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 553,
-      "rank_pct": 96,
-      "trend_30d_pct": 0.0,
+      "index_100": 461,
+      "rank_pct": 85,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -11093,9 +11291,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 553,
-      "rank_pct": 96,
-      "trend_30d_pct": 0.0,
+      "index_100": 461,
+      "rank_pct": 85,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -11170,9 +11368,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 553,
-      "rank_pct": 96,
-      "trend_30d_pct": 0.0,
+      "index_100": 461,
+      "rank_pct": 85,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -11247,9 +11445,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 553,
-      "rank_pct": 96,
-      "trend_30d_pct": 0.0,
+      "index_100": 461,
+      "rank_pct": 85,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -11324,9 +11522,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 553,
-      "rank_pct": 96,
-      "trend_30d_pct": 0.0,
+      "index_100": 461,
+      "rank_pct": 85,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -11401,9 +11599,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 553,
-      "rank_pct": 96,
-      "trend_30d_pct": 0.0,
+      "index_100": 461,
+      "rank_pct": 85,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -11478,9 +11676,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 553,
-      "rank_pct": 96,
-      "trend_30d_pct": 0.0,
+      "index_100": 461,
+      "rank_pct": 85,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -11555,9 +11753,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 553,
-      "rank_pct": 96,
-      "trend_30d_pct": 0.0,
+      "index_100": 461,
+      "rank_pct": 85,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -11632,9 +11830,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 553,
-      "rank_pct": 96,
-      "trend_30d_pct": 0.0,
+      "index_100": 461,
+      "rank_pct": 85,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -11709,9 +11907,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 553,
-      "rank_pct": 96,
-      "trend_30d_pct": 0.0,
+      "index_100": 461,
+      "rank_pct": 85,
+      "trend_30d_pct": 100.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -11773,9 +11971,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 0,
-      "rank_pct": 9,
-      "trend_30d_pct": 0.0,
+      "index_100": 2211,
+      "rank_pct": 95,
+      "trend_30d_pct": 272.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -11843,9 +12041,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 0,
-      "rank_pct": 9,
-      "trend_30d_pct": 0.0,
+      "index_100": 2211,
+      "rank_pct": 95,
+      "trend_30d_pct": 272.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -11911,9 +12109,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 0,
-      "rank_pct": 9,
-      "trend_30d_pct": 0.0,
+      "index_100": 2211,
+      "rank_pct": 95,
+      "trend_30d_pct": 272.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -11981,9 +12179,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 0,
-      "rank_pct": 9,
-      "trend_30d_pct": 0.0,
+      "index_100": 2211,
+      "rank_pct": 95,
+      "trend_30d_pct": 272.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -12047,9 +12245,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 0,
-      "rank_pct": 9,
-      "trend_30d_pct": 0.0,
+      "index_100": 2211,
+      "rank_pct": 95,
+      "trend_30d_pct": 272.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -12114,9 +12312,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 0,
-      "rank_pct": 9,
-      "trend_30d_pct": 0.0,
+      "index_100": 2211,
+      "rank_pct": 95,
+      "trend_30d_pct": 272.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -12181,9 +12379,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 0,
-      "rank_pct": 9,
-      "trend_30d_pct": 0.0,
+      "index_100": 2211,
+      "rank_pct": 95,
+      "trend_30d_pct": 272.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -12248,9 +12446,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 0,
-      "rank_pct": 9,
-      "trend_30d_pct": 0.0,
+      "index_100": 2211,
+      "rank_pct": 95,
+      "trend_30d_pct": 272.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -12315,9 +12513,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 0,
-      "rank_pct": 9,
-      "trend_30d_pct": 0.0,
+      "index_100": 2211,
+      "rank_pct": 95,
+      "trend_30d_pct": 272.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -12382,9 +12580,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 0,
-      "rank_pct": 9,
-      "trend_30d_pct": 0.0,
+      "index_100": 2211,
+      "rank_pct": 95,
+      "trend_30d_pct": 272.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -12449,9 +12647,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 0,
-      "rank_pct": 9,
-      "trend_30d_pct": 0.0,
+      "index_100": 2211,
+      "rank_pct": 95,
+      "trend_30d_pct": 272.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -12516,9 +12714,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 0,
-      "rank_pct": 9,
-      "trend_30d_pct": 0.0,
+      "index_100": 2211,
+      "rank_pct": 95,
+      "trend_30d_pct": 272.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -12583,9 +12781,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 0,
-      "rank_pct": 9,
-      "trend_30d_pct": 0.0,
+      "index_100": 2211,
+      "rank_pct": 95,
+      "trend_30d_pct": 272.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -12650,9 +12848,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 0,
-      "rank_pct": 9,
-      "trend_30d_pct": 0.0,
+      "index_100": 2211,
+      "rank_pct": 95,
+      "trend_30d_pct": 272.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -12717,9 +12915,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 0,
-      "rank_pct": 9,
-      "trend_30d_pct": 0.0,
+      "index_100": 2211,
+      "rank_pct": 95,
+      "trend_30d_pct": 272.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -12784,9 +12982,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 0,
-      "rank_pct": 9,
-      "trend_30d_pct": 0.0,
+      "index_100": 2211,
+      "rank_pct": 95,
+      "trend_30d_pct": 272.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -12851,9 +13049,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 0,
-      "rank_pct": 9,
-      "trend_30d_pct": 0.0,
+      "index_100": 2211,
+      "rank_pct": 95,
+      "trend_30d_pct": 272.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -12918,9 +13116,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 0,
-      "rank_pct": 9,
-      "trend_30d_pct": 0.0,
+      "index_100": 2211,
+      "rank_pct": 95,
+      "trend_30d_pct": 272.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -12985,9 +13183,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 0,
-      "rank_pct": 9,
-      "trend_30d_pct": 0.0,
+      "index_100": 2211,
+      "rank_pct": 95,
+      "trend_30d_pct": 272.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,
@@ -13052,9 +13250,9 @@
     "campaign": null,
     "social_channels": [],
     "metrics_relative": {
-      "index_100": 0,
-      "rank_pct": 9,
-      "trend_30d_pct": 0.0,
+      "index_100": 2211,
+      "rank_pct": 95,
+      "trend_30d_pct": 272.0,
       "gsc_opportunity": false
     },
     "metrics_absolute": null,

@@ -25,7 +25,7 @@ EMBARGOED_APP_STATUSES = frozenset({"incubating", "draft", "deprecated", "archiv
 
 _CODE_FENCE_RE = re.compile(r"(^```[^\n]*\n.*?^```|^~~~[^\n]*\n.*?^~~~)", re.MULTILINE | re.DOTALL)
 _MERMAID_SHORTCODE_RE = re.compile(
-    r"\{\{[<%]\s*mermaid\b([^>%]*)[>%]\}\}(.*?)\{\{[<%]\s*/mermaid\s*[>%]\}\}",
+    r"\{\{[<%]\s*mermaid\b(.*?)[>%]\}\}(.*?)\{\{[<%]\s*/mermaid\s*[>%]\}\}",
     re.DOTALL | re.IGNORECASE,
 )
 _APP_REF_RE = re.compile(
