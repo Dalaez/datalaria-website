@@ -200,8 +200,8 @@ entries:
   - linkedin
   - x
   scheduled_at_utc: '2026-11-22T09:45:00Z'
-  status: pending
-  executed_at_utc: null
+  status: completed
+  executed_at_utc: '2026-11-22T14:49:28Z'
   notes: 'Ola 1 (T+0h): ES Native Social (Brevo desactivado)'
   last_error: null
 - id: pulse-part2-2026-11-22-wave2-en-native
@@ -212,8 +212,8 @@ entries:
   - linkedin
   - x
   scheduled_at_utc: '2026-11-22T14:30:00Z'
-  status: pending
-  executed_at_utc: null
+  status: completed
+  executed_at_utc: '2026-11-22T14:49:28Z'
   notes: 'Ola 2 (T+7h · Apertura USA): EN Native Social (Brevo desactivado)'
   last_error: null
 - id: pulse-part2-2026-11-22-wave3a-es-devto
