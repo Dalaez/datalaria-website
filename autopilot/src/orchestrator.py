@@ -7,6 +7,7 @@ import os
 import re
 import sys
 import json
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Literal, Optional, Sequence, Tuple, Union
 
@@ -36,6 +37,7 @@ from autopilot.src.models import (
     SocialPlatformLinkedIn,
     SocialPlatformX,
     SyndicationArtifact,
+    build_social_utm_url,
     build_x_web_intent_url,
     resolve_allowed_channels,
 )
@@ -45,6 +47,130 @@ from autopilot.src.social_manager import SocialMediaManager
 
 CACHE_FILE = "generated_content.json"
 DEFAULT_HERO_FALLBACK_URL = f"{PUBLIC_MEDIA_BASE_URL}/images/Datalaria_blog.png"
+DEFAULT_LEDGER_PATH = REPO_ROOT / "data" / "pulse" / "private" / "distribution_ledger.json"
+INDEX_PRIVATE_PATH = REPO_ROOT / "data" / "pulse" / "private" / "index.json"
+
+
+def resolve_asset_id_for_post(
+    slug: str,
+    post_meta: Optional[Dict[str, Any]] = None,
+    index_path: Path = INDEX_PRIVATE_PATH,
+) -> str:
+    """Resuelve el asset_id canónico de Datalaria Pulse para un post (translationKey o cruce en index.json)."""
+    meta = post_meta or {}
+    t_key = str(meta.get("translationKey") or "").strip()
+    if t_key:
+        return t_key
+    if index_path.is_file():
+        try:
+            with open(index_path, "r", encoding="utf-8") as fh:
+                assets = json.load(fh)
+            for asset in assets:
+                if not isinstance(asset, dict):
+                    continue
+                if asset.get("id") == slug or asset.get("slug") == slug:
+                    return str(asset["id"])
+                for u_field in ("url_es", "url_en"):
+                    u_val = str(asset.get(u_field) or "").strip("/")
+                    if u_val.endswith(f"/posts/{slug}") or u_val == f"posts/{slug}":
+                        return str(asset["id"])
+        except Exception:
+            pass
+    return slug
+
+
+def record_distribution_ledger_entry(
+    *,
+    asset_id: str,
+    slug: str,
+    lang: Literal["es", "en"],
+    channel: Literal["linkedin", "devto", "coderlegion", "x", "newsletter"],
+    external_id: str,
+    canonical_url: str,
+    external_url: Optional[str] = None,
+    published_at_utc: Optional[str] = None,
+    ledger_path: Optional[Path] = None,
+) -> Dict[str, Any]:
+    """Registra o actualiza de forma idempotente una publicación en distribution_ledger.json (ADR-033)."""
+    target_path = Path(ledger_path) if ledger_path is not None else DEFAULT_LEDGER_PATH
+    now_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    pub_iso = (published_at_utc or now_iso).strip()
+
+    ledger_data: Dict[str, Any] = {
+        "version": "1.0.0",
+        "visibility": "private",
+        "updated_at": now_iso,
+        "entries": [],
+    }
+    if target_path.is_file():
+        try:
+            with open(target_path, "r", encoding="utf-8") as fh:
+                loaded = json.load(fh)
+            if isinstance(loaded, dict) and isinstance(loaded.get("entries"), list):
+                ledger_data["entries"] = list(loaded["entries"])
+        except Exception:
+            pass
+
+    entry_obj: Dict[str, Any] = {
+        "asset_id": str(asset_id).strip() or slug,
+        "slug": str(slug).strip(),
+        "lang": lang,
+        "channel": channel,
+        "external_id": str(external_id).strip(),
+        "external_url": (str(external_url).strip() if external_url else None),
+        "canonical_url": str(canonical_url).strip(),
+        "published_at_utc": pub_iso,
+    }
+
+    entries: List[Dict[str, Any]] = ledger_data["entries"]
+    updated = False
+    for idx, existing in enumerate(entries):
+        if not isinstance(existing, dict):
+            continue
+        same_ext = (
+            existing.get("channel") == channel
+            and str(existing.get("external_id") or "") == entry_obj["external_id"]
+        )
+        same_post_slot = (
+            existing.get("channel") == channel
+            and existing.get("lang") == lang
+            and existing.get("slug") == slug
+        )
+        if same_ext or same_post_slot:
+            entries[idx] = entry_obj
+            updated = True
+            break
+
+    if not updated:
+        entries.append(entry_obj)
+
+    ledger_data["updated_at"] = now_iso
+    target_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(target_path, "w", encoding="utf-8") as fh:
+        json.dump(ledger_data, fh, ensure_ascii=False, indent=2)
+    return entry_obj
+
+
+def _extract_external_id_and_url(resp: Any) -> Tuple[str, Optional[str]]:
+    """Extrae (external_id, external_url) desde el payload retornado por SocialMediaManager."""
+    if not isinstance(resp, dict):
+        return "", None
+    nested = resp.get("data") if isinstance(resp.get("data"), dict) else {}
+    ext_id = str(
+        resp.get("id")
+        or resp.get("urn")
+        or resp.get("post_id")
+        or nested.get("id")
+        or ""
+    ).strip()
+    ext_url_raw = (
+        resp.get("url")
+        or resp.get("post_url")
+        or nested.get("url")
+        or resp.get("tracked_url")
+    )
+    ext_url = str(ext_url_raw).strip() if ext_url_raw else None
+    return ext_id, ext_url
 
 
 def _configure_utf8_console() -> None:
@@ -277,9 +403,11 @@ def _wrap_x_override(
     content: str,
     lang: str,
     post_url: str,
+    slug: Optional[str] = None,
 ) -> SocialPlatformX:
+    tracked_x_url = build_social_utm_url(post_url, platform="x", slug=slug, lang=lang)
     fallback_pack = brain.build_deterministic_fallback_x(
-        title=title, content=content, lang=lang, post_url=post_url
+        title=title, content=content, lang=lang, post_url=tracked_x_url
     )
     cleaned_hook = re.sub(r"https?://\S+", "", raw_override or "").strip()
     if len(cleaned_hook) < 10:
@@ -288,7 +416,9 @@ def _wrap_x_override(
         hook=cleaned_hook[:195],
         thread=fallback_pack.thread,
         hashtags=fallback_pack.hashtags,
-        web_intent_url=build_x_web_intent_url(cleaned_hook[:195], post_url, fallback_pack.hashtags),
+        web_intent_url=build_x_web_intent_url(
+            cleaned_hook[:195], tracked_x_url, fallback_pack.hashtags, slug=slug, lang=lang
+        ),
     )
 
 
@@ -318,6 +448,7 @@ def run_orchestration(
     dist_dir: Optional[Path] = None,
     wave: Optional[str] = None,
     channels: Optional[Union[str, Sequence[str]]] = None,
+    ledger_path: Optional[Path] = None,
 ) -> Dict[str, Any]:
     """Ejecuta el pipeline completo de Autopilot 2.0 y sindicación universal sobre un artículo."""
     effective_wave = (wave if wave is not None else os.getenv("AUTOPILOT_WAVE", "all")).strip() or "all"
@@ -369,29 +500,43 @@ def run_orchestration(
     cached = load_generated_content(cache_file=cache_file) if not is_dry_run else None
     frontmatter_social = post_data.get("social_text")
 
+    # --- URLs con trazabilidad UTM obligatoria (ADR-025 / ADR-033) ---
+    x_post_url = build_social_utm_url(post_url, platform="x", slug=slug, lang=lang)
+    linkedin_post_url = build_social_utm_url(post_url, platform="linkedin", slug=slug, lang=lang)
+
     # --- RESOLVER CANAL X (Coste 0 EUR) ---
     x_pack: Optional[SocialPlatformX] = None
     if enable_twitter:
         if design_pack and design_pack.x is not None:
             x_pack = design_pack.x
-            if not x_pack.web_intent_url:
+            existing_intent = (x_pack.web_intent_url or "").strip()
+            if not existing_intent or "utm_source%3Dx" not in existing_intent:
                 x_pack.web_intent_url = build_x_web_intent_url(
-                    x_pack.hook, post_url, x_pack.hashtags
+                    x_pack.hook, x_post_url, x_pack.hashtags, slug=slug, lang=lang
                 )
         elif env_twitter:
-            x_pack = _wrap_x_override(env_twitter, post_title, post_content, lang, post_url)
+            x_pack = _wrap_x_override(
+                env_twitter, post_title, post_content, lang, x_post_url, slug=slug
+            )
         elif frontmatter_social:
             x_pack = _wrap_x_override(
-                str(frontmatter_social), post_title, post_content, lang, post_url
+                str(frontmatter_social), post_title, post_content, lang, x_post_url, slug=slug
             )
         elif cached and isinstance(cached.get("x"), dict):
             try:
                 x_pack = SocialPlatformX(**cached["x"])
+                if not x_pack.web_intent_url or "utm_source%3Dx" not in x_pack.web_intent_url:
+                    x_pack.web_intent_url = build_x_web_intent_url(
+                        x_pack.hook, x_post_url, x_pack.hashtags, slug=slug, lang=lang
+                    )
             except Exception:
                 x_pack = None
         if x_pack is None:
             x_pack = brain.generate_x_thread_pack(
-                post_title, post_content, lang=lang, post_url=post_url
+                post_title, post_content, lang=lang, post_url=x_post_url
+            )
+            x_pack.web_intent_url = build_x_web_intent_url(
+                x_pack.hook, x_post_url, x_pack.hashtags, slug=slug, lang=lang
             )
 
     # --- RESOLVER CANAL LINKEDIN ---
@@ -519,8 +664,9 @@ def run_orchestration(
             "mode": "zero_cost_intent",
             "hook": x_pack.hook,
             "hashtags": x_pack.hashtags,
+            "tracked_url": x_post_url,
             "web_intent_url": x_pack.web_intent_url
-            or build_x_web_intent_url(x_pack.hook, post_url, x_pack.hashtags),
+            or build_x_web_intent_url(x_pack.hook, x_post_url, x_pack.hashtags, slug=slug, lang=lang),
             "thread": x_pack.thread,
         }
 
@@ -555,6 +701,8 @@ def run_orchestration(
             newsletter_text=nl_summary,
             extra_payload={
                 "post_url": post_url,
+                "linkedin_url": linkedin_post_url,
+                "x_url": x_post_url,
                 "lang": lang,
                 "slug": slug,
                 "x": x_summary,
@@ -568,9 +716,11 @@ def run_orchestration(
 
         print("\n🚧 --- DRY RUN MODE (Autopilot 2.0 Preview) --- 🚧")
         if enable_twitter and x_pack is not None:
-            SocialMediaManager().prepare_x_zero_cost(x_pack, post_url=post_url)
+            SocialMediaManager().prepare_x_zero_cost(
+                x_pack, post_url=x_post_url, slug=slug, lang=lang
+            )
         if enable_linkedin and linkedin_text:
-            print(f"\n💼 [LINKEDIN]:\n{linkedin_text}")
+            print(f"\n💼 [LINKEDIN] ({linkedin_post_url}):\n{linkedin_text}")
         if devto_artifact is not None:
             print(
                 f"\n🦄 [DEV.TO Preview] tags={devto_artifact.tags} -> {devto_artifact.output_path}\n"
@@ -596,6 +746,8 @@ def run_orchestration(
         return {
             "dry_run": True,
             "post_url": post_url,
+            "linkedin_url": linkedin_post_url,
+            "x_url": x_post_url,
             "slug": slug,
             "lang": lang,
             "wave": effective_wave,
@@ -618,6 +770,8 @@ def run_orchestration(
     manager = SocialMediaManager()
     local_img = _resolve_local_image_for_legacy(file_path, post_meta)
     dispatched_channels: List[str] = []
+    ledger_entries: List[Dict[str, Any]] = []
+    resolved_asset_id = resolve_asset_id_for_post(slug, post_meta)
 
     if enable_twitter and x_pack is not None:
         if "x" not in allowed_channels:
@@ -628,7 +782,12 @@ def run_orchestration(
                 print(f"⛔ Envío X bloqueado por Quality Gate: {[i.code for i in x_audit.issues]}")
             else:
                 manager.post_to_twitter(
-                    text=x_pack.hook, url=post_url, image_path=local_img, x_pack=x_pack
+                    text=x_pack.hook,
+                    url=x_post_url,
+                    image_path=local_img,
+                    x_pack=x_pack,
+                    slug=slug,
+                    lang=lang,
                 )
                 dispatched_channels.append("x")
     else:
@@ -644,8 +803,24 @@ def run_orchestration(
                     f"⛔ Envío LinkedIn bloqueado por Quality Gate: {[i.code for i in li_audit.issues]}"
                 )
             else:
-                manager.post_to_linkedin(text=linkedin_text, url=post_url)
+                li_resp = manager.post_to_linkedin(
+                    text=linkedin_text, url=linkedin_post_url, slug=slug, lang=lang
+                )
                 dispatched_channels.append("linkedin")
+                li_id, li_url = _extract_external_id_and_url(li_resp)
+                if li_id:
+                    ledger_entries.append(
+                        record_distribution_ledger_entry(
+                            asset_id=resolved_asset_id,
+                            slug=slug,
+                            lang=lang,
+                            channel="linkedin",
+                            external_id=li_id,
+                            external_url=li_url,
+                            canonical_url=post_url,
+                            ledger_path=ledger_path,
+                        )
+                    )
     else:
         print("🔕 LinkedIn omitido (ENABLE_LINKEDIN=false)")
 
@@ -659,7 +834,7 @@ def run_orchestration(
                     f"⛔ Envío Dev.to bloqueado por Quality Gate: {[i.code for i in devto_audit.issues]}"
                 )
             else:
-                manager.post_to_devto(
+                devto_resp = manager.post_to_devto(
                     title=devto_artifact.title,
                     content_markdown=devto_artifact.markdown,
                     canonical_url=devto_artifact.canonical_url,
@@ -669,6 +844,20 @@ def run_orchestration(
                     published=devto_cfg.published if devto_cfg else True,
                 )
                 dispatched_channels.append("devto")
+                dt_id, dt_url = _extract_external_id_and_url(devto_resp)
+                if dt_id:
+                    ledger_entries.append(
+                        record_distribution_ledger_entry(
+                            asset_id=resolved_asset_id,
+                            slug=slug,
+                            lang=lang,
+                            channel="devto",
+                            external_id=dt_id,
+                            external_url=dt_url,
+                            canonical_url=devto_artifact.canonical_url,
+                            ledger_path=ledger_path,
+                        )
+                    )
     else:
         print("🔕 Dev.to omitido (ENABLE_DEVTO=false o deshabilitado en social_pack)")
 
@@ -684,7 +873,7 @@ def run_orchestration(
                     f"⛔ Envío CoderLegion bloqueado por Quality Gate: {[i.code for i in cl_audit.issues]}"
                 )
             else:
-                manager.post_to_coderlegion(
+                cl_resp = manager.post_to_coderlegion(
                     title=coderlegion_artifact.title,
                     content_markdown=coderlegion_artifact.markdown,
                     canonical_url=coderlegion_artifact.canonical_url,
@@ -694,6 +883,20 @@ def run_orchestration(
                     category_id=coderlegion_cfg.category if coderlegion_cfg else None,
                 )
                 dispatched_channels.append("coderlegion")
+                cl_id, cl_url = _extract_external_id_and_url(cl_resp)
+                if cl_id:
+                    ledger_entries.append(
+                        record_distribution_ledger_entry(
+                            asset_id=resolved_asset_id,
+                            slug=slug,
+                            lang=lang,
+                            channel="coderlegion",
+                            external_id=cl_id,
+                            external_url=cl_url,
+                            canonical_url=coderlegion_artifact.canonical_url,
+                            ledger_path=ledger_path,
+                        )
+                    )
     else:
         print("🔕 CoderLegion omitido (ENABLE_CODERLEGION=false, idioma excluido o deshabilitado)")
 
@@ -726,11 +929,14 @@ def run_orchestration(
     return {
         "dry_run": False,
         "post_url": post_url,
+        "linkedin_url": linkedin_post_url,
+        "x_url": x_post_url,
         "slug": slug,
         "lang": lang,
         "wave": effective_wave,
         "allowed_channels": sorted(allowed_channels),
         "dispatched_channels": dispatched_channels,
+        "ledger_entries": ledger_entries,
         "hero_image_url": hero_image_url,
         "secondary_cta": {"label": sec_label, "url": sec_url},
         "x": x_summary,

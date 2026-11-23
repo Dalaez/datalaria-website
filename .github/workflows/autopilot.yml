@@ -233,11 +233,12 @@ jobs:
           BREVO_LIST_ID_EN: ${{ vars.BREVO_LIST_ID_EN }}
         run: |
           python -m autopilot.src.wave_scheduler --process-due
-          if ! git diff --quiet data/editorial/dispatch_queue.yaml; then
+          if ! git diff --quiet data/editorial/dispatch_queue.yaml data/pulse/private/distribution_ledger.json 2>/dev/null; then
             git config user.name "Datalaria Bot"
             git config user.email "bot@datalaria.com"
             git add data/editorial/dispatch_queue.yaml
-            git commit -m "chore(autopilot): update dispatch_queue.yaml wave status [skip ci]"
+            [ -f data/pulse/private/distribution_ledger.json ] && git add data/pulse/private/distribution_ledger.json
+            git commit -m "chore(autopilot): update dispatch_queue.yaml & distribution_ledger.json [skip ci]"
             git push origin main
           fi
 
@@ -276,6 +277,13 @@ jobs:
         run: |
           echo "🚀 Launching Autopilot for: ${{ needs.check_changes.outputs.file_path }} (wave=${AUTOPILOT_WAVE} channels=${AUTOPILOT_CHANNELS})"
           python autopilot/src/orchestrator.py "${{ needs.check_changes.outputs.file_path }}"
+          if [ -f data/pulse/private/distribution_ledger.json ] && ! git diff --quiet data/pulse/private/distribution_ledger.json 2>/dev/null; then
+            git config user.name "Datalaria Bot"
+            git config user.email "bot@datalaria.com"
+            git add data/pulse/private/distribution_ledger.json
+            git commit -m "chore(autopilot): record publication in distribution_ledger.json [skip ci]"
+            git push origin main
+          fi
 
       - name: Persist refreshed LinkedIn tokens
         if: always()

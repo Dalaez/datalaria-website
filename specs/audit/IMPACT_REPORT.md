@@ -1,9 +1,9 @@
 # 📈 Primera Auditoría Estratégica de Impacto SEO, Tráfico y Monetización (E02)
 
 > **Autor:** [`E02-seo-impact-strategist`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-editorial/E02-seo-impact-strategist.md) · **Célula:** Dirección & Inteligencia Estratégica  
-> **Fecha de Emisión:** 2026-11-19 20:05 UTC  
-> **Fuentes de Verdad:** `data/pulse/private/index.json` (149 activos), `metrics.json` (GA4 30d), `monthly_metrics.json` (15 meses) y `backlog.yaml`.  
-> **Invariantes:** Cumple estrictamente `INV-PULSE-6` y Constitución Art. 1.3 (*Separación Cerebro vs. Músculo Cuantitativo*).
+> **Fecha de Emisión:** 2026-11-23 20:44 UTC  
+> **Fuentes de Verdad:** `data/pulse/private/index.json` (192 activos), `metrics.json` (GA4 + GSC 30d/prev 30d), `channel_metrics.json` (GA4 Acquisition + KeyEvents), `social_metrics.json` (Dev.to + CoderLegion APIs gratuitas), `distribution_ledger.json`, `gsc_queries.json`, `monthly_metrics.json` (15 meses) y `backlog.yaml`.  
+> **Invariantes:** Cumple estrictamente `INV-PULSE-6`, `INV-PULSE-11`, `INV-PULSE-12` (`ADR-033`, coste `0 €`) y Constitución Art. 1.3 (*Separación Cerebro vs. Músculo Cuantitativo*).
 
 ---
 
@@ -11,71 +11,73 @@
 
 | Métrica Macro | Valor Cuantitativo Real | Interpretación Estratégica E02 |
 | :--- | :---: | :--- |
-| **Total Activos Consolidados** | **149 activos** | 121 Posts bilingües (`98` publicados, `21` programados, `2` drafts), 9 Apps y 19 Kits/Suites. |
-| **Tráfico Acumulado Posts (30d)** | **1,908 vistas** | Vistas reales en los 98 artículos publicados (mediana: **9.0**, $P_{75}$: **25.0**). |
-| **Crecimiento Interanual (YoY)** | **+15627.3%** | De 59 vistas (sep 2025) a 3.157 vistas (oct 2026), récord histórico del proyecto. |
-| **Quick Wins de CTR / SERP** | **21 oportunidades** | Títulos superiores a 95 caracteres que sufren truncamiento en Google SERP. |
-| **Huérfanos de Monetización** | **2 posts top** | Posts en el cuartil superior de visitas ($P_{75} \ge 25$) sin enlace ni shortcode a Kit/App. |
-| **Score Promedio del Backlog** | **85.3 / 100** | 6 propuestas estratégicas alineadas con los Kits de 19€ y la waitlist de Helix. |
+| **Total Activos Consolidados** | **192 activos** | 127 Posts bilingües (`109` publicados, `16` programados, `2` drafts), `10` Apps base y `21` Kits/Suites. |
+| **Tráfico Acumulado Posts (30d)** | **2,159 vistas** | Cuota inglés (EN): **52.4%** · Mediana: **11.0** · $P_{75}$: **24.0**. |
+| **Visibilidad Orgánica GSC (30d)** | **20,482 imp. · 118 clics** | CTR medio: **0.58%** · Posición media ponderada: **10.3** · Cuota EN (imp.): **72.3%** · Prev 30d: `13,772` imp. / `74` clics · Marca (`datalaria`): `701` imp. / `0` clics. |
+| **Crecimiento Interanual (YoY)** | **+104400.0%** | De 4 vistas (2025-09) a 4,180 vistas (2026-11). |
+| **Quick Wins de CTR / SERP** | **64 oportunidades** | `59` con impresiones reales GSC (`pos 4..20` o `CTR < 2.5%`) + truncamientos SERP. |
+| **Canibalización de Keywords** | **1 alertas** | Consultas GSC donde `>= 2` URLs del mismo idioma compiten por impresiones. |
+| **Huérfanos de Monetización** | **1 posts top** | Posts en el cuartil superior ($P_{75} \ge 24$) sin enlace ni shortcode a Kit/App. |
+| **Score Promedio del Backlog** | **75.4 / 100** | 5 propuestas estratégicas evaluadas por Editorial ROI Score. |
 
 ```mermaid
 flowchart TD
-    A["98 Artículos Publicados\n(1.413 visitas 30d)"] --> B{"Triaje de Impacto E02"}
-    B --> C["12 Quick Wins de CTR\n(Truncamiento SERP >95 chars)"]
-    B --> D["15 Huérfanos de Monetización\n(Cuartil Superior >= 20 vistas sin Kit)"]
-    B --> E["5 Categorías Evaluadas\n(Líder: Estrategia y Operaciones 83.3%)"]
-    C --> F["Acción E04: Reescritura Títulos (35-95)"]
+    A["109 Artículos Publicados\n(2,159 vistas · 20,482 imp. GSC)"] --> B{"Triaje de Impacto E02"}
+    B --> C["64 Quick Wins de CTR\n(59 oportunidades GSC reales)"]
+    B --> D["1 Huérfanos de Monetización\n(Cuartil Superior >= 24 vistas sin Kit)"]
+    B --> E["5 Categorías Evaluadas\n(Líder: Estrategia y Operaciones (88.2%))"]
+    B --> H["1 Alertas Canibalización GSC"]
+    C --> F["Acción E04: Reescritura Títulos & H1 (35-95)"]
     D --> G["Acción E05: Inyección app-ref y Kits 19€"]
 ```
 
 ---
 
-## 2. Rendimiento y Cobertura de Monetización por Categoría
+## 2. Rendimiento, GSC y Cobertura de Monetización por Categoría (ES vs. EN)
 
-| Categoría Oficial | Posts | Vistas 30d | Media/Post | Usuarios | Engagement Medio | Monetizados | Cobertura % | Editorial ROI Score |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Estrategia y Operaciones** | 16 | 504 | 31.5 | 225 | 20.2s | 14/16 | **87.5%** | **83.2** |
-| **Pioneros y Referentes** | 13 | 285 | 21.9 | 233 | 31.3s | 7/13 | **53.8%** | **69.1** |
-| **Startups** | 13 | 184 | 14.2 | 167 | 30.2s | 4/13 | **30.8%** | **49.5** |
-| **IA, Ingeniería y Proyectos** | 52 | 824 | 15.8 | 421 | 10.7s | 26/52 | **50.0%** | **46.3** |
-| **Cultura Tech y Media** | 12 | 111 | 9.2 | 91 | 10.5s | 5/12 | **41.7%** | **34.0** |
+| Categoría Oficial | Posts | Vistas 30d | % EN (Vistas) | Imp. GSC | Clics GSC | CTR GSC | Eng. Medio | Monetizados | Cobertura % | Editorial ROI Score |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Estrategia y Operaciones** | 17 | 570 (33.5/p) | 37.5% | 1,131 | 11 | 0.97% | 17.8s | 15/17 | **88.2%** | **72.9** |
+| **Pioneros y Referentes** | 13 | 310 (23.8/p) | 61.3% | 8,067 | 37 | 0.46% | 28.8s | 8/13 | **61.5%** | **64.1** |
+| **Startups** | 14 | 196 (14.0/p) | 69.4% | 4,814 | 36 | 0.75% | 34.3s | 5/14 | **35.7%** | **45.7** |
+| **IA, Ingeniería y Proyectos** | 53 | 955 (18.0/p) | 53.1% | 4,373 | 20 | 0.46% | 12.8s | 28/53 | **52.8%** | **45.1** |
+| **Cultura Tech y Media** | 12 | 128 (10.7/p) | 65.6% | 2,097 | 14 | 0.67% | 8.7s | 5/12 | **41.7%** | **30.6** |
 
 ### Diagnóstico Estratégico de Categorías:
-1. 🏆 **Estrategia y Operaciones (Líder en Eficiencia y Conversión):** Con **28.1 visitas/post** y **83.3% de cobertura de monetización**, es el motor de conversión más maduro de Datalaria. Los posts de DAFO, Porter, RICE y DAR empujan directamente las ventas de las Suites 01 y 02.
-2. 💎 **Pioneros y Referentes (La Mayor Oportunidad Desaprovechada):** Promedia **21.8 visitas/post** con una retención extraordinaria (**30.9s por usuario**, destacando Gödel con 45+ minutos totales y von Neumann con 80 visitas), pero tiene **0.0% de monetización**. Resolver esto mediante puentes a la Suite SDD y la Matriz DAR multiplicará la conversión sin coste.
-3. ⚙️ **IA, Ingeniería y Proyectos (Volumen y Tracción Técnica):** Mayor masa crítica con 49 posts y 530 visitas. Sin embargo, su post #1 (`sdd_vs_vibe_coding`, #2 global con 100 visitas) no incluye shortcode de app ni kit por no tener la app publicada formalmente. Debe activarse de inmediato el shortcode de la waitlist de Helix.
+1. **Estrategia y Operaciones (Editorial ROI 72.9):** **33.5 vistas/post**, **1,131 impresiones GSC** (CTR **0.97%**), cuota inglés **37.5%** y **88.2%** de cobertura comercial (15/17).
+2. **Pioneros y Referentes (Editorial ROI 64.1):** **23.8 vistas/post**, **8,067 impresiones GSC** (CTR **0.46%**), cuota inglés **61.3%** y **61.5%** de cobertura comercial (8/13).
+3. **Startups (Editorial ROI 45.7):** **14.0 vistas/post**, **4,814 impresiones GSC** (CTR **0.75%**), cuota inglés **69.4%** y **35.7%** de cobertura comercial (5/14).
 
 ---
 
 ## 3. Matriz de Quick Wins de CTR (Top Oportunidades en Buscadores)
 
-Artículos con alta tracción y engagement cuyo rendimiento orgánico está penalizado por títulos o descripciones excesivamente largos que Google trunca en SERP (límite recomendado: 35–95 caracteres en título y 75–245 en descripción).
+Artículos priorizados combinando datos reales de **Google Search Console** (impresiones, posición media y CTR) con longitud de snippet y retención en GA4:
 
-| ID / Activo | Vistas 30d | Eng. Medio | Score SEO Actual | Tipo de Oportunidad | Título Recomendado ES (35–95 chars) | Meta Descripción Optimizada ES |
-| :--- | :---: | :---: | :---: | :--- | :--- | :--- |
-| [`agentes_ia_operativa_sdd`](agentes_ia_operativa_sdd) | **58** | 53.4s | `60/100` | `serp_snippet_truncation` | **Cómo Crear Agentes de IA para la Operativa Empresarial del Día a Día: De los SOPs al** | Guía práctica y metodológica para diseñar, construir y gobernar agentes de IA en la operativa diaria de una empresa. Aprende qué herramientas elegir (n8n, CrewAI, LangGraph, MCP) y cómo aplicar Spec-Driven Development (SDD) para evitar agentes |
-| [`mckinsey-ge-matrix`](matriz-mckinsey-ge) | **33** | 5.3s | `60/100` | `serp_snippet_truncation` | **Matriz McKinsey / GE 3x3: Atractivo de la Industria, Fortaleza Competitiva y Asignación de** | Guía metodológica exhaustiva para implementar la matriz McKinsey / General Electric 3x3 de 9 cajas: evaluación multifactorial, neutralización de sesgos del management y plan de asignación de capital para Comités de Inversión y Consejos de |
-| [`quantitative-risk-matrix-fmea`](matriz-riesgos-amfe-fmea) | **30** | 30.8s | `60/100` | `serp_snippet_truncation` | **Matriz de Riesgos Cuantitativa & AMFE / FMEA: De la Intuición Cualitativa al Número de** | Guía metodológica y cuantitativa para transformar la matriz de riesgos subjetiva en un motor analítico bidimensional (ISO 31000) y tridimensional (AMFE/FMEA AIAG-VDA): cálculo de Severidad x Ocurrencia x Detección, curvas Pareto, ROI del |
-| [`quantitative-pestel-matrix`](matriz-pestel-cuantitativa) | **27** | 17.5s | `60/100` | `serp_snippet_truncation` | **Matriz PESTEL Cuantitativa: Severidad, Volatilidad y Riesgo Macro para Comités de Dirección** | Guía metodológica exhaustiva para transformar el análisis macroambiental cualitativo tradicional en un motor cuantitativo bidimensional (Severidad del Impacto en P&L vs. Volatilidad Temporal), con mapa térmico cartesiano, perfil radar hexagonal |
-| [`quantitative-raci-workload-matrix`](matriz-raci-balance-carga) | **37** | 26.7s | `80/100` | `serp_snippet_truncation` | **Matriz RACI Cuantitativa: Balance de Carga Operativa, Unicidad de Accountable y Detección de** | Guía metodológica y cuantitativa para transformar la matriz RACI tradicional en un motor dinámico de control operativo: principio de Accountable único, cálculo de saturación por rol, semáforos de riesgo de burnout y plan de rebalanceo C-Level. |
-| [`stack_productividad_2026`](stack_productividad_2026) | **33** | 0.7s | `80/100` | `serp_snippet_truncation` | **El Stack de Productividad de un Ingeniero en 2026: Las Herramientas que Uso Cada Día** | El stack real de herramientas de un ingeniero de datos en 2026: desde Gemini Deep Research hasta GitHub Actions, pasando por Python, Supabase, CrewAI y Hugo. Sin patrocinios, sin afiliados, sin filtros. Cada herramienta explicada con el post |
-| [`ia_agents_part3`](ia_agents_part3) | **10** | 0.0s | `60/100` | `serp_snippet_truncation` | **Autopilot - Los Creativos: Cómo programé a una IA para que fuera cínica en Twitter y** | Tercer capítulo de Proyecto Autopilot. Transformamos datos fríos en historias virales creando dos agentes con personalidades opuestas: un influencer cínico y un líder corporativo. |
-| [`app-openweather_part1_backend`](app-openweather_part1_backend) | **26** | 0.7s | `80/100` | `serp_snippet_truncation` | **Proyecto Weather Service (Parte 1): Construyendo el Recolector de Datos con Python y GitHub** | Primera entrega de la serie sobre cómo construir un servicio meteorológico. Nos centramos en el backend: conectar a la API de OpenWeatherMap, almacenar datos en CSV y automatizar todo 24/7 gratis con GitHub Actions o Netlify. |
-| [`game_snake`](game_snake) | **23** | 0.3s | `80/100` | `serp_snippet_truncation` | **De Cero a Héroe: Crea un Snake Game Cyberpunk con Ranking en Tiempo Real usando Supabase y JS** | Aprende a crear un juego web estilo arcade con estética neón utilizando solo HTML5 Canvas y JS Vanilla. Descubre cómo integrar un ranking global en tiempo real usando la base de datos PostgreSQL de Supabase. |
-| [`happyrobot`](happyrobot) | **23** | 68.6s | `80/100` | `serp_snippet_truncation` | **HappyRobot: Cómo los Agentes de Voz Autónomos Conquistaron la Logística Global** | De graduarse en Y Combinator a alcanzar el estatus de unicornio (1.200M$ de valoración): analizamos la arquitectura técnica de HappyRobot, sus agentes de voz en tiempo real con latencia sub-500ms y cómo automatizan las operaciones de gigantes |
-| [`wallapop`](wallapop) | **16** | 24.8s | `80/100` | `serp_snippet_truncation` | **Wallapop: La Ingeniería Invisible detrás del Mayor Marketplace Circular de Europa** | Cómo Wallapop transformó la compraventa de segunda mano en una plataforma tecnológica de 19 millones de usuarios. Analizamos su arquitectura de Machine Learning: búsqueda visual multimodal, algoritmos de pricing dinámico, grafos antifraude |
-| [`ia_agents_part2`](ia_agents_part2) | **16** | 0.0s | `80/100` | `serp_snippet_truncation` | **Autopilot - El Cerebro: Configurando Gemini y CrewAI para leer mi blog** | Segundo capítulo de Proyecto Autopilot. Abrimos el IDE para conectar Python con Gemini Flash y crear nuestro primer Agente Analista capaz de entender código Markdown. |
+| ID / Activo | Top Query GSC | Imp. GSC | Pos. / CTR | Vistas 30d | Tipo de Oportunidad | Título Recomendado ES (35–95 chars) |
+| :--- | :--- | :---: | :---: | :---: | :--- | :--- |
+| [`kantorovich`](kantorovich) | `leonid kantorovich` | **3,003** | `7.6` / `0.4%` | 43 | `gsc_position_4_20` | **Leonid Kantorovich: El Matemático que Desafió a Stalin con la Programación Lineal** |
+| [`john_von_neumann`](john_von_neumann) | `john von neumann` | **1,938** | `9.0` / `0.5%` | 41 | `gsc_position_4_20` | **John von Neumann: Arquitectura de Computadores, Teoría de Juegos y Singularidad** |
+| [`happyrobot`](happyrobot) | `happyrobot vs. other ai voice agents` | **1,247** | `6.9` / `0.2%` | 25 | `gsc_position_4_20` | **HappyRobot: Cómo los Agentes de Voz Autónomos Conquistaron la Logística Global** |
+| [`pgvector_vs_vectordb`](pgvector_vs_vectordb) | `pgvector` | **1,335** | `11.1` / `0.5%` | 12 | `gsc_position_4_20` | **PostgreSQL con pgvector vs Vector DBs: Por Qué Casi Nadie Necesita Pinecone** |
+| [`halt_and_catch_fire`](halt_and_catch_fire) | `halt and catch fire meaning` | **818** | `7.2` / `0.5%` | 6 | `gsc_position_4_20` | **Halt and Catch Fire: Significado, Historia y por Qué Clavó la Ingeniería de Software** |
+| [`wallapop`](wallapop) | `wallapop` | **617** | `5.9` / `2.3%` | 17 | `gsc_position_4_20` | **Wallapop: La Ingeniería Invisible detrás del Mayor Marketplace Circular de Europa** |
+| [`freepik`](freepik) | `does freepik work well for mid-market companies modernizing their operations and reducing operational costs in a competitive landscape?` | **541** | `5.9` / `0.0%` | 9 | `gsc_position_4_20` | **Freepik: El Gigante que Domó la IA y Transformó las Operaciones Creativas Globales** |
+| [`silicon_valley`](silicon_valley) | `pipernet` | **542** | `6.3` / `1.3%` | 24 | `gsc_position_4_20` | **Silicon Valley y el Dilema de PiperNet: La Profecía de la IA y Agentes Reales** |
+| [`ravenpack`](ravenpack) | `ravenpack vs bloomberg` | **497** | `5.9` / `0.6%` | 42 | `gsc_position_4_20` | **RavenPack: De la Analítica de Noticias en Marbella al Cerebro de Wall Street** |
+| [`the_thinking_game`](the_thinking_game) | `the thinking game` | **534** | `7.3` / `0.6%` | 9 | `gsc_position_4_20` | **The Thinking Game: Cómo DeepMind Convirtió los Videojuegos en Ciencia Moderna** |
+| [`nextail`](nextail) | `nextail` | **502** | `7.6` / `1.0%` | 18 | `gsc_position_4_20` | **Nextail: Cómo la IA Prescriptiva de una Startup Española Derrota a Excel en Retail** |
+| [`abraham_wald`](abraham_wald) | `abraham wald` | **482** | `7.9` / `0.6%` | 30 | `gsc_position_4_20` | **Abraham Wald y los Aviones de la Segunda Guerra: Epistemología de Datos Ausentes** |
 
 ---
 
 ## 4. Auditoría de Huérfanos de Monetización (Cuartil Superior de Tráfico)
 
-Artículos en el cuartil superior ($P_{75} \ge 20$ visitas) que actualmente no enlazan a ningún Kit de Lemon Squeezy ni a ninguna App de Datalaria, desperdiciando el flujo orgánico natural de lectores:
+Artículos en el cuartil superior ($P_{75} \ge 24$ vistas) que actualmente no enlazan a ningún Kit de Lemon Squeezy ni a ninguna App de Datalaria:
 
 | ID del Post | Vistas 30d | Percentil | Tipo de Puente | Destino Asignado | Shortcode / Enlace Recomendado | Justificación Estratégica E02 |
 | :--- | :---: | :---: | :---: | :--- | :--- | :--- |
-| [`stack_productividad_2026`](stack_productividad_2026) | **33** | Top 15% | `helix_waitlist` | `helix` | `{{< helix-waitlist >}}` | Tráfico de alta retención técnica; dirigir hacia la lista de espera de Datalaria Helix. |
-| [`claude_shannon`](claude_shannon) | **27** | Top 22% | `helix_waitlist` | `helix` | `{{< helix-waitlist >}}` | Tráfico de alta retención técnica; dirigir hacia la lista de espera de Datalaria Helix. |
+| [`happyrobot`](happyrobot) | **25** | Top 25% | `app_sandbox` | `obs-management` | `{{< app-ref slug="obs-management" >}}` | Vincular a una aplicación interactiva del catálogo para retención y prueba de producto. |
 
 ---
 
@@ -87,90 +89,167 @@ $$\text{Editorial ROI Score} = 0.40 \times \text{Demanda SEO} + 0.35 \times \tex
 
 | Pos. | ID de Idea | Título Propuesto | Categoría | Target de Negocio | SEO | Mon. | Sin. | Editorial ROI |
 | :---: | :--- | :--- | :--- | :--- | :---: | :---: | :---: | :---: |
-| **#1** | `idea-claude-subagents-sdd-contracts` | Anatomía de un Escuadrón de Subagentes con Derecho a Veto: De Prompts Frágiles a Contratos Pydantic | IA, Ingeniería y Proyectos | `helix` | 92 | 96 | 98 | **94.9** |
-| **#2** | `idea-monte-carlo-capex-risk` | Simulación de Monte Carlo en Excel y Python para Business Cases: Más Allá del VAN Determinista | Estrategia y Operaciones | `pack-business-case` | 82 | 95 | 88 | **88.1** |
-| **#3** | `idea-pareto-multiobjective-portfolio` | Frontera Eficiente de Pareto en Priorización de Producto: Combinando RICE, DAR y Presupuesto | Estrategia y Operaciones | `suite-02` | 78 | 92 | 90 | **85.9** |
-| **#4** | `idea-edsger-dijkstra-formal-verification` | Edsger Dijkstra: La Cruzada contra el GOTO, la Verificación Formal y por qué Habría Vetado el Vibe Coding | Pioneros y Referentes | `helix` | 80 | 82 | 92 | **83.7** |
-| **#5** | `idea-little-law-kingman-ops` | Ley de Little y Fórmula de Kingman en Operaciones: Por Qué Tu Backlog Colapsa al 85% de Carga | Estrategia y Operaciones | `suite-03` | 75 | 88 | 85 | **82.0** |
-| **#6** | `idea-claude-shannon-information-theory` | Claude Shannon: El Padre de la Teoría de la Información, la Entropía en LLMs y el Malabarista del Bell Labs | Pioneros y Referentes | `flashcards` | 85 | 75 | 82 | **80.8** |
+| **#1** | `idea-claude-subagents-sdd-contracts` | Anatomía de un Escuadrón de Subagentes con Derecho a Veto: De Prompts Frágiles a Contratos Pydantic | IA, Ingeniería y Proyectos | `helix` | 92 | 96 | 98 | **81.4** |
+| **#2** | `idea-monte-carlo-capex-risk` | Simulación de Monte Carlo en Excel y Python para Business Cases: Más Allá del VAN Determinista | Estrategia y Operaciones | `pack-business-case` | 82 | 95 | 88 | **77.3** |
+| **#3** | `idea-pareto-multiobjective-portfolio` | Frontera Eficiente de Pareto en Priorización de Producto: Combinando RICE, DAR y Presupuesto | Estrategia y Operaciones | `suite-02` | 78 | 92 | 90 | **75.4** |
+| **#4** | `idea-little-law-kingman-ops` | Ley de Little y Fórmula de Kingman en Operaciones: Por Qué Tu Backlog Colapsa al 85% de Carga | Estrategia y Operaciones | `suite-03` | 75 | 88 | 85 | **72.2** |
+| **#5** | `idea-claude-shannon-information-theory` | Claude Shannon: El Padre de la Teoría de la Información, la Entropía en LLMs y el Malabarista del Bell Labs | Pioneros y Referentes | `flashcards` | 85 | 75 | 82 | **70.7** |
 
 ---
 
 ## 6. Impacto Editorial de Lanzamientos de Apps, Versiones y Kits B2B (Gobernanza Scriba)
 
 > **Invariantes SDD:** Supervisión determinista de estrenos (`initial_launch`, `kit_launch`) y versiones evolutivas (`version_upgrade`, `kit_edition`).  
-> **Balance General:** 62 activos evaluados · **15 alerta(s) de release silenciosa** · 7 cobertura(s) programada(s) · 39 cubierto(s) al 100%.
+> **Balance General:** 65 activos evaluados · **17 alerta(s) de release silenciosa** · 6 cobertura(s) programada(s) · 40 cubierto(s) al 100%.
 
 | Activo / ID | Tipo & Versión | Fecha Estreno | Estado Portal | Posts | Último Post | Vistas 30d | Cobertura Scriba | Acción Recomendada |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
-| `weather-v3.3.0` | `version_upgrade` (v3.3.0) | 2026-11-13 | `published` | 4 | 2025-12-06 | 45 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v3.3.0 (2026-11-13) posterior al último post (2025-12-06); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
-| `weather-v3.2.0` | `version_upgrade` (v3.2.0) | 2026-11-13 | `published` | 4 | 2025-12-06 | 45 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v3.2.0 (2026-11-13) posterior al último post (2025-12-06); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
-| `weather-v3.1.0` | `version_upgrade` (v3.1.0) | 2026-11-09 | `published` | 4 | 2025-12-06 | 45 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v3.1.0 (2026-11-09) posterior al último post (2025-12-06); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
-| `weather-v3.0.0` | `version_upgrade` (v3.0.0) | 2026-11-08 | `published` | 4 | 2025-12-06 | 45 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v3.0.0 (2026-11-08) posterior al último post (2025-12-06); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
-| `weather-v2.0.0` | `version_upgrade` (v2.0.0) | 2026-11-08 | `published` | 4 | 2025-12-06 | 45 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v2.0.0 (2026-11-08) posterior al último post (2025-12-06); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
-| `snake-v2.3.0` | `version_upgrade` (v2.3.0) | 2026-11-07 | `published` | 1 | 2026-02-14 | 23 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v2.3.0 (2026-11-07) posterior al último post (2026-02-14); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
-| `snake-v2.2.0` | `version_upgrade` (v2.2.0) | 2026-11-07 | `published` | 1 | 2026-02-14 | 23 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v2.2.0 (2026-11-07) posterior al último post (2026-02-14); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
-| `snake-v2.1.0` | `version_upgrade` (v2.1.0) | 2026-11-07 | `published` | 1 | 2026-02-14 | 23 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v2.1.0 (2026-11-07) posterior al último post (2026-02-14); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
-| `snake-v2.0.0` | `version_upgrade` (v2.0.0) | 2026-11-07 | `published` | 1 | 2026-02-14 | 23 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v2.0.0 (2026-11-07) posterior al último post (2026-02-14); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
-| `flashcards-v2.1.0` | `version_upgrade` (v2.1.0) | 2026-11-06 | `published` | 1 | 2025-10-17 | 4 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v2.1.0 (2026-11-06) posterior al último post (2025-10-17); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
-| `flashcards-v2.0.0` | `version_upgrade` (v2.0.0) | 2026-11-06 | `published` | 1 | 2025-10-17 | 4 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v2.0.0 (2026-11-06) posterior al último post (2025-10-17); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
+| `pulse-v1.5.0` | `version_upgrade` (v1.5.0) | 2026-11-23 | `published` | 8 | 2026-11-22 | 419 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v1.5.0 (2026-11-23) posterior al último post (2026-11-22); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
+| `obs-management-v2.0.0` | `version_upgrade` (v2.0.0) | 2026-11-22 | `published` | 21 | 2026-11-14 | 382 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v2.0.0 (2026-11-22) posterior al último post (2026-11-14); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
+| `weather-v3.3.0` | `version_upgrade` (v3.3.0) | 2026-11-13 | `published` | 4 | 2025-12-06 | 41 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v3.3.0 (2026-11-13) posterior al último post (2025-12-06); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
+| `weather-v3.2.0` | `version_upgrade` (v3.2.0) | 2026-11-13 | `published` | 4 | 2025-12-06 | 41 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v3.2.0 (2026-11-13) posterior al último post (2025-12-06); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
+| `weather-v3.1.0` | `version_upgrade` (v3.1.0) | 2026-11-09 | `published` | 4 | 2025-12-06 | 41 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v3.1.0 (2026-11-09) posterior al último post (2025-12-06); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
+| `weather-v3.0.0` | `version_upgrade` (v3.0.0) | 2026-11-08 | `published` | 4 | 2025-12-06 | 41 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v3.0.0 (2026-11-08) posterior al último post (2025-12-06); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
+| `weather-v2.0.0` | `version_upgrade` (v2.0.0) | 2026-11-08 | `published` | 4 | 2025-12-06 | 41 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v2.0.0 (2026-11-08) posterior al último post (2025-12-06); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
+| `flashcards-v2.1.0` | `version_upgrade` (v2.1.0) | 2026-11-06 | `published` | 2 | 2026-06-21 | 31 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v2.1.0 (2026-11-06) posterior al último post (2026-06-21); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
+| `flashcards-v2.0.0` | `version_upgrade` (v2.0.0) | 2026-11-06 | `published` | 2 | 2026-06-21 | 31 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v2.0.0 (2026-11-06) posterior al último post (2026-06-21); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
+| `snake-v2.3.0` | `version_upgrade` (v2.3.0) | 2026-11-07 | `published` | 1 | 2026-02-14 | 24 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v2.3.0 (2026-11-07) posterior al último post (2026-02-14); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
+| `snake-v2.2.0` | `version_upgrade` (v2.2.0) | 2026-11-07 | `published` | 1 | 2026-02-14 | 24 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v2.2.0 (2026-11-07) posterior al último post (2026-02-14); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
+| `snake-v2.1.0` | `version_upgrade` (v2.1.0) | 2026-11-07 | `published` | 1 | 2026-02-14 | 24 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v2.1.0 (2026-11-07) posterior al último post (2026-02-14); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
+| `snake-v2.0.0` | `version_upgrade` (v2.0.0) | 2026-11-07 | `published` | 1 | 2026-02-14 | 24 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v2.0.0 (2026-11-07) posterior al último post (2026-02-14); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
 | `maths-v2.3.0` | `version_upgrade` (v2.3.0) | 2026-11-06 | `published` | 1 | 2025-09-11 | 0 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v2.3.0 (2026-11-06) posterior al último post (2025-09-11); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
 | `maths-v2.2.0` | `version_upgrade` (v2.2.0) | 2026-11-06 | `published` | 1 | 2025-09-11 | 0 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v2.2.0 (2026-11-06) posterior al último post (2025-09-11); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
 | `maths-v2.1.0` | `version_upgrade` (v2.1.0) | 2026-11-05 | `published` | 1 | 2025-09-11 | 0 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v2.1.0 (2026-11-05) posterior al último post (2025-09-11); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
 | `maths-v2.0.0` | `version_upgrade` (v2.0.0) | 2026-11-05 | `published` | 1 | 2025-09-11 | 0 | 🔴 Alerta Silenciosa | Alerta de release silenciosa: versión v2.0.0 (2026-11-05) posterior al último post (2025-09-11); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0. |
 | `reading` | `initial_launch` (v1.1.0) | 2026-12-16 | `scheduled` | 0 | Ninguno | 0 | 🟡 Lanzamiento Pendiente | Lanzamiento programado el 2026-12-16: coordinar con E01/E03 redacción anticipada de tutorial o post guía. |
-| `pack-sdd` | `kit_launch` (v1.0.0) | 2027-01-19 | `scheduled` | 5 | 2026-11-11 | 181 | 🟢 Cobertura Programada | Campaña programada: coordinar con E06 sindicación omnicanal para el estreno el 2027-01-19. |
-| `suite-sdd` | `kit_launch` (v1.0.0) | 2027-01-19 | `scheduled` | 3 | 2026-11-11 | 180 | 🟢 Cobertura Programada | Campaña programada: coordinar con E06 sindicación omnicanal para el estreno el 2027-01-19. |
-| `helix` | `initial_launch` (v1.0.0) | 2027-01-19 | `scheduled` | 5 | Ninguno | 2 | 🟢 Cobertura Programada | Campaña programada: coordinar con E06 sindicación omnicanal para el estreno el 2027-01-19. |
+| `pack-obs` | `kit_launch` (v2.0.0) | 2026-12-09 | `scheduled` | 0 | Ninguno | 0 | 🟡 Lanzamiento Pendiente | Lanzamiento programado el 2026-12-09: coordinar con E01/E03 redacción anticipada de tutorial o post guía. |
+| `pack-sdd` | `kit_launch` (v1.0.0) | 2027-01-19 | `scheduled` | 5 | 2026-11-11 | 180 | 🟢 Cobertura Programada | Campaña programada: coordinar con E06 sindicación omnicanal para el estreno el 2027-01-19. |
+| `suite-sdd` | `kit_launch` (v1.0.0) | 2027-01-19 | `scheduled` | 3 | 2026-11-11 | 179 | 🟢 Cobertura Programada | Campaña programada: coordinar con E06 sindicación omnicanal para el estreno el 2027-01-19. |
+| `pack-stock` | `kit_launch` (v1.0.0) | 2026-11-26 | `scheduled` | 1 | Ninguno | 86 | 🟢 Cobertura Programada | Campaña programada: coordinar con E06 sindicación omnicanal para el estreno el 2026-11-26. |
+| `helix` | `initial_launch` (v1.0.0) | 2027-01-19 | `scheduled` | 5 | Ninguno | 4 | 🟢 Cobertura Programada | Campaña programada: coordinar con E06 sindicación omnicanal para el estreno el 2027-01-19. |
 | `mega-bundle` | `kit_launch` (v1.0.0) | 2026-12-03 | `scheduled` | 1 | Ninguno | 0 | 🟢 Cobertura Programada | Campaña programada: coordinar con E06 sindicación omnicanal para el estreno el 2026-12-03. |
 | `suite-03` | `kit_launch` (v1.0.0) | 2026-11-30 | `scheduled` | 1 | Ninguno | 0 | 🟢 Cobertura Programada | Campaña programada: coordinar con E06 sindicación omnicanal para el estreno el 2026-11-30. |
-| `pack-evm` | `kit_launch` (v1.0.0) | 2026-11-23 | `scheduled` | 1 | Ninguno | 0 | 🟢 Cobertura Programada | Campaña programada: coordinar con E06 sindicación omnicanal para el estreno el 2026-11-23. |
-| `pack-stock` | `kit_launch` (v1.0.0) | 2026-11-26 | `scheduled` | 1 | Ninguno | 0 | 🟢 Cobertura Programada | Campaña programada: coordinar con E06 sindicación omnicanal para el estreno el 2026-11-26. |
-| `pulse` | `initial_launch` (v1.0.0) | 2026-11-18 | `published` | 7 | 2026-11-18 | 289 | ✅ Cubierto | Activo cubierto con 7 post(s) en producción (289 vistas/30d). |
-| `obs-management` | `initial_launch` (v1.0.1) | 2026-05-17 | `published` | 16 | 2026-11-14 | 276 | ✅ Cubierto | Activo cubierto con 16 post(s) en producción (276 vistas/30d). |
-| `obs-management-v1.0.1` | `version_upgrade` (v1.0.1) | 2026-10-24 | `published` | 16 | 2026-11-14 | 276 | ✅ Cubierto | Versión v1.0.1 respaldada por los artículos de la serie. |
-| `pack-pulse` | `kit_launch` (v1.0.0) | 2026-11-18 | `published` | 4 | 2026-11-18 | 244 | ✅ Cubierto | Activo cubierto con 4 post(s) en producción (244 vistas/30d). |
-| `suite-02` | `kit_launch` (v1.0.0) | 2026-11-08 | `published` | 4 | 2026-11-08 | 155 | ✅ Cubierto | Activo cubierto con 4 post(s) en producción (155 vistas/30d). |
-| `pack-business-case` | `kit_launch` (v1.0.0) | 2026-11-08 | `published` | 4 | 2026-11-08 | 129 | ✅ Cubierto | Activo cubierto con 4 post(s) en producción (129 vistas/30d). |
-| `suite-01` | `kit_launch` (v1.0.0) | 2026-11-01 | `published` | 3 | 2026-11-01 | 100 | ✅ Cubierto | Activo cubierto con 3 post(s) en producción (100 vistas/30d). |
-| `pack-rice` | `kit_launch` (v1.0.0) | 2026-11-05 | `published` | 1 | 2026-11-05 | 73 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (73 vistas/30d). |
-| `lifeops` | `initial_launch` (v1.2.0) | 2026-09-19 | `published` | 6 | 2026-10-28 | 69 | ✅ Cubierto | Activo cubierto con 6 post(s) en producción (69 vistas/30d). |
-| `lifeops-v1.1.1` | `version_upgrade` (v1.1.1) | 2026-10-27 | `published` | 6 | 2026-10-28 | 69 | ✅ Cubierto | Versión v1.1.1 respaldada por los artículos de la serie. |
-| `lifeops-v1.1.0` | `version_upgrade` (v1.1.0) | 2026-10-27 | `published` | 6 | 2026-10-28 | 69 | ✅ Cubierto | Versión v1.1.0 cubierta con artículo propio publicado (app-lifeops_part6_analytics_dashboard_360). |
-| `lifeops-v1.0.1` | `version_upgrade` (v1.0.1) | 2026-10-24 | `published` | 6 | 2026-10-28 | 69 | ✅ Cubierto | Versión v1.0.1 respaldada por los artículos de la serie. |
-| `lifeops-v0.4.0` | `version_upgrade` (v0.4.0) | 2026-08-31 | `published` | 6 | 2026-10-28 | 69 | ✅ Cubierto | Versión v0.4.0 respaldada por los artículos de la serie. |
-| `lifeops-v0.3.0` | `version_upgrade` (v0.3.0) | 2026-08-30 | `published` | 6 | 2026-10-28 | 69 | ✅ Cubierto | Versión v0.3.0 respaldada por los artículos de la serie. |
-| `lifeops-v0.1.0` | `version_upgrade` (v0.1.0) | 2026-08-29 | `published` | 6 | 2026-10-28 | 69 | ✅ Cubierto | Versión v0.1.0 respaldada por los artículos de la serie. |
-| `pack-dar` | `kit_launch` (v1.0.0) | 2026-11-02 | `published` | 1 | 2026-11-02 | 49 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (49 vistas/30d). |
-| `weather` | `initial_launch` (v3.3.3) | 2025-10-25 | `published` | 4 | 2025-12-06 | 45 | ✅ Cubierto | Activo cubierto con 4 post(s) en producción (45 vistas/30d). |
-| `weather-v1.0.0` | `version_upgrade` (v1.0.0) | 2025-12-06 | `published` | 4 | 2025-12-06 | 45 | ✅ Cubierto | Versión v1.0.0 respaldada por los artículos de la serie. |
-| `weather-v0.3.0` | `version_upgrade` (v0.3.0) | 2025-11-15 | `published` | 4 | 2025-12-06 | 45 | ✅ Cubierto | Versión v0.3.0 respaldada por los artículos de la serie. |
-| `weather-v0.2.0` | `version_upgrade` (v0.2.0) | 2025-11-08 | `published` | 4 | 2025-12-06 | 45 | ✅ Cubierto | Versión v0.2.0 respaldada por los artículos de la serie. |
-| `weather-v0.1.0` | `version_upgrade` (v0.1.0) | 2025-10-31 | `published` | 4 | 2025-12-06 | 45 | ✅ Cubierto | Versión v0.1.0 respaldada por los artículos de la serie. |
-| `pack-raci` | `kit_launch` (v1.0.0) | 2026-11-12 | `published` | 1 | 2026-11-12 | 37 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (37 vistas/30d). |
-| `pack-mckinsey` | `kit_launch` (v1.0.0) | 2026-10-29 | `published` | 1 | 2026-10-29 | 33 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (33 vistas/30d). |
-| `pack-bcg` | `kit_launch` (v1.0.0) | 2026-10-26 | `published` | 1 | 2026-10-26 | 31 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (31 vistas/30d). |
-| `pack-amfe` | `kit_launch` (v1.0.0) | 2026-11-16 | `published` | 1 | 2026-11-16 | 30 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (30 vistas/30d). |
-| `pack-pestel` | `kit_launch` (v1.0.0) | 2026-10-22 | `published` | 1 | 2026-10-22 | 27 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (27 vistas/30d). |
-| `pack-dafo` | `kit_launch` (v1.0.0) | 2026-10-19 | `published` | 1 | 2026-10-13 | 25 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (25 vistas/30d). |
-| `snake` | `initial_launch` (v2.3.1) | 2026-02-14 | `published` | 1 | 2026-02-14 | 23 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (23 vistas/30d). |
-| `snake-v0.5.0` | `version_upgrade` (v0.5.0) | 2026-02-01 | `published` | 1 | 2026-02-14 | 23 | ✅ Cubierto | Versión v0.5.0 respaldada por los artículos de la serie. |
-| `snake-v0.1.0` | `version_upgrade` (v0.1.0) | 2026-01-20 | `published` | 1 | 2026-02-14 | 23 | ✅ Cubierto | Versión v0.1.0 respaldada por los artículos de la serie. |
-| `pack-porter` | `kit_launch` (v1.0.0) | 2026-10-21 | `published` | 1 | 2026-10-19 | 15 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (15 vistas/30d). |
-| `conversor` | `initial_launch` (v2.1.0) | 2025-10-04 | `published` | 1 | 2025-10-04 | 7 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (7 vistas/30d). |
-| `conversor-v0.5.0` | `version_upgrade` (v0.5.0) | 2025-09-28 | `published` | 1 | 2025-10-04 | 7 | ✅ Cubierto | Versión v0.5.0 respaldada por los artículos de la serie. |
-| `conversor-v0.1.0` | `version_upgrade` (v0.1.0) | 2025-09-20 | `published` | 1 | 2025-10-04 | 7 | ✅ Cubierto | Versión v0.1.0 respaldada por los artículos de la serie. |
-| `flashcards` | `initial_launch` (v2.1.0) | 2025-10-17 | `published` | 1 | 2025-10-17 | 4 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (4 vistas/30d). |
-| `pack-pert` | `kit_launch` (v1.0.0) | 2026-11-19 | `published` | 1 | 2026-11-19 | 2 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (2 vistas/30d). |
+| `pulse` | `initial_launch` (v1.5.0) | 2026-11-18 | `published` | 8 | 2026-11-22 | 419 | ✅ Cubierto | Activo cubierto con 8 post(s) en producción (419 vistas/30d). |
+| `obs-management` | `initial_launch` (v2.0.0) | 2026-05-17 | `published` | 21 | 2026-11-14 | 382 | ✅ Cubierto | Activo cubierto con 21 post(s) en producción (382 vistas/30d). |
+| `obs-management-v1.0.1` | `version_upgrade` (v1.0.1) | 2026-10-24 | `published` | 21 | 2026-11-14 | 382 | ✅ Cubierto | Versión v1.0.1 respaldada por los artículos de la serie. |
+| `pack-pulse` | `kit_launch` (v1.0.0) | 2026-11-18 | `published` | 5 | 2026-11-22 | 370 | ✅ Cubierto | Activo cubierto con 5 post(s) en producción (370 vistas/30d). |
+| `suite-02` | `kit_launch` (v1.0.0) | 2026-11-08 | `published` | 6 | 2026-11-08 | 183 | ✅ Cubierto | Activo cubierto con 6 post(s) en producción (183 vistas/30d). |
+| `pack-business-case` | `kit_launch` (v1.0.0) | 2026-11-08 | `published` | 4 | 2026-11-21 | 147 | ✅ Cubierto | Activo cubierto con 4 post(s) en producción (147 vistas/30d). |
+| `suite-01` | `kit_launch` (v1.0.0) | 2026-11-01 | `published` | 3 | 2026-11-01 | 98 | ✅ Cubierto | Activo cubierto con 3 post(s) en producción (98 vistas/30d). |
+| `pack-rice` | `kit_launch` (v1.0.0) | 2026-11-05 | `published` | 1 | 2026-11-05 | 76 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (76 vistas/30d). |
+| `lifeops` | `initial_launch` (v1.2.0) | 2026-09-19 | `published` | 7 | 2026-10-28 | 75 | ✅ Cubierto | Activo cubierto con 7 post(s) en producción (75 vistas/30d). |
+| `lifeops-v1.1.1` | `version_upgrade` (v1.1.1) | 2026-10-27 | `published` | 7 | 2026-10-28 | 75 | ✅ Cubierto | Versión v1.1.1 respaldada por los artículos de la serie. |
+| `lifeops-v1.1.0` | `version_upgrade` (v1.1.0) | 2026-10-27 | `published` | 7 | 2026-10-28 | 75 | ✅ Cubierto | Versión v1.1.0 cubierta con artículo propio publicado (app-lifeops_part6_analytics_dashboard_360). |
+| `lifeops-v1.0.1` | `version_upgrade` (v1.0.1) | 2026-10-24 | `published` | 7 | 2026-10-28 | 75 | ✅ Cubierto | Versión v1.0.1 respaldada por los artículos de la serie. |
+| `lifeops-v0.4.0` | `version_upgrade` (v0.4.0) | 2026-08-31 | `published` | 7 | 2026-10-28 | 75 | ✅ Cubierto | Versión v0.4.0 respaldada por los artículos de la serie. |
+| `lifeops-v0.3.0` | `version_upgrade` (v0.3.0) | 2026-08-30 | `published` | 7 | 2026-10-28 | 75 | ✅ Cubierto | Versión v0.3.0 respaldada por los artículos de la serie. |
+| `lifeops-v0.1.0` | `version_upgrade` (v0.1.0) | 2026-08-29 | `published` | 7 | 2026-10-28 | 75 | ✅ Cubierto | Versión v0.1.0 respaldada por los artículos de la serie. |
+| `pack-dar` | `kit_launch` (v1.0.0) | 2026-11-02 | `published` | 1 | 2026-11-02 | 53 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (53 vistas/30d). |
+| `weather` | `initial_launch` (v3.3.3) | 2025-10-25 | `published` | 4 | 2025-12-06 | 41 | ✅ Cubierto | Activo cubierto con 4 post(s) en producción (41 vistas/30d). |
+| `weather-v1.0.0` | `version_upgrade` (v1.0.0) | 2025-12-06 | `published` | 4 | 2025-12-06 | 41 | ✅ Cubierto | Versión v1.0.0 respaldada por los artículos de la serie. |
+| `weather-v0.3.0` | `version_upgrade` (v0.3.0) | 2025-11-15 | `published` | 4 | 2025-12-06 | 41 | ✅ Cubierto | Versión v0.3.0 respaldada por los artículos de la serie. |
+| `weather-v0.2.0` | `version_upgrade` (v0.2.0) | 2025-11-08 | `published` | 4 | 2025-12-06 | 41 | ✅ Cubierto | Versión v0.2.0 respaldada por los artículos de la serie. |
+| `weather-v0.1.0` | `version_upgrade` (v0.1.0) | 2025-10-31 | `published` | 4 | 2025-12-06 | 41 | ✅ Cubierto | Versión v0.1.0 respaldada por los artículos de la serie. |
+| `pack-mckinsey` | `kit_launch` (v1.0.0) | 2026-10-29 | `published` | 1 | 2026-10-29 | 38 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (38 vistas/30d). |
+| `pack-raci` | `kit_launch` (v1.0.0) | 2026-11-12 | `published` | 1 | 2026-11-12 | 38 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (38 vistas/30d). |
+| `pack-evm` | `kit_launch` (v1.0.0) | 2026-11-23 | `published` | 1 | 2026-11-23 | 38 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (38 vistas/30d). |
+| `pack-bcg` | `kit_launch` (v1.0.0) | 2026-10-26 | `published` | 1 | 2026-10-26 | 35 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (35 vistas/30d). |
+| `pack-amfe` | `kit_launch` (v1.0.0) | 2026-11-16 | `published` | 1 | 2026-11-16 | 32 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (32 vistas/30d). |
+| `flashcards` | `initial_launch` (v2.1.0) | 2025-10-17 | `published` | 2 | 2026-06-21 | 31 | ✅ Cubierto | Activo cubierto con 2 post(s) en producción (31 vistas/30d). |
+| `pack-dafo` | `kit_launch` (v1.0.0) | 2026-10-19 | `published` | 1 | 2026-10-13 | 26 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (26 vistas/30d). |
+| `snake` | `initial_launch` (v2.3.1) | 2026-02-14 | `published` | 1 | 2026-02-14 | 24 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (24 vistas/30d). |
+| `snake-v0.5.0` | `version_upgrade` (v0.5.0) | 2026-02-01 | `published` | 1 | 2026-02-14 | 24 | ✅ Cubierto | Versión v0.5.0 respaldada por los artículos de la serie. |
+| `snake-v0.1.0` | `version_upgrade` (v0.1.0) | 2026-01-20 | `published` | 1 | 2026-02-14 | 24 | ✅ Cubierto | Versión v0.1.0 respaldada por los artículos de la serie. |
+| `pack-pert` | `kit_launch` (v1.0.0) | 2026-11-19 | `published` | 1 | 2026-11-19 | 16 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (16 vistas/30d). |
+| `pack-porter` | `kit_launch` (v1.0.0) | 2026-10-21 | `published` | 1 | 2026-10-19 | 12 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (12 vistas/30d). |
+| `pack-pestel` | `kit_launch` (v1.0.0) | 2026-10-22 | `published` | 1 | 2026-10-22 | 12 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (12 vistas/30d). |
+| `conversor` | `initial_launch` (v2.1.0) | 2025-10-04 | `published` | 1 | 2025-10-04 | 8 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (8 vistas/30d). |
+| `conversor-v0.5.0` | `version_upgrade` (v0.5.0) | 2025-09-28 | `published` | 1 | 2025-10-04 | 8 | ✅ Cubierto | Versión v0.5.0 respaldada por los artículos de la serie. |
+| `conversor-v0.1.0` | `version_upgrade` (v0.1.0) | 2025-09-20 | `published` | 1 | 2025-10-04 | 8 | ✅ Cubierto | Versión v0.1.0 respaldada por los artículos de la serie. |
 | `maths` | `initial_launch` (v2.3.0) | 2025-09-11 | `published` | 1 | 2025-09-11 | 0 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (0 vistas/30d). |
 | `maths-v0.5.0` | `version_upgrade` (v0.5.0) | 2025-09-05 | `published` | 1 | 2025-09-11 | 0 | ✅ Cubierto | Versión v0.5.0 respaldada por los artículos de la serie. |
 | `maths-v0.1.0` | `version_upgrade` (v0.1.0) | 2025-08-28 | `published` | 1 | 2025-09-11 | 0 | ✅ Cubierto | Versión v0.1.0 respaldada por los artículos de la serie. |
 
 ---
 
-## 7. Plan de Acción Inmediato y Relevo Editorial
+## 7. Auditoría de Canibalización de Keywords (GSC)
 
-1. **Relevo a `E04-bilingual-seo-editor`:** Actualizar en `content/es/posts/` y `content/en/posts/` los títulos y descripciones de los **Top 12 Quick Wins**, eliminando el truncamiento en SERP y subiendo su `seo_audit.score` a 100/100.
-2. **Relevo a `E05-content-monetizer`:** Inyectar en los **15 Huérfanos de Monetización** los shortcodes `{{< helix-waitlist >}}`, `{{< app-ref slug="..." >}}` y las tarjetas de producto de Suite 01 / Suite 02.
-3. **Relevo a `E01-editorial-orchestrator` / `E03-technical-writer`:** Atender las **alertas de releases silenciosas**, planificando el artículo técnico evolutivo de `Weather v3.3.0` (Hito 2.7 Parte 5) y las notas de release para `Neon Snake v2.3.1`, `Mazo Mágico v2.1.0` y `Ábaco Arcade v2.3.0` en Brevo Newsletter 2.0.
-4. **Programación en Autopilot 2.0 (Hito 7.3):** Priorizar el desarrollo y redacción de la idea **#1** (`idea-claude-subagents-sdd-contracts`, ROI 94.9) y la idea **#2** (`idea-monte-carlo-capex-risk`, ROI 88.0).
+Consultas reales de Search Console donde `>= 2` URLs del mismo idioma compiten por impresiones:
+
+| Query | Idioma | Imp. Totales | Clics | URLs en Competencia (Top 3) | Acción Recomendada E02 |
+| :--- | :---: | :---: | :---: | :--- | :--- |
+| `grafo de conocimiento vs base de datos vectorial` | `es` | **91** | 0 | `/es/posts/graphrag` (67 imp, pos 16.3) · `/es/posts/pgvector_vs_vectordb` (24 imp, pos 7.0) | Consolidar intención en /es/posts/graphrag con enlaces internos desde las URLs secundarias o diferenciar ángulo/H1. |
+
+---
+
+## 8. Rendimiento por Canal de Adquisición (ES vs. EN) — Coste 0 € (`ADR-033`)
+
+> **Política `INV-PULSE-12`:** Atribución unificada vía GA4 Acquisition + UTMs (`linkedin`, `x`, `devto`, `coderlegion`, `newsletter`, `google_organic`, `direct`). **X/Twitter nativo permanece en stand-by (coste `0 €`)**; **LinkedIn cubre exclusivamente la Página de Empresa**.
+
+| Canal Canónico | Sesiones 30d | ES / EN | % EN | Δ 30d | Eng. Rate % | Eng. Medio | Eventos Clave | Conv. % |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **`direct`** | **2,243** | 1039 / 1170 | 53.0% | +120.8% | 31.4% | 10.7s | 9 | 0.40% |
+| **`other`** | **334** | 161 / 168 | 51.1% | +307.3% | 36.5% | 19.8s | 1 | 0.30% |
+| **`google_organic`** | **229** | 129 / 100 | 43.7% | +59.0% | 54.6% | 35.4s | 0 | 0.00% |
+| **`linkedin`** | **158** | 87 / 71 | 44.9% | +305.1% | 85.4% | 10.1s | 2 | 1.27% |
+| **`x`** | **56** | 36 / 20 | 35.7% | +500.0% | 82.1% | 8.8s | 0 | 0.00% |
+| **`coderlegion`** | **41** | 13 / 28 | 68.3% | +500.0% | 90.2% | 6.1s | 0 | 0.00% |
+| **`newsletter`** | **11** | 10 / 1 | 9.1% | +266.7% | 54.5% | 1.8s | 0 | 0.00% |
+| **`devto`** | **1** | 1 / 0 | 0.0% | +100.0% | 100.0% | 16.0s | 0 | 0.00% |
+
+### 🏆 Ganadores Ocultos por Canal (Candidatos a Ola de Reciclaje +21d en `E06`)
+
+| Activo / ID | Canal | Sesiones 30d | Eng. Medio | Eventos Clave | Acción Recomendada E06 |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| — | — | 0 | 0.0s | 0 | ✅ Sin ganadores ocultos pendientes con umbral (`>= 45s` o conv., `< 30` sesiones). |
+
+### 🕵️ Alertas de *Dark Social* / Fuga de Atribución UTM
+
+| Tipo Alerta | Severidad | Despacho / Canal | Direct Actual vs. Base | Pico % | Acción Recomendada |
+| :--- | :---: | :--- | :---: | :---: | :--- |
+| `dark_social_spike` | 🔴 Alta | `amfe-2026-11-16-wave1-es-linkedin` | 162 vs. 104.0 | **+55.8%** | Pico +56% de tráfico (direct) tras despacho 'amfe-2026-11-16-wave1-es-linkedin' con solo 0 sesiones UTM en [linkedin]. Verificar UTMs ADR-033 en enlaces compartidos. |
+| `dark_social_spike` | 🔴 Alta | `amfe-2026-11-16-wave1-es-brevo` | 162 vs. 104.0 | **+55.8%** | Pico +56% de tráfico (direct) tras despacho 'amfe-2026-11-16-wave1-es-brevo' con solo 0 sesiones UTM en [social]. Verificar UTMs ADR-033 en enlaces compartidos. |
+| `dark_social_spike` | 🔴 Alta | `amfe-2026-11-16-wave2-en-native` | 162 vs. 104.0 | **+55.8%** | Pico +56% de tráfico (direct) tras despacho 'amfe-2026-11-16-wave2-en-native' con solo 2 sesiones UTM en [linkedin,x]. Verificar UTMs ADR-033 en enlaces compartidos. |
+| `dark_social_spike` | 🔴 Alta | `amfe-2026-11-16-wave2-en-brevo` | 162 vs. 104.0 | **+55.8%** | Pico +56% de tráfico (direct) tras despacho 'amfe-2026-11-16-wave2-en-brevo' con solo 0 sesiones UTM en [social]. Verificar UTMs ADR-033 en enlaces compartidos. |
+| `dark_social_spike` | 🔴 Alta | `magnific-ai-2026-11-21-wave1-es-native` | 206 vs. 104.0 | **+98.1%** | Pico +98% de tráfico (direct) tras despacho 'magnific-ai-2026-11-21-wave1-es-native' con solo 3 sesiones UTM en [linkedin,x]. Verificar UTMs ADR-033 en enlaces compartidos. |
+| `dark_social_spike` | 🔴 Alta | `magnific-ai-2026-11-21-wave2-en-native` | 206 vs. 104.0 | **+98.1%** | Pico +98% de tráfico (direct) tras despacho 'magnific-ai-2026-11-21-wave2-en-native' con solo 3 sesiones UTM en [linkedin,x]. Verificar UTMs ADR-033 en enlaces compartidos. |
+| `dark_social_spike` | 🔴 Alta | `magnific-ai-2026-11-21-wave3a-es-devto` | 206 vs. 104.0 | **+98.1%** | Pico +98% de tráfico (direct) tras despacho 'magnific-ai-2026-11-21-wave3a-es-devto' con solo 0 sesiones UTM en [devto]. Verificar UTMs ADR-033 en enlaces compartidos. |
+| `dark_social_spike` | 🔴 Alta | `magnific-ai-2026-11-21-wave3b-en-syndication` | 170 vs. 104.0 | **+63.5%** | Pico +64% de tráfico (direct) tras despacho 'magnific-ai-2026-11-21-wave3b-en-syndication' con solo 0 sesiones UTM en [devto,coderlegion]. Verificar UTMs ADR-033 en enlaces compartidos. |
+| `dark_social_spike` | 🔴 Alta | `pulse-part2-2026-11-22-wave1-es-native` | 170 vs. 104.0 | **+63.5%** | Pico +64% de tráfico (direct) tras despacho 'pulse-part2-2026-11-22-wave1-es-native' con solo 2 sesiones UTM en [linkedin,x]. Verificar UTMs ADR-033 en enlaces compartidos. |
+| `dark_social_spike` | 🔴 Alta | `pulse-part2-2026-11-22-wave2-en-native` | 170 vs. 104.0 | **+63.5%** | Pico +64% de tráfico (direct) tras despacho 'pulse-part2-2026-11-22-wave2-en-native' con solo 2 sesiones UTM en [linkedin,x]. Verificar UTMs ADR-033 en enlaces compartidos. |
+| `dark_social_spike` | 🔴 Alta | `pulse-part2-2026-11-22-wave3a-es-devto` | 170 vs. 104.0 | **+63.5%** | Pico +64% de tráfico (direct) tras despacho 'pulse-part2-2026-11-22-wave3a-es-devto' con solo 0 sesiones UTM en [devto]. Verificar UTMs ADR-033 en enlaces compartidos. |
+| `high_direct_share` | 🟡 Media | `linkedin,x,devto,coderlegion` | 2243 vs. 1016.0 | **+120.8%** | Tráfico directo creció +121% (73.0% del total) mientras atribución social UTM es 8.3%. Auditar enlaces manuales en bio/comentarios. |
+
+### 🌐 Embudo Nativo Comunidades Tech & PTR (Dev.to + CoderLegion + LinkedIn Empresa — Coste 0 €)
+
+| Plataforma | Estado Conector | Publicaciones (Emparejadas) | Vistas / Impresiones | Clics / CTR Nativo | Reacciones / Coment. | Sesiones GA4 (30d) | PTR % (Traspaso) |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **`devto`** | `unavailable` | 0 (0) | **0** | — | 0 / 0 | 1 | **0.00%** |
+| **`coderlegion`** | `ok` | 0 (0) | **0** | — | 0 / 0 | 41 | **0.00%** |
+| **`linkedin_company`** | `unavailable` | 0 (0) | **0** | — | 0 / 0 | 158 | **0.00%** |
+| **`x`** | `standby_zero_cost` | — | *Stand-by 0 €* | — | — | 56 | *Solo GA4+UTM* |
+
+*Nota LinkedIn Empresa:* Alcance exclusivo de **Página de Empresa** (`LINKEDIN_COMPANY_ID`) · **0 seguidores** · Cero perfiles personales ni scraping (`INV-PULSE-12`).
+*Nota X / Twitter:* Atribución nativa en stand-by por política de coste 0 € (API de pago suspendida); tráfico medido exclusivamente vía GA4 Acquisition + UTMs (`Hito 7.11`).
+
+### 🚨 Alertas de Fuga de Traspaso (`>= 300` vistas nativas con `PTR < 2.0%`)
+
+| Activo / ID | Plataforma | Vistas Nativas | Reacciones / Coment. | Sesiones GA4 | PTR % | Acción Recomendada E06 |
+| :--- | :---: | :---: | :---: | :---: | :---: | :--- |
+| — | — | 0 | 0 / 0 | 0 | 0.00% | ✅ Sin fugas críticas de traspaso detectadas (`>= 300` vistas con `PTR < 2.0%`). |
+
+### 🛡️ Escudo Anti-Canibalización Canónica (`>= 500` vistas nativas y `0` imp. GSC tras `> 21d`)
+
+| Activo / ID | Plataforma | Vistas Nativas | Imp. GSC (30d) | Días Publicado | URL Canónica | Acción Recomendada E02 / E06 |
+| :--- | :---: | :---: | :---: | :---: | :--- | :--- |
+| — | — | 0 | 0 | 0d | — | ✅ Sin alertas de canibalización canónica externa (`>= 500` vistas con `0` imp. GSC). |
+
+---
+
+## 9. Plan de Acción Inmediato y Relevo Editorial
+
+1. **Relevo a `E04-bilingual-seo-editor`:** Optimizar los **12 Quick Wins prioritarios** (liderados por `kantorovich` con `3,003` imp. GSC), ajustando títulos/meta-descriptions a las queries reales detectadas.
+2. **Relevo a `E05-content-monetizer`:** Resolver los **1 huérfanos de monetización** actuales e impulsar la cobertura en categorías con alta tracción orgánica y bajo ratio comercial.
+3. **Relevo a `E06-social-syndicator`:** Reciclar los **0 ganadores ocultos por canal**, corregir las **0 fugas de traspaso PTR**, revisar las **0 alertas del escudo canónico** y auditar las **12 alertas de Dark Social** garantizando UTMs `ADR-033`.
+4. **Relevo a `E01-editorial-orchestrator` / `E03-technical-writer`:** Atender las **17 alertas de releases silenciosas** y resolver las **1 alertas de canibalización** en el calendario de las Oleadas Semanales.
+5. **Priorización en Backlog (`data/editorial/backlog.yaml`):** Lanzar `idea-claude-subagents-sdd-contracts` (ROI 81.4) y `idea-monte-carlo-capex-risk` (ROI 77.3).

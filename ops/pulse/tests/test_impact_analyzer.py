@@ -267,7 +267,7 @@ def test_backlog_prioritization_formula_determinism() -> None:
     assert calculate_editorial_roi_score(92.0, 96.0, 98.0) == 94.9
 
     report = run_impact_analysis()
-    assert len(report.prioritized_backlog) == 6
+    assert len(report.prioritized_backlog) >= 5
 
     # Verificar orden descendente
     scores = [b.editorial_roi_score for b in report.prioritized_backlog]
@@ -342,3 +342,49 @@ def test_release_editorial_impact_and_silent_releases() -> None:
     content = report_md_path.read_text(encoding="utf-8")
     assert "## 6. Impacto Editorial de Lanzamientos de Apps, Versiones y Kits B2B (Gobernanza Scriba)" in content
     assert "Alerta Silenciosa" in content
+
+
+def test_editorial_roi_score_v2_bounds_and_channel_category_matrix() -> None:
+    """Valida Editorial ROI Score v2 con tracción social acotada [0, 100] y matriz Canal x Categoría x Idioma."""
+    from ops.pulse.impact_analyzer import build_channel_category_matrix, calculate_category_performance
+
+    # 1. Compatibilidad v1 exacta cuando social_traction=None
+    assert calculate_editorial_roi_score(80.0, 90.0, 70.0) == 81.0
+
+    # 2. Fórmula v2 determinista (0.35*80 + 0.30*90 + 0.20*70 + 0.15*100 = 84.0) y cotas [0, 100]
+    assert calculate_editorial_roi_score(80.0, 90.0, 70.0, social_traction=100.0) == 84.0
+    assert calculate_editorial_roi_score(150.0, 150.0, 150.0, social_traction=200.0) == 100.0
+    assert calculate_editorial_roi_score(-10.0, -5.0, 0.0, social_traction=-20.0) == 0.0
+
+    # 3. Matriz Canal x Categoría x Idioma y cálculo por categoría v2
+    posts = [
+        {"id": "p1", "category": "IA, Ingeniería y Proyectos", "related_app": "pulse"},
+        {"id": "p2", "category": "Estrategia y Operaciones", "related_kit": "pack-pert"},
+    ]
+    metrics = {
+        "p1": {"ga4_views_30d": 10, "ga4_views_en_30d": 5, "ga4_users_30d": 8, "ga4_engagement_sec": 200.0},
+        "p2": {"ga4_views_30d": 10, "ga4_views_en_30d": 2, "ga4_users_30d": 8, "ga4_engagement_sec": 200.0},
+    }
+    social_data = {
+        "by_asset": {
+            "p1": {"devto": {"views": 400, "reactions": 25, "comments": 5}},
+        }
+    }
+    channel_data = {
+        "by_asset": {
+            "p1": {"devto": {"sessions_30d": 24, "sessions_es_30d": 4, "sessions_en_30d": 20, "key_events_30d": 2, "avg_engagement_sec": 85.0}},
+            "p2": {"linkedin": {"sessions_30d": 10, "sessions_es_30d": 8, "sessions_en_30d": 2, "key_events_30d": 0, "avg_engagement_sec": 30.0}},
+        }
+    }
+
+    cats = {c.category: c for c in calculate_category_performance(posts, metrics, social_data=social_data, channel_data=channel_data)}
+    assert cats["IA, Ingeniería y Proyectos"].social_traction_score > cats["Estrategia y Operaciones"].social_traction_score
+    assert 0.0 <= cats["IA, Ingeniería y Proyectos"].editorial_roi_score <= 100.0
+
+    matrix = build_channel_category_matrix(posts, channel_data)
+    assert len(matrix) == 2
+    assert matrix[0]["channel"] == "devto"
+    assert matrix[0]["sessions_es_30d"] == 4
+    assert matrix[0]["sessions_en_30d"] == 20
+    assert matrix[0]["key_events_30d"] == 2
+

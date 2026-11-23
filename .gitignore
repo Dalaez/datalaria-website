@@ -49,3 +49,4 @@ Executive_Decision_Pack_*.zip
 
 # Tracker Excel privado local de Datalaria Pulse
 /data/pulse/private/Pulse_Private_Tracker.xlsx
+/data/pulse/private/imports/linkedin/*.xlsx

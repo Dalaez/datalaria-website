@@ -119,3 +119,41 @@ def test_inv_pulse_10_no_hardcoded_demo_password_in_source_or_static():
             assert match is None, (
                 f"Credencial hardcoded prohibida por INV-PULSE-10 en {file_path}: {match.group(0)}"
             )
+
+
+def test_admin_omnichannel_snapshot_and_public_json_firewall_inv_pulse_2_9_12():
+    """Hito 7.14: Verifica payload privado RLS omnicanal, cero fuga en public.json y paridad i18n ES/EN."""
+    import json
+    from ops.pulse.sync_admin_snapshot import build_omnichannel_intelligence_payload
+
+    omni = build_omnichannel_intelligence_payload()
+    assert omni["is_synthetic"] is False
+    assert omni["roi_formula_version"] == "v2"
+    assert omni["x_standby_zero_cost"] is True
+    assert "funnel_4_layers" in omni
+    assert "social_funnel" in omni
+    assert "channel_category_matrix" in omni
+    assert "top_recommendations" in omni
+
+    public_json = ROOT_DIR / "static" / "apps" / "pulse" / "data" / "public.json"
+    if public_json.is_file():
+        raw = public_json.read_text(encoding="utf-8")
+        for forbidden in (
+            "omnichannel_intelligence",
+            "channel_metrics",
+            "social_metrics",
+            "distribution_ledger",
+        ):
+            assert forbidden not in raw, f"Fuga prohibida '{forbidden}' detectada en public.json"
+
+        parsed = json.loads(raw)
+        assert "omnichannel_intelligence" not in parsed
+
+    # Paridad estricta de claves ES/EN en apps/pulse/web/src/lib/i18n.ts
+    i18n_ts = (ROOT_DIR / "apps" / "pulse" / "web" / "src" / "lib" / "i18n.ts").read_text(encoding="utf-8")
+    es_section = i18n_ts.split("es: {", 1)[1].split("en: {", 1)[0]
+    en_section = i18n_ts.split("en: {", 1)[1]
+    es_keys = set(re.findall(r"^\s*([a-zA-Z0-9_]+):", es_section, flags=re.M))
+    en_keys = set(re.findall(r"^\s*([a-zA-Z0-9_]+):", en_section, flags=re.M))
+    assert es_keys == en_keys, f"Asimetría i18n ES vs EN: diff={es_keys ^ en_keys}"
+

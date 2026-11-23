@@ -31,10 +31,16 @@ import yaml
 from ops.pulse.models import (
     BacklogPrioritizedItem,
     BridgeType,
+    CannibalizationAlertItem,
+    CanonicalShieldAlertItem,
     CategoryPerformanceItem,
+    ChannelSummaryItem,
+    DarkSocialAlertItem,
     DecayAlertItem,
+    HiddenChannelWinnerItem,
     MonetizationOrphanItem,
     OpportunityType,
+    PullThroughAlertItem,
     PulseImpactReport,
     QuickWinItem,
     ReleaseEditorialImpactItem,
@@ -44,8 +50,12 @@ ROOT_DIR = Path(__file__).resolve().parent.parent.parent
 INDEX_PATH = ROOT_DIR / "data" / "pulse" / "private" / "index.json"
 METRICS_PATH = ROOT_DIR / "data" / "pulse" / "private" / "metrics.json"
 MONTHLY_METRICS_PATH = ROOT_DIR / "data" / "pulse" / "private" / "monthly_metrics.json"
+GSC_QUERIES_PATH = ROOT_DIR / "data" / "pulse" / "private" / "gsc_queries.json"
+CHANNEL_METRICS_PATH = ROOT_DIR / "data" / "pulse" / "private" / "channel_metrics.json"
+SOCIAL_METRICS_PATH = ROOT_DIR / "data" / "pulse" / "private" / "social_metrics.json"
 KITS_PATH = ROOT_DIR / "data" / "pulse" / "kits.yaml"
 BACKLOG_PATH = ROOT_DIR / "data" / "editorial" / "backlog.yaml"
+DISPATCH_QUEUE_PATH = ROOT_DIR / "data" / "editorial" / "dispatch_queue.yaml"
 REPORT_JSON_PATH = ROOT_DIR / "data" / "pulse" / "private" / "impact_report.json"
 REPORT_MD_PATH = ROOT_DIR / "specs" / "audit" / "IMPACT_REPORT.md"
 
@@ -206,10 +216,27 @@ ORPHAN_BRIDGE_MAPPING: Dict[str, Dict[str, str]] = {
 }
 
 
-def calculate_editorial_roi_score(seo_demand: float, monetization_fit: float, synergy: float) -> float:
-    """Calcula determinísticamente el Editorial ROI Score de una propuesta o activo."""
-    score = 0.40 * seo_demand + 0.35 * monetization_fit + 0.25 * synergy
-    return round(float(score), 1)
+def calculate_editorial_roi_score(
+    seo_demand: float,
+    monetization_fit: float,
+    synergy: float,
+    social_traction: Optional[float] = None,
+) -> float:
+    """
+    Calcula determinísticamente el Editorial ROI Score v2 acotado en [0, 100].
+    - Sin historial social (`social_traction=None`): preserva fórmula v1 (40% SEO + 35% Monetización + 25% Sinergia).
+    - Con señal social validada (`social_traction` en [0, 100]): Editorial ROI Score v2
+      (35% SEO + 30% Monetización + 20% Sinergia + 15% Tracción Social/Comunidad).
+    """
+    s_seo = max(0.0, min(100.0, float(seo_demand)))
+    s_mon = max(0.0, min(100.0, float(monetization_fit)))
+    s_syn = max(0.0, min(100.0, float(synergy)))
+    if social_traction is None:
+        score = 0.40 * s_seo + 0.35 * s_mon + 0.25 * s_syn
+    else:
+        s_soc = max(0.0, min(100.0, float(social_traction)))
+        score = 0.35 * s_seo + 0.30 * s_mon + 0.20 * s_syn + 0.15 * s_soc
+    return round(max(0.0, min(100.0, float(score))), 1)
 
 
 def _optimize_text(text: str, min_len: int, max_len: int, fallback_suffix: str = "") -> str:
@@ -262,7 +289,7 @@ def detect_quick_wins_ctr(
         b_es = post.get("brief_es") or post.get("brief_en") or t_es
 
         # Condiciones de activación
-        is_gsc = bool(impr >= 100 and (4.0 <= pos <= 20.0 or ctr < 2.5))
+        is_gsc = bool(impr >= 30 and ((4.0 <= pos <= 20.0) or ctr < 2.5))
         is_trunc = bool(views >= median_views and (len(t_es) > 95 or len(b_es) > 250 or score < 100))
         is_high_eng = bool(views >= median_views and avg_eng >= 30.0 and (score < 100 or len(t_es) > 95))
 
@@ -271,13 +298,20 @@ def detect_quick_wins_ctr(
 
         if is_gsc:
             opp_type: OpportunityType = "gsc_position_4_20"
-            prio = min(100.0, round(float(impr / 10.0 + (25.0 - pos) * 2), 1))
+            prio = min(100.0, round(float(min(impr / 50.0, 65.0) + max(0.0, 25.0 - pos) * 1.4), 1))
         elif is_trunc:
             opp_type = "serp_snippet_truncation"
             prio = min(100.0, round(float(views * 0.5 + (100 - score) * 0.5), 1))
         else:
             opp_type = "high_retention_low_ctr"
             prio = min(100.0, round(float(avg_eng * 0.6 + views * 0.4), 1))
+
+        top_queries = m.get("gsc_top_queries") or []
+        top_query: Optional[str] = None
+        if isinstance(top_queries, list) and top_queries:
+            q0 = top_queries[0]
+            if isinstance(q0, dict) and q0.get("query"):
+                top_query = str(q0["query"])
 
         # Recomendaciones de título y meta descripción
         curated = CURATED_QUICK_WINS.get(pid)
@@ -310,6 +344,7 @@ def detect_quick_wins_ctr(
                 recommended_title_es=rec_t_es,
                 recommended_title_en=rec_t_en,
                 recommended_desc_es=rec_d_es,
+                top_query=top_query,
             )
         )
 
@@ -398,32 +433,84 @@ def detect_monetization_orphans(
 def calculate_category_performance(
     published_posts: List[Dict[str, Any]],
     metrics: Dict[str, Dict[str, Any]],
+    social_data: Optional[Dict[str, Any]] = None,
+    channel_data: Optional[Dict[str, Any]] = None,
 ) -> List[CategoryPerformanceItem]:
-    """Calcula agregados cuantitativos y cobertura de monetización por cada categoría."""
+    """
+    Calcula agregados cuantitativos, métricas GSC, cuota EN, tracción social validada (Editorial ROI Score v2)
+    y cobertura de monetización por categoría.
+    """
     cat_data: Dict[str, Dict[str, Any]] = {}
+    social_by_asset = (social_data or {}).get("by_asset") if isinstance(social_data, dict) else {}
+    if not isinstance(social_by_asset, dict):
+        social_by_asset = {}
+    channel_by_asset = (channel_data or {}).get("by_asset") if isinstance(channel_data, dict) else {}
+    if not isinstance(channel_by_asset, dict):
+        channel_by_asset = {}
+
+    has_social_history = bool(social_by_asset or channel_by_asset)
 
     for post in published_posts:
         cat = post.get("category", "General")
         pid = post["id"]
         m = metrics.get(pid, {})
-        v = int(m.get("ga4_views_30d", 0))
-        u = int(m.get("ga4_users_30d", 0))
-        eng = float(m.get("ga4_engagement_sec", 0.0))
+        v = int(m.get("ga4_views_30d", 0) or 0)
+        v_en = int(m.get("ga4_views_en_30d", 0) or 0)
+        u = int(m.get("ga4_users_30d", 0) or 0)
+        eng = float(m.get("ga4_engagement_sec", 0.0) or 0.0)
+        g_impr = int(m.get("gsc_impressions_30d", 0) or 0)
+        g_clk = int(m.get("gsc_clicks_30d", 0) or 0)
         is_mon = bool(post.get("related_app") or post.get("related_kit"))
+
+        # Señales sociales/comunidad validadas (Dev.to, CoderLegion, LinkedIn Empresa, X)
+        p_soc = social_by_asset.get(pid) if isinstance(social_by_asset.get(pid), dict) else {}
+        soc_native_views = 0
+        soc_reactions = 0
+        soc_comments = 0
+        for p_vals in p_soc.values():
+            if isinstance(p_vals, dict):
+                soc_native_views += int(p_vals.get("views", 0) or p_vals.get("impressions", 0) or 0)
+                soc_reactions += int(p_vals.get("reactions", 0) or 0)
+                soc_comments += int(p_vals.get("comments", 0) or 0)
+
+        p_ch = channel_by_asset.get(pid) if isinstance(channel_by_asset.get(pid), dict) else {}
+        soc_sessions = 0
+        soc_key_events = 0
+        for ch_name in ("linkedin", "x", "devto", "coderlegion"):
+            c_vals = p_ch.get(ch_name)
+            if isinstance(c_vals, dict):
+                soc_sessions += int(c_vals.get("sessions_30d", 0) or 0)
+                soc_key_events += int(c_vals.get("key_events_30d", 0) or 0)
 
         if cat not in cat_data:
             cat_data[cat] = {
                 "posts": 0,
                 "views": 0,
+                "views_en": 0,
                 "users": 0,
                 "eng": 0.0,
                 "monetized": 0,
+                "gsc_impr": 0,
+                "gsc_clicks": 0,
+                "soc_native_views": 0,
+                "soc_reactions": 0,
+                "soc_comments": 0,
+                "soc_sessions": 0,
+                "soc_key_events": 0,
             }
 
         cat_data[cat]["posts"] += 1
         cat_data[cat]["views"] += v
+        cat_data[cat]["views_en"] += v_en
         cat_data[cat]["users"] += u
         cat_data[cat]["eng"] += eng
+        cat_data[cat]["gsc_impr"] += g_impr
+        cat_data[cat]["gsc_clicks"] += g_clk
+        cat_data[cat]["soc_native_views"] += soc_native_views
+        cat_data[cat]["soc_reactions"] += soc_reactions
+        cat_data[cat]["soc_comments"] += soc_comments
+        cat_data[cat]["soc_sessions"] += soc_sessions
+        cat_data[cat]["soc_key_events"] += soc_key_events
         if is_mon:
             cat_data[cat]["monetized"] += 1
 
@@ -434,13 +521,26 @@ def calculate_category_performance(
         avg_v = round(d["views"] / n, 1)
         avg_e = round(d["eng"] / u_tot, 1)
         mon_pct = round((d["monetized"] / n) * 100.0, 1)
+        g_impr = d["gsc_impr"]
+        g_clk = d["gsc_clicks"]
+        avg_ctr = round((g_clk / g_impr * 100.0) if g_impr > 0 else 0.0, 2)
+        en_share = round((d["views_en"] / d["views"] * 100.0) if d["views"] > 0 else 0.0, 1)
 
-        # Editorial ROI Score por categoría:
-        # Demanda (vistas medias normalizadas), Monetización (% cobertura), Sinergia (engagement)
+        cat_ptr = calculate_ptr_pct(d["soc_sessions"], d["soc_native_views"]) if d["soc_native_views"] > 0 else 0.0
+        eng_signal = min(45.0, d["soc_reactions"] * 1.2 + d["soc_comments"] * 2.5)
+        ga4_signal = min(35.0, (d["soc_sessions"] / n) * 12.0 + d["soc_key_events"] * 10.0)
+        ptr_signal = min(20.0, cat_ptr * 4.0)
+        soc_traction = round(min(100.0, eng_signal + ga4_signal + ptr_signal), 1)
+
         seo_factor = min(100.0, avg_v * 3.5)
         mon_factor = mon_pct
         syn_factor = min(100.0, avg_e * 2.5)
-        cat_roi = calculate_editorial_roi_score(seo_factor, mon_factor, syn_factor)
+        cat_roi = calculate_editorial_roi_score(
+            seo_factor,
+            mon_factor,
+            syn_factor,
+            social_traction=soc_traction if has_social_history else None,
+        )
 
         items.append(
             CategoryPerformanceItem(
@@ -453,11 +553,100 @@ def calculate_category_performance(
                 monetized_posts=d["monetized"],
                 monetization_coverage_pct=mon_pct,
                 editorial_roi_score=cat_roi,
+                social_traction_score=soc_traction,
+                total_gsc_impressions_30d=g_impr,
+                total_gsc_clicks_30d=g_clk,
+                avg_gsc_ctr_pct=avg_ctr,
+                en_traffic_share_pct=en_share,
             )
         )
 
     items.sort(key=lambda x: x.editorial_roi_score, reverse=True)
     return items
+
+
+_NON_INDEXABLE_TAG_RE = re.compile(r"^/(?:(?:es|en)/)?tags(?:/|$)", re.IGNORECASE)
+
+
+def detect_keyword_cannibalization(
+    gsc_queries_data: Optional[Dict[str, Any]] = None,
+    min_impressions: int = 20,
+    exclude_non_indexable_taxonomies: bool = True,
+) -> List[CannibalizationAlertItem]:
+    """
+    Detecta consultas en Search Console donde >= 2 URLs del mismo idioma compiten
+    por la misma keyword con al menos `min_impressions` impresiones totales.
+    Cuando `exclude_non_indexable_taxonomies` está activo (INV-TAX-7), omite rutas `/tags/`
+    gobernadas por `noindex, follow`.
+    """
+    if gsc_queries_data is None:
+        if not GSC_QUERIES_PATH.exists():
+            return []
+        try:
+            with open(GSC_QUERIES_PATH, "r", encoding="utf-8") as f:
+                gsc_queries_data = json.load(f)
+        except Exception:
+            return []
+
+    by_page = gsc_queries_data.get("by_page", {}) or {}
+    groups: Dict[Tuple[str, str], Dict[str, Any]] = {}
+
+    for page_path, qlist in by_page.items():
+        if not isinstance(qlist, list):
+            continue
+        if exclude_non_indexable_taxonomies and _NON_INDEXABLE_TAG_RE.match(str(page_path)):
+            continue
+        for qrow in qlist:
+            q_text = str(qrow.get("query") or "").strip()
+            if not q_text or q_text.lower().startswith("site:"):
+                continue
+            lang = qrow.get("lang") or ("es" if page_path.startswith("/es/") else "en" if page_path.startswith("/en/") else "other")
+            impr = int(qrow.get("impressions", 0) or 0)
+            clk = int(qrow.get("clicks", 0) or 0)
+            pos = float(qrow.get("position", 0.0) or 0.0)
+
+            gkey = (q_text.lower(), lang)
+            bucket = groups.setdefault(
+                gkey,
+                {"display_query": q_text, "lang": lang, "urls": {}},
+            )
+            prev_u = bucket["urls"].get(page_path)
+            if prev_u:
+                prev_u["impressions"] += impr
+                prev_u["clicks"] += clk
+            else:
+                bucket["urls"][page_path] = {
+                    "url": page_path,
+                    "impressions": impr,
+                    "clicks": clk,
+                    "position": round(pos, 1),
+                }
+
+    alerts: List[CannibalizationAlertItem] = []
+    for (_, _), bucket in groups.items():
+        urls_list = list(bucket["urls"].values())
+        if len(urls_list) < 2:
+            continue
+        tot_impr = sum(u["impressions"] for u in urls_list)
+        if tot_impr < min_impressions:
+            continue
+        tot_clk = sum(u["clicks"] for u in urls_list)
+        urls_list.sort(key=lambda u: (u["impressions"], u["clicks"]), reverse=True)
+        leader = urls_list[0]["url"]
+        action = f"Consolidar intención en {leader} con enlaces internos desde las URLs secundarias o diferenciar ángulo/H1."
+        alerts.append(
+            CannibalizationAlertItem(
+                query=bucket["display_query"],
+                lang=bucket["lang"],
+                total_impressions=tot_impr,
+                total_clicks=tot_clk,
+                competing_urls=urls_list[:5],
+                recommended_action=action,
+            )
+        )
+
+    alerts.sort(key=lambda x: (x.total_impressions, x.total_clicks), reverse=True)
+    return alerts
 
 
 def detect_decay_alerts(
@@ -508,8 +697,11 @@ def detect_decay_alerts(
     return alerts
 
 
-def prioritize_backlog(backlog_file: Path = BACKLOG_PATH) -> List[BacklogPrioritizedItem]:
-    """Lee strategic_backlog desde backlog.yaml y calcula el Editorial ROI Score ordenado."""
+def prioritize_backlog(
+    backlog_file: Path = BACKLOG_PATH,
+    category_social_scores: Optional[Dict[str, float]] = None,
+) -> List[BacklogPrioritizedItem]:
+    """Lee strategic_backlog desde backlog.yaml y calcula el Editorial ROI Score v2 ordenado."""
     if not backlog_file.exists():
         return []
 
@@ -520,21 +712,30 @@ def prioritize_backlog(backlog_file: Path = BACKLOG_PATH) -> List[BacklogPriorit
     prioritized: List[BacklogPrioritizedItem] = []
 
     for item in raw_items:
+        cat = item.get("category", "General")
         s_seo = float(item.get("seo_demand_score", 50.0))
         s_mon = float(item.get("monetization_fit_score", 50.0))
         s_syn = float(item.get("ecosystem_synergy_score", 50.0))
-        roi = calculate_editorial_roi_score(s_seo, s_mon, s_syn)
+        raw_soc = item.get("social_traction_score")
+        if raw_soc is not None:
+            s_soc: Optional[float] = float(raw_soc)
+        elif category_social_scores and cat in category_social_scores:
+            s_soc = float(category_social_scores[cat])
+        else:
+            s_soc = None
+        roi = calculate_editorial_roi_score(s_seo, s_mon, s_syn, social_traction=s_soc)
 
         prioritized.append(
             BacklogPrioritizedItem(
                 id=item["id"],
                 title_es=item["title_es"],
                 title_en=item["title_en"],
-                category=item.get("category", "General"),
+                category=cat,
                 target_kit_or_app=item.get("target_kit_or_app", ""),
                 seo_demand_score=s_seo,
                 monetization_fit_score=s_mon,
                 ecosystem_synergy_score=s_syn,
+                social_traction_score=round(s_soc, 1) if s_soc is not None else 0.0,
                 editorial_roi_score=roi,
                 rationale_es=item.get("rationale_es", ""),
             )
@@ -715,16 +916,581 @@ def analyze_release_editorial_impact(
     return impact_items
 
 
-def generate_impact_report_markdown(report: PulseImpactReport) -> str:
-    """Genera el informe ejecutivo completo en Markdown firmado por E02."""
+_SOCIAL_CHANNELS = frozenset({"linkedin", "x", "devto", "coderlegion"})
+
+
+def analyze_channel_performance(
+    channel_data: Optional[Dict[str, Any]],
+) -> List[ChannelSummaryItem]:
+    """Construye la matriz ordenada de rendimiento por canal canónico de adquisición (ADR-033)."""
+    if not channel_data or not isinstance(channel_data, dict):
+        return []
+    by_channel = channel_data.get("by_channel") or {}
+    if not isinstance(by_channel, dict):
+        return []
+
+    items: List[ChannelSummaryItem] = []
+    for ch, raw in by_channel.items():
+        if not isinstance(raw, dict):
+            continue
+        sessions = int(raw.get("sessions_30d", 0) or 0)
+        prev_sessions = int(raw.get("sessions_prev_30d", 0) or 0)
+        key_ev = int(raw.get("key_events_30d", 0) or 0)
+        if sessions == 0 and prev_sessions == 0 and key_ev == 0:
+            continue
+        items.append(
+            ChannelSummaryItem(
+                channel=ch,  # type: ignore[arg-type]
+                sessions_30d=sessions,
+                sessions_es_30d=int(raw.get("sessions_es_30d", 0) or 0),
+                sessions_en_30d=int(raw.get("sessions_en_30d", 0) or 0),
+                en_share_pct=float(raw.get("en_share_pct", 0.0) or 0.0),
+                users_30d=int(raw.get("users_30d", 0) or 0),
+                engaged_sessions_30d=int(raw.get("engaged_sessions_30d", 0) or 0),
+                engagement_rate_pct=float(raw.get("engagement_rate_pct", 0.0) or 0.0),
+                avg_engagement_sec=float(raw.get("avg_engagement_sec", 0.0) or 0.0),
+                key_events_30d=key_ev,
+                conversion_rate_pct=float(raw.get("conversion_rate_pct", 0.0) or 0.0),
+                sessions_prev_30d=prev_sessions,
+                trend_30d_pct=float(raw.get("trend_30d_pct", 0.0) or 0.0),
+            )
+        )
+
+    items.sort(key=lambda x: (x.sessions_30d, x.key_events_30d), reverse=True)
+    return items
+
+
+def detect_hidden_channel_winners(
+    published_posts: List[Dict[str, Any]],
+    channel_data: Optional[Dict[str, Any]],
+    *,
+    min_engagement_sec: float = 45.0,
+    max_sessions: int = 30,
+    min_sessions: int = 2,
+) -> List[HiddenChannelWinnerItem]:
+    """
+    Detecta activos con alta retención (>= 45s) o conversiones en canales sociales
+    (linkedin, x, devto, coderlegion) pero bajo volumen (< 30 sesiones) candidatos a reciclaje +21d.
+    """
+    if not channel_data or not isinstance(channel_data, dict):
+        return []
+    by_asset = channel_data.get("by_asset") or {}
+    if not isinstance(by_asset, dict):
+        return []
+
+    post_lookup = {p["id"]: p for p in published_posts}
+    winners: List[HiddenChannelWinnerItem] = []
+
+    for aid, ch_map in by_asset.items():
+        if aid not in post_lookup or not isinstance(ch_map, dict):
+            continue
+        post = post_lookup[aid]
+        for ch, vals in ch_map.items():
+            if ch not in _SOCIAL_CHANNELS or not isinstance(vals, dict):
+                continue
+            sessions = int(vals.get("sessions_30d", 0) or 0)
+            avg_eng = float(vals.get("avg_engagement_sec", 0.0) or 0.0)
+            key_ev = int(vals.get("key_events_30d", 0) or 0)
+
+            if min_sessions <= sessions < max_sessions and (avg_eng >= min_engagement_sec or key_ev >= 1):
+                action = (
+                    f"Ola de reciclaje +21d en E06 ({ch}): nuevo ángulo/hilo visual con CTA a Sandbox/Kit "
+                    f"(retención {avg_eng:.0f}s, {key_ev} conv. con solo {sessions} sesiones)."
+                )
+                winners.append(
+                    HiddenChannelWinnerItem(
+                        asset_id=aid,
+                        slug=post.get("slug", aid),
+                        title_es=post.get("title_es") or post.get("title_en") or aid,
+                        channel=ch,  # type: ignore[arg-type]
+                        sessions_30d=sessions,
+                        avg_engagement_sec=round(avg_eng, 1),
+                        key_events_30d=key_ev,
+                        recommended_action=action,
+                    )
+                )
+
+    winners.sort(key=lambda w: (w.key_events_30d, w.avg_engagement_sec, w.sessions_30d), reverse=True)
+    return winners
+
+
+def detect_dark_social_alerts(
+    channel_data: Optional[Dict[str, Any]],
+    dispatch_queue_path: Path = DISPATCH_QUEUE_PATH,
+) -> List[DarkSocialAlertItem]:
+    """
+    Detecta fugas de atribución UTM / Dark Social:
+    1) Pico > +50% en tráfico `direct` en las 48h posteriores a un despacho completado sin alza correlativa en el canal UTM.
+    2) Crecimiento macro > +50% de `direct` (con >= 20 sesiones) representando > 40% del tráfico total y social UTM < 10%.
+    """
+    if not channel_data or not isinstance(channel_data, dict):
+        return []
+
+    alerts: List[DarkSocialAlertItem] = []
+    daily_map = channel_data.get("daily_by_channel") or {}
+
+    # Regla 1: cruce diario 48h con dispatch_queue.yaml
+    if isinstance(daily_map, dict) and daily_map and dispatch_queue_path.exists():
+        direct_series = [int((vals or {}).get("direct", 0) or 0) for vals in daily_map.values()]
+        baseline = float(statistics.median(direct_series)) if direct_series else 0.0
+        try:
+            with open(dispatch_queue_path, "r", encoding="utf-8") as f:
+                q_data = yaml.safe_load(f) or {}
+            entries = q_data.get("entries", []) or []
+        except Exception:
+            entries = []
+
+        for entry in entries:
+            if not isinstance(entry, dict) or entry.get("status") != "completed":
+                continue
+            exec_ts = entry.get("executed_at_utc") or entry.get("scheduled_at_utc")
+            if not exec_ts:
+                continue
+            try:
+                d0 = datetime.fromisoformat(str(exec_ts).replace("Z", "+00:00")).date()
+            except Exception:
+                continue
+
+            d1 = date.fromordinal(d0.toordinal() + 1)
+            win_days = [d0.isoformat(), d1.isoformat()]
+            present_days = [d for d in win_days if d in daily_map]
+            if not present_days:
+                continue
+
+            direct_win = sum(int(daily_map[d].get("direct", 0) or 0) for d in present_days)
+            expected_base = baseline * len(present_days)
+            channels_list = [str(c).lower() for c in (entry.get("channels") or []) if str(c).lower() in _SOCIAL_CHANNELS]
+            utm_win = sum(
+                int(daily_map[d].get(ch, 0) or 0)
+                for d in present_days
+                for ch in channels_list
+            )
+            if direct_win >= 10 and expected_base > 0:
+                spike_pct = round(((direct_win - expected_base) / expected_base) * 100.0, 1)
+                if spike_pct > 50.0 and utm_win < max(3, direct_win * 0.2):
+                    expected_ch = ",".join(channels_list) if channels_list else "social"
+                    alerts.append(
+                        DarkSocialAlertItem(
+                            alert_type="dark_social_spike",
+                            dispatch_id=str(entry.get("id") or ""),
+                            channel_expected=expected_ch,
+                            direct_sessions_current=direct_win,
+                            direct_sessions_baseline=round(expected_base, 1),
+                            spike_pct=spike_pct,
+                            severity="high",
+                            recommended_action=(
+                                f"Pico +{spike_pct:.0f}% de tráfico (direct) tras despacho '{entry.get('id')}' "
+                                f"con solo {utm_win} sesiones UTM en [{expected_ch}]. Verificar UTMs ADR-033 en enlaces compartidos."
+                            ),
+                        )
+                    )
+
+    # Regla 2: alerta macro 30d si direct domina sin atribución social correlativa
+    by_ch = channel_data.get("by_channel") or {}
+    if isinstance(by_ch, dict) and by_ch:
+        direct_obj = by_ch.get("direct") or {}
+        d_cur = int(direct_obj.get("sessions_30d", 0) or 0)
+        d_prev = int(direct_obj.get("sessions_prev_30d", 0) or 0)
+        total_sess = sum(int((v or {}).get("sessions_30d", 0) or 0) for v in by_ch.values())
+        social_sess = sum(int((by_ch.get(ch) or {}).get("sessions_30d", 0) or 0) for ch in _SOCIAL_CHANNELS)
+        if d_cur >= 20 and d_prev > 0 and total_sess > 0:
+            macro_spike = round(((d_cur - d_prev) / d_prev) * 100.0, 1)
+            direct_share = (d_cur / total_sess) * 100.0
+            social_share = (social_sess / total_sess) * 100.0
+            if macro_spike > 50.0 and direct_share > 40.0 and social_share < 10.0:
+                alerts.append(
+                    DarkSocialAlertItem(
+                        alert_type="high_direct_share",
+                        dispatch_id=None,
+                        channel_expected="linkedin,x,devto,coderlegion",
+                        direct_sessions_current=d_cur,
+                        direct_sessions_baseline=float(d_prev),
+                        spike_pct=macro_spike,
+                        severity="medium",
+                        recommended_action=(
+                            f"Tráfico directo creció +{macro_spike:.0f}% ({direct_share:.1f}% del total) "
+                            f"mientras atribución social UTM es {social_share:.1f}%. Auditar enlaces manuales en bio/comentarios."
+                        ),
+                    )
+                )
+
+    return alerts
+
+
+def extract_brand_query_totals(
+    gsc_queries_data: Optional[Dict[str, Any]] = None,
+) -> Tuple[int, int]:
+    """Suma clics e impresiones de consultas de marca (`datalaria`) desde gsc_queries.json."""
+    if gsc_queries_data is None:
+        if not GSC_QUERIES_PATH.exists():
+            return 0, 0
+        try:
+            with open(GSC_QUERIES_PATH, "r", encoding="utf-8") as f:
+                gsc_queries_data = json.load(f)
+        except Exception:
+            return 0, 0
+
+    summary = gsc_queries_data.get("summary") or {}
+    if "brand_clicks" in summary or "brand_impressions" in summary:
+        return int(summary.get("brand_clicks", 0) or 0), int(summary.get("brand_impressions", 0) or 0)
+
+    by_page = gsc_queries_data.get("by_page") or {}
+    b_clicks = 0
+    b_impr = 0
+    for qlist in by_page.values():
+        if not isinstance(qlist, list):
+            continue
+        for qrow in qlist:
+            q_str = str(qrow.get("query") or "").lower()
+            if qrow.get("is_brand_query") or "datalaria" in q_str:
+                b_clicks += int(qrow.get("clicks", 0) or 0)
+                b_impr += int(qrow.get("impressions", 0) or 0)
+    return b_clicks, b_impr
+
+
+def calculate_ptr_pct(ga4_sessions: int, native_views: int) -> float:
+    """
+    Calcula determinísticamente la Tasa de Traspaso (Pull-Through Rate, PTR %) desde una comunidad
+    externa hacia datalaria.com: round((ga4_sessions / max(native_views, 1)) * 100, 2) (ADR-033).
+    """
+    if native_views <= 0:
+        return 0.0
+    return round((max(0, int(ga4_sessions)) / int(native_views)) * 100.0, 2)
+
+
+def summarize_social_platforms(
+    social_data: Optional[Dict[str, Any]],
+    channel_data: Optional[Dict[str, Any]],
+) -> Dict[str, Dict[str, Any]]:
+    """
+    Cruza métricas nativas de Dev.to y CoderLegion (`social_metrics.json`) con sesiones GA4
+    (`channel_metrics.json`) para resumir el embudo Top-of-Funnel -> PTR %.
+    """
+    platforms = (social_data or {}).get("platforms") if isinstance(social_data, dict) else {}
+    if not isinstance(platforms, dict):
+        platforms = {}
+    by_channel = (channel_data or {}).get("by_channel") if isinstance(channel_data, dict) else {}
+    if not isinstance(by_channel, dict):
+        by_channel = {}
+
+    summary: Dict[str, Dict[str, Any]] = {}
+    for plat in ("devto", "coderlegion"):
+        p_obj = platforms.get(plat) if isinstance(platforms.get(plat), dict) else {}
+        ch_obj = by_channel.get(plat) if isinstance(by_channel.get(plat), dict) else {}
+        views = int(p_obj.get("total_views", 0) or 0)
+        reactions = int(p_obj.get("total_reactions", 0) or 0)
+        comments = int(p_obj.get("total_comments", 0) or 0)
+        articles_cnt = int(p_obj.get("articles_count", 0) or 0)
+        matched_cnt = int(p_obj.get("matched_assets_count", 0) or 0)
+        ga4_sess = int(ch_obj.get("sessions_30d", 0) or 0)
+        ptr = calculate_ptr_pct(ga4_sess, views)
+        summary[plat] = {
+            "platform": plat,
+            "status": str(p_obj.get("status") or "unavailable"),
+            "last_synced_at": p_obj.get("last_synced_at"),
+            "articles_count": articles_cnt,
+            "matched_assets_count": matched_cnt,
+            "native_views": views,
+            "native_reactions": reactions,
+            "native_comments": comments,
+            "ga4_sessions_30d": ga4_sess,
+            "ptr_pct": ptr,
+        }
+
+    li_obj = platforms.get("linkedin_company") if isinstance(platforms.get("linkedin_company"), dict) else {}
+    li_ch = by_channel.get("linkedin") if isinstance(by_channel.get("linkedin"), dict) else {}
+    li_impr = int(li_obj.get("total_impressions", 0) or 0)
+    li_clicks = int(li_obj.get("total_clicks", 0) or 0)
+    li_react = int(li_obj.get("total_reactions", 0) or 0)
+    li_comm = int(li_obj.get("total_comments", 0) or 0)
+    li_shares = int(li_obj.get("total_shares", 0) or 0)
+    li_foll = int(li_obj.get("followers_count", 0) or 0)
+    li_posts = int(li_obj.get("posts_count", 0) or 0)
+    li_matched = int(li_obj.get("matched_assets_count", 0) or 0)
+    li_ga4_sess = int(li_ch.get("sessions_30d", 0) or 0)
+    li_ctr = float(li_obj.get("native_ctr_pct", 0.0) or 0.0)
+    if li_ctr == 0.0 and li_impr > 0:
+        li_ctr = round((li_clicks / li_impr) * 100.0, 2)
+    li_ptr = calculate_ptr_pct(li_ga4_sess, li_impr if li_impr > 0 else li_clicks)
+
+    summary["linkedin_company"] = {
+        "platform": "linkedin_company",
+        "status": str(li_obj.get("status") or "unavailable"),
+        "source": str(li_obj.get("source") or "none"),
+        "scope": "company_page_only",
+        "last_synced_at": li_obj.get("last_synced_at"),
+        "posts_count": li_posts,
+        "matched_assets_count": li_matched,
+        "native_views": li_impr,
+        "total_impressions": li_impr,
+        "total_clicks": li_clicks,
+        "native_ctr_pct": li_ctr,
+        "total_reactions": li_react,
+        "total_comments": li_comm,
+        "total_shares": li_shares,
+        "followers_count": li_foll,
+        "ga4_sessions_30d": li_ga4_sess,
+        "ptr_pct": li_ptr,
+    }
+
+    x_ch = by_channel.get("x") if isinstance(by_channel.get("x"), dict) else {}
+    x_obj = platforms.get("x") if isinstance(platforms.get("x"), dict) else {}
+    summary["x"] = {
+        "platform": "x",
+        "status": "standby_zero_cost",
+        "last_synced_at": None,
+        "ga4_sessions_30d": int(x_ch.get("sessions_30d", 0) or 0),
+        "note": str(x_obj.get("note") or "Medición activa vía GA4 + UTMs (Hito 7.11); API nativa X en stand-by por coste > 0 EUR"),
+    }
+    return summary
+
+
+def build_channel_category_matrix(
+    assets: List[Dict[str, Any]],
+    channel_data: Optional[Dict[str, Any]],
+) -> List[Dict[str, Any]]:
+    """
+    Construye la matriz determinista Canal × Categoría × Idioma (ES vs. EN) cruzando `by_asset`
+    de `channel_metrics.json` con el catálogo de `index.json` (Hito 7.14 / ADR-033).
+    """
+    if not channel_data or not isinstance(channel_data, dict):
+        return []
+    by_asset = channel_data.get("by_asset")
+    if not isinstance(by_asset, dict):
+        return []
+
+    asset_cat: Dict[str, str] = {}
+    for a in assets:
+        if isinstance(a, dict) and a.get("id"):
+            asset_cat[str(a["id"])] = str(a.get("category") or "General")
+
+    buckets: Dict[Tuple[str, str], Dict[str, Any]] = {}
+    for aid, ch_map in by_asset.items():
+        if not isinstance(ch_map, dict):
+            continue
+        cat = asset_cat.get(aid, "General")
+        for ch_name, vals in ch_map.items():
+            if not isinstance(vals, dict):
+                continue
+            s_tot = int(vals.get("sessions_30d", 0) or 0)
+            s_es = int(vals.get("sessions_es_30d", 0) or 0)
+            s_en = int(vals.get("sessions_en_30d", 0) or 0)
+            k_ev = int(vals.get("key_events_30d", 0) or 0)
+            avg_eng = float(vals.get("avg_engagement_sec", 0.0) or 0.0)
+            if s_tot <= 0:
+                continue
+
+            key = (str(ch_name), cat)
+            b = buckets.setdefault(
+                key,
+                {
+                    "channel": str(ch_name),
+                    "category": cat,
+                    "sessions_30d": 0,
+                    "sessions_es_30d": 0,
+                    "sessions_en_30d": 0,
+                    "key_events_30d": 0,
+                    "_eng_weighted": 0.0,
+                },
+            )
+            b["sessions_30d"] += s_tot
+            b["sessions_es_30d"] += s_es
+            b["sessions_en_30d"] += s_en
+            b["key_events_30d"] += k_ev
+            b["_eng_weighted"] += avg_eng * s_tot
+
+    rows: List[Dict[str, Any]] = []
+    for b in buckets.values():
+        sess = b["sessions_30d"]
+        en_share = round((b["sessions_en_30d"] / sess) * 100.0, 1) if sess > 0 else 0.0
+        avg_e = round(b["_eng_weighted"] / sess, 1) if sess > 0 else 0.0
+        rows.append(
+            {
+                "channel": b["channel"],
+                "category": b["category"],
+                "sessions_30d": sess,
+                "sessions_es_30d": b["sessions_es_30d"],
+                "sessions_en_30d": b["sessions_en_30d"],
+                "en_share_pct": en_share,
+                "key_events_30d": b["key_events_30d"],
+                "avg_engagement_sec": avg_e,
+            }
+        )
+    rows.sort(key=lambda r: (r["sessions_30d"], r["key_events_30d"]), reverse=True)
+    return rows
+
+
+def detect_ptr_leak_alerts(
+    published_posts: List[Dict[str, Any]],
+    social_data: Optional[Dict[str, Any]],
+    channel_data: Optional[Dict[str, Any]],
+    *,
+    min_native_views: int = 300,
+    max_ptr_pct: float = 2.0,
+) -> List[PullThroughAlertItem]:
+    """
+    Regla 1 (ADR-033): Detecta artículos sindicados en Dev.to o CoderLegion con >= 300 vistas nativas
+    pero PTR < 2.0% hacia datalaria.com (Fuga de Traspaso).
+    """
+    if not social_data or not isinstance(social_data, dict):
+        return []
+    social_by_asset = social_data.get("by_asset") or {}
+    if not isinstance(social_by_asset, dict):
+        return []
+    channel_by_asset = (
+        channel_data.get("by_asset")
+        if (channel_data and isinstance(channel_data, dict) and isinstance(channel_data.get("by_asset"), dict))
+        else {}
+    )
+
+    alerts: List[PullThroughAlertItem] = []
+    for post in published_posts:
+        pid = post["id"]
+        plat_map = social_by_asset.get(pid)
+        if not isinstance(plat_map, dict):
+            continue
+        for plat in ("devto", "coderlegion", "linkedin_company"):
+            p_vals = plat_map.get(plat)
+            if not isinstance(p_vals, dict):
+                continue
+            native_views = int(p_vals.get("views", 0) or p_vals.get("impressions", 0) or 0)
+            if native_views < min_native_views:
+                continue
+            native_reactions = int(p_vals.get("reactions", 0) or 0)
+            native_comments = int(p_vals.get("comments", 0) or 0)
+            ch_key = "linkedin" if plat == "linkedin_company" else plat
+            ga4_sess = int(
+                ((channel_by_asset.get(pid) or {}).get(ch_key) or {}).get("sessions_30d", 0) or 0
+            )
+            ptr = calculate_ptr_pct(ga4_sess, native_views)
+            if ptr < max_ptr_pct:
+                action = (
+                    f"Fuga de traspaso en {plat} ({native_views:,} vistas nativas, solo {ga4_sess} sesiones GA4 · PTR {ptr:.2f}%): "
+                    f"insertar en el primer 25% del post sindicado un CTA interactivo al Sandbox/Calculadora en vivo (`utm_content=inline_sandbox_cta`)."
+                )
+                alerts.append(
+                    PullThroughAlertItem(
+                        asset_id=pid,
+                        slug=post.get("slug", pid),
+                        title_es=post.get("title_es") or post.get("title_en") or pid,
+                        platform=plat,  # type: ignore[arg-type]
+                        native_views=native_views,
+                        native_reactions=native_reactions,
+                        native_comments=native_comments,
+                        ga4_sessions_30d=ga4_sess,
+                        ptr_pct=ptr,
+                        recommended_action=action,
+                    )
+                )
+
+    alerts.sort(key=lambda a: (a.native_views, -a.ptr_pct), reverse=True)
+    return alerts
+
+
+def detect_canonical_shield_alerts(
+    published_posts: List[Dict[str, Any]],
+    social_data: Optional[Dict[str, Any]],
+    metrics: Dict[str, Dict[str, Any]],
+    *,
+    min_native_views: int = 500,
+    min_days_published: int = 21,
+) -> List[CanonicalShieldAlertItem]:
+    """
+    Regla 5 (ADR-033): Detecta artículos sindicados en Dev.to o CoderLegion con >= 500 vistas nativas
+    mientras la URL canónica en datalaria.com lleva > 21 días publicada con 0 impresiones en GSC.
+    """
+    if not social_data or not isinstance(social_data, dict):
+        return []
+    social_by_asset = social_data.get("by_asset") or {}
+    if not isinstance(social_by_asset, dict):
+        return []
+
+    today = date.today()
+    alerts: List[CanonicalShieldAlertItem] = []
+
+    for post in published_posts:
+        pid = post["id"]
+        pub_d = _parse_asset_date(post.get("publish_date"))
+        if not pub_d:
+            continue
+        days = (today - pub_d).days
+        if days <= min_days_published:
+            continue
+
+        gsc_impr = int(metrics.get(pid, {}).get("gsc_impressions_30d", 0) or 0)
+        if gsc_impr > 0:
+            continue
+
+        plat_map = social_by_asset.get(pid)
+        if not isinstance(plat_map, dict):
+            continue
+
+        for plat in ("devto", "coderlegion"):
+            p_vals = plat_map.get(plat)
+            if not isinstance(p_vals, dict):
+                continue
+            native_views = int(p_vals.get("views", 0) or 0)
+            if native_views < min_native_views:
+                continue
+            canon_path = post.get("url_en") or post.get("url_es") or f"/en/posts/{post.get('slug', pid)}/"
+            canon_url = f"https://datalaria.com{canon_path}" if str(canon_path).startswith("/") else str(canon_path)
+            action = (
+                f"Posible canibalización externa en {plat} ({native_views:,} vistas nativas vs. 0 imp. GSC tras {days}d): "
+                f"verificar canonical_url/source_url hacia {canon_url}, solicitar indexación en GSC y retrasar Ola 3 a +72h."
+            )
+            alerts.append(
+                CanonicalShieldAlertItem(
+                    asset_id=pid,
+                    slug=post.get("slug", pid),
+                    title_es=post.get("title_es") or post.get("title_en") or pid,
+                    platform=plat,  # type: ignore[arg-type]
+                    native_views=native_views,
+                    gsc_impressions_30d=gsc_impr,
+                    days_since_publish=days,
+                    canonical_url=canon_url,
+                    recommended_action=action,
+                )
+            )
+
+    alerts.sort(key=lambda a: (a.native_views, a.days_since_publish), reverse=True)
+    return alerts
+
+
+def generate_impact_report_markdown(
+    report: PulseImpactReport,
+    catalog_meta: Optional[Dict[str, Any]] = None,
+) -> str:
+    """Genera el informe ejecutivo completo en Markdown 100 % dinámico firmado por E02."""
     now_str = report.generated_at.strftime("%Y-%m-%d %H:%M UTC")
+    meta = catalog_meta or {}
+
+    total_assets = meta.get("total_assets", report.total_published_posts + report.total_scheduled_posts)
+    total_posts = meta.get("total_posts", report.total_published_posts + report.total_scheduled_posts)
+    draft_posts = meta.get("draft_posts", 0)
+    apps_count = meta.get("apps_count", 0)
+    kits_count = meta.get("kits_count", 0)
+    months_count = meta.get("months_count", 0)
+    m_initial_label = meta.get("m_initial_label", "inicio")
+    m_initial_views = meta.get("m_initial_views", 0)
+    m_peak_label = meta.get("m_peak_label", "pico")
+    m_peak_views = meta.get("m_peak_views", 0)
+
+    avg_backlog_score = (
+        round(sum(b.editorial_roi_score for b in report.prioritized_backlog) / len(report.prioritized_backlog), 1)
+        if report.prioritized_backlog
+        else 0.0
+    )
+
+    leader_cat = report.category_performance[0] if report.category_performance else None
+    leader_label = f"{leader_cat.category} ({leader_cat.monetization_coverage_pct:.1f}%)" if leader_cat else "N/A"
+    gsc_opp_count = sum(1 for qw in report.quick_wins_ctr if qw.opportunity_type == "gsc_position_4_20")
 
     md = f"""# 📈 Primera Auditoría Estratégica de Impacto SEO, Tráfico y Monetización (E02)
 
 > **Autor:** [`E02-seo-impact-strategist`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-editorial/E02-seo-impact-strategist.md) · **Célula:** Dirección & Inteligencia Estratégica  
 > **Fecha de Emisión:** {now_str}  
-> **Fuentes de Verdad:** `data/pulse/private/index.json` (149 activos), `metrics.json` (GA4 30d), `monthly_metrics.json` (15 meses) y `backlog.yaml`.  
-> **Invariantes:** Cumple estrictamente `INV-PULSE-6` y Constitución Art. 1.3 (*Separación Cerebro vs. Músculo Cuantitativo*).
+> **Fuentes de Verdad:** `data/pulse/private/index.json` ({total_assets} activos), `metrics.json` (GA4 + GSC 30d/prev 30d), `channel_metrics.json` (GA4 Acquisition + KeyEvents), `social_metrics.json` (Dev.to + CoderLegion APIs gratuitas), `distribution_ledger.json`, `gsc_queries.json`, `monthly_metrics.json` ({months_count} meses) y `backlog.yaml`.  
+> **Invariantes:** Cumple estrictamente `INV-PULSE-6`, `INV-PULSE-11`, `INV-PULSE-12` (`ADR-033`, coste `0 €`) y Constitución Art. 1.3 (*Separación Cerebro vs. Músculo Cuantitativo*).
 
 ---
 
@@ -732,63 +1498,83 @@ def generate_impact_report_markdown(report: PulseImpactReport) -> str:
 
 | Métrica Macro | Valor Cuantitativo Real | Interpretación Estratégica E02 |
 | :--- | :---: | :--- |
-| **Total Activos Consolidados** | **149 activos** | 121 Posts bilingües (`98` publicados, `21` programados, `2` drafts), 9 Apps y 19 Kits/Suites. |
-| **Tráfico Acumulado Posts (30d)** | **{report.total_30d_post_views:,} vistas** | Vistas reales en los 98 artículos publicados (mediana: **{report.median_post_views:.1f}**, $P_{{75}}$: **{report.p75_post_views:.1f}**). |
-| **Crecimiento Interanual (YoY)** | **+{report.monthly_growth_yoy_pct:.1f}%** | De 59 vistas (sep 2025) a 3.157 vistas (oct 2026), récord histórico del proyecto. |
-| **Quick Wins de CTR / SERP** | **{len(report.quick_wins_ctr)} oportunidades** | Títulos superiores a 95 caracteres que sufren truncamiento en Google SERP. |
-| **Huérfanos de Monetización** | **{len(report.monetization_orphans)} posts top** | Posts en el cuartil superior de visitas ($P_{{75}} \\ge {report.p75_post_views:.0f}$) sin enlace ni shortcode a Kit/App. |
-| **Score Promedio del Backlog** | **85.3 / 100** | 6 propuestas estratégicas alineadas con los Kits de 19€ y la waitlist de Helix. |
+| **Total Activos Consolidados** | **{total_assets} activos** | {total_posts} Posts bilingües (`{report.total_published_posts}` publicados, `{report.total_scheduled_posts}` programados, `{draft_posts}` drafts), `{apps_count}` Apps base y `{kits_count}` Kits/Suites. |
+| **Tráfico Acumulado Posts (30d)** | **{report.total_30d_post_views:,} vistas** | Cuota inglés (EN): **{report.en_views_share_pct:.1f}%** · Mediana: **{report.median_post_views:.1f}** · $P_{{75}}$: **{report.p75_post_views:.1f}**. |
+| **Visibilidad Orgánica GSC (30d)** | **{report.total_30d_gsc_impressions:,} imp. · {report.total_30d_gsc_clicks:,} clics** | CTR medio: **{report.avg_gsc_ctr_pct:.2f}%** · Posición media ponderada: **{report.avg_gsc_position:.1f}** · Cuota EN (imp.): **{report.en_gsc_impressions_share_pct:.1f}%** · Prev 30d: `{report.gsc_impressions_prev_30d:,}` imp. / `{report.gsc_clicks_prev_30d:,}` clics · Marca (`datalaria`): `{report.gsc_brand_impressions_30d:,}` imp. / `{report.gsc_brand_clicks_30d:,}` clics. |
+| **Crecimiento Interanual (YoY)** | **+{report.monthly_growth_yoy_pct:.1f}%** | De {m_initial_views:,} vistas ({m_initial_label}) a {m_peak_views:,} vistas ({m_peak_label}). |
+| **Quick Wins de CTR / SERP** | **{len(report.quick_wins_ctr)} oportunidades** | `{gsc_opp_count}` con impresiones reales GSC (`pos 4..20` o `CTR < 2.5%`) + truncamientos SERP. |
+| **Canibalización de Keywords** | **{len(report.cannibalization_alerts)} alertas** | Consultas GSC donde `>= 2` URLs del mismo idioma compiten por impresiones. |
+| **Huérfanos de Monetización** | **{len(report.monetization_orphans)} posts top** | Posts en el cuartil superior ($P_{{75}} \\ge {report.p75_post_views:.0f}$) sin enlace ni shortcode a Kit/App. |
+| **Score Promedio del Backlog** | **{avg_backlog_score:.1f} / 100** | {len(report.prioritized_backlog)} propuestas estratégicas evaluadas por Editorial ROI Score. |
 
 ```mermaid
 flowchart TD
-    A["98 Artículos Publicados\\n(1.413 visitas 30d)"] --> B{{"Triaje de Impacto E02"}}
-    B --> C["12 Quick Wins de CTR\\n(Truncamiento SERP >95 chars)"]
-    B --> D["15 Huérfanos de Monetización\\n(Cuartil Superior >= 20 vistas sin Kit)"]
-    B --> E["5 Categorías Evaluadas\\n(Líder: Estrategia y Operaciones 83.3%)"]
-    C --> F["Acción E04: Reescritura Títulos (35-95)"]
+    A["{report.total_published_posts} Artículos Publicados\\n({report.total_30d_post_views:,} vistas · {report.total_30d_gsc_impressions:,} imp. GSC)"] --> B{{"Triaje de Impacto E02"}}
+    B --> C["{len(report.quick_wins_ctr)} Quick Wins de CTR\\n({gsc_opp_count} oportunidades GSC reales)"]
+    B --> D["{len(report.monetization_orphans)} Huérfanos de Monetización\\n(Cuartil Superior >= {report.p75_post_views:.0f} vistas sin Kit)"]
+    B --> E["{len(report.category_performance)} Categorías Evaluadas\\n(Líder: {leader_label})"]
+    B --> H["{len(report.cannibalization_alerts)} Alertas Canibalización GSC"]
+    C --> F["Acción E04: Reescritura Títulos & H1 (35-95)"]
     D --> G["Acción E05: Inyección app-ref y Kits 19€"]
 ```
 
 ---
 
-## 2. Rendimiento y Cobertura de Monetización por Categoría
+## 2. Rendimiento, GSC y Cobertura de Monetización por Categoría (ES vs. EN)
 
-| Categoría Oficial | Posts | Vistas 30d | Media/Post | Usuarios | Engagement Medio | Monetizados | Cobertura % | Editorial ROI Score |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| Categoría Oficial | Posts | Vistas 30d | % EN (Vistas) | Imp. GSC | Clics GSC | CTR GSC | Eng. Medio | Monetizados | Cobertura % | Editorial ROI Score |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 """
     for c in report.category_performance:
-        md += f"| **{c.category}** | {c.published_posts} | {c.total_views_30d} | {c.avg_views_per_post:.1f} | {c.total_users_30d} | {c.avg_engagement_sec:.1f}s | {c.monetized_posts}/{c.published_posts} | **{c.monetization_coverage_pct:.1f}%** | **{c.editorial_roi_score:.1f}** |\n"
+        md += (
+            f"| **{c.category}** | {c.published_posts} | {c.total_views_30d} ({c.avg_views_per_post:.1f}/p) | "
+            f"{c.en_traffic_share_pct:.1f}% | {c.total_gsc_impressions_30d:,} | {c.total_gsc_clicks_30d:,} | "
+            f"{c.avg_gsc_ctr_pct:.2f}% | {c.avg_engagement_sec:.1f}s | {c.monetized_posts}/{c.published_posts} | "
+            f"**{c.monetization_coverage_pct:.1f}%** | **{c.editorial_roi_score:.1f}** |\n"
+        )
+
+    md += "\n### Diagnóstico Estratégico de Categorías:\n"
+    for idx, c in enumerate(report.category_performance[:3], 1):
+        md += (
+            f"{idx}. **{c.category} (Editorial ROI {c.editorial_roi_score:.1f}):** "
+            f"**{c.avg_views_per_post:.1f} vistas/post**, **{c.total_gsc_impressions_30d:,} impresiones GSC** "
+            f"(CTR **{c.avg_gsc_ctr_pct:.2f}%**), cuota inglés **{c.en_traffic_share_pct:.1f}%** y "
+            f"**{c.monetization_coverage_pct:.1f}%** de cobertura comercial ({c.monetized_posts}/{c.published_posts}).\n"
+        )
 
     md += """
-### Diagnóstico Estratégico de Categorías:
-1. 🏆 **Estrategia y Operaciones (Líder en Eficiencia y Conversión):** Con **28.1 visitas/post** y **83.3% de cobertura de monetización**, es el motor de conversión más maduro de Datalaria. Los posts de DAFO, Porter, RICE y DAR empujan directamente las ventas de las Suites 01 y 02.
-2. 💎 **Pioneros y Referentes (La Mayor Oportunidad Desaprovechada):** Promedia **21.8 visitas/post** con una retención extraordinaria (**30.9s por usuario**, destacando Gödel con 45+ minutos totales y von Neumann con 80 visitas), pero tiene **0.0% de monetización**. Resolver esto mediante puentes a la Suite SDD y la Matriz DAR multiplicará la conversión sin coste.
-3. ⚙️ **IA, Ingeniería y Proyectos (Volumen y Tracción Técnica):** Mayor masa crítica con 49 posts y 530 visitas. Sin embargo, su post #1 (`sdd_vs_vibe_coding`, #2 global con 100 visitas) no incluye shortcode de app ni kit por no tener la app publicada formalmente. Debe activarse de inmediato el shortcode de la waitlist de Helix.
-
 ---
 
 ## 3. Matriz de Quick Wins de CTR (Top Oportunidades en Buscadores)
 
-Artículos con alta tracción y engagement cuyo rendimiento orgánico está penalizado por títulos o descripciones excesivamente largos que Google trunca en SERP (límite recomendado: 35–95 caracteres en título y 75–245 en descripción).
+Artículos priorizados combinando datos reales de **Google Search Console** (impresiones, posición media y CTR) con longitud de snippet y retención en GA4:
 
-| ID / Activo | Vistas 30d | Eng. Medio | Score SEO Actual | Tipo de Oportunidad | Título Recomendado ES (35–95 chars) | Meta Descripción Optimizada ES |
-| :--- | :---: | :---: | :---: | :--- | :--- | :--- |
+| ID / Activo | Top Query GSC | Imp. GSC | Pos. / CTR | Vistas 30d | Tipo de Oportunidad | Título Recomendado ES (35–95 chars) |
+| :--- | :--- | :---: | :---: | :---: | :--- | :--- |
 """
     for qw in report.quick_wins_ctr[:12]:
-        md += f"| [`{qw.id}`]({qw.slug}) | **{qw.ga4_views_30d}** | {qw.avg_engagement_sec:.1f}s | `{qw.seo_score}/100` | `{qw.opportunity_type}` | **{qw.recommended_title_es}** | {qw.recommended_desc_es} |\n"
+        tq = f"`{qw.top_query}`" if qw.top_query else "—"
+        pos_ctr = f"`{qw.gsc_avg_position:.1f}` / `{qw.gsc_ctr_pct:.1f}%`" if qw.gsc_impressions_30d > 0 else "—"
+        md += (
+            f"| [`{qw.id}`]({qw.slug}) | {tq} | **{qw.gsc_impressions_30d:,}** | {pos_ctr} | "
+            f"{qw.ga4_views_30d} | `{qw.opportunity_type}` | **{qw.recommended_title_es}** |\n"
+        )
 
-    md += """
+    md += f"""
 ---
 
 ## 4. Auditoría de Huérfanos de Monetización (Cuartil Superior de Tráfico)
 
-Artículos en el cuartil superior ($P_{75} \\ge 20$ visitas) que actualmente no enlazan a ningún Kit de Lemon Squeezy ni a ninguna App de Datalaria, desperdiciando el flujo orgánico natural de lectores:
+Artículos en el cuartil superior ($P_{{75}} \\ge {report.p75_post_views:.0f}$ vistas) que actualmente no enlazan a ningún Kit de Lemon Squeezy ni a ninguna App de Datalaria:
 
 | ID del Post | Vistas 30d | Percentil | Tipo de Puente | Destino Asignado | Shortcode / Enlace Recomendado | Justificación Estratégica E02 |
 | :--- | :---: | :---: | :---: | :--- | :--- | :--- |
 """
-    for o in report.monetization_orphans:
-        md += f"| [`{o.id}`]({o.slug}) | **{o.ga4_views_30d}** | Top {100 - o.rank_pct}% | `{o.recommended_bridge_type}` | `{o.recommended_target_id}` | `{o.recommended_shortcode_or_url}` | {o.rationale_es} |\n"
+    if report.monetization_orphans:
+        for o in report.monetization_orphans:
+            md += f"| [`{o.id}`]({o.slug}) | **{o.ga4_views_30d}** | Top {100 - o.rank_pct}% | `{o.recommended_bridge_type}` | `{o.recommended_target_id}` | `{o.recommended_shortcode_or_url}` | {o.rationale_es} |\n"
+    else:
+        md += "| — | — | — | — | — | — | ✅ Sin huérfanos de monetización en el cuartil superior. |\n"
 
     md += """
 ---
@@ -830,12 +1616,170 @@ $$\\text{Editorial ROI Score} = 0.40 \\times \\text{Demanda SEO} + 0.35 \\times 
     md += """
 ---
 
-## 7. Plan de Acción Inmediato y Relevo Editorial
+## 7. Auditoría de Canibalización de Keywords (GSC)
 
-1. **Relevo a `E04-bilingual-seo-editor`:** Actualizar en `content/es/posts/` y `content/en/posts/` los títulos y descripciones de los **Top 12 Quick Wins**, eliminando el truncamiento en SERP y subiendo su `seo_audit.score` a 100/100.
-2. **Relevo a `E05-content-monetizer`:** Inyectar en los **15 Huérfanos de Monetización** los shortcodes `{{< helix-waitlist >}}`, `{{< app-ref slug="..." >}}` y las tarjetas de producto de Suite 01 / Suite 02.
-3. **Relevo a `E01-editorial-orchestrator` / `E03-technical-writer`:** Atender las **alertas de releases silenciosas**, planificando el artículo técnico evolutivo de `Weather v3.3.0` (Hito 2.7 Parte 5) y las notas de release para `Neon Snake v2.3.1`, `Mazo Mágico v2.1.0` y `Ábaco Arcade v2.3.0` en Brevo Newsletter 2.0.
-4. **Programación en Autopilot 2.0 (Hito 7.3):** Priorizar el desarrollo y redacción de la idea **#1** (`idea-claude-subagents-sdd-contracts`, ROI 94.9) y la idea **#2** (`idea-monte-carlo-capex-risk`, ROI 88.0).
+Consultas reales de Search Console donde `>= 2` URLs del mismo idioma compiten por impresiones:
+
+| Query | Idioma | Imp. Totales | Clics | URLs en Competencia (Top 3) | Acción Recomendada E02 |
+| :--- | :---: | :---: | :---: | :--- | :--- |
+"""
+    if report.cannibalization_alerts:
+        for ca in report.cannibalization_alerts[:15]:
+            urls_desc = " · ".join(f"`{u['url']}` ({u['impressions']} imp, pos {u['position']})" for u in ca.competing_urls[:3])
+            md += f"| `{ca.query}` | `{ca.lang}` | **{ca.total_impressions:,}** | {ca.total_clicks} | {urls_desc} | {ca.recommended_action} |\n"
+    else:
+        md += "| — | — | 0 | 0 | — | ✅ Sin canibalizaciones significativas detectadas (`>= 20` imp.). |\n"
+
+    md += """
+---
+
+## 8. Rendimiento por Canal de Adquisición (ES vs. EN) — Coste 0 € (`ADR-033`)
+
+> **Política `INV-PULSE-12`:** Atribución unificada vía GA4 Acquisition + UTMs (`linkedin`, `x`, `devto`, `coderlegion`, `newsletter`, `google_organic`, `direct`). **X/Twitter nativo permanece en stand-by (coste `0 €`)**; **LinkedIn cubre exclusivamente la Página de Empresa**.
+
+| Canal Canónico | Sesiones 30d | ES / EN | % EN | Δ 30d | Eng. Rate % | Eng. Medio | Eventos Clave | Conv. % |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+"""
+    if report.channel_summary:
+        for ch in report.channel_summary:
+            delta_sign = "+" if ch.trend_30d_pct > 0 else ""
+            md += (
+                f"| **`{ch.channel}`** | **{ch.sessions_30d:,}** | {ch.sessions_es_30d} / {ch.sessions_en_30d} | "
+                f"{ch.en_share_pct:.1f}% | {delta_sign}{ch.trend_30d_pct:.1f}% | {ch.engagement_rate_pct:.1f}% | "
+                f"{ch.avg_engagement_sec:.1f}s | {ch.key_events_30d} | {ch.conversion_rate_pct:.2f}% |\n"
+            )
+    else:
+        md += "| — | 0 | 0 / 0 | 0.0% | 0.0% | 0.0% | 0.0s | 0 | 0.00% |\n"
+        md += "\n*Nota: Ejecuta `python -m ops.pulse.sync_metrics` con `service_account.json` para poblar `channel_metrics.json` con datos reales de GA4 Acquisition.*\n"
+
+    md += """
+### 🏆 Ganadores Ocultos por Canal (Candidatos a Ola de Reciclaje +21d en `E06`)
+
+| Activo / ID | Canal | Sesiones 30d | Eng. Medio | Eventos Clave | Acción Recomendada E06 |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+"""
+    if report.hidden_channel_winners:
+        for hw in report.hidden_channel_winners[:10]:
+            md += (
+                f"| [`{hw.asset_id}`]({hw.slug}) | `{hw.channel}` | {hw.sessions_30d} | "
+                f"**{hw.avg_engagement_sec:.1f}s** | {hw.key_events_30d} | {hw.recommended_action} |\n"
+            )
+    else:
+        md += "| — | — | 0 | 0.0s | 0 | ✅ Sin ganadores ocultos pendientes con umbral (`>= 45s` o conv., `< 30` sesiones). |\n"
+
+    md += """
+### 🕵️ Alertas de *Dark Social* / Fuga de Atribución UTM
+
+| Tipo Alerta | Severidad | Despacho / Canal | Direct Actual vs. Base | Pico % | Acción Recomendada |
+| :--- | :---: | :--- | :---: | :---: | :--- |
+"""
+    if report.dark_social_alerts:
+        for da in report.dark_social_alerts:
+            sev_badge = "🔴 Alta" if da.severity == "high" else "🟡 Media"
+            ref_str = da.dispatch_id or da.channel_expected or "macro"
+            md += (
+                f"| `{da.alert_type}` | {sev_badge} | `{ref_str}` | "
+                f"{da.direct_sessions_current} vs. {da.direct_sessions_baseline:.1f} | **+{da.spike_pct:.1f}%** | {da.recommended_action} |\n"
+            )
+    else:
+        md += "| — | — | — | — | — | ✅ Sin fugas anómalas de *Dark Social* detectadas en la ventana de 30 días. |\n"
+
+    md += """
+### 🌐 Embudo Nativo Comunidades Tech & PTR (Dev.to + CoderLegion + LinkedIn Empresa — Coste 0 €)
+
+| Plataforma | Estado Conector | Publicaciones (Emparejadas) | Vistas / Impresiones | Clics / CTR Nativo | Reacciones / Coment. | Sesiones GA4 (30d) | PTR % (Traspaso) |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+"""
+    if report.social_platform_summary:
+        # 1. Dev.to
+        ps_dt = report.social_platform_summary.get("devto") or {}
+        st_dt = ps_dt.get("status", "unavailable")
+        arts_dt = f"{ps_dt.get('articles_count', 0)} ({ps_dt.get('matched_assets_count', 0)})"
+        v_dt = int(ps_dt.get("native_views", 0) or 0)
+        re_dt = f"{int(ps_dt.get('native_reactions', 0) or 0):,} / {int(ps_dt.get('native_comments', 0) or 0):,}"
+        sess_dt = int(ps_dt.get("ga4_sessions_30d", 0) or 0)
+        ptr_dt = float(ps_dt.get("ptr_pct", 0.0) or 0.0)
+        md += f"| **`devto`** | `{st_dt}` | {arts_dt} | **{v_dt:,}** | — | {re_dt} | {sess_dt:,} | **{ptr_dt:.2f}%** |\n"
+
+        # 2. CoderLegion
+        ps_cl = report.social_platform_summary.get("coderlegion") or {}
+        st_cl = ps_cl.get("status", "unavailable")
+        arts_cl = f"{ps_cl.get('articles_count', 0)} ({ps_cl.get('matched_assets_count', 0)})"
+        v_cl = int(ps_cl.get("native_views", 0) or 0)
+        re_cl = f"{int(ps_cl.get('native_reactions', 0) or 0):,} / {int(ps_cl.get('native_comments', 0) or 0):,}"
+        sess_cl = int(ps_cl.get("ga4_sessions_30d", 0) or 0)
+        ptr_cl = float(ps_cl.get("ptr_pct", 0.0) or 0.0)
+        md += f"| **`coderlegion`** | `{st_cl}` | {arts_cl} | **{v_cl:,}** | — | {re_cl} | {sess_cl:,} | **{ptr_cl:.2f}%** |\n"
+
+        # 3. LinkedIn Página de Empresa (Carril Dual)
+        ps_li = report.social_platform_summary.get("linkedin_company") or {}
+        st_li = ps_li.get("status", "unavailable")
+        arts_li = f"{ps_li.get('posts_count', 0)} ({ps_li.get('matched_assets_count', 0)})"
+        impr_li = int(ps_li.get("total_impressions", 0) or 0)
+        clk_li = int(ps_li.get("total_clicks", 0) or 0)
+        ctr_li = float(ps_li.get("native_ctr_pct", 0.0) or 0.0)
+        re_li = f"{int(ps_li.get('total_reactions', 0) or 0):,} / {int(ps_li.get('total_comments', 0) or 0):,}"
+        clk_str = f"{clk_li:,} ({ctr_li:.1f}%)" if impr_li > 0 else "—"
+        sess_li = int(ps_li.get("ga4_sessions_30d", 0) or 0)
+        ptr_li = float(ps_li.get("ptr_pct", 0.0) or 0.0)
+        md += f"| **`linkedin_company`** | `{st_li}` | {arts_li} | **{impr_li:,}** | {clk_str} | {re_li} | {sess_li:,} | **{ptr_li:.2f}%** |\n"
+
+        # 4. X / Twitter (Stand-by Coste 0 €)
+        ps_x = report.social_platform_summary.get("x") or {}
+        st_x = ps_x.get("status", "standby_zero_cost")
+        sess_x = int(ps_x.get("ga4_sessions_30d", 0) or 0)
+        md += f"| **`x`** | `{st_x}` | — | *Stand-by 0 €* | — | — | {sess_x:,} | *Solo GA4+UTM* |\n"
+
+        foll_cnt = int(ps_li.get("followers_count", 0) or 0)
+        md += f"\n*Nota LinkedIn Empresa:* Alcance exclusivo de **Página de Empresa** (`LINKEDIN_COMPANY_ID`) · **{foll_cnt} seguidores** · Cero perfiles personales ni scraping (`INV-PULSE-12`).\n"
+        md += "*Nota X / Twitter:* Atribución nativa en stand-by por política de coste 0 € (API de pago suspendida); tráfico medido exclusivamente vía GA4 Acquisition + UTMs (`Hito 7.11`).\n"
+    else:
+        md += "| — | `unavailable` | 0 (0) | 0 | — | 0 / 0 | 0 | 0.00% |\n"
+
+    md += """
+### 🚨 Alertas de Fuga de Traspaso (`>= 300` vistas nativas con `PTR < 2.0%`)
+
+| Activo / ID | Plataforma | Vistas Nativas | Reacciones / Coment. | Sesiones GA4 | PTR % | Acción Recomendada E06 |
+| :--- | :---: | :---: | :---: | :---: | :---: | :--- |
+"""
+    if report.ptr_leak_alerts:
+        for pa in report.ptr_leak_alerts[:10]:
+            md += (
+                f"| [`{pa.asset_id}`]({pa.slug}) | `{pa.platform}` | **{pa.native_views:,}** | "
+                f"{pa.native_reactions} / {pa.native_comments} | {pa.ga4_sessions_30d} | **{pa.ptr_pct:.2f}%** | {pa.recommended_action} |\n"
+            )
+    else:
+        md += "| — | — | 0 | 0 / 0 | 0 | 0.00% | ✅ Sin fugas críticas de traspaso detectadas (`>= 300` vistas con `PTR < 2.0%`). |\n"
+
+    md += """
+### 🛡️ Escudo Anti-Canibalización Canónica (`>= 500` vistas nativas y `0` imp. GSC tras `> 21d`)
+
+| Activo / ID | Plataforma | Vistas Nativas | Imp. GSC (30d) | Días Publicado | URL Canónica | Acción Recomendada E02 / E06 |
+| :--- | :---: | :---: | :---: | :---: | :--- | :--- |
+"""
+    if report.canonical_shield_alerts:
+        for csa in report.canonical_shield_alerts[:10]:
+            md += (
+                f"| [`{csa.asset_id}`]({csa.slug}) | `{csa.platform}` | **{csa.native_views:,}** | "
+                f"{csa.gsc_impressions_30d} | {csa.days_since_publish}d | `{csa.canonical_url}` | {csa.recommended_action} |\n"
+            )
+    else:
+        md += "| — | — | 0 | 0 | 0d | — | ✅ Sin alertas de canibalización canónica externa (`>= 500` vistas con `0` imp. GSC). |\n"
+
+    top_backlog_1 = report.prioritized_backlog[0] if report.prioritized_backlog else None
+    top_backlog_2 = report.prioritized_backlog[1] if len(report.prioritized_backlog) > 1 else None
+    top_qw = report.quick_wins_ctr[0] if report.quick_wins_ctr else None
+
+    md += f"""
+---
+
+## 9. Plan de Acción Inmediato y Relevo Editorial
+
+1. **Relevo a `E04-bilingual-seo-editor`:** Optimizar los **{min(len(report.quick_wins_ctr), 12)} Quick Wins prioritarios** (liderados por `{top_qw.id if top_qw else 'N/A'}` con `{top_qw.gsc_impressions_30d if top_qw else 0:,}` imp. GSC), ajustando títulos/meta-descriptions a las queries reales detectadas.
+2. **Relevo a `E05-content-monetizer`:** Resolver los **{len(report.monetization_orphans)} huérfanos de monetización** actuales e impulsar la cobertura en categorías con alta tracción orgánica y bajo ratio comercial.
+3. **Relevo a `E06-social-syndicator`:** Reciclar los **{len(report.hidden_channel_winners)} ganadores ocultos por canal**, corregir las **{len(report.ptr_leak_alerts)} fugas de traspaso PTR**, revisar las **{len(report.canonical_shield_alerts)} alertas del escudo canónico** y auditar las **{len(report.dark_social_alerts)} alertas de Dark Social** garantizando UTMs `ADR-033`.
+4. **Relevo a `E01-editorial-orchestrator` / `E03-technical-writer`:** Atender las **{report.silent_releases_count} alertas de releases silenciosas** y resolver las **{len(report.cannibalization_alerts)} alertas de canibalización** en el calendario de las Oleadas Semanales.
+5. **Priorización en Backlog (`data/editorial/backlog.yaml`):** Lanzar `{top_backlog_1.id if top_backlog_1 else 'N/A'}` (ROI {top_backlog_1.editorial_roi_score if top_backlog_1 else 0.0:.1f}) y `{top_backlog_2.id if top_backlog_2 else 'N/A'}` (ROI {top_backlog_2.editorial_roi_score if top_backlog_2 else 0.0:.1f}).
 """
     return md
 
@@ -856,11 +1800,54 @@ def run_impact_analysis() -> PulseImpactReport:
     posts = [a for a in all_assets if a.get("asset_type") == "post"]
     published_posts = [p for p in posts if p.get("status") == "published"]
     scheduled_posts = [p for p in posts if p.get("status") == "scheduled"]
+    draft_posts = [p for p in posts if p.get("status") == "draft"]
+    base_apps_count = len({a.get("parent_asset_id") or a.get("slug") or a["id"] for a in all_assets if a.get("asset_type") == "app"})
+    kits_count = sum(1 for a in all_assets if a.get("asset_type") in ("kit", "suite", "mega_bundle"))
 
-    # Métricas agregadas de tráfico
-    post_views_list = [metrics.get(p["id"], {}).get("ga4_views_30d", 0) for p in published_posts]
+    # Métricas agregadas de tráfico GA4 + GSC (sobre posts publicados únicos para evitar doble conteo)
+    post_views_list = [int(metrics.get(p["id"], {}).get("ga4_views_30d", 0) or 0) for p in published_posts]
     total_views = sum(post_views_list)
+    total_views_en = sum(int(metrics.get(p["id"], {}).get("ga4_views_en_30d", 0) or 0) for p in published_posts)
     sorted_views = sorted(post_views_list)
+
+    total_gsc_clicks = sum(int(metrics.get(p["id"], {}).get("gsc_clicks_30d", 0) or 0) for p in published_posts)
+    total_gsc_impr = sum(int(metrics.get(p["id"], {}).get("gsc_impressions_30d", 0) or 0) for p in published_posts)
+    total_gsc_clicks_prev = sum(int(metrics.get(p["id"], {}).get("gsc_clicks_prev_30d", 0) or 0) for p in published_posts)
+    total_gsc_impr_prev = sum(int(metrics.get(p["id"], {}).get("gsc_impressions_prev_30d", 0) or 0) for p in published_posts)
+    total_gsc_impr_en = sum(int(metrics.get(p["id"], {}).get("gsc_impressions_en_30d", 0) or 0) for p in published_posts)
+    brand_clicks, brand_impr = extract_brand_query_totals()
+
+    channel_data: Optional[Dict[str, Any]] = None
+    if CHANNEL_METRICS_PATH.exists():
+        try:
+            with open(CHANNEL_METRICS_PATH, "r", encoding="utf-8") as f:
+                channel_data = json.load(f)
+        except Exception:
+            channel_data = None
+
+    social_data: Optional[Dict[str, Any]] = None
+    if SOCIAL_METRICS_PATH.exists():
+        try:
+            with open(SOCIAL_METRICS_PATH, "r", encoding="utf-8") as f:
+                social_data = json.load(f)
+        except Exception:
+            social_data = None
+
+    weighted_pos_sum = sum(
+        float(metrics.get(p["id"], {}).get("gsc_avg_position", 0.0) or 0.0)
+        * int(metrics.get(p["id"], {}).get("gsc_impressions_30d", 0) or 0)
+        for p in published_posts
+        if float(metrics.get(p["id"], {}).get("gsc_avg_position", 0.0) or 0.0) > 0
+    )
+    impr_with_pos = sum(
+        int(metrics.get(p["id"], {}).get("gsc_impressions_30d", 0) or 0)
+        for p in published_posts
+        if float(metrics.get(p["id"], {}).get("gsc_avg_position", 0.0) or 0.0) > 0
+    )
+    avg_gsc_ctr = round((total_gsc_clicks / total_gsc_impr * 100.0) if total_gsc_impr > 0 else 0.0, 2)
+    avg_gsc_pos = round((weighted_pos_sum / impr_with_pos) if impr_with_pos > 0 else 0.0, 1)
+    en_views_share = round((total_views_en / total_views * 100.0) if total_views > 0 else 0.0, 1)
+    en_gsc_impr_share = round((total_gsc_impr_en / total_gsc_impr * 100.0) if total_gsc_impr > 0 else 0.0, 1)
 
     if sorted_views:
         med_views = float(statistics.median(sorted_views))
@@ -872,29 +1859,52 @@ def run_impact_analysis() -> PulseImpactReport:
 
     # Crecimiento interanual mensual
     growth_yoy = 0.0
+    months_count = 0
+    m_initial_label = "inicio"
+    m_initial_views = 0
+    m_peak_label = "pico"
+    m_peak_views = 0
     if MONTHLY_METRICS_PATH.exists():
         try:
             with open(MONTHLY_METRICS_PATH, "r", encoding="utf-8") as f:
                 monthly_data = json.load(f)
-            # Comparar el mes base inicial con el mes récord
+            months_count = len(monthly_data)
             if len(monthly_data) >= 2:
-                v_initial = monthly_data[0].get("views", 1)
-                v_peak = max(m.get("views", 0) for m in monthly_data)
+                v_initial = int(monthly_data[0].get("views", 1) or 1)
+                peak_row = max(monthly_data, key=lambda m: int(m.get("views", 0) or 0))
+                v_peak = int(peak_row.get("views", 0) or 0)
                 growth_yoy = round(((v_peak - v_initial) / max(v_initial, 1)) * 100.0, 1)
+                m_initial_label = monthly_data[0].get("month", "inicio")
+                m_initial_views = v_initial
+                m_peak_label = peak_row.get("month", "pico")
+                m_peak_views = v_peak
         except Exception:
             growth_yoy = 0.0
 
-    # Ejecutar análisis temáticos
-    cat_perf = calculate_category_performance(published_posts, metrics)
+    # Ejecutar análisis temáticos (Editorial ROI Score v2 cuando hay señal social validada)
+    cat_perf = calculate_category_performance(
+        published_posts,
+        metrics,
+        social_data=social_data,
+        channel_data=channel_data,
+    )
+    cat_social_map = {c.category: c.social_traction_score for c in cat_perf if c.social_traction_score > 0}
     quick_wins = detect_quick_wins_ctr(published_posts, metrics, med_views)
     orphans = detect_monetization_orphans(published_posts, metrics, p75_views)
     decay_alerts = detect_decay_alerts(published_posts, metrics)
-    prioritized_bg = prioritize_backlog(BACKLOG_PATH)
+    prioritized_bg = prioritize_backlog(BACKLOG_PATH, category_social_scores=cat_social_map or None)
     release_impact = analyze_release_editorial_impact(all_assets, metrics)
+    cannibalization = detect_keyword_cannibalization()
+    channel_summary = analyze_channel_performance(channel_data)
+    hidden_winners = detect_hidden_channel_winners(published_posts, channel_data)
+    dark_social = detect_dark_social_alerts(channel_data, DISPATCH_QUEUE_PATH)
+    social_summary = summarize_social_platforms(social_data, channel_data)
+    ptr_leaks = detect_ptr_leak_alerts(published_posts, social_data, channel_data)
+    canonical_shield = detect_canonical_shield_alerts(published_posts, social_data, metrics)
     silent_count = sum(1 for r in release_impact if r.editorial_coverage_status == "silent_release_alert")
 
     report = PulseImpactReport(
-        version="1.0.0",
+        version="1.3.0",
         generated_at=datetime.now(timezone.utc),
         visibility="private",
         total_published_posts=len(published_posts),
@@ -903,12 +1913,29 @@ def run_impact_analysis() -> PulseImpactReport:
         median_post_views=med_views,
         p75_post_views=p75_views,
         monthly_growth_yoy_pct=growth_yoy,
+        total_30d_gsc_clicks=total_gsc_clicks,
+        total_30d_gsc_impressions=total_gsc_impr,
+        gsc_clicks_prev_30d=total_gsc_clicks_prev,
+        gsc_impressions_prev_30d=total_gsc_impr_prev,
+        gsc_brand_clicks_30d=brand_clicks,
+        gsc_brand_impressions_30d=brand_impr,
+        avg_gsc_ctr_pct=avg_gsc_ctr,
+        avg_gsc_position=avg_gsc_pos,
+        en_views_share_pct=en_views_share,
+        en_gsc_impressions_share_pct=en_gsc_impr_share,
         category_performance=cat_perf,
         quick_wins_ctr=quick_wins,
         monetization_orphans=orphans,
         decay_alerts=decay_alerts,
         prioritized_backlog=prioritized_bg,
         release_editorial_impact=release_impact,
+        cannibalization_alerts=cannibalization,
+        channel_summary=channel_summary,
+        hidden_channel_winners=hidden_winners,
+        dark_social_alerts=dark_social,
+        social_platform_summary=social_summary,
+        ptr_leak_alerts=ptr_leaks,
+        canonical_shield_alerts=canonical_shield,
         silent_releases_count=silent_count,
     )
 
@@ -920,7 +1947,19 @@ def run_impact_analysis() -> PulseImpactReport:
 
     # 2. Guardar reporte ejecutivo en specs/audit/IMPACT_REPORT.md
     os.makedirs(REPORT_MD_PATH.parent, exist_ok=True)
-    md_content = generate_impact_report_markdown(report)
+    catalog_meta = {
+        "total_assets": len(all_assets),
+        "total_posts": len(posts),
+        "draft_posts": len(draft_posts),
+        "apps_count": base_apps_count,
+        "kits_count": kits_count,
+        "months_count": months_count,
+        "m_initial_label": m_initial_label,
+        "m_initial_views": m_initial_views,
+        "m_peak_label": m_peak_label,
+        "m_peak_views": m_peak_views,
+    }
+    md_content = generate_impact_report_markdown(report, catalog_meta=catalog_meta)
     with open(REPORT_MD_PATH, "w", encoding="utf-8") as f:
         f.write(md_content)
     print(f"[IMPACT ANALYZER] Generado reporte ejecutivo en: {REPORT_MD_PATH}")
@@ -930,4 +1969,8 @@ def run_impact_analysis() -> PulseImpactReport:
 
 if __name__ == "__main__":
     report = run_impact_analysis()
-    print(f"[IMPACT ANALYZER] Completado: {len(report.quick_wins_ctr)} Quick Wins, {len(report.monetization_orphans)} Huérfanos, {len(report.prioritized_backlog)} Ideas en Backlog.")
+    print(
+        f"[IMPACT ANALYZER] Completado: {len(report.quick_wins_ctr)} Quick Wins, "
+        f"{len(report.monetization_orphans)} Huérfanos, {len(report.cannibalization_alerts)} Canibalizaciones, "
+        f"{len(report.prioritized_backlog)} Ideas en Backlog."
+    )

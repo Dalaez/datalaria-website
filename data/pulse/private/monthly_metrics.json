@@ -15,78 +15,104 @@
     "year_month": "202511",
     "month": "2025-11",
     "views": 274,
-    "users": 110
+    "users": 110,
+    "gsc_clicks": 1,
+    "gsc_impressions": 13
   },
   {
     "year_month": "202512",
     "month": "2025-12",
     "views": 271,
-    "users": 113
+    "users": 113,
+    "gsc_clicks": 1,
+    "gsc_impressions": 10
   },
   {
     "year_month": "202601",
     "month": "2026-01",
     "views": 659,
-    "users": 241
+    "users": 241,
+    "gsc_clicks": 3,
+    "gsc_impressions": 1202
   },
   {
     "year_month": "202602",
     "month": "2026-02",
     "views": 768,
-    "users": 279
+    "users": 279,
+    "gsc_clicks": 7,
+    "gsc_impressions": 2557
   },
   {
     "year_month": "202603",
     "month": "2026-03",
     "views": 608,
-    "users": 287
+    "users": 287,
+    "gsc_clicks": 10,
+    "gsc_impressions": 3701
   },
   {
     "year_month": "202604",
     "month": "2026-04",
     "views": 362,
-    "users": 180
+    "users": 180,
+    "gsc_clicks": 17,
+    "gsc_impressions": 4211
   },
   {
     "year_month": "202605",
     "month": "2026-05",
     "views": 945,
-    "users": 779
+    "users": 779,
+    "gsc_clicks": 23,
+    "gsc_impressions": 4250
   },
   {
     "year_month": "202606",
     "month": "2026-06",
     "views": 382,
-    "users": 232
+    "users": 232,
+    "gsc_clicks": 25,
+    "gsc_impressions": 12440
   },
   {
     "year_month": "202607",
     "month": "2026-07",
     "views": 407,
-    "users": 302
+    "users": 302,
+    "gsc_clicks": 43,
+    "gsc_impressions": 13166
   },
   {
     "year_month": "202608",
     "month": "2026-08",
     "views": 1505,
-    "users": 1258
+    "users": 1258,
+    "gsc_clicks": 67,
+    "gsc_impressions": 14602
   },
   {
     "year_month": "202609",
     "month": "2026-09",
     "views": 1290,
-    "users": 785
+    "users": 785,
+    "gsc_clicks": 81,
+    "gsc_impressions": 15457
   },
   {
     "year_month": "202610",
     "month": "2026-10",
     "views": 3157,
-    "users": 1266
+    "users": 1266,
+    "gsc_clicks": 86,
+    "gsc_impressions": 17652
   },
   {
     "year_month": "202611",
     "month": "2026-11",
-    "views": 3823,
-    "users": 1430
+    "views": 4180,
+    "users": 1551,
+    "gsc_clicks": 108,
+    "gsc_impressions": 17751
   }
 ]

@@ -37,6 +37,17 @@ class RelativeMetrics(BaseModel):
     gsc_opportunity: bool = Field(default=False, description="Oportunidad de optimización SEO en Search Console")
 
 
+class GscQueryMetric(BaseModel):
+    """Métrica de consulta individual en Google Search Console."""
+    query: str
+    lang: Literal["es", "en", "other"] = "other"
+    clicks: int = Field(default=0, ge=0)
+    impressions: int = Field(default=0, ge=0)
+    ctr_pct: float = Field(default=0.0, ge=0.0)
+    position: float = Field(default=0.0, ge=0.0)
+    is_brand_query: bool = False
+
+
 class AbsoluteMetrics(BaseModel):
     """
     Métricas cuantitativas reales obtenidas de GA4 y Search Console.
@@ -45,10 +56,26 @@ class AbsoluteMetrics(BaseModel):
     ga4_views_30d: int = 0
     ga4_users_30d: int = 0
     ga4_engagement_sec: float = 0.0
+    ga4_views_es_30d: int = 0
+    ga4_views_en_30d: int = 0
+    ga4_views_prev_30d: int = 0
     gsc_clicks_30d: int = 0
     gsc_impressions_30d: int = 0
     gsc_ctr_pct: float = 0.0
     gsc_avg_position: float = 0.0
+    gsc_clicks_prev_30d: int = 0
+    gsc_impressions_prev_30d: int = 0
+    gsc_ctr_prev_pct: float = 0.0
+    gsc_avg_position_prev: float = 0.0
+    gsc_clicks_es_30d: int = 0
+    gsc_clicks_en_30d: int = 0
+    gsc_impressions_es_30d: int = 0
+    gsc_impressions_en_30d: int = 0
+    gsc_ctr_es_pct: float = 0.0
+    gsc_ctr_en_pct: float = 0.0
+    gsc_avg_position_es: float = 0.0
+    gsc_avg_position_en: float = 0.0
+    gsc_top_queries: List[GscQueryMetric] = Field(default_factory=list)
 
 
 class ContentAsset(BaseModel):
@@ -192,6 +219,17 @@ class QuickWinItem(BaseModel):
     recommended_title_es: str = Field(min_length=35, max_length=95)
     recommended_title_en: str = Field(min_length=35, max_length=95)
     recommended_desc_es: str = Field(min_length=75, max_length=245)
+    top_query: Optional[str] = None
+
+
+class CannibalizationAlertItem(BaseModel):
+    """Alerta de canibalización cuando >=2 URLs del mismo idioma compiten por la misma consulta."""
+    query: str
+    lang: Literal["es", "en", "other"] = "other"
+    total_impressions: int = Field(ge=0)
+    total_clicks: int = Field(ge=0)
+    competing_urls: List[Dict[str, Any]] = Field(default_factory=list)
+    recommended_action: str
 
 
 class MonetizationOrphanItem(BaseModel):
@@ -234,10 +272,15 @@ class CategoryPerformanceItem(BaseModel):
     monetized_posts: int = Field(ge=0)
     monetization_coverage_pct: float = Field(ge=0.0, le=100.0)
     editorial_roi_score: float = Field(ge=0.0, le=100.0)
+    social_traction_score: float = Field(default=0.0, ge=0.0, le=100.0)
+    total_gsc_impressions_30d: int = Field(default=0, ge=0)
+    total_gsc_clicks_30d: int = Field(default=0, ge=0)
+    avg_gsc_ctr_pct: float = Field(default=0.0, ge=0.0)
+    en_traffic_share_pct: float = Field(default=0.0, ge=0.0, le=100.0)
 
 
 class BacklogPrioritizedItem(BaseModel):
-    """Idea editorial prospectiva priorizada mediante Editorial ROI Score."""
+    """Idea editorial prospectiva priorizada mediante Editorial ROI Score v2."""
     id: str
     title_es: str
     title_en: str
@@ -246,6 +289,7 @@ class BacklogPrioritizedItem(BaseModel):
     seo_demand_score: float = Field(ge=0.0, le=100.0)
     monetization_fit_score: float = Field(ge=0.0, le=100.0)
     ecosystem_synergy_score: float = Field(ge=0.0, le=100.0)
+    social_traction_score: float = Field(default=0.0, ge=0.0, le=100.0)
     editorial_roi_score: float = Field(ge=0.0, le=100.0)
     rationale_es: str
 
@@ -266,9 +310,146 @@ class ReleaseEditorialImpactItem(BaseModel):
     recommended_scriba_action: str
 
 
-class PulseImpactReport(BaseModel):
-    """Contrato raíz de data/pulse/private/impact_report.json (INV-PULSE-6)."""
+CanonicalChannel = Literal[
+    "linkedin",
+    "x",
+    "devto",
+    "coderlegion",
+    "newsletter",
+    "google_organic",
+    "direct",
+    "other",
+]
+
+
+class ChannelAttributionMetric(BaseModel):
+    """Métrica de adquisición GA4 por ruta/activo y canal canónico (Hito 7.11 / ADR-033)."""
+    channel: CanonicalChannel
+    path: str
+    asset_id: Optional[str] = None
+    lang: Literal["es", "en", "other"] = "other"
+    source: str = ""
+    medium: str = ""
+    campaign: str = ""
+    sessions: int = Field(default=0, ge=0)
+    users: int = Field(default=0, ge=0)
+    engaged_sessions: int = Field(default=0, ge=0)
+    engagement_sec: float = Field(default=0.0, ge=0.0)
+    key_events: int = Field(default=0, ge=0)
+    key_events_breakdown: Dict[str, int] = Field(default_factory=dict)
+
+
+class ChannelSummaryItem(BaseModel):
+    """Resumen agregado de adquisición, calidad y conversión por canal canónico (30d)."""
+    channel: CanonicalChannel
+    sessions_30d: int = Field(default=0, ge=0)
+    sessions_es_30d: int = Field(default=0, ge=0)
+    sessions_en_30d: int = Field(default=0, ge=0)
+    en_share_pct: float = Field(default=0.0, ge=0.0, le=100.0)
+    users_30d: int = Field(default=0, ge=0)
+    engaged_sessions_30d: int = Field(default=0, ge=0)
+    engagement_rate_pct: float = Field(default=0.0, ge=0.0, le=100.0)
+    avg_engagement_sec: float = Field(default=0.0, ge=0.0)
+    key_events_30d: int = Field(default=0, ge=0)
+    conversion_rate_pct: float = Field(default=0.0, ge=0.0)
+    sessions_prev_30d: int = Field(default=0, ge=0)
+    trend_30d_pct: float = 0.0
+
+
+class HiddenChannelWinnerItem(BaseModel):
+    """Activo con alta retención o conversiones en canal social pero bajo volumen (<30 sesiones)."""
+    asset_id: str
+    slug: str
+    title_es: str
+    channel: CanonicalChannel
+    sessions_30d: int = Field(ge=0)
+    avg_engagement_sec: float = Field(ge=0.0)
+    key_events_30d: int = Field(default=0, ge=0)
+    recommended_action: str
+
+
+class DarkSocialAlertItem(BaseModel):
+    """Alerta de fuga UTM / pico de tráfico (direct)/(none) sin atribución correlativa (ADR-033)."""
+    alert_type: Literal["dark_social_spike", "high_direct_share"]
+    dispatch_id: Optional[str] = None
+    channel_expected: Optional[str] = None
+    direct_sessions_current: int = Field(ge=0)
+    direct_sessions_baseline: float = Field(ge=0.0)
+    spike_pct: float
+    severity: Literal["high", "medium"] = "medium"
+    recommended_action: str
+
+
+LedgerChannel = Literal["linkedin", "devto", "coderlegion", "x", "newsletter"]
+
+
+class DistributionLedgerEntry(BaseModel):
+    """Registro canónico e idempotente de una publicación externa en vivo (Hito 7.12 / ADR-033)."""
+    asset_id: str
+    slug: str
+    lang: Literal["es", "en"]
+    channel: LedgerChannel
+    external_id: str
+    external_url: Optional[str] = None
+    canonical_url: str
+    published_at_utc: str
+
+
+class DistributionLedger(BaseModel):
+    """Contrato raíz de data/pulse/private/distribution_ledger.json (INV-PULSE-12)."""
     version: str = "1.0.0"
+    visibility: Literal["private"] = "private"
+    updated_at: datetime
+    entries: List[DistributionLedgerEntry] = Field(default_factory=list)
+
+
+class NativePlatformMetric(BaseModel):
+    """Métricas nativas extraídas gratuitamente de Dev.to, CoderLegion o LinkedIn Empresa (Hito 7.12)."""
+    platform: Literal["devto", "coderlegion", "linkedin_company", "x"]
+    external_id: str
+    asset_id: Optional[str] = None
+    slug: str = ""
+    lang: Literal["es", "en", "other"] = "other"
+    title: str = ""
+    url: str = ""
+    canonical_url: str = ""
+    views: int = Field(default=0, ge=0)
+    reactions: int = Field(default=0, ge=0)
+    comments: int = Field(default=0, ge=0)
+    reading_time_min: int = Field(default=0, ge=0)
+    published_at: Optional[str] = None
+
+
+class PullThroughAlertItem(BaseModel):
+    """Alerta de Fuga de Traspaso: alto alcance nativo (>=300 vistas) con bajo retorno a Datalaria (PTR < 2%)."""
+    asset_id: str
+    slug: str
+    title_es: str
+    platform: Literal["devto", "coderlegion", "linkedin_company"]
+    native_views: int = Field(ge=0)
+    native_reactions: int = Field(default=0, ge=0)
+    native_comments: int = Field(default=0, ge=0)
+    ga4_sessions_30d: int = Field(ge=0)
+    ptr_pct: float = Field(ge=0.0)
+    recommended_action: str
+
+
+class CanonicalShieldAlertItem(BaseModel):
+    """Alerta de Escudo Anti-Canibalización Canónica: >=500 vistas nativas y 0 imp. GSC tras >21 días."""
+    asset_id: str
+    slug: str
+    title_es: str
+    platform: Literal["devto", "coderlegion"]
+    native_views: int = Field(ge=0)
+    gsc_impressions_30d: int = Field(ge=0)
+    days_since_publish: int = Field(ge=0)
+    canonical_url: str
+    recommended_action: str
+
+
+class PulseImpactReport(BaseModel):
+    """Contrato raíz de data/pulse/private/impact_report.json (INV-PULSE-6 / INV-PULSE-12)."""
+    version: str = "1.3.0"
     generated_at: datetime
     visibility: Literal["private"] = "private"
     total_published_posts: int = Field(ge=0)
@@ -277,11 +458,28 @@ class PulseImpactReport(BaseModel):
     median_post_views: float = Field(ge=0.0)
     p75_post_views: float = Field(ge=0.0)
     monthly_growth_yoy_pct: float
+    total_30d_gsc_clicks: int = Field(default=0, ge=0)
+    total_30d_gsc_impressions: int = Field(default=0, ge=0)
+    gsc_clicks_prev_30d: int = Field(default=0, ge=0)
+    gsc_impressions_prev_30d: int = Field(default=0, ge=0)
+    gsc_brand_clicks_30d: int = Field(default=0, ge=0)
+    gsc_brand_impressions_30d: int = Field(default=0, ge=0)
+    avg_gsc_ctr_pct: float = Field(default=0.0, ge=0.0)
+    avg_gsc_position: float = Field(default=0.0, ge=0.0)
+    en_views_share_pct: float = Field(default=0.0, ge=0.0, le=100.0)
+    en_gsc_impressions_share_pct: float = Field(default=0.0, ge=0.0, le=100.0)
     category_performance: List[CategoryPerformanceItem]
     quick_wins_ctr: List[QuickWinItem]
     monetization_orphans: List[MonetizationOrphanItem]
     decay_alerts: List[DecayAlertItem]
     prioritized_backlog: List[BacklogPrioritizedItem]
     release_editorial_impact: List[ReleaseEditorialImpactItem] = Field(default_factory=list)
+    cannibalization_alerts: List[CannibalizationAlertItem] = Field(default_factory=list)
+    channel_summary: List[ChannelSummaryItem] = Field(default_factory=list)
+    hidden_channel_winners: List[HiddenChannelWinnerItem] = Field(default_factory=list)
+    dark_social_alerts: List[DarkSocialAlertItem] = Field(default_factory=list)
+    social_platform_summary: Dict[str, Dict[str, Any]] = Field(default_factory=dict)
+    ptr_leak_alerts: List[PullThroughAlertItem] = Field(default_factory=list)
+    canonical_shield_alerts: List[CanonicalShieldAlertItem] = Field(default_factory=list)
     silent_releases_count: int = 0
 

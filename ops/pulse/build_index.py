@@ -47,7 +47,7 @@ from ops.pulse.models import (
 # GOBERNANZA DE VISIBILIDAD PÚBLICA (INV-PULSE-9)
 # ==============================================================================
 
-PUBLIC_ROADMAP_HORIZON_DAYS = 30
+PUBLIC_ROADMAP_HORIZON_DAYS = 35
 EMBARGOED_KIT_IDS = {"pack-sdd", "suite-sdd"}
 
 
@@ -79,7 +79,7 @@ def resolve_public_visibility(
     Determina la visibilidad pública bajo INV-PULSE-9:
     - Excluye borradores (draft) e ideas internas.
     - Excluye apps en status incubating, sus posts/kits asociados (ej. helix, pack-sdd, suite-sdd).
-    - Excluye activos programados más allá de +30 días desde hoy.
+    - Excluye activos programados más allá de +35 días desde hoy (ventana rolling 5 semanas).
     """
     if status in ("draft", "idea"):
         return "private"

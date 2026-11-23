@@ -1,12 +1,12 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-11-23T06:36:29.492989Z",
-  "total_assets": 179,
-  "published_assets": 165,
+  "generated_at": "2026-11-23T20:59:12.442682Z",
+  "total_assets": 180,
+  "published_assets": 166,
   "scheduled_assets": 14,
   "ideas_count": 0,
   "parity_summary": {
-    "complete": 179
+    "complete": 180
   },
   "monthly_traffic_index": [
     {
@@ -82,7 +82,7 @@
     {
       "month": "2026-11",
       "label": "Nov '26",
-      "index_100": 639
+      "index_100": 688
     }
   ],
   "assets": [
@@ -145,9 +145,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 59,
-        "rank_pct": 39,
-        "trend_30d_pct": -80.7,
+        "index_100": 60,
+        "rank_pct": 40,
+        "trend_30d_pct": -78.9,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -214,8 +214,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 157,
-        "rank_pct": 67,
+        "index_100": 145,
+        "rank_pct": 65,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -290,9 +290,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 0,
-        "rank_pct": 4,
-        "trend_30d_pct": 0.0,
+        "index_100": 430,
+        "rank_pct": 86,
+        "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -369,7 +369,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 4,
+        "rank_pct": 3,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -392,8 +392,8 @@
       "brief_es": "Guía metodológica y cuantitativa de Earned Value Management (EVM / EIA-748): superación de la trampa contable, los 10 conceptos rectores, 27 directrices EVMS, EVM híbrido PMBOK, curvas S y proyecciones EAC/TCPI C-Level.",
       "brief_en": "Quantitative guide to Earned Value Management (EVM / EIA-748): overcoming the accounting trap, the 10 core EVM concepts, 27 EVMS guidelines, Hybrid Agile-EVM per PMBOK, S-Curves, and EAC/TCPI forecasting.",
       "publish_date": "2026-11-23",
-      "last_modified_es": "2026-11-23T06:30:10.542835Z",
-      "last_modified_en": "2026-11-23T06:30:10.435018Z",
+      "last_modified_es": "2026-11-23T07:35:43+01:00",
+      "last_modified_en": "2026-11-23T07:35:43+01:00",
       "language_parity": "complete",
       "category": "Estrategia y Operaciones",
       "categories": [
@@ -441,8 +441,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 81,
-        "rank_pct": 47,
+        "index_100": 190,
+        "rank_pct": 69,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -510,9 +510,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 141,
-        "rank_pct": 65,
-        "trend_30d_pct": -83.3,
+        "index_100": 130,
+        "rank_pct": 64,
+        "trend_30d_pct": -83.5,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -581,8 +581,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 11,
-        "rank_pct": 13,
+        "index_100": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -653,8 +653,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 81,
-        "rank_pct": 47,
+        "index_100": 80,
+        "rank_pct": 46,
         "trend_30d_pct": 500.0,
         "gsc_opportunity": false
       },
@@ -799,7 +799,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 4,
+        "rank_pct": 3,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -869,7 +869,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 4,
+        "rank_pct": 3,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -939,8 +939,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 49,
-        "rank_pct": 36,
+        "index_100": 60,
+        "rank_pct": 40,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -1010,7 +1010,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 4,
+        "rank_pct": 3,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1080,8 +1080,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 178,
-        "rank_pct": 69,
+        "index_100": 175,
+        "rank_pct": 67,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": true
       },
@@ -1156,8 +1156,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 195,
-        "rank_pct": 70,
+        "index_100": 190,
+        "rank_pct": 69,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": true
       },
@@ -1229,9 +1229,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 81,
-        "rank_pct": 47,
-        "trend_30d_pct": 0.0,
+        "index_100": 60,
+        "rank_pct": 40,
+        "trend_30d_pct": -33.3,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -1301,8 +1301,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 205,
-        "rank_pct": 71,
+        "index_100": 190,
+        "rank_pct": 69,
         "trend_30d_pct": 500.0,
         "gsc_opportunity": false
       },
@@ -1376,8 +1376,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 173,
-        "rank_pct": 68,
+        "index_100": 160,
+        "rank_pct": 66,
         "trend_30d_pct": 500.0,
         "gsc_opportunity": true
       },
@@ -1446,8 +1446,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 254,
-        "rank_pct": 74,
+        "index_100": 285,
+        "rank_pct": 73,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -1520,7 +1520,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 4,
+        "rank_pct": 3,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -1588,7 +1588,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 1054,
+        "index_100": 975,
         "rank_pct": 89,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
@@ -1657,8 +1657,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 157,
-        "rank_pct": 67,
+        "index_100": 165,
+        "rank_pct": 66,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -1727,8 +1727,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 195,
-        "rank_pct": 70,
+        "index_100": 180,
+        "rank_pct": 68,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -1798,8 +1798,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 76,
-        "rank_pct": 45,
+        "index_100": 70,
+        "rank_pct": 43,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -1869,8 +1869,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 92,
-        "rank_pct": 53,
+        "index_100": 85,
+        "rank_pct": 49,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -1942,8 +1942,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 395,
-        "rank_pct": 81,
+        "index_100": 365,
+        "rank_pct": 80,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -2014,8 +2014,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 384,
-        "rank_pct": 81,
+        "index_100": 360,
+        "rank_pct": 79,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -2084,10 +2084,10 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 405,
-        "rank_pct": 82,
+        "index_100": 380,
+        "rank_pct": 80,
         "trend_30d_pct": 100.0,
-        "gsc_opportunity": false
+        "gsc_opportunity": true
       },
       "metrics_absolute": null,
       "version": null,
@@ -2152,9 +2152,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 38,
+        "index_100": 40,
         "rank_pct": 31,
-        "trend_30d_pct": 75.0,
+        "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -2219,7 +2219,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 4,
+        "rank_pct": 3,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2288,7 +2288,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 4,
+        "rank_pct": 3,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -2351,9 +2351,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 178,
-        "rank_pct": 69,
-        "trend_30d_pct": 10.0,
+        "index_100": 150,
+        "rank_pct": 65,
+        "trend_30d_pct": -3.2,
         "gsc_opportunity": true
       },
       "metrics_absolute": null,
@@ -2419,9 +2419,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 86,
-        "rank_pct": 51,
-        "trend_30d_pct": -20.0,
+        "index_100": 80,
+        "rank_pct": 46,
+        "trend_30d_pct": -15.8,
         "gsc_opportunity": true
       },
       "metrics_absolute": null,
@@ -2492,8 +2492,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 319,
-        "rank_pct": 75,
+        "index_100": 310,
+        "rank_pct": 74,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -2560,9 +2560,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 141,
-        "rank_pct": 65,
-        "trend_30d_pct": -3.7,
+        "index_100": 130,
+        "rank_pct": 64,
+        "trend_30d_pct": -7.1,
         "gsc_opportunity": true
       },
       "metrics_absolute": null,
@@ -2632,9 +2632,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 49,
-        "rank_pct": 36,
-        "trend_30d_pct": 500.0,
+        "index_100": 45,
+        "rank_pct": 34,
+        "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -2705,9 +2705,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 27,
-        "rank_pct": 25,
-        "trend_30d_pct": -16.7,
+        "index_100": 25,
+        "rank_pct": 23,
+        "trend_30d_pct": 25.0,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -2779,9 +2779,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 32,
+        "index_100": 35,
         "rank_pct": 28,
-        "trend_30d_pct": 100.0,
+        "trend_30d_pct": 133.3,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -2853,9 +2853,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 27,
-        "rank_pct": 25,
-        "trend_30d_pct": -64.3,
+        "index_100": 25,
+        "rank_pct": 23,
+        "trend_30d_pct": -61.5,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -2926,9 +2926,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 32,
-        "rank_pct": 28,
-        "trend_30d_pct": 200.0,
+        "index_100": 30,
+        "rank_pct": 26,
+        "trend_30d_pct": 500.0,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -2996,8 +2996,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 232,
-        "rank_pct": 73,
+        "index_100": 215,
+        "rank_pct": 72,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": true
       },
@@ -3063,9 +3063,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 27,
-        "rank_pct": 25,
-        "trend_30d_pct": 400.0,
+        "index_100": 30,
+        "rank_pct": 26,
+        "trend_30d_pct": 500.0,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -3135,9 +3135,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 32,
+        "index_100": 35,
         "rank_pct": 28,
-        "trend_30d_pct": 50.0,
+        "trend_30d_pct": 75.0,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -3209,8 +3209,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 43,
-        "rank_pct": 33,
+        "index_100": 40,
+        "rank_pct": 31,
         "trend_30d_pct": 500.0,
         "gsc_opportunity": false
       },
@@ -3283,8 +3283,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 22,
-        "rank_pct": 20,
+        "index_100": 20,
+        "rank_pct": 19,
         "trend_30d_pct": 300.0,
         "gsc_opportunity": false
       },
@@ -3352,9 +3352,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 49,
-        "rank_pct": 36,
-        "trend_30d_pct": -30.8,
+        "index_100": 40,
+        "rank_pct": 31,
+        "trend_30d_pct": -46.7,
         "gsc_opportunity": true
       },
       "metrics_absolute": null,
@@ -3423,9 +3423,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 27,
-        "rank_pct": 25,
-        "trend_30d_pct": -54.5,
+        "index_100": 20,
+        "rank_pct": 19,
+        "trend_30d_pct": -66.7,
         "gsc_opportunity": true
       },
       "metrics_absolute": null,
@@ -3489,9 +3489,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 141,
-        "rank_pct": 65,
-        "trend_30d_pct": 36.8,
+        "index_100": 125,
+        "rank_pct": 62,
+        "trend_30d_pct": 25.0,
         "gsc_opportunity": true
       },
       "metrics_absolute": null,
@@ -3555,8 +3555,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 22,
-        "rank_pct": 20,
+        "index_100": 20,
+        "rank_pct": 19,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -3622,9 +3622,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 43,
-        "rank_pct": 33,
-        "trend_30d_pct": 100.0,
+        "index_100": 45,
+        "rank_pct": 34,
+        "trend_30d_pct": 125.0,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -3694,8 +3694,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 22,
-        "rank_pct": 20,
+        "index_100": 20,
+        "rank_pct": 19,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -3767,8 +3767,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 119,
-        "rank_pct": 62,
+        "index_100": 110,
+        "rank_pct": 58,
         "trend_30d_pct": 22.2,
         "gsc_opportunity": false
       },
@@ -3836,9 +3836,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 27,
-        "rank_pct": 25,
-        "trend_30d_pct": 66.7,
+        "index_100": 15,
+        "rank_pct": 15,
+        "trend_30d_pct": -40.0,
         "gsc_opportunity": true
       },
       "metrics_absolute": null,
@@ -3908,8 +3908,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 81,
-        "rank_pct": 47,
+        "index_100": 75,
+        "rank_pct": 45,
         "trend_30d_pct": -11.8,
         "gsc_opportunity": false
       },
@@ -3979,8 +3979,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 38,
-        "rank_pct": 31,
+        "index_100": 35,
+        "rank_pct": 28,
         "trend_30d_pct": -50.0,
         "gsc_opportunity": true
       },
@@ -4044,8 +4044,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 27,
-        "rank_pct": 25,
+        "index_100": 25,
+        "rank_pct": 23,
         "trend_30d_pct": 66.7,
         "gsc_opportunity": true
       },
@@ -4113,9 +4113,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 76,
-        "rank_pct": 45,
-        "trend_30d_pct": 40.0,
+        "index_100": 70,
+        "rank_pct": 43,
+        "trend_30d_pct": 133.3,
         "gsc_opportunity": true
       },
       "metrics_absolute": null,
@@ -4180,9 +4180,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 76,
-        "rank_pct": 45,
-        "trend_30d_pct": 100.0,
+        "index_100": 45,
+        "rank_pct": 34,
+        "trend_30d_pct": -25.0,
         "gsc_opportunity": true
       },
       "metrics_absolute": null,
@@ -4249,9 +4249,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 124,
-        "rank_pct": 62,
-        "trend_30d_pct": 35.3,
+        "index_100": 120,
+        "rank_pct": 61,
+        "trend_30d_pct": 41.2,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -4318,8 +4318,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 16,
-        "rank_pct": 16,
+        "index_100": 15,
+        "rank_pct": 15,
         "trend_30d_pct": -25.0,
         "gsc_opportunity": true
       },
@@ -4387,9 +4387,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 114,
-        "rank_pct": 61,
-        "trend_30d_pct": -58.0,
+        "index_100": 110,
+        "rank_pct": 58,
+        "trend_30d_pct": -56.9,
         "gsc_opportunity": true
       },
       "metrics_absolute": null,
@@ -4456,9 +4456,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 32,
-        "rank_pct": 28,
-        "trend_30d_pct": -68.4,
+        "index_100": 30,
+        "rank_pct": 26,
+        "trend_30d_pct": -66.7,
         "gsc_opportunity": true
       },
       "metrics_absolute": null,
@@ -4525,9 +4525,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 130,
-        "rank_pct": 63,
-        "trend_30d_pct": 14.3,
+        "index_100": 125,
+        "rank_pct": 62,
+        "trend_30d_pct": 13.6,
         "gsc_opportunity": true
       },
       "metrics_absolute": null,
@@ -4597,8 +4597,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 157,
-        "rank_pct": 67,
+        "index_100": 145,
+        "rank_pct": 65,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -4669,8 +4669,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 11,
-        "rank_pct": 13,
+        "index_100": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -4737,9 +4737,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 38,
-        "rank_pct": 31,
-        "trend_30d_pct": -46.2,
+        "index_100": 30,
+        "rank_pct": 26,
+        "trend_30d_pct": -57.1,
         "gsc_opportunity": true
       },
       "metrics_absolute": null,
@@ -4807,9 +4807,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 249,
-        "rank_pct": 74,
-        "trend_30d_pct": -14.8,
+        "index_100": 205,
+        "rank_pct": 71,
+        "trend_30d_pct": -30.5,
         "gsc_opportunity": true
       },
       "metrics_absolute": null,
@@ -4871,9 +4871,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 227,
+        "index_100": 215,
         "rank_pct": 72,
-        "trend_30d_pct": 50.0,
+        "trend_30d_pct": 34.4,
         "gsc_opportunity": true
       },
       "metrics_absolute": null,
@@ -4943,8 +4943,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 184,
-        "rank_pct": 69,
+        "index_100": 175,
+        "rank_pct": 67,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": true
       },
@@ -5010,8 +5010,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 59,
-        "rank_pct": 39,
+        "index_100": 55,
+        "rank_pct": 36,
         "trend_30d_pct": 175.0,
         "gsc_opportunity": false
       },
@@ -5080,9 +5080,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 97,
-        "rank_pct": 54,
-        "trend_30d_pct": 38.5,
+        "index_100": 85,
+        "rank_pct": 49,
+        "trend_30d_pct": 21.4,
         "gsc_opportunity": true
       },
       "metrics_absolute": null,
@@ -5148,9 +5148,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 16,
-        "rank_pct": 16,
-        "trend_30d_pct": -40.0,
+        "index_100": 10,
+        "rank_pct": 12,
+        "trend_30d_pct": -66.7,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -5217,9 +5217,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 114,
-        "rank_pct": 61,
-        "trend_30d_pct": 0.0,
+        "index_100": 90,
+        "rank_pct": 52,
+        "trend_30d_pct": -25.0,
         "gsc_opportunity": true
       },
       "metrics_absolute": null,
@@ -5285,8 +5285,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 16,
-        "rank_pct": 16,
+        "index_100": 15,
+        "rank_pct": 15,
         "trend_30d_pct": 50.0,
         "gsc_opportunity": false
       },
@@ -5355,8 +5355,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 43,
-        "rank_pct": 33,
+        "index_100": 40,
+        "rank_pct": 31,
         "trend_30d_pct": 500.0,
         "gsc_opportunity": false
       },
@@ -5425,9 +5425,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 59,
-        "rank_pct": 39,
-        "trend_30d_pct": -56.0,
+        "index_100": 60,
+        "rank_pct": 40,
+        "trend_30d_pct": -53.8,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -5494,9 +5494,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 54,
-        "rank_pct": 38,
-        "trend_30d_pct": -64.3,
+        "index_100": 60,
+        "rank_pct": 40,
+        "trend_30d_pct": -55.6,
         "gsc_opportunity": true
       },
       "metrics_absolute": null,
@@ -5566,9 +5566,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 97,
-        "rank_pct": 54,
-        "trend_30d_pct": 0.0,
+        "index_100": 95,
+        "rank_pct": 53,
+        "trend_30d_pct": 18.8,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -5638,8 +5638,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 243,
-        "rank_pct": 73,
+        "index_100": 210,
+        "rank_pct": 71,
         "trend_30d_pct": 500.0,
         "gsc_opportunity": true
       },
@@ -5709,8 +5709,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 632,
-        "rank_pct": 89,
+        "index_100": 585,
+        "rank_pct": 88,
         "trend_30d_pct": 500.0,
         "gsc_opportunity": true
       },
@@ -5780,9 +5780,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 141,
-        "rank_pct": 65,
-        "trend_30d_pct": -29.7,
+        "index_100": 120,
+        "rank_pct": 61,
+        "trend_30d_pct": -40.0,
         "gsc_opportunity": true
       },
       "metrics_absolute": null,
@@ -5850,9 +5850,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 108,
-        "rank_pct": 58,
-        "trend_30d_pct": -42.9,
+        "index_100": 105,
+        "rank_pct": 57,
+        "trend_30d_pct": -41.7,
         "gsc_opportunity": true
       },
       "metrics_absolute": null,
@@ -5923,9 +5923,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 65,
-        "rank_pct": 41,
-        "trend_30d_pct": 20.0,
+        "index_100": 55,
+        "rank_pct": 36,
+        "trend_30d_pct": 10.0,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -5992,8 +5992,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 49,
-        "rank_pct": 36,
+        "index_100": 45,
+        "rank_pct": 34,
         "trend_30d_pct": -25.0,
         "gsc_opportunity": true
       },
@@ -6060,9 +6060,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 27,
-        "rank_pct": 25,
-        "trend_30d_pct": -28.6,
+        "index_100": 25,
+        "rank_pct": 23,
+        "trend_30d_pct": -16.7,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -6129,8 +6129,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 92,
-        "rank_pct": 53,
+        "index_100": 85,
+        "rank_pct": 49,
         "trend_30d_pct": 30.8,
         "gsc_opportunity": true
       },
@@ -6197,7 +6197,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 5,
-        "rank_pct": 10,
+        "rank_pct": 8,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6266,9 +6266,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 135,
-        "rank_pct": 63,
-        "trend_30d_pct": 212.5,
+        "index_100": 110,
+        "rank_pct": 58,
+        "trend_30d_pct": 100.0,
         "gsc_opportunity": true
       },
       "metrics_absolute": null,
@@ -6337,8 +6337,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 81,
-        "rank_pct": 47,
+        "index_100": 75,
+        "rank_pct": 45,
         "trend_30d_pct": 114.3,
         "gsc_opportunity": true
       },
@@ -6407,9 +6407,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 135,
-        "rank_pct": 63,
-        "trend_30d_pct": -26.5,
+        "index_100": 120,
+        "rank_pct": 61,
+        "trend_30d_pct": -31.4,
         "gsc_opportunity": true
       },
       "metrics_absolute": null,
@@ -6476,7 +6476,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 4,
+        "rank_pct": 3,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -6545,8 +6545,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 22,
-        "rank_pct": 20,
+        "index_100": 20,
+        "rank_pct": 19,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -6616,8 +6616,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 32,
-        "rank_pct": 28,
+        "index_100": 30,
+        "rank_pct": 26,
         "trend_30d_pct": 500.0,
         "gsc_opportunity": false
       },
@@ -6684,8 +6684,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 86,
-        "rank_pct": 51,
+        "index_100": 80,
+        "rank_pct": 46,
         "trend_30d_pct": 500.0,
         "gsc_opportunity": false
       },
@@ -6753,8 +6753,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 65,
-        "rank_pct": 41,
+        "index_100": 60,
+        "rank_pct": 40,
         "trend_30d_pct": 300.0,
         "gsc_opportunity": false
       },
@@ -6822,8 +6822,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 49,
-        "rank_pct": 36,
+        "index_100": 45,
+        "rank_pct": 34,
         "trend_30d_pct": 500.0,
         "gsc_opportunity": false
       },
@@ -6890,8 +6890,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 22,
-        "rank_pct": 20,
+        "index_100": 20,
+        "rank_pct": 19,
         "trend_30d_pct": 300.0,
         "gsc_opportunity": false
       },
@@ -6959,9 +6959,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 5,
-        "rank_pct": 10,
-        "trend_30d_pct": -66.7,
+        "index_100": 10,
+        "rank_pct": 12,
+        "trend_30d_pct": -33.3,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -7027,9 +7027,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 16,
-        "rank_pct": 16,
-        "trend_30d_pct": 50.0,
+        "index_100": 25,
+        "rank_pct": 23,
+        "trend_30d_pct": 150.0,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -7098,8 +7098,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 22,
-        "rank_pct": 20,
+        "index_100": 20,
+        "rank_pct": 19,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7167,8 +7167,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 43,
-        "rank_pct": 33,
+        "index_100": 40,
+        "rank_pct": 31,
         "trend_30d_pct": 166.7,
         "gsc_opportunity": false
       },
@@ -7231,7 +7231,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 5,
-        "rank_pct": 10,
+        "rank_pct": 8,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7300,8 +7300,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 286,
-        "rank_pct": 75,
+        "index_100": 265,
+        "rank_pct": 73,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -7372,9 +7372,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 32,
-        "rank_pct": 28,
-        "trend_30d_pct": -60.0,
+        "index_100": 30,
+        "rank_pct": 26,
+        "trend_30d_pct": -57.1,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -7447,8 +7447,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 22,
-        "rank_pct": 20,
+        "index_100": 20,
+        "rank_pct": 19,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -7515,8 +7515,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 49,
-        "rank_pct": 36,
+        "index_100": 45,
+        "rank_pct": 34,
         "trend_30d_pct": 500.0,
         "gsc_opportunity": false
       },
@@ -7583,9 +7583,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 16,
-        "rank_pct": 16,
-        "trend_30d_pct": 200.0,
+        "index_100": 10,
+        "rank_pct": 12,
+        "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -7650,8 +7650,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 76,
-        "rank_pct": 45,
+        "index_100": 70,
+        "rank_pct": 43,
         "trend_30d_pct": 40.0,
         "gsc_opportunity": false
       },
@@ -7717,8 +7717,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 22,
-        "rank_pct": 20,
+        "index_100": 20,
+        "rank_pct": 19,
         "trend_30d_pct": 33.3,
         "gsc_opportunity": false
       },
@@ -7786,8 +7786,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 70,
-        "rank_pct": 43,
+        "index_100": 65,
+        "rank_pct": 42,
         "trend_30d_pct": 333.3,
         "gsc_opportunity": false
       },
@@ -7852,8 +7852,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 16,
-        "rank_pct": 16,
+        "index_100": 15,
+        "rank_pct": 15,
         "trend_30d_pct": 200.0,
         "gsc_opportunity": false
       },
@@ -7918,8 +7918,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 43,
-        "rank_pct": 33,
+        "index_100": 40,
+        "rank_pct": 31,
         "trend_30d_pct": 166.7,
         "gsc_opportunity": false
       },
@@ -7988,9 +7988,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 54,
-        "rank_pct": 38,
-        "trend_30d_pct": -9.1,
+        "index_100": 50,
+        "rank_pct": 36,
+        "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -8056,8 +8056,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 11,
-        "rank_pct": 13,
+        "index_100": 10,
+        "rank_pct": 12,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -8123,7 +8123,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 0,
-        "rank_pct": 4,
+        "rank_pct": 3,
         "trend_30d_pct": -100.0,
         "gsc_opportunity": false
       },
@@ -8189,7 +8189,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 5,
-        "rank_pct": 10,
+        "rank_pct": 8,
         "trend_30d_pct": -75.0,
         "gsc_opportunity": false
       },
@@ -8254,8 +8254,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 65,
-        "rank_pct": 41,
+        "index_100": 60,
+        "rank_pct": 40,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -8322,8 +8322,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 27,
-        "rank_pct": 25,
+        "index_100": 25,
+        "rank_pct": 23,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -8390,8 +8390,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 11,
-        "rank_pct": 13,
+        "index_100": 10,
+        "rank_pct": 12,
         "trend_30d_pct": -33.3,
         "gsc_opportunity": false
       },
@@ -8461,8 +8461,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 416,
-        "rank_pct": 82,
+        "index_100": 460,
+        "rank_pct": 87,
         "trend_30d_pct": 500.0,
         "gsc_opportunity": false
       },
@@ -8531,8 +8531,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 357,
-        "rank_pct": 80,
+        "index_100": 330,
+        "rank_pct": 78,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": true
       },
@@ -8601,8 +8601,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 357,
-        "rank_pct": 80,
+        "index_100": 330,
+        "rank_pct": 78,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": true
       },
@@ -8671,8 +8671,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 357,
-        "rank_pct": 80,
+        "index_100": 330,
+        "rank_pct": 78,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": true
       },
@@ -8743,8 +8743,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 65,
-        "rank_pct": 41,
+        "index_100": 60,
+        "rank_pct": 40,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -8815,8 +8815,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 65,
-        "rank_pct": 41,
+        "index_100": 60,
+        "rank_pct": 40,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -8887,8 +8887,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 65,
-        "rank_pct": 41,
+        "index_100": 60,
+        "rank_pct": 40,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -8969,8 +8969,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 86,
-        "rank_pct": 51,
+        "index_100": 85,
+        "rank_pct": 49,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -9051,8 +9051,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 86,
-        "rank_pct": 51,
+        "index_100": 85,
+        "rank_pct": 49,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -9133,8 +9133,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 86,
-        "rank_pct": 51,
+        "index_100": 85,
+        "rank_pct": 49,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -9215,8 +9215,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 86,
-        "rank_pct": 51,
+        "index_100": 85,
+        "rank_pct": 49,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -9297,8 +9297,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 86,
-        "rank_pct": 51,
+        "index_100": 85,
+        "rank_pct": 49,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -9379,8 +9379,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 86,
-        "rank_pct": 51,
+        "index_100": 85,
+        "rank_pct": 49,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -9461,8 +9461,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 86,
-        "rank_pct": 51,
+        "index_100": 85,
+        "rank_pct": 49,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -9531,8 +9531,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 108,
-        "rank_pct": 58,
+        "index_100": 100,
+        "rank_pct": 55,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -9601,8 +9601,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 108,
-        "rank_pct": 58,
+        "index_100": 100,
+        "rank_pct": 55,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -9671,8 +9671,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 108,
-        "rank_pct": 58,
+        "index_100": 100,
+        "rank_pct": 55,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -9741,8 +9741,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 108,
-        "rank_pct": 58,
+        "index_100": 100,
+        "rank_pct": 55,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -9811,8 +9811,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 108,
-        "rank_pct": 58,
+        "index_100": 100,
+        "rank_pct": 55,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -9881,8 +9881,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 108,
-        "rank_pct": 58,
+        "index_100": 100,
+        "rank_pct": 55,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -9951,8 +9951,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 108,
-        "rank_pct": 58,
+        "index_100": 100,
+        "rank_pct": 55,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -10027,8 +10027,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 103,
-        "rank_pct": 55,
+        "index_100": 115,
+        "rank_pct": 60,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -10103,9 +10103,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 0,
-        "rank_pct": 4,
-        "trend_30d_pct": 0.0,
+        "index_100": 115,
+        "rank_pct": 60,
+        "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -10179,8 +10179,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 103,
-        "rank_pct": 55,
+        "index_100": 115,
+        "rank_pct": 60,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -10252,15 +10252,88 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 568,
+        "index_100": 525,
         "rank_pct": 88,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
-      "version": "v1.0.0",
+      "version": "v1.5.0",
       "release_type": "initial_launch",
       "parent_asset_id": null,
+      "editorial_post_slug": null
+    },
+    {
+      "id": "pulse-v1.5.0",
+      "slug": "pulse",
+      "asset_type": "app",
+      "status": "published",
+      "visibility": "public",
+      "title_es": "Datalaria Pulse (v1.5.0): Telemetría Omnicanal Coste 0 €, Modo Dual LinkedIn Empresa, Panel Canales & Editorial ROI Score v2",
+      "title_en": "Datalaria Pulse (v1.5.0): Zero-Cost Omnichannel Telemetry, LinkedIn Company Dual Mode, Channels Panel & Editorial ROI Score v2",
+      "url_es": "/es/apps/pulse/",
+      "url_en": "/en/apps/pulse/",
+      "brief_es": "Content Ops as Code — Gobernanza editorial, paridad bilingüe y retorno orgánico desde Git.",
+      "brief_en": "Content Ops as Code — Editorial governance, bilingual parity, and organic ROI directly from Git.",
+      "publish_date": "2026-11-23",
+      "last_modified_es": "2026-11-18T06:02:45+01:00",
+      "last_modified_en": "2026-11-18T06:02:45+01:00",
+      "language_parity": "complete",
+      "category": "Aplicaciones Web",
+      "categories": [
+        "Apps",
+        "b2b"
+      ],
+      "tags": [
+        "React 19",
+        "TypeScript",
+        "Vite 8",
+        "Lucide Icons",
+        "Python 3.13",
+        "Pydantic v2",
+        "PyYAML",
+        "OpenPyXL",
+        "PostgreSQL 15 (Supabase)",
+        "Row-Level Security (RLS)",
+        "pulse schema",
+        "Hugo Static Portal",
+        "GitHub Actions CI/CD",
+        "Git Pre-Commit Hooks"
+      ],
+      "series": null,
+      "word_count_es": 0,
+      "word_count_en": 0,
+      "reading_time_min": 0,
+      "related_app": "pulse",
+      "related_kit": null,
+      "included_kits": [],
+      "price": null,
+      "original_price": null,
+      "checkout_url": null,
+      "deliverables": [],
+      "seo_audit": {
+        "score_0_100": 0,
+        "title_ok": true,
+        "description_ok": true,
+        "parity_ok": true,
+        "taxonomy_ok": true,
+        "internal_links_ok": true,
+        "issues": []
+      },
+      "freshness_status": "fresh",
+      "owner": "Daniel Alaez",
+      "campaign": null,
+      "social_channels": [],
+      "metrics_relative": {
+        "index_100": 525,
+        "rank_pct": 88,
+        "trend_30d_pct": 100.0,
+        "gsc_opportunity": false
+      },
+      "metrics_absolute": null,
+      "version": "v1.5.0",
+      "release_type": "version_upgrade",
+      "parent_asset_id": "pulse",
       "editorial_post_slug": null
     },
     {
@@ -10319,8 +10392,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 335,
-        "rank_pct": 77,
+        "index_100": 315,
+        "rank_pct": 76,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -10386,8 +10459,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 335,
-        "rank_pct": 77,
+        "index_100": 315,
+        "rank_pct": 76,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -10453,8 +10526,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 335,
-        "rank_pct": 77,
+        "index_100": 315,
+        "rank_pct": 76,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -10520,8 +10593,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 335,
-        "rank_pct": 77,
+        "index_100": 315,
+        "rank_pct": 76,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -10587,8 +10660,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 335,
-        "rank_pct": 77,
+        "index_100": 315,
+        "rank_pct": 76,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -10654,8 +10727,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 335,
-        "rank_pct": 77,
+        "index_100": 315,
+        "rank_pct": 76,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -10721,8 +10794,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 335,
-        "rank_pct": 77,
+        "index_100": 315,
+        "rank_pct": 76,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -10798,8 +10871,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 449,
-        "rank_pct": 85,
+        "index_100": 420,
+        "rank_pct": 83,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -10875,8 +10948,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 449,
-        "rank_pct": 85,
+        "index_100": 420,
+        "rank_pct": 83,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -10952,8 +11025,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 449,
-        "rank_pct": 85,
+        "index_100": 420,
+        "rank_pct": 83,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -11029,8 +11102,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 449,
-        "rank_pct": 85,
+        "index_100": 420,
+        "rank_pct": 83,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -11106,8 +11179,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 449,
-        "rank_pct": 85,
+        "index_100": 420,
+        "rank_pct": 83,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -11183,8 +11256,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 449,
-        "rank_pct": 85,
+        "index_100": 420,
+        "rank_pct": 83,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -11260,8 +11333,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 449,
-        "rank_pct": 85,
+        "index_100": 420,
+        "rank_pct": 83,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -11337,8 +11410,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 449,
-        "rank_pct": 85,
+        "index_100": 420,
+        "rank_pct": 83,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -11414,8 +11487,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 449,
-        "rank_pct": 85,
+        "index_100": 420,
+        "rank_pct": 83,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -11491,8 +11564,8 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 449,
-        "rank_pct": 85,
+        "index_100": 420,
+        "rank_pct": 83,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -11515,8 +11588,8 @@
       "brief_es": "Acceso completo e ilimitado a las 3 Suites de Modelos de Negocio de Datalaria (13 kits individuales).",
       "brief_en": "Full and unlimited access to all 3 Business Model Suites by Datalaria (13 individual packs).",
       "publish_date": "2026-12-03",
-      "last_modified_es": "2026-11-18T06:02:45+01:00",
-      "last_modified_en": "2026-11-18T06:02:45+01:00",
+      "last_modified_es": "2026-11-23T07:35:43+01:00",
+      "last_modified_en": "2026-11-23T07:35:43+01:00",
       "language_parity": "complete",
       "category": "Mega Bundle",
       "categories": [
@@ -11555,9 +11628,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 2124,
+        "index_100": 1980,
         "rank_pct": 95,
-        "trend_30d_pct": 247.8,
+        "trend_30d_pct": 244.3,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -11579,8 +11652,8 @@
       "brief_es": "Colección completa de 5 modelos de decisión estratégica: DAFO Cuantitativo, 5 Fuerzas de Porter, PESTEL, BCG y McKinsey / GE.",
       "brief_en": "Complete collection of 5 strategic decision models: Quantitative SWOT, Porter 5 Forces, PESTEL, BCG and McKinsey / GE.",
       "publish_date": "2026-11-01",
-      "last_modified_es": "2026-11-18T06:02:45+01:00",
-      "last_modified_en": "2026-11-18T06:02:45+01:00",
+      "last_modified_es": "2026-11-23T07:35:43+01:00",
+      "last_modified_en": "2026-11-23T07:35:43+01:00",
       "language_parity": "complete",
       "category": "Suite B2B",
       "categories": [
@@ -11625,9 +11698,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 2124,
+        "index_100": 1980,
         "rank_pct": 95,
-        "trend_30d_pct": 247.8,
+        "trend_30d_pct": 244.3,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -11649,8 +11722,8 @@
       "brief_es": "Colección de 3 frameworks de priorización y justificación económica: Matriz DAR, Priorización RICE/ICE y Business Case Financiero.",
       "brief_en": "Collection of 3 frameworks for prioritization and financial justification: DAR Matrix, RICE/ICE and Financial Business Case.",
       "publish_date": "2026-11-08",
-      "last_modified_es": "2026-11-18T06:02:45+01:00",
-      "last_modified_en": "2026-11-18T06:02:45+01:00",
+      "last_modified_es": "2026-11-23T07:35:43+01:00",
+      "last_modified_en": "2026-11-23T07:35:43+01:00",
       "language_parity": "complete",
       "category": "Suite B2B",
       "categories": [
@@ -11693,9 +11766,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 2124,
+        "index_100": 1980,
         "rank_pct": 95,
-        "trend_30d_pct": 247.8,
+        "trend_30d_pct": 244.3,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -11717,8 +11790,8 @@
       "brief_es": "Colección de 5 modelos cuantitativos PMBOK e industriales: Matriz RACI, AMFE / FMEA, Estimación PERT, EVM y Stock de Seguridad.",
       "brief_en": "Collection of 5 quantitative PMBOK and industrial models: RACI Matrix, FMEA, PERT Estimation, EVM and Safety Stock.",
       "publish_date": "2026-11-30",
-      "last_modified_es": "2026-11-18T06:02:45+01:00",
-      "last_modified_en": "2026-11-18T06:02:45+01:00",
+      "last_modified_es": "2026-11-23T07:35:43+01:00",
+      "last_modified_en": "2026-11-23T07:35:43+01:00",
       "language_parity": "complete",
       "category": "Suite B2B",
       "categories": [
@@ -11763,9 +11836,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 2124,
+        "index_100": 1980,
         "rank_pct": 95,
-        "trend_30d_pct": 247.8,
+        "trend_30d_pct": 244.3,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -11787,8 +11860,8 @@
       "brief_es": "Ponderación numérica de Fortalezas y Debilidades, formulación automática de acciones CAME y slide ejecutiva para Comité de Dirección.",
       "brief_en": "Numerical weighting of Strengths and Weaknesses, automated TOWS action planning and executive slide for Board approval.",
       "publish_date": "2026-10-19",
-      "last_modified_es": "2026-11-18T06:02:45+01:00",
-      "last_modified_en": "2026-11-18T06:02:45+01:00",
+      "last_modified_es": "2026-11-23T07:35:43+01:00",
+      "last_modified_en": "2026-11-23T07:35:43+01:00",
       "language_parity": "complete",
       "category": "Estrategia MBA",
       "categories": [
@@ -11830,9 +11903,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 2124,
+        "index_100": 1980,
         "rank_pct": 95,
-        "trend_30d_pct": 247.8,
+        "trend_30d_pct": 244.3,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -11854,8 +11927,8 @@
       "brief_es": "Scoring cuantitativo por fuerza competitiva, gráfico Radar dinámico auto-generado y diagnóstico de foso defensivo (Moat).",
       "brief_en": "Quantitative scoring per competitive force, dynamic radar chart and defensible Economic Moat spread diagnostic.",
       "publish_date": "2026-10-21",
-      "last_modified_es": "2026-11-18T06:02:45+01:00",
-      "last_modified_en": "2026-11-18T06:02:45+01:00",
+      "last_modified_es": "2026-11-23T07:35:43+01:00",
+      "last_modified_en": "2026-11-23T07:35:43+01:00",
       "language_parity": "complete",
       "category": "Estrategia MBA",
       "categories": [
@@ -11897,9 +11970,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 2124,
+        "index_100": 1980,
         "rank_pct": 95,
-        "trend_30d_pct": 247.8,
+        "trend_30d_pct": 244.3,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -11921,8 +11994,8 @@
       "brief_es": "Evaluación de 6 factores macro con índice de impacto compuesto y mapa térmico de riesgos regulatorios y macroeconómicos.",
       "brief_en": "Assessment of 6 macro factors with composite risk indices and early warning heatmaps for regulatory and economic shocks.",
       "publish_date": "2026-10-22",
-      "last_modified_es": "2026-11-18T06:02:45+01:00",
-      "last_modified_en": "2026-11-18T06:02:45+01:00",
+      "last_modified_es": "2026-11-23T07:35:43+01:00",
+      "last_modified_en": "2026-11-23T07:35:43+01:00",
       "language_parity": "complete",
       "category": "Estrategia MBA",
       "categories": [
@@ -11964,9 +12037,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 2124,
+        "index_100": 1980,
         "rank_pct": 95,
-        "trend_30d_pct": 247.8,
+        "trend_30d_pct": 244.3,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -11988,8 +12061,8 @@
       "brief_es": "Cálculo automático de Cuota de Mercado Relativa, tasa de crecimiento y gráfico dinámico de burbujas según facturación.",
       "brief_en": "Automated Relative Market Share calculations, market growth rate tracking and revenue-scaled dynamic bubble charts.",
       "publish_date": "2026-10-26",
-      "last_modified_es": "2026-11-18T06:02:45+01:00",
-      "last_modified_en": "2026-11-18T06:02:45+01:00",
+      "last_modified_es": "2026-11-23T07:35:43+01:00",
+      "last_modified_en": "2026-11-23T07:35:43+01:00",
       "language_parity": "complete",
       "category": "Estrategia MBA",
       "categories": [
@@ -12031,9 +12104,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 2124,
+        "index_100": 1980,
         "rank_pct": 95,
-        "trend_30d_pct": 247.8,
+        "trend_30d_pct": 244.3,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -12055,8 +12128,8 @@
       "brief_es": "Matriz de 9 cuadrantes con ponderación multidimensional de atractivo de mercado y posición competitiva para asignar presupuesto.",
       "brief_en": "9-box portfolio matrix with multidimensional industry attractiveness and competitive strength scoring for capital budgets.",
       "publish_date": "2026-10-29",
-      "last_modified_es": "2026-11-18T06:02:45+01:00",
-      "last_modified_en": "2026-11-18T06:02:45+01:00",
+      "last_modified_es": "2026-11-23T07:35:43+01:00",
+      "last_modified_en": "2026-11-23T07:35:43+01:00",
       "language_parity": "complete",
       "category": "Estrategia MBA",
       "categories": [
@@ -12098,9 +12171,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 2124,
+        "index_100": 1980,
         "rank_pct": 95,
-        "trend_30d_pct": 247.8,
+        "trend_30d_pct": 244.3,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -12122,8 +12195,8 @@
       "brief_es": "Selección cuantitativa de plataformas cloud, ERPs o contratistas críticos con filtros de veto irrenunciables para eliminar sesgos.",
       "brief_en": "Quantitative selection of cloud architectures, ERP platforms, or strategic contractors with binary veto filters to eradicate bias.",
       "publish_date": "2026-11-02",
-      "last_modified_es": "2026-11-18T06:02:45+01:00",
-      "last_modified_en": "2026-11-18T06:02:45+01:00",
+      "last_modified_es": "2026-11-23T07:35:43+01:00",
+      "last_modified_en": "2026-11-23T07:35:43+01:00",
       "language_parity": "complete",
       "category": "Decisiones",
       "categories": [
@@ -12165,9 +12238,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 2124,
+        "index_100": 1980,
         "rank_pct": 95,
-        "trend_30d_pct": 247.8,
+        "trend_30d_pct": 244.3,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -12189,8 +12262,8 @@
       "brief_es": "Prioriza el backlog de producto y características técnicas defendiendo ante el CPO y CEO qué construir primero con rigor de datos.",
       "brief_en": "Prioritize product backlogs and technical roadmaps with empirical data defense in front of the CPO and CEO.",
       "publish_date": "2026-11-05",
-      "last_modified_es": "2026-11-18T06:02:45+01:00",
-      "last_modified_en": "2026-11-18T06:02:45+01:00",
+      "last_modified_es": "2026-11-23T07:35:43+01:00",
+      "last_modified_en": "2026-11-23T07:35:43+01:00",
       "language_parity": "complete",
       "category": "Decisiones",
       "categories": [
@@ -12232,9 +12305,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 2124,
+        "index_100": 1980,
         "rank_pct": 95,
-        "trend_30d_pct": 247.8,
+        "trend_30d_pct": 244.3,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -12256,8 +12329,8 @@
       "brief_es": "Justifica el retorno de proyectos de transformación digital, IA o infraestructura ante el comité de inversiones y el CFO.",
       "brief_en": "Justify capital allocation for digital transformation, AI platforms, or infrastructure before investment boards and the CFO.",
       "publish_date": "2026-11-08",
-      "last_modified_es": "2026-11-18T06:02:45+01:00",
-      "last_modified_en": "2026-11-18T06:02:45+01:00",
+      "last_modified_es": "2026-11-23T07:35:43+01:00",
+      "last_modified_en": "2026-11-23T07:35:43+01:00",
       "language_parity": "complete",
       "category": "Decisiones",
       "categories": [
@@ -12299,9 +12372,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 2124,
+        "index_100": 1980,
         "rank_pct": 95,
-        "trend_30d_pct": 247.8,
+        "trend_30d_pct": 244.3,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -12323,8 +12396,8 @@
       "brief_es": "Elimina la ambigüedad de roles en proyectos corporativos: control de Accountable único por tarea y mapa dinámico de cuellos de botella.",
       "brief_en": "Eliminate role ambiguity across complex programs: single-Accountable enforcement per task and dynamic workload bottleneck heatmaps.",
       "publish_date": "2026-11-12",
-      "last_modified_es": "2026-11-18T06:02:45+01:00",
-      "last_modified_en": "2026-11-18T06:02:45+01:00",
+      "last_modified_es": "2026-11-23T07:35:43+01:00",
+      "last_modified_en": "2026-11-23T07:35:43+01:00",
       "language_parity": "complete",
       "category": "Control Operativo",
       "categories": [
@@ -12366,9 +12439,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 2124,
+        "index_100": 1980,
         "rank_pct": 95,
-        "trend_30d_pct": 247.8,
+        "trend_30d_pct": 244.3,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -12390,8 +12463,8 @@
       "brief_es": "El estándar industrial para predecir y mitigar fallos antes de que ocurran en procesos operativos, software o cadenas de suministro.",
       "brief_en": "Industrial standard for predicting and neutralizing failure modes before they manifest in operations, software, or supply chains.",
       "publish_date": "2026-11-16",
-      "last_modified_es": "2026-11-18T06:02:45+01:00",
-      "last_modified_en": "2026-11-18T06:02:45+01:00",
+      "last_modified_es": "2026-11-23T07:35:43+01:00",
+      "last_modified_en": "2026-11-23T07:35:43+01:00",
       "language_parity": "complete",
       "category": "Control Operativo",
       "categories": [
@@ -12433,9 +12506,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 2124,
+        "index_100": 1980,
         "rank_pct": 95,
-        "trend_30d_pct": 247.8,
+        "trend_30d_pct": 244.3,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -12457,8 +12530,8 @@
       "brief_es": "Sustituye las estimaciones subjetivas de cronograma por modelos estadísticos de 3 puntos (Optimista, Más Probable, Pesimista) con intervalo de confianza.",
       "brief_en": "Replace subjective timeline guesses with statistical 3-point beta distributions (Optimistic, Most Likely, Pessimistic) and confidence intervals.",
       "publish_date": "2026-11-19",
-      "last_modified_es": "2026-11-18T06:02:45+01:00",
-      "last_modified_en": "2026-11-18T06:02:45+01:00",
+      "last_modified_es": "2026-11-23T07:35:43+01:00",
+      "last_modified_en": "2026-11-23T07:35:43+01:00",
       "language_parity": "complete",
       "category": "Control Operativo",
       "categories": [
@@ -12500,9 +12573,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 2124,
+        "index_100": 1980,
         "rank_pct": 95,
-        "trend_30d_pct": 247.8,
+        "trend_30d_pct": 244.3,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -12524,8 +12597,8 @@
       "brief_es": "Muestra con precisión quirúrgica si un proyecto terminará a tiempo y dentro de presupuesto con índices CPI/SPI y Curva S.",
       "brief_en": "Pinpoint whether a major initiative will finish on schedule and within budget using real-time CPI/SPI indices and S-Curves.",
       "publish_date": "2026-11-23",
-      "last_modified_es": "2026-11-18T06:02:45+01:00",
-      "last_modified_en": "2026-11-18T06:02:45+01:00",
+      "last_modified_es": "2026-11-23T07:35:43+01:00",
+      "last_modified_en": "2026-11-23T07:35:43+01:00",
       "language_parity": "complete",
       "category": "Control Operativo",
       "categories": [
@@ -12567,9 +12640,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 2124,
+        "index_100": 1980,
         "rank_pct": 95,
-        "trend_30d_pct": 247.8,
+        "trend_30d_pct": 244.3,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -12591,8 +12664,8 @@
       "brief_es": "Optimiza los almacenes evitando roturas de stock sin inmovilizar excesivo capital circulante en inventario de componentes críticos.",
       "brief_en": "Prevent inventory stockouts while minimizing tied-up working capital in critical component warehouses.",
       "publish_date": "2026-11-26",
-      "last_modified_es": "2026-11-18T06:02:45+01:00",
-      "last_modified_en": "2026-11-18T06:02:45+01:00",
+      "last_modified_es": "2026-11-23T07:35:43+01:00",
+      "last_modified_en": "2026-11-23T07:35:43+01:00",
       "language_parity": "complete",
       "category": "Control Operativo",
       "categories": [
@@ -12634,9 +12707,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 2124,
+        "index_100": 1980,
         "rank_pct": 95,
-        "trend_30d_pct": 247.8,
+        "trend_30d_pct": 244.3,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -12658,8 +12731,8 @@
       "brief_es": "Toolkit comercial Dual (ES/EN) para equipos editoriales: Plantillas maestras Excel automatizadas con 6 hojas, tablas nativas y filtros, conectores Power Query M duales (Notion CSV & Git public.json), script CLI de migración y Guía ejecutiva PDF de 5 páginas.",
       "brief_en": "Commercial Dual Toolkit (ES/EN) for editorial teams: Automated master Excel workbooks with 6 sheets, native Tables and AutoFilters, dual Power Query M connectors (Notion CSV & Git public.json), Python migration CLI, and 5-page Executive PDF Guide.",
       "publish_date": "2026-11-18",
-      "last_modified_es": "2026-11-18T06:02:45+01:00",
-      "last_modified_en": "2026-11-18T06:02:45+01:00",
+      "last_modified_es": "2026-11-23T07:35:43+01:00",
+      "last_modified_en": "2026-11-23T07:35:43+01:00",
       "language_parity": "complete",
       "category": "Software, IA & SDD",
       "categories": [
@@ -12701,9 +12774,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 2124,
+        "index_100": 1980,
         "rank_pct": 95,
-        "trend_30d_pct": 247.8,
+        "trend_30d_pct": 244.3,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,

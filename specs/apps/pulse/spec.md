@@ -1,7 +1,7 @@
 # Especificación Técnica SDD: Datalaria Pulse (`pulse`)
 
 > **ID de Especificación:** `SPEC-APP-PULSE`  
-> **Versión:** `1.3.0`  
+> **Versión:** `1.5.0`  
 > **Estado:** `APPROVED`  
 > **Propietario de Dominio:** Datalaria (Operations Engineering & Applied AI)  
 > **Ubicación del Código Fuente:** `apps/pulse/web/` (Frontend SPA) · `ops/pulse/` (Motor Python ETL + Kit Factory)  
@@ -67,11 +67,12 @@ flowchart LR
 | `specs/apps/pulse/spec.md` | Especificación técnica SDD canónica de Datalaria Pulse. |
 | `data/pulse/kits.yaml` | Catálogo estructurado de Kits y Suites B2B de Datalaria (fuente única para Pulse y páginas de recursos). |
 | `data/editorial/backlog.yaml` | Registro de ideas y artículos futuros sin fichero Markdown creado aún (`visibility: public \| private`). |
-| `data/pulse/private/` | Directorio local (excluido de `static/` y protegido por `.gitignore` para datos sensibles) con `index.json` y `metrics.json` completos. |
-| `ops/pulse/models.py` | Contratos Pydantic v2 estrictos (`ContentAsset`, `LanguageParity`, `SeoAudit`, `RelativeMetrics`, `PublicPulseDataset`). |
+| `data/pulse/private/` | Directorio local (excluido de `static/` y protegido por `.gitignore` para datos sensibles) con `index.json`, `metrics.json`, `monthly_metrics.json`, `gsc_queries.json`, `channel_metrics.json`, `social_metrics.json`, `distribution_ledger.json`, `imports/linkedin/` e `impact_report.json`. |
+| `ops/pulse/models.py` | Contratos Pydantic v2 estrictos (`ContentAsset`, `LanguageParity`, `SeoAudit`, `RelativeMetrics`, `AbsoluteMetrics`, `GscQueryMetric`, `ChannelAttributionMetric`, `NativePlatformMetric`, `DistributionLedgerEntry`, `CannibalizationAlertItem`, `PublicPulseDataset`). |
 | `ops/pulse/migrate_notion.py` | Script determinista de migración desde el CSV exportado de Notion hacia `backlog.yaml` y validación contra los posts del repo. |
 | `ops/pulse/build_index.py` | Escáner de `content/{es,en}/posts/`, `data/apps/*.yaml`, `data/pulse/kits.yaml` y `backlog.yaml`; calcula conteo real de palabras, paridad bilingüe, auditoría SEO y enlaces cruzados. |
-| `ops/pulse/sync_metrics.py` | Extractor automatizado de métricas de GA4 (`screenPageViews`, `totalUsers`, `userEngagementDuration`) y Search Console (`clicks`, `impressions`, `ctr`, `position`) por URL de Post, App y Kit. |
+| `ops/pulse/sync_metrics.py` | Extractor automatizado de métricas de GA4 (`screenPageViews` 30d/prev 30d, `totalUsers`, `userEngagementDuration`, adquisición por `sessionSource`/`sessionMedium`/`sessionCampaignName` y eventos clave de conversión) y Search Console paginado (`["page"]`, `["page", "query"]`, `["date"]`, ventana actual y previa) con desglose bilingüe ES/EN, auto-detección de propiedad y flags `--check-gsc` / `--strict-gsc`. |
+| `ops/pulse/sync_social_metrics.py` | Extractor gratuito omnicanal (`ADR-033`): ingesta nativa de **Dev.to** (`GET /api/articles/me/published`), **CoderLegion** (`GET /api/v1/posts/{id}` con `X-API-Key` sobre `distribution_ledger.json`) y **LinkedIn Página de Empresa** (dual: API oficial `organizationalEntityShareStatistics` + `followerStatistics` cuando exista **Community Management API**, más parser determinista `openpyxl` para `.xlsx` oficiales). X/Twitter nativo permanece explícitamente en stand-by (coste `0 €`). |
 | `ops/pulse/publish_public.py` | Compilador de seguridad que filtra activos `private` y transforma métricas absolutas en índices relativos (`public.json`), bloqueando cualquier fuga de datos privados. |
 | `ops/pulse/kit/build_pulse_kit.py` | Fábrica programática (`openpyxl`) que genera la plantilla maestra `Pulse_Content_Ops.xlsx` (para el Kit de clientes) y el tracker privado poblado de Datalaria. |
 | `ops/pulse/tests/` | Suite `pytest` de validación de invariantes (paridad ES/EN, relativización, ausencia de fugas privadas, integridad de Excel). |
@@ -160,23 +161,59 @@ Cada fila o tarjeta representa un **activo único bilingüe** (`post`, `app` o `
    - Sea $V_i$ el total de páginas vistas (ES + EN) del activo $i$ en los últimos 30 días, y $\tilde{V}$ la mediana de los activos publicados con $V > 0$:
      $$\text{index\_100}_i = \text{round}\left( \frac{V_i}{\max(\tilde{V}, 1)} \times 100 \right)$$
    - `rank_pct`: percentil de $V_i$ dentro del conjunto de activos publicados ($0..100$).
-   - `trend_30d_pct`: variación porcentual respecto a la ventana previa de 30 días, acotada en $[-100\%, +500\%]$ (si el periodo previo fue $0$ y el actual $>0$, devuelve $+100\%$).
-   - `gsc_opportunity`: booleano `True` cuando el activo está en el cuartil superior de impresiones de Search Console y su posición media está entre $5.0$ y $20.0$ (oportunidad de optimización de título/CTR).
+   - `trend_30d_pct`: variación porcentual respecto a la ventana previa de 30 días (`60daysAgo..31daysAgo`), acotada en `[-100%, +500%]` (si el periodo previo fue $0$ y el actual $>0$, devuelve $+100\%$).
+   - `gsc_opportunity`: booleano `True` cuando el activo está en el cuartil superior de impresiones de Search Console (con mínimo `>= 30` impresiones) y (`4.0 <= gsc_avg_position <= 20.0` o `gsc_ctr_pct < 2.5%`), usando engagement como fallback únicamente si no existen impresiones GSC.
+5. **Desglose Bilingüe ES/EN, Agregación URL y Posición Ponderada (`INV-PULSE-11`):**
+   - Toda URL de Search Console se normaliza vía `urlsplit(url).path.rstrip("/")` (home a `"/"`), descartando query strings (`?utm_*`) y fragmentos (`#`). Las variantes colisionadas suman `clicks` e `impressions` y calculan la posición media **ponderada por impresiones** ($\sum (pos_i \cdot impr_i) / \sum impr_i$).
+   - `AbsoluteMetrics` almacena tanto totales agregados como desglose `*_es_30d` / `*_en_30d` y top 5 consultas (`gsc_top_queries: List[GscQueryMetric]`).
+   - Las consultas completas `["page", "query"]` (máx. 10.000 filas) se persisten exclusivamente en `data/pulse/private/gsc_queries.json`, y `monthly_metrics.json` se enriquece con `gsc_clicks` y `gsc_impressions` mensuales.
+6. **Telemetría Omnicanal y Embudo de Audiencia Coste `0 €` (`ADR-033`, `INV-PULSE-12`):**
+   - **Normalización de Canales GA4:** `linkedin` (`utm_source=linkedin` $\cup$ `linkedin.com`, `lnkd.in`, `com.linkedin.android`), `x` (`utm_source=x` $\cup$ `t.co`, `x.com`, `twitter.com`), `devto` (`utm_source=devto` $\cup$ `dev.to`), `coderlegion` (`utm_source=coderlegion` $\cup$ `coderlegion.com`), `newsletter` (`utm_source=newsletter` $\cup$ `brevo`), `google_organic` (`google / organic`), `direct` (`(direct) / (none)`).
+   - **Tasa de Traspaso (*Pull-Through Rate*, PTR):** Para todo activo con vistas/impresiones nativas $> 0$ en Dev.to, CoderLegion o LinkedIn Empresa:
+     $$\text{PTR}_{\text{canal}} = \text{round}\left(\frac{\text{Sesiones GA4 atribuidas al canal}}{\max(\text{Vistas o Impresiones nativas}, 1)} \times 100,\ 2\right)$$
+   - **Reglas Deterministas de Crecimiento (`impact_analyzer.py`):**
+     1. *Fuga de Traspaso:* Dev.to o CoderLegion $\ge 300$ vistas nativas y $\text{PTR} < 2.0\%$.
+     2. *Ganador Oculto por Canal:* Canal social con `avg_engagement_sec >= 45` o conversiones (`join_waitlist_helix` / clic Kit) pero $< 30$ sesiones → proponer ola de reciclaje `+21d`.
+     3. *Escudo Anti-Canibalización Canónica:* Activo sindicado con $\ge 500$ vistas nativas y `gsc_impressions_30d == 0` tras $> 21$ días → auditar `canonical_url` / ventana de Ola 3.
+     4. *Alerta de Dark Social:* Incremento $> 50\%$ en `(direct) / (none)` en las 48h posteriores a un despacho de `dispatch_queue.yaml` sin incremento correlativo en el canal UTM.
+     5. *Editorial ROI Score v2:* Pondera demanda SEO, fit de monetización, sinergia ecosistema y señal de tracción social validada.
 
 ### 4.2 Invariantes de Seguridad y Dominio
 - **INV-PULSE-1 (Cero Fuga de Ideas Privadas):** Ningún registro con `visibility == "private"` puede aparecer en `static/apps/pulse/data/public.json`.
-- **INV-PULSE-2 (Cero Fuga de Métricas Absolutas):** El archivo `static/apps/pulse/data/public.json` jamás debe contener claves de conteos absolutos (`views`, `users`, `clicks`, `impressions`, `revenue`).
+- **INV-PULSE-2 (Cero Fuga de Métricas Absolutas):** El archivo `static/apps/pulse/data/public.json` jamás debe contener claves de conteos absolutos (`views`, `users`, `clicks`, `impressions`, `revenue`, `gsc_top_queries`).
 - **INV-PULSE-3 (Emparejamiento Bilingüe Exacto):** Todo par de artículos en `content/es/posts/<slug>` y `content/en/posts/<slug>` que comparta `translationKey` (o nombre de carpeta) debe consolidarse en un único `ContentAsset` sin duplicar filas.
 - **INV-PULSE-4 (Firewall `static/` — Constitución Art. 2):** `static/apps/pulse/` solo puede contener HTML, JS, CSS, imágenes y `data/public.json`. Cero archivos `.py`, `.yaml`, `.xlsx` o `.env`.
 - **INV-PULSE-5 (Compatibilidad Universal del Excel del Kit):** El libro `Pulse_Content_Ops.xlsx` debe generarse usando fórmulas compatibles con Excel 2016/2019/365 y Google Sheets (`COUNTIFS`, `SUMIFS`, `INDEX/MATCH`), sin depender de funciones exclusivas de insiders para garantizar que cualquier comprador B2B pueda abrirlo sin errores `#NAME?`.
-- **INV-PULSE-6 (Determinismo y Privacidad del Motor de Impacto SEO/GA4):** `ops/pulse/impact_analyzer.py` cruza métricas privadas (`metrics.json`, `monthly_metrics.json`, `index.json`) y exporta `data/pulse/private/impact_report.json` con `visibility: "private"`. Queda terminantemente prohibido alojar `impact_report.json` o métricas absolutas dentro de `static/`.
+- **INV-PULSE-6 (Determinismo y Privacidad del Motor de Impacto SEO/GA4):** `ops/pulse/impact_analyzer.py` cruza métricas privadas (`metrics.json`, `monthly_metrics.json`, `gsc_queries.json`, `index.json`) y exporta `data/pulse/private/impact_report.json` con `visibility: "private"`. Queda terminantemente prohibido alojar `impact_report.json`, `gsc_queries.json` o métricas absolutas dentro de `static/`.
 - **INV-PULSE-7 (Coherencia Cronológica de Lanzamientos de Apps):** Ninguna app en incubación o en desarrollo utiliza fechas de versiones internas `v0.x` (`releases` con `state: "internal"`) como fecha de estreno público. El activo raíz de toda app toma obligatoriamente `launch_date` como su `publish_date`, asegurando que no aparezcan hitos de desarrollo pasados en el calendario público antes de su fecha de lanzamiento oficial al mercado.
 - **INV-PULSE-8 (Trazabilidad y Normalización de Kits/Suites):** Todo Kit, Suite y Mega Bundle en `data/pulse/kits.yaml` debe contar con `publish_date` no nulo, versión semántica normalizada (por defecto `v1.0.0`) y un estado normalizado exclusivamente entre `"published"` o `"scheduled"`. Ningún activo puede ser exportado al índice público con estado ambiguo (`"coming"` queda prohibido en `public.json`).
-- **INV-PULSE-9 (Filtro Público de Embargos, Borradores y Ventana de Roadmap +30d):** Ningún post en estado `draft: true` (`status == "draft"`), ninguna app en `status: incubating` (p. ej. `helix`), ningún post/kit/suite vinculado a un proyecto embargado (`helix-*`, `pack-sdd`, `suite-sdd`) ni ningún lanzamiento programado con `publish_date > today + 30 días` puede recibir `visibility == "public"`. Permanecen íntegros en `data/pulse/private/index.json` (y en Supabase `pulse.private_snapshot` bajo RLS exclusivo Admin) y quedan excluidos de `static/apps/pulse/data/public.json`.
+- **INV-PULSE-9 (Filtro Público de Embargos, Borradores y Ventana de Roadmap +35d / 5 semanas):** Ningún post en estado `draft: true` (`status == "draft"`), ninguna app en `status: incubating` (p. ej. `helix`), ningún post/kit/suite vinculado a un proyecto embargado (`helix-*`, `pack-sdd`, `suite-sdd`) ni ningún lanzamiento programado con `publish_date > today + 35 días` puede recibir `visibility == "public"`. Permanecen íntegros en `data/pulse/private/index.json` (y en Supabase `pulse.private_snapshot` bajo RLS exclusivo Admin) y quedan excluidos de `static/apps/pulse/data/public.json`.
+- **INV-PULSE-11 (Resiliencia Desacoplada GA4/GSC, Posición Ponderada y Cero Fuga de Queries):** El fallback de preservación ante fallos de red o API es estrictamente independiente entre GA4 y GSC (un fallo parcial de GSC nunca sobrescribe a `0` datos previos de GSC cuando GA4 responde); toda agregación de posición media entre variantes URL o idiomas se pondera por impresiones; y `gsc_queries.json` / `gsc_top_queries` tienen prohibida su exportación a `static/`.
+- **INV-PULSE-12 (Telemetría Omnicanal Coste `0 €`, LinkedIn Solo Empresa, Stand-by X Nativo y Firewall Privado — `ADR-033`):**
+  1. **Coste `0 €` Estricto:** Prohibido invocar endpoints de pago (X API v2 *pay-per-use* queda en **stand-by**; la atribución de X opera exclusivamente vía UTMs gratuitos en `X Web Intent` leídos en GA4).
+  2. **Alcance LinkedIn:** La monitorización nativa de LinkedIn cubre únicamente la **Página de Empresa (`LINKEDIN_COMPANY_ID`)** vía API oficial gratuita (`organizationalEntityShareStatistics` / `followerStatistics`) y/o importación oficial `.xlsx` (`openpyxl`), quedando **terminantemente prohibido** cualquier scraping con cookies de sesión (`li_at`).
+  3. **Degradación Desacoplada por Fuente:** Cada conector (`ga4_acquisition`, `gsc`, `devto`, `coderlegion`, `linkedin_company`) mantiene su propio snapshot y timestamp `last_synced_at`; el fallo o ausencia de credenciales de una fuente jamás sobrescribe a `0` el último snapshot válido ni bloquea el workflow.
+  4. **Cero Fuga a `static/`:** `channel_metrics.json`, `social_metrics.json`, `distribution_ledger.json` y `imports/linkedin/` residen exclusivamente en `data/pulse/private/` (y `pulse.private_snapshot` bajo RLS Admin), prohibiendo su exportación a `static/apps/pulse/data/public.json`.
+
+#### 4.2.1 Guía Operativa de LinkedIn Página de Empresa en Modo Dual (Hito 7.13)
+Para alimentar las métricas nativas de LinkedIn Página de Empresa a coste `0 €`, se establecen dos carriles deterministas con prioridad `API fresca > export .xlsx más reciente > snapshot previo`:
+
+- **Carril A — API Oficial Gratuita (Community Management API - Development Tier):**
+  1. **Paso 1 (Crear / Asociar App):** En [LinkedIn Developer Portal](https://developer.linkedin.com), crear o seleccionar la app y vincularla a la Página de Empresa de Datalaria (`LINKEDIN_COMPANY_ID`) en la pestaña *Settings*.
+  2. **Paso 2 (Solicitar Producto y Permisos OAuth):** En la pestaña *Products*, solicitar el producto gratuito **Community Management API**. Autorizar permisos `r_organization_social` / `rw_organization_admin` para generar `LINKEDIN_ACCESS_TOKEN` y `LINKEDIN_REFRESH_TOKEN`. Pulse ejecuta auto-refresh de tokens en cada ejecución periódica. Si la API está en revisión o devuelve `HTTP 403/401`, el sistema conmuta automáticamente al Carril B sin error.
+- **Carril B — Importación Manual Oficial `.xlsx` (`openpyxl`):**
+  3. **Paso 3 (Exportar desde LinkedIn):** Desde el panel de administración de LinkedIn, acceder a **Análisis > Contenido** (o *Updates*), seleccionar el rango deseado y pulsar **Exportar (.xlsx)**. Opcionalmente exportar también **Análisis > Seguidores**.
+  4. **Paso 4 (Depositar y Sincronizar):** Depositar el archivo `.xlsx` (en inglés o español) en `data/pulse/private/imports/linkedin/` y ejecutar `python -m ops.pulse.sync_social_metrics`. El parser determinista extrae automáticamente impresiones, clics, CTR, reacciones, comentarios, compartidos y seguidores, fusionándolos en `social_metrics.json`.
+
+
+### 4.3 Non-Goals y Límites (`SPEC-APP-PULSE v1.5.0`)
+- ❌ No contratar APIs de pago ni SaaS externos de analítica social (X API v2 créditos prepago queda en stand-by).
+- ❌ No monitorizar perfiles personales de LinkedIn ni emplear técnicas de scraping no oficiales.
+- ❌ No exponer cifras absolutas sociales, `external_id` ni desgloses privados en `static/apps/pulse/data/public.json`.
 
 ---
 
-### 4.3 Arquitectura Pro Cloud (Supabase pulse Schema — Hito 5.8 / ADR-015)
+### 4.4 Arquitectura Pro Cloud (Supabase pulse Schema — Hito 5.8 / ADR-015)
 
 Para superar la limitación de almacenamiento exclusivamente en localStorage y dotar a la plataforma de sincronización bidireccional instantánea entre la Web (datalaria.com/apps/pulse/) y Localhost (http://localhost:1313/apps/pulse/), se formaliza la extensión **Pulse Pro Cloud**:
 
@@ -279,3 +316,5 @@ Para dar por completado cada hito de la Fase 5, deben superarse con código `0` 
 | `v1.0.0-rc1` | 2026-11-14 | 💎 Dual Kit & UX | Hitos P-LAUNCH-3B y P-LAUNCH-3C: Kit Comercial Dual completo (ES/EN) en `Datalaria_Pulse_Kit.zip` (38 archivos, 804 KB). Excel automatizado con cero duplicación (vínculos dinámicos Activos ↔ Métricas ↔ Kanban ↔ Dashboard), tablas nativas `TableStyleMedium2`, `freeze_panes`, 6 pestañas codificadas por color (Azul `0284C7`, Esmeralda `059669`, Ámbar `D97706`), Guías Ejecutivas PDF de 5 páginas exactas TrueType sin desbordamientos (`GUIA_EJECUTIVA_PULSE_ES.pdf` y `PULSE_EXECUTIVE_GUIDE_EN.pdf`), aislamiento estricto de tracker privado y suite pytest 104/104 verde. | *Completado* |
 | `v1.0.0` | 2026-11-18 | 🚀 Release Oficial | Lanzamiento oficial de Datalaria Pulse v1.0.0 (Hitos P-LAUNCH-1 a P-LAUNCH-5): Ficha técnica enriquecida con deep-linking, Vitrina y App Web v1.0.0, 10 artículos de la serie con fechas Opción A y enlaces cronológicos anti-404, Kit comercial B2B Dual ES/EN, conectores Power Query M bilingües y script de activación atómica `release_18nov.py`. | `ec375859` |
 | `v1.0.1` | 2026-11-18 | 🛡️ Seguridad (`INV-PULSE-10`) | Remediación de alerta GitGuardian (`Company Email Password`): eliminación de contraseña literal Demo en `apps/pulse/web/src/lib/supabase.ts`, bundle estático y `ops/pulse/seed_demo.py`, migrando el modo Demo 1-Clic a Sandbox local (`localStorage` + `DEMO_SYNTHETIC_ASSETS`) e inyección vía `PULSE_DEMO_PASSWORD` (Hito `P-LAUNCH-5C-SEC`). | *Completado* |
+| `v1.4.0` | 2026-11-21 | 📈 GSC Full Telemetry | Hito 7.7: extracción paginada de Google Search Console (`["page"]`, `["page", "query"]`, `["date"]`), auto-detección de propiedad `sites().list()`, normalización URL segura con posición ponderada por impresiones, desglose bilingüe ES/EN + ventana GA4 60d (`trend_30d_pct` real), fallback desacoplado GA4 vs. GSC (`INV-PULSE-11`), detección de canibalización en `impact_analyzer.py` y actualización de `pulse.yml`. | *Completado* |
+| `v1.5.0` | 2026-11-23 | 🌐 Omnichannel Spec & Release | Hitos 7.10–7.14 (`ADR-033`, `INV-PULSE-12`): especificación y entrega completa de Telemetría Omnicanal Coste `0 €` — UTMs LinkedIn/X, GA4 Acquisition + KeyEvents, Distribution Ledger, conectores gratuitos Dev.to/CoderLegion/LinkedIn Página de Empresa (dual API + `.xlsx`), stand-by explícito X nativo, `Editorial ROI Score v2`, `omnichannel_intelligence` bajo Supabase RLS Admin y panel bilingüe *"Canales & Audiencia"* con Sandbox sintético público. | *Completado* |

@@ -14,6 +14,7 @@ from dotenv import load_dotenv
 
 from autopilot.src.models import (
     SocialPlatformX,
+    build_social_utm_url,
     build_x_web_intent_url,
     count_twitter_weighted_length,
 )
@@ -140,18 +141,30 @@ class SocialMediaManager:
         x_pack_or_text: Union[SocialPlatformX, str],
         post_url: str,
         hashtags: Optional[List[str]] = None,
+        *,
+        slug: Optional[str] = None,
+        lang: str = "es",
     ) -> Dict[str, Any]:
-        """Genera e imprime paquete X/Twitter a coste 0 EUR/mes (Web Intent + hilo copiable)."""
+        """Genera e imprime paquete X/Twitter a coste 0 EUR/mes (Web Intent + UTMs ADR-033 + hilo)."""
+        tracked_url = build_social_utm_url(post_url, platform="x", slug=slug, lang=lang)
         if isinstance(x_pack_or_text, SocialPlatformX):
             hook = x_pack_or_text.hook
             thread = list(x_pack_or_text.thread)
             tags = list(x_pack_or_text.hashtags or hashtags or [])
-            intent_url = x_pack_or_text.web_intent_url or build_x_web_intent_url(hook, post_url, tags)
+            existing_intent = (x_pack_or_text.web_intent_url or "").strip()
+            if existing_intent and "utm_source%3Dx" in existing_intent:
+                intent_url = existing_intent
+            else:
+                intent_url = build_x_web_intent_url(
+                    hook, tracked_url, tags, slug=slug, lang=lang
+                )
         else:
             hook = self._clean_text(str(x_pack_or_text))
             tags = list(hashtags or [])
-            intent_url = build_x_web_intent_url(hook, post_url, tags)
-            thread = [f"1/1 {hook} {post_url}".strip()]
+            intent_url = build_x_web_intent_url(
+                hook, tracked_url, tags, slug=slug, lang=lang
+            )
+            thread = [f"1/1 {hook} {tracked_url}".strip()]
 
         print("\n🐦 [X / TWITTER - MODO COSTE 0 EUR/MES]")
         print(f"   👉 1-Clic X Web Intent: {intent_url}")
@@ -163,6 +176,7 @@ class SocialMediaManager:
             "mode": "zero_cost_intent",
             "hook": hook,
             "hashtags": tags,
+            "tracked_url": tracked_url,
             "web_intent_url": intent_url,
             "thread": thread,
         }
@@ -292,16 +306,24 @@ class SocialMediaManager:
         url: str,
         image_path: Optional[str] = None,
         x_pack: Optional[SocialPlatformX] = None,
+        *,
+        slug: Optional[str] = None,
+        lang: str = "es",
     ) -> Dict[str, Any]:
         """Publica en X vía Web Intent coste 0 EUR por defecto (solo usa Tweepy si ENABLE_TWITTER_API=true)."""
+        tracked_url = build_social_utm_url(url, platform="x", slug=slug, lang=lang)
         if not self.twitter_api_enabled:
-            return self.prepare_x_zero_cost(x_pack or text, post_url=url)
+            return self.prepare_x_zero_cost(
+                x_pack or text, post_url=tracked_url, slug=slug, lang=lang
+            )
 
         if not self.client_v2:
             print("⚠️ ENABLE_TWITTER_API=true pero faltan credenciales; emitiendo X Web Intent 0 EUR.")
-            return self.prepare_x_zero_cost(x_pack or text, post_url=url)
+            return self.prepare_x_zero_cost(
+                x_pack or text, post_url=tracked_url, slug=slug, lang=lang
+            )
 
-        full_text = self._smart_truncate(text, url)
+        full_text = self._smart_truncate(text, tracked_url)
         twitter_length = self._count_twitter_length(full_text)
         print(f"DTO - Posting to Twitter ({twitter_length} weighted chars): {full_text[:100]}...")
 
@@ -399,14 +421,22 @@ class SocialMediaManager:
         except Exception as exc:
             print(f"   ⚠️ No se pudieron guardar tokens para CI: {exc}")
 
-    def post_to_linkedin(self, text: str, url: str) -> None:
-        """Publica en LinkedIn preservando saltos de línea Broetry y renovando token en 401."""
+    def post_to_linkedin(
+        self,
+        text: str,
+        url: str,
+        *,
+        slug: Optional[str] = None,
+        lang: str = "es",
+    ) -> Optional[Dict[str, Any]]:
+        """Publica en LinkedIn Página de Empresa preservando Broetry, UTMs ADR-033 y retornando URN/ID."""
         cleaned_text = (text or "").strip()
+        tracked_url = build_social_utm_url(url, platform="linkedin", slug=slug, lang=lang)
         print(f"DTO - Posting to LinkedIn: {cleaned_text[:50]}...")
 
         if not self.company_id:
             print("⚠️ BLOQUEADO LinkedIn: No se encontró LINKEDIN_COMPANY_ID.")
-            return
+            return None
 
         api_url = "https://api.linkedin.com/v2/ugcPosts"
         author = f"urn:li:organization:{self.company_id}"
@@ -424,7 +454,7 @@ class SocialMediaManager:
                     "com.linkedin.ugc.ShareContent": {
                         "shareCommentary": {"text": cleaned_text},
                         "shareMediaCategory": "ARTICLE",
-                        "media": [{"status": "READY", "originalUrl": url}],
+                        "media": [{"status": "READY", "originalUrl": tracked_url}],
                     }
                 },
                 "visibility": {"com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"},
@@ -432,20 +462,37 @@ class SocialMediaManager:
             try:
                 response = requests.post(api_url, headers=headers, json=payload, timeout=15)
                 response.raise_for_status()
-                print(f"✅ LinkedIn Success! Post ID: {response.json().get('id')}")
-                return
+                body_data = response.json() if getattr(response, "content", True) else {}
+                raw_id = ""
+                if isinstance(body_data, dict):
+                    raw_id = str(body_data.get("id") or body_data.get("urn") or "").strip()
+                if not raw_id and hasattr(response, "headers") and isinstance(response.headers, dict):
+                    raw_id = str(response.headers.get("x-restli-id") or "").strip()
+                print(f"✅ LinkedIn Success! Post ID: {raw_id}")
+                ext_url = (
+                    f"https://www.linkedin.com/feed/update/{raw_id}/"
+                    if raw_id.startswith("urn:li:")
+                    else tracked_url
+                )
+                return {
+                    "id": raw_id,
+                    "urn": raw_id,
+                    "url": ext_url,
+                    "tracked_url": tracked_url,
+                }
             except requests.exceptions.HTTPError as exc:
                 if response.status_code == 401 and attempt == 0:
                     print("   ⚠️ Token expirado (401). Intentando renovar...")
                     if self._refresh_linkedin_token():
                         continue
                     print("⚠️ Falló LinkedIn: No se pudo renovar el token.")
-                    return
+                    return None
                 print(f"⚠️ Falló LinkedIn: {exc}")
-                return
+                return None
             except Exception as exc:
                 print(f"⚠️ Falló LinkedIn: {exc}")
-                return
+                return None
+        return None
 
 
 if __name__ == "__main__":

@@ -1,0 +1,37 @@
+{
+  "version": "1.0.0",
+  "visibility": "private",
+  "updated_at": "2026-11-23T18:55:38Z",
+  "entries": [
+    {
+      "asset_id": "autopilot-parte10-scriba-sindicacion-puente-pulse",
+      "slug": "autopilot-part10-scriba-syndication-pulse-bridge",
+      "lang": "en",
+      "channel": "linkedin",
+      "external_id": "urn:li:share:7527636018078973952",
+      "external_url": "https://www.linkedin.com/feed/update/urn:li:share:7527636018078973952/",
+      "canonical_url": "https://datalaria.com/en/posts/autopilot-part10-scriba-syndication-pulse-bridge/",
+      "published_at_utc": "2026-11-15T12:00:00Z"
+    },
+    {
+      "asset_id": "autopilot-parte10-scriba-sindicacion-puente-pulse",
+      "slug": "autopilot-parte10-scriba-sindicacion-puente-pulse",
+      "lang": "es",
+      "channel": "linkedin",
+      "external_id": "urn:li:share:7527636744356347906",
+      "external_url": "https://www.linkedin.com/feed/update/urn:li:share:7527636744356347906/",
+      "canonical_url": "https://datalaria.com/es/posts/autopilot-parte10-scriba-sindicacion-puente-pulse/",
+      "published_at_utc": "2026-11-15T12:05:00Z"
+    },
+    {
+      "asset_id": "matriz-riesgos-amfe-fmea",
+      "slug": "matriz-riesgos-amfe-fmea",
+      "lang": "es",
+      "channel": "linkedin",
+      "external_id": "urn:li:share:7528008366615412736",
+      "external_url": "https://www.linkedin.com/feed/update/urn:li:share:7528008366615412736/",
+      "canonical_url": "https://datalaria.com/es/posts/matriz-riesgos-amfe-fmea/",
+      "published_at_utc": "2026-11-16T08:00:00Z"
+    }
+  ]
+}

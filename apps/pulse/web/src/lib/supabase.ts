@@ -7,7 +7,7 @@
  */
 
 import { createClient, type User, type SupabaseClient } from '@supabase/supabase-js';
-import type { ContentAsset } from '../types';
+import type { ContentAsset, OmnichannelIntelligence } from '../types';
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://wkbmxekmofrjtcsyytrv.supabase.co';
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndrYm14ZWttb2ZyanRjc3l5dHJ2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkyNjQyOTgsImV4cCI6MjA4NDg0MDI5OH0.h-oWBsGc493dSCYLw6CVbWTFvsX1aGh90yZuVINB14Y';
@@ -149,6 +149,7 @@ export async function deleteUserIdea(id: string): Promise<boolean> {
 export async function fetchAdminCatalogSnapshot(): Promise<{
   assets: ContentAsset[];
   updatedAt?: string;
+  omnichannelIntelligence?: OmnichannelIntelligence | null;
 } | null> {
   if (!isSupabaseConfigured) return null;
   try {
@@ -164,12 +165,17 @@ export async function fetchAdminCatalogSnapshot(): Promise<{
 
     const rawPayload = (data as { payload?: unknown; updated_at?: string }).payload;
     if (Array.isArray(rawPayload)) {
-      return { assets: rawPayload as ContentAsset[], updatedAt: data.updated_at };
+      return { assets: rawPayload as ContentAsset[], updatedAt: data.updated_at, omnichannelIntelligence: null };
     }
     if (rawPayload && typeof rawPayload === 'object' && Array.isArray((rawPayload as { assets?: unknown }).assets)) {
+      const obj = rawPayload as {
+        assets: ContentAsset[];
+        omnichannel_intelligence?: OmnichannelIntelligence;
+      };
       return {
-        assets: (rawPayload as { assets: ContentAsset[] }).assets,
+        assets: obj.assets,
         updatedAt: data.updated_at,
+        omnichannelIntelligence: obj.omnichannel_intelligence ?? null,
       };
     }
     return null;

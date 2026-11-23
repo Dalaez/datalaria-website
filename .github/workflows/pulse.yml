@@ -34,23 +34,55 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pydantic pyyaml python-frontmatter google-analytics-data google-api-python-client google-auth openpyxl
+          pip install pydantic pyyaml python-frontmatter google-analytics-data google-api-python-client google-auth openpyxl requests python-dotenv
 
       - name: Setup Google Service Account
         if: env.GA4_SERVICE_ACCOUNT_KEY != ''
         env:
           GA4_SERVICE_ACCOUNT_KEY: ${{ secrets.GA4_SERVICE_ACCOUNT_KEY }}
         run: |
-          echo "$GA4_SERVICE_ACCOUNT_KEY" > service_account.json
+          printf '%s\n' "$GA4_SERVICE_ACCOUNT_KEY" > service_account.json
 
       - name: Build Index & Sync Metrics
         env:
           GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID || '367847195' }}
-          GSC_SITE_URL: 'sc-domain:datalaria.com'
+          GSC_SITE_URL: ${{ secrets.GSC_SITE_URL || 'sc-domain:datalaria.com' }}
+          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
+          CODERLEGION_API_KEY: ${{ secrets.CODERLEGION_API_KEY }}
+          LINKEDIN_COMPANY_ID: ${{ secrets.LINKEDIN_COMPANY_ID }}
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+          LINKEDIN_CLIENT_ID: ${{ secrets.LINKEDIN_CLIENT_ID }}
+          LINKEDIN_CLIENT_SECRET: ${{ secrets.LINKEDIN_CLIENT_SECRET }}
+          LINKEDIN_REFRESH_TOKEN: ${{ secrets.LINKEDIN_REFRESH_TOKEN }}
         run: |
           python -m ops.pulse.build_index
           python -m ops.pulse.sync_metrics
+          python -m ops.pulse.sync_social_metrics
           python -m ops.pulse.publish_public
+          python -m ops.pulse.impact_analyzer
+
+      - name: Persist Refreshed LinkedIn Tokens
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          if [ -f ".linkedin_new_tokens.json" ]; then
+            echo "🔄 LinkedIn tokens were refreshed. Updating GitHub Secrets..."
+            NEW_ACCESS_TOKEN=$(jq -r '.access_token // empty' .linkedin_new_tokens.json 2>/dev/null || true)
+            NEW_REFRESH_TOKEN=$(jq -r '.refresh_token // empty' .linkedin_new_tokens.json 2>/dev/null || true)
+            if [ -n "$NEW_ACCESS_TOKEN" ] && [ -n "$GH_TOKEN" ]; then
+              echo "$NEW_ACCESS_TOKEN" | gh secret set LINKEDIN_ACCESS_TOKEN
+              echo "   ✅ LINKEDIN_ACCESS_TOKEN actualizado en GitHub Secrets."
+            fi
+            if [ -n "$NEW_REFRESH_TOKEN" ] && [ -n "$GH_TOKEN" ]; then
+              echo "$NEW_REFRESH_TOKEN" | gh secret set LINKEDIN_REFRESH_TOKEN
+              echo "   ✅ LINKEDIN_REFRESH_TOKEN actualizado en GitHub Secrets."
+            fi
+            rm -f .linkedin_new_tokens.json
+          else
+            echo "ℹ️ No se renovaron tokens de LinkedIn (no era necesario)."
+          fi
+
 
       - name: Sync Admin Snapshot (Supabase RLS)
         env:
@@ -68,10 +100,10 @@ jobs:
         run: |
           git config user.name "Datalaria Bot"
           git config user.email "bot@datalaria.com"
-          git add static/apps/pulse/data/public.json data/pulse/
+          git add static/apps/pulse/data/public.json data/pulse/ specs/audit/IMPACT_REPORT.md
           if git diff --staged --quiet; then
             echo "No changes in Pulse dataset."
           else
-            git commit -m "chore(pulse): auto-sync content index & GA4 metrics [skip ci]"
+            git commit -m "chore(pulse): auto-sync content index, GA4/GSC metrics & impact report [skip ci]"
             git push origin main
           fi

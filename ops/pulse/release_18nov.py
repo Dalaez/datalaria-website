@@ -16,6 +16,7 @@ Proporciona:
 """
 
 import sys
+import re
 import json
 import argparse
 import subprocess
@@ -124,8 +125,8 @@ def verify_live_launch() -> Tuple[bool, List[str]]:
         text = pulse_yaml.read_text(encoding="utf-8")
         if "status: live" not in text or "status: incubating" in text:
             errors.append("data/apps/pulse.yaml DEBE tener 'status: live' tras la activación.")
-        if "current_version: v1.0.0" not in text:
-            errors.append("data/apps/pulse.yaml DEBE tener 'current_version: v1.0.0'.")
+        if not re.search(r"current_version:\s*v1\.\d+\.\d+", text):
+            errors.append("data/apps/pulse.yaml DEBE tener una versión 'current_version: v1.x.y' válida.")
 
     for lang in ["es", "en"]:
         app_page = ROOT_DIR / "content" / lang / "apps" / "pulse" / "index.md"
@@ -178,8 +179,8 @@ def verify_embargo() -> Tuple[bool, List[str]]:
             return verify_live_launch()
         if "status: incubating" not in text:
             errors.append("data/apps/pulse.yaml DEBE tener 'status: incubating' durante el embargo.")
-        if "current_version: v1.0.0" not in text:
-            errors.append("data/apps/pulse.yaml DEBE tener 'current_version: v1.0.0'.")
+        if not re.search(r"current_version:\s*v1\.\d+\.\d+", text):
+            errors.append("data/apps/pulse.yaml DEBE tener una versión 'current_version: v1.x.y' válida.")
 
     # 2. Verificar content/{es,en}/apps/pulse/index.md (draft: true)
     for lang in ["es", "en"]:

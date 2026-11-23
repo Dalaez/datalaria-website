@@ -7,6 +7,7 @@ import pytest
 from autopilot.src.models import (
     NewsletterContent,
     SocialPlatformX,
+    build_social_utm_url,
     build_x_web_intent_url,
     count_twitter_weighted_length,
 )
@@ -157,3 +158,81 @@ def test_audit_social_bundle_aggregates_statuses() -> None:
     )
     assert report.overall_status == "PASS"
     assert set(report.results.keys()) == {"x", "linkedin"}
+
+
+def test_build_social_utm_url_linkedin_x_and_hashrouter() -> None:
+    li_url = build_social_utm_url(
+        "https://datalaria.com/es/posts/obs-radar/",
+        platform="linkedin",
+        slug="obs-radar",
+        lang="es",
+    )
+    assert "utm_source=linkedin" in li_url
+    assert "utm_medium=social" in li_url
+    assert "utm_campaign=obs-radar" in li_url
+    assert "utm_content=es_org" in li_url
+
+    # HashRouter preservation (ADR-025): query params MUST precede '#'
+    hash_url = build_social_utm_url(
+        "https://datalaria.com/apps/lifeops/#/?mock=true",
+        platform="x",
+        slug="lifeops-part6",
+        lang="en",
+    )
+    assert hash_url.index("utm_source=x") < hash_url.index("#/?mock=true")
+    assert "utm_medium=social" in hash_url
+    assert "utm_campaign=lifeops-part6" in hash_url
+    assert "utm_content=en_thread" in hash_url
+
+    # External URLs untouched
+    assert build_social_utm_url("https://example.com/page", platform="linkedin", slug="demo") == "https://example.com/page"
+
+
+def test_social_manager_linkedin_and_x_inject_mandatory_utms(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    captured_payloads = []
+
+    class DummyResp:
+        status_code = 201
+
+        def raise_for_status(self) -> None:
+            return None
+
+        def json(self) -> dict:
+            return {"id": "urn:li:ugcPost:999"}
+
+    def fake_post(url: str, headers=None, json=None, timeout=15):  # noqa: A002
+        captured_payloads.append((url, json))
+        return DummyResp()
+
+    monkeypatch.setattr("autopilot.src.social_manager.requests.post", fake_post)
+    monkeypatch.setenv("LINKEDIN_COMPANY_ID", "12345")
+    monkeypatch.setenv("LINKEDIN_ACCESS_TOKEN", "fake-token")
+    monkeypatch.delenv("ENABLE_TWITTER_API", raising=False)
+
+    manager = SocialMediaManager()
+    manager.post_to_linkedin(
+        text="Gancho breve.\n\nDetalle técnico.\n\n¿Qué opinas?",
+        url="https://datalaria.com/en/posts/pulse-part1/",
+        slug="pulse-part1",
+        lang="en",
+    )
+    assert len(captured_payloads) == 1
+    sent_url = captured_payloads[0][1]["specificContent"]["com.linkedin.ugc.ShareContent"]["media"][0]["originalUrl"]
+    assert "utm_source=linkedin" in sent_url
+    assert "utm_medium=social" in sent_url
+    assert "utm_campaign=pulse-part1" in sent_url
+    assert "utm_content=en_org" in sent_url
+
+    x_res = manager.post_to_twitter(
+        text="Gancho coste cero.",
+        url="https://datalaria.com/en/posts/pulse-part1/",
+        slug="pulse-part1",
+        lang="en",
+    )
+    assert x_res["mode"] == "zero_cost_intent"
+    assert "utm_source%3Dx" in x_res["web_intent_url"]
+    assert "utm_medium%3Dsocial" in x_res["web_intent_url"]
+    assert "utm_campaign%3Dpulse-part1" in x_res["web_intent_url"]
+    assert "utm_content%3Den_thread" in x_res["web_intent_url"]

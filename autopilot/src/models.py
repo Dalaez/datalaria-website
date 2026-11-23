@@ -51,15 +51,69 @@ def count_twitter_weighted_length(text: str) -> int:
     return sum(2 if ord(ch) > 0xFFFF else 1 for ch in normalized)
 
 
+def _is_datalaria_url(url: str) -> bool:
+    """Devuelve True si la URL pertenece al dominio datalaria.com."""
+    if not url:
+        return False
+    parsed = urlsplit(url.strip())
+    netloc = parsed.netloc.lower()
+    return parsed.scheme in ("http", "https") and (
+        netloc == "datalaria.com" or netloc.endswith(".datalaria.com")
+    )
+
+
+def build_social_utm_url(
+    url: str,
+    *,
+    platform: Literal["linkedin", "x"],
+    slug: Optional[str] = None,
+    lang: str = "es",
+    content: Optional[str] = None,
+) -> str:
+    """Inyecta parámetros UTM estándar (ADR-025 / ADR-033) en enlaces hacia Datalaria.
+
+    - LinkedIn Empresa: utm_source=linkedin&utm_medium=social&utm_campaign=<slug>&utm_content=<lang>_org
+    - X Web Intent:     utm_source=x&utm_medium=social&utm_campaign=<slug>&utm_content=<lang>_thread
+    Respeta fragmentos HashRouter (#/...) vía urlsplit().
+    """
+    cleaned = (url or "").strip()
+    if not cleaned or not _is_datalaria_url(cleaned):
+        return cleaned
+    clean_lang = (lang or "es").strip().lower() or "es"
+    default_content = f"{clean_lang}_org" if platform == "linkedin" else f"{clean_lang}_thread"
+    return append_utm_params(
+        cleaned,
+        source=platform,
+        medium="social",
+        campaign=(slug or "").strip() or None,
+        content=(content or default_content).strip(),
+    )
+
+
 def build_x_web_intent_url(
     text: str,
     url: str,
     hashtags: Optional[List[str]] = None,
+    *,
+    slug: Optional[str] = None,
+    lang: str = "es",
+    content: Optional[str] = None,
 ) -> str:
-    """Construye una URL oficial 1-clic de X Web Intent sin llamadas a API de pago."""
+    """Construye una URL oficial 1-clic de X Web Intent sin llamadas a API de pago (con UTMs ADR-033)."""
     params: Dict[str, str] = {"text": (text or "").strip()}
     if url:
-        params["url"] = url.strip()
+        clean_url = url.strip()
+        parsed = urlsplit(clean_url)
+        existing_q = dict(parse_qsl(parsed.query, keep_blank_values=True))
+        if _is_datalaria_url(clean_url) and (slug or "utm_source" not in existing_q):
+            clean_url = build_social_utm_url(
+                clean_url,
+                platform="x",
+                slug=slug,
+                lang=lang,
+                content=content,
+            )
+        params["url"] = clean_url
     if hashtags:
         cleaned = [tag.lstrip("#").strip() for tag in hashtags if tag and tag.lstrip("#").strip()]
         if cleaned:

@@ -7,7 +7,7 @@ cover: cover.png
 app_url: /apps/pulse/
 demo_url: /apps/pulse/?demo=true
 source_spec: specs/apps/pulse/spec.md
-current_version: v1.0.0
+current_version: v1.5.0
 launch_date: "2026-11-18"
 
 related_products:
@@ -93,6 +93,22 @@ tech:
     items: ["Hugo Static Portal", "GitHub Actions CI/CD", "Git Pre-Commit Hooks"]
 
 releases:
+  - version: "v1.5.0"
+    date: "2026-11-23"
+    state: released
+    type: feature
+    editorial_post_slug: "pulse-parte4-ga4-search-console-automatico"
+    title:
+      es: "Telemetría Omnicanal Coste 0 €, Modo Dual LinkedIn Empresa, Panel Canales & Editorial ROI Score v2"
+      en: "Zero-Cost Omnichannel Telemetry, LinkedIn Company Dual Mode, Channels Panel & Editorial ROI Score v2"
+    changes:
+      - es: "Trazabilidad Zero-Blindspot (Hito 7.11): UTMs deterministas en Autopilot (LinkedIn/X), GA4 Acquisition + KeyEvents por canal y ventana previa GSC 60d..31d."
+        en: "Zero-Blindspot Attribution (Milestone 7.11): Deterministic UTMs in Autopilot (LinkedIn/X), GA4 Acquisition + KeyEvents per channel, and GSC 60d..31d prior window."
+      - es: "Distribution Ledger & PTR (Hito 7.12–7.13): conectores gratuitos Dev.to, CoderLegion y LinkedIn Página de Empresa (API + parser .xlsx), con X nativo en stand-by coste 0 €."
+        en: "Distribution Ledger & PTR (Milestones 7.12–7.13): zero-cost connectors for Dev.to, CoderLegion, and LinkedIn Company Page (API + .xlsx parser), with native X on €0 stand-by."
+      - es: "Editorial ROI Score v2 y Panel 'Canales & Audiencia' (Hito 7.14): matriz Canal × Categoría × Idioma en Supabase RLS Admin y Sandbox educativo público sin fugas (INV-PULSE-2/12)."
+        en: "Editorial ROI Score v2 & 'Channels & Audience' Panel (Milestone 7.14): Channel × Category × Language matrix in Supabase Admin RLS plus leak-free educational Sandbox (INV-PULSE-2/12)."
+
   - version: "v1.0.0"
     date: "2026-11-18"
     state: released

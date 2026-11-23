@@ -34,13 +34,24 @@ import {
   LogIn,
   LogOut,
   CheckCircle2,
-  BookOpen
+  BookOpen,
+  Radio,
+  AlertTriangle,
+  Share2,
+  Lock
 } from 'lucide-react';
 import type { User } from '@supabase/supabase-js';
-import { ContentAsset, PublicPulseDataset, AssetType, AssetStatus } from './types';
+import {
+  ContentAsset,
+  PublicPulseDataset,
+  AssetType,
+  AssetStatus,
+  OmnichannelIntelligence,
+  OmnichannelRecommendationItem
+} from './types';
 import { i18n } from './lib/i18n';
 import { parseNotionCsv } from './lib/notionImporter';
-import { DEMO_SYNTHETIC_ASSETS } from './lib/demoData';
+import { DEMO_SYNTHETIC_ASSETS, getDemoOmnichannelSandbox } from './lib/demoData';
 import {
   supabase,
   getCurrentUser,
@@ -131,11 +142,11 @@ export function App() {
   } | null>(null);
   const t = i18n[lang];
 
-  // Vistas: Dashboard, Tabla, Kanban, Calendario, Salud & ROI (con soporte para deep linking URL ?tab=...)
-  const [activeTab, setActiveTab] = useState<'dashboard' | 'table' | 'kanban' | 'calendar' | 'health'>(() => {
+  // Vistas: Dashboard, Tabla, Kanban, Calendario, Salud & ROI, Canales & Audiencia (soporte deep-linking ?tab=...)
+  const [activeTab, setActiveTab] = useState<'dashboard' | 'table' | 'kanban' | 'calendar' | 'health' | 'channels'>(() => {
     if (typeof window !== 'undefined') {
       const p = new URLSearchParams(window.location.search).get('tab');
-      if (p === 'table' || p === 'kanban' || p === 'calendar' || p === 'health') return p;
+      if (p === 'table' || p === 'kanban' || p === 'calendar' || p === 'health' || p === 'channels') return p;
     }
     return 'dashboard';
   });
@@ -233,11 +244,15 @@ export function App() {
   const [ideaStatus, setIdeaStatus] = useState<AssetStatus>('idea');
   const [ideaSuccessMsg, setIdeaSuccessMsg] = useState('');
 
-  // Supabase Cloud & Auth Estados (ADR-015) + Admin RLS & Espacio Limpio (P-LAUNCH-5A-SEC)
+  // Supabase Cloud & Auth Estados (ADR-015) + Admin RLS & Espacio Limpio (P-LAUNCH-5A-SEC) + Omnicanal (Hito 7.14)
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [cloudIdeas, setCloudIdeas] = useState<ContentAsset[]>([]);
   const [adminSnapshotAssets, setAdminSnapshotAssets] = useState<ContentAsset[] | null>(null);
+  const [adminOmnichannel, setAdminOmnichannel] = useState<OmnichannelIntelligence | null>(null);
   const [isAdminSnapshotSynced, setIsAdminSnapshotSynced] = useState(false);
+  const [channelMatrixFilter, setChannelMatrixFilter] = useState<string>('all');
+  const [channelLangFilter, setChannelLangFilter] = useState<'all' | 'es' | 'en'>('all');
+  const [recTypeFilter, setRecTypeFilter] = useState<'all' | OmnichannelRecommendationItem['type']>('all');
   const [isCleanWorkspace, setIsCleanWorkspace] = useState<boolean>(() => {
     if (typeof window !== 'undefined') {
       return window.location.search.includes('workspace=clean') || window.location.hash.includes('workspace=clean');
@@ -296,17 +311,19 @@ export function App() {
     }
   };
 
-  // Cargar catálogo maestro Admin desde Supabase RLS (pulse.private_snapshot)
+  // Cargar catálogo maestro Admin + inteligencia omnicanal desde Supabase RLS (pulse.private_snapshot)
   const loadAdminSnapshotIfAuthorized = async (u: User | null) => {
     const email = u?.email?.toLowerCase() || '';
     if (!u || !ADMIN_EMAILS.includes(email)) {
       setAdminSnapshotAssets(null);
+      setAdminOmnichannel(null);
       setIsAdminSnapshotSynced(false);
       return;
     }
     const snap = await fetchAdminCatalogSnapshot();
     if (snap && snap.assets.length > 0) {
       setAdminSnapshotAssets(snap.assets);
+      setAdminOmnichannel(snap.omnichannelIntelligence ?? null);
       setIsAdminSnapshotSynced(true);
     }
   };
@@ -369,6 +386,7 @@ export function App() {
         } else {
           setCloudIdeas([]);
           setAdminSnapshotAssets(null);
+          setAdminOmnichannel(null);
           setIsAdminSnapshotSynced(false);
         }
       });
@@ -845,6 +863,7 @@ export function App() {
     setCurrentUser(null);
     setCloudIdeas([]);
     setAdminSnapshotAssets(null);
+    setAdminOmnichannel(null);
     setIsAdminSnapshotSynced(false);
   };
 
@@ -1375,6 +1394,51 @@ export function App() {
       </span>
     );
   };
+
+  // Inteligencia Omnicanal (Hito 7.14): Admin RLS Live vs Sandbox sintético educativo (!isAdmin)
+  const omnichannelData: OmnichannelIntelligence = useMemo(() => {
+    if (isAdmin && adminOmnichannel) {
+      return adminOmnichannel;
+    }
+    return getDemoOmnichannelSandbox(lang);
+  }, [isAdmin, adminOmnichannel, lang]);
+
+  const channelMatrixOptions = useMemo(() => {
+    const set = new Set<string>();
+    omnichannelData.channel_category_matrix.forEach((row) => {
+      if (row.channel) set.add(row.channel);
+    });
+    return Array.from(set);
+  }, [omnichannelData]);
+
+  const filteredChannelMatrix = useMemo(() => {
+    return omnichannelData.channel_category_matrix.filter((row) => {
+      if (channelMatrixFilter !== 'all' && row.channel !== channelMatrixFilter) {
+        return false;
+      }
+      if (channelLangFilter === 'es' && row.sessions_es_30d <= 0) {
+        return false;
+      }
+      if (channelLangFilter === 'en' && row.sessions_en_30d <= 0) {
+        return false;
+      }
+      return true;
+    });
+  }, [omnichannelData, channelMatrixFilter, channelLangFilter]);
+
+  const filteredChannelRecs = useMemo(() => {
+    if (recTypeFilter === 'all') {
+      return omnichannelData.top_recommendations;
+    }
+    return omnichannelData.top_recommendations.filter((rec) => rec.type === recTypeFilter);
+  }, [omnichannelData, recTypeFilter]);
+
+  useEffect(() => {
+    const el = document.getElementById(`tab-${activeTab}`);
+    if (el && el.parentElement) {
+      el.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    }
+  }, [activeTab]);
 
   return (
     <div className="app-container">
@@ -1952,10 +2016,14 @@ export function App() {
           </div>
         </div>
 
-        {/* Barra de Navegación entre Vistas (Deck Segmentado) */}
+        {/* Barra de Navegación entre Vistas (Deck Segmentado Accesible - modern-web-guidance/tabs) */}
         <div className="view-nav-wrapper">
-          <div className="view-nav">
+          <div className="view-nav" role="tablist" aria-label={t.brand_subtitle}>
             <button
+              type="button"
+              id="tab-dashboard"
+              role="tab"
+              aria-selected={activeTab === 'dashboard'}
               className={`tab-btn ${activeTab === 'dashboard' ? 'active' : ''}`}
               onClick={() => setActiveTab('dashboard')}
             >
@@ -1963,6 +2031,10 @@ export function App() {
               <span>{t.view_dashboard}</span>
             </button>
             <button
+              type="button"
+              id="tab-table"
+              role="tab"
+              aria-selected={activeTab === 'table'}
               className={`tab-btn ${activeTab === 'table' ? 'active' : ''}`}
               onClick={() => setActiveTab('table')}
             >
@@ -1970,6 +2042,10 @@ export function App() {
               <span>{t.view_table}</span>
             </button>
             <button
+              type="button"
+              id="tab-kanban"
+              role="tab"
+              aria-selected={activeTab === 'kanban'}
               className={`tab-btn ${activeTab === 'kanban' ? 'active' : ''}`}
               onClick={() => setActiveTab('kanban')}
             >
@@ -1977,6 +2053,10 @@ export function App() {
               <span>{t.view_kanban}</span>
             </button>
             <button
+              type="button"
+              id="tab-calendar"
+              role="tab"
+              aria-selected={activeTab === 'calendar'}
               className={`tab-btn ${activeTab === 'calendar' ? 'active' : ''}`}
               onClick={() => setActiveTab('calendar')}
             >
@@ -1984,11 +2064,26 @@ export function App() {
               <span>{t.view_calendar}</span>
             </button>
             <button
+              type="button"
+              id="tab-health"
+              role="tab"
+              aria-selected={activeTab === 'health'}
               className={`tab-btn ${activeTab === 'health' ? 'active' : ''}`}
               onClick={() => setActiveTab('health')}
             >
               <ShieldCheck size={18} />
               <span>{t.view_health}</span>
+            </button>
+            <button
+              type="button"
+              id="tab-channels"
+              role="tab"
+              aria-selected={activeTab === 'channels'}
+              className={`tab-btn ${activeTab === 'channels' ? 'active' : ''}`}
+              onClick={() => setActiveTab('channels')}
+            >
+              <Radio size={18} />
+              <span>{t.view_channels}</span>
             </button>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
@@ -1998,6 +2093,7 @@ export function App() {
               {activeTab === 'kanban' && t.view_kanban}
               {activeTab === 'calendar' && t.view_calendar}
               {activeTab === 'health' && t.view_health}
+              {activeTab === 'channels' && t.view_channels}
             </span>
             <span style={{ background: 'rgba(16, 185, 129, 0.12)', color: '#34d399', border: '1px solid rgba(16, 185, 129, 0.3)', borderRadius: '9999px', padding: '0.2rem 0.55rem', fontSize: '0.72rem', fontWeight: 700 }}>
               {currentAssets.length} activos
@@ -3288,6 +3384,364 @@ export function App() {
                   </p>
                 </div>
               </div>
+            </div>
+          </div>
+        )}
+
+        {/* 6. VISTA CANALES & AUDIENCIA (OMNICANAL 0 EUR & EDITORIAL ROI V2 - HITO 7.14) */}
+        {activeTab === 'channels' && (
+          <div className="channels-wrapper" role="tabpanel" aria-labelledby="tab-channels" tabIndex={0}>
+            {/* Cabecera de Modo: RLS Admin Live vs Sandbox Educativo Sintético */}
+            <div className={`channels-mode-banner ${isAdmin && !omnichannelData.is_synthetic ? 'mode-admin' : 'mode-sandbox'}`}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+                  <span className="channels-mode-pill">
+                    {isAdmin && !omnichannelData.is_synthetic ? (
+                      <>
+                        <Lock size={13} />
+                        <span>{t.channels_admin_live_badge}</span>
+                      </>
+                    ) : (
+                      <span>{t.channels_sandbox_badge}</span>
+                    )}
+                  </span>
+                  <span className="x-standby-pill">
+                    <Radio size={13} />
+                    <span>{t.channels_x_standby_badge}</span>
+                  </span>
+                </div>
+                {(!isAdmin || omnichannelData.is_synthetic) && (
+                  <p style={{ fontSize: '0.82rem', color: '#cbd5e1', lineHeight: 1.45 }}>
+                    {t.channels_sandbox_desc}
+                  </p>
+                )}
+              </div>
+              {!isAdmin && (
+                <a
+                  href={kitCheckoutUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+                  onClick={() => trackPulseEvent('begin_checkout_kit', { placement: 'channels_sandbox' })}
+                  style={{ flexShrink: 0 }}
+                >
+                  <Zap size={16} />
+                  <span>{t.btn_rentabilizar_kit}</span>
+                </a>
+              )}
+            </div>
+
+            {/* Embudo Omnicanal en 4 Capas */}
+            <section className="channels-section">
+              <h2 className="channels-section-title">
+                <Share2 size={18} color="#10b981" />
+                <span>{t.channels_funnel_title}</span>
+              </h2>
+              <div className="channel-funnel-grid">
+                <div className="channel-funnel-card accent-cyan">
+                  <div className="funnel-step-tag">01 · REACH</div>
+                  <div className="funnel-kpi-label">{t.channels_kpi_reach}</div>
+                  <div className="funnel-kpi-value" style={{ color: '#22d3ee' }}>
+                    {omnichannelData.funnel_4_layers.native_reach.toLocaleString()}
+                  </div>
+                  <div className="funnel-kpi-sub">{t.channels_kpi_reach_sub}</div>
+                </div>
+
+                <div className="channel-funnel-card accent-emerald">
+                  <div className="funnel-step-tag">02 · PTR %</div>
+                  <div className="funnel-kpi-label">{t.channels_kpi_ptr}</div>
+                  <div className="funnel-kpi-value" style={{ color: '#34d399' }}>
+                    {omnichannelData.funnel_4_layers.avg_ptr_pct.toFixed(2)}%
+                  </div>
+                  <div className="funnel-kpi-sub">{t.channels_kpi_ptr_sub}</div>
+                </div>
+
+                <div className="channel-funnel-card accent-purple">
+                  <div className="funnel-step-tag">03 · GA4 ENGAGEMENT</div>
+                  <div className="funnel-kpi-label">{t.channels_kpi_ga4_social}</div>
+                  <div className="funnel-kpi-value" style={{ color: '#c084fc' }}>
+                    {omnichannelData.funnel_4_layers.ga4_social_sessions.toLocaleString()}
+                  </div>
+                  <div className="funnel-kpi-sub">
+                    {t.channels_kpi_ga4_social_sub
+                      .replace('{sec}', String(omnichannelData.funnel_4_layers.avg_social_engagement_sec))
+                      .replace('{conv}', String(omnichannelData.funnel_4_layers.ga4_social_key_events))}
+                  </div>
+                </div>
+
+                <div className="channel-funnel-card accent-amber">
+                  <div className="funnel-step-tag">04 · GSC LIFT</div>
+                  <div className="funnel-kpi-label">{t.channels_kpi_gsc_lift}</div>
+                  <div className="funnel-kpi-value" style={{ color: '#fbbf24' }}>
+                    {omnichannelData.funnel_4_layers.gsc_lift_pct >= 0 ? '+' : ''}
+                    {omnichannelData.funnel_4_layers.gsc_lift_pct.toFixed(1)}%
+                  </div>
+                  <div className="funnel-kpi-sub">
+                    {t.channels_kpi_gsc_lift_sub
+                      .replace('{cur}', omnichannelData.funnel_4_layers.gsc_clicks_30d.toLocaleString())
+                      .replace('{prev}', omnichannelData.funnel_4_layers.gsc_clicks_prev_30d.toLocaleString())}
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Resumen por Plataforma Social */}
+            <section className="channels-section">
+              <h2 className="channels-section-title">
+                <Globe size={18} color="#06b6d4" />
+                <span>{t.channels_platforms_title}</span>
+              </h2>
+              <div className="platform-cards-grid">
+                {(['linkedin_company', 'devto', 'coderlegion', 'x'] as const).map((platKey) => {
+                  const p = omnichannelData.social_funnel[platKey];
+                  const isX = platKey === 'x';
+                  const reach = p?.total_impressions ?? p?.native_views ?? 0;
+                  const reactCount = p?.total_reactions ?? p?.native_reactions ?? 0;
+                  const commCount = p?.total_comments ?? p?.native_comments ?? 0;
+                  return (
+                    <div key={platKey} className={`platform-stat-card ${isX ? 'is-standby' : ''}`}>
+                      <div className="platform-card-head">
+                        <strong style={{ fontFamily: 'var(--font-heading)', fontSize: '0.95rem' }}>
+                          {platKey === 'linkedin_company'
+                            ? 'LinkedIn Empresa'
+                            : platKey === 'devto'
+                            ? 'Dev.to'
+                            : platKey === 'coderlegion'
+                            ? 'CoderLegion'
+                            : 'X / Twitter'}
+                        </strong>
+                        <span className={`platform-status-chip ${p?.status === 'standby_zero_cost' ? 'standby' : p?.status === 'ok' || p?.status === 'api_ok' || p?.status === 'xlsx_import_ok' ? 'active' : 'muted'}`}>
+                          {p?.status || 'unavailable'}
+                        </span>
+                      </div>
+                      {isX ? (
+                        <div style={{ fontSize: '0.78rem', color: '#cbd5e1', lineHeight: 1.45, marginTop: '0.4rem' }}>
+                          <div style={{ fontFamily: 'var(--font-mono)', fontSize: '1.15rem', fontWeight: 700, color: '#f8fafc', marginBottom: '0.25rem' }}>
+                            {p?.ga4_sessions_30d ?? 0} GA4 ses.
+                          </div>
+                          <div>{p?.note || t.channels_x_standby_badge}</div>
+                        </div>
+                      ) : (
+                        <div className="platform-metrics-mini">
+                          <div>
+                            <span className="mini-label">Reach</span>
+                            <strong className="mini-val">{reach.toLocaleString()}</strong>
+                          </div>
+                          <div>
+                            <span className="mini-label">GA4 Ses.</span>
+                            <strong className="mini-val">{(p?.ga4_sessions_30d ?? 0).toLocaleString()}</strong>
+                          </div>
+                          <div>
+                            <span className="mini-label">PTR</span>
+                            <strong className="mini-val" style={{ color: '#34d399' }}>
+                              {(p?.ptr_pct ?? 0).toFixed(2)}%
+                            </strong>
+                          </div>
+                          <div>
+                            <span className="mini-label">Eng.</span>
+                            <strong className="mini-val">
+                              {reactCount}/{commCount}
+                            </strong>
+                          </div>
+                          {platKey === 'linkedin_company' && typeof p?.followers_count === 'number' && (
+                            <div style={{ gridColumn: '1 / -1', fontSize: '0.74rem', color: '#9ca3af', paddingTop: '0.25rem', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+                              {p.followers_count.toLocaleString()} {t.channels_followers_label}
+                              {typeof p.native_ctr_pct === 'number' && p.native_ctr_pct > 0
+                                ? ` · CTR ${p.native_ctr_pct.toFixed(2)}%`
+                                : ''}
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+
+            {/* Matriz Interactiva Canal x Categoría x Idioma (ES vs EN) */}
+            <section className="channels-section">
+              <div className="channels-section-header">
+                <h2 className="channels-section-title" id="channel-matrix-caption">
+                  <Layers size={18} color="#8b5cf6" />
+                  <span>{t.channels_matrix_title}</span>
+                </h2>
+                <div className="matrix-filters">
+                  <label className="matrix-filter-group">
+                    <span>{t.channels_filter_channel}</span>
+                    <select
+                      className="filter-select"
+                      value={channelMatrixFilter}
+                      onChange={(e) => setChannelMatrixFilter(e.target.value)}
+                    >
+                      <option value="all">{t.filter_all}</option>
+                      {channelMatrixOptions.map((ch) => (
+                        <option key={ch} value={ch}>
+                          {ch}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                  <div className="lang-pill-group" role="group" aria-label={t.channels_filter_lang}>
+                    {(['all', 'es', 'en'] as const).map((lk) => (
+                      <button
+                        key={lk}
+                        type="button"
+                        className={`pill-btn ${channelLangFilter === lk ? 'active' : ''}`}
+                        onClick={() => setChannelLangFilter(lk)}
+                      >
+                        {lk === 'all' ? t.channels_lang_all : lk.toUpperCase()}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div
+                tabIndex={0}
+                role="region"
+                aria-labelledby="channel-matrix-caption"
+                className="channel-matrix-wrapper"
+              >
+                <table
+                  className="channel-matrix-table"
+                  style={
+                    {
+                      '--col-channel': `"${t.channels_col_channel}"`,
+                      '--col-category': `"${t.channels_col_category}"`,
+                      '--col-sessions': `"${t.channels_col_sessions}"`,
+                      '--col-split': `"${t.channels_col_split}"`,
+                      '--col-eng': `"${t.channels_col_engagement}"`,
+                      '--col-conv': `"${t.channels_col_conversions}"`,
+                    } as React.CSSProperties
+                  }
+                >
+                  <caption className="sr-only">{t.channels_matrix_title}</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">{t.channels_col_channel}</th>
+                      <th scope="col">{t.channels_col_category}</th>
+                      <th scope="col">{t.channels_col_sessions}</th>
+                      <th scope="col">{t.channels_col_split}</th>
+                      <th scope="col">{t.channels_col_engagement}</th>
+                      <th scope="col">{t.channels_col_conversions}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {filteredChannelMatrix.length === 0 ? (
+                      <tr>
+                        <td colSpan={6} style={{ textAlign: 'center', color: '#9ca3af', padding: '1.5rem' }}>
+                          {t.channels_empty_matrix}
+                        </td>
+                      </tr>
+                    ) : (
+                      filteredChannelMatrix.slice(0, 20).map((row) => (
+                        <tr key={`${row.channel}-${row.category}`}>
+                          <th scope="row">
+                            <span className="channel-chip">{row.channel}</span>
+                          </th>
+                          <td>{row.category}</td>
+                          <td className="mono-num">
+                            {channelLangFilter === 'es'
+                              ? row.sessions_es_30d
+                              : channelLangFilter === 'en'
+                              ? row.sessions_en_30d
+                              : row.sessions_30d}
+                          </td>
+                          <td className="mono-num">
+                            {row.sessions_es_30d} / {row.sessions_en_30d} ({row.en_share_pct.toFixed(1)}%)
+                          </td>
+                          <td className="mono-num">{row.avg_engagement_sec.toFixed(1)}s</td>
+                          <td className="mono-num">{row.key_events_30d}</td>
+                        </tr>
+                      ))
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            {/* Editorial ROI Score v2 + Radar de Recomendaciones E02/E06 */}
+            <div className="channels-bottom-grid">
+              <section className="channels-section">
+                <h2 className="channels-section-title">
+                  <TrendingUp size={18} color="#10b981" />
+                  <span>{t.channels_roi_v2_title}</span>
+                </h2>
+                <p style={{ fontSize: '0.8rem', color: '#9ca3af', marginBottom: '0.85rem' }}>
+                  {t.channels_roi_v2_sub}
+                </p>
+                <div className="roi-v2-list">
+                  {omnichannelData.category_roi_v2.map((cat) => (
+                    <div key={cat.category} className="roi-v2-card">
+                      <div className="roi-v2-head">
+                        <span style={{ fontWeight: 700, fontSize: '0.88rem', color: '#f8fafc' }}>
+                          {cat.category}
+                        </span>
+                        <span className="mono-num" style={{ color: '#34d399', fontWeight: 700 }}>
+                          ROI {cat.editorial_roi_score.toFixed(1)} · Soc {cat.social_traction_score.toFixed(1)}
+                        </span>
+                      </div>
+                      <div className="roi-bar-track">
+                        <div
+                          className="roi-bar-fill"
+                          style={{ width: `${Math.min(100, Math.max(4, cat.editorial_roi_score))}%` }}
+                        />
+                      </div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.73rem', color: '#9ca3af', marginTop: '0.3rem' }}>
+                        <span>Monetización: {cat.monetization_coverage_pct.toFixed(1)}%</span>
+                        <span>EN Share: {cat.en_traffic_share_pct.toFixed(1)}%</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              <section className="channels-section">
+                <div className="channels-section-header">
+                  <h2 className="channels-section-title">
+                    <AlertTriangle size={18} color="#f59e0b" />
+                    <span>{t.channels_recs_title}</span>
+                  </h2>
+                </div>
+                <div className="rec-filter-pills">
+                  {(
+                    [
+                      ['all', t.channels_rec_filter_all],
+                      ['ptr_leak', t.channels_rec_ptr_leak],
+                      ['hidden_winner', t.channels_rec_hidden_winner],
+                      ['dark_social', t.channels_rec_dark_social],
+                      ['canonical_shield', t.channels_rec_canonical_shield],
+                    ] as const
+                  ).map(([rk, label]) => (
+                    <button
+                      key={rk}
+                      type="button"
+                      className={`pill-btn ${recTypeFilter === rk ? 'active' : ''}`}
+                      onClick={() => setRecTypeFilter(rk)}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
+                <div className="channel-recs-list">
+                  {filteredChannelRecs.length === 0 ? (
+                    <div className="rec-empty-box">{t.channels_empty_recs}</div>
+                  ) : (
+                    filteredChannelRecs.map((rec) => (
+                      <div key={rec.id} className={`rec-card sev-${rec.severity}`}>
+                        <div className="rec-card-head">
+                          <span className="rec-agent-badge">{rec.agent}</span>
+                          <span className="rec-type-chip">{rec.type}</span>
+                          <span className="channel-chip">{rec.channel}</span>
+                          <code style={{ fontSize: '0.72rem', color: '#93c5fd' }}>{rec.asset_or_ref}</code>
+                        </div>
+                        <p className="rec-action-text">{rec.action}</p>
+                      </div>
+                    ))
+                  )}
+                </div>
+              </section>
             </div>
           </div>
         )}

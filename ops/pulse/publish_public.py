@@ -39,6 +39,14 @@ MONTHLY_METRICS_PATH = ROOT_DIR / "data" / "pulse" / "private" / "monthly_metric
 PUBLIC_DATASET_PATH = ROOT_DIR / "static" / "apps" / "pulse" / "data" / "public.json"
 
 
+def compute_trend_30d_pct(views_current: int, views_prev: int) -> float:
+    """Calcula la variación porcentual vs. ventana previa de 30d acotada en [-100.0, +500.0]."""
+    if views_prev <= 0:
+        return 100.0 if views_current > 0 else 0.0
+    raw = ((views_current - views_prev) / views_prev) * 100.0
+    return round(max(-100.0, min(500.0, raw)), 1)
+
+
 def calculate_relative_metrics(
     assets: List[Dict[str, Any]],
     metrics: Dict[str, Dict[str, Any]]
@@ -51,7 +59,7 @@ def calculate_relative_metrics(
     for a in assets:
         aid = a["id"]
         m = metrics.get(aid, {})
-        v = m.get("ga4_views_30d", 0)
+        v = int(m.get("ga4_views_30d", 0) or 0)
         views_map[aid] = v
 
     published_views = [
@@ -61,6 +69,19 @@ def calculate_relative_metrics(
     median_views = statistics.median(published_views) if published_views else 10.0
     if median_views <= 0:
         median_views = 1.0
+
+    # Cuartil superior de impresiones GSC (piso >= 30) en activos publicados
+    published_gsc_impr = sorted(
+        int(metrics.get(a["id"], {}).get("gsc_impressions_30d", 0) or 0)
+        for a in assets
+        if a.get("status") == "published" and int(metrics.get(a["id"], {}).get("gsc_impressions_30d", 0) or 0) > 0
+    )
+    has_gsc_catalog = bool(published_gsc_impr)
+    if published_gsc_impr:
+        p75_idx = max(0, int(len(published_gsc_impr) * 0.75) - 1)
+        gsc_p75_threshold = max(30, published_gsc_impr[min(p75_idx, len(published_gsc_impr) - 1)])
+    else:
+        gsc_p75_threshold = 30
 
     # Ordenar para cálculo de percentiles
     sorted_views = sorted(views_map.values())
@@ -76,24 +97,30 @@ def calculate_relative_metrics(
         # Base 100 relativo a la mediana
         idx_100 = round((v / median_views) * 100)
 
-        # Percentil
-        # rank_pct = (pos / total) * 100
+        # Percentil estándar: (count_less + 0.5 * count_equal) / total * 100
         count_less = sum(1 for x in sorted_views if x < v)
         count_equal = sum(1 for x in sorted_views if x == v)
-        # Percentil estándar: (count_less + 0.5 * count_equal) / total * 100
         rank_pct = round(((count_less + 0.5 * count_equal) / max(total_count, 1)) * 100)
         rank_pct = max(0, min(100, rank_pct))
 
-        # Oportunidad GSC: si impresiones > 500 y posición entre 5 y 20, o si engagement > 90s con visitas < mediana
-        impr = m.get("gsc_impressions_30d", 0)
-        pos = m.get("gsc_avg_position", 0.0)
-        eng = m.get("ga4_engagement_sec", 0.0)
-        is_opp = bool((impr >= 300 and 5.0 <= pos <= 20.0) or (eng >= 120.0 and v > 0 and v < median_views))
+        views_prev = int(m.get("ga4_views_prev_30d", 0) or 0)
+        trend_pct = compute_trend_30d_pct(v, views_prev)
+
+        # Oportunidad GSC: cuartil superior de impresiones (>= 30) con pos in [4.0, 20.0] o ctr < 2.5%
+        impr = int(m.get("gsc_impressions_30d", 0) or 0)
+        pos = float(m.get("gsc_avg_position", 0.0) or 0.0)
+        ctr = float(m.get("gsc_ctr_pct", 0.0) or 0.0)
+        eng = float(m.get("ga4_engagement_sec", 0.0) or 0.0)
+
+        if has_gsc_catalog:
+            is_opp = bool(impr >= gsc_p75_threshold and impr >= 30 and ((4.0 <= pos <= 20.0) or ctr < 2.5))
+        else:
+            is_opp = bool(eng >= 120.0 and v > 0 and v < median_views)
 
         rel_metrics[aid] = RelativeMetrics(
             index_100=idx_100,
             rank_pct=rank_pct,
-            trend_30d_pct=0.0,
+            trend_30d_pct=trend_pct,
             gsc_opportunity=is_opp
         )
 

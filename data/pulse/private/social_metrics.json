@@ -1,0 +1,44 @@
+{
+  "version": "1.0.0",
+  "visibility": "private",
+  "generated_at": "2026-11-23T19:39:21.812838+00:00",
+  "platforms": {
+    "devto": {
+      "status": "unavailable",
+      "last_synced_at": null,
+      "articles_count": 0,
+      "matched_assets_count": 0,
+      "total_views": 0,
+      "total_reactions": 0,
+      "total_comments": 0,
+      "articles": []
+    },
+    "coderlegion": {
+      "status": "ok",
+      "last_synced_at": "2026-11-23T19:39:21.812838+00:00",
+      "articles_count": 0,
+      "matched_assets_count": 0,
+      "total_views": 0,
+      "total_reactions": 0,
+      "total_comments": 0,
+      "articles": []
+    },
+    "linkedin_company": {
+      "status": "unavailable",
+      "scope": "company_page_only",
+      "last_synced_at": null,
+      "total_impressions": 0,
+      "total_clicks": 0,
+      "total_reactions": 0,
+      "total_comments": 0,
+      "followers_count": 0,
+      "source": "none"
+    },
+    "x": {
+      "status": "standby_zero_cost",
+      "last_synced_at": null,
+      "note": "Medición activa vía GA4 + UTMs (Hito 7.11); API nativa X en stand-by por política coste 0 EUR."
+    }
+  },
+  "by_asset": {}
+}
