@@ -135,8 +135,8 @@
     "gsc_top_queries": []
   },
   "quantitative-swot-tows-matrix": {
-    "ga4_views_30d": 26,
-    "ga4_users_30d": 24,
+    "ga4_views_30d": 25,
+    "ga4_users_30d": 23,
     "ga4_engagement_sec": 38.0,
     "ga4_views_es_30d": 5,
     "ga4_views_en_30d": 21,
@@ -452,7 +452,7 @@
     "ga4_views_en_30d": 0,
     "ga4_views_prev_30d": 0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 0,
+    "gsc_impressions_30d": 1,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 0.0,
     "gsc_clicks_prev_30d": 0,
