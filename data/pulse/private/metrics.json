@@ -1,7 +1,7 @@
 {
   "quantitative-porter-5-forces": {
-    "ga4_views_30d": 11,
-    "ga4_users_30d": 9,
+    "ga4_views_30d": 12,
+    "ga4_users_30d": 10,
     "ga4_engagement_sec": 43.0,
     "gsc_clicks_30d": 1,
     "gsc_impressions_30d": 83,
@@ -36,9 +36,9 @@
     "gsc_avg_position": 0.0
   },
   "earned-value-management-evm-dashboard": {
-    "ga4_views_30d": 35,
-    "ga4_users_30d": 2,
-    "ga4_engagement_sec": 203.0,
+    "ga4_views_30d": 38,
+    "ga4_users_30d": 5,
+    "ga4_engagement_sec": 214.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -63,8 +63,8 @@
     "gsc_avg_position": 0.0
   },
   "corporate-strategy-mba-quantitative-framework": {
-    "ga4_views_30d": 37,
-    "ga4_users_30d": 20,
+    "ga4_views_30d": 38,
+    "ga4_users_30d": 21,
     "ga4_engagement_sec": 559.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 9,
@@ -180,8 +180,8 @@
     "gsc_avg_position": 7.1
   },
   "norbert_wiener": {
-    "ga4_views_30d": 51,
-    "ga4_users_30d": 20,
+    "ga4_views_30d": 52,
+    "ga4_users_30d": 21,
     "ga4_engagement_sec": 650.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 86,
@@ -198,8 +198,8 @@
     "gsc_avg_position": 6.0
   },
   "pulse-part2": {
-    "ga4_views_30d": 32,
-    "ga4_users_30d": 4,
+    "ga4_views_30d": 33,
+    "ga4_users_30d": 5,
     "ga4_engagement_sec": 237.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -243,8 +243,8 @@
     "gsc_avg_position": 4.2
   },
   "business-case-financiero-van-tir": {
-    "ga4_views_30d": 71,
-    "ga4_users_30d": 20,
+    "ga4_views_30d": 72,
+    "ga4_users_30d": 21,
     "ga4_engagement_sec": 325.0,
     "gsc_clicks_30d": 1,
     "gsc_impressions_30d": 80,
@@ -567,8 +567,8 @@
     "gsc_avg_position": 7.7
   },
   "graphrag": {
-    "ga4_views_30d": 21,
-    "ga4_users_30d": 20,
+    "ga4_views_30d": 22,
+    "ga4_users_30d": 21,
     "ga4_engagement_sec": 89.0,
     "gsc_clicks_30d": 1,
     "gsc_impressions_30d": 132,
@@ -630,8 +630,8 @@
     "gsc_avg_position": 8.9
   },
   "kantorovich": {
-    "ga4_views_30d": 42,
-    "ga4_users_30d": 40,
+    "ga4_views_30d": 43,
+    "ga4_users_30d": 41,
     "ga4_engagement_sec": 999.0,
     "gsc_clicks_30d": 13,
     "gsc_impressions_30d": 3003,
@@ -702,8 +702,8 @@
     "gsc_avg_position": 19.9
   },
   "oppenheimer": {
-    "ga4_views_30d": 11,
-    "ga4_users_30d": 12,
+    "ga4_views_30d": 12,
+    "ga4_users_30d": 13,
     "ga4_engagement_sec": 312.0,
     "gsc_clicks_30d": 1,
     "gsc_impressions_30d": 78,
@@ -720,8 +720,8 @@
     "gsc_avg_position": 9.6
   },
   "prompt_injection": {
-    "ga4_views_30d": 18,
-    "ga4_users_30d": 16,
+    "ga4_views_30d": 19,
+    "ga4_users_30d": 17,
     "ga4_engagement_sec": 14.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 62,
