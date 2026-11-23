@@ -4,9 +4,9 @@
     "ga4_users_30d": 9,
     "ga4_engagement_sec": 43.0,
     "gsc_clicks_30d": 1,
-    "gsc_impressions_30d": 75,
-    "gsc_ctr_pct": 1.33,
-    "gsc_avg_position": 5.7
+    "gsc_impressions_30d": 83,
+    "gsc_ctr_pct": 1.2,
+    "gsc_avg_position": 5.8
   },
   "autopilot-part10-scriba-pulse-bridge": {
     "ga4_views_30d": 29,
@@ -18,9 +18,9 @@
     "gsc_avg_position": 6.0
   },
   "safety-stock-reorder-point-calculator": {
-    "ga4_views_30d": 0,
-    "ga4_users_30d": 0,
-    "ga4_engagement_sec": 0.0,
+    "ga4_views_30d": 86,
+    "ga4_users_30d": 2,
+    "ga4_engagement_sec": 139.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -36,17 +36,17 @@
     "gsc_avg_position": 0.0
   },
   "earned-value-management-evm-dashboard": {
-    "ga4_views_30d": 0,
-    "ga4_users_30d": 0,
-    "ga4_engagement_sec": 0.0,
+    "ga4_views_30d": 35,
+    "ga4_users_30d": 2,
+    "ga4_engagement_sec": 203.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 0.0
   },
   "quantitative-swot-tows-matrix": {
-    "ga4_views_30d": 26,
-    "ga4_users_30d": 24,
+    "ga4_views_30d": 25,
+    "ga4_users_30d": 23,
     "ga4_engagement_sec": 38.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -54,8 +54,8 @@
     "gsc_avg_position": 0.0
   },
   "stochastic-3-point-pert-estimation": {
-    "ga4_views_30d": 15,
-    "ga4_users_30d": 12,
+    "ga4_views_30d": 16,
+    "ga4_users_30d": 13,
     "ga4_engagement_sec": 86.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -63,8 +63,8 @@
     "gsc_avg_position": 0.0
   },
   "corporate-strategy-mba-quantitative-framework": {
-    "ga4_views_30d": 36,
-    "ga4_users_30d": 19,
+    "ga4_views_30d": 37,
+    "ga4_users_30d": 20,
     "ga4_engagement_sec": 559.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 9,
@@ -126,40 +126,40 @@
     "gsc_avg_position": 0.0
   },
   "magnific-ai": {
-    "ga4_views_30d": 7,
-    "ga4_users_30d": 4,
-    "ga4_engagement_sec": 605.0,
+    "ga4_views_30d": 10,
+    "ga4_users_30d": 7,
+    "ga4_engagement_sec": 639.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 0,
+    "gsc_impressions_30d": 1,
     "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 0.0
+    "gsc_avg_position": 11.0
   },
   "dynamic-bcg-matrix": {
-    "ga4_views_30d": 33,
-    "ga4_users_30d": 23,
+    "ga4_views_30d": 34,
+    "ga4_users_30d": 24,
     "ga4_engagement_sec": 437.0,
     "gsc_clicks_30d": 1,
-    "gsc_impressions_30d": 145,
-    "gsc_ctr_pct": 0.69,
+    "gsc_impressions_30d": 146,
+    "gsc_ctr_pct": 0.68,
     "gsc_avg_position": 4.9
   },
   "mckinsey-ge-matrix": {
-    "ga4_views_30d": 36,
-    "ga4_users_30d": 31,
-    "ga4_engagement_sec": 148.0,
+    "ga4_views_30d": 38,
+    "ga4_users_30d": 33,
+    "ga4_engagement_sec": 159.0,
     "gsc_clicks_30d": 1,
-    "gsc_impressions_30d": 311,
-    "gsc_ctr_pct": 0.32,
+    "gsc_impressions_30d": 331,
+    "gsc_ctr_pct": 0.3,
     "gsc_avg_position": 11.6
   },
   "quantitative-pestel-matrix": {
-    "ga4_views_30d": 15,
-    "ga4_users_30d": 15,
-    "ga4_engagement_sec": 129.0,
+    "ga4_views_30d": 12,
+    "ga4_users_30d": 12,
+    "ga4_engagement_sec": 116.0,
     "gsc_clicks_30d": 1,
-    "gsc_impressions_30d": 47,
-    "gsc_ctr_pct": 2.13,
-    "gsc_avg_position": 5.3
+    "gsc_impressions_30d": 48,
+    "gsc_ctr_pct": 2.08,
+    "gsc_avg_position": 5.2
   },
   "quantitative-raci-workload-matrix": {
     "ga4_views_30d": 38,
@@ -175,22 +175,22 @@
     "ga4_users_30d": 10,
     "ga4_engagement_sec": 246.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 164,
+    "gsc_impressions_30d": 169,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 7.1
   },
   "norbert_wiener": {
-    "ga4_views_30d": 46,
-    "ga4_users_30d": 18,
-    "ga4_engagement_sec": 571.0,
+    "ga4_views_30d": 51,
+    "ga4_users_30d": 20,
+    "ga4_engagement_sec": 650.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 80,
+    "gsc_impressions_30d": 86,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 10.2
   },
   "pulse-part1": {
-    "ga4_views_30d": 194,
-    "ga4_users_30d": 9,
+    "ga4_views_30d": 195,
+    "ga4_users_30d": 10,
     "ga4_engagement_sec": 634.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 2,
@@ -198,9 +198,9 @@
     "gsc_avg_position": 6.0
   },
   "pulse-part2": {
-    "ga4_views_30d": 16,
-    "ga4_users_30d": 1,
-    "ga4_engagement_sec": 215.0,
+    "ga4_views_30d": 32,
+    "ga4_users_30d": 4,
+    "ga4_engagement_sec": 237.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -238,8 +238,8 @@
     "ga4_users_30d": 18,
     "ga4_engagement_sec": 1000.0,
     "gsc_clicks_30d": 1,
-    "gsc_impressions_30d": 51,
-    "gsc_ctr_pct": 1.96,
+    "gsc_impressions_30d": 53,
+    "gsc_ctr_pct": 1.89,
     "gsc_avg_position": 4.2
   },
   "business-case-financiero-van-tir": {
@@ -247,18 +247,18 @@
     "ga4_users_30d": 20,
     "ga4_engagement_sec": 325.0,
     "gsc_clicks_30d": 1,
-    "gsc_impressions_30d": 76,
-    "gsc_ctr_pct": 1.32,
-    "gsc_avg_position": 4.9
+    "gsc_impressions_30d": 80,
+    "gsc_ctr_pct": 1.25,
+    "gsc_avg_position": 4.8
   },
   "matriz-rice-ice-priorizacion": {
-    "ga4_views_30d": 75,
-    "ga4_users_30d": 21,
-    "ga4_engagement_sec": 690.0,
+    "ga4_views_30d": 76,
+    "ga4_users_30d": 22,
+    "ga4_engagement_sec": 691.0,
     "gsc_clicks_30d": 3,
-    "gsc_impressions_30d": 116,
-    "gsc_ctr_pct": 2.59,
-    "gsc_avg_position": 20.7
+    "gsc_impressions_30d": 126,
+    "gsc_ctr_pct": 2.38,
+    "gsc_avg_position": 20.0
   },
   "proj_ops_parte1_intro": {
     "ga4_views_30d": 1,
@@ -283,7 +283,7 @@
     "ga4_users_30d": 6,
     "ga4_engagement_sec": 10.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 57,
+    "gsc_impressions_30d": 55,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 9.5
   },
@@ -306,12 +306,12 @@
     "gsc_avg_position": 0.0
   },
   "abraham_wald": {
-    "ga4_views_30d": 33,
-    "ga4_users_30d": 29,
-    "ga4_engagement_sec": 387.0,
+    "ga4_views_30d": 30,
+    "ga4_users_30d": 26,
+    "ga4_engagement_sec": 366.0,
     "gsc_clicks_30d": 3,
-    "gsc_impressions_30d": 489,
-    "gsc_ctr_pct": 0.61,
+    "gsc_impressions_30d": 482,
+    "gsc_ctr_pct": 0.62,
     "gsc_avg_position": 8.8
   },
   "ada_lovelace": {
@@ -321,7 +321,7 @@
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 230,
     "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 10.0
+    "gsc_avg_position": 10.5
   },
   "agentes_ia_operativa_sdd": {
     "ga4_views_30d": 59,
@@ -333,13 +333,13 @@
     "gsc_avg_position": 13.1
   },
   "alan_turing": {
-    "ga4_views_30d": 26,
-    "ga4_users_30d": 23,
+    "ga4_views_30d": 25,
+    "ga4_users_30d": 22,
     "ga4_engagement_sec": 227.0,
-    "gsc_clicks_30d": 1,
-    "gsc_impressions_30d": 610,
-    "gsc_ctr_pct": 0.16,
-    "gsc_avg_position": 36.5
+    "gsc_clicks_30d": 2,
+    "gsc_impressions_30d": 615,
+    "gsc_ctr_pct": 0.33,
+    "gsc_avg_position": 36.6
   },
   "app-lifeops_part1_arquitectura_backend": {
     "ga4_views_30d": 9,
@@ -355,13 +355,13 @@
     "ga4_users_30d": 5,
     "ga4_engagement_sec": 2.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 4,
+    "gsc_impressions_30d": 3,
     "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 7.2
+    "gsc_avg_position": 7.3
   },
   "app-lifeops_part3_modulos_kanban": {
-    "ga4_views_30d": 6,
-    "ga4_users_30d": 6,
+    "ga4_views_30d": 7,
+    "ga4_users_30d": 7,
     "ga4_engagement_sec": 8.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 2,
@@ -400,7 +400,7 @@
     "ga4_users_30d": 5,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 101,
+    "gsc_impressions_30d": 99,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 7.6
   },
@@ -409,7 +409,7 @@
     "ga4_users_30d": 6,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 34,
+    "gsc_impressions_30d": 33,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 7.7
   },
@@ -418,9 +418,9 @@
     "ga4_users_30d": 8,
     "ga4_engagement_sec": 14.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 77,
+    "gsc_impressions_30d": 72,
     "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 9.1
+    "gsc_avg_position": 9.2
   },
   "app_openweather_part4_extras_ux": {
     "ga4_views_30d": 4,
@@ -432,30 +432,30 @@
     "gsc_avg_position": 26.4
   },
   "carto": {
-    "ga4_views_30d": 9,
-    "ga4_users_30d": 9,
+    "ga4_views_30d": 7,
+    "ga4_users_30d": 7,
     "ga4_engagement_sec": 474.0,
     "gsc_clicks_30d": 1,
-    "gsc_impressions_30d": 214,
+    "gsc_impressions_30d": 211,
     "gsc_ctr_pct": 0.47,
-    "gsc_avg_position": 9.4
+    "gsc_avg_position": 10.0
   },
   "clarity_ai": {
-    "ga4_views_30d": 5,
-    "ga4_users_30d": 5,
+    "ga4_views_30d": 4,
+    "ga4_users_30d": 4,
     "ga4_engagement_sec": 259.0,
     "gsc_clicks_30d": 2,
-    "gsc_impressions_30d": 238,
-    "gsc_ctr_pct": 0.84,
+    "gsc_impressions_30d": 230,
+    "gsc_ctr_pct": 0.87,
     "gsc_avg_position": 11.0
   },
   "claude_shannon": {
-    "ga4_views_30d": 26,
-    "ga4_users_30d": 22,
-    "ga4_engagement_sec": 645.0,
+    "ga4_views_30d": 24,
+    "ga4_users_30d": 20,
+    "ga4_engagement_sec": 644.0,
     "gsc_clicks_30d": 6,
-    "gsc_impressions_30d": 770,
-    "gsc_ctr_pct": 0.78,
+    "gsc_impressions_30d": 796,
+    "gsc_ctr_pct": 0.75,
     "gsc_avg_position": 13.5
   },
   "datalaria-blog": {
@@ -490,27 +490,27 @@
     "ga4_users_30d": 4,
     "ga4_engagement_sec": 7.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 81,
+    "gsc_impressions_30d": 84,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 7.1
   },
   "eu_ai_act": {
-    "ga4_views_30d": 5,
-    "ga4_users_30d": 5,
+    "ga4_views_30d": 3,
+    "ga4_users_30d": 3,
     "ga4_engagement_sec": 3.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 293,
+    "gsc_impressions_30d": 295,
     "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 11.4
+    "gsc_avg_position": 11.3
   },
   "ex_machina": {
     "ga4_views_30d": 15,
     "ga4_users_30d": 15,
     "ga4_engagement_sec": 9.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 30,
+    "gsc_impressions_30d": 34,
     "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 7.8
+    "gsc_avg_position": 7.9
   },
   "finetuning_vs_rag": {
     "ga4_views_30d": 7,
@@ -519,7 +519,7 @@
     "gsc_clicks_30d": 1,
     "gsc_impressions_30d": 257,
     "gsc_ctr_pct": 0.39,
-    "gsc_avg_position": 23.2
+    "gsc_avg_position": 23.1
   },
   "florence-nightingale": {
     "ga4_views_30d": 5,
@@ -528,32 +528,32 @@
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 206,
     "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 27.3
+    "gsc_avg_position": 27.0
   },
   "flywire": {
     "ga4_views_30d": 14,
     "ga4_users_30d": 12,
     "ga4_engagement_sec": 251.0,
-    "gsc_clicks_30d": 1,
-    "gsc_impressions_30d": 164,
-    "gsc_ctr_pct": 0.61,
+    "gsc_clicks_30d": 2,
+    "gsc_impressions_30d": 170,
+    "gsc_ctr_pct": 1.18,
     "gsc_avg_position": 6.7
   },
   "freepik": {
-    "ga4_views_30d": 14,
-    "ga4_users_30d": 14,
-    "ga4_engagement_sec": 199.0,
+    "ga4_views_30d": 9,
+    "ga4_users_30d": 9,
+    "ga4_engagement_sec": 176.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 552,
+    "gsc_impressions_30d": 541,
     "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 6.9
+    "gsc_avg_position": 7.0
   },
   "game_snake": {
     "ga4_views_30d": 23,
     "ga4_users_30d": 23,
     "ga4_engagement_sec": 9.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 125,
+    "gsc_impressions_30d": 120,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 5.9
   },
@@ -562,45 +562,45 @@
     "ga4_users_30d": 3,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 226,
+    "gsc_impressions_30d": 222,
     "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 7.6
+    "gsc_avg_position": 7.7
   },
   "graphrag": {
     "ga4_views_30d": 21,
     "ga4_users_30d": 20,
     "ga4_engagement_sec": 89.0,
     "gsc_clicks_30d": 1,
-    "gsc_impressions_30d": 136,
-    "gsc_ctr_pct": 0.74,
-    "gsc_avg_position": 10.2
+    "gsc_impressions_30d": 132,
+    "gsc_ctr_pct": 0.76,
+    "gsc_avg_position": 10.1
   },
   "halt_and_catch_fire": {
     "ga4_views_30d": 6,
     "ga4_users_30d": 6,
     "ga4_engagement_sec": 223.0,
     "gsc_clicks_30d": 4,
-    "gsc_impressions_30d": 806,
-    "gsc_ctr_pct": 0.5,
-    "gsc_avg_position": 7.3
+    "gsc_impressions_30d": 818,
+    "gsc_ctr_pct": 0.49,
+    "gsc_avg_position": 7.2
   },
   "happyrobot": {
     "ga4_views_30d": 24,
     "ga4_users_30d": 20,
-    "ga4_engagement_sec": 1303.0,
+    "ga4_engagement_sec": 1306.0,
     "gsc_clicks_30d": 3,
-    "gsc_impressions_30d": 1253,
+    "gsc_impressions_30d": 1247,
     "gsc_ctr_pct": 0.24,
-    "gsc_avg_position": 9.0
+    "gsc_avg_position": 9.3
   },
   "her": {
     "ga4_views_30d": 29,
     "ga4_users_30d": 13,
     "ga4_engagement_sec": 155.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 22,
+    "gsc_impressions_30d": 23,
     "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 17.3
+    "gsc_avg_position": 18.7
   },
   "inference_time_scaling": {
     "ga4_views_30d": 2,
@@ -612,40 +612,40 @@
     "gsc_avg_position": 0.0
   },
   "john-snow": {
-    "ga4_views_30d": 7,
-    "ga4_users_30d": 7,
-    "ga4_engagement_sec": 29.0,
+    "ga4_views_30d": 6,
+    "ga4_users_30d": 6,
+    "ga4_engagement_sec": 17.0,
     "gsc_clicks_30d": 1,
-    "gsc_impressions_30d": 132,
-    "gsc_ctr_pct": 0.76,
-    "gsc_avg_position": 7.0
+    "gsc_impressions_30d": 137,
+    "gsc_ctr_pct": 0.73,
+    "gsc_avg_position": 6.9
   },
   "john_von_neumann": {
-    "ga4_views_30d": 46,
-    "ga4_users_30d": 42,
+    "ga4_views_30d": 41,
+    "ga4_users_30d": 37,
     "ga4_engagement_sec": 659.0,
     "gsc_clicks_30d": 10,
-    "gsc_impressions_30d": 1935,
+    "gsc_impressions_30d": 1938,
     "gsc_ctr_pct": 0.52,
     "gsc_avg_position": 8.9
   },
   "kantorovich": {
     "ga4_views_30d": 42,
     "ga4_users_30d": 40,
-    "ga4_engagement_sec": 994.0,
-    "gsc_clicks_30d": 14,
-    "gsc_impressions_30d": 2964,
-    "gsc_ctr_pct": 0.47,
+    "ga4_engagement_sec": 999.0,
+    "gsc_clicks_30d": 13,
+    "gsc_impressions_30d": 3003,
+    "gsc_ctr_pct": 0.43,
     "gsc_avg_position": 7.5
   },
   "kurt_godel": {
-    "ga4_views_30d": 34,
-    "ga4_users_30d": 26,
+    "ga4_views_30d": 35,
+    "ga4_users_30d": 27,
     "ga4_engagement_sec": 3234.0,
     "gsc_clicks_30d": 1,
-    "gsc_impressions_30d": 399,
-    "gsc_ctr_pct": 0.25,
-    "gsc_avg_position": 12.3
+    "gsc_impressions_30d": 421,
+    "gsc_ctr_pct": 0.24,
+    "gsc_avg_position": 12.7
   },
   "mcp_protocol": {
     "ga4_views_30d": 11,
@@ -657,30 +657,30 @@
     "gsc_avg_position": 0.0
   },
   "multiverse_computing": {
-    "ga4_views_30d": 18,
-    "ga4_users_30d": 16,
+    "ga4_views_30d": 17,
+    "ga4_users_30d": 15,
     "ga4_engagement_sec": 249.0,
     "gsc_clicks_30d": 3,
-    "gsc_impressions_30d": 325,
+    "gsc_impressions_30d": 326,
     "gsc_ctr_pct": 0.92,
-    "gsc_avg_position": 13.2
+    "gsc_avg_position": 14.1
   },
   "netflix": {
-    "ga4_views_30d": 3,
-    "ga4_users_30d": 3,
+    "ga4_views_30d": 2,
+    "ga4_users_30d": 2,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 22,
     "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 12.9
+    "gsc_avg_position": 14.7
   },
   "nextail": {
-    "ga4_views_30d": 21,
-    "ga4_users_30d": 21,
+    "ga4_views_30d": 18,
+    "ga4_users_30d": 18,
     "ga4_engagement_sec": 127.0,
     "gsc_clicks_30d": 5,
-    "gsc_impressions_30d": 517,
-    "gsc_ctr_pct": 0.97,
+    "gsc_impressions_30d": 502,
+    "gsc_ctr_pct": 1.0,
     "gsc_avg_position": 7.3
   },
   "notebooklm-sql": {
@@ -688,7 +688,7 @@
     "ga4_users_30d": 3,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 18,
+    "gsc_impressions_30d": 19,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 4.9
   },
@@ -704,37 +704,37 @@
   "oppenheimer": {
     "ga4_views_30d": 11,
     "ga4_users_30d": 12,
-    "ga4_engagement_sec": 310.0,
+    "ga4_engagement_sec": 312.0,
     "gsc_clicks_30d": 1,
-    "gsc_impressions_30d": 80,
-    "gsc_ctr_pct": 1.25,
-    "gsc_avg_position": 6.9
+    "gsc_impressions_30d": 78,
+    "gsc_ctr_pct": 1.28,
+    "gsc_avg_position": 6.8
   },
   "pgvector_vs_vectordb": {
-    "ga4_views_30d": 10,
-    "ga4_users_30d": 10,
-    "ga4_engagement_sec": 367.0,
+    "ga4_views_30d": 11,
+    "ga4_users_30d": 11,
+    "ga4_engagement_sec": 860.0,
     "gsc_clicks_30d": 7,
-    "gsc_impressions_30d": 1295,
-    "gsc_ctr_pct": 0.54,
-    "gsc_avg_position": 9.4
+    "gsc_impressions_30d": 1335,
+    "gsc_ctr_pct": 0.52,
+    "gsc_avg_position": 9.6
   },
   "prompt_injection": {
     "ga4_views_30d": 18,
     "ga4_users_30d": 16,
     "ga4_engagement_sec": 14.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 58,
+    "gsc_impressions_30d": 62,
     "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 55.0
+    "gsc_avg_position": 53.8
   },
   "ravenpack": {
-    "ga4_views_30d": 44,
-    "ga4_users_30d": 38,
-    "ga4_engagement_sec": 1744.0,
+    "ga4_views_30d": 42,
+    "ga4_users_30d": 39,
+    "ga4_engagement_sec": 1745.0,
     "gsc_clicks_30d": 3,
-    "gsc_impressions_30d": 489,
-    "gsc_ctr_pct": 0.61,
+    "gsc_impressions_30d": 497,
+    "gsc_ctr_pct": 0.6,
     "gsc_avg_position": 6.3
   },
   "sdd_vs_vibe_coding": {
@@ -742,31 +742,31 @@
     "ga4_users_30d": 38,
     "ga4_engagement_sec": 809.0,
     "gsc_clicks_30d": 4,
-    "gsc_impressions_30d": 279,
-    "gsc_ctr_pct": 1.43,
-    "gsc_avg_position": 9.0
+    "gsc_impressions_30d": 297,
+    "gsc_ctr_pct": 1.35,
+    "gsc_avg_position": 8.0
   },
   "silicon_valley": {
-    "ga4_views_30d": 26,
+    "ga4_views_30d": 24,
     "ga4_users_30d": 23,
-    "ga4_engagement_sec": 418.0,
+    "ga4_engagement_sec": 424.0,
     "gsc_clicks_30d": 7,
-    "gsc_impressions_30d": 528,
-    "gsc_ctr_pct": 1.33,
+    "gsc_impressions_30d": 542,
+    "gsc_ctr_pct": 1.29,
     "gsc_avg_position": 6.1
   },
   "submer": {
     "ga4_views_30d": 20,
-    "ga4_users_30d": 18,
+    "ga4_users_30d": 19,
     "ga4_engagement_sec": 456.0,
     "gsc_clicks_30d": 3,
-    "gsc_impressions_30d": 216,
-    "gsc_ctr_pct": 1.39,
-    "gsc_avg_position": 6.9
+    "gsc_impressions_30d": 228,
+    "gsc_ctr_pct": 1.32,
+    "gsc_avg_position": 7.0
   },
   "the-goal": {
-    "ga4_views_30d": 12,
-    "ga4_users_30d": 12,
+    "ga4_views_30d": 11,
+    "ga4_users_30d": 11,
     "ga4_engagement_sec": 8.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
@@ -778,61 +778,61 @@
     "ga4_users_30d": 8,
     "ga4_engagement_sec": 109.0,
     "gsc_clicks_30d": 3,
-    "gsc_impressions_30d": 530,
-    "gsc_ctr_pct": 0.57,
-    "gsc_avg_position": 7.7
+    "gsc_impressions_30d": 534,
+    "gsc_ctr_pct": 0.56,
+    "gsc_avg_position": 7.9
   },
   "thomas_bayes": {
     "ga4_views_30d": 5,
     "ga4_users_30d": 5,
     "ga4_engagement_sec": 2.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 70,
+    "gsc_impressions_30d": 75,
     "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 12.2
+    "gsc_avg_position": 11.7
   },
   "wallapop": {
     "ga4_views_30d": 17,
-    "ga4_users_30d": 16,
+    "ga4_users_30d": 15,
     "ga4_engagement_sec": 408.0,
     "gsc_clicks_30d": 14,
-    "gsc_impressions_30d": 647,
-    "gsc_ctr_pct": 2.16,
-    "gsc_avg_position": 6.5
+    "gsc_impressions_30d": 617,
+    "gsc_ctr_pct": 2.27,
+    "gsc_avg_position": 6.6
   },
   "Estadistica-descriptiva": {
     "ga4_views_30d": 1,
     "ga4_users_30d": 1,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 37,
+    "gsc_impressions_30d": 38,
     "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 38.5
+    "gsc_avg_position": 37.6
   },
   "app-openweather_part1_backend": {
-    "ga4_views_30d": 25,
-    "ga4_users_30d": 25,
+    "ga4_views_30d": 22,
+    "ga4_users_30d": 22,
     "ga4_engagement_sec": 17.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 153,
+    "gsc_impressions_30d": 156,
     "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 12.8
+    "gsc_avg_position": 12.7
   },
   "economia_oculta_ia": {
     "ga4_views_30d": 15,
     "ga4_users_30d": 11,
     "ga4_engagement_sec": 29.0,
     "gsc_clicks_30d": 3,
-    "gsc_impressions_30d": 418,
-    "gsc_ctr_pct": 0.72,
+    "gsc_impressions_30d": 396,
+    "gsc_ctr_pct": 0.76,
     "gsc_avg_position": 8.8
   },
   "evaluacion_agentes_ia": {
-    "ga4_views_30d": 25,
-    "ga4_users_30d": 24,
+    "ga4_views_30d": 24,
+    "ga4_users_30d": 23,
     "ga4_engagement_sec": 24.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 278,
+    "gsc_impressions_30d": 272,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 13.5
   },
@@ -850,9 +850,9 @@
     "ga4_users_30d": 4,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 11,
+    "gsc_impressions_30d": 10,
     "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 6.6
+    "gsc_avg_position": 6.3
   },
   "ia_agents_part1": {
     "ga4_views_30d": 6,
@@ -895,45 +895,45 @@
     "ga4_users_30d": 4,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 24,
+    "gsc_impressions_30d": 25,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 15.2
   },
   "ia_agents_part6": {
-    "ga4_views_30d": 1,
-    "ga4_users_30d": 1,
-    "ga4_engagement_sec": 0.0,
+    "ga4_views_30d": 2,
+    "ga4_users_30d": 2,
+    "ga4_engagement_sec": 446.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 0.0
   },
   "ia_agents_part7": {
-    "ga4_views_30d": 3,
-    "ga4_users_30d": 3,
-    "ga4_engagement_sec": 4.0,
+    "ga4_views_30d": 5,
+    "ga4_users_30d": 5,
+    "ga4_engagement_sec": 6.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 65,
+    "gsc_impressions_30d": 63,
     "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 9.4
+    "gsc_avg_position": 9.3
   },
   "ia_agents_part8": {
     "ga4_views_30d": 4,
     "ga4_users_30d": 4,
     "ga4_engagement_sec": 59.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 37,
+    "gsc_impressions_30d": 38,
     "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 10.1
+    "gsc_avg_position": 11.3
   },
   "ia_agents_part9": {
     "ga4_views_30d": 8,
     "ga4_users_30d": 8,
     "ga4_engagement_sec": 7.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 18,
+    "gsc_impressions_30d": 17,
     "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 12.6
+    "gsc_avg_position": 12.9
   },
   "kilometro-0-por-que-nace-datalaria": {
     "ga4_views_30d": 1,
@@ -949,9 +949,9 @@
     "ga4_users_30d": 29,
     "ga4_engagement_sec": 492.0,
     "gsc_clicks_30d": 1,
-    "gsc_impressions_30d": 35,
-    "gsc_ctr_pct": 2.86,
-    "gsc_avg_position": 5.7
+    "gsc_impressions_30d": 36,
+    "gsc_ctr_pct": 2.78,
+    "gsc_avg_position": 5.6
   },
   "mlops_para_ingenieros": {
     "ga4_views_30d": 6,
@@ -981,18 +981,18 @@
     "gsc_avg_position": 12.6
   },
   "obs_parte2_tactica": {
-    "ga4_views_30d": 3,
-    "ga4_users_30d": 3,
+    "ga4_views_30d": 2,
+    "ga4_users_30d": 2,
     "ga4_engagement_sec": 0.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 27,
+    "gsc_impressions_30d": 24,
     "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 11.0
+    "gsc_avg_position": 11.9
   },
   "obs_parte3_arquitectura": {
-    "ga4_views_30d": 13,
-    "ga4_users_30d": 13,
-    "ga4_engagement_sec": 4.0,
+    "ga4_views_30d": 14,
+    "ga4_users_30d": 14,
+    "ga4_engagement_sec": 24.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 6,
     "gsc_ctr_pct": 0.0,
@@ -1003,9 +1003,9 @@
     "ga4_users_30d": 4,
     "ga4_engagement_sec": 4.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 28,
+    "gsc_impressions_30d": 26,
     "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 13.0
+    "gsc_avg_position": 13.2
   },
   "obs_parte5_radar": {
     "ga4_views_30d": 13,
@@ -1035,9 +1035,9 @@
     "gsc_avg_position": 18.5
   },
   "rag_antipatrones": {
-    "ga4_views_30d": 9,
-    "ga4_users_30d": 9,
-    "ga4_engagement_sec": 3.0,
+    "ga4_views_30d": 10,
+    "ga4_users_30d": 10,
+    "ga4_engagement_sec": 7.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 20,
     "gsc_ctr_pct": 0.0,
@@ -1075,18 +1075,18 @@
     "ga4_users_30d": 12,
     "ga4_engagement_sec": 40.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 58,
+    "gsc_impressions_30d": 56,
     "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 6.7
+    "gsc_avg_position": 6.6
   },
   "sop-ingenieria-parte5-agentes_autonomos": {
     "ga4_views_30d": 5,
     "ga4_users_30d": 5,
     "ga4_engagement_sec": 4.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 12,
+    "gsc_impressions_30d": 28,
     "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 8.9
+    "gsc_avg_position": 7.8
   },
   "sop_ingenieria-higiene-datos": {
     "ga4_views_30d": 2,
@@ -1098,40 +1098,40 @@
     "gsc_avg_position": 18.7
   },
   "stack_productividad_2026": {
-    "ga4_views_30d": 77,
-    "ga4_users_30d": 5,
-    "ga4_engagement_sec": 8.0,
+    "ga4_views_30d": 91,
+    "ga4_users_30d": 7,
+    "ga4_engagement_sec": 454.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 57,
+    "gsc_impressions_30d": 56,
     "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 18.7
+    "gsc_avg_position": 18.2
   },
   "conversor": {
     "ga4_views_30d": 66,
     "ga4_users_30d": 12,
     "ga4_engagement_sec": 173.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 353,
+    "gsc_impressions_30d": 379,
     "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 8.8
+    "gsc_avg_position": 8.9
   },
   "conversor-v0.5.0": {
     "ga4_views_30d": 66,
     "ga4_users_30d": 12,
     "ga4_engagement_sec": 173.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 353,
+    "gsc_impressions_30d": 379,
     "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 8.8
+    "gsc_avg_position": 8.9
   },
   "conversor-v0.1.0": {
     "ga4_views_30d": 66,
     "ga4_users_30d": 12,
     "ga4_engagement_sec": 173.0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 353,
+    "gsc_impressions_30d": 379,
     "gsc_ctr_pct": 0.0,
-    "gsc_avg_position": 8.8
+    "gsc_avg_position": 8.9
   },
   "flashcards": {
     "ga4_views_30d": 12,
@@ -1170,63 +1170,63 @@
     "gsc_avg_position": 0.0
   },
   "lifeops": {
-    "ga4_views_30d": 16,
-    "ga4_users_30d": 7,
-    "ga4_engagement_sec": 154.0,
+    "ga4_views_30d": 17,
+    "ga4_users_30d": 8,
+    "ga4_engagement_sec": 441.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 11,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 11.8
   },
   "lifeops-v1.1.1": {
-    "ga4_views_30d": 16,
-    "ga4_users_30d": 7,
-    "ga4_engagement_sec": 154.0,
+    "ga4_views_30d": 17,
+    "ga4_users_30d": 8,
+    "ga4_engagement_sec": 441.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 11,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 11.8
   },
   "lifeops-v1.1.0": {
-    "ga4_views_30d": 16,
-    "ga4_users_30d": 7,
-    "ga4_engagement_sec": 154.0,
+    "ga4_views_30d": 17,
+    "ga4_users_30d": 8,
+    "ga4_engagement_sec": 441.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 11,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 11.8
   },
   "lifeops-v1.0.1": {
-    "ga4_views_30d": 16,
-    "ga4_users_30d": 7,
-    "ga4_engagement_sec": 154.0,
+    "ga4_views_30d": 17,
+    "ga4_users_30d": 8,
+    "ga4_engagement_sec": 441.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 11,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 11.8
   },
   "lifeops-v0.4.0": {
-    "ga4_views_30d": 16,
-    "ga4_users_30d": 7,
-    "ga4_engagement_sec": 154.0,
+    "ga4_views_30d": 17,
+    "ga4_users_30d": 8,
+    "ga4_engagement_sec": 441.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 11,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 11.8
   },
   "lifeops-v0.3.0": {
-    "ga4_views_30d": 16,
-    "ga4_users_30d": 7,
-    "ga4_engagement_sec": 154.0,
+    "ga4_views_30d": 17,
+    "ga4_users_30d": 8,
+    "ga4_engagement_sec": 441.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 11,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 11.8
   },
   "lifeops-v0.1.0": {
-    "ga4_views_30d": 16,
-    "ga4_users_30d": 7,
-    "ga4_engagement_sec": 154.0,
+    "ga4_views_30d": 17,
+    "ga4_users_30d": 8,
+    "ga4_engagement_sec": 441.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 11,
     "gsc_ctr_pct": 0.0,
@@ -1237,67 +1237,67 @@
     "ga4_users_30d": 10,
     "ga4_engagement_sec": 138.0,
     "gsc_clicks_30d": 1,
-    "gsc_impressions_30d": 9,
-    "gsc_ctr_pct": 11.11,
-    "gsc_avg_position": 7.7
+    "gsc_impressions_30d": 10,
+    "gsc_ctr_pct": 10.0,
+    "gsc_avg_position": 8.0
   },
   "maths-v2.3.0": {
     "ga4_views_30d": 20,
     "ga4_users_30d": 10,
     "ga4_engagement_sec": 138.0,
     "gsc_clicks_30d": 1,
-    "gsc_impressions_30d": 9,
-    "gsc_ctr_pct": 11.11,
-    "gsc_avg_position": 7.7
+    "gsc_impressions_30d": 10,
+    "gsc_ctr_pct": 10.0,
+    "gsc_avg_position": 8.0
   },
   "maths-v2.2.0": {
     "ga4_views_30d": 20,
     "ga4_users_30d": 10,
     "ga4_engagement_sec": 138.0,
     "gsc_clicks_30d": 1,
-    "gsc_impressions_30d": 9,
-    "gsc_ctr_pct": 11.11,
-    "gsc_avg_position": 7.7
+    "gsc_impressions_30d": 10,
+    "gsc_ctr_pct": 10.0,
+    "gsc_avg_position": 8.0
   },
   "maths-v2.1.0": {
     "ga4_views_30d": 20,
     "ga4_users_30d": 10,
     "ga4_engagement_sec": 138.0,
     "gsc_clicks_30d": 1,
-    "gsc_impressions_30d": 9,
-    "gsc_ctr_pct": 11.11,
-    "gsc_avg_position": 7.7
+    "gsc_impressions_30d": 10,
+    "gsc_ctr_pct": 10.0,
+    "gsc_avg_position": 8.0
   },
   "maths-v2.0.0": {
     "ga4_views_30d": 20,
     "ga4_users_30d": 10,
     "ga4_engagement_sec": 138.0,
     "gsc_clicks_30d": 1,
-    "gsc_impressions_30d": 9,
-    "gsc_ctr_pct": 11.11,
-    "gsc_avg_position": 7.7
+    "gsc_impressions_30d": 10,
+    "gsc_ctr_pct": 10.0,
+    "gsc_avg_position": 8.0
   },
   "maths-v0.5.0": {
     "ga4_views_30d": 20,
     "ga4_users_30d": 10,
     "ga4_engagement_sec": 138.0,
     "gsc_clicks_30d": 1,
-    "gsc_impressions_30d": 9,
-    "gsc_ctr_pct": 11.11,
-    "gsc_avg_position": 7.7
+    "gsc_impressions_30d": 10,
+    "gsc_ctr_pct": 10.0,
+    "gsc_avg_position": 8.0
   },
   "maths-v0.1.0": {
     "ga4_views_30d": 20,
     "ga4_users_30d": 10,
     "ga4_engagement_sec": 138.0,
     "gsc_clicks_30d": 1,
-    "gsc_impressions_30d": 9,
-    "gsc_ctr_pct": 11.11,
-    "gsc_avg_position": 7.7
+    "gsc_impressions_30d": 10,
+    "gsc_ctr_pct": 10.0,
+    "gsc_avg_position": 8.0
   },
   "obs-management": {
-    "ga4_views_30d": 19,
-    "ga4_users_30d": 7,
+    "ga4_views_30d": 23,
+    "ga4_users_30d": 8,
     "ga4_engagement_sec": 74.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 26,
@@ -1305,8 +1305,8 @@
     "gsc_avg_position": 5.6
   },
   "obs-management-v1.0.1": {
-    "ga4_views_30d": 19,
-    "ga4_users_30d": 7,
+    "ga4_views_30d": 23,
+    "ga4_users_30d": 8,
     "ga4_engagement_sec": 74.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 26,
@@ -1314,9 +1314,9 @@
     "gsc_avg_position": 5.6
   },
   "pulse": {
-    "ga4_views_30d": 104,
+    "ga4_views_30d": 105,
     "ga4_users_30d": 5,
-    "ga4_engagement_sec": 308.0,
+    "ga4_engagement_sec": 322.0,
     "gsc_clicks_30d": 0,
     "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
@@ -1399,90 +1399,90 @@
     "ga4_users_30d": 27,
     "ga4_engagement_sec": 399.0,
     "gsc_clicks_30d": 3,
-    "gsc_impressions_30d": 75,
-    "gsc_ctr_pct": 4.0,
-    "gsc_avg_position": 18.0
+    "gsc_impressions_30d": 85,
+    "gsc_ctr_pct": 3.53,
+    "gsc_avg_position": 17.8
   },
   "weather-v3.3.0": {
     "ga4_views_30d": 83,
     "ga4_users_30d": 27,
     "ga4_engagement_sec": 399.0,
     "gsc_clicks_30d": 3,
-    "gsc_impressions_30d": 75,
-    "gsc_ctr_pct": 4.0,
-    "gsc_avg_position": 18.0
+    "gsc_impressions_30d": 85,
+    "gsc_ctr_pct": 3.53,
+    "gsc_avg_position": 17.8
   },
   "weather-v3.2.0": {
     "ga4_views_30d": 83,
     "ga4_users_30d": 27,
     "ga4_engagement_sec": 399.0,
     "gsc_clicks_30d": 3,
-    "gsc_impressions_30d": 75,
-    "gsc_ctr_pct": 4.0,
-    "gsc_avg_position": 18.0
+    "gsc_impressions_30d": 85,
+    "gsc_ctr_pct": 3.53,
+    "gsc_avg_position": 17.8
   },
   "weather-v3.1.0": {
     "ga4_views_30d": 83,
     "ga4_users_30d": 27,
     "ga4_engagement_sec": 399.0,
     "gsc_clicks_30d": 3,
-    "gsc_impressions_30d": 75,
-    "gsc_ctr_pct": 4.0,
-    "gsc_avg_position": 18.0
+    "gsc_impressions_30d": 85,
+    "gsc_ctr_pct": 3.53,
+    "gsc_avg_position": 17.8
   },
   "weather-v3.0.0": {
     "ga4_views_30d": 83,
     "ga4_users_30d": 27,
     "ga4_engagement_sec": 399.0,
     "gsc_clicks_30d": 3,
-    "gsc_impressions_30d": 75,
-    "gsc_ctr_pct": 4.0,
-    "gsc_avg_position": 18.0
+    "gsc_impressions_30d": 85,
+    "gsc_ctr_pct": 3.53,
+    "gsc_avg_position": 17.8
   },
   "weather-v2.0.0": {
     "ga4_views_30d": 83,
     "ga4_users_30d": 27,
     "ga4_engagement_sec": 399.0,
     "gsc_clicks_30d": 3,
-    "gsc_impressions_30d": 75,
-    "gsc_ctr_pct": 4.0,
-    "gsc_avg_position": 18.0
+    "gsc_impressions_30d": 85,
+    "gsc_ctr_pct": 3.53,
+    "gsc_avg_position": 17.8
   },
   "weather-v1.0.0": {
     "ga4_views_30d": 83,
     "ga4_users_30d": 27,
     "ga4_engagement_sec": 399.0,
     "gsc_clicks_30d": 3,
-    "gsc_impressions_30d": 75,
-    "gsc_ctr_pct": 4.0,
-    "gsc_avg_position": 18.0
+    "gsc_impressions_30d": 85,
+    "gsc_ctr_pct": 3.53,
+    "gsc_avg_position": 17.8
   },
   "weather-v0.3.0": {
     "ga4_views_30d": 83,
     "ga4_users_30d": 27,
     "ga4_engagement_sec": 399.0,
     "gsc_clicks_30d": 3,
-    "gsc_impressions_30d": 75,
-    "gsc_ctr_pct": 4.0,
-    "gsc_avg_position": 18.0
+    "gsc_impressions_30d": 85,
+    "gsc_ctr_pct": 3.53,
+    "gsc_avg_position": 17.8
   },
   "weather-v0.2.0": {
     "ga4_views_30d": 83,
     "ga4_users_30d": 27,
     "ga4_engagement_sec": 399.0,
     "gsc_clicks_30d": 3,
-    "gsc_impressions_30d": 75,
-    "gsc_ctr_pct": 4.0,
-    "gsc_avg_position": 18.0
+    "gsc_impressions_30d": 85,
+    "gsc_ctr_pct": 3.53,
+    "gsc_avg_position": 17.8
   },
   "weather-v0.1.0": {
     "ga4_views_30d": 83,
     "ga4_users_30d": 27,
     "ga4_engagement_sec": 399.0,
     "gsc_clicks_30d": 3,
-    "gsc_impressions_30d": 75,
-    "gsc_ctr_pct": 4.0,
-    "gsc_avg_position": 18.0
+    "gsc_impressions_30d": 85,
+    "gsc_ctr_pct": 3.53,
+    "gsc_avg_position": 17.8
   },
   "mega-bundle": {
     "ga4_views_30d": 0,
@@ -1656,6 +1656,15 @@
     "gsc_avg_position": 0.0
   },
   "pack-sdd": {
+    "ga4_views_30d": 0,
+    "ga4_users_30d": 0,
+    "ga4_engagement_sec": 0.0,
+    "gsc_clicks_30d": 0,
+    "gsc_impressions_30d": 0,
+    "gsc_ctr_pct": 0.0,
+    "gsc_avg_position": 0.0
+  },
+  "pack-obs": {
     "ga4_views_30d": 0,
     "ga4_users_30d": 0,
     "ga4_engagement_sec": 0.0,
