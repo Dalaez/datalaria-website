@@ -135,8 +135,8 @@
     "gsc_top_queries": []
   },
   "quantitative-swot-tows-matrix": {
-    "ga4_views_30d": 25,
-    "ga4_users_30d": 23,
+    "ga4_views_30d": 26,
+    "ga4_users_30d": 24,
     "ga4_engagement_sec": 38.0,
     "ga4_views_es_30d": 5,
     "ga4_views_en_30d": 21,
@@ -452,7 +452,7 @@
     "ga4_views_en_30d": 0,
     "ga4_views_prev_30d": 0,
     "gsc_clicks_30d": 0,
-    "gsc_impressions_30d": 1,
+    "gsc_impressions_30d": 0,
     "gsc_ctr_pct": 0.0,
     "gsc_avg_position": 0.0,
     "gsc_clicks_prev_30d": 0,
@@ -707,10 +707,10 @@
     ]
   },
   "norbert_wiener": {
-    "ga4_views_30d": 57,
-    "ga4_users_30d": 25,
+    "ga4_views_30d": 58,
+    "ga4_users_30d": 26,
     "ga4_engagement_sec": 660.0,
-    "ga4_views_es_30d": 37,
+    "ga4_views_es_30d": 38,
     "ga4_views_en_30d": 20,
     "ga4_views_prev_30d": 0,
     "gsc_clicks_30d": 0,
@@ -2974,10 +2974,10 @@
     ]
   },
   "her": {
-    "ga4_views_30d": 29,
-    "ga4_users_30d": 13,
-    "ga4_engagement_sec": 155.0,
-    "ga4_views_es_30d": 19,
+    "ga4_views_30d": 30,
+    "ga4_users_30d": 14,
+    "ga4_engagement_sec": 210.0,
+    "ga4_views_es_30d": 20,
     "ga4_views_en_30d": 10,
     "ga4_views_prev_30d": 0,
     "gsc_clicks_30d": 0,
@@ -5653,10 +5653,10 @@
     ]
   },
   "obs_parte6_fastapi": {
-    "ga4_views_30d": 3,
-    "ga4_users_30d": 3,
-    "ga4_engagement_sec": 0.0,
-    "ga4_views_es_30d": 0,
+    "ga4_views_30d": 4,
+    "ga4_users_30d": 4,
+    "ga4_engagement_sec": 5.0,
+    "ga4_views_es_30d": 1,
     "ga4_views_en_30d": 3,
     "ga4_views_prev_30d": 1,
     "gsc_clicks_30d": 0,

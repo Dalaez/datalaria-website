@@ -1,13 +1,13 @@
 {
   "version": "1.3.0",
-  "generated_at": "2026-11-23T20:44:26.310403Z",
+  "generated_at": "2026-11-23T22:06:15.508914Z",
   "visibility": "private",
   "total_published_posts": 109,
   "total_scheduled_posts": 16,
-  "total_30d_post_views": 2159,
+  "total_30d_post_views": 2162,
   "median_post_views": 11.0,
   "p75_post_views": 24.0,
-  "monthly_growth_yoy_pct": 104400.0,
+  "monthly_growth_yoy_pct": 1981.6,
   "total_30d_gsc_clicks": 118,
   "total_30d_gsc_impressions": 20482,
   "gsc_clicks_prev_30d": 74,
@@ -16,7 +16,7 @@
   "gsc_brand_impressions_30d": 701,
   "avg_gsc_ctr_pct": 0.58,
   "avg_gsc_position": 10.3,
-  "en_views_share_pct": 52.4,
+  "en_views_share_pct": 52.3,
   "en_gsc_impressions_share_pct": 72.3,
   "category_performance": [
     {
@@ -38,10 +38,10 @@
     {
       "category": "Pioneros y Referentes",
       "published_posts": 13,
-      "total_views_30d": 310,
-      "avg_views_per_post": 23.8,
-      "total_users_30d": 252,
-      "avg_engagement_sec": 28.8,
+      "total_views_30d": 311,
+      "avg_views_per_post": 23.9,
+      "total_users_30d": 253,
+      "avg_engagement_sec": 28.7,
       "monetized_posts": 8,
       "monetization_coverage_pct": 61.5,
       "editorial_roi_score": 64.1,
@@ -49,7 +49,7 @@
       "total_gsc_impressions_30d": 8067,
       "total_gsc_clicks_30d": 37,
       "avg_gsc_ctr_pct": 0.46,
-      "en_traffic_share_pct": 61.3
+      "en_traffic_share_pct": 61.1
     },
     {
       "category": "Startups",
@@ -58,9 +58,9 @@
       "avg_views_per_post": 14.0,
       "total_users_30d": 178,
       "avg_engagement_sec": 34.3,
-      "monetized_posts": 5,
-      "monetization_coverage_pct": 35.7,
-      "editorial_roi_score": 45.7,
+      "monetized_posts": 6,
+      "monetization_coverage_pct": 42.9,
+      "editorial_roi_score": 47.8,
       "social_traction_score": 4.3,
       "total_gsc_impressions_30d": 4814,
       "total_gsc_clicks_30d": 36,
@@ -70,34 +70,34 @@
     {
       "category": "IA, Ingeniería y Proyectos",
       "published_posts": 53,
-      "total_views_30d": 955,
+      "total_views_30d": 956,
       "avg_views_per_post": 18.0,
-      "total_users_30d": 472,
-      "avg_engagement_sec": 12.8,
+      "total_users_30d": 473,
+      "avg_engagement_sec": 12.7,
       "monetized_posts": 28,
       "monetization_coverage_pct": 52.8,
-      "editorial_roi_score": 45.1,
+      "editorial_roi_score": 45.0,
       "social_traction_score": 5.2,
       "total_gsc_impressions_30d": 4373,
       "total_gsc_clicks_30d": 20,
       "avg_gsc_ctr_pct": 0.46,
-      "en_traffic_share_pct": 53.1
+      "en_traffic_share_pct": 53.0
     },
     {
       "category": "Cultura Tech y Media",
       "published_posts": 12,
-      "total_views_30d": 128,
-      "avg_views_per_post": 10.7,
-      "total_users_30d": 110,
-      "avg_engagement_sec": 8.7,
+      "total_views_30d": 129,
+      "avg_views_per_post": 10.8,
+      "total_users_30d": 111,
+      "avg_engagement_sec": 9.1,
       "monetized_posts": 5,
       "monetization_coverage_pct": 41.7,
-      "editorial_roi_score": 30.6,
+      "editorial_roi_score": 30.9,
       "social_traction_score": 4.0,
       "total_gsc_impressions_30d": 2097,
       "total_gsc_clicks_30d": 14,
       "avg_gsc_ctr_pct": 0.67,
-      "en_traffic_share_pct": 65.6
+      "en_traffic_share_pct": 65.1
     }
   ],
   "quick_wins_ctr": [
@@ -105,7 +105,7 @@
       "id": "kantorovich",
       "slug": "kantorovich",
       "title_es": "Leonid Kantorovich: El Matemático que Desafió a Stalin con la Programación Lineal",
-      "title_en": "Leonid Kantorovich: The Mathematician Who Challenged Stalin with Linear Programming",
+      "title_en": "Leonid Kantorovich: The Soviet Nobel Laureate Who Invented Linear Programming",
       "category": "Pioneros y Referentes",
       "ga4_views_30d": 43,
       "ga4_users_30d": 41,
@@ -161,7 +161,7 @@
       "priority_score": 50.3,
       "recommended_title_es": "HappyRobot: Cómo los Agentes de Voz Autónomos Conquistaron la Logística Global",
       "recommended_title_en": "HappyRobot: How Autonomous Voice Agents Conquered Global Logistics",
-      "recommended_desc_es": "Arquitectura de HappyRobot (unicornio de 1.200M$): cómo sus agentes de voz IA con latencia sub-500ms superan a otros sistemas conversacionales y automatizan llamadas logísticas en gigantes como DHL, Schneider y Uber Freight.",
+      "recommended_desc_es": "Arquitectura de HappyRobot (1.200M$): agentes de voz IA con latencia sub-500ms que automatizan llamadas logísticas en gigantes como DHL y Uber Freight.",
       "top_query": "happyrobot vs. other ai voice agents"
     },
     {
@@ -182,7 +182,7 @@
       "priority_score": 46.2,
       "recommended_title_es": "PostgreSQL con pgvector vs Vector DBs: Por Qué Casi Nadie Necesita Pinecone",
       "recommended_title_en": "PostgreSQL with pgvector vs Vector DBs: Why Almost Nobody Needs Pinecone",
-      "recommended_desc_es": "¿Necesitas una Vector DB como Pinecone o Qdrant? Analizamos benchmarks HNSW en pgvector, costes frente a bases dedicadas y por qué PostgreSQL puro con integridad transaccional resuelve la búsqueda vectorial en el 95% de casos.",
+      "recommended_desc_es": "¿Necesitas una Vector DB como Pinecone o Qdrant? Analizamos costes, benchmarks HNSW y por qué PostgreSQL con pgvector resuelve la búsqueda en el 95% de casos.",
       "top_query": "pgvector"
     },
     {
@@ -203,7 +203,7 @@
       "priority_score": 41.3,
       "recommended_title_es": "Halt and Catch Fire: Significado, Historia y por Qué Clavó la Ingeniería de Software",
       "recommended_title_en": "Halt and Catch Fire: Meaning, History & Why the Cult Series Nailed Software Engineering",
-      "recommended_desc_es": "Significado, historia y análisis técnico de 'Halt and Catch Fire': la obra de culto que retrató la ingeniería inversa de la BIOS, el nacimiento del PC clónico y por qué la mejor arquitectura técnica rara vez gana en el mercado.",
+      "recommended_desc_es": "Significado, historia y análisis técnico de Halt and Catch Fire: ingeniería inversa de la BIOS, el clon de IBM y por qué la mejor arquitectura a veces pierde.",
       "top_query": "halt and catch fire meaning"
     },
     {
@@ -224,7 +224,7 @@
       "priority_score": 39.1,
       "recommended_title_es": "Wallapop: La Ingeniería Invisible detrás del Mayor Marketplace Circular de Europa",
       "recommended_title_en": "Wallapop: The Invisible Engineering Behind Europe's Largest Circular Marketplace",
-      "recommended_desc_es": "Ingeniería detrás de Wallapop, marketplace circular líder en Europa: arquitectura de Machine Learning en tiempo real, búsqueda visual multimodal, algoritmos de pricing dinámico, grafos antifraude y adquisición por NAVER.",
+      "recommended_desc_es": "La ingeniería invisible detrás de Wallapop: machine learning en tiempo real, búsqueda visual multimodal, algoritmos antifraude y adquisición por NAVER.",
       "top_query": "wallapop"
     },
     {
@@ -245,7 +245,7 @@
       "priority_score": 37.6,
       "recommended_title_es": "Freepik: El Gigante que Domó la IA y Transformó las Operaciones Creativas Globales",
       "recommended_title_en": "Freepik: How the Málaga Giant Tamed AI to Revolutionize Visual Operations Worldwide",
-      "recommended_desc_es": "Análisis de Freepik y su transformación con IA visual: cómo empresas medianas y agencias modernizan sus operaciones creativas, reducen costes operativos y escalan contenido visual con flujos automatizados de IA generativa.",
+      "recommended_desc_es": "Cómo Freepik domó la IA generativa: reducción de costes operativos, modelos visuales propios y automatización creativa para empresas medianas y agencias.",
       "top_query": "does freepik work well for mid-market companies modernizing their operations and reducing operational costs in a competitive landscape?"
     },
     {
@@ -266,7 +266,7 @@
       "priority_score": 37.0,
       "recommended_title_es": "Silicon Valley y el Dilema de PiperNet: La Profecía de la IA y Agentes Reales",
       "recommended_title_en": "Silicon Valley and the PiperNet Dilemma: Runaway AI and Real-World Agent Risks",
-      "recommended_desc_es": "Análisis técnico de Silicon Valley: de la compresión Middle-Out y descentralización P2P en PiperNet a lecciones reales de arquitectura de software, deuda técnica y el problema de alineamiento con agentes de IA autónomos.",
+      "recommended_desc_es": "Silicon Valley y PiperNet: compresión Middle-Out, arquitectura P2P descentralizada y las lecciones proféticas sobre agentes de IA autónomos descontrolados.",
       "top_query": "pipernet"
     },
     {
@@ -287,14 +287,14 @@
       "priority_score": 36.7,
       "recommended_title_es": "RavenPack: De la Analítica de Noticias en Marbella al Cerebro de Wall Street",
       "recommended_title_en": "RavenPack: From News Analytics in Marbella to Wall Street's Quantitative Brain",
-      "recommended_desc_es": "Análisis de RavenPack frente a terminales como Bloomberg: cómo su motor de NLP y datos alternativos convierte noticias en tiempo real en señales de sentimiento financiero para hedge funds cuantitativos y trading algorítmico.",
+      "recommended_desc_es": "RavenPack vs Bloomberg: cómo su motor de NLP y datos alternativos en tiempo real convierte noticias financieras en señales para trading algorítmico y fondos.",
       "top_query": "ravenpack vs bloomberg"
     },
     {
       "id": "the_thinking_game",
       "slug": "the_thinking_game",
-      "title_es": "The Thinking Game: Cómo DeepMind Convirtió los Videojuegos en Ciencia Moderna",
-      "title_en": "The Thinking Game: How Google DeepMind Turned Video Games into Science",
+      "title_es": "The Thinking Game: El Documental de DeepMind, Demis Hassabis, AlphaFold y la AGI",
+      "title_en": "The Thinking Game: Inside the DeepMind Documentary, Demis Hassabis & AlphaFold",
       "category": "Cultura Tech y Media",
       "ga4_views_30d": 9,
       "ga4_users_30d": 8,
@@ -306,9 +306,9 @@
       "seo_issues": [],
       "opportunity_type": "gsc_position_4_20",
       "priority_score": 35.5,
-      "recommended_title_es": "The Thinking Game: Cómo DeepMind Convirtió los Videojuegos en Ciencia Moderna",
-      "recommended_title_en": "The Thinking Game: How Google DeepMind Turned Video Games into Science",
-      "recommended_desc_es": "Análisis del documental 'The Thinking Game': la odisea de Demis Hassabis y Google DeepMind, desde dominar Atari y AlphaGo hasta revolucionar la biología con AlphaFold y liderar la carrera hacia la AGI.",
+      "recommended_title_es": "The Thinking Game: El Documental de DeepMind, Demis Hassabis, AlphaFold y la AGI",
+      "recommended_title_en": "The Thinking Game: Inside the DeepMind Documentary, Demis Hassabis & AlphaFold",
+      "recommended_desc_es": "Análisis de 'The Thinking Game': el documental sobre Demis Hassabis y DeepMind, de dominar videojuegos a resolver el plegamiento de proteínas con AlphaFold.",
       "top_query": "the thinking game"
     },
     {
@@ -329,14 +329,14 @@
       "priority_score": 34.4,
       "recommended_title_es": "Nextail: Cómo la IA Prescriptiva de una Startup Española Derrota a Excel en Retail",
       "recommended_title_en": "Nextail: How a Spanish Startup's Prescriptive AI Is Defeating Excel in Fashion Retail",
-      "recommended_desc_es": "Cómo Nextail optimiza el inventario en retail con IA prescriptiva e hiperdistribución ágil: de la experiencia en Zara a sustituir hojas de cálculo por modelos estocásticos que maximizan ventas a precio completo.",
+      "recommended_desc_es": "Cómo Nextail optimiza inventarios en retail con IA prescriptiva: de la experiencia en Zara a sustituir hojas de cálculo por modelos de demanda ágiles.",
       "top_query": "nextail"
     },
     {
       "id": "abraham_wald",
       "slug": "abraham_wald",
-      "title_es": "La Arquitectura del Silencio: Abraham Wald y la Epistemología de los Datos Ausentes",
-      "title_en": "The Architecture of Silence: Abraham Wald and the Epistemology of Missing Data",
+      "title_es": "Abraham Wald y los Aviones de la Segunda Guerra: Epistemología de Datos Ausentes",
+      "title_en": "Abraham Wald and the Bullet Holes: Epistemology of Missing Data in AI and Strategy",
       "category": "Pioneros y Referentes",
       "ga4_views_30d": 30,
       "ga4_users_30d": 26,
@@ -1065,9 +1065,9 @@
       "title_es": "Norbert Wiener: Cibernética, Feedback Loops y el Control de las Máquinas",
       "title_en": "Norbert Wiener: The Father of Cybernetics, Feedback Loops, and the Machine Control Problem",
       "category": "Pioneros y Referentes",
-      "ga4_views_30d": 57,
-      "ga4_users_30d": 25,
-      "avg_engagement_sec": 26.4,
+      "ga4_views_30d": 58,
+      "ga4_users_30d": 26,
+      "avg_engagement_sec": 25.4,
       "gsc_impressions_30d": 86,
       "gsc_avg_position": 10.1,
       "gsc_ctr_pct": 0.0,
@@ -1264,9 +1264,9 @@
       "title_es": "💔 \"Her\": Apego Emocional, Interfaces Invisibles y la Inevitable Divergencia de la AGI",
       "title_en": "💔 \"Her\": Emotional Attachment, Invisible Interfaces, and the Inevitable Divergence of AGI",
       "category": "Cultura Tech y Media",
-      "ga4_views_30d": 29,
-      "ga4_users_30d": 13,
-      "avg_engagement_sec": 11.9,
+      "ga4_views_30d": 30,
+      "ga4_users_30d": 14,
+      "avg_engagement_sec": 15.0,
       "gsc_impressions_30d": 40,
       "gsc_avg_position": 13.9,
       "gsc_ctr_pct": 0.0,
@@ -1506,22 +1506,7 @@
       "top_query": "descriptive analysis"
     }
   ],
-  "monetization_orphans": [
-    {
-      "id": "happyrobot",
-      "slug": "happyrobot",
-      "title_es": "HappyRobot: Cómo los Agentes de Voz Autónomos Conquistaron la Logística Global",
-      "category": "Startups",
-      "ga4_views_30d": 25,
-      "ga4_users_30d": 21,
-      "avg_engagement_sec": 62.2,
-      "rank_pct": 75,
-      "recommended_bridge_type": "app_sandbox",
-      "recommended_target_id": "obs-management",
-      "recommended_shortcode_or_url": "{{< app-ref slug=\"obs-management\" >}}",
-      "rationale_es": "Vincular a una aplicación interactiva del catálogo para retención y prueba de producto."
-    }
-  ],
+  "monetization_orphans": [],
   "decay_alerts": [
     {
       "id": "Visualizaciones-basicas",
@@ -1834,9 +1819,9 @@
       "title_es": "Radar de Obsolescencia (v2.0.0): Executive Risk Cockpit Zero-CDN, Motor BOM/LTB determinista y PWA Offline",
       "publish_date": "2026-11-22",
       "status": "published",
-      "linked_posts_count": 21,
+      "linked_posts_count": 22,
       "latest_post_date": "2026-11-14",
-      "editorial_views_30d": 382,
+      "editorial_views_30d": 410,
       "editorial_coverage_status": "silent_release_alert",
       "recommended_scriba_action": "Alerta de release silenciosa: versión v2.0.0 (2026-11-22) posterior al último post (2026-11-14); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0."
     },
@@ -2184,11 +2169,11 @@
       "title_es": "Radar de Obsolescencia",
       "publish_date": "2026-05-17",
       "status": "published",
-      "linked_posts_count": 21,
+      "linked_posts_count": 22,
       "latest_post_date": "2026-11-14",
-      "editorial_views_30d": 382,
+      "editorial_views_30d": 410,
       "editorial_coverage_status": "covered",
-      "recommended_scriba_action": "Activo cubierto con 21 post(s) en producción (382 vistas/30d)."
+      "recommended_scriba_action": "Activo cubierto con 22 post(s) en producción (410 vistas/30d)."
     },
     {
       "asset_id": "obs-management-v1.0.1",
@@ -2198,9 +2183,9 @@
       "title_es": "Radar de Obsolescencia (v1.0.1): Aislamiento SDD, firewall de static/ y modo Sandbox determinista 24/7",
       "publish_date": "2026-10-24",
       "status": "published",
-      "linked_posts_count": 21,
+      "linked_posts_count": 22,
       "latest_post_date": "2026-11-14",
-      "editorial_views_30d": 382,
+      "editorial_views_30d": 410,
       "editorial_coverage_status": "covered",
       "recommended_scriba_action": "Versión v1.0.1 respaldada por los artículos de la serie."
     },
@@ -2749,18 +2734,18 @@
   "channel_summary": [
     {
       "channel": "direct",
-      "sessions_30d": 2243,
-      "sessions_es_30d": 1039,
-      "sessions_en_30d": 1170,
-      "en_share_pct": 53.0,
-      "users_30d": 1734,
-      "engaged_sessions_30d": 704,
+      "sessions_30d": 2248,
+      "sessions_es_30d": 1042,
+      "sessions_en_30d": 1172,
+      "en_share_pct": 52.9,
+      "users_30d": 1738,
+      "engaged_sessions_30d": 705,
       "engagement_rate_pct": 31.4,
       "avg_engagement_sec": 10.7,
       "key_events_30d": 9,
       "conversion_rate_pct": 0.4,
       "sessions_prev_30d": 1016,
-      "trend_30d_pct": 120.8
+      "trend_30d_pct": 121.3
     },
     {
       "channel": "other",
@@ -2944,49 +2929,49 @@
       "alert_type": "dark_social_spike",
       "dispatch_id": "magnific-ai-2026-11-21-wave3b-en-syndication",
       "channel_expected": "devto,coderlegion",
-      "direct_sessions_current": 170,
+      "direct_sessions_current": 175,
       "direct_sessions_baseline": 104.0,
-      "spike_pct": 63.5,
+      "spike_pct": 68.3,
       "severity": "high",
-      "recommended_action": "Pico +64% de tráfico (direct) tras despacho 'magnific-ai-2026-11-21-wave3b-en-syndication' con solo 0 sesiones UTM en [devto,coderlegion]. Verificar UTMs ADR-033 en enlaces compartidos."
+      "recommended_action": "Pico +68% de tráfico (direct) tras despacho 'magnific-ai-2026-11-21-wave3b-en-syndication' con solo 0 sesiones UTM en [devto,coderlegion]. Verificar UTMs ADR-033 en enlaces compartidos."
     },
     {
       "alert_type": "dark_social_spike",
       "dispatch_id": "pulse-part2-2026-11-22-wave1-es-native",
       "channel_expected": "linkedin,x",
-      "direct_sessions_current": 170,
+      "direct_sessions_current": 175,
       "direct_sessions_baseline": 104.0,
-      "spike_pct": 63.5,
+      "spike_pct": 68.3,
       "severity": "high",
-      "recommended_action": "Pico +64% de tráfico (direct) tras despacho 'pulse-part2-2026-11-22-wave1-es-native' con solo 2 sesiones UTM en [linkedin,x]. Verificar UTMs ADR-033 en enlaces compartidos."
+      "recommended_action": "Pico +68% de tráfico (direct) tras despacho 'pulse-part2-2026-11-22-wave1-es-native' con solo 2 sesiones UTM en [linkedin,x]. Verificar UTMs ADR-033 en enlaces compartidos."
     },
     {
       "alert_type": "dark_social_spike",
       "dispatch_id": "pulse-part2-2026-11-22-wave2-en-native",
       "channel_expected": "linkedin,x",
-      "direct_sessions_current": 170,
+      "direct_sessions_current": 175,
       "direct_sessions_baseline": 104.0,
-      "spike_pct": 63.5,
+      "spike_pct": 68.3,
       "severity": "high",
-      "recommended_action": "Pico +64% de tráfico (direct) tras despacho 'pulse-part2-2026-11-22-wave2-en-native' con solo 2 sesiones UTM en [linkedin,x]. Verificar UTMs ADR-033 en enlaces compartidos."
+      "recommended_action": "Pico +68% de tráfico (direct) tras despacho 'pulse-part2-2026-11-22-wave2-en-native' con solo 2 sesiones UTM en [linkedin,x]. Verificar UTMs ADR-033 en enlaces compartidos."
     },
     {
       "alert_type": "dark_social_spike",
       "dispatch_id": "pulse-part2-2026-11-22-wave3a-es-devto",
       "channel_expected": "devto",
-      "direct_sessions_current": 170,
+      "direct_sessions_current": 175,
       "direct_sessions_baseline": 104.0,
-      "spike_pct": 63.5,
+      "spike_pct": 68.3,
       "severity": "high",
-      "recommended_action": "Pico +64% de tráfico (direct) tras despacho 'pulse-part2-2026-11-22-wave3a-es-devto' con solo 0 sesiones UTM en [devto]. Verificar UTMs ADR-033 en enlaces compartidos."
+      "recommended_action": "Pico +68% de tráfico (direct) tras despacho 'pulse-part2-2026-11-22-wave3a-es-devto' con solo 0 sesiones UTM en [devto]. Verificar UTMs ADR-033 en enlaces compartidos."
     },
     {
       "alert_type": "high_direct_share",
       "dispatch_id": null,
       "channel_expected": "linkedin,x,devto,coderlegion",
-      "direct_sessions_current": 2243,
+      "direct_sessions_current": 2248,
       "direct_sessions_baseline": 1016.0,
-      "spike_pct": 120.8,
+      "spike_pct": 121.3,
       "severity": "medium",
       "recommended_action": "Tráfico directo creció +121% (73.0% del total) mientras atribución social UTM es 8.3%. Auditar enlaces manuales en bio/comentarios."
     }

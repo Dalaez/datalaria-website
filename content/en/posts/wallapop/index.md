@@ -5,7 +5,7 @@ draft: false
 category: "Startups"
 categories: ["case-studies", "Startups"]
 tags: ["wallapop", "machine learning", "computer vision", "algorithmic pricing", "knowledge graphs", "fraud detection", "esg", "circular economy", "spanish startups", "naver"]
-description: "How Wallapop turned second-hand trade into a technological powerhouse of 19 million users. We analyze its Machine Learning architecture: multimodal visual search, dynamic pricing algorithms, fraud graphs, ESG sustainability impact, and its landmark acquisition by South Korean internet giant NAVER."
+description: "Inside Wallapop, Europe's circular marketplace leader: real-time machine learning, multimodal computer vision, fraud knowledge graphs, and NAVER acquisition."
 summary: "Upload a photo of a bicycle to Wallapop. In under 200 milliseconds, a cascade of real-time Machine Learning models classifies the item, estimates optimal pricing, runs fraud detection, and computes avoided CO₂ emissions. Behind Spain's most famous second-hand app lies one of Europe's most sophisticated data and ML architectures, culminating in its acquisition by Asian tech giant NAVER."
 social_text: "Upload a photo to Wallapop and within 200ms a cascade of Machine Learning fires: computer vision, dynamic pricing, and fraud graphs. The technical story of Wallapop and its acquisition by NAVER 📦🚲🤖 #Wallapop #MachineLearning #Startups #ECommerce #DataEngineering"
 image: cover.jpg

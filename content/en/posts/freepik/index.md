@@ -1,11 +1,11 @@
 ---
-title: "Freepik: The Story of the Giant from Málaga that Tamed AI to Conquer the Creative World"
+title: "Freepik: How the Málaga Giant Tamed AI to Revolutionize Visual Operations Worldwide"
 date: 2025-10-11
 category: "Startups"
 draft: False
 categories: ["case-studies", "AI", "Startups"]
 tags: ["freepik", "ai", "generative ai", "malaga", "startup", "business model", "disruption"]
-description: "An in-depth analysis of how Freepik, the startup from Málaga, went from an image search engine to a global leader, facing the disruption of AI with a bold strategy that is redefining the future of creativity."
+description: "Inside Freepik's AI transformation: how mid-market firms modernize creative operations, slash production costs, and scale visual generative workflows."
 summary: "When generative AI threatened to destroy the stock content industry, a company from Málaga bet its future on a total reinvention. This is the story of Freepik: from its ingenious 'freemium' model to its strategic pivot to surf the AI wave and compete head-to-head with tech giants."
 ---
 
@@ -70,3 +70,6 @@ With the AI in graphic design market projected to grow to nearly **$14 billion b
 * [**Xataka**: Spanish startup Freepik becomes one of the most important 'exits' in Spain's history after being bought by the EQT fund (in Spanish)](https://www.xataka.com/empresas-y-economia/fondo-inversion-sueco-eqt-compra-a-startup-espanola-freepik)
 * [**Xataka**: Freepik acquires Magnific and strengthens its arsenal of 'made in Spain' AI tools (in Spanish)](https://www.xataka.com/robotica-e-ia/freepik-adquiere-magnific-refuerza-su-arsenal-herramientas-ia-made-in-spain)
 * [**Xataka**: Hangzhou, the home of the Six Little Dragons (in Spanish)](https://www.xataka.com/robotica-e-ia/hay-ciudad-china-que-se-mide-cara-a-cara-silicon-valley-bienvenidos-a-hangzhou-casa-six-little-dragons)
+* [**Datalaria**: Wallapop and Circular Marketplace Engineering](/en/posts/wallapop/)
+* [**Datalaria**: HappyRobot and Voice AI Agents in Logistics](/en/posts/happyrobot/)
+* [**Datalaria**: How to Build AI Agents for Enterprise Operations](/en/posts/agentes_ia_operativa_sdd/)

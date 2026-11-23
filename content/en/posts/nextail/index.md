@@ -5,7 +5,7 @@ draft: false
 category: "Startups"
 categories: ["case-studies", "AI", "Startups"]
 tags: ["nextail", "ai", "retail", "supply chain", "S&OP", "machine learning", "optimization", "fashion", "startup"]
-description: "The story of Nextail, the Madrid-based startup founded by a former Zara logistics director that is replacing fashion retail spreadsheets with a mathematical brain capable of making billions of inventory decisions per season."
+description: "How Nextail optimizes fashion inventory with prescriptive AI: replacing static spreadsheets with agile stochastic models to maximize full-price retail sales."
 summary: "The future of retail doesn't fit in Excel. A former Zara executive founded Nextail to prove it, building a prescriptive AI engine that processes billions of inventory combinations and frees up to 75% of merchandising teams' time. This is the story of how mathematical optimization is conquering fast fashion."
 social_text: "The future of retail doesn't fit in Excel. A former Zara exec founded Nextail to prove it with prescriptive AI processing billions of inventory decisions. The story of how math is conquering fast fashion 🧠👗📊 #RetailTech #AI #SupplyChain"
 image: cover.png

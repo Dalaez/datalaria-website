@@ -1,5 +1,5 @@
 ---
-title: "Halt and Catch Fire: The Cult TV Series That Understood Software Engineering Better Than Silicon Valley"
+title: "Halt and Catch Fire: Meaning, History & Why the Cult Series Nailed Software Engineering"
 date: 2026-08-29
 draft: false
 category: "Tech Culture & Media"
@@ -9,7 +9,7 @@ image: cover.jpg
 weight: 10
 authorAvatar: datalaria-logo.png
 social_text: "Why do superior technical architectures often lose to superior distribution? 'Halt and Catch Fire' is the greatest TV series ever made about real software engineering 💻🔥📡 #HaltAndCatchFire #Engineering #Startups #TechHistory"
-description: "An in-depth technical and philosophical analysis of AMC's masterpiece 'Halt and Catch Fire', which surgically depicted the birth of the PC clone, online multiplayer gaming, fintech, and the World Wide Web."
+description: "The meaning, history, and tech breakdown of cult series Halt and Catch Fire: BIOS clean-room reverse engineering, PC clones, and real lessons for developers."
 summary: "Almost every Hollywood production about technology makes the same unforgivable mistake: reducing computing to neon-green terminal screens and hackers furiously typing with one hand. 'Halt and Catch Fire' did the opposite: it captured the smell of burnt solder, the agony of reverse-engineering a BIOS, technical debt, and the profound human cost of innovation."
 ---
 

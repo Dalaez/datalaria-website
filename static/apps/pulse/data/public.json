@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-11-23T20:59:12.442682Z",
+  "generated_at": "2026-11-23T22:07:48.237685Z",
   "total_assets": 180,
   "published_assets": 166,
   "scheduled_assets": 14,
@@ -10,79 +10,74 @@
   },
   "monthly_traffic_index": [
     {
-      "month": "2025-09",
-      "label": "Sep '25",
-      "index_100": 1
-    },
-    {
       "month": "2025-10",
       "label": "Oct '25",
-      "index_100": 33
+      "index_100": 32
     },
     {
       "month": "2025-11",
       "label": "Nov '25",
-      "index_100": 45
+      "index_100": 43
     },
     {
       "month": "2025-12",
       "label": "Dic '25",
-      "index_100": 45
+      "index_100": 43
     },
     {
       "month": "2026-01",
       "label": "Ene '26",
-      "index_100": 108
+      "index_100": 104
     },
     {
       "month": "2026-02",
       "label": "Feb '26",
-      "index_100": 126
+      "index_100": 121
     },
     {
       "month": "2026-03",
       "label": "Mar '26",
-      "index_100": 100
+      "index_100": 96
     },
     {
       "month": "2026-04",
       "label": "Abr '26",
-      "index_100": 60
+      "index_100": 57
     },
     {
       "month": "2026-05",
       "label": "May '26",
-      "index_100": 155
+      "index_100": 149
     },
     {
       "month": "2026-06",
       "label": "Jun '26",
-      "index_100": 63
+      "index_100": 60
     },
     {
       "month": "2026-07",
       "label": "Jul '26",
-      "index_100": 67
+      "index_100": 64
     },
     {
       "month": "2026-08",
       "label": "Ago '26",
-      "index_100": 248
+      "index_100": 238
     },
     {
       "month": "2026-09",
       "label": "Sep '26",
-      "index_100": 212
+      "index_100": 204
     },
     {
       "month": "2026-10",
       "label": "Oct '26",
-      "index_100": 519
+      "index_100": 498
     },
     {
       "month": "2026-11",
       "label": "Nov '26",
-      "index_100": 688
+      "index_100": 660
     }
   ],
   "assets": [
@@ -215,7 +210,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 145,
-        "rank_pct": 65,
+        "rank_pct": 64,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -1446,7 +1441,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 285,
+        "index_100": 290,
         "rank_pct": 73,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
@@ -2304,15 +2299,15 @@
       "asset_type": "post",
       "status": "published",
       "visibility": "public",
-      "title_es": "La Arquitectura del Silencio: Abraham Wald y la Epistemología de los Datos Ausentes",
-      "title_en": "The Architecture of Silence: Abraham Wald and the Epistemology of Missing Data",
+      "title_es": "Abraham Wald y los Aviones de la Segunda Guerra: Epistemología de Datos Ausentes",
+      "title_en": "Abraham Wald and the Bullet Holes: Epistemology of Missing Data in AI and Strategy",
       "url_es": "/es/posts/abraham_wald/",
       "url_en": "/en/posts/abraham_wald/",
-      "brief_es": "Cómo Abraham Wald dedujo el blindaje óptimo en los bombarderos B-17 analizando los aviones supervivientes: el sesgo de supervivencia aplicado a ciencia de datos y machine learning.",
-      "brief_en": "In 1943, the US military wanted to armor the bullet holes on their B-17s. A mathematician told them to armor the empty spaces. This is the story of how Survivorship Bias destroys modern AI models and business strategies.",
+      "brief_es": "Cómo Abraham Wald descubrió el sesgo de supervivencia en los bombarderos B-17: lecciones matemáticas de datos ausentes para ciencia de datos y estrategia.",
+      "brief_en": "How Abraham Wald discovered survivorship bias on WW2 bomber armor: mathematical lessons on missing data for modern AI and enterprise business strategy.",
       "publish_date": "2026-02-21",
-      "last_modified_es": "2026-11-09T07:54:25+01:00",
-      "last_modified_en": "2026-11-09T07:54:25+01:00",
+      "last_modified_es": "2026-11-23T21:48:58.627270Z",
+      "last_modified_en": "2026-11-23T21:48:58.629268Z",
       "language_parity": "complete",
       "category": "Pioneros y Referentes",
       "categories": [
@@ -3284,7 +3279,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 19,
+        "rank_pct": 18,
         "trend_30d_pct": 300.0,
         "gsc_opportunity": false
       },
@@ -3424,7 +3419,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 19,
+        "rank_pct": 18,
         "trend_30d_pct": -66.7,
         "gsc_opportunity": true
       },
@@ -3556,7 +3551,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 19,
+        "rank_pct": 18,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -3695,7 +3690,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 19,
+        "rank_pct": 18,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -4134,11 +4129,11 @@
       "title_en": "Freepik: How the Málaga Giant Tamed AI to Revolutionize Visual Operations Worldwide",
       "url_es": "/es/posts/freepik/",
       "url_en": "/en/posts/freepik/",
-      "brief_es": "Análisis de Freepik y su transformación con IA visual: cómo empresas medianas y agencias modernizan sus operaciones creativas, reducen costes operativos y escalan contenido visual con flujos automatizados de IA generativa.",
-      "brief_en": "Inside Freepik's AI transformation: how mid-market companies modernize visual operations, reduce creative production costs, and scale generative AI workflows to compete efficiently in enterprise content landscapes.",
+      "brief_es": "Cómo Freepik domó la IA generativa: reducción de costes operativos, modelos visuales propios y automatización creativa para empresas medianas y agencias.",
+      "brief_en": "Inside Freepik's AI transformation: how mid-market firms modernize creative operations, slash production costs, and scale visual generative workflows.",
       "publish_date": "2025-10-11",
-      "last_modified_es": "2026-11-23T06:30:10.543833Z",
-      "last_modified_en": "2026-11-23T06:30:10.441157Z",
+      "last_modified_es": "2026-11-23T21:48:58.609308Z",
+      "last_modified_en": "2026-11-23T21:48:58.610308Z",
       "language_parity": "complete",
       "category": "Startups",
       "categories": [
@@ -4339,11 +4334,11 @@
       "title_en": "GraphRAG: Why Vectors Aren't Enough and Your AI Needs a Knowledge Graph",
       "url_es": "/es/posts/graphrag/",
       "url_en": "/en/posts/graphrag/",
-      "brief_es": "Por qué la búsqueda por similitud vectorial falla en preguntas complejas y cómo GraphRAG (Knowledge Graphs + LLMs) resuelve el razonamiento multisalto y la explicabilidad corporativa.",
-      "brief_en": "Why vector similarity search breaks down on complex questions and how GraphRAG (Knowledge Graphs + LLMs) unlocks multi-hop reasoning and global dataset synthesis. We break down Microsoft Research's pioneering work and the leap toward AGI.",
+      "brief_es": "Por qué la búsqueda vectorial falla en preguntas complejas y cómo GraphRAG (Knowledge Graphs + LLMs) resuelve el razonamiento multisalto y síntesis global.",
+      "brief_en": "Why vector similarity search breaks down on complex questions and how GraphRAG (Knowledge Graphs + LLMs) unlocks multi-hop reasoning and dataset synthesis.",
       "publish_date": "2026-09-25",
-      "last_modified_es": "2026-11-23T06:30:10.545827Z",
-      "last_modified_en": "2026-11-23T06:30:10.461107Z",
+      "last_modified_es": "2026-11-23T21:48:58.631260Z",
+      "last_modified_en": "2026-11-23T21:48:58.633278Z",
       "language_parity": "complete",
       "category": "IA, Ingeniería y Proyectos",
       "categories": [
@@ -4408,11 +4403,11 @@
       "title_en": "Halt and Catch Fire: Meaning, History & Why the Cult Series Nailed Software Engineering",
       "url_es": "/es/posts/halt_and_catch_fire/",
       "url_en": "/en/posts/halt_and_catch_fire/",
-      "brief_es": "Significado, historia y análisis técnico de 'Halt and Catch Fire': la obra de culto que retrató la ingeniería inversa de la BIOS, el nacimiento del PC clónico y por qué la mejor arquitectura técnica rara vez gana en el mercado.",
-      "brief_en": "The meaning, history, and engineering breakdown of cult series 'Halt and Catch Fire': clean-room BIOS reverse engineering, the PC clone revolution, online multiplayer gaming, and why technical elegance often loses to distribution.",
+      "brief_es": "Significado, historia y análisis técnico de Halt and Catch Fire: ingeniería inversa de la BIOS, el clon de IBM y por qué la mejor arquitectura a veces pierde.",
+      "brief_en": "The meaning, history, and tech breakdown of cult series Halt and Catch Fire: BIOS clean-room reverse engineering, PC clones, and real lessons for developers.",
       "publish_date": "2026-08-29",
-      "last_modified_es": "2026-11-23T06:30:10.547822Z",
-      "last_modified_en": "2026-11-23T06:30:10.462105Z",
+      "last_modified_es": "2026-11-23T21:48:58.603468Z",
+      "last_modified_en": "2026-11-23T21:48:58.604470Z",
       "language_parity": "complete",
       "category": "Cultura Tech y Media",
       "categories": [
@@ -4477,11 +4472,11 @@
       "title_en": "HappyRobot: How Autonomous Voice Agents Conquered Global Logistics",
       "url_es": "/es/posts/happyrobot/",
       "url_en": "/en/posts/happyrobot/",
-      "brief_es": "Arquitectura de HappyRobot (unicornio de 1.200M$): cómo sus agentes de voz IA con latencia sub-500ms superan a otros sistemas conversacionales y automatizan llamadas logísticas en gigantes como DHL, Schneider y Uber Freight.",
-      "brief_en": "Inside HappyRobot's $1.2B architecture: how sub-500ms autonomous voice AI agents outperform alternative voice bots and automate enterprise logistics phone calls for global fleets like DHL, Schneider, and Uber Freight.",
+      "brief_es": "Arquitectura de HappyRobot (1.200M$): agentes de voz IA con latencia sub-500ms que automatizan llamadas logísticas en gigantes como DHL y Uber Freight.",
+      "brief_en": "Inside HappyRobot's $1.2B voice AI architecture: sub-500ms autonomous voice agents automating freight and dispatch calls for DHL, Schneider, and Uber Freight.",
       "publish_date": "2026-09-30",
-      "last_modified_es": "2026-11-23T06:30:10.552809Z",
-      "last_modified_en": "2026-11-23T06:30:10.464100Z",
+      "last_modified_es": "2026-11-23T21:48:58.593855Z",
+      "last_modified_en": "2026-11-23T21:48:58.595507Z",
       "language_parity": "complete",
       "category": "Startups",
       "categories": [
@@ -4501,10 +4496,10 @@
         "unicornio"
       ],
       "series": null,
-      "word_count_es": 1802,
-      "word_count_en": 1473,
+      "word_count_es": 1985,
+      "word_count_en": 1635,
       "reading_time_min": 10,
-      "related_app": null,
+      "related_app": "obs-management",
       "related_kit": null,
       "included_kits": [],
       "price": null,
@@ -4597,7 +4592,7 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 145,
+        "index_100": 150,
         "rank_pct": 65,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
@@ -4758,11 +4753,11 @@
       "title_en": "John von Neumann: Computer Architecture, Game Theory, and the Singularity",
       "url_es": "/es/posts/john_von_neumann/",
       "url_en": "/en/posts/john_von_neumann/",
-      "brief_es": "Vida y legado de John von Neumann: la arquitectura universal de computadores, el algoritmo Minimax en Teoría de Juegos, el método Monte Carlo en Los Álamos y la primera formulación histórica de la Singularidad Tecnológica.",
-      "brief_en": "The genius of John von Neumann: the stored-program computer architecture, game theory with Minimax, the Monte Carlo method at Los Alamos, and his original prophecy coining the Technological Singularity.",
+      "brief_es": "Vida y legado de John von Neumann: arquitectura de computadores, teoría de juegos con Minimax, método Monte Carlo y la primera profecía de la Singularidad.",
+      "brief_en": "John von Neumann's legacy: stored-program computer architecture, Minimax game theory, Monte Carlo methods, and the origin of the Technological Singularity.",
       "publish_date": "2026-10-10",
-      "last_modified_es": "2026-11-23T06:30:10.554804Z",
-      "last_modified_en": "2026-11-23T06:30:10.468091Z",
+      "last_modified_es": "2026-11-23T21:48:58.589615Z",
+      "last_modified_en": "2026-11-23T21:48:58.591682Z",
       "language_parity": "complete",
       "category": "Pioneros y Referentes",
       "categories": [
@@ -4825,14 +4820,14 @@
       "status": "published",
       "visibility": "public",
       "title_es": "Leonid Kantorovich: El Matemático que Desafió a Stalin con la Programación Lineal",
-      "title_en": "Leonid Kantorovich: The Mathematician Who Challenged Stalin with Linear Programming",
+      "title_en": "Leonid Kantorovich: The Soviet Nobel Laureate Who Invented Linear Programming",
       "url_es": "/es/posts/kantorovich/",
       "url_en": "/en/posts/kantorovich/",
-      "brief_es": "Leonid Kantorovich creó la programación lineal en la URSS para optimizar recursos. Conoce al Premio Nobel cuyas matemáticas desafiaron a Stalin y hoy gobiernan la logística global, el supply chain y la analítica de operaciones.",
-      "brief_en": "Leonid Kantorovich invented linear programming in the USSR to solve resource allocation. Discover the Nobel Prize winner who challenged Stalin and whose mathematics now power modern logistics, supply chains, and operations research.",
+      "brief_es": "Leonid Kantorovich creó la programación lineal en la URSS. Descubre al Nobel que desafió a Stalin y revolucionó la logística y optimización de operaciones.",
+      "brief_en": "Leonid Kantorovich invented linear programming in the USSR. Meet the Nobel Laureate who defied Stalin and whose math powers modern logistics and supply chains.",
       "publish_date": "2026-05-24",
-      "last_modified_es": "2026-11-23T06:30:10.556797Z",
-      "last_modified_en": "2026-11-23T06:30:10.469087Z",
+      "last_modified_es": "2026-11-23T21:48:58.585555Z",
+      "last_modified_en": "2026-11-23T21:48:58.587074Z",
       "language_parity": "complete",
       "category": "Pioneros y Referentes",
       "categories": [
@@ -4847,8 +4842,8 @@
         "historia de los datos"
       ],
       "series": null,
-      "word_count_es": 750,
-      "word_count_en": 684,
+      "word_count_es": 797,
+      "word_count_en": 726,
       "reading_time_min": 4,
       "related_app": null,
       "related_kit": "/recursos/#suite-02",
@@ -5169,11 +5164,11 @@
       "title_en": "Nextail: How a Spanish Startup's Prescriptive AI Is Defeating Excel in Fashion Retail",
       "url_es": "/es/posts/nextail/",
       "url_en": "/en/posts/nextail/",
-      "brief_es": "Cómo Nextail optimiza el inventario en retail con IA prescriptiva e hiperdistribución ágil: de la experiencia en Zara a sustituir hojas de cálculo por modelos estocásticos que maximizan ventas a precio completo.",
-      "brief_en": "How Nextail optimizes fashion retail inventory using prescriptive AI and agile hyperdistribution: replacing static spreadsheets with stochastic models to forecast demand and maximize full-price sell-through.",
+      "brief_es": "Cómo Nextail optimiza inventarios en retail con IA prescriptiva: de la experiencia en Zara a sustituir hojas de cálculo por modelos de demanda ágiles.",
+      "brief_en": "How Nextail optimizes fashion inventory with prescriptive AI: replacing static spreadsheets with agile stochastic models to maximize full-price retail sales.",
       "publish_date": "2026-03-31",
-      "last_modified_es": "2026-11-23T06:30:10.557795Z",
-      "last_modified_en": "2026-11-23T06:30:10.471081Z",
+      "last_modified_es": "2026-11-23T21:48:58.624279Z",
+      "last_modified_en": "2026-11-23T21:48:58.626274Z",
       "language_parity": "complete",
       "category": "Startups",
       "categories": [
@@ -5446,11 +5441,11 @@
       "title_en": "PostgreSQL with pgvector vs Vector DBs: Why Almost Nobody Needs Pinecone",
       "url_es": "/es/posts/pgvector_vs_vectordb/",
       "url_en": "/en/posts/pgvector_vs_vectordb/",
-      "brief_es": "¿Necesitas una Vector DB como Pinecone o Qdrant? Analizamos benchmarks HNSW en pgvector, costes frente a bases dedicadas y por qué PostgreSQL puro con integridad transaccional resuelve la búsqueda vectorial en el 95% de casos.",
-      "brief_en": "Do you need a dedicated Vector DB like Pinecone or Qdrant? We analyze HNSW benchmarks in pgvector, hidden operational costs, and why pure PostgreSQL with ACID integrity wins for vector search in 95% of production cases.",
+      "brief_es": "¿Necesitas una Vector DB como Pinecone o Qdrant? Analizamos costes, benchmarks HNSW y por qué PostgreSQL con pgvector resuelve la búsqueda en el 95% de casos.",
+      "brief_en": "Do you need a dedicated Vector DB like Pinecone or Qdrant? We analyze HNSW benchmarks and why pure PostgreSQL with pgvector wins in 95% of production cases.",
       "publish_date": "2026-09-22",
-      "last_modified_es": "2026-11-23T06:30:10.560787Z",
-      "last_modified_en": "2026-11-23T06:30:10.476067Z",
+      "last_modified_es": "2026-11-23T21:48:58.599503Z",
+      "last_modified_en": "2026-11-23T21:48:58.601496Z",
       "language_parity": "complete",
       "category": "IA, Ingeniería y Proyectos",
       "categories": [
@@ -5470,8 +5465,8 @@
         "arquitectura de datos"
       ],
       "series": null,
-      "word_count_es": 2114,
-      "word_count_en": 1901,
+      "word_count_es": 2172,
+      "word_count_en": 1958,
       "reading_time_min": 11,
       "related_app": null,
       "related_kit": null,
@@ -5587,11 +5582,11 @@
       "title_en": "RavenPack: From News Analytics in Marbella to Wall Street's Quantitative Brain",
       "url_es": "/es/posts/ravenpack/",
       "url_en": "/en/posts/ravenpack/",
-      "brief_es": "Análisis de RavenPack frente a terminales como Bloomberg: cómo su motor de NLP y datos alternativos convierte noticias en tiempo real en señales de sentimiento financiero para hedge funds cuantitativos y trading algorítmico.",
-      "brief_en": "RavenPack vs traditional terminals like Bloomberg: how real-time NLP and alternative data turn unstructured financial news into market sentiment signals for elite quantitative hedge funds and algorithmic trading desks.",
+      "brief_es": "RavenPack vs Bloomberg: cómo su motor de NLP y datos alternativos en tiempo real convierte noticias financieras en señales para trading algorítmico y fondos.",
+      "brief_en": "RavenPack vs Bloomberg: how real-time NLP and alternative data turn unstructured financial news into market sentiment signals for elite quantitative funds.",
       "publish_date": "2026-10-24",
-      "last_modified_es": "2026-11-23T06:30:10.562782Z",
-      "last_modified_en": "2026-11-23T06:30:10.479060Z",
+      "last_modified_es": "2026-11-23T21:48:58.618289Z",
+      "last_modified_en": "2026-11-23T21:48:58.619287Z",
       "language_parity": "complete",
       "category": "Startups",
       "categories": [
@@ -5730,11 +5725,11 @@
       "title_en": "Silicon Valley and the PiperNet Dilemma: Runaway AI and Real-World Agent Risks",
       "url_es": "/es/posts/silicon_valley/",
       "url_en": "/en/posts/silicon_valley/",
-      "brief_es": "Análisis técnico de Silicon Valley: de la compresión Middle-Out y descentralización P2P en PiperNet a lecciones reales de arquitectura de software, deuda técnica y el problema de alineamiento con agentes de IA autónomos.",
-      "brief_en": "Technical breakdown of HBO's Silicon Valley: Middle-Out compression, P2P decentralized architecture in PiperNet, real startup debt, and prophetic lessons on autonomous AI agents breaking global encryption.",
+      "brief_es": "Silicon Valley y PiperNet: compresión Middle-Out, arquitectura P2P descentralizada y las lecciones proféticas sobre agentes de IA autónomos descontrolados.",
+      "brief_en": "Silicon Valley and PiperNet: Middle-Out compression, decentralized P2P systems, and prophetic engineering lessons on runaway autonomous AI agent architectures.",
       "publish_date": "2026-09-27",
-      "last_modified_es": "2026-11-23T06:30:10.574749Z",
-      "last_modified_en": "2026-11-23T06:30:10.487039Z",
+      "last_modified_es": "2026-11-23T21:48:58.612303Z",
+      "last_modified_en": "2026-11-23T21:48:58.616296Z",
       "language_parity": "complete",
       "category": "Cultura Tech y Media",
       "categories": [
@@ -5940,15 +5935,15 @@
       "asset_type": "post",
       "status": "published",
       "visibility": "public",
-      "title_es": "The Thinking Game: Cómo DeepMind Convirtió los Videojuegos en Ciencia Moderna",
-      "title_en": "The Thinking Game: How Google DeepMind Turned Video Games into Science",
+      "title_es": "The Thinking Game: El Documental de DeepMind, Demis Hassabis, AlphaFold y la AGI",
+      "title_en": "The Thinking Game: Inside the DeepMind Documentary, Demis Hassabis & AlphaFold",
       "url_es": "/es/posts/the_thinking_game/",
       "url_en": "/en/posts/the_thinking_game/",
-      "brief_es": "Análisis del documental 'The Thinking Game': la odisea de Demis Hassabis y Google DeepMind, desde dominar Atari y AlphaGo hasta revolucionar la biología con AlphaFold y liderar la carrera hacia la AGI.",
-      "brief_en": "Inside 'The Thinking Game' documentary: the journey of Demis Hassabis and Google DeepMind, from Atari and AlphaGo to decoding biology with AlphaFold and pioneering the definitive quest for AGI.",
+      "brief_es": "Análisis de 'The Thinking Game': el documental sobre Demis Hassabis y DeepMind, de dominar videojuegos a resolver el plegamiento de proteínas con AlphaFold.",
+      "brief_en": "Inside 'The Thinking Game' documentary: how Demis Hassabis and DeepMind went from Atari and AlphaGo to solving biology with AlphaFold on their quest for AGI.",
       "publish_date": "2026-01-01",
-      "last_modified_es": "2026-11-23T06:30:10.587450Z",
-      "last_modified_en": "2026-11-23T06:30:10.489034Z",
+      "last_modified_es": "2026-11-23T21:48:58.621279Z",
+      "last_modified_en": "2026-11-23T21:48:58.622772Z",
       "language_parity": "complete",
       "category": "Cultura Tech y Media",
       "categories": [
@@ -5968,8 +5963,8 @@
         "Biología Computacional"
       ],
       "series": null,
-      "word_count_es": 1481,
-      "word_count_en": 1419,
+      "word_count_es": 1533,
+      "word_count_en": 1467,
       "reading_time_min": 8,
       "related_app": "obs-management",
       "related_kit": "/recursos/",
@@ -6081,11 +6076,11 @@
       "title_en": "Wallapop: The Invisible Engineering Behind Europe's Largest Circular Marketplace",
       "url_es": "/es/posts/wallapop/",
       "url_en": "/en/posts/wallapop/",
-      "brief_es": "Ingeniería detrás de Wallapop, marketplace circular líder en Europa: arquitectura de Machine Learning en tiempo real, búsqueda visual multimodal, algoritmos de pricing dinámico, grafos antifraude y adquisición por NAVER.",
-      "brief_en": "Inside Wallapop, Europe's leading circular marketplace: real-time Machine Learning architecture, multimodal computer vision, dynamic pricing algorithms, fraud knowledge graphs, and acquisition by South Korean giant NAVER.",
+      "brief_es": "La ingeniería invisible detrás de Wallapop: machine learning en tiempo real, búsqueda visual multimodal, algoritmos antifraude y adquisición por NAVER.",
+      "brief_en": "Inside Wallapop, Europe's circular marketplace leader: real-time machine learning, multimodal computer vision, fraud knowledge graphs, and NAVER acquisition.",
       "publish_date": "2026-08-31",
-      "last_modified_es": "2026-11-23T06:30:10.589442Z",
-      "last_modified_en": "2026-11-23T06:30:10.490030Z",
+      "last_modified_es": "2026-11-23T21:48:58.606063Z",
+      "last_modified_en": "2026-11-23T21:48:58.608063Z",
       "language_parity": "complete",
       "category": "Startups",
       "categories": [
@@ -6546,7 +6541,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 19,
+        "rank_pct": 18,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -6891,7 +6886,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 19,
+        "rank_pct": 18,
         "trend_30d_pct": 300.0,
         "gsc_opportunity": false
       },
@@ -7099,7 +7094,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 19,
+        "rank_pct": 18,
         "trend_30d_pct": 0.0,
         "gsc_opportunity": false
       },
@@ -7448,7 +7443,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 19,
+        "rank_pct": 18,
         "trend_30d_pct": 100.0,
         "gsc_opportunity": false
       },
@@ -7718,7 +7713,7 @@
       "social_channels": [],
       "metrics_relative": {
         "index_100": 20,
-        "rank_pct": 19,
+        "rank_pct": 18,
         "trend_30d_pct": 33.3,
         "gsc_opportunity": false
       },
@@ -7852,9 +7847,9 @@
       "campaign": null,
       "social_channels": [],
       "metrics_relative": {
-        "index_100": 15,
-        "rank_pct": 15,
-        "trend_30d_pct": 200.0,
+        "index_100": 20,
+        "rank_pct": 18,
+        "trend_30d_pct": 300.0,
         "gsc_opportunity": false
       },
       "metrics_absolute": null,
@@ -10203,8 +10198,8 @@
       "brief_es": "Content Ops as Code — Gobernanza editorial, paridad bilingüe y retorno orgánico desde Git.",
       "brief_en": "Content Ops as Code — Editorial governance, bilingual parity, and organic ROI directly from Git.",
       "publish_date": "2026-11-18",
-      "last_modified_es": "2026-11-18T06:02:45+01:00",
-      "last_modified_en": "2026-11-18T06:02:45+01:00",
+      "last_modified_es": "2026-11-23T21:58:03+01:00",
+      "last_modified_en": "2026-11-23T21:58:03+01:00",
       "language_parity": "complete",
       "category": "Aplicaciones Web",
       "categories": [
@@ -10276,8 +10271,8 @@
       "brief_es": "Content Ops as Code — Gobernanza editorial, paridad bilingüe y retorno orgánico desde Git.",
       "brief_en": "Content Ops as Code — Editorial governance, bilingual parity, and organic ROI directly from Git.",
       "publish_date": "2026-11-23",
-      "last_modified_es": "2026-11-18T06:02:45+01:00",
-      "last_modified_en": "2026-11-18T06:02:45+01:00",
+      "last_modified_es": "2026-11-23T21:58:03+01:00",
+      "last_modified_en": "2026-11-23T21:58:03+01:00",
       "language_parity": "complete",
       "category": "Aplicaciones Web",
       "categories": [

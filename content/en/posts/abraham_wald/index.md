@@ -1,11 +1,11 @@
 ---
-title: "The Architecture of Silence: Abraham Wald and the Epistemology of Missing Data"
+title: "Abraham Wald and the Bullet Holes: Epistemology of Missing Data in AI and Strategy"
 date: 2026-02-21
 draft: false
 category: "Pioneers & Icons"
 categories: ["case-studies", "Pioneers & Icons"]
 tags: ["survivorship bias", "abraham wald", "decision theory", "machine learning", "cybersecurity"]
-description: "In 1943, the US military wanted to armor the bullet holes on their B-17s. A mathematician told them to armor the empty spaces. This is the story of how Survivorship Bias destroys modern AI models and business strategies."
+description: "How Abraham Wald discovered survivorship bias on WW2 bomber armor: mathematical lessons on missing data for modern AI and enterprise business strategy."
 summary: "Abraham Wald taught the military that missing data—planes that never returned—held more truth than bullet holes on survivors. This principle remains critical for AI ethics, cybersecurity, and business strategy today."
 social_text: In 1943, the military wanted to armor bullet holes on B-17s. Mathematician Abraham Wald said armor the EMPTY spaces—those planes never returned. Survivorship Bias still destroys AI models today. 🎯✈️ #DataScience #AI
 weight: 10

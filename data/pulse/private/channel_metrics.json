@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "visibility": "private",
   "days": 30,
-  "last_synced_at": "2026-11-23T20:46:27.431305+00:00",
+  "last_synced_at": "2026-11-23T21:56:49.609966+00:00",
   "sources_status": {
     "ga4_acquisition": "ok",
     "x_native": "standby_zero_cost"
@@ -109,12 +109,12 @@
     },
     "direct": {
       "channel": "direct",
-      "sessions_30d": 2243,
-      "sessions_es_30d": 1039,
-      "sessions_en_30d": 1170,
-      "en_share_pct": 53.0,
-      "users_30d": 1734,
-      "engaged_sessions_30d": 704,
+      "sessions_30d": 2248,
+      "sessions_es_30d": 1042,
+      "sessions_en_30d": 1172,
+      "en_share_pct": 52.9,
+      "users_30d": 1738,
+      "engaged_sessions_30d": 705,
       "engagement_rate_pct": 31.4,
       "avg_engagement_sec": 10.7,
       "key_events_30d": 9,
@@ -125,7 +125,7 @@
       },
       "conversion_rate_pct": 0.4,
       "sessions_prev_30d": 1016,
-      "trend_30d_pct": 120.8
+      "trend_30d_pct": 121.3
     },
     "other": {
       "channel": "other",
@@ -723,6 +723,48 @@
         "key_events_breakdown": {}
       }
     },
+    "norbert_wiener": {
+      "direct": {
+        "sessions_30d": 23,
+        "sessions_es_30d": 10,
+        "sessions_en_30d": 13,
+        "users_30d": 19,
+        "engaged_sessions_30d": 6,
+        "avg_engagement_sec": 22.4,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "x": {
+        "sessions_30d": 6,
+        "sessions_es_30d": 3,
+        "sessions_en_30d": 3,
+        "users_30d": 3,
+        "engaged_sessions_30d": 5,
+        "avg_engagement_sec": 9.7,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "google_organic": {
+        "sessions_30d": 3,
+        "sessions_es_30d": 2,
+        "sessions_en_30d": 1,
+        "users_30d": 2,
+        "engaged_sessions_30d": 2,
+        "avg_engagement_sec": 2.7,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "other": {
+        "sessions_30d": 2,
+        "sessions_es_30d": 1,
+        "sessions_en_30d": 1,
+        "users_30d": 2,
+        "engaged_sessions_30d": 1,
+        "avg_engagement_sec": 39.0,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      }
+    },
     "silicon_valley": {
       "direct": {
         "sessions_30d": 16,
@@ -921,48 +963,6 @@
         "users_30d": 3,
         "engaged_sessions_30d": 1,
         "avg_engagement_sec": 94.8,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
-    "norbert_wiener": {
-      "direct": {
-        "sessions_30d": 21,
-        "sessions_es_30d": 9,
-        "sessions_en_30d": 12,
-        "users_30d": 18,
-        "engaged_sessions_30d": 6,
-        "avg_engagement_sec": 24.6,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "x": {
-        "sessions_30d": 6,
-        "sessions_es_30d": 3,
-        "sessions_en_30d": 3,
-        "users_30d": 3,
-        "engaged_sessions_30d": 5,
-        "avg_engagement_sec": 9.7,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "google_organic": {
-        "sessions_30d": 3,
-        "sessions_es_30d": 2,
-        "sessions_en_30d": 1,
-        "users_30d": 2,
-        "engaged_sessions_30d": 2,
-        "avg_engagement_sec": 2.7,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "other": {
-        "sessions_30d": 2,
-        "sessions_es_30d": 1,
-        "sessions_en_30d": 1,
-        "users_30d": 2,
-        "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 39.0,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -1501,6 +1501,48 @@
         "key_events_breakdown": {}
       }
     },
+    "her": {
+      "direct": {
+        "sessions_30d": 14,
+        "sessions_es_30d": 9,
+        "sessions_en_30d": 5,
+        "users_30d": 11,
+        "engaged_sessions_30d": 6,
+        "avg_engagement_sec": 13.2,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "other": {
+        "sessions_30d": 3,
+        "sessions_es_30d": 0,
+        "sessions_en_30d": 3,
+        "users_30d": 1,
+        "engaged_sessions_30d": 1,
+        "avg_engagement_sec": 6.3,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "coderlegion": {
+        "sessions_30d": 2,
+        "sessions_es_30d": 1,
+        "sessions_en_30d": 1,
+        "users_30d": 2,
+        "engaged_sessions_30d": 2,
+        "avg_engagement_sec": 2.0,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "linkedin": {
+        "sessions_30d": 1,
+        "sessions_es_30d": 0,
+        "sessions_en_30d": 1,
+        "users_30d": 1,
+        "engaged_sessions_30d": 1,
+        "avg_engagement_sec": 2.0,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      }
+    },
     "pulse-part2": {
       "direct": {
         "sessions_30d": 11,
@@ -1575,48 +1617,6 @@
         "users_30d": 6,
         "engaged_sessions_30d": 1,
         "avg_engagement_sec": 4.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
-    "her": {
-      "direct": {
-        "sessions_30d": 13,
-        "sessions_es_30d": 8,
-        "sessions_en_30d": 5,
-        "users_30d": 10,
-        "engaged_sessions_30d": 5,
-        "avg_engagement_sec": 10.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "other": {
-        "sessions_30d": 3,
-        "sessions_es_30d": 0,
-        "sessions_en_30d": 3,
-        "users_30d": 1,
-        "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 6.3,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "coderlegion": {
-        "sessions_30d": 2,
-        "sessions_es_30d": 1,
-        "sessions_en_30d": 1,
-        "users_30d": 2,
-        "engaged_sessions_30d": 2,
-        "avg_engagement_sec": 2.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "linkedin": {
-        "sessions_30d": 1,
-        "sessions_es_30d": 0,
-        "sessions_en_30d": 1,
-        "users_30d": 1,
-        "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 2.0,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -2689,12 +2689,12 @@
     },
     "obs_parte6_fastapi": {
       "direct": {
-        "sessions_30d": 3,
-        "sessions_es_30d": 0,
+        "sessions_30d": 4,
+        "sessions_es_30d": 1,
         "sessions_en_30d": 3,
-        "users_30d": 3,
+        "users_30d": 4,
         "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 0.0,
+        "avg_engagement_sec": 1.2,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -3473,7 +3473,7 @@
       "x": 2
     },
     "2026-11-23": {
-      "direct": 66,
+      "direct": 71,
       "google_organic": 9,
       "other": 5
     }
@@ -3985,6 +3985,21 @@
     },
     {
       "channel": "direct",
+      "path": "/en/posts/norbert_wiener",
+      "asset_id": "norbert_wiener",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 13,
+      "users": 12,
+      "engaged_sessions": 1,
+      "engagement_sec": 0.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
       "path": "/en/posts/silicon_valley",
       "asset_id": "silicon_valley",
       "lang": "en",
@@ -4100,21 +4115,6 @@
       "users": 12,
       "engaged_sessions": 2,
       "engagement_sec": 60.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/en/posts/norbert_wiener",
-      "asset_id": "norbert_wiener",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 12,
-      "users": 12,
-      "engaged_sessions": 1,
-      "engagement_sec": 0.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -4435,6 +4435,21 @@
     },
     {
       "channel": "direct",
+      "path": "/es/posts/norbert_wiener",
+      "asset_id": "norbert_wiener",
+      "lang": "es",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 10,
+      "users": 7,
+      "engaged_sessions": 5,
+      "engagement_sec": 516.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
       "path": "/es/posts/toma-decisiones-priorizacion-framework-cuantitativo",
       "asset_id": "decision-making-prioritization-quantitative-framework",
       "lang": "es",
@@ -4584,6 +4599,21 @@
       "key_events_breakdown": {}
     },
     {
+      "channel": "direct",
+      "path": "/es/posts/her",
+      "asset_id": "her",
+      "lang": "es",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 9,
+      "users": 6,
+      "engaged_sessions": 6,
+      "engagement_sec": 185.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
       "channel": "google_organic",
       "path": "/es/posts/john_von_neumann",
       "asset_id": "john_von_neumann",
@@ -4610,21 +4640,6 @@
       "users": 8,
       "engaged_sessions": 3,
       "engagement_sec": 88.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/es/posts/norbert_wiener",
-      "asset_id": "norbert_wiener",
-      "lang": "es",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 9,
-      "users": 6,
-      "engaged_sessions": 5,
-      "engagement_sec": 516.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -4790,21 +4805,6 @@
       "users": 4,
       "engaged_sessions": 7,
       "engagement_sec": 58.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/es/posts/her",
-      "asset_id": "her",
-      "lang": "es",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 8,
-      "users": 5,
-      "engaged_sessions": 5,
-      "engagement_sec": 130.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -13021,6 +13021,21 @@
     },
     {
       "channel": "direct",
+      "path": "/en/tags/operational-control",
+      "asset_id": null,
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 1,
+      "users": 1,
+      "engaged_sessions": 0,
+      "engagement_sec": 0.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
       "path": "/en/tags/performance",
       "asset_id": null,
       "lang": "en",
@@ -14981,6 +14996,21 @@
       "users": 1,
       "engaged_sessions": 0,
       "engagement_sec": 4.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/es/posts/obs_parte6_fastapi",
+      "asset_id": "obs_parte6_fastapi",
+      "lang": "es",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 1,
+      "users": 1,
+      "engaged_sessions": 0,
+      "engagement_sec": 5.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },

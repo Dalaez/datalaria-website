@@ -5,7 +5,7 @@ draft: false
 category: "Startups"
 categories: ["casos_exito", "Startups"]
 tags: ["wallapop", "machine learning", "computer vision", "pricing algoritmico", "grafos", "fraude", "esg", "economia circular", "startups españolas", "naver"]
-description: "Cómo Wallapop transformó la compraventa de segunda mano en una plataforma tecnológica de 19 millones de usuarios. Analizamos su arquitectura de Machine Learning: búsqueda visual multimodal, algoritmos de pricing dinámico, grafos antifraude, impacto ESG y su adquisición por el gigante coreano NAVER."
+description: "La ingeniería invisible detrás de Wallapop: machine learning en tiempo real, búsqueda visual multimodal, algoritmos antifraude y adquisición por NAVER."
 summary: "Subes una foto de una bicicleta a Wallapop. En 200 milisegundos, una batería de modelos de Machine Learning categoriza el modelo, estima su precio óptimo, analiza si es un fraude y calcula las emisiones de CO₂ evitadas. Detrás de la app de segunda mano más famosa de España se oculta una de las infraestructuras de datos y ML más sofisticadas de Europa, culminada con su adquisición por el gigante asiático NAVER."
 social_text: "Subes una foto a Wallapop y en 200ms se activa una cascada de Machine Learning: visión artificial, pricing dinámico y grafos antifraude. La historia técnica de Wallapop y su adquisición por NAVER 📦🚲🤖 #Wallapop #MachineLearning #Startups #ECommerce #DataEngineering"
 image: cover.jpg

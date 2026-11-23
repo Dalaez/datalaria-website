@@ -1,5 +1,5 @@
 ---
-title: "The Thinking Game: How DeepMind Turned Video Games into History's Greatest Scientific Tool"
+title: "The Thinking Game: Inside the DeepMind Documentary, Demis Hassabis & AlphaFold"
 date: 2026-01-01
 draft: false
 category: "Tech Culture & Media"
@@ -7,7 +7,7 @@ categories: ["Artificial Intelligence", "Deep Tech", "Science", "Documentaries",
 tags: ["DeepMind", "Demis Hassabis", "AlphaFold", "AGI", "AlphaGo", "The Thinking Game", "Computational Biology"]
 image: the_thinking_game.jpg
 social_text: Silicon Valley built chatbots. DeepMind built intelligence. From video games to solving biology's biggest mystery, this is the untold story of AI's ultimate goal. Your mind will break.
-description: "A deep dive into the documentary 'The Thinking Game', chronicling the odyssey of Demis Hassabis and DeepMind. From Atari pixels to solving protein folding with AlphaFold, we explore how the quest for AGI is rewriting the rules of modern science."
+description: "Inside 'The Thinking Game' documentary: how Demis Hassabis and DeepMind went from Atari and AlphaGo to solving biology with AlphaFold on their quest for AGI."
 summary: "While the world gets distracted by chatbots writing poems, DeepMind has been playing a much deeper game. The documentary 'The Thinking Game' reveals the untold story behind AlphaGo and AlphaFold: a decades-long mission to solve intelligence and use it to decode biology itself. We analyze the technical milestones, the ethical philosophy, and why Demis Hassabis believes AI is a discovery on the level of fire or electricity."
 ---
 
@@ -20,6 +20,8 @@ The new documentary **"The Thinking Game"** (selected by the [Tribeca](https://t
 This post analyzes the technical and philosophical pillars exposed by the documentary, breaking down how video games served as a training ground for hard science and why the quest for Artificial General Intelligence (AGI) is the ultimate "Thinking Game."
 
 ![Representative image about The Thinking Game](gemini_the_thinking_game.png)
+
+> **Documentary Overview:** *The Thinking Game* (directed by Greg Kohs) chronicles Demis Hassabis and Google DeepMind's decade-long odyssey: from training on Atari and AlphaGo's Move 37 to predicting 200 million protein structures with AlphaFold, revealing how deep reinforcement learning transformed from video games into scientific breakthrough.
 
 ### 1. The Architect: From Child Prodigy to AGI Visionary
 

@@ -9,7 +9,7 @@ image: cover.jpg
 weight: 10
 authorAvatar: datalaria-logo.png
 social_text: "Your vector RAG finds isolated snippets, but fails to connect the dots. Why GraphRAG is the breakthrough AI needs on its path to AGI 🕸️🧠📊 #GraphRAG #AI #KnowledgeGraphs #RAG #DataEngineering"
-description: "Why vector similarity search breaks down on complex questions and how GraphRAG (Knowledge Graphs + LLMs) unlocks multi-hop reasoning and global dataset synthesis. We break down Microsoft Research's pioneering work and the leap toward AGI."
+description: "Why vector similarity search breaks down on complex questions and how GraphRAG (Knowledge Graphs + LLMs) unlocks multi-hop reasoning and dataset synthesis."
 summary: "You ask your RAG system: 'What are the cross-cutting themes and operational risks across 500 enterprise audit reports?'. Your vector database fails because it only understands word proximity, not relationships. GraphRAG merges knowledge graphs, hierarchical community detection, and LLMs to transform unstructured data into a navigable cognitive map."
 ---
 
@@ -44,6 +44,8 @@ Standard vector retrieval suffers from two critical, structural blind spots:
 ![Technical comparison: Traditional Vector RAG versus GraphRAG's hierarchical architecture](graphrag_vs_vector_rag.jpg)
 
 ### The GraphRAG Architecture: How Microsoft Broke the Retrieval Barrier
+
+> **Pragmatic Architecture Rule:** Before taking on the pipeline complexity of entity extraction and community clustering for a full knowledge graph, keep in mind that for 80% of enterprise retrieval scenarios (technical documentation search, customer support tickets, and product manuals), unified relational search with [PostgreSQL and pgvector](/en/posts/pgvector_vs_vectordb/) provides sub-10ms queries at zero additional cost. Reserve GraphRAG for complex multi-hop dependencies and global syntheses where flat vector similarity fails.
 
 Pioneered by **Microsoft Research** (Darren Edge, Jonathan Larson, et al.), GraphRAG re-engineers the ingestion and retrieval lifecycle through a four-stage pipeline:
 

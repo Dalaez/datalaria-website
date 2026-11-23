@@ -9,7 +9,7 @@ image: cover.jpg
 weight: 10
 authorAvatar: datalaria-logo.png
 social_text: "He designed the blueprint for every modern computer, invented Game Theory, and coined the term 'Technological Singularity'. Was John von Neumann the most extraordinary mind of the 20th century? 🧠💻♟️ #JohnVonNeumann #AGI #ComputerArchitecture #GameTheory #TechHistory"
-description: "A deep dive into the life and genius of John von Neumann: the stored-program computer architecture, the memory wall bottleneck challenging modern AI, game theory, and the Singularity."
+description: "John von Neumann's legacy: stored-program computer architecture, Minimax game theory, Monte Carlo methods, and the origin of the Technological Singularity."
 summary: "In the 1950s, Nobel laureate Eugene Wigner famously declared: 'Only Johnny von Neumann was fully awake'. From dividing eight-digit numbers in his head at age six to drafting the universal architecture of modern processors and predicting that accelerating technology was leading humanity toward an 'essential singularity', we explore the legacy of the polymath who built the digital cradle of AGI."
 ---
 

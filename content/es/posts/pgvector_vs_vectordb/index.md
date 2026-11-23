@@ -5,7 +5,7 @@ draft: false
 category: "IA, Ingeniería y Proyectos"
 categories: ["Inteligencia Artificial", "Ingeniería", "IA, Ingeniería y Proyectos"]
 tags: ["postgresql", "pgvector", "vector database", "pinecone", "rag", "embeddings", "hnsw", "supabase", "arquitectura de datos"]
-description: "¿Realmente necesitas una base de datos vectorial dedicada como Pinecone, Qdrant o Milvus? Analizamos el rendimiento de pgvector en PostgreSQL, el coste oculto de la arquitectura dual, los índices HNSW vs IVFFlat, y por qué la base de datos unificada gana en el 95% de los casos."
+description: "¿Necesitas una Vector DB como Pinecone o Qdrant? Analizamos costes, benchmarks HNSW y por qué PostgreSQL con pgvector resuelve la búsqueda en el 95% de casos."
 summary: "En la fiebre del RAG, cientos de equipos contrataron bases de datos vectoriales dedicadas de 300€ al mes para indexar unos pocos miles de documentos. La realidad en producción es que PostgreSQL con pgvector resuelve esa búsqueda en 8 milisegundos, con coste cero adicional y manteniendo la integridad ACID. Este es el análisis de arquitectura y rendimiento definitivo."
 social_text: "¿Tu equipo paga 300€/mes por una Vector DB externa para unos miles de documentos? PostgreSQL con pgvector lo resuelve en 8ms y coste cero. El análisis definitivo: pgvector vs Vector DBs dedicadas 🐘⚡📊 #PostgreSQL #pgvector #RAG #AI #DataEngineering"
 image: cover.jpg
@@ -20,6 +20,8 @@ Sin embargo, en las sombras de la infraestructura, acaba de nacer una pesadilla 
 Todo para indexar 50.000 vectores que **vuestro PostgreSQL actual podía buscar en 8 milisegundos con una sola línea de SQL y coste cero adicional**.
 
 En la línea de decisiones de arquitectura que hemos defendido a lo largo de este blog —desde la separación de responsabilidades en [RAG: 7 Antipatrones](/es/posts/rag_antipatrones/) hasta la simplicidad pragmática de nuestro [Stack de Productividad 2026](/es/posts/stack_productividad_2026/) con Supabase—, este artículo analiza el debate de infraestructura de datos más polarizante de la IA aplicada: **¿cuándo necesitas realmente una Vector DB especializada (Pinecone, Qdrant, Milvus, Weaviate) y cuándo PostgreSQL con `pgvector` es la decisión de ingeniería superior?**
+
+> **¿Debes usar pgvector en PostgreSQL o una base de datos vectorial dedicada?** Para el 95% de las aplicaciones corporativas, RAG y agentes, PostgreSQL con pgvector resuelve la búsqueda semántica en menos de 10ms a coste cero y con integridad ACID. Solo necesitas Pinecone, Qdrant o Milvus si superas decenas de millones de vectores o requieres sharding distribuido extremo.
 
 ### La Fiebre de las Bases de Datos Vectoriales
 
@@ -134,6 +136,12 @@ La honestidad técnica exige reconocer cuándo una herramienta especializada sup
 | **Sharding horizontal masivo** | Particionamiento estándar de PostgreSQL | Sharding automático y balanceo nativo entre decenas de nodos |
 
 Si tu empresa no está indexando el catálogo de productos de Amazon o miles de millones de posts de una red social global, **estás en el territorio de pgvector**. Para el 95% de las aplicaciones corporativas, SaaS B2B, sistemas RAG de documentación técnica y agentes inteligentes, PostgreSQL maneja la carga sin despeinarse.
+
+### ¿Búsqueda Vectorial o Grafo de Conocimiento? Cuándo Saltar a GraphRAG
+
+Una base de datos vectorial (ya sea PostgreSQL con `pgvector` o una dedicada) sobresale encontrando *agujas en un pajar*: fragmentos específicos por similitud semántica. Sin embargo, cuando tus consultas exigen conectar entidades dispersas, deducir dependencias jerárquicas o razonar en múltiples saltos (ej. *«¿qué proveedores se ven afectados si este componente crítico entra en obsolescencia?»*), los vectores se quedan ciegos.
+
+En esos escenarios de síntesis global y razonamiento relacional, la solución no es cambiar de base vectorial, sino evolucionar la arquitectura hacia [GraphRAG: Por Qué los Vectores No Bastan y Tu IA Necesita un Grafo de Conocimiento](/es/posts/graphrag/).
 
 ### Caso Real en Datalaria: El Ops Copilot y Supabase
 

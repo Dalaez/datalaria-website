@@ -5,7 +5,7 @@ draft: false
 category: "Pioneros y Referentes"
 categories: ["casos_exito", "Pioneros y Referentes"]
 tags: ["leonid kantorovich", "programación lineal", "optimización", "investigación de operaciones", "historia de los datos"]
-description: "Leonid Kantorovich inventó la programación lineal para optimizar recursos en la URSS, enfrentándose al dogma económico estalinista. Su legado impulsa hoy la logística global y la ciencia de datos."
+description: "Leonid Kantorovich creó la programación lineal en la URSS. Descubre al Nobel que desafió a Stalin y revolucionó la logística y optimización de operaciones."
 summary: "Conoce a Leonid Kantorovich, el genio soviético que revolucionó la asignación de recursos. Su creación, la programación lineal, desafió la ortodoxia marxista y le valió el Premio Nobel."
 social_text: ¿Sabías que la programación lineal nació desafiando a Stalin? 🤯 Leonid Kantorovich optimizó fábricas soviéticas con matemáticas, arriesgó su vida por contradecir la teoría marxista y terminó ganando el Nobel. Hoy, su algoritmo mueve el mundo. 🚀📊 #DataScience #Optimization #OperationsResearch
 weight: 10
@@ -16,6 +16,8 @@ authorAvatar: datalaria-logo.png
 La historia de la economía matemática y la ciencia de datos está ligada a una necesidad humana fundamental: la asignación óptima de recursos escasos para maximizar el rendimiento. En el epicentro de esta revolución se encuentra **Leonid Vitaliyevich Kantorovich**, el matemático soviético cuyo trabajo pionero sentó las bases de la **programación lineal**.
 
 Hoy en día, herramientas como PuLP o SciPy en Python asumen algoritmos de optimización como algo cotidiano. Pero en 1938, formular estas matemáticas bajo la mirada de Iósif Stalin requería tanto genio intelectual como valentía pura.
+
+> **¿Quién fue Leonid Kantorovich?** Matemático soviético y Premio Nobel de Economía (1975) que formuló en 1939 la programación lineal para optimizar recursos industriales escasos. Su método de multiplicadores resolventes (precios sombra) revolucionó la asignación de recursos y sustenta hoy la logística y la investigación de operaciones moderna.
 
 ## El Desafío del Trust de la Madera Contrachapada
 

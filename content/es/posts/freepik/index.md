@@ -1,11 +1,11 @@
 ---
-title: "Freepik: La Historia del Gigante Malagueño que Domó a la IA para Conquistar el Mundo Creativo"
+title: "Freepik: El Gigante que Domó la IA y Transformó las Operaciones Creativas Globales"
 date: 2025-10-11
 category: "Startups"
 draft: False
 categories: ["casos_exito", "IA", "Startups"]
 tags: ["freepik", "ia", "ia generativa", "malaga", "startup", "modelo de negocio", "disrupcion"]
-description: "Un análisis profundo de cómo Freepik, la startup malagueña, pasó de ser un buscador de imágenes a un líder global, enfrentándose a la disrupción de la IA con una estrategia audaz que está redefiniendo el futuro de la creatividad."
+description: "Cómo Freepik domó la IA generativa: reducción de costes operativos, modelos visuales propios y automatización creativa para empresas medianas y agencias."
 summary: "Cuando la IA generativa amenazó con destruir la industria del contenido de stock, una empresa de Málaga apostó su futuro a una reinvención total. Esta es la historia de Freepik: de su ingenioso modelo 'freemium' a su pivote estratégico para surfear la ola de la IA y competir cara a cara con los gigantes tecnológicos."
 ---
 
@@ -70,3 +70,6 @@ Con el mercado de la IA en diseño gráfico proyectado a crecer hasta casi **14.
 * [**Xataka**: La startup española Freepik es ya uno de los 'exits' más importantes de la historia de España tras ser comprada por el fondo EQT"](https://www.xataka.com/empresas-y-economia/fondo-inversion-sueco-eqt-compra-a-startup-espanola-freepik)
 * [**Xataka**: Freepik adquiere Magnific y refuerza su arsenal de herramientas de IA "made in Spain"](https://www.xataka.com/robotica-e-ia/freepik-adquiere-magnific-refuerza-su-arsenal-herramientas-ia-made-in-spain)
 * [**Xataka**: Hangzhou la casa de los Six Little Dragons](https://www.xataka.com/robotica-e-ia/hay-ciudad-china-que-se-mide-cara-a-cara-silicon-valley-bienvenidos-a-hangzhou-casa-six-little-dragons)
+* [**Datalaria**: Wallapop y la Ingeniería de Marketplaces Circulares](/es/posts/wallapop/)
+* [**Datalaria**: HappyRobot y los Agentes de Voz en Operaciones](/es/posts/happyrobot/)
+* [**Datalaria**: Agentes de IA para la Operativa Empresarial](/es/posts/agentes_ia_operativa_sdd/)

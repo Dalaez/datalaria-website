@@ -1,5 +1,5 @@
 ---
-title: "Halt and Catch Fire: La Serie de Culto que Entendió la Ingeniería de Software Mejor que Silicon Valley"
+title: "Halt and Catch Fire: Significado, Historia y por Qué Clavó la Ingeniería de Software"
 date: 2026-08-29
 draft: false
 category: "Cultura Tech y Media"
@@ -9,7 +9,7 @@ image: cover.jpg
 weight: 10
 authorAvatar: datalaria-logo.png
 social_text: "¿Por qué las mejores arquitecturas técnicas pierden frente a una distribución superior? 'Halt and Catch Fire' es la mejor serie jamás rodada sobre la verdadera ingeniería de software 💻🔥📡 #HaltAndCatchFire #Ingeniería #Startups #TechHistory"
-description: "Un análisis exhaustivo de 'Halt and Catch Fire', la obra maestra televisiva de AMC que retrató con precisión quirúrgica el nacimiento del PC clónico, los videojuegos multijugador online, el comercio electrónico y la World Wide Web."
+description: "Significado, historia y análisis técnico de Halt and Catch Fire: ingeniería inversa de la BIOS, el clon de IBM y por qué la mejor arquitectura a veces pierde."
 summary: "Casi todas las películas de Hollywood sobre tecnología cometen el mismo error: reducen la informática a pantallas con tipografía verde parpadeante y hackers que teclean a la velocidad de la luz. 'Halt and Catch Fire' hizo lo contrario: retrató el olor a estaño quemado, la pesadilla de la ingeniería inversa, la deuda técnica y el dolor humano de innovar cuando nadie entiende tu visión."
 ---
 

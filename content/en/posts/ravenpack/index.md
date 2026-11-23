@@ -9,7 +9,7 @@ image: cover.jpg
 weight: 10
 authorAvatar: datalaria-logo.png
 social_text: "How do you build the AI engine that guides the world's most elite Wall Street hedge funds from sunny Marbella? The history, architecture, and future of RavenPack in the era of autonomous financial agents 📈🧠🌊 #RavenPack #Fintech #NLP #QuantitativeTrading #WallStreet #AI"
-description: "An in-depth analysis of RavenPack: its 2003 origins on Spain's Costa del Sol, Armando Gonzalez's vision, transforming unstructured text into quantitative trading alpha, its leap to Bigdata.com, and its pivotal role on the path to financial AGI."
+description: "RavenPack vs Bloomberg: how real-time NLP and alternative data turn unstructured financial news into market sentiment signals for elite quantitative funds."
 summary: "In 2003, along Marbella's Golden Mile, a young Californian entrepreneur founded RavenPack with an audacious mission: parse every global news story in milliseconds to feed Wall Street's mathematical trading models. Two decades later, the company is the silent oracle behind the world's largest quantitative hedge funds and investment banks. We unpack its NLP architecture, business model, defensive moat, and how its financial knowledge graphs power autonomous AI agents in 2026."
 ---
 

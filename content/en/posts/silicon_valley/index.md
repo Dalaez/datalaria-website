@@ -9,7 +9,7 @@ image: cover.jpg
 weight: 10
 authorAvatar: datalaria-logo.png
 social_text: "How did an HBO comedy predict with pinpoint accuracy the loss of control in autonomous AI agents and modern cybersecurity crises? We dissect Pied Piper's journey and the chilling finale of PiperNet 💻🐀🔐 #SiliconValley #PiedPiper #AI #Cybersecurity #TechHistory"
-description: "An exhaustive technical analysis of HBO's Silicon Valley: the startup journey, the PiperNet finale where AI breaks global encryption, and parallels with 2026 autonomous agent incidents."
+description: "Silicon Valley and PiperNet: Middle-Out compression, decentralized P2P systems, and prophetic engineering lessons on runaway autonomous AI agent architectures."
 summary: "Broadcast between 2014 and 2019, 'Silicon Valley' initially seemed like a ruthless satire of tech hub vanity. Yet in its final season, Mike Judge's comedy transformed into the most lucid warning ever produced on the AI alignment problem. We analyze the complete arc of Pied Piper, the optimization nightmare of Son of Anton and PiperNet, and how its dilemmas mirror the real security vulnerabilities of modern frontier models."
 ---
 

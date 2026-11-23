@@ -5,7 +5,7 @@ draft: false
 category: "Startups"
 categories: ["casos_exito", "IA", "Startups"]
 tags: ["nextail", "ia", "retail", "supply chain", "S&OP", "machine learning", "optimización", "moda", "startup"]
-description: "La historia de Nextail, la startup madrileña que está reemplazando las hojas de cálculo del retail de moda por un motor matemático de IA prescriptiva para decisiones de inventario."
+description: "Cómo Nextail optimiza inventarios en retail con IA prescriptiva: de la experiencia en Zara a sustituir hojas de cálculo por modelos de demanda ágiles."
 summary: "El futuro del retail no cabe en Excel. Un ex-directivo de Zara fundó Nextail para demostrarlo, construyendo un motor de IA prescriptiva que procesa miles de millones de combinaciones de inventario y libera hasta el 75% del tiempo de los equipos de merchandising. Esta es la historia de cómo la optimización matemática está conquistando el fast fashion."
 social_text: "El futuro del retail no cabe en Excel. Un ex-directivo de Zara fundó Nextail para demostrarlo con IA prescriptiva que procesa miles de millones de decisiones de inventario. La historia de cómo las matemáticas están conquistando el fast fashion 🧠👗📊 #RetailTech #IA #SupplyChain"
 image: cover.png

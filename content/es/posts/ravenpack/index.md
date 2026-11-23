@@ -9,7 +9,7 @@ image: cover.jpg
 weight: 10
 authorAvatar: datalaria-logo.png
 social_text: "¿Cómo se construye desde Marbella el motor de IA que guía las decisiones de los mayores fondos de Wall Street? La historia, arquitectura y futuro de RavenPack en la era de los agentes financieros autónomos 📈🧠🌊 #RavenPack #Fintech #NLP #QuantitativeTrading #WallStreet #AI"
-description: "Análisis en profundidad de RavenPack: sus orígenes en Marbella, cómo transformaron texto no estructurado en señales de trading cuantitativo, su salto a Bigdata.com y los agentes financieros."
+description: "RavenPack vs Bloomberg: cómo su motor de NLP y datos alternativos en tiempo real convierte noticias financieras en señales para trading algorítmico y fondos."
 summary: "En 2003, en plena Milla de Oro de Marbella, un joven emprendedor californiano fundó RavenPack con una visión insólita: procesar cada noticia del planeta en milisegundos para alimentar los modelos matemáticos de Wall Street. Dos décadas después, la compañía es el oráculo silencioso de los mayores hedge funds y bancos de inversión mundiales. Desgranamos su tecnología de NLP, sus rondas, su foso defensivo y cómo sus grafos de conocimiento impulsan a los agentes de IA de 2026."
 ---
 

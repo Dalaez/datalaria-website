@@ -9,7 +9,7 @@ image: cover.jpg
 weight: 10
 authorAvatar: datalaria-logo.png
 social_text: "Tu RAG vectorial encuentra fragmentos aislados, pero no sabe conectar los puntos. Por qué GraphRAG es la revolución que la IA necesita en su camino a la AGI 🕸️🧠📊 #GraphRAG #AI #KnowledgeGraphs #RAG #DataEngineering"
-description: "Por qué la búsqueda por similitud vectorial falla en preguntas complejas y cómo GraphRAG (Knowledge Graphs + LLMs) resuelve el razonamiento multisalto y la explicabilidad corporativa."
+description: "Por qué la búsqueda vectorial falla en preguntas complejas y cómo GraphRAG (Knowledge Graphs + LLMs) resuelve el razonamiento multisalto y síntesis global."
 summary: "Le preguntas a tu RAG: '¿Cuáles son los temas transversales y riesgos ocultos en los últimos 500 informes técnicos?'. Tu base de datos vectorial fracasa porque solo entiende proximidad de palabras, no relaciones. GraphRAG combina grafos de conocimiento, detección de comunidades jerárquicas y LLMs para transformar datos no estructurados en un mapa cognitivo navegable."
 ---
 
@@ -44,6 +44,8 @@ La búsqueda vectorial sufre de dos cegueras estructurales insalvables:
 ![Comparativa técnica: Vector RAG tradicional frente a la arquitectura jerárquica de GraphRAG](graphrag_vs_vector_rag.jpg)
 
 ### La Arquitectura de GraphRAG: Cómo Microsoft Rompió el Muro
+
+> **Regla de Arquitectura Pragmática:** Antes de asumir la complejidad de ingesta y extracción de entidades de un grafo completo, recuerda que para el 80% de los casos de uso corporativos (búsqueda sobre documentación técnica, FAQs y tickets de soporte), una base de datos relacional unificada con [PostgreSQL y pgvector](/es/posts/pgvector_vs_vectordb/) resuelve la recuperación con latencias inferiores a 10ms y coste cero. Da el salto a GraphRAG solo cuando tus preguntas exijan síntesis global y razonamiento relacional multi-salto que los vectores planos no pueden resolver.
 
 Popularizado por el equipo de **Microsoft Research** (Darren Edge, Jonathan Larson et al.), GraphRAG transforma por completo el paradigma de ingesta e indexación. En lugar de limitarse a trocear texto en bloques rectangulares ciegos, el sistema ejecuta un pipeline de cuatro fases:
 

@@ -9,7 +9,7 @@ image: cover.jpg
 weight: 10
 authorAvatar: datalaria-logo.png
 social_text: "Diseñó la arquitectura de cada ordenador del planeta, inventó la Teoría de Juegos y acuñó el término 'Singularidad Tecnológica'. ¿Fue John von Neumann la mente más asombrosa del siglo XX? 🧠💻♟️ #JohnVonNeumann #AGI #ComputerScience #GameTheory #TechHistory"
-description: "Recorrido por la vida y el genio de John von Neumann: la arquitectura de programa almacenado, el cuello de botella que desafía a la IA moderna, la teoría de juegos y la Singularidad."
+description: "Vida y legado de John von Neumann: arquitectura de computadores, teoría de juegos con Minimax, método Monte Carlo y la primera profecía de la Singularidad."
 summary: "En la década de 1950, Eugene Wigner sentenció: 'Solo Johnny von Neumann estaba completamente despierto'. Desde calcular divisiones de ocho dígitos de cabeza con seis años hasta diseñar el plano maestro de todos los procesadores modernos y anticipar que el progreso tecnológico nos conducía a una 'singularidad esencial', analizamos el legado del polímata que moldeó el hardware, la estrategia de los agentes y el destino de la AGI."
 ---
 

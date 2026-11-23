@@ -1,11 +1,11 @@
 ---
-title: "Leonid Kantorovich: The Mathematician Who Challenged Stalin with Linear Programming"
+title: "Leonid Kantorovich: The Soviet Nobel Laureate Who Invented Linear Programming"
 date: 2026-05-24
 draft: false
 category: "Pioneers & Icons"
 categories: ["casos_exito", "Pioneers & Icons"]
 tags: ["leonid kantorovich", "linear programming", "optimization", "operations research", "data history"]
-description: "Leonid Kantorovich invented linear programming to optimize Soviet resources, facing the Stalinist economic dogma. His legacy drives global logistics and data science today."
+description: "Leonid Kantorovich invented linear programming in the USSR. Meet the Nobel Laureate who defied Stalin and whose math powers modern logistics and supply chains."
 summary: "Meet Leonid Kantorovich, the Soviet genius who revolutionized resource allocation. His creation, linear programming, defied Marxist orthodoxy and earned him the Nobel Prize."
 social_text: Did you know linear programming was born defying Stalin? 🤯 Leonid Kantorovich optimized Soviet factories with math, risked his life contradicting Marxist theory, and ended up winning the Nobel Prize. Today, his algorithm runs the world. 🚀📊 #DataScience #Optimization #OperationsResearch
 weight: 10
@@ -16,6 +16,8 @@ authorAvatar: datalaria-logo.png
 The history of mathematical economics and data science is bound to a fundamental human need: the optimal allocation of scarce resources to maximize performance. At the epicenter of this revolution stands **Leonid Vitaliyevich Kantorovich**, the Soviet mathematician whose pioneering work laid the foundations for **linear programming**.
 
 Today, tools like PuLP or SciPy in Python handle optimization algorithms as everyday occurrences. But in 1938, formulating these mathematics under the watchful eye of Joseph Stalin required both intellectual genius and sheer bravery.
+
+> **Who was Leonid Kantorovich?** Soviet mathematician and 1975 Nobel Laureate in Economics who pioneered linear programming in 1939 to optimize scarce industrial resources. His method of resolving multipliers (shadow prices) revolutionized resource allocation and powers modern logistics, supply chains, and operations research.
 
 ## The Plywood Trust Challenge
 
