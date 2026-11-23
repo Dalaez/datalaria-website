@@ -615,7 +615,7 @@ Detalles ℹ️
 <button type="button" class="btn-kit-info" onclick="openModal('pack-pert')">
 Detalles ℹ️
 </button>
-<span class="btn-kit-info btn-disabled" title="Artículo técnico próximamente">Artículo próximamente</span>
+<a href="/es/posts/estimacion-pert-3-puntos/" class="btn-kit-info" title="Leer artículo técnico">Artículo técnico 📖</a>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/47843201-4db9-4d80-bb88-e59364fb6117?embed=1" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
@@ -649,7 +649,7 @@ Detalles ℹ️
 <button type="button" class="btn-kit-info" onclick="openModal('pack-evm')">
 Detalles ℹ️
 </button>
-<span class="btn-kit-info btn-disabled" title="Artículo técnico próximamente">Artículo próximamente</span>
+<a href="/es/posts/cuadro-mando-evm-valor-ganado/" class="btn-kit-info" title="Leer artículo técnico">Artículo técnico 📖</a>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/188950c2-0fd9-4331-919f-237880e2c78b?embed=1" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
@@ -871,8 +871,8 @@ Detalles ℹ️
       Apúntate para recibir el Starter Kit gratuito en el lanzamiento y asegurar tu plaza con el <strong>descuento Early-Bird de 19€</strong> para el escuadrón completo de 12 agentes SDD.
     </div>
     <form id="waitlist-form-catalog" onsubmit="submitCatalogWaitlist(event)" style="display: flex; flex-direction: column; gap: 12px;">
-      <input type="text" id="wl-name" required placeholder="Tu nombre" style="padding: 10px 14px; border-radius: 8px; border: 1px solid #334155; background: #020617; color: #f8fafc; font-size: 14px;" />
-      <input type="email" id="wl-email" required placeholder="Tu correo profesional" style="padding: 10px 14px; border-radius: 8px; border: 1px solid #334155; background: #020617; color: #f8fafc; font-size: 14px;" />
+      <input type="text" id="wl-name" name="name" autocomplete="name" required placeholder="Tu nombre" style="padding: 10px 14px; border-radius: 8px; border: 1px solid #334155; background: #020617; color: #f8fafc; font-size: 14px;" />
+      <input type="email" id="wl-email" name="email" autocomplete="email" required placeholder="Tu correo profesional" style="padding: 10px 14px; border-radius: 8px; border: 1px solid #334155; background: #020617; color: #f8fafc; font-size: 14px;" />
       <button type="submit" id="wl-submit-btn" style="padding: 12px; border-radius: 8px; border: none; background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%); color: #ffffff; font-weight: 700; font-size: 14px; cursor: pointer; margin-top: 4px;">
         Reservar Plaza Early-Bird (19€) →
       </button>
@@ -1499,7 +1499,7 @@ Detalles ℹ️
       "Guía PDF sobre gestión de plazos y contingencia de cronograma"
     ],
     "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/47843201-4db9-4d80-bb88-e59364fb6117?embed=1",
-    "guideUrl": null,
+    "guideUrl": "/es/posts/estimacion-pert-3-puntos/",
     "previewImg": "/images/recursos/pert-preview-es.png"
   },
   {
@@ -1525,8 +1525,8 @@ Detalles ℹ️
       "Guía PDF sobre estándar EVM del Project Management Institute (PMI)"
     ],
     "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/188950c2-0fd9-4331-919f-237880e2c78b?embed=1",
-    "guideUrl": null,
-    "previewImg": "/images/recursos/EVM.png"
+    "guideUrl": "/es/posts/cuadro-mando-evm-valor-ganado/",
+    "previewImg": "/images/recursos/evm-preview-es.png"
   },
   {
     "id": "pack-stock",
@@ -1552,7 +1552,7 @@ Detalles ℹ️
     ],
     "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/513e5cad-9f9f-4b53-a435-b511a846d79e?embed=1",
     "guideUrl": null,
-    "previewImg": "/images/recursos/Stock.png"
+    "previewImg": "/images/recursos/stock-preview-es.png"
   },
     {
     "id": "pack-pulse",

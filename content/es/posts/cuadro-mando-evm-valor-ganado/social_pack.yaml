@@ -1,0 +1,78 @@
+es:
+  x:
+    hook: "Gastar el 50 % del presupuesto a mitad de plazo no significa ir bien: puede ocultar un sobrecoste de 195.349 €. Así auditas proyectos con EVM, Curva S, 27 criterios EIA-748 y Agile-EVM."
+    thread:
+      - "1/5 La trampa de la contabilidad tradicional: gastar 600.000 € de 1.200.000 € en el Mes 6 parece 'ir en presupuesto'. Pero si tu Avance Técnico Real (EV) es del 43 % (516.000 €), ya pierdes 84.000 € netos."
+      - "2/5 El Cuadro de Mando EVM unifica alcance físico (EV), cronograma (PV) y coste real (AC). Con CPI = EV/AC (0.86) y SPI = EV/PV (0.86) sabes al 15-20 % de avance si el proyecto destruye capital o pierde velocidad."
+      - "3/5 Modelos predictivos al cierre: EAC1 Típico (BAC/CPI = 1.395.349 €), EAC2 Atípico (1.284.000 €) y EAC3 Compuesto (1.524.824 €). El TCPI = (BAC-EV)/(BAC-AC) da 1.14x: superar 1.10x es estadísticamente inalcanzable."
+      - "4/5 Novedad normativa y metodológica: el estándar EIA-748-E condensa los antiguos 32 criterios en 27 directrices EVMS en 5 grupos de procesos (PMBOK), y Agile-EVM permite gobernar Sprints con Story Points y DoD 0/100."
+      - "5/5 Guía completa con los 10 conceptos EVM, 27 criterios EIA-748, Agile-EVM Híbrido y Executive Decision Pack en Excel + PPTX 16:9 + PDF (8 €): https://datalaria.com/es/posts/cuadro-mando-evm-valor-ganado/"
+    hashtags:
+      - "EVM"
+      - "ValorGanado"
+      - "PMBOK"
+      - "ControlOperativo"
+      - "ProjectFinance"
+    web_intent_url: "https://x.com/intent/tweet?text=Gastar+el+50+%25+del+presupuesto+a+mitad+de+plazo+no+significa+ir+bien%3A+puede+ocultar+un+sobrecoste+de+195.349+%E2%82%AC.+As%C3%AD+auditas+proyectos+con+EVM%2C+Curva+S%2C+27+criterios+EIA-748+y+Agile-EVM.&url=https%3A%2F%2Fdatalaria.com%2Fes%2Fposts%2Fcuadro-mando-evm-valor-ganado%2F&hashtags=EVM%2CValorGanado%2CPMBOK%2CControlOperativo%2CProjectFinance"
+  linkedin:
+    text: |-
+      Si un proyecto de 1.200.000 € ha gastado exactamente 600.000 € al llegar al Mes 6, la contabilidad tradicional declara solemnemente que marcha "en presupuesto".
+
+      ⚠️ Esa lectura es una peligrosa ficción estadística: si el Avance Técnico Real es apenas del 43 % (516.000 € de Valor Ganado), el proyecto arrastra ya 84.000 € de sobrecoste oculto y 3 semanas de retraso crítico.
+
+      📘 Acabo de publicar la guía técnica completa del Cuadro de Mando EVM (Valor Ganado, Curva S y Proyecciones EAC) en Datalaria:
+
+      🔹 Los 10 conceptos rectores sin ambigüedades: cómo conectar Avance Técnico Real, BAC, PV, EV, AC, CV/SV, CPI/SPI, modelos de cierre EAC1/EAC2/EAC3 y el test de viabilidad TCPI ante el Consejo.
+
+      🔹 Estándar EIA-748-E (27 Directrices EVMS acorde al PMBOK): desglose completo de los 5 grupos de procesos que sustituyen a los 32 criterios históricos, citando el análisis de Roland Wanner.
+
+      🔹 Aplicación del EVM en Entornos Híbridos (Agile-EVM): cómo combinar gobernanza CAPEX por Cuentas de Control con Sprints de 2 semanas mediante Story Points, regla 0/100 vía Definition of Done y Scope Swapping.
+
+      🔹 Executive Decision Pack listo para Comité (8 € oferta desde 25 €): libro Excel ECMA-376 con Curva S M01-M12 y 25 paquetes WBS, Guía Metodológica PDF de 5 páginas y Deck C-Level 16:9.
+
+      📖 Lee la guía metodológica completa, fórmulas y caso de rescate de 1,2M € aquí: https://datalaria.com/es/posts/cuadro-mando-evm-valor-ganado/
+
+      💬 En tus comités de dirección, ¿seguís evaluando proyectos comparando solo gasto contra calendario o ya auditas CPI, SPI y TCPI antes de aprobar rescates?
+    hashtags:
+      - "EVM"
+      - "ValorGanado"
+      - "PMBOK"
+      - "ControlOperativo"
+      - "ProjectFinance"
+  newsletter:
+    archetype: "counterintuitive_question"
+    subject: "¿Por qué gastar el 50 % a mitad de proyecto oculta un sobrecoste de 195.349 €?"
+    preheader: "Los 10 conceptos EVM, Curva S, las 27 directrices EIA-748, Agile-EVM híbrido y modelos EAC/TCPI ante el CFO."
+    hook_paragraphs:
+      - "Cuando un megaproyecto de 1.200.000 € ha consumido exactamente 600.000 € en el Mes 6, los informes financieros clásicos suelen felicitar al equipo por ir en presupuesto. Sin embargo, el gasto contable no mide cuánto alcance físico real se ha producido."
+      - "En nuestra nueva guía ejecutiva de Datalaria desglosamos el estándar de Earned Value Management (EVM / EIA-748 de 27 directrices y enfoque Híbrido PMBOK) para anticipar sobrecostes desde el 15-20 % de ejecución y defender proyecciones EAC y TCPI ante el Consejo."
+    insights_60s:
+      - "El principio de oro del EV: el Valor Ganado (EV = BAC × % Avance Técnico) mide entregables validados, nunca horas ni facturas pagadas; con CPI = 0.86 cada euro solo produce 0,86 €."
+      - "Test estadístico TCPI > 1.10x: prometer terminar en presupuesto original cuando TCPI = 1.14 exige un salto de productividad del 32,5 % inviable según el PMBOK; EAC1 proyecta 1.395.349 €."
+      - "De Cascada a Híbrido: el EVM moderno combina las 27 directrices EIA-748 en Cuentas de Control macro con Sprints ágiles medidos por Story Points terminados bajo Definition of Done (regla 0/100)."
+    secondary_cta_label: "Ver Pack Cuadro de Mando EVM (8€)"
+    secondary_cta_url: "https://datalaria.com/es/recursos/?utm_source=newsletter&utm_medium=email&utm_campaign=evm-launch#pack-evm"
+    ps_referral_text: "P.D. Si conoces a algún CFO, COO o director de PMO defendiendo desviaciones presupuestarias en comité, reenvíale esta guía."
+  devto:
+    enabled: true
+    title: "Cuadro de Mando EVM: Valor Ganado, 27 Criterios EIA-748 y Agile-EVM"
+    description: "Guía cuantitativa EVM: los 10 conceptos rectores, Curva S, EAC/TCPI, 27 directrices EIA-748 (PMBOK) y aplicación práctica en entornos híbridos."
+    tags:
+      - "projectmanagement"
+      - "evm"
+      - "pmbok"
+      - "excel"
+    canonical_url: "https://datalaria.com/es/posts/cuadro-mando-evm-valor-ganado/"
+    published: true
+  coderlegion:
+    enabled: false
+    title: "Cuadro de Mando EVM: Valor Ganado, 27 Criterios EIA-748 y Agile-EVM"
+    description: "Arquitectura analítica EVM con Curva S, modelos EAC1/EAC2/EAC3, 27 directrices EIA-748 y gobernanza Agile-EVM en proyectos híbridos."
+    tags:
+      - "project-management"
+      - "evm"
+      - "pmbok"
+      - "operations"
+    canonical_url: "https://datalaria.com/es/posts/cuadro-mando-evm-valor-ganado/"
+    published: false
+    category: 2

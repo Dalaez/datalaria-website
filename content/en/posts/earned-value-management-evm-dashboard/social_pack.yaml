@@ -1,0 +1,78 @@
+en:
+  x:
+    hook: "Spending 50% of budget at midpoint does not mean you are on track: it often masks a $195,349 overrun. Here is how EVM, S-Curves, 27 EIA-748 guidelines & Hybrid Agile-EVM expose it."
+    thread:
+      - "1/5 The traditional accounting trap: burning $600k of $1.2M at Month 6 looks 'on budget'. Yet if Technical Progress (EV) is only 43% ($516k), you already carry an $84k overrun and a 3-week critical delay."
+      - "2/5 Earned Value Management unifies physical scope (EV), schedule (PV), and actual cost (AC). CPI = EV/AC (0.86) and SPI = EV/PV (0.86) expose capital destruction by the 15-20% completion mark."
+      - "3/5 Mathematical closeout models: Typical EAC1 (BAC/CPI = $1,395,349), Atypical EAC2 ($1,284,000), and Combined EAC3 ($1,524,824). TCPI = (BAC-EV)/(BAC-AC) hits 1.14x—anything above 1.10x is unachievable."
+      - "4/5 Standards update: EIA-748-E streamlines the 32 legacy rules into 27 EVMS guidelines across 5 process groups (PMBOK), while Hybrid Agile-EVM governs Sprints using Story Points and 0/100 Definition of Done."
+      - "5/5 Full guide with the 10 core EVM concepts, 27 EIA-748 criteria, Hybrid Agile-EVM & Executive Pack in Excel + 16:9 PPTX + PDF (8€): https://datalaria.com/en/posts/earned-value-management-evm-dashboard/"
+    hashtags:
+      - "EVM"
+      - "EarnedValue"
+      - "PMBOK"
+      - "ProjectFinance"
+      - "OperationsControl"
+    web_intent_url: "https://x.com/intent/tweet?text=Spending+50%25+of+budget+at+midpoint+does+not+mean+you+are+on+track%3A+it+often+masks+a+%24195%2C349+overrun.+Here+is+how+EVM%2C+S-Curves%2C+27+EIA-748+guidelines+%26+Hybrid+Agile-EVM+expose+it.&url=https%3A%2F%2Fdatalaria.com%2Fen%2Fposts%2Fearned-value-management-evm-dashboard%2F&hashtags=EVM%2CEarnedValue%2CPMBOK%2CProjectFinance%2COperationsControl"
+  linkedin:
+    text: |-
+      If a $1,200,000 strategic initiative has disbursed exactly $600,000 at Month 6, conventional project accounting solemnly reports that the program is "strictly on budget".
+
+      ⚠️ That financial status is a dangerous statistical illusion: if actual physical deliverables sit at 43% ($516,000 in Earned Value), the project is already bleeding $84,000 and running 3 weeks behind schedule.
+
+      📘 I just published Datalaria's comprehensive guide to Earned Value Management (EVM Dashboard, S-Curves & C-Level EAC Forecasting):
+
+      🔹 The 10 foundational EVM concepts explained clearly: connecting Physical Technical Progress, BAC, PV, EV, AC, CV/SV variances, CPI/SPI ratios, EAC1/EAC2/EAC3 models, and the TCPI boardroom reality test.
+
+      🔹 Modern EIA-748-E Standard (27 EVMS Guidelines per PMBOK): full breakdown across all 5 process groups replacing the 32 legacy rules, referencing Roland Wanner's industry analysis.
+
+      🔹 EVM in Hybrid Environments (Agile-EVM): uniting macro Control Account CAPEX governance with 2-week Scrum Sprints using baseline Story Point values, strict 0/100 Definition of Done crediting, and Scope Swapping.
+
+      🔹 Production-ready Executive Decision Pack (8€ launch offer from 25€): ECMA-376 Excel workbook with native M01-M12 S-Curve and 25 WBS items, 5-page PDF guide, and 16:9 Minto PPTX deck.
+
+      📖 Read the full mathematical framework and $1.2M turnaround case study: https://datalaria.com/en/posts/earned-value-management-evm-dashboard/
+
+      💬 In your executive steering committees, do teams still report spend versus calendar dates, or do you audit CPI, SPI, and TCPI before approving capital extensions?
+    hashtags:
+      - "EVM"
+      - "EarnedValue"
+      - "PMBOK"
+      - "ProjectFinance"
+      - "OperationsControl"
+  newsletter:
+    archetype: "counterintuitive_question"
+    subject: "Why does spending 50% of budget at midpoint hide a $195,349 overrun?"
+    preheader: "10 core EVM concepts, S-Curve diagnostics, 27 EIA-748 guidelines, Hybrid Agile-EVM, and EAC/TCPI forecasting for CFOs."
+    hook_paragraphs:
+      - "When a $1,200,000 transformation program burns exactly $600,000 by Month 6, traditional accounting praises the delivery lead for staying on budget. Yet cash burn alone never reveals how much validated scope was delivered."
+      - "In Datalaria's new executive guide, we unpack Earned Value Management (the 27 EIA-748-E guidelines & PMBOK Hybrid Agile-EVM) to catch efficiency drift at 15-20% progress and defend EAC and TCPI forecasts in the boardroom."
+    insights_60s:
+      - "The golden rule of EV: Earned Value (EV = BAC x % Technical Progress) credits verified deliverables—never hours logged or invoices paid; at CPI = 0.86, every $1 spent yields just $0.86 of scope."
+      - "TCPI > 1.10x statistical alarm: promising to hit the original budget at TCPI = 1.14 requires an unachievable 32.5% productivity surge; Typical EAC1 forecasts $1,395,349 at closeout."
+      - "From Waterfall to Hybrid Agile-EVM: pair the 27 EIA-748 guidelines at Control Account level with iterative Sprints governed via Story Points and strict 0/100 Definition of Done sign-off."
+    secondary_cta_label: "Get the EVM Dashboard Pack (8€)"
+    secondary_cta_url: "https://datalaria.com/en/resources/?utm_source=newsletter&utm_medium=email&utm_campaign=evm-launch#pack-evm"
+    ps_referral_text: "P.S. Know a CFO, COO, or PMO director defending program budgets before the Board? Forward this briefing their way."
+  devto:
+    enabled: true
+    title: "Earned Value Management (EVM): S-Curve, 27 EIA-748 Guidelines & Agile-EVM"
+    description: "Quantitative EVM guide covering the 10 core concepts, S-Curves, EAC/TCPI forecasting models, 27 EIA-748 EVMS guidelines (PMBOK), and Hybrid Agile-EVM."
+    tags:
+      - "projectmanagement"
+      - "evm"
+      - "pmbok"
+      - "excel"
+    canonical_url: "https://datalaria.com/en/posts/earned-value-management-evm-dashboard/"
+    published: true
+  coderlegion:
+    enabled: true
+    title: "Earned Value Management (EVM): S-Curve, 27 EIA-748 Guidelines & Agile-EVM"
+    description: "Board-grade EVM analytics framework with S-Curves, EAC1/EAC2/EAC3 models, 27 modernized EIA-748 guidelines, and Hybrid Agile-EVM governance."
+    tags:
+      - "project-management"
+      - "evm"
+      - "pmbok"
+      - "operations"
+    canonical_url: "https://datalaria.com/en/posts/earned-value-management-evm-dashboard/"
+    published: true
+    category: 2

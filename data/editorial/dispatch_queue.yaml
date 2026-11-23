@@ -239,3 +239,39 @@ entries:
   executed_at_utc: '2026-11-23T06:30:32Z'
   notes: 'Ola 3B (T+22h Día +1): Dev.to EN + CoderLegion EN'
   last_error: null
+- id: evm-2026-11-23-2026-11-23-wave2-en-native
+  file_path: content/en/posts/earned-value-management-evm-dashboard/index.md
+  lang: en
+  wave: 2_en_native
+  channels:
+  - linkedin
+  - x
+  - newsletter
+  scheduled_at_utc: '2026-11-23T14:30:00Z'
+  status: pending
+  executed_at_utc: null
+  notes: 'Ola 2 (T+7h · Apertura USA): EN Native Social'
+  last_error: null
+- id: evm-2026-11-23-2026-11-23-wave3a-es-devto
+  file_path: content/es/posts/cuadro-mando-evm-valor-ganado/index.md
+  lang: es
+  wave: 3a_es_syndication
+  channels:
+  - devto
+  scheduled_at_utc: '2026-11-23T19:30:00Z'
+  status: pending
+  executed_at_utc: null
+  notes: 'Ola 3A (T+12h): Dev.to ES con ventaja de indexación canónica'
+  last_error: null
+- id: evm-2026-11-23-2026-11-23-wave3b-en-syndication
+  file_path: content/en/posts/earned-value-management-evm-dashboard/index.md
+  lang: en
+  wave: 3b_en_syndication
+  channels:
+  - devto
+  - coderlegion
+  scheduled_at_utc: '2026-11-24T05:30:00Z'
+  status: pending
+  executed_at_utc: null
+  notes: 'Ola 3B (T+22h Día +1): Dev.to EN + CoderLegion EN'
+  last_error: null

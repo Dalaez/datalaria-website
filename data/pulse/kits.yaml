@@ -587,8 +587,8 @@ kits:
   title_es: Cuadro de Mando EVM / Valor Ganado (Curva S)
   description_es: Muestra con precisión quirúrgica si un proyecto terminará a tiempo
     y dentro de presupuesto con índices CPI/SPI y Curva S.
-  article_url_es: null
-  guide_url_es: null
+  article_url_es: /es/posts/cuadro-mando-evm-valor-ganado/
+  guide_url_es: /es/posts/cuadro-mando-evm-valor-ganado/
   title_en: EVM Earned Value Dashboard (S-Curve)
   category_en: Operations Control
   description_en: Pinpoint whether a major initiative will finish on schedule and
@@ -602,8 +602,8 @@ kits:
   - 'Real-time performance metrics: CPI and SPI with stochastic EAC forecasts'
   - 16:9 C-Level slide detailing financial project health and variance root-causes
   - Official Earned Value Management methodology guide
-  article_url_en: null
-  guide_url_en: null
+  article_url_en: /en/posts/earned-value-management-evm-dashboard/
+  guide_url_en: /en/posts/earned-value-management-evm-dashboard/
   publish_date: '2026-11-23'
   version: v1.0.0
 - id: pack-stock
@@ -629,8 +629,8 @@ kits:
   title_es: Calculadora de Stock de Seguridad & ROP
   description_es: Optimiza los almacenes evitando roturas de stock sin inmovilizar
     excesivo capital circulante en inventario de componentes críticos.
-  article_url_es: null
-  guide_url_es: null
+  article_url_es: /es/posts/calculadora-stock-seguridad-rop/
+  guide_url_es: /es/posts/calculadora-stock-seguridad-rop/
   title_en: Safety Stock & Reorder Point (ROP) Engine
   category_en: Operations Control
   description_en: Prevent inventory stockouts while minimizing tied-up working capital
@@ -645,8 +645,8 @@ kits:
   - Reorder Point (ROP) modeling with stochastic lead-time and demand variance
   - 16:9 PPTX slide with sawtooth inventory curves for procurement committees
   - PDF working capital optimization guide for supply chain leaders
-  article_url_en: null
-  guide_url_en: null
+  article_url_en: /en/posts/safety-stock-reorder-point-calculator/
+  guide_url_en: /en/posts/safety-stock-reorder-point-calculator/
   publish_date: '2026-11-26'
   version: v1.0.0
 - id: pack-pulse
@@ -743,3 +743,44 @@ kits:
   guide_url_en: /en/posts/sdd_vs_vibe_coding/
   publish_date: '2027-01-19'
   version: v1.0.0
+- id: pack-obs
+  slug: pack-obs-iec62402-ltb
+  type: kit
+  topic: operaciones
+  category_es: Supply Risk & IEC 62402
+  status: coming
+  price: 19€
+  original_price: 39€
+  icon: 📡
+  preview_image_es: /images/recursos/obs-preview-es.png
+  preview_image_en: /images/recursos/obs-preview-en.png
+  deliverables_es:
+  - Excel Dual 5 Hojas (ES & EN, 0 VBA)
+  - Playbook Ejecutivo PDF (5 págs. A4)
+  - Starter Blueprint SQL RLS + Python + CSV
+  features_es:
+  - 'Edición Dual (ES/EN) complementaria a pack-stock (7 €): mientras pack-stock gobierna reposición continua APICS (ROP/EOQ) en Madurez, pack-obs resuelve crisis de Fin de Vida (PCN/PDN/EOL) bajo norma IEC 62402'
+  - 'Libro Excel de 5 hojas sin macros VBA: Explorador BOM/AML multinivel, Matriz de Criticidad IEC 62402 (0–100), Simulador Financiero LTB vs. Rediseño FFF (con WACC, merma y colchón puente SS_LTB tras congelar ROP), Hoja de Ruta CAPEX y Dashboard C-Level'
+  - 'Starter Blueprint Técnico completo: esquema PostgreSQL obs_radar con Row-Level Security (RLS) en 6 tablas, motor puro bom_engine.py, contratos Pydantic v2 y plantilla CSV importable en 1 clic en Agentic Radar v2.0'
+  - 'Playbook Ejecutivo PDF vectorial de 5 páginas A4 (ES y EN) con protocolo de respuesta ante notificaciones PDN y tabla anti-confusión pack-stock vs. pack-obs'
+  checkout_url: '#'
+  title_es: 'IEC 62402 Obsolescencia, Riesgo BOM & LTB Decision Kit'
+  description_es: 'Kit B2B especializado para crisis de discontinuación de componentes (PCN/PDN/EOL): explosión de grafos BOM multinivel, criticidad IEC 62402, simulador financiero Last Time Buy (LTB) vs. Rediseño FFF y Starter Blueprint PostgreSQL RLS (Estreno 9 Dic 2026).'
+  article_url_es: /es/posts/obs_parte8_simulador_ltb_v2/
+  guide_url_es: /es/posts/obs_parte8_simulador_ltb_v2/
+  title_en: 'IEC 62402 Obsolescence, BOM Risk & LTB Decision Kit'
+  category_en: Supply Risk & IEC 62402
+  description_en: 'Specialized B2B toolkit for component discontinuation crises (PCN/PDN/EOL): multilevel BOM graph traversal, IEC 62402 criticality, Last Time Buy (LTB) vs. FFF Redesign financial model, and PostgreSQL RLS Starter Blueprint (Launching Dec 9, 2026).'
+  deliverables_en:
+  - 5-Sheet Dual Excel (ES & EN, 0 VBA)
+  - 5-Page A4 Vector Executive PDF Playbook
+  - SQL RLS + Python + CSV Starter Blueprint
+  features_en:
+  - 'Dual Edition (ES/EN) built as the lifecycle counterpart to pack-stock (€7): while pack-stock governs continuous APICS replenishment (ROP/EOQ) during Maturity, pack-obs resolves End-of-Life crises (PCN/PDN/EOL) under IEC 62402'
+  - 'Zero-VBA 5-sheet Excel engine: Multilevel BOM/AML Explorer, IEC 62402 Criticality Matrix (0–100), LTB vs. FFF Redesign Simulator (WACC, decay & one-shot bridge buffer SS_LTB after freezing ROP), CAPEX Mitigation Roadmap & C-Level Dashboard'
+  - 'Complete Technical Starter Blueprint: PostgreSQL obs_radar schema with Row-Level Security (RLS) on 6 tables, pure bom_engine.py, Pydantic v2 models & 1-click compatible CSV template for Agentic Radar v2.0'
+  - '5-Page A4 Vector Executive PDF Playbook (ES & EN) with PDN response workflow and pack-stock vs. pack-obs decision matrix'
+  article_url_en: /en/posts/obs_part8_ltb_simulator_v2/
+  guide_url_en: /en/posts/obs_part8_ltb_simulator_v2/
+  publish_date: '2026-12-09'
+  version: v2.0.0

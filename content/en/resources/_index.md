@@ -615,7 +615,7 @@ Details ℹ️
 <button type="button" class="btn-kit-info" onclick="openModal('pack-pert')">
 Details ℹ️
 </button>
-<span class="btn-kit-info btn-disabled" title="Technical article coming soon">Article coming soon</span>
+<a href="/en/posts/stochastic-3-point-pert-estimation/" class="btn-kit-info" title="Read technical article">Technical Article 📖</a>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/47843201-4db9-4d80-bb88-e59364fb6117?embed=1" class="btn-kit-buy lemonsqueezy-button">Download →</a>
 </div>
 </div>
@@ -649,7 +649,7 @@ Details ℹ️
 <button type="button" class="btn-kit-info" onclick="openModal('pack-evm')">
 Details ℹ️
 </button>
-<span class="btn-kit-info btn-disabled" title="Technical article coming soon">Article coming soon</span>
+<a href="/en/posts/earned-value-management-evm-dashboard/" class="btn-kit-info" title="Read technical article">Technical Article 📖</a>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/188950c2-0fd9-4331-919f-237880e2c78b?embed=1" class="btn-kit-buy lemonsqueezy-button">Download →</a>
 </div>
 </div>
@@ -871,8 +871,8 @@ Details ℹ️
       Sign up to receive the free Starter Kit at launch and lock in your <strong>19€ Early-Bird discount</strong> for the full 12-agent SDD engineering squad.
     </div>
     <form id="waitlist-form-catalog" onsubmit="submitCatalogWaitlist(event)" style="display: flex; flex-direction: column; gap: 12px;">
-      <input type="text" id="wl-name" required placeholder="Your name" style="padding: 10px 14px; border-radius: 8px; border: 1px solid #334155; background: #020617; color: #f8fafc; font-size: 14px;" />
-      <input type="email" id="wl-email" required placeholder="Your work email" style="padding: 10px 14px; border-radius: 8px; border: 1px solid #334155; background: #020617; color: #f8fafc; font-size: 14px;" />
+      <input type="text" id="wl-name" name="name" autocomplete="name" required placeholder="Your name" style="padding: 10px 14px; border-radius: 8px; border: 1px solid #334155; background: #020617; color: #f8fafc; font-size: 14px;" />
+      <input type="email" id="wl-email" name="email" autocomplete="email" required placeholder="Your work email" style="padding: 10px 14px; border-radius: 8px; border: 1px solid #334155; background: #020617; color: #f8fafc; font-size: 14px;" />
       <button type="submit" id="wl-submit-btn" style="padding: 12px; border-radius: 8px; border: none; background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%); color: #ffffff; font-weight: 700; font-size: 14px; cursor: pointer; margin-top: 4px;">
         Reserve Early-Bird Spot (19€) →
       </button>
@@ -1499,7 +1499,7 @@ Details ℹ️
       "PDF guide on schedule buffer management and float analysis"
     ],
     "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/47843201-4db9-4d80-bb88-e59364fb6117?embed=1",
-    "guideUrl": null,
+    "guideUrl": "/en/posts/stochastic-3-point-pert-estimation/",
     "previewImg": "/images/recursos/pert-preview-en.png"
   },
   {
@@ -1525,8 +1525,8 @@ Details ℹ️
       "PDF guide on PMI Earned Value Management standard"
     ],
     "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/188950c2-0fd9-4331-919f-237880e2c78b?embed=1",
-    "guideUrl": null,
-    "previewImg": "/images/recursos/EVM.png"
+    "guideUrl": "/en/posts/earned-value-management-evm-dashboard/",
+    "previewImg": "/images/recursos/evm-preview-en.png"
   },
   {
     "id": "pack-stock",
@@ -1552,7 +1552,7 @@ Details ℹ️
     ],
     "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/513e5cad-9f9f-4b53-a435-b511a846d79e?embed=1",
     "guideUrl": null,
-    "previewImg": "/images/recursos/Stock.png"
+    "previewImg": "/images/recursos/stock-preview-en.png"
   },
     {
     "id": "pack-pulse",

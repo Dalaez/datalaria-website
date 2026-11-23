@@ -19,7 +19,7 @@ translationKey: resources
 ---
 """
 
-def _pert_post_is_live(post_rel: str) -> bool:
+def _post_is_live(post_rel: str) -> bool:
     import datetime, re
     p = pathlib.Path(post_rel)
     if not p.exists():
@@ -35,22 +35,17 @@ def _pert_post_is_live(post_rel: str) -> bool:
     return pub <= datetime.date.today()
 
 
-def _resolve_pert_conditionals(text: str, lang: str) -> str:
+def _resolve_post_conditionals(text: str, lang: str, var_name: str, es_tuple: tuple[str, str], en_tuple: tuple[str, str]) -> str:
     import re
-    if lang == "es":
-        rel = "content/es/posts/estimacion-pert-3-puntos/index.md"
-        url = "/es/posts/estimacion-pert-3-puntos/"
-    else:
-        rel = "content/en/posts/stochastic-3-point-pert-estimation/index.md"
-        url = "/en/posts/stochastic-3-point-pert-estimation/"
-    live = _pert_post_is_live(rel)
+    rel, url = es_tuple if lang == "es" else en_tuple
+    live = _post_is_live(rel)
 
     def _repl(m):
         branch = m.group(1) if live else m.group(2)
-        return branch.replace("{{ $pertPost.RelPermalink }}", url)
+        return branch.replace(f"{{{{ ${var_name}.RelPermalink }}}}", url)
 
     return re.sub(
-        r"\{\{\s*if \$pertPost\s*\}\}(.*?)\{\{\s*else\s*\}\}(.*?)\{\{\s*end\s*\}\}",
+        rf"\{{\{{\s*if \${var_name}\s*\}}\}}(.*?)\{{\{{\s*else\s*\}}\}}(.*?)\{{\{{\s*end\s*\}}\}}",
         _repl,
         text,
     )
@@ -62,8 +57,49 @@ def get_bodies():
     parts = cat_text.split("{{- else -}}")
     assert len(parts) == 2, "recursos_catalog.html must contain {{- else -}}"
     
-    es_part = _resolve_pert_conditionals(parts[0], "es")
-    en_part = _resolve_pert_conditionals(parts[1].split("{{- end -}}")[0], "en")
+    es_part = _resolve_post_conditionals(
+        parts[0],
+        "es",
+        "pertPost",
+        ("content/es/posts/estimacion-pert-3-puntos/index.md", "/es/posts/estimacion-pert-3-puntos/"),
+        ("content/en/posts/stochastic-3-point-pert-estimation/index.md", "/en/posts/stochastic-3-point-pert-estimation/"),
+    )
+    es_part = _resolve_post_conditionals(
+        es_part,
+        "es",
+        "evmPost",
+        ("content/es/posts/cuadro-mando-evm-valor-ganado/index.md", "/es/posts/cuadro-mando-evm-valor-ganado/"),
+        ("content/en/posts/earned-value-management-evm-dashboard/index.md", "/en/posts/earned-value-management-evm-dashboard/"),
+    )
+    es_part = _resolve_post_conditionals(
+        es_part,
+        "es",
+        "stockPost",
+        ("content/es/posts/calculadora-stock-seguridad-rop/index.md", "/es/posts/calculadora-stock-seguridad-rop/"),
+        ("content/en/posts/safety-stock-reorder-point-calculator/index.md", "/en/posts/safety-stock-reorder-point-calculator/"),
+    )
+
+    en_part = _resolve_post_conditionals(
+        parts[1].rsplit("{{- end -}}", 1)[0],
+        "en",
+        "pertPost",
+        ("content/es/posts/estimacion-pert-3-puntos/index.md", "/es/posts/estimacion-pert-3-puntos/"),
+        ("content/en/posts/stochastic-3-point-pert-estimation/index.md", "/en/posts/stochastic-3-point-pert-estimation/"),
+    )
+    en_part = _resolve_post_conditionals(
+        en_part,
+        "en",
+        "evmPost",
+        ("content/es/posts/cuadro-mando-evm-valor-ganado/index.md", "/es/posts/cuadro-mando-evm-valor-ganado/"),
+        ("content/en/posts/earned-value-management-evm-dashboard/index.md", "/en/posts/earned-value-management-evm-dashboard/"),
+    )
+    en_part = _resolve_post_conditionals(
+        en_part,
+        "en",
+        "stockPost",
+        ("content/es/posts/calculadora-stock-seguridad-rop/index.md", "/es/posts/calculadora-stock-seguridad-rop/"),
+        ("content/en/posts/safety-stock-reorder-point-calculator/index.md", "/en/posts/safety-stock-reorder-point-calculator/"),
+    )
     
     es_lines = [l for l in es_part.splitlines() if not l.startswith("{{-")]
     en_lines = [l for l in en_part.splitlines() if not l.startswith("{{-")]

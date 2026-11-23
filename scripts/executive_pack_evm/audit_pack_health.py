@@ -46,9 +46,13 @@ def audit_deliverables():
         os.path.join(base_dir, "Executive_Decision_Pack_EVM_Dual.zip"),
         os.path.join("packages/00_DISTRIBUCION_LEMONSQUEEZY", "Executive_Decision_Pack_EVM_Dual.zip"),
         os.path.join("content/es/posts/cuadro-mando-evm-valor-ganado", "cover.png"),
+        os.path.join("content/es/posts/cuadro-mando-evm-valor-ganado", "preview-pack.png"),
         os.path.join("content/es/posts/cuadro-mando-evm-valor-ganado", "index.md"),
         os.path.join("content/en/posts/earned-value-management-evm-dashboard", "cover.png"),
+        os.path.join("content/en/posts/earned-value-management-evm-dashboard", "preview-pack.png"),
         os.path.join("content/en/posts/earned-value-management-evm-dashboard", "index.md"),
+        os.path.join("static/images/recursos", "evm-preview-es.png"),
+        os.path.join("static/images/recursos", "evm-preview-en.png"),
     ]
 
     all_ok = True
@@ -146,9 +150,10 @@ def audit_covers_and_posts():
             raise ValueError(f"CRÍTICO: Mensaje no permitido '{forbidden_phrase}' encontrado en {p}!")
         print("   [FACTURACIÓN OK] Sin mención a facturas con IVA en los shortcodes.")
 
-        # Verificar presencia de product-card y enlace lemonsqueezy
+        # Verificar presencia de product-card, preview-pack y enlace lemonsqueezy
         assert "product-card" in content, f"Falta shortcode product-card en {p}"
-        assert "lemonsqueezy.com/buy/cuadro-mando-evm" in content, f"Falta enlace checkout en {p}"
+        assert "preview-pack.png" in content, f"Falta preview-pack.png en {p}"
+        assert "188950c2-0fd9-4331-919f-237880e2c78b" in content, f"Falta enlace checkout en {p}"
         assert "8€" in content, f"Precio de 8€ no encontrado en {p}"
 
     # Anti-filtración de descargas
