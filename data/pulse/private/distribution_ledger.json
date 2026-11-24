@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "visibility": "private",
-  "updated_at": "2026-11-24T06:51:24Z",
+  "updated_at": "2026-11-24T07:28:32Z",
   "entries": [
     {
       "asset_id": "autopilot-parte10-scriba-sindicacion-puente-pulse",
@@ -52,6 +52,16 @@
       "external_url": null,
       "canonical_url": "https://datalaria.com/en/posts/earned-value-management-evm-dashboard/",
       "published_at_utc": "2026-11-24T06:51:24Z"
+    },
+    {
+      "asset_id": "earned-value-management-evm-dashboard",
+      "slug": "earned-value-management-evm-dashboard",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "5105931",
+      "external_url": "https://dev.to/datalaria/earned-value-management-evm-s-curve-27-eia-748-guidelines-agile-evm-8a6",
+      "canonical_url": "https://datalaria.com/en/posts/earned-value-management-evm-dashboard/",
+      "published_at_utc": "2026-11-24T07:28:32Z"
     }
   ]
 }
