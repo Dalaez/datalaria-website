@@ -259,8 +259,8 @@ entries:
   channels:
   - devto
   scheduled_at_utc: '2026-11-23T19:30:00Z'
-  status: pending
-  executed_at_utc: null
+  status: completed
+  executed_at_utc: '2026-11-24T06:51:21Z'
   notes: 'Ola 3A (T+12h): Dev.to ES con ventaja de indexación canónica'
   last_error: null
 - id: evm-2026-11-23-2026-11-23-wave3b-en-syndication
@@ -271,7 +271,7 @@ entries:
   - devto
   - coderlegion
   scheduled_at_utc: '2026-11-24T05:30:00Z'
-  status: pending
-  executed_at_utc: null
+  status: completed
+  executed_at_utc: '2026-11-24T06:51:21Z'
   notes: 'Ola 3B (T+22h Día +1): Dev.to EN + CoderLegion EN'
   last_error: null

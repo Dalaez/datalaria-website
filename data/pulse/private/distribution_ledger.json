@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "visibility": "private",
-  "updated_at": "2026-11-23T18:55:38Z",
+  "updated_at": "2026-11-24T06:51:24Z",
   "entries": [
     {
       "asset_id": "autopilot-parte10-scriba-sindicacion-puente-pulse",
@@ -32,6 +32,26 @@
       "external_url": "https://www.linkedin.com/feed/update/urn:li:share:7528008366615412736/",
       "canonical_url": "https://datalaria.com/es/posts/matriz-riesgos-amfe-fmea/",
       "published_at_utc": "2026-11-16T08:00:00Z"
+    },
+    {
+      "asset_id": "earned-value-management-evm-dashboard",
+      "slug": "cuadro-mando-evm-valor-ganado",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "5105698",
+      "external_url": "https://dev.to/datalaria/cuadro-de-mando-evm-valor-ganado-27-criterios-eia-748-y-agile-evm-em6",
+      "canonical_url": "https://datalaria.com/es/posts/cuadro-mando-evm-valor-ganado/",
+      "published_at_utc": "2026-11-24T06:51:22Z"
+    },
+    {
+      "asset_id": "earned-value-management-evm-dashboard",
+      "slug": "earned-value-management-evm-dashboard",
+      "lang": "en",
+      "channel": "coderlegion",
+      "external_id": "35848",
+      "external_url": null,
+      "canonical_url": "https://datalaria.com/en/posts/earned-value-management-evm-dashboard/",
+      "published_at_utc": "2026-11-24T06:51:24Z"
     }
   ]
 }
