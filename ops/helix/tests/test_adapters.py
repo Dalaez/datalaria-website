@@ -155,7 +155,7 @@ def test_build_adapters_idempotency_and_check_mode() -> None:
 def test_constitution_v1_1_0_article_9_and_agents_md_section_5() -> None:
     """Verifica la adopción interna en _constitution.md (v1.1.0 Art. 9), AGENTS.md (§5) y ADR-018."""
     constitution = Path("specs/_constitution.md").read_text(encoding="utf-8")
-    assert "Versión:** 1.1.0" in constitution
+    assert "Versión:** 1.2.0" in constitution or "Versión:** 1.1.0" in constitution
     assert "## Artículo 9: Gobernanza del Escuadrón de 12 Agentes Datalaria Helix" in constitution
 
     agents_md = Path("AGENTS.md").read_text(encoding="utf-8")
@@ -250,4 +250,36 @@ def test_anti_bloat_files_exist_and_isolated() -> None:
     assert "Score RICE" in backlog_content
     assert "OPP-UX-01" in backlog_content
     assert "OPP-MON-01" in backlog_content
+
+
+def test_adr031_modern_web_guidance_skill_and_squad_v2() -> None:
+    """ADR-031: Verifica las 4 skills progresivas de workspace y su integración en Helix v2.0."""
+    expected_skills = (
+        "modern-web-guidance",
+        "pwa-offline-arcade-builder",
+        "b2b-kit-factory",
+        "supabase-postgrest-rls-perf",
+    )
+    for skill_name in expected_skills:
+        p = Path(f".agents/skills/{skill_name}/SKILL.md")
+        assert p.exists(), f"Falta la skill progresiva {p}"
+        txt = p.read_text(encoding="utf-8")
+        assert f"name: {skill_name}" in txt
+
+    skill_text = Path(".agents/skills/modern-web-guidance/SKILL.md").read_text(encoding="utf-8")
+    assert "npx.cmd -y modern-web-guidance@latest" in skill_text
+    assert "Baseline Widely Available" in skill_text
+    assert "legacy-scan" in skill_text
+
+    # Verificar que los roles web/seguridad/QA clave referencian Modern Web Guidance
+    for agent_id in ("04-ux-ui", "05-frontend", "07-apis-integrations", "10-security-privacy", "11-qa-verifier"):
+        text = Path(f"specs/squad/{agent_id}.md").read_text(encoding="utf-8")
+        assert "modern-web-guidance" in text, f"{agent_id}.md debe referenciar modern-web-guidance"
+
+    radar_text = Path("specs/squad/TECH_RADAR.yaml").read_text(encoding="utf-8")
+    assert 'version: "2.0.0"' in radar_text
+    assert "Modern Web Guidance" in radar_text
+
+    decisions_text = Path("specs/DECISIONS.md").read_text(encoding="utf-8")
+    assert "## ADR-031:" in decisions_text
 

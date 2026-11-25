@@ -1,0 +1,257 @@
+version: "1.0.0"
+owner: "M04-distribution-marketplaces"
+reviewers:
+  - "E07-editorial-qa"
+  - "10-security-privacy"
+strategy_ref: "specs/STRATEGY.md"
+brand_ref: "specs/_brand.md"
+impact_report_ref: "specs/audit/IMPACT_REPORT.md"
+updated_at: "2026-11-24"
+
+governance_rules:
+  cost_eur: 0
+  priority_language: "en"
+  bilingual_parity_required: true
+  allow_scraping_or_li_at_cookie: false
+  allow_mailto_links: false
+  utm_standard: "ADR-033"
+  embargo_enforcement: "INV-AUTO-6"
+  embargo_dates:
+    pack_obs: "2026-12-09"
+    reading: "2026-12-16"
+    helix_pack_sdd: "2027-01-19"
+
+product_hunt:
+  - product_id: "pack-obs"
+    app_slug: "obs-management"
+    brand_vertical: "executive_b2b"
+    embargo_until: "2026-12-09"
+    status: "staged_embargoed"
+    launch_url: "https://datalaria.com/apps/obs-management/?lang=en&scenario=ltb-crisis&utm_source=producthunt&utm_medium=launch&utm_campaign=pack_obs_dec2026"
+    tagline: "IEC 62402 BOM obsolescence & Last Time Buy vs Redesign cockpit"
+    description: "Free Zero-CDN interactive sandbox for supply chain & engineering leads facing component EOL/PDN crises. Traverse multilevel BOM trees, score IEC 62402 criticality, and run deterministic Last Time Buy (LTB) vs FFF Redesign CAPEX math in your browser."
+    topics:
+      - "Productivity"
+      - "SaaS"
+      - "Developer Tools"
+      - "Analytics"
+      - "Artificial Intelligence"
+    maker_first_comment: |
+      Hi Product Hunt! I built Agentic Radar v2.0 after seeing manufacturing and electronics teams lose weeks (and six-figure margins) scrambling through spreadsheets whenever a supplier drops a Product Discontinuation Notice (PDN).
+
+      Two design choices behind v2.0:
+      1. Deterministic math first: BOM graph explosion, WACC-adjusted Last Time Buy (LTB) vs. Form-Fit-Function (FFF) Redesign CAPEX, and bridge safety stock (SS_LTB) run in pure audited code — never LLM guesswork.
+      2. Zero-friction Sandbox: Open the link, zero login, <45 KB Zero-CDN PWA, and simulate an EOL crisis in 15 seconds.
+
+      For teams who want the full offline Excel 5-sheet engine (zero VBA), PostgreSQL RLS starter schema, and 5-page IEC 62402 PDF playbook, the companion B2B Decision Kit launches today at 19 € (Early-Bird). Would love your feedback on the LTB vs. Redesign trade-off math!
+    visual_checklist:
+      - "Thumbnail 240x240px: Agentic Radar dark cockpit icon"
+      - "Slide 1 (1600x980px): Live BOM DAG tree + Margin-at-Risk KPI header"
+      - "Slide 2 (1600x980px): Deterministic LTB vs. FFF Redesign financial comparator"
+      - "Slide 3 (1600x980px): 5-Sheet Zero-VBA Excel Kit & PDF Playbook composite"
+      - "Demo GIF (< 5 MB, 20s): Triggering a PDN notice to CAPEX recommendation"
+
+  - product_id: "pack-sdd"
+    app_slug: "helix"
+    brand_vertical: "ai_systems"
+    embargo_until: "2027-01-19"
+    status: "staged_embargoed"
+    launch_url: "https://datalaria.com/en/resources/#pack-sdd?utm_source=producthunt&utm_medium=launch&utm_campaign=helix_jan2027"
+    tagline: "12-agent Spec-Driven Development squad with deterministic veto CLI"
+    description: "Stop shipping fragile vibe-coded prototypes. Datalaria Helix is a Spec-Driven Development OS with 12 specialized AI agents, XS-XL triage, independent Security/QA veto gates, and a zero-dependency Python CLI for Antigravity, Claude Code, Cursor & Codex."
+    topics:
+      - "Developer Tools"
+      - "Artificial Intelligence"
+      - "Software Engineering"
+      - "Open Source"
+      - "Productivity"
+    maker_first_comment: |
+      Hi Product Hunt! Datalaria Helix was born from real production friction (Operation Crucible): when you ask a single AI agent to design, build, and verify complex software, it cuts corners and approves its own bugs.
+
+      Helix enforces three engineering invariants:
+      1. Spec-First + Separation of Powers (INV-HELIX-1): Builder agents cannot approve their own code. Independent Security and QA agents hold binding veto power.
+      2. Deterministic XS–XL Triage: Only loads the 2–4 agent specs required per task (zero context bloat).
+      3. Zero-dependency Python CLI: `init`, `triage`, `new-spec`, `checkpoint`, `verify`, and `rollback`, compiling adapters for Antigravity, Claude Code, Cursor, and Codex.
+
+      We are launching with a free Starter Kit + 19 € Early-Bird Core Kit (List 39 €) and a 99 € Team License. Curious how other teams enforce QA gates on AI-written code!
+    visual_checklist:
+      - "Thumbnail 240x240px: Helix DNA dark-mode emblem"
+      - "Slide 1 (1600x980px): 4-Cell 12-Agent architecture & Veto Gate flow"
+      - "Slide 2 (1600x980px): Terminal capture of `helix triage` & `helix verify` (100/100)"
+      - "Slide 3 (1600x980px): Interactive Web Sandbox & MarginGuard Case Study"
+      - "Slide 4 (1600x980px): Multi-IDE compiled adapters (Antigravity, Claude, Cursor)"
+
+hacker_news_show_hn:
+  - product_id: "pack-obs"
+    embargo_until: "2026-12-09"
+    title: "Show HN: Zero-CDN IEC 62402 BOM Obsolescence & Last-Time-Buy Simulator"
+    url: "https://datalaria.com/apps/obs-management/?lang=en&scenario=ltb-crisis&utm_source=hackernews&utm_medium=show_hn&utm_campaign=pack_obs_dec2026"
+    first_comment_technical: |
+      I built this client-side (<45 KB Zero-CDN) simulator to model hardware component End-of-Life (PDN/EOL) decisions under IEC 62402.
+      The core problem: standard safety-stock ROP formulas break once a semiconductor hits EOL because replenishment is frozen — you have a one-shot Last Time Buy (LTB) vs. Form-Fit-Function (FFF) redesign CAPEX decision with inventory decay and WACC carrying cost.
+      The BOM traversal engine runs cycle-safe DAG explosion in deterministic JS (mirrored in Python/PostgreSQL RLS in the companion blueprint). Happy to discuss the DAG cycle handling or LTB holding-cost math.
+
+  - product_id: "pack-sdd"
+    embargo_until: "2027-01-19"
+    title: "Show HN: Datalaria Helix – 12-Agent Spec-Driven Dev OS with Binding QA Veto"
+    url: "https://datalaria.com/en/posts/sdd_vs_vibe_coding/?utm_source=hackernews&utm_medium=show_hn&utm_campaign=helix_jan2027"
+    first_comment_technical: |
+      Over the last year I maintained 10 production apps and a bilingual portal with AI coding agents. Single-prompt "vibe coding" consistently degraded after ~15 files due to context bloat and self-approval bias.
+      Datalaria Helix splits engineering into 12 strict Markdown+YAML agent specs (<=85 lines each, validated with Pydantic v2), loads only 2–4 roles via deterministic XS–XL triage, and separates builders from Security/QA veto roles. A zero-dependency Python CLI compiles the same specs into Antigravity, Claude Code, and Cursor adapters and runs spec verification + git checkpoint rollbacks. Feedback on the spec-scoring rubric is very welcome.
+
+reddit_niche_playbooks:
+  - subreddit: "r/supplychain"
+    product_id: "pack-obs"
+    embargo_until: "2026-12-09"
+    angle: "Technical breakdown of why APICS ROP breaks at component EOL and how to model LTB vs. FFF Redesign under IEC 62402"
+    anti_spam_protocol: "Post the complete formula breakdown and decision matrix inline in the Reddit post body; link to the free no-login Sandbox only as a secondary reference at the end."
+    post_title: "Why standard Safety Stock (ROP) breaks during component EOL — and the deterministic LTB vs. Redesign formula we built under IEC 62402"
+    sandbox_url: "https://datalaria.com/apps/obs-management/?lang=en&scenario=ltb-crisis&utm_source=reddit&utm_medium=community&utm_campaign=r_supplychain_obs"
+
+  - subreddit: "r/projectmanagement"
+    product_id: "suite-03"
+    embargo_until: "2026-11-24"
+    angle: "Comparing deterministic 3-point PERT confidence intervals and EVM S-Curves (CPI/SPI/EAC) without macros"
+    anti_spam_protocol: "Share the exact Excel formulas for Beta Te, sigma, Z-probability, and EAC scenarios directly in the thread; link to the free technical article first."
+    post_title: "How we replaced subjective schedule buffers with 3-point PERT + EVM CPI/SPI formulas in plain zero-VBA Excel"
+    article_url: "https://datalaria.com/en/posts/earned-value-management-evm-dashboard/?utm_source=reddit&utm_medium=community&utm_campaign=r_pm_evm"
+
+  - subreddit: "r/ClaudeAI"
+    product_id: "pack-sdd"
+    embargo_until: "2027-01-19"
+    angle: "Lessons from enforcing <=85-line agent specs, lazy-loading triage, and independent QA veto in Claude Code"
+    anti_spam_protocol: "Share the exact 6-line triage card format and anti-bloat invariant rules directly in the post so readers can replicate it for free; mention Helix only as the packaged repo."
+    post_title: "We stopped loading all .claude/agents at once: how deterministic XS–XL triage + a binding QA veto cut hallucinations across 10 apps"
+    article_url: "https://datalaria.com/en/posts/sdd_vs_vibe_coding/?utm_source=reddit&utm_medium=community&utm_campaign=r_claudeai_helix"
+
+  - subreddit: "r/Excel"
+    product_id: "pack-pulse"
+    embargo_until: "2026-11-24"
+    angle: "Power Query M pattern to sync Git-backed JSON / Notion CSV into a 6-sheet zero-VBA Excel dashboard"
+    anti_spam_protocol: "Include the sanitized Power Query M snippet and native Table/AutoFilter structure in the post body; link to the free walkthrough article."
+    post_title: "Building a zero-VBA 6-sheet Content Ops dashboard in Excel using Power Query M + static JSON (migrating off Notion)"
+    article_url: "https://datalaria.com/en/posts/pulse-part1-goodbye-notion-content-ops/?utm_source=reddit&utm_medium=community&utm_campaign=r_excel_pulse"
+
+directories_and_marketplaces:
+  ai_and_devtools_directories:
+    - name: "DevHunt"
+      url: "https://devhunt.org"
+      cost_eur: 0
+      target_products: ["pack-sdd", "pack-pulse"]
+      notes: "Weekly developer tool launches; strong EN engineering audience."
+    - name: "There's An AI For That"
+      url: "https://theresanaiforthat.com"
+      cost_eur: 0
+      target_products: ["obs-management", "pack-sdd"]
+      notes: "Submit free Sandbox URLs for high-authority backlinks."
+    - name: "AlternativeTo"
+      url: "https://alternativeto.net"
+      cost_eur: 0
+      target_products: ["pulse"]
+      notes: "List Datalaria Pulse as a Git-backed Content Ops alternative to Notion."
+    - name: "Uneed / MicroLaunch"
+      url: "https://uneed.best"
+      cost_eur: 0
+      target_products: ["obs-management", "pack-pulse", "pack-sdd"]
+      notes: "Indie maker launches with do-follow backlink potential."
+  github_awesome_lists:
+    - repo: "awesome-ai-agents / awesome-claude-code"
+      target_products: ["pack-sdd"]
+      approach: "PR adding Datalaria Helix SDD Starter Kit (free MIT/open starter) after 2027-01-19 launch."
+    - repo: "awesome-supply-chain / awesome-operations-research"
+      target_products: ["obs-management", "pack-stock"]
+      approach: "PR adding free IEC 62402 BOM & Safety Stock interactive calculators."
+  complementary_marketplaces:
+    - name: "Lemon Squeezy Storefront + Affiliates (Native)"
+      cost_eur: 0
+      priority: "P0"
+      notes: "Already active as Merchant of Record (VAT/VIES); activate 25–30% affiliate program in Stage 2."
+    - name: "AppSumo Marketplace (Self-Serve Digital Products)"
+      cost_eur: 0
+      priority: "P2"
+      notes: "Evaluate after 10+ direct EN sales on Mega Bundle or Helix for B2B volume reach."
+
+linkedin_company_4week_plan:
+  company_page_url: "https://www.linkedin.com/company/110125695/"
+  starting_followers: 0
+  target_4week_followers: "50-100 qualified B2B & AI engineering followers"
+  attribution_rule: "All links MUST include ADR-033 UTMs (utm_source=linkedin&utm_medium=social&utm_campaign=...) to eradicate Dark Social spikes."
+  source_silent_releases_used:
+    - "obs-management-v2.0.0 (431 views/30d)"
+    - "pulse-v1.6.0 & v1.5.0 (425 views/30d)"
+    - "weather-v3.3.0 (43 views/30d)"
+    - "flashcards-v2.1.0 (31 views/30d)"
+  weeks:
+    - week: 1
+      theme: "Silent Release Spotlight #1: Agentic Radar v2.0 & Supply Chain Risk (Executive B2B)"
+      posts:
+        - day: "Tue"
+          lang: "en"
+          format: "Technical breakdown + 1600x980 architecture visual"
+          hook: "Most supply chain teams discover an obsolete chip 6 months too late. We rebuilt Agentic Radar v2.0 (<45 KB Zero-CDN) to compute LTB vs. Redesign CAPEX in the browser."
+          cta_url: "https://datalaria.com/apps/obs-management/?lang=en&scenario=ltb-crisis&utm_source=linkedin&utm_medium=social&utm_campaign=li_wk1_obs_v2"
+        - day: "Thu"
+          lang: "es"
+          format: "Carrousel / 3-bullet comparison (pack-stock vs. IEC 62402 EOL)"
+          hook: "Tu fórmula de Stock de Seguridad (ROP) falla cuando un componente entra en Fin de Vida (EOL). Así se calcula el colchón puente SS_LTB sin hojas rotas."
+          cta_url: "https://datalaria.com/es/apps/obs-management/?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk1_obs_es"
+        - day: "Sat"
+          lang: "en"
+          format: "Founder behind-the-scenes (Open Lab showcase)"
+          hook: "Why we removed every external CDN from our PWAs (Weather v3.3 & Agentic Radar v2.0): 0 ms third-party blocking and full offline resilience."
+          cta_url: "https://datalaria.com/en/apps/weather/?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk1_zerocdn"
+    - week: 2
+      theme: "Silent Release Spotlight #2: Datalaria Pulse v1.5/v1.6 & Content Ops as Code (AI Systems)"
+      posts:
+        - day: "Tue"
+          lang: "en"
+          format: "Dashboard screenshot + metrics story"
+          hook: "Our Notion content tracker drifted from Git every week. So we built Datalaria Pulse v1.6: 193 bilingual assets indexed with Pydantic v2 + GA4/GSC ROI."
+          cta_url: "https://datalaria.com/apps/pulse/?demo=true&utm_source=linkedin&utm_medium=social&utm_campaign=li_wk2_pulse_v16"
+        - day: "Thu"
+          lang: "en"
+          format: "Problem/Solution post for Content & DevRel teams"
+          hook: "Exporting Notion to a 6-sheet zero-VBA Excel cockpit with Power Query M in 5 minutes — live demo + toolkit."
+          cta_url: "https://datalaria.com/en/resources/#pack-pulse?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk2_pulse_kit"
+        - day: "Sat"
+          lang: "es"
+          format: "Debate question on Dark Social & Attribution"
+          hook: "El 73% del tráfico B2B llega como (direct) por Dark Social. Así montamos atribución omnicanal a coste 0 € con GA4 + UTMs estrictos."
+          cta_url: "https://datalaria.com/es/apps/pulse/?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk2_darksocial"
+    - week: 3
+      theme: "Launch Week: pack-obs (Dec 9, 2026) + Executive Suites B2B"
+      posts:
+        - day: "Tue"
+          lang: "en"
+          embargo_note: "Publish ONLY on or after 2026-12-09"
+          format: "Official Launch Post (EN-First)"
+          hook: "Live today: IEC 62402 Obsolescence, BOM Risk & LTB Decision Kit (5-sheet Zero-VBA Excel + PostgreSQL RLS Blueprint + 5-page PDF Playbook)."
+          cta_url: "https://datalaria.com/en/resources/#pack-obs?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk3_pack_obs_launch"
+        - day: "Thu"
+          lang: "es"
+          format: "Value comparison (Kit vs. Suite vs. Mega Bundle 39 € + Team License 99 €)"
+          hook: "13 modelos cuantitativos de Estrategia, Decisiones y Operaciones PMBOK sin macros VBA: por qué las empresas están pasando de plantillas sueltas a licencias de equipo."
+          cta_url: "https://datalaria.com/es/recursos/#pricing-comparison?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk3_b2b_suites"
+        - day: "Sat"
+          lang: "en"
+          format: "Quick quantitative tip (EVM / Safety Stock)"
+          hook: "3 indicators every COO should review before approving CAPEX: NPV sensitivity Tornado, EVM CPI/SPI, and Safety Stock working-capital trade-off."
+          cta_url: "https://datalaria.com/en/resources/#suite-03?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk3_coo_kpis"
+    - week: 4
+      theme: "Datalaria Helix Waitlist Push (Pre-Jan 19, 2027) & Brand Authority"
+      posts:
+        - day: "Tue"
+          lang: "en"
+          format: "Architecture diagram + engineering lesson"
+          hook: "Why AI coding agents approve their own bugs — and how our 12-agent Spec-Driven Development squad uses a binding Security/QA veto."
+          cta_url: "https://datalaria.com/en/posts/sdd_vs_vibe_coding/?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk4_helix_sdd"
+        - day: "Thu"
+          lang: "en"
+          format: "Early-Bird Waitlist CTA (embargo respected until Jan 19)"
+          hook: "Datalaria Helix launches Jan 19, 2027: 12-agent SDD OS + zero-dependency CLI for Antigravity, Claude Code & Cursor. Early-Bird waitlist (19 € vs 39 €) is open."
+          cta_url: "https://datalaria.com/en/resources/#pack-sdd?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk4_helix_waitlist"
+        - day: "Sat"
+          lang: "es"
+          format: "Monthly engineering recap (Open Lab + Executive B2B + AI Systems)"
+          hook: "Cómo estructuramos Datalaria en 3 verticales (Executive B2B, AI Systems y Open Lab) para construir herramientas deterministas a coste fijo 0 €."
+          cta_url: "https://datalaria.com/es/apps/?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk4_brand_recap"

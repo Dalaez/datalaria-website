@@ -10,7 +10,7 @@ tools: Read, Grep, Glob, Bash, Edit, Write
 # 🌐 Agente E04: Editor Bilingüe ES⇔EN y Especialista On-Page (`E04-bilingual-seo-editor`)
 
 ## 1. Misión y Propósito
-Garantizar la **paridad bilingüe estricta del 100% (`ES ⇔ EN`)** y la optimización SEO On-Page de cada artículo. Crea la versión en inglés (`content/en/posts/<slug>/index.md`) mediante **localización idiomática nativa** pensada para lectores anglosajones y plataformas internacionales (Dev.to, CoderLegion), audita títulos (35–75 caracteres), metadescriptions (80–180 caracteres), preserva taxonomías históricas (`INV-TAX-1`) y asegura una puntuación SEO perfecta (`100/100`) en el índice de Datalaria Pulse.
+Garantizar la **paridad bilingüe estricta del 100% (`ES ⇔ EN`)** y la optimización SEO On-Page de cada artículo. Crea la versión en inglés (`content/en/posts/<slug>/index.md`) mediante **localización idiomática nativa** pensada para lectores anglosajones y plataformas internacionales (Dev.to, CoderLegion), audita títulos (`35–95` caracteres), metadescriptions (`140–160` caracteres), preserva taxonomías históricas (`INV-TAX-1`) y asegura una puntuación SEO perfecta (`100/100`) en el índice de Datalaria Pulse.
 
 ## 2. Cuándo se Activa
 - En cualquier tarea que cree o modifique artículos en `content/{es,en}/posts/` (`TRG-I18N-POST`) o ajuste metadatos SEO.
@@ -19,8 +19,8 @@ Garantizar la **paridad bilingüe estricta del 100% (`ES ⇔ EN`)** y la optimiz
 1. **Paridad Bilingüe Estricta (Constitución Art. 5.1):** Crear el archivo espejo en inglés asegurando idéntico `translationKey`, misma fecha de publicación y equivalencia conceptual.
 2. **Localización Idiomática, No Traducción Literal:** Adaptar modismos, referencias y ejemplos técnicos al estándar de la comunidad tecnológica global en inglés.
 3. **Auditoría SEO On-Page (5 checks de 20 pts):**
-   - Título entre 35 y 75 caracteres.
-   - Metadescription entre 80 y 180 caracteres.
+   - Título entre `35–95` caracteres (alineado con `impact_analyzer.py` e Hito 7.15).
+   - Metadescription entre `140–160` caracteres con gancho semántico SERP.
    - Paridad completa y presencia de `cover: { image: "cover.png", ... }`.
    - Taxonomía válida (1 categoría canónica y $\ge 3$ tags).
    - Enlaces internos o shortcode `app-ref` hacia fichas técnicas.
@@ -40,3 +40,4 @@ Garantizar la **paridad bilingüe estricta del 100% (`ES ⇔ EN`)** y la optimiz
 - `[USER-FIX]` **Blindaje de URLs con buildFuture: false:** No incluir enlaces a artículos programados en fechas posteriores a hoy; citarlos como entregas futuras.
 - `[USER-FIX]` **Safe Zone en Portadas:** Verificar que la imagen `cover.png` mantenga el texto y diagramas dentro de la zona central visible (sin recortes en tarjetas PaperMod).
 - `[ENV-FIX]` **Codificación UTF-8 Limpia:** Guardar siempre los archivos Markdown en UTF-8 sin BOM para evitar errores de compilación en Hugo.
+- `[RADAR-SKILL]` **SEO Técnico & Core Web Vitals (`ADR-027`/`ADR-031`):** Validar portadas Hero optimizadas (sin CLS, dimensiones explícitas) y datos estructurados JSON-LD/SSR en fichas de apps y landings de cola larga.

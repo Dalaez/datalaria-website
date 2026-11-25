@@ -6,7 +6,7 @@
  * Idea -> Draft -> Review -> Scheduled -> Published.
  */
 
-import { ContentAsset, OmnichannelIntelligence } from '../types';
+import { ContentAsset, OmnichannelIntelligence, RevenueIntelligence } from '../types';
 
 export const DEMO_SYNTHETIC_ASSETS: ContentAsset[] = [
   // 1. IDEAS
@@ -633,5 +633,156 @@ export function getDemoOmnichannelSandbox(lang: 'es' | 'en'): OmnichannelIntelli
           : 'Canonical Shield: 680 Dev.to views with 0 GSC impressions after 24 days -> verify Forem canonical_url tag and add internal cluster links.',
       },
     ],
+  };
+}
+
+/**
+ * Escenario sintético educativo de Ingresos & Funnel (Hito 9.2 / INV-PULSE-13).
+ * Protege los datos financieros reales mostrándose exclusivamente cuando !isAdmin.
+ */
+export function getDemoRevenueSandbox(lang: 'es' | 'en'): RevenueIntelligence {
+  const isEs = lang === 'es';
+  return {
+    generated_at: '2026-11-24T19:00:00Z',
+    is_synthetic: true,
+    pii_stripped: true,
+    north_star_target_eur_month: 500,
+    stage_label: isEs ? 'Estadio 1 (0 -> 500 €/mes)' : 'Stage 1 (€0 -> €500/mo)',
+    stage_progress_pct: 64.2,
+    lemon_squeezy: {
+      status: 'ok',
+      last_synced_at: '2026-11-24T19:00:00Z',
+      currency: 'EUR',
+      net_revenue_eur_30d: 321.0,
+      net_revenue_eur_total: 842.0,
+      orders_30d: 18,
+      orders_total: 49,
+      refunded_orders_30d: 0,
+      avg_order_value_eur: 17.83,
+      active_products_count: 19,
+      checkouts_created_30d: 31,
+      checkouts_completed_30d: 18,
+      checkout_abandonment_pct: 41.9,
+      language_breakdown: {
+        en: { orders_30d: 12, net_revenue_eur_30d: 222.0 },
+        es: { orders_30d: 5, net_revenue_eur_30d: 84.0 },
+        other: { orders_30d: 1, net_revenue_eur_30d: 15.0 },
+      },
+      by_product: [
+        {
+          product_id: 'demo-pack-pulse',
+          product_name: 'Datalaria Pulse: Content Ops Kit',
+          orders_30d: 7,
+          orders_total: 16,
+          net_revenue_eur_30d: 133.0,
+          net_revenue_eur_total: 304.0,
+          avg_order_value_eur: 19.0,
+        },
+        {
+          product_id: 'demo-mega-bundle',
+          product_name: 'Total Mega Bundle (3 Executive Suites)',
+          orders_30d: 3,
+          orders_total: 8,
+          net_revenue_eur_30d: 117.0,
+          net_revenue_eur_total: 312.0,
+          avg_order_value_eur: 39.0,
+        },
+        {
+          product_id: 'demo-suite-01',
+          product_name: 'Suite 1: MBA Strategy',
+          orders_30d: 3,
+          orders_total: 11,
+          net_revenue_eur_30d: 57.0,
+          net_revenue_eur_total: 209.0,
+          avg_order_value_eur: 19.0,
+        },
+        {
+          product_id: 'demo-pack-stock',
+          product_name: 'Safety Stock & ROP Engine',
+          orders_30d: 2,
+          orders_total: 14,
+          net_revenue_eur_30d: 14.0,
+          net_revenue_eur_total: 98.0,
+          avg_order_value_eur: 7.0,
+        },
+      ],
+      by_country: [
+        { country: 'US', orders_30d: 6, net_revenue_eur_30d: 118.0 },
+        { country: 'ES', orders_30d: 5, net_revenue_eur_30d: 84.0 },
+        { country: 'GB', orders_30d: 4, net_revenue_eur_30d: 72.0 },
+        { country: 'DE', orders_30d: 3, net_revenue_eur_30d: 47.0 },
+      ],
+      monthly_trend: [
+        { month: '2026-09', orders: 12, net_revenue_eur: 198.0 },
+        { month: '2026-10', orders: 19, net_revenue_eur: 323.0 },
+        { month: '2026-11', orders: 18, net_revenue_eur: 321.0 },
+      ],
+      note: isEs
+        ? 'Datos sintéticos de demostración (cero PII).'
+        : 'Synthetic demo dataset (zero PII).',
+    },
+    brevo: {
+      status: 'ok',
+      last_synced_at: '2026-11-24T19:00:00Z',
+      total_lists: 4,
+      total_subscribers: 284,
+      es_subscribers: 116,
+      en_subscribers: 168,
+      waitlist_helix_subscribers: 92,
+      campaigns_analyzed: 4,
+      avg_open_rate_pct: 46.8,
+      avg_ctr_pct: 6.4,
+      total_unsubscribes: 2,
+      lists: [
+        { list_id: 3, name: 'Datalaria Newsletter ES', lang_hint: 'es', total_subscribers: 82, unique_subscribers: 82 },
+        { list_id: 4, name: 'Datalaria Newsletter EN', lang_hint: 'en', total_subscribers: 110, unique_subscribers: 110 },
+        { list_id: 5, name: 'Helix Waitlist ES', lang_hint: 'es', total_subscribers: 34, unique_subscribers: 34 },
+        { list_id: 6, name: 'Helix Waitlist EN', lang_hint: 'en', total_subscribers: 58, unique_subscribers: 58 },
+      ],
+      recent_campaigns: [
+        {
+          campaign_id: 101,
+          name: 'Datalaria Pulse Launch Digest (EN)',
+          sent_date: '2026-11-18',
+          delivered: 108,
+          unique_opens: 53,
+          open_rate_pct: 49.1,
+          unique_clicks: 9,
+          ctr_pct: 8.3,
+          unsubscribes: 0,
+        },
+        {
+          campaign_id: 102,
+          name: 'AMFE / FMEA Industrial Risk (ES)',
+          sent_date: '2026-11-16',
+          delivered: 81,
+          unique_opens: 36,
+          open_rate_pct: 44.4,
+          unique_clicks: 4,
+          ctr_pct: 4.9,
+          unsubscribes: 1,
+        },
+      ],
+      note: isEs ? 'Métricas sintéticas de audiencia Brevo.' : 'Synthetic Brevo audience metrics.',
+    },
+    traffic_seo: {
+      post_views_30d: 2162,
+      gsc_impressions_30d: 20482,
+      gsc_clicks_30d: 118,
+      avg_gsc_ctr_pct: 0.58,
+      en_gsc_impressions_share_pct: 72.3,
+      ga4_key_events_30d: 12,
+    },
+    top_priorities: isEs
+      ? [
+          'Activar flujo Brevo Evergreen de bienvenida segmentada y cross-sell hacia Mega Bundle (39 €).',
+          'Desplegar lanzamiento externo EN-first en Product Hunt / Reddit para pack-obs (9 Dic).',
+          'Optimizar títulos GSC Top 10 Quick Wins para elevar CTR orgánico hacia >= 2.0%.',
+        ]
+      : [
+          'Activate segmented Brevo Evergreen welcome flow and cross-sell to Mega Bundle (€39).',
+          'Execute EN-first Product Hunt / Reddit launch playbook for pack-obs (Dec 9).',
+          'Optimize Top 10 GSC Quick Win titles to lift organic CTR toward >= 2.0%.',
+        ],
   };
 }

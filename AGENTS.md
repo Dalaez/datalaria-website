@@ -11,7 +11,7 @@
 1. **Leer el Estado del Ecosistema y Memoria:**
    - Leer [`/specs/ROADMAP.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/ROADMAP.md) para identificar en qué Fase, Hito y Tarea exacta nos encontramos, y cuál fue el último checkpoint verificado.
 2. **Leer las Reglas Inmutables del Sistema:**
-   - Leer [`/specs/_constitution.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/_constitution.md) (`v1.1.0`, Artículos 1 a 9) para asegurar el cumplimiento estricto de las invariantes de seguridad, topología de directorios, aislamiento de datos, patrón Dual-Mode y separación Construcción/Verificación.
+   - Leer [`/specs/_constitution.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/_constitution.md) (`v1.2.0`, Artículos 1 a 10) para asegurar el cumplimiento estricto de las invariantes de seguridad, topología de directorios, aislamiento de datos, patrón Dual-Mode, separación Construcción/Verificación y federación `Datalaria OS`.
 3. **Leer la Especificación del Módulo Afectado y Emitir Triaje:**
    - Si la tarea afecta a una aplicación (`<app>`), leer `/specs/apps/<app>/spec.md` (y `/specs/apps/<app>/design.md` si se toca UI).
    - Aplicar la rúbrica de triaje de [`/specs/squad/triage-rubric.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/triage-rubric.md) y cargar en contexto **únicamente** las fichas `/specs/squad/<rol>.md` de los agentes convocados (§5).
@@ -26,6 +26,8 @@
 | **`/specs/`** | **El Corazón SDD (Fuente Única de Verdad).** Contiene `_constitution.md`, `ROADMAP.md`, `DECISIONS.md` (ADRs), `_templates/`, `audit/`, `squad/` (las 12 fichas `AGENT_SPEC` de Helix) y las especificaciones por app (`/specs/apps/<slug>/spec.md`). | **Lectura obligatoria.** Todo cambio arquitectónico o funcional empieza aquí. |
 | **`/specs/squad/`** | **Escuadrón Canónico Datalaria Helix (12 Agentes).** Contiene `README.md`, `triage-rubric.md` y las 12 fichas `01-orchestrator.md` a `12-release-devops.md`. | **Carga bajo demanda (`INV-HELIX-2`).** Prohibido editar a mano los adaptadores compilados en `.agents/`, `.claude/` o `.cursor/`. |
 | **`/specs/squad-editorial/`** | **Escuadrón Canónico Datalaria Scriba (8 Agentes).** Contiene `README.md`, `triage-editorial-rubric.md` y las 8 fichas `E01-editorial-orchestrator.md` a `E08-autopilot-dispatcher.md`. | **Carga bajo demanda (`INV-SCRIBA-2`).** Prohibido editar a mano los adaptadores compilados en `.agents/squad-editorial/`, `.claude/` o `.cursor/`. |
+| **`/specs/squad-os/`** | **Capa 0 — Datalaria OS (`ADR-034`).** Contiene `00-chief-orchestrator.md` (custodio de `specs/STRATEGY.md` y `specs/_brand.md`, con bypass coste 0 en tareas mono-dominio). | **Solo en tareas multi-escuadrón/estratégicas (`INV-OS-1`).** |
+| **`/specs/squad-mercator/`** | **Escuadrón Canónico Datalaria Mercator (4 Agentes Estadio 1).** Contiene `README.md`, `triage-mercator-rubric.md` y `M01`–`M04` (CRO/Pricing, Lifecycle Brevo, Distribución Externa). | **Carga bajo demanda (`INV-OS-2`).** Reutiliza vetos `10`/`11`/`E07`; prohibido editar `.agents/squad-mercator/` a mano. |
 | **`/apps/`** | **Código Fuente de Aplicaciones.** Contiene frontends (React/Vite/TS) y backends/motores cuantitativos (FastAPI/Python). | Solo modificar bajo cobertura de un `spec.md` activo y tests automatizados. |
 | **`/static/`** | **Assets Públicos de Hugo.** Todo archivo aquí se copia literalmente a `public/` y es accesible por Internet en `https://datalaria.com/*`. | **PROHIBIDO** alojar archivos `.py`, `.sql`, `.env` o código backend aquí. Solo bundles compilados, imágenes y apps estáticas congeladas. |
 | **`/content/`, `/layouts/`** | **Portal Editorial Hugo y Catálogo B2B (Lemon Squeezy).** Contenido bilingüe (`/es/`, `/en/`) y plantillas Go HTML. Las fichas de App viven en `/content/{es,en}/apps/<slug>/`. | Preservar paridad estricta bilingüe ES/EN y telemetría GA4 / Lemon Squeezy. |
@@ -140,3 +142,32 @@ Presupuesto y Gobernanza: Máx. 2 intentos por gate · Checkpoint <tag Git> · A
 | **2. Creación** | ✍️ [`E03-technical-writer`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-editorial/E03-technical-writer.md) · 🌐 [`E04-bilingual-seo-editor`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-editorial/E04-bilingual-seo-editor.md) · 💰 [`E05-content-monetizer`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-editorial/E05-content-monetizer.md) | `E03` en redacción de posts; `E04` en `TRG-I18N-POST` (paridad ES/EN y SEO); `E05` en `TRG-BREVO` y CTAs. |
 | **3. Sindicación** | 📣 [`E06-social-syndicator`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-editorial/E06-social-syndicator.md) | `TRG-SOCIAL` (LinkedIn, hilos X coste 0€, Dev.to y CoderLegion con `canonical_url`). |
 | **4. Garantía** | ✅ [`E07-editorial-qa`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-editorial/E07-editorial-qa.md) · 🤖 [`E08-autopilot-dispatcher`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-editorial/E08-autopilot-dispatcher.md) | `TRG-EDIT-QA` (toda tarea editorial) → `E07` con veto vinculante (`INV-SCRIBA-1`). `E08` para publicación tras `EDITORIAL_QA_PASS`. |
+
+---
+
+## 7. DATALARIA OS (CAPA 0) Y ESCUADRÓN DATALARIA MERCATOR (`ADR-034`)
+
+La estrategia común de marca (`specs/_brand.md`), el objetivo de autonomía mediante ingresos pasivos (`specs/STRATEGY.md`) y la coordinación entre **Helix**, **Scriba** y el escuadrón comercial **Datalaria Mercator** ([`/specs/squad-mercator/`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-mercator/README.md)) se gobiernan mediante **Datalaria OS** en 3 capas:
+
+### 7.1 Capa 0 y Regla de Bypass de Coste 0 (`INV-OS-1`)
+- **Tareas mono-dominio (`XS`, `S`, o `M` acotadas):** Bypass directo a `01-orchestrator` (Helix), `E01-editorial-orchestrator` (Scriba) o `M01-revenue-orchestrator` (Mercator) con `0` tokens extra.
+- **Iniciativas multi-escuadrón, lanzamientos comerciales y revisiones de foco (`L`/`XL`):** Toma el mando [`00-chief-orchestrator`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-os/00-chief-orchestrator.md), dialogando **exclusivamente** con los 3 orquestadores (`01`, `E01`, `M01`) sobre la realidad compartida de `ops/pulse/`.
+- **Integridad de Helix Kit y Veto Reutilizado (`INV-OS-2`):** El escuadrón Helix (`specs/squad/01..12`) permanece 100 % intacto para su comercialización. Mercator no duplica QA ni Seguridad: toda entrega comercial pasa por `10-security-privacy`, `11-qa-verifier` y/o `E07-editorial-qa`.
+
+### 7.2 Tarjeta de Triaje Comercial (`TRIAGE MERCATOR`) y Mapa de Roles (Estadio 1)
+
+```text
+TRIAGE MERCATOR · Campaña <ID> · Talla: <XS|S|M|L|XL>
+Superficies afectadas: <cro_pricing | lifecycle_brevo | external_dist | brand_positioning | revenue_telemetry>
+Roles activados (<N> de 4): <iconos y nombres Mercator> + Veto: <10-security-privacy | 11-qa-verifier | E07-editorial-qa>
+Roles en banquillo: <agentes Mercator no requeridos>
+Verification Gate: <comandos exactos con código de salida 0>
+Presupuesto y Gobernanza: Máx. 2 intentos por gate · Checkpoint <tag Git> · Aprobación humana previa: <SÍ|NO>
+```
+
+| Agente (`specs/squad-mercator/<id>.md`) | Disparador (`triage-mercator-rubric.md`) |
+| :--- | :--- |
+| 💰 [`M01-revenue-orchestrator`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-mercator/M01-revenue-orchestrator.md) | Toda tarea comercial; custodia temporal de `specs/_brand.md` (Estadio 1) y relevo Anti-Releases Silenciosas (`INV-OS-3`). |
+| 💎 [`M02-cro-pricing-revops`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-mercator/M02-cro-pricing-revops.md) | `TRG-CRO` (CRO `/recursos/`, pricing/bundles/licencias B2B, Lemon Squeezy sin PII `INV-PULSE-13`). |
+| 🔁 [`M03-lifecycle-retention`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-mercator/M03-lifecycle-retention.md) | `TRG-LIFECYCLE` (secuencias Brevo evergreen coste `0 €`: bienvenida, waitlist, post-compra + cross-sell). |
+| 🚀 [`M04-distribution-marketplaces`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-mercator/M04-distribution-marketplaces.md) | `TRG-EXT-DIST` (Product Hunt, Show HN, Reddit nicho, directorios IA, marketplaces y crecimiento LinkedIn Empresa). |

@@ -1580,3 +1580,288 @@ body.dark {
   border-top: 1px solid var(--border);
 }
 
+
+
+/* ==========================================================================
+   MERCATOR SPRINT 1 CRO: SAVINGS COMPARISON, B2B LICENSES & NATIVE <DETAILS> FAQ
+   ========================================================================== */
+.savings-compare-section {
+  margin-top: 40px;
+  padding: 28px 24px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.savings-compare-head {
+  margin-bottom: 20px;
+}
+.savings-kicker {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.savings-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin: 0 0 6px;
+  line-height: 1.25;
+}
+.savings-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0;
+}
+.savings-compare-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+.savings-tier-card {
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  gap: 10px;
+}
+.savings-tier-card.is-featured {
+  border-color: var(--accent);
+  box-shadow: 0 6px 24px rgba(56, 189, 248, 0.14);
+}
+.savings-tier-badge {
+  align-self: flex-start;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+}
+.savings-badge-accent {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.savings-badge-gold {
+  background: rgba(245, 158, 11, 0.18);
+  color: #f59e0b;
+}
+.savings-badge-b2b {
+  background: var(--success-bg);
+  color: var(--success-text);
+}
+.savings-tier-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+}
+.savings-tier-price {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-main);
+  font-family: var(--font-mono);
+}
+.savings-tier-price span {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  font-family: inherit;
+}
+.savings-tier-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  flex: 1;
+}
+.savings-tier-list li::before {
+  content: "✓ ";
+  color: var(--success-text, #10b981);
+  font-weight: 700;
+}
+.savings-tier-btn {
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.b2b-license-banner {
+  margin-top: 24px;
+  padding: 24px;
+  border-radius: var(--radius);
+  background: var(--mega-gradient, linear-gradient(135deg, #162032 0%, #0f172a 100%));
+  border: 1px solid var(--accent);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.b2b-license-content {
+  flex: 1 1 260px;
+  min-width: 0;
+}
+.b2b-license-pill {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.14);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+.b2b-license-content h2 {
+  margin: 0 0 8px;
+  font-size: 19px;
+  font-weight: 800;
+  color: #f8fafc;
+}
+.b2b-license-content p {
+  margin: 0 0 12px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: #cbd5e1;
+}
+.b2b-license-tiers-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.b2b-tier-chip {
+  font-size: 12px;
+  color: #e2e8f0;
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid #334155;
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+.b2b-license-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+.b2b-license-note {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+/* Native <details> FAQ Accordion (Modern Web Guidance: accordion) */
+.catalog-faq {
+  margin-top: 28px;
+  padding: 24px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.catalog-faq-head h2 {
+  margin: 0 0 4px;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-main);
+}
+.catalog-faq-head p {
+  margin: 0 0 16px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.catalog-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.catalog-faq-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm, 8px);
+  background: var(--bg-subtle);
+  overflow: hidden;
+}
+.catalog-faq-item > summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-main);
+  cursor: pointer;
+}
+.catalog-faq-item > summary::-webkit-details-marker {
+  display: none;
+}
+.catalog-faq-item > summary::before {
+  content: "▾";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 1.1em;
+  block-size: 1.1em;
+  flex-shrink: 0;
+  color: var(--accent);
+  rotate: -90deg;
+}
+.catalog-faq-item[open] > summary::before {
+  rotate: 0deg;
+}
+.catalog-faq-body {
+  padding: 0 16px 14px 36px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+.catalog-faq-body p {
+  margin: 0;
+}
+.catalog-faq-item::details-content {
+  interpolate-size: allow-keywords;
+  overflow: clip;
+  contain: layout;
+}
+.catalog-faq-item:not([open])::details-content {
+  block-size: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .catalog-faq-item > summary::before {
+    transition: rotate 0.2s ease;
+  }
+  .catalog-faq-item::details-content {
+    transition: block-size 0.25s ease-in-out, content-visibility 0.25s ease-in-out;
+    transition-behavior: allow-discrete;
+  }
+}
+@media (max-width: 640px) {
+  .catalog-wrapper {
+    overflow-x: clip;
+  }
+  .launch-badge {
+    white-space: normal;
+  }
+  .savings-compare-section,
+  .b2b-license-banner,
+  .catalog-faq {
+    padding: 18px 14px;
+  }
+  .b2b-license-actions,
+  .b2b-license-cta {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}

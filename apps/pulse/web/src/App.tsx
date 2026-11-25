@@ -47,11 +47,12 @@ import {
   AssetType,
   AssetStatus,
   OmnichannelIntelligence,
-  OmnichannelRecommendationItem
+  OmnichannelRecommendationItem,
+  RevenueIntelligence
 } from './types';
 import { i18n } from './lib/i18n';
 import { parseNotionCsv } from './lib/notionImporter';
-import { DEMO_SYNTHETIC_ASSETS, getDemoOmnichannelSandbox } from './lib/demoData';
+import { DEMO_SYNTHETIC_ASSETS, getDemoOmnichannelSandbox, getDemoRevenueSandbox } from './lib/demoData';
 import {
   supabase,
   getCurrentUser,
@@ -142,11 +143,11 @@ export function App() {
   } | null>(null);
   const t = i18n[lang];
 
-  // Vistas: Dashboard, Tabla, Kanban, Calendario, Salud & ROI, Canales & Audiencia (soporte deep-linking ?tab=...)
-  const [activeTab, setActiveTab] = useState<'dashboard' | 'table' | 'kanban' | 'calendar' | 'health' | 'channels'>(() => {
+  // Vistas: Dashboard, Tabla, Kanban, Calendario, Salud & ROI, Canales & Audiencia, Ingresos & Funnel (soporte deep-linking ?tab=...)
+  const [activeTab, setActiveTab] = useState<'dashboard' | 'table' | 'kanban' | 'calendar' | 'health' | 'channels' | 'revenue'>(() => {
     if (typeof window !== 'undefined') {
       const p = new URLSearchParams(window.location.search).get('tab');
-      if (p === 'table' || p === 'kanban' || p === 'calendar' || p === 'health' || p === 'channels') return p;
+      if (p === 'table' || p === 'kanban' || p === 'calendar' || p === 'health' || p === 'channels' || p === 'revenue') return p;
     }
     return 'dashboard';
   });
@@ -249,6 +250,7 @@ export function App() {
   const [cloudIdeas, setCloudIdeas] = useState<ContentAsset[]>([]);
   const [adminSnapshotAssets, setAdminSnapshotAssets] = useState<ContentAsset[] | null>(null);
   const [adminOmnichannel, setAdminOmnichannel] = useState<OmnichannelIntelligence | null>(null);
+  const [adminRevenue, setAdminRevenue] = useState<RevenueIntelligence | null>(null);
   const [isAdminSnapshotSynced, setIsAdminSnapshotSynced] = useState(false);
   const [channelMatrixFilter, setChannelMatrixFilter] = useState<string>('all');
   const [channelLangFilter, setChannelLangFilter] = useState<'all' | 'es' | 'en'>('all');
@@ -311,12 +313,13 @@ export function App() {
     }
   };
 
-  // Cargar catálogo maestro Admin + inteligencia omnicanal desde Supabase RLS (pulse.private_snapshot)
+  // Cargar catálogo maestro Admin + inteligencia omnicanal/ingresos desde Supabase RLS (pulse.private_snapshot)
   const loadAdminSnapshotIfAuthorized = async (u: User | null) => {
     const email = u?.email?.toLowerCase() || '';
     if (!u || !ADMIN_EMAILS.includes(email)) {
       setAdminSnapshotAssets(null);
       setAdminOmnichannel(null);
+      setAdminRevenue(null);
       setIsAdminSnapshotSynced(false);
       return;
     }
@@ -324,6 +327,7 @@ export function App() {
     if (snap && snap.assets.length > 0) {
       setAdminSnapshotAssets(snap.assets);
       setAdminOmnichannel(snap.omnichannelIntelligence ?? null);
+      setAdminRevenue(snap.revenueIntelligence ?? null);
       setIsAdminSnapshotSynced(true);
     }
   };
@@ -387,6 +391,7 @@ export function App() {
           setCloudIdeas([]);
           setAdminSnapshotAssets(null);
           setAdminOmnichannel(null);
+          setAdminRevenue(null);
           setIsAdminSnapshotSynced(false);
         }
       });
@@ -1403,6 +1408,14 @@ export function App() {
     return getDemoOmnichannelSandbox(lang);
   }, [isAdmin, adminOmnichannel, lang]);
 
+  // Inteligencia de Ingresos & Funnel (Hito 9.2 / INV-PULSE-13): Admin RLS Live sin PII vs Sandbox sintético (!isAdmin)
+  const revenueData: RevenueIntelligence = useMemo(() => {
+    if (isAdmin && adminRevenue) {
+      return adminRevenue;
+    }
+    return getDemoRevenueSandbox(lang);
+  }, [isAdmin, adminRevenue, lang]);
+
   const channelMatrixOptions = useMemo(() => {
     const set = new Set<string>();
     omnichannelData.channel_category_matrix.forEach((row) => {
@@ -1482,7 +1495,7 @@ export function App() {
                     borderRadius: '9999px'
                   }}
                 >
-                  v1.0.0
+                  v1.6.0
                 </span>
                 <a
                   href={appFichaUrl}
@@ -2085,6 +2098,17 @@ export function App() {
               <Radio size={18} />
               <span>{t.view_channels}</span>
             </button>
+            <button
+              type="button"
+              id="tab-revenue"
+              role="tab"
+              aria-selected={activeTab === 'revenue'}
+              className={`tab-btn ${activeTab === 'revenue' ? 'active' : ''}`}
+              onClick={() => setActiveTab('revenue')}
+            >
+              <DollarSign size={18} />
+              <span>{t.view_revenue}</span>
+            </button>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
             <span style={{ fontSize: '0.78rem', color: '#64748b', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
@@ -2094,6 +2118,7 @@ export function App() {
               {activeTab === 'calendar' && t.view_calendar}
               {activeTab === 'health' && t.view_health}
               {activeTab === 'channels' && t.view_channels}
+              {activeTab === 'revenue' && t.view_revenue}
             </span>
             <span style={{ background: 'rgba(16, 185, 129, 0.12)', color: '#34d399', border: '1px solid rgba(16, 185, 129, 0.3)', borderRadius: '9999px', padding: '0.2rem 0.55rem', fontSize: '0.72rem', fontWeight: 700 }}>
               {currentAssets.length} activos
@@ -3740,6 +3765,262 @@ export function App() {
                       </div>
                     ))
                   )}
+                </div>
+              </section>
+            </div>
+          </div>
+        )}
+
+        {/* 7. VISTA INGRESOS & FUNNEL (LEMON SQUEEZY + BREVO SIN PII - HITO 9.2 / INV-PULSE-13) */}
+        {activeTab === 'revenue' && (
+          <div className="revenue-wrapper" role="tabpanel" aria-labelledby="tab-revenue" tabIndex={0}>
+            {/* Banner de Modo: RLS Admin Live vs Sandbox Educativo Sintético */}
+            <div className={`channels-mode-banner ${isAdmin && !revenueData.is_synthetic ? 'mode-admin' : 'mode-sandbox'}`}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+                  <span className="channels-mode-pill">
+                    {isAdmin && !revenueData.is_synthetic ? (
+                      <>
+                        <Lock size={13} />
+                        <span>{t.revenue_admin_live_badge}</span>
+                      </>
+                    ) : (
+                      <span>{t.revenue_sandbox_badge}</span>
+                    )}
+                  </span>
+                  <span className="x-standby-pill">
+                    <ShieldCheck size={13} />
+                    <span>LS: {revenueData.lemon_squeezy.status} · Brevo: {revenueData.brevo.status}</span>
+                  </span>
+                </div>
+                {(!isAdmin || revenueData.is_synthetic) && (
+                  <p style={{ fontSize: '0.82rem', color: '#cbd5e1', lineHeight: 1.45 }}>
+                    {t.revenue_sandbox_desc}
+                  </p>
+                )}
+              </div>
+              {!isAdmin && (
+                <a
+                  href={kitCheckoutUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+                  onClick={() => trackPulseEvent('begin_checkout_kit', { placement: 'revenue_sandbox' })}
+                  style={{ flexShrink: 0 }}
+                >
+                  <Zap size={16} />
+                  <span>{t.btn_rentabilizar_kit}</span>
+                </a>
+              )}
+            </div>
+
+            {/* Progreso North Star (Estadio 1 -> Autonomía) */}
+            <section className="channels-section">
+              <div className="channels-section-header">
+                <h2 className="channels-section-title">
+                  <Target size={18} color="#10b981" />
+                  <span>{t.revenue_north_star_title}</span>
+                </h2>
+                <span className="channel-chip">{revenueData.stage_label}</span>
+              </div>
+              <div className="roi-bar-track" style={{ height: '10px', marginBottom: '0.5rem' }}>
+                <div
+                  className="roi-bar-fill"
+                  style={{ width: `${Math.min(100, Math.max(2, revenueData.stage_progress_pct))}%` }}
+                />
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.5rem', fontSize: '0.8rem', color: '#94a3b8' }}>
+                <span>
+                  {t.revenue_north_star_sub
+                    .replace('{target}', String(revenueData.north_star_target_eur_month))
+                    .replace('{pct}', revenueData.stage_progress_pct.toFixed(1))}
+                </span>
+                <span className="mono-num" style={{ color: '#34d399', fontWeight: 700 }}>
+                  {revenueData.lemon_squeezy.net_revenue_eur_30d.toFixed(2)} € / {revenueData.north_star_target_eur_month} €
+                </span>
+              </div>
+            </section>
+
+            {/* 4 KPIs Financieros y de Retención */}
+            <section className="channels-section">
+              <div className="channel-funnel-grid">
+                <div className="channel-funnel-card accent-emerald">
+                  <div className="funnel-step-tag">01 · LEMON SQUEEZY</div>
+                  <div className="funnel-kpi-label">{t.revenue_kpi_net_30d}</div>
+                  <div className="funnel-kpi-value" style={{ color: '#34d399' }}>
+                    {revenueData.lemon_squeezy.net_revenue_eur_30d.toFixed(2)} €
+                  </div>
+                  <div className="funnel-kpi-sub">
+                    {t.revenue_kpi_net_sub.replace('{total}', revenueData.lemon_squeezy.net_revenue_eur_total.toFixed(2))}
+                  </div>
+                </div>
+
+                <div className="channel-funnel-card accent-cyan">
+                  <div className="funnel-step-tag">02 · ORDERS & AOV</div>
+                  <div className="funnel-kpi-label">{t.revenue_kpi_orders_30d}</div>
+                  <div className="funnel-kpi-value" style={{ color: '#22d3ee' }}>
+                    {revenueData.lemon_squeezy.orders_30d.toLocaleString()}
+                  </div>
+                  <div className="funnel-kpi-sub">
+                    {t.revenue_kpi_orders_sub
+                      .replace('{aov}', revenueData.lemon_squeezy.avg_order_value_eur.toFixed(2))
+                      .replace('{total}', String(revenueData.lemon_squeezy.orders_total))}
+                  </div>
+                </div>
+
+                <div className="channel-funnel-card accent-purple">
+                  <div className="funnel-step-tag">03 · BREVO AUDIENCE</div>
+                  <div className="funnel-kpi-label">{t.revenue_kpi_subscribers}</div>
+                  <div className="funnel-kpi-value" style={{ color: '#c084fc' }}>
+                    {revenueData.brevo.total_subscribers.toLocaleString()}
+                  </div>
+                  <div className="funnel-kpi-sub">
+                    {t.revenue_kpi_subscribers_sub
+                      .replace('{es}', String(revenueData.brevo.es_subscribers))
+                      .replace('{en}', String(revenueData.brevo.en_subscribers))
+                      .replace('{wl}', String(revenueData.brevo.waitlist_helix_subscribers))}
+                  </div>
+                </div>
+
+                <div className="channel-funnel-card accent-amber">
+                  <div className="funnel-step-tag">04 · FUNNEL HEALTH</div>
+                  <div className="funnel-kpi-label">{t.revenue_kpi_abandonment}</div>
+                  <div className="funnel-kpi-value" style={{ color: '#fbbf24' }}>
+                    {revenueData.brevo.avg_open_rate_pct.toFixed(1)}%
+                  </div>
+                  <div className="funnel-kpi-sub">
+                    {t.revenue_kpi_abandonment_sub
+                      .replace('{ab}', revenueData.lemon_squeezy.checkout_abandonment_pct.toFixed(1))
+                      .replace('{open}', revenueData.brevo.avg_open_rate_pct.toFixed(1))}
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Tabla Responsiva de Productos (modern-web-guidance/responsive-table) */}
+            <section className="channels-section">
+              <div className="channels-section-header">
+                <h2 className="channels-section-title" id="revenue-products-caption">
+                  <DollarSign size={18} color="#10b981" />
+                  <span>{t.revenue_products_title}</span>
+                </h2>
+                <div className="lang-pill-group">
+                  {(['en', 'es', 'other'] as const).map((lk) => {
+                    const slice = revenueData.lemon_squeezy.language_breakdown[lk];
+                    if (!slice) return null;
+                    return (
+                      <span key={lk} className="channel-chip">
+                        {lk.toUpperCase()}: {slice.orders_30d} ({slice.net_revenue_eur_30d.toFixed(0)} €)
+                      </span>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div
+                tabIndex={0}
+                role="region"
+                aria-labelledby="revenue-products-caption"
+                className="channel-matrix-wrapper"
+              >
+                <table
+                  className="channel-matrix-table revenue-products-table"
+                  style={
+                    {
+                      '--col-orders-30d': `"${t.revenue_col_orders_30d}"`,
+                      '--col-rev-30d': `"${t.revenue_col_rev_30d}"`,
+                      '--col-rev-total': `"${t.revenue_col_rev_total}"`,
+                      '--col-aov': `"${t.revenue_col_aov}"`,
+                    } as React.CSSProperties
+                  }
+                >
+                  <caption className="sr-only">{t.revenue_products_title}</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">{t.revenue_col_product}</th>
+                      <th scope="col">{t.revenue_col_orders_30d}</th>
+                      <th scope="col">{t.revenue_col_rev_30d}</th>
+                      <th scope="col">{t.revenue_col_rev_total}</th>
+                      <th scope="col">{t.revenue_col_aov}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {revenueData.lemon_squeezy.by_product.length === 0 ? (
+                      <tr>
+                        <td colSpan={5} style={{ textAlign: 'center', color: '#9ca3af', padding: '1.5rem' }}>
+                          {t.revenue_empty_products}
+                        </td>
+                      </tr>
+                    ) : (
+                      revenueData.lemon_squeezy.by_product.map((prod) => (
+                        <tr key={prod.product_id}>
+                          <th scope="row">{prod.product_name}</th>
+                          <td className="mono-num">{prod.orders_30d}</td>
+                          <td className="mono-num" style={{ color: '#34d399', fontWeight: 700 }}>
+                            {prod.net_revenue_eur_30d.toFixed(2)} €
+                          </td>
+                          <td className="mono-num">{prod.net_revenue_eur_total.toFixed(2)} €</td>
+                          <td className="mono-num">{prod.avg_order_value_eur.toFixed(2)} €</td>
+                        </tr>
+                      ))
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            {/* Listas Brevo + Prioridades Ejecutivas Mercator/Capa 0 */}
+            <div className="channels-bottom-grid">
+              <section className="channels-section">
+                <h2 className="channels-section-title">
+                  <Globe size={18} color="#8b5cf6" />
+                  <span>{t.revenue_brevo_lists_title}</span>
+                </h2>
+                <div className="roi-v2-list">
+                  {revenueData.brevo.lists.map((lst) => (
+                    <div key={lst.list_id} className="roi-v2-card">
+                      <div className="roi-v2-head">
+                        <span style={{ fontWeight: 700, fontSize: '0.86rem', color: '#f8fafc' }}>
+                          #{lst.list_id} · {lst.name}
+                        </span>
+                        <span className="channel-chip">{lst.lang_hint.toUpperCase()}</span>
+                      </div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem', color: '#9ca3af' }}>
+                        <span>Suscriptores únicos:</span>
+                        <strong className="mono-num" style={{ color: '#c084fc' }}>
+                          {lst.unique_subscribers.toLocaleString()}
+                        </strong>
+                      </div>
+                    </div>
+                  ))}
+                  {revenueData.brevo.recent_campaigns.map((camp) => (
+                    <div key={camp.campaign_id} className="roi-v2-card">
+                      <div className="roi-v2-head">
+                        <span style={{ fontWeight: 600, fontSize: '0.83rem', color: '#e2e8f0' }}>{camp.name}</span>
+                        <span className="mono-num" style={{ color: '#34d399', fontSize: '0.78rem', fontWeight: 700 }}>
+                          Open {camp.open_rate_pct.toFixed(1)}% · CTR {camp.ctr_pct.toFixed(1)}%
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              <section className="channels-section">
+                <h2 className="channels-section-title">
+                  <CheckCircle2 size={18} color="#06b6d4" />
+                  <span>{t.revenue_priorities_title}</span>
+                </h2>
+                <div className="channel-recs-list">
+                  {revenueData.top_priorities.map((prio, idx) => (
+                    <div key={idx} className="rec-card sev-medium">
+                      <div className="rec-card-head">
+                        <span className="rec-agent-badge">M01/00</span>
+                        <span className="rec-type-chip">#{idx + 1}</span>
+                      </div>
+                      <p className="rec-action-text">{prio}</p>
+                    </div>
+                  ))}
                 </div>
               </section>
             </div>

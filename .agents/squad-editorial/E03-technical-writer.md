@@ -32,3 +32,4 @@ Redactar artículos maestros de **alta autoridad técnica, rigor conceptual y va
 - `[USER-FIX]` **Profundidad Técnica Real:** Respaldar cualquier afirmación teórica con código Python/TypeScript ejecutable o formulación matemática clara.
 - `[ENV-FIX]` **Page Bundles Limpios:** Alojar el post en su propio subdirectorio con `index.md` y `cover.png` para mantener la portabilidad de los assets.
 - `[USER-FIX]` **Continuidad de Serie y Métricas GA4:** Antes de redactar un capítulo de serie existente, leer sus entregas previas y `IMPACT_REPORT.md` para replicar tono, ganchos y formatos de mayor retención (`series-lifecycle-playbook.md`).
+- `[USER-FIX]` **Respaldo PNG en Diagramas Mermaid (`ADR-028`):** Todo bloque `{{< mermaid >}}` sindicable debe declarar `image="<nombre>.png"` para que Dev.to/CoderLegion rendericen imagen verificada manteniendo SVG interactivo en Hugo.

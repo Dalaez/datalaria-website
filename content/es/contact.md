@@ -21,17 +21,17 @@ También puedes escribirme directamente a: **contacto@datalaria.com**
   
   <div class="form-group">
     <label for="name">Nombre y Apellidos <span class="required">*</span></label>
-    <input type="text" id="name" name="name" required placeholder="Tu nombre completo" />
+    <input type="text" id="name" name="name" autocomplete="name" required placeholder="Tu nombre completo" />
   </div>
   
   <div class="form-group">
     <label for="email">Email <span class="required">*</span></label>
-    <input type="email" id="email" name="email" required placeholder="tu@email.com" />
+    <input type="email" id="email" name="email" autocomplete="email" required placeholder="tu@email.com" />
   </div>
   
   <div class="form-group">
-    <label for="post-app">Post/App de Datalaria (opcional)</label>
-    <input type="text" id="post-app" name="post-app" placeholder="Nombre del post o app relacionado" />
+    <label for="post-app">Post/App o Licencia B2B (opcional)</label>
+    <input type="text" id="post-app" name="post-app" placeholder="Ej. Licencia Equipo 99€, Mega Bundle, Agentic Radar..." />
   </div>
   
   <div class="form-group">
@@ -41,3 +41,25 @@ También puedes escribirme directamente a: **contacto@datalaria.com**
   
   <button type="submit" class="submit-btn">Enviar mensaje</button>
 </form>
+
+<script>
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const topic = params.get('topic');
+    const app = params.get('app');
+    const product = params.get('product');
+    const field = document.getElementById('post-app');
+    const msg = document.getElementById('message');
+    if (!field) return;
+    if (topic === 'b2b-license') {
+      field.value = product ? ('Licencia Equipo/Corporativa B2B (' + product + ')') : 'Licencia Equipo (99€) / Corporativa (149€) B2B';
+      if (msg && !msg.value) msg.placeholder = 'Indícanos el tamaño de tu equipo (5 o 20 asientos), kit/suite de interés y datos para factura VIES/PO...';
+    } else if (topic === 'testimonial') {
+      field.value = 'Feedback / Testimonio de Kit Datalaria';
+    } else if (topic === 'kit-support') {
+      field.value = 'Soporte técnico de Kit';
+    } else if (app) {
+      field.value = 'App: ' + app;
+    }
+  })();
+</script>

@@ -54,12 +54,16 @@ jobs:
           LINKEDIN_CLIENT_ID: ${{ secrets.LINKEDIN_CLIENT_ID }}
           LINKEDIN_CLIENT_SECRET: ${{ secrets.LINKEDIN_CLIENT_SECRET }}
           LINKEDIN_REFRESH_TOKEN: ${{ secrets.LINKEDIN_REFRESH_TOKEN }}
+          LEMON_SQUEEZY_API_KEY: ${{ secrets.LEMON_SQUEEZY_API_KEY }}
+          LEMON_SQUEEZY_STORE_ID: ${{ secrets.LEMON_SQUEEZY_STORE_ID }}
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
         run: |
           python -m ops.pulse.build_index
           python -m ops.pulse.sync_metrics
           python -m ops.pulse.sync_social_metrics
           python -m ops.pulse.publish_public
           python -m ops.pulse.impact_analyzer
+          python -m ops.pulse.sync_revenue
 
       - name: Persist Refreshed LinkedIn Tokens
         if: always()
@@ -98,6 +102,7 @@ jobs:
 
       - name: Commit & Push Updated Pulse Data
         run: |
+          rm -f data/pulse/private/revenue_metrics.json data/pulse/private/executive_state.json data/pulse/private/REVENUE_REPORT.md
           git config user.name "Datalaria Bot"
           git config user.email "bot@datalaria.com"
           git add static/apps/pulse/data/public.json data/pulse/ specs/audit/IMPACT_REPORT.md

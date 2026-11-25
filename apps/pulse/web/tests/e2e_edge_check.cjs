@@ -246,7 +246,41 @@ async function runAudit() {
       })()`);
       await sleep(150);
 
-      results.push({ name: tc.name, ...domReport });
+      // Verificar pestaña Ingresos & Funnel (?tab=revenue) y cero overflow horizontal
+      await cdp.send('Page.navigate', { url: `http://127.0.0.1:${port}/apps/pulse/?tab=revenue&lang=${tc.lang}` });
+      let revHydrated = false;
+      for (let i = 0; i < 30; i++) {
+        await sleep(250);
+        const ready = await cdp.evalJs(`Boolean(document.querySelector('.revenue-wrapper') && document.querySelector('.revenue-products-table'))`);
+        if (ready) {
+          revHydrated = true;
+          break;
+        }
+      }
+      if (!revHydrated) {
+        throw new Error(`[${tc.name}] Panel Ingresos & Funnel no hidrató a tiempo.`);
+      }
+      const revReport = await cdp.evalJs(`(() => {
+        const docEl = document.documentElement;
+        const tabBtn = document.querySelector('#tab-revenue');
+        const rows = document.querySelectorAll('.revenue-products-table tbody tr').length;
+        const sandboxBadge = document.querySelector('.revenue-wrapper .channels-mode-pill')?.textContent || '';
+        return {
+          scrollWidth: docEl.scrollWidth,
+          clientWidth: docEl.clientWidth,
+          tabSelected: tabBtn?.getAttribute('aria-selected'),
+          rows,
+          sandboxBadge,
+        };
+      })()`);
+      if (revReport.scrollWidth > revReport.clientWidth) {
+        throw new Error(`[${tc.name}] Revenue tab horizontal overflow: ${revReport.scrollWidth} > ${revReport.clientWidth}`);
+      }
+      if (revReport.tabSelected !== 'true' || revReport.rows < 2 || !revReport.sandboxBadge.includes('SANDBOX')) {
+        throw new Error(`[${tc.name}] Incomplete Revenue panel DOM: ${JSON.stringify(revReport)}`);
+      }
+
+      results.push({ name: tc.name, ...domReport, revenueTab: revReport });
     }
 
     if (cdp.consoleErrors.length > 0 || cdp.exceptions.length > 0 || cdp.httpFailures.length > 0 || serverHttpErrors.length > 0) {

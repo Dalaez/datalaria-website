@@ -68,4 +68,5 @@ Este cálculo garantiza que un activo con $\text{Index}_{100} = 250$ genera exac
 Datalaria Pulse no es solo una herramienta de monitorización: es la pieza central que orquesta la publicación y monetización de todo el ecosistema Datalaria:
 
 - **Datalaria Pulse Kit (19 € · Edición Dual ES/EN):** Plantillas maestras Excel automatizadas de 6 hojas (tablas nativas, filtros y Kanban vivo), doble conector Power Query M para actualización en 1 clic desde Notion CSV y Git `public.json`, scripts CLI en Python puro y Guía ejecutiva PDF de 5 páginas. Disponible en [Lemon Squeezy Checkout →](https://datalaria.lemonsqueezy.com/checkout/buy/3aac3253-2081-44b5-af4d-c0ecfc257be0?embed=1) y en [/es/recursos/#pack-pulse](/es/recursos/#pack-pulse).
+- **Licencia Equipo / Corporativa B2B (`99 € – 149 €`):** Despliegue interno multi-asiento (5 a 20 usuarios) con factura IVA/VIES y 12 meses de actualizaciones. [Consultar Licencia Equipo →](/es/recursos/#b2b-team-license).
 - **Serie Técnica de Construcción:** Cinco entregas monográficas en el blog que desvelan desde la validación con Pydantic v2 hasta la integración con las APIs de GA4 y Search Console.

@@ -50,3 +50,8 @@ Executive_Decision_Pack_*.zip
 # Tracker Excel privado local de Datalaria Pulse
 /data/pulse/private/Pulse_Private_Tracker.xlsx
 /data/pulse/private/imports/linkedin/*.xlsx
+
+# Telemetría financiera privada y estado ejecutivo (INV-PULSE-13 / ADR-034)
+/data/pulse/private/revenue_metrics.json
+/data/pulse/private/executive_state.json
+/data/pulse/private/REVENUE_REPORT.md

@@ -184,3 +184,108 @@ export interface OmnichannelIntelligence {
   top_recommendations: OmnichannelRecommendationItem[];
 }
 
+export interface RevenueProductBreakdown {
+  product_id: string;
+  product_name: string;
+  orders_30d: number;
+  orders_total: number;
+  net_revenue_eur_30d: number;
+  net_revenue_eur_total: number;
+  avg_order_value_eur: number;
+}
+
+export interface RevenueCountryBreakdown {
+  country: string;
+  orders_30d: number;
+  net_revenue_eur_30d: number;
+}
+
+export interface RevenueMonthlyPoint {
+  month: string;
+  orders: number;
+  net_revenue_eur: number;
+}
+
+export interface RevenueLanguageSlice {
+  orders_30d: number;
+  net_revenue_eur_30d: number;
+}
+
+export interface LemonSqueezySummary {
+  status: 'ok' | 'unavailable' | 'error';
+  last_synced_at?: string | null;
+  currency: 'EUR';
+  net_revenue_eur_30d: number;
+  net_revenue_eur_total: number;
+  orders_30d: number;
+  orders_total: number;
+  refunded_orders_30d: number;
+  avg_order_value_eur: number;
+  active_products_count: number;
+  checkouts_created_30d: number;
+  checkouts_completed_30d: number;
+  checkout_abandonment_pct: number;
+  language_breakdown: Record<string, RevenueLanguageSlice>;
+  by_product: RevenueProductBreakdown[];
+  by_country: RevenueCountryBreakdown[];
+  monthly_trend: RevenueMonthlyPoint[];
+  note: string;
+}
+
+export interface BrevoListSummary {
+  list_id: number;
+  name: string;
+  lang_hint: 'es' | 'en' | 'all';
+  total_subscribers: number;
+  unique_subscribers: number;
+}
+
+export interface BrevoCampaignSummary {
+  campaign_id: number;
+  name: string;
+  sent_date?: string | null;
+  delivered: number;
+  unique_opens: number;
+  open_rate_pct: number;
+  unique_clicks: number;
+  ctr_pct: number;
+  unsubscribes: number;
+}
+
+export interface BrevoAudienceSummary {
+  status: 'ok' | 'unavailable' | 'error';
+  last_synced_at?: string | null;
+  total_lists: number;
+  total_subscribers: number;
+  es_subscribers: number;
+  en_subscribers: number;
+  waitlist_helix_subscribers: number;
+  campaigns_analyzed: number;
+  avg_open_rate_pct: number;
+  avg_ctr_pct: number;
+  total_unsubscribes: number;
+  lists: BrevoListSummary[];
+  recent_campaigns: BrevoCampaignSummary[];
+  note: string;
+}
+
+export interface RevenueIntelligence {
+  generated_at: string;
+  is_synthetic: boolean;
+  pii_stripped: boolean;
+  north_star_target_eur_month: number;
+  stage_label: string;
+  stage_progress_pct: number;
+  lemon_squeezy: LemonSqueezySummary;
+  brevo: BrevoAudienceSummary;
+  traffic_seo?: {
+    post_views_30d?: number;
+    gsc_impressions_30d?: number;
+    gsc_clicks_30d?: number;
+    avg_gsc_ctr_pct?: number;
+    en_gsc_impressions_share_pct?: number;
+    ga4_key_events_30d?: number;
+  };
+  top_priorities: string[];
+}
+

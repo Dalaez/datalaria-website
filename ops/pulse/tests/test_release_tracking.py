@@ -75,7 +75,7 @@ def test_inv_pulse_7_app_launch_dates_and_internal_releases_filtered(pulse_data)
     pulse = pub_assets["pulse"]
     assert pulse["publish_date"] == "2026-11-18", f"Pulse launch_date esperado 2026-11-18, obtenido {pulse['publish_date']}"
     assert pulse["release_type"] == "initial_launch"
-    assert pulse["version"] == "v1.5.0"
+    assert pulse["version"] == "v1.6.0"
 
     # Ninguna versión interna v0.1.0..v0.4.0 debe generar assets en el índice
     for v in ["v0.1.0", "v0.1.5", "v0.2.0", "v0.3.0", "v0.4.0"]:

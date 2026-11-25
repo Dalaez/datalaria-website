@@ -53,11 +53,30 @@ EXPECTED_EDITORIAL_AGENT_IDS: tuple[str, ...] = (
     "E08-autopilot-dispatcher",
 )
 
+EXPECTED_OS_AGENT_IDS: tuple[str, ...] = (
+    "00-chief-orchestrator",
+)
+
+EXPECTED_MERCATOR_AGENT_IDS: tuple[str, ...] = (
+    "M01-revenue-orchestrator",
+    "M02-cro-pricing-revops",
+    "M03-lifecycle-retention",
+    "M04-distribution-marketplaces",
+)
+
+MercatorSurfaceType = Literal[
+    "cro_pricing",
+    "lifecycle_brevo",
+    "external_dist",
+    "brand_positioning",
+    "revenue_telemetry",
+]
+
 
 class AgentSpecFrontmatter(BaseModel):
-    """Esquema estricto del bloque YAML de cada ficha AGENT_SPEC en specs/squad/ o specs/squad-editorial/."""
+    """Esquema estricto del bloque YAML de cada ficha AGENT_SPEC en specs/squad*, specs/squad-os/ o specs/squad-mercator/."""
 
-    id: str = Field(..., pattern=r"^(?:\d{2}|E\d{2})-[a-z0-9-]+$")
+    id: str = Field(..., pattern=r"^(?:\d{2}|E\d{2}|M\d{2})-[a-z0-9-]+$")
     name_es: str = Field(..., min_length=3)
     name_en: str = Field(..., min_length=3)
     cell: SquadCell
@@ -463,5 +482,148 @@ def calculate_editorial_triage(
         verification_gate=verification_gate,
         checkpoint_tag=f"sdd-checkpoint-pre-{safe_tag}",
         requires_human_approval=(size in {"L", "XL"}),
+    )
+
+
+class MercatorTriageDecision(BaseModel):
+    """Resultado determinista del algoritmo de triaje comercial de Datalaria Mercator (ADR-034)."""
+
+    campaign_id: str
+    size: TaskSize
+    surfaces: list[MercatorSurfaceType]
+    active_agents: list[str]
+    benched_agents: list[str]
+    reused_veto_agents: list[str]
+    verification_gate: str
+    checkpoint_tag: str
+    requires_human_approval: bool
+
+    def format_triage_card(self) -> str:
+        """Devuelve la Tarjeta de Triaje Comercial canónica de exactamente 6 líneas."""
+        surfaces_str = " | ".join(self.surfaces)
+        active_str = ", ".join(self.active_agents)
+        veto_str = ", ".join(self.reused_veto_agents)
+        benched_str = ", ".join(self.benched_agents) if self.benched_agents else "Ninguno (escuadrón completo)"
+        approval_str = "SÍ" if self.requires_human_approval else "NO"
+        lines = [
+            f"TRIAGE MERCATOR · Campaña {self.campaign_id} · Talla: {self.size}",
+            f"Superficies afectadas: {surfaces_str}",
+            f"Roles activados ({len(self.active_agents)} de 4): {active_str} + Veto: {veto_str}",
+            f"Roles en banquillo: {benched_str}",
+            f"Verification Gate: {self.verification_gate}",
+            f"Presupuesto y Gobernanza: Máx. 2 intentos por gate · Checkpoint {self.checkpoint_tag} · Aprobación humana previa: {approval_str}",
+        ]
+        return "\n".join(lines)
+
+
+def _load_specs_from_dir(base_dir: Path | str, expected_ids: tuple[str, ...], label: str) -> list[AgentSpecDocument]:
+    """Carga y valida determinísticamente un conjunto de fichas AGENT_SPEC desde un directorio."""
+    base = Path(base_dir)
+    docs: list[AgentSpecDocument] = []
+    for agent_id in expected_ids:
+        fp = base / f"{agent_id}.md"
+        if not fp.exists():
+            raise FileNotFoundError(f"Falta la ficha canónica AGENT_SPEC ({label}): {fp}")
+        raw = fp.read_text(encoding="utf-8")
+        if not raw.startswith("---"):
+            raise ValueError(f"El archivo {fp} no comienza con frontmatter YAML ('---').")
+        parts = raw.split("---", 2)
+        if len(parts) < 3:
+            raise ValueError(f"Frontmatter YAML mal cerrado en {fp}.")
+        meta_dict = yaml.safe_load(parts[1])
+        frontmatter = AgentSpecFrontmatter(**meta_dict)
+        if frontmatter.id != agent_id:
+            raise ValueError(f"El id '{frontmatter.id}' no coincide con el nombre de archivo '{agent_id}.md'.")
+        docs.append(
+            AgentSpecDocument(
+                frontmatter=frontmatter,
+                body_markdown=parts[2].strip(),
+                source_path=fp.as_posix(),
+                total_lines=len(raw.splitlines()),
+            )
+        )
+    return docs
+
+
+def load_os_specs(os_dir: Path | str = Path("specs/squad-os")) -> list[AgentSpecDocument]:
+    """Carga y valida las fichas de Capa 0 (Datalaria OS) desde specs/squad-os/."""
+    return _load_specs_from_dir(os_dir, EXPECTED_OS_AGENT_IDS, "Datalaria OS")
+
+
+def load_mercator_squad_specs(
+    squad_dir: Path | str = Path("specs/squad-mercator"),
+) -> list[AgentSpecDocument]:
+    """Carga y valida las 4 fichas núcleo de Datalaria Mercator desde specs/squad-mercator/."""
+    return _load_specs_from_dir(squad_dir, EXPECTED_MERCATOR_AGENT_IDS, "Datalaria Mercator")
+
+
+def calculate_mercator_triage(
+    campaign_id: str,
+    estimated_files: int,
+    surfaces: list[MercatorSurfaceType],
+    is_pricing_model_change: bool = False,
+    is_commercial_sprint: bool = False,
+    verification_gate: str = "python -m pytest ops/helix/tests ops/pulse/tests -v && hugo --renderToMemory",
+) -> MercatorTriageDecision:
+    """Ejecuta el algoritmo determinista de triaje comercial de Datalaria Mercator (INV-OS-2)."""
+    if estimated_files < 1:
+        raise ValueError("estimated_files debe ser >= 1")
+    if not surfaces:
+        raise ValueError("Debe especificarse al menos una superficie comercial afectada.")
+
+    unique_surfaces = list(dict.fromkeys(surfaces))
+
+    # 1. Determinación de Talla
+    if is_pricing_model_change:
+        size: TaskSize = "XL"
+    elif is_commercial_sprint or len(unique_surfaces) >= 3:
+        size = "L"
+    elif len(unique_surfaces) == 2 or estimated_files > 3:
+        size = "M"
+    elif estimated_files > 1:
+        size = "S"
+    else:
+        size = "XS"
+
+    # 2. Selección determinista de roles Mercator
+    active_set: set[str] = {"M01-revenue-orchestrator"}
+    surface_to_agent: dict[MercatorSurfaceType, str] = {
+        "cro_pricing": "M02-cro-pricing-revops",
+        "revenue_telemetry": "M02-cro-pricing-revops",
+        "lifecycle_brevo": "M03-lifecycle-retention",
+        "external_dist": "M04-distribution-marketplaces",
+        "brand_positioning": "M01-revenue-orchestrator",
+    }
+    for s in unique_surfaces:
+        active_set.add(surface_to_agent[s])
+
+    if size in {"L", "XL"}:
+        active_set.update(EXPECTED_MERCATOR_AGENT_IDS)
+
+    # 3. Reutilización obligatoria de agentes con veto (INV-OS-2: cero duplicación de QA)
+    veto_set: set[str] = set()
+    if any(s in {"cro_pricing", "revenue_telemetry", "brand_positioning"} for s in unique_surfaces):
+        veto_set.update({"10-security-privacy", "11-qa-verifier"})
+    if any(s in {"lifecycle_brevo", "external_dist", "brand_positioning", "cro_pricing"} for s in unique_surfaces):
+        veto_set.add("E07-editorial-qa")
+    if not veto_set:
+        veto_set.add("11-qa-verifier")
+
+    veto_order = ("10-security-privacy", "11-qa-verifier", "E07-editorial-qa")
+    active_ordered = [a for a in EXPECTED_MERCATOR_AGENT_IDS if a in active_set]
+    benched_ordered = [a for a in EXPECTED_MERCATOR_AGENT_IDS if a not in active_set]
+    veto_ordered = [v for v in veto_order if v in veto_set]
+
+    safe_tag = re.sub(r"[^a-zA-Z0-9._-]", "-", campaign_id.lower())
+    return MercatorTriageDecision(
+        campaign_id=campaign_id,
+        size=size,
+        surfaces=unique_surfaces,
+        active_agents=active_ordered,
+        benched_agents=benched_ordered,
+        reused_veto_agents=veto_ordered,
+        verification_gate=verification_gate,
+        checkpoint_tag=f"sdd-checkpoint-pre-{safe_tag}",
+        requires_human_approval=(size in {"L", "XL"} or is_pricing_model_change),
     )
 

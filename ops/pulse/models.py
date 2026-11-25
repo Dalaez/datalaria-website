@@ -483,3 +483,130 @@ class PulseImpactReport(BaseModel):
     canonical_shield_alerts: List[CanonicalShieldAlertItem] = Field(default_factory=list)
     silent_releases_count: int = 0
 
+
+# ==============================================================================
+# CONTRATOS PYDANTIC V2 PARA TELEMETRÍA FINANCIERA Y EJECUTIVA (HITO 9.2 / INV-PULSE-13)
+# ==============================================================================
+
+RevenueSourceStatus = Literal["ok", "unavailable", "error"]
+
+
+class RevenueProductBreakdown(BaseModel):
+    """Agregado anónimo de ventas por producto/kit de Lemon Squeezy (sin PII)."""
+    product_id: str
+    product_name: str
+    orders_30d: int = Field(default=0, ge=0)
+    orders_total: int = Field(default=0, ge=0)
+    net_revenue_eur_30d: float = Field(default=0.0, ge=0.0)
+    net_revenue_eur_total: float = Field(default=0.0, ge=0.0)
+    avg_order_value_eur: float = Field(default=0.0, ge=0.0)
+
+
+class RevenueCountryBreakdown(BaseModel):
+    """Agregado anónimo de ventas por código ISO de país (sin ciudad, IP ni dirección)."""
+    country: str
+    orders_30d: int = Field(default=0, ge=0)
+    net_revenue_eur_30d: float = Field(default=0.0, ge=0.0)
+
+
+class RevenueMonthlyPoint(BaseModel):
+    """Punto mensual agregado de ingresos netos en EUR."""
+    month: str
+    orders: int = Field(default=0, ge=0)
+    net_revenue_eur: float = Field(default=0.0, ge=0.0)
+
+
+class RevenueLanguageSlice(BaseModel):
+    """Desglose agregado de pedidos e ingresos por idioma inferido (ES/EN/Other)."""
+    orders_30d: int = Field(default=0, ge=0)
+    net_revenue_eur_30d: float = Field(default=0.0, ge=0.0)
+
+
+class LemonSqueezySummary(BaseModel):
+    """Resumen financiero agregado de Lemon Squeezy sin ningún dato personal (INV-PULSE-13)."""
+    status: RevenueSourceStatus = "unavailable"
+    last_synced_at: Optional[str] = None
+    currency: Literal["EUR"] = "EUR"
+    net_revenue_eur_30d: float = Field(default=0.0, ge=0.0)
+    net_revenue_eur_total: float = Field(default=0.0, ge=0.0)
+    orders_30d: int = Field(default=0, ge=0)
+    orders_total: int = Field(default=0, ge=0)
+    refunded_orders_30d: int = Field(default=0, ge=0)
+    avg_order_value_eur: float = Field(default=0.0, ge=0.0)
+    active_products_count: int = Field(default=0, ge=0)
+    checkouts_created_30d: int = Field(default=0, ge=0)
+    checkouts_completed_30d: int = Field(default=0, ge=0)
+    checkout_abandonment_pct: float = Field(default=0.0, ge=0.0, le=100.0)
+    language_breakdown: Dict[str, RevenueLanguageSlice] = Field(default_factory=dict)
+    by_product: List[RevenueProductBreakdown] = Field(default_factory=list)
+    by_country: List[RevenueCountryBreakdown] = Field(default_factory=list)
+    monthly_trend: List[RevenueMonthlyPoint] = Field(default_factory=list)
+    note: str = ""
+
+
+class BrevoListSummary(BaseModel):
+    """Resumen agregado de una lista de contactos de Brevo (cero emails)."""
+    list_id: int
+    name: str
+    lang_hint: Literal["es", "en", "all"] = "all"
+    total_subscribers: int = Field(default=0, ge=0)
+    unique_subscribers: int = Field(default=0, ge=0)
+
+
+class BrevoCampaignSummary(BaseModel):
+    """Métricas agregadas de una campaña enviada en Brevo."""
+    campaign_id: int
+    name: str
+    sent_date: Optional[str] = None
+    delivered: int = Field(default=0, ge=0)
+    unique_opens: int = Field(default=0, ge=0)
+    open_rate_pct: float = Field(default=0.0, ge=0.0, le=100.0)
+    unique_clicks: int = Field(default=0, ge=0)
+    ctr_pct: float = Field(default=0.0, ge=0.0, le=100.0)
+    unsubscribes: int = Field(default=0, ge=0)
+
+
+class BrevoAudienceSummary(BaseModel):
+    """Resumen agregado de listas y campañas de Brevo (cero PII)."""
+    status: RevenueSourceStatus = "unavailable"
+    last_synced_at: Optional[str] = None
+    total_lists: int = Field(default=0, ge=0)
+    total_subscribers: int = Field(default=0, ge=0)
+    es_subscribers: int = Field(default=0, ge=0)
+    en_subscribers: int = Field(default=0, ge=0)
+    waitlist_helix_subscribers: int = Field(default=0, ge=0)
+    campaigns_analyzed: int = Field(default=0, ge=0)
+    avg_open_rate_pct: float = Field(default=0.0, ge=0.0, le=100.0)
+    avg_ctr_pct: float = Field(default=0.0, ge=0.0, le=100.0)
+    total_unsubscribes: int = Field(default=0, ge=0)
+    lists: List[BrevoListSummary] = Field(default_factory=list)
+    recent_campaigns: List[BrevoCampaignSummary] = Field(default_factory=list)
+    note: str = ""
+
+
+class RevenueMetricsReport(BaseModel):
+    """Contrato raíz privado de data/pulse/private/revenue_metrics.json (gitignored, INV-PULSE-13)."""
+    version: str = "1.0.0"
+    visibility: Literal["private"] = "private"
+    pii_stripped: Literal[True] = True
+    generated_at: datetime
+    lemon_squeezy: LemonSqueezySummary
+    brevo: BrevoAudienceSummary
+
+
+class ExecutiveStateSnapshot(BaseModel):
+    """Bus ejecutivo unificado para 00-chief-orchestrator y Datalaria Mercator (INV-PULSE-13)."""
+    version: str = "1.0.0"
+    visibility: Literal["private"] = "private"
+    pii_stripped: Literal[True] = True
+    generated_at: datetime
+    north_star_target_eur_month: float = Field(default=500.0, gt=0.0)
+    stage_label: str = "Estadio 1 (0 -> 500 €/mes)"
+    stage_progress_pct: float = Field(default=0.0, ge=0.0, le=100.0)
+    revenue: Dict[str, Any] = Field(default_factory=dict)
+    audience: Dict[str, Any] = Field(default_factory=dict)
+    traffic_seo: Dict[str, Any] = Field(default_factory=dict)
+    social: Dict[str, Any] = Field(default_factory=dict)
+    catalog_health: Dict[str, Any] = Field(default_factory=dict)
+    top_priorities: List[str] = Field(default_factory=list)
+

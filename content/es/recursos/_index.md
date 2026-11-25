@@ -782,6 +782,126 @@ Detalles ℹ️
     <p style="font-size: 13px; margin-top: 4px;">Prueba a cambiar el filtro o la palabra clave de búsqueda.</p>
   </div>
 
+  <!-- BLOQUE COMPARATIVO DE AHORRO REAL (M02 CRO · Hito 9.3) -->
+  <section class="savings-compare-section" id="pricing-comparison" aria-labelledby="pricing-compare-heading">
+    <div class="savings-compare-head">
+      <span class="savings-kicker">💎 Comparativa de Ahorro Real</span>
+      <h2 id="pricing-compare-heading" class="savings-title">Elige el nivel adecuado: Kit individual, Suite, Mega Bundle o Licencia Equipo</h2>
+      <p class="savings-subtitle">Todos los packs son pago único con descarga inmediata (.ZIP), factura B2B IVA/VIES y cero macros VBA.</p>
+    </div>
+    <div class="savings-compare-grid">
+      <article class="savings-tier-card">
+        <div class="savings-tier-badge">Entrada rápida</div>
+        <h3 class="savings-tier-name">Kit Individual</h3>
+        <div class="savings-tier-price">5€ – 9€ <span>/ pago único</span></div>
+        <ul class="savings-tier-list">
+          <li>1 modelo cuantitativo (.xlsx + Sheets)</li>
+          <li>Slide PowerPoint 16:9 + Guía PDF</li>
+          <li>Ideal para una decisión puntual</li>
+        </ul>
+        <a href="#kits-grid" class="btn-kit-info savings-tier-btn">Explorar 14 kits →</a>
+      </article>
+
+      <article class="savings-tier-card">
+        <div class="savings-tier-badge savings-badge-accent">Ahorro 25% – 35%</div>
+        <h3 class="savings-tier-name">Suite Temática</h3>
+        <div class="savings-tier-price">15€ – 22€ <span>vs. 20€–34€</span></div>
+        <ul class="savings-tier-list">
+          <li>3 a 5 modelos de una misma disciplina</li>
+          <li>Estrategia MBA, Decisiones u Operaciones</li>
+          <li>Ahorro inmediato de hasta 12€ por suite</li>
+        </ul>
+        <a href="#suites-quick-grid" class="btn-kit-info savings-tier-btn">Ver las 3 Suites →</a>
+      </article>
+
+      <article class="savings-tier-card is-featured">
+        <div class="savings-tier-badge savings-badge-gold">Mejor Valor · Ahorro &gt;52%</div>
+        <h3 class="savings-tier-name">Mega Bundle Total</h3>
+        <div class="savings-tier-price">39€ <span>vs. 82€ por separado</span></div>
+        <ul class="savings-tier-list">
+          <li>Los 13 kits estratégicos y operativos</li>
+          <li>Ahorro directo de 43€ (precio lanzamiento)</li>
+          <li>Uso individual profesional ilimitado</li>
+        </ul>
+        <a href="https://datalaria.lemonsqueezy.com/checkout/buy/88a976a2-f0e5-4e8e-a954-516767c7fed5?embed=1" class="btn-mega-buy lemonsqueezy-button savings-tier-btn">Descargar Mega Bundle • 39€ →</a>
+      </article>
+
+      <article class="savings-tier-card">
+        <div class="savings-tier-badge savings-badge-b2b">Equipos &amp; PMOs</div>
+        <h3 class="savings-tier-name">Licencia Equipo / B2B</h3>
+        <div class="savings-tier-price">99€ – 149€ <span>/ 5 a 20 asientos</span></div>
+        <ul class="savings-tier-list">
+          <li>Uso interno compartido en equipo o PMO</li>
+          <li>12 meses de actualizaciones + factura VIES</li>
+          <li>Aplica a Mega Bundle o Kits Software/IA</li>
+        </ul>
+        <a href="#b2b-team-license" class="btn-kit-info savings-tier-btn">Ver Licencias Equipo ↓</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- TIER LICENCIA EQUIPO / CORPORATIVA B2B (99€ - 149€ · Formulario directo) -->
+  <section class="b2b-license-banner" id="b2b-team-license" aria-labelledby="b2b-license-heading">
+    <div class="b2b-license-content">
+      <span class="b2b-license-pill">🏢 Licencias Multi-Asiento B2B · Sin Suscripciones</span>
+      <h2 id="b2b-license-heading">¿Despliegas los kits en tu equipo, PMO o consultora?</h2>
+      <p>
+        Evita compras fragmentadas y cumple con auditoría corporativa IT (0 macros VBA). Ofrecemos <strong>Licencia Equipo (hasta 5 usuarios · 99 €)</strong> y <strong>Licencia Corporativa (hasta 20 usuarios · 149 €)</strong> en pago único con factura VIES, orden de compra (PO) y 12 meses de actualizaciones. ¿Ya compraste un kit individual? Al recibir tu correo post-compra desbloqueas además un <strong>20% de crédito cross-sell</strong> hacia Suites o Mega Bundle.
+      </p>
+      <div class="b2b-license-tiers-inline">
+        <div class="b2b-tier-chip"><strong>Equipo (5 asientos):</strong> 99 € pago único</div>
+        <div class="b2b-tier-chip"><strong>Corporativa / PMO (20 asientos):</strong> 149 € pago único</div>
+        <div class="b2b-tier-chip"><strong>Factura B2B:</strong> IVA / VIES + PO</div>
+      </div>
+    </div>
+    <div class="b2b-license-actions">
+      <a href="/es/contact/?topic=b2b-license" class="btn-mega-buy b2b-license-cta" data-tier="b2b-team-99-149">
+        Solicitar Licencia Equipo (99€–149€) →
+      </a>
+      <span class="b2b-license-note">Respuesta en &lt;24h laborables · Formulario directo B2B</span>
+    </div>
+  </section>
+
+  <!-- FAQ COMPACTA NATIVA (<details> · Modern Web Guidance accordion) -->
+  <section class="catalog-faq" id="catalog-faq" aria-labelledby="catalog-faq-heading">
+    <div class="catalog-faq-head">
+      <h2 id="catalog-faq-heading">Preguntas Frecuentes sobre Licencias, Formatos y Garantía</h2>
+      <p>Respuestas directas para compras individuales, departamentos de compras y auditorías IT.</p>
+    </div>
+    <div class="catalog-faq-list">
+      <details class="catalog-faq-item">
+        <summary>¿Qué licencia incluye cada compra individual y cuándo necesito Licencia Equipo (99 €–149 €)?</summary>
+        <div class="catalog-faq-body">
+          <p>Cada compra individual (Kit, Suite o Mega Bundle 39 €) otorga licencia perpetua para <strong>1 profesional</strong> (puedes usar los resultados en clientes o comités directivos). Si necesitas compartir los archivos editables internamente con 2–5 compañeros, elige la <strong>Licencia Equipo (99 €)</strong>; para PMOs, áreas completas o consultoras de hasta 20 personas, la <strong>Licencia Corporativa (149 €)</strong>.</p>
+        </div>
+      </details>
+      <details class="catalog-faq-item">
+        <summary>¿Los archivos Excel llevan macros VBA o son bloqueados por seguridad corporativa IT?</summary>
+        <div class="catalog-faq-body">
+          <p><strong>Cero macros VBA.</strong> Todos los modelos están construidos con fórmulas nativas auditables en formato estándar <code>.xlsx</code> compatibles con Microsoft 365, Excel 2016+ y Google Sheets, junto a presentaciones PowerPoint 16:9 y guías PDF vectoriales. Pasan sin fricción los filtros de seguridad IT corporativos.</p>
+        </div>
+      </details>
+      <details class="catalog-faq-item">
+        <summary>¿Cómo recibo la descarga y la factura deducible con IVA / VIES?</summary>
+        <div class="catalog-faq-body">
+          <p>El checkout está gestionado por <strong>Lemon Squeezy</strong> (Merchant of Record). Al completar el pago obtienes descarga inmediata del archivo <code>.ZIP</code> y enlace automático a tu factura oficial B2B donde puedes introducir razón social y NIF/CIF o VAT intracomunitario (VIES).</p>
+        </div>
+      </details>
+      <details class="catalog-faq-item">
+        <summary>¿Incluyen actualizaciones y puedo escalar de un Kit individual a una Suite o Mega Bundle?</summary>
+        <div class="catalog-faq-body">
+          <p>Sí. Las mejoras menores y correcciones del kit adquirido se entregan sin coste desde tu enlace de Lemon Squeezy. Además, tras comprar cualquier kit individual recibirás un crédito exclusivo del <strong>20%</strong> para dar el salto a una Suite o al Mega Bundle completo.</p>
+        </div>
+      </details>
+      <details class="catalog-faq-item">
+        <summary>¿Cuándo estarán disponibles los kits en lanzamiento programado (pack-obs y Datalaria Helix)?</summary>
+        <div class="catalog-faq-body">
+          <p>Respetamos fechas de lanzamiento cerradas con auditoría QA completa: <strong>IEC 62402 Obsolescencia &amp; LTB Kit (pack-obs)</strong> se estrena el <strong>9 de diciembre de 2026</strong> (puedes probar gratis el Sandbox de Agentic Radar v2.0 hoy) y <strong>Datalaria Helix (12 Agentes SDD)</strong> el <strong>19 de enero de 2027</strong> con lista prioritaria Early-Bird a 19 € (PVP 39 €).</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
   <!-- PIE DE GARANTÍA Y CONFIANZA B2B COMPACTO -->
   <div class="b2b-trust-row">
     <div class="trust-col">
@@ -889,19 +1009,38 @@ Detalles ℹ️
 
 <script>
 
-  // Telemetría Transaccional GA4 B2B
+  // Telemetría Transaccional GA4 B2B (transporte beacon no bloqueante)
   function trackKitEvent(eventName, eventParams) {
     try {
+      const payload = Object.assign({ transport_type: 'beacon' }, eventParams || {});
       if (typeof window.gtag === 'function') {
-        window.gtag('event', eventName, eventParams);
+        window.gtag('event', eventName, payload);
       } else if (Array.isArray(window.dataLayer)) {
-        window.dataLayer.push(Object.assign({ event: eventName }, eventParams));
+        window.dataLayer.push(Object.assign({ event: eventName }, payload));
       }
       if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-        console.log('[GA4 Telemetry]', eventName, eventParams);
+        console.log('[GA4 Telemetry]', eventName, payload);
       }
     } catch (e) {}
   }
+
+  // Telemetría GA4 para CTA Licencia B2B y FAQ nativa <details>
+  document.addEventListener('click', function(e) {
+    const b2bBtn = e.target.closest('.b2b-license-cta');
+    if (b2bBtn) {
+      trackKitEvent('b2b_license_inquiry', {
+        tier: b2bBtn.dataset.tier || 'b2b-team',
+        language: 'es',
+        source: 'recursos_catalog'
+      });
+    }
+  });
+  document.addEventListener('toggle', function(e) {
+    if (e.target && e.target.matches('.catalog-faq-item') && e.target.open) {
+      const q = e.target.querySelector('summary')?.textContent.trim().slice(0, 80) || 'faq';
+      trackKitEvent('faq_expand', { question: q, language: 'es' });
+    }
+  }, true);
 
   // Delegación de clic en enlaces Lemon Squeezy
   document.addEventListener('click', function(e) {

@@ -21,17 +21,17 @@ You can also email me directly at: **contacto@datalaria.com**
   
   <div class="form-group">
     <label for="name">Full Name <span class="required">*</span></label>
-    <input type="text" id="name" name="name" required placeholder="Your full name" />
+    <input type="text" id="name" name="name" autocomplete="name" required placeholder="Your full name" />
   </div>
   
   <div class="form-group">
     <label for="email">Email <span class="required">*</span></label>
-    <input type="email" id="email" name="email" required placeholder="you@email.com" />
+    <input type="email" id="email" name="email" autocomplete="email" required placeholder="you@email.com" />
   </div>
   
   <div class="form-group">
-    <label for="post-app">Datalaria Post/App (optional)</label>
-    <input type="text" id="post-app" name="post-app" placeholder="Name of related post or app" />
+    <label for="post-app">Datalaria Post/App or B2B License (optional)</label>
+    <input type="text" id="post-app" name="post-app" placeholder="e.g., Team License 99€, Mega Bundle, Agentic Radar..." />
   </div>
   
   <div class="form-group">
@@ -41,3 +41,25 @@ You can also email me directly at: **contacto@datalaria.com**
   
   <button type="submit" class="submit-btn">Send message</button>
 </form>
+
+<script>
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const topic = params.get('topic');
+    const app = params.get('app');
+    const product = params.get('product');
+    const field = document.getElementById('post-app');
+    const msg = document.getElementById('message');
+    if (!field) return;
+    if (topic === 'b2b-license') {
+      field.value = product ? ('B2B Team/Corporate License (' + product + ')') : 'B2B Team (99€) / Corporate (149€) License';
+      if (msg && !msg.value) msg.placeholder = 'Tell us your team size (5 or 20 seats), target kit/suite, and VAT/VIES or PO billing details...';
+    } else if (topic === 'testimonial') {
+      field.value = 'Datalaria Kit Feedback / Testimonial';
+    } else if (topic === 'kit-support') {
+      field.value = 'Kit Technical Support';
+    } else if (app) {
+      field.value = 'App: ' + app;
+    }
+  })();
+</script>

@@ -238,7 +238,33 @@ export const i18n = {
     channels_rec_dark_social: 'Dark Social',
     channels_rec_canonical_shield: 'Escudo Canónico',
     channels_empty_matrix: 'No hay intersecciones Canal × Categoría para los filtros seleccionados.',
-    channels_empty_recs: 'Sin alertas críticas pendientes en esta categoría. Todo el embudo opera en rango saludable.'
+    channels_empty_recs: 'Sin alertas críticas pendientes en esta categoría. Todo el embudo opera en rango saludable.',
+
+    // Ingresos & Funnel (Hito 9.2 / INV-PULSE-13)
+    view_revenue: 'Ingresos & Funnel',
+    revenue_admin_live_badge: '🔒 ADMIN RLS LIVE · Agregados financieros sin PII',
+    revenue_sandbox_badge: '🧪 SANDBOX EDUCATIVO · Funnel sintético de ejemplo (INV-PULSE-13)',
+    revenue_sandbox_desc: 'En modo público se muestra un embudo sintético educativo para proteger la privacidad financiera real de Datalaria (cero PII, gitignored + RLS). Inicia sesión como Admin para ver tus ingresos reales de Lemon Squeezy y Brevo.',
+    revenue_north_star_title: 'Progreso North Star (Estadio 1 → Autonomía Pasiva)',
+    revenue_north_star_sub: 'Meta mensual actual: {target} €/mes · Progreso: {pct}%',
+    revenue_kpi_net_30d: 'Ingresos Netos (30d)',
+    revenue_kpi_net_sub: 'Histórico acumulado: {total} €',
+    revenue_kpi_orders_30d: 'Pedidos Pagados (30d)',
+    revenue_kpi_orders_sub: 'AOV medio: {aov} € · Total histórico: {total}',
+    revenue_kpi_subscribers: 'Suscriptores Brevo Activos',
+    revenue_kpi_subscribers_sub: 'ES: {es} · EN: {en} · Waitlist Helix: {wl}',
+    revenue_kpi_abandonment: 'Abandono de Checkout / Email',
+    revenue_kpi_abandonment_sub: 'Abandono LS: {ab}% · Open Rate Brevo: {open}%',
+    revenue_products_title: 'Desglose por Producto / Kit (Lemon Squeezy · Sin PII)',
+    revenue_col_product: 'Producto / Kit',
+    revenue_col_orders_30d: 'Pedidos 30d',
+    revenue_col_rev_30d: 'Neto 30d (€)',
+    revenue_col_rev_total: 'Neto Total (€)',
+    revenue_col_aov: 'AOV (€)',
+    revenue_empty_products: 'Sin ventas registradas todavía o conector Lemon Squeezy en espera de API key.',
+    revenue_brevo_lists_title: 'Listas & Campañas Brevo (Cero Emails Expuestos)',
+    revenue_priorities_title: 'Prioridades Ejecutivas (Capa 0 / Datalaria Mercator)',
+    revenue_lang_split_title: 'Distribución por Idioma de Compra (30d)'
   },
   en: {
     brand_subtitle: 'Content Ops as Code — Editorial Governance & Organic ROI',
@@ -479,6 +505,32 @@ export const i18n = {
     channels_rec_dark_social: 'Dark Social',
     channels_rec_canonical_shield: 'Canonical Shield',
     channels_empty_matrix: 'No Channel × Category intersections match the active filters.',
-    channels_empty_recs: 'No pending alerts for this category. The omnichannel funnel is healthy.'
+    channels_empty_recs: 'No pending alerts for this category. The omnichannel funnel is healthy.',
+
+    // Revenue & Funnel (Milestone 9.2 / INV-PULSE-13)
+    view_revenue: 'Revenue & Funnel',
+    revenue_admin_live_badge: '🔒 ADMIN RLS LIVE · Zero-PII Financial Aggregates',
+    revenue_sandbox_badge: '🧪 EDUCATIONAL SANDBOX · Synthetic Sample Funnel (INV-PULSE-13)',
+    revenue_sandbox_desc: 'Public mode displays a synthetic educational funnel to protect Datalaria\'s private financial telemetry (zero PII, gitignored + RLS). Sign in as Admin to inspect live Lemon Squeezy and Brevo figures.',
+    revenue_north_star_title: 'North Star Progress (Stage 1 → Passive Autonomy)',
+    revenue_north_star_sub: 'Current monthly target: €{target}/mo · Progress: {pct}%',
+    revenue_kpi_net_30d: 'Net Revenue (30d)',
+    revenue_kpi_net_sub: 'All-time cumulative: €{total}',
+    revenue_kpi_orders_30d: 'Paid Orders (30d)',
+    revenue_kpi_orders_sub: 'Avg Order Value: €{aov} · All-time: {total}',
+    revenue_kpi_subscribers: 'Active Brevo Subscribers',
+    revenue_kpi_subscribers_sub: 'ES: {es} · EN: {en} · Helix Waitlist: {wl}',
+    revenue_kpi_abandonment: 'Checkout Drop-off / Email',
+    revenue_kpi_abandonment_sub: 'LS Drop-off: {ab}% · Brevo Open Rate: {open}%',
+    revenue_products_title: 'Product / Kit Breakdown (Lemon Squeezy · Zero PII)',
+    revenue_col_product: 'Product / Kit',
+    revenue_col_orders_30d: '30d Orders',
+    revenue_col_rev_30d: '30d Net (€)',
+    revenue_col_rev_total: 'Total Net (€)',
+    revenue_col_aov: 'AOV (€)',
+    revenue_empty_products: 'No recorded orders yet or Lemon Squeezy connector awaiting API key.',
+    revenue_brevo_lists_title: 'Brevo Lists & Campaigns (Zero Emails Exposed)',
+    revenue_priorities_title: 'Executive Priorities (Layer 0 / Datalaria Mercator)',
+    revenue_lang_split_title: 'Purchase Language Breakdown (30d)'
   }
 };

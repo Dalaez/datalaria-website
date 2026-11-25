@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-11-25T15:01:43.729485Z",
+  "generated_at": "2026-11-25T15:02:49.754418Z",
   "total_assets": 181,
   "published_assets": 168,
   "scheduled_assets": 13,
@@ -1465,8 +1465,8 @@
       "brief_es": "Cómo operacionalizar la norma IEC 62402 con Agentic Radar v2.0: explosión de grafos BOM sin ciclos, cálculo financiero Last Time Buy (LTB) vs. rediseño FFF y sinergia con Stock de Seguridad.",
       "brief_en": "How to operationalize IEC 62402 with Agentic Radar v2.0: cycle-free multilevel BOM traversal, deterministic Last Time Buy (LTB) vs. FFF redesign finance, and Safety Stock synergy.",
       "publish_date": "2026-12-09",
-      "last_modified_es": "2026-11-22T15:28:55.587707Z",
-      "last_modified_en": "2026-11-22T15:28:57.936735Z",
+      "last_modified_es": "2026-11-25T16:00:39+01:00",
+      "last_modified_en": "2026-11-25T16:00:39+01:00",
       "language_parity": "complete",
       "category": "Estrategia y Operaciones",
       "categories": [
@@ -7871,8 +7871,8 @@
       "brief_es": "Construyendo la capa de presentación que traduce las operaciones asíncronas de IA en métricas financieras para roles directivos mediante Tailwind CSS y Vanilla JS.",
       "brief_en": "Building the presentation layer that translates asynchronous AI operations into financial metrics for executive roles utilizing lightweight Tailwind CSS and Vanilla JS.",
       "publish_date": "2026-05-17",
-      "last_modified_es": "2026-11-25T14:42:20.277103Z",
-      "last_modified_en": "2026-11-25T14:42:20.118379Z",
+      "last_modified_es": "2026-11-25T16:00:39+01:00",
+      "last_modified_en": "2026-11-25T16:00:39+01:00",
       "language_parity": "complete",
       "category": "IA, Ingeniería y Proyectos",
       "categories": [
@@ -9970,8 +9970,8 @@
       "brief_es": "Dashboard Ejecutivo impulsado por IA para la mitigación del riesgo en la cadena de suministro.",
       "brief_en": "AI-powered Executive Dashboard for 24/7 supply chain risk mitigation.",
       "publish_date": "2026-05-17",
-      "last_modified_es": "2026-11-16T08:01:25+01:00",
-      "last_modified_en": "2026-11-16T08:01:25+01:00",
+      "last_modified_es": "2026-11-25T16:00:39+01:00",
+      "last_modified_en": "2026-11-25T16:00:39+01:00",
       "language_parity": "complete",
       "category": "Aplicaciones Web",
       "categories": [
@@ -10046,8 +10046,8 @@
       "brief_es": "Dashboard Ejecutivo impulsado por IA para la mitigación del riesgo en la cadena de suministro.",
       "brief_en": "AI-powered Executive Dashboard for 24/7 supply chain risk mitigation.",
       "publish_date": "2026-11-22",
-      "last_modified_es": "2026-11-16T08:01:25+01:00",
-      "last_modified_en": "2026-11-16T08:01:25+01:00",
+      "last_modified_es": "2026-11-25T16:00:39+01:00",
+      "last_modified_en": "2026-11-25T16:00:39+01:00",
       "language_parity": "complete",
       "category": "Aplicaciones Web",
       "categories": [
@@ -10122,8 +10122,8 @@
       "brief_es": "Dashboard Ejecutivo impulsado por IA para la mitigación del riesgo en la cadena de suministro.",
       "brief_en": "AI-powered Executive Dashboard for 24/7 supply chain risk mitigation.",
       "publish_date": "2026-10-24",
-      "last_modified_es": "2026-11-16T08:01:25+01:00",
-      "last_modified_en": "2026-11-16T08:01:25+01:00",
+      "last_modified_es": "2026-11-25T16:00:39+01:00",
+      "last_modified_en": "2026-11-25T16:00:39+01:00",
       "language_parity": "complete",
       "category": "Aplicaciones Web",
       "categories": [

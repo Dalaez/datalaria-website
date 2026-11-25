@@ -1,0 +1,161 @@
+{
+  "schema_version": "1.0.0",
+  "generator": "ops/helix/build_adapters.py",
+  "squad": "Datalaria Mercator (Revenue, Brand & Distribution)",
+  "invariants": [
+    "INV-OS-2",
+    "INV-OS-3",
+    "INV-HELIX-1",
+    "INV-HELIX-8",
+    "INV-PULSE-13"
+  ],
+  "reused_veto_agents": [
+    "10-security-privacy",
+    "11-qa-verifier",
+    "E07-editorial-qa"
+  ],
+  "total_agents": 4,
+  "agents": [
+    {
+      "id": "M01-revenue-orchestrator",
+      "name_es": "Orquestador de Revenue, Crecimiento y Marca",
+      "name_en": "Revenue, Growth & Brand Orchestrator",
+      "cell": "direction",
+      "icon": "💰",
+      "activates_on_sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "mandatory_triggers": [
+        "all_mercator_tasks",
+        "brand_vertical_change"
+      ],
+      "can_write_production_code": false,
+      "has_veto_power": false,
+      "inputs": [
+        "user_request",
+        "specs/STRATEGY.md",
+        "specs/_brand.md",
+        "specs/squad-mercator/triage-mercator-rubric.md",
+        "specs/audit/IMPACT_REPORT.md"
+      ],
+      "outputs": [
+        "triage_mercator_card",
+        "revenue_sprint_plan",
+        "debrief_mercator_card"
+      ],
+      "source_path": "specs/squad-mercator/M01-revenue-orchestrator.md",
+      "antigravity_adapter": ".agents/squad-mercator/M01-revenue-orchestrator.md",
+      "claude_adapter": ".claude/agents/M01-revenue-orchestrator.md"
+    },
+    {
+      "id": "M02-cro-pricing-revops",
+      "name_es": "Arquitecto de CRO, Pricing y RevOps",
+      "name_en": "CRO, Pricing & RevOps Architect",
+      "cell": "construction",
+      "icon": "💎",
+      "activates_on_sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "mandatory_triggers": [
+        "TRG-CRO",
+        "pricing_strategy",
+        "revenue_telemetry",
+        "resources_cro"
+      ],
+      "can_write_production_code": true,
+      "has_veto_power": false,
+      "inputs": [
+        "specs/STRATEGY.md",
+        "data/pulse/kits.yaml",
+        "specs/audit/IMPACT_REPORT.md",
+        "layouts/partials/recursos_catalog.html"
+      ],
+      "outputs": [
+        "cro_audit_and_changes",
+        "pricing_and_bundle_matrix",
+        "ops/pulse/sync_revenue.py"
+      ],
+      "source_path": "specs/squad-mercator/M02-cro-pricing-revops.md",
+      "antigravity_adapter": ".agents/squad-mercator/M02-cro-pricing-revops.md",
+      "claude_adapter": ".claude/agents/M02-cro-pricing-revops.md"
+    },
+    {
+      "id": "M03-lifecycle-retention",
+      "name_es": "Arquitecto de Lifecycle, Automatización Brevo y Retención",
+      "name_en": "Lifecycle, Brevo Automation & Retention Architect",
+      "cell": "construction",
+      "icon": "🔁",
+      "activates_on_sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "mandatory_triggers": [
+        "TRG-LIFECYCLE",
+        "brevo_automation",
+        "retention_flow",
+        "post_purchase"
+      ],
+      "can_write_production_code": true,
+      "has_veto_power": false,
+      "inputs": [
+        "specs/STRATEGY.md",
+        "specs/_brand.md",
+        "data/pulse/kits.yaml",
+        "specs/audit/IMPACT_REPORT.md"
+      ],
+      "outputs": [
+        "data/growth/lifecycle_flows.yaml",
+        "brevo_evergreen_templates"
+      ],
+      "source_path": "specs/squad-mercator/M03-lifecycle-retention.md",
+      "antigravity_adapter": ".agents/squad-mercator/M03-lifecycle-retention.md",
+      "claude_adapter": ".claude/agents/M03-lifecycle-retention.md"
+    },
+    {
+      "id": "M04-distribution-marketplaces",
+      "name_es": "Especialista en Distribución Externa, Partnerships y Marketplaces",
+      "name_en": "External Distribution, Partnerships & Marketplaces Specialist",
+      "cell": "construction",
+      "icon": "🚀",
+      "activates_on_sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "mandatory_triggers": [
+        "TRG-EXT-DIST",
+        "launch_playbook",
+        "marketplace_listing",
+        "linkedin_growth"
+      ],
+      "can_write_production_code": true,
+      "has_veto_power": false,
+      "inputs": [
+        "specs/STRATEGY.md",
+        "specs/_brand.md",
+        "data/pulse/kits.yaml",
+        "specs/audit/IMPACT_REPORT.md"
+      ],
+      "outputs": [
+        "data/growth/launch_packs",
+        "directory_and_marketplace_plan"
+      ],
+      "source_path": "specs/squad-mercator/M04-distribution-marketplaces.md",
+      "antigravity_adapter": ".agents/squad-mercator/M04-distribution-marketplaces.md",
+      "claude_adapter": ".claude/agents/M04-distribution-marketplaces.md"
+    }
+  ]
+}

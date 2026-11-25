@@ -1440,7 +1440,8 @@ body {
   border: 0;
 }
 
-.channels-wrapper {
+.channels-wrapper,
+.revenue-wrapper {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -1800,6 +1801,11 @@ body {
   .channel-matrix-table tbody td:nth-child(4)::before { content: var(--col-split) ": "; color: #94a3b8; font-size: 0.76rem; }
   .channel-matrix-table tbody td:nth-child(5)::before { content: var(--col-eng) ": "; color: #94a3b8; font-size: 0.76rem; }
   .channel-matrix-table tbody td:nth-child(6)::before { content: var(--col-conv) ": "; color: #94a3b8; font-size: 0.76rem; }
+
+  .revenue-products-table tbody td:nth-child(2)::before { content: var(--col-orders-30d) ": "; color: #94a3b8; font-size: 0.76rem; }
+  .revenue-products-table tbody td:nth-child(3)::before { content: var(--col-rev-30d) ": "; color: #94a3b8; font-size: 0.76rem; }
+  .revenue-products-table tbody td:nth-child(4)::before { content: var(--col-rev-total) ": "; color: #94a3b8; font-size: 0.76rem; }
+  .revenue-products-table tbody td:nth-child(5)::before { content: var(--col-aov) ": "; color: #94a3b8; font-size: 0.76rem; }
 }
 
 .channels-bottom-grid {

@@ -685,3 +685,28 @@
 - **Consecuencias:**
   - Atribución de tráfico y conversiones de las 4 plataformas + SEO lista desde el primer hito (`7.11`) a coste `0 €`.
   - Embudo completo (*Alcance Nativo → PTR → Retención/Conversión en Datalaria → Lift SEO GSC*) automatizado en CI (`pulse.yml`) con degradación elegante independiente por fuente (`INV-PULSE-11`) y cero exposición de datos privados en `/static/`.
+
+---
+
+## ADR-034: Federación en 3 Capas (`Datalaria OS`), Escuadrón `Datalaria Mercator` (`M01`–`M04`), Arquitectura de Marca en 3 Verticales y Privacidad Financiera (`INV-PULSE-13`)
+- **Fecha:** 2026-11-24
+- **Estado:** Aceptado (En ejecución en FASE 9 — Hitos 9.1 a 9.4)
+- **Contexto:**
+  1. La auditoría estratégica del ecosistema agéntico (`2026-11-24`) confirmó una asimetría estructural: **Datalaria Helix** (12 agentes) y **Datalaria Scriba** (8 agentes) producen oferta técnica y contenido a gran velocidad (`192` activos, `10` Apps, `21` Kits/Suites, `20.482` impresiones GSC con `72.3%` EN), pero existían `17` alertas de *releases silenciosas*, un CTR orgánico del `0.58%`, solo `12` eventos clave GA4/30d (`0` en orgánico/newsletter), `0` seguidores reportados en LinkedIn Página de Empresa y **cero telemetría real de ventas** en Lemon Squeezy ni secuencias automatizadas evergreen en Brevo.
+  2. Se detectaron solapamientos sin dueño único del embudo de ingresos (`09-monetization` vs `E05-content-monetizer` vs `02-product-analyst`), divergencias SEO (`E04` `35–75` / `80–180` frente a `impact_analyzer.py` `35–95` / `140–160`), riesgo de dilución de marca al mezclar Suites B2B C-Level con utilidades educativas/personales y ausencia de una memoria estratégica común.
+  3. Toda evolución debe preservar **intacto al 100 % el paquete comercial Datalaria Helix de 12 agentes** (`specs/squad/` para lanzamiento `2027-01-19`, `ADR-017`/`ADR-019`), cumplir `INV-HELIX-8` ($\le 85$ líneas por ficha) y mantener política estricta de coste fijo `0 €/mes`.
+- **Decisión:**
+  1. **Arquitectura Federada en 3 Capas (`Datalaria OS`):**
+     - **Capa 0 (`specs/squad-os/00-chief-orchestrator.md`):** Director Estratégico y Router Maestro que dialoga **exclusivamente** con los 3 Orquestadores de Escuadrón (`01-orchestrator`, `E01-editorial-orchestrator`, `M01-revenue-orchestrator`), custodia `specs/STRATEGY.md` y aplica **bypass de coste 0** en tareas mono-dominio (`XS`/`S`).
+     - **Capa 1 (3 Escuadrones Autónomos):** **Helix** (`specs/squad/`, 12 agentes intactos), **Scriba** (`specs/squad-editorial/`, 8 agentes) y el nuevo **Datalaria Mercator** (`specs/squad-mercator/`, 4 agentes núcleo `M01`–`M04`: `M01-revenue-orchestrator`, `M02-cro-pricing-revops`, `M03-lifecycle-retention`, `M04-distribution-marketplaces`).
+     - **Capa 2 (4 Guilds Transversales sin Amputar Escuadrones):** *Revenue & Pricing* (`M02` dicta estrategia/precios → `09` y `E05` ejecutan localmente), *SEO & Demanda* (`E02` + `ops/pulse/` → `02`, `08`, `E04`, `M02`), *Marca & Voz* (`specs/_brand.md` → `04`, `08`, `E03`, `E04`, `E06`, `M01`–`M04`) y *Seguridad/Garantía* (`10-security-privacy`, `11-qa-verifier` y `E07-editorial-qa` reutilizados como veto vinculante sin duplicar agentes de QA).
+  2. **Estrategia de Autonomía Pasiva (`specs/STRATEGY.md`):** Adopción de la **Escalera Híbrida EN-First** (Kits `5–39 €` para volumen → Licencias Equipo/B2B `99–249 €` para margen → SaaS/Pro o consultoría cuando exista tracción validada), gobernada por compuertas de ingresos: Estadio 1 (`0 → 500 €/mes`, Q2 2027) → Estadio 2 (`500 → 2.500 €/mes`, 2028, desbloqueando `M05` Brand Guardian y `M06` Customer Success) → Estadio 3 (`> 2.500 €/mes`, desbloqueando Escuadrón `Aegis` FinOps/Legal).
+  3. **Arquitectura de Marca en 3 Verticales (`specs/_brand.md`):** Estructuración *Branded House* en **Executive B2B**, **AI Systems** y **Open Lab**, desplegada en 2 pasos sin riesgo SEO: campo opcional `brand_vertical` en `data/apps/*.yaml` (`Hito 9.1`) y refactor visual de Home + `/apps/` (`Hito 9.4`).
+  4. **Privacidad Financiera Máxima (`INV-PULSE-13`) y Regla Anti-Releases Silenciosas:** Los conectores gratuitos de Lemon Squeezy y Brevo (`Hito 9.2`) descartarán el 100 % de PII antes de persistir, mantendrán `revenue_metrics.json`, `executive_state.json` y `REVENUE_REPORT.md` en `.gitignore` y sincronizarán solo agregados anónimos hacia Supabase `pulse.private_snapshot` (RLS Admin). Ninguna release `MAJOR`/`MINOR` podrá cerrarse en `ROADMAP.md` sin emitir su relevo hacia Scriba/Mercator.
+- **Alternativas Descartadas:**
+  - *Súper-Orquestador plano sobre 24 agentes:* Descartado por violar `INV-HELIX-2`/`INV-HELIX-8` y romper el encapsulamiento comercial de Helix.
+  - *Extraer `08-media-i18n` y `09-monetization` fuera de `specs/squad/`:* Descartado porque rompería el producto vendible Helix Core Kit de 12 agentes (`ADR-017`).
+  - *Commitear ingresos reales en `€` en Git:* Descartado por privacidad financiera y prevención de exposición de métricas sensibles.
+- **Consecuencias:**
+  - Alineación total de Ingeniería, Editorial y Revenue bajo una estrategia común y coste fijo `0 €/mes`, compilación determinista ampliada en `ops/helix/build_adapters.py` y escalabilidad modular por estadios de ingresos reales.
+

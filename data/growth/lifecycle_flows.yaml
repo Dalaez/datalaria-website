@@ -1,0 +1,318 @@
+version: "1.0.0"
+owner: "M03-lifecycle-retention"
+reviewers:
+  - "E07-editorial-qa"
+  - "10-security-privacy"
+strategy_ref: "specs/STRATEGY.md"
+brand_ref: "specs/_brand.md"
+updated_at: "2026-11-24"
+
+brevo_constraints:
+  monthly_cost_eur: 0
+  daily_send_cap: 300
+  min_text_to_image_ratio_pct: 80
+  max_hero_images_per_email: 1
+  allow_mailto_links: false
+  html_layout_standard: "clean_tabular_600px_outlook_gmail_safe"
+  utm_base: "utm_source=brevo_auto&utm_medium=email"
+  digest_collision_rule: "Pause automated step by 24h if E05 weekly digest is scheduled on the same day"
+  lists:
+    newsletter_es: 3
+    newsletter_en: 4
+    helix_waitlist_es: 5
+    helix_waitlist_en: 6
+
+cross_sell_coupon_spec:
+  id: "OPP-MON-01"
+  provider: "lemon_squeezy"
+  code: "DATALARIA-UPGRADE20"
+  discount_type: "percentage"
+  discount_value: 20
+  eligible_products:
+    - "suite-01"
+    - "suite-02"
+    - "suite-03"
+    - "mega-bundle"
+  excluded_embargoed_products:
+    - "pack-obs"
+    - "pack-sdd"
+    - "suite-sdd"
+  max_uses_per_buyer: 1
+  validity_days: 14
+
+flows:
+  - id: "welcome_segmented"
+    name_es: "Flujo 1 — Bienvenida Segmentada por Vertical"
+    name_en: "Flow 1 — Vertical-Segmented Welcome Sequence"
+    status: "ready_to_activate"
+    trigger: "Contact added to List #3 (ES) or List #4 (EN)"
+    segmentation:
+      attribute: "VERTICAL_INTEREST"
+      segments:
+        - id: "executive_b2b"
+          label: "Executive B2B (Operations, Supply Chain, PMO, Finance)"
+          primary_sandbox_es: "https://datalaria.com/apps/obs-management/?lang=es&utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_b2b"
+          primary_sandbox_en: "https://datalaria.com/apps/obs-management/?lang=en&utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_b2b"
+          primary_offer_es: "https://datalaria.com/es/recursos/#mega-bundle?utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_b2b"
+          primary_offer_en: "https://datalaria.com/en/resources/#mega-bundle?utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_b2b"
+        - id: "ai_systems"
+          label: "AI Systems (Engineering, Content Ops, SDD)"
+          primary_sandbox_es: "https://datalaria.com/apps/pulse/?demo=true&utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_ai"
+          primary_sandbox_en: "https://datalaria.com/apps/pulse/?demo=true&utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_ai"
+          primary_offer_es: "https://datalaria.com/es/recursos/#pack-pulse?utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_ai"
+          primary_offer_en: "https://datalaria.com/en/resources/#pack-pulse?utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_ai"
+    emails:
+      - step: 1
+        delay_days: 0
+        goal: "Deliver 60-second quantitative value and capture vertical preference"
+        es:
+          subject: "Bienvenido a Datalaria: 3 herramientas deterministas listas en 60 segundos"
+          preheader: "Sin humo ni registro: abre nuestros Sandboxes y elige tu vertical."
+          value_60s:
+            - "1) Radar IEC 62402 (Supply Chain): simula un aviso EOL y calcula margen en riesgo en el navegador."
+            - "2) Datalaria Pulse (Content Ops): audita un CSV de Notion 100% en cliente sin subir datos."
+            - "3) 13 modelos cuantitativos Excel + PPTX sin macros VBA listos para comité de dirección."
+          cta_label: "Explorar Sandboxes y Catálogo →"
+          cta_url: "https://datalaria.com/es/recursos/?utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_d0"
+          secondary_cta_label: "Indícanos tu vertical (Operaciones B2B o Sistemas IA)"
+          secondary_cta_url: "https://datalaria.com/es/contact/?topic=vertical-preference&utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_d0"
+        en:
+          subject: "Welcome to Datalaria: 3 deterministic tools ready in 60 seconds"
+          preheader: "Zero hype, zero login: launch our Sandboxes and pick your track."
+          value_60s:
+            - "1) Agentic Radar (IEC 62402 Supply Chain): simulate an EOL notice and compute margin at risk in-browser."
+            - "2) Datalaria Pulse (Content Ops): audit a Notion CSV 100% client-side with zero uploads."
+            - "3) 13 zero-VBA Excel + 16:9 PPTX quantitative decision packs ready for board reviews."
+          cta_label: "Explore Sandboxes & Decision Kits →"
+          cta_url: "https://datalaria.com/en/resources/?utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_d0"
+          secondary_cta_label: "Tell us your track (Executive B2B or AI Systems)"
+          secondary_cta_url: "https://datalaria.com/en/contact/?topic=vertical-preference&utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_d0"
+      - step: 2
+        delay_days: 2
+        goal: "Drive hands-on interaction with free Dual-Mode Sandbox by vertical"
+        es:
+          subject: "Prueba en vivo: separa cálculo determinista de opinión en 2 minutos"
+          preheader: "Executive B2B (BOM/LTB) o AI Systems (Pulse Content Ops) directo en tu navegador."
+          value_60s:
+            - "Vertical Executive B2B: abre Agentic Radar v2.0 y ejecuta el escenario de crisis LTB vs. Rediseño."
+            - "Vertical AI Systems: abre Datalaria Pulse en Modo Demo y revisa el scoring SEO determinista 0–100."
+            - "Por qué lo hacemos así: la aritmética financiera siempre vive en código verificable, nunca en prompts."
+          cta_label: "Abrir Sandbox Interactivo Gratis →"
+          cta_url: "https://datalaria.com/es/apps/?utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_d2"
+        en:
+          subject: "Hands-on test: separate deterministic math from guesswork in 2 minutes"
+          preheader: "Executive B2B (BOM/LTB) or AI Systems (Pulse Content Ops) right in your browser."
+          value_60s:
+            - "Executive B2B Track: launch Agentic Radar v2.0 and run the LTB vs. FFF Redesign crisis scenario."
+            - "AI Systems Track: open Datalaria Pulse in Demo Mode and inspect the 0–100 deterministic SEO scorer."
+            - "Core principle: financial arithmetic always runs in audited code, never in probabilistic prompts."
+          cta_label: "Launch Free Interactive Sandbox →"
+          cta_url: "https://datalaria.com/en/apps/?utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_d2"
+      - step: 3
+        delay_days: 5
+        goal: "Showcase flagship suites and real savings comparison"
+        es:
+          subject: "De horas en hojas frágiles a 1 slide defendible ante el CFO"
+          preheader: "Cómo funcionan nuestras Suites Ejecutivas sin macros VBA (ahorro hasta 52%)."
+          value_60s:
+            - "Suite 1 (Estrategia MBA · 19 €): DAFO, Porter, PESTEL, BCG y McKinsey/GE con fórmulas auditadas."
+            - "Suite 2 (Decisiones · 15 €): Matriz DAR con veto binario, RICE/ICE y Business Case VAN/TIR."
+            - "Suite 3 (Operaciones · 22 €) y Datalaria Pulse Kit (19 €): listos para Excel, Sheets y PowerPoint 16:9."
+          cta_label: "Comparar Kits y Suites (Ahorro >52%) →"
+          cta_url: "https://datalaria.com/es/recursos/#pricing-comparison?utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_d5"
+        en:
+          subject: "From fragile spreadsheets to 1 CFO-ready decision slide"
+          preheader: "Inside our zero-VBA Executive Suites (save over 52% with bundles)."
+          value_60s:
+            - "Suite 1 (MBA Strategy · 19 €): SWOT, Porter, PESTEL, BCG & McKinsey/GE with audited formulas."
+            - "Suite 2 (Decisions · 15 €): Binary-veto DAR Matrix, RICE/ICE & NPV/IRR Business Case."
+            - "Suite 3 (Operations · 22 €) & Datalaria Pulse Kit (19 €): ready for Excel, Google Sheets & 16:9 PPTX."
+          cta_label: "Compare Kits & Suites (Save >52%) →"
+          cta_url: "https://datalaria.com/en/resources/#pricing-comparison?utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_d5"
+      - step: 4
+        delay_days: 9
+        goal: "Bridge to Mega Bundle (39 €) and B2B Team/Corporate Licenses (99–149 €)"
+        es:
+          subject: "El arsenal completo (39 €) y licencias para equipos B2B (99 €)"
+          preheader: "13 modelos estratégicos y operativos con factura IVA/VIES inmediata."
+          value_60s:
+            - "Uso individual: Mega Bundle con los 13 kits por 39 € (frente a 82 € por separado)."
+            - "Equipos y PMOs (5–20 personas): Licencia Equipo (99 €) y Corporativa (149 €) con 12 meses de updates."
+            - "Todo con descarga .ZIP inmediata vía Lemon Squeezy y cero macros VBA para pasar auditorías IT."
+          cta_label: "Ver Mega Bundle y Licencias Equipo →"
+          cta_url: "https://datalaria.com/es/recursos/#b2b-team-license?utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_d9"
+        en:
+          subject: "The complete 13-pack arsenal (39 €) and B2B Team Licenses (99 €)"
+          preheader: "Instant VAT/VIES invoicing and zero-VBA compliance for operations & engineering teams."
+          value_60s:
+            - "Individual license: Total Mega Bundle with all 13 packs for 39 € (vs. 82 € separately)."
+            - "Teams & PMOs (5–20 seats): Team License (99 €) and Corporate License (149 €) with 12-month updates."
+            - "Instant .ZIP delivery via Lemon Squeezy and zero VBA macros to clear corporate IT security."
+          cta_label: "View Mega Bundle & Team Licenses →"
+          cta_url: "https://datalaria.com/en/resources/#b2b-team-license?utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_d9"
+
+  - id: "helix_waitlist_nurture"
+    name_es: "Flujo 2 — Nutrición Waitlist Datalaria Helix (Pre-19 Ene 2027)"
+    name_en: "Flow 2 — Datalaria Helix Waitlist Nurture (Pre-Jan 19, 2027)"
+    status: "ready_to_activate"
+    embargo_until: "2027-01-19"
+    trigger: "Contact added to List #5 (Helix ES) or List #6 (Helix EN)"
+    emails:
+      - step: 1
+        delay_days: 0
+        goal: "Confirm Early-Bird reservation and share Operation Crucible evidence"
+        es:
+          subject: "Plaza Early-Bird reservada: el Caso Crisol detrás de Datalaria Helix"
+          preheader: "Por qué el vibe-coding colapsa en producción y cómo SDD + 12 agentes lo resuelven."
+          value_60s:
+            - "Tu plaza queda bloqueada para el precio Early-Bird de 19 € (PVP 39 €) el 19 de enero de 2027."
+            - "Caso Crisol: cómo pasamos de prompts frágiles a especificaciones ejecutables con cero regresiones."
+            - "Mientras llega el estreno, puedes leer la guía fundacional SDD vs. Vibe Coding."
+          cta_label: "Leer SDD vs. Vibe Coding →"
+          cta_url: "https://datalaria.com/es/posts/sdd_vs_vibe_coding/?utm_source=brevo_auto&utm_medium=email&utm_campaign=helix_wl_1"
+        en:
+          subject: "Early-Bird spot locked: Operation Crucible behind Datalaria Helix"
+          preheader: "Why vibe-coding breaks in production and how SDD + 12 agents fix it."
+          value_60s:
+            - "Your Early-Bird rate of 19 € (List 39 €) is locked for the January 19, 2027 release."
+            - "Operation Crucible: moving from brittle prompts to executable specs with zero regressions."
+            - "While you wait, read the foundational SDD vs. Vibe Coding breakdown."
+          cta_label: "Read SDD vs. Vibe Coding →"
+          cta_url: "https://datalaria.com/en/posts/sdd_vs_vibe_coding/?utm_source=brevo_auto&utm_medium=email&utm_campaign=helix_wl_1"
+      - step: 2
+        delay_days: 4
+        goal: "Preview the deterministic CLI and 12-agent separation of powers (veto)"
+        es:
+          subject: "Por dentro de Helix: 12 agentes con derecho a veto y CLI sin dependencias"
+          preheader: "Triaje XS–XL, contratos Pydantic y rollback automático en 1 comando."
+          value_60s:
+            - "Separación de poderes (INV-HELIX-1): quien construye el código jamás puede aprobar su propia entrega."
+            - "CLI en Python puro (0 dependencias): init, triage, new-spec, checkpoint, verify y rollback."
+            - "Adaptadores compilados listos para Antigravity, Claude Code, Cursor y Codex."
+          cta_label: "Ver Ficha Técnica de Datalaria Helix →"
+          cta_url: "https://datalaria.com/es/recursos/#pack-sdd?utm_source=brevo_auto&utm_medium=email&utm_campaign=helix_wl_2"
+        en:
+          subject: "Inside Helix: 12 veto-enforced AI agents and a zero-dependency CLI"
+          preheader: "XS–XL triage, Pydantic contracts, and 1-command deterministic rollback."
+          value_60s:
+            - "Separation of powers (INV-HELIX-1): builder agents can never self-approve their own output."
+            - "Zero-dependency Python CLI: init, triage, new-spec, checkpoint, verify, and rollback."
+            - "Compiled adapters ready for Google Antigravity, Claude Code, Cursor, and Codex."
+          cta_label: "Inspect Datalaria Helix Specs →"
+          cta_url: "https://datalaria.com/en/resources/#pack-sdd?utm_source=brevo_auto&utm_medium=email&utm_campaign=helix_wl_2"
+      - step: 3
+        scheduled_date: "2027-01-16"
+        delay_days_fallback: 10
+        goal: "T-3 days launch countdown preserving embargo until 2027-01-19"
+        es:
+          subject: "Faltan 72 horas: acceso prioritario a Datalaria Helix (19 € Early-Bird)"
+          preheader: "El 19 de enero a las 09:00 CET recibirás tu enlace privado antes de subir a 39 €."
+          value_60s:
+            - "Fecha de apertura oficial: martes 19 de enero de 2027 (embargo activo hasta día de estreno)."
+            - "Incluye Starter Kit gratuito + opción de compra Early-Bird 19 € (PVP 39 €) y Licencia Equipo 99 €."
+            - "Si necesitas factura corporativa o múltiples asientos para tu squad, puedes adelantarlo aquí."
+          cta_label: "Consultar Licencia Equipo Helix (5–20 asientos) →"
+          cta_url: "https://datalaria.com/es/contact/?topic=b2b-license&product=helix&utm_source=brevo_auto&utm_medium=email&utm_campaign=helix_wl_3"
+        en:
+          subject: "72 hours to go: Datalaria Helix priority access (19 € Early-Bird)"
+          preheader: "On Jan 19 at 09:00 CET your private launch link goes live before the 39 € list price."
+          value_60s:
+            - "Official release date: Tuesday, January 19, 2027 (checkout remains locked until launch day)."
+            - "Includes free Starter Kit + 19 € Early-Bird access (List 39 €) and 99 € Team License tier."
+            - "Need corporate invoicing or multi-seat rollout for your engineering squad? Reserve below."
+          cta_label: "Inquire About Helix Team License (5–20 seats) →"
+          cta_url: "https://datalaria.com/en/contact/?topic=b2b-license&product=helix&utm_source=brevo_auto&utm_medium=email&utm_campaign=helix_wl_3"
+
+  - id: "post_purchase_lemonsqueezy"
+    name_es: "Flujo 3 — Post-Compra Lemon Squeezy (Onboarding, Social Proof y Cross-Sell)"
+    name_en: "Flow 3 — Lemon Squeezy Post-Purchase (Onboarding, Social Proof & Cross-Sell)"
+    status: "ready_to_activate"
+    trigger: "Webhook / Zapier-Make free tier or manual sync on Lemon Squeezy order_created"
+    emails:
+      - step: 1
+        delay_days: 0
+        goal: "5-minute onboarding to eliminate friction and refund requests"
+        es:
+          subject: "Tu kit de Datalaria está listo: guía de arranque en 5 minutos"
+          preheader: "Descomprime el .ZIP, abre el Excel sin macros VBA y valida el primer escenario."
+          value_60s:
+            - "Paso 1: descomprime el .ZIP completo antes de abrir el .xlsx para preservar enlaces locales."
+            - "Paso 2: edita únicamente las celdas de entrada (azul) — todas las fórmulas están protegidas sin VBA."
+            - "Paso 3: copia la tabla resumen en la slide PowerPoint 16:9 incluida y consulta la guía PDF."
+          cta_label: "¿Alguna duda técnica? Escríbenos vía formulario →"
+          cta_url: "https://datalaria.com/es/contact/?topic=kit-support&utm_source=brevo_auto&utm_medium=email&utm_campaign=post_buy_d0"
+        en:
+          subject: "Your Datalaria Kit is ready: 5-minute quickstart guide"
+          preheader: "Unzip the archive, open the zero-VBA workbook, and run your first scenario."
+          value_60s:
+            - "Step 1: extract the full .ZIP archive before opening the .xlsx workbook."
+            - "Step 2: edit blue input cells only — all formulas are audited and require zero VBA macros."
+            - "Step 3: paste the output table into the included 16:9 PowerPoint deck and check the PDF guide."
+          cta_label: "Need technical assistance? Reach us via form →"
+          cta_url: "https://datalaria.com/en/contact/?topic=kit-support&utm_source=brevo_auto&utm_medium=email&utm_campaign=post_buy_d0"
+      - step: 2
+        delay_days: 7
+        goal: "Capture verifiable B2B testimonial and concrete time-saved metric for M02 CRO"
+        es:
+          subject: "Una pregunta de 60 segundos sobre tu experiencia con el Kit"
+          preheader: "¿Qué decisión defendiste con él y cuánto tiempo te ahorró?"
+          value_60s:
+            - "Han pasado 7 días desde tu descarga y queremos mejorar la próxima versión con feedback real."
+            - "Si te resultó útil, compártenos en 2 líneas: (1) tu rol y (2) qué bloque te ahorró más horas."
+            - "Tu feedback ayuda a priorizar nuevas plantillas y mejoras gratuitas para compradores."
+          cta_label: "Compartir Feedback / Testimonio (1 min) →"
+          cta_url: "https://datalaria.com/es/contact/?topic=testimonial&utm_source=brevo_auto&utm_medium=email&utm_campaign=post_buy_d7"
+        en:
+          subject: "A 60-second question about your Datalaria Kit"
+          preheader: "Which decision did you model with it and how much time did it save?"
+          value_60s:
+            - "It has been 7 days since your download and we build every update from real practitioner feedback."
+            - "If it helped your work, share in 2 lines: (1) your role and (2) which sheet saved you the most time."
+            - "Your input directly shapes free updates and upcoming executive toolkits."
+          cta_label: "Share Feedback / Testimonial (1 min) →"
+          cta_url: "https://datalaria.com/en/contact/?topic=testimonial&utm_source=brevo_auto&utm_medium=email&utm_campaign=post_buy_d7"
+      - step: 3
+        delay_days: 14
+        goal: "Progressive cross-sell to Suites / Mega Bundle (39 €) using OPP-MON-01 coupon"
+        coupon_code: "DATALARIA-UPGRADE20"
+        es:
+          subject: "20% de crédito exclusivo para completar tu Suite o Mega Bundle"
+          preheader: "Usa el código DATALARIA-UPGRADE20 durante los próximos 14 días."
+          value_60s:
+            - "Como cliente de Datalaria, tienes un 20% de descuento exclusivo en Suites (15–22 €) o Mega Bundle (39 €)."
+            - "Código en Lemon Squeezy: DATALARIA-UPGRADE20 (válido 14 días, 1 uso por comprador)."
+            - "¿Lo usáis varias personas en la empresa? Consulta también la Licencia Equipo (5 usuarios · 99 €)."
+          cta_label: "Aplicar 20% en Suites y Mega Bundle →"
+          cta_url: "https://datalaria.com/es/recursos/#pricing-comparison?utm_source=brevo_auto&utm_medium=email&utm_campaign=post_buy_d14_upgrade20"
+        en:
+          subject: "Exclusive 20% upgrade credit toward any Suite or the Mega Bundle"
+          preheader: "Apply code DATALARIA-UPGRADE20 over the next 14 days."
+          value_60s:
+            - "As a Datalaria buyer, you unlock an exclusive 20% discount on Suites (15–22 €) or the Mega Bundle (39 €)."
+            - "Lemon Squeezy code: DATALARIA-UPGRADE20 (valid 14 days, single-use per buyer)."
+            - "Rolling this out across a team? Explore our 5-seat Team License (99 €) and 20-seat Corporate tier (149 €)."
+          cta_label: "Apply 20% Credit on Suites & Mega Bundle →"
+          cta_url: "https://datalaria.com/en/resources/#pricing-comparison?utm_source=brevo_auto&utm_medium=email&utm_campaign=post_buy_d14_upgrade20"
+
+html_template_skeleton:
+  max_width_px: 600
+  background_hex: "#0b0f17"
+  card_bg_hex: "#111827"
+  text_hex: "#f8fafc"
+  accent_hex: "#38bdf8"
+  table_layout_snippet: |
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#0b0f17;font-family:Arial,Helvetica,sans-serif;color:#f8fafc;">
+      <tr><td align="center" style="padding:24px 12px;">
+        <table role="presentation" width="600" cellspacing="0" cellpadding="0" style="max-width:600px;width:100%;background:#111827;border:1px solid #1f2937;border-radius:12px;">
+          <tr><td style="padding:24px;">
+            <p style="margin:0 0 12px;font-size:12px;color:#38bdf8;font-weight:700;letter-spacing:0.06em;">DATALARIA · DETERMINISTIC ENGINEERING</p>
+            <h1 style="margin:0 0 14px;font-size:20px;line-height:1.3;color:#f8fafc;">{{ params.SUBJECT }}</h1>
+            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#162032;border-left:3px solid #38bdf8;border-radius:6px;margin:0 0 18px;">
+              <tr><td style="padding:14px 16px;font-size:14px;line-height:1.55;color:#e2e8f0;">{{ params.VALUE_60S_HTML }}</td></tr>
+            </table>
+            <p style="margin:0 0 20px;"><a href="{{ params.CTA_URL }}" style="display:inline-block;background:#0ea5e9;color:#ffffff;text-decoration:none;font-weight:700;font-size:14px;padding:12px 20px;border-radius:8px;">{{ params.CTA_LABEL }}</a></p>
+            <p style="margin:0;font-size:11px;color:#94a3b8;">Datalaria · Zero-spam technical dispatch · <a href="{{ unsubscribe }}" style="color:#38bdf8;">Unsubscribe</a></p>
+          </td></tr>
+        </table>
+      </td></tr>
+    </table>

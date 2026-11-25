@@ -1,6 +1,6 @@
 # Constitución Arquitectónica SDD de Datalaria (`_constitution.md`)
 
-> **Versión:** 1.1.0  
+> **Versión:** 1.2.0  
 > **Estado:** ACTIVA Y VINCULANTE  
 > **Propósito:** Definir las reglas innegociables de ingeniería, seguridad, datos, negocio y gobernanza agéntica que gobiernan todas las aplicaciones y componentes de la plataforma **Datalaria**. Ninguna especificación particular (`spec.md`) ni implementación puede contradecir esta Constitución.
 
@@ -108,3 +108,17 @@ Para que un módulo se considere conforme a SDD, debe contar con verificación e
      - Toda modificación del repositorio exige el veredicto `QA_PASS` de **`11-qa-verifier` (`TRG-QA`)**.
 4. **Fuente Única del Escuadrón y Adaptadores Compilados (`INV-HELIX-4`):**
    - Las 12 fichas en [`specs/squad/*.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad/README.md) constituyen la única fuente de verdad. Los adaptadores por herramienta (`.agents/squad/`, `.claude/agents/`, `.cursor/rules/`) se compilan determinísticamente mediante `python -m ops.helix.build_adapters` y queda prohibido editarlos manualmente.
+
+---
+
+## Artículo 10: Federación `Datalaria OS`, Escuadrón `Mercator` y Regla Anti-Releases Silenciosas (`ADR-034`)
+1. **Arquitectura Federada en 3 Capas y Bypass de Coste 0 (`INV-OS-1`):**
+   - La estrategia global se gobierna desde **Capa 0** ([`specs/squad-os/00-chief-orchestrator.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-os/00-chief-orchestrator.md)), custodiando [`specs/STRATEGY.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/STRATEGY.md) y [`specs/_brand.md`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/_brand.md) ($\le 80$ líneas cada uno).
+   - `00-chief-orchestrator` dialoga exclusivamente con los 3 Orquestadores de Escuadrón (`01-orchestrator`, `E01-editorial-orchestrator`, `M01-revenue-orchestrator`) y aplica **bypass de coste 0** en tareas mono-dominio (`XS`/`S`).
+2. **Integridad Comercial de Escuadrones y Reutilización de Veto (`INV-OS-2`):**
+   - El paquete de 12 agentes de **Datalaria Helix** (`specs/squad/`) permanece íntegro e independiente para su comercialización como producto.
+   - El escuadrón **Datalaria Mercator** ([`specs/squad-mercator/`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-mercator/README.md), `M01`–`M04`) opera bajo las mismas invariantes anti-bloat (`INV-HELIX-8`: $\le 85$ líneas, máx. 6 reglas §6) y **reutiliza el veto vinculante existente** (`10-security-privacy`, `11-qa-verifier` y `E07-editorial-qa`), prohibiéndose duplicar agentes de QA/Seguridad.
+3. **Regla Anti-Releases Silenciosas (`INV-OS-3`):**
+   - Ninguna release `MAJOR` o `MINOR` de una App o Kit en producción puede cerrarse como `[x]` en `specs/ROADMAP.md` sin registrar su relevo comercial/editorial hacia `E01-editorial-orchestrator` y `M01-revenue-orchestrator` (post evolutivo, newsletter Brevo o activación externa).
+4. **Privacidad Financiera Máxima (`INV-PULSE-13`):**
+   - Toda telemetría de ingresos (Lemon Squeezy) y audiencia (Brevo) descartará el 100 % de PII antes de persistir, permanecerá en `.gitignore` fuera de Git y `/static/`, y se sincronizará únicamente como agregados anónimos hacia Supabase `pulse.private_snapshot` bajo RLS de Administrador.

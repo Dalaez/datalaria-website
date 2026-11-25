@@ -782,6 +782,126 @@ Details ℹ️
     <p style="font-size: 13px; margin-top: 4px;">Try changing the filter or search keyword.</p>
   </div>
 
+  <!-- REAL SAVINGS COMPARISON BLOCK (M02 CRO · Hito 9.3) -->
+  <section class="savings-compare-section" id="pricing-comparison" aria-labelledby="pricing-compare-heading">
+    <div class="savings-compare-head">
+      <span class="savings-kicker">💎 Real Savings Comparison</span>
+      <h2 id="pricing-compare-heading" class="savings-title">Choose the right tier: Individual Kit, Suite, Mega Bundle or Team License</h2>
+      <p class="savings-subtitle">All packs are one-time purchases with instant .ZIP download, B2B VAT/VIES invoice, and zero VBA macros.</p>
+    </div>
+    <div class="savings-compare-grid">
+      <article class="savings-tier-card">
+        <div class="savings-tier-badge">Fast Entry</div>
+        <h3 class="savings-tier-name">Individual Kit</h3>
+        <div class="savings-tier-price">5€ – 9€ <span>/ one-time</span></div>
+        <ul class="savings-tier-list">
+          <li>1 quantitative model (.xlsx + Sheets)</li>
+          <li>16:9 PowerPoint deck + PDF Guide</li>
+          <li>Ideal for a single executive decision</li>
+        </ul>
+        <a href="#kits-grid" class="btn-kit-info savings-tier-btn">Browse 14 kits →</a>
+      </article>
+
+      <article class="savings-tier-card">
+        <div class="savings-tier-badge savings-badge-accent">Save 25% – 35%</div>
+        <h3 class="savings-tier-name">Topic Suite</h3>
+        <div class="savings-tier-price">15€ – 22€ <span>vs. 20€–34€</span></div>
+        <ul class="savings-tier-list">
+          <li>3 to 5 models in one core discipline</li>
+          <li>MBA Strategy, Decisions, or Operations</li>
+          <li>Instant savings up to 12€ per suite</li>
+        </ul>
+        <a href="#suites-quick-grid" class="btn-kit-info savings-tier-btn">Explore 3 Suites →</a>
+      </article>
+
+      <article class="savings-tier-card is-featured">
+        <div class="savings-tier-badge savings-badge-gold">Best Value · Save &gt;52%</div>
+        <h3 class="savings-tier-name">Total Mega Bundle</h3>
+        <div class="savings-tier-price">39€ <span>vs. 82€ individually</span></div>
+        <ul class="savings-tier-list">
+          <li>All 13 strategy &amp; operations decision packs</li>
+          <li>Direct savings of 43€ (launch pricing)</li>
+          <li>Unlimited individual professional use</li>
+        </ul>
+        <a href="https://datalaria.lemonsqueezy.com/checkout/buy/88a976a2-f0e5-4e8e-a954-516767c7fed5?embed=1" class="btn-mega-buy lemonsqueezy-button savings-tier-btn">Download Mega Bundle • 39€ →</a>
+      </article>
+
+      <article class="savings-tier-card">
+        <div class="savings-tier-badge savings-badge-b2b">Teams &amp; PMOs</div>
+        <h3 class="savings-tier-name">Team / B2B License</h3>
+        <div class="savings-tier-price">99€ – 149€ <span>/ 5 to 20 seats</span></div>
+        <ul class="savings-tier-list">
+          <li>Shared internal use across your team or PMO</li>
+          <li>12 months of updates + VAT/VIES invoice</li>
+          <li>Applies to Mega Bundle or Software/AI Kits</li>
+        </ul>
+        <a href="#b2b-team-license" class="btn-kit-info savings-tier-btn">View Team Licenses ↓</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- B2B TEAM / CORPORATE LICENSE TIER (99€ - 149€ · Direct form) -->
+  <section class="b2b-license-banner" id="b2b-team-license" aria-labelledby="b2b-license-heading">
+    <div class="b2b-license-content">
+      <span class="b2b-license-pill">🏢 Multi-Seat B2B Licenses · Zero Subscriptions</span>
+      <h2 id="b2b-license-heading">Rolling out Datalaria kits across your team, PMO, or consultancy?</h2>
+      <p>
+        Avoid fragmented expense reports and pass corporate IT security effortlessly (0 VBA macros). We offer a <strong>Team License (up to 5 seats · 99 €)</strong> and a <strong>Corporate License (up to 20 seats · 149 €)</strong> as a one-time payment with EU VAT/VIES invoicing, PO support, and 12 months of updates. Already bought a single pack? Your post-purchase email unlocks an exclusive <strong>20% upgrade credit</strong> toward Suites or the Mega Bundle.
+      </p>
+      <div class="b2b-license-tiers-inline">
+        <div class="b2b-tier-chip"><strong>Team (5 seats):</strong> 99 € one-time</div>
+        <div class="b2b-tier-chip"><strong>Corporate / PMO (20 seats):</strong> 149 € one-time</div>
+        <div class="b2b-tier-chip"><strong>B2B Billing:</strong> VAT / VIES + PO</div>
+      </div>
+    </div>
+    <div class="b2b-license-actions">
+      <a href="/en/contact/?topic=b2b-license" class="btn-mega-buy b2b-license-cta" data-tier="b2b-team-99-149">
+        Request Team License (99€–149€) →
+      </a>
+      <span class="b2b-license-note">Reply within 24 business hours · Direct B2B form</span>
+    </div>
+  </section>
+
+  <!-- COMPACT NATIVE <details> FAQ (Modern Web Guidance accordion) -->
+  <section class="catalog-faq" id="catalog-faq" aria-labelledby="catalog-faq-heading">
+    <div class="catalog-faq-head">
+      <h2 id="catalog-faq-heading">Frequently Asked Questions: Licenses, Formats &amp; Guarantee</h2>
+      <p>Direct answers for individual buyers, procurement teams, and corporate IT reviews.</p>
+    </div>
+    <div class="catalog-faq-list">
+      <details class="catalog-faq-item">
+        <summary>What license comes with an individual purchase vs. a Team License (99 €–149 €)?</summary>
+        <div class="catalog-faq-body">
+          <p>Each individual purchase (Kit, Suite, or 39 € Mega Bundle) grants a perpetual license for <strong>1 professional</strong> (you may present outputs to clients and executive boards). If you need to share editable source files internally with 2–5 colleagues, select the <strong>Team License (99 €)</strong>; for PMOs, departments, or consultancies up to 20 seats, select the <strong>Corporate License (149 €)</strong>.</p>
+        </div>
+      </details>
+      <details class="catalog-faq-item">
+        <summary>Do the Excel models use VBA macros or trigger corporate IT security blocks?</summary>
+        <div class="catalog-faq-body">
+          <p><strong>Zero VBA macros.</strong> Every workbook relies strictly on native audited formulas in standard <code>.xlsx</code> format compatible with Microsoft 365, Excel 2016+, and Google Sheets, paired with 16:9 PowerPoint slides and vector PDF guides—clearing corporate IT firewalls with zero friction.</p>
+        </div>
+      </details>
+      <details class="catalog-faq-item">
+        <summary>How do instant downloads and deductible VAT / VIES invoices work?</summary>
+        <div class="catalog-faq-body">
+          <p>Checkout is processed by <strong>Lemon Squeezy</strong> (Merchant of Record). Immediately after payment you receive the <code>.ZIP</code> download link plus an automatic official B2B invoice where you can enter your company name and EU VAT / Tax ID (VIES).</p>
+        </div>
+      </details>
+      <details class="catalog-faq-item">
+        <summary>Are updates included, and can I upgrade from a single Kit to a Suite or Mega Bundle?</summary>
+        <div class="catalog-faq-body">
+          <p>Yes. Minor improvements and bug fixes for your purchased kit are delivered free via your Lemon Squeezy download link. In addition, after purchasing any standalone kit you receive an exclusive <strong>20% upgrade credit</strong> toward any Suite or the Total Mega Bundle.</p>
+        </div>
+      </details>
+      <details class="catalog-faq-item">
+        <summary>When will scheduled upcoming kits (pack-obs and Datalaria Helix) unlock?</summary>
+        <div class="catalog-faq-body">
+          <p>We enforce strict QA-gated launch dates: <strong>IEC 62402 Obsolescence &amp; LTB Kit (pack-obs)</strong> launches on <strong>December 9, 2026</strong> (you can test the free Agentic Radar v2.0 Sandbox today), and <strong>Datalaria Helix (12-Agent SDD OS)</strong> launches on <strong>January 19, 2027</strong> with Early-Bird waitlist pricing at 19 € (List 39 €).</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
   <!-- PIE DE GARANTÍA Y CONFIANZA B2B COMPACTO -->
   <div class="b2b-trust-row">
     <div class="trust-col">
@@ -889,19 +1009,38 @@ Details ℹ️
 
 <script>
 
-  // GA4 B2B Telemetry
+  // GA4 B2B Telemetry (non-blocking beacon transport)
   function trackKitEvent(eventName, eventParams) {
     try {
+      const payload = Object.assign({ transport_type: 'beacon' }, eventParams || {});
       if (typeof window.gtag === 'function') {
-        window.gtag('event', eventName, eventParams);
+        window.gtag('event', eventName, payload);
       } else if (Array.isArray(window.dataLayer)) {
-        window.dataLayer.push(Object.assign({ event: eventName }, eventParams));
+        window.dataLayer.push(Object.assign({ event: eventName }, payload));
       }
       if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-        console.log('[GA4 Telemetry]', eventName, eventParams);
+        console.log('[GA4 Telemetry]', eventName, payload);
       }
     } catch (e) {}
   }
+
+  // GA4 Telemetry for B2B Team License CTA & native <details> FAQ
+  document.addEventListener('click', function(e) {
+    const b2bBtn = e.target.closest('.b2b-license-cta');
+    if (b2bBtn) {
+      trackKitEvent('b2b_license_inquiry', {
+        tier: b2bBtn.dataset.tier || 'b2b-team',
+        language: 'en',
+        source: 'resources_catalog'
+      });
+    }
+  });
+  document.addEventListener('toggle', function(e) {
+    if (e.target && e.target.matches('.catalog-faq-item') && e.target.open) {
+      const q = e.target.querySelector('summary')?.textContent.trim().slice(0, 80) || 'faq';
+      trackKitEvent('faq_expand', { question: q, language: 'en' });
+    }
+  }, true);
 
   // Delegated click listener on Lemon Squeezy checkout buttons
   document.addEventListener('click', function(e) {

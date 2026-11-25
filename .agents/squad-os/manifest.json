@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0.0",
+  "generator": "ops/helix/build_adapters.py",
+  "squad": "Datalaria OS (Layer 0 Strategic Governance)",
+  "invariants": [
+    "INV-OS-1",
+    "INV-OS-2",
+    "INV-OS-3",
+    "INV-HELIX-8"
+  ],
+  "total_agents": 1,
+  "agents": [
+    {
+      "id": "00-chief-orchestrator",
+      "name_es": "Director Estratégico y Router Maestro (Datalaria OS)",
+      "name_en": "Chief Strategic Orchestrator & Master Router (Datalaria OS)",
+      "cell": "direction",
+      "icon": "🧠",
+      "activates_on_sizes": [
+        "L",
+        "XL"
+      ],
+      "mandatory_triggers": [
+        "multi_squad_initiative",
+        "strategy_review",
+        "commercial_launch"
+      ],
+      "can_write_production_code": false,
+      "has_veto_power": false,
+      "inputs": [
+        "user_request",
+        "specs/STRATEGY.md",
+        "specs/_brand.md",
+        "specs/ROADMAP.md",
+        "specs/audit/IMPACT_REPORT.md"
+      ],
+      "outputs": [
+        "multi_squad_brief",
+        "specs/STRATEGY.md",
+        "executive_debrief"
+      ],
+      "source_path": "specs/squad-os/00-chief-orchestrator.md",
+      "antigravity_adapter": ".agents/squad-os/00-chief-orchestrator.md",
+      "claude_adapter": ".claude/agents/00-chief-orchestrator.md"
+    }
+  ]
+}

@@ -27,6 +27,7 @@ from ops.pulse.impact_analyzer import (
     summarize_social_platforms,
 )
 from ops.pulse.publish_public import calculate_relative_metrics
+from ops.pulse.sync_revenue import assert_no_pii_in_payload, build_executive_state
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -37,6 +38,8 @@ PRIVATE_METRICS_PATH = ROOT_DIR / "data" / "pulse" / "private" / "metrics.json"
 PRIVATE_IMPACT_REPORT_PATH = ROOT_DIR / "data" / "pulse" / "private" / "impact_report.json"
 PRIVATE_CHANNEL_METRICS_PATH = ROOT_DIR / "data" / "pulse" / "private" / "channel_metrics.json"
 PRIVATE_SOCIAL_METRICS_PATH = ROOT_DIR / "data" / "pulse" / "private" / "social_metrics.json"
+PRIVATE_REVENUE_METRICS_PATH = ROOT_DIR / "data" / "pulse" / "private" / "revenue_metrics.json"
+PRIVATE_EXECUTIVE_STATE_PATH = ROOT_DIR / "data" / "pulse" / "private" / "executive_state.json"
 DEFAULT_SUPABASE_URL = "https://wkbmxekmofrjtcsyytrv.supabase.co"
 
 
@@ -265,6 +268,56 @@ def build_omnichannel_intelligence_payload(
     }
 
 
+def build_revenue_intelligence_payload(
+    *,
+    revenue_metrics_path: Path = PRIVATE_REVENUE_METRICS_PATH,
+    executive_state_path: Path = PRIVATE_EXECUTIVE_STATE_PATH,
+) -> Dict[str, Any]:
+    """
+    Construye el bloque privado `revenue_intelligence` para `pulse.private_snapshot` (RLS Admin).
+    Cumple INV-PULSE-13: cero PII, agregados anónimos y jamás exportado a `public.json`.
+    """
+    from ops.pulse.models import BrevoAudienceSummary, LemonSqueezySummary, RevenueMetricsReport
+
+    raw_rev = _safe_load_json(revenue_metrics_path)
+    raw_exec = _safe_load_json(executive_state_path)
+
+    if isinstance(raw_rev, dict) and "lemon_squeezy" in raw_rev and "brevo" in raw_rev:
+        report = RevenueMetricsReport(**raw_rev)
+    else:
+        report = RevenueMetricsReport(
+            generated_at=datetime.now(timezone.utc),
+            lemon_squeezy=LemonSqueezySummary(
+                status="unavailable",
+                note="Sin snapshot financiero local todavía; ejecuta python -m ops.pulse.sync_revenue.",
+            ),
+            brevo=BrevoAudienceSummary(
+                status="unavailable",
+                note="Sin snapshot Brevo local todavía; ejecuta python -m ops.pulse.sync_revenue.",
+            ),
+        )
+
+    if isinstance(raw_exec, dict) and "stage_label" in raw_exec:
+        exec_dict = raw_exec
+    else:
+        exec_dict = build_executive_state(report).model_dump(mode="json")
+
+    payload = {
+        "generated_at": report.generated_at.isoformat(),
+        "is_synthetic": False,
+        "pii_stripped": True,
+        "north_star_target_eur_month": exec_dict.get("north_star_target_eur_month", 500.0),
+        "stage_label": exec_dict.get("stage_label", "Estadio 1 (0 -> 500 €/mes)"),
+        "stage_progress_pct": exec_dict.get("stage_progress_pct", 0.0),
+        "lemon_squeezy": report.lemon_squeezy.model_dump(mode="json"),
+        "brevo": report.brevo.model_dump(mode="json"),
+        "traffic_seo": exec_dict.get("traffic_seo", {}),
+        "top_priorities": exec_dict.get("top_priorities", []),
+    }
+    assert_no_pii_in_payload(payload)
+    return payload
+
+
 def build_supabase_headers(key: str) -> Dict[str, str]:
     """
     Construye cabeceras REST compatibles tanto con claves modernas `sb_secret_...`
@@ -315,6 +368,7 @@ def sync_admin_snapshot(
 
     assets = build_enriched_admin_payload()
     omnichannel = build_omnichannel_intelligence_payload()
+    revenue_intel = build_revenue_intelligence_payload()
     now_iso = datetime.now(timezone.utc).isoformat()
     row_body = json.dumps(
         {
@@ -324,6 +378,7 @@ def sync_admin_snapshot(
                 "total_assets": len(assets),
                 "assets": assets,
                 "omnichannel_intelligence": omnichannel,
+                "revenue_intelligence": revenue_intel,
             },
             "updated_at": now_iso,
         },
