@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0b0f17">
+  <title>Agentic Radar v2.0 | Cockpit Ejecutivo IEC 62402 — Datalaria</title>
+  <meta name="description" content="Executive Risk Cockpit IEC 62402: simulador determinista de obsolescencia BOM, cálculo P&L en riesgo y calculadora LTB vs. Rediseño FFF.">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/svg+xml" href="./icon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <!-- 1-Row Focus Mode Header (<= 64px desktop, <= 56px mobile) -->
+  <header class="app-header">
+    <div class="header-brand">
+      <a id="linkBackCatalog" class="back-link" href="/es/apps/">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        <span data-i18n="backCatalog">Datalaria</span>
+      </a>
+      <span class="brand-divider" aria-hidden="true">/</span>
+      <div class="brand-title">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 12l5-5"/><circle cx="12" cy="12" r="3"/></svg>
+        <span>Agentic Radar</span>
+        <span class="brand-badge">v2.0</span>
+      </div>
+    </div>
+
+    <nav class="view-tabs" role="tablist" aria-label="Workspace views">
+      <button type="button" class="tab-btn" role="tab" data-view="cockpit" aria-selected="true" aria-controls="panel-cockpit" data-i18n="tabCockpit">Cockpit</button>
+      <button type="button" class="tab-btn" role="tab" data-view="simulator" aria-selected="false" aria-controls="panel-simulator" data-i18n="tabSimulator">Simulador BOM</button>
+      <button type="button" class="tab-btn" role="tab" data-view="ltb" aria-selected="false" aria-controls="panel-ltb" data-i18n="tabLtb">LTB vs. FFF</button>
+    </nav>
+
+    <div class="header-actions">
+      <span class="mode-pill" id="modePill" aria-live="polite">
+        <span class="mode-dot" aria-hidden="true"></span>
+        <span id="modeText" data-i18n="statusSandbox">SANDBOX 24/7</span>
+      </span>
+      <a id="linkTechSheet" class="btn btn-sm desktop-only" href="/es/apps/obs-management/" data-i18n="techSheet">Ficha</a>
+      <button type="button" id="btnLangToggle" class="btn btn-sm mono" aria-label="Switch language">EN</button>
+      <button type="button" id="btnThemeToggle" class="btn btn-sm" aria-label="Toggle theme">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41"/></svg>
+      </button>
+      <button type="button" id="btnOpenCsv" class="btn btn-primary btn-sm" data-i18n="importCsvBtn">Importar CSV</button>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <!-- 1-Click Preset Scenarios Bar -->
+    <section class="preset-bar" aria-label="Executive presets">
+      <div class="preset-group">
+        <span class="preset-label" data-i18n="presetLabel">Escenarios:</span>
+        <button type="button" class="preset-pill active" data-scenario="drone-capacitor" aria-pressed="true" data-i18n="presetDrone">1. Crisis Capacitor (DRONE-X1)</button>
+        <button type="button" class="preset-pill" data-scenario="mcu-multi-sku" aria-pressed="false" data-i18n="presetMcu">2. MCU Multi-SKU (STM32)</button>
+        <button type="button" class="preset-pill" data-scenario="full-line-halt" aria-pressed="false" data-i18n="presetHalt">3. Parada Total (3 SKUs)</button>
+      </div>
+      <div class="panel-tools">
+        <button type="button" id="btnOpenProKit" class="btn btn-accent btn-sm" data-i18n="proKitBtn">🚀 Kit IEC 62402 &amp; Modo Pro B2B</button>
+        <button type="button" id="btnExportCsv" class="btn btn-sm" data-i18n="exportCsv">CSV</button>
+        <button type="button" id="btnExportJson" class="btn btn-sm" data-i18n="exportJson">JSON</button>
+        <button type="button" id="btnExportPng" class="btn btn-sm" data-i18n="exportPng">PNG 1200×630</button>
+      </div>
+    </section>
+
+    <div id="statusBanner" class="banner-alert hidden" role="alert">
+      <span id="statusBannerText"></span>
+      <button type="button" id="btnDismissBanner" class="btn btn-sm">OK</button>
+    </div>
+
+    <!-- 4 Executive KPI Cards -->
+    <section class="kpi-grid" aria-label="Executive KPIs">
+      <article class="kpi-card">
+        <span class="kpi-label" data-i18n="kpiRiskLabel">Margen P&amp;L en Riesgo</span>
+        <strong class="kpi-value danger" id="kpiTotalRisk">0,00 €</strong>
+        <span class="kpi-hint" data-i18n="kpiRiskHint">Suma deduplicada de margen bruto expuesto</span>
+      </article>
+      <article class="kpi-card">
+        <span class="kpi-label" data-i18n="kpiAlertsLabel">Alertas EOL / PDN</span>
+        <strong class="kpi-value warning" id="kpiAlerts">0</strong>
+        <span class="kpi-hint" data-i18n="kpiAlertsHint">Componentes MPN en EOL u Obsoleto</span>
+      </article>
+      <article class="kpi-card">
+        <span class="kpi-label" data-i18n="kpiSkusLabel">SKUs Bloqueados</span>
+        <strong class="kpi-value" id="kpiSkus">0</strong>
+        <span class="kpi-hint" data-i18n="kpiSkusHint">Productos finales impactados en el BOM</span>
+      </article>
+      <article class="kpi-card">
+        <span class="kpi-label" data-i18n="kpiLtbLabel">Capital LTB Estimado</span>
+        <strong class="kpi-value accent" id="kpiLtbCap">0,00 €</strong>
+        <span class="kpi-hint" data-i18n="kpiLtbHint">Working Capital puente estimado</span>
+      </article>
+    </section>
+
+    <!-- VIEW 1: COCKPIT -->
+    <section id="panel-cockpit" class="cockpit-grid" role="tabpanel">
+      <div class="panel">
+        <div class="panel-head">
+          <h1 class="panel-title" data-i18n="tableTitle">Ensamblajes Impactados (Lista Negra IEC 62402)</h1>
+          <div class="panel-tools">
+            <button type="button" id="btnFormula" class="btn btn-sm" popovertarget="formulaPopover" data-i18n="formulaBtn">Fórmula IEC</button>
+          </div>
+        </div>
+
+        <div id="formulaPopover" popover="auto">
+          <strong data-i18n="formulaTitle">Índice de Criticidad IEC 62402 (0–100)</strong>
+          <p id="formulaBodyText" data-i18n="formulaBody" style="margin:0.4rem 0 0;color:var(--text-secondary);"></p>
+        </div>
+
+        <div id="tableRegion" class="table-wrapper" tabindex="0" role="region" aria-labelledby="riskTableCaption">
+          <table id="riskTable" class="data-table">
+            <caption id="riskTableCaption" data-i18n="tableTitle">Ensamblajes Impactados (Lista Negra IEC 62402)</caption>
+            <thead>
+              <tr>
+                <th scope="col" data-type="text"><button type="button" class="sort-btn" data-col="0"><span data-i18n="colSku">SKU Producto Final</span><span class="sort-ind" aria-hidden="true"></span></button></th>
+                <th scope="col" data-type="text"><button type="button" class="sort-btn" data-col="1"><span data-i18n="colMpn">MPN Detonante</span><span class="sort-ind" aria-hidden="true"></span></button></th>
+                <th scope="col" data-type="number" aria-sort="descending"><button type="button" class="sort-btn" data-col="2"><span data-i18n="colCrit">IEC 62402</span><span class="sort-ind" aria-hidden="true"></span></button></th>
+                <th scope="col" data-type="number"><button type="button" class="sort-btn" data-col="3"><span data-i18n="colMargin">Margen en Riesgo</span><span class="sort-ind" aria-hidden="true"></span></button></th>
+                <th scope="col" data-type="text"><button type="button" class="sort-btn" data-col="4"><span data-i18n="colStatus">Estado</span><span class="sort-ind" aria-hidden="true"></span></button></th>
+              </tr>
+            </thead>
+            <tbody id="skuTableBody"></tbody>
+          </table>
+          <div id="tableEmptyState" class="empty-state hidden">
+            <strong data-i18n="emptyTableTitle">Sin riesgos EOL activos</strong>
+            <p data-i18n="emptyTableDesc" style="margin:0;"></p>
+            <button type="button" id="btnRestoreSample" class="btn btn-primary" data-i18n="loadSampleBtn">Cargar escenario industrial (1 clic)</button>
+          </div>
+        </div>
+        <div id="tableStatus" class="sr-only" role="status"></div>
+      </div>
+
+      <!-- CrewAI Telemetry Console -->
+      <aside class="panel" aria-label="Agent telemetry console">
+        <div class="panel-head">
+          <h2 class="panel-title" data-i18n="consoleTitle">Telemetría Agente CrewAI</h2>
+          <button type="button" id="btnReplay" class="btn btn-sm" data-i18n="replayBtn">Replay</button>
+        </div>
+        <div class="panel-head" style="padding:0.45rem 0.85rem;">
+          <div class="filter-pills" id="logFilters">
+            <button type="button" class="filter-pill active" data-filter="ALL" data-i18n="filterAll">Todos</button>
+            <button type="button" class="filter-pill" data-filter="Webhook" data-i18n="filterWebhook">Webhook</button>
+            <button type="button" class="filter-pill" data-filter="CrewAI" data-i18n="filterCrewai">CrewAI</button>
+            <button type="button" class="filter-pill" data-filter="BOM/SQL" data-i18n="filterSql">BOM/SQL</button>
+            <button type="button" class="filter-pill" data-filter="Alert" data-i18n="filterAlert">Alerta</button>
+          </div>
+        </div>
+        <div id="telemetryConsole" class="console-body" aria-live="polite"></div>
+      </aside>
+    </section>
+
+    <!-- VIEW 2: SIMULATOR PDN & BOM SVG GRAPH -->
+    <section id="panel-simulator" class="sim-grid hidden" role="tabpanel">
+      <div class="panel">
+        <div class="panel-head">
+          <h2 class="panel-title" data-i18n="simTitle">Simulador de Choque PDN / EOL</h2>
+        </div>
+        <form id="simForm" class="form-stack" novalidate>
+          <p data-i18n="simDesc" style="margin:0;font-size:0.82rem;color:var(--text-secondary);"></p>
+          <div class="field">
+            <label for="simMpnSelect" data-i18n="simMpnLabel">Componente MPN objetivo</label>
+            <select id="simMpnSelect"></select>
+          </div>
+          <div class="field">
+            <label for="simStatusSelect" data-i18n="simStatusLabel">Estado Ciclo de Vida</label>
+            <select id="simStatusSelect">
+              <option value="EOL">EOL (End of Life)</option>
+              <option value="Obsolete">Obsolete</option>
+              <option value="NRND">NRND (Not Recommended)</option>
+              <option value="Active">Active</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="simPdnText" data-i18n="simPdnLabel">Texto PDN / Correo de fabricante</label>
+            <textarea id="simPdnText" rows="3"></textarea>
+          </div>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+            <button type="submit" class="btn btn-primary" data-i18n="simInjectBtn">Inyectar Alerta EOL</button>
+            <button type="button" id="btnSimReset" class="btn" data-i18n="simResetBtn">Restaurar Escenario</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2 class="panel-title" data-i18n="simGraphTitle">Grafo Relacional BOM: MPN → AML → Subensamblaje → SKU Final</h2>
+          <span id="simCycleBadge" class="status-badge status-warning hidden" data-i18n="simCycleWarn"></span>
+        </div>
+        <div id="bomGraphWrap" class="bom-canvas-wrap"></div>
+        <div class="node-inspector">
+          <div>
+            <span data-i18n="simNodeDetail" style="color:var(--text-secondary);">Nodo seleccionado:</span>
+            <strong id="selectedNodeInfo" class="mono" style="margin-left:0.35rem;">—</strong>
+            <span style="margin-left:0.75rem;color:var(--text-secondary);" data-i18n="simAltSources">Alternativas AML activas:</span>
+            <strong id="selectedNodeAlts" class="mono" style="margin-left:0.25rem;">0</strong>
+          </div>
+          <button type="button" id="btnJumpToLtb" class="btn btn-primary btn-sm" data-i18n="simEvalInLtb">Analizar en Calculadora LTB →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 3: CALCULATOR LTB vs. FFF -->
+    <section id="panel-ltb" class="ltb-grid hidden" role="tabpanel">
+      <div class="panel">
+        <div class="panel-head">
+          <h2 class="panel-title" data-i18n="ltbTitle">Calculadora Financiera: LTB vs. Rediseño FFF</h2>
+        </div>
+        <p data-i18n="ltbDesc" style="margin:0.75rem 1rem 0;font-size:0.82rem;color:var(--text-secondary);"></p>
+        <form id="ltbForm" class="inputs-grid" novalidate>
+          <div class="field">
+            <label for="inDemand" data-i18n="lblDemand">Demanda mensual (uds/mes)</label>
+            <input id="inDemand" name="monthly_demand" type="number" min="1" step="any" required aria-describedby="errDemand">
+            <span id="errDemand" class="field-err"></span>
+          </div>
+          <div class="field">
+            <label for="inCv" data-i18n="lblCv">Volatilidad demanda (CV 0–1)</label>
+            <input id="inCv" name="demand_cv" type="number" min="0" max="1" step="any" required aria-describedby="errCv">
+            <span id="errCv" class="field-err"></span>
+          </div>
+          <div class="field">
+            <label for="inRedesign" data-i18n="lblRedesignMonths">Plazo rediseño FFF (meses)</label>
+            <input id="inRedesign" name="redesign_months" type="number" min="0.5" max="60" step="any" required aria-describedby="errRedesign">
+            <span id="errRedesign" class="field-err"></span>
+          </div>
+          <div class="field">
+            <label for="inLead" data-i18n="lblLeadTime">Lead Time proveedor (meses)</label>
+            <input id="inLead" name="lead_time_months" type="number" min="0" max="24" step="any" required aria-describedby="errLead">
+            <span id="errLead" class="field-err"></span>
+          </div>
+          <div class="field">
+            <label for="inStock" data-i18n="lblStock">Stock actual disponible (uds)</label>
+            <input id="inStock" name="current_stock_units" type="number" min="0" step="any" required aria-describedby="errStock">
+            <span id="errStock" class="field-err"></span>
+          </div>
+          <div class="field">
+            <label for="inPriceLtb" data-i18n="lblPriceLtb">Precio unitario LTB (€)</label>
+            <input id="inPriceLtb" name="ltb_unit_price_eur" type="number" min="0.01" step="any" required aria-describedby="errPriceLtb">
+            <span id="errPriceLtb" class="field-err"></span>
+          </div>
+          <div class="field">
+            <label for="inPriceFff" data-i18n="lblPriceFff">Precio unitario sustituto FFF (€)</label>
+            <input id="inPriceFff" name="fff_unit_price_eur" type="number" min="0.01" step="any" required aria-describedby="errPriceFff">
+            <span id="errPriceFff" class="field-err"></span>
+          </div>
+          <div class="field">
+            <label for="inNre" data-i18n="lblNre">Coste ingeniería NRE rediseño (€)</label>
+            <input id="inNre" name="redesign_nre_eur" type="number" min="0" step="any" required aria-describedby="errNre">
+            <span id="errNre" class="field-err"></span>
+          </div>
+          <div class="field">
+            <label for="inWacc" data-i18n="lblWacc">WACC + Holding/Dead Stock anual (%)</label>
+            <input id="inWacc" name="wacc_pct" type="number" min="0" max="100" step="any" required aria-describedby="errWacc">
+            <span id="errWacc" class="field-err"></span>
+          </div>
+          <div class="field">
+            <label for="inMargin" data-i18n="lblMonthlyMargin">Margen mensual en riesgo (€/mes)</label>
+            <input id="inMargin" name="monthly_margin_at_risk_eur" type="number" min="0" step="any" required aria-describedby="errMargin">
+            <span id="errMargin" class="field-err"></span>
+          </div>
+          <div class="field">
+            <label for="inZ" data-i18n="lblServiceZ">Nivel de servicio objetivo (Z APICS)</label>
+            <select id="inZ" name="service_level_z">
+              <option value="1.645">95% (Z = 1.645)</option>
+              <option value="2.054" selected>98% (Z = 2.054)</option>
+              <option value="2.326">99% (Z = 2.326)</option>
+            </select>
+          </div>
+        </form>
+      </div>
+
+      <div class="panel">
+        <div class="verdict-box" aria-live="polite">
+          <div class="verdict-card">
+            <span class="kpi-label" data-i18n="resVerdictLabel">Veredicto Determinista</span>
+            <div class="verdict-title" id="ltbVerdictTitle">—</div>
+            <p style="margin:0.35rem 0 0;font-size:0.84rem;color:var(--text-secondary);">
+              <span data-i18n="resSavingsLabel">Ahorro neto estimado:</span>
+              <strong id="ltbSavingsVal" class="mono" style="color:var(--status-success);">0,00 €</strong>
+            </p>
+            <p id="ltbGapNote" style="margin:0.25rem 0 0;font-size:0.78rem;color:var(--status-warning);"></p>
+          </div>
+
+          <div class="metrics-mini">
+            <div class="mini-card">
+              <span class="kpi-label" data-i18n="resLtbCost">Coste Total LTB</span>
+              <div class="mini-val" id="resLtbCostVal">0,00 €</div>
+            </div>
+            <div class="mini-card">
+              <span class="kpi-label" data-i18n="resFffCost">Coste Total Rediseño FFF</span>
+              <div class="mini-val" id="resFffCostVal">0,00 €</div>
+            </div>
+            <div class="mini-card">
+              <span class="kpi-label" data-i18n="resWorkingCap">Capital Circulante LTB</span>
+              <div class="mini-val" id="resWcVal">0,00 €</div>
+            </div>
+            <div class="mini-card">
+              <span class="kpi-label" data-i18n="resSafetyStock">Stock Seguridad Puente (SS)</span>
+              <div class="mini-val" id="resSsVal">0</div>
+            </div>
+          </div>
+
+          <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;font-size:0.82rem;color:var(--text-secondary);">
+            <span><span data-i18n="resOrderQty">Pedido LTB neto:</span> <strong id="resOrderVal" class="mono" style="color:var(--text-primary);">0</strong></span>
+            <span><span data-i18n="resBreakeven">Break-Even FFF:</span> <strong id="resBeVal" class="mono" style="color:var(--text-primary);">—</strong></span>
+          </div>
+
+          <div class="plg-card" style="border-color:color-mix(in srgb, var(--accent-secondary) 40%, var(--border-subtle));">
+            <span class="plg-badge" data-i18n="plgStockBadge">Puente LTB &amp; Stock</span>
+            <strong data-i18n="plgStockTitle">Calculadora Stock de Seguridad &amp; ROP</strong>
+            <p data-i18n="plgStockDesc"></p>
+            <a class="btn btn-accent btn-sm lemonsqueezy-button" data-cta="pack-stock" data-source="ltb-verdict" href="https://datalaria.lemonsqueezy.com/checkout/buy/513e5cad-9f9f-4b53-a435-b511a846d79e?embed=1" target="_blank" rel="noopener noreferrer" data-i18n="plgStockCta">Obtener Pack (7 €) ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contextual PLG Monetization Bridge (Constitución Art. 3 + INV-OBS-8) -->
+    <footer class="plg-section" aria-label="Quantitative Supply Chain Toolkits">
+      <div class="plg-header">
+        <div>
+          <h2 style="font-size:1rem;" data-i18n="plgTitle">Conecta el riesgo de obsolescencia con tus modelos cuantitativos de Supply Chain</h2>
+          <p style="margin:0.2rem 0 0;font-size:0.82rem;color:var(--text-secondary);" data-i18n="plgSub"></p>
+        </div>
+        <div class="plg-links">
+          <a id="linkSeries" href="/es/posts/obs_parte1_intro/" data-i18n="plgSeriesLink">Leer serie técnica (7 posts) →</a>
+          <a id="linkCatalog" href="/es/recursos/" data-i18n="plgCatalogLink">Ver catálogo completo →</a>
+        </div>
+      </div>
+
+      <div class="plg-cards">
+        <article class="plg-card">
+          <span class="plg-badge" data-i18n="plgStockBadge">Puente LTB &amp; Stock</span>
+          <h3 style="font-size:0.92rem;" data-i18n="plgStockTitle">Calculadora Stock de Seguridad &amp; ROP</h3>
+          <p data-i18n="plgStockDesc"></p>
+          <a class="btn btn-primary btn-sm lemonsqueezy-button" data-cta="pack-stock" data-source="footer-plg" href="https://datalaria.lemonsqueezy.com/checkout/buy/513e5cad-9f9f-4b53-a435-b511a846d79e?embed=1" target="_blank" rel="noopener noreferrer" data-i18n="plgStockCta">Obtener Pack (7 €) ↗</a>
+        </article>
+        <article class="plg-card">
+          <span class="plg-badge" data-i18n="plgAmfeBadge">Riesgo ISO 31000</span>
+          <h3 style="font-size:0.92rem;" data-i18n="plgAmfeTitle">Matriz de Riesgos &amp; AMFE / FMEA</h3>
+          <p data-i18n="plgAmfeDesc"></p>
+          <a class="btn btn-sm lemonsqueezy-button" data-cta="pack-amfe" data-source="footer-plg" href="https://datalaria.lemonsqueezy.com/checkout/buy/6eea6aa0-fe9f-440b-8bb9-6f29b303e57a?embed=1" target="_blank" rel="noopener noreferrer" data-i18n="plgAmfeCta">Obtener Pack (7 €) ↗</a>
+        </article>
+        <article class="plg-card">
+          <span class="plg-badge" data-i18n="plgSuiteBadge">Ahorro 35 % · 5 Kits</span>
+          <h3 style="font-size:0.92rem;" data-i18n="plgSuiteTitle">Pack Suite 3: Control Operativo</h3>
+          <p data-i18n="plgSuiteDesc"></p>
+          <a class="btn btn-accent btn-sm lemonsqueezy-button" data-cta="suite-03" data-source="footer-plg" href="https://datalaria.lemonsqueezy.com/checkout/buy/ee578b8e-29d6-4361-ba19-4b0b5abfd89a?embed=1" target="_blank" rel="noopener noreferrer" data-i18n="plgSuiteCta">Obtener Suite 3 (22 €) ↗</a>
+        </article>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Mobile Bottom Navigation Bar (<= 768px) -->
+  <nav class="mobile-nav" role="tablist" aria-label="Mobile workspace views">
+    <button type="button" class="tab-btn" role="tab" data-view="cockpit" aria-selected="true" data-i18n="tabCockpit">Cockpit</button>
+    <button type="button" class="tab-btn" role="tab" data-view="simulator" aria-selected="false" data-i18n="tabSimulator">Simulador BOM</button>
+    <button type="button" class="tab-btn" role="tab" data-view="ltb" aria-selected="false" data-i18n="tabLtb">LTB vs. FFF</button>
+  </nav>
+
+  <!-- Native Modal Dialog: 100% Local CSV Importer (modern-web-guidance: dialog) -->
+  <dialog id="csvDialog" closedby="any" aria-labelledby="csvDialogTitle">
+    <div class="dialog-head">
+      <h2 id="csvDialogTitle" style="font-size:1rem;" data-i18n="csvTitle">Importar BOM CSV (100 % Privado en Navegador)</h2>
+      <form method="dialog">
+        <button type="submit" value="cancel" class="btn btn-sm" aria-label="Close">✕</button>
+      </form>
+    </div>
+    <div class="dialog-body">
+      <p style="margin:0;color:var(--status-success);font-size:0.82rem;font-weight:600;" data-i18n="csvPrivacyNote"></p>
+      <p style="margin:0;color:var(--text-secondary);font-size:0.8rem;" data-i18n="csvDropHint"></p>
+      <div class="field">
+        <label for="csvFileInput" data-i18n="csvFileLabel">Elegir archivo CSV local</label>
+        <input id="csvFileInput" type="file" accept=".csv,text/csv" autofocus>
+      </div>
+      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+        <button type="button" id="btnCsvSample" class="btn btn-primary" data-i18n="csvSampleBtn">Probar con BOM de ejemplo (1 clic)</button>
+        <button type="button" id="btnCsvTemplate" class="btn" data-i18n="csvDownloadTpl">Descargar plantilla CSV</button>
+      </div>
+      <div id="csvFeedback" role="status" aria-live="polite" style="font-size:0.82rem;min-height:1.2rem;"></div>
+    </div>
+    <div class="dialog-foot">
+      <form method="dialog">
+        <button type="submit" value="close" class="btn" data-i18n="csvCloseBtn">Cerrar</button>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- Native Modal Dialog: Kit IEC 62402 & Modo Pro B2B (Brevo Waitlist, zero mailto:, INV-HELIX-WL-4) -->
+  <dialog id="proKitDialog" closedby="any" aria-labelledby="proKitDialogTitle">
+    <div class="dialog-head">
+      <h2 id="proKitDialogTitle" style="font-size:1rem;" data-i18n="proKitTitle">Kit B2B IEC 62402 Obsolescencia, Riesgo BOM &amp; LTB (19 € · 09 Dic)</h2>
+      <form method="dialog">
+        <button type="submit" value="cancel" class="btn btn-sm" aria-label="Close">✕</button>
+      </form>
+    </div>
+    <div class="dialog-body">
+      <span class="plg-badge" style="align-self:flex-start;" data-i18n="proKitBadge">Lanzamiento Miércoles 9 Dic · Early-Bird 19 € (PVP 39 €)</span>
+      <p style="margin:0;color:var(--text-secondary);font-size:0.84rem;line-height:1.45;" data-i18n="proKitIntro"></p>
+      <ul style="margin:0;padding-left:1.15rem;display:grid;gap:0.4rem;font-size:0.82rem;color:var(--text-primary);line-height:1.4;">
+        <li data-i18n="proKitDel1"></li>
+        <li data-i18n="proKitDel2"></li>
+        <li data-i18n="proKitDel3"></li>
+      </ul>
+      <form id="proKitForm" style="display:grid;gap:0.65rem;margin-top:0.35rem;">
+        <div class="field">
+          <label for="proKitName" data-i18n="proKitNameLabel">Nombre completo</label>
+          <input id="proKitName" name="name" type="text" required autocomplete="name" placeholder="Ana García">
+        </div>
+        <div class="field">
+          <label for="proKitEmail" data-i18n="proKitEmailLabel">Correo profesional</label>
+          <input id="proKitEmail" name="email" type="email" required autocomplete="email" placeholder="nombre@empresa.com">
+        </div>
+        <button type="submit" id="proKitSubmit" class="btn btn-primary" data-i18n="proKitSubmitBtn">Reservar acceso prioritario Early-Bird (19 €)</button>
+        <div id="proKitFeedback" role="status" aria-live="polite" style="font-size:0.82rem;min-height:1.2rem;"></div>
+      </form>
+    </div>
+    <div class="dialog-foot">
+      <form method="dialog">
+        <button type="submit" value="close" class="btn" data-i18n="csvCloseBtn">Cerrar</button>
+      </form>
+    </div>
+  </dialog>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

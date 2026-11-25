@@ -1,17 +1,15 @@
-# Obsolescence Management - Dependencies
-# ======================================
+# Agentic Radar (obs-management v2.0.0) — Backend Dependencies
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+pydantic>=2.0.0
+httpx>=0.27.0
+pytest>=8.0.0
 
-# Core Data Processing
+# Core Data Processing & Database (Schema obs_radar)
 pandas>=2.0.0
 numpy>=1.24.0
-
-# Database (Supabase/PostgreSQL)
 supabase>=2.0.0
-
-# Environment Management
 python-dotenv>=1.0.0
 
-# Future: AI Agents (Block 3)
-langchain>=0.1.0
-langchain-google-genai>=0.0.9
+# Cognitive Semantic Extraction (El Cerebro)
 crewai>=0.11.0

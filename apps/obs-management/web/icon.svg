@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" rx="96" fill="#0b0f17" />
+  <circle cx="256" cy="256" r="236" fill="#111827" />
+  
+  <!-- Anillos concéntricos -->
+  <circle cx="256" cy="256" r="192" fill="none" stroke="#1e293b" stroke-width="6" />
+  <circle cx="256" cy="256" r="128" fill="none" stroke="#334155" stroke-width="4" />
+  <circle cx="256" cy="256" r="64" fill="none" stroke="#0ea5e9" stroke-width="4" opacity="0.8" />
+  
+  <!-- Retícula de ejes -->
+  <line x1="64" y1="256" x2="448" y2="256" stroke="#1e293b" stroke-width="3" />
+  <line x1="256" y1="64" x2="256" y2="448" stroke="#1e293b" stroke-width="3" />
+  
+  <!-- Haz de barrido degradado -->
+  <defs>
+    <linearGradient id="sweepGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.1" />
+      <stop offset="70%" stop-color="#0ea5e9" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.85" />
+    </linearGradient>
+  </defs>
+  <path d="M 256 256 L 391 120 A 192 192 0 0 0 256 64 Z" fill="url(#sweepGrad)" />
+  <line x1="256" y1="256" x2="391" y2="120" stroke="#f8fafc" stroke-width="5" stroke-linecap="round" />
+  
+  <!-- Blips de objetivos -->
+  <!-- Blip 1: Alerta Crítica (Ámbar) -->
+  <circle cx="365" cy="190" r="14" fill="#f59e0b" />
+  <circle cx="365" cy="190" r="24" fill="none" stroke="#f59e0b" stroke-width="3" opacity="0.75" />
+  
+  <!-- Blip 2: Resuelto / Seguro (Esmeralda) -->
+  <circle cx="165" cy="345" r="10" fill="#10b981" />
+  
+  <!-- Transceptor central -->
+  <circle cx="256" cy="256" r="18" fill="#0ea5e9" />
+  <circle cx="256" cy="256" r="8" fill="#ffffff" />
+</svg>

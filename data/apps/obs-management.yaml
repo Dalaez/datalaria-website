@@ -1,13 +1,14 @@
 slug: obs-management
 order: 20
 tier: b2b
+brand_vertical: executive_b2b
 status: live
 icon: "📡"
 cover: cover.png
 app_url: /apps/obs-management/
-demo_url: /apps/obs-management/
+demo_url: /apps/obs-management/?scenario=ltb-crisis
 source_spec: specs/apps/obs-management/spec.md
-current_version: v1.0.1
+current_version: v2.0.0
 launch_date: "2026-05-17"
 
 title:
@@ -74,7 +75,7 @@ design:
 
 tech:
   - layer: frontend
-    items: ["Vanilla JS", "Tailwind CSS", "HTML5 Cyber Terminal", "Responsive Viewports"]
+    items: ["Vanilla JS", "Zero-CDN CSS", "HTML5 Cyber Terminal", "Responsive Viewports"]
   - layer: backend
     items: ["Python 3.11", "FastAPI", "CrewAI", "Pydantic v2", "Pandas", "Uvicorn"]
   - layer: data
@@ -111,13 +112,77 @@ posts:
       es: obs_parte7_dashboard
       en: obs_part7_executive_dashboard
     part: 7
+  - slug:
+      es: obs_parte8_simulador_ltb_v2
+      en: obs_part8_ltb_simulator_v2
+    part: 8
+    date: "2026-12-09"
+    cover: "content/es/posts/obs_parte8_simulador_ltb_v2/cover.png"
+    title:
+      es: "Radar IEC 62402 (Parte 8): Grafo BOM y Decisión Last Time Buy vs Rediseño"
+      en: "IEC 62402 Radar (Part 8): BOM Graph & Last Time Buy vs Redesign Model"
+    summary:
+      es: "Executive Risk Cockpit Zero-CDN v2.0, explosión de grafos BOM sin ciclos, evaluación financiera CAPEX LTB vs. Rediseño FFF y sinergia directa con Stock de Seguridad (pack-stock)."
+      en: "Zero-CDN Executive Risk Cockpit v2.0, cycle-safe BOM DAG engine, deterministic CAPEX LTB vs. FFF redesign finance, and direct handoff with recurring Safety Stock ROP."
 
 related_products:
-  - name: "Executive Decision Pack: S&OP & Supply Chain Risk"
-    description: "Modelos cuantitativos ejecutivos en Excel y plantillas de mitigación de obsolescencia bajo norma IEC 62402."
-    checkout_url: "/es/recursos/"
+  - name:
+      es: "IEC 62402 Obsolescencia, Riesgo BOM & LTB Decision Kit (Estreno 9 Dic · 19 €)"
+      en: "IEC 62402 Obsolescence, BOM Risk & LTB Decision Kit (Launching Dec 9 · €19)"
+    description:
+      es: "Kit B2B Dual (ES/EN) para crisis PCN/PDN/EOL: Excel de 5 hojas sin VBA (BOM/AML, Criticidad IEC 62402, Simulador LTB vs. FFF + SS_LTB tras congelar ROP), Playbook PDF de 5 págs. y Starter Blueprint SQL RLS/Python."
+      en: "Dual B2B Kit (ES/EN) for PCN/PDN/EOL crises: Zero-VBA 5-sheet Excel (BOM/AML, IEC 62402 Criticality, LTB vs. FFF + SS_LTB after freezing ROP), 5-page PDF Playbook & PostgreSQL RLS/Python Starter Blueprint."
+    checkout_url:
+      es: "/apps/obs-management/?lang=es"
+      en: "/apps/obs-management/?lang=en"
+  - name:
+      es: "Pack Stock de Seguridad & ROP (APICS / ASCM)"
+      en: "Safety Stock & Reorder Point Pack (APICS / ASCM)"
+    description:
+      es: "Motor estocástico en Excel (35 SKUs, convolución SS₃, Wilson EOQ, gráfico Diente de Sierra y simulador de Working Capital), Guía PDF de 5 páginas y presentación ejecutiva 16:9."
+      en: "Stochastic Excel engine (35 SKUs, SS₃ convolution, Wilson EOQ, Sawtooth simulation & Working Capital optimizer), 5-page PDF Guide and executive 16:9 deck."
+    checkout_url:
+      es: "https://datalaria.lemonsqueezy.com/checkout/buy/513e5cad-9f9f-4b53-a435-b511a846d79e?embed=1"
+      en: "https://datalaria.lemonsqueezy.com/checkout/buy/513e5cad-9f9f-4b53-a435-b511a846d79e?embed=1"
+
+  - name:
+      es: "Pack Matriz de Riesgos & AMFE / FMEA (AIAG-VDA)"
+      en: "Risk Matrix & FMEA Decision Pack (AIAG-VDA)"
+    description:
+      es: "Matriz cuantitativa de modos de fallo, priorización de severidad/ocurrencia/detección (NPR), análisis coste-efectividad de mitigación y cuadro de mando directivo."
+      en: "Quantitative failure mode matrix, severity/occurrence/detection ranking (RPN), cost-effectiveness ratio (CER) and executive risk cockpit."
+    checkout_url:
+      es: "https://datalaria.lemonsqueezy.com/checkout/buy/6eea6aa0-fe9f-440b-8bb9-6f29b303e57a?embed=1"
+      en: "https://datalaria.lemonsqueezy.com/checkout/buy/6eea6aa0-fe9f-440b-8bb9-6f29b303e57a?embed=1"
+
+  - name:
+      es: "Suite 03: Control Operativo & Gobernanza PMBOK"
+      en: "Suite 03: Operational Control & PMBOK Governance"
+    description:
+      es: "Framework cuantitativo integral de 5 pilares: RACI y balance de carga, AMFE/FMEA, Estimación PERT 3 puntos, Cuadro de Mando EVM y Stock de Seguridad/ROP."
+      en: "Comprehensive 5-pillar quantitative framework: RACI & workload balancing, FMEA, 3-point PERT estimation, EVM Dashboard and Safety Stock/ROP."
+    checkout_url:
+      es: "https://datalaria.lemonsqueezy.com/checkout/buy/ee578b8e-29d6-4361-ba19-4b0b5abfd89a?embed=1"
+      en: "https://datalaria.lemonsqueezy.com/checkout/buy/ee578b8e-29d6-4361-ba19-4b0b5abfd89a?embed=1"
 
 releases:
+  - version: v2.0.0
+    date: "2026-11-22"
+    state: released
+    type: release
+    title:
+      es: "Executive Risk Cockpit Zero-CDN, Motor BOM/LTB determinista y PWA Offline"
+      en: "Executive Risk Cockpit Zero-CDN, Deterministic BOM/LTB Engine and Offline PWA"
+    changes:
+      - es: "Frontend táctico Zero-CDN (< 45 KB) erradicando cdn.tailwindcss.com con paridad bilingüe 100% ES/EN."
+        en: "Tactical Zero-CDN frontend (< 45 KB) eradicating cdn.tailwindcss.com with 100% bilingual ES/EN parity."
+      - es: "Simulador de avisos PDN con grafo SVG del árbol BOM y calculadora matemática LTB vs. Rediseño FFF."
+        en: "PDN notice simulator with SVG BOM tree visualization and deterministic LTB vs. FFF redesign calculator."
+      - es: "Aislamiento multi-esquema obs_radar en PostgreSQL con RLS y autenticación HMAC en webhooks."
+        en: "Multi-schema PostgreSQL obs_radar isolation with RLS and HMAC signature verification on webhooks."
+      - es: "PWA instalable offline con Network-First y enlaces comerciales directos (?embed=1) hacia Suite 3."
+        en: "Installable offline PWA with Network-First shell and direct commercial links (?embed=1) to Suite 3."
+
   - version: v1.0.1
     date: "2026-10-24"
     state: released

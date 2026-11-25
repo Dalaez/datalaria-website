@@ -1,0 +1,86 @@
+en:
+  x:
+    hook: "One discontinued $2 capacitor can freeze $125k in BOM gross margin. Once a vendor sends a PDN/EOL alert, recurring Reorder Points (ROP) break down. Here is how Agentic Radar v2.0 operationalizes IEC 62402 & LTB vs. Redesign math:"
+    thread:
+      - "1/5 The costliest supply chain mistake in hardware manufacturing: evaluating semiconductor End-of-Life (PDN/EOL) alerts with recurring inventory replenishment spreadsheets (SS / ROP / EOQ)."
+      - "2/5 The two-stage lifecycle relay rule: pack-stock (APICS ROP) governs Maturity while vendors stay active. The moment a PCN/PDN arrives, FREEZE automated ROP triggers and pivot to IEC 62402 (pack-obs)."
+      - "3/5 Inside Agentic Radar v2.0 (< 34 KB gzip, Zero-CDN, 100% browser-local CSV parser), upward BOM DFS traversal walks MPN -> AML -> Sub-Assembly -> SKU with cycle guards (visited) and strict P&L deduplication."
+      - "4/5 CFO CAPEX model: compare one-shot Last Time Buy (Q_LTB + SS_LTB bridge buffer + WACC holding) against Form-Fit-Function Redesign (NRE + recertification + break-even horizon T*) at < €0.01 Python/JS parity."
+      - "5/5 Test the interactive Cockpit v2.0 live and explore the IEC 62402 B2B Decision Kit (Launching Dec 9 · €19): https://www.datalaria.com/en/posts/obs_part8_ltb_simulator_v2/"
+    hashtags:
+      - "IEC62402"
+      - "SupplyChain"
+      - "Obsolescence"
+      - "LastTimeBuy"
+      - "Engineering"
+    web_intent_url: "https://x.com/intent/tweet?text=One+discontinued+%242+capacitor+can+freeze+%24125k+in+BOM+gross+margin.+Once+a+vendor+sends+a+PDN%2FEOL+alert%2C+recurring+Reorder+Points+%28ROP%29+break+down.+Here+is+how+Agentic+Radar+v2.0+operationalizes+IEC+62402+%26+LTB+vs.+Redesign+math%3A&url=https%3A%2F%2Fwww.datalaria.com%2Fen%2Fposts%2Fobs_part8_ltb_simulator_v2%2F&hashtags=IEC62402%2CSupplyChain%2CObsolescence%2CLastTimeBuy%2CEngineering"
+  linkedin:
+    text: |-
+      A single EUR 1.85 ceramic capacitor can stall assembly lines holding EUR 145/unit gross margin and put over EUR 174,000 in annual EBITDA at risk.
+
+      The instant a silicon vendor sends a PDN or End-of-Life (EOL) notice, the boardroom splits in two: Operations pushes for an emergency 3-year bridge buy before cutoff, while Finance balks at an unbudgeted CAPEX lockup draining WACC.
+
+      The root cause is almost always methodological: running continuous recurring inventory formulas (ROP / EOQ) after the vendor has already announced permanent line shutdown.
+
+      This Wednesday, December 9, we are publishing Part 8 of our Obsolescence Engineering series and launching the new Agentic Radar v2.0 Executive Risk Cockpit alongside our IEC 62402 B2B Decision Kit (pack-obs):
+
+      1️⃣ Zero-Overlap Lifecycle Relay: pack-stock (€7 · APICS) governs recurring Maturity replenishment with active suppliers; the moment PCN/PDN/EOL hits, freeze recurring ROP and switch to pack-obs (€19 · IEC 62402).
+
+      2️⃣ Cycle-Safe Multilevel BOM Graph: upward DFS walking MPN -> AML -> Sub-Assembly -> End SKU with strict P&L margin deduplication inside a < 34 KB gzipped Zero-CDN shell.
+
+      3️⃣ Deterministic LTB vs. FFF Redesign Finance: exact SS_LTB bridge buffer, WACC opportunity cost, NRE break-even horizon, and 100% private in-browser CSV parsing backed by PostgreSQL obs_radar RLS.
+
+      Try the live Zero-CDN Cockpit free right now or explore the full technical breakdown and 5-sheet VBA-free Excel + Playbook + Blueprint bundle.
+
+      In your hardware or supply chain team, how do you settle the tug-of-war between multi-year Last Time Buys and PCB redesigns?
+
+      🔗 Full engineering guide & live simulator: https://www.datalaria.com/en/posts/obs_part8_ltb_simulator_v2/
+    hashtags:
+      - "IEC62402"
+      - "SupplyChain"
+      - "ObsolescenceManagement"
+      - "Operations"
+      - "HardwareEngineering"
+  newsletter:
+    archetype: "invisible_error"
+    subject: "Why your Reorder Point (ROP) formula breaks when a supplier issues an End-of-Life notice"
+    preheader: "Agentic Radar v2.0 + IEC 62402 Kit (€19): multilevel BOM graph, LTB vs. FFF math, and Safety Stock synergy."
+    hero_image: "https://www.datalaria.com/en/posts/obs_part8_ltb_simulator_v2/cover.png"
+    hero_link: "https://www.datalaria.com/en/posts/obs_part8_ltb_simulator_v2/?utm_source=newsletter&utm_medium=email&utm_campaign=obs-v2-launch"
+    hook_paragraphs:
+      - "Two weeks ago we covered how to size statistical Safety Stock (SS₃) and Reorder Points (ROP) to unlock working capital on active parts. Yet the moment a silicon vendor sends a PDN or EOL notice, recurring reorder formulas break down because no future replenishment exists."
+      - "Today we launch the major Agentic Radar v2.0 upgrade (Zero-CDN, Offline PWA, and 100% browser-local CSV privacy) paired with our new IEC 62402 Obsolescence, BOM Risk & LTB Decision Kit built specifically for Stage 2 lifecycle crises."
+    insights_60s:
+      - "Clear separation vs. pack-stock: pack-stock (€7) manages continuous APICS replenishment while suppliers stay active; at EOL cutoff, freeze ROP and activate pack-obs (€19) to evaluate Last Time Buy vs. Redesign."
+      - "LTB bridge buffer math: cumulative demand risk across remaining life H_months scales as SS_LTB = ceil(Z · σ_m · √H_months), factoring WACC and warehouse decay against FFF Redesign NRE."
+      - "Zero-leak BOM privacy + RLS: inspect sensitive corporate CSVs purely inside browser RAM with zero uploads, or deploy the PostgreSQL obs_radar RLS schema and FastAPI bom_engine."
+    primary_cta_label: "Read Part 8 & Test Live Simulator v2.0"
+    primary_cta_url: "https://www.datalaria.com/en/posts/obs_part8_ltb_simulator_v2/?utm_source=newsletter&utm_medium=email&utm_campaign=obs-v2-launch"
+    secondary_cta_label: "Open Free Web App (Zero-CDN)"
+    secondary_cta_url: "https://www.datalaria.com/en/apps/obs-management/?utm_source=newsletter&utm_medium=email&utm_campaign=obs-v2-launch"
+    ps_referral_text: "P.S. Know a VP of Supply Chain, Component Engineer, or CFO negotiating Last Time Buy budgets? Forward this issue their way."
+  devto:
+    enabled: true
+    title: "IEC 62402 Obsolescence Radar (Part 8): Multilevel BOM Graph & Last Time Buy (LTB) vs. Redesign Calculator"
+    description: "Operationalizing IEC 62402 with Agentic Radar v2.0: cycle-safe BOM DAG traversal, deterministic LTB vs. FFF CAPEX modeling, and PostgreSQL obs_radar RLS."
+    tags:
+      - "architecture"
+      - "supplychain"
+      - "postgres"
+      - "fastapi"
+    canonical_url: "https://www.datalaria.com/en/posts/obs_part8_ltb_simulator_v2/"
+    cover_image: "https://www.datalaria.com/en/posts/obs_part8_ltb_simulator_v2/cover.png"
+    diagram_image: "https://www.datalaria.com/en/posts/obs_part8_ltb_simulator_v2/obs_lifecycle_relay.png"
+    published: true
+  coderlegion:
+    enabled: true
+    title: "IEC 62402 Obsolescence Radar: Cycle-Safe BOM Graph & Deterministic LTB vs. Redesign Engine"
+    description: "Zero-CDN (< 34 KB gzip) frontend + FastAPI/PostgreSQL RLS architecture for mitigating PCN/PDN/EOL component crises."
+    tags:
+      - "architecture"
+      - "postgres"
+      - "fastapi"
+      - "javascript"
+    canonical_url: "https://www.datalaria.com/en/posts/obs_part8_ltb_simulator_v2/"
+    cover_image: "https://www.datalaria.com/en/posts/obs_part8_ltb_simulator_v2/cover.png"
+    published: true

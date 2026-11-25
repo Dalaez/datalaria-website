@@ -97,3 +97,8 @@ Physical logistics obsolescence fundamentally resigns its classification as an u
 
 ### 📡 Live Telemetry & Application Specifications
 {{< app-ref slug="obs-management" >}}
+
+---
+
+> [!NOTE]
+> **Major Release `v2.0.0` (Zero-CDN Executive Risk Cockpit & BOM/LTB Engine):** This application has now evolved to **`v2.0.0`** with zero external CDNs (`< 34 KB` gzip), featuring a live SVG PDN/BOM shock simulator, a *Last Time Buy (LTB) vs. FFF Redesign* financial calculator, and a 100% browser-local CSV importer. Test it live at the [Agentic Radar v2.0 app page](/en/apps/obs-management/). **Part 8** of this engineering series (*Multilevel BOM Graph, LTB vs. Redesign Decisions, and Safety Stock Synergy*) alongside the new **IEC 62402 B2B Decision Kit (`pack-obs`)** launches on **Wednesday, December 9, 2026**.

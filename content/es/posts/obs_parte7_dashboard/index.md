@@ -97,3 +97,8 @@ La obsolescencia material ya no es catalogable como un evento Cisne Negro inmane
 
 ### 📡 Telemetría en Vivo y Ficha de la Aplicación
 {{< app-ref slug="obs-management" >}}
+
+---
+
+> [!NOTE]
+> **Actualización Mayor `v2.0.0` (Executive Risk Cockpit Zero-CDN & Motor BOM/LTB):** Esta aplicación ya ha evolucionado a la versión **`v2.0.0`** sin CDNs externos (`< 34 KB` gzip), con simulador en vivo de avisos PDN/BOM en SVG, calculadora financiera *Last Time Buy (LTB) vs. Rediseño FFF* e importador CSV 100 % privado en navegador. Puedes probarla ahora en la [ficha y demo interactiva de Agentic Radar v2.0](/es/apps/obs-management/). La **Parte 8** de esta serie editorial (*Grafo BOM Multinivel, Decisión LTB vs. Rediseño y Complemento con Stock de Seguridad APICS*) junto al nuevo **Kit B2B IEC 62402 (`pack-obs`)** se estrenará el **miércoles 9 de diciembre de 2026**.

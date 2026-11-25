@@ -1,0 +1,86 @@
+es:
+  x:
+    hook: "Un chip de 2 € discontinuado puede bloquear 125.000 € de margen en tu BOM. Cuando llega un aviso PDN/EOL el Punto de Pedido (ROP) muere: así operamos IEC 62402 y la decisión LTB vs. Rediseño en Agentic Radar v2.0:"
+    thread:
+      - "1/5 Error más caro en manufactura e industria: intentar gestionar un aviso de fin de vida (PDN / EOL) de semiconductores usando hojas de reposición continua (SS / ROP / EOQ)."
+      - "2/5 Regla del relevo matemático en el ciclo de vida: pack-stock (APICS ROP) gobierna la Madurez con proveedor activo. En cuanto llega un aviso EOL, CONGELA el ROP automático y pasa a protocolo IEC 62402 (pack-obs)."
+      - "3/5 En Agentic Radar v2.0 (< 34 KB gzip, Zero-CDN, CSV 100% privado en tu navegador), recorremos el grafo BOM multinivel MPN -> AML -> Subensamblaje -> SKU sin bucles infinitos (guardia visited) ni doble conteo de margen."
+      - "4/5 Calculamos al céntimo el dilema del CFO: compra puente única Last Time Buy (Q_LTB con colchón puente SS_LTB + WACC) frente a Rediseño Form-Fit-Function (NRE + recertificación + punto de equilibrio T*)."
+      - "5/5 Prueba gratis el Cockpit v2.0 en vivo y accede al Kit B2B IEC 62402 (estreno 9 Dic · 19 €): https://www.datalaria.com/es/posts/obs_parte8_simulador_ltb_v2/"
+    hashtags:
+      - "IEC62402"
+      - "SupplyChain"
+      - "Obsolescencia"
+      - "LastTimeBuy"
+      - "ControlOperativo"
+    web_intent_url: "https://x.com/intent/tweet?text=Un+chip+de+2+%E2%82%AC+discontinuado+puede+bloquear+125.000+%E2%82%AC+de+margen+en+tu+BOM.+Cuando+llega+un+aviso+PDN%2FEOL+el+Punto+de+Pedido+%28ROP%29+muere%3A+as%C3%AD+operamos+IEC+62402+y+la+decisi%C3%B3n+LTB+vs.+Redise%C3%B1o+en+Agentic+Radar+v2.0%3A&url=https%3A%2F%2Fwww.datalaria.com%2Fes%2Fposts%2Fobs_parte8_simulador_ltb_v2%2F&hashtags=IEC62402%2CSupplyChain%2CObsolescencia%2CLastTimeBuy%2CControlOperativo"
+  linkedin:
+    text: |-
+      Un condensador de 1,85 € puede bloquear una línea de ensamblaje entera con 145 € de margen por unidad y más de 174.000 € de EBITDA anual en riesgo.
+
+      Cuando un fabricante de silicio emite una notificación PDN o End-of-Life (EOL), la sala de dirección queda dividida en dos bandos irreconciliables: Operaciones exigiendo una compra de emergencia para 3 años y Finanzas frenando un CAPEX no presupuestado que inmoviliza tesorería.
+
+      La raíz del problema casi siempre es metodológica: usar modelos de reposición continua (ROP / EOQ) cuando el proveedor acaba de anunciar el cierre definitivo de la línea.
+
+      Este miércoles 9 de diciembre lanzamos la Parte 8 de la serie técnica de Obsolescencia y el nuevo Executive Risk Cockpit v2.0 de Agentic Radar junto al Kit B2B IEC 62402 (pack-obs):
+
+      1️⃣ Relevo en el ciclo de vida (sin solapamientos): pack-stock (7 € · APICS) gobierna la fase de Madurez con proveedor activo; en cuanto entra un aviso PCN/PDN/EOL se congela el ROP automático y toma el relevo pack-obs (19 € · IEC 62402).
+
+      2️⃣ Explosión determinista del grafo BOM sin ciclos: recorrido ascendente MPN -> AML -> Subensamblaje -> SKU con deduplicación exacta de margen P&L y cero dependencias externas (< 34 KB gzipped).
+
+      3️⃣ Modelo financiero LTB vs. Rediseño FFF: derivación del colchón puente único SS_LTB, impacto real del WACC y punto de equilibrio frente al NRE de ingeniería, con importador CSV 100 % local en tu navegador.
+
+      Puedes probar hoy mismo el simulador interactivo en la Web App gratuita o revisar la guía completa y su Kit Excel de 5 hojas + Playbook PDF + Blueprint PostgreSQL RLS.
+
+      En vuestra planta o ingeniería de componentes, ¿cómo decidís hoy entre ejecutar un Last Time Buy para varios años o financiar el rediseño de placa?
+
+      🔗 Guía completa y simulador en vivo: https://www.datalaria.com/es/posts/obs_parte8_simulador_ltb_v2/
+    hashtags:
+      - "IEC62402"
+      - "SupplyChain"
+      - "ObsolescenceManagement"
+      - "Operations"
+      - "Engineering"
+  newsletter:
+    archetype: "invisible_error"
+    subject: "Por qué tu Punto de Pedido (ROP) falla cuando un proveedor anuncia un End-of-Life"
+    preheader: "Estreno Agentic Radar v2.0 + Kit IEC 62402 (19 €): grafo BOM multinivel, decisión LTB vs. FFF y sinergia con Stock de Seguridad."
+    hero_image: "https://www.datalaria.com/es/posts/obs_parte8_simulador_ltb_v2/cover.png"
+    hero_link: "https://www.datalaria.com/es/posts/obs_parte8_simulador_ltb_v2/?utm_source=newsletter&utm_medium=email&utm_campaign=obs-v2-launch"
+    hook_paragraphs:
+      - "Hace dos semanas vimos cómo dimensionar con precisión estadística el Stock de Seguridad (SS₃) y el Punto de Pedido (ROP) para liberar liquidez en componentes activos. Pero en cuanto un fabricante emite un aviso PDN o EOL, esa fórmula deja de ser válida porque la línea de fabricación cierra."
+      - "Hoy presentamos la evolución mayor Agentic Radar v2.0 (Zero-CDN, PWA Offline y parser CSV 100 % privado en tu navegador) junto al nuevo IEC 62402 Obsolescence, BOM Risk & LTB Decision Kit, diseñado específicamente para el segundo acto del ciclo de vida."
+    insights_60s:
+      - "Cuándo usar cada kit sin confusión: pack-stock (7 €) gobierna el flujo continuo con proveedor activo (SS₃, ROP, EOQ); al llegar un aviso EOL, congelas el ROP y activas pack-obs (19 €) para evaluar el Last Time Buy."
+      - "Matemática del colchón puente LTB: en una última compra única, la incertidumbre escala como SS_LTB = ceil(Z · σ_m · √H_meses), incorporando el coste de capital WACC y merma frente al NRE de rediseño FFF."
+      - "Privacidad BOM garantizada + RLS: analiza tu propio CSV de componentes en RAM del navegador sin subir nada a servidores, o despliega el Starter Blueprint PostgreSQL obs_radar con Row-Level Security en 6 tablas."
+    primary_cta_label: "Leer Parte 8 y Probar Simulador v2.0"
+    primary_cta_url: "https://www.datalaria.com/es/posts/obs_parte8_simulador_ltb_v2/?utm_source=newsletter&utm_medium=email&utm_campaign=obs-v2-launch"
+    secondary_cta_label: "Abrir Web App Interactiva (Gratis)"
+    secondary_cta_url: "https://www.datalaria.com/es/apps/obs-management/?utm_source=newsletter&utm_medium=email&utm_campaign=obs-v2-launch"
+    ps_referral_text: "P.D. Si trabajas con ingenieros de componentes, compradores técnicos o un CFO preocupado por el CAPEX de Last Time Buys, reenvíale este análisis."
+  devto:
+    enabled: true
+    title: "Radar de Obsolescencia IEC 62402 (Parte 8): Grafo BOM Multinivel y Decisión Last Time Buy (LTB) vs. Rediseño"
+    description: "Cómo operacionalizar la norma IEC 62402 con Agentic Radar v2.0: explosión de grafos BOM sin ciclos, matemática CAPEX LTB vs. FFF y esquema PostgreSQL obs_radar con RLS."
+    tags:
+      - "architecture"
+      - "supplychain"
+      - "postgres"
+      - "fastapi"
+    canonical_url: "https://www.datalaria.com/es/posts/obs_parte8_simulador_ltb_v2/"
+    cover_image: "https://www.datalaria.com/es/posts/obs_parte8_simulador_ltb_v2/cover.png"
+    diagram_image: "https://www.datalaria.com/es/posts/obs_parte8_simulador_ltb_v2/obs_lifecycle_relay.png"
+    published: true
+  coderlegion:
+    enabled: false
+    title: "Radar de Obsolescencia IEC 62402: Grafo BOM Multinivel y Decisión LTB vs. Rediseño"
+    description: "Arquitectura determinista Zero-CDN (< 34 KB gzip) + FastAPI/PostgreSQL RLS para gestionar crisis de discontinuación PCN/PDN/EOL."
+    tags:
+      - "architecture"
+      - "postgres"
+      - "fastapi"
+      - "javascript"
+    canonical_url: "https://www.datalaria.com/es/posts/obs_parte8_simulador_ltb_v2/"
+    cover_image: "https://www.datalaria.com/es/posts/obs_parte8_simulador_ltb_v2/cover.png"
+    published: false
