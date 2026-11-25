@@ -1,9 +1,9 @@
 {
   "version": "1.3.0",
-  "generated_at": "2026-11-25T14:56:16.734904Z",
+  "generated_at": "2026-11-25T15:11:45.560232Z",
   "visibility": "private",
   "total_published_posts": 110,
-  "total_scheduled_posts": 15,
+  "total_scheduled_posts": 12,
   "total_30d_post_views": 2268,
   "median_post_views": 10.0,
   "p75_post_views": 26.0,
@@ -28,8 +28,8 @@
       "avg_engagement_sec": 15.0,
       "monetized_posts": 15,
       "monetization_coverage_pct": 88.2,
-      "editorial_roi_score": 71.5,
-      "social_traction_score": 16.9,
+      "editorial_roi_score": 76.9,
+      "social_traction_score": 52.7,
       "total_gsc_impressions_30d": 1246,
       "total_gsc_clicks_30d": 13,
       "avg_gsc_ctr_pct": 1.04,
@@ -42,10 +42,10 @@
       "avg_views_per_post": 24.9,
       "total_users_30d": 260,
       "avg_engagement_sec": 26.3,
-      "monetized_posts": 8,
-      "monetization_coverage_pct": 61.5,
-      "editorial_roi_score": 64.2,
-      "social_traction_score": 13.8,
+      "monetized_posts": 7,
+      "monetization_coverage_pct": 53.8,
+      "editorial_roi_score": 63.0,
+      "social_traction_score": 21.6,
       "total_gsc_impressions_30d": 8378,
       "total_gsc_clicks_30d": 42,
       "avg_gsc_ctr_pct": 0.5,
@@ -60,8 +60,8 @@
       "avg_engagement_sec": 40.8,
       "monetized_posts": 6,
       "monetization_coverage_pct": 42.9,
-      "editorial_roi_score": 50.8,
-      "social_traction_score": 1.7,
+      "editorial_roi_score": 53.4,
+      "social_traction_score": 19.4,
       "total_gsc_impressions_30d": 4811,
       "total_gsc_clicks_30d": 37,
       "avg_gsc_ctr_pct": 0.77,
@@ -74,10 +74,10 @@
       "avg_views_per_post": 18.8,
       "total_users_30d": 498,
       "avg_engagement_sec": 12.8,
-      "monetized_posts": 29,
-      "monetization_coverage_pct": 53.7,
-      "editorial_roi_score": 46.3,
-      "social_traction_score": 4.9,
+      "monetized_posts": 28,
+      "monetization_coverage_pct": 51.9,
+      "editorial_roi_score": 52.7,
+      "social_traction_score": 51.4,
       "total_gsc_impressions_30d": 4497,
       "total_gsc_clicks_30d": 21,
       "avg_gsc_ctr_pct": 0.47,
@@ -92,8 +92,8 @@
       "avg_engagement_sec": 9.3,
       "monetized_posts": 5,
       "monetization_coverage_pct": 41.7,
-      "editorial_roi_score": 31.7,
-      "social_traction_score": 4.0,
+      "editorial_roi_score": 33.8,
+      "social_traction_score": 18.0,
       "total_gsc_impressions_30d": 2213,
       "total_gsc_clicks_30d": 13,
       "avg_gsc_ctr_pct": 0.59,
@@ -142,6 +142,30 @@
       "recommended_title_en": "John von Neumann: Computer Architecture, Game Theory, and the Singularity",
       "recommended_desc_es": "Vida y genio de John von Neumann: ordenadores de programa almacenado, el cuello de botella que desafía a la IA y el origen de la Singularidad.",
       "top_query": "john von neumann"
+    },
+    {
+      "id": "agentes_ia_operativa_sdd",
+      "slug": "agentes_ia_operativa_sdd",
+      "title_es": "Cómo Crear Agentes de IA para la Operativa Empresarial del Día a Día: De los SOPs al Desarrollo con SDD",
+      "title_en": "How to Build AI Agents for Daily Enterprise Operations: From SOPs to Spec-Driven Development (SDD)",
+      "category": "IA, Ingeniería y Proyectos",
+      "ga4_views_30d": 63,
+      "ga4_users_30d": 23,
+      "avg_engagement_sec": 42.1,
+      "gsc_impressions_30d": 10,
+      "gsc_avg_position": 13.1,
+      "gsc_ctr_pct": 10.0,
+      "seo_score": 60,
+      "seo_issues": [
+        "Longitud de título no óptima (103 caracteres; ideal: 35-95)",
+        "Meta descripción no óptima (259 caracteres; ideal: 75-250)"
+      ],
+      "opportunity_type": "serp_snippet_truncation",
+      "priority_score": 51.5,
+      "recommended_title_es": "Cómo Crear Agentes de IA para la Operativa Empresarial del Día a Día: De los SOPs al",
+      "recommended_title_en": "How to Build AI Agents for Daily Enterprise Operations: From SOPs to Spec-Driven Development",
+      "recommended_desc_es": "Guía práctica y metodológica para diseñar, construir y gobernar agentes de IA en la operativa diaria de una empresa. Aprende qué herramientas elegir (n8n, CrewAI, LangGraph, MCP) y cómo aplicar Spec-Driven Development (SDD) para evitar agentes",
+      "top_query": "sdd agents"
     },
     {
       "id": "happyrobot",
@@ -1529,7 +1553,22 @@
       "top_query": "descriptive analysis"
     }
   ],
-  "monetization_orphans": [],
+  "monetization_orphans": [
+    {
+      "id": "stack_productividad_2026",
+      "slug": "stack_productividad_2026",
+      "title_es": "El Stack de Productividad de un Ingeniero en 2026: Las Herramientas que Uso Cada Día",
+      "category": "IA, Ingeniería y Proyectos",
+      "ga4_views_30d": 96,
+      "ga4_users_30d": 8,
+      "avg_engagement_sec": 57.0,
+      "rank_pct": 98,
+      "recommended_bridge_type": "helix_waitlist",
+      "recommended_target_id": "helix",
+      "recommended_shortcode_or_url": "{{< helix-waitlist >}}",
+      "rationale_es": "Tráfico de alta retención técnica; dirigir hacia la lista de espera de Datalaria Helix."
+    }
+  ],
   "decay_alerts": [
     {
       "id": "Visualizaciones-basicas",
@@ -1751,8 +1790,8 @@
       "seo_demand_score": 92.0,
       "monetization_fit_score": 96.0,
       "ecosystem_synergy_score": 98.0,
-      "social_traction_score": 4.9,
-      "editorial_roi_score": 81.3,
+      "social_traction_score": 51.4,
+      "editorial_roi_score": 88.3,
       "rationale_es": "Máxima relevancia técnica para la comunidad de agentes de IA y Spec-Driven Development. Embudo directo hacia la Waitlist de Datalaria Helix y Suite SDD (19€/39€)."
     },
     {
@@ -1764,8 +1803,8 @@
       "seo_demand_score": 82.0,
       "monetization_fit_score": 95.0,
       "ecosystem_synergy_score": 88.0,
-      "social_traction_score": 16.9,
-      "editorial_roi_score": 77.3,
+      "social_traction_score": 52.7,
+      "editorial_roi_score": 82.7,
       "rationale_es": "Demanda orgánica creciente de modelos estocásticos para comités de inversión. Puente directo hacia el Executive Decision Pack Business Case (9€) y Suite 02."
     },
     {
@@ -1777,8 +1816,8 @@
       "seo_demand_score": 78.0,
       "monetization_fit_score": 92.0,
       "ecosystem_synergy_score": 90.0,
-      "social_traction_score": 16.9,
-      "editorial_roi_score": 75.4,
+      "social_traction_score": 52.7,
+      "editorial_roi_score": 80.8,
       "rationale_es": "Resuelve el cuello de botella de priorización en C-Level y VPs de Producto. Conecta directamente la Suite 02 (Pack DAR 19€ y Pack RICE 19€)."
     },
     {
@@ -1790,9 +1829,22 @@
       "seo_demand_score": 75.0,
       "monetization_fit_score": 88.0,
       "ecosystem_synergy_score": 85.0,
-      "social_traction_score": 16.9,
-      "editorial_roi_score": 72.2,
+      "social_traction_score": 52.7,
+      "editorial_roi_score": 77.6,
       "rationale_es": "Fundamentación matemática rigurosa para directores de operaciones y manufactura. Activa el interés por el Pack PERT y la Suite 03 de Control Operativo (22€)."
+    },
+    {
+      "id": "idea-edsger-dijkstra-formal-verification",
+      "title_es": "Edsger Dijkstra: La Cruzada contra el GOTO, la Verificación Formal y por qué Habría Vetado el Vibe Coding",
+      "title_en": "Edsger Dijkstra: The Crusade Against GOTO, Formal Verification and Why He Would Veto Vibe Coding",
+      "category": "Pioneros y Referentes",
+      "target_kit_or_app": "helix",
+      "seo_demand_score": 80.0,
+      "monetization_fit_score": 82.0,
+      "ecosystem_synergy_score": 92.0,
+      "social_traction_score": 21.6,
+      "editorial_roi_score": 74.2,
+      "rationale_es": "Monetiza el altísimo tráfico de la categoría Pioneros mediante puente temático natural hacia la verificación determinista de Datalaria Helix (INV-HELIX-1)."
     },
     {
       "id": "idea-claude-shannon-information-theory",
@@ -1803,8 +1855,8 @@
       "seo_demand_score": 85.0,
       "monetization_fit_score": 75.0,
       "ecosystem_synergy_score": 82.0,
-      "social_traction_score": 13.8,
-      "editorial_roi_score": 70.7,
+      "social_traction_score": 21.6,
+      "editorial_roi_score": 71.9,
       "rationale_es": "Perfil biográfico y matemático de alta atracción con puente pedagógico hacia Mazo Mágico (Flashcards AI) y la Suite SDD."
     }
   ],
@@ -1817,9 +1869,9 @@
       "title_es": "Radar de Obsolescencia (v2.0.0): Executive Risk Cockpit Zero-CDN, Motor BOM/LTB determinista y PWA Offline",
       "publish_date": "2026-11-22",
       "status": "published",
-      "linked_posts_count": 22,
+      "linked_posts_count": 20,
       "latest_post_date": "2026-11-14",
-      "editorial_views_30d": 427,
+      "editorial_views_30d": 425,
       "editorial_coverage_status": "silent_release_alert",
       "recommended_scriba_action": "Alerta de release silenciosa: versión v2.0.0 (2026-11-22) posterior al último post (2026-11-14); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0."
     },
@@ -1894,34 +1946,6 @@
       "recommended_scriba_action": "Alerta de release silenciosa: versión v2.0.0 (2026-11-08) posterior al último post (2025-12-06); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0."
     },
     {
-      "asset_id": "flashcards-v2.1.0",
-      "asset_type": "app",
-      "version": "v2.1.0",
-      "release_type": "version_upgrade",
-      "title_es": "Flashcards AI (v2.1.0): Flashcards v2.1.0: PWA Offline Completa, Suite de Iconos Maskable, Instalación Universal y Actualización In-App",
-      "publish_date": "2026-11-06",
-      "status": "published",
-      "linked_posts_count": 2,
-      "latest_post_date": "2026-06-21",
-      "editorial_views_30d": 31,
-      "editorial_coverage_status": "silent_release_alert",
-      "recommended_scriba_action": "Alerta de release silenciosa: versión v2.1.0 (2026-11-06) posterior al último post (2026-06-21); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0."
-    },
-    {
-      "asset_id": "flashcards-v2.0.0",
-      "asset_type": "app",
-      "version": "v2.0.0",
-      "release_type": "version_upgrade",
-      "title_es": "Flashcards AI (v2.0.0): Evolución a Mazo Mágico v2.0: Audio Fonético, 6 Mazos Curados, 3 Modos y Gemini Batch",
-      "publish_date": "2026-11-06",
-      "status": "published",
-      "linked_posts_count": 2,
-      "latest_post_date": "2026-06-21",
-      "editorial_views_30d": 31,
-      "editorial_coverage_status": "silent_release_alert",
-      "recommended_scriba_action": "Alerta de release silenciosa: versión v2.0.0 (2026-11-06) posterior al último post (2026-06-21); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0."
-    },
-    {
       "asset_id": "snake-v2.3.0",
       "asset_type": "app",
       "version": "v2.3.0",
@@ -1976,6 +2000,34 @@
       "editorial_views_30d": 24,
       "editorial_coverage_status": "silent_release_alert",
       "recommended_scriba_action": "Alerta de release silenciosa: versión v2.0.0 (2026-11-07) posterior al último post (2026-02-14); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0."
+    },
+    {
+      "asset_id": "flashcards-v2.1.0",
+      "asset_type": "app",
+      "version": "v2.1.0",
+      "release_type": "version_upgrade",
+      "title_es": "Flashcards AI (v2.1.0): Flashcards v2.1.0: PWA Offline Completa, Suite de Iconos Maskable, Instalación Universal y Actualización In-App",
+      "publish_date": "2026-11-06",
+      "status": "published",
+      "linked_posts_count": 1,
+      "latest_post_date": "2025-10-17",
+      "editorial_views_30d": 6,
+      "editorial_coverage_status": "silent_release_alert",
+      "recommended_scriba_action": "Alerta de release silenciosa: versión v2.1.0 (2026-11-06) posterior al último post (2025-10-17); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0."
+    },
+    {
+      "asset_id": "flashcards-v2.0.0",
+      "asset_type": "app",
+      "version": "v2.0.0",
+      "release_type": "version_upgrade",
+      "title_es": "Flashcards AI (v2.0.0): Evolución a Mazo Mágico v2.0: Audio Fonético, 6 Mazos Curados, 3 Modos y Gemini Batch",
+      "publish_date": "2026-11-06",
+      "status": "published",
+      "linked_posts_count": 1,
+      "latest_post_date": "2025-10-17",
+      "editorial_views_30d": 6,
+      "editorial_coverage_status": "silent_release_alert",
+      "recommended_scriba_action": "Alerta de release silenciosa: versión v2.0.0 (2026-11-06) posterior al último post (2025-10-17); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0."
     },
     {
       "asset_id": "maths-v2.3.0",
@@ -2146,6 +2198,34 @@
       "recommended_scriba_action": "Campaña programada: coordinar con E06 sindicación omnicanal para el estreno el 2026-11-30."
     },
     {
+      "asset_id": "obs-management",
+      "asset_type": "app",
+      "version": "v2.0.0",
+      "release_type": "initial_launch",
+      "title_es": "Radar de Obsolescencia",
+      "publish_date": "2026-05-17",
+      "status": "published",
+      "linked_posts_count": 20,
+      "latest_post_date": "2026-11-14",
+      "editorial_views_30d": 425,
+      "editorial_coverage_status": "covered",
+      "recommended_scriba_action": "Activo cubierto con 20 post(s) en producción (425 vistas/30d)."
+    },
+    {
+      "asset_id": "obs-management-v1.0.1",
+      "asset_type": "app",
+      "version": "v1.0.1",
+      "release_type": "version_upgrade",
+      "title_es": "Radar de Obsolescencia (v1.0.1): Aislamiento SDD, firewall de static/ y modo Sandbox determinista 24/7",
+      "publish_date": "2026-10-24",
+      "status": "published",
+      "linked_posts_count": 20,
+      "latest_post_date": "2026-11-14",
+      "editorial_views_30d": 425,
+      "editorial_coverage_status": "covered",
+      "recommended_scriba_action": "Versión v1.0.1 respaldada por los artículos de la serie."
+    },
+    {
       "asset_id": "pulse",
       "asset_type": "app",
       "version": "v1.6.0",
@@ -2153,11 +2233,11 @@
       "title_es": "Datalaria Pulse",
       "publish_date": "2026-11-18",
       "status": "published",
-      "linked_posts_count": 8,
+      "linked_posts_count": 7,
       "latest_post_date": "2026-11-25",
-      "editorial_views_30d": 434,
+      "editorial_views_30d": 338,
       "editorial_coverage_status": "covered",
-      "recommended_scriba_action": "Activo cubierto con 8 post(s) en producción (434 vistas/30d)."
+      "recommended_scriba_action": "Activo cubierto con 7 post(s) en producción (338 vistas/30d)."
     },
     {
       "asset_id": "pulse-v1.6.0",
@@ -2167,9 +2247,9 @@
       "title_es": "Datalaria Pulse (v1.6.0): Músculo de Ingresos Privado (Lemon Squeezy + Brevo), INV-PULSE-13 y Panel Ingresos & Funnel",
       "publish_date": "2026-11-24",
       "status": "published",
-      "linked_posts_count": 8,
+      "linked_posts_count": 7,
       "latest_post_date": "2026-11-25",
-      "editorial_views_30d": 434,
+      "editorial_views_30d": 338,
       "editorial_coverage_status": "covered",
       "recommended_scriba_action": "Versión v1.6.0 respaldada por los artículos de la serie."
     },
@@ -2181,39 +2261,11 @@
       "title_es": "Datalaria Pulse (v1.5.0): Telemetría Omnicanal Coste 0 €, Modo Dual LinkedIn Empresa, Panel Canales & Editorial ROI Score v2",
       "publish_date": "2026-11-23",
       "status": "published",
-      "linked_posts_count": 8,
+      "linked_posts_count": 7,
       "latest_post_date": "2026-11-25",
-      "editorial_views_30d": 434,
+      "editorial_views_30d": 338,
       "editorial_coverage_status": "covered",
       "recommended_scriba_action": "Versión v1.5.0 respaldada por los artículos de la serie."
-    },
-    {
-      "asset_id": "obs-management",
-      "asset_type": "app",
-      "version": "v2.0.0",
-      "release_type": "initial_launch",
-      "title_es": "Radar de Obsolescencia",
-      "publish_date": "2026-05-17",
-      "status": "published",
-      "linked_posts_count": 22,
-      "latest_post_date": "2026-11-14",
-      "editorial_views_30d": 427,
-      "editorial_coverage_status": "covered",
-      "recommended_scriba_action": "Activo cubierto con 22 post(s) en producción (427 vistas/30d)."
-    },
-    {
-      "asset_id": "obs-management-v1.0.1",
-      "asset_type": "app",
-      "version": "v1.0.1",
-      "release_type": "version_upgrade",
-      "title_es": "Radar de Obsolescencia (v1.0.1): Aislamiento SDD, firewall de static/ y modo Sandbox determinista 24/7",
-      "publish_date": "2026-10-24",
-      "status": "published",
-      "linked_posts_count": 22,
-      "latest_post_date": "2026-11-14",
-      "editorial_views_30d": 427,
-      "editorial_coverage_status": "covered",
-      "recommended_scriba_action": "Versión v1.0.1 respaldada por los artículos de la serie."
     },
     {
       "asset_id": "pack-pulse",
@@ -2223,11 +2275,11 @@
       "title_es": "Datalaria Pulse: Content Ops & Notion Migration Kit",
       "publish_date": "2026-11-18",
       "status": "published",
-      "linked_posts_count": 5,
+      "linked_posts_count": 4,
       "latest_post_date": "2026-11-25",
-      "editorial_views_30d": 385,
+      "editorial_views_30d": 289,
       "editorial_coverage_status": "covered",
-      "recommended_scriba_action": "Activo cubierto con 5 post(s) en producción (385 vistas/30d)."
+      "recommended_scriba_action": "Activo cubierto con 4 post(s) en producción (289 vistas/30d)."
     },
     {
       "asset_id": "suite-02",
@@ -2237,11 +2289,11 @@
       "title_es": "Pack Suite 2: Decisiones",
       "publish_date": "2026-11-08",
       "status": "published",
-      "linked_posts_count": 6,
+      "linked_posts_count": 4,
       "latest_post_date": "2026-11-08",
-      "editorial_views_30d": 188,
+      "editorial_views_30d": 163,
       "editorial_coverage_status": "covered",
-      "recommended_scriba_action": "Activo cubierto con 6 post(s) en producción (188 vistas/30d)."
+      "recommended_scriba_action": "Activo cubierto con 4 post(s) en producción (163 vistas/30d)."
     },
     {
       "asset_id": "pack-business-case",
@@ -2293,11 +2345,11 @@
       "title_es": "LifeOps",
       "publish_date": "2026-09-19",
       "status": "published",
-      "linked_posts_count": 7,
+      "linked_posts_count": 6,
       "latest_post_date": "2026-10-28",
       "editorial_views_30d": 75,
       "editorial_coverage_status": "covered",
-      "recommended_scriba_action": "Activo cubierto con 7 post(s) en producción (75 vistas/30d)."
+      "recommended_scriba_action": "Activo cubierto con 6 post(s) en producción (75 vistas/30d)."
     },
     {
       "asset_id": "lifeops-v1.1.1",
@@ -2307,7 +2359,7 @@
       "title_es": "LifeOps (v1.1.1): Caché instantánea SWR, banner de sincronización Cold-Start en primer plano y auto-rango temporal",
       "publish_date": "2026-10-27",
       "status": "published",
-      "linked_posts_count": 7,
+      "linked_posts_count": 6,
       "latest_post_date": "2026-10-28",
       "editorial_views_30d": 75,
       "editorial_coverage_status": "covered",
@@ -2321,7 +2373,7 @@
       "title_es": "LifeOps (v1.1.0): Motor Analítico 360° interactivo, comparativas inter-periodo (Δ%) y mapa de consistencia",
       "publish_date": "2026-10-27",
       "status": "published",
-      "linked_posts_count": 7,
+      "linked_posts_count": 6,
       "latest_post_date": "2026-10-28",
       "editorial_views_30d": 75,
       "editorial_coverage_status": "covered",
@@ -2335,7 +2387,7 @@
       "title_es": "LifeOps (v1.0.1): Aislamiento SDD, corrección SEC-1 y suite de verificación automatizada",
       "publish_date": "2026-10-24",
       "status": "published",
-      "linked_posts_count": 7,
+      "linked_posts_count": 6,
       "latest_post_date": "2026-10-28",
       "editorial_views_30d": 75,
       "editorial_coverage_status": "covered",
@@ -2349,7 +2401,7 @@
       "title_es": "LifeOps (v0.4.0): Rediseño responsive, bottom navigation y modales táctiles",
       "publish_date": "2026-08-31",
       "status": "published",
-      "linked_posts_count": 7,
+      "linked_posts_count": 6,
       "latest_post_date": "2026-10-28",
       "editorial_views_30d": 75,
       "editorial_coverage_status": "covered",
@@ -2363,7 +2415,7 @@
       "title_es": "LifeOps (v0.3.0): Bitácora cronológica de comentarios JSONB en tareas Kanban",
       "publish_date": "2026-08-30",
       "status": "published",
-      "linked_posts_count": 7,
+      "linked_posts_count": 6,
       "latest_post_date": "2026-10-28",
       "editorial_views_30d": 75,
       "editorial_coverage_status": "covered",
@@ -2377,7 +2429,7 @@
       "title_es": "LifeOps (v0.1.0): Arquitectura base inicial e integración full-stack",
       "publish_date": "2026-08-29",
       "status": "published",
-      "linked_posts_count": 7,
+      "linked_posts_count": 6,
       "latest_post_date": "2026-10-28",
       "editorial_views_30d": 75,
       "editorial_coverage_status": "covered",
@@ -2522,20 +2574,6 @@
       "editorial_views_30d": 36,
       "editorial_coverage_status": "covered",
       "recommended_scriba_action": "Activo cubierto con 1 post(s) en producción (36 vistas/30d)."
-    },
-    {
-      "asset_id": "flashcards",
-      "asset_type": "app",
-      "version": "v2.1.0",
-      "release_type": "initial_launch",
-      "title_es": "Flashcards AI",
-      "publish_date": "2025-10-17",
-      "status": "published",
-      "linked_posts_count": 2,
-      "latest_post_date": "2026-06-21",
-      "editorial_views_30d": 31,
-      "editorial_coverage_status": "covered",
-      "recommended_scriba_action": "Activo cubierto con 2 post(s) en producción (31 vistas/30d)."
     },
     {
       "asset_id": "pack-bcg",
@@ -2690,6 +2728,20 @@
       "editorial_views_30d": 8,
       "editorial_coverage_status": "covered",
       "recommended_scriba_action": "Versión v0.1.0 respaldada por los artículos de la serie."
+    },
+    {
+      "asset_id": "flashcards",
+      "asset_type": "app",
+      "version": "v2.1.0",
+      "release_type": "initial_launch",
+      "title_es": "Flashcards AI",
+      "publish_date": "2025-10-17",
+      "status": "published",
+      "linked_posts_count": 1,
+      "latest_post_date": "2025-10-17",
+      "editorial_views_30d": 6,
+      "editorial_coverage_status": "covered",
+      "recommended_scriba_action": "Activo cubierto con 1 post(s) en producción (6 vistas/30d)."
     },
     {
       "asset_id": "maths",
@@ -2985,27 +3037,27 @@
   "social_platform_summary": {
     "devto": {
       "platform": "devto",
-      "status": "unavailable",
-      "last_synced_at": null,
-      "articles_count": 0,
-      "matched_assets_count": 0,
-      "native_views": 0,
-      "native_reactions": 0,
-      "native_comments": 0,
+      "status": "ok",
+      "last_synced_at": "2026-11-25T15:11:44.757229+00:00",
+      "articles_count": 212,
+      "matched_assets_count": 105,
+      "native_views": 8911,
+      "native_reactions": 123,
+      "native_comments": 32,
       "ga4_sessions_30d": 1,
-      "ptr_pct": 0.0
+      "ptr_pct": 0.01
     },
     "coderlegion": {
       "platform": "coderlegion",
       "status": "ok",
-      "last_synced_at": "2026-11-23T19:39:21.812838+00:00",
-      "articles_count": 0,
-      "matched_assets_count": 0,
-      "native_views": 0,
+      "last_synced_at": "2026-11-25T15:11:44.757229+00:00",
+      "articles_count": 1,
+      "matched_assets_count": 1,
+      "native_views": 38,
       "native_reactions": 0,
       "native_comments": 0,
       "ga4_sessions_30d": 41,
-      "ptr_pct": 0.0
+      "ptr_pct": 107.89
     },
     "linkedin_company": {
       "platform": "linkedin_company",
@@ -3034,7 +3086,56 @@
       "note": "Medición activa vía GA4 + UTMs (Hito 7.11); API nativa X en stand-by por política coste 0 EUR."
     }
   },
-  "ptr_leak_alerts": [],
+  "ptr_leak_alerts": [
+    {
+      "asset_id": "ia_agents_part7",
+      "slug": "ia_agents_part7",
+      "title_es": "Autopilot - Ctrl: Auditoría de Contenido IA con GitHub Copilot CLI",
+      "platform": "devto",
+      "native_views": 699,
+      "native_reactions": 10,
+      "native_comments": 1,
+      "ga4_sessions_30d": 0,
+      "ptr_pct": 0.0,
+      "recommended_action": "Fuga de traspaso en devto (699 vistas nativas, solo 0 sesiones GA4 · PTR 0.00%): insertar en el primer 25% del post sindicado un CTA interactivo al Sandbox/Calculadora en vivo (`utm_content=inline_sandbox_cta`)."
+    },
+    {
+      "asset_id": "ia_agents_part6",
+      "slug": "ia_agents_part6",
+      "title_es": "Autopilot - Extra: Programando una Newsletter Nativa en IA y de Mantenimiento Cero",
+      "platform": "devto",
+      "native_views": 345,
+      "native_reactions": 1,
+      "native_comments": 1,
+      "ga4_sessions_30d": 0,
+      "ptr_pct": 0.0,
+      "recommended_action": "Fuga de traspaso en devto (345 vistas nativas, solo 0 sesiones GA4 · PTR 0.00%): insertar en el primer 25% del post sindicado un CTA interactivo al Sandbox/Calculadora en vivo (`utm_content=inline_sandbox_cta`)."
+    },
+    {
+      "asset_id": "ia_agents_part9",
+      "slug": "ia_agents_part9",
+      "title_es": "Autopilot - Post-Mortem Técnico: Cómo Construí un Ejército de IA con Gemini",
+      "platform": "devto",
+      "native_views": 323,
+      "native_reactions": 6,
+      "native_comments": 0,
+      "ga4_sessions_30d": 0,
+      "ptr_pct": 0.0,
+      "recommended_action": "Fuga de traspaso en devto (323 vistas nativas, solo 0 sesiones GA4 · PTR 0.00%): insertar en el primer 25% del post sindicado un CTA interactivo al Sandbox/Calculadora en vivo (`utm_content=inline_sandbox_cta`)."
+    },
+    {
+      "asset_id": "ia_agents_part8",
+      "slug": "ia_agents_part8",
+      "title_es": "Autopilot - Asistente: Creando un Copiloto de IA con Algolia Agent Studio",
+      "platform": "devto",
+      "native_views": 313,
+      "native_reactions": 11,
+      "native_comments": 0,
+      "ga4_sessions_30d": 0,
+      "ptr_pct": 0.0,
+      "recommended_action": "Fuga de traspaso en devto (313 vistas nativas, solo 0 sesiones GA4 · PTR 0.00%): insertar en el primer 25% del post sindicado un CTA interactivo al Sandbox/Calculadora en vivo (`utm_content=inline_sandbox_cta`)."
+    }
+  ],
   "canonical_shield_alerts": [],
   "silent_releases_count": 16
 }

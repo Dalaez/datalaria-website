@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "visibility": "private",
   "days": 30,
-  "last_synced_at": "2026-11-25T14:58:16.159378+00:00",
+  "last_synced_at": "2026-11-25T15:11:41.489871+00:00",
   "sources_status": {
     "ga4_acquisition": "ok",
     "x_native": "standby_zero_cost"
@@ -3222,18 +3222,6 @@
         "users_30d": 2,
         "engaged_sessions_30d": 1,
         "avg_engagement_sec": 10.5,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
-    "edsger_dijkstra": {
-      "direct": {
-        "sessions_30d": 1,
-        "sessions_es_30d": 1,
-        "sessions_en_30d": 0,
-        "users_30d": 1,
-        "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 16.0,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -14767,7 +14755,7 @@
     {
       "channel": "direct",
       "path": "/es/posts/edsger_dijkstra",
-      "asset_id": "edsger_dijkstra",
+      "asset_id": null,
       "lang": "es",
       "source": "(direct)",
       "medium": "(none)",

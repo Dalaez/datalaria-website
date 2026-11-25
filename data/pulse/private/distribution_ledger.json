@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "visibility": "private",
-  "updated_at": "2026-11-25T14:38:34Z",
+  "updated_at": "2026-11-25T15:11:45Z",
   "entries": [
     {
       "asset_id": "autopilot-parte10-scriba-sindicacion-puente-pulse",
@@ -41,27 +41,27 @@
       "external_id": "5105698",
       "external_url": "https://dev.to/datalaria/cuadro-de-mando-evm-valor-ganado-27-criterios-eia-748-y-agile-evm-em6",
       "canonical_url": "https://datalaria.com/es/posts/cuadro-mando-evm-valor-ganado/",
-      "published_at_utc": "2026-11-24T06:51:22Z"
+      "published_at_utc": "2026-11-24T06:51:22.632Z"
     },
     {
       "asset_id": "earned-value-management-evm-dashboard",
-      "slug": "earned-value-management-evm-dashboard",
+      "slug": "cuadro-mando-evm-valor-ganado",
       "lang": "en",
       "channel": "coderlegion",
       "external_id": "35848",
-      "external_url": null,
+      "external_url": "https://coderlegion.com/posts/35848",
       "canonical_url": "https://datalaria.com/en/posts/earned-value-management-evm-dashboard/",
-      "published_at_utc": "2026-11-24T06:51:24Z"
+      "published_at_utc": "2026-11-24T06:51:23Z"
     },
     {
       "asset_id": "earned-value-management-evm-dashboard",
-      "slug": "earned-value-management-evm-dashboard",
+      "slug": "cuadro-mando-evm-valor-ganado",
       "lang": "en",
       "channel": "devto",
       "external_id": "5105931",
       "external_url": "https://dev.to/datalaria/earned-value-management-evm-s-curve-27-eia-748-guidelines-agile-evm-8a6",
       "canonical_url": "https://datalaria.com/en/posts/earned-value-management-evm-dashboard/",
-      "published_at_utc": "2026-11-24T07:28:32Z"
+      "published_at_utc": "2026-11-24T07:28:31.935Z"
     },
     {
       "asset_id": "pulse-part3",
@@ -82,6 +82,2086 @@
       "external_url": "https://www.linkedin.com/feed/update/urn:li:share:7531365720560107520/",
       "canonical_url": "https://datalaria.com/en/posts/pulse-part3-react-dashboard-table-kanban-calendar/",
       "published_at_utc": "2026-11-25T14:38:34Z"
+    },
+    {
+      "asset_id": "pulse-part2",
+      "slug": "pulse-parte2-indexador-pydantic-paridad-ci",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "5098020",
+      "external_url": "https://dev.to/datalaria/from-front-matter-to-index-pydantic-v2-esen-parity-and-github-actions-1bh0",
+      "canonical_url": "https://datalaria.com/en/posts/pulse-part2-pydantic-indexer-bilingual-parity-ci/",
+      "published_at_utc": "2026-11-23T06:30:33.213Z"
+    },
+    {
+      "asset_id": "pulse-part2",
+      "slug": "pulse-parte2-indexador-pydantic-paridad-ci",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "5095809",
+      "external_url": "https://dev.to/datalaria/del-front-matter-al-indice-pydantic-v2-paridad-bilingue-y-cicd-en-github-actions-24gg",
+      "canonical_url": "https://datalaria.com/es/posts/pulse-parte2-indexador-pydantic-paridad-ci/",
+      "published_at_utc": "2026-11-22T21:12:06.868Z"
+    },
+    {
+      "asset_id": "magnific-ai",
+      "slug": "magnific_ai",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "5092806",
+      "external_url": "https://dev.to/datalaria/magnific-ai-tiled-latent-diffusion-how-2-founders-scaled-a-genai-titan-3c0c",
+      "canonical_url": "https://datalaria.com/en/posts/magnific_ai/",
+      "published_at_utc": "2026-11-22T09:06:39.315Z"
+    },
+    {
+      "asset_id": "magnific-ai",
+      "slug": "magnific_ai",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "5090358",
+      "external_url": "https://dev.to/datalaria/magnific-ai-difusion-latente-por-teselas-y-el-caso-espanol-de-2-fundadores-rumbo-a-la-agi-2cn5",
+      "canonical_url": "https://datalaria.com/es/posts/magnific_ai/",
+      "published_at_utc": "2026-11-21T20:41:57.878Z"
+    },
+    {
+      "asset_id": "stochastic-3-point-pert-estimation",
+      "slug": "estimacion-pert-3-puntos",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "5079686",
+      "external_url": "https://dev.to/datalaria/stochastic-3-point-pert-beta-distribution-clt-p90-project-buffers-3abe",
+      "canonical_url": "https://datalaria.com/en/posts/stochastic-3-point-pert-estimation/",
+      "published_at_utc": "2026-11-20T07:03:42.044Z"
+    },
+    {
+      "asset_id": "stochastic-3-point-pert-estimation",
+      "slug": "estimacion-pert-3-puntos",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "5076482",
+      "external_url": "https://dev.to/datalaria/estimacion-pert-de-3-puntos-distribucion-beta-clt-y-project-buffers-p90-bb1",
+      "canonical_url": "https://datalaria.com/es/posts/estimacion-pert-3-puntos/",
+      "published_at_utc": "2026-11-19T20:14:58.099Z"
+    },
+    {
+      "asset_id": "pulse-part1",
+      "slug": "pulse-parte1-adios-notion-content-ops",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "5071509",
+      "external_url": "https://dev.to/datalaria/goodbye-notion-why-we-migrated-our-tech-content-ops-to-git-and-pydantic-102",
+      "canonical_url": "https://datalaria.com/en/posts/pulse-part1-goodbye-notion-content-ops/",
+      "published_at_utc": "2026-11-19T07:27:32.395Z"
+    },
+    {
+      "asset_id": "pulse-part1",
+      "slug": "pulse-parte1-adios-notion-content-ops",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "5068343",
+      "external_url": "https://dev.to/datalaria/adios-notion-datalaria-pulse-o-la-gestion-editorial-desde-git-5c2o",
+      "canonical_url": "https://datalaria.com/es/posts/pulse-parte1-adios-notion-content-ops/",
+      "published_at_utc": "2026-11-18T20:59:59.477Z"
+    },
+    {
+      "asset_id": "quantitative-risk-matrix-fmea",
+      "slug": "matriz-riesgos-amfe-fmea",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "5054955",
+      "external_url": "https://dev.to/datalaria/quantitative-risk-matrix-operational-fmea-iso-31000-aiag-vda-guide-5gce",
+      "canonical_url": "https://datalaria.com/en/posts/quantitative-risk-matrix-fmea/",
+      "published_at_utc": "2026-11-17T07:12:40.247Z"
+    },
+    {
+      "asset_id": "quantitative-risk-matrix-fmea",
+      "slug": "matriz-riesgos-amfe-fmea",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "5054954",
+      "external_url": "https://dev.to/datalaria/matriz-de-riesgos-cuantitativa-y-amfe-fmea-operativo-iso-31000-y-aiag-vda-5b06",
+      "canonical_url": "https://datalaria.com/es/posts/matriz-riesgos-amfe-fmea/",
+      "published_at_utc": "2026-11-17T07:12:39.831Z"
+    },
+    {
+      "asset_id": "autopilot-part10-scriba-pulse-bridge",
+      "slug": "autopilot-parte10-scriba-sindicacion-puente-pulse",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "5040159",
+      "external_url": "https://dev.to/datalaria/autopilot-20-de-crewai-a-pydantic-v2-y-sindicacion-universal-en-python-36ja",
+      "canonical_url": "https://datalaria.com/es/posts/autopilot-parte10-scriba-sindicacion-puente-pulse/",
+      "published_at_utc": "2026-11-15T07:40:57.244Z"
+    },
+    {
+      "asset_id": "autopilot-part10-scriba-pulse-bridge",
+      "slug": "autopilot-parte10-scriba-sindicacion-puente-pulse",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "5040145",
+      "external_url": "https://dev.to/datalaria/autopilot-20-from-crewai-to-pydantic-v2-and-universal-markdown-syndication-2hlf",
+      "canonical_url": "https://datalaria.com/en/posts/autopilot-part10-scriba-syndication-pulse-bridge/",
+      "published_at_utc": "2026-11-15T07:38:04.034Z"
+    },
+    {
+      "asset_id": "norbert_wiener",
+      "slug": "norbert_wiener",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "5034896",
+      "external_url": "https://dev.to/datalaria/norbert-wiener-cybernetics-feedback-loops-the-ai-control-problem-3pbi",
+      "canonical_url": "https://datalaria.com/en/posts/norbert_wiener/",
+      "published_at_utc": "2026-11-14T09:34:59.360Z"
+    },
+    {
+      "asset_id": "norbert_wiener",
+      "slug": "norbert_wiener",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "5034860",
+      "external_url": "https://dev.to/datalaria/norbert-wiener-cibernetica-feedback-loops-y-el-problema-del-control-en-ia-34d6",
+      "canonical_url": "https://datalaria.com/es/posts/norbert_wiener/",
+      "published_at_utc": "2026-11-14T09:31:14.950Z"
+    },
+    {
+      "asset_id": "quantitative-raci-workload-matrix",
+      "slug": "matriz-raci-balance-carga",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "5027751",
+      "external_url": "https://dev.to/datalaria/quantitative-raci-matrix-operational-workload-balancing-single-accountability-bottleneck-4cg6",
+      "canonical_url": "https://datalaria.com/en/posts/quantitative-raci-workload-matrix/",
+      "published_at_utc": "2026-11-13T07:03:54.431Z"
+    },
+    {
+      "asset_id": "quantitative-raci-workload-matrix",
+      "slug": "matriz-raci-balance-carga",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "5021465",
+      "external_url": "https://dev.to/datalaria/matriz-raci-cuantitativa-balance-de-carga-operativa-unicidad-de-accountable-y-deteccion-de-4p8c",
+      "canonical_url": "https://datalaria.com/es/posts/matriz-raci-balance-carga/",
+      "published_at_utc": "2026-11-12T07:10:18.257Z"
+    },
+    {
+      "asset_id": "agentes_ia_operativa_sdd",
+      "slug": "agentes_ia_operativa_sdd",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "5016110",
+      "external_url": "https://dev.to/datalaria/how-to-build-ai-agents-for-daily-enterprise-operations-from-sops-to-spec-driven-development-sdd-3jki",
+      "canonical_url": "https://datalaria.com/en/posts/agentes_ia_operativa_sdd/",
+      "published_at_utc": "2026-11-11T09:51:37.278Z"
+    },
+    {
+      "asset_id": "agentes_ia_operativa_sdd",
+      "slug": "agentes_ia_operativa_sdd",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "5015251",
+      "external_url": "https://dev.to/datalaria/como-crear-agentes-de-ia-para-la-operativa-empresarial-del-dia-a-dia-de-los-sops-al-desarrollo-con-2nek",
+      "canonical_url": "https://datalaria.com/es/posts/agentes_ia_operativa_sdd/",
+      "published_at_utc": "2026-11-11T07:17:41.275Z"
+    },
+    {
+      "asset_id": "decision-making-prioritization-quantitative-framework",
+      "slug": "toma-decisiones-priorizacion-framework-cuantitativo",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "5003264",
+      "external_url": "https://dev.to/datalaria/rational-decision-making-prioritization-the-3-tier-quantitative-framework-li4",
+      "canonical_url": "https://datalaria.com/en/posts/decision-making-prioritization-quantitative-framework/",
+      "published_at_utc": "2026-11-09T08:43:22.797Z"
+    },
+    {
+      "asset_id": "decision-making-prioritization-quantitative-framework",
+      "slug": "toma-decisiones-priorizacion-framework-cuantitativo",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "5002806",
+      "external_url": "https://dev.to/datalaria/toma-de-decisiones-racional-priorizacion-el-framework-cuantitativo-de-3-niveles-2359",
+      "canonical_url": "https://datalaria.com/es/posts/toma-decisiones-priorizacion-framework-cuantitativo/",
+      "published_at_utc": "2026-11-09T06:59:20.187Z"
+    },
+    {
+      "asset_id": "business-case-financiero-van-tir",
+      "slug": "business-case-financiero-van-tir",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4997986",
+      "external_url": "https://dev.to/datalaria/financial-business-case-how-to-calculate-npv-irr-discounted-payback-and-tornado-sensitivity-20p",
+      "canonical_url": "https://datalaria.com/en/posts/financial-business-case-npv-irr/",
+      "published_at_utc": "2026-11-08T10:04:43.415Z"
+    },
+    {
+      "asset_id": "business-case-financiero-van-tir",
+      "slug": "business-case-financiero-van-tir",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4997879",
+      "external_url": "https://dev.to/datalaria/business-case-financiero-como-calcular-van-tir-payback-descontado-y-analisis-de-sensibilidad-273l",
+      "canonical_url": "https://datalaria.com/es/posts/business-case-financiero-van-tir/",
+      "published_at_utc": "2026-11-08T09:27:39.399Z"
+    },
+    {
+      "asset_id": "her",
+      "slug": "her",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4992838",
+      "external_url": "https://dev.to/datalaria/her-emotional-attachment-invisible-interfaces-and-the-inevitable-divergence-of-agi-59mj",
+      "canonical_url": "https://www.datalaria.com/en/posts/her/",
+      "published_at_utc": "2026-11-07T09:33:21.205Z"
+    },
+    {
+      "asset_id": "her",
+      "slug": "her",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4992568",
+      "external_url": "https://dev.to/datalaria/her-apego-emocional-interfaces-invisibles-y-la-inevitable-divergencia-de-la-agi-1o64",
+      "canonical_url": "https://www.datalaria.com/es/posts/her/",
+      "published_at_utc": "2026-11-07T08:10:45.880Z"
+    },
+    {
+      "asset_id": "matriz-rice-ice-priorizacion",
+      "slug": "matriz-rice-ice-priorizacion",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4986579",
+      "external_url": "https://dev.to/datalaria/rice-ice-agile-prioritization-matrix-quantitative-backlog-impact-vs-effort-matrix-capacity-1lg0",
+      "canonical_url": "https://datalaria.com/en/posts/rice-ice-prioritization-matrix/",
+      "published_at_utc": "2026-11-06T07:03:12.002Z"
+    },
+    {
+      "asset_id": "matriz-rice-ice-priorizacion",
+      "slug": "matriz-rice-ice-priorizacion",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4980024",
+      "external_url": "https://dev.to/datalaria/matriz-rice-ice-de-priorizacion-agil-backlog-cuantitativo-matriz-impacto-vs-esfuerzo-y-linea-2jll",
+      "canonical_url": "https://datalaria.com/es/posts/matriz-rice-ice-priorizacion/",
+      "published_at_utc": "2026-11-05T07:08:39.094Z"
+    },
+    {
+      "asset_id": "sdd_vs_vibe_coding",
+      "slug": "sdd_vs_vibe_coding",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4974221",
+      "external_url": "https://dev.to/datalaria/sdd-spec-driven-development-vs-vibe-coding-engineering-robust-software-with-ai-in-2026-1gcj",
+      "canonical_url": "https://datalaria.com/en/posts/sdd_vs_vibe_coding/",
+      "published_at_utc": "2026-11-04T08:32:52.434Z"
+    },
+    {
+      "asset_id": "sdd_vs_vibe_coding",
+      "slug": "sdd_vs_vibe_coding",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4973952",
+      "external_url": "https://dev.to/datalaria/sdd-spec-driven-development-vs-vibe-coding-como-desarrollar-software-robusto-con-ia-en-2026-bo2",
+      "canonical_url": "https://datalaria.com/es/posts/sdd_vs_vibe_coding/",
+      "published_at_utc": "2026-11-04T07:47:31.564Z"
+    },
+    {
+      "asset_id": "matriz-dar-cuantitativa",
+      "slug": "matriz-dar-cuantitativa",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4962310",
+      "external_url": "https://dev.to/datalaria/quantitative-dar-matrix-decision-analysis-resolution-veto-criteria-c-suite-multi-criteria-3f3",
+      "canonical_url": "https://datalaria.com/en/posts/quantitative-dar-matrix/",
+      "published_at_utc": "2026-11-02T10:24:49.430Z"
+    },
+    {
+      "asset_id": "matriz-dar-cuantitativa",
+      "slug": "matriz-dar-cuantitativa",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4961816",
+      "external_url": "https://dev.to/datalaria/matriz-dar-cuantitativa-criterios-veto-ponderacion-multicriterio-y-analisis-de-decisiones-c-level-af4",
+      "canonical_url": "https://datalaria.com/es/posts/matriz-dar-cuantitativa/",
+      "published_at_utc": "2026-11-02T08:45:10.863Z"
+    },
+    {
+      "asset_id": "corporate-strategy-mba-quantitative-framework",
+      "slug": "estrategia-corporativa-mba-framework-cuantitativo",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4956958",
+      "external_url": "https://dev.to/datalaria/quantitative-corporate-strategy-the-5-step-executive-framework-for-boardrooms-38o4",
+      "canonical_url": "https://datalaria.com/en/posts/corporate-strategy-mba-quantitative-framework/",
+      "published_at_utc": "2026-11-01T10:33:40.959Z"
+    },
+    {
+      "asset_id": "corporate-strategy-mba-quantitative-framework",
+      "slug": "estrategia-corporativa-mba-framework-cuantitativo",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4956554",
+      "external_url": "https://dev.to/datalaria/estrategia-corporativa-cuantitativa-el-framework-integral-de-5-pasos-para-comites-de-direccion-4mic",
+      "canonical_url": "https://datalaria.com/es/posts/estrategia-corporativa-mba-framework-cuantitativo/",
+      "published_at_utc": "2026-11-01T08:26:34.587Z"
+    },
+    {
+      "asset_id": "kurt_godel",
+      "slug": "kurt_godel",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4951937",
+      "external_url": "https://dev.to/datalaria/kurt-godel-the-incompleteness-theorems-the-limits-of-logic-and-can-an-agi-ever-know-everything-4bnn",
+      "canonical_url": "https://datalaria.com/en/posts/kurt_godel/",
+      "published_at_utc": "2026-10-31T09:34:07.740Z"
+    },
+    {
+      "asset_id": "kurt_godel",
+      "slug": "kurt_godel",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4951747",
+      "external_url": "https://dev.to/datalaria/kurt-godel-el-teorema-de-la-incompletitud-los-limites-de-la-logica-y-si-una-agi-podra-jamas-4c58",
+      "canonical_url": "https://datalaria.com/es/posts/kurt_godel/",
+      "published_at_utc": "2026-10-31T08:46:00.588Z"
+    },
+    {
+      "asset_id": "mckinsey-ge-matrix",
+      "slug": "matriz-mckinsey-ge",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4945537",
+      "external_url": "https://dev.to/datalaria/mckinsey-ge-3x3-matrix-industry-attractiveness-business-unit-strength-c-level-capital-m4g",
+      "canonical_url": "https://datalaria.com/en/posts/mckinsey-ge-matrix/",
+      "published_at_utc": "2026-10-30T07:07:43.745Z"
+    },
+    {
+      "asset_id": "mckinsey-ge-matrix",
+      "slug": "matriz-mckinsey-ge",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4939210",
+      "external_url": "https://dev.to/datalaria/matriz-mckinsey-ge-3x3-atractivo-de-la-industria-fortaleza-competitiva-y-asignacion-de-capital-4j92",
+      "canonical_url": "https://datalaria.com/es/posts/matriz-mckinsey-ge/",
+      "published_at_utc": "2026-10-29T07:20:01.788Z"
+    },
+    {
+      "asset_id": "app-lifeops_part6_analytics_dashboard_360",
+      "slug": "app-lifeops_part6_analytics_dashboard_360",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4933141",
+      "external_url": "https://dev.to/datalaria/lifeops-project-part-6-360deg-analytics-dashboard-with-multi-dimensional-filtering-recharts-and-1mae",
+      "canonical_url": "https://datalaria.com/en/posts/app-lifeops_part6_analytics_dashboard_360/",
+      "published_at_utc": "2026-10-28T08:16:22.372Z"
+    },
+    {
+      "asset_id": "app-lifeops_part6_analytics_dashboard_360",
+      "slug": "app-lifeops_part6_analytics_dashboard_360",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4932911",
+      "external_url": "https://dev.to/datalaria/proyecto-lifeops-parte-6-dashboard-360deg-con-analitica-multidimensional-recharts-y-mitigacion-de-1kil",
+      "canonical_url": "https://datalaria.com/es/posts/app-lifeops_part6_analytics_dashboard_360/",
+      "published_at_utc": "2026-10-28T07:35:02.910Z"
+    },
+    {
+      "asset_id": "dynamic-bcg-matrix",
+      "slug": "matriz-bcg-dinamica",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4926276",
+      "external_url": "https://dev.to/datalaria/dynamic-bcg-portfolio-matrix-experience-curve-liquidity-balance-c-level-capital-allocation-1kkb",
+      "canonical_url": "https://datalaria.com/en/posts/dynamic-bcg-matrix/",
+      "published_at_utc": "2026-10-27T06:49:19.688Z"
+    },
+    {
+      "asset_id": "dynamic-bcg-matrix",
+      "slug": "matriz-bcg-dinamica",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4919517",
+      "external_url": "https://dev.to/datalaria/matriz-bcg-dinamica-gestion-de-cartera-curva-de-experiencia-y-asignacion-de-capital-c-level-1kj8",
+      "canonical_url": "https://datalaria.com/es/posts/matriz-bcg-dinamica/",
+      "published_at_utc": "2026-10-26T06:30:14.171Z"
+    },
+    {
+      "asset_id": "ravenpack",
+      "slug": "ravenpack",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4909308",
+      "external_url": "https://dev.to/datalaria/ravenpack-from-news-analytics-in-marbella-to-wall-streets-quantitative-brain-and-autonomous-1dd7",
+      "canonical_url": "https://datalaria.com/en/posts/ravenpack/",
+      "published_at_utc": "2026-10-24T07:55:16.429Z"
+    },
+    {
+      "asset_id": "ravenpack",
+      "slug": "ravenpack",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4909238",
+      "external_url": "https://dev.to/datalaria/ravenpack-de-la-analitica-de-noticias-en-marbella-al-cerebro-cuantitativo-de-wall-street-y-los-1gj",
+      "canonical_url": "https://datalaria.com/es/posts/ravenpack/",
+      "published_at_utc": "2026-10-24T07:34:36.048Z"
+    },
+    {
+      "asset_id": "quantitative-pestel-matrix",
+      "slug": "matriz-pestel-cuantitativa",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4903126",
+      "external_url": "https://dev.to/datalaria/quantitative-pestel-matrix-severity-volatility-macro-risk-for-executive-boardrooms-c-level-3d4c",
+      "canonical_url": "https://datalaria.com/en/posts/quantitative-pestel-matrix/",
+      "published_at_utc": "2026-10-23T05:56:48.196Z"
+    },
+    {
+      "asset_id": "quantitative-pestel-matrix",
+      "slug": "matriz-pestel-cuantitativa",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4894318",
+      "external_url": "https://dev.to/datalaria/matriz-pestel-cuantitativa-severidad-volatilidad-y-riesgo-macro-para-comites-de-direccion-j2k",
+      "canonical_url": "https://datalaria.com/es/posts/matriz-pestel-cuantitativa/",
+      "published_at_utc": "2026-10-22T06:23:22.752Z"
+    },
+    {
+      "asset_id": "quantitative-porter-5-forces",
+      "slug": "5-fuerzas-porter-cuantitativas",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4881475",
+      "external_url": "https://dev.to/datalaria/weighted-porters-5-forces-industry-attractiveness-matrix-the-definitive-c-suite-quantitative-36no",
+      "canonical_url": "https://datalaria.com/en/posts/quantitative-porter-5-forces/",
+      "published_at_utc": "2026-10-20T06:03:17.888Z"
+    },
+    {
+      "asset_id": "quantitative-porter-5-forces",
+      "slug": "5-fuerzas-porter-cuantitativas",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4875596",
+      "external_url": "https://dev.to/datalaria/5-fuerzas-de-porter-ponderadas-y-atractivo-de-industria-la-guia-cuantitativa-definitiva-para-4b0j",
+      "canonical_url": "https://datalaria.com/es/posts/5-fuerzas-porter-cuantitativas/",
+      "published_at_utc": "2026-10-19T05:56:30.304Z"
+    },
+    {
+      "asset_id": "ex_machina",
+      "slug": "ex_machina",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4860400",
+      "external_url": "https://dev.to/datalaria/ex-machina-the-physical-turing-test-theory-of-mind-and-the-emotional-jailbreak-of-ai-415h",
+      "canonical_url": "https://datalaria.com/en/posts/ex_machina/",
+      "published_at_utc": "2026-10-16T06:29:40.792Z"
+    },
+    {
+      "asset_id": "ex_machina",
+      "slug": "ex_machina",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4860359",
+      "external_url": "https://dev.to/datalaria/ex-machina-el-test-de-turing-fisico-la-teoria-de-la-mente-y-el-jailbreak-emocional-de-la-ia-4enl",
+      "canonical_url": "https://datalaria.com/es/posts/ex_machina/",
+      "published_at_utc": "2026-10-16T06:21:05.268Z"
+    },
+    {
+      "asset_id": "quantitative-swot-tows-matrix",
+      "slug": "dafo-cuantitativo-matriz-came",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4854286",
+      "external_url": "https://dev.to/datalaria/quantitative-swot-tows-matrix-the-definitive-c-level-guide-to-boardroom-strategy-capital-13hi",
+      "canonical_url": "https://datalaria.com/en/posts/quantitative-swot-tows-matrix/",
+      "published_at_utc": "2026-10-15T05:58:36.340Z"
+    },
+    {
+      "asset_id": "quantitative-swot-tows-matrix",
+      "slug": "dafo-cuantitativo-matriz-came",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4851911",
+      "external_url": "https://dev.to/datalaria/dafo-cuantitativo-y-matriz-came-la-guia-definitiva-de-decision-estrategica-para-comites-de-3a6g",
+      "canonical_url": "https://datalaria.com/es/posts/dafo-cuantitativo-matriz-came/",
+      "published_at_utc": "2026-10-14T17:57:17.613Z"
+    },
+    {
+      "asset_id": "john_von_neumann",
+      "slug": "john_von_neumann",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4827064",
+      "external_url": "https://dev.to/datalaria/john-von-neumann-the-father-of-computer-architecture-game-theory-and-the-origin-of-the-p17",
+      "canonical_url": "https://datalaria.com/en/posts/john_von_neumann/",
+      "published_at_utc": "2026-10-10T07:01:45.247Z"
+    },
+    {
+      "asset_id": "john_von_neumann",
+      "slug": "john_von_neumann",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4827037",
+      "external_url": "https://dev.to/datalaria/john-von-neumann-el-padre-de-la-arquitectura-de-computadores-la-teoria-de-juegos-y-el-origen-de-31nh",
+      "canonical_url": "https://datalaria.com/es/posts/john_von_neumann/",
+      "published_at_utc": "2026-10-10T06:54:20.344Z"
+    },
+    {
+      "asset_id": "submer",
+      "slug": "submer",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4815953",
+      "external_url": "https://dev.to/datalaria/submer-the-barcelona-born-immersion-cooling-powering-agi-supercomputers-5af7",
+      "canonical_url": "https://datalaria.com/en/posts/submer/",
+      "published_at_utc": "2026-10-08T06:23:42.901Z"
+    },
+    {
+      "asset_id": "submer",
+      "slug": "submer",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4815910",
+      "external_url": "https://dev.to/datalaria/submer-la-refrigeracion-liquida-nacida-en-barcelona-que-permite-enfriar-los-superordenadores-de-la-4p6m",
+      "canonical_url": "https://datalaria.com/es/posts/submer/",
+      "published_at_utc": "2026-10-08T06:18:04.806Z"
+    },
+    {
+      "asset_id": "evaluacion_agentes_ia",
+      "slug": "evaluacion_agentes_ia",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4804788",
+      "external_url": "https://dev.to/datalaria/evaluating-and-testing-ai-agents-in-production-how-to-measure-the-unpredictable-2ble",
+      "canonical_url": "https://datalaria.com/en/posts/evaluating_ai_agents/",
+      "published_at_utc": "2026-10-06T06:02:52.922Z"
+    },
+    {
+      "asset_id": "evaluacion_agentes_ia",
+      "slug": "evaluacion_agentes_ia",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4804761",
+      "external_url": "https://dev.to/datalaria/evaluacion-y-testing-de-agentes-de-ia-en-produccion-como-medir-lo-impredecible-492e",
+      "canonical_url": "https://datalaria.com/es/posts/evaluacion_agentes_ia/",
+      "published_at_utc": "2026-10-06T05:57:41.941Z"
+    },
+    {
+      "asset_id": "oppenheimer",
+      "slug": "oppenheimer",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4790951",
+      "external_url": "https://dev.to/datalaria/j-robert-oppenheimer-from-the-monte-carlo-simulation-in-los-alamos-to-the-ethical-dilemma-of-agi-127c",
+      "canonical_url": "https://datalaria.com/en/posts/oppenheimer/",
+      "published_at_utc": "2026-10-03T07:42:03.166Z"
+    },
+    {
+      "asset_id": "oppenheimer",
+      "slug": "oppenheimer",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4790930",
+      "external_url": "https://dev.to/datalaria/j-robert-oppenheimer-de-la-simulacion-de-monte-carlo-en-los-alamos-al-dilema-etico-de-la-agi-13o8",
+      "canonical_url": "https://datalaria.com/es/posts/oppenheimer/",
+      "published_at_utc": "2026-10-03T07:36:12.521Z"
+    },
+    {
+      "asset_id": "happyrobot",
+      "slug": "happyrobot",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4775502",
+      "external_url": "https://dev.to/datalaria/happyrobot-how-autonomous-voice-agents-conquered-global-logistics-155j",
+      "canonical_url": "https://datalaria.com/en/posts/happyrobot/",
+      "published_at_utc": "2026-09-30T06:14:24.324Z"
+    },
+    {
+      "asset_id": "happyrobot",
+      "slug": "happyrobot",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4775468",
+      "external_url": "https://dev.to/datalaria/happyrobot-como-los-agentes-de-voz-autonomos-conquistaron-la-logistica-global-hbf",
+      "canonical_url": "https://datalaria.com/es/posts/happyrobot/",
+      "published_at_utc": "2026-09-30T06:09:19.935Z"
+    },
+    {
+      "asset_id": "silicon_valley",
+      "slug": "silicon_valley",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4754515",
+      "external_url": "https://dev.to/datalaria/silicon-valley-and-the-pipernet-dilemma-the-prophecy-of-runaway-ai-and-real-world-agent-exploits-4556",
+      "canonical_url": "https://datalaria.com/en/posts/silicon_valley/",
+      "published_at_utc": "2026-09-27T07:34:41.995Z"
+    },
+    {
+      "asset_id": "silicon_valley",
+      "slug": "silicon_valley",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4754475",
+      "external_url": "https://dev.to/datalaria/silicon-valley-y-el-dilema-de-pipernet-la-profecia-de-la-ia-incontrolable-y-los-incidentes-con-f0f",
+      "canonical_url": "https://datalaria.com/es/posts/silicon_valley/",
+      "published_at_utc": "2026-09-27T07:23:24.101Z"
+    },
+    {
+      "asset_id": "graphrag",
+      "slug": "graphrag",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4738927",
+      "external_url": "https://dev.to/datalaria/graphrag-why-vectors-arent-enough-and-your-ai-needs-a-knowledge-graph-2i70",
+      "canonical_url": "https://datalaria.com/en/posts/graphrag/",
+      "published_at_utc": "2026-09-25T06:15:27.162Z"
+    },
+    {
+      "asset_id": "graphrag",
+      "slug": "graphrag",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4738874",
+      "external_url": "https://dev.to/datalaria/graphrag-por-que-los-vectores-no-bastan-y-tu-ia-necesita-un-grafo-de-conocimiento-16lf",
+      "canonical_url": "https://datalaria.com/es/posts/graphrag/",
+      "published_at_utc": "2026-09-25T06:09:29.615Z"
+    },
+    {
+      "asset_id": "pgvector_vs_vectordb",
+      "slug": "pgvector_vs_vectordb",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4712790",
+      "external_url": "https://dev.to/datalaria/postgresql-with-pgvector-vs-vector-dbs-why-almost-nobody-needs-pinecone-42jj",
+      "canonical_url": "https://datalaria.com/en/posts/pgvector_vs_vectordb/",
+      "published_at_utc": "2026-09-22T06:20:34.037Z"
+    },
+    {
+      "asset_id": "pgvector_vs_vectordb",
+      "slug": "pgvector_vs_vectordb",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4712729",
+      "external_url": "https://dev.to/datalaria/postgresql-con-pgvector-vs-vector-dbs-por-que-casi-nadie-necesita-pinecone-4gg7",
+      "canonical_url": "https://datalaria.com/es/posts/pgvector_vs_vectordb/",
+      "published_at_utc": "2026-09-22T06:13:01.809Z"
+    },
+    {
+      "asset_id": "alan_turing",
+      "slug": "alan_turing",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4698001",
+      "external_url": "https://dev.to/datalaria/alan-turing-the-genius-who-broke-enigma-and-asked-if-machines-could-think-294",
+      "canonical_url": "https://datalaria.com/en/posts/alan_turing/",
+      "published_at_utc": "2026-09-20T06:34:17.215Z"
+    },
+    {
+      "asset_id": "alan_turing",
+      "slug": "alan_turing",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4697979",
+      "external_url": "https://dev.to/datalaria/alan-turing-el-genio-que-rompio-enigma-y-pregunto-si-las-maquinas-podian-pensar-f4h",
+      "canonical_url": "https://datalaria.com/es/posts/alan_turing/",
+      "published_at_utc": "2026-09-20T06:27:55.852Z"
+    },
+    {
+      "asset_id": "app-lifeops_part5_deploy_mobile_pwa",
+      "slug": "app-lifeops_part5_deploy_mobile_pwa",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4693047",
+      "external_url": "https://dev.to/datalaria/project-lifeops-part-5-247-zero-cost-cloud-deployment-0month-mobile-optimization-and-pwa-403n",
+      "canonical_url": "https://datalaria.com/en/posts/app-lifeops_part5_deploy_mobile_pwa/",
+      "published_at_utc": "2026-09-19T10:02:09.687Z"
+    },
+    {
+      "asset_id": "app-lifeops_part5_deploy_mobile_pwa",
+      "slug": "app-lifeops_part5_deploy_mobile_pwa",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4692984",
+      "external_url": "https://dev.to/datalaria/proyecto-lifeops-parte-5-despliegue-247-en-la-nube-a-coste-cero-0mes-optimizacion-movil-y-4h9p",
+      "canonical_url": "https://datalaria.com/es/posts/app-lifeops_part5_deploy_mobile_pwa/",
+      "published_at_utc": "2026-09-19T09:56:32.353Z"
+    },
+    {
+      "asset_id": "app-lifeops_part4_informes_word_excel",
+      "slug": "app-lifeops_part4_informes_word_excel",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4686041",
+      "external_url": "https://dev.to/datalaria/project-lifeops-part-4-executive-word-docx-reporting-engine-and-multi-sheet-excel-xlsx-1aha",
+      "canonical_url": "https://datalaria.com/en/posts/app-lifeops_part4_informes_word_excel/",
+      "published_at_utc": "2026-09-18T13:52:24.961Z"
+    },
+    {
+      "asset_id": "app-lifeops_part4_informes_word_excel",
+      "slug": "app-lifeops_part4_informes_word_excel",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4686008",
+      "external_url": "https://dev.to/datalaria/proyecto-lifeops-parte-4-motor-de-informes-ejecutivos-en-word-docx-y-exportacion-multi-hoja-8ag",
+      "canonical_url": "https://datalaria.com/es/posts/app-lifeops_part4_informes_word_excel/",
+      "published_at_utc": "2026-09-18T13:45:31.222Z"
+    },
+    {
+      "asset_id": "app-lifeops_part3_modulos_kanban",
+      "slug": "app-lifeops_part3_modulos_kanban",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4655835",
+      "external_url": "https://dev.to/datalaria/project-lifeops-part-3-core-interactive-modules-fitness-library-cinema-and-professional-19fg",
+      "canonical_url": "https://datalaria.com/en/posts/app-lifeops_part3_modulos_kanban/",
+      "published_at_utc": "2026-09-15T06:06:22.794Z"
+    },
+    {
+      "asset_id": "app-lifeops_part3_modulos_kanban",
+      "slug": "app-lifeops_part3_modulos_kanban",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4655744",
+      "external_url": "https://dev.to/datalaria/proyecto-lifeops-parte-3-modulos-interactivos-deporte-biblioteca-cine-y-tablero-kanban-58ga",
+      "canonical_url": "https://datalaria.com/es/posts/app-lifeops_part3_modulos_kanban/",
+      "published_at_utc": "2026-09-15T05:56:58.294Z"
+    },
+    {
+      "asset_id": "app-lifeops_part2_frontend_dashboard",
+      "slug": "app-lifeops_part2_frontend_dashboard",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4643517",
+      "external_url": "https://dev.to/datalaria/project-lifeops-part-2-react-frontend-with-glassmorphism-360deg-dashboard-and-dark-mode-design-2b7n",
+      "canonical_url": "https://datalaria.com/en/posts/app-lifeops_part2_frontend_dashboard/",
+      "published_at_utc": "2026-09-13T12:06:06.223Z"
+    },
+    {
+      "asset_id": "app-lifeops_part2_frontend_dashboard",
+      "slug": "app-lifeops_part2_frontend_dashboard",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4643471",
+      "external_url": "https://dev.to/datalaria/proyecto-lifeops-parte-2-frontend-react-con-glassmorphism-dashboard-360deg-y-sistema-de-diseno-4ljd",
+      "canonical_url": "https://datalaria.com/es/posts/app-lifeops_part2_frontend_dashboard/",
+      "published_at_utc": "2026-09-13T11:56:57.966Z"
+    },
+    {
+      "asset_id": "app-lifeops_part1_arquitectura_backend",
+      "slug": "app-lifeops_part1_arquitectura_backend",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4625679",
+      "external_url": "https://dev.to/datalaria/project-lifeops-part-1-personal-operating-system-architecture-and-fastapi-supabase-backend-1ae9",
+      "canonical_url": "https://datalaria.com/en/posts/app-lifeops_part1_arquitectura_backend/",
+      "published_at_utc": "2026-09-10T17:00:59.431Z"
+    },
+    {
+      "asset_id": "app-lifeops_part1_arquitectura_backend",
+      "slug": "app-lifeops_part1_arquitectura_backend",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4625638",
+      "external_url": "https://dev.to/datalaria/proyecto-lifeops-parte-1-arquitectura-de-un-sistema-operativo-personal-y-backend-con-fastapi--4i82",
+      "canonical_url": "https://datalaria.com/es/posts/app-lifeops_part1_arquitectura_backend/",
+      "published_at_utc": "2026-09-10T16:53:16.529Z"
+    },
+    {
+      "asset_id": "devs",
+      "slug": "devs",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4587033",
+      "external_url": "https://dev.to/datalaria/devs-quantum-computing-determinism-and-the-multiverse-nightmare-1khg",
+      "canonical_url": "https://datalaria.com/en/posts/devs/",
+      "published_at_utc": "2026-09-06T09:36:48.042Z"
+    },
+    {
+      "asset_id": "devs",
+      "slug": "devs",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4587002",
+      "external_url": "https://dev.to/datalaria/devs-computacion-cuantica-determinismo-y-la-pesadilla-de-los-multiversos-1ido",
+      "canonical_url": "https://datalaria.com/es/posts/devs/",
+      "published_at_utc": "2026-09-06T09:29:15.555Z"
+    },
+    {
+      "asset_id": "wallapop",
+      "slug": "wallapop",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4536360",
+      "external_url": "https://dev.to/datalaria/wallapop-the-invisible-engineering-behind-europes-largest-circular-marketplace-14ee",
+      "canonical_url": "https://datalaria.com/en/posts/wallapop/",
+      "published_at_utc": "2026-08-31T11:03:18.484Z"
+    },
+    {
+      "asset_id": "wallapop",
+      "slug": "wallapop",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4536280",
+      "external_url": "https://dev.to/datalaria/wallapop-la-ingenieria-invisible-detras-del-mayor-marketplace-circular-de-europa-3fbd",
+      "canonical_url": "https://datalaria.com/es/posts/wallapop/",
+      "published_at_utc": "2026-08-31T10:57:35.576Z"
+    },
+    {
+      "asset_id": "halt_and_catch_fire",
+      "slug": "halt_and_catch_fire",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4521612",
+      "external_url": "https://dev.to/datalaria/halt-and-catch-fire-the-cult-tv-series-that-understood-software-engineering-better-than-silicon-8bd",
+      "canonical_url": "https://datalaria.com/en/posts/halt_and_catch_fire/",
+      "published_at_utc": "2026-08-29T11:51:14.614Z"
+    },
+    {
+      "asset_id": "halt_and_catch_fire",
+      "slug": "halt_and_catch_fire",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4521564",
+      "external_url": "https://dev.to/datalaria/halt-and-catch-fire-la-serie-de-culto-que-entendio-la-ingenieria-de-software-mejor-que-silicon-46lb",
+      "canonical_url": "https://datalaria.com/es/posts/halt_and_catch_fire/",
+      "published_at_utc": "2026-08-29T11:42:05.704Z"
+    },
+    {
+      "asset_id": "mlops_para_ingenieros",
+      "slug": "mlops_para_ingenieros",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4507218",
+      "external_url": "https://dev.to/datalaria/mlops-for-engineers-how-to-take-an-ai-model-from-jupyter-to-production-without-dying-in-the-attempt-3j9j",
+      "canonical_url": "https://datalaria.com/en/posts/mlops_for_engineers/",
+      "published_at_utc": "2026-08-27T19:02:40.017Z"
+    },
+    {
+      "asset_id": "mlops_para_ingenieros",
+      "slug": "mlops_para_ingenieros",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4507096",
+      "external_url": "https://dev.to/datalaria/mlops-para-ingenieros-como-llevar-un-modelo-de-ia-de-jupyter-a-produccion-sin-morir-en-el-intento-281h",
+      "canonical_url": "https://datalaria.com/es/posts/mlops_para_ingenieros/",
+      "published_at_utc": "2026-08-27T18:37:09.908Z"
+    },
+    {
+      "asset_id": "ada_lovelace",
+      "slug": "ada_lovelace",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4477460",
+      "external_url": "https://dev.to/datalaria/ada-lovelace-the-countess-who-programmed-the-future-100-years-before-computers-existed-34gi",
+      "canonical_url": "https://datalaria.com/en/posts/ada_lovelace/",
+      "published_at_utc": "2026-08-24T17:31:45.873Z"
+    },
+    {
+      "asset_id": "ada_lovelace",
+      "slug": "ada_lovelace",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4477427",
+      "external_url": "https://dev.to/datalaria/ada-lovelace-la-condesa-que-programo-el-futuro-100-anos-antes-de-que-existieran-los-ordenadores-1hhk",
+      "canonical_url": "https://datalaria.com/es/posts/ada_lovelace/",
+      "published_at_utc": "2026-08-24T17:25:53.090Z"
+    },
+    {
+      "asset_id": "prompt_injection",
+      "slug": "prompt_injection",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4402981",
+      "external_url": "https://dev.to/datalaria/prompt-injection-the-vulnerability-your-ai-agent-doesnt-know-it-has-1n74",
+      "canonical_url": "https://datalaria.com/en/posts/prompt_injection/",
+      "published_at_utc": "2026-08-15T10:20:11.244Z"
+    },
+    {
+      "asset_id": "prompt_injection",
+      "slug": "prompt_injection",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4402947",
+      "external_url": "https://dev.to/datalaria/prompt-injection-la-vulnerabilidad-que-tu-agente-de-ia-no-sabe-que-tiene-287h",
+      "canonical_url": "https://datalaria.com/es/posts/prompt_injection/",
+      "published_at_utc": "2026-08-15T10:14:05.850Z"
+    },
+    {
+      "asset_id": "finetuning_vs_rag",
+      "slug": "finetuning_vs_rag",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4353970",
+      "external_url": "https://dev.to/datalaria/fine-tuning-vs-prompt-engineering-vs-rag-when-to-use-each-and-the-fourth-option-nobody-mentions-m72",
+      "canonical_url": "https://datalaria.com/en/posts/finetuning_vs_rag/",
+      "published_at_utc": "2026-08-09T14:32:58.621Z"
+    },
+    {
+      "asset_id": "finetuning_vs_rag",
+      "slug": "finetuning_vs_rag",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4353951",
+      "external_url": "https://dev.to/datalaria/fine-tuning-vs-prompt-engineering-vs-rag-cuando-usar-cada-uno-y-la-cuarta-opcion-que-nadie-29dn",
+      "canonical_url": "https://datalaria.com/es/posts/finetuning_vs_rag/",
+      "published_at_utc": "2026-08-09T14:28:43.052Z"
+    },
+    {
+      "asset_id": "stack_productividad_2026",
+      "slug": "stack_productividad_2026",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4289169",
+      "external_url": "https://dev.to/datalaria/an-engineers-productivity-stack-in-2026-the-tools-i-use-every-day-1fo5",
+      "canonical_url": "https://datalaria.com/en/posts/productivity_stack_2026/",
+      "published_at_utc": "2026-08-01T18:48:01.620Z"
+    },
+    {
+      "asset_id": "stack_productividad_2026",
+      "slug": "stack_productividad_2026",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4289135",
+      "external_url": "https://dev.to/datalaria/el-stack-de-productividad-de-un-ingeniero-en-2026-las-herramientas-que-uso-cada-dia-4fn3",
+      "canonical_url": "https://datalaria.com/es/posts/stack_productividad_2026/",
+      "published_at_utc": "2026-08-01T18:43:23.288Z"
+    },
+    {
+      "asset_id": "flywire",
+      "slug": "flywire",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4237239",
+      "external_url": "https://dev.to/datalaria/flywire-how-a-spaniard-built-the-brain-of-international-payments-from-boston-1kk9",
+      "canonical_url": "https://datalaria.com/en/posts/flywire/",
+      "published_at_utc": "2026-07-26T14:29:18.880Z"
+    },
+    {
+      "asset_id": "flywire",
+      "slug": "flywire",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4237106",
+      "external_url": "https://dev.to/datalaria/flywire-como-un-espanol-construyo-desde-boston-el-cerebro-de-los-pagos-internacionales-4mhl",
+      "canonical_url": "https://datalaria.com/es/posts/flywire/",
+      "published_at_utc": "2026-07-26T14:09:16.897Z"
+    },
+    {
+      "asset_id": "thomas_bayes",
+      "slug": "thomas_bayes",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4174449",
+      "external_url": "https://dev.to/datalaria/thomas-bayes-the-reverend-who-taught-us-to-update-our-beliefs-with-data-2l70",
+      "canonical_url": "https://datalaria.com/en/posts/thomas_bayes/",
+      "published_at_utc": "2026-07-18T15:02:17.406Z"
+    },
+    {
+      "asset_id": "thomas_bayes",
+      "slug": "thomas_bayes",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4174418",
+      "external_url": "https://dev.to/datalaria/thomas-bayes-el-reverendo-que-nos-enseno-a-actualizar-nuestras-creencias-con-datos-31g1",
+      "canonical_url": "https://datalaria.com/es/posts/thomas_bayes/",
+      "published_at_utc": "2026-07-18T14:56:46.044Z"
+    },
+    {
+      "asset_id": "rag_antipatrones",
+      "slug": "rag_antipatrones",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4120423",
+      "external_url": "https://dev.to/datalaria/rag-in-production-7-anti-patterns-that-destroy-precision-and-how-i-fixed-them-26ef",
+      "canonical_url": "https://datalaria.com/en/posts/rag_antipatterns/",
+      "published_at_utc": "2026-07-11T14:28:15.652Z"
+    },
+    {
+      "asset_id": "rag_antipatrones",
+      "slug": "rag_antipatrones",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4120388",
+      "external_url": "https://dev.to/datalaria/rag-en-produccion-7-antipatrones-que-destruyen-la-precision-y-como-los-solucione-5c52",
+      "canonical_url": "https://datalaria.com/es/posts/rag_antipatrones/",
+      "published_at_utc": "2026-07-11T14:21:13.981Z"
+    },
+    {
+      "asset_id": "eu_ai_act",
+      "slug": "eu_ai_act",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4075102",
+      "external_url": "https://dev.to/datalaria/eu-ai-act-what-every-engineer-needs-to-know-no-lawyers-required-1i8m",
+      "canonical_url": "https://datalaria.com/en/posts/eu_ai_act/",
+      "published_at_utc": "2026-07-05T21:36:38.660Z"
+    },
+    {
+      "asset_id": "eu_ai_act",
+      "slug": "eu_ai_act",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4075083",
+      "external_url": "https://dev.to/datalaria/eu-ai-act-lo-que-todo-ingeniero-espanol-necesita-saber-sin-abogados-4k52",
+      "canonical_url": "https://datalaria.com/es/posts/eu_ai_act/",
+      "published_at_utc": "2026-07-05T21:32:28.822Z"
+    },
+    {
+      "asset_id": "mcp_protocol",
+      "slug": "mcp_protocol",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "4011534",
+      "external_url": "https://dev.to/datalaria/mcp-model-context-protocol-the-standard-that-wants-to-be-the-usb-of-artificial-intelligence-57e6",
+      "canonical_url": "https://datalaria.com/en/posts/mcp_protocol/",
+      "published_at_utc": "2026-06-28T10:42:34.545Z"
+    },
+    {
+      "asset_id": "mcp_protocol",
+      "slug": "mcp_protocol",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "4011514",
+      "external_url": "https://dev.to/datalaria/mcp-model-context-protocol-el-estandar-que-quiere-ser-el-usb-de-la-inteligencia-artificial-491j",
+      "canonical_url": "https://datalaria.com/es/posts/mcp_protocol/",
+      "published_at_utc": "2026-06-28T10:35:17.762Z"
+    },
+    {
+      "asset_id": "claude_shannon",
+      "slug": "claude_shannon",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3954446",
+      "external_url": "https://dev.to/datalaria/claude-shannon-the-man-who-turned-the-world-into-bits-and-defined-the-future-of-ai-10kn",
+      "canonical_url": "https://datalaria.com/en/posts/claude_shannon/",
+      "published_at_utc": "2026-06-21T08:20:29.213Z"
+    },
+    {
+      "asset_id": "claude_shannon",
+      "slug": "claude_shannon",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3954396",
+      "external_url": "https://dev.to/datalaria/claude-shannon-el-hombre-que-convirtio-el-mundo-en-bits-y-definio-el-futuro-de-la-ia-12im",
+      "canonical_url": "https://datalaria.com/es/posts/claude_shannon/",
+      "published_at_utc": "2026-06-21T08:15:17.924Z"
+    },
+    {
+      "asset_id": "economia_oculta_ia",
+      "slug": "economia_oculta_ia",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3896665",
+      "external_url": "https://dev.to/datalaria/the-hidden-economics-of-ai-what-it-actually-costs-to-run-llms-in-production-with-real-data-40h9",
+      "canonical_url": "https://datalaria.com/en/posts/hidden_economics_ai/",
+      "published_at_utc": "2026-06-14T08:13:27.785Z"
+    },
+    {
+      "asset_id": "economia_oculta_ia",
+      "slug": "economia_oculta_ia",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3896615",
+      "external_url": "https://dev.to/datalaria/la-economia-oculta-de-la-ia-cuanto-cuesta-realmente-usar-llms-en-produccion-con-datos-reales-47d0",
+      "canonical_url": "https://datalaria.com/es/posts/economia_oculta_ia/",
+      "published_at_utc": "2026-06-14T08:06:44.942Z"
+    },
+    {
+      "asset_id": "devo",
+      "slug": "devo",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3843635",
+      "external_url": "https://dev.to/datalaria/devo-how-a-self-taught-chemist-from-madrid-built-the-data-engine-that-defends-the-us-air-force-epb",
+      "canonical_url": "https://datalaria.com/en/posts/devo/",
+      "published_at_utc": "2026-06-07T21:55:59.216Z"
+    },
+    {
+      "asset_id": "devo",
+      "slug": "devo",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3843619",
+      "external_url": "https://dev.to/datalaria/devo-como-un-quimico-autodidacta-construyo-desde-madrid-el-motor-de-datos-que-defiende-a-la-fuerza-2lof",
+      "canonical_url": "https://datalaria.com/es/posts/devo/",
+      "published_at_utc": "2026-06-07T21:51:21.538Z"
+    },
+    {
+      "asset_id": "deming",
+      "slug": "deming",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3789391",
+      "external_url": "https://dev.to/datalaria/w-edwards-deming-the-father-of-total-quality-who-predicted-the-future-of-ai-1202",
+      "canonical_url": "https://datalaria.com/en/posts/deming/",
+      "published_at_utc": "2026-05-31T13:54:54.521Z"
+    },
+    {
+      "asset_id": "deming",
+      "slug": "deming",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3789377",
+      "external_url": "https://dev.to/datalaria/w-edwards-deming-el-padre-de-la-calidad-total-que-predijo-el-futuro-de-la-ia-532p",
+      "canonical_url": "https://datalaria.com/es/posts/deming/",
+      "published_at_utc": "2026-05-31T13:51:07.276Z"
+    },
+    {
+      "asset_id": "kantorovich",
+      "slug": "kantorovich",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3741431",
+      "external_url": "https://dev.to/datalaria/leonid-kantorovich-the-mathematician-who-challenged-stalin-with-linear-programming-4257",
+      "canonical_url": "https://datalaria.com/en/posts/kantorovich/",
+      "published_at_utc": "2026-05-24T15:19:47.498Z"
+    },
+    {
+      "asset_id": "kantorovich",
+      "slug": "kantorovich",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3741363",
+      "external_url": "https://dev.to/datalaria/leonid-kantorovich-el-matematico-que-desafio-a-stalin-con-la-programacion-lineal-2ikc",
+      "canonical_url": "https://datalaria.com/es/posts/kantorovich/",
+      "published_at_utc": "2026-05-24T15:07:51.523Z"
+    },
+    {
+      "asset_id": "obs_parte7_dashboard",
+      "slug": "obs_parte7_dashboard",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3686638",
+      "external_url": "https://dev.to/datalaria/the-executive-interface-translating-ai-telemetry-into-c-level-decisions-3gah",
+      "canonical_url": "https://datalaria.com/en/posts/obs_part7_executive_dashboard/",
+      "published_at_utc": "2026-05-17T07:18:25.326Z"
+    },
+    {
+      "asset_id": "obs_parte7_dashboard",
+      "slug": "obs_parte7_dashboard",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3686632",
+      "external_url": "https://dev.to/datalaria/la-interfaz-ejecutiva-traduciendo-la-telemetria-de-la-ia-en-decisiones-c-level-3b0d",
+      "canonical_url": "https://datalaria.com/es/posts/obs_parte7_dashboard/",
+      "published_at_utc": "2026-05-17T07:14:25.439Z"
+    },
+    {
+      "asset_id": "obs_parte6_fastapi",
+      "slug": "obs_parte6_fastapi",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3638971",
+      "external_url": "https://dev.to/datalaria/the-central-nervous-system-scaling-the-agentic-radar-to-247-with-fastapi-and-webhooks-pcg",
+      "canonical_url": "https://datalaria.com/en/posts/obs_part6_fastapi_server/",
+      "published_at_utc": "2026-05-09T08:43:32.429Z"
+    },
+    {
+      "asset_id": "obs_parte6_fastapi",
+      "slug": "obs_parte6_fastapi",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3638955",
+      "external_url": "https://dev.to/datalaria/el-sistema-nervioso-central-escalando-el-radar-agentico-a-247-con-fastapi-y-webhooks-3dlb",
+      "canonical_url": "https://datalaria.com/es/posts/obs_parte6_fastapi/",
+      "published_at_utc": "2026-05-09T08:39:06.430Z"
+    },
+    {
+      "asset_id": "obs_parte5_radar",
+      "slug": "obs_parte5_radar",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3594929",
+      "external_url": "https://dev.to/datalaria/the-agentic-radar-why-llms-wont-save-your-supply-chain-and-tool-calling-will-4gf8",
+      "canonical_url": "https://datalaria.com/en/posts/obs_part5_radar_agent/",
+      "published_at_utc": "2026-05-01T08:08:20.586Z"
+    },
+    {
+      "asset_id": "obs_parte5_radar",
+      "slug": "obs_parte5_radar",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3594864",
+      "external_url": "https://dev.to/datalaria/el-radar-agentico-por-que-los-llms-no-salvaran-tu-cadena-de-suministro-y-el-tool-calling-si-1f28",
+      "canonical_url": "https://datalaria.com/es/posts/obs_parte5_radar/",
+      "published_at_utc": "2026-05-01T07:54:09.964Z"
+    },
+    {
+      "asset_id": "obs_parte4_ingesta",
+      "slug": "obs_parte4_ingesta",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3548834",
+      "external_url": "https://dev.to/datalaria/trial-by-fire-from-garbage-excel-to-relational-graph-with-python-and-pandas-320o",
+      "canonical_url": "https://datalaria.com/en/posts/obs_part4_ingestion/",
+      "published_at_utc": "2026-04-25T07:35:12.949Z"
+    },
+    {
+      "asset_id": "obs_parte4_ingesta",
+      "slug": "obs_parte4_ingesta",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3548783",
+      "external_url": "https://dev.to/datalaria/el-bautismo-de-fuego-de-excel-basura-a-grafo-relacional-con-python-y-pandas-3knn",
+      "canonical_url": "https://datalaria.com/es/posts/obs_parte4_ingesta/",
+      "published_at_utc": "2026-04-25T07:21:30.169Z"
+    },
+    {
+      "asset_id": "obs_parte3_arquitectura",
+      "slug": "obs_parte3_arquitectura",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3518324",
+      "external_url": "https://dev.to/datalaria/the-risk-map-architecting-an-obsolescence-immune-data-foundation-1hep",
+      "canonical_url": "https://datalaria.com/en/posts/obs_part3_architecture/",
+      "published_at_utc": "2026-04-18T06:49:15.112Z"
+    },
+    {
+      "asset_id": "obs_parte3_arquitectura",
+      "slug": "obs_parte3_arquitectura",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3518285",
+      "external_url": "https://dev.to/datalaria/el-mapa-del-riesgo-disenando-una-arquitectura-de-datos-inmune-a-la-obsolescencia-2j1b",
+      "canonical_url": "https://datalaria.com/es/posts/obs_parte3_arquitectura/",
+      "published_at_utc": "2026-04-18T06:35:53.701Z"
+    },
+    {
+      "asset_id": "obs_parte2_tactica",
+      "slug": "obs_parte2_tactica",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3497785",
+      "external_url": "https://dev.to/datalaria/the-tactical-arsenal-why-buying-supply-chain-radar-tools-wont-save-your-production-a6l",
+      "canonical_url": "https://datalaria.com/en/posts/obs_part2_tactics/",
+      "published_at_utc": "2026-04-14T06:06:25.415Z"
+    },
+    {
+      "asset_id": "obs_parte2_tactica",
+      "slug": "obs_parte2_tactica",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3497729",
+      "external_url": "https://dev.to/datalaria/el-arsenal-tactico-por-que-comprar-software-especializado-para-la-gestiond-de-la-cadena-de-55dh",
+      "canonical_url": "https://datalaria.com/es/posts/obs_parte2_tactica/",
+      "published_at_utc": "2026-04-14T05:53:41.211Z"
+    },
+    {
+      "asset_id": "obs_parte1_intro",
+      "slug": "obs_parte1_intro",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3485838",
+      "external_url": "https://dev.to/datalaria/the-chess-of-obsolescence-turning-supply-chain-collapse-into-your-ultimate-competitive-advantage-k1l",
+      "canonical_url": "https://datalaria.com/en/posts/obs_part1_intro/",
+      "published_at_utc": "2026-04-11T07:38:45.286Z"
+    },
+    {
+      "asset_id": "obs_parte1_intro",
+      "slug": "obs_parte1_intro",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3485788",
+      "external_url": "https://dev.to/datalaria/el-ajedrez-de-la-obsolescencia-como-convertir-el-colapso-de-la-cadena-de-suministro-en-tu-mayor-6ok",
+      "canonical_url": "https://datalaria.com/es/posts/obs_parte1_intro/",
+      "published_at_utc": "2026-04-11T07:25:02.002Z"
+    },
+    {
+      "asset_id": "clarity_ai",
+      "slug": "clarity_ai",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3448735",
+      "external_url": "https://dev.to/datalaria/clarity-ai-how-rebeca-minguela-and-ai-are-redefining-and-quantifying-financial-sustainability-2na7",
+      "canonical_url": "https://datalaria.com/en/posts/clarity_ai/",
+      "published_at_utc": "2026-04-03T08:11:46.540Z"
+    },
+    {
+      "asset_id": "clarity_ai",
+      "slug": "clarity_ai",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3448716",
+      "external_url": "https://dev.to/datalaria/clarity-ai-como-rebeca-minguela-y-la-ia-estan-redefiniendo-y-cuantificando-la-sostenibilidad-3bdf",
+      "canonical_url": "https://datalaria.com/es/posts/clarity_ai/",
+      "published_at_utc": "2026-04-03T08:08:04.375Z"
+    },
+    {
+      "asset_id": "nextail",
+      "slug": "nextail",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3434245",
+      "external_url": "https://dev.to/datalaria/nextail-como-la-ia-prescriptiva-de-una-startup-espanola-esta-derrotando-a-excel-en-el-retail-de-59ck",
+      "canonical_url": "https://datalaria.com/es/posts/nextail/",
+      "published_at_utc": "2026-03-31T06:12:06.475Z"
+    },
+    {
+      "asset_id": "nextail",
+      "slug": "nextail",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3434213",
+      "external_url": "https://dev.to/datalaria/nextail-how-a-spanish-startups-prescriptive-ai-is-defeating-excel-in-fashion-retail-54pc",
+      "canonical_url": "https://datalaria.com/en/posts/nextail/",
+      "published_at_utc": "2026-03-31T06:03:52.122Z"
+    },
+    {
+      "asset_id": "sop-ingenieria-parte5-agentes_autonomos",
+      "slug": "sop-ingenieria-parte5-agentes_autonomos",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3416470",
+      "external_url": "https://dev.to/datalaria/sop-engineering-v-the-autonomous-brain-agentic-ai-i0k",
+      "canonical_url": "https://datalaria.com/en/posts/sop-engineering-part5-autonomous-agents/",
+      "published_at_utc": "2026-03-27T18:02:39.873Z"
+    },
+    {
+      "asset_id": "sop-ingenieria-parte5-agentes_autonomos",
+      "slug": "sop-ingenieria-parte5-agentes_autonomos",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3416426",
+      "external_url": "https://dev.to/datalaria/ingenieria-sop-v-el-cerebro-autonomo-agentic-ai-408n",
+      "canonical_url": "https://datalaria.com/es/posts/sop-ingenieria-parte5-agentes_autonomos/",
+      "published_at_utc": "2026-03-27T17:56:38.685Z"
+    },
+    {
+      "asset_id": "sop-ingenieria-parte4-enterprise",
+      "slug": "sop-ingenieria-parte4-enterprise",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3375101",
+      "external_url": "https://dev.to/datalaria/sop-engineering-iv-scaling-to-enterprise-multi-sku-bottlenecks-2hm7",
+      "canonical_url": "https://datalaria.com/en/posts/sop-engineering-part4-enterprise/",
+      "published_at_utc": "2026-03-20T06:57:16.852Z"
+    },
+    {
+      "asset_id": "sop-ingenieria-parte4-enterprise",
+      "slug": "sop-ingenieria-parte4-enterprise",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3375080",
+      "external_url": "https://dev.to/datalaria/ingenieria-sop-iv-escalando-a-enterprise-multi-sku-y-cuellos-de-botella-35d4",
+      "canonical_url": "https://datalaria.com/es/posts/sop-ingenieria-parte4-enterprise/",
+      "published_at_utc": "2026-03-20T06:50:04.319Z"
+    },
+    {
+      "asset_id": "sop-ingenieria-parte3-optimizacion",
+      "slug": "sop-ingenieria-parte3-optimizacion",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3346729",
+      "external_url": "https://dev.to/datalaria/ingenieria-sop-iii-el-fin-de-excel-programacion-lineal-para-supply-planning-6j7",
+      "canonical_url": "https://datalaria.com/es/posts/sop-ingenieria-parte3-optimizacion/",
+      "published_at_utc": "2026-03-13T07:25:29.975Z"
+    },
+    {
+      "asset_id": "sop-ingenieria-parte3-optimizacion",
+      "slug": "sop-ingenieria-parte3-optimizacion",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3346687",
+      "external_url": "https://dev.to/datalaria/sop-engineering-iii-the-end-of-excel-linear-programming-for-supply-planning-20do",
+      "canonical_url": "https://datalaria.com/en/posts/sop-engineering-part3-optimization/",
+      "published_at_utc": "2026-03-13T07:16:12.094Z"
+    },
+    {
+      "asset_id": "sop-ingenieria-parte2-prediccion",
+      "slug": "sop-ingenieria-parte2-prediccion",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3321750",
+      "external_url": "https://dev.to/datalaria/ingenieria-sop-ii-demand-planning-de-la-adivinacion-a-la-probabilidad-15m2",
+      "canonical_url": "https://datalaria.com/es/posts/sop-ingenieria-parte2-prediccion/",
+      "published_at_utc": "2026-03-07T08:36:47.780Z"
+    },
+    {
+      "asset_id": "sop-ingenieria-parte2-prediccion",
+      "slug": "sop-ingenieria-parte2-prediccion",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3321742",
+      "external_url": "https://dev.to/datalaria/sop-engineering-ii-demand-planning-from-guessing-to-probability-d2e",
+      "canonical_url": "https://datalaria.com/en/posts/sop-engineering-part2-forecasting/",
+      "published_at_utc": "2026-03-07T08:30:46.102Z"
+    },
+    {
+      "asset_id": "ia_agents_part9",
+      "slug": "ia_agents_part9",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3307856",
+      "external_url": "https://dev.to/datalaria/autopilot-a-technical-post-mortem-i-fired-myself-to-build-an-ai-army-with-gemini-5545",
+      "canonical_url": "https://datalaria.com/en/posts/ai_agents_part9/",
+      "published_at_utc": "2026-03-04T07:06:49.155Z"
+    },
+    {
+      "asset_id": "ia_agents_part9",
+      "slug": "ia_agents_part9",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3307850",
+      "external_url": "https://dev.to/datalaria/autopilot-post-mortem-tecnico-como-construi-un-ejercito-de-ia-con-gemini-2lda",
+      "canonical_url": "https://datalaria.com/es/posts/ia_agents_part9/",
+      "published_at_utc": "2026-03-04T07:03:39.412Z"
+    },
+    {
+      "asset_id": "sop_ingenieria-higiene-datos",
+      "slug": "sop_ingenieria-higiene-datos",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3295309",
+      "external_url": "https://dev.to/datalaria/sop-why-your-excel-is-lying-to-you-and-how-to-interrogate-it-with-python-3dof",
+      "canonical_url": "https://datalaria.com/en/posts/sop_engineering-data-hygiene/",
+      "published_at_utc": "2026-02-28T08:10:08.375Z"
+    },
+    {
+      "asset_id": "sop_ingenieria-higiene-datos",
+      "slug": "sop_ingenieria-higiene-datos",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3295250",
+      "external_url": "https://dev.to/datalaria/sop-por-que-tu-excel-te-miente-y-como-interrogarlo-con-python-o74",
+      "canonical_url": "https://datalaria.com/es/posts/sop_ingenieria-higiene-datos/",
+      "published_at_utc": "2026-02-28T07:57:37.457Z"
+    },
+    {
+      "asset_id": "abraham_wald",
+      "slug": "abraham_wald",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3272751",
+      "external_url": "https://dev.to/datalaria/the-architecture-of-silence-abraham-wald-and-the-epistemology-of-missing-data-20l9",
+      "canonical_url": "https://datalaria.com/en/posts/abraham_wald/",
+      "published_at_utc": "2026-02-21T08:43:13.634Z"
+    },
+    {
+      "asset_id": "abraham_wald",
+      "slug": "abraham_wald",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3272723",
+      "external_url": "https://dev.to/datalaria/la-arquitectura-del-silencio-abraham-wald-y-la-epistemologia-de-los-datos-ausentes-50il",
+      "canonical_url": "https://datalaria.com/es/posts/abraham_wald/",
+      "published_at_utc": "2026-02-21T08:32:48.886Z"
+    },
+    {
+      "asset_id": "game_snake",
+      "slug": "game_snake",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3256883",
+      "external_url": "https://dev.to/datalaria/from-zero-to-hero-create-a-cyberpunk-snake-game-with-real-time-ranking-using-supabase-and-vanilla-117n",
+      "canonical_url": "https://datalaria.com/en/posts/game_snake/",
+      "published_at_utc": "2026-02-14T21:20:22.094Z"
+    },
+    {
+      "asset_id": "game_snake",
+      "slug": "game_snake",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3256861",
+      "external_url": "https://dev.to/datalaria/de-cero-a-heroe-crea-un-snake-game-cyberpunk-con-ranking-en-tiempo-real-usando-supabase-y-js-2e71",
+      "canonical_url": "https://datalaria.com/es/posts/game_snake/",
+      "published_at_utc": "2026-02-14T21:10:50.242Z"
+    },
+    {
+      "asset_id": "ia_agents_part8",
+      "slug": "ia_agents_part8",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3239522",
+      "external_url": "https://dev.to/datalaria/autopilot-assistant-building-an-ai-copilot-with-algolia-agent-studio-4gmg",
+      "canonical_url": "https://datalaria.com/en/posts/ai_agents_part8/",
+      "published_at_utc": "2026-02-07T08:52:09.312Z"
+    },
+    {
+      "asset_id": "ia_agents_part8",
+      "slug": "ia_agents_part8",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3239513",
+      "external_url": "https://dev.to/datalaria/autopilot-asistente-creando-un-copiloto-de-ia-con-algolia-agent-studio-4b13",
+      "canonical_url": "https://datalaria.com/es/posts/ia_agents_part8/",
+      "published_at_utc": "2026-02-07T08:40:13.564Z"
+    },
+    {
+      "asset_id": "the-goal",
+      "slug": "the-goal",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3233937",
+      "external_url": "https://dev.to/datalaria/the-goal-is-not-just-about-factories-synchronizing-your-enterprise-in-the-age-of-ai-38kn",
+      "canonical_url": "https://datalaria.com/en/posts/the-goal/",
+      "published_at_utc": "2026-02-05T07:24:18.669Z"
+    },
+    {
+      "asset_id": "the-goal",
+      "slug": "the-goal",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3233912",
+      "external_url": "https://dev.to/datalaria/la-meta-no-es-solo-sobre-fabricas-sincronizando-tu-empresa-en-la-era-de-la-ia-28fc",
+      "canonical_url": "https://datalaria.com/es/posts/the-goal/",
+      "published_at_utc": "2026-02-05T07:17:04.791Z"
+    },
+    {
+      "asset_id": "reuniones_IA",
+      "slug": "reuniones_IA",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3224081",
+      "external_url": "https://dev.to/datalaria/excellent-meetings-in-the-ai-era-the-definitive-decalogue-24h4",
+      "canonical_url": "https://datalaria.com/en/posts/meetings_ai/",
+      "published_at_utc": "2026-02-03T06:45:42.670Z"
+    },
+    {
+      "asset_id": "reuniones_IA",
+      "slug": "reuniones_IA",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3224034",
+      "external_url": "https://dev.to/datalaria/reuniones-excelentes-en-la-era-de-la-ia-el-decalogo-definitivo-4h0i",
+      "canonical_url": "https://datalaria.com/es/posts/reuniones_IA/",
+      "published_at_utc": "2026-02-03T06:34:39.990Z"
+    },
+    {
+      "asset_id": "ia_agents_part7",
+      "slug": "ia_agents_part7",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3217336",
+      "external_url": "https://dev.to/datalaria/autopilot-ctrl-auditoria-de-contenido-ia-con-github-copilot-cli-191b",
+      "canonical_url": "https://datalaria.com/es/posts/ia_agents_part7/",
+      "published_at_utc": "2026-02-01T15:41:33.518Z"
+    },
+    {
+      "asset_id": "ia_agents_part7",
+      "slug": "ia_agents_part7",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3217315",
+      "external_url": "https://dev.to/datalaria/autopilot-ctrl-ai-content-auditing-with-github-copilot-cli-gbc",
+      "canonical_url": "https://datalaria.com/en/posts/ai_agents_part7/",
+      "published_at_utc": "2026-02-01T15:31:05.731Z"
+    },
+    {
+      "asset_id": "ia_agents_part6",
+      "slug": "ia_agents_part6",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3209516",
+      "external_url": "https://dev.to/datalaria/autopilot-extra-coding-a-zero-maintenance-ai-native-newsletter-system-5cf5",
+      "canonical_url": "https://datalaria.com/en/posts/ai_agents_part6/",
+      "published_at_utc": "2026-01-30T07:07:56.034Z"
+    },
+    {
+      "asset_id": "ia_agents_part6",
+      "slug": "ia_agents_part6",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3209500",
+      "external_url": "https://dev.to/datalaria/autopilot-extra-programando-una-newsletter-nativa-en-ia-y-de-mantenimiento-cero-12de",
+      "canonical_url": "https://datalaria.com/es/posts/ia_agents_part6/",
+      "published_at_utc": "2026-01-30T06:59:42.771Z"
+    },
+    {
+      "asset_id": "ia_agents_part5",
+      "slug": "ia_agents_part5",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3203646",
+      "external_url": "https://dev.to/datalaria/autopilot-the-final-from-localhost-to-the-cloud-with-github-actions-and-cicd-k3l",
+      "canonical_url": "https://datalaria.com/en/posts/ai_agents_part5/",
+      "published_at_utc": "2026-01-28T06:53:19.902Z"
+    },
+    {
+      "asset_id": "ia_agents_part5",
+      "slug": "ia_agents_part5",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3203593",
+      "external_url": "https://dev.to/datalaria/autopilot-final-de-localhost-a-la-nube-con-github-actions-y-cicd-20i9",
+      "canonical_url": "https://datalaria.com/es/posts/ia_agents_part5/",
+      "published_at_utc": "2026-01-28T06:37:22.210Z"
+    },
+    {
+      "asset_id": "ia_agents_part4",
+      "slug": "ia_agents_part4",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3198472",
+      "external_url": "https://dev.to/datalaria/autopilot-the-api-nightmare-how-i-defeated-linkedin-bureaucracy-to-automate-my-company-mb8",
+      "canonical_url": "https://datalaria.com/en/posts/ai_agents_part4/",
+      "published_at_utc": "2026-01-26T06:45:37.580Z"
+    },
+    {
+      "asset_id": "ia_agents_part4",
+      "slug": "ia_agents_part4",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3198452",
+      "external_url": "https://dev.to/datalaria/autopilot-la-pesadilla-de-las-apis-como-venci-a-la-burocracia-de-linkedin-para-automatizar-mi-1dfj",
+      "canonical_url": "https://datalaria.com/es/posts/ia_agents_part4/",
+      "published_at_utc": "2026-01-26T06:32:32.196Z"
+    },
+    {
+      "asset_id": "ia_agents_part3",
+      "slug": "ia_agents_part3",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3195226",
+      "external_url": "https://dev.to/datalaria/autopilot-the-creatives-how-i-programmed-an-ai-to-be-cynical-on-twitter-and-corporate-on-linkedin-20g5",
+      "canonical_url": "https://datalaria.com/en/posts/ai_agents_part3/",
+      "published_at_utc": "2026-01-24T08:44:34.581Z"
+    },
+    {
+      "asset_id": "ia_agents_part3",
+      "slug": "ia_agents_part3",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3195222",
+      "external_url": "https://dev.to/datalaria/autopilot-los-creativos-como-programe-a-una-ia-para-que-fuera-cinica-en-twitter-y-corporativa-en-4g85",
+      "canonical_url": "https://datalaria.com/es/posts/ia_agents_part3/",
+      "published_at_utc": "2026-01-24T08:39:09.592Z"
+    },
+    {
+      "asset_id": "ia_agents_part2",
+      "slug": "ia_agents_part2",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3189915",
+      "external_url": "https://dev.to/datalaria/autopilot-the-brain-configuring-gemini-and-crewai-to-read-my-blog-415l",
+      "canonical_url": "https://datalaria.com/en/posts/ai_agents_part2/",
+      "published_at_utc": "2026-01-22T07:00:13.403Z"
+    },
+    {
+      "asset_id": "ia_agents_part2",
+      "slug": "ia_agents_part2",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3189884",
+      "external_url": "https://dev.to/datalaria/autopilot-el-cerebro-configurando-gemini-y-crewai-para-leer-mi-blog-5anj",
+      "canonical_url": "https://datalaria.com/es/posts/ia_agents_part2/",
+      "published_at_utc": "2026-01-22T06:48:51.774Z"
+    },
+    {
+      "asset_id": "ia_agents_part1",
+      "slug": "ia_agents_part1",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3184358",
+      "external_url": "https://dev.to/datalaria/project-autopilot-why-i-fired-myself-as-community-manager-to-build-an-ai-agents-army-39k8",
+      "canonical_url": "https://datalaria.com/en/posts/ai_agents_part1/",
+      "published_at_utc": "2026-01-20T07:19:30.013Z"
+    },
+    {
+      "asset_id": "ia_agents_part1",
+      "slug": "ia_agents_part1",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3184327",
+      "external_url": "https://dev.to/datalaria/proyecto-autopilot-por-que-me-despedi-como-community-manager-para-construir-un-ejercito-de-agentes-402b",
+      "canonical_url": "https://datalaria.com/es/posts/ia_agents_part1/",
+      "published_at_utc": "2026-01-20T07:06:24.484Z"
+    },
+    {
+      "asset_id": "graphext",
+      "slug": "graphext",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3181606",
+      "external_url": "https://dev.to/datalaria/graphext-la-startup-espanola-que-invirtio-7-anos-en-crear-el-formula-1-del-analisis-de-datos-267",
+      "canonical_url": "https://datalaria.com/es/posts/graphext/",
+      "published_at_utc": "2026-01-19T07:00:04.654Z"
+    },
+    {
+      "asset_id": "graphext",
+      "slug": "graphext",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3181596",
+      "external_url": "https://dev.to/datalaria/graphext-the-spanish-startup-that-spent-7-years-building-the-formula-1-of-data-analysis-5f33",
+      "canonical_url": "https://datalaria.com/en/posts/graphext/",
+      "published_at_utc": "2026-01-19T06:54:09.759Z"
+    },
+    {
+      "asset_id": "app_openweather_part4_extras_ux",
+      "slug": "app_openweather_part4_extras_ux",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3173407",
+      "external_url": "https://dev.to/datalaria/project-weather-extras-beyond-ai-building-a-robust-user-centric-dashboard-197k",
+      "canonical_url": "https://datalaria.com/en/posts/app_openweather_part4_extras_ux/",
+      "published_at_utc": "2026-01-15T06:55:14.785Z"
+    },
+    {
+      "asset_id": "app_openweather_part4_extras_ux",
+      "slug": "app_openweather_part4_extras_ux",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3173394",
+      "external_url": "https://dev.to/datalaria/proyecto-weather-extras-mas-alla-de-la-ia-construyendo-un-dashboard-robusto-y-centrado-en-el-269p",
+      "canonical_url": "https://datalaria.com/es/posts/app_openweather_part4_extras_ux/",
+      "published_at_utc": "2026-01-15T06:47:09.686Z"
+    },
+    {
+      "asset_id": "app_openweather_part3_ai_prediction",
+      "slug": "app_openweather_part3_ai_prediction",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3170782",
+      "external_url": "https://dev.to/datalaria/weather-service-project-part-3-predicting-the-future-with-ai-and-openweathermap-2436",
+      "canonical_url": "https://datalaria.com/en/posts/app_openweather_part3_ai_prediction/",
+      "published_at_utc": "2026-01-14T06:42:38.652Z"
+    },
+    {
+      "asset_id": "app_openweather_part3_ai_prediction",
+      "slug": "app_openweather_part3_ai_prediction",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3170765",
+      "external_url": "https://dev.to/datalaria/proyecto-weather-service-parte-3-prediciendo-el-futuro-con-ia-y-openweathermap-19kb",
+      "canonical_url": "https://datalaria.com/es/posts/app_openweather_part3_ai_prediction/",
+      "published_at_utc": "2026-01-14T06:34:32.478Z"
+    },
+    {
+      "asset_id": "app_openweather_part2_frontend",
+      "slug": "app_openweather_part2_frontend",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3168166",
+      "external_url": "https://dev.to/datalaria/weather-service-project-part-2-building-the-interactive-frontend-with-github-pages-or-netlify-ho1",
+      "canonical_url": "https://datalaria.com/en/posts/app_openweather_part2_frontend/",
+      "published_at_utc": "2026-01-13T06:57:03.876Z"
+    },
+    {
+      "asset_id": "app_openweather_part2_frontend",
+      "slug": "app_openweather_part2_frontend",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3168096",
+      "external_url": "https://dev.to/datalaria/proyecto-weather-service-parte-2-construyendo-el-frontend-interactivo-con-github-pages-o-netlify-3oc0",
+      "canonical_url": "https://datalaria.com/es/posts/app_openweather_part2_frontend/",
+      "published_at_utc": "2026-01-13T06:34:01.257Z"
+    },
+    {
+      "asset_id": "app-openweather_part1_backend",
+      "slug": "app-openweather_part1_backend",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3165614",
+      "external_url": "https://dev.to/datalaria/weather-service-project-part-1-building-the-data-collector-with-python-and-github-actions-or-2ibd",
+      "canonical_url": "https://datalaria.com/en/posts/app_openweather_part1_backend/",
+      "published_at_utc": "2026-01-12T06:50:41.395Z"
+    },
+    {
+      "asset_id": "app-openweather_part1_backend",
+      "slug": "app-openweather_part1_backend",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3165592",
+      "external_url": "https://dev.to/datalaria/proyecto-weather-service-parte-1-construyendo-el-recolector-de-datos-con-python-y-github-actions-5ekm",
+      "canonical_url": "https://datalaria.com/es/posts/app-openweather_part1_backend/",
+      "published_at_utc": "2026-01-12T06:41:03.471Z"
+    },
+    {
+      "asset_id": "carto",
+      "slug": "carto",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3164037",
+      "external_url": "https://dev.to/datalaria/carto-de-una-factura-a-la-onu-a-conquistar-la-nube-geoespacial-2d4b",
+      "canonical_url": "https://datalaria.com/es/posts/carto/",
+      "published_at_utc": "2026-01-11T09:35:45.881Z"
+    },
+    {
+      "asset_id": "carto",
+      "slug": "carto",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3164030",
+      "external_url": "https://dev.to/datalaria/carto-from-a-un-invoice-to-conquering-the-geospatial-cloud-4gak",
+      "canonical_url": "https://datalaria.com/en/posts/carto/",
+      "published_at_utc": "2026-01-11T09:29:27.031Z"
+    },
+    {
+      "asset_id": "app_flashcards",
+      "slug": "app_flashcards",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3162145",
+      "external_url": "https://dev.to/datalaria/ai-powered-programming-creating-my-own-magical-flashcards-study-app-3408",
+      "canonical_url": "https://datalaria.com/en/posts/app_flashcards/",
+      "published_at_utc": "2026-01-10T07:54:00.807Z"
+    },
+    {
+      "asset_id": "app_flashcards",
+      "slug": "app_flashcards",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3162123",
+      "external_url": "https://dev.to/datalaria/programando-con-ia-creando-mi-propia-app-magica-de-flashcards-para-estudiar-55g2",
+      "canonical_url": "https://datalaria.com/es/posts/app_flashcards/",
+      "published_at_utc": "2026-01-10T07:37:47.718Z"
+    },
+    {
+      "asset_id": "freepik",
+      "slug": "freepik",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3159687",
+      "external_url": "https://dev.to/datalaria/freepik-la-historia-del-gigante-malagueno-que-domo-a-la-ia-para-conquistar-el-mundo-creativo-53la",
+      "canonical_url": "https://datalaria.com/es/posts/freepik/",
+      "published_at_utc": "2026-01-09T06:49:35.804Z"
+    },
+    {
+      "asset_id": "freepik",
+      "slug": "freepik",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3159681",
+      "external_url": "https://dev.to/datalaria/freepik-the-story-of-the-giant-from-malaga-that-tamed-ai-to-conquer-the-creative-world-3nb1",
+      "canonical_url": "https://datalaria.com/en/posts/freepik/",
+      "published_at_utc": "2026-01-09T06:45:09.582Z"
+    },
+    {
+      "asset_id": "app_conversor_unidades",
+      "slug": "app_conversor_unidades",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3157111",
+      "external_url": "https://dev.to/datalaria/building-my-digital-swiss-army-knife-a-custom-unit-converter-with-ai-47l8",
+      "canonical_url": "https://datalaria.com/en/posts/app_unit_converter/",
+      "published_at_utc": "2026-01-08T06:28:10.461Z"
+    },
+    {
+      "asset_id": "app_conversor_unidades",
+      "slug": "app_conversor_unidades",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3157096",
+      "external_url": "https://dev.to/datalaria/creando-mi-navaja-suiza-digital-un-conversor-de-unidades-a-medida-con-la-ia-1mb1",
+      "canonical_url": "https://datalaria.com/es/posts/app_conversor_unidades/",
+      "published_at_utc": "2026-01-08T06:20:57.297Z"
+    },
+    {
+      "asset_id": "nanobanana-ingenieria",
+      "slug": "nanobanana-ingenieria",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3152098",
+      "external_url": "https://dev.to/datalaria/from-systems-engineering-to-formula-1-using-ai-nanobana-to-illustrate-a-complex-roadmap-566m",
+      "canonical_url": "https://datalaria.com/en/posts/nanobanana-engineering/",
+      "published_at_utc": "2026-01-06T07:31:22.457Z"
+    },
+    {
+      "asset_id": "nanobanana-ingenieria",
+      "slug": "nanobanana-ingenieria",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3152075",
+      "external_url": "https://dev.to/datalaria/de-la-ingenieria-de-sistemas-a-la-formula-1-la-ia-nanobana-para-ilustrar-un-roadmap-complejo-2lje",
+      "canonical_url": "https://datalaria.com/es/posts/nanobanana-ingenieria/",
+      "published_at_utc": "2026-01-06T07:23:44.189Z"
+    },
+    {
+      "asset_id": "netflix",
+      "slug": "netflix",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3149530",
+      "external_url": "https://dev.to/datalaria/netflix-como-los-datos-forjan-un-imperio-en-plena-guerra-del-streaming-56jn",
+      "canonical_url": "https://datalaria.com/es/posts/netflix/",
+      "published_at_utc": "2026-01-05T08:22:04.240Z"
+    },
+    {
+      "asset_id": "netflix",
+      "slug": "netflix",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3149524",
+      "external_url": "https://dev.to/datalaria/netflix-how-data-forges-an-empire-in-the-midst-of-the-streaming-wars-3pnj",
+      "canonical_url": "https://datalaria.com/en/posts/netflix/",
+      "published_at_utc": "2026-01-05T08:17:08.387Z"
+    },
+    {
+      "asset_id": "founderz-programando-chatGPT",
+      "slug": "founderz-programando-chatGPT",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3147284",
+      "external_url": "https://dev.to/datalaria/copiloting-with-ai-learning-with-founderz-and-chatgpt-53pp",
+      "canonical_url": "https://datalaria.com/en/posts/founderz-coding-chatGPT/",
+      "published_at_utc": "2026-01-04T07:58:56.531Z"
+    },
+    {
+      "asset_id": "founderz-programando-chatGPT",
+      "slug": "founderz-programando-chatGPT",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3147276",
+      "external_url": "https://dev.to/datalaria/copilotando-con-ia-aprendiendo-con-founderz-y-chatgpt-32oe",
+      "canonical_url": "https://datalaria.com/es/posts/founderz-programando-chatGPT/",
+      "published_at_utc": "2026-01-04T07:52:55.606Z"
+    },
+    {
+      "asset_id": "florence-nightingale",
+      "slug": "florence-nightingale",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3145845",
+      "external_url": "https://dev.to/datalaria/florence-nightingale-the-mother-of-nursing-42n8",
+      "canonical_url": "https://datalaria.com/en/posts/florence-nightingale/",
+      "published_at_utc": "2026-01-03T10:59:47.342Z"
+    },
+    {
+      "asset_id": "florence-nightingale",
+      "slug": "florence-nightingale",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3145835",
+      "external_url": "https://dev.to/datalaria/florence-nightingale-la-madre-de-la-enfermeria-fhi",
+      "canonical_url": "https://datalaria.com/es/posts/florence-nightingale/",
+      "published_at_utc": "2026-01-03T10:54:15.111Z"
+    },
+    {
+      "asset_id": "notebooklm-sql",
+      "slug": "notebooklm-sql",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3142486",
+      "external_url": "https://dev.to/datalaria/learning-with-ai-notebooklm-from-a-book-to-a-multimedia-learning-platform-4aek",
+      "canonical_url": "https://datalaria.com/en/posts/notebooklm-sql/",
+      "published_at_utc": "2026-01-02T07:36:39.277Z"
+    },
+    {
+      "asset_id": "notebooklm-sql",
+      "slug": "notebooklm-sql",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3142477",
+      "external_url": "https://dev.to/datalaria/aprendiendo-con-ia-notebooklm-de-un-libro-a-una-plataforma-de-aprendizaje-multimedia-3eh4",
+      "canonical_url": "https://datalaria.com/es/posts/notebooklm-sql/",
+      "published_at_utc": "2026-01-02T07:33:28.757Z"
+    },
+    {
+      "asset_id": "the_thinking_game",
+      "slug": "the_thinking_game",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3140714",
+      "external_url": "https://dev.to/datalaria/the-thinking-game-how-deepmind-turned-video-games-into-historys-greatest-scientific-tool-1iep",
+      "canonical_url": "https://datalaria.com/en/posts/the_thinking_game/",
+      "published_at_utc": "2026-01-01T09:54:51.849Z"
+    },
+    {
+      "asset_id": "the_thinking_game",
+      "slug": "the_thinking_game",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3140692",
+      "external_url": "https://dev.to/datalaria/the-thinking-game-de-como-deepmind-convirtio-los-videojuegos-en-la-mayor-herramienta-cientifica-de-1a6m",
+      "canonical_url": "https://datalaria.com/es/posts/the_thinking_game/",
+      "published_at_utc": "2026-01-01T09:39:10.283Z"
+    },
+    {
+      "asset_id": "john-snow",
+      "slug": "john-snow",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3138598",
+      "external_url": "https://dev.to/datalaria/the-authentic-john-snow-a-precursor-of-geolocation-cbn",
+      "canonical_url": "https://datalaria.com/en/posts/john-snow/",
+      "published_at_utc": "2025-12-31T15:36:11.838Z"
+    },
+    {
+      "asset_id": "john-snow",
+      "slug": "john-snow",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3138595",
+      "external_url": "https://dev.to/datalaria/el-autentico-john-snow-precursor-de-la-geolocalizacion-1k0e",
+      "canonical_url": "https://datalaria.com/es/posts/john-snow/",
+      "published_at_utc": "2025-12-31T15:33:55.169Z"
+    },
+    {
+      "asset_id": "datalaria-blog",
+      "slug": "datalaria-blog",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3136267",
+      "external_url": "https://dev.to/datalaria/building-datalaria-technologies-and-tools-4824",
+      "canonical_url": "https://datalaria.com/en/posts/datalaria-blog/",
+      "published_at_utc": "2025-12-30T15:40:37.217Z"
+    },
+    {
+      "asset_id": "datalaria-blog",
+      "slug": "datalaria-blog",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3136253",
+      "external_url": "https://dev.to/datalaria/construyendo-datalaria-tecnologias-y-herramientas-1odb",
+      "canonical_url": "https://datalaria.com/es/posts/datalaria-blog/",
+      "published_at_utc": "2025-12-30T15:26:10.003Z"
+    },
+    {
+      "asset_id": "Visualizaciones-basicas",
+      "slug": "Visualizaciones-basicas",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3136242",
+      "external_url": "https://dev.to/datalaria/data-visualization-basics-3c1p",
+      "canonical_url": "https://datalaria.com/en/posts/Basic-Visualizations/",
+      "published_at_utc": "2025-12-30T15:18:47.640Z"
+    },
+    {
+      "asset_id": "Visualizaciones-basicas",
+      "slug": "Visualizaciones-basicas",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3136226",
+      "external_url": "https://dev.to/datalaria/visualizaciones-basicas-3ffg",
+      "canonical_url": "https://datalaria.com/es/posts/Visualizaciones-basicas/",
+      "published_at_utc": "2025-12-30T15:13:06.328Z"
+    },
+    {
+      "asset_id": "Estadistica-descriptiva",
+      "slug": "Estadistica-descriptiva",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3136220",
+      "external_url": "https://dev.to/datalaria/descriptive-analysis-39a",
+      "canonical_url": "https://datalaria.com/en/posts/descriptive-analysis/",
+      "published_at_utc": "2025-12-30T15:10:05.594Z"
+    },
+    {
+      "asset_id": "Estadistica-descriptiva",
+      "slug": "Estadistica-descriptiva",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3136210",
+      "external_url": "https://dev.to/datalaria/estadistica-descriptiva-3k7k",
+      "canonical_url": "https://datalaria.com/es/posts/Estadistica-descriptiva/",
+      "published_at_utc": "2025-12-30T15:03:19.834Z"
+    },
+    {
+      "asset_id": "kilometro-0-por-que-nace-datalaria",
+      "slug": "kilometro-0-por-que-nace-datalaria",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "3132190",
+      "external_url": "https://dev.to/datalaria/kilometer-0-why-datalaria-is-born-igh",
+      "canonical_url": "https://datalaria.com/en/posts/kilometer-0-why-datalaria-is-born/",
+      "published_at_utc": "2025-12-28T20:53:20.119Z"
+    },
+    {
+      "asset_id": "kilometro-0-por-que-nace-datalaria",
+      "slug": "kilometro-0-por-que-nace-datalaria",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "3132189",
+      "external_url": "https://dev.to/datalaria/kilometro-0-por-que-nace-datalaria-n8p",
+      "canonical_url": "https://datalaria.com/es/posts/kilometro-0-por-que-nace-datalaria/",
+      "published_at_utc": "2025-12-28T20:51:16.193Z"
     }
   ]
 }
