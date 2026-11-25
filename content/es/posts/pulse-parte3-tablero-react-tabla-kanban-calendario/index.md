@@ -40,9 +40,9 @@ Para entender cómo encaja cada pieza del rompecabezas de *Content Ops as Code*,
 
 ## 0. Objetivos de la Fase y de este Artículo: Interactividad Instantánea sobre Datos Estáticos
 
-El propósito de esta etapa en la **Fase 5 de Datalaria** radica en democratizar el acceso al catálogo editorial mediante una experiencia de usuario (UX) fluida, moderna y reactiva.
+El propósito de esta etapa en la **Datalaria Pulse** radica en democratizar el acceso al catálogo editorial mediante una experiencia de usuario (UX) fluida, moderna y reactiva.
 
-### Objetivos Estratégicos de la Fase 5:
+### Objetivos Estratégicos:
 1. **Consumo de Datos con Cero Latencia:** Eliminar las llamadas a bases de datos relacionales tradicionales en la navegación pública sirviendo un índice estático inmutable (`public.json`) alojado en la CDN.
 2. **Multi-Visualización de Contenidos:** Proyectar la misma fuente única de verdad (*SSOT*) a través de tres prismas complementarios: **Tabla Ejecutiva** (auditoría analítica), **Tablero Kanban** (ciclo de vida) y **Calendario Mensual** (planificación temporal).
 3. **Captura Optimista Desacoplada:** Permitir a cualquier autor registrar ideas o notas en local con persistencia inmediata en el navegador (`localStorage`), facilitando la exportación limpia a YAML para su posterior commit en Git.
@@ -60,7 +60,7 @@ El propósito de esta etapa en la **Fase 5 de Datalaria** radica en democratizar
 
 El diseño de la interfaz de Datalaria Pulse bebe directamente de los estándares de usabilidad, estética de panel de instrumentos y rigor cuantitativo forjados en nuestras suites precedentes:
 
-{{< mermaid >}}
+{{< mermaid image="pulse_frontend_ecosystem.png" alt="Arquitectura Frontend React 19 de Datalaria Pulse conectada con Backend Pydantic v2 y Ecosistema" >}}
 flowchart TD
     subgraph BACKEND ["1. Pipeline Backend (Post 1 & 2)"]
         GIT["Markdown + YAML"] --> PYD["Pydantic v2 Engine"]
@@ -107,29 +107,30 @@ En Datalaria Pulse invertimos por completo la ecuación aplicando el patrón **S
 interface PublicPulseDataset {
   version: string;
   generated_at: string;
-  total_assets: int;
-  published_assets: int;
-  scheduled_assets: int;
+  total_assets: number;
+  published_assets: number;
+  scheduled_assets: number;
+  ideas_count: number;
   parity_summary: Record<string, number>;
   assets: ContentAsset[];
 }
 
 export function App() {
   const [dataset, setDataset] = useState<PublicPulseDataset | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<'analytics' | 'table' | 'kanban' | 'calendar' | 'health'>('analytics');
+  const [activeTab, setActiveTab] = useState<
+    'dashboard' | 'table' | 'kanban' | 'calendar' | 'health' | 'channels'
+  >('dashboard');
 
   useEffect(() => {
-    // Carga atómica del índice estático en build time
-    fetch('./data/public.json', { cache: 'no-cache' })
+    // Carga atómica del índice estático compilado en build time
+    fetch(`./data/public.json?t=${Date.now()}`, { cache: 'no-store' })
       .then(res => res.json())
       .then((data: PublicPulseDataset) => {
         setDataset(data);
-        setLoading(false);
       })
-      .catch(err => console.error("Error al cargar índice:", err));
+      .catch(err => console.error("Error cargando public.json:", err));
   }, []);
-  
+
   // ...
 }
 ```
@@ -155,7 +156,7 @@ La **Tabla Ejecutiva** es el caballo de batalla para auditorías masivas de cat�
 1. **Filtro Multi-Criterio Combinado y Enlaces Profundos:** La barra de herramientas permite filtrar simultáneamente por texto predictivo (coincidencias en título, slug y etiquetas), tipo de activo (`post`, `app`, `kit`, `suite`) y estado editorial (`published`, `scheduled`, `draft`, `idea`), soportando *deep-linking* por URL (`?tab=table&type=app&status=published`).
 2. **Conmutador de Historial de Versiones (`🔀`):** Permite alternar al instante entre la vista consolidada de activos principales y el desglose de versiones evolutivas SemVer (`vX.Y.Z`).
 3. **Diagnóstico Interactivo de Notion CSV en 1 Clic (*Operación Crisol*):** Botón de validación que analiza exportaciones CSV de Notion en el propio navegador, auditando campos obligatorios, fechas y categorización sin enviar datos al servidor.
-4. **Ordenación Bidireccional y Paginación Inteligente:** Pulsar sobre cualquier cabecera reordena al instante por fecha, volumen léxico o índice de tráfico, con conmutador de densidad (10, 25, 50 o 100 filas).
+4. **Ordenación Bidireccional y Paginación Inteligente:** Pulsar sobre cualquier cabecera reordena al instante por fecha, volumen léxico o índice de tráfico, con conmutador de densidad (10, 25 o 50 filas).
 5. **Píldoras Cromáticas de Estado y Avance Rápido en Kanban (`→`):** Etiquetas visuales de alto contraste (`complete` en verde, `missing_en` en rojo) y botones de transición inmediata de etapa editorial en Kanban sin abrir modales.
 
 ---
@@ -164,7 +165,7 @@ La **Tabla Ejecutiva** es el caballo de batalla para auditorías masivas de cat�
 
 Mientras la tabla prioriza el análisis analítico, el **Tablero Kanban** organiza el trabajo diario de redacción y revisión. Modelamos el flujo editorial mediante 5 columnas que representan el ciclo de vida inmutable de cualquier activo técnico:
 
-{{< mermaid >}}
+{{< mermaid image="pulse_kanban_lifecycle.png" alt="Flujo Kanban de 5 columnas para el ciclo editorial en Datalaria Pulse" >}}
 flowchart LR
     C1["💡 IDEA\n(Notas y Backlog)"] --> C2["✍️ BORRADOR (DRAFT)\n(Redacción Markdown)"]
     C2 --> C3["🔍 EN REVISIÓN\n(Auditoría Pydantic/SEO)"]
@@ -176,10 +177,10 @@ flowchart LR
 Cada tarjeta en el tablero es un componente autónomo que proyecta:
 - **Tipo y Fecha:** Badge de categoría (`POST`, `APP`, `KIT`) y fecha prevista de publicación.
 - **Título Completo:** Con enlace directo al artículo en local o en el portal de producción.
-- **Temática Oficial:** Asignación taxonómica (*Estrategia Empresarial*, *Ingeniería de Software*, *Ciencia de Datos*, *Decisiones Cuantitativas*).
+- **Temática Oficial:** Asignación taxonómica (*Estrategia y Operaciones*, *IA, Ingeniería y Proyectos*, *Startups*, *Pioneros y Referentes*, *Cultura Tech y Media*).
 - **Indicador de Calidad:** Chip de SEO Score (0 a 100) coloreado en escala semafórica (verde $\ge 80$, ámbar $\ge 60$, rojo $< 60$).
 
-Al consolidar los 183 activos en estas 5 etapas (118 artículos bilingües, 47 versiones SemVer de aplicaciones 🚀 APP / ⚡ APP vX.Y y 18 ediciones de Kits B2B 📦 KIT bajo las invariantes `INV-PULSE-1..8`), el equipo técnico detecta de un vistazo si la columna *En Revisión* presenta atascos o si la reserva de contenidos *Programados* garantiza la cadencia semanal acordada.
+Al consolidar los 192 activos del catálogo en estas 5 etapas (127 artículos bilingües, 44 aplicaciones y versiones SemVer 🚀 APP / ⚡ APP vX.Y y 21 ediciones de Kits B2B 📦 KIT, con 180 activos visibles en el índice público bajo las invariantes `INV-PULSE-1..8`), el equipo técnico detecta de un vistazo si la columna *En Revisión* presenta atascos o si la reserva de contenidos *Programados* garantiza la cadencia semanal acordada.
 
 ---
 
@@ -192,8 +193,8 @@ Un calendario editorial no es una lista estática de fechas; es una herramienta 
 | **2026-11-18** | Adiós Notion: Datalaria Pulse o la Gestión Editorial desde Git | `POST` |
 | **2026-11-22** | Del Front Matter al Índice: Pydantic v2 y GitHub Actions | `POST` |
 | **2026-11-25** | Tabla Ejecutiva, Tablero Kanban y Calendario en React 19 | `POST` |
-| **2026-11-29** | Conexión GA4 y Search Console para Medir el ROI Orgánico | `POST` |
-| **2026-12-02** | Datalaria Pulse Pro: Sincronización Cloud y Equipos con Supabase | `POST` |
+| **2026-11-29** | Google Analytics 4 y Search Console Automatizados: Cómo Medir el ROI Orgánico del Blog | `POST` |
+| **2026-12-02** | Gestión Editorial para Equipos SEO y Marketing: de Notion a Excel en 5 Minutos | `POST` |
 
 ### Captura Rápida de Ideas con Persistencia Local:
 Para no interrumpir el flujo creativo de los autores mientras investigan o redactan, implementamos el botón **`+ Nueva Idea`**:

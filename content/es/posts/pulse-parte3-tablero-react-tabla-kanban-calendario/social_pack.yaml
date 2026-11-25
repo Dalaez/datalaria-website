@@ -1,7 +1,7 @@
 es:
   x:
     hook: ¿Por qué pagar una base de datos pesada para un Kanban editorial cuando
-      puedes proyectar 183 activos en React 19 con latencia cero sobre un JSON estático?
+      puedes proyectar 180 activos en React 19 con latencia cero sobre un JSON estático?
     thread:
     - 1/5 Un archivo JSON generado en CI/CD es un gran activo, pero un equipo editorial
       necesita una consola visual para tomar decisiones estratégicas de publicación.
@@ -9,8 +9,8 @@ es:
       filtros multifactoriales, tablero Kanban y calendario interactivo.
     - '3/5 En Datalaria Pulse rompemos esa premisa: construimos una SPA en React 19
       + TypeScript que monta la interfaz directamente sobre el archivo estático public.json.'
-    - '4/5 Resultado: 183 activos cargados en memoria en < 16ms, ordenación instantánea,
-      filtros reactivos por estado y captura optimista de ideas sin servidores.'
+    - '4/5 Resultado: 180 activos públicos cargados en memoria en < 16ms, ordenación
+      instantánea, filtros reactivos por estado y captura optimista de ideas sin servidores.'
     - '5/5 Descubre la arquitectura de este cockpit ejecutivo de alto rendimiento
       en la Parte 3: https://datalaria.com/es/posts/pulse-parte3-tablero-react-tabla-kanban-calendario/'
     hashtags:
@@ -18,7 +18,7 @@ es:
     - TypeScript
     - Frontend
     - WebDev
-    web_intent_url: https://x.com/intent/tweet?text=%C2%BFPor+qu%C3%A9+pagar+una+base+de+datos+pesada+para+un+Kanban+editorial+cuando+puedes+proyectar+183+activos+en+React+19+con+latencia+cero+sobre+un+JSON+est%C3%A1tico%3F&url=https%3A%2F%2Fdatalaria.com%2Fes%2Fposts%2Fpulse-parte3-tablero-react-tabla-kanban-calendario%2F&hashtags=React%2CTypeScript%2CFrontend%2CWebDev
+    web_intent_url: https://x.com/intent/tweet?text=%C2%BFPor+qu%C3%A9+pagar+una+base+de+datos+pesada+para+un+Kanban+editorial+cuando+puedes+proyectar+180+activos+en+React+19+con+latencia+cero+sobre+un+JSON+est%C3%A1tico%3F&url=https%3A%2F%2Fdatalaria.com%2Fes%2Fposts%2Fpulse-parte3-tablero-react-tabla-kanban-calendario%2F%3Futm_source%3Dx%26utm_medium%3Dsocial%26utm_campaign%3Dpulse-parte3-tablero-react-tabla-kanban-calendario%26utm_content%3Des_hook&hashtags=React%2CTypeScript%2CFrontend%2CWebDev
   linkedin:
     text: 'La sabiduría convencional del desarrollo web asume que para construir un
       tablero Kanban editorial necesitas un backend con base de datos relacional.
@@ -32,8 +32,8 @@ es:
       cockpit ejecutivo en React 19 sobre un archivo JSON estático: 👇
 
 
-      ⚡ Rendimiento instantáneo: 183 activos (artículos, aplicaciones y kits) cargados
-      en memoria en menos de 16 milisegundos.
+      ⚡ Rendimiento instantáneo: 180 activos públicos (artículos, aplicaciones y
+      kits) cargados en memoria en menos de 16 milisegundos.
 
 
       ⚡ Vistas sincronizadas: alterna en un clic entre tabla multifactorial, tablero
@@ -83,7 +83,7 @@ es:
     ps_referral_text: Si lideras equipos frontend o producto buscando inspiración
       en herramientas de alto rendimiento, reenvíales este análisis.
   devto:
-    enabled: false
+    enabled: true
     title: Tabla Ejecutiva, Kanban y Calendario en React 19 sobre un Índice Estático
     description: Cómo diseñar una SPA de alto rendimiento en React 19 que proyecta
       analítica, tablero Kanban y calendario consumiendo un índice estático con latencia
@@ -94,7 +94,7 @@ es:
     - frontend
     - webdev
     canonical_url: https://datalaria.com/es/posts/pulse-parte3-tablero-react-tabla-kanban-calendario/
-    published: false
+    published: true
   coderlegion:
     enabled: false
     title: Tabla Ejecutiva, Kanban y Calendario en React 19 sobre un Índice Estático

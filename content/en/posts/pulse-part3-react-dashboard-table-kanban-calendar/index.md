@@ -40,9 +40,9 @@ To understand how each piece of the *Content Ops as Code* architecture fits toge
 
 ## 0. Phase Objectives and Article Scope: Instant Interactivity over Static Data
 
-The core objective of this stage in **Phase 5 at Datalaria** is to democratize access to the editorial catalog through a fluid, modern, and reactive user experience (UX).
+The core objective of this stage in **Datalaria Pulse** is to democratize access to the editorial catalog through a fluid, modern, and reactive user experience (UX).
 
-### Phase 5 Strategic Objectives:
+### Strategic Objectives:
 1. **Zero-Latency Data Consumption:** Eliminate traditional relational database roundtrips in the public interface by serving an immutable, CDN-cached static dataset (`public.json`).
 2. **Multi-View Content Projection:** Present the single source of truth (SSOT) through three complementary perspectives: **Executive Table** (analytical auditing), **Kanban Board** (lifecycle stages), and **Monthly Calendar** (release cadence).
 3. **Decoupled Optimistic Capture:** Enable authors to draft ideas and notes locally with instant browser persistence (`localStorage`), offering one-click YAML export for subsequent Git commits.
@@ -60,7 +60,7 @@ The core objective of this stage in **Phase 5 at Datalaria** is to democratize a
 
 The interface design of Datalaria Pulse directly inherits the ergonomics, boardroom aesthetic, and quantitative rigor established in our earlier suites:
 
-{{< mermaid >}}
+{{< mermaid image="pulse_frontend_ecosystem.png" alt="Datalaria Pulse React 19 Frontend Architecture connected with Pydantic v2 Backend and Ecosystem" >}}
 flowchart TD
     subgraph BACKEND ["1. Backend Pipeline (Posts 1 & 2)"]
         GIT["Markdown + YAML"] --> PYD["Pydantic v2 Engine"]
@@ -110,26 +110,27 @@ interface PublicPulseDataset {
   total_assets: number;
   published_assets: number;
   scheduled_assets: number;
+  ideas_count: number;
   parity_summary: Record<string, number>;
   assets: ContentAsset[];
 }
 
 export function App() {
   const [dataset, setDataset] = useState<PublicPulseDataset | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<'analytics' | 'table' | 'kanban' | 'calendar' | 'health'>('analytics');
+  const [activeTab, setActiveTab] = useState<
+    'dashboard' | 'table' | 'kanban' | 'calendar' | 'health' | 'channels'
+  >('dashboard');
 
   useEffect(() => {
     // Atomic fetch of precompiled static build index
-    fetch('./data/public.json', { cache: 'no-cache' })
+    fetch(`./data/public.json?t=${Date.now()}`, { cache: 'no-store' })
       .then(res => res.json())
       .then((data: PublicPulseDataset) => {
         setDataset(data);
-        setLoading(false);
       })
-      .catch(err => console.error("Error loading editorial dataset:", err));
+      .catch(err => console.error("Error loading public.json:", err));
   }, []);
-  
+
   // ...
 }
 ```
@@ -155,7 +156,7 @@ The **Executive Table** serves as the primary instrument for deep catalog auditi
 1. **Multi-Criteria Filtering & URL Deep-Linking:** The control bar enables simultaneous filtering by predictive text (fuzzy matches across titles, slugs, and tags), asset class (`post`, `app`, `kit`, `suite`), and editorial state (`published`, `scheduled`, `draft`, `idea`), supporting URL deep linking (`?tab=table&type=app&status=published`).
 2. **Version History Switcher (`🔀`):** Instantly toggles between consolidated parent assets and granular SemVer release histories (`vX.Y.Z`).
 3. **1-Click Interactive Notion CSV Diagnostics (*Operation Crucible*):** Client-side validation button that parses Notion CSV exports in browser memory, auditing mandatory columns, dates, and taxonomy without sending data to servers.
-4. **Bi-Directional Sorting and Adaptive Pagination:** Clicking any header instantly reorders the catalog alphabetically, chronologically, by word count, or by relative traffic index, with configurable density (10, 25, 50, or 100 rows).
+4. **Bi-Directional Sorting and Adaptive Pagination:** Clicking any header instantly reorders the catalog alphabetically, chronologically, by word count, or by relative traffic index, with configurable density (10, 25, or 50 rows).
 5. **High-Contrast Parity Badges and Quick-Advance Kanban (`→`):** Clear chromatic indicators (`complete` in emerald green, `missing_en` in rose pink) and 1-click stage transition buttons in Kanban without opening modal dialogs.
 
 ---
@@ -164,7 +165,7 @@ The **Executive Table** serves as the primary instrument for deep catalog auditi
 
 While the table specializes in analytical auditing, the **Kanban Board** manages the day-to-day workflow of technical writing and peer review. We structure the editorial lifecycle into 5 immutable stages:
 
-{{< mermaid >}}
+{{< mermaid image="pulse_kanban_lifecycle.png" alt="5-stage editorial Kanban lifecycle workflow in Datalaria Pulse" >}}
 flowchart LR
     C1["💡 IDEA\n(Notes & Backlog)"] --> C2["✍️ DRAFT\n(Markdown Writing)"]
     C2 --> C3["🔍 IN REVIEW\n(Pydantic & SEO Audit)"]
@@ -176,10 +177,10 @@ flowchart LR
 Each card in the board functions as an autonomous component displaying:
 - **Asset Type and Timestamp:** Category badge (`POST`, `APP`, `KIT`) and target release date.
 - **Full Title & Link:** Direct link to inspect the asset in localhost or live production.
-- **Taxonomy Pillar:** Official content category assignment (*Business Strategy*, *Software Engineering*, *Data Science*, *Quantitative Decisions*).
+- **Taxonomy Pillar:** Official content category assignment (*Strategy & Operations*, *AI, Engineering & Projects*, *Startups*, *Pioneers & Icons*, *Tech Culture & Media*).
 - **Quality Score:** SEO Score badge (0 to 100) color-coded via a traffic light system (green $\ge 80$, amber $\ge 60$, red $< 60$).
 
-With 183 assets distributed across these 5 stages (118 bilingual articles, 47 SemVer application releases 🚀 APP / ⚡ APP vX.Y, and 18 B2B Kit editions 📦 KIT under invariants `INV-PULSE-1..8`), engineering managers instantly identify review bottlenecks or verify whether upcoming scheduled releases satisfy weekly publishing quotas.
+With 192 consolidated assets distributed across these 5 stages (127 bilingual articles, 44 SemVer application releases 🚀 APP / ⚡ APP vX.Y, and 21 B2B Kit editions 📦 KIT, with 180 public assets exposed under invariants `INV-PULSE-1..8`), engineering managers instantly identify review bottlenecks or verify whether upcoming scheduled releases satisfy weekly publishing quotas.
 
 ---
 
@@ -192,8 +193,8 @@ An editorial calendar is not merely a list of dates; it is an instrument of stra
 | **2026-11-18** | Goodbye Notion: Datalaria Pulse and Editorial Ops from Git | `POST` |
 | **2026-11-22** | From Front Matter to Index: Pydantic v2 & GitHub Actions | `POST` |
 | **2026-11-25** | Executive Table, Kanban Board, and Monthly Calendar in React 19 | `POST` |
-| **2026-11-29** | Automated GA4 and Search Console to Measure Organic ROI | `POST` |
-| **2026-12-02** | Datalaria Pulse Pro: Cloud Sync and Team Collaboration | `POST` |
+| **2026-11-29** | Automated GA4 and Search Console: Measuring Organic ROI of the Blog | `POST` |
+| **2026-12-02** | Editorial Operations for SEO and Marketing Teams: From Notion to Excel in 5 Minutes | `POST` |
 
 ### Rapid Idea Capture with Local Persistence:
 To maintain creative flow while authors research or code, we engineered the **`+ New Idea`** modal:

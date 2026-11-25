@@ -1,7 +1,7 @@
 en:
   x:
     hook: Why pay for heavy database infrastructure for an editorial Kanban when you
-      can project 183 assets in React 19 with zero latency over static JSON?
+      can project 180 assets in React 19 with zero latency over static JSON?
     thread:
     - 1/5 A clean JSON index generated in CI/CD is a great data asset, but editorial
       teams need a visual cockpit to steer publication strategy.
@@ -9,7 +9,7 @@ en:
       multi-criteria filtering, Kanban boards, and interactive calendars.
     - '3/5 In Datalaria Pulse, we challenged that dogma: we engineered a React 19
       + TypeScript SPA mounting directly over our static public.json manifest.'
-    - '4/5 Outcome: 183 technical assets loaded into client memory in < 16ms, instantaneous
+    - '4/5 Outcome: 180 public assets loaded into client memory in < 16ms, instantaneous
       sorting, reactive status filters, and optimistic idea capture.'
     - '5/5 Check out the complete architecture behind this high-performance executive
       cockpit in Part 3: https://datalaria.com/en/posts/pulse-part3-react-dashboard-table-kanban-calendar/'
@@ -18,7 +18,7 @@ en:
     - TypeScript
     - Frontend
     - WebDev
-    web_intent_url: https://x.com/intent/tweet?text=Why+pay+for+heavy+database+infrastructure+for+an+editorial+Kanban+when+you+can+project+183+assets+in+React+19+with+zero+latency+over+static+JSON%3F&url=https%3A%2F%2Fdatalaria.com%2Fen%2Fposts%2Fpulse-part3-react-dashboard-table-kanban-calendar%2F&hashtags=React%2CTypeScript%2CFrontend%2CWebDev
+    web_intent_url: https://x.com/intent/tweet?text=Why+pay+for+heavy+database+infrastructure+for+an+editorial+Kanban+when+you+can+project+180+assets+in+React+19+with+zero+latency+over+static+JSON%3F&url=https%3A%2F%2Fdatalaria.com%2Fen%2Fposts%2Fpulse-part3-react-dashboard-table-kanban-calendar%2F%3Futm_source%3Dx%26utm_medium%3Dsocial%26utm_campaign%3Dpulse-part3-react-dashboard-table-kanban-calendar%26utm_content%3Den_hook&hashtags=React%2CTypeScript%2CFrontend%2CWebDev
   linkedin:
     text: 'Standard web development wisdom assumes that delivering an interactive
       editorial Kanban requires a dedicated backend and relational database.
@@ -32,8 +32,8 @@ en:
       cockpit directly over precompiled static JSON: 👇
 
 
-      ⚡ Zero network latency: 183 technical assets (posts, applications, and kits)
-      loaded into client memory in under 16 milliseconds.
+      ⚡ Zero network latency: 180 public assets (posts, applications, and kits) loaded
+      into client memory in under 16 milliseconds.
 
 
       ⚡ Synchronized views: switch in a single click between an audit table, a Kanban
