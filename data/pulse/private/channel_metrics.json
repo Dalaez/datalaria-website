@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "visibility": "private",
   "days": 30,
-  "last_synced_at": "2026-11-25T15:11:41.489871+00:00",
+  "last_synced_at": "2026-11-25T20:21:42.801554+00:00",
   "sources_status": {
     "ga4_acquisition": "ok",
     "x_native": "standby_zero_cost"
@@ -10,19 +10,19 @@
   "by_channel": {
     "google_organic": {
       "channel": "google_organic",
-      "sessions_30d": 245,
-      "sessions_es_30d": 128,
+      "sessions_30d": 246,
+      "sessions_es_30d": 129,
       "sessions_en_30d": 117,
-      "en_share_pct": 47.8,
-      "users_30d": 180,
+      "en_share_pct": 47.6,
+      "users_30d": 181,
       "engaged_sessions_30d": 130,
-      "engagement_rate_pct": 53.1,
-      "avg_engagement_sec": 35.1,
+      "engagement_rate_pct": 52.8,
+      "avg_engagement_sec": 35.0,
       "key_events_30d": 0,
       "key_events_breakdown": {},
       "conversion_rate_pct": 0.0,
       "sessions_prev_30d": 138,
-      "trend_30d_pct": 77.5
+      "trend_30d_pct": 78.3
     },
     "linkedin": {
       "channel": "linkedin",
@@ -109,14 +109,14 @@
     },
     "direct": {
       "channel": "direct",
-      "sessions_30d": 2328,
-      "sessions_es_30d": 1105,
-      "sessions_en_30d": 1189,
-      "en_share_pct": 51.8,
-      "users_30d": 1849,
-      "engaged_sessions_30d": 649,
-      "engagement_rate_pct": 27.9,
-      "avg_engagement_sec": 9.7,
+      "sessions_30d": 2340,
+      "sessions_es_30d": 1108,
+      "sessions_en_30d": 1198,
+      "en_share_pct": 52.0,
+      "users_30d": 1860,
+      "engaged_sessions_30d": 651,
+      "engagement_rate_pct": 27.8,
+      "avg_engagement_sec": 9.8,
       "key_events_30d": 7,
       "key_events_breakdown": {
         "begin_checkout": 4,
@@ -125,7 +125,7 @@
       },
       "conversion_rate_pct": 0.3,
       "sessions_prev_30d": 1010,
-      "trend_30d_pct": 130.5
+      "trend_30d_pct": 131.7
     },
     "other": {
       "channel": "other",
@@ -172,12 +172,12 @@
     },
     "mega-bundle": {
       "direct": {
-        "sessions_30d": 97,
+        "sessions_30d": 98,
         "sessions_es_30d": 72,
-        "sessions_en_30d": 25,
-        "users_30d": 49,
+        "sessions_en_30d": 26,
+        "users_30d": 50,
         "engaged_sessions_30d": 80,
-        "avg_engagement_sec": 18.9,
+        "avg_engagement_sec": 18.7,
         "key_events_30d": 3,
         "key_events_breakdown": {
           "begin_checkout": 2,
@@ -368,6 +368,38 @@
         "key_events_breakdown": {}
       }
     },
+    "abraham_wald": {
+      "direct": {
+        "sessions_30d": 22,
+        "sessions_es_30d": 2,
+        "sessions_en_30d": 20,
+        "users_30d": 22,
+        "engaged_sessions_30d": 0,
+        "avg_engagement_sec": 0.6,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "google_organic": {
+        "sessions_30d": 5,
+        "sessions_es_30d": 0,
+        "sessions_en_30d": 5,
+        "users_30d": 3,
+        "engaged_sessions_30d": 3,
+        "avg_engagement_sec": 19.6,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "other": {
+        "sessions_30d": 1,
+        "sessions_es_30d": 0,
+        "sessions_en_30d": 1,
+        "users_30d": 1,
+        "engaged_sessions_30d": 0,
+        "avg_engagement_sec": 0.0,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      }
+    },
     "mckinsey-ge-matrix": {
       "direct": {
         "sessions_30d": 30,
@@ -410,34 +442,14 @@
         "key_events_breakdown": {}
       }
     },
-    "abraham_wald": {
+    "devs": {
       "direct": {
-        "sessions_30d": 21,
-        "sessions_es_30d": 2,
-        "sessions_en_30d": 19,
-        "users_30d": 21,
+        "sessions_30d": 23,
+        "sessions_es_30d": 3,
+        "sessions_en_30d": 20,
+        "users_30d": 23,
         "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 0.7,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "google_organic": {
-        "sessions_30d": 5,
-        "sessions_es_30d": 0,
-        "sessions_en_30d": 5,
-        "users_30d": 3,
-        "engaged_sessions_30d": 3,
-        "avg_engagement_sec": 19.6,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "other": {
-        "sessions_30d": 1,
-        "sessions_es_30d": 0,
-        "sessions_en_30d": 1,
-        "users_30d": 1,
-        "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 0.0,
+        "avg_engagement_sec": 1.0,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -470,18 +482,6 @@
         "users_30d": 2,
         "engaged_sessions_30d": 1,
         "avg_engagement_sec": 3.5,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
-    "devs": {
-      "direct": {
-        "sessions_30d": 22,
-        "sessions_es_30d": 3,
-        "sessions_en_30d": 19,
-        "users_30d": 22,
-        "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 1.1,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -540,6 +540,38 @@
         "key_events_breakdown": {}
       }
     },
+    "john_von_neumann": {
+      "direct": {
+        "sessions_30d": 20,
+        "sessions_es_30d": 3,
+        "sessions_en_30d": 17,
+        "users_30d": 18,
+        "engaged_sessions_30d": 1,
+        "avg_engagement_sec": 2.0,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "google_organic": {
+        "sessions_30d": 17,
+        "sessions_es_30d": 9,
+        "sessions_en_30d": 8,
+        "users_30d": 15,
+        "engaged_sessions_30d": 10,
+        "avg_engagement_sec": 28.7,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "other": {
+        "sessions_30d": 5,
+        "sessions_es_30d": 5,
+        "sessions_en_30d": 0,
+        "users_30d": 5,
+        "engaged_sessions_30d": 3,
+        "avg_engagement_sec": 23.4,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      }
+    },
     "corporate-strategy-mba-quantitative-framework": {
       "direct": {
         "sessions_30d": 29,
@@ -580,38 +612,6 @@
         "users_30d": 1,
         "engaged_sessions_30d": 0,
         "avg_engagement_sec": 0.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
-    "john_von_neumann": {
-      "direct": {
-        "sessions_30d": 19,
-        "sessions_es_30d": 3,
-        "sessions_en_30d": 16,
-        "users_30d": 17,
-        "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 2.2,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "google_organic": {
-        "sessions_30d": 17,
-        "sessions_es_30d": 9,
-        "sessions_en_30d": 8,
-        "users_30d": 15,
-        "engaged_sessions_30d": 10,
-        "avg_engagement_sec": 28.7,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "other": {
-        "sessions_30d": 5,
-        "sessions_es_30d": 5,
-        "sessions_en_30d": 0,
-        "users_30d": 5,
-        "engaged_sessions_30d": 3,
-        "avg_engagement_sec": 23.4,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -678,6 +678,48 @@
         "users_30d": 16,
         "engaged_sessions_30d": 0,
         "avg_engagement_sec": 0.3,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      }
+    },
+    "norbert_wiener": {
+      "direct": {
+        "sessions_30d": 25,
+        "sessions_es_30d": 11,
+        "sessions_en_30d": 14,
+        "users_30d": 21,
+        "engaged_sessions_30d": 7,
+        "avg_engagement_sec": 22.6,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "google_organic": {
+        "sessions_30d": 8,
+        "sessions_es_30d": 3,
+        "sessions_en_30d": 5,
+        "users_30d": 6,
+        "engaged_sessions_30d": 3,
+        "avg_engagement_sec": 1.2,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "x": {
+        "sessions_30d": 6,
+        "sessions_es_30d": 3,
+        "sessions_en_30d": 3,
+        "users_30d": 3,
+        "engaged_sessions_30d": 5,
+        "avg_engagement_sec": 9.7,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "other": {
+        "sessions_30d": 2,
+        "sessions_es_30d": 1,
+        "sessions_en_30d": 1,
+        "users_30d": 2,
+        "engaged_sessions_30d": 1,
+        "avg_engagement_sec": 39.0,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -774,48 +816,6 @@
         "users_30d": 1,
         "engaged_sessions_30d": 0,
         "avg_engagement_sec": 6.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
-    "norbert_wiener": {
-      "direct": {
-        "sessions_30d": 24,
-        "sessions_es_30d": 11,
-        "sessions_en_30d": 13,
-        "users_30d": 20,
-        "engaged_sessions_30d": 7,
-        "avg_engagement_sec": 23.5,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "google_organic": {
-        "sessions_30d": 8,
-        "sessions_es_30d": 3,
-        "sessions_en_30d": 5,
-        "users_30d": 6,
-        "engaged_sessions_30d": 3,
-        "avg_engagement_sec": 1.2,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "x": {
-        "sessions_30d": 6,
-        "sessions_es_30d": 3,
-        "sessions_en_30d": 3,
-        "users_30d": 3,
-        "engaged_sessions_30d": 5,
-        "avg_engagement_sec": 9.7,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "other": {
-        "sessions_30d": 2,
-        "sessions_es_30d": 1,
-        "sessions_en_30d": 1,
-        "users_30d": 2,
-        "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 39.0,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -1170,6 +1170,28 @@
         "key_events_breakdown": {}
       }
     },
+    "economia_oculta_ia": {
+      "direct": {
+        "sessions_30d": 11,
+        "sessions_es_30d": 1,
+        "sessions_en_30d": 10,
+        "users_30d": 10,
+        "engaged_sessions_30d": 0,
+        "avg_engagement_sec": 0.4,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "google_organic": {
+        "sessions_30d": 6,
+        "sessions_es_30d": 0,
+        "sessions_en_30d": 6,
+        "users_30d": 2,
+        "engaged_sessions_30d": 1,
+        "avg_engagement_sec": 4.2,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      }
+    },
     "nextail": {
       "direct": {
         "sessions_30d": 11,
@@ -1416,28 +1438,6 @@
         "key_events_breakdown": {}
       }
     },
-    "economia_oculta_ia": {
-      "direct": {
-        "sessions_30d": 10,
-        "sessions_es_30d": 1,
-        "sessions_en_30d": 9,
-        "users_30d": 10,
-        "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 0.4,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "google_organic": {
-        "sessions_30d": 6,
-        "sessions_es_30d": 0,
-        "sessions_en_30d": 6,
-        "users_30d": 2,
-        "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 4.2,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
     "multiverse_computing": {
       "direct": {
         "sessions_30d": 11,
@@ -1634,6 +1634,48 @@
         "key_events_breakdown": {}
       }
     },
+    "quantitative-risk-matrix-fmea": {
+      "direct": {
+        "sessions_30d": 13,
+        "sessions_es_30d": 5,
+        "sessions_en_30d": 8,
+        "users_30d": 12,
+        "engaged_sessions_30d": 3,
+        "avg_engagement_sec": 19.3,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "other": {
+        "sessions_30d": 2,
+        "sessions_es_30d": 0,
+        "sessions_en_30d": 2,
+        "users_30d": 1,
+        "engaged_sessions_30d": 0,
+        "avg_engagement_sec": 0.0,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "google_organic": {
+        "sessions_30d": 1,
+        "sessions_es_30d": 0,
+        "sessions_en_30d": 1,
+        "users_30d": 1,
+        "engaged_sessions_30d": 0,
+        "avg_engagement_sec": 0.0,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "x": {
+        "sessions_30d": 1,
+        "sessions_es_30d": 0,
+        "sessions_en_30d": 1,
+        "users_30d": 1,
+        "engaged_sessions_30d": 1,
+        "avg_engagement_sec": 0.0,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      }
+    },
     "the-goal": {
       "direct": {
         "sessions_30d": 10,
@@ -1762,48 +1804,6 @@
         "users_30d": 6,
         "engaged_sessions_30d": 5,
         "avg_engagement_sec": 139.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
-    "quantitative-risk-matrix-fmea": {
-      "direct": {
-        "sessions_30d": 12,
-        "sessions_es_30d": 5,
-        "sessions_en_30d": 7,
-        "users_30d": 11,
-        "engaged_sessions_30d": 3,
-        "avg_engagement_sec": 20.9,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "other": {
-        "sessions_30d": 2,
-        "sessions_es_30d": 0,
-        "sessions_en_30d": 2,
-        "users_30d": 1,
-        "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 0.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "google_organic": {
-        "sessions_30d": 1,
-        "sessions_es_30d": 0,
-        "sessions_en_30d": 1,
-        "users_30d": 1,
-        "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 0.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "x": {
-        "sessions_30d": 1,
-        "sessions_es_30d": 0,
-        "sessions_en_30d": 1,
-        "users_30d": 1,
-        "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 0.0,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -2148,12 +2148,12 @@
         "key_events_breakdown": {}
       },
       "google_organic": {
-        "sessions_30d": 1,
-        "sessions_es_30d": 0,
+        "sessions_30d": 2,
+        "sessions_es_30d": 1,
         "sessions_en_30d": 1,
-        "users_30d": 1,
+        "users_30d": 2,
         "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 31.0,
+        "avg_engagement_sec": 15.5,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
@@ -2934,6 +2934,38 @@
         "key_events_breakdown": {}
       }
     },
+    "clarity_ai": {
+      "direct": {
+        "sessions_30d": 3,
+        "sessions_es_30d": 1,
+        "sessions_en_30d": 2,
+        "users_30d": 3,
+        "engaged_sessions_30d": 1,
+        "avg_engagement_sec": 39.0,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "google_organic": {
+        "sessions_30d": 2,
+        "sessions_es_30d": 1,
+        "sessions_en_30d": 1,
+        "users_30d": 2,
+        "engaged_sessions_30d": 2,
+        "avg_engagement_sec": 17.5,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "other": {
+        "sessions_30d": 1,
+        "sessions_es_30d": 1,
+        "sessions_en_30d": 0,
+        "users_30d": 1,
+        "engaged_sessions_30d": 1,
+        "avg_engagement_sec": 224.0,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      }
+    },
     "graphext": {
       "direct": {
         "sessions_30d": 3,
@@ -3144,38 +3176,6 @@
         "users_30d": 2,
         "engaged_sessions_30d": 2,
         "avg_engagement_sec": 0.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
-    "clarity_ai": {
-      "direct": {
-        "sessions_30d": 2,
-        "sessions_es_30d": 1,
-        "sessions_en_30d": 1,
-        "users_30d": 2,
-        "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 3.5,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "google_organic": {
-        "sessions_30d": 2,
-        "sessions_es_30d": 1,
-        "sessions_en_30d": 1,
-        "users_30d": 2,
-        "engaged_sessions_30d": 2,
-        "avg_engagement_sec": 17.5,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "other": {
-        "sessions_30d": 1,
-        "sessions_es_30d": 1,
-        "sessions_en_30d": 0,
-        "users_30d": 1,
-        "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 224.0,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -3483,8 +3483,8 @@
       "other": 8
     },
     "2026-11-25": {
-      "direct": 33,
-      "google_organic": 5,
+      "direct": 45,
+      "google_organic": 6,
       "other": 1
     }
   },
@@ -3497,10 +3497,10 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 187,
-      "users": 108,
-      "engaged_sessions": 106,
-      "engagement_sec": 4137.0,
+      "sessions": 190,
+      "users": 111,
+      "engaged_sessions": 107,
+      "engagement_sec": 4216.0,
       "key_events": 4,
       "key_events_breakdown": {
         "begin_checkout": 2,
@@ -3578,8 +3578,8 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 45,
-      "users": 24,
+      "sessions": 46,
+      "users": 25,
       "engaged_sessions": 34,
       "engagement_sec": 405.0,
       "key_events": 0,
@@ -3638,8 +3638,8 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 25,
-      "users": 19,
+      "sessions": 26,
+      "users": 20,
       "engaged_sessions": 18,
       "engagement_sec": 333.0,
       "key_events": 0,
@@ -3722,6 +3722,21 @@
     },
     {
       "channel": "direct",
+      "path": "/en/posts/abraham_wald",
+      "asset_id": "abraham_wald",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 20,
+      "users": 20,
+      "engaged_sessions": 0,
+      "engagement_sec": 10.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
       "path": "/en/posts/mckinsey-ge-matrix",
       "asset_id": "mckinsey-ge-matrix",
       "lang": "en",
@@ -3737,8 +3752,8 @@
     },
     {
       "channel": "direct",
-      "path": "/en/posts/abraham_wald",
-      "asset_id": "abraham_wald",
+      "path": "/en/posts/devs",
+      "asset_id": "devs",
       "lang": "en",
       "source": "(direct)",
       "medium": "(none)",
@@ -3746,7 +3761,7 @@
       "sessions": 19,
       "users": 19,
       "engaged_sessions": 0,
-      "engagement_sec": 10.0,
+      "engagement_sec": 17.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -3782,21 +3797,6 @@
     },
     {
       "channel": "direct",
-      "path": "/en/posts/devs",
-      "asset_id": "devs",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 18,
-      "users": 18,
-      "engaged_sessions": 0,
-      "engagement_sec": 17.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
       "path": "/en/posts/graphrag",
       "asset_id": "graphrag",
       "lang": "en",
@@ -3827,6 +3827,21 @@
     },
     {
       "channel": "direct",
+      "path": "/en/posts/john_von_neumann",
+      "asset_id": "john_von_neumann",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 17,
+      "users": 15,
+      "engaged_sessions": 0,
+      "engagement_sec": 3.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
       "path": "/en/posts/corporate-strategy-mba-quantitative-framework",
       "asset_id": "corporate-strategy-mba-quantitative-framework",
       "lang": "en",
@@ -3852,21 +3867,6 @@
       "users": 16,
       "engaged_sessions": 0,
       "engagement_sec": 0.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/en/posts/john_von_neumann",
-      "asset_id": "john_von_neumann",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 16,
-      "users": 14,
-      "engaged_sessions": 0,
-      "engagement_sec": 3.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -3926,6 +3926,21 @@
       "sessions": 14,
       "users": 14,
       "engaged_sessions": 0,
+      "engagement_sec": 0.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/en/posts/norbert_wiener",
+      "asset_id": "norbert_wiener",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 14,
+      "users": 13,
+      "engaged_sessions": 1,
       "engagement_sec": 0.0,
       "key_events": 0,
       "key_events_breakdown": {}
@@ -4005,21 +4020,6 @@
       "users": 13,
       "engaged_sessions": 1,
       "engagement_sec": 3.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/en/posts/norbert_wiener",
-      "asset_id": "norbert_wiener",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 13,
-      "users": 12,
-      "engaged_sessions": 1,
-      "engagement_sec": 0.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -4288,6 +4288,21 @@
       "campaign": "(referral)",
       "sessions": 10,
       "users": 10,
+      "engaged_sessions": 0,
+      "engagement_sec": 0.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/en/posts/hidden_economics_ai",
+      "asset_id": "economia_oculta_ia",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 10,
+      "users": 9,
       "engaged_sessions": 0,
       "engagement_sec": 0.0,
       "key_events": 0,
@@ -4565,21 +4580,6 @@
     },
     {
       "channel": "direct",
-      "path": "/en/posts/hidden_economics_ai",
-      "asset_id": "economia_oculta_ia",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 9,
-      "users": 9,
-      "engaged_sessions": 0,
-      "engagement_sec": 0.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
       "path": "/en/posts/kurt_godel",
       "asset_id": "kurt_godel",
       "lang": "en",
@@ -4785,6 +4785,21 @@
       "users": 8,
       "engaged_sessions": 0,
       "engagement_sec": 0.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/en/posts/quantitative-risk-matrix-fmea",
+      "asset_id": "quantitative-risk-matrix-fmea",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 8,
+      "users": 8,
+      "engaged_sessions": 1,
+      "engagement_sec": 10.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -5025,21 +5040,6 @@
       "users": 6,
       "engaged_sessions": 2,
       "engagement_sec": 38.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/en/posts/quantitative-risk-matrix-fmea",
-      "asset_id": "quantitative-risk-matrix-fmea",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 7,
-      "users": 7,
-      "engaged_sessions": 1,
-      "engagement_sec": 10.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -7395,6 +7395,21 @@
       "users": 2,
       "engaged_sessions": 0,
       "engagement_sec": 0.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/en/posts/clarity_ai",
+      "asset_id": "clarity_ai",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 2,
+      "users": 2,
+      "engaged_sessions": 1,
+      "engagement_sec": 110.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -12023,21 +12038,6 @@
       "key_events_breakdown": {}
     },
     {
-      "channel": "direct",
-      "path": "/en/posts/clarity_ai",
-      "asset_id": "clarity_ai",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 1,
-      "users": 1,
-      "engaged_sessions": 0,
-      "engagement_sec": 0.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
       "channel": "google_organic",
       "path": "/en/posts/clarity_ai",
       "asset_id": "clarity_ai",
@@ -15349,6 +15349,21 @@
       "users": 1,
       "engaged_sessions": 1,
       "engagement_sec": 1026.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "google_organic",
+      "path": "/es/posts/magnific_ai",
+      "asset_id": "magnific-ai",
+      "lang": "es",
+      "source": "google",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "sessions": 1,
+      "users": 1,
+      "engaged_sessions": 0,
+      "engagement_sec": 0.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },

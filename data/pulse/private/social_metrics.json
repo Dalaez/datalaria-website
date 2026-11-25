@@ -1,14 +1,14 @@
 {
   "version": "1.0.0",
   "visibility": "private",
-  "generated_at": "2026-11-25T15:11:44.757229+00:00",
+  "generated_at": "2026-11-25T20:21:45.995313+00:00",
   "platforms": {
     "devto": {
       "status": "ok",
-      "last_synced_at": "2026-11-25T15:11:44.757229+00:00",
+      "last_synced_at": "2026-11-25T20:21:45.995313+00:00",
       "articles_count": 212,
       "matched_assets_count": 105,
-      "total_views": 8911,
+      "total_views": 8921,
       "total_reactions": 123,
       "total_comments": 32,
       "articles": [
@@ -162,7 +162,7 @@
           "slug": "goodbye-notion-why-we-migrated-our-tech-content-ops-to-git-and-pydantic-102",
           "url": "https://dev.to/datalaria/goodbye-notion-why-we-migrated-our-tech-content-ops-to-git-and-pydantic-102",
           "canonical_url": "https://datalaria.com/en/posts/pulse-part1-goodbye-notion-content-ops/",
-          "views": 0,
+          "views": 10,
           "reactions": 0,
           "positive_reactions": 0,
           "public_reactions": 0,
@@ -3832,10 +3832,10 @@
     },
     "coderlegion": {
       "status": "ok",
-      "last_synced_at": "2026-11-25T15:11:44.757229+00:00",
+      "last_synced_at": "2026-11-25T20:21:45.995313+00:00",
       "articles_count": 1,
       "matched_assets_count": 1,
-      "total_views": 38,
+      "total_views": 39,
       "total_reactions": 0,
       "total_comments": 0,
       "articles": [
@@ -3845,7 +3845,7 @@
           "slug": "",
           "url": "https://coderlegion.com/posts/35848",
           "canonical_url": "https://datalaria.com/en/posts/earned-value-management-evm-dashboard/",
-          "views": 38,
+          "views": 39,
           "reactions": 0,
           "comments": 0,
           "reading_time_min": 0,
@@ -4433,9 +4433,9 @@
         ]
       },
       "coderlegion": {
-        "views": 38,
+        "views": 39,
         "views_es": 0,
-        "views_en": 38,
+        "views_en": 39,
         "reactions": 0,
         "comments": 0,
         "articles_count": 1,
@@ -5349,9 +5349,9 @@
     },
     "pulse-part1": {
       "devto": {
-        "views": 20,
+        "views": 30,
         "views_es": 20,
-        "views_en": 0,
+        "views_en": 10,
         "reactions": 0,
         "comments": 0,
         "articles_count": 2,
