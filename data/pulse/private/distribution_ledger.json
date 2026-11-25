@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "visibility": "private",
-  "updated_at": "2026-11-25T06:40:01Z",
+  "updated_at": "2026-11-25T14:38:34Z",
   "entries": [
     {
       "asset_id": "autopilot-parte10-scriba-sindicacion-puente-pulse",
@@ -72,6 +72,16 @@
       "external_url": "https://www.linkedin.com/feed/update/urn:li:share:7531245292894081024/",
       "canonical_url": "https://datalaria.com/es/posts/pulse-parte3-tablero-react-tabla-kanban-calendario/",
       "published_at_utc": "2026-11-25T06:40:01Z"
+    },
+    {
+      "asset_id": "pulse-part3",
+      "slug": "pulse-part3-react-dashboard-table-kanban-calendar",
+      "lang": "en",
+      "channel": "linkedin",
+      "external_id": "urn:li:share:7531365720560107520",
+      "external_url": "https://www.linkedin.com/feed/update/urn:li:share:7531365720560107520/",
+      "canonical_url": "https://datalaria.com/en/posts/pulse-part3-react-dashboard-table-kanban-calendar/",
+      "published_at_utc": "2026-11-25T14:38:34Z"
     }
   ]
 }
