@@ -1,6 +1,7 @@
 slug: helix
 order: 12
 tier: b2b
+brand_vertical: ai_systems
 status: incubating
 icon: "🧬"
 cover: cover.png

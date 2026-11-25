@@ -437,16 +437,12 @@
     {{- end -}}
 
     <div class="app-cta-banner">
-      <h3>{{ cond (eq $lang "es") "¿Quieres profundizar en esta arquitectura o proponer nuevas mejoras?" "Want to deploy this architecture or explore custom solutions?" }}</h3>
-      <p>{{ cond (eq $lang "es") "Si te interesa implementar esta arquitectura en tu organización, explorar adaptaciones a medida o tienes propuestas para evolucionar la aplicación, escríbeme directamente." "If you are interested in deploying this architecture, exploring custom solutions for your organization, or proposing new features to evolve the app, get in touch directly." }}</p>
-      
-      {{- $contactMail := printf "mailto:contacto@datalaria.com?subject=%s%s&body=%s%s%s"
-          (cond (eq $lang "es") "Consulta o Propuesta sobre App: " "Inquiry or Proposal regarding App: ")
-          $title
-          (cond (eq $lang "es") "Hola, me gustaría profundizar sobre la App " "Hello, I would like to explore more about the App ")
-          $title
-          (cond (eq $lang "es") " o proponer las siguientes mejoras:%0A%0A" " or propose the following ideas:%0A%0A") -}}
-      
+      <h3>{{ cond (eq $lang "es") "¿Quieres desplegar esta arquitectura en tu equipo o solicitar Licencia B2B?" "Want to deploy this architecture across your team or request a B2B License?" }}</h3>
+      <p>{{ cond (eq $lang "es") "Si te interesa implementar esta arquitectura en tu organización, adquirir una Licencia Equipo/Corporativa (99 €–149 €) o proponer mejoras técnicas, envíanos un mensaje directo desde el formulario." "If you want to deploy this architecture in your organization, unlock a Team/Corporate License (99 €–149 €), or propose technical enhancements, reach out directly through the form." }}</p>
+
+      {{- $contactUrl := printf "%s?app=%s" (cond (eq $lang "es") "/es/contact/" "/en/contact/") $slug -}}
+      {{- $b2bUrl := cond (eq $lang "es") "/es/recursos/#b2b-team-license" "/en/resources/#b2b-team-license" -}}
+
       <div class="app-cta-buttons">
         {{- if $app.app_url -}}
         <a href="{{ $app.app_url }}" class="app-btn app-btn-primary" target="_blank" rel="noopener">
@@ -458,17 +454,19 @@
           {{- cond (eq $lang "es") "Explorar Demo Interactiva 🚀" "Try Interactive Demo 🚀" -}}
         </a>
         {{- end -}}
-        <a href="{{ $contactMail }}" class="app-btn app-btn-contact" title="{{ cond (eq $lang "es") "Escríbeme por email" "Send an email inquiry" }}">
-          {{- cond (eq $lang "es") "Contactar / Proponer Mejoras ✉️" "Contact / Propose Ideas ✉️" -}}
+        <a href="{{ $b2bUrl }}" class="app-btn app-btn-outline">
+          {{- cond (eq $lang "es") "Licencia Equipo B2B (99€–149€) 🏢" "B2B Team License (99€–149€) 🏢" -}}
+        </a>
+        <a href="{{ $contactUrl }}" class="app-btn app-btn-contact" title="{{ cond (eq $lang "es") "Abrir formulario de contacto" "Open contact form" }}">
+          {{- cond (eq $lang "es") "Contactar / Proponer Mejoras →" "Contact / Propose Ideas →" -}}
         </a>
       </div>
 
       <p class="app-cta-contact-note">
-        {{- cond (eq $lang "es") "También puedes escribirme a través del" "You can also reach out through the" }}
-        <a href="{{ cond (eq $lang "es") "/es/contact/" "/en/contact/" }}" class="app-cta-contact-link">
-          {{- cond (eq $lang "es") "formulario de contacto" "contact form" -}}
-        </a>
-        (contacto@datalaria.com).
+        {{- cond (eq $lang "es") "Gestión directa sin fricción a través del" "Frictionless direct routing through the" }}
+        <a href="{{ $contactUrl }}" class="app-cta-contact-link">
+          {{- cond (eq $lang "es") "formulario de contacto B2B" "B2B contact form" -}}
+        </a>.
       </p>
     </div>
   </section>

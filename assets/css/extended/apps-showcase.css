@@ -13,25 +13,98 @@
   margin: 2rem 0;
 }
 
-.app-tier-section {
+.app-tier-section,
+.app-vertical-section {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-.app-tier-header {
-  border-bottom: 2px solid var(--border);
-  padding-bottom: 0.75rem;
+.apps-anchor-alias {
+  position: absolute;
+  top: -20px;
+  visibility: hidden;
+  pointer-events: none;
 }
 
-.app-tier-title {
+.app-tier-header,
+.app-vertical-header {
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 0.85rem;
+}
+
+.app-vertical-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  margin-bottom: 0.45rem;
+  background: rgba(2, 132, 199, 0.08);
+  color: #0284c7;
+  border: 1px solid rgba(2, 132, 199, 0.25);
+}
+
+.dark .app-vertical-badge {
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+.app-vertical-executive-b2b .app-vertical-badge,
+.app-vertical-executive_b2b .app-vertical-badge {
+  background: rgba(234, 88, 12, 0.1);
+  color: #ea580c;
+  border-color: rgba(234, 88, 12, 0.3);
+}
+
+.dark .app-vertical-executive-b2b .app-vertical-badge,
+.dark .app-vertical-executive_b2b .app-vertical-badge {
+  background: rgba(249, 115, 22, 0.15);
+  color: #fb923c;
+  border-color: rgba(249, 115, 22, 0.4);
+}
+
+.app-vertical-ai-systems .app-vertical-badge,
+.app-vertical-ai_systems .app-vertical-badge {
+  background: rgba(16, 185, 129, 0.1);
+  color: #059669;
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.dark .app-vertical-ai-systems .app-vertical-badge,
+.dark .app-vertical-ai_systems .app-vertical-badge {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.app-vertical-open-lab .app-vertical-badge,
+.app-vertical-open_lab .app-vertical-badge {
+  background: rgba(139, 92, 246, 0.1);
+  color: #7c3aed;
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+.dark .app-vertical-open-lab .app-vertical-badge,
+.dark .app-vertical-open_lab .app-vertical-badge {
+  background: rgba(139, 92, 246, 0.15);
+  color: #a78bfa;
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+.app-tier-title,
+.app-vertical-title {
   font-size: 1.6rem;
   font-weight: 700;
   margin: 0 0 0.25rem 0;
   color: var(--primary);
 }
 
-.app-tier-desc {
+.app-tier-desc,
+.app-vertical-desc {
   font-size: 0.95rem;
   color: var(--secondary);
   margin: 0;
@@ -273,6 +346,14 @@
   letter-spacing: 0.05em;
 }
 
+.app-badge-ai {
+  background: rgba(16, 185, 129, 0.85);
+  color: #ffffff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
 .app-card-b2b-notice {
   display: inline-flex;
   align-items: center;
@@ -314,6 +395,24 @@
   border-color: var(--primary);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.apps-tier-pill--b2b:hover {
+  background: #ea580c;
+  border-color: #ea580c;
+  color: #ffffff !important;
+}
+
+.apps-tier-pill--ai:hover {
+  background: #059669;
+  border-color: #059669;
+  color: #ffffff !important;
+}
+
+.apps-tier-pill--lab:hover {
+  background: #7c3aed;
+  border-color: #7c3aed;
+  color: #ffffff !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -964,5 +1063,24 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .apps-showcase-container {
+    overflow-x: clip;
+    margin: 1.5rem 0;
+    gap: 2.5rem;
+  }
+  .app-vertical-title,
+  .app-tier-title {
+    font-size: 1.35rem;
+  }
+  .apps-tier-nav {
+    gap: 6px;
+  }
+  .apps-tier-pill {
+    font-size: 0.78rem;
+    padding: 6px 12px;
   }
 }

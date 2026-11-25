@@ -56,7 +56,18 @@
   {{- $postPage = $cxt.Site.GetPage (printf "/posts/%s" $app.post_slug) -}}
 {{- end -}}
 
-<article class="app-card-v2" data-tier="{{ $app.tier }}" data-status="{{ $status }}">
+{{- $vertical := $app.computed_vertical | default $app.brand_vertical | default "" -}}
+{{- if eq $vertical "" -}}
+  {{- if or (eq $app.slug "obs-management") (and (eq $app.tier "b2b") (ne $app.slug "pulse") (ne $app.slug "helix")) -}}
+    {{- $vertical = "executive_b2b" -}}
+  {{- else if or (eq $app.slug "pulse") (eq $app.slug "helix") -}}
+    {{- $vertical = "ai_systems" -}}
+  {{- else -}}
+    {{- $vertical = "open_lab" -}}
+  {{- end -}}
+{{- end -}}
+
+<article class="app-card-v2" data-tier="{{ $app.tier }}" data-vertical="{{ $vertical }}" data-status="{{ $status }}">
   <div class="app-card-media">
     {{- $coverImg := false -}}
     {{- if and $hasFicha $app.cover -}}
@@ -74,8 +85,10 @@
 
     <div class="app-card-badges">
       <span class="app-badge app-badge-status app-badge-{{ $status }}">{{ $statusLabel }}</span>
-      {{- if eq $app.tier "b2b" -}}
-      <span class="app-badge app-badge-b2b">B2B Suite</span>
+      {{- if eq $vertical "ai_systems" -}}
+      <span class="app-badge app-badge-ai">AI Systems</span>
+      {{- else if or (eq $vertical "executive_b2b") (eq $app.tier "b2b") -}}
+      <span class="app-badge app-badge-b2b">Executive B2B</span>
       {{- end -}}
       {{- with $app.current_version -}}
       <span class="app-badge app-badge-version">{{ . }}</span>

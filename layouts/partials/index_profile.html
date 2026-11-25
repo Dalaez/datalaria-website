@@ -64,9 +64,9 @@
     "pageLabel" "Paginación de artículos"
     "archive" "Ver archivo completo del blog →"
     "s3tag" "03 / Ecosistema"
-    "s3title" "Apps & Experimentos"
-    "s3desc" "Sistemas full-stack en producción, sandboxes ejecutivos de IA agéntica y laboratorios interactivos desplegados bajo arquitectura Cloud de coste cero."
-    "appsAll" "Ver todas las Apps & Experimentos →"
+    "s3title" "Apps & Sistemas"
+    "s3desc" "Dashboards ejecutivos B2B, sistemas agénticos de IA en producción y laboratorios de ingeniería cuantitativa desplegados a coste cero."
+    "appsAll" "Ver todas las Apps & Sistemas →"
     "social" "Conéctate y sigue las novedades de Datalaria:"
     "relBadge" "NOVEDADES APPS"
     "relBadgeTitle" "Actualizaciones lanzadas en las últimas 2 semanas"
@@ -114,9 +114,9 @@
     "pageLabel" "Article pagination"
     "archive" "Browse the full blog archive →"
     "s3tag" "03 / Ecosystem"
-    "s3title" "Apps & Experiments"
-    "s3desc" "Production full-stack systems, agentic AI executive sandboxes, and interactive labs deployed on zero-cost cloud architecture."
-    "appsAll" "See all Apps & Experiments →"
+    "s3title" "Apps & Systems"
+    "s3desc" "Executive B2B dashboards, production agentic AI systems, and quantitative engineering labs deployed at zero cost."
+    "appsAll" "See all Apps & Systems →"
     "social" "Connect and follow Datalaria's updates:"
     "relBadge" "APP RELEASES"
     "relBadgeTitle" "Updates shipped in the last 2 weeks"
@@ -263,42 +263,54 @@
         "checkoutUrl" "https://datalaria.lemonsqueezy.com/checkout/buy/88a976a2-f0e5-4e8e-a954-516767c7fed5?embed=1")
 -}}
 
-{{- /* ---------- Apps & Games ---------- */ -}}
+{{- /* ---------- Apps & Systems (Prioritized by 3 Brand Verticals: Executive B2B -> AI Systems -> Open Lab) ---------- */ -}}
 {{- $apps := slice
-  (dict "slug" "lifeops" "icon" "🚀" "name" "LifeOps" "url" "/apps/lifeops/" "arcade" false
-        "badge" (cond $isES "Sistema" "System")
-        "badgeClass" "dlh-sys"
-        "desc" (cond $isES "Sistema operativo personal y profesional: deporte, lecturas, cine, tablero Kanban y proyectos." "Personal & professional OS: fitness, reading, movies, Kanban board and projects.")
+  (dict "slug" "obs-management" "icon" "📡" "name" (cond $isES "Radar de Obsolescencia" "Agentic Radar") "url" "/apps/obs-management/" "arcade" false
+        "vertical" "executive_b2b"
+        "badge" (cond $isES "Executive B2B" "Executive B2B")
+        "badgeClass" "dlh-b2b"
+        "desc" (cond $isES "Dashboard ejecutivo impulsado por agentes de IA para mitigar el riesgo en la cadena de suministro." "AI agent-powered executive dashboard to mitigate supply chain risk.")
         "cta" (cond $isES "Abrir app ↗" "Open app ↗"))
-    (dict "slug" "pulse" "icon" "📊" "name" "Datalaria Pulse" "url" "/apps/pulse/" "arcade" false
-        "badge" (cond $isES "IA · B2B" "AI · B2B")
+  (dict "slug" "pulse" "icon" "📊" "name" "Datalaria Pulse" "url" "/apps/pulse/" "arcade" false
+        "vertical" "ai_systems"
+        "badge" (cond $isES "AI Systems" "AI Systems")
         "badgeClass" "dlh-ai"
         "desc" (cond $isES "Sistema de Content Ops as Code: gobierno editorial, paridad bilingüe, salud SEO y retorno orgánico sobre Git." "Content Ops as Code system: editorial governance, bilingual parity, SEO health, and organic ROI on Git.")
         "cta" (cond $isES "Abrir app ↗" "Open app ↗"))
-(dict "slug" "obs-management" "icon" "📡" "name" (cond $isES "Radar de Obsolescencia" "Agentic Radar") "url" "/apps/obs-management/" "arcade" false
-        "badge" (cond $isES "IA · B2B" "AI · B2B")
-        "badgeClass" "dlh-ai"
-        "desc" (cond $isES "Dashboard ejecutivo impulsado por agentes de IA para mitigar el riesgo en la cadena de suministro." "AI agent-powered executive dashboard to mitigate supply chain risk.")
+  (dict "slug" "lifeops" "icon" "🚀" "name" "LifeOps" "url" "/apps/lifeops/" "arcade" false
+        "vertical" "open_lab"
+        "badge" (cond $isES "Open Lab" "Open Lab")
+        "badgeClass" "dlh-sys"
+        "desc" (cond $isES "Sistema operativo personal y profesional: deporte, lecturas, cine, tablero Kanban y proyectos." "Personal & professional OS: fitness, reading, movies, Kanban board and projects.")
         "cta" (cond $isES "Abrir app ↗" "Open app ↗"))
   (dict "slug" "weather" "icon" "🌤️" "name" (cond $isES "El Tiempo" "Weather") "url" "/apps/weather/" "arcade" false
+        "vertical" "open_lab"
         "badge" (cond $isES "Previsión" "Forecast")
         "badgeClass" "dlh-sys"
         "desc" (cond $isES "Previsión meteorológica detallada y en tiempo real enriquecida con Machine Learning." "Detailed real-time weather forecast enhanced with Machine Learning.")
         "cta" (cond $isES "Abrir app ↗" "Open app ↗"))
   (dict "slug" "snake" "icon" "🐍" "name" "Neon Snake" "url" "/games/snake/" "arcade" true
+        "vertical" "open_lab"
         "badge" (cond $isES "Arcade" "Arcade")
+        "badgeClass" "dlh-arcade"
         "desc" (cond $isES "El clásico Snake con estética cyberpunk y ranking global en tiempo real." "The classic Snake with a cyberpunk look and a real-time global leaderboard.")
         "cta" (cond $isES "Jugar ↗" "Play ↗"))
   (dict "slug" "flashcards" "icon" "🎴" "name" "Flashcards AI" "url" "/apps/flashcards/" "arcade" false
+        "vertical" "open_lab"
         "badge" (cond $isES "Estudio" "Study")
+        "badgeClass" "dlh-lab"
         "desc" (cond $isES "Aplicación interactiva para estudiar y memorizar conceptos con tarjetas de memoria." "Interactive app to study and memorise concepts with flashcards.")
         "cta" (cond $isES "Abrir app ↗" "Open app ↗"))
   (dict "slug" "conversor" "icon" "🔄" "name" (cond $isES "Conversor de Unidades" "Unit Converter") "url" "/apps/conversor/" "arcade" false
+        "vertical" "open_lab"
         "badge" (cond $isES "Herramienta" "Tool")
+        "badgeClass" "dlh-lab"
         "desc" (cond $isES "Herramienta rápida y ligera para convertir entre diferentes unidades de medida." "Fast, lightweight tool to convert between units of measurement.")
         "cta" (cond $isES "Abrir app ↗" "Open app ↗"))
   (dict "slug" "maths" "icon" "🧮" "name" (cond $isES "Matemáticas Interactivas" "Interactive Maths") "url" "/apps/maths/" "arcade" false
+        "vertical" "open_lab"
         "badge" (cond $isES "Educación" "Education")
+        "badgeClass" "dlh-lab"
         "desc" (cond $isES "Entrenador gamificado de cálculo mental con niveles adaptativos y temporizador." "Gamified mental arithmetic trainer with adaptive levels and timer.")
         "cta" (cond $isES "Abrir app ↗" "Open app ↗"))
 -}}
@@ -591,12 +603,12 @@
         </div>
     </section>
 
-    {{- /* ======================= 03 · APPS & EXPERIMENTOS ======================= */}}
+    {{- /* ======================= 03 · APPS & SISTEMAS (3 Verticales Canónicas) ======================= */}}
     {{- $appTiers := slice
-        (dict "key" "all"      "icon" "✨" "label" (cond $isES "Todas las Apps" "All Apps")                         "count" (len $apps))
-        (dict "key" "flagship" "icon" "🚀" "label" (cond $isES "Apps Destacadas" "Flagship Apps")                   "count" 2)
-        (dict "key" "b2b"      "icon" "💼" "label" (cond $isES "Suites B2B & IA Operacional" "B2B Suites & AI")     "count" 2)
-        (dict "key" "lab"      "icon" "🕹️" "label" (cond $isES "Laboratorio & Arcade" "Lab & Arcade")               "count" 4)
+        (dict "key" "all"           "icon" "✨" "label" (cond $isES "Todas las Apps" "All Apps")              "count" (len $apps))
+        (dict "key" "executive_b2b" "icon" "💼" "label" (cond $isES "Executive B2B" "Executive B2B")         "count" 1)
+        (dict "key" "ai_systems"    "icon" "🤖" "label" (cond $isES "AI Systems" "AI Systems")               "count" 1)
+        (dict "key" "open_lab"      "icon" "🧪" "label" (cond $isES "Open Lab" "Open Lab")                   "count" 6)
     }}
     <section class="dlh-section" id="apps">
         <div class="dlh-section-head">
@@ -605,7 +617,7 @@
             <p class="dlh-section-desc">{{ $t.s3desc }}</p>
         </div>
 
-        <div class="dlh-app-tabs" role="tablist" aria-label="{{ cond $isES "Filtrar aplicaciones por área" "Filter applications by area" }}">
+        <div class="dlh-app-tabs" role="tablist" aria-label="{{ cond $isES "Filtrar aplicaciones por vertical de marca" "Filter applications by brand vertical" }}">
             {{- range $i, $at := $appTiers }}
             {{- $unitWord := cond (eq $at.count 1) "app" "apps" }}
             <button type="button" class="dlh-app-tab" role="tab" data-tier="{{ $at.key }}"
@@ -621,8 +633,19 @@
             {{- range $apps }}
             {{- $appPage := site.GetPage (printf "apps/%s" .slug) }}
             {{- $appMeta := index site.Data.apps .slug }}
-            {{- $tier := "lab" }}
-            {{- with $appMeta }}{{- $tier = .tier | default "lab" }}{{- end }}
+            {{- $vertical := .vertical | default "" }}
+            {{- if eq $vertical "" }}
+              {{- with $appMeta }}{{- $vertical = .brand_vertical | default "" }}{{- end }}
+            {{- end }}
+            {{- if eq $vertical "" }}
+              {{- if or (eq .slug "obs-management") (and (eq .tier "b2b") (ne .slug "pulse") (ne .slug "helix")) }}
+                {{- $vertical = "executive_b2b" }}
+              {{- else if or (eq .slug "pulse") (eq .slug "helix") }}
+                {{- $vertical = "ai_systems" }}
+              {{- else }}
+                {{- $vertical = "open_lab" }}
+              {{- end }}
+            {{- end }}
             {{- $fichaUrl := "apps/" | relLangURL }}
             {{- with $appPage }}{{- $fichaUrl = .RelPermalink }}{{- end }}
             {{- $thumbUrl := "" }}
@@ -632,7 +655,7 @@
                     {{- $thumbUrl = $thumb.RelPermalink }}
                 {{- end }}
             {{- end }}
-            <article class="dlh-app" data-tier="{{ $tier }}">
+            <article class="dlh-app" data-tier="{{ $vertical }}" data-vertical="{{ $vertical }}">
                 <div class="dlh-app-head">
                     <span class="dlh-app-badge{{ with .badgeClass }} {{ . }}{{ end }}{{ if .arcade }} dlh-arcade{{ end }}">{{ .badge }}</span>
                     {{- with $appMeta }}

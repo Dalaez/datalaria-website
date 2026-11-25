@@ -1,25 +1,30 @@
 # Especificación Técnica SDD: Sistema de Fichas de Apps (`apps-showcase`)
 
-> **ID de Especificación:** `SPEC-PORTAL-APPS-SHOWCASE`
-> **Versión:** `1.0.0`
-> **Estado:** `DRAFT` — pendiente de validación del usuario antes del Hito 1.3
-> **Ámbito:** Portal Hugo (`content/`, `layouts/`, `data/`, `assets/` o `static/css/`)
-> **Origen:** Petición del usuario (2026-10-24) + ADR-007
+> **ID de Especificación:** `SPEC-PORTAL-APPS-SHOWCASE`  
+> **Versión:** `1.1.0`  
+> **Estado:** `APROBADO & EN PRODUCCIÓN` (Actualizado en Hito 9.4 — 2026-11-24)  
+> **Ámbito:** Portal Hugo (`content/`, `layouts/`, `data/`, `assets/css/extended/apps-showcase.css`)  
+> **Normativa:** [specs/_constitution.md](../../_constitution.md) (Artículos 7, 8 y 10), [specs/_brand.md](../../_brand.md) y [specs/DECISIONS.md](../../DECISIONS.md) (ADR-007, ADR-018, ADR-034)
 
 ---
 
 ## 1. Objetivo
 
-Convertir la sección **Apps** del portal en un escaparate de producto profesional y mantenible:
+Convertir la sección **Apps** del portal en un escaparate de producto profesional, mantenible y alineado con la **Arquitectura de Marca en 3 Verticales (`specs/_brand.md`)**:
 
-1. **Una ficha dedicada por App** (`/es/apps/<slug>/` y `/en/apps/<slug>/`) con objetivos, especificaciones de diseño, tecnologías, enlaces a posts y **historial evolutivo de versiones**.
-2. **Un listado `/apps/` con tarjetas visuales** (captura, descripción, estado, versión) al estilo de las tarjetas de packs y artículos, que llevan a la ficha.
-3. **Los posts de referencia enlazan a la ficha** para que el lector siga la evolución de la App.
-4. Aplicable a las 7 Apps activas y a **todas las Apps futuras** con el mismo esfuerzo mínimo (añadir 1 fichero de datos + 2 páginas cortas + 1 captura).
+1. **Una ficha dedicada por App** (`/es/apps/<slug>/` y `/en/apps/<slug>/`) con objetivos, especificaciones de diseño, tecnologías, enlaces a posts e **historial evolutivo de versiones**.
+2. **Un listado `/apps/` con tarjetas visuales**, agrupado por las 3 verticales de marca canónicas en orden de precedencia C-Level:
+   - **1.° Datalaria Executive B2B (`#vertical-executive-b2b`)**
+   - **2.° Datalaria AI Systems (`#vertical-ai-systems`)**
+   - **3.° Datalaria Open Lab (`#vertical-open-lab`)**
+3. **Los posts de referencia enlazan a la ficha** mediante `app-ref` para que el lector siga la evolución de la App.
+4. **Fuente única data-driven:** Todo emana de `data/apps/<slug>.yaml`. Cero versiones obsoletas hardcoded en plantillas HTML (Constitución Art. 8.2).
+5. **Cero rotura SEO (`INV-TAX-1`):** Anclas invisibles de compatibilidad (`#tier-b2b`, `#tier-flagship`, `#tier-lab`) conservadas.
 
 ### No-objetivos
 - No se modifica el código de ninguna App (las Apps siguen sirviéndose desde `static/apps/<slug>/` o su proxy).
 - No se cambian las URLs de las Apps (`/apps/lifeops/`, `/games/snake/`, etc.).
+- No se exponen aplicaciones con `status: incubating` (`helix`, `reading`) antes de su fecha de embargo.
 
 ---
 
@@ -57,14 +62,15 @@ La ficha y la tarjeta se renderizan **solo** desde este fichero; el `index.md` d
 # data/apps/lifeops.yaml — contrato (todos los campos marcados * son obligatorios)
 slug: lifeops                       # * = nombre de carpeta en static/apps y content/*/apps
 order: 10                           # * orden en el listado (menor = primero)
-tier: flagship                      # * flagship | b2b | lab   (sección del listado)
+brand_vertical: open_lab            # * executive_b2b | ai_systems | open_lab (specs/_brand.md)
+tier: flagship                      # * flagship | b2b | lab (mantenido por compatibilidad)
 status: live                        # * live | beta | maintenance | frozen | incubating
 icon: "🚀"                          #   fallback si no hay captura
 cover: cover.png                    # * captura (en el page bundle content/<lang>/apps/<slug>/)
 app_url: /apps/lifeops/             # * URL de la App en vivo
 demo_url: /apps/lifeops/#/?mock=true  #   opcional (Dual-Mode)
 source_spec: specs/apps/lifeops/spec.md  # * trazabilidad SDD (no se publica como enlace)
-current_version: v1.0.0             # * debe coincidir con la última entrada "released" de releases
+current_version: v3.2.0             # * debe coincidir con la última entrada "released" de releases (Fuente Única)
 title:      { es: "LifeOps", en: "LifeOps" }                                   # *
 tagline:    { es: "...", en: "..." }                                           # * 1 frase (tarjeta)
 summary:    { es: "...", en: "..." }                                           # * 2-3 frases (ficha + SEO description)
@@ -126,21 +132,30 @@ Secciones en este orden (todas generadas desde `data/apps/<slug>.yaml`):
 
 ## 5. Listado — `layouts/apps/list.html` + Tarjeta `partials/app-card.html`
 
-- Agrupado por `tier` en este orden: **Apps destacadas** (`flagship`), **Suites B2B** (`b2b`), **Laboratorio & Arcade** (`lab`). Grupos vacíos no se renderizan.
-- Dentro de cada grupo, ordenado por `order`.
-- Apps con `status: incubating` **no se listan** (Constitución Art. 7).
+- Agrupado por **Verticales Canónicas de Marca (`specs/_brand.md`)** en este orden estratégico:
+  1. **Datalaria Executive B2B** (`executive_b2b` — `#vertical-executive-b2b`)
+  2. **Datalaria AI Systems** (`ai_systems` — `#vertical-ai-systems`)
+  3. **Datalaria Open Lab** (`open_lab` — `#vertical-open-lab`, agrupando sistemas personales, previsión meteorológica y sub-apps EdTech/Arcade)
+- **Fallback determinista:** Si `.brand_vertical` estuviera ausente en el YAML, se deriva automáticamente:
+  - `obs-management` o `tier == "b2b"` (salvo `pulse`/`helix`) $\rightarrow$ `executive_b2b`
+  - `pulse` o `helix` $\rightarrow$ `ai_systems`
+  - Resto $\rightarrow$ `open_lab`.
+- **Anclas de compatibilidad retroactiva (`INV-TAX-1`):** Se incluyen alias invisibles `#tier-b2b`, `#tier-flagship` y `#tier-lab` para preservar enlaces históricos y marcadores.
+- **Fuente única y eliminación de código muerto:** Toda la información proviene exclusivamente de `site.Data.apps`. Se eliminan versiones hardcoded obsoletas en los fallbacks de plantillas (Constitución Art. 8.2).
+- **Filtro innegociable de embargo comercial (Constitución Art. 7.1 / `INV-AUTO-6`):** Apps con `status: incubating` (`helix`, `reading`) **nunca se renderizan en el catálogo público** antes de su fecha oficial de lanzamiento (`launch_date`).
+- Dentro de cada vertical, ordenado por `order` ascendente.
 
 **Tarjeta (inspirada en `executive-product-card` y las tarjetas de posts):**
 
 | Zona | Contenido |
 | :--- | :--- |
 | Imagen | `cover` 16:10 con `object-fit: cover`, procesada con Hugo Image Processing (`.Fill "800x500 webp"`) y `loading="lazy"`. |
-| Badges | `status` + `current_version`. |
-| Texto | `title`, `tagline`, 3 chips de tecnología principales. |
+| Badges | `status` + `current_version` + vertical badge (`Executive B2B` / `AI Systems`). |
+| Texto | `title`, `tagline`, chips de tecnología principales. |
 | Acción principal | Toda la tarjeta enlaza a la **ficha**. |
 | Acción secundaria | Botón pequeño **"Abrir App ↗"** directo a `app_url`. |
 
-**Estilos:** CSS dedicado `static/css/apps-showcase.css` (o en `assets/` si se usa Hugo Pipes), reutilizando las variables del tema PaperMod (`--entry`, `--border`, `--primary`, `--secondary`, `--tertiary`) para soportar modo claro/oscuro. Se retiran las clases antiguas `.app-grid/.app-card` de `static/css/custom.css` cuando ya no se usen.
+**Estilos:** CSS dedicado `assets/css/extended/apps-showcase.css`, reutilizando las variables del tema PaperMod (`--entry`, `--border`, `--primary`, `--secondary`, `--tertiary`) para soportar modo claro/oscuro y garantizar `0` overflow horizontal en móvil (`390px`).
 
 ---
 

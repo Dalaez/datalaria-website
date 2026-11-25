@@ -1,13 +1,14 @@
 slug: pulse
 order: 15
 tier: b2b
+brand_vertical: ai_systems
 status: live
 icon: "⚡"
 cover: cover.png
 app_url: /apps/pulse/
 demo_url: /apps/pulse/?demo=true
 source_spec: specs/apps/pulse/spec.md
-current_version: v1.5.0
+current_version: v1.6.0
 launch_date: "2026-11-18"
 
 related_products:
@@ -93,6 +94,20 @@ tech:
     items: ["Hugo Static Portal", "GitHub Actions CI/CD", "Git Pre-Commit Hooks"]
 
 releases:
+  - version: "v1.6.0"
+    date: "2026-11-24"
+    state: released
+    type: feature
+    editorial_post_slug: "pulse-parte4-ga4-search-console-automatico"
+    title:
+      es: "Músculo de Ingresos Privado (Lemon Squeezy + Brevo), INV-PULSE-13 y Panel Ingresos & Funnel"
+      en: "Zero-PII Revenue Telemetry (Lemon Squeezy + Brevo), INV-PULSE-13 & Revenue Funnel Panel"
+    changes:
+      - es: "Conector privado ops/pulse/sync_revenue.py (ADR-034, INV-PULSE-13): ingesta gratuita Lemon Squeezy API v1 y Brevo API v3 descartando el 100 % de PII, aislando revenue_metrics.json, executive_state.json y REVENUE_REPORT.md en .gitignore."
+        en: "Private connector ops/pulse/sync_revenue.py (ADR-034, INV-PULSE-13): zero-cost Lemon Squeezy API v1 and Brevo API v3 ingestion stripping 100% PII and gitignoring revenue_metrics.json, executive_state.json, and REVENUE_REPORT.md."
+      - es: "Bus ejecutivo y RLS Admin: revenue_intelligence sincronizado en pulse.private_snapshot (Supabase RLS) y nueva pestaña bilingüe 'Ingresos & Funnel' con Sandbox educativo sintético para visitantes."
+        en: "Executive bus & Admin RLS: revenue_intelligence synced to pulse.private_snapshot (Supabase RLS) plus bilingual 'Revenue & Funnel' tab with synthetic educational Sandbox for public visitors."
+
   - version: "v1.5.0"
     date: "2026-11-23"
     state: released

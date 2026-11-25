@@ -1,8 +1,8 @@
 # Especificación Técnica: Taxonomía Editorial en 5 Pilares (`SPEC-PORTAL-TAXONOMY`)
 
-> **Versión:** 1.0.0  
+> **Versión:** 1.1.0  
 > **Estado:** APROBADA Y VINCULANTE  
-> **Módulo:** Portal Home (`layouts/partials/index_profile.html`), Contenidos (`content/{es,en}/posts/`) y Datalaria Pulse (`ops/pulse/`).  
+> **Módulo:** Portal Home (`layouts/partials/index_profile.html`), Plantillas SEO (`layouts/partials/head.html`, `layouts/_default/sitemap.xml`), Contenidos (`content/{es,en}/posts/`) y Datalaria Pulse (`ops/pulse/`).  
 > **Referencia ADR:** [`ADR-016`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/DECISIONS.md#adr-016)
 
 ---
@@ -54,6 +54,13 @@ La página de listado general del blog (`layouts/posts/section.html`) debe ofrec
 3. **Deep Linking por Query Parameters:** Admite parámetros URL (`?topic=tech`, `?q=agentes`, `?page=2`, `?size=12`) para enlazar directamente a vistas filtradas y paginadas de forma determinista.
 4. **Paginación Dinámica con Selector de Densidad (12 / 24 / Todos):** La búsqueda y los filtros temáticos operan siempre sobre el 100% de los artículos en memoria. La paginación actúa como una lente de visualización reactiva que divide los resultados coincidentes y recalcula las páginas al instante, ofreciendo selector de densidad (`12`, `24`, `Todos`) y barra de paginación accesible al pie de la cuadrícula con scroll suave automático.
 
+### INV-TAX-7: Directiva Robots `noindex, follow` y Exclusión de Sitemap en Archivos `/tags/`
+Para erradicar la canibalización orgánica Post-vs-Tag en Google Search Console sin vulnerar `INV-TAX-1`:
+1. **Resolución HTTP 200 y Enlaces Rastreables (`follow`):** Todas las páginas de taxonomía `/tags/` (listado raíz `/es/tags/`, `/en/tags/` y páginas de término `/es/tags/<term>/`, `/en/tags/<term>/`) DEBEN seguir compilándose, existiendo con HTTP `200` (`INV-TAX-1`) y manteniendo enlaces internos rastreables (`follow`).
+2. **Directiva `noindex, follow` en Producción:** En entorno de producción (`hugo.IsProduction` o `site.Params.env == "production"`), toda página donde `eq .Data.Plural "tags"` DEBE emitir exactamente una etiqueta `<meta name="robots" content="noindex, follow">` (salvo que `.Params.robotsNoIndex` sea `true`, en cuyo caso emite `noindex, nofollow`).
+3. **Exclusión de Sitemaps XML:** La plantilla `layouts/_default/sitemap.xml` DEBE filtrar las páginas donde `eq .Data.Plural "tags"` o `eq .Params.robotsNoIndex true`, garantizando que `es/sitemap.xml` y `en/sitemap.xml` únicamente anuncien a los buscadores URLs canónicas indexables.
+4. **Preservación de Superficies Indexables:** Los artículos publicados (`/posts/*`), fichas de aplicaciones (`/apps/*`), catálogo (`/recursos/`, `/resources/`), páginas de categorías pilares (`/categories/*`) y portada mantienen `<meta name="robots" content="index, follow">` en producción.
+
 ---
 
 ## 3. Criterios de Verificación y Testing
@@ -63,19 +70,22 @@ La página de listado general del blog (`layouts/posts/section.html`) debe ofrec
 3. **Suite Pytest de Pulse:** `pytest ops/pulse/tests/` pasa al 100% (cero regresiones en modelos).
 4. **Validación de la Home:** Inspección del marcado HTML verificando la presencia de las 5 pestañas y la suma exacta de artículos.
 5. **Validación de Sección Blog:** Comprobación automatizada de los 92 artículos renderizados en el DOM con enlaces canónicos válidos y distribución 48 + 8 + 13 + 12 + 11 = 92 en ES y EN, presencia de botones de densidad y barra de navegación de páginas.
+6. **Validación Anti-Canibalización (`INV-TAX-7`):** Compilación Hugo verificando que `/es/tags/...` y `/en/tags/...` existen con `<meta name="robots" content="noindex, follow">` (etiqueta única) y están excluidos de `es/sitemap.xml` y `en/sitemap.xml`, mientras `/posts/*` mantienen `<meta name="robots" content="index, follow">` e inclusión en sitemap.
 
 ---
 
 ## 4. Registro de Verificación Ejecutada
 
-- **Fecha:** 2026-10-31
-- **Checkpoint Git:** `sdd-checkpoint-pre-taxonomy-5cats`
-- **Comprobaciones Deterministas Superadas:**
+- **Versión `1.0.0` (2026-10-31 · Checkpoint `sdd-checkpoint-pre-taxonomy-5cats`):**
   - `oxlint src`: 0 warnings, 0 errors.
   - `npm.cmd run build:portal` (Pulse): Bundle compilado sin advertencias a `static/apps/pulse/`.
   - `python -m ops.pulse.build_index` & `publish_public`: Salida `0`, `public.json` actualizado.
   - `pytest ops/pulse/tests/`: 18 tests pasados (100%).
   - `hugo --renderToMemory`: Salida `0`, 1115 páginas ES / 1100 páginas EN compiladas con éxito.
   - Auditoría de DOM en `/posts/`: 92 artículos renderizados con enlaces estándar `<a class="entry-link">` (100% rastreables), selector de densidad (12/24/Todos) y barra de paginación verificados en ES y EN.
+- **Versión `1.1.0` (2026-11-21 · Hito 7.9 · Checkpoint `sdd-checkpoint-pre-7.9`):** `SECURITY_PASS` y `QA_PASS` verificados (`INV-TAX-7`):
+  - `python -m ops.pulse.impact_analyzer`: Salida `0`, `1` alerta post-vs-post (`0` alertas `/tags/`).
+  - `python -m pytest ops/pulse/tests ops/helix/tests -v`: `115/115 PASSED` (incluyendo compilación temporal `hugo -d <tmp>` certificando `<meta name="robots" content="noindex, follow">` único en `/tags/`, `index, follow` único en `/posts/*` y `/categories/`, y exclusión completa de `/tags/` en `es/sitemap.xml` y `en/sitemap.xml`).
+  - `hugo --renderToMemory`: Salida `0`, `1.342` páginas ES / `1.337` páginas EN compiladas en `20.544 ms`.
 
 

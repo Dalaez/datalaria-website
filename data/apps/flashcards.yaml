@@ -1,6 +1,7 @@
 slug: flashcards
 order: 50
 tier: lab
+brand_vertical: open_lab
 status: active
 icon: "🎴"
 cover: cover.png

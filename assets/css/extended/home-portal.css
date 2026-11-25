@@ -1298,16 +1298,46 @@ a.dlh-disco:hover,
     background: rgba(236, 72, 153, 0.08);
 }
 
+.dlh-app-badge.dlh-b2b {
+    color: #ea580c;
+    border-color: rgba(234, 88, 12, 0.35);
+    background: rgba(234, 88, 12, 0.1);
+}
+
+.dark .dlh-app-badge.dlh-b2b {
+    color: #fb923c;
+    border-color: rgba(249, 115, 22, 0.45);
+    background: rgba(249, 115, 22, 0.18);
+}
+
 .dlh-app-badge.dlh-ai {
     color: #10b981;
     border-color: rgba(16, 185, 129, 0.35);
     background: rgba(16, 185, 129, 0.1);
 }
 
+.dark .dlh-app-badge.dlh-ai {
+    color: #34d399;
+    border-color: rgba(16, 185, 129, 0.45);
+    background: rgba(16, 185, 129, 0.18);
+}
+
 .dlh-app-badge.dlh-sys {
     color: var(--dlh-accent);
     border-color: rgba(2, 132, 199, 0.35);
     background: var(--dlh-accent-soft);
+}
+
+.dlh-app-badge.dlh-lab {
+    color: #8b5cf6;
+    border-color: rgba(139, 92, 246, 0.35);
+    background: rgba(139, 92, 246, 0.1);
+}
+
+.dark .dlh-app-badge.dlh-lab {
+    color: #a78bfa;
+    border-color: rgba(167, 139, 250, 0.45);
+    background: rgba(139, 92, 246, 0.18);
 }
 
 .dlh-app-ver {

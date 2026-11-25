@@ -1,6 +1,7 @@
 slug: conversor
 order: 60
 tier: lab
+brand_vertical: open_lab
 status: active
 icon: "🔄"
 cover: cover.png

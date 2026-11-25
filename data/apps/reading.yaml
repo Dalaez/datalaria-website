@@ -1,6 +1,7 @@
 slug: reading
 order: 75
 tier: lab
+brand_vertical: open_lab
 status: incubating
 icon: "📖"
 cover: cover.png
