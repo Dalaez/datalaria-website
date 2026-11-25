@@ -420,6 +420,12 @@ The dynamic **Sawtooth Wave Simulation Chart**, illustrating replenishment cycle
 > For the complete stochastic convolution proof, variable lead-time formulas, and interactive Sawtooth simulators in Excel and PowerPoint, read our dedicated pillar guide:
 > 🔗 **[Safety Stock & Reorder Point (ROP) Calculator: Boardroom-Grade Inventory & Working Capital Optimization](/en/posts/safety-stock-reorder-point-calculator/)**
 
+#### Operational Synergy: Inventory Resilience & Early Obsolescence Radar (IEC 62402)
+
+Stochastic inventory buffering does not operate in a vacuum: it is directly exposed to electronic and industrial component lifecycles. When a manufacturer issues a product change or discontinuance notice (**PCN / PDN / EOL**), blindly replenishing via standard recurring $ROP$ triggers leads to severe production line stoppages or millions in trapped Dead Stock. To bridge this critical vulnerability, the **Suite 03** quantitative framework naturally integrates with **Agentic Radar (`obs-management`)**, which traverses your Bill of Materials (BOM) relational graph in real time, quantifies financial revenue at risk, and initiates an optimized *Last Time Buy* (LTB) bridge with stochastic safety stock dimensioning:
+
+{{< app-ref slug="obs-management" >}}
+
 ---
 
 ## 4. The Systemic Thread: How the 5 Engines Feed Each Other

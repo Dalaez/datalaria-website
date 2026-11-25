@@ -1,0 +1,78 @@
+en:
+  x:
+    hook: "Holding '3 weeks of inventory for every SKU' triggers 7% stockouts while trapping $4.5M in working capital. Here is how APICS / MIT CTL compute SS, ROP & EOQ with IEC 62402 lifecycle control:"
+    thread:
+      - "1/5 The classic boardroom paradox: Commercial demands bigger buffers after 7% stockouts on flagship items, while the CFO sees $4.5M frozen in warehouses and ROCE down 3 points."
+      - "2/5 Flat heuristics ('3 weeks across the catalog') guarantee disaster. Applying the same rule to a 45-day Taiwan MCU and a 48h corrugated box bloats stable SKUs and starves volatile ones."
+      - "3/5 Full stochastic convolution (SS3) models both demand variance (σd) and supplier tardiness (σL): SS = Z·√(L·σd² + d²·σL²). Cutting σL in half saves more cash than a 2% unit discount."
+      - "4/5 Lifecycle defense (IEC 62402 / JEDEC): when a PCN or PDN notice arrives, freeze recurring ROP triggers and size a Last Time Buy (LTB) bridge order using our Agentic Obsolescence Radar."
+      - "5/5 Full guide with Sawtooth model, Wilson EOQ & C-Level Executive Pack in Excel + 16:9 PPTX + PDF (7€ launch offer from 22€): https://datalaria.com/en/posts/safety-stock-reorder-point-calculator/"
+    hashtags:
+      - "SupplyChain"
+      - "SafetyStock"
+      - "InventoryOptimization"
+      - "WorkingCapital"
+      - "APICS"
+    web_intent_url: "https://x.com/intent/tweet?text=Holding+%273+weeks+of+inventory+for+every+SKU%27+triggers+7%25+stockouts+while+trapping+%244.5M+in+working+capital.+Here+is+how+APICS+%2F+MIT+CTL+compute+SS%2C+ROP+%26+EOQ+with+IEC+62402+lifecycle+control%3A&url=https%3A%2F%2Fdatalaria.com%2Fen%2Fposts%2Fsafety-stock-reorder-point-calculator%2F&hashtags=SupplyChain%2CSafetyStock%2CInventoryOptimization%2CWorkingCapital%2CAPICS"
+  linkedin:
+    text: |-
+      "We have $4.5 million trapped in central warehouses, yet we are still hitting a 7% stockout rate on our flagship SKUs."
+
+      ⚠️ This executive paradox appears in boardrooms every week whenever inventory is governed by rules of thumb ("3 weeks of supply for everything") instead of stochastic probability.
+
+      📘 This Thursday I am releasing Datalaria's full methodological guide on Safety Stock & Reorder Point (ROP) Optimization:
+
+      🔹 Full Stochastic Convolution Engine (APICS / MIT CTL): modeling joint customer demand dispersion (σd) and supplier delivery variance (σL) to calibrate ROP thresholds and Wilson EOQ batches.
+
+      🔹 Component Lifecycle Engineering (IEC 62402 & JEDEC): bridging PCN, PDN, LTB, and EOL milestones directly with our Agentic Obsolescence Radar to freeze recurring ROP orders before Dead Stock accumulates.
+
+      🔹 Balance Sheet Levers for the CFO: why cutting supplier tardiness (σL) by 50% releases over double the cash of pushing vendors for a 2% unit-price discount.
+
+      🔹 Production-Ready Executive Decision Pack (7€ launch offer from 22€): ECMA-376 Excel workbook across 35 SKUs with dynamic Sawtooth chart, 5-page PDF guide, and 16:9 C-Level PPTX deck.
+
+      📖 Read the full mathematical derivations, ABC calibration protocol, and boardroom playbook: https://datalaria.com/en/posts/safety-stock-reorder-point-calculator/
+
+      💬 In your supply chain operations, do teams still rely on flat weeks-of-cover rules, or do you tie SS, ROP, and PDN/LTB lifecycle alerts directly to working capital?
+    hashtags:
+      - "SupplyChain"
+      - "SafetyStock"
+      - "InventoryOptimization"
+      - "WorkingCapital"
+      - "APICS"
+  newsletter:
+    archetype: "invisible_error"
+    subject: "The '3-week safety stock' mistake trapping $4.5M while top SKUs stock out"
+    preheader: "Full SS3 stochastic convolution, ROP, Wilson EOQ, IEC 62402 lifecycle governance (PCN/PDN/LTB) & CFO cash levers."
+    hook_paragraphs:
+      - "When Commercial demands larger warehouse buffers after 7% stockouts and Finance orders an across-the-board 20% inventory cut to rescue ROCE, the root failure is almost always flat empirical coverage heuristics."
+      - "In Datalaria's new boardroom guide, we unpack the stochastic APICS / MIT CTL framework (SS, ROP, EOQ) and show how pairing it with Agentic Obsolescence Radar (IEC 62402) blocks Dead Stock ahead of component End-of-Life."
+    insights_60s:
+      - "Supplier variance leverage: because σL multiplies squared daily demand (d²), halving supplier delivery tardiness frees far more cash than a 2% unit discount."
+      - "Asymptotic CSL curve: raising Cycle Service Level from 95% to 99.9% spikes Safety Stock by +87%; ABC stratification (98% Class A, 90% Class C) protects margin."
+      - "Anti-Dead Stock rule (IEC 62402): once a PDN and LTB window trigger, halt recurring ERP ROP reorders immediately and size a consolidated bridge buy."
+    secondary_cta_label: "Get the Safety Stock & ROP Pack (7€)"
+    secondary_cta_url: "https://datalaria.com/en/resources/?utm_source=newsletter&utm_medium=email&utm_campaign=stock-rop-launch#pack-stock"
+    ps_referral_text: "P.S. Know a COO, CFO, or VP of Supply Chain fighting simultaneous warehouse bloat and stockouts? Forward this briefing their way."
+  devto:
+    enabled: true
+    title: "Safety Stock & Reorder Point (ROP) Engine: Stochastic Convolution, EOQ & IEC 62402 Lifecycle Control"
+    description: "Quantitative inventory optimization guide (APICS / MIT CTL & IEC 62402): eliminating naive 3-week heuristics, SS3, ROP, Wilson EOQ, and PCN/PDN/LTB defense."
+    tags:
+      - "supplychain"
+      - "inventory"
+      - "operations"
+      - "excel"
+    canonical_url: "https://datalaria.com/en/posts/safety-stock-reorder-point-calculator/"
+    published: true
+  coderlegion:
+    enabled: true
+    title: "Safety Stock & Reorder Point (ROP) Engine: Stochastic Convolution, EOQ & IEC 62402 Lifecycle Control"
+    description: "Board-grade stochastic inventory architecture combining SS3, ROP, Wilson EOQ, and IEC 62402 component obsolescence defense."
+    tags:
+      - "supply-chain"
+      - "inventory"
+      - "operations-research"
+      - "excel"
+    canonical_url: "https://datalaria.com/en/posts/safety-stock-reorder-point-calculator/"
+    published: true
+    category: 2

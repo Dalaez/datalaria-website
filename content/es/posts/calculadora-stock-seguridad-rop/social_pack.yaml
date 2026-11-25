@@ -1,0 +1,78 @@
+es:
+  x:
+    hook: "Tener '3 semanas de stock para todo' dispara un 7 % de roturas mientras inmoviliza 4,5M € en almacén. Así calculan SS, ROP y EOQ en APICS / MIT CTL con riesgo IEC 62402:"
+    thread:
+      - "1/5 La paradoja de tesorería más común en industria: el equipo comercial exige subir stock tras un 7 % de roturas en estrellas, mientras el CFO ve 4,5M € atrapados y -3 puntos de ROCE."
+      - "2/5 La culpa es la heurística plana ('3 semanas de todo'). Tratar un chip de Taiwán (45 días, alta volatilidad) igual que cajas de embalaje (48h) sobre-almacena lo estable e infradota lo crítico."
+      - "3/5 La convolución estocástica integral (SS3) modela demanda (d, σd) y retraso del proveedor (L, σL): SS = Z·√(L·σd² + d²·σL²). Recortar a la mitad σL ahorra el doble de caja que un 2 % en tarifa."
+      - "4/5 Blindaje ante obsolescencia (IEC 62402 / JEDEC): al entrar un PCN o PDN hay que suspender el ROP recurrente y dimensionar el Last Time Buy (LTB) conectando con nuestro Radar de Obsolescencia."
+      - "5/5 Guía completa con ciclo Diente de Sierra, Wilson EOQ y Executive Pack Excel + PPTX 16:9 + PDF (7€ oferta desde 22€): https://datalaria.com/es/posts/calculadora-stock-seguridad-rop/"
+    hashtags:
+      - "SupplyChain"
+      - "StockDeSeguridad"
+      - "ControlOperativo"
+      - "WorkingCapital"
+      - "APICS"
+    web_intent_url: "https://x.com/intent/tweet?text=Tener+%273+semanas+de+stock+para+todo%27+dispara+un+7+%25+de+roturas+mientras+inmoviliza+4%2C5M+%E2%82%AC+en+almac%C3%A9n.+As%C3%AD+calculan+SS%2C+ROP+y+EOQ+en+APICS+%2F+MIT+CTL+con+riesgo+IEC+62402%3A&url=https%3A%2F%2Fdatalaria.com%2Fes%2Fposts%2Fcalculadora-stock-seguridad-rop%2F&hashtags=SupplyChain%2CStockDeSeguridad%2CControlOperativo%2CWorkingCapital%2CAPICS"
+  linkedin:
+    text: |-
+      "Tenemos 4,5 millones de euros inmovilizados en existencias y aun así sufrimos un 7 % de roturas en nuestros productos estrella".
+
+      ⚠️ Esta contradicción ocurre cada semana en consejos de administración cuando el inventario se gobierna mediante reglas empíricas ("tener 3 semanas de todo") en lugar de probabilidad estocástica.
+
+      📘 Este jueves publico la guía metodológica completa de la Calculadora de Stock de Seguridad & ROP en Datalaria:
+
+      🔹 Motor estocástico integral (APICS / MIT CTL): cómo modelar la variabilidad conjunta de demanda (σd) y la impuntualidad del proveedor (σL) para calibrar el Punto de Pedido (ROP) y el Lote Óptimo (EOQ).
+
+      🔹 Ingeniería de Ciclo de Vida (IEC 62402 & JEDEC): qué son PCN, PDN, LTB y EOL, y cómo conectar el cálculo de existencias con nuestro Radar de Obsolescencia para congelar el ROP antes de acumular Dead Stock.
+
+      🔹 Palancas de tesorería para el CFO: por qué reducir a la mitad la desviación del proveedor (σL) libera más capital circulante que negociar un descuento del 2 % en tarifa unitaria.
+
+      🔹 Executive Decision Pack listo para Comité (7 € oferta desde 22 €): Excel ECMA-376 de 35 SKUs con Gráfico Diente de Sierra, Guía PDF de 5 páginas y Deck C-Level 16:9.
+
+      📖 Consulta las fórmulas, tablas ABC y arquitectura completa aquí: https://datalaria.com/es/posts/calculadora-stock-seguridad-rop/
+
+      💬 En vuestra cadena de suministro, ¿seguís usando semanas fijas de cobertura o ya vinculáis SS, ROP y avisos PDN/LTB para liberar caja?
+    hashtags:
+      - "SupplyChain"
+      - "StockDeSeguridad"
+      - "ControlOperativo"
+      - "WorkingCapital"
+      - "APICS"
+  newsletter:
+    archetype: "invisible_error"
+    subject: "El error de las '3 semanas de stock' que inmoviliza 4,5M € y provoca roturas"
+    preheader: "Convolución estocástica SS3, ROP, Wilson EOQ, ciclo de vida IEC 62402 (PCN/PDN/LTB) y palancas de Working Capital."
+    hook_paragraphs:
+      - "Cuando dirección comercial exige más colchón de inventario tras un 7 % de roturas y finanzas ordena un recorte lineal del 20 % para rescatar el ROCE, el problema real rara vez es la falta de almacén: es usar reglas de cobertura planas."
+      - "En nuestra nueva guía ejecutiva de Datalaria explicamos cómo sustituir la intuición por el modelo estocástico APICS / MIT CTL (SS, ROP, EOQ), acoplándolo al Radar de Obsolescencia IEC 62402 para bloquear el Dead Stock antes de un End of Life."
+    insights_60s:
+      - "Asimetría de σL frente a L: como la impuntualidad del proveedor se multiplica por d², reducir σL a la mitad libera más caja neta que lograr un 2 % de descuento unitario."
+      - "Frontera asintótica de servicio: subir el CSL del 95 % al 99,9 % dispara el Stock de Seguridad un +87 %; segmentar por ABC (98 % en Clase A, 90 % en Clase C) protege el margen."
+      - "Regla anti-Dead Stock (IEC 62402): ante un aviso PDN y ventana LTB, desactiva el disparo automático de ROP y dimensiona una única compra puente."
+    secondary_cta_label: "Ver Pack Stock de Seguridad & ROP (7€)"
+    secondary_cta_url: "https://datalaria.com/es/recursos/?utm_source=newsletter&utm_medium=email&utm_campaign=stock-rop-launch#pack-stock"
+    ps_referral_text: "P.D. Si conoces a un COO, CFO o director de Compras lidiando con excesos en almacén y faltas de stock simultáneas, reenvíale esta guía."
+  devto:
+    enabled: true
+    title: "Calculadora de Stock de Seguridad & ROP: Convolución Estocástica, EOQ y Ciclo de Vida IEC 62402"
+    description: "Guía cuantitativa de inventarios (APICS / MIT CTL & IEC 62402): erradicación de reglas de 3 semanas, SS3, ROP, Wilson EOQ y control de obsolescencia PCN/PDN/LTB."
+    tags:
+      - "supplychain"
+      - "operaciones"
+      - "logistica"
+      - "excel"
+    canonical_url: "https://datalaria.com/es/posts/calculadora-stock-seguridad-rop/"
+    published: true
+  coderlegion:
+    enabled: false
+    title: "Calculadora de Stock de Seguridad & ROP: Convolución Estocástica, EOQ y Ciclo de Vida IEC 62402"
+    description: "Arquitectura estocástica para Stock de Seguridad (SS3), Punto de Pedido (ROP), Wilson EOQ y control temprano de obsolescencia IEC 62402."
+    tags:
+      - "supply-chain"
+      - "inventory"
+      - "operations-research"
+      - "excel"
+    canonical_url: "https://datalaria.com/es/posts/calculadora-stock-seguridad-rop/"
+    published: false
+    category: 2

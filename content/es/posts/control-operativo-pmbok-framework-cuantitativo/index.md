@@ -420,6 +420,12 @@ El interactivo **Gráfico Diente de Sierra (*Sawtooth Wave*)**, que modela el ci
 > Para acceder a la modelización estocástica completa, las fórmulas de convolución multivariante y el simulador de inventario Diente de Sierra en Excel y PowerPoint, consulta nuestra guía monográfica:
 > 🔗 **[Calculadora de Stock de Seguridad & ROP: Optimización de Inventario y Working Capital de Grado Consejo de Administración](/es/posts/calculadora-stock-seguridad-rop/)**
 
+#### Sinergia Operativa: Resiliencia de Inventario y Alerta Temprana de Obsolescencia (IEC 62402)
+
+El dimensionamiento estocástico de inventario no opera en el vacío: está directamente expuesto al ciclo de vida de los componentes electrónicos e industriales. Cuando un fabricante emite un aviso de discontinuación (**PCN / PDN / EOL**), seguir reaprovisionando de forma ciega mediante el parámetro $ROP$ estándar garantiza roturas de producción o inventario obsoleto inmovilizado (*Dead Stock*). Para cerrar esta brecha, el marco cuantitativo de la **Suite 03** se complementa de forma natural con el **Radar de Obsolescencia (*Agentic Radar*)**, que recorre el grafo de listas de materiales (BOM) en tiempo real, cuantifica el margen en riesgo y activa la compra puente *Last Time Buy* (LTB) con cálculo estocástico del stock de seguridad necesario:
+
+{{< app-ref slug="obs-management" >}}
+
 ---
 
 ## 4. El Hilo Conductor Sistémico: Cómo se Alimentan Entre Sí los 5 Pilares

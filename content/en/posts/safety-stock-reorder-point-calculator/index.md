@@ -6,8 +6,16 @@ translationKey: "safety-stock-reorder-point-calculator"
 category: "Strategy & Operations"
 categories: ["Operational Control", "Supply Chain", "Executive Templates", "Strategy & Operations"]
 tags: ["Safety Stock", "Reorder Point", "ROP", "EOQ", "Wilson Lot Sizing", "Working Capital", "Supply Chain Management", "APICS", "ASCM", "Inventory Optimization", "C-Level"]
-description: "Quantitative and methodological guide to inventory optimization (APICS / ASCM / MIT CTL standards): eradicating naive 3-week rules of thumb, multivariate stochastic convolution of demand and lead time, ROP and Wilson EOQ calibration, dynamic Sawtooth cycle simulation, and working capital release for the Board of Directors."
-summary: "Eliminate destructive empirical rules of thumb in corporate inventory management. Learn how to calculate mathematically rigorous Safety Stock (SS), Reorder Point (ROP), and Economic Order Quantity (EOQ) by modeling customer demand volatility and supplier lead time unreliability, securing a 98% service level while releasing hundreds of thousands of dollars in dormant working capital."
+description: "Quantitative and methodological guide to inventory optimization (APICS / ASCM / MIT CTL & IEC 62402 standards): eradicating naive 3-week rules of thumb, component lifecycle management (PCN, PDN, LTB, EOL), multivariate stochastic convolution, ROP and Wilson EOQ calibration, Sawtooth cycle simulation, and working capital release."
+summary: "Eliminate destructive empirical rules of thumb in corporate inventory management. Learn how to calculate mathematically rigorous Safety Stock (SS), Reorder Point (ROP), and Economic Order Quantity (EOQ) integrating component lifecycle milestones (PCN, PDN, LTB, EOL) with demand and lead time volatility, securing a 98% service level while releasing dormant working capital."
+cover:
+  image: "cover.png"
+  alt: "Safety Stock & Reorder Point (ROP) Calculator: Boardroom-Grade Inventory & Working Capital Optimization"
+  caption: "Safety Stock & Reorder Point (ROP) Calculator (APICS / ASCM & MIT CTL Standard): multivariate stochastic convolution, dynamic Sawtooth cycle, Wilson EOQ batch sizing, and Working Capital optimization."
+  relative: true
+images:
+  - "cover.png"
+  - "preview-pack.png"
 ---
 
 In corporate executive suites, boardrooms, and treasury investment committees, Chief Executive Officers (CEOs), Chief Financial Officers (CFOs), Chief Operating Officers (COOs), and Vice Presidents of Supply Chain frequently witness one of the most financially corrosive conflicts in modern business: **the chronic civil war between commercial sales and financial treasury over inventory levels**.
@@ -28,29 +36,119 @@ When an organization manages inventory through informal folklore—such as the u
 
 To eliminate this structural blind spot, global standards established by the **Association for Supply Chain Management (ASCM / APICS)** and the quantitative frameworks of the **MIT Center for Transportation & Logistics (MIT CTL)** formalize the stochastic mathematics of **Safety Stock ($SS$)**, **Reorder Point ($ROP$)**, and the **Wilson Economic Order Quantity ($EOQ$)**.
 
-This comprehensive methodology guide breaks down the full mathematical architecture, the derivation of all three stochastic convolution equations, the Cartesian dynamics of the continuous Sawtooth replenishment model, the law of diminishing returns across Cycle Service Levels ($CSL$), and the executive governance protocol to defend an immediate liquidity release program before the Board of Directors.
+This comprehensive methodology guide breaks down what the calculator is and how component lifecycle events (`PCN`, `PDN`, `LTB`, `EOL`) reshape inventory policy, the full mathematical architecture, the derivation of all three stochastic convolution equations, the Cartesian dynamics of the continuous Sawtooth replenishment model, the law of diminishing returns across Cycle Service Levels ($CSL$), and the executive governance protocol to defend an immediate liquidity release program before the Board of Directors.
+
+{{< product-card
+  variant="compact"
+  title="Executive Decision Pack: Safety Stock & Reorder Point (ROP) Calculator"
+  price="7€"
+  original_price="22€"
+  badge="📦 APICS / ASCM & MIT CTL Standard"
+  icon="📦"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/513e5cad-9f9f-4b53-a435-b511a846d79e"
+  button_text="Download Kit Now (.ZIP) • 7€"
+>}}
+Need to defend exact inventory targets before the CEO or CFO without stockouts or trapped working capital? Download the stochastic Excel engine (35 SKUs, full SS₃ convolution, ROP, Wilson EOQ, dynamic Sawtooth chart, and Working Capital simulator), 5-page PDF methodology guide, and 16:9 C-Level executive deck.
+{{< /product-card >}}
 
 ---
 
-## 1. The C-Level Inventory Planning and Control Pipeline
+## 1. What Is the Safety Stock & Reorder Point (ROP) Calculator? Core Foundations, Component Lifecycle & Executive Goals
+
+For any Chief Operating Officer (COO), Chief Financial Officer (CFO), VP of Supply Chain, S&OP planner, or practitioner encountering quantitative inventory engineering for the first time, the **Safety Stock ($SS$) & Reorder Point ($ROP$) Calculator** replaces warehouse intuition with a **continuous-review $(s, Q)$ stochastic and financial control system**.
+
+While empirical folklore merely says *"by rule of thumb, hold 3 weeks of everything"*, this analytical engine answers three decisive boardroom questions with auditable mathematical precision for every SKU or Bill of Materials (BOM) component:
+
+1. **When must we fire a purchase order? (*Reorder Point* — $ROP$):** Exact net available inventory threshold that triggers an automated ERP replenishment order to cover expected lead-time consumption plus stochastic variance.
+2. **How large a protective buffer do we need? (*Safety Stock* — $SS$):** Statistical reserve computed via the inverse normal quantile function $Z = \Phi^{-1}(CSL)$ to absorb unexpected customer demand spikes ($\sigma_d$) and supplier transit tardiness ($\sigma_L$) at a target service probability.
+3. **What is the optimal replenishment batch size? (*Economic Order Quantity* — $EOQ$):** Order lot minimizing total annual cost by balancing fixed administrative ordering costs ($S$) against annual financial holding, storage, and obsolescence risk ($h \cdot C$).
+
+### 1.1 Core Concepts of Inventory Control & Component Lifecycle Governance (APICS & IEC 62402)
+
+A pervasive operational blind spot in manufacturing and distribution is treating static $(ROP, EOQ)$ equations as perpetually valid across a part's lifespan. Across electronics, automotive, aerospace, and industrial equipment, quantitative inventory math must be coupled directly to the **physical component lifecycle** governed by international standards **IEC 62402:2019** and **JEDEC (J-STD-046 / J-STD-048)**:
+
+{{< mermaid >}}
+flowchart LR
+    L1["<b>1. Introduction</b><br/><small>Nascent demand<br/>High σd uncertainty</small>"] --> L2["<b>2. Growth</b><br/><small>Rapid scaling<br/>Weekly ROP audits</small>"]
+    L2 --> L3["<b>3. Maturity</b><br/><small>Steady-state optimal window<br/>Full SS3 + EOQ engine</small>"]
+    L3 --> L4["<b>4. Decline and PCN</b><br/><small>Process or design changes<br/>Qualification buffer alert</small>"]
+    L4 --> L5["<b>5. PDN, LTB and EOL</b><br/><small>Last Time Buy cutoff<br/>Freeze ROP into All-Time Buy</small>"]
+    L5 --> L6["<b>6. Obsolete</b><br/><small>Zero OEM production<br/>Avoid Dead Stock or grey brokers</small>"]
+
+    style L1 fill:#EFF6FF,stroke:#3B82F6,color:#1E3A8A
+    style L2 fill:#ECFDF5,stroke:#10B981,color:#065F46
+    style L3 fill:#0F172A,stroke:#2563EB,color:#FFFFFF
+    style L4 fill:#FEF3C7,stroke:#F59E0B,color:#92400E
+    style L5 fill:#FEE2E2,stroke:#DC2626,color:#991B1B
+    style L6 fill:#1E293B,stroke:#64748B,color:#F8FAFC
+{{< /mermaid >}}
+
+Bridging daily inventory optimization with technical lifecycle governance requires mastering six foundational concepts:
+
+* **Component Lifecycle:** Every Manufacturer Part Number (MPN) follows an S-shaped longevity curve—moving through *Introduction*, *Growth*, *Maturity* (where steady-state $SS_3, ROP, EOQ$ equations deliver peak efficiency), *Decline*, *Phase-Out*, and *Obsolescence*. Commercial off-the-shelf (*COTS*) consumer chips often turn obsolete within 24 months, whereas automotive (*AEC-Q100*) or *Mil-Spec* parts preserve active support for 10 to 15 years.
+* **PCN (*Product Change Notification* — JEDEC J-STD-046 Standard):** Official supplier bulletin notifying customers of changes in manufacturing process, fab location, packaging, materials, or electrical tolerances on an active component. While a **PCN** does not discontinue supply, requalifying *Form, Fit, Function* (FFF) alters effective engineering lead time ($L$), often demanding a temporary **Safety Stock ($SS$) bridge** during recertification.
+* **PDN (*Product Discontinuance Notice* — JEDEC J-STD-048 Standard):** Formal, irrevocable announcement from the semiconductor or subassembly manufacturer that an MPN is entering phase-out. Ignoring a **PDN** while the ERP blindly reorders on steady-state $ROP$ parameters guarantees sudden line stoppages once OEM allocation closes.
+* **LTB (*Last Time Buy*):** Strict ordering deadline (often 30 to 90 days post-PDN) representing the final opportunity to place firm purchase orders before the OEM shuts down the production line. Once an **LTB** notice arrives, procurement must **disable recurring $(ROP, EOQ)$ triggers** and execute a consolidated **Bridge Buy / All-Time Buy** sized to cover active build schedules, committed service SLAs, and spare-part warranties until R&D qualifies a substitute.
+* **EOL (*End of Life*) & LTS (*Last Time Ship*):** Formal date marking the cessation of standard OEM commercialization and final factory shipments. Any unhedged demand surfacing after **EOL** forces buyers onto grey-market brokers at $5\times\text{–}10\times$ unit cost premiums with elevated counterfeit exposure.
+* **Obsolete Components & Dead Stock Control:** Terminal state where no factory production exists. Coupling obsolescence intelligence (**IEC 62402**) directly with Safety Stock prevents the twin financial failures of modern supply chains:
+  1. Halting automated ERP $ROP$ replenishment on phase-out references so the warehouse does not accumulate **Obsolete / Dead Stock** requiring 100% balance-sheet write-offs.
+  2. Embedding technological obsolescence probability explicitly inside the **annual holding cost rate ($h\%$)**—escalating $h$ from $18\%$ on standard hardware up to $25\%\text{–}30\%$ on short-lifecycle silicon—so Wilson $EOQ$ avoids oversized batches on parts facing near-term PDN risk.
+
+#### Operational Synergy: Dynamic `(SS, ROP, EOQ)` Control + Early Obsolescence Radar
+
+In real industrial operations, an inventory engine is only as resilient as the lifecycle telemetry feeding it. While the **Safety Stock & ROP Excel Calculator** governs stochastic buffering ($SS_3$), reorder triggers ($ROP$), and optimal batch sizing ($EOQ$) throughout the **Maturity** stage, **Agentic Radar (`obs-management`)** acts as your automated early-warning layer scanning supplier **PCN/PDN** feeds and walking your **BOM** (*Bill of Materials*) graph. The moment an impending discontinuation (`CRITICAL LTB REQUIRED`) surfaces, it quantifies revenue/margin at risk and alerts procurement to **freeze recurring $ROP$ replenishment** and pivot into a calculated **LTB** bridge buy before stockouts or Dead Stock occur:
+
+{{< app-ref slug="obs-management" >}}
+
+### 1.2 Four Strategic Executive Goals for the Boardroom
+
+Deploying a quantitative Safety Stock & ROP engine in place of heuristic rules delivers four auditable boardroom mandates:
+
+1. **Eradicate stockouts and idle overstock simultaneously:** Replace flat *"3-week supply"* rules with asymmetric stochastic convolution ($SS_3$) that shields volatile Class A SKUs while draining bloat from stable items.
+2. **Bind Cycle Service Levels ($CSL$) to Pareto margin (ABC) and lifecycle stage:** Invest working capital strictly where it protects gross margin ($98\%\text{–}99\%$ on Class A) and freeze recurring replenishment upon **PCN**, **PDN**, or **LTB** triggers.
+3. **Harvest net balance-sheet liquidity (*Working Capital Release*):** Quantify trapped cash to the exact dollar, accelerating inventory turns and corporate Return on Capital Employed (ROCE).
+4. **Convert supplier SLA negotiations into direct cash savings:** Prove to procurement teams that cutting delivery tardiness variance ($\sigma_L$) or compressing lead time ($L$) releases far more treasury cash than minor unit-price discounts.
+
+### 1.3 Empirical Rules of Thumb vs. Datalaria Stochastic Engine (APICS / MIT CTL & IEC 62402)
+
+| Governance Dimension | Traditional Rules of Thumb | Datalaria Stochastic Engine (APICS & IEC 62402) | C-Level Strategic Advantage |
+| :--- | :--- | :--- | :--- |
+| **Coverage rule** | Uniform heuristic ("carry 3 weeks or 1 month of demand everywhere"). | **Multivariate stochastic convolution ($SS_3$)** per SKU tracking $\sigma_d$ and $\sigma_L$. | Eliminates chronic Class C overstock and acute imported Class A shortages. |
+| **Vendor reliability** | Assumes suppliers ship on exact contractual calendar lead times. | **Weights tardiness variance $\sigma_L$ by $d^2$**: exposes erratic vendors. | Targets SLA penalties precisely where cash liberation is highest. |
+| **Order batch sizing** | Intuitive order quantities or arbitrary vendor MOQs without cost math. | **Wilson Economic Order Quantity ($EOQ$)** balancing $S$ vs. carrying/obsolescence ($h \cdot C$). | Minimizes combined annual procurement and warehouse holding cost. |
+| **Lifecycle coupling** | ERP blindly triggers $ROP$ buys even after **PDN / EOL** bulletins issue. | **Aligned with PCN, PDN, LTB & EOL gates** adjusting $h\%$ or switching to Bridge Buys. | Prevents multi-million-dollar line stops and 100% write-offs on **Dead Stock**. |
+| **Service frontier** | Emotional mandate for *"100% availability across all SKUs"*. | **Asymptotic $CSL$ sensitivity curve (85%–99.9%)** & asymmetric **ABC targets** (98/95/90%). | Stops treasury from doubling debt chasing the final 0.5% asymptomatic tail. |
+| **Board deliverable** | Disconnected spreadsheets impossible to defend before the CFO. | **Complete Pack:** ECMA-376 Excel (4 tabs), 16:9 Minto Deck & 5-page PDF Guide. | Instant C-Level ratification across S&OP and Treasury committees. |
+
+### 1.4 Connecting Safety Stock & ROP to Datalaria's Strategic-Operational Funnel
+
+Quantitative inventory optimization forms **Pillar 5 of Suite 03 (Operational Control & PMBOK)** and connects seamlessly with **Obsolescence Engineering (IEC 62402)** across Datalaria's complete quantitative ecosystem:
+
+* **Layer 1 · Corporate Strategy & Portfolio Allocation (Suite 01):** Before sizing warehouses or distribution networks, leadership evaluates geopolitical, tariff, and regulatory exposure in the [Quantitative PESTEL Matrix](/en/posts/quantitative-pestel-matrix/), vendor bargaining leverage via [Weighted Porter's 5 Forces](/en/posts/quantitative-porter-5-forces/), internal operational gaps using the [Quantitative SWOT & TOWS Matrix](/en/posts/quantitative-swot-tows-matrix/), and capital allocation across the [Dynamic BCG Matrix](/en/posts/dynamic-bcg-matrix/) and [McKinsey / GE 3x3 Matrix](/en/posts/mckinsey-ge-matrix/)—integrated in the [Quantitative Corporate Strategy Framework](/en/posts/corporate-strategy-mba-quantitative-framework/).
+* **Layer 2 · Rational Decision-Making & Financial Viability (Suite 02):** Capacity investments and dual-sourcing choices pass mandatory veto gates in the [Quantitative DAR Matrix](/en/posts/quantitative-dar-matrix/), rank operational initiatives in the [RICE & ICE Prioritization Matrix](/en/posts/rice-ice-prioritization-matrix/), and validate cash flow returns adjusted for Net Working Capital swings ($\Delta\text{NWC}$) in the [Financial Business Case (NPV, IRR & Tornado)](/en/posts/financial-business-case-npv-irr/), unified in the [3-Tier Rational Decision-Making Framework](/en/posts/decision-making-prioritization-quantitative-framework/).
+* **Layer 3 · Operational Control & Obsolescence Resilience (Suite 03 & IEC 62402):** During live operations, single-owner procurement accountability ($A=1$) is locked in the [Quantitative RACI & Workload Matrix](/en/posts/quantitative-raci-workload-matrix/), single-source failure modes are priced in the [Quantitative Risk Matrix & Operational FMEA (RPN)](/en/posts/quantitative-risk-matrix-fmea/), critical-path timing is modeled via [Stochastic 3-Point PERT Estimation](/en/posts/stochastic-3-point-pert-estimation/), and actual program cash burn is audited in the [Earned Value Management (EVM) Dashboard](/en/posts/earned-value-management-evm-dashboard/). To intercept **PCN, PDN, LTB, and EOL** component alerts across complex BOMs before they trigger shortages, integrate this calculator directly with our obsolescence series ([Part 1: The Obsolescence Chessboard](/en/posts/obs_part1_intro/) and [Part 2: The Tactical Arsenal](/en/posts/obs_part2_tactics/)) and live application showcase ([Agentic Radar](/en/apps/obs-management/)).
+
+---
+
+## 2. The C-Level Inventory Planning and Control Pipeline
 
 World-class inventory management is not a reactive purchasing routine; it is an **integrated predictive engineering and corporate treasury discipline** connecting customer volatility, vendor unreliability, and balance sheet capital efficiency:
 
 {{< mermaid >}}
 flowchart TD
-    A["<b>1. Strategic ABC Portfolio Stratification</b><br/><small>Pareto classification by revenue contribution and gross margin<br/>Formal Cycle Service Level (CSL) target allocation</small>"]
+    A["<b>1. Strategic ABC Portfolio Stratification</b><br/><small>Pareto classification by revenue contribution and gross margin<br/>Formal Cycle Service Level CSL target allocation</small>"]
     
-    B["<b>2. Stochastic Demand Volatility Profiling</b><br/><small>Daily mean consumption rate (d)<br/>Daily customer demand standard deviation (σd)</small>"]
+    B["<b>2. Stochastic Demand Volatility Profiling</b><br/><small>Daily mean consumption rate d<br/>Daily customer demand standard deviation σd</small>"]
     
-    C["<b>3. Supplier Lead Time Reliability Audit</b><br/><small>Mean supplier transit lead time in days (L)<br/>Logistical tardiness standard deviation (σL)</small>"]
+    C["<b>3. Supplier Lead Time Reliability Audit</b><br/><small>Mean supplier transit lead time in days L<br/>Logistical tardiness standard deviation σL</small>"]
     
-    D["<b>4. Stochastic Convolution Engine (SS)</b><br/><small>Z-Factor computation based on CSL: Z = Φ<sup>-1</sup>(CSL)<br/>SS = Z · √(L · σd² + d² · σL²)</small>"]
+    D["<b>4. Stochastic Convolution Engine SS</b><br/><small>Z-Factor computation based on CSL: Z = Φ⁻¹ of CSL<br/>SS = Z · √ of L·σd² + d²·σL²</small>"]
     
-    E["<b>5. Reorder Point Calibration (ROP)</b><br/><small>Lead Time Demand: LTD = d · L<br/>ROP = LTD + SS (Automated ERP trigger threshold)</small>"]
+    E["<b>5. Reorder Point Calibration ROP</b><br/><small>Lead Time Demand: LTD = d · L<br/>ROP = LTD + SS, Automated ERP trigger threshold</small>"]
     
-    F["<b>6. Wilson Lot Sizing Optimization (EOQ)</b><br/><small>Trade-off between fixed order cost (S) and carrying cost (h·C)<br/>EOQ = √[(2·D·S) / (h·C)]</small>"]
+    F["<b>6. Wilson Lot Sizing Optimization EOQ</b><br/><small>Trade-off between fixed order cost S and carrying cost h·C<br/>EOQ = √ of 2·D·S over h·C</small>"]
     
-    G{"<b>7. Working Capital Liquidity Audit</b><br/><small>Does idle overstock exist versus baseline heuristic rules?<br/>Quantify net releasable balance sheet capital ($)</small>"}
+    G{"<b>7. Working Capital Liquidity Audit</b><br/><small>Does idle overstock exist versus baseline heuristic rules?<br/>Quantify net releasable balance sheet capital in USD</small>"}
     
     H["<b>IMMEDIATE INVENTORY HARVESTING PLAN</b><br/><small>Orderly phase-out of idle non-critical buffer stock<br/>Reallocating cash to protect core Class A revenue drivers</small>"]
     
@@ -63,34 +161,34 @@ flowchart TD
     D --> E
     E --> F
     F --> G
-    G -->|Excess Capital Detected| H
-    G -->|Optimized State Reached| I
+    G -->|"Excess Capital Detected"| H
+    G -->|"Optimized State Reached"| I
     H --> I
 {{< /mermaid >}}
 
 ---
 
-## 2. Operational Dynamics of the Continuous Sawtooth Replenishment Cycle
+## 3. Operational Dynamics of the Continuous Sawtooth Replenishment Cycle
 
 Continuous $(s, Q)$ or $(ROP, EOQ)$ inventory review operates on the Cartesian dynamics of the **Sawtooth Inventory Model**, which maps the physical units and financial capital across the replenishment lifecycle:
 
 {{< mermaid >}}
 flowchart TD
-    S1["<b>Stage 1: Replenishment Batch Arrival (+EOQ)</b><br/><small>Available stock reaches peak: Maximum Inventory = SS + EOQ<br/>Commercial consumption proceeds at mean daily rate (d)</small>"]
+    S1["<b>Stage 1: Replenishment Batch Arrival +EOQ</b><br/><small>Available stock reaches peak: Maximum Inventory = SS + EOQ<br/>Commercial consumption proceeds at mean daily rate d</small>"]
     
-    S2["<b>Stage 2: Linear Depletion Phase</b><br/><small>Inventory declines along negative slope -d<br/>Basal Safety Stock (SS) remains untouched at the foundation</small>"]
+    S2["<b>Stage 2: Linear Depletion Phase</b><br/><small>Inventory declines along negative slope -d<br/>Basal Safety Stock SS remains untouched at the foundation</small>"]
     
-    S3{"<b>Stage 3: Reorder Point (ROP) Breach</b><br/><small>Does available inventory cross threshold ROP?<br/>ROP = (d · L) + SS</small>"}
+    S3{"<b>Stage 3: Reorder Point Breach</b><br/><small>Does available inventory cross threshold ROP?<br/>ROP = d · L + SS</small>"}
     
-    S4["<b>Stage 4: Automated Purchase Order Emission</b><br/><small>ERP automatically fires purchase order for Wilson EOQ batch<br/> replenishment transit window commences (L days)</small>"]
+    S4["<b>Stage 4: Automated Purchase Order Emission</b><br/><small>ERP automatically fires purchase order for Wilson EOQ batch<br/>Replenishment transit window commences over L days</small>"]
     
-    S5["<b>Stage 5: Lead Time Window & Stochastic Risk</b><br/><small>Over L days, an expected d · L units are consumed<br/>If demand spikes or supplier is late, the SS buffer absorbs the shock</small>"]
+    S5["<b>Stage 5: Lead Time Window and Stochastic Risk</b><br/><small>Over L days, an expected d · L units are consumed<br/>If demand spikes or supplier is late, the SS buffer absorbs the shock</small>"]
     
     S6["<b>Stage 6: Synchronized Dock Delivery</b><br/><small>Replenishment shipment docks exactly as stock touches baseline SS<br/>Warehouse inventory jumps instantaneously back to SS + EOQ</small>"]
 
     S1 --> S2
     S2 --> S3
-    S3 -->|Yes (Order Triggered)| S4
+    S3 -->|"Yes: Order Triggered"| S4
     S4 --> S5
     S5 --> S6
     S6 --> S1
@@ -104,11 +202,11 @@ The $SS$ buffer acts as the **basal shock absorber of operational variance**. Or
 
 ---
 
-## 3. Mathematical Foundations & Stochastic Convolution Models
+## 4. Mathematical Foundations & Stochastic Convolution Models
 
 To establish boardroom-defensible inventory precision, classical supply chain science (Silver, Pyke & Thomas; Chopra & Meindl; Simchi-Levi) structures safety stock across three distinct stochastic formulations:
 
-### 3.1. The Z-Factor and Gaussian Distribution of Cycle Service Level (CSL)
+### 4.1. The Z-Factor and Gaussian Distribution of Cycle Service Level (CSL)
 
 The **Cycle Service Level ($CSL$)** is the statistical probability that customer demand during the replenishment lead time does not exceed available stock:
 
@@ -129,7 +227,7 @@ In advanced corporate modeling, this value is computed dynamically:
 
 ---
 
-### 3.2. Model 1: Variable Demand & Deterministic (Constant) Lead Time
+### 4.2. Model 1: Variable Demand & Deterministic (Constant) Lead Time
 
 This model applies when customer demand fluctuates randomly with daily standard deviation $\sigma_d$, but the vendor delivers with 100% on-time punctuality across a deterministic lead time of $L$ days ($\sigma_L = 0$):
 
@@ -141,7 +239,7 @@ $$SS_1 = Z \cdot \sigma_d \cdot \sqrt{L}$$
 
 ---
 
-### 3.3. Model 2: Deterministic Demand & Variable Lead Time
+### 4.3. Model 2: Deterministic Demand & Variable Lead Time
 
 This formulation assumes consumption is fixed and completely predictable ($d$ units per day, $\sigma_d = 0$), but the vendor exhibits logistical dispersion, with an average lead time of $L$ days and a standard deviation of $\sigma_L$ days:
 
@@ -153,7 +251,7 @@ $$SS_2 = Z \cdot d \cdot \sigma_L$$
 
 ---
 
-### 3.4. Model 3: Full Stochastic Convolution Model (Variable Demand AND Variable Lead Time)
+### 4.4. Model 3: Full Stochastic Convolution Model (Variable Demand AND Variable Lead Time)
 
 In competitive commercial distribution, retail, FMCG, and advanced engineering, **both customer demand and supplier delivery punctuality are independent continuous random variables**.
 
@@ -169,7 +267,7 @@ This formula represents the pinnacle of modern inventory science. Note a profoun
 
 ---
 
-### 3.5. Reorder Point Calibration ($ROP$)
+### 4.5. Reorder Point Calibration ($ROP$)
 
 With safety stock established, the **Reorder Point ($ROP$)** is computed by adding expected lead time consumption ($LTD = d \cdot L$) to the stochastic buffer:
 
@@ -179,7 +277,7 @@ Whenever net available inventory (calculated as $\text{On-Hand Stock} + \text{Op
 
 ---
 
-### 3.6. Wilson Economic Order Quantity ($EOQ$) & Annual Carrying Costs
+### 4.6. Wilson Economic Order Quantity ($EOQ$) & Annual Carrying Costs
 
 While the $ROP$ governs **when to order**, the classical **Wilson Economic Order Quantity ($EOQ$)** solves **how much to order**:
 
@@ -199,7 +297,7 @@ Every excess unit of unoptimized safety stock generates an annual carrying cost 
 
 ---
 
-## 4. The Law of Diminishing Returns and the Asymptotic Working Capital Frontier
+## 5. The Law of Diminishing Returns and the Asymptotic Working Capital Frontier
 
 A frequent conceptual pitfall in executive committee meetings is demanding *"100% Service Level across the entire catalog"*. Because Gaussian distributions feature infinite asymptotic tails, guaranteeing zero probability of stockout requires $Z \to \infty$:
 
@@ -225,7 +323,7 @@ The relationship between Cycle Service Level ($CSL$) and trapped capital is an *
 
 ---
 
-## 5. Strategic ABC Portfolio Stratification & Asymmetric Service Policies
+## 6. Strategic ABC Portfolio Stratification & Asymmetric Service Policies
 
 To maximize working capital liquidity without sacrificing enterprise revenue, Datalaria’s methodology forbids homogeneous catalog policies. Management must execute an **asymmetric Cycle Service Level allocation** based on Pareto stratification:
 
@@ -246,7 +344,7 @@ To maximize working capital liquidity without sacrificing enterprise revenue, Da
 
 ---
 
-## 6. Real-World Case Study: B2B Industrial Distribution Turnaround
+## 7. Real-World Case Study: B2B Industrial Distribution Turnaround
 
 To demonstrate the quantitative power of this methodology before an Executive Committee, we examine the turnaround of an industrial machinery and technical supplies distributor carrying **$4,500,000** in active balance sheet inventory across 2,400 active SKUs.
 
@@ -275,7 +373,7 @@ The optimization program released **$220,000 in net cash** to corporate treasury
 
 ---
 
-## 7. Supplier Lead Time Compression & SLA Negotiation Protocol
+## 8. Supplier Lead Time Compression & SLA Negotiation Protocol
 
 When supply chain leaders seek to curb safety inventory, their first instinct is often to trim target service levels or invest in speculative demand forecasting software ($\sigma_d$). However, mathematical sensitivity on $SS_3 = Z \sqrt{L \sigma_d^2 + d^2 \sigma_L^2}$ reveals that **the greatest working capital lever sits at the procurement negotiation table**.
 
@@ -292,7 +390,7 @@ Because $\sigma_L$ is multiplied by squared mean demand ($d^2$), a vendor with a
 
 ---
 
-## 8. Executive Boardroom FAQ
+## 9. Executive Boardroom FAQ
 
 ### Why should we avoid expressing safety stock in "days of demand"?
 Expressing safety stock in days of demand is a misleading cognitive shortcut. Ten days of demand for a locally supplied item with a 2-day lead time is an unwarranted +400% overstock. The same 10 days for an imported component with a 45-day lead time is an acute under-buffer. Safety stock must be computed in absolute units based on $Z$, $\sigma_d$, $L$, and $\sigma_L$, with "days of supply" used strictly as a secondary reporting metric.
@@ -305,7 +403,7 @@ By establishing internal carrying cost accountability. When commercial leaders s
 
 ---
 
-## 9. Executive Decision Pack: Production-Ready Analytical Engine
+## 10. Executive Decision Pack: Production-Ready Analytical Engine
 
 To prevent your analytics team from spending weeks building and validating these equations from scratch, Datalaria’s operations research team has consolidated this complete framework into an official, boardroom-grade Executive Decision Pack:
 
@@ -316,8 +414,10 @@ To prevent your analytics team from spending weeks building and validating these
   original_price="22€"
   badge="📦 Operational Control"
   icon="📦"
+  preview_image="preview-pack.png"
+  preview_caption="Actual preview of deliverables included: Safety Stock & ROP Calculator in Excel (.xlsx) with dynamic Sawtooth cycle chart, 35-SKU Matrix, Stochastic Convolution Models (1–3) and Working Capital Trade-off Simulator, Official 5-page Methodology Guide (.pdf), and C-Level 16:9 Presentation Deck (.pptx)."
   deliverables="Excel .xlsx + Sheets|PowerPoint .pptx 16:9 C-Level|Methodology Guide PDF"
-  features="Stochastic models for variable demand and lead time unreliability|Automated Safety Stock (SS) and Reorder Point (ROP) calculation|Dynamic Sawtooth cycle chart and Wilson EOQ batch sizing|PPTX presentation with Working Capital trade-offs and cash optimization"
+  features="Stochastic models for variable demand and lead time unreliability|Automated Safety Stock (SS) and Reorder Point (ROP) calculation|Dynamic Sawtooth cycle chart and Wilson EOQ batch sizing|PPTX presentation with Working Capital trade-offs and cash optimization|Instant direct download (.ZIP with bilingual ES & EN editions)"
   checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/513e5cad-9f9f-4b53-a435-b511a846d79e"
   button_text="Download Complete Pack (.ZIP) • 7€"
 >}}
@@ -340,11 +440,13 @@ Optimize company inventory levels by eliminating costly stockouts and releasing 
 
 ---
 
-## 10. Canonical Bibliography & Authoritative Standards
+## 11. Canonical Bibliography & Authoritative Standards
 
 1. **Silver, E. A., Pyke, D. F., & Thomas, D. J. (2016)** *Inventory and Production Management in Supply Chains – 4th Edition*, CRC Press / Taylor & Francis Group.
 2. **Chopra, S., & Meindl, P. (2016)** *Supply Chain Management: Strategy, Planning, and Operation – 6th Edition*, Pearson Education.
 3. **Association for Supply Chain Management (ASCM / APICS) (2020)** *APICS Dictionary – 16th Edition: Operations & Inventory Standards*, Chicago, IL.
-4. **Simchi-Levi, D., Kaminsky, P., & Simchi-Levi, E. (2008)** *Designing and Managing the Supply Chain: Concepts, Strategies and Case Studies*, McGraw-Hill Irwin.
-5. **Zipkin, P. H. (2000)** *Foundations of Inventory Management*, McGraw-Hill / Irwin Operations Management Series.
-6. **Minto, B. (2009)** *The Pyramid Principle: Logic in Writing and Thinking*, Financial Times / Prentice Hall.
+4. **UNE-EN IEC 62402:2019** *Obsolescence Management – Guidelines for Managing Obsolescence across Component Lifecycles*, International Electrotechnical Commission (IEC) / IIOM.
+5. **JEDEC Solid State Technology Association** *J-STD-046 (Customer Notification Standard for Product/Process Changes — PCN) & J-STD-048 (Notification Standard for Product Discontinuance — PDN / LTB)*.
+6. **Simchi-Levi, D., Kaminsky, P., & Simchi-Levi, E. (2008)** *Designing and Managing the Supply Chain: Concepts, Strategies and Case Studies*, McGraw-Hill Irwin.
+7. **Zipkin, P. H. (2000)** *Foundations of Inventory Management*, McGraw-Hill / Irwin Operations Management Series.
+8. **Minto, B. (2009)** *The Pyramid Principle: Logic in Writing and Thinking*, Financial Times / Prentice Hall.
