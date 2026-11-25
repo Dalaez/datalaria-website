@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-11-25T15:05:09.787663Z",
+  "generated_at": "2026-11-25T15:08:55.090906Z",
   "total_assets": 181,
   "published_assets": 168,
   "scheduled_assets": 13,
@@ -233,8 +233,8 @@
       "brief_es": "Guía cuantitativa y metodológica de optimización de inventarios (APICS / ASCM / MIT CTL & IEC 62402): erradicación de reglas empíricas de 3 semanas, ciclo de vida de componentes (PCN, PDN, LTB, EOL), convolución estocástica de demanda y Lead Time, dimensionamiento ROP y Wilson EOQ y liberación de capital de trabajo.",
       "brief_en": "Quantitative and methodological guide to inventory optimization (APICS / ASCM / MIT CTL & IEC 62402 standards): eradicating naive 3-week rules of thumb, component lifecycle management (PCN, PDN, LTB, EOL), multivariate stochastic convolution, ROP and Wilson EOQ calibration, Sawtooth cycle simulation, and working capital release.",
       "publish_date": "2026-11-26",
-      "last_modified_es": "2026-11-25T14:42:20.267786Z",
-      "last_modified_en": "2026-11-25T14:42:20.233244Z",
+      "last_modified_es": "2026-11-25T16:03:47+01:00",
+      "last_modified_en": "2026-11-25T16:03:47+01:00",
       "language_parity": "complete",
       "category": "Estrategia y Operaciones",
       "categories": [
@@ -309,8 +309,8 @@
       "brief_es": "De la gobernanza de personas al control de costes y la cadena de suministro. Guía metodológica para conectar la Matriz RACI, AMFE/FMEA, Estimación PERT, EVM Curva S y Stock de Seguridad en un sistema unificado de ejecución.",
       "brief_en": "From team governance and risk mitigation to project financials and supply chain buffers. How to integrate RACI Matrix, FMEA, 3-Point PERT, EVM S-Curve, and Safety Stock into a unified operational engine.",
       "publish_date": "2026-11-30",
-      "last_modified_es": "2026-11-25T14:42:20.274768Z",
-      "last_modified_en": "2026-11-25T14:42:20.130262Z",
+      "last_modified_es": "2026-11-25T16:03:47+01:00",
+      "last_modified_en": "2026-11-25T16:03:47+01:00",
       "language_parity": "complete",
       "category": "Estrategia y Operaciones",
       "categories": [
