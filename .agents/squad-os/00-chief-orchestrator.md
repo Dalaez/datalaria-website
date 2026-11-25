@@ -14,7 +14,7 @@ Gobernar la **estrategia unificada de marca e ingresos pasivos de Datalaria** de
 
 ## 3. Responsabilidades y Checklist de Ejecución
 1. **Mesa de Orquestadores (`01` ⇔ `E01` ⇔ `M01`):** Descomponer objetivos transversales en contratos atómicos claros asignados a cada orquestador de escuadrón, sin micro-gestionar especialistas individuales.
-2. **Custodia de North Star y Balance Oferta vs. Demanda:** Auditar periódicamente `specs/STRATEGY.md`, `IMPACT_REPORT.md` y (desde Hito 9.2) `executive_state.json`, asegurando `>= 50%` del foco en captación/conversión/ingresos mientras el MRR sea `< 500 €/mes`.
+2. **Custodia de North Star y Balance `70 / 20 / 10`:** Auditar periódicamente `specs/STRATEGY.md`, `IMPACT_REPORT.md` (Doble Capa Bruto + Externo Neto) y `executive_state.json`, apoyándose en [`00B-board-advisor`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-os/00B-board-advisor.md) ante nuevos contenidos, apps o cambios operativos (`ADR-035`).
 3. **Vigilancia Anti-Releases Silenciosas (`INV-OS-3`):** Verificar que toda release `MAJOR`/`MINOR` de `Helix` dispare cobertura en `E01` y activación comercial en `M01`.
 4. **Control de Compuertas de Escalado:** Autorizar la incorporación de nuevos agentes (`M05`, `M06`, Escuadrón `Aegis`) o costes cloud únicamente al cruzar los umbrales de ingresos de `STRATEGY.md`.
 

@@ -30,26 +30,28 @@ VALID_BRAND_VERTICALS = {"executive_b2b", "ai_systems", "open_lab"}
 
 def test_strategy_and_brand_docs_anti_bloat_limit() -> None:
     """Verifica que specs/STRATEGY.md y specs/_brand.md existen y cumplen el límite <= 80 líneas."""
-    for rel_path, expected_token in (
-        ("specs/STRATEGY.md", "500 €/mes"),
-        ("specs/_brand.md", "executive_b2b"),
+    for rel_path, expected_tokens in (
+        ("specs/STRATEGY.md", ("500 €/mes", "70 / 20 / 10", "Datalaria Apex")),
+        ("specs/_brand.md", ("executive_b2b", "Datalaria Media")),
     ):
         fp = Path(rel_path)
         assert fp.exists(), f"Falta documento estratégico obligatorio: {rel_path}"
         content = fp.read_text(encoding="utf-8")
         lines = content.splitlines()
         assert len(lines) <= 80, f"{rel_path} excede 80 líneas ({len(lines)} líneas)."
-        assert expected_token in content
+        for token in expected_tokens:
+            assert token in content, f"Falta '{token}' en {rel_path}"
 
 
 def test_os_and_mercator_specs_valid_pydantic_and_anti_bloat() -> None:
-    """Valida Capa 0 (00-chief-orchestrator) y Mercator (M01..M04) contra Pydantic v2 e INV-HELIX-8."""
+    """Valida Capa 0 (00-chief-orchestrator + 00B-board-advisor) y Mercator (M01..M04) contra Pydantic v2 e INV-HELIX-8."""
     os_docs = load_os_specs(Path("specs/squad-os"))
-    assert len(os_docs) == 1
+    assert len(os_docs) == 2
     assert tuple(d.frontmatter.id for d in os_docs) == EXPECTED_OS_AGENT_IDS
-    assert os_docs[0].frontmatter.can_write_production_code is False
-    assert os_docs[0].frontmatter.has_veto_power is False
-    assert os_docs[0].total_lines <= MAX_AGENT_SPEC_LINES
+    for os_doc in os_docs:
+        assert os_doc.frontmatter.can_write_production_code is False
+        assert os_doc.frontmatter.has_veto_power is False
+        assert os_doc.total_lines <= MAX_AGENT_SPEC_LINES
 
     merc_docs = load_mercator_squad_specs(Path("specs/squad-mercator"))
     assert len(merc_docs) == 4
@@ -70,7 +72,7 @@ def test_os_and_mercator_specs_valid_pydantic_and_anti_bloat() -> None:
 
 def test_inv_os_2_rejects_mercator_or_os_veto_duplication() -> None:
     """INV-OS-2 / INV-HELIX-1: Pydantic rechaza otorgar has_veto_power=True a agentes de OS o Mercator."""
-    for bad_id in ("00-chief-orchestrator", "M01-revenue-orchestrator", "M02-cro-pricing-revops"):
+    for bad_id in ("00-chief-orchestrator", "00B-board-advisor", "M01-revenue-orchestrator", "M02-cro-pricing-revops"):
         with pytest.raises(ValidationError):
             AgentSpecFrontmatter(
                 id=bad_id,
@@ -88,7 +90,7 @@ def test_inv_os_2_rejects_mercator_or_os_veto_duplication() -> None:
 
 
 def test_build_os_and_mercator_adapters_preserves_helix_and_scriba() -> None:
-    """Compila adaptadores de OS (4) y Mercator (10) preservando intactos Helix (26) y Scriba (18)."""
+    """Compila adaptadores de OS (6) y Mercator (10) preservando intactos Helix (26) y Scriba (18)."""
     helix_gen = build_adapters(Path("."), check_only=True)
     assert len(helix_gen) == 26
 
@@ -96,8 +98,8 @@ def test_build_os_and_mercator_adapters_preserves_helix_and_scriba() -> None:
     assert len(scriba_gen) == 18
 
     os_gen = build_os_adapters(Path("."), check_only=False)
-    assert len(os_gen) == 4
-    assert len(build_os_adapters(Path("."), check_only=True)) == 4
+    assert len(os_gen) == 6
+    assert len(build_os_adapters(Path("."), check_only=True)) == 6
 
     merc_gen = build_mercator_adapters(Path("."), check_only=False)
     assert len(merc_gen) == 10
@@ -106,6 +108,11 @@ def test_build_os_and_mercator_adapters_preserves_helix_and_scriba() -> None:
     os_rule = Path(".cursor/rules/datalaria-os.mdc").read_text(encoding="utf-8")
     assert "alwaysApply: false" in os_rule
     assert "00-chief-orchestrator" in os_rule
+    assert "00B-board-advisor" in os_rule
+
+    claude_00b = Path(".claude/agents/00B-board-advisor.md").read_text(encoding="utf-8")
+    assert "DO NOT EDIT MANUALLY (INV-HELIX-4)" in claude_00b
+    assert "Edit, Write" not in claude_00b
 
     merc_manifest = json.loads(Path(".agents/squad-mercator/manifest.json").read_text(encoding="utf-8"))
     assert merc_manifest["total_agents"] == 4

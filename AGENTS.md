@@ -26,7 +26,7 @@
 | **`/specs/`** | **El Corazón SDD (Fuente Única de Verdad).** Contiene `_constitution.md`, `ROADMAP.md`, `DECISIONS.md` (ADRs), `_templates/`, `audit/`, `squad/` (las 12 fichas `AGENT_SPEC` de Helix) y las especificaciones por app (`/specs/apps/<slug>/spec.md`). | **Lectura obligatoria.** Todo cambio arquitectónico o funcional empieza aquí. |
 | **`/specs/squad/`** | **Escuadrón Canónico Datalaria Helix (12 Agentes).** Contiene `README.md`, `triage-rubric.md` y las 12 fichas `01-orchestrator.md` a `12-release-devops.md`. | **Carga bajo demanda (`INV-HELIX-2`).** Prohibido editar a mano los adaptadores compilados en `.agents/`, `.claude/` o `.cursor/`. |
 | **`/specs/squad-editorial/`** | **Escuadrón Canónico Datalaria Scriba (8 Agentes).** Contiene `README.md`, `triage-editorial-rubric.md` y las 8 fichas `E01-editorial-orchestrator.md` a `E08-autopilot-dispatcher.md`. | **Carga bajo demanda (`INV-SCRIBA-2`).** Prohibido editar a mano los adaptadores compilados en `.agents/squad-editorial/`, `.claude/` o `.cursor/`. |
-| **`/specs/squad-os/`** | **Capa 0 — Datalaria OS (`ADR-034`).** Contiene `00-chief-orchestrator.md` (custodio de `specs/STRATEGY.md` y `specs/_brand.md`, con bypass coste 0 en tareas mono-dominio). | **Solo en tareas multi-escuadrón/estratégicas (`INV-OS-1`).** |
+| **`/specs/squad-os/`** | **Capa 0 — Datalaria OS (`ADR-034`/`ADR-035`).** Contiene `00-chief-orchestrator.md` (custodio de `specs/STRATEGY.md` y `specs/_brand.md`) y `00B-board-advisor.md` (Consultor Directivo / Business Angel *Red-Team*, tarjeta `BOARD BRIEF` sin veto bloqueante), con bypass coste 0 en tareas mono-dominio. | **Solo en tareas multi-escuadrón/estratégicas o auditorías de foco (`INV-OS-1`).** |
 | **`/specs/squad-mercator/`** | **Escuadrón Canónico Datalaria Mercator (4 Agentes Estadio 1).** Contiene `README.md`, `triage-mercator-rubric.md` y `M01`–`M04` (CRO/Pricing, Lifecycle Brevo, Distribución Externa). | **Carga bajo demanda (`INV-OS-2`).** Reutiliza vetos `10`/`11`/`E07`; prohibido editar `.agents/squad-mercator/` a mano. |
 | **`/apps/`** | **Código Fuente de Aplicaciones.** Contiene frontends (React/Vite/TS) y backends/motores cuantitativos (FastAPI/Python). | Solo modificar bajo cobertura de un `spec.md` activo y tests automatizados. |
 | **`/static/`** | **Assets Públicos de Hugo.** Todo archivo aquí se copia literalmente a `public/` y es accesible por Internet en `https://datalaria.com/*`. | **PROHIBIDO** alojar archivos `.py`, `.sql`, `.env` o código backend aquí. Solo bundles compilados, imágenes y apps estáticas congeladas. |
@@ -145,14 +145,15 @@ Presupuesto y Gobernanza: Máx. 2 intentos por gate · Checkpoint <tag Git> · A
 
 ---
 
-## 7. DATALARIA OS (CAPA 0) Y ESCUADRÓN DATALARIA MERCATOR (`ADR-034`)
+## 7. DATALARIA OS (CAPA 0) Y ESCUADRÓN DATALARIA MERCATOR (`ADR-034` / `ADR-035`)
 
-La estrategia común de marca (`specs/_brand.md`), el objetivo de autonomía mediante ingresos pasivos (`specs/STRATEGY.md`) y la coordinación entre **Helix**, **Scriba** y el escuadrón comercial **Datalaria Mercator** ([`/specs/squad-mercator/`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-mercator/README.md)) se gobiernan mediante **Datalaria OS** en 3 capas:
+La estrategia común de marca (`specs/_brand.md`), la regla `70/20/10` + reinversión *cash-positive* (`specs/STRATEGY.md`) y la coordinación entre **Helix**, **Scriba** y el escuadrón comercial **Datalaria Mercator** ([`/specs/squad-mercator/`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-mercator/README.md)) se gobiernan mediante **Datalaria OS** en 3 capas:
 
-### 7.1 Capa 0 y Regla de Bypass de Coste 0 (`INV-OS-1`)
+### 7.1 Capa 0, Consultor Directivo (`00B`) y Regla de Bypass de Coste 0 (`INV-OS-1`)
 - **Tareas mono-dominio (`XS`, `S`, o `M` acotadas):** Bypass directo a `01-orchestrator` (Helix), `E01-editorial-orchestrator` (Scriba) o `M01-revenue-orchestrator` (Mercator) con `0` tokens extra.
 - **Iniciativas multi-escuadrón, lanzamientos comerciales y revisiones de foco (`L`/`XL`):** Toma el mando [`00-chief-orchestrator`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-os/00-chief-orchestrator.md), dialogando **exclusivamente** con los 3 orquestadores (`01`, `E01`, `M01`) sobre la realidad compartida de `ops/pulse/`.
-- **Integridad de Helix Kit y Veto Reutilizado (`INV-OS-2`):** El escuadrón Helix (`specs/squad/01..12`) permanece 100 % intacto para su comercialización. Mercator no duplica QA ni Seguridad: toda entrega comercial pasa por `10-security-privacy`, `11-qa-verifier` y/o `E07-editorial-qa`.
+- **Desafío Red-Team bajo demanda (`ADR-035`):** Ante propuestas de nuevos contenidos, apps, pricing o cambios operativos, [`00B-board-advisor`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-os/00B-board-advisor.md) emite la tarjeta consultiva **`BOARD BRIEF`** (ROI, cuota `70/20/10`, coste de oportunidad y Tráfico Externo Neto) **sin veto bloqueante** (la decisión final es siempre del fundador).
+- **Integridad de Helix Kit y Veto Reutilizado (`INV-OS-2`):** El escuadrón Helix (`specs/squad/01..12`) permanece 100 % intacto para su comercialización. Ni Capa 0 ni Mercator duplican QA ni Seguridad: toda entrega pasa por `10-security-privacy`, `11-qa-verifier` y/o `E07-editorial-qa`.
 
 ### 7.2 Tarjeta de Triaje Comercial (`TRIAGE MERCATOR`) y Mapa de Roles (Estadio 1)
 

@@ -1,7 +1,7 @@
 # 📈 Primera Auditoría Estratégica de Impacto SEO, Tráfico y Monetización (E02)
 
 > **Autor:** [`E02-seo-impact-strategist`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-editorial/E02-seo-impact-strategist.md) · **Célula:** Dirección & Inteligencia Estratégica  
-> **Fecha de Emisión:** 2026-11-25 20:21 UTC  
+> **Fecha de Emisión:** 2026-11-25 22:18 UTC  
 > **Fuentes de Verdad:** `data/pulse/private/index.json` (190 activos), `metrics.json` (GA4 + GSC 30d/prev 30d), `channel_metrics.json` (GA4 Acquisition + KeyEvents), `social_metrics.json` (Dev.to + CoderLegion APIs gratuitas), `distribution_ledger.json`, `gsc_queries.json`, `monthly_metrics.json` (14 meses) y `backlog.yaml`.  
 > **Invariantes:** Cumple estrictamente `INV-PULSE-6`, `INV-PULSE-11`, `INV-PULSE-12` (`ADR-033`, coste `0 €`) y Constitución Art. 1.3 (*Separación Cerebro vs. Músculo Cuantitativo*).
 
@@ -18,7 +18,8 @@
 | **Quick Wins de CTR / SERP** | **66 oportunidades** | `60` con impresiones reales GSC (`pos 4..20` o `CTR < 2.5%`) + truncamientos SERP. |
 | **Canibalización de Keywords** | **1 alertas** | Consultas GSC donde `>= 2` URLs del mismo idioma compiten por impresiones. |
 | **Huérfanos de Monetización** | **1 posts top** | Posts en el cuartil superior ($P_{75} \ge 26$) sin enlace ni shortcode a Kit/App. |
-| **Score Promedio del Backlog** | **79.2 / 100** | 6 propuestas estratégicas evaluadas por Editorial ROI Score. |
+| **Score Promedio del Backlog** | **80.3 / 100** | 5 propuestas estratégicas evaluadas por Editorial ROI Score. |
+| **Lectura Doble Capa (`00B` / `ADR-035`)** | **620 ses. externas netas** | Bruto GA4 intacto: `3,185` · Asistentes IA (GEO): **25** · Ruido excluido: `localhost` `98` + spam `127` (`aocr.org`) · Marca real GSC (sin `site:`): `0` imp. / `0` clics (`site:`: `722` imp.). |
 
 ```mermaid
 flowchart TD
@@ -93,8 +94,7 @@ $$\text{Editorial ROI Score} = 0.40 \times \text{Demanda SEO} + 0.35 \times \tex
 | **#2** | `idea-monte-carlo-capex-risk` | Simulación de Monte Carlo en Excel y Python para Business Cases: Más Allá del VAN Determinista | Estrategia y Operaciones | `pack-business-case` | 82 | 95 | 88 | **82.7** |
 | **#3** | `idea-pareto-multiobjective-portfolio` | Frontera Eficiente de Pareto en Priorización de Producto: Combinando RICE, DAR y Presupuesto | Estrategia y Operaciones | `suite-02` | 78 | 92 | 90 | **80.8** |
 | **#4** | `idea-little-law-kingman-ops` | Ley de Little y Fórmula de Kingman en Operaciones: Por Qué Tu Backlog Colapsa al 85% de Carga | Estrategia y Operaciones | `suite-03` | 75 | 88 | 85 | **77.6** |
-| **#5** | `idea-edsger-dijkstra-formal-verification` | Edsger Dijkstra: La Cruzada contra el GOTO, la Verificación Formal y por qué Habría Vetado el Vibe Coding | Pioneros y Referentes | `helix` | 80 | 82 | 92 | **74.2** |
-| **#6** | `idea-claude-shannon-information-theory` | Claude Shannon: El Padre de la Teoría de la Información, la Entropía en LLMs y el Malabarista del Bell Labs | Pioneros y Referentes | `flashcards` | 85 | 75 | 82 | **71.9** |
+| **#5** | `idea-claude-shannon-information-theory` | Claude Shannon: El Padre de la Teoría de la Información, la Entropía en LLMs y el Malabarista del Bell Labs | Pioneros y Referentes | `flashcards` | 85 | 75 | 82 | **71.9** |
 
 ---
 

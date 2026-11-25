@@ -8,7 +8,7 @@
     "INV-OS-3",
     "INV-HELIX-8"
   ],
-  "total_agents": 1,
+  "total_agents": 2,
   "agents": [
     {
       "id": "00-chief-orchestrator",
@@ -42,6 +42,41 @@
       "source_path": "specs/squad-os/00-chief-orchestrator.md",
       "antigravity_adapter": ".agents/squad-os/00-chief-orchestrator.md",
       "claude_adapter": ".claude/agents/00-chief-orchestrator.md"
+    },
+    {
+      "id": "00B-board-advisor",
+      "name_es": "Consultor Directivo y Business Angel (Red-Team Estratégico)",
+      "name_en": "Executive Board Advisor & Business Angel (Strategic Red-Team)",
+      "cell": "direction",
+      "icon": "🦅",
+      "activates_on_sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "mandatory_triggers": [
+        "new_content_pitch",
+        "operational_change",
+        "pricing_review",
+        "strategy_audit"
+      ],
+      "can_write_production_code": false,
+      "has_veto_power": false,
+      "inputs": [
+        "user_request",
+        "specs/STRATEGY.md",
+        "specs/_brand.md",
+        "specs/ROADMAP.md",
+        "specs/audit/IMPACT_REPORT.md"
+      ],
+      "outputs": [
+        "board_brief_card",
+        "opportunity_cost_audit",
+        "strategic_recommendation"
+      ],
+      "source_path": "specs/squad-os/00B-board-advisor.md",
+      "antigravity_adapter": ".agents/squad-os/00B-board-advisor.md",
+      "claude_adapter": ".claude/agents/00B-board-advisor.md"
     }
   ]
 }

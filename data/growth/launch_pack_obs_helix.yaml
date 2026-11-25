@@ -56,7 +56,7 @@ product_hunt:
     brand_vertical: "ai_systems"
     embargo_until: "2027-01-19"
     status: "staged_embargoed"
-    launch_url: "https://datalaria.com/en/resources/#pack-sdd?utm_source=producthunt&utm_medium=launch&utm_campaign=helix_jan2027"
+    launch_url: "https://datalaria.com/en/resources/?utm_source=producthunt&utm_medium=launch&utm_campaign=helix_jan2027#pack-sdd"
     tagline: "12-agent Spec-Driven Development squad with deterministic veto CLI"
     description: "Stop shipping fragile vibe-coded prototypes. Datalaria Helix is a Spec-Driven Development OS with 12 specialized AI agents, XS-XL triage, independent Security/QA veto gates, and a zero-dependency Python CLI for Antigravity, Claude Code, Cursor & Codex."
     topics:
@@ -137,23 +137,47 @@ directories_and_marketplaces:
     - name: "DevHunt"
       url: "https://devhunt.org"
       cost_eur: 0
-      target_products: ["pack-sdd", "pack-pulse"]
-      notes: "Weekly developer tool launches; strong EN engineering audience."
+      hito_9_5_ready: true
+      target_products: ["pulse"]
+      deferred_products_embargoed: ["pack-sdd (2027-01-19)"]
+      tracked_url: "https://datalaria.com/apps/pulse/?demo=true&utm_source=devhunt&utm_medium=directory&utm_campaign=hito95_pulse_sandbox"
+      tagline: "Git-backed Content Ops cockpit & zero-VBA Notion migration toolkit"
+      short_description: "Datalaria Pulse indexes bilingual Markdown, apps, and kits directly from Git, combines GA4 + Search Console + social metrics into a deterministic 0-100 SEO/ROI engine, and ships a zero-login browser Sandbox plus an offline 6-sheet Excel/Power Query M migration kit."
+      categories: ["Developer Tools", "Analytics", "Open Source / Productivity"]
+      notes: "Submit Datalaria Pulse Sandbox now (live); defer Helix Starter/pack-sdd submission until 2027-01-19 (INV-AUTO-6)."
     - name: "There's An AI For That"
       url: "https://theresanaiforthat.com"
       cost_eur: 0
-      target_products: ["obs-management", "pack-sdd"]
-      notes: "Submit free Sandbox URLs for high-authority backlinks."
+      hito_9_5_ready: true
+      target_products: ["obs-management"]
+      deferred_products_embargoed: ["pack-sdd (2027-01-19)"]
+      tracked_url: "https://datalaria.com/apps/obs-management/?lang=en&scenario=ltb-crisis&utm_source=taaft&utm_medium=directory&utm_campaign=hito95_obs_sandbox"
+      tagline: "Deterministic IEC 62402 BOM obsolescence & Last-Time-Buy vs Redesign simulator"
+      short_description: "Agentic Radar v2.0 is a Zero-CDN (<45 KB) supply-chain risk cockpit that traverses multilevel BOM DAGs, scores IEC 62402 criticality, and simulates Last-Time-Buy (LTB) vs Form-Fit-Function redesign CAPEX without LLM arithmetic hallucinations. Free live browser Sandbox."
+      categories: ["Supply Chain", "Operations", "Business Analytics"]
+      notes: "Submit free Agentic Radar v2.0 Sandbox URL now (live) for EN high-authority backlink."
     - name: "AlternativeTo"
       url: "https://alternativeto.net"
       cost_eur: 0
+      hito_9_5_ready: true
       target_products: ["pulse"]
+      tracked_url: "https://datalaria.com/en/apps/pulse/?utm_source=alternativeto&utm_medium=directory&utm_campaign=hito95_pulse_alt_notion"
+      tagline: "Git-backed Content Ops & SEO/GA4 Editorial BI alternative to Notion"
+      alternative_to: ["Notion", "Airtable", "ClickUp"]
+      short_description: "Datalaria Pulse replaces fragile manual Notion editorial trackers with a deterministic Git-indexed catalog, bilingual parity validation, GA4/GSC Quick-Win scoring, and a React 19 + Supabase RLS cockpit (plus zero-login Demo Sandbox and Power Query M Excel exporter)."
+      categories: ["Productivity", "Content Management", "Analytics"]
       notes: "List Datalaria Pulse as a Git-backed Content Ops alternative to Notion."
     - name: "Uneed / MicroLaunch"
       url: "https://uneed.best"
       cost_eur: 0
-      target_products: ["obs-management", "pack-pulse", "pack-sdd"]
-      notes: "Indie maker launches with do-follow backlink potential."
+      hito_9_5_ready: true
+      target_products: ["obs-management", "pulse"]
+      deferred_products_embargoed: ["pack-sdd (2027-01-19)"]
+      tracked_url: "https://datalaria.com/apps/obs-management/?lang=en&scenario=ltb-crisis&utm_source=uneed&utm_medium=directory&utm_campaign=hito95_obs_uneed"
+      tagline: "Zero-CDN BOM Obsolescence & LTB vs Redesign Sandbox for Supply Chain teams"
+      short_description: "Free interactive browser cockpit for electronics & industrial teams facing End-of-Life (PDN/EOL) component notices. Compute multilevel BOM margin-at-risk and deterministic WACC-adjusted LTB vs Redesign CAPEX in 15 seconds with zero login."
+      categories: ["SaaS", "Productivity", "Analytics"]
+      notes: "Submit Agentic Radar v2.0 live Sandbox (or Datalaria Pulse) for do-follow backlink potential; keep pack-sdd staged until 2027-01-19."
   github_awesome_lists:
     - repo: "awesome-ai-agents / awesome-claude-code"
       target_products: ["pack-sdd"]
@@ -188,36 +212,124 @@ linkedin_company_4week_plan:
         - day: "Tue"
           lang: "en"
           format: "Technical breakdown + 1600x980 architecture visual"
+          recommended_visual: "content/en/apps/obs-management/cover.png"
           hook: "Most supply chain teams discover an obsolete chip 6 months too late. We rebuilt Agentic Radar v2.0 (<45 KB Zero-CDN) to compute LTB vs. Redesign CAPEX in the browser."
           cta_url: "https://datalaria.com/apps/obs-management/?lang=en&scenario=ltb-crisis&utm_source=linkedin&utm_medium=social&utm_campaign=li_wk1_obs_v2"
+          full_post: |
+            Most supply chain teams discover an obsolete semiconductor 6 months too late — right when the factory line stops.
+
+            We rebuilt Agentic Radar v2.0 (<45 KB Zero-CDN) to run deterministic IEC 62402 risk scoring and Last-Time-Buy (LTB) vs. Form-Fit-Function Redesign CAPEX directly in your browser.
+
+            Two architectural principles behind v2.0:
+            • Deterministic BOM DAG traversal first: WACC carrying cost, inventory decay, and bridge safety stock (SS_LTB) never rely on LLM guesswork.
+            • Zero-login Sandbox: simulate an End-of-Life notice and margin-at-risk in under 15 seconds.
+
+            Try the live English Sandbox here:
+            https://datalaria.com/apps/obs-management/?lang=en&scenario=ltb-crisis&utm_source=linkedin&utm_medium=social&utm_campaign=li_wk1_obs_v2
+
+            When a supplier sends a Product Discontinuation Notice (PDN), does your team default to Last-Time-Buy or trigger a redesign business case first?
         - day: "Thu"
           lang: "es"
           format: "Carrousel / 3-bullet comparison (pack-stock vs. IEC 62402 EOL)"
+          recommended_visual: "static/images/recursos/stock-preview-es.png"
           hook: "Tu fórmula de Stock de Seguridad (ROP) falla cuando un componente entra en Fin de Vida (EOL). Así se calcula el colchón puente SS_LTB sin hojas rotas."
           cta_url: "https://datalaria.com/es/apps/obs-management/?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk1_obs_es"
+          full_post: |
+            Tu fórmula estándar de Stock de Seguridad (ROP) deja de funcionar el día que un componente entra en Fin de Vida (EOL).
+
+            En fase de madurez repones de forma continua (APICS ROP/EOQ). Pero tras una notificación PDN, la reposición queda congelada y la decisión pasa a ser un trade-off único de CAPEX: Last Time Buy (LTB) frente a Rediseño FFF.
+
+            En Agentic Radar v2.0 separamos ambos regímenes de forma determinista:
+            1. Explosión de grafo BOM multinivel para medir margen real en riesgo.
+            2. Matriz de criticidad IEC 62402 (0–100) sin cajas negras.
+            3. Colchón puente SS_LTB ajustado por WACC y merma durante la ventana de rediseño.
+
+            Explora la ficha técnica y el Sandbox gratuito aquí:
+            https://datalaria.com/es/apps/obs-management/?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk1_obs_es
+
+            ¿Cómo evaluáis hoy en operaciones si compensa inmovilizar capital en un LTB o asumir el coste de homologar un sustituto?
         - day: "Sat"
           lang: "en"
           format: "Founder behind-the-scenes (Open Lab showcase)"
+          recommended_visual: "content/en/apps/weather/cover.png"
           hook: "Why we removed every external CDN from our PWAs (Weather v3.3 & Agentic Radar v2.0): 0 ms third-party blocking and full offline resilience."
           cta_url: "https://datalaria.com/en/apps/weather/?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk1_zerocdn"
+          full_post: |
+            Why we stripped every external CDN out of our PWAs (Weather Intelligence v3.3 and Agentic Radar v2.0).
+
+            External script CDNs introduce silent failure modes: corporate firewalls blocking unpkg/jsdelivr, unpredictable latency, and broken offline installs.
+
+            By bundling clean client-side engines with native browser primitives (<dialog>, <details>, Service Workers):
+            • 0 ms third-party blocking on corporate networks.
+            • Deterministic offline fallback with Stale-While-Revalidate JSON caches.
+            • Complete bilingual ES/EN parity from a single codebase.
+
+            Inspect the live Weather Intelligence architecture here:
+            https://datalaria.com/en/apps/weather/?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk1_zerocdn
+
+            Do your internal web tools still depend on public CDNs, or have you moved to self-contained zero-CDN bundles?
     - week: 2
       theme: "Silent Release Spotlight #2: Datalaria Pulse v1.5/v1.6 & Content Ops as Code (AI Systems)"
       posts:
         - day: "Tue"
           lang: "en"
           format: "Dashboard screenshot + metrics story"
+          recommended_visual: "static/images/recursos/pulse-preview-en.png"
           hook: "Our Notion content tracker drifted from Git every week. So we built Datalaria Pulse v1.6: 193 bilingual assets indexed with Pydantic v2 + GA4/GSC ROI."
           cta_url: "https://datalaria.com/apps/pulse/?demo=true&utm_source=linkedin&utm_medium=social&utm_campaign=li_wk2_pulse_v16"
+          full_post: |
+            Our Notion content tracker drifted out of sync with our Git repository every single week.
+
+            Instead of paying for another SaaS wrapper, we built Datalaria Pulse v1.6: Content Ops as Code indexing 193 bilingual assets with Pydantic v2, Google Search Console CTR quick-wins, and omnichannel attribution at 0 EUR/month fixed infra cost.
+
+            Inside the v1.6 cockpit:
+            • Deterministic 0-100 SEO & Editorial ROI scoring (no LLM hallucinations on numbers).
+            • Automatic detection of silent product releases vs. published coverage.
+            • Dual-Mode architecture: instant zero-login Demo Sandbox + private Supabase RLS Admin views.
+
+            Launch the interactive Demo Sandbox (no signup required):
+            https://datalaria.com/apps/pulse/?demo=true&utm_source=linkedin&utm_medium=social&utm_campaign=li_wk2_pulse_v16
+
+            How do you keep your editorial backlog synchronized with real production ship dates and Search Console data?
         - day: "Thu"
           lang: "en"
           format: "Problem/Solution post for Content & DevRel teams"
+          recommended_visual: "static/images/recursos/pulse-preview-en.png"
           hook: "Exporting Notion to a 6-sheet zero-VBA Excel cockpit with Power Query M in 5 minutes — live demo + toolkit."
-          cta_url: "https://datalaria.com/en/resources/#pack-pulse?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk2_pulse_kit"
+          cta_url: "https://datalaria.com/en/resources/?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk2_pulse_kit#pack-pulse"
+          full_post: |
+            Many content and DevRel teams want to leave manual Notion boards behind — without breaking executive reporting in Excel.
+
+            We packaged a Dual ES/EN migration toolkit that turns Notion CSV exports or Git `public.json` feeds into a 6-sheet zero-VBA Excel cockpit powered by Power Query M.
+
+            What is inside the Datalaria Pulse Kit (19 EUR Early-Bird):
+            • Dual ES/EN 6-sheet Excel workbooks with native Tables, Kanban view, and Executive Dashboard.
+            • Bilingual Power Query M connectors (1-click refresh from Notion CSV or Git JSON).
+            • Zero-dependency Python repo scanner + deterministic migration CLI + 5-page PDF guide.
+
+            Inspect the full kit deliverables and preview screenshots here:
+            https://datalaria.com/en/resources/?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk2_pulse_kit#pack-pulse
+
+            What is the biggest bottleneck in your current content workflow: Notion maintenance, Excel reporting, or proving SEO ROI?
         - day: "Sat"
           lang: "es"
           format: "Debate question on Dark Social & Attribution"
+          recommended_visual: "content/es/apps/pulse/cover.png"
           hook: "El 73% del tráfico B2B llega como (direct) por Dark Social. Así montamos atribución omnicanal a coste 0 € con GA4 + UTMs estrictos."
           cta_url: "https://datalaria.com/es/apps/pulse/?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk2_darksocial"
+          full_post: |
+            Más del 70 % de nuestras sesiones B2B en GA4 entraban como `(direct) / (none)` por culpa del Dark Social y enlaces sin etiquetar.
+
+            Para dejar de volar a ciegas sin pagar herramientas de atribución de 300 €/mes, implementamos en Datalaria Pulse una arquitectura de telemetría a coste 0 €:
+
+            • UTMs normalizados seguros ante HashRouter en cada publicación y enlace bio.
+            • Detección automática de picos de Dark Social tras cada ola en LinkedIn, X o Dev.to.
+            • Lectura en Doble Capa que separa tráfico externo neto real frente a ruido local o bots.
+
+            Aquí puedes ver la arquitectura completa de Datalaria Pulse:
+            https://datalaria.com/es/apps/pulse/?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk2_darksocial
+
+            ¿Cómo medís hoy el retorno real de vuestras publicaciones orgánicas cuando los enlaces se comparten por privado?
     - week: 3
       theme: "Launch Week: pack-obs (Dec 9, 2026) + Executive Suites B2B"
       posts:
@@ -226,17 +338,17 @@ linkedin_company_4week_plan:
           embargo_note: "Publish ONLY on or after 2026-12-09"
           format: "Official Launch Post (EN-First)"
           hook: "Live today: IEC 62402 Obsolescence, BOM Risk & LTB Decision Kit (5-sheet Zero-VBA Excel + PostgreSQL RLS Blueprint + 5-page PDF Playbook)."
-          cta_url: "https://datalaria.com/en/resources/#pack-obs?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk3_pack_obs_launch"
+          cta_url: "https://datalaria.com/en/resources/?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk3_pack_obs_launch#pack-obs"
         - day: "Thu"
           lang: "es"
           format: "Value comparison (Kit vs. Suite vs. Mega Bundle 39 € + Team License 99 €)"
           hook: "13 modelos cuantitativos de Estrategia, Decisiones y Operaciones PMBOK sin macros VBA: por qué las empresas están pasando de plantillas sueltas a licencias de equipo."
-          cta_url: "https://datalaria.com/es/recursos/#pricing-comparison?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk3_b2b_suites"
+          cta_url: "https://datalaria.com/es/recursos/?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk3_b2b_suites#pricing-comparison"
         - day: "Sat"
           lang: "en"
           format: "Quick quantitative tip (EVM / Safety Stock)"
           hook: "3 indicators every COO should review before approving CAPEX: NPV sensitivity Tornado, EVM CPI/SPI, and Safety Stock working-capital trade-off."
-          cta_url: "https://datalaria.com/en/resources/#suite-03?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk3_coo_kpis"
+          cta_url: "https://datalaria.com/en/resources/?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk3_coo_kpis#suite-03"
     - week: 4
       theme: "Datalaria Helix Waitlist Push (Pre-Jan 19, 2027) & Brand Authority"
       posts:
@@ -249,7 +361,7 @@ linkedin_company_4week_plan:
           lang: "en"
           format: "Early-Bird Waitlist CTA (embargo respected until Jan 19)"
           hook: "Datalaria Helix launches Jan 19, 2027: 12-agent SDD OS + zero-dependency CLI for Antigravity, Claude Code & Cursor. Early-Bird waitlist (19 € vs 39 €) is open."
-          cta_url: "https://datalaria.com/en/resources/#pack-sdd?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk4_helix_waitlist"
+          cta_url: "https://datalaria.com/en/resources/?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk4_helix_waitlist#pack-sdd"
         - day: "Sat"
           lang: "es"
           format: "Monthly engineering recap (Open Lab + Executive B2B + AI Systems)"

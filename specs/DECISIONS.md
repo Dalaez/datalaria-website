@@ -710,3 +710,26 @@
 - **Consecuencias:**
   - Alineación total de Ingeniería, Editorial y Revenue bajo una estrategia común y coste fijo `0 €/mes`, compilación determinista ampliada en `ops/helix/build_adapters.py` y escalabilidad modular por estadios de ingresos reales.
 
+---
+
+## ADR-035: Consultor Directivo en Capa 0 (`00B-board-advisor`), Portfolio Balance `70/20/10`, Telemetría Dual, Reinversión Cash-Positive y Hoja de Ruta `Datalaria Apex` / `Datalaria Media` (`Hito 9.4b`)
+- **Fecha:** 2026-11-25
+- **Estado:** Aceptado (Implementado en Hito `9.4b`; ejecución comercial en Hitos `9.5`–`9.8`)
+- **Contexto:**
+  1. La auditoría de *Due Diligence* sobre [`data/pulse/private/`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/data/pulse/private/impact_report.json) (`2026-11-25`) reveló 4 tensiones reales: (a) el `73,4%` del tráfico GA4 es `(direct)` con ruido sin filtrar (`localhost:1313` = `90` sesiones, spam `aocr.org` = `127` sesiones `0%` eng.) y el `100%` de las impresiones de marca GSC son consultas `site:datalaria.com*`; (b) el `59,8%` de impresiones GSC non-brand provienen de biografías/startups/cultura pop frente al `2,5%` de keywords comerciales B2B; (c) los asistentes IA (`chatgpt.com` + `gemini.google.com` = `24` sesiones/30d) superan ya a Brevo Newsletter (`11`) y Dev.to (`1`); y (d) el catálogo de pago único de `5–19 €` necesita una palanca de ticket medio-alto (`49–299 €`).
+  2. Al mismo tiempo, el fundador mantiene deliberadamente 3 horizontes coexistentes sin inversión externa: *Career Equity / Hobby Premium* (incluyendo apps familiares), *Estudio Bootstrapped Mercator* y *Spin-off SaaS B2B autofinanciado*, además de querer preservar la curva GA4 bruta como motivación hasta la 1.ª venta y explorar en 2027 un sistema agéntico C-Level (**Datalaria Apex**) y una futura vertical editorial (**Datalaria Media**).
+- **Decisión:**
+  1. **Nuevo Agente Consultivo en Capa 0 (`specs/squad-os/00B-board-advisor.md`):** Se integra `00B-board-advisor` (*Consultor Directivo y Business Angel*) como *Red-Team* bajo demanda que emite la tarjeta `BOARD BRIEF` (6 líneas) ante nuevos contenidos, apps, pricing o cambios operativos. No escribe código ni posee veto bloqueante (`INV-OS-2`: la decisión final siempre es del fundador; `10`/`11`/`E07` conservan el veto técnico/editorial y el paquete de 12 agentes Helix permanece 100 % intacto).
+  2. **Portfolio Balance `70 / 20 / 10` (`STRATEGY.md v1.1.0`):** Mientras los ingresos sean `< 500 €/mes`, el foco se asigna en `70 %` Armas B2B/Mercator (`pack-obs`, `Helix`, `Apex`), `20 %` Blog semanal amplio (`1` post/sem con bloque obligatorio mid-article *«De la teoría a tu empresa»* → Kit/App + bloque GEO) y `10 %` *Open Lab* (máx. `1` hito ligero/mes).
+  3. **Telemetría en Doble Capa (`ops/pulse/impact_analyzer.py`):** Se mantiene GA4 producción intacto hasta la 1.ª venta (curva motivacional), añadiendo en paralelo el cálculo determinista `compute_net_external_traffic_summary()` en `IMPACT_REPORT.md` (*Tráfico Externo Neto* excluyendo `localhost:*` y spam `0%` eng., tráfico AI/GEO y separación de marca real vs. `site:`). Tras la 1.ª venta se filtrará GA4 en origen.
+  4. **Compuertas de Reinversión Cash-Positive y Multi-Marca (`_brand.md v1.1.0`):** Desde el `1.er €` neto, se autoriza reinvertir `<= 50 %` del beneficio acumulado en capacidades agénticas (*Gemini Plus*, APIs, hardware) sin deuda ni VC. Publicidad display/patrocinios y desdoblamiento hacia **Datalaria Media** (libros, podcasts, webs separadas `Datalaria B2B` / `AI Systems` / `Media`) se desbloquean exclusivamente en Estadio 2 (`> 500 €/mes` sostenidos o `> 10.000` sesiones orgánicas netas/mes).
+  5. **Plan Comercial Q4–Q1 (`Hitos 9.5–9.8`) y `Datalaria Apex`:** Se formalizan los hitos `9.5` (encendido `sync_revenue.py`, Brevo evergreen, directorios, LinkedIn), `9.6` (Día D `pack-obs` `9 Dic`), `9.7` (Día D `Helix` `19 Ene` + repo gratuito **Helix Starter MIT** en GitHub) y `9.8` (**Datalaria Apex**, Consejo Directivo Agéntico C-Level sobre Suites 1–3 + `pack-obs`, arrancando tras el `19 Ene` con compuerta previa de `>= 3` señales reales de demanda, pricing `39–49 €` Early-Bird / `79 €` Bundle / `199–299 €` Equipo).
+- **Alternativas Descartadas:**
+  - *Congelación total (`0 %`) de Open Lab y blog amplio:* Descartada por sacrificar aprendizaje, testeo familiar y *career equity* que el fundador busca explícitamente.
+  - *Otorgar veto bloqueante a `00B-board-advisor`:* Descartado por violar `INV-OS-2` y restar soberanía al fundador.
+  - *Crear webs separadas para Media/B2B antes de monetizar:* Descartado por fragmentar la autoridad SEO en Estadio 1.
+- **Consecuencias:**
+  - Compilador `ops/helix/build_adapters.py` escala limpiamente de `58` a `60` adaptadores (`6` en Capa 0) sin alterar Helix (`26`), Scriba (`18`) ni Mercator (`10`).
+  - Toda propuesta nueva puede someterse a escrutinio realista de negocio (`BOARD BRIEF`) sobre métricas netas reales antes de consumir tiempo de desarrollo.
+
+

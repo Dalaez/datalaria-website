@@ -482,6 +482,7 @@ class PulseImpactReport(BaseModel):
     ptr_leak_alerts: List[PullThroughAlertItem] = Field(default_factory=list)
     canonical_shield_alerts: List[CanonicalShieldAlertItem] = Field(default_factory=list)
     silent_releases_count: int = 0
+    net_external_traffic_summary: Dict[str, Any] = Field(default_factory=dict)
 
 
 # ==============================================================================

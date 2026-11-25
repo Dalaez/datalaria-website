@@ -1,6 +1,6 @@
 # Especificación SDD: Primer Sprint Comercial Datalaria Mercator (Hito 9.3)
 
-> **Versión:** 1.0.0 · **Fecha:** 2026-11-24 · **Estado:** ACTIVA  
+> **Versión:** 1.2.0 · **Fecha:** 2026-11-25 · **Estado:** ACTIVA (`Hito 9.3` + `Hito 9.5`)  
 > **Orquestación:** `00-chief-orchestrator` ⇔ `M01-revenue-orchestrator` (`M02`, `M03`, `M04`) + `01-orchestrator` (`04`, `09`, `10`, `11`) + `E01-editorial-orchestrator` (`E07`)  
 > **Decisión Marco:** `ADR-034`, `specs/STRATEGY.md`, `specs/_brand.md`, `specs/audit/IMPACT_REPORT.md`
 
@@ -27,10 +27,15 @@ Para multiplicar margen neto sin soporte 1-a-1 (Peldaño 3 de `specs/STRATEGY.md
 
 ### 2.3 Especificación Operativa del Cupón de Cross-Sell Progresivo (`OPP-MON-01`)
 - **Plataforma:** Lemon Squeezy Discounts (capa gratuita).
-- **Código:** `DATALARIA-UPGRADE20` (`20%` de descuento).
+- **Nombre interno (factura):** `DATALARIA-UPGRADE20` · **Código checkout:** `UPGRADE20` (`20%` de descuento; solo alfanumérico sin guiones por restricción Lemon Squeezy).
 - **Ámbito:** Aplicable a `suite-01`, `suite-02`, `suite-03` y `mega-bundle` (`39 €` → `31,20 €`). Excluye productos embargados (`status: coming`).
 - **Entrega Automática:** Email #3 (`D+14`) del Flujo Post-Compra en Brevo (`data/growth/lifecycle_flows.yaml`).
 - **Reglas de Control:** Máximo 1 uso por email comprador, validez 14 días desde recepción, telemetría agregada sin PII en `ops/pulse/sync_revenue.py` (`INV-PULSE-13`).
+
+### 2.4 Puente Serverless Coste `0 €`: Webhook Lemon Squeezy → Brevo (`INV-MERCATOR-WH-1`)
+- **Endpoint:** `/.netlify/functions/lemonsqueezy-webhook` (`netlify/functions/lemonsqueezy-webhook.js`).
+- **Seguridad (Veto `10-security-privacy`):** Verificación estricta *fail-closed* de firma HMAC-SHA256 (`X-Signature`) usando `LEMON_SQUEEZY_WEBHOOK_SECRET` y `crypto.timingSafeEqual`; ignora `test_mode: true`, reembolsos o eventos distintos de `order_created`; cero PII en logs de Netlify (`INV-PULSE-13`).
+- **Enrutamiento Brevo:** Deduce idioma (`es` vs. `en`) por nombre de producto o país de facturación e inserta el contacto en `BREVO_BUYERS_LIST_ES` / `BREVO_BUYERS_LIST_EN` (o fallback `BREVO_BUYERS_LIST_ID`) mediante `BREVO_API_KEY`.
 
 ---
 
@@ -49,6 +54,16 @@ Para multiplicar margen neto sin soporte 1-a-1 (Peldaño 3 de `specs/STRATEGY.md
 ---
 
 ## 5. Invariantes y Criterios de Verificación
-- **INV-AUTO-6 (Embargos):** `pack-obs` (`2026-12-09`), `reading` (`2026-12-16`) y `pack-sdd`/`suite-sdd`/`helix` (`2027-01-19`) permanecen estrictamente embargados sin `checkout_url` activa.
+- **INV-AUTO-6 (Embargos):** `pack-obs` (`2026-12-09`), `reading` (`2026-12-16`) y `pack-sdd`/`suite-sdd`/`helix` (`2027-01-19`) permanecen estrictamente embargados sin `checkout_url` activa ni envíos externos anticipados como productos disponibles.
 - **INV-HELIX-WL-4 (Cero `mailto:`):** Cero enlaces `mailto:` en `/recursos/`, `/resources/`, `layouts/apps/single.html` y `data/growth/*.yaml`.
-- **Verification Gate:** `build_index` + `publish_public`, `pytest ops/helix/tests ops/pulse/tests autopilot/tests -v`, `hugo --renderToMemory`, `modern-web-guidance legacy-scan`, verificación headless Edge `1440×900` / `390×844` ES/EN y dictámenes `SECURITY_PASS`, `EDITORIAL_QA_PASS` y `QA_PASS`.
+- **INV-MERCATOR-UTM-1 (Sintaxis URL con Fragmento y UTM):** Toda URL con parámetros UTM y ancla `#fragment` DEBE colocar `?utm_source=...` **antes** de `#fragment` (nunca `#fragment?utm_source=...`), garantizando captura real en `location.search` de GA4 y scroll nativo al ancla.
+- **Verification Gate:** `build_index` + `publish_public`, `python -m ops.growth.build_activation_kit`, `pytest ops/helix/tests ops/pulse/tests autopilot/tests -v`, `hugo --renderToMemory`, `modern-web-guidance legacy-scan`, verificación headless Edge `1440×900` / `390×844` ES/EN y dictámenes `SECURITY_PASS`, `EDITORIAL_QA_PASS` y `QA_PASS`.
+
+---
+
+## 6. Factoría de Activación Comercial (`Hito 9.5` — `ops/growth/build_activation_kit.py`)
+- Compila determinísticamente desde `data/growth/lifecycle_flows.yaml` y `data/growth/launch_pack_obs_helix.yaml` hacia `packages/growth/hito_9_5/` (en `.gitignore`, fuera de `static/` y de `data/` para preservar el firewall Art. 2 y el unmarshaler YAML de Hugo):
+  1. `brevo_html/` (`20` plantillas HTML tabulares `600 px` ES/EN listas para copiar/pegar en Brevo Automations + `BREVO_SETUP_GUIDE.md`).
+  2. `LINKEDIN_SEMANAS_1_2_READY.md` (`6` posts completos Semanas 1–2 cumpliendo formato `E07` + UTMs `ADR-033` sobre activos LIVE).
+  3. `DIRECTORIOS_4_SUBMISSIONS_READY.md` (fichas listas para `AlternativeTo`, `There's An AI For That`, `Uneed` y `DevHunt` sobre activos LIVE sin violar `INV-AUTO-6`).
+  4. `CREDENCIALES_Y_CUPON_RUNBOOK.md` (runbook de secretos `LEMON_SQUEEZY_API_KEY`/`LEMON_SQUEEZY_STORE_ID`/`BREVO_API_KEY` y alta del cupón `DATALARIA-UPGRADE20`).

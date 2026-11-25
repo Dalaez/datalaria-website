@@ -220,8 +220,16 @@ def fetch_lemon_squeezy_summary(
     now = now_utc or datetime.now(timezone.utc)
     cutoff_30d = now - timedelta(days=30)
 
-    token = (api_key if api_key is not None else os.environ.get("LEMON_SQUEEZY_API_KEY", "")).strip()
-    store = (store_id if store_id is not None else os.environ.get("LEMON_SQUEEZY_STORE_ID", "")).strip()
+    token = (
+        api_key
+        if api_key is not None
+        else (os.environ.get("LEMON_SQUEEZY_API_KEY") or os.environ.get("LEMONSQUEEZY_API_KEY") or "")
+    ).strip()
+    store = (
+        store_id
+        if store_id is not None
+        else (os.environ.get("LEMON_SQUEEZY_STORE_ID") or os.environ.get("LEMONSQUEEZY_STORE_ID") or "")
+    ).strip()
 
     if not token or not store:
         print("[INFO] LEMON_SQUEEZY_API_KEY o LEMON_SQUEEZY_STORE_ID no configuradas; fuente marcada como unavailable.")

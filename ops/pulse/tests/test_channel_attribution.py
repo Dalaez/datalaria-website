@@ -20,6 +20,7 @@ import yaml
 
 from ops.pulse.impact_analyzer import (
     analyze_channel_performance,
+    compute_net_external_traffic_summary,
     detect_dark_social_alerts,
     detect_hidden_channel_winners,
     extract_brand_query_totals,
@@ -347,3 +348,40 @@ def test_public_dataset_firewall_zero_channel_metrics_leak_inv_pulse_2_12() -> N
         data = json.loads(raw_text)
         for asset in data.get("assets", []):
             assert asset.get("metrics_absolute") is None
+
+
+def test_dual_layer_net_external_traffic_summary_adr_035() -> None:
+    """Verifica Lectura Doble Capa (ADR-035): excluye localhost, spam 0% eng y separa marca real vs site:."""
+    channel_data = {
+        "records": [
+            {"channel": "direct", "source": "(direct)", "sessions": 1000, "engaged_sessions": 300, "engagement_sec": 3000.0},
+            {"channel": "google_organic", "source": "google", "sessions": 200, "engaged_sessions": 110, "engagement_sec": 6000.0},
+            {"channel": "linkedin", "source": "linkedin.com", "sessions": 50, "engaged_sessions": 40, "engagement_sec": 500.0},
+            {"channel": "other", "source": "localhost:1313", "sessions": 90, "engaged_sessions": 0, "engagement_sec": 400.0},
+            {"channel": "other", "source": "aocr.org", "sessions": 127, "engaged_sessions": 0, "engagement_sec": 0.0},
+            {"channel": "other", "source": "chatgpt.com", "sessions": 12, "engaged_sessions": 8, "engagement_sec": 150.0},
+            {"channel": "other", "source": "gemini.google.com", "sessions": 8, "engaged_sessions": 5, "engagement_sec": 90.0},
+        ]
+    }
+    gsc_queries = {
+        "by_page": {
+            "/es/": [
+                {"query": "site:datalaria.com", "impressions": 300, "clicks": 0, "is_brand_query": True},
+                {"query": "datalaria pulse", "impressions": 25, "clicks": 4, "is_brand_query": True},
+                {"query": "sdd vs vibe coding", "impressions": 40, "clicks": 2, "is_brand_query": False},
+            ]
+        }
+    }
+    res = compute_net_external_traffic_summary(channel_data, gsc_queries)
+    assert res["total_gross_sessions_30d"] == 1487
+    assert res["direct_sessions_30d"] == 1000
+    assert res["noise_local_sessions_30d"] == 90
+    assert res["noise_spam_sessions_30d"] == 127
+    assert res["noise_spam_sources"] == ["aocr.org"]
+    assert res["net_external_sessions_30d"] == 270
+    assert res["ai_assistants_sessions_30d"] == 20
+    assert res["real_brand_impressions_30d"] == 25
+    assert res["real_brand_clicks_30d"] == 4
+    assert res["site_operator_impressions_30d"] == 300
+    assert res["site_operator_clicks_30d"] == 0
+

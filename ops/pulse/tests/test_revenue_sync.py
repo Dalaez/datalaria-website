@@ -64,11 +64,16 @@ def test_gitignore_blocks_private_financial_artifacts() -> None:
         )
         assert res.returncode == 0, f"git check-ignore no ignoró {entry}: {res.stderr}"
 
+    config_text = (ROOT_DIR / "config.yaml").read_text(encoding="utf-8")
+    assert "REVENUE_REPORT" in config_text, "config.yaml debe declarar REVENUE_REPORT.md en ignoreFiles para no romper Hugo."
+
 
 def test_lemon_squeezy_and_brevo_graceful_degradation_when_missing_keys(monkeypatch) -> None:
     """INV-PULSE-11/13: Sin credenciales devuelve unavailable y nunca rompe el pipeline."""
     monkeypatch.delenv("LEMON_SQUEEZY_API_KEY", raising=False)
+    monkeypatch.delenv("LEMONSQUEEZY_API_KEY", raising=False)
     monkeypatch.delenv("LEMON_SQUEEZY_STORE_ID", raising=False)
+    monkeypatch.delenv("LEMONSQUEEZY_STORE_ID", raising=False)
     monkeypatch.delenv("BREVO_API_KEY", raising=False)
 
     ls_ok, ls_summary = fetch_lemon_squeezy_summary()
@@ -80,6 +85,24 @@ def test_lemon_squeezy_and_brevo_graceful_degradation_when_missing_keys(monkeypa
     assert br_ok is False
     assert br_summary.status == "unavailable"
     assert br_summary.total_subscribers == 0
+
+
+def test_lemon_squeezy_accepts_env_var_alias_without_underscore(monkeypatch) -> None:
+    """Hito 9.5: Soporta alias LEMONSQUEEZY_API_KEY / LEMONSQUEEZY_STORE_ID además de LEMON_SQUEEZY_*."""
+    monkeypatch.delenv("LEMON_SQUEEZY_API_KEY", raising=False)
+    monkeypatch.delenv("LEMON_SQUEEZY_STORE_ID", raising=False)
+    monkeypatch.setenv("LEMONSQUEEZY_API_KEY", "alias_key")
+    monkeypatch.setenv("LEMONSQUEEZY_STORE_ID", "12345")
+
+    def fake_get(url: str, headers: Dict[str, str], timeout: int = 12):
+        assert headers["Authorization"] == "Bearer alias_key"
+        assert "filter[store_id]=12345" in url
+        return _FakeResp({"data": [], "links": {}})
+
+    monkeypatch.setattr(requests, "get", fake_get)
+    ls_ok, ls_summary = fetch_lemon_squeezy_summary()
+    assert ls_ok is True
+    assert ls_summary.status == "ok"
 
 
 def test_sync_revenue_strips_all_pii_and_builds_executive_state(tmp_path, monkeypatch) -> None:

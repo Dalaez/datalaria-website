@@ -55,6 +55,7 @@ EXPECTED_EDITORIAL_AGENT_IDS: tuple[str, ...] = (
 
 EXPECTED_OS_AGENT_IDS: tuple[str, ...] = (
     "00-chief-orchestrator",
+    "00B-board-advisor",
 )
 
 EXPECTED_MERCATOR_AGENT_IDS: tuple[str, ...] = (
@@ -76,7 +77,7 @@ MercatorSurfaceType = Literal[
 class AgentSpecFrontmatter(BaseModel):
     """Esquema estricto del bloque YAML de cada ficha AGENT_SPEC en specs/squad*, specs/squad-os/ o specs/squad-mercator/."""
 
-    id: str = Field(..., pattern=r"^(?:\d{2}|E\d{2}|M\d{2})-[a-z0-9-]+$")
+    id: str = Field(..., pattern=r"^(?:\d{2}[A-Z]?|E\d{2}|M\d{2})-[a-z0-9-]+$")
     name_es: str = Field(..., min_length=3)
     name_en: str = Field(..., min_length=3)
     cell: SquadCell

@@ -21,11 +21,14 @@ brevo_constraints:
     newsletter_en: 4
     helix_waitlist_es: 5
     helix_waitlist_en: 6
+    buyers_es: 7
+    buyers_en: 8
 
 cross_sell_coupon_spec:
   id: "OPP-MON-01"
   provider: "lemon_squeezy"
-  code: "DATALARIA-UPGRADE20"
+  name: "DATALARIA-UPGRADE20"
+  code: "UPGRADE20"
   discount_type: "percentage"
   discount_value: 20
   eligible_products:
@@ -53,14 +56,14 @@ flows:
           label: "Executive B2B (Operations, Supply Chain, PMO, Finance)"
           primary_sandbox_es: "https://datalaria.com/apps/obs-management/?lang=es&utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_b2b"
           primary_sandbox_en: "https://datalaria.com/apps/obs-management/?lang=en&utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_b2b"
-          primary_offer_es: "https://datalaria.com/es/recursos/#mega-bundle?utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_b2b"
-          primary_offer_en: "https://datalaria.com/en/resources/#mega-bundle?utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_b2b"
+          primary_offer_es: "https://datalaria.com/es/recursos/?utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_b2b#mega-bundle"
+          primary_offer_en: "https://datalaria.com/en/resources/?utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_b2b#mega-bundle"
         - id: "ai_systems"
           label: "AI Systems (Engineering, Content Ops, SDD)"
           primary_sandbox_es: "https://datalaria.com/apps/pulse/?demo=true&utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_ai"
           primary_sandbox_en: "https://datalaria.com/apps/pulse/?demo=true&utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_ai"
-          primary_offer_es: "https://datalaria.com/es/recursos/#pack-pulse?utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_ai"
-          primary_offer_en: "https://datalaria.com/en/resources/#pack-pulse?utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_ai"
+          primary_offer_es: "https://datalaria.com/es/recursos/?utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_ai#pack-pulse"
+          primary_offer_en: "https://datalaria.com/en/resources/?utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_ai#pack-pulse"
     emails:
       - step: 1
         delay_days: 0
@@ -119,7 +122,7 @@ flows:
             - "Suite 2 (Decisiones · 15 €): Matriz DAR con veto binario, RICE/ICE y Business Case VAN/TIR."
             - "Suite 3 (Operaciones · 22 €) y Datalaria Pulse Kit (19 €): listos para Excel, Sheets y PowerPoint 16:9."
           cta_label: "Comparar Kits y Suites (Ahorro >52%) →"
-          cta_url: "https://datalaria.com/es/recursos/#pricing-comparison?utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_d5"
+          cta_url: "https://datalaria.com/es/recursos/?utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_d5#pricing-comparison"
         en:
           subject: "From fragile spreadsheets to 1 CFO-ready decision slide"
           preheader: "Inside our zero-VBA Executive Suites (save over 52% with bundles)."
@@ -128,7 +131,7 @@ flows:
             - "Suite 2 (Decisions · 15 €): Binary-veto DAR Matrix, RICE/ICE & NPV/IRR Business Case."
             - "Suite 3 (Operations · 22 €) & Datalaria Pulse Kit (19 €): ready for Excel, Google Sheets & 16:9 PPTX."
           cta_label: "Compare Kits & Suites (Save >52%) →"
-          cta_url: "https://datalaria.com/en/resources/#pricing-comparison?utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_d5"
+          cta_url: "https://datalaria.com/en/resources/?utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_d5#pricing-comparison"
       - step: 4
         delay_days: 9
         goal: "Bridge to Mega Bundle (39 €) and B2B Team/Corporate Licenses (99–149 €)"
@@ -140,7 +143,7 @@ flows:
             - "Equipos y PMOs (5–20 personas): Licencia Equipo (99 €) y Corporativa (149 €) con 12 meses de updates."
             - "Todo con descarga .ZIP inmediata vía Lemon Squeezy y cero macros VBA para pasar auditorías IT."
           cta_label: "Ver Mega Bundle y Licencias Equipo →"
-          cta_url: "https://datalaria.com/es/recursos/#b2b-team-license?utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_d9"
+          cta_url: "https://datalaria.com/es/recursos/?utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_d9#b2b-team-license"
         en:
           subject: "The complete 13-pack arsenal (39 €) and B2B Team Licenses (99 €)"
           preheader: "Instant VAT/VIES invoicing and zero-VBA compliance for operations & engineering teams."
@@ -149,7 +152,7 @@ flows:
             - "Teams & PMOs (5–20 seats): Team License (99 €) and Corporate License (149 €) with 12-month updates."
             - "Instant .ZIP delivery via Lemon Squeezy and zero VBA macros to clear corporate IT security."
           cta_label: "View Mega Bundle & Team Licenses →"
-          cta_url: "https://datalaria.com/en/resources/#b2b-team-license?utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_d9"
+          cta_url: "https://datalaria.com/en/resources/?utm_source=brevo_auto&utm_medium=email&utm_campaign=welcome_d9#b2b-team-license"
 
   - id: "helix_waitlist_nurture"
     name_es: "Flujo 2 — Nutrición Waitlist Datalaria Helix (Pre-19 Ene 2027)"
@@ -190,7 +193,7 @@ flows:
             - "CLI en Python puro (0 dependencias): init, triage, new-spec, checkpoint, verify y rollback."
             - "Adaptadores compilados listos para Antigravity, Claude Code, Cursor y Codex."
           cta_label: "Ver Ficha Técnica de Datalaria Helix →"
-          cta_url: "https://datalaria.com/es/recursos/#pack-sdd?utm_source=brevo_auto&utm_medium=email&utm_campaign=helix_wl_2"
+          cta_url: "https://datalaria.com/es/recursos/?utm_source=brevo_auto&utm_medium=email&utm_campaign=helix_wl_2#pack-sdd"
         en:
           subject: "Inside Helix: 12 veto-enforced AI agents and a zero-dependency CLI"
           preheader: "XS–XL triage, Pydantic contracts, and 1-command deterministic rollback."
@@ -199,7 +202,7 @@ flows:
             - "Zero-dependency Python CLI: init, triage, new-spec, checkpoint, verify, and rollback."
             - "Compiled adapters ready for Google Antigravity, Claude Code, Cursor, and Codex."
           cta_label: "Inspect Datalaria Helix Specs →"
-          cta_url: "https://datalaria.com/en/resources/#pack-sdd?utm_source=brevo_auto&utm_medium=email&utm_campaign=helix_wl_2"
+          cta_url: "https://datalaria.com/en/resources/?utm_source=brevo_auto&utm_medium=email&utm_campaign=helix_wl_2#pack-sdd"
       - step: 3
         scheduled_date: "2027-01-16"
         delay_days_fallback: 10
@@ -227,7 +230,7 @@ flows:
     name_es: "Flujo 3 — Post-Compra Lemon Squeezy (Onboarding, Social Proof y Cross-Sell)"
     name_en: "Flow 3 — Lemon Squeezy Post-Purchase (Onboarding, Social Proof & Cross-Sell)"
     status: "ready_to_activate"
-    trigger: "Webhook / Zapier-Make free tier or manual sync on Lemon Squeezy order_created"
+    trigger: "Contact added to Buyers ES/EN list via /.netlify/functions/lemonsqueezy-webhook (order_created)"
     emails:
       - step: 1
         delay_days: 0
@@ -274,25 +277,25 @@ flows:
       - step: 3
         delay_days: 14
         goal: "Progressive cross-sell to Suites / Mega Bundle (39 €) using OPP-MON-01 coupon"
-        coupon_code: "DATALARIA-UPGRADE20"
+        coupon_code: "UPGRADE20"
         es:
           subject: "20% de crédito exclusivo para completar tu Suite o Mega Bundle"
-          preheader: "Usa el código DATALARIA-UPGRADE20 durante los próximos 14 días."
+          preheader: "Usa el código UPGRADE20 durante los próximos 14 días."
           value_60s:
             - "Como cliente de Datalaria, tienes un 20% de descuento exclusivo en Suites (15–22 €) o Mega Bundle (39 €)."
-            - "Código en Lemon Squeezy: DATALARIA-UPGRADE20 (válido 14 días, 1 uso por comprador)."
+            - "Código en Lemon Squeezy: UPGRADE20 (válido 14 días, 1 uso por comprador)."
             - "¿Lo usáis varias personas en la empresa? Consulta también la Licencia Equipo (5 usuarios · 99 €)."
           cta_label: "Aplicar 20% en Suites y Mega Bundle →"
-          cta_url: "https://datalaria.com/es/recursos/#pricing-comparison?utm_source=brevo_auto&utm_medium=email&utm_campaign=post_buy_d14_upgrade20"
+          cta_url: "https://datalaria.com/es/recursos/?utm_source=brevo_auto&utm_medium=email&utm_campaign=post_buy_d14_upgrade20#pricing-comparison"
         en:
           subject: "Exclusive 20% upgrade credit toward any Suite or the Mega Bundle"
-          preheader: "Apply code DATALARIA-UPGRADE20 over the next 14 days."
+          preheader: "Apply code UPGRADE20 over the next 14 days."
           value_60s:
             - "As a Datalaria buyer, you unlock an exclusive 20% discount on Suites (15–22 €) or the Mega Bundle (39 €)."
-            - "Lemon Squeezy code: DATALARIA-UPGRADE20 (valid 14 days, single-use per buyer)."
+            - "Lemon Squeezy code: UPGRADE20 (valid 14 days, single-use per buyer)."
             - "Rolling this out across a team? Explore our 5-seat Team License (99 €) and 20-seat Corporate tier (149 €)."
           cta_label: "Apply 20% Credit on Suites & Mega Bundle →"
-          cta_url: "https://datalaria.com/en/resources/#pricing-comparison?utm_source=brevo_auto&utm_medium=email&utm_campaign=post_buy_d14_upgrade20"
+          cta_url: "https://datalaria.com/en/resources/?utm_source=brevo_auto&utm_medium=email&utm_campaign=post_buy_d14_upgrade20#pricing-comparison"
 
 html_template_skeleton:
   max_width_px: 600

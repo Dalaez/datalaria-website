@@ -1148,6 +1148,112 @@ def extract_brand_query_totals(
     return b_clicks, b_impr
 
 
+_AI_ASSISTANT_SOURCES = (
+    "chatgpt.com",
+    "chat.openai.com",
+    "gemini.google.com",
+    "perplexity.ai",
+    "claude.ai",
+    "copilot.microsoft.com",
+)
+_PROTECTED_ORGANIC_SOURCES = {"google", "bing", "duckduckgo", "yahoo", "ecosia", "brave"}
+
+
+def compute_net_external_traffic_summary(
+    channel_data: Optional[Dict[str, Any]],
+    gsc_queries_data: Optional[Dict[str, Any]] = None,
+) -> Dict[str, Any]:
+    """
+    Calcula la Lectura en Doble Capa (`ADR-035`) para `00B-board-advisor` y Mercator sin alterar
+    ni filtrar GA4 en producción: separa tráfico externo neto verificado, ruido local (`localhost`),
+    referrers spam con 0% engagement (>=20 sesiones), tráfico de asistentes IA (GEO) y marca real vs `site:`.
+    """
+    records = (channel_data or {}).get("records") or []
+    total_gross = 0
+    direct_sess = 0
+    local_noise = 0
+    ai_sess = 0
+
+    # Agrupar por source para detectar referrers spam (ej. aocr.org con >=20 sesiones y 0 engagement)
+    source_totals: Dict[str, Dict[str, float]] = {}
+    for rec in records:
+        if not isinstance(rec, dict):
+            continue
+        sess = int(rec.get("sessions", 0) or 0)
+        eng_sess = int(rec.get("engaged_sessions", 0) or 0)
+        eng_sec = float(rec.get("engagement_sec", 0.0) or 0.0)
+        src = str(rec.get("source") or "").strip().lower()
+        ch = str(rec.get("channel") or "").strip().lower()
+        total_gross += sess
+        if ch == "direct" or src == "(direct)":
+            direct_sess += sess
+            continue
+        if src.startswith("localhost") or src.startswith("127.0.0.1"):
+            local_noise += sess
+            continue
+        if any(ai_dom in src for ai_dom in _AI_ASSISTANT_SOURCES):
+            ai_sess += sess
+        bucket = source_totals.setdefault(src, {"sessions": 0, "engaged": 0, "eng_sec": 0.0})
+        bucket["sessions"] += sess
+        bucket["engaged"] += eng_sess
+        bucket["eng_sec"] += eng_sec
+
+    spam_sources: List[str] = []
+    spam_noise = 0
+    for src, stats in source_totals.items():
+        if not src or src in _PROTECTED_ORGANIC_SOURCES or src in {"(not set)", "post_shortcode"}:
+            continue
+        if any(ai_dom in src for ai_dom in _AI_ASSISTANT_SOURCES):
+            continue
+        if stats["sessions"] >= 20 and stats["engaged"] == 0 and stats["eng_sec"] <= 0.0:
+            spam_sources.append(src)
+            spam_noise += int(stats["sessions"])
+
+    spam_sources.sort()
+    net_external = max(0, total_gross - direct_sess - local_noise - spam_noise)
+
+    # Separar búsquedas reales de marca (`datalaria`) frente a operador `site:` en GSC
+    if gsc_queries_data is None and GSC_QUERIES_PATH.exists():
+        try:
+            with open(GSC_QUERIES_PATH, "r", encoding="utf-8") as f:
+                gsc_queries_data = json.load(f)
+        except Exception:
+            gsc_queries_data = None
+
+    real_brand_imp = 0
+    real_brand_clk = 0
+    site_op_imp = 0
+    site_op_clk = 0
+    by_page = (gsc_queries_data or {}).get("by_page") or {}
+    for qlist in by_page.values():
+        if not isinstance(qlist, list):
+            continue
+        for qrow in qlist:
+            q_str = str(qrow.get("query") or "").strip().lower()
+            imp = int(qrow.get("impressions", 0) or 0)
+            clk = int(qrow.get("clicks", 0) or 0)
+            if "site:" in q_str:
+                site_op_imp += imp
+                site_op_clk += clk
+            elif qrow.get("is_brand_query") or "datalaria" in q_str:
+                real_brand_imp += imp
+                real_brand_clk += clk
+
+    return {
+        "total_gross_sessions_30d": total_gross,
+        "direct_sessions_30d": direct_sess,
+        "net_external_sessions_30d": net_external,
+        "noise_local_sessions_30d": local_noise,
+        "noise_spam_sessions_30d": spam_noise,
+        "noise_spam_sources": spam_sources,
+        "ai_assistants_sessions_30d": ai_sess,
+        "real_brand_impressions_30d": real_brand_imp,
+        "real_brand_clicks_30d": real_brand_clk,
+        "site_operator_impressions_30d": site_op_imp,
+        "site_operator_clicks_30d": site_op_clk,
+    }
+
+
 def calculate_ptr_pct(ga4_sessions: int, native_views: int) -> float:
     """
     Calcula determinísticamente la Tasa de Traspaso (Pull-Through Rate, PTR %) desde una comunidad
@@ -1505,7 +1611,19 @@ def generate_impact_report_markdown(
 | **Quick Wins de CTR / SERP** | **{len(report.quick_wins_ctr)} oportunidades** | `{gsc_opp_count}` con impresiones reales GSC (`pos 4..20` o `CTR < 2.5%`) + truncamientos SERP. |
 | **Canibalización de Keywords** | **{len(report.cannibalization_alerts)} alertas** | Consultas GSC donde `>= 2` URLs del mismo idioma compiten por impresiones. |
 | **Huérfanos de Monetización** | **{len(report.monetization_orphans)} posts top** | Posts en el cuartil superior ($P_{{75}} \\ge {report.p75_post_views:.0f}$) sin enlace ni shortcode a Kit/App. |
-| **Score Promedio del Backlog** | **{avg_backlog_score:.1f} / 100** | {len(report.prioritized_backlog)} propuestas estratégicas evaluadas por Editorial ROI Score. |
+| **Score Promedio del Backlog** | **{avg_backlog_score:.1f} / 100** | {len(report.prioritized_backlog)} propuestas estratégicas evaluadas por Editorial ROI Score. |"""
+    if report.net_external_traffic_summary:
+        net_s = report.net_external_traffic_summary
+        spam_list = ", ".join(net_s.get("noise_spam_sources") or []) or "ninguno"
+        md += (
+            f"\n| **Lectura Doble Capa (`00B` / `ADR-035`)** | "
+            f"**{int(net_s.get('net_external_sessions_30d', 0)):,} ses. externas netas** | "
+            f"Bruto GA4 intacto: `{int(net_s.get('total_gross_sessions_30d', 0)):,}` · "
+            f"Asistentes IA (GEO): **{int(net_s.get('ai_assistants_sessions_30d', 0)):,}** · "
+            f"Ruido excluido: `localhost` `{int(net_s.get('noise_local_sessions_30d', 0)):,}` + spam `{int(net_s.get('noise_spam_sessions_30d', 0)):,}` (`{spam_list}`) · "
+            f"Marca real GSC (sin `site:`): `{int(net_s.get('real_brand_impressions_30d', 0)):,}` imp. / `{int(net_s.get('real_brand_clicks_30d', 0)):,}` clics (`site:`: `{int(net_s.get('site_operator_impressions_30d', 0)):,}` imp.). |"
+        )
+    md += f"""
 
 ```mermaid
 flowchart TD
@@ -1896,6 +2014,7 @@ def run_impact_analysis() -> PulseImpactReport:
     release_impact = analyze_release_editorial_impact(all_assets, metrics)
     cannibalization = detect_keyword_cannibalization()
     channel_summary = analyze_channel_performance(channel_data)
+    net_external_summary = compute_net_external_traffic_summary(channel_data)
     hidden_winners = detect_hidden_channel_winners(published_posts, channel_data)
     dark_social = detect_dark_social_alerts(channel_data, DISPATCH_QUEUE_PATH)
     social_summary = summarize_social_platforms(social_data, channel_data)
@@ -1937,6 +2056,7 @@ def run_impact_analysis() -> PulseImpactReport:
         ptr_leak_alerts=ptr_leaks,
         canonical_shield_alerts=canonical_shield,
         silent_releases_count=silent_count,
+        net_external_traffic_summary=net_external_summary,
     )
 
     # 1. Guardar impact_report.json privado (INV-PULSE-6)
