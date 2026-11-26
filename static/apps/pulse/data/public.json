@@ -1,9 +1,9 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-11-25T22:20:58.887635Z",
+  "generated_at": "2026-11-26T06:45:40.310852Z",
   "total_assets": 181,
-  "published_assets": 168,
-  "scheduled_assets": 13,
+  "published_assets": 170,
+  "scheduled_assets": 11,
   "ideas_count": 0,
   "parity_summary": {
     "complete": 181
@@ -224,7 +224,7 @@
       "id": "safety-stock-reorder-point-calculator",
       "slug": "calculadora-stock-seguridad-rop",
       "asset_type": "post",
-      "status": "scheduled",
+      "status": "published",
       "visibility": "public",
       "title_es": "Calculadora de Stock de Seguridad & ROP: Optimización de Inventario y Working Capital de Grado Consejo de Administración",
       "title_en": "Safety Stock & Reorder Point (ROP) Calculator: Boardroom-Grade Inventory & Working Capital Optimization",
@@ -4385,7 +4385,7 @@
         "index_100": 100,
         "rank_pct": 55,
         "trend_30d_pct": -51.2,
-        "gsc_opportunity": false
+        "gsc_opportunity": true
       },
       "metrics_absolute": null,
       "version": null,
@@ -12723,7 +12723,7 @@
       "id": "pack-stock",
       "slug": "stock",
       "asset_type": "kit",
-      "status": "scheduled",
+      "status": "published",
       "visibility": "public",
       "title_es": "Calculadora de Stock de Seguridad & ROP",
       "title_en": "Safety Stock & Reorder Point (ROP) Engine",

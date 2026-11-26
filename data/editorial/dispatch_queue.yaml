@@ -310,19 +310,6 @@ entries:
   executed_at_utc: '2026-11-26T06:34:03Z'
   notes: 'Ola 3B (T+22h Día +1): Dev.to EN + CoderLegion EN'
   last_error: null
-- id: stock-rop-2026-11-26-wave1-es-native
-  file_path: content/es/posts/calculadora-stock-seguridad-rop/index.md
-  lang: es
-  wave: 1_es_native
-  channels:
-  - linkedin
-  - x
-  - newsletter
-  scheduled_at_utc: '2026-11-26T07:30:00Z'
-  status: pending
-  executed_at_utc: null
-  notes: 'Ola 1 (T+0h): ES Native Social'
-  last_error: null
 - id: stock-rop-2026-11-26-wave2-en-native
   file_path: content/en/posts/safety-stock-reorder-point-calculator/index.md
   lang: en
