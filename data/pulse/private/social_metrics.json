@@ -1,17 +1,53 @@
 {
   "version": "1.0.0",
   "visibility": "private",
-  "generated_at": "2026-11-25T20:21:45.995313+00:00",
+  "generated_at": "2026-11-26T12:04:24.963470+00:00",
   "platforms": {
     "devto": {
       "status": "ok",
-      "last_synced_at": "2026-11-25T20:21:45.995313+00:00",
-      "articles_count": 212,
-      "matched_assets_count": 105,
-      "total_views": 8921,
+      "last_synced_at": "2026-11-26T12:04:24.963470+00:00",
+      "articles_count": 214,
+      "matched_assets_count": 106,
+      "total_views": 8941,
       "total_reactions": 123,
       "total_comments": 32,
       "articles": [
+        {
+          "external_id": "5122270",
+          "title": "Executive Table, Kanban Board, and Monthly Calendar in React 19 Over Static Data",
+          "slug": "executive-table-kanban-board-and-monthly-calendar-in-react-19-over-static-data-g29",
+          "url": "https://dev.to/datalaria/executive-table-kanban-board-and-monthly-calendar-in-react-19-over-static-data-g29",
+          "canonical_url": "https://datalaria.com/en/posts/pulse-part3-react-dashboard-table-kanban-calendar/",
+          "views": 10,
+          "reactions": 0,
+          "positive_reactions": 0,
+          "public_reactions": 0,
+          "comments": 0,
+          "reading_time_min": 9,
+          "published_at": "2026-11-26T06:59:35.661Z",
+          "platform": "devto",
+          "asset_id": "pulse-part3",
+          "matched_slug": "pulse-parte3-tablero-react-tabla-kanban-calendario",
+          "lang": "en"
+        },
+        {
+          "external_id": "5122102",
+          "title": "Tabla Ejecutiva, Kanban y Calendario en React 19 sobre un Índice Estático",
+          "slug": "tabla-ejecutiva-kanban-y-calendario-en-react-19-sobre-un-indice-estatico-2bnp",
+          "url": "https://dev.to/datalaria/tabla-ejecutiva-kanban-y-calendario-en-react-19-sobre-un-indice-estatico-2bnp",
+          "canonical_url": "https://datalaria.com/es/posts/pulse-parte3-tablero-react-tabla-kanban-calendario/",
+          "views": 0,
+          "reactions": 0,
+          "positive_reactions": 0,
+          "public_reactions": 0,
+          "comments": 0,
+          "reading_time_min": 10,
+          "published_at": "2026-11-26T06:34:04.511Z",
+          "platform": "devto",
+          "asset_id": "pulse-part3",
+          "matched_slug": "pulse-parte3-tablero-react-tabla-kanban-calendario",
+          "lang": "es"
+        },
         {
           "external_id": "5105931",
           "title": "Earned Value Management (EVM): S-Curve, 27 EIA-748 Guidelines & Agile-EVM",
@@ -360,7 +396,7 @@
           "slug": "como-crear-agentes-de-ia-para-la-operativa-empresarial-del-dia-a-dia-de-los-sops-al-desarrollo-con-2nek",
           "url": "https://dev.to/datalaria/como-crear-agentes-de-ia-para-la-operativa-empresarial-del-dia-a-dia-de-los-sops-al-desarrollo-con-2nek",
           "canonical_url": "https://datalaria.com/es/posts/agentes_ia_operativa_sdd/",
-          "views": 10,
+          "views": 20,
           "reactions": 0,
           "positive_reactions": 0,
           "public_reactions": 0,
@@ -3832,10 +3868,10 @@
     },
     "coderlegion": {
       "status": "ok",
-      "last_synced_at": "2026-11-25T20:21:45.995313+00:00",
-      "articles_count": 1,
-      "matched_assets_count": 1,
-      "total_views": 39,
+      "last_synced_at": "2026-11-26T12:04:24.963470+00:00",
+      "articles_count": 2,
+      "matched_assets_count": 2,
+      "total_views": 70,
       "total_reactions": 0,
       "total_comments": 0,
       "articles": [
@@ -3845,7 +3881,7 @@
           "slug": "",
           "url": "https://coderlegion.com/posts/35848",
           "canonical_url": "https://datalaria.com/en/posts/earned-value-management-evm-dashboard/",
-          "views": 39,
+          "views": 41,
           "reactions": 0,
           "comments": 0,
           "reading_time_min": 0,
@@ -3853,6 +3889,22 @@
           "platform": "coderlegion",
           "asset_id": "earned-value-management-evm-dashboard",
           "matched_slug": "cuadro-mando-evm-valor-ganado",
+          "lang": "en"
+        },
+        {
+          "external_id": "36135",
+          "title": "Executive Table, Kanban Board, and Monthly Calendar in React 19 Over Static Data",
+          "slug": "",
+          "url": "https://coderlegion.com/posts/36135",
+          "canonical_url": "https://datalaria.com/en/posts/pulse-part3-react-dashboard-table-kanban-calendar/",
+          "views": 29,
+          "reactions": 0,
+          "comments": 0,
+          "reading_time_min": 0,
+          "published_at": "2026-11-26T06:34:05Z",
+          "platform": "coderlegion",
+          "asset_id": "pulse-part3",
+          "matched_slug": "pulse-parte3-tablero-react-tabla-kanban-calendario",
           "lang": "en"
         }
       ]
@@ -3949,8 +4001,8 @@
     },
     "agentes_ia_operativa_sdd": {
       "devto": {
-        "views": 23,
-        "views_es": 10,
+        "views": 33,
+        "views_es": 20,
         "views_en": 13,
         "reactions": 0,
         "comments": 2,
@@ -4433,9 +4485,9 @@
         ]
       },
       "coderlegion": {
-        "views": 39,
+        "views": 41,
         "views_es": 0,
-        "views_en": 39,
+        "views_en": 41,
         "reactions": 0,
         "comments": 0,
         "articles_count": 1,
@@ -5380,6 +5432,38 @@
         "urls": [
           "https://dev.to/datalaria/from-front-matter-to-index-pydantic-v2-esen-parity-and-github-actions-1bh0",
           "https://dev.to/datalaria/del-front-matter-al-indice-pydantic-v2-paridad-bilingue-y-cicd-en-github-actions-24gg"
+        ]
+      }
+    },
+    "pulse-part3": {
+      "devto": {
+        "views": 10,
+        "views_es": 0,
+        "views_en": 10,
+        "reactions": 0,
+        "comments": 0,
+        "articles_count": 2,
+        "external_ids": [
+          "5122270",
+          "5122102"
+        ],
+        "urls": [
+          "https://dev.to/datalaria/executive-table-kanban-board-and-monthly-calendar-in-react-19-over-static-data-g29",
+          "https://dev.to/datalaria/tabla-ejecutiva-kanban-y-calendario-en-react-19-sobre-un-indice-estatico-2bnp"
+        ]
+      },
+      "coderlegion": {
+        "views": 29,
+        "views_es": 0,
+        "views_en": 29,
+        "reactions": 0,
+        "comments": 0,
+        "articles_count": 1,
+        "external_ids": [
+          "36135"
+        ],
+        "urls": [
+          "https://coderlegion.com/posts/36135"
         ]
       }
     },

@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "visibility": "private",
-  "updated_at": "2026-11-26T06:34:07Z",
+  "updated_at": "2026-11-26T12:04:25Z",
   "entries": [
     {
       "asset_id": "autopilot-parte10-scriba-sindicacion-puente-pulse",
@@ -2171,17 +2171,27 @@
       "external_id": "5122102",
       "external_url": "https://dev.to/datalaria/tabla-ejecutiva-kanban-y-calendario-en-react-19-sobre-un-indice-estatico-2bnp",
       "canonical_url": "https://datalaria.com/es/posts/pulse-parte3-tablero-react-tabla-kanban-calendario/",
-      "published_at_utc": "2026-11-26T06:34:04Z"
+      "published_at_utc": "2026-11-26T06:34:04.511Z"
     },
     {
       "asset_id": "pulse-part3",
-      "slug": "pulse-part3-react-dashboard-table-kanban-calendar",
+      "slug": "pulse-parte3-tablero-react-tabla-kanban-calendario",
       "lang": "en",
       "channel": "coderlegion",
       "external_id": "36135",
-      "external_url": null,
+      "external_url": "https://coderlegion.com/posts/36135",
       "canonical_url": "https://datalaria.com/en/posts/pulse-part3-react-dashboard-table-kanban-calendar/",
-      "published_at_utc": "2026-11-26T06:34:07Z"
+      "published_at_utc": "2026-11-26T06:34:05Z"
+    },
+    {
+      "asset_id": "pulse-part3",
+      "slug": "pulse-parte3-tablero-react-tabla-kanban-calendario",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "5122270",
+      "external_url": "https://dev.to/datalaria/executive-table-kanban-board-and-monthly-calendar-in-react-19-over-static-data-g29",
+      "canonical_url": "https://datalaria.com/en/posts/pulse-part3-react-dashboard-table-kanban-calendar/",
+      "published_at_utc": "2026-11-26T06:59:35.661Z"
     }
   ]
 }

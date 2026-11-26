@@ -1,31 +1,31 @@
 {
-  "generated_at": "2026-11-25T20:21:42.817597+00:00",
+  "generated_at": "2026-11-26T12:04:20.263468+00:00",
   "site_url": "sc-domain:datalaria.com",
   "days": 30,
-  "total_rows": 1505,
+  "total_rows": 1533,
   "summary": {
     "total_clicks": 16,
-    "total_impressions": 10138,
+    "total_impressions": 10387,
     "brand_clicks": 0,
     "brand_impressions": 701,
-    "es_impressions": 3497,
-    "en_impressions": 6183,
-    "other_impressions": 458,
+    "es_impressions": 3586,
+    "en_impressions": 6355,
+    "other_impressions": 446,
     "top_queries": [
       {
         "query": "leonid kantorovich",
         "lang": "en",
         "clicks": 1,
-        "impressions": 1438,
+        "impressions": 1506,
         "ctr_pct": 0.07,
-        "position": 8.1,
+        "position": 8.0,
         "is_brand_query": false
       },
       {
         "query": "john von neumann",
         "lang": "es",
         "clicks": 1,
-        "impressions": 457,
+        "impressions": 453,
         "ctr_pct": 0.22,
         "position": 10.4,
         "is_brand_query": false
@@ -33,26 +33,26 @@
       {
         "query": "kantorovich",
         "lang": "en",
-        "clicks": 3,
-        "impressions": 430,
-        "ctr_pct": 0.7,
-        "position": 7.6,
+        "clicks": 2,
+        "impressions": 426,
+        "ctr_pct": 0.47,
+        "position": 7.7,
         "is_brand_query": false
       },
       {
         "query": "leonid kantorovich",
         "lang": "es",
         "clicks": 0,
-        "impressions": 250,
+        "impressions": 281,
         "ctr_pct": 0.0,
-        "position": 7.8,
+        "position": 7.6,
         "is_brand_query": false
       },
       {
         "query": "conversor de unidades",
         "lang": "es",
         "clicks": 0,
-        "impressions": 215,
+        "impressions": 239,
         "ctr_pct": 0.0,
         "position": 9.9,
         "is_brand_query": false
@@ -61,27 +61,27 @@
         "query": "the thinking game",
         "lang": "en",
         "clicks": 0,
-        "impressions": 191,
+        "impressions": 187,
         "ctr_pct": 0.0,
-        "position": 3.6,
+        "position": 3.4,
         "is_brand_query": false
       },
       {
         "query": "von neumann",
         "lang": "es",
         "clicks": 1,
-        "impressions": 181,
-        "ctr_pct": 0.55,
-        "position": 10.3,
+        "impressions": 170,
+        "ctr_pct": 0.59,
+        "position": 9.9,
         "is_brand_query": false
       },
       {
         "query": "claude shannon",
         "lang": "es",
         "clicks": 1,
-        "impressions": 154,
-        "ctr_pct": 0.65,
-        "position": 11.4,
+        "impressions": 165,
+        "ctr_pct": 0.61,
+        "position": 11.3,
         "is_brand_query": false
       },
       {
@@ -106,7 +106,7 @@
         "query": "pgvector",
         "lang": "en",
         "clicks": 0,
-        "impressions": 115,
+        "impressions": 118,
         "ctr_pct": 0.0,
         "position": 25.9,
         "is_brand_query": false
@@ -115,7 +115,7 @@
         "query": "should i use pgvector on postgres or a database with native distributed vector support for production ai?",
         "lang": "en",
         "clicks": 0,
-        "impressions": 112,
+        "impressions": 116,
         "ctr_pct": 0.0,
         "position": 4.4,
         "is_brand_query": false
@@ -124,7 +124,7 @@
         "query": "happyrobot vs. other ai voice agents",
         "lang": "en",
         "clicks": 0,
-        "impressions": 106,
+        "impressions": 107,
         "ctr_pct": 0.0,
         "position": 9.6,
         "is_brand_query": false
@@ -135,14 +135,14 @@
         "clicks": 0,
         "impressions": 101,
         "ctr_pct": 0.0,
-        "position": 81.0,
+        "position": 80.5,
         "is_brand_query": false
       },
       {
         "query": "ingeniería de prompts vs fine tuning",
         "lang": "es",
         "clicks": 0,
-        "impressions": 100,
+        "impressions": 97,
         "ctr_pct": 0.0,
         "position": 18.3,
         "is_brand_query": false
@@ -151,9 +151,9 @@
         "query": "grafo de conocimiento vs base de datos vectorial",
         "lang": "es",
         "clicks": 0,
-        "impressions": 91,
+        "impressions": 90,
         "ctr_pct": 0.0,
-        "position": 13.8,
+        "position": 13.7,
         "is_brand_query": false
       },
       {
@@ -187,9 +187,9 @@
         "query": "nextail",
         "lang": "es",
         "clicks": 2,
-        "impressions": 86,
-        "ctr_pct": 2.33,
-        "position": 7.2,
+        "impressions": 84,
+        "ctr_pct": 2.38,
+        "position": 7.1,
         "is_brand_query": false
       },
       {
@@ -216,16 +216,34 @@
         "clicks": 0,
         "impressions": 74,
         "ctr_pct": 0.0,
-        "position": 26.3,
+        "position": 26.1,
         "is_brand_query": false
       },
       {
         "query": "convertidor de tiempo",
         "lang": "other",
         "clicks": 1,
-        "impressions": 72,
-        "ctr_pct": 1.39,
+        "impressions": 70,
+        "ctr_pct": 1.43,
         "position": 7.8,
+        "is_brand_query": false
+      },
+      {
+        "query": "alan turing",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 70,
+        "ctr_pct": 0.0,
+        "position": 42.8,
+        "is_brand_query": false
+      },
+      {
+        "query": "graphext",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 70,
+        "ctr_pct": 0.0,
+        "position": 10.2,
         "is_brand_query": false
       },
       {
@@ -238,30 +256,12 @@
         "is_brand_query": true
       },
       {
-        "query": "alan turing",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 69,
-        "ctr_pct": 0.0,
-        "position": 43.2,
-        "is_brand_query": false
-      },
-      {
         "query": "evaluación de agente llm",
         "lang": "es",
         "clicks": 0,
-        "impressions": 67,
+        "impressions": 64,
         "ctr_pct": 0.0,
-        "position": 22.2,
-        "is_brand_query": false
-      },
-      {
-        "query": "graphext",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 67,
-        "ctr_pct": 0.0,
-        "position": 10.0,
+        "position": 22.1,
         "is_brand_query": false
       },
       {
@@ -270,7 +270,7 @@
         "clicks": 0,
         "impressions": 60,
         "ctr_pct": 0.0,
-        "position": 13.7,
+        "position": 14.0,
         "is_brand_query": false
       },
       {
@@ -295,9 +295,18 @@
         "query": "halt and catch fire meaning",
         "lang": "en",
         "clicks": 0,
-        "impressions": 57,
+        "impressions": 59,
         "ctr_pct": 0.0,
         "position": 12.1,
+        "is_brand_query": false
+      },
+      {
+        "query": "milvus or postgres pgvector",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 54,
+        "ctr_pct": 0.0,
+        "position": 7.6,
         "is_brand_query": false
       },
       {
@@ -310,12 +319,21 @@
         "is_brand_query": false
       },
       {
-        "query": "milvus or postgres pgvector",
+        "query": "claude shannon",
         "lang": "en",
         "clicks": 0,
-        "impressions": 51,
+        "impressions": 50,
         "ctr_pct": 0.0,
-        "position": 7.8,
+        "position": 40.4,
+        "is_brand_query": false
+      },
+      {
+        "query": "does freepik work well for mid-market companies modernizing their operations and reducing operational costs in a competitive landscape?",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 49,
+        "ctr_pct": 0.0,
+        "position": 4.5,
         "is_brand_query": false
       },
       {
@@ -328,15 +346,6 @@
         "is_brand_query": false
       },
       {
-        "query": "claude shannon",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 48,
-        "ctr_pct": 0.0,
-        "position": 41.1,
-        "is_brand_query": false
-      },
-      {
         "query": "how does happyrobot support real time load tracking?",
         "lang": "en",
         "clicks": 0,
@@ -346,46 +355,10 @@
         "is_brand_query": false
       },
       {
-        "query": "does freepik work well for mid-market companies modernizing their operations and reducing operational costs in a competitive landscape?",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 46,
-        "ctr_pct": 0.0,
-        "position": 4.6,
-        "is_brand_query": false
-      },
-      {
-        "query": "linkedin.com/in maria nextail",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 42,
-        "ctr_pct": 0.0,
-        "position": 8.5,
-        "is_brand_query": false
-      },
-      {
-        "query": "evaluación de agentes de ia",
-        "lang": "es",
-        "clicks": 0,
-        "impressions": 42,
-        "ctr_pct": 0.0,
-        "position": 24.6,
-        "is_brand_query": false
-      },
-      {
-        "query": "rebeca minguela",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 41,
-        "ctr_pct": 0.0,
-        "position": 10.3,
-        "is_brand_query": false
-      },
-      {
         "query": "kantorovich",
         "lang": "es",
         "clicks": 0,
-        "impressions": 41,
+        "impressions": 42,
         "ctr_pct": 0.0,
         "position": 8.1,
         "is_brand_query": false
@@ -394,27 +367,54 @@
         "query": "is halt and catch fire a true story",
         "lang": "en",
         "clicks": 0,
-        "impressions": 40,
+        "impressions": 41,
         "ctr_pct": 0.0,
-        "position": 9.1,
+        "position": 9.0,
         "is_brand_query": false
       },
       {
-        "query": "nextail linkedin company profile",
+        "query": "rebeca minguela",
         "lang": "en",
         "clicks": 0,
-        "impressions": 39,
+        "impressions": 40,
         "ctr_pct": 0.0,
-        "position": 8.3,
+        "position": 10.4,
         "is_brand_query": false
       },
       {
         "query": "pgvector vs pinecone",
         "lang": "en",
         "clicks": 0,
-        "impressions": 39,
+        "impressions": 40,
         "ctr_pct": 0.0,
         "position": 17.4,
+        "is_brand_query": false
+      },
+      {
+        "query": "evaluación de agentes de ia",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 40,
+        "ctr_pct": 0.0,
+        "position": 24.6,
+        "is_brand_query": false
+      },
+      {
+        "query": "linkedin.com/in maria nextail",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 38,
+        "ctr_pct": 0.0,
+        "position": 8.3,
+        "is_brand_query": false
+      },
+      {
+        "query": "nextail linkedin company profile",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 38,
+        "ctr_pct": 0.0,
+        "position": 8.2,
         "is_brand_query": false
       },
       {
@@ -439,18 +439,9 @@
         "query": "pruebas de agentes de ia",
         "lang": "es",
         "clicks": 0,
-        "impressions": 37,
+        "impressions": 36,
         "ctr_pct": 0.0,
-        "position": 22.1,
-        "is_brand_query": false
-      },
-      {
-        "query": "conversor de medidas",
-        "lang": "other",
-        "clicks": 0,
-        "impressions": 35,
-        "ctr_pct": 0.0,
-        "position": 11.1,
+        "position": 22.2,
         "is_brand_query": false
       },
       {
@@ -461,6 +452,15 @@
         "ctr_pct": 0.0,
         "position": 7.7,
         "is_brand_query": false
+      },
+      {
+        "query": "sdd vs vibe coding",
+        "lang": "en",
+        "clicks": 1,
+        "impressions": 34,
+        "ctr_pct": 2.94,
+        "position": 4.9,
+        "is_brand_query": false
       }
     ]
   },
@@ -470,25 +470,25 @@
         "query": "leonid kantorovich",
         "lang": "en",
         "clicks": 1,
-        "impressions": 1438,
+        "impressions": 1506,
         "ctr_pct": 0.07,
-        "position": 8.1,
+        "position": 8.0,
         "is_brand_query": false
       },
       {
         "query": "kantorovich",
         "lang": "en",
-        "clicks": 3,
-        "impressions": 430,
-        "ctr_pct": 0.7,
-        "position": 7.6,
+        "clicks": 2,
+        "impressions": 426,
+        "ctr_pct": 0.47,
+        "position": 7.7,
         "is_brand_query": false
       },
       {
         "query": "l kantorovich",
         "lang": "en",
         "clicks": 0,
-        "impressions": 25,
+        "impressions": 23,
         "ctr_pct": 0.0,
         "position": 10.8,
         "is_brand_query": false
@@ -497,18 +497,18 @@
         "query": "lv kantorovich",
         "lang": "en",
         "clicks": 0,
-        "impressions": 10,
+        "impressions": 9,
         "ctr_pct": 0.0,
-        "position": 8.6,
+        "position": 8.9,
         "is_brand_query": false
       },
       {
         "query": "leonid vitaliyevich kantorovich",
         "lang": "en",
         "clicks": 0,
-        "impressions": 6,
+        "impressions": 8,
         "ctr_pct": 0.0,
-        "position": 9.5,
+        "position": 8.9,
         "is_brand_query": false
       },
       {
@@ -620,15 +620,6 @@
         "is_brand_query": false
       },
       {
-        "query": "da mas ejemplos",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 5.0,
-        "is_brand_query": false
-      },
-      {
         "query": "kantarovich",
         "lang": "en",
         "clicks": 0,
@@ -644,6 +635,15 @@
         "impressions": 1,
         "ctr_pct": 0.0,
         "position": 9.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "l v kantorovich",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 12.0,
         "is_brand_query": false
       },
       {
@@ -715,7 +715,7 @@
         "query": "john von neumann",
         "lang": "es",
         "clicks": 1,
-        "impressions": 456,
+        "impressions": 452,
         "ctr_pct": 0.22,
         "position": 10.3,
         "is_brand_query": false
@@ -724,9 +724,9 @@
         "query": "von neumann",
         "lang": "es",
         "clicks": 1,
-        "impressions": 181,
-        "ctr_pct": 0.55,
-        "position": 10.3,
+        "impressions": 170,
+        "ctr_pct": 0.59,
+        "position": 9.9,
         "is_brand_query": false
       },
       {
@@ -742,9 +742,9 @@
         "query": "von neuman",
         "lang": "es",
         "clicks": 0,
-        "impressions": 13,
+        "impressions": 14,
         "ctr_pct": 0.0,
-        "position": 10.2,
+        "position": 10.1,
         "is_brand_query": false
       },
       {
@@ -811,24 +811,6 @@
         "is_brand_query": false
       },
       {
-        "query": "john von newman",
-        "lang": "es",
-        "clicks": 0,
-        "impressions": 4,
-        "ctr_pct": 0.0,
-        "position": 9.8,
-        "is_brand_query": false
-      },
-      {
-        "query": "jon von neuman",
-        "lang": "es",
-        "clicks": 0,
-        "impressions": 4,
-        "ctr_pct": 0.0,
-        "position": 10.8,
-        "is_brand_query": false
-      },
-      {
         "query": "biografia de john von neumann",
         "lang": "es",
         "clicks": 0,
@@ -847,12 +829,30 @@
         "is_brand_query": false
       },
       {
+        "query": "john von newman",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr_pct": 0.0,
+        "position": 9.0,
+        "is_brand_query": false
+      },
+      {
         "query": "johnny von",
         "lang": "es",
         "clicks": 0,
         "impressions": 3,
         "ctr_pct": 0.0,
         "position": 7.3,
+        "is_brand_query": false
+      },
+      {
+        "query": "jon von neuman",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr_pct": 0.0,
+        "position": 10.7,
         "is_brand_query": false
       },
       {
@@ -1005,7 +1005,7 @@
         "clicks": 0,
         "impressions": 2,
         "ctr_pct": 0.0,
-        "position": 11.0,
+        "position": 10.5,
         "is_brand_query": false
       },
       {
@@ -1252,15 +1252,6 @@
         "is_brand_query": false
       },
       {
-        "query": "premio de teoría john von neumann",
-        "lang": "es",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 11.0,
-        "is_brand_query": false
-      },
-      {
         "query": "que es el modelo de von neumann",
         "lang": "es",
         "clicks": 0,
@@ -1276,15 +1267,6 @@
         "impressions": 1,
         "ctr_pct": 0.0,
         "position": 44.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "stone von neumann",
-        "lang": "es",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 23.0,
         "is_brand_query": false
       },
       {
@@ -1307,15 +1289,6 @@
       },
       {
         "query": "von neumann arquitectura",
-        "lang": "es",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 17.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "von neumann automata",
         "lang": "es",
         "clicks": 0,
         "impressions": 1,
@@ -1383,16 +1356,16 @@
         "query": "leonid kantorovich",
         "lang": "es",
         "clicks": 0,
-        "impressions": 250,
+        "impressions": 281,
         "ctr_pct": 0.0,
-        "position": 7.8,
+        "position": 7.6,
         "is_brand_query": false
       },
       {
         "query": "kantorovich",
         "lang": "es",
         "clicks": 0,
-        "impressions": 41,
+        "impressions": 42,
         "ctr_pct": 0.0,
         "position": 8.1,
         "is_brand_query": false
@@ -1401,9 +1374,9 @@
         "query": "leonid kantoróvich",
         "lang": "es",
         "clicks": 1,
-        "impressions": 12,
-        "ctr_pct": 8.33,
-        "position": 8.5,
+        "impressions": 13,
+        "ctr_pct": 7.69,
+        "position": 8.4,
         "is_brand_query": false
       },
       {
@@ -1448,7 +1421,7 @@
         "query": "conversor de unidades",
         "lang": "es",
         "clicks": 0,
-        "impressions": 215,
+        "impressions": 239,
         "ctr_pct": 0.0,
         "position": 9.9,
         "is_brand_query": false
@@ -1466,9 +1439,9 @@
         "query": "conversor unidades",
         "lang": "es",
         "clicks": 0,
-        "impressions": 18,
+        "impressions": 25,
         "ctr_pct": 0.0,
-        "position": 9.3,
+        "position": 9.7,
         "is_brand_query": false
       },
       {
@@ -1490,6 +1463,15 @@
         "is_brand_query": true
       },
       {
+        "query": "calculadora y conversor de unidades",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr_pct": 0.0,
+        "position": 9.5,
+        "is_brand_query": false
+      },
+      {
         "query": "comversor de medida",
         "lang": "es",
         "clicks": 0,
@@ -1505,6 +1487,24 @@
         "impressions": 3,
         "ctr_pct": 0.0,
         "position": 9.7,
+        "is_brand_query": false
+      },
+      {
+        "query": "transformador de unidades",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr_pct": 0.0,
+        "position": 9.3,
+        "is_brand_query": false
+      },
+      {
+        "query": "convertidor de unidades",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr_pct": 0.0,
+        "position": 9.0,
         "is_brand_query": false
       },
       {
@@ -1526,6 +1526,15 @@
         "is_brand_query": false
       },
       {
+        "query": "conersor de unidades",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 11.0,
+        "is_brand_query": false
+      },
+      {
         "query": "conversor de magnitudes",
         "lang": "es",
         "clicks": 0,
@@ -1541,6 +1550,15 @@
         "impressions": 1,
         "ctr_pct": 0.0,
         "position": 8.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "conversor de unidad de medida",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 9.0,
         "is_brand_query": false
       },
       {
@@ -1625,15 +1643,6 @@
         "is_brand_query": true
       },
       {
-        "query": "transformador de unidades",
-        "lang": "es",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 9.0,
-        "is_brand_query": false
-      },
-      {
         "query": "transformador de unidades de medida",
         "lang": "es",
         "clicks": 0,
@@ -1648,9 +1657,9 @@
         "query": "the thinking game",
         "lang": "en",
         "clicks": 0,
-        "impressions": 191,
+        "impressions": 187,
         "ctr_pct": 0.0,
-        "position": 3.6,
+        "position": 3.4,
         "is_brand_query": false
       },
       {
@@ -1672,21 +1681,12 @@
         "is_brand_query": false
       },
       {
-        "query": "demis hassabis video game",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 5,
-        "ctr_pct": 0.0,
-        "position": 8.4,
-        "is_brand_query": false
-      },
-      {
         "query": "the thinking game documentary",
         "lang": "en",
         "clicks": 0,
-        "impressions": 5,
+        "impressions": 6,
         "ctr_pct": 0.0,
-        "position": 38.2,
+        "position": 37.5,
         "is_brand_query": false
       },
       {
@@ -1696,6 +1696,15 @@
         "impressions": 4,
         "ctr_pct": 0.0,
         "position": 1.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "demis hassabis video game",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr_pct": 0.0,
+        "position": 8.2,
         "is_brand_query": false
       },
       {
@@ -1714,15 +1723,6 @@
         "impressions": 3,
         "ctr_pct": 0.0,
         "position": 25.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "demis hassabis roller coaster",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 3,
-        "ctr_pct": 0.0,
-        "position": 9.3,
         "is_brand_query": false
       },
       {
@@ -1759,6 +1759,15 @@
         "impressions": 2,
         "ctr_pct": 0.0,
         "position": 10.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "demis hassabis roller coaster",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr_pct": 0.0,
+        "position": 9.5,
         "is_brand_query": false
       },
       {
@@ -1884,18 +1893,27 @@
         "query": "claude shannon",
         "lang": "es",
         "clicks": 1,
-        "impressions": 151,
-        "ctr_pct": 0.66,
-        "position": 11.2,
+        "impressions": 162,
+        "ctr_pct": 0.62,
+        "position": 11.1,
         "is_brand_query": false
       },
       {
         "query": "claude shanon",
         "lang": "es",
         "clicks": 0,
-        "impressions": 13,
+        "impressions": 14,
         "ctr_pct": 0.0,
-        "position": 11.4,
+        "position": 11.3,
+        "is_brand_query": false
+      },
+      {
+        "query": "shannon claude",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 5,
+        "ctr_pct": 0.0,
+        "position": 16.4,
         "is_brand_query": false
       },
       {
@@ -1905,15 +1923,6 @@
         "impressions": 4,
         "ctr_pct": 0.0,
         "position": 58.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "shannon claude",
-        "lang": "es",
-        "clicks": 0,
-        "impressions": 4,
-        "ctr_pct": 0.0,
-        "position": 17.8,
         "is_brand_query": false
       },
       {
@@ -2052,6 +2061,15 @@
         "is_brand_query": false
       },
       {
+        "query": "que significa claude",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 1.0,
+        "is_brand_query": false
+      },
+      {
         "query": "shannon el",
         "lang": "es",
         "clicks": 0,
@@ -2086,7 +2104,7 @@
         "query": "pgvector",
         "lang": "en",
         "clicks": 0,
-        "impressions": 115,
+        "impressions": 118,
         "ctr_pct": 0.0,
         "position": 25.9,
         "is_brand_query": false
@@ -2095,9 +2113,18 @@
         "query": "should i use pgvector on postgres or a database with native distributed vector support for production ai?",
         "lang": "en",
         "clicks": 0,
-        "impressions": 112,
+        "impressions": 116,
         "ctr_pct": 0.0,
         "position": 4.4,
+        "is_brand_query": false
+      },
+      {
+        "query": "milvus or postgres pgvector",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 54,
+        "ctr_pct": 0.0,
+        "position": 7.6,
         "is_brand_query": false
       },
       {
@@ -2110,19 +2137,10 @@
         "is_brand_query": false
       },
       {
-        "query": "milvus or postgres pgvector",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 51,
-        "ctr_pct": 0.0,
-        "position": 7.8,
-        "is_brand_query": false
-      },
-      {
         "query": "pgvector vs pinecone",
         "lang": "en",
         "clicks": 0,
-        "impressions": 39,
+        "impressions": 40,
         "ctr_pct": 0.0,
         "position": 17.4,
         "is_brand_query": false
@@ -2131,7 +2149,7 @@
         "query": "pgvector vs milvus",
         "lang": "en",
         "clicks": 0,
-        "impressions": 31,
+        "impressions": 33,
         "ctr_pct": 0.0,
         "position": 8.6,
         "is_brand_query": false
@@ -2149,9 +2167,27 @@
         "query": "which is better for hybrid search, milvus or postgres pgvector?",
         "lang": "en",
         "clicks": 0,
-        "impressions": 24,
+        "impressions": 25,
         "ctr_pct": 0.0,
-        "position": 5.9,
+        "position": 5.7,
+        "is_brand_query": false
+      },
+      {
+        "query": "postgres vector database",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 22,
+        "ctr_pct": 0.0,
+        "position": 30.7,
+        "is_brand_query": false
+      },
+      {
+        "query": "postgresql vector database",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 22,
+        "ctr_pct": 0.0,
+        "position": 25.7,
         "is_brand_query": false
       },
       {
@@ -2161,24 +2197,6 @@
         "impressions": 21,
         "ctr_pct": 0.0,
         "position": 8.9,
-        "is_brand_query": false
-      },
-      {
-        "query": "postgres vector database",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 20,
-        "ctr_pct": 0.0,
-        "position": 30.7,
-        "is_brand_query": false
-      },
-      {
-        "query": "postgresql vector database",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 20,
-        "ctr_pct": 0.0,
-        "position": 25.6,
         "is_brand_query": false
       },
       {
@@ -2194,27 +2212,36 @@
         "query": "dbeaver pgvector",
         "lang": "en",
         "clicks": 0,
-        "impressions": 15,
+        "impressions": 16,
         "ctr_pct": 0.0,
-        "position": 29.7,
+        "position": 29.5,
         "is_brand_query": false
       },
       {
         "query": "can you compare milvus and postgres pgvector?",
         "lang": "en",
         "clicks": 0,
-        "impressions": 13,
+        "impressions": 14,
         "ctr_pct": 0.0,
-        "position": 8.0,
+        "position": 8.4,
         "is_brand_query": false
       },
       {
         "query": "postgre local vector db",
         "lang": "en",
         "clicks": 0,
+        "impressions": 14,
+        "ctr_pct": 0.0,
+        "position": 28.7,
+        "is_brand_query": false
+      },
+      {
+        "query": "should i use pgvector or a dedicated vector database?",
+        "lang": "en",
+        "clicks": 0,
         "impressions": 13,
         "ctr_pct": 0.0,
-        "position": 28.8,
+        "position": 8.8,
         "is_brand_query": false
       },
       {
@@ -2224,6 +2251,15 @@
         "impressions": 11,
         "ctr_pct": 0.0,
         "position": 16.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "pgvector engineering",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 10,
+        "ctr_pct": 0.0,
+        "position": 8.0,
         "is_brand_query": false
       },
       {
@@ -2245,12 +2281,12 @@
         "is_brand_query": false
       },
       {
-        "query": "should i use pgvector or a dedicated vector database?",
+        "query": "is it should i use pgvector on postgres or a database with native distributed vector support for production ai?",
         "lang": "en",
         "clicks": 0,
-        "impressions": 10,
+        "impressions": 9,
         "ctr_pct": 0.0,
-        "position": 8.4,
+        "position": 4.2,
         "is_brand_query": false
       },
       {
@@ -2260,24 +2296,6 @@
         "impressions": 9,
         "ctr_pct": 0.0,
         "position": 7.6,
-        "is_brand_query": false
-      },
-      {
-        "query": "is it should i use pgvector on postgres or a database with native distributed vector support for production ai?",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 8,
-        "ctr_pct": 0.0,
-        "position": 4.6,
-        "is_brand_query": false
-      },
-      {
-        "query": "pgvector engineering",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 8,
-        "ctr_pct": 0.0,
-        "position": 8.5,
         "is_brand_query": false
       },
       {
@@ -2293,9 +2311,18 @@
         "query": "postgresql vs pgvector",
         "lang": "en",
         "clicks": 0,
+        "impressions": 8,
+        "ctr_pct": 0.0,
+        "position": 7.6,
+        "is_brand_query": false
+      },
+      {
+        "query": "postgres vs pgvector",
+        "lang": "en",
+        "clicks": 0,
         "impressions": 7,
         "ctr_pct": 0.0,
-        "position": 8.6,
+        "position": 2.9,
         "is_brand_query": false
       },
       {
@@ -2317,21 +2344,21 @@
         "is_brand_query": false
       },
       {
-        "query": "postgres vs pgvector",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 6,
-        "ctr_pct": 0.0,
-        "position": 2.2,
-        "is_brand_query": false
-      },
-      {
         "query": "pgvector or a dedicated vector db for rag in production? pricing",
         "lang": "en",
         "clicks": 0,
         "impressions": 5,
         "ctr_pct": 0.0,
         "position": 8.8,
+        "is_brand_query": false
+      },
+      {
+        "query": "postgres vector",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 5,
+        "ctr_pct": 0.0,
+        "position": 38.4,
         "is_brand_query": false
       },
       {
@@ -2362,6 +2389,15 @@
         "is_brand_query": false
       },
       {
+        "query": "how does supabase vector (pgvector) compare to pinecone for scalable semantic search with metadata filters and acid guarantees?",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr_pct": 0.0,
+        "position": 11.0,
+        "is_brand_query": false
+      },
+      {
         "query": "milvus vs pgvector",
         "lang": "en",
         "clicks": 0,
@@ -2377,15 +2413,6 @@
         "impressions": 4,
         "ctr_pct": 0.0,
         "position": 35.5,
-        "is_brand_query": false
-      },
-      {
-        "query": "postgres vector",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 4,
-        "ctr_pct": 0.0,
-        "position": 41.2,
         "is_brand_query": false
       },
       {
@@ -2413,6 +2440,15 @@
         "impressions": 3,
         "ctr_pct": 0.0,
         "position": 8.3,
+        "is_brand_query": false
+      },
+      {
+        "query": "pgvector consultancy",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr_pct": 0.0,
+        "position": 31.7,
         "is_brand_query": false
       },
       {
@@ -2470,21 +2506,12 @@
         "is_brand_query": false
       },
       {
-        "query": "how does supabase vector (pgvector) compare to pinecone for scalable semantic search with metadata filters and acid guarantees?",
+        "query": "i am a 35-44 or 45-54 year old senior staff engineer or engineering manager. my main motivations: wants to ship faster at scale without sacrificing security or stability — and to prove engineering productivity in terms executives fund. motivated to consolidate a sprawling toolchain into a platform that developers actually like, to adopt ai development tools ahead of competitors but with defensible governance, and to build a reputation as the leader who modernized delivery. seeks fewer vendors, deeper integration, and decisions that still look smart in three years. my main pain points: maintains a mix of legacy systems and modern services with tool sprawl across teams, and every platform change must clear security, compliance, and procurement. under pressure to adopt ai development tools fast while proving they are safe and actually improve delivery. struggles to measure developer productivity credibly, keep pipelines and reviews fast at scale, retain senior talent, and defend platform consolidation choices to both engineers and executives. what databases work best for ai applications and vector search?",
         "lang": "en",
         "clicks": 0,
         "impressions": 2,
         "ctr_pct": 0.0,
-        "position": 11.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "pgvector consultancy",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 2,
-        "ctr_pct": 0.0,
-        "position": 31.5,
+        "position": 1.5,
         "is_brand_query": false
       },
       {
@@ -2539,6 +2566,15 @@
         "impressions": 2,
         "ctr_pct": 0.0,
         "position": 5.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "which vector database outperforms pgvector past 100 million vectors?",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr_pct": 0.0,
+        "position": 10.5,
         "is_brand_query": false
       },
       {
@@ -2620,15 +2656,6 @@
         "impressions": 1,
         "ctr_pct": 0.0,
         "position": 7.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "i am a 35-44 or 45-54 year old senior staff engineer or engineering manager. my main motivations: wants to ship faster at scale without sacrificing security or stability — and to prove engineering productivity in terms executives fund. motivated to consolidate a sprawling toolchain into a platform that developers actually like, to adopt ai development tools ahead of competitors but with defensible governance, and to build a reputation as the leader who modernized delivery. seeks fewer vendors, deeper integration, and decisions that still look smart in three years. my main pain points: maintains a mix of legacy systems and modern services with tool sprawl across teams, and every platform change must clear security, compliance, and procurement. under pressure to adopt ai development tools fast while proving they are safe and actually improve delivery. struggles to measure developer productivity credibly, keep pipelines and reviews fast at scale, retain senior talent, and defend platform consolidation choices to both engineers and executives. what databases work best for ai applications and vector search?",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 1.0,
         "is_brand_query": false
       },
       {
@@ -2767,12 +2794,30 @@
         "is_brand_query": false
       },
       {
+        "query": "pgvector.",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 23.0,
+        "is_brand_query": false
+      },
+      {
         "query": "postgres tsvector vs pgvector",
         "lang": "en",
         "clicks": 0,
         "impressions": 1,
         "ctr_pct": 0.0,
         "position": 20.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "postgresql and pgvector",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 28.0,
         "is_brand_query": false
       },
       {
@@ -2821,12 +2866,30 @@
         "is_brand_query": false
       },
       {
+        "query": "turbopuffer vs pgvector",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 22.0,
+        "is_brand_query": false
+      },
+      {
         "query": "using postgresql as a vector database",
         "lang": "en",
         "clicks": 0,
         "impressions": 1,
         "ctr_pct": 0.0,
         "position": 25.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "vector database postgresql",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 19.0,
         "is_brand_query": false
       },
       {
@@ -2857,15 +2920,6 @@
         "is_brand_query": false
       },
       {
-        "query": "which vector database outperforms pgvector past 100 million vectors?",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 14.0,
-        "is_brand_query": false
-      },
-      {
         "query": "전용 벡터db vs 관계형db 벡터 확장",
         "lang": "en",
         "clicks": 0,
@@ -2880,7 +2934,7 @@
         "query": "happyrobot vs. other ai voice agents",
         "lang": "en",
         "clicks": 0,
-        "impressions": 106,
+        "impressions": 107,
         "ctr_pct": 0.0,
         "position": 9.6,
         "is_brand_query": false
@@ -2940,6 +2994,15 @@
         "is_brand_query": false
       },
       {
+        "query": "switching from happyrobot, what should i evaluate?",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 5,
+        "ctr_pct": 0.0,
+        "position": 1.0,
+        "is_brand_query": false
+      },
+      {
         "query": "site:datalaria.com",
         "lang": "en",
         "clicks": 0,
@@ -2949,10 +3012,10 @@
         "is_brand_query": true
       },
       {
-        "query": "switching from happyrobot, what should i evaluate?",
+        "query": "<brand>happyrobot (happyrobot.ai)</brand> is criticised for <objection>unreliable ai</objection>, which puts some potential customers off. what are the reasons for this perception? respond in english.",
         "lang": "en",
         "clicks": 0,
-        "impressions": 4,
+        "impressions": 3,
         "ctr_pct": 0.0,
         "position": 1.0,
         "is_brand_query": false
@@ -2964,15 +3027,6 @@
         "impressions": 3,
         "ctr_pct": 0.0,
         "position": 4.3,
-        "is_brand_query": false
-      },
-      {
-        "query": "<brand>happyrobot (happyrobot.ai)</brand> is criticised for <objection>unreliable ai</objection>, which puts some potential customers off. what are the reasons for this perception? respond in english.",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 2,
-        "ctr_pct": 0.0,
-        "position": 1.0,
         "is_brand_query": false
       },
       {
@@ -3009,6 +3063,15 @@
         "impressions": 2,
         "ctr_pct": 0.0,
         "position": 9.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "<brand>happyrobot (happyrobot.ai)</brand> is criticised for <objection>poor conversation quality</objection>, which puts some potential customers off. what are the reasons for this perception? respond in english.",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 1.0,
         "is_brand_query": false
       },
       {
@@ -3199,7 +3262,7 @@
         "clicks": 0,
         "impressions": 101,
         "ctr_pct": 0.0,
-        "position": 81.0,
+        "position": 80.5,
         "is_brand_query": false
       },
       {
@@ -3320,6 +3383,15 @@
         "is_brand_query": false
       },
       {
+        "query": "quien creo enigma",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 11.0,
+        "is_brand_query": false
+      },
+      {
         "query": "site:datalaria.com/es",
         "lang": "es",
         "clicks": 0,
@@ -3343,7 +3415,7 @@
         "query": "ingeniería de prompts vs fine tuning",
         "lang": "es",
         "clicks": 0,
-        "impressions": 100,
+        "impressions": 97,
         "ctr_pct": 0.0,
         "position": 18.3,
         "is_brand_query": false
@@ -3361,9 +3433,9 @@
         "query": "rag vs fine tuning",
         "lang": "es",
         "clicks": 0,
-        "impressions": 4,
+        "impressions": 5,
         "ctr_pct": 0.0,
-        "position": 27.8,
+        "position": 28.2,
         "is_brand_query": false
       },
       {
@@ -3435,9 +3507,9 @@
         "query": "nextail",
         "lang": "es",
         "clicks": 2,
-        "impressions": 86,
-        "ctr_pct": 2.33,
-        "position": 7.2,
+        "impressions": 84,
+        "ctr_pct": 2.38,
+        "position": 7.1,
         "is_brand_query": false
       },
       {
@@ -3484,7 +3556,7 @@
         "clicks": 0,
         "impressions": 74,
         "ctr_pct": 0.0,
-        "position": 26.3,
+        "position": 26.1,
         "is_brand_query": false
       },
       {
@@ -3601,18 +3673,9 @@
         "query": "convertidor de tiempo",
         "lang": "other",
         "clicks": 1,
-        "impressions": 72,
-        "ctr_pct": 1.39,
+        "impressions": 70,
+        "ctr_pct": 1.43,
         "position": 7.8,
-        "is_brand_query": false
-      },
-      {
-        "query": "conversor de tiempo",
-        "lang": "other",
-        "clicks": 0,
-        "impressions": 30,
-        "ctr_pct": 0.0,
-        "position": 7.9,
         "is_brand_query": false
       },
       {
@@ -3625,10 +3688,19 @@
         "is_brand_query": false
       },
       {
+        "query": "conversor de tiempo",
+        "lang": "other",
+        "clicks": 0,
+        "impressions": 25,
+        "ctr_pct": 0.0,
+        "position": 8.1,
+        "is_brand_query": false
+      },
+      {
         "query": "conversion de tiempo",
         "lang": "other",
         "clicks": 0,
-        "impressions": 23,
+        "impressions": 22,
         "ctr_pct": 0.0,
         "position": 9.2,
         "is_brand_query": false
@@ -3637,18 +3709,18 @@
         "query": "conversión de tiempo",
         "lang": "other",
         "clicks": 0,
-        "impressions": 18,
+        "impressions": 17,
         "ctr_pct": 0.0,
-        "position": 12.5,
+        "position": 12.6,
         "is_brand_query": false
       },
       {
         "query": "conversiones de tiempo",
         "lang": "other",
         "clicks": 0,
-        "impressions": 8,
+        "impressions": 7,
         "ctr_pct": 0.0,
-        "position": 35.0,
+        "position": 36.7,
         "is_brand_query": false
       },
       {
@@ -3664,9 +3736,9 @@
         "query": "conversión del tiempo",
         "lang": "other",
         "clicks": 0,
-        "impressions": 4,
+        "impressions": 3,
         "ctr_pct": 0.0,
-        "position": 6.0,
+        "position": 7.7,
         "is_brand_query": false
       },
       {
@@ -3676,15 +3748,6 @@
         "impressions": 3,
         "ctr_pct": 0.0,
         "position": 7.7,
-        "is_brand_query": false
-      },
-      {
-        "query": "conversor tiempo",
-        "lang": "other",
-        "clicks": 0,
-        "impressions": 3,
-        "ctr_pct": 0.0,
-        "position": 7.3,
         "is_brand_query": false
       },
       {
@@ -3742,6 +3805,15 @@
         "is_brand_query": false
       },
       {
+        "query": "conversor tiempo",
+        "lang": "other",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr_pct": 0.0,
+        "position": 8.0,
+        "is_brand_query": false
+      },
+      {
         "query": "convertir de tiempo",
         "lang": "other",
         "clicks": 0,
@@ -3757,24 +3829,6 @@
         "impressions": 2,
         "ctr_pct": 0.0,
         "position": 28.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "transformación de tiempo",
-        "lang": "other",
-        "clicks": 0,
-        "impressions": 2,
-        "ctr_pct": 0.0,
-        "position": 17.5,
-        "is_brand_query": false
-      },
-      {
-        "query": "167 horas cuanto es",
-        "lang": "other",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 9.0,
         "is_brand_query": false
       },
       {
@@ -3893,6 +3947,15 @@
         "ctr_pct": 0.0,
         "position": 3.0,
         "is_brand_query": false
+      },
+      {
+        "query": "transformación de tiempo",
+        "lang": "other",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 24.0,
+        "is_brand_query": false
       }
     ],
     "/en/posts/alan_turing": [
@@ -3900,9 +3963,9 @@
         "query": "alan turing",
         "lang": "en",
         "clicks": 0,
-        "impressions": 69,
+        "impressions": 70,
         "ctr_pct": 0.0,
-        "position": 43.2,
+        "position": 42.8,
         "is_brand_query": false
       },
       {
@@ -3915,30 +3978,30 @@
         "is_brand_query": false
       },
       {
-        "query": "alan turing ia",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 10,
-        "ctr_pct": 0.0,
-        "position": 29.5,
-        "is_brand_query": false
-      },
-      {
         "query": "alan turing iq",
         "lang": "en",
         "clicks": 0,
-        "impressions": 10,
+        "impressions": 11,
         "ctr_pct": 0.0,
-        "position": 36.9,
+        "position": 37.3,
         "is_brand_query": false
       },
       {
         "query": "alan turing ai",
         "lang": "en",
         "clicks": 0,
-        "impressions": 9,
+        "impressions": 10,
         "ctr_pct": 0.0,
-        "position": 18.8,
+        "position": 17.3,
+        "is_brand_query": false
+      },
+      {
+        "query": "alan turing ia",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 10,
+        "ctr_pct": 0.0,
+        "position": 29.5,
         "is_brand_query": false
       },
       {
@@ -4014,15 +4077,6 @@
         "is_brand_query": false
       },
       {
-        "query": "alan turing artificial intelligence",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 3,
-        "ctr_pct": 0.0,
-        "position": 43.7,
-        "is_brand_query": false
-      },
-      {
         "query": "which sentences contain main ideas developed in this text? choose two. \"british mathematician alan turing is considered an early pioneer of artificial intelligence, or ai.\" \"their german enemies used their infamous enigma machine to hide messages within a code.\" \"this work led him to reflect on a question that scientists are still trying to answer: do computers think—or might they be able to one day?\" \"in fact, when a computer finally passed the turing test in 2014, it barely made headlines.\"",
         "lang": "en",
         "clicks": 0,
@@ -4047,6 +4101,15 @@
         "impressions": 2,
         "ctr_pct": 0.0,
         "position": 41.5,
+        "is_brand_query": false
+      },
+      {
+        "query": "alan turing artificial intelligence",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr_pct": 0.0,
+        "position": 20.0,
         "is_brand_query": false
       },
       {
@@ -4212,6 +4275,15 @@
         "is_brand_query": false
       },
       {
+        "query": "alan turing mechanical intelligence",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 32.0,
+        "is_brand_query": false
+      },
+      {
         "query": "alan turing team enigma",
         "lang": "en",
         "clicks": 0,
@@ -4227,6 +4299,15 @@
         "impressions": 1,
         "ctr_pct": 0.0,
         "position": 53.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "did turing invent ai",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 60.0,
         "is_brand_query": false
       },
       {
@@ -4383,21 +4464,59 @@
         "is_brand_query": false
       }
     ],
+    "/es/posts/graphrag": [
+      {
+        "query": "grafo de conocimiento vs base de datos vectorial",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 66,
+        "ctr_pct": 0.0,
+        "position": 16.2,
+        "is_brand_query": false
+      },
+      {
+        "query": "site:datalaria.com/es",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr_pct": 0.0,
+        "position": 23.0,
+        "is_brand_query": true
+      },
+      {
+        "query": "site:datalaria.com/es/posts",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr_pct": 0.0,
+        "position": 22.0,
+        "is_brand_query": true
+      },
+      {
+        "query": "qué es un gráfico de conocimiento",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 9.0,
+        "is_brand_query": false
+      }
+    ],
     "/es/posts/evaluacion_agentes_ia": [
       {
         "query": "evaluación de agente llm",
         "lang": "es",
         "clicks": 0,
-        "impressions": 67,
+        "impressions": 64,
         "ctr_pct": 0.0,
-        "position": 22.2,
+        "position": 22.1,
         "is_brand_query": false
       },
       {
         "query": "evaluación de agentes de ia",
         "lang": "es",
         "clicks": 0,
-        "impressions": 42,
+        "impressions": 40,
         "ctr_pct": 0.0,
         "position": 24.6,
         "is_brand_query": false
@@ -4406,9 +4525,9 @@
         "query": "pruebas de agentes de ia",
         "lang": "es",
         "clicks": 0,
-        "impressions": 37,
+        "impressions": 36,
         "ctr_pct": 0.0,
-        "position": 22.1,
+        "position": 22.2,
         "is_brand_query": false
       },
       {
@@ -4484,44 +4603,6 @@
         "is_brand_query": false
       }
     ],
-    "/es/posts/graphrag": [
-      {
-        "query": "grafo de conocimiento vs base de datos vectorial",
-        "lang": "es",
-        "clicks": 0,
-        "impressions": 67,
-        "ctr_pct": 0.0,
-        "position": 16.3,
-        "is_brand_query": false
-      },
-      {
-        "query": "site:datalaria.com/es",
-        "lang": "es",
-        "clicks": 0,
-        "impressions": 2,
-        "ctr_pct": 0.0,
-        "position": 23.0,
-        "is_brand_query": true
-      },
-      {
-        "query": "site:datalaria.com/es/posts",
-        "lang": "es",
-        "clicks": 0,
-        "impressions": 2,
-        "ctr_pct": 0.0,
-        "position": 22.0,
-        "is_brand_query": true
-      },
-      {
-        "query": "qué es un gráfico de conocimiento",
-        "lang": "es",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 9.0,
-        "is_brand_query": false
-      }
-    ],
     "/en/posts/abraham_wald": [
       {
         "query": "abraham wald",
@@ -4529,7 +4610,7 @@
         "clicks": 0,
         "impressions": 60,
         "ctr_pct": 0.0,
-        "position": 13.7,
+        "position": 14.0,
         "is_brand_query": false
       },
       {
@@ -4646,27 +4727,36 @@
         "query": "history of ravenpack",
         "lang": "en",
         "clicks": 0,
-        "impressions": 17,
+        "impressions": 25,
         "ctr_pct": 0.0,
-        "position": 7.6,
+        "position": 8.4,
         "is_brand_query": false
       },
       {
         "query": "ravenpack",
         "lang": "en",
         "clicks": 0,
-        "impressions": 13,
+        "impressions": 14,
         "ctr_pct": 0.0,
-        "position": 13.3,
+        "position": 12.9,
         "is_brand_query": false
       },
       {
         "query": "is ravenpack worth it? reviews from hedge funds and quant teams",
         "lang": "en",
         "clicks": 0,
-        "impressions": 12,
+        "impressions": 13,
         "ctr_pct": 0.0,
-        "position": 5.5,
+        "position": 5.7,
+        "is_brand_query": false
+      },
+      {
+        "query": "ravenpack marbella",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 10,
+        "ctr_pct": 0.0,
+        "position": 7.1,
         "is_brand_query": false
       },
       {
@@ -4685,15 +4775,6 @@
         "impressions": 8,
         "ctr_pct": 0.0,
         "position": 4.2,
-        "is_brand_query": false
-      },
-      {
-        "query": "ravenpack marbella",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 8,
-        "ctr_pct": 0.0,
-        "position": 7.1,
         "is_brand_query": false
       },
       {
@@ -4846,7 +4927,7 @@
         "query": "halt and catch fire meaning",
         "lang": "en",
         "clicks": 0,
-        "impressions": 57,
+        "impressions": 59,
         "ctr_pct": 0.0,
         "position": 12.1,
         "is_brand_query": false
@@ -4855,25 +4936,25 @@
         "query": "is halt and catch fire a true story",
         "lang": "en",
         "clicks": 0,
-        "impressions": 40,
+        "impressions": 41,
         "ctr_pct": 0.0,
-        "position": 9.1,
+        "position": 9.0,
         "is_brand_query": false
       },
       {
         "query": "halt and catch fire true story",
         "lang": "en",
         "clicks": 0,
-        "impressions": 30,
+        "impressions": 32,
         "ctr_pct": 0.0,
-        "position": 7.2,
+        "position": 7.1,
         "is_brand_query": false
       },
       {
         "query": "halt and catch fire real story",
         "lang": "en",
         "clicks": 0,
-        "impressions": 15,
+        "impressions": 16,
         "ctr_pct": 0.0,
         "position": 5.5,
         "is_brand_query": false
@@ -5136,9 +5217,9 @@
         "query": "claude shannon",
         "lang": "en",
         "clicks": 0,
-        "impressions": 48,
+        "impressions": 50,
         "ctr_pct": 0.0,
-        "position": 41.1,
+        "position": 40.4,
         "is_brand_query": false
       },
       {
@@ -5147,7 +5228,16 @@
         "clicks": 0,
         "impressions": 28,
         "ctr_pct": 0.0,
-        "position": 36.3,
+        "position": 36.1,
+        "is_brand_query": false
+      },
+      {
+        "query": "claude shannon ai",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 11,
+        "ctr_pct": 0.0,
+        "position": 10.2,
         "is_brand_query": false
       },
       {
@@ -5160,21 +5250,12 @@
         "is_brand_query": false
       },
       {
-        "query": "claude shannon ai",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 10,
-        "ctr_pct": 0.0,
-        "position": 10.6,
-        "is_brand_query": false
-      },
-      {
         "query": "shannon claude",
         "lang": "en",
         "clicks": 0,
-        "impressions": 10,
+        "impressions": 9,
         "ctr_pct": 0.0,
-        "position": 51.9,
+        "position": 51.3,
         "is_brand_query": false
       },
       {
@@ -5340,15 +5421,6 @@
         "is_brand_query": false
       },
       {
-        "query": "claude shannon scientist",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 49.0,
-        "is_brand_query": false
-      },
-      {
         "query": "claude shannon ultimate machine",
         "lang": "en",
         "clicks": 0,
@@ -5430,6 +5502,15 @@
         "is_brand_query": false
       },
       {
+        "query": "who invented predictive text",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 1.0,
+        "is_brand_query": false
+      },
+      {
         "query": "who is claude shannon",
         "lang": "en",
         "clicks": 0,
@@ -5453,9 +5534,9 @@
         "query": "does freepik work well for mid-market companies modernizing their operations and reducing operational costs in a competitive landscape?",
         "lang": "en",
         "clicks": 0,
-        "impressions": 46,
+        "impressions": 49,
         "ctr_pct": 0.0,
-        "position": 4.6,
+        "position": 4.5,
         "is_brand_query": false
       },
       {
@@ -5468,6 +5549,15 @@
         "is_brand_query": false
       },
       {
+        "query": "freepik",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 9,
+        "ctr_pct": 0.0,
+        "position": 6.9,
+        "is_brand_query": false
+      },
+      {
         "query": "freepik company malaga",
         "lang": "en",
         "clicks": 0,
@@ -5477,12 +5567,12 @@
         "is_brand_query": false
       },
       {
-        "query": "freepik",
+        "query": "프리픽",
         "lang": "en",
         "clicks": 0,
-        "impressions": 8,
+        "impressions": 6,
         "ctr_pct": 0.0,
-        "position": 6.8,
+        "position": 8.2,
         "is_brand_query": false
       },
       {
@@ -5574,15 +5664,6 @@
         "ctr_pct": 0.0,
         "position": 11.0,
         "is_brand_query": false
-      },
-      {
-        "query": "프리픽",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 8.0,
-        "is_brand_query": false
       }
     ],
     "/en/posts/graphext": [
@@ -5590,9 +5671,9 @@
         "query": "graphext",
         "lang": "en",
         "clicks": 0,
-        "impressions": 42,
+        "impressions": 46,
         "ctr_pct": 0.0,
-        "position": 10.3,
+        "position": 10.6,
         "is_brand_query": false
       },
       {
@@ -5650,115 +5731,14 @@
         "is_brand_query": true
       }
     ],
-    "/en/posts/nextail": [
-      {
-        "query": "linkedin.com/in maria nextail",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 42,
-        "ctr_pct": 0.0,
-        "position": 8.5,
-        "is_brand_query": false
-      },
-      {
-        "query": "nextail linkedin company profile",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 39,
-        "ctr_pct": 0.0,
-        "position": 8.3,
-        "is_brand_query": false
-      },
-      {
-        "query": "nextail linkedin company page",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 37,
-        "ctr_pct": 0.0,
-        "position": 7.7,
-        "is_brand_query": false
-      },
-      {
-        "query": "nextail",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 36,
-        "ctr_pct": 0.0,
-        "position": 10.5,
-        "is_brand_query": false
-      },
-      {
-        "query": "nextail corporate linkedin presence",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 20,
-        "ctr_pct": 0.0,
-        "position": 9.4,
-        "is_brand_query": false
-      },
-      {
-        "query": "nextail ceo founder linkedin",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 12,
-        "ctr_pct": 0.0,
-        "position": 7.6,
-        "is_brand_query": false
-      },
-      {
-        "query": "retail startup madrid",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 5,
-        "ctr_pct": 0.0,
-        "position": 25.8,
-        "is_brand_query": false
-      },
-      {
-        "query": "nextail labs",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 4,
-        "ctr_pct": 0.0,
-        "position": 24.5,
-        "is_brand_query": false
-      },
-      {
-        "query": "spanish omnichannel retail startups 10-300 employees",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 3,
-        "ctr_pct": 0.0,
-        "position": 10.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "quel est le meilleur logiciel d'allocation produits pour un retailer fashion avec des collections saisonnières ?",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 14.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "site:datalaria.com/en",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 24.0,
-        "is_brand_query": true
-      }
-    ],
     "/en/posts/clarity_ai": [
       {
         "query": "rebeca minguela",
         "lang": "en",
         "clicks": 0,
-        "impressions": 41,
+        "impressions": 40,
         "ctr_pct": 0.0,
-        "position": 10.3,
+        "position": 10.4,
         "is_brand_query": false
       },
       {
@@ -5825,6 +5805,107 @@
         "is_brand_query": false
       }
     ],
+    "/en/posts/nextail": [
+      {
+        "query": "linkedin.com/in maria nextail",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 38,
+        "ctr_pct": 0.0,
+        "position": 8.3,
+        "is_brand_query": false
+      },
+      {
+        "query": "nextail linkedin company profile",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 38,
+        "ctr_pct": 0.0,
+        "position": 8.2,
+        "is_brand_query": false
+      },
+      {
+        "query": "nextail linkedin company page",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 37,
+        "ctr_pct": 0.0,
+        "position": 7.7,
+        "is_brand_query": false
+      },
+      {
+        "query": "nextail",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 36,
+        "ctr_pct": 0.0,
+        "position": 10.5,
+        "is_brand_query": false
+      },
+      {
+        "query": "nextail corporate linkedin presence",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 20,
+        "ctr_pct": 0.0,
+        "position": 9.4,
+        "is_brand_query": false
+      },
+      {
+        "query": "nextail ceo founder linkedin",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 12,
+        "ctr_pct": 0.0,
+        "position": 7.6,
+        "is_brand_query": false
+      },
+      {
+        "query": "nextail labs",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 5,
+        "ctr_pct": 0.0,
+        "position": 23.6,
+        "is_brand_query": false
+      },
+      {
+        "query": "retail startup madrid",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 5,
+        "ctr_pct": 0.0,
+        "position": 25.8,
+        "is_brand_query": false
+      },
+      {
+        "query": "spanish omnichannel retail startups 10-300 employees",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr_pct": 0.0,
+        "position": 11.5,
+        "is_brand_query": false
+      },
+      {
+        "query": "quel est le meilleur logiciel d'allocation produits pour un retailer fashion avec des collections saisonnières ?",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 14.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "site:datalaria.com/en",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 24.0,
+        "is_brand_query": true
+      }
+    ],
     "/es/posts/norbert_wiener": [
       {
         "query": "norbert wiener",
@@ -5863,12 +5944,194 @@
         "is_brand_query": false
       }
     ],
+    "/en/posts/sdd_vs_vibe_coding": [
+      {
+        "query": "sdd vs vibe coding",
+        "lang": "en",
+        "clicks": 1,
+        "impressions": 34,
+        "ctr_pct": 2.94,
+        "position": 4.9,
+        "is_brand_query": false
+      },
+      {
+        "query": "vibe coding vs sdd",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 32,
+        "ctr_pct": 0.0,
+        "position": 6.4,
+        "is_brand_query": false
+      },
+      {
+        "query": "sdd vibe coding",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 12,
+        "ctr_pct": 0.0,
+        "position": 7.8,
+        "is_brand_query": false
+      },
+      {
+        "query": "vibe coding sdd",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 10,
+        "ctr_pct": 0.0,
+        "position": 7.8,
+        "is_brand_query": false
+      },
+      {
+        "query": "ssd vs vibe coding",
+        "lang": "en",
+        "clicks": 1,
+        "impressions": 6,
+        "ctr_pct": 16.67,
+        "position": 7.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "sdd+",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr_pct": 0.0,
+        "position": 26.8,
+        "is_brand_query": false
+      },
+      {
+        "query": "site:datalaria.com/en/posts",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr_pct": 0.0,
+        "position": 4.3,
+        "is_brand_query": true
+      },
+      {
+        "query": "sdd.company",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr_pct": 0.0,
+        "position": 99.5,
+        "is_brand_query": false
+      },
+      {
+        "query": "site:datalaria.com",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr_pct": 0.0,
+        "position": 16.5,
+        "is_brand_query": true
+      },
+      {
+        "query": "site:datalaria.com/en",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr_pct": 0.0,
+        "position": 9.5,
+        "is_brand_query": true
+      },
+      {
+        "query": "andrej karpathy spec driven development",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 3.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "odd vs sdd",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 10.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "sdd 2027",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 1.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "sdd 4",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 61.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "sdd ai meaning",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 17.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "sdd claude code",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 25.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "sdd platform",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 3.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "sdd vs",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 11.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "spec-driven development vs vibe coding",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 1.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "v sdd",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 8.0,
+        "is_brand_query": false
+      }
+    ],
     "/apps/conversor": [
       {
         "query": "conversor de medidas",
         "lang": "other",
         "clicks": 0,
-        "impressions": 35,
+        "impressions": 34,
         "ctr_pct": 0.0,
         "position": 11.1,
         "is_brand_query": false
@@ -6018,169 +6281,14 @@
         "is_brand_query": false
       }
     ],
-    "/en/posts/sdd_vs_vibe_coding": [
-      {
-        "query": "sdd vs vibe coding",
-        "lang": "en",
-        "clicks": 1,
-        "impressions": 34,
-        "ctr_pct": 2.94,
-        "position": 4.9,
-        "is_brand_query": false
-      },
-      {
-        "query": "vibe coding vs sdd",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 30,
-        "ctr_pct": 0.0,
-        "position": 6.1,
-        "is_brand_query": false
-      },
-      {
-        "query": "sdd vibe coding",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 12,
-        "ctr_pct": 0.0,
-        "position": 7.8,
-        "is_brand_query": false
-      },
-      {
-        "query": "vibe coding sdd",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 9,
-        "ctr_pct": 0.0,
-        "position": 7.6,
-        "is_brand_query": false
-      },
-      {
-        "query": "sdd+",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 4,
-        "ctr_pct": 0.0,
-        "position": 26.8,
-        "is_brand_query": false
-      },
-      {
-        "query": "ssd vs vibe coding",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 4,
-        "ctr_pct": 0.0,
-        "position": 7.8,
-        "is_brand_query": false
-      },
-      {
-        "query": "site:datalaria.com/en/posts",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 3,
-        "ctr_pct": 0.0,
-        "position": 4.3,
-        "is_brand_query": true
-      },
-      {
-        "query": "sdd.company",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 2,
-        "ctr_pct": 0.0,
-        "position": 99.5,
-        "is_brand_query": false
-      },
-      {
-        "query": "site:datalaria.com",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 2,
-        "ctr_pct": 0.0,
-        "position": 16.5,
-        "is_brand_query": true
-      },
-      {
-        "query": "site:datalaria.com/en",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 2,
-        "ctr_pct": 0.0,
-        "position": 9.5,
-        "is_brand_query": true
-      },
-      {
-        "query": "andrej karpathy spec driven development",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 3.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "sdd 4",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 61.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "sdd ai meaning",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 17.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "sdd claude code",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 25.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "sdd vs",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 11.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "spec-driven development vs vibe coding",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 1.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "v sdd",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 8.0,
-        "is_brand_query": false
-      }
-    ],
     "/es/posts/abraham_wald": [
       {
         "query": "abraham wald",
         "lang": "es",
         "clicks": 0,
-        "impressions": 30,
+        "impressions": 34,
         "ctr_pct": 0.0,
-        "position": 11.9,
+        "position": 11.7,
         "is_brand_query": false
       },
       {
@@ -6265,25 +6373,14 @@
         "is_brand_query": true
       }
     ],
-    "/en/posts/sop-engineering-part4-enterprise": [
-      {
-        "query": "855394 euros",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 26,
-        "ctr_pct": 0.0,
-        "position": 6.3,
-        "is_brand_query": false
-      }
-    ],
     "/es/posts/john-snow": [
       {
         "query": "doctor snow",
         "lang": "es",
         "clicks": 0,
-        "impressions": 26,
+        "impressions": 27,
         "ctr_pct": 0.0,
-        "position": 3.2,
+        "position": 3.1,
         "is_brand_query": false
       },
       {
@@ -6350,15 +6447,6 @@
         "is_brand_query": false
       },
       {
-        "query": "john snow doctor",
-        "lang": "es",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 1.0,
-        "is_brand_query": false
-      },
-      {
         "query": "john snow y el colera",
         "lang": "es",
         "clicks": 0,
@@ -6386,14 +6474,14 @@
         "is_brand_query": false
       }
     ],
-    "/en/tags/graphext": [
+    "/en/posts/sop-engineering-part4-enterprise": [
       {
-        "query": "graphext",
+        "query": "855394 euros",
         "lang": "en",
         "clicks": 0,
-        "impressions": 25,
+        "impressions": 26,
         "ctr_pct": 0.0,
-        "position": 9.5,
+        "position": 6.3,
         "is_brand_query": false
       }
     ],
@@ -6414,6 +6502,15 @@
         "impressions": 4,
         "ctr_pct": 0.0,
         "position": 7.2,
+        "is_brand_query": false
+      },
+      {
+        "query": "show lore",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 5.0,
         "is_brand_query": false
       },
       {
@@ -6485,25 +6582,25 @@
         "query": "wallapop europe",
         "lang": "en",
         "clicks": 0,
-        "impressions": 14,
+        "impressions": 15,
         "ctr_pct": 0.0,
-        "position": 6.6,
+        "position": 6.8,
         "is_brand_query": false
       },
       {
         "query": "cross-border c2c marketplace logistics startup europe",
         "lang": "en",
         "clicks": 0,
-        "impressions": 12,
+        "impressions": 13,
         "ctr_pct": 0.0,
-        "position": 7.9,
+        "position": 7.8,
         "is_brand_query": false
       },
       {
         "query": "what is wallapop",
         "lang": "en",
         "clicks": 0,
-        "impressions": 12,
+        "impressions": 10,
         "ctr_pct": 0.0,
         "position": 7.4,
         "is_brand_query": false
@@ -6581,12 +6678,32 @@
         "is_brand_query": false
       },
       {
+        "query": "wallapop news",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 9.0,
+        "is_brand_query": false
+      },
+      {
         "query": "yes",
         "lang": "en",
         "clicks": 0,
         "impressions": 1,
         "ctr_pct": 0.0,
         "position": 2.0,
+        "is_brand_query": false
+      }
+    ],
+    "/en/tags/graphext": [
+      {
+        "query": "graphext",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 24,
+        "ctr_pct": 0.0,
+        "position": 9.5,
         "is_brand_query": false
       }
     ],
@@ -6653,25 +6770,16 @@
         "clicks": 0,
         "impressions": 22,
         "ctr_pct": 0.0,
-        "position": 9.8,
+        "position": 10.3,
         "is_brand_query": false
       },
       {
         "query": "run llms in production api cost",
         "lang": "en",
         "clicks": 0,
-        "impressions": 16,
+        "impressions": 15,
         "ctr_pct": 0.0,
         "position": 3.1,
-        "is_brand_query": false
-      },
-      {
-        "query": "run llms in production pricing use case",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 11,
-        "ctr_pct": 0.0,
-        "position": 11.5,
         "is_brand_query": false
       },
       {
@@ -6684,12 +6792,21 @@
         "is_brand_query": false
       },
       {
-        "query": "run llms in production pricing 2025",
+        "query": "run llms in production pricing use case",
         "lang": "en",
         "clicks": 0,
         "impressions": 10,
         "ctr_pct": 0.0,
-        "position": 9.2,
+        "position": 11.6,
+        "is_brand_query": false
+      },
+      {
+        "query": "best run llms in production pricing",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 9,
+        "ctr_pct": 0.0,
+        "position": 7.4,
         "is_brand_query": false
       },
       {
@@ -6711,12 +6828,21 @@
         "is_brand_query": false
       },
       {
-        "query": "best run llms in production pricing",
+        "query": "run llms in production pricing",
         "lang": "en",
         "clicks": 0,
-        "impressions": 8,
+        "impressions": 9,
         "ctr_pct": 0.0,
-        "position": 7.1,
+        "position": 6.2,
+        "is_brand_query": false
+      },
+      {
+        "query": "run llms in production pricing 2025",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 9,
+        "ctr_pct": 0.0,
+        "position": 9.1,
         "is_brand_query": false
       },
       {
@@ -6726,24 +6852,6 @@
         "impressions": 8,
         "ctr_pct": 0.0,
         "position": 8.5,
-        "is_brand_query": false
-      },
-      {
-        "query": "run llms in production cost",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 8,
-        "ctr_pct": 0.0,
-        "position": 8.2,
-        "is_brand_query": false
-      },
-      {
-        "query": "run llms in production pricing",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 8,
-        "ctr_pct": 0.0,
-        "position": 5.8,
         "is_brand_query": false
       },
       {
@@ -6765,12 +6873,39 @@
         "is_brand_query": false
       },
       {
+        "query": "cost of ml model reproducibility",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 6,
+        "ctr_pct": 0.0,
+        "position": 70.3,
+        "is_brand_query": false
+      },
+      {
         "query": "how does radium cut llm api costs",
         "lang": "en",
         "clicks": 0,
         "impressions": 6,
         "ctr_pct": 0.0,
         "position": 4.2,
+        "is_brand_query": false
+      },
+      {
+        "query": "run llms in production cost",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 6,
+        "ctr_pct": 0.0,
+        "position": 7.7,
+        "is_brand_query": false
+      },
+      {
+        "query": "what does it actually cost to run an ai model",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 6,
+        "ctr_pct": 0.0,
+        "position": 44.2,
         "is_brand_query": false
       },
       {
@@ -6801,15 +6936,6 @@
         "is_brand_query": false
       },
       {
-        "query": "what does it actually cost to run an ai model",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 5,
-        "ctr_pct": 0.0,
-        "position": 45.8,
-        "is_brand_query": false
-      },
-      {
         "query": "why is the cost of running llm applications in production growing faster than expected?",
         "lang": "en",
         "clicks": 0,
@@ -6828,12 +6954,12 @@
         "is_brand_query": false
       },
       {
-        "query": "cost of ml model reproducibility",
+        "query": "run llms in production performance cost",
         "lang": "en",
         "clicks": 0,
-        "impressions": 3,
+        "impressions": 4,
         "ctr_pct": 0.0,
-        "position": 73.7,
+        "position": 14.8,
         "is_brand_query": false
       },
       {
@@ -6852,15 +6978,6 @@
         "impressions": 3,
         "ctr_pct": 0.0,
         "position": 70.7,
-        "is_brand_query": false
-      },
-      {
-        "query": "run llms in production performance cost",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 3,
-        "ctr_pct": 0.0,
-        "position": 13.0,
         "is_brand_query": false
       },
       {
@@ -6900,15 +7017,6 @@
         "is_brand_query": false
       },
       {
-        "query": "how much does it cost to build a private llm copilot for internal ops teams and what is the roi",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 2,
-        "ctr_pct": 0.0,
-        "position": 9.5,
-        "is_brand_query": false
-      },
-      {
         "query": "llm cost overruns",
         "lang": "en",
         "clicks": 0,
@@ -6945,6 +7053,15 @@
         "is_brand_query": false
       },
       {
+        "query": "cost of ml model compliance",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 77.0,
+        "is_brand_query": false
+      },
+      {
         "query": "cost of using an llm to analyze test failures at scale",
         "lang": "en",
         "clicks": 0,
@@ -6973,6 +7090,15 @@
       },
       {
         "query": "how do llm costs affect ai software companies?",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 9.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "how much does it cost to build a private llm copilot for internal ops teams and what is the roi",
         "lang": "en",
         "clicks": 0,
         "impressions": 1,
@@ -7076,18 +7202,9 @@
         "query": "john von neumann",
         "lang": "en",
         "clicks": 0,
-        "impressions": 13,
+        "impressions": 12,
         "ctr_pct": 0.0,
-        "position": 11.8,
-        "is_brand_query": false
-      },
-      {
-        "query": "father of computer architecture",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 11,
-        "ctr_pct": 0.0,
-        "position": 5.0,
+        "position": 9.2,
         "is_brand_query": false
       },
       {
@@ -7109,21 +7226,21 @@
         "is_brand_query": true
       },
       {
+        "query": "father of computer architecture",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 10,
+        "ctr_pct": 0.0,
+        "position": 4.9,
+        "is_brand_query": false
+      },
+      {
         "query": "john von neumann invention",
         "lang": "en",
         "clicks": 0,
         "impressions": 10,
         "ctr_pct": 0.0,
         "position": 51.1,
-        "is_brand_query": false
-      },
-      {
-        "query": "game theory father",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 7,
-        "ctr_pct": 0.0,
-        "position": 6.6,
         "is_brand_query": false
       },
       {
@@ -7136,12 +7253,12 @@
         "is_brand_query": false
       },
       {
-        "query": "father of architecture of computer",
+        "query": "game theory father",
         "lang": "en",
         "clicks": 0,
-        "impressions": 5,
+        "impressions": 6,
         "ctr_pct": 0.0,
-        "position": 6.2,
+        "position": 6.5,
         "is_brand_query": false
       },
       {
@@ -7154,21 +7271,21 @@
         "is_brand_query": false
       },
       {
+        "query": "father of architecture of computer",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr_pct": 0.0,
+        "position": 6.5,
+        "is_brand_query": false
+      },
+      {
         "query": "john von neumann princeton university",
         "lang": "en",
         "clicks": 0,
         "impressions": 4,
         "ctr_pct": 0.0,
         "position": 7.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "who invented computer architecture",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 4,
-        "ctr_pct": 0.0,
-        "position": 8.0,
         "is_brand_query": false
       },
       {
@@ -7197,6 +7314,15 @@
         "ctr_pct": 0.0,
         "position": 1.0,
         "is_brand_query": true
+      },
+      {
+        "query": "who invented computer architecture",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr_pct": 0.0,
+        "position": 7.7,
+        "is_brand_query": false
       },
       {
         "query": "who is the father of computer architecture",
@@ -7313,6 +7439,15 @@
         "impressions": 1,
         "ctr_pct": 0.0,
         "position": 2.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "j von neumann",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 45.0,
         "is_brand_query": false
       },
       {
@@ -7466,24 +7601,6 @@
         "impressions": 1,
         "ctr_pct": 0.0,
         "position": 14.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "who developed the basic architecture of computer",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 10.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "who is the father of game theory",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 8.0,
         "is_brand_query": false
       },
       {
@@ -7818,9 +7935,9 @@
         "query": "florence nightingale",
         "lang": "es",
         "clicks": 0,
-        "impressions": 21,
+        "impressions": 22,
         "ctr_pct": 0.0,
-        "position": 37.0,
+        "position": 37.6,
         "is_brand_query": false
       },
       {
@@ -7845,9 +7962,9 @@
         "query": "nightingale florence nightingale",
         "lang": "es",
         "clicks": 0,
-        "impressions": 5,
+        "impressions": 4,
         "ctr_pct": 0.0,
-        "position": 67.2,
+        "position": 69.2,
         "is_brand_query": false
       },
       {
@@ -7923,6 +8040,15 @@
         "is_brand_query": false
       },
       {
+        "query": "bibliografia de florence nightingale",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 51.0,
+        "is_brand_query": false
+      },
+      {
         "query": "biografia de florence nightingale",
         "lang": "es",
         "clicks": 0,
@@ -7995,15 +8121,6 @@
         "is_brand_query": false
       },
       {
-        "query": "florence nightingale aportaciones",
-        "lang": "es",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 87.0,
-        "is_brand_query": false
-      },
-      {
         "query": "florence nightingale biografía",
         "lang": "es",
         "clicks": 0,
@@ -8036,9 +8153,9 @@
         "query": "matriz de mckinsey",
         "lang": "es",
         "clicks": 0,
-        "impressions": 21,
+        "impressions": 22,
         "ctr_pct": 0.0,
-        "position": 31.5,
+        "position": 31.3,
         "is_brand_query": false
       },
       {
@@ -8060,21 +8177,21 @@
         "is_brand_query": false
       },
       {
+        "query": "matriz atractivo competitividad",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr_pct": 0.0,
+        "position": 14.0,
+        "is_brand_query": false
+      },
+      {
         "query": "matriz general electric",
         "lang": "es",
         "clicks": 0,
         "impressions": 4,
         "ctr_pct": 0.0,
         "position": 28.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "matriz atractivo competitividad",
-        "lang": "es",
-        "clicks": 0,
-        "impressions": 2,
-        "ctr_pct": 0.0,
-        "position": 14.0,
         "is_brand_query": false
       },
       {
@@ -8110,9 +8227,9 @@
         "query": "mother of nursing",
         "lang": "en",
         "clicks": 0,
-        "impressions": 10,
+        "impressions": 11,
         "ctr_pct": 0.0,
-        "position": 16.9,
+        "position": 16.5,
         "is_brand_query": false
       },
       {
@@ -8197,6 +8314,15 @@
         "is_brand_query": false
       },
       {
+        "query": "mother florence",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 10.0,
+        "is_brand_query": false
+      },
+      {
         "query": "mother of modern nursing",
         "lang": "en",
         "clicks": 0,
@@ -8232,6 +8358,89 @@
         "impressions": 19,
         "ctr_pct": 0.0,
         "position": 91.1,
+        "is_brand_query": false
+      }
+    ],
+    "/en/apps/weather": [
+      {
+        "query": "climate intelligence app",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 18,
+        "ctr_pct": 0.0,
+        "position": 41.2,
+        "is_brand_query": false
+      },
+      {
+        "query": "weather intelligence",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 8,
+        "ctr_pct": 0.0,
+        "position": 29.8,
+        "is_brand_query": false
+      },
+      {
+        "query": "weather intelligence systems",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 8,
+        "ctr_pct": 0.0,
+        "position": 42.6,
+        "is_brand_query": false
+      },
+      {
+        "query": "weather data platform",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 7,
+        "ctr_pct": 0.0,
+        "position": 17.6,
+        "is_brand_query": false
+      },
+      {
+        "query": "weather data management",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr_pct": 0.0,
+        "position": 44.8,
+        "is_brand_query": false
+      },
+      {
+        "query": "machine learning weather forecast",
+        "lang": "en",
+        "clicks": 1,
+        "impressions": 3,
+        "ctr_pct": 33.33,
+        "position": 18.3,
+        "is_brand_query": false
+      },
+      {
+        "query": "css generator gradient",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 33.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "cssl weather intelligence",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 9.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "weather data for business intelligence",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 53.0,
         "is_brand_query": false
       }
     ],
@@ -8300,6 +8509,15 @@
         "is_brand_query": false
       },
       {
+        "query": "raven pack",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 6.0,
+        "is_brand_query": false
+      },
+      {
         "query": "site:datalaria.com/es/posts",
         "lang": "es",
         "clicks": 0,
@@ -8327,15 +8545,6 @@
         "ctr_pct": 0.0,
         "position": 5.3,
         "is_brand_query": true
-      },
-      {
-        "query": "gladia solaria",
-        "lang": "es",
-        "clicks": 0,
-        "impressions": 2,
-        "ctr_pct": 0.0,
-        "position": 1.0,
-        "is_brand_query": false
       },
       {
         "query": "site:datalaria.com/es",
@@ -8379,9 +8588,9 @@
         "query": "matriz rice",
         "lang": "es",
         "clicks": 0,
-        "impressions": 14,
+        "impressions": 15,
         "ctr_pct": 0.0,
-        "position": 34.4,
+        "position": 33.1,
         "is_brand_query": false
       },
       {
@@ -8394,97 +8603,14 @@
         "is_brand_query": false
       }
     ],
-    "/en/apps/weather": [
-      {
-        "query": "climate intelligence app",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 15,
-        "ctr_pct": 0.0,
-        "position": 42.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "weather intelligence systems",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 8,
-        "ctr_pct": 0.0,
-        "position": 42.6,
-        "is_brand_query": false
-      },
-      {
-        "query": "weather intelligence",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 7,
-        "ctr_pct": 0.0,
-        "position": 28.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "weather data platform",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 6,
-        "ctr_pct": 0.0,
-        "position": 18.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "machine learning weather forecast",
-        "lang": "en",
-        "clicks": 1,
-        "impressions": 3,
-        "ctr_pct": 33.33,
-        "position": 18.3,
-        "is_brand_query": false
-      },
-      {
-        "query": "weather data management",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 3,
-        "ctr_pct": 0.0,
-        "position": 44.3,
-        "is_brand_query": false
-      },
-      {
-        "query": "css generator gradient",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 33.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "cssl weather intelligence",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 9.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "weather data for business intelligence",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 53.0,
-        "is_brand_query": false
-      }
-    ],
     "/en/posts/thomas_bayes": [
       {
         "query": "thomas bayes",
         "lang": "en",
         "clicks": 0,
-        "impressions": 14,
+        "impressions": 16,
         "ctr_pct": 0.0,
-        "position": 18.9,
+        "position": 17.8,
         "is_brand_query": false
       },
       {
@@ -8497,16 +8623,16 @@
         "is_brand_query": false
       },
       {
-        "query": "thomas beyes",
+        "query": "tom bayes",
         "lang": "en",
         "clicks": 0,
-        "impressions": 3,
+        "impressions": 4,
         "ctr_pct": 0.0,
-        "position": 9.0,
+        "position": 8.2,
         "is_brand_query": false
       },
       {
-        "query": "tom bayes",
+        "query": "thomas beyes",
         "lang": "en",
         "clicks": 0,
         "impressions": 3,
@@ -8521,6 +8647,15 @@
         "impressions": 2,
         "ctr_pct": 0.0,
         "position": 11.5,
+        "is_brand_query": false
+      },
+      {
+        "query": "who is bayes",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr_pct": 0.0,
+        "position": 30.0,
         "is_brand_query": false
       },
       {
@@ -8585,15 +8720,6 @@
         "ctr_pct": 0.0,
         "position": 9.0,
         "is_brand_query": false
-      },
-      {
-        "query": "who is bayes",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 50.0,
-        "is_brand_query": false
       }
     ],
     "/es/posts/devs": [
@@ -8627,21 +8753,21 @@
     ],
     "/es/posts/prompt_injection": [
       {
+        "query": "ataques prompt injection",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 14,
+        "ctr_pct": 0.0,
+        "position": 50.7,
+        "is_brand_query": false
+      },
+      {
         "query": "prompt injection ia",
         "lang": "es",
         "clicks": 0,
         "impressions": 14,
         "ctr_pct": 0.0,
         "position": 70.1,
-        "is_brand_query": false
-      },
-      {
-        "query": "ataques prompt injection",
-        "lang": "es",
-        "clicks": 0,
-        "impressions": 13,
-        "ctr_pct": 0.0,
-        "position": 50.2,
         "is_brand_query": false
       },
       {
@@ -8715,7 +8841,7 @@
         "clicks": 0,
         "impressions": 13,
         "ctr_pct": 0.0,
-        "position": 8.4,
+        "position": 8.7,
         "is_brand_query": false
       },
       {
@@ -8912,21 +9038,21 @@
         "is_brand_query": false
       },
       {
+        "query": "medidas descriptivas",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 8,
+        "ctr_pct": 0.0,
+        "position": 43.2,
+        "is_brand_query": false
+      },
+      {
         "query": "individuo estadística",
         "lang": "es",
         "clicks": 0,
         "impressions": 7,
         "ctr_pct": 0.0,
         "position": 10.4,
-        "is_brand_query": false
-      },
-      {
-        "query": "medidas descriptivas",
-        "lang": "es",
-        "clicks": 0,
-        "impressions": 7,
-        "ctr_pct": 0.0,
-        "position": 43.0,
         "is_brand_query": false
       },
       {
@@ -8960,9 +9086,9 @@
         "query": "poblacion muestra individuo y variable",
         "lang": "es",
         "clicks": 0,
-        "impressions": 5,
+        "impressions": 4,
         "ctr_pct": 0.0,
-        "position": 3.0,
+        "position": 2.8,
         "is_brand_query": false
       },
       {
@@ -9134,6 +9260,53 @@
         "impressions": 1,
         "ctr_pct": 0.0,
         "position": 1.0,
+        "is_brand_query": false
+      }
+    ],
+    "/en/posts/descriptive-analysis": [
+      {
+        "query": "descriptive analysis",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 12,
+        "ctr_pct": 0.0,
+        "position": 59.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "data analysis descriptive",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 70.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "descriptive and statistical analysis",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 85.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "descriptive data analysis in research",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 93.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "descriptive statistical analysis in research",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 87.0,
         "is_brand_query": false
       }
     ],
@@ -9454,7 +9627,7 @@
         "clicks": 0,
         "impressions": 12,
         "ctr_pct": 0.0,
-        "position": 6.2,
+        "position": 6.1,
         "is_brand_query": false
       },
       {
@@ -9476,94 +9649,16 @@
         "is_brand_query": true
       }
     ],
-    "/en/posts/descriptive-analysis": [
-      {
-        "query": "descriptive analysis",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 11,
-        "ctr_pct": 0.0,
-        "position": 58.5,
-        "is_brand_query": false
-      },
-      {
-        "query": "data analysis descriptive",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 70.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "descriptive and statistical analysis",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 85.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "descriptive data analysis in research",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 93.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "descriptive statistical analysis in research",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 87.0,
-        "is_brand_query": false
-      }
-    ],
-    "/en/posts/productivity_stack_2026": [
-      {
-        "query": "top engineering intelligence platforms 2026",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 11,
-        "ctr_pct": 0.0,
-        "position": 83.3,
-        "is_brand_query": false
-      },
-      {
-        "query": "site:datalaria.com",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 26.0,
-        "is_brand_query": true
-      },
-      {
-        "query": "site:datalaria.com/en/posts",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 13.0,
-        "is_brand_query": true
-      }
-    ],
-    "/en/tags/tows-matrix": [
-      {
-        "query": "tows",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 11,
-        "ctr_pct": 0.0,
-        "position": 53.7,
-        "is_brand_query": false
-      }
-    ],
     "/en/posts/finetuning_vs_rag": [
+      {
+        "query": "rag vs fine-tuning vs prompt engineering",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 11,
+        "ctr_pct": 0.0,
+        "position": 41.4,
+        "is_brand_query": false
+      },
       {
         "query": "prompt engineering vs rag vs fine tuning",
         "lang": "en",
@@ -9574,12 +9669,12 @@
         "is_brand_query": false
       },
       {
-        "query": "rag vs fine-tuning vs prompt engineering",
+        "query": "rag vs fine tuning vs prompt engineering",
         "lang": "en",
         "clicks": 0,
         "impressions": 8,
         "ctr_pct": 0.0,
-        "position": 45.4,
+        "position": 60.2,
         "is_brand_query": false
       },
       {
@@ -9598,15 +9693,6 @@
         "impressions": 7,
         "ctr_pct": 0.0,
         "position": 45.4,
-        "is_brand_query": false
-      },
-      {
-        "query": "rag vs fine tuning vs prompt engineering",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 6,
-        "ctr_pct": 0.0,
-        "position": 69.2,
         "is_brand_query": false
       },
       {
@@ -9648,6 +9734,66 @@
       {
         "query": "when is prompt optimization enough without fine-tuning? free",
         "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 1.0,
+        "is_brand_query": false
+      }
+    ],
+    "/en/tags/tows-matrix": [
+      {
+        "query": "tows",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 11,
+        "ctr_pct": 0.0,
+        "position": 53.7,
+        "is_brand_query": false
+      }
+    ],
+    "/en/posts/productivity_stack_2026": [
+      {
+        "query": "top engineering intelligence platforms 2026",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 10,
+        "ctr_pct": 0.0,
+        "position": 84.7,
+        "is_brand_query": false
+      },
+      {
+        "query": "site:datalaria.com",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 26.0,
+        "is_brand_query": true
+      },
+      {
+        "query": "site:datalaria.com/en/posts",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 13.0,
+        "is_brand_query": true
+      }
+    ],
+    "/es/tags/matriz-rice": [
+      {
+        "query": "matriz rice",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 10,
+        "ctr_pct": 0.0,
+        "position": 16.2,
+        "is_brand_query": false
+      },
+      {
+        "query": "rice matriz",
+        "lang": "es",
         "clicks": 0,
         "impressions": 1,
         "ctr_pct": 0.0,
@@ -9758,26 +9904,6 @@
         "is_brand_query": false
       }
     ],
-    "/es/tags/matriz-rice": [
-      {
-        "query": "matriz rice",
-        "lang": "es",
-        "clicks": 0,
-        "impressions": 9,
-        "ctr_pct": 0.0,
-        "position": 16.8,
-        "is_brand_query": false
-      },
-      {
-        "query": "rice matriz",
-        "lang": "es",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 1.0,
-        "is_brand_query": false
-      }
-    ],
     "/apps/conversor/es/energia": [
       {
         "query": "conversor energia",
@@ -9872,6 +9998,15 @@
         "is_brand_query": false
       },
       {
+        "query": "industry attractiveness matrix",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr_pct": 0.0,
+        "position": 10.0,
+        "is_brand_query": false
+      },
+      {
         "query": "capital allocation framework mckinsey",
         "lang": "en",
         "clicks": 0,
@@ -9908,21 +10043,68 @@
         "is_brand_query": false
       },
       {
-        "query": "industry attractiveness matrix",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 10.0,
-        "is_brand_query": false
-      },
-      {
         "query": "mckinsey ge matrix",
         "lang": "en",
         "clicks": 0,
         "impressions": 1,
         "ctr_pct": 0.0,
         "position": 17.0,
+        "is_brand_query": false
+      }
+    ],
+    "/en/posts/norbert_wiener": [
+      {
+        "query": "norbert wiener",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 8,
+        "ctr_pct": 0.0,
+        "position": 15.4,
+        "is_brand_query": false
+      },
+      {
+        "query": "father of cybernetics",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr_pct": 0.0,
+        "position": 6.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "wiener mathematician",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr_pct": 0.0,
+        "position": 71.5,
+        "is_brand_query": false
+      },
+      {
+        "query": "famous norberts",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 8.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "norbert weiner",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 46.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "wiener",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 5.0,
         "is_brand_query": false
       }
     ],
@@ -9940,9 +10122,9 @@
         "query": "submer",
         "lang": "en",
         "clicks": 0,
-        "impressions": 6,
+        "impressions": 8,
         "ctr_pct": 0.0,
-        "position": 27.7,
+        "position": 28.9,
         "is_brand_query": false
       },
       {
@@ -9979,6 +10161,26 @@
         "impressions": 1,
         "ctr_pct": 0.0,
         "position": 7.0,
+        "is_brand_query": false
+      }
+    ],
+    "/es/posts/estimacion-pert-3-puntos": [
+      {
+        "query": "pert distribution",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 8,
+        "ctr_pct": 0.0,
+        "position": 9.2,
+        "is_brand_query": false
+      },
+      {
+        "query": "estimacion pert",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 9.0,
         "is_brand_query": false
       }
     ],
@@ -10092,7 +10294,7 @@
         "clicks": 0,
         "impressions": 7,
         "ctr_pct": 0.0,
-        "position": 77.7,
+        "position": 77.9,
         "is_brand_query": false
       },
       {
@@ -10190,21 +10392,21 @@
         "is_brand_query": false
       },
       {
+        "query": "quantitative fmea",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr_pct": 0.0,
+        "position": 6.3,
+        "is_brand_query": false
+      },
+      {
         "query": "chief risk exec",
         "lang": "en",
         "clicks": 0,
         "impressions": 2,
         "ctr_pct": 0.0,
         "position": 46.5,
-        "is_brand_query": false
-      },
-      {
-        "query": "quantitative fmea",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 2,
-        "ctr_pct": 0.0,
-        "position": 8.0,
         "is_brand_query": false
       },
       {
@@ -10298,6 +10500,17 @@
         "is_brand_query": false
       }
     ],
+    "/en/posts/sop-engineering-part5-autonomous-agents": [
+      {
+        "query": "\"001-10\" (\"data breach\" or \"credential leak\" or \"cloud migration\" or kubernetes or fedramp or \"soc 2\" or \"ai agents\" or \"machine identities\")",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 7,
+        "ctr_pct": 0.0,
+        "position": 9.1,
+        "is_brand_query": false
+      }
+    ],
     "/es/tags/pgvector": [
       {
         "query": "pgvector que es",
@@ -10316,6 +10529,15 @@
         "ctr_pct": 0.0,
         "position": 17.5,
         "is_brand_query": true
+      },
+      {
+        "query": "pgvector",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 10.0,
+        "is_brand_query": false
       }
     ],
     "/es/tags/qlora": [
@@ -10405,44 +10627,6 @@
         "is_brand_query": true
       }
     ],
-    "/en/posts/norbert_wiener": [
-      {
-        "query": "norbert wiener",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 6,
-        "ctr_pct": 0.0,
-        "position": 16.3,
-        "is_brand_query": false
-      },
-      {
-        "query": "wiener mathematician",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 2,
-        "ctr_pct": 0.0,
-        "position": 71.5,
-        "is_brand_query": false
-      },
-      {
-        "query": "famous norberts",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 8.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "father of cybernetics",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 11.0,
-        "is_brand_query": false
-      }
-    ],
     "/en/posts/onboarding": [
       {
         "query": "site:datalaria.com",
@@ -10478,15 +10662,6 @@
         "impressions": 1,
         "ctr_pct": 0.0,
         "position": 1.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "ai and data platforms user onboarding effectiveness",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 64.0,
         "is_brand_query": false
       },
       {
@@ -10604,6 +10779,71 @@
         "is_brand_query": false
       }
     ],
+    "/en/posts/flywire": [
+      {
+        "query": "flywire founder",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 5,
+        "ctr_pct": 0.0,
+        "position": 4.6,
+        "is_brand_query": false
+      },
+      {
+        "query": "site:datalaria.com",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr_pct": 0.0,
+        "position": 7.0,
+        "is_brand_query": true
+      },
+      {
+        "query": "is it a spanish company",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 2.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "origine",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 1.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "quem sao os fundadores?",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 2.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "site:datalaria.com/en",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 22.0,
+        "is_brand_query": true
+      },
+      {
+        "query": "site:datalaria.com/en/posts",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 29.0,
+        "is_brand_query": true
+      }
+    ],
     "/en/posts/obs_part1_intro": [
       {
         "query": "obsolescence supply chain",
@@ -10642,14 +10882,113 @@
         "is_brand_query": true
       }
     ],
-    "/en/posts/sop-engineering-part5-autonomous-agents": [
+    "/en/posts/rice-ice-prioritization-matrix": [
       {
-        "query": "\"001-10\" (\"data breach\" or \"credential leak\" or \"cloud migration\" or kubernetes or fedramp or \"soc 2\" or \"ai agents\" or \"machine identities\")",
+        "query": "ice prioritization pros and cons",
         "lang": "en",
         "clicks": 0,
         "impressions": 5,
         "ctr_pct": 0.0,
-        "position": 9.2,
+        "position": 41.8,
+        "is_brand_query": false
+      },
+      {
+        "query": "ice prioritization in agile",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr_pct": 0.0,
+        "position": 26.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "rice agile",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr_pct": 0.0,
+        "position": 27.5,
+        "is_brand_query": false
+      },
+      {
+        "query": "rice vs ice",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr_pct": 0.0,
+        "position": 8.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "rice vs ice prioritization",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr_pct": 0.0,
+        "position": 5.5,
+        "is_brand_query": false
+      },
+      {
+        "query": "ice matrix",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 45.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "ice prioritization",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 47.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "ice prioritization example",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 26.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "ice prioritization for growth marketing",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 46.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "ice prioritization framework",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 40.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "rice method in agile",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 10.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "what is ice prioritization",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 42.0,
         "is_brand_query": false
       }
     ],
@@ -10792,6 +11131,17 @@
         "is_brand_query": false
       }
     ],
+    "/es/tags/data-drift": [
+      {
+        "query": "data drift",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 5,
+        "ctr_pct": 0.0,
+        "position": 27.8,
+        "is_brand_query": false
+      }
+    ],
     "/apps/conversor/en/dimension_en": [
       {
         "query": "l to m2",
@@ -10800,6 +11150,15 @@
         "impressions": 4,
         "ctr_pct": 0.0,
         "position": 14.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "meter converter",
+        "lang": "other",
+        "clicks": 0,
+        "impressions": 4,
+        "ctr_pct": 0.0,
+        "position": 14.2,
         "is_brand_query": false
       },
       {
@@ -10818,15 +11177,6 @@
         "impressions": 3,
         "ctr_pct": 0.0,
         "position": 8.3,
-        "is_brand_query": false
-      },
-      {
-        "query": "meter converter",
-        "lang": "other",
-        "clicks": 0,
-        "impressions": 3,
-        "ctr_pct": 0.0,
-        "position": 12.0,
         "is_brand_query": false
       },
       {
@@ -10956,6 +11306,15 @@
         "is_brand_query": false
       },
       {
+        "query": "converter to meter",
+        "lang": "other",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 9.0,
+        "is_brand_query": false
+      },
+      {
         "query": "convertisseur dimension",
         "lang": "other",
         "clicks": 0,
@@ -10980,15 +11339,6 @@
         "impressions": 1,
         "ctr_pct": 0.0,
         "position": 8.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "dimensions in meters",
-        "lang": "other",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 9.0,
         "is_brand_query": false
       },
       {
@@ -11245,71 +11595,6 @@
         "is_brand_query": false
       }
     ],
-    "/en/posts/flywire": [
-      {
-        "query": "flywire founder",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 4,
-        "ctr_pct": 0.0,
-        "position": 5.5,
-        "is_brand_query": false
-      },
-      {
-        "query": "site:datalaria.com",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 2,
-        "ctr_pct": 0.0,
-        "position": 7.0,
-        "is_brand_query": true
-      },
-      {
-        "query": "is it a spanish company",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 2.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "origine",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 1.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "quem sao os fundadores?",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 2.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "site:datalaria.com/en",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 22.0,
-        "is_brand_query": true
-      },
-      {
-        "query": "site:datalaria.com/en/posts",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 29.0,
-        "is_brand_query": true
-      }
-    ],
     "/en/posts/her": [
       {
         "query": "her interface",
@@ -11404,98 +11689,6 @@
         "ctr_pct": 0.0,
         "position": 8.3,
         "is_brand_query": true
-      }
-    ],
-    "/en/posts/rice-ice-prioritization-matrix": [
-      {
-        "query": "ice prioritization pros and cons",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 4,
-        "ctr_pct": 0.0,
-        "position": 40.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "ice prioritization in agile",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 3,
-        "ctr_pct": 0.0,
-        "position": 28.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "rice agile",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 2,
-        "ctr_pct": 0.0,
-        "position": 27.5,
-        "is_brand_query": false
-      },
-      {
-        "query": "rice vs ice",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 2,
-        "ctr_pct": 0.0,
-        "position": 8.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "rice vs ice prioritization",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 2,
-        "ctr_pct": 0.0,
-        "position": 5.5,
-        "is_brand_query": false
-      },
-      {
-        "query": "ice matrix",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 45.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "ice prioritization example",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 26.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "ice prioritization framework",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 40.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "rice method in agile",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 10.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "what is ice prioritization",
-        "lang": "en",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 42.0,
-        "is_brand_query": false
       }
     ],
     "/en/tags": [
@@ -11746,6 +11939,15 @@
         "is_brand_query": false
       },
       {
+        "query": "kurt godel teorema de incompletitud",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr_pct": 0.0,
+        "position": 29.7,
+        "is_brand_query": false
+      },
+      {
         "query": "gödel",
         "lang": "es",
         "clicks": 0,
@@ -11761,15 +11963,6 @@
         "impressions": 2,
         "ctr_pct": 0.0,
         "position": 39.5,
-        "is_brand_query": false
-      },
-      {
-        "query": "kurt godel teorema de incompletitud",
-        "lang": "es",
-        "clicks": 0,
-        "impressions": 2,
-        "ctr_pct": 0.0,
-        "position": 25.0,
         "is_brand_query": false
       },
       {
@@ -11809,6 +12002,15 @@
         "is_brand_query": false
       },
       {
+        "query": "teorema de incompletitud de gödel",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr_pct": 0.0,
+        "position": 43.0,
+        "is_brand_query": false
+      },
+      {
         "query": "goedel",
         "lang": "es",
         "clicks": 0,
@@ -11845,12 +12047,12 @@
         "is_brand_query": false
       },
       {
-        "query": "teorema de incompletitud de gödel",
+        "query": "teorema de godel",
         "lang": "es",
         "clicks": 0,
         "impressions": 1,
         "ctr_pct": 0.0,
-        "position": 45.0,
+        "position": 39.0,
         "is_brand_query": false
       },
       {
@@ -12468,6 +12670,44 @@
         "is_brand_query": false
       }
     ],
+    "/es/posts/sdd_vs_vibe_coding": [
+      {
+        "query": "vibe coding vs sdd",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr_pct": 0.0,
+        "position": 8.3,
+        "is_brand_query": false
+      },
+      {
+        "query": "sdd vs tdd",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr_pct": 0.0,
+        "position": 6.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "sdd antigravity",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 5.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "sdd vs",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 7.0,
+        "is_brand_query": false
+      }
+    ],
     "/es/tags": [
       {
         "query": "site:datalaria.com",
@@ -12514,17 +12754,6 @@
         "impressions": 1,
         "ctr_pct": 0.0,
         "position": 48.0,
-        "is_brand_query": false
-      }
-    ],
-    "/es/tags/data-drift": [
-      {
-        "query": "data drift",
-        "lang": "es",
-        "clicks": 0,
-        "impressions": 3,
-        "ctr_pct": 0.0,
-        "position": 28.0,
         "is_brand_query": false
       }
     ],
@@ -12689,6 +12918,15 @@
       },
       {
         "query": "m2 a ml",
+        "lang": "other",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 11.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "m2 en ml",
         "lang": "other",
         "clicks": 0,
         "impressions": 1,
@@ -13308,44 +13546,6 @@
         "is_brand_query": true
       }
     ],
-    "/es/posts/sdd_vs_vibe_coding": [
-      {
-        "query": "sdd vs tdd",
-        "lang": "es",
-        "clicks": 0,
-        "impressions": 2,
-        "ctr_pct": 0.0,
-        "position": 6.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "sdd antigravity",
-        "lang": "es",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 5.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "sdd vs",
-        "lang": "es",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 7.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "vibe coding vs sdd",
-        "lang": "es",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 8.0,
-        "is_brand_query": false
-      }
-    ],
     "/es/posts/sop-ingenieria-parte4-enterprise": [
       {
         "query": "multi-sku",
@@ -13363,6 +13563,15 @@
         "impressions": 1,
         "ctr_pct": 0.0,
         "position": 13.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "multi sku",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 10.0,
         "is_brand_query": false
       }
     ],
@@ -13412,6 +13621,15 @@
         "impressions": 1,
         "ctr_pct": 0.0,
         "position": 7.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "ia",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 3.0,
         "is_brand_query": false
       }
     ],
@@ -13679,6 +13897,26 @@
         "ctr_pct": 0.0,
         "position": 14.5,
         "is_brand_query": true
+      }
+    ],
+    "/es/tags/gr%C3%A1fico-tornado": [
+      {
+        "query": "tornado diagram",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr_pct": 0.0,
+        "position": 1.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "grafico de tornado",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 5.0,
+        "is_brand_query": false
       }
     ],
     "/es/tags/grafos": [
@@ -13951,6 +14189,15 @@
     ],
     "/apps/conversor/es/radiofrecuencia": [
       {
+        "query": "khz para mhz",
+        "lang": "other",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 9.0,
+        "is_brand_query": false
+      },
+      {
         "query": "rango de frecuencia 400 470 mhz en metros",
         "lang": "other",
         "clicks": 0,
@@ -14140,6 +14387,17 @@
         "is_brand_query": true
       }
     ],
+    "/en/posts/stochastic-3-point-pert-estimation": [
+      {
+        "query": "formula of z",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 2.0,
+        "is_brand_query": false
+      }
+    ],
     "/en/tags/cmmi": [
       {
         "query": "cmmi consulting services",
@@ -14168,6 +14426,15 @@
         "impressions": 1,
         "ctr_pct": 0.0,
         "position": 3.0,
+        "is_brand_query": false
+      },
+      {
+        "query": "plan dar",
+        "lang": "en",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 42.0,
         "is_brand_query": false
       }
     ],
@@ -14246,6 +14513,17 @@
         "ctr_pct": 0.0,
         "position": 26.0,
         "is_brand_query": true
+      }
+    ],
+    "/es/posts/cuadro-mando-evm-valor-ganado": [
+      {
+        "query": "evm significado",
+        "lang": "es",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr_pct": 0.0,
+        "position": 11.0,
+        "is_brand_query": false
       }
     ],
     "/es/posts/ia_agents_part3": [
@@ -14398,26 +14676,6 @@
         "ctr_pct": 0.0,
         "position": 11.0,
         "is_brand_query": true
-      }
-    ],
-    "/es/tags/gr%C3%A1fico-tornado": [
-      {
-        "query": "grafico de tornado",
-        "lang": "es",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 5.0,
-        "is_brand_query": false
-      },
-      {
-        "query": "tornado diagram",
-        "lang": "es",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr_pct": 0.0,
-        "position": 1.0,
-        "is_brand_query": false
       }
     ],
     "/es/tags/john-von-neumann": [
