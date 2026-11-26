@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "visibility": "private",
-  "updated_at": "2026-11-26T12:04:25Z",
+  "updated_at": "2026-11-26T15:05:41Z",
   "entries": [
     {
       "asset_id": "autopilot-parte10-scriba-sindicacion-puente-pulse",
@@ -2192,6 +2192,16 @@
       "external_url": "https://dev.to/datalaria/executive-table-kanban-board-and-monthly-calendar-in-react-19-over-static-data-g29",
       "canonical_url": "https://datalaria.com/en/posts/pulse-part3-react-dashboard-table-kanban-calendar/",
       "published_at_utc": "2026-11-26T06:59:35.661Z"
+    },
+    {
+      "asset_id": "safety-stock-reorder-point-calculator",
+      "slug": "safety-stock-reorder-point-calculator",
+      "lang": "en",
+      "channel": "linkedin",
+      "external_id": "urn:li:share:7531734932545552386",
+      "external_url": "https://www.linkedin.com/feed/update/urn:li:share:7531734932545552386/",
+      "canonical_url": "https://datalaria.com/en/posts/safety-stock-reorder-point-calculator/",
+      "published_at_utc": "2026-11-26T15:05:41Z"
     }
   ]
 }
