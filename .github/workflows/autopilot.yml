@@ -13,7 +13,7 @@ on:
       - 'content/**/posts/**/social_pack.yml'
       - 'autopilot/**'
   schedule:
-    - cron: '30 14 * * *' # Ola 2 (15:30 CET / 14:30 UTC - EN Native + USA open)
+    - cron: '30 13 * * *' # Ola 2 (14:30 CET / 13:30 UTC - EN Native)
     - cron: '30 19 * * *' # Ola 3A (20:30 CET / 19:30 UTC - Dev.to ES)
     - cron: '30 6 * * *'  # Ola 3B (07:30 CET / 06:30 UTC Día +1 - Dev.to EN + CoderLegion EN)
   workflow_dispatch:

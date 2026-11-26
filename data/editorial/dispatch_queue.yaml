@@ -318,10 +318,10 @@ entries:
   - linkedin
   - x
   - newsletter
-  scheduled_at_utc: '2026-11-26T14:30:00Z'
+  scheduled_at_utc: '2026-11-26T13:30:00Z'
   status: pending
   executed_at_utc: null
-  notes: 'Ola 2 (T+7h · Apertura USA): EN Native Social'
+  notes: 'Ola 2 (14:30 CET / 13:30 UTC): EN Native Social'
   last_error: null
 - id: stock-rop-2026-11-26-wave3a-es-devto
   file_path: content/es/posts/calculadora-stock-seguridad-rop/index.md
