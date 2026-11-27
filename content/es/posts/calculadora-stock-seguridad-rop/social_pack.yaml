@@ -55,6 +55,7 @@ es:
     ps_referral_text: "P.D. Si conoces a un COO, CFO o director de Compras lidiando con excesos en almacén y faltas de stock simultáneas, reenvíale esta guía."
   devto:
     enabled: true
+    main_image: "cover.png"
     title: "Calculadora de Stock de Seguridad & ROP: Convolución Estocástica, EOQ y Ciclo de Vida IEC 62402"
     description: "Guía cuantitativa de inventarios (APICS / MIT CTL & IEC 62402): erradicación de reglas de 3 semanas, SS3, ROP, Wilson EOQ y control de obsolescencia PCN/PDN/LTB."
     tags:
@@ -66,6 +67,7 @@ es:
     published: true
   coderlegion:
     enabled: false
+    main_image: "cover.png"
     title: "Calculadora de Stock de Seguridad & ROP: Convolución Estocástica, EOQ y Ciclo de Vida IEC 62402"
     description: "Arquitectura estocástica para Stock de Seguridad (SS3), Punto de Pedido (ROP), Wilson EOQ y control temprano de obsolescencia IEC 62402."
     tags:

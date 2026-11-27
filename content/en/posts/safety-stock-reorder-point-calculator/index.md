@@ -16,6 +16,9 @@ cover:
 images:
   - "cover.png"
   - "preview-pack.png"
+  - "diagram-1-component-lifecycle-iec62402.png"
+  - "diagram-2-clevel-inventory-pipeline.png"
+  - "diagram-3-sawtooth-cycle-dynamics.png"
 ---
 
 In corporate executive suites, boardrooms, and treasury investment committees, Chief Executive Officers (CEOs), Chief Financial Officers (CFOs), Chief Operating Officers (COOs), and Vice Presidents of Supply Chain frequently witness one of the most financially corrosive conflicts in modern business: **the chronic civil war between commercial sales and financial treasury over inventory levels**.
@@ -67,7 +70,7 @@ While empirical folklore merely says *"by rule of thumb, hold 3 weeks of everyth
 
 A pervasive operational blind spot in manufacturing and distribution is treating static $(ROP, EOQ)$ equations as perpetually valid across a part's lifespan. Across electronics, automotive, aerospace, and industrial equipment, quantitative inventory math must be coupled directly to the **physical component lifecycle** governed by international standards **IEC 62402:2019** and **JEDEC (J-STD-046 / J-STD-048)**:
 
-{{< mermaid >}}
+{{< mermaid image="diagram-1-component-lifecycle-iec62402.png" alt="Component Lifecycle Governance & Strategic Obsolescence Model (IEC 62402 / JEDEC Standard)" >}}
 flowchart LR
     L1["<b>1. Introduction</b><br/><small>Nascent demand<br/>High σd uncertainty</small>"] --> L2["<b>2. Growth</b><br/><small>Rapid scaling<br/>Weekly ROP audits</small>"]
     L2 --> L3["<b>3. Maturity</b><br/><small>Steady-state optimal window<br/>Full SS3 + EOQ engine</small>"]
@@ -134,7 +137,7 @@ Quantitative inventory optimization forms **Pillar 5 of Suite 03 (Operational Co
 
 World-class inventory management is not a reactive purchasing routine; it is an **integrated predictive engineering and corporate treasury discipline** connecting customer volatility, vendor unreliability, and balance sheet capital efficiency:
 
-{{< mermaid >}}
+{{< mermaid image="diagram-2-clevel-inventory-pipeline.png" alt="The C-Level Inventory Planning, Valuation & Control Pipeline (APICS / ASCM Standard)" >}}
 flowchart TD
     A["<b>1. Strategic ABC Portfolio Stratification</b><br/><small>Pareto classification by revenue contribution and gross margin<br/>Formal Cycle Service Level CSL target allocation</small>"]
     
@@ -172,7 +175,7 @@ flowchart TD
 
 Continuous $(s, Q)$ or $(ROP, EOQ)$ inventory review operates on the Cartesian dynamics of the **Sawtooth Inventory Model**, which maps the physical units and financial capital across the replenishment lifecycle:
 
-{{< mermaid >}}
+{{< mermaid image="diagram-3-sawtooth-cycle-dynamics.png" alt="Dynamic Sawtooth Inventory Cycle & Continuous Replenishment Feedback Loop" >}}
 flowchart TD
     S1["<b>Stage 1: Replenishment Batch Arrival +EOQ</b><br/><small>Available stock reaches peak: Maximum Inventory = SS + EOQ<br/>Commercial consumption proceeds at mean daily rate d</small>"]
     

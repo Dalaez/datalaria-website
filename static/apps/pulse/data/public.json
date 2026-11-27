@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-11-27T06:56:34.472964Z",
+  "generated_at": "2026-11-27T07:13:44.769812Z",
   "total_assets": 181,
   "published_assets": 170,
   "scheduled_assets": 11,
@@ -233,8 +233,8 @@
       "brief_es": "Guía cuantitativa y metodológica de optimización de inventarios (APICS / ASCM / MIT CTL & IEC 62402): erradicación de reglas empíricas de 3 semanas, ciclo de vida de componentes (PCN, PDN, LTB, EOL), convolución estocástica de demanda y Lead Time, dimensionamiento ROP y Wilson EOQ y liberación de capital de trabajo.",
       "brief_en": "Quantitative and methodological guide to inventory optimization (APICS / ASCM / MIT CTL & IEC 62402 standards): eradicating naive 3-week rules of thumb, component lifecycle management (PCN, PDN, LTB, EOL), multivariate stochastic convolution, ROP and Wilson EOQ calibration, Sawtooth cycle simulation, and working capital release.",
       "publish_date": "2026-11-26",
-      "last_modified_es": "2026-11-25T16:03:47+01:00",
-      "last_modified_en": "2026-11-25T16:03:47+01:00",
+      "last_modified_es": "2026-11-27T07:09:38.443319Z",
+      "last_modified_en": "2026-11-27T07:10:03.488722Z",
       "language_parity": "complete",
       "category": "Estrategia y Operaciones",
       "categories": [

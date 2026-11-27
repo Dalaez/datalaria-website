@@ -16,6 +16,9 @@ cover:
 images:
   - "cover.png"
   - "preview-pack.png"
+  - "diagrama-1-ciclo-vida-iec62402.png"
+  - "diagrama-2-pipeline-control-stock-clevel.png"
+  - "diagrama-3-dinamica-diente-sierra-sawtooth.png"
 ---
 
 En comités de dirección ejecutiva (*Executive Committee*), consejos de administración y comités de tesorería, directores generales (CEOs), directores financieros (CFOs), directores de operaciones (COOs) y directores de compras presencian con exasperante regularidad uno de los conflictos organizativos y financieros más destructivos del mundo corporativo: **la guerra civil entre el departamento comercial y el departamento financiero en torno a los niveles de inventario**.
@@ -67,7 +70,7 @@ Mientras la gestión artesanal responde *"por experiencia, ten 3 semanas de todo
 
 Un error habitual en la industria consiste en tratar los modelos matemáticos $(ROP, EOQ)$ como fórmulas estáticas válidas durante toda la vida de un producto. En electrónica, automoción, maquinaria y manufactura avanzada, el modelo cuantitativo de inventarios está intrínsecamente acoplado al **ciclo de vida físico de cada componente** regulado por los estándares internacionales **UNE-EN IEC 62402:2019** y **JEDEC (J-STD-046 / J-STD-048)**:
 
-{{< mermaid >}}
+{{< mermaid image="diagrama-1-ciclo-vida-iec62402.png" alt="Modelo de Ciclo de Vida del Componente y Gobernanza de Obsolescencia (Estándar IEC 62402 / JEDEC)" >}}
 flowchart LR
     L1["<b>1. Introducción</b><br/><small>Demanda incipiente<br/>Alta incertidumbre σd</small>"] --> L2["<b>2. Crecimiento</b><br/><small>Escalado exponencial<br/>Revisión semanal ROP</small>"]
     L2 --> L3["<b>3. Madurez</b><br/><small>Fase estacionaria óptima<br/>Modelo completo SS3 + EOQ</small>"]
@@ -134,7 +137,7 @@ La gestión cuantitativa del Stock de Seguridad & ROP constituye el **Pilar 5 de
 
 El control de inventario de clase mundial no es un ejercicio reactivo de aprovisionamiento; es un **sistema de ingeniería operativa y tesorería predictiva** que conecta la volatilidad del cliente, la fiabilidad del proveedor y la estructura de capital de la compañía:
 
-{{< mermaid >}}
+{{< mermaid image="diagrama-2-pipeline-control-stock-clevel.png" alt="Pipeline C-Level de Planificación, Valoración y Control de Inventarios (Estándar APICS / ASCM)" >}}
 flowchart TD
     A["<b>1. Segmentación Estratégica ABC</b><br/><small>Clasificación de Pareto por valor de consumo y margen<br/>Asignación formal de Nivel de Servicio Objetivo CSL</small>"]
     
@@ -172,7 +175,7 @@ flowchart TD
 
 El modelo de revisión continua $(s, Q)$ o $(ROP, EOQ)$ se fundamenta en la dinámica del gráfico en **Diente de Sierra (*Sawtooth Chart*)**, que describe con precisión matemática el flujo físico y financiero del almacén a lo largo del tiempo:
 
-{{< mermaid >}}
+{{< mermaid image="diagrama-3-dinamica-diente-sierra-sawtooth.png" alt="Dinámica en Diente de Sierra (Sawtooth Chart) y Flujo del Ciclo de Reposición Continua" >}}
 flowchart TD
     S1["<b>Fase 1: Entrada de Lote +EOQ</b><br/><small>Inventario disponible alcanza su pico: Stock Máximo = SS + EOQ<br/>Consumo comercial a tasa diaria promedio d</small>"]
     

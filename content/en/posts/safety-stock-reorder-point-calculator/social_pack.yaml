@@ -55,6 +55,7 @@ en:
     ps_referral_text: "P.S. Know a COO, CFO, or VP of Supply Chain fighting simultaneous warehouse bloat and stockouts? Forward this briefing their way."
   devto:
     enabled: true
+    main_image: "cover.png"
     title: "Safety Stock & Reorder Point (ROP) Engine: Stochastic Convolution, EOQ & IEC 62402 Lifecycle Control"
     description: "Quantitative inventory optimization guide (APICS / MIT CTL & IEC 62402): eliminating naive 3-week heuristics, SS3, ROP, Wilson EOQ, and PCN/PDN/LTB defense."
     tags:
@@ -66,6 +67,7 @@ en:
     published: true
   coderlegion:
     enabled: true
+    main_image: "cover.png"
     title: "Safety Stock & Reorder Point (ROP) Engine: Stochastic Convolution, EOQ & IEC 62402 Lifecycle Control"
     description: "Board-grade stochastic inventory architecture combining SS3, ROP, Wilson EOQ, and IEC 62402 component obsolescence defense."
     tags:

@@ -299,6 +299,8 @@ def _render_commercial_card(
     inner_body: str,
     lang: Literal["es", "en"],
     kind: Literal["product", "bundle"],
+    file_path: Optional[str] = None,
+    slug: Optional[str] = None,
 ) -> str:
     """Convierte product-card / bundle-card en una tarjeta Markdown universal y limpia."""
     icon = attrs.get("icon", "📦" if kind == "bundle" else "🧰")
@@ -336,6 +338,12 @@ def _render_commercial_card(
     if inner_clean:
         lines.append(f"> {inner_clean}")
 
+    preview_img = attrs.get("preview_image") or attrs.get("image") or attrs.get("img") or ""
+    if preview_img and file_path:
+        resolved_preview = resolve_single_image_ref(preview_img, file_path, lang=lang, slug=slug or "")
+        caption = attrs.get("preview_caption") or attrs.get("title") or title
+        lines.append(f">\n> ![{caption}]({resolved_preview})\n>")
+
     ctas: List[str] = []
     if checkout_url:
         ctas.append(f"[{button_text}]({checkout_url})")
@@ -356,6 +364,7 @@ def _transform_shortcodes(
     slug: str,
     apps_dir: Optional[Path] = None,
     base_url: str = SITE_BASE_URL,
+    file_path: Optional[str] = None,
 ) -> str:
     """Transforma los shortcodes Hugo del blog fuera de bloques cercados."""
 
@@ -467,19 +476,19 @@ def _transform_shortcodes(
     transformed = _APP_REF_RE.sub(replace_app_ref, content)
     transformed = _HELIX_WAITLIST_RE.sub(replace_helix_waitlist, transformed)
     transformed = _PRODUCT_CARD_PAIRED_RE.sub(
-        lambda m: _render_commercial_card(_parse_shortcode_attrs(m.group(1)), m.group(2), lang, "product"),
+        lambda m: _render_commercial_card(_parse_shortcode_attrs(m.group(1)), m.group(2), lang, "product", file_path=file_path, slug=slug),
         transformed,
     )
     transformed = _PRODUCT_CARD_SINGLE_RE.sub(
-        lambda m: _render_commercial_card(_parse_shortcode_attrs(m.group(1)), "", lang, "product"),
+        lambda m: _render_commercial_card(_parse_shortcode_attrs(m.group(1)), "", lang, "product", file_path=file_path, slug=slug),
         transformed,
     )
     transformed = _BUNDLE_CARD_PAIRED_RE.sub(
-        lambda m: _render_commercial_card(_parse_shortcode_attrs(m.group(1)), m.group(2), lang, "bundle"),
+        lambda m: _render_commercial_card(_parse_shortcode_attrs(m.group(1)), m.group(2), lang, "bundle", file_path=file_path, slug=slug),
         transformed,
     )
     transformed = _BUNDLE_CARD_SINGLE_RE.sub(
-        lambda m: _render_commercial_card(_parse_shortcode_attrs(m.group(1)), "", lang, "bundle"),
+        lambda m: _render_commercial_card(_parse_shortcode_attrs(m.group(1)), "", lang, "bundle", file_path=file_path, slug=slug),
         transformed,
     )
     transformed = _YOUTUBE_RE.sub(replace_youtube, transformed)
@@ -553,6 +562,7 @@ def transform_markdown_for_syndication(
         slug=slug,
         apps_dir=apps_dir,
         base_url=base_url,
+        file_path=file_path,
     )
     masked_body = resolve_image_urls(masked_body, file_path, base_url=PUBLIC_MEDIA_BASE_URL)
     masked_body = resolve_markdown_links(masked_body, file_path, lang=lang, base_url=base_url)
@@ -659,6 +669,25 @@ def build_syndication_artifact(
             lang=lang,
             slug=slug,
         )
+    elif not resolved_cover:
+        fm_cover = ""
+        meta_cover = meta.get("cover")
+        if isinstance(meta_cover, dict):
+            fm_cover = str(meta_cover.get("image") or "")
+        elif isinstance(meta_cover, str):
+            fm_cover = meta_cover
+        elif meta.get("images") and isinstance(meta.get("images"), list) and len(meta["images"]) > 0:
+            fm_cover = str(meta["images"][0])
+        elif meta.get("image"):
+            fm_cover = str(meta["image"])
+
+        if fm_cover:
+            resolved_cover = resolve_single_image_ref(
+                fm_cover,
+                file_path,
+                lang=lang,
+                slug=slug,
+            )
 
     raw_tags: List[str]
     if config and config.tags:
