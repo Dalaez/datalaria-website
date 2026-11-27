@@ -1,13 +1,13 @@
 {
   "version": "1.3.0",
-  "generated_at": "2026-11-27T07:14:48.946007Z",
+  "generated_at": "2026-11-27T11:54:42.239420Z",
   "visibility": "private",
   "total_published_posts": 111,
   "total_scheduled_posts": 11,
-  "total_30d_post_views": 2368,
+  "total_30d_post_views": 2373,
   "median_post_views": 11.0,
   "p75_post_views": 25.0,
-  "monthly_growth_yoy_pct": 2228.0,
+  "monthly_growth_yoy_pct": 2288.5,
   "total_30d_gsc_clicks": 138,
   "total_30d_gsc_impressions": 22556,
   "gsc_clicks_prev_30d": 72,
@@ -22,14 +22,14 @@
     {
       "category": "Estrategia y Operaciones",
       "published_posts": 18,
-      "total_views_30d": 672,
-      "avg_views_per_post": 37.3,
-      "total_users_30d": 292,
-      "avg_engagement_sec": 15.3,
+      "total_views_30d": 674,
+      "avg_views_per_post": 37.4,
+      "total_users_30d": 294,
+      "avg_engagement_sec": 15.2,
       "monetized_posts": 16,
       "monetization_coverage_pct": 88.9,
-      "editorial_roi_score": 76.9,
-      "social_traction_score": 50.5,
+      "editorial_roi_score": 77.2,
+      "social_traction_score": 53.0,
       "total_gsc_impressions_30d": 1454,
       "total_gsc_clicks_30d": 13,
       "avg_gsc_ctr_pct": 0.89,
@@ -38,10 +38,10 @@
     {
       "category": "Pioneros y Referentes",
       "published_posts": 13,
-      "total_views_30d": 331,
+      "total_views_30d": 332,
       "avg_views_per_post": 25.5,
-      "total_users_30d": 266,
-      "avg_engagement_sec": 29.4,
+      "total_users_30d": 267,
+      "avg_engagement_sec": 29.3,
       "monetized_posts": 7,
       "monetization_coverage_pct": 53.8,
       "editorial_roi_score": 65.3,
@@ -49,23 +49,23 @@
       "total_gsc_impressions_30d": 8865,
       "total_gsc_clicks_30d": 43,
       "avg_gsc_ctr_pct": 0.49,
-      "en_traffic_share_pct": 60.4
+      "en_traffic_share_pct": 60.2
     },
     {
       "category": "IA, Ingeniería y Proyectos",
       "published_posts": 54,
-      "total_views_30d": 1020,
+      "total_views_30d": 1022,
       "avg_views_per_post": 18.9,
-      "total_users_30d": 522,
-      "avg_engagement_sec": 15.7,
+      "total_users_30d": 524,
+      "avg_engagement_sec": 15.6,
       "monetized_posts": 28,
       "monetization_coverage_pct": 51.9,
-      "editorial_roi_score": 54.3,
+      "editorial_roi_score": 54.2,
       "social_traction_score": 51.4,
       "total_gsc_impressions_30d": 4785,
       "total_gsc_clicks_30d": 24,
       "avg_gsc_ctr_pct": 0.5,
-      "en_traffic_share_pct": 49.6
+      "en_traffic_share_pct": 49.7
     },
     {
       "category": "Startups",
@@ -128,9 +128,9 @@
       "title_es": "Calculadora de Stock de Seguridad & ROP: Optimización de Inventario y Working Capital de Grado Consejo de Administración",
       "title_en": "Safety Stock & Reorder Point (ROP) Calculator: Boardroom-Grade Inventory & Working Capital Optimization",
       "category": "Estrategia y Operaciones",
-      "ga4_views_30d": 88,
-      "ga4_users_30d": 3,
-      "avg_engagement_sec": 58.3,
+      "ga4_views_30d": 90,
+      "ga4_users_30d": 5,
+      "avg_engagement_sec": 35.0,
       "gsc_impressions_30d": 0,
       "gsc_avg_position": 0.0,
       "gsc_ctr_pct": 0.0,
@@ -140,7 +140,7 @@
         "Meta descripción no óptima (317 caracteres; ideal: 75-250)"
       ],
       "opportunity_type": "serp_snippet_truncation",
-      "priority_score": 64.0,
+      "priority_score": 65.0,
       "recommended_title_es": "Calculadora de Stock de Seguridad & ROP: Optimización de Inventario y Working Capital de Grado",
       "recommended_title_en": "Safety Stock & Reorder Point (ROP) Calculator: Boardroom-Grade Inventory & Working Capital",
       "recommended_desc_es": "Guía cuantitativa y metodológica de optimización de inventarios (APICS / ASCM / MIT CTL & IEC 62402): erradicación de reglas empíricas de 3 semanas, ciclo de vida de componentes (PCN, PDN, LTB, EOL), convolución estocástica de demanda y Lead",
@@ -559,9 +559,9 @@
       "title_es": "La Economía Oculta de la IA: Cuánto Cuesta Realmente Usar LLMs en Producción (Con Datos Reales)",
       "title_en": "The Hidden Economics of AI: What It Actually Costs to Run LLMs in Production (With Real Data)",
       "category": "IA, Ingeniería y Proyectos",
-      "ga4_views_30d": 16,
-      "ga4_users_30d": 12,
-      "avg_engagement_sec": 2.4,
+      "ga4_views_30d": 17,
+      "ga4_users_30d": 13,
+      "avg_engagement_sec": 2.2,
       "gsc_impressions_30d": 427,
       "gsc_avg_position": 9.9,
       "gsc_ctr_pct": 0.7,
@@ -1218,8 +1218,8 @@
       "title_es": "Proyecto Weather Service (Parte 3): Prediciendo el Futuro con IA y OpenWeatherMap",
       "title_en": "Weather Service Project (Part 3): Predicting the Future with AI and OpenWeatherMap",
       "category": "IA, Ingeniería y Proyectos",
-      "ga4_views_30d": 9,
-      "ga4_users_30d": 9,
+      "ga4_views_30d": 10,
+      "ga4_users_30d": 10,
       "avg_engagement_sec": 1.0,
       "gsc_impressions_30d": 53,
       "gsc_avg_position": 10.0,
@@ -1463,9 +1463,9 @@
       "title_es": "Alan Turing: El Genio que Rompió Enigma y Preguntó si las Máquinas Podían Pensar",
       "title_en": "Alan Turing: The Genius Who Broke Enigma and Asked if Machines Could Think",
       "category": "Pioneros y Referentes",
-      "ga4_views_30d": 25,
-      "ga4_users_30d": 22,
-      "avg_engagement_sec": 13.5,
+      "ga4_views_30d": 26,
+      "ga4_users_30d": 23,
+      "avg_engagement_sec": 13.1,
       "gsc_impressions_30d": 635,
       "gsc_avg_position": 32.6,
       "gsc_ctr_pct": 0.31,
@@ -1872,8 +1872,8 @@
       "seo_demand_score": 82.0,
       "monetization_fit_score": 95.0,
       "ecosystem_synergy_score": 88.0,
-      "social_traction_score": 50.5,
-      "editorial_roi_score": 82.4,
+      "social_traction_score": 53.0,
+      "editorial_roi_score": 82.8,
       "rationale_es": "Demanda orgánica creciente de modelos estocásticos para comités de inversión. Puente directo hacia el Executive Decision Pack Business Case (9€) y Suite 02."
     },
     {
@@ -1885,8 +1885,8 @@
       "seo_demand_score": 78.0,
       "monetization_fit_score": 92.0,
       "ecosystem_synergy_score": 90.0,
-      "social_traction_score": 50.5,
-      "editorial_roi_score": 80.5,
+      "social_traction_score": 53.0,
+      "editorial_roi_score": 80.8,
       "rationale_es": "Resuelve el cuello de botella de priorización en C-Level y VPs de Producto. Conecta directamente la Suite 02 (Pack DAR 19€ y Pack RICE 19€)."
     },
     {
@@ -1898,8 +1898,8 @@
       "seo_demand_score": 75.0,
       "monetization_fit_score": 88.0,
       "ecosystem_synergy_score": 85.0,
-      "social_traction_score": 50.5,
-      "editorial_roi_score": 77.2,
+      "social_traction_score": 53.0,
+      "editorial_roi_score": 77.6,
       "rationale_es": "Fundamentación matemática rigurosa para directores de operaciones y manufactura. Activa el interés por el Pack PERT y la Suite 03 de Control Operativo (22€)."
     },
     {
@@ -1940,7 +1940,7 @@
       "status": "published",
       "linked_posts_count": 4,
       "latest_post_date": "2025-12-06",
-      "editorial_views_30d": 47,
+      "editorial_views_30d": 48,
       "editorial_coverage_status": "silent_release_alert",
       "recommended_scriba_action": "Alerta de release silenciosa: versión v3.3.0 (2026-11-13) posterior al último post (2025-12-06); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0."
     },
@@ -1954,7 +1954,7 @@
       "status": "published",
       "linked_posts_count": 4,
       "latest_post_date": "2025-12-06",
-      "editorial_views_30d": 47,
+      "editorial_views_30d": 48,
       "editorial_coverage_status": "silent_release_alert",
       "recommended_scriba_action": "Alerta de release silenciosa: versión v3.2.0 (2026-11-13) posterior al último post (2025-12-06); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0."
     },
@@ -1968,7 +1968,7 @@
       "status": "published",
       "linked_posts_count": 4,
       "latest_post_date": "2025-12-06",
-      "editorial_views_30d": 47,
+      "editorial_views_30d": 48,
       "editorial_coverage_status": "silent_release_alert",
       "recommended_scriba_action": "Alerta de release silenciosa: versión v3.1.0 (2026-11-09) posterior al último post (2025-12-06); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0."
     },
@@ -1982,7 +1982,7 @@
       "status": "published",
       "linked_posts_count": 4,
       "latest_post_date": "2025-12-06",
-      "editorial_views_30d": 47,
+      "editorial_views_30d": 48,
       "editorial_coverage_status": "silent_release_alert",
       "recommended_scriba_action": "Alerta de release silenciosa: versión v3.0.0 (2026-11-08) posterior al último post (2025-12-06); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0."
     },
@@ -1996,7 +1996,7 @@
       "status": "published",
       "linked_posts_count": 4,
       "latest_post_date": "2025-12-06",
-      "editorial_views_30d": 47,
+      "editorial_views_30d": 48,
       "editorial_coverage_status": "silent_release_alert",
       "recommended_scriba_action": "Alerta de release silenciosa: versión v2.0.0 (2026-11-08) posterior al último post (2025-12-06); encargar a E03 nuevo post o destacar en Brevo Newsletter 2.0."
     },
@@ -2248,9 +2248,9 @@
       "status": "published",
       "linked_posts_count": 20,
       "latest_post_date": "2026-11-26",
-      "editorial_views_30d": 425,
+      "editorial_views_30d": 428,
       "editorial_coverage_status": "covered",
-      "recommended_scriba_action": "Activo cubierto con 20 post(s) en producción (425 vistas/30d)."
+      "recommended_scriba_action": "Activo cubierto con 20 post(s) en producción (428 vistas/30d)."
     },
     {
       "asset_id": "obs-management-v2.0.0",
@@ -2262,7 +2262,7 @@
       "status": "published",
       "linked_posts_count": 20,
       "latest_post_date": "2026-11-26",
-      "editorial_views_30d": 425,
+      "editorial_views_30d": 428,
       "editorial_coverage_status": "covered",
       "recommended_scriba_action": "Versión v2.0.0 respaldada por los artículos de la serie."
     },
@@ -2276,7 +2276,7 @@
       "status": "published",
       "linked_posts_count": 20,
       "latest_post_date": "2026-11-26",
-      "editorial_views_30d": 425,
+      "editorial_views_30d": 428,
       "editorial_coverage_status": "covered",
       "recommended_scriba_action": "Versión v1.0.1 respaldada por los artículos de la serie."
     },
@@ -2388,9 +2388,9 @@
       "status": "published",
       "linked_posts_count": 1,
       "latest_post_date": "2026-11-26",
-      "editorial_views_30d": 88,
+      "editorial_views_30d": 90,
       "editorial_coverage_status": "covered",
-      "recommended_scriba_action": "Activo cubierto con 1 post(s) en producción (88 vistas/30d)."
+      "recommended_scriba_action": "Activo cubierto con 1 post(s) en producción (90 vistas/30d)."
     },
     {
       "asset_id": "pack-rice",
@@ -2528,9 +2528,9 @@
       "status": "published",
       "linked_posts_count": 4,
       "latest_post_date": "2025-12-06",
-      "editorial_views_30d": 47,
+      "editorial_views_30d": 48,
       "editorial_coverage_status": "covered",
-      "recommended_scriba_action": "Activo cubierto con 4 post(s) en producción (47 vistas/30d)."
+      "recommended_scriba_action": "Activo cubierto con 4 post(s) en producción (48 vistas/30d)."
     },
     {
       "asset_id": "weather-v1.0.0",
@@ -2542,7 +2542,7 @@
       "status": "published",
       "linked_posts_count": 4,
       "latest_post_date": "2025-12-06",
-      "editorial_views_30d": 47,
+      "editorial_views_30d": 48,
       "editorial_coverage_status": "covered",
       "recommended_scriba_action": "Versión v1.0.0 respaldada por los artículos de la serie."
     },
@@ -2556,7 +2556,7 @@
       "status": "published",
       "linked_posts_count": 4,
       "latest_post_date": "2025-12-06",
-      "editorial_views_30d": 47,
+      "editorial_views_30d": 48,
       "editorial_coverage_status": "covered",
       "recommended_scriba_action": "Versión v0.3.0 respaldada por los artículos de la serie."
     },
@@ -2570,7 +2570,7 @@
       "status": "published",
       "linked_posts_count": 4,
       "latest_post_date": "2025-12-06",
-      "editorial_views_30d": 47,
+      "editorial_views_30d": 48,
       "editorial_coverage_status": "covered",
       "recommended_scriba_action": "Versión v0.2.0 respaldada por los artículos de la serie."
     },
@@ -2584,7 +2584,7 @@
       "status": "published",
       "linked_posts_count": 4,
       "latest_post_date": "2025-12-06",
-      "editorial_views_30d": 47,
+      "editorial_views_30d": 48,
       "editorial_coverage_status": "covered",
       "recommended_scriba_action": "Versión v0.1.0 respaldada por los artículos de la serie."
     },
@@ -2920,26 +2920,26 @@
   "channel_summary": [
     {
       "channel": "direct",
-      "sessions_30d": 2373,
-      "sessions_es_30d": 1122,
-      "sessions_en_30d": 1224,
-      "en_share_pct": 52.2,
-      "users_30d": 1915,
+      "sessions_30d": 2493,
+      "sessions_es_30d": 1192,
+      "sessions_en_30d": 1274,
+      "en_share_pct": 51.7,
+      "users_30d": 2035,
       "engaged_sessions_30d": 671,
-      "engagement_rate_pct": 28.3,
-      "avg_engagement_sec": 10.3,
+      "engagement_rate_pct": 26.9,
+      "avg_engagement_sec": 9.8,
       "key_events_30d": 8,
-      "conversion_rate_pct": 0.34,
+      "conversion_rate_pct": 0.32,
       "sessions_prev_30d": 1009,
-      "trend_30d_pct": 135.2
+      "trend_30d_pct": 147.1
     },
     {
       "channel": "other",
       "sessions_30d": 352,
-      "sessions_es_30d": 182,
-      "sessions_en_30d": 168,
-      "en_share_pct": 48.0,
-      "users_30d": 246,
+      "sessions_es_30d": 183,
+      "sessions_en_30d": 167,
+      "en_share_pct": 47.7,
+      "users_30d": 245,
       "engaged_sessions_30d": 144,
       "engagement_rate_pct": 40.9,
       "avg_engagement_sec": 21.7,
@@ -2950,18 +2950,18 @@
     },
     {
       "channel": "google_organic",
-      "sessions_30d": 252,
-      "sessions_es_30d": 135,
+      "sessions_30d": 254,
+      "sessions_es_30d": 137,
       "sessions_en_30d": 117,
-      "en_share_pct": 46.4,
-      "users_30d": 185,
-      "engaged_sessions_30d": 133,
-      "engagement_rate_pct": 52.8,
-      "avg_engagement_sec": 41.5,
+      "en_share_pct": 46.1,
+      "users_30d": 186,
+      "engaged_sessions_30d": 135,
+      "engagement_rate_pct": 53.1,
+      "avg_engagement_sec": 41.2,
       "key_events_30d": 0,
       "conversion_rate_pct": 0.0,
       "sessions_prev_30d": 141,
-      "trend_30d_pct": 78.7
+      "trend_30d_pct": 80.1
     },
     {
       "channel": "linkedin",
@@ -3046,132 +3046,152 @@
       "dispatch_id": "magnific-ai-2026-11-21-wave1-es-native",
       "channel_expected": "linkedin,x",
       "direct_sessions_current": 206,
-      "direct_sessions_baseline": 114.0,
-      "spike_pct": 80.7,
+      "direct_sessions_baseline": 116.0,
+      "spike_pct": 77.6,
       "severity": "high",
-      "recommended_action": "Pico +81% de tráfico (direct) tras despacho 'magnific-ai-2026-11-21-wave1-es-native' con solo 3 sesiones UTM en [linkedin,x]. Verificar UTMs ADR-033 en enlaces compartidos."
+      "recommended_action": "Pico +78% de tráfico (direct) tras despacho 'magnific-ai-2026-11-21-wave1-es-native' con solo 3 sesiones UTM en [linkedin,x]. Verificar UTMs ADR-033 en enlaces compartidos."
     },
     {
       "alert_type": "dark_social_spike",
       "dispatch_id": "magnific-ai-2026-11-21-wave2-en-native",
       "channel_expected": "linkedin,x",
       "direct_sessions_current": 206,
-      "direct_sessions_baseline": 114.0,
-      "spike_pct": 80.7,
+      "direct_sessions_baseline": 116.0,
+      "spike_pct": 77.6,
       "severity": "high",
-      "recommended_action": "Pico +81% de tráfico (direct) tras despacho 'magnific-ai-2026-11-21-wave2-en-native' con solo 3 sesiones UTM en [linkedin,x]. Verificar UTMs ADR-033 en enlaces compartidos."
+      "recommended_action": "Pico +78% de tráfico (direct) tras despacho 'magnific-ai-2026-11-21-wave2-en-native' con solo 3 sesiones UTM en [linkedin,x]. Verificar UTMs ADR-033 en enlaces compartidos."
     },
     {
       "alert_type": "dark_social_spike",
       "dispatch_id": "magnific-ai-2026-11-21-wave3a-es-devto",
       "channel_expected": "devto",
       "direct_sessions_current": 206,
-      "direct_sessions_baseline": 114.0,
-      "spike_pct": 80.7,
+      "direct_sessions_baseline": 116.0,
+      "spike_pct": 77.6,
       "severity": "high",
-      "recommended_action": "Pico +81% de tráfico (direct) tras despacho 'magnific-ai-2026-11-21-wave3a-es-devto' con solo 0 sesiones UTM en [devto]. Verificar UTMs ADR-033 en enlaces compartidos."
+      "recommended_action": "Pico +78% de tráfico (direct) tras despacho 'magnific-ai-2026-11-21-wave3a-es-devto' con solo 0 sesiones UTM en [devto]. Verificar UTMs ADR-033 en enlaces compartidos."
     },
     {
       "alert_type": "dark_social_spike",
       "dispatch_id": "magnific-ai-2026-11-21-wave3b-en-syndication",
       "channel_expected": "devto,coderlegion",
       "direct_sessions_current": 206,
-      "direct_sessions_baseline": 114.0,
-      "spike_pct": 80.7,
+      "direct_sessions_baseline": 116.0,
+      "spike_pct": 77.6,
       "severity": "high",
-      "recommended_action": "Pico +81% de tráfico (direct) tras despacho 'magnific-ai-2026-11-21-wave3b-en-syndication' con solo 0 sesiones UTM en [devto,coderlegion]. Verificar UTMs ADR-033 en enlaces compartidos."
+      "recommended_action": "Pico +78% de tráfico (direct) tras despacho 'magnific-ai-2026-11-21-wave3b-en-syndication' con solo 0 sesiones UTM en [devto,coderlegion]. Verificar UTMs ADR-033 en enlaces compartidos."
     },
     {
       "alert_type": "dark_social_spike",
       "dispatch_id": "pulse-part2-2026-11-22-wave1-es-native",
       "channel_expected": "linkedin,x",
       "direct_sessions_current": 206,
-      "direct_sessions_baseline": 114.0,
-      "spike_pct": 80.7,
+      "direct_sessions_baseline": 116.0,
+      "spike_pct": 77.6,
       "severity": "high",
-      "recommended_action": "Pico +81% de tráfico (direct) tras despacho 'pulse-part2-2026-11-22-wave1-es-native' con solo 2 sesiones UTM en [linkedin,x]. Verificar UTMs ADR-033 en enlaces compartidos."
+      "recommended_action": "Pico +78% de tráfico (direct) tras despacho 'pulse-part2-2026-11-22-wave1-es-native' con solo 2 sesiones UTM en [linkedin,x]. Verificar UTMs ADR-033 en enlaces compartidos."
     },
     {
       "alert_type": "dark_social_spike",
       "dispatch_id": "pulse-part2-2026-11-22-wave2-en-native",
       "channel_expected": "linkedin,x",
       "direct_sessions_current": 206,
-      "direct_sessions_baseline": 114.0,
-      "spike_pct": 80.7,
+      "direct_sessions_baseline": 116.0,
+      "spike_pct": 77.6,
       "severity": "high",
-      "recommended_action": "Pico +81% de tráfico (direct) tras despacho 'pulse-part2-2026-11-22-wave2-en-native' con solo 2 sesiones UTM en [linkedin,x]. Verificar UTMs ADR-033 en enlaces compartidos."
+      "recommended_action": "Pico +78% de tráfico (direct) tras despacho 'pulse-part2-2026-11-22-wave2-en-native' con solo 2 sesiones UTM en [linkedin,x]. Verificar UTMs ADR-033 en enlaces compartidos."
     },
     {
       "alert_type": "dark_social_spike",
       "dispatch_id": "pulse-part2-2026-11-22-wave3a-es-devto",
       "channel_expected": "devto",
       "direct_sessions_current": 206,
-      "direct_sessions_baseline": 114.0,
-      "spike_pct": 80.7,
+      "direct_sessions_baseline": 116.0,
+      "spike_pct": 77.6,
       "severity": "high",
-      "recommended_action": "Pico +81% de tráfico (direct) tras despacho 'pulse-part2-2026-11-22-wave3a-es-devto' con solo 0 sesiones UTM en [devto]. Verificar UTMs ADR-033 en enlaces compartidos."
+      "recommended_action": "Pico +78% de tráfico (direct) tras despacho 'pulse-part2-2026-11-22-wave3a-es-devto' con solo 0 sesiones UTM en [devto]. Verificar UTMs ADR-033 en enlaces compartidos."
     },
     {
       "alert_type": "dark_social_spike",
       "dispatch_id": "pulse-part2-2026-11-22-wave3b-en-syndication",
       "channel_expected": "devto,coderlegion",
       "direct_sessions_current": 226,
-      "direct_sessions_baseline": 114.0,
-      "spike_pct": 98.2,
+      "direct_sessions_baseline": 116.0,
+      "spike_pct": 94.8,
       "severity": "high",
-      "recommended_action": "Pico +98% de tráfico (direct) tras despacho 'pulse-part2-2026-11-22-wave3b-en-syndication' con solo 0 sesiones UTM en [devto,coderlegion]. Verificar UTMs ADR-033 en enlaces compartidos."
+      "recommended_action": "Pico +95% de tráfico (direct) tras despacho 'pulse-part2-2026-11-22-wave3b-en-syndication' con solo 0 sesiones UTM en [devto,coderlegion]. Verificar UTMs ADR-033 en enlaces compartidos."
     },
     {
       "alert_type": "dark_social_spike",
       "dispatch_id": "evm-2026-11-23-2026-11-23-wave2-en-native",
       "channel_expected": "linkedin,x",
       "direct_sessions_current": 226,
-      "direct_sessions_baseline": 114.0,
-      "spike_pct": 98.2,
+      "direct_sessions_baseline": 116.0,
+      "spike_pct": 94.8,
       "severity": "high",
-      "recommended_action": "Pico +98% de tráfico (direct) tras despacho 'evm-2026-11-23-2026-11-23-wave2-en-native' con solo 0 sesiones UTM en [linkedin,x]. Verificar UTMs ADR-033 en enlaces compartidos."
+      "recommended_action": "Pico +95% de tráfico (direct) tras despacho 'evm-2026-11-23-2026-11-23-wave2-en-native' con solo 0 sesiones UTM en [linkedin,x]. Verificar UTMs ADR-033 en enlaces compartidos."
     },
     {
       "alert_type": "dark_social_spike",
       "dispatch_id": "evm-2026-11-23-2026-11-23-wave3a-es-devto",
       "channel_expected": "devto",
       "direct_sessions_current": 179,
-      "direct_sessions_baseline": 114.0,
-      "spike_pct": 57.0,
+      "direct_sessions_baseline": 116.0,
+      "spike_pct": 54.3,
       "severity": "high",
-      "recommended_action": "Pico +57% de tráfico (direct) tras despacho 'evm-2026-11-23-2026-11-23-wave3a-es-devto' con solo 0 sesiones UTM en [devto]. Verificar UTMs ADR-033 en enlaces compartidos."
+      "recommended_action": "Pico +54% de tráfico (direct) tras despacho 'evm-2026-11-23-2026-11-23-wave3a-es-devto' con solo 0 sesiones UTM en [devto]. Verificar UTMs ADR-033 en enlaces compartidos."
     },
     {
       "alert_type": "dark_social_spike",
       "dispatch_id": "evm-2026-11-23-2026-11-23-wave3b-en-syndication",
       "channel_expected": "devto,coderlegion",
       "direct_sessions_current": 179,
-      "direct_sessions_baseline": 114.0,
-      "spike_pct": 57.0,
+      "direct_sessions_baseline": 116.0,
+      "spike_pct": 54.3,
       "severity": "high",
-      "recommended_action": "Pico +57% de tráfico (direct) tras despacho 'evm-2026-11-23-2026-11-23-wave3b-en-syndication' con solo 0 sesiones UTM en [devto,coderlegion]. Verificar UTMs ADR-033 en enlaces compartidos."
+      "recommended_action": "Pico +54% de tráfico (direct) tras despacho 'evm-2026-11-23-2026-11-23-wave3b-en-syndication' con solo 0 sesiones UTM en [devto,coderlegion]. Verificar UTMs ADR-033 en enlaces compartidos."
+    },
+    {
+      "alert_type": "dark_social_spike",
+      "dispatch_id": "stock-rop-2026-11-26-wave3a-es-devto",
+      "channel_expected": "devto",
+      "direct_sessions_current": 132,
+      "direct_sessions_baseline": 58.0,
+      "spike_pct": 127.6,
+      "severity": "high",
+      "recommended_action": "Pico +128% de tráfico (direct) tras despacho 'stock-rop-2026-11-26-wave3a-es-devto' con solo 0 sesiones UTM en [devto]. Verificar UTMs ADR-033 en enlaces compartidos."
+    },
+    {
+      "alert_type": "dark_social_spike",
+      "dispatch_id": "stock-rop-2026-11-26-wave3b-en-syndication",
+      "channel_expected": "devto,coderlegion",
+      "direct_sessions_current": 132,
+      "direct_sessions_baseline": 58.0,
+      "spike_pct": 127.6,
+      "severity": "high",
+      "recommended_action": "Pico +128% de tráfico (direct) tras despacho 'stock-rop-2026-11-26-wave3b-en-syndication' con solo 0 sesiones UTM en [devto,coderlegion]. Verificar UTMs ADR-033 en enlaces compartidos."
     },
     {
       "alert_type": "high_direct_share",
       "dispatch_id": null,
       "channel_expected": "linkedin,x,devto,coderlegion",
-      "direct_sessions_current": 2373,
+      "direct_sessions_current": 2493,
       "direct_sessions_baseline": 1009.0,
-      "spike_pct": 135.2,
+      "spike_pct": 147.1,
       "severity": "medium",
-      "recommended_action": "Tráfico directo creció +135% (73.8% del total) mientras atribución social UTM es 7.1%. Auditar enlaces manuales en bio/comentarios."
+      "recommended_action": "Tráfico directo creció +147% (74.7% del total) mientras atribución social UTM es 6.8%. Auditar enlaces manuales en bio/comentarios."
     }
   ],
   "social_platform_summary": {
     "devto": {
       "platform": "devto",
       "status": "ok",
-      "last_synced_at": "2026-11-27T07:14:47.960720+00:00",
+      "last_synced_at": "2026-11-27T11:54:41.478590+00:00",
       "articles_count": 216,
       "matched_assets_count": 107,
-      "native_views": 8971,
+      "native_views": 8983,
       "native_reactions": 123,
-      "native_comments": 32,
+      "native_comments": 33,
       "ga4_sessions_30d": 1,
       "ptr_pct": 0.01
     },
@@ -3267,10 +3287,10 @@
   "canonical_shield_alerts": [],
   "silent_releases_count": 15,
   "net_external_traffic_summary": {
-    "total_gross_sessions_30d": 3215,
-    "direct_sessions_30d": 2373,
-    "net_external_sessions_30d": 606,
-    "noise_local_sessions_30d": 109,
+    "total_gross_sessions_30d": 3337,
+    "direct_sessions_30d": 2493,
+    "net_external_sessions_30d": 607,
+    "noise_local_sessions_30d": 110,
     "noise_spam_sessions_30d": 127,
     "noise_spam_sources": [
       "aocr.org"

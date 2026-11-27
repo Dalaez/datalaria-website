@@ -1,16 +1,16 @@
 {
   "version": "1.0.0",
   "visibility": "private",
-  "generated_at": "2026-11-27T07:14:47.960720+00:00",
+  "generated_at": "2026-11-27T11:54:41.478590+00:00",
   "platforms": {
     "devto": {
       "status": "ok",
-      "last_synced_at": "2026-11-27T07:14:47.960720+00:00",
+      "last_synced_at": "2026-11-27T11:54:41.478590+00:00",
       "articles_count": 216,
       "matched_assets_count": 107,
-      "total_views": 8971,
+      "total_views": 8983,
       "total_reactions": 123,
-      "total_comments": 32,
+      "total_comments": 33,
       "articles": [
         {
           "external_id": "5130347",
@@ -18,11 +18,11 @@
           "slug": "safety-stock-reorder-point-rop-engine-stochastic-convolution-eoq-iec-62402-lifecycle-control-1o0j",
           "url": "https://dev.to/datalaria/safety-stock-reorder-point-rop-engine-stochastic-convolution-eoq-iec-62402-lifecycle-control-1o0j",
           "canonical_url": "https://datalaria.com/en/posts/safety-stock-reorder-point-calculator/",
-          "views": 0,
+          "views": 2,
           "reactions": 0,
           "positive_reactions": 0,
           "public_reactions": 0,
-          "comments": 0,
+          "comments": 1,
           "reading_time_min": 22,
           "published_at": "2026-11-27T06:51:57.049Z",
           "platform": "devto",
@@ -3114,7 +3114,7 @@
           "slug": "project-autopilot-why-i-fired-myself-as-community-manager-to-build-an-ai-agents-army-39k8",
           "url": "https://dev.to/datalaria/project-autopilot-why-i-fired-myself-as-community-manager-to-build-an-ai-agents-army-39k8",
           "canonical_url": "https://datalaria.com/en/posts/ai_agents_part1/",
-          "views": 99,
+          "views": 109,
           "reactions": 2,
           "positive_reactions": 2,
           "public_reactions": 2,
@@ -4807,9 +4807,9 @@
     },
     "ia_agents_part1": {
       "devto": {
-        "views": 145,
+        "views": 155,
         "views_es": 46,
-        "views_en": 99,
+        "views_en": 109,
         "reactions": 2,
         "comments": 1,
         "articles_count": 2,
@@ -5649,11 +5649,11 @@
     },
     "safety-stock-reorder-point-calculator": {
       "devto": {
-        "views": 0,
+        "views": 2,
         "views_es": 0,
-        "views_en": 0,
+        "views_en": 2,
         "reactions": 0,
-        "comments": 0,
+        "comments": 1,
         "articles_count": 2,
         "external_ids": [
           "5130347",

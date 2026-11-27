@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "visibility": "private",
   "days": 30,
-  "last_synced_at": "2026-11-27T07:14:44.469735+00:00",
+  "last_synced_at": "2026-11-27T11:54:38.575152+00:00",
   "sources_status": {
     "ga4_acquisition": "ok",
     "x_native": "standby_zero_cost"
@@ -10,19 +10,19 @@
   "by_channel": {
     "google_organic": {
       "channel": "google_organic",
-      "sessions_30d": 252,
-      "sessions_es_30d": 135,
+      "sessions_30d": 254,
+      "sessions_es_30d": 137,
       "sessions_en_30d": 117,
-      "en_share_pct": 46.4,
-      "users_30d": 185,
-      "engaged_sessions_30d": 133,
-      "engagement_rate_pct": 52.8,
-      "avg_engagement_sec": 41.5,
+      "en_share_pct": 46.1,
+      "users_30d": 186,
+      "engaged_sessions_30d": 135,
+      "engagement_rate_pct": 53.1,
+      "avg_engagement_sec": 41.2,
       "key_events_30d": 0,
       "key_events_breakdown": {},
       "conversion_rate_pct": 0.0,
       "sessions_prev_30d": 141,
-      "trend_30d_pct": 78.7
+      "trend_30d_pct": 80.1
     },
     "linkedin": {
       "channel": "linkedin",
@@ -109,31 +109,31 @@
     },
     "direct": {
       "channel": "direct",
-      "sessions_30d": 2373,
-      "sessions_es_30d": 1122,
-      "sessions_en_30d": 1224,
-      "en_share_pct": 52.2,
-      "users_30d": 1915,
+      "sessions_30d": 2493,
+      "sessions_es_30d": 1192,
+      "sessions_en_30d": 1274,
+      "en_share_pct": 51.7,
+      "users_30d": 2035,
       "engaged_sessions_30d": 671,
-      "engagement_rate_pct": 28.3,
-      "avg_engagement_sec": 10.3,
+      "engagement_rate_pct": 26.9,
+      "avg_engagement_sec": 9.8,
       "key_events_30d": 8,
       "key_events_breakdown": {
         "begin_checkout": 5,
         "home_pack_click": 2,
         "begin_checkout_kit": 1
       },
-      "conversion_rate_pct": 0.34,
+      "conversion_rate_pct": 0.32,
       "sessions_prev_30d": 1009,
-      "trend_30d_pct": 135.2
+      "trend_30d_pct": 147.1
     },
     "other": {
       "channel": "other",
       "sessions_30d": 352,
-      "sessions_es_30d": 182,
-      "sessions_en_30d": 168,
-      "en_share_pct": 48.0,
-      "users_30d": 246,
+      "sessions_es_30d": 183,
+      "sessions_en_30d": 167,
+      "en_share_pct": 47.7,
+      "users_30d": 245,
       "engaged_sessions_30d": 144,
       "engagement_rate_pct": 40.9,
       "avg_engagement_sec": 21.7,
@@ -336,12 +336,12 @@
         "key_events_breakdown": {}
       },
       "google_organic": {
-        "sessions_30d": 5,
-        "sessions_es_30d": 2,
+        "sessions_30d": 6,
+        "sessions_es_30d": 3,
         "sessions_en_30d": 3,
         "users_30d": 5,
         "engaged_sessions_30d": 3,
-        "avg_engagement_sec": 301.0,
+        "avg_engagement_sec": 250.8,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -468,7 +468,7 @@
         "sessions_es_30d": 1,
         "sessions_en_30d": 0,
         "users_30d": 1,
-        "engaged_sessions_30d": 0,
+        "engaged_sessions_30d": 1,
         "avg_engagement_sec": 789.0,
         "key_events_30d": 0,
         "key_events_breakdown": {}
@@ -730,6 +730,58 @@
         "users_30d": 2,
         "engaged_sessions_30d": 1,
         "avg_engagement_sec": 39.0,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      }
+    },
+    "weather": {
+      "direct": {
+        "sessions_30d": 25,
+        "sessions_es_30d": 14,
+        "sessions_en_30d": 11,
+        "users_30d": 20,
+        "engaged_sessions_30d": 7,
+        "avg_engagement_sec": 8.5,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "other": {
+        "sessions_30d": 13,
+        "sessions_es_30d": 5,
+        "sessions_en_30d": 8,
+        "users_30d": 11,
+        "engaged_sessions_30d": 2,
+        "avg_engagement_sec": 1.8,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "google_organic": {
+        "sessions_30d": 3,
+        "sessions_es_30d": 1,
+        "sessions_en_30d": 2,
+        "users_30d": 3,
+        "engaged_sessions_30d": 2,
+        "avg_engagement_sec": 8.7,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "linkedin": {
+        "sessions_30d": 3,
+        "sessions_es_30d": 2,
+        "sessions_en_30d": 1,
+        "users_30d": 2,
+        "engaged_sessions_30d": 3,
+        "avg_engagement_sec": 1.7,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "x": {
+        "sessions_30d": 2,
+        "sessions_es_30d": 2,
+        "sessions_en_30d": 0,
+        "users_30d": 1,
+        "engaged_sessions_30d": 2,
+        "avg_engagement_sec": 0.0,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -1056,12 +1108,12 @@
         "key_events_breakdown": {}
       },
       "google_organic": {
-        "sessions_30d": 1,
-        "sessions_es_30d": 1,
+        "sessions_30d": 2,
+        "sessions_es_30d": 2,
         "sessions_en_30d": 0,
-        "users_30d": 1,
-        "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 199.0,
+        "users_30d": 2,
+        "engaged_sessions_30d": 2,
+        "avg_engagement_sec": 102.0,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
@@ -1108,6 +1160,28 @@
         "key_events_breakdown": {}
       }
     },
+    "economia_oculta_ia": {
+      "direct": {
+        "sessions_30d": 12,
+        "sessions_es_30d": 1,
+        "sessions_en_30d": 11,
+        "users_30d": 11,
+        "engaged_sessions_30d": 0,
+        "avg_engagement_sec": 0.3,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "google_organic": {
+        "sessions_30d": 6,
+        "sessions_es_30d": 0,
+        "sessions_en_30d": 6,
+        "users_30d": 2,
+        "engaged_sessions_30d": 1,
+        "avg_engagement_sec": 4.2,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      }
+    },
     "pulse-part3": {
       "direct": {
         "sessions_30d": 15,
@@ -1116,58 +1190,6 @@
         "users_30d": 8,
         "engaged_sessions_30d": 8,
         "avg_engagement_sec": 9.3,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
-    "weather": {
-      "direct": {
-        "sessions_30d": 19,
-        "sessions_es_30d": 9,
-        "sessions_en_30d": 10,
-        "users_30d": 14,
-        "engaged_sessions_30d": 7,
-        "avg_engagement_sec": 11.2,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "other": {
-        "sessions_30d": 13,
-        "sessions_es_30d": 5,
-        "sessions_en_30d": 8,
-        "users_30d": 11,
-        "engaged_sessions_30d": 2,
-        "avg_engagement_sec": 1.8,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "google_organic": {
-        "sessions_30d": 3,
-        "sessions_es_30d": 1,
-        "sessions_en_30d": 2,
-        "users_30d": 3,
-        "engaged_sessions_30d": 2,
-        "avg_engagement_sec": 8.7,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "linkedin": {
-        "sessions_30d": 3,
-        "sessions_es_30d": 2,
-        "sessions_en_30d": 1,
-        "users_30d": 2,
-        "engaged_sessions_30d": 3,
-        "avg_engagement_sec": 1.7,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "x": {
-        "sessions_30d": 2,
-        "sessions_es_30d": 2,
-        "sessions_en_30d": 0,
-        "users_30d": 1,
-        "engaged_sessions_30d": 2,
-        "avg_engagement_sec": 0.0,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -1190,28 +1212,6 @@
         "users_30d": 9,
         "engaged_sessions_30d": 1,
         "avg_engagement_sec": 94.1,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
-    "economia_oculta_ia": {
-      "direct": {
-        "sessions_30d": 11,
-        "sessions_es_30d": 1,
-        "sessions_en_30d": 10,
-        "users_30d": 10,
-        "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 0.4,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "google_organic": {
-        "sessions_30d": 6,
-        "sessions_es_30d": 0,
-        "sessions_en_30d": 6,
-        "users_30d": 2,
-        "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 4.2,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -2034,6 +2034,20 @@
         "key_events_breakdown": {}
       }
     },
+    "safety-stock-reorder-point-calculator": {
+      "direct": {
+        "sessions_30d": 8,
+        "sessions_es_30d": 6,
+        "sessions_en_30d": 2,
+        "users_30d": 5,
+        "engaged_sessions_30d": 4,
+        "avg_engagement_sec": 21.9,
+        "key_events_30d": 1,
+        "key_events_breakdown": {
+          "begin_checkout": 1
+        }
+      }
+    },
     "app_openweather_part2_frontend": {
       "other": {
         "sessions_30d": 5,
@@ -2052,6 +2066,28 @@
         "users_30d": 7,
         "engaged_sessions_30d": 4,
         "avg_engagement_sec": 0.7,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      }
+    },
+    "carto": {
+      "direct": {
+        "sessions_30d": 8,
+        "sessions_es_30d": 3,
+        "sessions_en_30d": 5,
+        "users_30d": 8,
+        "engaged_sessions_30d": 0,
+        "avg_engagement_sec": 1.2,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "google_organic": {
+        "sessions_30d": 1,
+        "sessions_es_30d": 0,
+        "sessions_en_30d": 1,
+        "users_30d": 1,
+        "engaged_sessions_30d": 1,
+        "avg_engagement_sec": 467.0,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -2144,28 +2180,14 @@
         "key_events_breakdown": {}
       },
       "direct": {
-        "sessions_30d": 4,
+        "sessions_30d": 5,
         "sessions_es_30d": 2,
-        "sessions_en_30d": 2,
-        "users_30d": 4,
+        "sessions_en_30d": 3,
+        "users_30d": 5,
         "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 2.2,
+        "avg_engagement_sec": 2.0,
         "key_events_30d": 0,
         "key_events_breakdown": {}
-      }
-    },
-    "safety-stock-reorder-point-calculator": {
-      "direct": {
-        "sessions_30d": 6,
-        "sessions_es_30d": 5,
-        "sessions_en_30d": 1,
-        "users_30d": 3,
-        "engaged_sessions_30d": 4,
-        "avg_engagement_sec": 29.2,
-        "key_events_30d": 1,
-        "key_events_breakdown": {
-          "begin_checkout": 1
-        }
       }
     },
     "ia_agents_part9": {
@@ -2220,38 +2242,6 @@
         "users_30d": 6,
         "engaged_sessions_30d": 2,
         "avg_engagement_sec": 1.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
-    "carto": {
-      "direct": {
-        "sessions_30d": 7,
-        "sessions_es_30d": 3,
-        "sessions_en_30d": 4,
-        "users_30d": 7,
-        "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 1.4,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "other": {
-        "sessions_30d": 1,
-        "sessions_es_30d": 0,
-        "sessions_en_30d": 1,
-        "users_30d": 1,
-        "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 0.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "google_organic": {
-        "sessions_30d": 1,
-        "sessions_es_30d": 0,
-        "sessions_en_30d": 1,
-        "users_30d": 1,
-        "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 467.0,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -3478,14 +3468,14 @@
       "other": 5
     },
     "2026-11-26": {
-      "direct": 37,
+      "direct": 38,
       "google_organic": 7,
-      "other": 5
+      "other": 4
     },
     "2026-11-27": {
-      "direct": 13,
-      "other": 1,
-      "google_organic": 1
+      "direct": 132,
+      "google_organic": 3,
+      "other": 2
     }
   },
   "records": [
@@ -3497,10 +3487,10 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 191,
-      "users": 120,
+      "sessions": 193,
+      "users": 122,
       "engaged_sessions": 103,
-      "engagement_sec": 4021.0,
+      "engagement_sec": 4023.0,
       "key_events": 4,
       "key_events_breakdown": {
         "begin_checkout": 2,
@@ -3542,6 +3532,21 @@
     },
     {
       "channel": "direct",
+      "path": "/es/apps/weather/clima",
+      "asset_id": null,
+      "lang": "es",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 63,
+      "users": 63,
+      "engaged_sessions": 0,
+      "engagement_sec": 2.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
       "path": "/es/posts",
       "asset_id": null,
       "lang": "es",
@@ -3552,6 +3557,21 @@
       "users": 4,
       "engaged_sessions": 51,
       "engagement_sec": 1065.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/en/apps/weather/climate",
+      "asset_id": null,
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 47,
+      "users": 47,
+      "engaged_sessions": 0,
+      "engagement_sec": 0.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -3608,7 +3628,7 @@
       "source": "localhost:1313",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 33,
+      "sessions": 34,
       "users": 1,
       "engaged_sessions": 27,
       "engagement_sec": 455.0,
@@ -3947,6 +3967,21 @@
     },
     {
       "channel": "direct",
+      "path": "/es/apps/weather",
+      "asset_id": "weather",
+      "lang": "es",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 14,
+      "users": 9,
+      "engaged_sessions": 7,
+      "engagement_sec": 212.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
       "path": "/es/posts/agentes_ia_operativa_sdd",
       "asset_id": "agentes_ia_operativa_sdd",
       "lang": "es",
@@ -4250,6 +4285,21 @@
     },
     {
       "channel": "direct",
+      "path": "/en/apps/weather",
+      "asset_id": "weather",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 11,
+      "users": 11,
+      "engaged_sessions": 0,
+      "engagement_sec": 0.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
       "path": "/en/posts/alan_turing",
       "asset_id": "alan_turing",
       "lang": "en",
@@ -4275,6 +4325,21 @@
       "users": 11,
       "engaged_sessions": 2,
       "engagement_sec": 60.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/en/posts/hidden_economics_ai",
+      "asset_id": "economia_oculta_ia",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 11,
+      "users": 10,
+      "engaged_sessions": 0,
+      "engagement_sec": 0.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -4369,21 +4434,6 @@
       "key_events_breakdown": {}
     },
     {
-      "channel": "direct",
-      "path": "/en/apps/weather",
-      "asset_id": "weather",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 10,
-      "users": 10,
-      "engaged_sessions": 0,
-      "engagement_sec": 0.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
       "channel": "other",
       "path": "/en/posts/app_openweather_part1_backend",
       "asset_id": "app-openweather_part1_backend",
@@ -4393,21 +4443,6 @@
       "campaign": "(referral)",
       "sessions": 10,
       "users": 10,
-      "engaged_sessions": 0,
-      "engagement_sec": 0.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/en/posts/hidden_economics_ai",
-      "asset_id": "economia_oculta_ia",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 10,
-      "users": 9,
       "engaged_sessions": 0,
       "engagement_sec": 0.0,
       "key_events": 0,
@@ -4620,21 +4655,6 @@
       "users": 9,
       "engaged_sessions": 0,
       "engagement_sec": 2.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/es/apps/weather",
-      "asset_id": "weather",
-      "lang": "es",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 9,
-      "users": 4,
-      "engaged_sessions": 7,
-      "engagement_sec": 212.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -5179,6 +5199,23 @@
       "key_events_breakdown": {}
     },
     {
+      "channel": "direct",
+      "path": "/es/posts/calculadora-stock-seguridad-rop",
+      "asset_id": "safety-stock-reorder-point-calculator",
+      "lang": "es",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 6,
+      "users": 3,
+      "engaged_sessions": 3,
+      "engagement_sec": 172.0,
+      "key_events": 1,
+      "key_events_breakdown": {
+        "begin_checkout": 1
+      }
+    },
+    {
       "channel": "coderlegion",
       "path": "/en",
       "asset_id": null,
@@ -5389,23 +5426,6 @@
       "key_events_breakdown": {}
     },
     {
-      "channel": "direct",
-      "path": "/es/posts/calculadora-stock-seguridad-rop",
-      "asset_id": "safety-stock-reorder-point-calculator",
-      "lang": "es",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 5,
-      "users": 2,
-      "engaged_sessions": 3,
-      "engagement_sec": 172.0,
-      "key_events": 1,
-      "key_events_breakdown": {
-        "begin_checkout": 1
-      }
-    },
-    {
       "channel": "google_organic",
       "path": "/en",
       "asset_id": null,
@@ -5458,6 +5478,21 @@
       "source": "aocr.org",
       "medium": "referral",
       "campaign": "(referral)",
+      "sessions": 5,
+      "users": 5,
+      "engaged_sessions": 0,
+      "engagement_sec": 0.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/en/posts/carto",
+      "asset_id": "carto",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
       "sessions": 5,
       "users": 5,
       "engaged_sessions": 0,
@@ -5784,21 +5819,6 @@
       "channel": "direct",
       "path": "/en/posts/app_unit_converter",
       "asset_id": "app_conversor_unidades",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 4,
-      "users": 4,
-      "engaged_sessions": 0,
-      "engagement_sec": 0.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/en/posts/carto",
-      "asset_id": "carto",
       "lang": "en",
       "source": "(direct)",
       "medium": "(none)",
@@ -6407,6 +6427,21 @@
       "users": 3,
       "engaged_sessions": 0,
       "engagement_sec": 0.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/en/posts/app_openweather_part3_ai_prediction",
+      "asset_id": "app_openweather_part3_ai_prediction",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 3,
+      "users": 3,
+      "engaged_sessions": 0,
+      "engagement_sec": 1.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -7221,6 +7256,21 @@
       "key_events_breakdown": {}
     },
     {
+      "channel": "google_organic",
+      "path": "/es/posts/ravenpack",
+      "asset_id": "ravenpack",
+      "lang": "es",
+      "source": "google",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "sessions": 3,
+      "users": 2,
+      "engaged_sessions": 0,
+      "engagement_sec": 0.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
       "channel": "direct",
       "path": "/es/posts/sop_ingenieria-higiene-datos",
       "asset_id": "sop_ingenieria-higiene-datos",
@@ -7402,21 +7452,6 @@
     },
     {
       "channel": "direct",
-      "path": "/en/apps/weather/climate",
-      "asset_id": null,
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 2,
-      "users": 2,
-      "engaged_sessions": 0,
-      "engagement_sec": 0.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
       "path": "/en/contact",
       "asset_id": null,
       "lang": "en",
@@ -7517,21 +7552,6 @@
       "users": 2,
       "engaged_sessions": 1,
       "engagement_sec": 10.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/en/posts/app_openweather_part3_ai_prediction",
-      "asset_id": "app_openweather_part3_ai_prediction",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 2,
-      "users": 2,
-      "engaged_sessions": 0,
-      "engagement_sec": 0.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -7832,6 +7852,21 @@
       "users": 1,
       "engaged_sessions": 0,
       "engagement_sec": 0.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/en/posts/safety-stock-reorder-point-calculator",
+      "asset_id": "safety-stock-reorder-point-calculator",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 2,
+      "users": 2,
+      "engaged_sessions": 1,
+      "engagement_sec": 3.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -9141,6 +9176,21 @@
       "key_events_breakdown": {}
     },
     {
+      "channel": "google_organic",
+      "path": "/es/posts/alan_turing",
+      "asset_id": "alan_turing",
+      "lang": "es",
+      "source": "google",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "sessions": 2,
+      "users": 2,
+      "engaged_sessions": 2,
+      "engagement_sec": 204.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
       "channel": "linkedin",
       "path": "/es/posts/app-lifeops_part1_arquitectura_backend",
       "asset_id": "app-lifeops_part1_arquitectura_backend",
@@ -9662,21 +9712,6 @@
       "users": 1,
       "engaged_sessions": 1,
       "engagement_sec": 13.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "google_organic",
-      "path": "/es/posts/ravenpack",
-      "asset_id": "ravenpack",
-      "lang": "es",
-      "source": "google",
-      "medium": "organic",
-      "campaign": "(organic)",
-      "sessions": 2,
-      "users": 2,
-      "engaged_sessions": 0,
-      "engagement_sec": 0.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -11950,21 +11985,6 @@
       "key_events_breakdown": {}
     },
     {
-      "channel": "other",
-      "path": "/en/posts/carto",
-      "asset_id": "carto",
-      "lang": "en",
-      "source": "(not set)",
-      "medium": "(not set)",
-      "campaign": "(not set)",
-      "sessions": 1,
-      "users": 1,
-      "engaged_sessions": 0,
-      "engagement_sec": 0.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
       "channel": "google_organic",
       "path": "/en/posts/carto",
       "asset_id": "carto",
@@ -12546,21 +12566,6 @@
       "users": 1,
       "engaged_sessions": 1,
       "engagement_sec": 91.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/en/posts/safety-stock-reorder-point-calculator",
-      "asset_id": "safety-stock-reorder-point-calculator",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 1,
-      "users": 1,
-      "engaged_sessions": 1,
-      "engagement_sec": 3.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -14095,21 +14100,6 @@
       "key_events_breakdown": {}
     },
     {
-      "channel": "direct",
-      "path": "/es/apps/weather/clima",
-      "asset_id": null,
-      "lang": "es",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 1,
-      "users": 1,
-      "engaged_sessions": 0,
-      "engagement_sec": 0.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
       "channel": "x",
       "path": "/es/apps/weather/clima",
       "asset_id": null,
@@ -14271,21 +14261,6 @@
       "users": 1,
       "engaged_sessions": 1,
       "engagement_sec": 23.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "google_organic",
-      "path": "/es/posts/alan_turing",
-      "asset_id": "alan_turing",
-      "lang": "es",
-      "source": "google",
-      "medium": "organic",
-      "campaign": "(organic)",
-      "sessions": 1,
-      "users": 1,
-      "engaged_sessions": 1,
-      "engagement_sec": 199.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -14704,7 +14679,7 @@
       "campaign": "(organic)",
       "sessions": 1,
       "users": 1,
-      "engaged_sessions": 0,
+      "engaged_sessions": 1,
       "engagement_sec": 789.0,
       "key_events": 0,
       "key_events_breakdown": {}
