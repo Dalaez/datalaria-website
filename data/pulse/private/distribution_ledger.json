@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "visibility": "private",
-  "updated_at": "2026-11-27T06:39:58Z",
+  "updated_at": "2026-11-27T06:51:59Z",
   "entries": [
     {
       "asset_id": "autopilot-parte10-scriba-sindicacion-puente-pulse",
@@ -2212,6 +2212,26 @@
       "external_url": "https://dev.to/datalaria/calculadora-de-stock-de-seguridad-rop-convolucion-estocastica-eoq-y-ciclo-de-vida-iec-62402-1hj",
       "canonical_url": "https://datalaria.com/es/posts/calculadora-stock-seguridad-rop/",
       "published_at_utc": "2026-11-27T06:39:58Z"
+    },
+    {
+      "asset_id": "safety-stock-reorder-point-calculator",
+      "slug": "safety-stock-reorder-point-calculator",
+      "lang": "en",
+      "channel": "devto",
+      "external_id": "5130347",
+      "external_url": "https://dev.to/datalaria/safety-stock-reorder-point-rop-engine-stochastic-convolution-eoq-iec-62402-lifecycle-control-1o0j",
+      "canonical_url": "https://datalaria.com/en/posts/safety-stock-reorder-point-calculator/",
+      "published_at_utc": "2026-11-27T06:51:57Z"
+    },
+    {
+      "asset_id": "safety-stock-reorder-point-calculator",
+      "slug": "safety-stock-reorder-point-calculator",
+      "lang": "en",
+      "channel": "coderlegion",
+      "external_id": "36267",
+      "external_url": null,
+      "canonical_url": "https://datalaria.com/en/posts/safety-stock-reorder-point-calculator/",
+      "published_at_utc": "2026-11-27T06:51:59Z"
     }
   ]
 }
