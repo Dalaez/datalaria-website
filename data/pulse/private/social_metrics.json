@@ -1,17 +1,53 @@
 {
   "version": "1.0.0",
   "visibility": "private",
-  "generated_at": "2026-11-26T12:04:24.963470+00:00",
+  "generated_at": "2026-11-27T07:14:47.960720+00:00",
   "platforms": {
     "devto": {
       "status": "ok",
-      "last_synced_at": "2026-11-26T12:04:24.963470+00:00",
-      "articles_count": 214,
-      "matched_assets_count": 106,
-      "total_views": 8941,
+      "last_synced_at": "2026-11-27T07:14:47.960720+00:00",
+      "articles_count": 216,
+      "matched_assets_count": 107,
+      "total_views": 8971,
       "total_reactions": 123,
       "total_comments": 32,
       "articles": [
+        {
+          "external_id": "5130347",
+          "title": "Safety Stock & Reorder Point (ROP) Engine: Stochastic Convolution, EOQ & IEC 62402 Lifecycle Control",
+          "slug": "safety-stock-reorder-point-rop-engine-stochastic-convolution-eoq-iec-62402-lifecycle-control-1o0j",
+          "url": "https://dev.to/datalaria/safety-stock-reorder-point-rop-engine-stochastic-convolution-eoq-iec-62402-lifecycle-control-1o0j",
+          "canonical_url": "https://datalaria.com/en/posts/safety-stock-reorder-point-calculator/",
+          "views": 0,
+          "reactions": 0,
+          "positive_reactions": 0,
+          "public_reactions": 0,
+          "comments": 0,
+          "reading_time_min": 22,
+          "published_at": "2026-11-27T06:51:57.049Z",
+          "platform": "devto",
+          "asset_id": "safety-stock-reorder-point-calculator",
+          "matched_slug": "calculadora-stock-seguridad-rop",
+          "lang": "en"
+        },
+        {
+          "external_id": "5130274",
+          "title": "Calculadora de Stock de Seguridad & ROP: Convolución Estocástica, EOQ y Ciclo de Vida IEC 62402",
+          "slug": "calculadora-de-stock-de-seguridad-rop-convolucion-estocastica-eoq-y-ciclo-de-vida-iec-62402-1hj",
+          "url": "https://dev.to/datalaria/calculadora-de-stock-de-seguridad-rop-convolucion-estocastica-eoq-y-ciclo-de-vida-iec-62402-1hj",
+          "canonical_url": "https://datalaria.com/es/posts/calculadora-stock-seguridad-rop/",
+          "views": 0,
+          "reactions": 0,
+          "positive_reactions": 0,
+          "public_reactions": 0,
+          "comments": 0,
+          "reading_time_min": 28,
+          "published_at": "2026-11-27T06:39:58.421Z",
+          "platform": "devto",
+          "asset_id": "safety-stock-reorder-point-calculator",
+          "matched_slug": "calculadora-stock-seguridad-rop",
+          "lang": "es"
+        },
         {
           "external_id": "5122270",
           "title": "Executive Table, Kanban Board, and Monthly Calendar in React 19 Over Static Data",
@@ -270,7 +306,7 @@
           "slug": "autopilot-20-de-crewai-a-pydantic-v2-y-sindicacion-universal-en-python-36ja",
           "url": "https://dev.to/datalaria/autopilot-20-de-crewai-a-pydantic-v2-y-sindicacion-universal-en-python-36ja",
           "canonical_url": "https://datalaria.com/es/posts/autopilot-parte10-scriba-sindicacion-puente-pulse/",
-          "views": 30,
+          "views": 40,
           "reactions": 0,
           "positive_reactions": 0,
           "public_reactions": 0,
@@ -900,7 +936,7 @@
           "slug": "5-fuerzas-de-porter-ponderadas-y-atractivo-de-industria-la-guia-cuantitativa-definitiva-para-4b0j",
           "url": "https://dev.to/datalaria/5-fuerzas-de-porter-ponderadas-y-atractivo-de-industria-la-guia-cuantitativa-definitiva-para-4b0j",
           "canonical_url": "https://datalaria.com/es/posts/5-fuerzas-porter-cuantitativas/",
-          "views": 0,
+          "views": 10,
           "reactions": 0,
           "positive_reactions": 0,
           "public_reactions": 0,
@@ -1152,7 +1188,7 @@
           "slug": "happyrobot-como-los-agentes-de-voz-autonomos-conquistaron-la-logistica-global-hbf",
           "url": "https://dev.to/datalaria/happyrobot-como-los-agentes-de-voz-autonomos-conquistaron-la-logistica-global-hbf",
           "canonical_url": "https://datalaria.com/es/posts/happyrobot/",
-          "views": 40,
+          "views": 50,
           "reactions": 0,
           "positive_reactions": 0,
           "public_reactions": 0,
@@ -4253,8 +4289,8 @@
     },
     "autopilot-part10-scriba-pulse-bridge": {
       "devto": {
-        "views": 40,
-        "views_es": 30,
+        "views": 50,
+        "views_es": 40,
         "views_en": 10,
         "reactions": 0,
         "comments": 0,
@@ -4468,6 +4504,20 @@
       }
     },
     "earned-value-management-evm-dashboard": {
+      "coderlegion": {
+        "views": 41,
+        "views_es": 0,
+        "views_en": 41,
+        "reactions": 0,
+        "comments": 0,
+        "articles_count": 1,
+        "external_ids": [
+          "35848"
+        ],
+        "urls": [
+          "https://coderlegion.com/posts/35848"
+        ]
+      },
       "devto": {
         "views": 0,
         "views_es": 0,
@@ -4482,20 +4532,6 @@
         "urls": [
           "https://dev.to/datalaria/earned-value-management-evm-s-curve-27-eia-748-guidelines-agile-evm-8a6",
           "https://dev.to/datalaria/cuadro-de-mando-evm-valor-ganado-27-criterios-eia-748-y-agile-evm-em6"
-        ]
-      },
-      "coderlegion": {
-        "views": 41,
-        "views_es": 0,
-        "views_en": 41,
-        "reactions": 0,
-        "comments": 0,
-        "articles_count": 1,
-        "external_ids": [
-          "35848"
-        ],
-        "urls": [
-          "https://coderlegion.com/posts/35848"
         ]
       }
     },
@@ -4735,8 +4771,8 @@
     },
     "happyrobot": {
       "devto": {
-        "views": 82,
-        "views_es": 40,
+        "views": 92,
+        "views_es": 50,
         "views_en": 42,
         "reactions": 1,
         "comments": 0,
@@ -5436,6 +5472,20 @@
       }
     },
     "pulse-part3": {
+      "coderlegion": {
+        "views": 29,
+        "views_es": 0,
+        "views_en": 29,
+        "reactions": 0,
+        "comments": 0,
+        "articles_count": 1,
+        "external_ids": [
+          "36135"
+        ],
+        "urls": [
+          "https://coderlegion.com/posts/36135"
+        ]
+      },
       "devto": {
         "views": 10,
         "views_es": 0,
@@ -5450,20 +5500,6 @@
         "urls": [
           "https://dev.to/datalaria/executive-table-kanban-board-and-monthly-calendar-in-react-19-over-static-data-g29",
           "https://dev.to/datalaria/tabla-ejecutiva-kanban-y-calendario-en-react-19-sobre-un-indice-estatico-2bnp"
-        ]
-      },
-      "coderlegion": {
-        "views": 29,
-        "views_es": 0,
-        "views_en": 29,
-        "reactions": 0,
-        "comments": 0,
-        "articles_count": 1,
-        "external_ids": [
-          "36135"
-        ],
-        "urls": [
-          "https://coderlegion.com/posts/36135"
         ]
       }
     },
@@ -5487,8 +5523,8 @@
     },
     "quantitative-porter-5-forces": {
       "devto": {
-        "views": 0,
-        "views_es": 0,
+        "views": 10,
+        "views_es": 10,
         "views_en": 0,
         "reactions": 0,
         "comments": 0,
@@ -5608,6 +5644,24 @@
         "urls": [
           "https://dev.to/datalaria/excellent-meetings-in-the-ai-era-the-definitive-decalogue-24h4",
           "https://dev.to/datalaria/reuniones-excelentes-en-la-era-de-la-ia-el-decalogo-definitivo-4h0i"
+        ]
+      }
+    },
+    "safety-stock-reorder-point-calculator": {
+      "devto": {
+        "views": 0,
+        "views_es": 0,
+        "views_en": 0,
+        "reactions": 0,
+        "comments": 0,
+        "articles_count": 2,
+        "external_ids": [
+          "5130347",
+          "5130274"
+        ],
+        "urls": [
+          "https://dev.to/datalaria/safety-stock-reorder-point-rop-engine-stochastic-convolution-eoq-iec-62402-lifecycle-control-1o0j",
+          "https://dev.to/datalaria/calculadora-de-stock-de-seguridad-rop-convolucion-estocastica-eoq-y-ciclo-de-vida-iec-62402-1hj"
         ]
       }
     },

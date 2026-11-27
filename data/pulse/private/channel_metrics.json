@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "visibility": "private",
   "days": 30,
-  "last_synced_at": "2026-11-26T12:04:20.252587+00:00",
+  "last_synced_at": "2026-11-27T07:14:44.469735+00:00",
   "sources_status": {
     "ga4_acquisition": "ok",
     "x_native": "standby_zero_cost"
@@ -10,37 +10,37 @@
   "by_channel": {
     "google_organic": {
       "channel": "google_organic",
-      "sessions_30d": 250,
-      "sessions_es_30d": 133,
+      "sessions_30d": 252,
+      "sessions_es_30d": 135,
       "sessions_en_30d": 117,
-      "en_share_pct": 46.8,
-      "users_30d": 184,
-      "engaged_sessions_30d": 132,
+      "en_share_pct": 46.4,
+      "users_30d": 185,
+      "engaged_sessions_30d": 133,
       "engagement_rate_pct": 52.8,
-      "avg_engagement_sec": 38.0,
+      "avg_engagement_sec": 41.5,
       "key_events_30d": 0,
       "key_events_breakdown": {},
       "conversion_rate_pct": 0.0,
-      "sessions_prev_30d": 140,
-      "trend_30d_pct": 78.6
+      "sessions_prev_30d": 141,
+      "trend_30d_pct": 78.7
     },
     "linkedin": {
       "channel": "linkedin",
-      "sessions_30d": 132,
-      "sessions_es_30d": 75,
-      "sessions_en_30d": 57,
-      "en_share_pct": 43.2,
-      "users_30d": 48,
-      "engaged_sessions_30d": 110,
-      "engagement_rate_pct": 83.3,
-      "avg_engagement_sec": 9.3,
+      "sessions_30d": 129,
+      "sessions_es_30d": 74,
+      "sessions_en_30d": 55,
+      "en_share_pct": 42.6,
+      "users_30d": 47,
+      "engaged_sessions_30d": 107,
+      "engagement_rate_pct": 82.9,
+      "avg_engagement_sec": 9.4,
       "key_events_30d": 2,
       "key_events_breakdown": {
         "begin_checkout": 1,
         "begin_checkout_kit": 1
       },
-      "conversion_rate_pct": 1.52,
-      "sessions_prev_30d": 44,
+      "conversion_rate_pct": 1.55,
+      "sessions_prev_30d": 43,
       "trend_30d_pct": 200.0
     },
     "devto": {
@@ -109,14 +109,14 @@
     },
     "direct": {
       "channel": "direct",
-      "sessions_30d": 2334,
-      "sessions_es_30d": 1103,
-      "sessions_en_30d": 1200,
-      "en_share_pct": 52.1,
-      "users_30d": 1861,
-      "engaged_sessions_30d": 640,
-      "engagement_rate_pct": 27.4,
-      "avg_engagement_sec": 9.7,
+      "sessions_30d": 2373,
+      "sessions_es_30d": 1122,
+      "sessions_en_30d": 1224,
+      "en_share_pct": 52.2,
+      "users_30d": 1915,
+      "engaged_sessions_30d": 671,
+      "engagement_rate_pct": 28.3,
+      "avg_engagement_sec": 10.3,
       "key_events_30d": 8,
       "key_events_breakdown": {
         "begin_checkout": 5,
@@ -124,17 +124,17 @@
         "begin_checkout_kit": 1
       },
       "conversion_rate_pct": 0.34,
-      "sessions_prev_30d": 1016,
-      "trend_30d_pct": 129.7
+      "sessions_prev_30d": 1009,
+      "trend_30d_pct": 135.2
     },
     "other": {
       "channel": "other",
-      "sessions_30d": 359,
-      "sessions_es_30d": 185,
-      "sessions_en_30d": 172,
-      "en_share_pct": 48.2,
-      "users_30d": 252,
-      "engaged_sessions_30d": 147,
+      "sessions_30d": 352,
+      "sessions_es_30d": 182,
+      "sessions_en_30d": 168,
+      "en_share_pct": 48.0,
+      "users_30d": 246,
+      "engaged_sessions_30d": 144,
       "engagement_rate_pct": 40.9,
       "avg_engagement_sec": 21.7,
       "key_events_30d": 2,
@@ -142,20 +142,20 @@
         "begin_checkout": 1,
         "join_waitlist_helix": 1
       },
-      "conversion_rate_pct": 0.56,
-      "sessions_prev_30d": 74,
-      "trend_30d_pct": 385.1
+      "conversion_rate_pct": 0.57,
+      "sessions_prev_30d": 83,
+      "trend_30d_pct": 324.1
     }
   },
   "by_asset": {
     "stack_productividad_2026": {
       "direct": {
-        "sessions_30d": 85,
-        "sessions_es_30d": 3,
+        "sessions_30d": 86,
+        "sessions_es_30d": 4,
         "sessions_en_30d": 82,
-        "users_30d": 8,
-        "engaged_sessions_30d": 11,
-        "avg_engagement_sec": 0.2,
+        "users_30d": 9,
+        "engaged_sessions_30d": 12,
+        "avg_engagement_sec": 6.1,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
@@ -172,12 +172,12 @@
     },
     "mega-bundle": {
       "direct": {
-        "sessions_30d": 98,
-        "sessions_es_30d": 72,
+        "sessions_30d": 99,
+        "sessions_es_30d": 73,
         "sessions_en_30d": 26,
-        "users_30d": 49,
-        "engaged_sessions_30d": 80,
-        "avg_engagement_sec": 19.3,
+        "users_30d": 51,
+        "engaged_sessions_30d": 83,
+        "avg_engagement_sec": 18.9,
         "key_events_30d": 3,
         "key_events_breakdown": {
           "begin_checkout": 2,
@@ -250,12 +250,12 @@
     },
     "sdd_vs_vibe_coding": {
       "direct": {
-        "sessions_30d": 37,
-        "sessions_es_30d": 13,
-        "sessions_en_30d": 24,
-        "users_30d": 27,
-        "engaged_sessions_30d": 16,
-        "avg_engagement_sec": 16.5,
+        "sessions_30d": 39,
+        "sessions_es_30d": 14,
+        "sessions_en_30d": 25,
+        "users_30d": 29,
+        "engaged_sessions_30d": 18,
+        "avg_engagement_sec": 15.7,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
@@ -284,22 +284,22 @@
     },
     "kantorovich": {
       "direct": {
-        "sessions_30d": 25,
+        "sessions_30d": 26,
         "sessions_es_30d": 2,
-        "sessions_en_30d": 23,
-        "users_30d": 24,
-        "engaged_sessions_30d": 3,
+        "sessions_en_30d": 24,
+        "users_30d": 25,
+        "engaged_sessions_30d": 4,
         "avg_engagement_sec": 9.8,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
       "google_organic": {
-        "sessions_30d": 19,
+        "sessions_30d": 20,
         "sessions_es_30d": 9,
-        "sessions_en_30d": 10,
+        "sessions_en_30d": 11,
         "users_30d": 16,
         "engaged_sessions_30d": 6,
-        "avg_engagement_sec": 17.3,
+        "avg_engagement_sec": 16.4,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
@@ -326,32 +326,32 @@
         "key_events_breakdown": {}
       },
       "other": {
-        "sessions_30d": 6,
+        "sessions_30d": 4,
         "sessions_es_30d": 0,
-        "sessions_en_30d": 6,
-        "users_30d": 5,
+        "sessions_en_30d": 4,
+        "users_30d": 4,
         "engaged_sessions_30d": 3,
-        "avg_engagement_sec": 19.3,
+        "avg_engagement_sec": 29.0,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
       "google_organic": {
-        "sessions_30d": 4,
-        "sessions_es_30d": 1,
+        "sessions_30d": 5,
+        "sessions_es_30d": 2,
         "sessions_en_30d": 3,
-        "users_30d": 4,
+        "users_30d": 5,
         "engaged_sessions_30d": 3,
-        "avg_engagement_sec": 376.2,
+        "avg_engagement_sec": 301.0,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
     },
     "abraham_wald": {
       "direct": {
-        "sessions_30d": 22,
-        "sessions_es_30d": 2,
+        "sessions_30d": 23,
+        "sessions_es_30d": 3,
         "sessions_en_30d": 20,
-        "users_30d": 22,
+        "users_30d": 23,
         "engaged_sessions_30d": 0,
         "avg_engagement_sec": 0.6,
         "key_events_30d": 0,
@@ -378,14 +378,46 @@
         "key_events_breakdown": {}
       }
     },
+    "game_snake": {
+      "direct": {
+        "sessions_30d": 21,
+        "sessions_es_30d": 1,
+        "sessions_en_30d": 20,
+        "users_30d": 21,
+        "engaged_sessions_30d": 0,
+        "avg_engagement_sec": 0.0,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "other": {
+        "sessions_30d": 2,
+        "sessions_es_30d": 0,
+        "sessions_en_30d": 2,
+        "users_30d": 2,
+        "engaged_sessions_30d": 0,
+        "avg_engagement_sec": 3.0,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "google_organic": {
+        "sessions_30d": 2,
+        "sessions_es_30d": 2,
+        "sessions_en_30d": 0,
+        "users_30d": 2,
+        "engaged_sessions_30d": 1,
+        "avg_engagement_sec": 3.5,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      }
+    },
     "mckinsey-ge-matrix": {
       "direct": {
-        "sessions_30d": 30,
-        "sessions_es_30d": 10,
+        "sessions_30d": 29,
+        "sessions_es_30d": 9,
         "sessions_en_30d": 20,
         "users_30d": 29,
-        "engaged_sessions_30d": 4,
-        "avg_engagement_sec": 4.1,
+        "engaged_sessions_30d": 3,
+        "avg_engagement_sec": 2.3,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
@@ -420,68 +452,14 @@
         "key_events_breakdown": {}
       }
     },
-    "quantitative-swot-tows-matrix": {
+    "devs": {
       "direct": {
         "sessions_30d": 23,
         "sessions_es_30d": 3,
         "sessions_en_30d": 20,
         "users_30d": 23,
-        "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 0.7,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "other": {
-        "sessions_30d": 3,
-        "sessions_es_30d": 1,
-        "sessions_en_30d": 2,
-        "users_30d": 2,
-        "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 4.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
-    "game_snake": {
-      "direct": {
-        "sessions_30d": 20,
-        "sessions_es_30d": 1,
-        "sessions_en_30d": 19,
-        "users_30d": 20,
         "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 0.1,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "other": {
-        "sessions_30d": 2,
-        "sessions_es_30d": 0,
-        "sessions_en_30d": 2,
-        "users_30d": 2,
-        "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 3.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "google_organic": {
-        "sessions_30d": 2,
-        "sessions_es_30d": 2,
-        "sessions_en_30d": 0,
-        "users_30d": 2,
-        "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 3.5,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
-    "devs": {
-      "direct": {
-        "sessions_30d": 22,
-        "sessions_es_30d": 3,
-        "sessions_en_30d": 19,
-        "users_30d": 22,
-        "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 1.1,
+        "avg_engagement_sec": 1.0,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
@@ -498,12 +476,12 @@
     },
     "john_von_neumann": {
       "direct": {
-        "sessions_30d": 21,
+        "sessions_30d": 22,
         "sessions_es_30d": 3,
-        "sessions_en_30d": 18,
-        "users_30d": 19,
+        "sessions_en_30d": 19,
+        "users_30d": 20,
         "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 2.0,
+        "avg_engagement_sec": 1.9,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
@@ -513,17 +491,17 @@
         "sessions_en_30d": 8,
         "users_30d": 15,
         "engaged_sessions_30d": 10,
-        "avg_engagement_sec": 28.7,
+        "avg_engagement_sec": 32.0,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
       "other": {
-        "sessions_30d": 5,
-        "sessions_es_30d": 5,
+        "sessions_30d": 4,
+        "sessions_es_30d": 4,
         "sessions_en_30d": 0,
-        "users_30d": 5,
-        "engaged_sessions_30d": 3,
-        "avg_engagement_sec": 23.4,
+        "users_30d": 4,
+        "engaged_sessions_30d": 2,
+        "avg_engagement_sec": 18.2,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -556,6 +534,28 @@
         "users_30d": 1,
         "engaged_sessions_30d": 0,
         "avg_engagement_sec": 8.0,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      }
+    },
+    "quantitative-swot-tows-matrix": {
+      "direct": {
+        "sessions_30d": 21,
+        "sessions_es_30d": 3,
+        "sessions_en_30d": 18,
+        "users_30d": 21,
+        "engaged_sessions_30d": 1,
+        "avg_engagement_sec": 0.4,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "other": {
+        "sessions_30d": 1,
+        "sessions_es_30d": 1,
+        "sessions_en_30d": 0,
+        "users_30d": 1,
+        "engaged_sessions_30d": 1,
+        "avg_engagement_sec": 12.0,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -626,46 +626,14 @@
         "key_events_breakdown": {}
       }
     },
-    "dynamic-bcg-matrix": {
-      "direct": {
-        "sessions_30d": 22,
-        "sessions_es_30d": 7,
-        "sessions_en_30d": 15,
-        "users_30d": 21,
-        "engaged_sessions_30d": 4,
-        "avg_engagement_sec": 1.5,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "google_organic": {
-        "sessions_30d": 2,
-        "sessions_es_30d": 0,
-        "sessions_en_30d": 2,
-        "users_30d": 1,
-        "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 0.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "linkedin": {
-        "sessions_30d": 1,
-        "sessions_es_30d": 0,
-        "sessions_en_30d": 1,
-        "users_30d": 1,
-        "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 1.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
     "pulse": {
       "direct": {
-        "sessions_30d": 24,
-        "sessions_es_30d": 15,
-        "sessions_en_30d": 9,
-        "users_30d": 14,
-        "engaged_sessions_30d": 12,
-        "avg_engagement_sec": 13.2,
+        "sessions_30d": 26,
+        "sessions_es_30d": 16,
+        "sessions_en_30d": 10,
+        "users_30d": 16,
+        "engaged_sessions_30d": 14,
+        "avg_engagement_sec": 12.4,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
@@ -682,12 +650,12 @@
     },
     "pulse-part1": {
       "direct": {
-        "sessions_30d": 21,
-        "sessions_es_30d": 15,
-        "sessions_en_30d": 6,
-        "users_30d": 10,
-        "engaged_sessions_30d": 14,
-        "avg_engagement_sec": 28.5,
+        "sessions_30d": 23,
+        "sessions_es_30d": 16,
+        "sessions_en_30d": 7,
+        "users_30d": 12,
+        "engaged_sessions_30d": 16,
+        "avg_engagement_sec": 26.2,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
@@ -702,14 +670,24 @@
         "key_events_breakdown": {}
       }
     },
-    "ada_lovelace": {
+    "dynamic-bcg-matrix": {
       "direct": {
-        "sessions_30d": 16,
-        "sessions_es_30d": 1,
-        "sessions_en_30d": 15,
-        "users_30d": 16,
+        "sessions_30d": 20,
+        "sessions_es_30d": 6,
+        "sessions_en_30d": 14,
+        "users_30d": 19,
+        "engaged_sessions_30d": 3,
+        "avg_engagement_sec": 1.6,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "google_organic": {
+        "sessions_30d": 2,
+        "sessions_es_30d": 0,
+        "sessions_en_30d": 2,
+        "users_30d": 1,
         "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 0.3,
+        "avg_engagement_sec": 0.0,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -798,14 +776,46 @@
         "key_events_breakdown": {}
       }
     },
+    "decision-making-prioritization-quantitative-framework": {
+      "direct": {
+        "sessions_30d": 25,
+        "sessions_es_30d": 12,
+        "sessions_en_30d": 13,
+        "users_30d": 21,
+        "engaged_sessions_30d": 9,
+        "avg_engagement_sec": 37.2,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "other": {
+        "sessions_30d": 2,
+        "sessions_es_30d": 0,
+        "sessions_en_30d": 2,
+        "users_30d": 2,
+        "engaged_sessions_30d": 2,
+        "avg_engagement_sec": 41.5,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "google_organic": {
+        "sessions_30d": 2,
+        "sessions_es_30d": 1,
+        "sessions_en_30d": 1,
+        "users_30d": 2,
+        "engaged_sessions_30d": 1,
+        "avg_engagement_sec": 11.5,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      }
+    },
     "business-case-financiero-van-tir": {
       "direct": {
-        "sessions_30d": 22,
-        "sessions_es_30d": 9,
+        "sessions_30d": 24,
+        "sessions_es_30d": 11,
         "sessions_en_30d": 13,
-        "users_30d": 19,
-        "engaged_sessions_30d": 6,
-        "avg_engagement_sec": 14.5,
+        "users_30d": 21,
+        "engaged_sessions_30d": 7,
+        "avg_engagement_sec": 14.2,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
@@ -852,6 +862,18 @@
         "key_events_breakdown": {}
       }
     },
+    "ada_lovelace": {
+      "direct": {
+        "sessions_30d": 14,
+        "sessions_es_30d": 1,
+        "sessions_en_30d": 13,
+        "users_30d": 14,
+        "engaged_sessions_30d": 0,
+        "avg_engagement_sec": 0.4,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      }
+    },
     "claude_shannon": {
       "direct": {
         "sessions_30d": 13,
@@ -864,12 +886,12 @@
         "key_events_breakdown": {}
       },
       "google_organic": {
-        "sessions_30d": 7,
-        "sessions_es_30d": 4,
+        "sessions_30d": 8,
+        "sessions_es_30d": 5,
         "sessions_en_30d": 3,
-        "users_30d": 5,
+        "users_30d": 6,
         "engaged_sessions_30d": 2,
-        "avg_engagement_sec": 21.0,
+        "avg_engagement_sec": 18.4,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
@@ -884,66 +906,66 @@
         "key_events_breakdown": {}
       }
     },
-    "decision-making-prioritization-quantitative-framework": {
+    "prompt_injection": {
       "direct": {
-        "sessions_30d": 23,
-        "sessions_es_30d": 11,
+        "sessions_30d": 14,
+        "sessions_es_30d": 2,
         "sessions_en_30d": 12,
-        "users_30d": 19,
-        "engaged_sessions_30d": 7,
-        "avg_engagement_sec": 40.0,
+        "users_30d": 14,
+        "engaged_sessions_30d": 1,
+        "avg_engagement_sec": 0.5,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
       "other": {
-        "sessions_30d": 2,
-        "sessions_es_30d": 0,
-        "sessions_en_30d": 2,
-        "users_30d": 2,
-        "engaged_sessions_30d": 2,
-        "avg_engagement_sec": 41.5,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "google_organic": {
-        "sessions_30d": 2,
-        "sessions_es_30d": 1,
-        "sessions_en_30d": 1,
-        "users_30d": 2,
+        "sessions_30d": 7,
+        "sessions_es_30d": 2,
+        "sessions_en_30d": 5,
+        "users_30d": 6,
         "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 11.5,
+        "avg_engagement_sec": 2.0,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
     },
-    "happyrobot": {
+    "kurt_godel": {
       "direct": {
-        "sessions_30d": 13,
-        "sessions_es_30d": 1,
-        "sessions_en_30d": 12,
-        "users_30d": 13,
-        "engaged_sessions_30d": 2,
-        "avg_engagement_sec": 4.9,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "other": {
-        "sessions_30d": 11,
-        "sessions_es_30d": 5,
-        "sessions_en_30d": 6,
-        "users_30d": 6,
-        "engaged_sessions_30d": 5,
-        "avg_engagement_sec": 78.8,
+        "sessions_30d": 22,
+        "sessions_es_30d": 12,
+        "sessions_en_30d": 10,
+        "users_30d": 19,
+        "engaged_sessions_30d": 9,
+        "avg_engagement_sec": 28.1,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
       "google_organic": {
-        "sessions_30d": 4,
-        "sessions_es_30d": 0,
-        "sessions_en_30d": 4,
+        "sessions_30d": 7,
+        "sessions_es_30d": 1,
+        "sessions_en_30d": 6,
+        "users_30d": 3,
+        "engaged_sessions_30d": 2,
+        "avg_engagement_sec": 185.0,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "linkedin": {
+        "sessions_30d": 8,
+        "sessions_es_30d": 2,
+        "sessions_en_30d": 6,
+        "users_30d": 5,
+        "engaged_sessions_30d": 3,
+        "avg_engagement_sec": 11.2,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "other": {
+        "sessions_30d": 5,
+        "sessions_es_30d": 4,
+        "sessions_en_30d": 1,
         "users_30d": 4,
-        "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 95.8,
+        "engaged_sessions_30d": 4,
+        "avg_engagement_sec": 428.4,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -1000,6 +1022,18 @@
         "key_events_breakdown": {}
       }
     },
+    "pulse-part2": {
+      "direct": {
+        "sessions_30d": 19,
+        "sessions_es_30d": 12,
+        "sessions_en_30d": 7,
+        "users_30d": 13,
+        "engaged_sessions_30d": 11,
+        "avg_engagement_sec": 13.5,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      }
+    },
     "alan_turing": {
       "direct": {
         "sessions_30d": 14,
@@ -1012,12 +1046,12 @@
         "key_events_breakdown": {}
       },
       "other": {
-        "sessions_30d": 13,
-        "sessions_es_30d": 12,
+        "sessions_30d": 10,
+        "sessions_es_30d": 9,
         "sessions_en_30d": 1,
-        "users_30d": 8,
-        "engaged_sessions_30d": 4,
-        "avg_engagement_sec": 7.1,
+        "users_30d": 6,
+        "engaged_sessions_30d": 3,
+        "avg_engagement_sec": 8.9,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
@@ -1042,66 +1076,46 @@
         "key_events_breakdown": {}
       }
     },
-    "prompt_injection": {
+    "happyrobot": {
       "direct": {
-        "sessions_30d": 13,
-        "sessions_es_30d": 2,
+        "sessions_30d": 12,
+        "sessions_es_30d": 1,
         "sessions_en_30d": 11,
-        "users_30d": 13,
-        "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 0.5,
+        "users_30d": 12,
+        "engaged_sessions_30d": 2,
+        "avg_engagement_sec": 5.3,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
       "other": {
-        "sessions_30d": 7,
-        "sessions_es_30d": 2,
-        "sessions_en_30d": 5,
-        "users_30d": 6,
-        "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 2.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
-    "kurt_godel": {
-      "direct": {
-        "sessions_30d": 20,
-        "sessions_es_30d": 11,
-        "sessions_en_30d": 9,
-        "users_30d": 17,
-        "engaged_sessions_30d": 7,
-        "avg_engagement_sec": 30.8,
+        "sessions_30d": 10,
+        "sessions_es_30d": 4,
+        "sessions_en_30d": 6,
+        "users_30d": 5,
+        "engaged_sessions_30d": 4,
+        "avg_engagement_sec": 74.5,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
       "google_organic": {
-        "sessions_30d": 6,
+        "sessions_30d": 3,
         "sessions_es_30d": 0,
-        "sessions_en_30d": 6,
-        "users_30d": 2,
+        "sessions_en_30d": 3,
+        "users_30d": 3,
         "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 65.3,
+        "avg_engagement_sec": 127.7,
         "key_events_30d": 0,
         "key_events_breakdown": {}
-      },
-      "linkedin": {
-        "sessions_30d": 8,
-        "sessions_es_30d": 2,
-        "sessions_en_30d": 6,
-        "users_30d": 5,
-        "engaged_sessions_30d": 3,
-        "avg_engagement_sec": 11.2,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "other": {
-        "sessions_30d": 5,
-        "sessions_es_30d": 4,
-        "sessions_en_30d": 1,
-        "users_30d": 4,
-        "engaged_sessions_30d": 4,
-        "avg_engagement_sec": 428.4,
+      }
+    },
+    "pulse-part3": {
+      "direct": {
+        "sessions_30d": 15,
+        "sessions_es_30d": 11,
+        "sessions_en_30d": 4,
+        "users_30d": 8,
+        "engaged_sessions_30d": 8,
+        "avg_engagement_sec": 9.3,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -1170,12 +1184,12 @@
         "key_events_breakdown": {}
       },
       "direct": {
-        "sessions_30d": 8,
-        "sessions_es_30d": 1,
+        "sessions_30d": 9,
+        "sessions_es_30d": 2,
         "sessions_en_30d": 7,
-        "users_30d": 8,
-        "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 0.0,
+        "users_30d": 9,
+        "engaged_sessions_30d": 1,
+        "avg_engagement_sec": 94.1,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -1202,14 +1216,46 @@
         "key_events_breakdown": {}
       }
     },
+    "multiverse_computing": {
+      "direct": {
+        "sessions_30d": 12,
+        "sessions_es_30d": 2,
+        "sessions_en_30d": 10,
+        "users_30d": 12,
+        "engaged_sessions_30d": 0,
+        "avg_engagement_sec": 0.2,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "google_organic": {
+        "sessions_30d": 5,
+        "sessions_es_30d": 4,
+        "sessions_en_30d": 1,
+        "users_30d": 4,
+        "engaged_sessions_30d": 4,
+        "avg_engagement_sec": 63.2,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "other": {
+        "sessions_30d": 2,
+        "sessions_es_30d": 2,
+        "sessions_en_30d": 0,
+        "users_30d": 1,
+        "engaged_sessions_30d": 0,
+        "avg_engagement_sec": 0.0,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      }
+    },
     "conversor": {
       "direct": {
-        "sessions_30d": 14,
+        "sessions_30d": 15,
         "sessions_es_30d": 10,
-        "sessions_en_30d": 4,
-        "users_30d": 9,
-        "engaged_sessions_30d": 7,
-        "avg_engagement_sec": 8.0,
+        "sessions_en_30d": 5,
+        "users_30d": 10,
+        "engaged_sessions_30d": 8,
+        "avg_engagement_sec": 7.5,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
@@ -1240,62 +1286,6 @@
         "users_30d": 1,
         "engaged_sessions_30d": 1,
         "avg_engagement_sec": 12.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
-    "app-lifeops_part6_analytics_dashboard_360": {
-      "direct": {
-        "sessions_30d": 14,
-        "sessions_es_30d": 10,
-        "sessions_en_30d": 4,
-        "users_30d": 10,
-        "engaged_sessions_30d": 6,
-        "avg_engagement_sec": 18.6,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "coderlegion": {
-        "sessions_30d": 1,
-        "sessions_es_30d": 0,
-        "sessions_en_30d": 1,
-        "users_30d": 1,
-        "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 52.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "linkedin": {
-        "sessions_30d": 2,
-        "sessions_es_30d": 1,
-        "sessions_en_30d": 1,
-        "users_30d": 2,
-        "engaged_sessions_30d": 2,
-        "avg_engagement_sec": 1.5,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
-    "pulse-part2": {
-      "direct": {
-        "sessions_30d": 14,
-        "sessions_es_30d": 10,
-        "sessions_en_30d": 4,
-        "users_30d": 8,
-        "engaged_sessions_30d": 7,
-        "avg_engagement_sec": 17.6,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
-    "pulse-part3": {
-      "direct": {
-        "sessions_30d": 14,
-        "sessions_es_30d": 10,
-        "sessions_en_30d": 4,
-        "users_30d": 7,
-        "engaged_sessions_30d": 8,
-        "avg_engagement_sec": 9.9,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -1396,38 +1386,6 @@
         "key_events_breakdown": {}
       }
     },
-    "multiverse_computing": {
-      "direct": {
-        "sessions_30d": 11,
-        "sessions_es_30d": 2,
-        "sessions_en_30d": 9,
-        "users_30d": 11,
-        "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 0.3,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "google_organic": {
-        "sessions_30d": 5,
-        "sessions_es_30d": 4,
-        "sessions_en_30d": 1,
-        "users_30d": 4,
-        "engaged_sessions_30d": 4,
-        "avg_engagement_sec": 63.2,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "other": {
-        "sessions_30d": 2,
-        "sessions_es_30d": 2,
-        "sessions_en_30d": 0,
-        "users_30d": 1,
-        "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 0.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
     "nextail": {
       "direct": {
         "sessions_30d": 10,
@@ -1440,22 +1398,22 @@
         "key_events_breakdown": {}
       },
       "other": {
-        "sessions_30d": 4,
-        "sessions_es_30d": 4,
+        "sessions_30d": 5,
+        "sessions_es_30d": 5,
         "sessions_en_30d": 0,
         "users_30d": 2,
         "engaged_sessions_30d": 2,
-        "avg_engagement_sec": 199.0,
+        "avg_engagement_sec": 159.6,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
       "google_organic": {
-        "sessions_30d": 5,
-        "sessions_es_30d": 3,
+        "sessions_30d": 4,
+        "sessions_es_30d": 2,
         "sessions_en_30d": 2,
-        "users_30d": 5,
+        "users_30d": 4,
         "engaged_sessions_30d": 3,
-        "avg_engagement_sec": 22.0,
+        "avg_engagement_sec": 27.5,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -1492,18 +1450,6 @@
         "key_events_breakdown": {}
       }
     },
-    "sop-ingenieria-parte4-enterprise": {
-      "direct": {
-        "sessions_30d": 10,
-        "sessions_es_30d": 1,
-        "sessions_en_30d": 9,
-        "users_30d": 10,
-        "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 3.6,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
     "submer": {
       "direct": {
         "sessions_30d": 10,
@@ -1532,6 +1478,18 @@
         "users_30d": 3,
         "engaged_sessions_30d": 3,
         "avg_engagement_sec": 16.7,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      }
+    },
+    "the-goal": {
+      "direct": {
+        "sessions_30d": 11,
+        "sessions_es_30d": 2,
+        "sessions_en_30d": 9,
+        "users_30d": 11,
+        "engaged_sessions_30d": 0,
+        "avg_engagement_sec": 0.8,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -1644,6 +1602,28 @@
         "key_events_breakdown": {}
       }
     },
+    "quantitative-porter-5-forces": {
+      "direct": {
+        "sessions_30d": 13,
+        "sessions_es_30d": 5,
+        "sessions_en_30d": 8,
+        "users_30d": 12,
+        "engaged_sessions_30d": 3,
+        "avg_engagement_sec": 3.3,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "google_organic": {
+        "sessions_30d": 1,
+        "sessions_es_30d": 1,
+        "sessions_en_30d": 0,
+        "users_30d": 1,
+        "engaged_sessions_30d": 0,
+        "avg_engagement_sec": 0.0,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      }
+    },
     "quantitative-risk-matrix-fmea": {
       "direct": {
         "sessions_30d": 13,
@@ -1686,14 +1666,14 @@
         "key_events_breakdown": {}
       }
     },
-    "the-goal": {
+    "sop-ingenieria-parte4-enterprise": {
       "direct": {
-        "sessions_30d": 10,
-        "sessions_es_30d": 2,
+        "sessions_30d": 9,
+        "sessions_es_30d": 1,
         "sessions_en_30d": 8,
-        "users_30d": 10,
+        "users_30d": 9,
         "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 0.9,
+        "avg_engagement_sec": 2.7,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -1710,10 +1690,10 @@
         "key_events_breakdown": {}
       },
       "other": {
-        "sessions_30d": 3,
+        "sessions_30d": 2,
         "sessions_es_30d": 0,
-        "sessions_en_30d": 3,
-        "users_30d": 2,
+        "sessions_en_30d": 2,
+        "users_30d": 1,
         "engaged_sessions_30d": 0,
         "avg_engagement_sec": 0.0,
         "key_events_30d": 0,
@@ -1752,6 +1732,38 @@
         "key_events_breakdown": {}
       }
     },
+    "flywire": {
+      "direct": {
+        "sessions_30d": 9,
+        "sessions_es_30d": 2,
+        "sessions_en_30d": 7,
+        "users_30d": 9,
+        "engaged_sessions_30d": 0,
+        "avg_engagement_sec": 0.4,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "google_organic": {
+        "sessions_30d": 3,
+        "sessions_es_30d": 1,
+        "sessions_en_30d": 2,
+        "users_30d": 3,
+        "engaged_sessions_30d": 3,
+        "avg_engagement_sec": 77.7,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "other": {
+        "sessions_30d": 1,
+        "sessions_es_30d": 0,
+        "sessions_en_30d": 1,
+        "users_30d": 1,
+        "engaged_sessions_30d": 0,
+        "avg_engagement_sec": 0.0,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      }
+    },
     "mcp_protocol": {
       "other": {
         "sessions_30d": 8,
@@ -1776,12 +1788,12 @@
     },
     "obs_parte5_radar": {
       "direct": {
-        "sessions_30d": 8,
-        "sessions_es_30d": 1,
+        "sessions_30d": 9,
+        "sessions_es_30d": 2,
         "sessions_en_30d": 7,
-        "users_30d": 8,
-        "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 0.6,
+        "users_30d": 9,
+        "engaged_sessions_30d": 1,
+        "avg_engagement_sec": 9.1,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
@@ -1818,24 +1830,34 @@
         "key_events_breakdown": {}
       }
     },
-    "quantitative-porter-5-forces": {
+    "app-lifeops_part6_analytics_dashboard_360": {
       "direct": {
-        "sessions_30d": 12,
-        "sessions_es_30d": 5,
-        "sessions_en_30d": 7,
-        "users_30d": 11,
-        "engaged_sessions_30d": 3,
-        "avg_engagement_sec": 3.6,
+        "sessions_30d": 10,
+        "sessions_es_30d": 7,
+        "sessions_en_30d": 3,
+        "users_30d": 9,
+        "engaged_sessions_30d": 2,
+        "avg_engagement_sec": 6.6,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
-      "google_organic": {
+      "coderlegion": {
         "sessions_30d": 1,
-        "sessions_es_30d": 1,
-        "sessions_en_30d": 0,
+        "sessions_es_30d": 0,
+        "sessions_en_30d": 1,
         "users_30d": 1,
-        "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 0.0,
+        "engaged_sessions_30d": 1,
+        "avg_engagement_sec": 52.0,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "linkedin": {
+        "sessions_30d": 2,
+        "sessions_es_30d": 1,
+        "sessions_en_30d": 1,
+        "users_30d": 2,
+        "engaged_sessions_30d": 2,
+        "avg_engagement_sec": 1.5,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -1887,38 +1909,6 @@
         "sessions_30d": 1,
         "sessions_es_30d": 1,
         "sessions_en_30d": 0,
-        "users_30d": 1,
-        "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 0.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
-    "flywire": {
-      "direct": {
-        "sessions_30d": 8,
-        "sessions_es_30d": 2,
-        "sessions_en_30d": 6,
-        "users_30d": 8,
-        "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 0.5,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "google_organic": {
-        "sessions_30d": 3,
-        "sessions_es_30d": 1,
-        "sessions_en_30d": 2,
-        "users_30d": 3,
-        "engaged_sessions_30d": 3,
-        "avg_engagement_sec": 77.7,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "other": {
-        "sessions_30d": 1,
-        "sessions_es_30d": 0,
-        "sessions_en_30d": 1,
         "users_30d": 1,
         "engaged_sessions_30d": 0,
         "avg_engagement_sec": 0.0,
@@ -1980,12 +1970,12 @@
     },
     "pgvector_vs_vectordb": {
       "direct": {
-        "sessions_30d": 8,
-        "sessions_es_30d": 2,
+        "sessions_30d": 9,
+        "sessions_es_30d": 3,
         "sessions_en_30d": 6,
-        "users_30d": 8,
-        "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 20.8,
+        "users_30d": 9,
+        "engaged_sessions_30d": 2,
+        "avg_engagement_sec": 36.4,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
@@ -2024,12 +2014,12 @@
     },
     "rag_antipatrones": {
       "direct": {
-        "sessions_30d": 8,
-        "sessions_es_30d": 2,
+        "sessions_30d": 9,
+        "sessions_es_30d": 3,
         "sessions_en_30d": 6,
-        "users_30d": 8,
-        "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 0.9,
+        "users_30d": 9,
+        "engaged_sessions_30d": 1,
+        "avg_engagement_sec": 11.6,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
@@ -2056,24 +2046,12 @@
         "key_events_breakdown": {}
       },
       "direct": {
-        "sessions_30d": 3,
-        "sessions_es_30d": 1,
-        "sessions_en_30d": 2,
-        "users_30d": 3,
-        "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 0.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
-    "app_conversor_unidades": {
-      "direct": {
-        "sessions_30d": 8,
+        "sessions_30d": 7,
         "sessions_es_30d": 3,
-        "sessions_en_30d": 5,
+        "sessions_en_30d": 4,
         "users_30d": 7,
-        "engaged_sessions_30d": 2,
-        "avg_engagement_sec": 0.9,
+        "engaged_sessions_30d": 4,
+        "avg_engagement_sec": 0.7,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -2124,12 +2102,12 @@
     },
     "lifeops": {
       "direct": {
-        "sessions_30d": 6,
+        "sessions_30d": 7,
         "sessions_es_30d": 5,
-        "sessions_en_30d": 1,
-        "users_30d": 6,
-        "engaged_sessions_30d": 2,
-        "avg_engagement_sec": 53.7,
+        "sessions_en_30d": 2,
+        "users_30d": 7,
+        "engaged_sessions_30d": 4,
+        "avg_engagement_sec": 46.3,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
@@ -2166,12 +2144,12 @@
         "key_events_breakdown": {}
       },
       "direct": {
-        "sessions_30d": 3,
+        "sessions_30d": 4,
         "sessions_es_30d": 2,
-        "sessions_en_30d": 1,
-        "users_30d": 3,
+        "sessions_en_30d": 2,
+        "users_30d": 4,
         "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 3.0,
+        "avg_engagement_sec": 2.2,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -2202,12 +2180,46 @@
         "key_events_breakdown": {}
       },
       "direct": {
-        "sessions_30d": 4,
+        "sessions_30d": 3,
         "sessions_es_30d": 2,
-        "sessions_en_30d": 2,
-        "users_30d": 4,
+        "sessions_en_30d": 1,
+        "users_30d": 3,
         "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 1.8,
+        "avg_engagement_sec": 1.7,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      }
+    },
+    "app-lifeops_part2_frontend_dashboard": {
+      "direct": {
+        "sessions_30d": 8,
+        "sessions_es_30d": 4,
+        "sessions_en_30d": 4,
+        "users_30d": 8,
+        "engaged_sessions_30d": 4,
+        "avg_engagement_sec": 1.5,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "linkedin": {
+        "sessions_30d": 2,
+        "sessions_es_30d": 1,
+        "sessions_en_30d": 1,
+        "users_30d": 2,
+        "engaged_sessions_30d": 2,
+        "avg_engagement_sec": 0.0,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      }
+    },
+    "app_conversor_unidades": {
+      "direct": {
+        "sessions_30d": 7,
+        "sessions_es_30d": 3,
+        "sessions_en_30d": 4,
+        "users_30d": 6,
+        "engaged_sessions_30d": 2,
+        "avg_engagement_sec": 1.0,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -2220,6 +2232,16 @@
         "users_30d": 7,
         "engaged_sessions_30d": 0,
         "avg_engagement_sec": 1.4,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "other": {
+        "sessions_30d": 1,
+        "sessions_es_30d": 0,
+        "sessions_en_30d": 1,
+        "users_30d": 1,
+        "engaged_sessions_30d": 0,
+        "avg_engagement_sec": 0.0,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
@@ -2354,24 +2376,58 @@
         "key_events_breakdown": {}
       }
     },
-    "thomas_bayes": {
+    "obs-management": {
+      "other": {
+        "sessions_30d": 4,
+        "sessions_es_30d": 4,
+        "sessions_en_30d": 0,
+        "users_30d": 1,
+        "engaged_sessions_30d": 2,
+        "avg_engagement_sec": 0.0,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "direct": {
+        "sessions_30d": 6,
+        "sessions_es_30d": 3,
+        "sessions_en_30d": 3,
+        "users_30d": 5,
+        "engaged_sessions_30d": 1,
+        "avg_engagement_sec": 0.0,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      }
+    },
+    "reading": {
+      "direct": {
+        "sessions_30d": 4,
+        "sessions_es_30d": 4,
+        "sessions_en_30d": 0,
+        "users_30d": 1,
+        "engaged_sessions_30d": 4,
+        "avg_engagement_sec": 15.0,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      }
+    },
+    "flashcards": {
       "direct": {
         "sessions_30d": 5,
-        "sessions_es_30d": 1,
-        "sessions_en_30d": 4,
+        "sessions_es_30d": 2,
+        "sessions_en_30d": 3,
         "users_30d": 5,
-        "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 2.6,
+        "engaged_sessions_30d": 3,
+        "avg_engagement_sec": 61.4,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
       "other": {
         "sessions_30d": 1,
-        "sessions_es_30d": 0,
-        "sessions_en_30d": 1,
+        "sessions_es_30d": 1,
+        "sessions_en_30d": 0,
         "users_30d": 1,
         "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 0.0,
+        "avg_engagement_sec": 1.0,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -2379,11 +2435,11 @@
     "maths": {
       "direct": {
         "sessions_30d": 6,
-        "sessions_es_30d": 4,
-        "sessions_en_30d": 2,
+        "sessions_es_30d": 3,
+        "sessions_en_30d": 3,
         "users_30d": 5,
-        "engaged_sessions_30d": 3,
-        "avg_engagement_sec": 19.3,
+        "engaged_sessions_30d": 4,
+        "avg_engagement_sec": 19.5,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
@@ -2428,40 +2484,6 @@
         "key_events_breakdown": {}
       }
     },
-    "obs-management": {
-      "other": {
-        "sessions_30d": 4,
-        "sessions_es_30d": 4,
-        "sessions_en_30d": 0,
-        "users_30d": 1,
-        "engaged_sessions_30d": 2,
-        "avg_engagement_sec": 0.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "direct": {
-        "sessions_30d": 6,
-        "sessions_es_30d": 3,
-        "sessions_en_30d": 3,
-        "users_30d": 5,
-        "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 0.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
-    "reading": {
-      "direct": {
-        "sessions_30d": 4,
-        "sessions_es_30d": 4,
-        "sessions_en_30d": 0,
-        "users_30d": 1,
-        "engaged_sessions_30d": 4,
-        "avg_engagement_sec": 15.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
     "ia-educacion-deep_research": {
       "direct": {
         "sessions_30d": 4,
@@ -2486,12 +2508,12 @@
     },
     "ia_agents_part1": {
       "direct": {
-        "sessions_30d": 4,
-        "sessions_es_30d": 1,
+        "sessions_30d": 5,
+        "sessions_es_30d": 2,
         "sessions_en_30d": 3,
-        "users_30d": 4,
-        "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 1.2,
+        "users_30d": 5,
+        "engaged_sessions_30d": 1,
+        "avg_engagement_sec": 54.0,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
@@ -2652,6 +2674,28 @@
         "key_events_breakdown": {}
       }
     },
+    "thomas_bayes": {
+      "direct": {
+        "sessions_30d": 4,
+        "sessions_es_30d": 1,
+        "sessions_en_30d": 3,
+        "users_30d": 4,
+        "engaged_sessions_30d": 0,
+        "avg_engagement_sec": 2.8,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "other": {
+        "sessions_30d": 1,
+        "sessions_es_30d": 0,
+        "sessions_en_30d": 1,
+        "users_30d": 1,
+        "engaged_sessions_30d": 0,
+        "avg_engagement_sec": 0.0,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      }
+    },
     "eu_ai_act": {
       "direct": {
         "sessions_30d": 3,
@@ -2660,6 +2704,28 @@
         "users_30d": 3,
         "engaged_sessions_30d": 0,
         "avg_engagement_sec": 3.7,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "other": {
+        "sessions_30d": 1,
+        "sessions_es_30d": 0,
+        "sessions_en_30d": 1,
+        "users_30d": 1,
+        "engaged_sessions_30d": 0,
+        "avg_engagement_sec": 0.0,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      }
+    },
+    "ia_agents_part6": {
+      "direct": {
+        "sessions_30d": 3,
+        "sessions_es_30d": 3,
+        "sessions_en_30d": 0,
+        "users_30d": 3,
+        "engaged_sessions_30d": 3,
+        "avg_engagement_sec": 171.0,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
@@ -2762,24 +2828,14 @@
         "key_events_breakdown": {}
       }
     },
-    "flashcards": {
+    "sop_ingenieria-higiene-datos": {
       "direct": {
         "sessions_30d": 4,
-        "sessions_es_30d": 2,
-        "sessions_en_30d": 2,
+        "sessions_es_30d": 3,
+        "sessions_en_30d": 1,
         "users_30d": 4,
-        "engaged_sessions_30d": 2,
-        "avg_engagement_sec": 76.5,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "other": {
-        "sessions_30d": 1,
-        "sessions_es_30d": 1,
-        "sessions_en_30d": 0,
-        "users_30d": 1,
-        "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 1.0,
+        "engaged_sessions_30d": 3,
+        "avg_engagement_sec": 7.0,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -2856,28 +2912,6 @@
         "users_30d": 1,
         "engaged_sessions_30d": 0,
         "avg_engagement_sec": 4.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
-    "app-lifeops_part2_frontend_dashboard": {
-      "direct": {
-        "sessions_30d": 4,
-        "sessions_es_30d": 2,
-        "sessions_en_30d": 2,
-        "users_30d": 4,
-        "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 1.5,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "linkedin": {
-        "sessions_30d": 2,
-        "sessions_es_30d": 1,
-        "sessions_en_30d": 1,
-        "users_30d": 2,
-        "engaged_sessions_30d": 2,
-        "avg_engagement_sec": 0.0,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -3058,28 +3092,6 @@
         "key_events_breakdown": {}
       }
     },
-    "ia_agents_part6": {
-      "direct": {
-        "sessions_30d": 2,
-        "sessions_es_30d": 2,
-        "sessions_en_30d": 0,
-        "users_30d": 2,
-        "engaged_sessions_30d": 2,
-        "avg_engagement_sec": 229.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "other": {
-        "sessions_30d": 1,
-        "sessions_es_30d": 0,
-        "sessions_en_30d": 1,
-        "users_30d": 1,
-        "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 0.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
     "ia_agents_part8": {
       "direct": {
         "sessions_30d": 3,
@@ -3122,18 +3134,6 @@
         "users_30d": 1,
         "engaged_sessions_30d": 0,
         "avg_engagement_sec": 0.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
-    "sop_ingenieria-higiene-datos": {
-      "direct": {
-        "sessions_30d": 2,
-        "sessions_es_30d": 2,
-        "sessions_en_30d": 0,
-        "users_30d": 2,
-        "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 12.5,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -3302,12 +3302,6 @@
     }
   },
   "daily_by_channel": {
-    "2026-10-27": {
-      "direct": 26,
-      "other": 10,
-      "google_organic": 3,
-      "linkedin": 1
-    },
     "2026-10-28": {
       "direct": 72,
       "other": 13,
@@ -3484,9 +3478,14 @@
       "other": 5
     },
     "2026-11-26": {
-      "direct": 18,
-      "google_organic": 3,
-      "other": 3
+      "direct": 37,
+      "google_organic": 7,
+      "other": 5
+    },
+    "2026-11-27": {
+      "direct": 13,
+      "other": 1,
+      "google_organic": 1
     }
   },
   "records": [
@@ -3498,10 +3497,10 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 190,
-      "users": 113,
-      "engaged_sessions": 106,
-      "engagement_sec": 4049.0,
+      "sessions": 191,
+      "users": 120,
+      "engaged_sessions": 103,
+      "engagement_sec": 4021.0,
       "key_events": 4,
       "key_events_breakdown": {
         "begin_checkout": 2,
@@ -3531,10 +3530,10 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 72,
-      "users": 29,
-      "engaged_sessions": 62,
-      "engagement_sec": 1555.0,
+      "sessions": 73,
+      "users": 31,
+      "engaged_sessions": 63,
+      "engagement_sec": 1532.0,
       "key_events": 3,
       "key_events_breakdown": {
         "begin_checkout": 2,
@@ -3550,9 +3549,24 @@
       "medium": "(none)",
       "campaign": "(direct)",
       "sessions": 54,
-      "users": 3,
+      "users": 4,
       "engaged_sessions": 51,
-      "engagement_sec": 1069.0,
+      "engagement_sec": 1065.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/es/apps",
+      "asset_id": null,
+      "lang": "es",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 47,
+      "users": 8,
+      "engaged_sessions": 43,
+      "engagement_sec": 604.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -3565,24 +3579,9 @@
       "medium": "(none)",
       "campaign": "(direct)",
       "sessions": 46,
-      "users": 25,
+      "users": 26,
       "engaged_sessions": 34,
-      "engagement_sec": 405.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/es/apps",
-      "asset_id": null,
-      "lang": "es",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 46,
-      "users": 7,
-      "engaged_sessions": 42,
-      "engagement_sec": 602.0,
+      "engagement_sec": 408.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -3594,10 +3593,10 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 34,
-      "users": 22,
-      "engaged_sessions": 16,
-      "engagement_sec": 179.0,
+      "sessions": 35,
+      "users": 23,
+      "engaged_sessions": 17,
+      "engagement_sec": 180.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -3609,7 +3608,7 @@
       "source": "localhost:1313",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 32,
+      "sessions": 33,
       "users": 1,
       "engaged_sessions": 27,
       "engagement_sec": 455.0,
@@ -3626,23 +3625,8 @@
       "campaign": "(direct)",
       "sessions": 26,
       "users": 20,
-      "engaged_sessions": 18,
-      "engagement_sec": 333.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "linkedin",
-      "path": "/es",
-      "asset_id": null,
-      "lang": "es",
-      "source": "linkedin.com",
-      "medium": "referral",
-      "campaign": "(referral)",
-      "sessions": 25,
-      "users": 1,
       "engaged_sessions": 20,
-      "engagement_sec": 509.0,
+      "engagement_sec": 335.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -3654,10 +3638,10 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 24,
-      "users": 20,
-      "engaged_sessions": 8,
-      "engagement_sec": 127.0,
+      "sessions": 25,
+      "users": 21,
+      "engaged_sessions": 9,
+      "engagement_sec": 128.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -3669,10 +3653,25 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 23,
-      "users": 22,
-      "engaged_sessions": 3,
-      "engagement_sec": 241.0,
+      "sessions": 24,
+      "users": 23,
+      "engaged_sessions": 4,
+      "engagement_sec": 250.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "linkedin",
+      "path": "/es",
+      "asset_id": null,
+      "lang": "es",
+      "source": "linkedin.com",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 24,
+      "users": 1,
+      "engaged_sessions": 19,
+      "engagement_sec": 507.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -3708,6 +3707,21 @@
     },
     {
       "channel": "direct",
+      "path": "/en/posts/game_snake",
+      "asset_id": "game_snake",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 20,
+      "users": 20,
+      "engaged_sessions": 0,
+      "engagement_sec": 0.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
       "path": "/en/posts/mckinsey-ge-matrix",
       "asset_id": "mckinsey-ge-matrix",
       "lang": "en",
@@ -3723,23 +3737,8 @@
     },
     {
       "channel": "direct",
-      "path": "/en/posts/quantitative-swot-tows-matrix",
-      "asset_id": "quantitative-swot-tows-matrix",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 20,
-      "users": 20,
-      "engaged_sessions": 0,
-      "engagement_sec": 8.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/en/posts/game_snake",
-      "asset_id": "game_snake",
+      "path": "/en/posts/devs",
+      "asset_id": "devs",
       "lang": "en",
       "source": "(direct)",
       "medium": "(none)",
@@ -3747,7 +3746,22 @@
       "sessions": 19,
       "users": 19,
       "engaged_sessions": 0,
-      "engagement_sec": 0.0,
+      "engagement_sec": 17.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/en/posts/john_von_neumann",
+      "asset_id": "john_von_neumann",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 19,
+      "users": 17,
+      "engaged_sessions": 0,
+      "engagement_sec": 3.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -3768,51 +3782,6 @@
     },
     {
       "channel": "direct",
-      "path": "/es/sobre-mi",
-      "asset_id": null,
-      "lang": "es",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 19,
-      "users": 17,
-      "engaged_sessions": 16,
-      "engagement_sec": 132.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/en/posts/devs",
-      "asset_id": "devs",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 18,
-      "users": 18,
-      "engaged_sessions": 0,
-      "engagement_sec": 17.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/en/posts/john_von_neumann",
-      "asset_id": "john_von_neumann",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 18,
-      "users": 16,
-      "engaged_sessions": 0,
-      "engagement_sec": 3.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
       "path": "/en/posts/quantitative-dar-matrix",
       "asset_id": "matriz-dar-cuantitativa",
       "lang": "en",
@@ -3828,6 +3797,21 @@
     },
     {
       "channel": "direct",
+      "path": "/en/posts/quantitative-swot-tows-matrix",
+      "asset_id": "quantitative-swot-tows-matrix",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 18,
+      "users": 18,
+      "engaged_sessions": 0,
+      "engagement_sec": 0.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
       "path": "/en/posts/graphrag",
       "asset_id": "graphrag",
       "lang": "en",
@@ -3838,6 +3822,21 @@
       "users": 17,
       "engaged_sessions": 1,
       "engagement_sec": 33.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/es/sobre-mi",
+      "asset_id": null,
+      "lang": "es",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 17,
+      "users": 17,
+      "engaged_sessions": 14,
+      "engagement_sec": 132.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -3873,31 +3872,16 @@
     },
     {
       "channel": "direct",
-      "path": "/en/posts/dynamic-bcg-matrix",
-      "asset_id": "dynamic-bcg-matrix",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 15,
-      "users": 15,
-      "engaged_sessions": 0,
-      "engagement_sec": 5.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
       "path": "/es/apps/pulse",
       "asset_id": "pulse",
       "lang": "es",
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 15,
-      "users": 5,
-      "engaged_sessions": 12,
-      "engagement_sec": 317.0,
+      "sessions": 16,
+      "users": 6,
+      "engaged_sessions": 13,
+      "engagement_sec": 321.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -3909,17 +3893,17 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 15,
-      "users": 7,
-      "engaged_sessions": 10,
-      "engagement_sec": 556.0,
+      "sessions": 16,
+      "users": 8,
+      "engaged_sessions": 11,
+      "engagement_sec": 558.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
     {
       "channel": "direct",
-      "path": "/en/posts/ada_lovelace",
-      "asset_id": "ada_lovelace",
+      "path": "/en/posts/dynamic-bcg-matrix",
+      "asset_id": "dynamic-bcg-matrix",
       "lang": "en",
       "source": "(direct)",
       "medium": "(none)",
@@ -3927,7 +3911,7 @@
       "sessions": 14,
       "users": 14,
       "engaged_sessions": 0,
-      "engagement_sec": 0.0,
+      "engagement_sec": 5.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -3977,17 +3961,32 @@
       "key_events_breakdown": {}
     },
     {
-      "channel": "linkedin",
-      "path": "/en",
-      "asset_id": null,
+      "channel": "direct",
+      "path": "/es/posts/sdd_vs_vibe_coding",
+      "asset_id": "sdd_vs_vibe_coding",
+      "lang": "es",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 14,
+      "users": 8,
+      "engaged_sessions": 9,
+      "engagement_sec": 484.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/en/posts/decision-making-prioritization-quantitative-framework",
+      "asset_id": "decision-making-prioritization-quantitative-framework",
       "lang": "en",
-      "source": "linkedin.com",
-      "medium": "referral",
-      "campaign": "(referral)",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
       "sessions": 13,
-      "users": 1,
-      "engaged_sessions": 13,
-      "engagement_sec": 316.0,
+      "users": 13,
+      "engaged_sessions": 2,
+      "engagement_sec": 24.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -4037,21 +4036,6 @@
       "key_events_breakdown": {}
     },
     {
-      "channel": "direct",
-      "path": "/es/posts/sdd_vs_vibe_coding",
-      "asset_id": "sdd_vs_vibe_coding",
-      "lang": "es",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 13,
-      "users": 7,
-      "engaged_sessions": 8,
-      "engagement_sec": 482.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
       "channel": "linkedin",
       "path": "/es/recursos",
       "asset_id": "mega-bundle",
@@ -4068,6 +4052,51 @@
         "begin_checkout": 1,
         "begin_checkout_kit": 1
       }
+    },
+    {
+      "channel": "linkedin",
+      "path": "/en",
+      "asset_id": null,
+      "lang": "en",
+      "source": "linkedin.com",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 12,
+      "users": 1,
+      "engaged_sessions": 12,
+      "engagement_sec": 315.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/en/apps",
+      "asset_id": null,
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 12,
+      "users": 4,
+      "engaged_sessions": 11,
+      "engagement_sec": 128.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/en/posts/ada_lovelace",
+      "asset_id": "ada_lovelace",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 12,
+      "users": 12,
+      "engaged_sessions": 0,
+      "engagement_sec": 0.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
     },
     {
       "channel": "direct",
@@ -4101,31 +4130,16 @@
     },
     {
       "channel": "direct",
-      "path": "/en/posts/decision-making-prioritization-quantitative-framework",
-      "asset_id": "decision-making-prioritization-quantitative-framework",
+      "path": "/en/posts/prompt_injection",
+      "asset_id": "prompt_injection",
       "lang": "en",
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
       "sessions": 12,
       "users": 12,
-      "engaged_sessions": 1,
-      "engagement_sec": 19.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/en/posts/happyrobot",
-      "asset_id": "happyrobot",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 12,
-      "users": 12,
-      "engaged_sessions": 2,
-      "engagement_sec": 60.0,
+      "engaged_sessions": 0,
+      "engagement_sec": 0.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -4161,6 +4175,21 @@
     },
     {
       "channel": "direct",
+      "path": "/es/posts/kurt_godel",
+      "asset_id": "kurt_godel",
+      "lang": "es",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 12,
+      "users": 10,
+      "engaged_sessions": 6,
+      "engagement_sec": 604.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
       "path": "/es/posts/matriz-rice-ice-priorizacion",
       "asset_id": "matriz-rice-ice-priorizacion",
       "lang": "es",
@@ -4171,6 +4200,36 @@
       "users": 7,
       "engaged_sessions": 6,
       "engagement_sec": 463.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/es/posts/pulse-parte2-indexador-pydantic-paridad-ci",
+      "asset_id": "pulse-part2",
+      "lang": "es",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 12,
+      "users": 6,
+      "engaged_sessions": 9,
+      "engagement_sec": 243.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/es/posts/toma-decisiones-priorizacion-framework-cuantitativo",
+      "asset_id": "decision-making-prioritization-quantitative-framework",
+      "lang": "es",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 12,
+      "users": 8,
+      "engaged_sessions": 7,
+      "engagement_sec": 907.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -4191,21 +4250,6 @@
     },
     {
       "channel": "direct",
-      "path": "/en/apps",
-      "asset_id": null,
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 11,
-      "users": 3,
-      "engaged_sessions": 10,
-      "engagement_sec": 127.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
       "path": "/en/posts/alan_turing",
       "asset_id": "alan_turing",
       "lang": "en",
@@ -4221,16 +4265,31 @@
     },
     {
       "channel": "direct",
-      "path": "/en/posts/prompt_injection",
-      "asset_id": "prompt_injection",
+      "path": "/en/posts/happyrobot",
+      "asset_id": "happyrobot",
       "lang": "en",
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
       "sessions": 11,
       "users": 11,
-      "engaged_sessions": 0,
-      "engagement_sec": 0.0,
+      "engaged_sessions": 2,
+      "engagement_sec": 60.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "google_organic",
+      "path": "/en/posts/kantorovich",
+      "asset_id": "kantorovich",
+      "lang": "en",
+      "source": "google",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "sessions": 11,
+      "users": 8,
+      "engaged_sessions": 3,
+      "engagement_sec": 71.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -4251,16 +4310,16 @@
     },
     {
       "channel": "direct",
-      "path": "/es/posts/kurt_godel",
-      "asset_id": "kurt_godel",
+      "path": "/es/posts/business-case-financiero-van-tir",
+      "asset_id": "business-case-financiero-van-tir",
       "lang": "es",
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
       "sessions": 11,
-      "users": 9,
-      "engaged_sessions": 5,
-      "engagement_sec": 603.0,
+      "users": 8,
+      "engaged_sessions": 6,
+      "engagement_sec": 337.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -4281,16 +4340,31 @@
     },
     {
       "channel": "direct",
-      "path": "/es/posts/toma-decisiones-priorizacion-framework-cuantitativo",
-      "asset_id": "decision-making-prioritization-quantitative-framework",
+      "path": "/es/posts/pulse-parte3-tablero-react-tabla-kanban-calendario",
+      "asset_id": "pulse-part3",
       "lang": "es",
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
       "sessions": 11,
-      "users": 7,
-      "engaged_sessions": 6,
-      "engagement_sec": 901.0,
+      "users": 5,
+      "engaged_sessions": 7,
+      "engagement_sec": 134.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/en/apps/pulse",
+      "asset_id": "pulse",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 10,
+      "users": 10,
+      "engaged_sessions": 1,
+      "engagement_sec": 2.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -4340,17 +4414,32 @@
       "key_events_breakdown": {}
     },
     {
-      "channel": "google_organic",
-      "path": "/en/posts/kantorovich",
-      "asset_id": "kantorovich",
+      "channel": "direct",
+      "path": "/en/posts/kurt_godel",
+      "asset_id": "kurt_godel",
       "lang": "en",
-      "source": "google",
-      "medium": "organic",
-      "campaign": "(organic)",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
       "sessions": 10,
-      "users": 8,
+      "users": 9,
       "engaged_sessions": 3,
-      "engagement_sec": 71.0,
+      "engagement_sec": 14.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/en/posts/multiverse_computing",
+      "asset_id": "multiverse_computing",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 10,
+      "users": 10,
+      "engaged_sessions": 0,
+      "engagement_sec": 0.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -4385,36 +4474,6 @@
       "key_events_breakdown": {}
     },
     {
-      "channel": "other",
-      "path": "/es/posts/alan_turing",
-      "asset_id": "alan_turing",
-      "lang": "es",
-      "source": "bing",
-      "medium": "organic",
-      "campaign": "(organic)",
-      "sessions": 10,
-      "users": 6,
-      "engaged_sessions": 3,
-      "engagement_sec": 69.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/es/posts/app-lifeops_part6_analytics_dashboard_360",
-      "asset_id": "app-lifeops_part6_analytics_dashboard_360",
-      "lang": "es",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 10,
-      "users": 6,
-      "engaged_sessions": 5,
-      "engagement_sec": 133.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
       "channel": "direct",
       "path": "/es/posts/matriz-dar-cuantitativa",
       "asset_id": "matriz-dar-cuantitativa",
@@ -4430,51 +4489,6 @@
       "key_events_breakdown": {}
     },
     {
-      "channel": "direct",
-      "path": "/es/posts/matriz-mckinsey-ge",
-      "asset_id": "mckinsey-ge-matrix",
-      "lang": "es",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 10,
-      "users": 9,
-      "engaged_sessions": 3,
-      "engagement_sec": 91.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/es/posts/pulse-parte2-indexador-pydantic-paridad-ci",
-      "asset_id": "pulse-part2",
-      "lang": "es",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 10,
-      "users": 4,
-      "engaged_sessions": 7,
-      "engagement_sec": 237.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/es/posts/pulse-parte3-tablero-react-tabla-kanban-calendario",
-      "asset_id": "pulse-part3",
-      "lang": "es",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 10,
-      "users": 4,
-      "engaged_sessions": 7,
-      "engagement_sec": 134.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
       "channel": "coderlegion",
       "path": "/en/apps",
       "asset_id": null,
@@ -4486,21 +4500,6 @@
       "users": 1,
       "engaged_sessions": 8,
       "engagement_sec": 101.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/en/apps/pulse",
-      "asset_id": "pulse",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 9,
-      "users": 9,
-      "engaged_sessions": 0,
-      "engagement_sec": 0.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -4566,36 +4565,6 @@
     },
     {
       "channel": "direct",
-      "path": "/en/posts/kurt_godel",
-      "asset_id": "kurt_godel",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 9,
-      "users": 8,
-      "engaged_sessions": 2,
-      "engagement_sec": 13.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/en/posts/multiverse_computing",
-      "asset_id": "multiverse_computing",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 9,
-      "users": 9,
-      "engaged_sessions": 0,
-      "engagement_sec": 0.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
       "path": "/en/posts/nextail",
       "asset_id": "nextail",
       "lang": "en",
@@ -4626,21 +4595,6 @@
     },
     {
       "channel": "direct",
-      "path": "/en/posts/sop-engineering-part4-enterprise",
-      "asset_id": "sop-ingenieria-parte4-enterprise",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 9,
-      "users": 9,
-      "engaged_sessions": 1,
-      "engagement_sec": 28.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
       "path": "/en/posts/submer",
       "asset_id": "submer",
       "lang": "en",
@@ -4656,6 +4610,21 @@
     },
     {
       "channel": "direct",
+      "path": "/en/posts/the-goal",
+      "asset_id": "the-goal",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 9,
+      "users": 9,
+      "engaged_sessions": 0,
+      "engagement_sec": 2.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
       "path": "/es/apps/weather",
       "asset_id": "weather",
       "lang": "es",
@@ -4666,21 +4635,6 @@
       "users": 4,
       "engaged_sessions": 7,
       "engagement_sec": 212.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/es/posts/business-case-financiero-van-tir",
-      "asset_id": "business-case-financiero-van-tir",
-      "lang": "es",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 9,
-      "users": 6,
-      "engaged_sessions": 5,
-      "engagement_sec": 315.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -4710,7 +4664,7 @@
       "sessions": 9,
       "users": 7,
       "engaged_sessions": 5,
-      "engagement_sec": 223.0,
+      "engagement_sec": 279.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -4726,6 +4680,21 @@
       "users": 8,
       "engaged_sessions": 3,
       "engagement_sec": 257.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/es/posts/matriz-mckinsey-ge",
+      "asset_id": "mckinsey-ge-matrix",
+      "lang": "es",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 9,
+      "users": 9,
+      "engaged_sessions": 2,
+      "engagement_sec": 37.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -4806,6 +4775,21 @@
     },
     {
       "channel": "direct",
+      "path": "/en/posts/quantitative-porter-5-forces",
+      "asset_id": "quantitative-porter-5-forces",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 8,
+      "users": 8,
+      "engaged_sessions": 1,
+      "engagement_sec": 11.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
       "path": "/en/posts/quantitative-risk-matrix-fmea",
       "asset_id": "quantitative-risk-matrix-fmea",
       "lang": "en",
@@ -4851,8 +4835,8 @@
     },
     {
       "channel": "direct",
-      "path": "/en/posts/the-goal",
-      "asset_id": "the-goal",
+      "path": "/en/posts/sop-engineering-part4-enterprise",
+      "asset_id": "sop-ingenieria-parte4-enterprise",
       "lang": "en",
       "source": "(direct)",
       "medium": "(none)",
@@ -4860,7 +4844,7 @@
       "sessions": 8,
       "users": 8,
       "engaged_sessions": 0,
-      "engagement_sec": 2.0,
+      "engagement_sec": 16.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -4970,6 +4954,21 @@
       "key_events_breakdown": {}
     },
     {
+      "channel": "direct",
+      "path": "/en/posts/flywire",
+      "asset_id": "flywire",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 7,
+      "users": 7,
+      "engaged_sessions": 0,
+      "engagement_sec": 0.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
       "channel": "other",
       "path": "/en/posts/mcp_protocol",
       "asset_id": "mcp_protocol",
@@ -5016,16 +5015,31 @@
     },
     {
       "channel": "direct",
-      "path": "/en/posts/quantitative-porter-5-forces",
-      "asset_id": "quantitative-porter-5-forces",
+      "path": "/en/posts/pulse-part1-goodbye-notion-content-ops",
+      "asset_id": "pulse-part1",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 7,
+      "users": 4,
+      "engaged_sessions": 5,
+      "engagement_sec": 44.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/en/posts/pulse-part2-pydantic-indexer-bilingual-parity-ci",
+      "asset_id": "pulse-part2",
       "lang": "en",
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
       "sessions": 7,
       "users": 7,
-      "engaged_sessions": 1,
-      "engagement_sec": 11.0,
+      "engaged_sessions": 2,
+      "engagement_sec": 14.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -5075,6 +5089,36 @@
       "key_events_breakdown": {}
     },
     {
+      "channel": "other",
+      "path": "/es/posts/alan_turing",
+      "asset_id": "alan_turing",
+      "lang": "es",
+      "source": "bing",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "sessions": 7,
+      "users": 4,
+      "engaged_sessions": 2,
+      "engagement_sec": 66.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/es/posts/app-lifeops_part6_analytics_dashboard_360",
+      "asset_id": "app-lifeops_part6_analytics_dashboard_360",
+      "lang": "es",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 7,
+      "users": 6,
+      "engaged_sessions": 2,
+      "engagement_sec": 66.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
       "channel": "direct",
       "path": "/es/posts/autopilot-parte10-scriba-sindicacion-puente-pulse",
       "asset_id": "autopilot-part10-scriba-pulse-bridge",
@@ -5101,21 +5145,6 @@
       "users": 7,
       "engaged_sessions": 3,
       "engagement_sec": 33.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/es/posts/matriz-bcg-dinamica",
-      "asset_id": "dynamic-bcg-matrix",
-      "lang": "es",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 7,
-      "users": 6,
-      "engaged_sessions": 4,
-      "engagement_sec": 27.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -5168,21 +5197,6 @@
       "channel": "direct",
       "path": "/en/posts/autopilot-part10-scriba-syndication-pulse-bridge",
       "asset_id": "autopilot-part10-scriba-pulse-bridge",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 6,
-      "users": 6,
-      "engaged_sessions": 0,
-      "engagement_sec": 0.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/en/posts/flywire",
-      "asset_id": "flywire",
       "lang": "en",
       "source": "(direct)",
       "medium": "(none)",
@@ -5301,21 +5315,6 @@
     },
     {
       "channel": "direct",
-      "path": "/en/posts/pulse-part1-goodbye-notion-content-ops",
-      "asset_id": "pulse-part1",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 6,
-      "users": 3,
-      "engaged_sessions": 4,
-      "engagement_sec": 43.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
       "path": "/en/posts/quantitative-pestel-matrix",
       "asset_id": "quantitative-pestel-matrix",
       "lang": "en",
@@ -5341,6 +5340,21 @@
       "users": 6,
       "engaged_sessions": 0,
       "engagement_sec": 0.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/es/posts/matriz-bcg-dinamica",
+      "asset_id": "dynamic-bcg-matrix",
+      "lang": "es",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 6,
+      "users": 5,
+      "engaged_sessions": 3,
+      "engagement_sec": 27.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -5407,6 +5421,21 @@
       "key_events_breakdown": {}
     },
     {
+      "channel": "direct",
+      "path": "/en/apps/conversor",
+      "asset_id": "conversor",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 5,
+      "users": 5,
+      "engaged_sessions": 2,
+      "engagement_sec": 1.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
       "channel": "google_organic",
       "path": "/en/posts/abraham_wald",
       "asset_id": "abraham_wald",
@@ -5429,21 +5458,6 @@
       "source": "aocr.org",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 5,
-      "users": 5,
-      "engaged_sessions": 0,
-      "engagement_sec": 0.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/en/posts/app_unit_converter",
-      "asset_id": "app_conversor_unidades",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
       "sessions": 5,
       "users": 5,
       "engaged_sessions": 0,
@@ -5527,21 +5541,6 @@
       "key_events_breakdown": {}
     },
     {
-      "channel": "other",
-      "path": "/en/posts/ravenpack",
-      "asset_id": "ravenpack",
-      "lang": "en",
-      "source": "bing",
-      "medium": "organic",
-      "campaign": "(organic)",
-      "sessions": 5,
-      "users": 4,
-      "engaged_sessions": 3,
-      "engagement_sec": 116.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
       "channel": "direct",
       "path": "/en/posts/wallapop",
       "asset_id": "wallapop",
@@ -5581,8 +5580,8 @@
       "campaign": "(direct)",
       "sessions": 5,
       "users": 5,
-      "engaged_sessions": 2,
-      "engagement_sec": 322.0,
+      "engaged_sessions": 3,
+      "engagement_sec": 323.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -5647,6 +5646,21 @@
       "key_events_breakdown": {}
     },
     {
+      "channel": "google_organic",
+      "path": "/es/posts/claude_shannon",
+      "asset_id": "claude_shannon",
+      "lang": "es",
+      "source": "google",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "sessions": 5,
+      "users": 4,
+      "engaged_sessions": 2,
+      "engagement_sec": 141.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
       "channel": "direct",
       "path": "/es/posts/estadistica-descriptiva",
       "asset_id": null,
@@ -5707,21 +5721,6 @@
       "key_events_breakdown": {}
     },
     {
-      "channel": "direct",
-      "path": "/en/apps/conversor",
-      "asset_id": "conversor",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 4,
-      "users": 4,
-      "engaged_sessions": 1,
-      "engagement_sec": 0.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
       "channel": "linkedin",
       "path": "/en/posts",
       "asset_id": null,
@@ -5753,16 +5752,46 @@
     },
     {
       "channel": "direct",
-      "path": "/en/posts/app-lifeops_part6_analytics_dashboard_360",
-      "asset_id": "app-lifeops_part6_analytics_dashboard_360",
+      "path": "/en/posts/app-lifeops_part2_frontend_dashboard",
+      "asset_id": "app-lifeops_part2_frontend_dashboard",
       "lang": "en",
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
       "sessions": 4,
       "users": 4,
-      "engaged_sessions": 1,
-      "engagement_sec": 127.0,
+      "engaged_sessions": 2,
+      "engagement_sec": 3.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/en/posts/app_openweather_part2_frontend",
+      "asset_id": "app_openweather_part2_frontend",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 4,
+      "users": 4,
+      "engaged_sessions": 2,
+      "engagement_sec": 3.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/en/posts/app_unit_converter",
+      "asset_id": "app_conversor_unidades",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 4,
+      "users": 4,
+      "engaged_sessions": 0,
+      "engagement_sec": 0.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -5857,21 +5886,6 @@
       "key_events_breakdown": {}
     },
     {
-      "channel": "google_organic",
-      "path": "/en/posts/happyrobot",
-      "asset_id": "happyrobot",
-      "lang": "en",
-      "source": "google",
-      "medium": "organic",
-      "campaign": "(organic)",
-      "sessions": 4,
-      "users": 4,
-      "engaged_sessions": 1,
-      "engagement_sec": 383.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
       "channel": "direct",
       "path": "/en/posts/obs_part3_architecture",
       "asset_id": "obs_parte3_arquitectura",
@@ -5898,21 +5912,6 @@
       "users": 4,
       "engaged_sessions": 0,
       "engagement_sec": 0.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/en/posts/pulse-part2-pydantic-indexer-bilingual-parity-ci",
-      "asset_id": "pulse-part2",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 4,
-      "users": 4,
-      "engaged_sessions": 0,
-      "engagement_sec": 10.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -5977,21 +5976,6 @@
       "key_events_breakdown": {}
     },
     {
-      "channel": "direct",
-      "path": "/en/posts/thomas_bayes",
-      "asset_id": "thomas_bayes",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 4,
-      "users": 4,
-      "engaged_sessions": 0,
-      "engagement_sec": 2.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
       "channel": "other",
       "path": "/en/resources",
       "asset_id": "mega-bundle",
@@ -6008,7 +5992,7 @@
     },
     {
       "channel": "direct",
-      "path": "/en/tags/rice-matrix",
+      "path": "/en/tags/bcg-matrix",
       "asset_id": null,
       "lang": "en",
       "source": "(direct)",
@@ -6023,16 +6007,16 @@
     },
     {
       "channel": "direct",
-      "path": "/es/apps/maths",
-      "asset_id": "maths",
-      "lang": "es",
+      "path": "/en/tags/rice-matrix",
+      "asset_id": null,
+      "lang": "en",
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
       "sessions": 4,
-      "users": 3,
-      "engaged_sessions": 2,
-      "engagement_sec": 89.0,
+      "users": 4,
+      "engaged_sessions": 0,
+      "engagement_sec": 0.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -6082,32 +6066,17 @@
       "key_events_breakdown": {}
     },
     {
-      "channel": "google_organic",
-      "path": "/es/posts/claude_shannon",
-      "asset_id": "claude_shannon",
+      "channel": "direct",
+      "path": "/es/posts/app-lifeops_part2_frontend_dashboard",
+      "asset_id": "app-lifeops_part2_frontend_dashboard",
       "lang": "es",
-      "source": "google",
-      "medium": "organic",
-      "campaign": "(organic)",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
       "sessions": 4,
-      "users": 3,
+      "users": 4,
       "engaged_sessions": 2,
-      "engagement_sec": 141.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "other",
-      "path": "/es/posts/happyrobot",
-      "asset_id": "happyrobot",
-      "lang": "es",
-      "source": "bing",
-      "medium": "organic",
-      "campaign": "(organic)",
-      "sessions": 4,
-      "users": 3,
-      "engaged_sessions": 3,
-      "engagement_sec": 776.0,
+      "engagement_sec": 9.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -6142,6 +6111,21 @@
       "key_events_breakdown": {}
     },
     {
+      "channel": "other",
+      "path": "/es/posts/nextail",
+      "asset_id": "nextail",
+      "lang": "es",
+      "source": "bing",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "sessions": 4,
+      "users": 1,
+      "engaged_sessions": 2,
+      "engagement_sec": 798.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
       "channel": "google_organic",
       "path": "/es/posts/sdd_vs_vibe_coding",
       "asset_id": "sdd_vs_vibe_coding",
@@ -6168,6 +6152,21 @@
       "users": 4,
       "engaged_sessions": 0,
       "engagement_sec": 0.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/es/posts/stack_productividad_2026",
+      "asset_id": "stack_productividad_2026",
+      "lang": "es",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 4,
+      "users": 3,
+      "engaged_sessions": 3,
+      "engagement_sec": 516.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -6217,6 +6216,21 @@
       "key_events_breakdown": {}
     },
     {
+      "channel": "direct",
+      "path": "/en/about",
+      "asset_id": null,
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 3,
+      "users": 3,
+      "engaged_sessions": 2,
+      "engagement_sec": 2.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
       "channel": "other",
       "path": "/en/apps",
       "asset_id": null,
@@ -6228,6 +6242,36 @@
       "users": 1,
       "engaged_sessions": 3,
       "engagement_sec": 42.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/en/apps/flashcards",
+      "asset_id": "flashcards",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 3,
+      "users": 3,
+      "engaged_sessions": 2,
+      "engagement_sec": 2.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/en/apps/maths",
+      "asset_id": "maths",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 3,
+      "users": 3,
+      "engaged_sessions": 2,
+      "engagement_sec": 28.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -6338,6 +6382,21 @@
     },
     {
       "channel": "direct",
+      "path": "/en/posts/app-lifeops_part6_analytics_dashboard_360",
+      "asset_id": "app-lifeops_part6_analytics_dashboard_360",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 3,
+      "users": 3,
+      "engaged_sessions": 0,
+      "engagement_sec": 0.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
       "path": "/en/posts/app_flashcards",
       "asset_id": "app_flashcards",
       "lang": "en",
@@ -6393,6 +6452,21 @@
       "users": 3,
       "engaged_sessions": 1,
       "engagement_sec": 165.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "google_organic",
+      "path": "/en/posts/happyrobot",
+      "asset_id": "happyrobot",
+      "lang": "en",
+      "source": "google",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "sessions": 3,
+      "users": 3,
+      "engaged_sessions": 1,
+      "engagement_sec": 383.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -6517,6 +6591,21 @@
       "key_events_breakdown": {}
     },
     {
+      "channel": "other",
+      "path": "/en/posts/ravenpack",
+      "asset_id": "ravenpack",
+      "lang": "en",
+      "source": "bing",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "sessions": 3,
+      "users": 3,
+      "engaged_sessions": 3,
+      "engagement_sec": 116.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
       "channel": "google_organic",
       "path": "/en/posts/ravenpack",
       "asset_id": "ravenpack",
@@ -6577,6 +6666,21 @@
       "key_events_breakdown": {}
     },
     {
+      "channel": "direct",
+      "path": "/en/posts/thomas_bayes",
+      "asset_id": "thomas_bayes",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 3,
+      "users": 3,
+      "engaged_sessions": 0,
+      "engagement_sec": 0.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
       "channel": "linkedin",
       "path": "/en/resources",
       "asset_id": "mega-bundle",
@@ -6588,21 +6692,6 @@
       "users": 1,
       "engaged_sessions": 3,
       "engagement_sec": 34.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/en/tags/bcg-matrix",
-      "asset_id": null,
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 3,
-      "users": 3,
-      "engaged_sessions": 0,
-      "engagement_sec": 0.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -6698,6 +6787,21 @@
     },
     {
       "channel": "direct",
+      "path": "/es/apps/maths",
+      "asset_id": "maths",
+      "lang": "es",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 3,
+      "users": 2,
+      "engaged_sessions": 2,
+      "engagement_sec": 89.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
       "path": "/es/apps/obs-management",
       "asset_id": "obs-management",
       "lang": "es",
@@ -6728,6 +6832,21 @@
     },
     {
       "channel": "direct",
+      "path": "/es/posts/abraham_wald",
+      "asset_id": "abraham_wald",
+      "lang": "es",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 3,
+      "users": 3,
+      "engaged_sessions": 0,
+      "engagement_sec": 4.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
       "path": "/es/posts/alan_turing",
       "asset_id": "alan_turing",
       "lang": "es",
@@ -6753,6 +6872,21 @@
       "users": 2,
       "engaged_sessions": 2,
       "engagement_sec": 7.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/es/posts/app_openweather_part2_frontend",
+      "asset_id": "app_openweather_part2_frontend",
+      "lang": "es",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 3,
+      "users": 3,
+      "engaged_sessions": 2,
+      "engagement_sec": 2.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -6833,6 +6967,21 @@
     },
     {
       "channel": "other",
+      "path": "/es/posts/happyrobot",
+      "asset_id": "happyrobot",
+      "lang": "es",
+      "source": "bing",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "sessions": 3,
+      "users": 2,
+      "engaged_sessions": 2,
+      "engagement_sec": 654.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "other",
       "path": "/es/posts/ia_agents_part4",
       "asset_id": "ia_agents_part4",
       "lang": "es",
@@ -6843,6 +6992,21 @@
       "users": 3,
       "engaged_sessions": 0,
       "engagement_sec": 0.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/es/posts/ia_agents_part6",
+      "asset_id": "ia_agents_part6",
+      "lang": "es",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 3,
+      "users": 3,
+      "engaged_sessions": 3,
+      "engagement_sec": 513.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -6873,21 +7037,6 @@
       "users": 3,
       "engaged_sessions": 1,
       "engagement_sec": 38.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "other",
-      "path": "/es/posts/john_von_neumann",
-      "asset_id": "john_von_neumann",
-      "lang": "es",
-      "source": "bing",
-      "medium": "organic",
-      "campaign": "(organic)",
-      "sessions": 3,
-      "users": 3,
-      "engaged_sessions": 2,
-      "engagement_sec": 116.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -6967,36 +7116,6 @@
       "key_events_breakdown": {}
     },
     {
-      "channel": "other",
-      "path": "/es/posts/nextail",
-      "asset_id": "nextail",
-      "lang": "es",
-      "source": "bing",
-      "medium": "organic",
-      "campaign": "(organic)",
-      "sessions": 3,
-      "users": 1,
-      "engaged_sessions": 2,
-      "engagement_sec": 796.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "google_organic",
-      "path": "/es/posts/nextail",
-      "asset_id": "nextail",
-      "lang": "es",
-      "source": "google",
-      "medium": "organic",
-      "campaign": "(organic)",
-      "sessions": 3,
-      "users": 3,
-      "engaged_sessions": 1,
-      "engagement_sec": 39.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
       "channel": "google_organic",
       "path": "/es/posts/norbert_wiener",
       "asset_id": "norbert_wiener",
@@ -7043,6 +7162,21 @@
     },
     {
       "channel": "direct",
+      "path": "/es/posts/pgvector_vs_vectordb",
+      "asset_id": "pgvector_vs_vectordb",
+      "lang": "es",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 3,
+      "users": 3,
+      "engaged_sessions": 2,
+      "engagement_sec": 327.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
       "path": "/es/posts/pulse-parte4-ga4-search-console-automatico",
       "asset_id": "pulse-part4",
       "lang": "es",
@@ -7053,6 +7187,21 @@
       "users": 1,
       "engaged_sessions": 3,
       "engagement_sec": 137.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/es/posts/rag_antipatrones",
+      "asset_id": "rag_antipatrones",
+      "lang": "es",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 3,
+      "users": 3,
+      "engaged_sessions": 1,
+      "engagement_sec": 104.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -7073,16 +7222,16 @@
     },
     {
       "channel": "direct",
-      "path": "/es/posts/stack_productividad_2026",
-      "asset_id": "stack_productividad_2026",
+      "path": "/es/posts/sop_ingenieria-higiene-datos",
+      "asset_id": "sop_ingenieria-higiene-datos",
       "lang": "es",
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
       "sessions": 3,
-      "users": 2,
+      "users": 3,
       "engaged_sessions": 2,
-      "engagement_sec": 11.0,
+      "engagement_sec": 27.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -7162,21 +7311,6 @@
       "key_events_breakdown": {}
     },
     {
-      "channel": "direct",
-      "path": "/checkout/cart/5d21cb36-cd18-4e13-8384-95aab02e456e",
-      "asset_id": null,
-      "lang": "other",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 2,
-      "users": 2,
-      "engaged_sessions": 1,
-      "engagement_sec": 0.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
       "channel": "linkedin",
       "path": "/en/about",
       "asset_id": null,
@@ -7238,8 +7372,8 @@
     },
     {
       "channel": "direct",
-      "path": "/en/apps/flashcards",
-      "asset_id": "flashcards",
+      "path": "/en/apps/lifeops",
+      "asset_id": "lifeops",
       "lang": "en",
       "source": "(direct)",
       "medium": "(none)",
@@ -7248,21 +7382,6 @@
       "users": 2,
       "engaged_sessions": 1,
       "engagement_sec": 1.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/en/apps/maths",
-      "asset_id": "maths",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 2,
-      "users": 2,
-      "engaged_sessions": 1,
-      "engagement_sec": 27.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -7357,21 +7476,6 @@
       "key_events_breakdown": {}
     },
     {
-      "channel": "direct",
-      "path": "/en/posts/ai_agents_part9",
-      "asset_id": "ia_agents_part9",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 2,
-      "users": 2,
-      "engaged_sessions": 0,
-      "engagement_sec": 2.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
       "channel": "coderlegion",
       "path": "/en/posts/app-lifeops_part1_arquitectura_backend",
       "asset_id": "app-lifeops_part1_arquitectura_backend",
@@ -7382,21 +7486,6 @@
       "sessions": 2,
       "users": 1,
       "engaged_sessions": 1,
-      "engagement_sec": 0.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/en/posts/app-lifeops_part2_frontend_dashboard",
-      "asset_id": "app-lifeops_part2_frontend_dashboard",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 2,
-      "users": 2,
-      "engaged_sessions": 0,
       "engagement_sec": 0.0,
       "key_events": 0,
       "key_events_breakdown": {}
@@ -7433,8 +7522,8 @@
     },
     {
       "channel": "direct",
-      "path": "/en/posts/app_openweather_part2_frontend",
-      "asset_id": "app_openweather_part2_frontend",
+      "path": "/en/posts/app_openweather_part3_ai_prediction",
+      "asset_id": "app_openweather_part3_ai_prediction",
       "lang": "en",
       "source": "(direct)",
       "medium": "(none)",
@@ -7747,21 +7836,6 @@
       "key_events_breakdown": {}
     },
     {
-      "channel": "other",
-      "path": "/en/posts/quantitative-swot-tows-matrix",
-      "asset_id": "quantitative-swot-tows-matrix",
-      "lang": "en",
-      "source": "bing",
-      "medium": "organic",
-      "campaign": "(organic)",
-      "sessions": 2,
-      "users": 1,
-      "engaged_sessions": 0,
-      "engagement_sec": 0.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
       "channel": "linkedin",
       "path": "/en/tags",
       "asset_id": null,
@@ -8043,6 +8117,21 @@
       "users": 2,
       "engaged_sessions": 0,
       "engagement_sec": 0.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/en/tags/decision-making",
+      "asset_id": null,
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 2,
+      "users": 2,
+      "engaged_sessions": 0,
+      "engagement_sec": 9.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -9037,21 +9126,6 @@
       "key_events_breakdown": {}
     },
     {
-      "channel": "direct",
-      "path": "/es/posts/abraham_wald",
-      "asset_id": "abraham_wald",
-      "lang": "es",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 2,
-      "users": 2,
-      "engaged_sessions": 0,
-      "engagement_sec": 4.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
       "channel": "other",
       "path": "/es/posts/alan_turing",
       "asset_id": "alan_turing",
@@ -9083,21 +9157,6 @@
     },
     {
       "channel": "direct",
-      "path": "/es/posts/app-lifeops_part2_frontend_dashboard",
-      "asset_id": "app-lifeops_part2_frontend_dashboard",
-      "lang": "es",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 2,
-      "users": 2,
-      "engaged_sessions": 0,
-      "engagement_sec": 6.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
       "path": "/es/posts/app-lifeops_part3_modulos_kanban",
       "asset_id": "app-lifeops_part3_modulos_kanban",
       "lang": "es",
@@ -9123,6 +9182,21 @@
       "users": 2,
       "engaged_sessions": 0,
       "engagement_sec": 4.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/es/posts/app-openweather_part1_backend",
+      "asset_id": "app-openweather_part1_backend",
+      "lang": "es",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 2,
+      "users": 2,
+      "engaged_sessions": 1,
+      "engagement_sec": 847.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -9293,6 +9367,21 @@
     },
     {
       "channel": "direct",
+      "path": "/es/posts/ia_agents_part1",
+      "asset_id": "ia_agents_part1",
+      "lang": "es",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 2,
+      "users": 2,
+      "engaged_sessions": 1,
+      "engagement_sec": 270.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
       "path": "/es/posts/ia_agents_part3",
       "asset_id": "ia_agents_part3",
       "lang": "es",
@@ -9303,21 +9392,6 @@
       "users": 2,
       "engaged_sessions": 0,
       "engagement_sec": 5.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/es/posts/ia_agents_part6",
-      "asset_id": "ia_agents_part6",
-      "lang": "es",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 2,
-      "users": 2,
-      "engaged_sessions": 2,
-      "engagement_sec": 458.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -9363,6 +9437,21 @@
       "users": 2,
       "engaged_sessions": 0,
       "engagement_sec": 5.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "other",
+      "path": "/es/posts/john_von_neumann",
+      "asset_id": "john_von_neumann",
+      "lang": "es",
+      "source": "bing",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "sessions": 2,
+      "users": 2,
+      "engaged_sessions": 1,
+      "engagement_sec": 72.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -9457,6 +9546,21 @@
       "key_events_breakdown": {}
     },
     {
+      "channel": "google_organic",
+      "path": "/es/posts/nextail",
+      "asset_id": "nextail",
+      "lang": "es",
+      "source": "google",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "sessions": 2,
+      "users": 2,
+      "engaged_sessions": 1,
+      "engagement_sec": 39.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
       "channel": "direct",
       "path": "/es/posts/obs_parte3_arquitectura",
       "asset_id": "obs_parte3_arquitectura",
@@ -9483,6 +9587,21 @@
       "users": 2,
       "engaged_sessions": 0,
       "engagement_sec": 4.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/es/posts/obs_parte5_radar",
+      "asset_id": "obs_parte5_radar",
+      "lang": "es",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 2,
+      "users": 2,
+      "engaged_sessions": 1,
+      "engagement_sec": 82.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -9518,21 +9637,6 @@
     },
     {
       "channel": "direct",
-      "path": "/es/posts/pgvector_vs_vectordb",
-      "asset_id": "pgvector_vs_vectordb",
-      "lang": "es",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 2,
-      "users": 2,
-      "engaged_sessions": 1,
-      "engagement_sec": 165.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
       "path": "/es/posts/prompt_injection",
       "asset_id": "prompt_injection",
       "lang": "es",
@@ -9562,17 +9666,17 @@
       "key_events_breakdown": {}
     },
     {
-      "channel": "direct",
-      "path": "/es/posts/rag_antipatrones",
-      "asset_id": "rag_antipatrones",
+      "channel": "google_organic",
+      "path": "/es/posts/ravenpack",
+      "asset_id": "ravenpack",
       "lang": "es",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
+      "source": "google",
+      "medium": "organic",
+      "campaign": "(organic)",
       "sessions": 2,
       "users": 2,
       "engaged_sessions": 0,
-      "engagement_sec": 7.0,
+      "engagement_sec": 0.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -9603,21 +9707,6 @@
       "users": 2,
       "engaged_sessions": 1,
       "engagement_sec": 4.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/es/posts/sop_ingenieria-higiene-datos",
-      "asset_id": "sop_ingenieria-higiene-datos",
-      "lang": "es",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 2,
-      "users": 2,
-      "engaged_sessions": 1,
-      "engagement_sec": 25.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -11067,21 +11156,6 @@
     },
     {
       "channel": "direct",
-      "path": "/checkout/cart/7ddde9d0-13ac-44f8-8b5a-c69814914f59",
-      "asset_id": null,
-      "lang": "other",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 1,
-      "users": 1,
-      "engaged_sessions": 1,
-      "engagement_sec": 0.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
       "path": "/checkout/cart/7f824fb4-0e66-4ce7-bc5a-d9dc108ac5ea",
       "asset_id": null,
       "lang": "other",
@@ -11152,21 +11226,6 @@
       "users": 1,
       "engaged_sessions": 1,
       "engagement_sec": 42.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/checkout/cart/9e9304ec-698f-431a-aada-5a22aef06a0f",
-      "asset_id": null,
-      "lang": "other",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 1,
-      "users": 1,
-      "engaged_sessions": 1,
-      "engagement_sec": 0.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -11321,21 +11380,6 @@
       "key_events_breakdown": {}
     },
     {
-      "channel": "direct",
-      "path": "/en/about",
-      "asset_id": null,
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 1,
-      "users": 1,
-      "engaged_sessions": 0,
-      "engagement_sec": 0.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
       "channel": "other",
       "path": "/en/about",
       "asset_id": null,
@@ -11343,21 +11387,6 @@
       "source": "(not set)",
       "medium": "(not set)",
       "campaign": "(not set)",
-      "sessions": 1,
-      "users": 1,
-      "engaged_sessions": 0,
-      "engagement_sec": 0.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/en/apps/lifeops",
-      "asset_id": "lifeops",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
       "sessions": 1,
       "users": 1,
       "engaged_sessions": 0,
@@ -11726,6 +11755,21 @@
       "key_events_breakdown": {}
     },
     {
+      "channel": "direct",
+      "path": "/en/posts/ai_agents_part9",
+      "asset_id": "ia_agents_part9",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 1,
+      "users": 1,
+      "engaged_sessions": 0,
+      "engagement_sec": 0.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
       "channel": "other",
       "path": "/en/posts/alan_turing",
       "asset_id": "alan_turing",
@@ -11877,21 +11921,6 @@
     },
     {
       "channel": "direct",
-      "path": "/en/posts/app_openweather_part3_ai_prediction",
-      "asset_id": "app_openweather_part3_ai_prediction",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 1,
-      "users": 1,
-      "engaged_sessions": 0,
-      "engagement_sec": 0.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
       "path": "/en/posts/app_openweather_part4_extras_ux",
       "asset_id": "app_openweather_part4_extras_ux",
       "lang": "en",
@@ -11913,6 +11942,21 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
+      "sessions": 1,
+      "users": 1,
+      "engaged_sessions": 0,
+      "engagement_sec": 0.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "other",
+      "path": "/en/posts/carto",
+      "asset_id": "carto",
+      "lang": "en",
+      "source": "(not set)",
+      "medium": "(not set)",
+      "campaign": "(not set)",
       "sessions": 1,
       "users": 1,
       "engaged_sessions": 0,
@@ -12011,21 +12055,6 @@
       "key_events_breakdown": {}
     },
     {
-      "channel": "linkedin",
-      "path": "/en/posts/dynamic-bcg-matrix",
-      "asset_id": "dynamic-bcg-matrix",
-      "lang": "en",
-      "source": "linkedin.com",
-      "medium": "referral",
-      "campaign": "(referral)",
-      "sessions": 1,
-      "users": 1,
-      "engaged_sessions": 1,
-      "engagement_sec": 1.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
       "channel": "other",
       "path": "/en/posts/earned-value-management-evm-dashboard",
       "asset_id": "earned-value-management-evm-dashboard",
@@ -12048,21 +12077,6 @@
       "source": "aocr.org",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 1,
-      "users": 1,
-      "engaged_sessions": 0,
-      "engagement_sec": 0.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "other",
-      "path": "/en/posts/ex_machina",
-      "asset_id": "ex_machina",
-      "lang": "en",
-      "source": "duckduckgo",
-      "medium": "organic",
-      "campaign": "(organic)",
       "sessions": 1,
       "users": 1,
       "engaged_sessions": 0,
@@ -12626,6 +12640,21 @@
       "key_events_breakdown": {}
     },
     {
+      "channel": "direct",
+      "path": "/en/posts/sop_engineering-data-hygiene",
+      "asset_id": "sop_ingenieria-higiene-datos",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 1,
+      "users": 1,
+      "engaged_sessions": 1,
+      "engagement_sec": 1.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
       "channel": "other",
       "path": "/en/posts/stochastic-3-point-pert-estimation",
       "asset_id": "stochastic-3-point-pert-estimation",
@@ -12897,6 +12926,21 @@
     },
     {
       "channel": "direct",
+      "path": "/en/tags/bilingual",
+      "asset_id": null,
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 1,
+      "users": 1,
+      "engaged_sessions": 0,
+      "engagement_sec": 0.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
       "path": "/en/tags/bootstrapping",
       "asset_id": null,
       "lang": "en",
@@ -13062,21 +13106,6 @@
     },
     {
       "channel": "direct",
-      "path": "/en/tags/decision-making",
-      "asset_id": null,
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 1,
-      "users": 1,
-      "engaged_sessions": 0,
-      "engagement_sec": 9.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
       "path": "/en/tags/earned-value-management",
       "asset_id": null,
       "lang": "en",
@@ -13138,6 +13167,21 @@
     {
       "channel": "direct",
       "path": "/en/tags/fmea",
+      "asset_id": null,
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 1,
+      "users": 1,
+      "engaged_sessions": 0,
+      "engagement_sec": 0.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/en/tags/freepik",
       "asset_id": null,
       "lang": "en",
       "source": "(direct)",
@@ -14366,21 +14410,6 @@
       "key_events_breakdown": {}
     },
     {
-      "channel": "direct",
-      "path": "/es/posts/app-openweather_part1_backend",
-      "asset_id": "app-openweather_part1_backend",
-      "lang": "es",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 1,
-      "users": 1,
-      "engaged_sessions": 0,
-      "engagement_sec": 0.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
       "channel": "other",
       "path": "/es/posts/app-openweather_part1_backend",
       "asset_id": "app-openweather_part1_backend",
@@ -14403,21 +14432,6 @@
       "source": "aocr.org",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 1,
-      "users": 1,
-      "engaged_sessions": 0,
-      "engagement_sec": 0.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/es/posts/app_openweather_part2_frontend",
-      "asset_id": "app_openweather_part2_frontend",
-      "lang": "es",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
       "sessions": 1,
       "users": 1,
       "engaged_sessions": 0,
@@ -15071,21 +15085,6 @@
       "key_events_breakdown": {}
     },
     {
-      "channel": "direct",
-      "path": "/es/posts/ia_agents_part1",
-      "asset_id": "ia_agents_part1",
-      "lang": "es",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 1,
-      "users": 1,
-      "engaged_sessions": 0,
-      "engagement_sec": 5.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
       "channel": "other",
       "path": "/es/posts/ia_agents_part1",
       "asset_id": "ia_agents_part1",
@@ -15307,6 +15306,21 @@
       "users": 1,
       "engaged_sessions": 1,
       "engagement_sec": 1026.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "google_organic",
+      "path": "/es/posts/kurt_godel",
+      "asset_id": "kurt_godel",
+      "lang": "es",
+      "source": "google",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "sessions": 1,
+      "users": 1,
+      "engaged_sessions": 1,
+      "engagement_sec": 903.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -15597,21 +15611,6 @@
     },
     {
       "channel": "direct",
-      "path": "/es/posts/obs_parte5_radar",
-      "asset_id": "obs_parte5_radar",
-      "lang": "es",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 1,
-      "users": 1,
-      "engaged_sessions": 0,
-      "engagement_sec": 5.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
       "path": "/es/posts/obs_parte6_fastapi",
       "asset_id": "obs_parte6_fastapi",
       "lang": "es",
@@ -15768,21 +15767,6 @@
       "source": "aocr.org",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 1,
-      "users": 1,
-      "engaged_sessions": 0,
-      "engagement_sec": 0.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "google_organic",
-      "path": "/es/posts/ravenpack",
-      "asset_id": "ravenpack",
-      "lang": "es",
-      "source": "google",
-      "medium": "organic",
-      "campaign": "(organic)",
       "sessions": 1,
       "users": 1,
       "engaged_sessions": 0,
@@ -16872,6 +16856,21 @@
     },
     {
       "channel": "direct",
+      "path": "/es/tags/magnific-ai",
+      "asset_id": null,
+      "lang": "es",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 1,
+      "users": 1,
+      "engaged_sessions": 0,
+      "engagement_sec": 0.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
       "path": "/es/tags/markdown",
       "asset_id": null,
       "lang": "es",
@@ -17143,6 +17142,21 @@
     {
       "channel": "direct",
       "path": "/es/tags/ragas",
+      "asset_id": null,
+      "lang": "es",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 1,
+      "users": 1,
+      "engaged_sessions": 0,
+      "engagement_sec": 0.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/es/tags/react-19",
       "asset_id": null,
       "lang": "es",
       "source": "(direct)",
@@ -17428,21 +17442,6 @@
     {
       "channel": "direct",
       "path": "/es/tags/teorema-del-límite-central",
-      "asset_id": null,
-      "lang": "es",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 1,
-      "users": 1,
-      "engaged_sessions": 0,
-      "engagement_sec": 0.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/es/tags/teoria-de-juegos",
       "asset_id": null,
       "lang": "es",
       "source": "(direct)",
