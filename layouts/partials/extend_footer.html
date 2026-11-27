@@ -212,20 +212,20 @@
                 return;
             }
 
-            var card = btn.closest('.kit-card, .mega-banner, .suite-mini-card, .suite-contextual-banner, .executive-product-card, .executive-bundle-card, .dlh-pack-card, .dl-kit-promo') || btn.parentElement;
+            var card = btn.closest('.kit-card, .mega-banner, .suite-mini-card, .suite-contextual-banner, .executive-product-card, .executive-bundle-card, .dlh-pack-card, .dl-kit-promo, .app-product-card') || btn.parentElement;
             var title = btn.getAttribute('data-product-name') || '';
             var category = 'Executive Packs';
             var priceNum = undefined;
             var placement = 'general';
 
             if (card) {
-                var titleEl = card.querySelector('.kit-card-title, .product-title, .bundle-title, .suite-mini-title, .dlh-pack-title, .dl-kit-promo-title, #suite-ctx-title, h3, h2');
+                var titleEl = card.querySelector('.kit-card-title, .product-title, .bundle-title, .suite-mini-title, .dlh-pack-title, .dl-kit-promo-title, .app-product-card-title, #suite-ctx-title, h4, h3, h2');
                 if (!title && titleEl) title = titleEl.textContent.trim();
 
                 var catEl = card.querySelector('.kit-card-cat, .product-category, .dlh-pack-cat');
                 if (catEl) category = catEl.textContent.trim();
 
-                var priceEl = card.querySelector('.kit-price-curr, .mega-price-now, .suite-mini-price, .dlh-pack-price, .dl-kit-promo-price, #suite-ctx-price, .price-current, .bundle-price-main');
+                var priceEl = card.querySelector('.kit-price-curr, .mega-price-now, .suite-mini-price, .dlh-pack-price, .dl-kit-promo-price, .app-product-card-price, #suite-ctx-price, .price-current, .bundle-price-main');
                 if (priceEl) {
                     var match = priceEl.textContent.match(/[\d.,]+/);
                     if (match) {
@@ -253,6 +253,8 @@
                     placement = 'home_portal_card';
                 } else if (card.classList.contains('dl-kit-promo')) {
                     placement = 'post_kit_promo';
+                } else if (card.classList.contains('app-product-card')) {
+                    placement = 'app_detail_pack_card';
                 }
             }
 

@@ -425,13 +425,46 @@
           {{- if reflect.IsMap .checkout_url -}}
             {{- $prodUrl = index .checkout_url $lang | default .checkout_url.es -}}
           {{- end -}}
-          <div class="app-product-card">
-            <h4>{{ $prodName }}</h4>
-            <p>{{ $prodDesc }}</p>
-            <a href="{{ $prodUrl }}" class="app-btn app-btn-primary lemonsqueezy-button" data-product-name="{{ $prodName }}">
-              {{- cond (eq $lang "es") "Obtener Pack" "Get Pack" -}}
-            </a>
-          </div>
+          {{- $prodPrice := "" -}}
+          {{- with .price -}}
+            {{- if reflect.IsMap . -}}
+              {{- $prodPrice = index . $lang | default .es | default "" -}}
+            {{- else -}}
+              {{- $prodPrice = . -}}
+            {{- end -}}
+          {{- end -}}
+          {{- $prodBadge := "" -}}
+          {{- with .badge -}}
+            {{- if reflect.IsMap . -}}
+              {{- $prodBadge = index . $lang | default .es | default "" -}}
+            {{- else -}}
+              {{- $prodBadge = . -}}
+            {{- end -}}
+          {{- end -}}
+          {{- $isLemon := in $prodUrl "lemonsqueezy.com" -}}
+          <article class="app-product-card">
+            <div class="app-product-card-header">
+              <h4 class="app-product-card-title">{{ $prodName }}</h4>
+              {{- if or $prodBadge $prodPrice -}}
+              <div class="app-product-card-meta">
+                {{- with $prodBadge -}}<span class="app-product-card-badge">{{ . }}</span>{{- end -}}
+                {{- with $prodPrice -}}<span class="app-product-card-price">{{ . }}</span>{{- end -}}
+              </div>
+              {{- end -}}
+            </div>
+            <p class="app-product-card-desc">{{ $prodDesc }}</p>
+            <div class="app-product-card-footer">
+              {{- if $isLemon -}}
+              <a href="{{ $prodUrl }}" class="app-btn app-btn-primary lemonsqueezy-button" data-product-name="{{ $prodName }}">
+                {{- cond (eq $lang "es") "Obtener Pack" "Get Pack" -}}
+              </a>
+              {{- else -}}
+              <a href="{{ $prodUrl }}" class="app-btn app-btn-outline" data-product-name="{{ $prodName }}">
+                {{- cond (eq $lang "es") "Ver en Sandbox ↗" "Explore in Sandbox ↗" -}}
+              </a>
+              {{- end -}}
+            </div>
+          </article>
         {{- end -}}
       </div>
     {{- end -}}
