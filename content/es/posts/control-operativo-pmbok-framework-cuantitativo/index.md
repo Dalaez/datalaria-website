@@ -8,6 +8,12 @@ categories: ["Control Operativo", "Gestión de Proyectos", "PMO Corporativa", "C
 tags: ["Control Operativo", "PMBOK", "Matriz RACI", "AMFE", "FMEA", "Estimación PERT", "EVM", "Valor Ganado", "Stock de Seguridad", "ROP", "Curva S", "Working Capital", "C-Level", "PMO"]
 description: "De la gobernanza de personas al control de costes y la cadena de suministro. Guía metodológica para conectar la Matriz RACI, AMFE/FMEA, Estimación PERT, EVM Curva S y Stock de Seguridad en un sistema unificado de ejecución."
 summary: "Descubre cómo articular un motor de control operativo de 5 pilares de grado Consejo de Administración. Unifica la gobernanza de equipos (RACI Cuantitativa), la prevención de fallos (AMFE/FMEA AIAG-VDA), la certidumbre de plazos (PERT Estocástico), el control de costes y avance real (EVM Curva S) y la resiliencia del capital circulante (Stock de Seguridad y ROP)."
+cover:
+  image: "cover.png"
+  alt: "Control Operativo & PMBOK Cuantitativo: Framework de 5 Pilares (RACI, AMFE, PERT, EVM y Stock de Seguridad ROP)"
+  caption: "Suite 03 Mega Bundle · Arquitectura Operativa C-Level: de la Gobernanza RACI al Capital Circulante"
+  relative: true
+images: ["cover.png", "preview-pack.png"]
 ---
 
 En casi cualquier consejo de administración, comité ejecutivo (*Executive Committee*) o sesión estratégica de operaciones, se repite con una frecuencia alarmante la mayor paradoja del management contemporáneo: **la fractura entre la ambición estratégica y la capacidad de ejecución operativa**.
@@ -20,17 +26,87 @@ Los síntomas son universales y dolorosamente conocidos por cualquier Director d
 * La gobernanza de personas se diluye en comités estériles donde nadie rinde cuentas (*accountability*) porque los roles clave están duplicados o asignados a comisiones colegiadas, mientras los ingenieros y perfiles técnicos más valiosos operan al 140% de su capacidad nominal, al borde del colapso por agotamiento (*burnout*).
 * Los almacenes y centros de distribución acumulan millones de euros en inventario inmovilizado que estrangula el flujo de caja, mientras que, paradójicamente, se producen roturas de stock recurrentes en los componentes críticos que paralizan la entrega a clientes.
 
-Esta patología no es el resultado de una falta de talento individual o de dedicación de los equipos; es la consecuencia directa de gestionar las operaciones con **herramientas fragmentadas, cualitativas y reactivas**. 
+Esta patología no es el resultado de una falta de talento individual o de dedicación de los equipos; es la consecuencia directa de gestionar las operaciones con **herramientas fragmentadas, cualitativas y reactivas**.
 
 Para transformar esta dinámica y dotar a la dirección ejecutiva de un sistema de tracción cuantitativo, auditable y predictivo, en **Datalaria** hemos formalizado el **Framework Operativo Integral de 5 Pilares (The 5-Pillar Operational Engine)**. Este marco unifica los estándares internacionales más rigurosos de la ingeniería y el project management (**PMI PMBOK 7ª Edición**, **ISO 31000 / AIAG-VDA**, **ANSI/EIA-748 EVM** y **APICS ASCM**) en un único flujo de control que abarca desde la asignación de personas hasta la gestión del capital circulante.
 
-Esta guía metodológica actúa como el **Post Pilar Maestro (Hub)** de la **Suite 03: Control Operativo & Métricas PMBOK**, articulando el hilo conductor analítico que conecta nuestras 5 herramientas cuantitativas y dotando a los líderes de operaciones del rigor que exige el Consejo de Administración.
+Esta guía metodológica actúa como el **Post Pilar Maestro (Hub)** de la **Suite 03: Control Operativo & Métricas PMBOK**, conectando de forma explícita la estrategia corporativa ([Suite 01](/es/posts/estrategia-corporativa-mba-framework-cuantitativo/)) y la priorización de inversiones ([Suite 02](/es/posts/toma-decisiones-priorizacion-framework-cuantitativo/)) con la ejecución diaria y el balance de operaciones.
+
+{{< product-card
+  variant="compact"
+  title="Mega Bundle: Suite 03 · Control Operativo & Métricas PMBOK (5 Packs)"
+  price="22€"
+  original_price="34€"
+  badge="Ahorro 35% • Colección Completa"
+  icon="⚙️"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/ee578b8e-29d6-4361-ba19-4b0b5abfd89a?embed=1"
+  button_text="Obtener Suite 03 Completa"
+  details_target="#executive-pack"
+  details_text="Ver desglose y captura del Pack ↓"
+  deliverables="10 Modelos Excel + Sheets | 10 Decks PPTX 16:9 | 5 Guías PDF"
+>}}
+Los 5 Executive Decision Packs operativos reunidos en un único arsenal descargable: Matriz RACI con Balance de Carga, AMFE / FMEA (ISO 31000), PERT de 3 Puntos Estocástico, Cuadro de Mando EVM (Curva S) y Calculadora de Stock de Seguridad & ROP.
+{{< /product-card >}}
 
 ---
 
-## 1. La Crisis de la Ejecución Operativa y la Gestión Reactiva
+## 1. ¿Qué es el Control Operativo & PMBOK Cuantitativo? Fundamentos y Mapa de las 3 Suites
 
-### 1.1. La Trampa de la Gestión Tradicional: Del Sesgo Intuitivo al Colapso Silencioso
+### 1.1. Para Empezar Desde Cero: Qué Resuelve este Sistema y Cuáles Son sus 5 Herramientas
+
+Si nunca has dirigido una Oficina de Gestión de Proyectos (**PMO**) ni has aplicado metodologías industriales (**PMI PMBOK**, **ISO 31000**, **Six Sigma** o **APICS**), conviene partir de una distinción esencial: **elegir una buena estrategia no garantiza saber ejecutarla**.
+
+Una empresa puede aprobar un plan brillante, pero si nadie sabe quién tiene la última palabra en cada entregable, si los riesgos técnicos se improvisan sobre la marcha, si las fechas se calculan por intuición optimista, si los gastos no se contrastan con el avance físico real o si falta stock en almacén en pleno pico de demanda, la rentabilidad del proyecto desaparece.
+
+El **Control Operativo Cuantitativo de la Suite 03** traduce cinco preguntas universales de cualquier proyecto o cadena operativa en **cinco modelos matemáticos auditables** (empaquetados en Excel, PowerPoint C-Level y guía PDF):
+
+1. **Pack 01 · [Matriz RACI Cuantitativa con Balance de Carga](/es/posts/matriz-raci-balance-carga/):** Responde a *"¿Quién decide en última instancia y quién está desbordado?"*. Impone la regla matemática de un único responsable final (`Accountable = 1`) por tarea y convierte los roles (`R`, `A`, `C`, `I`) en carga ponderada de horas FTE para detectar cuellos de botella humanos antes de que colapsen el proyecto.
+2. **Pack 02 · [Matriz de Riesgos & AMFE / FMEA Cuantitativo](/es/posts/matriz-riesgos-amfe-fmea/):** Responde a *"¿Qué puede fallar antes de salir a producción y dónde debemos invertir en prevención?"*. Descompone cada proceso o producto en modos de fallo evaluados mediante **Severidad ($S$), Ocurrencia ($O$) y Detección ($D$)** para obtener el Número de Prioridad de Riesgo (**NPR**) y justificar controles preventivos por retorno económico.
+3. **Pack 03 · [Estimación PERT de 3 Puntos Estocástica](/es/posts/estimacion-pert-3-puntos/):** Responde a *"¿Cuál es la probabilidad real de cumplir la fecha comprometida?"*. Sustituye las fechas únicas optimistas por estimaciones de tres escenarios (**Optimista, Más Probable y Pesimista**) bajo una distribución Beta, calculando la varianza de la ruta crítica y el colchón temporal exacto (*Project Buffer*) para comprometer plazos con un 90 % o 95 % de confianza estadística.
+4. **Pack 04 · [Cuadro de Mando EVM / Valor Ganado (Curva S)](/es/posts/cuadro-mando-evm-valor-ganado/):** Responde a *"¿El dinero gastado equivale realmente al trabajo terminado?"*. Unifica presupuesto, calendario y avance técnico mediante las tres curvas de **Valor Planificado ($PV$), Valor Ganado ($EV$) y Coste Real ($AC$)**, anticipando sobrecostes a término (*EAC*) cuando todavía hay margen de maniobra.
+5. **Pack 05 · [Calculadora de Stock de Seguridad & ROP](/es/posts/calculadora-stock-seguridad-rop/):** Responde a *"¿Cuánto inventario mínimo protege nuestras ventas sin congelar la tesorería?"*. Modela conjuntamente la variabilidad de la demanda de clientes y los retrasos de proveedores mediante convolución estocástica para fijar el **Stock de Seguridad ($SS$)**, el **Punto de Pedido ($ROP$)** y el **Lote Económico ($EOQ$)**.
+
+| Pack de la Suite 03 | Herramienta Principal | Pregunta Clave en Lenguaje Llano | Patología si Falta | Métrica Maestra | Guía Monográfica |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Pack 01** | **Matriz RACI + Carga** | ¿Quién responde y quién está al 140% de carga? | *Burnout* en líderes y tareas sin dueño | $\sum A = 1$ & `% FTE` | [Ver guía RACI](/es/posts/matriz-raci-balance-carga/) |
+| **Pack 02** | **Matriz Riesgos & AMFE** | ¿Qué fallo crítico nos costará más dinero o paradas? | Incendios continuos y fallos en cliente | $\text{NPR} = S \times O \times D$ & `AP` | [Ver guía AMFE](/es/posts/matriz-riesgos-amfe-fmea/) |
+| **Pack 03** | **Estimación PERT 3 Puntos** | ¿Cuánto margen necesito para no incumplir plazos? | Promesas rotas y Ley de Parkinson | $\mu$, $\sigma_{\text{ruta}}$ & `Z-Score` | [Ver guía PERT](/es/posts/estimacion-pert-3-puntos/) |
+| **Pack 04** | **Cuadro de Mando EVM** | ¿Vamos adelantados/baratos o quemando caja sin avance? | Descubrir sobrecostes en el mes final | `CPI`, `SPI` & `EAC` | [Ver guía EVM](/es/posts/cuadro-mando-evm-valor-ganado/) |
+| **Pack 05** | **Stock Seguridad & ROP** | ¿Cuándo y cuánto pedir para no romper ni sobreestockar? | Roturas de planta o caja inmovilizada | `SS`, `ROP` & `EOQ` | [Ver guía Stock ROP](/es/posts/calculadora-stock-seguridad-rop/) |
+
+---
+
+### 1.2. Interrelación con las Suites Previas: Del Pensamiento Estratégico (Suite 01 y 02) a la Ejecución (Suite 03)
+
+En Datalaria diseñamos nuestras tres colecciones ejecutivas como **un único circuito continuo de ingeniería empresarial**, donde las salidas de una fase alimentan matemáticamente las entradas de la siguiente:
+
+{{< mermaid >}}
+flowchart LR
+    S1["Suite 01: Estrategia MBA<br/>PESTEL, Porter, DAFO, BCG, McKinsey"] -->|"Objetivos y CAPEX autorizado"| S2["Suite 02: Decision y Prioridad<br/>DAR, RICE/ICE, Business Case VAN/TIR"]
+    S2 -->|"Proyectos aprobados, BAC y proveedores"| S3["Suite 03: Control Operativo<br/>RACI, AMFE, PERT, EVM, Stock ROP"]
+    S3 -->|"Retorno real, desviaciones y circulante"| S1
+{{< /mermaid >}}
+
+Si acabas de llegar directamente a esta guía operativa, te recomendamos explorar cómo se conectan los artículos previos de las dos primeras suites con cada motor de la **Suite 03**:
+
+1. **Desde la [Suite 01: Estrategia Corporativa & MBA Cuantitativa](/es/posts/estrategia-corporativa-mba-framework-cuantitativo/) (Diagnóstico y Asignación de Capital):**
+   * Los factores regulatorios y choques externos cuantificados en la **[Matriz PESTEL Cuantitativa](/es/posts/matriz-pestel-cuantitativa/)** alimentan el catálogo de amenazas externas y riesgos normativos en el **AMFE** de la Suite 03.
+   * El poder de negociación de proveedores y la presión competitiva medidos en las **[5 Fuerzas de Porter Cuantitativas](/es/posts/5-fuerzas-porter-cuantitativas/)** determinan la volatilidad de plazos de entrega (*Lead Time*) que calibra el **Stock de Seguridad & ROP**.
+   * Las iniciativas estratégicas ofensivas y defensivas derivadas del **[DAFO Cuantitativo & Matriz CAME](/es/posts/dafo-cuantitativo-matriz-came/)** se convierten en los paquetes de trabajo iniciales del desglose **WBS / RACI**.
+   * La generación neta de caja y las decisiones de inversión entre unidades de negocio en la **[Matriz BCG Dinámica](/es/posts/matriz-bcg-dinamica/)** y la **[Matriz McKinsey / GE 3×3](/es/posts/matriz-mckinsey-ge/)** delimitan el techo presupuestario corporativo que posteriormente auditará el cuadro de mando **EVM**.
+2. **Desde la [Suite 02: Toma de Decisiones & Priorización Cuantitativa](/es/posts/toma-decisiones-priorizacion-framework-cuantitativo/) (Selección y Viabilidad Financiera):**
+   * Al elegir ERP, arquitectura tecnológica o contratistas industriales con la **[Matriz DAR Cuantitativa (CMMI)](/es/posts/matriz-dar-cuantitativa/)**, las debilidades técnicas residuales del ganador pasan directamente como modos de fallo a mitigar en el **AMFE**, y sus SLAs de entrega pasan como supuestos al **PERT**.
+   * El *scoring* por esfuerzo y capacidad real de equipos calculado en la **[Matriz RICE & ICE Ágil](/es/posts/matriz-rice-ice-priorizacion/)** alimenta la carga inicial de horas en la **Matriz RACI con Balance de Carga** para evitar que dos iniciativas prioritarias asfixien al mismo especialista.
+   * Los flujos de caja, CAPEX, VAN y TIR aprobados en el **[Business Case Financiero (VAN/TIR)](/es/posts/business-case-financiero-van-tir/)** definen literalmente el Presupuesto a la Conclusión (**BAC**) y la curva de desembolsos (**PV**) que el Director Financiero exigirá controlar mes a mes dentro del **EVM Curva S**.
+
+> [!TIP]
+> **Continuidad Completa del Ecosistema:** Una vez dominada la ejecución operativa con la Suite 03, la **próxima entrega integradora del catálogo (programada para el 3 de diciembre)** reunirá la arquitectura maestra de las **13 herramientas cuantitativas** en un único mapa ejecutivo de extremo a extremo.
+
+---
+
+## 2. La Crisis de la Ejecución Operativa y la Gestión Reactiva
+
+### 2.1. La Trampa de la Gestión Tradicional: Del Sesgo Intuitivo al Colapso Silencioso
 
 Durante décadas, la gestión de proyectos y operaciones se ha sustentado en artefactos cualitativos: diagramas de Gantt estáticos dibujados en software ofimático, matrices RACI elaboradas como un mero trámite documental en la sesión de arranque (*kick-off*), listas de riesgos subjetivas con códigos de colores arbitrarios y reglas de aprovisionamiento basadas en la experiencia informal de los jefes de almacén ("pedir siempre para 3 semanas").
 
@@ -41,9 +117,12 @@ El historiador británico **Cyril Northcote Parkinson** enunció en 1955 una ley
 1. **El Síndrome del Estudiante:** El equipo no inicia el esfuerzo concentrado hasta que la fecha límite es inminente.
 2. **La Desaparición de las Ganancias Tempranas:** Si un ingeniero completa la tarea en 2 semanas en lugar de 4, el sistema rara vez anticipa la siguiente actividad; en su lugar, se invierte el tiempo restante en perfeccionamientos innecesarios (*gold plating*) o burocracia documental. En cambio, si surge un imprevisto, el retraso se traslada íntegramente a las tareas sucesivas, provocando un retraso acumulativo inevitable.
 
-```
-[Estimación Determinista: 30 días] ──> [Inicio Tardío (Síndrome del Estudiante)] ──> [Imprevisto de Última Hora] ──> [Retraso Crónico en Cadena]
-```
+{{< mermaid >}}
+flowchart LR
+    A["Estimación determinista: 30 días"] --> B["Inicio tardío: Síndrome del Estudiante"]
+    B --> C["Imprevisto técnico en recta final"]
+    C --> D["Retraso crónico en cascada"]
+{{< /mermaid >}}
 
 #### 2. La Trampa Contable: Confundir Gasto Devengado con Avance Físico
 La mayoría de los directores generales y comités de auditoría monitorizan sus proyectos mediante informes de control de gestión basados en la contabilidad financiera estándar. Un informe típico del departamento financiero afirma:
@@ -65,7 +144,7 @@ Al aplicar un colchón fijo a todas las referencias sin modelar la desviación e
 
 ---
 
-### 1.2. El Principio de la Cadena Crítica de Operaciones
+### 2.2. El Principio de la Cadena Crítica de Operaciones
 
 Para gobernar una organización con éxito, los directores ejecutivos deben interiorizar un principio fundamental de la **Teoría de Restricciones (TOC)** formulada por el físico **Eliyahu M. Goldratt** y recogida en el **PMBOK 7ª Edición**:
 
@@ -82,7 +161,7 @@ El **Control Operativo Cuantitativo** no consiste en añadir más capas de buroc
 
 ---
 
-## 2. El Framework Operativo Integral de 5 Pilares (The 5-Pillar Operational Engine)
+## 3. El Framework Operativo Integral de 5 Pilares (The 5-Pillar Operational Engine)
 
 El marco operativo de Datalaria articula la ejecución de la empresa mediante un circuito cerrado de 5 pilares matemáticos complementarios:
 
@@ -115,7 +194,7 @@ flowchart TD
     E -->|"Suministra Materiales Críticos"| A
 {{< /mermaid >}}
 
-### 2.1. Matriz Ejecutiva de los 5 Pilares del Control Operativo
+### 3.1. Matriz Ejecutiva de los 5 Pilares del Control Operativo
 
 | Pilar Operativo | Herramienta Clave Datalaria | Pregunta Crítica ante el Board | Algoritmo / Modelo Central | Entregable Ejecutivo Decisivo |
 | :--- | :--- | :--- | :--- | :--- |
@@ -127,13 +206,13 @@ flowchart TD
 
 ---
 
-## 3. Desglose Metodológico de los 5 Motores Analíticos
+## 4. Desglose Metodológico de los 5 Motores Analíticos
 
 A continuación, analizamos en profundidad la formulación matemática, la lógica directiva y los artefactos de control de cada uno de los 5 motores que integran la suite.
 
 ---
 
-### 3.1. Pilar 1: Gobernanza de Equipos & Balance de Carga (Matriz RACI Cuantitativa)
+### 4.1. Pilar 1: Gobernanza de Equipos & Balance de Carga (Matriz RACI Cuantitativa)
 
 #### El Fundamento Cuantitativo
 La gobernanza organizativa fracasa habitualmente por dos patologías opuestas: la **ambigüedad** (entregables sin dueño claro o con múltiples líderes interfiriendo entre sí) y la **sobrecarga asimétrica** (el trabajo se asigna al profesional más competente hasta saturarlo, mientras otros perfiles quedan subutilizados).
@@ -185,9 +264,24 @@ El Comité de Dirección no visualiza una tabla interminable de letras; visualiz
 > Para acceder a la derivación matemática completa, las fórmulas de balance de FTEs y la plantilla interactiva en Excel y PowerPoint, consulta nuestra guía monográfica:
 > 🔗 **[Matriz RACI Cuantitativa: Balance de Carga Operativa, Unicidad de Accountable y Detección de Cuellos de Botella](/es/posts/matriz-raci-balance-carga/)**
 
+{{< product-card
+  variant="compact"
+  title="Executive Decision Pack: Matriz RACI con Balance de Carga"
+  price="6€"
+  original_price="19€"
+  badge="Pack 01 • Suite 03"
+  icon="📋"
+  guide_url="/es/posts/matriz-raci-balance-carga/"
+  guide_text="Leer artículo técnico 📖"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/97eec34f-011e-410c-a623-714218871b1a"
+  button_text="Descargar Pack RACI • 6€"
+>}}
+Libro Excel/Sheets con validador automático de Accountable único (A=1), cálculo de carga ponderada FTE, deck PPTX 16:9 y guía PDF de 5 páginas.
+{{< /product-card >}}
+
 ---
 
-### 3.2. Pilar 2: Prevención & Fiabilidad de Procesos (Matriz de Riesgos & AMFE / FMEA)
+### 4.2. Pilar 2: Prevención & Fiabilidad de Procesos (Matriz de Riesgos & AMFE / FMEA)
 
 #### El Fundamento Cuantitativo
 La gestión de riesgos tradicional basada en matrices bidimensionales subjetivas de 5x5 (Probabilidad vs. Impacto) sufre de un defecto metodológico fatal: **ignora la capacidad de detección del sistema**. Dos riesgos con idéntica probabilidad e impacto pueden tener naturalezas operativas radicalmente distintas si uno es detectable con semanas de antelación mediante telemetría automatizada, mientras que el otro permanece totalmente invisible hasta que provoca una parada catastrófica en el cliente.
@@ -231,9 +325,24 @@ El Consejo de Administración recibe una **Curva Pareto de NPR Acumulado** (demo
 > Para acceder a las tablas maestras de puntuación AIAG-VDA, la lógica de Action Priority (AP) y el modelo de cálculo de NPR en Excel/Sheets, consulta nuestra guía monográfica:
 > 🔗 **[Matriz de Riesgos Cuantitativa & AMFE / FMEA: De la Intuición Cualitativa al Número de Prioridad de Riesgo (NPR)](/es/posts/matriz-riesgos-amfe-fmea/)**
 
+{{< product-card
+  variant="compact"
+  title="Executive Decision Pack: Matriz de Riesgos & AMFE / FMEA"
+  price="7€"
+  original_price="22€"
+  badge="Pack 02 • Suite 03"
+  icon="⚠️"
+  guide_url="/es/posts/matriz-riesgos-amfe-fmea/"
+  guide_text="Leer artículo técnico 📖"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/6eea6aa0-fe9f-440b-8bb9-6f29b303e57a"
+  button_text="Descargar Pack AMFE • 7€"
+>}}
+Matriz ISO 31000 & AIAG-VDA en Excel/Sheets con cálculo de NPR (S×O×D), Action Priority (AP), deck PPTX 16:9 con curva Pareto y guía PDF.
+{{< /product-card >}}
+
 ---
 
-### 3.3. Pilar 3: Incertidumbre Temporal & Colchones de Proyecto (Estimación PERT de 3 Puntos Estocástica)
+### 4.3. Pilar 3: Incertidumbre Temporal & Colchones de Proyecto (Estimación PERT de 3 Puntos Estocástica)
 
 #### El Fundamento Cuantitativo
 Cuando se pregunta a un responsable técnico cuánto tiempo tardará en completar una tarea crítica, la respuesta espontánea suele ser una cifra única: *"unas 6 semanas"*. Esta estimación determinista es una ilusión peligrosa. En palabras del economista y Premio Nobel **Daniel Kahneman**, los humanos somos víctimas sistemáticas de la **Falacia de Planificación** (*Planning Fallacy*): asumimos inconscientemente el mejor escenario posible y subestimamos la probabilidad de fricciones operativas.
@@ -296,9 +405,24 @@ Una **Curva de Densidad Normal de Fechas de Cierre**, donde el Director de Opera
 > Para acceder a la derivación matemática paso a paso, los algoritmos de crashing presupuestario y el simulador de distribución Beta en Excel/Sheets, consulta nuestra guía monográfica:
 > 🔗 **[Estimación PERT de 3 Puntos Estocástica: De la Ilusión Determinista a la Certidumbre Estadística de Cronograma](/es/posts/estimacion-pert-3-puntos/)**
 
+{{< product-card
+  variant="compact"
+  title="Executive Decision Pack: Estimación PERT de 3 Puntos Estocástica"
+  price="6€"
+  original_price="19€"
+  badge="Pack 03 • Suite 03"
+  icon="⏱️"
+  guide_url="/es/posts/estimacion-pert-3-puntos/"
+  guide_text="Leer artículo técnico 📖"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/47843201-4db9-4d80-bb88-e59364fb6117"
+  button_text="Descargar Pack PERT • 6€"
+>}}
+Simulador Beta (o, m, p) en Excel/Sheets, agregación de ruta crítica CLT, calculadora Z-Score de buffers, deck PPTX 16:9 y guía PDF PMBOK.
+{{< /product-card >}}
+
 ---
 
-### 3.4. Pilar 4: Control Financiero de Proyectos & Previsión EAC (Cuadro de Mando EVM / ANSI/EIA-748)
+### 4.4. Pilar 4: Control Financiero de Proyectos & Previsión EAC (Cuadro de Mando EVM / ANSI/EIA-748)
 
 #### El Fundamento Cuantitativo
 La gestión de proyectos tradicional mide el éxito comparando dos líneas: el **Presupuesto Planificado ($PV$)** y el **Gasto Real ($AC$)**. Si el gasto es menor que el presupuesto, el gestor asume que la ejecución es eficiente. Como demostramos en la sección 1, esta conclusión es falaz si el trabajo físico completado va rezagado.
@@ -362,9 +486,24 @@ La célebre **Curva S Ejecutiva**, que superpone las tres trayectorias acumulada
 > Para acceder a la modelización completa de la Curva S, las fórmulas de EAC multivariante y el cuadro de mando automatizado en Excel y PowerPoint, consulta nuestra guía monográfica:
 > 🔗 **[Cuadro de Mando EVM: Valor Ganado, Curva S y Proyecciones EAC de Grado Consejo de Administración](/es/posts/cuadro-mando-evm-valor-ganado/)**
 
+{{< product-card
+  variant="compact"
+  title="Executive Decision Pack: Cuadro de Mando EVM / Valor Ganado (Curva S)"
+  price="8€"
+  original_price="25€"
+  badge="Pack 04 • Suite 03"
+  icon="📉"
+  guide_url="/es/posts/cuadro-mando-evm-valor-ganado/"
+  guide_text="Leer artículo técnico 📖"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/188950c2-0fd9-4331-919f-237880e2c78b"
+  button_text="Descargar Pack EVM • 8€"
+>}}
+Motor ANSI/EIA-748 en Excel/Sheets con Curva S (PV, EV, AC), CPI/SPI, modelos predictivos EAC/TCPI, deck PPTX 16:9 C-Level y guía PDF.
+{{< /product-card >}}
+
 ---
 
-### 3.5. Pilar 5: Flujo Físico & Capital Circulante (Stock de Seguridad & ROP Dinámico)
+### 4.5. Pilar 5: Flujo Físico & Capital Circulante (Stock de Seguridad & ROP Dinámico)
 
 #### El Fundamento Cuantitativo
 En operaciones que combinan ejecución de proyectos con despliegue de producto, logística o compras industriales, la disponibilidad de suministros físicos es el eslabón que conecta la ingeniería con el cliente final. La práctica habitual de fijar un inventario de seguridad basado en "semanas de venta fija" destruye valor económico porque asume que la demanda y el plazo de entrega son constantes.
@@ -420,6 +559,21 @@ El interactivo **Gráfico Diente de Sierra (*Sawtooth Wave*)**, que modela el ci
 > Para acceder a la modelización estocástica completa, las fórmulas de convolución multivariante y el simulador de inventario Diente de Sierra en Excel y PowerPoint, consulta nuestra guía monográfica:
 > 🔗 **[Calculadora de Stock de Seguridad & ROP: Optimización de Inventario y Working Capital de Grado Consejo de Administración](/es/posts/calculadora-stock-seguridad-rop/)**
 
+{{< product-card
+  variant="compact"
+  title="Executive Decision Pack: Calculadora de Stock de Seguridad & ROP"
+  price="7€"
+  original_price="22€"
+  badge="Pack 05 • Suite 03"
+  icon="📦"
+  guide_url="/es/posts/calculadora-stock-seguridad-rop/"
+  guide_text="Leer artículo técnico 📖"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/513e5cad-9f9f-4b53-a435-b511a846d79e"
+  button_text="Descargar Pack Stock ROP • 7€"
+>}}
+Calculadora APICS en Excel/Sheets con convolución estocástica de demanda y lead time, Punto de Pedido, EOQ de Wilson, deck PPTX y guía PDF.
+{{< /product-card >}}
+
 #### Sinergia Operativa: Resiliencia de Inventario y Alerta Temprana de Obsolescencia (IEC 62402)
 
 El dimensionamiento estocástico de inventario no opera en el vacío: está directamente expuesto al ciclo de vida de los componentes electrónicos e industriales. Cuando un fabricante emite un aviso de discontinuación (**PCN / PDN / EOL**), seguir reaprovisionando de forma ciega mediante el parámetro $ROP$ estándar garantiza roturas de producción o inventario obsoleto inmovilizado (*Dead Stock*). Para cerrar esta brecha, el marco cuantitativo de la **Suite 03** se complementa de forma natural con el **Radar de Obsolescencia (*Agentic Radar*)**, que recorre el grafo de listas de materiales (BOM) en tiempo real, cuantifica el margen en riesgo y activa la compra puente *Last Time Buy* (LTB) con cálculo estocástico del stock de seguridad necesario:
@@ -428,16 +582,17 @@ El dimensionamiento estocástico de inventario no opera en el vacío: está dire
 
 ---
 
-## 4. El Hilo Conductor Sistémico: Cómo se Alimentan Entre Sí los 5 Pilares
+## 5. El Hilo Conductor Sistémico: Cómo se Alimentan Entre Sí los 5 Pilares
 
 La verdadera fuerza de la Suite 03 no reside en el uso aislado de estas herramientas, sino en su **interdependencia algorítmica**. En una organización madura, cada pilar suministra los inputs cuantitativos que necesita el siguiente:
 
-```
-[1. RACI] ──> [2. AMFE] ──> [3. PERT] ──> [4. EVM] ──> [5. STOCK ROP]
-   │             │             │            │               │
-Personas       Riesgos       Plazos       Costes       Suministros
-   └───────────────────────── Sistema Unificado ────────────────────────┘
-```
+{{< mermaid >}}
+flowchart LR
+    P1["1. RACI<br/>Personas y FTEs"] --> P2["2. AMFE<br/>Riesgos y NPR"]
+    P2 --> P3["3. PERT<br/>Plazos y Buffers"]
+    P3 --> P4["4. EVM<br/>Costes y Curva S"]
+    P4 --> P5["5. Stock ROP<br/>Suministros y Caja"]
+{{< /mermaid >}}
 
 1. **De RACI a WBS y Estructura Operativa:**  
    La matriz RACI audita que cada entregable del WBS tenga un único responsable ($A=1$) y un equipo de ejecución calibrado ($R \ge 1$), garantizando que la estructura del proyecto esté libre de ambigüedades antes de iniciar la planificación técnica.
@@ -452,7 +607,7 @@ Personas       Riesgos       Plazos       Costes       Suministros
 
 ---
 
-## 5. Caso Maestro Integrado: Despliegue Operativo de una Nueva Línea de Negocio
+## 6. Caso Maestro Integrado: Despliegue Operativo de una Nueva Línea de Negocio
 
 Para comprender el impacto financiero y directivo del framework completo, analicemos un caso de estudio real unificado: **Nexus Industrial Systems**, una compañía de mecatrónica e ingeniería avanzada que despliega una nueva línea automatizada de ensamblaje robótico y plataforma IoT para clientes del sector aeroespacial.
 
@@ -589,6 +744,7 @@ Para el ensamblaje de la línea robótica, la planta requería un aprovisionamie
   * El inventario medio necesario se redujo de 520 unidades a:
     $$
     \bar{I} = SS + \frac{EOQ}{2} = 155 + 90 = \mathbf{245 \text{ unidades}}
+    $$
   * Capital inmovilizado optimizado: $245 \times 850\text{ €} = \mathbf{208.250 \text{ €}}$.
   * **Capital Circulante Neto Liberado:**
     $$
@@ -598,9 +754,13 @@ Para el ensamblaje de la línea robótica, la planta requería un aprovisionamie
 
 ---
 
-## 6. Cierre Comercial: El Mega Bundle de la Suite 03
+<div id="executive-pack"></div>
 
-Para directores de operaciones (COO), directores de PMO corporativa, directores generales (CEO), directores financieros (CFO) y líderes de ingeniería que requieran implementar este estándar cuantitativo de grado Consejo de Administración de forma inmediata en sus organizaciones, hemos consolidado todos los modelos de cálculo y presentaciones ejecutivas en el **Mega Bundle de la Suite 03**:
+## 7. Cierre Comercial: El Mega Bundle de la Suite 03
+
+Para directores de operaciones (COO), directores de PMO corporativa, directores generales (CEO), directores financieros (CFO) y líderes de ingeniería que requieran implementar este estándar cuantitativo de grado Consejo de Administración de forma inmediata en sus organizaciones, hemos consolidado todos los modelos de cálculo, plantillas y presentaciones ejecutivas de `Suite 03 · Control Operativo` en un único arsenal descargable:
+
+![Vista Previa del Mega Bundle Suite 03: Control Operativo & PMBOK (RACI, AMFE, PERT, EVM y Stock ROP)](preview-pack.png "Captura real del Mega Bundle Suite 03: los 5 Executive Decision Packs en Excel, PowerPoint 16:9 y Guías PDF")
 
 {{< bundle-card
   title="Mega Bundle: Suite 03 · Control Operativo & PMBOK"
@@ -642,7 +802,7 @@ Al adquirir el Mega Bundle, recibirás acceso de descarga directa inmediata a un
 
 ---
 
-## 7. Bibliografía Canónica de Control Operativo & Project Management
+## 8. Bibliografía Canónica de Control Operativo & Project Management
 
 Para los directores ejecutivos, consultores y líderes de PMO que deseen profundizar en los fundamentos científicos, matemáticos y normativos que sustentan este framework de 5 pilares, recomendamos el estudio de las siguientes obras de referencia internacional:
 

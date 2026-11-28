@@ -158,3 +158,14 @@ As [Deming](/en/posts/deming/) would say: *"Learning is not compulsory. Neither 
 * [**Datalaria**: Building the Blog — Architecture Decisions](/en/posts/datalaria-blog/)
 * [**Datalaria**: The Hidden Economics of AI — The Real Stack Cost](/en/posts/hidden_economics_ai/)
 * [**Datalaria**: Autopilot Series — 9 Parts of Agentic Engineering](/en/posts/ai_agents_part1/)
+
+---
+
+### 📊 Automate Your Content Stack with Datalaria Pulse
+
+Looking to manage your publishing pipeline with the exact engineering rigor, analytics, and traceability shown in this stack? Test our interactive content operations dashboard and download the professional migration workbook:
+
+* **Interactive App:** Explore [Datalaria Pulse in our Apps Catalog](/en/apps/pulse/).
+* **Downloadable Kit:** Get the editorial tracking template, repository scanner, and master workbook in [Datalaria Pulse: Content Ops & Notion Migration Kit (19 €)](/en/resources/#pack-pulse).
+
+{{< app-ref slug="pulse" >}}

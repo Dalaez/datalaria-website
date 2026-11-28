@@ -8,6 +8,12 @@ categories: ["Operational Control", "Project Management", "Corporate PMO", "Supp
 tags: ["Operational Control", "PMBOK", "RACI Matrix", "FMEA", "PERT Estimation", "EVM", "Earned Value Management", "Safety Stock", "Reorder Point", "S-Curve", "Working Capital", "C-Level", "PMO"]
 description: "From team governance and risk mitigation to project financials and supply chain buffers. How to integrate RACI Matrix, FMEA, 3-Point PERT, EVM S-Curve, and Safety Stock into a unified operational engine."
 summary: "Discover how to orchestrate a boardroom-grade 5-pillar operational control engine. Unify team governance (Quantitative RACI), failure prevention (AIAG-VDA FMEA), schedule certainty (Stochastic 3-Point PERT), financial cost & progress control (EVM S-Curve), and working capital resilience (Safety Stock & Dynamic ROP)."
+cover:
+  image: "cover.png"
+  alt: "Quantitative Operational Control & PMBOK: The 5-Pillar Framework (RACI, FMEA, PERT, EVM, and Safety Stock ROP)"
+  caption: "Suite 03 Mega Bundle · C-Level Operational Architecture: from RACI Governance to Working Capital"
+  relative: true
+images: ["cover.png", "preview-pack.png"]
 ---
 
 In nearly every boardroom, corporate executive committee, or operational review, the most persistent vulnerability in modern enterprise management inevitably surfaces: **the structural disconnect between strategic ambition and frontline operational execution**.
@@ -24,13 +30,83 @@ This execution crisis is not caused by a deficit of individual talent, work ethi
 
 To eradicate this structural vulnerability and provide executive leadership with a predictive, auditable, and quantitative execution engine, **Datalaria** has codified **The 5-Pillar Operational Engine**. This framework synthesizes the world's most rigorous engineering and project management standards (**PMI PMBOK 7th Edition**, **ISO 31000 / AIAG-VDA**, **ANSI/EIA-748 EVM**, and **APICS ASCM**) into a closed-loop control system spanning from team governance to balance-sheet working capital.
 
-This methodological guide serves as the **Master Pillar Page (Hub)** for **Suite 03: Operational Control & PMBOK Metrics**, establishing the analytical thread connecting our five quantitative tools and equipping operations leaders with the precision demanded by the Board of Directors.
+This methodological guide serves as the **Master Pillar Page (Hub)** for **Suite 03: Operational Control & PMBOK Metrics**, connecting corporate strategy ([Suite 01](/en/posts/corporate-strategy-mba-quantitative-framework/)) and capital prioritization ([Suite 02](/en/posts/decision-making-prioritization-quantitative-framework/)) directly to frontline execution and balance-sheet resilience.
+
+{{< product-card
+  variant="compact"
+  title="Mega Bundle: Suite 03 · Operational Control & PMBOK Metrics (5 Packs)"
+  price="22€"
+  original_price="34€"
+  badge="35% Off • Complete Collection"
+  icon="⚙️"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/ee578b8e-29d6-4361-ba19-4b0b5abfd89a?embed=1"
+  button_text="Get Full Suite 03"
+  details_target="#executive-pack"
+  details_text="View Pack breakdown & preview ↓"
+  deliverables="10 Excel + Sheets Models | 10 PPTX 16:9 Decks | 5 PDF Guides"
+>}}
+All 5 operational Executive Decision Packs combined into one unified toolkit: Quantitative RACI Workload Matrix, AIAG-VDA FMEA Risk Matrix, Stochastic 3-Point PERT, EVM S-Curve Dashboard, and Dynamic Safety Stock & ROP Calculator.
+{{< /product-card >}}
 
 ---
 
-## 1. The Operational Execution Crisis and Reactive Management
+## 1. What is Quantitative Operational Control & PMBOK? Fundamentals and the 3-Suite Continuum
 
-### 1.1. The Traditional Management Trap: From Intuitive Bias to Silent Collapse
+### 1.1. Beginner's Orientation: What This Engine Solves and Its 5 Core Tools
+
+If you have never run an enterprise **PMO** or worked with industrial standards (**PMI PMBOK**, **ISO 31000**, **Six Sigma**, or **APICS**), start with one operational truth: **deciding what to do is completely different from guaranteeing the organization can actually build and deliver it**.
+
+A leadership team can approve an immaculate strategic plan, only to watch margins evaporate during execution because nobody holds final decision authority, failure modes detonate mid-launch, timelines rely on wishful thinking, finance tracks cash spent rather than physical progress, or inventory buffers stall factory assembly.
+
+The **Suite 03 Quantitative Operational Control System** turns five everyday management questions into **five auditable mathematical workbooks** (each shipping with Excel/Sheets engines, 16:9 boardroom PowerPoint decks, and PDF field manuals):
+
+1. **Pack 01 · [Quantitative RACI Workload Matrix](/en/posts/quantitative-raci-workload-matrix/):** Answers *"Who actually owns each decision and who is overloaded?"*. Enforces the mathematical rule of a single final decision owner (`Accountable = 1`) per deliverable while translating `R/A/C/I` duties into weighted FTE hours to catch hidden bottlenecks before burnout strikes.
+2. **Pack 02 · [Quantitative Risk Matrix & FMEA](/en/posts/quantitative-risk-matrix-fmea/):** Answers *"What can break before launch and where should preventive budget go?"*. Breaks down critical workflows into failure modes scored across **Severity ($S$), Occurrence ($O$), and Detection ($D$)** to compute the Risk Priority Number (**RPN**) and Action Priority (**AP**) for cost-effective prevention.
+3. **Pack 03 · [Stochastic 3-Point PERT Estimation](/en/posts/stochastic-3-point-pert-estimation/):** Answers *"What is our true statistical probability of hitting the deadline?"*. Replaces single-point guesses with three-point scenarios (**Optimistic, Most Likely, Pessimistic**) modeled via a Beta distribution, aggregating critical-path variance to size scientifically calibrated **Project Buffers** at 90% or 95% confidence.
+4. **Pack 04 · [Earned Value Management (EVM) S-Curve Dashboard](/en/posts/earned-value-management-evm-dashboard/):** Answers *"Does money spent match physical work completed?"*. Aligns baseline schedule (**Planned Value, $PV$**), verified work completed (**Earned Value, $EV$**), and actual cost (**Actual Cost, $AC$**) via `CPI`, `SPI`, and `EAC` early-warning forecasts before contingency reserves vanish.
+5. **Pack 05 · [Safety Stock & Reorder Point (ROP) Calculator](/en/posts/safety-stock-reorder-point-calculator/):** Answers *"How little inventory can we hold while protecting customer delivery?"*. Convolves variable customer demand and supplier lead-time unreliability to calibrate optimal **Safety Stock ($SS$)**, **Dynamic Reorder Points ($ROP$)**, and Wilson **Economic Order Quantities ($EOQ$)**.
+
+| Suite 03 Pack | Core Methodology | Plain-English Question Answered | What Fails Without It | Signature Metric | Deep-Dive Guide |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Pack 01** | **RACI Workload Matrix** | Who owns the outcome & who is at 140% load? | Lead burnout & orphan deliverables | $\sum A = 1$ & `% FTE` | [Read RACI guide](/en/posts/quantitative-raci-workload-matrix/) |
+| **Pack 02** | **Risk Matrix & FMEA** | Which failure stops production first? | Reactive firefighting after go-live | $\text{RPN} = S \times O \times D$ & `AP` | [Read FMEA guide](/en/posts/quantitative-risk-matrix-fmea/) |
+| **Pack 03** | **3-Point PERT Engine** | How much buffer protects our target date? | Chronic delays & Parkinson's Law | $\mu$, $\sigma_{\text{path}}$ & `Z-Score` | [Read PERT guide](/en/posts/stochastic-3-point-pert-estimation/) |
+| **Pack 04** | **EVM S-Curve Dashboard** | Are we truly ahead or burning cash blindly? | Late discovery of fatal overruns | `CPI`, `SPI` & `EAC` | [Read EVM guide](/en/posts/earned-value-management-evm-dashboard/) |
+| **Pack 05** | **Safety Stock & ROP** | When and how much do we reorder? | Line stoppages or trapped cash | `SS`, `ROP` & `EOQ` | [Read ROP guide](/en/posts/safety-stock-reorder-point-calculator/) |
+
+---
+
+### 1.2. Interlocking with Predecessor Suites: From Strategy (Suite 01 & 02) to Frontline Execution (Suite 03)
+
+At Datalaria, all three Executive Suites are architected as **one closed-loop management pipeline**, where outputs from strategy and capital selection flow directly into operational control:
+
+{{< mermaid >}}
+flowchart LR
+    S1["Suite 01: MBA Strategy<br/>PESTEL, Porter, SWOT, BCG, McKinsey"] -->|"Strategic bets and CAPEX ceiling"| S2["Suite 02: Decision & Priority<br/>DAR, RICE/ICE, Financial Business Case"]
+    S2 -->|"Approved scope, BAC and vendors"| S3["Suite 03: Operational Control<br/>RACI, FMEA, PERT, EVM, Safety Stock"]
+    S3 -->|"Actual ROIC, variances and cash flow"| S1
+{{< /mermaid >}}
+
+If you are arriving directly at this operational guide, examine how each predecessor framework across Suites 01 and 02 feeds directly into **Suite 03**:
+
+1. **Upstream from [Suite 01: Quantitative Corporate Strategy & MBA](/en/posts/corporate-strategy-mba-quantitative-framework/) (Diagnosis & Capital Allocation):**
+   * Macro, regulatory, and supply-shock exposures quantified in the **[Quantitative PESTEL Matrix](/en/posts/quantitative-pestel-matrix/)** populate external regulatory and disruption triggers inside **FMEA**.
+   * Supplier bargaining power and competitive pressure scored in **[Quantitative Porter's 5 Forces](/en/posts/quantitative-porter-5-forces/)** calibrate lead-time unreliability and safety-buffer targets inside **Safety Stock & ROP**.
+   * Offensive and defensive initiatives mapped via **[Quantitative SWOT & TOWS Matrix](/en/posts/quantitative-swot-tows-matrix/)** turn directly into WBS workstreams owned inside the **RACI Matrix**.
+   * Cash-flow funding balances across divisions from the **[Dynamic BCG Matrix](/en/posts/dynamic-bcg-matrix/)** and **[McKinsey / GE 3×3 Matrix](/en/posts/mckinsey-ge-matrix/)** set the capital ceilings later audited by **EVM**.
+2. **Upstream from [Suite 02: Quantitative Decision-Making & Prioritization](/en/posts/decision-making-prioritization-quantitative-framework/) (Selection & Investment Viability):**
+   * Vendor, ERP, or architecture selections conducted via the **[Quantitative DAR Matrix (CMMI)](/en/posts/quantitative-dar-matrix/)** export residual technical weaknesses straight into **FMEA** mitigation plans and vendor lead-time bounds into **PERT**.
+   * Squad capacity constraints and effort scoring from the **[Agile RICE & ICE Prioritization Matrix](/en/posts/rice-ice-prioritization-matrix/)** feed initial hour allocations in the **RACI Workload Matrix** so high-priority roadmaps never overload technical leads.
+   * Approved CAPEX/OPEX cash-flow curves from the **[Financial Business Case (NPV/IRR)](/en/posts/financial-business-case-npv-irr/)** establish the official **Budget at Completion ($BAC$)** and monthly **Planned Value ($PV$)** baseline monitored inside **EVM**.
+
+> [!TIP]
+> **Full Ecosystem Continuity:** Once operational execution is locked down under Suite 03, the **upcoming closing trilogy synthesis (scheduled for December 3)** will unify all **13 quantitative decision tools** across Suites 01, 02, and 03 into a single end-to-end blueprint.
+
+---
+
+## 2. The Operational Execution Crisis and Reactive Management
+
+### 2.1. The Traditional Management Trap: From Intuitive Bias to Silent Collapse
 
 For decades, enterprise operations and project management have relied on qualitative artifacts: static Gantt charts drawn in office software, RACI matrices completed as superficial compliance rituals during project kick-offs, subjective 5x5 risk heatmaps populated with arbitrary color-coding, and supply chain reordering rules based on warehouse rules of thumb ("always keep 3 weeks of safety buffer").
 
@@ -41,9 +117,12 @@ In 1955, British historian **Cyril Northcote Parkinson** articulated an empirica
 1. **The Student Syndrome:** The project team delays intensive effort until the deadline is imminent.
 2. **The Asymmetric Loss of Early Finishes:** If an engineering squad completes its milestone in 3 weeks instead of 6, downstream activities are rarely pulled forward; instead, the slack is absorbed by non-essential perfectionism (*gold plating*) or administrative latency. Conversely, if an unforeseen technical blocker arises, the delay cascades downstream unchecked, causing exponential project slippage.
 
-```
-[Single-Point Estimate: 30 Days] ──> [Delayed Focus (Student Syndrome)] ──> [Late Technical Blocker] ──> [Cascading Project Delay]
-```
+{{< mermaid >}}
+flowchart LR
+    A["Single-Point Estimate: 30 Days"] --> B["Delayed Focus: Student Syndrome"]
+    B --> C["Late Technical Blocker"]
+    C --> D["Cascading Project Delay"]
+{{< /mermaid >}}
 
 #### 2. The Accounting Trap: Confusing Accrued Spend with Physical Earned Progress
 Corporate boards and audit committees routinely review project health using general ledger accounting reports. A typical financial briefing reads:
@@ -65,7 +144,7 @@ By enforcing a static buffer across all stock-keeping units (SKUs) without quant
 
 ---
 
-### 1.2. The Critical Chain of Operations Principle
+### 2.2. The Critical Chain of Operations Principle
 
 To successfully steer an enterprise through volatile execution environments, corporate leaders must adopt the foundational tenet of the **Theory of Constraints (TOC)**, formulated by physicist **Eliyahu M. Goldratt** and formalized within the **PMI PMBOK 7th Edition**:
 
@@ -82,7 +161,7 @@ An executive strategy, no matter how brilliantly conceived, will fail if:
 
 ---
 
-## 2. The 5-Pillar Operational Engine
+## 3. The 5-Pillar Operational Engine
 
 The Datalaria operational framework organizes corporate execution into a closed-loop system of five mutually reinforcing mathematical pillars:
 
@@ -115,7 +194,7 @@ flowchart TD
     E -->|"Guarantees Critical Mission Supplies"| A
 {{< /mermaid >}}
 
-### 2.1. Executive Comparison Matrix: The 5 Pillars of Operational Control
+### 3.1. Executive Comparison Matrix: The 5 Pillars of Operational Control
 
 | Operational Pillar | Core Datalaria Engine | Boardroom Question Answered | Underlying Algorithm / Model | Decisive Executive Deliverable |
 | :--- | :--- | :--- | :--- | :--- |
@@ -127,13 +206,13 @@ flowchart TD
 
 ---
 
-## 3. Methodological Deep Dive into the 5 Analytical Engines
+## 4. Methodological Deep Dive into the 5 Analytical Engines
 
 Here we examine the mathematical architecture, executive governance rules, and boardroom artifacts for each of the five pillars.
 
 ---
 
-### 3.1. Pillar 1: Team Governance & Workload Balancing (Quantitative RACI Matrix)
+### 4.1. Pillar 1: Team Governance & Workload Balancing (Quantitative RACI Matrix)
 
 #### The Quantitative Foundation
 Organizational governance failures stem from two opposing flaws: **ambiguity** (deliverables with no owner or competing decision-makers) and **asymmetric workload distribution** (work is piled on the most capable performers until they break, while peripheral resources remain underutilized).
@@ -185,9 +264,24 @@ The Board receives an audited **FTE Saturation Heatmap** and a **Role Load Dispe
 > For the complete mathematical proof, FTE capacity formulas, and the unlocked Excel and PowerPoint templates, explore our dedicated pillar guide:
 > 🔗 **[Quantitative RACI Matrix: Operational Workload Balancing, Single Accountability & Bottleneck Detection](/en/posts/quantitative-raci-workload-matrix/)**
 
+{{< product-card
+  variant="compact"
+  title="Executive Decision Pack: RACI Matrix with Workload Balancing"
+  price="6€"
+  original_price="19€"
+  badge="Pack 01 • Suite 03"
+  icon="📋"
+  guide_url="/en/posts/quantitative-raci-workload-matrix/"
+  guide_text="Read technical article 📖"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/97eec34f-011e-410c-a623-714218871b1a"
+  button_text="Download RACI Pack • 6€"
+>}}
+Excel/Sheets engine with automated single-Accountable checks (A=1), weighted FTE load calculations, 16:9 boardroom PPTX deck, and 5-page PDF guide.
+{{< /product-card >}}
+
 ---
 
-### 3.2. Pillar 2: Process Reliability & Prevention (FMEA & Quantitative Risk Matrix)
+### 4.2. Pillar 2: Process Reliability & Prevention (FMEA & Quantitative Risk Matrix)
 
 #### The Quantitative Foundation
 Legacy risk management relying on subjective 5x5 qualitative grids (Probability vs. Impact) suffers from a fatal flaw: **it completely ignores system detectability**. Two operational vulnerabilities with identical probability and financial impact possess fundamentally different risk profiles if one can be detected weeks in advance via automated observability, while the other remains invisible until it triggers a catastrophic production outage.
@@ -231,9 +325,24 @@ The Audit Committee reviews an **RPN Pareto Distribution Chart** (confirming tha
 > For the complete AIAG-VDA scoring tables, Action Priority algorithms, and unlocked Excel/Sheets calculation models, read our dedicated pillar guide:
 > 🔗 **[Quantitative Risk Matrix & FMEA: From Qualitative Intuition to Risk Priority Numbers (RPN)](/en/posts/quantitative-risk-matrix-fmea/)**
 
+{{< product-card
+  variant="compact"
+  title="Executive Decision Pack: FMEA Quantitative Risk Matrix"
+  price="7€"
+  original_price="22€"
+  badge="Pack 02 • Suite 03"
+  icon="⚠️"
+  guide_url="/en/posts/quantitative-risk-matrix-fmea/"
+  guide_text="Read technical article 📖"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/6eea6aa0-fe9f-440b-8bb9-6f29b303e57a"
+  button_text="Download FMEA Pack • 7€"
+>}}
+ISO 31000 & AIAG-VDA spreadsheet with automated RPN (S×O×D), Action Priority (AP) logic, 16:9 Pareto PPTX deck, and methodology PDF guide.
+{{< /product-card >}}
+
 ---
 
-### 3.3. Pillar 3: Schedule Uncertainty & Project Buffers (Stochastic 3-Point PERT Estimation)
+### 4.3. Pillar 3: Schedule Uncertainty & Project Buffers (Stochastic 3-Point PERT Estimation)
 
 #### The Quantitative Foundation
 When technical leads are asked how long an unproven architectural migration will take, they typically provide a single number: *"about 8 weeks."* This single-point deterministic estimate is an illusion. As documented by Nobel laureate **Daniel Kahneman**, humans suffer from an innate **Planning Fallacy**: we instinctively assume best-case execution conditions while ignoring unavoidable friction.
@@ -296,9 +405,24 @@ A **Normal Density Distribution Bell Curve of Completion Dates**, empowering the
 > For the complete mathematical derivation, budget-crashing optimization models, and interactive Beta simulators in Excel and PowerPoint, read our dedicated pillar guide:
 > 🔗 **[Stochastic 3-Point PERT Estimation: From Deterministic Delusion to Schedule Certainty](/en/posts/stochastic-3-point-pert-estimation/)**
 
+{{< product-card
+  variant="compact"
+  title="Executive Decision Pack: Stochastic 3-Point PERT Estimation"
+  price="6€"
+  original_price="19€"
+  badge="Pack 03 • Suite 03"
+  icon="⏱️"
+  guide_url="/en/posts/stochastic-3-point-pert-estimation/"
+  guide_text="Read technical article 📖"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/47843201-4db9-4d80-bb88-e59364fb6117"
+  button_text="Download PERT Pack • 6€"
+>}}
+Beta distribution (o, m, p) Excel/Sheets solver, CLT critical-path variance engine, Z-Score buffer sizing, 16:9 PPTX deck, and PMBOK PDF guide.
+{{< /product-card >}}
+
 ---
 
-### 3.4. Pillar 4: Project Financials & EAC Forecasting (Earned Value Management / ANSI/EIA-748)
+### 4.4. Pillar 4: Project Financials & EAC Forecasting (Earned Value Management / ANSI/EIA-748)
 
 #### The Quantitative Foundation
 Traditional project reporting tracks two metrics: **Planned Budget ($PV$)** and **Actual Cost ($AC$)**. If actual spend is lower than the planned budget, leadership assumes the initiative is performing efficiently. As demonstrated in Section 1, this metric is deceptive if physical completion is lagging behind plan.
@@ -362,9 +486,24 @@ The **Executive S-Curve**, plotting cumulative planned budget ($PV$), earned pro
 > For the complete S-Curve mathematical formulation, multivariate EAC projection algorithms, and automated Excel and PowerPoint dashboards, read our dedicated pillar guide:
 > 🔗 **[Earned Value Management (EVM) Dashboard: S-Curve, Cost/Schedule Control & C-Level EAC Forecasting](/en/posts/earned-value-management-evm-dashboard/)**
 
+{{< product-card
+  variant="compact"
+  title="Executive Decision Pack: EVM Earned Value Dashboard (S-Curve)"
+  price="8€"
+  original_price="25€"
+  badge="Pack 04 • Suite 03"
+  icon="📉"
+  guide_url="/en/posts/earned-value-management-evm-dashboard/"
+  guide_text="Read technical article 📖"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/188950c2-0fd9-4331-919f-237880e2c78b"
+  button_text="Download EVM Pack • 8€"
+>}}
+ANSI/EIA-748 Excel/Sheets dashboard with S-Curve (PV, EV, AC), CPI/SPI, EAC/TCPI forecasts, C-Level 16:9 PPTX deck, and PDF guide.
+{{< /product-card >}}
+
 ---
 
-### 3.5. Pillar 5: Physical Flow & Working Capital (Dynamic Safety Stock & ROP)
+### 4.5. Pillar 5: Physical Flow & Working Capital (Dynamic Safety Stock & ROP)
 
 #### The Quantitative Foundation
 In businesses combining complex program execution with hardware delivery, physical infrastructure, or manufacturing, material availability connects engineering plans with actual customer deployment. The legacy habit of maintaining a flat "4-week inventory cover" destroys balance-sheet value because it assumes customer demand and vendor fulfillment times are perfectly stable.
@@ -420,6 +559,21 @@ The dynamic **Sawtooth Wave Simulation Chart**, illustrating replenishment cycle
 > For the complete stochastic convolution proof, variable lead-time formulas, and interactive Sawtooth simulators in Excel and PowerPoint, read our dedicated pillar guide:
 > 🔗 **[Safety Stock & Reorder Point (ROP) Calculator: Boardroom-Grade Inventory & Working Capital Optimization](/en/posts/safety-stock-reorder-point-calculator/)**
 
+{{< product-card
+  variant="compact"
+  title="Executive Decision Pack: Safety Stock & Reorder Point (ROP) Engine"
+  price="7€"
+  original_price="22€"
+  badge="Pack 05 • Suite 03"
+  icon="📦"
+  guide_url="/en/posts/safety-stock-reorder-point-calculator/"
+  guide_text="Read technical article 📖"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/513e5cad-9f9f-4b53-a435-b511a846d79e"
+  button_text="Download Stock ROP Pack • 7€"
+>}}
+APICS Excel/Sheets workbook with stochastic demand/lead-time convolution, dynamic ROP, Wilson EOQ sizing, 16:9 PPTX deck, and PDF guide.
+{{< /product-card >}}
+
 #### Operational Synergy: Inventory Resilience & Early Obsolescence Radar (IEC 62402)
 
 Stochastic inventory buffering does not operate in a vacuum: it is directly exposed to electronic and industrial component lifecycles. When a manufacturer issues a product change or discontinuance notice (**PCN / PDN / EOL**), blindly replenishing via standard recurring $ROP$ triggers leads to severe production line stoppages or millions in trapped Dead Stock. To bridge this critical vulnerability, the **Suite 03** quantitative framework naturally integrates with **Agentic Radar (`obs-management`)**, which traverses your Bill of Materials (BOM) relational graph in real time, quantifies financial revenue at risk, and initiates an optimized *Last Time Buy* (LTB) bridge with stochastic safety stock dimensioning:
@@ -428,16 +582,17 @@ Stochastic inventory buffering does not operate in a vacuum: it is directly expo
 
 ---
 
-## 4. The Systemic Thread: How the 5 Engines Feed Each Other
+## 5. The Systemic Thread: How the 5 Engines Feed Each Other
 
 The definitive power of Suite 03 emerges not from using these tools in isolation, but from their **algorithmic interoperability**. In a mature operating model, each pillar provides the analytical baseline for the next:
 
-```
-[1. RACI] ──> [2. FMEA] ──> [3. PERT] ──> [4. EVM] ──> [5. SAFETY STOCK]
-    │            │             │            │               │
- Governance     Risks      Schedules      Costs          Supplies
-    └────────────────────── Unified Operational Engine ─────────────┘
-```
+{{< mermaid >}}
+flowchart LR
+    P1["1. RACI<br/>Governance and FTEs"] --> P2["2. FMEA<br/>Risks and RPN"]
+    P2 --> P3["3. PERT<br/>Schedules and Buffers"]
+    P3 --> P4["4. EVM<br/>Costs and S-Curve"]
+    P4 --> P5["5. Safety Stock<br/>Supplies and Cash"]
+{{< /mermaid >}}
 
 1. **From RACI to WBS Structural Integrity:**  
    The quantitative RACI model verifies that every WBS package has exactly one Accountable leader ($A=1$) and sufficient assigned execution capacity ($R \ge 1$), ensuring the operational scope is unencumbered by ambiguity before technical execution begins.
@@ -452,7 +607,7 @@ The definitive power of Suite 03 emerges not from using these tools in isolation
 
 ---
 
-## 5. Integrated Master Business Case: Operational Scaling of an Industrial Line
+## 6. Integrated Master Business Case: Operational Scaling of an Industrial Line
 
 To demonstrate the combined financial and managerial impact of the framework, let us examine an integrated corporate case: **Nexus Industrial Systems**, an advanced robotics and mechatronics enterprise deploying a new automated assembly cell and industrial IoT platform for aerospace clients.
 
@@ -589,6 +744,7 @@ Deploying the automated robotic line required an ongoing supply of precision ser
   * Average inventory required dropped from 520 units to:
     $$
     \bar{I} = SS + \frac{EOQ}{2} = 155 + 90 = \mathbf{245 \text{ units}}
+    $$
   * Optimized inventory capital: $245 \times \$850 = \mathbf{\$208,250}$.
   * **Net Working Capital Released to Cash Flow:**
     $$
@@ -598,9 +754,13 @@ Deploying the automated robotic line required an ongoing supply of precision ser
 
 ---
 
-## 6. Commercial Close: The Suite 03 Mega Bundle
+<div id="executive-pack"></div>
 
-For Chief Operating Officers, PMO Executives, VPs of Operations, Chief Financial Officers, and engineering leaders seeking to implement this boardroom-grade quantitative standard immediately across their organizations, we have consolidated all underlying financial models, automation spreadsheets, and executive slide decks into the **Suite 03 Mega Bundle**:
+## 7. Commercial Close: The Suite 03 Mega Bundle
+
+For Chief Operating Officers, PMO Executives, VPs of Operations, Chief Financial Officers, and engineering leaders seeking to implement this boardroom-grade quantitative standard immediately across their organizations, we have consolidated all underlying spreadsheets, boardroom decks, and PDF playbooks from `Suite 03 · Operational Control` into one downloadable executive arsenal:
+
+![Suite 03 Mega Bundle Preview: Operational Control & PMBOK (RACI, FMEA, PERT, EVM, and Safety Stock)](preview-pack.png "Live capture of the Suite 03 Mega Bundle: all 5 Executive Decision Packs across Excel, 16:9 PowerPoint, and PDF Guides")
 
 {{< bundle-card
   title="Mega Bundle: Suite 03 · Operational Control & PMBOK"
@@ -642,7 +802,7 @@ Purchasing the Mega Bundle grants instant direct download access to an archived 
 
 ---
 
-## 7. Canonical Bibliography of Operational Control & Project Management
+## 8. Canonical Bibliography of Operational Control & Project Management
 
 For executive leaders, PMO directors, and operations researchers seeking to examine the foundational academic and industry standards underpinning this 5-pillar framework, we recommend the following authoritative international references:
 

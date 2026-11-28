@@ -94,3 +94,11 @@ It reminds us that the urge to forecast the future or resurrect the past does no
 * [**Datalaria**: Claude Shannon — Information Theory and Entropy](/en/posts/claude_shannon/)
 * [**Datalaria**: Thomas Bayes — Probabilistic Inference](/en/posts/thomas_bayes/)
 * [**Datalaria**: EU AI Act — Engineering Guide to Algorithmic Ethics](/en/posts/eu_ai_act/)
+
+---
+
+### 📡 From Determinism to Quantitative Risk Analysis
+
+Interested in replacing the illusion of absolute certainty with auditable deterministic risk models and operational simulation? Explore our zero-login interactive cockpit:
+
+{{< app-ref slug="obs-management" >}}

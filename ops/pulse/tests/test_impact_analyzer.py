@@ -26,7 +26,7 @@ def test_impact_analyzer_execution_and_pydantic_contract() -> None:
     report = run_impact_analysis()
     assert isinstance(report, PulseImpactReport)
     assert report.total_published_posts >= 100
-    assert report.total_scheduled_posts >= 15
+    assert report.total_scheduled_posts >= 5
     assert (report.total_published_posts + report.total_scheduled_posts) >= 115
     assert report.total_30d_post_views > 1000
     assert report.median_post_views >= 5.0

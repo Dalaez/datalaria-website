@@ -63,3 +63,14 @@ Al responder a esa pregunta fundamental, no construyó una herramienta mejor; in
 * [**Documental**: The Bit Player (Sobre la vida y obra de Claude Shannon)](https://thebitplayer.com/)
 * [**Datalaria**: Abraham Wald y la Epistemología de los Datos Ausentes](/es/posts/abraham_wald/)
 * [**Datalaria**: Multiverse Computing y la compresión de la IA](/es/posts/multiverse_computing/)
+
+---
+
+### 🧠 Entrena tu Pensamiento Cuantitativo y Toma de Decisiones
+
+La reducción de incertidumbre de Shannon es la esencia de toda buena decisión bajo presión. Pon en práctica estos principios de modelado probabilístico y priorización analítica con nuestras herramientas interactivas y kits cuantitativos:
+
+* **Aplicación Interactiva:** Domina conceptos clave de IA y lógica cuantitativa jugando con [Flashcards AI en el catálogo de Apps](/es/apps/flashcards/).
+* **Suite de Gestión y Estrategia:** Implementa modelos analíticos de priorización, RICE y análisis de decisión con el [Pack Suite 2: Toma de Decisiones & Priorización Cuantitativa](/es/recursos/#suite-02).
+
+{{< app-ref slug="flashcards" >}}

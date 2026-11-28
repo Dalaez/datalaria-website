@@ -40,9 +40,9 @@ Para entender cómo encaja cada pieza del rompecabezas de *Content Ops as Code*,
 
 ## 0. Objetivos de la Fase y de este Artículo: Unificando Equipos y Escalando con Agentes Autónomos
 
-Con este artículo culminamos el despliegue del **Hito 5.8 de Datalaria**, consolidando un modelo operativo que une la simplicidad de uso para perfiles de negocio con el rigor determinista que exige la ingeniería moderna.
+Con este artículo culminamos el despliegue de la serie **Datalaria Pulse**, consolidando un modelo operativo que une la simplicidad de uso para perfiles de negocio con el rigor determinista que exige la ingeniería moderna.
 
-### Objetivos Estratégicos de la Fase 5:
+### Objetivos Estratégicos:
 1. **Resolver la Brecha de Adopción Organizativa:** Permitir que especialistas SEO y editores trabajen con herramientas familiares (Excel, Notion) sin degradar la Fuente Única de Verdad en Git.
 2. **Garantizar Cero Vendor Lock-in (Arquitectura Dual-Mode):** Ofrecer una alternativa descargable y autónoma de licencia perpetua (*Pulse Kit*) junto con un entorno colaborativo en la nube (*Pulse Pro*).
 3. **Asegurar Aislamiento Multi-Tenant Estricto (`INV-PULSE-4` e `INV-PULSE-5`):** Implementar políticas de Row-Level Security (RLS) en Supabase para proteger los catálogos privados de cada cliente.

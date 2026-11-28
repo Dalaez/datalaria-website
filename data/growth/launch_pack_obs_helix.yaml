@@ -6,7 +6,7 @@ reviewers:
 strategy_ref: "specs/STRATEGY.md"
 brand_ref: "specs/_brand.md"
 impact_report_ref: "specs/audit/IMPACT_REPORT.md"
-updated_at: "2026-11-24"
+updated_at: "2026-11-27"
 
 governance_rules:
   cost_eur: 0
@@ -178,6 +178,25 @@ directories_and_marketplaces:
       short_description: "Free interactive browser cockpit for electronics & industrial teams facing End-of-Life (PDN/EOL) component notices. Compute multilevel BOM margin-at-risk and deterministic WACC-adjusted LTB vs Redesign CAPEX in 15 seconds with zero login."
       categories: ["SaaS", "Productivity", "Analytics"]
       notes: "Submit Agentic Radar v2.0 live Sandbox (or Datalaria Pulse) for do-follow backlink potential; keep pack-sdd staged until 2027-01-19."
+  empirical_execution_hito_9_5:
+    executed_at: "2026-11-27"
+    cost_eur: 0
+    outcomes:
+      - directory: "AlternativeTo"
+        status: "submitted_and_partial_live"
+        notes: "Datalaria Pulse LIVE (alternativeto.net/software/datalaria-pulse/about/); Agentic Radar v2.0 en cola gratuita (alternativeto.net/software/agentic-radar-v2-0/about/)."
+      - directory: "Uneed"
+        status: "scheduled_free_queue"
+        notes: "Agentic Radar programado en cola gratuita para 2027-07-22 (uneed.best/tool/agentic-radar-v2-0)."
+      - directory: "DevHunt"
+        status: "queued_free"
+        notes: "Datalaria Pulse en cola gratuita (lanzamiento 2031-11-18, nofollow)."
+      - directory: "SaaSHub"
+        status: "submitted_with_launch_pages"
+        notes: "Sustituye a TAAFT a coste 0 EUR; Agentic Radar y Datalaria Pulse dados de alta con sus páginas Launch (saashub.com/launch/s/agentic-radar y /datalaria-pulse). SaaSHub bloquea ?utm_ en plan gratuito."
+      - directory: "There's An AI For That"
+        status: "discarded_paid_only"
+        notes: "Descartado bajo estrategia 0 EUR/mes: solo ofrece modalidades de pago ($49 USD / $437 USD)."
   github_awesome_lists:
     - repo: "awesome-ai-agents / awesome-claude-code"
       target_products: ["pack-sdd"]
@@ -208,8 +227,10 @@ linkedin_company_4week_plan:
   weeks:
     - week: 1
       theme: "Silent Release Spotlight #1: Agentic Radar v2.0 & Supply Chain Risk (Executive B2B)"
+      scheduled_execution_note: "Programados en LinkedIn Página Empresa (110125695) en días libres de blog: 2026-12-01 13:30 CET (EN), 2026-12-04 09:00 CET (ES), 2026-12-05 13:30 CET (EN)."
       posts:
         - day: "Tue"
+          scheduled_slot: "2026-12-01 13:30 CET"
           lang: "en"
           format: "Technical breakdown + 1600x980 architecture visual"
           recommended_visual: "content/en/apps/obs-management/cover.png"
@@ -229,6 +250,7 @@ linkedin_company_4week_plan:
 
             When a supplier sends a Product Discontinuation Notice (PDN), does your team default to Last-Time-Buy or trigger a redesign business case first?
         - day: "Thu"
+          scheduled_slot: "2026-12-04 09:00 CET"
           lang: "es"
           format: "Carrousel / 3-bullet comparison (pack-stock vs. IEC 62402 EOL)"
           recommended_visual: "static/images/recursos/stock-preview-es.png"
@@ -249,6 +271,7 @@ linkedin_company_4week_plan:
 
             ¿Cómo evaluáis hoy en operaciones si compensa inmovilizar capital en un LTB o asumir el coste de homologar un sustituto?
         - day: "Sat"
+          scheduled_slot: "2026-12-05 13:30 CET"
           lang: "en"
           format: "Founder behind-the-scenes (Open Lab showcase)"
           recommended_visual: "content/en/apps/weather/cover.png"
@@ -270,8 +293,10 @@ linkedin_company_4week_plan:
             Do your internal web tools still depend on public CDNs, or have you moved to self-contained zero-CDN bundles?
     - week: 2
       theme: "Silent Release Spotlight #2: Datalaria Pulse v1.5/v1.6 & Content Ops as Code (AI Systems)"
+      scheduled_execution_note: "Programados espaciados tras auditoría 00B/Mercator para no colisionar con Día D pack-obs (2026-12-09): 2026-12-08 13:30 CET (EN), 2026-12-15 13:30 CET (EN), 2026-12-18 09:00 CET (ES)."
       posts:
         - day: "Tue"
+          scheduled_slot: "2026-12-08 13:30 CET"
           lang: "en"
           format: "Dashboard screenshot + metrics story"
           recommended_visual: "static/images/recursos/pulse-preview-en.png"
@@ -292,6 +317,7 @@ linkedin_company_4week_plan:
 
             How do you keep your editorial backlog synchronized with real production ship dates and Search Console data?
         - day: "Thu"
+          scheduled_slot: "2026-12-15 13:30 CET"
           lang: "en"
           format: "Problem/Solution post for Content & DevRel teams"
           recommended_visual: "static/images/recursos/pulse-preview-en.png"
@@ -312,6 +338,7 @@ linkedin_company_4week_plan:
 
             What is the biggest bottleneck in your current content workflow: Notion maintenance, Excel reporting, or proving SEO ROI?
         - day: "Sat"
+          scheduled_slot: "2026-12-18 09:00 CET"
           lang: "es"
           format: "Debate question on Dark Social & Attribution"
           recommended_visual: "content/es/apps/pulse/cover.png"
@@ -334,21 +361,64 @@ linkedin_company_4week_plan:
       theme: "Launch Week: pack-obs (Dec 9, 2026) + Executive Suites B2B"
       posts:
         - day: "Tue"
+          scheduled_slot: "2026-12-09 13:30 CET"
           lang: "en"
           embargo_note: "Publish ONLY on or after 2026-12-09"
           format: "Official Launch Post (EN-First)"
+          recommended_visual: "packages/growth/hito_9_6/visuals/slide_03_kit_composite_1600x980.png"
           hook: "Live today: IEC 62402 Obsolescence, BOM Risk & LTB Decision Kit (5-sheet Zero-VBA Excel + PostgreSQL RLS Blueprint + 5-page PDF Playbook)."
           cta_url: "https://datalaria.com/en/resources/?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk3_pack_obs_launch#pack-obs"
+          full_post: |
+            Live today: the IEC 62402 Obsolescence, BOM Risk & Last Time Buy (LTB) Decision Kit is now open at €19 Early-Bird (List €39).
+
+            When a supplier issues a Product Discontinuation Notice (PDN), standard APICS Safety Stock (ROP) breaks because automated replenishment freezes immediately.
+
+            Inside the Dual ES/EN package (built for COOs, CFOs, and Component Engineers):
+            • 5-Sheet Zero-VBA Excel Engine: cycle-safe BOM/AML explorer, IEC 62402 criticality (0–100), LTB vs. FFF Redesign WACC simulator + SS_LTB bridge buffer.
+            • Starter Technical Blueprint: PostgreSQL obs_radar schema with Row-Level Security across 6 tables, pure Python bom_engine.py, and 1-click CSV template.
+            • 5-Page Vector PDF Playbook: exact response workflow from PDN alert to Board CAPEX approval.
+
+            Inspect all deliverables and launch checkout here:
+            https://datalaria.com/en/resources/?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk3_pack_obs_launch#pack-obs
+
+            When your team receives an End-of-Life notice on a single-source component, how quickly can you quantify true P&L margin at risk?
         - day: "Thu"
+          scheduled_slot: "2026-12-04 09:00 CET"
           lang: "es"
-          format: "Value comparison (Kit vs. Suite vs. Mega Bundle 39 € + Team License 99 €)"
+          format: "Value comparison (Kit vs. Suite vs. Mega Bundle 39 € + Team License 99 €–149 €)"
+          recommended_visual: "static/images/recursos/suite-01-preview-es.png"
           hook: "13 modelos cuantitativos de Estrategia, Decisiones y Operaciones PMBOK sin macros VBA: por qué las empresas están pasando de plantillas sueltas a licencias de equipo."
           cta_url: "https://datalaria.com/es/recursos/?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk3_b2b_suites#pricing-comparison"
+          full_post: |
+            Muchas áreas de operaciones siguen pagando auditorías de seis cifras o peleando con hojas de cálculo bloqueadas por políticas IT por culpa de macros VBA.
+
+            Por eso consolidamos 13 modelos cuantitativos (Estrategia MBA, Toma de Decisiones y Control Operativo PMBOK) en 3 Suites sin macros VBA y con factura B2B deducible:
+            • Mega Bundle Total (39 € · valor por separado 82 €): acceso completo a las 13 herramientas en Excel nativo, decks 16:9 Pirámide de Minto y guías PDF.
+            • Licencia Equipo B2B (99 € para 5 asientos · 149 € Corporativa/PMO para 20 asientos): despliegue interno unificado para equipos de operaciones, finanzas y PMO.
+
+            Compara las suites y opciones de licencia para equipos aquí:
+            https://datalaria.com/es/recursos/?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk3_b2b_suites#pricing-comparison
+
+            ¿Qué frena hoy la adopción de plantillas cuantitativas en vuestra PMO: las restricciones IT contra macros VBA o la falta de estandarización entre áreas?
         - day: "Sat"
+          scheduled_slot: "2026-12-05 13:30 CET"
           lang: "en"
           format: "Quick quantitative tip (EVM / Safety Stock)"
+          recommended_visual: "static/images/recursos/stock-preview-en.png"
           hook: "3 indicators every COO should review before approving CAPEX: NPV sensitivity Tornado, EVM CPI/SPI, and Safety Stock working-capital trade-off."
           cta_url: "https://datalaria.com/en/resources/?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk3_coo_kpis#suite-03"
+          full_post: |
+            Before signing off on major operational CAPEX, three quantitative signals prevent most downstream cash surprises.
+
+            What belongs on every COO pre-approval checklist:
+            • Financial Business Case Tornado: identify which single assumption (WACC, ramp delay, or unit cost) pushes NPV negative first.
+            • Earned Value CPI and SPI: verify physical work completed versus accrued spend before mid-project overruns become irreversible.
+            • Dual-volatility Safety Stock (SS) & ROP: model demand and lead-time variance jointly to protect service levels without trapping working capital.
+
+            Explore the 5-pillar PMBOK & Operations Control suite here:
+            https://datalaria.com/en/resources/?utm_source=linkedin&utm_medium=social&utm_campaign=li_wk3_coo_kpis#suite-03
+
+            Which of these three metrics is missing from your current monthly operations review?
     - week: 4
       theme: "Datalaria Helix Waitlist Push (Pre-Jan 19, 2027) & Brand Authority"
       posts:

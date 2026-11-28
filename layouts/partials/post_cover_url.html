@@ -27,7 +27,7 @@
   {{- if $imgRes -}}
     {{- $processable := slice "jpg" "jpeg" "png" "tif" "bmp" "gif" "webp" -}}
     {{- if in $processable $imgRes.MediaType.SubType -}}
-      {{- $thumb := $imgRes.Fill "120x120 webp q85" -}}
+      {{- $thumb := $imgRes.Fit "192x120 webp q85" -}}
       {{- $url = $thumb.RelPermalink -}}
     {{- else -}}
       {{- $url = $imgRes.RelPermalink -}}

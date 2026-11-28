@@ -1174,3 +1174,93 @@ body.dark .executive-bundle-card .bundle-cta-btn:hover {
     letter-spacing: -0.025em;
   }
 }
+
+/* ==========================================================================
+   GitHub / Hugo Styled Alerts ([!TIP], [!NOTE], [!IMPORTANT], [!WARNING])
+   ========================================================================== */
+.dl-alert {
+  --dl-alert-accent: #3b82f6;
+  --dl-alert-bg: rgba(59, 130, 246, 0.08);
+  --dl-alert-border: rgba(59, 130, 246, 0.25);
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  border: 1px solid var(--dl-alert-border);
+  border-inline-start: 4px solid var(--dl-alert-accent);
+  background: var(--dl-alert-bg);
+}
+
+.dl-alert-tip {
+  --dl-alert-accent: #10b981;
+  --dl-alert-bg: rgba(16, 185, 129, 0.09);
+  --dl-alert-border: rgba(16, 185, 129, 0.28);
+}
+
+.dl-alert-note {
+  --dl-alert-accent: #3b82f6;
+  --dl-alert-bg: rgba(59, 130, 246, 0.08);
+  --dl-alert-border: rgba(59, 130, 246, 0.26);
+}
+
+.dl-alert-important {
+  --dl-alert-accent: #8b5cf6;
+  --dl-alert-bg: rgba(139, 92, 246, 0.09);
+  --dl-alert-border: rgba(139, 92, 246, 0.28);
+}
+
+.dl-alert-warning {
+  --dl-alert-accent: #f59e0b;
+  --dl-alert-bg: rgba(245, 158, 11, 0.1);
+  --dl-alert-border: rgba(245, 158, 11, 0.3);
+}
+
+.dl-alert-caution {
+  --dl-alert-accent: #ef4444;
+  --dl-alert-bg: rgba(239, 68, 68, 0.09);
+  --dl-alert-border: rgba(239, 68, 68, 0.28);
+}
+
+.dl-alert-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--dl-alert-accent);
+  margin-bottom: 0.45rem;
+  letter-spacing: 0.01em;
+}
+
+.dl-alert-icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.dl-alert-body > :first-child {
+  margin-top: 0;
+}
+
+.dl-alert-body > :last-child {
+  margin-bottom: 0;
+}
+
+.dl-alert-body p {
+  font-size: 0.95rem;
+  line-height: 1.62;
+  color: var(--content);
+}
+
+.dl-alert-body a {
+  color: var(--dl-alert-accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.executive-product-card.epc-compact .epc-compact-cta-box .product-guide-link {
+  margin-top: 4px;
+  padding: 6px 12px;
+  font-size: 0.78rem;
+  justify-content: center;
+}

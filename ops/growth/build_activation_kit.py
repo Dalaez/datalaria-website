@@ -151,7 +151,8 @@ def build_activation_kit(
         f"> **Coste mensual:** `0 €` · **Tope free tier:** `{lifecycle['brevo_constraints']['daily_send_cap']} emails/día` · "
         f"**Regla colisión `E05`:** {lifecycle['brevo_constraints']['digest_collision_rule']}",
         f"> **Listas configuradas:** Newsletter ES=`#{lists['newsletter_es']}`, Newsletter EN=`#{lists['newsletter_en']}`, "
-        f"Helix Waitlist ES=`#{lists['helix_waitlist_es']}`, Helix Waitlist EN=`#{lists['helix_waitlist_en']}`.",
+        f"Helix Waitlist ES=`#{lists['helix_waitlist_es']}`, Helix Waitlist EN=`#{lists['helix_waitlist_en']}`, "
+        f"Buyers ES=`#{lists.get('buyers_es', 7)}`, Buyers EN=`#{lists.get('buyers_en', 8)}`.",
         "",
     ]
 
@@ -163,8 +164,8 @@ def build_activation_kit(
         if embargo:
             guide_lines.append(f"- **Embargo comercial (`INV-AUTO-6`):** `{embargo}` (NO activar links de checkout antes).")
         guide_lines.append("")
-        guide_lines.append("| Paso | Delay | Idioma | Asunto | Archivo HTML listo |")
-        guide_lines.append("| :-: | :-: | :-: | :--- | :--- |")
+        guide_lines.append("| Paso | Delay | Idioma | Subject line | Preview text (Preheader) | Archivo HTML listo |")
+        guide_lines.append("| :-: | :-: | :-: | :--- | :--- | :--- |")
 
         for step_obj in flow["emails"]:
             step_num = step_obj["step"]
@@ -189,7 +190,7 @@ def build_activation_kit(
                 (brevo_dir / fname).write_text(html_doc, encoding="utf-8")
                 html_count += 1
                 guide_lines.append(
-                    f"| {step_num} | {delay_label} | `{lang.upper()}` | {loc['subject']} | `{fname}` |"
+                    f"| {step_num} | {delay_label} | `{lang.upper()}` | {loc['subject']} | {loc['preheader']} | `{fname}` |"
                 )
         guide_lines.append("")
 

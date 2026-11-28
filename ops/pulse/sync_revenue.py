@@ -432,6 +432,30 @@ def _classify_brevo_list_lang(list_id: int, name: str) -> Literal["es", "en", "a
     return "all"
 
 
+def _extract_brevo_campaign_stats(stats_obj: Any) -> Tuple[int, int, int, int]:
+    """Extrae estadísticas agregadas sin PII desde globalStats o fallback campaignStats."""
+    if not isinstance(stats_obj, dict):
+        return 0, 0, 0, 0
+    gstats = stats_obj.get("globalStats") or {}
+    if not isinstance(gstats, dict):
+        gstats = {}
+    delivered = max(0, int(gstats.get("delivered") or gstats.get("sent") or 0))
+    u_opens = max(0, int(gstats.get("uniqueViews") or gstats.get("viewed") or 0))
+    u_clicks = max(0, int(gstats.get("uniqueClicks") or gstats.get("clickers") or 0))
+    unsubs = max(0, int(gstats.get("unsubscriptions") or 0))
+
+    if delivered == 0 and isinstance(stats_obj.get("campaignStats"), list):
+        for entry in stats_obj["campaignStats"]:
+            if not isinstance(entry, dict):
+                continue
+            delivered += max(0, int(entry.get("delivered") or entry.get("sent") or 0))
+            u_opens += max(0, int(entry.get("uniqueViews") or entry.get("viewed") or 0))
+            u_clicks += max(0, int(entry.get("uniqueClicks") or entry.get("clickers") or 0))
+            unsubs += max(0, int(entry.get("unsubscriptions") or 0))
+
+    return delivered, u_opens, u_clicks, unsubs
+
+
 def fetch_brevo_audience_summary(
     api_key: Optional[str] = None,
     now_utc: Optional[datetime] = None,
@@ -498,7 +522,7 @@ def fetch_brevo_audience_summary(
                 helix_subs += uniq
 
         campaigns_resp = requests.get(
-            f"{BREVO_API_BASE}/emailCampaigns?status=sent&limit=20&offset=0",
+            f"{BREVO_API_BASE}/emailCampaigns?status=sent&limit=20&offset=0&statistics=globalStats",
             headers=headers,
             timeout=timeout,
         )
@@ -518,11 +542,9 @@ def fetch_brevo_audience_summary(
             cid = int(camp.get("id") or 0)
             cname = str(camp.get("name") or f"Campaign {cid}").strip()
             sent_date = camp.get("sentDate")
-            gstats = ((camp.get("statistics") or {}).get("globalStats") or {})
-            delivered = max(0, int(gstats.get("delivered") or gstats.get("sent") or 0))
-            u_opens = max(0, int(gstats.get("uniqueViews") or gstats.get("viewed") or 0))
-            u_clicks = max(0, int(gstats.get("uniqueClicks") or gstats.get("clickers") or 0))
-            unsubs = max(0, int(gstats.get("unsubscriptions") or 0))
+            delivered, u_opens, u_clicks, unsubs = _extract_brevo_campaign_stats(
+                camp.get("statistics")
+            )
 
             open_pct = round((u_opens / delivered) * 100.0, 2) if delivered > 0 else 0.0
             ctr_pct = round((u_clicks / delivered) * 100.0, 2) if delivered > 0 else 0.0

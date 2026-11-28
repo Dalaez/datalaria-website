@@ -78,6 +78,20 @@ def get_bodies():
         ("content/es/posts/calculadora-stock-seguridad-rop/index.md", "/es/posts/calculadora-stock-seguridad-rop/"),
         ("content/en/posts/safety-stock-reorder-point-calculator/index.md", "/en/posts/safety-stock-reorder-point-calculator/"),
     )
+    es_part = _resolve_post_conditionals(
+        es_part,
+        "es",
+        "suite3Post",
+        ("content/es/posts/control-operativo-pmbok-framework-cuantitativo/index.md", "/es/posts/control-operativo-pmbok-framework-cuantitativo/"),
+        ("content/en/posts/operational-control-pmbok-quantitative-framework/index.md", "/en/posts/operational-control-pmbok-quantitative-framework/"),
+    )
+    es_part = _resolve_post_conditionals(
+        es_part,
+        "es",
+        "megaBundlePost",
+        ("content/es/posts/executive-decision-packs-framework-cuantitativo/index.md", "/es/posts/executive-decision-packs-framework-cuantitativo/"),
+        ("content/en/posts/executive-decision-packs-quantitative-framework/index.md", "/en/posts/executive-decision-packs-quantitative-framework/"),
+    )
 
     en_part = _resolve_post_conditionals(
         parts[1].rsplit("{{- end -}}", 1)[0],
@@ -99,6 +113,20 @@ def get_bodies():
         "stockPost",
         ("content/es/posts/calculadora-stock-seguridad-rop/index.md", "/es/posts/calculadora-stock-seguridad-rop/"),
         ("content/en/posts/safety-stock-reorder-point-calculator/index.md", "/en/posts/safety-stock-reorder-point-calculator/"),
+    )
+    en_part = _resolve_post_conditionals(
+        en_part,
+        "en",
+        "suite3Post",
+        ("content/es/posts/control-operativo-pmbok-framework-cuantitativo/index.md", "/es/posts/control-operativo-pmbok-framework-cuantitativo/"),
+        ("content/en/posts/operational-control-pmbok-quantitative-framework/index.md", "/en/posts/operational-control-pmbok-quantitative-framework/"),
+    )
+    en_part = _resolve_post_conditionals(
+        en_part,
+        "en",
+        "megaBundlePost",
+        ("content/es/posts/executive-decision-packs-framework-cuantitativo/index.md", "/es/posts/executive-decision-packs-framework-cuantitativo/"),
+        ("content/en/posts/executive-decision-packs-quantitative-framework/index.md", "/en/posts/executive-decision-packs-quantitative-framework/"),
     )
     
     es_lines = [l for l in es_part.splitlines() if not l.startswith("{{-")]

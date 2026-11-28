@@ -63,9 +63,23 @@ translationKey: resources
           <div class="mega-price-now">39€</div>
           <div class="mega-price-old">82€ individual</div>
         </div>
-        <a href="https://datalaria.lemonsqueezy.com/checkout/buy/88a976a2-f0e5-4e8e-a954-516767c7fed5?embed=1" class="btn-mega-buy lemonsqueezy-button">
-          Descargar Mega Bundle • 39€ →
-        </a>
+        <div class="kit-btns-group" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+          <button type="button" class="btn-kit-info" onclick="openModal('mega-bundle')">
+            Detalles ℹ️
+          </button>
+          {{- if $megaBundlePost }}
+          <a href="{{ $megaBundlePost.RelPermalink }}" class="btn-kit-info" title="Leer artículo técnico">
+            Artículo técnico 📖
+          </a>
+          {{- else }}
+          <span class="btn-kit-info btn-disabled" title="Artículo técnico próximamente">
+            Artículo próximamente
+          </span>
+          {{- end }}
+          <a href="https://datalaria.lemonsqueezy.com/checkout/buy/88a976a2-f0e5-4e8e-a954-516767c7fed5?embed=1" class="btn-mega-buy lemonsqueezy-button">
+            Descargar Mega Bundle • 39€ →
+          </a>
+        </div>
       </div>
     </div>
 
@@ -145,9 +159,15 @@ translationKey: resources
             <button type="button" class="btn-kit-info" onclick="event.stopPropagation(); openModal('suite-03')">
               Detalles ℹ️
             </button>
+            {{- if $suite3Post }}
+            <a href="{{ $suite3Post.RelPermalink }}" class="btn-kit-info" onclick="event.stopPropagation()">
+              Artículo técnico 📖
+            </a>
+            {{- else }}
             <span class="btn-kit-info btn-disabled" onclick="event.stopPropagation()" title="Artículo técnico próximamente">
               Artículo próximamente
             </span>
+            {{- end }}
             <a href="https://datalaria.lemonsqueezy.com/checkout/buy/ee578b8e-29d6-4361-ba19-4b0b5abfd89a?embed=1" class="btn-suite-buy-mini lemonsqueezy-button" onclick="event.stopPropagation()">
               Comprar Suite →
             </a>
@@ -683,7 +703,7 @@ Detalles ℹ️
 <button type="button" class="btn-kit-info" onclick="openModal('pack-stock')">
 Detalles ℹ️
 </button>
-<span class="btn-kit-info btn-disabled" title="Artículo técnico próximamente">Artículo próximamente</span>
+<a href="/es/posts/calculadora-stock-seguridad-rop/" class="btn-kit-info" title="Leer artículo técnico">Artículo técnico 📖</a>
 <a href="https://datalaria.lemonsqueezy.com/checkout/buy/513e5cad-9f9f-4b53-a435-b511a846d79e?embed=1" class="btn-kit-buy lemonsqueezy-button">Descargar →</a>
 </div>
 </div>
@@ -1244,6 +1264,33 @@ Detalles ℹ️
   }
 
   const SUITES_CONFIG = {
+  "mega-bundle": {
+    "id": "mega-bundle",
+    "title": "MEGA BUNDLE: Executive PM & Strategy Suite (3 Suites · 13 Packs)",
+    "topic": "all",
+    "topicLabel": "Colección Completa C-Level",
+    "status": "available",
+    "statusLabel": "🟢 DISPONIBLE • 13 Packs (ES + EN)",
+    "price": "39€",
+    "origPrice": "82€",
+    "icon": "👑",
+    "tag": "👑 Ahorro >52% • 78 Archivos Ejecutivos",
+    "delivs": [
+      "26 Modelos Excel + Sheets (ES+EN)",
+      "26 Decks PowerPoint 16:9",
+      "26 Guías Metodológicas PDF"
+    ],
+    "desc": "El arsenal completo con las 3 Suites (13 herramientas cuantitativas) en edición dual español e inglés: Suite 01 Estrategia MBA, Suite 02 Toma de Decisiones y Suite 03 Control Operativo PMBOK.",
+    "features": [
+      "Suite 01 Estrategia MBA (5 packs): PESTEL, 5 Fuerzas de Porter, DAFO-CAME, Matriz BCG Dinámica y McKinsey/GE 3×3",
+      "Suite 02 Toma de Decisiones (3 packs): Matriz DAR CMMI con Criterios Veto, RICE/ICE Ágil y Business Case DCF (VAN/TIR/Tornado)",
+      "Suite 03 Control Operativo PMBOK (5 packs): Matriz RACI con carga FTE, AMFE/FMEA, PERT 3 Puntos, EVM Curva S y Stock Seguridad ROP",
+      "Cero macros VBA bloqueadas: fórmulas matriciales protegidas en Excel/Sheets, decks Pirámide de Minto 16:9 y guías PDF"
+    ],
+    "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/88a976a2-f0e5-4e8e-a954-516767c7fed5?embed=1",
+    "guideUrl": "",
+    "previewImg": "/images/recursos/mega-bundle-preview-es.png"
+  },
   "estrategia": {
     "id": "suite-01",
     "title": "Pack Suite 1: Estrategia Corporativa & MBA",
@@ -1324,7 +1371,7 @@ Detalles ℹ️
     ],
     "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/ee578b8e-29d6-4361-ba19-4b0b5abfd89a?embed=1",
     "guideUrl": "",
-    "previewImg": ""
+    "previewImg": "/images/recursos/suite-03-preview-es.png"
   },
   "software": {
     "id": "suite-sdd",
@@ -1690,7 +1737,7 @@ Detalles ℹ️
       "Guía PDF sobre optimización de capital circulante y prevención de roturas"
     ],
     "checkoutUrl": "https://datalaria.lemonsqueezy.com/checkout/buy/513e5cad-9f9f-4b53-a435-b511a846d79e?embed=1",
-    "guideUrl": null,
+    "guideUrl": "/es/posts/calculadora-stock-seguridad-rop/",
     "previewImg": "/images/recursos/stock-preview-es.png"
   },
     {
@@ -2017,7 +2064,7 @@ Detalles ℹ️
     if (kit.status === 'available') {
       buyBtn.href = kit.checkoutUrl;
       buyBtn.className = 'btn-kit-buy lemonsqueezy-button';
-      buyBtn.textContent = kit.id.startsWith('suite') ? `Descargar Suite • ${kit.price}` : `Descargar Kit • ${kit.price}`;
+      buyBtn.textContent = kit.id === 'mega-bundle' ? `Descargar Mega Bundle • ${kit.price}` : (kit.id.startsWith('suite') ? `Descargar Suite • ${kit.price}` : `Descargar Kit • ${kit.price}`);
       buyBtn.style.display = 'inline-flex';
       buyBtn.onclick = null;
     } else {

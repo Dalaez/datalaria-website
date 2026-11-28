@@ -7,6 +7,12 @@ categories: ["Estrategia Corporativa", "Toma de Decisiones", "Gestión de Proyec
 tags: ["Executive Decision Packs", "Mega Bundle", "Comité de Dirección", "C-Level", "Pirámide de Minto", "Modelos Cuantitativos", "Excel", "PowerPoint", "Asignación de Capital", "Gobernanza Corporativa"]
 description: "Del cálculo cuantitativo a la aprobación del Board. Guía maestra sobre la arquitectura de 3 capas, las 13 herramientas ejecutivas y el estándar de decisión de alta dirección."
 summary: "Las decisiones corporativas más críticas colapsan con frecuencia en la última milla: presentaciones cualitativas llenas de listas estáticas, sesgos de jerarquía (HiPPO) y debates políticos desconectados de las finanzas. En este artículo maestro analizamos la arquitectura de los Executive Decision Packs de Datalaria: un ecosistema unificado de 13 herramientas cuantitativas divididas en 3 suites (Estrategia MBA, Toma de Decisiones y Control Operativo PMBOK) que transforman el juicio intuitivo en modelos financieros auditables, decks C-Level bajo la Pirámide de Minto y mandatos vinculantes listos para el Comité de Dirección."
+cover:
+  image: "cover.png"
+  alt: "Executive Decision Packs: El Ecosistema Cuantitativo de 3 Suites y 13 Herramientas para Comités de Dirección"
+  caption: "Mega Bundle Executive Suite · 3 Suites, 13 Modelos Cuantitativos en 3 Capas (Excel/Sheets, PowerPoint 16:9 Minto y Guías PDF)"
+  relative: true
+images: ["cover.png", "preview-pack.png"]
 translationKey: "executive-decision-packs-framework"
 ---
 
@@ -16,54 +22,140 @@ La sala de juntas se llena de presentaciones de más de setenta diapositivas rep
 
 Esta patología se denomina **la Paradoja de la Última Milla Ejecutiva**: *el mejor modelo cuantitativo resulta estéril si sus conclusiones no pueden ser sintetizadas, defendidas y votadas de forma inequívoca en un entorno de alta dirección*.
 
-Para erradicar de raíz esta fricción, en Datalaria formalizamos el ecosistema de **Executive Decision Packs**: un estándar integral de 13 herramientas cuantitativas agrupadas en 3 suites metodológicas que cubren el ciclo corporativo completo, desde el diagnóstico del entorno competitivo hasta el control operativo de proyectos de inversión.
+Para erradicar de raíz esta fricción, en Datalaria consolidamos el ecosistema **Executive Decision Packs**: un estándar integral de **13 herramientas cuantitativas agrupadas en 3 suites metodológicas** ([Estrategia Corporativa MBA](/es/posts/estrategia-corporativa-mba-framework-cuantitativo/), [Toma de Decisiones & Priorización](/es/posts/toma-decisiones-priorizacion-framework-cuantitativo/) y [Control Operativo & PMBOK](/es/posts/control-operativo-pmbok-framework-cuantitativo/)) que cubren el ciclo corporativo completo, desde el diagnóstico competitivo hasta el control operativo y financiero de la ejecución.
+
+{{< product-card
+  variant="compact"
+  title="MEGA BUNDLE TOTAL: Executive PM & Strategy Suite (3 Suites · 13 Packs)"
+  price="39€"
+  original_price="82€"
+  badge="Ahorro >52% • Colección Completa C-Level"
+  icon="👑"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/88a976a2-f0e5-4e8e-a954-516767c7fed5?embed=1"
+  button_text="Obtener Mega Bundle Completo"
+  details_target="#executive-pack"
+  details_text="Ver desglose y captura de las 3 Suites ↓"
+  deliverables="26 Modelos Excel + Sheets (ES+EN) | 26 Decks PPTX 16:9 | 13 Guías PDF (ES+EN)"
+>}}
+Las 3 Suites ejecutivas reunidas en un único arsenal descargable: **Suite 01 Estrategia MBA** (5 packs), **Suite 02 Toma de Decisiones** (3 packs) y **Suite 03 Control Operativo PMBOK** (5 packs). Edición bilingüe dual en español e inglés.
+{{< /product-card >}}
 
 ---
 
-## 1. El Ecosistema Integrado: Arquitectura de las 3 Suites
+## 1. ¿Qué son los Executive Decision Packs? Guía Desde Cero, las 3 Suites y su Interrelación
 
-En la práctica empresarial convencional, las herramientas de gestión se enseñan y se aplican como silos aislados: el planificador estratégico trabaja con matrices de cartera en un archivo independiente; el comité de arquitectura o compras evalúa proveedores mediante hojas de cálculo caseras; y los gestores de proyectos controlan hitos y costes en herramientas desconectadas del presupuesto financiero central.
+### 1.1. Para Empezar Desde Cero: Qué Resuelve Este Ecosistema y Descripción de las 3 Suites
 
-El ecosistema de **Executive Decision Packs** rompe esta fragmentación estableciendo un flujo sistémico continuo donde la salida de cada disciplina calibra matemáticamente los parámetros de la siguiente:
+Si nunca has trabajado en consultoría estratégica, en una Oficina de Proyectos (**PMO**) ni en un Comité de Inversiones, conviene empezar por una idea sencilla: **dirigir una empresa o un área crítica exige resolver tres preguntas distintas en orden estricto**:
 
-{{< mermaid >}}
+1. **¿Dónde debemos competir e invertir nuestro dinero?** *(Estrategia Corporativa — Suite 01)*
+2. **¿Qué proyectos, proveedores o funcionalidades elegimos primero y si son rentables?** *(Toma de Decisiones — Suite 02)*
+3. **¿Cómo garantizamos que lo aprobado se ejecute a tiempo, dentro de presupuesto y sin roturas de stock?** *(Control Operativo — Suite 03)*
+
+La mayoría de los equipos fracasa porque intenta responder estas preguntas con documentos de texto improvisados o hojas de cálculo aisladas. Los **Executive Decision Packs** convierten cada una de esas 3 etapas en **modelos matemáticos auditables en Excel/Sheets, presentaciones ejecutivas en PowerPoint 16:9 y guías metodológicas en PDF**:
+
+#### 🏛️ Suite 01 · Estrategia Corporativa & MBA (5 Herramientas)
+*(Explora la guía pilar completa: [Estrategia Corporativa Cuantitativa: El Framework Integral de 5 Pasos](/es/posts/estrategia-corporativa-mba-framework-cuantitativo/))*
+
+Diseñada para responder qué está ocurriendo fuera de la empresa, qué tan rentable es el sector y dónde asignar el presupuesto anual de inversión (*CAPEX*):
+
+1. **[Matriz PESTEL Cuantitativa](/es/posts/matriz-pestel-cuantitativa/):** Evalúa factores Políticos, Económicos, Sociales, Tecnológicos, Ecológicos y Legales midiendo **Severidad ($S$)** y **Volatilidad ($V$)** para saber cuánto beneficio (*EBITDA*) está expuesto a shocks externos.
+2. **[5 Fuerzas de Porter Ponderadas](/es/posts/5-fuerzas-porter-cuantitativas/):** Mide con 25 subcriterios la presión de competidores, clientes, proveedores, nuevos entrantes y sustitutos frente a la fortaleza del foso defensivo propio (*Economic Moat*).
+3. **[DAFO Cuantitativo & Matriz CAME](/es/posts/dafo-cuantitativo-matriz-came/):** Sustituye los *post-its* subjetivos por un vector cartesiano $\vec{V}(X,Y)$ que determina si la empresa debe atacar, reorientarse, defenderse o recortar costes, y genera el plan de acción CAME.
+4. **[Matriz BCG Dinámica](/es/posts/matriz-bcg-dinamica/):** Clasifica productos o divisiones (*Estrellas, Vacas Lecheras, Interrogantes, Perros*) calculando si la caja generada por las divisiones maduras basta para financiar el crecimiento sin endeudarse.
+5. **[Matriz McKinsey / GE 3×3](/es/posts/matriz-mckinsey-ge/):** Cruza atractivo del sector y fuerza competitiva en 9 cuadrantes para dictar exactamente cuánto *CAPEX* recibe cada unidad de negocio (*Invertir, Seleccionar o Cosechar*).
+
+#### ⚖️ Suite 02 · Toma de Decisiones & Priorización (3 Herramientas)
+*(Explora la guía pilar completa: [Toma de Decisiones Racional & Priorización: El Framework de 3 Niveles](/es/posts/toma-decisiones-priorizacion-framework-cuantitativo/))*
+
+Diseñada para filtrar opciones técnicas, ordenar el trabajo de los equipos y demostrar financieramente ante el CFO que una iniciativa supera el coste de capital:
+
+6. **[Matriz DAR Cuantitativa (CMMI)](/es/posts/matriz-dar-cuantitativa/):** Sirve para elegir proveedor, ERP o arquitectura tecnológica. Aplica **filtros veto binarios** (si incumple un requisito obligatorio como ISO 27001 o presupuesto máximo, queda fuera al instante) antes de puntuar las opciones válidas.
+7. **[Matriz RICE & ICE de Priorización Ágil](/es/posts/matriz-rice-ice-priorizacion/):** Ordena iniciativas de producto por alcance, impacto, confianza y esfuerzo, trazando una **línea de corte** según la capacidad real disponible de los equipos (*squads*).
+8. **[Business Case Financiero (VAN, TIR & Tornado)](/es/posts/business-case-financiero-van-tir/):** Modela flujos de caja libre a 3–5 años frente al coste de capital (*WACC*), calcula **VAN, TIR y Payback descontado**, y somete las hipótesis a pruebas de estrés en un **gráfico Tornado**.
+
+#### ⚙️ Suite 03 · Control Operativo & Métricas PMBOK (5 Herramientas)
+*(Explora la guía pilar completa: [Control Operativo & PMBOK Cuantitativo: El Framework de 5 Pilares](/es/posts/control-operativo-pmbok-framework-cuantitativo/))*
+
+Diseñada para gobernar la ejecución diaria una vez aprobado el proyecto, protegiendo personas, riesgos, plazos, costes e inventarios:
+
+9. **[Matriz RACI Cuantitativa con Balance de Carga](/es/posts/matriz-raci-balance-carga/):** Impone que cada tarea tenga **un único responsable final (`Accountable = 1`)** y calcula la saturación en horas (*FTE*) de cada perfil para evitar cuellos de botella y *burnout*.
+10. **[Matriz de Riesgos & AMFE / FMEA](/es/posts/matriz-riesgos-amfe-fmea/):** Puntúa cada modo potencial de fallo por **Severidad ($S$), Ocurrencia ($O$) y Detección ($D$)** para priorizar controles preventivos por su retorno económico (*CER*).
+11. **[Estimación PERT de 3 Puntos Estocástica](/es/posts/estimacion-pert-3-puntos/):** Sustituye fechas optimistas únicas por tres escenarios (*Optimista, Más Probable, Pesimista*) bajo distribución Beta, dimensionando colchones de tiempo (*Buffers*) para cumplir plazos con 90 % o 95 % de confianza.
+12. **[Cuadro de Mando EVM / Valor Ganado (Curva S)](/es/posts/cuadro-mando-evm-valor-ganado/):** Cruza presupuesto planificado ($PV$), avance físico real ($EV$) y gasto real ($AC$) para detectar sobrecostes (*CPI*) y retrasos (*SPI*) meses antes de agotar el presupuesto.
+13. **[Calculadora de Stock de Seguridad & ROP](/es/posts/calculadora-stock-seguridad-rop/):** Calcula el inventario mínimo óptimo ($SS$), el punto de pedido ($ROP$) y el lote económico ($EOQ$) combinando variabilidad de demanda y retrasos de proveedores sin inmovilizar tesorería innecesaria.
+
+| Suite del Mega Bundle | Pregunta Central (Lenguaje Llano) | Qué Fallo Evita | Herramientas Incluidas | Guía Pilar Completa |
+| :--- | :--- | :--- | :--- | :--- |
+| **Suite 01 · Estrategia MBA** | ¿Dónde competir y cuánto invertir? | Planes cualitativos sin vínculo con ROIC o caja | PESTEL, Porter, DAFO-CAME, BCG, McKinsey 3×3 | [Ver Guía Suite 01](/es/posts/estrategia-corporativa-mba-framework-cuantitativo/) |
+| **Suite 02 · Decisiones** | ¿Qué elegimos y es rentable? | Sesgo HiPPO, *Feature Factory* y Business Cases débiles | DAR Veto, RICE/ICE, Business Case VAN/TIR | [Ver Guía Suite 02](/es/posts/toma-decisiones-priorizacion-framework-cuantitativo/) |
+| **Suite 03 · Control Operativo** | ¿Cómo entregamos sin sobrecostes ni roturas? | Burnout, retrasos crónicos, desvíos y falta de stock | RACI, AMFE, PERT, EVM Curva S, Stock ROP | [Ver Guía Suite 03](/es/posts/control-operativo-pmbok-framework-cuantitativo/) |
+
+---
+
+### 1.2. Interrelación Sistémica Entre las 3 Suites y los Artículos Previos del Ecosistema
+
+En la práctica empresarial convencional, estas disciplinas operan como silos desconectados: estrategia prepara matrices en un archivo; producto prioriza en Jira; finanzas evalúa inversiones en hojas artesanales; y operaciones controla entregas por separado. El ecosistema **Executive Decision Packs** rompe esa fragmentación estableciendo un circuito matemático cerrado:
+
+{{< mermaid image="ecosystem-architecture-flow.png" alt="Arquitectura Integrada del Ecosistema Executive Decision Packs: Suite 01 Estrategia MBA, Suite 02 Decisiones y Suite 03 Control Operativo PMBOK" >}}
 flowchart TD
-    subgraph S1 ["<b>SUITE 01 · ESTRATEGIA CORPORATIVA & MBA</b>"]
+    subgraph S1["SUITE 01 · ESTRATEGIA CORPORATIVA Y MBA"]
         direction LR
-        P1["PESTEL Cuantitativo<br/><small>Severidad & Volatilidad</small>"] --> P2["Porter 5 Fuerzas<br/><small>Atractivo & Moat</small>"]
-        P2 --> P3["DAFO-CAME Vectorial<br/><small>Postura Cartesiana</small>"]
-        P3 --> P4["BCG Dinámica<br/><small>Flujo de Caja Libre</small>"]
-        P4 --> P5["McKinsey / GE 3x3<br/><small>Asignación de CAPEX</small>"]
+        P1["PESTEL Cuantitativo\nSeveridad y Volatilidad"] --> P2["Porter 5 Fuerzas\nAtractivo y Moat"]
+        P2 --> P3["DAFO-CAME Vectorial\nPostura Cartesiana"]
+        P3 --> P4["BCG Dinámica\nFlujo de Caja Libre"]
+        P4 --> P5["McKinsey / GE 3x3\nAsignación de CAPEX"]
     end
 
-    subgraph S2 ["<b>SUITE 02 · TOMA DE DECISIONES & PRIORIZACIÓN</b>"]
+    subgraph S2["SUITE 02 · TOMA DE DECISIONES Y PRIORIZACIÓN"]
         direction LR
-        D1["Matriz DAR CMMI<br/><small>Criterios Veto & Trade-offs</small>"] --> D2["Matriz RICE / ICE<br/><small>Capacidad Neta de Squads</small>"]
-        D2 --> D3["Business Case Financiero<br/><small>VAN, TIR & Tornado</small>"]
+        D1["Matriz DAR CMMI\nCriterios Veto y Trade-offs"] --> D2["Matriz RICE / ICE\nCapacidad Neta de Squads"]
+        D2 --> D3["Business Case Financiero\nVAN, TIR y Tornado"]
     end
 
-    subgraph S3 ["<b>SUITE 03 · CONTROL OPERATIVO & PMBOK</b>"]
+    subgraph S3["SUITE 03 · CONTROL OPERATIVO Y PMBOK"]
         direction LR
-        O1["Matriz RACI<br/><small>Balance de Carga ETE</small>"] --> O2["Matriz AMFE<br/><small>NPR & Severidad Crítica</small>"]
-        O2 --> O3["PERT 3 Puntos<br/><small>Distribución Beta/Normal</small>"]
-        O3 --> O4["Cuadro EVM (Curva S)<br/><small>CPI, SPI & EAC Estocástico</small>"]
-        O4 --> O5["Stock de Seguridad & ROP<br/><small>Factor Z & Capital Circulante</small>"]
+        O1["Matriz RACI\nBalance de Carga FTE"] --> O2["Matriz AMFE\nNPR y Severidad Crítica"]
+        O2 --> O3["PERT 3 Puntos\nDistribución Beta y Buffers"]
+        O3 --> O4["Cuadro EVM Curva S\nCPI, SPI y EAC Estocástico"]
+        O4 --> O5["Stock de Seguridad ROP\nFactor Z y Circulante"]
     end
 
-    S1 -->|<b>Directrices Estratégicas & CAPEX Límite</b>| S2
-    S2 -->|<b>Iniciativas Validadas & Casos de Negocio</b>| S3
-    S3 -->|<b>Métricas de Ejecución Real vs. Baseline</b>| BR["<b>COMITÉ DE DIRECCIÓN / BOARD</b><br/>Gobernanza Unificada & Creación de Valor"]
+    S1 -->|"Directrices Estratégicas y Techo CAPEX"| S2
+    S2 -->|"Iniciativas Validadas, BAC y Proveedores"| S3
+    S3 -->|"Ejecución Real, ROIC y Caja Liberada"| BR["COMITÉ DE DIRECCIÓN / BOARD\nGobernanza Unificada, Retorno Auditado y Recalibración Anual"]
 
-    style S1 fill:#0F172A,stroke:#EF4444,stroke-width:2px,color:#FFFFFF
-    style S2 fill:#0F172A,stroke:#F59E0B,stroke-width:2px,color:#FFFFFF
-    style S3 fill:#0F172A,stroke:#10B981,stroke-width:2px,color:#FFFFFF
-    style BR fill:#1E293B,stroke:#38BDF8,stroke-width:2px,color:#FFFFFF
+    style S1 fill:#FEF2F2,stroke:#EF4444,stroke-width:2px,color:#0F172A
+    style S2 fill:#FFFBEB,stroke:#F59E0B,stroke-width:2px,color:#0F172A
+    style S3 fill:#ECFDF5,stroke:#10B981,stroke-width:2px,color:#0F172A
+    style P1 fill:#0F172A,stroke:#EF4444,stroke-width:1.5px,color:#FFFFFF
+    style P2 fill:#0F172A,stroke:#EF4444,stroke-width:1.5px,color:#FFFFFF
+    style P3 fill:#0F172A,stroke:#EF4444,stroke-width:1.5px,color:#FFFFFF
+    style P4 fill:#0F172A,stroke:#EF4444,stroke-width:1.5px,color:#FFFFFF
+    style P5 fill:#0F172A,stroke:#EF4444,stroke-width:1.5px,color:#FFFFFF
+    style D1 fill:#0F172A,stroke:#F59E0B,stroke-width:1.5px,color:#FFFFFF
+    style D2 fill:#0F172A,stroke:#F59E0B,stroke-width:1.5px,color:#FFFFFF
+    style D3 fill:#0F172A,stroke:#F59E0B,stroke-width:1.5px,color:#FFFFFF
+    style O1 fill:#0F172A,stroke:#10B981,stroke-width:1.5px,color:#FFFFFF
+    style O2 fill:#0F172A,stroke:#10B981,stroke-width:1.5px,color:#FFFFFF
+    style O3 fill:#0F172A,stroke:#10B981,stroke-width:1.5px,color:#FFFFFF
+    style O4 fill:#0F172A,stroke:#10B981,stroke-width:1.5px,color:#FFFFFF
+    style O5 fill:#0F172A,stroke:#10B981,stroke-width:1.5px,color:#FFFFFF
+    style BR fill:#1E293B,stroke:#0284C7,stroke-width:2.5px,color:#FFFFFF
 {{< /mermaid >}}
 
-Como ilustra la arquitectura, las tres suites operan de forma sinérgica:
-1. **Suite 01 (Estrategia MBA):** Define el posicionamiento macroeconómico, el foso defensivo sectorial y la distribución global del capital corporativo (*CAPEX*) entre las unidades estratégicas de negocio.
-2. **Suite 02 (Toma de Decisiones):** Filtra y prioriza las iniciativas tácticas, arquitecturas tecnológicas y proveedores clave, garantizando que cada asignación de presupuesto cuente con un caso de negocio financiero robusto con retorno auditable.
-3. **Suite 03 (Control Operativo PMBOK):** Garantiza que las inversiones aprobadas se ejecuten dentro de las restricciones de plazo, alcance, capacidad de equipo y presupuesto, controlando las desviaciones tempranas antes de que impacten en la cuenta de resultados.
+Cada artículo previo de la serie documenta una pieza exacta de esta cadena de transmisión:
+
+1. **Flujo Estrategia → Decisión ([Suite 01](/es/posts/estrategia-corporativa-mba-framework-cuantitativo/) → [Suite 02](/es/posts/toma-decisiones-priorizacion-framework-cuantitativo/)):**
+   * Los riesgos regulatorios y macroeconómicos cuantificados en [PESTEL](/es/posts/matriz-pestel-cuantitativa/) y las barreras competitivas medidas en [5 Fuerzas de Porter](/es/posts/5-fuerzas-porter-cuantitativas/) fijan los **criterios veto** obligatorios dentro de la [Matriz DAR](/es/posts/matriz-dar-cuantitativa/).
+   * Las iniciativas estratégicas ofensivas/defensivas del [DAFO-CAME](/es/posts/dafo-cuantitativo-matriz-came/) nutren el *backlog* evaluado en [RICE / ICE](/es/posts/matriz-rice-ice-priorizacion/).
+   * La capacidad de autofinanciación de la [Matriz BCG Dinámica](/es/posts/matriz-bcg-dinamica/) y los techos de inversión de [McKinsey / GE 3×3](/es/posts/matriz-mckinsey-ge/) delimitan el presupuesto máximo (*CAPEX*) que cada proyecto debe justificar en el [Business Case Financiero](/es/posts/business-case-financiero-van-tir/).
+2. **Flujo Decisión → Control Operativo ([Suite 02](/es/posts/toma-decisiones-priorizacion-framework-cuantitativo/) → [Suite 03](/es/posts/control-operativo-pmbok-framework-cuantitativo/)):**
+   * Las debilidades técnicas del proveedor o arquitectura elegida en [Matriz DAR](/es/posts/matriz-dar-cuantitativa/) pasan directamente al registro preventivo de la [Matriz AMFE / FMEA](/es/posts/matriz-riesgos-amfe-fmea/) y acotan los escenarios de duración de [PERT 3 Puntos](/es/posts/estimacion-pert-3-puntos/).
+   * Las horas de ingeniería comprometidas en la línea de corte de [RICE / ICE](/es/posts/matriz-rice-ice-priorizacion/) alimentan el balance de saturación de roles en la [Matriz RACI](/es/posts/matriz-raci-balance-carga/).
+   * El presupuesto aprobado y la curva de flujos del [Business Case Financiero](/es/posts/business-case-financiero-van-tir/) establecen literalmente el Presupuesto a la Conclusión ($BAC$) y la línea base mensual ($PV$) auditadas por el [Cuadro EVM Curva S](/es/posts/cuadro-mando-evm-valor-ganado/), coordinadas con las compras y el capital circulante de [Stock de Seguridad & ROP](/es/posts/calculadora-stock-seguridad-rop/).
+3. **Ciclo de Realimentación Operación → Estrategia ([Suite 03](/es/posts/control-operativo-pmbok-framework-cuantitativo/) ➔ [Suite 01](/es/posts/estrategia-corporativa-mba-framework-cuantitativo/)):**
+   * Las desviaciones reales de coste ($CPI$), el cumplimiento probabilístico de hitos y la liberación de capital circulante informan al Comité de Dirección para recalibrar cada ejercicio la posición de cada unidad de negocio en **BCG** y **McKinsey / GE**.
 
 ---
 
@@ -77,29 +169,22 @@ Cada uno de los 13 packs que componen el ecosistema ha sido diseñado siguiendo 
 | **Capa 2: Deck C-Level 16:9** | Microsoft PowerPoint (`.pptx`) Widescreen | Comunicación ejecutiva estructurada bajo la Pirámide de Minto con *Action Titles* y caja de decisión. | Consejeros Delegados, CFOs, Comités de Dirección |
 | **Capa 3: Guía Metodológica** | Documento PDF Ejecutivo de Alta Resolución | Fundamentación axiomática, derivaciones matemáticas y protocolo de respuesta a objeciones hostiles. | Directores de Proyecto, Consultores, Líderes de Estrategia |
 
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│                      ESTRUCTURA DE CADA HERRAMIENTA                    │
-├────────────────────────────────────────────────────────────────────────┤
-│  1. MOTOR CUANTITATIVO (Excel / Google Sheets)                         │
-│     - Celdas de entrada desbloqueadas con validación de datos estricta │
-│     - Fórmulas dinámicas protegidas (sin macros VBA vulnerables)       │
-│     - Checksum de integridad probabilística (Σ w = 1.000)              │
-│                                                                        │
-│  2. PRESENTACIÓN C-LEVEL 16:9 (PowerPoint Widescreen)                  │
-│     - Síntesis deductiva bajo la Pirámide de Minto (Barbara Minto)     │
-│     - Action Titles que declaran la conclusión del análisis            │
-│     - Boardroom Decision Gateway listo para deliberación y votación    │
-│                                                                        │
-│  3. GUÍA METODOLÓGICA & PROTOCOLO DE DEFENSA (Documento PDF)           │
-│     - Justificación de parámetros y pruebas de estrés financiero       │
-│     - Matriz de respuestas a preguntas incisivas del CFO               │
-│     - Casos prácticos resueltos basados en entornos empresariales      │
-└────────────────────────────────────────────────────────────────────────┘
-```
+{{< mermaid image="tool-3-layer-anatomy.png" alt="Estructura en 3 Capas de Cada Herramienta: Motor Cuantitativo Excel, Deck C-Level 16:9 Pirámide de Minto y Guía Metodológica PDF" >}}
+flowchart LR
+    IN["ENTRADAS AUDITADAS\nCeldas desbloqueadas\ny validación estricta"] --> C1["CAPA 1 · MOTOR CUANTITATIVO\nExcel (.xlsx) y Google Sheets\nFórmulas dinámicas sin VBA\nChecksum de integridad Sum w = 1.00"]
+    C1 --> C2["CAPA 2 · DECK C-LEVEL 16:9\nPowerPoint Widescreen\nPirámide de Minto y Action Titles\nBoardroom Decision Gateway"]
+    C2 --> C3["CAPA 3 · GUÍA METODOLÓGICA PDF\nEcuaciones y pruebas de estrés\nMatriz de defensa ante el CFO\nCasos prácticos resueltos"]
+    C3 --> OUT["MANDATO VINCULANTE\nVotación informada en\nComité de Dirección"]
+
+    style IN fill:#1E293B,stroke:#64748B,stroke-width:2px,color:#F8FAFC
+    style C1 fill:#0F172A,stroke:#10B981,stroke-width:2px,color:#FFFFFF
+    style C2 fill:#0F172A,stroke:#38BDF8,stroke-width:2px,color:#FFFFFF
+    style C3 fill:#0F172A,stroke:#A855F7,stroke-width:2px,color:#FFFFFF
+    style OUT fill:#1E293B,stroke:#F59E0B,stroke-width:2px,color:#F8FAFC
+{{< /mermaid >}}
 
 ### 2.1. El Motor Cuantitativo: Fórmulas Dinámicas y Cero Macros
-A diferencia de las plantillas comerciales genéricas, que a menudo incorporan complejas macros VBA susceptibles de ser bloqueadas por las políticas de ciberseguridad corporativa, los modelos de Datalaria están formulados íntegramente mediante funciones matriciales dinámicas nativas (`LAMBDA`, `XLOOKUP`, `LET`, `SUMPRODUCT`, `NORM.S.INV`). Todas las celdas de cálculo crítico se encuentran bloqueadas con contraseñas documentadas para evitar corrupciones involuntarias, mientras que las variables de entrada disponen de reglas de validación que impiden la inserción de datos incoherentes.
+A diferencia de las plantillas comerciales genéricas, que a menudo incorporan complejas macros VBA susceptibles de ser bloqueadas por las políticas de ciberseguridad corporativa, los modelos de Datalaria están formulados íntegramente mediante funciones matriciales dinámicas nativas (`LAMBDA`, `XLOOKUP`, `LET`, `SUMPRODUCT`, `NORM.S.INV`). Todas las celdas de cálculo crítico se encuentran protegidas para evitar corrupciones involuntarias, mientras que las variables de entrada permanecen desbloqueadas y con reglas de validación que impiden la inserción de datos incoherentes.
 
 Cada hoja de cálculo incorpora un módulo de **auditoría de integridad**: si las ponderaciones de un análisis multicriterio no suman exactamente el $100\%$ ($\sum w_i = 1.00$), o si un presupuesto de inversión no concuerda con las fuentes de financiación, el modelo alerta visualmente mediante formato condicional en color carmesí.
 
@@ -118,7 +203,7 @@ El rol del Director Financiero y de los consejeros independientes es ejercer un 
 
 ## 3. Catálogo Sinóptico de las 13 Herramientas Estratégicas
 
-A continuación se resume el alcance metodológico de las 13 herramientas del ecosistema, indicando la variable matemática que resuelven y el entregable exacto que proporcionan al equipo directivo:
+A continuación se resume el alcance matemático de las 13 herramientas del ecosistema, indicando la variable nuclear que resuelven y el entregable exacto que proporcionan al equipo directivo, junto con el enlace directo a su suite y monografía técnica:
 
 ### Tabla Maestra del Ecosistema Executive Decision Packs
 
@@ -132,7 +217,7 @@ A continuación se resume el alcance metodológico de las 13 herramientas del ec
 | [**Suite 02**](/es/posts/toma-decisiones-priorizacion-framework-cuantitativo/) | [**Matriz DAR CMMI**](/es/posts/matriz-dar-cuantitativa/) | Ponderación multicriterio con filtro binario ($C_{\text{veto}} \in \{0, 1\}$) | ¿Qué alternativa técnica o proveedor maximiza el valor eliminando opciones inviables? | Tabla de Selección con Veto y Matriz de Trade-offs Directivos |
 | [**Suite 02**](/es/posts/toma-decisiones-priorizacion-framework-cuantitativo/) | [**Matriz RICE / ICE**](/es/posts/matriz-rice-ice-priorizacion/) | $\text{Score} = \frac{R \cdot I \cdot C}{E} \quad\text{vs.}\quad K_{\text{squad}}$ | ¿Qué iniciativas de producto deben construirse en el próximo sprint según la capacidad de los equipos? | Ranking de Backlog Ponderado vs. Capacidad Neta Disponible |
 | [**Suite 02**](/es/posts/toma-decisiones-priorizacion-framework-cuantitativo/) | [**Business Case Financiero**](/es/posts/business-case-financiero-van-tir/) | $\text{VAN} = \sum \frac{\text{FCF}_t}{(1+k)^t} - I_0, \; \text{TIR}, \; \text{Payback}$ | ¿El proyecto genera un retorno superior al coste de capital corporativo ($\text{WACC}$) bajo estrés? | Dashboard Financiero Integral y Gráfico de Sensibilidad Tornado |
-| [**Suite 03**](/es/posts/control-operativo-pmbok-framework-cuantitativo/) | [**Matriz RACI con Carga**](/es/posts/matriz-raci-balance-carga/) | $\text{Carga}_j = \sum_{i} \alpha_k \cdot D_i \quad (\text{Capacidad } \le 1.00)$ | ¿Existen cuellos de botella directivos o roles con sobrecarga que amenacen la entrega? | Mapa de Gobernanza y Balance de Capacidad ETE por Perfil |
+| [**Suite 03**](/es/posts/control-operativo-pmbok-framework-cuantitativo/) | [**Matriz RACI con Carga**](/es/posts/matriz-raci-balance-carga/) | $\text{Carga}_j = \sum_{i} \alpha_k \cdot D_i \quad (\text{Capacidad } \le 1.00)$ | ¿Existen cuellos de botella directivos o roles con sobrecarga que amenacen la entrega? | Mapa de Gobernanza y Balance de Capacidad FTE por Perfil |
 | [**Suite 03**](/es/posts/control-operativo-pmbok-framework-cuantitativo/) | [**Matriz AMFE de Riesgos**](/es/posts/matriz-riesgos-amfe-fmea/) | $\text{NPR} = S \times O \times D \quad (S \ge 9 \rightarrow \text{Crítico})$ | ¿Cuáles son los modos de fallo de mayor severidad y qué controles reducen su probabilidad? | Registro Cuantitativo de Riesgos y Curva de Reducción de Severidad |
 | [**Suite 03**](/es/posts/control-operativo-pmbok-framework-cuantitativo/) | [**Estimación PERT 3 Puntos**](/es/posts/estimacion-pert-3-puntos/) | $\mu = \frac{O + 4M + P}{6}, \quad \sigma = \frac{P - O}{6}$ | ¿Cuál es la probabilidad matemática real de cumplir el hito de entrega comprometido con el cliente? | Cronograma Probabilístico Beta y Campana de Confianza al 95% |
 | [**Suite 03**](/es/posts/control-operativo-pmbok-framework-cuantitativo/) | [**Cuadro EVM (Curva S)**](/es/posts/cuadro-mando-evm-valor-ganado/) | $\text{CPI} = \frac{\text{EV}}{\text{AC}}, \quad \text{SPI} = \frac{\text{EV}}{\text{PV}}, \quad \text{EAC}$ | ¿El proyecto terminará dentro del coste y plazo previstos, o cuánto sobrecoste acumulará al cierre? | Dashboard de Valor Ganado con Proyección EAC y Curva S |
@@ -142,9 +227,9 @@ A continuación se resume el alcance metodológico de las 13 herramientas del ec
 
 Para comprender la potencia del ecosistema interconectado, consideremos una corporación industrial que evalúa lanzar una nueva plataforma de software predictivo IoT:
 
-1. **Fase Estratégica (Suite 01):** La **Matriz PESTEL** identifica una oportunidad regulatoria por descarbonización con severidad alta ($S=4.5$). El análisis de **5 Fuerzas de Porter** confirma barreras de entrada sólidas gracias a patentes propias. En la **Matriz McKinsey / GE**, la unidad IoT se ubica en la Zona Verde de máxima prioridad de inversión, asignándole un techo de CAPEX trienal de **6.0 M€**.
-2. **Fase de Selección y Caso de Negocio (Suite 02):** Para seleccionar la arquitectura en la nube de la plataforma, el comité técnico aplica la **Matriz DAR con Criterios Veto**, descartando a un proveedor que no cumple la certificación ISO 27001 requerida por la normativa. A continuación, el backlog de funcionalidades se prioriza con la **Matriz RICE** en función de la capacidad neta de los squads de ingeniería. Con las inversiones y flujos modelados, el **Business Case Financiero** proyecta un $\text{VAN} = 2.8\text{ M€}$ con una $\text{TIR} = 26.4\%$, superando holgadamente el coste de capital corporativo ($\text{WACC} = 8.5\%$) incluso en el escenario más pesimista del gráfico Tornado.
-3. **Fase de Control Operativo (Suite 03):** La gobernanza del despliegue se blinda con la **Matriz RACI**, equilibrando la dedicación del equipo para evitar que el arquitecto principal supere el 100% de carga. Los riesgos técnicos se mitigan con la **Matriz AMFE**, activando planes de contingencia para modos de fallo con $\text{NPR} > 120$. La fecha de lanzamiento se estima de forma estocástica mediante **PERT 3 Puntos** (95% de confianza a 14 semanas). Finalmente, el avance semanal se monitoriza mediante **EVM Curva S**, garantizando que el índice de eficiencia de costes permanezca en $\text{CPI} \ge 1.02$.
+1. **Fase Estratégica ([Suite 01](/es/posts/estrategia-corporativa-mba-framework-cuantitativo/)):** La **Matriz PESTEL** identifica una oportunidad regulatoria por descarbonización con severidad alta ($S=4.5$). El análisis de **5 Fuerzas de Porter** confirma barreras de entrada sólidas gracias a patentes propias. En la **Matriz McKinsey / GE**, la unidad IoT se ubica en la Zona Verde de máxima prioridad de inversión, asignándole un techo de CAPEX trienal de **6.0 M€**.
+2. **Fase de Selección y Caso de Negocio ([Suite 02](/es/posts/toma-decisiones-priorizacion-framework-cuantitativo/)):** Para seleccionar la arquitectura en la nube de la plataforma, el comité técnico aplica la **Matriz DAR con Criterios Veto**, descartando a un proveedor que no cumple la certificación ISO 27001 requerida por la normativa. A continuación, el backlog de funcionalidades se prioriza con la **Matriz RICE** en función de la capacidad neta de los squads de ingeniería. Con las inversiones y flujos modelados, el **Business Case Financiero** proyecta un $\text{VAN} = 2.8\text{ M€}$ con una $\text{TIR} = 26.4\%$, superando holgadamente el coste de capital corporativo ($\text{WACC} = 8.5\%$) incluso en el escenario más pesimista del gráfico Tornado.
+3. **Fase de Control Operativo ([Suite 03](/es/posts/control-operativo-pmbok-framework-cuantitativo/)):** La gobernanza del despliegue se blinda con la **Matriz RACI**, equilibrando la dedicación del equipo para evitar que el arquitecto principal supere el 100% de carga. Los riesgos técnicos se mitigan con la **Matriz AMFE**, activando planes de contingencia para modos de fallo con $\text{NPR} > 120$. La fecha de lanzamiento se estima de forma estocástica mediante **PERT 3 Puntos** (95% de confianza a 14 semanas). Finalmente, el avance semanal se monitoriza mediante **EVM Curva S**, garantizando que el índice de eficiencia de costes permanezca en $\text{CPI} \ge 1.02$.
 
 Esta continuidad metodológica elimina por completo las fracturas entre la estrategia teórica, la selección de proyectos y la ejecución real.
 
@@ -154,21 +239,20 @@ Esta continuidad metodológica elimina por completo las fracturas entre la estra
 
 La adopción de modelos estandarizados de decisión no es únicamente un ejercicio de rigor analítico; produce un impacto financiero y operativo medible en la gobernanza de las organizaciones:
 
-```
-                      MÉTRICAS DE IMPACTO DIRECTIVO
-                      
-   TIEMPO DE DELIBERACIÓN            EFICIENCIA DE HONORARIOS
-   EN COMITÉS DIRECTIVOS             EN CONSULTORÍA ESTRATÉGICA
-        -70%                                 >95%
-   De semanas de debate a             Sustitución de entregables
-   decisiones en 30 minutos           genéricos de agencias externas
-   
-   PROYECTOS CON SOBRECOSTE           DESVIACIONES DE CRONOGRAMA
-   DETECTADOS TEMPRANAMENTE           EN ENTREGAS CRÍTICAS
-        +3.5x                                -45%
-   Alertas predictivas vía            Estimaciones probabilísticas
-   EVM antes de cerrar el mes         calibradas con PERT 3 Puntos
-```
+{{< mermaid image="executive-impact-metrics.png" alt="Métricas de Impacto Directivo: -70% tiempo en comités, >95% ahorro en consultoría, +3.5x detección temprana EVM y -45% desvíos PERT" >}}
+flowchart TD
+    HUB["IMPACTO DIRECTIVO DE LOS EXECUTIVE DECISION PACKS"]
+    HUB --> M1["-70% Tiempo en Comités\nDe semanas de debate a\ndecisiones en 30 minutos"]
+    HUB --> M2[">95% Ahorro en Consultoría\nSustituye entregables genéricos\ny retiene el motor in-house"]
+    HUB --> M3["+3.5x Detección Temprana\nAlertas predictivas vía EVM\nantes del cierre contable"]
+    HUB --> M4["-45% Desvíos de Cronograma\nEstimación estocástica Beta\ncalibrada con PERT 3 Puntos"]
+
+    style HUB fill:#0F172A,stroke:#38BDF8,stroke-width:2.5px,color:#FFFFFF
+    style M1 fill:#0F172A,stroke:#10B981,stroke-width:2px,color:#FFFFFF
+    style M2 fill:#0F172A,stroke:#3B82F6,stroke-width:2px,color:#FFFFFF
+    style M3 fill:#0F172A,stroke:#F59E0B,stroke-width:2px,color:#FFFFFF
+    style M4 fill:#0F172A,stroke:#A855F7,stroke-width:2px,color:#FFFFFF
+{{< /mermaid >}}
 
 ### 4.1. Desplazamiento de Minutas de Consultoría Externa
 Una asignación típica encargada a una firma de consultoría estratégica de primer nivel (*McKinsey, Boston Consulting Group, Bain*) para evaluar una cartera corporativa o estructurar un caso de negocio de transformación digital oscila habitualmente entre los **60.000 € y los 180.000 €**. En un porcentaje abrumador de casos, el entregable final consiste en una recopilación de diapositivas estáticas cuya lógica analítica desaparece cuando el equipo de consultores abandona las oficinas del cliente.
@@ -185,31 +269,42 @@ La imposición de un **filtro estocástico previo** transforma por completo la d
 
 ---
 
-## 5. El Mega Bundle: Acceso Inmediato a la Colección Completa
+<div id="executive-pack"></div>
 
-Para aquellos directivos, directores de oficina de proyectos (PMO), directores financieros, ingenieros líderes y consultores que precisen implementar este estándar de trabajo en sus organizaciones sin necesidad de invertir cientos de horas de diseño y formulación, Datalaria ha consolidado la colección íntegra en el **Mega Bundle: Executive PM & Strategy Suite**.
+## 5. Cierre Comercial: El Mega Bundle Total (3 Suites · 13 Packs)
+
+Para directivos, directores de oficina de proyectos (PMO), directores financieros, ingenieros líderes y consultores que precisen implementar este estándar de trabajo completo en sus organizaciones sin invertir cientos de horas de diseño y formulación, Datalaria ha consolidado las **3 Suites completas (13 herramientas en versión dual ES + EN = 78 archivos ejecutivos)** en el **Mega Bundle: Executive PM & Strategy Suite**.
+
+![Vista Previa del Mega Bundle Total: Las 3 Suites Ejecutivas (Suite 01 Estrategia MBA, Suite 02 Toma de Decisiones y Suite 03 Control Operativo PMBOK)](preview-pack.png "Captura real compuesta del Mega Bundle Total: las 3 Suites (13 Executive Decision Packs en Excel, PowerPoint 16:9 y Guías PDF en español e inglés)")
 
 > 💼 **Centro Oficial de Recursos:**  
-> Puedes consultar la ficha técnica individual de cada herramienta, descargar versiones de prueba y explorar las colecciones por suite en el [**Centro de Recursos Ejecutivos de Datalaria**](/es/recursos/).
+> Puedes consultar la ficha técnica individual de cada herramienta, inspeccionar sus vistas previas y explorar las colecciones por suite en el [**Centro de Recursos Ejecutivos de Datalaria**](/es/recursos/#mega-bundle).
 
 {{< bundle-card
   title="MEGA BUNDLE: Executive PM & Strategy Suite"
-  subtitle="El arsenal completo para directores, consultores y project managers: las 13 herramientas cuantitativas con sus modelos protegidos en Excel/Sheets, presentaciones C-Level en PowerPoint 16:9 y guías metodológicas en PDF."
+  subtitle="El arsenal completo para directores, consultores y project managers: las 3 Suites y 13 herramientas cuantitativas con 26 modelos protegidos en Excel/Sheets (ES+EN), 26 presentaciones C-Level en PowerPoint 16:9 y 26 guías metodológicas en PDF."
   price="39€"
   original_price="82€"
   discount_badge="Ahorro > 52%"
-  badge="Colección Completa C-Level • Acceso Vitalicio"
+  badge="Colección Completa 3 Suites • Acceso Vitalicio"
   icon="👑"
-  items="Suite 01: PESTEL Cuantitativo con Severidad & Volatilidad|Suite 01: 5 Fuerzas de Porter Ponderadas con Gráfico Radar|Suite 01: DAFO Cuantitativo Vectorial & Matriz CAME|Suite 01: Matriz BCG Dinámica con Balance de Cash Flow|Suite 01: Matriz McKinsey / GE 3x3 de Asignación de Capital|Suite 02: Matriz DAR CMMI con Criterios Veto Binarios|Suite 02: Matriz RICE & ICE con Capacidad Neta de Squads|Suite 02: Business Case Financiero con VAN, TIR & Tornado|Suite 03: Matriz RACI con Balance de Capacidad ETE|Suite 03: Matriz AMFE con Número de Prioridad de Riesgo|Suite 03: Estimación PERT 3 Puntos con Distribución Beta|Suite 03: Cuadro de Mando EVM (Curva S) con Proyección EAC|Suite 03: Calculadora de Stock de Seguridad & ROP Estadístico"
+  items="Suite 01: PESTEL Cuantitativo con Severidad & Volatilidad|Suite 01: 5 Fuerzas de Porter Ponderadas con Gráfico Radar|Suite 01: DAFO Cuantitativo Vectorial & Matriz CAME|Suite 01: Matriz BCG Dinámica con Balance de Cash Flow|Suite 01: Matriz McKinsey / GE 3x3 de Asignación de Capital|Suite 02: Matriz DAR CMMI con Criterios Veto Binarios|Suite 02: Matriz RICE & ICE con Capacidad Neta de Squads|Suite 02: Business Case Financiero con VAN, TIR & Tornado|Suite 03: Matriz RACI con Balance de Capacidad FTE|Suite 03: Matriz AMFE con Número de Prioridad de Riesgo|Suite 03: Estimación PERT 3 Puntos con Distribución Beta|Suite 03: Cuadro de Mando EVM (Curva S) con Proyección EAC|Suite 03: Calculadora de Stock de Seguridad & ROP Estadístico"
   checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/88a976a2-f0e5-4e8e-a954-516767c7fed5"
   button_text="Descargar Suite Completa (.ZIP) • 39€"
   highlight="true"
 >}}
 
+### Contenido Exhaustivo Incluido en el Paquete `.ZIP` Dual (`ES + EN`)
+Al adquirir el Mega Bundle recibirás acceso directo inmediato al archivo comprimido con las carpetas oficiales `01_VERSION_ESPANOL/` y `02_ENGLISH_VERSION/` (y enlaces directos a Google Sheets):
+
+* **Suite 01 · Estrategia Corporativa & MBA (5 Packs — 10 Excel + 10 PPTX 16:9 + 10 PDFs ES/EN):** PESTEL Cuantitativo, 5 Fuerzas de Porter Ponderadas, DAFO-CAME Vectorial, Matriz BCG Dinámica y Matriz McKinsey / GE 3×3.
+* **Suite 02 · Toma de Decisiones & Priorización (3 Packs — 6 Excel + 6 PPTX 16:9 + 6 PDFs ES/EN):** Matriz DAR CMMI con Criterios Veto, Matriz RICE & ICE Ágil con Capacidad de Squads y Business Case Financiero DCF (VAN, TIR, WACC, Payback y Tornado).
+* **Suite 03 · Control Operativo & PMBOK (5 Packs — 10 Excel + 10 PPTX 16:9 + 10 PDFs ES/EN):** Matriz RACI Cuantitativa con Balance FTE, Matriz de Riesgos AMFE/FMEA (ISO 31000 / AIAG-VDA), Estimación PERT 3 Puntos Estocástica, Cuadro de Mando EVM (Curva S / EAC) y Calculadora de Stock de Seguridad & ROP.
+
 ### Garantías Corporativas y Soporte B2B
-* **Descarga Directa Inmediata (.ZIP):** Tras completar el proceso de compra seguro a través de la pasarela Lemon Squeezy (Merchant of Record), el comprador recibe acceso inmediato y sin esperas a la totalidad de los archivos fuente desbloqueados.
+* **Descarga Directa Inmediata (.ZIP):** Tras completar el proceso de compra seguro a través de la pasarela Lemon Squeezy (Merchant of Record), el comprador recibe acceso inmediato y sin esperas a la totalidad de los archivos fuente en español e inglés.
 * **Factura B2B con IVA Desglosado:** El sistema emite automáticamente facturas comerciales conformes a la normativa fiscal internacional, admitiendo NIF/CIF corporativo o número de operador intracomunitario (VIES) para la desgravación del gasto corporativo.
-* **Compatibilidad Universal:** Modelos probados y compatibles tanto con Microsoft Excel (versiones 2016, 2019, 2021 y Microsoft 365) como con Google Sheets, así como archivos de presentación optimizados para Microsoft PowerPoint y Keynote.
+* **Compatibilidad Universal:** Modelos probados y compatibles tanto con Microsoft Excel (versiones 2016, 2019, 2021 y Microsoft 365) como con Google Sheets, sin macros VBA bloqueadas, y presentaciones optimizadas para Microsoft PowerPoint y Apple Keynote.
 
 ---
 

@@ -158,3 +158,14 @@ Como diría [Deming](/es/posts/deming/): *«El aprendizaje no es obligatorio. Ta
 * [**Datalaria**: Construyendo el Blog — Decisiones de Arquitectura](/es/posts/datalaria-blog/)
 * [**Datalaria**: La Economía Oculta de la IA — El Coste Real del Stack](/es/posts/economia_oculta_ia/)
 * [**Datalaria**: Serie Autopilot — 9 Partes de Ingeniería Agéntica](/es/posts/ia_agents_part1/)
+
+---
+
+### 📊 Automatiza tu Propio Stack Editorial con Datalaria Pulse
+
+¿Quieres gestionar un flujo de contenidos y publicaciones con el mismo rigor de ingeniería y trazabilidad de este stack? Prueba gratis el panel interactivo de analítica y gobernanza de contenidos y descarga el paquete profesional de migración y control:
+
+* **Herramienta Interactiva:** Explora [Datalaria Pulse en el catálogo de Apps](/es/apps/pulse/).
+* **Kit Descargable:** Obtén la plantilla de control editorial, escáner de repositorio y libro de trabajo en [Datalaria Pulse: Content Ops & Notion Migration Kit (19 €)](/es/recursos/#pack-pulse).
+
+{{< app-ref slug="pulse" >}}

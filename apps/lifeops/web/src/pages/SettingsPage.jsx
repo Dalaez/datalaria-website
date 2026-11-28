@@ -104,6 +104,8 @@ export function SettingsPage() {
               </label>
               <input
                 type="password"
+                name="new-password"
+                autoComplete="new-password"
                 required
                 placeholder={t('settings.newPasswordPlaceholder')}
                 value={newPassword}
@@ -123,6 +125,8 @@ export function SettingsPage() {
             <div>
               <input
                 type="password"
+                name="confirm-password"
+                autoComplete="new-password"
                 required
                 placeholder={t('settings.confirmPasswordPlaceholder')}
                 value={confirmPassword}

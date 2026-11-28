@@ -552,8 +552,8 @@ export function KanbanBoard() {
                 {!editingTask.comments || editingTask.comments.length === 0 ? (
                   <p className="no-comments-text">{t('professional.comments.noComments')}</p>
                 ) : (
-                  [...editingTask.comments]
-                    .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+                  editingTask.comments
+                    .toSorted((a, b) => new Date(b.created_at) - new Date(a.created_at))
                     .map((comm) => (
                       <div key={comm.id} className="comment-card">
                         <div className="comment-card-top">

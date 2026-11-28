@@ -63,3 +63,14 @@ By answering that fundamental question, he didn't build a better tool; he invent
 * [**Documentary**: The Bit Player (On the life and work of Claude Shannon)](https://thebitplayer.com/)
 * [**Datalaria**: Abraham Wald and the Epistemology of Missing Data](/en/posts/abraham_wald/)
 * [**Datalaria**: Multiverse Computing and AI Compression](/en/posts/multiverse_computing/)
+
+---
+
+### 🧠 Sharpen Your Quantitative Thinking and Decision Making
+
+Shannon's reduction of entropy is the fundamental bedrock of disciplined decision making under uncertainty. Put these principles of probabilistic thinking and analytical prioritization into action with our interactive tools and downloadable suites:
+
+* **Interactive App:** Master essential AI concepts and quantitative frameworks with [Flashcards AI in our Apps Catalog](/en/apps/flashcards/).
+* **Executive Decision Suite:** Deploy analytical scoring, RICE, and weighted decision models using the [Pack Suite 2: Decision Making & Quantitative Prioritization](/en/resources/#suite-02).
+
+{{< app-ref slug="flashcards" >}}

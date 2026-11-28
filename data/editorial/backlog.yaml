@@ -1,5 +1,5 @@
 version: 1.0.0
-updated_at: '2026-11-08'
+updated_at: '2026-11-28'
 description: Backlog de ideas prospectivas y artículos planificados (sin post en content/ todavía). Cero dependencia de Notion.
 ideas: []
 
@@ -46,16 +46,6 @@ strategic_backlog:
     ecosystem_synergy_score: 85.0
     rationale_es: "Fundamentación matemática rigurosa para directores de operaciones y manufactura. Activa el interés por el Pack PERT y la Suite 03 de Control Operativo (22€)."
 
-  - id: idea-edsger-dijkstra-formal-verification
-    title_es: "Edsger Dijkstra: La Cruzada contra el GOTO, la Verificación Formal y por qué Habría Vetado el Vibe Coding"
-    title_en: "Edsger Dijkstra: The Crusade Against GOTO, Formal Verification and Why He Would Veto Vibe Coding"
-    category: "Pioneros y Referentes"
-    target_kit_or_app: "helix"
-    seo_demand_score: 80.0
-    monetization_fit_score: 82.0
-    ecosystem_synergy_score: 92.0
-    rationale_es: "Monetiza el altísimo tráfico de la categoría Pioneros mediante puente temático natural hacia la verificación determinista de Datalaria Helix (INV-HELIX-1)."
-
   - id: idea-claude-shannon-information-theory
     title_es: "Claude Shannon: El Padre de la Teoría de la Información, la Entropía en LLMs y el Malabarista del Bell Labs"
     title_en: "Claude Shannon: The Father of Information Theory, Entropy in LLMs and the Juggler of Bell Labs"
@@ -65,3 +55,63 @@ strategic_backlog:
     monetization_fit_score: 75.0
     ecosystem_synergy_score: 82.0
     rationale_es: "Perfil biográfico y matemático de alta atracción con puente pedagógico hacia Mazo Mágico (Flashcards AI) y la Suite SDD."
+
+  - id: idea-startup-altana-ai-supply-chain
+    title_es: "Altana AI: El Grafo de Conocimiento Global que Detecta Riesgos en Cadenas de Suministro"
+    title_en: "Altana AI: The Global Supply Chain Knowledge Graph Powering Tier-N Risk Intelligence"
+    category: "Startups"
+    target_kit_or_app: "pack-obs"
+    seo_demand_score: 88.0
+    monetization_fit_score: 98.0
+    ecosystem_synergy_score: 96.0
+    rationale_es: "Ranking #1 Startups Internacionales (Mercator/E02). Puente natural 4 días antes del Día D de pack-obs (9 Dic, 19 €), Agentic Radar y Suite 3."
+
+  - id: idea-startup-anysphere-cursor-sdd
+    title_es: "Anysphere (Cursor): Ingeniería de Software Agéntica, Ventanas de Contexto y Código Spec-First"
+    title_en: "Anysphere (Cursor): Agentic Software Engineering, Context Windows and Spec-First IDEs"
+    category: "Startups"
+    target_kit_or_app: "helix"
+    seo_demand_score: 96.0
+    monetization_fit_score: 90.0
+    ecosystem_synergy_score: 88.0
+    rationale_es: "Ranking #2 Startups Internacionales (Mercator/E02). Máximo volumen EN para preparar la Waitlist de Datalaria Helix (19 Ene)."
+
+  - id: idea-startup-linear-product-ops
+    title_es: "Linear: Product Ops de Alta Velocidad, Flujos Zero-Bloat y Priorización Cuantitativa"
+    title_en: "Linear: High-Velocity Product Ops, Zero-Bloat Workflows and Quantitative Prioritization"
+    category: "Startups"
+    target_kit_or_app: "suite-02"
+    seo_demand_score: 89.0
+    monetization_fit_score: 88.0
+    ecosystem_synergy_score: 88.0
+    rationale_es: "Ranking #3 Startups Internacionales (Mercator/E02). Puente hacia Suite 2 (RICE/DAR) y Datalaria Pulse."
+
+  - id: idea-pioneer-goldratt-theory-of-constraints
+    title_es: "Eliyahu Goldratt: Teoría de las Restricciones (La Meta), Cuellos de Botella y Throughput Operativo"
+    title_en: "Eliyahu Goldratt: Theory of Constraints (The Goal), Bottlenecks and Operational Throughput"
+    category: "Pioneros y Referentes"
+    target_kit_or_app: "suite-03"
+    seo_demand_score: 88.0
+    monetization_fit_score: 95.0
+    ecosystem_synergy_score: 91.0
+    rationale_es: "Ranking #1 Pioneros y Referentes (Mercator/E02). Conexión directa con Suite 3 (PERT/EVM/Stock) y pack-obs."
+
+  - id: idea-pioneer-fred-brooks-mythical-man-month
+    title_es: "Frederick P. Brooks: The Mythical Man-Month, Complejidad Esencial y por qué el SDD Gana al Vibe Coding"
+    title_en: "Frederick P. Brooks: The Mythical Man-Month, Essential Complexity and Why SDD Beats Vibe Coding"
+    category: "Pioneros y Referentes"
+    target_kit_or_app: "helix"
+    seo_demand_score: 86.0
+    monetization_fit_score: 92.0
+    ecosystem_synergy_score: 94.0
+    rationale_es: "Ranking #2 Pioneros y Referentes (Mercator/E02). Caballo de Troya editorial ideal para el sábado previo al lanzamiento de Datalaria Helix (19 Ene)."
+
+  - id: idea-pioneer-kahneman-system1-system2
+    title_es: "Daniel Kahneman: Sistema 1 vs. Sistema 2, Sesgos Cognitivos y Matrices Cuantitativas de Decisión"
+    title_en: "Daniel Kahneman: System 1 vs. System 2, Cognitive Biases and Quantitative Decision Matrices"
+    category: "Pioneros y Referentes"
+    target_kit_or_app: "suite-02"
+    seo_demand_score: 95.0
+    monetization_fit_score: 86.0
+    ecosystem_synergy_score: 80.0
+    rationale_es: "Ranking #3 Pioneros y Referentes (Mercator/E02). Demanda masiva EN/ES con puente hacia Suite 2 (DAR/RICE/Business Case) y Datalaria Apex."

@@ -40,9 +40,9 @@ Para entender cómo encaja cada pieza del rompecabezas de *Content Ops as Code*,
 
 ## 0. Objetivos de la Fase y de este Artículo: Del Tráfico Vanidoso a la Medición Cuantitativa del Retorno Orgánico
 
-Esta entrega se enmarca en la recta final de la **Fase 5 de Datalaria**, cuyo objetivo principal es dotar al ecosistema de una gobernanza editorial autónoma, reproducible y orientada a resultados de negocio.
+Esta entrega se enmarca en la recta final de la serie **Datalaria Pulse**, cuyo objetivo principal es dotar al ecosistema de una gobernanza editorial autónoma, reproducible y orientada a resultados de negocio.
 
-### Objetivos Estratégicos de la Fase 5:
+### Objetivos Estratégicos:
 1. **Erradicar la Consulta Manual de Analítica:** Automatizar la recolección periódica de métricas de rendimiento orgánico en pipelines desatendidos de CI/CD.
 2. **Preservar la Confidencialidad Comercial (`INV-PULSE-2`):** Garantizar que ningún dato cuantitativo absoluto de visitas, usuarios o facturación se exponga jamás en el frontend público de la aplicación.
 3. **Optimizar la Cadencia y el Retorno de Inversión:** Identificar objetivamente los activos que demandan una actualización documental urgente frente a los que constituyen motores estables de generación de negocio.

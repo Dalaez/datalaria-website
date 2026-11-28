@@ -99,7 +99,7 @@ def draw_architecture_diagram(draw, cx, cy, font_bold, font_mid, font_tiny, lang
             "angle": -math.pi / 2, # Arriba
             "dist": 165,
             "title": "SUITE 01: ESTRATEGIA MBA" if lang == 'ES' else "SUITE 01: MBA STRATEGY",
-            "tools": "DAFO · Porter · PESTEL · BCG · McKinsey",
+            "tools": "DAFO · Porter · PESTEL · BCG · McKinsey" if lang == 'ES' else "SWOT · Porter · PESTEL · BCG · McKinsey",
             "color": (239, 68, 68),
             "accent": (254, 226, 226)
         },
@@ -107,7 +107,7 @@ def draw_architecture_diagram(draw, cx, cy, font_bold, font_mid, font_tiny, lang
             "angle": math.pi / 6, # Abajo Derecha
             "dist": 175,
             "title": "SUITE 02: DECISIONES" if lang == 'ES' else "SUITE 02: DECISIONS",
-            "tools": "DAR Veto · RICE Ágil · VAN / TIR",
+            "tools": "DAR Veto · RICE Ágil · VAN / TIR" if lang == 'ES' else "DAR Veto · Agile RICE · NPV / IRR",
             "color": (245, 158, 11),
             "accent": (254, 243, 199)
         },
@@ -115,7 +115,7 @@ def draw_architecture_diagram(draw, cx, cy, font_bold, font_mid, font_tiny, lang
             "angle": 5 * math.pi / 6, # Abajo Izquierda
             "dist": 175,
             "title": "SUITE 03: CONTROL OPERATIVO" if lang == 'ES' else "SUITE 03: OPERATIONS",
-            "tools": "RACI · AMFE · PERT · EVM · Stock ROP",
+            "tools": "RACI · AMFE · PERT · EVM · Stock ROP" if lang == 'ES' else "RACI · FMEA · PERT · EVM · Safety Stock",
             "color": (16, 185, 129),
             "accent": (209, 250, 229)
         }
@@ -219,19 +219,25 @@ def create_cover(lang='ES', out_path='cover.png'):
     # 7. Los 3 Pilares del Ecosistema (Viñetas de Valor)
     bullets = [
         (
-            "1. Motor Cuantitativo (Excel & Google Sheets):",
+            "1. Motor Cuantitativo (Excel & Google Sheets):"
+            if lang == 'ES'
+            else "1. Quantitative Engine (Excel & Google Sheets):",
             "Fórmulas matriciales dinámicas y celdas protegidas sin macros."
             if lang == 'ES'
             else "Dynamic array formulas and protected inputs without risky macros."
         ),
         (
-            "2. Deck C-Level 16:9 (Pirámide de Minto):",
+            "2. Deck C-Level 16:9 (Pirámide de Minto):"
+            if lang == 'ES'
+            else "2. 16:9 C-Level Deck (Minto Pyramid):",
             "Action Titles y caja de decisión requerida para votación ejecutiva."
             if lang == 'ES'
             else "Action Titles and required decision gateway for Board approval."
         ),
         (
-            "3. Guía Metodológica & Protocolo de Defensa:",
+            "3. Guía Metodológica & Protocolo de Defensa:"
+            if lang == 'ES'
+            else "3. Methodological Guide & Defense Playbook:",
             "Justificación axiomática y respuestas a preguntas críticas del CFO."
             if lang == 'ES'
             else "Axiomatic defense guide and answers to critical CFO scrutiny."
@@ -285,6 +291,25 @@ def create_cover(lang='ES', out_path='cover.png'):
     print(f"Cover guardada con éxito en: {out_path}")
 
 
+def create_square_card(cover_path, out_path):
+    """Encuadra la portada 1200x630 en el lienzo cuadrado 1200x1200 para fichas/Lemon Squeezy."""
+    sq = Image.new("RGB", (1200, 1200), (11, 17, 32))
+    draw = ImageDraw.Draw(sq)
+    draw_linear_gradient(draw, 1200, 1200, (11, 17, 32), (24, 34, 53))
+    draw_technical_grid(draw, 1200, 1200)
+    with Image.open(cover_path) as cov:
+        inner_w = 1080
+        inner_h = int(round(1080 * 630 / 1200))  # 567
+        resized = cov.convert("RGB").resize((inner_w, inner_h), Image.Resampling.LANCZOS)
+        x0 = (1200 - inner_w) // 2
+        y0 = (1200 - inner_h) // 2
+        sq.paste(resized, (x0, y0))
+        draw.rectangle([x0 - 1, y0 - 1, x0 + inner_w, y0 + inner_h], outline=(56, 189, 248), width=2)
+    os.makedirs(os.path.dirname(os.path.abspath(out_path)), exist_ok=True)
+    sq.save(out_path, format="PNG", quality=95)
+    print(f"Square card guardada en: {out_path}")
+
+
 def main():
     base_dir = os.path.abspath(".")
     
@@ -296,9 +321,11 @@ def main():
     en_cover = os.path.join(base_dir, "content", "en", "posts", "executive-decision-packs-quantitative-framework", "cover.png")
     create_cover(lang='EN', out_path=en_cover)
 
-    # 3. Lemon Squeezy Product Pack Cover
+    # 3. Lemon Squeezy Product Pack Cover & Square Card
     ls_cover = os.path.join(base_dir, "static", "images", "lemon_squeezy_mega_bundle_cover.png")
     create_cover(lang='ES', out_path=ls_cover)
+    sq_cover = os.path.join(base_dir, "static", "images", "recursos", "MegaBundle.png")
+    create_square_card(en_cover, sq_cover)
 
 
 if __name__ == "__main__":

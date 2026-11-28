@@ -89,6 +89,8 @@ export function LoginPage() {
               <Mail size={18} className="input-icon" />
               <input
                 type="email"
+                name="email"
+                autoComplete="username"
                 required
                 placeholder="tu.email@ejemplo.com"
                 value={email}
@@ -127,6 +129,8 @@ export function LoginPage() {
                 <Lock size={18} className="input-icon" />
                 <input
                   type="password"
+                  name="password"
+                  autoComplete={authMode === 'register' ? 'new-password' : 'current-password'}
                   required
                   placeholder="••••••••"
                   value={password}

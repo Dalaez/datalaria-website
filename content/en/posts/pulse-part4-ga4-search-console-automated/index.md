@@ -40,9 +40,9 @@ To understand how each piece of the *Content Ops as Code* architecture fits toge
 
 ## 0. Phase and Article Objectives: Moving from Vanity Metrics to Deterministic Content Return
 
-This article forms part of the final stretch of **Datalaria Phase 5**, dedicated to equipping engineering and editorial teams with an autonomous, reproducible, and business-driven content operating system.
+This article forms part of the final stretch of **Datalaria Pulse**, dedicated to equipping engineering and editorial teams with an autonomous, reproducible, and business-driven content operating system.
 
-### Strategic Phase 5 Objectives:
+### Strategic Objectives:
 1. **Eliminate Manual Analytics Reporting:** Automate periodic organic performance extraction within unattended GitHub Actions CI/CD workflows.
 2. **Guarantee Strategic Privacy (`INV-PULSE-2`):** Ensure that no absolute figures for visits, active users, or revenue are ever exposed in the public frontend dataset.
 3. **Optimize Publishing Cadence and Asset Freshness:** Objectively distinguish assets requiring urgent technical refreshes from evergreen traffic generators.

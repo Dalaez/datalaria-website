@@ -84,7 +84,11 @@
         <span>{{ $buttonText }}</span>
       </a>
       {{- end }}
+      {{- if $guideUrl }}
+      <a href="{{ $guideUrl }}" class="product-guide-link">{{ $guideText }} →</a>
+      {{- else }}
       <a href="{{ $detailsTarget }}" class="epc-compact-scroll-link">{{ $detailsText }}</a>
+      {{- end }}
     </div>
   </div>
 </div>

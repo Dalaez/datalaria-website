@@ -1,5 +1,5 @@
 ---
-title: "Cómo Crear Agentes de IA para la Operativa Empresarial del Día a Día: De los SOPs al Desarrollo con SDD"
+title: "Cómo Crear Agentes de IA para la Operativa Empresarial: De los SOPs al Desarrollo con SDD"
 date: 2026-11-11
 draft: false
 category: "IA, Ingeniería y Proyectos"
@@ -9,7 +9,7 @@ image: cover.jpg
 weight: 10
 authorAvatar: datalaria-logo.png
 social_text: "Todo el mundo quiere Agentes de IA en su empresa, pero el 90% fracasa al pasar de la demo a producción. Descubre cómo transformar tus SOPs operativos en agentes deterministas combinando n8n/CrewAI, el protocolo MCP y la metodología SDD 🤖📐🏢 #AIAgents #Automation #SDD #Operations #EnterpriseAI"
-description: "Guía práctica y metodológica para diseñar, construir y gobernar agentes de IA en la operativa diaria de una empresa. Aprende qué herramientas elegir (n8n, CrewAI, LangGraph, MCP) y cómo aplicar Spec-Driven Development (SDD) para evitar agentes descontrolados."
+description: "Guía práctica para diseñar, construir y gobernar agentes de IA en operaciones: herramientas clave (n8n, CrewAI, LangGraph, MCP) y metodología Spec-Driven Development (SDD) para evitar agentes descontrolados y alucinaciones."
 summary: "Crear un agente de IA que funcione una vez en una demo de cinco minutos es trivial; construir uno que procese mil facturas, triaje correos críticos o audite tu ERP todos los lunes sin alucinar ni bloquearse requiere ingeniería de operaciones. A partir de nuestras lecciones reales con el Proyecto Autopilot, desglosamos el stack completo de herramientas de 2026 y cómo unir los Procedimientos Operativos Estándar (SOPs) con la metodología SDD (Spec-Driven Development) para desplegar agentes fiables, auditables y rentables."
 ---
 

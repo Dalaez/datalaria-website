@@ -202,6 +202,7 @@ def test_sync_revenue_strips_all_pii_and_builds_executive_state(tmp_path, monkey
                 }
             )
         if "api.brevo.com/v3/emailCampaigns" in url:
+            assert "statistics=globalStats" in url
             return _FakeResp(
                 {
                     "campaigns": [
@@ -311,3 +312,59 @@ def test_public_json_firewall_zero_financial_leak_inv_pulse_13() -> None:
 
     parsed = json.loads(raw)
     assert "revenue_intelligence" not in parsed
+
+
+def test_brevo_campaign_stats_fallback_when_global_stats_empty(monkeypatch) -> None:
+    """Si globalStats llega a cero pero campaignStats trae cifras por lista, agrega sin PII."""
+    seen_urls: list[str] = []
+
+    def fake_get(url: str, headers: Dict[str, str], timeout: int = 12):
+        seen_urls.append(url)
+        if "api.brevo.com/v3/contacts/lists" in url:
+            return _FakeResp(
+                {
+                    "lists": [
+                        {"id": 3, "name": "Newsletter Datalaria ES", "totalSubscribers": 16, "uniqueSubscribers": 16},
+                        {"id": 4, "name": "Newsletter Datalaria EN", "totalSubscribers": 7, "uniqueSubscribers": 7},
+                    ]
+                }
+            )
+        if "api.brevo.com/v3/emailCampaigns" in url:
+            return _FakeResp(
+                {
+                    "campaigns": [
+                        {
+                            "id": 185,
+                            "name": "Newsletter ES - Test",
+                            "sentDate": "2026-11-26T08:00:00Z",
+                            "statistics": {
+                                "globalStats": {
+                                    "delivered": 0,
+                                    "sent": 0,
+                                    "uniqueViews": 0,
+                                    "uniqueClicks": 0,
+                                    "unsubscriptions": 0,
+                                },
+                                "campaignStats": [
+                                    {"listId": 3, "delivered": 11, "uniqueViews": 3, "uniqueClicks": 1, "unsubscriptions": 0},
+                                    {"listId": 5, "delivered": 4, "uniqueViews": 3, "uniqueClicks": 2, "unsubscriptions": 0},
+                                ],
+                            },
+                        }
+                    ]
+                }
+            )
+        raise AssertionError(f"URL inesperada: {url}")
+
+    monkeypatch.setattr(requests, "get", fake_get)
+    ok, summary = fetch_brevo_audience_summary(api_key="brevo_test_key")
+    assert ok is True
+    assert any("statistics=globalStats" in u for u in seen_urls)
+    assert summary.recent_campaigns[0].delivered == 15
+    assert summary.recent_campaigns[0].unique_opens == 6
+    assert summary.recent_campaigns[0].open_rate_pct == 40.0
+    assert summary.recent_campaigns[0].unique_clicks == 3
+    assert summary.recent_campaigns[0].ctr_pct == 20.0
+    assert summary.avg_open_rate_pct == 40.0
+    assert summary.avg_ctr_pct == 20.0
+    assert_no_pii_in_payload(summary.model_dump())

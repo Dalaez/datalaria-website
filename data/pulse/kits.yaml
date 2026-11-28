@@ -5,7 +5,7 @@ mega_bundle:
   type: mega_bundle
   status: available
   price: 39 €
-  original_price: 56 €
+  original_price: 82 €
   icon: ⚡
   checkout_url: https://datalaria.lemonsqueezy.com/checkout/buy/88a976a2-f0e5-4e8e-a954-516767c7fed5
   title_es: 'Mega Bundle Total: Las 3 Suites Ejecutivas'
@@ -14,6 +14,8 @@ mega_bundle:
     de Datalaria (13 kits individuales).
   description_en: Full and unlimited access to all 3 Business Model Suites by Datalaria
     (13 individual packs).
+  guide_url_es: /es/posts/executive-decision-packs-framework-cuantitativo/
+  guide_url_en: /en/posts/executive-decision-packs-quantitative-framework/
   publish_date: '2026-12-03'
   version: v1.0.0
 suites:
@@ -78,6 +80,8 @@ suites:
     RACI, AMFE / FMEA, Estimación PERT, EVM y Stock de Seguridad.'
   description_en: 'Collection of 5 quantitative PMBOK and industrial models: RACI
     Matrix, FMEA, PERT Estimation, EVM and Safety Stock.'
+  guide_url_es: /es/posts/control-operativo-pmbok-framework-cuantitativo/
+  guide_url_en: /en/posts/operational-control-pmbok-quantitative-framework/
   included_kits:
   - pack-raci
   - pack-amfe

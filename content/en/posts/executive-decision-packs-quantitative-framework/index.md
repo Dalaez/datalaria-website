@@ -7,6 +7,12 @@ categories: ["Corporate Strategy", "Decision Making", "Project Management", "Cor
 tags: ["Executive Decision Packs", "Mega Bundle", "Board of Directors", "C-Suite", "Pyramid Principle", "Quantitative Models", "Excel", "PowerPoint", "Capital Allocation", "Corporate Governance"]
 description: "From quantitative modeling to Board of Directors approval. Master guide on the 3-layer architecture, the 13 executive tools, and Tier-1 boardroom governance."
 summary: "Strategic decisions frequently collapse during the executive last mile: qualitative decks overflowing with static bullet points, hierarchy bias (HiPPO), and political bargaining disconnected from corporate finance. In this master article, we analyze Datalaria's Executive Decision Packs architecture: a unified ecosystem of 13 quantitative tools across 3 suites (MBA Strategy, Decision Making, and PMBOK Operational Control) that transforms subjective intuition into auditable financial models, C-Level decks structured under the Minto Pyramid, and binding decision gateways ready for Board approval."
+cover:
+  image: "cover.png"
+  alt: "Executive Decision Packs: The 3-Suite, 13-Tool Quantitative Ecosystem for Boardroom Approval"
+  caption: "Executive Suite Mega Bundle · 3 Suites, 13 Quantitative 3-Layer Models (Excel/Sheets, 16:9 Minto PPTX & PDF Guides)"
+  relative: true
+images: ["cover.png", "preview-pack.png"]
 translationKey: "executive-decision-packs-framework"
 ---
 
@@ -16,54 +22,140 @@ The boardroom fills with presentation decks spanning seventy or more slides pack
 
 This structural pathology is known as **The Executive Last-Mile Problem**: *the most sophisticated quantitative model is utterly useless if its conclusions cannot be synthesized, defended against hostile scrutiny, and voted upon within an executive boardroom environment*.
 
-To eliminate this friction at its root, Datalaria engineered the **Executive Decision Packs** ecosystem: an integrated standard of 13 quantitative tools organized into 3 methodological suites spanning the complete enterprise lifecycle—from macroeconomic and competitive positioning to operational control and capital expenditure governance.
+To eliminate this friction at its root, Datalaria consolidated the **Executive Decision Packs** ecosystem: an integrated standard of **13 quantitative tools organized into 3 methodological suites** ([MBA Corporate Strategy](/en/posts/corporate-strategy-mba-quantitative-framework/), [Decision-Making & Prioritization](/en/posts/decision-making-prioritization-quantitative-framework/), and [PMBOK Operational Control](/en/posts/operational-control-pmbok-quantitative-framework/)) spanning the complete enterprise lifecycle—from competitive positioning to operational execution and capital governance.
+
+{{< product-card
+  variant="compact"
+  title="TOTAL MEGA BUNDLE: Executive PM & Strategy Suite (3 Suites · 13 Packs)"
+  price="39€"
+  original_price="82€"
+  badge="Save >52% • Complete C-Level Collection"
+  icon="👑"
+  checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/88a976a2-f0e5-4e8e-a954-516767c7fed5?embed=1"
+  button_text="Get Complete Mega Bundle"
+  details_target="#executive-pack"
+  details_text="View 3-Suite breakdown & preview ↓"
+  deliverables="26 Excel + Sheets Models (EN+ES) | 26 PPTX 16:9 Decks | 13 PDF Guides (EN+ES)"
+>}}
+All 3 executive suites combined into one downloadable toolkit: **Suite 01 MBA Corporate Strategy** (5 packs), **Suite 02 Decision Making & Prioritization** (3 packs), and **Suite 03 PMBOK Operational Control** (5 packs). Full dual English & Spanish edition.
+{{< /product-card >}}
 
 ---
 
-## 1. The Integrated Ecosystem: Architecture of the 3 Suites
+## 1. What Are Executive Decision Packs? Beginner's Guide, the 3 Suites & How They Connect
 
-In traditional business administration, corporate management tools are taught and applied as disjointed silos: strategic planners evaluate portfolio matrices in isolated spreadsheets; procurement and architecture committees assess software vendors with home-grown scoring sheets; and project managers monitor delivery milestones and burn rates in operational trackers disconnected from the master capital budget.
+### 1.1. Starting From Scratch: What This Ecosystem Solves and Overview of the 3 Suites
 
-The **Executive Decision Packs** ecosystem dismantles this fragmentation by establishing an end-to-end analytical pipeline where the mathematical output of each discipline directly calibrates the stochastic parameters of the next:
+If you have never worked in management consulting, a corporate Project Management Office (**PMO**), or an Investment Committee, start with one straightforward truth: **running an organization requires answering three distinct questions in strict order**:
 
-{{< mermaid >}}
+1. **Where should we compete and allocate our capital?** *(Corporate Strategy — Suite 01)*
+2. **Which projects, vendors, or features should we pick first, and do they beat our cost of capital?** *(Decision-Making — Suite 02)*
+3. **How do we ensure approved bets ship on time, within budget, and without supply stockouts?** *(Operational Control — Suite 03)*
+
+Most organizations stumble because they try to answer these three questions using ad-hoc slide decks and disconnected spreadsheets. **Executive Decision Packs** turn each stage into **auditable Excel/Google Sheets calculation engines, 16:9 C-Level PowerPoint decks, and methodological PDF playbooks**:
+
+#### 🏛️ Suite 01 · MBA Corporate Strategy (5 Tools)
+*(Read the full pillar guide: [Quantitative Corporate Strategy: The 5-Step Executive Framework](/en/posts/corporate-strategy-mba-quantitative-framework/))*
+
+Built to diagnose external shocks, evaluate industry profitability, and govern annual capital expenditure (*CAPEX*) across business units:
+
+1. **[Quantitative PESTEL Matrix](/en/posts/quantitative-pestel-matrix/):** Scores Political, Economic, Social, Technological, Ecological, and Legal drivers by **Severity ($S$)** and **Volatility ($V$)** to measure how much EBITDA is exposed to external shocks.
+2. **[Weighted Porter's 5 Forces](/en/posts/quantitative-porter-5-forces/):** Evaluates 25 sub-criteria across competitors, buyers, suppliers, entrants, and substitutes against your firm's **Economic Moat** ($M$).
+3. **[Vectorial SWOT & TOWS Matrix](/en/posts/quantitative-swot-tows-matrix/):** Replaces subjective sticky-note workshops with a Cartesian posture vector $\vec{V}(X,Y)$ showing whether the firm should grow, reorient, defend, or retrench, paired with a 40×40 TOWS action grid.
+4. **[Dynamic BCG Portfolio Matrix](/en/posts/dynamic-bcg-matrix/):** Maps business units into *Stars, Cash Cows, Question Marks, and Dogs*, proving mathematically whether mature Cash Cows generate enough Free Cash Flow to self-fund growth without external debt.
+5. **[McKinsey / GE 3×3 Matrix](/en/posts/mckinsey-ge-matrix/):** Combines industry attractiveness and competitive strength across 9 boxes to prescribe exact *CAPEX* allocation (*Invest, Selectivity, or Harvest*).
+
+#### ⚖️ Suite 02 · Decision-Making & Prioritization (3 Tools)
+*(Read the full pillar guide: [Rational Decision-Making & Prioritization: The 3-Tier Quantitative Framework](/en/posts/decision-making-prioritization-quantitative-framework/))*
+
+Built to eliminate vendor/architecture paralysis, protect engineering capacity, and defend investments before the CFO:
+
+6. **[Quantitative DAR Matrix (CMMI)](/en/posts/quantitative-dar-matrix/):** Selects software platforms, ERPs, or vendors by enforcing **binary veto hurdles** (any option failing mandatory rules such as ISO 27001 or budget caps is disqualified immediately) before scoring compliant finalists.
+7. **[Agile RICE & ICE Prioritization Matrix](/en/posts/rice-ice-prioritization-matrix/):** Ranks product backlogs by Reach, Impact, Confidence, and Effort, drawing a hard **cut-off line** against net engineering squad capacity.
+8. **[Financial Business Case (NPV, IRR & Tornado)](/en/posts/financial-business-case-npv-irr/):** Projects 3–5 year Free Cash Flows against corporate **WACC**, computes **NPV, IRR, and Discounted Payback**, and stress-tests downside assumptions in a **Tornado Sensitivity Chart**.
+
+#### ⚙️ Suite 03 · PMBOK Operational Control (5 Tools)
+*(Read the full pillar guide: [Quantitative Operational Control & PMBOK: The 5-Pillar Executive Framework](/en/posts/operational-control-pmbok-quantitative-framework/))*
+
+Built to govern day-to-day delivery once capital is approved—protecting people, reliability, schedules, budgets, and supply chains:
+
+9. **[Quantitative RACI Workload Matrix](/en/posts/quantitative-raci-workload-matrix/):** Enforces **single final accountability (`Accountable = 1`)** per deliverable while converting `R/A/C/I` duties into weighted FTE hours to spot hidden bottlenecks before burnout hits.
+10. **[Quantitative Risk Matrix & FMEA](/en/posts/quantitative-risk-matrix-fmea/):** Scores failure modes by **Severity ($S$), Occurrence ($O$), and Detection ($D$)** to compute the Risk Priority Number (**RPN**) and justify preventive controls by Cost-Effectiveness Ratio (**CER**).
+11. **[Stochastic 3-Point PERT Estimation](/en/posts/stochastic-3-point-pert-estimation/):** Replaces optimistic single-point deadlines with Beta-distributed three-point estimates (*Optimistic, Most Likely, Pessimistic*), sizing **Project Buffers** for 90%–95% schedule confidence.
+12. **[EVM S-Curve Dashboard (Earned Value)](/en/posts/earned-value-management-evm-dashboard/):** Connects Planned Value ($PV$), Earned Value ($EV$), and Actual Cost ($AC$) to expose cost (`CPI`) and schedule (`SPI`) variances early via **EAC** completion forecasts.
+13. **[Safety Stock & Reorder Point (ROP) Calculator](/en/posts/safety-stock-reorder-point-calculator/):** Convolves customer demand and supplier lead-time variability to calibrate optimal **Safety Stock ($SS$)**, **Reorder Points ($ROP$)**, and **EOQ** lot sizes without trapping working capital.
+
+| Mega Bundle Suite | Plain-English Question Answered | Pathology Eliminated | Included Decision Tools | Full Pillar Guide |
+| :--- | :--- | :--- | :--- | :--- |
+| **Suite 01 · MBA Strategy** | Where should we compete and invest? | Qualitative decks unlinked from ROIC or cash flow | PESTEL, Porter, SWOT-TOWS, BCG, McKinsey 3×3 | [Read Suite 01 Guide](/en/posts/corporate-strategy-mba-quantitative-framework/) |
+| **Suite 02 · Decisions** | Which option wins and beats WACC? | HiPPO bias, Feature Factory, weak ROI decks | DAR Veto, RICE/ICE, Financial Business Case | [Read Suite 02 Guide](/en/posts/decision-making-prioritization-quantitative-framework/) |
+| **Suite 03 · Operations Control** | How do we deliver on time & budget? | Lead burnout, chronic delays, overruns, stockouts | RACI, FMEA, PERT, EVM S-Curve, Safety Stock | [Read Suite 03 Guide](/en/posts/operational-control-pmbok-quantitative-framework/) |
+
+---
+
+### 1.2. Systemic Interlocking Across the 3 Suites and Predecessor Guides
+
+In conventional corporate practice, these disciplines operate as isolated silos: strategy teams maintain portfolio slides in one file; product managers rank Jira backlogs separately; finance teams evaluate CAPEX in bespoke spreadsheets; and PMO leads track delivery elsewhere. **Executive Decision Packs** dismantle those silos with a closed-loop mathematical pipeline:
+
+{{< mermaid image="ecosystem-architecture-flow.png" alt="Integrated Executive Decision Packs Architecture: Suite 01 MBA Strategy, Suite 02 Decision Making and Suite 03 PMBOK Operational Control" >}}
 flowchart TD
-    subgraph S1 ["<b>SUITE 01 · MBA CORPORATE STRATEGY</b>"]
+    subgraph S1["SUITE 01 · MBA CORPORATE STRATEGY"]
         direction LR
-        P1["Quantitative PESTEL<br/><small>Severity & Volatility</small>"] --> P2["Porter's 5 Forces<br/><small>Moat & Market Attractiveness</small>"]
-        P2 --> P3["Vectorial SWOT-TOWS<br/><small>Cartesian Posture</small>"]
-        P3 --> P4["Dynamic BCG Matrix<br/><small>Free Cash Flow Balancing</small>"]
-        P4 --> P5["McKinsey / GE 3x3<br/><small>Multicriteria CAPEX Allocation</small>"]
+        P1["Quantitative PESTEL\nSeverity and Volatility"] --> P2["Porter 5 Forces\nMoat and Attractiveness"]
+        P2 --> P3["Vectorial SWOT-TOWS\nCartesian Posture"]
+        P3 --> P4["Dynamic BCG Matrix\nFree Cash Flow Balance"]
+        P4 --> P5["McKinsey / GE 3x3\nCAPEX Allocation"]
     end
 
-    subgraph S2 ["<b>SUITE 02 · DECISION MAKING & PRIORITIZATION</b>"]
+    subgraph S2["SUITE 02 · DECISION MAKING AND PRIORITIZATION"]
         direction LR
-        D1["CMMI DAR Matrix<br/><small>Veto Criteria & Trade-offs</small>"] --> D2["RICE / ICE Matrix<br/><small>Net Squad Capacity</small>"]
-        D2 --> D3["Financial Business Case<br/><small>NPV, IRR & Tornado Sensitivity</small>"]
+        D1["CMMI DAR Matrix\nVeto Gates and Trade-offs"] --> D2["RICE / ICE Matrix\nNet Squad Capacity"]
+        D2 --> D3["Financial Business Case\nNPV, IRR and Tornado"]
     end
 
-    subgraph S3 ["<b>SUITE 03 · PMBOK OPERATIONAL CONTROL</b>"]
+    subgraph S3["SUITE 03 · PMBOK OPERATIONAL CONTROL"]
         direction LR
-        O1["RACI Workload Matrix<br/><small>FTE Capacity Balancing</small>"] --> O2["FMEA Risk Matrix<br/><small>RPN & Critical Severity</small>"]
-        O2 --> O3["Stochastic 3-Point PERT<br/><small>Beta Distribution / 95% Confidence</small>"]
-        O3 --> O4["EVM Dashboard (S-Curve)<br/><small>CPI, SPI & Stochastic EAC</small>"]
-        O4 --> O5["Safety Stock & ROP<br/><small>Z-Factor & Working Capital</small>"]
+        O1["RACI Workload Matrix\nFTE Capacity Balance"] --> O2["FMEA Risk Matrix\nRPN and Critical Severity"]
+        O2 --> O3["Stochastic 3-Point PERT\nBeta Distribution and Buffers"]
+        O3 --> O4["EVM S-Curve Dashboard\nCPI, SPI and Stochastic EAC"]
+        O4 --> O5["Safety Stock and ROP\nZ-Factor and Working Capital"]
     end
 
-    S1 -->|<b>Strategic Mandates & CAPEX Ceilings</b>| S2
-    S2 -->|<b>Validated Initiatives & Business Cases</b>| S3
-    S3 -->|<b>Actual Execution Metrics vs. Baseline</b>| BR["<b>EXECUTIVE COMMITTEE / BOARD</b><br/>Unified Governance & Value Creation"]
+    S1 -->|"Strategic Mandates and CAPEX Ceilings"| S2
+    S2 -->|"Validated Initiatives, BAC and Vendors"| S3
+    S3 -->|"Actual Execution, ROIC and Cash Flow"| BR["EXECUTIVE COMMITTEE / BOARD\nUnified Governance, Audited Return and Annual Recalibration"]
 
-    style S1 fill:#0F172A,stroke:#EF4444,stroke-width:2px,color:#FFFFFF
-    style S2 fill:#0F172A,stroke:#F59E0B,stroke-width:2px,color:#FFFFFF
-    style S3 fill:#0F172A,stroke:#10B981,stroke-width:2px,color:#FFFFFF
-    style BR fill:#1E293B,stroke:#38BDF8,stroke-width:2px,color:#FFFFFF
+    style S1 fill:#FEF2F2,stroke:#EF4444,stroke-width:2px,color:#0F172A
+    style S2 fill:#FFFBEB,stroke:#F59E0B,stroke-width:2px,color:#0F172A
+    style S3 fill:#ECFDF5,stroke:#10B981,stroke-width:2px,color:#0F172A
+    style P1 fill:#0F172A,stroke:#EF4444,stroke-width:1.5px,color:#FFFFFF
+    style P2 fill:#0F172A,stroke:#EF4444,stroke-width:1.5px,color:#FFFFFF
+    style P3 fill:#0F172A,stroke:#EF4444,stroke-width:1.5px,color:#FFFFFF
+    style P4 fill:#0F172A,stroke:#EF4444,stroke-width:1.5px,color:#FFFFFF
+    style P5 fill:#0F172A,stroke:#EF4444,stroke-width:1.5px,color:#FFFFFF
+    style D1 fill:#0F172A,stroke:#F59E0B,stroke-width:1.5px,color:#FFFFFF
+    style D2 fill:#0F172A,stroke:#F59E0B,stroke-width:1.5px,color:#FFFFFF
+    style D3 fill:#0F172A,stroke:#F59E0B,stroke-width:1.5px,color:#FFFFFF
+    style O1 fill:#0F172A,stroke:#10B981,stroke-width:1.5px,color:#FFFFFF
+    style O2 fill:#0F172A,stroke:#10B981,stroke-width:1.5px,color:#FFFFFF
+    style O3 fill:#0F172A,stroke:#10B981,stroke-width:1.5px,color:#FFFFFF
+    style O4 fill:#0F172A,stroke:#10B981,stroke-width:1.5px,color:#FFFFFF
+    style O5 fill:#0F172A,stroke:#10B981,stroke-width:1.5px,color:#FFFFFF
+    style BR fill:#1E293B,stroke:#0284C7,stroke-width:2.5px,color:#FFFFFF
 {{< /mermaid >}}
 
-As mapped above, the three suites function in continuous analytical lockstep:
-1. **Suite 01 (MBA Corporate Strategy):** Determines the macro risk posture, industry competitive moats, and the high-level distribution of corporate capital expenditure (*CAPEX*) across strategic business units (SBUs).
-2. **Suite 02 (Decision Making & Prioritization):** Filters tactical alternatives, technological architectures, and vendor contracts, ensuring that every prioritized roadmap item is backed by an auditable financial business case that exceeds the corporate cost of capital.
-3. **Suite 03 (PMBOK Operational Control):** Guarantees that approved capital investments are delivered within scope, budget, and capacity constraints, triggering early quantitative variance alerts before cost overruns reach financial statements.
+Each predecessor guide in the ecosystem connects directly into the next layer:
+
+1. **Strategy → Decision Flow ([Suite 01](/en/posts/corporate-strategy-mba-quantitative-framework/) → [Suite 02](/en/posts/decision-making-prioritization-quantitative-framework/)):**
+   * Regulatory and macro shocks quantified in [Quantitative PESTEL](/en/posts/quantitative-pestel-matrix/) and structural barriers scored in [Porter's 5 Forces](/en/posts/quantitative-porter-5-forces/) define mandatory **binary veto gates** inside the [DAR Matrix](/en/posts/quantitative-dar-matrix/).
+   * Offensive and defensive initiatives generated in [Vectorial SWOT & TOWS](/en/posts/quantitative-swot-tows-matrix/) feed the candidate roadmap ranked inside [RICE & ICE](/en/posts/rice-ice-prioritization-matrix/).
+   * Organic self-funding limits from [Dynamic BCG](/en/posts/dynamic-bcg-matrix/) and 9-box CAPEX ceilings from [McKinsey / GE 3×3](/en/posts/mckinsey-ge-matrix/) set the capital envelope each project must clear in the [Financial Business Case](/en/posts/financial-business-case-npv-irr/).
+2. **Decision → Execution Flow ([Suite 02](/en/posts/decision-making-prioritization-quantitative-framework/) → [Suite 03](/en/posts/operational-control-pmbok-quantitative-framework/)):**
+   * Residual technical weaknesses of the winning vendor or architecture in [CMMI DAR](/en/posts/quantitative-dar-matrix/) export directly into [FMEA Risk Matrix](/en/posts/quantitative-risk-matrix-fmea/) mitigation plans and vendor lead-time bounds in [3-Point PERT](/en/posts/stochastic-3-point-pert-estimation/).
+   * Net squad capacity commitments from [RICE & ICE](/en/posts/rice-ice-prioritization-matrix/) seed initial hour allocations in the [RACI Workload Matrix](/en/posts/quantitative-raci-workload-matrix/) so top-ranked initiatives never overload key architects.
+   * Approved CAPEX/OPEX cash-flow baselines from the [Financial Business Case](/en/posts/financial-business-case-npv-irr/) literally define the Budget at Completion ($BAC$) and Planned Value ($PV$) curve audited monthly inside [EVM S-Curve](/en/posts/earned-value-management-evm-dashboard/), synchronized with inventory procurement in [Safety Stock & ROP](/en/posts/safety-stock-reorder-point-calculator/).
+3. **Closed Feedback Loop Execution → Strategy ([Suite 03](/en/posts/operational-control-pmbok-quantitative-framework/) ➔ [Suite 01](/en/posts/corporate-strategy-mba-quantitative-framework/)):**
+   * Real cost performance (`CPI`), milestone reliability, and working capital liberated flow back to the Executive Committee to recalibrate divisional positions across **BCG** and **McKinsey / GE** in the next capital cycle.
 
 ---
 
@@ -77,29 +169,22 @@ Every one of the 13 packs comprising the ecosystem is engineered around a modula
 | **Layer 2: C-Level 16:9 Deck** | Microsoft PowerPoint (`.pptx`) Widescreen | Deductive boardroom communication structured under Barbara Minto's Pyramid Principle with Action Titles. | CEOs, CFOs, Board Directors, Investment Committees |
 | **Layer 3: Methodological Guide** | High-Resolution Executive PDF Guide | Axiomatic derivations, mathematical formulas, calibration benchmarks, and hostile CFO defense playbooks. | Project Sponsors, Strategy Directors, Management Consultants |
 
-```
-┌────────────────────────────────────────────────────────────────────────┐
-│                     ANATOMY OF EACH DECISION TOOL                      │
-├────────────────────────────────────────────────────────────────────────┤
-│  1. QUANTITATIVE ENGINE (Excel / Google Sheets)                        │
-│     - Unlocked input cells paired with strict data validation rules    │
-│     - Protected dynamic formulas (zero malicious or brittle VBA macros)│
-│     - Probabilistic integrity checksums (Σ w = 1.000)                  │
-│                                                                        │
-│  2. C-LEVEL 16:9 SLIDE DECK (PowerPoint Widescreen)                    │
-│     - Deductive synthesis based on the Minto Pyramid Principle         │
-│     - Action Titles declaring the core takeaway of each slide          │
-│     - Dedicated Boardroom Decision Gateway ready for binding votes     │
-│                                                                        │
-│  3. METHODOLOGICAL GUIDE & DEFENSE PLAYBOOK (Executive PDF)            │
-│     - Mathematical parameter justification and financial stress tests  │
-│     - Objection matrix answering incisive, hostile CFO questions       │
-│     - End-to-end case studies calibrated against enterprise scenarios  │
-└────────────────────────────────────────────────────────────────────────┘
-```
+{{< mermaid image="tool-3-layer-anatomy.png" alt="3-Layer Anatomy of Each Decision Tool: Quantitative Excel Engine, C-Level 16:9 Minto Deck and Methodological PDF Playbook" >}}
+flowchart LR
+    IN["AUDITED INPUTS\nUnlocked cells and\nstrict data validation"] --> C1["LAYER 1 · QUANTITATIVE ENGINE\nExcel (.xlsx) and Google Sheets\nZero-VBA dynamic arrays\nIntegrity checksum Sum w = 1.000"]
+    C1 --> C2["LAYER 2 · C-LEVEL 16:9 DECK\nPowerPoint Widescreen\nMinto Pyramid and Action Titles\nBoardroom Decision Gateway"]
+    C2 --> C3["LAYER 3 · METHODOLOGY PDF GUIDE\nEquations and financial stress tests\nHostile CFO objection playbook\nEnd-to-end solved case studies"]
+    C3 --> OUT["BINDING MANDATE\nAudited voting in\nBoardroom Committee"]
+
+    style IN fill:#1E293B,stroke:#64748B,stroke-width:2px,color:#F8FAFC
+    style C1 fill:#0F172A,stroke:#10B981,stroke-width:2px,color:#FFFFFF
+    style C2 fill:#0F172A,stroke:#38BDF8,stroke-width:2px,color:#FFFFFF
+    style C3 fill:#0F172A,stroke:#A855F7,stroke-width:2px,color:#FFFFFF
+    style OUT fill:#1E293B,stroke:#F59E0B,stroke-width:2px,color:#F8FAFC
+{{< /mermaid >}}
 
 ### 2.1. The Quantitative Engine: Native Dynamic Arrays and Zero Macros
-Unlike generic online spreadsheet templates—which frequently rely on brittle VBA macros that trigger corporate IT security alarms and fail across platforms—Datalaria's models are constructed exclusively with modern, native dynamic array formulas (`LAMBDA`, `XLOOKUP`, `LET`, `SUMPRODUCT`, `NORM.S.INV`). All underlying calculation engines are password-protected (with credentials documented) to prevent accidental formula corruption, while input ranges feature strict data validation boundaries that reject non-numerical or out-of-bounds parameter inputs.
+Unlike generic online spreadsheet templates—which frequently rely on brittle VBA macros that trigger corporate IT security alarms and fail across platforms—Datalaria's models are constructed exclusively with modern, native dynamic array formulas (`LAMBDA`, `XLOOKUP`, `LET`, `SUMPRODUCT`, `NORM.S.INV`). All underlying calculation engines are protected to prevent accidental formula corruption, while input ranges remain unlocked with strict data validation boundaries that reject non-numerical or out-of-bounds parameter inputs.
 
 Crucially, each workbook features an automated **Integrity Checksum Engine**: if multicriteria weights fail to sum to exactly $1.000$ ($\sum w_i = 1.00$), or if portfolio cash allocations exceed total capital generated, the interface triggers prominent conditional alerts in crimson warning text. Furthermore, financial valuation sheets incorporate automated two-way sensitivity data tables (`Data Tables`) that instantaneously recalculate project returns against simultaneous variations in terminal growth rates, operating expenditure inflators, and weighted average cost of capital ($WACC$).
 
@@ -140,15 +225,13 @@ The following master reference matrix details the mathematical foundation, core 
 | [**Suite 03**](/en/posts/operational-control-pmbok-quantitative-framework/) | [**EVM Dashboard (S-Curve)**](/en/posts/earned-value-management-evm-dashboard/) | $\text{CPI} = \frac{\text{EV}}{\text{AC}}, \quad \text{SPI} = \frac{\text{EV}}{\text{PV}}, \quad \text{EAC}$ | Will the program finish within its authorized budget and baseline, or what overrun is forecasted? | Earned Value Management Dashboard with S-Curve & Stochastic EAC |
 | [**Suite 03**](/en/posts/operational-control-pmbok-quantitative-framework/) | [**Safety Stock & ROP**](/en/posts/safety-stock-reorder-point-calculator/) | $\text{SS} = Z \cdot \sqrt{L \cdot \sigma_D^2 + D^2 \cdot \sigma_L^2}, \quad \text{ROP}$ | How much working capital must be tied up in inventory to preserve a 98% service level? | Statistical Inventory Optimization Model & Sawtooth Curve |
 
----
-
 ### 3.1. Illustrative Case Study: The Complete Decision Transmission Pipeline
 
 To visualize how the three suites interact as an integrated decision engine, consider an enterprise industrial manufacturing firm evaluating the rollout of an IoT-enabled Predictive Maintenance SaaS platform:
 
-1. **Strategic Formulation (Suite 01):** The **Quantitative PESTEL Matrix** identifies an accelerating regulatory carbon-reporting mandate with severe compliance impact ($S=4.5$). The **Porter's 5 Forces** model reveals high switching costs for industrial customers, creating an attractive economic moat. Through the **McKinsey / GE 3x3 Matrix**, the IoT software unit is classified within the Green "Invest for Growth" Zone, establishing an approved 3-year CAPEX ceiling of **€6.0M**.
-2. **Tactical Selection & Financial Valuation (Suite 02):** To choose the underlying cloud infrastructure provider, the technical committee executes the **CMMI DAR Matrix with Veto Criteria**. Two low-cost providers are immediately disqualified because they lack sovereign data-residency compliance. The product roadmap is then evaluated with the **RICE Prioritization Matrix** against available engineering velocity, eliminating low-impact feature creep. Finally, the **Financial Business Case** establishes a base-case Net Present Value ($\text{NPV} = €2.8\text{M}$) with an Internal Rate of Return ($\text{IRR} = 26.4\%$), clearing the corporate $\text{WACC} = 8.5\%$ threshold even under adverse downside scenarios in the Tornado chart.
-3. **Operational Execution & Governance (Suite 03):** Execution governance is locked via the **RACI Workload Matrix**, preventing the Principal Software Architect from exceeding a sustainable 100% FTE threshold. The engineering team maps failure risks in the **FMEA Matrix**, putting immediate redundancy controls on data pipelines scoring $\text{RPN} > 120$. Critical milestone release dates are modeled via **Stochastic 3-Point PERT** (95% confidence at 14 weeks). Once execution commences, the PMO tracks project health weekly using the **EVM Dashboard (S-Curve)**, verifying that the Cost Performance Index remains healthy ($\text{CPI} \ge 1.02$).
+1. **Strategic Formulation ([Suite 01](/en/posts/corporate-strategy-mba-quantitative-framework/)):** The **Quantitative PESTEL Matrix** identifies an accelerating regulatory carbon-reporting mandate with severe compliance impact ($S=4.5$). The **Porter's 5 Forces** model reveals high switching costs for industrial customers, creating an attractive economic moat. Through the **McKinsey / GE 3x3 Matrix**, the IoT software unit is classified within the Green "Invest for Growth" Zone, establishing an approved 3-year CAPEX ceiling of **€6.0M**.
+2. **Tactical Selection & Financial Valuation ([Suite 02](/en/posts/decision-making-prioritization-quantitative-framework/)):** To choose the underlying cloud infrastructure provider, the technical committee executes the **CMMI DAR Matrix with Veto Criteria**. Two low-cost providers are immediately disqualified because they lack sovereign data-residency compliance. The product roadmap is then evaluated with the **RICE Prioritization Matrix** against available engineering velocity, eliminating low-impact feature creep. Finally, the **Financial Business Case** establishes a base-case Net Present Value ($\text{NPV} = €2.8\text{M}$) with an Internal Rate of Return ($\text{IRR} = 26.4\%$), clearing the corporate $\text{WACC} = 8.5\%$ threshold even under adverse downside scenarios in the Tornado chart.
+3. **Operational Execution & Governance ([Suite 03](/en/posts/operational-control-pmbok-quantitative-framework/)):** Execution governance is locked via the **RACI Workload Matrix**, preventing the Principal Software Architect from exceeding a sustainable 100% FTE threshold. The engineering team maps failure risks in the **FMEA Matrix**, putting immediate redundancy controls on data pipelines scoring $\text{RPN} > 120$. Critical milestone release dates are modeled via **Stochastic 3-Point PERT** (95% confidence at 14 weeks). Once execution commences, the PMO tracks project health weekly using the **EVM Dashboard (S-Curve)**, verifying that the Cost Performance Index remains healthy ($\text{CPI} \ge 1.02$).
 
 This end-to-end analytical continuity guarantees that boardroom strategy, operational planning, and capital control remain fully synchronized.
 
@@ -158,21 +241,20 @@ This end-to-end analytical continuity guarantees that boardroom strategy, operat
 
 Adopting a standardized quantitative decision framework is far more than an academic exercise in management rigor; it generates quantifiable operating leverage and governance protection:
 
-```
-                      EXECUTIVE IMPACT METRICS
-                      
-    BOARDROOM DELIBERATION             EXTERNAL ADVISORY FEES
-    MEETING CYCLE DURATION             DISPLACED PER ANNUM
-         -70%                                  >95%
-    From weeks of debate to            Replaces generic slide decks
-    binding decisions in 30 mins       from Tier-1 consultancies
-    
-    EARLY CAPITAL BUDGET               SCHEDULE SLIPPAGE ON
-    VARIANCE DETECTION                 CRITICAL ENTERPRISE MILESTONES
-         +3.5x                                 -45%
-    Predictive warnings via            Calibrated via stochastic
-    EVM prior to quarter close         3-Point PERT beta modeling
-```
+{{< mermaid image="executive-impact-metrics.png" alt="Executive Impact Metrics: -70% boardroom cycle time, >95% consulting savings, +3.5x early EVM variance detection and -45% PERT schedule slippage" >}}
+flowchart TD
+    HUB["EXECUTIVE IMPACT OF EXECUTIVE DECISION PACKS"]
+    HUB --> M1["-70% Deliberation Cycle\nFrom weeks of debate to\nbinding decisions in 30 mins"]
+    HUB --> M2[">95% Advisory Fee Savings\nReplaces generic slide decks\nand keeps engines in-house"]
+    HUB --> M3["+3.5x Early Budget Alerts\nPredictive EVM warnings\nprior to quarter close"]
+    HUB --> M4["-45% Schedule Slippage\nStochastic Beta estimation\ncalibrated via 3-Point PERT"]
+
+    style HUB fill:#0F172A,stroke:#38BDF8,stroke-width:2.5px,color:#FFFFFF
+    style M1 fill:#0F172A,stroke:#10B981,stroke-width:2px,color:#FFFFFF
+    style M2 fill:#0F172A,stroke:#3B82F6,stroke-width:2px,color:#FFFFFF
+    style M3 fill:#0F172A,stroke:#F59E0B,stroke-width:2px,color:#FFFFFF
+    style M4 fill:#0F172A,stroke:#A855F7,stroke-width:2px,color:#FFFFFF
+{{< /mermaid >}}
 
 ### 4.1. Displacing Expensive Tier-1 Consulting Retainers
 A typical corporate advisory engagement commissioned to a global strategy consultancy (*McKinsey, BCG, Bain*) to evaluate an enterprise portfolio or build a digital transformation business case ranges between **€60,000 and €180,000**. In most instances, the final deliverable is an uneditable slide presentation whose underlying mathematical reasoning leaves the building as soon as the consulting team concludes its billing engagement.
@@ -189,20 +271,24 @@ Implementing formal quantitative gating changes boardroom dynamics completely:
 
 ---
 
-## 5. The Mega Bundle: Immediate Access to the Complete Suite
+<div id="executive-pack"></div>
 
-For corporate directors, PMO heads, CFOs, engineering managers, and management consultants who need to deploy this decision-making infrastructure immediately without investing hundreds of hours building models and slide decks from scratch, Datalaria has compiled the full collection into the **Mega Bundle: Executive PM & Strategy Suite**.
+## 5. Commercial Close: The Total Mega Bundle (3 Suites · 13 Packs)
+
+For corporate directors, PMO heads, CFOs, engineering managers, and management consultants who need to deploy this complete decision-making infrastructure immediately without investing hundreds of hours building models and slide decks from scratch, Datalaria has consolidated all **3 Suites (13 tools in dual EN + ES edition = 78 executive files)** into the **Mega Bundle: Executive PM & Strategy Suite**.
+
+![Total Mega Bundle Preview: All 3 Executive Suites (Suite 01 MBA Strategy, Suite 02 Decision-Making, and Suite 03 PMBOK Operational Control)](preview-pack.png "Live composite capture of the Total Mega Bundle: all 3 Suites (13 Executive Decision Packs across Excel, 16:9 PowerPoint, and PDF Guides in English and Spanish)")
 
 > 💼 **Official Resource Center:**  
-> You can inspect each individual tool's technical specification, download sample materials, and explore thematic suites inside the [**Datalaria Executive Resource Center**](/en/resources/).
+> You can inspect each individual tool's technical specification, preview screenshots, and explore thematic suites inside the [**Datalaria Executive Resource Center**](/en/resources/#mega-bundle).
 
 {{< bundle-card
   title="MEGA BUNDLE: Executive PM & Strategy Suite"
-  subtitle="The complete toolkit for corporate executives, consultants, and project directors: all 13 quantitative tools including protected Excel/Sheets calculation engines, 16:9 C-Level PowerPoint presentations, and executive PDF methodology guides."
+  subtitle="The complete toolkit for corporate executives, consultants, and project directors: all 3 Suites and 13 quantitative tools including 26 protected Excel/Sheets engines (EN+ES), 26 C-Level 16:9 PowerPoint decks, and 26 executive PDF methodology guides."
   price="39€"
   original_price="82€"
   discount_badge="52% Off"
-  badge="Complete C-Level Suite • Lifetime Access"
+  badge="Complete 3-Suite Collection • Lifetime Access"
   icon="👑"
   items="Suite 01: Quantitative PESTEL with Severity & Volatility|Suite 01: Weighted Porter's 5 Forces with Radar Moat Analysis|Suite 01: Vectorial SWOT-TOWS with Cartesian Plane Positioning|Suite 01: Dynamic BCG Matrix with Free Cash Flow Balancing|Suite 01: McKinsey / GE 3x3 Multicriteria CAPEX Allocation|Suite 02: CMMI DAR Matrix with Binary Veto Gateways|Suite 02: RICE & ICE Matrix with Net Squad Engineering Capacity|Suite 02: Master Financial Business Case with NPV, IRR & Tornado|Suite 03: RACI Workload Matrix with FTE Capacity Balancing|Suite 03: FMEA Risk Matrix with Risk Priority Numbers|Suite 03: Stochastic 3-Point PERT with Beta Probability Curves|Suite 03: EVM S-Curve Dashboard with Forecasted EAC Overrun|Suite 03: Safety Stock & Reorder Point (ROP) Statistical Engine"
   checkout_url="https://datalaria.lemonsqueezy.com/checkout/buy/88a976a2-f0e5-4e8e-a954-516767c7fed5"
@@ -210,10 +296,17 @@ For corporate directors, PMO heads, CFOs, engineering managers, and management c
   highlight="true"
 >}}
 
+### Comprehensive Inventory Included in the Dual `.ZIP` Package (`EN + ES`)
+Purchasing the Mega Bundle grants immediate direct download access to the unified archive containing both `01_VERSION_ESPANOL/` and `02_ENGLISH_VERSION/` (plus direct Google Sheets links):
+
+* **Suite 01 · MBA Corporate Strategy (5 Packs — 10 Excel + 10 PPTX 16:9 + 10 PDFs EN/ES):** Quantitative PESTEL, Weighted Porter's 5 Forces, Vectorial SWOT-TOWS, Dynamic BCG Matrix, and McKinsey / GE 3×3 Matrix.
+* **Suite 02 · Decision-Making & Prioritization (3 Packs — 6 Excel + 6 PPTX 16:9 + 6 PDFs EN/ES):** CMMI DAR Matrix with Binary Veto Gates, Agile RICE & ICE Matrix with Net Squad Capacity, and DCF Financial Business Case (NPV, IRR, WACC, Payback & Tornado).
+* **Suite 03 · PMBOK Operational Control (5 Packs — 10 Excel + 10 PPTX 16:9 + 10 PDFs EN/ES):** Quantitative RACI Workload Matrix, AIAG-VDA FMEA Risk Matrix, Stochastic 3-Point PERT, EVM S-Curve Dashboard, and Dynamic Safety Stock & ROP Calculator.
+
 ### Enterprise Guarantees and B2B Compliance
-* **Instant Direct Download (.ZIP):** Upon completing secure checkout via Lemon Squeezy (acting as Merchant of Record), purchasers receive immediate, frictionless access to all unlocked source files.
+* **Instant Direct Download (.ZIP):** Upon completing secure checkout via Lemon Squeezy (acting as Merchant of Record), purchasers receive immediate, frictionless access to all unlocked source files in both English and Spanish.
 * **B2B Invoicing with Deductible VAT / VIES:** The platform automatically issues compliant business receipts with corporate tax identifiers (VAT / CIF / VIES) for seamless corporate expense deduction.
-* **Universal Enterprise Compatibility:** All calculation models are rigorously verified for Microsoft Excel (2016 through Microsoft 365) and Google Sheets, while presentation decks are optimized for Microsoft PowerPoint widescreen and Apple Keynote.
+* **Universal Enterprise Compatibility:** All calculation models are rigorously verified for Microsoft Excel (2016 through Microsoft 365) and Google Sheets with zero blocked VBA macros, while presentation decks are optimized for Microsoft PowerPoint widescreen and Apple Keynote.
 
 ---
 

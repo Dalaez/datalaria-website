@@ -94,3 +94,11 @@ Nos recuerda que el deseo de predecir el futuro o recuperar el pasado no nace de
 * [**Datalaria**: Claude Shannon — Teoría de la Información y Entropía](/es/posts/claude_shannon/)
 * [**Datalaria**: Thomas Bayes — Inferencia Probabilística](/es/posts/thomas_bayes/)
 * [**Datalaria**: EU AI Act — Guía para Ingenieros y Ética Algorítmica](/es/posts/eu_ai_act/)
+
+---
+
+### 📡 Del Determinismo al Análisis Cuantitativo de Riesgos
+
+¿Te interesa cómo sustituir la ilusión de certeza absoluta por modelos deterministas de riesgo y simulación operativa? Explora nuestra aplicación interactiva sin registro previo:
+
+{{< app-ref slug="obs-management" >}}
