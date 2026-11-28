@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "visibility": "private",
-  "updated_at": "2026-11-28T08:13:06Z",
+  "updated_at": "2026-11-28T08:21:38Z",
   "entries": [
     {
       "asset_id": "autopilot-parte10-scriba-sindicacion-puente-pulse",
@@ -2232,6 +2232,16 @@
       "external_url": "https://coderlegion.com/posts/36267",
       "canonical_url": "https://datalaria.com/en/posts/safety-stock-reorder-point-calculator/",
       "published_at_utc": "2026-11-27T06:51:57Z"
+    },
+    {
+      "asset_id": "edsger_dijkstra",
+      "slug": "edsger_dijkstra",
+      "lang": "es",
+      "channel": "linkedin",
+      "external_id": "urn:li:share:7532358025966440448",
+      "external_url": "https://www.linkedin.com/feed/update/urn:li:share:7532358025966440448/",
+      "canonical_url": "https://datalaria.com/es/posts/edsger_dijkstra/",
+      "published_at_utc": "2026-11-28T08:21:38Z"
     }
   ]
 }
