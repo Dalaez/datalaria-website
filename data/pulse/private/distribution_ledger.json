@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "visibility": "private",
-  "updated_at": "2026-11-27T11:54:41Z",
+  "updated_at": "2026-11-28T08:13:06Z",
   "entries": [
     {
       "asset_id": "autopilot-parte10-scriba-sindicacion-puente-pulse",
@@ -2225,13 +2225,13 @@
     },
     {
       "asset_id": "safety-stock-reorder-point-calculator",
-      "slug": "safety-stock-reorder-point-calculator",
+      "slug": "calculadora-stock-seguridad-rop",
       "lang": "en",
       "channel": "coderlegion",
       "external_id": "36267",
-      "external_url": null,
+      "external_url": "https://coderlegion.com/posts/36267",
       "canonical_url": "https://datalaria.com/en/posts/safety-stock-reorder-point-calculator/",
-      "published_at_utc": "2026-11-27T06:51:59Z"
+      "published_at_utc": "2026-11-27T06:51:57Z"
     }
   ]
 }
