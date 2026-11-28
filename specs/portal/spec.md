@@ -1,8 +1,8 @@
 # SPEC-PORTAL: Catálogo de Aplicaciones & Escaparate Tecnológico (`apps-showcase`)
 
 > **Identificador:** `SPEC-PORTAL`  
-> **Versión:** `v1.3.0`  
-> **Fecha:** `2026-11-24` (Hito 9.4 — Despliegue Visual 3 Verticales de Marca `specs/_brand.md` & `ADR-034`)  
+> **Versión:** `v1.4.0`  
+> **Fecha:** `2026-11-28` (Rediseño Home `01 / Recursos`: Cuadrícula `3 + 1` de Mega Bundles con miniaturas reales `1600×980` y embargo automático `Coming Soon` hasta `30/11` y `03/12`)  
 > **Estado:** `APROBADO & EN PRODUCCIÓN`  
 > **Ámbito:** Portal Editorial Hugo (`content/{es,en}/apps/`, `layouts/apps/`, `layouts/partials/index_profile.html`, `data/apps/`, `assets/css/extended/apps-showcase.css`, `assets/css/extended/home-portal.css`)  
 > **Normativa:** [specs/_constitution.md](../../specs/_constitution.md) (Artículos 7, 8 y 10), [specs/_brand.md](../../specs/_brand.md) y [specs/DECISIONS.md](../../specs/DECISIONS.md) (ADR-007, ADR-009, ADR-010, ADR-011, ADR-018, ADR-034)
@@ -143,6 +143,11 @@ Para garantizar máxima resiliencia arquitectónica si en algún fichero YAML fa
      1. **Botón `Detalles ℹ️` (`Details ℹ️`):** Abre el modal interactivo (`openModal('suite-01')`) mostrando la vista previa visual compuesta (`suite-01-preview-es.png` / `suite-01-preview-en.png`), entregables, características clave, enlace al artículo técnico y CTA de compra.
      2. **Botón `Artículo técnico 📖` (`Technical Article 📖`):** Enlaza directamente al Post Pilar Maestro de la Suite (`/es/posts/estrategia-corporativa-mba-framework-cuantitativo/` y `/en/posts/corporate-strategy-mba-quantitative-framework/` para Suite 01; indicador `Artículo próximamente` / `Article coming soon` cuando el post pilar aún no está publicado).
      3. **Botón `Comprar Suite →` (`Buy Suite →`):** Enlace directo al checkout embebido de Lemon Squeezy con precio actual y precio original tachado (`19€` vs `28€` en Suite 01).
+6. **Escaparate de Mega Bundles en la Portada (`01 / Recursos · Executive Decision Packs` en `index_profile.html` y `home-portal.css`):**
+   - **Arquitectura `3 + 1` sin colapso de columnas:** Cuadrícula de 3 columnas iguales (`grid-template-columns: repeat(3, minmax(0, 1fr))` en escritorio, `1fr` en móvil `<= 720px`) para los 3 Mega Bundles de Suite (`suite-01`, `suite-02`, `suite-03`) + tarjeta destacada a ancho completo (`grid-column: 1 / -1`, `container-type: inline-size`) para el **Mega Bundle General de las 3 Suites** (`mega-bundle`, `13 Kits`, `39€` frente a `82€`).
+   - **Miniaturas Reales Bilingües (`1600×980`, `CLS = 0`):** Cada tarjeta muestra su captura compuesta real (`/images/recursos/{suite-01,suite-02,suite-03,mega-bundle}-preview-{es,en}.png`) con `aspect-ratio: 1600 / 980`, `object-fit: cover`, `loading="lazy"` y badge de estado superpuesto.
+   - **Embargo Automático por Fecha (`publishDate` vs `now`, `INV-AUTO-6`):** Cada tarjeta evalúa `$isLive := ge now (time.AsTime .publishDate)`. Antes de la fecha (`suite-03` hasta `2026-11-30` y `mega-bundle` hasta `2026-12-03`), se muestra estado **"Coming Soon"** con fecha de estreno y sin botón de checkout activo; al superarse la fecha en build de producción, se desbloquean automáticamente el botón Lemon Squeezy (`?embed=1`) y el enlace al artículo técnico.
+   - **Higiene Visual & Modern Web Guidance (`card`, `css-layout`):** Iconos SVG inline (cero glifos tofu `□`), `flex-wrap: wrap` en botoneras secundarias, layout horizontal adaptable vía `@container` en la tarjeta Mega Bundle General, contraste WCAG 2.2 AA en modo claro y oscuro, y `scrollWidth <= clientWidth` en `1440×900` y `390×844`.
 
 ---
 

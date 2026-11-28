@@ -224,43 +224,56 @@
   {{- if and .RelPermalink (not .Draft) }}{{ $resPage = . }}{{ end -}}
 {{- end -}}
 {{- $resCards := slice
-  (dict "icon" "🏛️"
-        "name" (cond $isES "Pack Suite 1: Estrategia MBA" "Suite 1: MBA Corporate Strategy")
-        "detail" (cond $isES "Colección estratégica completa: PESTEL, Porter, DAFO-CAME, BCG y McKinsey con 25 entregables cuantitativos." "Complete strategic suite: PESTEL, Porter, SWOT-TOWS, Dynamic BCG, and McKinsey/GE with 25 quantitative deliverables.")
-        "meta" (cond $isES "5 Packs · Ahorro 32% (antes 28€)" "5 Packs · Save 32% (was 28€)")
+  (dict "tag" (cond $isES "Suite 01 · 5 Packs" "Suite 01 · 5 Packs")
+        "name" (cond $isES "Mega Bundle Suite 1: Estrategia MBA" "Suite 1 Mega Bundle: MBA Strategy")
+        "detail" (cond $isES "PESTEL, 5 Fuerzas de Porter, DAFO-CAME, Matriz BCG y McKinsey/GE con 25 entregables cuantitativos." "PESTEL, Porter 5 Forces, SWOT-TOWS, Dynamic BCG & McKinsey/GE with 25 quantitative deliverables.")
+        "meta" (cond $isES "Ahorro 32%" "Save 32%")
+        "origPrice" "28€"
         "price" "19€"
         "packId" "suite-01"
-        "available" true
+        "publishDate" "2026-11-01"
+        "launchLabel" ""
+        "thumb" (printf "/images/recursos/suite-01-preview-%s.png" (cond $isES "es" "en"))
         "checkoutUrl" "https://datalaria.lemonsqueezy.com/checkout/buy/6afa0df4-fec1-4227-a183-9e5bcc738bdd?embed=1"
         "path" (cond $isES "/posts/estrategia-corporativa-mba-framework-cuantitativo" "/posts/corporate-strategy-mba-quantitative-framework"))
-  (dict "icon" "⚖️"
-        "name" (cond $isES "Pack Suite 2: Toma de Decisiones" "Suite 2: Decision Making")
-        "detail" (cond $isES "Colección completa de decisión: Matriz DAR CMMI, RICE/ICE Ágil y Business Case Financiero con 15 entregables cuantitativos." "Complete decision suite: CMMI DAR Matrix, Agile RICE/ICE, and DCF Business Case with 15 quantitative deliverables.")
-        "meta" (cond $isES "3 Packs · Ahorro 25% (antes 20€)" "3 Packs · Save 25% (was 20€)")
+  (dict "tag" (cond $isES "Suite 02 · 3 Packs" "Suite 02 · 3 Packs")
+        "name" (cond $isES "Mega Bundle Suite 2: Toma de Decisiones" "Suite 2 Mega Bundle: Decision Making")
+        "detail" (cond $isES "Matriz DAR CMMI, Priorización RICE/ICE Ágil y Business Case Financiero DCF con 15 entregables." "CMMI DAR Matrix, Agile RICE/ICE Prioritization & DCF Business Case with 15 deliverables.")
+        "meta" (cond $isES "Ahorro 25%" "Save 25%")
+        "origPrice" "20€"
         "price" "15€"
         "packId" "suite-02"
-        "available" true
+        "publishDate" "2026-11-08"
+        "launchLabel" ""
+        "thumb" (printf "/images/recursos/suite-02-preview-%s.png" (cond $isES "es" "en"))
         "checkoutUrl" "https://datalaria.lemonsqueezy.com/checkout/buy/4e2ca8b1-a6f9-43b7-851a-72c44d9bc13d?embed=1"
         "path" (cond $isES "/posts/toma-decisiones-priorizacion-framework-cuantitativo" "/posts/decision-making-prioritization-quantitative-framework"))
-  (dict "icon" "📈"
-        "name" (cond $isES "Cuadro de Mando EVM / Valor Ganado (Curva S)" "EVM Dashboard / Earned Value (S-Curve)")
-        "detail" (cond $isES "Control quirúrgico de costes y plazos en proyectos con índices CPI/SPI, proyecciones EAC y Curva S ejecutiva." "Surgical control of costs and schedules with CPI/SPI indices, EAC forecasts, and executive S-Curve.")
-        "meta" (cond $isES "PMI Standard · ANSI (antes 25€)" "PMI Standard · ANSI (was 25€)")
-        "price" "8€"
-        "packId" "pack-evm"
-        "available" true
-        "checkoutUrl" "https://datalaria.lemonsqueezy.com/checkout/buy/188950c2-0fd9-4331-919f-237880e2c78b?embed=1"
-        "path" (cond $isES "/posts/cuadro-mando-evm-valor-ganado" "/posts/earned-value-management-evm-dashboard"))
-  (dict "icon" "👑"
-        "name" (cond $isES "MEGA BUNDLE: Executive Suite" "MEGA BUNDLE: Executive Suite")
-        "detail" (cond $isES "Arsenal completo de 13 herramientas cuantitativas con modelos Excel, decks 16:9 y guías PDF." "Complete arsenal of 13 quantitative tools with Excel models, 16:9 decks and PDF guides.")
-        "meta" (cond $isES "13 Kits · Ahorro >52% · antes 82€" "13 Kits · Save >52% · was 82€")
+  (dict "tag" (cond $isES "Suite 03 · 5 Packs" "Suite 03 · 5 Packs")
+        "name" (cond $isES "Mega Bundle Suite 3: Control Operativo" "Suite 3 Mega Bundle: Operational Control")
+        "detail" (cond $isES "Matriz RACI, AMFE/FMEA, Estimación PERT, Cuadro EVM Curva S y Stock de Seguridad ROP (25 entregables)." "RACI Matrix, FMEA, 3-Point PERT, EVM S-Curve & Safety Stock ROP (25 deliverables).")
+        "meta" (cond $isES "Ahorro 35%" "Save 35%")
+        "origPrice" "34€"
+        "price" "22€"
+        "packId" "suite-03"
+        "publishDate" "2026-11-30"
+        "launchLabel" (cond $isES "30/11" "Nov 30")
+        "thumb" (printf "/images/recursos/suite-03-preview-%s.png" (cond $isES "es" "en"))
+        "checkoutUrl" "https://datalaria.lemonsqueezy.com/checkout/buy/ee578b8e-29d6-4361-ba19-4b0b5abfd89a?embed=1"
+        "path" (cond $isES "/posts/control-operativo-pmbok-framework-cuantitativo" "/posts/operational-control-pmbok-quantitative-framework"))
+  (dict "tag" (cond $isES "Mega Bundle General · 3 Suites · 13 Kits" "Total Mega Bundle · 3 Suites · 13 Kits")
+        "name" (cond $isES "MEGA BUNDLE TOTAL: Las 3 Suites Ejecutivas" "TOTAL MEGA BUNDLE: All 3 Executive Suites")
+        "detail" (cond $isES "Arsenal completo con las 3 Suites (Estrategia MBA, Toma de Decisiones y Control Operativo PMBOK): 13 modelos Excel protegidos, 13 decks PowerPoint 16:9 C-Level y 13 guías metodológicas PDF bilingües." "Complete arsenal across all 3 Suites (MBA Strategy, Decision Making & PMBOK Operational Control): 13 protected Excel models, 13 C-Level 16:9 PowerPoint decks & 13 bilingual PDF guides.")
+        "meta" (cond $isES "Ahorro >52%" "Save >52%")
+        "origPrice" "82€"
         "price" "39€"
         "packId" "mega-bundle"
-        "available" true
+        "publishDate" "2026-12-03"
+        "launchLabel" (cond $isES "03/12" "Dec 3")
         "isFeatured" true
-        "trustMicro" (cond $isES "⚡ Descarga inmediata (.ZIP)" "⚡ Instant download (.ZIP)")
-        "checkoutUrl" "https://datalaria.lemonsqueezy.com/checkout/buy/88a976a2-f0e5-4e8e-a954-516767c7fed5?embed=1")
+        "thumb" (printf "/images/recursos/mega-bundle-preview-%s.png" (cond $isES "es" "en"))
+        "trustMicro" (cond $isES "Descarga inmediata (.ZIP) · Factura B2B" "Instant download (.ZIP) · B2B Invoice")
+        "checkoutUrl" "https://datalaria.lemonsqueezy.com/checkout/buy/88a976a2-f0e5-4e8e-a954-516767c7fed5?embed=1"
+        "path" (cond $isES "/posts/executive-decision-packs-framework-cuantitativo" "/posts/executive-decision-packs-quantitative-framework"))
 -}}
 
 {{- /* ---------- Apps & Systems (Prioritized by 3 Brand Verticals: Executive B2B -> AI Systems -> Open Lab) ---------- */ -}}
@@ -467,46 +480,71 @@
                 {{- range $resCards }}
                 {{- $guide := false }}
                 {{- with .path }}{{ with site.GetPage . }}{{ if and .RelPermalink (not .Draft) (le .Date now) }}{{ $guide = . }}{{ end }}{{ end }}{{ end }}
-                <div class="dlh-res-card{{ if .isFeatured }} dlh-res-card--featured{{ end }}">
-                    <div>
-                        <div class="dlh-res-icon" aria-hidden="true">{{ .icon }}</div>
-                        <div class="dlh-res-name">{{ .name }}</div>
-                        <div class="dlh-res-detail">{{ .detail }}</div>
-                    </div>
-                    <div class="dlh-res-bottom">
-                        <div class="dlh-res-meta">{{ .meta }} · <strong style="color: var(--primary);">{{ .price }}</strong></div>
-                        <div class="dlh-res-actions">
-                            {{- if .available }}
-                            <a class="dlh-btn-pack-dl lemonsqueezy-button" href="{{ .checkoutUrl }}" title="{{ if $isES }}Descargar kit{{ else }}Download pack{{ end }}">
-                                {{ $t.dlPack }} ({{ .price }}) →
-                            </a>
+                {{- $isLive := ge now (time.AsTime .publishDate) }}
+                {{- $catalogBase := cond $isES "/es/recursos/" "/en/resources/" }}
+                {{- $detailsUrl := printf "%s#%s" $catalogBase .packId }}
+                <article class="dlh-res-card{{ if .isFeatured }} dlh-res-card--featured{{ end }}{{ if not $isLive }} dlh-res-card--soon{{ end }}">
+                    <div class="dlh-res-card-inner">
+                        <a class="dlh-res-media" href="{{ $detailsUrl }}" aria-label="{{ .name }}">
+                            <img class="dlh-res-thumb" src="{{ .thumb }}" alt="{{ .name }}" width="1600" height="980" decoding="async">
+                            {{- if $isLive }}
+                            <span class="dlh-res-pill dlh-res-pill--live">{{ $t.badgeLive }}</span>
                             {{- else }}
-                            <span class="dlh-pack-soon-badge">{{ $t.packSoon }}</span>
+                            <span class="dlh-res-pill dlh-res-pill--soon">Coming Soon · {{ .launchLabel }}</span>
                             {{- end }}
-
-                            {{- if .trustMicro }}
-                            <span class="dlh-trust-micro">{{ .trustMicro }}</span>
-                            {{- else if and $guide .packId }}
-                            <div class="dlh-res-links-row">
-                                <a class="dlh-guide-link" href="{{ cond $isES "/es/recursos/" "/en/resources/" }}#{{ .packId }}" title="{{ if $isES }}Ver detalles del pack{{ else }}View pack details{{ end }}">
-                                    {{ if $isES }}Detalles ℹ️{{ else }}Details ℹ️{{ end }}
-                                </a>
-                                <a class="dlh-guide-link" href="{{ $guide.RelPermalink }}" title="{{ if $isES }}Leer artículo técnico{{ else }}Read technical article{{ end }}">
-                                    {{ if $isES }}Artículo técnico 📖{{ else }}Technical article 📖{{ end }}
-                                </a>
+                        </a>
+                        <div class="dlh-res-content">
+                            <div class="dlh-res-body">
+                                <span class="dlh-res-kicker">{{ .tag }}</span>
+                                <h4 class="dlh-res-name">{{ .name }}</h4>
+                                <p class="dlh-res-detail">{{ .detail }}</p>
                             </div>
-                            {{- else if $guide }}
-                            <a class="dlh-guide-link" href="{{ $guide.RelPermalink }}" title="{{ $t.readGuide }}: {{ $guide.Title }}">
-                                {{ $t.readGuide }} →
-                            </a>
-                            {{- else }}
-                            <a class="dlh-guide-link" href="{{ cond $isES "/es/recursos/" "/en/resources/" }}#{{ .packId }}" title="{{ if $isES }}Ver entregables incluidos{{ else }}View included deliverables{{ end }}">
-                                {{ if $isES }}Ver entregables incluidos →{{ else }}View included deliverables →{{ end }}
-                            </a>
-                            {{- end }}
+                            <footer class="dlh-res-bottom">
+                                <div class="dlh-res-price-row">
+                                    <span class="dlh-res-price-now">{{ .price }}</span>
+                                    {{- with .origPrice }}
+                                    <span class="dlh-res-price-old">{{ . }}</span>
+                                    {{- end }}
+                                    <span class="dlh-res-save-tag">{{ .meta }}</span>
+                                </div>
+                                <div class="dlh-res-actions">
+                                    {{- if $isLive }}
+                                    <a class="dlh-btn-pack-dl lemonsqueezy-button" href="{{ .checkoutUrl }}" title="{{ if $isES }}Descargar pack{{ else }}Download pack{{ end }}">
+                                        <span>{{ $t.dlPack }} ({{ .price }})</span>
+                                        <span aria-hidden="true">→</span>
+                                    </a>
+                                    {{- else }}
+                                    <span class="dlh-pack-soon-badge" role="status">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                                        <span>Coming Soon · {{ .launchLabel }}</span>
+                                    </span>
+                                    {{- end }}
+
+                                    {{- if and $isLive .trustMicro }}
+                                    <span class="dlh-trust-micro">{{ .trustMicro }}</span>
+                                    {{- end }}
+
+                                    <div class="dlh-res-links-row">
+                                        <a class="dlh-guide-link" href="{{ $detailsUrl }}" title="{{ if $isES }}Ver detalles del pack{{ else }}View pack details{{ end }}">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                                            <span>{{ if $isES }}Detalles{{ else }}Details{{ end }}</span>
+                                        </a>
+                                        {{- if and $isLive $guide }}
+                                        <a class="dlh-guide-link" href="{{ $guide.RelPermalink }}" title="{{ if $isES }}Leer artículo técnico{{ else }}Read technical article{{ end }}">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                                            <span>{{ if $isES }}Artículo{{ else }}Article{{ end }}</span>
+                                        </a>
+                                        {{- else }}
+                                        <span class="dlh-guide-soon-text" title="{{ if $isES }}Publicación programada el {{ .launchLabel }}{{ else }}Scheduled release {{ .launchLabel }}{{ end }}">
+                                            {{ if $isES }}Estreno {{ .launchLabel }}{{ else }}Launches {{ .launchLabel }}{{ end }}
+                                        </span>
+                                        {{- end }}
+                                    </div>
+                                </div>
+                            </footer>
                         </div>
                     </div>
-                </div>
+                </article>
                 {{- end }}
             </div>
 
