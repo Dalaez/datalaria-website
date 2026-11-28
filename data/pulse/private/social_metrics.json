@@ -1,11 +1,11 @@
 {
   "version": "1.0.0",
   "visibility": "private",
-  "generated_at": "2026-11-28T08:13:06.623693+00:00",
+  "generated_at": "2026-11-28T11:29:38.709042+00:00",
   "platforms": {
     "devto": {
       "status": "ok",
-      "last_synced_at": "2026-11-28T08:13:06.623693+00:00",
+      "last_synced_at": "2026-11-28T11:29:38.709042+00:00",
       "articles_count": 216,
       "matched_assets_count": 107,
       "total_views": 8993,
@@ -4520,6 +4520,20 @@
       }
     },
     "earned-value-management-evm-dashboard": {
+      "coderlegion": {
+        "views": 44,
+        "views_es": 0,
+        "views_en": 44,
+        "reactions": 0,
+        "comments": 0,
+        "articles_count": 1,
+        "external_ids": [
+          "35848"
+        ],
+        "urls": [
+          "https://coderlegion.com/posts/35848"
+        ]
+      },
       "devto": {
         "views": 0,
         "views_es": 0,
@@ -4534,20 +4548,6 @@
         "urls": [
           "https://dev.to/datalaria/earned-value-management-evm-s-curve-27-eia-748-guidelines-agile-evm-8a6",
           "https://dev.to/datalaria/cuadro-de-mando-evm-valor-ganado-27-criterios-eia-748-y-agile-evm-em6"
-        ]
-      },
-      "coderlegion": {
-        "views": 44,
-        "views_es": 0,
-        "views_en": 44,
-        "reactions": 0,
-        "comments": 0,
-        "articles_count": 1,
-        "external_ids": [
-          "35848"
-        ],
-        "urls": [
-          "https://coderlegion.com/posts/35848"
         ]
       }
     },
@@ -5488,6 +5488,20 @@
       }
     },
     "pulse-part3": {
+      "coderlegion": {
+        "views": 56,
+        "views_es": 0,
+        "views_en": 56,
+        "reactions": 0,
+        "comments": 0,
+        "articles_count": 1,
+        "external_ids": [
+          "36135"
+        ],
+        "urls": [
+          "https://coderlegion.com/posts/36135"
+        ]
+      },
       "devto": {
         "views": 20,
         "views_es": 10,
@@ -5502,20 +5516,6 @@
         "urls": [
           "https://dev.to/datalaria/executive-table-kanban-board-and-monthly-calendar-in-react-19-over-static-data-g29",
           "https://dev.to/datalaria/tabla-ejecutiva-kanban-y-calendario-en-react-19-sobre-un-indice-estatico-2bnp"
-        ]
-      },
-      "coderlegion": {
-        "views": 56,
-        "views_es": 0,
-        "views_en": 56,
-        "reactions": 0,
-        "comments": 0,
-        "articles_count": 1,
-        "external_ids": [
-          "36135"
-        ],
-        "urls": [
-          "https://coderlegion.com/posts/36135"
         ]
       }
     },
@@ -5664,6 +5664,20 @@
       }
     },
     "safety-stock-reorder-point-calculator": {
+      "coderlegion": {
+        "views": 45,
+        "views_es": 0,
+        "views_en": 45,
+        "reactions": 0,
+        "comments": 0,
+        "articles_count": 1,
+        "external_ids": [
+          "36267"
+        ],
+        "urls": [
+          "https://coderlegion.com/posts/36267"
+        ]
+      },
       "devto": {
         "views": 2,
         "views_es": 0,
@@ -5678,20 +5692,6 @@
         "urls": [
           "https://dev.to/datalaria/safety-stock-reorder-point-rop-engine-stochastic-convolution-eoq-iec-62402-lifecycle-control-1o0j",
           "https://dev.to/datalaria/calculadora-de-stock-de-seguridad-rop-convolucion-estocastica-eoq-y-ciclo-de-vida-iec-62402-1hj"
-        ]
-      },
-      "coderlegion": {
-        "views": 45,
-        "views_es": 0,
-        "views_en": 45,
-        "reactions": 0,
-        "comments": 0,
-        "articles_count": 1,
-        "external_ids": [
-          "36267"
-        ],
-        "urls": [
-          "https://coderlegion.com/posts/36267"
         ]
       }
     },

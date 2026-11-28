@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "visibility": "private",
   "days": 30,
-  "last_synced_at": "2026-11-28T08:13:02.904681+00:00",
+  "last_synced_at": "2026-11-28T11:29:36.427523+00:00",
   "sources_status": {
     "ga4_acquisition": "ok",
     "x_native": "standby_zero_cost"
@@ -109,14 +109,14 @@
     },
     "direct": {
       "channel": "direct",
-      "sessions_30d": 2690,
-      "sessions_es_30d": 1283,
-      "sessions_en_30d": 1381,
-      "en_share_pct": 51.8,
-      "users_30d": 2242,
-      "engaged_sessions_30d": 654,
-      "engagement_rate_pct": 24.3,
-      "avg_engagement_sec": 9.0,
+      "sessions_30d": 2702,
+      "sessions_es_30d": 1294,
+      "sessions_en_30d": 1382,
+      "en_share_pct": 51.6,
+      "users_30d": 2251,
+      "engaged_sessions_30d": 660,
+      "engagement_rate_pct": 24.4,
+      "avg_engagement_sec": 9.1,
       "key_events_30d": 7,
       "key_events_breakdown": {
         "begin_checkout": 4,
@@ -125,26 +125,26 @@
       },
       "conversion_rate_pct": 0.26,
       "sessions_prev_30d": 1066,
-      "trend_30d_pct": 152.3
+      "trend_30d_pct": 153.5
     },
     "other": {
       "channel": "other",
-      "sessions_30d": 346,
-      "sessions_es_30d": 185,
+      "sessions_30d": 351,
+      "sessions_es_30d": 190,
       "sessions_en_30d": 159,
-      "en_share_pct": 46.2,
-      "users_30d": 234,
-      "engaged_sessions_30d": 147,
-      "engagement_rate_pct": 42.5,
-      "avg_engagement_sec": 21.2,
+      "en_share_pct": 45.6,
+      "users_30d": 235,
+      "engaged_sessions_30d": 152,
+      "engagement_rate_pct": 43.3,
+      "avg_engagement_sec": 21.0,
       "key_events_30d": 4,
       "key_events_breakdown": {
         "begin_checkout": 3,
         "join_waitlist_helix": 1
       },
-      "conversion_rate_pct": 1.16,
+      "conversion_rate_pct": 1.14,
       "sessions_prev_30d": 96,
-      "trend_30d_pct": 260.4
+      "trend_30d_pct": 265.6
     }
   },
   "by_asset": {
@@ -172,12 +172,12 @@
     },
     "mega-bundle": {
       "direct": {
-        "sessions_30d": 92,
-        "sessions_es_30d": 67,
+        "sessions_30d": 93,
+        "sessions_es_30d": 68,
         "sessions_en_30d": 25,
-        "users_30d": 49,
-        "engaged_sessions_30d": 77,
-        "avg_engagement_sec": 20.1,
+        "users_30d": 50,
+        "engaged_sessions_30d": 78,
+        "avg_engagement_sec": 19.9,
         "key_events_30d": 2,
         "key_events_breakdown": {
           "begin_checkout": 1,
@@ -412,12 +412,12 @@
     },
     "john_von_neumann": {
       "direct": {
-        "sessions_30d": 22,
-        "sessions_es_30d": 3,
+        "sessions_30d": 24,
+        "sessions_es_30d": 5,
         "sessions_en_30d": 19,
-        "users_30d": 20,
+        "users_30d": 22,
         "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 1.9,
+        "avg_engagement_sec": 1.7,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
@@ -830,12 +830,12 @@
         "key_events_breakdown": {}
       },
       "other": {
-        "sessions_30d": 2,
-        "sessions_es_30d": 0,
+        "sessions_30d": 4,
+        "sessions_es_30d": 2,
         "sessions_en_30d": 2,
-        "users_30d": 2,
-        "engaged_sessions_30d": 2,
-        "avg_engagement_sec": 41.5,
+        "users_30d": 3,
+        "engaged_sessions_30d": 4,
+        "avg_engagement_sec": 21.8,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       },
@@ -944,6 +944,28 @@
         "users_30d": 1,
         "engaged_sessions_30d": 0,
         "avg_engagement_sec": 0.0,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      }
+    },
+    "economia_oculta_ia": {
+      "direct": {
+        "sessions_30d": 13,
+        "sessions_es_30d": 1,
+        "sessions_en_30d": 12,
+        "users_30d": 12,
+        "engaged_sessions_30d": 0,
+        "avg_engagement_sec": 0.3,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "google_organic": {
+        "sessions_30d": 6,
+        "sessions_es_30d": 0,
+        "sessions_en_30d": 6,
+        "users_30d": 2,
+        "engaged_sessions_30d": 1,
+        "avg_engagement_sec": 4.2,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -1104,28 +1126,6 @@
         "users_30d": 3,
         "engaged_sessions_30d": 1,
         "avg_engagement_sec": 127.7,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
-    "economia_oculta_ia": {
-      "direct": {
-        "sessions_30d": 12,
-        "sessions_es_30d": 1,
-        "sessions_en_30d": 11,
-        "users_30d": 11,
-        "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 0.3,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "google_organic": {
-        "sessions_30d": 6,
-        "sessions_es_30d": 0,
-        "sessions_en_30d": 6,
-        "users_30d": 2,
-        "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 4.2,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -1992,6 +1992,40 @@
         "key_events_breakdown": {}
       }
     },
+    "obs-management": {
+      "other": {
+        "sessions_30d": 6,
+        "sessions_es_30d": 6,
+        "sessions_en_30d": 0,
+        "users_30d": 1,
+        "engaged_sessions_30d": 4,
+        "avg_engagement_sec": 18.7,
+        "key_events_30d": 1,
+        "key_events_breakdown": {
+          "begin_checkout": 1
+        }
+      },
+      "direct": {
+        "sessions_30d": 7,
+        "sessions_es_30d": 4,
+        "sessions_en_30d": 3,
+        "users_30d": 5,
+        "engaged_sessions_30d": 2,
+        "avg_engagement_sec": 3.0,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      },
+      "linkedin": {
+        "sessions_30d": 2,
+        "sessions_es_30d": 2,
+        "sessions_en_30d": 0,
+        "users_30d": 2,
+        "engaged_sessions_30d": 0,
+        "avg_engagement_sec": 0.0,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      }
+    },
     "safety-stock-reorder-point-calculator": {
       "direct": {
         "sessions_30d": 9,
@@ -2100,40 +2134,6 @@
         "users_30d": 1,
         "engaged_sessions_30d": 1,
         "avg_engagement_sec": 44.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
-    "obs-management": {
-      "other": {
-        "sessions_30d": 5,
-        "sessions_es_30d": 5,
-        "sessions_en_30d": 0,
-        "users_30d": 1,
-        "engaged_sessions_30d": 3,
-        "avg_engagement_sec": 20.6,
-        "key_events_30d": 1,
-        "key_events_breakdown": {
-          "begin_checkout": 1
-        }
-      },
-      "direct": {
-        "sessions_30d": 7,
-        "sessions_es_30d": 4,
-        "sessions_en_30d": 3,
-        "users_30d": 5,
-        "engaged_sessions_30d": 2,
-        "avg_engagement_sec": 3.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      },
-      "linkedin": {
-        "sessions_30d": 2,
-        "sessions_es_30d": 2,
-        "sessions_en_30d": 0,
-        "users_30d": 2,
-        "engaged_sessions_30d": 0,
-        "avg_engagement_sec": 0.0,
         "key_events_30d": 0,
         "key_events_breakdown": {}
       }
@@ -2690,6 +2690,18 @@
         "key_events_breakdown": {}
       }
     },
+    "edsger_dijkstra": {
+      "direct": {
+        "sessions_30d": 3,
+        "sessions_es_30d": 3,
+        "sessions_en_30d": 0,
+        "users_30d": 2,
+        "engaged_sessions_30d": 2,
+        "avg_engagement_sec": 154.7,
+        "key_events_30d": 0,
+        "key_events_breakdown": {}
+      }
+    },
     "eu_ai_act": {
       "direct": {
         "sessions_30d": 3,
@@ -3192,18 +3204,6 @@
         "key_events_breakdown": {}
       }
     },
-    "edsger_dijkstra": {
-      "direct": {
-        "sessions_30d": 1,
-        "sessions_es_30d": 1,
-        "sessions_en_30d": 0,
-        "users_30d": 1,
-        "engaged_sessions_30d": 1,
-        "avg_engagement_sec": 16.0,
-        "key_events_30d": 0,
-        "key_events_breakdown": {}
-      }
-    },
     "helix-part3": {
       "other": {
         "sessions_30d": 1,
@@ -3435,9 +3435,9 @@
       "other": 4
     },
     "2026-11-28": {
-      "direct": 13,
-      "google_organic": 1,
-      "other": 1
+      "direct": 21,
+      "other": 3,
+      "google_organic": 1
     }
   },
   "records": [
@@ -3449,10 +3449,10 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 195,
-      "users": 125,
-      "engaged_sessions": 101,
-      "engagement_sec": 3915.0,
+      "sessions": 199,
+      "users": 128,
+      "engaged_sessions": 103,
+      "engagement_sec": 3923.0,
       "key_events": 4,
       "key_events_breakdown": {
         "begin_checkout": 2,
@@ -3512,10 +3512,10 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 67,
-      "users": 30,
-      "engaged_sessions": 57,
-      "engagement_sec": 1514.0,
+      "sessions": 68,
+      "users": 31,
+      "engaged_sessions": 58,
+      "engagement_sec": 1516.0,
       "key_events": 2,
       "key_events_breakdown": {
         "begin_checkout": 1,
@@ -3530,10 +3530,10 @@
       "source": "(direct)",
       "medium": "(none)",
       "campaign": "(direct)",
-      "sessions": 53,
+      "sessions": 54,
       "users": 4,
-      "engaged_sessions": 50,
-      "engagement_sec": 1044.0,
+      "engaged_sessions": 51,
+      "engagement_sec": 1053.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -3575,10 +3575,10 @@
       "source": "localhost:1313",
       "medium": "referral",
       "campaign": "(referral)",
-      "sessions": 36,
+      "sessions": 38,
       "users": 1,
-      "engaged_sessions": 28,
-      "engagement_sec": 490.0,
+      "engaged_sessions": 30,
+      "engagement_sec": 521.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -3809,6 +3809,21 @@
     },
     {
       "channel": "direct",
+      "path": "/es/sobre-mi",
+      "asset_id": null,
+      "lang": "es",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 18,
+      "users": 18,
+      "engaged_sessions": 15,
+      "engagement_sec": 132.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
       "path": "/en/posts/graphrag",
       "asset_id": "graphrag",
       "lang": "en",
@@ -3849,21 +3864,6 @@
       "users": 12,
       "engaged_sessions": 7,
       "engagement_sec": 212.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/es/sobre-mi",
-      "asset_id": null,
-      "lang": "es",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 17,
-      "users": 17,
-      "engaged_sessions": 14,
-      "engagement_sec": 132.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -4124,6 +4124,21 @@
     },
     {
       "channel": "direct",
+      "path": "/en/posts/hidden_economics_ai",
+      "asset_id": "economia_oculta_ia",
+      "lang": "en",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 12,
+      "users": 11,
+      "engaged_sessions": 0,
+      "engagement_sec": 0.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
       "path": "/en/posts/prompt_injection",
       "asset_id": "prompt_injection",
       "lang": "en",
@@ -4287,21 +4302,6 @@
       "users": 11,
       "engaged_sessions": 2,
       "engagement_sec": 60.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/en/posts/hidden_economics_ai",
-      "asset_id": "economia_oculta_ia",
-      "lang": "en",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 11,
-      "users": 10,
-      "engaged_sessions": 0,
-      "engagement_sec": 0.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -5146,6 +5146,23 @@
       "key_events_breakdown": {}
     },
     {
+      "channel": "other",
+      "path": "/es/apps/obs-management",
+      "asset_id": "obs-management",
+      "lang": "es",
+      "source": "localhost:1313",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 6,
+      "users": 1,
+      "engaged_sessions": 4,
+      "engagement_sec": 112.0,
+      "key_events": 1,
+      "key_events_breakdown": {
+        "begin_checkout": 1
+      }
+    },
+    {
       "channel": "direct",
       "path": "/es/posts/calculadora-stock-seguridad-rop",
       "asset_id": "safety-stock-reorder-point-calculator",
@@ -5403,23 +5420,6 @@
       "key_events_breakdown": {}
     },
     {
-      "channel": "other",
-      "path": "/es/apps/obs-management",
-      "asset_id": "obs-management",
-      "lang": "es",
-      "source": "localhost:1313",
-      "medium": "referral",
-      "campaign": "(referral)",
-      "sessions": 5,
-      "users": 1,
-      "engaged_sessions": 3,
-      "engagement_sec": 103.0,
-      "key_events": 1,
-      "key_events_breakdown": {
-        "begin_checkout": 1
-      }
-    },
-    {
       "channel": "google_organic",
       "path": "/en",
       "asset_id": null,
@@ -5626,6 +5626,21 @@
       "users": 4,
       "engaged_sessions": 1,
       "engagement_sec": 22.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
+      "path": "/es/posts/john_von_neumann",
+      "asset_id": "john_von_neumann",
+      "lang": "es",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 5,
+      "users": 5,
+      "engaged_sessions": 1,
+      "engagement_sec": 38.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -7073,6 +7088,21 @@
     },
     {
       "channel": "direct",
+      "path": "/es/posts/edsger_dijkstra",
+      "asset_id": "edsger_dijkstra",
+      "lang": "es",
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "sessions": 3,
+      "users": 2,
+      "engaged_sessions": 2,
+      "engagement_sec": 464.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "direct",
       "path": "/es/posts/eu_ai_act",
       "asset_id": "eu_ai_act",
       "lang": "es",
@@ -7128,21 +7158,6 @@
       "users": 2,
       "engaged_sessions": 0,
       "engagement_sec": 0.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/es/posts/john_von_neumann",
-      "asset_id": "john_von_neumann",
-      "lang": "es",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 3,
-      "users": 3,
-      "engaged_sessions": 1,
-      "engagement_sec": 38.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -9588,6 +9603,21 @@
       "users": 2,
       "engaged_sessions": 0,
       "engagement_sec": 7.0,
+      "key_events": 0,
+      "key_events_breakdown": {}
+    },
+    {
+      "channel": "other",
+      "path": "/es/posts/toma-decisiones-priorizacion-framework-cuantitativo",
+      "asset_id": "decision-making-prioritization-quantitative-framework",
+      "lang": "es",
+      "source": "localhost:1313",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "sessions": 2,
+      "users": 1,
+      "engaged_sessions": 2,
+      "engagement_sec": 4.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },
@@ -14452,21 +14482,6 @@
       "users": 1,
       "engaged_sessions": 0,
       "engagement_sec": 4.0,
-      "key_events": 0,
-      "key_events_breakdown": {}
-    },
-    {
-      "channel": "direct",
-      "path": "/es/posts/edsger_dijkstra",
-      "asset_id": "edsger_dijkstra",
-      "lang": "es",
-      "source": "(direct)",
-      "medium": "(none)",
-      "campaign": "(direct)",
-      "sessions": 1,
-      "users": 1,
-      "engaged_sessions": 1,
-      "engagement_sec": 16.0,
       "key_events": 0,
       "key_events_breakdown": {}
     },

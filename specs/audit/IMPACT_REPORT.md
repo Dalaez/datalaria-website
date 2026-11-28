@@ -1,7 +1,7 @@
 # 📈 Primera Auditoría Estratégica de Impacto SEO, Tráfico y Monetización (E02)
 
 > **Autor:** [`E02-seo-impact-strategist`](file:///c:/Users/dalae/OneDrive/Emprendiendo/datalaria/specs/squad-editorial/E02-seo-impact-strategist.md) · **Célula:** Dirección & Inteligencia Estratégica  
-> **Fecha de Emisión:** 2026-11-28 08:13 UTC  
+> **Fecha de Emisión:** 2026-11-28 11:29 UTC  
 > **Fuentes de Verdad:** `data/pulse/private/index.json` (191 activos), `metrics.json` (GA4 + GSC 30d/prev 30d), `channel_metrics.json` (GA4 Acquisition + KeyEvents), `social_metrics.json` (Dev.to + CoderLegion APIs gratuitas), `distribution_ledger.json`, `gsc_queries.json`, `monthly_metrics.json` (14 meses) y `backlog.yaml`.  
 > **Invariantes:** Cumple estrictamente `INV-PULSE-6`, `INV-PULSE-11`, `INV-PULSE-12` (`ADR-033`, coste `0 €`) y Constitución Art. 1.3 (*Separación Cerebro vs. Músculo Cuantitativo*).
 
@@ -12,18 +12,18 @@
 | Métrica Macro | Valor Cuantitativo Real | Interpretación Estratégica E02 |
 | :--- | :---: | :--- |
 | **Total Activos Consolidados** | **191 activos** | 125 Posts bilingües (`112` publicados, `11` programados, `2` drafts), `10` Apps base y `21` Kits/Suites. |
-| **Tráfico Acumulado Posts (30d)** | **2,330 vistas** | Cuota inglés (EN): **50.7%** · Mediana: **10.0** · $P_{75}$: **24.0**. |
+| **Tráfico Acumulado Posts (30d)** | **2,355 vistas** | Cuota inglés (EN): **50.2%** · Mediana: **10.0** · $P_{75}$: **24.0**. |
 | **Visibilidad Orgánica GSC (30d)** | **23,532 imp. · 141 clics** | CTR medio: **0.60%** · Posición media ponderada: **10.7** · Cuota EN (imp.): **71.9%** · Prev 30d: `13,202` imp. / `72` clics · Marca (`datalaria`): `689` imp. / `0` clics. |
-| **Crecimiento Interanual (YoY)** | **+2474.7%** | De 198 vistas (2025-10) a 5,098 vistas (2026-11). |
+| **Crecimiento Interanual (YoY)** | **+2494.9%** | De 198 vistas (2025-10) a 5,138 vistas (2026-11). |
 | **Quick Wins de CTR / SERP** | **70 oportunidades** | `64` con impresiones reales GSC (`pos 4..20` o `CTR < 2.5%`) + truncamientos SERP. |
 | **Canibalización de Keywords** | **3 alertas** | Consultas GSC donde `>= 2` URLs del mismo idioma compiten por impresiones. |
 | **Huérfanos de Monetización** | **3 posts top** | Posts en el cuartil superior ($P_{75} \ge 24$) sin enlace ni shortcode a Kit/App. |
 | **Score Promedio del Backlog** | **79.1 / 100** | 6 propuestas estratégicas evaluadas por Editorial ROI Score. |
-| **Lectura Doble Capa (`00B` / `ADR-035`)** | **600 ses. externas netas** | Bruto GA4 intacto: `3,523` · Asistentes IA (GEO): **26** · Ruido excluido: `localhost` `116` + spam `117` (`aocr.org`) · Marca real GSC (sin `site:`): `48` imp. / `0` clics (`site:`: `662` imp.). |
+| **Lectura Doble Capa (`00B` / `ADR-035`)** | **600 ses. externas netas** | Bruto GA4 intacto: `3,540` · Asistentes IA (GEO): **26** · Ruido excluido: `localhost` `121` + spam `117` (`aocr.org`) · Marca real GSC (sin `site:`): `48` imp. / `0` clics (`site:`: `662` imp.). |
 
 ```mermaid
 flowchart TD
-    A["112 Artículos Publicados\n(2,330 vistas · 23,532 imp. GSC)"] --> B{"Triaje de Impacto E02"}
+    A["112 Artículos Publicados\n(2,355 vistas · 23,532 imp. GSC)"] --> B{"Triaje de Impacto E02"}
     B --> C["70 Quick Wins de CTR\n(64 oportunidades GSC reales)"]
     B --> D["3 Huérfanos de Monetización\n(Cuartil Superior >= 24 vistas sin Kit)"]
     B --> E["5 Categorías Evaluadas\n(Líder: Estrategia y Operaciones (88.9%))"]
@@ -38,15 +38,15 @@ flowchart TD
 
 | Categoría Oficial | Posts | Vistas 30d | % EN (Vistas) | Imp. GSC | Clics GSC | CTR GSC | Eng. Medio | Monetizados | Cobertura % | Editorial ROI Score |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Estrategia y Operaciones** | 18 | 667 (37.1/p) | 40.0% | 1,628 | 13 | 0.80% | 15.6s | 16/18 | **88.9%** | **77.4** |
-| **Pioneros y Referentes** | 14 | 336 (24.0/p) | 58.9% | 9,234 | 47 | 0.51% | 29.4s | 8/14 | **57.1%** | **64.3** |
-| **IA, Ingeniería y Proyectos** | 54 | 988 (18.3/p) | 49.9% | 5,096 | 24 | 0.47% | 16.4s | 28/54 | **51.9%** | **53.3** |
+| **Estrategia y Operaciones** | 18 | 669 (37.2/p) | 39.9% | 1,628 | 13 | 0.80% | 15.6s | 16/18 | **88.9%** | **77.4** |
+| **Pioneros y Referentes** | 14 | 358 (25.6/p) | 55.3% | 9,234 | 47 | 0.51% | 30.7s | 8/14 | **57.1%** | **66.9** |
+| **IA, Ingeniería y Proyectos** | 54 | 989 (18.3/p) | 49.9% | 5,096 | 24 | 0.47% | 16.4s | 28/54 | **51.9%** | **53.3** |
 | **Startups** | 14 | 199 (14.2/p) | 68.8% | 5,191 | 43 | 0.83% | 41.4s | 6/14 | **42.9%** | **53.2** |
 | **Cultura Tech y Media** | 12 | 140 (11.7/p) | 61.4% | 2,383 | 14 | 0.59% | 18.0s | 5/12 | **41.7%** | **38.3** |
 
 ### Diagnóstico Estratégico de Categorías:
-1. **Estrategia y Operaciones (Editorial ROI 77.4):** **37.1 vistas/post**, **1,628 impresiones GSC** (CTR **0.80%**), cuota inglés **40.0%** y **88.9%** de cobertura comercial (16/18).
-2. **Pioneros y Referentes (Editorial ROI 64.3):** **24.0 vistas/post**, **9,234 impresiones GSC** (CTR **0.51%**), cuota inglés **58.9%** y **57.1%** de cobertura comercial (8/14).
+1. **Estrategia y Operaciones (Editorial ROI 77.4):** **37.2 vistas/post**, **1,628 impresiones GSC** (CTR **0.80%**), cuota inglés **39.9%** y **88.9%** de cobertura comercial (16/18).
+2. **Pioneros y Referentes (Editorial ROI 66.9):** **25.6 vistas/post**, **9,234 impresiones GSC** (CTR **0.51%**), cuota inglés **55.3%** y **57.1%** de cobertura comercial (8/14).
 3. **IA, Ingeniería y Proyectos (Editorial ROI 53.3):** **18.3 vistas/post**, **5,096 impresiones GSC** (CTR **0.47%**), cuota inglés **49.9%** y **51.9%** de cobertura comercial (28/54).
 
 ---
@@ -58,7 +58,7 @@ Artículos priorizados combinando datos reales de **Google Search Console** (imp
 | ID / Activo | Top Query GSC | Imp. GSC | Pos. / CTR | Vistas 30d | Tipo de Oportunidad | Título Recomendado ES (35–95 chars) |
 | :--- | :--- | :---: | :---: | :---: | :--- | :--- |
 | [`kantorovich`](kantorovich) | `leonid kantorovich` | **3,514** | `7.6` / `0.5%` | 50 | `gsc_position_4_20` | **Leonid Kantorovich: El Matemático que Desafió a Stalin con la Programación Lineal** |
-| [`john_von_neumann`](john_von_neumann) | `john von neumann` | **1,907** | `10.0` / `0.5%` | 43 | `gsc_position_4_20` | **John von Neumann: Arquitectura de Computadores, Teoría de Juegos y Singularidad** |
+| [`john_von_neumann`](john_von_neumann) | `john von neumann` | **1,907** | `10.0` / `0.5%` | 45 | `gsc_position_4_20` | **John von Neumann: Arquitectura de Computadores, Teoría de Juegos y Singularidad** |
 | [`happyrobot`](happyrobot) | `happyrobot vs. other ai voice agents` | **1,350** | `6.9` / `0.2%` | 22 | `gsc_position_4_20` | **HappyRobot: Cómo los Agentes de Voz Autónomos Conquistaron la Logística Global** |
 | [`agentes_ia_operativa_sdd`](agentes_ia_operativa_sdd) | `sdd agents` | **20** | `19.9` / `5.0%` | 63 | `serp_snippet_truncation` | **Cómo Crear Agentes de IA para la Operativa Empresarial del Día a Día: De los SOPs al** |
 | [`pgvector_vs_vectordb`](pgvector_vs_vectordb) | `pgvector` | **1,666** | `12.9` / `0.5%` | 17 | `gsc_position_4_20` | **PostgreSQL con pgvector vs Vector DBs: Por Qué Casi Nadie Necesita Pinecone** |
@@ -130,16 +130,16 @@ $$\text{Editorial ROI Score} = 0.40 \times \text{Demanda SEO} + 0.35 \times \tex
 | `helix` | `initial_launch` (v1.0.0) | 2027-01-19 | `scheduled` | 5 | Ninguno | 4 | 🟢 Cobertura Programada | Campaña programada: coordinar con E06 sindicación omnicanal para el estreno el 2027-01-19. |
 | `mega-bundle` | `kit_launch` (v1.0.0) | 2026-12-03 | `scheduled` | 1 | Ninguno | 0 | 🟢 Cobertura Programada | Campaña programada: coordinar con E06 sindicación omnicanal para el estreno el 2026-12-03. |
 | `suite-03` | `kit_launch` (v1.0.0) | 2026-11-30 | `scheduled` | 1 | Ninguno | 0 | 🟢 Cobertura Programada | Campaña programada: coordinar con E06 sindicación omnicanal para el estreno el 2026-11-30. |
-| `obs-management` | `initial_launch` (v2.0.0) | 2026-05-17 | `published` | 21 | 2026-11-28 | 427 | ✅ Cubierto | Activo cubierto con 21 post(s) en producción (427 vistas/30d). |
-| `obs-management-v2.0.0` | `version_upgrade` (v2.0.0) | 2026-11-22 | `published` | 21 | 2026-11-28 | 427 | ✅ Cubierto | Versión v2.0.0 respaldada por los artículos de la serie. |
-| `obs-management-v1.0.1` | `version_upgrade` (v1.0.1) | 2026-10-24 | `published` | 21 | 2026-11-28 | 427 | ✅ Cubierto | Versión v1.0.1 respaldada por los artículos de la serie. |
+| `obs-management` | `initial_launch` (v2.0.0) | 2026-05-17 | `published` | 21 | 2026-11-28 | 447 | ✅ Cubierto | Activo cubierto con 21 post(s) en producción (447 vistas/30d). |
+| `obs-management-v2.0.0` | `version_upgrade` (v2.0.0) | 2026-11-22 | `published` | 21 | 2026-11-28 | 447 | ✅ Cubierto | Versión v2.0.0 respaldada por los artículos de la serie. |
+| `obs-management-v1.0.1` | `version_upgrade` (v1.0.1) | 2026-10-24 | `published` | 21 | 2026-11-28 | 447 | ✅ Cubierto | Versión v1.0.1 respaldada por los artículos de la serie. |
 | `pulse` | `initial_launch` (v1.6.0) | 2026-11-18 | `published` | 7 | 2026-11-25 | 354 | ✅ Cubierto | Activo cubierto con 7 post(s) en producción (354 vistas/30d). |
 | `pulse-v1.6.0` | `version_upgrade` (v1.6.0) | 2026-11-24 | `published` | 7 | 2026-11-25 | 354 | ✅ Cubierto | Versión v1.6.0 respaldada por los artículos de la serie. |
 | `pulse-v1.5.0` | `version_upgrade` (v1.5.0) | 2026-11-23 | `published` | 7 | 2026-11-25 | 354 | ✅ Cubierto | Versión v1.5.0 respaldada por los artículos de la serie. |
 | `pack-pulse` | `kit_launch` (v1.0.0) | 2026-11-18 | `published` | 4 | 2026-11-25 | 305 | ✅ Cubierto | Activo cubierto con 4 post(s) en producción (305 vistas/30d). |
-| `suite-02` | `kit_launch` (v1.0.0) | 2026-11-08 | `published` | 4 | 2026-11-08 | 169 | ✅ Cubierto | Activo cubierto con 4 post(s) en producción (169 vistas/30d). |
+| `suite-02` | `kit_launch` (v1.0.0) | 2026-11-08 | `published` | 4 | 2026-11-08 | 171 | ✅ Cubierto | Activo cubierto con 4 post(s) en producción (171 vistas/30d). |
 | `pack-business-case` | `kit_launch` (v1.0.0) | 2026-11-08 | `published` | 4 | 2026-11-21 | 145 | ✅ Cubierto | Activo cubierto con 4 post(s) en producción (145 vistas/30d). |
-| `suite-01` | `kit_launch` (v1.0.0) | 2026-11-01 | `published` | 3 | 2026-11-01 | 102 | ✅ Cubierto | Activo cubierto con 3 post(s) en producción (102 vistas/30d). |
+| `suite-01` | `kit_launch` (v1.0.0) | 2026-11-01 | `published` | 3 | 2026-11-01 | 104 | ✅ Cubierto | Activo cubierto con 3 post(s) en producción (104 vistas/30d). |
 | `pack-stock` | `kit_launch` (v1.0.0) | 2026-11-26 | `published` | 1 | 2026-11-26 | 91 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (91 vistas/30d). |
 | `pack-rice` | `kit_launch` (v1.0.0) | 2026-11-05 | `published` | 1 | 2026-11-05 | 76 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (76 vistas/30d). |
 | `pack-dar` | `kit_launch` (v1.0.0) | 2026-11-02 | `published` | 1 | 2026-11-02 | 54 | ✅ Cubierto | Activo cubierto con 1 post(s) en producción (54 vistas/30d). |
@@ -195,8 +195,8 @@ Consultas reales de Search Console donde `>= 2` URLs del mismo idioma compiten p
 
 | Canal Canónico | Sesiones 30d | ES / EN | % EN | Δ 30d | Eng. Rate % | Eng. Medio | Eventos Clave | Conv. % |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **`direct`** | **2,690** | 1283 / 1381 | 51.8% | +152.3% | 24.3% | 9.0s | 7 | 0.26% |
-| **`other`** | **346** | 185 / 159 | 46.2% | +260.4% | 42.5% | 21.2s | 4 | 1.16% |
+| **`direct`** | **2,702** | 1294 / 1382 | 51.6% | +153.5% | 24.4% | 9.1s | 7 | 0.26% |
+| **`other`** | **351** | 190 / 159 | 45.6% | +265.6% | 43.3% | 21.0s | 4 | 1.14% |
 | **`google_organic`** | **268** | 142 / 126 | 47.0% | +95.6% | 53.0% | 40.3s | 0 | 0.00% |
 | **`linkedin`** | **110** | 63 / 47 | 42.7% | +129.2% | 78.2% | 9.1s | 2 | 1.82% |
 | **`x`** | **56** | 36 / 20 | 35.7% | +500.0% | 82.1% | 8.8s | 0 | 0.00% |
@@ -228,9 +228,9 @@ Consultas reales de Search Console donde `>= 2` URLs del mismo idioma compiten p
 | `dark_social_spike` | 🔴 Alta | `pulse-part3-2026-11-25-wave3a-es-devto` | 438 vs. 114.0 | **+284.2%** | Pico +284% de tráfico (direct) tras despacho 'pulse-part3-2026-11-25-wave3a-es-devto' con solo 0 sesiones UTM en [devto]. Verificar UTMs ADR-033 en enlaces compartidos. |
 | `dark_social_spike` | 🔴 Alta | `pulse-part3-2026-11-25-wave3b-en-syndication` | 438 vs. 114.0 | **+284.2%** | Pico +284% de tráfico (direct) tras despacho 'pulse-part3-2026-11-25-wave3b-en-syndication' con solo 0 sesiones UTM en [devto,coderlegion]. Verificar UTMs ADR-033 en enlaces compartidos. |
 | `dark_social_spike` | 🔴 Alta | `stock-rop-2026-11-26-wave2-en-native` | 438 vs. 114.0 | **+284.2%** | Pico +284% de tráfico (direct) tras despacho 'stock-rop-2026-11-26-wave2-en-native' con solo 5 sesiones UTM en [linkedin,x]. Verificar UTMs ADR-033 en enlaces compartidos. |
-| `dark_social_spike` | 🔴 Alta | `stock-rop-2026-11-26-wave3a-es-devto` | 413 vs. 114.0 | **+262.3%** | Pico +262% de tráfico (direct) tras despacho 'stock-rop-2026-11-26-wave3a-es-devto' con solo 0 sesiones UTM en [devto]. Verificar UTMs ADR-033 en enlaces compartidos. |
-| `dark_social_spike` | 🔴 Alta | `stock-rop-2026-11-26-wave3b-en-syndication` | 413 vs. 114.0 | **+262.3%** | Pico +262% de tráfico (direct) tras despacho 'stock-rop-2026-11-26-wave3b-en-syndication' con solo 0 sesiones UTM en [devto,coderlegion]. Verificar UTMs ADR-033 en enlaces compartidos. |
-| `high_direct_share` | 🟡 Media | `linkedin,x,devto,coderlegion` | 2690 vs. 1066.0 | **+152.3%** | Tráfico directo creció +152% (76.4% del total) mientras atribución social UTM es 5.9%. Auditar enlaces manuales en bio/comentarios. |
+| `dark_social_spike` | 🔴 Alta | `stock-rop-2026-11-26-wave3a-es-devto` | 421 vs. 114.0 | **+269.3%** | Pico +269% de tráfico (direct) tras despacho 'stock-rop-2026-11-26-wave3a-es-devto' con solo 0 sesiones UTM en [devto]. Verificar UTMs ADR-033 en enlaces compartidos. |
+| `dark_social_spike` | 🔴 Alta | `stock-rop-2026-11-26-wave3b-en-syndication` | 421 vs. 114.0 | **+269.3%** | Pico +269% de tráfico (direct) tras despacho 'stock-rop-2026-11-26-wave3b-en-syndication' con solo 0 sesiones UTM en [devto,coderlegion]. Verificar UTMs ADR-033 en enlaces compartidos. |
+| `high_direct_share` | 🟡 Media | `linkedin,x,devto,coderlegion` | 2702 vs. 1066.0 | **+153.5%** | Tráfico directo creció +154% (76.3% del total) mientras atribución social UTM es 5.9%. Auditar enlaces manuales en bio/comentarios. |
 
 ### 🌐 Embudo Nativo Comunidades Tech & PTR (Dev.to + CoderLegion + LinkedIn Empresa — Coste 0 €)
 

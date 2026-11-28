@@ -180,10 +180,10 @@
     "gsc_top_queries": []
   },
   "edsger_dijkstra": {
-    "ga4_views_30d": 2,
-    "ga4_users_30d": 1,
-    "ga4_engagement_sec": 16.0,
-    "ga4_views_es_30d": 2,
+    "ga4_views_30d": 22,
+    "ga4_users_30d": 2,
+    "ga4_engagement_sec": 464.0,
+    "ga4_views_es_30d": 22,
     "ga4_views_en_30d": 0,
     "ga4_views_prev_30d": 0,
     "gsc_clicks_30d": 0,
@@ -971,10 +971,10 @@
     "gsc_top_queries": []
   },
   "decision-making-prioritization-quantitative-framework": {
-    "ga4_views_30d": 80,
-    "ga4_users_30d": 25,
-    "ga4_engagement_sec": 1037.0,
-    "ga4_views_es_30d": 64,
+    "ga4_views_30d": 82,
+    "ga4_users_30d": 26,
+    "ga4_engagement_sec": 1041.0,
+    "ga4_views_es_30d": 66,
     "ga4_views_en_30d": 16,
     "ga4_views_prev_30d": 0,
     "gsc_clicks_30d": 2,
@@ -3202,10 +3202,10 @@
     ]
   },
   "john_von_neumann": {
-    "ga4_views_30d": 43,
-    "ga4_users_30d": 39,
+    "ga4_views_30d": 45,
+    "ga4_users_30d": 41,
     "ga4_engagement_sec": 658.0,
-    "ga4_views_es_30d": 16,
+    "ga4_views_es_30d": 18,
     "ga4_views_en_30d": 27,
     "ga4_views_prev_30d": 63,
     "gsc_clicks_30d": 9,
@@ -4608,11 +4608,11 @@
     ]
   },
   "economia_oculta_ia": {
-    "ga4_views_30d": 17,
-    "ga4_users_30d": 13,
+    "ga4_views_30d": 18,
+    "ga4_users_30d": 14,
     "ga4_engagement_sec": 29.0,
     "ga4_views_es_30d": 1,
-    "ga4_views_en_30d": 16,
+    "ga4_views_en_30d": 17,
     "ga4_views_prev_30d": 6,
     "gsc_clicks_30d": 3,
     "gsc_impressions_30d": 430,
@@ -7309,7 +7309,7 @@
   "obs-management": {
     "ga4_views_30d": 18,
     "ga4_users_30d": 8,
-    "ga4_engagement_sec": 124.0,
+    "ga4_engagement_sec": 133.0,
     "ga4_views_es_30d": 15,
     "ga4_views_en_30d": 3,
     "ga4_views_prev_30d": 15,
@@ -7353,7 +7353,7 @@
   "obs-management-v2.0.0": {
     "ga4_views_30d": 18,
     "ga4_users_30d": 8,
-    "ga4_engagement_sec": 124.0,
+    "ga4_engagement_sec": 133.0,
     "ga4_views_es_30d": 15,
     "ga4_views_en_30d": 3,
     "ga4_views_prev_30d": 15,
@@ -7397,7 +7397,7 @@
   "obs-management-v1.0.1": {
     "ga4_views_30d": 18,
     "ga4_users_30d": 8,
-    "ga4_engagement_sec": 124.0,
+    "ga4_engagement_sec": 133.0,
     "ga4_views_es_30d": 15,
     "ga4_views_en_30d": 3,
     "ga4_views_prev_30d": 15,
@@ -8683,10 +8683,10 @@
     ]
   },
   "mega-bundle": {
-    "ga4_views_30d": 361,
-    "ga4_users_30d": 56,
-    "ga4_engagement_sec": 2001.0,
-    "ga4_views_es_30d": 319,
+    "ga4_views_30d": 362,
+    "ga4_users_30d": 57,
+    "ga4_engagement_sec": 2003.0,
+    "ga4_views_es_30d": 320,
     "ga4_views_en_30d": 42,
     "ga4_views_prev_30d": 172,
     "gsc_clicks_30d": 0,
@@ -8745,10 +8745,10 @@
     ]
   },
   "suite-01": {
-    "ga4_views_30d": 361,
-    "ga4_users_30d": 56,
-    "ga4_engagement_sec": 2001.0,
-    "ga4_views_es_30d": 319,
+    "ga4_views_30d": 362,
+    "ga4_users_30d": 57,
+    "ga4_engagement_sec": 2003.0,
+    "ga4_views_es_30d": 320,
     "ga4_views_en_30d": 42,
     "ga4_views_prev_30d": 172,
     "gsc_clicks_30d": 0,
@@ -8807,10 +8807,10 @@
     ]
   },
   "suite-02": {
-    "ga4_views_30d": 361,
-    "ga4_users_30d": 56,
-    "ga4_engagement_sec": 2001.0,
-    "ga4_views_es_30d": 319,
+    "ga4_views_30d": 362,
+    "ga4_users_30d": 57,
+    "ga4_engagement_sec": 2003.0,
+    "ga4_views_es_30d": 320,
     "ga4_views_en_30d": 42,
     "ga4_views_prev_30d": 172,
     "gsc_clicks_30d": 0,
@@ -8869,10 +8869,10 @@
     ]
   },
   "suite-03": {
-    "ga4_views_30d": 361,
-    "ga4_users_30d": 56,
-    "ga4_engagement_sec": 2001.0,
-    "ga4_views_es_30d": 319,
+    "ga4_views_30d": 362,
+    "ga4_users_30d": 57,
+    "ga4_engagement_sec": 2003.0,
+    "ga4_views_es_30d": 320,
     "ga4_views_en_30d": 42,
     "ga4_views_prev_30d": 172,
     "gsc_clicks_30d": 0,
@@ -8931,10 +8931,10 @@
     ]
   },
   "suite-sdd": {
-    "ga4_views_30d": 361,
-    "ga4_users_30d": 56,
-    "ga4_engagement_sec": 2001.0,
-    "ga4_views_es_30d": 319,
+    "ga4_views_30d": 362,
+    "ga4_users_30d": 57,
+    "ga4_engagement_sec": 2003.0,
+    "ga4_views_es_30d": 320,
     "ga4_views_en_30d": 42,
     "ga4_views_prev_30d": 172,
     "gsc_clicks_30d": 0,
@@ -8993,10 +8993,10 @@
     ]
   },
   "pack-dafo": {
-    "ga4_views_30d": 361,
-    "ga4_users_30d": 56,
-    "ga4_engagement_sec": 2001.0,
-    "ga4_views_es_30d": 319,
+    "ga4_views_30d": 362,
+    "ga4_users_30d": 57,
+    "ga4_engagement_sec": 2003.0,
+    "ga4_views_es_30d": 320,
     "ga4_views_en_30d": 42,
     "ga4_views_prev_30d": 172,
     "gsc_clicks_30d": 0,
@@ -9055,10 +9055,10 @@
     ]
   },
   "pack-porter": {
-    "ga4_views_30d": 361,
-    "ga4_users_30d": 56,
-    "ga4_engagement_sec": 2001.0,
-    "ga4_views_es_30d": 319,
+    "ga4_views_30d": 362,
+    "ga4_users_30d": 57,
+    "ga4_engagement_sec": 2003.0,
+    "ga4_views_es_30d": 320,
     "ga4_views_en_30d": 42,
     "ga4_views_prev_30d": 172,
     "gsc_clicks_30d": 0,
@@ -9117,10 +9117,10 @@
     ]
   },
   "pack-pestel": {
-    "ga4_views_30d": 361,
-    "ga4_users_30d": 56,
-    "ga4_engagement_sec": 2001.0,
-    "ga4_views_es_30d": 319,
+    "ga4_views_30d": 362,
+    "ga4_users_30d": 57,
+    "ga4_engagement_sec": 2003.0,
+    "ga4_views_es_30d": 320,
     "ga4_views_en_30d": 42,
     "ga4_views_prev_30d": 172,
     "gsc_clicks_30d": 0,
@@ -9179,10 +9179,10 @@
     ]
   },
   "pack-bcg": {
-    "ga4_views_30d": 361,
-    "ga4_users_30d": 56,
-    "ga4_engagement_sec": 2001.0,
-    "ga4_views_es_30d": 319,
+    "ga4_views_30d": 362,
+    "ga4_users_30d": 57,
+    "ga4_engagement_sec": 2003.0,
+    "ga4_views_es_30d": 320,
     "ga4_views_en_30d": 42,
     "ga4_views_prev_30d": 172,
     "gsc_clicks_30d": 0,
@@ -9241,10 +9241,10 @@
     ]
   },
   "pack-mckinsey": {
-    "ga4_views_30d": 361,
-    "ga4_users_30d": 56,
-    "ga4_engagement_sec": 2001.0,
-    "ga4_views_es_30d": 319,
+    "ga4_views_30d": 362,
+    "ga4_users_30d": 57,
+    "ga4_engagement_sec": 2003.0,
+    "ga4_views_es_30d": 320,
     "ga4_views_en_30d": 42,
     "ga4_views_prev_30d": 172,
     "gsc_clicks_30d": 0,
@@ -9303,10 +9303,10 @@
     ]
   },
   "pack-dar": {
-    "ga4_views_30d": 361,
-    "ga4_users_30d": 56,
-    "ga4_engagement_sec": 2001.0,
-    "ga4_views_es_30d": 319,
+    "ga4_views_30d": 362,
+    "ga4_users_30d": 57,
+    "ga4_engagement_sec": 2003.0,
+    "ga4_views_es_30d": 320,
     "ga4_views_en_30d": 42,
     "ga4_views_prev_30d": 172,
     "gsc_clicks_30d": 0,
@@ -9365,10 +9365,10 @@
     ]
   },
   "pack-rice": {
-    "ga4_views_30d": 361,
-    "ga4_users_30d": 56,
-    "ga4_engagement_sec": 2001.0,
-    "ga4_views_es_30d": 319,
+    "ga4_views_30d": 362,
+    "ga4_users_30d": 57,
+    "ga4_engagement_sec": 2003.0,
+    "ga4_views_es_30d": 320,
     "ga4_views_en_30d": 42,
     "ga4_views_prev_30d": 172,
     "gsc_clicks_30d": 0,
@@ -9427,10 +9427,10 @@
     ]
   },
   "pack-business-case": {
-    "ga4_views_30d": 361,
-    "ga4_users_30d": 56,
-    "ga4_engagement_sec": 2001.0,
-    "ga4_views_es_30d": 319,
+    "ga4_views_30d": 362,
+    "ga4_users_30d": 57,
+    "ga4_engagement_sec": 2003.0,
+    "ga4_views_es_30d": 320,
     "ga4_views_en_30d": 42,
     "ga4_views_prev_30d": 172,
     "gsc_clicks_30d": 0,
@@ -9489,10 +9489,10 @@
     ]
   },
   "pack-raci": {
-    "ga4_views_30d": 361,
-    "ga4_users_30d": 56,
-    "ga4_engagement_sec": 2001.0,
-    "ga4_views_es_30d": 319,
+    "ga4_views_30d": 362,
+    "ga4_users_30d": 57,
+    "ga4_engagement_sec": 2003.0,
+    "ga4_views_es_30d": 320,
     "ga4_views_en_30d": 42,
     "ga4_views_prev_30d": 172,
     "gsc_clicks_30d": 0,
@@ -9551,10 +9551,10 @@
     ]
   },
   "pack-amfe": {
-    "ga4_views_30d": 361,
-    "ga4_users_30d": 56,
-    "ga4_engagement_sec": 2001.0,
-    "ga4_views_es_30d": 319,
+    "ga4_views_30d": 362,
+    "ga4_users_30d": 57,
+    "ga4_engagement_sec": 2003.0,
+    "ga4_views_es_30d": 320,
     "ga4_views_en_30d": 42,
     "ga4_views_prev_30d": 172,
     "gsc_clicks_30d": 0,
@@ -9613,10 +9613,10 @@
     ]
   },
   "pack-pert": {
-    "ga4_views_30d": 361,
-    "ga4_users_30d": 56,
-    "ga4_engagement_sec": 2001.0,
-    "ga4_views_es_30d": 319,
+    "ga4_views_30d": 362,
+    "ga4_users_30d": 57,
+    "ga4_engagement_sec": 2003.0,
+    "ga4_views_es_30d": 320,
     "ga4_views_en_30d": 42,
     "ga4_views_prev_30d": 172,
     "gsc_clicks_30d": 0,
@@ -9675,10 +9675,10 @@
     ]
   },
   "pack-evm": {
-    "ga4_views_30d": 361,
-    "ga4_users_30d": 56,
-    "ga4_engagement_sec": 2001.0,
-    "ga4_views_es_30d": 319,
+    "ga4_views_30d": 362,
+    "ga4_users_30d": 57,
+    "ga4_engagement_sec": 2003.0,
+    "ga4_views_es_30d": 320,
     "ga4_views_en_30d": 42,
     "ga4_views_prev_30d": 172,
     "gsc_clicks_30d": 0,
@@ -9737,10 +9737,10 @@
     ]
   },
   "pack-stock": {
-    "ga4_views_30d": 361,
-    "ga4_users_30d": 56,
-    "ga4_engagement_sec": 2001.0,
-    "ga4_views_es_30d": 319,
+    "ga4_views_30d": 362,
+    "ga4_users_30d": 57,
+    "ga4_engagement_sec": 2003.0,
+    "ga4_views_es_30d": 320,
     "ga4_views_en_30d": 42,
     "ga4_views_prev_30d": 172,
     "gsc_clicks_30d": 0,
@@ -9799,10 +9799,10 @@
     ]
   },
   "pack-pulse": {
-    "ga4_views_30d": 361,
-    "ga4_users_30d": 56,
-    "ga4_engagement_sec": 2001.0,
-    "ga4_views_es_30d": 319,
+    "ga4_views_30d": 362,
+    "ga4_users_30d": 57,
+    "ga4_engagement_sec": 2003.0,
+    "ga4_views_es_30d": 320,
     "ga4_views_en_30d": 42,
     "ga4_views_prev_30d": 172,
     "gsc_clicks_30d": 0,
@@ -9861,10 +9861,10 @@
     ]
   },
   "pack-sdd": {
-    "ga4_views_30d": 361,
-    "ga4_users_30d": 56,
-    "ga4_engagement_sec": 2001.0,
-    "ga4_views_es_30d": 319,
+    "ga4_views_30d": 362,
+    "ga4_users_30d": 57,
+    "ga4_engagement_sec": 2003.0,
+    "ga4_views_es_30d": 320,
     "ga4_views_en_30d": 42,
     "ga4_views_prev_30d": 172,
     "gsc_clicks_30d": 0,
@@ -9923,10 +9923,10 @@
     ]
   },
   "pack-obs": {
-    "ga4_views_30d": 361,
-    "ga4_users_30d": 56,
-    "ga4_engagement_sec": 2001.0,
-    "ga4_views_es_30d": 319,
+    "ga4_views_30d": 362,
+    "ga4_users_30d": 57,
+    "ga4_engagement_sec": 2003.0,
+    "ga4_views_es_30d": 320,
     "ga4_views_en_30d": 42,
     "ga4_views_prev_30d": 172,
     "gsc_clicks_30d": 0,
