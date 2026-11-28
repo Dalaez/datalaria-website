@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "visibility": "private",
-  "updated_at": "2026-11-28T11:44:42Z",
+  "updated_at": "2026-11-28T21:19:18Z",
   "entries": [
     {
       "asset_id": "autopilot-parte10-scriba-sindicacion-puente-pulse",
@@ -2252,6 +2252,16 @@
       "external_url": "https://www.linkedin.com/feed/update/urn:li:share:7532409129718575104/",
       "canonical_url": "https://datalaria.com/en/posts/edsger_dijkstra/",
       "published_at_utc": "2026-11-28T11:44:42Z"
+    },
+    {
+      "asset_id": "edsger_dijkstra",
+      "slug": "edsger_dijkstra",
+      "lang": "es",
+      "channel": "devto",
+      "external_id": "5141250",
+      "external_url": "https://dev.to/datalaria/edsger-dijkstra-verificacion-formal-el-algoritmo-en-un-cafe-y-el-veto-al-vibe-coding-4lej",
+      "canonical_url": "https://datalaria.com/es/posts/edsger_dijkstra/",
+      "published_at_utc": "2026-11-28T21:19:18Z"
     }
   ]
 }

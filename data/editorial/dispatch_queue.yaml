@@ -366,8 +366,8 @@ entries:
   channels:
   - devto
   scheduled_at_utc: '2026-11-28T18:30:00Z'
-  status: pending
-  executed_at_utc: null
+  status: completed
+  executed_at_utc: '2026-11-28T21:19:18Z'
   notes: 'Ola 3A (T+12h): Dev.to ES con ventaja de indexación canónica'
   last_error: null
 - id: edsger-dijkstra-2026-11-28-wave3b-en-syndication
