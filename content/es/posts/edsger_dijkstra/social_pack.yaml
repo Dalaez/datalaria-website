@@ -1,0 +1,77 @@
+es:
+  x:
+    hook: "En 1956 Edsger Dijkstra diseñó el algoritmo de caminos mínimos en 20 minutos en un café sin papel ni lápiz. Hoy explica por qué el Vibe Coding colapsa."
+    thread:
+      - "1/5 Diseñó el algoritmo de caminos mínimos en 20 minutos en una terraza de Ámsterdam sin usar papel ni lápiz. Edsger Dijkstra demostró que la elegancia mental previa ahorra millones de horas de cómputo inútil."
+      - "2/5 Cuando fue a casarse en 1957, el registro civil denegó su oficio de 'Programador de ordenadores' porque no existía en las leyes holandesas. Tuvo que registrarse como 'Físico Teórico' para poder celebrar la boda."
+      - "3/5 En 1968 sentenció: 'El testeo demuestra la presencia de bugs, jamás su ausencia'. Su cruzada contra el GOTO y su semántica formal sentaron las bases para deducir software en lugar de construirlo por ensayo y error."
+      - "4/5 En 2026, pedir código a ciegas a un LLM (Vibe Coding) revive el caos del GOTO. La respuesta de Dijkstra hoy es el Spec-Driven Development (SDD): especificación previa e invariantes antes de generar código."
+      - "5/5 Descubre la fascinante biografía, anécdotas y lecciones para la era de la AGI del gran maestro del rigor formal en Datalaria: https://datalaria.com/es/posts/edsger_dijkstra/"
+    hashtags:
+      - "EdsgerDijkstra"
+      - "FormalVerification"
+      - "VibeCoding"
+      - "SDD"
+      - "AGI"
+  linkedin:
+    text: |-
+      ☕ En 1956, tomando un café matinal en una terraza de Ámsterdam con su prometida, un joven físico holandés diseñó en veinte minutos —y sin usar papel ni lápiz— el algoritmo que hoy enruta Internet, guía a los satélites GPS y optimiza los grafos de razonamiento en la IA de frontera.
+
+      Pero la verdadera obsesión de Edsger W. Dijkstra no fue la velocidad: fue la corrección matemática absoluta.
+
+      Tres lecciones intemporales de Dijkstra que todo equipo de ingeniería y datos debe recordar en plena fiebre de la IA: 👇
+
+      🎯 La simplicidad no es un lujo: si necesitas papel para diseñar un algoritmo, es que aún es demasiado complejo. Diseñar mentalmente te obliga a podar el ruido.
+
+      🚦 Concurrencia sin bloqueos: inventó los semáforos y la parábola de los Filósofos Comensales (1965) para evitar que procesos independientes mueran por inanición (deadlock).
+
+      🛑 El veto al 'Vibe Coding': «Probar programas demuestra la presencia de errores, jamás su ausencia». Confiar en código generado por un LLM sin especificación formal previa es la reencarnación del código espagueti con GOTO.
+
+      En Datalaria aplicamos su principio cada día: ningún agente de IA escribe una línea de código sin contratos tipados, invariantes formales y un verificador independiente con derecho a veto.
+
+      📖 Lee el ensayo biográfico y técnico completo sobre Edsger Dijkstra: https://datalaria.com/es/posts/edsger_dijkstra/
+
+      💬 ¿Hasta qué punto permites que tu equipo o tus agentes de IA generen código sin una especificación formal previa?
+    hashtags:
+      - "EdsgerDijkstra"
+      - "IngenieriaDeSoftware"
+      - "VerificacionFormal"
+      - "VibeCoding"
+      - "InteligenciaArtificial"
+      - "AGI"
+  newsletter:
+    archetype: "real_case_number"
+    subject: "20 minutos en una terraza de Ámsterdam (y por qué Dijkstra odiaría el Vibe Coding)"
+    preheader: "La vida de Edsger Dijkstra: el algoritmo de caminos mínimos sin papel, los semáforos y la verificación formal frente al caos de la IA."
+    hook_paragraphs:
+      - "En la primavera de 1956, paseando por los canales de Ámsterdam con su prometida, Edsger Dijkstra se sentó a tomar un café y diseñó en veinte minutos de pura abstracción mental el algoritmo que hoy hace funcionar a Google Maps y al enrutamiento de Internet."
+      - "En esta entrega de Pioneros y Referentes analizamos por qué este catedrático del MIT y Austin —que se negaba a tener un ordenador en su despacho y escribía a mano más de 1.300 cartas con pluma estilográfica— habría considerado al Vibe Coding la mayor amenaza para la fiabilidad de la AGI."
+    insights_60s:
+      - "Optimalidad voraz en 20 minutos: la relajación de aristas de Dijkstra demuestra que una buena estructura matemática elimina la necesidad de fuerza bruta combinatoria."
+      - "Concurrencia y semáforos: resolver el problema de los Filósofos Comensales es el plano maestro para gobernar enjambres de subagentes autónomos sin condiciones de carrera."
+      - "El fin de la adivinación: probar código demuestra fallos, no corrección. La única garantía frente a alucinaciones de IA es el Spec-Driven Development con verificación determinista."
+    secondary_cta_label: "Explorar Modelos Cuantitativos y Recursos en Datalaria"
+    secondary_cta_url: "https://datalaria.com/es/recursos/"
+    ps_referral_text: "Si conoces a un ingeniero o directivo tentado por el Vibe Coding ciego, reenvíale esta historia sobre el poder de la especificación formal."
+  devto:
+    enabled: true
+    title: "Edsger Dijkstra: Verificación Formal, el Algoritmo en un Café y el Veto al Vibe Coding"
+    description: "La vida y legado de Edsger Dijkstra: caminos mínimos, semáforos de concurrencia y por qué la verificación formal gobierna a los agentes de IA en 2026."
+    tags:
+      - "ai"
+      - "softwareengineering"
+      - "architecture"
+      - "history"
+    canonical_url: "https://datalaria.com/es/posts/edsger_dijkstra/"
+    published: true
+  coderlegion:
+    enabled: false
+    title: "Edsger Dijkstra: Verificación Formal y Agentes IA"
+    description: "Perfil histórico sobre Edsger Dijkstra y verificación formal de software."
+    tags:
+      - "ai"
+      - "software-engineering"
+      - "algorithms"
+      - "history"
+    canonical_url: "https://datalaria.com/es/posts/edsger_dijkstra/"
+    published: false
